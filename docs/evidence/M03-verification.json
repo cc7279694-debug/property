@@ -1,0 +1,1525 @@
+{
+  "module": "M03",
+  "recordedOn": "2026-10-11",
+  "status": "READY_FOR_REVIEW",
+  "independentAcceptance": "PENDING",
+  "branch": "feat/m03-subscription-engine",
+  "baseCommit": "0169c76bbf0946a0400b96d00124b3de9aea1cc0",
+  "hashPolicy": "Source/config bytes normalize CRLF to LF; Wrapper JAR, logs, XML and APK use raw bytes.",
+  "red": {
+    "command": ".\\gradlew.bat :app:testDebugUnitTest --tests \"com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest\" --console=plain",
+    "exitCode": 1,
+    "buildResult": "BUILD FAILED in 52s",
+    "tests": 37,
+    "passed": 3,
+    "failed": 34,
+    "errors": 0,
+    "skipped": 0,
+    "cases": [
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_year_natural_366_is_distinct_from_standard_365",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<366> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "only_three_fixed_cycles_exist",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "future_pause_and_stop_do_not_change_the_past",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<ACTIVE> but was:<EXPIRED>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "resume_after_expiry_does_not_create_payment",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<9> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_day_start_reaches_365_on_february_27",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<1> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "expired_has_zero_current_rate",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<31> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_at_max_date_expires_without_plus_days_overflow",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<1> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "unordered_records_produce_identical_history",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<ACTIVE> but was:<EXPIRED>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_future_without_current_coverage_is_expired",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<15000> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "quarterly_standard_rate",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<0> but was:<1>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "later_real_payment_is_legal_input_but_unknown_to_earlier_observation",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<0> but was:<1>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "observation_before_all_facts_has_no_cost_or_elapsed_days",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_purchase_not_elapsed_year",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<0> but was:<1>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_pause_excludes_ten_days_and_next_real_period_reaches_365",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<355> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "monthly_standard_rate",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<ACTIVE> but was:<EXPIRED>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "zero_amount_is_not_a_real_renewal",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_next_rate_does_not_start_early",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<0> but was:<1>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "even_identical_same_day_states_require_correction",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "duplicate_same_day_states_are_rejected_in_both_orders",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_gap_is_not_counted_or_active",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<31> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_days_use_long_and_do_not_enumerate_dates",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<730484999633> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_history_has_explicit_no_record_reason",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "nested_and_duplicate_coverage_are_rejected",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "default_stop_uses_paid_end_and_preserves_preboundary_service",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<0> but was:<1>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "stored_standard_days_must_match_fixed_cycle",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "paused_without_coverage_remains_paused",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<PAUSED> but was:<EXPIRED>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "fractional_rate_keeps_decimal128_precision_and_nonzero_value",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<0> but was:<1>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_cycle_change_starts_at_its_effective_boundary",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<0> but was:<1>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "overlaps_rejected",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "writing_rejects_future_payment_using_business_today",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reversed_coverage_is_rejected",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reminder_boundary_does_not_extend_paid_coverage",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<30> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_coverage_is_rejected",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_start_state_boundary_counts_enabled_date_only_once",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<1> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "pause_does_not_erase_paid_history",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<PAUSED> but was:<EXPIRED>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "payment_today_and_future_service_are_valid",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<30> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "explicit_early_stop_excludes_its_first_stopped_day",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<STOPPED> but was:<EXPIRED>"
+      }
+    ],
+    "xmlReports": [
+      {
+        "path": "build/m03-evidence/red-test-results/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+        "bytes": 161993,
+        "sha256": "a83ef04321962376d549ba015e82d3ba6228d882fc8cb2e9abdb75ad07ed3e49"
+      }
+    ],
+    "log": {
+      "path": "build/m03-evidence/red.log",
+      "bytes": 7335,
+      "sha256": "a5f6486a07ff889c6d76f2556a05faacde1ed662bd026e0ad5e5256f44a8e0a0"
+    }
+  },
+  "green": {
+    "command": ".\\gradlew.bat :app:testDebugUnitTest --tests \"com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest\" --console=plain",
+    "exitCode": 0,
+    "buildResult": "BUILD SUCCESSFUL in 18s",
+    "tests": 37,
+    "passed": 37,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "cases": [
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_year_natural_366_is_distinct_from_standard_365",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "only_three_fixed_cycles_exist",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "future_pause_and_stop_do_not_change_the_past",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "resume_after_expiry_does_not_create_payment",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_day_start_reaches_365_on_february_27",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "expired_has_zero_current_rate",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_at_max_date_expires_without_plus_days_overflow",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "unordered_records_produce_identical_history",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_future_without_current_coverage_is_expired",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "quarterly_standard_rate",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "later_real_payment_is_legal_input_but_unknown_to_earlier_observation",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "observation_before_all_facts_has_no_cost_or_elapsed_days",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_purchase_not_elapsed_year",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_pause_excludes_ten_days_and_next_real_period_reaches_365",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "monthly_standard_rate",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "zero_amount_is_not_a_real_renewal",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_next_rate_does_not_start_early",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "even_identical_same_day_states_require_correction",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "duplicate_same_day_states_are_rejected_in_both_orders",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_gap_is_not_counted_or_active",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_days_use_long_and_do_not_enumerate_dates",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_history_has_explicit_no_record_reason",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "nested_and_duplicate_coverage_are_rejected",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "default_stop_uses_paid_end_and_preserves_preboundary_service",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "stored_standard_days_must_match_fixed_cycle",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "paused_without_coverage_remains_paused",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "fractional_rate_keeps_decimal128_precision_and_nonzero_value",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_cycle_change_starts_at_its_effective_boundary",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "overlaps_rejected",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "writing_rejects_future_payment_using_business_today",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reversed_coverage_is_rejected",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reminder_boundary_does_not_extend_paid_coverage",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_coverage_is_rejected",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_start_state_boundary_counts_enabled_date_only_once",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "pause_does_not_erase_paid_history",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "payment_today_and_future_service_are_valid",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "explicit_early_stop_excludes_its_first_stopped_day",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      }
+    ],
+    "xmlReports": [
+      {
+        "path": "build/m03-evidence/green-test-results/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+        "bytes": 6113,
+        "sha256": "0193392e950ae5e13f38ccf95132f7a54243be3c1e0930c2ce49ab5cd992c63b"
+      }
+    ],
+    "log": {
+      "path": "build/m03-evidence/green.log",
+      "bytes": 1627,
+      "sha256": "230c5909a1e86b1c8e4181da33f634bf5a90d3a2d534b5f1021f04d99133698e"
+    }
+  },
+  "regressionBuildLint": {
+    "command": ".\\gradlew.bat :app:testDebugUnitTest :app:lintDebug :app:assembleDebug --console=plain",
+    "exitCode": 0,
+    "buildResult": "BUILD SUCCESSFUL in 59s",
+    "tests": 68,
+    "passed": 68,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "cases": [
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_out_of_range_numbers",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "accepts_largest_single_amount",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "direct_money_construction_cannot_bypass_amount_limits",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_excess_precision_without_rounding",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "money_precision_and_zero",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_non_decimal_and_signed_input",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "parses_exact_non_negative_cny",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "recorded_zone_uses_its_own_calendar_day",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "fixed_business_date_drives_project_evaluation",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "dated_event_does_not_rewrite_earlier_days",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "negative_cost_is_not_clamped",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_gross_outlay_overflow",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_end_date_before_start",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v01_ended_snapshot_uses_historical_observation_day",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_installment_does_not_restart_or_extend_project",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "end_day_removes_current_contribution",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "date_span_is_not_narrowed_to_int_or_rounded_to_zero",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_recovery_overflow",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "refund_is_separate_from_the_original_outlay",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "leap_day_is_a_real_natural_day",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "same_day_is_one_day",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "empty_event_list_is_valid_zero_cost",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "aggregate_can_exceed_single_event_limit",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_refund_keeps_duration",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "prepaid_money_before_start_has_no_effective_daily_rate",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v02_refund_changes_only_its_occurrence_day_and_after",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "zero_cost_is_effective_and_contributes_while_active",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "installments_count_only_after_their_real_payment_day",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "unordered_same_day_events_are_all_counted_once",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_year_natural_366_is_distinct_from_standard_365",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "only_three_fixed_cycles_exist",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "future_pause_and_stop_do_not_change_the_past",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "resume_after_expiry_does_not_create_payment",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_day_start_reaches_365_on_february_27",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "expired_has_zero_current_rate",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_at_max_date_expires_without_plus_days_overflow",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "unordered_records_produce_identical_history",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_future_without_current_coverage_is_expired",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "quarterly_standard_rate",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "later_real_payment_is_legal_input_but_unknown_to_earlier_observation",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "observation_before_all_facts_has_no_cost_or_elapsed_days",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_purchase_not_elapsed_year",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_pause_excludes_ten_days_and_next_real_period_reaches_365",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "monthly_standard_rate",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "zero_amount_is_not_a_real_renewal",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_next_rate_does_not_start_early",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "even_identical_same_day_states_require_correction",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "duplicate_same_day_states_are_rejected_in_both_orders",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_gap_is_not_counted_or_active",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_days_use_long_and_do_not_enumerate_dates",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_history_has_explicit_no_record_reason",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "nested_and_duplicate_coverage_are_rejected",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "default_stop_uses_paid_end_and_preserves_preboundary_service",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "stored_standard_days_must_match_fixed_cycle",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "paused_without_coverage_remains_paused",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "fractional_rate_keeps_decimal128_precision_and_nonzero_value",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_cycle_change_starts_at_its_effective_boundary",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "overlaps_rejected",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "writing_rejects_future_payment_using_business_today",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reversed_coverage_is_rejected",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reminder_boundary_does_not_extend_paid_coverage",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_coverage_is_rejected",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_start_state_boundary_counts_enabled_date_only_once",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "pause_does_not_erase_paid_history",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "payment_today_and_future_service_are_valid",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "explicit_early_stop_excludes_its_first_stopped_day",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      }
+    ],
+    "xmlReports": [
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.core.model.MoneyParserTest.xml",
+        "bytes": 1224,
+        "sha256": "4f8c7dee279d5d4952e4070e58bcaf58fa9b8f308cd6b62315ad0effa9ff29c8"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.core.time.BusinessClockTest.xml",
+        "bytes": 606,
+        "sha256": "cac51b3723dd5a566fd3215029986983d202c40e355f2675358f7ea603058b42"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+        "bytes": 3514,
+        "sha256": "6cc83d2e550e6b267d316be30241106e90c5a203dcc891017b232c4cd6f940dc"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+        "bytes": 6113,
+        "sha256": "62bdc9c80b003a1d4bb7256676b88757875686829a6a85ca2328218d2262020f"
+      }
+    ],
+    "log": {
+      "path": "build/m03-evidence/regression-build-lint.log",
+      "bytes": 3127,
+      "sha256": "8c59172c85e23c98ae46b2451fa2069efd1141d4514f7e7f9399e2a81b2273fb"
+    }
+  },
+  "testSourceUnchangedBetweenRedAndGreen": true,
+  "testSourceRawSha256": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63",
+  "redApiOutlines": [
+    {
+      "file": "SubscriptionCostEngine.kt",
+      "sha256": "2b547ec63d6025b77f982358bc9b0a4aeaf06b178e4d3ba378670ead681f1744",
+      "source": "package com.cooper.lithic.domain.subscription\n\nimport java.math.BigDecimal\nimport java.time.LocalDate\n\nobject SubscriptionCostEngine {\n    fun evaluate(input: SubscriptionSnapshot, asOf: LocalDate) = SubscriptionCostResult(\n        SubscriptionDisplayStatus.EXPIRED, BigDecimal.ZERO, null, 0, 0, null, 0,\n        SubscriptionCostUnavailableReason.NO_CONFIRMED_PAYMENTS,\n    )\n}\n"
+    },
+    {
+      "file": "SubscriptionIntervalRules.kt",
+      "sha256": "5e67fcfa2a6ac5d3c5d8330d688dd044161f0561efb7c9db0a147892dc704e13",
+      "source": "package com.cooper.lithic.domain.subscription\n\nimport com.cooper.lithic.core.time.BusinessClock\n\nobject SubscriptionIntervalRules {\n    fun validateStructure(input: SubscriptionSnapshot) = Unit\n    fun validateForWrite(input: SubscriptionSnapshot, clock: BusinessClock) = Unit\n    fun stopAtPaidBoundary(renewal: Renewal) =\n        SubscriptionStateChange(renewal.paidUntilExclusive, SubscriptionOperationState.STOPPED)\n}\n"
+    },
+    {
+      "file": "SubscriptionModels.kt",
+      "sha256": "92f1744cfa667ea1123c994efefe3c36026e00f2e1cd0f177450f2f8f0e9084e",
+      "source": "package com.cooper.lithic.domain.subscription\n\nimport com.cooper.lithic.core.model.Money\nimport java.math.BigDecimal\nimport java.time.LocalDate\n\nenum class BillingCycle(val standardDays: Int) {\n    MONTHLY(30), QUARTERLY(90), YEARLY(365),\n}\n\ndata class Subscription(val id: String)\n\ndata class Renewal(\n    val amount: Money,\n    val cycle: BillingCycle,\n    val paidOn: LocalDate,\n    val effectiveFrom: LocalDate,\n    val paidUntilExclusive: LocalDate,\n    val reminderDueOn: LocalDate = paidUntilExclusive,\n    val standardDays: Int = cycle.standardDays,\n)\n\nenum class SubscriptionOperationState { ENABLED, PAUSED, STOPPED }\nenum class SubscriptionDisplayStatus { ACTIVE, PAUSED, EXPIRED, STOPPED }\n\ndata class SubscriptionStateChange(val effectiveOn: LocalDate, val state: SubscriptionOperationState)\ndata class SubscriptionSnapshot(\n    val subscription: Subscription,\n    val renewals: List<Renewal> = emptyList(),\n    val stateChanges: List<SubscriptionStateChange> = emptyList(),\n)\n\nenum class SubscriptionCostUnavailableReason { NO_CONFIRMED_PAYMENTS }\ndata class SubscriptionCostResult(\n    val displayStatus: SubscriptionDisplayStatus,\n    val currentRate: BigDecimal,\n    val currentPrice: Money?,\n    val confirmedPaidCents: Long,\n    val standardPurchasedDays: Long,\n    val historicalAverage: BigDecimal?,\n    val elapsedPaidDays: Long,\n    val historicalUnavailableReason: SubscriptionCostUnavailableReason?,\n)\n"
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 12,
+    "byId": {
+      "OldTargetApi": 1,
+      "AndroidGradlePluginVersion": 2,
+      "GradleDependency": 5,
+      "NewerVersionAvailable": 4
+    },
+    "xml": {
+      "path": "app/build/reports/lint-results-debug.xml",
+      "bytes": 11945,
+      "sha256": "2d6259b7f4471c3c3fb3e75b10459879429e07d3d6a08f592564dd2763652e9b"
+    }
+  },
+  "toolchain": {
+    "gradle": "8.14.3",
+    "jdk": "Temurin 17.0.20.1+1",
+    "agp": "8.13.2",
+    "projectKotlin": "2.3.10",
+    "gradleEmbeddedKotlin": "2.0.21",
+    "composeBom": "2025.11.01",
+    "navigation3": "1.0.1",
+    "minCompileTargetSdk": [
+      26,
+      36,
+      36
+    ],
+    "buildTools": "36.0.0",
+    "junitTestOnly": "4.13.2",
+    "versionLog": {
+      "path": "build/m03-evidence/toolchain-version.log",
+      "bytes": 581,
+      "sha256": "6d0065b24614a596101eba3ca65cdb46f3b2071fbe69353bf022451f199da07e"
+    },
+    "unchangedBuildInputsFromM02": 27
+  },
+  "dependencies": {
+    "runtimeCoordinatesUnchanged": true,
+    "uniqueRuntimeCoordinateLines": 182,
+    "newDependencies": [],
+    "junitAndHamcrestInAppRuntime": false,
+    "log": {
+      "path": "build/m03-evidence/runtime-dependencies.log",
+      "bytes": 46162,
+      "sha256": "b124d4d90749904182ad40b7cb3542eb3c505861908fe7c4ab189a06bcf93e53"
+    }
+  },
+  "apk": {
+    "apk": "E:\\CODEX\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 10463689,
+    "sha256": "924ecf5a0f49239534661516e0c7a3797bb10d052c68b2c42be75139e99d99f5",
+    "applicationId": "com.cooper.lithic.debug",
+    "versionCode": 1,
+    "versionName": "0.1.0-m01-debug",
+    "permissions": [
+      "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "mergedManifest": "app\\build\\intermediates\\merged_manifests\\debug\\processDebugManifest\\AndroidManifest.xml",
+    "backupConfig": "allowBackup=false; legacy/cloud/device-transfer exclude all nine domains",
+    "versions": {
+      "agp": "8.13.2",
+      "kotlin": "2.3.10",
+      "compose-bom": "2025.11.01",
+      "activity-compose": "1.12.4",
+      "navigation3": "1.0.1",
+      "serialization": "1.9.0",
+      "startup": "1.1.1",
+      "junit": "4.13.2"
+    },
+    "wrapperJarSha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+    "scope": "Artifact/config checks only; signature, install and offline launch require separate evidence"
+  },
+  "apkDomainChecks": {
+    "productionDescriptorsPresent": {
+      "Lcom/cooper/lithic/domain/subscription/BillingCycle;": true,
+      "Lcom/cooper/lithic/domain/subscription/Subscription;": true,
+      "Lcom/cooper/lithic/domain/subscription/Renewal;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionOperationState;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionDisplayStatus;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionStateChange;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionSnapshot;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionCostUnavailableReason;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionCostResult;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionIntervalRules;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionCostEngine;": true,
+      "Lcom/cooper/lithic/core/model/Money;": true,
+      "Lcom/cooper/lithic/core/model/MoneyParser;": true,
+      "Lcom/cooper/lithic/core/model/ProjectSnapshot;": true,
+      "Lcom/cooper/lithic/core/time/FixedBusinessClock;": true,
+      "Lcom/cooper/lithic/core/time/ZonedBusinessClock;": true,
+      "Lcom/cooper/lithic/domain/project/ProjectCostEngine;": true
+    },
+    "junitHamcrestAndTestClassesAbsent": true,
+    "signature": "apksigner exit 0, v2 true, one signer",
+    "signatureLog": {
+      "path": "build/m03-evidence/apk/signature-verification.log",
+      "bytes": 351,
+      "sha256": "b9c6879e48d25a9786d2beb8a15738c06edce7d06f2722dd860894618592bd09"
+    }
+  },
+  "buildInputs": [
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "710069cdad62860b9402ca6c0c624e9575b86db3678ef7b1040babc3fd5be6d5"
+    },
+    {
+      "path": "app/src/debug/res/values/strings.xml",
+      "sha256": "fc9883f3456bcd6534b09d68129dae64ddd1e99a77871ac89168e45663cc01b2"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "4f586d11eea3a80c07514b2dd5684c4add2233af49d0b3865694c0e693fd4751"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApplication.kt",
+      "sha256": "8afdb1203b4dfce6fc3e663eb552211569311c4d78efc2f9738270cb92fa47e3"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "sha256": "535a1e321921a9832a31d472555e36f7504c5367a585447651dd96e24b633c70"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "sha256": "4f852ce06eaea6f689709ac1191d55984ffe8235a60125843fefe70698c6c2fd"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt",
+      "sha256": "267c6c84e93816ac6280de6af684c321fbf58795fc2b0bd58f27cbc1fb1ab767"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/Money.kt",
+      "sha256": "c347d4c555d82252dd487d78e9f73ebd960186046163ac5029ce2832335307e1"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt",
+      "sha256": "5cfe2a01612d62c33fe5b543d9b4a908988e585b7b1bea7b6f6dee724d6a7c0f"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt",
+      "sha256": "3d22ad34430dccd92ea2c3b3089efc21733125449f848cec24391236d7c39817"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+      "sha256": "abc96d0c693b2992d039f1575d3f276a3a50347f8d3be8cea746305582051f83"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+      "sha256": "b64cbe564b7281ba32399ec3a2e4aa38c09125fa9fb6838feb55720242e22197"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+      "sha256": "d466c96264316198c5c81d64362043e22607206e0663700f574ec28dc1819d3a"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_placeholder.xml",
+      "sha256": "e0bddda00ce155104a61a85815a78856b812e3b1bc3c135d897304c1655e868f"
+    },
+    {
+      "path": "app/src/main/res/values-night/themes.xml",
+      "sha256": "c34c20aecaef41ef9125d70cafa9700f4cabffaf5ba7b98cbb4773c3d504274c"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "8107ea12bf01e6bcfcc92046f33f36fb1fd65f70537aecc8656723a7f3b48342"
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "c33f08665ef69b8343c8a7ee7f8d6a177af4ea48f32a9f2e49dc8a23b94a7fae"
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "sha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "sha256": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "sha256": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "sha256": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "sha256": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63"
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "0e5ddb6b36d817c42ccdf0132bcc0aa602c2948e451315fc77f0b9c4199df9f2"
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "44c4c2365ac08b98f9f9cb4ad952d80eada3865db9eae1fb81717b0e62fcbc65"
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "sha256": "f8b396998f3d4f40818980528e3111cb2e34e28b40c4d5f0dfb05ee2ffe9198c"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "1f97506f7ca338e0f394aa1c98bc13ccbdf8c36b6c24eb0e90fdda78ab6d4245"
+    },
+    {
+      "path": "gradlew",
+      "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409"
+    },
+    {
+      "path": "gradlew.bat",
+      "sha256": "94102713eb8fb22d032397924c0f38ab2da783ba60d07054339f1190a0c4e2cd"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "23a0e54819e1d0d96c4195ca1a80535c80a21174bc133410343714ea7c456b11"
+    }
+  ],
+  "notRun": [
+    "Device reinstall / offline cold start / Instrumentation: pure-domain scope, no Android interaction change",
+    "Real phone / API26 / OEM backup behavior: inherited M01 notes",
+    "Room / Repository / migration / complete backup roundtrip: not implemented; N/A in M03",
+    "M03 aggregate Long overflow behavior: checked in source, no dedicated many-million-renewal execution",
+    "M20 reminder eligibility / M21 milestone notifications and long-term 100/1000-day clarification",
+    "Q02 M17/M18 integration, Q05 image roundtrip, Q06 durable rollback, all 16 full supplementary scenarios"
+  ],
+  "privacy": "Synthetic fixed-date test data only; APK/raw logs/source snapshots kept ignored locally; no private data or signing key uploaded",
+  "gitDelivery": {
+    "codeCommit": "Pending Git commit; self SHA is reported in Git log/final response",
+    "onlyPushBranch": "feat/m03-subscription-engine",
+    "protectedMain": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a",
+    "protectedSourceM02": "0169c76bbf0946a0400b96d00124b3de9aea1cc0"
+  },
+  "staticAudit": {
+    "audit": "M03 independent local static audit",
+    "recordedAt": "2026-10-11T13:38:09.132882+00:00",
+    "baseCommit": "0169c76bbf0946a0400b96d00124b3de9aea1cc0",
+    "currentBranch": "feat/m03-subscription-engine",
+    "currentHead": "0169c76bbf0946a0400b96d00124b3de9aea1cc0",
+    "scope": "Read-only Git/files; only this ignored JSON written. No Gradle/device test and not ChatGPT independent acceptance.",
+    "comparisonPolicy": "Archive ZIP, 43 original files and reading use raw bytes. Current manifest/historical docs/code use Git LF text normalization; Wrapper JAR uses raw bytes.",
+    "archive": {
+      "path": "docs/planning/original-v1/source.zip",
+      "bytes": 131564,
+      "sha256": "861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7",
+      "files": 43,
+      "directories": 0,
+      "uncompressedBytes": 240094,
+      "markdown": 40,
+      "json": 3,
+      "rawBytesManifestCrcAndPathSafety": "PASS"
+    },
+    "originalCases": {
+      "count": 130,
+      "uniqueIds": 130,
+      "allStatus": "NOT_RUN",
+      "result": "PASS"
+    },
+    "reading": {
+      "path": "LITHIC_V1_产品与开发规划.md",
+      "bytes": 55653,
+      "sha256": "3b1ea091c3bad117c208599c949c8799c6825b08ee94dd14b4305cbe38ee97ea",
+      "result": "PASS"
+    },
+    "baselineProtected": {
+      "archiveAndReadingRawFiles": 45,
+      "sourceManifest": 1,
+      "historicalCheckpoints": 4,
+      "historicalEvidence": 4,
+      "historicalContracts": 3,
+      "M01M02BuildAndTestInputs": 27,
+      "allUnchanged": "PASS"
+    },
+    "questions": {
+      "Q03ThroughQ06ProblemRows": 4,
+      "crossModuleSupplementalRows": 16,
+      "allSupplementalStatus": "NOT_RUN",
+      "statusScopeAndDeadlinesUnchanged": "PASS"
+    },
+    "codeScope": {
+      "newProductionFiles": [
+        "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+        "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+        "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt"
+      ],
+      "newTestFiles": [
+        "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt"
+      ],
+      "newProductionCount": 3,
+      "newTestCount": 1,
+      "modifiedExistingCodeFiles": 0,
+      "pureAllowedImports": [
+        {
+          "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+          "import": "java.math.BigDecimal"
+        },
+        {
+          "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+          "import": "java.math.MathContext"
+        },
+        {
+          "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+          "import": "java.time.LocalDate"
+        },
+        {
+          "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+          "import": "com.cooper.lithic.core.time.BusinessClock"
+        },
+        {
+          "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+          "import": "com.cooper.lithic.core.model.Money"
+        },
+        {
+          "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+          "import": "java.math.BigDecimal"
+        },
+        {
+          "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+          "import": "java.time.LocalDate"
+        }
+      ],
+      "permissionsRuntimeDependenciesUiDatabaseUnchanged": "PASS"
+    },
+    "sensitiveScan": {
+      "filesScanned": 15,
+      "snapshotPaths": [
+        "AGENTS.md",
+        "README.md",
+        "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+        "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+        "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+        "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+        "docs/ARCHITECTURE.md",
+        "docs/CURRENT_STATE.md",
+        "docs/DECISIONS.md",
+        "docs/EXECUTION_PROTOCOL.md",
+        "docs/ROADMAP.md",
+        "docs/SPEC_ISSUES.md",
+        "docs/planning/CLARIFICATIONS.md",
+        "docs/planning/M03_CONTRACT.md",
+        "docs/planning/README.md"
+      ],
+      "patternTypes": [
+        "private_key",
+        "github_token",
+        "sk_token",
+        "aws_access_key",
+        "google_api_key",
+        "jwt",
+        "credential_assignment",
+        "credential_url",
+        "cookie_header"
+      ],
+      "findings": [],
+      "result": "PASS",
+      "note": "Current changed/new files snapshot; rescan newly authored/modified documents at final delivery."
+    },
+    "diffCheck": {
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    "overall": "PASS"
+  },
+  "documentAndScopeChecks": {
+    "status": "PASS",
+    "baseCommit": "0169c76bbf0946a0400b96d00124b3de9aea1cc0",
+    "modifiedFiles": [
+      "AGENTS.md",
+      "README.md",
+      "docs/ACCEPTANCE_MATRIX.md",
+      "docs/ARCHITECTURE.md",
+      "docs/CURRENT_STATE.md",
+      "docs/DECISIONS.md",
+      "docs/EXECUTION_PROTOCOL.md",
+      "docs/ROADMAP.md",
+      "docs/SPEC_ISSUES.md",
+      "docs/planning/CLARIFICATIONS.md",
+      "docs/planning/README.md"
+    ],
+    "newFiles": [
+      "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+      "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+      "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+      "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "docs/checkpoints/2026-10-11-M03.md",
+      "docs/evidence/M03-verification.json",
+      "docs/evidence/M03-verification.md",
+      "docs/planning/M03_CONTRACT.md"
+    ],
+    "deletedFiles": [],
+    "changedFiles": 19,
+    "markdownFilesChecked": 67,
+    "localLinksChecked": 271,
+    "brokenLinks": [],
+    "fencesBalanced": true,
+    "sensitiveTextFilesScanned": 19,
+    "secretFindings": [],
+    "historicalAcceptancePreserved": true,
+    "diffCheck": "PASS",
+    "subscriptionTestsDeclared": 37
+  },
+  "localAuxiliaryReview": {
+    "scope": "Read-only code and documentation review against frozen C07-C12 and actual evidence",
+    "blockingFindings": 0,
+    "isChatGptIndependentAcceptance": false,
+    "fixedCurrentMatrixIntroduction": true
+  }
+}

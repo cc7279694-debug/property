@@ -8,11 +8,11 @@
 
 实现者不得跳过验收开始下一模块。文档任务仅检查文档，不机械新增产品测试。业务计算、迁移、恢复、导入导出等重要逻辑优先可重复测试。
 
-当前授权仅为 M02：从 M01 验收回写基线 a25a06899bd157988c3a4466d7162d8616fb0249，在 feat/m02-project-cost-engine 实现纯 Kotlin 金额、日期与长期项目成本引擎、自动化测试及适用验证和 Git 交付。M00/M01 的 ACCEPTED / FROZEN — PASS WITH NOTES 保留；M02 完成后等待新的独立验收，M03 尚未授权。来源及精确范围见[M02 契约](planning/M02_CONTRACT.md)。
+当前授权仅为 M03：从 M02 验收回写基线 0169c76bbf0946a0400b96d00124b3de9aea1cc0，在 feat/m03-subscription-engine 实现纯 Kotlin 订阅模型、周期/覆盖/状态与成本引擎、自动化测试及适用验证和 Git 交付。M00～M02 的 ACCEPTED / FROZEN — PASS WITH NOTES 保留；M02 独立审查未在用户 Windows 本机重跑 Gradle，见[独立验收登记](ACCEPTANCE_MATRIX.md#m02-独立验收记录2026-10-11)。M03 完成后等待新的独立验收，M04 尚未授权；精确范围见[M03 契约](planning/M03_CONTRACT.md)。
 
 Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、Acceptance Criteria、Verification。修改前能解释为什么改该文件、可能破坏什么、如何验证。
 
-Q07 已由本轮用户正式确认：每个模块只执行已具备实施条件且属于该交付范围的验证，各模块自身真正要求仍须满足。归档通用模板里的真实路径、备份往返和 APK 等完成条款按实际范围适用：M00 仅文档，M01 验证工程、最终 APK 与实际安装/断网冷启动，M02/M03 仅纯领域引擎，完整导出/恢复到 M11/M12 才实现。M02 只要求纯 Kotlin 测试、必要集成回归、Lint、构建和静态范围核查；没有 Room、业务界面、真实数据或备份，不提前创建数据库、备份往返或没有实际目标的 Android Instrumentation Test。尚不适用的能力写 NOT_RUN / N/A 与原因，不能标未来测试 PASS，也不能把 NO-SOURCE 当作测试通过。此解释适用于后续模块，并非豁免其真正要求。原模板对照见[BASELINE_COMPARISON](planning/BASELINE_COMPARISON.md)，确认来源见[当前决策](DECISIONS.md)。
+Q07 已在 M02 由用户正式确认并继承：每个模块只执行已具备实施条件且属于该交付范围的验证，各模块自身真正要求仍须满足。归档通用模板里的真实路径、备份往返和 APK 等完成条款按实际范围适用：M00 仅文档，M01 验证工程、最终 APK 与实际安装/断网冷启动，M02/M03 仅纯领域引擎，完整导出/恢复到 M11/M12 才实现。M02/M03 只要求纯 Kotlin 测试、必要集成回归、Lint、构建和静态范围核查；没有 Room、业务界面、真实数据或备份，不提前创建数据库、备份往返或没有实际目标的 Android Instrumentation Test。尚不适用的能力写 NOT_RUN / N/A 与原因，不能标未来测试 PASS，也不能把 NO-SOURCE 当作测试通过。此解释适用于后续模块，并非豁免其真正要求。原模板对照见[BASELINE_COMPARISON](planning/BASELINE_COMPARISON.md)，确认来源见[当前决策](DECISIONS.md)。
 
 额外问题分为 Blocking（不解决无法继续）、Related（当前授权内小范围）、Unrelated（登记而不处理）。阻塞性规格问题不得由执行者自行改变核心规则。
 
@@ -32,7 +32,7 @@ Q07 已由本轮用户正式确认：每个模块只执行已具备实施条件�
 
 M01 的 M01-T01～M01-T04 分别记录设备侧断网冷启动、合并 Manifest 与最终 APK 权限、Debug 身份隔离、版本锁及实际构建证据；lint 结果另列。没有可用设备时先交付其余结果和 APK，安装/断网冷启动写 NOT_RUN 或 BLOCKED 并给出最少手工步骤。模拟器必须标明类型，不能冒充真机。NO-SOURCE、未发现测试和环境配置失败不能算产品测试通过或有效的 TDD 红灯。
 
-M02 先写固定日期的失败测试，再实现最小领域代码，保留真实 RED → GREEN 输出；不得故意改坏已通过行为制造红灯。逐项登记 M02-T01～T06、Q02-V01～V03 的实际结果和本轮实现范围，后续 M17/M18 视图/总线集成仍待各模块执行。至少实际运行 `:app:testDebugUnitTest`、`:app:lintDebug :app:assembleDebug`；从测试报告记录总数、通过、失败/跳过，环境错误或编译失败不能替代行为失败。保留 M01 界面及锁定工具链，不引入本轮禁止的业务能力。
+M02 既有六案例和 Q02-V01～V03 领域结果保留于验收登记，不以本轮订阅实现覆盖；后续 M17/M18 视图/总线集成仍待各模块执行。M03 先写固定日期的失败测试，再实现最小领域代码，保留真实 RED → GREEN 输出；不得故意改坏已有正确行为制造红灯。逐项登记 M03-T01～T06 的实际结果，回归 M02 既有测试。至少实际运行 `:app:testDebugUnitTest`、`:app:lintDebug :app:assembleDebug`；从报告记录总数、通过、失败/跳过，环境错误或编译失败不能替代行为失败。保留 M01 界面及锁定工具链，不引入本轮禁止的业务能力。
 
 构建成功不证明金额正确、离线能力或恢复不丢数据。依赖版本在 M01 的真实环境验证后锁定；数据库 schema/backup 格式版本以实际实现和测试为准。
 
@@ -56,7 +56,7 @@ Conventional Commits；获准时只推当前功能分支。没有另行授权不
 6. Git：Branch、Commit、Push 的实际状态。
 7. 下一模块：前置条件和建议，然后停止。
 
-本轮评审输出为 READY_FOR_REVIEW — M02；若资料或验证仍阻塞，要紧邻说明，不能让该标签被理解为 ACCEPTED / FROZEN。M00/M01 停止标签与交付时状态保留于历史检查点，不继续作为当前阶段限制。
+本轮评审输出为 READY_FOR_REVIEW — M03；若资料或验证仍阻塞，要紧邻说明，不能让该标签被理解为 ACCEPTED / FROZEN。M00～M02 停止标签与交付时状态保留于历史检查点，不继续作为当前阶段限制。
 
 ## 决策与检查点规范
 

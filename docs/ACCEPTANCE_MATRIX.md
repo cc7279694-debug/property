@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00/M01历史检查与独立验收、M02既有实际执行结果及本次独立验收回写；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
+本文件记录M00～M02历史检查、实际执行与独立验收，以及本轮M03实际执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
 
-日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。下方历史阶段语句不作为当前授权；本次只回写用户转交的M02独立验收结论，不重新运行Gradle、构建或设备验证，既有结果和未运行边界保留。
+日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。下方历史阶段语句不作为当前授权；本轮M03已授权，实际执行领域测试、回归、Lint、构建和APK静态核查，独立验收PENDING；未运行边界及M02独立审查未重跑Windows Gradle的NOTES保留。
 
 ## 独立验收记录
 
@@ -146,3 +146,28 @@ M02历史checkpoint与证据的READY_FOR_REVIEW/PENDING是当时交付状态，�
 NOT_RUN / N/A：Instrumentation、设备安装/断网冷启动、业务Room/SQLite/迁移/Repository/完整备份往返，本轮纯领域范围没有对应能力；真机/API26/OEM保留M01未测NOTES；展示舍入/页面和M03～M23尚未实施。TypeScript/ESLint不适用原生Kotlin。NO-SOURCE不计测试PASS。
 
 既有Git/文档检查与交付证据见[M02 checkpoint](checkpoints/2026-10-11-M02.md)。M02已按本次用户转交的独立结论冻结；本次仅回写两份状态文档后停止，不进入M03或合并main。
+
+## M03 当前执行验收（2026-10-11）
+
+授权：用户本轮内联M03请求；基线 `0169c76bbf0946a0400b96d00124b3de9aea1cc0`，来源feat/m02-project-cost-engine，当前feat/m03-subscription-engine。M00～M02已冻结，历史限制是当时授权记录，本轮M03已授权、M04未授权。当前 **READY_FOR_REVIEW**，ChatGPT独立验收 **PENDING**，不自行冻结。
+
+| 原案例 / 当前领域补测 | 实际结果 | 证据与边界 |
+|---|---|---|
+| M03-T01 monthly_standard_rate | PASS | 150/30=5，真实31天覆盖独立；实际31天、标准30 |
+| M03-T02 annual_purchase_not_elapsed_year | PASS | 3650/365=10，首日实际1、第100日100/年末365，到期不增；未实现里程碑通知 |
+| M03-T03 prepaid_next_rate_does_not_start_early | PASS | 1月20实付下一期180，当前仍5，2月1生效变6；历史330/标准60=5.5 |
+| M03-T04 expired_has_zero_current_rate | PASS | 排他到期日EXPIRED/贡献0/当前价格null，实际31天封顶；不依赖后台 |
+| M03-T05 pause_does_not_erase_paid_history | PASS | 1月10暂停、20恢复；付款150/标准30保留，暂停实际9、恢复日10/月末21 |
+| M03-T06 overlaps_rejected | PASS | 重叠拒绝、邻接允许，业务今天验证未来付款拒绝；历史观察不误拒后来付款 |
+| Q03-V01（仅订阅日期领域） | PASS | 首日1/4月10日100/365及到期不增；M21触发尚NOT_RUN |
+| Q03-V02（仅订阅日期领域） | PASS | 暂停10日期年末355；已真实续费邻接到2027-01-10累计365；跨模块仍NOT_RUN |
+| Q03-V04（仅订阅闰日日期） | PASS | 2024-02-29首日1，2025-02-27第365日；长期节点/导入通知水位仍NOT_RUN |
+| Q04-V01（仅成本区间） | PASS | [09-15,10-15)的150/月；10-15至10-20提醒日贡献0/实际30不增；提醒资格仍PROPOSED、M20前 |
+
+实际RED37项/3通过/34 AssertionError失败/0错误/0跳过；同一测试源码GREEN37通过。完整 `:app:testDebugUnitTest :app:lintDebug :app:assembleDebug` 退出0，68测试全通过（金额7/时钟2/项目22/订阅37）；Lint0 errors/12既有提示不处理，构建成功。没有编译/环境错误被冒充RED，也不把NO-SOURCE计PASS。覆盖历史付款、预付未来、改周期、暂停恢复/停止、同日冲突/重排、覆盖空档、独立提醒边界、精度、闰日与极限Long日期。
+
+最终APK检查通过：身份/权限/编译备份资源/Wrapper，17个关键领域类描述符存在且测试框架/类未打包，v2签名验证通过。31项最终输入哈希（27继承＋4新增）、逐项测试/XML/日志/产物哈希与实际范围见[M03证据](evidence/M03-verification.md)、[JSON](evidence/M03-verification.json)及[checkpoint](checkpoints/2026-10-11-M03.md)。182条唯一运行依赖坐标线与M02一致，无权限/依赖变化。未安装或公开上传APK。
+
+原ZIP/43原件与阅读版字节/CRC/hash通过，130原案例和16完整跨模块补测保留NOT_RUN；上表仅当前领域结果，不改原件。Q03～Q06状态/期限逐行保持，未关闭提醒/长期节点/图片/回退问题，Q02 M17/M18仍NOT_RUN。
+
+NOT_RUN / N/A：本轮设备安装/断网冷启动/Instrumentation、Room/Repository/迁移/完整业务备份、专门M03订阅合计Long溢出执行；没有对应Android交互或业务存储，源码显式检查不等于该行为PASS。真实手机/API26/OEM继承M01未测NOTES；通知/里程碑/订阅UI与未来集成仍未实施。TypeScript/ESLint不适用。M03等待独立验收，本轮交付后停止，不进入M04或合并main。

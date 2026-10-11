@@ -38,7 +38,26 @@ ProjectSnapshot（开始/可选结束日 + 全部真实金额事件）
 
 BusinessClock 可注入固定 LocalDate 或携带明确时区的 JDK Clock；引擎自身只用 asOf，不读取设备今天或猜测业务时区。记录时区的持久化留待对应模块。输入事件代表每笔真实事实，初始投入也只是一笔事件；重复写入幂等与稳定ID留待M04/M06，不能在这里按相同金额/日期误删两笔独立付款。派生结果不缓存每日快照。
 
-本轮测试使用 `testImplementation` 的 JUnit4.13.2；实际运行结果与构建证据见[当前登记](ACCEPTANCE_MATRIX.md)及[M02证据](evidence/M02-verification.md)，不以源码推断通过。M01 Activity、导航、资源、Manifest和系统备份排除配置未改，未创建业务数据层或订阅引擎。
+M02 测试使用 `testImplementation` 的 JUnit4.13.2；实际运行结果与构建证据见[当前登记](ACCEPTANCE_MATRIX.md)及[M02证据](evidence/M02-verification.md)，不以源码推断通过。M02 当时没有订阅引擎；本轮 M03 继承其已冻结输入，没有修改 M01 Activity、导航、资源、Manifest和系统备份排除配置。
+
+## M03：纯 Kotlin 订阅领域计算
+
+已实现[订阅模型](../app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt)、[区间/写入校验](../app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt)和[订阅成本引擎](../app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt)。复用 Money 与 BusinessClock，无 Android Context、Room、UI、数据库或新依赖。
+
+```text
+SubscriptionSnapshot（身份 + Renewal 列表 + 状态变化历史）
+  → validateForWrite(snapshot, BusinessClock)：结构 + 付款不在业务未来
+  + asOf → evaluate：仅结构校验 + paidOn <= asOf 的付款
+  → SubscriptionCostResult（状态、当前贡献/价格、已付金额、标准时长、历史平均、实际有效日期数）
+```
+
+Renewal 是领域事实，保存正数 Money、cycle、standardDays 与四个独立日期；月/季/年标准固定 30/90/365。付费覆盖是非空半开区间，重叠/重复覆盖拒绝、邻接/空档允许；写入时付款不能晚于 BusinessClock 今天。历史 evaluate 不读取今天，不拒绝观察日之后的真实付款，而是不将其纳入该观察日结果。没有按支付日或提醒边界延长服务覆盖。
+
+同日状态重复明确拒绝，调用方修正时替换原记录；不按输入顺序猜最后一项。无状态历史默认为 ENABLED。观察日状态从生效日期推导，PAUSED/STOPPED 优先于无覆盖判断；ENABLED 加有效已知覆盖为 ACTIVE，否则 EXPIRED。当前贡献 currentRate 非活跃为0，currentPrice 为 null；无已确认付款时 historicalAverage 为 null，并附 NO_CONFIRMED_PAYMENTS。已付款未来覆盖仍计入历史金额/标准时长，未生效不贡献当前成本。
+
+实际有效天数将已知付费区间裁到观察日含当天，与 ENABLED 区间求交并合并；使用 Long epochDay、排序和双指针，不逐日枚举，也不把预付标准时长当已陪伴时间。暂停/停止生效日排除、恢复日计入。聚合使用 Math.addExact；日均 BigDecimal DECIMAL128 元/天，不做展示舍入。引擎不修改输入或跨调用保存状态；未来 Repository 必须提供一致快照、稳定记录ID及事务校验。
+
+默认停止 helper 只从调用方选定的真实付费期生成 paidUntilExclusive 的 STOPPED 边界；提前停止须明确提供日期，外部服务商自动续费不由本地引擎控制。未实现通知资格/里程碑触发、存储或订阅界面。实际测试与局限见[当前验收](ACCEPTANCE_MATRIX.md)和[M03 契约](planning/M03_CONTRACT.md)。
 
 ## Planned：继承的实施契约
 
@@ -56,4 +75,4 @@ Compose → ViewModel → UseCase / Repository → Room / 领域引擎
 
 schema 计划 v1(M04) → v2(M08) → v3(M16) → v4(M20)；backup format 计划 v1(M11) → v2(M16) → v3(M20)。这仅是规划，不是当前版本。
 
-后续领域与数据结构在对应获准模块实施和验证后更新。M01 空壳已冻结，本轮 M02 仅实现上述纯领域计算；M03及后续模块未授权。
+后续领域与数据结构在对应获准模块实施和验证后更新。M01/M02 已冻结，本轮 M03 仅实现上述纯订阅领域计算；M04及后续模块未授权。
