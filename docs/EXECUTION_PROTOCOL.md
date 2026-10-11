@@ -1,6 +1,6 @@
 # 单模块开发协作与执行规范
 
-本文件依据当前用户协作规范和[阅读版总计划](../LITHIC_V1_产品与开发规划.md)第 7、9 节落地；不是未取得 ZIP 中原模板的替代原件。
+本文件依据当前用户协作规范和[总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)第7、9节落地；[原执行模板](planning/original-v1/lithic_v1_plan/docs/templates/EXECUTE_ONE_MODULE.md)已归档，本文件管理当前执行，原模板不是新的授权。
 
 ## 执行流程
 
@@ -9,6 +9,8 @@
 实现者不得跳过验收开始下一模块。文档任务仅检查文档，不机械新增产品测试。业务计算、迁移、恢复、导入导出等重要逻辑优先可重复测试。
 
 Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、Acceptance Criteria、Verification。修改前能解释为什么改该文件、可能破坏什么、如何验证。
+
+归档通用模板里真实路径、备份往返和APK等完成条款须按模块实际范围适用：M00仅文档，M02/M03仅纯领域引擎，完整导出/恢复到M11/M12才实现。未存在的能力记NOT_RUN/原因，不机械执行未来模块、不编造PASS。原计划适用性差异见规划对照，需独立验收确认。
 
 额外问题分为 Blocking（不解决无法继续）、Related（当前授权内小范围）、Unrelated（登记而不处理）。阻塞性规格问题不得由执行者自行改变核心规则。
 
@@ -22,7 +24,7 @@ Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、
 | READY_FOR_REVIEW | 交付可检查，问题与验证已如实报告；不代表通过 |
 | ACCEPTED / FROZEN | 有独立验收结论与来源，可进入下一授权门槛 |
 
-执行状态、资料冻结状态、独立验收状态分别写明。例如文档可以提交审查，而完整资料冻结仍 BLOCKED。只有 CURRENT_STATE 维护当前状态；验收表维护案例结果，checkpoint 维护历史证据。
+执行状态、资料接入状态、独立验收状态分别写明。文档可提交审查；资料齐备不代表ACCEPTED/FROZEN。只有CURRENT_STATE维护当前状态；验收表维护本轮文档结果，归档案例保持原NOT_RUN，checkpoint维护历史证据。
 
 验证结果只用 PASS / FAIL / NOT_RUN / BLOCKED，必须有日期、实际方法与结果。没执行写 NOT_RUN 和原因；预期结果不能当成实际结果。
 

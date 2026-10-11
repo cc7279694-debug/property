@@ -1,0 +1,912 @@
+[
+  {
+    "id": "M00-T01",
+    "module": "M00",
+    "test": "scope_does_not_include_legacy_finance",
+    "expected": "明确禁止旧账户/股票/量化/云同步，不复制WHOCARE工程。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M00-T02",
+    "module": "M00",
+    "test": "all_modules_start_planned",
+    "expected": "M01–M23均为PLANNED，没有伪造APK和测试通过记录。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M00-T03",
+    "module": "M00",
+    "test": "defaults_are_distinguished",
+    "expected": "D01–D15标本轮补充，不冒称每条用户已单独确认。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M01-T01",
+    "module": "M01",
+    "test": "empty_app_cold_starts_offline",
+    "expected": "关闭网络能打开空壳，尚无伪造业务数据。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M01-T02",
+    "module": "M01",
+    "test": "merged_manifest_has_no_internet",
+    "expected": "构建后的合并Manifest没有INTERNET、精确闹钟、广泛存储权限。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M01-T03",
+    "module": "M01",
+    "test": "debug_id_is_isolated",
+    "expected": "debug的applicationId为com.cooper.lithic.debug，正式为com.cooper.lithic。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M01-T04",
+    "module": "M01",
+    "test": "versions_are_locked",
+    "expected": "稳定工具链精确版本、来源、JDK和Gradle锁定；assembleDebug实际退出0。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M02-T01",
+    "module": "M02",
+    "test": "same_day_is_one_day",
+    "expected": "2026-01-01开始，当天初始1000元，持有1天，日均1000元。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M02-T02",
+    "module": "M02",
+    "test": "dated_event_does_not_rewrite_earlier_days",
+    "expected": "1月11日新增200元，1月10日仍1000/10=100元，1月11日1200/11≈109.09元。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M02-T03",
+    "module": "M02",
+    "test": "end_day_removes_current_contribution",
+    "expected": "1月10日结束，持有10天，日末总成本贡献0。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M02-T04",
+    "module": "M02",
+    "test": "post_end_refund_keeps_duration",
+    "expected": "结束后1月20日收回200元，最终800/10=80元，持有仍10天。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M02-T05",
+    "module": "M02",
+    "test": "money_precision_and_zero",
+    "expected": "0.10+0.20=0.30；0元允许；超过两位小数及溢出拒绝。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M02-T06",
+    "module": "M02",
+    "test": "negative_cost_is_not_clamped",
+    "expected": "累计5000收回6000，净成本-1000，不钳成0。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M03-T01",
+    "module": "M03",
+    "test": "monthly_standard_rate",
+    "expected": "月付150元得5元/天，即使真实区间31天。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M03-T02",
+    "module": "M03",
+    "test": "annual_purchase_not_elapsed_year",
+    "expected": "刚预付3650元年费：折算365天、平均10元；生效当天实际已过去仅1天，无一年里程碑。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M03-T03",
+    "module": "M03",
+    "test": "prepaid_next_rate_does_not_start_early",
+    "expected": "1月20日付180元、2月1日生效；1月20日仍150/30=5，2月1日变6。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M03-T04",
+    "module": "M03",
+    "test": "expired_has_zero_current_rate",
+    "expected": "[1月1日,2月1日)到2月1日无续费时当前贡献0。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M03-T05",
+    "module": "M03",
+    "test": "pause_does_not_erase_paid_history",
+    "expected": "暂停不改已付金额和已购标准天数，只截断当前有效贡献/实际经过时间。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M03-T06",
+    "module": "M03",
+    "test": "overlaps_rejected",
+    "expected": "同服务重叠区间拒绝，相邻区间允许；付费日未来拒绝。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M04-T01",
+    "module": "M04",
+    "test": "fk_rejects_orphan_event",
+    "expected": "金额事件必须引用现存项目。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M04-T02",
+    "module": "M04",
+    "test": "operation_id_is_unique",
+    "expected": "同operationId重试不产生第二笔事件。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M04-T03",
+    "module": "M04",
+    "test": "transaction_rolls_back",
+    "expected": "项目与初始投入任一步失败不留半条项目。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M04-T04",
+    "module": "M04",
+    "test": "zone_is_persisted",
+    "expected": "重启与设备改时区不改记录时区。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M04-T05",
+    "module": "M04",
+    "test": "generation_is_self_contained",
+    "expected": "库、图片目录、设置路径均在一个数据集下，首次指针指向完整初始集。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M04-T06",
+    "module": "M04",
+    "test": "defaults_are_typed",
+    "expected": "两套其他类别独立，跨类型归类在事务内拒绝。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M05-T01",
+    "module": "M05",
+    "test": "only_three_primary_destinations",
+    "expected": "底部仅现在/回看/设置。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M05-T02",
+    "module": "M05",
+    "test": "empty_screen_has_no_fake_metrics",
+    "expected": "空页面显示引导而非演示趋势或伪造金额。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M05-T03",
+    "module": "M05",
+    "test": "large_text_has_no_blocked_action",
+    "expected": "360dp、200%字体仍可访问保存/返回。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M05-T04",
+    "module": "M05",
+    "test": "back_stack_restores",
+    "expected": "返回、旋转和进程重建保持可恢复的合法路由，不丢入不可达详情。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M06-T01",
+    "module": "M06",
+    "test": "create_zero_and_normal_project",
+    "expected": "0元及普通项目都能保存并重启读取。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M06-T02",
+    "module": "M06",
+    "test": "initial_cost_counted_once",
+    "expected": "初始1000元只计1000，不从主表和事件各加一遍。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M06-T03",
+    "module": "M06",
+    "test": "double_tap_no_duplicate",
+    "expected": "快速双击保存同操作只产生一个项目/金额事件。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M06-T04",
+    "module": "M06",
+    "test": "failed_save_preserves_form",
+    "expected": "写入失败留住输入，返回放弃有确认。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M06-T05",
+    "module": "M06",
+    "test": "backdated_money_recalculates",
+    "expected": "补录真实历史金额后详情与列表同时刷新。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M07-T01",
+    "module": "M07",
+    "test": "end_and_recovery_atomic",
+    "expected": "结束和卖出回收同事务，任一失败全回滚。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M07-T02",
+    "module": "M07",
+    "test": "edit_end_recovery_not_duplicated",
+    "expected": "多次改卖出金额只更新同一收回记录。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M07-T03",
+    "module": "M07",
+    "test": "late_installment_does_not_reactivate",
+    "expected": "结束后分期付款增加净投入但不增加天数、不回当前。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M07-T04",
+    "module": "M07",
+    "test": "correct_end_date_updates_result",
+    "expected": "修改合法结束日重算最终值；早于开始拒绝。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M07-T05",
+    "module": "M07",
+    "test": "delete_requires_confirmation",
+    "expected": "取消不删；确认后项目和事件删净且无孤立封面引用。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M08-T01",
+    "module": "M08",
+    "test": "v1_to_v2_preserves_projects",
+    "expected": "旧项目/事件/图片元数据逐条保持。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M08-T02",
+    "module": "M08",
+    "test": "create_and_first_payment_atomic",
+    "expected": "身份+首次付款同事务，不留空付款。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M08-T03",
+    "module": "M08",
+    "test": "renewal_needs_confirmation",
+    "expected": "只打开表单/到达日期不生成付款。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M08-T04",
+    "module": "M08",
+    "test": "renewal_history_is_preserved",
+    "expected": "150月付→180月付→年付旧金额与周期均保留。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M08-T05",
+    "module": "M08",
+    "test": "accurate_dates_retained",
+    "expected": "付款、生效、付费到期和提醒到期各自持久化。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M08-T06",
+    "module": "M08",
+    "test": "currency_change_is_allowed",
+    "expected": "同固定月周期146.83元→148.10元可记录，不误认按量服务。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M09-T01",
+    "module": "M09",
+    "test": "expiry_needs_no_worker",
+    "expected": "冻结后台任务，跨到期日打开仍EXPIRED且贡献0。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M09-T02",
+    "module": "M09",
+    "test": "cancel_renewal_keeps_paid_access",
+    "expected": "设期末停止时，在付费有效期内仍计成本，期末后停止。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M09-T03",
+    "module": "M09",
+    "test": "pause_is_not_history",
+    "expected": "暂停放当前管理暂停组，停止才进历史。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M09-T04",
+    "module": "M09",
+    "test": "resume_without_new_payment",
+    "expected": "有效覆盖内恢复不造付款，覆盖外要求真实续费。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M09-T05",
+    "module": "M09",
+    "test": "future_prepaid_has_own_label",
+    "expected": "未来付费期显示未生效，最近续费排序按paidOn。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M09-T06",
+    "module": "M09",
+    "test": "stop_reason_does_not_cancel_vendor",
+    "expected": "停止确认明确只改变本App记录。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M10-T01",
+    "module": "M10",
+    "test": "copy_survives_source_removal",
+    "expected": "导入后删除相册原图不影响App封面。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M10-T02",
+    "module": "M10",
+    "test": "no_broad_storage_permission",
+    "expected": "不申请广泛存储/相册访问，不依赖远程图片。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M10-T03",
+    "module": "M10",
+    "test": "replacement_failure_keeps_old_cover",
+    "expected": "压缩/写入失败保留旧图与引用。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M10-T04",
+    "module": "M10",
+    "test": "bounded_decode",
+    "expected": "过大尺寸、损坏、非图片输入不OOM并明确失败。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M10-T05",
+    "module": "M10",
+    "test": "private_relative_paths",
+    "expected": "数据库不保存跨设备绝对路径或临时content URI。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M11-T01",
+    "module": "M11",
+    "test": "snapshot_contains_every_v2_entity",
+    "expected": "所有业务实体、图片、设置逐项覆盖，不能漏状态历史。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M11-T02",
+    "module": "M11",
+    "test": "concurrent_write_snapshot_is_consistent",
+    "expected": "导出同时发起修改，结果只能属于单个一致版本。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M11-T03",
+    "module": "M11",
+    "test": "hashes_match",
+    "expected": "manifest条目字节数与SHA-256匹配实际输出。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M11-T04",
+    "module": "M11",
+    "test": "export_failure_is_not_success",
+    "expected": "目标写入/关闭失败不显示成功。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M11-T05",
+    "module": "M11",
+    "test": "plain_manual_only",
+    "expected": "没有密码、自动备份计划、提醒或CSV出口。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M12-T01",
+    "module": "M12",
+    "test": "full_round_trip",
+    "expected": "数据、图片哈希、类别、备注、续费、状态、设置完整往返。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M12-T02",
+    "module": "M12",
+    "test": "invalid_zip_preserves_current",
+    "expected": "路径穿越、损坏、缺图、新格式拒绝，旧数据不变。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M12-T03",
+    "module": "M12",
+    "test": "staging_failure_preserves_current",
+    "expected": "解压/建新库/设置写入/空间不足时旧集可读。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M12-T04",
+    "module": "M12",
+    "test": "atomic_switch_kill_points",
+    "expected": "切换前后杀进程，下次只打开完整旧集或完整新集。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M12-T05",
+    "module": "M12",
+    "test": "restore_date_is_today",
+    "expected": "导入后用今天重算天数和过期状态，不照抄旧缓存。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M12-T06",
+    "module": "M12",
+    "test": "no_partial_or_merge_restore",
+    "expected": "不静默丢字段/图片，不合并重复数据。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M13-T01",
+    "module": "M13",
+    "test": "home_uses_same_engines",
+    "expected": "首页各项取M02/M03结果，不独立复制公式。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M13-T02",
+    "module": "M13",
+    "test": "active_only_aggregate",
+    "expected": "结束、暂停、过期不进入；未来套餐不提前进入。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M13-T03",
+    "module": "M13",
+    "test": "category_sum_matches_type",
+    "expected": "未舍入类别和等于该类型汇总；展示分位差有说明。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M13-T04",
+    "module": "M13",
+    "test": "no_zero_confused_with_empty",
+    "expected": "无记录与存在0元项目区分。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M13-T05",
+    "module": "M13",
+    "test": "cross_day_refresh",
+    "expected": "前台跨日、返回前台、重启，成本按记录日期更新。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M13-T06",
+    "module": "M13",
+    "test": "backup_before_real_use",
+    "expected": "完整核心流程通过，并安装稳定签名内部版作首次真实录入基线。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M14-T01",
+    "module": "M14",
+    "test": "merge_is_atomic",
+    "expected": "同类型类别合并后全部项目迁移，汇总不变、无悬挂引用。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M14-T02",
+    "module": "M14",
+    "test": "cross_type_merge_rejected",
+    "expected": "长期项目类别不得并入订阅类别。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M14-T03",
+    "module": "M14",
+    "test": "search_current_and_history",
+    "expected": "名称匹配同时返回当前/结束/暂停/停止，状态明确。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M14-T04",
+    "module": "M14",
+    "test": "wildcards_are_literal",
+    "expected": "输入%/_/引号不会扩大查询或破坏SQL。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M14-T05",
+    "module": "M14",
+    "test": "default_sorts",
+    "expected": "项目持有最长优先；订阅paidOn最近优先；分页不重复漏行。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M15-T01",
+    "module": "M15",
+    "test": "review_includes_still_active",
+    "expected": "用了8年仍ACTIVE的项目能进入陪伴榜。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M15-T02",
+    "module": "M15",
+    "test": "history_excludes_paused",
+    "expected": "历史只已结束/已停止，不混暂停。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M15-T03",
+    "module": "M15",
+    "test": "types_rank_separately",
+    "expected": "项目和订阅不跨类型比“谁更值得”。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M15-T04",
+    "module": "M15",
+    "test": "current_final_labels",
+    "expected": "混合榜逐行标当前或截至目前最终。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M15-T05",
+    "module": "M15",
+    "test": "zero_negative_are_honest",
+    "expected": "0与负成本不剔除，也不称为价值评分。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M15-T06",
+    "module": "M15",
+    "test": "subscription_time_label",
+    "expected": "订阅时间榜明确折算付费时长，预付不伪装已陪伴。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M16-T01",
+    "module": "M16",
+    "test": "one_predecessor_successor_no_cycles",
+    "expected": "A→B→C合法，自指、B→A成环、一对多拒绝。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M16-T02",
+    "module": "M16",
+    "test": "link_does_not_end_old",
+    "expected": "只建替换关系不偷偷结束旧项目。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M16-T03",
+    "module": "M16",
+    "test": "trade_in_balance",
+    "expected": "旧回收3000、新现金5000+折抵3000，新成本8000，整体净新增5000。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M16-T04",
+    "module": "M16",
+    "test": "trade_in_all_or_nothing",
+    "expected": "旧结束、新项目、3笔金额、替换关系任一步失败全回滚。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M16-T05",
+    "module": "M16",
+    "test": "delete_middle_does_not_guess",
+    "expected": "删中间项目只断相关边，不自动A→C。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M16-T06",
+    "module": "M16",
+    "test": "v1_backup_upgrade",
+    "expected": "旧备份默认CASH/无关系；新v2备份全量往返不丢折抵。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M17-T01",
+    "module": "M17",
+    "test": "past_event_boundary",
+    "expected": "后加维修不改变维修前日均；退款后按负事件变化。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M17-T02",
+    "module": "M17",
+    "test": "subscription_is_step_not_smooth",
+    "expected": "价格变更按生效日阶梯，暂停空档不连成持续订阅。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M17-T03",
+    "module": "M17",
+    "test": "events_are_accessible",
+    "expected": "同日多个事件点可打开完整列表，屏幕阅读器可读。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M17-T04",
+    "module": "M17",
+    "test": "negative_values_visible",
+    "expected": "负日均有真实负区间，不裁到0。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M17-T05",
+    "module": "M17",
+    "test": "no_forecast",
+    "expected": "曲线截至今天/真实结束后结算节点，不外推未来。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M18-T01",
+    "module": "M18",
+    "test": "every_point_matches_reference",
+    "expected": "随机观察日总线=该日各引擎有效贡献合计。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M18-T02",
+    "module": "M18",
+    "test": "closed_or_expired_removed",
+    "expected": "项目结束日、订阅到期/暂停按契约退出总线。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M18-T03",
+    "module": "M18",
+    "test": "today_equals_home",
+    "expected": "最后观察日未舍入值与首页完全同口径。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M18-T04",
+    "module": "M18",
+    "test": "sampling_keeps_spikes",
+    "expected": "20年历史中新增当天大峰和事件邻点不被抽样丢掉。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M18-T05",
+    "module": "M18",
+    "test": "multi_event_day_not_false_causality",
+    "expected": "同日多事件统一列该日相关事件，不说唯一归因。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M19-T01",
+    "module": "M19",
+    "test": "money_year_is_occurred_year",
+    "expected": "2026买8000，2028修800，各入真实发生年。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M19-T02",
+    "module": "M19",
+    "test": "outlay_recovery_net",
+    "expected": "投入13000收回3500，分别展示且净投入9500。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M19-T03",
+    "module": "M19",
+    "test": "subscription_year_is_paid_year",
+    "expected": "跨年年付全部入付款年，不伪造每月续费。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M19-T04",
+    "module": "M19",
+    "test": "types_not_merged_into_cash",
+    "expected": "项目与订阅分开；折抵年标含非现金折抵。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M19-T05",
+    "module": "M19",
+    "test": "category_changes_restate_history",
+    "expected": "改类别/合并后按当前分类重算，标示口径。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M19-T06",
+    "module": "M19",
+    "test": "annual_summary_no_judgement",
+    "expected": "不产出平均寿命、主观总结、消费建议或数量目标。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M20-T01",
+    "module": "M20",
+    "test": "three_days_before_once",
+    "expected": "10月20日到期，候选10月17日，稳定逻辑键最多正常提醒一次。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M20-T02",
+    "module": "M20",
+    "test": "renewed_before_send_suppresses",
+    "expected": "发送前已续费/停止则旧候选不发。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M20-T03",
+    "module": "M20",
+    "test": "late_delivery_updates_copy",
+    "expected": "目标日错过仍未到期，用真实剩余天数；过期不发3天后。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M20-T04",
+    "module": "M20",
+    "test": "permission_denial_nonblocking",
+    "expected": "拒绝权限仍可新增/续费/查记录，设置如实标状态。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M20-T05",
+    "module": "M20",
+    "test": "no_exact_alarm_or_network",
+    "expected": "合并Manifest无精确闹钟及联网权限，任务不造付款。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M20-T06",
+    "module": "M20",
+    "test": "backup_and_migration",
+    "expected": "schema v4、format v3含必要回执；旧备份导入不追发历史。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M21-T01",
+    "module": "M21",
+    "test": "annual_prepaid_not_milestone",
+    "expected": "年费刚付不可触发365天陪伴，实际经过达到阈值才触发。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M21-T02",
+    "module": "M21",
+    "test": "old_import_does_not_spam",
+    "expected": "录入10年前项目不一次推送所有旧里程碑。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M21-T03",
+    "module": "M21",
+    "test": "pause_free_gap_excluded",
+    "expected": "订阅暂停/免费/无覆盖日期不计实际有效时长。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M21-T04",
+    "module": "M21",
+    "test": "same_day_coalesced",
+    "expected": "同日多条合为低打扰通知，来源仍可追溯。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M21-T05",
+    "module": "M21",
+    "test": "backup_watermark_survives",
+    "expected": "恢复、改历史、系统重启不重发已越过的旧节点。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M21-T06",
+    "module": "M21",
+    "test": "switch_cancels_future",
+    "expected": "关闭里程碑只停该类，续费开关互不影响。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M22-T01",
+    "module": "M22",
+    "test": "narrow_largefont_touch",
+    "expected": "360dp/200%字体/48dp触控关键操作可达。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M22-T02",
+    "module": "M22",
+    "test": "no_fake_or_missing_states",
+    "expected": "空、忙、失败、已到期、暂停、结束、负成本、亚分成本均明确。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M22-T03",
+    "module": "M22",
+    "test": "twenty_year_synthetic_dataset",
+    "expected": "合成2000项目/服务、20000金额事件、10000续费、20年跨度，无OOM/ANR，分页稳定。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M22-T04",
+    "module": "M22",
+    "test": "chart_interaction_keeps_truth",
+    "expected": "拖动与读屏读到原始准确点，显示抽样不改数据。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M22-T05",
+    "module": "M22",
+    "test": "identity_assets_are_honest",
+    "expected": "实际图标资产接入情况与截图对应，不把临时标记冒称获批Logo。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M22-T06",
+    "module": "M22",
+    "test": "runtime_offline_journey",
+    "expected": "断网完整跑创建→补录→结束→续费→查图→备份→恢复。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M23-T01",
+    "module": "M23",
+    "test": "all_schema_paths_migrate",
+    "expected": "已发行schema到当前版本全覆盖；禁止破坏性回退。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M23-T02",
+    "module": "M23",
+    "test": "all_backup_formats_restore",
+    "expected": "格式v1/v2/v3合成样本均正确恢复，更新未知格式安全拒绝。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M23-T03",
+    "module": "M23",
+    "test": "signed_update_preserves_data",
+    "expected": "稳定applicationId与签名覆盖安装保留记录/图片/设置。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M23-T04",
+    "module": "M23",
+    "test": "wrong_key_or_downgrade_not_silent",
+    "expected": "错误签名不建议卸载解决；旧APK不打开新schema。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M23-T05",
+    "module": "M23",
+    "test": "fault_matrix_passed_or_blocked",
+    "expected": "空间不足、损坏备份、杀进程、拒权限、日期边界均有真实报告；关键NOT_RUN阻止冻结。",
+    "status": "NOT_RUN"
+  },
+  {
+    "id": "M23-T06",
+    "module": "M23",
+    "test": "deliverable_is_verifiable",
+    "expected": "APK路径存在，记录签名摘要/文件SHA-256/版本/commit；所有数值来自实际命令。",
+    "status": "NOT_RUN"
+  }
+]

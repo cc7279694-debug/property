@@ -1,40 +1,61 @@
 # 规划资料与来源登记
 
-登记日期：2026-10-11。只登记实际已取得内容；不把 ChatGPT 的 sandbox 下载地址当作本机文件。
+更新日期：2026-10-11。本轮补齐原始Planning Baseline 1.0；来源完整不等于已独立验收或正式冻结。
 
-## 1. 可用来源
+## 实际取得的原始资料
 
-| 来源 | 当前可读内容 | 使用边界 |
+用户工作单写的项目内ZIP路径在检查时不存在；实际读取用户附件路径 `E:/CODEX/LITHIC_V1_AEE6B4BCE591A7E5928C%85.zip`。用户原文件没有移动、改名或覆盖。
+
+| 来源 | 存储/入口 | 校验与范围 |
 |---|---|---|
-| [LITHIC_V1_产品与开发规划.md](../../LITHIC_V1_产品与开发规划.md) | 629 行、55,653 字节；总计划、产品规格、C01～C14、A01～A08、U01～U10、B01～B08、N01～N05、决策与技术来源 | 完整保留的阅读版，不等于配套 40 份文件 |
-| 当前用户的 M00 工作单 | 本模块目标、限制和交付要求 | 落入 [M00_CONTRACT.md](M00_CONTRACT.md)，不伪称原 ZIP 的单模块文件 |
-| 当前用户提供的 AGENTS 协作规范 | 通用工程原则、文档职责、Git、验收和停止规则 | 本仓库 [AGENTS.md](../../AGENTS.md)及[执行规范](../EXECUTION_PROTOCOL.md)按本项目原生技术路线落地 |
-| 引用对话「重做砺石」 | 已读取近期 10 轮（返回 6 轮）；产品定义、细化路线与规划附件引用 | 对话仅补充背景，不能替代未取得的附件 |
-| GitHub 仓库 property | 远程 main 初始提交，仅 README | 建立本地功能分支，保留远程历史 |
+| 原ZIP | [original-v1/source.zip](original-v1/source.zip) | 131,564字节，43个文件，解压合计240,094字节 |
+| 解包原件 | [lithic_v1_plan/README.md](original-v1/lithic_v1_plan/README.md) | 原目录层级和相对引用完整保留，40份Markdown、3份JSON |
+| 每个原文件的哈希/大小/CRC | [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) | ZIP校验、43原文件逐字节校验、安全路径检查依据 |
+| 阅读版 | [LITHIC_V1_产品与开发规划.md](../../LITHIC_V1_产品与开发规划.md) | 629行、55,653字节，原样保留 |
 
-原始文件 SHA-256（大小写无关）：
+ZIP SHA-256：`861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7`
 
-`3b1ea091c3bad117c208599c949c8799c6825b08ee94dd14b4305cbe38ee97ea`
+阅读版SHA-256：`3b1ea091c3bad117c208599c949c8799c6825b08ee94dd14b4305cbe38ee97ea`
 
-对话 ID：`6ac3156b-2810-83ec-9b92-2f7b5c8241d0`。已读资料显示最新路线为 24 个模块 M00～M23；早期 Module 0～8 的粗路线不再用于执行。
+实际验证：全部条目解压读取与CRC通过；UTF-8、3份JSON解析通过；无目录穿越、绝对/驱动器路径、Windows规范化重名、符号链接、加密条目或越限。逐个解包文件与ZIP条目原字节一致，Git用.gitattributes保留字节。
 
-## 2. 尚未取得的资料
+哈希与CRC证明本次复制/读取完整性，不证明来源的第三方签名或每条产品规则已通过测试。
 
-`LITHIC_V1_完整开发规划包.zip`：在项目目录及用户下载/文档/桌面目录未找到；对话读取未返回可下载附件。
+## 原始计划和规格入口
 
-因此以下原件未读，不能臆造其路径、细节或宣称已导入：
+| 内容 | 原件 |
+|---|---|
+| V1总计划 | [MASTER_PLAN.md](original-v1/lithic_v1_plan/docs/MASTER_PLAN.md) |
+| 24个模块的原始索引/精确依赖 | [module-index.json](original-v1/lithic_v1_plan/docs/module-index.json) |
+| M00原计划 | [2026-10-10-m00.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m00.md) |
+| M01原计划，仅作下一模块入口 | [2026-10-10-m01.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m01.md) |
+| 全部M00～M23计划及边界 | [当前路线与逐模块链接](../ROADMAP.md) |
+| 130条原验收矩阵 | [ACCEPTANCE_MATRIX.md](original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md) |
+| 130条原验收JSON | [acceptance-cases.json](original-v1/lithic_v1_plan/docs/acceptance-cases.json) |
+| 产品 | [PRODUCT_SPEC.md](original-v1/lithic_v1_plan/docs/specs/PRODUCT_SPEC.md) |
+| 领域/计算/日期/状态 | [DOMAIN_CONTRACT.md](original-v1/lithic_v1_plan/docs/specs/DOMAIN_CONTRACT.md) |
+| 架构/数据演进 | [ARCHITECTURE.md](original-v1/lithic_v1_plan/docs/specs/ARCHITECTURE.md) |
+| 页面/交互 | [UI_SPEC.md](original-v1/lithic_v1_plan/docs/specs/UI_SPEC.md) |
+| 备份/恢复 | [BACKUP_SPEC.md](original-v1/lithic_v1_plan/docs/specs/BACKUP_SPEC.md) |
+| 通知 | [NOTIFICATION_SPEC.md](original-v1/lithic_v1_plan/docs/specs/NOTIFICATION_SPEC.md) |
+| 单模块执行模板 | [EXECUTE_ONE_MODULE.md](original-v1/lithic_v1_plan/docs/templates/EXECUTE_ONE_MODULE.md) |
+| 完成报告模板 | [MODULE_REPORT.md](original-v1/lithic_v1_plan/docs/templates/MODULE_REPORT.md) |
+| 原平台技术来源 | [SOURCES.md](original-v1/lithic_v1_plan/docs/SOURCES.md) |
 
-- 原 M00～M23 单模块执行计划（24 份）。
-- 原 130 条验收案例矩阵。
-- 原开发协作/执行模板（含阅读版所提的 EXECUTE_ONE_MODULE 模板）。
-- 其他配套独立规格文件的原件；其阅读版合并内容已读。
+原包PLAN_VALIDATION.json只记录2026-10-10制作规划包时的文档检查。其artifact_checks=PASS不是本次验证证据，android_product_tests仍NOT_RUN。
 
-没有创建名为上述原件的伪造文件。本仓库 [ROADMAP.md](../ROADMAP.md)只引用阅读版可见的概要；[ACCEPTANCE_MATRIX.md](../ACCEPTANCE_MATRIX.md)只登记当前 M00 条件，明确不是原 130 条矩阵。
+## 原件与当前状态的责任边界
 
-## 3. 冻结与后续导入规则
+归档下的AGENTS、PROJECT、CURRENT_STATE、DECISIONS是原规划历史输入，保持原件，不覆盖仓库现有记忆。当前指令仍为根AGENTS，当前身份为根PROJECT，唯一实时状态为docs/CURRENT_STATE。
 
-当前仅固定已获得阅读版的来源与内容，不宣称完整规划已 FROZEN。完整包缺口为[问题 Q01](../SPEC_ISSUES.md)。
+原JSON的24个模块均PLANNED、130案例均NOT_RUN；这只是不可改写的规划快照。当前M00的实际文档检查记录在本仓库docs/ACCEPTANCE_MATRIX，既不修改原案例，也不声称产品测试完成。
 
-取得 ZIP 后先列出实际文件、大小与 SHA-256，检查安全路径、内容和矛盾，再保留原件接入此入口。不得覆盖本轮用户要求，不得把新增原件悄悄当成产品规则变更。
+六份核心规格、原DECISIONS与SOURCES全文均与阅读版合并内容一致。新增可用内容为精确模块计划/依赖、130案例及模板。对照说明见[BASELINE_COMPARISON.md](BASELINE_COMPARISON.md)；Q02～Q06建议与待运行测试见[CLARIFICATIONS.md](CLARIFICATIONS.md)。
 
-本轮新建文件分别承担稳定身份、当前状态、路线、决策、问题、执行和验证责任；不拆抄出 40 份替代原件，不并行维护第二套状态。
+## 其他来源与授权
+
+- 当前用户2026-10-11的M00补齐工作单是本轮执行授权，包含文档提交和推送；原模板的“未授权不得push”不覆盖用户本轮明确授权。
+- 用户转述此前独立审阅已确认现有文档/Git基本符合，尚未正式冻结；没有据此写ACCEPTED/FROZEN，也不编造完整审阅结果。
+- 引用对话ID `6ac3156b-2810-83ec-9b92-2f7b5c8241d0`只补背景；仓库原件与当前用户要求优先。
+
+Q01资料缺失已由实际原件与校验关闭。当前停止等待重新独立验收；补齐包不授权进入M01。

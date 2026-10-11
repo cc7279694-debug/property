@@ -2,7 +2,7 @@
 
 纯本地 Android 长期成本记录 App，观察具体项目的陪伴时间、真实投入和日均成本。
 
-当前仓库只接入规划与项目记忆。没有 Android 工程、业务代码、数据库或 APK；完整规划冻结仍有资料缺口，见[当前状态](docs/CURRENT_STATE.md)。
+当前仓库已完整接入规划与项目记忆。没有 Android 工程、业务代码、数据库或 APK；M00等待重新独立验收，尚未ACCEPTED/FROZEN，见[当前状态](docs/CURRENT_STATE.md)。
 
 ## 文档入口
 
@@ -19,7 +19,9 @@
 | 规划资料清单与原始文件校验值 | [规划入口](docs/planning/README.md) |
 | 本轮 M00 任务契约 | [M00_CONTRACT.md](docs/planning/M00_CONTRACT.md) |
 | 规格问题与风险 | [SPEC_ISSUES.md](docs/SPEC_ISSUES.md) |
+| 原件与当前文档差异 | [BASELINE_COMPARISON.md](docs/planning/BASELINE_COMPARISON.md) |
+| Q02～Q06 澄清建议与待执行测试 | [CLARIFICATIONS.md](docs/planning/CLARIFICATIONS.md) |
 
-原始[《V1 产品与开发规划》阅读版](LITHIC_V1_产品与开发规划.md)保留原文件。本轮不改动其产品规则，也不把后续产品验收案例标记为通过。
+原始[阅读版](LITHIC_V1_产品与开发规划.md)、[完整ZIP](docs/planning/original-v1/source.zip)和[解包原件](docs/planning/original-v1/lithic_v1_plan/README.md)均保留来源字节。24份计划、130条原案例和6份规格通过规划入口访问；原件中的AGENTS/状态不是当前执行指令或状态。本轮不改产品规则，不把原案例改成PASS。
 
 下一模块为 M01，须先满足当前状态中的前置条件，并取得新的明确授权。

@@ -1,43 +1,43 @@
 # V1 模块路线与执行闸门
 
-来源：[原始阅读版](../LITHIC_V1_产品与开发规划.md)第 3～5 节。保留最新 M00～M23 顺序；不用早期 Module 0～8 粗路线。
+来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-**本表是已取得概要的登记，不是未取得 ZIP 的精确模块依赖图或完整验收矩阵。**允许冻结已见范围，不允许声称已审核缺失的 24 份详细计划。
+本表已按完整包校对精确前置验收依赖，原案例和更细文件/接口/任务边界以逐模块链接为准。所有模块未被本轮自行ACCEPTED，完整规划未FROZEN。
 
 ## 执行顺序与依赖解释
 
-阅读版明确推荐按编号串行。本仓库采用保守的串行闸门：M01 以前先补齐资料、独立验收 M00、取得用户授权；M02～M23 以前先独立验收紧前模块，再获本模块授权。此闸门用于防止跳模块，不新增产品功能，也不声称是原 ZIP 已列出的精确依赖。
+原总计划推荐编号串行。本仓库仍按编号逐模块授权与停止：M01前先独立验收M00并另行授权，后续不自动跳转。下面第三列是原包精确前置验收依赖；编号串行/单模块授权是执行闸门，两者不混为同一张依赖表。
 
-表中“主要依赖”仅列从阅读版能直接辨认的领域基础。后续执行还必须读原模块计划、适用规格和实际代码；来源缺失时不能仅凭本表开始工程。
+24计划的“必须先验收”与原JSON逐条一致，无前向依赖或环。后续还需读原计划、引用规格、适用验收、当前澄清和实际代码，不能只凭路线表开始工程。
 
 ## 模块交付边界
 
-| 模块 | 交付范围 | 主要依赖 | 可见验收门槛与停止边界 |
+| 模块 | 交付范围与原计划 | 原包前置验收依赖 | 验收概要与停止边界 |
 |---|---|---|---|
-| M00 | 项目契约、规划来源、记忆、问题清单与验收基线 | 用户工作单、完整规划资料 | 仅文档；资料齐备后才完整冻结；不得建工程 |
-| M01 | Android 单 Activity 空壳、版本锁、debug 身份、离线权限基线 | M00 验收与单独授权 | 断网冷启动、合并 Manifest 无网络权限；不写业务 |
-| M02 | 金额/日期/长期项目纯 Kotlin 引擎 | M01 工具链与 C02～C05 | 首日 1000 元/1 天；同日结束、负成本、历史/结束后结算；不写 CRUD UI |
-| M03 | 订阅周期、状态、预付与历史平均引擎 | M02 时间金额基础、C07～C12 | 月付 150/30=5；不以预付冒充已过去时间；不伪造续费 |
-| M04 | Room v1、私有数据集目录、稳定 ID、事务与写协调 | M02/M03 领域规则、A/B 契约 | 外键、幂等与事务有效；不实现完整业务页面 |
-| M05 | 三导航、基础视觉、列表/表单/详情空状态骨架 | M04 数据边界、U01～U10 | 仅现在/回看/设置；不添加演示业务事实 |
-| M06 | 项目录入、详情编辑、逐笔投入与收回 | M02/M04/M05 | 初始 0 元可保存重启读取；失败保留输入；不做结束和分析扩展 |
-| M07 | 结束、收回、删除确认、结束后历史修正 | M06 核心闭环 | 结束与回收同事务；修改不重复收回；不做回收站 |
-| M08 | 订阅建立、真实续费与 schema v2 | M03/M04/M07 | v1→v2 保持旧记录；付费/覆盖事实完整；不自动付款 |
-| M09 | 暂停、恢复、到期、停止及历史 | M08 与订阅状态引擎 | 无后台任务跨到期仍 EXPIRED、贡献 0；不做服务商取消 |
-| M10 | 一张本地封面、导入规范化、替换与资源清理 | M04 私有资源、M06/M08 业务身份 | 删除相册原图不影响封面；不做相册 |
-| M11 | 一致逻辑快照、完整备份 format v1 导出 | M09/M10 的全量事实与 B01～B03 | 库业务、图片、设置、状态历史完整；不做 CSV/自动备份 |
-| M12 | 校验、完整覆盖恢复、故障回退与旧格式支持 | M11、M04 数据集、B04～B08 | 完整往返和故障注入，失败保原数据；不合并/部分导入 |
-| M13 | 首页汇总与可长期录入真实数据的核心内部版 | M06～M12 | 首页使用统一引擎、完整核心流程含备份恢复；非完整 V1 |
-| M14 | 双类别管理/合并、名称搜索、分页与排序 | M13、A06/U08 | 同类型合并汇总不变无孤儿；不做跨类型合并或 FTS |
-| M15 | 已结束/停止历史与跨当前历史长期榜 | M14 与领域结果 | 8 年 ACTIVE 项目进入陪伴榜；类型分开、口径标明；不评分 |
-| M16 | 替换链、折抵一致性、schema v3 / format v2 | M07/M14/M15、C06/C14 | 禁自指/环/一对多；3 笔折抵同事务，旧格式迁移；不自动推断关系 |
-| M17 | 单项目成本曲线、订阅价格阶梯图 | M02/M03/M15/M16 | 追加投入不回改发生日前结果；含负值/断档；不预测 |
-| M18 | 总成本历史、两类拆分与相关事件 | M17、C13、一致快照 | 观察日总线等于当日有效贡献合计；不把暂停空档连成付费 |
-| M19 | 类别/年度投入收回净投入与客观回顾 | M14/M18、C14 | 2026 买 8000、2028 修 800 各归真实发生年；不生成建议 |
-| M20 | 到期前 3 天尽力通知、权限/开关/去重、schema v4 / format v3 | M09/M12/M19、N01～N05 | 目标候选与执行前复核、逻辑键去重、升级恢复不补过去；不申请精确闹钟 |
-| M21 | 实际时间里程碑、低打扰与同日合并 | M20 与 C12 | 预付年费不触发 365 天；首次录入/恢复不补旧节点；不游戏化 |
-| M22 | 小屏、大字体、无障碍、全流程与长历史性能 | M21、全业务路径 | 360dp / 200% 字体 / 48dp 触控；不重设计或加功能 |
-| M23 | 可靠性、签名升级、受支持迁移、APK 与 V1 冻结 | M22、全部发行/数据证据 | 全已发行 schema 升级、备份兼容、断网真机与恢复故障；独立验收后冻结 |
+| M00 | 文档、来源、记忆、问题与验收基线 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m00.md) | 无 | 仅文档，资料齐备仍需独立验收；不得建工程 |
+| M01 | Android空壳、版本锁、debug身份与权限 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m01.md) | M00 | 断网冷启动、合并Manifest无网络权限；不写业务 |
+| M02 | 金额/日期/项目纯引擎 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m02.md) | M01 | 首日、同日结束、负成本、历史/结束后结算；不写CRUD UI |
+| M03 | 订阅周期/状态/预付/平均引擎 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m03.md) | M02 | 150/30=5；生效首日实际1天；不伪造续费/经过时间 |
+| M04 | Room v1、数据集、稳定ID、事务 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m04.md) | M02、M03 | 外键/幂等/事务；不做完整业务页面 |
+| M05 | 三导航与基础视觉/空状态 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m05.md) | M01、M04 | 仅现在/回看/设置；不添加伪造业务 |
+| M06 | 项目CRUD与逐笔金额 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m06.md) | M04、M05 | 0元保存重启、失败保留输入；不扩分析 |
+| M07 | 结束/回收/删除/历史修正 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m07.md) | M06 | 结束与回收同事务、不重复回收；无回收站 |
+| M08 | 订阅/真实续费与schema v2 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m08.md) | M03、M04、M05、M07 | v1→v2保旧记录，不自动付款 |
+| M09 | 暂停/恢复/到期/停止 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m09.md) | M08 | 无后台仍正确EXPIRED、贡献0；不替服务商取消 |
+| M10 | 单封面与本地资源生命周期 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m10.md) | M06、M09 | 删相册原图不影响封面；不做相册 |
+| M11 | 完整逻辑导出format v1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m11.md) | M10 | 全业务/图片/设置一致快照；无CSV/自动备份 |
+| M12 | 校验/覆盖恢复/故障回退 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m12.md) | M11 | 完整往返与故障注入；失败保旧，不合并 |
+| M13 | 首页与安全核心内部版 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m13.md) | M07、M09、M12 | 统一引擎、完整核心含备份恢复；非完整V1 |
+| M14 | 类别/搜索/分页/排序 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m14.md) | M13 | 合并无孤儿汇总不变，不跨类型/FTS |
+| M15 | 历史与跨当前历史长期榜 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m15.md) | M14 | 8年ACTIVE入陪伴榜；分类型标口径，不评分 |
+| M16 | 替换/折抵、schema v3/format v2 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m16.md) | M15 | 无环/自指/一对多；3笔折抵同事务，迁移旧格式 |
+| M17 | 项目曲线/订阅阶梯图 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m17.md) | M16 | 后事件不改发生前值、负值/断档；不预测 |
+| M18 | 总成本历史与事件 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m18.md) | M17 | 观察日有效贡献合计，不连接停订空档 |
+| M19 | 类别/年度/客观回顾 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m19.md) | M18 | 年度按真实日期、类型分开，不生成建议 |
+| M20 | 续费通知、schema v4/format v3 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m20.md) | M19 | 3天候选、复核、去重、恢复水位；无精确闹钟 |
+| M21 | 实际时间里程碑/低打扰 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m21.md) | M20 | 预付不冒充365天，不补旧节点，不游戏化 |
+| M22 | 小屏/字体/无障碍/长历史 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m22.md) | M21 | 360dp/200%字体/48dp触控；不加功能 |
+| M23 | 可靠性/签名升级/正式V1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m23.md) | M22 | 全发行schema/旧备份/断网/故障/签名；独立验收后冻结 |
 
 ## 阶段门槛
 

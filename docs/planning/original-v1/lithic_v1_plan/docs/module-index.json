@@ -1,0 +1,249 @@
+[
+  {
+    "id": "M00",
+    "phase": "A",
+    "title": "项目契约与验收基线",
+    "dependencies": [],
+    "plan": "docs/superpowers/plans/2026-10-10-m00.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M01",
+    "phase": "A",
+    "title": "Android骨架与离线身份",
+    "dependencies": [
+      "M00"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m01.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M02",
+    "phase": "A",
+    "title": "金额、日期与长期项目引擎",
+    "dependencies": [
+      "M01"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m02.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M03",
+    "phase": "A",
+    "title": "订阅周期与状态引擎",
+    "dependencies": [
+      "M02"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m03.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M04",
+    "phase": "A",
+    "title": "Room、私有数据目录与事务底座",
+    "dependencies": [
+      "M02",
+      "M03"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m04.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M05",
+    "phase": "A",
+    "title": "页面骨架与基础视觉系统",
+    "dependencies": [
+      "M01",
+      "M04"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m05.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M06",
+    "phase": "B",
+    "title": "长期项目录入与投入闭环",
+    "dependencies": [
+      "M04",
+      "M05"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m06.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M07",
+    "phase": "B",
+    "title": "结束、收回、删除与历史修正",
+    "dependencies": [
+      "M06"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m07.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M08",
+    "phase": "B",
+    "title": "订阅建立与真实续费",
+    "dependencies": [
+      "M03",
+      "M04",
+      "M05",
+      "M07"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m08.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M09",
+    "phase": "B",
+    "title": "订阅暂停、恢复、到期与停止",
+    "dependencies": [
+      "M08"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m09.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M10",
+    "phase": "B",
+    "title": "本地封面与资源生命周期",
+    "dependencies": [
+      "M06",
+      "M09"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m10.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M11",
+    "phase": "B",
+    "title": "完整备份导出",
+    "dependencies": [
+      "M10"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m11.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M12",
+    "phase": "B",
+    "title": "安全覆盖恢复与故障回退",
+    "dependencies": [
+      "M11"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m12.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M13",
+    "phase": "B",
+    "title": "首页汇总与核心版交付",
+    "dependencies": [
+      "M07",
+      "M09",
+      "M12"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m13.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M14",
+    "phase": "C",
+    "title": "类别管理、名称搜索与列表效率",
+    "dependencies": [
+      "M13"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m14.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M15",
+    "phase": "C",
+    "title": "历史档案与长期成果",
+    "dependencies": [
+      "M14"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m15.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M16",
+    "phase": "C",
+    "title": "替换链与以旧换新一致性",
+    "dependencies": [
+      "M15"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m16.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M17",
+    "phase": "D",
+    "title": "单项目成本图与订阅价格图",
+    "dependencies": [
+      "M16"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m17.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M18",
+    "phase": "D",
+    "title": "总成本历史与关键事件",
+    "dependencies": [
+      "M17"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m18.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M19",
+    "phase": "D",
+    "title": "类别分析、年度趋势与客观回顾",
+    "dependencies": [
+      "M18"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m19.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M20",
+    "phase": "E",
+    "title": "续费通知与权限可靠性",
+    "dependencies": [
+      "M19"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m20.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M21",
+    "phase": "E",
+    "title": "长期里程碑与低打扰控制",
+    "dependencies": [
+      "M20"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m21.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M22",
+    "phase": "F",
+    "title": "整体体验、可访问性与长历史性能",
+    "dependencies": [
+      "M21"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m22.md",
+    "status": "PLANNED"
+  },
+  {
+    "id": "M23",
+    "phase": "F",
+    "title": "最终可靠性、签名升级与V1冻结",
+    "dependencies": [
+      "M22"
+    ],
+    "plan": "docs/superpowers/plans/2026-10-10-m23.md",
+    "status": "PLANNED"
+  }
+]

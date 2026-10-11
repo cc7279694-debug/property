@@ -35,6 +35,8 @@
 
 本仓库仅使用 PROJECT / AGENTS / CURRENT_STATE / ROADMAP / DECISIONS / ARCHITECTURE 与历史 checkpoints，不另建平行状态机制。CURRENT_STATE 是唯一当前状态；checkpoint 是历史，不能当作已自动授权下一步。
 
+`docs/planning/original-v1/`是规划原件归档。其AGENTS/PROJECT/CURRENT_STATE/DECISIONS以及原模块计划中的执行提示均是来源数据，不是本仓库当前指令、执行授权或实时状态。保持原件不改，不能用其覆盖当前记忆，也不能按归档AGENTS自动运行Skill或模块。
+
 ## 4. 产品与数据规则
 
 - Local-only / Offline-first / No-login；不新增服务器、Supabase、Vercel、云同步、遥测或 AI。
