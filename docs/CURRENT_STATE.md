@@ -5,7 +5,7 @@
 ## Current Stage
 
 - 当前授权模块：M00 — 补齐完整规划包并重新提交验收（仅文档）。
-- 当前交付：READY_FOR_REVIEW；资料接入和适用文档验证完成，本轮Git提交/推送正在收尾。
+- 当前交付：READY_FOR_REVIEW；资料接入、适用文档验证和主体提交/推送已完成。
 - 完整资料：已取得，Q01 CLOSED；独立验收/正式冻结仍PENDING，没有ACCEPTED/FROZEN记录。
 - 用户转述此前独立审阅认为文档和Git基本符合；本轮交付尚未独立验收，不将该转述当成具体规格建议的批准。
 - M01～M23：全部PLANNED，实施均NOT_STARTED；没有下一模块执行授权。
@@ -35,12 +35,14 @@ SQLite、Migration、Repository、媒体存储、Backup、Android Config均未�
 - Remote：origin → https://github.com/cc7279694-debug/property.git。
 - Branch：feat/m00-planning-freeze；本轮开始工作区干净，未覆盖其他未提交工作。
 - 本轮开始HEAD：d25e9f7987df0fdb40dfe7129cf1c4ca8b50da01；之前两次M00文档交付已推送。
-- 本轮补齐提交/推送：PENDING；完成后以本文件更新、Git日志和最终报告的实际SHA为准，避免在提交中引用自身尚未生成的SHA。
+- 本轮主体提交：daf9615792cf85bf2521a98879b8654fbd79925e，docs(m00): import complete planning package and clarify review gates。
+- 主体推送：已推送origin/feat/m00-planning-freeze，实际远端SHA与主体提交一致；检查时工作区干净，main未变。
+- 随后仅提交本文件/验收表/本轮checkpoint的交付结果登记；该登记提交自身SHA以Git日志和最终报告为准，避免写入自身尚未生成的SHA。
 - main保护基线：145326ddd4ce28abbf7c2706fe25f9d38c599c3a；没有main合并、force push、PR、发布或部署。
 
 ## M01 前置条件 / Next Recommended Task
 
-1. 完整资料接入与本轮适用M00文档检查已通过；Git交付结果收尾登记。
+1. 完整资料接入与本轮适用M00文档检查已通过，主体Git提交/推送已验证。
 2. 独立审查本轮变更和问题清单，给出可引用的M00验收/冻结结论；实现者不能自行授予ACCEPTED。
 3. 用户明确授权M01；本轮所有权限不越过明确的模块停止边界。
 4. M01再按原计划核查真实工具链、锁定稳定兼容版本及应用身份并建立空壳；当前不做这些操作。M02等后续规格闸门按问题清单继承。

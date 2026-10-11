@@ -1,6 +1,6 @@
 # M00 完整规划包补齐与重新交付
 
-日期：2026-10-11。分类：M00文档交付，等待独立验收；不代表ACCEPTED/FROZEN。继承[首轮checkpoint](2026-10-11-M00.md)，不改写当时缺资料的历史。
+日期：2026-10-11。分类：READY_FOR_REVIEW — M00，等待独立验收；不代表ACCEPTED/FROZEN。继承[首轮checkpoint](2026-10-11-M00.md)，不改写当时缺资料的历史。
 
 ## 本轮范围与来源
 
@@ -47,7 +47,7 @@ Q02～Q06映射原案例并登记16组补测，全部NOT_RUN；没有新增产�
 - 敏感模式扫描0命中；人工范围/差异/职责审查通过。本地辅助文档审阅无必须修正项，不是独立验收。
 - 暂存60项变更：12修改、48新增、0删除；只有本仓库文档/规划JSON/原ZIP/.gitattributes。ZIP/43解包文件/阅读版共45个原件工作blob与暂存blob一致。
 - 新写文档git diff检查退出0；归档原件的Markdown硬换行保留，不对原件做格式改写。首轮checkpoint逐字节保持。
-- Git远端预检：现功能分支仍d25e9f7，main仍145326d；本轮提交/推送另待实际完成后登记。
+- Git主体提交/推送后：功能远端SHA与daf9615792cf85bf2521a98879b8654fbd79925e一致；工作区干净，main仍145326ddd4ce28abbf7c2706fe25f9d38c599c3a。11项本轮文档验收及3项M00文档案例PASS，不是独立验收。
 
 TypeScript/ESLint/Unit/Integration/Build/Android Build/APK Manual：NOT_RUN；无产品工程，不适用于M00。独立验收PENDING；本地辅助审查不替代独立验收。
 
@@ -59,7 +59,9 @@ SQLite/Migration/Repository/Device Storage/Backup/Android Config：未实现，�
 
 Branch：feat/m00-planning-freeze。开始HEAD：d25e9f7987df0fdb40dfe7129cf1c4ca8b50da01，工作区干净。
 
-本轮提交与推送PENDING，待实际完成后登记主体提交SHA/远端校验。main基线145326ddd4ce28abbf7c2706fe25f9d38c599c3a；无main合并/force push/PR/发布。
+主体提交：daf9615792cf85bf2521a98879b8654fbd79925e，docs(m00): import complete planning package and clarify review gates。已实际推送现功能分支，并校验远端SHA及干净工作区。
+
+随后只提交CURRENT_STATE/验收表/本checkpoint的实际交付结果；该登记提交自身SHA以Git日志和最终报告为准，不在提交内引用自身尚未产生的SHA。main仍145326ddd4ce28abbf7c2706fe25f9d38c599c3a；无main合并/force push/PR/发布。
 
 ## 下一步应继承
 
