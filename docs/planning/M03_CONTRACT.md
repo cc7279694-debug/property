@@ -31,3 +31,11 @@
 实际执行过滤 M03 测试以及 `:app:testDebugUnitTest :app:lintDebug :app:assembleDebug`，从 XML 登记真实数量/断言结果，核对最终 APK 的权限、运行依赖与业务范围。设备、Instrumentation、业务备份/数据库/迁移仍 NOT_RUN / N/A，不为通用模板创建后续能力。提交前核查归档字节、案例状态、文档链接、范围与敏感信息；证据记录在唯一[当前验收](../ACCEPTANCE_MATRIX.md)、[当前状态](../CURRENT_STATE.md)和历史 checkpoint。
 
 只推送 feat/m03-subscription-engine，输出 READY_FOR_REVIEW — M03 后立即停止等待 ChatGPT 独立验收；不得自行宣布 ACCEPTED / FROZEN 或开始 M04。
+
+## M03 独立验收补测授权（2026-10-11）
+
+用户转交 ChatGPT 对 `80cf6473c21d5933963dd55b02dfbf9f97297849` 的结论：CHANGES REQUESTED，仅补累计金额/标准天数溢出测试，暂不冻结。六原案例及37＋31测试证据已核对，未发现确定性核心计算缺陷。当前工作区干净、本地/远端该HEAD一致，继续现有feat/m03-subscription-engine，不另建分支。
+
+本轮仅提取生产 evaluate 实际调用的内部纯累计函数，保留两次Math.addExact；增加可重复的Long边界测试和真实付款路径回归，不放宽Money/周期/日期校验、不增加业务功能。使用合法Renewal作为增量，内部合成累计种子用于触发边界，明确不是海量合法完整历史的端到端验证。现有检查本已正确，本轮按边界补测/回归流程执行，不人为制造RED；旧37项订阅与31项M02测试保持原样。
+
+实际执行新增测试及 `:app:testDebugUnitTest :app:lintDebug :app:assembleDebug`，更新当前状态、当前验收和新的复验证据/checkpoint，保留原交付历史。只记录STOPPED后重新启用、多期预付默认停止边界为M09风险，不在本轮改变语义；Q03～Q06及原130/16补测边界不变。提交/推送现有M03功能分支，输出 READY_FOR_REVIEW — M03 (RECHECK) 后停止，等待独立复验，不进入M04或自授冻结。

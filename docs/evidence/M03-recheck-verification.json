@@ -1,0 +1,745 @@
+{
+  "module": "M03",
+  "recheck": true,
+  "recordedOn": "2026-10-11",
+  "status": "READY_FOR_REVIEW — M03 (RECHECK)",
+  "independentRecheck": "PENDING",
+  "independentReview": {
+    "result": "CHANGES REQUESTED",
+    "reviewedHead": "80cf6473c21d5933963dd55b02dfbf9f97297849",
+    "source": "User relayed ChatGPT independent source review",
+    "onlyGap": "Missing confirmedPaidCents and standardPurchasedDays overflow execution"
+  },
+  "branch": "feat/m03-subscription-engine",
+  "baseCommit": "80cf6473c21d5933963dd55b02dfbf9f97297849",
+  "verificationMode": "Boundary coverage and regression: existing Math.addExact behavior retained; no artificial RED",
+  "checkedAccumulator": {
+    "class": "SubscriptionCostEngine",
+    "method": "accumulateConfirmedPayment",
+    "visibility": "internal",
+    "input": "Immutable accumulated Long totals plus a valid Renewal",
+    "output": "New immutable SubscriptionPaidTotals or ArithmeticException",
+    "productionEvaluateCallsSameMethod": true,
+    "compiledBytecodeEvidence": {
+      "path": "build/m03-recheck-evidence/engine-bytecode.txt",
+      "bytes": 19266,
+      "sha256": "2ab4fdb3a3764568d8c53383147d3aa157d484672d3d55c84cc52cb4744f8bbf"
+    },
+    "checkedAddsInMethod": 2
+  },
+  "boundaryScope": {
+    "syntheticSeeds": true,
+    "validRenewalIncrements": true,
+    "isHugeHistoryEndToEnd": false,
+    "amountRecordCountToOverflowAtMaxSingleAmount": 9223373,
+    "maxStandardDaysForIntSizedListAt365Days": 783831531155,
+    "fixedCyclesAreMultiplesOfFive": true,
+    "largestMultipleOfFiveBelowLongMax": 9223372036854775805
+  },
+  "regressionBuildLint": {
+    "command": ".\\gradlew.bat :app:testDebugUnitTest :app:lintDebug :app:assembleDebug --console=plain",
+    "exitCode": 0,
+    "buildResult": "BUILD SUCCESSFUL in 22s",
+    "tests": 74,
+    "passed": 74,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "previousTestsPreserved": 68,
+    "newBoundaryTests": 6,
+    "cases": [
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_out_of_range_numbers",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "accepts_largest_single_amount",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "direct_money_construction_cannot_bypass_amount_limits",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_excess_precision_without_rounding",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "money_precision_and_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_non_decimal_and_signed_input",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "parses_exact_non_negative_cny",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "recorded_zone_uses_its_own_calendar_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "fixed_business_date_drives_project_evaluation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "dated_event_does_not_rewrite_earlier_days",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "negative_cost_is_not_clamped",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_gross_outlay_overflow",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_end_date_before_start",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v01_ended_snapshot_uses_historical_observation_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_installment_does_not_restart_or_extend_project",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "end_day_removes_current_contribution",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "date_span_is_not_narrowed_to_int_or_rounded_to_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_recovery_overflow",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "refund_is_separate_from_the_original_outlay",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "leap_day_is_a_real_natural_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "same_day_is_one_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "empty_event_list_is_valid_zero_cost",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "aggregate_can_exceed_single_event_limit",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_refund_keeps_duration",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "prepaid_money_before_start_has_no_effective_daily_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v02_refund_changes_only_its_occurrence_day_and_after",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "zero_cost_is_effective_and_contributes_while_active",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "installments_count_only_after_their_real_payment_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "unordered_same_day_events_are_all_counted_once",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "standard_purchased_days_overflow_fails_without_wrapping",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "confirmed_paid_cents_overflow_fails_without_wrapping",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "two_real_payments_use_same_accumulation_in_engine",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "confirmed_paid_cents_reaches_long_max_exactly",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "largest_cycle_multiple_below_long_max_is_safe_then_next_cycle_fails",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "standard_purchased_days_reaches_long_max_at_arithmetic_boundary",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_year_natural_366_is_distinct_from_standard_365",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "only_three_fixed_cycles_exist",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "future_pause_and_stop_do_not_change_the_past",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "resume_after_expiry_does_not_create_payment",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_day_start_reaches_365_on_february_27",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "expired_has_zero_current_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_at_max_date_expires_without_plus_days_overflow",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "unordered_records_produce_identical_history",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_future_without_current_coverage_is_expired",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "quarterly_standard_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "later_real_payment_is_legal_input_but_unknown_to_earlier_observation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "observation_before_all_facts_has_no_cost_or_elapsed_days",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_purchase_not_elapsed_year",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_pause_excludes_ten_days_and_next_real_period_reaches_365",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "monthly_standard_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "zero_amount_is_not_a_real_renewal",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_next_rate_does_not_start_early",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "even_identical_same_day_states_require_correction",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "duplicate_same_day_states_are_rejected_in_both_orders",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_gap_is_not_counted_or_active",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_days_use_long_and_do_not_enumerate_dates",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_history_has_explicit_no_record_reason",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "nested_and_duplicate_coverage_are_rejected",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "default_stop_uses_paid_end_and_preserves_preboundary_service",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "stored_standard_days_must_match_fixed_cycle",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "paused_without_coverage_remains_paused",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "fractional_rate_keeps_decimal128_precision_and_nonzero_value",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_cycle_change_starts_at_its_effective_boundary",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "overlaps_rejected",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "writing_rejects_future_payment_using_business_today",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reversed_coverage_is_rejected",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reminder_boundary_does_not_extend_paid_coverage",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_coverage_is_rejected",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_start_state_boundary_counts_enabled_date_only_once",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "pause_does_not_erase_paid_history",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "payment_today_and_future_service_are_valid",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "explicit_early_stop_excludes_its_first_stopped_day",
+        "result": "PASS"
+      }
+    ],
+    "xmlReports": [
+      {
+        "path": "build/m03-recheck-evidence/final-test-results/TEST-com.cooper.lithic.core.model.MoneyParserTest.xml",
+        "bytes": 1220,
+        "sha256": "215336060d48ba6aa7c7d6bf5bbaafc11931b1fc891ba90853cdc837455cd310"
+      },
+      {
+        "path": "build/m03-recheck-evidence/final-test-results/TEST-com.cooper.lithic.core.time.BusinessClockTest.xml",
+        "bytes": 606,
+        "sha256": "407ead0f8ad3a3e92fd11556780fc16805a9f9519f59e36c46a95aacc555f596"
+      },
+      {
+        "path": "build/m03-recheck-evidence/final-test-results/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+        "bytes": 3520,
+        "sha256": "e392a32f268cf9ddb1d240b14532d0687aa3475c943f7a3bfc371c2bc4a0775f"
+      },
+      {
+        "path": "build/m03-recheck-evidence/final-test-results/TEST-com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest.xml",
+        "bytes": 1372,
+        "sha256": "1919c0f954eb80f4084e4cff431d500788b846c0091dc6836bdef81d705288ed"
+      },
+      {
+        "path": "build/m03-recheck-evidence/final-test-results/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+        "bytes": 6111,
+        "sha256": "4e0aa0e5f4e87cba5fe7fb9807f3c6bfd367bbaa465853ea960129084fe7ee59"
+      }
+    ],
+    "log": {
+      "path": "build/m03-recheck-evidence/regression-build-lint.log",
+      "bytes": 3127,
+      "sha256": "8c8b31f9118356975c04b45c5a1ea2046bb9f2be659688c874848956b43133bb"
+    }
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 12,
+    "byId": {
+      "OldTargetApi": 1,
+      "AndroidGradlePluginVersion": 2,
+      "GradleDependency": 5,
+      "NewerVersionAvailable": 4
+    },
+    "xml": {
+      "path": "app/build/reports/lint-results-debug.xml",
+      "bytes": 11945,
+      "sha256": "2d6259b7f4471c3c3fb3e75b10459879429e07d3d6a08f592564dd2763652e9b"
+    }
+  },
+  "toolchainUnchanged": {
+    "gradle": "8.14.3",
+    "jdk": "Temurin 17.0.20.1+1",
+    "agp": "8.13.2",
+    "projectKotlin": "2.3.10",
+    "gradleEmbeddedKotlin": "2.0.21",
+    "composeBom": "2025.11.01",
+    "navigation3": "1.0.1",
+    "minCompileTargetSdk": [
+      26,
+      36,
+      36
+    ],
+    "buildTools": "36.0.0",
+    "junitTestOnly": "4.13.2",
+    "versionLog": {
+      "path": "build/m03-evidence/toolchain-version.log",
+      "bytes": 581,
+      "sha256": "6d0065b24614a596101eba3ca65cdb46f3b2071fbe69353bf022451f199da07e"
+    },
+    "unchangedBuildInputsFromM02": 27
+  },
+  "hashPolicy": "Source/config bytes normalize CRLF to LF; Wrapper JAR, logs, XML and APK use raw bytes.",
+  "buildInputs": [
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "710069cdad62860b9402ca6c0c624e9575b86db3678ef7b1040babc3fd5be6d5"
+    },
+    {
+      "path": "app/src/debug/res/values/strings.xml",
+      "sha256": "fc9883f3456bcd6534b09d68129dae64ddd1e99a77871ac89168e45663cc01b2"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "4f586d11eea3a80c07514b2dd5684c4add2233af49d0b3865694c0e693fd4751"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApplication.kt",
+      "sha256": "8afdb1203b4dfce6fc3e663eb552211569311c4d78efc2f9738270cb92fa47e3"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "sha256": "535a1e321921a9832a31d472555e36f7504c5367a585447651dd96e24b633c70"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "sha256": "4f852ce06eaea6f689709ac1191d55984ffe8235a60125843fefe70698c6c2fd"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt",
+      "sha256": "267c6c84e93816ac6280de6af684c321fbf58795fc2b0bd58f27cbc1fb1ab767"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/Money.kt",
+      "sha256": "c347d4c555d82252dd487d78e9f73ebd960186046163ac5029ce2832335307e1"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt",
+      "sha256": "5cfe2a01612d62c33fe5b543d9b4a908988e585b7b1bea7b6f6dee724d6a7c0f"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt",
+      "sha256": "3d22ad34430dccd92ea2c3b3089efc21733125449f848cec24391236d7c39817"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+      "sha256": "16684bc773ac6dc114cc8dea43f2c81d4f7eaa1c4f49fef3c80154a35f4627aa"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+      "sha256": "b64cbe564b7281ba32399ec3a2e4aa38c09125fa9fb6838feb55720242e22197"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+      "sha256": "d466c96264316198c5c81d64362043e22607206e0663700f574ec28dc1819d3a"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_placeholder.xml",
+      "sha256": "e0bddda00ce155104a61a85815a78856b812e3b1bc3c135d897304c1655e868f"
+    },
+    {
+      "path": "app/src/main/res/values-night/themes.xml",
+      "sha256": "c34c20aecaef41ef9125d70cafa9700f4cabffaf5ba7b98cbb4773c3d504274c"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "8107ea12bf01e6bcfcc92046f33f36fb1fd65f70537aecc8656723a7f3b48342"
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "c33f08665ef69b8343c8a7ee7f8d6a177af4ea48f32a9f2e49dc8a23b94a7fae"
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "sha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "sha256": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "sha256": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "sha256": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "sha256": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63"
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "0e5ddb6b36d817c42ccdf0132bcc0aa602c2948e451315fc77f0b9c4199df9f2"
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "44c4c2365ac08b98f9f9cb4ad952d80eada3865db9eae1fb81717b0e62fcbc65"
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "sha256": "f8b396998f3d4f40818980528e3111cb2e34e28b40c4d5f0dfb05ee2ffe9198c"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "1f97506f7ca338e0f394aa1c98bc13ccbdf8c36b6c24eb0e90fdda78ab6d4245"
+    },
+    {
+      "path": "gradlew",
+      "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409"
+    },
+    {
+      "path": "gradlew.bat",
+      "sha256": "94102713eb8fb22d032397924c0f38ab2da783ba60d07054339f1190a0c4e2cd"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "23a0e54819e1d0d96c4195ca1a80535c80a21174bc133410343714ea7c456b11"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+      "sha256": "792b56e431006949645b3c9331537339446d54a512aee2a24b16933da43d1f37"
+    }
+  ],
+  "unchangedPreviousInputHashes": 30,
+  "oldTestSourcesUnchanged": true,
+  "apk": {
+    "apk": "E:\\CODEX\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 10464344,
+    "sha256": "04c323124abec438c741f3099d22cd4ee96f553e68e443199fd45df8a78f6ddf",
+    "applicationId": "com.cooper.lithic.debug",
+    "versionCode": 1,
+    "versionName": "0.1.0-m01-debug",
+    "permissions": [
+      "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "mergedManifest": "app\\build\\intermediates\\merged_manifests\\debug\\processDebugManifest\\AndroidManifest.xml",
+    "backupConfig": "allowBackup=false; legacy/cloud/device-transfer exclude all nine domains",
+    "versions": {
+      "agp": "8.13.2",
+      "kotlin": "2.3.10",
+      "compose-bom": "2025.11.01",
+      "activity-compose": "1.12.4",
+      "navigation3": "1.0.1",
+      "serialization": "1.9.0",
+      "startup": "1.1.1",
+      "junit": "4.13.2"
+    },
+    "wrapperJarSha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+    "scope": "Artifact/config checks only; signature, install and offline launch require separate evidence"
+  },
+  "apkDomainChecks": {
+    "productionDescriptorsPresent": {
+      "Lcom/cooper/lithic/domain/subscription/BillingCycle;": true,
+      "Lcom/cooper/lithic/domain/subscription/Subscription;": true,
+      "Lcom/cooper/lithic/domain/subscription/Renewal;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionOperationState;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionDisplayStatus;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionStateChange;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionSnapshot;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionCostUnavailableReason;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionCostResult;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionIntervalRules;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionCostEngine;": true,
+      "Lcom/cooper/lithic/core/model/Money;": true,
+      "Lcom/cooper/lithic/core/model/MoneyParser;": true,
+      "Lcom/cooper/lithic/core/model/ProjectSnapshot;": true,
+      "Lcom/cooper/lithic/core/time/FixedBusinessClock;": true,
+      "Lcom/cooper/lithic/core/time/ZonedBusinessClock;": true,
+      "Lcom/cooper/lithic/domain/project/ProjectCostEngine;": true,
+      "Lcom/cooper/lithic/domain/subscription/SubscriptionPaidTotals;": true
+    },
+    "testClassesAndFrameworksAbsent": true,
+    "signature": "apksigner exit 0 / v2 true / one signer",
+    "signatureLog": {
+      "path": "build/m03-recheck-evidence/apk/signature-verification.log",
+      "bytes": 351,
+      "sha256": "b9c6879e48d25a9786d2beb8a15738c06edce7d06f2722dd860894618592bd09"
+    }
+  },
+  "archive": {
+    "originalFiles": 43,
+    "originalZipSha256": "861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7",
+    "originalCases": 130,
+    "allOriginalCasesNotRun": true,
+    "originalM03EvidenceUnchanged": true
+  },
+  "m09Risks": {
+    "status": "NOT_RUN / to clarify and verify in M09",
+    "stopThenEnable": "Entry / archive / correction semantics",
+    "prepaidDefaultStop": "Selected paid boundary for multiple already paid periods",
+    "changedSemanticsThisRecheck": false
+  },
+  "notRun": [
+    "Real phone / API26 / OEM / reinstall / offline launch / Instrumentation",
+    "Business Room / migration / backup roundtrip / subscription UI",
+    "M09 stop and restart workflows, M20/M21 notifications, Q03-Q06 remaining boundaries",
+    "Huge renewal history end-to-end overflow (internal production accumulation boundary used instead)"
+  ],
+  "gitDelivery": {
+    "codeCommit": "Pending commit; self SHA reported in Git log/final response",
+    "onlyPushBranch": "feat/m03-subscription-engine",
+    "protectedMain": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a",
+    "protectedSourceM02": "0169c76bbf0946a0400b96d00124b3de9aea1cc0"
+  },
+  "documentAndScopeChecks": {
+    "status": "PASS",
+    "baseCommit": "80cf6473c21d5933963dd55b02dfbf9f97297849",
+    "modifiedFiles": [
+      "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+      "docs/ACCEPTANCE_MATRIX.md",
+      "docs/ARCHITECTURE.md",
+      "docs/CURRENT_STATE.md",
+      "docs/SPEC_ISSUES.md",
+      "docs/checkpoints/2026-10-11-M03.md",
+      "docs/planning/M03_CONTRACT.md"
+    ],
+    "newFiles": [
+      "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+      "docs/evidence/M03-recheck-verification.json",
+      "docs/evidence/M03-recheck-verification.md"
+    ],
+    "deletedFiles": [],
+    "changedFiles": 10,
+    "markdownFilesChecked": 68,
+    "localFileLinksChecked": 288,
+    "newSectionAnchorsChecked": 7,
+    "brokenLocalLinks": [],
+    "fencesBalanced": true,
+    "sensitiveTextFilesScanned": 10,
+    "secretFindings": [],
+    "diffCheck": "PASS",
+    "originalM03MatrixCheckpointContractPreserved": true,
+    "q03q06RowsUnchanged": true,
+    "protectedFilesVerified": 80,
+    "oldTestSourceHashes": {
+      "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45",
+      "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b",
+      "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544",
+      "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63"
+    },
+    "buildInputHashesVerified": 32,
+    "productSemanticsChanged": false,
+    "runtimeConfigurationChanged": false
+  },
+  "toolchainVerificationScope": "Inherited recorded versions; current Gradle build, APK config and unchanged input hashes verified. No fresh dependency-report invocation."
+}

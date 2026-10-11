@@ -171,3 +171,24 @@ NOT_RUN / N/A：Instrumentation、设备安装/断网冷启动、业务Room/SQLi
 原ZIP/43原件与阅读版字节/CRC/hash通过，130原案例和16完整跨模块补测保留NOT_RUN；上表仅当前领域结果，不改原件。Q03～Q06状态/期限逐行保持，未关闭提醒/长期节点/图片/回退问题，Q02 M17/M18仍NOT_RUN。
 
 NOT_RUN / N/A：本轮设备安装/断网冷启动/Instrumentation、Room/Repository/迁移/完整业务备份、专门M03订阅合计Long溢出执行；没有对应Android交互或业务存储，源码显式检查不等于该行为PASS。真实手机/API26/OEM继承M01未测NOTES；通知/里程碑/订阅UI与未来集成仍未实施。TypeScript/ESLint不适用。M03等待独立验收，本轮交付后停止，不进入M04或合并main。
+
+## M03 独立源码审查与补测复验（2026-10-11）
+
+用户转交ChatGPT独立源码审查：**CHANGES REQUESTED — 仅补齐累计溢出测试，暂不冻结**。评审分支feat/m03-subscription-engine，评审HEAD `80cf6473c21d5933963dd55b02dfbf9f97297849`。已确认M03-T01～T06覆盖及原37＋31交付证据一致，核心逻辑暂未发现确定性计算缺陷；缺口为累计金额/标准天数溢出未实际测试。额外STOPPED再启用、多期预付默认停止风险归M09，未授权本轮改语义。
+
+本轮从相同本地/远端评审HEAD与干净工作区继续，仅提取生产evaluate实际调用的内部累计函数并补6测试，原37与31测试源码不改。已有Math.addExact行为保留，采用边界补测/回归，未人为制造RED。完成执行状态 **READY_FOR_REVIEW — M03 (RECHECK)**，独立复验 **PENDING**；不自行授予ACCEPTED / FROZEN。
+
+| 当前新增补测 | 实际结果 | 证据 / 边界 |
+|---|---|---|
+| M03-R01 金额到精确Long.MAX | PASS | 合成累计种子加合法最大单笔，得到精确MAX；另一字段正常、种子不变 |
+| M03-R02 金额超过Long.MAX | PASS | 数学结果MAX＋1，重复执行均ArithmeticException，不回绕/修改种子 |
+| M03-R03 标准天数到精确Long.MAX | PASS | 合成种子加合法年付365，得到精确MAX；金额仅1分 |
+| M03-R04 标准天数超过Long.MAX | PASS | 数学结果MAX＋1，重复执行均ArithmeticException，不暴露部分金额更新 |
+| M03-R05 5倍数近界后再续费 | PASS | MAX−367＋365=MAX−2，下一笔月付30明确溢出，前结果不变 |
+| M03-R06 两笔付款/生产连接 | PASS | 内部累计与实际evaluate均420元/120标准天；编译字节码核对生产调用同函数 |
+
+这是内部生产同路径运算边界，增量均合法Renewal；合成累计种子不代表可形成的完整合法历史，不声称海量续费端到端溢出验证。现有List的标准天数至多Int.MAX×365，不可能达Long极限，且合法周期合计为5倍数。
+
+实际完整命令 `:app:testDebugUnitTest :app:lintDebug :app:assembleDebug` 退出0，74通过/0失败/0错误/0跳过（金额7/时钟2/项目22/原订阅37/新增累计6），六原案例继续回归通过。Lint0 errors/12既有提示，构建成功。最终APK身份/权限/备份资源/Wrapper与v2签名核对通过，18关键领域类存在，测试类/框架未打包；32最终输入哈希及逐项XML、日志、APK/编译调用链见[补测证据](evidence/M03-recheck-verification.md)和[JSON](evidence/M03-recheck-verification.json)。
+
+原130案例/16完整跨模块补测NOT_RUN不变，原M03证据和上节初次交付记录保留为历史，当前补测结果在本节登记。Q03～Q06按既定期限，M09两风险[另行记录](SPEC_ISSUES.md#m09-订阅流程风险本次独立审查登记当前不实施)。设备、业务数据库/迁移/备份与通知仍NOT_RUN / N/A。本轮停止等待独立复验，不进入M04或合并main。

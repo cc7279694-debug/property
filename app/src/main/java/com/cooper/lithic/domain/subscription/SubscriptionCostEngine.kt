@@ -4,18 +4,23 @@ import java.math.BigDecimal
 import java.math.MathContext
 import java.time.LocalDate
 
+internal data class SubscriptionPaidTotals(
+    val confirmedPaidCents: Long = 0,
+    val standardPurchasedDays: Long = 0,
+)
+
 object SubscriptionCostEngine {
     /** Pure observation: later real payments are unknown on asOf, not invalid because asOf is in the past. */
     fun evaluate(input: SubscriptionSnapshot, asOf: LocalDate): SubscriptionCostResult {
         SubscriptionIntervalRules.validateStructure(input)
         val paid = input.renewals.filter { !it.paidOn.isAfter(asOf) }.sortedBy { it.effectiveFrom }
         val changes = input.stateChanges.sortedBy { it.effectiveOn }
-        var paidCents = 0L
-        var standardDays = 0L
+        var totals = SubscriptionPaidTotals()
         for (renewal in paid) {
-            paidCents = Math.addExact(paidCents, renewal.amount.cents)
-            standardDays = Math.addExact(standardDays, renewal.standardDays.toLong())
+            totals = accumulateConfirmedPayment(totals, renewal)
         }
+        val paidCents = totals.confirmedPaidCents
+        val standardDays = totals.standardPurchasedDays
 
         val operationState = changes.lastOrNull { !it.effectiveOn.isAfter(asOf) }?.state
             ?: SubscriptionOperationState.ENABLED
@@ -37,6 +42,13 @@ object SubscriptionCostEngine {
             historicalUnavailableReason = if (standardDays == 0L) SubscriptionCostUnavailableReason.NO_CONFIRMED_PAYMENTS else null,
         )
     }
+
+    /** Same checked accumulation used by evaluate; an overflow returns no partially updated totals. */
+    internal fun accumulateConfirmedPayment(totals: SubscriptionPaidTotals, renewal: Renewal): SubscriptionPaidTotals =
+        SubscriptionPaidTotals(
+            confirmedPaidCents = Math.addExact(totals.confirmedPaidCents, renewal.amount.cents),
+            standardPurchasedDays = Math.addExact(totals.standardPurchasedDays, renewal.standardDays.toLong()),
+        )
 
     private fun rate(cents: Long, days: Long): BigDecimal =
         BigDecimal.valueOf(cents, 2).divide(BigDecimal.valueOf(days), MathContext.DECIMAL128)
