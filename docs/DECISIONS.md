@@ -159,6 +159,25 @@ Q01关闭；ROADMAP按原计划精确依赖校对。Q03订阅首日已有M03-T02
 
 存在歧义处继续以[问题清单](SPEC_ISSUES.md)和[澄清建议](planning/CLARIFICATIONS.md)列明待确认边界，不用此继承对照替代验收批准。
 
+## 2026-10-11 — M01 工具链、应用身份与离线空壳
+
+**状态：User-authorized engineering implementation；来源为本轮用户 M01 指令及实际附件。**
+
+### Decision
+从已冻结 M00 的验收回写基线 77e61b 创建 M01 功能分支；建立单 :app、单 Activity、Compose/Nav3 空壳。正式身份 com.cooper.lithic，Debug 后缀 .debug 与明确 Debug 名称；只用本地 Debug 签名。锁定稳定兼容工具链，细节见[TOOLCHAIN_LOCK](TOOLCHAIN_LOCK.md)，后续库按模块另行核查，不提前集成。
+
+### Context
+用户已明确授权 M01，取代当前阶段的 M00 禁止启动工程限制；M00验收历史及其他安全规则继续有效。已有 JDK/SDK/Gradle 可复用，开发机联网下载依赖不等于 App 需要网络。指定中文工作目录触发 AGP Windows 路径预检查。
+
+### Alternatives
+更换全局 JDK、修改其他工程、迁移工作目录、引入混合架构或提前建立业务框架。
+
+### Reason
+在用户指定目录用项目级路径选项和真实构建验证，复用已检查环境，保持范围最小；固定身份、禁止非必要权限并核查最终 APK，避免仅凭源文件宣称通过。
+
+### Consequences
+保留临时工程图标，不声称品牌已定；无网络客户端、业务数据库或手动备份。系统备份排除配置与 OEM 行为验证分开；M01完整备份往返不适用且未实现。Q02～Q07期限不变，M02须独立验收后另行授权，不自动继续。
+
 ## 后续新增/变更格式
 
 每条按以上日期/状态/Decision/Context/Alternatives/Reason/Consequences格式记录，增加来源与授权证据；列出受影响模块、schema、format、图表和验证案例。取代决定保留旧记录标 Superseded；不能以新想法擅自改整个 Roadmap。

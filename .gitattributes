@@ -2,3 +2,8 @@
 LITHIC_V1_*.md -text
 # 原始规划包、解包文件按来源字节保存，不应用换行转换。
 docs/planning/original-v1/** -text
+# Gradle shell entry point must keep LF when cloned on Windows.
+gradlew text eol=lf
+gradlew.bat text eol=crlf
+gradle/wrapper/gradle-wrapper.jar -text
+gradle/wrapper/gradle-wrapper.properties text eol=lf

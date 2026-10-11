@@ -2,11 +2,11 @@
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-本表已按完整包校对精确前置验收依赖，原案例和更细文件/接口/任务边界以逐模块链接为准。所有模块未被本轮自行ACCEPTED，完整规划未FROZEN。
+本表已按完整包校对精确前置验收依赖，原案例和更细文件/接口/任务边界以逐模块链接为准。M00 已由 ChatGPT 独立验收为 ACCEPTED / FROZEN — PASS WITH NOTES；2026-10-11 用户另行授权 M01，目前执行状态为 READY_FOR_REVIEW（等待独立验收）。后续模块未获授权，当前状态以 [CURRENT_STATE.md](CURRENT_STATE.md) 为准。
 
 ## 执行顺序与依赖解释
 
-原总计划推荐编号串行。本仓库仍按编号逐模块授权与停止：M01前先独立验收M00并另行授权，后续不自动跳转。下面第三列是原包精确前置验收依赖；编号串行/单模块授权是执行闸门，两者不混为同一张依赖表。
+原总计划推荐编号串行。本仓库仍按编号逐模块授权与停止：M01 所需的 M00 独立验收和本轮授权已满足，M01 交付后停止等待独立验收，不自动进入 M02。下面第三列是原包精确前置验收依赖；编号串行/单模块授权是执行闸门，两者不混为同一张依赖表。
 
 24计划的“必须先验收”与原JSON逐条一致，无前向依赖或环。后续还需读原计划、引用规格、适用验收、当前澄清和实际代码，不能只凭路线表开始工程。
 
@@ -14,7 +14,7 @@
 
 | 模块 | 交付范围与原计划 | 原包前置验收依赖 | 验收概要与停止边界 |
 |---|---|---|---|
-| M00 | 文档、来源、记忆、问题与验收基线 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m00.md) | 无 | 仅文档，资料齐备仍需独立验收；不得建工程 |
+| M00 | 文档、来源、记忆、问题与验收基线 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m00.md) | 无 | 原交付仅文档；已独立验收冻结，保留验收历史 |
 | M01 | Android空壳、版本锁、debug身份与权限 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m01.md) | M00 | 断网冷启动、合并Manifest无网络权限；不写业务 |
 | M02 | 金额/日期/项目纯引擎 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m02.md) | M01 | 首日、同日结束、负成本、历史/结束后结算；不写CRUD UI |
 | M03 | 订阅周期/状态/预付/平均引擎 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m03.md) | M02 | 150/30=5；生效首日实际1天；不伪造续费/经过时间 |

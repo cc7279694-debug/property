@@ -8,9 +8,11 @@
 
 实现者不得跳过验收开始下一模块。文档任务仅检查文档，不机械新增产品测试。业务计算、迁移、恢复、导入导出等重要逻辑优先可重复测试。
 
+当前授权仅为 M01：从 M00 验收回写基线 77e61b653ebf1ce4838b4acce4b5b366e17891f4，在 feat/m01-android-skeleton 建立最小原生空壳并完成适用验证和 Git 交付。M00 的 ACCEPTED / FROZEN — PASS WITH NOTES 保留；M01 完成后等待新的独立验收，M02 尚未授权。
+
 Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、Acceptance Criteria、Verification。修改前能解释为什么改该文件、可能破坏什么、如何验证。
 
-归档通用模板里真实路径、备份往返和APK等完成条款须按模块实际范围适用：M00仅文档，M02/M03仅纯领域引擎，完整导出/恢复到M11/M12才实现。未存在的能力记NOT_RUN/原因，不机械执行未来模块、不编造PASS。原计划适用性差异见规划对照，需独立验收确认。
+归档通用模板里真实路径、备份往返和APK等完成条款须按模块实际范围适用：M00仅文档，M01验证工程、最终APK与实际安装/断网冷启动，M02/M03仅纯领域引擎，完整导出/恢复到M11/M12才实现。M01 没有业务数据，完整备份往返不适用且未实现，不记备份 PASS；Q07 在其他模块的处理边界保留。未存在的能力记NOT_RUN/原因，不机械执行未来模块、不编造PASS。原计划适用性差异见规划对照，需独立验收确认。
 
 额外问题分为 Blocking（不解决无法继续）、Related（当前授权内小范围）、Unrelated（登记而不处理）。阻塞性规格问题不得由执行者自行改变核心规则。
 
@@ -24,9 +26,11 @@ Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、
 | READY_FOR_REVIEW | 交付可检查，问题与验证已如实报告；不代表通过 |
 | ACCEPTED / FROZEN | 有独立验收结论与来源，可进入下一授权门槛 |
 
-执行状态、资料接入状态、独立验收状态分别写明。文档可提交审查；资料齐备不代表ACCEPTED/FROZEN。只有CURRENT_STATE维护当前状态；验收表维护本轮文档结果，归档案例保持原NOT_RUN，checkpoint维护历史证据。
+执行状态、资料接入状态、独立验收状态分别写明。文档可提交审查；资料齐备不代表ACCEPTED/FROZEN。只有CURRENT_STATE维护当前状态；验收表维护当前模块实际验证结果，归档案例保持原NOT_RUN，checkpoint维护历史证据。
 
 验证结果只用 PASS / FAIL / NOT_RUN / BLOCKED，必须有日期、实际方法与结果。没执行写 NOT_RUN 和原因；预期结果不能当成实际结果。
+
+M01 的 M01-T01～M01-T04 分别记录设备侧断网冷启动、合并 Manifest 与最终 APK 权限、Debug 身份隔离、版本锁及实际构建证据；lint 结果另列。没有可用设备时先交付其余结果和 APK，安装/断网冷启动写 NOT_RUN 或 BLOCKED 并给出最少手工步骤。模拟器必须标明类型，不能冒充真机。NO-SOURCE、未发现测试和环境配置失败不能算产品测试通过或有效的 TDD 红灯。
 
 构建成功不证明金额正确、离线能力或恢复不丢数据。依赖版本在 M01 的真实环境验证后锁定；数据库 schema/backup 格式版本以实际实现和测试为准。
 
@@ -50,7 +54,7 @@ Conventional Commits；获准时只推当前功能分支。没有另行授权不
 6. Git：Branch、Commit、Push 的实际状态。
 7. 下一模块：前置条件和建议，然后停止。
 
-M00 评审输出为 READY_FOR_REVIEW — M00；若资料或验证仍阻塞，要紧邻说明，不能让该标签被理解为 ACCEPTED / FROZEN。
+本轮评审输出为 READY_FOR_REVIEW — M01；若资料或验证仍阻塞，要紧邻说明，不能让该标签被理解为 ACCEPTED / FROZEN。原 M00 停止标签保留于历史检查点，不继续作为当前阶段限制。
 
 ## 决策与检查点规范
 

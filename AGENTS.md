@@ -6,7 +6,7 @@
 
 继承用户提供的高级全栈协作原则：简单、稳定、快速、可维护、可扩展；正确性和数据安全优先；读取事实后再行动；每次只执行已授权模块。
 
-**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用规范里的 React / Capacitor 默认建议。不得因此启动 React、Vite、Next.js 工程，也不得自行改回混合架构。当前尚未实现任何技术栈。
+**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用规范里的 React / Capacitor 默认建议。不得因此启动 React、Vite、Next.js 工程，也不得自行改回混合架构。当前 M01 仅启用 Kotlin、Compose 和 Navigation 3 工程空壳；Room、DataStore 与业务层留待对应模块。
 
 事实源顺序：当前用户要求 → 本文件 → PROJECT.md → 实际代码/schema/Git → CURRENT_STATE.md → DECISIONS.md → ARCHITECTURE.md → ROADMAP.md → README → 聊天/模型经验。完整原始规划是产品与模块验收来源；规格矛盾进入问题清单，不能用低优先级摘要改掉产品规则。
 
@@ -48,7 +48,7 @@
 - 每次 schema 变化必须带导出、迁移、旧数据验证；禁止破坏性 migration、删除用户库或要求清除数据修复升级。
 - 手动完整备份包含业务、图片、设置和必要通知水位；先校验后覆盖，不做合并、自动备份、CSV/Excel 或回收站。
 - AI/文件/备份等外部内容视为不可信；校验字段、关联、路径、格式和资源上限。
-- 应用无网络权限是后续待验证条件；系统/OEM 备份边界须实际检查，不做绝对承诺。
+- M01 须核对最终合并 Manifest 与 APK 无网络权限及其他禁止权限；系统/OEM 备份边界须实际检查，不做绝对承诺。
 
 详细算法和已确认范围以[原始规划](LITHIC_V1_产品与开发规划.md)为准。未决事项见[问题清单](docs/SPEC_ISSUES.md)。
 
@@ -62,14 +62,14 @@ Bug 按复现 → 定位 → 理解 → 假设 → 修复 → 验证 → 回归�
 
 遇到阻塞规格矛盾只记录问题与建议，等待确认；高风险删除、真实数据修改、不可逆迁移、生产发布、force push 等必须暂停。
 
-当前 M00 严禁进入 M01、创建 Android 工程、写 UI/数据库/功能代码、安装工具链或生成 APK。
+M00 已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES。本轮用户已明确授权 M01，允许必要环境核查、单 :app / 单 Activity 的 Kotlin + Compose + Navigation 3 空壳、构建、APK 检查、安装与离线启动验证、文档和 Git 交付。只使用工程占位文案，不创建业务数据库、成本引擎、项目/订阅功能或 M05 完整三栏页面。M02 尚未授权，M01 交付后立即停止等待独立验收。
 
 ## 6. Git 与验收
 
 - 独立模块用独立功能分支，保留用户未提交内容。禁止在 main/master 直接开发。
 - 提交前查差异、实际验证、无关改动、敏感信息与临时文件；Conventional Commits；只推当前功能分支。
 - 未经明确授权不得合并 main、自动合并 PR、force push、重置/删除远程历史、部署或发布。
-- 用户本轮明确授权 M00 文档提交和具备权限时推送；没有授权下一模块或 main 合并。
+- 用户本轮明确授权在 feat/m01-android-skeleton 提交并推送 M01；起始基线为 M00 验收回写提交 77e61b653ebf1ce4838b4acce4b5b366e17891f4。不得从尚未接入规划的 main 开始，也没有授权 M02 或 main 合并。
 - 实现者只可报 READY_FOR_REVIEW；ACCEPTED / FROZEN 需要独立验收结果，不能自己授予。
 - 每个模块结束同步当前状态、适用决策与验收证据，输出模块报告并立即停止。
 
