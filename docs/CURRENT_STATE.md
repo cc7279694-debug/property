@@ -34,8 +34,8 @@
 
 - 目录 E:/CODEX/砺石新APP；origin `https://github.com/cc7279694-debug/property.git`。
 - 当前功能分支 `feat/m03-subscription-engine`；来源 `feat/m02-project-cost-engine`，起始 HEAD `0169c76bbf0946a0400b96d00124b3de9aea1cc0`。开始时干净，本地/远端来源一致、新分支未存在，没有覆盖其他工作。
-- 当前实现/证据完成，提交与推送结果随后记[M03 checkpoint](checkpoints/2026-10-11-M03.md)及Git日志/最终报告；不以构建时的基线 SHA 冒称实现提交。只推当前 M03分支。
-- main保护基准 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`，M02来源保护基准同起点；不合并 main、不force push、不修改WHOCARE、不建PR/Release、不公开上传APK或私钥。
+- 实现提交 `270c7a079d7f1220524e4e29bdf08e8f41d90964`（feat(m03): add subscription calculation engine），19文件/8新增/11修改/0删除，已仅推当前M03分支；实际远端HEAD一致，提交后干净，31项构建/测试输入按提交blob哈希全部一致。此次仅补记交付证据，不改工程输入、不重复构建；最后文档交付提交自身SHA以Git日志/最终报告为准，详情见[M03 checkpoint](checkpoints/2026-10-11-M03.md)。
+- main保护基准 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`，M02来源保护基准同起点；实现推送后实际ls-remote核对两者不变。不合并 main、不force push、不修改WHOCARE、不建PR/Release、不公开上传APK或私钥。
 
 ## Next Recommended Task
 
