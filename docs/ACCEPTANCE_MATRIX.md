@@ -1,10 +1,34 @@
 # 验收登记
 
-本文件记录当前M00实际检查；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
+本文件记录M00文档检查与独立验收结论；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
 
 日期：2026-10-11。PASS为本次实际通过，NOT_RUN为未执行，PENDING为本轮检查尚待完成。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。
 
-## 本轮 M00 文档验收
+## 独立验收记录
+
+- 记录日期：2026-10-11。
+- 结论：**ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 来源：用户在当前会话明确转交的ChatGPT独立验收结论；本次Codex仅回写结果，不自行授予验收，也不重新运行或代替独立审阅。
+- 仓库：cc7279694-debug/property。
+- 评审分支：feat/m00-planning-freeze。
+- 评审HEAD：59ba290cba69e1e77af7d0376a8b43aaabbf5f88；回写前已实际确认本地及远端功能分支均匹配。
+- 独立核对范围：原始ZIP、43个归档原件、24份模块计划、130条案例、规格文件、146个本地链接和Git变更范围。
+- Notes：Q01已关闭；Q02～Q07按[SPEC_ISSUES](SPEC_ISSUES.md)保留状态和模块期限，不阻塞M00冻结与M01启动准备。具体建议未因此自动获得批准，工程未实施；M01仍需另行授权。
+
+| 问题 | 保留状态 | 保留处理期限 |
+|---|---|---|
+| Q02 | PROPOSED | M02前明确，关联M17/M18 |
+| Q03 | PARTIALLY_RESOLVED_BY_SOURCE | 长期100/1000日节点M21前明确，不整体阻塞M03；首日口径有原案例依据，实现测试仍NOT_RUN |
+| Q04 | PROPOSED | M20前明确，关联M03/M21 |
+| Q05 | PROPOSED | M10/M12前明确，关联M11 |
+| Q06 | ENGINEERING_REQUIRED | M04设计、M12实施与故障验证；尚未设计/实现/验证 |
+| Q07 | OPEN | M02等受影响模块执行前明确通用模板适用性 |
+
+本次授权只回写当前状态与本登记、检查并提交/推送功能分支；未修改产品/补测结果或问题清单。规划及历史checkpoint中的“未冻结/PENDING”保留为当时交付记录，当前正式结论见本节。
+
+## M00 规划补齐交付的文档验收
+
+以下保留评审基准59ba290时的实际检查记录；其中“未冻结/PENDING”是补齐交付时状态，不是当前独立验收结论。
 
 | ID | 条件 | 本轮结果 | 证据 / 说明 |
 |---|---|---|---|
@@ -38,4 +62,4 @@
 
 TypeScript、ESLint、Unit Test、Integration Test、Build、Android Build、APK Manual Verification：NOT_RUN。原因：M00仅文档，没有产品工程或业务代码；不为满足原通用完成模板提前开发未来备份或运行M01。
 
-独立验收：PENDING；用户只转述此前基础文档/Git基本符合，本轮资料接入尚未独立验收；没有ACCEPTED/FROZEN记录。
+当前独立验收：ACCEPTED / FROZEN — PASS WITH NOTES，依据见上方独立验收记录。原130案例与16组补测仍全部NOT_RUN；M01～M23仍PLANNED且未实施，本次状态回写后停止。
