@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00～M02历史检查、实际执行与独立验收，以及本轮M03实际执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
+本文件记录M00～M03历史检查、实际执行与独立验收；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
 
-日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。下方历史阶段语句不作为当前授权；本轮M03已授权，实际执行领域测试、回归、Lint、构建和APK静态核查，独立验收PENDING；未运行边界及M02独立审查未重跑Windows Gradle的NOTES保留。
+日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。当前M03正式结论为 **ACCEPTED / FROZEN — PASS WITH NOTES**，依据见末尾M03独立复验记录；下方初次交付和补测的READY_FOR_REVIEW、CHANGES REQUESTED、PENDING是当时历史，不作为当前结论或后续授权。本次仅回写两份状态文档，不重跑Gradle/构建/设备验证；未运行边界及M02/M03独立审查未重跑Windows Gradle的NOTES保留。
 
 ## 独立验收记录
 
@@ -192,3 +192,23 @@ NOT_RUN / N/A：本轮设备安装/断网冷启动/Instrumentation、Room/Reposi
 实际完整命令 `:app:testDebugUnitTest :app:lintDebug :app:assembleDebug` 退出0，74通过/0失败/0错误/0跳过（金额7/时钟2/项目22/原订阅37/新增累计6），六原案例继续回归通过。Lint0 errors/12既有提示，构建成功。最终APK身份/权限/备份资源/Wrapper与v2签名核对通过，18关键领域类存在，测试类/框架未打包；32最终输入哈希及逐项XML、日志、APK/编译调用链见[补测证据](evidence/M03-recheck-verification.md)和[JSON](evidence/M03-recheck-verification.json)。
 
 原130案例/16完整跨模块补测NOT_RUN不变，原M03证据和上节初次交付记录保留为历史，当前补测结果在本节登记。Q03～Q06按既定期限，M09两风险[另行记录](SPEC_ISSUES.md#m09-订阅流程风险本次独立审查登记当前不实施)。设备、业务数据库/迁移/备份与通知仍NOT_RUN / N/A。本轮停止等待独立复验，不进入M04或合并main。
+
+## M03 独立复验与正式验收记录（2026-10-11）
+
+- 正式结论：**ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 来源：用户在当前会话明确转交的ChatGPT独立复验正式结论；Codex本次仅回写，不自行授予验收或以本地辅助审查代替独立复验。
+- 仓库：`cc7279694-debug/property`。
+- 评审分支：`feat/m03-subscription-engine`。
+- 评审HEAD：`8b13d20dad89f9c3e76a3d19161cf2232b36b94d`；回写前实际确认本地/远端均匹配，工作区干净。
+- 独立确认：六项新增累计边界测试与生产代码使用同一累计函数；累计金额与标准天数均由Math.addExact检查溢出；失败不产生部分更新的累计结果；74个JUnit方法与提交的74条PASS结果完全对应；评审补测Git范围3新增/7修改/0删除，未越界进入M04。
+
+保留NOTES与后续边界：
+
+1. **本次独立审查未在用户Windows本机重新运行Gradle。**本次Codex状态回写同样不运行Gradle、构建或设备验证；既有74项结果与RED/GREEN/回归证据保持原样，不把源码/证据审查登记为新测试执行PASS。
+2. 原ZIP/43归档原件、原130条规划案例及16组完整跨模块补测保留，原案例/完整补测继续NOT_RUN；历史交付、M03 checkpoint和两组M03证据不改写。内部合成累计种子的边界验证不宣称海量合法完整历史端到端测试。
+3. Q03～Q06状态/期限不变：长期100/1000日节点M21前，提醒资格M20前，图片往返M10/M12前，持久回退M04设计/M12实施及故障验证。Q02的M17/M18集成仍NOT_RUN；不因领域引擎冻结而提前关闭问题或集成验证。
+4. 保留[M09两项流程风险](SPEC_ISSUES.md#m09-订阅流程风险本次独立审查登记当前不实施)：STOPPED后重新启用的入口/历史/纠错边界、多期已预付默认停止边界，仍待M09明确与验证，NOT_RUN，当前未改产品语义或实施流程。
+5. 设备安装/断网冷启动/Instrumentation、真机/API26/OEM、业务Room/SQLite/Repository/迁移/完整备份、M09流程及M20/M21通知等未运行验证继续NOT_RUN / N/A；12条既有Lint版本提示不处理。
+6. 本次只更新唯一CURRENT_STATE和本登记、检查差异后提交/推送现有M03功能分支。M04仍须用户另行授权；不修改业务代码、WHOCARE或原规划，不合并main或进入M04。
+
+本节正式结论取代先前CHANGES REQUESTED/复验PENDING的当前效力；旧记录完整保留为历史。回写提交自身SHA、推送与最终远端核对以Git日志/最终报告为准。
