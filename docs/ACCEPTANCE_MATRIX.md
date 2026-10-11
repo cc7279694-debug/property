@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00历史检查/独立验收结论及M01当前实际验证；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
+本文件记录M00历史检查/独立验收结论、M01既有实际验证及本次独立验收状态回写；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
 
-日期：2026-10-11。PASS为本次实际通过，NOT_RUN为未执行，PENDING为本轮检查尚待完成。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。
+日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予；本次只回写用户提供的M01独立验收结论，不重新执行构建、安装或产品测试。
 
 ## 独立验收记录
 
@@ -64,9 +64,28 @@ TypeScript、ESLint、Unit Test、Integration Test、Build、Android Build、APK
 
 当前独立验收：ACCEPTED / FROZEN — PASS WITH NOTES，依据见上方独立验收记录。原130案例与16组补测仍全部NOT_RUN；M01～M23仍PLANNED且未实施，本次状态回写后停止。
 
+## M01 独立验收记录（2026-10-11）
+
+- 结论：**ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 来源：用户在当前会话明确转交的ChatGPT独立验收结论；Codex本次仅回写，不自行授予验收或代替独立审阅。
+- 仓库：cc7279694-debug/property。
+- 评审分支：feat/m01-android-skeleton。
+- 评审HEAD：`ca8499e3d3cb2e5bac3ab29a231f399636899c19`；回写前实际确认本地与远端功能分支均匹配，工作区干净。
+- 独立审查确认：单 `:app`、单Activity、Compose/Navigation 3空壳符合M01范围；20项已提交构建输入SHA-256独立比对一致；正式与Debug applicationId正确；Manifest、系统备份排除配置及权限核查脚本符合阶段要求；构建、Lint、模拟器安装和离线冷启动的既有执行证据已审阅；Git范围26新增、13修改、0删除，未进入M02或M05。
+
+保留NOTES：
+
+1. 模拟器证据已审阅，独立审查未重新安装APK；不新增设备验证PASS。
+2. 真实手机、API26运行、OEM备份行为仍NOT_RUN；其他未运行产品验证及16组补测继续NOT_RUN。
+3. Lint的12条版本更新提示暂不处理，未抑制或升级依赖。
+4. Q02～Q07继续按既有状态和模块期限处理，不因M01冻结而关闭或标记已实施。
+5. M02执行前必须明确Q02历史观察日公式和Q07通用验收模板适用性，且须用户另行授权；本次不开始M02。
+
+本次授权只更新唯一CURRENT_STATE和本登记，检查差异后提交/推送当前M01功能分支。原始规划、130案例、问题清单和历史checkpoint不改；历史checkpoint的READY_FOR_REVIEW/PENDING是当时交付状态，本节记录随后获得的独立结论。本次回写的最终提交SHA及远端校验以Git日志/最终报告为准。
+
 ## M01 当前执行验收（2026-10-11）
 
-授权：本轮用户 M01 指令；执行基线 `77e61b653ebf1ce4838b4acce4b5b366e17891f4`；功能分支 `feat/m01-android-skeleton`。M00独立验收历史不变。本节为Codex实际验证记录，M01独立验收 **PENDING**，实现者仅交付 **READY_FOR_REVIEW — M01**。
+授权：此前用户M01执行指令；执行基线 `77e61b653ebf1ce4838b4acce4b5b366e17891f4`；功能分支 `feat/m01-android-skeleton`。M00独立验收历史不变。本节保留Codex既有实际验证结果，交付时为READY_FOR_REVIEW；随后用户转交的M01独立结论为 **ACCEPTED / FROZEN — PASS WITH NOTES**，依据见上节，本次未重跑测试。
 
 | 原案例 | 实际结果 | 证据 / 边界 |
 |---|---|---|
@@ -79,6 +98,6 @@ TypeScript、ESLint、Unit Test、Integration Test、Build、Android Build、APK
 
 另行验证：lintDebug PASS（0 errors / 12版本更新提示，未抑制）；最终APK apksigner verify退出0，v2签名通过；原ZIP/43原件字节、130 NOT_RUN案例、Q02～Q07原状态及补测未改变；文档链接/差异/敏感信息检查在交付checkpoint记录。
 
-未执行：业务Unit/Integration Test、Android Instrumentation Test、真实手机、API26运行、OEM备份/迁移行为、业务schema/migration/完整备份往返。原因：本轮为原生空壳，无业务数据与对应实现；完整备份往返不适用且未实现，不标Backup PASS。TypeScript/ESLint不适用于本原生工程。
+NOT_RUN：业务Unit/Integration Test、Android Instrumentation Test、真实手机、API26运行、OEM备份/迁移行为、业务schema/migration/完整备份往返。原因：M01为原生空壳，无业务数据与对应实现；完整备份往返不适用且未实现，不标Backup PASS。TypeScript/ESLint不适用于本原生工程。
 
-原130案例保持NOT_RUN（含归档M01），结果只登记本节；M02～M23及16组补测保持NOT_RUN。Q02～Q06状态/期限不变，Q07只明确M01的模板适用边界，不关闭其他模块。M02未授权；M01独立验收PENDING，无ACCEPTED/FROZEN自授。
+原130案例保持NOT_RUN（含归档M01），既有执行结果只登记本节；M02～M23及16组补测保持NOT_RUN。Q02～Q06状态/期限不变，Q07只明确M01的模板适用边界，不关闭其他模块。M01已按用户转交的独立结论冻结；M02未授权，执行前须明确Q02/Q07，不自动进入。
