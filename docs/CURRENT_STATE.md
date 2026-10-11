@@ -5,7 +5,7 @@
 ## Current Stage
 
 - 当前授权模块：M00 — 新项目初始化与规划冻结（仅文档）。
-- 交付状态：READY_FOR_REVIEW（仅已取得资料的文档交付；Git交付待最后核实）。
+- 交付状态：READY_FOR_REVIEW（仅已取得资料的文档交付；主体文档已提交并验证推送）。
 - 完整规划冻结：BLOCKED（Q01：缺配套规划包原件）。
 - 独立验收：NOT_RUN；没有 ACCEPTED / FROZEN 记录。
 - M01～M23：全部 NOT_STARTED；没有下一模块执行授权。
@@ -23,7 +23,7 @@
 
 本轮已取得资料的文档交付可审阅；没有产品代码、Android工程、数据库、资源或 APK。完整源计划和130条原矩阵尚未接入，不能声称完整规划冻结完成。
 
-本轮文档检查与 Git 交付完成后停止，等待资料补齐和独立验收。资料缺口不授权实施 M01。
+本轮文档检查与主体 Git 交付已验证，停止等待资料补齐和独立验收。资料缺口不授权实施 M01。
 
 ## Current Problems / Technical Debt
 
@@ -38,7 +38,9 @@ SQLite、Migration、Repository、File System、Backup均未实现；schema/form
 - 工作目录：E:/CODEX/砺石新APP。
 - Remote：origin → https://github.com/cc7279694-debug/property.git。
 - Branch：feat/m00-planning-freeze。
-- Commit / Push：待本轮验证后执行；结果由模块报告与实际 Git 交付记录确认。
+- 主体文档 Commit：e8aeb4d36d6ac272b8af1247bd96c3f6c732aea8，docs(m00): establish planning baseline and project memory。
+- 主体 Push：已推送 origin/feat/m00-planning-freeze，实际远端SHA与该提交一致；检查时工作区干净，main保持初始SHA。
+- 随后仅提交本文件/验收表/checkpoint的交付结果登记；该状态登记提交自身SHA以Git日志为准，最终HEAD和推送校验由最终报告给出，不把自身SHA写进自身提交。
 - 没有PR、main合并、force push、发布或部署。
 
 ## M01 前置条件 / Next Recommended Task
