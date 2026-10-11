@@ -48,4 +48,5 @@ dependencies {
     implementation(libs.kotlinx.serialization.core)
     // Explicit for the manifest override; retain the already resolved runtime version.
     implementation(libs.androidx.startup.runtime)
+    testImplementation(libs.junit)
 }

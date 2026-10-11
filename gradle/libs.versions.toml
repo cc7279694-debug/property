@@ -6,6 +6,7 @@ activity-compose = "1.12.4"
 navigation3 = "1.0.1"
 serialization = "1.9.0"
 startup = "1.1.1"
+junit = "4.13.2"
 
 [libraries]
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
@@ -16,6 +17,7 @@ androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runt
 androidx-navigation3-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
 kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "startup" }
+junit = { module = "junit:junit", version.ref = "junit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,6 +1,6 @@
 # 规划资料与来源登记
 
-更新日期：2026-10-11。原始Planning Baseline 1.0已在M00接入，随后独立验收冻结为PASS WITH NOTES；当前用户已另行授权M01。来源完整与实际模块验证仍分别登记。
+更新日期：2026-10-11。原始 Planning Baseline 1.0 已在 M00 接入，M00/M01 随后均独立验收冻结为 PASS WITH NOTES；当前用户已另行授权 M02，并确认 Q02/Q07 解释。来源完整、规则确认与实际模块验证分别登记。
 
 ## 实际取得的原始资料
 
@@ -28,7 +28,8 @@ ZIP SHA-256：`861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7`
 | V1总计划 | [MASTER_PLAN.md](original-v1/lithic_v1_plan/docs/MASTER_PLAN.md) |
 | 24个模块的原始索引/精确依赖 | [module-index.json](original-v1/lithic_v1_plan/docs/module-index.json) |
 | M00原计划 | [2026-10-10-m00.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m00.md) |
-| M01原计划，当前授权模块入口 | [2026-10-10-m01.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m01.md) |
+| M01原计划，已冻结工程骨架 | [2026-10-10-m01.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m01.md) |
+| M02原计划，当前授权模块入口 | [2026-10-10-m02.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m02.md) |
 | 全部M00～M23计划及边界 | [当前路线与逐模块链接](../ROADMAP.md) |
 | 130条原验收矩阵 | [ACCEPTANCE_MATRIX.md](original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md) |
 | 130条原验收JSON | [acceptance-cases.json](original-v1/lithic_v1_plan/docs/acceptance-cases.json) |
@@ -48,14 +49,15 @@ ZIP SHA-256：`861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7`
 
 归档下的AGENTS、PROJECT、CURRENT_STATE、DECISIONS是原规划历史输入，保持原件，不覆盖仓库现有记忆。当前指令仍为根AGENTS，当前身份为根PROJECT，唯一实时状态为docs/CURRENT_STATE。
 
-原JSON的24个模块均PLANNED、130案例均NOT_RUN；这只是不可改写的规划快照。M00历史文档检查和M01实际验证分别记录在本仓库docs/ACCEPTANCE_MATRIX；既不修改原案例，也不把文档检查当产品通过。
+原JSON的24个模块均PLANNED、130案例均NOT_RUN；这只是不可改写的规划快照。M00历史文档检查、M01实际验证及本轮 M02 实际结果分别记录在本仓库docs/ACCEPTANCE_MATRIX；既不修改原案例，也不把文档检查或规则确认当产品通过。
 
-六份核心规格、原DECISIONS与SOURCES全文均与阅读版合并内容一致。新增可用内容为精确模块计划/依赖、130案例及模板。对照说明见[BASELINE_COMPARISON.md](BASELINE_COMPARISON.md)；Q02～Q06建议与待运行测试见[CLARIFICATIONS.md](CLARIFICATIONS.md)。
+六份核心规格、原DECISIONS与SOURCES全文均与阅读版合并内容一致。新增可用内容为精确模块计划/依赖、130案例及模板。对照说明见[BASELINE_COMPARISON.md](BASELINE_COMPARISON.md)；Q02/Q07 本轮有效解释、其他建议与待运行测试见[CLARIFICATIONS.md](CLARIFICATIONS.md)。
 
 ## 其他来源与授权
 
 - M00补齐工作单授权文档接入及提交/推送；随后用户转交独立验收结论，评审HEAD为59ba290，验收回写基线为77e61b。历史授权不自动授权下一模块。
-- 当前M01授权来自用户本轮明确指令及实际附件 `E:/CODEX/LITHIC_M01_Codex执行指令.md`（10,106字节，SHA-256 `f4b21192d707a0a23ec7dc4196f48219cc79b60b7dbf1ef924d38957e172c2cc`），见[M01执行契约](M01_CONTRACT.md)。此附件未混入原ZIP/43原件，不改变原规划来源登记。
+- M01 实施授权来自当时用户明确指令及实际附件 `E:/CODEX/LITHIC_M01_Codex执行指令.md`（10,106字节，SHA-256 `f4b21192d707a0a23ec7dc4196f48219cc79b60b7dbf1ef924d38957e172c2cc`），见[M01执行契约](M01_CONTRACT.md)。其独立验收评审 HEAD 为 `ca8499e3d3cb2e5bac3ab29a231f399636899c19`，验收回写提交为 `a25a06899bd157988c3a4466d7162d8616fb0249`；均为历史记录，不自动授权下一模块。
+- 当前 M02 授权及 Q02/Q07 正式确认来自实际读取的本轮附件 `E:/CODEX/.codex/attachments/12799a35-02ac-46b5-b856-1a0a3eb28bf2/已粘贴的文本.txt`（9,692 字节，SHA-256 `f13202ff3505ddc644840b7512212861317a3dde8b3ea470cbc2a20427a58bc0`），见[M02执行契约](M02_CONTRACT.md)。起点为上述 M01 验收回写提交，功能分支 `feat/m02-project-cost-engine`；Q02/Q07 解释登记当前 DECISIONS/SPEC_ISSUES，原16组补测保持 NOT_RUN，实际结果另记当前验收登记。M01/M02 附件均未混入原 ZIP/43 原件，不改变原规划来源字节或 manifest。
 - 引用对话ID `6ac3156b-2810-83ec-9b92-2f7b5c8241d0`只补背景；仓库原件与当前用户要求优先。
 
-Q01资料缺失已关闭；M00已独立冻结。M01按本轮另行授权执行，交付后停止等待其独立验收；不授权M02。
+Q01 资料缺失已关闭；M00/M01 已独立冻结。M02 按本轮另行授权执行，交付后停止等待独立验收；不授权 M03。Q03～Q06 原状态及处理期限不变，Q02 的 M17/M18 集成验证留待对应模块。

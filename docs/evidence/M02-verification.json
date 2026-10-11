@@ -1,0 +1,827 @@
+{
+  "module": "M02",
+  "recordedOn": "2026-10-11",
+  "status": "READY_FOR_REVIEW",
+  "independentAcceptance": "PENDING",
+  "branch": "feat/m02-project-cost-engine",
+  "baseCommit": "a25a06899bd157988c3a4466d7162d8616fb0249",
+  "hashPolicy": "UTF-8 source and config bytes normalize CRLF to LF; Wrapper JAR, logs, XML and APK use raw bytes.",
+  "initialEnvironmentFailure": {
+    "exitCode": 1,
+    "validTddRed": false,
+    "failure": "Test classloading initializationError before behavior assertions",
+    "rootCause": "Windows JDK17 native GBK @argfile decode differed from forced UTF-8 Gradle writer",
+    "fix": "Remove forced -Dfile.encoding=UTF-8 from project Gradle daemon args; no global encoding change"
+  },
+  "red": {
+    "command": ".\\gradlew.bat :app:testDebugUnitTest --console=plain",
+    "exitCode": 1,
+    "buildResult": "BUILD FAILED in 10s",
+    "tests": 31,
+    "passed": 1,
+    "failed": 30,
+    "errors": 0,
+    "skipped": 0,
+    "allFailuresAreAssertions": true,
+    "cases": [
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_out_of_range_numbers",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: 10000000000 expected:<Failure(reason=OUT_OF_RANGE)> but was:<Failure(reason=INVALID_FORMAT)>"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "accepts_largest_single_amount",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: Expected accepted amount for '9999999999.99', got Failure(reason=INVALID_FORMAT)"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "direct_money_construction_cannot_bypass_amount_limits",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_excess_precision_without_rounding",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: 1.001 expected:<Failure(reason=EXCESS_PRECISION)> but was:<Failure(reason=INVALID_FORMAT)>"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "money_precision_and_zero",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: Expected accepted amount for '0.10', got Failure(reason=INVALID_FORMAT)"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_non_decimal_and_signed_input",
+        "result": "PASS",
+        "failureType": null,
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "parses_exact_non_negative_cny",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: Expected accepted amount for '0', got Failure(reason=INVALID_FORMAT)"
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "recorded_zone_uses_its_own_calendar_day",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<2026-01-01> but was:<-999999999-01-01>"
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "fixed_business_date_drives_project_evaluation",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<2> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "dated_event_does_not_rewrite_earlier_days",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<10> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "negative_cost_is_not_clamped",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<-100000> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_gross_outlay_overflow",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.ArithmeticException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_end_date_before_start",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v01_ended_snapshot_uses_historical_observation_day",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<2> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_installment_does_not_restart_or_extend_project",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: Expected an effective denominator"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "end_day_removes_current_contribution",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<10> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: Expected an effective denominator"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "date_span_is_not_narrowed_to_int_or_rounded_to_zero",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<730484999634> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_recovery_overflow",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected java.lang.ArithmeticException to be thrown, but nothing was thrown"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "refund_is_separate_from_the_original_outlay",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<100000> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "leap_day_is_a_real_natural_day",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<3> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "same_day_is_one_day",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<1> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "empty_event_list_is_valid_zero_cost",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: Expected an effective denominator"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "aggregate_can_exceed_single_event_limit",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<1999999999998> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_refund_keeps_duration",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<10> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<1> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "prepaid_money_before_start_has_no_effective_daily_rate",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<100000> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v02_refund_changes_only_its_occurrence_day_and_after",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<10> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "zero_cost_is_effective_and_contributes_while_active",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<2> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "installments_count_only_after_their_real_payment_day",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<10000> but was:<0>"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "unordered_same_day_events_are_all_counted_once",
+        "result": "FAIL",
+        "failureType": "java.lang.AssertionError",
+        "message": "java.lang.AssertionError: expected:<120000> but was:<0>"
+      }
+    ],
+    "inputHashes": {
+      "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt": "78cdb4347cbc6ba484a7cf22637a8d799b6b0d256e99c46528333283ffd57f81",
+      "app/src/main/java/com/cooper/lithic/core/model/Money.kt": "7d19592d129b02463055180252bbeb40a7636e80be2210b6a5ab04d97b693d53",
+      "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt": "d56f68b8c59d4368fd76ad509a03078ed57546cb032f189144e8e893d6f3fc6d",
+      "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt": "0be1e59729e74499ef2a137ee39b261456828b1f6320d082e1b8c961b9aa05c4",
+      "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45",
+      "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b",
+      "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544"
+    },
+    "newApiOutlines": {
+      "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt": "package com.cooper.lithic.core.model\n\nimport java.math.BigDecimal\nimport java.time.LocalDate\n\nenum class MoneyDirection { OUTLAY, RECOVERY }\n\ndata class LongTermProject(val startedOn: LocalDate, val endedOn: LocalDate? = null)\n\ndata class ProjectMoneyEvent(val direction: MoneyDirection, val amount: Money, val occurredOn: LocalDate)\n\ndata class ProjectSnapshot(val project: LongTermProject, val moneyEvents: List<ProjectMoneyEvent>)\n\nenum class CostUnavailableReason { PROJECT_NOT_STARTED }\n\ndata class ProjectCostResult(\n    val heldDays: Long,\n    val grossOutlayCents: Long,\n    val recoveryCents: Long,\n    val netCents: Long,\n    val dailyRate: BigDecimal?,\n    val contributesToCurrentTotal: Boolean,\n    val unavailableReason: CostUnavailableReason?,\n)\n",
+      "app/src/main/java/com/cooper/lithic/core/model/Money.kt": "package com.cooper.lithic.core.model\n\ndata class Money(val cents: Long)\n\nenum class MoneyParseError { INVALID_FORMAT, EXCESS_PRECISION, OUT_OF_RANGE }\n\nsealed interface MoneyParseResult {\n    data class Success(val money: Money) : MoneyParseResult\n    data class Failure(val reason: MoneyParseError) : MoneyParseResult\n}\n\nobject MoneyParser {\n    fun parseCny(text: String): MoneyParseResult = MoneyParseResult.Failure(MoneyParseError.INVALID_FORMAT)\n}\n",
+      "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt": "package com.cooper.lithic.core.time\n\nimport java.time.Clock\nimport java.time.LocalDate\n\nfun interface BusinessClock {\n    fun today(): LocalDate\n}\n\nclass FixedBusinessClock(private val date: LocalDate) : BusinessClock {\n    override fun today(): LocalDate = LocalDate.MIN\n}\n\nclass ZonedBusinessClock(private val clock: Clock) : BusinessClock {\n    override fun today(): LocalDate = LocalDate.MIN\n}\n",
+      "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt": "package com.cooper.lithic.domain.project\n\nimport com.cooper.lithic.core.model.CostUnavailableReason\nimport com.cooper.lithic.core.model.ProjectCostResult\nimport com.cooper.lithic.core.model.ProjectSnapshot\nimport java.time.LocalDate\n\nobject ProjectCostEngine {\n    fun evaluate(input: ProjectSnapshot, asOf: LocalDate): ProjectCostResult = ProjectCostResult(\n        heldDays = 0,\n        grossOutlayCents = 0,\n        recoveryCents = 0,\n        netCents = 0,\n        dailyRate = null,\n        contributesToCurrentTotal = false,\n        unavailableReason = CostUnavailableReason.PROJECT_NOT_STARTED,\n    )\n}\n"
+    },
+    "explanation": "Behavior tests were written first; only new compile-compatible unimplemented API outlines existed during RED. No working M01 behavior was broken."
+  },
+  "green": {
+    "command": ".\\gradlew.bat :app:testDebugUnitTest --console=plain",
+    "exitCode": 0,
+    "buildResult": "BUILD SUCCESSFUL in 44s",
+    "tests": 31,
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "com.cooper.lithic.core.model.MoneyParserTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.102
+      },
+      {
+        "name": "com.cooper.lithic.core.time.BusinessClockTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.015
+      },
+      {
+        "name": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "tests": 22,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": 0.123
+      }
+    ],
+    "cases": [
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_out_of_range_numbers",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "accepts_largest_single_amount",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "direct_money_construction_cannot_bypass_amount_limits",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_excess_precision_without_rounding",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "money_precision_and_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_non_decimal_and_signed_input",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "parses_exact_non_negative_cny",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "recorded_zone_uses_its_own_calendar_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "fixed_business_date_drives_project_evaluation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "dated_event_does_not_rewrite_earlier_days",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "negative_cost_is_not_clamped",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_gross_outlay_overflow",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_end_date_before_start",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v01_ended_snapshot_uses_historical_observation_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_installment_does_not_restart_or_extend_project",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "end_day_removes_current_contribution",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "date_span_is_not_narrowed_to_int_or_rounded_to_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_recovery_overflow",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "refund_is_separate_from_the_original_outlay",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "leap_day_is_a_real_natural_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "same_day_is_one_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "empty_event_list_is_valid_zero_cost",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "aggregate_can_exceed_single_event_limit",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_refund_keeps_duration",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "prepaid_money_before_start_has_no_effective_daily_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v02_refund_changes_only_its_occurrence_day_and_after",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "zero_cost_is_effective_and_contributes_while_active",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "installments_count_only_after_their_real_payment_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "unordered_same_day_events_are_all_counted_once",
+        "result": "PASS"
+      }
+    ]
+  },
+  "coverage": {
+    "M02-T01": {
+      "method": "same_day_is_one_day",
+      "result": "PASS",
+      "scope": "M02"
+    },
+    "M02-T02": {
+      "method": "dated_event_does_not_rewrite_earlier_days",
+      "result": "PASS",
+      "scope": "M02"
+    },
+    "M02-T03": {
+      "method": "end_day_removes_current_contribution",
+      "result": "PASS",
+      "scope": "M02"
+    },
+    "M02-T04": {
+      "method": "post_end_refund_keeps_duration",
+      "result": "PASS",
+      "scope": "M02"
+    },
+    "M02-T05": {
+      "method": "money_precision_and_zero",
+      "result": "PASS",
+      "scope": "M02"
+    },
+    "M02-T06": {
+      "method": "negative_cost_is_not_clamped",
+      "result": "PASS",
+      "scope": "M02"
+    },
+    "Q02-V01": {
+      "method": "q02_v01_ended_snapshot_uses_historical_observation_day",
+      "result": "PASS",
+      "scope": "M02 pure domain only; future integration remains NOT_RUN"
+    },
+    "Q02-V02": {
+      "method": "q02_v02_refund_changes_only_its_occurrence_day_and_after",
+      "result": "PASS",
+      "scope": "M02 pure domain only; future integration remains NOT_RUN"
+    },
+    "Q02-V03": {
+      "method": "q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+      "result": "PASS",
+      "scope": "M02 pure domain only; future integration remains NOT_RUN"
+    }
+  },
+  "buildAndLint": {
+    "command": ".\\gradlew.bat :app:lintDebug :app:assembleDebug --console=plain",
+    "exitCode": 0,
+    "buildResult": "BUILD SUCCESSFUL in 2m 20s",
+    "actionableTasks": 48,
+    "executed": 29,
+    "upToDate": 19
+  },
+  "sourceAndLintChecks": {
+    "originalArchive": {
+      "files": 43,
+      "cases": 130,
+      "allOriginalCases": "NOT_RUN",
+      "bytesAndCrc": "PASS",
+      "sha256": "861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7",
+      "readingSha256": "3b1ea091c3bad117c208599c949c8799c6825b08ee94dd14b4305cbe38ee97ea"
+    },
+    "q03ThroughQ06": "unchanged",
+    "crossModuleSupplementalRows": {
+      "count": 16,
+      "all": "NOT_RUN",
+      "unchanged": true
+    },
+    "lint": {
+      "errors": 0,
+      "warnings": 12,
+      "ids": {
+        "OldTargetApi": 1,
+        "AndroidGradlePluginVersion": 2,
+        "GradleDependency": 5,
+        "NewerVersionAvailable": 4
+      }
+    }
+  },
+  "dependencies": {
+    "runtimeCoordinatesUnchanged": true,
+    "uniqueRuntimeCoordinateLines": 182,
+    "testOnlyAdded": [
+      "junit:junit:4.13.2",
+      "org.hamcrest:hamcrest-core:1.3"
+    ],
+    "junitAndHamcrestInAppRuntime": false
+  },
+  "apk": {
+    "apk": "E:\\CODEX\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 10448211,
+    "sha256": "ac72927087d7e8116560f8458ed8660980687b0a3d5c689be1cbb9c1b5f3bf6e",
+    "applicationId": "com.cooper.lithic.debug",
+    "versionCode": 1,
+    "versionName": "0.1.0-m01-debug",
+    "permissions": [
+      "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "mergedManifest": "app\\build\\intermediates\\merged_manifests\\debug\\processDebugManifest\\AndroidManifest.xml",
+    "backupConfig": "allowBackup=false; legacy/cloud/device-transfer exclude all nine domains",
+    "versions": {
+      "agp": "8.13.2",
+      "kotlin": "2.3.10",
+      "compose-bom": "2025.11.01",
+      "activity-compose": "1.12.4",
+      "navigation3": "1.0.1",
+      "serialization": "1.9.0",
+      "startup": "1.1.1",
+      "junit": "4.13.2"
+    },
+    "wrapperJarSha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+    "scope": "Artifact/config checks only; signature, install and offline launch require separate evidence"
+  },
+  "apkDomainChecks": {
+    "productionDescriptorsPresent": {
+      "Lcom/cooper/lithic/core/model/Money;": true,
+      "Lcom/cooper/lithic/core/model/MoneyParser;": true,
+      "Lcom/cooper/lithic/core/model/ProjectSnapshot;": true,
+      "Lcom/cooper/lithic/core/time/FixedBusinessClock;": true,
+      "Lcom/cooper/lithic/core/time/ZonedBusinessClock;": true,
+      "Lcom/cooper/lithic/domain/project/ProjectCostEngine;": true
+    },
+    "junitHamcrestAndTestClassesAbsent": true
+  },
+  "buildInputs": [
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "710069cdad62860b9402ca6c0c624e9575b86db3678ef7b1040babc3fd5be6d5"
+    },
+    {
+      "path": "app/src/debug/res/values/strings.xml",
+      "sha256": "fc9883f3456bcd6534b09d68129dae64ddd1e99a77871ac89168e45663cc01b2"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "4f586d11eea3a80c07514b2dd5684c4add2233af49d0b3865694c0e693fd4751"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApplication.kt",
+      "sha256": "8afdb1203b4dfce6fc3e663eb552211569311c4d78efc2f9738270cb92fa47e3"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "sha256": "535a1e321921a9832a31d472555e36f7504c5367a585447651dd96e24b633c70"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "sha256": "4f852ce06eaea6f689709ac1191d55984ffe8235a60125843fefe70698c6c2fd"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt",
+      "sha256": "267c6c84e93816ac6280de6af684c321fbf58795fc2b0bd58f27cbc1fb1ab767"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/Money.kt",
+      "sha256": "c347d4c555d82252dd487d78e9f73ebd960186046163ac5029ce2832335307e1"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt",
+      "sha256": "5cfe2a01612d62c33fe5b543d9b4a908988e585b7b1bea7b6f6dee724d6a7c0f"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt",
+      "sha256": "3d22ad34430dccd92ea2c3b3089efc21733125449f848cec24391236d7c39817"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_placeholder.xml",
+      "sha256": "e0bddda00ce155104a61a85815a78856b812e3b1bc3c135d897304c1655e868f"
+    },
+    {
+      "path": "app/src/main/res/values-night/themes.xml",
+      "sha256": "c34c20aecaef41ef9125d70cafa9700f4cabffaf5ba7b98cbb4773c3d504274c"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "8107ea12bf01e6bcfcc92046f33f36fb1fd65f70537aecc8656723a7f3b48342"
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "c33f08665ef69b8343c8a7ee7f8d6a177af4ea48f32a9f2e49dc8a23b94a7fae"
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "sha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "sha256": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "sha256": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "sha256": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544"
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "0e5ddb6b36d817c42ccdf0132bcc0aa602c2948e451315fc77f0b9c4199df9f2"
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "44c4c2365ac08b98f9f9cb4ad952d80eada3865db9eae1fb81717b0e62fcbc65"
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "sha256": "f8b396998f3d4f40818980528e3111cb2e34e28b40c4d5f0dfb05ee2ffe9198c"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "1f97506f7ca338e0f394aa1c98bc13ccbdf8c36b6c24eb0e90fdda78ab6d4245"
+    },
+    {
+      "path": "gradlew",
+      "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409"
+    },
+    {
+      "path": "gradlew.bat",
+      "sha256": "94102713eb8fb22d032397924c0f38ab2da783ba60d07054339f1190a0c4e2cd"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "23a0e54819e1d0d96c4195ca1a80535c80a21174bc133410343714ea7c456b11"
+    }
+  ],
+  "testXmlReports": [
+    {
+      "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.core.model.MoneyParserTest.xml",
+      "sha256": "56c82cde0a4660ad48b3443390dac9efdbb47f9d0d26faf8f20a87830b881928"
+    },
+    {
+      "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.core.time.BusinessClockTest.xml",
+      "sha256": "8a830f3e79b14bd6996ed04f0a7fea0045f3b44eff314b166a05d0e6cb0fadfb"
+    },
+    {
+      "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+      "sha256": "b6cf9ecc8647eb9d7bcb532e67aef970b1eb55fe9f55b8bde8072de6e8077906"
+    }
+  ],
+  "redXmlReports": [
+    {
+      "path": "build/m02-evidence/red-results/TEST-com.cooper.lithic.core.model.MoneyParserTest.xml",
+      "sha256": "b6b163f6ac08cdb3ae57553349e3bb8963ecd0ad27893e57736bcb3a12375b27"
+    },
+    {
+      "path": "build/m02-evidence/red-results/TEST-com.cooper.lithic.core.time.BusinessClockTest.xml",
+      "sha256": "52f73d462d77c3ae18b1d6413e1c8c0aed763365029ff099f9560f39a844e8c0"
+    },
+    {
+      "path": "build/m02-evidence/red-results/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+      "sha256": "a38c9630ba25aa348beab87bd274772b3e33a7892eda24604ea9335bc87685ae"
+    }
+  ],
+  "localLogs": [
+    {
+      "path": "build/m02-evidence/test-initial-classloading-failure.log",
+      "sha256": "27dcdf9e31d27419a5b5f564536a0c71f5ed84adb7f190ab7d4ae5415752397a"
+    },
+    {
+      "path": "build/m02-evidence/test-classpath-diagnostic.log",
+      "sha256": "1ddb1a579f880af0e6f23cf8fb78d67867b09c327cd90214d920784843c77209"
+    },
+    {
+      "path": "build/m02-evidence/test-encoding-hypothesis.log",
+      "sha256": "601eeee5b0d459a10126ca37024dbef81fd8e3b483d258439e8d37563abc5f2f"
+    },
+    {
+      "path": "build/m02-evidence/test-red.log",
+      "sha256": "156feac494a90ba1089820d7a81847dc2f55a55254f0c6dbb0f65aeae8979518"
+    },
+    {
+      "path": "build/m02-evidence/test-green.log",
+      "sha256": "b75a5c9b4884e10a13c1db005b78b546857cfae857ae48adc53a7097d4b492dd"
+    },
+    {
+      "path": "build/m02-evidence/build-and-lint.log",
+      "sha256": "49a91c22ce02fb778bc08b819638cbd2051adf485417ae8ac41f6d05756f8032"
+    },
+    {
+      "path": "build/m02-evidence/test-dependencies.log",
+      "sha256": "4df88aa87e8c2d7ad544367270717ea27efe93814e71b6329816ad7116f9f37f"
+    },
+    {
+      "path": "build/m02-evidence/runtime-dependencies.log",
+      "sha256": "c37095636bd12d308bd1b50036bdbf9ebe062ac8799a4e70761a085399199412"
+    }
+  ],
+  "notRun": [
+    {
+      "check": "M02 Android Instrumentation/device installation/offline cold start",
+      "status": "NOT_RUN / N/A",
+      "reason": "Pure Kotlin only; no new Android interaction or UI. M01 evidence retained without new device claim."
+    },
+    {
+      "check": "Room/SQLite/migration/Repository/backup round trip",
+      "status": "NOT_RUN / N/A",
+      "reason": "Not implemented and outside M02."
+    },
+    {
+      "check": "Real phone/API26/OEM behavior",
+      "status": "NOT_RUN",
+      "reason": "Prior M01 notes retained; no device validation in this module."
+    },
+    {
+      "check": "M17/M18 Q02 historical UI/current-total integration",
+      "status": "NOT_RUN",
+      "reason": "Future module implementation and authorization required."
+    },
+    {
+      "check": "TypeScript/ESLint",
+      "status": "N/A",
+      "reason": "Native Kotlin project."
+    },
+    {
+      "check": "M02 independent acceptance",
+      "status": "PENDING",
+      "reason": "ChatGPT independent acceptance required after delivery."
+    }
+  ],
+  "privacy": "Only synthetic fixed-date test facts and sanitized summaries are committed; APK, native logs, tool caches, keys and personal data stay ignored/local.",
+  "documentAndScopeChecks": {
+    "markdownFiles": 63,
+    "localFileLinks": 245,
+    "missingLinks": 0,
+    "unbalancedFences": 0,
+    "sensitivePatternMatches": 0,
+    "protectedFilesUnchanged": true,
+    "sourceFiles": 7,
+    "newFiles": [
+      "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt",
+      "app/src/main/java/com/cooper/lithic/core/model/Money.kt",
+      "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt",
+      "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt",
+      "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "docs/checkpoints/2026-10-11-M02.md",
+      "docs/evidence/M02-verification.json",
+      "docs/evidence/M02-verification.md",
+      "docs/planning/M02_CONTRACT.md"
+    ],
+    "modifiedFiles": [
+      "AGENTS.md",
+      "README.md",
+      "app/build.gradle.kts",
+      "docs/ACCEPTANCE_MATRIX.md",
+      "docs/ARCHITECTURE.md",
+      "docs/CURRENT_STATE.md",
+      "docs/DECISIONS.md",
+      "docs/EXECUTION_PROTOCOL.md",
+      "docs/ROADMAP.md",
+      "docs/SPEC_ISSUES.md",
+      "docs/TOOLCHAIN_LOCK.md",
+      "docs/planning/CLARIFICATIONS.md",
+      "docs/planning/README.md",
+      "gradle.properties",
+      "gradle/libs.versions.toml"
+    ],
+    "deletedFiles": [],
+    "diffCheck": "PASS",
+    "scope": "M02 only"
+  }
+}

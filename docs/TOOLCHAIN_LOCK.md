@@ -1,4 +1,4 @@
-# M01 工具链锁
+# 工具链锁：M01 基线与 M02 测试增量
 
 记录日期：2026-10-11。版本取自官方稳定发行资料及本机实际检查。选择兼容的稳定组合，未追逐最新版本；禁止动态版本、预发布依赖及在普通模块中顺便升级。
 
@@ -60,3 +60,13 @@ Wrapper 由现有官方 Gradle 8.14.3 的 `wrapper` 任务生成，任务实际�
 最终 assembleDebug + lintDebug 退出 0。修正 local.properties 的 Windows 驱动器冒号转义后，因 lintAnalyzeDebug 曾复用旧报告，另执行 `:app:lintDebug --rerun-tasks`，退出 0；随后根标准命令再次退出 0。lint 报告为 0 errors / 12 warnings：OldTargetApi 1、AndroidGradlePluginVersion 2、GradleDependency 5、NewerVersionAvailable 4，都是 SDK/工具/依赖的新版本提示。保留警告和当前稳定兼容组合，不用 baseline、disable 或忽略规则隐藏错误。初次 SDK XML v4 与旧解析器提示、中文路径选项 experimental 提示、Debug 原生库符号未剥离提示均在日志/证据中保留。
 
 可重复最终 APK 配置检查脚本为[verify_m01_apk.py](../scripts/verify_m01_apk.py)，已在本机 Python 3.12 运行通过（要求 Python 3.11+ 和 Windows SDK Build Tools 36.0.0）。该脚本检查构建 APK 和合并 Manifest；不代替签名或设备验证。
+
+## M02 增量（2026-10-11）
+
+以上 M01 工具链、SDK 和依赖版本全部继承，未升级；当前仅在版本目录添加精确 `junit = "4.13.2"`，通过 `testImplementation(libs.junit)` 用于本地 JVM 测试。采用[JUnit 官方依赖坐标](https://junit.org/junit4/dependency-info.html)与[Android 本地测试配置](https://developer.android.com/training/testing/local-tests)，不引入 Robolectric、Instrumentation、Room 或业务库。实际测试/运行依赖解析结果另记录于[M02证据](evidence/M02-verification.md)。
+
+本机 JDK17 launcher 的原生参数文件解码为 GBK，原配置强制 Gradle daemon `file.encoding=UTF-8` 会使 worker 的 `@argfile` 写出与启动器解码不一致，损坏中文 classpath 并产生 initializationError。已实际核对编译后的测试类、参数文件字节及启动器最终 classpath；[Gradle 官方同类缺陷 #30304](https://github.com/gradle/gradle/issues/30304)与[固定8.14.3 ArgWriter源码](https://raw.githubusercontent.com/gradle/gradle/v8.14.3/platforms/core-runtime/base-services/src/main/java/org/gradle/internal/process/ArgWriter.java)支持该根因。
+
+项目级修复只移除 `org.gradle.jvmargs` 的强制 `-Dfile.encoding=UTF-8`，让现有 JDK17 的写出与启动器默认编码一致；保留2GB堆和既有中文路径预检查选项，不硬编码GBK，不修改系统编码或其他项目，不升级Gradle/JDK。使用相同测试先验证环境修复，再以标准命令取得真实行为RED与GREEN。初次初始化错误不计入有效RED。源文件和验收JSON仍按UTF-8保存；跨平台无需增加Windows专用测试路径。
+
+M02 继续使用 M01 Debug身份和版本名/code1，未作为新安装版本发布。最终 APK 仅用于构建与配置回归；没有重新进行设备安装、真机/API26/OEM验证，M01历史记录和未运行边界保持不变。

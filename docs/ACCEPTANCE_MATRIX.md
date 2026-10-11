@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00历史检查/独立验收结论、M01既有实际验证及本次独立验收状态回写；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
+本文件记录M00/M01历史检查与独立验收、本轮M02实际执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
 
-日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予；本次只回写用户提供的M01独立验收结论，不重新执行构建、安装或产品测试。
+日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。下方M00/M01各节原阶段语句是历史记录；M02已另行授权及确认Q02/Q07，当前结果见末节，不把历史“未授权/未实施”误当本轮状态。
 
 ## 独立验收记录
 
@@ -101,3 +101,29 @@ TypeScript、ESLint、Unit Test、Integration Test、Build、Android Build、APK
 NOT_RUN：业务Unit/Integration Test、Android Instrumentation Test、真实手机、API26运行、OEM备份/迁移行为、业务schema/migration/完整备份往返。原因：M01为原生空壳，无业务数据与对应实现；完整备份往返不适用且未实现，不标Backup PASS。TypeScript/ESLint不适用于本原生工程。
 
 原130案例保持NOT_RUN（含归档M01），既有执行结果只登记本节；M02～M23及16组补测保持NOT_RUN。Q02～Q06状态/期限不变，Q07只明确M01的模板适用边界，不关闭其他模块。M01已按用户转交的独立结论冻结；M02未授权，执行前须明确Q02/Q07，不自动进入。
+
+## M02 当前执行验收（2026-10-11）
+
+本轮用户已授权M02并正式确认Q02/Q07。起始基线 `a25a06899bd157988c3a4466d7162d8616fb0249`，分支 `feat/m02-project-cost-engine`；只实现纯Kotlin领域规则，保留M01空壳。状态 **READY_FOR_REVIEW；独立验收PENDING**，不自行ACCEPTED/FROZEN。上方M00/M01阶段限制保留为历史记录，当前有效限制见[M02契约](planning/M02_CONTRACT.md)。
+
+| 原案例 / 当前补测 | 实际结果 | 实际断言与边界 |
+|---|---|---|
+| M02-T01 `same_day_is_one_day` | PASS | 01-01投入1000元/持有1天/1000元每天，初始投入只累计一次 |
+| M02-T02 `dated_event_does_not_rewrite_earlier_days` | PASS | 01-11追加200，01-10仍1000/10=100；01-11为1200/11的DECIMAL128结果 |
+| M02-T03 `end_day_removes_current_contribution` | PASS | 01-10结束/完整10天/日均100，结束日日末贡献false |
+| M02-T04 `post_end_refund_keeps_duration` | PASS | 结束后01-20收回200，净800/10=80；分母固定/不重新活跃 |
+| M02-T05 `money_precision_and_zero` | PASS | 0.10+0.20经过解析和实际引擎得30分/0.30元，0有效；超精度/单笔超限拒绝 |
+| M02-T06 `negative_cost_is_not_clamped` | PASS | 投入5000收回6000，净-1000元/-100元每天，不钳0 |
+| Q02-V01（本轮领域部分） | PASS | 已结束快照回看开始前无有效日均/贡献，01-02为2天/500，01-09为9天/1000÷9 |
+| Q02-V02（本轮领域部分） | PASS | 01-10/19为100、01-20/31为80，10天固定，结束日起无贡献 |
+| Q02-V03（本轮领域部分） | PASS | 同日开始结束为1天/日末退出，补录结算仅按发生日改变后续结果，不延长/重启 |
+
+实际测试：31通过/0失败/0错误/0跳过，7金额解析+2时钟+22项目引擎。RED为同一标准命令31项/1通过/30 AssertionError失败；初次classloading环境错误不算RED。覆盖非法结束日、预付款、分期、独立退款、负净额、同日/乱序事件、单笔范围及累计Long溢出、0.005/-0.005、闰日与Long日期跨度；固定日期测试，不模拟算法自身。测试源码RED/GREEN哈希相同。
+
+构建和Lint：`:app:lintDebug :app:assembleDebug`退出0，0 errors / 12既有版本提示，不升级/抑制。最终APK实际核对身份/权限/编译备份资源/Wrapper及领域类，不增加运行依赖；测试JUnit4.13.2/Hamcrest1.3没有进入运行classpath/APK。27个最终输入SHA-256、逐项测试结果、日志/XML/产物哈希见[M02证据](evidence/M02-verification.md)与[JSON](evidence/M02-verification.json)。
+
+原ZIP、43原件与阅读版字节/CRC/哈希核对PASS；130原案例及16组完整跨模块补测仍NOT_RUN。Q02/Q07为USER_CONFIRMED，Q02本轮领域已实现，但M17/M18集成尚未执行；Q03～Q06状态及期限逐行与基线一致，不提前关闭。M00/M01历史checkpoint及既有证据不改写。
+
+NOT_RUN / N/A：Instrumentation、设备安装/断网冷启动、业务Room/SQLite/迁移/Repository/完整备份往返，本轮纯领域范围没有对应能力；真机/API26/OEM保留M01未测NOTES；展示舍入/页面和M03～M23尚未实施。TypeScript/ESLint不适用原生Kotlin。NO-SOURCE不计测试PASS。
+
+Git/文档检查与最终交付见[M02 checkpoint](checkpoints/2026-10-11-M02.md)。交付后停止，等待ChatGPT独立验收，不进入M03或合并main。
