@@ -34,8 +34,8 @@
 
 - 目录 E:/CODEX/砺石新APP；origin `https://github.com/cc7279694-debug/property.git`。
 - 当前功能分支 `feat/m03-subscription-engine`；原模块起点 `0169c76bbf0946a0400b96d00124b3de9aea1cc0`、来源M02。本次补测基准 `80cf6473c21d5933963dd55b02dfbf9f97297849`，本地/远端相同、工作区干净；未新建分支或覆盖其他工作。
-- 原实现 `270c7a079d7f1220524e4e29bdf08e8f41d90964` 与交付 `80cf647...` 保留。本轮补测已完成32项构建/测试输入哈希（30原输入不变、1引擎调整、1新增测试）；提交/推送与提交blob核对随后记录在[M03 checkpoint补充](checkpoints/2026-10-11-M03.md#m03-独立验收补测-checkpoint2026-10-11)和Git日志/最终报告。只推当前功能分支。
-- main保护基准 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`，M02来源保护基准同起点；实现推送后实际ls-remote核对两者不变。不合并 main、不force push、不修改WHOCARE、不建PR/Release、不公开上传APK或私钥。
+- 原实现 `270c7a079d7f1220524e4e29bdf08e8f41d90964` 与交付 `80cf647...` 保留。本轮补测提交 `9c10962c87c894279c22f65ebaf56176fe62b7eb`（test(m03): cover subscription accumulation overflow），3新增/7修改/0删除，已仅推现有M03分支；实际远端HEAD一致、提交后工作区干净，32项构建/测试输入的提交blob哈希全部一致（30原输入不变、1引擎调整、1新增测试）。本次仅补记该交付核查，未改工程输入或重建；最终文档提交自身SHA以Git日志/最终报告为准，见[M03 checkpoint补充](checkpoints/2026-10-11-M03.md#m03-独立验收补测-checkpoint2026-10-11)。
+- main保护基准 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`，M02来源保护基准同起点；本次补测推送后实际ls-remote核对两者不变，文档推送后再次核对。不合并 main、不force push、不修改WHOCARE、不建PR/Release、不公开上传APK或私钥。
 
 ## Next Recommended Task
 

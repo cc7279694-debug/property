@@ -696,7 +696,14 @@
     "Huge renewal history end-to-end overflow (internal production accumulation boundary used instead)"
   ],
   "gitDelivery": {
-    "codeCommit": "Pending commit; self SHA reported in Git log/final response",
+    "codeCommit": "9c10962c87c894279c22f65ebaf56176fe62b7eb",
+    "commitMessage": "test(m03): cover subscription accumulation overflow",
+    "push": "PASS; only the existing M03 branch was pushed",
+    "originRefAfterPush": "9c10962c87c894279c22f65ebaf56176fe62b7eb",
+    "worktreeCleanAfterCodePush": true,
+    "committedInputHashesVerified": 32,
+    "protectedRefsUnchangedAfterPush": true,
+    "deliveryRecordCommit": "Documentation only; its own SHA is recorded in Git log/final response",
     "onlyPushBranch": "feat/m03-subscription-engine",
     "protectedMain": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a",
     "protectedSourceM02": "0169c76bbf0946a0400b96d00124b3de9aea1cc0"
