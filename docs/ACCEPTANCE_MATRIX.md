@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00/M01历史检查与独立验收、本轮M02实际执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
+本文件记录M00/M01历史检查与独立验收、M02既有实际执行结果及本次独立验收回写；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
 
-日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。下方M00/M01各节原阶段语句是历史记录；M02已另行授权及确认Q02/Q07，当前结果见末节，不把历史“未授权/未实施”误当本轮状态。
+日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。下方历史阶段语句不作为当前授权；本次只回写用户转交的M02独立验收结论，不重新运行Gradle、构建或设备验证，既有结果和未运行边界保留。
 
 ## 独立验收记录
 
@@ -102,9 +102,28 @@ NOT_RUN：业务Unit/Integration Test、Android Instrumentation Test、真实手
 
 原130案例保持NOT_RUN（含归档M01），既有执行结果只登记本节；M02～M23及16组补测保持NOT_RUN。Q02～Q06状态/期限不变，Q07只明确M01的模板适用边界，不关闭其他模块。M01已按用户转交的独立结论冻结；M02未授权，执行前须明确Q02/Q07，不自动进入。
 
+## M02 独立验收记录（2026-10-11）
+
+- 结论：**ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 来源：用户在当前会话明确转交的ChatGPT独立代码验收结论；Codex本次仅回写，不自行授予验收，也不以本地辅助审查代替独立验收。
+- 仓库：`cc7279694-debug/property`。
+- 评审分支：`feat/m02-project-cost-engine`。
+- 评审HEAD：`ff1a898eaf4da5068c36af3e1c0bdcbe61c0b1f7`；回写前实际确认本地与远端M02功能分支均匹配，工作区干净。
+- 独立检查范围：金额解析、日期计算、项目成本引擎、31项JUnit测试源码、RED/GREEN证据、核心文件哈希及Git范围；未发现阻塞性代码问题。
+
+保留NOTES及后续边界：
+
+1. **本次独立审查未在用户Windows本机重新运行Gradle测试。**本次Codex状态回写同样不重跑Gradle、构建或设备验证；下节保留此前实际执行结果，不把代码/证据审查记为新测试PASS。
+2. 原130条规划案例和16组完整跨模块补测仍NOT_RUN，原件不可变；Q02的M17/M18历史视图/总成本集成仍NOT_RUN，不因领域冻结而提前通过。
+3. Q03～Q06状态和处理期限保留：Q03长期100/1000日节点M21前，Q04提醒边界M20前，Q05图片往返M10/M12前，Q06持久回退M04设计/M12实施与故障验证，均未在本次实施或关闭。
+4. 未运行的Instrumentation、真机/API26/OEM、数据库/迁移/业务备份往返和其他未来能力保持原NOT_RUN / N/A边界；12条既有Lint版本提示不处理。
+5. M03尚未授权；本次只更新唯一CURRENT_STATE与本登记、提交并推送当前M02分支，不修改业务代码/WHOCARE，不合并main或进入M03。
+
+M02历史checkpoint与证据的READY_FOR_REVIEW/PENDING是当时交付状态，不改写原记录；当前正式结论见本节。验收回写提交自身SHA、推送与最终远端校验以Git日志/最终报告为准。
+
 ## M02 当前执行验收（2026-10-11）
 
-本轮用户已授权M02并正式确认Q02/Q07。起始基线 `a25a06899bd157988c3a4466d7162d8616fb0249`，分支 `feat/m02-project-cost-engine`；只实现纯Kotlin领域规则，保留M01空壳。状态 **READY_FOR_REVIEW；独立验收PENDING**，不自行ACCEPTED/FROZEN。上方M00/M01阶段限制保留为历史记录，当前有效限制见[M02契约](planning/M02_CONTRACT.md)。
+此前用户已授权M02并正式确认Q02/Q07。实施起始基线 `a25a06899bd157988c3a4466d7162d8616fb0249`，分支 `feat/m02-project-cost-engine`；只实现纯Kotlin领域规则，保留M01空壳。本节保留既有实际验证结果，交付时为READY_FOR_REVIEW；随后用户转交的独立结论为 **ACCEPTED / FROZEN — PASS WITH NOTES**，依据见上节，本次未重跑测试。历史阶段限制与本次状态回写授权区分，实施契约见[M02契约](planning/M02_CONTRACT.md)。
 
 | 原案例 / 当前补测 | 实际结果 | 实际断言与边界 |
 |---|---|---|
@@ -126,4 +145,4 @@ NOT_RUN：业务Unit/Integration Test、Android Instrumentation Test、真实手
 
 NOT_RUN / N/A：Instrumentation、设备安装/断网冷启动、业务Room/SQLite/迁移/Repository/完整备份往返，本轮纯领域范围没有对应能力；真机/API26/OEM保留M01未测NOTES；展示舍入/页面和M03～M23尚未实施。TypeScript/ESLint不适用原生Kotlin。NO-SOURCE不计测试PASS。
 
-Git/文档检查与最终交付见[M02 checkpoint](checkpoints/2026-10-11-M02.md)。交付后停止，等待ChatGPT独立验收，不进入M03或合并main。
+既有Git/文档检查与交付证据见[M02 checkpoint](checkpoints/2026-10-11-M02.md)。M02已按本次用户转交的独立结论冻结；本次仅回写两份状态文档后停止，不进入M03或合并main。
