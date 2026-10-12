@@ -1,6 +1,6 @@
 # 规格问题与实施风险
 
-日期：2026-10-12。依据实际完整原包和阅读版。原件保持不变；建议尚未确认的部分不作为新规则。M00～M03 已由用户转交独立验收冻结为 PASS WITH NOTES，当前另行授权 M04，范围见[M04 契约](planning/M04_CONTRACT.md)。M02/M03 独立审查未在用户 Windows 本机重跑 Gradle 的历史 NOTES 保留；Q02/Q07 在 M02 授权时正式确认，记录于[当前决策](DECISIONS.md)及[M02 契约](planning/M02_CONTRACT.md)，不以规格确认冒充实施或测试 PASS；Q03～Q06 保留原状态和处理期限，本地辅助审查不能替代独立验收。
+日期：2026-10-12。依据实际完整原包和阅读版。原件保持不变；建议尚未确认的部分不作为新规则。M00～M04 已由用户转交独立验收冻结为 ACCEPTED / FROZEN — PASS WITH NOTES；本轮 **M05 — READY_FOR_REVIEW** 已另行授权，范围见[M05 契约](planning/M05_CONTRACT.md)。起点 `aecbe86fce6e5c4375f2c35d2df8539df0a557bb`，来源 `feat/m04-room-storage-foundation`，当前 `feat/m05-ui-foundation`；仅页面/基础组件及真实存储状态，不改领域算法、数据所有者或schema，不进入M06。独立审查未在用户 Windows 本机重跑 Gradle或安装 APK 等历史 NOTES 保留；Q02/Q07 在 M02 授权时正式确认，记录于[当前决策](DECISIONS.md)及[M02 契约](planning/M02_CONTRACT.md)，不以规格确认冒充实施或测试 PASS；Q03～Q06 保留原状态和处理期限，本地辅助审查不能替代独立验收。
 
 ## Q01～Q06 状态与闸门
 
@@ -19,9 +19,11 @@ M02实际领域实现及Q02-V01～V03领域断言已PASS，证据见[当前验�
 
 ## Q07 — 原通用完成模板的适用性
 
-状态：USER_CONFIRMED，用户在M02授权时已正式确认通用模板适用性，本轮M04继续继承。原M02/M03只做领域引擎，却共用早期模块任务2里的真机/完整备份往返要求；完整导出/恢复直到M11/M12才产生。原M00通用完成句也含无数据变更时不适用的用户路径/备份要求。
+状态：USER_CONFIRMED，用户在M02授权时已正式确认通用模板适用性，本轮M05继续继承。原M02/M03只做领域引擎，却共用早期模块任务2里的真机/完整备份往返要求；完整导出/恢复直到M11/M12才产生。原M00通用完成句也含无数据变更时不适用的用户路径/备份要求。
 
-确认解释：每模块只执行已具备实施条件且符合当前范围的验证，同时满足自身真正要求。M02/M03 要求纯 Kotlin 测试、必要集成回归、Lint、构建和静态范围核查；没有 Room、业务界面、真实数据、备份能力，不提前做备份往返、数据库或没有实际目标的 Instrumentation Test。不适用项写 NOT_RUN / N/A 和原因，不把未来测试或 NO-SOURCE 算成 PASS。解释适用于后续模块，所有真实验证仍待对应模块执行；USER_CONFIRMED 不等于全面实施关闭。原文对照见[BASELINE_COMPARISON](planning/BASELINE_COMPARISON.md)，来源见[当前决策](DECISIONS.md)。M01/M02 的原验证及未测 NOTES 保持不变，M04已授权并要求真实Android存储测试；M05未授权。
+确认解释：每模块只执行已具备实施条件且符合当前范围的验证，同时满足自身真正要求。M02/M03 要求纯 Kotlin 测试、必要集成回归、Lint、构建和静态范围核查；没有 Room、业务界面、真实数据、备份能力，不提前做备份往返、数据库或没有实际目标的 Instrumentation Test。不适用项写 NOT_RUN / N/A 和原因，不把未来测试或 NO-SOURCE 算成 PASS。解释适用于后续模块，所有真实验证仍待对应模块执行；USER_CONFIRMED 不等于全面实施关闭。原文对照见[BASELINE_COMPARISON](planning/BASELINE_COMPARISON.md)，来源见[当前决策](DECISIONS.md)。历史验证及未测NOTES保持不变；M04底座已独立冻结，本轮M05已实际执行UI和原74 JVM/86 Android回归，结果仅登记当前验收，独立验收仍PENDING，M06未授权。
+
+M04独立NOTES继续约束后续工作：Q06完整切换/恢复/故障回退仍归M12；首次初始化中断的残留generation不得静默清除真实数据；M08 v1→v2迁移须同步调整既存库版本预检。M05本轮已实际验证初始化或真实读取失败的保护界面，无虚假正常空账本；当前READY_FOR_REVIEW、独立验收PENDING，实际结果另行登记，不关闭Q06或后续问题。
 
 ## 后续风险登记（当前不实施）
 
@@ -35,7 +37,7 @@ M02实际领域实现及Q02-V01～V03领域断言已PASS，证据见[当前验�
 
 ### M09 订阅流程风险：本次独立审查登记，当前不实施
 
-来源：用户在 M03 补测时转交的 ChatGPT 独立审查，评审 HEAD `80cf6473c21d5933963dd55b02dfbf9f97297849`，当时结论为 CHANGES REQUESTED。M03 补测授权仅累计溢出及相关最小实现/证据，同时登记下列风险；随后 M03 已独立复验冻结。当前 M04 仍不据此改变订阅状态语义或进入 M09。继承[DOMAIN C10](planning/original-v1/lithic_v1_plan/docs/specs/DOMAIN_CONTRACT.md)和[原 M09 计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m09.md)；以下均是待解释/验证边界，不是新增功能或已通过案例。
+来源：用户在 M03 补测时转交的 ChatGPT 独立审查，评审 HEAD `80cf6473c21d5933963dd55b02dfbf9f97297849`，当时结论为 CHANGES REQUESTED。M03 补测授权仅累计溢出及相关最小实现/证据，同时登记下列风险；随后 M03 已独立复验冻结。当前 M05 仍不据此改变订阅状态语义或进入 M09。继承[DOMAIN C10](planning/original-v1/lithic_v1_plan/docs/specs/DOMAIN_CONTRACT.md)和[原 M09 计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m09.md)；以下均是待解释/验证边界，不是新增功能或已通过案例。
 
 - **STOPPED 后重新启用的流程边界。**当前[引擎](../app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt)按观察日最近状态计算，[结构校验](../app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt)拒绝同日重复状态，但未限制不同日期的 STOPPED → ENABLED；该序列在已有有效覆盖时可重新得到 ACTIVE。领域可计算不等于已授权提供“停止后恢复”用户入口。M09 须明确已停止记录的操作、历史归档与纠错边界，落实后再验证，不在本轮擅自把 STOPPED 定为永久终态或新增恢复功能。**NOT_RUN（M09 流程）**：例如覆盖 `[2026-01-01,2026-02-01)`、01-10 停止、01-20 重新启用时的入口许可、历史分组与成本/实际天数一致性；覆盖外启用不得虚构付款或当前有效套餐。关联 M09-T03/T04/T06，期望以 M09 明确解释为准。
 

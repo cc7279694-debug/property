@@ -256,6 +256,31 @@ elapsed 使用 Long epochDay 半开覆盖与 ENABLED 状态段求交并集，含
 
 原 C03 首次启动记录时区要求继承；Application 后台装配负责启动时捕获设备时区，后续读取持久 zone。用户界面仍为 M01 占位页，正式存储错误界面留待 M05；初始化状态/错误由容器明确保存并传播，不能默默返回空账本。
 
+## 2026-10-12 — M05 只读三入口、存储门控与数值展示
+
+**状态：本轮明确授权的最小工程选择；继承已冻结V1与M00～M04，M05独立验收尚待进行。**
+
+### Decision
+沿既有Nav3宿主演进，仅Home/Review/Settings和只读ProjectList。rememberNavBackStack保存路线身份；合法栈为[Home]或[Home,二级/其他主Tab]，切Tab替换，重复选择不入栈。保留旧Skeleton的序列化类名，已解码非法栈归Home。
+
+Application继续是唯一持久存储所有者；ViewModel只观察storageState并通过既有Repository/SettingsStore在IO读取。快照和zone均成功才Ready；初始化/读取失败是保护性错误，不是空账本。取消继续传播，UI清理不关闭AppContainer/generation，退出由MainActivity.finish落实。
+
+### Context
+用户附件[M05契约](planning/M05_CONTRACT.md)锁定页面/组件、真实数据/错误及设备验证；起点为M04验收回写 `aecbe86fce6e5c4375f2c35d2df8539df0a557bb`，本轮 `feat/m05-ui-foundation`。M04独立NOTES要求M05失败不伪称正常空库；原UI U01～U03/U10与DOMAIN C02提供视觉和显示边界。
+
+### Alternatives
+在Compose重开Room/DataStore；失败用空列表或零值兜底；每次选Tab累积路线；复制另一套导航；M05提前汇总成本或展示虚构订阅/图表/保存；为三入口增加DI或完整设计框架。
+
+### Reason
+让页面只反映已读取的本地事实，保持M04生命周期与一致快照，最小有界栈便于返回和恢复。通用组件不计算成本、不改变数值，不把合成表单回调当业务保存。原C02规定日均非零绝对值小于一分整体显示微值提示，不能只检查舍入到0。
+
+### Consequences
+普通金额BigDecimal HALF_UP两位/toPlainString；null为—，0为¥0.00，日均±0.005等微值显示<¥0.01/−<¥0.01及明确语义。38/24/16/14sp、六级间距、低饱和蓝灰/中性浅深和系统字体；无新Logo或主题设置。Name/Amount/Date受控、错误和IME仅组件；合成表单在androidTest。
+
+列表状态只陈述“未记录结束日期/已记录结束日期”和实际日期，不仅凭endedOn非空宣称已经结束：M04允许未来结束日期，冻结领域引擎在结束日前仍可贡献，M05不新增业务时钟/状态公式去覆盖规则。对应实际边界补测另登记验收；不修改Repository校验或结束流程。
+
+必要依赖精确Compose测试1.9.5匹配既有BOM；显式Lifecycle2.10.0是M04已解析版本。Espresso3.7.0只用于androidTest，以显式编译依赖调用同步真实KEYCODE_BACK；此前Compose测试运行已解析该版本，未升级生产依赖或更改生产返回逻辑。Debug运行依赖只增加ui-test-manifest及其空测试Activity，无旧坐标升级，release不加该宿主；最终APK另检查生产无JUnit/合成表单。既有schema/成本引擎/owner/备份排除不改，Q03～Q06与M09期限保留。M06须独立验收及新授权，不能因组件具备回调就直接开始。
+
 ## 后续新增/变更格式
 
 每条按以上日期/状态/Decision/Context/Alternatives/Reason/Consequences格式记录，增加来源与授权证据；列出受影响模块、schema、format、图表和验证案例。取代决定保留旧记录标 Superseded；不能以新想法擅自改整个 Roadmap。

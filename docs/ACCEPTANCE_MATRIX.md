@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00～M04历史检查、实际执行与独立验收；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
+本文件记录M00～M05实际执行及M00～M04独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全NOT_RUN，不在原件改结果。
 
-日期：2026-10-12。PASS为已有实际执行记录的通过，NOT_RUN为未执行，PENDING为尚待确认。M00～M04正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；M04依据见末尾独立代码验收记录，原READY_FOR_REVIEW/PENDING交付与此前模块历史保留。独立冻结由用户转交ChatGPT结论授予，执行者不自行授予。本次仅回写两份状态文档，不重跑Gradle/构建/安装；未运行边界、M02/M03未重跑Windows Gradle及M04未重跑Windows Gradle或安装APK的独立审查NOTES均保留，原130案例NOT_RUN不改。
+日期：2026-10-12。PASS为实际执行通过，NOT_RUN为未执行，PENDING为尚待独立确认。M00～M04正式结论均为ACCEPTED / FROZEN — PASS WITH NOTES；本轮 **M05 — READY_FOR_REVIEW，独立验收PENDING**。实际82 JVM/118 Android、设备及组件补测登记在末尾M05节，历史交付/独立审查未重跑本机测试等NOTES完整保留。执行者不自行授予冻结；原130和16完整跨模块补测继续NOT_RUN。
 
 ## 独立验收记录
 
@@ -268,3 +268,28 @@ NOT_RUN：真机/API26/OEM，M08真实v1→v2迁移、M10图片、M11备份格�
 6. Q03～Q05原期限、M09 STOPPED重新启用和多期预付默认停止两项风险及后续验收边界保持。原130案例及16组完整跨模块补测仍NOT_RUN，历史交付报告/JSON/checkpoint与归档不改写。
 
 本次仅更新唯一CURRENT_STATE与本登记，核查差异/敏感信息/Git后提交并推送当前M04功能分支；无产品源码、配置或数据层变更，不合并main、不修改WHOCARE、不开始M05。正式结论取代先前交付PENDING的当前效力，旧交付历史完整保留；回写提交自身SHA及最后远端核对以Git日志与最终报告为准。
+
+## M05 当前执行验收（2026-10-12）
+
+授权：用户M05附件；SHA-256 `419d5a963729d1c93f94aa935f2a189f455da0a1aa331de4e92119bc10968ece`。起点 `aecbe86fce6e5c4375f2c35d2df8539df0a557bb`、来源feat/m04-room-storage-foundation，本轮feat/m05-ui-foundation，开工已实际核对本地/远端一致且干净。编码前[M05契约](planning/M05_CONTRACT.md)固定最小结构；当前 **READY_FOR_REVIEW**，ChatGPT独立验收 **PENDING**。M00～M04冻结历史保留，不以本地辅助审查替代独立结论。
+
+| 原案例 | 当前实际结果 | 执行证据及边界 |
+|---|---|---|
+| M05-T01 only_three_primary_destinations | PASS | 仅现在/回看/设置，标签/选中与内容一致；复选有界不增长；二级顶部/真实KEYCODE_BACK及实际边缘手势回Home；根真按键退出Activity |
+| M05-T02 empty_screen_has_no_fake_metrics | PASS | 真Room默认两类别/无项目；合成项目与事件进入真实Repository后显示非空；Initializing/Failed/实际关闭DB与设置读取异常不成空库/零值/正常底栏；无假趋势/订阅读取 |
+| M05-T03 large_text_has_no_blocked_action | PASS | 实际360px/density160/font_scale2.0；三Tab/滚动/二级返回/长金额无溢出/48dp语义；IME显示的合成表单错误、保存和返回回调实际可达，3项补测全PASS；不代表M06业务保存 |
+| M05-T04 back_stack_restores | PASS（已执行场景） | 四NavKey保存/恢复，旧Skeleton及非法已解码栈归Home；ActivityScenario.recreate、横竖旋转；HOME后UID SIGKILL使旧PID消失、新PID恢复Settings；force-stop另记COLD回Home。真实内存压力自动LMK NOT_RUN，不笼统覆盖任意损坏保存数据 |
+
+完整 `:app:testDebugUnitTest :app:connectedDebugAndroidTest :app:lintDebug :app:assembleDebug --max-workers=2 --console=plain` 退出0，**82 JVM＋118 Android＝200唯一方法及200条PASS，0失败/错误/跳过**。保留并实际执行原74 JVM与86 Android，新增8 AmountFormatter及32 UI（Components8/Navigation15/Storage7/Activity2）。首个完整GREEN3m27s实际运行全部；仅私有AVD改软件导航后再完整3m54s，118 Android实跑、JVM等up-to-date且源码/原XML一致。补测3个既有方法51s/3PASS、0新增方法；仅专用API36 emulator-5596。
+
+真实RED金额8/7失败、UI31/30行为失败；未来结束日期1项断言失败后仅改事实标签。初期编译/runner配置错误不算RED；SystemUI ANR覆盖与返回注入不同步单列，Espresso同步真实按键修正测试驱动后孤立3/3和完整118/118通过。UI测试初始/最终整个文件hash不同，必要新增边界/实际Theme/截图及驱动同步已说明，未删失败断言或改生产Nav避过失败。
+
+实际设备：安装最终APKSuccess，断网COLD/Status ok；360dp/200%三入口与只读列表、浅深、旋转、真正边缘返回PASS。HOME核对Launcher前台，am kill请求旧PID仍存活不算死亡；UID SIGKILL实际死亡模拟4568消失、新PID5103恢复Settings，另force-stop COLD回Home。同代pointer/ready/settings hash及安装APK hash一致。原hw.mainKeys=yes缺软件边缘handler，旧失败不冒PASS；仅本项目AVD设no保留userdata重启后已实际复验，配置保留。临时屏幕/字体/IME/明暗/旋转/网络均恢复，没有操作手机/其他AVD。
+
+最终APK code3/0.1.0-m05-debug、11,837,748字节、SHA-256 `c70b89fd82b9480bbad8d1e0f06805317f6d6c002637583f5299b0fb769b790e`，包名com.cooper.lithic.debug。APK/合并Manifest/备份九域排除/Wrapper、18生产类、无测试框架/合成表单、v2签名PASS；无新增INTERNET，Debug新增非launcher/exported空ComponentActivity测试宿主，Release只配置排除/未构建。主依赖121→122仅ui-test-manifest1.9.5、0旧版本提升/移除，必要Lifecycle/Compose/Espresso精确依赖理由见[工具链](TOOLCHAIN_LOCK.md)。Lint0 errors/20 warnings＝17版本提示＋3旧占位UnusedResources，不抑制/顺便升级。
+
+Room四表v1与原schema hash不变；50冻结输入、旧74/86测试源码不改，本轮70构建输入登记；唯一M04存储owner与真实Repository读取不改。ZIP CRC/43字节hash/130NOT_RUN/16完整补测NOT_RUN及Q03～Q06/M09风险体保留。完整文件清单、逐项200测试、来源/hash/依赖/设备/截图与Git范围见[M05报告](evidence/M05-verification.md)、[JSON](evidence/M05-verification.json)与[checkpoint](checkpoints/2026-10-12-M05.md)。
+
+NOT_RUN：真机、API26、OEM、TalkBack完整审查、真实内存压力自动回收、Release正式签名升级、M06 CRUD/写后刷新、M08迁移/版本预检集成、M10图片、M11/M12备份恢复、M13汇总及其他未来业务。Q03～Q06期限及M09两风险不变，Q06仍ENGINEERING_REQUIRED；M04残留代安全与M08预检NOTES继承。TypeScript/ESLint不适用，NO-SOURCE不计PASS。
+
+只提交并推送feat/m05-ui-foundation；提交自身SHA/推送后远端一致与干净工作区以Git日志/最终报告为准。不合并main、不force push、不改WHOCARE或公开APK。M05交付后立即停止等待独立验收，不授予ACCEPTED / FROZEN，不进入M06。

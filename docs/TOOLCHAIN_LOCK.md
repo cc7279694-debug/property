@@ -96,3 +96,32 @@ M02 继续使用 M01 Debug身份和版本名/code1，未作为新安装版本发
 Lint0 errors/13 warnings：OldTargetApi1、AndroidGradlePluginVersion2、GradleDependency5、NewerVersionAvailable5，均版本提示；相比此前12新增Coroutines版本提示，不抑制/升级。最终APK code2/0.1.0-m04-debug检查、v2签名、API36专用设备安装和两次断网冷启动及同代重开PASS；网络恢复。无新增用户数据访问/网络权限，JUnit与AndroidX Test未打包。实际APK、schema、依赖差异、54输入和结果/日志哈希见[M04证据](evidence/M04-verification.json)。
 
 NOT_RUN：真实手机、API26运行、OEM备份行为；M08显式迁移、M10图片、M11/M12完整备份/恢复。不能用本次API36实测或配置minSdk26替代这些验证。
+
+## M05 UI 与测试增量（2026-10-12）
+
+本轮从 M04 验收回写 `aecbe86fce6e5c4375f2c35d2df8539df0a557bb`、`feat/m04-room-storage-foundation` 继续，当前 `feat/m05-ui-foundation`；范围见[M05契约](planning/M05_CONTRACT.md)。M00～M04 独立冻结与历史 NOTES 保留。以下为本轮最终工具链/执行证据，状态READY_FOR_REVIEW，M05独立验收PENDING；不自行授予ACCEPTED / FROZEN。
+
+| 精确配置 | 职责与核对依据 |
+|---|---|
+| Lifecycle ViewModel / runtime-compose 2.10.0 | 显式 `implementation`，用于 UI ViewModel 生命周期与 `collectAsStateWithLifecycle`；M04 主运行依赖已解析到该版本，本轮未提升其选择版本 |
+| Compose ui-test-junit4 1.9.5 | `androidTestImplementation`，使用固定 Compose BOM 并精确声明测试版本；与现有 Compose UI 1.9.5 对齐 |
+| Compose ui-test-manifest 1.9.5 | 仅 `debugImplementation` 的空测试宿主；不是正式业务页面，Release 仅按配置排除，本轮未构建 Release APK |
+| Espresso core 3.7.0 | 仅 `androidTestImplementation`；Compose 测试运行配置已解析到该版本，显式声明以编译调用真实 `KEYCODE_BACK` 注入及同步，未引入生产返回调度修复 |
+
+官方核对入口为[Compose UI发布](https://developer.android.com/jetpack/androidx/releases/compose-ui)、[Lifecycle发布](https://developer.android.com/jetpack/androidx/releases/lifecycle)、[AndroidX Test稳定表](https://developer.android.com/jetpack/androidx/releases/test)与[Compose测试配置](https://developer.android.com/develop/ui/compose/testing)。本轮已核对所用版本POM、实际依赖选择与兼容构建/运行结果；仅声明当前冻结组合所需坐标，不追随更新提示升级。
+
+实际配置见[版本目录](../gradle/libs.versions.toml)与[app依赖](../app/build.gradle.kts)。主运行解析报告为 `build/m05-evidence/dependencies-main-final.log`，Android 测试解析报告为 `build/m05-evidence/dependencies-final.log`，两者不能混算运行增量。主 `debugRuntimeClasspath` 与 M04 对比为 **121→122 个唯一 module**：仅新增 `androidx.compose.ui:ui-test-manifest:1.9.5`，0已有版本提升、0移除。新增显式 Lifecycle 声明继续使用原已选版本；Espresso/JUnit/AndroidX Test与合成表单不进入主 APK，详情见 `build/m05-evidence/runtime-dependency-delta.json` 和 `build/m05-evidence/apk/extra-verification.json`。
+
+原 Gradle8.14.3、AGP8.13.2、Kotlin2.3.10、JDK17、ComposeBOM2025.11.01、Navigation3 1.0.1、Room2.8.5、KSP2.3.6、DataStore1.2.1、Coroutines1.10.2、SDK26/36/36、BuildTools36.0.0 均继承。M04 的50项受保护构建输入、既有74 JVM/86 Android测试源码及schema v1原哈希保持；没有修改M04数据所有者、Repository、备份XML或源Manifest。
+
+完整 `:app:testDebugUnitTest :app:connectedDebugAndroidTest :app:lintDebug :app:assembleDebug --max-workers=2 --console=plain` 两轮退出0：`green-hardware-nav.log`用时3m27s，JVM与全部Android实际执行；软件导航AVD重启后 `green-full.log`/`green-software-nav.log`用时3m54s，全部118 Android重跑，JVM/构建为UP-TO-DATE，继承未变化测试源码与先前实际执行XML，不冒称再次运行JVM。82 JVM（74继承＋8金额展示）＋118 Android（86继承＋32 UI）为200个唯一测试方法，全PASS、0失败/错误/跳过，源码方法集合与XML逐一匹配。证据为 `green-summary.json`、`green-native-0.xml`及[最终验证JSON](evidence/M05-verification.json)。初期编译/测试宿主与runner配置问题不计行为RED；金额8项/7失败与首轮Android31项/30失败有实际记录。测试返回驱动最终使用Espresso同步真按键，三个相关案例先独立3/3通过，不改生产导航/返回逻辑遮蔽问题；未来结束日期补测通过事实标签修正，未改冻结领域/Repository规则。
+
+当前Lint为0 errors/20 warnings：17版本提示（OldTargetApi1、AndroidGradlePluginVersion2、GradleDependency9、NewerVersionAvailable5）＋3个旧M01 `skeleton_title/skeleton_version/skeleton_notice` 的UnusedResources。保留警告，不清理已冻结资源、不抑制或顺便升级。测试/主源码编译的NO-SOURCE不计测试PASS。
+
+本地 Debug APK为code3 / `0.1.0-m05-debug`，11,837,748字节，SHA-256 `c70b89fd82b9480bbad8d1e0f06805317f6d6c002637583f5299b0fb769b790e`；APK/合并Manifest/备份排除/Wrapper、18个生产描述符及v2签名已有实际检查。Debug合并清单含主MainActivity与 **exported=true、非launcher的空 `androidx.activity.ComponentActivity` 测试宿主**；源Manifest不变不等于合并清单不变。仅原签名级内部接收器权限，无新增INTERNET；测试框架及合成表单未打包，Release排除仅是配置结论。
+
+专用API36 `emulator-5596` 的最终断网冷启动、明暗/三Tab、旋转、真实边缘手势、后台进程死亡恢复及独立force-stop冷启均PASS。旧 `hw.mainKeys=yes` 使EdgeBackGestureHandler未附着，先前滑动不计PASS；仅将本项目私有AVD改为 `hw.mainKeys=no`、保留userdata后重启，最终处理器启用/附着与手势返回均已验证，软件导航配置有意保留，其他设备未操作。后台应用UID SIGKILL令PID4568消失，恢复新PID5103并回Settings；区别于首次未终止的am kill尝试、Activity recreate和force-stop，不宣称低内存自动回收。
+
+额外3个原UI方法在实际360×800/density160（360dp）、font_scale2.0、IME显示设置1下补跑，用时51s，3/3 PASS，0失败/错误/跳过，不增加200唯一测试总数；原设置均恢复，含IME显示设置1→0。主执行者已查看键盘、错误、保存可达及其他设备像素，9张PNG整理到 `docs/evidence/m05-ui/`，来源/hash在最终JSON。设备全部流程后generation/ready/设置SHA及安装APK SHA均稳定；网络、旋转、night、wm尺寸/density/font恢复值见 `build/m05-evidence/device-ui.json` 与 `large-native-config.json`。原ANR/重启/驱动失败保留本地诊断，不据最终PASS抹去失败历史。
+
+NOT_RUN：真机、API26运行、OEM行为、TalkBack完整审查、真实低内存自动回收、Release实际构建/正式签名升级、M06 CRUD/写后刷新、M08迁移、M10图片、M11/M12备份恢复、M13汇总及未来完整模块案例。Q03～Q06及M09两风险期限保留，M06未授权。M05为READY_FOR_REVIEW，适用实现/验证完成，Git交付由主执行者在当前分支完成并以最终Git/用户报告记录；独立验收PENDING，本轮不自行冻结或继续M06。

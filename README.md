@@ -2,11 +2,11 @@
 
 纯本地 Android 长期成本记录 App，观察具体项目的陪伴时间、真实投入和日均成本。
 
-M00～M03 已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES；独立审查未重跑本机 Gradle 等历史 NOTES 保留。当前 M04 已实现并交付等待独立验收：四表 Room v1、事务与幂等、固定记录时区和私有 generation 初始指针。M01 占位界面保留，数据层由 AppContainer 统一持有，业务操作界面尚未实现。实际进度与验证结果见[当前状态](docs/CURRENT_STATE.md)。
+M00～M04 已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES；独立审查未重跑本机 Gradle或安装 APK 等历史 NOTES 保留。本轮 **M05 — READY_FOR_REVIEW** 已授权：演进「现在｜回看｜设置」三入口、基础视觉组件、真实数据空状态、存储失败呈现及可恢复导航。继承四表 Room v1、固定记录时区和 AppContainer 唯一数据所有者，不开发 CRUD、正式详情、首页成本汇总或备份恢复。起点 `aecbe86fce6e5c4375f2c35d2df8539df0a557bb`，来源 `feat/m04-room-storage-foundation`，当前 `feat/m05-ui-foundation`；边界见[M05 契约](docs/planning/M05_CONTRACT.md)，实际进度与验证结果见[当前状态](docs/CURRENT_STATE.md)。
 
 ## 工程入口与本地构建
 
-工程为单 `:app` 模块、单 Activity。正式 applicationId 为 `com.cooper.lithic`，Debug 为 `com.cooper.lithic.debug`；工程验证版使用临时图标，占位页只显示“砺石 LITHIC”“M01 工程验证版”“业务功能尚未接入”。
+工程为单 `:app` 原生模块，业务页面由 MainActivity 承载。正式 applicationId 为 `com.cooper.lithic`，Debug 为 `com.cooper.lithic.debug`；保留临时工程图标，M05 页面/组件及实际回归已交付READY_FOR_REVIEW，独立验收PENDING。Debug 合并清单另含exported非launcher空ComponentActivity测试宿主，已在最终APK证据登记，不当作正式业务页面；完整备份恢复尚未交付，仅使用合成或可丢弃数据。
 
 使用本机 JDK 17 和 Android SDK，按[工具链锁定记录](docs/TOOLCHAIN_LOCK.md)配置环境。SDK 路径写入未跟踪的 `local.properties`；不要提交本机路径配置、签名密钥、缓存或 APK。根目录构建入口：
 
@@ -36,7 +36,9 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 | M01 历史任务契约 | [M01_CONTRACT.md](docs/planning/M01_CONTRACT.md) |
 | M02 历史任务契约 | [M02_CONTRACT.md](docs/planning/M02_CONTRACT.md) |
 | M03 历史任务契约 | [M03_CONTRACT.md](docs/planning/M03_CONTRACT.md) |
-| 当前 M04 任务契约与 Q06 设计 | [M04_CONTRACT.md](docs/planning/M04_CONTRACT.md) |
+| M04 历史任务契约与 Q06 初始设计 | [M04_CONTRACT.md](docs/planning/M04_CONTRACT.md) |
+| 当前 M05 页面与视觉契约 | [M05_CONTRACT.md](docs/planning/M05_CONTRACT.md) |
+| M05 实际测试、截图与全部文件 | [M05报告](docs/evidence/M05-verification.md) / [JSON](docs/evidence/M05-verification.json) / [checkpoint](docs/checkpoints/2026-10-12-M05.md) |
 | 实际工具链版本与核查来源 | [TOOLCHAIN_LOCK.md](docs/TOOLCHAIN_LOCK.md) |
 | 规格问题与风险 | [SPEC_ISSUES.md](docs/SPEC_ISSUES.md) |
 | 原件与当前文档差异 | [BASELINE_COMPARISON.md](docs/planning/BASELINE_COMPARISON.md) |
@@ -44,4 +46,4 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 
 原始[阅读版](LITHIC_V1_产品与开发规划.md)、[完整ZIP](docs/planning/original-v1/source.zip)和[解包原件](docs/planning/original-v1/lithic_v1_plan/README.md)均保留来源字节。24份计划、130条原案例和6份规格通过规划入口访问；原件中的AGENTS/状态不是当前执行指令或状态。Q02/Q07 在 M02 获得的用户确认解释继承当前决策，不改写原件；各轮实际结果仅写入当前验收登记。
 
-M04 交付后停止，等待独立验收；M05 尚未授权。完整备份格式和覆盖恢复仍归 M11/M12，Q06 不因初始指针验证而关闭；不得为演示数据层新增业务页面或把未来模块验证标为 PASS。
+M05 交付后停止等待独立验收，M06 尚未授权。原43份规划、130条案例及16组完整跨模块补测原件保持，原案例/完整补测仍 NOT_RUN；当前模块实际结果另行登记，原件不改PASS；M05实际200项PASS及3项补测另行登记，独立验收仍PENDING。完整备份格式和覆盖恢复仍归 M11/M12，Q06保持 ENGINEERING_REQUIRED，Q03～Q05期限及M09两项流程风险不变；不因初始底座冻结而关闭未来验证，不为演示新增虚构记录或无动作按钮。

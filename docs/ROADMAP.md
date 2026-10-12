@@ -2,11 +2,11 @@
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-本表已按完整包校对精确前置验收依赖，原案例和更细文件/接口/任务边界以逐模块链接为准。M00～M03 已由 ChatGPT 独立验收为 ACCEPTED / FROZEN — PASS WITH NOTES；本轮用户另行授权 M04 存储底座。M05～M23 未获授权，执行进度和验证结果以 [CURRENT_STATE.md](CURRENT_STATE.md) 为准；M02/M03 独立审查未在用户 Windows 本机重跑 Gradle 的历史 NOTES 保留于验收登记。
+本表已按完整包校对精确前置验收依赖，原案例和更细文件/接口/任务边界以逐模块链接为准。M00～M04 已由 ChatGPT 独立验收为 ACCEPTED / FROZEN — PASS WITH NOTES；本轮用户另行授权 **M05 — READY_FOR_REVIEW**，精确范围见[M05 契约](planning/M05_CONTRACT.md)。M06～M23 未获授权，执行进度和验证结果以 [CURRENT_STATE.md](CURRENT_STATE.md) 为准；独立审查未在用户 Windows 本机重跑 Gradle或安装 APK 等历史 NOTES 保留于验收登记。
 
 ## 执行顺序与依赖解释
 
-原总计划推荐编号串行。本仓库仍按编号逐模块授权与停止：M04 所需的 M02/M03 独立验收与本轮授权已满足，Q02/Q07 已确认解释继续继承，Q06 本轮只落实设计与首次数据集机制。M04 交付后停止等待独立验收，不自动进入 M05。下面第三列是原包精确前置验收依赖；编号串行/单模块授权是执行闸门，两者不混为同一张依赖表。
+原总计划推荐编号串行。本仓库仍按编号逐模块授权与停止：M05 所需的 M01/M04 独立验收与本轮授权已满足；起点 `aecbe86fce6e5c4375f2c35d2df8539df0a557bb`，来源 `feat/m04-room-storage-foundation`，当前 `feat/m05-ui-foundation`。本轮仅页面骨架、基础组件、真实存储状态与恢复导航，不做 M06 CRUD或后续汇总/图表；Q02/Q07 已确认解释继续继承，Q03～Q06 期限及 M09 两项风险不变，Q06完整切换/恢复仍归M12。M05 交付后停止等待独立验收，不自动进入 M06。下面第三列是原包精确前置验收依赖；编号串行/单模块授权是执行闸门，两者不混为同一张依赖表。
 
 24计划的“必须先验收”与原JSON逐条一致，无前向依赖或环。后续还需读原计划、引用规格、适用验收、当前澄清和实际代码，不能只凭路线表开始工程。
 
@@ -49,7 +49,7 @@
 | G3 | M21 | 两种通知的授权、去重、过期、重建验证；不承诺省电下准点 |
 | G4 | M23 | 升级、旧格式、故障、小屏、长历史、签名交付与独立验收 |
 
-以上全部是计划门槛，当前均未执行。M06/M09 Debug 演示不等于 G1 可长期使用。
+以上仍是计划门槛，尚未宣告任何门槛整体通过；M05 READY_FOR_REVIEW不等于 G0 已独立验收，未执行的验证仍为 NOT_RUN。M06/M09 Debug 演示不等于 G1 可长期使用。
 
 ## 版本配对计划
 

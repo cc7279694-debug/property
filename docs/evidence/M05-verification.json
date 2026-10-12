@@ -1,0 +1,2536 @@
+{
+  "module": "M05",
+  "startedOn": "2026-10-12",
+  "recordedOn": "2026-10-12",
+  "status": "READY_FOR_REVIEW",
+  "independentReview": "PENDING; local auxiliary checks do not grant acceptance",
+  "branch": "feat/m05-ui-foundation",
+  "sourceBranch": "feat/m04-room-storage-foundation",
+  "baseCommit": "aecbe86fce6e5c4375f2c35d2df8539df0a557bb",
+  "requestSha256": "419d5a963729d1c93f94aa935f2a189f455da0a1aa331de4e92119bc10968ece",
+  "scope": "native read-only three-tab UI, bounded saved navigation, truthful storage gates and basic components; no M06",
+  "green": {
+    "exitCode": 0,
+    "jvmTests": 82,
+    "androidTests": 118,
+    "totalDistinctTests": 200,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "existingJvmRegression": 74,
+    "existingAndroidRegression": 86,
+    "newJvmTests": 8,
+    "newAndroidTests": 32,
+    "methodToResultMatch": "PASS; exact class/method sets compared to Kotlin @Test source",
+    "jvmCases": [
+      {
+        "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "name": "large_aggregate_is_exact_and_never_uses_scientific_notation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "name": "exact_one_cent_and_larger_daily_rates_use_normal_rounding",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "name": "real_zero_has_two_decimal_places",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "name": "ordinary_amount_rounds_half_up_with_both_signs",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "name": "missing_amount_is_not_a_zero_amount",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "name": "every_nonzero_daily_rate_below_one_cent_remains_explicitly_nonzero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "name": "high_precision_value_is_only_formatted_without_changing_numeric_input",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "name": "ordinary_half_cent_is_rounded_and_not_a_daily_rate_boundary",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_out_of_range_numbers",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "accepts_largest_single_amount",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "direct_money_construction_cannot_bypass_amount_limits",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_excess_precision_without_rounding",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "money_precision_and_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "rejects_non_decimal_and_signed_input",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.model.MoneyParserTest",
+        "name": "parses_exact_non_negative_cny",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "recorded_zone_uses_its_own_calendar_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.core.time.BusinessClockTest",
+        "name": "fixed_business_date_drives_project_evaluation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "dated_event_does_not_rewrite_earlier_days",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "negative_cost_is_not_clamped",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_gross_outlay_overflow",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_end_date_before_start",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v01_ended_snapshot_uses_historical_observation_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_installment_does_not_restart_or_extend_project",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "end_day_removes_current_contribution",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "date_span_is_not_narrowed_to_int_or_rounded_to_zero",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "rejects_recovery_overflow",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "refund_is_separate_from_the_original_outlay",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "leap_day_is_a_real_natural_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "same_day_is_one_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "empty_event_list_is_valid_zero_cost",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "aggregate_can_exceed_single_event_limit",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "post_end_refund_keeps_duration",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "prepaid_money_before_start_has_no_effective_daily_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "q02_v02_refund_changes_only_its_occurrence_day_and_after",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "zero_cost_is_effective_and_contributes_while_active",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "installments_count_only_after_their_real_payment_day",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "name": "unordered_same_day_events_are_all_counted_once",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "standard_purchased_days_overflow_fails_without_wrapping",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "confirmed_paid_cents_overflow_fails_without_wrapping",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "two_real_payments_use_same_accumulation_in_engine",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "confirmed_paid_cents_reaches_long_max_exactly",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "largest_cycle_multiple_below_long_max_is_safe_then_next_cycle_fails",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "name": "standard_purchased_days_reaches_long_max_at_arithmetic_boundary",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_year_natural_366_is_distinct_from_standard_365",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "only_three_fixed_cycles_exist",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "future_pause_and_stop_do_not_change_the_past",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "resume_after_expiry_does_not_create_payment",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "leap_day_start_reaches_365_on_february_27",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "expired_has_zero_current_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_at_max_date_expires_without_plus_days_overflow",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "unordered_records_produce_identical_history",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_future_without_current_coverage_is_expired",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "quarterly_standard_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "later_real_payment_is_legal_input_but_unknown_to_earlier_observation",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "observation_before_all_facts_has_no_cost_or_elapsed_days",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_purchase_not_elapsed_year",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "annual_pause_excludes_ten_days_and_next_real_period_reaches_365",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "monthly_standard_rate",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "zero_amount_is_not_a_real_renewal",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_next_rate_does_not_start_early",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "even_identical_same_day_states_require_correction",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "duplicate_same_day_states_are_rejected_in_both_orders",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "coverage_gap_is_not_counted_or_active",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_days_use_long_and_do_not_enumerate_dates",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_history_has_explicit_no_record_reason",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "nested_and_duplicate_coverage_are_rejected",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "default_stop_uses_paid_end_and_preserves_preboundary_service",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "stored_standard_days_must_match_fixed_cycle",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "paused_without_coverage_remains_paused",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "fractional_rate_keeps_decimal128_precision_and_nonzero_value",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "prepaid_cycle_change_starts_at_its_effective_boundary",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "overlaps_rejected",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "writing_rejects_future_payment_using_business_today",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reversed_coverage_is_rejected",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "reminder_boundary_does_not_extend_paid_coverage",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "empty_coverage_is_rejected",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "interval_start_state_boundary_counts_enabled_date_only_once",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "pause_does_not_erase_paid_history",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "payment_today_and_future_service_are_valid",
+        "result": "PASS"
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "name": "explicit_early_stop_excludes_its_first_stopped_day",
+        "result": "PASS"
+      }
+    ],
+    "androidCases": [
+      {
+        "class": "com.cooper.lithic.app.AppContainerTest",
+        "name": "actual_application_onCreate_starts_its_private_default_storage",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.app.AppContainerTest",
+        "name": "cancelled_initialization_propagates_cancellation_and_never_reports_ready",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.app.AppContainerTest",
+        "name": "concurrent_readers_wait_for_one_background_start_and_captured_zone",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.app.AppContainerTest",
+        "name": "start_initializes_complete_storage_without_an_explicit_read",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.app.AppContainerTest",
+        "name": "open_before_start_does_not_implicitly_create_storage",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.app.AppContainerTest",
+        "name": "initialization_failure_is_retained_without_new_generation_or_retry",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "unsupported_pointer_format_and_stage_fail_explicitly",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "repeated_open_on_one_owner_returns_the_same_handle",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "corrupt_database_is_preserved_without_empty_replacement",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "ready_marker_identity_must_match_the_active_generation",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "missing_settings_are_not_recreated",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "missing_ready_marker_is_not_recreated",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "old_generation_directories_are_retained_on_reopen",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "database_wal_and_shm_stay_in_the_same_generation",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "corrupt_pointer_backup_evidence_is_preserved",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "missing_pointer_with_existing_generation_does_not_reset",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "cancelled_repeat_open_preserves_the_already_active_handle",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "pointer_new_file_evidence_is_not_treated_as_fresh_install",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "symlinked_generations_cannot_escape_the_private_root",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "generation_is_self_contained",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "atomic_file_backup_can_recover_a_valid_committed_pointer",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "restart_opens_the_same_generation_and_record_zone",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "corrupt_settings_are_preserved_without_default_replacement",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "missing_generation_directory_is_not_recreated",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "pointer_id_cannot_escape_the_generations_directory",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "same_canonical_root_cannot_have_two_active_owners",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "failed_initialization_never_activates_a_partial_generation",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "corrupt_pointer_remains_unchanged_and_does_not_reset",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "cancellation_before_io_return_releases_the_generation_owner",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+        "name": "missing_database_is_not_recreated",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "media_rejects_traversal_absolute_and_backslash_paths",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "media_rejects_nonpositive_dimensions",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "category_rejects_inconsistent_normalized_name",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "media_rejects_invalid_uuid",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "category_rejects_blank_name",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "category_rejects_invalid_uuid",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "media_rejects_invalid_sha256",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "media_rejects_negative_byte_length",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+        "name": "valid_metadata_roundtrips_without_claiming_image_processing",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "empty_existing_database_is_rejected_without_creating_empty_ledger",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "dates_and_nanosecond_instants_survive_file_reopen",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "normalized_names_are_unique_within_type_but_not_across_types",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "existing_default_validation_does_not_repair_missing_record",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "snapshot_waits_for_shared_write_coordinator",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "reused_command_with_different_project_or_event_is_conflict",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "real_settlement_after_end_does_not_reopen_project",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "amount_and_uuid_and_future_payment_validation_preserve_empty_ledger",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "additional_event_requires_existing_project_and_matching_operation",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "project_and_initial_event_are_saved_together",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "existing_version_one_foreign_database_is_not_adopted",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "concurrent_snapshots_never_expose_project_without_initial_event",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "operation_id_is_unique",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "event_relationship_initial_role_and_lifecycle_are_validated",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "existing_version_zero_foreign_database_is_not_initialized_in_place",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "additional_event_retry_and_conflict_preserve_original_payment",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "concurrent_identical_commands_create_only_one_payment",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "maximum_amount_and_real_prepayment_before_ownership_are_valid",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "schema_v1_has_only_four_business_tables",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "room_snapshot_keeps_same_view_across_independent_sqlite_commit",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "existing_schema_is_read_from_live_wal_before_opening_room",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "require_existing_database_never_creates_missing_file",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "transaction_rolls_back",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "zero_initial_amount_and_real_negative_net_cost_are_valid",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "unknown_schema_version_is_rejected_without_destructive_fallback",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "exact_command_retry_returns_existing_ids_without_second_payment",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "corrupt_existing_database_is_rejected_without_deleting_original",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "snapshot_reads_all_four_real_tables_and_cover_relationship",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "existing_default_validation_rejects_changed_identity_semantics",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "subscription_category_cannot_be_used_for_project",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "sqlite_page_corruption_preserves_original_through_real_open_handler",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "defaults_are_typed",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "unicode_and_whitespace_normalization_enforces_real_category_uniqueness",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "name": "fk_rejects_orphan_event",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "closed_settings_handle_is_rejected",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "existing_missing_file_is_not_created",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "valid_nonempty_preferences_without_record_zone_are_not_replaced",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "invalid_persisted_record_zone_is_not_replaced",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "initialization_is_durable_before_open_returns",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "cancellation_before_io_return_releases_the_settings_owner",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "file_existence_is_observed_only_after_the_exclusive_lease",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "corrupt_settings_remain_unchanged",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "new_settings_require_an_explicit_record_zone",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "existing_empty_preferences_are_rejected_without_default_replacement",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "zone_is_persisted",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "canonical_file_cannot_have_two_active_owners",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+        "name": "closing_releases_the_owner_only_after_datastore_stops",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.ActivityNavigationTest",
+        "name": "activity_recreation_preserves_a_legal_selected_route_and_same_storage_owner",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.ActivityNavigationTest",
+        "name": "system_back_returns_to_home_then_finishes_the_actual_activity",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "legacy_saved_skeleton_restores_to_the_home_route",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "empty_screen_has_no_fake_metrics",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "secondary_toolbar_back_returns_home",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "future_recorded_end_date_does_not_pretend_the_project_has_already_ended",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "secondary_system_back_returns_home",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "large_text_has_no_blocked_action",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "invalid_restored_stacks_and_primary_routes_have_safe_parents",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "settings_reads_the_persisted_zone_without_fake_controls",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "only_three_primary_destinations",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "primary_selection_matches_its_visible_page",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "back_stack_restores",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "primary_system_back_returns_home",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "real_project_is_not_misrepresented_as_an_empty_ledger",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "repeated_primary_selection_does_not_build_history",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "first_launch_starts_at_home",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.StorageUiStateTest",
+        "name": "ready_database_read_failure_is_protective_error_instead_of_empty_snapshot",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.StorageUiStateTest",
+        "name": "real_project_snapshot_is_not_replaced_by_empty_data_or_zero_metrics",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.StorageUiStateTest",
+        "name": "actual_empty_snapshot_is_ready_only_after_repository_and_zone_read",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.StorageUiStateTest",
+        "name": "initializing_shows_loading_without_normal_empty_navigation",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.StorageUiStateTest",
+        "name": "ready_settings_read_failure_is_protective_error_with_valid_database",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.StorageUiStateTest",
+        "name": "clearing_ui_owner_does_not_cancel_or_recreate_the_storage_owner",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.StorageUiStateTest",
+        "name": "actual_initialization_failure_has_protective_error_and_working_exit",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "amount_units_keep_ordinary_rounding_separate_from_daily_subcent_values",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "cards_keep_each_callers_status_and_time_semantics_and_only_real_actions",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "theme_has_the_frozen_type_hierarchy_and_readable_light_and_dark_surfaces",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "large_text_synthetic_form_keeps_errors_save_and_return_reachable_after_input",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "missing_amount_and_real_zero_have_distinct_visible_and_accessible_values",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "controlled_fields_keep_input_show_associated_errors_and_deliver_ime_callbacks",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "date_field_is_a_labeled_controlled_selection_with_a_disabled_state",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "large_text_cards_and_long_amounts_wrap_without_losing_the_numeric_value",
+        "result": "PASS",
+        "message": null
+      }
+    ],
+    "jvmReports": [
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.core.design.AmountFormatterTest.xml",
+        "bytes": 1539,
+        "sha256": "8de9b0e8386432c4ff6d1ba183a16f520dd2f1e0832e07a062e2522dd5d19ec9",
+        "availability": "local ignored evidence; not published"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.core.model.MoneyParserTest.xml",
+        "bytes": 1219,
+        "sha256": "21a4550006179d7c8b021f2e313c057e555370d972d839d7564f2e9a05875ae4",
+        "availability": "local ignored evidence; not published"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.core.time.BusinessClockTest.xml",
+        "bytes": 605,
+        "sha256": "8e84ce40ff420194ba7337cd1c34b374669358dcf4d22bccd9b99f851ccfdf67",
+        "availability": "local ignored evidence; not published"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+        "bytes": 3523,
+        "sha256": "5c52456564724f2127924176ce1867e86ee06a8ec1a9c82404034369bf229bd6",
+        "availability": "local ignored evidence; not published"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest.xml",
+        "bytes": 1372,
+        "sha256": "e1abf58010c4742ee7567ce76f65bad7a3e2e785bf037af55838de60f17b85ea",
+        "availability": "local ignored evidence; not published"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+        "bytes": 6122,
+        "sha256": "211941ecbe8cdab172ec162ec91204503109b21b80b40aaf75056fe70fb6e21e",
+        "availability": "local ignored evidence; not published"
+      }
+    ],
+    "androidReports": [
+      {
+        "path": "build/m05-evidence/green-native-0.xml",
+        "sha256": "7210e4cad6eee463d5c984eb7bdf7a21a186ba40ea8fc680e3151af1006d95dd",
+        "declaredCounts": {
+          "tests": 118,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "device": [
+          "Lithic_M01_API_36(AVD) - 16"
+        ]
+      }
+    ],
+    "command": ".\\gradlew.bat :app:testDebugUnitTest :app:connectedDebugAndroidTest :app:lintDebug :app:assembleDebug --max-workers=2 --console=plain",
+    "runs": [
+      {
+        "log": "green-hardware-nav.log",
+        "duration": "3m27s",
+        "result": "PASS; JVM and all Android tests actually executed"
+      },
+      {
+        "log": "green-full.log",
+        "duration": "3m54s",
+        "result": "PASS; full Android rerun after private AVD software-navigation change; JVM/build tasks up-to-date with unchanged tested source and retained XML"
+      }
+    ]
+  },
+  "largeFontSupplement": {
+    "result": "PASS",
+    "command": "connectedDebugAndroidTest filtered to the three listed existing UI test methods, --max-workers=2",
+    "tests": 3,
+    "newDistinctTests": 0,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration": "51s",
+    "cases": [
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "large_text_synthetic_form_keeps_errors_save_and_return_reachable_after_input",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.UIComponentsTest",
+        "name": "large_text_cards_and_long_amounts_wrap_without_losing_the_numeric_value",
+        "result": "PASS",
+        "message": null
+      },
+      {
+        "class": "com.cooper.lithic.ui.NavigationShellTest",
+        "name": "large_text_has_no_blocked_action",
+        "result": "PASS",
+        "message": null
+      }
+    ],
+    "reports": [
+      {
+        "path": "build/m05-evidence/large-native-native-0.xml",
+        "sha256": "b8774b414626110e1a64461c9462173078487734ade22670f1a85580e6f4ef06",
+        "declaredCounts": {
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "device": [
+          "Lithic_M01_API_36(AVD) - 16"
+        ]
+      }
+    ],
+    "deviceConfiguration": {
+      "serial": "emulator-5596",
+      "beforeFont": "1.0",
+      "beforeIme": "0",
+      "beforeNetwork": {
+        "mobile_data": "1",
+        "wifi_on": "1",
+        "airplane_mode_on": "0"
+      },
+      "running": {
+        "ime": "1",
+        "size": [
+          "Physical size: 320x640",
+          "Override size: 360x800"
+        ],
+        "density": "Physical density: 160",
+        "font": "2.0"
+      },
+      "exitCode": 0,
+      "restored": {
+        "ime": "0",
+        "size": "Physical size: 320x640",
+        "density": "Physical density: 160",
+        "font": "1.0"
+      }
+    },
+    "keyboardPixelReview": "PASS; actual IME visible and save reachable; errors visible; return callback also asserted by test; no business persistence"
+  },
+  "tddPhases": {
+    "amountRed": {
+      "tests": 8,
+      "failures": 7,
+      "errors": 0,
+      "existingBehaviorPass": 1,
+      "cases": [
+        {
+          "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+          "name": "large_aggregate_is_exact_and_never_uses_scientific_notation",
+          "result": "FAIL",
+          "failureType": "org.junit.ComparisonFailure"
+        },
+        {
+          "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+          "name": "exact_one_cent_and_larger_daily_rates_use_normal_rounding",
+          "result": "FAIL",
+          "failureType": "org.junit.ComparisonFailure"
+        },
+        {
+          "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+          "name": "real_zero_has_two_decimal_places",
+          "result": "FAIL",
+          "failureType": "org.junit.ComparisonFailure"
+        },
+        {
+          "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+          "name": "ordinary_amount_rounds_half_up_with_both_signs",
+          "result": "FAIL",
+          "failureType": "org.junit.ComparisonFailure"
+        },
+        {
+          "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+          "name": "missing_amount_is_not_a_zero_amount",
+          "result": "PASS",
+          "failureType": null
+        },
+        {
+          "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+          "name": "every_nonzero_daily_rate_below_one_cent_remains_explicitly_nonzero",
+          "result": "FAIL",
+          "failureType": "org.junit.ComparisonFailure"
+        },
+        {
+          "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+          "name": "high_precision_value_is_only_formatted_without_changing_numeric_input",
+          "result": "FAIL",
+          "failureType": "org.junit.ComparisonFailure"
+        },
+        {
+          "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+          "name": "ordinary_half_cent_is_rounded_and_not_a_daily_rate_boundary",
+          "result": "FAIL",
+          "failureType": "org.junit.ComparisonFailure"
+        }
+      ]
+    },
+    "androidRed": {
+      "tests": 31,
+      "failures": 30,
+      "errors": 0,
+      "existingBehaviorPass": 1,
+      "cases": [
+        {
+          "class": "com.cooper.lithic.ui.UIComponentsTest",
+          "name": "amount_units_keep_ordinary_rounding_separate_from_daily_subcent_values",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.01' (ignoreCase: false))"
+        },
+        {
+          "class": "com.cooper.lithic.ui.UIComponentsTest",
+          "name": "cards_keep_each_callers_status_and_time_semantics_and_only_real_actions",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '使用中' (ignoreCase: false) is not displayed!"
+        },
+        {
+          "class": "com.cooper.lithic.ui.UIComponentsTest",
+          "name": "theme_has_the_frozen_type_hierarchy_and_readable_light_and_dark_surfaces",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: expected:<38.0.sp> but was:<57.0.sp>"
+        },
+        {
+          "class": "com.cooper.lithic.ui.UIComponentsTest",
+          "name": "large_text_synthetic_form_keeps_errors_save_and_return_reachable_after_input",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Action performScrollTo() failed."
+        },
+        {
+          "class": "com.cooper.lithic.ui.UIComponentsTest",
+          "name": "missing_amount_and_real_zero_have_distinct_visible_and_accessible_values",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to assert the following: (ContentDescription = [暂无数据])"
+        },
+        {
+          "class": "com.cooper.lithic.ui.UIComponentsTest",
+          "name": "controlled_fields_keep_input_show_associated_errors_and_deliver_ime_callbacks",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '名称不能为空' (ignoreCase: false) is not displayed!"
+        },
+        {
+          "class": "com.cooper.lithic.ui.UIComponentsTest",
+          "name": "date_field_is_a_labeled_controlled_selection_with_a_disabled_state",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '日期' (ignoreCase: false) is not displayed!"
+        },
+        {
+          "class": "com.cooper.lithic.ui.UIComponentsTest",
+          "name": "large_text_cards_and_long_amounts_wrap_without_losing_the_numeric_value",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Action performScrollTo() failed."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "legacy_saved_skeleton_restores_to_the_home_route",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to assert the following: (Text + EditableText = [现在])"
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "empty_screen_has_no_fake_metrics",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Assert failed: The component with TestTag = 'home-screen' is not displayed!"
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "secondary_toolbar_back_returns_home",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Action performScrollTo() failed."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "secondary_system_back_returns_home",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Action performScrollTo() failed."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "large_text_has_no_blocked_action",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Assert failed: The component with TestTag = 'tab-review' is not displayed!"
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "invalid_restored_stacks_and_primary_routes_have_safe_parents",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: expected:<[Home]> but was:<[]>"
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "settings_reads_the_persisted_zone_without_fake_controls",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to inject touch input."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "only_three_primary_destinations",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to assert count of nodes."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "primary_selection_matches_its_visible_page",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to inject touch input."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "back_stack_restores",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to inject touch input."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "primary_system_back_returns_home",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to inject touch input."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "real_project_is_not_misrepresented_as_an_empty_ledger",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '已录入 1 条长期项目' (ignoreCase: false) is not displayed!"
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "repeated_primary_selection_does_not_build_history",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Failed to inject touch input."
+        },
+        {
+          "class": "com.cooper.lithic.ui.NavigationShellTest",
+          "name": "first_launch_starts_at_home",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Assert failed: The component with TestTag = 'home-screen' is not displayed!"
+        },
+        {
+          "class": "com.cooper.lithic.ui.StorageUiStateTest",
+          "name": "ready_database_read_failure_is_protective_error_instead_of_empty_snapshot",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Closed real Room database must fail the actual Repository read expected:<Failed> but was:<null>"
+        },
+        {
+          "class": "com.cooper.lithic.ui.StorageUiStateTest",
+          "name": "real_project_snapshot_is_not_replaced_by_empty_data_or_zero_metrics",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError"
+        },
+        {
+          "class": "com.cooper.lithic.ui.StorageUiStateTest",
+          "name": "actual_empty_snapshot_is_ready_only_after_repository_and_zone_read",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: A real successful snapshot must produce Ready"
+        },
+        {
+          "class": "com.cooper.lithic.ui.StorageUiStateTest",
+          "name": "initializing_shows_loading_without_normal_empty_navigation",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: Assert failed: The component with TestTag = 'storage_loading' is not displayed!"
+        },
+        {
+          "class": "com.cooper.lithic.ui.StorageUiStateTest",
+          "name": "ready_settings_read_failure_is_protective_error_with_valid_database",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: expected:<Failed> but was:<null>"
+        },
+        {
+          "class": "com.cooper.lithic.ui.StorageUiStateTest",
+          "name": "clearing_ui_owner_does_not_cancel_or_recreate_the_storage_owner",
+          "result": "PASS",
+          "message": null
+        },
+        {
+          "class": "com.cooper.lithic.ui.StorageUiStateTest",
+          "name": "actual_initialization_failure_has_protective_error_and_working_exit",
+          "result": "FAIL",
+          "message": "java.lang.AssertionError: expected:<Failed> but was:<null>"
+        },
+        {
+          "class": "com.cooper.lithic.ui.ActivityNavigationTest",
+          "name": "activity_recreation_preserves_a_legal_selected_route_and_same_storage_owner",
+          "result": "FAIL",
+          "message": "androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms"
+        },
+        {
+          "class": "com.cooper.lithic.ui.ActivityNavigationTest",
+          "name": "system_back_returns_to_home_then_finishes_the_actual_activity",
+          "result": "FAIL",
+          "message": "androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms"
+        }
+      ],
+      "reports": [
+        {
+          "path": "build/m05-evidence/red-native-0.xml",
+          "sha256": "2bbbfe981707dbfeb22d3d49fa3811f06f97a294b7509ad25709f4937c92c16e",
+          "declaredCounts": {
+            "tests": 31,
+            "failures": 30,
+            "errors": 0,
+            "skipped": 0
+          },
+          "device": [
+            "Lithic_M01_API_36(AVD) - 16"
+          ]
+        }
+      ]
+    },
+    "futureEndedOnRegression": {
+      "realAssertionFailures": 1,
+      "otherDriverTimeouts": 3,
+      "fix": "fact labels only; not a domain/Repository/date-rule change",
+      "report": {
+        "path": "build/m05-evidence/red-status-and-return-native-0.xml",
+        "bytes": 4073,
+        "sha256": "f99536020a4b0f4c7e9a8dbff412eb862b51a444be260b00a9e98c6957b84eec",
+        "availability": "local ignored evidence; not published"
+      }
+    },
+    "excludedEnvironmentErrors": [
+      "early UI compile import/chaining errors",
+      "early runner void-return initialization errors",
+      "ANR overlays and back-injection synchronization issues"
+    ],
+    "testChanges": "Initial RED and final complete UI file hashes differ due to added boundary, actual theme host, screenshots and synchronized Espresso native back driver; no deleted failing assertions or production return workaround"
+  },
+  "acceptance": [
+    {
+      "id": "M05-T01",
+      "result": "PASS",
+      "evidence": "three exact tabs, selected-content consistency, bounded repeated-selection stack, true KEYCODE_BACK and actual edge gesture"
+    },
+    {
+      "id": "M05-T02",
+      "result": "PASS",
+      "evidence": "real default-only Room; real synthetic nonempty Room; Initializing, Failed, actual DB/settings read failure never empty/zero; no fake chart/subscription read"
+    },
+    {
+      "id": "M05-T03",
+      "result": "PASS",
+      "evidence": "actual 360px/density160=360dp/font_scale2.0; tabs/scroll/back/long values/errors/touch and IME/save/return callbacks; three supplemental tests passed"
+    },
+    {
+      "id": "M05-T04",
+      "result": "PASS",
+      "evidence": "serializable keys, old/invalid decoded route normalization, activity recreation, physical rotation, actual UID SIGKILL process death with PID absence/new PID/Settings restoration and separate force-stop cold Home",
+      "limit": "actual low-memory automatic system reclamation NOT_RUN; SIGKILL is explicit process-death simulation"
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 20,
+    "warningIds": {
+      "OldTargetApi": 1,
+      "AndroidGradlePluginVersion": 2,
+      "GradleDependency": 9,
+      "NewerVersionAvailable": 5,
+      "UnusedResources": 3
+    },
+    "versionNotices": 17,
+    "inheritedUnusedResources": 3,
+    "report": {
+      "path": "app/build/reports/lint-results-debug.xml",
+      "bytes": 19641,
+      "sha256": "29a881c68c9868866843a70186002508fa31df51aa93c39538ee9cfa22956c50",
+      "availability": "local ignored evidence; not published"
+    },
+    "suppressed": false
+  },
+  "apk": {
+    "apk": "E:\\CODEX\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 11837748,
+    "sha256": "c70b89fd82b9480bbad8d1e0f06805317f6d6c002637583f5299b0fb769b790e",
+    "applicationId": "com.cooper.lithic.debug",
+    "versionCode": 3,
+    "versionName": "0.1.0-m05-debug",
+    "permissions": [
+      "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "mergedManifest": "app\\build\\intermediates\\merged_manifests\\debug\\processDebugManifest\\AndroidManifest.xml",
+    "backupConfig": "allowBackup=false; legacy/cloud/device-transfer exclude all nine domains",
+    "versions": {
+      "agp": "8.13.2",
+      "kotlin": "2.3.10",
+      "compose-bom": "2025.11.01",
+      "activity-compose": "1.12.4",
+      "navigation3": "1.0.1",
+      "serialization": "1.9.0",
+      "startup": "1.1.1",
+      "junit": "4.13.2",
+      "room": "2.8.5",
+      "ksp": "2.3.6",
+      "datastore": "1.2.1",
+      "coroutines": "1.10.2",
+      "androidx-test": "1.7.0",
+      "androidx-test-junit": "1.3.0",
+      "compose-test": "1.9.5",
+      "lifecycle": "2.10.0",
+      "espresso": "3.7.0"
+    },
+    "wrapperJarSha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+    "scope": "Artifact/config checks only; signature, install and offline launch require separate evidence"
+  },
+  "signature": {
+    "result": "PASS",
+    "scheme": "v2",
+    "debugCertificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "report": {
+      "path": "build/m05-evidence/apk/signature.txt",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a",
+      "availability": "local ignored evidence; not published"
+    }
+  },
+  "apkExtraChecks": {
+    "result": "PASS",
+    "productionClassesVerified": [
+      "app/MainActivity",
+      "app/LedgerUiStateHolder",
+      "app/LedgerUiState$Ready",
+      "app/LithicAppKt",
+      "app/LithicRoutesKt",
+      "app/LithicNavigationKt",
+      "core/design/AmountFormatter",
+      "core/design/AmountTextKt",
+      "core/design/EntryCardKt",
+      "core/design/FormFieldsKt",
+      "core/design/LithicThemeKt",
+      "feature/home/HomeShellKt",
+      "feature/review/ReviewShellKt",
+      "feature/settings/SettingsShellKt",
+      "data/local/LithicDatabase",
+      "data/repository/LedgerReadRepository",
+      "domain/project/ProjectCostEngine",
+      "domain/subscription/SubscriptionCostEngine"
+    ],
+    "testFrameworkAndSyntheticFormNotPackaged": true,
+    "debugActivities": [
+      {
+        "name": "com.cooper.lithic.app.MainActivity",
+        "exported": "true",
+        "launcher": true
+      },
+      {
+        "name": "androidx.activity.ComponentActivity",
+        "exported": "true",
+        "launcher": false
+      }
+    ],
+    "releaseExcludesTestManifestByConfiguration": true,
+    "schemaVersion": 1,
+    "schemaSha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+    "frozenM04InputsVerified": 50,
+    "signatureScheme": "v2",
+    "debugCertificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "apkSha256": "c70b89fd82b9480bbad8d1e0f06805317f6d6c002637583f5299b0fb769b790e",
+    "limitations": "Release APK not built; phone/API26/OEM not tested"
+  },
+  "dependencyDelta": {
+    "previousModules": 121,
+    "currentModules": 122,
+    "added": {
+      "androidx.compose.ui:ui-test-manifest": "1.9.5"
+    },
+    "removed": {},
+    "changed": {}
+  },
+  "schema": {
+    "version": 1,
+    "sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+    "tables": 4,
+    "change": "none; migration/backup format not created"
+  },
+  "device": {
+    "serial": "emulator-5596",
+    "api": 36,
+    "previousNetwork": {
+      "airplane_mode_on": "0",
+      "wifi_on": "1",
+      "mobile_data": "1"
+    },
+    "previousConfig": {
+      "font_scale": "1.0",
+      "accelerometer_rotation": "1",
+      "user_rotation": "0"
+    },
+    "previousSize": "Physical size: 320x640",
+    "previousDensity": "Physical density: 160",
+    "previousNight": "Night mode: no",
+    "previousNavbar": [
+      "com.android.internal.systemui.navbar.gestural"
+    ],
+    "checks": {
+      "offlineColdStart": "PASS",
+      "rotationToLegalSettings": "PASS",
+      "actualSystemProcessDeath": "PASS",
+      "lightDarkAndLargeTabs": "PASS",
+      "gestureReturn": "PASS",
+      "forceStopDefaultHome": "PASS"
+    },
+    "install": "Performing Streamed Install\r\nSuccess",
+    "offlineColdStart": "Starting: Intent { cmp=com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity }\r\nStatus: ok\r\nLaunchState: COLD\r\nActivity: com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity\r\nTotalTime: 4084\r\nWaitTime: 4092\r\nComplete",
+    "largeConfig": {
+      "size": "Physical size: 320x640\r\nOverride size: 360x800",
+      "density": "Physical density: 160",
+      "fontScale": "2.0"
+    },
+    "amKillAttempt": {
+      "pidAfterRequest": "4568",
+      "terminatedWithinObservation": false
+    },
+    "processDeath": {
+      "method": "HOME; verified launcher foreground; run-as package UID SIGKILL (actual background process death simulation); PID absent before resume",
+      "beforePid": "4568",
+      "pidAfterKill": "",
+      "resume": "Starting: Intent { cmp=com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity }\r\nWarning: Activity not started, its current task has been brought to the front\r\nStatus: ok\r\nLaunchState: COLD\r\nActivity: com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity\r\nTotalTime: 3384\r\nWaitTime: 3393\r\nComplete",
+      "newPid": "5103",
+      "route": "Settings"
+    },
+    "forceStopColdStart": "Starting: Intent { cmp=com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity }\r\nStatus: ok\r\nLaunchState: COLD\r\nActivity: com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity\r\nTotalTime: 3433\r\nWaitTime: 3447\r\nComplete",
+    "generation": {
+      "pointer": {
+        "formatVersion": 1,
+        "activeId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+        "previousId": null,
+        "stage": "STABLE"
+      },
+      "sameAfterAllJourneys": true,
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "readyUnchanged": true
+    },
+    "installedApkSha256": "c70b89fd82b9480bbad8d1e0f06805317f6d6c002637583f5299b0fb769b790e",
+    "result": "PASS",
+    "restored": {
+      "network": {
+        "airplane_mode_on": "0",
+        "wifi_on": "1",
+        "mobile_data": "1"
+      },
+      "config": {
+        "font_scale": "1.0",
+        "accelerometer_rotation": "1",
+        "user_rotation": "0"
+      },
+      "size": "Physical size: 320x640",
+      "density": "Physical density: 160",
+      "night": "Night mode: no"
+    }
+  },
+  "privateAvdNavigation": {
+    "name": "Lithic_M01_API_36",
+    "serial": "emulator-5596",
+    "api": 36,
+    "image": "google_apis/x86_64 revision7",
+    "changedSetting": {
+      "hw.mainKeys": {
+        "before": "yes",
+        "after": "no"
+      }
+    },
+    "reason": "Original hardware-key AVD had no attached software EdgeBackGestureHandler; switched only this project-private AVD to enable actual edge-gesture verification",
+    "userdataCleared": false,
+    "otherDevicesOperated": false,
+    "edgeHandlerEnabledAttached": "PASS",
+    "configurationChangeRetained": true,
+    "limitation": "ANR/restart/driver failed attempts kept locally; no physical/OEM claim"
+  },
+  "archive": {
+    "zipSha256": "861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7",
+    "originalFiles": 43,
+    "originalCases": 130,
+    "originalStatuses": "NOT_RUN; immutable",
+    "fullCrossModuleSupplements": 16,
+    "fullSupplementStatuses": "NOT_RUN"
+  },
+  "frozenM04BuildInputs": {
+    "verified": 50,
+    "oldInputs": 54,
+    "allowedChanges": [
+      "app/build.gradle.kts",
+      "gradle/libs.versions.toml",
+      "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt"
+    ]
+  },
+  "buildInputs": [
+    {
+      "path": "app/build.gradle.kts",
+      "bytes": 2460,
+      "workingSha256": "91d2239918758cbdcca17aaaf651e7586a985ea6aaa4465d7edd8d580b7ff4df",
+      "gitNormalizedSha256": "91d2239918758cbdcca17aaaf651e7586a985ea6aaa4465d7edd8d580b7ff4df"
+    },
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json",
+      "bytes": 10840,
+      "workingSha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "gitNormalizedSha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/app/AppContainerTest.kt",
+      "bytes": 9501,
+      "workingSha256": "2c08301405002bd92cd76932408fbf7a7f91a9488eebc94002e4b1729b18f611",
+      "gitNormalizedSha256": "2c08301405002bd92cd76932408fbf7a7f91a9488eebc94002e4b1729b18f611"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/backup/DataGenerationStoreTest.kt",
+      "bytes": 15376,
+      "workingSha256": "39aba2c3f66940832447094b3953bed8bcbbb54fcf71ca7f1c9b43aa56241e2c",
+      "gitNormalizedSha256": "39aba2c3f66940832447094b3953bed8bcbbb54fcf71ca7f1c9b43aa56241e2c"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/MetadataValidationTest.kt",
+      "bytes": 4727,
+      "workingSha256": "3397c209813c4622c2150b1c0f17ae351d21d372ca0c611c7f366ab00f94dd79",
+      "gitNormalizedSha256": "3397c209813c4622c2150b1c0f17ae351d21d372ca0c611c7f366ab00f94dd79"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/ProjectDatabaseTest.kt",
+      "bytes": 30111,
+      "workingSha256": "dbdd7df03f3acac234cc8578420d33f3479c015368662e602fc652388e4b6762",
+      "gitNormalizedSha256": "dbdd7df03f3acac234cc8578420d33f3479c015368662e602fc652388e4b6762"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/settings/PausedReturnDispatcher.kt",
+      "bytes": 1139,
+      "workingSha256": "b0655fbd5f1503b5e77aa88689978846be3a52360e1e0aef5cc9a9210a3ede42",
+      "gitNormalizedSha256": "b0655fbd5f1503b5e77aa88689978846be3a52360e1e0aef5cc9a9210a3ede42"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/settings/SettingsStoreTest.kt",
+      "bytes": 7872,
+      "workingSha256": "4b7f9cb24442006791018b2c6aa176a4561dcdf22878dc036f1f0de0580a6230",
+      "gitNormalizedSha256": "4b7f9cb24442006791018b2c6aa176a4561dcdf22878dc036f1f0de0580a6230"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/ActivityNavigationTest.kt",
+      "bytes": 2566,
+      "workingSha256": "6829112167dd2e20142f11dcc7dcebbc6a5292229167d6421f10ef8ea56659f3",
+      "gitNormalizedSha256": "6829112167dd2e20142f11dcc7dcebbc6a5292229167d6421f10ef8ea56659f3"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/NavigationShellTest.kt",
+      "bytes": 14037,
+      "workingSha256": "caa9ad9e3856386e4d77e2c6944c1110f3dce00b870902a3306677ff628db4e8",
+      "gitNormalizedSha256": "caa9ad9e3856386e4d77e2c6944c1110f3dce00b870902a3306677ff628db4e8"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/StorageUiStateTest.kt",
+      "bytes": 10180,
+      "workingSha256": "b48597dcb92c164a84cbdf046308c0e48ff9b2a426953a86b8f4f5968077ab7c",
+      "gitNormalizedSha256": "b48597dcb92c164a84cbdf046308c0e48ff9b2a426953a86b8f4f5968077ab7c"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIComponentsTest.kt",
+      "bytes": 16554,
+      "workingSha256": "c9ccac26c2bf2a508c3970b1002ae6e6ccfd114978725552bf72da50010da889",
+      "gitNormalizedSha256": "c9ccac26c2bf2a508c3970b1002ae6e6ccfd114978725552bf72da50010da889"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "bytes": 1437,
+      "workingSha256": "4f586d11eea3a80c07514b2dd5684c4add2233af49d0b3865694c0e693fd4751",
+      "gitNormalizedSha256": "4f586d11eea3a80c07514b2dd5684c4add2233af49d0b3865694c0e693fd4751"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/AppContainer.kt",
+      "bytes": 3829,
+      "workingSha256": "2fdc2fed6a4e04408efc88e0770505d9328431355da3d1932da253fb037eb4cc",
+      "gitNormalizedSha256": "2fdc2fed6a4e04408efc88e0770505d9328431355da3d1932da253fb037eb4cc"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiState.kt",
+      "bytes": 414,
+      "workingSha256": "069162e843d192b79d1bbb568004657541120b776a08c24a0de01b0703c39f6d",
+      "gitNormalizedSha256": "069162e843d192b79d1bbb568004657541120b776a08c24a0de01b0703c39f6d"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+      "bytes": 2105,
+      "workingSha256": "bca12c2e1cb7475fefca052d62b969ad26ecfc291337baa57881643695a40b3e",
+      "gitNormalizedSha256": "bca12c2e1cb7475fefca052d62b969ad26ecfc291337baa57881643695a40b3e"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApp.kt",
+      "bytes": 2446,
+      "workingSha256": "3453982f4da957418f2a1cc4614e22c7947f0cf9b838eaf3cce09914954d5ba7",
+      "gitNormalizedSha256": "3453982f4da957418f2a1cc4614e22c7947f0cf9b838eaf3cce09914954d5ba7"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApplication.kt",
+      "bytes": 346,
+      "workingSha256": "a2cf7d5406974d1b8400842c063500c6b7310583dc37e090494c03158233143b",
+      "gitNormalizedSha256": "a2cf7d5406974d1b8400842c063500c6b7310583dc37e090494c03158233143b"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "bytes": 3821,
+      "workingSha256": "53b7b5801f74e1ab250a12dd1fd64e9219ab41b3245a2294ea3a9d08df0c44d4",
+      "gitNormalizedSha256": "53b7b5801f74e1ab250a12dd1fd64e9219ab41b3245a2294ea3a9d08df0c44d4"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt",
+      "bytes": 950,
+      "workingSha256": "83f46b84b49c8b6cedfe6ceb78dab4d142dddfebd60d57be3a15d43554481331",
+      "gitNormalizedSha256": "83f46b84b49c8b6cedfe6ceb78dab4d142dddfebd60d57be3a15d43554481331"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "bytes": 1086,
+      "workingSha256": "291bf1532710eca88f8cc7b5159dfc7dfb4dcab8eb261eb93ff0eb002ebb7e7a",
+      "gitNormalizedSha256": "291bf1532710eca88f8cc7b5159dfc7dfb4dcab8eb261eb93ff0eb002ebb7e7a"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/AmountText.kt",
+      "bytes": 2589,
+      "workingSha256": "c88873d34c68055c0042a8199d8cb62b8ef367f54d8d32b9985e639110cfe3cd",
+      "gitNormalizedSha256": "c88873d34c68055c0042a8199d8cb62b8ef367f54d8d32b9985e639110cfe3cd"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/EntryCard.kt",
+      "bytes": 2726,
+      "workingSha256": "96f0a83755ac5af3bab30a8b702e46c4a116b23cd397da9559ed909af413ea2c",
+      "gitNormalizedSha256": "96f0a83755ac5af3bab30a8b702e46c4a116b23cd397da9559ed909af413ea2c"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/FormFields.kt",
+      "bytes": 4005,
+      "workingSha256": "522174f6e7a0d802a738ea730164a89a5f619adfdfb7028cdda36aed2e7571cc",
+      "gitNormalizedSha256": "522174f6e7a0d802a738ea730164a89a5f619adfdfb7028cdda36aed2e7571cc"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt",
+      "bytes": 4047,
+      "workingSha256": "97cb4616e0b879d8a8bf37d4e113d6579c26a6fb175dce4c62a7dc97cc94a08a",
+      "gitNormalizedSha256": "97cb4616e0b879d8a8bf37d4e113d6579c26a6fb175dce4c62a7dc97cc94a08a"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt",
+      "bytes": 992,
+      "workingSha256": "267c6c84e93816ac6280de6af684c321fbf58795fc2b0bd58f27cbc1fb1ab767",
+      "gitNormalizedSha256": "267c6c84e93816ac6280de6af684c321fbf58795fc2b0bd58f27cbc1fb1ab767"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/Money.kt",
+      "bytes": 1629,
+      "workingSha256": "c347d4c555d82252dd487d78e9f73ebd960186046163ac5029ce2832335307e1",
+      "gitNormalizedSha256": "c347d4c555d82252dd487d78e9f73ebd960186046163ac5029ce2832335307e1"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt",
+      "bytes": 491,
+      "workingSha256": "5cfe2a01612d62c33fe5b543d9b4a908988e585b7b1bea7b6f6dee724d6a7c0f",
+      "gitNormalizedSha256": "5cfe2a01612d62c33fe5b543d9b4a908988e585b7b1bea7b6f6dee724d6a7c0f"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/DataGenerationStore.kt",
+      "bytes": 15455,
+      "workingSha256": "99c9466d2f5df93b6530b2cfd7e0bbd563e70394858c5451d14241f2d2b8d9d2",
+      "gitNormalizedSha256": "99c9466d2f5df93b6530b2cfd7e0bbd563e70394858c5451d14241f2d2b8d9d2"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/CategoryDao.kt",
+      "bytes": 500,
+      "workingSha256": "dbae6c1a233aad380fa1c0f0d937584e6f5a6c309ffe14404b5a5f8f8c697349",
+      "gitNormalizedSha256": "dbae6c1a233aad380fa1c0f0d937584e6f5a6c309ffe14404b5a5f8f8c697349"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/CategoryNames.kt",
+      "bytes": 451,
+      "workingSha256": "9cb106f86a2aeefa5be1b9a4510476dc7b12ac178c19022dbd6713994e53265c",
+      "gitNormalizedSha256": "9cb106f86a2aeefa5be1b9a4510476dc7b12ac178c19022dbd6713994e53265c"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseConverters.kt",
+      "bytes": 1133,
+      "workingSha256": "458637146085c6013b618f5e78138156447c09cc42cdfe02a8d6e358716dc018",
+      "gitNormalizedSha256": "458637146085c6013b618f5e78138156447c09cc42cdfe02a8d6e358716dc018"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseMigrations.kt",
+      "bytes": 248,
+      "workingSha256": "3048f77cfb9e4ed0158f846f93b4cca472b2ae9c85cce08b9db7274e61ac0f48",
+      "gitNormalizedSha256": "3048f77cfb9e4ed0158f846f93b4cca472b2ae9c85cce08b9db7274e61ac0f48"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/LithicDatabase.kt",
+      "bytes": 6859,
+      "workingSha256": "85514c3045489f4c82dcfba94692c7d257d620c5afcd3417e8788e3e7974b2f0",
+      "gitNormalizedSha256": "85514c3045489f4c82dcfba94692c7d257d620c5afcd3417e8788e3e7974b2f0"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/MediaDao.kt",
+      "bytes": 509,
+      "workingSha256": "4551adf609956ef7d70300e2e9cb744cdd811126cb577ec5984829668073e5d6",
+      "gitNormalizedSha256": "4551adf609956ef7d70300e2e9cb744cdd811126cb577ec5984829668073e5d6"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectDao.kt",
+      "bytes": 955,
+      "workingSha256": "1650302e6be2029fb86b8bb103ca8ed6f240c73e4c586123b2e7de6ec0ec7962",
+      "gitNormalizedSha256": "1650302e6be2029fb86b8bb103ca8ed6f240c73e4c586123b2e7de6ec0ec7962"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectEntities.kt",
+      "bytes": 3307,
+      "workingSha256": "91a58130ebe894d6a5c5df807b31cd5be2221acc43de7e602ba574d5d426dc20",
+      "gitNormalizedSha256": "91a58130ebe894d6a5c5df807b31cd5be2221acc43de7e602ba574d5d426dc20"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/StoredValueValidation.kt",
+      "bytes": 831,
+      "workingSha256": "ab6295c10e5d99df77d5951a03749bc31e80905397e34561b32eb69286ce2c7c",
+      "gitNormalizedSha256": "ab6295c10e5d99df77d5951a03749bc31e80905397e34561b32eb69286ce2c7c"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/LedgerReadRepository.kt",
+      "bytes": 1056,
+      "workingSha256": "37e95cda63a5753475324df9f2d78d0b22dd3b39a10b4b4612c1ab2501829260",
+      "gitNormalizedSha256": "37e95cda63a5753475324df9f2d78d0b22dd3b39a10b4b4612c1ab2501829260"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/LocalWriteCoordinator.kt",
+      "bytes": 537,
+      "workingSha256": "3daca99041349b4cc1c2e94d7b27485d4155ccd1f48dd8a3b35dff8033f17d67",
+      "gitNormalizedSha256": "3daca99041349b4cc1c2e94d7b27485d4155ccd1f48dd8a3b35dff8033f17d67"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectWriteRepository.kt",
+      "bytes": 8694,
+      "workingSha256": "f040bc35767279d137db59bb86c345e66720afc265037a7a8a0ac87d3c581ea1",
+      "gitNormalizedSha256": "f040bc35767279d137db59bb86c345e66720afc265037a7a8a0ac87d3c581ea1"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/settings/SettingsStore.kt",
+      "bytes": 7693,
+      "workingSha256": "63d60b9ba8c0497e8b09124a330202ae25de4f24981656a7a27d5ae4a3a84352",
+      "gitNormalizedSha256": "63d60b9ba8c0497e8b09124a330202ae25de4f24981656a7a27d5ae4a3a84352"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt",
+      "bytes": 2229,
+      "workingSha256": "3d22ad34430dccd92ea2c3b3089efc21733125449f848cec24391236d7c39817",
+      "gitNormalizedSha256": "3d22ad34430dccd92ea2c3b3089efc21733125449f848cec24391236d7c39817"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+      "bytes": 5444,
+      "workingSha256": "16684bc773ac6dc114cc8dea43f2c81d4f7eaa1c4f49fef3c80154a35f4627aa",
+      "gitNormalizedSha256": "16684bc773ac6dc114cc8dea43f2c81d4f7eaa1c4f49fef3c80154a35f4627aa"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+      "bytes": 1408,
+      "workingSha256": "b64cbe564b7281ba32399ec3a2e4aa38c09125fa9fb6838feb55720242e22197",
+      "gitNormalizedSha256": "b64cbe564b7281ba32399ec3a2e4aa38c09125fa9fb6838feb55720242e22197"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+      "bytes": 1905,
+      "workingSha256": "d466c96264316198c5c81d64362043e22607206e0663700f574ec28dc1819d3a",
+      "gitNormalizedSha256": "d466c96264316198c5c81d64362043e22607206e0663700f574ec28dc1819d3a"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/home/HomeShell.kt",
+      "bytes": 5014,
+      "workingSha256": "b9ed2e8ef9a95572e80f21f55e3db6a78c38e544ef9e40e6324f4b761b41e22a",
+      "gitNormalizedSha256": "b9ed2e8ef9a95572e80f21f55e3db6a78c38e544ef9e40e6324f4b761b41e22a"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/review/ReviewShell.kt",
+      "bytes": 1804,
+      "workingSha256": "d85d6c25d4c71fe00a4dd2109da2cf863fbf5b554df37b006724407abd8ee587",
+      "gitNormalizedSha256": "d85d6c25d4c71fe00a4dd2109da2cf863fbf5b554df37b006724407abd8ee587"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt",
+      "bytes": 2585,
+      "workingSha256": "ffc5db4f6b26f1eb0a18552582dd891bd10367b92b4a37b00620f5e316d176f9",
+      "gitNormalizedSha256": "ffc5db4f6b26f1eb0a18552582dd891bd10367b92b4a37b00620f5e316d176f9"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_placeholder.xml",
+      "bytes": 464,
+      "workingSha256": "e0bddda00ce155104a61a85815a78856b812e3b1bc3c135d897304c1655e868f",
+      "gitNormalizedSha256": "e0bddda00ce155104a61a85815a78856b812e3b1bc3c135d897304c1655e868f"
+    },
+    {
+      "path": "app/src/main/res/values-night/themes.xml",
+      "bytes": 287,
+      "workingSha256": "c34c20aecaef41ef9125d70cafa9700f4cabffaf5ba7b98cbb4773c3d504274c",
+      "gitNormalizedSha256": "c34c20aecaef41ef9125d70cafa9700f4cabffaf5ba7b98cbb4773c3d504274c"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "bytes": 306,
+      "workingSha256": "8107ea12bf01e6bcfcc92046f33f36fb1fd65f70537aecc8656723a7f3b48342",
+      "gitNormalizedSha256": "8107ea12bf01e6bcfcc92046f33f36fb1fd65f70537aecc8656723a7f3b48342"
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "bytes": 292,
+      "workingSha256": "c33f08665ef69b8343c8a7ee7f8d6a177af4ea48f32a9f2e49dc8a23b94a7fae",
+      "gitNormalizedSha256": "c33f08665ef69b8343c8a7ee7f8d6a177af4ea48f32a9f2e49dc8a23b94a7fae"
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "bytes": 487,
+      "workingSha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96",
+      "gitNormalizedSha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "bytes": 1050,
+      "workingSha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842",
+      "gitNormalizedSha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/design/AmountFormatterTest.kt",
+      "bytes": 2994,
+      "workingSha256": "43869843a0447f84b8219a0fa2edc1c2102aeb68d8bebef8f6d8c4c53dd555b2",
+      "gitNormalizedSha256": "43869843a0447f84b8219a0fa2edc1c2102aeb68d8bebef8f6d8c4c53dd555b2"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "bytes": 2656,
+      "workingSha256": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45",
+      "gitNormalizedSha256": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "bytes": 1286,
+      "workingSha256": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b",
+      "gitNormalizedSha256": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "bytes": 10271,
+      "workingSha256": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544",
+      "gitNormalizedSha256": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+      "bytes": 4294,
+      "workingSha256": "792b56e431006949645b3c9331537339446d54a512aee2a24b16933da43d1f37",
+      "gitNormalizedSha256": "792b56e431006949645b3c9331537339446d54a512aee2a24b16933da43d1f37"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "bytes": 17472,
+      "workingSha256": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63",
+      "gitNormalizedSha256": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63"
+    },
+    {
+      "path": "build.gradle.kts",
+      "bytes": 317,
+      "workingSha256": "946798d5fadb1885be291dc9432f9e1c798bdfa55e2c8784173dca0d058874bd",
+      "gitNormalizedSha256": "946798d5fadb1885be291dc9432f9e1c798bdfa55e2c8784173dca0d058874bd"
+    },
+    {
+      "path": "gradle.properties",
+      "bytes": 424,
+      "workingSha256": "44c4c2365ac08b98f9f9cb4ad952d80eada3865db9eae1fb81717b0e62fcbc65",
+      "gitNormalizedSha256": "44c4c2365ac08b98f9f9cb4ad952d80eada3865db9eae1fb81717b0e62fcbc65"
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "bytes": 3066,
+      "workingSha256": "4c3b747cf7b6e92ab8ad0af9575e728875129b7715639ce6d88263626963f0df",
+      "gitNormalizedSha256": "4c3b747cf7b6e92ab8ad0af9575e728875129b7715639ce6d88263626963f0df"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "bytes": 43764,
+      "workingSha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+      "gitNormalizedSha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "bytes": 340,
+      "workingSha256": "1f97506f7ca338e0f394aa1c98bc13ccbdf8c36b6c24eb0e90fdda78ab6d4245",
+      "gitNormalizedSha256": "1f97506f7ca338e0f394aa1c98bc13ccbdf8c36b6c24eb0e90fdda78ab6d4245"
+    },
+    {
+      "path": "gradlew",
+      "bytes": 8733,
+      "workingSha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409",
+      "gitNormalizedSha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409"
+    },
+    {
+      "path": "gradlew.bat",
+      "bytes": 2937,
+      "workingSha256": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b",
+      "gitNormalizedSha256": "94102713eb8fb22d032397924c0f38ab2da783ba60d07054339f1190a0c4e2cd"
+    },
+    {
+      "path": "scripts/verify_m01_apk.py",
+      "bytes": 7235,
+      "workingSha256": "17f53a60e25f177a4926b49a24af4a0113deeb7617c786cd4899f6bf5c5f36ca",
+      "gitNormalizedSha256": "17f53a60e25f177a4926b49a24af4a0113deeb7617c786cd4899f6bf5c5f36ca"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "bytes": 326,
+      "workingSha256": "23a0e54819e1d0d96c4195ca1a80535c80a21174bc133410343714ea7c456b11",
+      "gitNormalizedSha256": "23a0e54819e1d0d96c4195ca1a80535c80a21174bc133410343714ea7c456b11"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/evidence/m05-ui/home-light-360dp-200.png",
+      "bytes": 53069,
+      "sha256": "96e0a095d052491c3f9281051a249c53d0e7d73f6c8df490e06f26de9dd68793",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/large-home-light.png"
+    },
+    {
+      "path": "docs/evidence/m05-ui/home-dark-360dp-200.png",
+      "bytes": 53990,
+      "sha256": "092080b4cb554023301eebd2bf79d122b0654be4ba6123bd6ffae1229d15722c",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/large-home-dark.png"
+    },
+    {
+      "path": "docs/evidence/m05-ui/review-360dp-200.png",
+      "bytes": 46970,
+      "sha256": "b1646436690905a13e51e613e652539c53c44895b169ed97cd732de3220e86db",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/large-回看.png"
+    },
+    {
+      "path": "docs/evidence/m05-ui/settings-360dp-200.png",
+      "bytes": 77353,
+      "sha256": "2c478399b0c61032f270932c96c6b62dfe4db312f6607b199a14803748e98567",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/large-设置.png"
+    },
+    {
+      "path": "docs/evidence/m05-ui/project-list-360dp-200.png",
+      "bytes": 30695,
+      "sha256": "29fdd5c3e059e31e776f999322642e08c513f4cd442acf549e21c5b142029877",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/large-project-list.png"
+    },
+    {
+      "path": "docs/evidence/m05-ui/synthetic-form-error-360dp-200.png",
+      "bytes": 85606,
+      "sha256": "dc59d2feb6b93934829dac038f9035e4ce69e5ac0fd1dba6bc339b9a7022f0dc",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/form-error.png"
+    },
+    {
+      "path": "docs/evidence/m05-ui/synthetic-form-keyboard-360dp-200.png",
+      "bytes": 78085,
+      "sha256": "ab72070425a8a33ee667792010ec94c836740dfd66b4acb17a93a996fc555d11",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/form-keyboard.png"
+    },
+    {
+      "path": "docs/evidence/m05-ui/settings-landscape-200.png",
+      "bytes": 27419,
+      "sha256": "2efc2487aef707d66942122125acf09cd4d5fbb8cae62e8ce3b1780ddab21a93",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/rotation-landscape.png"
+    },
+    {
+      "path": "docs/evidence/m05-ui/settings-process-restored-200.png",
+      "bytes": 77499,
+      "sha256": "8a6a51c3f160d37201da2e6182cf5a33fba05ebc7ee7b10153166be0d74b2298",
+      "privacyReview": "assistant viewed actual pixels; empty ledger or explicitly synthetic UI; no personal records",
+      "source": "build/m05-evidence/process-restored.png"
+    }
+  ],
+  "localEvidenceArtifacts": {
+    "red-amount.log": {
+      "path": "build/m05-evidence/red-amount.log",
+      "bytes": 3202,
+      "sha256": "239aa3b33b77558b043d89f2e21f846da51b5eb8a30d3dd980b443947bb24785",
+      "availability": "local ignored evidence; not published"
+    },
+    "red-ui.log": {
+      "path": "build/m05-evidence/red-ui.log",
+      "bytes": 15701,
+      "sha256": "975c48bc436209b02bfe1fc9d66bc6ac583619a507d3b02e81cdbce75e491f67",
+      "availability": "local ignored evidence; not published"
+    },
+    "pre-red-ui-compile.log": {
+      "path": "build/m05-evidence/pre-red-ui-compile.log",
+      "bytes": 3509,
+      "sha256": "37c5c09b759c37c8fd8209a29b34d2b67947bfdfb12e8f3ed870e180f992c878",
+      "availability": "local ignored evidence; not published"
+    },
+    "pre-red-ui-runner.log": {
+      "path": "build/m05-evidence/pre-red-ui-runner.log",
+      "bytes": 9523,
+      "sha256": "30ae03b3bbf060e1c29611511ae0020d2f19cdd727041d826d379ff0c9119837",
+      "availability": "local ignored evidence; not published"
+    },
+    "green-attempt-1.log": {
+      "path": "build/m05-evidence/green-attempt-1.log",
+      "bytes": 7206,
+      "sha256": "a01fb5d6672cd03f42fa9ef9be10e5e9573a4b3c2a4f583093d835a921f8225b",
+      "availability": "local ignored evidence; not published"
+    },
+    "green-attempt-2.log": {
+      "path": "build/m05-evidence/green-attempt-2.log",
+      "bytes": 6877,
+      "sha256": "d2393fdfbfcbafdbb0a3c0733af69ddd59d262f5752603cd183b6bcb71b6ae04",
+      "availability": "local ignored evidence; not published"
+    },
+    "isolated-system-return.log": {
+      "path": "build/m05-evidence/isolated-system-return.log",
+      "bytes": 5742,
+      "sha256": "6e8015f4fdcb5f0f0109c2494e7d808b18b01f5d458ce6fa4c4114fdd5b08c59",
+      "availability": "local ignored evidence; not published"
+    },
+    "red-status-and-return.log": {
+      "path": "build/m05-evidence/red-status-and-return.log",
+      "bytes": 6914,
+      "sha256": "b4b289d42a4a6cd1bd4e1b3bed0c419b22d1d1fae4c00715dd6988c21d7d141b",
+      "availability": "local ignored evidence; not published"
+    },
+    "native-key-return.log": {
+      "path": "build/m05-evidence/native-key-return.log",
+      "bytes": 4303,
+      "sha256": "3468daafd43c301a837089dba2e74059791f2375bf970d770c636a8e745cf156",
+      "availability": "local ignored evidence; not published"
+    },
+    "green-hardware-nav.log": {
+      "path": "build/m05-evidence/green-hardware-nav.log",
+      "bytes": 6053,
+      "sha256": "feb0dc7a4dcf321bf3f56270bef7ea03df8db7920561379b1ceb1fcbaefa28d6",
+      "availability": "local ignored evidence; not published"
+    },
+    "green-full.log": {
+      "path": "build/m05-evidence/green-full.log",
+      "bytes": 6408,
+      "sha256": "865b89492055d477c18e4214dcd4dd415158d8c05f0acc71cd1b3f0fad40f6d6",
+      "availability": "local ignored evidence; not published"
+    },
+    "green-software-nav.log": {
+      "path": "build/m05-evidence/green-software-nav.log",
+      "bytes": 6408,
+      "sha256": "865b89492055d477c18e4214dcd4dd415158d8c05f0acc71cd1b3f0fad40f6d6",
+      "availability": "local ignored evidence; not published"
+    },
+    "large-native.log": {
+      "path": "build/m05-evidence/large-native.log",
+      "bytes": 4649,
+      "sha256": "a29fde7f718f9cecc6917f8c488e9564a63604cfdf812acce5177db200d598d5",
+      "availability": "local ignored evidence; not published"
+    },
+    "dependencies-main-final.log": {
+      "path": "build/m05-evidence/dependencies-main-final.log",
+      "bytes": 54946,
+      "sha256": "eeb5c1aa92e3aac65060abcfe39de4bfcfcf6368efdcf9ffd2056613bb072112",
+      "availability": "local ignored evidence; not published"
+    },
+    "dependencies-final.log": {
+      "path": "build/m05-evidence/dependencies-final.log",
+      "bytes": 51006,
+      "sha256": "b64a519d43f806dc50d3a8fd13607d6dea97624fd28aa8999eeb3f12fbd56790",
+      "availability": "local ignored evidence; not published"
+    },
+    "runtime-dependency-delta.json": {
+      "path": "build/m05-evidence/runtime-dependency-delta.json",
+      "bytes": 167,
+      "sha256": "f603005cc3b4d81c5cc7da87751e1b295a5d7f503458517dec5ca372d839886f",
+      "availability": "local ignored evidence; not published"
+    },
+    "device-ui.json": {
+      "path": "build/m05-evidence/device-ui.json",
+      "bytes": 3004,
+      "sha256": "54d1e319eba2f87694fe07138ae1c891a0195d311c2cd04a1c783c542cac4034",
+      "availability": "local ignored evidence; not published"
+    },
+    "large-native-config.json": {
+      "path": "build/m05-evidence/large-native-config.json",
+      "bytes": 527,
+      "sha256": "8d4fa3257d9acd01e6332224d096140809f2a0f5f73db08c8dabeb500cfe4909",
+      "availability": "local ignored evidence; not published"
+    },
+    "software-navigation-systemui.txt": {
+      "path": "build/m05-evidence/software-navigation-systemui.txt",
+      "bytes": 325842,
+      "sha256": "9755582e905ee1d00ab4f0b87f002bcc74edb06f0cd75ba4358b66a3ed14dcf2",
+      "availability": "local ignored evidence; not published"
+    }
+  },
+  "notRun": [
+    "physical phone",
+    "API26 runtime",
+    "OEM backup and transfer behavior",
+    "full TalkBack review",
+    "actual low-memory automatic process reclamation",
+    "Release build/formal signed upgrade",
+    "M06 CRUD and write-refresh journey",
+    "M08 v1-to-v2 migration/preflight integration",
+    "M10 images",
+    "M11/M12 full backup and restore",
+    "M13 aggregation",
+    "M09 two deferred subscription-flow risks",
+    "Q03-Q06 future full-module tests"
+  ],
+  "limits": [
+    "Debug includes non-launcher exported empty ComponentActivity UI-test host; Release exclusion verified by configuration only",
+    "UI snapshot is read-only; no production sample data, save callback or business aggregate",
+    "No independent M05 acceptance has been performed; requires ChatGPT review and explicit next-module authorization",
+    "All archived and historical evidence left unchanged; source checks do not replace runtime evidence",
+    "APK, raw local logs, databases, signing secrets and private records not committed or publicly published"
+  ],
+  "gitDelivery": {
+    "allowedBranch": "feat/m05-ui-foundation",
+    "baseCommit": "aecbe86fce6e5c4375f2c35d2df8539df0a557bb",
+    "commitSha": "read final Git log/report; no self-referential hash",
+    "mergeMain": false,
+    "forcePush": false,
+    "release": false
+  },
+  "postSupplementDeviceCheck": {
+    "result": "PASS",
+    "network": {
+      "airplane_mode_on": "0",
+      "wifi_on": "1",
+      "mobile_data": "1"
+    },
+    "config": {
+      "font_scale": "1.0",
+      "accelerometer_rotation": "1",
+      "user_rotation": "0"
+    },
+    "showImeWithHardKeyboard": "0",
+    "generationAndSettingsUnchanged": true,
+    "installedApkMatchesFinal": true,
+    "readonly": true
+  },
+  "documentAndScopeChecks": {
+    "result": "PASS",
+    "checkedAtUtc": "2026-10-12T04:02:39.133526+00:00",
+    "checksExecuted": 9,
+    "changedFiles": 43,
+    "modifiedFiles": 14,
+    "newFiles": 29,
+    "deletedFiles": 0,
+    "protectedBaselineFilesCompared": 124,
+    "originalArchive": {
+      "status": "PASS",
+      "archiveSha256": "861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7",
+      "originalFiles": 43,
+      "crc": "PASS",
+      "safePaths": "PASS",
+      "originalCases": 130,
+      "notRun": 130
+    },
+    "frozenInputsAndOldTestSources": {
+      "status": "PASS",
+      "inputHashesVerified": 50,
+      "oldJvmFiles": 5,
+      "oldJvmMethods": 74,
+      "oldAndroidFilesIncludingHelper": 6,
+      "oldAndroidMethods": 86,
+      "schemaSha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "schemaVersion": 1,
+      "executionNotClaimed": true
+    },
+    "preservedIssues": {
+      "status": "PASS",
+      "q03ToQ06RowsUnchanged": 4,
+      "m09RiskBodiesUnchanged": 2,
+      "fullSupplementsNotRun": 16
+    },
+    "documentLinks": {
+      "status": "PASS",
+      "markdownFilesChecked": 74,
+      "localFileLinksChecked": 393,
+      "changedSectionAnchorsChecked": 4,
+      "brokenLinks": [],
+      "balancedFences": true
+    },
+    "textFilesScanned": 34,
+    "secretFindings": [],
+    "sanitizedPngsChecked": 9,
+    "pngMetadataCrcAndDimensions": "PASS; pixels separately reviewed by root",
+    "baselineAndStagedDiffCheck": "PASS",
+    "protectedRemoteRefs": {
+      "feat/m02-project-cost-engine": "0169c76bbf0946a0400b96d00124b3de9aea1cc0",
+      "feat/m03-subscription-engine": "ffd066ffe0efb6c00f35526ae792b50829d3230e",
+      "feat/m04-room-storage-foundation": "aecbe86fce6e5c4375f2c35d2df8539df0a557bb",
+      "main": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a"
+    },
+    "finalBuildInputHashesVerified": 70,
+    "limits": "Local scope/evidence check, not ChatGPT independent acceptance; commit/push verified separately in final Git log/report"
+  }
+}
