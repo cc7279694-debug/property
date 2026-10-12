@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00～M05实际执行及M00～M04独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全NOT_RUN，不在原件改结果。
+本文件记录M00～M05实际执行及独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全NOT_RUN，不在原件改结果。
 
-日期：2026-10-12。PASS为实际执行通过，NOT_RUN为未执行，PENDING为尚待独立确认。M00～M04正式结论均为ACCEPTED / FROZEN — PASS WITH NOTES；本轮 **M05 — READY_FOR_REVIEW，独立验收PENDING**。实际82 JVM/118 Android、设备及组件补测登记在末尾M05节，历史交付/独立审查未重跑本机测试等NOTES完整保留。执行者不自行授予冻结；原130和16完整跨模块补测继续NOT_RUN。
+日期：2026-10-12。PASS为实际执行通过，NOT_RUN为未执行，PENDING为尚待独立确认。M00～M05正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；M05依据及全部NOTES见末尾独立代码验收记录。原READY_FOR_REVIEW/PENDING交付、82 JVM/118 Android与3项独立补测、设备证据及历史NOTES完整保留。本次仅回写状态，不重跑Gradle、构建或安装，不增加执行PASS；独立冻结由用户转交ChatGPT结论授予，执行者不自行授予。原130和16完整跨模块补测继续NOT_RUN。
 
 ## 独立验收记录
 
@@ -293,3 +293,32 @@ Room四表v1与原schema hash不变；50冻结输入、旧74/86测试源码不�
 NOT_RUN：真机、API26、OEM、TalkBack完整审查、真实内存压力自动回收、Release正式签名升级、M06 CRUD/写后刷新、M08迁移/版本预检集成、M10图片、M11/M12备份恢复、M13汇总及其他未来业务。Q03～Q06期限及M09两风险不变，Q06仍ENGINEERING_REQUIRED；M04残留代安全与M08预检NOTES继承。TypeScript/ESLint不适用，NO-SOURCE不计PASS。
 
 只提交并推送feat/m05-ui-foundation；提交自身SHA/推送后远端一致与干净工作区以Git日志/最终报告为准。不合并main、不force push、不改WHOCARE或公开APK。M05交付后立即停止等待独立验收，不授予ACCEPTED / FROZEN，不进入M06。
+
+## M05 独立代码验收与正式冻结记录（2026-10-12）
+
+- 正式结论：**ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 来源：用户在当前会话明确转交的ChatGPT独立代码验收正式结论；本次Codex只回写，不自行授予冻结或以本地辅助检查替代独立审查。
+- 仓库：`cc7279694-debug/property`。
+- 评审分支：`feat/m05-ui-foundation`。
+- 评审HEAD：`6909858cd0c03ec8e3277908e05d407d7f4cafca`；回写前已实际核对本地/远端一致、工作区干净。
+
+独立审查确认（由用户转交）：
+
+1. M05-T01～T04实现及现有测试证据符合本模块要求。
+2. 82项JVM与118项Android方法均与提交的PASS记录逐项对应，共200个唯一测试。
+3. 另外3项大字体补测有独立执行记录，不重复计入200个唯一测试总数。
+4. 已审阅正常首页、设置、长期项目列表、横屏、进程恢复及键盘显示等实际截图。
+5. 初始化、真实数据读取与存储失败状态明确区分，不将错误伪装成空账本。
+6. Git范围为29新增、14修改、0删除，未提前进入M06。
+7. **独立审查未在用户Windows本机重新运行Gradle或重新安装APK。**源码/证据审阅不是新的执行PASS，本次Codex状态回写同样不重跑Gradle、构建或设备验证。
+
+保留全部NOTES与后续边界：
+
+1. **M06真实数据刷新：**必须实现业务写入后的真实刷新；当前只读快照不代表保存及写后刷新已实施，后续流程/验收仍NOT_RUN。
+2. **M06正式列表性能：**应落实分页或等效的大数据性能保护；不把M05只读列表当作长期大数据验收，后续实现与验证仍NOT_RUN。
+3. **Debug与Release隔离：**Debug测试宿主不得未经验证进入正式生产交付；Release实际构建尚未执行，仍NOT_RUN。原配置排除及Debug额外空ComponentActivity的交付事实保留，不冒充Release产物验证。
+4. **设备与可访问性边界：**真机、API26、OEM、完整TalkBack及真实低内存自动回收仍NOT_RUN；API36实测与应用UID SIGKILL进程死亡模拟不替代这些场景。
+5. **规格与数据安全：**Q03～Q06及既定期限、M09两项流程风险、M04/M08/M12后续安全边界保持。Q06仍ENGINEERING_REQUIRED，完整切换/恢复/故障回退归M12；M04首次初始化中断残留generation不能静默清除真实数据；M08 v1→v2须同步调整数据库版本预检。未执行的迁移、恢复、故障验证及其他未来测试仍NOT_RUN，不擅自关闭问题。原130条归档案例、16组完整跨模块补测及历史交付/JSON/checkpoint原样保留。
+6. **Lint：**现有20条警告不要求本轮强行升级依赖；不升级、抑制或修改既有执行结果。
+
+本节正式结论取代先前交付PENDING的当前效力；原交付报告、证据JSON、checkpoint及上节当前执行验收保留为当时历史，不改其NOT_RUN/PENDING字段。本次仅修改唯一CURRENT_STATE与本登记，检查差异/敏感信息后提交并推送当前M05功能分支；不修改业务代码、WHOCARE或原规划，不合并main或进入M06。M06须用户明确新授权；回写提交自身SHA、推送和最终远端核对以Git日志/最终报告为准。
