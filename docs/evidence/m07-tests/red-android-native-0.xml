@@ -1,0 +1,1106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" tests="63" failures="60" errors="0" skipped="0" time="92.607" timestamp="2026-10-12T10:45:34" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="ambiguous_legacy_settlements_conflict_at_all_formal_write_entry_points" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.972">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$ambiguous_legacy_settlements_conflict_at_all_formal_write_entry_points$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:263)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.ambiguous_legacy_settlements_conflict_at_all_formal_write_entry_points(ProjectLifecycleRepositoryTest.kt:257)
+</failure>
+  </testcase>
+  <testcase name="correct_end_date_updates_result" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.082">
+    <failure>java.lang.AssertionError: Expected lifecycle write, got ValidationFailure(reason=Lifecycle implementation pending)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.assertApplied(ProjectLifecycleRepositoryTest.kt:477)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.access$assertApplied(ProjectLifecycleRepositoryTest.kt:38)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$correct_end_date_updates_result$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:137)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.correct_end_date_updates_result(ProjectLifecycleRepositoryTest.kt:135)
+</failure>
+  </testcase>
+  <testcase name="amend_without_an_existing_settlement_cannot_create_or_remove_money" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.162">
+    <failure>java.lang.AssertionError: Expected lifecycle write, got ValidationFailure(reason=Lifecycle implementation pending)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.assertApplied(ProjectLifecycleRepositoryTest.kt:477)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.access$assertApplied(ProjectLifecycleRepositoryTest.kt:38)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$amend_without_an_existing_settlement_cannot_create_or_remove_money$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:234)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.amend_without_an_existing_settlement_cannot_create_or_remove_money(ProjectLifecycleRepositoryTest.kt:232)
+</failure>
+  </testcase>
+  <testcase name="end_and_recovery_atomic" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.16">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$end_and_recovery_atomic$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:80)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.end_and_recovery_atomic(ProjectLifecycleRepositoryTest.kt:75)
+</failure>
+  </testcase>
+  <testcase name="different_concurrent_end_commands_conflict_instead_of_creating_two_settlements" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.134">
+    <failure>java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$different_concurrent_end_commands_conflict_instead_of_creating_two_settlements$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:207)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.different_concurrent_end_commands_conflict_instead_of_creating_two_settlements(ProjectLifecycleRepositoryTest.kt:202)
+</failure>
+  </testcase>
+  <testcase name="full_project_baseline_rejects_same_revision_changed_metadata" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.033">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$full_project_baseline_rejects_same_revision_changed_metadata$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:215)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.full_project_baseline_rejects_same_revision_changed_metadata(ProjectLifecycleRepositoryTest.kt:212)
+</failure>
+  </testcase>
+  <testcase name="late_installment_does_not_reactivate" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.032">
+    <failure>java.lang.AssertionError: Expected lifecycle write, got ValidationFailure(reason=Lifecycle implementation pending)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.assertApplied(ProjectLifecycleRepositoryTest.kt:477)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.access$assertApplied(ProjectLifecycleRepositoryTest.kt:38)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$late_installment_does_not_reactivate$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:119)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.late_installment_does_not_reactivate(ProjectLifecycleRepositoryTest.kt:117)
+</failure>
+  </testcase>
+  <testcase name="end_and_settlement_survive_real_file_database_reopen" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.144">
+    <failure>java.lang.AssertionError: Expected lifecycle write, got ValidationFailure(reason=Lifecycle implementation pending)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.assertApplied(ProjectLifecycleRepositoryTest.kt:477)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.access$assertApplied(ProjectLifecycleRepositoryTest.kt:38)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$end_and_settlement_survive_real_file_database_reopen$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:411)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.end_and_settlement_survive_real_file_database_reopen(ProjectLifecycleRepositoryTest.kt:409)
+</failure>
+  </testcase>
+  <testcase name="historical_correction_rejects_settlement_future_money_and_changed_full_event" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.495">
+    <failure>java.lang.AssertionError: Expected lifecycle write, got ValidationFailure(reason=Lifecycle implementation pending)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.assertApplied(ProjectLifecycleRepositoryTest.kt:477)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.access$assertApplied(ProjectLifecycleRepositoryTest.kt:38)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$historical_correction_rejects_settlement_future_money_and_changed_full_event$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:293)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.historical_correction_rejects_settlement_future_money_and_changed_full_event(ProjectLifecycleRepositoryTest.kt:291)
+</failure>
+  </testcase>
+  <testcase name="current_and_history_are_filtered_in_sql_and_bounded_by_stable_fifty_row_pages" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.845">
+    <failure>java.lang.AssertionError: expected:&lt;101&gt; but was:&lt;204&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:647)
+at org.junit.Assert.assertEquals(Assert.java:633)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$current_and_history_are_filtered_in_sql_and_bounded_by_stable_fifty_row_pages$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:351)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.current_and_history_are_filtered_in_sql_and_bounded_by_stable_fifty_row_pages(ProjectLifecycleRepositoryTest.kt:347)
+</failure>
+  </testcase>
+  <testcase name="no_settlement_and_explicit_zero_settlement_preserve_distinct_facts" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.138">
+    <failure>java.lang.AssertionError: Expected lifecycle write, got ValidationFailure(reason=Lifecycle implementation pending)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.assertApplied(ProjectLifecycleRepositoryTest.kt:477)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.access$assertApplied(ProjectLifecycleRepositoryTest.kt:38)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$no_settlement_and_explicit_zero_settlement_preserve_distinct_facts$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:180)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.no_settlement_and_explicit_zero_settlement_preserve_distinct_facts(ProjectLifecycleRepositoryTest.kt:177)
+</failure>
+  </testcase>
+  <testcase name="legacy_first_end_settlement_is_compatible_but_every_add_rejects_a_second" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.184">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$legacy_first_end_settlement_is_compatible_but_every_add_rejects_a_second$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:252)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.legacy_first_end_settlement_is_compatible_but_every_add_rejects_a_second(ProjectLifecycleRepositoryTest.kt:246)
+</failure>
+  </testcase>
+  <testcase name="delete_requires_confirmation" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.155">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$delete_requires_confirmation$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:165)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.delete_requires_confirmation(ProjectLifecycleRepositoryTest.kt:156)
+</failure>
+  </testcase>
+  <testcase name="filtered_window_holds_one_snapshot_when_end_write_is_queued_between_pages" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.716">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at org.junit.Assert.assertFalse(Assert.java:75)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$filtered_window_holds_one_snapshot_when_end_write_is_queued_between_pages$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:388)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTaskKt.resume(DispatchedTask.kt:233)
+at kotlinx.coroutines.DispatchedTaskKt.dispatch(DispatchedTask.kt:152)
+at kotlinx.coroutines.CancellableContinuationImpl.dispatchResume(CancellableContinuationImpl.kt:470)
+at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core(CancellableContinuationImpl.kt:504)
+at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core$default(CancellableContinuationImpl.kt:493)
+at kotlinx.coroutines.CancellableContinuationImpl.resumeUndispatched(CancellableContinuationImpl.kt:596)
+at kotlinx.coroutines.EventLoopImplBase$DelayedResumeTask.run(EventLoop.common.kt:497)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.filtered_window_holds_one_snapshot_when_end_write_is_queued_between_pages(ProjectLifecycleRepositoryTest.kt:371)
+</failure>
+  </testcase>
+  <testcase name="amend_rolls_back_project_when_real_settlement_update_fails" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.034">
+    <failure>java.lang.AssertionError: Expected lifecycle write, got ValidationFailure(reason=Lifecycle implementation pending)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.assertApplied(ProjectLifecycleRepositoryTest.kt:477)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.access$assertApplied(ProjectLifecycleRepositoryTest.kt:38)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$amend_rolls_back_project_when_real_settlement_update_fails$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:223)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.amend_rolls_back_project_when_real_settlement_update_fails(ProjectLifecycleRepositoryTest.kt:221)
+</failure>
+  </testcase>
+  <testcase name="empty_filtered_reads_are_real_and_database_failure_does_not_become_empty_history" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.008" />
+  <testcase name="historical_correction_is_atomic_with_its_project_revision" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.085">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$historical_correction_is_atomic_with_its_project_revision$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:308)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.historical_correction_is_atomic_with_its_project_revision(ProjectLifecycleRepositoryTest.kt:303)
+</failure>
+  </testcase>
+  <testcase name="deleting_one_project_keeps_other_project_shared_media_and_real_file" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.16">
+    <failure>java.lang.AssertionError: expected:&lt;ProjectDeleted(projectId=70000000-0000-4000-8000-000000001001)&gt; but was:&lt;ValidationFailure(reason=Lifecycle implementation pending)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$deleting_one_project_keeps_other_project_shared_media_and_real_file$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:336)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.deleting_one_project_keeps_other_project_shared_media_and_real_file(ProjectLifecycleRepositoryTest.kt:328)
+</failure>
+  </testcase>
+  <testcase name="end_rejects_invalid_date_reason_revision_and_future_real_money" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.138" />
+  <testcase name="deletion_refuses_stale_project_and_any_new_or_corrected_event" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.155">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$deletion_refuses_stale_project_and_any_new_or_corrected_event$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:318)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.deletion_refuses_stale_project_and_any_new_or_corrected_event(ProjectLifecycleRepositoryTest.kt:313)
+</failure>
+  </testcase>
+  <testcase name="edit_end_recovery_not_duplicated" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.108">
+    <failure>java.lang.AssertionError: Expected lifecycle write, got ValidationFailure(reason=Lifecycle implementation pending)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.assertApplied(ProjectLifecycleRepositoryTest.kt:477)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.access$assertApplied(ProjectLifecycleRepositoryTest.kt:38)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$edit_end_recovery_not_duplicated$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:98)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.edit_end_recovery_not_duplicated(ProjectLifecycleRepositoryTest.kt:95)
+</failure>
+  </testcase>
+  <testcase name="historical_initial_and_regular_corrections_preserve_identity_and_refunds_are_new_facts" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.105">
+    <failure>java.lang.AssertionError: expected:&lt;MoneyCorrected(projectId=70000000-0000-4000-8000-000000001001, eventId=70000000-0000-4000-8000-000000002001, replayed=false)&gt; but was:&lt;ValidationFailure(reason=Lifecycle implementation pending)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest$historical_initial_and_regular_corrections_preserve_identity_and_refunds_are_new_facts$1.invokeSuspend(ProjectLifecycleRepositoryTest.kt:277)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest.historical_initial_and_regular_corrections_preserve_identity_and_refunds_are_new_facts(ProjectLifecycleRepositoryTest.kt:273)
+</failure>
+  </testcase>
+  <testcase name="zero_end_recovery_commits_once_and_refreshes_current_history_and_detail" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="5.449">
+    <failure>java.lang.AssertionError: Expected lifecycle state was not reached: ProjectUiState(list=ProjectListUiState(items=[], totalCount=null, loading=true, loadingMore=false, hasMore=false, error=null), detail=ProjectDetailUiState(detail=null, loading=true, missing=false, error=null), editor=null, moneyEditor=null, committedProjectId=null, history=ProjectListUiState(items=[], totalCount=null, loading=true, loadingMore=false, hasMore=false, error=null), endEditor=null, moneyCorrection=null, deleteConfirmation=null, deletedProjectId=null)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.await(ProjectLifecycleViewModelTest.kt:566)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$await(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$await$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.zero_end_recovery_commits_once_and_refreshes_current_history_and_detail(ProjectLifecycleViewModelTest.kt:107)
+</failure>
+  </testcase>
+  <testcase name="end_raw_input_dirty_guard_and_identity_survive_saved_state_without_writing" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.133">
+    <failure>java.lang.AssertionError: An end form must exist before its asynchronous read
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startEnd(ProjectLifecycleViewModelTest.kt:516)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startEnd(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$end_raw_input_dirty_guard_and_identity_survive_saved_state_without_writing$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:67)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.end_raw_input_dirty_guard_and_identity_survive_saved_state_without_writing(ProjectLifecycleViewModelTest.kt:63)
+</failure>
+  </testcase>
+  <testcase name="stale_delete_does_not_automatically_rebase_and_explicit_read_requires_confirmation_again" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.126">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startDelete(ProjectLifecycleViewModelTest.kt:534)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startDelete(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$stale_delete_does_not_automatically_rebase_and_explicit_read_requires_confirmation_again$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:320)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.stale_delete_does_not_automatically_rebase_and_explicit_read_requires_confirmation_again(ProjectLifecycleViewModelTest.kt:316)
+</failure>
+  </testcase>
+  <testcase name="end_validates_real_recovery_date_and_amount_without_writing" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.105">
+    <failure>java.lang.AssertionError: An end form must exist before its asynchronous read
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startEnd(ProjectLifecycleViewModelTest.kt:516)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startEnd(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$end_validates_real_recovery_date_and_amount_without_writing$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:91)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.end_validates_real_recovery_date_and_amount_without_writing(ProjectLifecycleViewModelTest.kt:88)
+</failure>
+  </testcase>
+  <testcase name="initial_delete_read_failure_and_absence_are_distinct_and_neither_writes" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.129">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$initial_delete_read_failure_and_absence_are_distinct_and_neither_writes$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:483)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.initial_delete_read_failure_and_absence_are_distinct_and_neither_writes(ProjectLifecycleViewModelTest.kt:476)
+</failure>
+  </testcase>
+  <testcase name="stale_correction_preserves_raw_values_until_explicit_read_of_current_facts" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.134">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startCorrection(ProjectLifecycleViewModelTest.kt:528)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startCorrection(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$stale_correction_preserves_raw_values_until_explicit_read_of_current_facts$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:342)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.stale_correction_preserves_raw_values_until_explicit_read_of_current_facts(ProjectLifecycleViewModelTest.kt:338)
+</failure>
+  </testcase>
+  <testcase name="delayed_initial_read_cannot_replace_a_new_form_for_the_same_project" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.136">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$delayed_initial_read_cannot_replace_a_new_form_for_the_same_project$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:406)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.delayed_initial_read_cannot_replace_a_new_form_for_the_same_project(ProjectLifecycleViewModelTest.kt:391)
+</failure>
+  </testcase>
+  <testcase name="lifecycle_commit_then_read_failure_stays_committed_without_new_write" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.168">
+    <failure>java.lang.AssertionError: An end form must exist before its asynchronous read
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startEnd(ProjectLifecycleViewModelTest.kt:516)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startEnd(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$lifecycle_commit_then_read_failure_stays_committed_without_new_write$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:452)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.lifecycle_commit_then_read_failure_stays_committed_without_new_write(ProjectLifecycleViewModelTest.kt:442)
+</failure>
+  </testcase>
+  <testcase name="initial_end_read_interruption_restores_baseline_without_replacing_existing_raw_values" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.167">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$initial_end_read_interruption_restores_baseline_without_replacing_existing_raw_values$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:372)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.initial_end_read_interruption_restores_baseline_without_replacing_existing_raw_values(ProjectLifecycleViewModelTest.kt:357)
+</failure>
+  </testcase>
+  <testcase name="interrupted_end_replays_the_original_project_settlement_and_command_envelope" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.216">
+    <failure>java.lang.AssertionError: An end form must exist before its asynchronous read
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startEnd(ProjectLifecycleViewModelTest.kt:516)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startEnd(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$interrupted_end_replays_the_original_project_settlement_and_command_envelope$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:176)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.interrupted_end_replays_the_original_project_settlement_and_command_envelope(ProjectLifecycleViewModelTest.kt:163)
+</failure>
+  </testcase>
+  <testcase name="delete_cancel_leaves_facts_and_confirm_removes_project_and_its_events" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.133">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startDelete(ProjectLifecycleViewModelTest.kt:534)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startDelete(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$delete_cancel_leaves_facts_and_confirm_removes_project_and_its_events$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:267)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.delete_cancel_leaves_facts_and_confirm_removes_project_and_its_events(ProjectLifecycleViewModelTest.kt:263)
+</failure>
+  </testcase>
+  <testcase name="update_end_without_settlement_cannot_create_an_implicit_recovery" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.287">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startUpdate(ProjectLifecycleViewModelTest.kt:522)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startUpdate(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$update_end_without_settlement_cannot_create_an_implicit_recovery$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:128)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.update_end_without_settlement_cannot_create_an_implicit_recovery(ProjectLifecycleViewModelTest.kt:124)
+</failure>
+  </testcase>
+  <testcase name="external_delete_removes_cached_detail_and_missing_is_not_a_read_error" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.124">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$external_delete_removes_cached_detail_and_missing_is_not_a_read_error$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:470)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.external_delete_removes_cached_detail_and_missing_is_not_a_read_error(ProjectLifecycleViewModelTest.kt:464)
+</failure>
+  </testcase>
+  <testcase name="interrupted_update_end_replays_the_same_linked_settlement_identity_and_baseline" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.19">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startUpdate(ProjectLifecycleViewModelTest.kt:522)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startUpdate(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$interrupted_update_end_replays_the_same_linked_settlement_identity_and_baseline$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:210)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.interrupted_update_end_replays_the_same_linked_settlement_identity_and_baseline(ProjectLifecycleViewModelTest.kt:196)
+</failure>
+  </testcase>
+  <testcase name="history_is_database_filtered_bounded_and_refreshes_loaded_pages_after_writes" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="5.409">
+    <failure>java.lang.AssertionError: Expected lifecycle state was not reached: ProjectUiState(list=ProjectListUiState(items=[], totalCount=null, loading=true, loadingMore=false, hasMore=false, error=null), detail=ProjectDetailUiState(detail=null, loading=true, missing=false, error=null), editor=null, moneyEditor=null, committedProjectId=null, history=ProjectListUiState(items=[], totalCount=null, loading=true, loadingMore=false, hasMore=false, error=null), endEditor=null, moneyCorrection=null, deleteConfirmation=null, deletedProjectId=null)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.await(ProjectLifecycleViewModelTest.kt:566)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$await(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$await$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.history_is_database_filtered_bounded_and_refreshes_loaded_pages_after_writes(ProjectLifecycleViewModelTest.kt:418)
+</failure>
+  </testcase>
+  <testcase name="initial_money_correction_preserves_all_business_identities_and_updates_facts" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.11">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startCorrection(ProjectLifecycleViewModelTest.kt:528)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startCorrection(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$initial_money_correction_preserves_all_business_identities_and_updates_facts$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:146)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.initial_money_correction_preserves_all_business_identities_and_updates_facts(ProjectLifecycleViewModelTest.kt:142)
+</failure>
+  </testcase>
+  <testcase name="interrupted_money_correction_replays_original_identity_and_uneditable_raw_input" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.135">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startCorrection(ProjectLifecycleViewModelTest.kt:528)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startCorrection(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$interrupted_money_correction_replays_original_identity_and_uneditable_raw_input$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:244)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.interrupted_money_correction_replays_original_identity_and_uneditable_raw_input(ProjectLifecycleViewModelTest.kt:230)
+</failure>
+  </testcase>
+  <testcase name="interrupted_delete_retries_same_snapshot_and_only_claims_current_absence" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.106">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.startDelete(ProjectLifecycleViewModelTest.kt:534)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$startDelete(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$interrupted_delete_retries_same_snapshot_and_only_claims_current_absence$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:295)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.interrupted_delete_retries_same_snapshot_and_only_claims_current_absence(ProjectLifecycleViewModelTest.kt:282)
+</failure>
+  </testcase>
+  <testcase name="mismatched_source_identity_invalid_event_and_oversized_history_restore_home" classname="com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest" time="0.032" />
+  <testcase name="current_lifecycle_routes_keep_current_parent_and_four_entries" classname="com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest" time="0.017">
+    <failure>java.lang.AssertionError: expected:&lt;[Home, ProjectList, ProjectDetail(id=a0a0a0a0-1111-4444-8888-aaaaaaaaaaaa, origin=CURRENT), ProjectEnd(id=a0a0a0a0-1111-4444-8888-aaaaaaaaaaaa, origin=CURRENT)]&gt; but was:&lt;[Home]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest.current_lifecycle_routes_keep_current_parent_and_four_entries(ProjectLifecycleRoutesTest.kt:41)
+</failure>
+  </testcase>
+  <testcase name="history_has_review_parent_and_at_most_five_entries_for_every_editor" classname="com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest" time="0.019">
+    <failure>java.lang.AssertionError: expected:&lt;[Home, Review, ProjectHistory]&gt; but was:&lt;[Home]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest.history_has_review_parent_and_at_most_five_entries_for_every_editor(ProjectLifecycleRoutesTest.kt:19)
+</failure>
+  </testcase>
+  <testcase name="end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.106">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'end-record-recovery')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero(ProjectLifecycleScreensTest.kt:60)
+</failure>
+  </testcase>
+  <testcase name="end_validation_preserves_raw_dates_amount_reason_and_visible_errors" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.76">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'end-ended-on-input')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.end_validation_preserves_raw_dates_amount_reason_and_visible_errors(ProjectLifecycleScreensTest.kt:78)
+</failure>
+  </testcase>
+  <testcase name="end_and_correction_forms_are_reachable_at_360dp_with_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.809">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'end-ended-on-input')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.end_and_correction_forms_are_reachable_at_360dp_with_200_percent_font(ProjectLifecycleScreensTest.kt:242)
+</failure>
+  </testcase>
+  <testcase name="end_pending_submission_locks_inputs_and_committed_refresh_only_reads" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.9">
+    <failure>java.lang.AssertionError: Failed to assert the following: (is not enabled)
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'end-ended-on-input')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertIsNotEnabled(Assertions.kt:67)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.end_pending_submission_locks_inputs_and_committed_refresh_only_reads(ProjectLifecycleScreensTest.kt:114)
+</failure>
+  </testcase>
+  <testcase name="correction_initial_read_and_conflict_offer_reload_without_resubmitting" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.427">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'correction-save')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.correction_initial_read_and_conflict_offer_reload_without_resubmitting(ProjectLifecycleScreensTest.kt:148)
+</failure>
+  </testcase>
+  <testcase name="correcting_end_without_settlement_never_offers_creating_recovery" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.544">
+    <failure>java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '修正结束记录' (ignoreCase: false) is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.correcting_end_without_settlement_never_offers_creating_recovery(ProjectLifecycleScreensTest.kt:90)
+</failure>
+  </testcase>
+  <testcase name="correcting_linked_settlement_keeps_the_existing_event_and_has_no_toggle_or_delete" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.41">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'end-recovery-amount')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.correcting_linked_settlement_keeps_the_existing_event_and_has_no_toggle_or_delete(ProjectLifecycleScreensTest.kt:102)
+</failure>
+  </testcase>
+  <testcase name="delete_confirmation_states_are_explicit_and_do_not_allow_duplicate_or_unknown_cancel" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.404">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'project-delete-dialog' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.delete_confirmation_states_are_explicit_and_do_not_allow_duplicate_or_unknown_cancel(ProjectLifecycleScreensTest.kt:165)
+</failure>
+  </testcase>
+  <testcase name="detail_routes_regular_and_initial_corrections_separately_from_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.145">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '返回历史档案' (ignoreCase: false))
+Semantics of the node:
+Node #14 at (l=16.0, t=0.0, r=136.0, b=48.0)px, Tag: 'project-detail-back'
+Focused = 'false'
+Role = 'Button'
+Text = '[返回项目列表]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, OnClick, RequestFocus, SetTextSubstitution, ShowTextSubstitution]
+MergeDescendants = 'true'
+Has 19 siblings
+Selector used: (TestTag = 'project-detail-back')
+
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.detail_routes_regular_and_initial_corrections_separately_from_end_settlement(ProjectLifecycleScreensTest.kt:212)
+</failure>
+  </testcase>
+  <testcase name="history_preserves_visible_rows_when_read_fails_and_exposes_database_continuation" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.624">
+    <failure>java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '暂无已结束项目' (ignoreCase: false) is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.history_preserves_visible_rows_when_read_fails_and_exposes_database_continuation(ProjectLifecycleScreensTest.kt:191)
+</failure>
+  </testcase>
+  <testcase name="correction_keeps_direction_and_role_read_only_and_explains_real_refund" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.531">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '投入' (ignoreCase: false))
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'correction-direction')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.correction_keeps_direction_and_role_read_only_and_explains_real_refund(ProjectLifecycleScreensTest.kt:129)
+</failure>
+  </testcase>
+  <testcase name="correct_end_date_updates_result" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="8.335">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-end' in scrollable container
+Semantics of the node:
+Node #207 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;c7dde62'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1165.0, maxValue=1165.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 12 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.openEnd(ProjectLifecycleFlowTest.kt:394)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:404)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject$default(ProjectLifecycleFlowTest.kt:404)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$correct_end_date_updates_result$1.invokeSuspend(ProjectLifecycleFlowTest.kt:188)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.correct_end_date_updates_result(ProjectLifecycleFlowTest.kt:185)
+</failure>
+  </testcase>
+  <testcase name="end_and_recovery_atomic" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="5.901">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-end' in scrollable container
+Semantics of the node:
+Node #406 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;2be0120'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1165.0, maxValue=1165.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 12 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.openEnd(ProjectLifecycleFlowTest.kt:394)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$openEnd(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$end_and_recovery_atomic$1.invokeSuspend(ProjectLifecycleFlowTest.kt:118)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.end_and_recovery_atomic(ProjectLifecycleFlowTest.kt:110)
+</failure>
+  </testcase>
+  <testcase name="late_installment_does_not_reactivate" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="5.488">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-end' in scrollable container
+Semantics of the node:
+Node #605 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;cf2c08f'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1165.0, maxValue=1165.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 12 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.openEnd(ProjectLifecycleFlowTest.kt:394)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:404)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$endProject(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$late_installment_does_not_reactivate$1.invokeSuspend(ProjectLifecycleFlowTest.kt:167)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.late_installment_does_not_reactivate(ProjectLifecycleFlowTest.kt:164)
+</failure>
+  </testcase>
+  <testcase name="delete_requires_confirmation" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="5.042">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-end' in scrollable container
+Semantics of the node:
+Node #804 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;9a641d5'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1165.0, maxValue=1165.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 12 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.openEnd(ProjectLifecycleFlowTest.kt:394)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:404)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$endProject(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$delete_requires_confirmation$1.invokeSuspend(ProjectLifecycleFlowTest.kt:211)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.delete_requires_confirmation(ProjectLifecycleFlowTest.kt:208)
+</failure>
+  </testcase>
+  <testcase name="lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="5.046">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-end' in scrollable container
+Semantics of the node:
+Node #1003 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;32d9639'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1427.0, maxValue=1427.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 12 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.openEnd(ProjectLifecycleFlowTest.kt:394)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:404)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$endProject(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font$1.invokeSuspend(ProjectLifecycleFlowTest.kt:347)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font(ProjectLifecycleFlowTest.kt:344)
+</failure>
+  </testcase>
+  <testcase name="deletion_with_lost_result_stays_on_original_confirmation_then_reconciles_absence" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="4.736">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-delete' in scrollable container
+Semantics of the node:
+Node #1201 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;d90f9e9'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1165.0, maxValue=1165.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 12 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$detailAction(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$deletion_with_lost_result_stays_on_original_confirmation_then_reconciles_absence$1.invokeSuspend(ProjectLifecycleFlowTest.kt:330)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.deletion_with_lost_result_stays_on_original_confirmation_then_reconciles_absence(ProjectLifecycleFlowTest.kt:319)
+</failure>
+  </testcase>
+  <testcase name="saved_instance_route_and_vm_bundle_restore_end_input_without_business_write" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="4.974">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-end' in scrollable container
+Semantics of the node:
+Node #1400 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;550a93b'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1165.0, maxValue=1165.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 12 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.openEnd(ProjectLifecycleFlowTest.kt:394)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$openEnd(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$saved_instance_route_and_vm_bundle_restore_end_input_without_business_write$1.invokeSuspend(ProjectLifecycleFlowTest.kt:286)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saved_instance_route_and_vm_bundle_restore_end_input_without_business_write(ProjectLifecycleFlowTest.kt:283)
+</failure>
+  </testcase>
+  <testcase name="history_correction_and_real_refund_are_distinct_and_preserve_original_identity" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="8.131">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-end' in scrollable container
+Semantics of the node:
+Node #1710 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;bb785a'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1326.0, maxValue=1326.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 13 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.openEnd(ProjectLifecycleFlowTest.kt:394)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:404)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject$default(ProjectLifecycleFlowTest.kt:404)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$history_correction_and_real_refund_are_distinct_and_preserve_original_identity$1.invokeSuspend(ProjectLifecycleFlowTest.kt:244)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.history_correction_and_real_refund_are_distinct_and_preserve_original_identity(ProjectLifecycleFlowTest.kt:240)
+</failure>
+  </testcase>
+  <testcase name="edit_end_recovery_not_duplicated" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="4.895">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'project-end' in scrollable container
+Semantics of the node:
+Node #1918 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;34b0011'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1165.0, maxValue=1165.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 12 children
+Selector used: (TestTag = 'project-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.detailAction(ProjectLifecycleFlowTest.kt:416)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.openEnd(ProjectLifecycleFlowTest.kt:394)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:404)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$endProject(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$edit_end_recovery_not_duplicated$1.invokeSuspend(ProjectLifecycleFlowTest.kt:141)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.edit_end_recovery_not_duplicated(ProjectLifecycleFlowTest.kt:138)
+</failure>
+  </testcase>
+</testsuite>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" tests="3" failures="2" errors="0" skipped="0" time="11.941" timestamp="2026-10-12T11:00:30" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="conflicted_delete_explicit_missing_read_reports_only_verified_absence_and_allows_return" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="5.862">
+    <failure>java.lang.AssertionError: Expected lifecycle state was not reached: ProjectUiState(list=ProjectListUiState(items=[], totalCount=null, loading=true, loadingMore=false, hasMore=false, error=null), detail=ProjectDetailUiState(detail=null, loading=true, missing=false, error=null), editor=null, moneyEditor=null, committedProjectId=null, history=ProjectListUiState(items=[], totalCount=null, loading=true, loadingMore=false, hasMore=false, error=null), endEditor=null, moneyCorrection=null, deleteConfirmation=DeleteProjectUiState(projectId=350df325-37d6-4391-b20f-e436c9947912, projectName=长期项目, phase=UNCONFIRMED, loading=true, message=记录版本或提交内容发生冲突，请读取当前记录核对。应用不会覆盖已有修改。, conflict=true, needsInitialRead=false), deletedProjectId=null)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.await(ProjectLifecycleViewModelTest.kt:666)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$await(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$await$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.conflicted_delete_explicit_missing_read_reports_only_verified_absence_and_allows_return(ProjectLifecycleViewModelTest.kt:497)
+</failure>
+  </testcase>
+  <testcase name="conflicted_edit_end_update_and_money_explicit_missing_reads_allow_safe_return_without_false_commit" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="5.256">
+    <failure>java.lang.AssertionError: Expected lifecycle state was not reached: ProjectUiState(list=ProjectListUiState(items=[], totalCount=null, loading=true, loadingMore=false, hasMore=false, error=null), detail=ProjectDetailUiState(detail=ProjectDetail(project=LongTermProjectEntity(id=b4f4c64e-b468-48a9-836a-053b07c050e9, name=外部资料修改, categoryId=00000000-0000-4000-8000-000000000001, startedOn=2026-01-01, endedOn=null, endReason=null, coverAssetId=null, note=null, createdAt=2026-01-10T12:00:00Z, updatedAt=2026-01-10T12:00:00.000000001Z), category=CategoryEntity(id=00000000-0000-4000-8000-000000000001, type=PROJECT, name=其他, normalizedName=其他, isFallback=true), events=[ProjectMoneyEventEntity(id=e57c1a6f-bd64-4d3f-bc12-113ec01f5d97, projectId=b4f4c64e-b468-48a9-836a-053b07c050e9, direction=OUTLAY, amountCents=100000, occurredOn=2026-01-01, description=null, role=INITIAL, operationId=b4f2c7eb-3004-4dc3-8f39-8c7c21a37146)], cost=ProjectCostResult(heldDays=10, grossOutlayCents=100000, recoveryCents=0, netCents=100000, dailyRate=100.00, contributesToCurrentTotal=true, unavailableReason=null), asOf=2026-01-10), loading=false, missing=false, error=null), editor=ProjectEditorUiState(mode=EDIT, projectId=b4f4c64e-b468-48a9-836a-053b07c050e9, name=陈旧编辑, startedOn=2026-01-01, initialAmount=, initialPaidOn=, categoryId=00000000-0000-4000-8000-000000000001, note=, categories=[CategoryEntity(id=00000000-0000-4000-8000-000000000001, type=PROJECT, name=其他, normalizedName=其他, isFallback=true)], today=2026-01-10, phase=UNCONFIRMED, dirty=true, loading=true, errors={}, message=记录版本或提交内容发生冲突，请读取当前记录核对。应用不会覆盖已有修改。, conflict=true, needsInitialRead=false), moneyEditor=null, committedProjectId=null, history=ProjectListUiState(items=[], totalCount=null, loading=true, loadingMore=false, hasMore=false, error=null), endEditor=null, moneyCorrection=null, deleteConfirmation=null, deletedProjectId=null)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.await(ProjectLifecycleViewModelTest.kt:666)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.access$await(ProjectLifecycleViewModelTest.kt:38)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$await$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.conflicted_edit_end_update_and_money_explicit_missing_reads_allow_safe_return_without_false_commit(ProjectLifecycleViewModelTest.kt:518)
+</failure>
+  </testcase>
+  <testcase name="conflicted_missing_target_read_exception_keeps_original_envelope_and_blocks_until_verified" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.16" />
+</testsuite>

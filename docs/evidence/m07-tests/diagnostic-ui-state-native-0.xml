@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" tests="45" failures="1" errors="0" skipped="0" time="159.48" timestamp="2026-10-12T11:07:35" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="zero_end_recovery_commits_once_and_refreshes_current_history_and_detail" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.797" />
+  <testcase name="end_raw_input_dirty_guard_and_identity_survive_saved_state_without_writing" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.135" />
+  <testcase name="stale_delete_does_not_automatically_rebase_and_explicit_read_requires_confirmation_again" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.187" />
+  <testcase name="end_validates_real_recovery_date_and_amount_without_writing" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.164" />
+  <testcase name="conflicted_delete_explicit_missing_read_reports_only_verified_absence_and_allows_return" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.212" />
+  <testcase name="initial_delete_read_failure_and_absence_are_distinct_and_neither_writes" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.179" />
+  <testcase name="conflicted_edit_end_update_and_money_explicit_missing_reads_allow_safe_return_without_false_commit" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.541" />
+  <testcase name="stale_correction_preserves_raw_values_until_explicit_read_of_current_facts" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.188" />
+  <testcase name="delayed_initial_read_cannot_replace_a_new_form_for_the_same_project" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.135" />
+  <testcase name="lifecycle_commit_then_read_failure_stays_committed_without_new_write" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.163" />
+  <testcase name="initial_end_read_interruption_restores_baseline_without_replacing_existing_raw_values" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.16" />
+  <testcase name="interrupted_end_replays_the_original_project_settlement_and_command_envelope" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.185" />
+  <testcase name="delete_cancel_leaves_facts_and_confirm_removes_project_and_its_events" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.158" />
+  <testcase name="update_end_without_settlement_cannot_create_an_implicit_recovery" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.161" />
+  <testcase name="external_delete_removes_cached_detail_and_missing_is_not_a_read_error" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.162" />
+  <testcase name="conflicted_missing_target_read_exception_keeps_original_envelope_and_blocks_until_verified" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.135" />
+  <testcase name="interrupted_update_end_replays_the_same_linked_settlement_identity_and_baseline" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.135" />
+  <testcase name="history_is_database_filtered_bounded_and_refreshes_loaded_pages_after_writes" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.648" />
+  <testcase name="initial_money_correction_preserves_all_business_identities_and_updates_facts" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.186" />
+  <testcase name="interrupted_money_correction_replays_original_identity_and_uneditable_raw_input" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.163" />
+  <testcase name="interrupted_delete_retries_same_snapshot_and_only_claims_current_absence" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.185" />
+  <testcase name="end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="9.862" />
+  <testcase name="end_validation_preserves_raw_dates_amount_reason_and_visible_errors" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.725" />
+  <testcase name="end_and_correction_forms_are_reachable_at_360dp_with_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.978" />
+  <testcase name="missing_detail_never_presents_stale_costs_or_mutation_actions" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.665" />
+  <testcase name="end_pending_submission_locks_inputs_and_committed_refresh_only_reads" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.176" />
+  <testcase name="correction_initial_read_and_conflict_offer_reload_without_resubmitting" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.432" />
+  <testcase name="correcting_end_without_settlement_never_offers_creating_recovery" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.653" />
+  <testcase name="correcting_linked_settlement_keeps_the_existing_event_and_has_no_toggle_or_delete" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.032" />
+  <testcase name="delete_confirmation_states_are_explicit_and_do_not_allow_duplicate_or_unknown_cancel" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.327" />
+  <testcase name="detail_routes_regular_and_initial_corrections_separately_from_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.541" />
+  <testcase name="history_preserves_visible_rows_when_read_fails_and_exposes_database_continuation" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.974" />
+  <testcase name="correction_keeps_direction_and_role_read_only_and_explains_real_refund" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.475" />
+  <testcase name="correct_end_date_updates_result" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="10.48" />
+  <testcase name="end_and_recovery_atomic" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="13.428" />
+  <testcase name="late_installment_does_not_reactivate" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="12.871" />
+  <testcase name="delete_requires_confirmation" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="11.638" />
+  <testcase name="lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="9.805" />
+  <testcase name="deletion_with_lost_result_stays_on_original_confirmation_then_reconciles_absence" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="5.224" />
+  <testcase name="saved_instance_route_and_vm_bundle_restore_end_input_without_business_write" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="8.663" />
+  <testcase name="history_correction_and_real_refund_are_distinct_and_preserve_original_identity" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="17.309" />
+  <testcase name="edit_end_recovery_not_duplicated" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="27.06">
+    <failure>androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 15000 ms
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.waitForDetail(ProjectLifecycleFlowTest.kt:448)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd(ProjectLifecycleFlowTest.kt:422)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$saveEnd(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$edit_end_recovery_not_duplicated$1.invokeSuspend(ProjectLifecycleFlowTest.kt:163)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.edit_end_recovery_not_duplicated(ProjectLifecycleFlowTest.kt:145)
+</failure>
+  </testcase>
+  <testcase name="mismatched_source_identity_invalid_event_and_oversized_history_restore_home" classname="com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest" time="0.012" />
+  <testcase name="current_lifecycle_routes_keep_current_parent_and_four_entries" classname="com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest" time="0.009" />
+  <testcase name="history_has_review_parent_and_at_most_five_entries_for_every_editor" classname="com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest" time="0.007" />
+</testsuite>

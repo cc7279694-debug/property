@@ -8,7 +8,7 @@
 
 实现者不得跳过验收开始下一模块。文档任务仅检查文档，不机械新增产品测试。业务计算、迁移、恢复、导入导出等重要逻辑优先可重复测试。
 
-M00～M05已独立冻结PASS WITH NOTES，原独立未重跑本机Gradle/安装等NOTES保留。当前用户正式授权M06，从4576b03565e58011e2fa78a086039fee33e3352f/feat/m05-ui-foundation进入feat/m06-project-entry；只做长期项目创建/资料编辑/详情/资金追加、真实刷新及数据库分页，边界见[M06契约](planning/M06_CONTRACT.md)。schema v1/成本引擎/唯一owner不变，M07结束删除和后续功能未授权。完成实际回归与设备验证后READY_FOR_REVIEW并停止，不自行冻结。
+M00～M06已独立冻结PASS WITH NOTES，原独立未重跑本机Gradle/安装等NOTES保留。当前用户正式授权M07，从fb0eafdc43efa6e13ebd76e3491fa4331a145abb/feat/m06-project-entry进入feat/m07-project-lifecycle；只做结束/关联收回/历史纠错/删除/基本历史档案，边界见[M07契约](planning/M07_CONTRACT.md)。schema v1/成本引擎/唯一owner不变，M08和后续功能未授权。完成实际回归与设备验证后READY_FOR_REVIEW并停止，不自行冻结。
 
 Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、Acceptance Criteria、Verification。修改前能解释为什么改该文件、可能破坏什么、如何验证。
 
@@ -56,6 +56,6 @@ Conventional Commits；获准时只推当前功能分支。没有另行授权不
 6. Git：Branch、Commit、Push 的实际状态。
 7. 下一模块：前置条件和建议，然后停止。
 
-本轮 M05 必须实际运行 `:app:testDebugUnitTest`、`:app:connectedDebugAndroidTest`、`:app:lintDebug :app:assembleDebug`，原 74 项 JVM 与 86 项 Android 存储回归和新增测试分别登记。M05-T01～T04 须覆盖真实空/非空 Room、初始化及读取失败、三入口/返回、360dp/200%字体与合成表单操作；旋转、Activity重建、真正系统进程死亡和 force-stop 分开记录，不相互冒充。最终 APK、版本/权限、schema v1不变及 generation/记录时区稳定均须实际核对；合成表单回调不等于 M06 业务保存。原始 130 案例及16组完整跨模块补测保持 NOT_RUN，Q03～Q06 期限及 M09 两项风险不变，M12 完整恢复仍 NOT_RUN。
+历史 M05 当时要求实际运行 `:app:testDebugUnitTest`、`:app:connectedDebugAndroidTest`、`:app:lintDebug :app:assembleDebug`，原 74 项 JVM 与 86 项 Android 存储回归和新增测试分别登记。M05-T01～T04 须覆盖真实空/非空 Room、初始化及读取失败、三入口/返回、360dp/200%字体与合成表单操作；旋转、Activity重建、真正系统进程死亡和 force-stop 分开记录，不相互冒充。最终 APK、版本/权限、schema v1不变及 generation/记录时区稳定均须实际核对；合成表单回调不等于 M06 业务保存。原始 130 案例及16组完整跨模块补测保持 NOT_RUN，Q03～Q06 期限及 M09 两项风险不变，M12 完整恢复仍 NOT_RUN。
 
-当前M06已交付READY_FOR_REVIEW，284个唯一方法及实际设备/APK结果见当前验收；ChatGPT独立验收PENDING。保留原200个测试方法，必要M05阶段断言随已授权详情/新读取接口做精确适配，旧交付/归档不改。不得把旧PASS、NO-SOURCE或编译错误当作新模块通过；完成标签见[M06契约](planning/M06_CONTRACT.md)，交付后不进入M07。
+M06已独立验收冻结，其284个唯一方法及设备/APK历史结果保留。本轮M07必须实际运行JVM/Android完整回归及新增测试、Lint/构建，并验证最终APK、真实结束/纠错/尾款/取消与确认删除/历史返回/断网重启和状态恢复。编译错误不能代替行为RED；旧阶段断言若确需适配须逐项记录且保留事实验证。原130案例及16完整补测原件不改；完成标签见[M07契约](planning/M07_CONTRACT.md)，交付后不进入M08。

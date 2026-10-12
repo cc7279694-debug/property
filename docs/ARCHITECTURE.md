@@ -1,6 +1,18 @@
 # 当前架构事实
 
-## M06：当前项目读写闭环
+## M07：生命周期、纠错与历史档案
+
+本轮沿用唯一AppContainer、Room v1、LocalWriteCoordinator和BusinessClock。[生命周期命令](../app/src/main/java/com/cooper/lithic/data/repository/ProjectLifecycleCommands.kt)由原ProjectWriteRepository执行：结束和可选END_SETTLEMENT、结束与原关联款纠错、普通/INITIAL历史金额纠错、项目和全部金额删除均在同一Room事务内。项目及目标事件使用完整字段CAS，nullable字段用SQL `IS`，影响行数不为1即抛出冲突使此前副作用回滚。纠错保留项目、事件、方向、角色和operationId；所有正式写入口拒绝旧多关联歧义，旧addMoneyEvent仍可向已记录结束的项目增加首条合法关联收回。
+
+删除先比较完整项目及全部事件快照，按事件→项目逐行删除并检查；Absent仅证明当前项目/事件不存在，不是持久删除日志。媒体元数据和文件均留给M10，不清理共享或未引用资源。schema、索引、领域计算与持久generation指针没有变化。
+
+ProjectRepository保留旧全项目读取API，新增current/history窗口，分别用结束边界与观察日在SQL筛选；50展示/51哨兵、稳定拥有日和UUID排序、事件/类别批读、整个已加载窗口单事务。Home仍是所有已录入项目COUNT；基本历史不实现分析、排名或成本总线。详情唯一调用被冻结ProjectCostEngine，结束后结算不延长持有天数；只有真实事件满足endedOn<occurredOn<=asOf才说明已包含结束后结算，未发生的未来事件不成为当前事实。
+
+原ProjectViewModel的单活动Bundle增加四种表单及完整项目/事件基线；提交前固定command/event UUID、revision与submitted。恢复IN_FLIGHT为UNCONFIRMED，核对/重试原信封；COMMITTED读错只重读。冲突仅明确点击读取后重新确认，删除陈旧快照不自动变成可删除的新快照。SavedState仍只是已保存任务状态，未成为持久操作日志或永久草稿。显式冲突重读成功确认目标不存在后，普通表单保留原raw/身份/信封、禁止保存并允许安全返回；删除通过原submitted由writer核对项目与全部事件均缺失，读取异常仍为未知。活动表单在本地构造完整下一状态后单次发布，避免中间空状态。
+
+Nav3仅序列化UUID/来源enum：当前链最多4级，历史Home/Review/History/Detail/Editor最多5级；原路线来源默认CURRENT。结束及纠错回同UUID详情，删除/核对Absent返回对应来源列表并清除旧详情。结束和金额纠错是滚动全屏表单，删除是明确不可撤回的AlertDialog二次确认。当前实现的真实验证与独立验收状态见[CURRENT_STATE](CURRENT_STATE.md)及[验收登记](ACCEPTANCE_MATRIX.md)，本段不自行授予冻结。
+
+## M06：继承的项目读写闭环
 
 [ProjectRepository](../app/src/main/java/com/cooper/lithic/data/repository/ProjectRepository.kt)复用同一Room、LocalWriteCoordinator和BusinessClock；创建/追加调用原ProjectWriteRepository，不外套第二次非重入锁。资料更新在写协调边界和Room事务中比较完整expected与固定target：目标已存在则重放、陈旧基线则Conflict；只更新名称、开始日、类别、备注和updatedAt，保留旧事件及保护字段。schema v1没有持久编辑操作日志。
 
@@ -10,7 +22,7 @@
 
 SavedStateHandle只存当前任务单活动表单的原始字符串、UUID、完整编辑基线和固定submitted Bundle（primitive/ISO字符串），提交前同步存入。IN_FLIGHT阻止重复和修改；恢复/异常为UNCONFIRMED，只重放原身份内容。已确认成功与读取失败分开，已保存只允许重读；明确CAS冲突由用户点击核对后重载当前资料。该状态不是新的账本或后台持久草稿，也不承诺force-stop后保留未保存草稿。
 
-正式表单、列表、详情只消费派生状态与回调；真实日期保留文本，DatePicker内部使用UTC日期转换，业务今天仍来自持久recordZone。编辑初次读失败有明确重读入口且不允许无基线保存。顶部、主Tab重选/切换、系统和手势返回统一处理dirty/待确认守卫；不增加结束、删除、历史金额编辑或媒体入口。
+正式表单、列表、详情只消费派生状态与回调；真实日期保留文本，DatePicker内部使用UTC日期转换，业务今天仍来自持久recordZone。编辑初次读失败有明确重读入口且不允许无基线保存。顶部、主Tab重选/切换、系统和手势返回统一处理dirty/待确认守卫；M06当时未增加结束、删除、历史金额编辑或媒体入口，M07仅在本轮授权内扩展前三者。
 
 真实SQLite页数耗尽有两种已观察到的错误：直接SQLiteFull可归DISK_FULL；嵌套事务收尾有时遮蔽为普通DATABASE的“cannot rollback”错误。生产保留明确未知结果及原命令，不按字符串猜分类、吞异常或清库；当前验证必须证明既有行不变、无部分记录、同命令恢复重试仅一次。实际证据与未测边界另记验收，不由此授予冻结。
 
@@ -93,7 +105,7 @@ Compose → ViewModel → UseCase / Repository → Room / 领域引擎
 
 schema 当前 v1(M04)，计划 → v2(M08) → v3(M16) → v4(M20)；backup format 计划 v1(M11) → v2(M16) → v3(M20)，当前尚无完整备份格式。
 
-后续结构在对应获准模块实施后更新。M00～M05已独立冻结，当前只授权M06；M07及后续未授权。当前验证及独立验收状态以唯一CURRENT_STATE为准。
+后续结构在对应获准模块实施后更新。M00～M06已独立冻结，当前只授权M07；M08及后续未授权。当前验证及独立验收状态以唯一CURRENT_STATE为准。
 
 ## M04：真实存储与私有初始数据集
 

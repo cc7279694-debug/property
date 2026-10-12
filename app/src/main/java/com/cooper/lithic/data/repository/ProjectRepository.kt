@@ -47,6 +47,13 @@ open class ProjectRepository(
     open suspend fun createProject(command: CreateProjectCommand): MutationResult = writer.createProject(command)
     open suspend fun appendMoneyEvent(command: AddProjectMoneyEventCommand): MutationResult = writer.addMoneyEvent(command)
     open suspend fun updateProject(command: UpdateProjectCommand): MutationResult = writer.updateProject(command)
+    open suspend fun endProject(command: EndProjectCommand): MutationResult = writer.endProject(command)
+    open suspend fun updateEnd(command: UpdateEndCommand): MutationResult = writer.updateEnd(command)
+    open suspend fun correctMoneyEvent(command: CorrectMoneyEventCommand): MutationResult = writer.correctMoneyEvent(command)
+    open suspend fun deleteProject(command: DeleteProjectCommand): MutationResult = writer.deleteProject(command)
+
+    open suspend fun loadCurrentProjectWindow(pageCount: Int, asOf: LocalDate = clock.today()): ProjectPage = loadWindow(pageCount, asOf, ProjectFilter.CURRENT)
+    open suspend fun loadProjectHistoryWindow(pageCount: Int, asOf: LocalDate = clock.today()): ProjectPage = loadWindow(pageCount, asOf, ProjectFilter.HISTORY)
 
     /** Null means a successful query found no project; read and calculation failures propagate. */
     open suspend fun loadProjectDetail(id: String, asOf: LocalDate = clock.today()): ProjectDetail? {
@@ -79,14 +86,24 @@ open class ProjectRepository(
 
     /** Rebuild the loaded window from one snapshot even when a sort-key write is queued. */
     open suspend fun loadProjectWindow(pageCount: Int, asOf: LocalDate = clock.today()): ProjectPage {
+        return loadWindow(pageCount, asOf, ProjectFilter.ALL)
+    }
+
+    private enum class ProjectFilter { ALL, CURRENT, HISTORY }
+
+    private suspend fun loadWindow(pageCount: Int, asOf: LocalDate, filter: ProjectFilter): ProjectPage {
         require(pageCount > 0) { "A project window must contain at least one page" }
         return coordinator.withSnapshot {
             db.withTransaction {
-                val count = db.projectDao().countProjects()
+                val count = when (filter) {
+                    ProjectFilter.ALL -> db.projectDao().countProjects()
+                    ProjectFilter.CURRENT -> db.projectDao().countCurrentProjects(asOf)
+                    ProjectFilter.HISTORY -> db.projectDao().countHistoryProjects(asOf)
+                }
                 val items = mutableListOf<ProjectDetail>()
                 var cursor: ProjectCursor? = null
                 for (pageIndex in 0 until pageCount) {
-                    val page = loadPageInTransaction(cursor, 50, asOf, count)
+                    val page = loadPageInTransaction(cursor, 50, asOf, count, filter)
                     items += page.items
                     cursor = page.nextCursor
                     if (cursor == null) break
@@ -111,10 +128,15 @@ open class ProjectRepository(
         pageSize: Int,
         asOf: LocalDate,
         count: Long,
+        filter: ProjectFilter = ProjectFilter.ALL,
     ): ProjectPage {
         val dao = db.projectDao()
         // One sentinel determines continuation; only this page's <=50 visible rows get events.
-        val queried = dao.pageProjects(cursor?.startedOn, cursor?.id, pageSize + 1)
+        val queried = when (filter) {
+            ProjectFilter.ALL -> dao.pageProjects(cursor?.startedOn, cursor?.id, pageSize + 1)
+            ProjectFilter.CURRENT -> dao.pageCurrentProjects(asOf, cursor?.startedOn, cursor?.id, pageSize + 1)
+            ProjectFilter.HISTORY -> dao.pageHistoryProjects(asOf, cursor?.startedOn, cursor?.id, pageSize + 1)
+        }
         val visible = queried.take(pageSize)
         val events = if (visible.isEmpty()) emptyMap() else
             dao.eventsForProjects(visible.map { it.id }).groupBy { it.projectId }

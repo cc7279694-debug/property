@@ -3,11 +3,14 @@ package com.cooper.lithic.feature.review
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,7 +20,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier) {
+internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onProjectHistory: (() -> Unit)? = null) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("review-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Text("回看", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
@@ -26,9 +29,17 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier) {
         HorizontalDivider()
         for (label in listOf("长期复盘", "历史档案", "成本趋势", "类别分析", "年度回顾")) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Text(label, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.semantics { heading() })
-                Text("尚未开放", style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                if (label == "历史档案" && onProjectHistory != null) {
+                    OutlinedButton(onProjectHistory, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-project-history")) {
+                        Text(label, style = MaterialTheme.typography.bodyLarge)
+                    }
+                    Text("查看已结束的长期项目与真实金额记录", style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                } else {
+                    Text(label, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.semantics { heading() })
+                    Text("尚未开放", style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
             }
         }
     }

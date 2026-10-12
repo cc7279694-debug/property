@@ -1,6 +1,6 @@
 # 规划资料与来源登记
 
-更新日期：2026-10-12。原始Planning Baseline 1.0在M00接入，M00～M05已独立验收冻结PASS WITH NOTES；当前用户另行授权M06，范围见[M06契约](M06_CONTRACT.md)。原规划来源字节不改，当前实现/实际验收另记；Q02/Q07解释、Q03～Q06期限和历次独立未重跑本机验证的NOTES保留。
+更新日期：2026-10-12。原始Planning Baseline 1.0在M00接入，M00～M06已独立验收冻结PASS WITH NOTES；当前用户另行授权M07，范围见[M07契约](M07_CONTRACT.md)。原规划来源字节不改，当前实现/实际验收另记；Q02/Q07解释、Q03～Q06期限和历次独立未重跑本机验证的NOTES保留。
 
 ## 实际取得的原始资料
 
@@ -33,7 +33,7 @@ ZIP SHA-256：`861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7`
 | M03原计划，已冻结订阅领域引擎 | [2026-10-10-m03.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m03.md) |
 | M04原计划，已冻结存储底座 | [2026-10-10-m04.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m04.md) |
 | M05原计划，已冻结基础页面 | [2026-10-10-m05.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m05.md) |
-| M06原计划，当前长期项目录入模块 | [2026-10-10-m06.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m06.md) |
+| M06原计划，已冻结长期项目录入模块 | [2026-10-10-m06.md](original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m06.md) |
 | 全部M00～M23计划及边界 | [当前路线与逐模块链接](../ROADMAP.md) |
 | 130条原验收矩阵 | [ACCEPTANCE_MATRIX.md](original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md) |
 | 130条原验收JSON | [acceptance-cases.json](original-v1/lithic_v1_plan/docs/acceptance-cases.json) |
@@ -66,4 +66,6 @@ ZIP SHA-256：`861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7`
 - M06本轮实际附件为 `E:/CODEX/.codex/attachments/72469a1e-9040-4ea0-8bcf-7cc787d6a5c3/已粘贴的文本.txt`，SHA-256 `ac70a90d15afcdc42c8b43395037f77004beab32708d0bb8daf148cbaded3ee0`。编码前已完整读取并建立[M06契约](M06_CONTRACT.md)；基线 `4576b03565e58011e2fa78a086039fee33e3352f`、来源feat/m05-ui-foundation、新分支feat/m06-project-entry。该附件不混入原ZIP/43原件，不授权M07或main合并。
 - 引用对话ID `6ac3156b-2810-83ec-9b92-2f7b5c8241d0`只补背景；仓库原件与当前用户要求优先。
 
-Q01 资料缺失已关闭；M00～M02 已独立冻结。M03 按本轮另行授权执行，交付后停止等待独立验收；不授权 M04。Q03～Q06 原状态及处理期限不变，16组跨模块NOT_RUN保留，Q02 的 M17/M18 集成验证留待对应模块。
+Q01 资料缺失已关闭；M00～M06已独立冻结。M07按本轮另行授权执行，交付后停止等待独立验收；不授权M08。Q03～Q06 原状态及处理期限不变，16组跨模块NOT_RUN保留，Q02 的 M17/M18 集成验证留待对应模块。
+
+M07本轮实际完整读取附件 `E:/CODEX/.codex/attachments/380d8db1-5837-435b-87cc-f7171b5db52f/已粘贴的文本.txt`，SHA-256 `66a4810c80deaa3df766294442a23a88ceca06ed10b377501b5f68f3e17309f8`。编码前[M07契约](M07_CONTRACT.md)落地；来源M06正式验收回写fb0eafdc43efa6e13ebd76e3491fa4331a145abb，本轮feat/m07-project-lifecycle。附件不混入原ZIP/43原件，不授权M08/main合并或公开APK。

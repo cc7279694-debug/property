@@ -46,6 +46,10 @@ import com.cooper.lithic.feature.project.ProjectDetailScreen
 import com.cooper.lithic.feature.project.ProjectEditorScreen
 import com.cooper.lithic.feature.project.ProjectListScreen
 import com.cooper.lithic.feature.project.ProjectViewModel
+import com.cooper.lithic.feature.project.EndProjectDialog
+import com.cooper.lithic.feature.project.MoneyEventCorrectionScreen
+import com.cooper.lithic.feature.project.DeleteProjectDialog
+import com.cooper.lithic.feature.project.ProjectHistoryScreen
 import com.cooper.lithic.feature.review.ReviewShell
 import com.cooper.lithic.feature.settings.SettingsShell
 import kotlinx.serialization.Serializable
@@ -87,17 +91,28 @@ internal fun LithicNavigation(
     LaunchedEffect(routes.last()) {
         when (val route = routes.last()) {
             ProjectList -> model.loadList()
+            ProjectHistory -> model.loadHistory()
             CreateProject -> model.startCreate()
             is ProjectDetail -> model.openDetail(route.id)
             is ProjectEdit -> model.startEdit(route.id)
             is ProjectMoneyEntry -> model.startMoney(route.id, route.direction)
+            is ProjectEnd -> model.startEnd(route.id)
+            is ProjectUpdateEnd -> model.startUpdateEnd(route.id)
+            is ProjectMoneyCorrection -> model.startCorrectMoney(route.id, route.eventId)
+            is ProjectDelete -> model.startDelete(route.id)
             else -> Unit
         }
     }
     LaunchedEffect(projects.committedProjectId) {
         projects.committedProjectId?.let { id ->
-            navigate(canonicalBackStack(ProjectDetail(id)))
+            navigate(canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last()))))
             model.consumeCommitted()
+        }
+    }
+    LaunchedEffect(projects.deletedProjectId) {
+        projects.deletedProjectId?.let {
+            navigate(canonicalBackStack(if (projectOrigin(routes.last()) == ProjectOrigin.HISTORY) ProjectHistory else ProjectList))
+            model.consumeDeleted()
         }
     }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
@@ -106,7 +121,11 @@ internal fun LithicNavigation(
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
     }
-    val currentPrimary = when (routes.last()) { Review -> Review; Settings -> Settings; else -> Home }
+    val currentPrimary = when {
+        Review in routes -> Review
+        routes.last() == Settings -> Settings
+        else -> Home
+    }
     Scaffold(modifier = modifier.fillMaxSize().testTag("primary_navigation"), contentWindowInsets = WindowInsets.safeDrawing,
         bottomBar = {
             NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
@@ -126,15 +145,20 @@ internal fun LithicNavigation(
             NavDisplay(backStack = routes, modifier = Modifier.weight(1f), onBack = onBack,
                 entryProvider = entryProvider<NavKey> {
                     entry<Home> { HomeShell(state.projectCount, onProjectList = { navigate(canonicalBackStack(ProjectList)) }, onCreateProject = { navigate(listOf(Home, CreateProject)) }) }
-                    entry<Review> { ReviewShell(state.projectCount) }
+                    entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { navigate(canonicalBackStack(ProjectHistory)) }) }
                     entry<Settings> { SettingsShell(state.recordZone) }
                     entry<ProjectList> {
                         ProjectListScreen(projects.list, onBack, onCreate = { navigate(listOf(Home, ProjectList, CreateProject)) },
                             onOpenProject = { navigate(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)
                     }
                     entry<ProjectDetail> { route ->
-                        ProjectDetailScreen(projects.detail, onBack, onEdit = { navigate(canonicalBackStack(ProjectEdit(route.id))) },
-                            onAddMoney = { navigate(canonicalBackStack(ProjectMoneyEntry(route.id, it))) }, onRetry = model::retryRead)
+                        ProjectDetailScreen(projects.detail, onBack, onEdit = { navigate(canonicalBackStack(ProjectEdit(route.id, route.origin))) },
+                            onAddMoney = { navigate(canonicalBackStack(ProjectMoneyEntry(route.id, it, route.origin))) }, onRetry = model::retryRead,
+                            onEnd = { navigate(canonicalBackStack(ProjectEnd(route.id, route.origin))) },
+                            onUpdateEnd = { navigate(canonicalBackStack(ProjectUpdateEnd(route.id, route.origin))) },
+                            onCorrectMoney = { navigate(canonicalBackStack(ProjectMoneyCorrection(route.id, it, route.origin))) },
+                            onDelete = { navigate(canonicalBackStack(ProjectDelete(route.id, route.origin))) },
+                            backLabel = if (route.origin == ProjectOrigin.HISTORY) "返回历史档案" else "返回项目列表")
                     }
                     entry<CreateProject> {
                         projects.editor?.let { editor -> ProjectEditorScreen(editor, onBack, model::changeName, model::changeStartedOn, model::changeInitialAmount,
@@ -147,6 +171,23 @@ internal fun LithicNavigation(
                     entry<ProjectMoneyEntry> {
                         projects.moneyEditor?.let { editor -> MoneyEventEditor(editor, onBack, model::changeDirection, model::changeAmount,
                             model::changeOccurredOn, model::changeDescription, model::save, onRetryRead = model::retryRead) }
+                    }
+                    entry<ProjectHistory> {
+                        ProjectHistoryScreen(projects.history, onBack, { navigate(canonicalBackStack(ProjectDetail(it, ProjectOrigin.HISTORY))) }, model::loadMoreHistory, model::retryRead)
+                    }
+                    entry<ProjectEnd> {
+                        projects.endEditor?.let { editor -> EndProjectDialog(editor, onBack, model::changeEndedOn, model::changeEndReason,
+                            model::changeRecordRecovery, model::changeRecoveryAmount, model::changeRecoveryOn, model::changeRecoveryDescription, model::save, model::retryRead) }
+                    }
+                    entry<ProjectUpdateEnd> {
+                        projects.endEditor?.let { editor -> EndProjectDialog(editor, onBack, model::changeEndedOn, model::changeEndReason,
+                            model::changeRecordRecovery, model::changeRecoveryAmount, model::changeRecoveryOn, model::changeRecoveryDescription, model::save, model::retryRead) }
+                    }
+                    entry<ProjectMoneyCorrection> {
+                        projects.moneyCorrection?.let { editor -> MoneyEventCorrectionScreen(editor, onBack, model::changeAmount, model::changeOccurredOn, model::changeDescription, model::save, model::retryRead) }
+                    }
+                    entry<ProjectDelete> {
+                        projects.deleteConfirmation?.let { editor -> DeleteProjectDialog(editor, onBack, model::save, model::retryRead) }
                     }
                 })
         }

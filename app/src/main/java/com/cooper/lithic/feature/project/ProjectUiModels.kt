@@ -2,6 +2,7 @@ package com.cooper.lithic.feature.project
 
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.data.local.CategoryEntity
+import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.repository.ProjectDetail
 import java.time.LocalDate
 
@@ -71,6 +72,70 @@ data class ProjectUiState(
     val editor: ProjectEditorUiState? = null,
     val moneyEditor: MoneyEventEditorUiState? = null,
     val committedProjectId: String? = null,
+    val history: ProjectListUiState = ProjectListUiState(),
+    val endEditor: EndProjectUiState? = null,
+    val moneyCorrection: MoneyCorrectionUiState? = null,
+    val deleteConfirmation: DeleteProjectUiState? = null,
+    val deletedProjectId: String? = null,
 )
+
+data class EndProjectUiState(
+    val projectId: String = "",
+    val projectName: String = "",
+    val correcting: Boolean = false,
+    val endedOn: String = "",
+    val endReason: String = "",
+    val recordRecovery: Boolean = false,
+    val recoveryAmount: String = "",
+    val recoveryOn: String = "",
+    val recoveryDescription: String = "",
+    val hasSettlement: Boolean = false,
+    val today: LocalDate? = null,
+    val phase: SubmissionPhase = SubmissionPhase.IDLE,
+    val dirty: Boolean = false,
+    val loading: Boolean = false,
+    val errors: Map<String, String> = emptyMap(),
+    val message: String? = null,
+    val conflict: Boolean = false,
+    val needsInitialRead: Boolean = false,
+) {
+    val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
+    val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE
+}
+
+data class MoneyCorrectionUiState(
+    val projectId: String = "",
+    val eventId: String = "",
+    val projectName: String = "",
+    val direction: MoneyDirection = MoneyDirection.OUTLAY,
+    val role: ProjectMoneyEventRole = ProjectMoneyEventRole.REGULAR,
+    val amount: String = "",
+    val occurredOn: String = "",
+    val description: String = "",
+    val today: LocalDate? = null,
+    val phase: SubmissionPhase = SubmissionPhase.IDLE,
+    val dirty: Boolean = false,
+    val loading: Boolean = false,
+    val errors: Map<String, String> = emptyMap(),
+    val message: String? = null,
+    val conflict: Boolean = false,
+    val needsInitialRead: Boolean = false,
+) {
+    val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
+    val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE
+}
+
+data class DeleteProjectUiState(
+    val projectId: String = "",
+    val projectName: String = "",
+    val phase: SubmissionPhase = SubmissionPhase.IDLE,
+    val loading: Boolean = false,
+    val message: String? = null,
+    val conflict: Boolean = false,
+    val needsInitialRead: Boolean = false,
+) {
+    val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
+    val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE
+}
 
 enum class LeaveDecision { ALLOW, CONFIRM_DISCARD, BLOCK_PENDING }

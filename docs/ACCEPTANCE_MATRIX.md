@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00～M05实际执行及独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全NOT_RUN，不在原件改结果。
+本文件记录当前模块实际执行与M00～M06独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全NOT_RUN，不在原件改结果。
 
-日期：2026-10-12。PASS为实际执行通过，NOT_RUN为未执行，PENDING为尚待独立确认。M00～M05正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；M05依据及全部NOTES见末尾独立代码验收记录。原READY_FOR_REVIEW/PENDING交付、82 JVM/118 Android与3项独立补测、设备证据及历史NOTES完整保留。本次仅回写状态，不重跑Gradle、构建或安装，不增加执行PASS；独立冻结由用户转交ChatGPT结论授予，执行者不自行授予。原130和16完整跨模块补测继续NOT_RUN。
+日期：2026-10-12。PASS为实际执行通过，NOT_RUN为未执行，PENDING为尚待独立确认。M00～M06正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；依据与全部NOTES见各模块独立记录。原READY_FOR_REVIEW/PENDING交付、测试、设备证据及历史NOTES完整保留。当前M07用户另行授权实施，实际结果仅登记本轮记录，独立验收PENDING；独立冻结由用户转交ChatGPT结论授予，执行者不自行授予。原130和16完整跨模块补测继续NOT_RUN。
 
 ## 独立验收记录
 
@@ -383,3 +383,43 @@ NOT_RUN：真机/API26/OEM、完整TalkBack、真实低内存LMK、Release/正�
 6. **后续功能与规格：**M07结束/删除/历史纠错、M09的STOPPED重新启用及多期预付默认停止两项风险、Q03～Q06及后续集成验收保留原边界，不自动实施或关闭。Q03长期100/1000日节点M21前、Q04提醒资格M20前、Q05图片往返M10/M12前、Q06 ENGINEERING_REQUIRED及M12完整切换/恢复/故障回退均不变；M04中断残留generation不得静默清除真实数据，M08 v1→v2须同步已有版本预检。原130条不可变案例、16组完整跨模块补测和历史交付证据原样保留，未运行状态仍NOT_RUN。
 
 本节正式结论取代M06先前交付READY_FOR_REVIEW/PENDING的当前效力；上节执行验收、原报告/JSON/XML/截图/checkpoint保留为当时历史，不改其PASS来源或NOT_RUN/PENDING字段。本次仅更新唯一CURRENT_STATE和本登记，实际检查Git差异、链接、敏感信息及本地状态后提交/推送feat/m06-project-entry；不修改业务代码、WHOCARE或原规划，不合并main、不进入M07。本次文档检查不增加产品测试执行PASS。回写提交自身SHA、推送与最终远端核对以Git日志/最终报告为准。
+
+
+## M07 当前执行验收（2026-10-12）
+
+用户本轮授权附件 SHA-256 66a4810c80deaa3df766294442a23a88ceca06ed10b377501b5f68f3e17309f8；基线 fb0eafdc43efa6e13ebd76e3491fa4331a145abb，来源 feat/m06-project-entry，当前 feat/m07-project-lifecycle。[M07 契约](planning/M07_CONTRACT.md)编码前落地；M00～M06 正式冻结及全部 NOTES 继续有效。本轮状态 **READY_FOR_REVIEW — M07**，ChatGPT 独立验收 **PENDING**，实现者不自授 ACCEPTED / FROZEN。最终自动化、最终 APK 手工闭环、数据完整性与临时设备设置恢复已通过；Git自身提交/推送SHA以最终Git日志与交付回执核对。
+
+| 原命名案例 | 当前实际结果 | 当前执行证据与边界 |
+|---|---|---|
+| M07-T01 end_and_recovery_atomic | PASS | 生产 Nav3/单 ViewModel/真实 Room；结束与可选唯一 END_SETTLEMENT 同事务，真实 SQLite 触发器使第二步失败时项目/事件整体回滚，原信封核对后只提交一次；0 元实际收回合法 |
+| M07-T02 edit_end_recovery_not_duplicated | PASS | 连续两次修改关联收回只更新同一事件，id/projectId/direction/role/operationId 保留；成本重新计算，数据库关闭重开及结果中断原信封重放保留身份 |
+| M07-T03 late_installment_does_not_reactivate | PASS | 实际结束后的 REGULAR 尾款增加净投入，持有天数封顶、不重新回当前；历史来源进入详情及返回、主 Tab 选回看；未来结束不提前归档 |
+| M07-T04 correct_end_date_updates_result | PASS | 合法结束日修正使冻结引擎重算日均结果；早于开始日期拒绝且保留原输入和旧事实；无关联收回时修正不能偷偷新增收回 |
+| M07-T05 delete_requires_confirmation | PASS | 真实 AlertDialog 二次确认，取消不写；完整项目/全部事件 CAS，任一删除失败整体回滚，确认后项目/事件移除并回来源列表；无悬空项目 FK，共享/未引用媒体保留给 M10，未知结果只核对原删除信封，Absent 不冒称永久删除日志 |
+
+以上是当前执行验收，不改写原 ZIP/43 原件、不可变 130 案例或 16 组完整跨模块补测的 NOT_RUN；原规划及历史验收/报告/JSON/XML/checkpoint 保留原字节和当时状态。
+
+最终完整四任务退出 0，7m 38s，**86 JVM＋273 Android＝359 个唯一方法 PASS，0 失败/错误/跳过**，等于保留原 284＋新增 75；JVM 明确实跑。7 份 JVM XML＋1 份 Android XML，测试源码方法与 XML/结果登记精确同集；五个生产 Flow 命名案例与数据事务、规则、UI、状态/恢复、路由边界均有实际执行记录。未运行的 NO-SOURCE 不计 PASS。Lint **0 errors / 20 warnings**，既有提示保留，不升级或抑制。完整文件/逐方法/输入与产物指纹见 [M07 报告](evidence/M07-verification.md)、[JSON](evidence/M07-verification.json)及 [checkpoint](checkpoints/2026-10-12-M07.md)，本地执行证据不替代 ChatGPT 独立验收。
+
+真实 RED 与诊断边界：
+
+- 新生命周期规则、Room 写入口与 UI/状态最初使用可编译 stub，真实失败原因是缺少行为；编译、JUnit runner 或测试驱动错误单列，不冒充行为 RED。
+- 陈旧冲突后成功读到目标缺失曾无法返回；3 项真实 Room RED 为 2 FAIL / 1 PASS。删除明确读 null 后仍须以原 submitted 交由 writer 同时核对项目及关联事件；其它表单只标记已核对缺失、保留原 UUID/raw/信封、禁止再保存且允许返回，不伪造 COMMITTED。读异常继续未知，不自动换命令或 rebase。
+- Unconfined StateFlow collector 在真实 Room 表单更新期间实际观察到活动 end 表单为空，expected UUID / actual null，行为 RED 后改为本地构造完整状态再单次发布。完整循环继续覆盖 end/金额纠错/delete，不新增持久状态 owner。
+- 详情无结束后事实或仅有观察日之后事件时曾错误声明已包含结算；两项否定边界实际失败后改为仅依据真实且观察日前的结束后事件标注。冻结持有天数说明、事件方向/角色只读、真实退款与原记录纠错分离的事实断言保留。
+- 连续修正曾在组合运行中反复超时，单例 PASS 未被认作已修复；最终诊断显示输入仍 IDLE/dirty、没有进入 save、原持久金额不变。ComposeTimeoutException 实际继承 Throwable，最初 Exception/AssertionError catch 未抓到；随后保留完整终态。最小驱动修正为关闭真实 IME、等待 Compose idle、重新滚至显示/启用的保存按钮再真实触摸；保留原 10/15 秒与全部持久身份/金额/日期断言，不直接调用 ViewModel 或语义回调代替触摸。缺失目标修复和完整状态发布修复不被冒称该点击超时的根因。
+
+最终 Debug APK com.cooper.lithic.debug：code 5 / 0.1.0-m07-debug，**12,213,370 bytes**，SHA-256 **632a402c62bc827552b14f3613b3eb64828a2bd584f7c410a576c4e4220e765a**。Room 四表 schema v1、冻结 Money/ProjectCostEngine/BusinessClock、依赖版本、持久记录时区、同一 generation/settings/owner 与备份排除边界继承；未新增 Migration、备份格式、云端或生产样本。APK 与实际安装指纹一致，合并 Manifest、无网络及禁止权限、九域备份排除、v2 签名与生产类核对通过；无测试框架或合成测试类打包。Debug 非 launcher/exported 空 ComponentActivity 测试宿主保留，Release 未构建。
+
+仅专用 API36 emulator-5596，最终 APK 全程断网：创建→结束/关联收回→历史→连续修改原结束金额→初始金额纠错→真实尾款 100/退款 800→净投入 -50、持有 8 天、日均 -6.25→取消/确认删除→重启均 PASS；force-stop 冷重开保持负净额事实。取消前后 3 项目/8 事件每个字段完全相同，确认只删除本轮 M07 目标及 4 事件；重启历史 0、首页数量 2。最终 SQL 2 项目/4 事件与 M06 原记录每个字段一致，integrity_check=ok、foreign_key_check 无错误、schema=1，generation/ready/settings SHA 全部不变。200%/360dp 真实 IME 的 1.234 原输入与精度错误保留，保存按钮实际可达；横竖保持原输入。Task1729/Record201059537 已 STOPPED/haveState=true/Bundle5944 后 UID SIGKILL：旧 PID22880 消失，经最近任务真实卡片恢复同任务/Record、新 PID23948，结束原因、真实日期和原金额保持。20 张最终 APK 截图已归档，临时网络/屏幕/字体/IME/明暗/旋转及时区设置全部恢复；未操作真机或其它 AVD，M06 原数据未改。最终Git回执另由提交/推送后的真实日志核对；系统未保存状态、force-stop/断电或真正内存压力 LMK 不在草稿恢复保证内。
+
+继承全部 NOTES / NOT_RUN：
+
+- M01 独立未重新安装；M02/M03 独立未重跑用户本机 Gradle；M04/M05 独立未重跑 Gradle/安装等；M06 独立审查未在用户 Windows 本机重新执行 Gradle或重新安装 APK。旧结论的来源与执行边界不因本轮新增验证改写。
+- SQLite 满页错误可能被 Android/Room 回滚异常表现为 DATABASE；后续继续改进分类，本轮不宣称所有磁盘满均准确分类，不牺牲原始输入、事务和同命令安全恢复。
+- 1000 条分页验证是正确性和查询范围检查，不是长期性能基准；单项目完整成本仍需必要事件。SavedState 不是持久业务草稿，不保证未保存系统状态、force-stop或断电恢复。
+- 完整备份/恢复归 M11/M12，尚未完成；Debug 暂不用于不可丢失的长期个人记录。真机、API26、OEM 备份/迁移、完整 TalkBack、真实低内存 LMK、Release/正式签名升级仍 NOT_RUN；Debug 空 ComponentActivity 测试宿主不能未经 Release 验证正式交付。
+- Q03 长期节点 M21 前、Q04 提醒资格 M20 前、Q05 图片往返 M10/M12 前、Q06 ENGINEERING_REQUIRED/M12 完整恢复与回退均保留；Q02 M17/M18 视图集成仍 NOT_RUN。M09 STOPPED 重新启用/多期预付默认停止两风险保持。M04 初始化中断残留 generation 不得静默删除；M08 v1→v2 须同步数据库版本预检；M12 完整切换、恢复、中断/故障回退及清理待实施。
+- M05 写后刷新/正式分页交接已在 M06 解决，其历史 NOTES 保留。M08 订阅、替换、多段复用、M10 媒体清理、M11/M12 备份恢复、M13 汇总、图表/排行、M14 搜索/类别 CRUD、单独资金事件删除与其它未来业务保持原边界/NOT_RUN。TypeScript/ESLint 不适用。
+
+仅提交/推送 feat/m07-project-lifecycle，最终提交自身 SHA、远端一致及工作区核对以 root 的 Git 日志/交付回执为准；交付自SHA从Git日志/最终回执恢复，避免递归自引用。不合并 main、不 force、不自动 PR/生产发布、不改 WHOCARE、不提交 APK、数据库、签名私钥或真实个人数据。M07 交付后立即停止，ChatGPT 独立验收 PENDING；不进入 M08。

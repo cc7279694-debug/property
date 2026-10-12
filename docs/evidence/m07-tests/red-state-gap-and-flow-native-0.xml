@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" tests="10" failures="1" errors="0" skipped="0" time="113.735" timestamp="2026-10-12T11:11:50" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="real_room_lifecycle_state_updates_never_emit_a_gap_in_the_active_form_identity" classname="com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest" time="0.941">
+    <failure>java.lang.AssertionError: An input or phase update must not publish an empty/different active end form expected:&lt;abcf19e6-52c7-476b-b0a0-9446aae94224&gt; but was:&lt;null&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest$real_room_lifecycle_state_updates_never_emit_a_gap_in_the_active_form_identity$1.invokeSuspend(ProjectLifecycleViewModelTest.kt:625)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest.real_room_lifecycle_state_updates_never_emit_a_gap_in_the_active_form_identity(ProjectLifecycleViewModelTest.kt:583)
+</failure>
+  </testcase>
+  <testcase name="correct_end_date_updates_result" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="16.143" />
+  <testcase name="end_and_recovery_atomic" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="14.756" />
+  <testcase name="late_installment_does_not_reactivate" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="13.558" />
+  <testcase name="delete_requires_confirmation" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="11.763" />
+  <testcase name="lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="9.353" />
+  <testcase name="deletion_with_lost_result_stays_on_original_confirmation_then_reconciles_absence" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="5.615" />
+  <testcase name="saved_instance_route_and_vm_bundle_restore_end_input_without_business_write" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="9.072" />
+  <testcase name="history_correction_and_real_refund_are_distinct_and_preserve_original_identity" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="17.759" />
+  <testcase name="edit_end_recovery_not_duplicated" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="13.68" />
+</testsuite>

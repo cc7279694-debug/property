@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" tests="24" failures="4" errors="0" skipped="0" time="167.631" timestamp="2026-10-12T11:24:20" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="10.327" />
+  <testcase name="ended_detail_without_late_money_does_not_claim_post_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.268">
+    <failure>java.lang.AssertionError: Failed: assertDoesNotExist.
+Reason: Did not expect any node but found '1' node that satisfies: (Text + InputText + EditableText contains '包含结束后的实际结算；持有天数不再增加。' (ignoreCase: false))
+Node found:
+Node #99 at (l=16.0, t=383.0, r=296.0, b=403.0)px
+Text = '[包含结束后的实际结算；持有天数不再增加。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 17 siblings
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.assertDoesNotExist(SemanticsNodeInteraction.kt:101)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.ended_detail_without_late_money_does_not_claim_post_end_settlement(ProjectLifecycleScreensTest.kt:245)
+</failure>
+  </testcase>
+  <testcase name="end_validation_preserves_raw_dates_amount_reason_and_visible_errors" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.521" />
+  <testcase name="end_and_correction_forms_are_reachable_at_360dp_with_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.468" />
+  <testcase name="missing_detail_never_presents_stale_costs_or_mutation_actions" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.499" />
+  <testcase name="end_pending_submission_locks_inputs_and_committed_refresh_only_reads" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.114" />
+  <testcase name="correction_initial_read_and_conflict_offer_reload_without_resubmitting" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.297" />
+  <testcase name="ended_detail_with_only_future_late_money_does_not_claim_an_observed_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.562">
+    <failure>java.lang.AssertionError: Failed: assertDoesNotExist.
+Reason: Did not expect any node but found '1' node that satisfies: (Text + InputText + EditableText contains '包含结束后的实际结算；持有天数不再增加。' (ignoreCase: false))
+Node found:
+Node #458 at (l=16.0, t=383.0, r=296.0, b=403.0)px
+Text = '[包含结束后的实际结算；持有天数不再增加。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 17 siblings
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.assertDoesNotExist(SemanticsNodeInteraction.kt:101)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.ended_detail_with_only_future_late_money_does_not_claim_an_observed_settlement(ProjectLifecycleScreensTest.kt:254)
+</failure>
+  </testcase>
+  <testcase name="correcting_end_without_settlement_never_offers_creating_recovery" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.801" />
+  <testcase name="correcting_linked_settlement_keeps_the_existing_event_and_has_no_toggle_or_delete" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.397" />
+  <testcase name="delete_confirmation_states_are_explicit_and_do_not_allow_duplicate_or_unknown_cancel" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.476" />
+  <testcase name="detail_routes_regular_and_initial_corrections_separately_from_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.623" />
+  <testcase name="ended_detail_with_real_observed_late_money_explains_its_included_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.551" />
+  <testcase name="history_preserves_visible_rows_when_read_fails_and_exposes_database_continuation" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.988" />
+  <testcase name="correction_keeps_direction_and_role_read_only_and_explains_real_refund" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.793" />
+  <testcase name="correct_end_date_updates_result" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="19.9">
+    <failure>androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$correct_end_date_updates_result$1.invokeSuspend(ProjectLifecycleFlowTest.kt:209)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.correct_end_date_updates_result(ProjectLifecycleFlowTest.kt:200)
+</failure>
+  </testcase>
+  <testcase name="end_and_recovery_atomic" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="13.33" />
+  <testcase name="late_installment_does_not_reactivate" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="12.996" />
+  <testcase name="delete_requires_confirmation" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="11.115" />
+  <testcase name="lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="9.284" />
+  <testcase name="deletion_with_lost_result_stays_on_original_confirmation_then_reconciles_absence" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="5.436" />
+  <testcase name="saved_instance_route_and_vm_bundle_restore_end_input_without_business_write" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="9.001" />
+  <testcase name="history_correction_and_real_refund_are_distinct_and_preserve_original_identity" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="17.113" />
+  <testcase name="edit_end_recovery_not_duplicated" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="24.622">
+    <failure>java.lang.AssertionError: linked end correction to 300 did not reach detail. End state=EndProjectUiState(projectId=c719b555-c134-4d86-84f8-62e4c1cab51f, projectName=多次修正原结束回收, correcting=true, endedOn=2026-01-05, endReason=不再使用, recordRecovery=true, recoveryAmount=300, recoveryOn=2026-01-05, recoveryDescription=, hasSettlement=true, today=2026-01-10, phase=IDLE, dirty=true, loading=false, errors={}, message=null, conflict=false, needsInitialRead=false); detail state=ProjectDetailUiState(detail=ProjectDetail(project=LongTermProjectEntity(id=c719b555-c134-4d86-84f8-62e4c1cab51f, name=多次修正原结束回收, categoryId=00000000-0000-4000-8000-000000000001, startedOn=2026-01-01, endedOn=2026-01-05, endReason=不再使用, coverAssetId=null, note=null, createdAt=2026-10-12T11:23:56.848635Z, updatedAt=2026-10-12T11:24:00.571558Z), category=CategoryEntity(id=00000000-0000-4000-8000-000000000001, type=PROJECT, name=其他, normalizedName=其他, isFallback=true), events=[ProjectMoneyEventEntity(id=a85a2b1d-4680-4d0e-a784-fbc3bbd9061d, projectId=c719b555-c134-4d86-84f8-62e4c1cab51f, direction=OUTLAY, amountCents=100000, occurredOn=2026-01-01, description=null, role=INITIAL, operationId=0da97035-1c55-4a0e-a328-609f9a428f9c), ProjectMoneyEventEntity(id=98468864-6820-4286-afd0-44afea5cad0c, projectId=c719b555-c134-4d86-84f8-62e4c1cab51f, direction=RECOVERY, amountCents=20000, occurredOn=2026-01-05, description=null, role=END_SETTLEMENT, operationId=4ed714ee-53ec-4c00-b507-6ea399a4e591)], cost=ProjectCostResult(heldDays=5, grossOutlayCents=100000, recoveryCents=20000, netCents=80000, dailyRate=160.00, contributesToCurrentTotal=false, unavailableReason=null), asOf=2026-01-10), loading=false, missing=false, error=null); committedId=null; original failure:
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 15000 ms
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.waitForDetail(ProjectLifecycleFlowTest.kt:449)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd(ProjectLifecycleFlowTest.kt:422)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$saveEnd(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$edit_end_recovery_not_duplicated$1.invokeSuspend(ProjectLifecycleFlowTest.kt:163)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.edit_end_recovery_not_duplicated(ProjectLifecycleFlowTest.kt:145)
+at java.lang.reflect.Method.invoke(Native Method)
+at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+at androidx.test.internal.runner.junit4.statement.RunBefores.evaluate(RunBefores.java:80)
+at androidx.test.internal.runner.junit4.statement.RunAfters.evaluate(RunAfters.java:61)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$testWithDisposal$1.evaluate(AndroidComposeTestRule.android.kt:306)
+at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:54)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invokeSuspend(AndroidComposeTestRule.android.kt:318)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invoke(Unknown Source:8)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1$evaluate$1.invoke(Unknown Source:4)
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1$1.invokeSuspend(ComposeUiTest.android.kt:569)
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1$1.invoke(Unknown Source:8)
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1$1$1$1.invoke(Unknown Source:2)
+at androidx.compose.ui.test.EspressoLink.withStrategy(EspressoLink.android.kt:69)
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1.invokeSuspend(ComposeUiTest.android.kt:566)
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1.invoke(Unknown Source:8)
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$runTest$1$1.invoke(Unknown Source:4)
+at kotlinx.coroutines.test.TestBuildersKt__TestBuildersKt$runTest$2$1$1.invokeSuspend(TestBuilders.kt:317)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.test.TestDispatcher.processEvent$kotlinx_coroutines_test(TestDispatcher.kt:24)
+at kotlinx.coroutines.test.TestCoroutineScheduler.tryRunNextTaskUnless$kotlinx_coroutines_test(TestCoroutineScheduler.kt:99)
+at kotlinx.coroutines.test.TestBuildersKt__TestBuildersKt$runTest$2$1$workRunner$1.invokeSuspend(TestBuilders.kt:326)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at kotlinx.coroutines.test.TestBuildersJvmKt.createTestResult(TestBuildersJvm.kt:10)
+at kotlinx.coroutines.test.TestBuildersKt__TestBuildersKt.runTest-8Mi8wO0(TestBuilders.kt:309)
+at kotlinx.coroutines.test.TestBuildersKt.runTest-8Mi8wO0(Unknown Source:1)
+at kotlinx.coroutines.test.TestBuildersKt__TestBuildersKt.runTest-8Mi8wO0(TestBuilders.kt:167)
+at kotlinx.coroutines.test.TestBuildersKt.runTest-8Mi8wO0(Unknown Source:1)
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment.runTest(ComposeUiTest.android.kt:549)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule$apply$1.evaluate(AndroidComposeTestRule.android.kt:318)
+at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+at androidx.test.ext.junit.runners.AndroidJUnit4.run(AndroidJUnit4.java:162)
+at org.junit.runners.Suite.runChild(Suite.java:128)
+at org.junit.runners.Suite.runChild(Suite.java:27)
+at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+at androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:68)
+at androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:59)
+at androidx.test.runner.AndroidJUnitRunner.onStart(AndroidJUnitRunner.java:467)
+at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2597)
+
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd(ProjectLifecycleFlowTest.kt:424)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$saveEnd(ProjectLifecycleFlowTest.kt:77)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$edit_end_recovery_not_duplicated$1.invokeSuspend(ProjectLifecycleFlowTest.kt:163)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.edit_end_recovery_not_duplicated(ProjectLifecycleFlowTest.kt:145)
+</failure>
+  </testcase>
+</testsuite>

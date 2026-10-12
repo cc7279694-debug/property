@@ -41,10 +41,12 @@ internal fun ProjectListScreen(
             }
             Text("长期项目", style = MaterialTheme.typography.headlineLarge,
                 modifier = Modifier.semantics { heading() })
+            Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("project-list-create")) {
                 Text("新增长期项目", style = MaterialTheme.typography.bodyLarge)
             }
-            state.totalCount?.let { Text("已录入 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
+            state.totalCount?.let { Text("当前列表 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
             state.error?.let {
                 Text(it, Modifier.testTag("project-list-error"), style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.error)
