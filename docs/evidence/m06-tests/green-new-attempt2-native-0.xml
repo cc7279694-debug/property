@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.ProjectRepositoryTest" tests="81" failures="3" errors="0" skipped="0" time="147.505" timestamp="2026-10-12T06:53:53" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="lost_create_result_replays_original_identity_without_second_payment" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.401" />
+  <testcase name="editing_start_recalculates_held_days_in_detail_and_page" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.142" />
+  <testcase name="one_thousand_projects_remain_bounded_and_stably_sorted" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="6.466" />
+  <testcase name="concurrent_create_and_append_replay_without_duplicate_money" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.438" />
+  <testcase name="selectable_categories_include_only_project_type" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.007" />
+  <testcase name="page_limits_rows_in_sql_and_batch_reads_visible_events_without_n_plus_one" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.237" />
+  <testcase name="real_room_changes_emit_initial_create_edit_money_and_category_invalidations" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.157" />
+  <testcase name="home_summary_uses_only_count_without_loading_all_projects_or_events" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="3.341" />
+  <testcase name="missing_project_is_null_but_read_failure_is_never_fake_empty_data" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.218" />
+  <testcase name="real_sqlite_full_failure_rolls_back_and_same_command_retries_safely" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.579">
+    <failure>java.lang.AssertionError: expected:&lt;DISK_FULL&gt; but was:&lt;DATABASE&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$real_sqlite_full_failure_rolls_back_and_same_command_retries_safely$1.invokeSuspend(ProjectRepositoryTest.kt:193)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.real_sqlite_full_failure_rolls_back_and_same_command_retries_safely(ProjectRepositoryTest.kt:164)
+</failure>
+  </testcase>
+  <testcase name="concurrent_edit_commands_only_apply_one_target" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.188" />
+  <testcase name="recovery_exceeding_outlay_produces_real_negative_cost" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.127" />
+  <testcase name="create_zero_and_normal_project_survives_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.307" />
+  <testcase name="backdated_money_recalculates_detail_page_and_observation_day" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.147" />
+  <testcase name="stale_editor_cannot_overwrite_a_committed_metadata_change" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.082" />
+  <testcase name="editing_into_subscription_category_is_rejected_without_mutation" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.059" />
+  <testcase name="same_day_events_are_all_preserved_in_stable_id_order" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.061" />
+  <testcase name="fifty_one_projects_page_as_fifty_and_one" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.164" />
+  <testcase name="full_baseline_comparison_detects_same_timestamp_changed_row" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.088" />
+  <testcase name="one_hundred_projects_have_stable_two_pages" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.19" />
+  <testcase name="same_money_operation_with_changed_content_is_conflict" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.086" />
+  <testcase name="real_prepayment_before_ownership_has_no_fake_zero_daily_cost" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.062" />
+  <testcase name="invalid_create_and_future_money_leave_real_database_unchanged" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.058" />
+  <testcase name="window_is_one_snapshot_when_a_sort_key_edit_is_queued_between_pages" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.501" />
+  <testcase name="moving_start_after_existing_end_is_rejected_without_erasing_end" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.007" />
+  <testcase name="legacy_end_and_future_end_are_evaluated_without_reactivating_settlement" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.067" />
+  <testcase name="persisted_business_zone_boundary_ignores_device_timezone_changes" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.14" />
+  <testcase name="initial_cost_counted_once_after_replay_and_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.107" />
+  <testcase name="invalid_page_size_and_noncanonical_cursor_are_rejected" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.061" />
+  <testcase name="fresh_page_window_after_sort_key_edit_has_no_duplicate_or_missing_ids" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.289" />
+  <testcase name="metadata_edit_preserves_created_end_cover_and_old_money_events" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.124" />
+  <testcase name="edit_requires_increasing_revision_and_valid_business_identities" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.084" />
+  <testcase name="lost_edit_result_replays_stable_target_after_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.12" />
+  <testcase name="frozen_create_replay_remains_strict_after_metadata_edit" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.118" />
+  <testcase name="storage_failure_preserves_input_and_unknown_envelope_for_safe_retry" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.194" />
+  <testcase name="backdated_recovery_refreshes_list_and_detail_to_negative_net" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.324" />
+  <testcase name="editing_preserves_events_and_refuses_a_stale_loaded_version" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.217" />
+  <testcase name="real_disk_full_preserves_form_then_retries_the_same_single_event" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.14" />
+  <testcase name="explicit_prepayment_stays_independent_of_ownership_date" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.106" />
+  <testcase name="edited_commit_result_loss_restores_complete_baseline_and_target_for_cas_replay" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.109" />
+  <testcase name="resumed_read_recalculates_business_day_without_changing_pending_raw_input" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.109" />
+  <testcase name="busy_double_tap_and_field_change_cannot_duplicate_or_change_command" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.304" />
+  <testcase name="appended_commit_result_loss_restores_same_event_and_operation" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.005" />
+  <testcase name="create_zero_and_normal_project_persist_one_initial_event_each" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.006" />
+  <testcase name="invalid_amount_preserves_form_without_writing_or_closing" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.084" />
+  <testcase name="committed_result_interruption_restores_and_replays_original_identity" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.109" />
+  <testcase name="successful_write_then_detail_read_failure_remains_committed" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.107" />
+  <testcase name="future_payment_is_rejected_using_injected_business_today" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.084" />
+  <testcase name="raw_input_and_dirty_guard_survive_saved_state_recreation" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.138" />
+  <testcase name="creation_restores_its_actual_home_or_list_parent" classname="com.cooper.lithic.feature.project.ProjectRoutesTest" time="0.013" />
+  <testcase name="mismatched_or_invalid_project_routes_restore_safely_home" classname="com.cooper.lithic.feature.project.ProjectRoutesTest" time="0.015" />
+  <testcase name="project_routes_keep_stable_identity_and_bounded_parents" classname="com.cooper.lithic.feature.project.ProjectRoutesTest" time="0.014" />
+  <testcase name="narrow_large_text_form_keeps_ime_error_save_and_back_actions_reachable" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="6.624" />
+  <testcase name="unconfirmed_submission_locks_content_but_allows_safe_replay_action" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.693" />
+  <testcase name="failed_list_read_is_visible_and_keeps_prior_records_instead_of_a_fake_empty_state" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.109" />
+  <testcase name="committed_write_with_failed_refresh_only_offers_read_retry" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.847" />
+  <testcase name="failed_save_preserves_all_controlled_input_and_persistent_error" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.836" />
+  <testcase name="money_editor_uses_absolute_amount_and_selected_outlay_or_recovery" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.944" />
+  <testcase name="editing_project_details_does_not_offer_initial_money_history_changes" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.639" />
+  <testcase name="create_form_exposes_real_payment_date_zero_amount_and_controlled_category" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="4.396" />
+  <testcase name="detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.629" />
+  <testcase name="in_flight_submission_disables_editing_and_duplicate_save_actions" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.719" />
+  <testcase name="project_list_opens_stable_identity_and_exposes_database_page_continuation" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.103" />
+  <testcase name="stale_edit_conflict_offers_explicit_reload_without_resubmitting_the_old_command" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.773" />
+  <testcase name="money_editor_preserves_failed_amount_date_and_description" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.819" />
+  <testcase name="not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.953" />
+  <testcase name="local_date_outside_calendar_range_remains_available_as_raw_input" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="3.152" />
+  <testcase name="real_calendar_confirmation_preserves_the_selected_day_across_device_time_zones" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="2.794" />
+  <testcase name="busy_date_input_and_calendar_action_are_disabled_and_touch_target_is_large_enough" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="1.54" />
+  <testcase name="invalid_raw_date_and_associated_error_are_retained_without_correction" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="2.646" />
+  <testcase name="canceling_the_calendar_does_not_change_the_controlled_date" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="2.031" />
+  <testcase name="backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="10.48">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥120.00' (ignoreCase: false))
+Semantics of the node:
+Node #1646 at (l=16.0, t=207.0, r=304.0, b=427.0)px, Tag: 'project-row-b14a8620-5c0f-46e8-830f-02ebda92c5ae'
+ContentDescription = '[暂无封面]'
+Focused = 'false'
+Text = '[历史投入和收回, 持有中, 开始：2026-01-01
+已持有10天]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, OnClick, RequestFocus, SetTextSubstitution, ShowTextSubstitution]
+MergeDescendants = 'true'
+Has 1 child
+Selector used: (TestTag = 'project-row-b14a8620-5c0f-46e8-830f-02ebda92c5ae')
+
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at com.cooper.lithic.feature.project.ProjectEntryFlowTest$backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room$1.invokeSuspend(ProjectEntryFlowTest.kt:195)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectEntryFlowTest.backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room(ProjectEntryFlowTest.kt:183)
+</failure>
+  </testcase>
+  <testcase name="initial_cost_counted_once_in_room_and_after_close_reopen" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="8.091" />
+  <testcase name="rapid_double_tap_creates_only_one_real_project_and_one_appended_event" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="9.956" />
+  <testcase name="create_zero_and_normal_project_are_real_room_records_after_reopen" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="10.988" />
+  <testcase name="editing_name_and_start_date_updates_visible_results_without_changing_money_history" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="6.869">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥200.00' (ignoreCase: false))
+Semantics of the node:
+Node #2887 at (l=16.0, t=207.0, r=304.0, b=427.0)px, Tag: 'project-row-daa9b037-bda7-41ef-9445-28dc832f37f9'
+ContentDescription = '[暂无封面]'
+Focused = 'false'
+Text = '[修订后的项目, 持有中, 开始：2026-01-06
+已持有5天]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, OnClick, RequestFocus, SetTextSubstitution, ShowTextSubstitution]
+MergeDescendants = 'true'
+Has 1 child
+Selector used: (TestTag = 'project-row-daa9b037-bda7-41ef-9445-28dc832f37f9')
+
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at com.cooper.lithic.feature.project.ProjectEntryFlowTest$editing_name_and_start_date_updates_visible_results_without_changing_money_history$1.invokeSuspend(ProjectEntryFlowTest.kt:239)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectEntryFlowTest.editing_name_and_start_date_updates_visible_results_without_changing_money_history(ProjectEntryFlowTest.kt:218)
+</failure>
+  </testcase>
+  <testcase name="failed_save_preserves_form_and_canceling_discard_keeps_the_real_unsubmitted_input" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="8.64" />
+  <testcase name="dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event" classname="com.cooper.lithic.feature.project.ProjectNavigationGuardTest" time="8.973" />
+  <testcase name="dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back" classname="com.cooper.lithic.feature.project.ProjectNavigationGuardTest" time="6.429" />
+  <testcase name="untouched_form_leaves_without_a_discard_prompt_or_a_business_record" classname="com.cooper.lithic.feature.project.ProjectNavigationGuardTest" time="2.3" />
+  <testcase name="unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project" classname="com.cooper.lithic.feature.project.ProjectNavigationGuardTest" time="8.418" />
+</testsuite>

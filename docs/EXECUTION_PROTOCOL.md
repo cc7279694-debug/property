@@ -8,7 +8,7 @@
 
 实现者不得跳过验收开始下一模块。文档任务仅检查文档，不机械新增产品测试。业务计算、迁移、恢复、导入导出等重要逻辑优先可重复测试。
 
-M00～M04 已独立验收冻结为 ACCEPTED / FROZEN — PASS WITH NOTES，独立审查未重跑 Windows Gradle或安装 APK 等历史 NOTES 保留，见[验收登记](ACCEPTANCE_MATRIX.md)。本轮仅授权 **M05 — READY_FOR_REVIEW**：从 M04 验收回写基线 `aecbe86fce6e5c4375f2c35d2df8539df0a557bb`，在 `feat/m05-ui-foundation` 演进既有 Navigation 3、现在/回看/设置三入口、基础视觉组件、只读页面及真实存储加载/失败状态，精确边界见[M05 契约](planning/M05_CONTRACT.md)。不做 M06 CRUD、正式详情、M13汇总、订阅表、备份/通知或数据库迁移，不改已冻结成本引擎与 M04 数据所有者。M05 交付后停止等待独立验收，M06 未授权。
+M00～M05已独立冻结PASS WITH NOTES，原独立未重跑本机Gradle/安装等NOTES保留。当前用户正式授权M06，从4576b03565e58011e2fa78a086039fee33e3352f/feat/m05-ui-foundation进入feat/m06-project-entry；只做长期项目创建/资料编辑/详情/资金追加、真实刷新及数据库分页，边界见[M06契约](planning/M06_CONTRACT.md)。schema v1/成本引擎/唯一owner不变，M07结束删除和后续功能未授权。完成实际回归与设备验证后READY_FOR_REVIEW并停止，不自行冻结。
 
 Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、Acceptance Criteria、Verification。修改前能解释为什么改该文件、可能破坏什么、如何验证。
 
@@ -32,7 +32,7 @@ Q07 已在 M02 由用户正式确认并继承：每个模块只执行已具备�
 
 M01 的 M01-T01～M01-T04 分别记录设备侧断网冷启动、合并 Manifest 与最终 APK 权限、Debug 身份隔离、版本锁及实际构建证据；lint 结果另列。没有可用设备时先交付其余结果和 APK，安装/断网冷启动写 NOT_RUN 或 BLOCKED 并给出最少手工步骤。模拟器必须标明类型，不能冒充真机。NO-SOURCE、未发现测试和环境配置失败不能算产品测试通过或有效的 TDD 红灯。
 
-M02/M03历史验证要求继续保留：M02六案例和 Q02-V01～V03 领域结果不由M03订阅实现覆盖，后续 M17/M18 视图/总线集成仍待对应模块执行。M03 当时要求先写固定日期的失败测试，再实现最小领域代码，保留真实 RED → GREEN 输出；不得故意改坏已有正确行为制造红灯。逐项登记 M03-T01～T06 的实际结果，回归 M02 既有测试；至少实际运行 `:app:testDebugUnitTest`、`:app:lintDebug :app:assembleDebug`，从报告记录总数、通过、失败/跳过，环境错误或编译失败不能替代行为失败。当时保留 M01 界面及锁定工具链、不引入该模块禁止的业务能力；这不是禁止本轮已授权M05演进页面。
+M02/M03历史验证要求继续保留：M02六案例和 Q02-V01～V03 领域结果不由M03订阅实现覆盖，后续 M17/M18 视图/总线集成仍待对应模块执行。M03 当时要求先写固定日期的失败测试，再实现最小领域代码，保留真实 RED → GREEN 输出；不得故意改坏已有正确行为制造红灯。逐项登记 M03-T01～T06 的实际结果，回归 M02 既有测试；至少实际运行 `:app:testDebugUnitTest`、`:app:lintDebug :app:assembleDebug`，从报告记录总数、通过、失败/跳过，环境错误或编译失败不能替代行为失败。当时保留 M01 界面及锁定工具链、不引入该模块禁止的业务能力；这不是禁止后续已明确授权模块演进页面。
 
 构建成功不证明金额正确、离线能力或恢复不丢数据。依赖版本在 M01 的真实环境验证后锁定；数据库 schema/backup 格式版本以实际实现和测试为准。
 
@@ -58,10 +58,4 @@ Conventional Commits；获准时只推当前功能分支。没有另行授权不
 
 本轮 M05 必须实际运行 `:app:testDebugUnitTest`、`:app:connectedDebugAndroidTest`、`:app:lintDebug :app:assembleDebug`，原 74 项 JVM 与 86 项 Android 存储回归和新增测试分别登记。M05-T01～T04 须覆盖真实空/非空 Room、初始化及读取失败、三入口/返回、360dp/200%字体与合成表单操作；旋转、Activity重建、真正系统进程死亡和 force-stop 分开记录，不相互冒充。最终 APK、版本/权限、schema v1不变及 generation/记录时区稳定均须实际核对；合成表单回调不等于 M06 业务保存。原始 130 案例及16组完整跨模块补测保持 NOT_RUN，Q03～Q06 期限及 M09 两项风险不变，M12 完整恢复仍 NOT_RUN。
 
-当前M05已依据实际构建、200项测试和专用模拟器验证登记READY_FOR_REVIEW，独立验收PENDING；不得自行冻结或把未测项记PASS。完成报告和停止标签按[M05契约](planning/M05_CONTRACT.md)，证据见[当前验收](ACCEPTANCE_MATRIX.md)。M00～M04停止标签与交付时状态保留于历史检查点，不继续作为当前阶段限制；M06仍须独立验收及用户另行授权。
-
-## 决策与检查点规范
-
-DECISIONS 每条包含日期、状态、Decision、Context、Alternatives、Reason、Consequences 和来源。区分用户确认与规划工程默认；建议未确认不能登记为已接受。取代决定保留旧记录并标 Superseded。
-
-有意义阶段停止点才创建 checkpoint。记录 Goal、Verified completed、Changes、Inherited decisions、Known limitations、Verification、Next step。阻塞停止点写 Blocked，不把未验证工作补写成完成历史。
+当前M06已交付READY_FOR_REVIEW，284个唯一方法及实际设备/APK结果见当前验收；ChatGPT独立验收PENDING。保留原200个测试方法，必要M05阶段断言随已授权详情/新读取接口做精确适配，旧交付/归档不改。不得把旧PASS、NO-SOURCE或编译错误当作新模块通过；完成标签见[M06契约](planning/M06_CONTRACT.md)，交付后不进入M07。

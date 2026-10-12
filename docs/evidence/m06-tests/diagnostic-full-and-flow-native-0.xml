@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.ProjectRepositoryTest" tests="7" failures="1" errors="0" skipped="0" time="62.956" timestamp="2026-10-12T06:58:42" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="real_sqlite_full_failure_rolls_back_and_same_command_retries_safely" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="1.75">
+    <failure>java.lang.AssertionError: Actual storage failure: StorageFailure(kind=DATABASE, message=cannot rollback - no transaction is active (code 1 SQLITE_ERROR)); imposed page limit: 19; writer observed limit: 19; captured SQL: [BEGIN IMMEDIATE TRANSACTION, SELECT * FROM categories WHERE id = ?, BEGIN IMMEDIATE TRANSACTION, INSERT OR ABORT INTO `categories` (`id`,`type`,`name`,`normalizedName`,`isFallback`) VALUES (?,?,?,?,?), TRANSACTION SUCCESSFUL, END TRANSACTION, SELECT * FROM categories WHERE id = ?, BEGIN IMMEDIATE TRANSACTION, INSERT OR ABORT INTO `categories` (`id`,`type`,`name`,`normalizedName`,`isFallback`) VALUES (?,?,?,?,?), TRANSACTION SUCCESSFUL, END TRANSACTION, TRANSACTION SUCCESSFUL, END TRANSACTION, BEGIN IMMEDIATE TRANSACTION, SELECT * FROM room_table_modification_log WHERE invalidated = 1, TRANSACTION SUCCESSFUL, END TRANSACTION, BEGIN IMMEDIATE TRANSACTION, SELECT * FROM project_money_events WHERE operationId = ?, SELECT * FROM categories WHERE id = ?, BEGIN IMMEDIATE TRANSACTION, INSERT OR ABORT INTO `long_term_projects` (`id`,`name`,`categoryId`,`startedOn`,`endedOn`,`endReason`,`coverAssetId`,`note`,`createdAt`,`updatedAt`) VALUES (?,?,?,?,?,?,?,?,?,?), TRANSACTION SUCCESSFUL, END TRANSACTION, BEGIN IMMEDIATE TRANSACTION, INSERT OR ABORT INTO `project_money_events` (`id`,`projectId`,`direction`,`amountCents`,`occurredOn`,`description`,`role`,`operationId`) VALUES (?,?,?,?,?,?,?,?), TRANSACTION SUCCESSFUL, END TRANSACTION, TRANSACTION SUCCESSFUL, END TRANSACTION, BEGIN IMMEDIATE TRANSACTION, SELECT * FROM room_table_modification_log WHERE invalidated = 1, TRANSACTION SUCCESSFUL, END TRANSACTION, BEGIN IMMEDIATE TRANSACTION, PRAGMA page_count, PRAGMA max_page_count = 19, TRANSACTION SUCCESSFUL, END TRANSACTION, BEGIN IMMEDIATE TRANSACTION, SELECT * FROM room_table_modification_log WHERE invalidated = 1, TRANSACTION SUCCESSFUL, END TRANSACTION, BEGIN IMMEDIATE TRANSACTION, SELECT * FROM project_money_events WHERE operationId = ?, PRAGMA max_page_count, SELECT * FROM categories WHERE id = ?, BEGIN IMMEDIATE TRANSACTION, INSERT OR ABORT INTO `long_term_projects` (`id`,`name`,`categoryId`,`startedOn`,`endedOn`,`endReason`,`coverAssetId`,`note`,`createdAt`,`updatedAt`) VALUES (?,?,?,?,?,?,?,?,?,?), END TRANSACTION, END TRANSACTION] expected:&lt;DISK_FULL&gt; but was:&lt;DATABASE&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$real_sqlite_full_failure_rolls_back_and_same_command_retries_safely$1.invokeSuspend(ProjectRepositoryTest.kt:193)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.real_sqlite_full_failure_rolls_back_and_same_command_retries_safely(ProjectRepositoryTest.kt:164)
+</failure>
+  </testcase>
+  <testcase name="backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="20.428" />
+  <testcase name="initial_cost_counted_once_in_room_and_after_close_reopen" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="6.786" />
+  <testcase name="rapid_double_tap_creates_only_one_real_project_and_one_appended_event" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="8.358" />
+  <testcase name="create_zero_and_normal_project_are_real_room_records_after_reopen" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="8.208" />
+  <testcase name="editing_name_and_start_date_updates_visible_results_without_changing_money_history" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="7.623" />
+  <testcase name="failed_save_preserves_form_and_canceling_discard_keeps_the_real_unsubmitted_input" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="8.842" />
+</testsuite>

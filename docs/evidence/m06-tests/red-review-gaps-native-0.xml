@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.project.ProjectScreensTest" tests="2" failures="2" errors="0" skipped="0" time="8.793" timestamp="2026-10-12T06:38:54" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="stale_edit_conflict_offers_explicit_reload_without_resubmitting_the_old_command" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="6.829">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (Text + InputText + EditableText contains '重新读取会用当前已提交资料替换此处输入，请重新核对后编辑。' (ignoreCase: false))
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectScreensTest.stale_edit_conflict_offers_explicit_reload_without_resubmitting_the_old_command(ProjectScreensTest.kt:152)
+</failure>
+  </testcase>
+  <testcase name="window_is_one_snapshot_when_a_sort_key_edit_is_queued_between_pages" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="1.315">
+    <failure>java.lang.AssertionError: One window must not contain an old row twice after it moves expected:&lt;101&gt; but was:&lt;102&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$window_is_one_snapshot_when_a_sort_key_edit_is_queued_between_pages$1.invokeSuspend(ProjectRepositoryTest.kt:506)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.window_is_one_snapshot_when_a_sort_key_edit_is_queued_between_pages(ProjectRepositoryTest.kt:474)
+</failure>
+  </testcase>
+</testsuite>

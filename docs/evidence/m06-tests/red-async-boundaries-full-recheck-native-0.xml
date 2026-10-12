@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.ProjectRepositoryTest" tests="3" failures="3" errors="0" skipped="0" time="7.026" timestamp="2026-10-12T07:07:59" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="real_sqlite_full_failure_rolls_back_and_same_command_retries_safely" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.78">
+    <failure>java.lang.AssertionError: Production opener without QueryCallback; actual storage failure: StorageFailure(kind=DATABASE, message=cannot rollback - no transaction is active (code 1 SQLITE_ERROR)); imposed page limit: 19 expected:&lt;DISK_FULL&gt; but was:&lt;DATABASE&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$real_sqlite_full_failure_rolls_back_and_same_command_retries_safely$1.invokeSuspend(ProjectRepositoryTest.kt:184)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.real_sqlite_full_failure_rolls_back_and_same_command_retries_safely(ProjectRepositoryTest.kt:163)
+</failure>
+  </testcase>
+  <testcase name="initial_edit_read_restores_its_baseline_without_overwriting_existing_raw_input" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="5.391">
+    <failure>java.lang.AssertionError: Expected state was not reached: phase=IDLE, committed=false, readError=false
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.await(ProjectViewModelTest.kt:535)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$await(ProjectViewModelTest.kt:43)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$await$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.initial_edit_read_restores_its_baseline_without_overwriting_existing_raw_input(ProjectViewModelTest.kt:456)
+</failure>
+  </testcase>
+  <testcase name="slow_previous_detail_cannot_appear_while_a_different_project_is_loading" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.194">
+    <failure>java.lang.AssertionError: A result must not be published into the B route expected null, but was:&lt;ProjectDetail(project=LongTermProjectEntity(id=d41efcb9-c234-48a9-83b1-58f1aee75cfd, name=详情A, categoryId=00000000-0000-4000-8000-000000000001, startedOn=2026-01-01, endedOn=null, endReason=null, coverAssetId=null, note=null, createdAt=2026-01-10T12:00:00Z, updatedAt=2026-01-10T12:00:00Z), category=CategoryEntity(id=00000000-0000-4000-8000-000000000001, type=PROJECT, name=其他, normalizedName=其他, isFallback=true), events=[ProjectMoneyEventEntity(id=c0aa13a5-b84d-42ed-a791-a49071e4725d, projectId=d41efcb9-c234-48a9-83b1-58f1aee75cfd, direction=OUTLAY, amountCents=100000, occurredOn=2026-01-01, description=null, role=INITIAL, operationId=d7cc5711-b8a9-431c-8b00-bd12bfc43d3f)], cost=ProjectCostResult(heldDays=10, grossOutlayCents=100000, recoveryCents=0, netCents=100000, dailyRate=100.00, contributesToCurrentTotal=true, unavailableReason=null), asOf=2026-01-10)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotNull(Assert.java:756)
+at org.junit.Assert.assertNull(Assert.java:738)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$slow_previous_detail_cannot_appear_while_a_different_project_is_loading$1.invokeSuspend(ProjectViewModelTest.kt:448)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.slow_previous_detail_cannot_appear_while_a_different_project_is_loading(ProjectViewModelTest.kt:416)
+</failure>
+  </testcase>
+</testsuite>

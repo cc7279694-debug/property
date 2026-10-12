@@ -322,3 +322,32 @@ NOT_RUN：真机、API26、OEM、TalkBack完整审查、真实内存压力自动
 6. **Lint：**现有20条警告不要求本轮强行升级依赖；不升级、抑制或修改既有执行结果。
 
 本节正式结论取代先前交付PENDING的当前效力；原交付报告、证据JSON、checkpoint及上节当前执行验收保留为当时历史，不改其NOT_RUN/PENDING字段。本次仅修改唯一CURRENT_STATE与本登记，检查差异/敏感信息后提交并推送当前M05功能分支；不修改业务代码、WHOCARE或原规划，不合并main或进入M06。M06须用户明确新授权；回写提交自身SHA、推送和最终远端核对以Git日志/最终报告为准。
+
+
+## M06 当前执行验收（2026-10-12）
+
+用户M06授权附件SHA-256 `ac70a90d15afcdc42c8b43395037f77004beab32708d0bb8daf148cbaded3ee0`；基线 `4576b03565e58011e2fa78a086039fee33e3352f` / feat/m05-ui-foundation，当前feat/m06-project-entry。开始实际核对本地/远端一致、干净、新分支不存在；[契约](planning/M06_CONTRACT.md)编码前固定。当前 **READY_FOR_REVIEW**，ChatGPT独立验收 **PENDING**；没有自授冻结。
+
+| 原案例 | 当前实际结果 | 实际证据及界限 |
+|---|---|---|
+| M06-T01 create_zero_and_normal_project | PASS | ProjectEntryFlowTest及ProjectRepositoryTest用真实Room创建0/普通项目、唯一INITIAL、关闭重开；正式MainActivity零元/1000录入和force-stop再开，持久2项目/4事件，未保存探针未入库 |
+| M06-T02 initial_cost_counted_once | PASS | INITIAL只有一条，1000仅计1000，10天=100/天；真实重放/重开保持，不存在主表购买价；正式APK详情截图 |
+| M06-T03 double_tap_no_duplicate | PASS | 正式UI快速双击、busy阻止第二次及改内容，真实并发创建/追加/编辑，同命令重放/写成功结果中断/SavedState身份恢复；异内容Conflict，原operationId唯一约束不变 |
+| M06-T04 failed_save_preserves_form | PASS（已执行路径） | 校验/真实SQLite满页/关闭库失败保留raw和原命令；正式Nav弃改取消/Tab重选/顶部/真系统返回，未知提交不能弃掉；Activity状态恢复、真实STOPPED保存任务后SIGKILL/Recents同任务恢复；首轮未等待状态保存的失败如实保留，不覆盖任意前台断电 |
+| M06-T05 backdated_money_recalculates | PASS | 1/1开始1000、1/10观察100；历史1/5追加200→120，1/4观察不提前计入；真实Room/UI详情/列表/首页COUNT刷新及重开；收回超投入得到负净额，改开始日重新计算 |
+
+完整 `:app:testDebugUnitTest :app:connectedDebugAndroidTest :app:lintDebug :app:assembleDebug --max-workers=2 --console=plain` 退出0，9m 53s，**82 JVM＋202 Android＝284唯一方法PASS，0失败/错误/跳过**。原200身份全部保留且实跑，新84 Android：Repository34、ViewModel17、Routes3、Screens15、DateInput5、EntryFlow6、NavigationGuard4。源码@Test、XML、JSON精确同集；75最终source/schema输入与7份完整GREEN XML哈希核对。两份原UI测试仅适配COUNT/API及本轮实际详情，不删事实/错误/返回断言；旧M05证据字节不改。
+
+真实行为RED64/55失败/9既有PASS；统一窗口竞态和冲突按钮RED2/2，迟到详情/初始编辑恢复与磁盘分类诊断RED3/3，最终初读错误按钮RED4/1后全部GREEN。编译import、JUnit非void runner及其他测试驱动错误单列；各失败XML/日志未丢弃。真实满页原设置曾作用于池中读连接，改为主写连接后复现；存量文件Room回滚可掩盖为DATABASE/cannot rollback，新测试仅修正过度严格分类预期，完整旧数据/无部分插入/同命令恢复一次断言保留。另VM真实DISK_FULL路径通过。生产没有按消息改分类或隐藏异常。
+
+SQL50游标、同日ID稳定、批量事件/类别、COUNT无全库查询，真实51/100/1000合成行通过；已加载窗口一次事务，原竞态101→102真实复现后修复。所有金额仅MoneyParser/冻结M02引擎；固定记录时区、预付、未来付款拒绝、负净额、已有结束/封面字段保护及陈旧编辑通过。
+
+最终APK code4 / `0.1.0-m06-debug`，**12,076,349 bytes**，SHA-256 `81b4c698c1d1355b018094bcc391be9b1ada8e4c4e447b7eb43ace8d7c7a2895`；com.cooper.lithic.debug。最终APK/合并Manifest/九域备份排除/Wrapper、26生产类/v2签名检查通过；无网络权限/测试框架/测试类，Debug额外非launcher空宿主保留，Release未构建。运行坐标122→122精确相同，0新增/删除/升级；Lint0 errors/20 warnings原样保留。
+
+初次业务/大字体/草稿恢复13张证据来自整理末尾空行前APK d75549af…；仅移除ReviewShell末尾CRLF后完整284复跑，最终APK指纹为81b4c698…，另实际重装/断网COLD/2项目4事件/零元与负净额/1.234校验及弃改复验，并补5张最终截图，合计18张。两次产物证据在JSON明确区分。
+
+仅专用API36模拟器：首次APK（d75549af…）安装，断网COLD启动，正式零元/正额→历史投入→超额收回→改名/开始日→列表/详情/首页COUNT刷新→force-stop再读；360dp/200%真实IME/日期/错误/弃改、旋转、深色及草稿恢复已查看。首轮HOME后过早SIGKILL未恢复草稿不计PASS；正确复验Task659/Record83054542已STOPPED且haveState=true/Bundle4444、PID12436消失、新PID12799从Recents恢复同Task及raw名称/1.234。系统Pacific/Honolulu日期10月11日，固定GMT业务日仍10月12日；pointer/ready/settings SHA一致。2项目/4事件/2INITIAL/4operationId、integrity_check=ok/FK无错，首次安装hash与首次APK相同；最终APK（81b4c698…）的安装hash另行核对相同，实际复验范围见上段及JSON.finalApk。临时设备设置已全部恢复，私有诊断库只在忽略目录，不实现/公开App备份。
+
+NOT_RUN：真机/API26/OEM、完整TalkBack、真实低内存LMK、Release/正式签名升级、M07及后续业务/迁移/媒体/备份恢复/汇总。原43原件/130案例/16完整补测不变，Q03～Q06期限/M09两风险/M04残留代/M08预检/M12恢复边界保留。M05真实刷新和分页交接本轮已解决，不因此宣布其他能力完成。完整[报告](evidence/M06-verification.md)、[逐方法JSON](evidence/M06-verification.json)、[checkpoint](checkpoints/2026-10-12-M06.md)及新增XML/合成截图可审阅。
+
+只提交推送feat/m06-project-entry；最终自身SHA及远端一致以Git日志与推送后本地回执为准。不合并main/force/PR/发布/WHOCARE，不提交APK、真实库或私钥。交付后立即停止，等待ChatGPT独立代码验收，M07未授权。

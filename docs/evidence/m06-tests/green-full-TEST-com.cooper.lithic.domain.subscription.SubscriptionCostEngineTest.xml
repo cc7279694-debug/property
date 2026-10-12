@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" tests="37" skipped="0" failures="0" errors="0" timestamp="2026-10-12T08:30:51.655Z" hostname="WHOCARE" time="0.03">
+  <properties/>
+  <testcase name="leap_year_natural_366_is_distinct_from_standard_365" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="only_three_fixed_cycles_exist" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="future_pause_and_stop_do_not_change_the_past" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="resume_after_expiry_does_not_create_payment" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="leap_day_start_reaches_365_on_february_27" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="expired_has_zero_current_rate" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="coverage_at_max_date_expires_without_plus_days_overflow" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="unordered_records_produce_identical_history" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.002"/>
+  <testcase name="prepaid_future_without_current_coverage_is_expired" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="quarterly_standard_rate" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="later_real_payment_is_legal_input_but_unknown_to_earlier_observation" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="observation_before_all_facts_has_no_cost_or_elapsed_days" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="annual_purchase_not_elapsed_year" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.002"/>
+  <testcase name="annual_pause_excludes_ten_days_and_next_real_period_reaches_365" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="monthly_standard_rate" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="zero_amount_is_not_a_real_renewal" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="prepaid_next_rate_does_not_start_early" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="even_identical_same_day_states_require_correction" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="duplicate_same_day_states_are_rejected_in_both_orders" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="coverage_gap_is_not_counted_or_active" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="interval_days_use_long_and_do_not_enumerate_dates" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="empty_history_has_explicit_no_record_reason" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="nested_and_duplicate_coverage_are_rejected" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="default_stop_uses_paid_end_and_preserves_preboundary_service" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="stored_standard_days_must_match_fixed_cycle" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="paused_without_coverage_remains_paused" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="fractional_rate_keeps_decimal128_precision_and_nonzero_value" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="prepaid_cycle_change_starts_at_its_effective_boundary" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="overlaps_rejected" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="writing_rejects_future_payment_using_business_today" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="reversed_coverage_is_rejected" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="reminder_boundary_does_not_extend_paid_coverage" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="empty_coverage_is_rejected" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="interval_start_state_boundary_counts_enabled_date_only_once" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="pause_does_not_erase_paid_history" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.001"/>
+  <testcase name="payment_today_and_future_service_are_valid" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <testcase name="explicit_early_stop_excludes_its_first_stopped_day" classname="com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

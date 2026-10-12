@@ -30,6 +30,7 @@ import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.repository.CreateProjectCommand
 import com.cooper.lithic.data.repository.MutationResult
 import com.cooper.lithic.data.repository.ProjectWriteRepository
+import com.cooper.lithic.data.repository.LedgerReadRepository
 import java.io.File
 import java.io.IOException
 import java.time.Instant
@@ -110,9 +111,11 @@ class StorageUiStateTest {
         val state = settled(holder)
         assertTrue("A real successful snapshot must produce Ready", state is LedgerUiState.Ready)
         state as LedgerUiState.Ready
-        assertEquals(2, state.snapshot.categories.size)
-        assertTrue(state.snapshot.projects.isEmpty())
-        assertTrue(state.snapshot.moneyEvents.isEmpty())
+        val snapshot = LedgerReadRepository(container.openStorage().database, container.openStorage().coordinator).snapshot()
+        assertEquals(0L, state.projectCount)
+        assertEquals(2, snapshot.categories.size)
+        assertTrue(snapshot.projects.isEmpty())
+        assertTrue(snapshot.moneyEvents.isEmpty())
         assertEquals(ZoneId.of("Asia/Shanghai"), state.recordZone)
         show(holder)
         compose.waitUntil(10_000) { compose.onAllNodesWithTag("primary_navigation").fetchSemanticsNodes().isNotEmpty() }
@@ -128,14 +131,17 @@ class StorageUiStateTest {
         val state = settled(holder)
         assertTrue(state is LedgerUiState.Ready)
         state as LedgerUiState.Ready
-        assertEquals(listOf("M05 合成项目"), state.snapshot.projects.map { it.name })
-        assertEquals(1, state.snapshot.moneyEvents.size)
+        val snapshot = LedgerReadRepository(generation.database, generation.coordinator).snapshot()
+        assertEquals(1L, state.projectCount)
+        assertEquals(listOf("M05 合成项目"), snapshot.projects.map { it.name })
+        assertEquals(1, snapshot.moneyEvents.size)
         show(holder)
         compose.waitUntil(10_000) { compose.onAllNodesWithTag("primary_navigation").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("¥0.00").assertDoesNotExist()
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
         compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
+        compose.waitUntil(10_000) { compose.onAllNodesWithTag("project-row-${snapshot.projects.single().id}").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("M05 合成项目").assertIsDisplayed()
     }
 

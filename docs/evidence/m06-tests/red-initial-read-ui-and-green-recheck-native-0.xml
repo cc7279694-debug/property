@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.ProjectRepositoryTest" tests="4" failures="1" errors="0" skipped="0" time="9.266" timestamp="2026-10-12T07:15:14" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="real_sqlite_full_failure_rolls_back_and_same_command_retries_safely" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.739" />
+  <testcase name="initial_edit_read_restores_its_baseline_without_overwriting_existing_raw_input" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.451" />
+  <testcase name="slow_previous_detail_cannot_appear_while_a_different_project_is_loading" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.233" />
+  <testcase name="initial_edit_read_failure_preserves_raw_and_only_offers_read_recovery" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="6.674">
+    <failure>java.lang.AssertionError: Failed to assert the following: (is not enabled)
+Semantics of the node:
+Node #50 at (l=16.0, t=592.0, r=304.0, b=640.0)px, Tag: 'project-save'
+Focused = 'false'
+Role = 'Button'
+Text = '[保存项目]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, OnClick, RequestFocus, SetTextSubstitution, ShowTextSubstitution]
+MergeDescendants = 'true'
+Has 8 siblings
+Selector used: (TestTag = 'project-save')
+
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertIsNotEnabled(Assertions.kt:67)
+at com.cooper.lithic.feature.project.ProjectScreensTest.initial_edit_read_failure_preserves_raw_and_only_offers_read_recovery(ProjectScreensTest.kt:170)
+</failure>
+  </testcase>
+</testsuite>

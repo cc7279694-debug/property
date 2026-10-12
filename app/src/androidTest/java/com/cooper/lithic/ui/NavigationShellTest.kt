@@ -53,6 +53,7 @@ import com.cooper.lithic.data.repository.CreateProjectCommand
 import com.cooper.lithic.data.repository.LedgerReadRepository
 import com.cooper.lithic.data.repository.MutationResult
 import com.cooper.lithic.data.repository.ProjectWriteRepository
+import com.cooper.lithic.data.repository.ProjectRepository
 import java.io.File
 import java.time.Instant
 import java.time.LocalDate
@@ -164,10 +165,12 @@ class NavigationShellTest {
     }
 
     @Test
-    fun empty_screen_has_no_fake_metrics() {
-        assertTrue(state.snapshot.projects.isEmpty())
-        assertEquals(2, state.snapshot.categories.size)
-        assertTrue(state.snapshot.moneyEvents.isEmpty())
+    fun empty_screen_has_no_fake_metrics(): Unit = runBlocking {
+        val snapshot = LedgerReadRepository(generation.database, generation.coordinator).snapshot()
+        assertEquals(0L, state.projectCount)
+        assertTrue(snapshot.projects.isEmpty())
+        assertEquals(2, snapshot.categories.size)
+        assertTrue(snapshot.moneyEvents.isEmpty())
         render()
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
         compose.onNodeWithText("暂无记录").assertIsDisplayed()
@@ -183,15 +186,21 @@ class NavigationShellTest {
     fun real_project_is_not_misrepresented_as_an_empty_ledger(): Unit = runBlocking {
         addSyntheticZeroProject()
         state = readReady()
-        assertEquals(1, state.snapshot.projects.size)
-        assertEquals(0L, state.snapshot.moneyEvents.single().amountCents)
+        val snapshot = LedgerReadRepository(generation.database, generation.coordinator).snapshot()
+        assertEquals(1L, state.projectCount)
+        assertEquals(1, snapshot.projects.size)
+        assertEquals(0L, snapshot.moneyEvents.single().amountCents)
         render()
         compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
         compose.onAllNodes(hasText("¥0.00", substring = true)).assertCountEquals(0)
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
+        compose.waitUntil(10_000) { compose.onAllNodes(hasText("合成零元项目")).fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("合成零元项目").assertIsDisplayed()
-        compose.onNodeWithText("详情与编辑尚未开放").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("project-row-${snapshot.projects.single().id}").performClick()
+        compose.waitUntil(10_000) { compose.onAllNodes(hasText("合成零元项目")).fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("project-detail-screen").assertIsDisplayed()
+        compose.onNodeWithTag("project-detail-name").assertIsDisplayed()
     }
 
     @Test
@@ -199,9 +208,10 @@ class NavigationShellTest {
         val futureEnd = LocalDate.of(2026, 10, 20)
         addSyntheticZeroProject(endedOn = futureEnd)
         state = readReady()
-        assertEquals(futureEnd, state.snapshot.projects.single().endedOn)
+        assertEquals(futureEnd, state.repository.loadProjectPage().items.single().project.endedOn)
         render()
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
+        compose.waitUntil(10_000) { compose.onAllNodes(hasText("合成零元项目")).fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("合成零元项目").assertIsDisplayed()
         compose.onNodeWithText("已结束").assertDoesNotExist()
         compose.onNodeWithText("已记录结束日期").assertIsDisplayed()
@@ -292,10 +302,11 @@ class NavigationShellTest {
         compose.waitForIdle()
     }
 
-    private suspend fun readReady(): LedgerUiState.Ready = LedgerUiState.Ready(
-        LedgerReadRepository(generation.database, generation.coordinator).snapshot(),
-        generation.settings.recordZone(),
-    )
+    private suspend fun readReady(): LedgerUiState.Ready {
+        val clock = FixedBusinessClock(LocalDate.of(2026, 10, 12))
+        val repository = ProjectRepository(generation.database, generation.coordinator, clock)
+        return LedgerUiState.Ready(repository.loadSummary().projectCount, generation.settings.recordZone(), repository, clock)
+    }
 
     private suspend fun addSyntheticZeroProject(endedOn: LocalDate? = null) {
         val id = UUID.randomUUID().toString()

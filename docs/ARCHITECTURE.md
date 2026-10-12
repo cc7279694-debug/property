@@ -1,19 +1,33 @@
 # 当前架构事实
 
+## M06：当前项目读写闭环
+
+[ProjectRepository](../app/src/main/java/com/cooper/lithic/data/repository/ProjectRepository.kt)复用同一Room、LocalWriteCoordinator和BusinessClock；创建/追加调用原ProjectWriteRepository，不外套第二次非重入锁。资料更新在写协调边界和Room事务中比较完整expected与固定target：目标已存在则重放、陈旧基线则Conflict；只更新名称、开始日、类别、备注和updatedAt，保留旧事件及保护字段。schema v1没有持久编辑操作日志。
+
+[ProjectDao](../app/src/main/java/com/cooper/lithic/data/local/ProjectDao.kt)按startedOn升序/id平局游标查询，每页最多51行，其中50行可显示；事件和类别按本页ID批读。`loadProjectWindow`在一次协调边界及读取事务中重建已加载窗口，避免页间排序修改混合不同提交。首页只COUNT；正常业务路径不调用全量snapshot。单项目详情取得必要事实后，唯一调用ProjectCostEngine计算，UI不复制公式。
+
+[ProjectViewModel](../app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt)观察Room项目/事件/类别变化，刷新已请求的列表和详情；ON_RESUME只重读，不确认冲突或改变提交。详情发布核对项目ID和请求版本。初次资料读取恢复只补缺失字段，保留已有原始输入；已submitted的基线绝不换掉。
+
+SavedStateHandle只存当前任务单活动表单的原始字符串、UUID、完整编辑基线和固定submitted Bundle（primitive/ISO字符串），提交前同步存入。IN_FLIGHT阻止重复和修改；恢复/异常为UNCONFIRMED，只重放原身份内容。已确认成功与读取失败分开，已保存只允许重读；明确CAS冲突由用户点击核对后重载当前资料。该状态不是新的账本或后台持久草稿，也不承诺force-stop后保留未保存草稿。
+
+正式表单、列表、详情只消费派生状态与回调；真实日期保留文本，DatePicker内部使用UTC日期转换，业务今天仍来自持久recordZone。编辑初次读失败有明确重读入口且不允许无基线保存。顶部、主Tab重选/切换、系统和手势返回统一处理dirty/待确认守卫；不增加结束、删除、历史金额编辑或媒体入口。
+
+真实SQLite页数耗尽有两种已观察到的错误：直接SQLiteFull可归DISK_FULL；嵌套事务收尾有时遮蔽为普通DATABASE的“cannot rollback”错误。生产保留明确未知结果及原命令，不按字符串猜分类、吞异常或清库；当前验证必须证明既有行不变、无部分记录、同命令恢复重试仅一次。实际证据与未测边界另记验收，不由此授予冻结。
+
 ## Verified：当前实际存在
 
-已建立单 Gradle `:app` 模块、单业务 `MainActivity` 与 `LithicApplication`，Kotlin + Compose + Navigation 3。M05沿原[Activity](../app/src/main/java/com/cooper/lithic/app/MainActivity.kt)和[Nav3 宿主](../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt)演进三个主入口及只读项目列表；不是第二套导航。Debug另含Compose测试依赖声明的空ComponentActivity宿主，不是业务入口或生产表单；release不包含ui-test-manifest。
+单 Gradle `:app`、单业务 `MainActivity` 与 `LithicApplication`，Kotlin + Compose + Navigation 3。M06沿原[Activity](../app/src/main/java/com/cooper/lithic/app/MainActivity.kt)和[Nav3 宿主](../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt)接入长期项目创建、分页、详情、资料编辑和真实金额追加。Debug仍另含空ComponentActivity测试宿主；Release仅按配置排除，尚未实际构建。
 
 ```text
 LithicApplication
   → AppContainer（唯一存储所有者）/ StorageInitializationState
     → MainActivity / LedgerUiStateHolder（仅UI生命周期）
-      → Repository快照 + SettingsStore记录时区
+      → COUNT + SettingsStore记录时区 / 同一ProjectRepository
         → LithicTheme / LithicApp：Initializing、Ready、Failed
-          → Ready才进入Navigation3 / 三主入口 + 长期项目只读列表
+          → Ready才进入Navigation3 / 三主入口 + 项目录入闭环
 ```
 
-三个主入口为现在/回看/设置，唯一二级路线为长期项目列表；只有真实数量、名称/日期和记录时区。未接入的汇总、订阅、分析、备份/提醒明确未开放，不生成生产演示记录或假按钮。支持系统浅/深、safeDrawing inset与纵向滚动。图标继续为临时工程图标，不是已批准品牌 Logo。
+三个主入口为现在/回看/设置；首页只查真实项目数量，长期项目页面按需读取事实并展示冻结领域引擎结果。汇总、订阅、分析、媒体、备份和提醒仍未开放。支持系统浅深、safeDrawing、IME避让和滚动；图标仍为临时工程图标。
 
 字体使用设备系统字体。AndroidX Emoji2的自动初始化默认会查询可下载字体提供者，因此按[官方说明](https://developer.android.com/develop/ui/views/text-and-emoji/emoji2)及实际1.4.0源码，在Manifest合并中仅移除EmojiCompatInitializer；不手动初始化下载配置。保留其他Startup初始化器，最终APK检查脚本验证Emoji初始化入口已移除。
 
@@ -21,11 +35,11 @@ LithicApplication
 
 系统备份配置包括 `allowBackup=false`、[旧规则](../app/src/main/res/xml/backup_rules.xml)和[新规则](../app/src/main/res/xml/data_extraction_rules.xml)；旧规则以及 cloud-backup/device-transfer 均排除九类域。已检查合并 Manifest 和最终 APK 编译资源；不据此宣称所有 OEM 的迁移行为均已验证。
 
-M04存储底座与领域引擎保持；M05仅增加读取快照的轻量UI ViewModel，没有写入UseCase/CRUD、图片处理、通知、WorkManager或手动Backup/Restore。实际数据库版本为1，无完整备份格式版本。构建和设备结果以[工具链锁](TOOLCHAIN_LOCK.md)及[验收登记](ACCEPTANCE_MATRIX.md)为准，不能由存在源码推断业务可备份或可升级。
+M04存储所有者、generation和领域引擎保持；M06通过轻量Repository和UI ViewModel调用原子写入及资料CAS。没有图片处理、通知、WorkManager或完整Backup/Restore。schema仍v1，无完整备份格式版本；实际验证以[验收登记](ACCEPTANCE_MATRIX.md)为准。
 
 ## M02：纯 Kotlin 领域计算
 
-已实现[金额模型与解析](../app/src/main/java/com/cooper/lithic/core/model/Money.kt)、[领域模型](../app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt)、[业务日期注入](../app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt)和[长期项目成本引擎](../app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt)。它们只有 Kotlin/JDK 依赖，没有 Android Context、UI、Room Entity 或持久化调用，尚未接入空壳页面。
+已实现[金额模型与解析](../app/src/main/java/com/cooper/lithic/core/model/Money.kt)、[领域模型](../app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt)、[业务日期注入](../app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt)和[长期项目成本引擎](../app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt)。它们只有Kotlin/JDK依赖；M06由Repository映射Room事实至ProjectSnapshot后调用，领域层没有反向依赖UI或数据库。
 
 ```text
 ProjectSnapshot（开始/可选结束日 + 全部真实金额事件）
@@ -38,7 +52,7 @@ ProjectSnapshot（开始/可选结束日 + 全部真实金额事件）
 
 引擎只纳入 `occurredOn <= asOf` 的事件；开始前保留已发生的预付款总额，但天数为0、日均为null、原因PROJECT_NOT_STARTED且无贡献。开始日至观察日含首日；结束日起分母固定为含首末日的完整天数，结束日日末不再贡献。后结算只改变净额。日均以元/天及 DECIMAL128（34位有效数字）计算，不做展示两位舍入，0.005/-0.005保留原符号。M05通用AmountText只展示调用方数值，不在页面计算/持久化成本或接入M13汇总。
 
-BusinessClock 可注入固定 LocalDate 或携带明确时区的 JDK Clock；引擎自身只用 asOf，不读取设备今天或猜测业务时区。记录时区由 M04 SettingsStore 持久保存。初始投入只是一笔事件；重复提交在 M04 Repository 通过稳定操作 ID 处理，不能按相同金额/日期误删两笔独立付款。M06 用户写入流程仍待实施；派生结果不缓存每日快照。
+BusinessClock可注入固定LocalDate或明确时区的JDK Clock；记录时区由M04 SettingsStore持久保存。M06读写共享该业务时钟，前台恢复重读今天。初始投入只是一笔事件；稳定操作ID区分重放与独立付款，不按相同日期/金额删事实。派生结果不保存每日快照。
 
 M02 测试使用 `testImplementation` 的 JUnit4.13.2；实际运行结果与构建证据见[当前登记](ACCEPTANCE_MATRIX.md)及[M02证据](evidence/M02-verification.md)，不以源码推断通过。M02 当时没有订阅引擎；本轮 M03 继承其已冻结输入，没有修改 M01 Activity、导航、资源、Manifest和系统备份排除配置。
 
@@ -79,7 +93,7 @@ Compose → ViewModel → UseCase / Repository → Room / 领域引擎
 
 schema 当前 v1(M04)，计划 → v2(M08) → v3(M16) → v4(M20)；backup format 计划 v1(M11) → v2(M16) → v3(M20)，当前尚无完整备份格式。
 
-后续领域与数据结构在对应获准模块实施和验证后更新。M00～M04已独立冻结，本轮仅授权M05页面/基础视觉，M06及后续未授权；当前执行/独立验收状态以唯一CURRENT_STATE为准。
+后续结构在对应获准模块实施后更新。M00～M05已独立冻结，当前只授权M06；M07及后续未授权。当前验证及独立验收状态以唯一CURRENT_STATE为准。
 
 ## M04：真实存储与私有初始数据集
 
@@ -118,12 +132,12 @@ SettingsStore 为 canonical 设置文件登记唯一所有者；记录 record_zo
 
 ## M05：只读页面、状态门控与基础视觉
 
-[LedgerUiStateHolder](../app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt)通过viewModelScope/collectLatest观察同一个storageState；IO中调用LedgerReadRepository.snapshot及现有settings.recordZone，全部成功才发布Ready。读取中保持Initializing，初始化或读取异常映射Failed，CancellationException继续传播。holder不创建/关闭generation、数据库、设置或AppContainer；ViewModelProvider跨Activity重建保留UI任务，进程死亡后重新读取持久事实。本轮快照只读，不假装已有写入刷新或业务保存。
+[LedgerUiStateHolder](../app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt)保留Initializing/Ready/Failed门控。M06已取代M05一次性全量快照：先读取持久记录时区和COUNT，再观察同一Room变化；后续读取失败保留上次数量并明确错误。holder不拥有数据库关闭权；实际存储仍由AppContainer唯一管理。
 
 [LithicApp](../app/src/main/java/com/cooper/lithic/app/LithicApp.kt)在Ready前不组成正常导航；保护页无空账本/零值/原始路径/堆栈/无效重试，退出回调必须由宿主提供，MainActivity实际finish。加载和错误页均支持安全区及纵向滚动。
 
-[NavKeys](../app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt)仅序列化路线身份，合法栈为[Home]及[Home,Review/Settings/ProjectList]；切Tab替换至有界栈，复点不增长，二级和主Tab系统返回Home，根返回交给Activity退出。rememberNavBackStack保存状态；旧Skeleton保留原类名以解码，已解码未知或非法栈归Home。不把数据库/Context/ManagedGeneration序列化，也不承诺任意损坏的框架保存数据均可恢复。
+[NavKeys](../app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt)仅序列化路线和规范UUID；M06最多四级Home/List/Detail/Editor，创建保留实际来源父链，成功进入原UUID详情。rememberNavBackStack保留路线，旧Skeleton仍可解码；已解码非法栈归Home，缺失记录有返回入口。未保存和未确认操作由统一离开守卫保护。
 
 [LithicTheme](../app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt)使用系统字体与系统浅深模式、低饱和蓝灰交互色、中性背景，主38/title24/body16/辅助14sp及六级间距。[AmountText](../app/src/main/java/com/cooper/lithic/core/design/AmountText.kt)只做BigDecimal展示：null为无值、真实0为¥0.00，普通金额HALF_UP两位/toPlainString；日均非零绝对值<0.01为<¥0.01或−<¥0.01，含±0.005，不经Double。[EntryCard](../app/src/main/java/com/cooper/lithic/core/design/EntryCard.kt)接收调用方状态/时间和可选封面/真实点击；[FormFields](../app/src/main/java/com/cooper/lithic/core/design/FormFields.kt)只提供受控输入、错误语义、键盘IME和日期选择回调，不写库。
 
-测试专用合成表单仅在androidTest源码，生产菜单没有该宿主、保存流程或合成记录。Compose测试依赖精确1.9.5匹配既有BOM；Lifecycle显式2.10.0是M04已解析版本；Espresso3.7.0只用于androidTest编译调用真按键并同步，不改变生产返回逻辑。Debug测试宿主Activity与运行依赖的实际变化、真实回归/设备证据另见当前验收和工具链；源码存在本身不作为验证PASS。
+测试专用合成表单仅在androidTest源码，生产菜单不包含测试宿主、测试合成表单或测试合成记录。Compose测试依赖精确1.9.5匹配既有BOM；Lifecycle显式2.10.0是M04已解析版本；Espresso3.7.0只用于androidTest编译调用真按键并同步，不改变生产返回逻辑。Debug测试宿主Activity与运行依赖的实际变化、真实回归/设备证据另见当前验收和工具链；源码存在本身不作为验证PASS。

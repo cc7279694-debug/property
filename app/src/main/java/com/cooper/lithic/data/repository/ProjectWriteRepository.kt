@@ -15,20 +15,79 @@ import com.cooper.lithic.data.local.ProjectMoneyEventEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.local.StoredValueValidation
 import kotlinx.coroutines.CancellationException
+import java.time.Instant
+import java.time.LocalDate
 
 data class CreateProjectCommand(val commandId: String, val project: LongTermProjectEntity, val initialEvent: ProjectMoneyEventEntity)
 data class AddProjectMoneyEventCommand(val commandId: String, val event: ProjectMoneyEventEntity)
+data class UpdateProjectCommand(
+    val commandId: String,
+    val expected: LongTermProjectEntity,
+    val name: String,
+    val startedOn: LocalDate,
+    val categoryId: String,
+    val note: String?,
+    val updatedAt: Instant,
+)
 
 enum class StorageFailureKind { DATABASE, DISK_FULL, CORRUPT }
 
 sealed interface MutationResult {
     data class Success(val projectId: String, val eventId: String, val replayed: Boolean) : MutationResult
+    data class ProjectUpdated(val projectId: String, val replayed: Boolean) : MutationResult
     data class ValidationFailure(val reason: String) : MutationResult
     data class Conflict(val reason: String) : MutationResult
     data class StorageFailure(val kind: StorageFailureKind, val message: String) : MutationResult
 }
 
 class ProjectWriteRepository(private val db: LithicDatabase, private val coordinator: LocalWriteCoordinator, private val clock: BusinessClock) {
+    suspend fun updateProject(command: UpdateProjectCommand): MutationResult = coordinator.withWrite {
+        storageOperation {
+            db.withTransaction {
+                val expected = command.expected
+                val identities = listOf(command.commandId, expected.id, expected.categoryId, command.categoryId) + listOfNotNull(expected.coverAssetId)
+                if (identities.any { !StoredValueValidation.isUuid(it) }) {
+                    return@withTransaction MutationResult.ValidationFailure("Business identities must be canonical UUID strings")
+                }
+                if (!command.updatedAt.isAfter(expected.updatedAt)) {
+                    return@withTransaction MutationResult.ValidationFailure("An edit revision must be later than the loaded revision")
+                }
+                val target = expected.copy(
+                    name = command.name,
+                    startedOn = command.startedOn,
+                    categoryId = command.categoryId,
+                    note = command.note,
+                    updatedAt = command.updatedAt,
+                )
+                val current = db.projectDao().findProject(expected.id)
+                    ?: return@withTransaction MutationResult.ValidationFailure("The referenced project does not exist")
+                // Schema v1 has no edit operation log: replay is an exact current-target comparison.
+                if (current == target) return@withTransaction MutationResult.ProjectUpdated(current.id, true)
+                if (current != expected) return@withTransaction MutationResult.Conflict("The project changed after this editor was loaded")
+                if (target.name.isBlank()) return@withTransaction MutationResult.ValidationFailure("The project name cannot be blank")
+                if ((target.endedOn == null) != (target.endReason == null)) {
+                    return@withTransaction MutationResult.ValidationFailure("The end date and reason must be present together")
+                }
+                if (target.endReason != null && target.endReason.isBlank()) {
+                    return@withTransaction MutationResult.ValidationFailure("An end reason cannot be blank")
+                }
+                if (target.endedOn != null && target.endedOn.isBefore(target.startedOn)) {
+                    return@withTransaction MutationResult.ValidationFailure("The end date cannot precede ownership")
+                }
+                if (target.updatedAt.isBefore(target.createdAt)) {
+                    return@withTransaction MutationResult.ValidationFailure("The update instant cannot precede creation")
+                }
+                validateProjectRelationships(target)?.let { return@withTransaction MutationResult.ValidationFailure(it) }
+                val changed = db.projectDao().updateProjectMetadata(
+                    target.id, expected.updatedAt, target.name, target.startedOn,
+                    target.categoryId, target.note, target.updatedAt,
+                )
+                if (changed != 1) return@withTransaction MutationResult.Conflict("The loaded project revision is no longer current")
+                MutationResult.ProjectUpdated(target.id, false)
+            }
+        }
+    }
+
     suspend fun createProject(command: CreateProjectCommand): MutationResult = coordinator.withWrite {
         storageOperation {
             db.withTransaction {

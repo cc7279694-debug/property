@@ -1,0 +1,890 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.ProjectRepositoryTest" tests="64" failures="55" errors="0" skipped="0" time="50.864" timestamp="2026-10-12T06:13:12" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="lost_create_result_replays_original_identity_without_second_payment" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="1.098" />
+  <testcase name="editing_start_recalculates_held_days_in_detail_and_page" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.252">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$editing_start_recalculates_held_days_in_detail_and_page$1.invokeSuspend(ProjectRepositoryTest.kt:254)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.editing_start_recalculates_held_days_in_detail_and_page(ProjectRepositoryTest.kt:251)
+</failure>
+  </testcase>
+  <testcase name="one_thousand_projects_remain_bounded_and_stably_sorted" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="7.034">
+    <failure>java.lang.AssertionError: expected:&lt;1000&gt; but was:&lt;0&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:647)
+at org.junit.Assert.assertEquals(Assert.java:633)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.assertPaging(ProjectRepositoryTest.kt:461)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.access$assertPaging(ProjectRepositoryTest.kt:49)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$assertPaging$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.one_thousand_projects_remain_bounded_and_stably_sorted(ProjectRepositoryTest.kt:339)
+</failure>
+  </testcase>
+  <testcase name="concurrent_create_and_append_replay_without_duplicate_money" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.612" />
+  <testcase name="selectable_categories_include_only_project_type" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.168">
+    <failure>java.lang.AssertionError: expected:&lt;[00000000-0000-4000-8000-000000000001, 20000000-0000-4000-8000-000000000900]&gt; but was:&lt;[]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$selectable_categories_include_only_project_type$1.invokeSuspend(ProjectRepositoryTest.kt:373)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.selectable_categories_include_only_project_type(ProjectRepositoryTest.kt:370)
+</failure>
+  </testcase>
+  <testcase name="page_limits_rows_in_sql_and_batch_reads_visible_events_without_n_plus_one" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.435">
+    <failure>java.lang.AssertionError: expected:&lt;50&gt; but was:&lt;0&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$page_limits_rows_in_sql_and_batch_reads_visible_events_without_n_plus_one$1.invokeSuspend(ProjectRepositoryTest.kt:346)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.page_limits_rows_in_sql_and_batch_reads_visible_events_without_n_plus_one(ProjectRepositoryTest.kt:342)
+</failure>
+  </testcase>
+  <testcase name="real_room_changes_emit_initial_create_edit_money_and_category_invalidations" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="3.076">
+    <failure>java.lang.AssertionError: Room must publish the initial query signal
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$real_room_changes_emit_initial_create_edit_money_and_category_invalidations$1.invokeSuspend(ProjectRepositoryTest.kt:382)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.real_room_changes_emit_initial_create_edit_money_and_category_invalidations(ProjectRepositoryTest.kt:378)
+</failure>
+  </testcase>
+  <testcase name="home_summary_uses_only_count_without_loading_all_projects_or_events" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="3.266">
+    <failure>java.lang.AssertionError: expected:&lt;1000&gt; but was:&lt;0&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:647)
+at org.junit.Assert.assertEquals(Assert.java:633)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$home_summary_uses_only_count_without_loading_all_projects_or_events$1.invokeSuspend(ProjectRepositoryTest.kt:362)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.home_summary_uses_only_count_without_loading_all_projects_or_events(ProjectRepositoryTest.kt:359)
+</failure>
+  </testcase>
+  <testcase name="missing_project_is_null_but_read_failure_is_never_fake_empty_data" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.064">
+    <failure>java.lang.AssertionError: An unavailable database must not become null, zero or an empty page
+at org.junit.Assert.fail(Assert.java:89)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.assertReadFails(ProjectRepositoryTest.kt:487)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.access$assertReadFails(ProjectRepositoryTest.kt:49)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$missing_project_is_null_but_read_failure_is_never_fake_empty_data$1.invokeSuspend(ProjectRepositoryTest.kt:407)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.missing_project_is_null_but_read_failure_is_never_fake_empty_data(ProjectRepositoryTest.kt:402)
+</failure>
+  </testcase>
+  <testcase name="concurrent_edit_commands_only_apply_one_target" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.209">
+    <failure>java.lang.AssertionError: expected:&lt;1&gt; but was:&lt;0&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$concurrent_edit_commands_only_apply_one_target$1.invokeSuspend(ProjectRepositoryTest.kt:298)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.concurrent_edit_commands_only_apply_one_target(ProjectRepositoryTest.kt:293)
+</failure>
+  </testcase>
+  <testcase name="recovery_exceeding_outlay_produces_real_negative_cost" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.063">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$recovery_exceeding_outlay_produces_real_negative_cost$1.invokeSuspend(ProjectRepositoryTest.kt:178)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.recovery_exceeding_outlay_produces_real_negative_cost(ProjectRepositoryTest.kt:173)
+</failure>
+  </testcase>
+  <testcase name="create_zero_and_normal_project_survives_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.05">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$create_zero_and_normal_project_survives_reopen$1.invokeSuspend(ProjectRepositoryTest.kt:91)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.create_zero_and_normal_project_survives_reopen(ProjectRepositoryTest.kt:83)
+</failure>
+  </testcase>
+  <testcase name="backdated_money_recalculates_detail_page_and_observation_day" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.067">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$backdated_money_recalculates_detail_page_and_observation_day$1.invokeSuspend(ProjectRepositoryTest.kt:203)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.backdated_money_recalculates_detail_page_and_observation_day(ProjectRepositoryTest.kt:197)
+</failure>
+  </testcase>
+  <testcase name="stale_editor_cannot_overwrite_a_committed_metadata_change" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.062">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$stale_editor_cannot_overwrite_a_committed_metadata_change$1.invokeSuspend(ProjectRepositoryTest.kt:266)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.stale_editor_cannot_overwrite_a_committed_metadata_change(ProjectRepositoryTest.kt:262)
+</failure>
+  </testcase>
+  <testcase name="editing_into_subscription_category_is_rejected_without_mutation" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.059" />
+  <testcase name="same_day_events_are_all_preserved_in_stable_id_order" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.106">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$same_day_events_are_all_preserved_in_stable_id_order$1.invokeSuspend(ProjectRepositoryTest.kt:222)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.same_day_events_are_all_preserved_in_stable_id_order(ProjectRepositoryTest.kt:214)
+</failure>
+  </testcase>
+  <testcase name="fifty_one_projects_page_as_fifty_and_one" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.11">
+    <failure>java.lang.AssertionError: expected:&lt;51&gt; but was:&lt;0&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:647)
+at org.junit.Assert.assertEquals(Assert.java:633)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.assertPaging(ProjectRepositoryTest.kt:461)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.access$assertPaging(ProjectRepositoryTest.kt:49)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$assertPaging$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.fifty_one_projects_page_as_fifty_and_one(ProjectRepositoryTest.kt:337)
+</failure>
+  </testcase>
+  <testcase name="full_baseline_comparison_detects_same_timestamp_changed_row" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.073">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$full_baseline_comparison_detects_same_timestamp_changed_row$1.invokeSuspend(ProjectRepositoryTest.kt:278)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.full_baseline_comparison_detects_same_timestamp_changed_row(ProjectRepositoryTest.kt:272)
+</failure>
+  </testcase>
+  <testcase name="one_hundred_projects_have_stable_two_pages" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.204">
+    <failure>java.lang.AssertionError: expected:&lt;100&gt; but was:&lt;0&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:647)
+at org.junit.Assert.assertEquals(Assert.java:633)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.assertPaging(ProjectRepositoryTest.kt:461)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.access$assertPaging(ProjectRepositoryTest.kt:49)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$assertPaging$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.one_hundred_projects_have_stable_two_pages(ProjectRepositoryTest.kt:338)
+</failure>
+  </testcase>
+  <testcase name="same_money_operation_with_changed_content_is_conflict" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.034" />
+  <testcase name="real_prepayment_before_ownership_has_no_fake_zero_daily_cost" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.082">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$real_prepayment_before_ownership_has_no_fake_zero_daily_cost$1.invokeSuspend(ProjectRepositoryTest.kt:189)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.real_prepayment_before_ownership_has_no_fake_zero_daily_cost(ProjectRepositoryTest.kt:185)
+</failure>
+  </testcase>
+  <testcase name="invalid_create_and_future_money_leave_real_database_unchanged" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.062" />
+  <testcase name="moving_start_after_existing_end_is_rejected_without_erasing_end" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.059" />
+  <testcase name="legacy_end_and_future_end_are_evaluated_without_reactivating_settlement" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.058">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$legacy_end_and_future_end_are_evaluated_without_reactivating_settlement$1.invokeSuspend(ProjectRepositoryTest.kt:446)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.legacy_end_and_future_end_are_evaluated_without_reactivating_settlement(ProjectRepositoryTest.kt:438)
+</failure>
+  </testcase>
+  <testcase name="persisted_business_zone_boundary_ignores_device_timezone_changes" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.006" />
+  <testcase name="initial_cost_counted_once_after_replay_and_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.032">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at org.junit.Assert.assertNotNull(Assert.java:723)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$initial_cost_counted_once_after_replay_and_reopen$1.invokeSuspend(ProjectRepositoryTest.kt:107)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.initial_cost_counted_once_after_replay_and_reopen(ProjectRepositoryTest.kt:101)
+</failure>
+  </testcase>
+  <testcase name="invalid_page_size_and_noncanonical_cursor_are_rejected" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.036">
+    <failure>java.lang.AssertionError: Page size 0 must not bypass the database limit
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$invalid_page_size_and_noncanonical_cursor_are_rejected$1.invokeSuspend(ProjectRepositoryTest.kt:417)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.invalid_page_size_and_noncanonical_cursor_are_rejected(ProjectRepositoryTest.kt:413)
+</failure>
+  </testcase>
+  <testcase name="fresh_page_window_after_sort_key_edit_has_no_duplicate_or_missing_ids" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.133">
+    <failure>java.lang.AssertionError: expected:&lt;50&gt; but was:&lt;0&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$fresh_page_window_after_sort_key_edit_has_no_duplicate_or_missing_ids$1.invokeSuspend(ProjectRepositoryTest.kt:427)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.fresh_page_window_after_sort_key_edit_has_no_duplicate_or_missing_ids(ProjectRepositoryTest.kt:424)
+</failure>
+  </testcase>
+  <testcase name="metadata_edit_preserves_created_end_cover_and_old_money_events" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.091">
+    <failure>java.lang.AssertionError: expected:&lt;ProjectUpdated(projectId=20000000-0000-4000-8000-000000001001, replayed=false)&gt; but was:&lt;ValidationFailure(reason=Project metadata updates are not implemented)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$metadata_edit_preserves_created_end_cover_and_old_money_events$1.invokeSuspend(ProjectRepositoryTest.kt:236)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.metadata_edit_preserves_created_end_cover_and_old_money_events(ProjectRepositoryTest.kt:228)
+</failure>
+  </testcase>
+  <testcase name="edit_requires_increasing_revision_and_valid_business_identities" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.057" />
+  <testcase name="lost_edit_result_replays_stable_target_after_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.081">
+    <failure>java.lang.AssertionError: expected:&lt;ProjectUpdated(projectId=20000000-0000-4000-8000-000000001001, replayed=true)&gt; but was:&lt;ValidationFailure(reason=Project metadata updates are not implemented)&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$lost_edit_result_replays_stable_target_after_reopen$1.invokeSuspend(ProjectRepositoryTest.kt:288)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.lost_edit_result_replays_stable_target_after_reopen(ProjectRepositoryTest.kt:282)
+</failure>
+  </testcase>
+  <testcase name="frozen_create_replay_remains_strict_after_metadata_edit" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.097">
+    <failure>java.lang.AssertionError
+at org.junit.Assert.fail(Assert.java:87)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertTrue(Assert.java:53)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest$frozen_create_replay_remains_strict_after_metadata_edit$1.invokeSuspend(ProjectRepositoryTest.kt:331)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.ProjectRepositoryTest.frozen_create_replay_remains_strict_after_metadata_edit(ProjectRepositoryTest.kt:328)
+</failure>
+  </testcase>
+  <testcase name="storage_failure_preserves_input_and_unknown_envelope_for_safe_retry" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.258">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$storage_failure_preserves_input_and_unknown_envelope_for_safe_retry$1.invokeSuspend(ProjectViewModelTest.kt:189)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.storage_failure_preserves_input_and_unknown_envelope_for_safe_retry(ProjectViewModelTest.kt:187)
+</failure>
+  </testcase>
+  <testcase name="backdated_recovery_refreshes_list_and_detail_to_negative_net" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.11">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$backdated_recovery_refreshes_list_and_detail_to_negative_net$1.invokeSuspend(ProjectViewModelTest.kt:221)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.backdated_recovery_refreshes_list_and_detail_to_negative_net(ProjectViewModelTest.kt:219)
+</failure>
+  </testcase>
+  <testcase name="editing_preserves_events_and_refuses_a_stale_loaded_version" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.119">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$editing_preserves_events_and_refuses_a_stale_loaded_version$1.invokeSuspend(ProjectViewModelTest.kt:237)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.editing_preserves_events_and_refuses_a_stale_loaded_version(ProjectViewModelTest.kt:235)
+</failure>
+  </testcase>
+  <testcase name="explicit_prepayment_stays_independent_of_ownership_date" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.08">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$explicit_prepayment_stays_independent_of_ownership_date$1.invokeSuspend(ProjectViewModelTest.kt:116)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.explicit_prepayment_stays_independent_of_ownership_date(ProjectViewModelTest.kt:114)
+</failure>
+  </testcase>
+  <testcase name="busy_double_tap_and_field_change_cannot_duplicate_or_change_command" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.087">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$busy_double_tap_and_field_change_cannot_duplicate_or_change_command$1.invokeSuspend(ProjectViewModelTest.kt:149)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.busy_double_tap_and_field_change_cannot_duplicate_or_change_command(ProjectViewModelTest.kt:137)
+</failure>
+  </testcase>
+  <testcase name="create_zero_and_normal_project_persist_one_initial_event_each" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.133">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$create_zero_and_normal_project_persist_one_initial_event_each$1.invokeSuspend(ProjectViewModelTest.kt:84)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.create_zero_and_normal_project_persist_one_initial_event_each(ProjectViewModelTest.kt:81)
+</failure>
+  </testcase>
+  <testcase name="invalid_amount_preserves_form_without_writing_or_closing" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.085">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$invalid_amount_preserves_form_without_writing_or_closing$1.invokeSuspend(ProjectViewModelTest.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.invalid_amount_preserves_form_without_writing_or_closing(ProjectViewModelTest.kt:99)
+</failure>
+  </testcase>
+  <testcase name="committed_result_interruption_restores_and_replays_original_identity" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.078">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$committed_result_interruption_restores_and_replays_original_identity$1.invokeSuspend(ProjectViewModelTest.kt:172)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.committed_result_interruption_restores_and_replays_original_identity(ProjectViewModelTest.kt:160)
+</failure>
+  </testcase>
+  <testcase name="successful_write_then_detail_read_failure_remains_committed" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.134">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$successful_write_then_detail_read_failure_remains_committed$1.invokeSuspend(ProjectViewModelTest.kt:205)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.successful_write_then_detail_read_failure_remains_committed(ProjectViewModelTest.kt:200)
+</failure>
+  </testcase>
+  <testcase name="future_payment_is_rejected_using_injected_business_today" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.082">
+    <failure>java.lang.AssertionError: A create form must be opened before saving
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.fillCreate(ProjectViewModelTest.kt:268)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.access$fillCreate(ProjectViewModelTest.kt:35)
+at com.cooper.lithic.feature.project.ProjectViewModelTest$future_payment_is_rejected_using_injected_business_today$1.invokeSuspend(ProjectViewModelTest.kt:130)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.future_payment_is_rejected_using_injected_business_today(ProjectViewModelTest.kt:128)
+</failure>
+  </testcase>
+  <testcase name="raw_input_and_dirty_guard_survive_saved_state_recreation" classname="com.cooper.lithic.feature.project.ProjectViewModelTest" time="0.095">
+    <failure>java.lang.AssertionError: The active form must exist
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.project.ProjectViewModelTest.raw_input_and_dirty_guard_survive_saved_state_recreation(ProjectViewModelTest.kt:69)
+</failure>
+  </testcase>
+  <testcase name="creation_restores_its_actual_home_or_list_parent" classname="com.cooper.lithic.feature.project.ProjectRoutesTest" time="0.016">
+    <failure>java.lang.AssertionError: expected:&lt;[Home, CreateProject]&gt; but was:&lt;[Home]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.project.ProjectRoutesTest.creation_restores_its_actual_home_or_list_parent(ProjectRoutesTest.kt:19)
+</failure>
+  </testcase>
+  <testcase name="mismatched_or_invalid_project_routes_restore_safely_home" classname="com.cooper.lithic.feature.project.ProjectRoutesTest" time="0.007" />
+  <testcase name="project_routes_keep_stable_identity_and_bounded_parents" classname="com.cooper.lithic.feature.project.ProjectRoutesTest" time="0.017">
+    <failure>java.lang.AssertionError: expected:&lt;[Home, ProjectList, ProjectDetail(id=a0a0a0a0-1111-4444-8888-aaaaaaaaaaaa)]&gt; but was:&lt;[Home]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.project.ProjectRoutesTest.project_routes_keep_stable_identity_and_bounded_parents(ProjectRoutesTest.kt:14)
+</failure>
+  </testcase>
+  <testcase name="narrow_large_text_form_keeps_ime_error_save_and_back_actions_reachable" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="3.699">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-name')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectScreensTest.narrow_large_text_form_keeps_ime_error_save_and_back_actions_reachable(ProjectScreensTest.kt:240)
+</failure>
+  </testcase>
+  <testcase name="unconfirmed_submission_locks_content_but_allows_safe_replay_action" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.59">
+    <failure>java.lang.AssertionError: Failed to assert the following: (is not enabled)
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-name')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertIsNotEnabled(Assertions.kt:67)
+at com.cooper.lithic.feature.project.ProjectScreensTest.unconfirmed_submission_locks_content_but_allows_safe_replay_action(ProjectScreensTest.kt:123)
+</failure>
+  </testcase>
+  <testcase name="failed_list_read_is_visible_and_keeps_prior_records_instead_of_a_fake_empty_state" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.361">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '暂时无法读取，当前显示上次读取的记录' (ignoreCase: false))
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-list-error')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+at com.cooper.lithic.feature.project.ProjectScreensTest.failed_list_read_is_visible_and_keeps_prior_records_instead_of_a_fake_empty_state(ProjectScreensTest.kt:218)
+</failure>
+  </testcase>
+  <testcase name="committed_write_with_failed_refresh_only_offers_read_retry" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.502">
+    <failure>java.lang.AssertionError: Failed to assert the following: (is not enabled)
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-name')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertIsNotEnabled(Assertions.kt:67)
+at com.cooper.lithic.feature.project.ProjectScreensTest.committed_write_with_failed_refresh_only_offers_read_retry(ProjectScreensTest.kt:135)
+</failure>
+  </testcase>
+  <testcase name="failed_save_preserves_all_controlled_input_and_persistent_error" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.408">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '测试项目' (ignoreCase: false))
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-name')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+at com.cooper.lithic.feature.project.ProjectScreensTest.failed_save_preserves_all_controlled_input_and_persistent_error(ProjectScreensTest.kt:109)
+</failure>
+  </testcase>
+  <testcase name="money_editor_uses_absolute_amount_and_selected_outlay_or_recovery" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.291">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Selected = 'true')
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'money-direction-outlay')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertIsSelected(Assertions.kt:88)
+at com.cooper.lithic.feature.project.ProjectScreensTest.money_editor_uses_absolute_amount_and_selected_outlay_or_recovery(ProjectScreensTest.kt:152)
+</failure>
+  </testcase>
+  <testcase name="editing_project_details_does_not_offer_initial_money_history_changes" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.524">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '测试项目' (ignoreCase: false))
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-name')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+at com.cooper.lithic.feature.project.ProjectScreensTest.editing_project_details_does_not_offer_initial_money_history_changes(ProjectScreensTest.kt:82)
+</failure>
+  </testcase>
+  <testcase name="create_form_exposes_real_payment_date_zero_amount_and_controlled_category" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.337">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-initial-amount')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectScreensTest.create_form_exposes_real_payment_date_zero_amount_and_controlled_category(ProjectScreensTest.kt:68)
+</failure>
+  </testcase>
+  <testcase name="detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.352">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥100.00' (ignoreCase: false))
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-detail-daily')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at com.cooper.lithic.feature.project.ProjectScreensTest.detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating(ProjectScreensTest.kt:190)
+</failure>
+  </testcase>
+  <testcase name="in_flight_submission_disables_editing_and_duplicate_save_actions" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.477">
+    <failure>java.lang.AssertionError: Failed to assert the following: (is not enabled)
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-name')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertIsNotEnabled(Assertions.kt:67)
+at com.cooper.lithic.feature.project.ProjectScreensTest.in_flight_submission_disables_editing_and_duplicate_save_actions(ProjectScreensTest.kt:96)
+</failure>
+  </testcase>
+  <testcase name="project_list_opens_stable_identity_and_exposes_database_page_continuation" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.277">
+    <failure>java.lang.AssertionError: Failed to inject touch input.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-row-10000000-0000-0000-0000-000000000001')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performTouchInput(Actions.kt:402)
+at androidx.compose.ui.test.AndroidActions.performClickImpl(Actions.android.kt:23)
+at androidx.compose.ui.test.ActionsKt.performClick(Actions.kt:60)
+at com.cooper.lithic.feature.project.ProjectScreensTest.project_list_opens_stable_identity_and_exposes_database_page_continuation(ProjectScreensTest.kt:181)
+</failure>
+  </testcase>
+  <testcase name="money_editor_preserves_failed_amount_date_and_description" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.316">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'money-amount')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.ProjectScreensTest.money_editor_preserves_failed_amount_date_and_description(ProjectScreensTest.kt:167)
+</failure>
+  </testcase>
+  <testcase name="not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.393">
+    <failure>java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '尚未开始' (ignoreCase: false) is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.project.ProjectScreensTest.not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved(ProjectScreensTest.kt:201)
+</failure>
+  </testcase>
+  <testcase name="local_date_outside_calendar_range_remains_available_as_raw_input" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="2.963">
+    <failure>java.lang.AssertionError: Failed to perform text input.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'test-date-input')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.TextActionsKt.getNodeAndFocus(TextActions.kt:124)
+at androidx.compose.ui.test.TextActionsKt.getNodeAndFocus$default(TextActions.kt:119)
+at androidx.compose.ui.test.TextActionsKt.performTextReplacement(TextActions.kt:82)
+at com.cooper.lithic.feature.project.ProjectDateInputTest.local_date_outside_calendar_range_remains_available_as_raw_input(ProjectDateInputTest.kt:63)
+</failure>
+  </testcase>
+  <testcase name="real_calendar_confirmation_preserves_the_selected_day_across_device_time_zones" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="1.36">
+    <failure>java.lang.AssertionError: Failed to inject touch input.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'test-date-picker')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performTouchInput(Actions.kt:402)
+at androidx.compose.ui.test.AndroidActions.performClickImpl(Actions.android.kt:23)
+at androidx.compose.ui.test.ActionsKt.performClick(Actions.kt:60)
+at com.cooper.lithic.feature.project.ProjectDateInputTest.real_calendar_confirmation_preserves_the_selected_day_across_device_time_zones(ProjectDateInputTest.kt:85)
+</failure>
+  </testcase>
+  <testcase name="busy_date_input_and_calendar_action_are_disabled_and_touch_target_is_large_enough" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="1.239">
+    <failure>java.lang.AssertionError: Failed to assert the following: (is not enabled)
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'test-date-input')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertIsNotEnabled(Assertions.kt:67)
+at com.cooper.lithic.feature.project.ProjectDateInputTest.busy_date_input_and_calendar_action_are_disabled_and_touch_target_is_large_enough(ProjectDateInputTest.kt:122)
+</failure>
+  </testcase>
+  <testcase name="invalid_raw_date_and_associated_error_are_retained_without_correction" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="1.389">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '2026-99-40' (ignoreCase: false))
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'test-date-input')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+at com.cooper.lithic.feature.project.ProjectDateInputTest.invalid_raw_date_and_associated_error_are_retained_without_correction(ProjectDateInputTest.kt:46)
+</failure>
+  </testcase>
+  <testcase name="canceling_the_calendar_does_not_change_the_controlled_date" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="1.496">
+    <failure>java.lang.AssertionError: Failed to inject touch input.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'test-date-picker')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performTouchInput(Actions.kt:402)
+at androidx.compose.ui.test.AndroidActions.performClickImpl(Actions.android.kt:23)
+at androidx.compose.ui.test.ActionsKt.performClick(Actions.kt:60)
+at com.cooper.lithic.feature.project.ProjectDateInputTest.canceling_the_calendar_does_not_change_the_controlled_date(ProjectDateInputTest.kt:106)
+</failure>
+  </testcase>
+</testsuite>

@@ -281,6 +281,31 @@ Application继续是唯一持久存储所有者；ViewModel只观察storageState
 
 必要依赖精确Compose测试1.9.5匹配既有BOM；显式Lifecycle2.10.0是M04已解析版本。Espresso3.7.0只用于androidTest，以显式编译依赖调用同步真实KEYCODE_BACK；此前Compose测试运行已解析该版本，未升级生产依赖或更改生产返回逻辑。Debug运行依赖只增加ui-test-manifest及其空测试Activity，无旧坐标升级，release不加该宿主；最终APK另检查生产无JUnit/合成表单。既有schema/成本引擎/owner/备份排除不改，Q03～Q06与M09期限保留。M06须独立验收及新授权，不能因组件具备回调就直接开始。
 
+## 2026-10-12 — M06复用写边界、统一窗口与任务提交恢复
+
+**状态：Local operating rule；来源：本轮用户M06明确授权及实际RED/GREEN。**
+
+### Decision
+
+以非owner ProjectRepository复用M04创建/金额事务，资料编辑完整行CAS；首页只COUNT，SQL50游标＋可见事件/类别批读，整个已加载窗口一次协调边界/Room事务。SavedStateHandle只存当前任务单表单raw和固定命令，未知结果只同身份重放；CAS冲突必须明确点击核对后换基线，普通前台恢复只读。
+
+### Context
+
+M05独立要求真实写后刷新/分页；M06要避免初始投入双计、并发陈旧覆盖与已写成功后重复创建。真实竞态旧循环在101源项目返回102行；读初始资料中断及迟到旧详情也需要明确身份约束。
+
+### Alternatives
+
+复用全量快照启动、每行查询、页间释放锁、自动替换冲突输入、创建新数据库或操作日志；均不能满足本轮边界或扩大scope。
+
+### Reason
+
+同一Room事实与被冻结引擎保持唯一真值；SQL批读限制正常入口负担，同事务解决已复现混合快照。提交前固定raw/UUID/时间与阶段，已保存和读失败分开，避免金额重复。DatePicker UTC仅为日历编码，业务今天固定recordZone/BusinessClock。
+
+### Consequences
+
+schema v1/owner/领域金额算法/依赖不改，编辑没有持久操作日志，重放只核对当前完整目标；单项目必要事件仍完整读取。任务保存恢复不等于后台业务草稿或force-stop恢复。真实SQLite满页回滚有时将SQLiteFull遮蔽为DATABASE；本轮不猜字符串分类，保留同命令/旧事实安全，透明登记测试预期修正。284方法、真实设备/APK证据见[M06报告](evidence/M06-verification.md)，不授予独立冻结或启动M07。
+
+
 ## 后续新增/变更格式
 
 每条按以上日期/状态/Decision/Context/Alternatives/Reason/Consequences格式记录，增加来源与授权证据；列出受影响模块、schema、format、图表和验证案例。取代决定保留旧记录标 Superseded；不能以新想法擅自改整个 Roadmap。

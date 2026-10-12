@@ -125,3 +125,10 @@ NOT_RUN：真实手机、API26运行、OEM备份行为；M08显式迁移、M10�
 额外3个原UI方法在实际360×800/density160（360dp）、font_scale2.0、IME显示设置1下补跑，用时51s，3/3 PASS，0失败/错误/跳过，不增加200唯一测试总数；原设置均恢复，含IME显示设置1→0。主执行者已查看键盘、错误、保存可达及其他设备像素，9张PNG整理到 `docs/evidence/m05-ui/`，来源/hash在最终JSON。设备全部流程后generation/ready/设置SHA及安装APK SHA均稳定；网络、旋转、night、wm尺寸/density/font恢复值见 `build/m05-evidence/device-ui.json` 与 `large-native-config.json`。原ANR/重启/驱动失败保留本地诊断，不据最终PASS抹去失败历史。
 
 NOT_RUN：真机、API26运行、OEM行为、TalkBack完整审查、真实低内存自动回收、Release实际构建/正式签名升级、M06 CRUD/写后刷新、M08迁移、M10图片、M11/M12备份恢复、M13汇总及未来完整模块案例。Q03～Q06及M09两风险期限保留，M06未授权。M05为READY_FOR_REVIEW，适用实现/验证完成，Git交付由主执行者在当前分支完成并以最终Git/用户报告记录；独立验收PENDING，本轮不自行冻结或继续M06。
+
+
+## M06增量（2026-10-12）
+
+沿用上述全部精确版本，未新增依赖或升级：debugRuntimeClasspath **122→122**坐标和版本逐项相同。新增功能使用既有Room2.8.5 createFlow、Lifecycle2.10.0 SavedStateHandle/Activity默认CreationExtras、Compose/Nav3/Coroutines；没有引入viewmodel-compose、DI框架或网络客户端。
+
+本轮Debug code4/0.1.0-m06-debug；JDK17.0.20.1+1、Gradle8.14.3、AGP8.13.2、Kotlin2.3.10、SDK/BuildTools36、专用API36设备的实际完整构建/284测试/APK检查见[M06证据](evidence/M06-verification.md)。Lint0errors/20warnings与M05一致，不升级或抑制。构建保留新测试6处unnecessary safe-call/!!编译警告，未以警告充当失败或掩盖失败；Release/正式签名及其他平台NOT_RUN。

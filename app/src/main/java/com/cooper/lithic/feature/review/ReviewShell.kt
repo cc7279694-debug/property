@@ -17,11 +17,11 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun ReviewShell(projectCount: Int, modifier: Modifier = Modifier) {
+internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("review-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Text("回看", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
-        Text(if (projectCount == 0) "暂无记录" else "已录入 $projectCount 条长期项目",
+        Text(if (projectCount == 0L) "暂无记录" else "已录入 $projectCount 条长期项目",
             style = MaterialTheme.typography.bodyLarge)
         HorizontalDivider()
         for (label in listOf("长期复盘", "历史档案", "成本趋势", "类别分析", "年度回顾")) {
