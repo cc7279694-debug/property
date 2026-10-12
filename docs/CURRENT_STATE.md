@@ -4,10 +4,12 @@
 
 ## Current Stage
 
-- **M06 — READY_FOR_REVIEW**。ChatGPT独立代码验收 **PENDING**；本地辅助审查不授予ACCEPTED / FROZEN。用户授权本轮长期项目录入与投入闭环；起点 `4576b03565e58011e2fa78a086039fee33e3352f`，来源feat/m05-ui-foundation，当前feat/m06-project-entry。编码前已建立[M06契约](planning/M06_CONTRACT.md)。本轮交付后停止，M07～M23未授权。
+- **M06 — ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户在当前会话正式转交的ChatGPT独立代码验收结论，仓库 `cc7279694-debug/property`、分支 `feat/m06-project-entry`、评审HEAD `2d3358724c737ca47093f3d0b3dc8ba3caf0f156`。回写前实际核对本地/远端一致且工作区干净；九项独立确认及全部NOTES见[正式验收登记](ACCEPTANCE_MATRIX.md#m06-独立代码验收与正式冻结记录2026-10-12)。M06实施起点为 `4576b03565e58011e2fa78a086039fee33e3352f` / feat/m05-ui-foundation，[M06契约](planning/M06_CONTRACT.md)编码前落地。当前仅授权两份状态文档回写与M06分支提交/推送；M07～M23未授权。
 - M00～M05均 **ACCEPTED / FROZEN — PASS WITH NOTES**，来源为用户转交的ChatGPT独立验收。评审HEAD依次为 `59ba290cba69e1e77af7d0376a8b43aaabbf5f88`、`ca8499e3d3cb2e5bac3ab29a231f399636899c19`、`ff1a898eaf4da5068c36af3e1c0bdcbe61c0b1f7`、`8b13d20dad89f9c3e76a3d19161cf2232b36b94d`、`1b7058ebb9dfbe904252a08efe6815d9952971ad`、`6909858cd0c03ec8e3277908e05d407d7f4cafca`。M05验收回写已提交推送4576b03565e58011e2fa78a086039fee33e3352f。正式依据、NOTES与全部历史见[验收登记](ACCEPTANCE_MATRIX.md)；不改旧报告/checkpoint的当时PENDING或NOT_RUN。
 
 ## Verified / Completed
+
+以下保留M06此前实际执行的交付验证。独立审查确认M06-T01～T05、82 JVM及202 Android方法与PASS记录、七份最终GREEN XML（0失败/错误/跳过）、事务/幂等/并发保护、统一引擎/刷新、SQL分页一致快照及schema v1，未发现确定性阻塞代码问题。**ChatGPT独立审查未在用户Windows本机重新执行Gradle或重新安装APK；本次Codex仅状态回写，同样不重跑测试、构建或设备验证。**源码/证据审阅不登记为新的测试执行PASS；旧报告、JSON、XML、截图和checkpoint中的READY_FOR_REVIEW/PENDING保留为当时历史。
 
 - 正式新增项目与唯一INITIAL事件，初始0元合法、真实付款日可早于拥有日；详情、资料编辑、普通投入/收回通过真实Room与冻结M02引擎。编辑只改名称/拥有日/PROJECT类别/备注及updatedAt，保留UUID、createdAt、结束/封面与旧事件；陈旧完整基线CAS拒绝无提示覆盖。
 - 相同创建/金额操作继续M04原子事务与operationId唯一约束。当前任务SavedStateHandle保存raw输入、完整基线、稳定命令/项目/事件UUID和提交阶段。写成功但结果中断只能同命令核对/重放；写成功读失败明确已保存，只重读。编辑没有持久操作日志，不声称永久操作查重。
@@ -23,10 +25,11 @@
 - Q01 CLOSED，Q02/Q07 USER_CONFIRMED。Q03长期100/1000日节点M21前，Q04提醒资格M20前，Q05图片往返M10/M12前；Q06 **ENGINEERING_REQUIRED**，M04仅设计/首次数据集，M12完整导入/切换/验证后回退/中断/共同校验/清理及Q06-V01～V03完整流程仍NOT_RUN。Q02 M17/M18视图集成仍NOT_RUN。原43原件/130案例与16组完整补测不改、保持NOT_RUN。
 - [M09两项流程风险](SPEC_ISSUES.md)原样保留：STOPPED重新启用入口/历史/纠错，多期预付默认停止选择；未实施/NOT_RUN，不改订阅语义。
 - M04首次初始化中断残留generation不得静默清除真实数据；M08 v1→v2须同步已有数据库版本预检，M12完整恢复仍待执行。schema v1、领域引擎、Settings/owner、备份配置未改。
-- 真实SQLite满页失败可能被Android/Room回滚错误掩盖为DATABASE。真实存量文件测试复现且旧行/事件/同命令恢复均通过；另一VM场景实际DISK_FULL。未按消息猜错误或宣称所有磁盘满都能准确分类；错误仍保留原提交身份与输入。详见报告与JSON。
-- 单项目完整成本仍需读其全部必要事件，列表按50项目批读而非保证单项目无限历史恒定耗时。1000项目是正确性/查询范围验证，不是手机长期性能或正式基准。任务SavedState不等于持久业务草稿；force-stop/系统未保存状态不保证未提交输入恢复。
+- 真实SQLite满页失败可能被Android/Room回滚错误掩盖为普通DATABASE。此前真实存量文件测试复现且旧行/事件/同命令恢复均通过；另一VM场景实际DISK_FULL。独立NOTES要求后续持续改进错误分类，但不得牺牲保留输入、事务原子性和安全重试；本次不实施分类改进，不按消息猜错误或宣称所有磁盘满都能准确分类。详见历史报告与JSON。
+- 单项目完整成本仍需读其全部必要事件，列表按50项目批读而非保证单项目无限历史恒定耗时。**1000条分页测试是正确性与查询范围验证，不是长期性能基准。**任务SavedState不等于持久业务草稿，**不保证系统未保存状态、force-stop或断电后的草稿恢复**；本次验收不扩大此前进程死亡模拟的覆盖范围。
+- **完整备份/恢复仍归M11/M12，尚未完成；Debug版本暂不用于不可丢失的长期个人记录。**正式验收不等于长期数据保障或完整备份/恢复已验证。
 - 真机、API26运行、OEM备份/迁移、完整TalkBack、真实内存压力LMK、Release构建/正式签名升级仍 **NOT_RUN**。Debug另含exported非launcher空ComponentActivity测试宿主；未验证Release不能正式交付。20条既有Lint提示保留。
-- M01独立未重新安装；M02/M03独立未重跑本机Gradle；M04/M05独立未重跑Gradle/安装等历史NOTES不因本轮执行改写。M07结束/删除/历史纠错、M08订阅/迁移、M10媒体、M11/M12备份恢复、M13汇总、M14搜索/类别管理及后续未运行能力均NOT_RUN。TypeScript/ESLint不适用，NO-SOURCE不计PASS。
+- M01独立未重新安装；M02/M03独立未重跑本机Gradle；M04/M05独立未重跑Gradle/安装等历史NOTES保留。**M06独立审查未在用户Windows本机重新执行Gradle或重新安装APK**，本次仅文档回写不增加产品测试PASS。M07结束/删除/历史纠错、M08订阅/迁移、M10媒体、M11/M12备份恢复、M13汇总、M14搜索/类别管理及后续集成验收均保持原边界/NOT_RUN。TypeScript/ESLint不适用，NO-SOURCE不计PASS。
 
 ## Data / Architecture
 
@@ -34,9 +37,9 @@ schemaVersion=1，backupFormatVersion不存在。pointer/ready内部formatVersio
 
 ## Git
 
-- 目录 `E:/CODEX/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，分支feat/m06-project-entry，基线4576b03565e58011e2fa78a086039fee33e3352f。开工本地/远端一致、工作区干净，新分支此前不存在，未覆盖别的工作。
+- 目录 `E:/CODEX/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，分支feat/m06-project-entry。M06实施基线4576b03565e58011e2fa78a086039fee33e3352f，实施交付/本次评审与回写起点均为 `2d3358724c737ca47093f3d0b3dc8ba3caf0f156`；回写开始已确认本地/远端一致、工作区干净。仅修改CURRENT_STATE与ACCEPTANCE_MATRIX，检查差异、链接、敏感信息和状态后提交并推送该分支；回写自身SHA与最终远端核对以Git日志/最终报告为准。
 - main保护145326ddd4ce28abbf7c2706fe25f9d38c599c3a；M02=0169c76bbf0946a0400b96d00124b3de9aea1cc0、M03=ffd066ffe0efb6c00f35526ae792b50829d3230e、M04=aecbe86fce6e5c4375f2c35d2df8539df0a557bb、M05=4576b03565e58011e2fa78a086039fee33e3352f。只提交推送M06，最终自身SHA/远端一致/干净工作区以Git日志与推送后本地交付回执为准，避免文档自引用SHA。没有main合并/force/PR/发布/WHOCARE改动；不提交APK、数据库、签名私钥或真实个人数据。
 
 ## Next Recommended Task
 
-**停止，等待ChatGPT对M06独立代码验收。**M07须M06正式验收及新授权，并继承本轮刷新、CAS/幂等、固定时区、schema和全部NOT_RUN安全边界；本轮不执行M07。
+**M06已正式验收冻结；本次验收回写后立即停止。**M07仍须用户新授权，并继承M06刷新、CAS/幂等、固定时区、schema、独立NOTES和全部NOT_RUN安全边界；本轮不进入M07。
