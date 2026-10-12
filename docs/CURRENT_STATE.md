@@ -1,44 +1,43 @@
 # 当前项目状态
 
-状态日期：2026-10-11。本文件是唯一实时状态；归档同名文件和 checkpoints 是历史。
+状态日期：2026-10-12。唯一实时状态；归档同名文件与 checkpoints 是历史。
 
 ## Current Stage
 
-- 当前 M03：**ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户在当前会话明确转交的 ChatGPT 独立复验正式结论；评审仓库 `cc7279694-debug/property`，分支 `feat/m03-subscription-engine`，评审HEAD `8b13d20dad89f9c3e76a3d19161cf2232b36b94d`。回写前已实际核对本地/远端均匹配该HEAD且工作区干净；正式结论见[独立复验登记](ACCEPTANCE_MATRIX.md#m03-独立复验与正式验收记录2026-10-11)。此前 `80cf647...` 的 CHANGES REQUESTED 和 READY_FOR_REVIEW 补测交付保留为历史。当前授权仅回写两份状态文档、检查并提交/推送M03分支；M04～M23 未授权、NOT_STARTED。
-- M00/M01/M02 均 **ACCEPTED / FROZEN — PASS WITH NOTES**。评审 HEAD 分别为 `59ba290cba69e1e77af7d0376a8b43aaabbf5f88`、`ca8499e3d3cb2e5bac3ab29a231f399636899c19`、`ff1a898eaf4da5068c36af3e1c0bdcbe61c0b1f7`。M02 回写基线为 `0169c76bbf0946a0400b96d00124b3de9aea1cc0`；独立验收来源和历史 NOTES 保留在[验收登记](ACCEPTANCE_MATRIX.md)。M02 独立审查未在用户 Windows 本机重跑 Gradle，此前M03补测回归执行与该历史审查明确区分。
+- 当前模块 **M04 — READY_FOR_REVIEW**，独立验收 **PENDING**。授权来源与实现前 Q06 设计见[M04 契约](planning/M04_CONTRACT.md)。基线 `ffd066ffe0efb6c00f35526ae792b50829d3230e`，当前 `feat/m04-room-storage-foundation`，开工本地/远端一致且工作区干净。
+- M00～M03均 **ACCEPTED / FROZEN — PASS WITH NOTES**。评审HEAD依次为 `59ba290cba69e1e77af7d0376a8b43aaabbf5f88`、`ca8499e3d3cb2e5bac3ab29a231f399636899c19`、`ff1a898eaf4da5068c36af3e1c0bdcbe61c0b1f7`、`8b13d20dad89f9c3e76a3d19161cf2232b36b94d`；交付/补测/独立结论与NOTES保留在[验收登记](ACCEPTANCE_MATRIX.md)及历史checkpoints。
+- M05～M23未授权、NOT_STARTED。本轮交付后停止，不自行冻结或进入下一模块。
 
 ## Verified / Completed
 
-以下为已有工程实施与补测证据。本次验收状态回写不运行Gradle、构建或设备验证，不改业务代码；独立复验确认74个JUnit方法与已提交的74条PASS结果完全对应，不等于独立审查重新执行了测试。
+- Room四表v1、DAO、3外键/7索引（3唯一）、两个独立类型“其他”、空迁移注册入口；实际KSP schema导出已纳入交付。不保存派生成本或第二份购买价，不建未来订阅/替换/通知表。
+- ProjectWriteRepository：项目/初始事件同一Room事务、ABORT中途失败完整回滚、同操作精确重放/异内容冲突、Money/日期/UUID及事务内类别类型校验。LedgerReadRepository为同一次Room四表读取事务；共享LocalWriteCoordinator单Mutex，不宣称跨存储原子性。
+- noBackupFilesDir/generations/UUID：同目录DB/WAL/SHM、media、settings.preferences_pb、ready，全部准备后才AtomicFile激活。重开校验持久身份；指针/设置/数据库异常明确失败、保留原库和旧代。既存库在可写打开前只读验证真实SQL版本/Room身份，支持WAL并拒绝v0/异库；腐败回调不删除原库。
+- SettingsStore时区持久化、设备变化不覆盖，canonical文件单一owner，关闭取消并等待scope后释放；存在性竞态/IO返回取消泄漏已复现修复。Application启动时捕获zone、后台单任务初始化，明确Ready/Failed并传播失败，不自动重试。M01占位页与既有领域规则保持。
+- 完整命令 `:app:testDebugUnitTest :app:connectedDebugAndroidTest :app:lintDebug :app:assembleDebug --max-workers=2` 退出0：**74 JVM＋86 Android全通过，0失败/错误/跳过**，原74方法一一对应。Android仅专用API36 `emulator-5596`，真实SQLite/DataStore；M04-T01～T06全PASS。
+- 真实RED：61项/55断言失败、补充20/19、生命周期3/3、启动/既存库9/8；已有正确行为直接回归。两次测试夹具编译问题不计RED。GREEN86项全PASS；Lint **0 errors / 13版本更新提示**，未抑制/升级。精确新增依赖和实际传递差异见[工具链锁](TOOLCHAIN_LOCK.md)。
+- 最终APK `E:/CODEX/砺石新APP/app/build/outputs/apk/debug/app-debug.apk`，11,809,696字节，SHA-256 `6a9f67a6fb84da44bdca1198a85afe1c1ca5aecc80042fa328bf7f50d3a00a10`。com.cooper.lithic.debug，code2/0.1.0-m04-debug。APK/合并Manifest/编译备份排除/Wrapper与v2签名检查PASS，仅原签名级内部接收器权限，测试框架未打包。
+- 最终APK专用模拟器安装和两次断网COLD/Status ok启动PASS；重启active身份/ready/设置哈希一致，安装APK与本地哈希相同，无当前进程崩溃，占位UI保留，网络状态恢复。未操作手机/其他项目AVD，未公开上传APK。
+- ZIP CRC/安全路径/43原件字节及SHA核对PASS；原130唯一案例全NOT_RUN，阅读版、16组完整跨模块补测与历史证据保持。详细结果、54项构建输入哈希见[JSON](evidence/M04-verification.json)、[报告](evidence/M04-verification.md)与[M04 checkpoint](checkpoints/2026-10-12-M04.md)。
 
-- M01 单 :app、单 Activity、Compose/Navigation 3 空壳和 M02 Money/BusinessClock/项目成本引擎原输入继承；27 项原构建/测试输入哈希一致，没有修改旧生产代码、页面、Manifest、权限、资源或 Gradle 配置。
-- M03 SubscriptionModels、SubscriptionIntervalRules、SubscriptionCostEngine 和原37项固定日期测试继承；补测阶段仅提取 internal SubscriptionPaidTotals / accumulateConfirmedPayment，两次Math.addExact保留，evaluate实际调用同一函数。新增6项累计边界/连接测试，合计43项订阅测试。Renewal金额上限、标准周期、日期/覆盖/状态校验均未放宽。
-- 写入用 BusinessClock 验证付款不在业务未来；evaluate 按 paidOn <= asOf 过滤，不读取今天或将后来支付的真实记录判为非法。提前续费计入已付金额/标准时长，下一期价格到生效日才贡献。
-- ACTIVE/PAUSED/EXPIRED/STOPPED 按当日覆盖与状态历史直接推导。非活跃 currentRate=0、currentPrice=null；无付款 historicalAverage=null 并附 NO_CONFIRMED_PAYMENTS。恢复可复用已有付款，默认停止 helper 使用所选付费期的排他结束边界，明确提前停止按指定日期截断。
-- elapsedPaidDays 为已知真实覆盖与 ENABLED 历史区间的交集并集，含观察日；未来未经过日期不计，暂停/停止日排除、恢复日计入。Long epochDay 排序/双指针避免逐日枚举；LocalDate.MAX 和跨 Int 上限日期跨度实际测试通过。钱用 Long 分，计算 BigDecimal DECIMAL128 元/天，不做展示舍入。
-- 初次M03的RED37项/34断言失败、GREEN37及68回归证据保留为历史。补测阶段按现有正确Math.addExact行为的边界补测/回归流程执行，没有制造RED；完整 `:app:testDebugUnitTest :app:lintDebug :app:assembleDebug` 退出0，74通过（M02 31＋原M03 37＋新增6）、0失败/错误/跳过。新测试验证两个Long精确边界/超限ArithmeticException、不可变种子/无部分更新、5倍数近界及两笔真实付款与生产连接；编译字节码确认evaluate调用累计函数。当前结果见[补测JSON](evidence/M03-recheck-verification.json)与[验收登记](ACCEPTANCE_MATRIX.md)，通知集成边界不变。
-- Lint 0 errors / 12既有版本提示，未升级或抑制。Gradle8.14.3、Temurin17.0.20.1+1、AGP8.13.2、工程Kotlin2.3.10、ComposeBOM2025.11.01、Nav3 1.0.1、SDK26/36/36、BuildTools36.0.0不变，无新依赖；182条唯一运行依赖坐标线为初次M03与M02比对结果，本轮未重跑依赖报告，构建配置哈希保持一致。JUnit4.13.2/Hamcrest1.3仍仅测试。
-- 最终本地 APK：`E:/CODEX/砺石新APP/app/build/outputs/apk/debug/app-debug.apk`，10,464,344字节，SHA-256 `04c323124abec438c741f3099d22cd4ee96f553e68e443199fd45df8a78f6ddf`。仍 com.cooper.lithic.debug、code1/0.1.0-m01-debug，仅构建回归产物。实际APK/合并Manifest权限、编译备份排除资源、Wrapper、18个关键领域类描述符检查通过，测试类/框架未打包，apksigner v2验证通过；没有重新安装或公开上传。
-- 补测阶段已核对原ZIP/43原件SHA与大小，130原案例全NOT_RUN；CRC/安全路径核查继承原归档证据。阅读版、原16组完整跨模块补测、Q03～Q06四行及期限与基线不变。M00～M03历史交付、checkpoint、证据、契约及来源登记保留原样；本次仅回写当前状态与验收登记。
+## Pending / Current Problems / Technical Debt
 
-## Pending / Current Problems
-
-- M03独立复验已完成并正式冻结。保留NOTES：**本次ChatGPT独立审查未在用户Windows本机重新运行Gradle。**本次Codex状态回写同样不重跑测试或构建，不新增执行PASS；未运行的设备、存储、流程与后续集成验证仍按原边界跟踪。
-- Q01 CLOSED；Q02/Q07 USER_CONFIRMED。Q02 M17/M18集成仍NOT_RUN；Q03订阅首日/暂停/闰日计算已有M03领域证据，长期100/1000日节点及 M21触发仍待原期限。Q04成本到期区间已测，提醒资格仍 M20前；Q05图片往返 M10/M12前；Q06持久回退 M04设计/M12实施及故障验证。见[SPEC_ISSUES](SPEC_ISSUES.md)。没有自行关闭这些问题。
-- 两项累计边界已按生产同一路径测试；种子为内部合成累计值，增量为合法Renewal，不宣称数百万续费端到端验证。标准天数受List容量及每笔最大365约束，完整历史根本无法到Long极限；合计均为5倍数，精确Long.MAX也不可能由合法完整历史形成。STOPPED再启用、多期预付默认停止选择仍为M09待明确/验证风险，见[问题清单](SPEC_ISSUES.md#m09-订阅流程风险本次独立审查登记当前不实施)。未来Repository的一致快照/稳定ID/幂等边界不变。
-- 设备安装/断网冷启动/Instrumentation：NOT_RUN / N/A（纯领域变更无 Android交互目标）。真实手机、API26、OEM备份仍保留 M01未测 NOTES；订阅持久化/UI、展示舍入、里程碑/提醒、业务迁移/完整备份未实现。TypeScript/ESLint不适用于原生工程，NO-SOURCE不计测试通过。
+- 本轮实际测试范围未发现未解决的确定性缺陷；M04独立验收PENDING，Codex内部审查不能替代ChatGPT验收。
+- Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q03长期100/1000日节点仍M21前，Q04提醒资格仍M20前，Q05图片往返仍M10/M12前。Q06 **ENGINEERING_REQUIRED**：仅M04设计/初始实测完成，M12导入/切换/回退/杀进程/共同校验/清理及Q06-V01～V03仍NOT_RUN，不能CLOSED。Q02 M17/M18及16组完整跨模块补测仍NOT_RUN。
+- [M09两项流程风险](SPEC_ISSUES.md)保留：STOPPED重新启用入口/历史/纠错、多期预付默认停止选择；当前未改产品语义，流程NOT_RUN。
+- 真实手机、API26运行、OEM备份仍NOT_RUN。M01独立审阅未重新安装、M02/M03独立审查未在用户Windows本机重跑Gradle等历史NOTES不由本轮回归改写。
+- 正式存储错误界面/业务CRUD UI尚未实现；M05须接入明确容器状态，失败不能展示成正常空账本。媒体M10、备份format v1 M11、正式恢复M12、真实v1→v2迁移M08均未实施/NOT_RUN。TypeScript/ESLint不适用；NO-SOURCE不计PASS。13条Lint版本提示不作为普通模块升级授权。
 
 ## Data / Architecture
 
-业务 SQLite/Room、schema/Migration、DAO/Repository、DataStore、媒体、通知/WorkManager和手动 Backup仍未实现，无业务schemaVersion/backupFormatVersion变化。订阅身份/付款/状态都是纯内存领域输入，尚未接入空壳界面；不保存每日派生快照。没有权限、网络能力或运行依赖变化，见[真实架构](ARCHITECTURE.md)。
+实际schemaVersion=1，backupFormatVersion尚不存在。四表真实事实；LocalDate为Long epochDay、Instant保留纳秒，Money/BusinessClock继承M02。pointer/ready内部formatVersion=1不是备份版本。目录/生命周期见[ARCHITECTURE](ARCHITECTURE.md)，不自动备份/清理旧代，不宣称跨文件原子事务。
 
 ## Git
 
-- 目录 E:/CODEX/砺石新APP；origin `https://github.com/cc7279694-debug/property.git`。
-- 当前功能分支 `feat/m03-subscription-engine`；原模块起点 `0169c76bbf0946a0400b96d00124b3de9aea1cc0`、来源M02，原补测基准 `80cf6473c21d5933963dd55b02dfbf9f97297849`。本次验收回写起点与评审HEAD均为 `8b13d20dad89f9c3e76a3d19161cf2232b36b94d`，开始时本地/远端一致、工作区干净；未新建分支或覆盖其他工作。
-- 原实现 `270c7a079d7f1220524e4e29bdf08e8f41d90964`、交付 `80cf647...`、补测 `9c10962c87c894279c22f65ebaf56176fe62b7eb` 与补测交付 `8b13d20...` 保留。补测3新增/7修改/0删除已推送，32项提交输入哈希核查证据见[M03 checkpoint补充](checkpoints/2026-10-11-M03.md#m03-独立验收补测-checkpoint2026-10-11)。本次只登记正式验收结论并更新两份文档；回写提交自身SHA、推送与最终远端核对以Git日志/最终报告为准。
-- main保护基准 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`，M02来源保护基准同起点；本次补测推送后实际ls-remote核对两者不变，文档推送后再次核对。不合并 main、不force push、不修改WHOCARE、不建PR/Release、不公开上传APK或私钥。
+- 目录 `E:/CODEX/砺石新APP`；origin `https://github.com/cc7279694-debug/property.git`；当前 `feat/m04-room-storage-foundation`。本轮基线/来源 `ffd066ffe0efb6c00f35526ae792b50829d3230e` / feat/m03-subscription-engine。
+- 仅提交/推送M04。提交自身SHA、推送与最终工作区/远端核对以Git日志和最终报告为准，避免提交哈希自引用。
+- 保护基准：main `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`、M02 `0169c76bbf0946a0400b96d00124b3de9aea1cc0`、M03 `ffd066ffe0efb6c00f35526ae792b50829d3230e`。不合并main/force push/建PR/Release/改WHOCARE，不提交APK、实际库、私钥或个人数据。
 
 ## Next Recommended Task
 
-M03独立验收条件已满足；本次状态回写提交/推送后立即停止。M04仍须用户另行授权，再恢复上下文、读取原M04计划并处理Q06持久回退设计边界；本轮不进入M04。M09两项审查风险仅登记，不能因M03冻结而改变当前订阅语义或标记已实施。
+停止等待M04独立验收。M05前置：M01/M04已验收、用户另行授权；继承schema v1、容器初始化状态、真实空数据、Money精度/时区，不复制公式。当前不执行M05。

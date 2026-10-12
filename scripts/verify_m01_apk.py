@@ -1,4 +1,4 @@
-"""Inspect the built M01 APK with the local Android SDK, without installing it."""
+"""Inspect the built skeleton APK with the local Android SDK, without installing it."""
 
 import argparse
 import hashlib
@@ -20,6 +20,8 @@ def main() -> None:
     parser.add_argument("--sdk", type=Path, required=True)
     parser.add_argument("--apk", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--expected-version-code", default="1")
+    parser.add_argument("--expected-version-name", default="0.1.0-m01-debug")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     apk = args.apk.resolve(strict=True)
@@ -46,7 +48,8 @@ def main() -> None:
     require(package is not None, "APK package metadata is missing")
     application_id, version_code, version_name = package.groups()
     require(application_id == "com.cooper.lithic.debug", "Unexpected Debug applicationId")
-    require(version_code == "1" and version_name == "0.1.0-m01-debug", "Unexpected M01 version")
+    require(version_code == args.expected_version_code and version_name == args.expected_version_name,
+            "Unexpected requested APK version")
     require("application-label:'砺石 LITHIC Debug'" in badging, "Debug label is missing")
     require("minSdkVersion:'26'" in badging and "targetSdkVersion:'36'" in badging, "Unexpected SDK range")
 

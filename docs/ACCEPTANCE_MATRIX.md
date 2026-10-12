@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录M00～M03历史检查、实际执行与独立验收；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
+本文件记录M00～M04历史检查、实际执行与独立验收；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
 
-日期：2026-10-11。PASS为已有执行记录的实际通过，NOT_RUN为未执行，PENDING为尚待确认的事项。独立验收/冻结结论由独立审阅提供，执行者不能自行授予。当前M03正式结论为 **ACCEPTED / FROZEN — PASS WITH NOTES**，依据见末尾M03独立复验记录；下方初次交付和补测的READY_FOR_REVIEW、CHANGES REQUESTED、PENDING是当时历史，不作为当前结论或后续授权。本次仅回写两份状态文档，不重跑Gradle/构建/设备验证；未运行边界及M02/M03独立审查未重跑Windows Gradle的NOTES保留。
+日期：2026-10-12。PASS为实际执行通过，NOT_RUN为未执行，PENDING为尚待独立确认。M00～M03正式结论 **ACCEPTED / FROZEN — PASS WITH NOTES** 与历史交付/补测均保留；M04为 **READY_FOR_REVIEW / 独立验收PENDING**，当前实际记录见末尾M04节。独立冻结只能由独立审阅提供；历史阶段禁令不是当前授权，未来未运行边界及M02/M03独立审查未重跑Windows Gradle的NOTES保留。本轮正式授权M04并实际执行Android存储测试，不改原件NOT_RUN。
 
 ## 独立验收记录
 
@@ -212,3 +212,30 @@ NOT_RUN / N/A：本轮设备安装/断网冷启动/Instrumentation、Room/Reposi
 6. 本次只更新唯一CURRENT_STATE和本登记、检查差异后提交/推送现有M03功能分支。M04仍须用户另行授权；不修改业务代码、WHOCARE或原规划，不合并main或进入M04。
 
 本节正式结论取代先前CHANGES REQUESTED/复验PENDING的当前效力；旧记录完整保留为历史。回写提交自身SHA、推送与最终远端核对以Git日志/最终报告为准。
+
+## M04 当前执行验收（2026-10-12）
+
+用户正式授权；基线 `ffd066ffe0efb6c00f35526ae792b50829d3230e`，来源feat/m03-subscription-engine，当前feat/m04-room-storage-foundation。实现前已记录[契约/Q06设计](planning/M04_CONTRACT.md)。当前 **READY_FOR_REVIEW**，独立验收 **PENDING**；原130案例原件仍NOT_RUN。
+
+| 原案例 | 本轮实际结果 | 真实Android证据 |
+|---|---|---|
+| M04-T01 fk_rejects_orphan_event | PASS | 实际SQLite金额事件项目外键拒绝孤立行，表仍为空；类别/封面外键另有回归 |
+| M04-T02 operation_id_is_unique | PASS | 不同事件主键复用operationId触发SQLite唯一约束，原行不变 |
+| M04-T03 transaction_rolls_back | PASS | 项目已INSERT后第二步事件主键故意冲突，Room事务完整回滚新项目，旧项目/事件保持 |
+| M04-T04 zone_is_persisted | PASS | 真正Preferences DataStore写入/关闭/重开读同zone；不同模拟设备时区不覆盖，损坏/缺字段/非法值拒绝 |
+| M04-T05 generation_is_self_contained | PASS | DB/WAL/SHM、media、settings、ready同一私有UUID代；完整准备后AtomicFile激活、重开同身份、原代保留，异常不空库兜底 |
+| M04-T06 defaults_are_typed | PASS | 两个“其他”类型/ID不同，同类normalizedName唯一；项目引用订阅类别在Repository事务内拒绝 |
+
+完整命令 `:app:testDebugUnitTest :app:connectedDebugAndroidTest :app:lintDebug :app:assembleDebug --max-workers=2 --console=plain` 退出0：JVM **74 PASS**，Instrumentation **86 PASS**，均0失败/错误/跳过。Android按源码方法和XML逐项核对：App装配6、Room34、媒体/类别metadata9、Settings13、generation24；仅专用API36 emulator-5596，真实Android数据库/文件/DataStore。原74领域测试与21项既有源码/资源测试输入保持；本轮未修改M01 Activity/导航/资源/Manifest或M02/M03计算规则。
+
+真实行为RED依次61项/55失败（53 AssertionError、2 ComparisonFailure）、补充20/19、生命周期3/3、启动/旧库9/8；已有正确行为直接回归。两次编译夹具问题分别为异类arrayOf推断与RoomDatabase非Closeable，不计有效RED。初始RED之后增加边界/清理夹具，测试文件整体哈希并非四轮相同；App装配6项RED/GREEN断言保持，最终全部86实际通过。完整逐项结果/输入/日志/XML哈希见[证据JSON](evidence/M04-verification.json)。
+
+另测PASS：同键精确重试/异内容冲突、并发串行、金额0/真实收回负净成本、Money越界/业务未来日期、UUID/关系、LocalDate与纳秒Instant往返、关闭重开、四表读取事务对独立SQLite写入保持一致、媒体路径/尺寸/长度/hash格式、指针/ready/设置/已有库异常拒绝且保留。实际发现并修复存在性lease竞态、IO返回取消资源泄漏、应用首次启动装配、已有v0/异库原地修改；真实页面腐败回归保留原数据库，live WAL预检通过。没有SQL CHECK或跨文件事务声明。
+
+Lint **0 errors / 13版本更新提示**，未抑制/顺便升级；Room schema v1实际KSP导出4表/30字段/7索引/3外键，JSON已纳入交付。精确新增依赖、兼容构建和实际传递变化见[工具链](TOOLCHAIN_LOCK.md)；无网络权限或业务页面。
+
+最终APK 11,809,696字节、SHA-256 `6a9f67a6fb84da44bdca1198a85afe1c1ca5aecc80042fa328bf7f50d3a00a10`。APK/合并Manifest/备份排除资源/Wrapper、生产存储类及无测试框架、v2签名检查PASS。专用模拟器安装、两次断网COLD/Status ok启动、进程重启同代/设置hash不变、已安装APKhash一致、占位UI截图/XML核对PASS；网络恢复，未操作手机或其他AVD，未公开发布。
+
+NOT_RUN：真机/API26/OEM，M08真实v1→v2迁移、M10图片、M11备份格式、M12导入/切换/回退/杀进程/共同校验/清理。Q06保持ENGINEERING_REQUIRED，仅M04设计/初始实测完成；Q06-V01～V03全流程、Q03～Q05后续期限、M09两项风险、16组完整跨模块补测均保留NOT_RUN。正式用户存储错误界面留M05；TypeScript/ESLint不适用，NO-SOURCE不计PASS。M00～M03独立审阅NOTES不改写。
+
+文件、scope/敏感信息/来源/链接及Git交付见[M04报告](evidence/M04-verification.md)和[checkpoint](checkpoints/2026-10-12-M04.md)。只推M04分支；M05需M01/M04独立验收及用户另行授权，本轮不继续。

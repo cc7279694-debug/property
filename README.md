@@ -2,7 +2,7 @@
 
 纯本地 Android 长期成本记录 App，观察具体项目的陪伴时间、真实投入和日均成本。
 
-M00～M02 已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES；M02 独立审查未在用户 Windows 本机重跑 Gradle 的 NOTES 保留。当前执行 M03 订阅周期与状态引擎，仅添加纯 Kotlin 订阅模型、周期/覆盖/状态/成本计算及自动化测试，复用 M02 并保留 M01 空壳界面。没有业务数据库或业务操作界面。实际进度与验证结果见[当前状态](docs/CURRENT_STATE.md)。
+M00～M03 已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES；独立审查未重跑本机 Gradle 等历史 NOTES 保留。当前 M04 已实现并交付等待独立验收：四表 Room v1、事务与幂等、固定记录时区和私有 generation 初始指针。M01 占位界面保留，数据层由 AppContainer 统一持有，业务操作界面尚未实现。实际进度与验证结果见[当前状态](docs/CURRENT_STATE.md)。
 
 ## 工程入口与本地构建
 
@@ -13,6 +13,7 @@ M00～M02 已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES；M02 �
 ```powershell
 .\gradlew.bat --version
 .\gradlew.bat :app:testDebugUnitTest
+.\gradlew.bat :app:connectedDebugAndroidTest
 .\gradlew.bat :app:assembleDebug :app:lintDebug
 ```
 
@@ -34,7 +35,8 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 | M00 历史任务契约 | [M00_CONTRACT.md](docs/planning/M00_CONTRACT.md) |
 | M01 历史任务契约 | [M01_CONTRACT.md](docs/planning/M01_CONTRACT.md) |
 | M02 历史任务契约 | [M02_CONTRACT.md](docs/planning/M02_CONTRACT.md) |
-| 当前 M03 任务契约 | [M03_CONTRACT.md](docs/planning/M03_CONTRACT.md) |
+| M03 历史任务契约 | [M03_CONTRACT.md](docs/planning/M03_CONTRACT.md) |
+| 当前 M04 任务契约与 Q06 设计 | [M04_CONTRACT.md](docs/planning/M04_CONTRACT.md) |
 | 实际工具链版本与核查来源 | [TOOLCHAIN_LOCK.md](docs/TOOLCHAIN_LOCK.md) |
 | 规格问题与风险 | [SPEC_ISSUES.md](docs/SPEC_ISSUES.md) |
 | 原件与当前文档差异 | [BASELINE_COMPARISON.md](docs/planning/BASELINE_COMPARISON.md) |
@@ -42,4 +44,4 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 
 原始[阅读版](LITHIC_V1_产品与开发规划.md)、[完整ZIP](docs/planning/original-v1/source.zip)和[解包原件](docs/planning/original-v1/lithic_v1_plan/README.md)均保留来源字节。24份计划、130条原案例和6份规格通过规划入口访问；原件中的AGENTS/状态不是当前执行指令或状态。Q02/Q07 在 M02 获得的用户确认解释继承当前决策，不改写原件；各轮实际结果仅写入当前验收登记。
 
-M03 交付后停止，等待独立验收；M04 尚未授权。不得为演示引擎结果新增业务页面或把未来模块的未运行验证标为 PASS。
+M04 交付后停止，等待独立验收；M05 尚未授权。完整备份格式和覆盖恢复仍归 M11/M12，Q06 不因初始指针验证而关闭；不得为演示数据层新增业务页面或把未来模块验证标为 PASS。

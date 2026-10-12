@@ -235,6 +235,27 @@ M02 已验收冻结，用户从验收回写基线 `0169c76bbf0946a0400b96d00124b
 ### Consequences
 elapsed 使用 Long epochDay 半开覆盖与 ENABLED 状态段求交并集，含观察日，排除暂停/停止日期；排序后双指针计算，不逐日枚举，LocalDate.MAX 截止也不调用 plusDays。已付款金额和标准天数不因暂停/停止减少。默认停止 helper 要求调用方选择真实付费期，以其排他结束边界生效；明确提前停止用显式状态日期。Money/BusinessClock 与 DECIMAL128 沿用 M02，无权限/依赖/持久化变化。Q03 长期日节点和 M21触发、Q04提醒资格、Q05/Q06仍待原模块；订阅合计溢出采用显式检查，但本轮未进行九百多万条金额记录的专门溢出实测，不把源码审查当此项 PASS。
 
+## 2026-10-11 — M04 四表 v1、协调写入与私有初始 generation
+
+**状态：用户授权的工程实现；Q06 仅本轮设计与初始数据集范围，独立验收待进行。**
+
+### Decision
+使用精确锁定的 Room 2.8.5/KSP2 与 Preferences DataStore。仅四张业务表；外键/唯一索引由 SQLite 强制，UUID/金额/类别类型/媒体 metadata 由实体与 Repository 校验。一个共享 Mutex 协调写入/快照/关闭；项目和初始事件由 Room 事务原子保存，精确相同操作可重放，异内容同键返回冲突。
+
+### Context
+起点为 M03 验收回写 `ffd066ffe0efb6c00f35526ae792b50829d3230e`，功能分支 `feat/m04-room-storage-foundation`。本轮首次引入真实持久化，必须用 Android SQLite/DataStore 实测。Q06 设计先于 generation 实现记录于[M04 契约](planning/M04_CONTRACT.md)，用户附件来源哈希在该文件中保留。
+
+### Alternatives
+将数据库/设置/图片散放不同目录；损坏时初始化空库；无受控生命周期反复创建 DataStore；仅凭 Mutex 声称跨文件原子性；本轮提前实施完整覆盖恢复。
+
+### Reason
+使同一代的数据库与 WAL/SHM、media、设置、ready 有明确私有身份，失败后仍保留原数据和可审查证据。复用已有 Money/BusinessClock，不引入第二套金额规则、复杂事务框架或未来业务表。
+
+### Consequences
+数据放 noBackupFilesDir/generations/UUID；真实文件名 settings.preferences_pb 匹配 Preferences 格式。ready 只记录 formatVersion/generationId；active 指针记录 formatVersion/activeId/previousId/stage，M04 仅 STABLE、previousId=null。初始化全部完成后才原子激活；重开按持久身份验证，未知阶段/异常数据明确失败，普通打开不清理旧代。DataStore 单一 canonical owner，关闭取消并等待 scope 完成才释放所有权；SQLite 腐败处理不得删除原库。上述内部元数据版本不是备份 format v1。M08 才实施 schema v1→v2；M11/M12 才创建备份格式与正式恢复/回退/杀进程验证，Q06 不能 CLOSED。
+
+原 C03 首次启动记录时区要求继承；Application 后台装配负责启动时捕获设备时区，后续读取持久 zone。用户界面仍为 M01 占位页，正式存储错误界面留待 M05；初始化状态/错误由容器明确保存并传播，不能默默返回空账本。
+
 ## 后续新增/变更格式
 
 每条按以上日期/状态/Decision/Context/Alternatives/Reason/Consequences格式记录，增加来源与授权证据；列出受影响模块、schema、format、图表和验证案例。取代决定保留旧记录标 Superseded；不能以新想法擅自改整个 Roadmap。

@@ -19,7 +19,7 @@ LithicApplication
 
 系统备份配置包括 `allowBackup=false`、[旧规则](../app/src/main/res/xml/backup_rules.xml)和[新规则](../app/src/main/res/xml/data_extraction_rules.xml)；旧规则以及 cloud-backup/device-transfer 均排除九类域。已检查合并 Manifest 和最终 APK 编译资源；不据此宣称所有 OEM 的迁移行为均已验证。
 
-没有 Room/业务 SQLite、schema、DAO、Repository、UseCase、ViewModel、DataStore、媒体存储、通知、WorkManager 或手动 Backup/Restore。没有建立实际 schemaVersion/backupFormatVersion。构建和设备证据以[工具链锁](TOOLCHAIN_LOCK.md)及验收登记为准；这不代表未来业务可离线、可备份或可升级。
+M04 已建立下述 Room/Repository/DataStore/generation 底座；仍没有业务 UseCase/ViewModel、图片处理、通知、WorkManager 或手动 Backup/Restore。实际数据库版本为 1，没有完整备份格式版本。构建和设备结果以[工具链锁](TOOLCHAIN_LOCK.md)及[验收登记](ACCEPTANCE_MATRIX.md)为准，不能由存在源码推断未来业务可备份或可升级。
 
 ## M02：纯 Kotlin 领域计算
 
@@ -36,7 +36,7 @@ ProjectSnapshot（开始/可选结束日 + 全部真实金额事件）
 
 引擎只纳入 `occurredOn <= asOf` 的事件；开始前保留已发生的预付款总额，但天数为0、日均为null、原因PROJECT_NOT_STARTED且无贡献。开始日至观察日含首日；结束日起分母固定为含首末日的完整天数，结束日日末不再贡献。后结算只改变净额。日均以元/天及 DECIMAL128（34位有效数字）计算，不做展示两位舍入，0.005/-0.005保留原符号；展示层尚未实现。
 
-BusinessClock 可注入固定 LocalDate 或携带明确时区的 JDK Clock；引擎自身只用 asOf，不读取设备今天或猜测业务时区。记录时区的持久化留待对应模块。输入事件代表每笔真实事实，初始投入也只是一笔事件；重复写入幂等与稳定ID留待M04/M06，不能在这里按相同金额/日期误删两笔独立付款。派生结果不缓存每日快照。
+BusinessClock 可注入固定 LocalDate 或携带明确时区的 JDK Clock；引擎自身只用 asOf，不读取设备今天或猜测业务时区。记录时区由 M04 SettingsStore 持久保存。初始投入只是一笔事件；重复提交在 M04 Repository 通过稳定操作 ID 处理，不能按相同金额/日期误删两笔独立付款。M06 用户写入流程仍待实施；派生结果不缓存每日快照。
 
 M02 测试使用 `testImplementation` 的 JUnit4.13.2；实际运行结果与构建证据见[当前登记](ACCEPTANCE_MATRIX.md)及[M02证据](evidence/M02-verification.md)，不以源码推断通过。M02 当时没有订阅引擎；本轮 M03 继承其已冻结输入，没有修改 M01 Activity、导航、资源、Manifest和系统备份排除配置。
 
@@ -75,6 +75,41 @@ Compose → ViewModel → UseCase / Repository → Room / 领域引擎
 
 完整恢复按阅读版 B05 规划为独立完整 generation、校验完成后原子切换小型指针、保留短暂失败回退。数据库、图片与设置须共同验证，不能用 Room 事务声称覆盖全部文件。
 
-schema 计划 v1(M04) → v2(M08) → v3(M16) → v4(M20)；backup format 计划 v1(M11) → v2(M16) → v3(M20)。这仅是规划，不是当前版本。
+schema 当前 v1(M04)，计划 → v2(M08) → v3(M16) → v4(M20)；backup format 计划 v1(M11) → v2(M16) → v3(M20)，当前尚无完整备份格式。
 
-后续领域与数据结构在对应获准模块实施和验证后更新。M01/M02 已冻结，本轮 M03 仅实现上述纯订阅领域计算；M04及后续模块未授权。
+后续领域与数据结构在对应获准模块实施和验证后更新。M00～M03 已冻结，本轮 M04 仅建立下述存储底座；M05及后续模块未授权。
+
+## M04：真实存储与私有初始数据集
+
+[AppContainer](../app/src/main/java/com/cooper/lithic/app/AppContainer.kt)由 Application 持有，onCreate 捕获启动设备时区后发起单一 IO 初始化任务；openStorage 等待同一个任务。Initializing/Ready/Failed 明确保存状态，失败原因向读取者传播，不自动重试或返回空账本；取消继续传播，关闭等待 owner Job 并释放本代资源。占位 UI 不加入业务操作；正式错误界面留待 M05，不能把后台状态保存说成用户错误流程已验收。领域引擎仍独立于 Android/Room，未复制 Money 或成本公式。
+
+```text
+AppContainer → DataGenerationStore → ManagedGeneration
+  ├── LithicDatabase / Room v1 → 4 张业务表与 DAO
+  ├── SettingsStore → Preferences DataStore
+  └── LocalWriteCoordinator → 共用 Mutex
+
+ProjectWriteRepository → 同一个 coordinator + Room.withTransaction
+LedgerReadRepository  → 同一个 coordinator + Room.withTransaction 的四表快照
+```
+
+实际 schema 导出为 [Room v1 JSON](../app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json)。四表为 categories、long_term_projects、project_money_events、local_media_assets；Room/platform 自用表不计业务表。项目类别/可选封面、金额事件项目引用有 RESTRICT 外键；operationId、类别(type, normalizedName)、媒体相对路径有唯一索引，并配置日期/关联查询索引。两个“其他”使用不同稳定 UUID 和 PROJECT/SUBSCRIPTION 类型。没有订阅、替换、通知表或派生成本字段。
+
+LocalDate 转 Long epochDay，Instant 转 ISO-8601 字符串保留纳秒。实体构造校验类别规范化与媒体 UUID/相对 media 路径/尺寸/长度/SHA；写入 Repository 在事务内校验项目/事件 UUID、关系、金额、日期及类别类型。SQL 本身负责外键/索引，业务校验不能被说成 SQLite CHECK 约束。新增项目和初始金额事件 ABORT 插入在同一事务；完全相同 commandId 重试返回原记录，同 ID 异内容明确 Conflict。业务验证失败与 SQLite/磁盘满/腐败存储失败分别返回，取消不被吞掉。零元事件合法，收回可由已有引擎导出负净成本。
+
+所有本代存储位于 noBackupFilesDir：
+
+```text
+active-generation                 # AtomicFile；内部元数据版本 1
+generations/<UUID>/
+  data.db                         # WAL / SHM / journal 与主库同目录
+  media/                          # 目录与 metadata，尚无图片处理
+  settings.preferences_pb         # 真实 Preferences DataStore 文件
+  ready.json                      # formatVersion + generationId
+```
+
+SettingsStore 为 canonical 设置文件登记唯一所有者；记录 record_zone_id，仅首次初始化采用设备时区，后续重开读取持久值。缺失/非法时区及损坏设置明确失败，没有默认替换 corruption handler。关闭取消并等待 DataStore scope 完成后释放文件所有权，generation 关闭依次关闭设置和数据库。
+
+首次初始化数据库、两个默认类别、设置、media 目录和 ready 全部完成后，才原子写 activeId/previousId/stage 指针；M04 只写 STABLE、previousId=null。重开先验证持久身份、受控路径、ready、真实数据库和设置；已有目录但指针缺失、损坏或未知阶段都失败，保留原数据。AtomicFile 的 .bak 提供已提交指针恢复边界，不按目录时间猜最新代；只有所指代通过验证才恢复 .bak。任何已有库均先用不会删除原文件的只读 SQLite 打开，按 SQL 读取当前版本与 Room 身份，拒绝 v0/异库/不支持版本，再由 Room 验证身份。只读预检支持已提交 WAL，不能只读主库头推断版本。正式开库同样使用保留原库的 corruption 回调与禁用 data-loss recovery；数据库还须通过 quick_check/foreign_key_check，不清空重建。
+
+共享 Mutex 协调写入/读取/关闭；四表一致性由实际 Room 读取事务保证。它没有让 SQLite、DataStore 和文件系统形成一个跨存储原子事务。M12 仍须实现 previousId 与 PENDING_VALIDATION 等状态机、真实导入、验证后切换/回退、杀进程故障注入、图片/设置共同校验及旧代清理。Q06 保持 ENGINEERING_REQUIRED，范围见[实现前设计](planning/M04_CONTRACT.md)。schema v1→v2 的真实迁移留待 M08；当前迁移注册为空，没有伪造迁移或 destructive fallback。

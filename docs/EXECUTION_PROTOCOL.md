@@ -8,7 +8,7 @@
 
 实现者不得跳过验收开始下一模块。文档任务仅检查文档，不机械新增产品测试。业务计算、迁移、恢复、导入导出等重要逻辑优先可重复测试。
 
-当前授权仅为 M03：从 M02 验收回写基线 0169c76bbf0946a0400b96d00124b3de9aea1cc0，在 feat/m03-subscription-engine 实现纯 Kotlin 订阅模型、周期/覆盖/状态与成本引擎、自动化测试及适用验证和 Git 交付。M00～M02 的 ACCEPTED / FROZEN — PASS WITH NOTES 保留；M02 独立审查未在用户 Windows 本机重跑 Gradle，见[独立验收登记](ACCEPTANCE_MATRIX.md#m02-独立验收记录2026-10-11)。M03 完成后等待新的独立验收，M04 尚未授权；精确范围见[M03 契约](planning/M03_CONTRACT.md)。
+当前授权仅为 M04：从 M03 验收回写基线 `ffd066ffe0efb6c00f35526ae792b50829d3230e`，在 `feat/m04-room-storage-foundation` 建立 Room 四表 v1、事务与幂等、一致读取、固定时区及私有初始 generation，执行真实 Android 存储测试和 Git 交付。M00～M03 的 ACCEPTED / FROZEN — PASS WITH NOTES 与独立审查未重跑 Windows Gradle 的历史 NOTES 保留，见[验收登记](ACCEPTANCE_MATRIX.md)。M04 完成后等待独立验收，M05 未授权；精确范围及先行 Q06 设计见[M04 契约](planning/M04_CONTRACT.md)。
 
 Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、Acceptance Criteria、Verification。修改前能解释为什么改该文件、可能破坏什么、如何验证。
 
@@ -56,7 +56,9 @@ Conventional Commits；获准时只推当前功能分支。没有另行授权不
 6. Git：Branch、Commit、Push 的实际状态。
 7. 下一模块：前置条件和建议，然后停止。
 
-本轮评审输出为 READY_FOR_REVIEW — M03；若资料或验证仍阻塞，要紧邻说明，不能让该标签被理解为 ACCEPTED / FROZEN。M00～M02 停止标签与交付时状态保留于历史检查点，不继续作为当前阶段限制。
+本轮 M04 必须实际运行 `:app:testDebugUnitTest`、`:app:connectedDebugAndroidTest`、`:app:lintDebug :app:assembleDebug`，分别登记 JVM 74 项回归和真实 SQLite/DataStore 测试。Room schema 必须由 KSP 实际导出并提交，M04-T01～T06 和授权边界逐项给出证据。原始 130 案例及跨模块补测原件不改；M12 完整恢复仍 NOT_RUN。
+
+本轮评审输出为 READY_FOR_REVIEW — M04；若资料或验证仍阻塞，要紧邻说明，不能让该标签被理解为 ACCEPTED / FROZEN。M00～M03 停止标签与交付时状态保留于历史检查点，不继续作为当前阶段限制。
 
 ## 决策与检查点规范
 

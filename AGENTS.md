@@ -6,7 +6,7 @@
 
 继承用户提供的高级全栈协作原则：简单、稳定、快速、可维护、可扩展；正确性和数据安全优先；读取事实后再行动；每次只执行已授权模块。
 
-**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用规范里的 React / Capacitor 默认建议。不得因此启动 React、Vite、Next.js 工程，也不得自行改回混合架构。M01 工程空壳与 M02 金额、日期、项目成本引擎已冻结；当前 M03 仅添加纯 Kotlin 订阅模型、周期/覆盖/状态/成本规则及自动化测试，保留空壳界面并复用 M02。Room、DataStore 与业务数据读写留待对应模块。
+**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用规范里的 React / Capacitor 默认建议。不得因此启动 React、Vite、Next.js 工程，也不得自行改回混合架构。M01 工程空壳、M02 项目领域引擎和 M03 订阅领域引擎已冻结；本轮 M04 仅建立 Room 四表 v1、事务/幂等、固定记录时区与私有初始数据集，保留空壳界面及已冻结领域规则。
 
 事实源顺序：当前用户要求 → 本文件 → PROJECT.md → 实际代码/schema/Git → CURRENT_STATE.md → DECISIONS.md → ARCHITECTURE.md → ROADMAP.md → README → 聊天/模型经验。完整原始规划是产品与模块验收来源；规格矛盾进入问题清单，不能用低优先级摘要改掉产品规则。
 
@@ -62,14 +62,14 @@ Bug 按复现 → 定位 → 理解 → 假设 → 修复 → 验证 → 回归�
 
 遇到阻塞规格矛盾只记录问题与建议，等待确认；高风险删除、真实数据修改、不可逆迁移、生产发布、force push 等必须暂停。
 
-M00～M02 均已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES；M02 独立审查未在用户 Windows 本机重跑 Gradle 的 NOTES 保留，见[验收登记](docs/ACCEPTANCE_MATRIX.md)。本轮用户已明确授权 M03，允许纯 Kotlin 订阅模型、周期/覆盖/状态与成本引擎、真实 RED → GREEN 单元测试、适用回归/Lint/构建、文档和当前功能分支 Git 交付，精确范围见[M03 契约](docs/planning/M03_CONTRACT.md)。Q02/Q07 已确认解释继续继承；Q03～Q06 状态及期限不变。禁止引入 Room/SQLite/DAO/Repository、业务界面、备份/媒体/通知或 M05 三栏页面，不做自动付款/扣款探测/按量订阅/自动退款/期中补差。M04 尚未授权，M03 交付后立即停止等待独立验收。
+M00～M03 均已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES；M02/M03 独立审查未在用户 Windows 本机重跑 Gradle 的历史 NOTES 保留，见[验收登记](docs/ACCEPTANCE_MATRIX.md)。本轮用户已明确授权 M04，允许 Room v1、DAO/Repository/协调器、DataStore/generation、真实 RED → GREEN Android 存储测试、74 项领域回归、Lint/构建、文档与当前功能分支 Git 交付，精确范围见[M04 契约](docs/planning/M04_CONTRACT.md)。Q02/Q07 已确认解释继续继承；Q03～Q05 期限不变，Q06 本轮仅设计及首次数据集，完整恢复仍 M12。禁止正式业务界面、M05 三栏、订阅/替换/通知表、图片处理、备份格式/完整覆盖恢复、自动付款/扣款探测/按量订阅/自动退款/期中补差。M04 交付后立即停止等待独立验收，M05 未授权。
 
 ## 6. Git 与验收
 
 - 独立模块用独立功能分支，保留用户未提交内容。禁止在 main/master 直接开发。
 - 提交前查差异、实际验证、无关改动、敏感信息与临时文件；Conventional Commits；只推当前功能分支。
 - 未经明确授权不得合并 main、自动合并 PR、force push、重置/删除远程历史、部署或发布。
-- 用户本轮明确授权在 feat/m03-subscription-engine 提交并推送 M03；起始基线为 M02 验收回写提交 0169c76bbf0946a0400b96d00124b3de9aea1cc0，来源为 feat/m02-project-cost-engine。不得从尚未接入前置模块的 main 开始，也没有授权 M04 或 main 合并。
+- 用户本轮明确授权在 `feat/m04-room-storage-foundation` 提交并推送 M04；起点为 M03 验收回写提交 `ffd066ffe0efb6c00f35526ae792b50829d3230e`，来源 `feat/m03-subscription-engine`。不得从尚未接入前置模块的 main 开始，不授权 M05、main 合并或公开发布。
 - 实现者只可报 READY_FOR_REVIEW；ACCEPTED / FROZEN 需要独立验收结果，不能自己授予。
 - 每个模块结束同步当前状态、适用决策与验收证据，输出模块报告并立即停止。
 
