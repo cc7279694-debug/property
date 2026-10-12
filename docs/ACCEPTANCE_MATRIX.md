@@ -2,7 +2,7 @@
 
 本文件记录M00～M04历史检查、实际执行与独立验收；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全部保持NOT_RUN，不在原件上改结果。
 
-日期：2026-10-12。PASS为实际执行通过，NOT_RUN为未执行，PENDING为尚待独立确认。M00～M03正式结论 **ACCEPTED / FROZEN — PASS WITH NOTES** 与历史交付/补测均保留；M04为 **READY_FOR_REVIEW / 独立验收PENDING**，当前实际记录见末尾M04节。独立冻结只能由独立审阅提供；历史阶段禁令不是当前授权，未来未运行边界及M02/M03独立审查未重跑Windows Gradle的NOTES保留。本轮正式授权M04并实际执行Android存储测试，不改原件NOT_RUN。
+日期：2026-10-12。PASS为已有实际执行记录的通过，NOT_RUN为未执行，PENDING为尚待确认。M00～M04正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；M04依据见末尾独立代码验收记录，原READY_FOR_REVIEW/PENDING交付与此前模块历史保留。独立冻结由用户转交ChatGPT结论授予，执行者不自行授予。本次仅回写两份状态文档，不重跑Gradle/构建/安装；未运行边界、M02/M03未重跑Windows Gradle及M04未重跑Windows Gradle或安装APK的独立审查NOTES均保留，原130案例NOT_RUN不改。
 
 ## 独立验收记录
 
@@ -215,7 +215,7 @@ NOT_RUN / N/A：本轮设备安装/断网冷启动/Instrumentation、Room/Reposi
 
 ## M04 当前执行验收（2026-10-12）
 
-用户正式授权；基线 `ffd066ffe0efb6c00f35526ae792b50829d3230e`，来源feat/m03-subscription-engine，当前feat/m04-room-storage-foundation。实现前已记录[契约/Q06设计](planning/M04_CONTRACT.md)。当前 **READY_FOR_REVIEW**，独立验收 **PENDING**；原130案例原件仍NOT_RUN。
+用户此前正式授权M04实施；基线 `ffd066ffe0efb6c00f35526ae792b50829d3230e`，来源feat/m03-subscription-engine，分支feat/m04-room-storage-foundation。实现前已记录[契约/Q06设计](planning/M04_CONTRACT.md)。本节保留既有执行证据，交付时为READY_FOR_REVIEW/独立验收PENDING；随后正式结论为 **ACCEPTED / FROZEN — PASS WITH NOTES**，依据见下节，本次未重跑测试。原130案例原件仍NOT_RUN。
 
 | 原案例 | 本轮实际结果 | 真实Android证据 |
 |---|---|---|
@@ -239,3 +239,32 @@ Lint **0 errors / 13版本更新提示**，未抑制/顺便升级；Room schema 
 NOT_RUN：真机/API26/OEM，M08真实v1→v2迁移、M10图片、M11备份格式、M12导入/切换/回退/杀进程/共同校验/清理。Q06保持ENGINEERING_REQUIRED，仅M04设计/初始实测完成；Q06-V01～V03全流程、Q03～Q05后续期限、M09两项风险、16组完整跨模块补测均保留NOT_RUN。正式用户存储错误界面留M05；TypeScript/ESLint不适用，NO-SOURCE不计PASS。M00～M03独立审阅NOTES不改写。
 
 文件、scope/敏感信息/来源/链接及Git交付见[M04报告](evidence/M04-verification.md)和[checkpoint](checkpoints/2026-10-12-M04.md)。只推M04分支；M05需M01/M04独立验收及用户另行授权，本轮不继续。
+
+## M04 独立代码验收与正式冻结记录（2026-10-12）
+
+- 正式结论：**ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 来源：用户在当前会话明确转交的ChatGPT独立代码验收结论；本次Codex仅回写，不自行授予冻结或以内部辅助审查替代独立验收。
+- 仓库：`cc7279694-debug/property`。
+- 评审分支：`feat/m04-room-storage-foundation`。
+- 评审HEAD：`1b7058ebb9dfbe904252a08efe6815d9952971ad`；回写前实际确认本地及远端当前功能分支均匹配，工作区干净。
+
+独立审查确认（由用户转交）：
+
+1. Room schema v1四表、外键、唯一索引及导出结构符合M04。
+2. M04-T01～T06实现与Android测试证据符合要求。
+3. 86个Android测试源码方法与86条PASS结果对应。
+4. 74项JVM回归证据保留。
+5. 16份关键源码、测试及配置文件SHA-256独立比对一致。
+6. 未发现阻塞性代码问题。
+7. **独立审查未在用户Windows本机重跑Gradle或安装APK。**证据/源码核对不登记为新的实际测试或安装PASS；本次状态回写同样不重跑。
+
+保留NOTES与后续边界：
+
+1. Q06完整切换、恢复及故障回退仍归M12；保持ENGINEERING_REQUIRED，M12完整流程与Q06-V01～V03仍NOT_RUN，不因M04冻结整体关闭。
+2. 首次初始化中断后的残留generation必须安全处理，不能静默清除真实数据；本次未新增清理、修复或恢复实施/故障验证，不把保留异常数据解释为已完成完整恢复。
+3. M08 v1→v2显式迁移须同步调整既有数据库版本预检，保持旧记录完整；迁移与集成仍未实施/NOT_RUN。
+4. M05必须明确呈现存储初始化失败，不得显示虚假的正常空账本；正式错误界面/流程仍NOT_RUN，本次不进入M05。
+5. 真机、API26、OEM行为仍NOT_RUN；原86 Android/74 JVM及APK交付证据保留，不冒充独立重新执行。
+6. Q03～Q05原期限、M09 STOPPED重新启用和多期预付默认停止两项风险及后续验收边界保持。原130案例及16组完整跨模块补测仍NOT_RUN，历史交付报告/JSON/checkpoint与归档不改写。
+
+本次仅更新唯一CURRENT_STATE与本登记，核查差异/敏感信息/Git后提交并推送当前M04功能分支；无产品源码、配置或数据层变更，不合并main、不修改WHOCARE、不开始M05。正式结论取代先前交付PENDING的当前效力，旧交付历史完整保留；回写提交自身SHA及最后远端核对以Git日志与最终报告为准。

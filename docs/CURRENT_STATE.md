@@ -4,11 +4,13 @@
 
 ## Current Stage
 
-- 当前模块 **M04 — READY_FOR_REVIEW**，独立验收 **PENDING**。授权来源与实现前 Q06 设计见[M04 契约](planning/M04_CONTRACT.md)。基线 `ffd066ffe0efb6c00f35526ae792b50829d3230e`，当前 `feat/m04-room-storage-foundation`，开工本地/远端一致且工作区干净。
+- 当前模块 **M04 — ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户在当前会话明确转交的ChatGPT独立代码验收正式结论，仓库 `cc7279694-debug/property`、分支 `feat/m04-room-storage-foundation`、评审HEAD `1b7058ebb9dfbe904252a08efe6815d9952971ad`；回写前实际核对本地/远端一致且工作区干净。正式依据和NOTES见[验收登记](ACCEPTANCE_MATRIX.md#m04-独立代码验收与正式冻结记录2026-10-12)。原READY_FOR_REVIEW交付证据保留为历史，本次仅回写两份状态文档并提交/推送。
 - M00～M03均 **ACCEPTED / FROZEN — PASS WITH NOTES**。评审HEAD依次为 `59ba290cba69e1e77af7d0376a8b43aaabbf5f88`、`ca8499e3d3cb2e5bac3ab29a231f399636899c19`、`ff1a898eaf4da5068c36af3e1c0bdcbe61c0b1f7`、`8b13d20dad89f9c3e76a3d19161cf2232b36b94d`；交付/补测/独立结论与NOTES保留在[验收登记](ACCEPTANCE_MATRIX.md)及历史checkpoints。
-- M05～M23未授权、NOT_STARTED。本轮交付后停止，不自行冻结或进入下一模块。
+- M05～M23未授权、NOT_STARTED。本次验收回写后停止，不自动进入下一模块；M04冻结由用户转交独立结论授予，不是执行者自验。
 
 ## Verified / Completed
+
+以下为M04既有实际交付与测试证据，本次回写不重跑Gradle、构建或设备验证。独立审查确认schema/六项案例、86方法与86条PASS对应、74 JVM证据保留及16关键源码/测试/配置SHA-256独立一致，未发现阻塞性代码问题；独立审查未在用户Windows本机重跑Gradle或安装APK，不能据此新增执行PASS。
 
 - Room四表v1、DAO、3外键/7索引（3唯一）、两个独立类型“其他”、空迁移注册入口；实际KSP schema导出已纳入交付。不保存派生成本或第二份购买价，不建未来订阅/替换/通知表。
 - ProjectWriteRepository：项目/初始事件同一Room事务、ABORT中途失败完整回滚、同操作精确重放/异内容冲突、Money/日期/UUID及事务内类别类型校验。LedgerReadRepository为同一次Room四表读取事务；共享LocalWriteCoordinator单Mutex，不宣称跨存储原子性。
@@ -22,11 +24,12 @@
 
 ## Pending / Current Problems / Technical Debt
 
-- 本轮实际测试范围未发现未解决的确定性缺陷；M04独立验收PENDING，Codex内部审查不能替代ChatGPT验收。
+- M04独立代码验收已完成并正式冻结；保留 **本次独立审查未在用户Windows本机重跑Gradle或安装APK** 的NOTES。本次Codex仅状态回写，同样不运行这些验证；原执行证据与独立审阅分别登记，Codex内部检查不替代独立验收。
 - Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q03长期100/1000日节点仍M21前，Q04提醒资格仍M20前，Q05图片往返仍M10/M12前。Q06 **ENGINEERING_REQUIRED**：仅M04设计/初始实测完成，M12导入/切换/回退/杀进程/共同校验/清理及Q06-V01～V03仍NOT_RUN，不能CLOSED。Q02 M17/M18及16组完整跨模块补测仍NOT_RUN。
 - [M09两项流程风险](SPEC_ISSUES.md)保留：STOPPED重新启用入口/历史/纠错、多期预付默认停止选择；当前未改产品语义，流程NOT_RUN。
 - 真实手机、API26运行、OEM备份仍NOT_RUN。M01独立审阅未重新安装、M02/M03独立审查未在用户Windows本机重跑Gradle等历史NOTES不由本轮回归改写。
-- 正式存储错误界面/业务CRUD UI尚未实现；M05须接入明确容器状态，失败不能展示成正常空账本。媒体M10、备份format v1 M11、正式恢复M12、真实v1→v2迁移M08均未实施/NOT_RUN。TypeScript/ESLint不适用；NO-SOURCE不计PASS。13条Lint版本提示不作为普通模块升级授权。
+- 首次初始化中断后残留generation须保持安全处理，不得静默清除真实数据；本次未新增清理/恢复能力或故障验证。M08真实v1→v2迁移须同步调整既有数据库版本预检，仍未实施/NOT_RUN。
+- 正式存储错误界面/业务CRUD UI尚未实现；M05必须明确呈现初始化失败，不得显示虚假的正常空账本，此流程仍NOT_RUN且本次未进入M05。媒体M10、备份format v1 M11、正式恢复M12均未实施/NOT_RUN。TypeScript/ESLint不适用；NO-SOURCE不计PASS。13条Lint版本提示不作为普通模块升级授权。
 
 ## Data / Architecture
 
@@ -34,10 +37,10 @@
 
 ## Git
 
-- 目录 `E:/CODEX/砺石新APP`；origin `https://github.com/cc7279694-debug/property.git`；当前 `feat/m04-room-storage-foundation`。本轮基线/来源 `ffd066ffe0efb6c00f35526ae792b50829d3230e` / feat/m03-subscription-engine。
-- 仅提交/推送M04。提交自身SHA、推送与最终工作区/远端核对以Git日志和最终报告为准，避免提交哈希自引用。
+- 目录 `E:/CODEX/砺石新APP`；origin `https://github.com/cc7279694-debug/property.git`；当前 `feat/m04-room-storage-foundation`。M04实施基线/来源 `ffd066ffe0efb6c00f35526ae792b50829d3230e` / feat/m03-subscription-engine；原交付/本次评审及验收回写起点均为 `1b7058ebb9dfbe904252a08efe6815d9952971ad`，本次开始本地/远端一致且工作区干净。
+- 本次仅更新CURRENT_STATE与ACCEPTANCE_MATRIX，提交/推送当前M04功能分支。提交自身SHA、推送与最终工作区/远端核对以Git日志和最终报告为准，避免提交哈希自引用；原130案例、历史交付及未运行验证保持。
 - 保护基准：main `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`、M02 `0169c76bbf0946a0400b96d00124b3de9aea1cc0`、M03 `ffd066ffe0efb6c00f35526ae792b50829d3230e`。不合并main/force push/建PR/Release/改WHOCARE，不提交APK、实际库、私钥或个人数据。
 
 ## Next Recommended Task
 
-停止等待M04独立验收。M05前置：M01/M04已验收、用户另行授权；继承schema v1、容器初始化状态、真实空数据、Money精度/时区，不复制公式。当前不执行M05。
+本次验收回写完成后停止。M05的M01/M04验收前置已满足，仍须用户另行授权；未来须明确呈现存储初始化失败，继承schema v1、记录时区与真实空数据，不复制公式或伪造空账本。本次不开始M05。
