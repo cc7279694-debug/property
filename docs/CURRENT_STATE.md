@@ -4,11 +4,13 @@
 
 ## Current Stage
 
-- **M07 — READY_FOR_REVIEW**，ChatGPT 独立验收 **PENDING**；实现者不授予 ACCEPTED / FROZEN。用户本轮授权结束及唯一关联收回、历史金额纠错、真实删除、基本历史档案，范围以 [M07 契约](planning/M07_CONTRACT.md)为准。最终自动化、最终 APK 手工闭环、数据完整性与临时设备设置恢复已通过；Git自身提交/推送SHA以最终Git日志与交付回执核对。
+- **M07 — ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户在当前会话正式转交的ChatGPT独立代码验收结论；仓库cc7279694-debug/property、分支feat/m07-project-lifecycle、评审HEAD `4089428e7acdc0f2b8e2fd660f437b5bc7d29f61`。回写前实际核对本地/远端一致、工作区干净；11项独立确认与全部NOTES见[正式验收登记](ACCEPTANCE_MATRIX.md#m07-独立代码验收与正式冻结记录2026-10-12)。本轮仅回写状态，不修改业务代码、重跑产品测试或安装APK。
 - **M00～M06 — ACCEPTED / FROZEN — PASS WITH NOTES**，依据均为用户转交的 ChatGPT 独立结论，完整评审 HEAD、确认项及全部 NOTES 保留在[验收登记](ACCEPTANCE_MATRIX.md)。M06 评审 HEAD 为 2d3358724c737ca47093f3d0b3dc8ba3caf0f156，冻结回写提交 fb0eafdc43efa6e13ebd76e3491fa4331a145abb 是 M07 起点；M06 旧报告、JSON/XML、截图和 checkpoint 中当时的 PENDING / NOT_RUN 不改写。
-- M08～M23 未授权；M07 交付后停止，等待独立验收及用户下一次明确授权。
+- M08～M23 未授权；M07已完成独立验收，本轮仅回写后停止，后续模块须用户另行明确授权。
 
 ## Verified / Completed
+
+以下保留评审HEAD时M07此前实际执行的交付证据。独立审查确认86 JVM＋273 Android方法与359条PASS、八份GREEN XML和7m38s成功日志，并审阅生产事务/纠错/删除/历史及schema/依赖范围。**独立审查未在用户Windows本机重新执行Gradle或重新安装APK；本次Codex仅文档回写，同样未重跑测试、构建或设备验证，不增加产品测试执行PASS。**旧报告/JSON/XML/截图/checkpoint的READY_FOR_REVIEW/PENDING与失败诊断保留为当时历史。
 
 - M07 新结束与可选实际收回同一 Room 事务；0 元合法、不预填估值。修正结束只更新已有唯一关联事件，无关联时不能偷偷新增或删除收回；未来结束日期不提前归档。
 - 金额纠错只改金额、真实日期和说明，保留项目/事件 UUID、方向、角色与 operationId。真实尾款/退款仍新增 REGULAR 事件，结束后持有天数不增加；成本始终由冻结 ProjectCostEngine 重算。详情仅在观察日前存在真实结束后事件时标注包含结束后的结算，不把未来事件或空历史描述成已发生的事实。
@@ -20,11 +22,11 @@
 - 最终 Debug APK：code 5 / 0.1.0-m07-debug，12,213,370 bytes，SHA-256 632a402c62bc827552b14f3613b3eb64828a2bd584f7c410a576c4e4220e765a，与实际安装指纹一致；v2 签名、合并权限及九域备份排除核对通过，无网络权限/测试框架或合成测试类打包，Debug 空测试宿主边界保留。
 - 仅专用 API36 emulator-5596：最终 APK 全程断网冷启动、200% 字体/真实 IME、横竖屏、已保存任务后的 UID SIGKILL 恢复，创建→结束/关联收回→历史→连续修正→初始金额纠错→尾款 100/退款 800→负净投入 -50/持有 8 天/日均 -6.25→取消/确认删除→重启已通过；force-stop 冷重开保持负净额事实。取消前后 3 项目/8 事件全部字段相同，确认只删除本轮 M07 目标及 4 事件；重启历史 0、首页数量 2。最终 SQL 2 项目/4 事件与 M06 原记录全字段一致，integrity_check=ok、FK 无错误、schema=1；generation/ready/settings SHA 不变。20 张最终 APK 截图已归档；临时网络、屏幕、字体、IME、明暗、旋转及时区设置已恢复，未操作手机/其它 AVD。
 
-完整证据见 [M07 报告](evidence/M07-verification.md)、[逐方法 JSON](evidence/M07-verification.json)与 [M07 checkpoint](checkpoints/2026-10-12-M07.md)；本地执行证据不替代 ChatGPT 独立验收。
+完整证据见 [M07 报告](evidence/M07-verification.md)、[逐方法 JSON](evidence/M07-verification.json)与 [M07 checkpoint](checkpoints/2026-10-12-M07.md)；当前正式验收结论以上方独立登记为准，旧交付材料不改写。
 
 ## Pending / Current Problems / Technical Debt
 
-- ChatGPT 独立验收 PENDING；最终 Git 回执待 root 收尾。M05 要求的真实写后刷新和正式分页已在 M06 实施并独立验收，保留历史 NOTES，不再列为未实现能力。
+- **M07独立NOTES：**ProjectAbsent只确认当前不存在，不证明历史删除操作身份；多条旧END_SETTLEMENT明确冲突，未提供自动修复；媒体数据与文件生命周期清理归M10，未完成。M07独立审查未在用户Windows本机重跑Gradle或安装APK；原Lint20条提示及历史证据保留，本次仅状态回写。M05真实写后刷新和正式分页已在M06实施并独立验收，保留历史NOTES。
 - Q01 CLOSED，Q02/Q07 USER_CONFIRMED。Q03 长期 100/1000 日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M04 仅设计/首次数据集，M12 完整导入、切换、验证后回退、中断、共同校验、清理及 Q06-V01～V03 完整流程仍 NOT_RUN。Q02 M17/M18 视图集成仍 NOT_RUN。原 ZIP/43 原件、130 案例和 16 组完整补测不改。
 - [M09 两项流程风险](SPEC_ISSUES.md)继续保留：STOPPED 后重新启用入口/历史/纠错、多期预付默认停止；当前未实施/NOT_RUN。M04 首次初始化中断的残留 generation 不得静默清除真实数据；M08 v1→v2 必须同步已有数据库版本预检；M12 完整恢复与故障回退待实施。
 - **继承 M06 空间不足 NOTES：**真实 SQLite 满页失败可能被 Android/Room 回滚异常表现为普通 DATABASE。已验证旧数据、事务和同命令安全恢复；后续继续改进分类，但本轮不按消息猜错误、不宣称所有磁盘满都能准确分类。
@@ -40,9 +42,9 @@ Room schemaVersion=1；未新增 Migration、依赖、数据 owner、派生成�
 
 ## Git
 
-- 目录 E:/CODEX/砺石新APP，origin https://github.com/cc7279694-debug/property.git；当前 feat/m07-project-lifecycle，来源 feat/m06-project-entry，基线 fb0eafdc43efa6e13ebd76e3491fa4331a145abb。
+- 目录E:/CODEX/砺石新APP，origin https://github.com/cc7279694-debug/property.git；当前feat/m07-project-lifecycle，M07来源feat/m06-project-entry，实施基线fb0eafdc43efa6e13ebd76e3491fa4331a145abb。本次验收评审与回写起点均为4089428e7acdc0f2b8e2fd660f437b5bc7d29f61；开始已核对本地/远端一致、工作区干净。只提交/推送本功能分支的两份状态文档。
 - 只允许提交/推送 M07 功能分支；最终 commit、远端一致及工作区检查以本功能分支 Git 日志/最终交付回执核对，避免文档自引用 SHA。main 保护基线 145326ddd4ce28abbf7c2706fe25f9d38c599c3a；不合并 main、不 force、不自动 PR/发布，不提交 APK、数据库、私钥或真实个人数据。
 
 ## Next Recommended Task
 
-本轮交付停在 **READY_FOR_REVIEW — M07 / 独立 PENDING**。不进入 M08；下一模块需要独立验收及用户新授权。
+M07已 **ACCEPTED / FROZEN — PASS WITH NOTES**；本次状态回写提交/推送后立即停止。不进入M08，下一模块需要用户新授权，继承全部NOTES与既定规格/迁移/备份边界。
