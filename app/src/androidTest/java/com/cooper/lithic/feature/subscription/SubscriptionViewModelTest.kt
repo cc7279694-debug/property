@@ -293,9 +293,9 @@ class SubscriptionViewModelTest {
         seedSubscription()
         var failRead = false
         val flaky = object : SubscriptionRepository(generation.database, generation.coordinator, clock) {
-            override suspend fun loadSubscriptionWindow(pageCount: Int, asOf: LocalDate): com.cooper.lithic.data.repository.SubscriptionPage {
+            override suspend fun loadManagementWindow(stopped: Boolean, pageCount: Int, asOf: LocalDate): com.cooper.lithic.data.repository.SubscriptionPage {
                 if (failRead) throw IOException("Test refresh failure")
-                return super.loadSubscriptionWindow(pageCount, asOf)
+                return super.loadManagementWindow(stopped, pageCount, asOf)
             }
         }
         val model = vm(repo = flaky)

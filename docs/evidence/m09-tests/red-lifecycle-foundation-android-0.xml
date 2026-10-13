@@ -1,0 +1,954 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" tests="63" failures="54" errors="0" skipped="0" time="41.015" timestamp="2026-10-13T04:53:29" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="renewal_correction_validates_positive_amount_cycle_dates_and_preserved_identities" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.644" />
+  <testcase name="early_stop_rejects_past_dates_and_preserves_purchased_totals_when_valid" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.107">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$early_stop_rejects_past_dates_and_preserves_purchased_totals_when_valid$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:233)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.early_stop_rejects_past_dates_and_preserves_purchased_totals_when_valid(SubscriptionLifecycleRepositoryTest.kt:228)
+</failure>
+  </testcase>
+  <testcase name="renewal_amount_correction_updates_original_fact_and_exact_target_replays" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.1">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 payment correction is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$renewal_amount_correction_updates_original_fact_and_exact_target_replays$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:329)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.renewal_amount_correction_updates_original_fact_and_exact_target_replays(SubscriptionLifecycleRepositoryTest.kt:324)
+</failure>
+  </testcase>
+  <testcase name="default_stop_rejects_an_earlier_period_boundary_instead_of_silently_truncating" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.06" />
+  <testcase name="corrupt_facts_outside_visible_management_page_are_not_hidden_by_filter_or_limit" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.158">
+    <failure>java.lang.AssertionError: Invalid or unavailable facts must not be represented by an empty successful page
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertReadFails(SubscriptionLifecycleRepositoryTest.kt:625)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertReadFails(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$assertReadFails$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.corrupt_facts_outside_visible_management_page_are_not_hidden_by_filter_or_limit(SubscriptionLifecycleRepositoryTest.kt:533)
+</failure>
+  </testcase>
+  <testcase name="pause_saves_exact_state_identity_without_changing_real_payments" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.104">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$pause_saves_exact_state_identity_without_changing_real_payments$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:64)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.pause_saves_exact_state_identity_without_changing_real_payments(SubscriptionLifecycleRepositoryTest.kt:61)
+</failure>
+  </testcase>
+  <testcase name="concurrent_identical_pause_commands_save_only_one_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.078">
+    <failure>java.lang.AssertionError: All identical calls must acknowledge the exact saved fact: [ValidationFailure(reason=M09 state persistence is not implemented), ValidationFailure(reason=M09 state persistence is not implemented), ValidationFailure(reason=M09 state persistence is not implemented), ValidationFailure(reason=M09 state persistence is not implemented), ValidationFailure(reason=M09 state persistence is not implemented), ValidationFailure(reason=M09 state persistence is not implemented), ValidationFailure(reason=M09 state persistence is not implemented), ValidationFailure(reason=M09 state persistence is not implemented)]
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$concurrent_identical_pause_commands_save_only_one_fact$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:125)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.concurrent_identical_pause_commands_save_only_one_fact(SubscriptionLifecycleRepositoryTest.kt:120)
+</failure>
+  </testcase>
+  <testcase name="deleting_last_payment_is_rejected_without_deleting_subscription_identity" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.057" />
+  <testcase name="default_stop_is_fixed_at_latest_prepaid_boundary_and_keeps_history" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.104">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$default_stop_is_fixed_at_latest_prepaid_boundary_and_keeps_history$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:170)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.default_stop_is_fixed_at_latest_prepaid_boundary_and_keeps_history(SubscriptionLifecycleRepositoryTest.kt:167)
+</failure>
+  </testcase>
+  <testcase name="cancel_stop_cannot_delete_already_effective_stop_or_stale_target" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.115">
+    <failure>java.lang.AssertionError: Expected explicit conflict: ValidationFailure(reason=M09 scheduled stop cancellation is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertConflict(SubscriptionLifecycleRepositoryTest.kt:618)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$cancel_stop_cannot_delete_already_effective_stop_or_stale_target$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:441)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.cancel_stop_cannot_delete_already_effective_stop_or_stale_target(SubscriptionLifecycleRepositoryTest.kt:434)
+</failure>
+  </testcase>
+  <testcase name="resume_with_current_coverage_keeps_old_payment_and_counts_only_enabled_dates" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.109">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$resume_with_current_coverage_keeps_old_payment_and_counts_only_enabled_dates$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:245)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.resume_with_current_coverage_keeps_old_payment_and_counts_only_enabled_dates(SubscriptionLifecycleRepositoryTest.kt:242)
+</failure>
+  </testcase>
+  <testcase name="state_date_correction_into_existing_day_conflicts_without_changing_either_row" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.084" />
+  <testcase name="real_sqlite_state_failure_rolls_back_atomic_reopen_payment_and_state" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.101">
+    <failure>java.lang.AssertionError: Real SQLite failure must be reported before any success: ValidationFailure(reason=M09 atomic reopening is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertStorageOrConflict(SubscriptionLifecycleRepositoryTest.kt:621)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertStorageOrConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$real_sqlite_state_failure_rolls_back_atomic_reopen_payment_and_state$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:302)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.real_sqlite_state_failure_rolls_back_atomic_reopen_payment_and_state(SubscriptionLifecycleRepositoryTest.kt:296)
+</failure>
+  </testcase>
+  <testcase name="stale_payment_correction_cannot_overwrite_later_state_or_payment_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.075">
+    <failure>java.lang.AssertionError: Expected explicit conflict: ValidationFailure(reason=M09 payment correction is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertConflict(SubscriptionLifecycleRepositoryTest.kt:618)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$stale_payment_correction_cannot_overwrite_later_state_or_payment_fact$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:375)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.stale_payment_correction_cannot_overwrite_later_state_or_payment_fact(SubscriptionLifecycleRepositoryTest.kt:369)
+</failure>
+  </testcase>
+  <testcase name="changed_payment_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.074">
+    <failure>java.lang.AssertionError: Expected explicit conflict: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertConflict(SubscriptionLifecycleRepositoryTest.kt:618)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$changed_payment_invalidates_whole_state_baseline$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:135)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.changed_payment_invalidates_whole_state_baseline(SubscriptionLifecycleRepositoryTest.kt:130)
+</failure>
+  </testcase>
+  <testcase name="later_state_fact_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.075">
+    <failure>java.lang.AssertionError: Expected explicit conflict: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertConflict(SubscriptionLifecycleRepositoryTest.kt:618)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$later_state_fact_invalidates_whole_state_baseline$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:151)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.later_state_fact_invalidates_whole_state_baseline(SubscriptionLifecycleRepositoryTest.kt:147)
+</failure>
+  </testcase>
+  <testcase name="same_day_resume_corrects_original_id_and_operation_instead_of_appending" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.076">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$same_day_resume_corrects_original_id_and_operation_instead_of_appending$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:83)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.same_day_resume_corrects_original_id_and_operation_instead_of_appending(SubscriptionLifecycleRepositoryTest.kt:79)
+</failure>
+  </testcase>
+  <testcase name="all_expired_payments_default_to_business_today_without_backdating" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.074">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$all_expired_payments_default_to_business_today_without_backdating$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:222)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.all_expired_payments_default_to_business_today_without_backdating(SubscriptionLifecycleRepositoryTest.kt:218)
+</failure>
+  </testcase>
+  <testcase name="management_sql_pagination_fills_filtered_pages_and_rebuilds_complete_window" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.283">
+    <failure>java.lang.AssertionError: expected:&lt;62&gt; but was:&lt;124&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:647)
+at org.junit.Assert.assertEquals(Assert.java:633)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$management_sql_pagination_fills_filtered_pages_and_rebuilds_complete_window$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:520)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.management_sql_pagination_fills_filtered_pages_and_rebuilds_complete_window(SubscriptionLifecycleRepositoryTest.kt:505)
+</failure>
+  </testcase>
+  <testcase name="cancel_future_stop_deletes_only_target_and_retry_reports_current_absence" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.099">
+    <failure>java.lang.AssertionError: Deletion acknowledges only present absence, not a permanent operation proof: ValidationFailure(reason=M09 scheduled stop cancellation is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.absence(SubscriptionLifecycleRepositoryTest.kt:613)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$absence(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$cancel_future_stop_deletes_only_target_and_retry_reports_current_absence$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:428)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.cancel_future_stop_deletes_only_target_and_retry_reports_current_absence(SubscriptionLifecycleRepositoryTest.kt:422)
+</failure>
+  </testcase>
+  <testcase name="ordinary_new_renewal_cannot_cross_fixed_future_stop_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.071">
+    <failure>java.lang.AssertionError: A new coverage after a fixed plan requires explicit plan correction: Success(subscriptionId=9b000000-0000-4000-8000-000000001001, renewalId=9b000000-0000-4000-8000-000000002002, replayed=false)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$ordinary_new_renewal_cannot_cross_fixed_future_stop_boundary$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:311)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.ordinary_new_renewal_cannot_cross_fixed_future_stop_boundary(SubscriptionLifecycleRepositoryTest.kt:307)
+</failure>
+  </testcase>
+  <testcase name="reopen_with_only_future_paid_coverage_is_expired_until_real_start" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.071">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$reopen_with_only_future_paid_coverage_is_expired_until_real_start$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:259)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.reopen_with_only_future_paid_coverage_is_expired_until_real_start(SubscriptionLifecycleRepositoryTest.kt:253)
+</failure>
+  </testcase>
+  <testcase name="real_sqlite_after_delete_failure_rolls_back_the_entire_delete" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.073">
+    <failure>java.lang.AssertionError: Real SQLite failure must be reported before any success: ValidationFailure(reason=M09 erroneous payment deletion is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertStorageOrConflict(SubscriptionLifecycleRepositoryTest.kt:621)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertStorageOrConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$real_sqlite_after_delete_failure_rolls_back_the_entire_delete$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:480)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.real_sqlite_after_delete_failure_rolls_back_the_entire_delete(SubscriptionLifecycleRepositoryTest.kt:476)
+</failure>
+  </testcase>
+  <testcase name="closed_database_management_read_and_lifecycle_write_have_explicit_failures" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.071">
+    <failure>java.lang.AssertionError: Unavailable storage cannot be confused with validation or saved facts: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$closed_database_management_read_and_lifecycle_write_have_explicit_failures$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:560)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.closed_database_management_read_and_lifecycle_write_have_explicit_failures(SubscriptionLifecycleRepositoryTest.kt:552)
+</failure>
+  </testcase>
+  <testcase name="fixed_default_stop_command_replays_across_days_without_moving_saved_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.072">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$fixed_default_stop_command_replays_across_days_without_moving_saved_boundary$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:187)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.fixed_default_stop_command_replays_across_days_without_moving_saved_boundary(SubscriptionLifecycleRepositoryTest.kt:183)
+</failure>
+  </testcase>
+  <testcase name="correction_expanding_coverage_after_fixed_stop_requires_explicit_plan_change" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.056" />
+  <testcase name="stale_delete_cannot_remove_corrected_payment" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.099">
+    <failure>java.lang.AssertionError: Expected explicit conflict: ValidationFailure(reason=M09 erroneous payment deletion is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertConflict(SubscriptionLifecycleRepositoryTest.kt:618)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$stale_delete_cannot_remove_corrected_payment$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:472)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.stale_delete_cannot_remove_corrected_payment(SubscriptionLifecycleRepositoryTest.kt:467)
+</failure>
+  </testcase>
+  <testcase name="same_day_replacement_with_new_row_or_operation_identity_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.073">
+    <failure>java.lang.AssertionError: Expected explicit conflict: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertConflict(SubscriptionLifecycleRepositoryTest.kt:618)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$same_day_replacement_with_new_row_or_operation_identity_conflicts$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:95)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.same_day_replacement_with_new_row_or_operation_identity_conflicts(SubscriptionLifecycleRepositoryTest.kt:92)
+</failure>
+  </testcase>
+  <testcase name="renewal_overlap_correction_is_rejected_before_any_partial_update" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.06" />
+  <testcase name="exact_saved_state_can_replay_after_database_reopen_without_new_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.101">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$exact_saved_state_can_replay_after_database_reopen_without_new_fact$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:103)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.exact_saved_state_can_replay_after_database_reopen_without_new_fact(SubscriptionLifecycleRepositoryTest.kt:99)
+</failure>
+  </testcase>
+  <testcase name="deleting_one_erroneous_payment_keeps_service_and_fixed_state_and_reports_absence" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.073">
+    <failure>java.lang.AssertionError: Deletion acknowledges only present absence, not a permanent operation proof: ValidationFailure(reason=M09 erroneous payment deletion is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.absence(SubscriptionLifecycleRepositoryTest.kt:613)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$absence(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$deleting_one_erroneous_payment_keeps_service_and_fixed_state_and_reports_absence$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:452)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.deleting_one_erroneous_payment_keeps_service_and_fixed_state_and_reports_absence(SubscriptionLifecycleRepositoryTest.kt:445)
+</failure>
+  </testcase>
+  <testcase name="changed_subscription_identity_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.076">
+    <failure>java.lang.AssertionError: Expected explicit conflict: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertConflict(SubscriptionLifecycleRepositoryTest.kt:618)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertConflict(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$changed_subscription_identity_invalidates_whole_state_baseline$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:143)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.changed_subscription_identity_invalidates_whole_state_baseline(SubscriptionLifecycleRepositoryTest.kt:139)
+</failure>
+  </testcase>
+  <testcase name="ordinary_new_renewal_on_stopped_identity_does_not_implicitly_enable_it" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.272">
+    <failure>java.lang.AssertionError: Stopped service must use explicit atomic reopening: Success(subscriptionId=9b000000-0000-4000-8000-000000001001, renewalId=9b000000-0000-4000-8000-000000002002, replayed=false)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$ordinary_new_renewal_on_stopped_identity_does_not_implicitly_enable_it$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:320)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.ordinary_new_renewal_on_stopped_identity_does_not_implicitly_enable_it(SubscriptionLifecycleRepositoryTest.kt:315)
+</failure>
+  </testcase>
+  <testcase name="complete_baseline_comparison_treats_payment_and_state_order_as_sets" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.024">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$complete_baseline_comparison_treats_payment_and_state_order_as_sets$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:162)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.complete_baseline_comparison_treats_payment_and_state_order_as_sets(SubscriptionLifecycleRepositoryTest.kt:155)
+</failure>
+  </testcase>
+  <testcase name="renewal_history_checks_full_timeline_not_only_visible_payment_row" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.023">
+    <failure>java.lang.AssertionError: Invalid or unavailable facts must not be represented by an empty successful page
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertReadFails(SubscriptionLifecycleRepositoryTest.kt:625)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertReadFails(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$assertReadFails$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.renewal_history_checks_full_timeline_not_only_visible_payment_row(SubscriptionLifecycleRepositoryTest.kt:543)
+</failure>
+  </testcase>
+  <testcase name="reopen_without_current_or_future_payment_requires_real_confirmation" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.031" />
+  <testcase name="paid_coverage_gap_still_uses_latest_confirmed_end_for_default_stop" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.071">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$paid_coverage_gap_still_uses_latest_confirmed_end_for_default_stop$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:211)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.paid_coverage_gap_still_uses_latest_confirmed_end_for_default_stop(SubscriptionLifecycleRepositoryTest.kt:208)
+</failure>
+  </testcase>
+  <testcase name="atomic_reopen_with_real_renewal_keeps_subscription_id_and_supports_exact_replay" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.077">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 atomic reopening is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$atomic_reopen_with_real_renewal_keeps_subscription_id_and_supports_exact_replay$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:283)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.atomic_reopen_with_real_renewal_keeps_subscription_id_and_supports_exact_replay(SubscriptionLifecycleRepositoryTest.kt:277)
+</failure>
+  </testcase>
+  <testcase name="management_and_stopped_queries_use_observation_day_last_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.128">
+    <failure>java.lang.AssertionError: expected:&lt;[9b000000-0000-4000-8000-000000001001, 9b000000-0000-4000-8000-000000001002, 9b000000-0000-4000-8000-000000001003, 9b000000-0000-4000-8000-000000001004]&gt; but was:&lt;[9b000000-0000-4000-8000-000000001001, 9b000000-0000-4000-8000-000000001002, 9b000000-0000-4000-8000-000000001003, 9b000000-0000-4000-8000-000000001004, 9b000000-0000-4000-8000-000000001005]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$management_and_stopped_queries_use_observation_day_last_boundary$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:493)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.management_and_stopped_queries_use_observation_day_last_boundary(SubscriptionLifecycleRepositoryTest.kt:485)
+</failure>
+  </testcase>
+  <testcase name="scheduled_stop_correction_preserves_original_id_operation_and_other_history" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.098">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state correction is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$scheduled_stop_correction_preserves_original_id_operation_and_other_history$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:405)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.scheduled_stop_correction_preserves_original_id_operation_and_other_history(SubscriptionLifecycleRepositoryTest.kt:398)
+</failure>
+  </testcase>
+  <testcase name="reused_state_operation_with_different_contents_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.076">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 state persistence is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$reused_state_operation_with_different_contents_conflicts$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:115)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.reused_state_operation_with_different_contents_conflicts(SubscriptionLifecycleRepositoryTest.kt:111)
+</failure>
+  </testcase>
+  <testcase name="amount_only_correction_keeps_existing_coverage_truncated_by_early_plan" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.097">
+    <failure>java.lang.AssertionError: Valid lifecycle command must save exact identities: ValidationFailure(reason=M09 payment correction is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.saved(SubscriptionLifecycleRepositoryTest.kt:609)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$saved(SubscriptionLifecycleRepositoryTest.kt:36)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$amount_only_correction_keeps_existing_coverage_truncated_by_early_plan$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:383)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.amount_only_correction_keeps_existing_coverage_truncated_by_early_plan(SubscriptionLifecycleRepositoryTest.kt:379)
+</failure>
+  </testcase>
+  <testcase name="paused_detail_offers_resume_without_hiding_paid_history" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="4.922">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'subscription-detail-resume' in scrollable container
+Semantics of the node:
+Node #3 at (l=0.0, t=0.0, r=320.0, b=640.0)px, Tag: 'subscription-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;5b95f25'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1009.0, maxValue=1009.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 9 children
+Selector used: (TestTag = 'subscription-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.detailNode(M09SubscriptionScreensTest.kt:101)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.paused_detail_offers_resume_without_hiding_paid_history(M09SubscriptionScreensTest.kt:36)
+</failure>
+  </testcase>
+  <testcase name="current_management_has_independent_active_paused_expired_groups" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="2.08">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'subscription-group-ACTIVE' in scrollable container
+Semantics of the node:
+Node #55 at (l=0.0, t=0.0, r=320.0, b=640.0)px, Tag: 'subscription-list-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;1c54857'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=612.0, maxValue=612.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 3 children
+Selector used: (TestTag = 'subscription-list-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.listNode(M09SubscriptionScreensTest.kt:106)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.current_management_has_independent_active_paused_expired_groups(M09SubscriptionScreensTest.kt:85)
+</failure>
+  </testcase>
+  <testcase name="paused_expired_coverage_keeps_paused_status_and_explains_expiry" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="1.533">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'subscription-detail-paused-expired' in scrollable container
+Semantics of the node:
+Node #114 at (l=0.0, t=0.0, r=320.0, b=640.0)px, Tag: 'subscription-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;867316a'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1009.0, maxValue=1009.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 9 children
+Selector used: (TestTag = 'subscription-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.detailNode(M09SubscriptionScreensTest.kt:101)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.paused_expired_coverage_keeps_paused_status_and_explains_expiry(M09SubscriptionScreensTest.kt:47)
+</failure>
+  </testcase>
+  <testcase name="stopped_detail_exposes_same_identity_reopen_and_hides_ordinary_renewal" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="1.555">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'subscription-detail-reopen' in scrollable container
+Semantics of the node:
+Node #166 at (l=0.0, t=0.0, r=320.0, b=640.0)px, Tag: 'subscription-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;1ec88c3'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1009.0, maxValue=1009.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 9 children
+Selector used: (TestTag = 'subscription-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.detailNode(M09SubscriptionScreensTest.kt:101)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.stopped_detail_exposes_same_identity_reopen_and_hides_ordinary_renewal(M09SubscriptionScreensTest.kt:54)
+</failure>
+  </testcase>
+  <testcase name="future_stop_shows_fixed_date_and_explicit_correct_cancel_entries" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="1.707">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'subscription-detail-scheduled-stop' in scrollable container
+Semantics of the node:
+Node #218 at (l=0.0, t=0.0, r=320.0, b=640.0)px, Tag: 'subscription-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;aca7301'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1642.0, maxValue=1642.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 9 children
+Selector used: (TestTag = 'subscription-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.detailNode(M09SubscriptionScreensTest.kt:101)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.future_stop_shows_fixed_date_and_explicit_correct_cancel_entries(M09SubscriptionScreensTest.kt:64)
+</failure>
+  </testcase>
+  <testcase name="payment_history_has_per_fact_correction_and_delete_error_entries" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="1.608">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'subscription-renewal-correct-d7f3f5d8-1230-4572-97ef-8fe4dc46275c' in scrollable container
+Semantics of the node:
+Node #288 at (l=0.0, t=0.0, r=320.0, b=640.0)px, Tag: 'subscription-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;d9f20af'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1642.0, maxValue=1642.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 9 children
+Selector used: (TestTag = 'subscription-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.detailNode(M09SubscriptionScreensTest.kt:101)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.payment_history_has_per_fact_correction_and_delete_error_entries(M09SubscriptionScreensTest.kt:73)
+</failure>
+  </testcase>
+  <testcase name="active_detail_exposes_pause_and_stop_record_operations" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="1.588">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'subscription-detail-pause' in scrollable container
+Semantics of the node:
+Node #358 at (l=0.0, t=0.0, r=320.0, b=640.0)px, Tag: 'subscription-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;16fb8ee'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1177.0, maxValue=1177.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 9 children
+Selector used: (TestTag = 'subscription-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.detailNode(M09SubscriptionScreensTest.kt:101)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.active_detail_exposes_pause_and_stop_record_operations(M09SubscriptionScreensTest.kt:28)
+</failure>
+  </testcase>
+  <testcase name="restored_dirty_state_requires_explicit_discard_without_writing_facts" classname="com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest" time="0.384">
+    <failure>java.lang.AssertionError: expected:&lt;CONFIRM_DISCARD&gt; but was:&lt;ALLOW&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest$restored_dirty_state_requires_explicit_discard_without_writing_facts$1.invokeSuspend(M09SubscriptionViewModelTest.kt:84)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest.restored_dirty_state_requires_explicit_discard_without_writing_facts(M09SubscriptionViewModelTest.kt:78)
+</failure>
+  </testcase>
+  <testcase name="current_management_excludes_effective_stopped_but_keeps_paused_and_expired" classname="com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest" time="0.126">
+    <failure>java.lang.AssertionError: Current management must never contain effective STOPPED identities expected:&lt;[c8118f26-7d08-4fb9-84b5-b341bf718695, 6b08fbd1-b4f8-4b1b-8037-d113b8babf5d, 99d26050-eb5d-4055-9d8d-b23f3fb2343e]&gt; but was:&lt;[6b08fbd1-b4f8-4b1b-8037-d113b8babf5d, 99d26050-eb5d-4055-9d8d-b23f3fb2343e, c8118f26-7d08-4fb9-84b5-b341bf718695, df8d6865-d546-42df-a393-37b2d6b7a643]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest$current_management_excludes_effective_stopped_but_keeps_paused_and_expired$1.invokeSuspend(M09SubscriptionViewModelTest.kt:39)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest.current_management_excludes_effective_stopped_but_keeps_paused_and_expired(M09SubscriptionViewModelTest.kt:28)
+</failure>
+  </testcase>
+  <testcase name="future_stopped_boundary_remains_current_until_it_becomes_effective" classname="com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest" time="0.211" />
+  <testcase name="restored_inflight_state_keeps_exact_envelope_and_blocks_departure" classname="com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest" time="0.131">
+    <failure>java.lang.AssertionError: A restored state write must remain guarded until its original result is checked expected:&lt;BLOCK_PENDING&gt; but was:&lt;ALLOW&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest$restored_inflight_state_keeps_exact_envelope_and_blocks_departure$1.invokeSuspend(M09SubscriptionViewModelTest.kt:64)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest.restored_inflight_state_keeps_exact_envelope_and_blocks_departure(M09SubscriptionViewModelTest.kt:57)
+</failure>
+  </testcase>
+  <testcase name="history_reopen_has_five_route_limit_and_restores_exact_source" classname="com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest" time="0.019">
+    <failure>java.lang.AssertionError: expected:&lt;[Home, Review, SubscriptionHistory, SubscriptionDetail(id=68dcc0f5-c5cd-4d3d-8a8c-424947fc5c9e, origin=HISTORY), ChangeSubscriptionState(id=68dcc0f5-c5cd-4d3d-8a8c-424947fc5c9e, action=REOPEN, origin=HISTORY)]&gt; but was:&lt;[Home]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest.history_reopen_has_five_route_limit_and_restores_exact_source(M09SubscriptionRoutesTest.kt:36)
+</failure>
+  </testcase>
+  <testcase name="corrupt_new_route_identity_or_wrong_parent_returns_home" classname="com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest" time="0.007" />
+  <testcase name="stopped_history_and_detail_have_exact_review_parents" classname="com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest" time="0.014">
+    <failure>java.lang.AssertionError: expected:&lt;[Home, Review, SubscriptionHistory]&gt; but was:&lt;[Home]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest.stopped_history_and_detail_have_exact_review_parents(M09SubscriptionRoutesTest.kt:28)
+</failure>
+  </testcase>
+  <testcase name="historical_payment_and_state_operations_preserve_target_fact_identity" classname="com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest" time="0.022">
+    <failure>java.lang.AssertionError: expected:&lt;[Home, Review, SubscriptionHistory, SubscriptionDetail(id=68dcc0f5-c5cd-4d3d-8a8c-424947fc5c9e, origin=HISTORY), CorrectSubscriptionRenewal(id=68dcc0f5-c5cd-4d3d-8a8c-424947fc5c9e, renewalId=1c1c0fe5-afdc-4059-94e4-5aed77b551c2, origin=HISTORY)]&gt; but was:&lt;[Home]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest.historical_payment_and_state_operations_preserve_target_fact_identity(M09SubscriptionRoutesTest.kt:51)
+</failure>
+  </testcase>
+  <testcase name="current_state_confirmation_keeps_current_detail_parent" classname="com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest" time="0.019">
+    <failure>java.lang.AssertionError: expected:&lt;[Home, SubscriptionList, SubscriptionDetail(id=68dcc0f5-c5cd-4d3d-8a8c-424947fc5c9e, origin=CURRENT), ChangeSubscriptionState(id=68dcc0f5-c5cd-4d3d-8a8c-424947fc5c9e, action=PAUSE, origin=CURRENT)]&gt; but was:&lt;[Home]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest.current_state_confirmation_keeps_current_detail_parent(M09SubscriptionRoutesTest.kt:42)
+</failure>
+  </testcase>
+  <testcase name="formal_current_detail_opens_pause_confirmation_without_a_database_write" classname="com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest" time="4.649">
+    <failure>java.lang.AssertionError: No node found that matches TestTag = 'subscription-detail-pause' in scrollable container
+Semantics of the node:
+Node #514 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'subscription-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;a796918'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=1517.0, maxValue=1517.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 9 children
+Selector used: (TestTag = 'subscription-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest$formal_current_detail_opens_pause_confirmation_without_a_database_write$1.invokeSuspend(M09SubscriptionNavigationFlowTest.kt:56)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest.formal_current_detail_opens_pause_confirmation_without_a_database_write(M09SubscriptionNavigationFlowTest.kt:47)
+</failure>
+  </testcase>
+  <testcase name="formal_review_history_opens_original_stopped_identity_with_reopen_entry" classname="com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest" time="3.834">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'review-subscription-history')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest$formal_review_history_opens_original_stopped_identity_with_reopen_entry$1.invokeSuspend(M09SubscriptionNavigationFlowTest.kt:68)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest.formal_review_history_opens_original_stopped_identity_with_reopen_entry(M09SubscriptionNavigationFlowTest.kt:63)
+</failure>
+  </testcase>
+  <testcase name="hidden_dirty_state_protects_tab_reselection_until_explicit_discard" classname="com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest" time="3.134">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'discard-dialog' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest$hidden_dirty_state_protects_tab_reselection_until_explicit_discard$1.invokeSuspend(M09SubscriptionNavigationGuardTest.kt:85)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest.hidden_dirty_state_protects_tab_reselection_until_explicit_discard(M09SubscriptionNavigationGuardTest.kt:80)
+</failure>
+  </testcase>
+  <testcase name="hidden_pending_state_blocks_root_system_back_without_finishing_host" classname="com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest" time="3.196">
+    <failure>java.lang.AssertionError: Root Back cannot finish a host with an unconfirmed lifecycle command
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest$hidden_pending_state_blocks_root_system_back_without_finishing_host$1.invokeSuspend$lambda$0(M09SubscriptionNavigationGuardTest.kt:73)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest$hidden_pending_state_blocks_root_system_back_without_finishing_host$1.$r8$lambda$93TW-SMyxkNCWUPwlTnZQBMuRPg(Unknown Source:0)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest$hidden_pending_state_blocks_root_system_back_without_finishing_host$1$$ExternalSyntheticLambda0.invoke(D8$$SyntheticClass:0)
+at com.cooper.lithic.feature.subscription.M09SubscriptionRoomFixture.onMain$lambda$0(M09SubscriptionFixtures.kt:170)
+at com.cooper.lithic.feature.subscription.M09SubscriptionRoomFixture.$r8$lambda$1d0iFcN64rg2O8Vpu1BBHnhgobc(Unknown Source:0)
+at com.cooper.lithic.feature.subscription.M09SubscriptionRoomFixture$$ExternalSyntheticLambda3.run(D8$$SyntheticClass:0)
+at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+at android.os.Handler.handleCallback(Handler.java:995)
+at android.os.Handler.dispatchMessage(Handler.java:103)
+at android.os.Looper.loopOnce(Looper.java:248)
+at android.os.Looper.loop(Looper.java:338)
+at android.app.ActivityThread.main(ActivityThread.java:9067)
+at java.lang.reflect.Method.invoke(Native Method)
+at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+</failure>
+  </testcase>
+  <testcase name="hidden_pending_state_blocks_project_entry_and_returns_to_original_confirmation" classname="com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest" time="3.994">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'pending-submit-dialog' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest$hidden_pending_state_blocks_project_entry_and_returns_to_original_confirmation$1.invokeSuspend(M09SubscriptionNavigationGuardTest.kt:56)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest.hidden_pending_state_blocks_project_entry_and_returns_to_original_confirmation(M09SubscriptionNavigationGuardTest.kt:51)
+</failure>
+  </testcase>
+</testsuite>

@@ -59,7 +59,14 @@ internal fun SubscriptionListScreen(
             if (!state.loading && state.error == null && state.totalCount == 0L && state.items.isEmpty()) item {
                 Text("暂无订阅服务", Modifier.padding(LithicSpacing.medium), style = MaterialTheme.typography.bodyLarge)
             }
-            items(state.items, key = { it.subscription.id }) { detail ->
+            for (status in listOf(SubscriptionDisplayStatus.ACTIVE, SubscriptionDisplayStatus.PAUSED, SubscriptionDisplayStatus.EXPIRED)) {
+                val group = state.items.filter { it.cost.displayStatus == status }
+                if (group.isNotEmpty()) item {
+                    Text(if (status == SubscriptionDisplayStatus.PAUSED) "暂停中" else subscriptionStatusLabel(status),
+                        Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-group-${status.name}").semantics { heading() },
+                        style = MaterialTheme.typography.titleLarge)
+                }
+                items(group, key = { it.subscription.id }) { detail ->
                 val lastPaidOn = detail.renewals.maxOfOrNull { it.paidOn }
                 val timeLabel = (lastPaidOn?.let { "最近实际付款：$it\n" } ?: "暂无付费记录\n") +
                     "折算付费时长：${detail.cost.standardPurchasedDays}天\n历史平均日成本"
@@ -67,6 +74,7 @@ internal fun SubscriptionListScreen(
                     detail.cost.historicalAverage,
                     Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-row-${detail.subscription.id}"),
                     onClick = { onOpenSubscription(detail.subscription.id) })
+                }
             }
             if (state.hasMore) item {
                 Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium).heightIn(min = 48.dp)

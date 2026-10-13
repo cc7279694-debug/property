@@ -6,7 +6,7 @@
 
 继承用户提供的高级全栈协作原则：简单、稳定、快速、可维护、可扩展；正确性和数据安全优先；读取事实后再行动；每次只执行已授权模块。
 
-**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用规范里的 React / Capacitor 默认建议。不得因此启动 React、Vite、Next.js 工程，也不得自行改回混合架构。M00～M07已冻结；本轮M08接入固定周期订阅、用户确认的真实续费、显式Room v1→v2无损升级，继承既有领域规则与唯一数据owner。
+**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用规范里的 React / Capacitor 默认建议。不得因此启动 React、Vite、Next.js 工程，也不得自行改回混合架构。M00～M08已独立冻结；当前用户正式授权M09订阅状态、同身份重新开通及真实付款历史纠错/删除。继承Room v2、冻结领域引擎和唯一数据owner，不新增表/索引/迁移或依赖。
 
 事实源顺序：当前用户要求 → 本文件 → PROJECT.md → 实际代码/schema/Git → CURRENT_STATE.md → DECISIONS.md → ARCHITECTURE.md → ROADMAP.md → README → 聊天/模型经验。完整原始规划是产品与模块验收来源；规格矛盾进入问题清单，不能用低优先级摘要改掉产品规则。
 
@@ -62,16 +62,14 @@ Bug 按复现 → 定位 → 理解 → 假设 → 修复 → 验证 → 回归�
 
 遇到阻塞规格矛盾只记录问题与建议，等待确认；高风险删除、真实数据修改、不可逆迁移、生产发布、force push 等必须暂停。
 
-M00～M07均独立验收冻结ACCEPTED / FROZEN — PASS WITH NOTES，历史独立未重跑本机Gradle/安装等NOTES保留，见[验收登记](docs/ACCEPTANCE_MATRIX.md)。本轮用户明确授权M08三张订阅表/schema2、显式1→2迁移/版本及身份结构预检、真实首次付款/逐笔续费、正式列表/详情/表单/刷新/分页/提交守卫、原359回归/新测试/专用设备升级/文档/Git，范围见[M08契约](docs/planning/M08_CONTRACT.md)。M03引擎、原四表/v1导出/owner/recordZone/generation保持；迁移先契约和真实失败测试，禁止新空数据集替代升级、破坏性fallback或跳过无效库检查。禁止M09暂停恢复停止用户操作/两项规则自行定案、退款/期中补差/自动付款、媒体处理、完整备份恢复、M13汇总、云端、WHOCARE、main合并/force/公开APK。Q03～Q06/M09及M10～M13边界继承；M08交付READY_FOR_REVIEW后停止，独立PENDING，M09未授权。
-
-M08本轮实现与适用验证已完成，状态为READY_FOR_REVIEW，独立验收PENDING；86 JVM＋369 Android共455个唯一方法PASS，最终APK及API36合成数据证据见[M08报告](docs/evidence/M08-verification.md)。当前停止等待独立验收，M09仍未授权，不能把内部审阅当冻结。
+M00～M08均独立验收冻结ACCEPTED / FROZEN — PASS WITH NOTES，全部历史独立未重跑本机Gradle/安装/APK字节及超大JSON限制等NOTES保留，见[验收登记](docs/ACCEPTANCE_MATRIX.md)。当前用户授权M09暂停/恢复/到期/停止、计划修正取消、STOPPED同身份重新开通、逐笔续费纠错/安全删除，A/B规则及事务/UI/测试边界见[M09契约](docs/planning/M09_CONTRACT.md)。默认停止固定所有已确认付费最晚边界与今天中的较晚日，不随付款变化；同日只CAS修正原状态。无当前也无未来覆盖的重开须真实付款＋ENABLED同事务，不虚构ACTIVE；暂停无覆盖仍由M03显示PAUSED并说明覆盖到期。原455回归及新增测试实际执行，专用API36合成设备旅程、最终code7 APK及完整文档/Git在本轮范围。M09两流程风险现已用户确认、实施并实际验证关闭；M09交付READY_FOR_REVIEW、独立PENDING，不能自授冻结；Q03～Q06及M10～M13边界继承。禁止M10、媒体、备份恢复、跨类型汇总、通知/Worker、自动扣款/退款/补差、云端、WHOCARE、main合并/force/公开APK。完成READY_FOR_REVIEW后停止，独立PENDING，M10未授权。
 
 ## 6. Git 与验收
 
 - 独立模块用独立功能分支，保留用户未提交内容。禁止在 main/master 直接开发。
 - 提交前查差异、实际验证、无关改动、敏感信息与临时文件；Conventional Commits；只推当前功能分支。
 - 未经明确授权不得合并 main、自动合并 PR、force push、重置/删除远程历史、部署或发布。
-- 用户本轮只授权提交/推送 `feat/m08-subscription-renewals`，起点M07验收回写 `fcb850f549285d310040318a5f7adfd51abb4c33`、来源 `feat/m07-project-lifecycle`；不从main开始，不授权M09/main合并/公开APK。
+- 用户本轮只授权提交/推送 `feat/m09-subscription-lifecycle`，起点M08正式验收回写 `0063ca504ca48ef9c7231d79dc155e9bf4bc8c82`、来源 `feat/m08-subscription-renewals`；不从main开始，不授权M10/main合并/公开APK。
 - 实现者只可报 READY_FOR_REVIEW；ACCEPTED / FROZEN 需要独立验收结果，不能自己授予。
 - 每个模块结束同步当前状态、适用决策与验收证据，输出模块报告并立即停止。
 

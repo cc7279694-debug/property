@@ -1,0 +1,62 @@
+package com.cooper.lithic.feature.subscription
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.EntryCard
+import com.cooper.lithic.core.design.LithicSpacing
+
+@Composable
+internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: () -> Unit,
+    onOpenSubscription: (String) -> Unit, onLoadMore: () -> Unit, onRetry: () -> Unit, modifier: Modifier = Modifier) {
+    Column(modifier.fillMaxSize().testTag("subscription-history-screen")) {
+    LazyColumn(Modifier.fillMaxSize().testTag("subscription-history-content"),
+        verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+        item {
+            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("subscription-history-back")) { Text("返回回看") }
+                Text("已停止订阅", Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineLarge)
+                Text("保留原服务的真实付款和状态历史。暂停及已到期服务仍在当前管理。", style = MaterialTheme.typography.bodyMedium)
+                state.totalCount?.let { Text("已停止 $it 条订阅", Modifier.testTag("subscription-history-count")) }
+            }
+        }
+        if (state.loading) item { Text("正在读取已停止订阅", Modifier.padding(LithicSpacing.medium)) }
+        state.error?.let { error -> item {
+            Column(Modifier.padding(LithicSpacing.medium)) {
+                Text(error, Modifier.testTag("subscription-history-error"), color = MaterialTheme.colorScheme.error)
+                if (state.items.isNotEmpty()) Text("以下为上次读取记录。")
+                TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-history-retry")) { Text("重新读取") }
+            }
+        } }
+        if (!state.loading && state.error == null && state.totalCount == 0L && state.items.isEmpty()) item {
+            Text("暂无已停止订阅", Modifier.padding(LithicSpacing.medium).testTag("subscription-history-empty"))
+        }
+        items(state.items, key = { it.subscription.id }) { detail ->
+            EntryCard(detail.subscription.name, "已停止", "折算付费时长：${detail.cost.standardPurchasedDays}天\n历史平均日成本",
+                detail.cost.historicalAverage, Modifier.padding(horizontal = LithicSpacing.medium)
+                    .testTag("subscription-history-row-${detail.subscription.id}"), onClick = { onOpenSubscription(detail.subscription.id) })
+        }
+        if (state.hasMore) item {
+            Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium).heightIn(min = 48.dp)
+                .testTag("subscription-history-load-more"), enabled = !state.loading && !state.loadingMore) {
+                Text(if (state.loadingMore) "正在读取下一页" else "继续读取已停止订阅")
+            }
+        }
+    }
+    }
+}

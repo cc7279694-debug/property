@@ -58,6 +58,11 @@ import com.cooper.lithic.feature.subscription.SubscriptionListScreen
 import com.cooper.lithic.feature.subscription.SubscriptionEditorScreen
 import com.cooper.lithic.feature.subscription.RenewalEditorScreen
 import com.cooper.lithic.feature.subscription.SubscriptionDetailScreen
+import com.cooper.lithic.feature.subscription.SubscriptionHistoryScreen
+import com.cooper.lithic.feature.subscription.SubscriptionStateDialog
+import com.cooper.lithic.feature.subscription.SubscriptionUiState
+import com.cooper.lithic.feature.subscription.SubscriptionStateEditorKind
+import com.cooper.lithic.data.repository.SubscriptionStateAction
 import com.cooper.lithic.feature.review.ReviewShell
 import com.cooper.lithic.feature.settings.SettingsShell
 import kotlinx.serialization.Serializable
@@ -116,9 +121,20 @@ internal fun LithicNavigation(
             is ProjectMoneyCorrection -> model.startCorrectMoney(route.id, route.eventId)
             is ProjectDelete -> model.startDelete(route.id)
             SubscriptionList -> subscriptionModel.loadList()
+            SubscriptionHistory -> subscriptionModel.loadStoppedHistory()
             CreateSubscription -> subscriptionModel.startCreate()
             is SubscriptionDetail -> subscriptionModel.openDetail(route.id)
-            is ConfirmSubscriptionRenewal -> subscriptionModel.startRenewal(route.id)
+            is ConfirmSubscriptionRenewal -> subscriptionModel.startRenewal(route.id, route.origin.name)
+            is ChangeSubscriptionState -> subscriptionModel.startStateAction(route.id, when (route.action) {
+                SubscriptionAction.PAUSE -> SubscriptionStateAction.PAUSE
+                SubscriptionAction.RESUME -> SubscriptionStateAction.RESUME
+                SubscriptionAction.REOPEN -> SubscriptionStateAction.REOPEN
+                SubscriptionAction.STOP -> SubscriptionStateAction.STOP_AT_END
+            }, route.origin.name)
+            is CorrectSubscriptionState -> subscriptionModel.startCorrectState(route.id, route.stateId, route.origin.name)
+            is CancelSubscriptionStop -> subscriptionModel.startCancelStop(route.id, route.stateId, route.origin.name)
+            is CorrectSubscriptionRenewal -> subscriptionModel.startCorrectRenewal(route.id, route.renewalId, route.origin.name)
+            is DeleteSubscriptionRenewal -> subscriptionModel.startDeleteRenewal(route.id, route.renewalId, route.origin.name)
             else -> Unit
         }
     }
@@ -130,21 +146,28 @@ internal fun LithicNavigation(
     LaunchedEffect(projects.committedProjectId, subscriptionLeave) {
         projects.committedProjectId?.let { id ->
             if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
-            navigate(canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last()))))
+            val target = canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last())))
+            if (subscriptionLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            navigate(target)
             model.consumeCommitted()
         }
     }
     LaunchedEffect(projects.deletedProjectId, subscriptionLeave) {
         projects.deletedProjectId?.let {
             if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
-            navigate(canonicalBackStack(if (projectOrigin(routes.last()) == ProjectOrigin.HISTORY) ProjectHistory else ProjectList))
+            val target = canonicalBackStack(if (projectOrigin(routes.last()) == ProjectOrigin.HISTORY) ProjectHistory else ProjectList)
+            if (subscriptionLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            navigate(target)
             model.consumeDeleted()
         }
     }
     LaunchedEffect(subscriptions.committedSubscriptionId, projectLeave) {
         subscriptions.committedSubscriptionId?.let { id ->
             if (projectLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
-            navigate(canonicalBackStack(SubscriptionDetail(id)))
+            val origin = SubscriptionOrigin.entries.firstOrNull { it.name == subscriptions.committedOrigin } ?: SubscriptionOrigin.CURRENT
+            val target = canonicalBackStack(SubscriptionDetail(id, origin))
+            if (projectLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            navigate(target)
             subscriptionModel.consumeCommitted()
         }
     }
@@ -179,7 +202,8 @@ internal fun LithicNavigation(
                 entryProvider = entryProvider<NavKey> {
                     entry<Home> { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
                         subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }) }
-                    entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) }) }
+                    entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
+                        onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) }) }
                     entry<Settings> { SettingsShell(state.recordZone) }
                     entry<ProjectList> {
                         ProjectListScreen(projects.list, onBack, onCreate = { requestLeave(listOf(Home, ProjectList, CreateProject)) },
@@ -233,15 +257,33 @@ internal fun LithicNavigation(
                             subscriptionModel::changePaidOn, subscriptionModel::changeEffectiveFrom, subscriptionModel::changePaidUntil,
                             subscriptionModel::changeReminderDue, subscriptionModel::save, subscriptionModel::retryRead) }
                     }
-                    entry<SubscriptionDetail> {
-                        SubscriptionDetailScreen(subscriptions.detail, onBack, { requestLeave(canonicalBackStack(ConfirmSubscriptionRenewal(it.id))) },
-                            subscriptionModel::loadMoreHistory, subscriptionModel::retryRead)
+                    entry<SubscriptionHistory> {
+                        SubscriptionHistoryScreen(subscriptions.stoppedHistory, onBack,
+                            { requestLeave(canonicalBackStack(SubscriptionDetail(it, SubscriptionOrigin.HISTORY))) },
+                            subscriptionModel::loadMoreStoppedHistory, subscriptionModel::retryRead)
+                    }
+                    entry<SubscriptionDetail> { route ->
+                        fun stateAction(action: SubscriptionAction) = requestLeave(canonicalBackStack(ChangeSubscriptionState(route.id, action, route.origin)))
+                        SubscriptionDetailScreen(subscriptions.detail, onBack, { requestLeave(canonicalBackStack(ConfirmSubscriptionRenewal(route.id, route.origin))) },
+                            subscriptionModel::loadMoreHistory, subscriptionModel::retryRead,
+                            onPause = { stateAction(SubscriptionAction.PAUSE) }, onResume = { stateAction(SubscriptionAction.RESUME) },
+                            onStop = { stateAction(SubscriptionAction.STOP) }, onReopen = { stateAction(SubscriptionAction.REOPEN) },
+                            onCorrectState = { requestLeave(canonicalBackStack(CorrectSubscriptionState(route.id, it, route.origin))) },
+                            onCancelStop = { requestLeave(canonicalBackStack(CancelSubscriptionStop(route.id, it, route.origin))) },
+                            onCorrectRenewal = { requestLeave(canonicalBackStack(CorrectSubscriptionRenewal(route.id, it, route.origin))) },
+                            onDeleteRenewal = { requestLeave(canonicalBackStack(DeleteSubscriptionRenewal(route.id, it, route.origin))) },
+                            backLabel = if (route.origin == SubscriptionOrigin.HISTORY) "返回已停止订阅" else "返回订阅列表")
                     }
                     entry<ConfirmSubscriptionRenewal> {
                         subscriptions.editor?.let { editor -> RenewalEditorScreen(editor, onBack, subscriptionModel::changeAmount, subscriptionModel::changeCycle,
                             subscriptionModel::changePaidOn, subscriptionModel::changeEffectiveFrom, subscriptionModel::changePaidUntil,
                             subscriptionModel::changeReminderDue, subscriptionModel::save, subscriptionModel::retryRead) }
                     }
+                    entry<ChangeSubscriptionState> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
+                    entry<CorrectSubscriptionState> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
+                    entry<CancelSubscriptionStop> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
+                    entry<CorrectSubscriptionRenewal> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
+                    entry<DeleteSubscriptionRenewal> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
                 })
         }
     }
@@ -251,7 +293,8 @@ internal fun LithicNavigation(
             confirmButton = { TextButton(onClick = {
                 pendingLeave = null
                 if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision()) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
-                else { model.discardForm(); subscriptionModel.discardForm(); navigate(target) }
+                else { model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
+                    model.discardForm(); subscriptionModel.discardForm(); navigate(target) }
             }, modifier = Modifier.testTag("discard-confirm")) { Text("放弃修改") } },
             dismissButton = { TextButton(onClick = { pendingLeave = null }, modifier = Modifier.testTag("discard-keep")) { Text("继续编辑") } })
     }
@@ -269,16 +312,50 @@ internal fun LithicNavigation(
                     projects.deleteConfirmation != null -> ProjectDelete(projects.deleteConfirmation!!.projectId, origin)
                     else -> null
                 } else null
-                val subscriptionRecovery: NavKey? = if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) subscriptions.editor?.let {
-                    if (it.kind == SubscriptionEditorKind.CREATE) CreateSubscription else ConfirmSubscriptionRenewal(it.subscriptionId)
-                } else null
+                val subscriptionRecovery: NavKey? = if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) subscriptionRecoveryRoute(subscriptions) else null
                 val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery).filter { it != routes.last() }
                 Column { recoveryTargets.forEach { recovery ->
                     TextButton(onClick = { pendingWarning = false; navigate(canonicalBackStack(recovery)) },
                         modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else "pending-submit-return-to-project")) {
-                        Text(if (recovery == subscriptionRecovery) "返回待核对付款" else "返回待核对项目")
+                        Text(if (recovery == subscriptionRecovery) "返回待核对订阅记录" else "返回待核对项目")
                     }
                 } }
             })
+    }
+}
+
+@Composable
+private fun SubscriptionOperationContent(state: SubscriptionUiState, model: SubscriptionViewModel, onBack: () -> Unit) {
+    state.editor?.let { editor ->
+        RenewalEditorScreen(editor, onBack, model::changeAmount, model::changeCycle, model::changePaidOn, model::changeEffectiveFrom,
+            model::changePaidUntil, model::changeReminderDue, model::save, model::retryRead)
+    }
+    state.stateEditor?.let { editor ->
+        SubscriptionStateDialog(editor, onBack, model::changeStateEffectiveOn, model::changeStateReason, model::changeStateNote,
+            model::changeStateValue, model::changeStopEarly, model::save, model::retryRead)
+    }
+}
+
+private fun subscriptionRecoveryRoute(state: SubscriptionUiState): NavKey? {
+    state.stateEditor?.let { editor ->
+        val origin = SubscriptionOrigin.entries.firstOrNull { it.name == editor.origin } ?: SubscriptionOrigin.CURRENT
+        return when (editor.kind) {
+            SubscriptionStateEditorKind.STATE -> ChangeSubscriptionState(editor.subscriptionId, when (editor.action) {
+                "PAUSE" -> SubscriptionAction.PAUSE; "RESUME" -> SubscriptionAction.RESUME; "REOPEN" -> SubscriptionAction.REOPEN; else -> SubscriptionAction.STOP
+            }, origin)
+            SubscriptionStateEditorKind.CORRECT_STATE -> CorrectSubscriptionState(editor.subscriptionId, editor.targetFactId, origin)
+            SubscriptionStateEditorKind.CANCEL_STOP -> CancelSubscriptionStop(editor.subscriptionId, editor.targetFactId, origin)
+            SubscriptionStateEditorKind.DELETE_RENEWAL -> DeleteSubscriptionRenewal(editor.subscriptionId, editor.targetFactId, origin)
+        }
+    }
+    return state.editor?.let { editor ->
+        val origin = SubscriptionOrigin.entries.firstOrNull { it.name == editor.origin } ?: SubscriptionOrigin.CURRENT
+        when (editor.kind) {
+            SubscriptionEditorKind.CREATE -> CreateSubscription
+            SubscriptionEditorKind.RENEWAL -> ConfirmSubscriptionRenewal(editor.subscriptionId, origin)
+            SubscriptionEditorKind.CORRECT_RENEWAL -> CorrectSubscriptionRenewal(editor.subscriptionId, editor.renewalId, origin)
+            SubscriptionEditorKind.REENABLE -> ChangeSubscriptionState(editor.subscriptionId,
+                if (editor.reenableAction == "RESUME") SubscriptionAction.RESUME else SubscriptionAction.REOPEN, origin)
+        }
     }
 }

@@ -7,7 +7,38 @@ import com.cooper.lithic.domain.subscription.BillingCycle
 import com.cooper.lithic.feature.project.SubmissionPhase
 import java.time.LocalDate
 
-enum class SubscriptionEditorKind { CREATE, RENEWAL }
+enum class SubscriptionEditorKind { CREATE, RENEWAL, CORRECT_RENEWAL, REENABLE }
+
+enum class SubscriptionStateEditorKind { STATE, CORRECT_STATE, CANCEL_STOP, DELETE_RENEWAL }
+
+data class SubscriptionStateEditorUiState(
+    val kind: SubscriptionStateEditorKind = SubscriptionStateEditorKind.STATE,
+    val subscriptionId: String = "",
+    val serviceName: String = "",
+    val action: String = "PAUSE",
+    val origin: String = "CURRENT",
+    val effectiveOn: String = "",
+    val stateValue: String = "PAUSED",
+    val reason: String = "",
+    val note: String = "",
+    val fixedStopOn: String? = null,
+    val targetFactId: String = "",
+    val renewalAmount: String = "",
+    val renewalPaidOn: String = "",
+    val today: LocalDate? = null,
+    val phase: SubmissionPhase = SubmissionPhase.IDLE,
+    val dirty: Boolean = false,
+    val loading: Boolean = false,
+    val errors: Map<String, String> = emptyMap(),
+    val message: String? = null,
+    val conflict: Boolean = false,
+    val needsInitialRead: Boolean = false,
+    val verifiedCannotWrite: Boolean = false,
+    val lastPayment: Boolean = false,
+) {
+    val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
+    val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE && !conflict && !needsInitialRead && !verifiedCannotWrite
+}
 
 data class SubscriptionEditorUiState(
     val kind: SubscriptionEditorKind = SubscriptionEditorKind.CREATE,
@@ -31,6 +62,10 @@ data class SubscriptionEditorUiState(
     val conflict: Boolean = false,
     val needsInitialRead: Boolean = false,
     val verifiedCannotWrite: Boolean = false,
+    val origin: String = "CURRENT",
+    val renewalId: String = "",
+    val fixedStopOn: String? = null,
+    val reenableAction: String? = null,
 ) {
     val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
     val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE && !conflict && !needsInitialRead && !verifiedCannotWrite
@@ -67,5 +102,8 @@ data class SubscriptionUiState(
     val detail: SubscriptionDetailUiState = SubscriptionDetailUiState(),
     val editor: SubscriptionEditorUiState? = null,
     val committedSubscriptionId: String? = null,
+    val stateEditor: SubscriptionStateEditorUiState? = null,
+    val stoppedHistory: SubscriptionListUiState = SubscriptionListUiState(),
+    val committedOrigin: String? = null,
 )
 

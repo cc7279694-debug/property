@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "E:\CODEX\砺石新APP\build\m09-evidence\qa_remaining.py", line 65, in <module>
+    set_payment('真实付款日期','2026-03-02')
+  File "E:\CODEX\砺石新APP\build\m09-evidence\qa_remaining.py", line 33, in set_payment
+    ui.field(label, value)
+  File "E:\CODEX\砺石新APP\build\m09-evidence\journey_support.py", line 74, in field
+    raise AssertionError('Visible input not found: '+label)
+AssertionError: Visible input not found: 真实付款日期

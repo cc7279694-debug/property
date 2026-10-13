@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" tests="9" failures="1" errors="0" skipped="0" time="52.052" timestamp="2026-10-13T05:28:15" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="expiry_needs_no_worker" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="6.57" />
+  <testcase name="cancel_renewal_keeps_paid_access" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="10.892" />
+  <testcase name="future_prepaid_has_own_label" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="5.647" />
+  <testcase name="stop_reason_does_not_cancel_vendor" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="4.799" />
+  <testcase name="pause_is_not_history" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="8.173" />
+  <testcase name="payment_history_correction_and_delete_require_visible_confirmation" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="5.833" />
+  <testcase name="resume_without_new_payment" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="9.057" />
+  <testcase name="committed_later_facts_require_explicit_current_read_and_safe_conflict_exit" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.283">
+    <failure>java.lang.AssertionError: A successful read with later changed facts must be distinct from a read failure
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$committed_later_facts_require_explicit_current_read_and_safe_conflict_exit$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:314)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.committed_later_facts_require_explicit_current_read_and_safe_conflict_exit(M09SubscriptionLifecycleViewModelTest.kt:295)
+</failure>
+  </testcase>
+  <testcase name="slow_committed_read_cannot_redirect_a_later_opened_detail" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.137" />
+</testsuite>

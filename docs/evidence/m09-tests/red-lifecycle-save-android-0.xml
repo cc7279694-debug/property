@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" tests="58" failures="16" errors="0" skipped="0" time="12.312" timestamp="2026-10-13T05:05:51" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="renewal_correction_validates_positive_amount_cycle_dates_and_preserved_identities" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.477" />
+  <testcase name="early_stop_rejects_past_dates_and_preserves_purchased_totals_when_valid" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.107" />
+  <testcase name="renewal_amount_correction_updates_original_fact_and_exact_target_replays" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.161" />
+  <testcase name="default_stop_rejects_an_earlier_period_boundary_instead_of_silently_truncating" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.135" />
+  <testcase name="corrupt_facts_outside_visible_management_page_are_not_hidden_by_filter_or_limit" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.132" />
+  <testcase name="pause_saves_exact_state_identity_without_changing_real_payments" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.102" />
+  <testcase name="concurrent_identical_pause_commands_save_only_one_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.321" />
+  <testcase name="deleting_last_payment_is_rejected_without_deleting_subscription_identity" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.154" />
+  <testcase name="default_stop_is_fixed_at_latest_prepaid_boundary_and_keeps_history" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.43" />
+  <testcase name="cancel_stop_cannot_delete_already_effective_stop_or_stale_target" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.628" />
+  <testcase name="resume_with_current_coverage_keeps_old_payment_and_counts_only_enabled_dates" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.166" />
+  <testcase name="state_date_correction_into_existing_day_conflicts_without_changing_either_row" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.183" />
+  <testcase name="real_sqlite_state_failure_rolls_back_atomic_reopen_payment_and_state" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.199" />
+  <testcase name="stale_payment_correction_cannot_overwrite_later_state_or_payment_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.139" />
+  <testcase name="changed_payment_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.137" />
+  <testcase name="later_state_fact_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.145" />
+  <testcase name="same_day_resume_corrects_original_id_and_operation_instead_of_appending" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.105" />
+  <testcase name="all_expired_payments_default_to_business_today_without_backdating" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.164" />
+  <testcase name="management_sql_pagination_fills_filtered_pages_and_rebuilds_complete_window" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="1.411" />
+  <testcase name="cancel_future_stop_deletes_only_target_and_retry_reports_current_absence" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.169" />
+  <testcase name="ordinary_new_renewal_cannot_cross_fixed_future_stop_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.104" />
+  <testcase name="reopen_with_only_future_paid_coverage_is_expired_until_real_start" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.167" />
+  <testcase name="real_sqlite_after_delete_failure_rolls_back_the_entire_delete" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.137" />
+  <testcase name="closed_database_management_read_and_lifecycle_write_have_explicit_failures" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.131" />
+  <testcase name="fixed_default_stop_command_replays_across_days_without_moving_saved_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.163" />
+  <testcase name="correction_expanding_coverage_after_fixed_stop_requires_explicit_plan_change" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.102" />
+  <testcase name="stale_delete_cannot_remove_corrected_payment" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.133" />
+  <testcase name="same_day_replacement_with_new_row_or_operation_identity_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.072" />
+  <testcase name="renewal_overlap_correction_is_rejected_before_any_partial_update" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.104" />
+  <testcase name="exact_saved_state_can_replay_after_database_reopen_without_new_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.14" />
+  <testcase name="deleting_one_erroneous_payment_keeps_service_and_fixed_state_and_reports_absence" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.128" />
+  <testcase name="changed_subscription_identity_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.166" />
+  <testcase name="ordinary_new_renewal_on_stopped_identity_does_not_implicitly_enable_it" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.073" />
+  <testcase name="complete_baseline_comparison_treats_payment_and_state_order_as_sets" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.106" />
+  <testcase name="renewal_history_checks_full_timeline_not_only_visible_payment_row" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.102" />
+  <testcase name="reopen_without_current_or_future_payment_requires_real_confirmation" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.078" />
+  <testcase name="paid_coverage_gap_still_uses_latest_confirmed_end_for_default_stop" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.134" />
+  <testcase name="atomic_reopen_with_real_renewal_keeps_subscription_id_and_supports_exact_replay" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.106" />
+  <testcase name="management_and_stopped_queries_use_observation_day_last_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.228" />
+  <testcase name="scheduled_stop_correction_preserves_original_id_operation_and_other_history" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.103" />
+  <testcase name="reused_state_operation_with_different_contents_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.103" />
+  <testcase name="amount_only_correction_keeps_existing_coverage_truncated_by_early_plan" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.106" />
+  <testcase name="cancel_future_stop_deletes_only_target_and_preserves_other_facts" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.254">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$cancel_future_stop_deletes_only_target_and_preserves_other_facts$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:167)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.cancel_future_stop_deletes_only_target_and_preserves_other_facts(M09SubscriptionLifecycleViewModelTest.kt:163)
+</failure>
+  </testcase>
+  <testcase name="state_history_correction_keeps_original_row_and_operation_identity" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.101">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$state_history_correction_keeps_original_row_and_operation_identity$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:155)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.state_history_correction_keeps_original_row_and_operation_identity(M09SubscriptionLifecycleViewModelTest.kt:150)
+</failure>
+  </testcase>
+  <testcase name="payment_correction_updates_original_fact_without_appending_or_changing_operation" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.154">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$payment_correction_updates_original_fact_without_appending_or_changing_operation$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:179)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.payment_correction_updates_original_fact_without_appending_or_changing_operation(M09SubscriptionLifecycleViewModelTest.kt:175)
+</failure>
+  </testcase>
+  <testcase name="uncovered_reopen_requires_explicit_amount_and_paid_date_without_prefill" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.129">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$uncovered_reopen_requires_explicit_amount_and_paid_date_without_prefill$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:72)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.uncovered_reopen_requires_explicit_amount_and_paid_date_without_prefill(M09SubscriptionLifecycleViewModelTest.kt:69)
+</failure>
+  </testcase>
+  <testcase name="only_future_paid_reopen_records_enabled_but_keeps_expired_and_payment_count" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.121">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$only_future_paid_reopen_records_enabled_but_keeps_expired_and_payment_count$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:112)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.only_future_paid_reopen_records_enabled_but_keeps_expired_and_payment_count(M09SubscriptionLifecycleViewModelTest.kt:106)
+</failure>
+  </testcase>
+  <testcase name="committed_state_read_failure_only_rereads_without_writing_again" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.116">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$committed_state_read_failure_only_rereads_without_writing_again$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:265)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.committed_state_read_failure_only_rereads_without_writing_again(M09SubscriptionLifecycleViewModelTest.kt:250)
+</failure>
+  </testcase>
+  <testcase name="explicit_delete_error_payment_removes_one_row_and_recomputes_without_refund" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.116">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$explicit_delete_error_payment_removes_one_row_and_recomputes_without_refund$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:192)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.explicit_delete_error_payment_removes_one_row_and_recomputes_without_refund(M09SubscriptionLifecycleViewModelTest.kt:188)
+</failure>
+  </testcase>
+  <testcase name="default_stop_uses_last_confirmed_prepaid_boundary_and_preserves_money" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.115">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$default_stop_uses_last_confirmed_prepaid_boundary_and_preserves_money$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:125)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.default_stop_uses_last_confirmed_prepaid_boundary_and_preserves_money(M09SubscriptionLifecycleViewModelTest.kt:122)
+</failure>
+  </testcase>
+  <testcase name="inflight_state_locks_duplicate_save_and_preserves_reason_and_target" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.125">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$inflight_state_locks_duplicate_save_and_preserves_reason_and_target$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:284)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.inflight_state_locks_duplicate_save_and_preserves_reason_and_target(M09SubscriptionLifecycleViewModelTest.kt:275)
+</failure>
+  </testcase>
+  <testcase name="uncovered_reopen_explicit_payment_and_enabled_commit_under_same_identity" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.103">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$uncovered_reopen_explicit_payment_and_enabled_commit_under_same_identity$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:88)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.uncovered_reopen_explicit_payment_and_enabled_commit_under_same_identity(M09SubscriptionLifecycleViewModelTest.kt:85)
+</failure>
+  </testcase>
+  <testcase name="lost_state_result_restores_same_immutable_command_and_replays_without_duplicates" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.194">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$lost_state_result_restores_same_immutable_command_and_replays_without_duplicates$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:220)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.lost_state_result_restores_same_immutable_command_and_replays_without_duplicates(M09SubscriptionLifecycleViewModelTest.kt:211)
+</failure>
+  </testcase>
+  <testcase name="explicit_pause_saves_one_state_and_preserves_all_payment_facts" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.24">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$explicit_pause_saves_one_state_and_preserves_all_payment_facts$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:45)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.explicit_pause_saves_one_state_and_preserves_all_payment_facts(M09SubscriptionLifecycleViewModelTest.kt:42)
+</failure>
+  </testcase>
+  <testcase name="covered_resume_corrects_same_day_boundary_without_new_payment" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.156">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$covered_resume_corrects_same_day_boundary_without_new_payment$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:59)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.covered_resume_corrects_same_day_boundary_without_new_payment(M09SubscriptionLifecycleViewModelTest.kt:55)
+</failure>
+  </testcase>
+  <testcase name="explicit_early_stop_keeps_original_payments_and_future_fixed_plan" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.164">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$explicit_early_stop_keeps_original_payments_and_future_fixed_plan$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:140)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.explicit_early_stop_keeps_original_payments_and_future_fixed_plan(M09SubscriptionLifecycleViewModelTest.kt:137)
+</failure>
+  </testcase>
+  <testcase name="mismatched_saved_state_identity_remains_pending_and_cannot_navigate" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.152">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$mismatched_saved_state_identity_remains_pending_and_cannot_navigate$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:243)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.mismatched_saved_state_identity_remains_pending_and_cannot_navigate(M09SubscriptionLifecycleViewModelTest.kt:234)
+</failure>
+  </testcase>
+  <testcase name="last_payment_delete_is_locked_and_explained_without_destroying_identity" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.23">
+    <failure>java.lang.AssertionError: The actual requested operation must synchronously create the only active form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertNotNull(Assert.java:713)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.start(M09SubscriptionLifecycleViewModelTest.kt:303)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.access$start(M09SubscriptionLifecycleViewModelTest.kt:36)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$last_payment_delete_is_locked_and_explained_without_destroying_identity$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:203)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.last_payment_delete_is_locked_and_explained_without_destroying_identity(M09SubscriptionLifecycleViewModelTest.kt:200)
+</failure>
+  </testcase>
+</testsuite>

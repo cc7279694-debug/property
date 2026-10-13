@@ -2,11 +2,11 @@
 
 纯本地 Android 长期成本记录 App，观察具体项目的陪伴时间、真实投入和日均成本。
 
-M00～M07已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES。当前 **M08 — READY_FOR_REVIEW，独立验收 PENDING**，只接入固定周期订阅、用户确认的真实续费及Room v1→v2无损迁移，见[M08契约](docs/planning/M08_CONTRACT.md)与[当前状态](docs/CURRENT_STATE.md)。原359方法、schema v1和历史证据继承；86 JVM＋369 Android＝455 个唯一方法实际通过，完整证据见[M08报告](docs/evidence/M08-verification.md)，M09及后续未授权。
+M00～M08已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES。当前 **M09 — READY_FOR_REVIEW，独立验收PENDING**，完成订阅暂停/恢复/到期/停止、原身份重新开通及付款纠错/安全删除；Room v2/冻结领域/owner/工具链保持。最终86 JVM＋463 Android＝549唯一方法PASS（旧455＋新94），完整证据见[M09报告](docs/evidence/M09-verification.md)、[M09契约](docs/planning/M09_CONTRACT.md)与[当前状态](docs/CURRENT_STATE.md)。M10及后续未授权。
 
 ## 工程入口与本地构建
 
-工程为单 `:app` 原生模块，业务页面由 MainActivity 承载。正式 applicationId 为 `com.cooper.lithic`，Debug 为 `com.cooper.lithic.debug`；保留临时工程图标。M00～M07已独立冻结，M08获准实施后等待独立验收。Debug 合并清单另含exported非launcher空ComponentActivity测试宿主；Release产物仍NOT_RUN。完整备份恢复尚未交付，仅使用合成或可丢弃数据。
+工程为单 `:app` 原生模块，业务页面由 MainActivity 承载。正式 applicationId 为 `com.cooper.lithic`，Debug 为 `com.cooper.lithic.debug`；保留临时工程图标。M00～M08已独立冻结，M09实施验证后等待独立验收。Debug 合并清单另含exported非launcher空ComponentActivity测试宿主；Release产物仍NOT_RUN。完整备份恢复尚未交付，仅使用合成或可丢弃数据。
 
 使用本机 JDK 17 和 Android SDK，按[工具链锁定记录](docs/TOOLCHAIN_LOCK.md)配置环境。SDK 路径写入未跟踪的 `local.properties`；不要提交本机路径配置、签名密钥、缓存或 APK。根目录构建入口：
 
@@ -25,7 +25,8 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 |---|---|
 | 项目是什么、明确不做什么 | [PROJECT.md](PROJECT.md) |
 | Codex 工作规则与恢复顺序 | [AGENTS.md](AGENTS.md) |
-| M08 当前契约、验证与全部文件 | [契约](docs/planning/M08_CONTRACT.md) / [报告](docs/evidence/M08-verification.md) / [JSON](docs/evidence/M08-verification.json) / [文件](docs/evidence/M08-files.md) / [checkpoint](docs/checkpoints/2026-10-13-M08.md) |
+| M08 历史契约、验证与全部文件 | [契约](docs/planning/M08_CONTRACT.md) / [报告](docs/evidence/M08-verification.md) / [JSON](docs/evidence/M08-verification.json) / [文件](docs/evidence/M08-files.md) / [checkpoint](docs/checkpoints/2026-10-13-M08.md) |
+| M09 当前契约、验证与全部文件 | [契约](docs/planning/M09_CONTRACT.md) / [报告](docs/evidence/M09-verification.md) / [JSON](docs/evidence/M09-verification.json) / [文件](docs/evidence/M09-files.md) / [checkpoint](docs/checkpoints/2026-10-13-M09.md) |
 | 当前进度与阻塞 | [CURRENT_STATE.md](docs/CURRENT_STATE.md) |
 | M00～M23 顺序、边界与阶段门槛 | [ROADMAP.md](docs/ROADMAP.md) |
 | 已继承的决定与变更记录 | [DECISIONS.md](docs/DECISIONS.md) |
@@ -51,4 +52,4 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 
 原始[阅读版](LITHIC_V1_产品与开发规划.md)、[完整ZIP](docs/planning/original-v1/source.zip)和[解包原件](docs/planning/original-v1/lithic_v1_plan/README.md)均保留来源字节。24份计划、130条原案例和6份规格通过规划入口访问；原件中的AGENTS/状态不是当前执行指令或状态。Q02/Q07 在 M02 获得的用户确认解释继承当前决策，不改写原件；各轮实际结果仅写入当前验收登记。
 
-M07已独立冻结；本轮M08交付后停止等独立验收，M09尚未授权。原43份规划、130条案例及16组完整跨模块补测原件保持，原案例/完整补测仍 NOT_RUN；当前模块实际结果另行登记，原件不改PASS；M05原200项PASS及3项补测保留为历史，M06实际结果另行登记。完整备份格式和覆盖恢复仍归 M11/M12，Q06保持 ENGINEERING_REQUIRED，Q03～Q05期限及M09两项流程风险不变；不因初始底座冻结而关闭未来验证，不为演示新增虚构记录或无动作按钮。
+M09交付后立即停止等待ChatGPT独立验收，M10尚未授权。原43份规划/24计划、130 NOT_RUN案例及16组完整跨模块边界、历次报告/XML/checkpoint及独立NOTES不可改写；本轮实际结果另登记。Q03～Q06期限保持，M09两项流程风险仅按用户A/B正式确认及本轮实际验证关闭。完整备份恢复仍归M11/M12，Debug不用于不可丢失个人记录；不把模拟器/已保存任务恢复推广成真机、OEM或真实LMK验证。

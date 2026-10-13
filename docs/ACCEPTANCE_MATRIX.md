@@ -564,3 +564,29 @@ Task3038已STOPPED/HaveState=true/Bundle6360bytes后UID SIGKILL，旧PID14365消
 8. **历史 NOTES、归档与未来边界：**原有全部历史 NOTES、原130条 NOT_RUN 归档案例及16组完整跨模块验收边界保持不变；旧报告/JSON/XML/截图及历史 checkpoint 保留原字节和当时状态。继续保留 M07 ProjectAbsent 仅证明当前不存在、多条旧 END_SETTLEMENT 冲突且无自动修复、M10 媒体生命周期、SQLite 满页可能表现 DATABASE、分页非长期性能基准及原20条 Lint 提示。不因本轮回写重跑、改写或把后续未执行项标 PASS；TypeScript/ESLint 不适用，NO-SOURCE 不计 PASS。
 
 本节正式结论取代 M08 此前 READY_FOR_REVIEW / PENDING 的当前效力；上节执行验收及原报告/checkpoint保留当时状态。本次仅更新唯一 CURRENT_STATE 与本登记，检查 Git 差异、文件链接、敏感信息、工作区及历史资料保护后，提交并推送 `feat/m08-subscription-renewals`。回写提交自身 SHA、推送及远端一致以实际 Git 日志/最终回执核对，避免递归自引用。不修改业务代码、WHOCARE、原规划或旧证据，不合并 main、不 force、不进入 M09；完成后立即停止。
+
+
+## M09 当前执行登记（2026-10-13，READY_FOR_REVIEW）
+
+用户正式授权完整附件SHA-256 `d83fb2d77190b0c49df8b5adf9a6e13c8cae8ca203513f9f5e98b0729350eaab`。起点M08冻结回写 `0063ca504ca48ef9c7231d79dc155e9bf4bc8c82`、来源feat/m08-subscription-renewals，本轮仅feat/m09-subscription-lifecycle。开工本地/远端一致、干净、目标不存在；[M09契约](planning/M09_CONTRACT.md)和A/B正式规则先于实现登记。
+
+| 案例 | 当前实际执行 | 证据与边界 |
+|---|---|---|
+| M09-T01 expiry_needs_no_worker | PASS | 正式Room/Flow固定Clock在排他边界EXPIRED/0/null，无自动付款/状态；实际guest跨日至3/1及断网冷启 |
+| M09-T02 cancel_renewal_keeps_paid_access | PASS | 默认双期最晚边界、空档/全部到期/提前停止、固定计划冲突及跨日重放；实际3/1边界STOPPED、修正/取消不改原付款 |
+| M09-T03 pause_is_not_history | PASS | asOf SQL分页筛选/正式当前三分组与停止历史、原ID重开、历史观察/有效天数；未来停止不提前归档 |
+| M09-T04 resume_without_new_payment | PASS | 覆盖内恢复零付款，未来已付仍EXPIRED，无覆盖空金额/付款日＋显式付款/ENABLED原子提交与故障回滚；实际240原ID启用 |
+| M09-T05 future_prepaid_has_own_label | PASS | 真实付款paidOn排序/尚未生效标记，状态不覆盖金额/标准时长；实际预付1/25仍5/天、2/1切6/天 |
+| M09-T06 stop_reason_does_not_cancel_vendor | PASS | 正式服务商说明/原因保存、取消零写/主动确认；最终APK无INTERNET/禁止权限或第三方调用 |
+
+以上为本轮执行证据，原130案例仍NOT_RUN，原43原件/24计划/16组跨模块边界及旧报告/checkpoint字节保持。不是独立验收；**M09独立PENDING，未自授ACCEPTED/FROZEN，M10未授权**。
+
+最终四任务退出0、**Gradle日志13m 24s，命令墙钟805.631秒，86 JVM＋463 Android＝549唯一方法PASS，0失败/错误/跳过；旧455身份完整、新94（47Repository＋47UI/VM/Nav/Flow），源码/XML EXACT MATCH，128构建输入哈希一致**。Lint0errors/20warnings、assemble完成，122运行依赖无变化。早期RED、runner void错误、两次全量失败及限定复验全部保留，四旧测试仅加强实际驱动/接口/目标同步，原方法/业务断言/超时不降级。
+
+完整22项风险逐方法映射、真实SQLite故障/并发/幂等/陈旧CAS、迟到读保护、所有执行阶段、最终APK及专用API36证据见[M09报告](evidence/M09-verification.md)、[JSON](evidence/M09-verification.json)、[文件](evidence/M09-files.md)和[checkpoint](checkpoints/2026-10-13-M09.md)。code7 APK 12,521,904 bytes、SHA256 becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2，真实旅程同字节，签名/权限/九域排除/生产打包已检查。最终手工安装为code7→7覆盖；第一次code6→7发生于此前仪器部署，不改写升级时间点。
+
+实际设备：仅API36 emulator-5596，合成服务状态全旅程/付款纠错删除、断网跨日、固定recordZone、360dp200%/IME/旋转/手势返回、系统已保存同任务SIGKILL/Recents；旧七表逐字段相同、generation/ready/settings不变，临时设置及实际UTC恢复。原DB/WAL/SHM/preferences/APK/密钥不入Git，公开证据只含合成M09事实/计数/哈希/截图。
+
+保留NOTES：CurrentAbsence仅当前缺失，不是永久操作日志；全量坏数据预检50身份批次但O(total facts)，单服务历史完整加载，不是长期性能基准；SavedState只覆盖已保存任务，不保证force-stop/断电/真实LMK；SQLite空间不足可能表现DATABASE。真机/API26/OEM/Release正式签名/完整TalkBack/真实LMK、M11/M12完整备份恢复及Q06故障回退仍NOT_RUN，Debug不用不可丢失个人记录。Q03～Q06状态期限、Q02未来集成、M04残留generation、M08后续schema预检、M07原删除/媒体边界及全部历史独立NOTES保持。M09两项用户已确认流程风险只按本轮实测关闭，不关闭提醒资格或未来模块。
+
+只提交/推送feat/m09-subscription-lifecycle，自身提交SHA与实际推送依据Git日志/回执，避免递归自引用。不合并main、不force、不自动PR/公开APK、不进入M10；交付后停止。

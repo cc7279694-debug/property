@@ -1,0 +1,40 @@
+10-13 05:21:38.787 18557 18571 I TestRunner: started: initializationError(com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest)
+10-13 05:21:38.791 18557 18571 E TestRunner: failed: initializationError(com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest)
+10-13 05:21:38.797 18557 18571 E TestRunner: ----- begin exception -----
+10-13 05:21:38.797 18557 18571 E TestRunner: java.lang.RuntimeException: Failed to instantiate test runner class androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+10-13 05:21:38.797 18557 18571 E TestRunner:
+10-13 05:21:38.797 18557 18571 E TestRunner:
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.ext.junit.runners.AndroidJUnit4.throwInitializationError(AndroidJUnit4.java:129)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.ext.junit.runners.AndroidJUnit4.loadRunner(AndroidJUnit4.java:121)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.ext.junit.runners.AndroidJUnit4.loadRunner(AndroidJUnit4.java:82)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.ext.junit.runners.AndroidJUnit4.<init>(AndroidJUnit4.java:56)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at org.junit.internal.builders.AnnotatedBuilder.buildRunner(AnnotatedBuilder.java:104)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at org.junit.internal.builders.AnnotatedBuilder.runnerForClass(AnnotatedBuilder.java:86)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.internal.runner.junit4.AndroidAnnotatedBuilder.runnerForClass(AndroidAnnotatedBuilder.java:70)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:70)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:37)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.internal.runner.AndroidRunnerBuilder.runnerForClass(AndroidRunnerBuilder.java:152)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:70)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.internal.runner.DirectTestLoader.doCreateRunner(DirectTestLoader.java:45)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.internal.runner.TestLoader.getRunnersFor(TestLoader.java:64)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.internal.runner.TestRequestBuilder.build(TestRequestBuilder.java:842)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.runner.AndroidJUnitRunner.buildRequest(AndroidJUnitRunner.java:672)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.runner.AndroidJUnitRunner.onStart(AndroidJUnitRunner.java:453)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2597)
+10-13 05:21:38.797 18557 18571 E TestRunner: Caused by: java.lang.reflect.InvocationTargetException
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at java.lang.reflect.Constructor.newInstance0(Native Method)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.ext.junit.runners.AndroidJUnit4.loadRunner(AndroidJUnit4.java:112)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	... 17 more
+10-13 05:21:38.797 18557 18571 E TestRunner: Caused by: org.junit.runners.model.InvalidTestClassError: Invalid test class 'com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest':
+10-13 05:21:38.797 18557 18571 E TestRunner:   1. Method resume_without_new_payment() should be void
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at org.junit.runners.ParentRunner.validate(ParentRunner.java:525)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at org.junit.runners.ParentRunner.<init>(ParentRunner.java:92)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at org.junit.runners.BlockJUnit4ClassRunner.<init>(BlockJUnit4ClassRunner.java:74)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner.<init>(AndroidJUnit4ClassRunner.java:50)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	at androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner.<init>(AndroidJUnit4ClassRunner.java:55)
+10-13 05:21:38.797 18557 18571 E TestRunner: 	... 20 more
+10-13 05:21:38.797 18557 18571 E TestRunner: ----- end exception -----
+10-13 05:21:38.807 18557 18571 I TestRunner: finished: initializationError(com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest)

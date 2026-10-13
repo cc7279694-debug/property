@@ -24,6 +24,8 @@ import com.cooper.lithic.core.design.AmountText
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.data.local.SubscriptionRenewalEntity
+import com.cooper.lithic.domain.subscription.SubscriptionDisplayStatus
+import com.cooper.lithic.domain.subscription.SubscriptionOperationState
 import java.math.BigDecimal
 import java.time.LocalDate
 
@@ -35,12 +37,21 @@ internal fun SubscriptionDetailScreen(
     onLoadMoreHistory: () -> Unit,
     onRetry: () -> Unit,
     modifier: Modifier = Modifier,
+    onPause: () -> Unit = {},
+    onResume: () -> Unit = {},
+    onStop: () -> Unit = {},
+    onReopen: () -> Unit = {},
+    onCorrectState: (String) -> Unit = {},
+    onCancelStop: (String) -> Unit = {},
+    onCorrectRenewal: (String) -> Unit = {},
+    onDeleteRenewal: (String) -> Unit = {},
+    backLabel: String = "返回订阅列表",
 ) {
     Column(modifier.fillMaxSize().testTag("subscription-detail-screen")) {
         LazyColumn(Modifier.fillMaxSize().testTag("subscription-detail-content"),
             verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
             item { TextButton(onBack, Modifier.padding(horizontal = LithicSpacing.medium).heightIn(min = 48.dp)
-                .testTag("subscription-detail-back")) { Text("返回订阅列表") } }
+                .testTag("subscription-detail-back")) { Text(backLabel) } }
             if (state.loading) item { Text("正在读取订阅", Modifier.padding(LithicSpacing.medium)) }
             state.error?.let { message -> item {
                 Column(Modifier.padding(horizontal = LithicSpacing.medium)) {
@@ -61,6 +72,10 @@ internal fun SubscriptionDetailScreen(
                         Text(subscriptionStatusLabel(detail.cost.displayStatus), Modifier.testTag("subscription-detail-status"),
                             style = MaterialTheme.typography.bodyLarge)
                         Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodyMedium)
+                        if (detail.cost.displayStatus == SubscriptionDisplayStatus.PAUSED && detail.renewals.none {
+                            !it.paidOn.isAfter(detail.asOf) && !it.effectiveFrom.isAfter(detail.asOf) && detail.asOf.isBefore(it.paidUntilExclusive)
+                        }) Text("暂停状态保留；真实付费覆盖已到期，恢复时请核对已付款的未来覆盖或真实续费。",
+                            Modifier.testTag("subscription-detail-paused-expired"), style = MaterialTheme.typography.bodyMedium)
                         Text("历史平均日成本", style = MaterialTheme.typography.bodyMedium)
                         AmountText(detail.cost.historicalAverage, Modifier.testTag("subscription-detail-historical-average"))
                         Text("折算付费时长：${detail.cost.standardPurchasedDays}天",
@@ -96,6 +111,45 @@ internal fun SubscriptionDetailScreen(
                     }
                 }
                 item {
+                    val enabled = !state.loading && state.error == null
+                    Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
+                        verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+                        when (detail.cost.displayStatus) {
+                            SubscriptionDisplayStatus.PAUSED -> OutlinedButton(onResume, Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .testTag("subscription-detail-resume"), enabled) { Text("恢复") }
+                            SubscriptionDisplayStatus.STOPPED -> OutlinedButton(onReopen, Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .testTag("subscription-detail-reopen"), enabled) { Text("重新开通") }
+                            else -> OutlinedButton(onPause, Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .testTag("subscription-detail-pause"), enabled) { Text("暂停") }
+                        }
+                        val scheduled = detail.stateChanges.filter { it.state == SubscriptionOperationState.STOPPED && it.effectiveOn.isAfter(detail.asOf) }
+                            .minByOrNull { it.effectiveOn }
+                        if (detail.cost.displayStatus != SubscriptionDisplayStatus.STOPPED && scheduled == null) OutlinedButton(onStop,
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-detail-stop"), enabled) { Text("停止记录") }
+                        scheduled?.let { stop ->
+                            Text("计划于 ${stop.effectiveOn} 停止。日期已固定，后续付款纠错不会自动调整。",
+                                Modifier.testTag("subscription-detail-scheduled-stop"), style = MaterialTheme.typography.bodyMedium)
+                            OutlinedButton({ onCorrectState(stop.id) }, Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .testTag("subscription-detail-correct-stop"), enabled) { Text("修正停止计划") }
+                            OutlinedButton({ onCancelStop(stop.id) }, Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                                .testTag("subscription-detail-cancel-stop"), enabled) { Text("取消尚未生效的停止计划") }
+                        }
+                    }
+                }
+                if (detail.stateChanges.isNotEmpty()) item {
+                    Column(Modifier.padding(horizontal = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text("状态事实", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
+                        detail.stateChanges.forEach { row ->
+                            Text("${row.effectiveOn} · ${when (row.state) { SubscriptionOperationState.ENABLED -> "已启用"; SubscriptionOperationState.PAUSED -> "已暂停"; SubscriptionOperationState.STOPPED -> "已停止" }}",
+                                Modifier.testTag("subscription-state-row-${row.id}"))
+                            row.reason?.let { Text("原因：$it", style = MaterialTheme.typography.bodyMedium) }
+                            row.note?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
+                            TextButton({ onCorrectState(row.id) }, Modifier.heightIn(min = 48.dp).testTag("subscription-state-correct-${row.id}"),
+                                enabled = !state.loading && state.error == null) { Text("修正这条状态事实") }
+                        }
+                    }
+                }
+                item {
                     Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                         verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                         Text("累计已确认实际付款", style = MaterialTheme.typography.bodyMedium)
@@ -111,7 +165,7 @@ internal fun SubscriptionDetailScreen(
                             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
-                item {
+                if (detail.cost.displayStatus != SubscriptionDisplayStatus.STOPPED) item {
                     OutlinedButton(onRenewal, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
                         .heightIn(min = 48.dp).testTag("subscription-detail-renewal"), enabled = !state.loading && state.error == null) {
                         Text("记录真实续费", style = MaterialTheme.typography.bodyLarge)
@@ -135,7 +189,9 @@ internal fun SubscriptionDetailScreen(
                 if (!state.history.loading && state.history.error == null && state.history.totalCount == 0L && state.history.items.isEmpty()) item {
                     Text("暂无付费记录", Modifier.padding(LithicSpacing.medium), style = MaterialTheme.typography.bodyLarge)
                 }
-                items(state.history.items, key = { it.id }) { renewal -> RenewalHistoryRow(renewal, detail.asOf) }
+                items(state.history.items, key = { it.id }) { renewal -> RenewalHistoryRow(renewal, detail.asOf,
+                    !state.loading && state.error == null && state.history.error == null,
+                    { onCorrectRenewal(renewal.id) }, { onDeleteRenewal(renewal.id) }) }
                 if (state.history.hasMore) item {
                     Button(onLoadMoreHistory, Modifier.fillMaxWidth().padding(LithicSpacing.medium).heightIn(min = 48.dp)
                         .testTag("subscription-detail-load-more-history"), enabled = !state.history.loading && !state.history.loadingMore) {
@@ -148,7 +204,8 @@ internal fun SubscriptionDetailScreen(
 }
 
 @Composable
-private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDate) {
+private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDate, enabled: Boolean,
+    onCorrect: () -> Unit, onDelete: () -> Unit) {
     Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium).testTag("subscription-renewal-${renewal.id}"),
         verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
         Text("真实付款日期：${renewal.paidOn}", style = MaterialTheme.typography.bodyLarge)
@@ -159,6 +216,12 @@ private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDat
         Text("实际生效日期：${renewal.effectiveFrom}", style = MaterialTheme.typography.bodyMedium)
         Text("付费到期边界：${renewal.paidUntilExclusive}（当天不包含）", style = MaterialTheme.typography.bodyMedium)
         Text("提醒到期日：${renewal.reminderDueOn}", style = MaterialTheme.typography.bodyMedium)
+        OutlinedButton(onCorrect, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-renewal-correct-${renewal.id}"), enabled) {
+            Text("修正这笔付款")
+        }
+        OutlinedButton(onDelete, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-renewal-delete-${renewal.id}"), enabled) {
+            Text("删除错误付款")
+        }
         HorizontalDivider()
     }
 }

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" tests="2" failures="2" errors="0" skipped="0" time="1.489" timestamp="2026-10-13T05:10:48" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="full_corruption_preflight_uses_bounded_identity_batches_and_finds_bad_tail" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.756">
+    <failure>java.lang.AssertionError: 124 identities require at least three bounded preflight batches: [(select * from subscriptions order by id, [])]
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$full_corruption_preflight_uses_bounded_identity_batches_and_finds_bad_tail$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:587)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.full_corruption_preflight_uses_bounded_identity_batches_and_finds_bad_tail(SubscriptionLifecycleRepositoryTest.kt:561)
+</failure>
+  </testcase>
+  <testcase name="new_stop_identity_conflicts_with_existing_future_plan_without_moving_its_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.136">
+    <failure>java.lang.AssertionError: Expected explicit conflict: Saved(subscriptionId=9b000000-0000-4000-8000-000000001001, stateId=9b000000-0000-4000-8000-000000006002, renewalId=null, replayed=false)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.assertConflict(SubscriptionLifecycleRepositoryTest.kt:680)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.access$assertConflict(SubscriptionLifecycleRepositoryTest.kt:41)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest$new_stop_identity_conflicts_with_existing_future_plan_without_moving_its_boundary$1.invokeSuspend(SubscriptionLifecycleRepositoryTest.kt:220)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest.new_stop_identity_conflicts_with_existing_future_plan_without_moving_its_boundary(SubscriptionLifecycleRepositoryTest.kt:213)
+</failure>
+  </testcase>
+</testsuite>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" tests="2" failures="1" errors="0" skipped="0" time="1.424" timestamp="2026-10-13T05:32:32" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="committed_later_facts_require_explicit_current_read_and_safe_conflict_exit" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.705" />
+  <testcase name="slow_resolved_conflict_read_cannot_redirect_a_later_opened_detail" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.225">
+    <failure>java.lang.AssertionError: A late original conflict read must not redirect a later detail expected null, but was:&lt;75d7e14e-ac88-42f2-9e51-4f78240e1509&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotNull(Assert.java:756)
+at org.junit.Assert.assertNull(Assert.java:738)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest$slow_resolved_conflict_read_cannot_redirect_a_later_opened_detail$1.invokeSuspend(M09SubscriptionLifecycleViewModelTest.kt:379)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest.slow_resolved_conflict_read_cannot_redirect_a_later_opened_detail(M09SubscriptionLifecycleViewModelTest.kt:354)
+</failure>
+  </testcase>
+</testsuite>

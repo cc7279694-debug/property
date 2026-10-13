@@ -1,0 +1,1012 @@
+{
+  "result": "PASS",
+  "scope": "M09 bounded actual code7/API36 dedicated emulator GUI QA; not independent module acceptance",
+  "generatedUtc": "2026-10-13T08:31:25.240206+00:00",
+  "device": {
+    "serial": "emulator-5596",
+    "avd": "Lithic_M01_API_36",
+    "api": 36,
+    "package": "com.cooper.lithic.debug",
+    "versionCode": 7,
+    "apkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2"
+  },
+  "targetSubscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+  "counts": {
+    "manualJourneysPassed": 20,
+    "productFailuresUnresolved": 0,
+    "outsideScopeNotRun": 7,
+    "finalTableCounts": {
+      "categories": 2,
+      "long_term_projects": 3,
+      "project_money_events": 6,
+      "local_media_assets": 0,
+      "subscriptions": 3,
+      "subscription_renewals": 5,
+      "subscription_state_changes": 5
+    }
+  },
+  "finalMetrics": {
+    "confirmedPaidCents": 37500,
+    "standardPurchasedDays": 60,
+    "elapsedPaidDays": 60,
+    "status": "EXPIRED",
+    "currentPrice": null,
+    "currentContribution": "0",
+    "historicalDailyCost": "6.25"
+  },
+  "finalMetricsEvidence": [
+    "qa-final-restored-expired-historical.png",
+    "qa-final-restored-expired-historical.xml",
+    "qa-final-restored-zero-current.png",
+    "qa-final-restored-zero-current.xml",
+    "qa-final-restored-total-elapsed.png",
+    "qa-final-restored-total-elapsed.xml",
+    "ledger-final-restored.json",
+    "guest-settings-restored.json",
+    "qa-gesture-restored.json"
+  ],
+  "identity": {
+    "sameSubscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+    "reopenPaymentId": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+    "reopenEnabledStateId": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+    "sharedReopenOperationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2",
+    "correctedPaymentRetainsIdAndOperation": true,
+    "finalPaymentAmountCents": 22500,
+    "deletedWrongPaymentId": "8718380e-9bfa-408b-bd35-d51940710d28",
+    "planIdPreservedThroughCorrection": "147bd3f8-9c5d-42bb-a252-df315109dc12",
+    "planOperationIdPreservedThroughCorrection": "e8710738-59b0-41f5-9452-4aceee61a824",
+    "sameDayStateCorrectionId": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+    "sameDayOperationIdPreserved": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+  },
+  "processRestore": {
+    "taskId": 3674,
+    "activityRecord": "148698425",
+    "oldPid": "5523",
+    "state": "STOPPED",
+    "haveState": true,
+    "bundleBytes": 11428,
+    "pidAbsentAfterKill": true,
+    "resumeMethod": "Actual same Recents card tap",
+    "limitation": "Saved-task UID SIGKILL; not actual LMK/power-loss/force-stop guarantee",
+    "result": "PASS",
+    "newPid": "8327",
+    "sameTask": true,
+    "effectiveOn": "bad-date",
+    "reason": "M09_RAW_DRAFT"
+  },
+  "guestRestoration": {
+    "result": "PASS",
+    "exactBaselineRestored": true,
+    "systemIme": "null",
+    "secureIme": "0",
+    "timezone": "GMT",
+    "fontScale": "1.0",
+    "wmSize": "Physical size: 320x640",
+    "wmDensity": "Physical density: 160",
+    "guestUtc": "2026-10-13T08:26:01Z",
+    "hostUtc": "2026-10-13T08:26:01.842674+00:00",
+    "absoluteUtcDifferenceSeconds": 0.842674,
+    "baseline": "guest-settings-before-complete.json",
+    "actual": "guest-settings-restored.json",
+    "gestureOverlayRestored": "com.android.internal.systemui.navbar.gestural enabled",
+    "navigationModeRestored": "2",
+    "overlayEvidence": "qa-gesture-restored.json"
+  },
+  "dataSafety": {
+    "result": "PASS",
+    "allOriginalRowsExact": true,
+    "originalServices": 2,
+    "originalPayments": 3,
+    "originalProjects": 3,
+    "originalMoneyEvents": 6,
+    "schemaVersion": 2,
+    "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+    "integrity": "ok",
+    "foreignKeys": [],
+    "activeGenerationAndReadyExact": true,
+    "appSettingsSha256Exact": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+    "draftAndProcessJourneyNoWrites": true,
+    "snapshotsAreReadonlyCopiesAfterControlledForceStop": "Only after committed flows or explicit discard; no snapshot/force-stop during raw draft/process restoration"
+  },
+  "journeys": [
+    {
+      "name": "apk_and_old_data",
+      "result": "PASS",
+      "observation": "code7 APK SHA exact; Room2 integrity/FK, complete old rows, active generation/ready/preferences preserved",
+      "evidence": [
+        "ledger-installed.json",
+        "ledger-before.json",
+        "ledger-final-restored.json"
+      ]
+    },
+    {
+      "name": "first_actual_payment",
+      "result": "PASS",
+      "observation": "Same new service: actual150, Jan1-Feb1",
+      "evidence": [
+        "ledger-created.json",
+        "m09-created-detail.png",
+        "m09-created-detail.xml"
+      ]
+    },
+    {
+      "name": "prepaid_future_coverage",
+      "result": "PASS",
+      "observation": "Actual180 paidJan20, coverageFeb1-Mar1; current period distinct",
+      "evidence": [
+        "ledger-prepaid.json",
+        "m09-prepaid-detail.png",
+        "m09-prepaid-detail.xml"
+      ]
+    },
+    {
+      "name": "fixed_default_stop",
+      "result": "PASS",
+      "observation": "Default fixed Mar1 latest paid boundary; future STOP stays current before boundary",
+      "evidence": [
+        "ledger-planned.json",
+        "m09-default-stop-confirmation.png",
+        "m09-plan-before-boundary.png"
+      ]
+    },
+    {
+      "name": "stop_boundary_without_worker",
+      "result": "PASS",
+      "observation": "Real clock at fixed boundary showed STOPPED in history; no Worker introduced",
+      "evidence": [
+        "ledger-plan-boundary.json",
+        "m09-plan-boundary-stopped.png",
+        "m09-plan-boundary-stopped.xml"
+      ]
+    },
+    {
+      "name": "plan_same_id_correction_cancel",
+      "result": "PASS",
+      "observation": "Mar1→Feb28 correction retained stateID/opID; explicit cancellation removed only plan",
+      "evidence": [
+        "ledger-plan-corrected.json",
+        "ledger-plan-cancelled.json",
+        "m09-plan-corrected.png",
+        "m09-plan-cancelled.png"
+      ]
+    },
+    {
+      "name": "record_timezone",
+      "result": "PASS",
+      "observation": "GuestK+14 Jan26, persisted recordGMT Jan25; PAUSED factJan25",
+      "evidence": [
+        "record-zone-proof.json",
+        "ledger-paused.json",
+        "m09-record-zone-paused-verified.png"
+      ]
+    },
+    {
+      "name": "same_day_resume_early_stop",
+      "result": "PASS",
+      "observation": "Jan26 RESUME then early STOP changed same existing rowID/opID",
+      "evidence": [
+        "ledger-resumed.json",
+        "ledger-early-stopped.json",
+        "m09-early-stopped.png"
+      ]
+    },
+    {
+      "name": "covered_same_identity_reopen",
+      "result": "PASS",
+      "observation": "Jan27 same service ENABLED, exactly no new payment",
+      "evidence": [
+        "ledger-covered-reopened.json",
+        "m09-covered-reopened.png"
+      ]
+    },
+    {
+      "name": "next_period_current_rate",
+      "result": "PASS",
+      "observation": "Feb1 actual current standard rate6.00, separate from historical average",
+      "evidence": [
+        "ledger-next-period.json",
+        "m09-next-period-current-six.png",
+        "m09-next-period-current-six.xml"
+      ]
+    },
+    {
+      "name": "expiry_then_today_stop",
+      "result": "PASS",
+      "observation": "Mar1 EXPIRED without Worker; then explicit today STOP routed to history",
+      "evidence": [
+        "m09-expired-without-worker.png",
+        "m09-expired-without-worker.xml",
+        "ledger-expired-stopped.json",
+        "m09-expired-then-stopped.png"
+      ]
+    },
+    {
+      "name": "uncovered_empty_and_atomic_reopen",
+      "result": "PASS",
+      "observation": "Amount/paidOn actually empty; explicit240+Mar2-Apr2/reminderApr1 plus ENABLED share operationID, same service identity",
+      "evidence": [
+        "qa-uncovered-fields.json",
+        "qa-uncovered-empty-amount.png",
+        "qa-uncovered-empty-paid-date.png",
+        "qa-atomic-reopen-verified.json",
+        "ledger-atomic-reopened-verified.json",
+        "qa-uncovered-reopened-confirmed.png"
+      ]
+    },
+    {
+      "name": "correct_one_payment",
+      "result": "PASS",
+      "observation": "Only newest240→225 changed; rowID/opID and all other facts exact",
+      "evidence": [
+        "qa-payment-correction.json",
+        "ledger-payment-corrected-225.json",
+        "qa-payment-corrected-225.png"
+      ]
+    },
+    {
+      "name": "delete_wrong_payment",
+      "result": "PASS",
+      "observation": "Explicit warning/date/amount confirmation removed only new serviceJan20/180; not refund",
+      "evidence": [
+        "qa-payment-deletion.json",
+        "qa-delete-payment-explicit-confirmation.png",
+        "qa-delete-payment-explicit-confirmation.xml",
+        "ledger-payment-180-deleted.json"
+      ]
+    },
+    {
+      "name": "real_date_offline_metrics",
+      "result": "PASS",
+      "observation": "GMT real host date, no default network cold start: EXPIRED/375/60/60/6.25/current0/null",
+      "evidence": [
+        "qa-real-date-offline.json",
+        "ledger-real-date-offline.json",
+        "qa-real-date-offline-expired-top.png",
+        "qa-real-date-offline-zero-current.png",
+        "qa-real-date-offline-elapsed.png"
+      ]
+    },
+    {
+      "name": "font_ime_scroll_validation_back",
+      "result": "PASS",
+      "observation": "360dp/200% with real IME: save button reached, bad-date rejected; first Back dismisses IME and retains raw",
+      "evidence": [
+        "qa-font-ime-back.json",
+        "qa-200percent-real-ime-raw.png",
+        "qa-200percent-real-ime-save-reachable.png",
+        "qa-200percent-date-validation.png",
+        "qa-back-first-dismisses-ime.png"
+      ]
+    },
+    {
+      "name": "rotation_raw",
+      "result": "PASS",
+      "observation": "Both directions retained bad-date/M09_RAW_DRAFT and original Jan25 state target",
+      "evidence": [
+        "qa-rotation-raw.json",
+        "qa-landscape-raw-date.png",
+        "qa-landscape-raw-reason.png",
+        "qa-portrait-raw-date.png",
+        "qa-portrait-raw-reason.png"
+      ]
+    },
+    {
+      "name": "actual_edge_back_keep",
+      "result": "PASS",
+      "observation": "Actual gestural overlay/mode2, left-edge swipe shows dirty dialog; Keep retains raw",
+      "evidence": [
+        "qa-edge-back.json",
+        "qa-gesture-before.json",
+        "qa-gesture-actual-mode.png",
+        "qa-edge-back-dirty-dialog.png"
+      ]
+    },
+    {
+      "name": "saved_task_process_restore",
+      "result": "PASS",
+      "observation": "System STOPPED/HaveState Bundle11428; UID SIGKILL5523, same Recents task3674 newPID8327, both raw fields retained",
+      "evidence": [
+        "process-pre-resume.json",
+        "target-task-before-kill.txt",
+        "qa-saved-task-recents-before-resume.png",
+        "qa-saved-task-process-restored.json",
+        "qa-process-restored-raw-date.png",
+        "qa-process-restored-raw-reason.png"
+      ]
+    },
+    {
+      "name": "discard_no_write_restore_final",
+      "result": "PASS",
+      "observation": "Explicit discard; seven tables exact before/after draft. Guest settings and overlay/mode restored; UTC delta<10s; final cold read metrics exact",
+      "evidence": [
+        "qa-draft-no-writes.json",
+        "qa-explicit-discard-confirmation.png",
+        "qa-final-check.json",
+        "ledger-final-restored.json",
+        "guest-settings-restored.json",
+        "qa-gesture-restored.json",
+        "qa-final-restored-expired-historical.png",
+        "qa-final-restored-zero-current.png",
+        "qa-final-restored-total-elapsed.png"
+      ]
+    }
+  ],
+  "notRun": [
+    {
+      "name": "physical_phone",
+      "result": "NOT_RUN",
+      "reason": "Dedicated emulator only"
+    },
+    {
+      "name": "api26",
+      "result": "NOT_RUN",
+      "reason": "API36 only"
+    },
+    {
+      "name": "oem_variants",
+      "result": "NOT_RUN",
+      "reason": "AOSP/Google emulator only"
+    },
+    {
+      "name": "release_build",
+      "result": "NOT_RUN",
+      "reason": "Actual debug/code7 APK; Release not installed/run"
+    },
+    {
+      "name": "full_talkback",
+      "result": "NOT_RUN",
+      "reason": "No complete screen reader journey"
+    },
+    {
+      "name": "real_lmk",
+      "result": "NOT_RUN",
+      "reason": "Controlled saved-task UID SIGKILL; not actual memory-pressure LMK"
+    },
+    {
+      "name": "force_stop_or_power_loss_draft_guarantee",
+      "result": "NOT_RUN",
+      "reason": "No force-stop/power-loss draft claim; excluded by contract"
+    }
+  ],
+  "failedDriverAttemptsPreserved": [
+    {
+      "name": "root_immediate_blank_assertion",
+      "result": "FAIL",
+      "category": "driver_or_initial_read_diagnostic",
+      "observation": "Initial root assertion failed before printing nodes/text. Old atomic-reopened intention snapshot still had five payments/four states. Later actually visible amount/paidOn were both empty; no product autofill observed.",
+      "evidence": [
+        "ledger-atomic-reopened.json",
+        "qa-uncovered-fields.json"
+      ]
+    },
+    {
+      "name": "offscreen_identity_and_fields",
+      "result": "FAIL",
+      "category": "driver_diagnostic",
+      "observation": "Uncovered payment driver demanded offscreen name or missed a field through long fling. No confirmation occurred. Fixed ignored driver uses small slow drags and label/value readback; original failures remain.",
+      "evidence": [
+        "qa-failure-confirm-uncovered.txt",
+        "qa-failure-confirm-uncovered-2.txt",
+        "qa-driver-field-after-miss.png",
+        "qa-driver-form-at-top.png",
+        "qa-field-trace.json"
+      ]
+    },
+    {
+      "name": "early_restore_lookup",
+      "result": "FAIL",
+      "category": "driver_diagnostic",
+      "observation": "After the one real Recents tap, lookup began before an app scroll area was observed. Kept original failure; only waited for actual visible form, with no new process kill/force-stop/relaunch/card tap. Same task/newPID and both raw fields then verified.",
+      "evidence": [
+        "qa-failure-resume.txt",
+        "qa-process-after-resume-initial.png",
+        "qa-saved-task-process-restored.json"
+      ]
+    },
+    {
+      "name": "timezone_label_typo",
+      "result": "FAIL",
+      "category": "driver_diagnostic",
+      "observation": "First screen assertion used nonexistent label paused-instead-of-paused; actual detail label is 已暂停, DB facts already correct. No source changes.",
+      "evidence": [
+        "record-zone-proof.json"
+      ]
+    }
+  ],
+  "evidence": [
+    "guest-settings-restored.json",
+    "ledger-atomic-reopened-verified.json",
+    "ledger-atomic-reopened.json",
+    "ledger-before.json",
+    "ledger-covered-reopened.json",
+    "ledger-created.json",
+    "ledger-early-stopped.json",
+    "ledger-expired-stopped.json",
+    "ledger-final-restored.json",
+    "ledger-installed.json",
+    "ledger-next-period.json",
+    "ledger-paused.json",
+    "ledger-payment-180-deleted.json",
+    "ledger-payment-corrected-225.json",
+    "ledger-plan-boundary.json",
+    "ledger-plan-cancelled.json",
+    "ledger-plan-corrected.json",
+    "ledger-planned.json",
+    "ledger-prepaid.json",
+    "ledger-real-date-offline.json",
+    "ledger-resumed.json",
+    "m09-covered-reopened.png",
+    "m09-created-detail.png",
+    "m09-created-detail.xml",
+    "m09-default-stop-confirmation.png",
+    "m09-early-stopped.png",
+    "m09-expired-then-stopped.png",
+    "m09-expired-without-worker.png",
+    "m09-expired-without-worker.xml",
+    "m09-next-period-current-six.png",
+    "m09-next-period-current-six.xml",
+    "m09-plan-before-boundary.png",
+    "m09-plan-boundary-stopped.png",
+    "m09-plan-boundary-stopped.xml",
+    "m09-plan-cancelled.png",
+    "m09-plan-corrected.png",
+    "m09-prepaid-detail.png",
+    "m09-prepaid-detail.xml",
+    "m09-record-zone-paused-verified.png",
+    "process-pre-resume.json",
+    "qa-200percent-date-validation.png",
+    "qa-200percent-date-validation.xml",
+    "qa-200percent-real-ime-raw.png",
+    "qa-200percent-real-ime-raw.xml",
+    "qa-200percent-real-ime-save-reachable.png",
+    "qa-200percent-real-ime-save-reachable.xml",
+    "qa-atomic-reopen-verified.json",
+    "qa-back-first-dismisses-ime.png",
+    "qa-back-first-dismisses-ime.xml",
+    "qa-delete-payment-explicit-confirmation.png",
+    "qa-delete-payment-explicit-confirmation.xml",
+    "qa-discarded-returned-detail.xml",
+    "qa-draft-no-writes.json",
+    "qa-driver-field-after-miss.png",
+    "qa-driver-field-after-miss.xml",
+    "qa-driver-form-at-top.png",
+    "qa-driver-form-at-top.xml",
+    "qa-edge-back-dirty-dialog.png",
+    "qa-edge-back-dirty-dialog.xml",
+    "qa-edge-back.json",
+    "qa-explicit-discard-confirmation.png",
+    "qa-explicit-discard-confirmation.xml",
+    "qa-failure-confirm-uncovered-2.txt",
+    "qa-failure-confirm-uncovered.txt",
+    "qa-failure-resume.txt",
+    "qa-field-trace.json",
+    "qa-final-check.json",
+    "qa-final-restored-expired-historical.png",
+    "qa-final-restored-expired-historical.xml",
+    "qa-final-restored-total-elapsed.png",
+    "qa-final-restored-total-elapsed.xml",
+    "qa-final-restored-zero-current.png",
+    "qa-final-restored-zero-current.xml",
+    "qa-font-ime-back.json",
+    "qa-gesture-actual-mode.png",
+    "qa-gesture-actual-mode.xml",
+    "qa-gesture-before.json",
+    "qa-gesture-restored.json",
+    "qa-landscape-raw-date.png",
+    "qa-landscape-raw-date.xml",
+    "qa-landscape-raw-reason.png",
+    "qa-landscape-raw-reason.xml",
+    "qa-payment-180-deleted.xml",
+    "qa-payment-corrected-225.png",
+    "qa-payment-corrected-225.xml",
+    "qa-payment-correction.json",
+    "qa-payment-deletion.json",
+    "qa-portrait-raw-date.png",
+    "qa-portrait-raw-date.xml",
+    "qa-portrait-raw-reason.png",
+    "qa-portrait-raw-reason.xml",
+    "qa-process-after-resume-initial.png",
+    "qa-process-after-resume-initial.xml",
+    "qa-process-restored-raw-date.png",
+    "qa-process-restored-raw-date.xml",
+    "qa-process-restored-raw-reason.png",
+    "qa-process-restored-raw-reason.xml",
+    "qa-raw-draft-original-state.xml",
+    "qa-real-date-offline-elapsed.png",
+    "qa-real-date-offline-elapsed.xml",
+    "qa-real-date-offline-expired-top.png",
+    "qa-real-date-offline-expired-top.xml",
+    "qa-real-date-offline-zero-current.png",
+    "qa-real-date-offline-zero-current.xml",
+    "qa-real-date-offline.json",
+    "qa-rotation-raw.json",
+    "qa-saved-task-process-restored.json",
+    "qa-saved-task-recents-before-resume.png",
+    "qa-saved-task-recents-before-resume.xml",
+    "qa-uncovered-empty-amount.png",
+    "qa-uncovered-empty-amount.xml",
+    "qa-uncovered-empty-paid-date.png",
+    "qa-uncovered-empty-paid-date.xml",
+    "qa-uncovered-fields.json",
+    "qa-uncovered-reopened-confirmed.png",
+    "qa-uncovered-reopened-confirmed.xml",
+    "record-zone-proof.json",
+    "target-task-before-kill.txt"
+  ],
+  "evidenceManifest": {
+    "guest-settings-restored.json": {
+      "bytes": 662,
+      "sha256": "2743c310386e45327fff891c2ea0f6351514963f371edd2492cd72c0ba9cb1fa"
+    },
+    "ledger-atomic-reopened-verified.json": {
+      "bytes": 9907,
+      "sha256": "a29fe081378c74bebf7728a4a778660cba144d4c0cbfc919e9a224d7dc4470e6"
+    },
+    "ledger-atomic-reopened.json": {
+      "bytes": 9163,
+      "sha256": "8577ad90ed11a1fa3d2c67c7310f0cc491f8d9ceec7d6e7664c9286c2f65e447"
+    },
+    "ledger-before.json": {
+      "bytes": 6701,
+      "sha256": "fd60ac52c3ce69c3506b35b51ae29d1df113fb187cf5389eef091847a3c5b784"
+    },
+    "ledger-covered-reopened.json": {
+      "bytes": 8852,
+      "sha256": "ddc9d539494669511ef368be68bcc8bef94a6a0aed7506f04812188ab1e76ac4"
+    },
+    "ledger-created.json": {
+      "bytes": 7458,
+      "sha256": "4fa9d0e76e4f8cb8a0c259f504c998c1fc973eec608276e3d8b3b4b5bbd8b4e9"
+    },
+    "ledger-early-stopped.json": {
+      "bytes": 8529,
+      "sha256": "26fbb6ce4b90f51094d025c4818caec5ab08de79e452e842d654faaad516e324"
+    },
+    "ledger-expired-stopped.json": {
+      "bytes": 9163,
+      "sha256": "4f96e72175c72b89371eb543a9a10f2ce12197461db0f847b9125399e6496588"
+    },
+    "ledger-final-restored.json": {
+      "bytes": 9474,
+      "sha256": "2ec666e6aeeb10cd1fdfc916cf7d4571f39de0def3034273f4999d5b728e3026"
+    },
+    "ledger-installed.json": {
+      "bytes": 6704,
+      "sha256": "e12b409c67fe98ffff2fa79ae14c3a51382d8a509f369a4e0204d3f2d50e2a14"
+    },
+    "ledger-next-period.json": {
+      "bytes": 8847,
+      "sha256": "48e1103cc5f0e37221f125a144047b5621964773c1b0c537fe5d254a65e89972"
+    },
+    "ledger-paused.json": {
+      "bytes": 8203,
+      "sha256": "39a1e75df6e39a1b3a9fe2c66bf9f3bd400e675e2e2312d9c24e9633fbc4864a"
+    },
+    "ledger-payment-180-deleted.json": {
+      "bytes": 9479,
+      "sha256": "7ed67578c1a4b4e780c6be935a5ff62cda202c45e5d9f51b59cf1c9adf4bca93"
+    },
+    "ledger-payment-corrected-225.json": {
+      "bytes": 9904,
+      "sha256": "c728a9a7707b84b1ccf77d5d4d250ce972865b36f512701ab1eead57ed39d847"
+    },
+    "ledger-plan-boundary.json": {
+      "bytes": 8210,
+      "sha256": "e6e7685f62898fc8d3ab1529c1fa6f77d914d72b3e87609e8556fb647523c76d"
+    },
+    "ledger-plan-cancelled.json": {
+      "bytes": 7888,
+      "sha256": "d9cc29904217a51878be1cfa1ff9d0dfdb221f11ddab5d23010b7c3ef811f09b"
+    },
+    "ledger-plan-corrected.json": {
+      "bytes": 8211,
+      "sha256": "8ae332ffe9002781280a41712ea4f7d3288f44344c0b92863c7231157a31d299"
+    },
+    "ledger-planned.json": {
+      "bytes": 8204,
+      "sha256": "d523c650154774855b1c68602684f77fea412574a50fdb35ceeaa424ca6a400e"
+    },
+    "ledger-prepaid.json": {
+      "bytes": 7881,
+      "sha256": "803e61243f3e7a61a761b4b0bcd34fe5ec2b7718b823d99dd7597f7aa37d2afc"
+    },
+    "ledger-real-date-offline.json": {
+      "bytes": 9477,
+      "sha256": "fcd4a1bd2d28488a0f29b14192cd61fe02c392d3cd528617af30aa8f642f29de"
+    },
+    "ledger-resumed.json": {
+      "bytes": 8524,
+      "sha256": "02005af3d1046ffe341162b40139bcdbc5a2e6ee38a395c250441c673df8d131"
+    },
+    "m09-covered-reopened.png": {
+      "bytes": 49221,
+      "sha256": "cc67320bbe7aaab6347f0df6dde38293f3954f238ebd587b33766431ca6be50e"
+    },
+    "m09-created-detail.png": {
+      "bytes": 49287,
+      "sha256": "4855641cb75953c2bc5f4c639c073a791e37f4156d57bea264a73061ae3ff960"
+    },
+    "m09-created-detail.xml": {
+      "bytes": 17285,
+      "sha256": "0dce8f76f6f0c0b107cd1aeadd2cd49fc4e5f00c595912d5715c9ba840850615"
+    },
+    "m09-default-stop-confirmation.png": {
+      "bytes": 55503,
+      "sha256": "34608876b0093a24ba13dc9667cf7919fac7a109f1ec0a588919eef5fcfbd751"
+    },
+    "m09-early-stopped.png": {
+      "bytes": 54252,
+      "sha256": "04c0a9f3272f4043b2c8801bce0db5e7e3c71b3ce0e2c5e8b5bb298472f676c5"
+    },
+    "m09-expired-then-stopped.png": {
+      "bytes": 54019,
+      "sha256": "64a9451041098628a10bf860cf74ee3a4cbb6066405ddc17ac579ce85a82f8e6"
+    },
+    "m09-expired-without-worker.png": {
+      "bytes": 53583,
+      "sha256": "08db1f197e862069fed9934a27b2051adef5b27afd18a8d07b7a33349d3786f3"
+    },
+    "m09-expired-without-worker.xml": {
+      "bytes": 16946,
+      "sha256": "471f3815197e9313cf2da62ae8af0dbeaa2ba345b34b00197fbbfdafd63ed0ec"
+    },
+    "m09-next-period-current-six.png": {
+      "bytes": 49166,
+      "sha256": "74477154e4614dc09e87666da6a42cd854b1721943c1162d98f7be141d9c0670"
+    },
+    "m09-next-period-current-six.xml": {
+      "bytes": 19079,
+      "sha256": "5215b7ef24ca788ab01d42b3af3d154e9b55ad96305f50d5397598db90c39733"
+    },
+    "m09-plan-before-boundary.png": {
+      "bytes": 49288,
+      "sha256": "5a66f1349569278bd1bc736a4330ce374553e17e884f201d5fe62d98f1c231ce"
+    },
+    "m09-plan-boundary-stopped.png": {
+      "bytes": 54043,
+      "sha256": "3419c509d4d8e0f4d0ba9255832d9bd033f0c19e718a3a6dd1cd01626bf04357"
+    },
+    "m09-plan-boundary-stopped.xml": {
+      "bytes": 16957,
+      "sha256": "a38119ad5e62ebcc11be492eb08134f253ad9fe59febe7739a6a3dd99c2b8cea"
+    },
+    "m09-plan-cancelled.png": {
+      "bytes": 49393,
+      "sha256": "fa3065bc2f753301bfd70a09a32e18d4d26d26e297a16d8656df9db1e47b29ea"
+    },
+    "m09-plan-corrected.png": {
+      "bytes": 49291,
+      "sha256": "f585ff18728118428c210da27caba918606e1b05fae215a38447daad96ce8ca5"
+    },
+    "m09-prepaid-detail.png": {
+      "bytes": 49287,
+      "sha256": "0374a1fe5ea998152caf8ad1938a94130dca2f356f0a47947fdafd654d2f0407"
+    },
+    "m09-prepaid-detail.xml": {
+      "bytes": 17285,
+      "sha256": "ce8a91c1e4a7029d68a02818210e9d20318b4ffd4dbfa5e5c0426142066805f1"
+    },
+    "m09-record-zone-paused-verified.png": {
+      "bytes": 54660,
+      "sha256": "7bc9422785a74ad204e8ffa2f5307e4ec4ba9eea47dedd720284073edd984efe"
+    },
+    "process-pre-resume.json": {
+      "bytes": 339,
+      "sha256": "7362a0bc537c182ecef14071377265250f47924f477985a424235c3d7b94b629"
+    },
+    "qa-200percent-date-validation.png": {
+      "bytes": 66362,
+      "sha256": "386bed6a2dc0e1ab9bc5f0f802765f1ad9759f29217c742838d4159c197941b1"
+    },
+    "qa-200percent-date-validation.xml": {
+      "bytes": 12603,
+      "sha256": "41fcbaf92651a4daae7d49765a5f0f5f3ba1fdb633bd30e32399642deab318f8"
+    },
+    "qa-200percent-real-ime-raw.png": {
+      "bytes": 43213,
+      "sha256": "b0626310d8eb7309247e10600a0726ccabed9b81975870e2b94ec85e10386a18"
+    },
+    "qa-200percent-real-ime-raw.xml": {
+      "bytes": 14214,
+      "sha256": "9779057aadadbd1f67e5c887b213f7e9737af314e12910473ffd536935efd3a6"
+    },
+    "qa-200percent-real-ime-save-reachable.png": {
+      "bytes": 45416,
+      "sha256": "31649ee40fd0d996a451cca0b186f718946e3a304354ab9851b97bb0fdccdb26"
+    },
+    "qa-200percent-real-ime-save-reachable.xml": {
+      "bytes": 12805,
+      "sha256": "54a12ebe2d68da1c3d447cf5e5e31572285d2a3933f17e7dcca66eda07884230"
+    },
+    "qa-atomic-reopen-verified.json": {
+      "bytes": 923,
+      "sha256": "3076ee0266e874f02939c772e392a64cfe20b29281440995ebf342cd72cb2c12"
+    },
+    "qa-back-first-dismisses-ime.png": {
+      "bytes": 38833,
+      "sha256": "a9c997e08bd844edf332459a1a4a692ed445d7d63b780e4e3ff6484f3b4876d8"
+    },
+    "qa-back-first-dismisses-ime.xml": {
+      "bytes": 15996,
+      "sha256": "df0d450bdb7ff630cd328e6bf5431e75005b0e044b0d3ba605f7d397dc0e8d3c"
+    },
+    "qa-delete-payment-explicit-confirmation.png": {
+      "bytes": 67775,
+      "sha256": "f29f6d2e79cd94365544dc49b22f8ab433699857e22028afa77d9ff50441c641"
+    },
+    "qa-delete-payment-explicit-confirmation.xml": {
+      "bytes": 13520,
+      "sha256": "ed700dfef36e5654ae7894ba1a194a8db3cc5689cc275aeb4d4b254e8fa932ed"
+    },
+    "qa-discarded-returned-detail.xml": {
+      "bytes": 14415,
+      "sha256": "46343ec2292e46e47cefa53af8c512bcd568915001e51ea7433ab2b00ae63f1a"
+    },
+    "qa-draft-no-writes.json": {
+      "bytes": 184,
+      "sha256": "8895ad46a38e22c6920b4a3eb1869dbcca8d5692e5db65ed2ac34b285e327608"
+    },
+    "qa-driver-field-after-miss.png": {
+      "bytes": 54410,
+      "sha256": "892a93abdc2b5ff9739cae276d1e68872e2220d4fc92926b07709e8994130989"
+    },
+    "qa-driver-field-after-miss.xml": {
+      "bytes": 17389,
+      "sha256": "39ad9d91eb759d7a5e774c59032e2befef26f50b224ef4bc29c9760a0e481127"
+    },
+    "qa-driver-form-at-top.png": {
+      "bytes": 62284,
+      "sha256": "ab2611776b94b4e8e227ba55247c5c33fd9221a8fe3d95b489b534092636d006"
+    },
+    "qa-driver-form-at-top.xml": {
+      "bytes": 16015,
+      "sha256": "5a1f6a5a32bb7e5736525b91a09a7bff5a36edca179d6fdc87bf7729904409bf"
+    },
+    "qa-edge-back-dirty-dialog.png": {
+      "bytes": 49613,
+      "sha256": "ed691192012cf7dec3306f187d723f94aedf8039db7c4f24f3d6808894c7dcd9"
+    },
+    "qa-edge-back-dirty-dialog.xml": {
+      "bytes": 5866,
+      "sha256": "46b95b355acbba92fc239f94323c4c35548655c18a97b19c4a7bb5ddebc89aab"
+    },
+    "qa-edge-back.json": {
+      "bytes": 316,
+      "sha256": "22eef39043e32980e8567e15f95c4b27f2c89ad751371a024b249b38f5cb7f75"
+    },
+    "qa-explicit-discard-confirmation.png": {
+      "bytes": 50535,
+      "sha256": "d0325fba27b218d7474bd502666f8dc2b75332f872cea27044a3dd86f5c05566"
+    },
+    "qa-explicit-discard-confirmation.xml": {
+      "bytes": 5866,
+      "sha256": "46b95b355acbba92fc239f94323c4c35548655c18a97b19c4a7bb5ddebc89aab"
+    },
+    "qa-failure-confirm-uncovered-2.txt": {
+      "bytes": 508,
+      "sha256": "983ea373e4d8742b47c0f362610f1d1ace843f4351b55bc2421009987abadf13"
+    },
+    "qa-failure-confirm-uncovered.txt": {
+      "bytes": 389,
+      "sha256": "5147546937bf22585b04d3b85d8e42ace866db9f26ed86a32a4377bac2bd9fef"
+    },
+    "qa-failure-resume.txt": {
+      "bytes": 709,
+      "sha256": "a563ad3cde65e35e00dde62b31a2f7502224b07eea234542bc3b5eb0ea062e87"
+    },
+    "qa-field-trace.json": {
+      "bytes": 2674,
+      "sha256": "b2805403af8c13d360b4251d22c53bdff32b88edd74a66864c209ef35e581f86"
+    },
+    "qa-final-check.json": {
+      "bytes": 950,
+      "sha256": "571193ff1e6337c70fe2db76271e7301ec6b8db78d22207a9f9698bf3f107482"
+    },
+    "qa-final-restored-expired-historical.png": {
+      "bytes": 54787,
+      "sha256": "721ec6a9e9190d27b7f4d027d92193624a789426c83ea73075f96745d4191ded"
+    },
+    "qa-final-restored-expired-historical.xml": {
+      "bytes": 16946,
+      "sha256": "e5d8cdd499506e20efcd9db890c3512d2b7da96f59b0a9199d72f83c50b98b78"
+    },
+    "qa-final-restored-total-elapsed.png": {
+      "bytes": 49778,
+      "sha256": "200b71935fd31d6625b272b27e11877ba9e0e8ebb5639c95d154eda9a768f82c"
+    },
+    "qa-final-restored-total-elapsed.xml": {
+      "bytes": 19041,
+      "sha256": "1f74a03d9d54fa9345b8ad2fcc26987727172c201427acfab4a982735aefc496"
+    },
+    "qa-final-restored-zero-current.png": {
+      "bytes": 54787,
+      "sha256": "721ec6a9e9190d27b7f4d027d92193624a789426c83ea73075f96745d4191ded"
+    },
+    "qa-final-restored-zero-current.xml": {
+      "bytes": 16946,
+      "sha256": "e5d8cdd499506e20efcd9db890c3512d2b7da96f59b0a9199d72f83c50b98b78"
+    },
+    "qa-font-ime-back.json": {
+      "bytes": 242,
+      "sha256": "cbbcd9ba9f57c2e67e12dc05b9ae4683e231b8cc7a7330563550207bca6115bc"
+    },
+    "qa-gesture-actual-mode.png": {
+      "bytes": 33264,
+      "sha256": "66c791429597ede4241e5706beb2a624a8c5e11f0748917f9a511adf1d5977b9"
+    },
+    "qa-gesture-actual-mode.xml": {
+      "bytes": 15737,
+      "sha256": "931a3a43e9e867af561355678ae3b0b5560b27a7b92406cd9913817aa9f69789"
+    },
+    "qa-gesture-before.json": {
+      "bytes": 6368,
+      "sha256": "60e3c76f1bb6f05b092d714d54d352c74460c4f6e283d5a39932a8872cade421"
+    },
+    "qa-gesture-restored.json": {
+      "bytes": 12871,
+      "sha256": "42210f8434c1960c26bc0d7b93aeec854ab05812fb4cecd543a2c6875251e8f8"
+    },
+    "qa-landscape-raw-date.png": {
+      "bytes": 57913,
+      "sha256": "f2f6c3160396b4c7b11f2a2e4473a9b269f4561eb195a96cd9cfd8262223d7fc"
+    },
+    "qa-landscape-raw-date.xml": {
+      "bytes": 12623,
+      "sha256": "1686e193e90da095517273911c2f42493f0d1c1cdd17a479876138d484852b10"
+    },
+    "qa-landscape-raw-reason.png": {
+      "bytes": 25260,
+      "sha256": "44dd2eac9a62b4b6742eacc4eb0e48aac4768c06b103cd4a97c5ba75d5a526a9"
+    },
+    "qa-landscape-raw-reason.xml": {
+      "bytes": 12807,
+      "sha256": "7d4ab1dfde011d2f24c01cf859540a38da80f8aa7556a7c343c59146231549b5"
+    },
+    "qa-payment-180-deleted.xml": {
+      "bytes": 17285,
+      "sha256": "0195fc824c31e9232c946d3d69c15c13421503e8ebeeae5c45cbd4f5665602c1"
+    },
+    "qa-payment-corrected-225.png": {
+      "bytes": 49664,
+      "sha256": "4b939e416229042b996554d73dfcd34d17d47911c7ad108b101868895889df80"
+    },
+    "qa-payment-corrected-225.xml": {
+      "bytes": 17285,
+      "sha256": "4b09010c635a58c00845f41519beaaec64011b2bea2602a75d272c23828187e2"
+    },
+    "qa-payment-correction.json": {
+      "bytes": 193,
+      "sha256": "1b073fe53cba70ac487035cf734e3b6b52229dfd43ba84f349ffbbcb390e0692"
+    },
+    "qa-payment-deletion.json": {
+      "bytes": 232,
+      "sha256": "33cf7b37e43eead6272d5becae58820ad5ce43815f5e6783864d50fb13cd0d53"
+    },
+    "qa-portrait-raw-date.png": {
+      "bytes": 76035,
+      "sha256": "63ddebd3c0c1b825926d5aebfee673a13ac1f5f56f43573fad1e1235684fa0ac"
+    },
+    "qa-portrait-raw-date.xml": {
+      "bytes": 13447,
+      "sha256": "af75fbc3815731874f074d27cfec2ab7fa979e0ac71844eeb67073d13cbbd85a"
+    },
+    "qa-portrait-raw-reason.png": {
+      "bytes": 33494,
+      "sha256": "1ea409e7b825490cf83d508c6b472c2154a4d7484e593a6fc15112783a808232"
+    },
+    "qa-portrait-raw-reason.xml": {
+      "bytes": 15737,
+      "sha256": "931a3a43e9e867af561355678ae3b0b5560b27a7b92406cd9913817aa9f69789"
+    },
+    "qa-process-after-resume-initial.png": {
+      "bytes": 33649,
+      "sha256": "8abffece37833b244888bfcb71baa8cf4be3db3fe45de249261c438b73c1cf31"
+    },
+    "qa-process-after-resume-initial.xml": {
+      "bytes": 15737,
+      "sha256": "11b7697e788bd7d8a9ac7438bf00101c778bbc955d185ee33c9ccecbfbe932da"
+    },
+    "qa-process-restored-raw-date.png": {
+      "bytes": 71064,
+      "sha256": "be1a839659fbe7b12f5c4587766b6c6340a0a1671c727901e75d3dff501bbc3d"
+    },
+    "qa-process-restored-raw-date.xml": {
+      "bytes": 13438,
+      "sha256": "4db79fecd0545113d27e591a8467eae2b986cd6cb1cd10f8e8f94e4a76252a90"
+    },
+    "qa-process-restored-raw-reason.png": {
+      "bytes": 33568,
+      "sha256": "cd39d55c856b123365eabecd1d6cb49550cb09aba9085e1e6a1b4aae971e16c9"
+    },
+    "qa-process-restored-raw-reason.xml": {
+      "bytes": 15737,
+      "sha256": "dc20cef845a68cefbf668091dbd97ddd12a4eb1e5c1422307b4dc0c42da8ac0a"
+    },
+    "qa-raw-draft-original-state.xml": {
+      "bytes": 15938,
+      "sha256": "ed7727e558cf6de93917051181f1fffa744a5488907d64823e4800710cafb678"
+    },
+    "qa-real-date-offline-elapsed.png": {
+      "bytes": 47037,
+      "sha256": "6f505a63a64bf9fecfd7dafe854df6895e14e96137bbb1b7ee1b62d2e1a17cfc"
+    },
+    "qa-real-date-offline-elapsed.xml": {
+      "bytes": 18337,
+      "sha256": "895cc286dfa8d7cecf72d5739fa056c7a4630e5d10e90abc35a2b4db9c079493"
+    },
+    "qa-real-date-offline-expired-top.png": {
+      "bytes": 54578,
+      "sha256": "de2b62b83da7b18fc72ef8e7e9ffa04b5f453fbdb5fb6e057f1657ba92baaced"
+    },
+    "qa-real-date-offline-expired-top.xml": {
+      "bytes": 16946,
+      "sha256": "e5d8cdd499506e20efcd9db890c3512d2b7da96f59b0a9199d72f83c50b98b78"
+    },
+    "qa-real-date-offline-zero-current.png": {
+      "bytes": 54578,
+      "sha256": "de2b62b83da7b18fc72ef8e7e9ffa04b5f453fbdb5fb6e057f1657ba92baaced"
+    },
+    "qa-real-date-offline-zero-current.xml": {
+      "bytes": 16946,
+      "sha256": "e5d8cdd499506e20efcd9db890c3512d2b7da96f59b0a9199d72f83c50b98b78"
+    },
+    "qa-real-date-offline.json": {
+      "bytes": 55023,
+      "sha256": "61294fb6a00085053fcc470b56110a8a9bf37a3a081f0dcfefd005c246d19c5a"
+    },
+    "qa-rotation-raw.json": {
+      "bytes": 181,
+      "sha256": "a03319b45ac550d4fedce16a123b1b8c56ed22e47bebdfb4685ff5c0b7abd67f"
+    },
+    "qa-saved-task-process-restored.json": {
+      "bytes": 445,
+      "sha256": "7b9f95beb7b37a548b36f172cd8ee932af84dff8b39eee083cc130978acc8413"
+    },
+    "qa-saved-task-recents-before-resume.png": {
+      "bytes": 47156,
+      "sha256": "cf1b9eb202d34ba36fccd5abb7dfad61e5d905312d856640f73d3d58b2e23bb9"
+    },
+    "qa-saved-task-recents-before-resume.xml": {
+      "bytes": 7240,
+      "sha256": "6aa9cfb410f22f01d7c4c9b35524ce2950ec3edd88327cccf66d83013441dd7a"
+    },
+    "qa-uncovered-empty-amount.png": {
+      "bytes": 62511,
+      "sha256": "e61a3a54cbb0054f6b79049901855fe61a09b8154b24d364bfec11b9b29dbf3a"
+    },
+    "qa-uncovered-empty-amount.xml": {
+      "bytes": 16013,
+      "sha256": "cc1b5d13b3960235ad35a92e04930ea49cf095e843a9bbdaca6242d718da8d19"
+    },
+    "qa-uncovered-empty-paid-date.png": {
+      "bytes": 46815,
+      "sha256": "bf6f8b239456ab92dd7172a027351f481bebd94717895172e95a3ee9aee967fb"
+    },
+    "qa-uncovered-empty-paid-date.xml": {
+      "bytes": 18654,
+      "sha256": "c6d66198d4a3bfcab6841477c68c152626c16729d410bf05c57b8e479aedcf8d"
+    },
+    "qa-uncovered-fields.json": {
+      "bytes": 338,
+      "sha256": "7b3ee330e83db332c7614eae8ec73250fad7cbc186af7b9e386b729a2308179b"
+    },
+    "qa-uncovered-reopened-confirmed.png": {
+      "bytes": 49627,
+      "sha256": "a388d236be78139a2705b92b393dba4a7de48ebe332953960f5678fab5ff4197"
+    },
+    "qa-uncovered-reopened-confirmed.xml": {
+      "bytes": 17285,
+      "sha256": "50c3ddd2820e8a922995bc4fe1b532a04c1d7326ce886f3b24a351d3b7ff8ebf"
+    },
+    "record-zone-proof.json": {
+      "bytes": 490,
+      "sha256": "a86784ac1175f7c8f7d2741cdff982912d590fc2bb57a1a3fddcd8b30a6f2605"
+    },
+    "target-task-before-kill.txt": {
+      "bytes": 28620,
+      "sha256": "7d29d775d7f9ad0d492dc46559bfb600992da63270a245d84c022623818e0d3b"
+    }
+  },
+  "lease": "Returned to root; all child ADB stopped before report generation",
+  "changes": "Only ignored evidence/scripts/screenshots/receipts; no source/formal docs/Gradle/Git modifications during this device lease"
+}

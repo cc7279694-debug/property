@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.core.model.MoneyParserTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-13T08:28:54.203Z" hostname="WHOCARE" time="0.129">
+  <properties/>
+  <testcase name="rejects_out_of_range_numbers" classname="com.cooper.lithic.core.model.MoneyParserTest" time="0.068"/>
+  <testcase name="accepts_largest_single_amount" classname="com.cooper.lithic.core.model.MoneyParserTest" time="0.005"/>
+  <testcase name="direct_money_construction_cannot_bypass_amount_limits" classname="com.cooper.lithic.core.model.MoneyParserTest" time="0.001"/>
+  <testcase name="rejects_excess_precision_without_rounding" classname="com.cooper.lithic.core.model.MoneyParserTest" time="0.0"/>
+  <testcase name="money_precision_and_zero" classname="com.cooper.lithic.core.model.MoneyParserTest" time="0.053"/>
+  <testcase name="rejects_non_decimal_and_signed_input" classname="com.cooper.lithic.core.model.MoneyParserTest" time="0.0"/>
+  <testcase name="parses_exact_non_negative_cny" classname="com.cooper.lithic.core.model.MoneyParserTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

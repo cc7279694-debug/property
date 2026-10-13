@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "E:\CODEX\砺石新APP\build\m09-evidence\qa_draft.py", line 101, in <module>
+    try:main()
+        ^^^^^^
+  File "E:\CODEX\砺石新APP\build\m09-evidence\qa_draft.py", line 82, in main
+    ui.find_text(NAME,up=False,tries=60);value('状态生效日期','bad-date');ui.capture('qa-process-restored-raw-date')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\砺石新APP\build\m09-evidence\journey_support.py", line 60, in find_text
+    swipe(up)
+  File "E:\CODEX\砺石新APP\build\m09-evidence\journey_support.py", line 51, in swipe
+    assert areas,'No observed app scroll area'
+           ^^^^^
+AssertionError: No observed app scroll area

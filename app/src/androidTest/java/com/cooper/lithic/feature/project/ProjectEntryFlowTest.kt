@@ -273,8 +273,9 @@ class ProjectEntryFlowTest {
     }
 
     private fun saveProjectAndWaitForDetail() {
+        val expectedId = requireNotNull(projectViewModel.state.value.editor).projectId
         compose.onNodeWithTag("project-save").performScrollTo().performClick()
-        waitForDetail()
+        waitForDetail(expectedId)
     }
 
     private fun detailAction(tag: String) {
@@ -298,9 +299,10 @@ class ProjectEntryFlowTest {
         compose.onNodeWithTag("money-editor-screen").assertIsDisplayed()
     }
 
-    private fun waitForDetail() {
+    private fun waitForDetail(expectedId: String? = null) {
         compose.waitUntil(15_000) {
-            projectViewModel.state.value.let { it.editor == null && it.moneyEditor == null && !it.detail.loading && it.detail.detail != null }
+            projectViewModel.state.value.let { it.editor == null && it.moneyEditor == null && !it.detail.loading && it.detail.detail != null &&
+                (expectedId == null || it.detail.detail.project.id == expectedId) }
         }
         compose.onNodeWithTag("project-detail-screen").assertIsDisplayed()
     }

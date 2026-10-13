@@ -1,0 +1,27 @@
+{
+  "targetId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+  "newPayment": {
+    "id": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+    "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+    "paidOn": 20514,
+    "effectiveFrom": 20514,
+    "paidUntilExclusive": 20545,
+    "reminderDueOn": 20544,
+    "amountCents": 24000,
+    "cycle": "MONTHLY",
+    "standardDays": 30,
+    "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+  },
+  "newState": {
+    "id": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+    "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+    "effectiveOn": 20514,
+    "state": "ENABLED",
+    "reason": null,
+    "note": null,
+    "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+  },
+  "oldPaymentsPreserved": true,
+  "result": "PASS",
+  "evidence": "Visible explicit payment confirmation, then complete actual DB facts; atomicity backed by transaction fault tests"
+}

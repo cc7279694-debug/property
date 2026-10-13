@@ -54,10 +54,39 @@ internal data object SubscriptionList : NavKey
 internal data object CreateSubscription : NavKey
 
 @Serializable
-internal data class SubscriptionDetail(val id: String) : NavKey
+internal enum class SubscriptionOrigin { CURRENT, HISTORY }
 
 @Serializable
-internal data class ConfirmSubscriptionRenewal(val id: String) : NavKey
+internal enum class SubscriptionAction { PAUSE, RESUME, REOPEN, STOP }
+
+@Serializable
+internal data object SubscriptionHistory : NavKey
+
+@Serializable
+internal data class SubscriptionDetail(val id: String, val origin: SubscriptionOrigin = SubscriptionOrigin.CURRENT) : NavKey
+
+@Serializable
+internal data class ConfirmSubscriptionRenewal(val id: String, val origin: SubscriptionOrigin = SubscriptionOrigin.CURRENT) : NavKey
+
+@Serializable
+internal data class ChangeSubscriptionState(val id: String, val action: SubscriptionAction,
+    val origin: SubscriptionOrigin = SubscriptionOrigin.CURRENT) : NavKey
+
+@Serializable
+internal data class CorrectSubscriptionState(val id: String, val stateId: String,
+    val origin: SubscriptionOrigin = SubscriptionOrigin.CURRENT) : NavKey
+
+@Serializable
+internal data class CancelSubscriptionStop(val id: String, val stateId: String,
+    val origin: SubscriptionOrigin = SubscriptionOrigin.CURRENT) : NavKey
+
+@Serializable
+internal data class CorrectSubscriptionRenewal(val id: String, val renewalId: String,
+    val origin: SubscriptionOrigin = SubscriptionOrigin.CURRENT) : NavKey
+
+@Serializable
+internal data class DeleteSubscriptionRenewal(val id: String, val renewalId: String,
+    val origin: SubscriptionOrigin = SubscriptionOrigin.CURRENT) : NavKey
 
 internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (destination) {
     Home -> listOf(Home)
@@ -65,8 +94,14 @@ internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (desti
     ProjectHistory -> listOf(Home, Review, ProjectHistory)
     CreateProject -> listOf(Home, CreateProject)
     CreateSubscription -> listOf(Home, CreateSubscription)
-    is SubscriptionDetail -> if (StoredValueValidation.isUuid(destination.id)) listOf(Home, SubscriptionList, destination) else listOf(Home)
-    is ConfirmSubscriptionRenewal -> if (StoredValueValidation.isUuid(destination.id)) listOf(Home, SubscriptionList, SubscriptionDetail(destination.id), destination) else listOf(Home)
+    SubscriptionHistory -> listOf(Home, Review, SubscriptionHistory)
+    is SubscriptionDetail -> if (StoredValueValidation.isUuid(destination.id)) subscriptionParent(destination.origin) + destination else listOf(Home)
+    is ConfirmSubscriptionRenewal -> subscriptionEditorStack(destination.id, destination.origin, destination)
+    is ChangeSubscriptionState -> subscriptionEditorStack(destination.id, destination.origin, destination)
+    is CorrectSubscriptionState -> if (StoredValueValidation.isUuid(destination.stateId)) subscriptionEditorStack(destination.id, destination.origin, destination) else listOf(Home)
+    is CancelSubscriptionStop -> if (StoredValueValidation.isUuid(destination.stateId)) subscriptionEditorStack(destination.id, destination.origin, destination) else listOf(Home)
+    is CorrectSubscriptionRenewal -> if (StoredValueValidation.isUuid(destination.renewalId)) subscriptionEditorStack(destination.id, destination.origin, destination) else listOf(Home)
+    is DeleteSubscriptionRenewal -> if (StoredValueValidation.isUuid(destination.renewalId)) subscriptionEditorStack(destination.id, destination.origin, destination) else listOf(Home)
     is ProjectDetail -> if (StoredValueValidation.isUuid(destination.id)) projectParent(destination.origin) + destination else listOf(Home)
     is ProjectEdit -> editorStack(destination.id, destination.origin, destination)
     is ProjectMoneyEntry -> editorStack(destination.id, destination.origin, destination)
@@ -76,6 +111,26 @@ internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (desti
     is ProjectDelete -> editorStack(destination.id, destination.origin, destination)
     else -> listOf(Home)
 }
+
+internal fun subscriptionOrigin(destination: NavKey): SubscriptionOrigin = when (destination) {
+    SubscriptionHistory -> SubscriptionOrigin.HISTORY
+    is SubscriptionDetail -> destination.origin
+    is ConfirmSubscriptionRenewal -> destination.origin
+    is ChangeSubscriptionState -> destination.origin
+    is CorrectSubscriptionState -> destination.origin
+    is CancelSubscriptionStop -> destination.origin
+    is CorrectSubscriptionRenewal -> destination.origin
+    is DeleteSubscriptionRenewal -> destination.origin
+    else -> SubscriptionOrigin.CURRENT
+}
+
+private fun subscriptionParent(origin: SubscriptionOrigin): List<NavKey> = when (origin) {
+    SubscriptionOrigin.CURRENT -> listOf(Home, SubscriptionList)
+    SubscriptionOrigin.HISTORY -> listOf(Home, Review, SubscriptionHistory)
+}
+
+private fun subscriptionEditorStack(id: String, origin: SubscriptionOrigin, destination: NavKey): List<NavKey> =
+    if (StoredValueValidation.isUuid(id)) subscriptionParent(origin) + listOf(SubscriptionDetail(id, origin), destination) else listOf(Home)
 
 internal fun projectOrigin(destination: NavKey): ProjectOrigin = when (destination) {
     is ProjectDetail -> destination.origin

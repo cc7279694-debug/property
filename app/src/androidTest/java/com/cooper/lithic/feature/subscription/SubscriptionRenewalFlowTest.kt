@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
+import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
@@ -449,7 +450,8 @@ class SubscriptionRenewalFlowTest {
 
     private fun fill(prefix: String, amount: String, cycle: BillingCycle, paid: String, from: String, until: String, reminder: String) {
         compose.onNodeWithTag("$prefix-amount").performScrollTo().performTextReplacement(amount)
-        compose.onNodeWithTag("$prefix-cycle-${cycle.name}").performScrollTo().performClick()
+        Espresso.closeSoftKeyboard(); compose.waitForIdle()
+        compose.onNodeWithTag("$prefix-cycle-${cycle.name}").performScrollTo().assertIsDisplayed().performClick().assertIsSelected()
         compose.onNodeWithTag("$prefix-paid-on-input").performScrollTo().performTextReplacement(paid)
         compose.onNodeWithTag("$prefix-effective-from-input").performScrollTo().performTextReplacement(from)
         compose.onNodeWithTag("$prefix-paid-until-input").performScrollTo().performTextReplacement(until)

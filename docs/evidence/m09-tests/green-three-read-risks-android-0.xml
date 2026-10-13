@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" tests="3" failures="0" errors="0" skipped="0" time="11.863" timestamp="2026-10-13T05:36:48" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="committed_later_facts_require_explicit_current_read_and_safe_conflict_exit" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="8.219" />
+  <testcase name="slow_committed_read_cannot_redirect_a_later_opened_detail" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="1.253" />
+  <testcase name="slow_resolved_conflict_read_cannot_redirect_a_later_opened_detail" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest" time="0.949" />
+</testsuite>

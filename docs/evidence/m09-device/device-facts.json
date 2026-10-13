@@ -1,0 +1,1929 @@
+{
+  "device": "emulator-5596 / Lithic_M01_API_36 / Android 16 API36 x86_64",
+  "targetSubscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+  "phases": [
+    {
+      "phase": "atomic-reopened-verified",
+      "localReceiptSha256": "a29fe081378c74bebf7728a4a778660cba144d4c0cbfc919e9a224d7dc4470e6",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 6,
+        "subscription_state_changes": 5
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20514,
+            "effectiveFrom": 20514,
+            "paidUntilExclusive": 20545,
+            "reminderDueOn": 20544,
+            "amountCents": 24000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20514,
+            "state": "ENABLED",
+            "reason": null,
+            "note": null,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "atomic-reopened",
+      "localReceiptSha256": "8577ad90ed11a1fa3d2c67c7310f0cc491f8d9ceec7d6e7664c9286c2f65e447",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 4
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "FAILED INTENT - no reopen was submitted"
+    },
+    {
+      "phase": "before",
+      "localReceiptSha256": "fd60ac52c3ce69c3506b35b51ae29d1df113fb187cf5389eef091847a3c5b784",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 2,
+        "subscription_renewals": 3,
+        "subscription_state_changes": 0
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "6e04f28cc0998fa772cfeeedf99eb457b71852ee7549eeda39525c6155afbcf6",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [],
+        "subscription_renewals": [],
+        "subscription_state_changes": []
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "covered-reopened",
+      "localReceiptSha256": "ddc9d539494669511ef368be68bcc8bef94a6a0aed7506f04812188ab1e76ac4",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 3
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "created",
+      "localReceiptSha256": "4fa9d0e76e4f8cb8a0c259f504c998c1fc973eec608276e3d8b3b4b5bbd8b4e9",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 4,
+        "subscription_state_changes": 0
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          }
+        ],
+        "subscription_state_changes": []
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "early-stopped",
+      "localReceiptSha256": "26fbb6ce4b90f51094d025c4818caec5ab08de79e452e842d654faaad516e324",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 2
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "expired-stopped",
+      "localReceiptSha256": "4f96e72175c72b89371eb543a9a10f2ce12197461db0f847b9125399e6496588",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 4
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "final-draft-discarded",
+      "localReceiptSha256": "429c0d05270435d90255bdc2137c277db1458bc55978062138c639c5f9ae454f",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 5
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20514,
+            "effectiveFrom": 20514,
+            "paidUntilExclusive": 20545,
+            "reminderDueOn": 20544,
+            "amountCents": 22500,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20514,
+            "state": "ENABLED",
+            "reason": null,
+            "note": null,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "final-post-regression",
+      "localReceiptSha256": "a6b3339e79915e1db911e8f67cc788f1e2450b0d4cc79592785133916c59405f",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 5
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20514,
+            "effectiveFrom": 20514,
+            "paidUntilExclusive": 20545,
+            "reminderDueOn": 20544,
+            "amountCents": 22500,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20514,
+            "state": "ENABLED",
+            "reason": null,
+            "note": null,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "final-restored",
+      "localReceiptSha256": "2ec666e6aeeb10cd1fdfc916cf7d4571f39de0def3034273f4999d5b728e3026",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 5
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20514,
+            "effectiveFrom": 20514,
+            "paidUntilExclusive": 20545,
+            "reminderDueOn": 20544,
+            "amountCents": 22500,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20514,
+            "state": "ENABLED",
+            "reason": null,
+            "note": null,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "installed",
+      "localReceiptSha256": "e12b409c67fe98ffff2fa79ae14c3a51382d8a509f369a4e0204d3f2d50e2a14",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 2,
+        "subscription_renewals": 3,
+        "subscription_state_changes": 0
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [],
+        "subscription_renewals": [],
+        "subscription_state_changes": []
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "next-period",
+      "localReceiptSha256": "48e1103cc5f0e37221f125a144047b5621964773c1b0c537fe5d254a65e89972",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 3
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "paused",
+      "localReceiptSha256": "39a1e75df6e39a1b3a9fe2c66bf9f3bd400e675e2e2312d9c24e9633fbc4864a",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 1
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "payment-180-deleted",
+      "localReceiptSha256": "7ed67578c1a4b4e780c6be935a5ff62cda202c45e5d9f51b59cf1c9adf4bca93",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 5
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20514,
+            "effectiveFrom": 20514,
+            "paidUntilExclusive": 20545,
+            "reminderDueOn": 20544,
+            "amountCents": 22500,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20514,
+            "state": "ENABLED",
+            "reason": null,
+            "note": null,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "payment-corrected-225",
+      "localReceiptSha256": "c728a9a7707b84b1ccf77d5d4d250ce972865b36f512701ab1eead57ed39d847",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 6,
+        "subscription_state_changes": 5
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20514,
+            "effectiveFrom": 20514,
+            "paidUntilExclusive": 20545,
+            "reminderDueOn": 20544,
+            "amountCents": 22500,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20514,
+            "state": "ENABLED",
+            "reason": null,
+            "note": null,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "plan-boundary",
+      "localReceiptSha256": "e6e7685f62898fc8d3ab1529c1fa6f77d914d72b3e87609e8556fb647523c76d",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 1
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "147bd3f8-9c5d-42bb-a252-df315109dc12",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": "M09_PLAN",
+            "note": null,
+            "operationId": "e8710738-59b0-41f5-9452-4aceee61a824"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "plan-cancelled",
+      "localReceiptSha256": "d9cc29904217a51878be1cfa1ff9d0dfdb221f11ddab5d23010b7c3ef811f09b",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 0
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": []
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "plan-corrected",
+      "localReceiptSha256": "8ae332ffe9002781280a41712ea4f7d3288f44344c0b92863c7231157a31d299",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 1
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "147bd3f8-9c5d-42bb-a252-df315109dc12",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20512,
+            "state": "STOPPED",
+            "reason": "M09_PLAN",
+            "note": null,
+            "operationId": "e8710738-59b0-41f5-9452-4aceee61a824"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "planned",
+      "localReceiptSha256": "d523c650154774855b1c68602684f77fea412574a50fdb35ceeaa424ca6a400e",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 1
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "147bd3f8-9c5d-42bb-a252-df315109dc12",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": "M09_PLAN",
+            "note": null,
+            "operationId": "e8710738-59b0-41f5-9452-4aceee61a824"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "prepaid",
+      "localReceiptSha256": "803e61243f3e7a61a761b4b0bcd34fe5ec2b7718b823d99dd7597f7aa37d2afc",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 0
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": []
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "real-date-offline",
+      "localReceiptSha256": "fcd4a1bd2d28488a0f29b14192cd61fe02c392d3cd528617af30aa8f642f29de",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 5
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "86a66dd0-68a4-4d61-9943-d9616257acd9",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20514,
+            "effectiveFrom": 20514,
+            "paidUntilExclusive": 20545,
+            "reminderDueOn": 20544,
+            "amountCents": 22500,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "25c37dc3-df1d-4f6a-b7dc-3f6438782061",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20513,
+            "state": "STOPPED",
+            "reason": null,
+            "note": null,
+            "operationId": "33dab39e-f91a-4f4d-9f73-c838a3c2f8b6"
+          },
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c2201138-d214-41b2-9af5-07e7146ac4cd",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20514,
+            "state": "ENABLED",
+            "reason": null,
+            "note": null,
+            "operationId": "33924c0d-ae89-4fa7-81c7-4ddd90c340b2"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "STOPPED",
+            "reason": "M09_EARLY",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          },
+          {
+            "id": "f5bb0f44-0288-43b3-96ca-a86126e7bf37",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20480,
+            "state": "ENABLED",
+            "reason": "M09_REOPEN",
+            "note": null,
+            "operationId": "3e5356ed-9eca-4a57-978e-4a3894c66979"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "resumed",
+      "localReceiptSha256": "02005af3d1046ffe341162b40139bcdbc5a2e6ee38a395c250441c673df8d131",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 2
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": [
+          {
+            "id": "2aa4108a-a7a5-4ee1-8dac-920ab2b7b6c3",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20478,
+            "state": "PAUSED",
+            "reason": "M09_PAUSE",
+            "note": null,
+            "operationId": "cc4ce5b1-f89f-4e3a-9bd9-77bb250d6450"
+          },
+          {
+            "id": "c6d51018-d2b5-4a5f-b2cf-6313a97ee04c",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "effectiveOn": 20479,
+            "state": "ENABLED",
+            "reason": "M09_RESUME",
+            "note": null,
+            "operationId": "cbcb5704-4b51-481d-8205-7d1337ffc68d"
+          }
+        ]
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    },
+    {
+      "phase": "stop-cancelled",
+      "localReceiptSha256": "fa3b8ef2553032b2d893fec182109c7394aec49bd692635ddd84cbaddddc7be1",
+      "tableCounts": {
+        "categories": 2,
+        "long_term_projects": 3,
+        "project_money_events": 6,
+        "local_media_assets": 0,
+        "subscriptions": 3,
+        "subscription_renewals": 5,
+        "subscription_state_changes": 0
+      },
+      "schemaVersion": 2,
+      "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+      "generationId": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+      "settingsSha256": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44",
+      "integrityCheck": "ok",
+      "foreignKeyCheck": [],
+      "installedApkSha256": "becd15b3bbf5de9425419504bde58837d0d6fa6e1cacc32d995f8dc11ec437f2",
+      "oldSevenTableFactsAndStorage": "EXACT MATCH",
+      "syntheticM09Facts": {
+        "subscriptions": [
+          {
+            "id": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "name": "M09_SUBSCRIPTION",
+            "categoryId": "00000000-0000-4000-8000-000000000002",
+            "coverAssetId": null,
+            "note": null,
+            "createdAt": "2026-01-25T12:13:22.353090Z",
+            "updatedAt": "2026-01-25T12:13:22.353090Z"
+          }
+        ],
+        "subscription_renewals": [
+          {
+            "id": "0cd0ed42-7676-4823-9859-cdc695873f76",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20454,
+            "effectiveFrom": 20454,
+            "paidUntilExclusive": 20485,
+            "reminderDueOn": 20483,
+            "amountCents": 15000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "004736de-dc66-4636-82b4-2a4549de3e0f"
+          },
+          {
+            "id": "8718380e-9bfa-408b-bd35-d51940710d28",
+            "subscriptionId": "1ad7191c-4bb0-47e1-9c95-0bcd1f408ba0",
+            "paidOn": 20473,
+            "effectiveFrom": 20485,
+            "paidUntilExclusive": 20513,
+            "reminderDueOn": 20512,
+            "amountCents": 18000,
+            "cycle": "MONTHLY",
+            "standardDays": 30,
+            "operationId": "fae513dc-dbe5-48e2-b0dc-80c7af1cf6b6"
+          }
+        ],
+        "subscription_state_changes": []
+      },
+      "snapshotSafetyResult": "PASS",
+      "businessResult": "See visible journey and actual facts; snapshot safety alone is not business acceptance"
+    }
+  ],
+  "privacy": "Only synthetic M09 facts, counts, hashes and UI evidence exported. Original rows and raw DB/WAL/SHM/preferences/APK/signing material remain ignored locally.",
+  "scope": "Actual UI journey, saved task SIGKILL/Recents and dedicated emulator evidence do not prove real phone/API26/OEM/Release/full TalkBack/true LMK."
+}

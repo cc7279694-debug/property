@@ -1,6 +1,6 @@
 # 规划资料与来源登记
 
-更新日期：2026-10-12。原始Planning Baseline 1.0在M00接入，M00～M06已独立验收冻结PASS WITH NOTES；当前用户另行授权M07，范围见[M07契约](M07_CONTRACT.md)。原规划来源字节不改，当前实现/实际验收另记；Q02/Q07解释、Q03～Q06期限和历次独立未重跑本机验证的NOTES保留。
+更新日期：2026-10-13。原始Planning Baseline 1.0在M00接入，M00～M08已独立验收冻结PASS WITH NOTES；当前M09实施验证后READY_FOR_REVIEW、独立PENDING，范围见[M09契约](M09_CONTRACT.md)。原规划来源字节不改，当前实际结果另记；Q02/Q07解释、Q03～Q06期限及所有历史独立NOTES保留，M10未授权。
 
 ## 实际取得的原始资料
 
@@ -53,7 +53,7 @@ ZIP SHA-256：`861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7`
 
 归档下的AGENTS、PROJECT、CURRENT_STATE、DECISIONS是原规划历史输入，保持原件，不覆盖仓库现有记忆。当前指令仍为根AGENTS，当前身份为根PROJECT，唯一实时状态为docs/CURRENT_STATE。
 
-原JSON的24模块PLANNED、130案例NOT_RUN是不可改写的规划快照。M00～M06各轮实际验证和独立验收分别登记当前docs/ACCEPTANCE_MATRIX；不修改原案例，也不把文档检查或规则确认当产品通过。
+原JSON的24模块PLANNED、130案例NOT_RUN是不可改写的规划快照。M00～M09各轮实际验证及M00～M08独立验收分别登记当前docs/ACCEPTANCE_MATRIX；不修改原案例，也不把文档检查或规则确认当产品通过。
 
 六份核心规格、原DECISIONS与SOURCES全文均与阅读版合并内容一致。新增可用内容为精确模块计划/依赖、130案例及模板。对照说明见[BASELINE_COMPARISON.md](BASELINE_COMPARISON.md)；Q02/Q07 已确认解释、其他建议与待运行测试见[CLARIFICATIONS.md](CLARIFICATIONS.md)。
 
@@ -66,8 +66,14 @@ ZIP SHA-256：`861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7`
 - M06本轮实际附件为 `E:/CODEX/.codex/attachments/72469a1e-9040-4ea0-8bcf-7cc787d6a5c3/已粘贴的文本.txt`，SHA-256 `ac70a90d15afcdc42c8b43395037f77004beab32708d0bb8daf148cbaded3ee0`。编码前已完整读取并建立[M06契约](M06_CONTRACT.md)；基线 `4576b03565e58011e2fa78a086039fee33e3352f`、来源feat/m05-ui-foundation、新分支feat/m06-project-entry。该附件不混入原ZIP/43原件，不授权M07或main合并。
 - 引用对话ID `6ac3156b-2810-83ec-9b92-2f7b5c8241d0`只补背景；仓库原件与当前用户要求优先。
 
-Q01资料缺失已关闭；M00～M07已独立冻结。本轮M08交付READY_FOR_REVIEW并停止等待独立验收；M09未授权。Q03～Q06 原状态及处理期限不变，16组跨模块NOT_RUN保留，Q02 的 M17/M18 集成验证留待对应模块。
+Q01资料缺失已关闭；M00～M08已独立冻结。本轮M09交付READY_FOR_REVIEW后停止等待独立验收；M10未授权。Q03～Q06 原状态及处理期限不变，16组跨模块NOT_RUN保留，Q02 的 M17/M18 集成验证留待对应模块。
 
 M07历史授权实际完整读取附件 `E:/CODEX/.codex/attachments/380d8db1-5837-435b-87cc-f7171b5db52f/已粘贴的文本.txt`，SHA-256 `66a4810c80deaa3df766294442a23a88ceca06ed10b377501b5f68f3e17309f8`。编码前[M07契约](M07_CONTRACT.md)落地；来源M06正式验收回写fb0eafdc43efa6e13ebd76e3491fa4331a145abb，本轮feat/m07-project-lifecycle。附件不混入原ZIP/43原件，不授权M08/main合并或公开APK。
 
-M08本轮完整附件 `E:/CODEX/.codex/attachments/f4cce3ae-8fde-4fc9-b100-00afae2a017e/已粘贴的文本.txt`，SHA-256 `31b0dea9ce575192cc22b7da229c5f73e2020a9ea785db287cb672f568c029f6`，基线fcb850f/feat/m07-project-lifecycle，当前feat/m08-subscription-renewals；[M08契约](M08_CONTRACT.md)先于编码。原43/130/16不改，M09未授权。实际交付见[M08报告](../evidence/M08-verification.md)、[当前验收](../ACCEPTANCE_MATRIX.md)和[M08 checkpoint](../checkpoints/2026-10-13-M08.md)。
+M08历史完整附件 `E:/CODEX/.codex/attachments/f4cce3ae-8fde-4fc9-b100-00afae2a017e/已粘贴的文本.txt`，SHA-256 `31b0dea9ce575192cc22b7da229c5f73e2020a9ea785db287cb672f568c029f6`，基线fcb850f/feat/m07-project-lifecycle，当时feat/m08-subscription-renewals；[M08契约](M08_CONTRACT.md)先于编码。当时原43/130/16不改且M09未授权；随后M08已独立冻结。历史交付见[M08报告](../evidence/M08-verification.md)、[当前验收](../ACCEPTANCE_MATRIX.md)和[M08 checkpoint](../checkpoints/2026-10-13-M08.md)。
+
+## M09本轮授权与实际交付来源
+
+实际完整读取用户附件 `E:/CODEX/.codex/attachments/d84ecfbb-9a40-4d0c-be54-7454a9a6e205/已粘贴的文本.txt`，SHA-256 `d83fb2d77190b0c49df8b5adf9a6e13c8cae8ca203513f9f5e98b0729350eaab`；基线 `0063ca504ca48ef9c7231d79dc155e9bf4bc8c82`/feat/m08-subscription-renewals，当前仅feat/m09-subscription-lifecycle。[M09契约](M09_CONTRACT.md)及用户A/B正式决定先于生产实现登记，附件不混入原ZIP/43原件。
+
+本轮原455＋新增94＝549唯一方法实际PASS，源码/XML完全一致，真实失败与最终GREEN分开；最终code7APK、专用API36状态/付款旅程和设备设置恢复留证。真实报告见[M09报告](../evidence/M09-verification.md)、[JSON](../evidence/M09-verification.json)、[文件](../evidence/M09-files.md)、[checkpoint](../checkpoints/2026-10-13-M09.md)和[当前验收](../ACCEPTANCE_MATRIX.md)。READY_FOR_REVIEW、独立PENDING，不自授冻结或授权M10，不合并main/公开APK。Q03～Q06期限及原130/16与旧证据不改。

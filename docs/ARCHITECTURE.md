@@ -1,8 +1,63 @@
 # 当前架构事实
 
-更新日期：2026-10-13。下文区分 M08 当前实现与 M04～M07 的继承事实；M00～M07 已独立冻结，M08 的实现存在不等于独立验收通过。实际执行证据和唯一当前状态见 [CURRENT_STATE](CURRENT_STATE.md)及[验收登记](ACCEPTANCE_MATRIX.md)，M08 独立验收仍为 PENDING，M09 未授权。
+更新日期：2026-10-13。M00～M08 已独立验收冻结；M09 的订阅状态、同身份重开及付款历史纠错已接入现有架构，实际四任务549唯一方法PASS及最终APK/API36旅程已验证，当前READY_FOR_REVIEW、独立PENDING，不自授冻结。当前用户授权仅到 M09，M10 未授权。下文区分 M09 当前实现与 M08 及更早阶段的继承事实；实际执行结果和唯一当前状态见 [CURRENT_STATE](CURRENT_STATE.md)及[验收登记](ACCEPTANCE_MATRIX.md)。
 
-## M08：固定周期订阅与真实续费
+## M09：订阅状态、同身份重开与付款历史修正
+
+M09在既有单个 `:app`、原生Compose/Navigation3、Room schema v2七张业务表上演进。没有新表、索引、迁移、第二数据库owner或独立成本/状态引擎。Project与Subscription仍共用AppContainer拥有的ManagedGeneration、LocalWriteCoordinator及SettingsStore持久记录时区；SubscriptionRepository不拥有关闭/替换数据集的权力。M08显式Migration(1,2)和已知数据库结构预检继承，schema v1/v2导出保持基线。完整备份/恢复仍未实现。
+
+```text
+Compose / Navigation3（现在｜回看｜设置）
+  ├─ ProjectViewModel ────── ProjectRepository ────── ProjectCostEngine
+  └─ SubscriptionViewModel ─ SubscriptionRepository ─ SubscriptionCostEngine(M03)
+               │                       │
+  单任务SavedState Bundle       LocalWriteCoordinator + Room transaction
+  UUID/来源NavKeys                        │
+                                  同一generation / Room v2
+                                  subscriptions
+                                  subscription_renewals
+                                  subscription_state_changes
+```
+
+### 持久写边界与精确事实
+
+[SubscriptionLifecycleCommands](../app/src/main/java/com/cooper/lithic/data/repository/SubscriptionLifecycleCommands.kt)定义完整SubscriptionFacts基线、五种用户状态动作、六个事务命令及结果。基线包括订阅元信息、全部续费和全部状态；UUID/关联、重复实体/操作/日期及领域结构先校验。列表顺序没有业务含义，完整字段/数量/集合相等才算CAS一致，不以“最后一条”或单个commandId代替旧事实核对。
+
+`setState`、`updateState`、`cancelScheduledStop`、`updateRenewal`、`deleteRenewal`、`reenableWithRenewal`均在原协调写边界的一次Room事务内执行，事务内重读及校验后才写，末尾再核对完整目标已存事实。付款修正保留原Renewal ID/Subscription ID/operationId；状态同日修正保留原State ID/operationId，不追加第二条日末边界。单笔错误付款删除拒绝最后一笔，计划取消仅允许尚未生效的STOPPED。异常写入使同事务副作用回滚；取消传播，冲突、校验、磁盘满和数据库失败明确返回。
+
+精确已存目标识别先于重新计算业务今天和默认停止日期。因此保存信封跨日恢复不会悄悄迁移原日期。完整已存事实才能返回replayed；schema v2没有永久操作日志，付款删除及计划取消返回CurrentAbsence只证明当前目标缺失，不证明历史操作是谁完成。SavedState不是永久审计库。
+
+### 状态、真实付款与固定停止
+
+派生状态、当前价格/贡献、累计真实金额、标准已购时长、历史平均和实际有效付费天数全部复用冻结 `SubscriptionCostEngine.evaluate(snapshot, asOf)`，没有持久派生金额或另一套状态真值。ENABLED有真实当前覆盖才ACTIVE；无覆盖EXPIRED/currentPrice空/贡献0。PAUSED仍在当前管理、无覆盖时仍主状态PAUSED并说明覆盖到期。实际已生效STOPPED移至回看历史，未来停止在生效日前仍依当日历史状态及真实覆盖计算。
+
+用户确认A：停止不销毁服务身份。当前覆盖内重开ENABLED不增加付款；只有未来已付覆盖时重开仍EXPIRED直到真实生效；无当前/未来覆盖时原订阅ID＋明确真实付款＋ENABLED在同事务提交。UI金额与真实付款日不自动填入。失败不能留下只启用或半笔付款。
+
+用户确认B：到期后停止确认时固定为全部已确认付款最晚paidUntilExclusive与业务今天较晚者，预付空档也不变。显式提前停止只允许今天/未来更早日。后续新付费或扩张纠错如跨未来固定停止，则要求明确修正/取消原计划；不自动延长，不退款。已有未来停止不能再用新的普通停止身份遮蔽。允许修正原已截断付费区间的金额，不能把原存付款误当新增覆盖拒绝。
+
+### 管理/历史查询与坏数据
+
+[SubscriptionDao](../app/src/main/java/com/cooper/lithic/data/local/SubscriptionDao.kt)在LIMIT前按asOf最近已生效状态边界筛选current/stopped，未来STOPPED保留当前，PAUSED保留当前。当前管理UI再按冻结引擎ACTIVE/PAUSED/EXPIRED分组；Review打开stopped历史。稳定排序沿用付款日期降序＋UUID升序；真实SQL每页50展示＋1哨兵，关联事实按可见ID批读，已加载窗口一次协调快照/Room事务重建，避免混合页。
+
+读取及生命周期写入先检查完整持久事实，隐藏在筛选或当前页外的错误身份、类别、状态和区间不能被伪装成空历史/正常EXPIRED。预检先检查孤儿引用，再以稳定UUID keyset分50个身份加载关联类别/付款/状态并释放上一批。**该过程仍O(total facts)，并且单服务完整时间线仍需内存加载；不是长期性能基准或固定O(50)总耗时。**asOf之前观察必须忽略paidOn晚于观察日的后来真实付款，不能因为查看历史就把已存真实记录判坏。
+
+### 单表单、保存确认与Navigation3
+
+[SubscriptionViewModel](../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionViewModel.kt)继续只拥有一个活动表单；[SubscriptionFactsCodec](../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt)将原始持久事实放进已有SavedState Bundle，不保存第二份派生账本。状态/付款纠错/取消/删除/原子重开共享raw、固定command/fact UUID、原基线、固定submitted信封及SubmissionPhase。写前先固定Instant和整个信封；IN_FLIGHT锁定重复与输入，恢复为UNCONFIRMED只核对/重放原信封。COMMITTED只读，不再次写付款；明确读取失败显示已保存暂不可读，输入/信封保留。
+
+已存目标后来被其他操作改变与读取异常分开处理：保留COMMITTED原信封，提示明确核对当前事实；显式核对后只能安全返回查看，不覆盖新事实或用旧结果导航。COMMITTED读和显式冲突读均捕获detailVersion，迟到结果不能重定向后来打开的详情，不能解除原pending保护。
+
+[SubscriptionStateDialog](../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionStateDialog.kt)使用滚动和IME避让的确认页，显示状态生效日、可选原因/说明及“只改变本App记录，不替服务商取消自动续费”。[SubscriptionDetailScreen](../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt)提供适用暂停/恢复/停止/重开、未来计划修正取消、逐付款纠错删除入口。[SubscriptionHistoryScreen](../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionHistoryScreen.kt)从回看打开原ID；普通续费与原子重开付款沿用现有[RenewalEditorScreen](../app/src/main/java/com/cooper/lithic/feature/subscription/RenewalEditorScreen.kt)，四个真实日期独立。
+
+NavKeys仅序列化规范UUID/目标事实UUID、动作及来源enum；current链最多四级，history为Home/Review/History/Detail/Editor最多五级。成功来源来自新读取的M03状态，立即停止转历史、明确重开转当前；未来停止仍当前。项目/订阅双ViewModel全局离开守卫先pending后dirty，统一工具栏、Tab重选/切换、系统/手势返回、根返回和内部成功导航；恢复隐藏表单有返回核对入口。非法恢复栈归Home，不暗中丢弃待确认付款。
+
+### 当前验证边界
+
+上述为已读源码的实际装配与行为边界，不能以实现存在替代模块测试通过。M09最终四任务549/549 PASS、源码/XML及构建输入一致；所有早期RED和全量失败证据保留。最终APK与专用API36旅程、小屏IME/旋转/手势/已保存任务恢复和设置收尾已留证，不由内部辅助审阅授予独立冻结。两项M09流程风险按用户确认及实际专项验证关闭；Q03～Q06 原状态与期限保持。M10 媒体、M11/M12 完整备份恢复及 Q06 切换回退、M13 汇总、M20 通知/Worker 未实施。真机、API26、OEM、Release 正式签名、完整 TalkBack、真实 LMK 未验证；SavedState 不承诺 force-stop、断电或系统未保存状态后的恢复。
+
+## M08：固定周期订阅与真实续费（冻结继承事实）
+
+本节保留 M08 交付时的结构和验证语境；其中“不提供 M09 状态入口”“四个页面”及“最多四级”描述 M08 当时范围，当前 M09 演进见上节。M08 已依据用户转交的独立验收结论冻结，其历史证据与 NOTES 保留。
 
 [SubscriptionRepository](../app/src/main/java/com/cooper/lithic/data/repository/SubscriptionRepository.kt)是非 owner 的轻量读写入口，与 ProjectRepository 使用同一个 ManagedGeneration 的 Room、LocalWriteCoordinator 和持久 recordZone 派生的 BusinessClock。[LedgerUiStateHolder](../app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt)装配两个 Repository，先成功读取时区和两类真实 COUNT 才发布 Ready；后续合并两者的 Room 变化流刷新数量，读取失败保留上次结果并明确错误，不回落为假 0 或空账本。AppContainer 仍是唯一存储所有者，两个业务 ViewModel 和页面均不创建、关闭或替换 generation。
 
@@ -60,9 +115,9 @@ SavedStateHandle只存当前任务单活动表单的原始字符串、UUID、完
 
 真实SQLite页数耗尽有两种已观察到的错误：直接SQLiteFull可归DISK_FULL；嵌套事务收尾有时遮蔽为普通DATABASE的“cannot rollback”错误。生产保留明确未知结果及原命令，不按字符串猜分类、吞异常或清库；当前验证必须证明既有行不变、无部分记录、同命令恢复重试仅一次。实际证据与未测边界另记验收，不由此授予冻结。
 
-## Verified：当前实际存在
+## 当前实际存在的工程结构
 
-单 Gradle `:app`、单业务 `MainActivity` 与 `LithicApplication`，Kotlin + Compose + Navigation 3。当前沿原[Activity](../app/src/main/java/com/cooper/lithic/app/MainActivity.kt)和[Nav3 宿主](../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt)接入长期项目闭环、生命周期/历史，以及 M08 订阅创建和真实续费。Debug 仍另含空 ComponentActivity 测试宿主；Release 仅按配置排除，尚未实际构建。
+单 Gradle `:app`、单业务 `MainActivity` 与 `LithicApplication`，Kotlin + Compose + Navigation 3。当前沿原[Activity](../app/src/main/java/com/cooper/lithic/app/MainActivity.kt)和[Nav3 宿主](../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt)接入长期项目闭环、生命周期/历史，以及 M08 订阅创建/真实续费和 M09 状态/重开/付款纠错历史。Debug 仍另含空 ComponentActivity 测试宿主；Release 仅按配置排除，尚未实际构建。
 
 ```text
 LithicApplication
@@ -75,11 +130,11 @@ LithicApplication
 
 三个主入口为现在/回看/设置；首页只查真实项目和订阅数量，提供两类正式管理/新增入口；业务页面按需读取事实并展示各自冻结领域引擎结果。总成本汇总、分析、媒体处理、完整备份/恢复和提醒仍未开放。支持系统浅深、safeDrawing、IME避让和滚动；图标仍为临时工程图标。
 
-字体使用设备系统字体。AndroidX Emoji2的自动初始化默认会查询可下载字体提供者，因此按[官方说明](https://developer.android.com/develop/ui/views/text-and-emoji/emoji2)及实际1.4.0源码，在Manifest合并中仅移除EmojiCompatInitializer；不手动初始化下载配置。保留其他Startup初始化器，既有最终APK检查脚本包含Emoji初始化入口移除验证，M08最终APK结果须由本轮证据登记。
+字体使用设备系统字体。AndroidX Emoji2的自动初始化默认会查询可下载字体提供者，因此按[官方说明](https://developer.android.com/develop/ui/views/text-and-emoji/emoji2)及实际1.4.0源码，在Manifest合并中仅移除EmojiCompatInitializer；不手动初始化下载配置。保留其他Startup初始化器，既有最终APK检查脚本包含Emoji初始化入口移除验证，M08 最终 APK 检查为历史证据；M09 最终产物须另行核验并登记当前执行结果。
 
-正式 namespace/applicationId 为 `com.cooper.lithic`；Debug 为 `com.cooper.lithic.debug`，名称含 Debug，仅本地调试签名。没有生产签名配置。[Manifest](../app/src/main/AndroidManifest.xml)与历次最终 APK 的网络/存储/通知/精确闹钟权限检查见[当前验收登记](ACCEPTANCE_MATRIX.md)，M08最终APK不能用旧结果替代。既有检查的唯一 uses-permission 来自 AndroidX Core 的签名级 `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`，用于保护内部接收器；不提供网络或用户数据访问权限。ProfileInstallReceiver 上的 DUMP 是调用方须持有的权限，不是 App 申请 DUMP。
+正式 namespace/applicationId 为 `com.cooper.lithic`；Debug 为 `com.cooper.lithic.debug`，名称含 Debug，仅本地调试签名。没有生产签名配置。[Manifest](../app/src/main/AndroidManifest.xml)与历次最终 APK 的网络/存储/通知/精确闹钟权限检查见[当前验收登记](ACCEPTANCE_MATRIX.md)，M08 模块独立验收与历史最终 APK 执行证据保留，独立审查未核验 APK 字节；M09 最终产物不能用旧结果替代。既有检查的唯一 uses-permission 来自 AndroidX Core 的签名级 `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`，用于保护内部接收器；不提供网络或用户数据访问权限。ProfileInstallReceiver 上的 DUMP 是调用方须持有的权限，不是 App 申请 DUMP。
 
-系统备份配置包括 `allowBackup=false`、[旧规则](../app/src/main/res/xml/backup_rules.xml)和[新规则](../app/src/main/res/xml/data_extraction_rules.xml)；旧规则以及 cloud-backup/device-transfer 均排除九类域。M01～M07的合并 Manifest 和最终 APK 编译资源证据保留，M08最终APK需另行核查；不据此宣称所有 OEM 的迁移行为均已验证。
+系统备份配置包括 `allowBackup=false`、[旧规则](../app/src/main/res/xml/backup_rules.xml)和[新规则](../app/src/main/res/xml/data_extraction_rules.xml)；旧规则以及 cloud-backup/device-transfer 均排除九类域。M01～M08的合并 Manifest 和最终 APK 编译资源历史证据保留，M09最终APK仍须另行核查；不据此宣称所有 OEM 的迁移行为均已验证。
 
 M04存储所有者、generation与固定记录时区保持；M06/M07项目 Repository 和 M08 订阅 Repository 复用同一写协调器，领域引擎不改。当前 schema 为 v2，无完整备份格式版本；没有图片处理、通知、WorkManager 或完整 Backup/Restore。实际验证以[验收登记](ACCEPTANCE_MATRIX.md)为准。
 
@@ -121,7 +176,7 @@ Renewal 是领域事实，保存正数 Money、cycle、standardDays 与四个独
 
 独立验收补测后，evaluate 的付款循环实际调用 internal `accumulateConfirmedPayment(SubscriptionPaidTotals, Renewal)`，保留原金额/标准天数两次Math.addExact，返回新不可变累计值；溢出抛ArithmeticException，不返回部分更新。内部累计种子作为边界测试接口，不是新的用户输入、数据库字段或公共业务功能；没有放宽Money/固定周期校验。当前边界/回归证据见[M03补测](evidence/M03-recheck-verification.md)。
 
-默认停止 helper 只从调用方选定的真实付费期生成 paidUntilExclusive 的 STOPPED 边界；提前停止须明确提供日期，外部服务商自动续费不由本地引擎控制。M03 当时没有存储或订阅界面，M08 已接入两者；通知资格/里程碑触发与 M09 状态用户流程仍未实现。实际测试与局限见[当前验收](ACCEPTANCE_MATRIX.md)和[M03 契约](planning/M03_CONTRACT.md)。
+M03 默认停止 helper 只从调用方选定的真实付费期生成 paidUntilExclusive 的 STOPPED 边界；提前停止须明确提供日期，外部服务商自动续费不由本地引擎控制。M03 当时没有存储或订阅界面，M08 已接入两者；M09 当前由 Repository 按用户确认规则选择 max(业务今天, 所有已确认付款的最晚边界) 并保存固定 STOPPED 事实，不更改冻结 helper 或领域算法。M09 状态用户流程已接通，通知资格和里程碑触发仍未实施。实际测试与局限见[当前验收](ACCEPTANCE_MATRIX.md)和[M03 契约](planning/M03_CONTRACT.md)。
 
 ## Planned：继承的实施契约
 
@@ -139,7 +194,7 @@ Compose → ViewModel → UseCase / Repository → Room / 领域引擎
 
 schema 当前 v2(M08)，v1(M04) 导出保留；后续计划 → v3(M16) → v4(M20)。backup format 计划 v1(M11) → v2(M16) → v3(M20)，当前尚无完整备份格式；schema 与内部 generation metadata format1 均不等于备份格式。
 
-后续结构在对应获准模块实施后更新。M00～M07 已独立冻结，M08 按[当前契约](planning/M08_CONTRACT.md)实施后停止等待独立验收；M09 及后续未授权。Q03～Q06 原状态/期限及 M09 两项流程风险见[问题清单](SPEC_ISSUES.md)，本轮不自行决定 STOPPED 后重新启用或多期预付的默认停止边界。媒体处理/清理仍归 M10，完整导出与恢复仍归 M11/M12，总成本汇总仍归 M13。真机、API26、OEM、Release正式签名、完整 TalkBack 和真实 LMK 未验证；当前实际验证及独立验收状态以唯一 CURRENT_STATE 为准。
+后续结构在对应获准模块实施后更新。M00～M08 已独立冻结；M09 按[当前契约](planning/M09_CONTRACT.md)已接通并完成本轮实际验证，READY_FOR_REVIEW、独立PENDING，交付后停止等待独立验收；M10 及后续未授权。Q03～Q06 原状态/期限及 M09 两项流程风险见[问题清单](SPEC_ISSUES.md)。STOPPED 后重新启用和多期预付默认停止边界采用本轮用户明确确认的 A/B 规则，两项流程风险只依据本轮用户确认、实现和真实测试关闭。媒体处理/清理仍归 M10，完整导出与恢复仍归 M11/M12，总成本汇总仍归 M13。真机、API26、OEM、Release正式签名、完整 TalkBack 和真实 LMK 未验证；当前实际验证及独立验收状态以唯一 CURRENT_STATE 为准。
 
 ## M04：继承的存储 owner 与私有初始数据集
 
@@ -183,7 +238,7 @@ SettingsStore 为 canonical 设置文件登记唯一所有者；记录 record_zo
 
 [LithicApp](../app/src/main/java/com/cooper/lithic/app/LithicApp.kt)在Ready前不组成正常导航；保护页无空账本/零值/原始路径/堆栈/无效重试，退出回调必须由宿主提供，MainActivity实际finish。加载和错误页均支持安全区及纵向滚动。
 
-[NavKeys](../app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt)仅序列化路线和规范UUID；M06 项目当前链最多四级 Home/List/Detail/Editor，M07 增加最多五级历史链，M08 订阅链最多四级。创建保留实际来源父链，成功进入原UUID详情。rememberNavBackStack保留路线，旧Skeleton仍可解码；已解码非法栈归Home，缺失记录有返回入口。未保存和未确认操作由当前双业务统一离开守卫保护。
+[NavKeys](../app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt)仅序列化路线和规范UUID；M06 项目当前链最多四级 Home/List/Detail/Editor，M07 增加最多五级历史链；M08 当时订阅链最多四级，M09 增加原身份订阅历史及对应编辑来源链，当前订阅最多四级、历史最多五级。创建保留实际来源父链，成功进入原UUID详情。rememberNavBackStack保留路线，旧Skeleton仍可解码；已解码非法栈归Home，缺失记录有返回入口。未保存和未确认操作由当前双业务统一离开守卫保护。
 
 [LithicTheme](../app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt)使用系统字体与系统浅深模式、低饱和蓝灰交互色、中性背景，主38/title24/body16/辅助14sp及六级间距。[AmountText](../app/src/main/java/com/cooper/lithic/core/design/AmountText.kt)只做BigDecimal展示：null为无值、真实0为¥0.00，普通金额HALF_UP两位/toPlainString；日均非零绝对值<0.01为<¥0.01或−<¥0.01，含±0.005，不经Double。[EntryCard](../app/src/main/java/com/cooper/lithic/core/design/EntryCard.kt)接收调用方状态/时间和可选封面/真实点击；[FormFields](../app/src/main/java/com/cooper/lithic/core/design/FormFields.kt)只提供受控输入、错误语义、键盘IME和日期选择回调，不写库。
 

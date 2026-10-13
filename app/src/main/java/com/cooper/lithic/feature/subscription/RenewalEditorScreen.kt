@@ -38,14 +38,21 @@ internal fun RenewalEditorScreen(
         .padding(LithicSpacing.medium).testTag("renewal-editor-screen"),
         verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
         TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("renewal-editor-back")) { Text("返回订阅详情") }
-        Text("记录真实续费", style = MaterialTheme.typography.headlineLarge,
+        val correction = state.kind == SubscriptionEditorKind.CORRECT_RENEWAL
+        val reenable = state.kind == SubscriptionEditorKind.REENABLE
+        Text(if (correction) "修正真实付款" else if (reenable) "确认真实付款并启用原订阅" else "记录真实续费", style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.semantics { heading() })
         Text(state.serviceName, Modifier.testTag("renewal-service-name"), style = MaterialTheme.typography.titleLarge)
         if (state.loading) Text("正在读取订阅资料", style = MaterialTheme.typography.bodyLarge)
-        Text("前次金额和周期仅供参考，请核对本次实际付款及四个日期。",
+        Text(if (correction) "修改原付款事实并重算历史，不新增付款或退款；原记录身份保持。"
+            else if (reenable) "当前和未来均无已确认覆盖，请主动填写实际付款金额和付款日期。只有明确确认后，真实付款和启用状态才会一起保存。"
+            else "前次金额和周期仅供参考，请核对本次实际付款及四个日期。",
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        state.fixedStopOn?.let { Text("已固定的计划停止日：$it。付款纠错不会自动移动它；扩张停止日后的覆盖前，请明确修正或取消计划。",
+            Modifier.testTag("renewal-fixed-stop"), style = MaterialTheme.typography.bodyMedium) }
         SubscriptionPaymentFields(state, "renewal", onAmountChange, onCycleChange, onPaidOnChange,
             onEffectiveFromChange, onPaidUntilChange, onReminderDueChange)
-        SubscriptionPaymentActions(state, "renewal", "确认这笔真实付款", onConfirmPayment, onRetryRead)
+        SubscriptionPaymentActions(state, "renewal", if (correction) "确认修正原付款" else if (reenable) "确认真实付款并启用原订阅" else "确认这笔真实付款",
+            onConfirmPayment, onRetryRead)
     }
 }

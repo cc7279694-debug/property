@@ -145,7 +145,7 @@ internal fun SubscriptionPaymentActions(
         state.phase == SubmissionPhase.COMMITTED -> {
             if (state.message == null) Text("已保存，暂时无法读取。请重试读取，不必重新付款。", style = MaterialTheme.typography.bodyMedium)
             Button(onRetryRead, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-retry-read"),
-                enabled = !state.loading && !state.busy) { Text("重新读取已保存订阅", style = MaterialTheme.typography.bodyLarge) }
+                enabled = !state.loading && !state.busy) { Text(if (state.conflict) "核对当前事实并安全返回" else "重新读取已保存订阅", style = MaterialTheme.typography.bodyLarge) }
         }
         state.conflict -> {
             Text("请先核对已保存的付款事实；当前输入和原付款身份仍保留。", style = MaterialTheme.typography.bodyLarge)

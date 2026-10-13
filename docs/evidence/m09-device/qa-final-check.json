@@ -1,0 +1,30 @@
+{
+  "result": "PASS",
+  "guestSettingsRestoredExact": true,
+  "systemImeRestored": "null",
+  "secureImeRestored": "0",
+  "guestUtc": "2026-10-13T08:26:01Z",
+  "hostUtc": "2026-10-13T08:26:01.842674+00:00",
+  "absoluteUtcDifferenceSeconds": 0.842674,
+  "allSevenTablesExactAfterDraftAndRestore": true,
+  "metrics": {
+    "confirmedPaidCents": 37500,
+    "standardPurchasedDays": 60,
+    "elapsedPaidDays": 60,
+    "status": "EXPIRED",
+    "currentPrice": null,
+    "currentContribution": "0",
+    "historicalDailyCost": "6.25"
+  },
+  "evidence": [
+    "qa-final-restored-expired-historical.png",
+    "qa-final-restored-expired-historical.xml",
+    "qa-final-restored-zero-current.png",
+    "qa-final-restored-zero-current.xml",
+    "qa-final-restored-total-elapsed.png",
+    "qa-final-restored-total-elapsed.xml",
+    "ledger-final-restored.json",
+    "guest-settings-restored.json",
+    "qa-gesture-restored.json"
+  ]
+}

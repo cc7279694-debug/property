@@ -336,6 +336,8 @@ M06已独立冻结，M07要求不重复回收、修改后历史重算、失败�
 
 ## 2026-10-13 — M08 显式安全升级与独立真实付款事实
 
+本条保留M08工程实施时语境；M08现已依据用户转交的独立验收正式冻结，下文PENDING或未授权M09是当时历史，当前M09交付状态见CURRENT_STATE。
+
 **状态：Local operating rule / Inherited planning default；来源为本轮用户 M08 完整授权及 [M08 契约](planning/M08_CONTRACT.md)，继承原 DOMAIN C07～C11 与 ARCH A02～A08，不改变冻结产品规则。**
 
 ### Decision
@@ -357,3 +359,37 @@ M00～M07 已独立验收冻结，现有 v1 已包含需要保持的项目、资
 ### Consequences
 
 当前 Room schema 为 v2，旧 v1 导出及四表不改；内部 generation metadata format1 保持，无完整 backup format，数据库、DataStore 和文件系统不因此成为跨存储原子事务。SQL 50+1 稳定分页与批读窗口限制展示负担，历史平均仍使用完整事实；SavedState 固定原命令/UUID，COMMITTED 只重读，两类 ViewModel 的 pending/dirty 全局导航守卫共同保护提交。M08 不提供 M09 暂停/恢复/停止、自动付款、退款或期中补差；Q03～Q06 和 M09 两项流程风险继续保留，媒体 M10、完整备份/恢复 M11/M12、汇总 M13 不提前实施。工程决定不授予独立冻结；M08 独立验收 PENDING，实际测试/最终 APK/交付状态以唯一 [CURRENT_STATE](CURRENT_STATE.md)和[验收登记](ACCEPTANCE_MATRIX.md)为准。真机/API26/OEM/Release正式签名/完整 TalkBack/真实 LMK 未验证。
+
+
+## 2026-10-13 — M09用户正式确认STOPPED重新开通与固定最后付费停止边界
+
+**状态：USER_CONFIRMED。来源：本轮完整用户执行指令，SHA-256 `d83fb2d77190b0c49df8b5adf9a6e13c8cae8ca203513f9f5e98b0729350eaab`，实施契约见 [M09_CONTRACT](planning/M09_CONTRACT.md)。产品规则已确认，现有 Room v2、Repository、表单与导航中的工程实现已接通，最终四任务549/549方法PASS、最终APK与专用API36实际旅程已验证；两项流程风险按模块证据关闭。当前READY_FOR_REVIEW、独立PENDING，不自授冻结。**
+
+### Decision
+
+STOPPED不是永久销毁：在原Subscription ID上明确重新开通，保留付款和日末状态历史。当前已有有效覆盖可ENABLED而不付款；仅未来已付覆盖可明确ENABLED但生效前仍EXPIRED；无当前/未来覆盖必须用户确认真实续费，与ENABLED原子提交。同日状态修正原行ID/operationId与完整旧事实，不再追加重复边界。
+
+停止默认采用max(业务今天,全部已确认真实付款的最晚paidUntilExclusive)，包含预付和空档；只提供到期后停止与明确提前停止。确认时固定为持久STOPPED事实，付款新增/纠错不自动移动停止日期；与计划冲突要求明确修正/取消。提前停止不退款、不减少金额/标准已购天数，不替服务商取消续费。
+
+### Context
+
+M03独立审查登记了STOPPED再启用入口和多期预付默认停止两项流程风险；M08保留未定案边界。当前用户已在开发前给出正式A/B解释，M09实现及验证可以据此推进。
+
+### Alternatives
+
+永久停止后另建服务身份；只取当前一期结束；付款时自动延后停止；通过零额付款或自动续费启用；均不符合本轮确认。
+
+### Reason
+
+稳定身份保留多年历史，固定计划日期避免用户既有停止意图被后来付款静默改变。M03仍是唯一状态/成本引擎，Room v2已有事实足够，完整基线CAS与现有协调事务保护同日修正、付款纠错和重开原子性。
+
+当前工程沿用已有协调器和一次 Room 事务实施六种生命周期命令，校验订阅及全部付款/状态事实，事务内写入后核对完整目标；状态/付款纠错保留原事实身份。对应可追溯实现见[命令](../app/src/main/java/com/cooper/lithic/data/repository/SubscriptionLifecycleCommands.kt)、[Repository](../app/src/main/java/com/cooper/lithic/data/repository/SubscriptionRepository.kt)和[单表单 ViewModel](../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionViewModel.kt)。以下为本轮最小工程规则，不新增产品功能：
+
+- **固定信封跨日恢复。**先比较完整已存目标是否精确吻合，再对尚未提交的新写入验证今天/默认边界；不能用恢复日重新移动已保存停止日期。一次提交的 UUID、时间、原事实和目标在原活动 Bundle 内固定，不分配新付款来处理结果丢失。
+- **当前缺失语义。**schema v2没有永久业务操作日志，删除付款及取消计划的 `CurrentAbsence` 只确认当前目标不存在，不提供永久 commandId 查询或历史操作身份的证明；结果未知继续保留原输入和待核对信封。
+- **有界完整预检。**保持页外/筛选外坏事实检查，以稳定 UUID keyset 每批50个身份读取必要关联并释放上一批，避免一次装载全部订阅历史。预检仍 O(total facts)，单项完整时间线仍必须加载，不能将该保护或分页正确性测试宣称为长期性能基准。
+- **COMMITTED 与详情版本保护。**已成功保存只重读，不重复写；后来事实变化与读失败明确区分，用户显式核对后安全返回，不覆盖新事实。成功读取与显式冲突读取都捕获 detailVersion，迟到结果不能重定向已打开的另一详情或解除原待确认守卫。导航来源以新读取的 M03 状态决定，不能沿用旧缓存。
+
+### Consequences
+
+不新增schema/操作审计系统/次数指标。已付剩余期可能因明确停止被截断贡献，金额-only纠错仍合法；扩张计划停止后的覆盖须先处理停止计划。已删除事实只可核对当前缺失，不提供永久command重放证明。PAUSED无覆盖仍继承M03的PAUSED主状态，辅助显示覆盖已到期。Q03～Q06及M10～M23范围不变，两项M09流程风险仅按本轮已完成真实验证关闭；独立冻结仍需ChatGPT验收。完整回归、最终APK/设备及交付证据见[M09报告](evidence/M09-verification.md)，历史失败保留，Git自身SHA和推送以实际回执为准。SavedState只覆盖系统实际保存的任务状态，不是永久草稿，也不承诺force-stop、断电或真实LMK恢复；完整备份恢复仍归M11/M12。

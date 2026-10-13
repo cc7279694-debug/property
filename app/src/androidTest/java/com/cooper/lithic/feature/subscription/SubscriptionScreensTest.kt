@@ -17,6 +17,7 @@ import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
@@ -32,6 +33,7 @@ import androidx.compose.ui.test.performTextReplacement
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.espresso.Espresso
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.data.local.CategoryEntity
 import com.cooper.lithic.data.local.CategoryType
@@ -91,8 +93,9 @@ class SubscriptionScreensTest {
         compose.onNodeWithTag("renewal-amount").performScrollTo().performTextReplacement("148.10")
         assertEquals("148.10", state.amount)
         assertEquals(0, confirmations.get())
+        Espresso.closeSoftKeyboard(); compose.waitForIdle()
         compose.onNodeWithTag("renewal-confirm-payment").performScrollTo()
-            .assertTextContains("确认这笔真实付款").performClick()
+            .assertIsDisplayed().assertIsEnabled().assertTextContains("确认这笔真实付款").performClick()
         compose.waitForIdle()
         assertEquals(1, confirmations.get())
     }

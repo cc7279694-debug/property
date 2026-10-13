@@ -16,8 +16,8 @@ android {
         applicationId = "com.cooper.lithic"
         minSdk = 26
         targetSdk = 36
-        versionCode = 6
-        versionName = "0.1.0-m08"
+        versionCode = 7
+        versionName = "0.1.0-m09"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
