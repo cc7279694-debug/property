@@ -590,3 +590,41 @@ Task3038已STOPPED/HaveState=true/Bundle6360bytes后UID SIGKILL，旧PID14365消
 保留NOTES：CurrentAbsence仅当前缺失，不是永久操作日志；全量坏数据预检50身份批次但O(total facts)，单服务历史完整加载，不是长期性能基准；SavedState只覆盖已保存任务，不保证force-stop/断电/真实LMK；SQLite空间不足可能表现DATABASE。真机/API26/OEM/Release正式签名/完整TalkBack/真实LMK、M11/M12完整备份恢复及Q06故障回退仍NOT_RUN，Debug不用不可丢失个人记录。Q03～Q06状态期限、Q02未来集成、M04残留generation、M08后续schema预检、M07原删除/媒体边界及全部历史独立NOTES保持。M09两项用户已确认流程风险只按本轮实测关闭，不关闭提醒资格或未来模块。
 
 只提交/推送feat/m09-subscription-lifecycle，自身提交SHA与实际推送依据Git日志/回执，避免递归自引用。不合并main、不force、不自动PR/公开APK、不进入M10；交付后停止。
+
+## M09 独立代码验收与正式冻结记录（2026-10-13）
+
+- 正式结论：**ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 来源：用户在当前会话明确转交的ChatGPT独立代码验收正式结论；本次Codex仅回写，不自行授予冻结，也不以本地辅助审阅代替独立验收。
+- 仓库：`cc7279694-debug/property`。
+- 评审分支及本次回写分支：`feat/m09-subscription-lifecycle`。
+- 评审HEAD：`bfc25378927ca8d04eaecbb9d2b1455d72633da9`；回写前已实际确认本地及远端M09分支一致、工作区干净。
+
+独立审查确认（完整登记用户转交的12项结论，不登记为本次产品测试执行）：
+
+1. M09-T01～T06的正式实现和实际测试证据符合要求。
+2. 86项JVM、463项Android，共549项测试通过；原455项保留，M09实现新增94项。
+3. 最终成功记录为 `BUILD SUCCESSFUL in 13m24s`；此前失败和诊断历史保留。
+4. 暂停、恢复、到期、停止、计划修正与取消均使用持久状态事实和M03统一计算引擎。
+5. 多期预付默认停止边界正确固定，后续付款不会静默延长原计划。
+6. STOPPED后可同身份重新开通；无覆盖时真实付款与ENABLED原子提交，并有失败回滚测试。
+7. 同日状态修正保留身份；续费纠错、删除具备事务、幂等和陈旧基线保护。
+8. 当前管理、暂停分组、已停止历史及真实刷新得到验证。
+9. API36模拟器提供20条实际操作路径及旧数据保留证据。
+10. Room schema v2、既有M03成本引擎、存储owner和运行依赖未越界改变。
+11. 未发现确定性阻塞问题。
+12. **ChatGPT独立审查未在用户Windows本机重新运行Gradle或独立核验最终APK字节。**本次Codex状态回写同样未运行产品测试、构建、安装、设备验证或重新核验APK；既有549项PASS为原交付执行记录，不新增一次产品测试PASS。
+
+保留全部NOTES与后续边界：
+
+1. **CurrentAbsence：**只证明当前缺失，不提供永久删除操作日志；不将缺失结果升级为历史删除操作身份的证明。
+2. **长期性能：**全量存储事实预检在长期大数据下的性能仍待M22验证；当前分页/查询范围证据不等于长期性能基准。
+3. **草稿恢复：**SavedState不保证force-stop、断电或真实LMK后的未持久化草稿恢复；已保存同任务SIGKILL/Recents证据不替代这些验证。
+4. **空间不足：**SQLite空间不足可能被底层包装为DATABASE错误；继续保证原子性、保留输入和安全重试，不为猜测错误分类牺牲数据安全。
+5. **平台NOT_RUN：**真机、API26、OEM、Release、完整TalkBack和真实LMK仍NOT_RUN；正式签名升级及Debug测试宿主的Release核查继续保持未执行边界。
+6. **备份与故障回退：**M11/M12完整备份恢复及Q06故障回退仍NOT_RUN；Q06保持ENGINEERING_REQUIRED，完整导入/切换/验证后回退/中断/共同校验/清理与Q06-V01～V03仍待M12。当前Debug版本不能用于保存无法丢失的重要个人记录。
+7. **规格与未来集成：**Q03～Q06其他规格问题和未来集成验收继续按原期限处理。Q03长期100/1000日节点在M21前，Q04提醒资格在M20前，Q05图片往返在M10/M12前；Q02的M17/M18视图集成仍NOT_RUN。M04初始化中断残留generation不得静默清除真实数据；后续schema升级继续维护M08已建立的版本预检及已知Room身份。M07旧END_SETTLEMENT歧义、M10媒体生命周期及全部历史NOTES保留。
+8. **不可变原件与历史：**原130条NOT_RUN归档案例、16组跨模块案例、43原件/24模块计划及历史报告/JSON/XML/截图/checkpoint不改写；早期失败、诊断、Lint20条提示与各模块原执行状态保留。不将后续未执行项标PASS，TypeScript/ESLint不适用，NO-SOURCE不计PASS。
+
+M09两项已确认产品规则继续保留原来源与实施验证：用户完整M09执行指令SHA-256 `d83fb2d77190b0c49df8b5adf9a6e13c8cae8ca203513f9f5e98b0729350eaab`、[DECISIONS](DECISIONS.md)、[M09契约](planning/M09_CONTRACT.md)和[问题清单](SPEC_ISSUES.md)登记A/B规则；[M09报告](evidence/M09-verification.md)、[原结构化证据](evidence/M09-verification.json)与[历史checkpoint](checkpoints/2026-10-13-M09.md)保留实际实施与验证。A规则允许STOPPED后同身份重开，覆盖内不创建付款，未来已付未生效仍EXPIRED，无覆盖时显式真实付款与ENABLED同事务；B规则默认停止固定全部已确认覆盖最晚边界与业务今天中的较晚日，后续付款不静默延长，需明确修正或取消计划。维持USER_CONFIRMED / IMPLEMENTED / VERIFIED及已关闭的两项流程风险，本次不重新定案、不修改实现，不自动关闭Q03～Q06或未来模块事项。
+
+本节正式结论取代M09此前READY_FOR_REVIEW/PENDING的当前效力；上节执行登记及原报告/checkpoint保留当时状态。本次仅更新唯一CURRENT_STATE与本登记，检查Git差异、链接、敏感信息、工作区及历史资料保护后，提交并推送 `feat/m09-subscription-lifecycle`。回写提交自身SHA、推送及远端一致以实际Git日志/最终回执核对，避免递归自引用。不修改业务代码、WHOCARE、原规划或旧证据，不合并main、不force、不进入M10；完成后立即停止。
