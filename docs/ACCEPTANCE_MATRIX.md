@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录 M08 当前实际执行与 M00～M07 独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
+本文件记录 M00～M08 实际执行与独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-13。PASS 表示实际执行通过，NOT_RUN 表示未执行，PENDING 表示尚待独立确认。M00～M07 正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，全部历史评审/NOTES 和当时交付证据保留；历史源码/证据审查不冒称重新运行产品测试。当前 M08 为 **READY_FOR_REVIEW**，ChatGPT 独立验收 **PENDING**，M09 未授权；本轮执行结果见末尾 M08 登记，不自行冻结。原130案例及16组完整跨模块补测继续 NOT_RUN。
+日期：2026-10-13。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M08 正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；当前 M08 依据用户转交的 ChatGPT 正式独立代码验收结论，评审 HEAD `a716bc5ad9e3ab49cbe858f2c966fecf93e09fbb`，完整登记见末尾。全部历史评审/NOTES、执行验收及当时交付证据保留，本轮只回写结论，不重新运行测试或增加产品测试 PASS。原130案例及16组完整跨模块补测继续 NOT_RUN；M09 未授权。
 
 ## 独立验收记录
 
@@ -529,3 +529,38 @@ Task3038已STOPPED/HaveState=true/Bundle6360bytes后UID SIGKILL，旧PID14365消
 - 原ZIP/43原件/130案例、16完整补测及所有旧报告/JSON/XML/截图/checkpoint字节和当时状态保留；M10～M23/未授权业务按原边界，不实现媒体、备份、M13汇总、云端或WHOCARE改动。
 
 只Conventional Commit/推送feat/m08-subscription-renewals；最终自身提交SHA、远端/工作区/保护引用核对以实际Git日志及交付回执为准，不提前登记推送PASS，不合并main/force/自动PR/公开APK，不提交数据库、私钥或真实个人数据。交付后立即停止等待ChatGPT独立验收，**M08独立PENDING，不进入M09**。
+
+## M08 独立代码验收与正式冻结记录（2026-10-13）
+
+- 正式结论：**ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 来源：用户在当前会话明确转交的 ChatGPT 独立代码验收正式结论；本次 Codex 仅回写，不自行授予冻结，也不以本地辅助审阅代替独立验收。
+- 仓库：`cc7279694-debug/property`。
+- 评审分支及本次回写分支：`feat/m08-subscription-renewals`。
+- 评审 HEAD：`a716bc5ad9e3ab49cbe858f2c966fecf93e09fbb`；回写前已实际确认本地及远端 M08 分支均一致，工作区干净。
+
+独立审查确认（完整登记用户转交的11项结论，不登记为本轮测试执行）：
+
+1. M08-T01～T06 均有符合原始要求的代码和真实测试证据。
+2. 86 项 JVM 与369 项 Android 测试源码方法和最终 XML 逐项对应，共455项，0失败、0错误、0跳过。
+3. M07 原359项方法身份保留，本轮实现新增96项。
+4. 最终成功日志为 `BUILD SUCCESSFUL in 13m 30s`；中间失败及诊断证据保留。
+5. v1→v2 显式 Migration、新三表和原 v1 schema 保护正确。
+6. 实际迁移测试覆盖旧四表逐行比较、WAL、同 generation 及迁移失败回滚。
+7. 既有数据库版本预检已支持已知合法 v1/v2，并明确拒绝未知或结构不匹配数据库。
+8. 创建身份与首次真实付款同事务，续费具备稳定操作身份和重复提交保护。
+9. 续费价格、周期及四日期独立持久化，预付不提前改变当前套餐价格。
+10. 未发现确定性阻塞问题，main 和历史冻结代码范围得到保护。
+11. **独立审查没有在用户 Windows 本机重新运行 Gradle、重新安装 APK 或独立核验 APK 字节；超大 JSON 未整体重新解析。**验收以源码/XML/日志/迁移及设备证据为依据。本次 Codex 状态回写同样未运行产品测试、构建、安装、设备验证或重新核验 APK；既有455项 PASS 为原交付执行记录，不新增一次产品测试 PASS。
+
+保留全部 NOTES 与后续边界：
+
+1. **M09 未实现：**暂停、恢复和停止用户流程尚未实施；STOPPED 后重新启用/历史纠错，以及多期预付默认停止两项既有产品风险保留，未定案、未关闭、未实施。M09 必须另获明确授权，本轮不开始。
+2. **Q03～Q06：**维持原状态及处理期限。Q03 长期100/1000日节点归 M21 前，Q04 提醒日期筛选/资格仍归 M20 前，Q05 图片往返归 M10/M12 前，Q06 保持 ENGINEERING_REQUIRED；不因 M08 冻结自动关闭。Q02 的 M17/M18 集成仍 NOT_RUN。
+3. **备份及故障回退：**M11/M12 完整备份恢复以及 Q06 完整切换、恢复、中断、验证后回退、共同校验和清理仍 NOT_RUN；Q06-V01～V03 完整流程未完成。M04 首次初始化中断残留 generation 不得静默清除真实数据。
+4. **后续 schema 升级：**必须继续维护数据库版本预检及已知 Room 身份，显式迁移和旧数据验证不可省略；不放行未知或结构不匹配数据库。
+5. **跨 APK 升级证据边界：**M08 中间 Debug 产物首次触发跨 APK 的 v1→v2 升级，最终产物经过同身份覆盖安装和数据复查；不得写成最终 APK 首次触发迁移。既有 generation、设置、记录时区及旧四表事实保护证据保留。
+6. **平台 NOT_RUN：**真机、API26、OEM、Release、完整 TalkBack 和真实 LMK 仍 NOT_RUN，不由模拟器或已保存任务 SIGKILL/Recents 替代。正式签名升级未运行；SavedState 不保证未保存状态、force-stop 或断电后的草稿恢复。
+7. **重要数据保障：**当前 Debug 版本不能用于保存无法丢失的重要个人记录，完整备份恢复尚未具备；本次验收不宣告 G1 通过。
+8. **历史 NOTES、归档与未来边界：**原有全部历史 NOTES、原130条 NOT_RUN 归档案例及16组完整跨模块验收边界保持不变；旧报告/JSON/XML/截图及历史 checkpoint 保留原字节和当时状态。继续保留 M07 ProjectAbsent 仅证明当前不存在、多条旧 END_SETTLEMENT 冲突且无自动修复、M10 媒体生命周期、SQLite 满页可能表现 DATABASE、分页非长期性能基准及原20条 Lint 提示。不因本轮回写重跑、改写或把后续未执行项标 PASS；TypeScript/ESLint 不适用，NO-SOURCE 不计 PASS。
+
+本节正式结论取代 M08 此前 READY_FOR_REVIEW / PENDING 的当前效力；上节执行验收及原报告/checkpoint保留当时状态。本次仅更新唯一 CURRENT_STATE 与本登记，检查 Git 差异、文件链接、敏感信息、工作区及历史资料保护后，提交并推送 `feat/m08-subscription-renewals`。回写提交自身 SHA、推送及远端一致以实际 Git 日志/最终回执核对，避免递归自引用。不修改业务代码、WHOCARE、原规划或旧证据，不合并 main、不 force、不进入 M09；完成后立即停止。
