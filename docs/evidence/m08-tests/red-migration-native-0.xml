@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.local.SubscriptionMigrationTest" tests="13" failures="9" errors="0" skipped="0" time="6.149" timestamp="2026-10-12T14:38:13" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="committed_v1_wal_is_respected_during_upgrade" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="1.042">
+    <failure>java.lang.AssertionError: expected:&lt;2&gt; but was:&lt;1&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$committed_v1_wal_is_respected_during_upgrade$1.invokeSuspend(SubscriptionMigrationTest.kt:206)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.committed_v1_wal_is_respected_during_upgrade(SubscriptionMigrationTest.kt:197)
+</failure>
+  </testcase>
+  <testcase name="known_v2_reopens_and_old_project_writes_still_work" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.143">
+    <failure>java.lang.AssertionError: expected:&lt;2&gt; but was:&lt;1&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$known_v2_reopens_and_old_project_writes_still_work$1.invokeSuspend(SubscriptionMigrationTest.kt:108)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v2_reopens_and_old_project_writes_still_work(SubscriptionMigrationTest.kt:104)
+</failure>
+  </testcase>
+  <testcase name="fresh_database_is_v2_with_empty_subscription_tables" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.168">
+    <failure>java.lang.AssertionError: expected:&lt;2&gt; but was:&lt;1&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$fresh_database_is_v2_with_empty_subscription_tables$1.invokeSuspend(SubscriptionMigrationTest.kt:95)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.fresh_database_is_v2_with_empty_subscription_tables(SubscriptionMigrationTest.kt:91)
+</failure>
+  </testcase>
+  <testcase name="known_identity_with_extra_business_table_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.293">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:267)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:36)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_identity_with_extra_business_table_is_rejected_before_migration(SubscriptionMigrationTest.kt:169)
+</failure>
+  </testcase>
+  <testcase name="v1_to_v2_preserves_projects" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.269">
+    <failure>java.lang.AssertionError: An existing genuine v1 database must migrate rather than remain v1 expected:&lt;2&gt; but was:&lt;1&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$v1_to_v2_preserves_projects$1.invokeSuspend(SubscriptionMigrationTest.kt:67)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.v1_to_v2_preserves_projects(SubscriptionMigrationTest.kt:57)
+</failure>
+  </testcase>
+  <testcase name="version_zero_is_rejected_without_initializing_existing_file" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.143" />
+  <testcase name="known_identity_with_extra_column_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.275">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:267)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:36)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_identity_with_extra_column_is_rejected_before_migration(SubscriptionMigrationTest.kt:163)
+</failure>
+  </testcase>
+  <testcase name="v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.369">
+    <failure>java.lang.AssertionError: expected:&lt;2&gt; but was:&lt;1&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media$1.invokeSuspend(SubscriptionMigrationTest.kt:235)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media(SubscriptionMigrationTest.kt:212)
+</failure>
+  </testcase>
+  <testcase name="broken_v1_foreign_key_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.257" />
+  <testcase name="known_v1_legacy_identity_migrates_without_changing_old_rows" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.355">
+    <failure>java.lang.AssertionError: expected:&lt;2&gt; but was:&lt;1&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$known_v1_legacy_identity_migrates_without_changing_old_rows$1.invokeSuspend(SubscriptionMigrationTest.kt:132)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v1_legacy_identity_migrates_without_changing_old_rows(SubscriptionMigrationTest.kt:127)
+</failure>
+  </testcase>
+  <testcase name="arbitrary_room_identity_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.757" />
+  <testcase name="known_identity_with_missing_index_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.361">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:267)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:36)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_identity_with_missing_index_is_rejected_before_migration(SubscriptionMigrationTest.kt:156)
+</failure>
+  </testcase>
+  <testcase name="unknown_version_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.313" />
+</testsuite>

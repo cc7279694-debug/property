@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" tests="12" failures="0" errors="0" skipped="0" time="45.852" timestamp="2026-10-13T02:05:23" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="detail_read_failure_and_missing_are_distinct" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="4.481" />
+  <testcase name="conflict_requires_explicit_read_instead_of_new_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="5.535" />
+  <testcase name="create_inputs_are_controlled_and_subscription_category_only" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="13.637" />
+  <testcase name="in_flight_form_locks_inputs_and_duplicate_confirm" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.566" />
+  <testcase name="verified_missing_target_locks_input_and_offers_safe_return_without_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.285" />
+  <testcase name="failed_form_retains_invalid_raw_and_all_four_dates" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.636" />
+  <testcase name="unconfirmed_form_only_replays_same_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.192" />
+  <testcase name="list_loading_and_read_failure_do_not_claim_empty" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.711" />
+  <testcase name="genuine_empty_list_exposes_create_without_fake_metrics" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.504" />
+  <testcase name="narrow_large_font_form_actions_and_errors_remain_reachable" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.031" />
+  <testcase name="renewal_requires_explicit_payment_action_and_keeps_reference_readonly" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.424" />
+  <testcase name="committed_form_offers_read_retry_without_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.84" />
+</testsuite>

@@ -333,3 +333,27 @@ M06已独立冻结，M07要求不重复回收、修改后历史重算、失败�
 ## 后续新增/变更格式
 
 每条按以上日期/状态/Decision/Context/Alternatives/Reason/Consequences格式记录，增加来源与授权证据；列出受影响模块、schema、format、图表和验证案例。取代决定保留旧记录标 Superseded；不能以新想法擅自改整个 Roadmap。
+
+## 2026-10-13 — M08 显式安全升级与独立真实付款事实
+
+**状态：Local operating rule / Inherited planning default；来源为本轮用户 M08 完整授权及 [M08 契约](planning/M08_CONTRACT.md)，继承原 DOMAIN C07～C11 与 ARCH A02～A08，不改变冻结产品规则。**
+
+### Decision
+
+在同一个 AppContainer / ManagedGeneration / LocalWriteCoordinator 中，通过已注册的显式 Room Migration(1,2)仅新增订阅身份、逐笔真实续费和状态时间线三张表；保留原四表结构/业务行及不可变 v1 导出。正式 writable Room 前先只读核对已知 v1/v2 身份及真实结构、主键/索引 BINARY 比较规则、完整性和关联，拒绝不合法库，不清库或用新空代代替升级。订阅身份不存第二份当前套餐或派生成本；首次付款与身份同事务，之后只保存用户确认的独立真实付款。非 owner SubscriptionRepository 与项目入口共享同代存储和固定 recordZone，完整事实唯一调用已冻结 M03 引擎计算。
+
+### Context
+
+M00～M07 已独立验收冻结，现有 v1 已包含需要保持的项目、资金、类别和媒体元数据。M08 同时引入真实订阅持久化和跨版本升级，必须区分“新空库可运行”与“旧事实可安全升级”；预付日期也不能被最近付款价或标准购买天数替代。实际接口和迁移闸门见 [M08 契约](planning/M08_CONTRACT.md)，当前实现见[迁移](../app/src/main/java/com/cooper/lithic/data/local/DatabaseMigrations.kt)、[只读结构预检](../app/src/main/java/com/cooper/lithic/data/local/DatabaseSchemaValidation.kt)及[订阅 Repository](../app/src/main/java/com/cooper/lithic/data/repository/SubscriptionRepository.kt)。
+
+### Alternatives
+
+损坏或未知旧库直接创建空数据集；仅凭版本/Room hash 先进入迁移；使用 destructive fallback；把最后一次付款价覆盖在订阅主表；按到期自动新增付款；另建存储 owner、价格公式或持久操作日志。
+
+### Reason
+
+严格预检在任何 writable 升级前保留旧事实和可审查失败，显式 DDL 将 schema 演进范围限制到授权的三表。独立付款和四日期保留真实金额、付款年及生效/到期边界，同一写协调器与 Room 事务保证首次付款原子性、精确同命令重放和全部覆盖校验。完整必要事实复用 M03 可保持观察日价格、折算时长与实际经过时间一致，避免页面或分页产生第二种口径。
+
+### Consequences
+
+当前 Room schema 为 v2，旧 v1 导出及四表不改；内部 generation metadata format1 保持，无完整 backup format，数据库、DataStore 和文件系统不因此成为跨存储原子事务。SQL 50+1 稳定分页与批读窗口限制展示负担，历史平均仍使用完整事实；SavedState 固定原命令/UUID，COMMITTED 只重读，两类 ViewModel 的 pending/dirty 全局导航守卫共同保护提交。M08 不提供 M09 暂停/恢复/停止、自动付款、退款或期中补差；Q03～Q06 和 M09 两项流程风险继续保留，媒体 M10、完整备份/恢复 M11/M12、汇总 M13 不提前实施。工程决定不授予独立冻结；M08 独立验收 PENDING，实际测试/最终 APK/交付状态以唯一 [CURRENT_STATE](CURRENT_STATE.md)和[验收登记](ACCEPTANCE_MATRIX.md)为准。真机/API26/OEM/Release正式签名/完整 TalkBack/真实 LMK 未验证。

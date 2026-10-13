@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录当前模块实际执行与M00～M07独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全NOT_RUN，不在原件改结果。
+本文件记录 M08 当前实际执行与 M00～M07 独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-12。PASS为实际执行通过，NOT_RUN为未执行，PENDING为尚待独立确认。M00～M07正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；依据与全部NOTES见各模块独立记录。原READY_FOR_REVIEW/PENDING交付、测试、设备证据及历史NOTES完整保留。M07已按用户转交的ChatGPT独立结论正式冻结；本次仅回写验收状态，独立源码/证据审查不登记为重新运行产品测试。旧M07 READY_FOR_REVIEW/PENDING保留为当时交付记录，当前结论见末尾正式登记。原130和16完整跨模块补测继续NOT_RUN。
+日期：2026-10-13。PASS 表示实际执行通过，NOT_RUN 表示未执行，PENDING 表示尚待独立确认。M00～M07 正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，全部历史评审/NOTES 和当时交付证据保留；历史源码/证据审查不冒称重新运行产品测试。当前 M08 为 **READY_FOR_REVIEW**，ChatGPT 独立验收 **PENDING**，M09 未授权；本轮执行结果见末尾 M08 登记，不自行冻结。原130案例及16组完整跨模块补测继续 NOT_RUN。
 
 ## 独立验收记录
 
@@ -457,3 +457,75 @@ NOT_RUN：真机/API26/OEM、完整TalkBack、真实低内存LMK、Release/正�
 6. **Lint及历史证据：**原Lint20条提示及历史执行证据完整保留，不因验收回写重跑或改写。原130条归档案例、16组完整跨模块补测与旧报告/JSON/XML/截图/checkpoint保持原字节和NOT_RUN/当时状态；此前359条PASS保持历史实际执行来源，本轮文档检查不增加产品测试执行PASS。M00～M06全部历史NOTES继续有效。
 
 本节正式结论取代M07此前交付READY_FOR_REVIEW/PENDING的当前效力；上节执行验收及原报告/checkpoint保留当时状态。回写只修改唯一CURRENT_STATE与本登记，核对差异、链接、敏感信息、历史原件及Git状态后提交/推送feat/m07-project-lifecycle。回写自身SHA、推送及远端一致以Git日志/最终回执核对，避免递归自引用。不修改业务代码、WHOCARE或原规划，不合并main、不进入M08；完成后立即停止。
+
+
+## M08 当前执行验收（2026-10-13）
+
+用户完整 M08 授权附件 SHA-256 `31b0dea9ce575192cc22b7da229c5f73e2020a9ea785db287cb672f568c029f6`；起点 `fcb850f549285d310040318a5f7adfd51abb4c33`，来源 feat/m07-project-lifecycle，交付分支仅 feat/m08-subscription-renewals。开始实际核对来源本地/远端一致、工作区干净、目标此前不存在；[M08 契约](planning/M08_CONTRACT.md)在实现前固定迁移闸门及最小范围。当前 **READY_FOR_REVIEW — M08**，ChatGPT 独立验收 **PENDING**，不授予 ACCEPTED / FROZEN；M09 未授权，本地辅助审阅不替代独立验收。
+
+| 原命名案例 | 当前结果 | 实际证据与边界 |
+|---|---|---|
+| M08-T01 v1_to_v2_preserves_projects | PASS | 真实 v1 SQLite fixture 四表完整事实、纠错/结束/收回/媒体引用逐字段相同；显式 Room 1→2/关闭重开/同代设置保留；新 v2 空库另测，升级后旧项目仍可写 |
+| M08-T02 create_and_first_payment_atomic | PASS | 真实 Room 首次身份＋正额付款同事务；付款故障身份一起回滚；相同完整命令重放/并发仅一次，异内容冲突，成功结果中断后同身份恢复 |
+| M08-T03 renewal_needs_confirmation | PASS | 正式 UI/Nav3＋Room 打开/编辑/弃改/到期不付款，显式确认才追加；非法金额及真实 SQL ABORT 后 raw/周期/四日期保留；最终 APK 取消后2订阅/2付款、确认后2订阅/3付款 |
+| M08-T04 renewal_history_is_preserved | PASS | ¥150/月→¥180/月→年付各自金额/cycle/standardDays/四日期完整重开；预付不提前切价；最终 APK150→180和三观察日另行实际验证 |
+| M08-T05 accurate_dates_retained | PASS | 四日期彼此不同，reminderDueOn 可不同于排他覆盖结束；真实写入、关闭重开完整；无覆盖当前价格null、贡献0 |
+| M08-T06 currency_change_is_allowed | PASS | 同 MONTHLY ¥146.83→¥148.10 合法，各自标准30天和独立付款保留，未误判为按量服务 |
+
+当前登记独立于不可变原130案例；原ZIP/43原件、24模块计划、130 NOT_RUN 和16组完整跨模块补测不改。完整[12项报告](evidence/M08-verification.md)、[逐方法/校验JSON](evidence/M08-verification.json)、[文件清单](evidence/M08-files.md)及[M08 checkpoint](checkpoints/2026-10-13-M08.md)记录具体日志/XML/输入哈希和截图，不以源码存在代替实际执行。
+
+### 本轮20项额外安全要求
+
+| # | 当前结果 | 实际测试/核对 |
+|---:|---|---|
+| 1 | PASS | Migration合法v1/v2/legacy、非法版本/v0/身份/索引/列/表/FK；sqliteXforeign、PK NOCASE、保留表同名trigger拒绝且保留完整事实 |
+| 2 | PASS | 实际 Room DDL 故障整体回滚原v1结构/身份/旧行，无清空/另一空账本；既有存储失败状态回归保留 |
+| 3 | PASS | 新v2空库、迁移后Room验证与schema2导出一致；APK/schema旧四实体比对一致，原v1 JSON字节不改 |
+| 4 | PASS | Repository拒绝PROJECT类别，受控Screen只选SUBSCRIPTION类别 |
+| 5 | PASS | DAO真外键拒绝孤立续费；confirm_requires_existing_subscription，无残留付款 |
+| 6 | PASS | 同operationId不同完整事实明确冲突；精确重放先于覆盖检查，不增加第二笔 |
+| 7 | PASS | 0/负额/超限拒绝；MoneyParser/表单三位小数校验且保留raw；最终APK1.234错误可见 |
+| 8 | PASS | 固定BusinessClock.today拒绝未来付款；历史asOf忽略后来真实付款，不误判其非法 |
+| 9 | PASS | 真实预付且未来生效的首期/续期合法，进入已购历史但不虚构未来已经过时长 |
+| 10 | PASS | 相邻/真实空档覆盖允许，全部已付覆盖含未来期重叠拒绝 |
+| 11 | PASS | 两个并发重叠续费不能都提交，失败完整保留旧事实 |
+| 12 | PASS | Repository/正式Flow/最终APK：1/19当前5/历史150/标准30，1/20当前5/历史330/标准60，2/1当前6 |
+| 13 | PASS | EXPIRED/null当前价格/贡献0，无自动付款；最终恢复10/13后历史330/标准60/实际59 |
+| 14 | PASS | 30/90/365独立持久化并校验cycle一致；自然覆盖/elapsed分开，冻结M03全回归 |
+| 15 | PASS | 列表MAX(paidOn) DESC/UUID、历史paidOn DESC/UUID，真实SQL分页/窗口刷新，不按生效日造假 |
+| 16 | PASS | v2重开后旧项目仍可写、原359回归；最终旧四表3项目/6事件逐字段等于升级前，与2订阅/3付款共存 |
+| 17 | PASS | 同DataGenerationStore升级/跨APK快照，activeId/ready/settings SHA/recordZone GMT不变，无另一空代 |
+| 18 | PASS | 刷新失败保留已有行和明确错误；Screen加载/空态/错误、缺付款身份/未知cycle异常不呈假空库 |
+| 19 | PASS | 360dp/200%/真实IME/系统返回自动化＋最终APK操作，横竖保留raw；完整TalkBack仍NOT_RUN |
+| 20 | PASS | 真实成功后结果丢失的同命令恢复/精确重放，COMMITTED只重读/误身份继续pending/隐藏pending可达；最终已保存任务SIGKILL恢复raw，命令身份由正式Room/Nav3仪器测试证明 |
+
+### 完整自动化与诊断历史
+
+最终四任务 `:app:testDebugUnitTest --rerun :app:connectedDebugAndroidTest :app:lintDebug :app:assembleDebug --max-workers=2 --console=plain` 退出0，**BUILD SUCCESSFUL in13m30s；86 JVM＋369 Android＝455个唯一方法 PASS，0失败/错误/跳过**。7份JVM XML＋1份Android XML，源码/XML方法 **EXACT MATCH**，108源码/schema输入哈希与实际测试版本一致；旧359方法身份保留、新增96（Migration22、Repository30、ViewModel12、Routes6、NavigationGuard7、Screens12、真实Flow7）。JVM实跑，NO-SOURCE不计PASS，限定复验不增加唯一数量；Lint **0 errors/20 warnings**。
+
+四个旧测试文件调整明确记录：两个阶段适配分别以真实v1 fixture继续证明四表、以真实订阅空态替代“尚未开放”；另外两个只加强原删除恢复状态等待和真实IME/类别触摸同步。原方法身份、业务断言/超时及冻结旧业务代码保留；新Screen的waitForIdle也仅驱动同步，不声称生产缺陷修复。
+
+真实行为RED与全部编译/runner/匹配/准备/同步诊断日志/XML/输入保留：旧v1上迁移13项9FAIL/4PASS，可编译空壳60项40FAIL/20PASS；额外表前缀/PK NOCASE四项、根首页pending/dirty返回及缺失目标VM/Screen四项、v1/v2×两保留表同名trigger四项均有效FAIL。非行为诊断不冒充RED。
+
+完整回归历史保留：首版451 PASS/12m39s；trigger补测后369 Android曾368PASS/1FAIL/11m31s，新Screen限定12PASS/2m19s；下一完整轮曾367PASS/2FAIL/9m9s，两个旧同步方法限定2PASS/1m25s；之后455 PASS/10m19s另归档green-full-before-visual-selection。只补周期可见选择和“提醒日期当前只保存不通知”两句文案后，再取得最终455 PASS/13m30s。旧失败/中间产物不改写为最终GREEN，详细阶段/输入见报告和JSON。
+
+### 最终APK、升级及设备
+
+最终Debug `com.cooper.lithic.debug` code6/`0.1.0-m08-debug`，**12,386,935 bytes**，SHA-256 **6e04f28cc0998fa772cfeeedf99eb457b71852ee7549eeda39525c6155afbcf6**，实际安装指纹同值。v2签名兼容M07证书、合并Manifest/无网络及禁止权限、九域备份排除、63指定生产类/无测试框架或合成测试打包均已核对。运行依赖122→122，无新增/删除/升级；Debug空宿主边界保留，Release未构建。
+
+仅专用API36 emulator-5596：旧code5→中间code6首次升级发生于中间目标Application启动，最终APK再同身份覆盖并读旧库；未卸载/清数据/换代，不称最终APK首次触发迁移。旧四表3项目/6事件每字段相同，旧纠错结束项目350净投入/10天/35每天。此前候选创建的M08_SUBSCRIPTION首笔150保留，完整最终APK闭环使用M08_FINAL_SUBSCRIPTION150→180；最终2订阅/3续费/0状态变更，不删参考样本。
+
+最终APK全程断网：实际guest日期1/19首付款后当前5/历史150/标准30；1/20取消不写，确认180后当前仍5/历史330/标准60/平均5.5/实际20且尚未生效；2/1当前6；恢复10/13 COLD重开EXPIRED/null价格0贡献/历史330/标准60/实际59，无自动新增付款。四日期及身份完整保留；200%/360dp真实IME、1.234错误/raw、返回收键盘和横竖屏实际操作完成。
+
+Task3038已STOPPED/HaveState=true/Bundle6360bytes后UID SIGKILL，旧PID14365消失，Recents恢复同任务/新PID15775/raw1.234；不称真实LMK、force-stop/断电草稿保证，精确命令身份由仪器测试证明。最终SQL integrity_check=ok/FK=[]、旧新事实及同代pointer/ready/settings SHA/GMT保持。临时guest网络/屏幕/字体/IME/旋转/明暗/时区及auto_time/auto_time_zone全部恢复，guestUTC与宿主差少于10秒，未改宿主时钟或其它设备。
+
+### 保留NOTES与停止点
+
+- Q01 CLOSED、Q02/Q07 USER_CONFIRMED；Q02 M17/M18集成仍NOT_RUN。Q03长期100/1000日节点M21前、Q04提醒资格M20前、Q05图片往返M10/M12前、Q06 ENGINEERING_REQUIRED及M12完整导入/切换/回退/中断/共同校验/清理/Q06-V01～V03仍NOT_RUN，未因本轮关闭。
+- M09 STOPPED重新启用/历史纠错及多期预付默认停止两风险未定案/实施/验证，M09未授权；M08没有暂停恢复停止入口、退款/期中补差/自动付款。M04残留generation不得静默清除；M08版本预检已落实，完整恢复/故障回退仍归M12。
+- M07 ProjectAbsent只证明当前不存在、不证明历史操作身份；多条旧END_SETTLEMENT明确冲突、无自动修复；M10媒体生命周期未实施。SQLite空间不足可能表现普通DATABASE，不能牺牲raw、原子性和安全重放来猜分类。
+- 分页验证正确性/查询范围，不是长期性能基准；完整成本仍需必要历史。SavedState仅覆盖已保存系统任务，不保证未保存状态、force-stop、断电或真正LMK。M11/M12完整备份恢复未完成，Debug暂不用于不可丢失的长期个人记录。
+- 真机/API26/OEM、Release/正式签名升级、完整TalkBack、真实低内存LMK仍NOT_RUN；Debug测试宿主须后续Release核查。全部历史独立未重跑本机Gradle/安装NOTES保留，不把本轮执行改称此前独立重跑。TypeScript/ESLint不适用，NO-SOURCE不计PASS。
+- 原ZIP/43原件/130案例、16完整补测及所有旧报告/JSON/XML/截图/checkpoint字节和当时状态保留；M10～M23/未授权业务按原边界，不实现媒体、备份、M13汇总、云端或WHOCARE改动。
+
+只Conventional Commit/推送feat/m08-subscription-renewals；最终自身提交SHA、远端/工作区/保护引用核对以实际Git日志及交付回执为准，不提前登记推送PASS，不合并main/force/自动PR/公开APK，不提交数据库、私钥或真实个人数据。交付后立即停止等待ChatGPT独立验收，**M08独立PENDING，不进入M09**。

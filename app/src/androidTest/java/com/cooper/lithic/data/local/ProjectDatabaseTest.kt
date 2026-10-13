@@ -366,13 +366,14 @@ class ProjectDatabaseTest {
     }
 
     @Test fun schema_v1_has_only_four_business_tables() = runBlocking {
-        val tables = mutableSetOf<String>()
+        // Preserve this M04 method's frozen-v1 meaning after the live Room owner evolves.
+        // M08 separately verifies fresh/current v2 has all seven business tables.
         withContext(Dispatchers.IO) {
-            db.openHelper.writableDatabase.query("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT IN ('android_metadata','room_master_table')").use { cursor ->
-                while (cursor.moveToNext()) tables += cursor.getString(0)
+            V1DatabaseFixture.create(File(directory, "frozen-v1-schema.db")).use { original ->
+                assertEquals(1, original.version)
+                assertEquals(setOf("categories", "long_term_projects", "project_money_events", "local_media_assets"), V1DatabaseFixture.businessTables(original))
             }
         }
-        assertEquals(setOf("categories", "long_term_projects", "project_money_events", "local_media_assets"), tables)
     }
 
     @Test fun require_existing_database_never_creates_missing_file() = runBlocking {

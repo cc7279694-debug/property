@@ -54,6 +54,7 @@ import com.cooper.lithic.data.repository.LedgerReadRepository
 import com.cooper.lithic.data.repository.MutationResult
 import com.cooper.lithic.data.repository.ProjectWriteRepository
 import com.cooper.lithic.data.repository.ProjectRepository
+import com.cooper.lithic.data.repository.SubscriptionRepository
 import java.io.File
 import java.time.Instant
 import java.time.LocalDate
@@ -175,7 +176,8 @@ class NavigationShellTest {
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
         compose.onNodeWithText("暂无记录").assertIsDisplayed()
         compose.onAllNodes(hasText("¥0.00", substring = true)).assertCountEquals(0)
-        compose.onNodeWithText("订阅记录尚未开放").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("还没有订阅服务").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("open-subscription-list").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("tab-review").performClick()
         compose.onNodeWithTag("review-screen").assertIsDisplayed()
         compose.onNodeWithTag("trend-chart").assertDoesNotExist()
@@ -305,7 +307,9 @@ class NavigationShellTest {
     private suspend fun readReady(): LedgerUiState.Ready {
         val clock = FixedBusinessClock(LocalDate.of(2026, 10, 12))
         val repository = ProjectRepository(generation.database, generation.coordinator, clock)
-        return LedgerUiState.Ready(repository.loadSummary().projectCount, generation.settings.recordZone(), repository, clock)
+        val subscriptions = SubscriptionRepository(generation.database, generation.coordinator, clock)
+        return LedgerUiState.Ready(repository.loadSummary().projectCount, generation.settings.recordZone(), repository, clock,
+            subscriptions, subscriptions.loadSubscriptionCount())
     }
 
     private suspend fun addSyntheticZeroProject(endedOn: LocalDate? = null) {

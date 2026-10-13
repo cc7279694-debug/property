@@ -1,6 +1,6 @@
 # 规格问题与实施风险
 
-日期：2026-10-12。原件和Q03～Q06问题状态/期限不变；M00～M06已独立冻结PASS WITH NOTES。当前M07已READY_FOR_REVIEW，独立验收PENDING；起点fb0eafdc43efa6e13ebd76e3491fa4331a145abb、feat/m07-project-lifecycle，范围见[M07契约](planning/M07_CONTRACT.md)。M06写后刷新与正式分页NOTES已有实际证据；本轮不改成本口径/schema，不进入M08。Q02/Q07确认解释、原独立未重跑本机验证、M04/M08/M12安全边界保留；内部辅助审查不替代独立验收。
+日期：2026-10-13。原件和Q03～Q06问题状态/期限不变；M00～M06已独立冻结PASS WITH NOTES。M07已独立冻结；当前M08获准执行，基线fcb850f549285d310040318a5f7adfd51abb4c33/feat/m08-subscription-renewals，范围见[M08契约](planning/M08_CONTRACT.md)。以下保留M07历史起点fb0eafdc43efa6e13ebd76e3491fa4331a145abb、feat/m07-project-lifecycle，范围见[M07契约](planning/M07_CONTRACT.md)。M06写后刷新与正式分页NOTES已有实际证据；本轮继承成本口径，只按M08契约实施schema1→2及迁移预检，不进入M09。Q02/Q07确认解释、原独立未重跑本机验证、M04/M08/M12安全边界保留；内部辅助审查不替代独立验收。
 
 ## Q01～Q06 状态与闸门
 
@@ -19,9 +19,9 @@ M02实际领域实现及Q02-V01～V03领域断言已PASS，证据见[当前验�
 
 ## Q07 — 原通用完成模板的适用性
 
-状态：USER_CONFIRMED，用户在M02授权时已正式确认通用模板适用性，本轮M07继续继承。原M02/M03只做领域引擎，却共用早期模块任务2里的真机/完整备份往返要求；完整导出/恢复直到M11/M12才产生。原M00通用完成句也含无数据变更时不适用的用户路径/备份要求。
+状态：USER_CONFIRMED，用户在M02授权时已正式确认通用模板适用性，本轮M08继续继承。原M02/M03只做领域引擎，却共用早期模块任务2里的真机/完整备份往返要求；完整导出/恢复直到M11/M12才产生。原M00通用完成句也含无数据变更时不适用的用户路径/备份要求。
 
-确认解释：每模块只执行已具备实施条件且符合当前范围的验证，同时满足自身真正要求。M02/M03 要求纯 Kotlin 测试、必要集成回归、Lint、构建和静态范围核查；没有 Room、业务界面、真实数据、备份能力，不提前做备份往返、数据库或没有实际目标的 Instrumentation Test。不适用项写 NOT_RUN / N/A 和原因，不把未来测试或 NO-SOURCE 算成 PASS。解释适用于后续模块，所有真实验证仍待对应模块执行；USER_CONFIRMED 不等于全面实施关闭。原文对照见[BASELINE_COMPARISON](planning/BASELINE_COMPARISON.md)，来源见[当前决策](DECISIONS.md)。历史验证及未测NOTES保持不变；M04/M05已独立冻结，原200项执行结果保留；本轮M07实际回归及新增结果须另行登记，M08未授权。
+确认解释：每模块只执行已具备实施条件且符合当前范围的验证，同时满足自身真正要求。M02/M03 要求纯 Kotlin 测试、必要集成回归、Lint、构建和静态范围核查；没有 Room、业务界面、真实数据、备份能力，不提前做备份往返、数据库或没有实际目标的 Instrumentation Test。不适用项写 NOT_RUN / N/A 和原因，不把未来测试或 NO-SOURCE 算成 PASS。解释适用于后续模块，所有真实验证仍待对应模块执行；USER_CONFIRMED 不等于全面实施关闭。原文对照见[BASELINE_COMPARISON](planning/BASELINE_COMPARISON.md)，来源见[当前决策](DECISIONS.md)。历史验证及未测NOTES保持不变；M04/M05已独立冻结，原200项执行结果保留；M07历史回归证据保留；本轮M08实际455项回归、迁移及订阅结果见当前验收登记，独立PENDING，M09未授权。
 
 M04独立NOTES继续约束后续工作：Q06完整切换/恢复/故障回退仍归M12；首次初始化中断的残留generation不得静默清除真实数据；M08 v1→v2迁移须同步调整既存库版本预检。M05本轮已实际验证初始化或真实读取失败的保护界面，无虚假正常空账本；M05已独立冻结；本轮M06真实刷新/分页和错误保护已实际验证，结果见当前验收登记，不关闭Q06或后续问题。
 
@@ -37,7 +37,7 @@ M04独立NOTES继续约束后续工作：Q06完整切换/恢复/故障回退仍�
 
 ### M09 订阅流程风险：本次独立审查登记，当前不实施
 
-来源：用户在 M03 补测时转交的 ChatGPT 独立审查，评审 HEAD `80cf6473c21d5933963dd55b02dfbf9f97297849`，当时结论为 CHANGES REQUESTED。M03 补测授权仅累计溢出及相关最小实现/证据，同时登记下列风险；随后 M03 已独立复验冻结。当前 M07 仍不据此改变订阅状态语义或进入 M09。继承[DOMAIN C10](planning/original-v1/lithic_v1_plan/docs/specs/DOMAIN_CONTRACT.md)和[原 M09 计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m09.md)；以下均是待解释/验证边界，不是新增功能或已通过案例。
+来源：用户在 M03 补测时转交的 ChatGPT 独立审查，评审 HEAD `80cf6473c21d5933963dd55b02dfbf9f97297849`，当时结论为 CHANGES REQUESTED。M03 补测授权仅累计溢出及相关最小实现/证据，同时登记下列风险；随后 M03 已独立复验冻结。当前 M08 仍不据此改变订阅状态语义或进入 M09。继承[DOMAIN C10](planning/original-v1/lithic_v1_plan/docs/specs/DOMAIN_CONTRACT.md)和[原 M09 计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m09.md)；以下均是待解释/验证边界，不是新增功能或已通过案例。
 
 - **STOPPED 后重新启用的流程边界。**当前[引擎](../app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt)按观察日最近状态计算，[结构校验](../app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt)拒绝同日重复状态，但未限制不同日期的 STOPPED → ENABLED；该序列在已有有效覆盖时可重新得到 ACTIVE。领域可计算不等于已授权提供“停止后恢复”用户入口。M09 须明确已停止记录的操作、历史归档与纠错边界，落实后再验证，不在本轮擅自把 STOPPED 定为永久终态或新增恢复功能。**NOT_RUN（M09 流程）**：例如覆盖 `[2026-01-01,2026-02-01)`、01-10 停止、01-20 重新启用时的入口许可、历史分组与成本/实际天数一致性；覆盖外启用不得虚构付款或当前有效套餐。关联 M09-T03/T04/T06，期望以 M09 明确解释为准。
 

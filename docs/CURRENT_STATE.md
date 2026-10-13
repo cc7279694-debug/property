@@ -1,50 +1,44 @@
 # 当前项目状态
 
-状态日期：2026-10-12。唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-13（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
 
-- **M07 — ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户在当前会话正式转交的ChatGPT独立代码验收结论；仓库cc7279694-debug/property、分支feat/m07-project-lifecycle、评审HEAD `4089428e7acdc0f2b8e2fd660f437b5bc7d29f61`。回写前实际核对本地/远端一致、工作区干净；11项独立确认与全部NOTES见[正式验收登记](ACCEPTANCE_MATRIX.md#m07-独立代码验收与正式冻结记录2026-10-12)。本轮仅回写状态，不修改业务代码、重跑产品测试或安装APK。
-- **M00～M06 — ACCEPTED / FROZEN — PASS WITH NOTES**，依据均为用户转交的 ChatGPT 独立结论，完整评审 HEAD、确认项及全部 NOTES 保留在[验收登记](ACCEPTANCE_MATRIX.md)。M06 评审 HEAD 为 2d3358724c737ca47093f3d0b3dc8ba3caf0f156，冻结回写提交 fb0eafdc43efa6e13ebd76e3491fa4331a145abb 是 M07 起点；M06 旧报告、JSON/XML、截图和 checkpoint 中当时的 PENDING / NOT_RUN 不改写。
-- M08～M23 未授权；M07已完成独立验收，本轮仅回写后停止，后续模块须用户另行明确授权。
+- **M08 — READY_FOR_REVIEW**：固定周期订阅、用户确认的真实续费及 Room v2 已实现并完成本轮实际验证。ChatGPT 独立验收 **PENDING**，实现者不自行授予 ACCEPTED / FROZEN；交付后立即停止，M09～M23 未授权。
+- **M00～M07 — ACCEPTED / FROZEN — PASS WITH NOTES**，均依据用户转交的 ChatGPT 独立结论。M07 评审 HEAD 为 `4089428e7acdc0f2b8e2fd660f437b5bc7d29f61`，冻结回写 `fcb850f549285d310040318a5f7adfd51abb4c33` 是本轮起点；全部确认项、评审 HEAD 和 NOTES 保留在[验收登记](ACCEPTANCE_MATRIX.md)。旧报告、XML、JSON、截图和 checkpoint 的当时状态不改写。
 
-## Verified / Completed
+## Verified / Completed — M08
 
-以下保留评审HEAD时M07此前实际执行的交付证据。独立审查确认86 JVM＋273 Android方法与359条PASS、八份GREEN XML和7m38s成功日志，并审阅生产事务/纠错/删除/历史及schema/依赖范围。**独立审查未在用户Windows本机重新执行Gradle或重新安装APK；本次Codex仅文档回写，同样未重跑测试、构建或设备验证，不增加产品测试执行PASS。**旧报告/JSON/XML/截图/checkpoint的READY_FOR_REVIEW/PENDING与失败诊断保留为当时历史。
+- 新增订阅身份、独立续费及状态时间线三表，导出 schema v2；显式注册 1→2 迁移。原 v1 JSON、原四实体及旧业务事实保留；既有库在可写打开前核对版本、Room 身份、实际结构/索引/外键、WAL 和完整性，非法库拒绝并保留。字面内部对象前缀、PK BINARY/ASC 和保留表同名 trigger 的漏检均先复现再限定修复，无破坏性 fallback 或另一份空 generation。
+- 首次身份与正额真实付款同一 Room 事务；追加续费复用唯一 owner/coordinator，固定 UUID/operationId，完整事实精确重放，不同内容冲突。全部已付覆盖参与重叠校验；逐笔保留 cycle、standardDays 和四个真实日期。复用冻结 Money/BusinessClock/M03，不复制成本公式、不自动付款或写入 M09 状态操作。
+- 四个正式订阅页面、真实首页数量、paidOn 排序/SQL 分页/完整成本与写后刷新已接通。受控输入、可见周期选择、排他结束日说明及明确付款确认；读取失败不伪装空库。唯一 SavedState 信封与双 ViewModel 导航守卫覆盖 pending/dirty、隐藏表单可达、精确成功身份、COMMITTED 只重读及缺失目标安全返回。
+- 最终四任务退出 0，**13m30s；86 JVM＋369 Android＝455 个唯一方法 PASS，0 失败/错误/跳过**。源码与 XML **EXACT MATCH**，旧 359 方法身份保留、新增 96，108 源码/schema 输入哈希与实际验证一致；八份最终 GREEN XML。六项原案例及本轮 20 项安全要求只在当前执行登记记录，不改原 130 案例。Lint **0 errors /20 warnings**，运行依赖 122→122 无新增/删除/升级。
+- 真实 RED、编译/runner/匹配/准备及同步诊断完整保留。两个旧测试仅适配真实阶段，另两个旧测试加强驱动同步，保留方法身份、原业务断言和超时；不把同步调整声称为生产缺陷修复。此前 10m19s 的完整 455 PASS 已单独归档，之后只补周期可见提示及提醒日期当前不通知文案，再执行最终完整回归。
+- 最终 Debug APK code6 / `0.1.0-m08-debug`，**12,386,935 bytes**，SHA-256 `6e04f28cc0998fa772cfeeedf99eb457b71852ee7549eeda39525c6155afbcf6`，与实际安装指纹一致。v2 签名及旧 M07 证书兼容、合并 Manifest/无网络及禁止权限、九域备份排除、63 个指定生产类及无测试框架/合成测试打包均已核对；Release 未构建。
+- 仅专用 API36 `emulator-5596`：旧 M07 code5→中间 M08 code6 在原代真实升级，最终 APK 再同身份覆盖并核对，未卸载/清数据。旧四表所有事实与升级前完全相同：3 项目/6 事件；旧纠错结束项目仍净投入 ¥350、10 天、¥35/天。最终 APK 上完整创建合成服务并确认 ¥150→预付 ¥180，取消续费不写；实际 guest 日期 1/19 当前 ¥5/历史150/标准30，1/20 当前 ¥5/历史330/标准60/平均5.5/实际20，2/1 当前 ¥6。恢复10/13后断网冷启动 EXPIRED、当前价格 null/贡献0、历史330/标准60/实际59，无自动付款。保留此前候选合成服务，最终为 **2 订阅/3 续费/0 状态变更**，不删旧参考数据。
+- 最终 APK 的 360dp/200% 字体、真实 IME、1.234 精度错误及 raw 保留、返回收键盘、横竖屏已操作。Task3038 已 STOPPED/HaveState=true/Bundle6360bytes 后 UID SIGKILL，旧 PID14365 消失，Recents 恢复同任务/新 PID15775/raw1.234；隐藏命令身份同一性由正式 Room/Nav3 仪器测试证明，不冒称手工界面读出了 UUID。最终只读 SQL integrity_check=ok、FK 无错误，generation/ready/settings SHA/记录时区 GMT 不变。全部临时 guest 网络、屏幕、字体、IME、旋转、明暗、时区及 auto_time/auto_time_zone 已恢复，guest UTC 与宿主相差少于10秒，未修改宿主时钟或其它设备。
 
-- M07 新结束与可选实际收回同一 Room 事务；0 元合法、不预填估值。修正结束只更新已有唯一关联事件，无关联时不能偷偷新增或删除收回；未来结束日期不提前归档。
-- 金额纠错只改金额、真实日期和说明，保留项目/事件 UUID、方向、角色与 operationId。真实尾款/退款仍新增 REGULAR 事件，结束后持有天数不增加；成本始终由冻结 ProjectCostEngine 重算。详情仅在观察日前存在真实结束后事件时标注包含结束后的结算，不把未来事件或空历史描述成已发生的事实。
-- 删除确认比较完整项目及全部事件基线，事务删除与受影响行数核对，失败整体回滚；取消不写。共享及未引用媒体元数据/文件保留给 M10，不进行媒体清理。缺失删除目标只能表示已核对当前项目和关联事件不存在，不冒称永久操作日志或可证明是哪次操作删除。
-- 单 ViewModel / SavedStateHandle 表单保留 raw、完整基线、固定 UUID 和 submitted；未知结果只重放原信封，冲突必须显式重读。显式确认目标已缺失后可安全返回且不会伪造已保存；活动表单状态单次完整发布，首次读恢复与迟到响应核对身份。
-- 当前/历史列表由数据库分别筛选，50 条展示及 51 条哨兵查询，整个已加载窗口在同一协调器/Room 快照中刷新。首页数量仍是全部已录入项目 COUNT；Nav3 只保存 UUID/来源 enum，当前链最多 4 级、历史链最多 5 级，历史返回和主 Tab 来源正确，删除后返回来源列表且不保留旧详情。
-- 完整四任务退出 0，7m 38s，**86 JVM＋273 Android＝359 个唯一方法 PASS，0 失败/错误/跳过；原 284＋新增 75**。7 份 JVM XML＋1 份 Android XML，源码方法/XML/结果登记精确对应；JVM 明确实跑，不把 up-to-date 或 NO-SOURCE 当新增执行。五个 M07 原命名案例仅在当前执行验收登记 PASS；不可变归档的 130 案例及 16 组完整补测保持 NOT_RUN。Lint **0 errors / 20 warnings**，不升级或抑制。
-- 真实 RED、失败 XML/日志和诊断完整保留：缺失目标冲突死锁、活动表单空状态、结束后结算事实标注边界均先实际复现再修复。连续修正曾出现超时；诊断最终确认保存点击没有进入提交，保留原 15 秒与事实断言，关闭真实 IME、等待 idle、重滚动后触摸同一保存按钮修正测试驱动，不把缺失目标修复或状态发布修复冒称该超时根因。
-- 最终 Debug APK：code 5 / 0.1.0-m07-debug，12,213,370 bytes，SHA-256 632a402c62bc827552b14f3613b3eb64828a2bd584f7c410a576c4e4220e765a，与实际安装指纹一致；v2 签名、合并权限及九域备份排除核对通过，无网络权限/测试框架或合成测试类打包，Debug 空测试宿主边界保留。
-- 仅专用 API36 emulator-5596：最终 APK 全程断网冷启动、200% 字体/真实 IME、横竖屏、已保存任务后的 UID SIGKILL 恢复，创建→结束/关联收回→历史→连续修正→初始金额纠错→尾款 100/退款 800→负净投入 -50/持有 8 天/日均 -6.25→取消/确认删除→重启已通过；force-stop 冷重开保持负净额事实。取消前后 3 项目/8 事件全部字段相同，确认只删除本轮 M07 目标及 4 事件；重启历史 0、首页数量 2。最终 SQL 2 项目/4 事件与 M06 原记录全字段一致，integrity_check=ok、FK 无错误、schema=1；generation/ready/settings SHA 不变。20 张最终 APK 截图已归档；临时网络、屏幕、字体、IME、明暗、旋转及时区设置已恢复，未操作手机/其它 AVD。
-
-完整证据见 [M07 报告](evidence/M07-verification.md)、[逐方法 JSON](evidence/M07-verification.json)与 [M07 checkpoint](checkpoints/2026-10-12-M07.md)；当前正式验收结论以上方独立登记为准，旧交付材料不改写。
+详细文件、逐方法/输入/产物、失败诊断、实际设备及来源证据见 [M08 报告](evidence/M08-verification.md)、[JSON](evidence/M08-verification.json)、[文件清单](evidence/M08-files.md)和 [M08 checkpoint](checkpoints/2026-10-13-M08.md)。本地辅助审阅不等于 ChatGPT 独立验收。
 
 ## Pending / Current Problems / Technical Debt
 
-- **M07独立NOTES：**ProjectAbsent只确认当前不存在，不证明历史删除操作身份；多条旧END_SETTLEMENT明确冲突，未提供自动修复；媒体数据与文件生命周期清理归M10，未完成。M07独立审查未在用户Windows本机重跑Gradle或安装APK；原Lint20条提示及历史证据保留，本次仅状态回写。M05真实写后刷新和正式分页已在M06实施并独立验收，保留历史NOTES。
-- Q01 CLOSED，Q02/Q07 USER_CONFIRMED。Q03 长期 100/1000 日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M04 仅设计/首次数据集，M12 完整导入、切换、验证后回退、中断、共同校验、清理及 Q06-V01～V03 完整流程仍 NOT_RUN。Q02 M17/M18 视图集成仍 NOT_RUN。原 ZIP/43 原件、130 案例和 16 组完整补测不改。
-- [M09 两项流程风险](SPEC_ISSUES.md)继续保留：STOPPED 后重新启用入口/历史/纠错、多期预付默认停止；当前未实施/NOT_RUN。M04 首次初始化中断的残留 generation 不得静默清除真实数据；M08 v1→v2 必须同步已有数据库版本预检；M12 完整恢复与故障回退待实施。
-- **继承 M06 空间不足 NOTES：**真实 SQLite 满页失败可能被 Android/Room 回滚异常表现为普通 DATABASE。已验证旧数据、事务和同命令安全恢复；后续继续改进分类，但本轮不按消息猜错误、不宣称所有磁盘满都能准确分类。
-- **继承分页 NOTES：**1000 条分页是正确性/查询范围验证，不是长期性能基准；单项目完整成本仍读取其必要历史事件，不能保证无限历史恒定耗时。
-- **继承恢复 NOTES：**SavedState 不是持久业务草稿。SIGKILL/Recents 仅覆盖系统已经保存任务状态的实际模拟，不保证未保存状态、force-stop、断电或真正低内存自动回收后恢复。
-- **继承数据保障 NOTES：**完整备份/恢复归 M11/M12，尚未完成；Debug 暂不用于不可丢失的长期个人记录。冻结或 Debug 验证不等于长期数据保障、完整备份或恢复已经通过。
-- **继承平台/独立执行 NOTES：**真机、API26 运行、OEM 备份/迁移、完整 TalkBack、真实内存压力 LMK、Release 构建及正式签名升级仍 NOT_RUN；Debug 的非 launcher/exported 空 ComponentActivity 测试宿主不能未经 Release 验证正式交付。M01 独立未重新安装，M02/M03 独立未重跑本机 Gradle，M04/M05 独立未重跑 Gradle/安装等历史 NOTES 保留；M06 独立审查未在用户 Windows 本机重新执行 Gradle或重新安装 APK，不能把源码审阅登记成新执行 PASS。
-- M08 订阅/迁移、M10 媒体、M11/M12 备份恢复、M13 汇总、M14 搜索/类别 CRUD 与后续集成均保持原边界/NOT_RUN。本轮未做替换、多段复用、图表/排行、资金事件删除、云端、生产样本或 WHOCARE 改动。TypeScript/ESLint 不适用；NO-SOURCE 不计 PASS。
+- **M07 NOTES 继续有效：**ProjectAbsent 只确认当前不存在，不证明历史删除操作身份；多条旧 END_SETTLEMENT 明确冲突，没有自动修复；媒体数据/文件生命周期清理归 M10。原20条 Lint 提示及历史执行证据保留。M05 写后刷新与分页交接已在 M06 实施并独立验收，不改写历史 NOTES。
+- Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q02 M17/M18 视图集成仍 NOT_RUN。Q03 长期100/1000日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M12 完整导入、切换、验证后回退、中断、共同校验、清理及 Q06-V01～V03 完整流程仍 NOT_RUN。原 ZIP/43 原件/24 模块、130 案例及16组完整跨模块补测不改。
+- [M09 两项流程风险](SPEC_ISSUES.md)保持：STOPPED 后重新启用入口/历史/纠错、多期预付默认停止，尚未定案/实施/验证。M04 首次初始化中断残留 generation 不得静默清除真实数据；本轮仅完成 M08 版本预检与无损升级，不能代替 M12 完整恢复/故障回退。
+- **空间不足：**真实 SQLite 满页可能被 Android/Room 回滚异常表现为普通 DATABASE；继续保留输入、事务原子性及同命令恢复，不按消息猜测或宣称所有磁盘满均准确分类。
+- **性能与恢复：**1000 条分页是正确性/查询范围验证，不是长期性能基准；必要完整历史计算不保证无限历史恒定耗时。SavedState 不是持久业务草稿；已保存任务的 SIGKILL/Recents 不保证未保存状态、force-stop、断电或真正低内存自动回收。
+- **数据保障：**完整备份/恢复仍归 M11/M12，未完成；Debug 暂不用于不可丢失的长期个人记录。M10 媒体、M13 汇总、M14 搜索/类别 CRUD、替换、多段复用、图表/排行、单独资金事件删除及后续集成保持原边界/NOT_RUN。
+- **平台与独立执行：**真机、API26、OEM 备份/迁移、完整 TalkBack、真实内存压力 LMK、Release/正式签名升级仍 NOT_RUN；Debug 空 ComponentActivity 测试宿主不得未经 Release 验证正式交付。M01 独立未重装，M02/M03 独立未重跑本机 Gradle，M04～M07 独立未重跑本机 Gradle/安装等全部历史 NOTES 保留，不把源码审阅记为新执行 PASS。TypeScript/ESLint 不适用，NO-SOURCE 不计 PASS。
 
 ## Data / Architecture
 
-Room schemaVersion=1；未新增 Migration、依赖、数据 owner、派生成本真值或备份格式。pointer/ready 内部 formatVersion=1 不是 backupFormatVersion。UI → 现有 ViewModel → 同一 Repository/LocalWriteCoordinator → Room；Settings/DataStore、持久记录时区、generation 与原备份排除边界继承，不宣称 DB/DataStore/文件跨存储原子。实际结构见 [ARCHITECTURE](ARCHITECTURE.md)。
+当前为 Room schemaVersion=2、七张业务表，显式 Migration1→2。UI → 轻量 ViewModel → 同一 Repository/LocalWriteCoordinator → Room；Settings/DataStore、记录时区、AppContainer/ManagedGeneration、私有媒体及备份排除边界继承。pointer/ready 内部 formatVersion=1 不是 backupFormatVersion；不宣称 DB/DataStore/文件跨存储原子。真实结构与历史阶段区分见 [ARCHITECTURE](ARCHITECTURE.md)。
 
 ## Git
 
-- 目录E:/CODEX/砺石新APP，origin https://github.com/cc7279694-debug/property.git；当前feat/m07-project-lifecycle，M07来源feat/m06-project-entry，实施基线fb0eafdc43efa6e13ebd76e3491fa4331a145abb。本次验收评审与回写起点均为4089428e7acdc0f2b8e2fd660f437b5bc7d29f61；开始已核对本地/远端一致、工作区干净。只提交/推送本功能分支的两份状态文档。
-- 只允许提交/推送 M07 功能分支；最终 commit、远端一致及工作区检查以本功能分支 Git 日志/最终交付回执核对，避免文档自引用 SHA。main 保护基线 145326ddd4ce28abbf7c2706fe25f9d38c599c3a；不合并 main、不 force、不自动 PR/发布，不提交 APK、数据库、私钥或真实个人数据。
+- 目录 `E:/CODEX/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；交付分支仅 `feat/m08-subscription-renewals`，来源 `feat/m07-project-lifecycle`，起点 `fcb850f549285d310040318a5f7adfd51abb4c33`。开始已核对来源本地/远端一致、工作区干净、目标此前不存在；不从 main 开始。
+- 最终提交自身 SHA、推送及远端/工作区一致以本分支 Git 日志和最终交付回执核对，避免递归自引用。main 保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并 main、不 force、不自动 PR/公开发布，不提交 APK、数据库、私钥或真实个人数据。
 
 ## Next Recommended Task
 
-M07已 **ACCEPTED / FROZEN — PASS WITH NOTES**；本次状态回写提交/推送后立即停止。不进入M08，下一模块需要用户新授权，继承全部NOTES与既定规格/迁移/备份边界。
+**停止，等待 M08 ChatGPT 独立验收。**M09 必须另获用户明确授权；继承全部 NOTES 和既定边界，不自动继续。

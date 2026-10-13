@@ -66,6 +66,8 @@ ZIP SHA-256：`861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7`
 - M06本轮实际附件为 `E:/CODEX/.codex/attachments/72469a1e-9040-4ea0-8bcf-7cc787d6a5c3/已粘贴的文本.txt`，SHA-256 `ac70a90d15afcdc42c8b43395037f77004beab32708d0bb8daf148cbaded3ee0`。编码前已完整读取并建立[M06契约](M06_CONTRACT.md)；基线 `4576b03565e58011e2fa78a086039fee33e3352f`、来源feat/m05-ui-foundation、新分支feat/m06-project-entry。该附件不混入原ZIP/43原件，不授权M07或main合并。
 - 引用对话ID `6ac3156b-2810-83ec-9b92-2f7b5c8241d0`只补背景；仓库原件与当前用户要求优先。
 
-Q01 资料缺失已关闭；M00～M06已独立冻结。M07按本轮另行授权执行，交付后停止等待独立验收；不授权M08。Q03～Q06 原状态及处理期限不变，16组跨模块NOT_RUN保留，Q02 的 M17/M18 集成验证留待对应模块。
+Q01资料缺失已关闭；M00～M07已独立冻结。本轮M08交付READY_FOR_REVIEW并停止等待独立验收；M09未授权。Q03～Q06 原状态及处理期限不变，16组跨模块NOT_RUN保留，Q02 的 M17/M18 集成验证留待对应模块。
 
-M07本轮实际完整读取附件 `E:/CODEX/.codex/attachments/380d8db1-5837-435b-87cc-f7171b5db52f/已粘贴的文本.txt`，SHA-256 `66a4810c80deaa3df766294442a23a88ceca06ed10b377501b5f68f3e17309f8`。编码前[M07契约](M07_CONTRACT.md)落地；来源M06正式验收回写fb0eafdc43efa6e13ebd76e3491fa4331a145abb，本轮feat/m07-project-lifecycle。附件不混入原ZIP/43原件，不授权M08/main合并或公开APK。
+M07历史授权实际完整读取附件 `E:/CODEX/.codex/attachments/380d8db1-5837-435b-87cc-f7171b5db52f/已粘贴的文本.txt`，SHA-256 `66a4810c80deaa3df766294442a23a88ceca06ed10b377501b5f68f3e17309f8`。编码前[M07契约](M07_CONTRACT.md)落地；来源M06正式验收回写fb0eafdc43efa6e13ebd76e3491fa4331a145abb，本轮feat/m07-project-lifecycle。附件不混入原ZIP/43原件，不授权M08/main合并或公开APK。
+
+M08本轮完整附件 `E:/CODEX/.codex/attachments/f4cce3ae-8fde-4fc9-b100-00afae2a017e/已粘贴的文本.txt`，SHA-256 `31b0dea9ce575192cc22b7da229c5f73e2020a9ea785db287cb672f568c029f6`，基线fcb850f/feat/m07-project-lifecycle，当前feat/m08-subscription-renewals；[M08契约](M08_CONTRACT.md)先于编码。原43/130/16不改，M09未授权。实际交付见[M08报告](../evidence/M08-verification.md)、[当前验收](../ACCEPTANCE_MATRIX.md)和[M08 checkpoint](../checkpoints/2026-10-13-M08.md)。

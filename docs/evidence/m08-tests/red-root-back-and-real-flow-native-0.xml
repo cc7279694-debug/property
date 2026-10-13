@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.local.SubscriptionMigrationTest" tests="86" failures="6" errors="0" skipped="0" time="73.931" timestamp="2026-10-13T01:11:10" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="known_v1_hash_rejects_nocase_primary_key_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.365" />
+  <testcase name="known_v1_hash_rejects_sqliteXforeign_user_table_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.318" />
+  <testcase name="committed_v1_wal_is_respected_during_upgrade" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.444" />
+  <testcase name="known_v2_reopens_and_old_project_writes_still_work" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.196" />
+  <testcase name="fresh_database_is_v2_with_empty_subscription_tables" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.042" />
+  <testcase name="known_identity_with_extra_business_table_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.074" />
+  <testcase name="create_failure_during_real_room_upgrade_rolls_back_v1_schema_and_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.752" />
+  <testcase name="known_v2_hash_rejects_nocase_primary_key_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.167" />
+  <testcase name="v1_to_v2_preserves_projects" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.126" />
+  <testcase name="version_zero_is_rejected_without_initializing_existing_file" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.056" />
+  <testcase name="known_identity_with_extra_column_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.075" />
+  <testcase name="v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.257" />
+  <testcase name="known_v2_hash_rejects_sqliteXforeign_user_table_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.134" />
+  <testcase name="broken_v1_foreign_key_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.134" />
+  <testcase name="known_v1_legacy_identity_migrates_without_changing_old_rows" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.133" />
+  <testcase name="arbitrary_room_identity_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.074" />
+  <testcase name="known_identity_with_missing_index_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.042" />
+  <testcase name="unknown_version_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.071" />
+  <testcase name="subscription_categories_and_count_read_real_typed_facts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.101" />
+  <testcase name="dao_rejects_orphan_renewal_and_duplicate_operation" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.042" />
+  <testcase name="concurrent_overlapping_commands_cannot_both_commit" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.119" />
+  <testcase name="confirm_requires_existing_subscription" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.008" />
+  <testcase name="payment_after_fixed_business_today_is_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.044" />
+  <testcase name="positive_bounded_amount_and_fixed_cycle_days_are_required" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.043" />
+  <testcase name="noncanonical_identity_and_operation_mismatch_are_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.042" />
+  <testcase name="invalid_page_sizes_and_noncanonical_cursors_are_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.073" />
+  <testcase name="reused_renewal_primary_key_does_not_leave_second_identity" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.046" />
+  <testcase name="currency_change_is_allowed" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.069" />
+  <testcase name="create_and_first_payment_atomic" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.075" />
+  <testcase name="state_schema_roundtrip_requires_unique_day_and_operation_and_existing_parent" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.072" />
+  <testcase name="adjacent_and_gapped_paid_coverage_are_allowed_but_overlap_is_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.073" />
+  <testcase name="renewal_history_pages_are_sorted_by_payment_and_cost_uses_complete_history" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.196" />
+  <testcase name="prepaid_first_period_has_purchased_days_but_no_elapsed_time_or_current_price" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.07" />
+  <testcase name="closed_database_write_returns_explicit_storage_failure_without_new_facts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.075" />
+  <testcase name="project_category_cannot_be_used_for_subscription" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.042" />
+  <testcase name="reused_operation_with_different_content_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.416" />
+  <testcase name="first_payment_insert_failure_rolls_back_new_identity" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.043" />
+  <testcase name="confirm_exact_replay_precedes_overlap_check_and_changed_replay_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.09" />
+  <testcase name="corrupt_missing_payment_identity_and_closed_reads_are_never_fake_empty" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.04" />
+  <testcase name="real_changes_emit_initial_state_create_and_confirmation_without_count_guessing" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.085" />
+  <testcase name="real_recent_payment_sort_is_not_effective_date_sort" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.062" />
+  <testcase name="prepaid_price_waits_for_effective_date_and_keeps_purchased_days_separate" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.073" />
+  <testcase name="subscription_pages_and_refresh_window_keep_ties_and_moved_rows" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.383" />
+  <testcase name="accurate_dates_retained" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.044" />
+  <testcase name="renewal_history_is_preserved" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.102" />
+  <testcase name="unknown_result_reopen_replays_same_ids_without_duplicate_payment" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.044" />
+  <testcase name="malformed_stored_cycle_is_corruption_and_never_overwritten_by_confirmation" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.075" />
+  <testcase name="expired_service_has_no_fake_price_or_automatic_payment" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.043" />
+  <testcase name="failed_list_refresh_retains_real_rows_and_an_explicit_read_error" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.135" />
+  <testcase name="raw_four_dates_and_cycle_survive_saved_state_recreation" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.165" />
+  <testcase name="verified_missing_renewal_target_disables_editing_and_can_leave_without_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.127">
+    <failure>java.lang.AssertionError: A verified missing service cannot offer an editable payment form
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.subscription.SubscriptionViewModelTest$verified_missing_renewal_target_disables_editing_and_can_leave_without_payment$1.invokeSuspend(SubscriptionViewModelTest.kt:319)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.SubscriptionViewModelTest.verified_missing_renewal_target_disables_editing_and_can_leave_without_payment(SubscriptionViewModelTest.kt:312)
+</failure>
+  </testcase>
+  <testcase name="in_flight_double_save_and_changes_cannot_change_frozen_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.099" />
+  <testcase name="mismatched_success_identity_stays_pending_until_same_command_replay" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.134" />
+  <testcase name="lost_renewal_result_restores_and_replays_same_operation_identity" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.134" />
+  <testcase name="first_confirmed_payment_persists_identity_and_four_dates" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.103" />
+  <testcase name="slow_previous_detail_cannot_publish_after_another_identity_is_opened" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.073" />
+  <testcase name="lost_create_result_restores_and_replays_the_same_real_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.414" />
+  <testcase name="committed_read_failure_only_rereads_and_never_confirms_payment_again" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.007" />
+  <testcase name="opening_and_discarding_form_never_creates_a_real_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.006" />
+  <testcase name="invalid_real_payment_preserves_raw_fields_and_reports_amount_error" classname="com.cooper.lithic.feature.subscription.SubscriptionViewModelTest" time="0.064" />
+  <testcase name="invalid_subscription_identity_and_illegal_restored_chain_return_home" classname="com.cooper.lithic.feature.subscription.SubscriptionRoutesTest" time="0.007" />
+  <testcase name="subscription_routes_have_exact_bounded_parents" classname="com.cooper.lithic.feature.subscription.SubscriptionRoutesTest" time="0.006" />
+  <testcase name="dirty_form_from_either_feature_requires_one_global_discard_prompt" classname="com.cooper.lithic.feature.subscription.SubscriptionRoutesTest" time="0.007" />
+  <testcase name="frozen_project_current_and_history_parent_chains_remain_unchanged" classname="com.cooper.lithic.feature.subscription.SubscriptionRoutesTest" time="0.006" />
+  <testcase name="restored_create_preserves_its_actual_home_or_list_parent" classname="com.cooper.lithic.feature.subscription.SubscriptionRoutesTest" time="0.006" />
+  <testcase name="pending_submission_from_either_feature_blocks_global_departure" classname="com.cooper.lithic.feature.subscription.SubscriptionRoutesTest" time="0.004" />
+  <testcase name="root_home_without_active_forms_still_allows_real_system_back_to_finish" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="4.749">
+    <failure>java.lang.AssertionError: expected:&lt;DESTROYED&gt; but was:&lt;STARTED&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.root_home_without_active_forms_still_allows_real_system_back_to_finish(SubscriptionNavigationGuardTest.kt:239)
+</failure>
+  </testcase>
+  <testcase name="hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="4.218" />
+  <testcase name="root_home_system_back_keeps_restored_dirty_form_until_explicit_discard" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="2.232">
+    <failure>java.lang.AssertionError: System Back must not finish Home with restored unsaved input
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$root_home_system_back_keeps_restored_dirty_form_until_explicit_discard$1.invokeSuspend$lambda$3(SubscriptionNavigationGuardTest.kt:217)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$root_home_system_back_keeps_restored_dirty_form_until_explicit_discard$1.$r8$lambda$U5NHOPg56yxQO938uVcMsRwCeIc(Unknown Source:0)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$root_home_system_back_keeps_restored_dirty_form_until_explicit_discard$1$$ExternalSyntheticLambda3.invoke(D8$$SyntheticClass:0)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.onMain$lambda$0(SubscriptionNavigationGuardTest.kt:315)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.$r8$lambda$Ai2v8WNI1AaSfXmVZUkEDHx_WQ4(Unknown Source:0)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+at android.os.Handler.handleCallback(Handler.java:995)
+at android.os.Handler.dispatchMessage(Handler.java:103)
+at android.os.Looper.loopOnce(Looper.java:248)
+at android.os.Looper.loop(Looper.java:338)
+at android.app.ActivityThread.main(ActivityThread.java:9067)
+at java.lang.reflect.Method.invoke(Native Method)
+at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+</failure>
+  </testcase>
+  <testcase name="formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="7.796" />
+  <testcase name="root_home_system_back_keeps_restored_pending_envelope_and_reachable_payment_form" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="2.199">
+    <failure>java.lang.AssertionError: System Back must not finish Home with a restored pending payment
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$root_home_system_back_keeps_restored_pending_envelope_and_reachable_payment_form$1.invokeSuspend$lambda$3(SubscriptionNavigationGuardTest.kt:179)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$root_home_system_back_keeps_restored_pending_envelope_and_reachable_payment_form$1.$r8$lambda$azY__v-ECvucFNHr4MN2LNnxmLM(Unknown Source:0)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$root_home_system_back_keeps_restored_pending_envelope_and_reachable_payment_form$1$$ExternalSyntheticLambda3.invoke(D8$$SyntheticClass:0)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.onMain$lambda$0(SubscriptionNavigationGuardTest.kt:315)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.$r8$lambda$Ai2v8WNI1AaSfXmVZUkEDHx_WQ4(Unknown Source:0)
+at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+at android.os.Handler.handleCallback(Handler.java:995)
+at android.os.Handler.dispatchMessage(Handler.java:103)
+at android.os.Looper.loopOnce(Looper.java:248)
+at android.os.Looper.loop(Looper.java:338)
+at android.app.ActivityThread.main(ActivityThread.java:9067)
+at java.lang.reflect.Method.invoke(Native Method)
+at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+</failure>
+  </testcase>
+  <testcase name="dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="10.232" />
+  <testcase name="hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="3.032" />
+  <testcase name="detail_read_failure_and_missing_are_distinct" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.593" />
+  <testcase name="conflict_requires_explicit_read_instead_of_new_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.682" />
+  <testcase name="create_inputs_are_controlled_and_subscription_category_only" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="7.698" />
+  <testcase name="in_flight_form_locks_inputs_and_duplicate_confirm" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.941" />
+  <testcase name="verified_missing_target_locks_input_and_offers_safe_return_without_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.603">
+    <failure>java.lang.AssertionError: Failed to assert the following: (is not enabled)
+Semantics of the node:
+Node #1578 at (l=16.0, t=238.0, r=344.0, b=304.0)px, Tag: 'renewal-amount'
+ContentDataType = 'AndroidContentDataType(androidAutofillType=1)'
+EditableText = '150'
+Focused = 'false'
+ImeAction = 'Next'
+InputText = '150'
+IsEditable = 'true'
+Text = '[本次实际付款金额（元）]'
+TextSelectionRange = 'TextRange(0, 0)'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, InsertTextAtCursor, OnAutofillText, OnClick, OnLongClick, PasteText, PerformImeAction, RequestFocus, SetSelection, SetText, SetTextSubstitution, ShowTextSubstitution]
+MergeDescendants = 'true'
+Has 22 siblings
+Selector used: (TestTag = 'renewal-amount')
+
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertIsNotEnabled(Assertions.kt:67)
+at com.cooper.lithic.feature.subscription.SubscriptionScreensTest.verified_missing_target_locks_input_and_offers_safe_return_without_payment(SubscriptionScreensTest.kt:179)
+</failure>
+  </testcase>
+  <testcase name="failed_form_retains_invalid_raw_and_all_four_dates" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.212" />
+  <testcase name="unconfirmed_form_only_replays_same_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.712" />
+  <testcase name="list_loading_and_read_failure_do_not_claim_empty" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.463" />
+  <testcase name="genuine_empty_list_exposes_create_without_fake_metrics" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.423" />
+  <testcase name="narrow_large_font_form_actions_and_errors_remain_reachable" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.452" />
+  <testcase name="renewal_requires_explicit_payment_action_and_keeps_reference_readonly" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.307" />
+  <testcase name="committed_form_offers_read_retry_without_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.018" />
+  <testcase name="initializationError" classname="com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest" time="0.08">
+    <failure>java.lang.RuntimeException: Failed to instantiate test runner class androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+
+
+at androidx.test.ext.junit.runners.AndroidJUnit4.throwInitializationError(AndroidJUnit4.java:129)
+at androidx.test.ext.junit.runners.AndroidJUnit4.loadRunner(AndroidJUnit4.java:121)
+at androidx.test.ext.junit.runners.AndroidJUnit4.loadRunner(AndroidJUnit4.java:82)
+at androidx.test.ext.junit.runners.AndroidJUnit4.&lt;init&gt;(AndroidJUnit4.java:56)
+... 14 trimmed
+Caused by: java.lang.reflect.InvocationTargetException
+at java.lang.reflect.Constructor.newInstance0(Native Method)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+at androidx.test.ext.junit.runners.AndroidJUnit4.loadRunner(AndroidJUnit4.java:112)
+... 17 more
+Caused by: org.junit.runners.model.InvalidTestClassError: Invalid test class 'com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest':
+1. Method narrow_large_font_real_ime_saved_task_and_confirmation() should be void
+2. Method renewal_history_is_preserved() should be void
+at org.junit.runners.ParentRunner.validate(ParentRunner.java:525)
+at org.junit.runners.ParentRunner.&lt;init&gt;(ParentRunner.java:92)
+at org.junit.runners.BlockJUnit4ClassRunner.&lt;init&gt;(BlockJUnit4ClassRunner.java:74)
+at androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner.&lt;init&gt;(AndroidJUnit4ClassRunner.java:50)
+at androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner.&lt;init&gt;(AndroidJUnit4ClassRunner.java:55)
+... 20 more
+</failure>
+  </testcase>
+</testsuite>

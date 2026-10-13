@@ -23,7 +23,8 @@ import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.AmountText
 
 @Composable
-internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreateProject: () -> Unit, modifier: Modifier = Modifier) {
+internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreateProject: () -> Unit,
+    subscriptionCount: Long, onSubscriptionList: () -> Unit, onCreateSubscription: () -> Unit, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState())
             .padding(16.dp).testTag("home-screen"),
@@ -36,7 +37,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             Text("日均成本汇总尚未开放", style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        Text(if (projectCount == 0L) "暂无记录" else "已录入 $projectCount 条长期项目",
+        Text(if (projectCount == 0L && subscriptionCount == 0L) "暂无记录" else "已录入 $projectCount 条长期项目",
             style = MaterialTheme.typography.bodyLarge)
         HorizontalDivider()
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -57,8 +58,14 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text("订阅服务", style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.semantics { heading() })
-            Text("订阅记录尚未开放", style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(if (subscriptionCount == 0L) "还没有订阅服务" else "已录入 $subscriptionCount 条订阅服务",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Button(onClick = onSubscriptionList, modifier = Modifier.heightIn(min = 48.dp).testTag("open-subscription-list")) {
+                Text("查看订阅服务", style = MaterialTheme.typography.bodyLarge)
+            }
+            TextButton(onClick = onCreateSubscription, modifier = Modifier.heightIn(min = 48.dp).testTag("home-create-subscription")) {
+                Text("新增订阅服务", style = MaterialTheme.typography.bodyLarge)
+            }
         }
     }
 }

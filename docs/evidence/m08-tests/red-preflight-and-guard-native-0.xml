@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.local.SubscriptionMigrationTest" tests="63" failures="4" errors="0" skipped="0" time="90.007" timestamp="2026-10-12T15:18:20" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="known_v1_hash_rejects_nocase_primary_key_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.707">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:386)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:41)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v1_hash_rejects_nocase_primary_key_without_migration(SubscriptionMigrationTest.kt:304)
+</failure>
+  </testcase>
+  <testcase name="known_v1_hash_rejects_sqliteXforeign_user_table_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.84">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:386)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:41)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v1_hash_rejects_sqliteXforeign_user_table_without_migration(SubscriptionMigrationTest.kt:295)
+</failure>
+  </testcase>
+  <testcase name="committed_v1_wal_is_respected_during_upgrade" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.425" />
+  <testcase name="known_v2_reopens_and_old_project_writes_still_work" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.34" />
+  <testcase name="fresh_database_is_v2_with_empty_subscription_tables" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.111" />
+  <testcase name="known_identity_with_extra_business_table_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.213" />
+  <testcase name="create_failure_during_real_room_upgrade_rolls_back_v1_schema_and_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.834" />
+  <testcase name="known_v2_hash_rejects_nocase_primary_key_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.5">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:386)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:41)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v2_hash_rejects_nocase_primary_key_without_repair(SubscriptionMigrationTest.kt:308)
+</failure>
+  </testcase>
+  <testcase name="v1_to_v2_preserves_projects" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.35" />
+  <testcase name="version_zero_is_rejected_without_initializing_existing_file" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.158" />
+  <testcase name="known_identity_with_extra_column_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.16" />
+  <testcase name="v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.42" />
+  <testcase name="known_v2_hash_rejects_sqliteXforeign_user_table_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.338">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:386)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:41)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v2_hash_rejects_sqliteXforeign_user_table_without_repair(SubscriptionMigrationTest.kt:299)
+</failure>
+  </testcase>
+  <testcase name="broken_v1_foreign_key_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.162" />
+  <testcase name="known_v1_legacy_identity_migrates_without_changing_old_rows" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.235" />
+  <testcase name="arbitrary_room_identity_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.134" />
+  <testcase name="known_identity_with_missing_index_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.141" />
+  <testcase name="unknown_version_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.162" />
+  <testcase name="subscription_categories_and_count_read_real_typed_facts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.165" />
+  <testcase name="dao_rejects_orphan_renewal_and_duplicate_operation" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.136" />
+  <testcase name="concurrent_overlapping_commands_cannot_both_commit" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.13" />
+  <testcase name="confirm_requires_existing_subscription" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.14" />
+  <testcase name="payment_after_fixed_business_today_is_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.11" />
+  <testcase name="positive_bounded_amount_and_fixed_cycle_days_are_required" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.14" />
+  <testcase name="noncanonical_identity_and_operation_mismatch_are_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.141" />
+  <testcase name="invalid_page_sizes_and_noncanonical_cursors_are_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.11" />
+  <testcase name="reused_renewal_primary_key_does_not_leave_second_identity" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.137" />
+  <testcase name="currency_change_is_allowed" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.267" />
+  <testcase name="create_and_first_payment_atomic" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.035" />
+  <testcase name="state_schema_roundtrip_requires_unique_day_and_operation_and_existing_parent" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.136" />
+  <testcase name="adjacent_and_gapped_paid_coverage_are_allowed_but_overlap_is_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.163" />
+  <testcase name="renewal_history_pages_are_sorted_by_payment_and_cost_uses_complete_history" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.391" />
+  <testcase name="prepaid_first_period_has_purchased_days_but_no_elapsed_time_or_current_price" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.084" />
+  <testcase name="closed_database_write_returns_explicit_storage_failure_without_new_facts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.186" />
+  <testcase name="project_category_cannot_be_used_for_subscription" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.107" />
+  <testcase name="reused_operation_with_different_content_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.082" />
+  <testcase name="first_payment_insert_failure_rolls_back_new_identity" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.132" />
+  <testcase name="confirm_exact_replay_precedes_overlap_check_and_changed_replay_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.136" />
+  <testcase name="corrupt_missing_payment_identity_and_closed_reads_are_never_fake_empty" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.233" />
+  <testcase name="real_changes_emit_initial_state_create_and_confirmation_without_count_guessing" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.299" />
+  <testcase name="real_recent_payment_sort_is_not_effective_date_sort" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.267" />
+  <testcase name="prepaid_price_waits_for_effective_date_and_keeps_purchased_days_separate" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.269" />
+  <testcase name="subscription_pages_and_refresh_window_keep_ties_and_moved_rows" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.928" />
+  <testcase name="accurate_dates_retained" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.163" />
+  <testcase name="renewal_history_is_preserved" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.161" />
+  <testcase name="unknown_result_reopen_replays_same_ids_without_duplicate_payment" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.136" />
+  <testcase name="malformed_stored_cycle_is_corruption_and_never_overwritten_by_confirmation" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.11" />
+  <testcase name="expired_service_has_no_fake_price_or_automatic_payment" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.083" />
+  <testcase name="hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="9.088" />
+  <testcase name="formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="11.017" />
+  <testcase name="dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="12.616" />
+  <testcase name="hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm" classname="com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest" time="3.15" />
+  <testcase name="detail_read_failure_and_missing_are_distinct" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="1.922" />
+  <testcase name="conflict_requires_explicit_read_instead_of_new_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.529" />
+  <testcase name="create_inputs_are_controlled_and_subscription_category_only" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="13.406" />
+  <testcase name="in_flight_form_locks_inputs_and_duplicate_confirm" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.595" />
+  <testcase name="failed_form_retains_invalid_raw_and_all_four_dates" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.61" />
+  <testcase name="unconfirmed_form_only_replays_same_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.943" />
+  <testcase name="list_loading_and_read_failure_do_not_claim_empty" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.048" />
+  <testcase name="genuine_empty_list_exposes_create_without_fake_metrics" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.727" />
+  <testcase name="narrow_large_font_form_actions_and_errors_remain_reachable" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.256" />
+  <testcase name="renewal_requires_explicit_payment_action_and_keeps_reference_readonly" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.55" />
+  <testcase name="committed_form_offers_read_retry_without_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.95" />
+</testsuite>

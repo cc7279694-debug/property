@@ -16,8 +16,8 @@ android {
         applicationId = "com.cooper.lithic"
         minSdk = 26
         targetSdk = 36
-        versionCode = 5
-        versionName = "0.1.0-m07"
+        versionCode = 6
+        versionName = "0.1.0-m08"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -35,6 +35,8 @@ android {
     buildFeatures {
         compose = true
     }
+    // Exact exported schema fixtures are test-only assets; never packaged in the app APK.
+    sourceSets.getByName("androidTest").assets.srcDir("$projectDir/schemas")
 }
 
 kotlin {

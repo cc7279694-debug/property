@@ -8,7 +8,7 @@
 
 实现者不得跳过验收开始下一模块。文档任务仅检查文档，不机械新增产品测试。业务计算、迁移、恢复、导入导出等重要逻辑优先可重复测试。
 
-M00～M06已独立冻结PASS WITH NOTES，原独立未重跑本机Gradle/安装等NOTES保留。当前用户正式授权M07，从fb0eafdc43efa6e13ebd76e3491fa4331a145abb/feat/m06-project-entry进入feat/m07-project-lifecycle；只做结束/关联收回/历史纠错/删除/基本历史档案，边界见[M07契约](planning/M07_CONTRACT.md)。schema v1/成本引擎/唯一owner不变，M08和后续功能未授权。完成实际回归与设备验证后READY_FOR_REVIEW并停止，不自行冻结。
+M00～M07已独立冻结PASS WITH NOTES；当前用户授权M08，起点fcb850f549285d310040318a5f7adfd51abb4c33/feat/m07-project-lifecycle，当前feat/m08-subscription-renewals。[M08契约](planning/M08_CONTRACT.md)先固定迁移闸门；真实v1测试先于生产迁移，原四表/引擎/owner/时区/旧证据保留。允许订阅/真实续费/Room v2适用实现与验证，禁止M09，完成READY_FOR_REVIEW后停止，不自授冻结。
 
 Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、Acceptance Criteria、Verification。修改前能解释为什么改该文件、可能破坏什么、如何验证。
 

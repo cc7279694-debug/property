@@ -308,11 +308,17 @@ class ProjectLifecycleViewModelTest {
         assertEquals(SubmissionPhase.UNCONFIRMED, restored.state.value.deleteConfirmation!!.phase)
         assertEquals(LeaveDecision.BLOCK_PENDING, restored.leaveDecision())
         onMain { restored.discardForm(); restored.save(); restored.save() }
-        await(restored) { it.deletedProjectId == baseline.id }
+        val completed = requireNotNull(withTimeoutOrNull(5_000) {
+            restored.state.first {
+                it.deletedProjectId == baseline.id &&
+                    it.deleteConfirmation?.phase == SubmissionPhase.COMMITTED &&
+                    it.deleteConfirmation.message != null
+            }
+        }) { "Complete deletion confirmation state was not reached: ${restored.state.value}" }
         assertEquals(command, retried)
-        assertTrue(restored.state.value.deleteConfirmation!!.message!!.contains("已核对"))
-        assertTrue(restored.state.value.deleteConfirmation!!.message!!.contains("不存在"))
-        assertFalse(restored.state.value.deleteConfirmation!!.message!!.contains("重放成功"))
+        assertTrue(completed.deleteConfirmation!!.message!!.contains("已核对"))
+        assertTrue(completed.deleteConfirmation!!.message!!.contains("不存在"))
+        assertFalse(completed.deleteConfirmation!!.message!!.contains("重放成功"))
         assertTrue(generation.database.projectDao().listProjects().isEmpty())
         assertTrue(generation.database.projectDao().listEvents().isEmpty())
     }

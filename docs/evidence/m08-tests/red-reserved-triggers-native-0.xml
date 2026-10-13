@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.local.SubscriptionMigrationTest" tests="22" failures="4" errors="0" skipped="0" time="4.725" timestamp="2026-10-13T01:46:36" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="known_v1_hash_rejects_nocase_primary_key_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.263" />
+  <testcase name="known_v1_hash_rejects_sqliteXforeign_user_table_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.132" />
+  <testcase name="committed_v1_wal_is_respected_during_upgrade" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.191" />
+  <testcase name="known_v2_reopens_and_old_project_writes_still_work" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.224" />
+  <testcase name="fresh_database_is_v2_with_empty_subscription_tables" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.042" />
+  <testcase name="known_v1_hash_rejects_room_master_table_trigger_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.207">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:492)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v1_hash_rejects_room_master_table_trigger_without_migration(SubscriptionMigrationTest.kt:314)
+</failure>
+  </testcase>
+  <testcase name="known_identity_with_extra_business_table_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.079" />
+  <testcase name="create_failure_during_real_room_upgrade_rolls_back_v1_schema_and_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.664" />
+  <testcase name="known_v2_hash_rejects_nocase_primary_key_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.165" />
+  <testcase name="v1_to_v2_preserves_projects" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.163" />
+  <testcase name="version_zero_is_rejected_without_initializing_existing_file" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.074" />
+  <testcase name="known_identity_with_extra_column_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.072" />
+  <testcase name="known_v2_hash_rejects_room_master_table_trigger_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.194">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:492)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v2_hash_rejects_room_master_table_trigger_without_repair(SubscriptionMigrationTest.kt:318)
+</failure>
+  </testcase>
+  <testcase name="v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.227" />
+  <testcase name="known_v2_hash_rejects_sqliteXforeign_user_table_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.162" />
+  <testcase name="known_v1_hash_rejects_android_metadata_trigger_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.16">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:492)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v1_hash_rejects_android_metadata_trigger_without_migration(SubscriptionMigrationTest.kt:322)
+</failure>
+  </testcase>
+  <testcase name="known_v2_hash_rejects_android_metadata_trigger_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.223">
+    <failure>java.lang.AssertionError: An invalid known-version file must fail before normal Room storage is returned
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:492)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.access$assertRejectedWithFactsPreserved(SubscriptionMigrationTest.kt:42)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest$assertRejectedWithFactsPreserved$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.local.SubscriptionMigrationTest.known_v2_hash_rejects_android_metadata_trigger_without_repair(SubscriptionMigrationTest.kt:326)
+</failure>
+  </testcase>
+  <testcase name="broken_v1_foreign_key_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.069" />
+  <testcase name="known_v1_legacy_identity_migrates_without_changing_old_rows" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.163" />
+  <testcase name="arbitrary_room_identity_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.077" />
+  <testcase name="known_identity_with_missing_index_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.067" />
+  <testcase name="unknown_version_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.077" />
+</testsuite>

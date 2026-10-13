@@ -36,6 +36,7 @@ import androidx.compose.ui.test.performTextReplacement
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.test.espresso.Espresso
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.core.model.CostUnavailableReason
@@ -70,7 +71,11 @@ class ProjectScreensTest {
         compose.onNodeWithTag("project-initial-paid-on-input").performScrollTo()
             .performTextReplacement("2025-12-20")
         compose.onNodeWithTag("project-initial-paid-on-input").assertTextContains("2025-12-20")
+        Espresso.closeSoftKeyboard()
+        compose.waitForIdle()
         compose.onNodeWithTag("project-category").performScrollTo().performClick()
+        compose.waitForIdle()
+        compose.onNodeWithTag("category-$SECOND_CATEGORY_ID").assertIsDisplayed()
         compose.onNodeWithTag("category-$SECOND_CATEGORY_ID").performClick()
         compose.onNodeWithTag("project-category").assert(hasText("数码"))
         compose.onNodeWithText("订阅专属类别").assertDoesNotExist()

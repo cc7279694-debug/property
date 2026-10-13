@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.core.time.ZonedBusinessClock
 import com.cooper.lithic.data.repository.ProjectRepository
+import com.cooper.lithic.data.repository.SubscriptionRepository
 import java.time.Clock
 import java.time.ZoneId
 import kotlinx.coroutines.CancellationException
@@ -13,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -37,10 +39,12 @@ internal class LedgerUiStateHolder(
                                 val zone = generation.settings.recordZone()
                                 val clock = clockFactory(zone)
                                 val repository = ProjectRepository(generation.database, generation.coordinator, clock)
-                                LedgerUiState.Ready(repository.loadSummary().projectCount, zone, repository, clock)
+                                val subscriptions = SubscriptionRepository(generation.database, generation.coordinator, clock)
+                                LedgerUiState.Ready(repository.loadSummary().projectCount, zone, repository, clock,
+                                    subscriptions, subscriptions.loadSubscriptionCount())
                             }
                             mutableState.value = ready
-                            ready.repository.changes.collectLatest { refresh(ready) }
+                            merge(ready.repository.changes, ready.subscriptionRepository.changes).collectLatest { refresh(ready) }
                         } catch (cancelled: CancellationException) { throw cancelled }
                         catch (_: Exception) {
                             val previous = mutableState.value
@@ -57,8 +61,10 @@ internal class LedgerUiStateHolder(
     }
     private suspend fun refresh(ready: LedgerUiState.Ready) {
         try {
-            val count = withContext(Dispatchers.IO) { ready.repository.loadSummary().projectCount }
-            mutableState.value = ready.copy(projectCount = count, readError = null)
+            val counts = withContext(Dispatchers.IO) {
+                ready.repository.loadSummary().projectCount to ready.subscriptionRepository.loadSubscriptionCount()
+            }
+            mutableState.value = ready.copy(projectCount = counts.first, subscriptionCount = counts.second, readError = null)
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) {
             val previous = state.value as? LedgerUiState.Ready ?: ready

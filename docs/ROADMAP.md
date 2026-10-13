@@ -2,11 +2,11 @@
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-本表保留原M00～M23顺序与精确前置依赖。M00～M06已独立验收冻结PASS WITH NOTES；当前M07已READY_FOR_REVIEW，独立验收PENDING；起点fb0eafdc43efa6e13ebd76e3491fa4331a145abb、feat/m07-project-lifecycle，边界见[M07契约](planning/M07_CONTRACT.md)。实际进度/验证以[CURRENT_STATE](CURRENT_STATE.md)为准，M08～M23未授权，历史NOTES保留。
+本表保留原M00～M23顺序与精确前置依赖。M00～M06已独立验收冻结PASS WITH NOTES；M07已独立冻结；当前M08已交付READY_FOR_REVIEW、独立验收PENDING，基线fcb850f549285d310040318a5f7adfd51abb4c33/feat/m08-subscription-renewals，范围见[M08契约](planning/M08_CONTRACT.md)。以下保留M07历史起点fb0eafdc43efa6e13ebd76e3491fa4331a145abb、feat/m07-project-lifecycle，边界见[M07契约](planning/M07_CONTRACT.md)。实际进度/验证以[CURRENT_STATE](CURRENT_STATE.md)为准，M09～M23未授权，历史NOTES保留。
 
 ## 执行顺序与依赖解释
 
-按编号逐模块授权与停止；M07前置M06已冻结，本轮允许结束/唯一关联收回、纠错、删除、基本历史与真实刷新。订阅、媒体、备份、汇总、搜索/类别管理仍归后续模块；Q02/Q07解释、Q03～Q06期限、M09风险及M04/M08/M12安全边界继承。M07交付READY_FOR_REVIEW后立即停止，不自动继续M08。第三列仍为原包精确前置验收依赖，不被编号执行闸门替代。
+按编号逐模块授权与停止；M08前置M03/M04/M05/M07已冻结，本轮允许订阅/真实续费/Room v2及无损迁移与预检，原四表/owner/固定时区/冻结引擎保留。M09状态用户操作、媒体、备份、汇总仍属后续模块；Q03～Q06和M09两风险不关闭。M08交付READY_FOR_REVIEW后停止，不自动进入M09。
 
 24计划的“必须先验收”与原JSON逐条一致，无前向依赖或环。后续还需读原计划、引用规格、适用验收、当前澄清和实际代码，不能只凭路线表开始工程。
 

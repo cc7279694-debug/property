@@ -15,12 +15,19 @@ import androidx.sqlite.db.framework.FrameworkSQLiteOpenHelperFactory
 import java.io.DataInputStream
 import java.io.File
 
-@Database(entities = [CategoryEntity::class, LongTermProjectEntity::class, ProjectMoneyEventEntity::class, LocalMediaAssetEntity::class], version = 1, exportSchema = true)
+@Database(
+    entities = [CategoryEntity::class, LongTermProjectEntity::class, ProjectMoneyEventEntity::class,
+        LocalMediaAssetEntity::class, SubscriptionEntity::class, SubscriptionRenewalEntity::class,
+        SubscriptionStateChangeEntity::class],
+    version = 2,
+    exportSchema = true,
+)
 @TypeConverters(DatabaseConverters::class)
 abstract class LithicDatabase : RoomDatabase() {
     abstract fun categoryDao(): CategoryDao
     abstract fun projectDao(): ProjectDao
     abstract fun mediaDao(): MediaDao
+    abstract fun subscriptionDao(): SubscriptionDao
 
     /** Only fresh generation initialization may add absent defaults. Existing rows must agree. */
     suspend fun initializeDefaults() = withTransaction {
@@ -64,12 +71,7 @@ abstract class LithicDatabase : RoomDatabase() {
                     SQLiteDatabase.OPEN_READONLY or SQLiteDatabase.NO_LOCALIZED_COLLATORS,
                     DatabaseErrorHandler { throw SQLiteDatabaseCorruptException("Existing database is corrupt; original files are preserved") },
                 ).use { existing ->
-                    check(existing.version == 1) { "Existing database version has no registered migration" }
-                    existing.rawQuery("SELECT identity_hash FROM room_master_table WHERE id = 42", null).use { identity ->
-                        check(identity.moveToFirst() && !identity.isNull(0) && identity.getString(0).isNotBlank() && !identity.moveToNext()) {
-                            "Existing database has no valid Room identity"
-                        }
-                    }
+                    DatabaseSchemaValidation.requireKnownSchema(existing)
                 }
             }
             val database = Room.databaseBuilder(context.applicationContext, LithicDatabase::class.java, canonical.path)

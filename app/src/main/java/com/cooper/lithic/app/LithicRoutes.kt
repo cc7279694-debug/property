@@ -47,11 +47,26 @@ internal data class ProjectMoneyCorrection(val id: String, val eventId: String, 
 @Serializable
 internal data class ProjectDelete(val id: String, val origin: ProjectOrigin = ProjectOrigin.CURRENT) : NavKey
 
+@Serializable
+internal data object SubscriptionList : NavKey
+
+@Serializable
+internal data object CreateSubscription : NavKey
+
+@Serializable
+internal data class SubscriptionDetail(val id: String) : NavKey
+
+@Serializable
+internal data class ConfirmSubscriptionRenewal(val id: String) : NavKey
+
 internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (destination) {
     Home -> listOf(Home)
-    Review, Settings, ProjectList -> listOf(Home, destination)
+    Review, Settings, ProjectList, SubscriptionList -> listOf(Home, destination)
     ProjectHistory -> listOf(Home, Review, ProjectHistory)
     CreateProject -> listOf(Home, CreateProject)
+    CreateSubscription -> listOf(Home, CreateSubscription)
+    is SubscriptionDetail -> if (StoredValueValidation.isUuid(destination.id)) listOf(Home, SubscriptionList, destination) else listOf(Home)
+    is ConfirmSubscriptionRenewal -> if (StoredValueValidation.isUuid(destination.id)) listOf(Home, SubscriptionList, SubscriptionDetail(destination.id), destination) else listOf(Home)
     is ProjectDetail -> if (StoredValueValidation.isUuid(destination.id)) projectParent(destination.origin) + destination else listOf(Home)
     is ProjectEdit -> editorStack(destination.id, destination.origin, destination)
     is ProjectMoneyEntry -> editorStack(destination.id, destination.origin, destination)
@@ -85,6 +100,7 @@ private fun editorStack(id: String, origin: ProjectOrigin, destination: NavKey):
 /** Only decoded, known routes can be presented; old Skeleton and invalid stacks return home. */
 internal fun normalizeBackStack(restored: List<NavKey>): List<NavKey> {
     if (restored == listOf(Home, ProjectList, CreateProject)) return restored.toList()
+    if (restored == listOf(Home, SubscriptionList, CreateSubscription)) return restored.toList()
     val destination = restored.lastOrNull() ?: return listOf(Home)
     if (restored == canonicalBackStack(destination)) return restored.toList()
     return listOf(Home)
