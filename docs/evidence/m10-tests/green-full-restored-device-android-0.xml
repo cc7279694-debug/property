@@ -1,0 +1,691 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.app.AppContainerTest" tests="364" failures="9" errors="0" skipped="0" time="342.468" timestamp="2026-10-14T03:56:15" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="actual_application_onCreate_starts_its_private_default_storage" classname="com.cooper.lithic.app.AppContainerTest" time="0.477" />
+  <testcase name="cancelled_initialization_propagates_cancellation_and_never_reports_ready" classname="com.cooper.lithic.app.AppContainerTest" time="0.487" />
+  <testcase name="concurrent_readers_wait_for_one_background_start_and_captured_zone" classname="com.cooper.lithic.app.AppContainerTest" time="0.395" />
+  <testcase name="start_initializes_complete_storage_without_an_explicit_read" classname="com.cooper.lithic.app.AppContainerTest" time="0.346" />
+  <testcase name="open_before_start_does_not_implicitly_create_storage" classname="com.cooper.lithic.app.AppContainerTest" time="0.008" />
+  <testcase name="initialization_failure_is_retained_without_new_generation_or_retry" classname="com.cooper.lithic.app.AppContainerTest" time="0.007" />
+  <testcase name="unsupported_pointer_format_and_stage_fail_explicitly" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.009" />
+  <testcase name="repeated_open_on_one_owner_returns_the_same_handle" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.166" />
+  <testcase name="corrupt_database_is_preserved_without_empty_replacement" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.163" />
+  <testcase name="ready_marker_identity_must_match_the_active_generation" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.085" />
+  <testcase name="missing_settings_are_not_recreated" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.111" />
+  <testcase name="missing_ready_marker_is_not_recreated" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.107" />
+  <testcase name="old_generation_directories_are_retained_on_reopen" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.495" />
+  <testcase name="database_wal_and_shm_stay_in_the_same_generation" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.034" />
+  <testcase name="corrupt_pointer_backup_evidence_is_preserved" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.011" />
+  <testcase name="missing_pointer_with_existing_generation_does_not_reset" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.189" />
+  <testcase name="cancelled_repeat_open_preserves_the_already_active_handle" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.246" />
+  <testcase name="pointer_new_file_evidence_is_not_treated_as_fresh_install" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.02" />
+  <testcase name="symlinked_generations_cannot_escape_the_private_root" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.007" />
+  <testcase name="generation_is_self_contained" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.163" />
+  <testcase name="atomic_file_backup_can_recover_a_valid_committed_pointer" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.39" />
+  <testcase name="restart_opens_the_same_generation_and_record_zone" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.168" />
+  <testcase name="corrupt_settings_are_preserved_without_default_replacement" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.215" />
+  <testcase name="missing_generation_directory_is_not_recreated" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.489" />
+  <testcase name="pointer_id_cannot_escape_the_generations_directory" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.008" />
+  <testcase name="same_canonical_root_cannot_have_two_active_owners" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.471" />
+  <testcase name="failed_initialization_never_activates_a_partial_generation" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.774" />
+  <testcase name="corrupt_pointer_remains_unchanged_and_does_not_reset" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.852" />
+  <testcase name="cancellation_before_io_return_releases_the_generation_owner" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="0.361" />
+  <testcase name="missing_database_is_not_recreated" classname="com.cooper.lithic.data.backup.DataGenerationStoreTest" time="1.336" />
+  <testcase name="media_rejects_traversal_absolute_and_backslash_paths" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.197" />
+  <testcase name="media_rejects_nonpositive_dimensions" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.092" />
+  <testcase name="category_rejects_inconsistent_normalized_name" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.065" />
+  <testcase name="media_rejects_invalid_uuid" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.084" />
+  <testcase name="category_rejects_blank_name" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.061" />
+  <testcase name="category_rejects_invalid_uuid" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.007" />
+  <testcase name="media_rejects_invalid_sha256" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.114" />
+  <testcase name="media_rejects_negative_byte_length" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.063" />
+  <testcase name="valid_metadata_roundtrips_without_claiming_image_processing" classname="com.cooper.lithic.data.local.MetadataValidationTest" time="0.083" />
+  <testcase name="empty_existing_database_is_rejected_without_creating_empty_ledger" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.19" />
+  <testcase name="dates_and_nanosecond_instants_survive_file_reopen" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.169" />
+  <testcase name="normalized_names_are_unique_within_type_but_not_across_types" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.165" />
+  <testcase name="existing_default_validation_does_not_repair_missing_record" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.159" />
+  <testcase name="snapshot_waits_for_shared_write_coordinator" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.247" />
+  <testcase name="reused_command_with_different_project_or_event_is_conflict" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.008" />
+  <testcase name="real_settlement_after_end_does_not_reopen_project" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.059" />
+  <testcase name="amount_and_uuid_and_future_payment_validation_preserve_empty_ledger" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.16" />
+  <testcase name="additional_event_requires_existing_project_and_matching_operation" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.112" />
+  <testcase name="project_and_initial_event_are_saved_together" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.138" />
+  <testcase name="existing_version_one_foreign_database_is_not_adopted" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.359" />
+  <testcase name="concurrent_snapshots_never_expose_project_without_initial_event" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="1.948" />
+  <testcase name="operation_id_is_unique" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.795" />
+  <testcase name="event_relationship_initial_role_and_lifecycle_are_validated" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.349" />
+  <testcase name="existing_version_zero_foreign_database_is_not_initialized_in_place" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.006" />
+  <testcase name="additional_event_retry_and_conflict_preserve_original_payment" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.006" />
+  <testcase name="concurrent_identical_commands_create_only_one_payment" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.399" />
+  <testcase name="maximum_amount_and_real_prepayment_before_ownership_are_valid" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="4.42" />
+  <testcase name="schema_v1_has_only_four_business_tables" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="1.053" />
+  <testcase name="room_snapshot_keeps_same_view_across_independent_sqlite_commit" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="1.562" />
+  <testcase name="existing_schema_is_read_from_live_wal_before_opening_room" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.337" />
+  <testcase name="require_existing_database_never_creates_missing_file" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.008" />
+  <testcase name="transaction_rolls_back" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.006" />
+  <testcase name="zero_initial_amount_and_real_negative_net_cost_are_valid" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.005" />
+  <testcase name="unknown_schema_version_is_rejected_without_destructive_fallback" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.005" />
+  <testcase name="exact_command_retry_returns_existing_ids_without_second_payment" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.124" />
+  <testcase name="corrupt_existing_database_is_rejected_without_deleting_original" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.006" />
+  <testcase name="snapshot_reads_all_four_real_tables_and_cover_relationship" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.006" />
+  <testcase name="existing_default_validation_rejects_changed_identity_semantics" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.031" />
+  <testcase name="subscription_category_cannot_be_used_for_project" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.132" />
+  <testcase name="sqlite_page_corruption_preserves_original_through_real_open_handler" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.006" />
+  <testcase name="defaults_are_typed" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.17" />
+  <testcase name="unicode_and_whitespace_normalization_enforces_real_category_uniqueness" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.031" />
+  <testcase name="fk_rejects_orphan_event" classname="com.cooper.lithic.data.local.ProjectDatabaseTest" time="0.032" />
+  <testcase name="known_v1_hash_rejects_nocase_primary_key_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.099" />
+  <testcase name="known_v1_hash_rejects_sqliteXforeign_user_table_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.031" />
+  <testcase name="committed_v1_wal_is_respected_during_upgrade" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.208" />
+  <testcase name="known_v2_reopens_and_old_project_writes_still_work" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.031" />
+  <testcase name="fresh_database_is_v2_with_empty_subscription_tables" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.314" />
+  <testcase name="known_v1_hash_rejects_room_master_table_trigger_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.101" />
+  <testcase name="known_identity_with_extra_business_table_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.004" />
+  <testcase name="create_failure_during_real_room_upgrade_rolls_back_v1_schema_and_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.618" />
+  <testcase name="known_v2_hash_rejects_nocase_primary_key_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.081" />
+  <testcase name="v1_to_v2_preserves_projects" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.134" />
+  <testcase name="version_zero_is_rejected_without_initializing_existing_file" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.057" />
+  <testcase name="known_identity_with_extra_column_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.042" />
+  <testcase name="known_v2_hash_rejects_room_master_table_trigger_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.082" />
+  <testcase name="v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.11" />
+  <testcase name="known_v2_hash_rejects_sqliteXforeign_user_table_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.106" />
+  <testcase name="known_v1_hash_rejects_android_metadata_trigger_without_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.056" />
+  <testcase name="known_v2_hash_rejects_android_metadata_trigger_without_repair" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.081" />
+  <testcase name="broken_v1_foreign_key_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.057" />
+  <testcase name="known_v1_legacy_identity_migrates_without_changing_old_rows" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.054" />
+  <testcase name="arbitrary_room_identity_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.078" />
+  <testcase name="known_identity_with_missing_index_is_rejected_before_migration" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.132" />
+  <testcase name="unknown_version_is_rejected_without_changing_old_facts" classname="com.cooper.lithic.data.local.SubscriptionMigrationTest" time="0.056" />
+  <testcase name="prepare_does_not_create_formal_file" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.514" />
+  <testcase name="changed_bytes_are_not_reencoded_or_silently_repaired" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.055" />
+  <testcase name="remove_active_prepared_resource_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.056" />
+  <testcase name="truncated_jpeg_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.032" />
+  <testcase name="enormous_png_dimensions_are_rejected_before_decode" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.047" />
+  <testcase name="normalized_metadata_matches_real_private_bytes" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.208" />
+  <testcase name="encoding_failure_leaves_no_formal_resource" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.042" />
+  <testcase name="original_uri_is_not_a_persistent_asset_path" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.007" />
+  <testcase name="same_uuid_final_without_ownership_receipt_is_preserved_by_cleanup" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.031" />
+  <testcase name="bounded_decode_rejects_real_over_40mp_before_bitmap_allocation" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.162" />
+  <testcase name="all_eight_exif_orientations_use_correct_corner_geometry" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.621" />
+  <testcase name="replaced_inode_with_same_uuid_and_old_receipt_is_never_overwritten_or_deleted" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.055" />
+  <testcase name="replay_syncs_owned_complete_final_before_allowing_reference_or_pruning_payload" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.081" />
+  <testcase name="incorrect_declared_mime_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.031" />
+  <testcase name="file_write_failure_leaves_no_formal_resource" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.03" />
+  <testcase name="symlink_target_cannot_escape_private_media" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.056" />
+  <testcase name="private_relative_paths" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.031" />
+  <testcase name="committed_cover_releases_only_redundant_prepared_payload_and_keeps_partial_payload" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.139" />
+  <testcase name="copy_survives_source_removal" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.056" />
+  <testcase name="oversized_source_stream_is_bounded" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="1.54" />
+  <testcase name="partial_final_with_exclusive_inode_receipt_is_reclaimable_without_touching_unknown_files" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.056" />
+  <testcase name="repeated_commit_is_exact_read_only_replay" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.113" />
+  <testcase name="apng_animation_control_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.008" />
+  <testcase name="nested_or_absolute_asset_path_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.035" />
+  <testcase name="prepared_identity_can_be_restored_without_source_uri" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.085" />
+  <testcase name="png_transparency_is_not_silently_jpeg_encoded" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.703" />
+  <testcase name="symlink_media_directory_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.007" />
+  <testcase name="cleanup_preserves_unknown_file_and_invalid_owner" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.007" />
+  <testcase name="prompt_cancellation_after_preparation_releases_lease_and_preserves_recoverable_bytes" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.009" />
+  <testcase name="path_into_other_generation_cannot_read_or_delete" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.007" />
+  <testcase name="discard_prepared_does_not_delete_final_with_uncertain_db_result" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.082" />
+  <testcase name="decode_failure_leaves_no_managed_asset" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.039" />
+  <testcase name="jpeg_direction_and_location_metadata_are_normalized" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.129" />
+  <testcase name="output_still_over_2mib_is_explicit_failure" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="1.591" />
+  <testcase name="corrupt_png_crc_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.071" />
+  <testcase name="orphan_final_can_be_reclaimed_after_restart" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.031" />
+  <testcase name="repeated_prepare_does_not_encode_or_create_second_asset" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.04" />
+  <testcase name="zero_png_dimensions_are_invalid" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.005" />
+  <testcase name="non_image_input_is_explicitly_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.034" />
+  <testcase name="discarded_uncommitted_preparation_is_safely_removed" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.041" />
+  <testcase name="truncated_png_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.005" />
+  <testcase name="metadata_mismatch_is_explicit_error" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.063" />
+  <testcase name="repeated_reads_do_not_change_file_or_hash" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.073" />
+  <testcase name="stable_uuid_cannot_overwrite_existing_file" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.012" />
+  <testcase name="gif_is_not_accepted_as_static_cover" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.005" />
+  <testcase name="mpo_multiframe_jpeg_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.005" />
+  <testcase name="missing_file_is_not_reported_as_no_cover" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.006" />
+  <testcase name="sqlite_asset_insert_failure_protects_old_cover_and_leaves_safe_orphan" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.168" />
+  <testcase name="unchanged_project_row_with_new_money_event_is_stale_cover_baseline" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.098" />
+  <testcase name="decode_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.137" />
+  <testcase name="final_file_before_database_commit_is_reclaimable_after_reopen" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.226" />
+  <testcase name="deleted_project_cannot_acquire_a_prepared_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.106" />
+  <testcase name="two_projects_share_a_cover_and_replacement_keeps_other_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.29" />
+  <testcase name="unknown_uuid_named_file_without_ownership_proof_is_retained" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.061" />
+  <testcase name="physical_delete_failure_keeps_proof_and_retries_without_metadata_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.2" />
+  <testcase name="committed_verification_is_read_only_and_detects_later_target_changes" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.231" />
+  <testcase name="database_commit_before_old_cleanup_survives_generation_reopen" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.348" />
+  <testcase name="new_subscription_state_blocks_a_stale_cover_command" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.223" />
+  <testcase name="final_file_commit_failure_never_inserts_a_cover_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.385" />
+  <testcase name="repeated_verified_reads_preserve_bytes_and_real_metadata" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.11" />
+  <testcase name="fixed_command_concurrency_creates_one_asset_and_replays_exact_target" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.716" />
+  <testcase name="production_owned_cleanup_preserves_unknown_file_and_its_metadata" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.007" />
+  <testcase name="production_owned_image_store_cannot_delete_project_or_subscription_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.116" />
+  <testcase name="new_subscription_payment_blocks_a_stale_cover_command" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.219" />
+  <testcase name="project_and_subscription_share_cover_until_last_reference_is_removed" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.557" />
+  <testcase name="missing_cover_is_explicit_failure_without_deleting_metadata_or_business_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.399" />
+  <testcase name="cleanup_cannot_delete_file_while_coordinator_snapshot_uses_it" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.613" />
+  <testcase name="deleting_project_preserves_cover_still_used_by_subscription" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.387" />
+  <testcase name="lost_result_replay_after_generation_reopen_does_not_import_again" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.263" />
+  <testcase name="repository_prompt_cancellation_releases_unreceived_preparation_lease" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.131" />
+  <testcase name="subscription_update_failure_rolls_back_new_metadata_and_keeps_timelines" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.261" />
+  <testcase name="prepared_file_write_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.261" />
+  <testcase name="subscription_baseline_contains_original_payments_and_states" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.105" />
+  <testcase name="stale_project_metadata_cannot_replace_newer_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.1" />
+  <testcase name="load_target_returns_complete_project_and_money_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.074" />
+  <testcase name="subscription_cover_write_preserves_payment_and_state_history" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.168" />
+  <testcase name="remove_cover_keeps_original_money_and_identity" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.038" />
+  <testcase name="corrupt_cover_is_explicit_failure_without_reencoding_or_clearing_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.445" />
+  <testcase name="project_cover_write_preserves_cost_and_all_money_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.023" />
+  <testcase name="project_update_failure_rolls_back_new_metadata_and_protects_old_bytes" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.005" />
+  <testcase name="stale_old_command_cannot_overwrite_a_newer_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.251" />
+  <testcase name="encode_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.199" />
+  <testcase name="active_preparation_survives_cleanup_until_explicit_release" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.248" />
+  <testcase name="ambiguous_legacy_settlements_conflict_at_all_formal_write_entry_points" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.187" />
+  <testcase name="correct_end_date_updates_result" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.006" />
+  <testcase name="amend_without_an_existing_settlement_cannot_create_or_remove_money" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.005" />
+  <testcase name="end_and_recovery_atomic" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.006" />
+  <testcase name="different_concurrent_end_commands_conflict_instead_of_creating_two_settlements" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.008" />
+  <testcase name="full_project_baseline_rejects_same_revision_changed_metadata" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.043" />
+  <testcase name="late_installment_does_not_reactivate" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.09" />
+  <testcase name="end_and_settlement_survive_real_file_database_reopen" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.074" />
+  <testcase name="historical_correction_rejects_settlement_future_money_and_changed_full_event" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.105" />
+  <testcase name="current_and_history_are_filtered_in_sql_and_bounded_by_stable_fifty_row_pages" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.652" />
+  <testcase name="no_settlement_and_explicit_zero_settlement_preserve_distinct_facts" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.047" />
+  <testcase name="legacy_first_end_settlement_is_compatible_but_every_add_rejects_a_second" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.035" />
+  <testcase name="delete_requires_confirmation" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.072" />
+  <testcase name="filtered_window_holds_one_snapshot_when_end_write_is_queued_between_pages" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.292" />
+  <testcase name="amend_rolls_back_project_when_real_settlement_update_fails" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.146" />
+  <testcase name="empty_filtered_reads_are_real_and_database_failure_does_not_become_empty_history" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.005" />
+  <testcase name="historical_correction_is_atomic_with_its_project_revision" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.004" />
+  <testcase name="deleting_one_project_keeps_other_project_shared_media_and_real_file" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.04" />
+  <testcase name="end_rejects_invalid_date_reason_revision_and_future_real_money" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.086" />
+  <testcase name="deletion_refuses_stale_project_and_any_new_or_corrected_event" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.046" />
+  <testcase name="edit_end_recovery_not_duplicated" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.073" />
+  <testcase name="historical_initial_and_regular_corrections_preserve_identity_and_refunds_are_new_facts" classname="com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest" time="0.072" />
+  <testcase name="lost_create_result_replays_original_identity_without_second_payment" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.048" />
+  <testcase name="editing_start_recalculates_held_days_in_detail_and_page" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.036" />
+  <testcase name="one_thousand_projects_remain_bounded_and_stably_sorted" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="1.377" />
+  <testcase name="concurrent_create_and_append_replay_without_duplicate_money" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.074" />
+  <testcase name="selectable_categories_include_only_project_type" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.052" />
+  <testcase name="page_limits_rows_in_sql_and_batch_reads_visible_events_without_n_plus_one" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.094" />
+  <testcase name="real_room_changes_emit_initial_create_edit_money_and_category_invalidations" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.073" />
+  <testcase name="home_summary_uses_only_count_without_loading_all_projects_or_events" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="2.157" />
+  <testcase name="missing_project_is_null_but_read_failure_is_never_fake_empty_data" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.226" />
+  <testcase name="real_sqlite_full_failure_rolls_back_and_same_command_retries_safely" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.007" />
+  <testcase name="concurrent_edit_commands_only_apply_one_target" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.078" />
+  <testcase name="recovery_exceeding_outlay_produces_real_negative_cost" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.117" />
+  <testcase name="create_zero_and_normal_project_survives_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.09" />
+  <testcase name="backdated_money_recalculates_detail_page_and_observation_day" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.069" />
+  <testcase name="stale_editor_cannot_overwrite_a_committed_metadata_change" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.072" />
+  <testcase name="editing_into_subscription_category_is_rejected_without_mutation" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.073" />
+  <testcase name="same_day_events_are_all_preserved_in_stable_id_order" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.092" />
+  <testcase name="fifty_one_projects_page_as_fifty_and_one" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.104" />
+  <testcase name="full_baseline_comparison_detects_same_timestamp_changed_row" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.076" />
+  <testcase name="one_hundred_projects_have_stable_two_pages" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.5" />
+  <testcase name="same_money_operation_with_changed_content_is_conflict" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.232" />
+  <testcase name="real_prepayment_before_ownership_has_no_fake_zero_daily_cost" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.021" />
+  <testcase name="invalid_create_and_future_money_leave_real_database_unchanged" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.01" />
+  <testcase name="window_is_one_snapshot_when_a_sort_key_edit_is_queued_between_pages" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.26" />
+  <testcase name="moving_start_after_existing_end_is_rejected_without_erasing_end" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.005" />
+  <testcase name="legacy_end_and_future_end_are_evaluated_without_reactivating_settlement" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.059" />
+  <testcase name="persisted_business_zone_boundary_ignores_device_timezone_changes" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.031" />
+  <testcase name="initial_cost_counted_once_after_replay_and_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.056" />
+  <testcase name="invalid_page_size_and_noncanonical_cursor_are_rejected" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.083" />
+  <testcase name="fresh_page_window_after_sort_key_edit_has_no_duplicate_or_missing_ids" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.009" />
+  <testcase name="metadata_edit_preserves_created_end_cover_and_old_money_events" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.057" />
+  <testcase name="edit_requires_increasing_revision_and_valid_business_identities" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.031" />
+  <testcase name="lost_edit_result_replays_stable_target_after_reopen" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.056" />
+  <testcase name="frozen_create_replay_remains_strict_after_metadata_edit" classname="com.cooper.lithic.data.repository.ProjectRepositoryTest" time="0.031" />
+  <testcase name="hidden_illegal_state_is_explicit_read_and_write_corruption_without_overwriting_facts" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.082" />
+  <testcase name="renewal_correction_validates_positive_amount_cycle_dates_and_preserved_identities" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.088" />
+  <testcase name="early_stop_rejects_past_dates_and_preserves_purchased_totals_when_valid" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.057" />
+  <testcase name="renewal_amount_correction_updates_original_fact_and_exact_target_replays" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.059" />
+  <testcase name="default_stop_rejects_an_earlier_period_boundary_instead_of_silently_truncating" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.034" />
+  <testcase name="corrupt_facts_outside_visible_management_page_are_not_hidden_by_filter_or_limit" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.058" />
+  <testcase name="pause_saves_exact_state_identity_without_changing_real_payments" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.056" />
+  <testcase name="concurrent_identical_pause_commands_save_only_one_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.057" />
+  <testcase name="deleting_last_payment_is_rejected_without_deleting_subscription_identity" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.108" />
+  <testcase name="default_stop_is_fixed_at_latest_prepaid_boundary_and_keeps_history" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.056" />
+  <testcase name="cancel_stop_cannot_delete_already_effective_stop_or_stale_target" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.056" />
+  <testcase name="resume_with_current_coverage_keeps_old_payment_and_counts_only_enabled_dates" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.032" />
+  <testcase name="state_date_correction_into_existing_day_conflicts_without_changing_either_row" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.059" />
+  <testcase name="real_sqlite_state_failure_rolls_back_atomic_reopen_payment_and_state" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.059" />
+  <testcase name="stale_payment_correction_cannot_overwrite_later_state_or_payment_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.03" />
+  <testcase name="changed_payment_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.031" />
+  <testcase name="later_state_fact_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.057" />
+  <testcase name="same_day_resume_corrects_original_id_and_operation_instead_of_appending" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.064" />
+  <testcase name="all_expired_payments_default_to_business_today_without_backdating" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.029" />
+  <testcase name="management_sql_pagination_fills_filtered_pages_and_rebuilds_complete_window" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.363" />
+  <testcase name="cancel_future_stop_deletes_only_target_and_retry_reports_current_absence" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.032" />
+  <testcase name="ordinary_new_renewal_cannot_cross_fixed_future_stop_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.058" />
+  <testcase name="reopen_with_only_future_paid_coverage_is_expired_until_real_start" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.032" />
+  <testcase name="real_sqlite_after_delete_failure_rolls_back_the_entire_delete" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.057" />
+  <testcase name="closed_database_management_read_and_lifecycle_write_have_explicit_failures" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.058" />
+  <testcase name="fixed_default_stop_command_replays_across_days_without_moving_saved_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.056" />
+  <testcase name="full_corruption_preflight_uses_bounded_identity_batches_and_finds_bad_tail" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.207" />
+  <testcase name="correction_expanding_coverage_after_fixed_stop_requires_explicit_plan_change" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.054" />
+  <testcase name="stale_delete_cannot_remove_corrected_payment" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.03" />
+  <testcase name="same_day_replacement_with_new_row_or_operation_identity_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.033" />
+  <testcase name="renewal_overlap_correction_is_rejected_before_any_partial_update" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.081" />
+  <testcase name="exact_saved_state_can_replay_after_database_reopen_without_new_fact" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.054" />
+  <testcase name="deleting_one_erroneous_payment_keeps_service_and_fixed_state_and_reports_absence" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.06" />
+  <testcase name="hidden_wrong_category_fails_both_management_reads_and_lifecycle_write_without_repair" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.055" />
+  <testcase name="changed_subscription_identity_invalidates_whole_state_baseline" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.029" />
+  <testcase name="ordinary_new_renewal_on_stopped_identity_does_not_implicitly_enable_it" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.031" />
+  <testcase name="new_stop_identity_conflicts_with_existing_future_plan_without_moving_its_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.124" />
+  <testcase name="complete_baseline_comparison_treats_payment_and_state_order_as_sets" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.005" />
+  <testcase name="renewal_history_checks_full_timeline_not_only_visible_payment_row" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.005" />
+  <testcase name="reopen_without_current_or_future_payment_requires_real_confirmation" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.004" />
+  <testcase name="paid_coverage_gap_still_uses_latest_confirmed_end_for_default_stop" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.005" />
+  <testcase name="atomic_reopen_with_real_renewal_keeps_subscription_id_and_supports_exact_replay" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.004" />
+  <testcase name="management_and_stopped_queries_use_observation_day_last_boundary" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.004" />
+  <testcase name="scheduled_stop_correction_preserves_original_id_operation_and_other_history" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.004" />
+  <testcase name="reused_state_operation_with_different_contents_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.004" />
+  <testcase name="stopped_reopened_and_stopped_again_retains_same_identity_and_historical_days" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.054" />
+  <testcase name="amount_only_correction_keeps_existing_coverage_truncated_by_early_plan" classname="com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest" time="0.029" />
+  <testcase name="subscription_categories_and_count_read_real_typed_facts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.296" />
+  <testcase name="dao_rejects_orphan_renewal_and_duplicate_operation" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.013" />
+  <testcase name="concurrent_overlapping_commands_cannot_both_commit" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.003" />
+  <testcase name="confirm_requires_existing_subscription" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.004" />
+  <testcase name="payment_after_fixed_business_today_is_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.004" />
+  <testcase name="positive_bounded_amount_and_fixed_cycle_days_are_required" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.004" />
+  <testcase name="noncanonical_identity_and_operation_mismatch_are_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.005" />
+  <testcase name="invalid_page_sizes_and_noncanonical_cursors_are_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.004" />
+  <testcase name="reused_renewal_primary_key_does_not_leave_second_identity" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.004" />
+  <testcase name="currency_change_is_allowed" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.005" />
+  <testcase name="create_and_first_payment_atomic" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.004" />
+  <testcase name="state_schema_roundtrip_requires_unique_day_and_operation_and_existing_parent" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.031" />
+  <testcase name="adjacent_and_gapped_paid_coverage_are_allowed_but_overlap_is_rejected" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.028" />
+  <testcase name="renewal_history_pages_are_sorted_by_payment_and_cost_uses_complete_history" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.131" />
+  <testcase name="prepaid_first_period_has_purchased_days_but_no_elapsed_time_or_current_price" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.028" />
+  <testcase name="closed_database_write_returns_explicit_storage_failure_without_new_facts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.03" />
+  <testcase name="project_category_cannot_be_used_for_subscription" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.03" />
+  <testcase name="reused_operation_with_different_content_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.03" />
+  <testcase name="first_payment_insert_failure_rolls_back_new_identity" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.032" />
+  <testcase name="confirm_exact_replay_precedes_overlap_check_and_changed_replay_conflicts" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.033" />
+  <testcase name="corrupt_missing_payment_identity_and_closed_reads_are_never_fake_empty" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.055" />
+  <testcase name="real_changes_emit_initial_state_create_and_confirmation_without_count_guessing" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.056" />
+  <testcase name="real_recent_payment_sort_is_not_effective_date_sort" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.032" />
+  <testcase name="prepaid_price_waits_for_effective_date_and_keeps_purchased_days_separate" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.058" />
+  <testcase name="subscription_pages_and_refresh_window_keep_ties_and_moved_rows" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.232" />
+  <testcase name="accurate_dates_retained" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.031" />
+  <testcase name="renewal_history_is_preserved" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.059" />
+  <testcase name="unknown_result_reopen_replays_same_ids_without_duplicate_payment" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.055" />
+  <testcase name="malformed_stored_cycle_is_corruption_and_never_overwritten_by_confirmation" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.005" />
+  <testcase name="expired_service_has_no_fake_price_or_automatic_payment" classname="com.cooper.lithic.data.repository.SubscriptionRepositoryTest" time="0.077" />
+  <testcase name="closed_settings_handle_is_rejected" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.004" />
+  <testcase name="existing_missing_file_is_not_created" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.004" />
+  <testcase name="valid_nonempty_preferences_without_record_zone_are_not_replaced" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.005" />
+  <testcase name="invalid_persisted_record_zone_is_not_replaced" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.004" />
+  <testcase name="initialization_is_durable_before_open_returns" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.004" />
+  <testcase name="cancellation_before_io_return_releases_the_settings_owner" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.004" />
+  <testcase name="file_existence_is_observed_only_after_the_exclusive_lease" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.008" />
+  <testcase name="corrupt_settings_remain_unchanged" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.005" />
+  <testcase name="new_settings_require_an_explicit_record_zone" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.008" />
+  <testcase name="existing_empty_preferences_are_rejected_without_default_replacement" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.005" />
+  <testcase name="zone_is_persisted" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.005" />
+  <testcase name="canonical_file_cannot_have_two_active_owners" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.009" />
+  <testcase name="closing_releases_the_owner_only_after_datastore_stops" classname="com.cooper.lithic.data.settings.SettingsStoreTest" time="0.005" />
+  <testcase name="subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="4.935" />
+  <testcase name="project_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="4.419" />
+  <testcase name="prepared_cover_guards_all_tabs_and_explicit_discard_never_updates_the_business_reference" classname="com.cooper.lithic.feature.media.M10CoverNavigationGuardTest" time="8.897" />
+  <testcase name="home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route" classname="com.cooper.lithic.feature.media.M10CoverNavigationGuardTest" time="23.429">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;9fe7c97, window-token=android.view.ViewRootImpl$W&#64;9fe7c97, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=false, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.pressBackUnconditionally(Espresso.java:247)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest$home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route$1.invokeSuspend(M10CoverNavigationGuardTest.kt:127)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest.home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route(M10CoverNavigationGuardTest.kt:120)
+</failure>
+  </testcase>
+  <testcase name="project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result" classname="com.cooper.lithic.feature.media.M10CoverNavigationGuardTest" time="2.063" />
+  <testcase name="prepared_cover_requires_explicit_discard_and_another_pending_write_still_blocks" classname="com.cooper.lithic.feature.media.M10CoverRoutesTest" time="0.062" />
+  <testcase name="subscription_cover_retains_current_and_stopped_history_detail_parent_chain" classname="com.cooper.lithic.feature.media.M10CoverRoutesTest" time="0.012" />
+  <testcase name="project_cover_retains_current_and_history_detail_parent_chain" classname="com.cooper.lithic.feature.media.M10CoverRoutesTest" time="0.029" />
+  <testcase name="pending_cover_cannot_be_discarded_by_either_other_feature" classname="com.cooper.lithic.feature.media.M10CoverRoutesTest" time="0.007" />
+  <testcase name="damaged_selected_source_reports_error_and_keeps_old_reference_bytes_and_money" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.007" />
+  <testcase name="damaged_prepared_private_file_allows_explicit_reload_and_reselect_without_touching_old_cover" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.158" />
+  <testcase name="project_cover_editor_retains_real_identity_and_history_origin_without_writing" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.055" />
+  <testcase name="committed_response_loss_replays_same_command_without_a_second_import_or_asset" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.108" />
+  <testcase name="subscription_cover_editor_retains_identity_and_real_payment_without_writing" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.074" />
+  <testcase name="duplicate_save_and_saved_task_recovery_keep_one_asset_and_frozen_operation" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.592" />
+  <testcase name="view_model_clear_after_prepared_result_is_published_releases_lease_without_deleting_recoverable_bytes" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.098" />
+  <testcase name="prepare_keeps_old_reference_until_explicit_save_and_source_uri_is_not_saved" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.133" />
+  <testcase name="committed_saved_envelope_performs_read_only_verification_without_import_or_commit" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.081" />
+  <testcase name="view_model_clear_after_real_prepare_releases_only_lease_and_preserves_recoverable_bytes" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.319" />
+  <testcase name="system_picker_cancel_does_not_dirty_or_write_project_or_media" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.031" />
+  <testcase name="local_date_outside_calendar_range_remains_available_as_raw_input" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="2.537" />
+  <testcase name="real_calendar_confirmation_preserves_the_selected_day_across_device_time_zones" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="5.481" />
+  <testcase name="busy_date_input_and_calendar_action_are_disabled_and_touch_target_is_large_enough" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="2.364" />
+  <testcase name="invalid_raw_date_and_associated_error_are_retained_without_correction" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="3.121" />
+  <testcase name="canceling_the_calendar_does_not_change_the_controlled_date" classname="com.cooper.lithic.feature.project.ProjectDateInputTest" time="3.115" />
+  <testcase name="backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="11.817" />
+  <testcase name="initial_cost_counted_once_in_room_and_after_close_reopen" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="4.528" />
+  <testcase name="rapid_double_tap_creates_only_one_real_project_and_one_appended_event" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="7.923" />
+  <testcase name="create_zero_and_normal_project_are_real_room_records_after_reopen" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="7.952" />
+  <testcase name="editing_name_and_start_date_updates_visible_results_without_changing_money_history" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="6.55" />
+  <testcase name="failed_save_preserves_form_and_canceling_discard_keeps_the_real_unsubmitted_input" classname="com.cooper.lithic.feature.project.ProjectEntryFlowTest" time="5.815" />
+  <testcase name="correct_end_date_updates_result" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="16.143">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;84e46f5, window-token=android.view.ViewRootImpl$W&#64;84e46f5, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.clickEndSave(ProjectLifecycleFlowTest.kt:431)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd(ProjectLifecycleFlowTest.kt:422)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd$default(ProjectLifecycleFlowTest.kt:421)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:420)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject$default(ProjectLifecycleFlowTest.kt:420)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$correct_end_date_updates_result$1.invokeSuspend(ProjectLifecycleFlowTest.kt:204)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.correct_end_date_updates_result(ProjectLifecycleFlowTest.kt:201)
+</failure>
+  </testcase>
+  <testcase name="end_and_recovery_atomic" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="22.946">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;c38f9, window-token=android.view.ViewRootImpl$W&#64;c38f9, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.clickEndSave(ProjectLifecycleFlowTest.kt:431)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$clickEndSave(ProjectLifecycleFlowTest.kt:78)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$end_and_recovery_atomic$1.invokeSuspend(ProjectLifecycleFlowTest.kt:121)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.end_and_recovery_atomic(ProjectLifecycleFlowTest.kt:111)
+</failure>
+  </testcase>
+  <testcase name="late_installment_does_not_reactivate" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="21.511">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;6f5a79d, window-token=android.view.ViewRootImpl$W&#64;6f5a79d, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.clickEndSave(ProjectLifecycleFlowTest.kt:431)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd(ProjectLifecycleFlowTest.kt:422)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd$default(ProjectLifecycleFlowTest.kt:421)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:420)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$endProject(ProjectLifecycleFlowTest.kt:78)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$late_installment_does_not_reactivate$1.invokeSuspend(ProjectLifecycleFlowTest.kt:183)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.late_installment_does_not_reactivate(ProjectLifecycleFlowTest.kt:180)
+</failure>
+  </testcase>
+  <testcase name="delete_requires_confirmation" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="32.485">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;769d45d, window-token=android.view.ViewRootImpl$W&#64;769d45d, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.clickEndSave(ProjectLifecycleFlowTest.kt:431)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd(ProjectLifecycleFlowTest.kt:422)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd$default(ProjectLifecycleFlowTest.kt:421)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:420)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$endProject(ProjectLifecycleFlowTest.kt:78)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$delete_requires_confirmation$1.invokeSuspend(ProjectLifecycleFlowTest.kt:227)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.delete_requires_confirmation(ProjectLifecycleFlowTest.kt:224)
+</failure>
+  </testcase>
+  <testcase name="lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="21.864">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;f8b94b7, window-token=android.view.ViewRootImpl$W&#64;f8b94b7, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.clickEndSave(ProjectLifecycleFlowTest.kt:431)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd(ProjectLifecycleFlowTest.kt:422)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd$default(ProjectLifecycleFlowTest.kt:421)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:420)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$endProject(ProjectLifecycleFlowTest.kt:78)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font$1.invokeSuspend(ProjectLifecycleFlowTest.kt:363)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font(ProjectLifecycleFlowTest.kt:360)
+</failure>
+  </testcase>
+  <testcase name="deletion_with_lost_result_stays_on_original_confirmation_then_reconciles_absence" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="6.52" />
+  <testcase name="saved_instance_route_and_vm_bundle_restore_end_input_without_business_write" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="19.32">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;1165e9b, window-token=android.view.ViewRootImpl$W&#64;1165e9b, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$saved_instance_route_and_vm_bundle_restore_end_input_without_business_write$1.invokeSuspend(ProjectLifecycleFlowTest.kt:307)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saved_instance_route_and_vm_bundle_restore_end_input_without_business_write(ProjectLifecycleFlowTest.kt:299)
+</failure>
+  </testcase>
+  <testcase name="history_correction_and_real_refund_are_distinct_and_preserve_original_identity" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="18.929">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;ba570c0, window-token=android.view.ViewRootImpl$W&#64;ba570c0, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.clickEndSave(ProjectLifecycleFlowTest.kt:431)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd(ProjectLifecycleFlowTest.kt:422)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.saveEnd$default(ProjectLifecycleFlowTest.kt:421)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject(ProjectLifecycleFlowTest.kt:420)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.endProject$default(ProjectLifecycleFlowTest.kt:420)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$history_correction_and_real_refund_are_distinct_and_preserve_original_identity$1.invokeSuspend(ProjectLifecycleFlowTest.kt:260)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.history_correction_and_real_refund_are_distinct_and_preserve_original_identity(ProjectLifecycleFlowTest.kt:256)
+</failure>
+  </testcase>
+  <testcase name="edit_end_recovery_not_duplicated" classname="com.cooper.lithic.feature.project.ProjectLifecycleFlowTest" time="0.446">
+    <failure></failure>
+  </testcase>
+  <system-err>Test run failed to complete. Instrumentation run failed due to Process crashed.
+</system-err>
+</testsuite>

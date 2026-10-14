@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.media.MediaRepositoryTest" tests="35" failures="2" errors="0" skipped="0" time="68.979" timestamp="2026-10-13T13:10:21" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="sqlite_asset_insert_failure_protects_old_cover_and_leaves_safe_orphan" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="6.192" />
+  <testcase name="unchanged_project_row_with_new_money_event_is_stale_cover_baseline" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.085" />
+  <testcase name="decode_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.152" />
+  <testcase name="final_file_before_database_commit_is_reclaimable_after_reopen" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.271" />
+  <testcase name="deleted_project_cannot_acquire_a_prepared_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.813" />
+  <testcase name="two_projects_share_a_cover_and_replacement_keeps_other_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.804" />
+  <testcase name="unknown_uuid_named_file_without_ownership_proof_is_retained" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.472" />
+  <testcase name="physical_delete_failure_keeps_proof_and_retries_without_metadata_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.044" />
+  <testcase name="committed_verification_is_read_only_and_detects_later_target_changes" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="2.561" />
+  <testcase name="database_commit_before_old_cleanup_survives_generation_reopen" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.864" />
+  <testcase name="new_subscription_state_blocks_a_stale_cover_command" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.857" />
+  <testcase name="final_file_commit_failure_never_inserts_a_cover_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.413" />
+  <testcase name="repeated_verified_reads_preserve_bytes_and_real_metadata" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.043" />
+  <testcase name="fixed_command_concurrency_creates_one_asset_and_replays_exact_target" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.216" />
+  <testcase name="production_owned_image_store_cannot_delete_project_or_subscription_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.23">
+    <failure>java.lang.AssertionError: Expected IN_USE failure, got Success(value=true)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.assertFailure(MediaRepositoryTest.kt:577)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$assertFailure(MediaRepositoryTest.kt:51)
+at com.cooper.lithic.data.media.MediaRepositoryTest$production_owned_image_store_cannot_delete_project_or_subscription_cover$1.invokeSuspend(MediaRepositoryTest.kt:485)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.production_owned_image_store_cannot_delete_project_or_subscription_cover(MediaRepositoryTest.kt:478)
+</failure>
+  </testcase>
+  <testcase name="new_subscription_payment_blocks_a_stale_cover_command" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.025" />
+  <testcase name="project_and_subscription_share_cover_until_last_reference_is_removed" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.683" />
+  <testcase name="missing_cover_is_explicit_failure_without_deleting_metadata_or_business_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.912" />
+  <testcase name="cleanup_cannot_delete_file_while_coordinator_snapshot_uses_it" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.128" />
+  <testcase name="deleting_project_preserves_cover_still_used_by_subscription" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.093" />
+  <testcase name="lost_result_replay_after_generation_reopen_does_not_import_again" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.098" />
+  <testcase name="repository_prompt_cancellation_releases_unreceived_preparation_lease" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.669">
+    <failure>java.lang.AssertionError: An unreceived preparation must not retain an active lease
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.data.media.MediaRepositoryTest$repository_prompt_cancellation_releases_unreceived_preparation_lease$1.invokeSuspend(MediaRepositoryTest.kt:517)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.repository_prompt_cancellation_releases_unreceived_preparation_lease(MediaRepositoryTest.kt:493)
+</failure>
+  </testcase>
+  <testcase name="subscription_update_failure_rolls_back_new_metadata_and_keeps_timelines" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.479" />
+  <testcase name="prepared_file_write_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.144" />
+  <testcase name="subscription_baseline_contains_original_payments_and_states" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.733" />
+  <testcase name="stale_project_metadata_cannot_replace_newer_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.009" />
+  <testcase name="load_target_returns_complete_project_and_money_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.59" />
+  <testcase name="subscription_cover_write_preserves_payment_and_state_history" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="2.564" />
+  <testcase name="remove_cover_keeps_original_money_and_identity" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="2.159" />
+  <testcase name="corrupt_cover_is_explicit_failure_without_reencoding_or_clearing_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.829" />
+  <testcase name="project_cover_write_preserves_cost_and_all_money_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="2.882" />
+  <testcase name="project_update_failure_rolls_back_new_metadata_and_protects_old_bytes" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="4.533" />
+  <testcase name="stale_old_command_cannot_overwrite_a_newer_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="5.972" />
+  <testcase name="encode_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="3.445" />
+  <testcase name="active_preparation_survives_cleanup_until_explicit_release" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.572" />
+</testsuite>

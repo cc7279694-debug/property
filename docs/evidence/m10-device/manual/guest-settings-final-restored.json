@@ -1,0 +1,1232 @@
+{
+  "action": "restore",
+  "startedAt": "2026-10-14T06:07:12.522560+00:00",
+  "commands": [
+    {
+      "startedAt": "2026-10-14T06:07:12.529123+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "stdout": "device\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:12.620209+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:12.620209+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop ro.boot.qemu.avd_name"
+      ],
+      "exitCode": 0,
+      "stdout": "Lithic_M01_API_36\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:12.740013+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:12.740013+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop ro.build.version.sdk"
+      ],
+      "exitCode": 0,
+      "stdout": "36\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:12.845110+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:12.846111+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "cmd overlay list --user 0"
+      ],
+      "exitCode": 0,
+      "stdout": "com.google.android.networkstack.tethering\n[x] com.google.android.networkstack.tethering.emulator\n\ncom.android.providers.telephony\n--- com.android.providers.telephony.auto_generated_characteristics_rro\n[x] com.android.providers.telephony.auto_generated_rro_product__\n\ncom.android.companiondevicemanager\n--- com.android.companiondevicemanager.auto_generated_characteristics_rro\n\ncom.android.simappdialog\n[x] com.android.simappdialog.auto_generated_rro_product__\n\ncom.android.carrierconfig\n[x] com.android.carrierconfig.auto_generated_rro_vendor__\n[x] com.android.carrierconfig.auto_generated_rro_product__\n\ncom.google.android.marvin.talkback\n[x] com.google.android.marvin.talkbackoverlay\n\nandroid\n[x] android.auto_generated_rro_vendor__\n[x] com.google.android.overlay.googleconfig\n[x] com.google.android.overlay.googlewebview\n--- android.auto_generated_characteristics_rro\n[x] com.google.android.overlay.largescreenconfig\n[x] com.google.android.overlay.pixelconfigcommon\n[x] android.auto_generated_rro_product__\n[x] com.android.internal.ranchu.commonoverlay\n[ ] com.android.internal.display.cutout.emulation.corner\n[ ] com.android.internal.display.cutout.emulation.double\n[ ] com.android.internal.emulation.pixel_3a_xl\n[ ] com.android.internal.emulation.pixel_6_pro\n[ ] com.android.internal.emulation.pixel_7_pro\n[ ] com.android.internal.emulation.pixel_8_pro\n[ ] com.android.internal.emulation.pixel_9_pro\n[ ] com.android.internal.emulation.pixel_3a\n[ ] com.android.internal.emulation.pixel_4a\n[ ] com.android.internal.emulation.pixel_6a\n[ ] com.android.internal.emulation.pixel_7a\n[ ] com.android.internal.emulation.pixel_8a\n[ ] com.android.internal.emulation.pixel_9a\n[ ] com.android.internal.display.cutout.emulation.hole\n[ ] com.android.internal.display.cutout.emulation.tall\n[ ] com.android.internal.systemui.navbar.threebutton\n[ ] com.android.internal.systemui.navbar.twobutton\n[ ] com.android.internal.emulation.pixel_9_pro_fold\n[ ] com.android.internal.emulation.pixel_3\n[ ] com.android.internal.emulation.pixel_4\n[ ] com.android.internal.emulation.pixel_5\n[ ] com.android.internal.emulation.pixel_6\n[ ] com.android.internal.emulation.pixel_7\n[ ] com.android.internal.emulation.pixel_8\n[ ] com.android.internal.emulation.pixel_9\n[ ] com.android.internal.display.cutout.emulation.emu01\n[ ] com.android.theme.font.notoserifsource\n[ ] com.android.internal.display.cutout.emulation.waterfall\n[ ] com.android.internal.systemui.navbar.transparent\n[ ] com.android.role.notes.enabled\n[ ] com.android.internal.emulation.pixel_9_pro_xl\n[ ] com.android.internal.emulation.pixel_2_xl\n[ ] com.android.internal.emulation.pixel_3_xl\n[ ] com.android.internal.emulation.pixel_4_xl\n[ ] com.android.internal.emulation.pixel_fold\n[x] com.android.internal.systemui.navbar.gestural\n[x] com.android.systemui:neutral\n[x] com.android.systemui:accent\n[x] com.android.systemui:dynamic\n\ncom.android.systemui.accessibility.accessibilitymenu\n[x] com.android.systemui.accessibility.accessibilitymenu.auto_generated_rro_product__\n\ncom.google.android.permissioncontroller\n[x] com.google.android.overlay.permissioncontroller\n\ncom.android.providers.settings\n[x] com.google.android.overlay.largescreensettingsprovider\n[x] com.android.providers.settings.auto_generated_rro_product__\n\ncom.android.bips\n[x] com.android.bips.auto_generated_rro_product__\n\ncom.android.server.telecom\n[x] com.android.server.telecom.auto_generated_rro_product__\n\ncom.google.android.connectivity.resources\n[x] com.google.android.connectivity.resources.goldfish.overlay\n\ncom.android.managedprovisioning\n--- com.android.managedprovisioning.auto_generated_rro_product__\n\ncom.android.devicediagnostics\n[x] com.android.devicediagnostics.auto_generated_rro_product__\n\ncom.android.storagemanager\n[x] com.android.storagemanager.auto_generated_rro_product__\n\ncom.android.settings\n[x] com.android.settings.auto_generated_rro_product__\n\ncom.google.android.uwb.resources\n[x] com.google.android.uwb.resources.goldfish.overlay\n\ncom.android.phone\n[x] com.android.phone.auto_generated_rro_vendor__\n--- com.android.phone.auto_generated_characteristics_rro\n[x] com.android.phone.auto_generated_rro_product__\n\ncom.android.systemui\n[x] com.android.systemui.auto_generated_rro_vendor__\n[x] com.android.systemui.auto_generated_rro_product__\n[ ] com.android.systemui.emulation.pixel_3_xl\n[ ] com.android.systemui.emulation.pixel_4_xl\n[ ] com.android.systemui.emulation.pixel_fold\n[ ] com.android.systemui.emulation.pixel_3\n[ ] com.android.systemui.emulation.pixel_4\n[ ] com.android.systemui.emulation.pixel_5\n[ ] com.android.systemui.emulation.pixel_6\n[ ] com.android.systemui.emulation.pixel_7\n[ ] com.android.systemui.emulation.pixel_8\n[ ] com.android.systemui.emulation.pixel_9\n[ ] com.android.systemui.emulation.pixel_3a_xl\n[ ] com.android.systemui.emulation.pixel_6_pro\n[ ] com.android.systemui.emulation.pixel_7_pro\n[ ] com.android.systemui.emulation.pixel_8_pro\n[ ] com.android.systemui.emulation.pixel_9_pro\n[ ] com.android.systemui.emulation.pixel_3a\n[ ] com.android.systemui.emulation.pixel_4a\n[ ] com.android.systemui.emulation.pixel_6a\n[ ] com.android.systemui.emulation.pixel_7a\n[ ] com.android.systemui.emulation.pixel_8a\n[ ] com.android.systemui.emulation.pixel_9a\n[ ] com.android.systemui.emulation.pixel_9_pro_xl\n[ ] com.android.systemui.emulation.pixel_9_pro_fold\n\ncom.android.traceur\n[x] com.android.traceur.auto_generated_rro_product__\n\ncom.android.providers.contacts\n[x] com.android.providers.contacts.auto_generated_rro_product__\n\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:12.959925+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:12.959925+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global airplane_mode_on"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:13.073938+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:13.073938+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global auto_time"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:13.191087+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:13.191087+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global auto_time_zone"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:13.329758+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:13.329758+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global wifi_on"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:13.446558+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:13.446558+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global mobile_data"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:13.558418+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:13.558418+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system font_scale"
+      ],
+      "exitCode": 0,
+      "stdout": "1.0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:13.683075+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:13.683075+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system accelerometer_rotation"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:13.817436+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:13.817961+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system user_rotation"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:13.938827+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:13.938827+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.058576+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.058576+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure default_input_method"
+      ],
+      "exitCode": 0,
+      "stdout": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.174267+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.174267+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.293704+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.293704+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure navigation_mode"
+      ],
+      "exitCode": 0,
+      "stdout": "2\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.411723+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.411723+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "wm size"
+      ],
+      "exitCode": 0,
+      "stdout": "Physical size: 1080x1920\nOverride size: 360x800\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.528052+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.528052+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "wm density"
+      ],
+      "exitCode": 0,
+      "stdout": "Physical density: 420\nOverride density: 160\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.655686+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.655686+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "cmd uimode night"
+      ],
+      "exitCode": 0,
+      "stdout": "Night mode: no\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.772638+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.772638+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop persist.sys.timezone"
+      ],
+      "exitCode": 0,
+      "stdout": "GMT\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.880526+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.880526+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "cmd wifi status"
+      ],
+      "exitCode": 0,
+      "stdout": "Wifi is disabled\nWifi scanning is only available when wifi is enabled\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:14.997989+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:14.997989+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "cmd connectivity airplane-mode disable"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:15.114732+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:15.114732+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "svc wifi enable"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:15.424283+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:15.424283+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "svc data enable"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:15.603689+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:15.603689+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global airplane_mode_on"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:15.765524+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:15.765524+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global auto_time"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:15.941756+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:15.941756+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global auto_time_zone"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:16.130266+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:16.131265+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global wifi_on"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:16.323277+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:16.323277+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global mobile_data"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:16.621679+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:16.621679+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system font_scale"
+      ],
+      "exitCode": 0,
+      "stdout": "1.0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:16.855989+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:16.855989+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system accelerometer_rotation"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:17.039514+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:17.039514+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings put system accelerometer_rotation 1"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:17.221119+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:17.221119+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system user_rotation"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:17.464345+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:17.464345+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:17.659006+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:17.659006+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings delete system show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "Deleted 1 rows\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:17.995132+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:17.995132+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure default_input_method"
+      ],
+      "exitCode": 0,
+      "stdout": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:18.332646+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:18.332646+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:18.443534+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:18.443534+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings put secure show_ime_with_hard_keyboard 0"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:18.558589+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:18.558589+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure navigation_mode"
+      ],
+      "exitCode": 0,
+      "stdout": "2\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:18.674586+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:18.674586+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global airplane_mode_on"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:18.804654+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:18.804654+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global auto_time"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:18.930927+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:18.930927+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global auto_time_zone"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:19.049800+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:19.049800+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global wifi_on"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:19.176094+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:19.176094+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global mobile_data"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:19.295605+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:19.295605+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system font_scale"
+      ],
+      "exitCode": 0,
+      "stdout": "1.0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:19.428182+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:19.428182+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system accelerometer_rotation"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:19.608917+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:19.608917+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system user_rotation"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:19.750097+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:19.750097+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "null\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:19.868926+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:19.868926+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure default_input_method"
+      ],
+      "exitCode": 0,
+      "stdout": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:20.004504+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:20.004504+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:20.137310+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:20.137310+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure navigation_mode"
+      ],
+      "exitCode": 0,
+      "stdout": "2\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:20.266842+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:20.266842+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "wm size"
+      ],
+      "exitCode": 0,
+      "stdout": "Physical size: 1080x1920\nOverride size: 360x800\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:20.393556+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:20.394558+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "wm size reset"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:20.612968+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:20.612968+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "wm density"
+      ],
+      "exitCode": 0,
+      "stdout": "Physical density: 420\nOverride density: 160\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:20.831101+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:20.831101+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "wm density reset"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:21.376970+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:21.376970+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop persist.sys.timezone"
+      ],
+      "exitCode": 0,
+      "stdout": "GMT\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:21.548533+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:21.548533+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "date -u +%s"
+      ],
+      "exitCode": 0,
+      "stdout": "1791958041\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:21.766973+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:21.766973+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "cmd overlay list --user 0"
+      ],
+      "exitCode": 0,
+      "stdout": "com.google.android.networkstack.tethering\n[x] com.google.android.networkstack.tethering.emulator\n\ncom.android.providers.telephony\n--- com.android.providers.telephony.auto_generated_characteristics_rro\n[x] com.android.providers.telephony.auto_generated_rro_product__\n\ncom.android.companiondevicemanager\n--- com.android.companiondevicemanager.auto_generated_characteristics_rro\n\ncom.android.simappdialog\n[x] com.android.simappdialog.auto_generated_rro_product__\n\ncom.android.carrierconfig\n[x] com.android.carrierconfig.auto_generated_rro_vendor__\n[x] com.android.carrierconfig.auto_generated_rro_product__\n\ncom.google.android.marvin.talkback\n[x] com.google.android.marvin.talkbackoverlay\n\nandroid\n[x] android.auto_generated_rro_vendor__\n[x] com.google.android.overlay.googleconfig\n[x] com.google.android.overlay.googlewebview\n--- android.auto_generated_characteristics_rro\n[x] com.google.android.overlay.largescreenconfig\n[x] com.google.android.overlay.pixelconfigcommon\n[x] android.auto_generated_rro_product__\n[x] com.android.internal.ranchu.commonoverlay\n[ ] com.android.internal.display.cutout.emulation.corner\n[ ] com.android.internal.display.cutout.emulation.double\n[ ] com.android.internal.emulation.pixel_3a_xl\n[ ] com.android.internal.emulation.pixel_6_pro\n[ ] com.android.internal.emulation.pixel_7_pro\n[ ] com.android.internal.emulation.pixel_8_pro\n[ ] com.android.internal.emulation.pixel_9_pro\n[ ] com.android.internal.emulation.pixel_3a\n[ ] com.android.internal.emulation.pixel_4a\n[ ] com.android.internal.emulation.pixel_6a\n[ ] com.android.internal.emulation.pixel_7a\n[ ] com.android.internal.emulation.pixel_8a\n[ ] com.android.internal.emulation.pixel_9a\n[ ] com.android.internal.display.cutout.emulation.hole\n[ ] com.android.internal.display.cutout.emulation.tall\n[ ] com.android.internal.systemui.navbar.threebutton\n[ ] com.android.internal.systemui.navbar.twobutton\n[ ] com.android.internal.emulation.pixel_9_pro_fold\n[ ] com.android.internal.emulation.pixel_3\n[ ] com.android.internal.emulation.pixel_4\n[ ] com.android.internal.emulation.pixel_5\n[ ] com.android.internal.emulation.pixel_6\n[ ] com.android.internal.emulation.pixel_7\n[ ] com.android.internal.emulation.pixel_8\n[ ] com.android.internal.emulation.pixel_9\n[ ] com.android.internal.display.cutout.emulation.emu01\n[ ] com.android.theme.font.notoserifsource\n[ ] com.android.internal.display.cutout.emulation.waterfall\n[ ] com.android.internal.systemui.navbar.transparent\n[ ] com.android.role.notes.enabled\n[ ] com.android.internal.emulation.pixel_9_pro_xl\n[ ] com.android.internal.emulation.pixel_2_xl\n[ ] com.android.internal.emulation.pixel_3_xl\n[ ] com.android.internal.emulation.pixel_4_xl\n[ ] com.android.internal.emulation.pixel_fold\n[x] com.android.internal.systemui.navbar.gestural\n[x] com.android.systemui:neutral\n[x] com.android.systemui:accent\n[x] com.android.systemui:dynamic\n\ncom.android.systemui.accessibility.accessibilitymenu\n[x] com.android.systemui.accessibility.accessibilitymenu.auto_generated_rro_product__\n\ncom.google.android.permissioncontroller\n[x] com.google.android.overlay.permissioncontroller\n\ncom.android.providers.settings\n[x] com.google.android.overlay.largescreensettingsprovider\n[x] com.android.providers.settings.auto_generated_rro_product__\n\ncom.android.bips\n[x] com.android.bips.auto_generated_rro_product__\n\ncom.android.server.telecom\n[x] com.android.server.telecom.auto_generated_rro_product__\n\ncom.google.android.connectivity.resources\n[x] com.google.android.connectivity.resources.goldfish.overlay\n\ncom.android.managedprovisioning\n--- com.android.managedprovisioning.auto_generated_rro_product__\n\ncom.android.devicediagnostics\n[x] com.android.devicediagnostics.auto_generated_rro_product__\n\ncom.android.storagemanager\n[x] com.android.storagemanager.auto_generated_rro_product__\n\ncom.android.settings\n[x] com.android.settings.auto_generated_rro_product__\n\ncom.google.android.uwb.resources\n[x] com.google.android.uwb.resources.goldfish.overlay\n\ncom.android.phone\n[x] com.android.phone.auto_generated_rro_vendor__\n--- com.android.phone.auto_generated_characteristics_rro\n[x] com.android.phone.auto_generated_rro_product__\n\ncom.android.systemui\n[x] com.android.systemui.auto_generated_rro_vendor__\n[x] com.android.systemui.auto_generated_rro_product__\n[ ] com.android.systemui.emulation.pixel_3_xl\n[ ] com.android.systemui.emulation.pixel_4_xl\n[ ] com.android.systemui.emulation.pixel_fold\n[ ] com.android.systemui.emulation.pixel_3\n[ ] com.android.systemui.emulation.pixel_4\n[ ] com.android.systemui.emulation.pixel_5\n[ ] com.android.systemui.emulation.pixel_6\n[ ] com.android.systemui.emulation.pixel_7\n[ ] com.android.systemui.emulation.pixel_8\n[ ] com.android.systemui.emulation.pixel_9\n[ ] com.android.systemui.emulation.pixel_3a_xl\n[ ] com.android.systemui.emulation.pixel_6_pro\n[ ] com.android.systemui.emulation.pixel_7_pro\n[ ] com.android.systemui.emulation.pixel_8_pro\n[ ] com.android.systemui.emulation.pixel_9_pro\n[ ] com.android.systemui.emulation.pixel_3a\n[ ] com.android.systemui.emulation.pixel_4a\n[ ] com.android.systemui.emulation.pixel_6a\n[ ] com.android.systemui.emulation.pixel_7a\n[ ] com.android.systemui.emulation.pixel_8a\n[ ] com.android.systemui.emulation.pixel_9a\n[ ] com.android.systemui.emulation.pixel_9_pro_xl\n[ ] com.android.systemui.emulation.pixel_9_pro_fold\n\ncom.android.traceur\n[x] com.android.traceur.auto_generated_rro_product__\n\ncom.android.providers.contacts\n[x] com.android.providers.contacts.auto_generated_rro_product__\n\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:21.908175+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:21.909182+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global airplane_mode_on"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:22.097973+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:22.097973+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global auto_time"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:22.299450+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:22.299450+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global auto_time_zone"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:22.594773+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:22.594773+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global wifi_on"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:22.957390+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:22.957390+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get global mobile_data"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:23.225624+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:23.225624+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system font_scale"
+      ],
+      "exitCode": 0,
+      "stdout": "1.0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:23.451403+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:23.451403+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system accelerometer_rotation"
+      ],
+      "exitCode": 0,
+      "stdout": "1\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:23.696476+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:23.696476+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system user_rotation"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:23.884678+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:23.884678+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get system show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "null\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:24.151952+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:24.151952+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure default_input_method"
+      ],
+      "exitCode": 0,
+      "stdout": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:24.415682+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:24.415682+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure show_ime_with_hard_keyboard"
+      ],
+      "exitCode": 0,
+      "stdout": "0\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:24.621867+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:24.621867+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "settings get secure navigation_mode"
+      ],
+      "exitCode": 0,
+      "stdout": "2\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:24.812187+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:24.812187+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "wm size"
+      ],
+      "exitCode": 0,
+      "stdout": "Physical size: 1080x1920\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:24.971049+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:24.971049+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "wm density"
+      ],
+      "exitCode": 0,
+      "stdout": "Physical density: 420\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:25.144242+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:25.144242+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "cmd uimode night"
+      ],
+      "exitCode": 0,
+      "stdout": "Night mode: no\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:25.322164+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:25.322164+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop persist.sys.timezone"
+      ],
+      "exitCode": 0,
+      "stdout": "GMT\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:25.482039+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:25.482039+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "cmd wifi status"
+      ],
+      "exitCode": 0,
+      "stdout": "Wifi is enabled\nWifi scanning is only available when wifi is enabled\n==== Primary ClientModeManager instance ====\nWifi is connected to \"AndroidWifi\"\nWifiInfo: SSID: \"AndroidWifi\", BSSID: 00:13:10:85:fe:01, MAC: 02:15:dc:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 11Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 11Mbps, Frequency: 2447MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>\"AndroidWifi\"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>\nsuccessfulTxPackets: 3904\nsuccessfulTxPacketsPerSecond: 10.397412141821176\nretriedTxPackets: 0\nretriedTxPacketsPerSecond: 0.0\nlostTxPackets: 0\nlostTxPacketsPerSecond: 0.0\nsuccessfulRxPackets: 8397\nsuccessfulRxPacketsPerSecond: 5.424736769645831\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:25.605933+00:00"
+    },
+    {
+      "startedAt": "2026-10-14T06:07:25.605933+00:00",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "date -u +%s"
+      ],
+      "exitCode": 0,
+      "stdout": "1791958045\n",
+      "stderr": "",
+      "completedAt": "2026-10-14T06:07:25.730536+00:00"
+    }
+  ],
+  "unchanged": [
+    "global.airplane_mode_on",
+    "global.auto_time",
+    "global.auto_time_zone",
+    "global.wifi_on",
+    "global.mobile_data",
+    "system.font_scale",
+    "system.user_rotation",
+    "secure.default_input_method",
+    "secure.navigation_mode",
+    "global.airplane_mode_on",
+    "global.auto_time",
+    "global.auto_time_zone",
+    "global.wifi_on",
+    "global.mobile_data",
+    "system.font_scale",
+    "system.accelerometer_rotation",
+    "system.user_rotation",
+    "system.show_ime_with_hard_keyboard",
+    "secure.default_input_method",
+    "secure.show_ime_with_hard_keyboard",
+    "secure.navigation_mode"
+  ],
+  "result": "PASS",
+  "scope": "Explicit, emulator-only M10 guest settings; host settings, apps, data, source and Git untouched",
+  "originalBaselinePath": "E:\\CODEX\\砺石新APP\\build\\m10-evidence\\guest-settings-new-before.json",
+  "verifiedTarget": {
+    "serial": "emulator-5596",
+    "avd": "Lithic_M01_API_36",
+    "api": "36"
+  },
+  "extraBaselinePath": "E:\\CODEX\\砺石新APP\\build\\m10-evidence\\guest-settings-new-extra-before.json",
+  "expectedSettings": {
+    "global": {
+      "airplane_mode_on": "0",
+      "auto_time": "1",
+      "auto_time_zone": "1",
+      "wifi_on": "1",
+      "mobile_data": "1"
+    },
+    "system": {
+      "font_scale": "1.0",
+      "accelerometer_rotation": "1",
+      "user_rotation": "0",
+      "show_ime_with_hard_keyboard": "null"
+    },
+    "secure": {
+      "default_input_method": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+      "show_ime_with_hard_keyboard": "0",
+      "navigation_mode": "2"
+    }
+  },
+  "restoreStartedFrom": {
+    "settings": {
+      "global": {
+        "airplane_mode_on": "0",
+        "auto_time": "1",
+        "auto_time_zone": "1",
+        "wifi_on": "0",
+        "mobile_data": "0"
+      },
+      "system": {
+        "font_scale": "1.0",
+        "accelerometer_rotation": "0",
+        "user_rotation": "0",
+        "show_ime_with_hard_keyboard": "1"
+      },
+      "secure": {
+        "default_input_method": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+        "show_ime_with_hard_keyboard": "1",
+        "navigation_mode": "2"
+      }
+    },
+    "wmSize": "Physical size: 1080x1920\nOverride size: 360x800",
+    "wmDensity": "Physical density: 420\nOverride density: 160",
+    "night": "Night mode: no",
+    "timeZone": "GMT",
+    "navigationOverlays": {
+      "com.android.internal.systemui.navbar.threebutton": {
+        "enabled": false,
+        "marker": "[ ]"
+      },
+      "com.android.internal.systemui.navbar.twobutton": {
+        "enabled": false,
+        "marker": "[ ]"
+      },
+      "com.android.internal.systemui.navbar.transparent": {
+        "enabled": false,
+        "marker": "[ ]"
+      },
+      "com.android.internal.systemui.navbar.gestural": {
+        "enabled": true,
+        "marker": "[x]"
+      }
+    },
+    "rawNavigationOverlayList": "com.google.android.networkstack.tethering\n[x] com.google.android.networkstack.tethering.emulator\n\ncom.android.providers.telephony\n--- com.android.providers.telephony.auto_generated_characteristics_rro\n[x] com.android.providers.telephony.auto_generated_rro_product__\n\ncom.android.companiondevicemanager\n--- com.android.companiondevicemanager.auto_generated_characteristics_rro\n\ncom.android.simappdialog\n[x] com.android.simappdialog.auto_generated_rro_product__\n\ncom.android.carrierconfig\n[x] com.android.carrierconfig.auto_generated_rro_vendor__\n[x] com.android.carrierconfig.auto_generated_rro_product__\n\ncom.google.android.marvin.talkback\n[x] com.google.android.marvin.talkbackoverlay\n\nandroid\n[x] android.auto_generated_rro_vendor__\n[x] com.google.android.overlay.googleconfig\n[x] com.google.android.overlay.googlewebview\n--- android.auto_generated_characteristics_rro\n[x] com.google.android.overlay.largescreenconfig\n[x] com.google.android.overlay.pixelconfigcommon\n[x] android.auto_generated_rro_product__\n[x] com.android.internal.ranchu.commonoverlay\n[ ] com.android.internal.display.cutout.emulation.corner\n[ ] com.android.internal.display.cutout.emulation.double\n[ ] com.android.internal.emulation.pixel_3a_xl\n[ ] com.android.internal.emulation.pixel_6_pro\n[ ] com.android.internal.emulation.pixel_7_pro\n[ ] com.android.internal.emulation.pixel_8_pro\n[ ] com.android.internal.emulation.pixel_9_pro\n[ ] com.android.internal.emulation.pixel_3a\n[ ] com.android.internal.emulation.pixel_4a\n[ ] com.android.internal.emulation.pixel_6a\n[ ] com.android.internal.emulation.pixel_7a\n[ ] com.android.internal.emulation.pixel_8a\n[ ] com.android.internal.emulation.pixel_9a\n[ ] com.android.internal.display.cutout.emulation.hole\n[ ] com.android.internal.display.cutout.emulation.tall\n[ ] com.android.internal.systemui.navbar.threebutton\n[ ] com.android.internal.systemui.navbar.twobutton\n[ ] com.android.internal.emulation.pixel_9_pro_fold\n[ ] com.android.internal.emulation.pixel_3\n[ ] com.android.internal.emulation.pixel_4\n[ ] com.android.internal.emulation.pixel_5\n[ ] com.android.internal.emulation.pixel_6\n[ ] com.android.internal.emulation.pixel_7\n[ ] com.android.internal.emulation.pixel_8\n[ ] com.android.internal.emulation.pixel_9\n[ ] com.android.internal.display.cutout.emulation.emu01\n[ ] com.android.theme.font.notoserifsource\n[ ] com.android.internal.display.cutout.emulation.waterfall\n[ ] com.android.internal.systemui.navbar.transparent\n[ ] com.android.role.notes.enabled\n[ ] com.android.internal.emulation.pixel_9_pro_xl\n[ ] com.android.internal.emulation.pixel_2_xl\n[ ] com.android.internal.emulation.pixel_3_xl\n[ ] com.android.internal.emulation.pixel_4_xl\n[ ] com.android.internal.emulation.pixel_fold\n[x] com.android.internal.systemui.navbar.gestural\n[x] com.android.systemui:neutral\n[x] com.android.systemui:accent\n[x] com.android.systemui:dynamic\n\ncom.android.systemui.accessibility.accessibilitymenu\n[x] com.android.systemui.accessibility.accessibilitymenu.auto_generated_rro_product__\n\ncom.google.android.permissioncontroller\n[x] com.google.android.overlay.permissioncontroller\n\ncom.android.providers.settings\n[x] com.google.android.overlay.largescreensettingsprovider\n[x] com.android.providers.settings.auto_generated_rro_product__\n\ncom.android.bips\n[x] com.android.bips.auto_generated_rro_product__\n\ncom.android.server.telecom\n[x] com.android.server.telecom.auto_generated_rro_product__\n\ncom.google.android.connectivity.resources\n[x] com.google.android.connectivity.resources.goldfish.overlay\n\ncom.android.managedprovisioning\n--- com.android.managedprovisioning.auto_generated_rro_product__\n\ncom.android.devicediagnostics\n[x] com.android.devicediagnostics.auto_generated_rro_product__\n\ncom.android.storagemanager\n[x] com.android.storagemanager.auto_generated_rro_product__\n\ncom.android.settings\n[x] com.android.settings.auto_generated_rro_product__\n\ncom.google.android.uwb.resources\n[x] com.google.android.uwb.resources.goldfish.overlay\n\ncom.android.phone\n[x] com.android.phone.auto_generated_rro_vendor__\n--- com.android.phone.auto_generated_characteristics_rro\n[x] com.android.phone.auto_generated_rro_product__\n\ncom.android.systemui\n[x] com.android.systemui.auto_generated_rro_vendor__\n[x] com.android.systemui.auto_generated_rro_product__\n[ ] com.android.systemui.emulation.pixel_3_xl\n[ ] com.android.systemui.emulation.pixel_4_xl\n[ ] com.android.systemui.emulation.pixel_fold\n[ ] com.android.systemui.emulation.pixel_3\n[ ] com.android.systemui.emulation.pixel_4\n[ ] com.android.systemui.emulation.pixel_5\n[ ] com.android.systemui.emulation.pixel_6\n[ ] com.android.systemui.emulation.pixel_7\n[ ] com.android.systemui.emulation.pixel_8\n[ ] com.android.systemui.emulation.pixel_9\n[ ] com.android.systemui.emulation.pixel_3a_xl\n[ ] com.android.systemui.emulation.pixel_6_pro\n[ ] com.android.systemui.emulation.pixel_7_pro\n[ ] com.android.systemui.emulation.pixel_8_pro\n[ ] com.android.systemui.emulation.pixel_9_pro\n[ ] com.android.systemui.emulation.pixel_3a\n[ ] com.android.systemui.emulation.pixel_4a\n[ ] com.android.systemui.emulation.pixel_6a\n[ ] com.android.systemui.emulation.pixel_7a\n[ ] com.android.systemui.emulation.pixel_8a\n[ ] com.android.systemui.emulation.pixel_9a\n[ ] com.android.systemui.emulation.pixel_9_pro_xl\n[ ] com.android.systemui.emulation.pixel_9_pro_fold\n\ncom.android.traceur\n[x] com.android.traceur.auto_generated_rro_product__\n\ncom.android.providers.contacts\n[x] com.android.providers.contacts.auto_generated_rro_product__",
+    "wifiService": "Wifi is disabled\nWifi scanning is only available when wifi is enabled"
+  },
+  "clockBeforeOptionalRepair": {
+    "guestEpochSeconds": 1791958041,
+    "guestUtc": "2026-10-14T06:07:21+00:00",
+    "hostUtc": "2026-10-14T06:07:21.766973+00:00",
+    "hostReadStartUtc": "2026-10-14T06:07:21.548533+00:00",
+    "absoluteDifferenceSeconds": 0.7669730186462402,
+    "commandDurationSeconds": 0.21844005584716797
+  },
+  "guestClockRepairAttempted": false,
+  "restoredSnapshot": {
+    "settings": {
+      "global": {
+        "airplane_mode_on": "0",
+        "auto_time": "1",
+        "auto_time_zone": "1",
+        "wifi_on": "1",
+        "mobile_data": "1"
+      },
+      "system": {
+        "font_scale": "1.0",
+        "accelerometer_rotation": "1",
+        "user_rotation": "0",
+        "show_ime_with_hard_keyboard": "null"
+      },
+      "secure": {
+        "default_input_method": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+        "show_ime_with_hard_keyboard": "0",
+        "navigation_mode": "2"
+      }
+    },
+    "wmSize": "Physical size: 1080x1920",
+    "wmDensity": "Physical density: 420",
+    "night": "Night mode: no",
+    "timeZone": "GMT",
+    "navigationOverlays": {
+      "com.android.internal.systemui.navbar.threebutton": {
+        "enabled": false,
+        "marker": "[ ]"
+      },
+      "com.android.internal.systemui.navbar.twobutton": {
+        "enabled": false,
+        "marker": "[ ]"
+      },
+      "com.android.internal.systemui.navbar.transparent": {
+        "enabled": false,
+        "marker": "[ ]"
+      },
+      "com.android.internal.systemui.navbar.gestural": {
+        "enabled": true,
+        "marker": "[x]"
+      }
+    },
+    "rawNavigationOverlayList": "com.google.android.networkstack.tethering\n[x] com.google.android.networkstack.tethering.emulator\n\ncom.android.providers.telephony\n--- com.android.providers.telephony.auto_generated_characteristics_rro\n[x] com.android.providers.telephony.auto_generated_rro_product__\n\ncom.android.companiondevicemanager\n--- com.android.companiondevicemanager.auto_generated_characteristics_rro\n\ncom.android.simappdialog\n[x] com.android.simappdialog.auto_generated_rro_product__\n\ncom.android.carrierconfig\n[x] com.android.carrierconfig.auto_generated_rro_vendor__\n[x] com.android.carrierconfig.auto_generated_rro_product__\n\ncom.google.android.marvin.talkback\n[x] com.google.android.marvin.talkbackoverlay\n\nandroid\n[x] android.auto_generated_rro_vendor__\n[x] com.google.android.overlay.googleconfig\n[x] com.google.android.overlay.googlewebview\n--- android.auto_generated_characteristics_rro\n[x] com.google.android.overlay.largescreenconfig\n[x] com.google.android.overlay.pixelconfigcommon\n[x] android.auto_generated_rro_product__\n[x] com.android.internal.ranchu.commonoverlay\n[ ] com.android.internal.display.cutout.emulation.corner\n[ ] com.android.internal.display.cutout.emulation.double\n[ ] com.android.internal.emulation.pixel_3a_xl\n[ ] com.android.internal.emulation.pixel_6_pro\n[ ] com.android.internal.emulation.pixel_7_pro\n[ ] com.android.internal.emulation.pixel_8_pro\n[ ] com.android.internal.emulation.pixel_9_pro\n[ ] com.android.internal.emulation.pixel_3a\n[ ] com.android.internal.emulation.pixel_4a\n[ ] com.android.internal.emulation.pixel_6a\n[ ] com.android.internal.emulation.pixel_7a\n[ ] com.android.internal.emulation.pixel_8a\n[ ] com.android.internal.emulation.pixel_9a\n[ ] com.android.internal.display.cutout.emulation.hole\n[ ] com.android.internal.display.cutout.emulation.tall\n[ ] com.android.internal.systemui.navbar.threebutton\n[ ] com.android.internal.systemui.navbar.twobutton\n[ ] com.android.internal.emulation.pixel_9_pro_fold\n[ ] com.android.internal.emulation.pixel_3\n[ ] com.android.internal.emulation.pixel_4\n[ ] com.android.internal.emulation.pixel_5\n[ ] com.android.internal.emulation.pixel_6\n[ ] com.android.internal.emulation.pixel_7\n[ ] com.android.internal.emulation.pixel_8\n[ ] com.android.internal.emulation.pixel_9\n[ ] com.android.internal.display.cutout.emulation.emu01\n[ ] com.android.theme.font.notoserifsource\n[ ] com.android.internal.display.cutout.emulation.waterfall\n[ ] com.android.internal.systemui.navbar.transparent\n[ ] com.android.role.notes.enabled\n[ ] com.android.internal.emulation.pixel_9_pro_xl\n[ ] com.android.internal.emulation.pixel_2_xl\n[ ] com.android.internal.emulation.pixel_3_xl\n[ ] com.android.internal.emulation.pixel_4_xl\n[ ] com.android.internal.emulation.pixel_fold\n[x] com.android.internal.systemui.navbar.gestural\n[x] com.android.systemui:neutral\n[x] com.android.systemui:accent\n[x] com.android.systemui:dynamic\n\ncom.android.systemui.accessibility.accessibilitymenu\n[x] com.android.systemui.accessibility.accessibilitymenu.auto_generated_rro_product__\n\ncom.google.android.permissioncontroller\n[x] com.google.android.overlay.permissioncontroller\n\ncom.android.providers.settings\n[x] com.google.android.overlay.largescreensettingsprovider\n[x] com.android.providers.settings.auto_generated_rro_product__\n\ncom.android.bips\n[x] com.android.bips.auto_generated_rro_product__\n\ncom.android.server.telecom\n[x] com.android.server.telecom.auto_generated_rro_product__\n\ncom.google.android.connectivity.resources\n[x] com.google.android.connectivity.resources.goldfish.overlay\n\ncom.android.managedprovisioning\n--- com.android.managedprovisioning.auto_generated_rro_product__\n\ncom.android.devicediagnostics\n[x] com.android.devicediagnostics.auto_generated_rro_product__\n\ncom.android.storagemanager\n[x] com.android.storagemanager.auto_generated_rro_product__\n\ncom.android.settings\n[x] com.android.settings.auto_generated_rro_product__\n\ncom.google.android.uwb.resources\n[x] com.google.android.uwb.resources.goldfish.overlay\n\ncom.android.phone\n[x] com.android.phone.auto_generated_rro_vendor__\n--- com.android.phone.auto_generated_characteristics_rro\n[x] com.android.phone.auto_generated_rro_product__\n\ncom.android.systemui\n[x] com.android.systemui.auto_generated_rro_vendor__\n[x] com.android.systemui.auto_generated_rro_product__\n[ ] com.android.systemui.emulation.pixel_3_xl\n[ ] com.android.systemui.emulation.pixel_4_xl\n[ ] com.android.systemui.emulation.pixel_fold\n[ ] com.android.systemui.emulation.pixel_3\n[ ] com.android.systemui.emulation.pixel_4\n[ ] com.android.systemui.emulation.pixel_5\n[ ] com.android.systemui.emulation.pixel_6\n[ ] com.android.systemui.emulation.pixel_7\n[ ] com.android.systemui.emulation.pixel_8\n[ ] com.android.systemui.emulation.pixel_9\n[ ] com.android.systemui.emulation.pixel_3a_xl\n[ ] com.android.systemui.emulation.pixel_6_pro\n[ ] com.android.systemui.emulation.pixel_7_pro\n[ ] com.android.systemui.emulation.pixel_8_pro\n[ ] com.android.systemui.emulation.pixel_9_pro\n[ ] com.android.systemui.emulation.pixel_3a\n[ ] com.android.systemui.emulation.pixel_4a\n[ ] com.android.systemui.emulation.pixel_6a\n[ ] com.android.systemui.emulation.pixel_7a\n[ ] com.android.systemui.emulation.pixel_8a\n[ ] com.android.systemui.emulation.pixel_9a\n[ ] com.android.systemui.emulation.pixel_9_pro_xl\n[ ] com.android.systemui.emulation.pixel_9_pro_fold\n\ncom.android.traceur\n[x] com.android.traceur.auto_generated_rro_product__\n\ncom.android.providers.contacts\n[x] com.android.providers.contacts.auto_generated_rro_product__",
+    "wifiService": "Wifi is enabled\nWifi scanning is only available when wifi is enabled\n==== Primary ClientModeManager instance ====\nWifi is connected to \"AndroidWifi\"\nWifiInfo: SSID: \"AndroidWifi\", BSSID: 00:13:10:85:fe:01, MAC: 02:15:dc:00:00:00, IP: /10.0.2.16, Security type: 0, Supplicant state: COMPLETED, Wi-Fi standard: legacy, RSSI: -50, Link speed: 1Mbps, Tx Link speed: 1Mbps, Max Supported Tx Link speed: 11Mbps, Rx Link speed: 2Mbps, Max Supported Rx Link speed: 11Mbps, Frequency: 2447MHz, Net ID: 0, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: 1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none>\"AndroidWifi\"openMLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>, Vendor Data: <none>\nsuccessfulTxPackets: 3904\nsuccessfulTxPacketsPerSecond: 10.397412141821176\nretriedTxPackets: 0\nretriedTxPacketsPerSecond: 0.0\nlostTxPackets: 0\nlostTxPacketsPerSecond: 0.0\nsuccessfulRxPackets: 8397\nsuccessfulRxPacketsPerSecond: 5.424736769645831"
+  },
+  "differences": [],
+  "finalClock": {
+    "guestEpochSeconds": 1791958045,
+    "guestUtc": "2026-10-14T06:07:25+00:00",
+    "hostUtc": "2026-10-14T06:07:25.730536+00:00",
+    "hostReadStartUtc": "2026-10-14T06:07:25.605933+00:00",
+    "absoluteDifferenceSeconds": 0.7305359840393066,
+    "commandDurationSeconds": 0.1246030330657959
+  },
+  "finishedAt": "2026-10-14T06:07:25.730536+00:00"
+}

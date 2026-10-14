@@ -1,0 +1,49 @@
+{
+  "result": "PASS",
+  "boundary": "file-before-db",
+  "apkSha256": "939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094",
+  "checkpoint": {
+    "boundary": "file-before-db",
+    "pid": 4239,
+    "generation": "ccdedccb-6827-4cc9-8a88-22ef365e3ad0",
+    "projectId": "60ba103f-ca35-4c93-99c1-59e3e09438db",
+    "eventId": "5a72cd0f-088a-4bea-bd9b-8775bdf02358",
+    "old": {
+      "id": "ae501b19-83d6-409b-a0f6-09a6f2dae74c",
+      "relativePath": "media/ae501b19-83d6-409b-a0f6-09a6f2dae74c.png",
+      "mime": "image/png",
+      "width": 32,
+      "height": 24,
+      "byteLength": 133,
+      "sha256": "f56dc58acebdfc462cdbbbd9bde10ce2fd94e0163ce72ee06cdfb9f9d8721f0f"
+    },
+    "new": {
+      "id": "b714620d-f77e-445e-b807-b5e03fd5a530",
+      "relativePath": "media/b714620d-f77e-445e-b807-b5e03fd5a530.png",
+      "mime": "image/png",
+      "width": 32,
+      "height": 24,
+      "byteLength": 133,
+      "sha256": "e76f8b6d581f37a36ffdd069ffa1b7953a8e135ed99e382e8370ccd0189db7ef"
+    },
+    "recordZone": "UTC",
+    "checkpoint": "COMPLETE_BEFORE_ACTUAL_SIGKILL"
+  },
+  "verification": {
+    "boundary": "file-before-db",
+    "newProcessPid": 4297,
+    "oldProcessPid": 4239,
+    "generation": "ccdedccb-6827-4cc9-8a88-22ef365e3ad0",
+    "coverVerified": "ae501b19-83d6-409b-a0f6-09a6f2dae74c",
+    "orphanRemoved": "b714620d-f77e-445e-b807-b5e03fd5a530",
+    "moneyAndHistoryPreserved": true,
+    "integrity": "ok",
+    "foreignKeys": "PASS",
+    "actualProcessBoundary": "PASS"
+  },
+  "oldPidActuallyGone": true,
+  "killCommandExit": 0,
+  "verifyCommandExit": 0,
+  "dataset": "isolated synthetic private probe dataset; original ledger unchanged",
+  "limitations": "Real SIGKILL, not hardware power-cut, OEM behavior, or actual LMK"
+}

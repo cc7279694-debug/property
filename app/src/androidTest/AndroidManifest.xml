@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <instrumentation android:name="com.cooper.lithic.data.media.M10ProcessBoundaryRunner"
+        android:targetPackage="com.cooper.lithic.debug" android:label="M10 test-only process boundary probe" />
+    <application>
+        <provider android:name="com.cooper.lithic.data.media.M10ImageSourceProvider"
+            android:authorities="com.cooper.lithic.m10.testsource"
+            android:exported="true" android:grantUriPermissions="true" />
+    </application>
+</manifest>

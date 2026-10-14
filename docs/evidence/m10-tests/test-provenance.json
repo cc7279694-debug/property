@@ -1,0 +1,878 @@
+{
+  "phases": [
+    {
+      "phase": "red-detail-entry",
+      "exitCode": 1,
+      "total": 2,
+      "pass": 0,
+      "fail": 2,
+      "skipped": 0,
+      "durationSeconds": 105.774,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "red-media-contract",
+      "exitCode": 1,
+      "total": 50,
+      "pass": 0,
+      "fail": 50,
+      "skipped": 0,
+      "durationSeconds": 123.132,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "red-media-behavior",
+      "exitCode": 1,
+      "total": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "durationSeconds": 386.989,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "red-real-uri-nominal",
+      "exitCode": 1,
+      "total": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "durationSeconds": 89.531,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "red-complete-media",
+      "exitCode": 1,
+      "total": 86,
+      "pass": 0,
+      "fail": 86,
+      "skipped": 0,
+      "durationSeconds": 47.077,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "green-media-initial",
+      "exitCode": 1,
+      "total": 0,
+      "pass": 0,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 46.889,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "green-media-behavior",
+      "exitCode": 1,
+      "total": 94,
+      "pass": 33,
+      "fail": 61,
+      "skipped": 0,
+      "durationSeconds": 607.6,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "red-risk-recheck",
+      "exitCode": 1,
+      "total": 64,
+      "pass": 57,
+      "fail": 7,
+      "skipped": 0,
+      "durationSeconds": 348.488,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "red-repository-guards",
+      "exitCode": 1,
+      "total": 35,
+      "pass": 33,
+      "fail": 2,
+      "skipped": 0,
+      "durationSeconds": 215.52,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "green-media-integrated",
+      "exitCode": 1,
+      "total": 100,
+      "pass": 99,
+      "fail": 1,
+      "skipped": 0,
+      "durationSeconds": 315.96,
+      "sourceZipContainsAllBuildInputs": false
+    },
+    {
+      "phase": "red-final-lifecycle",
+      "exitCode": 1,
+      "total": 4,
+      "pass": 0,
+      "fail": 4,
+      "skipped": 0,
+      "durationSeconds": 164.81,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "red-navigation-diagnostic",
+      "exitCode": 1,
+      "total": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "durationSeconds": 113.0,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "red-navigation-state-tree",
+      "exitCode": 1,
+      "total": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "durationSeconds": 105.549,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "red-navigation-captured",
+      "exitCode": 1,
+      "total": 1,
+      "pass": 0,
+      "fail": 1,
+      "skipped": 0,
+      "durationSeconds": 87.295,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-final-lifecycle",
+      "exitCode": 0,
+      "total": 103,
+      "pass": 103,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 226.958,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-full-verified",
+      "exitCode": 1,
+      "total": 566,
+      "pass": 562,
+      "fail": 4,
+      "skipped": 0,
+      "durationSeconds": 2784.285,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "red-m09-flow-capture",
+      "exitCode": 1,
+      "total": 0,
+      "pass": 0,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 108.001,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "red-m09-flow-captured",
+      "exitCode": 1,
+      "total": 4,
+      "pass": 2,
+      "fail": 2,
+      "skipped": 0,
+      "durationSeconds": 308.408,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-legacy-ui-loading-sync",
+      "exitCode": 0,
+      "total": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 583.274,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-full-final-rerun",
+      "exitCode": 1,
+      "total": 86,
+      "pass": 86,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 1158.921,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-android-final-rerun",
+      "exitCode": 1,
+      "total": 0,
+      "pass": 0,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 124.593,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-full-restored-device",
+      "exitCode": 1,
+      "total": 450,
+      "pass": 441,
+      "fail": 9,
+      "skipped": 0,
+      "durationSeconds": 725.263,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-android-final-clean",
+      "exitCode": 1,
+      "total": 0,
+      "pass": 0,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 380.389,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-android-connected-final",
+      "exitCode": 1,
+      "total": 0,
+      "pass": 0,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 66.482,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-full-runner-final",
+      "exitCode": 1,
+      "total": 652,
+      "pass": 643,
+      "fail": 9,
+      "skipped": 0,
+      "durationSeconds": 846.91,
+      "sourceZipContainsAllBuildInputs": true
+    },
+    {
+      "phase": "green-android-systemui-clean-final",
+      "exitCode": 0,
+      "total": 566,
+      "pass": 566,
+      "fail": 0,
+      "skipped": 0,
+      "durationSeconds": 639.901,
+      "sourceZipContainsAllBuildInputs": true
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/evidence/m10-tests/red-detail-entry-summary.json",
+      "bytes": 30406,
+      "sha256": "d77aa2bfe41cab8e4c936054af5aa5a6d8aeb5350e365d6626215ebeb2a1586b"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-detail-entry.log",
+      "bytes": 5929,
+      "sha256": "d638f81ff307ca0d4cf6d89317503aa43d259f00b7bc8fc5c363f4acf61452cd"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-detail-entry-source.zip",
+      "bytes": 285164,
+      "sha256": "5b5d6ab0bf1b9b05282586081640800c8eb9cb85aa7d447ee192d3587f949cf1"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-detail-entry-android-0.xml",
+      "bytes": 2296,
+      "sha256": "d65c94d2c143b4105f1f8deb96de9b401ddb9bf289ec08f34b9c5242ae90ba4e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-media-contract-summary.json",
+      "bytes": 132844,
+      "sha256": "76869807e0f9313c335f8a5c66dcb80f48696de08d4fab7671612b704bd5b994"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-media-contract.log",
+      "bytes": 23898,
+      "sha256": "7b7b0faa1bc1ce29b51ffccca4bf5c6a26a689483c7590d2012eca072fc60c5f"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-media-contract-source.zip",
+      "bytes": 300562,
+      "sha256": "df3bbd84bf6be1662db525121ce661fbbbbb81595127339ef0a7ea0d79d8437f"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-media-contract-android-0.xml",
+      "bytes": 100421,
+      "sha256": "b815a3baaa14c9d213043c109f8973334d66e9ff1b21a141908a0ba8abae4542"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-media-behavior-summary.json",
+      "bytes": 30872,
+      "sha256": "b0e93f9aaea3b6d23c99b87254cd0bfc23ad385adcca3c29b74ec1e3fe538780"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-media-behavior.log",
+      "bytes": 7001,
+      "sha256": "0b9b0f46278d605e7d9d178db72bdee8e3ba3866d615e547482133ce69900dbf"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-media-behavior-source.zip",
+      "bytes": 307953,
+      "sha256": "25ab8043850c0c72311e6087ac1d68d31023f37edef11ba8b5974dcc43f67a38"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-media-behavior-android-0.xml",
+      "bytes": 2001,
+      "sha256": "8461d92b0e994d7e8db864e7e1dbc2dc479dc3989f16007820b780a7cb6c2709"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-real-uri-nominal-summary.json",
+      "bytes": 32316,
+      "sha256": "eab7b80d827808a4a2ec349a1e168723e7d92735a1716ce201053a45f727abc9"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-real-uri-nominal.log",
+      "bytes": 5445,
+      "sha256": "76dfa4173d3f6946acc4e961930f0b4356e141d6267d0011a481c505eb77ac29"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-real-uri-nominal-source.zip",
+      "bytes": 307299,
+      "sha256": "964a142ba5141041a97a2bc3ccde63ad8584bb17bcfbb5bca5b3752daebefb4f"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-real-uri-nominal-android-0.xml",
+      "bytes": 1920,
+      "sha256": "0f079f548493bc1cd687e56ed68711d03112afc697939ec8fd7cd9ae71a8a86c"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-complete-media-summary.json",
+      "bytes": 165396,
+      "sha256": "0d08cf9672bc4483f41ba37eb026f317466c47ecbdb9174f2c8f49bac8b8aae8"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-complete-media.log",
+      "bytes": 32153,
+      "sha256": "bd62924a8f2558b7e4500b4a0f37de1ac71733ba640fa857e840ae68d8d1e786"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-complete-media-source.zip",
+      "bytes": 307299,
+      "sha256": "964a142ba5141041a97a2bc3ccde63ad8584bb17bcfbb5bca5b3752daebefb4f"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-complete-media-android-0.xml",
+      "bytes": 128178,
+      "sha256": "bc2096b9788174c3dd03e51ad026cd52efe5bd4526775a1e11e52f39949292c4"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-initial-summary.json",
+      "bytes": 31849,
+      "sha256": "2fdfa7af6329327e98f50ed265c5122212c38e4db0d5653b7c8113969cebbd9c"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-initial.log",
+      "bytes": 4069,
+      "sha256": "4d72ce918dc0e087b4ed76a4a707606f6089021eef2247203987f2c8f8fcbeb8"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-initial-source.zip",
+      "bytes": 335181,
+      "sha256": "1d90354e7fb3c23f0459c4a8b382b87d5cc66fa5ce1fffea1efd5029412c3a28"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-behavior-summary.json",
+      "bytes": 133041,
+      "sha256": "21237130e5f20d3dd1102014d995260e17b5f29a88aa41dfa04299f5a59470c1"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-behavior.log",
+      "bytes": 32107,
+      "sha256": "5e8fcfec0f836e0f06cdb9b7c4beb7a819bc40d91f83d3a3210e798c345b6b19"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-behavior-source.zip",
+      "bytes": 335475,
+      "sha256": "8b620341203eb3ad2e8129a190f4a35b861fd8569d801a2a6b529f8647051514"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-behavior-android-0.xml",
+      "bytes": 92769,
+      "sha256": "8e5aeec63066c0cfc156705c6219b2c1eeac0d14388fc4fe04f6f0197b08c45b"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-risk-recheck-summary.json",
+      "bytes": 59545,
+      "sha256": "8e89c0e8540139c54cbf8e06519b0557099ad4e812ea1b5643b4ffe889fd7c29"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-risk-recheck.log",
+      "bytes": 8581,
+      "sha256": "bb4e85d5e3ac54673210d7dd5b9fad20f6a1bb1ee891cb37ae1daae7d645022e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-risk-recheck-source.zip",
+      "bytes": 340648,
+      "sha256": "18618626b6e284c7c9db11bb8ef19f0e781102dab67c7993e18394babcc1c647"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-risk-recheck-android-0.xml",
+      "bytes": 20918,
+      "sha256": "0f73e99e791cffa294da7732258f37e7db543657fb1dd0fce16650ba549cebca"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-repository-guards-summary.json",
+      "bytes": 43915,
+      "sha256": "8de6ea8f71785839650176d20999af1c20b91eb292927e7105c27e702a7ee656"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-repository-guards.log",
+      "bytes": 6295,
+      "sha256": "d80a5bc15a69140b0096f2fcd21b01a439afb98e1f481321feff4b0ee7cec17b"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-repository-guards-source.zip",
+      "bytes": 340653,
+      "sha256": "3523abfd62b5277c740c003c84cd513415d93b2f4252baef278f27d48b7f828a"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-repository-guards-android-0.xml",
+      "bytes": 8476,
+      "sha256": "9767c9dbf7da082e25666aef77506cd17fca468cb3b68673be8d2c776bdd23c9"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-integrated-summary.json",
+      "bytes": 60088,
+      "sha256": "ef4989f4e688e0404048035464dcad1e2c2d2691d7b6b95ec28f2b1081da1072"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-integrated.log",
+      "bytes": 10800,
+      "sha256": "319eefb2cd0ff3a0ac037dfc25261095d7c6f49c442ce28c5336f52178be3fc3"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-integrated-source.zip",
+      "bytes": 343824,
+      "sha256": "1d0008c137c13165c9821d7e71031b7bc025065d59368205ba7dab73c77f1d62"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-media-integrated-android-0.xml",
+      "bytes": 17453,
+      "sha256": "b55bbd0c65fa18aa8340f911c84e8e7221514b1fb4d7c3174a146a0868abf8a3"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-final-lifecycle-summary.json",
+      "bytes": 39715,
+      "sha256": "d0f9369337f8fab74084d455ecd69505942953213337652e302d28b0360db8ab"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-final-lifecycle.log",
+      "bytes": 7174,
+      "sha256": "3cc15fe84195a5d01923221e5d9f42b800fd83f95791a7343ba415f57fb1d451"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-final-lifecycle-source.zip",
+      "bytes": 394950,
+      "sha256": "8926d944a8dbaa2b3c5d344a2e2a78c3fa2070f206c06ec8f601e85900266c3b"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-final-lifecycle-android-0.xml",
+      "bytes": 7112,
+      "sha256": "db464bdaf9a388127882f563d3575c602eb8d900f4edc23dd88e34d062351f10"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-diagnostic-summary.json",
+      "bytes": 34194,
+      "sha256": "bad5ce29fd5783530fc4f8bfa6220d0f1417a8aad7c7888796f859672cfb5688"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-diagnostic.log",
+      "bytes": 5795,
+      "sha256": "2278a4ae05757015413dcf2f92d3a878508cc86a67b46c7b3277fe348f3554d6"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-diagnostic-source.zip",
+      "bytes": 395676,
+      "sha256": "74cc91a5396cf412b237b593a89b16eda8d2555648b797ea87631dd65a52156d"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-diagnostic-android-0.xml",
+      "bytes": 2233,
+      "sha256": "91d5be84ee78ef25b2316e417a2140b2dc2fa7bcaa326235754df44c20d71901"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-state-tree-summary.json",
+      "bytes": 34196,
+      "sha256": "dd2e8f2201c3ffe099e9407bb02d54b931d900c6cc148bf5fb4ace55a535077d"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-state-tree.log",
+      "bytes": 5672,
+      "sha256": "e8e293140aec9cac0e4ca78f2b47f95bd05104e53a2fdc820df544780f75a4ad"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-state-tree-source.zip",
+      "bytes": 395676,
+      "sha256": "83216e5240cbe38b472223bd518cc0b879a2350a7eb865d35c542556a5d7dc7d"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-state-tree-android-0.xml",
+      "bytes": 2233,
+      "sha256": "15393180c25b9ff09ebe2d5413d1e44533cc0d7bf6dfe61d7d86cf38ecdbb5f4"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-captured-summary.json",
+      "bytes": 34713,
+      "sha256": "a827962c0a946fe6048ba8e59dadc02cd1e49c7333b1f8a0fe73e2c18797aecb"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-captured.log",
+      "bytes": 5649,
+      "sha256": "979ef923495fffa3c9be42db3458d1eec5154f3ff3bbeb48fc4cba167a46d2da"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-captured-source.zip",
+      "bytes": 395683,
+      "sha256": "971ce589b75463f4e5a2b920e6eaacd792b27b4228acb6f52ec28e88f331b803"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-navigation-captured-android-0.xml",
+      "bytes": 8593,
+      "sha256": "3cac0a05c09bf320c47219bd70ba3878449efc35f257ac52cbcb408d36aba1ce"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-final-lifecycle-summary.json",
+      "bytes": 59533,
+      "sha256": "956a501cc4eee48ec5b7b46d7e1576587dc7117ac9f660007672836a5eb06439"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-final-lifecycle.log",
+      "bytes": 5418,
+      "sha256": "3c20b935bb9f279f0f27be49793b0025761de0260294a6b049c06446e04e2048"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-final-lifecycle-source.zip",
+      "bytes": 395796,
+      "sha256": "b9abe27f39329c6d08d95cd47f9259e17d42fb68cff36384f46572dd67a2a4b4"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-final-lifecycle-android-0.xml",
+      "bytes": 16554,
+      "sha256": "e382bd006b36e87e099d91810cde38b518a1bcaa42b914a3fc87319a4262fe4d"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-verified-summary.json",
+      "bytes": 192446,
+      "sha256": "16208043bc9ecfd791e9f77f543e503102a79fe903709d71c16b41a4f1be9cf0"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-verified.log",
+      "bytes": 18069,
+      "sha256": "260b77d6479ac628c2c3a8e0d414ee0e4b27d6d9f26dfb68d36b7de7886d58d0"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-verified-source.zip",
+      "bytes": 395796,
+      "sha256": "b9abe27f39329c6d08d95cd47f9259e17d42fb68cff36384f46572dd67a2a4b4"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-verified-android-0.xml",
+      "bytes": 100915,
+      "sha256": "704abd21a916bbd3bfec09181623b712ee1e69e09e0cea09cae509008fda0f64"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-m09-flow-capture-summary.json",
+      "bytes": 32169,
+      "sha256": "005ee9bcfa0c9ea3384d931c49c515b2a658f16fa2bca4cf67db01ee6eecfd8e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-m09-flow-capture.log",
+      "bytes": 4723,
+      "sha256": "6d7680e0903de3542ff41fdfb1aa25bf032e99c4b4215b98ce15cb3ae768ebae"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-m09-flow-capture-source.zip",
+      "bytes": 396175,
+      "sha256": "09c65c971554a8e3e67b3a34992736875d48c067c27661774ef7fa27316a0130"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-m09-flow-captured-summary.json",
+      "bytes": 37702,
+      "sha256": "9458377368d41addd9383633dc36dd8d925bf38244a3653d04b4a6161784f46e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-m09-flow-captured.log",
+      "bytes": 6598,
+      "sha256": "a2c9c32aba1f98047d92e01204434c1cd5cb0732fe1dd5071e6b8fff37f44526"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-m09-flow-captured-source.zip",
+      "bytes": 396173,
+      "sha256": "805f3cb858a8a81722410b56591d8a4857246f125eb228f85a0bf705cf2aeb50"
+    },
+    {
+      "path": "docs/evidence/m10-tests/red-m09-flow-captured-android-0.xml",
+      "bytes": 11934,
+      "sha256": "206599d49204c8d8b1ec77060551b60e536b5ce3095072d7bc806198780e7b41"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-legacy-ui-loading-sync-summary.json",
+      "bytes": 34979,
+      "sha256": "1e2a7ec4639a017ad225483bcfc014b3762c3d163f67a61aa6cc444e4f7033fb"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-legacy-ui-loading-sync.log",
+      "bytes": 5106,
+      "sha256": "1bad10afe34941c722a4a97a4a80e3b3e42bea71f5f351ebb1b3a25eed78333f"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-legacy-ui-loading-sync-source.zip",
+      "bytes": 396122,
+      "sha256": "147169ecb4c814b07e1b05bb40033647f0cbd136963246ab9437d359f2142f5e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-legacy-ui-loading-sync-android-0.xml",
+      "bytes": 1692,
+      "sha256": "502b4f672f4f556568748a8df615504aaca8ddc70dcab4655441e32c8bb05641"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-summary.json",
+      "bytes": 57011,
+      "sha256": "851b0164d6e282bfd64243ecdc38ec0769e053214339bd7ee2718c60987c20c7"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun.log",
+      "bytes": 14490,
+      "sha256": "73180bc7a0015889262a2eaacffa879a0ef2267de82ba8105e97a062e237ec3a"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-source.zip",
+      "bytes": 396122,
+      "sha256": "147169ecb4c814b07e1b05bb40033647f0cbd136963246ab9437d359f2142f5e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-android-0.xml",
+      "bytes": 2586,
+      "sha256": "72fbc3153f60ebd66446ea45d27b2af93a1760a31a12c56444b361d445311925"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-0.xml",
+      "bytes": 1537,
+      "sha256": "eae1e75a4843d5dae7ae965d22ae2fabd3007795a0e89d959d3881eb6bd6f687"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-1.xml",
+      "bytes": 1221,
+      "sha256": "59ea17e2a97fbc22f83d5f3d48acbcb9257c0c13bf853a34f137c8eb72b97c40"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-2.xml",
+      "bytes": 606,
+      "sha256": "f4cfbb2df68153bc58ebf28be6c6332c1ec4a7cb42120a75bdbf4b43b42f399f"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-3.xml",
+      "bytes": 3522,
+      "sha256": "0d10935b2854f0d1bf48259fa991af2a3a24ef89eb2f9a3cddb9b729994d594c"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-4.xml",
+      "bytes": 985,
+      "sha256": "6d8b3d28151e515e797737eec80a8b6e561ffbef5deb5753be5173df12ff381c"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-5.xml",
+      "bytes": 1372,
+      "sha256": "078a68749ee74953d36366a7c5e5acbd6d68f08b7c4992cf7d9a97b91a4a8a15"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-6.xml",
+      "bytes": 6115,
+      "sha256": "2b8339a3e0eb3f2cb78e3254797349284de7d8573c2fc2517ca18541effd0f01"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-final-rerun-summary.json",
+      "bytes": 32385,
+      "sha256": "dd4bcee5f9f4bb37ede3da0007c3233b253271c5add82431fe7e830e349c761a"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-final-rerun.log",
+      "bytes": 5602,
+      "sha256": "27db377db279d1dd1db14d78442fafcd7a6b6f9da19e0d8585a62ba204d32f75"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-final-rerun-source.zip",
+      "bytes": 396122,
+      "sha256": "147169ecb4c814b07e1b05bb40033647f0cbd136963246ab9437d359f2142f5e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-final-rerun-android-0.xml",
+      "bytes": 769,
+      "sha256": "e91c14136f0d058e18fdef16e2b7bf1c368d81e7f16da08157b1c1593bc7cb78"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-summary.json",
+      "bytes": 170861,
+      "sha256": "fd7aa8ef770749dadf3c50fc280e90652cadf4097ce4176a9cf24113df0d17b2"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device.log",
+      "bytes": 16192,
+      "sha256": "84a48a8b75ec58af75a3b120076d9af0b37e41f80d25b991d8694848c2391d9e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-source.zip",
+      "bytes": 396122,
+      "sha256": "147169ecb4c814b07e1b05bb40033647f0cbd136963246ab9437d359f2142f5e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-android-0.xml",
+      "bytes": 89450,
+      "sha256": "a40b568a369741a23cab1d67c6ca90a3a887daace17fd11f05ae788a79ec8c22"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-0.xml",
+      "bytes": 1537,
+      "sha256": "9fc351a1ab2b8d09e6adf4f9394863dce2580d2bd123ccff73fed0640ca4e97b"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-1.xml",
+      "bytes": 1221,
+      "sha256": "a6f83ff4a7b5d53ef3206742918582ae7faea64c948485609f62ec716b31fbc3"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-2.xml",
+      "bytes": 606,
+      "sha256": "89fdeea6aafcbd8ddbd0f9471dd73ea6c61bba1d85252b48ca404c0024ebfc58"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-3.xml",
+      "bytes": 3511,
+      "sha256": "288d46c9a33ba89fee6fc6fd95a3de6da822c015718e841c44f922d9f7261133"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-4.xml",
+      "bytes": 987,
+      "sha256": "43a7f039ae0498375110722828192d121c76e3509448b7d653b0102ec711cb93"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-5.xml",
+      "bytes": 1372,
+      "sha256": "f1c3d13293e889f1c91cdc1bbcd92d8d3cff4b8cbcb17bef113637c22f860bf7"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-6.xml",
+      "bytes": 6115,
+      "sha256": "b1390ededca2370e3409b32984e27d9638f93b744f3cb6f16a1f2645db5736a7"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-final-clean-summary.json",
+      "bytes": 32099,
+      "sha256": "a128b49a47b237b97e3ec99220b4cdbe059a672857bf195bdd65e7bdecf9fc52"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-final-clean.log",
+      "bytes": 7333,
+      "sha256": "e2fabf2193f9f71bd85a58cb34358d414d38ba952cbce91393751cf52de79e40"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-final-clean-source.zip",
+      "bytes": 396122,
+      "sha256": "147169ecb4c814b07e1b05bb40033647f0cbd136963246ab9437d359f2142f5e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-connected-final-summary.json",
+      "bytes": 32502,
+      "sha256": "29832b294f2b0d8b0f9880db6a5fe9f53a596153501e2dc3636b97c39fd299ea"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-connected-final.log",
+      "bytes": 5236,
+      "sha256": "0932a7827e2501e7641fbfc95b1cd1000464b524cfbcda7b46e2ccc48722c5e7"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-connected-final-source.zip",
+      "bytes": 396122,
+      "sha256": "147169ecb4c814b07e1b05bb40033647f0cbd136963246ab9437d359f2142f5e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-connected-final-android-0.xml",
+      "bytes": 475,
+      "sha256": "803179bbb8baefe3ae79e0dd618d5b15406a766b5899f6b326375e7ac444e2e4"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-summary.json",
+      "bytes": 229168,
+      "sha256": "914962ea35e962db7b8622e334a97de0c9e5834078ca57cb26e9219c0bf885d6"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final.log",
+      "bytes": 19009,
+      "sha256": "c3be1276c97c001e3df5443de194873ea6221d1c9c7396a782d0684f0d930e19"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-source.zip",
+      "bytes": 396207,
+      "sha256": "b56314b5dae8521a5c9416636cf92c9b46e0f5bd6791c790ecfcd3311a096ba8"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-android-0.xml",
+      "bytes": 128032,
+      "sha256": "fd2129950c504ea7f887b21d4bc33243dabde7c97c576300a33f2cd7a1e6ba0a"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-0.xml",
+      "bytes": 1536,
+      "sha256": "653e1a772e0d0d859e77f3888cc03a9c1c78f308fc75437e19ea3452b84210d4"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-1.xml",
+      "bytes": 1220,
+      "sha256": "648bb593c3d0056c0455acc18760a4609821b91774d9879b8c02cf4e2aca76b4"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-2.xml",
+      "bytes": 606,
+      "sha256": "331e6d26a68194e620243c60537898835f90bcfb1bd39b53fc4188757be9c934"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-3.xml",
+      "bytes": 3516,
+      "sha256": "5fe391afd0f1890de00c2ac0d23d2040beb8a8ce56852843fe7dd65ec657d076"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-4.xml",
+      "bytes": 989,
+      "sha256": "90306e761bca7eee66b5eaf0f7c447fcf9b522c7efa6d6dc5e2dcec45d873f99"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-5.xml",
+      "bytes": 1369,
+      "sha256": "258d3f798b20e9fe5d84d55f2cf648d270f8f2fc4fd1de700aa3f3c979f52005"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-6.xml",
+      "bytes": 6107,
+      "sha256": "86d0b5ee8e2c259a4cb4299e85e9d8d84aa738b4dd6f52c139e3c1b04c968dde"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-systemui-clean-final-summary.json",
+      "bytes": 186517,
+      "sha256": "14166febf7ecd30b2aaf185e83b0a4be805f7c3e996fbf665946885231605d5e"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-systemui-clean-final.log",
+      "bytes": 9451,
+      "sha256": "2550f9fd90f9c07fb3457fcac57265d84a603df202202f4d3f8c83846d74949d"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-systemui-clean-final-source.zip",
+      "bytes": 396207,
+      "sha256": "b56314b5dae8521a5c9416636cf92c9b46e0f5bd6791c790ecfcd3311a096ba8"
+    },
+    {
+      "path": "docs/evidence/m10-tests/green-android-systemui-clean-final-android-0.xml",
+      "bytes": 94353,
+      "sha256": "851c6db842047651675efb4e9e50faa0d1ead13322f33a39c77fd98ad2ce91fc"
+    }
+  ],
+  "rawCapturedBytesPreserved": true,
+  "sourceZipNote": "Early archives contain only Kotlin; later archives contain every recorded build input. Each zip entry byte/hash verified against corresponding phase. No APK/database/media/key is included."
+}

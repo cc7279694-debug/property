@@ -1,6 +1,6 @@
 # 规划资料与来源登记
 
-更新日期：2026-10-13。原始Planning Baseline 1.0在M00接入，M00～M08已独立验收冻结PASS WITH NOTES；当前M09实施验证后READY_FOR_REVIEW、独立PENDING，范围见[M09契约](M09_CONTRACT.md)。原规划来源字节不改，当前实际结果另记；Q02/Q07解释、Q03～Q06期限及所有历史独立NOTES保留，M10未授权。
+更新日期：2026-10-14。原始Planning Baseline 1.0在M00接入，M00～M09已独立冻结PASS WITH NOTES；M10本轮交付READY_FOR_REVIEW，独立验收PENDING，范围及完整用户指令SHA见[M10契约](M10_CONTRACT.md)。原规划来源字节不改，当前实际结果另记；Q02/Q07解释、Q03/Q04/Q06期限和全部历史NOTES保留，Q05USER_CONFIRMED但M11/M12完整往返仍NOT_RUN，M11未授权。
 
 ## 实际取得的原始资料
 

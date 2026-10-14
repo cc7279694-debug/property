@@ -1,0 +1,310 @@
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:checkDebugAndroidTestAarMetadata UP-TO-DATE
+> Task :app:processDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :app:compileDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:mapDebugAndroidTestSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugAndroidTestResources UP-TO-DATE
+> Task :app:mergeDebugAndroidTestResources UP-TO-DATE
+> Task :app:processDebugAndroidTestManifest
+> Task :app:kspDebugKotlin
+> Task :app:processDebugAndroidTestResources
+> Task :app:javaPreCompileDebugAndroidTest UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:mergeDebugAndroidTestShaders UP-TO-DATE
+> Task :app:compileDebugAndroidTestShaders NO-SOURCE
+> Task :app:copyRoomSchemasToAndroidTestAssetsDebugAndroidTest UP-TO-DATE
+> Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :app:mergeDebugAndroidTestAssets UP-TO-DATE
+> Task :app:compressDebugAndroidTestAssets UP-TO-DATE
+> Task :app:desugarDebugAndroidTestFileDependencies UP-TO-DATE
+> Task :app:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebugAndroidTest UP-TO-DATE
+> Task :app:mergeLibDexDebugAndroidTest UP-TO-DATE
+> Task :app:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebugAndroidTest UP-TO-DATE
+> Task :app:writeDebugAndroidTestSigningConfigVersions UP-TO-DATE
+> Task :app:compileDebugKotlin
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugJavaRes
+> Task :app:kspDebugAndroidTestKotlin
+> Task :app:mergeDebugJavaResource
+> Task :app:mergeProjectDexDebug
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :app:compileDebugAndroidTestKotlin
+> Task :app:compileDebugAndroidTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:dexBuilderDebugAndroidTest
+> Task :app:mergeDebugAndroidTestGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugAndroidTestJavaRes
+> Task :app:mergeDebugAndroidTestJavaResource
+> Task :app:mergeProjectDexDebugAndroidTest
+> Task :app:packageDebugAndroidTest
+> Task :app:createDebugAndroidTestApkListingFileRedirect UP-TO-DATE
+
+> Task :app:connectedDebugAndroidTest
+Starting 50 tests on Lithic_M01_API_36(AVD) - 16
+
+com.cooper.lithic.data.media.LocalImageStoreTest > prepare_does_not_create_formal_file[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/0cafc621-ca6b-4343-a4df-7d20b8ee9952.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > changed_bytes_are_not_reencoded_or_silently_repaired[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/f81abeac-9854-42e0-8c5b-5f381f727302.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > remove_active_prepared_resource_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/2cd37869-7494-4453-b0b3-ecc153c949e0.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > truncated_jpeg_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/2ea0b666-6f5c-42dd-84fc-5bfa603492e8.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > enormous_png_dimensions_are_rejected_before_decode[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/8c80e449-010d-42aa-8a52-820225152bc0.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > normalized_metadata_matches_real_private_bytes[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/a121422d-d847-414f-94b8-6a874b085074.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > encoding_failure_leaves_no_formal_resource[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/69e04bc9-8a9d-42a2-96f1-2a2ca4276f5a.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > original_uri_is_not_a_persistent_asset_path[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/983a54d4-d8c8-4ac0-bb67-2ae87e72353a.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > bounded_decode_rejects_real_over_40mp_before_bitmap_allocation[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/83eeeac4-37f2-4416-a411-1b28843d86bc.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > all_eight_exif_orientations_use_correct_corner_geometry[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/d957effa-d6b0-44bd-83ac-47dc89c05d90.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > incorrect_declared_mime_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/e2e43f5a-3935-4ee6-9094-525d43a2d866.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > file_write_failure_leaves_no_formal_resource[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/2782d925-ba53-4bc1-b515-f64a2f0f9491.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > symlink_target_cannot_escape_private_media[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/0e503dfe-75d1-4d3c-9646-74714899d81b.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > private_relative_paths[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/79848cb6-025c-499f-a802-16eca3f184d5.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > copy_survives_source_removal[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/716341fa-913a-4063-9db5-e8198b9ff9a5.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > oversized_source_stream_is_bounded[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/6867af59-6eb5-44d4-87de-f1ac91acdcd6.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > repeated_commit_is_exact_read_only_replay[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/6ee16d67-b5db-436a-bf98-416baf3c1d9b.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > apng_animation_control_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/20fbea33-ac5e-4955-8eb2-b610a5675ee4.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > nested_or_absolute_asset_path_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/bb0b8878-d089-451d-9d26-9a6793b3e7dd.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > prepared_identity_can_be_restored_without_source_uri[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/9c7a88d2-da9e-4469-92c1-49afbf97f774.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > png_transparency_is_not_silently_jpeg_encoded[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/9ec85910-30cc-4d97-ac01-d35ef659612d.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > symlink_media_directory_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/3454e913-a566-4eff-8a2d-1f6912f8e90a.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > cleanup_preserves_unknown_file_and_invalid_owner[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > path_into_other_generation_cannot_read_or_delete[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/c7a82615-2c5c-442e-a08b-02f924c78dbd.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > discard_prepared_does_not_delete_final_with_uncertain_db_result[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/0c26010c-79ef-49e2-8507-d3652e83cb83.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > decode_failure_leaves_no_managed_asset[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/b6f16c05-c17c-4191-8c04-cb78194afafc.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > jpeg_direction_and_location_metadata_are_normalized[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/28d63ffc-34b8-4d55-bd3a-18a3ef857865.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > output_still_over_2mib_is_explicit_failure[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/6e32073b-62b9-409d-9432-b24ccda3d0de.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > corrupt_png_crc_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/2d31d9f2-107a-412d-aac6-04c2dc718efd.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > orphan_final_can_be_reclaimed_after_restart[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/758330a5-bda6-4225-ada6-4b084c95f3bc.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > repeated_prepare_does_not_encode_or_create_second_asset[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/e0f60396-b128-4f73-94a4-c4f82b2d30d3.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > zero_png_dimensions_are_invalid[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/e40250ba-a52e-4451-9d7d-d9a0a5d9486f.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > non_image_input_is_explicitly_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/4d146334-e47b-4b7a-8b39-f67715af9714.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > discarded_uncommitted_preparation_is_safely_removed[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/c8cc9ae2-5668-410f-9729-1eebf33170c7.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > truncated_png_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/e158d9d1-ea97-4527-94ea-55a923b26942.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > metadata_mismatch_is_explicit_error[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/29ebf6ec-8cf6-444e-b6e9-dc011c507bb5.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > repeated_reads_do_not_change_file_or_hash[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/e95675ab-32f3-4f6b-9db2-d57a2bc385d8.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > stable_uuid_cannot_overwrite_existing_file[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/6f06fa78-7f76-4adc-b31d-4970f7b4691f.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > gif_is_not_accepted_as_static_cover[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/ff8c347f-2064-4988-89b4-f0de57e426fe.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > mpo_multiframe_jpeg_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/053b000a-4901-48fc-a300-4b33a991aa00.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > missing_file_is_not_reported_as_no_cover[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.io.FileNotFoundException: /data/user/0/com.cooper.lithic.debug.test/cache/m10-synthetic-image-sources/0a9bd1fc-137b-415e-8b69-650f77ded885.bin: open failed: ENOENT (No such file or directory)
+	at libcore.io.IoBridge.open(IoBridge.java:574)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > load_target_returns_complete_project_and_money_facts[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected the real project baseline, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > remove_cover_keeps_original_money_and_identity[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful cover removal, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.feature.media.M10CoverViewModelTest > project_cover_editor_retains_real_identity_and_history_origin_without_writing[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Opening a real project's cover must produce a recoverable editor
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.feature.media.M10CoverViewModelTest > subscription_cover_editor_retains_identity_and_real_payment_without_writing[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Opening a real subscription's cover must produce a recoverable editor
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.feature.media.M10CoverViewModelTest > system_picker_cancel_does_not_dirty_or_write_project_or_media[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Picker cancellation must be handled by the formal cover editor
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.feature.media.M10CoverRoutesTest > prepared_cover_requires_explicit_discard_and_another_pending_write_still_blocks[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: expected:<CONFIRM_DISCARD> but was:<ALLOW>
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.feature.media.M10CoverRoutesTest > subscription_cover_retains_current_and_stopped_history_detail_parent_chain[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: expected:<[Home, SubscriptionList, SubscriptionDetail(id=10000000-0000-0000-0000-000000000912, origin=CURRENT), SubscriptionCover(id=10000000-0000-0000-0000-000000000912, origin=CURRENT)]> but was:<[Home]>
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.feature.media.M10CoverRoutesTest > project_cover_retains_current_and_history_detail_parent_chain[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: expected:<[Home, ProjectList, ProjectDetail(id=10000000-0000-0000-0000-000000000911, origin=CURRENT), ProjectCover(id=10000000-0000-0000-0000-000000000911, origin=CURRENT)]> but was:<[Home]>
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.feature.media.M10CoverRoutesTest > pending_cover_cannot_be_discarded_by_either_other_feature[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: expected:<BLOCK_PENDING> but was:<ALLOW>
+	at org.junit.Assert.fail(Assert.java:89)
+Tests on Lithic_M01_API_36(AVD) - 16 failed: There was 50 failure(s).
+
+Finished 50 tests on Lithic_M01_API_36(AVD) - 16
+
+> Task :app:connectedDebugAndroidTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:connectedDebugAndroidTest'.
+> There were failing tests. See the report at: file:///E:/CODEX/%E7%A0%BA%E7%9F%B3%E6%96%B0APP/app/build/reports/androidTests/connected/debug/index.html
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 2s
+70 actionable tasks: 18 executed, 52 up-to-date

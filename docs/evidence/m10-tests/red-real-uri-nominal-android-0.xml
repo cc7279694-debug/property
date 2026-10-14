@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.media.LocalImageStoreTest" tests="1" failures="1" errors="0" skipped="0" time="1.555" timestamp="2026-10-13T12:08:12" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="copy_survives_source_removal" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.707">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)
+at com.cooper.lithic.data.media.LocalImageStoreTest$copy_survives_source_removal$1.invokeSuspend(LocalImageStoreTest.kt:39)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.copy_survives_source_removal(LocalImageStoreTest.kt:38)
+</failure>
+  </testcase>
+</testsuite>

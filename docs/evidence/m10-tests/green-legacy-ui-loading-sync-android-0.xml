@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" tests="8" failures="0" errors="0" skipped="0" time="320.483" timestamp="2026-10-13T15:04:41" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="expiry_needs_no_worker" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="44.151" />
+  <testcase name="cancel_renewal_keeps_paid_access" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="65.748" />
+  <testcase name="future_prepaid_has_own_label" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="22.108" />
+  <testcase name="stop_reason_does_not_cancel_vendor" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="29.419" />
+  <testcase name="pause_is_not_history" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="47.758" />
+  <testcase name="payment_history_correction_and_delete_require_visible_confirmation" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="41.19" />
+  <testcase name="resume_without_new_payment" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="47.318" />
+  <testcase name="large_text_synthetic_form_keeps_errors_save_and_return_reachable_after_input" classname="com.cooper.lithic.ui.UIComponentsTest" time="17.421" />
+</testsuite>

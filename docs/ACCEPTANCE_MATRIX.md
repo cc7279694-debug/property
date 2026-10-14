@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录 M00～M08 实际执行与独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
+本文件记录 M00～M09 实际执行/独立验收历史与本轮M10实际交付；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-13。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M08 正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；当前 M08 依据用户转交的 ChatGPT 正式独立代码验收结论，评审 HEAD `a716bc5ad9e3ab49cbe858f2c966fecf93e09fbb`，完整登记见末尾。全部历史评审/NOTES、执行验收及当时交付证据保留，本轮只回写结论，不重新运行测试或增加产品测试 PASS。原130案例及16组完整跨模块补测继续 NOT_RUN；M09 未授权。
+日期：2026-10-14。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09 正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`，详见[M09正式记录](#m09-独立代码验收与正式冻结记录2026-10-13)。本轮 **M10 — READY_FOR_REVIEW，独立验收PENDING**，相同147输入的652项分开执行覆盖与真实设备结果见末尾新增登记，不自行授予冻结。全部历史评审/NOTES、执行验收及当时交付证据保留；原130案例及16组完整跨模块补测继续 NOT_RUN，M11未授权。
 
 ## 独立验收记录
 
@@ -628,3 +628,48 @@ Task3038已STOPPED/HaveState=true/Bundle6360bytes后UID SIGKILL，旧PID14365消
 M09两项已确认产品规则继续保留原来源与实施验证：用户完整M09执行指令SHA-256 `d83fb2d77190b0c49df8b5adf9a6e13c8cae8ca203513f9f5e98b0729350eaab`、[DECISIONS](DECISIONS.md)、[M09契约](planning/M09_CONTRACT.md)和[问题清单](SPEC_ISSUES.md)登记A/B规则；[M09报告](evidence/M09-verification.md)、[原结构化证据](evidence/M09-verification.json)与[历史checkpoint](checkpoints/2026-10-13-M09.md)保留实际实施与验证。A规则允许STOPPED后同身份重开，覆盖内不创建付款，未来已付未生效仍EXPIRED，无覆盖时显式真实付款与ENABLED同事务；B规则默认停止固定全部已确认覆盖最晚边界与业务今天中的较晚日，后续付款不静默延长，需明确修正或取消计划。维持USER_CONFIRMED / IMPLEMENTED / VERIFIED及已关闭的两项流程风险，本次不重新定案、不修改实现，不自动关闭Q03～Q06或未来模块事项。
 
 本节正式结论取代M09此前READY_FOR_REVIEW/PENDING的当前效力；上节执行登记及原报告/checkpoint保留当时状态。本次仅更新唯一CURRENT_STATE与本登记，检查Git差异、链接、敏感信息、工作区及历史资料保护后，提交并推送 `feat/m09-subscription-lifecycle`。回写提交自身SHA、推送及远端一致以实际Git日志/最终回执核对，避免递归自引用。不修改业务代码、WHOCARE、原规划或旧证据，不合并main、不force、不进入M10；完成后立即停止。
+
+## M10 本轮实际交付记录（2026-10-14）
+
+**READY_FOR_REVIEW — M10；独立验收PENDING。**来源为用户完整M10指令SHA `61638f3048268f9fcd2a2bddb050f6ffae7d863399288eacc077365cc502a8fc`，基线 `57de897917473f255d43dfb306a8433b366c00eb`，分支 `feat/m10-local-cover-media`。原43份/24计划/130案例、16组完整跨模块验收及历史证据保持。M09上节禁止M10属于当时历史，当前授权以本节来源为准，不反向改历史。
+
+[14项报告](evidence/M10-verification.md)、[结构化登记](evidence/M10-verification.json)、[文件清单](evidence/M10-files.md)、[checkpoint](checkpoints/2026-10-13-M10.md)记录实际结果。**652个唯一JUnit方法PASS＝旧549＋新103＝86 JVM＋566 Android，0失败/错误/跳过；不是一次652项BUILD SUCCESSFUL。**当前完整147输入与两实际阶段/源码ZIP原字节相同，方法与所选XML逐项对应：86来自green-full-runner-final成功JVM子命令（67.033秒/退出0），该阶段整体FAIL且9项Android失败不选；566来自green-android-systemui-clean-final（639.901秒/退出0/日志10m39s），同时Lint0 errors/23 warnings和assemble成功。26完成阶段/44XML/122完成原件与1中断尝试原日志/ZIP保留，不造summary、不按重复运行累计方法。
+
+| 当前执行案例 | 状态 | 实际依据 |
+|---|---|---|
+| M10-T01 | PASS | 系统选A→私有保存→移除确切合成源→冷重开仍同私有SHA；源删除/准备恢复自动化 |
+| M10-T02 | PASS | 最终APK无网络/相机/广泛存储权限；真实系统取消七表/设置零写 |
+| M10-T03 | PASS | 六类真实故障保护旧引用/字节/成本/状态；实际坏源明确错误，旧B与七表相同 |
+| M10-T04 | PASS | API36实际有界解码/40MP/坏容器/非图/动画/多帧/64MiB/2MiB/方向/alpha；不冒充API26 |
+| M10-T05 | PASS | 实际私有UUID相对路径/metadata/SHA，无源URI；越界/链接/其他代/不可覆盖及旧路径回归 |
+
+追加安全案例的方法映射见报告第10节，不增加产品功能。
+
+| 案例 | 状态 | 实际证据范围 |
+|---|---|---|
+| M10-S01 | PASS | 双项目同资源与替换保护另一引用 |
+| M10-S02 | PASS | 项目/订阅共享、生产store双引用守卫及实际同owner setup＋正式UI |
+| M10-S03 | PASS | 替换后另一对象旧图/引用保留 |
+| M10-S04 | PASS | 最后引用解除、失败可重试及实际确切旧文件不存在 |
+| M10-S05 | PASS | 项目删除后独立GC；实际二次确认删QA项目保留订阅B |
+| M10-S06 | PASS | null取消与真实系统取消七表零写 |
+| M10-S07 | PASS | 活动准备/unknown/无凭据/不确定新图与快照清理保护 |
+| M10-S08 | PASS | 丢回传同身份重放、COMMITTED只读 |
+| M10-S09 | PASS | 文件DB前真实SIGKILL PID4239→4297、保旧/已知孤儿清理 |
+| M10-S10 | PASS | DB提交GC前真实SIGKILL PID4335→4375、完整新图/安全旧图清理 |
+| M10-S11 | PASS | 并发/重复保存单资源；实际同准备ID恢复单行提交 |
+| M10-S12 | PASS | 项目完整事实/订阅付款与状态的旧基线冲突 |
+| M10-S13 | PASS | 已存缺失/损坏明确失败不盲删；实际坏源错误另记 |
+| M10-S14 | PASS | 实际私有尺寸/MIME/字节/SHA；PNG alpha/GPS核验 |
+| M10-S15 | PASS | 重复读取/冷重开字节哈希稳定 |
+| M10-S16 | PASS | 项目全事实/金额引擎及旧结束/历史纠错保护 |
+| M10-S17 | PASS | 订阅付款/状态/成本及旧续费/停止/重开保护 |
+| M10-S18（API26实际运行） | NOT_RUN | minSdk26/内置API/Lint配置核对PASS；未运行API26，不冒充平台验证 |
+| M10-S19 | PASS | 360dp/200%真实IME、raw错误、滚动保存/选图 |
+| M10-S20 | PASS | 横竖屏/边缘手势守卫；同Task616真实SIGKILL恢复/一次保存，非真实LMK |
+
+实际API36依据见[最终设备核验](evidence/m10-device/manual/final-storage-device-proof.json)与[受控截图/metadata白名单](evidence/m10-device/manual/manual-public-manifest.json)。原AVD误重建导致原设备连续保留中断；严格重建保存的原M09合成fixture并保留空generation后，实际原code7→最终code8覆盖升级，旧七表原行/字段/GMT/pointer/ready/settings字节保留。**不称原设备连续升级或M12产品恢复。**全部guest设置恢复，差异0/UTC差0.731秒，宿主及其他设备未改。早期未注册Runner、共享初始化失败、加载截图/屏外就绪超时保留；后续实际就绪与明确保存已核验，不计JUnit。
+
+最终APK code8/0.1.0-m10-debug，12,755,115 bytes，SHA `939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094`与实际设备字节相同；v2签名/旧证书、90生产类/测试排除/九域备份配置已核对。Room v2/原v1/v2导出/冻结引擎/唯一owner及依赖122→122不变，无新schema/迁移或图片依赖。
+
+NOTES：Room与文件不跨资源原子；无有效归属凭据的中断残留/unknown保守保留，操作凭据不是永久草稿/备份。SavedState不保证force-stop/断电/真实LMK；空间不足可能表现DATABASE但原子性不能降低；性能归M22。Q05 USER_CONFIRMED，完整M11/M12往返及Q05-V01～V03仍NOT_RUN、不整体CLOSED；Q03/Q04/Q06期限、M09 A/B来源及全部历史NOTES不变。真机/API26/OEM/Release/完整TalkBack/真实LMK/断电、完整备份恢复和Q06回退均NOT_RUN。Debug不保存不可丢失重要记录。独立验收PENDING，停止在M10，不合并main或进入M11；提交SHA与推送以实际Git日志/最终回执核对。

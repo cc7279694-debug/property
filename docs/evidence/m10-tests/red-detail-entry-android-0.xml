@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" tests="2" failures="2" errors="0" skipped="0" time="12.292" timestamp="2026-10-13T11:43:27" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="8.1">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'subscription-cover-empty')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.media.M10CoverEntryScreensTest.subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry(M10CoverEntryScreensTest.kt:47)
+</failure>
+  </testcase>
+  <testcase name="project_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="2.972">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-cover-empty')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.media.M10CoverEntryScreensTest.project_without_cover_exposes_safe_placeholder_and_add_cover_entry(M10CoverEntryScreensTest.kt:37)
+</failure>
+  </testcase>
+</testsuite>

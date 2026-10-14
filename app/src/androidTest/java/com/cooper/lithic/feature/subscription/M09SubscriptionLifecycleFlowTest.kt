@@ -8,6 +8,7 @@ import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -217,7 +218,21 @@ class M09SubscriptionLifecycleFlowTest {
         compose.onNodeWithTag("subscription-detail-screen").assertIsDisplayed()
     }
     private fun detailNode(tag: String): androidx.compose.ui.test.SemanticsNodeInteraction {
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag)); return compose.onNodeWithTag(tag)
+        // Returning to an existing Nav3 entry can begin a fresh read after waitDetail.
+        // Retry only the loading transition; a loaded page missing its action still fails.
+        compose.waitUntil(10_000) {
+            val before = model.state.value.detail
+            if (before.loading || before.history.loading) false
+            else try {
+                compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
+                true
+            } catch (failure: AssertionError) {
+                val current = model.state.value.detail
+                val loadingOnScreen = compose.onAllNodesWithText("正在读取订阅").fetchSemanticsNodes().isNotEmpty()
+                if (current.loading || current.history.loading || loadingOnScreen) false else throw failure
+            }
+        }
+        return compose.onNodeWithTag(tag)
     }
     private fun observe(date: LocalDate) {
         fixture.clock.date = date; fixture.onMain { model.refresh() }

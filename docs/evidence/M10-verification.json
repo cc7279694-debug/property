@@ -1,0 +1,1871 @@
+{
+  "module": "M10",
+  "delivery": "READY_FOR_REVIEW",
+  "independentAcceptance": "PENDING",
+  "generatedUtc": "2026-10-14T06:22:28.817387+00:00",
+  "baseCommit": "57de897917473f255d43dfb306a8433b366c00eb",
+  "branch": "feat/m10-local-cover-media",
+  "requestSha256": "61638f3048268f9fcd2a2bddb050f6ffae7d863399288eacc077365cc502a8fc",
+  "formalCases": [
+    {
+      "id": "M10-T01",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section7 and final source/XML/device records"
+    },
+    {
+      "id": "M10-T02",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section7 and final source/XML/device records"
+    },
+    {
+      "id": "M10-T03",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section7 and final source/XML/device records"
+    },
+    {
+      "id": "M10-T04",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section7 and final source/XML/device records"
+    },
+    {
+      "id": "M10-T05",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section7 and final source/XML/device records"
+    }
+  ],
+  "additionalCases": [
+    {
+      "id": "M10-S01",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S02",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S03",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S04",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S05",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S06",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S07",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S08",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S09",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S10",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S11",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S12",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S13",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S14",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S15",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S16",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S17",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S18",
+      "status": "NOT_RUN",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "API26 runtime unrun; minSdk26 and Lint configuration verified"
+    },
+    {
+      "id": "M10-S19",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    },
+    {
+      "id": "M10-S20",
+      "status": "PASS",
+      "evidence": "docs/evidence/M10-verification.md section10",
+      "limit": "Actual current implementation coverage; future platforms/backup not implied"
+    }
+  ],
+  "tests": {
+    "result": "PASS",
+    "uniqueMethods": 652,
+    "jvm": 86,
+    "android": 566,
+    "oldMethods": 549,
+    "newMethods": 103,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "singleGradle652Green": false,
+    "sameCompleteInputOriginalBytes": 147,
+    "selectedJVM": {
+      "phase": "green-full-runner-final",
+      "successfulSubcommandSeconds": 67.033,
+      "subcommandExit": 0,
+      "overallPhaseResult": "FAIL",
+      "excludedAndroidFailures": 9
+    },
+    "selectedAndroidLintAssemble": {
+      "phase": "green-android-systemui-clean-final",
+      "seconds": 639.901,
+      "exitCode": 0,
+      "log": "BUILD SUCCESSFUL in 10m 39s"
+    },
+    "selectedOriginalEvidence": {
+      "path": "docs/evidence/m10-tests/final-split-verification.json",
+      "bytes": 40548,
+      "sha256": "975fbb742e98c01fc9a0ee04d78a529af32ce3c370e75a28dd000038acba7dc1"
+    },
+    "selectedMethods": {
+      "path": "docs/evidence/m10-tests/final-split-methods.json",
+      "bytes": 440654,
+      "sha256": "39929be2c4c413232b9f5cf4499fe4452b04296a8bd24ca3290b1c199991a388"
+    },
+    "newGroups": {
+      "LocalImageStore": 47,
+      "MediaRepository": 36,
+      "CoverViewModel": 11,
+      "Routes": 4,
+      "Navigation": 3,
+      "DetailEntries": 2
+    },
+    "oldDrivers": {
+      "methodsPreserved": 15,
+      "completeOriginalAsserts": 117,
+      "originalClickCallsPreserved": true,
+      "other44OldTestFilesOriginalBytes": true,
+      "change": "Two narrowly authorized loading/callback synchronization adjustments, no assertions removed or domain/UI behavior rewritten"
+    },
+    "completedPhases": 26,
+    "completedXML": 44,
+    "completedRawArtifacts": 122,
+    "interruptedAttempts": 1,
+    "interruptedSummaryFabricated": false,
+    "phaseProvenance": {
+      "path": "docs/evidence/m10-tests/phase-provenance.json",
+      "bytes": 44072,
+      "sha256": "e7320d1215b51638e9b87e5ca4cd088c312b6964146f84c578bf7496166b1ea2"
+    },
+    "retainedHistoricalFailures": true
+  },
+  "lint": {
+    "errors": 0,
+    "fatals": 0,
+    "warnings": 23,
+    "oldWarnings": 20,
+    "newWarnings": 3,
+    "dependencyUpgrade": false
+  },
+  "actualProcessBoundaries": {
+    "result": "PASS",
+    "fileBeforeDB": {
+      "oldPid": 4239,
+      "newPid": 4297
+    },
+    "dbBeforeCleanup": {
+      "oldPid": 4335,
+      "newPid": 4375
+    },
+    "source": {
+      "path": "docs/evidence/m10-device/process/process-boundaries.json",
+      "bytes": 4099,
+      "sha256": "048b930c9856b7eee64bcd1fa7c3dbbad8729f309ac205c754153b3f9024bad8"
+    },
+    "syntheticIsolatedDatasetOnly": true,
+    "notJUnitMethods": true,
+    "notPowerLossOrLMK": true
+  },
+  "actualDevice": {
+    "result": "PASS",
+    "kind": "M10 actual device final verification",
+    "generatedUtc": "2026-10-14T06:12:16.270423+00:00",
+    "provenance": "Reconstructed original synthetic M09 fixture on replacement owned API36 AVD, then actual code7→code8 upgrade. Original AVD continuous preservation interrupted; not M12 product restore.",
+    "serial": "emulator-5596",
+    "avd": "Lithic_M01_API_36",
+    "schemaVersion": 2,
+    "recordZone": "GMT",
+    "generation": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+    "integrityCheck": "ok",
+    "foreignKeyCheck": [],
+    "finalTableCounts": {
+      "categories": 2,
+      "long_term_projects": 4,
+      "project_money_events": 7,
+      "local_media_assets": 2,
+      "subscriptions": 4,
+      "subscription_renewals": 6,
+      "subscription_state_changes": 5
+    },
+    "allOriginalFacts": [
+      {
+        "table": "categories",
+        "originalCount": 2,
+        "preservedSubsetCount": 2,
+        "beforeCanonicalSha256": "7e9c4f31d8a56fdbae2f1f3ca19345ea6887910d3ad66be165dc0819f6712c3a",
+        "afterCanonicalSha256": "7e9c4f31d8a56fdbae2f1f3ca19345ea6887910d3ad66be165dc0819f6712c3a",
+        "result": "PASS"
+      },
+      {
+        "table": "long_term_projects",
+        "originalCount": 3,
+        "preservedSubsetCount": 3,
+        "beforeCanonicalSha256": "e042dbfdad23dd7b1e33dd55cd9f23acc19fe8234da6f4dfa376ee18eca29de6",
+        "afterCanonicalSha256": "e042dbfdad23dd7b1e33dd55cd9f23acc19fe8234da6f4dfa376ee18eca29de6",
+        "result": "PASS"
+      },
+      {
+        "table": "project_money_events",
+        "originalCount": 6,
+        "preservedSubsetCount": 6,
+        "beforeCanonicalSha256": "51c3b8296ac6bf33f5752a4c52f0d05130a64af5051b9b0979b16da80ac72510",
+        "afterCanonicalSha256": "51c3b8296ac6bf33f5752a4c52f0d05130a64af5051b9b0979b16da80ac72510",
+        "result": "PASS"
+      },
+      {
+        "table": "local_media_assets",
+        "originalCount": 0,
+        "preservedSubsetCount": 0,
+        "beforeCanonicalSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "afterCanonicalSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "result": "PASS"
+      },
+      {
+        "table": "subscriptions",
+        "originalCount": 3,
+        "preservedSubsetCount": 3,
+        "beforeCanonicalSha256": "268543907bab4e3bbfce53f020eb8c6898d182dbefc8571ee3e2a93b07365d74",
+        "afterCanonicalSha256": "268543907bab4e3bbfce53f020eb8c6898d182dbefc8571ee3e2a93b07365d74",
+        "result": "PASS"
+      },
+      {
+        "table": "subscription_renewals",
+        "originalCount": 5,
+        "preservedSubsetCount": 5,
+        "beforeCanonicalSha256": "97c79652e14d50b3fcc20117e819fc586e88d49b40e1dce9145e7ce845a95f18",
+        "afterCanonicalSha256": "97c79652e14d50b3fcc20117e819fc586e88d49b40e1dce9145e7ce845a95f18",
+        "result": "PASS"
+      },
+      {
+        "table": "subscription_state_changes",
+        "originalCount": 5,
+        "preservedSubsetCount": 5,
+        "beforeCanonicalSha256": "f9f9862dccd82571053c019ef1256984dea935b19796b74d5c9b89620466f5e4",
+        "afterCanonicalSha256": "f9f9862dccd82571053c019ef1256984dea935b19796b74d5c9b89620466f5e4",
+        "result": "PASS"
+      }
+    ],
+    "sameParsedStorageAndSettings": true,
+    "actualMarkerHashes": {
+      "no_backup/active-generation": "87cb718e6e4186ce276c8192906e8f316a14a4f477171a08e141193bd42d68df",
+      "no_backup/generations/2d6c9460-a2f3-4976-ba04-781c416a0b52/ready.json": "90a4619d0cac43a5d0529799223e4f98edab5272a9579cb2a0b166e1eaa72fbb",
+      "no_backup/generations/2d6c9460-a2f3-4976-ba04-781c416a0b52/settings.preferences_pb": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44"
+    },
+    "installedApkSha256": "939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094",
+    "privateMediaEvidence": "media-m10-device-final-restored.json",
+    "subscriptionReplacement": {
+      "result": "PASS",
+      "sameSubscriptionId": "cb3dca6a-7629-4736-b6ca-531e34f17ac9",
+      "oldAssetId": "0b0ef66c-9ce0-4e33-a295-852b4681aa9e",
+      "newAssetId": "6ef0c664-dffd-417e-b9d8-7bbbe824f6e2",
+      "onlyCoverAndUpdatedAtChanged": true,
+      "paymentsStatesAndOtherFactsExact": true,
+      "samePreparedIdentityAfterSavedTask": true,
+      "oldUnreferencedFileActuallyAbsent": true,
+      "pngAlphaExtrema": [
+        0,
+        255
+      ]
+    },
+    "savedTask": {
+      "result": "PASS",
+      "taskId": 616,
+      "oldPid": 17203,
+      "newPid": 17927,
+      "samePreparedIdAndHash": true,
+      "explicitUserSaveAfterRestore": true,
+      "singleAssetRowForPreparedId": 1
+    },
+    "offline": {
+      "wifi": 0,
+      "mobileData": 0,
+      "activeDefaultNetwork": "none",
+      "source": "saved-task-second-kill.json and saved-task-second-restored.json; actual picker, import, cold private viewing and same-task restore occurred in this state"
+    },
+    "settingsRestored": {
+      "result": "PASS",
+      "differences": [],
+      "guestHostUtcDifferenceSeconds": 0.7305359840393066,
+      "source": "guest-settings-final-restored.json"
+    },
+    "screenshotsReviewedByRoot": true,
+    "privateDatabaseOrImageBytesPublished": false,
+    "notRun": [
+      "original AVD continuous upgrade",
+      "physical phone",
+      "API26",
+      "OEM",
+      "Release",
+      "full TalkBack",
+      "real LMK",
+      "power loss",
+      "M11/M12 full backup restore",
+      "Q05 full roundtrip",
+      "Q06 switch rollback"
+    ]
+  },
+  "actualDeviceManifest": {
+    "path": "docs/evidence/m10-device/manual/manual-public-manifest.json",
+    "bytes": 17633,
+    "sha256": "413e687c49d37b541c385f611c299de1d242b2b9ffc9e532f749e1a16c15daa7"
+  },
+  "finalApk": {
+    "path": "E:/CODEX/砺石新APP/app/build/outputs/apk/debug/app-debug.apk",
+    "applicationId": "com.cooper.lithic.debug",
+    "versionCode": 8,
+    "versionName": "0.1.0-m10-debug",
+    "bytes": 12755115,
+    "sha256": "939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094",
+    "v2Signature": "PASS",
+    "debugCertificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "actualInstalledBytesMatch": true,
+    "productionClassesChecked": 90,
+    "testCodeInProductionApk": false,
+    "inspection": {
+      "path": "docs/evidence/m10-device/apk-final/apk-verification.json",
+      "bytes": 1306,
+      "sha256": "d2c89c29c236f22d40d757e8e656a76cf6663571d3b3adbe852805a868b3ebf2"
+    },
+    "extraInspection": {
+      "path": "docs/evidence/m10-device/apk-final/extra-verification.json",
+      "bytes": 4621,
+      "sha256": "2aa660d7f3f5b3755227efd08e1504bb23777daf3e9e127b7fdfbdb1a11899c3"
+    },
+    "publicApkOrPrivateSigningKeyUploaded": false
+  },
+  "protection": {
+    "schemaVersion": 2,
+    "originalV1V2ExportBytesUnchanged": true,
+    "noNewTableIndexMigration": true,
+    "runtimeBefore": 122,
+    "runtimeAfter": 122,
+    "newImageDependencies": false,
+    "frozenDomainMoneyClockUnchanged": true,
+    "sameGenerationOwnerCoordinator": true,
+    "recordZone": "GMT",
+    "internetCameraBroadStoragePermissions": false,
+    "systemBackupNineDomainExclusionsVerified": true,
+    "noCloudOrM11M12": true
+  },
+  "protectedHistory": {
+    "originalArchiveFiles": 43,
+    "originalSourceZip": {
+      "path": "docs/planning/original-v1/source.zip",
+      "bytes": 131564,
+      "sha256": "861cee1adb74cb575c67af8c14191fbb2792b66741c2e99760b9f339979812d7"
+    },
+    "originalModulePlans": 24,
+    "originalCaseCount": 130,
+    "originalCaseStatus": "NOT_RUN",
+    "crossModuleCaseCount": 16,
+    "crossModuleCaseStatus": "NOT_RUN",
+    "allProtectedOriginalAndHistoricalFiles": 442,
+    "rawBaselineBytesUnchanged": true,
+    "original130And16CaseStates": "UNCHANGED_NOT_PROMOTED"
+  },
+  "q05": {
+    "status": "USER_CONFIRMED",
+    "firstNormalizationStableReadFailureProtection": "IMPLEMENTED_VERIFIED_M10",
+    "fullM11M12Roundtrip": "NOT_RUN",
+    "Q05-V01": "NOT_RUN",
+    "Q05-V02": "NOT_RUN",
+    "Q05-V03": "NOT_RUN",
+    "closed": false
+  },
+  "remainingIssues": {
+    "Q03": "UNCHANGED_ORIGINAL_MODULE_BOUNDARY",
+    "Q04": "UNCHANGED_M20",
+    "Q06": "ENGINEERING_REQUIRED_M12_NOT_RUN"
+  },
+  "knownLimits": [
+    "No filesystem/Room cross-resource atomicity",
+    "Unknown/inode-unproven interruption residue is conservatively retained",
+    "SavedState is not durable draft or force-stop/power-loss/real-LMK guarantee",
+    "Storage-full may surface as DATABASE; rollback/retry must remain safe",
+    "Long-history performance reserved to M22",
+    "Original AVD misrecreation interrupted original continuous device evidence; reconstructed-fixture upgrade explicitly distinguished",
+    "Debug must not store irreplaceable records before M11/M12"
+  ],
+  "unrun": [
+    "original AVD continuous upgrade",
+    "physical phone",
+    "API26",
+    "OEM",
+    "Release",
+    "full TalkBack",
+    "real LMK",
+    "power loss",
+    "M11/M12 full backup restore",
+    "Q05 full roundtrip",
+    "Q06 switch rollback"
+  ],
+  "noDeterminedUnresolvedProductDefect": true,
+  "gitDelivery": {
+    "onlyBranch": "feat/m10-local-cover-media",
+    "mainUnmerged": true,
+    "forcePush": false,
+    "commitAndPushReceipt": "Actual SHA, remote equality and clean worktree reported after this self-hashed commit; no recursive own-SHA field",
+    "fileManifest": "docs/evidence/M10-files.md",
+    "scopeValidation": "Performed before stage/commit and recorded separately; not a product test"
+  },
+  "stopBoundary": "ChatGPT independent review required; no M11 execution",
+  "files": {
+    "counts": {
+      "M": 27,
+      "A": 239
+    },
+    "total": 266,
+    "rows": [
+      {
+        "path": ".gitattributes",
+        "status": "M",
+        "group": "原始证据换行保护"
+      },
+      {
+        "path": "AGENTS.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "README.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "app/build.gradle.kts",
+        "status": "M",
+        "group": "Debug版本与测试Runner配置"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleFlowTest.kt",
+        "status": "M",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIComponentsTest.kt",
+        "status": "M",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiState.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/app/LithicApp.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/app/SubscriptionNavigationPolicy.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/backup/DataGenerationStore.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/local/MediaDao.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectDao.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/local/SubscriptionDao.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt",
+        "status": "M",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "docs/ACCEPTANCE_MATRIX.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/ARCHITECTURE.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/CURRENT_STATE.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/DECISIONS.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/EXECUTION_PROTOCOL.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/ROADMAP.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/SPEC_ISSUES.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/planning/CLARIFICATIONS.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/planning/README.md",
+        "status": "M",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "app/src/androidTest/AndroidManifest.xml",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/data/media/LocalImageStoreTest.kt",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceFixtures.kt",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceProvider.java",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ProcessBoundaryRunner.kt",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/data/media/MediaRepositoryTest.kt",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverEntryScreensTest.kt",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverNavigationGuardTest.kt",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverRoutesTest.kt",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverViewModelTest.kt",
+        "status": "A",
+        "group": "测试源码/Manifest/夹具"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/media/AndroidImageCodec.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/media/LocalImageStore.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/media/MediaContracts.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/media/MediaFileProtocol.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/data/media/MediaRepository.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverDisplay.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverSavedState.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverViewModel.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "app/src/main/java/com/cooper/lithic/feature/project/CoverPicker.kt",
+        "status": "A",
+        "group": "生产Kotlin"
+      },
+      {
+        "path": "docs/checkpoints/2026-10-13-M10.md",
+        "status": "A",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/evidence/M10-files.md",
+        "status": "A",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/evidence/M10-verification.json",
+        "status": "A",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/evidence/M10-verification.md",
+        "status": "A",
+        "group": "当前文档/契约/checkpoint"
+      },
+      {
+        "path": "docs/evidence/m10-device/apk-final/apk-backup.txt",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/apk-final/apk-badging.txt",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/apk-final/apk-extraction.txt",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/apk-final/apk-manifest.txt",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/apk-final/apk-verification.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/apk-final/extra-verification.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/apk-final/signature.txt",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/diagnostics/dialog-dismiss-intervention.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/diagnostics/systemui-cleared-before-final.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/actual-bad-source-protection.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/final-storage-device-proof.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/guest-settings-final-restored.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/guest-settings-new-before.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/guest-settings-new-extra-before.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/known-media-physical-cleanup.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-cover-gesture-guard.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-cover-gesture-guard.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-gesture-draft-guard.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-gesture-draft-guard.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-landscape-raw.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-landscape-raw.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-offline-native-picker.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-offline-native-picker.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-prepared-before-save.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-prepared-before-save.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-prepared-landscape.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-prepared-landscape.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-raw-error-visible.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-raw-error-visible.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-real-ime-raw.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-200-real-ime-raw.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-bad-source-error.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-bad-source-error.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-offline-cold-private-cover.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-offline-cold-private-cover.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-photo-a-source-gone-view.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-photo-a-source-gone-view.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-saved-task2-restored-before-scroll.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-saved-task2-restored-before-scroll.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-shared-subscription-after-project-delete.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-shared-subscription-after-project-delete.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-subscription-alpha-view.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-subscription-alpha-view.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-subscription-recovered-alpha-view.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-subscription-recovered-alpha-view.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-system-picker-native.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/m10-system-picker-native.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/manual-attempt-notes.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/manual-public-manifest.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/media-m10-device-final-restored.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/media-m10-photo-a-private.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/media-m10-photo-b-private.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/media-m10-project-deleted-shared-sub-kept.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/media-m10-shared-project-removed.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/media-m10-shared-two-refs-confirmed.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/media-m10-source-gone-cold.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/media-m10-subscription-final-ref-removed.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/photo-a-source-removed.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/photo-a-to-b-replacement.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/reconstructed-m09-installed.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/reconstructed-m10-upgraded.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/reconstructed-upgrade-preservation.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/saved-task-kill-confirmed.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/saved-task-second-kill.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/saved-task-second-pre-kill.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/saved-task-second-ready.png",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/saved-task-second-ready.xml",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/saved-task-second-restored.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/share-synthetic-actual.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/share-synthetic-actual.log",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/share-synthetic-after-ui-actual.log",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/manual/system-picker-cancel-zero-write.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-boundaries.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-db-before-cleanup-kill.log",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-db-before-cleanup-verify.log",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-db-before-cleanup.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-file-before-db-kill.log",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-file-before-db-verify.log",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-file-before-db.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-runner-build.log",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-runner-registration.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-runner-unregistered-failed.json",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-device/process/process-runner-unregistered-failed.log",
+        "status": "A",
+        "group": "合成设备证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/final-index-inputs.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/final-split-methods.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/final-split-verification.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-connected-final-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-connected-final-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-connected-final-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-connected-final.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-final-clean-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-final-clean-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-final-clean.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-final-rerun-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-final-rerun-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-final-rerun-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-final-rerun.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-systemui-clean-final-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-systemui-clean-final-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-systemui-clean-final-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-android-systemui-clean-final.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-final-lifecycle-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-final-lifecycle-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-final-lifecycle-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-final-lifecycle.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-1.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-2.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-3.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-4.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-5.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-jvm-6.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-rerun.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-final.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-1.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-2.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-3.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-4.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-5.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-jvm-6.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-restored-device.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-1.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-2.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-3.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-4.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-5.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-jvm-6.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-runner-final.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-verified-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-verified-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-verified-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-full-verified.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-legacy-ui-loading-sync-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-legacy-ui-loading-sync-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-legacy-ui-loading-sync-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-legacy-ui-loading-sync.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-behavior-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-behavior-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-behavior-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-behavior.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-initial-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-initial-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-initial.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-integrated-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-integrated-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-integrated-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/green-media-integrated.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/lint-results-debug.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/phase-provenance.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-complete-media-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-complete-media-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-complete-media-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-complete-media.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-detail-entry-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-detail-entry-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-detail-entry-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-detail-entry.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-final-lifecycle-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-final-lifecycle-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-final-lifecycle-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-final-lifecycle.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-m09-flow-capture-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-m09-flow-capture-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-m09-flow-capture.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-m09-flow-captured-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-m09-flow-captured-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-m09-flow-captured-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-m09-flow-captured.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-media-behavior-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-media-behavior-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-media-behavior-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-media-behavior.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-media-contract-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-media-contract-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-media-contract-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-media-contract.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-captured-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-captured-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-captured-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-captured.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-diagnostic-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-diagnostic-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-diagnostic-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-diagnostic.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-state-tree-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-state-tree-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-state-tree-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-navigation-state-tree.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-real-uri-nominal-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-real-uri-nominal-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-real-uri-nominal-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-real-uri-nominal.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-repository-guards-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-repository-guards-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-repository-guards-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-repository-guards.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-risk-recheck-android-0.xml",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-risk-recheck-source.zip",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-risk-recheck-summary.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/red-risk-recheck.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/runtime-dependencies-verified.log",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/runtime-dependency-delta.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/evidence/m10-tests/test-provenance.json",
+        "status": "A",
+        "group": "原始测试证据"
+      },
+      {
+        "path": "docs/planning/M10_CONTRACT.md",
+        "status": "A",
+        "group": "当前文档/契约/checkpoint"
+      }
+    ],
+    "selfHashesExcluded": true,
+    "noPrivateDataAPKSigningKey": true
+  },
+  "preSubmissionScopeCheck": {
+    "status": "PASS",
+    "startedUtc": "2026-10-14T06:31:00.771323+00:00",
+    "finishedUtc": "2026-10-14T06:31:09.852071+00:00",
+    "counts": {
+      "A": 239,
+      "M": 27,
+      "D": 0
+    },
+    "localLinks": 1606,
+    "brokenLinks": [],
+    "priorLocalReferences": "UNCHANGED_EXISTING_REFS",
+    "priorLiveRemoteHeads": "UNCHANGED_EXISTING_HEADS",
+    "scope": "Actual final docs/history/path/secret and live protected-head check before commit; not a product test or independent acceptance."
+  },
+  "stagedBuildInputProof": {
+    "path": "docs/evidence/m10-tests/final-index-inputs.json",
+    "completeInputs": 147,
+    "result": "PASS",
+    "onlyGitCRLFToLFConversions": 14,
+    "noCodeOrConfigTestChangesAfterFinalExecution": true
+  },
+  "stagedValidation": {
+    "result": "PASS",
+    "counts": {
+      "M": 27,
+      "A": 239
+    },
+    "total": 266,
+    "completeInputs": 147,
+    "rawPublicEvidenceFiles": 215,
+    "rawPublicEvidenceExactIndexBytes": true,
+    "whitespaceCheck": {
+      "authoredCodeAndDocs": "PASS",
+      "fullRawArchiveExit": 2,
+      "rawArchiveWhitespaceNotes": 58361,
+      "allNotesOnlyBytePreservedRawEvidence": true,
+      "policy": "Preserve original CRLF/output whitespace and hashes; do not reformat archived evidence to silence Git diagnostics"
+    }
+  }
+}

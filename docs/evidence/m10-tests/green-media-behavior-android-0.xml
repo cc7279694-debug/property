@@ -1,0 +1,1144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.media.LocalImageStoreTest" tests="94" failures="61" errors="0" skipped="0" time="216.427" timestamp="2026-10-13T12:43:39" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="prepare_does_not_create_formal_file" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="3.69">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:220)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prepared$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepare_does_not_create_formal_file(LocalImageStoreTest.kt:69)
+</failure>
+  </testcase>
+  <testcase name="changed_bytes_are_not_reencoded_or_silently_repaired" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.716">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.changed_bytes_are_not_reencoded_or_silently_repaired(LocalImageStoreTest.kt:212)
+</failure>
+  </testcase>
+  <testcase name="remove_active_prepared_resource_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.53">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:220)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prepared$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.remove_active_prepared_resource_is_rejected(LocalImageStoreTest.kt:108)
+</failure>
+  </testcase>
+  <testcase name="truncated_jpeg_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.352" />
+  <testcase name="enormous_png_dimensions_are_rejected_before_decode" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.298" />
+  <testcase name="normalized_metadata_matches_real_private_bytes" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="1.536">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.normalized_metadata_matches_real_private_bytes(LocalImageStoreTest.kt:54)
+</failure>
+  </testcase>
+  <testcase name="encoding_failure_leaves_no_formal_resource" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.201" />
+  <testcase name="original_uri_is_not_a_persistent_asset_path" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.055" />
+  <testcase name="bounded_decode_rejects_real_over_40mp_before_bitmap_allocation" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="1.059" />
+  <testcase name="all_eight_exif_orientations_use_correct_corner_geometry" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.55">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.all_eight_exif_orientations_use_correct_corner_geometry(LocalImageStoreTest.kt:166)
+</failure>
+  </testcase>
+  <testcase name="incorrect_declared_mime_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.363" />
+  <testcase name="file_write_failure_leaves_no_formal_resource" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.317" />
+  <testcase name="symlink_target_cannot_escape_private_media" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.412">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.symlink_target_cannot_escape_private_media(LocalImageStoreTest.kt:215)
+</failure>
+  </testcase>
+  <testcase name="private_relative_paths" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.511">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$private_relative_paths$1.invokeSuspend(LocalImageStoreTest.kt:65)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.private_relative_paths(LocalImageStoreTest.kt:64)
+</failure>
+  </testcase>
+  <testcase name="copy_survives_source_removal" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.371">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.copy_survives_source_removal(LocalImageStoreTest.kt:44)
+</failure>
+  </testcase>
+  <testcase name="oversized_source_stream_is_bounded" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="8.423" />
+  <testcase name="repeated_commit_is_exact_read_only_replay" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.34">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:220)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prepared$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.repeated_commit_is_exact_read_only_replay(LocalImageStoreTest.kt:104)
+</failure>
+  </testcase>
+  <testcase name="apng_animation_control_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.198" />
+  <testcase name="nested_or_absolute_asset_path_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.481">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.nested_or_absolute_asset_path_is_rejected(LocalImageStoreTest.kt:217)
+</failure>
+  </testcase>
+  <testcase name="prepared_identity_can_be_restored_without_source_uri" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.351">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prepared_identity_can_be_restored_without_source_uri$1.invokeSuspend(LocalImageStoreTest.kt:89)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepared_identity_can_be_restored_without_source_uri(LocalImageStoreTest.kt:88)
+</failure>
+  </testcase>
+  <testcase name="png_transparency_is_not_silently_jpeg_encoded" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.437">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.png_transparency_is_not_silently_jpeg_encoded(LocalImageStoreTest.kt:140)
+</failure>
+  </testcase>
+  <testcase name="symlink_media_directory_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.022" />
+  <testcase name="cleanup_preserves_unknown_file_and_invalid_owner" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.047" />
+  <testcase name="prompt_cancellation_after_preparation_releases_lease_and_preserves_recoverable_bytes" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.518">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=The prepared image is no longer available; select it again)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prompt_cancellation_after_preparation_releases_lease_and_preserves_recoverable_bytes$1.invokeSuspend(LocalImageStoreTest.kt:85)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prompt_cancellation_after_preparation_releases_lease_and_preserves_recoverable_bytes(LocalImageStoreTest.kt:73)
+</failure>
+  </testcase>
+  <testcase name="path_into_other_generation_cannot_read_or_delete" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.434">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.path_into_other_generation_cannot_read_or_delete(LocalImageStoreTest.kt:214)
+</failure>
+  </testcase>
+  <testcase name="discard_prepared_does_not_delete_final_with_uncertain_db_result" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.438">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:220)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prepared$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.discard_prepared_does_not_delete_final_with_uncertain_db_result(LocalImageStoreTest.kt:125)
+</failure>
+  </testcase>
+  <testcase name="decode_failure_leaves_no_managed_asset" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.251" />
+  <testcase name="jpeg_direction_and_location_metadata_are_normalized" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.495">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.jpeg_direction_and_location_metadata_are_normalized(LocalImageStoreTest.kt:147)
+</failure>
+  </testcase>
+  <testcase name="output_still_over_2mib_is_explicit_failure" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="4.954" />
+  <testcase name="corrupt_png_crc_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.241" />
+  <testcase name="orphan_final_can_be_reclaimed_after_restart" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.368">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:220)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prepared$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.orphan_final_can_be_reclaimed_after_restart(LocalImageStoreTest.kt:112)
+</failure>
+  </testcase>
+  <testcase name="repeated_prepare_does_not_encode_or_create_second_asset" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.419">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$repeated_prepare_does_not_encode_or_create_second_asset$1.invokeSuspend(LocalImageStoreTest.kt:96)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.repeated_prepare_does_not_encode_or_create_second_asset(LocalImageStoreTest.kt:95)
+</failure>
+  </testcase>
+  <testcase name="zero_png_dimensions_are_invalid" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.21" />
+  <testcase name="non_image_input_is_explicitly_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.223" />
+  <testcase name="discarded_uncommitted_preparation_is_safely_removed" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.474">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:220)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prepared$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.discarded_uncommitted_preparation_is_safely_removed(LocalImageStoreTest.kt:130)
+</failure>
+  </testcase>
+  <testcase name="truncated_png_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.132" />
+  <testcase name="metadata_mismatch_is_explicit_error" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.536">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.metadata_mismatch_is_explicit_error(LocalImageStoreTest.kt:213)
+</failure>
+  </testcase>
+  <testcase name="repeated_reads_do_not_change_file_or_hash" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.286">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.repeated_reads_do_not_change_file_or_hash(LocalImageStoreTest.kt:135)
+</failure>
+  </testcase>
+  <testcase name="stable_uuid_cannot_overwrite_existing_file" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.531">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:220)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$prepared$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.stable_uuid_cannot_overwrite_existing_file(LocalImageStoreTest.kt:100)
+</failure>
+  </testcase>
+  <testcase name="gif_is_not_accepted_as_static_cover" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.333" />
+  <testcase name="mpo_multiframe_jpeg_is_rejected" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.435" />
+  <testcase name="missing_file_is_not_reported_as_no_cover" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.529">
+    <failure>java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:224)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:221)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.missing_file_is_not_reported_as_no_cover(LocalImageStoreTest.kt:211)
+</failure>
+  </testcase>
+  <testcase name="sqlite_asset_insert_failure_protects_old_cover_and_leaves_safe_orphan" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="2.086">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.sqlite_asset_insert_failure_protects_old_cover_and_leaves_safe_orphan(MediaRepositoryTest.kt:236)
+</failure>
+  </testcase>
+  <testcase name="unchanged_project_row_with_new_money_event_is_stale_cover_baseline" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.05">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.unchanged_project_row_with_new_money_event_is_stale_cover_baseline(MediaRepositoryTest.kt:194)
+</failure>
+  </testcase>
+  <testcase name="decode_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.293">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.decode_failure_preserves_existing_cover_and_original_facts(MediaRepositoryTest.kt:277)
+</failure>
+  </testcase>
+  <testcase name="final_file_before_database_commit_is_reclaimable_after_reopen" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.945">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.final_file_before_database_commit_is_reclaimable_after_reopen(MediaRepositoryTest.kt:354)
+</failure>
+  </testcase>
+  <testcase name="deleted_project_cannot_acquire_a_prepared_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.921">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.deleted_project_cannot_acquire_a_prepared_cover(MediaRepositoryTest.kt:205)
+</failure>
+  </testcase>
+  <testcase name="two_projects_share_a_cover_and_replacement_keeps_other_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.897">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.two_projects_share_a_cover_and_replacement_keeps_other_reference(MediaRepositoryTest.kt:303)
+</failure>
+  </testcase>
+  <testcase name="unknown_uuid_named_file_without_ownership_proof_is_retained" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.49" />
+  <testcase name="physical_delete_failure_keeps_proof_and_retries_without_metadata_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.817">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.physical_delete_failure_keeps_proof_and_retries_without_metadata_reference(MediaRepositoryTest.kt:413)
+</failure>
+  </testcase>
+  <testcase name="committed_verification_is_read_only_and_detects_later_target_changes" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.874">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.committed_verification_is_read_only_and_detects_later_target_changes(MediaRepositoryTest.kt:173)
+</failure>
+  </testcase>
+  <testcase name="database_commit_before_old_cleanup_survives_generation_reopen" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.91">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.database_commit_before_old_cleanup_survives_generation_reopen(MediaRepositoryTest.kt:364)
+</failure>
+  </testcase>
+  <testcase name="new_subscription_state_blocks_a_stale_cover_command" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.154">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.new_subscription_state_blocks_a_stale_cover_command(MediaRepositoryTest.kt:226)
+</failure>
+  </testcase>
+  <testcase name="final_file_commit_failure_never_inserts_a_cover_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.788">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.final_file_commit_failure_never_inserts_a_cover_reference(MediaRepositoryTest.kt:289)
+</failure>
+  </testcase>
+  <testcase name="repeated_verified_reads_preserve_bytes_and_real_metadata" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.954">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.repeated_verified_reads_preserve_bytes_and_real_metadata(MediaRepositoryTest.kt:457)
+</failure>
+  </testcase>
+  <testcase name="fixed_command_concurrency_creates_one_asset_and_replays_exact_target" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.722">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.fixed_command_concurrency_creates_one_asset_and_replays_exact_target(MediaRepositoryTest.kt:148)
+</failure>
+  </testcase>
+  <testcase name="production_owned_image_store_cannot_delete_project_or_subscription_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.755">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$success(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$production_owned_image_store_cannot_delete_project_or_subscription_cover$1.invokeSuspend(MediaRepositoryTest.kt:478)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.production_owned_image_store_cannot_delete_project_or_subscription_cover(MediaRepositoryTest.kt:475)
+</failure>
+  </testcase>
+  <testcase name="new_subscription_payment_blocks_a_stale_cover_command" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.874">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.new_subscription_payment_blocks_a_stale_cover_command(MediaRepositoryTest.kt:215)
+</failure>
+  </testcase>
+  <testcase name="project_and_subscription_share_cover_until_last_reference_is_removed" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.062">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.project_and_subscription_share_cover_until_last_reference_is_removed(MediaRepositoryTest.kt:315)
+</failure>
+  </testcase>
+  <testcase name="missing_cover_is_explicit_failure_without_deleting_metadata_or_business_reference" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.765">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.missing_cover_is_explicit_failure_without_deleting_metadata_or_business_reference(MediaRepositoryTest.kt:437)
+</failure>
+  </testcase>
+  <testcase name="cleanup_cannot_delete_file_while_coordinator_snapshot_uses_it" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.784">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.cleanup_cannot_delete_file_while_coordinator_snapshot_uses_it(MediaRepositoryTest.kt:378)
+</failure>
+  </testcase>
+  <testcase name="deleting_project_preserves_cover_still_used_by_subscription" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.12">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.deleting_project_preserves_cover_still_used_by_subscription(MediaRepositoryTest.kt:331)
+</failure>
+  </testcase>
+  <testcase name="lost_result_replay_after_generation_reopen_does_not_import_again" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.086">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.lost_result_replay_after_generation_reopen_does_not_import_again(MediaRepositoryTest.kt:160)
+</failure>
+  </testcase>
+  <testcase name="subscription_update_failure_rolls_back_new_metadata_and_keeps_timelines" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.853">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.subscription_update_failure_rolls_back_new_metadata_and_keeps_timelines(MediaRepositoryTest.kt:265)
+</failure>
+  </testcase>
+  <testcase name="prepared_file_write_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.918">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepared_file_write_failure_preserves_existing_cover_and_original_facts(MediaRepositoryTest.kt:285)
+</failure>
+  </testcase>
+  <testcase name="subscription_baseline_contains_original_payments_and_states" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.731" />
+  <testcase name="stale_project_metadata_cannot_replace_newer_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="1.103">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.stale_project_metadata_cannot_replace_newer_facts(MediaRepositoryTest.kt:184)
+</failure>
+  </testcase>
+  <testcase name="load_target_returns_complete_project_and_money_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.531" />
+  <testcase name="subscription_cover_write_preserves_payment_and_state_history" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.9">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.subscription_cover_write_preserves_payment_and_state_history(MediaRepositoryTest.kt:134)
+</failure>
+  </testcase>
+  <testcase name="remove_cover_keeps_original_money_and_identity" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.556" />
+  <testcase name="corrupt_cover_is_explicit_failure_without_reencoding_or_clearing_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.834">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.corrupt_cover_is_explicit_failure_without_reencoding_or_clearing_facts(MediaRepositoryTest.kt:446)
+</failure>
+  </testcase>
+  <testcase name="project_cover_write_preserves_cost_and_all_money_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.811">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.project_cover_write_preserves_cost_and_all_money_facts(MediaRepositoryTest.kt:119)
+</failure>
+  </testcase>
+  <testcase name="project_update_failure_rolls_back_new_metadata_and_protects_old_bytes" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.844">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.project_update_failure_rolls_back_new_metadata_and_protects_old_bytes(MediaRepositoryTest.kt:253)
+</failure>
+  </testcase>
+  <testcase name="stale_old_command_cannot_overwrite_a_newer_cover" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.761">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.stale_old_command_cannot_overwrite_a_newer_cover(MediaRepositoryTest.kt:428)
+</failure>
+  </testcase>
+  <testcase name="encode_failure_preserves_existing_cover_and_original_facts" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.921">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.encode_failure_preserves_existing_cover_and_original_facts(MediaRepositoryTest.kt:281)
+</failure>
+  </testcase>
+  <testcase name="active_preparation_survives_cleanup_until_explicit_release" classname="com.cooper.lithic.data.media.MediaRepositoryTest" time="0.639">
+    <failure>java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:537)
+at com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:491)
+at com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)
+at com.cooper.lithic.data.media.MediaRepositoryTest$prepare$1.invokeSuspend(Unknown Source:14)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.MediaRepositoryTest.active_preparation_survives_cleanup_until_explicit_release(MediaRepositoryTest.kt:344)
+</failure>
+  </testcase>
+  <testcase name="damaged_selected_source_reports_error_and_keeps_old_reference_bytes_and_money" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="1.523" />
+  <testcase name="damaged_prepared_private_file_allows_explicit_reload_and_reselect_without_touching_old_cover" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="15.658">
+    <failure>kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+at java.lang.Thread.run(Thread.java:1119)
+</failure>
+  </testcase>
+  <testcase name="project_cover_editor_retains_real_identity_and_history_origin_without_writing" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.481" />
+  <testcase name="committed_response_loss_replays_same_command_without_a_second_import_or_asset" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="15.737">
+    <failure>kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+at java.lang.Thread.run(Thread.java:1119)
+</failure>
+  </testcase>
+  <testcase name="subscription_cover_editor_retains_identity_and_real_payment_without_writing" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.79" />
+  <testcase name="duplicate_save_and_saved_task_recovery_keep_one_asset_and_frozen_operation" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="15.674">
+    <failure>kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+at java.lang.Thread.run(Thread.java:1119)
+</failure>
+  </testcase>
+  <testcase name="prepare_keeps_old_reference_until_explicit_save_and_source_uri_is_not_saved" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="15.648">
+    <failure>kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+at java.lang.Thread.run(Thread.java:1119)
+</failure>
+  </testcase>
+  <testcase name="committed_saved_envelope_performs_read_only_verification_without_import_or_commit" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.582" />
+  <testcase name="system_picker_cancel_does_not_dirty_or_write_project_or_media" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="0.536" />
+  <testcase name="prepared_cover_requires_explicit_discard_and_another_pending_write_still_blocks" classname="com.cooper.lithic.feature.media.M10CoverRoutesTest" time="0.049" />
+  <testcase name="subscription_cover_retains_current_and_stopped_history_detail_parent_chain" classname="com.cooper.lithic.feature.media.M10CoverRoutesTest" time="0.119" />
+  <testcase name="project_cover_retains_current_and_history_detail_parent_chain" classname="com.cooper.lithic.feature.media.M10CoverRoutesTest" time="0.043" />
+  <testcase name="pending_cover_cannot_be_discarded_by_either_other_feature" classname="com.cooper.lithic.feature.media.M10CoverRoutesTest" time="0.015" />
+  <testcase name="subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="21.199">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'subscription-cover-empty')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.media.M10CoverEntryScreensTest.subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry(M10CoverEntryScreensTest.kt:47)
+</failure>
+  </testcase>
+  <testcase name="project_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="11.268" />
+  <testcase name="prepared_cover_guards_all_tabs_and_explicit_discard_never_updates_the_business_reference" classname="com.cooper.lithic.feature.media.M10CoverNavigationGuardTest" time="22.559">
+    <failure>kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+at java.lang.Thread.run(Thread.java:1119)
+</failure>
+  </testcase>
+  <testcase name="home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route" classname="com.cooper.lithic.feature.media.M10CoverNavigationGuardTest" time="12.123">
+    <failure>java.lang.AssertionError: Home cannot finish while a cover commit remains unconfirmed
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest$home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route$1.invokeSuspend$lambda$1(M10CoverNavigationGuardTest.kt:127)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest$home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route$1.$r8$lambda$hOBj4lA2gIRT-2zJAOBtSrIHkF0(Unknown Source:0)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest$home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route$1$$ExternalSyntheticLambda1.invoke(D8$$SyntheticClass:0)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest.onMain$lambda$0(M10CoverNavigationGuardTest.kt:207)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest.$r8$lambda$cgNXwYzlZh5TcctZo0MBhvs91qI(Unknown Source:0)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest$$ExternalSyntheticLambda0.run(D8$$SyntheticClass:0)
+at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:524)
+at java.util.concurrent.FutureTask.run(FutureTask.java:317)
+at android.app.Instrumentation$SyncRunnable.run(Instrumentation.java:2616)
+at android.os.Handler.handleCallback(Handler.java:995)
+at android.os.Handler.dispatchMessage(Handler.java:103)
+at android.os.Looper.loopOnce(Looper.java:248)
+at android.os.Looper.loop(Looper.java:338)
+at android.app.ActivityThread.main(ActivityThread.java:9067)
+at java.lang.reflect.Method.invoke(Native Method)
+at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+</failure>
+  </testcase>
+  <testcase name="project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result" classname="com.cooper.lithic.feature.media.M10CoverNavigationGuardTest" time="7.142">
+    <failure>java.lang.AssertionError: The real import must succeed before deletion cleanup is tested
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest$project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result$1.invokeSuspend(M10CoverNavigationGuardTest.kt:167)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest.project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result(M10CoverNavigationGuardTest.kt:164)
+</failure>
+  </testcase>
+</testsuite>

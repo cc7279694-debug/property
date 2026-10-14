@@ -1,0 +1,5311 @@
+{
+  "phase": "green-full-verified",
+  "command": [
+    "E:\\CODEX\\砺石新APP\\gradlew.bat",
+    ":app:testDebugUnitTest",
+    "--rerun",
+    ":app:connectedDebugAndroidTest",
+    ":app:lintDebug",
+    ":app:assembleDebug",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "startedUtc": "2026-10-13T13:54:13.493154+00:00",
+  "durationSeconds": 2784.285,
+  "exitCode": 1,
+  "sourceInputs": [
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "4f586d11eea3a80c07514b2dd5684c4add2233af49d0b3865694c0e693fd4751",
+      "bytes": 1437
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/AppContainer.kt",
+      "sha256": "2fdc2fed6a4e04408efc88e0770505d9328431355da3d1932da253fb037eb4cc",
+      "bytes": 3829
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiState.kt",
+      "sha256": "f0229fb4f7e742fd7a6f6f2614384b3690cad589020a25e635b7c5a14d526fad",
+      "bytes": 862
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+      "sha256": "1bd32f04779b083911d3c26207888382a796c34d378a115e84eb6140327b197e",
+      "bytes": 4302
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApp.kt",
+      "sha256": "76cf4d134280470f2115befc4641b7475d1656efce071eb81358897307753ef2",
+      "bytes": 2960
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApplication.kt",
+      "sha256": "a2cf7d5406974d1b8400842c063500c6b7310583dc37e090494c03158233143b",
+      "bytes": 346
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "sha256": "cd0e447efac70033864e32f3c8e57d7a77e485f5859bf64a14b6a41bf7c8a7f3",
+      "bytes": 31879
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt",
+      "sha256": "abfe81250d14e7f75e4bafa95215e58fd2ce3229fd3a2ff45f69d517acedda83",
+      "bytes": 8419
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "sha256": "c6c6cd66f2974be6046de01384ab8eb1eace59d0f59411c121b876f66c14dbf3",
+      "bytes": 1764
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/SubscriptionNavigationPolicy.kt",
+      "sha256": "c9d7bb85ee4ebc843d9d8a9bb9b3dc8c51f494b5d66e56fb181db09087c88966",
+      "bytes": 792
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/AmountText.kt",
+      "sha256": "c88873d34c68055c0042a8199d8cb62b8ef367f54d8d32b9985e639110cfe3cd",
+      "bytes": 2589
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/EntryCard.kt",
+      "sha256": "96f0a83755ac5af3bab30a8b702e46c4a116b23cd397da9559ed909af413ea2c",
+      "bytes": 2726
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/FormFields.kt",
+      "sha256": "522174f6e7a0d802a738ea730164a89a5f619adfdfb7028cdda36aed2e7571cc",
+      "bytes": 4005
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt",
+      "sha256": "97cb4616e0b879d8a8bf37d4e113d6579c26a6fb175dce4c62a7dc97cc94a08a",
+      "bytes": 4047
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt",
+      "sha256": "267c6c84e93816ac6280de6af684c321fbf58795fc2b0bd58f27cbc1fb1ab767",
+      "bytes": 992
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/Money.kt",
+      "sha256": "c347d4c555d82252dd487d78e9f73ebd960186046163ac5029ce2832335307e1",
+      "bytes": 1629
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt",
+      "sha256": "5cfe2a01612d62c33fe5b543d9b4a908988e585b7b1bea7b6f6dee724d6a7c0f",
+      "bytes": 491
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/DataGenerationStore.kt",
+      "sha256": "fcb9a6a65856f81525f45e0d519d722fec0ee84adc3ad1306b35318187e43244",
+      "bytes": 16120
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/CategoryDao.kt",
+      "sha256": "dbae6c1a233aad380fa1c0f0d937584e6f5a6c309ffe14404b5a5f8f8c697349",
+      "bytes": 500
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/CategoryNames.kt",
+      "sha256": "9cb106f86a2aeefa5be1b9a4510476dc7b12ac178c19022dbd6713994e53265c",
+      "bytes": 451
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseConverters.kt",
+      "sha256": "e1116081b6d3f067801ae8046f094cf4f7ee26b72af829931292dfbe06db2210",
+      "bytes": 1671
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseMigrations.kt",
+      "sha256": "a9efc6c49eeb42940ae63f0fff374c85c8179d2d45a156446849a7ee5028920d",
+      "bytes": 2882
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseSchemaValidation.kt",
+      "sha256": "1d6f0030584672fe4fb1e82c019bf99899ef89dee736e38305753cd0ff6011c4",
+      "bytes": 11041
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/LithicDatabase.kt",
+      "sha256": "a6cb28d0b454c88ac1ade9a1f93b9a302b70906c983381a6d1ca2986d43b964e",
+      "bytes": 6617
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/MediaDao.kt",
+      "sha256": "eaa1f84ec0c614a28efcc441fbde0f57562779791abbf4c1c4a4c1ea05203b6f",
+      "bytes": 1409
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectDao.kt",
+      "sha256": "02d1f3fcf438146daafe522b62e179c7732fb7df74c4ae0a2d8adc62481585a9",
+      "bytes": 8234
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectEntities.kt",
+      "sha256": "91a58130ebe894d6a5c5df807b31cd5be2221acc43de7e602ba574d5d426dc20",
+      "bytes": 3307
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/StoredValueValidation.kt",
+      "sha256": "ab6295c10e5d99df77d5951a03749bc31e80905397e34561b32eb69286ce2c7c",
+      "bytes": 831
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/SubscriptionDao.kt",
+      "sha256": "b6f959af5aeff33c06f9b5f8b29fcb9b2641cabccd33119c3df6f59a11136729",
+      "bytes": 6597
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/SubscriptionEntities.kt",
+      "sha256": "8e2d032cea9a9d942436756904c5add4bb32a316ebac8cc7c22669e2004e9455",
+      "bytes": 2468
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/AndroidImageCodec.kt",
+      "sha256": "233be9dc07a5ba91c93d8dcc6c11408268d5602d37f727efd2ff9a06465bc696",
+      "bytes": 16561
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/LocalImageStore.kt",
+      "sha256": "b2ec03394ea57000b09984098c8d06a3eab6734568299dcaa7527db2c86f3918",
+      "bytes": 18559
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/MediaContracts.kt",
+      "sha256": "36107707ad56219cde17188fa1ffabbfa0ef823f3667f24de222f8a94c3d22c1",
+      "bytes": 2414
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/MediaFileProtocol.kt",
+      "sha256": "de9433514c117fd3ae9106967cc8392186fbb5bc0170bc60d12320bd83a7b54c",
+      "bytes": 11424
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/MediaRepository.kt",
+      "sha256": "bb02dce118e4b6e720c67dae8a4bb8bf4fa8a2d96bf13e54d7137008a7e6f738",
+      "bytes": 19465
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/LedgerReadRepository.kt",
+      "sha256": "bedcac241d496c13ff3338ef9673b843cc8264d713ab6cff50c665a26073900b",
+      "bytes": 1350
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/LocalWriteCoordinator.kt",
+      "sha256": "3daca99041349b4cc1c2e94d7b27485d4155ccd1f48dd8a3b35dff8033f17d67",
+      "bytes": 537
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectLifecycleCommands.kt",
+      "sha256": "4ab993e9c07ef8aa27c68038fb8f1a97b3b1c00c198b239170b46b83d0fcc6d5",
+      "bytes": 1259
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectRepository.kt",
+      "sha256": "60af463d6ffdf52360602344f89667d206ed543f7c920edf98b85982267f8257",
+      "bytes": 8087
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectWriteRepository.kt",
+      "sha256": "4fb50b23b8878b1ead14554fbae5391d440a3ffe371760ab83e7e44000049e73",
+      "bytes": 28718
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionCommands.kt",
+      "sha256": "951cf2114e3b6cf5bc1ca3efd193cff8abdb950b9a1d60ac36d76a97a1d6a24b",
+      "bytes": 1820
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionLifecycleCommands.kt",
+      "sha256": "67b4d0a94d156aa4c323d81f9d66c1eefab904cbe8c902b868ac8ee3abf8398a",
+      "bytes": 2527
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionRepository.kt",
+      "sha256": "87db58a6e6bdfd1f5628797347a5555a063deca947a89a1d34917d90ce3df4e5",
+      "bytes": 49955
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/settings/SettingsStore.kt",
+      "sha256": "63d60b9ba8c0497e8b09124a330202ae25de4f24981656a7a27d5ae4a3a84352",
+      "bytes": 7693
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt",
+      "sha256": "3d22ad34430dccd92ea2c3b3089efc21733125449f848cec24391236d7c39817",
+      "bytes": 2229
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectLifecycleRules.kt",
+      "sha256": "90c6c1a5bc07eb712a3bb8fcb4ec7090bb7e51772951db162915f5e98db3d6d5",
+      "bytes": 568
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+      "sha256": "16684bc773ac6dc114cc8dea43f2c81d4f7eaa1c4f49fef3c80154a35f4627aa",
+      "bytes": 5444
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+      "sha256": "b64cbe564b7281ba32399ec3a2e4aa38c09125fa9fb6838feb55720242e22197",
+      "bytes": 1408
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+      "sha256": "d466c96264316198c5c81d64362043e22607206e0663700f574ec28dc1819d3a",
+      "bytes": 1905
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/home/HomeShell.kt",
+      "sha256": "aa56008df1150c12a49b1effde2282e134d0c887d487b8b569d5a83c1f2515c4",
+      "bytes": 4052
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverDisplay.kt",
+      "sha256": "5fcab4950aab3c69987914171a3bfa9db1ed94a099438f26ce08a9fb6ed5701b",
+      "bytes": 5916
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverSavedState.kt",
+      "sha256": "d860b2b5c5194f20f921ec73ebecbc92f74a7054d2c4e34d48ff958ad78cda01",
+      "bytes": 7285
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverViewModel.kt",
+      "sha256": "1a43e9e2f4f0b6ab54a30caf0fb00ae2e35aca023fcda0d0a285654c6bfeb6f4",
+      "bytes": 19965
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/CoverPicker.kt",
+      "sha256": "ce64de12bbfcf1541464e67cb65bbe35a7fec33c075def9caff0fa9ea89787cf",
+      "bytes": 6020
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/DeleteProjectDialog.kt",
+      "sha256": "a4c2dbd0344362a02df7a5ca88f38f9621fc0b809410aaf407e2308f106f1f36",
+      "bytes": 3975
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/EndProjectDialog.kt",
+      "sha256": "9345d85befd3ed6212096840f1d95d3459c90fea3c56f7edbe4840d4b4a73736",
+      "bytes": 7530
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventCorrectionScreen.kt",
+      "sha256": "50fa0e5f04ed999ac17ad2bc9b4fc2112c02cdb30044150c8c7a3404e3568e91",
+      "bytes": 3656
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventEditor.kt",
+      "sha256": "84c1be94170c63a210f1bc5b304109da9cd5e35911eb2a670d2fa30bd093d0da",
+      "bytes": 4441
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt",
+      "sha256": "1bbbf6beaf930c7b10612149777bf1bf20f6b19682637905aeda512d1fc1f4c5",
+      "bytes": 11659
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectEditorScreen.kt",
+      "sha256": "4e00188e4bd4acd3c3ed4357d40672045424db41da42db0720d52a31defbc978",
+      "bytes": 5743
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectHistoryScreen.kt",
+      "sha256": "86c921e5a530929cc60875d92e0c27e3ba89fdc3b9543706947e167e8bb7cde1",
+      "bytes": 4104
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectInputs.kt",
+      "sha256": "3c63a019d613ee66adb664cbaf1abad238c3c1b44a3228ac51479b1241d5f342",
+      "bytes": 8468
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectListScreen.kt",
+      "sha256": "678674643105951d421997869838575006d858c9a8375e4a5520469982525065",
+      "bytes": 4803
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectUiModels.kt",
+      "sha256": "210d339bf901c366ab7ab4e6e0595a34320d5128d520a62be0d2eb73229c294e",
+      "bytes": 5087
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt",
+      "sha256": "c7d74a52fa46a9be3e45914d290dd4a1b53311013c76a36a2de2a17661627696",
+      "bytes": 46794
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/review/ReviewShell.kt",
+      "sha256": "a8a7eb476f49c143d8f54cbd0107cc87f13458ccabec0cdb0f9b6eed0a179186",
+      "bytes": 3224
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt",
+      "sha256": "ffc5db4f6b26f1eb0a18552582dd891bd10367b92b4a37b00620f5e316d176f9",
+      "bytes": 2585
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/RenewalEditorScreen.kt",
+      "sha256": "6fc2f83ab92e04ad1cfca377de2c9501aa21472dba02e6360aae37901e68bf92",
+      "bytes": 3597
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt",
+      "sha256": "b69ac0435840af81d8a1efe866116d1c0f67281fce7373b6d03e0a3a0e105b59",
+      "bytes": 17647
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionEditorScreen.kt",
+      "sha256": "74fd4137c63453f85faea214134bf40121827d47e3436a30868039197dfe22c9",
+      "bytes": 12127
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt",
+      "sha256": "891deda638fd3a804d45a67f92717d9e3f8fa040c8fb24e40e233094c0a7991b",
+      "bytes": 4652
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionHistoryScreen.kt",
+      "sha256": "aa8e0396d08eac1b8fb278853f06d94a46edba1d58ea7c795410178ecf9ed568",
+      "bytes": 3823
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionListScreen.kt",
+      "sha256": "0924a43178c0c6c7a305371d8559dd95a43db6e82b677e6262759dd05cad4a88",
+      "bytes": 5751
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionStateDialog.kt",
+      "sha256": "1470e4e3ad6e8c556ac88d216b27268a61eb90ca5fdd63d3915d48321a2eeded",
+      "bytes": 7733
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionUiModels.kt",
+      "sha256": "af9485321a920b50266ee8e2b60dfceaf428f81c77014690b38798a5fc51d3ee",
+      "bytes": 4147
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionViewModel.kt",
+      "sha256": "fef083024e76a5b79fbe808a7789934c03aecaf48552de38da12059b02e5f20a",
+      "bytes": 51420
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_placeholder.xml",
+      "sha256": "e0bddda00ce155104a61a85815a78856b812e3b1bc3c135d897304c1655e868f",
+      "bytes": 464
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "8107ea12bf01e6bcfcc92046f33f36fb1fd65f70537aecc8656723a7f3b48342",
+      "bytes": 306
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "c33f08665ef69b8343c8a7ee7f8d6a177af4ea48f32a9f2e49dc8a23b94a7fae",
+      "bytes": 292
+    },
+    {
+      "path": "app/src/main/res/values-night/themes.xml",
+      "sha256": "c34c20aecaef41ef9125d70cafa9700f4cabffaf5ba7b98cbb4773c3d504274c",
+      "bytes": 287
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "sha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96",
+      "bytes": 487
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842",
+      "bytes": 1050
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/design/AmountFormatterTest.kt",
+      "sha256": "43869843a0447f84b8219a0fa2edc1c2102aeb68d8bebef8f6d8c4c53dd555b2",
+      "bytes": 2994
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "sha256": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45",
+      "bytes": 2656
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "sha256": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b",
+      "bytes": 1286
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "sha256": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544",
+      "bytes": 10271
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectLifecycleRulesTest.kt",
+      "sha256": "e6bcfebff7e04711895015300a3e9a89af58515eca605a96260d53faa324ec91",
+      "bytes": 2432
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+      "sha256": "792b56e431006949645b3c9331537339446d54a512aee2a24b16933da43d1f37",
+      "bytes": 4294
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "sha256": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63",
+      "bytes": 17472
+    },
+    {
+      "path": "app/src/androidTest/AndroidManifest.xml",
+      "sha256": "db5ab46bb364da086d386582bd370e4eb98f1109fbd1bc5d795deaf17b658581",
+      "bytes": 586
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/app/AppContainerTest.kt",
+      "sha256": "2c08301405002bd92cd76932408fbf7a7f91a9488eebc94002e4b1729b18f611",
+      "bytes": 9501
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/backup/DataGenerationStoreTest.kt",
+      "sha256": "39aba2c3f66940832447094b3953bed8bcbbb54fcf71ca7f1c9b43aa56241e2c",
+      "bytes": 15376
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/MetadataValidationTest.kt",
+      "sha256": "3397c209813c4622c2150b1c0f17ae351d21d372ca0c611c7f366ab00f94dd79",
+      "bytes": 4727
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/ProjectDatabaseTest.kt",
+      "sha256": "01d5c13cc0cb5ffdaf361378624ff193f10e44679d423c79631e76068a31e810",
+      "bytes": 30152
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/SubscriptionMigrationTest.kt",
+      "sha256": "a0dd7de4a283dcbd1ead6a917dc6ff3085cf1a35ece9594a9d6e4bfd81af7f9a",
+      "bytes": 27787
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/V1DatabaseFixture.kt",
+      "sha256": "37946b8d120fc18e218b8116e9a0702e626721d172bbed4766931daa8bc322c7",
+      "bytes": 10363
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/LocalImageStoreTest.kt",
+      "sha256": "c261dea459f5f9169b275edf7f7e42ca211e3e993b9f67be5bb096ad2ee94251",
+      "bytes": 27895
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceFixtures.kt",
+      "sha256": "9181a8105242dbdf69c7d8379bca8faa97ff9be3c722c2fb566faff75a9cd93d",
+      "bytes": 1011
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceProvider.java",
+      "sha256": "d95a02cf0c5301f01c405d4b318b58103c05745564616948d1c3ad2b1c2dfec3",
+      "bytes": 2925
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ProcessBoundaryRunner.kt",
+      "sha256": "32d427e99669f6b8d23e89df45ea8719f9a0cda5ae39b0afe5f180d321141434",
+      "bytes": 11370
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/MediaRepositoryTest.kt",
+      "sha256": "93d9eaddd45a514e45bd32004181c2d6f8294e9ec6b2d2ae13e29e66aed21454",
+      "bytes": 35258
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectLifecycleRepositoryTest.kt",
+      "sha256": "850fbad33d69c7ea5a0a77128f4fe5ccbf0611f48adba2d198a39c3f66d6d21c",
+      "bytes": 32686
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectRepositoryTest.kt",
+      "sha256": "c91735cfe0d91363f3e6b04586f6d1e5460bc72c41e7515a99c329dc3916db5d",
+      "bytes": 36599
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionLifecycleRepositoryTest.kt",
+      "sha256": "f5fa38911f055d4502cadb0741d5a0718cb000af610c6882a5bf7e6241dd445e",
+      "bytes": 50472
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionRepositoryTest.kt",
+      "sha256": "922224381faba422d4dff175132b09fd645f25cf5e632ec037a7e7d75d172bab",
+      "bytes": 27865
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/settings/PausedReturnDispatcher.kt",
+      "sha256": "b0655fbd5f1503b5e77aa88689978846be3a52360e1e0aef5cc9a9210a3ede42",
+      "bytes": 1139
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/settings/SettingsStoreTest.kt",
+      "sha256": "4b7f9cb24442006791018b2c6aa176a4561dcdf22878dc036f1f0de0580a6230",
+      "bytes": 7872
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverEntryScreensTest.kt",
+      "sha256": "176bd6b09d772d932ac2dc6e4a3325c3234fa2ce5837a1d3270dbabfa8aa0a93",
+      "bytes": 3533
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverNavigationGuardTest.kt",
+      "sha256": "550433a0c364e188fabd19c5f26cc5502238b86472ce56e143c1aff2f3afd3f1",
+      "bytes": 14780
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverRoutesTest.kt",
+      "sha256": "14a6da0452445a60936e3995c2b5685235af5f04549dae3bb4dbca02e7b381a4",
+      "bytes": 3450
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverViewModelTest.kt",
+      "sha256": "c6c51cb0be90b4f9cf7ce98630091c8892a0364214c14d347dfb2c4cb07c058b",
+      "bytes": 29383
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectDateInputTest.kt",
+      "sha256": "94e2e87ee0981673d2eeb6b678d51066484efedebb1cf4c114b4d6f07501f08e",
+      "bytes": 5399
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectEntryFlowTest.kt",
+      "sha256": "261ac1fe723f5ad185618ce14767fcb062d6d0ab5914f00c2d59dde252f54577",
+      "bytes": 16926
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleFlowTest.kt",
+      "sha256": "22d99ec9e9675c128d66f2a2aa9556295a152acd24311c32bacee7ef02c271bd",
+      "bytes": 27016
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleRoutesTest.kt",
+      "sha256": "05084186bb3c8770f2d1a2379750f35e1cd559a248479dade826fa887eff3512",
+      "bytes": 3115
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleScreensTest.kt",
+      "sha256": "28ad022d22491e43bea215702b4940ca082d27158b84bc00531a4add6aaee51e",
+      "bytes": 21145
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt",
+      "sha256": "d1f6e6483cf463cd44c0266bc38ba42e5dc844b1b01f708a92c66bc775eec46f",
+      "bytes": 42309
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectNavigationGuardTest.kt",
+      "sha256": "255793100bcd28f431b0e9cf66d326e95e3a9166a611c71de8262ac0830d5fb4",
+      "bytes": 11881
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectRoutesTest.kt",
+      "sha256": "c73806cdc0ae8cab277f652c18f1b593a304391cfd1ab25989070b3d069c1906",
+      "bytes": 1630
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectScreensTest.kt",
+      "sha256": "854578422b5b52d41b75ca59a4e1e889899a958a16a887bc7624a766cbfc2f0b",
+      "bytes": 19426
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt",
+      "sha256": "f38174fa8389c7fa4883b6506f61d8d3201ee88592e836a0010b9dee37f99e28",
+      "bytes": 29118
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionFixtures.kt",
+      "sha256": "8dbba4c222b80cbffd0da8c75b74bad19525a19365a22a0a57071bc08fcdaccf",
+      "bytes": 9898
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleFlowTest.kt",
+      "sha256": "e937c4ee78d379344b21deaef338386c841c18601a2b887344e0571866819852",
+      "bytes": 16570
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleViewModelTest.kt",
+      "sha256": "76d6c002df06a7db960bcd3e890e17994efeef08c08ba7afed75fadfbac56f5a",
+      "bytes": 27559
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationFlowTest.kt",
+      "sha256": "b91bff3d2bcd168437b41189f4e41047d5241b1d3cff67fe4151da4262046421",
+      "bytes": 5248
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationGuardTest.kt",
+      "sha256": "f3843906c5c5f741e760b0e57963ea381281adf203849a21a17e2be7bd392f4e",
+      "bytes": 5881
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionRoutesTest.kt",
+      "sha256": "a5473666d9c1ff24143b26ec0388c83a387c9acc4032ceebc413f8e56c31748f",
+      "bytes": 3251
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionScreensTest.kt",
+      "sha256": "1552bdbf49ee81c56870c3e7dd544735abaedfe336369a3a84a7fa4ce6997d42",
+      "bytes": 6208
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionViewModelTest.kt",
+      "sha256": "5d54f58a09c0afb58f57902d9dfc46d07ef2d8cbeb80a962f06f474a826df77a",
+      "bytes": 5542
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionNavigationGuardTest.kt",
+      "sha256": "0ee420be10e504830ab2a5bc485a2bcf9846ff545a8e908ef6f5b812df0ef8ff",
+      "bytes": 19628
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt",
+      "sha256": "9f4b55736f36fbc4c8a9039f547f89f148809fbce40808b9a508f1a583e8bf58",
+      "bytes": 34131
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRoutesTest.kt",
+      "sha256": "ccaa480e2f022e75a0d8b1baff5354459bd1d51aeb14f3e7cab24941e4c0280f",
+      "bytes": 3911
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionScreensTest.kt",
+      "sha256": "d9059c0e050c6323ecf1e3b40016cdba6fb7466821f5eda49997a7a463149b5f",
+      "bytes": 17624
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionViewModelTest.kt",
+      "sha256": "bb7dc6b04b494d3a8eb8a967dc45b77986e5b59a8619f9f3b5886ea407d2def4",
+      "bytes": 19929
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/ActivityNavigationTest.kt",
+      "sha256": "6829112167dd2e20142f11dcc7dcebbc6a5292229167d6421f10ef8ea56659f3",
+      "bytes": 2566
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/NavigationShellTest.kt",
+      "sha256": "53c5a2ac0086d7523c59d1d025c4c48e665f990e3841e3187e4cf3ce2bfec3ae",
+      "bytes": 15375
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/StorageUiStateTest.kt",
+      "sha256": "836591e88e35dfe59e3db9a5d5fc16c9f3a68beebea165ca090ec916ef57b1dc",
+      "bytes": 10675
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIComponentsTest.kt",
+      "sha256": "c9ccac26c2bf2a508c3970b1002ae6e6ccfd114978725552bf72da50010da889",
+      "bytes": 16554
+    },
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json",
+      "sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "bytes": 10840
+    },
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/2.json",
+      "sha256": "ceb49b458c4c5baa08066586f209f96842935f5456a0a53a01220f6d958f7131",
+      "bytes": 21042
+    },
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "6d2c8b9a47ab69e04de6c2dffaf210420d58224eb2b5ac78fa13277a6be5506b",
+      "bytes": 2628
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "946798d5fadb1885be291dc9432f9e1c798bdfa55e2c8784173dca0d058874bd",
+      "bytes": 317
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "23a0e54819e1d0d96c4195ca1a80535c80a21174bc133410343714ea7c456b11",
+      "bytes": 326
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "sha256": "4c3b747cf7b6e92ab8ad0af9575e728875129b7715639ce6d88263626963f0df",
+      "bytes": 3066
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "44c4c2365ac08b98f9f9cb4ad952d80eada3865db9eae1fb81717b0e62fcbc65",
+      "bytes": 424
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "1f97506f7ca338e0f394aa1c98bc13ccbdf8c36b6c24eb0e90fdda78ab6d4245",
+      "bytes": 340
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+      "bytes": 43764
+    }
+  ],
+  "sourceZip": "green-full-verified-source.zip",
+  "sourceZipSha256": "b9abe27f39329c6d08d95cd47f9259e17d42fb68cff36384f46572dd67a2a4b4",
+  "inputsStable": "PASS",
+  "reports": [
+    {
+      "kind": "android",
+      "path": "green-full-verified-android-0.xml",
+      "sha256": "704abd21a916bbd3bfec09181623b712ee1e69e09e0cea09cae509008fda0f64",
+      "bytes": 100915,
+      "counts": {
+        "tests": 566,
+        "failures": 4,
+        "errors": 0,
+        "skipped": 0
+      },
+      "devices": [
+        "Lithic_M01_API_36(AVD) - 16"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.app.AppContainerTest",
+      "name": "actual_application_onCreate_starts_its_private_default_storage",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.app.AppContainerTest",
+      "name": "cancelled_initialization_propagates_cancellation_and_never_reports_ready",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.app.AppContainerTest",
+      "name": "concurrent_readers_wait_for_one_background_start_and_captured_zone",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.app.AppContainerTest",
+      "name": "start_initializes_complete_storage_without_an_explicit_read",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.app.AppContainerTest",
+      "name": "open_before_start_does_not_implicitly_create_storage",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.app.AppContainerTest",
+      "name": "initialization_failure_is_retained_without_new_generation_or_retry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "unsupported_pointer_format_and_stage_fail_explicitly",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "repeated_open_on_one_owner_returns_the_same_handle",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "corrupt_database_is_preserved_without_empty_replacement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "ready_marker_identity_must_match_the_active_generation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "missing_settings_are_not_recreated",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "missing_ready_marker_is_not_recreated",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "old_generation_directories_are_retained_on_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "database_wal_and_shm_stay_in_the_same_generation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "corrupt_pointer_backup_evidence_is_preserved",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "missing_pointer_with_existing_generation_does_not_reset",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "cancelled_repeat_open_preserves_the_already_active_handle",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "pointer_new_file_evidence_is_not_treated_as_fresh_install",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "symlinked_generations_cannot_escape_the_private_root",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "generation_is_self_contained",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "atomic_file_backup_can_recover_a_valid_committed_pointer",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "restart_opens_the_same_generation_and_record_zone",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "corrupt_settings_are_preserved_without_default_replacement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "missing_generation_directory_is_not_recreated",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "pointer_id_cannot_escape_the_generations_directory",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "same_canonical_root_cannot_have_two_active_owners",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "failed_initialization_never_activates_a_partial_generation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "corrupt_pointer_remains_unchanged_and_does_not_reset",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "cancellation_before_io_return_releases_the_generation_owner",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.backup.DataGenerationStoreTest",
+      "name": "missing_database_is_not_recreated",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "media_rejects_traversal_absolute_and_backslash_paths",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "media_rejects_nonpositive_dimensions",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "category_rejects_inconsistent_normalized_name",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "media_rejects_invalid_uuid",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "category_rejects_blank_name",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "category_rejects_invalid_uuid",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "media_rejects_invalid_sha256",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "media_rejects_negative_byte_length",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.MetadataValidationTest",
+      "name": "valid_metadata_roundtrips_without_claiming_image_processing",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "empty_existing_database_is_rejected_without_creating_empty_ledger",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "dates_and_nanosecond_instants_survive_file_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "normalized_names_are_unique_within_type_but_not_across_types",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "existing_default_validation_does_not_repair_missing_record",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "snapshot_waits_for_shared_write_coordinator",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "reused_command_with_different_project_or_event_is_conflict",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "real_settlement_after_end_does_not_reopen_project",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "amount_and_uuid_and_future_payment_validation_preserve_empty_ledger",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "additional_event_requires_existing_project_and_matching_operation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "project_and_initial_event_are_saved_together",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "existing_version_one_foreign_database_is_not_adopted",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "concurrent_snapshots_never_expose_project_without_initial_event",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "operation_id_is_unique",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "event_relationship_initial_role_and_lifecycle_are_validated",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "existing_version_zero_foreign_database_is_not_initialized_in_place",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "additional_event_retry_and_conflict_preserve_original_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "concurrent_identical_commands_create_only_one_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "maximum_amount_and_real_prepayment_before_ownership_are_valid",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "schema_v1_has_only_four_business_tables",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "room_snapshot_keeps_same_view_across_independent_sqlite_commit",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "existing_schema_is_read_from_live_wal_before_opening_room",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "require_existing_database_never_creates_missing_file",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "transaction_rolls_back",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "zero_initial_amount_and_real_negative_net_cost_are_valid",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "unknown_schema_version_is_rejected_without_destructive_fallback",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "exact_command_retry_returns_existing_ids_without_second_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "corrupt_existing_database_is_rejected_without_deleting_original",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "snapshot_reads_all_four_real_tables_and_cover_relationship",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "existing_default_validation_rejects_changed_identity_semantics",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "subscription_category_cannot_be_used_for_project",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "sqlite_page_corruption_preserves_original_through_real_open_handler",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "defaults_are_typed",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "unicode_and_whitespace_normalization_enforces_real_category_uniqueness",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+      "name": "fk_rejects_orphan_event",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v1_hash_rejects_nocase_primary_key_without_migration",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v1_hash_rejects_sqliteXforeign_user_table_without_migration",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "committed_v1_wal_is_respected_during_upgrade",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v2_reopens_and_old_project_writes_still_work",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "fresh_database_is_v2_with_empty_subscription_tables",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v1_hash_rejects_room_master_table_trigger_without_migration",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_identity_with_extra_business_table_is_rejected_before_migration",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "create_failure_during_real_room_upgrade_rolls_back_v1_schema_and_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v2_hash_rejects_nocase_primary_key_without_repair",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "v1_to_v2_preserves_projects",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "version_zero_is_rejected_without_initializing_existing_file",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_identity_with_extra_column_is_rejected_before_migration",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v2_hash_rejects_room_master_table_trigger_without_repair",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v2_hash_rejects_sqliteXforeign_user_table_without_repair",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v1_hash_rejects_android_metadata_trigger_without_migration",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v2_hash_rejects_android_metadata_trigger_without_repair",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "broken_v1_foreign_key_is_rejected_before_migration",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_v1_legacy_identity_migrates_without_changing_old_rows",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "arbitrary_room_identity_is_rejected_without_changing_old_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "known_identity_with_missing_index_is_rejected_before_migration",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+      "name": "unknown_version_is_rejected_without_changing_old_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "prepare_does_not_create_formal_file",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "changed_bytes_are_not_reencoded_or_silently_repaired",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "remove_active_prepared_resource_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "truncated_jpeg_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "enormous_png_dimensions_are_rejected_before_decode",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "normalized_metadata_matches_real_private_bytes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "encoding_failure_leaves_no_formal_resource",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "original_uri_is_not_a_persistent_asset_path",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "same_uuid_final_without_ownership_receipt_is_preserved_by_cleanup",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "bounded_decode_rejects_real_over_40mp_before_bitmap_allocation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "all_eight_exif_orientations_use_correct_corner_geometry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "replaced_inode_with_same_uuid_and_old_receipt_is_never_overwritten_or_deleted",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "replay_syncs_owned_complete_final_before_allowing_reference_or_pruning_payload",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "incorrect_declared_mime_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "file_write_failure_leaves_no_formal_resource",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "symlink_target_cannot_escape_private_media",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "private_relative_paths",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "committed_cover_releases_only_redundant_prepared_payload_and_keeps_partial_payload",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "copy_survives_source_removal",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "oversized_source_stream_is_bounded",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "partial_final_with_exclusive_inode_receipt_is_reclaimable_without_touching_unknown_files",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "repeated_commit_is_exact_read_only_replay",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "apng_animation_control_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "nested_or_absolute_asset_path_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "prepared_identity_can_be_restored_without_source_uri",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "png_transparency_is_not_silently_jpeg_encoded",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "symlink_media_directory_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "cleanup_preserves_unknown_file_and_invalid_owner",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "prompt_cancellation_after_preparation_releases_lease_and_preserves_recoverable_bytes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "path_into_other_generation_cannot_read_or_delete",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "discard_prepared_does_not_delete_final_with_uncertain_db_result",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "decode_failure_leaves_no_managed_asset",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "jpeg_direction_and_location_metadata_are_normalized",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "output_still_over_2mib_is_explicit_failure",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "corrupt_png_crc_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "orphan_final_can_be_reclaimed_after_restart",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "repeated_prepare_does_not_encode_or_create_second_asset",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "zero_png_dimensions_are_invalid",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "non_image_input_is_explicitly_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "discarded_uncommitted_preparation_is_safely_removed",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "truncated_png_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "metadata_mismatch_is_explicit_error",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "repeated_reads_do_not_change_file_or_hash",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "stable_uuid_cannot_overwrite_existing_file",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "gif_is_not_accepted_as_static_cover",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "mpo_multiframe_jpeg_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "missing_file_is_not_reported_as_no_cover",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "sqlite_asset_insert_failure_protects_old_cover_and_leaves_safe_orphan",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "unchanged_project_row_with_new_money_event_is_stale_cover_baseline",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "decode_failure_preserves_existing_cover_and_original_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "final_file_before_database_commit_is_reclaimable_after_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "deleted_project_cannot_acquire_a_prepared_cover",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "two_projects_share_a_cover_and_replacement_keeps_other_reference",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "unknown_uuid_named_file_without_ownership_proof_is_retained",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "physical_delete_failure_keeps_proof_and_retries_without_metadata_reference",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "committed_verification_is_read_only_and_detects_later_target_changes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "database_commit_before_old_cleanup_survives_generation_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "new_subscription_state_blocks_a_stale_cover_command",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "final_file_commit_failure_never_inserts_a_cover_reference",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "repeated_verified_reads_preserve_bytes_and_real_metadata",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "fixed_command_concurrency_creates_one_asset_and_replays_exact_target",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "production_owned_cleanup_preserves_unknown_file_and_its_metadata",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "production_owned_image_store_cannot_delete_project_or_subscription_cover",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "new_subscription_payment_blocks_a_stale_cover_command",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "project_and_subscription_share_cover_until_last_reference_is_removed",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "missing_cover_is_explicit_failure_without_deleting_metadata_or_business_reference",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "cleanup_cannot_delete_file_while_coordinator_snapshot_uses_it",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "deleting_project_preserves_cover_still_used_by_subscription",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "lost_result_replay_after_generation_reopen_does_not_import_again",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "repository_prompt_cancellation_releases_unreceived_preparation_lease",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "subscription_update_failure_rolls_back_new_metadata_and_keeps_timelines",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "prepared_file_write_failure_preserves_existing_cover_and_original_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "subscription_baseline_contains_original_payments_and_states",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "stale_project_metadata_cannot_replace_newer_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "load_target_returns_complete_project_and_money_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "subscription_cover_write_preserves_payment_and_state_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "remove_cover_keeps_original_money_and_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "corrupt_cover_is_explicit_failure_without_reencoding_or_clearing_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "project_cover_write_preserves_cost_and_all_money_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "project_update_failure_rolls_back_new_metadata_and_protects_old_bytes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "stale_old_command_cannot_overwrite_a_newer_cover",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "encode_failure_preserves_existing_cover_and_original_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "active_preparation_survives_cleanup_until_explicit_release",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "ambiguous_legacy_settlements_conflict_at_all_formal_write_entry_points",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "correct_end_date_updates_result",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "amend_without_an_existing_settlement_cannot_create_or_remove_money",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "end_and_recovery_atomic",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "different_concurrent_end_commands_conflict_instead_of_creating_two_settlements",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "full_project_baseline_rejects_same_revision_changed_metadata",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "late_installment_does_not_reactivate",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "end_and_settlement_survive_real_file_database_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "historical_correction_rejects_settlement_future_money_and_changed_full_event",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "current_and_history_are_filtered_in_sql_and_bounded_by_stable_fifty_row_pages",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "no_settlement_and_explicit_zero_settlement_preserve_distinct_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "legacy_first_end_settlement_is_compatible_but_every_add_rejects_a_second",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "delete_requires_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "filtered_window_holds_one_snapshot_when_end_write_is_queued_between_pages",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "amend_rolls_back_project_when_real_settlement_update_fails",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "empty_filtered_reads_are_real_and_database_failure_does_not_become_empty_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "historical_correction_is_atomic_with_its_project_revision",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "deleting_one_project_keeps_other_project_shared_media_and_real_file",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "end_rejects_invalid_date_reason_revision_and_future_real_money",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "deletion_refuses_stale_project_and_any_new_or_corrected_event",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "edit_end_recovery_not_duplicated",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectLifecycleRepositoryTest",
+      "name": "historical_initial_and_regular_corrections_preserve_identity_and_refunds_are_new_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "lost_create_result_replays_original_identity_without_second_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "editing_start_recalculates_held_days_in_detail_and_page",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "one_thousand_projects_remain_bounded_and_stably_sorted",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "concurrent_create_and_append_replay_without_duplicate_money",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "selectable_categories_include_only_project_type",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "page_limits_rows_in_sql_and_batch_reads_visible_events_without_n_plus_one",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "real_room_changes_emit_initial_create_edit_money_and_category_invalidations",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "home_summary_uses_only_count_without_loading_all_projects_or_events",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "missing_project_is_null_but_read_failure_is_never_fake_empty_data",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "real_sqlite_full_failure_rolls_back_and_same_command_retries_safely",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "concurrent_edit_commands_only_apply_one_target",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "recovery_exceeding_outlay_produces_real_negative_cost",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "create_zero_and_normal_project_survives_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "backdated_money_recalculates_detail_page_and_observation_day",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "stale_editor_cannot_overwrite_a_committed_metadata_change",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "editing_into_subscription_category_is_rejected_without_mutation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "same_day_events_are_all_preserved_in_stable_id_order",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "fifty_one_projects_page_as_fifty_and_one",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "full_baseline_comparison_detects_same_timestamp_changed_row",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "one_hundred_projects_have_stable_two_pages",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "same_money_operation_with_changed_content_is_conflict",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "real_prepayment_before_ownership_has_no_fake_zero_daily_cost",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "invalid_create_and_future_money_leave_real_database_unchanged",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "window_is_one_snapshot_when_a_sort_key_edit_is_queued_between_pages",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "moving_start_after_existing_end_is_rejected_without_erasing_end",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "legacy_end_and_future_end_are_evaluated_without_reactivating_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "persisted_business_zone_boundary_ignores_device_timezone_changes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "initial_cost_counted_once_after_replay_and_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "invalid_page_size_and_noncanonical_cursor_are_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "fresh_page_window_after_sort_key_edit_has_no_duplicate_or_missing_ids",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "metadata_edit_preserves_created_end_cover_and_old_money_events",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "edit_requires_increasing_revision_and_valid_business_identities",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "lost_edit_result_replays_stable_target_after_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.ProjectRepositoryTest",
+      "name": "frozen_create_replay_remains_strict_after_metadata_edit",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "hidden_illegal_state_is_explicit_read_and_write_corruption_without_overwriting_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "renewal_correction_validates_positive_amount_cycle_dates_and_preserved_identities",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "early_stop_rejects_past_dates_and_preserves_purchased_totals_when_valid",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "renewal_amount_correction_updates_original_fact_and_exact_target_replays",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "default_stop_rejects_an_earlier_period_boundary_instead_of_silently_truncating",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "corrupt_facts_outside_visible_management_page_are_not_hidden_by_filter_or_limit",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "pause_saves_exact_state_identity_without_changing_real_payments",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "concurrent_identical_pause_commands_save_only_one_fact",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "deleting_last_payment_is_rejected_without_deleting_subscription_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "default_stop_is_fixed_at_latest_prepaid_boundary_and_keeps_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "cancel_stop_cannot_delete_already_effective_stop_or_stale_target",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "resume_with_current_coverage_keeps_old_payment_and_counts_only_enabled_dates",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "state_date_correction_into_existing_day_conflicts_without_changing_either_row",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "real_sqlite_state_failure_rolls_back_atomic_reopen_payment_and_state",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "stale_payment_correction_cannot_overwrite_later_state_or_payment_fact",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "changed_payment_invalidates_whole_state_baseline",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "later_state_fact_invalidates_whole_state_baseline",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "same_day_resume_corrects_original_id_and_operation_instead_of_appending",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "all_expired_payments_default_to_business_today_without_backdating",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "management_sql_pagination_fills_filtered_pages_and_rebuilds_complete_window",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "cancel_future_stop_deletes_only_target_and_retry_reports_current_absence",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "ordinary_new_renewal_cannot_cross_fixed_future_stop_boundary",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "reopen_with_only_future_paid_coverage_is_expired_until_real_start",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "real_sqlite_after_delete_failure_rolls_back_the_entire_delete",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "closed_database_management_read_and_lifecycle_write_have_explicit_failures",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "fixed_default_stop_command_replays_across_days_without_moving_saved_boundary",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "full_corruption_preflight_uses_bounded_identity_batches_and_finds_bad_tail",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "correction_expanding_coverage_after_fixed_stop_requires_explicit_plan_change",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "stale_delete_cannot_remove_corrected_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "same_day_replacement_with_new_row_or_operation_identity_conflicts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "renewal_overlap_correction_is_rejected_before_any_partial_update",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "exact_saved_state_can_replay_after_database_reopen_without_new_fact",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "deleting_one_erroneous_payment_keeps_service_and_fixed_state_and_reports_absence",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "hidden_wrong_category_fails_both_management_reads_and_lifecycle_write_without_repair",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "changed_subscription_identity_invalidates_whole_state_baseline",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "ordinary_new_renewal_on_stopped_identity_does_not_implicitly_enable_it",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "new_stop_identity_conflicts_with_existing_future_plan_without_moving_its_boundary",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "complete_baseline_comparison_treats_payment_and_state_order_as_sets",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "renewal_history_checks_full_timeline_not_only_visible_payment_row",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "reopen_without_current_or_future_payment_requires_real_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "paid_coverage_gap_still_uses_latest_confirmed_end_for_default_stop",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "atomic_reopen_with_real_renewal_keeps_subscription_id_and_supports_exact_replay",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "management_and_stopped_queries_use_observation_day_last_boundary",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "scheduled_stop_correction_preserves_original_id_operation_and_other_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "reused_state_operation_with_different_contents_conflicts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "stopped_reopened_and_stopped_again_retains_same_identity_and_historical_days",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionLifecycleRepositoryTest",
+      "name": "amount_only_correction_keeps_existing_coverage_truncated_by_early_plan",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "subscription_categories_and_count_read_real_typed_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "dao_rejects_orphan_renewal_and_duplicate_operation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "concurrent_overlapping_commands_cannot_both_commit",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "confirm_requires_existing_subscription",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "payment_after_fixed_business_today_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "positive_bounded_amount_and_fixed_cycle_days_are_required",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "noncanonical_identity_and_operation_mismatch_are_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "invalid_page_sizes_and_noncanonical_cursors_are_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "reused_renewal_primary_key_does_not_leave_second_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "currency_change_is_allowed",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "create_and_first_payment_atomic",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "state_schema_roundtrip_requires_unique_day_and_operation_and_existing_parent",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "adjacent_and_gapped_paid_coverage_are_allowed_but_overlap_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "renewal_history_pages_are_sorted_by_payment_and_cost_uses_complete_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "prepaid_first_period_has_purchased_days_but_no_elapsed_time_or_current_price",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "closed_database_write_returns_explicit_storage_failure_without_new_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "project_category_cannot_be_used_for_subscription",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "reused_operation_with_different_content_conflicts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "first_payment_insert_failure_rolls_back_new_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "confirm_exact_replay_precedes_overlap_check_and_changed_replay_conflicts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "corrupt_missing_payment_identity_and_closed_reads_are_never_fake_empty",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "real_changes_emit_initial_state_create_and_confirmation_without_count_guessing",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "real_recent_payment_sort_is_not_effective_date_sort",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "prepaid_price_waits_for_effective_date_and_keeps_purchased_days_separate",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "subscription_pages_and_refresh_window_keep_ties_and_moved_rows",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "accurate_dates_retained",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "renewal_history_is_preserved",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "unknown_result_reopen_replays_same_ids_without_duplicate_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "malformed_stored_cycle_is_corruption_and_never_overwritten_by_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.repository.SubscriptionRepositoryTest",
+      "name": "expired_service_has_no_fake_price_or_automatic_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "closed_settings_handle_is_rejected",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "existing_missing_file_is_not_created",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "valid_nonempty_preferences_without_record_zone_are_not_replaced",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "invalid_persisted_record_zone_is_not_replaced",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "initialization_is_durable_before_open_returns",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "cancellation_before_io_return_releases_the_settings_owner",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "file_existence_is_observed_only_after_the_exclusive_lease",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "corrupt_settings_remain_unchanged",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "new_settings_require_an_explicit_record_zone",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "existing_empty_preferences_are_rejected_without_default_replacement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "zone_is_persisted",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "canonical_file_cannot_have_two_active_owners",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.settings.SettingsStoreTest",
+      "name": "closing_releases_the_owner_only_after_datastore_stops",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverEntryScreensTest",
+      "name": "subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverEntryScreensTest",
+      "name": "project_without_cover_exposes_safe_placeholder_and_add_cover_entry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverNavigationGuardTest",
+      "name": "prepared_cover_guards_all_tabs_and_explicit_discard_never_updates_the_business_reference",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverNavigationGuardTest",
+      "name": "home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverNavigationGuardTest",
+      "name": "project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverRoutesTest",
+      "name": "prepared_cover_requires_explicit_discard_and_another_pending_write_still_blocks",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverRoutesTest",
+      "name": "subscription_cover_retains_current_and_stopped_history_detail_parent_chain",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverRoutesTest",
+      "name": "project_cover_retains_current_and_history_detail_parent_chain",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverRoutesTest",
+      "name": "pending_cover_cannot_be_discarded_by_either_other_feature",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "damaged_selected_source_reports_error_and_keeps_old_reference_bytes_and_money",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "damaged_prepared_private_file_allows_explicit_reload_and_reselect_without_touching_old_cover",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "project_cover_editor_retains_real_identity_and_history_origin_without_writing",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "committed_response_loss_replays_same_command_without_a_second_import_or_asset",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "subscription_cover_editor_retains_identity_and_real_payment_without_writing",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "duplicate_save_and_saved_task_recovery_keep_one_asset_and_frozen_operation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "view_model_clear_after_prepared_result_is_published_releases_lease_without_deleting_recoverable_bytes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "prepare_keeps_old_reference_until_explicit_save_and_source_uri_is_not_saved",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "committed_saved_envelope_performs_read_only_verification_without_import_or_commit",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "view_model_clear_after_real_prepare_releases_only_lease_and_preserves_recoverable_bytes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "system_picker_cancel_does_not_dirty_or_write_project_or_media",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectDateInputTest",
+      "name": "local_date_outside_calendar_range_remains_available_as_raw_input",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectDateInputTest",
+      "name": "real_calendar_confirmation_preserves_the_selected_day_across_device_time_zones",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectDateInputTest",
+      "name": "busy_date_input_and_calendar_action_are_disabled_and_touch_target_is_large_enough",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectDateInputTest",
+      "name": "invalid_raw_date_and_associated_error_are_retained_without_correction",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectDateInputTest",
+      "name": "canceling_the_calendar_does_not_change_the_controlled_date",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectEntryFlowTest",
+      "name": "backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectEntryFlowTest",
+      "name": "initial_cost_counted_once_in_room_and_after_close_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectEntryFlowTest",
+      "name": "rapid_double_tap_creates_only_one_real_project_and_one_appended_event",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectEntryFlowTest",
+      "name": "create_zero_and_normal_project_are_real_room_records_after_reopen",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectEntryFlowTest",
+      "name": "editing_name_and_start_date_updates_visible_results_without_changing_money_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectEntryFlowTest",
+      "name": "failed_save_preserves_form_and_canceling_discard_keeps_the_real_unsubmitted_input",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "correct_end_date_updates_result",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "end_and_recovery_atomic",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "late_installment_does_not_reactivate",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "delete_requires_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "lifecycle_confirmation_is_reachable_at_360dp_and_200_percent_font",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "deletion_with_lost_result_stays_on_original_confirmation_then_reconciles_absence",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "saved_instance_route_and_vm_bundle_restore_end_input_without_business_write",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "history_correction_and_real_refund_are_distinct_and_preserve_original_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest",
+      "name": "edit_end_recovery_not_duplicated",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest",
+      "name": "mismatched_source_identity_invalid_event_and_oversized_history_restore_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest",
+      "name": "current_lifecycle_routes_keep_current_parent_and_four_entries",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleRoutesTest",
+      "name": "history_has_review_parent_and_at_most_five_entries_for_every_editor",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "ended_detail_without_late_money_does_not_claim_post_end_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "end_validation_preserves_raw_dates_amount_reason_and_visible_errors",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "end_and_correction_forms_are_reachable_at_360dp_with_200_percent_font",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "missing_detail_never_presents_stale_costs_or_mutation_actions",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "end_pending_submission_locks_inputs_and_committed_refresh_only_reads",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "correction_initial_read_and_conflict_offer_reload_without_resubmitting",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "ended_detail_with_only_future_late_money_does_not_claim_an_observed_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "correcting_end_without_settlement_never_offers_creating_recovery",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "correcting_linked_settlement_keeps_the_existing_event_and_has_no_toggle_or_delete",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "delete_confirmation_states_are_explicit_and_do_not_allow_duplicate_or_unknown_cancel",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "detail_routes_regular_and_initial_corrections_separately_from_end_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "ended_detail_with_real_observed_late_money_explains_its_included_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "history_preserves_visible_rows_when_read_fails_and_exposes_database_continuation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "correction_keeps_direction_and_role_read_only_and_explains_real_refund",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "zero_end_recovery_commits_once_and_refreshes_current_history_and_detail",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "end_raw_input_dirty_guard_and_identity_survive_saved_state_without_writing",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "stale_delete_does_not_automatically_rebase_and_explicit_read_requires_confirmation_again",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "end_validates_real_recovery_date_and_amount_without_writing",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "conflicted_delete_explicit_missing_read_reports_only_verified_absence_and_allows_return",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "real_room_lifecycle_state_updates_never_emit_a_gap_in_the_active_form_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "initial_delete_read_failure_and_absence_are_distinct_and_neither_writes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "conflicted_edit_end_update_and_money_explicit_missing_reads_allow_safe_return_without_false_commit",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "stale_correction_preserves_raw_values_until_explicit_read_of_current_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "delayed_initial_read_cannot_replace_a_new_form_for_the_same_project",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "lifecycle_commit_then_read_failure_stays_committed_without_new_write",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "initial_end_read_interruption_restores_baseline_without_replacing_existing_raw_values",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "interrupted_end_replays_the_original_project_settlement_and_command_envelope",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "delete_cancel_leaves_facts_and_confirm_removes_project_and_its_events",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "update_end_without_settlement_cannot_create_an_implicit_recovery",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "external_delete_removes_cached_detail_and_missing_is_not_a_read_error",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "conflicted_missing_target_read_exception_keeps_original_envelope_and_blocks_until_verified",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "interrupted_update_end_replays_the_same_linked_settlement_identity_and_baseline",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "history_is_database_filtered_bounded_and_refreshes_loaded_pages_after_writes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "initial_money_correction_preserves_all_business_identities_and_updates_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "interrupted_money_correction_replays_original_identity_and_uneditable_raw_input",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleViewModelTest",
+      "name": "interrupted_delete_retries_same_snapshot_and_only_claims_current_absence",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectNavigationGuardTest",
+      "name": "dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectNavigationGuardTest",
+      "name": "dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectNavigationGuardTest",
+      "name": "untouched_form_leaves_without_a_discard_prompt_or_a_business_record",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectNavigationGuardTest",
+      "name": "unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectRoutesTest",
+      "name": "creation_restores_its_actual_home_or_list_parent",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectRoutesTest",
+      "name": "mismatched_or_invalid_project_routes_restore_safely_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectRoutesTest",
+      "name": "project_routes_keep_stable_identity_and_bounded_parents",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "narrow_large_text_form_keeps_ime_error_save_and_back_actions_reachable",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "unconfirmed_submission_locks_content_but_allows_safe_replay_action",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "failed_list_read_is_visible_and_keeps_prior_records_instead_of_a_fake_empty_state",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "committed_write_with_failed_refresh_only_offers_read_retry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "failed_save_preserves_all_controlled_input_and_persistent_error",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "money_editor_uses_absolute_amount_and_selected_outlay_or_recovery",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "editing_project_details_does_not_offer_initial_money_history_changes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "create_form_exposes_real_payment_date_zero_amount_and_controlled_category",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "in_flight_submission_disables_editing_and_duplicate_save_actions",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "project_list_opens_stable_identity_and_exposes_database_page_continuation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "stale_edit_conflict_offers_explicit_reload_without_resubmitting_the_old_command",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "money_editor_preserves_failed_amount_date_and_description",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectScreensTest",
+      "name": "initial_edit_read_failure_preserves_raw_and_only_offers_read_recovery",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "storage_failure_preserves_input_and_unknown_envelope_for_safe_retry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "backdated_recovery_refreshes_list_and_detail_to_negative_net",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "editing_preserves_events_and_refuses_a_stale_loaded_version",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "real_disk_full_preserves_form_then_retries_the_same_single_event",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "initial_edit_read_restores_its_baseline_without_overwriting_existing_raw_input",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "explicit_prepayment_stays_independent_of_ownership_date",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "edited_commit_result_loss_restores_complete_baseline_and_target_for_cas_replay",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "resumed_read_recalculates_business_day_without_changing_pending_raw_input",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "busy_double_tap_and_field_change_cannot_duplicate_or_change_command",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "appended_commit_result_loss_restores_same_event_and_operation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "create_zero_and_normal_project_persist_one_initial_event_each",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "invalid_amount_preserves_form_without_writing_or_closing",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "slow_previous_detail_cannot_appear_while_a_different_project_is_loading",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "committed_result_interruption_restores_and_replays_original_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "successful_write_then_detail_read_failure_remains_committed",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "future_payment_is_rejected_using_injected_business_today",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectViewModelTest",
+      "name": "raw_input_and_dirty_guard_survive_saved_state_recreation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "expiry_needs_no_worker",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "cancel_renewal_keeps_paid_access",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: No node found that matches TestTag = 'subscription-detail-scheduled-stop' in scrollable container\nSemantics of the node:\nNode #11126 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'subscription-detail-content'\nCollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@2c1443c'\nIsTraversalGroup = 'true'\nVerticalScrollAxisRange = 'ScrollAxisRange(value=0.0, maxValue=0.0, reverseScrolling=false)'\nActions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]\nHas 2 children\nSelector used: (TestTag = 'subscription-detail-content')\n\nat androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.detailNode(M09SubscriptionLifecycleFlowTest.kt:220)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.access$detailNode(M09SubscriptionLifecycleFlowTest.kt:43)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest$cancel_renewal_keeps_paid_access$1.invokeSuspend(M09SubscriptionLifecycleFlowTest.kt:77)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.cancel_renewal_keeps_paid_access(M09SubscriptionLifecycleFlowTest.kt:66)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "future_prepaid_has_own_label",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: No node found that matches TestTag = 'subscription-renewal-future-af004932-cb9c-4948-8a1f-0b2300bc4b82' in scrollable container\nSemantics of the node:\nNode #11533 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'subscription-detail-content'\nCollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@eeca1d2'\nIsTraversalGroup = 'true'\nVerticalScrollAxisRange = 'ScrollAxisRange(value=0.0, maxValue=0.0, reverseScrolling=false)'\nActions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]\nHas 2 children\nSelector used: (TestTag = 'subscription-detail-content')\n\nat androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.detailNode(M09SubscriptionLifecycleFlowTest.kt:220)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.access$detailNode(M09SubscriptionLifecycleFlowTest.kt:43)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest$future_prepaid_has_own_label$1.invokeSuspend(M09SubscriptionLifecycleFlowTest.kt:146)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)\nat kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.subscription.M09Subscripti"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "stop_reason_does_not_cancel_vendor",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "pause_is_not_history",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: No node found that matches TestTag = 'subscription-detail-stop' in scrollable container\nSemantics of the node:\nNode #12271 at (l=0.0, t=24.0, r=320.0, b=536.0)px, Tag: 'subscription-detail-content'\nCollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@bd6e1de'\nIsTraversalGroup = 'true'\nVerticalScrollAxisRange = 'ScrollAxisRange(value=0.0, maxValue=0.0, reverseScrolling=false)'\nActions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]\nHas 2 children\nSelector used: (TestTag = 'subscription-detail-content')\n\nat androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.detailNode(M09SubscriptionLifecycleFlowTest.kt:220)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.access$detailNode(M09SubscriptionLifecycleFlowTest.kt:43)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest$pause_is_not_history$1.invokeSuspend(M09SubscriptionLifecycleFlowTest.kt:101)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)\nat kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.pause_is_not_history(M09Subs"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "payment_history_correction_and_delete_require_visible_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "resume_without_new_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "cancel_future_stop_deletes_only_target_and_preserves_other_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "state_history_correction_keeps_original_row_and_operation_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "committed_later_facts_require_explicit_current_read_and_safe_conflict_exit",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "payment_correction_updates_original_fact_without_appending_or_changing_operation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "slow_committed_read_cannot_redirect_a_later_opened_detail",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "uncovered_reopen_requires_explicit_amount_and_paid_date_without_prefill",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "only_future_paid_reopen_records_enabled_but_keeps_expired_and_payment_count",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "committed_state_read_failure_only_rereads_without_writing_again",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "explicit_delete_error_payment_removes_one_row_and_recomputes_without_refund",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "default_stop_uses_last_confirmed_prepaid_boundary_and_preserves_money",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "inflight_state_locks_duplicate_save_and_preserves_reason_and_target",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "uncovered_reopen_explicit_payment_and_enabled_commit_under_same_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "lost_state_result_restores_same_immutable_command_and_replays_without_duplicates",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "explicit_pause_saves_one_state_and_preserves_all_payment_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "covered_resume_corrects_same_day_boundary_without_new_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "slow_resolved_conflict_read_cannot_redirect_a_later_opened_detail",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "explicit_early_stop_keeps_original_payments_and_future_fixed_plan",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "mismatched_saved_state_identity_remains_pending_and_cannot_navigate",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleViewModelTest",
+      "name": "last_payment_delete_is_locked_and_explained_without_destroying_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest",
+      "name": "formal_current_detail_opens_pause_confirmation_without_a_database_write",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest",
+      "name": "formal_review_history_opens_original_stopped_identity_with_reopen_entry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest",
+      "name": "hidden_dirty_state_protects_tab_reselection_until_explicit_discard",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest",
+      "name": "hidden_pending_state_blocks_root_system_back_without_finishing_host",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest",
+      "name": "hidden_pending_state_blocks_project_entry_and_returns_to_original_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest",
+      "name": "history_reopen_has_five_route_limit_and_restores_exact_source",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest",
+      "name": "corrupt_new_route_identity_or_wrong_parent_returns_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest",
+      "name": "stopped_history_and_detail_have_exact_review_parents",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest",
+      "name": "historical_payment_and_state_operations_preserve_target_fact_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionRoutesTest",
+      "name": "current_state_confirmation_keeps_current_detail_parent",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "paused_detail_offers_resume_without_hiding_paid_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "current_management_has_independent_active_paused_expired_groups",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "paused_expired_coverage_keeps_paused_status_and_explains_expiry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "stopped_detail_exposes_same_identity_reopen_and_hides_ordinary_renewal",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "future_stop_shows_fixed_date_and_explicit_correct_cancel_entries",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "payment_history_has_per_fact_correction_and_delete_error_entries",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "active_detail_exposes_pause_and_stop_record_operations",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest",
+      "name": "restored_dirty_state_requires_explicit_discard_without_writing_facts",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest",
+      "name": "current_management_excludes_effective_stopped_but_keeps_paused_and_expired",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest",
+      "name": "future_stopped_boundary_remains_current_until_it_becomes_effective",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionViewModelTest",
+      "name": "restored_inflight_state_keeps_exact_envelope_and_blocks_departure",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest",
+      "name": "root_home_without_active_forms_still_allows_real_system_back_to_finish",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest",
+      "name": "hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest",
+      "name": "root_home_system_back_keeps_restored_dirty_form_until_explicit_discard",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest",
+      "name": "formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest",
+      "name": "root_home_system_back_keeps_restored_pending_envelope_and_reachable_payment_form",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest",
+      "name": "dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest",
+      "name": "hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest",
+      "name": "renewal_needs_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest",
+      "name": "narrow_large_font_real_ime_saved_task_and_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest",
+      "name": "paid_on_history_and_list_order_with_real_paging",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest",
+      "name": "currency_change_is_allowed",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest",
+      "name": "real_renewal_commit_with_lost_result_replays_original_payment_after_saved_task_restore",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest",
+      "name": "accurate_dates_retained",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest",
+      "name": "renewal_history_is_preserved",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRoutesTest",
+      "name": "invalid_subscription_identity_and_illegal_restored_chain_return_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRoutesTest",
+      "name": "subscription_routes_have_exact_bounded_parents",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRoutesTest",
+      "name": "dirty_form_from_either_feature_requires_one_global_discard_prompt",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRoutesTest",
+      "name": "frozen_project_current_and_history_parent_chains_remain_unchanged",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRoutesTest",
+      "name": "restored_create_preserves_its_actual_home_or_list_parent",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionRoutesTest",
+      "name": "pending_submission_from_either_feature_blocks_global_departure",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "detail_read_failure_and_missing_are_distinct",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "conflict_requires_explicit_read_instead_of_new_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "create_inputs_are_controlled_and_subscription_category_only",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "in_flight_form_locks_inputs_and_duplicate_confirm",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "verified_missing_target_locks_input_and_offers_safe_return_without_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "failed_form_retains_invalid_raw_and_all_four_dates",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "unconfirmed_form_only_replays_same_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "list_loading_and_read_failure_do_not_claim_empty",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "genuine_empty_list_exposes_create_without_fake_metrics",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "narrow_large_font_form_actions_and_errors_remain_reachable",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "renewal_requires_explicit_payment_action_and_keeps_reference_readonly",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "committed_form_offers_read_retry_without_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "failed_list_refresh_retains_real_rows_and_an_explicit_read_error",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "raw_four_dates_and_cycle_survive_saved_state_recreation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "verified_missing_renewal_target_disables_editing_and_can_leave_without_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "in_flight_double_save_and_changes_cannot_change_frozen_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "mismatched_success_identity_stays_pending_until_same_command_replay",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "lost_renewal_result_restores_and_replays_same_operation_identity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "first_confirmed_payment_persists_identity_and_four_dates",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "slow_previous_detail_cannot_publish_after_another_identity_is_opened",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "lost_create_result_restores_and_replays_the_same_real_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "committed_read_failure_only_rereads_and_never_confirms_payment_again",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "opening_and_discarding_form_never_creates_a_real_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionViewModelTest",
+      "name": "invalid_real_payment_preserves_raw_fields_and_reports_amount_error",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.ActivityNavigationTest",
+      "name": "activity_recreation_preserves_a_legal_selected_route_and_same_storage_owner",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.ActivityNavigationTest",
+      "name": "system_back_returns_to_home_then_finishes_the_actual_activity",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "legacy_saved_skeleton_restores_to_the_home_route",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "empty_screen_has_no_fake_metrics",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "secondary_toolbar_back_returns_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "future_recorded_end_date_does_not_pretend_the_project_has_already_ended",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "secondary_system_back_returns_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "large_text_has_no_blocked_action",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "invalid_restored_stacks_and_primary_routes_have_safe_parents",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "settings_reads_the_persisted_zone_without_fake_controls",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "only_three_primary_destinations",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "primary_selection_matches_its_visible_page",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "back_stack_restores",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "primary_system_back_returns_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "real_project_is_not_misrepresented_as_an_empty_ledger",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "repeated_primary_selection_does_not_build_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "first_launch_starts_at_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.StorageUiStateTest",
+      "name": "ready_database_read_failure_is_protective_error_instead_of_empty_snapshot",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.StorageUiStateTest",
+      "name": "real_project_snapshot_is_not_replaced_by_empty_data_or_zero_metrics",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.StorageUiStateTest",
+      "name": "actual_empty_snapshot_is_ready_only_after_repository_and_zone_read",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.StorageUiStateTest",
+      "name": "initializing_shows_loading_without_normal_empty_navigation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.StorageUiStateTest",
+      "name": "ready_settings_read_failure_is_protective_error_with_valid_database",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.StorageUiStateTest",
+      "name": "clearing_ui_owner_does_not_cancel_or_recreate_the_storage_owner",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.StorageUiStateTest",
+      "name": "actual_initialization_failure_has_protective_error_and_working_exit",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "amount_units_keep_ordinary_rounding_separate_from_daily_subcent_values",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "cards_keep_each_callers_status_and_time_semantics_and_only_real_actions",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "theme_has_the_frozen_type_hierarchy_and_readable_light_and_dark_surfaces",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "large_text_synthetic_form_keeps_errors_save_and_return_reachable_after_input",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<1> but was:<0>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.ui.UIComponentsTest.large_text_synthetic_form_keeps_errors_save_and_return_reachable_after_input(UIComponentsTest.kt:235)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "missing_amount_and_real_zero_have_distinct_visible_and_accessible_values",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "controlled_fields_keep_input_show_associated_errors_and_deliver_ime_callbacks",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "date_field_is_a_labeled_controlled_selection_with_a_disabled_state",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "large_text_cards_and_long_amounts_wrap_without_losing_the_numeric_value",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    }
+  ],
+  "total": 566,
+  "pass": 562,
+  "fail": 4,
+  "skipped": 0,
+  "jvm": 0,
+  "android": 566,
+  "original549Present": false,
+  "newDistinctTests": 17
+}

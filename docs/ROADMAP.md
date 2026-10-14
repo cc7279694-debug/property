@@ -2,11 +2,11 @@
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-本表保留原M00～M23顺序与精确前置依赖。M00～M08已独立冻结PASS WITH NOTES；本轮M09已实施验证并交付READY_FOR_REVIEW、独立PENDING，起点0063ca504ca48ef9c7231d79dc155e9bf4bc8c82/feat/m08-subscription-renewals，当前feat/m09-subscription-lifecycle，范围见[M09契约](planning/M09_CONTRACT.md)。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；M10～M23未授权，全部历史NOTES保留。
+本表保留原M00～M23顺序与精确前置依赖。M00～M09已独立冻结PASS WITH NOTES；本轮M10已获明确授权，起点 `57de897917473f255d43dfb306a8433b366c00eb`、来源 `feat/m09-subscription-lifecycle`，当前 `feat/m10-local-cover-media`，范围见[M10契约](planning/M10_CONTRACT.md)。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；M11～M23未授权，全部历史NOTES保留。
 
 ## 执行顺序与依赖解释
 
-按编号逐模块授权与停止；M09前置M08已冻结，当前实现订阅状态与付款历史纠错/删除，复用Room v2、唯一owner/固定时区/冻结引擎，用户A/B正式规则已登记。媒体、完整备份恢复、汇总和通知仍属后续模块。Q03～Q06不关闭；M09两流程风险只能在本轮真实实现/验证后关闭。完成M09 READY_FOR_REVIEW后停止，不自动进入M10。
+按编号逐模块授权与停止；M10前置M06/M09均已冻结。当前仅单封面与本地资源生命周期，复用Room v2及同代owner/coordinator；Q05已由用户确认为首次规范化、恢复已存字节校验后原样保留，完整跨模块验证仍NOT_RUN。完整备份恢复/汇总/通知属于后续模块，Q03/Q04/Q06不关闭，M09 A/B实施及冻结来源继承。M10自动化覆盖、进程边界、APK或部分设备结果均不能替代模块完整交付与独立验收；实际结果只取当前状态及验收登记。完成M10 READY_FOR_REVIEW后停止，不自动进入M11。
 
 24计划的“必须先验收”与原JSON逐条一致，无前向依赖或环。后续还需读原计划、引用规格、适用验收、当前澄清和实际代码，不能只凭路线表开始工程。
 
@@ -24,7 +24,7 @@
 | M07 | 结束/回收/删除/历史修正 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m07.md) | M06 | 结束与回收同事务、不重复回收；无回收站 |
 | M08 | 订阅/真实续费与schema v2 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m08.md) | M03、M04、M05、M07 | v1→v2保旧记录，不自动付款 |
 | M09 | 暂停/恢复/到期/停止 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m09.md) | M08 | 无后台仍正确EXPIRED、贡献0；不替服务商取消 |
-| M10 | 单封面与本地资源生命周期 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m10.md) | M06、M09 | 删相册原图不影响封面；不做相册 |
+| M10 | 单封面与本地资源生命周期 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m10.md) | M06、M09 | READY_FOR_REVIEW，独立PENDING；实际结果见当前验收登记；不做相册 |
 | M11 | 完整逻辑导出format v1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m11.md) | M10 | 全业务/图片/设置一致快照；无CSV/自动备份 |
 | M12 | 校验/覆盖恢复/故障回退 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m12.md) | M11 | 完整往返与故障注入；失败保旧，不合并 |
 | M13 | 首页与安全核心内部版 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m13.md) | M07、M09、M12 | 统一引擎、完整核心含备份恢复；非完整V1 |

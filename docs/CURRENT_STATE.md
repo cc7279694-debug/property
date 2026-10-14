@@ -1,12 +1,21 @@
 # 当前项目状态
 
-状态日期：2026-10-13（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-14（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
 
-- **M09 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户在本会话正式转交的 ChatGPT 独立代码验收结论，评审 HEAD 为 `bfc25378927ca8d04eaecbb9d2b1455d72633da9`，评审及本次回写分支为 `feat/m09-subscription-lifecycle`，来源M08冻结回写 `0063ca504ca48ef9c7231d79dc155e9bf4bc8c82`。M09-T01～T06、原455＋新增94＝549项测试（86 JVM＋463 Android）及API36的20条实际路径等交付证据通过独立审查，未发现确定性阻塞问题。完整12项确认与全部NOTES见[正式验收登记](ACCEPTANCE_MATRIX.md#m09-独立代码验收与正式冻结记录2026-10-13)。本次仅文档回写，未重跑产品测试、构建、安装或核验APK字节；旧执行与checkpoint保留当时READY_FOR_REVIEW/PENDING，正式结论取代其当前效力。M10～M23未授权。
-- **M08 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户在本会话正式转交的 ChatGPT 独立代码验收结论，评审 HEAD 为 `a716bc5ad9e3ab49cbe858f2c966fecf93e09fbb`，评审分支 `feat/m08-subscription-renewals`。这是M08历史验收，历史交付状态与证据保留；当前M09正式冻结见上一行，M10～M23未授权。
+- **M10 — READY_FOR_REVIEW，独立验收PENDING**：已完成本轮授权的本地单封面及安全资源生命周期，实际结果见[14项报告](evidence/M10-verification.md)、[结构化证据](evidence/M10-verification.json)、[文件清单](evidence/M10-files.md)与[checkpoint](checkpoints/2026-10-13-M10.md)。基线 `57de897917473f255d43dfb306a8433b366c00eb`、当前 `feat/m10-local-cover-media`；开工本地/远端一致、工作区干净。Q05 USER_CONFIRMED，完整M11/M12往返仍NOT_RUN；未自授ACCEPTED/FROZEN，不进入M11～M23。
+
+- **M09 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户在本会话正式转交的 ChatGPT 独立代码验收结论，评审 HEAD 为 `bfc25378927ca8d04eaecbb9d2b1455d72633da9`，评审及本次回写分支为 `feat/m09-subscription-lifecycle`，来源M08冻结回写 `0063ca504ca48ef9c7231d79dc155e9bf4bc8c82`。M09-T01～T06、原455＋新增94＝549项测试（86 JVM＋463 Android）及API36的20条实际路径等交付证据通过独立审查，未发现确定性阻塞问题。完整12项确认与全部NOTES见[正式验收登记](ACCEPTANCE_MATRIX.md#m09-独立代码验收与正式冻结记录2026-10-13)。本次仅文档回写，未重跑产品测试、构建、安装或核验APK字节；旧执行与checkpoint保留当时READY_FOR_REVIEW/PENDING，正式结论取代其当前效力。M11～M23未授权。
+- **M08 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户在本会话正式转交的 ChatGPT 独立代码验收结论，评审 HEAD 为 `a716bc5ad9e3ab49cbe858f2c966fecf93e09fbb`，评审分支 `feat/m08-subscription-renewals`。这是M08历史验收，历史交付状态与证据保留；当前M09正式冻结见上一行，M11～M23未授权。
 - **M00～M07 — ACCEPTED / FROZEN — PASS WITH NOTES**，均依据用户转交的 ChatGPT 独立结论。M07 评审 HEAD 为 `4089428e7acdc0f2b8e2fd660f437b5bc7d29f61`，冻结回写 `fcb850f549285d310040318a5f7adfd51abb4c33` 是M08当时起点；全部确认项、评审 HEAD 和 NOTES 保留在[验收登记](ACCEPTANCE_MATRIX.md)。旧报告、XML、JSON、截图和 checkpoint 的当时状态不改写。
+
+## M10 已验证交付与保留边界
+
+- 本地受控静态JPEG/PNG、同代私有不可变资源、共享双引用清理及两类封面界面已接入；当前147项完整输入下已核对**652个唯一方法PASS＝86 JVM＋566 Android，原549＋新增103，0失败/错误/跳过，源码/XML EXACT MATCH**。覆盖来自分开执行：`green-full-runner-final`成功的JVM子命令（67.033秒、退出0），以及`green-android-systemui-clean-final`成功的Android/Lint/assemble阶段（639.901秒、退出0，日志10m39s）。第一阶段整体仍FAIL，其557 PASS/9 FAIL的Android结果全部排除；不是一次652项BUILD SUCCESSFUL。输入/ZIP原字节及逐方法依据见[严格覆盖核对](evidence/m10-tests/final-split-verification.json)。Lint0 errors/23 warnings，26完成阶段/44XML与1次中断的原始失败/日志保留。手工路径另有实际证据，不由自动化推定。
+- 两处实际SIGKILL探针已PASS：文件落实后DB前（PID4239→4297）、DB提交后旧图清理前（PID4335→4375），旧进程实际消失、同合成generation重开、封面/金额/历史/时区和SQL完整性核对成功，安全清理已知孤儿。仅androidTest独立合成数据；不是断电、真实LMK或M12恢复证明。测试Runner登记失败的先前准备尝试保留；修正后的Runner无action时直接委托AndroidJUnitRunner，显式action才执行不计JUnit的探针，正式APK不包含它。
+- 专用API36此前误重建，原AVD目录已不存在，原设备连续升级/保留证据中断。原M09合成DB/WAL/SHM及事实快照完整，严格重建fixture并保留已有空generation后，实际原M09 code7→最终M10 code8覆盖升级PASS：全部七表原字段、同代、GMT、pointer/ready/settings字节一致。不能称原设备连续保留或M12产品恢复。实际系统取消零写、A源删除冷重开、坏图保旧、两类独立导入/替换/移除、共享B及删除QA项目保护订阅、确切旧文件物理清理PASS。断网default network=none，360dp/200%字体、真实IME/raw错误、横竖屏/边缘手势及已保存Task616/PID17203→17927/同准备ID与字节恢复、明确一次保存PASS。早期加载截图和屏外就绪超时如实保留。全部guest设置实际复原，UTC差0.731秒，宿主和其他设备未改；见[最终设备核验](evidence/m10-device/manual/final-storage-device-proof.json)。
+- 最终APK code8/0.1.0-m10-debug，12,755,115 bytes，SHA `939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094`，实际已安装字节与最终产物一致。v2签名/旧证书、无网络/相机/广泛存储权限、九域备份排除及90生产类/测试未打包核对；Room v2、原v1/v2导出、冻结引擎、唯一owner与运行依赖122→122保留。先文件fsync/核验后Room引用，不宣称跨存储原子；未知归属残留保留，真实LMK/断电/Release/真机/API26/OEM/完整TalkBack及完整备份恢复仍NOT_RUN。
 
 ## Verified / Completed — M09（独立验收认可的此前实际交付；本次未重跑）
 
@@ -40,7 +49,7 @@
 - **CurrentAbsence：**只证明当前缺失，不提供永久删除操作日志；继续保留M07的ProjectAbsent和旧END_SETTLEMENT冲突边界。
 - **空间不足：**真实 SQLite 满页可能被 Android/Room 回滚异常表现为普通 DATABASE；继续保留输入、事务原子性及同命令恢复，不按消息猜测或宣称所有磁盘满均准确分类。
 - **性能与恢复：**全量存储事实预检在长期大数据下的性能仍待M22验证；1000 条分页是正确性/查询范围验证，不是长期性能基准，必要完整历史计算不保证无限历史恒定耗时。SavedState 不是持久业务草稿；已保存任务的 SIGKILL/Recents 不保证未保存状态、force-stop、断电或真实LMK后的未持久化草稿恢复。
-- **数据保障：**完整备份/恢复仍归 M11/M12，未完成；Debug 暂不用于不可丢失的长期个人记录。M10 媒体、M13 汇总、M14 搜索/类别 CRUD、替换、多段复用、图表/排行、单独资金事件删除及后续集成保持原边界/NOT_RUN。
+- **数据保障：**完整备份/恢复仍归 M11/M12，未完成；Debug 暂不用于不可丢失的长期个人记录。M10当前本地封面见本轮执行记录；M13 汇总、M14 搜索/类别 CRUD、替换、多段复用、图表/排行、单独资金事件删除及后续集成保持原边界/NOT_RUN。
 - **平台与独立执行：**真机、API26、OEM 备份/迁移、完整 TalkBack、真实内存压力 LMK、Release/正式签名升级仍 NOT_RUN；Debug 空 ComponentActivity 测试宿主不得未经 Release 验证正式交付。M01 独立未重装，M02/M03 独立未重跑本机 Gradle，M04～M07 独立未重跑本机 Gradle/安装等全部历史 NOTES 保留。M08 独立审查未在用户 Windows 本机重新运行 Gradle、重新安装 APK 或独立核验 APK 字节；超大 JSON 未整体重新解析，验收依据源码/XML/日志/迁移及设备证据。**M09 ChatGPT独立审查未在用户Windows本机重新运行Gradle或独立核验最终APK字节。**各次Codex验收回写均未重跑产品测试；549项PASS来自M09原实施执行证据，不把独立源码审查或本次文档核查视为重新执行。TypeScript/ESLint 不适用，NO-SOURCE 不计 PASS。
 
 - **后续 schema 升级：**必须同步维护既有数据库版本预检及已知 Room 身份，不因 M08 通过就放过未知版本或结构不匹配库。
@@ -51,9 +60,9 @@
 
 ## Git
 
-- 目录 `E:/CODEX/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；当前仅 `feat/m09-subscription-lifecycle`，来源 `feat/m08-subscription-renewals`，起点 `0063ca504ca48ef9c7231d79dc155e9bf4bc8c82`。开始本地/远端M08一致、干净、目标此前不存在，已从指定来源创建，不从main开始。
-- M08评审HEAD `a716bc5ad9e3ab49cbe858f2c966fecf93e09fbb`及冻结回写0063ca5为历史依据。M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`已在本次回写前实际核对本地/远端一致、工作区干净。本次仅修改CURRENT_STATE与ACCEPTANCE_MATRIX并提交/推送M09分支；回写提交自身SHA和推送状态依据实际Git日志/最终回执，不提前登记成功。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`，所有前模块引用保持；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥或真实个人数据。
+- 当前目录 `E:/CODEX/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；仅功能分支 `feat/m10-local-cover-media`，来源 `feat/m09-subscription-lifecycle`，正式冻结起点 `57de897917473f255d43dfb306a8433b366c00eb`。开工本地/远端基线一致、工作区干净，目标此前不存在；从指定起点创建，不从main开始。
+- M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`与冻结回写57de897为历史依据。M10本轮提交及推送在最终验证后执行，自身SHA由Git日志/最终回执核对，避免递归引用。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥、原图或真实个人数据。
 
 ## Next Recommended Task
 
-**M09已正式ACCEPTED / FROZEN — PASS WITH NOTES，本次验收状态回写后立即停止。**M10必须另获明确授权，不因冻结自动启动。旧执行、验收与checkpoint保留历史语境，继承全部NOTES、Q03～Q06期限和未来NOT_RUN。
+**等待ChatGPT独立验收M10。**本轮仅READY_FOR_REVIEW，不自行冻结或启动M11。M11须独立验收与用户另行授权后才开始；旧历史、全部NOTES、Q03/Q04/Q06期限、Q05完整跨模块NOT_RUN继承。

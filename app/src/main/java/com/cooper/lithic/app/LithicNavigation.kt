@@ -22,6 +22,7 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -52,6 +53,12 @@ import com.cooper.lithic.feature.project.MoneyEventCorrectionScreen
 import com.cooper.lithic.feature.project.DeleteProjectDialog
 import com.cooper.lithic.feature.project.ProjectHistoryScreen
 import com.cooper.lithic.feature.project.ProjectEditorMode
+import com.cooper.lithic.feature.project.CoverPicker
+import com.cooper.lithic.feature.media.CoverViewModel
+import com.cooper.lithic.feature.media.CoverUiState
+import com.cooper.lithic.data.media.CoverTarget
+import com.cooper.lithic.data.media.CoverTargetType
+import com.cooper.lithic.data.media.MediaResult
 import com.cooper.lithic.feature.subscription.SubscriptionViewModel
 import com.cooper.lithic.feature.subscription.SubscriptionEditorKind
 import com.cooper.lithic.feature.subscription.SubscriptionListScreen
@@ -66,6 +73,10 @@ import com.cooper.lithic.data.repository.SubscriptionStateAction
 import com.cooper.lithic.feature.review.ReviewShell
 import com.cooper.lithic.feature.settings.SettingsShell
 import kotlinx.serialization.Serializable
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /** Retained under its original name so previously saved M04 state can be decoded. */
 @Serializable
@@ -78,6 +89,7 @@ internal fun LithicNavigation(
     projectViewModel: ProjectViewModel? = null,
     onRetryLedger: () -> Unit = {},
     subscriptionViewModel: SubscriptionViewModel? = null,
+    coverViewModel: CoverViewModel? = null,
 ) {
     val owner = checkNotNull(LocalView.current.findViewTreeViewModelStoreOwner())
     val model = projectViewModel ?: remember(owner, state.repository) {
@@ -92,22 +104,50 @@ internal fun LithicNavigation(
         })[SubscriptionViewModel::class.java]
     }
     val subscriptions by subscriptionModel.state.collectAsStateWithLifecycle()
+    val coverModel = coverViewModel ?: state.mediaRepository?.let { repository ->
+        remember(owner, repository) {
+            ViewModelProvider(owner, viewModelFactory {
+                initializer { CoverViewModel(repository, createSavedStateHandle()) }
+            })[CoverViewModel::class.java]
+        }
+    }
+    val covers = coverModel?.state?.collectAsStateWithLifecycle()?.value ?: CoverUiState()
+    val cleanupScope = rememberCoroutineScope()
+    var cleanupMessage by remember { mutableStateOf<String?>(null) }
+    fun cleanupMedia() {
+        val repository = state.mediaRepository ?: return
+        cleanupScope.launch {
+            try {
+                when (val result = withContext(Dispatchers.IO) { repository.removeUnreferenced() }) {
+                    is MediaResult.Success -> cleanupMessage = if (result.value.failures.isEmpty()) null
+                        else "记录已保存；部分未使用封面暂未清理，可稍后重试。"
+                    is MediaResult.Failure -> cleanupMessage = "记录已保存；未使用封面暂未清理，可稍后重试。"
+                }
+            } catch (cancelled: CancellationException) { throw cancelled }
+            catch (_: Exception) { cleanupMessage = "记录已保存；未使用封面暂未清理，可稍后重试。" }
+        }
+    }
     val backStack = rememberNavBackStack(Home)
-    val routes = normalizeBackStack(backStack.toList())
+    val observedRoutes = backStack.toList()
+    val routes = normalizeBackStack(observedRoutes)
     var pendingLeave by remember { mutableStateOf<List<NavKey>?>(null) }
     var pendingWarning by remember { mutableStateOf(false) }
     fun navigate(target: List<NavKey>) {
         if (backStack.toList() != target) { backStack.clear(); backStack.addAll(target) }
     }
     fun requestLeave(target: List<NavKey>) {
-        when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision())) {
-            LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); navigate(target) }
+        when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), coverModel?.leaveDecision() ?: LeaveDecision.ALLOW)) {
+            LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); coverModel?.discardForm(); navigate(target) }
             LeaveDecision.CONFIRM_DISCARD -> pendingLeave = target
             LeaveDecision.BLOCK_PENDING -> pendingWarning = true
         }
     }
     val onBack: () -> Unit = { if (routes.size > 1) requestLeave(routes.dropLast(1)) }
-    SideEffect { if (backStack.toList() != routes) navigate(routes) }
+    SideEffect {
+        // Repair only the stack this composition observed. A commit effect may already
+        // have navigated elsewhere; an older normalization must not overwrite it.
+        if (observedRoutes != routes && backStack.toList() == observedRoutes) navigate(routes)
+    }
     LaunchedEffect(routes.last()) {
         when (val route = routes.last()) {
             ProjectList -> model.loadList()
@@ -120,6 +160,7 @@ internal fun LithicNavigation(
             is ProjectUpdateEnd -> model.startUpdateEnd(route.id)
             is ProjectMoneyCorrection -> model.startCorrectMoney(route.id, route.eventId)
             is ProjectDelete -> model.startDelete(route.id)
+            is ProjectCover -> coverModel?.start(CoverTarget(CoverTargetType.PROJECT, route.id), route.origin.name)
             SubscriptionList -> subscriptionModel.loadList()
             SubscriptionHistory -> subscriptionModel.loadStoppedHistory()
             CreateSubscription -> subscriptionModel.startCreate()
@@ -135,40 +176,57 @@ internal fun LithicNavigation(
             is CancelSubscriptionStop -> subscriptionModel.startCancelStop(route.id, route.stateId, route.origin.name)
             is CorrectSubscriptionRenewal -> subscriptionModel.startCorrectRenewal(route.id, route.renewalId, route.origin.name)
             is DeleteSubscriptionRenewal -> subscriptionModel.startDeleteRenewal(route.id, route.renewalId, route.origin.name)
+            is SubscriptionCover -> coverModel?.start(CoverTarget(CoverTargetType.SUBSCRIPTION, route.id), route.origin.name)
             else -> Unit
         }
     }
     val projectLeave = model.leaveDecision()
     val subscriptionLeave = subscriptionModel.leaveDecision()
-    BackHandler(enabled = routes == listOf(Home) && globalLeaveDecision(projectLeave, subscriptionLeave) != LeaveDecision.ALLOW) {
+    val coverLeave = coverModel?.leaveDecision() ?: LeaveDecision.ALLOW
+    BackHandler(enabled = routes == listOf(Home) && globalLeaveDecision(projectLeave, subscriptionLeave, coverLeave) != LeaveDecision.ALLOW) {
         requestLeave(routes)
     }
-    LaunchedEffect(projects.committedProjectId, subscriptionLeave) {
+    LaunchedEffect(projects.committedProjectId, subscriptionLeave, coverLeave) {
         projects.committedProjectId?.let { id ->
-            if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
+            val other = globalLeaveDecision(LeaveDecision.ALLOW, subscriptionLeave, coverLeave)
+            if (other == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val target = canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last())))
-            if (subscriptionLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            if (other == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             model.consumeCommitted()
         }
     }
-    LaunchedEffect(projects.deletedProjectId, subscriptionLeave) {
+    LaunchedEffect(projects.deletedProjectId, subscriptionLeave, coverLeave) {
         projects.deletedProjectId?.let {
-            if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
+            val other = globalLeaveDecision(LeaveDecision.ALLOW, subscriptionLeave, coverLeave)
+            if (other == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val target = canonicalBackStack(if (projectOrigin(routes.last()) == ProjectOrigin.HISTORY) ProjectHistory else ProjectList)
-            if (subscriptionLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            if (other == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             model.consumeDeleted()
+            cleanupMedia()
         }
     }
-    LaunchedEffect(subscriptions.committedSubscriptionId, projectLeave) {
+    LaunchedEffect(subscriptions.committedSubscriptionId, projectLeave, coverLeave) {
         subscriptions.committedSubscriptionId?.let { id ->
-            if (projectLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
+            val other = globalLeaveDecision(projectLeave, LeaveDecision.ALLOW, coverLeave)
+            if (other == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val origin = SubscriptionOrigin.entries.firstOrNull { it.name == subscriptions.committedOrigin } ?: SubscriptionOrigin.CURRENT
             val target = canonicalBackStack(SubscriptionDetail(id, origin))
-            if (projectLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            if (other == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             subscriptionModel.consumeCommitted()
+        }
+    }
+    LaunchedEffect(covers.committedTarget, projectLeave, subscriptionLeave) {
+        covers.committedTarget?.let { committed ->
+            val other = globalLeaveDecision(projectLeave, subscriptionLeave)
+            if (other == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
+            val target = canonicalBackStack(if (committed.type == CoverTargetType.PROJECT)
+                ProjectDetail(committed.id, ProjectOrigin.entries.firstOrNull { it.name == covers.committedOrigin } ?: ProjectOrigin.CURRENT)
+                else SubscriptionDetail(committed.id, SubscriptionOrigin.entries.firstOrNull { it.name == covers.committedOrigin } ?: SubscriptionOrigin.CURRENT))
+            if (other == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            navigate(target); coverModel?.consumeCommitted()
         }
     }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
@@ -198,6 +256,10 @@ internal fun LithicNavigation(
                 Text(error, Modifier.padding(16.dp).testTag("ledger-refresh-error"))
                 TextButton(onClick = onRetryLedger, modifier = Modifier.heightIn(min = 48.dp).testTag("ledger-retry-read")) { Text("重试读取") }
             }
+            cleanupMessage?.let { message ->
+                Text(message, Modifier.padding(16.dp).testTag("media-cleanup-warning"))
+                TextButton({ cleanupMedia() }, Modifier.heightIn(min = 48.dp).testTag("media-cleanup-retry")) { Text("重试清理未使用封面") }
+            }
             NavDisplay(backStack = routes, modifier = Modifier.weight(1f), onBack = onBack,
                 entryProvider = entryProvider<NavKey> {
                     entry<Home> { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
@@ -216,7 +278,9 @@ internal fun LithicNavigation(
                             onUpdateEnd = { requestLeave(canonicalBackStack(ProjectUpdateEnd(route.id, route.origin))) },
                             onCorrectMoney = { requestLeave(canonicalBackStack(ProjectMoneyCorrection(route.id, it, route.origin))) },
                             onDelete = { requestLeave(canonicalBackStack(ProjectDelete(route.id, route.origin))) },
-                            backLabel = if (route.origin == ProjectOrigin.HISTORY) "返回历史档案" else "返回项目列表")
+                            backLabel = if (route.origin == ProjectOrigin.HISTORY) "返回历史档案" else "返回项目列表",
+                            mediaRepository = state.mediaRepository,
+                            onEditCover = { if (coverModel != null) requestLeave(canonicalBackStack(ProjectCover(route.id, route.origin))) })
                     }
                     entry<CreateProject> {
                         projects.editor?.let { editor -> ProjectEditorScreen(editor, onBack, model::changeName, model::changeStartedOn, model::changeInitialAmount,
@@ -247,6 +311,9 @@ internal fun LithicNavigation(
                     entry<ProjectDelete> {
                         projects.deleteConfirmation?.let { editor -> DeleteProjectDialog(editor, onBack, model::save, model::retryRead) }
                     }
+                    entry<ProjectCover> {
+                        covers.editor?.let { editor -> coverModel?.let { CoverPicker(editor, it, state.mediaRepository, onBack) } }
+                    }
                     entry<SubscriptionList> {
                         SubscriptionListScreen(subscriptions.list, onBack, { requestLeave(listOf(Home, SubscriptionList, CreateSubscription)) },
                             { requestLeave(canonicalBackStack(SubscriptionDetail(it))) }, subscriptionModel::loadMore, subscriptionModel::retryRead)
@@ -272,7 +339,9 @@ internal fun LithicNavigation(
                             onCancelStop = { requestLeave(canonicalBackStack(CancelSubscriptionStop(route.id, it, route.origin))) },
                             onCorrectRenewal = { requestLeave(canonicalBackStack(CorrectSubscriptionRenewal(route.id, it, route.origin))) },
                             onDeleteRenewal = { requestLeave(canonicalBackStack(DeleteSubscriptionRenewal(route.id, it, route.origin))) },
-                            backLabel = if (route.origin == SubscriptionOrigin.HISTORY) "返回已停止订阅" else "返回订阅列表")
+                            backLabel = if (route.origin == SubscriptionOrigin.HISTORY) "返回已停止订阅" else "返回订阅列表",
+                            mediaRepository = state.mediaRepository,
+                            onEditCover = { if (coverModel != null) requestLeave(canonicalBackStack(SubscriptionCover(route.id, route.origin))) })
                     }
                     entry<ConfirmSubscriptionRenewal> {
                         subscriptions.editor?.let { editor -> RenewalEditorScreen(editor, onBack, subscriptionModel::changeAmount, subscriptionModel::changeCycle,
@@ -284,6 +353,9 @@ internal fun LithicNavigation(
                     entry<CancelSubscriptionStop> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
                     entry<CorrectSubscriptionRenewal> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
                     entry<DeleteSubscriptionRenewal> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
+                    entry<SubscriptionCover> {
+                        covers.editor?.let { editor -> coverModel?.let { CoverPicker(editor, it, state.mediaRepository, onBack) } }
+                    }
                 })
         }
     }
@@ -292,15 +364,17 @@ internal fun LithicNavigation(
             text = { Text("输入尚未保存。继续编辑会保留这些内容。") },
             confirmButton = { TextButton(onClick = {
                 pendingLeave = null
-                if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision()) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
-                else { model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
-                    model.discardForm(); subscriptionModel.discardForm(); navigate(target) }
+                if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), coverModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
+                else { val deletedCommitted = projects.deletedProjectId != null
+                    model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
+                    coverModel?.consumeCommitted(); model.discardForm(); subscriptionModel.discardForm(); coverModel?.discardForm(); navigate(target)
+                    if (deletedCommitted) cleanupMedia() }
             }, modifier = Modifier.testTag("discard-confirm")) { Text("放弃修改") } },
             dismissButton = { TextButton(onClick = { pendingLeave = null }, modifier = Modifier.testTag("discard-keep")) { Text("继续编辑") } })
     }
     if (pendingWarning) {
         AlertDialog(onDismissRequest = { pendingWarning = false }, modifier = Modifier.testTag("pending-submit-dialog"), title = { Text("请先核对保存结果") },
-            text = { Text("提交正在进行或结果尚未确认。原始输入已保留，请返回表单核对并重试同一提交。") },
+            text = { Text("提交正在进行或结果尚未确认。原始输入已保留，请返回原操作核对并重试同一保存。") },
             confirmButton = { TextButton(onClick = { pendingWarning = false }, modifier = Modifier.testTag("pending-submit-keep")) { Text("继续核对") } },
             dismissButton = {
                 val origin = projectOrigin(routes.last())
@@ -313,11 +387,16 @@ internal fun LithicNavigation(
                     else -> null
                 } else null
                 val subscriptionRecovery: NavKey? = if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) subscriptionRecoveryRoute(subscriptions) else null
-                val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery).filter { it != routes.last() }
+                val coverRecovery: NavKey? = if (coverLeave == LeaveDecision.BLOCK_PENDING) covers.editor?.let { editor ->
+                    if (editor.target.type == CoverTargetType.PROJECT) ProjectCover(editor.target.id,
+                        ProjectOrigin.entries.firstOrNull { it.name == editor.origin } ?: ProjectOrigin.CURRENT)
+                    else SubscriptionCover(editor.target.id, SubscriptionOrigin.entries.firstOrNull { it.name == editor.origin } ?: SubscriptionOrigin.CURRENT)
+                } else null
+                val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery, coverRecovery).filter { it != routes.last() }
                 Column { recoveryTargets.forEach { recovery ->
                     TextButton(onClick = { pendingWarning = false; navigate(canonicalBackStack(recovery)) },
-                        modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else "pending-submit-return-to-project")) {
-                        Text(if (recovery == subscriptionRecovery) "返回待核对订阅记录" else "返回待核对项目")
+                        modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == coverRecovery) "pending-submit-return-to-cover" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else "pending-submit-return-to-project")) {
+                        Text(if (recovery == coverRecovery) "返回待核对封面" else if (recovery == subscriptionRecovery) "返回待核对订阅记录" else "返回待核对项目")
                     }
                 } }
             })

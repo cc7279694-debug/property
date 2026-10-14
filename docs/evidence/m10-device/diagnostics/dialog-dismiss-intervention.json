@@ -1,0 +1,11 @@
+{
+  "action": "Dismiss observed SystemUI ANR using Close app button",
+  "sourceScreenshot": "screen.png",
+  "targetSerial": "emulator-5596",
+  "x": 160,
+  "y": 322,
+  "timestampUtc": "2026-10-14T04:32:38.819930+00:00",
+  "scope": "only SystemUI dialog on owned emulator, not LITHIC data/source/other AVD",
+  "affectedRun": "green-full-runner-final already FAIL; later results retain intervention provenance",
+  "ANRTraceSubject": "executing service com.android.systemui/.SystemUIService, waited 20140ms at04:16, PID954"
+}

@@ -16,9 +16,10 @@ android {
         applicationId = "com.cooper.lithic"
         minSdk = 26
         targetSdk = 36
-        versionCode = 7
-        versionName = "0.1.0-m09"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        versionCode = 8
+        versionName = "0.1.0-m10"
+        // Test-only runner delegates normal JUnit runs and supports explicit SIGKILL probes.
+        testInstrumentationRunner = "com.cooper.lithic.data.media.M10ProcessBoundaryRunner"
     }
 
     buildTypes {

@@ -1,0 +1,138 @@
+{
+  "result": "PASS",
+  "kind": "M10 actual device final verification",
+  "generatedUtc": "2026-10-14T06:12:16.270423+00:00",
+  "provenance": "Reconstructed original synthetic M09 fixture on replacement owned API36 AVD, then actual code7→code8 upgrade. Original AVD continuous preservation interrupted; not M12 product restore.",
+  "serial": "emulator-5596",
+  "avd": "Lithic_M01_API_36",
+  "schemaVersion": 2,
+  "recordZone": "GMT",
+  "generation": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+  "integrityCheck": "ok",
+  "foreignKeyCheck": [],
+  "finalTableCounts": {
+    "categories": 2,
+    "long_term_projects": 4,
+    "project_money_events": 7,
+    "local_media_assets": 2,
+    "subscriptions": 4,
+    "subscription_renewals": 6,
+    "subscription_state_changes": 5
+  },
+  "allOriginalFacts": [
+    {
+      "table": "categories",
+      "originalCount": 2,
+      "preservedSubsetCount": 2,
+      "beforeCanonicalSha256": "7e9c4f31d8a56fdbae2f1f3ca19345ea6887910d3ad66be165dc0819f6712c3a",
+      "afterCanonicalSha256": "7e9c4f31d8a56fdbae2f1f3ca19345ea6887910d3ad66be165dc0819f6712c3a",
+      "result": "PASS"
+    },
+    {
+      "table": "long_term_projects",
+      "originalCount": 3,
+      "preservedSubsetCount": 3,
+      "beforeCanonicalSha256": "e042dbfdad23dd7b1e33dd55cd9f23acc19fe8234da6f4dfa376ee18eca29de6",
+      "afterCanonicalSha256": "e042dbfdad23dd7b1e33dd55cd9f23acc19fe8234da6f4dfa376ee18eca29de6",
+      "result": "PASS"
+    },
+    {
+      "table": "project_money_events",
+      "originalCount": 6,
+      "preservedSubsetCount": 6,
+      "beforeCanonicalSha256": "51c3b8296ac6bf33f5752a4c52f0d05130a64af5051b9b0979b16da80ac72510",
+      "afterCanonicalSha256": "51c3b8296ac6bf33f5752a4c52f0d05130a64af5051b9b0979b16da80ac72510",
+      "result": "PASS"
+    },
+    {
+      "table": "local_media_assets",
+      "originalCount": 0,
+      "preservedSubsetCount": 0,
+      "beforeCanonicalSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "afterCanonicalSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "result": "PASS"
+    },
+    {
+      "table": "subscriptions",
+      "originalCount": 3,
+      "preservedSubsetCount": 3,
+      "beforeCanonicalSha256": "268543907bab4e3bbfce53f020eb8c6898d182dbefc8571ee3e2a93b07365d74",
+      "afterCanonicalSha256": "268543907bab4e3bbfce53f020eb8c6898d182dbefc8571ee3e2a93b07365d74",
+      "result": "PASS"
+    },
+    {
+      "table": "subscription_renewals",
+      "originalCount": 5,
+      "preservedSubsetCount": 5,
+      "beforeCanonicalSha256": "97c79652e14d50b3fcc20117e819fc586e88d49b40e1dce9145e7ce845a95f18",
+      "afterCanonicalSha256": "97c79652e14d50b3fcc20117e819fc586e88d49b40e1dce9145e7ce845a95f18",
+      "result": "PASS"
+    },
+    {
+      "table": "subscription_state_changes",
+      "originalCount": 5,
+      "preservedSubsetCount": 5,
+      "beforeCanonicalSha256": "f9f9862dccd82571053c019ef1256984dea935b19796b74d5c9b89620466f5e4",
+      "afterCanonicalSha256": "f9f9862dccd82571053c019ef1256984dea935b19796b74d5c9b89620466f5e4",
+      "result": "PASS"
+    }
+  ],
+  "sameParsedStorageAndSettings": true,
+  "actualMarkerHashes": {
+    "no_backup/active-generation": "87cb718e6e4186ce276c8192906e8f316a14a4f477171a08e141193bd42d68df",
+    "no_backup/generations/2d6c9460-a2f3-4976-ba04-781c416a0b52/ready.json": "90a4619d0cac43a5d0529799223e4f98edab5272a9579cb2a0b166e1eaa72fbb",
+    "no_backup/generations/2d6c9460-a2f3-4976-ba04-781c416a0b52/settings.preferences_pb": "fff800a6a09afbc2e6656c8d67b512b74ba8e1693666e32b96701c7dfcf06c44"
+  },
+  "installedApkSha256": "939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094",
+  "privateMediaEvidence": "media-m10-device-final-restored.json",
+  "subscriptionReplacement": {
+    "result": "PASS",
+    "sameSubscriptionId": "cb3dca6a-7629-4736-b6ca-531e34f17ac9",
+    "oldAssetId": "0b0ef66c-9ce0-4e33-a295-852b4681aa9e",
+    "newAssetId": "6ef0c664-dffd-417e-b9d8-7bbbe824f6e2",
+    "onlyCoverAndUpdatedAtChanged": true,
+    "paymentsStatesAndOtherFactsExact": true,
+    "samePreparedIdentityAfterSavedTask": true,
+    "oldUnreferencedFileActuallyAbsent": true,
+    "pngAlphaExtrema": [
+      0,
+      255
+    ]
+  },
+  "savedTask": {
+    "result": "PASS",
+    "taskId": 616,
+    "oldPid": 17203,
+    "newPid": 17927,
+    "samePreparedIdAndHash": true,
+    "explicitUserSaveAfterRestore": true,
+    "singleAssetRowForPreparedId": 1
+  },
+  "offline": {
+    "wifi": 0,
+    "mobileData": 0,
+    "activeDefaultNetwork": "none",
+    "source": "saved-task-second-kill.json and saved-task-second-restored.json; actual picker, import, cold private viewing and same-task restore occurred in this state"
+  },
+  "settingsRestored": {
+    "result": "PASS",
+    "differences": [],
+    "guestHostUtcDifferenceSeconds": 0.7305359840393066,
+    "source": "guest-settings-final-restored.json"
+  },
+  "screenshotsReviewedByRoot": true,
+  "privateDatabaseOrImageBytesPublished": false,
+  "notRun": [
+    "original AVD continuous upgrade",
+    "physical phone",
+    "API26",
+    "OEM",
+    "Release",
+    "full TalkBack",
+    "real LMK",
+    "power loss",
+    "M11/M12 full backup restore",
+    "Q05 full roundtrip",
+    "Q06 switch rollback"
+  ]
+}

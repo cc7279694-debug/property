@@ -1,0 +1,436 @@
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:checkDebugAndroidTestAarMetadata UP-TO-DATE
+> Task :app:processDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :app:compileDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:mapDebugAndroidTestSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugAndroidTestResources UP-TO-DATE
+> Task :app:mergeDebugAndroidTestResources UP-TO-DATE
+> Task :app:processDebugAndroidTestManifest UP-TO-DATE
+> Task :app:processDebugAndroidTestResources UP-TO-DATE
+> Task :app:javaPreCompileDebugAndroidTest UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:mergeDebugAndroidTestShaders UP-TO-DATE
+> Task :app:compileDebugAndroidTestShaders NO-SOURCE
+> Task :app:copyRoomSchemasToAndroidTestAssetsDebugAndroidTest UP-TO-DATE
+> Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :app:mergeDebugAndroidTestAssets UP-TO-DATE
+> Task :app:compressDebugAndroidTestAssets UP-TO-DATE
+> Task :app:desugarDebugAndroidTestFileDependencies UP-TO-DATE
+> Task :app:checkDebugAndroidTestDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebugAndroidTest UP-TO-DATE
+> Task :app:mergeLibDexDebugAndroidTest UP-TO-DATE
+> Task :app:mergeDebugAndroidTestJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebugAndroidTest UP-TO-DATE
+> Task :app:writeDebugAndroidTestSigningConfigVersions UP-TO-DATE
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:706:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugJavaRes
+> Task :app:mergeDebugJavaResource
+> Task :app:kspDebugAndroidTestKotlin
+> Task :app:mergeProjectDexDebug
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:compileDebugAndroidTestKotlin
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverViewModelTest.kt:396:32 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:320:48 Unnecessary non-null assertion (!!) on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:320:58 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:321:49 Unnecessary non-null assertion (!!) on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:321:59 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:341:101 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:362:95 Unnecessary safe call on a non-null receiver of type 'MoneyCorrectionUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:393:73 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:494:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:502:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:664:72 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:698:70 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:704:70 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:710:82 Unnecessary safe call on a non-null receiver of type 'MoneyCorrectionUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:716:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:339:65 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:350:78 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:479:67 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:493:65 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:497:70 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt:171:78 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/íÂÊ¯ÐÂAPP/app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt:171:104 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugAndroidTestJavaWithJavac UP-TO-DATE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:dexBuilderDebugAndroidTest
+> Task :app:mergeDebugAndroidTestGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugAndroidTestJavaRes UP-TO-DATE
+> Task :app:mergeDebugAndroidTestJavaResource UP-TO-DATE
+> Task :app:mergeProjectDexDebugAndroidTest
+> Task :app:packageDebugAndroidTest
+> Task :app:createDebugAndroidTestApkListingFileRedirect UP-TO-DATE
+> Task :app:connectedDebugAndroidTest
+Starting 94 tests on Lithic_M01_API_36(AVD) - 16
+
+com.cooper.lithic.data.media.LocalImageStoreTest > prepare_does_not_create_formal_file[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > changed_bytes_are_not_reencoded_or_silently_repaired[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > remove_active_prepared_resource_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > normalized_metadata_matches_real_private_bytes[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > all_eight_exif_orientations_use_correct_corner_geometry[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+Lithic_M01_API_36(AVD) - 16 Tests 12/94 completed. (0 skipped) (5 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.data.media.LocalImageStoreTest > symlink_target_cannot_escape_private_media[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > private_relative_paths[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > copy_survives_source_removal[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+Lithic_M01_API_36(AVD) - 16 Tests 16/94 completed. (0 skipped) (8 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.data.media.LocalImageStoreTest > repeated_commit_is_exact_read_only_replay[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > nested_or_absolute_asset_path_is_rejected[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > prepared_identity_can_be_restored_without_source_uri[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > png_transparency_is_not_silently_jpeg_encoded[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > prompt_cancellation_after_preparation_releases_lease_and_preserves_recoverable_bytes[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=The prepared image is no longer available; select it again)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > path_into_other_generation_cannot_read_or_delete[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > discard_prepared_does_not_delete_final_with_uncertain_db_result[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > jpeg_direction_and_location_metadata_are_normalized[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > orphan_final_can_be_reclaimed_after_restart[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+Lithic_M01_API_36(AVD) - 16 Tests 31/94 completed. (0 skipped) (17 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.data.media.LocalImageStoreTest > repeated_prepare_does_not_encode_or_create_second_asset[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > discarded_uncommitted_preparation_is_safely_removed[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > metadata_mismatch_is_explicit_error[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > repeated_reads_do_not_change_file_or_hash[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > stable_uuid_cannot_overwrite_existing_file[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.LocalImageStoreTest > missing_file_is_not_reported_as_no_cover[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > sqlite_asset_insert_failure_protects_old_cover_and_leaves_safe_orphan[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > unchanged_project_row_with_new_money_event_is_stale_cover_baseline[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > decode_failure_preserves_existing_cover_and_original_facts[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > final_file_before_database_commit_is_reclaimable_after_reopen[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+Lithic_M01_API_36(AVD) - 16 Tests 46/94 completed. (0 skipped) (27 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.data.media.MediaRepositoryTest > deleted_project_cannot_acquire_a_prepared_cover[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > two_projects_share_a_cover_and_replacement_keeps_other_reference[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > physical_delete_failure_keeps_proof_and_retries_without_metadata_reference[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > committed_verification_is_read_only_and_detects_later_target_changes[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > database_commit_before_old_cleanup_survives_generation_reopen[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > new_subscription_state_blocks_a_stale_cover_command[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > final_file_commit_failure_never_inserts_a_cover_reference[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > repeated_verified_reads_preserve_bytes_and_real_metadata[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > fixed_command_concurrency_creates_one_asset_and_replays_exact_target[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > production_owned_image_store_cannot_delete_project_or_subscription_cover[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+Lithic_M01_API_36(AVD) - 16 Tests 57/94 completed. (0 skipped) (37 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.data.media.MediaRepositoryTest > new_subscription_payment_blocks_a_stale_cover_command[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > project_and_subscription_share_cover_until_last_reference_is_removed[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > missing_cover_is_explicit_failure_without_deleting_metadata_or_business_reference[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > cleanup_cannot_delete_file_while_coordinator_snapshot_uses_it[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > deleting_project_preserves_cover_still_used_by_subscription[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > lost_result_replay_after_generation_reopen_does_not_import_again[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > subscription_update_failure_rolls_back_new_metadata_and_keeps_timelines[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > prepared_file_write_failure_preserves_existing_cover_and_original_facts[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > stale_project_metadata_cannot_replace_newer_facts[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+Lithic_M01_API_36(AVD) - 16 Tests 68/94 completed. (0 skipped) (46 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.data.media.MediaRepositoryTest > subscription_cover_write_preserves_payment_and_state_history[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > corrupt_cover_is_explicit_failure_without_reencoding_or_clearing_facts[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > project_cover_write_preserves_cost_and_all_money_facts[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > project_update_failure_rolls_back_new_metadata_and_protects_old_bytes[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > stale_old_command_cannot_overwrite_a_newer_cover[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > encode_failure_preserves_existing_cover_and_original_facts[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.data.media.MediaRepositoryTest > active_preparation_survives_cleanup_until_explicit_release[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Expected success, got Failure(kind=IO, message=The private image file operation failed)
+	at org.junit.Assert.fail(Assert.java:89)
+
+Lithic_M01_API_36(AVD) - 16 Tests 77/94 completed. (0 skipped) (53 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.feature.media.M10CoverViewModelTest > damaged_prepared_private_file_allows_explicit_reload_and_reselect_without_touching_old_cover[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+
+Lithic_M01_API_36(AVD) - 16 Tests 79/94 completed. (0 skipped) (54 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.feature.media.M10CoverViewModelTest > committed_response_loss_replays_same_command_without_a_second_import_or_asset[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+
+Lithic_M01_API_36(AVD) - 16 Tests 81/94 completed. (0 skipped) (55 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.feature.media.M10CoverViewModelTest > duplicate_save_and_saved_task_recovery_keep_one_asset_and_frozen_operation[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+
+Lithic_M01_API_36(AVD) - 16 Tests 82/94 completed. (0 skipped) (56 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.feature.media.M10CoverViewModelTest > prepare_keeps_old_reference_until_explicit_save_and_source_uri_is_not_saved[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+
+Lithic_M01_API_36(AVD) - 16 Tests 89/94 completed. (0 skipped) (57 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.feature.media.M10CoverEntryScreensTest > subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Action performScrollTo() failed.
+	Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'subscription-cover-empty')
+
+Lithic_M01_API_36(AVD) - 16 Tests 90/94 completed. (0 skipped) (58 failed)
+Lithic_M01_API_36(AVD) - 16 Tests 91/94 completed. (0 skipped) (58 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.feature.media.M10CoverNavigationGuardTest > prepared_cover_guards_all_tabs_and_explicit_discard_never_updates_the_business_reference[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 15000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+
+Lithic_M01_API_36(AVD) - 16 Tests 92/94 completed. (0 skipped) (59 failed)
+
+> Task :app:connectedDebugAndroidTest
+
+com.cooper.lithic.feature.media.M10CoverNavigationGuardTest > home_real_system_back_preserves_hidden_pending_cover_and_has_reachable_recovery_route[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: Home cannot finish while a cover commit remains unconfirmed
+	at org.junit.Assert.fail(Assert.java:89)
+
+com.cooper.lithic.feature.media.M10CoverNavigationGuardTest > project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result[Lithic_M01_API_36(AVD) - 16] [31mFAILED [0m
+	java.lang.AssertionError: The real import must succeed before deletion cleanup is tested
+	at org.junit.Assert.fail(Assert.java:89)
+
+Lithic_M01_API_36(AVD) - 16 Tests 94/94 completed. (0 skipped) (61 failed)
+Finished 94 tests on Lithic_M01_API_36(AVD) - 16
+
+> Task :app:connectedDebugAndroidTest
+Tests on Lithic_M01_API_36(AVD) - 16 failed: There was 61 failure(s).
+
+> Task :app:connectedDebugAndroidTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:connectedDebugAndroidTest'.
+> There were failing tests. See the report at: file:///E:/CODEX/%E7%A0%BA%E7%9F%B3%E6%96%B0APP/app/build/reports/androidTests/connected/debug/index.html
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 10m 6s
+71 actionable tasks: 15 executed, 56 up-to-date

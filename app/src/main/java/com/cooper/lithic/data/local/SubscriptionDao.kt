@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import java.time.Instant
 import java.time.LocalDate
 
 data class SubscriptionListKey(val id: String, val lastPaidOn: LocalDate?)
@@ -82,4 +83,17 @@ interface SubscriptionDao {
         ORDER BY paidOn DESC,id ASC LIMIT :limit
     """)
     suspend fun pageRenewals(subscriptionId: String, afterPaidOn: LocalDate?, afterId: String?, limit: Int): List<SubscriptionRenewalEntity>
+
+    /** Timelines are separately compared by MediaRepository in this same Room transaction. */
+    @Query("""
+        UPDATE subscriptions SET coverAssetId = :coverAssetId, updatedAt = :updatedAt
+        WHERE id = :id AND name = :expectedName AND categoryId = :expectedCategoryId
+            AND coverAssetId IS :expectedCoverAssetId AND note IS :expectedNote
+            AND createdAt = :expectedCreatedAt AND updatedAt = :expectedUpdatedAt
+    """)
+    suspend fun updateCoverIfUnchanged(
+        id: String, expectedName: String, expectedCategoryId: String, expectedCoverAssetId: String?,
+        expectedNote: String?, expectedCreatedAt: Instant, expectedUpdatedAt: Instant,
+        coverAssetId: String?, updatedAt: Instant,
+    ): Int
 }

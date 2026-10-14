@@ -1,0 +1,1433 @@
+{
+  "phase": "red-complete-media",
+  "command": [
+    "E:\\CODEX\\砺石新APP\\gradlew.bat",
+    ":app:connectedDebugAndroidTest",
+    "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.data.media.LocalImageStoreTest,com.cooper.lithic.data.media.MediaRepositoryTest,com.cooper.lithic.feature.media.M10CoverViewModelTest,com.cooper.lithic.feature.media.M10CoverRoutesTest",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "startedUtc": "2026-10-13T12:08:37.613569+00:00",
+  "durationSeconds": 47.077,
+  "exitCode": 1,
+  "sourceInputs": [
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "4f586d11eea3a80c07514b2dd5684c4add2233af49d0b3865694c0e693fd4751",
+      "bytes": 1437
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/AppContainer.kt",
+      "sha256": "2fdc2fed6a4e04408efc88e0770505d9328431355da3d1932da253fb037eb4cc",
+      "bytes": 3829
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiState.kt",
+      "sha256": "048d1c5f16dcc5516ceb7d6628952c1fdadecbe7de0d9f72839e4c56f7f42d49",
+      "bytes": 756
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+      "sha256": "52a30b6508a2f2776282cba71e2d72e38513a0bd1a928e25c0862055ea889f8b",
+      "bytes": 4032
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApp.kt",
+      "sha256": "d7b47df638686062db574b0f77f827e331076b844240e298fc8fa9a1764040e1",
+      "bytes": 2821
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApplication.kt",
+      "sha256": "a2cf7d5406974d1b8400842c063500c6b7310583dc37e090494c03158233143b",
+      "bytes": 346
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "sha256": "24b1836ccaea72211db1a12183032a2e1deffdeaf1ae32da9dcef3e5596e54c4",
+      "bytes": 26131
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt",
+      "sha256": "50ccfb750b920db5a3953f0d8a70bb8f16a33ee848566e3c2be7105693fa628f",
+      "bytes": 8145
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "sha256": "c6c6cd66f2974be6046de01384ab8eb1eace59d0f59411c121b876f66c14dbf3",
+      "bytes": 1764
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/SubscriptionNavigationPolicy.kt",
+      "sha256": "0f15f5632f3c75cf8f20b15966775101ce4f16a41f9267f1ab24136cd2dcba06",
+      "bytes": 694
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/AmountText.kt",
+      "sha256": "c88873d34c68055c0042a8199d8cb62b8ef367f54d8d32b9985e639110cfe3cd",
+      "bytes": 2589
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/EntryCard.kt",
+      "sha256": "96f0a83755ac5af3bab30a8b702e46c4a116b23cd397da9559ed909af413ea2c",
+      "bytes": 2726
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/FormFields.kt",
+      "sha256": "522174f6e7a0d802a738ea730164a89a5f619adfdfb7028cdda36aed2e7571cc",
+      "bytes": 4005
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt",
+      "sha256": "97cb4616e0b879d8a8bf37d4e113d6579c26a6fb175dce4c62a7dc97cc94a08a",
+      "bytes": 4047
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt",
+      "sha256": "267c6c84e93816ac6280de6af684c321fbf58795fc2b0bd58f27cbc1fb1ab767",
+      "bytes": 992
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/Money.kt",
+      "sha256": "c347d4c555d82252dd487d78e9f73ebd960186046163ac5029ce2832335307e1",
+      "bytes": 1629
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt",
+      "sha256": "5cfe2a01612d62c33fe5b543d9b4a908988e585b7b1bea7b6f6dee724d6a7c0f",
+      "bytes": 491
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/DataGenerationStore.kt",
+      "sha256": "99c9466d2f5df93b6530b2cfd7e0bbd563e70394858c5451d14241f2d2b8d9d2",
+      "bytes": 15455
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/CategoryDao.kt",
+      "sha256": "dbae6c1a233aad380fa1c0f0d937584e6f5a6c309ffe14404b5a5f8f8c697349",
+      "bytes": 500
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/CategoryNames.kt",
+      "sha256": "9cb106f86a2aeefa5be1b9a4510476dc7b12ac178c19022dbd6713994e53265c",
+      "bytes": 451
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseConverters.kt",
+      "sha256": "e1116081b6d3f067801ae8046f094cf4f7ee26b72af829931292dfbe06db2210",
+      "bytes": 1671
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseMigrations.kt",
+      "sha256": "a9efc6c49eeb42940ae63f0fff374c85c8179d2d45a156446849a7ee5028920d",
+      "bytes": 2882
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseSchemaValidation.kt",
+      "sha256": "1d6f0030584672fe4fb1e82c019bf99899ef89dee736e38305753cd0ff6011c4",
+      "bytes": 11041
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/LithicDatabase.kt",
+      "sha256": "a6cb28d0b454c88ac1ade9a1f93b9a302b70906c983381a6d1ca2986d43b964e",
+      "bytes": 6617
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/MediaDao.kt",
+      "sha256": "4551adf609956ef7d70300e2e9cb744cdd811126cb577ec5984829668073e5d6",
+      "bytes": 509
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectDao.kt",
+      "sha256": "42a8b0ee72722cbf94120ce9f03f231b60ca788812090ea5aeeea91d644467ce",
+      "bytes": 7271
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectEntities.kt",
+      "sha256": "91a58130ebe894d6a5c5df807b31cd5be2221acc43de7e602ba574d5d426dc20",
+      "bytes": 3307
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/StoredValueValidation.kt",
+      "sha256": "ab6295c10e5d99df77d5951a03749bc31e80905397e34561b32eb69286ce2c7c",
+      "bytes": 831
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/SubscriptionDao.kt",
+      "sha256": "5094b3425e499ba3da5424ebc3705ab2744c3c2401086b171d9659100bbf59cc",
+      "bytes": 5829
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/SubscriptionEntities.kt",
+      "sha256": "8e2d032cea9a9d942436756904c5add4bb32a316ebac8cc7c22669e2004e9455",
+      "bytes": 2468
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/LocalImageStore.kt",
+      "sha256": "3759fa62ebc0ab8df0b8979ebbf47ce0e2b3d06dd6cf5b118f1601684c701122",
+      "bytes": 1968
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/MediaContracts.kt",
+      "sha256": "36107707ad56219cde17188fa1ffabbfa0ef823f3667f24de222f8a94c3d22c1",
+      "bytes": 2414
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/MediaRepository.kt",
+      "sha256": "bc890fb834e8de497fca46040cab0acb3278579742a3301cad625b78473936a3",
+      "bytes": 1471
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/LedgerReadRepository.kt",
+      "sha256": "bedcac241d496c13ff3338ef9673b843cc8264d713ab6cff50c665a26073900b",
+      "bytes": 1350
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/LocalWriteCoordinator.kt",
+      "sha256": "3daca99041349b4cc1c2e94d7b27485d4155ccd1f48dd8a3b35dff8033f17d67",
+      "bytes": 537
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectLifecycleCommands.kt",
+      "sha256": "4ab993e9c07ef8aa27c68038fb8f1a97b3b1c00c198b239170b46b83d0fcc6d5",
+      "bytes": 1259
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectRepository.kt",
+      "sha256": "60af463d6ffdf52360602344f89667d206ed543f7c920edf98b85982267f8257",
+      "bytes": 8087
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectWriteRepository.kt",
+      "sha256": "4fb50b23b8878b1ead14554fbae5391d440a3ffe371760ab83e7e44000049e73",
+      "bytes": 28718
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionCommands.kt",
+      "sha256": "951cf2114e3b6cf5bc1ca3efd193cff8abdb950b9a1d60ac36d76a97a1d6a24b",
+      "bytes": 1820
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionLifecycleCommands.kt",
+      "sha256": "67b4d0a94d156aa4c323d81f9d66c1eefab904cbe8c902b868ac8ee3abf8398a",
+      "bytes": 2527
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionRepository.kt",
+      "sha256": "87db58a6e6bdfd1f5628797347a5555a063deca947a89a1d34917d90ce3df4e5",
+      "bytes": 49955
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/settings/SettingsStore.kt",
+      "sha256": "63d60b9ba8c0497e8b09124a330202ae25de4f24981656a7a27d5ae4a3a84352",
+      "bytes": 7693
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt",
+      "sha256": "3d22ad34430dccd92ea2c3b3089efc21733125449f848cec24391236d7c39817",
+      "bytes": 2229
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectLifecycleRules.kt",
+      "sha256": "90c6c1a5bc07eb712a3bb8fcb4ec7090bb7e51772951db162915f5e98db3d6d5",
+      "bytes": 568
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+      "sha256": "16684bc773ac6dc114cc8dea43f2c81d4f7eaa1c4f49fef3c80154a35f4627aa",
+      "bytes": 5444
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+      "sha256": "b64cbe564b7281ba32399ec3a2e4aa38c09125fa9fb6838feb55720242e22197",
+      "bytes": 1408
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+      "sha256": "d466c96264316198c5c81d64362043e22607206e0663700f574ec28dc1819d3a",
+      "bytes": 1905
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/home/HomeShell.kt",
+      "sha256": "aa56008df1150c12a49b1effde2282e134d0c887d487b8b569d5a83c1f2515c4",
+      "bytes": 4052
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverViewModel.kt",
+      "sha256": "9826327a76200c7b8b95ee9cfc0a2fcd8f5b5e3d148acd0dafe4e6037f66570f",
+      "bytes": 1943
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/DeleteProjectDialog.kt",
+      "sha256": "a4c2dbd0344362a02df7a5ca88f38f9621fc0b809410aaf407e2308f106f1f36",
+      "bytes": 3975
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/EndProjectDialog.kt",
+      "sha256": "9345d85befd3ed6212096840f1d95d3459c90fea3c56f7edbe4840d4b4a73736",
+      "bytes": 7530
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventCorrectionScreen.kt",
+      "sha256": "50fa0e5f04ed999ac17ad2bc9b4fc2112c02cdb30044150c8c7a3404e3568e91",
+      "bytes": 3656
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventEditor.kt",
+      "sha256": "84c1be94170c63a210f1bc5b304109da9cd5e35911eb2a670d2fa30bd093d0da",
+      "bytes": 4441
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt",
+      "sha256": "b0a99b4a6f9187dca865e853b600f2e7bfffb2fbb71bad9bcd55a7af69b5e32d",
+      "bytes": 11274
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectEditorScreen.kt",
+      "sha256": "4e00188e4bd4acd3c3ed4357d40672045424db41da42db0720d52a31defbc978",
+      "bytes": 5743
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectHistoryScreen.kt",
+      "sha256": "86c921e5a530929cc60875d92e0c27e3ba89fdc3b9543706947e167e8bb7cde1",
+      "bytes": 4104
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectInputs.kt",
+      "sha256": "3c63a019d613ee66adb664cbaf1abad238c3c1b44a3228ac51479b1241d5f342",
+      "bytes": 8468
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectListScreen.kt",
+      "sha256": "678674643105951d421997869838575006d858c9a8375e4a5520469982525065",
+      "bytes": 4803
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectUiModels.kt",
+      "sha256": "210d339bf901c366ab7ab4e6e0595a34320d5128d520a62be0d2eb73229c294e",
+      "bytes": 5087
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt",
+      "sha256": "c7d74a52fa46a9be3e45914d290dd4a1b53311013c76a36a2de2a17661627696",
+      "bytes": 46794
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/review/ReviewShell.kt",
+      "sha256": "a8a7eb476f49c143d8f54cbd0107cc87f13458ccabec0cdb0f9b6eed0a179186",
+      "bytes": 3224
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt",
+      "sha256": "ffc5db4f6b26f1eb0a18552582dd891bd10367b92b4a37b00620f5e316d176f9",
+      "bytes": 2585
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/RenewalEditorScreen.kt",
+      "sha256": "6fc2f83ab92e04ad1cfca377de2c9501aa21472dba02e6360aae37901e68bf92",
+      "bytes": 3597
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt",
+      "sha256": "38847cbaca8896969094589cbe8e0e6daa08ea695e772469db0ff47f23ce589e",
+      "bytes": 17236
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionEditorScreen.kt",
+      "sha256": "74fd4137c63453f85faea214134bf40121827d47e3436a30868039197dfe22c9",
+      "bytes": 12127
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt",
+      "sha256": "891deda638fd3a804d45a67f92717d9e3f8fa040c8fb24e40e233094c0a7991b",
+      "bytes": 4652
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionHistoryScreen.kt",
+      "sha256": "aa8e0396d08eac1b8fb278853f06d94a46edba1d58ea7c795410178ecf9ed568",
+      "bytes": 3823
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionListScreen.kt",
+      "sha256": "0924a43178c0c6c7a305371d8559dd95a43db6e82b677e6262759dd05cad4a88",
+      "bytes": 5751
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionStateDialog.kt",
+      "sha256": "1470e4e3ad6e8c556ac88d216b27268a61eb90ca5fdd63d3915d48321a2eeded",
+      "bytes": 7733
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionUiModels.kt",
+      "sha256": "af9485321a920b50266ee8e2b60dfceaf428f81c77014690b38798a5fc51d3ee",
+      "bytes": 4147
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionViewModel.kt",
+      "sha256": "fef083024e76a5b79fbe808a7789934c03aecaf48552de38da12059b02e5f20a",
+      "bytes": 51420
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_placeholder.xml",
+      "sha256": "e0bddda00ce155104a61a85815a78856b812e3b1bc3c135d897304c1655e868f",
+      "bytes": 464
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "8107ea12bf01e6bcfcc92046f33f36fb1fd65f70537aecc8656723a7f3b48342",
+      "bytes": 306
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "c33f08665ef69b8343c8a7ee7f8d6a177af4ea48f32a9f2e49dc8a23b94a7fae",
+      "bytes": 292
+    },
+    {
+      "path": "app/src/main/res/values-night/themes.xml",
+      "sha256": "c34c20aecaef41ef9125d70cafa9700f4cabffaf5ba7b98cbb4773c3d504274c",
+      "bytes": 287
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "sha256": "865cae97840e81b9950d70457a05c5c1125a68364b0a83f44cd3daa030bc7e96",
+      "bytes": 487
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb029b35db0e976c087100424e16e14a6256b46962398887520e51508c3b5842",
+      "bytes": 1050
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/design/AmountFormatterTest.kt",
+      "sha256": "43869843a0447f84b8219a0fa2edc1c2102aeb68d8bebef8f6d8c4c53dd555b2",
+      "bytes": 2994
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "sha256": "9ed7f740e2208927ad55fd2392464b8e99aad7b883bf82911d263c08b698da45",
+      "bytes": 2656
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "sha256": "7c21ed32b45ff171143d99bcdc1665510e26cb3323315c91605a56db03e2865b",
+      "bytes": 1286
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "sha256": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544",
+      "bytes": 10271
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectLifecycleRulesTest.kt",
+      "sha256": "e6bcfebff7e04711895015300a3e9a89af58515eca605a96260d53faa324ec91",
+      "bytes": 2432
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+      "sha256": "792b56e431006949645b3c9331537339446d54a512aee2a24b16933da43d1f37",
+      "bytes": 4294
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "sha256": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63",
+      "bytes": 17472
+    },
+    {
+      "path": "app/src/androidTest/AndroidManifest.xml",
+      "sha256": "a6297bc3ab89b2322fa3f8c533ebc428f7d9e483f234ef4b244ba5bb4e293f93",
+      "bytes": 384
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/app/AppContainerTest.kt",
+      "sha256": "2c08301405002bd92cd76932408fbf7a7f91a9488eebc94002e4b1729b18f611",
+      "bytes": 9501
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/backup/DataGenerationStoreTest.kt",
+      "sha256": "39aba2c3f66940832447094b3953bed8bcbbb54fcf71ca7f1c9b43aa56241e2c",
+      "bytes": 15376
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/MetadataValidationTest.kt",
+      "sha256": "3397c209813c4622c2150b1c0f17ae351d21d372ca0c611c7f366ab00f94dd79",
+      "bytes": 4727
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/ProjectDatabaseTest.kt",
+      "sha256": "01d5c13cc0cb5ffdaf361378624ff193f10e44679d423c79631e76068a31e810",
+      "bytes": 30152
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/SubscriptionMigrationTest.kt",
+      "sha256": "a0dd7de4a283dcbd1ead6a917dc6ff3085cf1a35ece9594a9d6e4bfd81af7f9a",
+      "bytes": 27787
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/V1DatabaseFixture.kt",
+      "sha256": "37946b8d120fc18e218b8116e9a0702e626721d172bbed4766931daa8bc322c7",
+      "bytes": 10363
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/LocalImageStoreTest.kt",
+      "sha256": "bd46f7d588bce5e45bfeb71028d191a599e3efb306d8d1883e2606f298fbae06",
+      "bytes": 21030
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceFixtures.kt",
+      "sha256": "9181a8105242dbdf69c7d8379bca8faa97ff9be3c722c2fb566faff75a9cd93d",
+      "bytes": 1011
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceProvider.java",
+      "sha256": "d95a02cf0c5301f01c405d4b318b58103c05745564616948d1c3ad2b1c2dfec3",
+      "bytes": 2925
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/MediaRepositoryTest.kt",
+      "sha256": "21e792de6e75834355366fba7d7865a3375414314cc92820b5f8d8dc70578ad5",
+      "bytes": 31009
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectLifecycleRepositoryTest.kt",
+      "sha256": "850fbad33d69c7ea5a0a77128f4fe5ccbf0611f48adba2d198a39c3f66d6d21c",
+      "bytes": 32686
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectRepositoryTest.kt",
+      "sha256": "c91735cfe0d91363f3e6b04586f6d1e5460bc72c41e7515a99c329dc3916db5d",
+      "bytes": 36599
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionLifecycleRepositoryTest.kt",
+      "sha256": "f5fa38911f055d4502cadb0741d5a0718cb000af610c6882a5bf7e6241dd445e",
+      "bytes": 50472
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionRepositoryTest.kt",
+      "sha256": "922224381faba422d4dff175132b09fd645f25cf5e632ec037a7e7d75d172bab",
+      "bytes": 27865
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/settings/PausedReturnDispatcher.kt",
+      "sha256": "b0655fbd5f1503b5e77aa88689978846be3a52360e1e0aef5cc9a9210a3ede42",
+      "bytes": 1139
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/settings/SettingsStoreTest.kt",
+      "sha256": "4b7f9cb24442006791018b2c6aa176a4561dcdf22878dc036f1f0de0580a6230",
+      "bytes": 7872
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverEntryScreensTest.kt",
+      "sha256": "7f769e5816057c7821d0531b00350de721da18234d1ff12439428420ce520bae",
+      "bytes": 3096
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverRoutesTest.kt",
+      "sha256": "14a6da0452445a60936e3995c2b5685235af5f04549dae3bb4dbca02e7b381a4",
+      "bytes": 3450
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverViewModelTest.kt",
+      "sha256": "07ae02803831c1962d05e13ad85e7541e77a8e36b3a333bcbcbe381aad028aca",
+      "bytes": 21230
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectDateInputTest.kt",
+      "sha256": "94e2e87ee0981673d2eeb6b678d51066484efedebb1cf4c114b4d6f07501f08e",
+      "bytes": 5399
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectEntryFlowTest.kt",
+      "sha256": "261ac1fe723f5ad185618ce14767fcb062d6d0ab5914f00c2d59dde252f54577",
+      "bytes": 16926
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleFlowTest.kt",
+      "sha256": "22d99ec9e9675c128d66f2a2aa9556295a152acd24311c32bacee7ef02c271bd",
+      "bytes": 27016
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleRoutesTest.kt",
+      "sha256": "05084186bb3c8770f2d1a2379750f35e1cd559a248479dade826fa887eff3512",
+      "bytes": 3115
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleScreensTest.kt",
+      "sha256": "28ad022d22491e43bea215702b4940ca082d27158b84bc00531a4add6aaee51e",
+      "bytes": 21145
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt",
+      "sha256": "d1f6e6483cf463cd44c0266bc38ba42e5dc844b1b01f708a92c66bc775eec46f",
+      "bytes": 42309
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectNavigationGuardTest.kt",
+      "sha256": "255793100bcd28f431b0e9cf66d326e95e3a9166a611c71de8262ac0830d5fb4",
+      "bytes": 11881
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectRoutesTest.kt",
+      "sha256": "c73806cdc0ae8cab277f652c18f1b593a304391cfd1ab25989070b3d069c1906",
+      "bytes": 1630
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectScreensTest.kt",
+      "sha256": "854578422b5b52d41b75ca59a4e1e889899a958a16a887bc7624a766cbfc2f0b",
+      "bytes": 19426
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt",
+      "sha256": "f38174fa8389c7fa4883b6506f61d8d3201ee88592e836a0010b9dee37f99e28",
+      "bytes": 29118
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionFixtures.kt",
+      "sha256": "8dbba4c222b80cbffd0da8c75b74bad19525a19365a22a0a57071bc08fcdaccf",
+      "bytes": 9898
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleFlowTest.kt",
+      "sha256": "e937c4ee78d379344b21deaef338386c841c18601a2b887344e0571866819852",
+      "bytes": 16570
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleViewModelTest.kt",
+      "sha256": "76d6c002df06a7db960bcd3e890e17994efeef08c08ba7afed75fadfbac56f5a",
+      "bytes": 27559
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationFlowTest.kt",
+      "sha256": "b91bff3d2bcd168437b41189f4e41047d5241b1d3cff67fe4151da4262046421",
+      "bytes": 5248
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationGuardTest.kt",
+      "sha256": "f3843906c5c5f741e760b0e57963ea381281adf203849a21a17e2be7bd392f4e",
+      "bytes": 5881
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionRoutesTest.kt",
+      "sha256": "a5473666d9c1ff24143b26ec0388c83a387c9acc4032ceebc413f8e56c31748f",
+      "bytes": 3251
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionScreensTest.kt",
+      "sha256": "1552bdbf49ee81c56870c3e7dd544735abaedfe336369a3a84a7fa4ce6997d42",
+      "bytes": 6208
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionViewModelTest.kt",
+      "sha256": "5d54f58a09c0afb58f57902d9dfc46d07ef2d8cbeb80a962f06f474a826df77a",
+      "bytes": 5542
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionNavigationGuardTest.kt",
+      "sha256": "0ee420be10e504830ab2a5bc485a2bcf9846ff545a8e908ef6f5b812df0ef8ff",
+      "bytes": 19628
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt",
+      "sha256": "9f4b55736f36fbc4c8a9039f547f89f148809fbce40808b9a508f1a583e8bf58",
+      "bytes": 34131
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRoutesTest.kt",
+      "sha256": "ccaa480e2f022e75a0d8b1baff5354459bd1d51aeb14f3e7cab24941e4c0280f",
+      "bytes": 3911
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionScreensTest.kt",
+      "sha256": "d9059c0e050c6323ecf1e3b40016cdba6fb7466821f5eda49997a7a463149b5f",
+      "bytes": 17624
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionViewModelTest.kt",
+      "sha256": "bb7dc6b04b494d3a8eb8a967dc45b77986e5b59a8619f9f3b5886ea407d2def4",
+      "bytes": 19929
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/ActivityNavigationTest.kt",
+      "sha256": "6829112167dd2e20142f11dcc7dcebbc6a5292229167d6421f10ef8ea56659f3",
+      "bytes": 2566
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/NavigationShellTest.kt",
+      "sha256": "53c5a2ac0086d7523c59d1d025c4c48e665f990e3841e3187e4cf3ce2bfec3ae",
+      "bytes": 15375
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/StorageUiStateTest.kt",
+      "sha256": "836591e88e35dfe59e3db9a5d5fc16c9f3a68beebea165ca090ec916ef57b1dc",
+      "bytes": 10675
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIComponentsTest.kt",
+      "sha256": "c9ccac26c2bf2a508c3970b1002ae6e6ccfd114978725552bf72da50010da889",
+      "bytes": 16554
+    },
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json",
+      "sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "bytes": 10840
+    },
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/2.json",
+      "sha256": "ceb49b458c4c5baa08066586f209f96842935f5456a0a53a01220f6d958f7131",
+      "bytes": 21042
+    },
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "bc3e57494c2b6717d902ad63a2dec6e6d8376ff4074e2b9b48a4fc64dc109579",
+      "bytes": 2628
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "946798d5fadb1885be291dc9432f9e1c798bdfa55e2c8784173dca0d058874bd",
+      "bytes": 317
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "23a0e54819e1d0d96c4195ca1a80535c80a21174bc133410343714ea7c456b11",
+      "bytes": 326
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "sha256": "4c3b747cf7b6e92ab8ad0af9575e728875129b7715639ce6d88263626963f0df",
+      "bytes": 3066
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "44c4c2365ac08b98f9f9cb4ad952d80eada3865db9eae1fb81717b0e62fcbc65",
+      "bytes": 424
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "1f97506f7ca338e0f394aa1c98bc13ccbdf8c36b6c24eb0e90fdda78ab6d4245",
+      "bytes": 340
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+      "bytes": 43764
+    }
+  ],
+  "sourceZip": "red-complete-media-source.zip",
+  "sourceZipSha256": "964a142ba5141041a97a2bc3ccde63ad8584bb17bcfbb5bca5b3752daebefb4f",
+  "inputsStable": "PASS",
+  "reports": [
+    {
+      "kind": "android",
+      "path": "red-complete-media-android-0.xml",
+      "sha256": "bc2096b9788174c3dd03e51ad026cd52efe5bd4526775a1e11e52f39949292c4",
+      "bytes": 128178,
+      "counts": {
+        "tests": 86,
+        "failures": 86,
+        "errors": 0,
+        "skipped": 0
+      },
+      "devices": [
+        "Lithic_M01_API_36(AVD) - 16"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "prepare_does_not_create_formal_file",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:199)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$prepare_does_not_create_formal_file$1.invokeSuspend(LocalImageStoreTest.kt:64)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepare_does_not_create_formal_file(LocalImageStoreTest.kt:63)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "changed_bytes_are_not_reencoded_or_silently_repaired",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$changed_bytes_are_not_reencoded_or_silently_repaired$1.invokeSuspend(LocalImageStoreTest.kt:191)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.changed_bytes_are_not_reencoded_or_silently_repaired(LocalImageStoreTest.kt:191)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "remove_active_prepared_resource_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:199)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$remove_active_prepared_resource_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:88)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.remove_active_prepared_resource_is_rejected(LocalImageStoreTest.kt:87)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "truncated_jpeg_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<INVALID_IMAGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$truncated_jpeg_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:171)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.truncated_jpeg_is_rejected(LocalImageStoreTest.kt:171)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "enormous_png_dimensions_are_rejected_before_decode",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<TOO_LARGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$enormous_png_dimensions_are_rejected_before_decode$1.invokeSuspend(LocalImageStoreTest.kt:166)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.enormous_png_dimensions_are_rejected_before_decode(LocalImageStoreTest.kt:164)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "normalized_metadata_matches_real_private_bytes",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$normalized_metadata_matches_real_private_bytes$1.invokeSuspend(LocalImageStoreTest.kt:49)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.normalized_metadata_matches_real_private_bytes(LocalImageStoreTest.kt:48)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "encoding_failure_leaves_no_formal_resource",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<IO> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$encoding_failure_leaves_no_formal_resource$1.invokeSuspend(LocalImageStoreTest.kt:188)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.encoding_failure_leaves_no_formal_resource(LocalImageStoreTest.kt:188)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "original_uri_is_not_a_persistent_asset_path",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<PATH> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$original_uri_is_not_a_persistent_asset_path$1.invokeSuspend(LocalImageStoreTest.kt:197)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.original_uri_is_not_a_persistent_asset_path(LocalImageStoreTest.kt:197)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "bounded_decode_rejects_real_over_40mp_before_bitmap_allocation",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<TOO_LARGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$bounded_decode_rejects_real_over_40mp_before_bitmap_allocation$1.invokeSuspend(LocalImageStoreTest.kt:161)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.bounded_decode_rejects_real_over_40mp_before_bitmap_allocation(LocalImageStoreTest.kt:158)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "all_eight_exif_orientations_use_correct_corner_geometry",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$all_eight_exif_orientations_use_correct_corner_geometry$1.invokeSuspend(LocalImageStoreTest.kt:151)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.all_eight_exif_orientations_use_correct_corner_geometry(LocalImageStoreTest.kt:145)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "incorrect_declared_mime_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<INVALID_IMAGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$incorrect_declared_mime_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:173)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.incorrect_declared_mime_is_rejected(LocalImageStoreTest.kt:173)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "file_write_failure_leaves_no_formal_resource",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<IO> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$file_write_failure_leaves_no_formal_resource$1.invokeSuspend(LocalImageStoreTest.kt:189)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.file_write_failure_leaves_no_formal_resource(LocalImageStoreTest.kt:189)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "symlink_target_cannot_escape_private_media",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$symlink_target_cannot_escape_private_media$1.invokeSuspend(LocalImageStoreTest.kt:194)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.symlink_target_cannot_escape_private_media(LocalImageStoreTest.kt:194)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "private_relative_paths",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$private_relative_paths$1.invokeSuspend(LocalImageStoreTest.kt:59)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.private_relative_paths(LocalImageStoreTest.kt:58)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "copy_survives_source_removal",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$copy_survives_source_removal$1.invokeSuspend(LocalImageStoreTest.kt:39)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.copy_survives_source_removal(LocalImageStoreTest.kt:38)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "oversized_source_stream_is_bounded",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<TOO_LARGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$oversized_source_stream_is_bounded$1.invokeSuspend(LocalImageStoreTest.kt:185)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.oversized_source_stream_is_bounded(LocalImageStoreTest.kt:183)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "repeated_commit_is_exact_read_only_replay",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:199)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$repeated_commit_is_exact_read_only_replay$1.invokeSuspend(LocalImageStoreTest.kt:84)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.repeated_commit_is_exact_read_only_replay(LocalImageStoreTest.kt:83)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "apng_animation_control_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<UNSUPPORTED> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$apng_animation_control_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:175)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.apng_animation_control_is_rejected(LocalImageStoreTest.kt:175)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "nested_or_absolute_asset_path_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$nested_or_absolute_asset_path_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:196)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.nested_or_absolute_asset_path_is_rejected(LocalImageStoreTest.kt:196)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "prepared_identity_can_be_restored_without_source_uri",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$prepared_identity_can_be_restored_without_source_uri$1.invokeSuspend(LocalImageStoreTest.kt:68)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepared_identity_can_be_restored_without_source_uri(LocalImageStoreTest.kt:67)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "png_transparency_is_not_silently_jpeg_encoded",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$png_transparency_is_not_silently_jpeg_encoded$1.invokeSuspend(LocalImageStoreTest.kt:122)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.png_transparency_is_not_silently_jpeg_encoded(LocalImageStoreTest.kt:119)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "symlink_media_directory_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<PATH> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$symlink_media_directory_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:195)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.symlink_media_directory_is_rejected(LocalImageStoreTest.kt:195)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "cleanup_preserves_unknown_file_and_invalid_owner",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$cleanup_preserves_unknown_file_and_invalid_owner$1.invokeSuspend(LocalImageStoreTest.kt:101)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.cleanup_preserves_unknown_file_and_invalid_owner(LocalImageStoreTest.kt:98)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "path_into_other_generation_cannot_read_or_delete",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$path_into_other_generation_cannot_read_or_delete$1.invokeSuspend(LocalImageStoreTest.kt:193)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.path_into_other_generation_cannot_read_or_delete(LocalImageStoreTest.kt:193)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "discard_prepared_does_not_delete_final_with_uncertain_db_result",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:199)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$discard_prepared_does_not_delete_final_with_uncertain_db_result$1.invokeSuspend(LocalImageStoreTest.kt:105)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.discard_prepared_does_not_delete_final_with_uncertain_db_result(LocalImageStoreTest.kt:104)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "decode_failure_leaves_no_managed_asset",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$decode_failure_leaves_no_managed_asset$1.invokeSuspend(LocalImageStoreTest.kt:187)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.decode_failure_leaves_no_managed_asset(LocalImageStoreTest.kt:187)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "jpeg_direction_and_location_metadata_are_normalized",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$jpeg_direction_and_location_metadata_are_normalized$1.invokeSuspend(LocalImageStoreTest.kt:139)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.jpeg_direction_and_location_metadata_are_normalized(LocalImageStoreTest.kt:126)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "output_still_over_2mib_is_explicit_failure",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<TOO_LARGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$output_still_over_2mib_is_explicit_failure$1.invokeSuspend(LocalImageStoreTest.kt:181)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.output_still_over_2mib_is_explicit_failure(LocalImageStoreTest.kt:177)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "corrupt_png_crc_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<INVALID_IMAGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$corrupt_png_crc_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:169)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.corrupt_png_crc_is_rejected(LocalImageStoreTest.kt:169)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "orphan_final_can_be_reclaimed_after_restart",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:199)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$orphan_final_can_be_reclaimed_after_restart$1.invokeSuspend(LocalImageStoreTest.kt:92)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.orphan_final_can_be_reclaimed_after_restart(LocalImageStoreTest.kt:91)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "repeated_prepare_does_not_encode_or_create_second_asset",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$ok(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$repeated_prepare_does_not_encode_or_create_second_asset$1.invokeSuspend(LocalImageStoreTest.kt:75)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.repeated_prepare_does_not_encode_or_create_second_asset(LocalImageStoreTest.kt:74)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "zero_png_dimensions_are_invalid",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<INVALID_IMAGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$zero_png_dimensions_are_invalid$1.invokeSuspend(LocalImageStoreTest.kt:168)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.zero_png_dimensions_are_invalid(LocalImageStoreTest.kt:168)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "non_image_input_is_explicitly_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<UNSUPPORTED> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$non_image_input_is_explicitly_rejected$1.invokeSuspend(LocalImageStoreTest.kt:172)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.non_image_input_is_explicitly_rejected(LocalImageStoreTest.kt:172)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "discarded_uncommitted_preparation_is_safely_removed",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:199)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$discarded_uncommitted_preparation_is_safely_removed$1.invokeSuspend(LocalImageStoreTest.kt:110)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.discarded_uncommitted_preparation_is_safely_removed(LocalImageStoreTest.kt:109)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "truncated_png_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<INVALID_IMAGE> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$truncated_png_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:170)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.truncated_png_is_rejected(LocalImageStoreTest.kt:170)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "metadata_mismatch_is_explicit_error",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$metadata_mismatch_is_explicit_error$1.invokeSuspend(LocalImageStoreTest.kt:192)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.metadata_mismatch_is_explicit_error(LocalImageStoreTest.kt:192)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "repeated_reads_do_not_change_file_or_hash",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$repeated_reads_do_not_change_file_or_hash$1.invokeSuspend(LocalImageStoreTest.kt:115)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.repeated_reads_do_not_change_file_or_hash(LocalImageStoreTest.kt:114)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "stable_uuid_cannot_overwrite_existing_file",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.prepared(LocalImageStoreTest.kt:199)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$prepared(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$stable_uuid_cannot_overwrite_existing_file$1.invokeSuspend(LocalImageStoreTest.kt:80)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.stable_uuid_cannot_overwrite_existing_file(LocalImageStoreTest.kt:79)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "gif_is_not_accepted_as_static_cover",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<UNSUPPORTED> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$gif_is_not_accepted_as_static_cover$1.invokeSuspend(LocalImageStoreTest.kt:174)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.gif_is_not_accepted_as_static_cover(LocalImageStoreTest.kt:174)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "mpo_multiframe_jpeg_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<UNSUPPORTED> but was:<NOT_FOUND>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:204)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$mpo_multiframe_jpeg_is_rejected$1.invokeSuspend(LocalImageStoreTest.kt:176)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.mpo_multiframe_jpeg_is_rejected(LocalImageStoreTest.kt:176)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.LocalImageStoreTest",
+      "name": "missing_file_is_not_reported_as_no_cover",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful real private image operation, got Failure(kind=NOT_FOUND, message=Local cover storage is not implemented)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.LocalImageStoreTest.ok(LocalImageStoreTest.kt:203)\nat com.cooper.lithic.data.media.LocalImageStoreTest.committed(LocalImageStoreTest.kt:200)\nat com.cooper.lithic.data.media.LocalImageStoreTest.access$committed(LocalImageStoreTest.kt:29)\nat com.cooper.lithic.data.media.LocalImageStoreTest$missing_file_is_not_reported_as_no_cover$1.invokeSuspend(LocalImageStoreTest.kt:190)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.LocalImageStoreTest.missing_file_is_not_reported_as_no_cover(LocalImageStoreTest.kt:190)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "sqlite_asset_insert_failure_protects_old_cover_and_leaves_safe_orphan",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.sqlite_asset_insert_failure_protects_old_cover_and_leaves_safe_orphan(MediaRepositoryTest.kt:236)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "unchanged_project_row_with_new_money_event_is_stale_cover_baseline",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$unchanged_project_row_with_new_money_event_is_stale_cover_baseline$1.invokeSuspend(MediaRepositoryTest.kt:196)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.unchanged_project_row_with_new_money_event_is_stale_cover_baseline(MediaRepositoryTest.kt:194)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "decode_failure_preserves_existing_cover_and_original_facts",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.decode_failure_preserves_existing_cover_and_original_facts(MediaRepositoryTest.kt:277)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "final_file_before_database_commit_is_reclaimable_after_reopen",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$final_file_before_database_commit_is_reclaimable_after_reopen$1.invokeSuspend(MediaRepositoryTest.kt:355)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.final_file_before_database_commit_is_reclaimable_after_reopen(MediaRepositoryTest.kt:354)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "deleted_project_cannot_acquire_a_prepared_cover",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$deleted_project_cannot_acquire_a_prepared_cover$1.invokeSuspend(MediaRepositoryTest.kt:207)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.deleted_project_cannot_acquire_a_prepared_cover(MediaRepositoryTest.kt:205)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "two_projects_share_a_cover_and_replacement_keeps_other_reference",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.two_projects_share_a_cover_and_replacement_keeps_other_reference(MediaRepositoryTest.kt:303)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "unknown_uuid_named_file_without_ownership_proof_is_retained",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$success(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$unknown_uuid_named_file_without_ownership_proof_is_retained$1.invokeSuspend(MediaRepositoryTest.kt:409)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.unknown_uuid_named_file_without_ownership_proof_is_retained(MediaRepositoryTest.kt:405)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "physical_delete_failure_keeps_proof_and_retries_without_metadata_reference",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.physical_delete_failure_keeps_proof_and_retries_without_metadata_reference(MediaRepositoryTest.kt:413)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "committed_verification_is_read_only_and_detects_later_target_changes",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$committed_verification_is_read_only_and_detects_later_target_changes$1.invokeSuspend(MediaRepositoryTest.kt:175)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.committed_verification_is_read_only_and_detects_later_target_changes(MediaRepositoryTest.kt:173)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "database_commit_before_old_cleanup_survives_generation_reopen",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.database_commit_before_old_cleanup_survives_generation_reopen(MediaRepositoryTest.kt:364)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "new_subscription_state_blocks_a_stale_cover_command",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$new_subscription_state_blocks_a_stale_cover_command$1.invokeSuspend(MediaRepositoryTest.kt:228)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.new_subscription_state_blocks_a_stale_cover_command(MediaRepositoryTest.kt:226)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "final_file_commit_failure_never_inserts_a_cover_reference",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.final_file_commit_failure_never_inserts_a_cover_reference(MediaRepositoryTest.kt:289)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "repeated_verified_reads_preserve_bytes_and_real_metadata",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.repeated_verified_reads_preserve_bytes_and_real_metadata(MediaRepositoryTest.kt:457)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "fixed_command_concurrency_creates_one_asset_and_replays_exact_target",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$fixed_command_concurrency_creates_one_asset_and_replays_exact_target$1.invokeSuspend(MediaRepositoryTest.kt:150)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.fixed_command_concurrency_creates_one_asset_and_replays_exact_target(MediaRepositoryTest.kt:148)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "new_subscription_payment_blocks_a_stale_cover_command",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$new_subscription_payment_blocks_a_stale_cover_command$1.invokeSuspend(MediaRepositoryTest.kt:217)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.new_subscription_payment_blocks_a_stale_cover_command(MediaRepositoryTest.kt:215)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "project_and_subscription_share_cover_until_last_reference_is_removed",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.project_and_subscription_share_cover_until_last_reference_is_removed(MediaRepositoryTest.kt:315)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "missing_cover_is_explicit_failure_without_deleting_metadata_or_business_reference",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.missing_cover_is_explicit_failure_without_deleting_metadata_or_business_reference(MediaRepositoryTest.kt:437)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "cleanup_cannot_delete_file_while_coordinator_snapshot_uses_it",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.cleanup_cannot_delete_file_while_coordinator_snapshot_uses_it(MediaRepositoryTest.kt:378)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "deleting_project_preserves_cover_still_used_by_subscription",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.deleting_project_preserves_cover_still_used_by_subscription(MediaRepositoryTest.kt:331)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "lost_result_replay_after_generation_reopen_does_not_import_again",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$lost_result_replay_after_generation_reopen_does_not_import_again$1.invokeSuspend(MediaRepositoryTest.kt:162)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.lost_result_replay_after_generation_reopen_does_not_import_again(MediaRepositoryTest.kt:160)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "subscription_update_failure_rolls_back_new_metadata_and_keeps_timelines",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredSubscription(MediaRepositoryTest.kt:478)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredSubscription(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredSubscription$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.subscription_update_failure_rolls_back_new_metadata_and_keeps_timelines(MediaRepositoryTest.kt:265)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "prepared_file_write_failure_preserves_existing_cover_and_original_facts",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepared_file_write_failure_preserves_existing_cover_and_original_facts(MediaRepositoryTest.kt:285)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "subscription_baseline_contains_original_payments_and_states",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$success(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$subscription_baseline_contains_original_payments_and_states$1.invokeSuspend(MediaRepositoryTest.kt:116)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.subscription_baseline_contains_original_payments_and_states(MediaRepositoryTest.kt:114)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "stale_project_metadata_cannot_replace_newer_facts",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$stale_project_metadata_cannot_replace_newer_facts$1.invokeSuspend(MediaRepositoryTest.kt:186)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.stale_project_metadata_cannot_replace_newer_facts(MediaRepositoryTest.kt:184)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "load_target_returns_complete_project_and_money_facts",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected the real project baseline, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest$load_target_returns_complete_project_and_money_facts$1.invokeSuspend(MediaRepositoryTest.kt:79)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.load_target_returns_complete_project_and_money_facts(MediaRepositoryTest.kt:76)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "subscription_cover_write_preserves_payment_and_state_history",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$subscription_cover_write_preserves_payment_and_state_history$1.invokeSuspend(MediaRepositoryTest.kt:138)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.subscription_cover_write_preserves_payment_and_state_history(MediaRepositoryTest.kt:134)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "remove_cover_keeps_original_money_and_identity",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected successful cover removal, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest$remove_cover_keeps_original_money_and_identity$1.invokeSuspend(MediaRepositoryTest.kt:91)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.remove_cover_keeps_original_money_and_identity(MediaRepositoryTest.kt:85)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "corrupt_cover_is_explicit_failure_without_reencoding_or_clearing_facts",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.corrupt_cover_is_explicit_failure_without_reencoding_or_clearing_facts(MediaRepositoryTest.kt:446)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "project_cover_write_preserves_cost_and_all_money_facts",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$project_cover_write_preserves_cost_and_all_money_facts$1.invokeSuspend(MediaRepositoryTest.kt:122)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.project_cover_write_preserves_cost_and_all_money_facts(MediaRepositoryTest.kt:119)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "project_update_failure_rolls_back_new_metadata_and_protects_old_bytes",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.project_update_failure_rolls_back_new_metadata_and_protects_old_bytes(MediaRepositoryTest.kt:253)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "stale_old_command_cannot_overwrite_a_newer_cover",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$stale_old_command_cannot_overwrite_a_newer_cover$1.invokeSuspend(MediaRepositoryTest.kt:430)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.stale_old_command_cannot_overwrite_a_newer_cover(MediaRepositoryTest.kt:428)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "encode_failure_preserves_existing_cover_and_original_facts",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.coveredProject(MediaRepositoryTest.kt:477)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$coveredProject(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$coveredProject$1.invokeSuspend(Unknown Source:14)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.encode_failure_preserves_existing_cover_and_original_facts(MediaRepositoryTest.kt:281)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.MediaRepositoryTest",
+      "name": "active_preparation_survives_cleanup_until_explicit_release",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected success, got Failure(kind=NOT_FOUND, message=Cover media is not implemented yet)\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.MediaRepositoryTest.success(MediaRepositoryTest.kt:522)\nat com.cooper.lithic.data.media.MediaRepositoryTest.prepare(MediaRepositoryTest.kt:476)\nat com.cooper.lithic.data.media.MediaRepositoryTest.access$prepare(MediaRepositoryTest.kt:48)\nat com.cooper.lithic.data.media.MediaRepositoryTest$active_preparation_survives_cleanup_until_explicit_release$1.invokeSuspend(MediaRepositoryTest.kt:345)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.MediaRepositoryTest.active_preparation_survives_cleanup_until_explicit_release(MediaRepositoryTest.kt:344)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "damaged_selected_source_reports_error_and_keeps_old_reference_bytes_and_money",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: The formal cover editor is missing\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat org.junit.Assert.assertNotNull(Assert.java:713)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.start(M10CoverViewModelTest.kt:313)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.access$start(M10CoverViewModelTest.kt:63)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest$damaged_selected_source_reports_error_and_keeps_old_reference_bytes_and_money$1.invokeSuspend(M10CoverViewModelTest.kt:261)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.damaged_selected_source_reports_error_and_keeps_old_reference_bytes_and_money(M10CoverViewModelTest.kt:255)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "project_cover_editor_retains_real_identity_and_history_origin_without_writing",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Opening a real project's cover must produce a recoverable editor\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat org.junit.Assert.assertNotNull(Assert.java:713)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest$project_cover_editor_retains_real_identity_and_history_origin_without_writing$1.invokeSuspend(M10CoverViewModelTest.kt:95)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.project_cover_editor_retains_real_identity_and_history_origin_without_writing(M10CoverViewModelTest.kt:91)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "committed_response_loss_replays_same_command_without_a_second_import_or_asset",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: The formal cover editor is missing\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat org.junit.Assert.assertNotNull(Assert.java:713)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.start(M10CoverViewModelTest.kt:313)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.access$start(M10CoverViewModelTest.kt:63)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest$committed_response_loss_replays_same_command_without_a_second_import_or_asset$1.invokeSuspend(M10CoverViewModelTest.kt:207)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.committed_response_loss_replays_same_command_without_a_second_import_or_asset(M10CoverViewModelTest.kt:191)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "subscription_cover_editor_retains_identity_and_real_payment_without_writing",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Opening a real subscription's cover must produce a recoverable editor\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat org.junit.Assert.assertNotNull(Assert.java:713)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest$subscription_cover_editor_retains_identity_and_real_payment_without_writing$1.invokeSuspend(M10CoverViewModelTest.kt:110)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.subscription_cover_editor_retains_identity_and_real_payment_without_writing(M10CoverViewModelTest.kt:105)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "duplicate_save_and_saved_task_recovery_keep_one_asset_and_frozen_operation",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: The formal cover editor is missing\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat org.junit.Assert.assertNotNull(Assert.java:713)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.start(M10CoverViewModelTest.kt:313)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.access$start(M10CoverViewModelTest.kt:63)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest$duplicate_save_and_saved_task_recovery_keep_one_asset_and_frozen_operation$1.invokeSuspend(M10CoverViewModelTest.kt:171)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.duplicate_save_and_saved_task_recovery_keep_one_asset_and_frozen_operation(M10CoverViewModelTest.kt:158)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "prepare_keeps_old_reference_until_explicit_save_and_source_uri_is_not_saved",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: The formal cover editor is missing\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat org.junit.Assert.assertNotNull(Assert.java:713)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.start(M10CoverViewModelTest.kt:313)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.access$start(M10CoverViewModelTest.kt:63)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest$prepare_keeps_old_reference_until_explicit_save_and_source_uri_is_not_saved$1.invokeSuspend(M10CoverViewModelTest.kt:139)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.prepare_keeps_old_reference_until_explicit_save_and_source_uri_is_not_saved(M10CoverViewModelTest.kt:134)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "committed_saved_envelope_performs_read_only_verification_without_import_or_commit",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: A committed saved operation needs a read-only recovery state\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat org.junit.Assert.assertNotNull(Assert.java:713)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest$committed_saved_envelope_performs_read_only_verification_without_import_or_commit$1.invokeSuspend(M10CoverViewModelTest.kt:245)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.committed_saved_envelope_performs_read_only_verification_without_import_or_commit(M10CoverViewModelTest.kt:224)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverViewModelTest",
+      "name": "system_picker_cancel_does_not_dirty_or_write_project_or_media",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Picker cancellation must be handled by the formal cover editor\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat org.junit.Assert.assertNotNull(Assert.java:713)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest$system_picker_cancel_does_not_dirty_or_write_project_or_media$1.invokeSuspend(M10CoverViewModelTest.kt:124)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.feature.media.M10CoverViewModelTest.system_picker_cancel_does_not_dirty_or_write_project_or_media(M10CoverViewModelTest.kt:119)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverRoutesTest",
+      "name": "prepared_cover_requires_explicit_discard_and_another_pending_write_still_blocks",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<CONFIRM_DISCARD> but was:<ALLOW>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.feature.media.M10CoverRoutesTest.prepared_cover_requires_explicit_discard_and_another_pending_write_still_blocks(M10CoverRoutesTest.kt:57)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverRoutesTest",
+      "name": "subscription_cover_retains_current_and_stopped_history_detail_parent_chain",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<[Home, SubscriptionList, SubscriptionDetail(id=10000000-0000-0000-0000-000000000912, origin=CURRENT), SubscriptionCover(id=10000000-0000-0000-0000-000000000912, origin=CURRENT)]> but was:<[Home]>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.feature.media.M10CoverRoutesTest.subscription_cover_retains_current_and_stopped_history_detail_parent_chain(M10CoverRoutesTest.kt:42)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverRoutesTest",
+      "name": "project_cover_retains_current_and_history_detail_parent_chain",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<[Home, ProjectList, ProjectDetail(id=10000000-0000-0000-0000-000000000911, origin=CURRENT), ProjectCover(id=10000000-0000-0000-0000-000000000911, origin=CURRENT)]> but was:<[Home]>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.feature.media.M10CoverRoutesTest.project_cover_retains_current_and_history_detail_parent_chain(M10CoverRoutesTest.kt:31)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverRoutesTest",
+      "name": "pending_cover_cannot_be_discarded_by_either_other_feature",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: expected:<BLOCK_PENDING> but was:<ALLOW>\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.failNotEquals(Assert.java:835)\nat org.junit.Assert.assertEquals(Assert.java:120)\nat org.junit.Assert.assertEquals(Assert.java:146)\nat com.cooper.lithic.feature.media.M10CoverRoutesTest.pending_cover_cannot_be_discarded_by_either_other_feature(M10CoverRoutesTest.kt:50)\n"
+    }
+  ],
+  "total": 86,
+  "pass": 0,
+  "fail": 86,
+  "skipped": 0,
+  "jvm": 0,
+  "android": 86,
+  "original549Present": "NOT_CHECKED_PARTIAL",
+  "newDistinctTests": null
+}

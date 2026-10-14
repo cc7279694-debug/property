@@ -1,8 +1,11 @@
 package com.cooper.lithic.data.backup
 
 import android.content.Context
+import android.content.ContentResolver
 import android.util.AtomicFile
 import com.cooper.lithic.data.local.LithicDatabase
+import com.cooper.lithic.data.media.LocalImageStore
+import com.cooper.lithic.data.media.MediaRepository
 import com.cooper.lithic.data.repository.LocalWriteCoordinator
 import com.cooper.lithic.data.settings.SettingsStore
 import java.io.File
@@ -27,8 +30,17 @@ class ManagedGeneration internal constructor(
     val database: LithicDatabase,
     val settings: SettingsStore,
     val coordinator: LocalWriteCoordinator,
+    internal val mediaResolver: ContentResolver,
     private val closeAction: suspend (ManagedGeneration) -> Unit,
 ) {
+    // One preparation lease registry per managed generation, shared by every media facade.
+    internal val images: LocalImageStore by lazy {
+        LocalImageStore(directory).also { store ->
+            check(store.bindRemovalGuard { asset, remove ->
+                MediaRepository.removeManagedAsset(database, coordinator, store, asset, remove)
+            }) { "The private media reference guard must be bound exactly once" }
+        }
+    }
     suspend fun close() = closeAction(this)
 }
 
@@ -185,7 +197,7 @@ class DataGenerationStore(
     }
 
     private fun managed(id: String, directory: File, database: LithicDatabase, settings: SettingsStore) =
-        ManagedGeneration(id, directory, database, settings, coordinator, ::closeGeneration)
+        ManagedGeneration(id, directory, database, settings, coordinator, context.contentResolver, ::closeGeneration)
 
     private suspend fun closeGeneration(generation: ManagedGeneration) = withContext(Dispatchers.IO) {
         lifecycle.withLock {

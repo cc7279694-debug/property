@@ -1,0 +1,23 @@
+{
+  "kind": "Observed preparation/readiness attempts, not JUnit tests",
+  "attempts": [
+    {
+      "name": "share-synthetic-before-UI",
+      "result": "FAIL",
+      "source": "share-synthetic-actual.log",
+      "reason": "Storage initialization has not started; no business/media change; same-owner retry after actual MainActivity start passed."
+    },
+    {
+      "name": "first-saved-task-readiness",
+      "result": "FAIL",
+      "reason": "Snapshot captured actual initialization screen too early. Task614 SIGKILL/identity and eventual same-ID save are recorded separately; no false ready screenshot PASS."
+    },
+    {
+      "name": "second-saved-task-initial-50s-readiness",
+      "result": "FAIL",
+      "reason": "Restored prepared page had enabled Save below viewport. Actual before-scroll screenshot/semantic tree retained. Root scrolled existing page without reselect/import, then exact task/PID/prepared metadata and ready UI passed."
+    }
+  ],
+  "finalResult": "PASS_AFTER_ACTUAL_READINESS_AND_EXPLICIT_SAVE",
+  "unresolvedProductFailureClaimed": false
+}

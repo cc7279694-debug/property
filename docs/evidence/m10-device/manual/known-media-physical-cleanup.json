@@ -1,0 +1,37 @@
+{
+  "result": "PASS",
+  "capturedUtc": "2026-10-14T06:02:52.243589+00:00",
+  "generation": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+  "source": "Actual run-as test -e on exact known prior asset paths; parent media directory separately verified. Only M10 synthetic resources.",
+  "deletedKnownResources": [
+    {
+      "id": "1a42980d-99da-4a01-9631-b767ee9efd7d",
+      "relativePath": "media/1a42980d-99da-4a01-9631-b767ee9efd7d.jpg",
+      "metadataAbsent": true,
+      "actualFileExists": false
+    },
+    {
+      "id": "2518c660-ceb3-4997-bbd8-9b62aa2211f4",
+      "relativePath": "media/2518c660-ceb3-4997-bbd8-9b62aa2211f4.jpg",
+      "metadataAbsent": true,
+      "actualFileExists": false
+    },
+    {
+      "id": "a8d1e4b0-397c-4223-9123-c7db7a8de3db",
+      "relativePath": "media/a8d1e4b0-397c-4223-9123-c7db7a8de3db.png",
+      "metadataAbsent": true,
+      "actualFileExists": false
+    },
+    {
+      "id": "3d796939-0cad-4375-b24b-f199fe06acd1",
+      "relativePath": "media/3d796939-0cad-4375-b24b-f199fe06acd1.png",
+      "metadataAbsent": true,
+      "actualFileExists": false
+    }
+  ],
+  "expectedCurrentReferencedIds": [
+    "0b0ef66c-9ce0-4e33-a295-852b4681aa9e",
+    "b96c1ab2-1d6e-4b54-bbaf-08e48e342f2d"
+  ],
+  "scope": "Only prior known resources verified absent, no deletion commands. Small operation receipts intentionally distinct from image bytes."
+}

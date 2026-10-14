@@ -1,0 +1,60 @@
+{
+  "result": "PASS",
+  "attempt": "SECOND_DISTINCT_ACTUAL_ATTEMPT",
+  "taskId": 616,
+  "oldProcess": {
+    "pid": 17203,
+    "startTimeTicks": "632442",
+    "cmdline": "com.cooper.lithic.debug"
+  },
+  "newProcess": {
+    "pid": 17927,
+    "startTimeTicks": "666671",
+    "cmdline": "com.cooper.lithic.debug"
+  },
+  "samePreparedAssetId": "6ef0c664-dffd-417e-b9d8-7bbbe824f6e2",
+  "samePreparedBytesSha256": "4a4a8b55db208e631f6ad2e27bb8521aa6542e26419dd87b23f2af4a65467cec",
+  "preparedAsset": {
+    "id": "6ef0c664-dffd-417e-b9d8-7bbbe824f6e2",
+    "relativePath": "media/6ef0c664-dffd-417e-b9d8-7bbbe824f6e2.png",
+    "mime": "image/png",
+    "width": 900,
+    "height": 600,
+    "byteLength": 5645,
+    "sha256": "4a4a8b55db208e631f6ad2e27bb8521aa6542e26419dd87b23f2af4a65467cec"
+  },
+  "sameGeneration": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+  "uiReady": {
+    "polls": 1,
+    "waitLimitSeconds": 50,
+    "readyPreparedText": true,
+    "readyEnabledSaveText": true,
+    "expectedTargetName": "M10 QA Subscription",
+    "targetNameVisible": false,
+    "targetNameVerification": "NOT_VISIBLE_NOT_VERIFIED; same task and prepared resource identity verified",
+    "temporaryDeviceXml": "/sdcard/lithic-m10-saved-second-4e5d5a6c6e604359917e2ac8893e9f84.xml",
+    "transientErrors": []
+  },
+  "network": {
+    "wifiOn": 0,
+    "mobileData": 0,
+    "activeDefaultNetwork": "none"
+  },
+  "artifacts": [
+    {
+      "path": "saved-task-second-ready.xml",
+      "bytes": 14459,
+      "sha256": "4a5ea343a26a35b815f3b5dc43a39edf5a040a5b6e4968fe28c954dfb6b9ffe5"
+    },
+    {
+      "path": "saved-task-second-ready.png",
+      "bytes": 50760,
+      "sha256": "761b16a63392d5178c59a452e2c732c2745bfa0d7f3f7f63dabeed102e275769"
+    }
+  ],
+  "explicitSaveStillRequired": true,
+  "noReselectByHelper": true,
+  "screenshotRequiresRootReview": true,
+  "observedUtc": "2026-10-14T06:06:37.050356+00:00",
+  "source": "Manually reopened same saved task after verified own-PID SIGKILL; UI prepared and enabled Save observed after waiting; not a loading screenshot, force-stop or real LMK"
+}

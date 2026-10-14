@@ -130,4 +130,19 @@ interface ProjectDao {
         id: String, name: String, categoryId: String, startedOn: LocalDate, endedOn: LocalDate?,
         endReason: String?, coverAssetId: String?, note: String?, createdAt: Instant, updatedAt: Instant,
     ): Int
+
+    /** M10 changes only cover/revision and compares the entire original identity/lifecycle row. */
+    @Query("""
+        UPDATE long_term_projects SET coverAssetId = :coverAssetId, updatedAt = :updatedAt
+        WHERE id = :id AND name = :expectedName AND categoryId = :expectedCategoryId
+            AND startedOn = :expectedStartedOn AND endedOn IS :expectedEndedOn
+            AND endReason IS :expectedEndReason AND coverAssetId IS :expectedCoverAssetId
+            AND note IS :expectedNote AND createdAt = :expectedCreatedAt AND updatedAt = :expectedUpdatedAt
+    """)
+    suspend fun updateCoverIfUnchanged(
+        id: String, expectedName: String, expectedCategoryId: String, expectedStartedOn: LocalDate,
+        expectedEndedOn: LocalDate?, expectedEndReason: String?, expectedCoverAssetId: String?,
+        expectedNote: String?, expectedCreatedAt: Instant, expectedUpdatedAt: Instant,
+        coverAssetId: String?, updatedAt: Instant,
+    ): Int
 }

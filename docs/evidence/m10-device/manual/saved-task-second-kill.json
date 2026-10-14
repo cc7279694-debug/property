@@ -1,0 +1,40 @@
+{
+  "result": "PASS",
+  "attempt": "SECOND_DISTINCT_ACTUAL_ATTEMPT",
+  "taskId": 616,
+  "targetName": "M10 QA Subscription",
+  "oldProcess": {
+    "pid": 17203,
+    "startTimeTicks": "632442",
+    "cmdline": "com.cooper.lithic.debug"
+  },
+  "savedState": true,
+  "state": "STOPPED",
+  "savedStateBytes": 6700,
+  "preparedAsset": {
+    "id": "6ef0c664-dffd-417e-b9d8-7bbbe824f6e2",
+    "relativePath": "media/6ef0c664-dffd-417e-b9d8-7bbbe824f6e2.png",
+    "mime": "image/png",
+    "width": 900,
+    "height": 600,
+    "byteLength": 5645,
+    "sha256": "4a4a8b55db208e631f6ad2e27bb8521aa6542e26419dd87b23f2af4a65467cec"
+  },
+  "preparedActualSha256": "4a4a8b55db208e631f6ad2e27bb8521aa6542e26419dd87b23f2af4a65467cec",
+  "network": {
+    "wifiOn": 0,
+    "mobileData": 0,
+    "activeDefaultNetwork": "none"
+  },
+  "generation": "2d6c9460-a2f3-4976-ba04-781c416a0b52",
+  "observedUtc": "2026-10-14T06:04:32.412743+00:00",
+  "source": "Actual saved MainActivity task and private prepared bytes before own-PID SIGKILL; not force-stop, LMK or M12",
+  "activityDump": {
+    "path": "saved-task-second-before-kill.txt",
+    "bytes": 34283,
+    "sha256": "649ff3197514c4a2a4202c827ecb373cffdfabd1fe3dc6792f5faf51c5f5fb59"
+  },
+  "oldProcessGone": true,
+  "killSignal": "SIGKILL",
+  "killedAtUtc": "2026-10-14T06:04:33.553934+00:00"
+}

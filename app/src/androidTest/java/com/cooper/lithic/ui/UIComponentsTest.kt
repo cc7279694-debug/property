@@ -232,9 +232,11 @@ class UIComponentsTest {
         compose.onNodeWithTag("save").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp)
         saveFormScreenshot("form-keyboard.png")
         compose.onNodeWithTag("save").performClick()
+        compose.waitUntil(10_000) { saves.get() > 0 }
         assertEquals(1, saves.get())
         assertEquals("测试项目", savedName)
         compose.onNodeWithTag("form-back").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()
+        compose.waitUntil(10_000) { backs.get() > 0 }
         assertEquals(1, backs.get())
     }
 

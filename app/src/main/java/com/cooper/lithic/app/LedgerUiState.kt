@@ -1,6 +1,7 @@
 package com.cooper.lithic.app
 
 import com.cooper.lithic.core.time.BusinessClock
+import com.cooper.lithic.data.media.MediaRepository
 import com.cooper.lithic.data.repository.ProjectRepository
 import com.cooper.lithic.data.repository.SubscriptionRepository
 import java.time.ZoneId
@@ -16,6 +17,7 @@ sealed interface LedgerUiState {
         val subscriptionRepository: SubscriptionRepository,
         val subscriptionCount: Long,
         val readError: String? = null,
+        val mediaRepository: MediaRepository? = null,
     ) : LedgerUiState
     data object Failed : LedgerUiState
 }

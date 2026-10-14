@@ -1,8 +1,58 @@
 # 当前架构事实
 
-更新日期：2026-10-13。M00～M08 已独立验收冻结；M09 的订阅状态、同身份重开及付款历史纠错已接入现有架构，实际四任务549唯一方法PASS及最终APK/API36旅程已验证，当前READY_FOR_REVIEW、独立PENDING，不自授冻结。当前用户授权仅到 M09，M10 未授权。下文区分 M09 当前实现与 M08 及更早阶段的继承事实；实际执行结果和唯一当前状态见 [CURRENT_STATE](CURRENT_STATE.md)及[验收登记](ACCEPTANCE_MATRIX.md)。
+更新日期：2026-10-14。M00～M09 已依据用户转交的独立验收结论冻结，历史执行证据和NOTES保留。M10本地单封面、受控图片导入及资源生命周期READY_FOR_REVIEW，独立验收PENDING；下节描述当前实际结构，验证证据另登记，不以源码存在替代实际执行。M11及后续未授权。实际结果和唯一当前状态见 [CURRENT_STATE](CURRENT_STATE.md)及[验收登记](ACCEPTANCE_MATRIX.md)。
 
-## M09：订阅状态、同身份重开与付款历史修正
+## M10：私有单封面、受控导入与资源生命周期
+
+两类记录复用现有Room v2的`local_media_assets`七字段和`coverAssetId`，没有新增表、索引、迁移、图片依赖或成本公式。AppContainer仍是唯一存储owner；[ManagedGeneration](../app/src/main/java/com/cooper/lithic/data/backup/DataGenerationStore.kt)懒创建同代唯一LocalImageStore和活动准备租约集合，并绑定使用同一Room/coordinator的公共删除守卫。[LedgerUiStateHolder](../app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt)装配MediaRepository，页面不直接访问DAO、源URI或私有路径。
+
+```text
+项目/订阅详情 → CoverPicker / CoverViewModel / CoverDisplay
+                         │
+                    MediaRepository
+                         │
+          同一个 LocalWriteCoordinator
+             ├─ Room v2：资源元数据与两类引用
+             └─ LocalImageStore：当前generation/media
+                    ├─ <UUID>.jpg / <UUID>.png
+                    └─ .m10-imports/<UUID>/：受控恢复/清理凭据
+```
+
+### 来源读取、规范化与已存校验
+
+[CoverPicker](../app/src/main/java/com/cooper/lithic/feature/project/CoverPicker.kt)使用AndroidX `PickVisualMedia(ImageOnly)`单图契约；平台无Photo Picker时由契约选择系统文档选择器，不申请相机或广泛媒体/存储权限。取消回传不创建准备或业务写入；URI仅在当前导入中使用，不写Room或SavedState，也不修改相册原图。API26的实际运行仍须另验，不能把契约回退配置写成已实测。
+
+[AndroidImageCodec](../app/src/main/java/com/cooper/lithic/data/media/AndroidImageCodec.kt)只接受完整静态JPEG/PNG；检查实际容器、声明MIME、PNG CRC/终止/动画标记及JPEG帧/终止/多图片标记。源流上限64MiB，原像素以Long安全比较不超过40,000,000，先边界解码再采样分配Bitmap。输出最长边1600px、文件2,097,152字节上限；JPEG方向1～8变为真实像素方向，不复制EXIF/GPS；PNG保留alpha，有限尺寸阶梯，JPEG另有有限质量阶梯。无法安全编码时明确失败。
+
+准备结果保存实际MIME、解码宽高、字节数及最终文件SHA-256。[LocalImageStore](../app/src/main/java/com/cooper/lithic/data/media/LocalImageStore.kt)对已存资源检查固定UUID相对路径、受控格式、尺寸、字节数和SHA，并有界读取及解码验证，永不重新编码。[MediaRepository.openAsset](../app/src/main/java/com/cooper/lithic/data/media/MediaRepository.kt)在共享快照锁内完成元数据和文件读取，只将校验后的独立字节交给Compose；缺图、坏图与无封面分别呈现。
+
+### 文件先于引用、不可覆盖与结果重放
+
+[MediaFileProtocol](../app/src/main/java/com/cooper/lithic/data/media/MediaFileProtocol.kt)拒绝越界、反斜杠、穿越及符号链接，只接受当前代`media/<canonical UUID>.jpg|png`。准备目录的`owner.json`、`asset.json`及`owned-final.json`是操作归属和中断核对凭据，不是第二账本、永久用户草稿或备份真值。活动租约防止准备期间被清理；包括调度器取消结果回传在内的取消路径使用NonCancellable释放内存租约，保留可恢复私有字节。
+
+确认保存在同一协调写边界内先核对完整项目＋事件或订阅＋付款＋状态基线，再进入一次Room事务。资源尚未登记时，以`O_CREAT|O_EXCL|O_NOFOLLOW`及0600排他创建最终文件；记录当前generation/UUID及设备号、inode所有权凭据并同步后，才复制有界准备字节。最终文件、media目录和实际内容核验完成后，Room同事务登记资源并只CAS更新封面与updatedAt，末尾核对完整目标事实。已有同ID文件没有匹配凭据时保留并返回冲突，不能覆盖它。
+
+文件落实和Room引用不是跨存储原子事务。文件失败、数据库插入或CAS失败保护原引用与原图，允许留下有证明的孤儿。最终文件创建后、有效所有权凭据形成前的中断残留无法证明归属，因此保守视为unknown，不仅凭UUID文件名删除。凭据已经同步后的部分最终文件可在确认无引用后回收；不能把不完整文件登记为有效封面。
+
+重放先识别完整已存目标及精确资源元数据，不分配另一资源或再次编码。尚未登记的最终文件重试必须再次完成文件和父目录fsync、校验，不能只因文件存在就跳过持久化。完成后仅删除经核验的冗余准备图片并同步准备目录，保留归属/元数据/inode凭据及未知文件；之后恢复从最终文件读取。写入结果未收到时保留固定命令/资源ID及完整基线，COMMITTED只调用`verifyCommitted`读取核对，不再次写入。
+
+### 双引用清理、锁顺序与业务删除
+
+MediaRepository与生产owned store的公共删除入口共用受控清理函数，锁顺序为coordinator→文件mutex，GC内部不再次获取非重入coordinator。清理先确认活动租约及文件归属，再在Room事务内重复检查project和subscription两类引用、精确资源元数据CAS删除，最后物理删除并同步。任一记录仍引用则保护；未知文件、替换inode、无效凭据及其他代保留，不能先删除这些文件的元数据。物理删除失败可保留凭据重试，报错不撤销已经成功的业务保存。
+
+封面保存/移除以及已成功的项目删除之后分别触发安全清理；项目删除仍先完成原M07业务事务，媒体失败不会被伪装成业务删除失败。恢复活动准备身份之前不做无条件启动清理。读取、写入、关闭及未来M11快照仍使用同一个coordinator，快照中的封面不在读锁释放前被清理。
+
+### 页面、恢复与M11/M12交接
+
+[CoverViewModel](../app/src/main/java/com/cooper/lithic/feature/media/CoverViewModel.kt)只有一个活动SavedState信封，保存规范目标、来源、操作/资源UUID、完整基线、固定时间和提交阶段，不保存源URI或派生成本。准备、IN_FLIGHT和UNCONFIRMED与既有项目/订阅pending一起阻止离开；dirty统一提示弃改。Nav3接入两详情和current/history来源，隐藏的恢复任务可返回核对。准备损坏或陈旧基线须显式重新读取当前事实再选择；未知写入结果保持原命令重试，COMMITTED只读。封面读取失败明确显示错误，不能清除业务引用或伪装无封面。
+
+Q05为**USER_CONFIRMED**：首次导入规范化，后续备份恢复验证已存字节、SHA、尺寸、格式及上限，验证通过后原字节保留、不再次编码。读取已存封面只需要Room元数据和实际文件，不依赖M10导入凭据；因此M12不能复制旧generation/inode凭据并当作新代所有权。M12须在完成受控路径、资源、关系和内容验证后建立新generation的有效清理归属/inode凭据，并把该交接纳入恢复验证。此处仅记录后续契约，完整备份导出、恢复、代切换、故障回退及Q05-V01～V03仍NOT_RUN，Q05不整体CLOSED。
+
+本节不登记最终测试数量、设备旅程、APK哈希或Git成功；这些由当前验收及交付证据按实际执行补充。原130归档案例、16组跨模块边界、全部旧证据和Q03/Q04/Q06期限保留。真实手机、API26、OEM、Release、完整TalkBack及真实LMK未由源码配置验证，SavedState不承诺force-stop、断电或系统未保存任务后的恢复。
+
+## M09：订阅状态、同身份重开与付款历史修正（冻结继承事实）
+
+本节保留M09实施交付时的549项测试及APK/API36证据语境；M09现已独立验收冻结。其双业务导航守卫由M10扩展为项目、订阅及封面三者共同参与，媒体当前实现见上节。
 
 M09在既有单个 `:app`、原生Compose/Navigation3、Room schema v2七张业务表上演进。没有新表、索引、迁移、第二数据库owner或独立成本/状态引擎。Project与Subscription仍共用AppContainer拥有的ManagedGeneration、LocalWriteCoordinator及SettingsStore持久记录时区；SubscriptionRepository不拥有关闭/替换数据集的权力。M08显式Migration(1,2)和已知数据库结构预检继承，schema v1/v2导出保持基线。完整备份/恢复仍未实现。
 
@@ -53,7 +103,7 @@ NavKeys仅序列化规范UUID/目标事实UUID、动作及来源enum；current�
 
 ### 当前验证边界
 
-上述为已读源码的实际装配与行为边界，不能以实现存在替代模块测试通过。M09最终四任务549/549 PASS、源码/XML及构建输入一致；所有早期RED和全量失败证据保留。最终APK与专用API36旅程、小屏IME/旋转/手势/已保存任务恢复和设置收尾已留证，不由内部辅助审阅授予独立冻结。两项M09流程风险按用户确认及实际专项验证关闭；Q03～Q06 原状态与期限保持。M10 媒体、M11/M12 完整备份恢复及 Q06 切换回退、M13 汇总、M20 通知/Worker 未实施。真机、API26、OEM、Release 正式签名、完整 TalkBack、真实 LMK 未验证；SavedState 不承诺 force-stop、断电或系统未保存状态后的恢复。
+上述为已读源码的实际装配与行为边界，不能以实现存在替代模块测试通过。M09最终四任务549/549 PASS、源码/XML及构建输入一致；所有早期RED和全量失败证据保留。最终APK与专用API36旅程、小屏IME/旋转/手势/已保存任务恢复和设置收尾已留证，随后独立验收由用户转交，不由内部辅助审阅授予冻结。两项M09流程风险按用户确认及实际专项验证关闭；Q03～Q06 原期限保持，Q05当前用户确认及M10媒体实现见上节。M11/M12完整备份恢复及Q06切换回退、M13汇总、M20通知/Worker未实施。真机、API26、OEM、Release正式签名、完整TalkBack、真实LMK未验证；SavedState不承诺force-stop、断电或系统未保存状态后的恢复。
 
 ## M08：固定周期订阅与真实续费（冻结继承事实）
 
@@ -117,26 +167,26 @@ SavedStateHandle只存当前任务单活动表单的原始字符串、UUID、完
 
 ## 当前实际存在的工程结构
 
-单 Gradle `:app`、单业务 `MainActivity` 与 `LithicApplication`，Kotlin + Compose + Navigation 3。当前沿原[Activity](../app/src/main/java/com/cooper/lithic/app/MainActivity.kt)和[Nav3 宿主](../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt)接入长期项目闭环、生命周期/历史，以及 M08 订阅创建/真实续费和 M09 状态/重开/付款纠错历史。Debug 仍另含空 ComponentActivity 测试宿主；Release 仅按配置排除，尚未实际构建。
+单 Gradle `:app`、单业务 `MainActivity` 与 `LithicApplication`，Kotlin + Compose + Navigation 3。当前沿原[Activity](../app/src/main/java/com/cooper/lithic/app/MainActivity.kt)和[Nav3 宿主](../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt)接入长期项目闭环、生命周期/历史、M08订阅创建/真实续费、M09状态/重开/付款纠错及M10两类本地封面。Debug仍另含空ComponentActivity测试宿主；M10源URI provider和合成数据工具仅在androidTest；Release仅按配置排除测试宿主，尚未实际构建。
 
 ```text
 LithicApplication
   → AppContainer（唯一存储所有者）/ StorageInitializationState
     → MainActivity / LedgerUiStateHolder（仅UI生命周期）
-      → 两类真实 COUNT + SettingsStore记录时区 / 同代两个 Repository
+      → 两类真实 COUNT + SettingsStore记录时区 / 同代业务与媒体 Repository
         → LithicTheme / LithicApp：Initializing、Ready、Failed
-          → Ready才进入Navigation3 / 三主入口 + 两个轻量业务 ViewModel
+          → Ready才进入Navigation3 / 三主入口 + 两业务及单封面 ViewModel
 ```
 
-三个主入口为现在/回看/设置；首页只查真实项目和订阅数量，提供两类正式管理/新增入口；业务页面按需读取事实并展示各自冻结领域引擎结果。总成本汇总、分析、媒体处理、完整备份/恢复和提醒仍未开放。支持系统浅深、safeDrawing、IME避让和滚动；图标仍为临时工程图标。
+三个主入口为现在/回看/设置；首页只查真实项目和订阅数量，提供两类正式管理/新增入口；业务页面按需读取事实并展示各自冻结领域引擎结果，两详情提供单封面查看及管理。总成本汇总、分析、完整备份/恢复和提醒仍未开放。支持系统浅深、safeDrawing、IME避让和滚动；图标仍为临时工程图标。
 
-字体使用设备系统字体。AndroidX Emoji2的自动初始化默认会查询可下载字体提供者，因此按[官方说明](https://developer.android.com/develop/ui/views/text-and-emoji/emoji2)及实际1.4.0源码，在Manifest合并中仅移除EmojiCompatInitializer；不手动初始化下载配置。保留其他Startup初始化器，既有最终APK检查脚本包含Emoji初始化入口移除验证，M08 最终 APK 检查为历史证据；M09 最终产物须另行核验并登记当前执行结果。
+字体使用设备系统字体。AndroidX Emoji2的自动初始化默认会查询可下载字体提供者，因此按[官方说明](https://developer.android.com/develop/ui/views/text-and-emoji/emoji2)及实际1.4.0源码，在Manifest合并中仅移除EmojiCompatInitializer；不手动初始化下载配置。保留其他Startup初始化器，既有最终APK检查脚本包含Emoji初始化入口移除验证，M08/M09最终APK检查为历史证据；M10最终产物须另行核验并登记实际结果。
 
-正式 namespace/applicationId 为 `com.cooper.lithic`；Debug 为 `com.cooper.lithic.debug`，名称含 Debug，仅本地调试签名。没有生产签名配置。[Manifest](../app/src/main/AndroidManifest.xml)与历次最终 APK 的网络/存储/通知/精确闹钟权限检查见[当前验收登记](ACCEPTANCE_MATRIX.md)，M08 模块独立验收与历史最终 APK 执行证据保留，独立审查未核验 APK 字节；M09 最终产物不能用旧结果替代。既有检查的唯一 uses-permission 来自 AndroidX Core 的签名级 `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`，用于保护内部接收器；不提供网络或用户数据访问权限。ProfileInstallReceiver 上的 DUMP 是调用方须持有的权限，不是 App 申请 DUMP。
+正式namespace/applicationId为`com.cooper.lithic`；Debug为`com.cooper.lithic.debug`，名称含Debug，仅本地调试签名，没有生产签名配置。[Manifest](../app/src/main/AndroidManifest.xml)与历次最终APK的网络/存储/通知/精确闹钟权限检查见[当前验收登记](ACCEPTANCE_MATRIX.md)，M08/M09独立验收和历史APK执行证据保留，独立审查未核验APK字节；M10最终产物不能用旧结果替代。既有检查的唯一uses-permission来自AndroidX Core的签名级`DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`，用于保护内部接收器，不提供网络或用户数据访问权限。ProfileInstallReceiver上的DUMP是调用方须持有的权限，不是App申请DUMP。
 
-系统备份配置包括 `allowBackup=false`、[旧规则](../app/src/main/res/xml/backup_rules.xml)和[新规则](../app/src/main/res/xml/data_extraction_rules.xml)；旧规则以及 cloud-backup/device-transfer 均排除九类域。M01～M08的合并 Manifest 和最终 APK 编译资源历史证据保留，M09最终APK仍须另行核查；不据此宣称所有 OEM 的迁移行为均已验证。
+系统备份配置包括`allowBackup=false`、[旧规则](../app/src/main/res/xml/backup_rules.xml)和[新规则](../app/src/main/res/xml/data_extraction_rules.xml)；旧规则以及cloud-backup/device-transfer均排除九类域。M01～M09合并Manifest及最终APK编译资源历史证据保留，M10最终APK须另行核查；不据此宣称所有OEM迁移行为均已验证。
 
-M04存储所有者、generation与固定记录时区保持；M06/M07项目 Repository 和 M08 订阅 Repository 复用同一写协调器，领域引擎不改。当前 schema 为 v2，无完整备份格式版本；没有图片处理、通知、WorkManager 或完整 Backup/Restore。实际验证以[验收登记](ACCEPTANCE_MATRIX.md)为准。
+M04存储所有者、generation与固定记录时区保持；M06/M07项目Repository、M08订阅Repository及M10 MediaRepository复用同一写协调器，领域引擎不改。当前schema为v2，无完整备份格式版本；已接入受控本地图片处理，没有通知、WorkManager或完整Backup/Restore。实际验证以[验收登记](ACCEPTANCE_MATRIX.md)为准；历次Manifest/系统备份检查不能代替M10最终APK核对。
 
 ## M02：纯 Kotlin 领域计算
 
@@ -194,7 +244,7 @@ Compose → ViewModel → UseCase / Repository → Room / 领域引擎
 
 schema 当前 v2(M08)，v1(M04) 导出保留；后续计划 → v3(M16) → v4(M20)。backup format 计划 v1(M11) → v2(M16) → v3(M20)，当前尚无完整备份格式；schema 与内部 generation metadata format1 均不等于备份格式。
 
-后续结构在对应获准模块实施后更新。M00～M08 已独立冻结；M09 按[当前契约](planning/M09_CONTRACT.md)已接通并完成本轮实际验证，READY_FOR_REVIEW、独立PENDING，交付后停止等待独立验收；M10 及后续未授权。Q03～Q06 原状态/期限及 M09 两项流程风险见[问题清单](SPEC_ISSUES.md)。STOPPED 后重新启用和多期预付默认停止边界采用本轮用户明确确认的 A/B 规则，两项流程风险只依据本轮用户确认、实现和真实测试关闭。媒体处理/清理仍归 M10，完整导出与恢复仍归 M11/M12，总成本汇总仍归 M13。真机、API26、OEM、Release正式签名、完整 TalkBack 和真实 LMK 未验证；当前实际验证及独立验收状态以唯一 CURRENT_STATE 为准。
+后续结构在对应获准模块实施后更新。M00～M09已独立冻结；当前M10获准并按[契约](planning/M10_CONTRACT.md)接入媒体处理/清理，完成真实验证后仅交付READY_FOR_REVIEW、独立PENDING并停止，不自动进入M11。Q03/Q04/Q06期限、Q05 USER_CONFIRMED但跨M11/M12全流程NOT_RUN及M09两项风险实施来源见[问题清单](SPEC_ISSUES.md)。STOPPED重新启用和多期预付默认停止边界继承已确认A/B规则及原验证历史。完整导出/恢复仍归M11/M12，汇总归M13；真机、API26、OEM、Release正式签名、完整TalkBack及真实LMK未验证，当前实际结果与独立验收状态以唯一CURRENT_STATE为准。
 
 ## M04：继承的存储 owner 与私有初始数据集
 

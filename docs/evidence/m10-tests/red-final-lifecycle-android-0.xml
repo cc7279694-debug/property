@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.media.LocalImageStoreTest" tests="4" failures="4" errors="0" skipped="0" time="30.278" timestamp="2026-10-13T13:34:32" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="replay_syncs_owned_complete_final_before_allowing_reference_or_pruning_payload" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="1.926">
+    <failure>java.lang.AssertionError: Expected IO, got Success(value=LocalMediaAssetEntity(id=fd5b4a53-c73e-4a23-89a0-06c8cbf8ea73, relativePath=media/fd5b4a53-c73e-4a23-89a0-06c8cbf8ea73.png, mime=image/png, width=48, height=32, byteLength=156, sha256=01fc7b7e01517b0d14c25a3980894332fa310b3f9fe5238158d3887463f3f00f))
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.LocalImageStoreTest.failure(LocalImageStoreTest.kt:318)
+at com.cooper.lithic.data.media.LocalImageStoreTest.access$failure(LocalImageStoreTest.kt:35)
+at com.cooper.lithic.data.media.LocalImageStoreTest$replay_syncs_owned_complete_final_before_allowing_reference_or_pruning_payload$1.invokeSuspend(LocalImageStoreTest.kt:297)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.replay_syncs_owned_complete_final_before_allowing_reference_or_pruning_payload(LocalImageStoreTest.kt:284)
+</failure>
+  </testcase>
+  <testcase name="committed_cover_releases_only_redundant_prepared_payload_and_keeps_partial_payload" classname="com.cooper.lithic.data.media.LocalImageStoreTest" time="0.624">
+    <failure>java.lang.AssertionError: expected:&lt;[owner.json, asset.json, owned-final.json]&gt; but was:&lt;[owner.json, owned-final.json, asset.json, image.png]&gt;
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.failNotEquals(Assert.java:835)
+at org.junit.Assert.assertEquals(Assert.java:120)
+at org.junit.Assert.assertEquals(Assert.java:146)
+at com.cooper.lithic.data.media.LocalImageStoreTest$committed_cover_releases_only_redundant_prepared_payload_and_keeps_partial_payload$1.invokeSuspend(LocalImageStoreTest.kt:259)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.LocalImageStoreTest.committed_cover_releases_only_redundant_prepared_payload_and_keeps_partial_payload(LocalImageStoreTest.kt:254)
+</failure>
+  </testcase>
+  <testcase name="view_model_clear_after_prepared_result_is_published_releases_lease_without_deleting_recoverable_bytes" classname="com.cooper.lithic.feature.media.M10CoverViewModelTest" time="4.323">
+    <failure>java.lang.AssertionError: A cleared VM must release the lease even after successful prepare delivery has completed
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.feature.media.M10CoverViewModelTest$view_model_clear_after_prepared_result_is_published_releases_lease_without_deleting_recoverable_bytes$1.invokeSuspend(M10CoverViewModelTest.kt:372)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:98)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.media.M10CoverViewModelTest.view_model_clear_after_prepared_result_is_published_releases_lease_without_deleting_recoverable_bytes(M10CoverViewModelTest.kt:347)
+</failure>
+  </testcase>
+  <testcase name="project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result" classname="com.cooper.lithic.feature.media.M10CoverNavigationGuardTest" time="21.947">
+    <failure>androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 10000 ms
+at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest$project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result$1.invokeSuspend(M10CoverNavigationGuardTest.kt:191)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.media.M10CoverNavigationGuardTest.project_delete_commit_triggers_independent_safe_media_cleanup_without_changing_delete_result(M10CoverNavigationGuardTest.kt:165)
+</failure>
+  </testcase>
+</testsuite>

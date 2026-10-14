@@ -24,6 +24,8 @@ import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
+import com.cooper.lithic.data.media.MediaRepository
+import com.cooper.lithic.feature.media.CoverSection
 import java.math.BigDecimal
 
 @Composable
@@ -39,6 +41,8 @@ internal fun ProjectDetailScreen(
     onCorrectMoney: (String) -> Unit = {},
     onDelete: () -> Unit = {},
     backLabel: String = "返回项目列表",
+    mediaRepository: MediaRepository? = null,
+    onEditCover: () -> Unit = {},
 ) {
     Column(modifier.fillMaxSize().testTag("project-detail-screen")) {
     LazyColumn(Modifier.fillMaxSize().testTag("project-detail-content"),
@@ -104,6 +108,10 @@ internal fun ProjectDetailScreen(
                         Text(it, Modifier.testTag("project-detail-note"), style = MaterialTheme.typography.bodyLarge)
                     }
                 }
+            }
+            item {
+                CoverSection(detail.project.coverAssetId, mediaRepository, "project", onEditCover,
+                    enabled = !state.loading && state.error == null)
             }
             item {
                 OutlinedButton(onEdit, Modifier.padding(horizontal = LithicSpacing.medium)

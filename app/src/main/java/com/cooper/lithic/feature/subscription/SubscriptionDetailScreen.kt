@@ -24,6 +24,8 @@ import com.cooper.lithic.core.design.AmountText
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.data.local.SubscriptionRenewalEntity
+import com.cooper.lithic.data.media.MediaRepository
+import com.cooper.lithic.feature.media.CoverSection
 import com.cooper.lithic.domain.subscription.SubscriptionDisplayStatus
 import com.cooper.lithic.domain.subscription.SubscriptionOperationState
 import java.math.BigDecimal
@@ -46,6 +48,8 @@ internal fun SubscriptionDetailScreen(
     onCorrectRenewal: (String) -> Unit = {},
     onDeleteRenewal: (String) -> Unit = {},
     backLabel: String = "返回订阅列表",
+    mediaRepository: MediaRepository? = null,
+    onEditCover: () -> Unit = {},
 ) {
     Column(modifier.fillMaxSize().testTag("subscription-detail-screen")) {
         LazyColumn(Modifier.fillMaxSize().testTag("subscription-detail-content"),
@@ -164,6 +168,10 @@ internal fun SubscriptionDetailScreen(
                         Text("实际已过去的付费有效天数：${detail.cost.elapsedPaidDays}天",
                             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
+                }
+                item {
+                    CoverSection(detail.subscription.coverAssetId, mediaRepository, "subscription", onEditCover,
+                        enabled = !state.loading && state.error == null)
                 }
                 if (detail.cost.displayStatus != SubscriptionDisplayStatus.STOPPED) item {
                     OutlinedButton(onRenewal, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)

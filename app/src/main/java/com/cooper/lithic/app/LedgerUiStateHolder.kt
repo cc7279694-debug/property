@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.core.time.ZonedBusinessClock
+import com.cooper.lithic.data.media.MediaRepository
 import com.cooper.lithic.data.repository.ProjectRepository
 import com.cooper.lithic.data.repository.SubscriptionRepository
 import java.time.Clock
@@ -40,8 +41,10 @@ internal class LedgerUiStateHolder(
                                 val clock = clockFactory(zone)
                                 val repository = ProjectRepository(generation.database, generation.coordinator, clock)
                                 val subscriptions = SubscriptionRepository(generation.database, generation.coordinator, clock)
+                                val media = MediaRepository(generation.database, generation.coordinator,
+                                    generation.images, clock, generation.mediaResolver)
                                 LedgerUiState.Ready(repository.loadSummary().projectCount, zone, repository, clock,
-                                    subscriptions, subscriptions.loadSubscriptionCount())
+                                    subscriptions, subscriptions.loadSubscriptionCount(), mediaRepository = media)
                             }
                             mutableState.value = ready
                             merge(ready.repository.changes, ready.subscriptionRepository.changes).collectLatest { refresh(ready) }
