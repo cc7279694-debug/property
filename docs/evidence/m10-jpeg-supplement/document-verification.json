@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "meaning": "Evidence consistency only; three product assertions remain FAIL",
+  "sameInputOriginalBytes": 152,
+  "sourceZipEntriesVerified": 304,
+  "historicalMethods": 652,
+  "historicalSourceRawBytesUnchanged": true,
+  "currentMethods": 657,
+  "newMethods": 5,
+  "newSourceXmlSet": "EXACT MATCH",
+  "newActualResults": [
+    {
+      "class": "com.cooper.lithic.data.media.M10JpegIntegrityTest",
+      "method": "valid_control_jpeg_imports_successfully",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.M10JpegIntegrityTest",
+      "method": "android_decoders_report_locked_fixture_outcomes",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.M10JpegIntegrityTest",
+      "method": "jpeg_entropy_truncated_with_eoi_is_rejected",
+      "result": "FAIL"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest",
+      "method": "project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+      "result": "FAIL"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest",
+      "method": "subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+      "result": "FAIL"
+    }
+  ],
+  "fullRegressionUnderNewInputs": "NOT_RUN",
+  "productionChanged": false,
+  "formalRegistryChanged": false
+}

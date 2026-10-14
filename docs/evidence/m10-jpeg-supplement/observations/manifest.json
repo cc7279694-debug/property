@@ -1,0 +1,169 @@
+[
+  {
+    "file": "valid-control-2bfe5dac-f3f9-47ba-97ec-33b915991618.json",
+    "sha256": "8e8e58acc09b4fe8744233e8afb94e6a58ed7147080ebddd69179f63bd9c6801",
+    "bytes": 245,
+    "actual": {
+      "result": "SUCCESS",
+      "assetId": "f60eb626-72c8-4339-9839-99a0b9accb10",
+      "mime": "image/jpeg",
+      "width": 256,
+      "height": 256,
+      "byteLength": 51882,
+      "storedSha256": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a"
+    }
+  },
+  {
+    "file": "decoder-layers-d1f90e6d-3cb8-42f3-b70b-64e5e932080c.json",
+    "sha256": "30524ab0442f32bfed9ee81dbd09461a5158b91c11bc8b3859eaf01db4dc5dd5",
+    "bytes": 705,
+    "actual": {
+      "fixture": "complete.jpg",
+      "inputBytes": 59334,
+      "inputSha256": "2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907",
+      "api": 36,
+      "inspect": {
+        "result": "SUCCESS",
+        "mime": "image/jpeg",
+        "width": 256,
+        "height": 256
+      },
+      "bitmapBounds": {
+        "width": 256,
+        "height": 256,
+        "mime": "image/jpeg"
+      },
+      "bitmapFactory": {
+        "result": "SUCCESS",
+        "width": 256,
+        "height": 256,
+        "bottom64RowsAllGray128Count": 0
+      },
+      "normalize": {
+        "result": "SUCCESS",
+        "width": 256,
+        "height": 256
+      },
+      "imageDecoder": {
+        "result": "SUCCESS",
+        "width": 256,
+        "height": 256,
+        "bottom64RowsAllGray128Count": 0,
+        "partialErrors": []
+      }
+    }
+  },
+  {
+    "file": "decoder-layers-1be2e0c3-2426-45cb-862a-ad3b9134c4ff.json",
+    "sha256": "235f58163894e4202e26d997a91bdd9332302019aef99d097c2e5ea75918cd16",
+    "bytes": 723,
+    "actual": {
+      "fixture": "entropy_cut_eoi_retained.jpg",
+      "inputBytes": 20194,
+      "inputSha256": "f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a",
+      "api": 36,
+      "inspect": {
+        "result": "SUCCESS",
+        "mime": "image/jpeg",
+        "width": 256,
+        "height": 256
+      },
+      "bitmapBounds": {
+        "width": 256,
+        "height": 256,
+        "mime": "image/jpeg"
+      },
+      "bitmapFactory": {
+        "result": "SUCCESS",
+        "width": 256,
+        "height": 256,
+        "bottom64RowsAllGray128Count": 64
+      },
+      "normalize": {
+        "result": "SUCCESS",
+        "width": 256,
+        "height": 256
+      },
+      "imageDecoder": {
+        "result": "SUCCESS",
+        "width": 256,
+        "height": 256,
+        "bottom64RowsAllGray128Count": 64,
+        "partialErrors": []
+      }
+    }
+  },
+  {
+    "file": "entropy-cut-import-18c2341d-7bfc-4e1e-96bf-96f3f2b0dbd2.json",
+    "sha256": "e73d93912254fd820982dd9e098625e59aee52fa54d8476abc314ad7ef6bdc73",
+    "bytes": 276,
+    "actual": {
+      "result": "SUCCESS",
+      "assetId": "6a74045e-bb25-499a-8408-50d0d1f71508",
+      "mime": "image/jpeg",
+      "width": 256,
+      "height": 256,
+      "byteLength": 18820,
+      "storedSha256": "e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570",
+      "activePreparedLease": true
+    }
+  },
+  {
+    "file": "old-cover-project-a3b5858e-d7b7-41ea-bbf3-c4383ad9e0c0.json",
+    "sha256": "9fd0486d30f0bd7be07744bad917f224a2ca93cf4b705cf6e5e046ba864399b1",
+    "bytes": 898,
+    "actual": {
+      "targetType": "PROJECT",
+      "source": "entropy_cut_eoi_retained.jpg",
+      "declaredMime": "image/jpeg",
+      "prepareWronglyAccepted": true,
+      "prepareResult": "SUCCESS",
+      "oldFactsIntact": true,
+      "mediaTableIntact": true,
+      "oldCoverAssetId": "6b79035a-8e46-423f-b753-bc7e5d4cdaa4",
+      "oldCoverSha256Before": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+      "oldCoverSha256After": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+      "privateFinalFilesIntact": true,
+      "replacementAssetId": "74955f58-72e1-4888-ba2b-4a6ece0dc432",
+      "newFormalMetadataExists": false,
+      "replacementPreparedLeaseActive": true,
+      "acceptedMetadata": {
+        "id": "74955f58-72e1-4888-ba2b-4a6ece0dc432",
+        "mime": "image/jpeg",
+        "width": 256,
+        "height": 256,
+        "byteLength": 18820,
+        "sha256": "e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570"
+      }
+    }
+  },
+  {
+    "file": "old-cover-subscription-e447b7fb-5a09-4ddc-9346-487b9307c2ed.json",
+    "sha256": "7eff309b4cc732998af3192d393f2b20b9886c4335cb99ff359ff86e29595484",
+    "bytes": 903,
+    "actual": {
+      "targetType": "SUBSCRIPTION",
+      "source": "entropy_cut_eoi_retained.jpg",
+      "declaredMime": "image/jpeg",
+      "prepareWronglyAccepted": true,
+      "prepareResult": "SUCCESS",
+      "oldFactsIntact": true,
+      "mediaTableIntact": true,
+      "oldCoverAssetId": "8109d83e-1066-47f6-8263-3fda408ac332",
+      "oldCoverSha256Before": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+      "oldCoverSha256After": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+      "privateFinalFilesIntact": true,
+      "replacementAssetId": "48ddd5d2-26a1-4491-ae09-bc04bc3f370b",
+      "newFormalMetadataExists": false,
+      "replacementPreparedLeaseActive": true,
+      "acceptedMetadata": {
+        "id": "48ddd5d2-26a1-4491-ae09-bc04bc3f370b",
+        "mime": "image/jpeg",
+        "width": 256,
+        "height": 256,
+        "byteLength": 18820,
+        "sha256": "e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570"
+      }
+    }
+  }
+]

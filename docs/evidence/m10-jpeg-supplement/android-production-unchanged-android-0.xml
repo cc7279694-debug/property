@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.data.media.M10JpegIntegrityTest" tests="5" failures="3" errors="0" skipped="0" time="14.06" timestamp="2026-10-14T14:03:44" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="valid_control_jpeg_imports_successfully" classname="com.cooper.lithic.data.media.M10JpegIntegrityTest" time="3.086" />
+  <testcase name="android_decoders_report_locked_fixture_outcomes" classname="com.cooper.lithic.data.media.M10JpegIntegrityTest" time="1.882" />
+  <testcase name="jpeg_entropy_truncated_with_eoi_is_rejected" classname="com.cooper.lithic.data.media.M10JpegIntegrityTest" time="0.414">
+    <failure>java.lang.AssertionError: EOI-retained entropy-cut JPEG must be rejected, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=6a74045e-bb25-499a-8408-50d0d1f71508, relativePath=media/6a74045e-bb25-499a-8408-50d0d1f71508.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.M10JpegIntegrityTest$jpeg_entropy_truncated_with_eoi_is_rejected$1.invokeSuspend(M10JpegIntegrityTest.kt:65)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.M10JpegIntegrityTest.jpeg_entropy_truncated_with_eoi_is_rejected(M10JpegIntegrityTest.kt:60)
+</failure>
+  </testcase>
+  <testcase name="project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved" classname="com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest" time="4.09">
+    <failure>java.lang.AssertionError: Expected INVALID_IMAGE from the actual JPEG source, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=74955f58-72e1-4888-ba2b-4a6ece0dc432, relativePath=media/74955f58-72e1-4888-ba2b-4a6ece0dc432.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.assertBrokenSelectionPreservesOldCover(M10JpegOldCoverProtectionTest.kt:152)
+at com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.access$assertBrokenSelectionPreservesOldCover(M10JpegOldCoverProtectionTest.kt:38)
+at com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest$assertBrokenSelectionPreservesOldCover$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved(M10JpegOldCoverProtectionTest.kt:68)
+</failure>
+  </testcase>
+  <testcase name="subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved" classname="com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest" time="4.045">
+    <failure>java.lang.AssertionError: Expected INVALID_IMAGE from the actual JPEG source, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=48ddd5d2-26a1-4491-ae09-bc04bc3f370b, relativePath=media/48ddd5d2-26a1-4491-ae09-bc04bc3f370b.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.assertBrokenSelectionPreservesOldCover(M10JpegOldCoverProtectionTest.kt:152)
+at com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.access$assertBrokenSelectionPreservesOldCover(M10JpegOldCoverProtectionTest.kt:38)
+at com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest$assertBrokenSelectionPreservesOldCover$1.invokeSuspend(Unknown Source:15)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved(M10JpegOldCoverProtectionTest.kt:73)
+</failure>
+  </testcase>
+</testsuite>

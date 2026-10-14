@@ -2,7 +2,7 @@
 
 纯本地 Android 长期成本记录 App，观察具体项目的陪伴时间、真实投入和日均成本。
 
-M00～M09已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES。当前 **M10 — READY_FOR_REVIEW，独立验收PENDING**，长期项目与订阅的本地单封面、受控图片导入及安全资源生命周期已完成本轮交付；Room v2、冻结领域引擎、唯一owner和工具链继承。652项相同输入的分开执行覆盖、真实设备路径与最终APK见[本轮报告](docs/evidence/M10-verification.md)及[当前状态](docs/CURRENT_STATE.md)，不自行授予冻结。M11及后续未授权。
+M00～M09已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES。当前 **M10 — PENDING，JPEG补充验证确认缺损输入被错误接受，尚未修复**。新增5项API36测试为2 PASS /3 FAIL；实际ImageDecoder也未拒绝该输入，按用户补充指令第5节停在新增解码能力的方案决策点。见[补充报告](docs/evidence/M10-JPEG-supplement-verification.md)及[当前状态](docs/CURRENT_STATE.md)。[原M10报告](docs/evidence/M10-verification.md)的652项与设备证据保留历史效力，不代表新输入完整回归通过。M11及后续未授权。
 
 ## 工程入口与本地构建
 
@@ -28,6 +28,7 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 | M08 历史契约、验证与全部文件 | [契约](docs/planning/M08_CONTRACT.md) / [报告](docs/evidence/M08-verification.md) / [JSON](docs/evidence/M08-verification.json) / [文件](docs/evidence/M08-files.md) / [checkpoint](docs/checkpoints/2026-10-13-M08.md) |
 | M09 历史契约、验证与全部文件 | [契约](docs/planning/M09_CONTRACT.md) / [报告](docs/evidence/M09-verification.md) / [JSON](docs/evidence/M09-verification.json) / [文件](docs/evidence/M09-files.md) / [checkpoint](docs/checkpoints/2026-10-13-M09.md) |
 | M10 当前契约、验证与全部文件 | [契约](docs/planning/M10_CONTRACT.md) / [报告](docs/evidence/M10-verification.md) / [JSON](docs/evidence/M10-verification.json) / [文件](docs/evidence/M10-files.md) / [checkpoint](docs/checkpoints/2026-10-13-M10.md) |
+| M10 JPEG 补充验证与待决修复 | [补充报告](docs/evidence/M10-JPEG-supplement-verification.md) / [证据](docs/evidence/M10-JPEG-supplement-verification.json) / [checkpoint](docs/checkpoints/2026-10-14-M10-JPEG-supplement.md) |
 | 当前进度与阻塞 | [CURRENT_STATE.md](docs/CURRENT_STATE.md) |
 | M00～M23 顺序、边界与阶段门槛 | [ROADMAP.md](docs/ROADMAP.md) |
 | 已继承的决定与变更记录 | [DECISIONS.md](docs/DECISIONS.md) |
