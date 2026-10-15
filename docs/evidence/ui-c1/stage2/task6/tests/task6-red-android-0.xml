@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.ui.UIC1SecondaryPagesTest" tests="7" failures="7" errors="0" skipped="0" time="17.613" timestamp="2026-10-15T14:22:54" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="settings_exposes_installed_version_and_persisted_zone_as_read_only_information" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="3.702">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'installed-version')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.ui.UIC1SecondaryPagesTest.settings_exposes_installed_version_and_persisted_zone_as_read_only_information(UIC1SecondaryPagesTest.kt:52)
+</failure>
+  </testcase>
+  <testcase name="settings_keeps_backup_warning_prominent_and_has_no_unimplemented_reminder_entry" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="2.117">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'development-warning' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.ui.UIC1SecondaryPagesTest.settings_keeps_backup_warning_prominent_and_has_no_unimplemented_reminder_entry(UIC1SecondaryPagesTest.kt:60)
+</failure>
+  </testcase>
+  <testcase name="review_only_offers_real_history_routes_without_guessing_ledger_absence" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="1.541">
+    <failure>java.lang.AssertionError: Failed: assertDoesNotExist.
+Reason: Did not expect any node but found '1' node that satisfies: (Text + InputText + EditableText contains '暂无记录' (ignoreCase: false))
+Node found:
+Node #36 at (l=42.0, t=211.0, r=210.0, b=272.0)px
+Text = '[暂无记录]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 13 siblings
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.assertDoesNotExist(SemanticsNodeInteraction.kt:101)
+at com.cooper.lithic.ui.UIC1SecondaryPagesTest.review_only_offers_real_history_routes_without_guessing_ledger_absence(UIC1SecondaryPagesTest.kt:35)
+</failure>
+  </testcase>
+  <testcase name="prepaid_future_period_is_compared_with_elapsed_days_without_replacing_current_plan" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="2.097">
+    <failure>java.lang.AssertionError: No node found that matches (Text + InputText + EditableText contains '实际已过去的付费有效天数：25天' (ignoreCase: false)) &amp;&amp; (hasAnyAncestorThat(TestTag = 'subscription-detail-cost-summary')) in scrollable container
+Semantics of the node:
+Node #62 at (l=0.0, t=0.0, r=1080.0, b=1920.0)px, Tag: 'subscription-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo&#64;c917b0'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=3548.0, maxValue=3548.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 4 children
+Selector used: (TestTag = 'subscription-detail-content')
+
+at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+at com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest.prepaid_future_period_is_compared_with_elapsed_days_without_replacing_current_plan(UIC1SubscriptionVisualTest.kt:88)
+</failure>
+  </testcase>
+  <testcase name="stop_record_action_keeps_provider_cancellation_disclaimer_visible_before_callback" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="1.744">
+    <failure>java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '停止本App记录不等于替用户向服务商取消订阅。' (ignoreCase: false) is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest.stop_record_action_keeps_provider_cancellation_disclaimer_visible_before_callback(UIC1SubscriptionVisualTest.kt:109)
+</failure>
+  </testcase>
+  <testcase name="compact_management_header_keeps_first_service_visible_and_accessible_actions_working" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="2.868">
+    <failure>java.lang.AssertionError: The first service must remain within the first 200dp, including its status group
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest.compact_management_header_keeps_first_service_visible_and_accessible_actions_working(UIC1SubscriptionVisualTest.kt:45)
+</failure>
+  </testcase>
+  <testcase name="referenced_unreadable_cover_is_distinct_from_no_cover_and_keeps_original_identity_clickable" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="2.326">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'subscription-61c0a94a-5f15-44ba-9518-7e36687b3094-cover-error' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest.referenced_unreadable_cover_is_distinct_from_no_cover_and_keeps_original_identity_clickable(UIC1SubscriptionVisualTest.kt:68)
+</failure>
+  </testcase>
+</testsuite>

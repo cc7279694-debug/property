@@ -1,0 +1,618 @@
+{
+  "scope": "Latest targeted outcome per identity across explicitly different inputs, NOT a single full regression",
+  "total": 68,
+  "cases": [
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1SecondaryPagesTest",
+      "name": "settings_exposes_installed_version_and_persisted_zone_as_read_only_information",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-recheck-final"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1SecondaryPagesTest",
+      "name": "settings_keeps_backup_warning_prominent_and_has_no_unimplemented_reminder_entry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-recheck-final"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1SecondaryPagesTest",
+      "name": "review_only_offers_real_history_routes_without_guessing_ledger_absence",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-recheck-final"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "prepaid_future_period_is_compared_with_elapsed_days_without_replacing_current_plan",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-duration-refinement"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "stop_record_action_keeps_provider_cancellation_disclaimer_visible_before_callback",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-duration-refinement"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "compact_management_header_keeps_first_service_visible_and_accessible_actions_working",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-duration-refinement"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "referenced_unreadable_cover_is_distinct_from_no_cover_and_keeps_original_identity_clickable",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-duration-refinement"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "detail_read_failure_and_missing_are_distinct",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "conflict_requires_explicit_read_instead_of_new_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "create_inputs_are_controlled_and_subscription_category_only",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "in_flight_form_locks_inputs_and_duplicate_confirm",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "verified_missing_target_locks_input_and_offers_safe_return_without_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "failed_form_retains_invalid_raw_and_all_four_dates",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "unconfirmed_form_only_replays_same_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "list_loading_and_read_failure_do_not_claim_empty",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "genuine_empty_list_exposes_create_without_fake_metrics",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "narrow_large_font_form_actions_and_errors_remain_reachable",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "renewal_requires_explicit_payment_action_and_keeps_reference_readonly",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionScreensTest",
+      "name": "committed_form_offers_read_retry_without_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "paused_detail_offers_resume_without_hiding_paid_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "current_management_has_independent_active_paused_expired_groups",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "paused_expired_coverage_keeps_paused_status_and_explains_expiry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-recheck-final"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "stopped_detail_exposes_same_identity_reopen_and_hides_ordinary_renewal",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "future_stop_shows_fixed_date_and_explicit_correct_cancel_entries",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "payment_history_has_per_fact_correction_and_delete_error_entries",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest",
+      "name": "active_detail_exposes_pause_and_stop_record_operations",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "expiry_needs_no_worker",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-recheck-final"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "cancel_renewal_keeps_paid_access",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "future_prepaid_has_own_label",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "stop_reason_does_not_cancel_vendor",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "pause_is_not_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "payment_history_correction_and_delete_require_visible_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest",
+      "name": "resume_without_new_payment",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "ended_detail_without_late_money_does_not_claim_post_end_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "end_validation_preserves_raw_dates_amount_reason_and_visible_errors",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "end_and_correction_forms_are_reachable_at_360dp_with_200_percent_font",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "missing_detail_never_presents_stale_costs_or_mutation_actions",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "end_pending_submission_locks_inputs_and_committed_refresh_only_reads",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "correction_initial_read_and_conflict_offer_reload_without_resubmitting",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "ended_detail_with_only_future_late_money_does_not_claim_an_observed_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "correcting_end_without_settlement_never_offers_creating_recovery",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "correcting_linked_settlement_keeps_the_existing_event_and_has_no_toggle_or_delete",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "delete_confirmation_states_are_explicit_and_do_not_allow_duplicate_or_unknown_cancel",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "detail_routes_regular_and_initial_corrections_separately_from_end_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "ended_detail_with_real_observed_late_money_explains_its_included_settlement",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "history_preserves_visible_rows_when_read_fails_and_exposes_database_continuation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest",
+      "name": "correction_keeps_direction_and_role_read_only_and_explains_real_refund",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "legacy_saved_skeleton_restores_to_the_home_route",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "empty_screen_has_no_fake_metrics",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "secondary_toolbar_back_returns_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "future_recorded_end_date_does_not_pretend_the_project_has_already_ended",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "secondary_system_back_returns_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "large_text_has_no_blocked_action",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "invalid_restored_stacks_and_primary_routes_have_safe_parents",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "settings_reads_the_persisted_zone_without_fake_controls",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "only_three_primary_destinations",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "primary_selection_matches_its_visible_page",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "back_stack_restores",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "primary_system_back_returns_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "real_project_is_not_misrepresented_as_an_empty_ledger",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "repeated_primary_selection_does_not_build_history",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.NavigationShellTest",
+      "name": "first_launch_starts_at_home",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-green-after-restart"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverEntryScreensTest",
+      "name": "subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-recheck-final"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.media.M10CoverEntryScreensTest",
+      "name": "project_without_cover_exposes_safe_placeholder_and_add_cover_entry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-recheck-final"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1SecondaryPagesTest",
+      "name": "project_history_loading_or_read_failure_never_claims_a_successful_empty_archive",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-recheck-final"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "detail_distinguishes_loading_error_missing_and_stale_facts_with_mutations_disabled",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-duration-refinement"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "current_and_stopped_lists_distinguish_loading_failed_empty_and_stale_original_rows",
+      "result": "PASS",
+      "failureType": null,
+      "message": null,
+      "phase": "task6-duration-refinement"
+    }
+  ]
+}

@@ -4,6 +4,12 @@
 
 ## Current Stage
 
+- **UI-C1阶段2 — IN_PROGRESS**：用户实际看完f000639精修27图确认视觉；转交ChatGPT独立视觉复审PASS WITH NOTES，并明确授权Task6～8。本轮开始核对的基线/本地/远端均`f000639c62fce71be0a9240425c8e27b1a5ed974`，当时工作树干净；原M10/main未变。锁定阶段1布局与业务/存储/媒体/守卫/身份/依赖，先Task6再Task7再Task8。完整[用户指令](design/ui-c1/source-stage2/USER_INSTRUCTIONS.md)、[当前计划](planning/UI_C1_PLAN.md)。阶段1下方数字均为历史，不代表本轮已重新执行；全量回归/最终16图尚NOT_RUN。M10三FAIL/旧表单偶发超时/Q03～Q06及平台未执行边界保留，不自行接受/冻结。
+
+- **Task6内部验证完成，待本次提交后启动Task7**：7项真实RED；首轮GREEN设备阻塞0方法；重启后65项63PASS/2状态文字语义FAIL；两行修正后的14项全部PASS，后续仅文字字号调整的6项及Lint/assemble全部PASS（0错误/23原警告）。原失败保留，不拼成一次全绿；原701测试文件不改，新增10，当前源码711方法，完整Task8仍NOT_RUN。12张配对检查图明确逐图来源与两版APK，见[Task6报告](evidence/UI-C1-task6-verification.md)。M10三JPEG、旧表单超时及所有未执行边界保留。
+
+以下为阶段1交付历史及继承边界；当前执行授权以上行为准。
+
 - **UI-C1阶段1视觉精修 — VISUAL_REVIEW_REQUIRED（视觉精修复审）**：从`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`按用户转交的CHANGES_REQUESTED只精修六项。真实双计数/全空唯一新增/紧凑列表/封面与核心指标比例/不覆盖新增/短返回及可读菜单已实施。27张新原图分清MainActivity19、合成隔离6、空Room2，见[新图册](evidence/ui-c1/refinement/GALLERY.md)、[精修报告](evidence/UI-C1-refinement-verification.md)、[新checkpoint](checkpoints/2026-10-15-UI-C1-refinement.md)。待用户看图，不授予ACCEPTED/FROZEN，不进入Task6～8/M11。
 - 最终181登记输入：86 JVM全PASS；161 Android为157 PASS/4 FAIL（旧三JPEG＋旧合成表单点击超时），同输入未改方法单项复跑1 PASS，原4失败保留；两命令247唯一身份较晚结果244 PASS/3 FAIL，**不是一次全绿**。旧表单偶发时序根因未完全锁定；原692身份保留，新增9，全部44个UI新增方法在主运行PASS。Task8全量701回归NOT_RUN。独立Lint/assemble退出0，0 errors/23 warnings。真实系统360dp/200%菜单专项1 PASS；完整平台/辅助技术未跑范围不变。
 - 最终Debug APK本地`build/ui-c1-refinement/lithic-ui-c1-refinement-debug.apk`，13,273,760 bytes，SHA256 `05680d06032900531977d216e7719b2b3467649c817035568f2d32dc9c2d8ebd`，安装字节相同；身份/签名/权限/依赖/备份配置保持。原七表所有字段、两封面字节、generation/ready/settings和AVD描述配置精确不变，12项guest设置已恢复；未清库/重建AVD。App/测试APK、原DB与私有图片不推送。完整输入、命令、失败/排除原图与来源见新报告。

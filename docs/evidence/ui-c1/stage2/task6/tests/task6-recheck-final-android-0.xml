@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.ui.UIC1SecondaryPagesTest" tests="14" failures="0" errors="0" skipped="0" time="64.727" timestamp="2026-10-15T14:58:42" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="settings_exposes_installed_version_and_persisted_zone_as_read_only_information" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="8.576" />
+  <testcase name="project_history_loading_or_read_failure_never_claims_a_successful_empty_archive" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="5.273" />
+  <testcase name="settings_keeps_backup_warning_prominent_and_has_no_unimplemented_reminder_entry" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="2.453" />
+  <testcase name="review_only_offers_real_history_routes_without_guessing_ledger_absence" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="5.093" />
+  <testcase name="prepaid_future_period_is_compared_with_elapsed_days_without_replacing_current_plan" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="4.313" />
+  <testcase name="detail_distinguishes_loading_error_missing_and_stale_facts_with_mutations_disabled" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="4.775" />
+  <testcase name="stop_record_action_keeps_provider_cancellation_disclaimer_visible_before_callback" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="3.606" />
+  <testcase name="current_and_stopped_lists_distinguish_loading_failed_empty_and_stale_original_rows" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="6.759" />
+  <testcase name="compact_management_header_keeps_first_service_visible_and_accessible_actions_working" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="3.205" />
+  <testcase name="referenced_unreadable_cover_is_distinct_from_no_cover_and_keeps_original_identity_clickable" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="3.543" />
+  <testcase name="paused_expired_coverage_keeps_paused_status_and_explains_expiry" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="3.608" />
+  <testcase name="expiry_needs_no_worker" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="5.869" />
+  <testcase name="subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="2.471" />
+  <testcase name="project_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="2.81" />
+</testsuite>

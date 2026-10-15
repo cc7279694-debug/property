@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.ui.UIC1SecondaryPagesTest" tests="65" failures="2" errors="0" skipped="0" time="394.42" timestamp="2026-10-15T14:52:14" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="settings_exposes_installed_version_and_persisted_zone_as_read_only_information" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="5.622" />
+  <testcase name="settings_keeps_backup_warning_prominent_and_has_no_unimplemented_reminder_entry" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="3.233" />
+  <testcase name="review_only_offers_real_history_routes_without_guessing_ledger_absence" classname="com.cooper.lithic.ui.UIC1SecondaryPagesTest" time="6.295" />
+  <testcase name="prepaid_future_period_is_compared_with_elapsed_days_without_replacing_current_plan" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="3.712" />
+  <testcase name="stop_record_action_keeps_provider_cancellation_disclaimer_visible_before_callback" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="3.582" />
+  <testcase name="compact_management_header_keeps_first_service_visible_and_accessible_actions_working" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="3.538" />
+  <testcase name="referenced_unreadable_cover_is_distinct_from_no_cover_and_keeps_original_identity_clickable" classname="com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest" time="2.865" />
+  <testcase name="detail_read_failure_and_missing_are_distinct" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.504" />
+  <testcase name="conflict_requires_explicit_read_instead_of_new_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.875" />
+  <testcase name="create_inputs_are_controlled_and_subscription_category_only" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="13.723" />
+  <testcase name="in_flight_form_locks_inputs_and_duplicate_confirm" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.994" />
+  <testcase name="verified_missing_target_locks_input_and_offers_safe_return_without_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.461" />
+  <testcase name="failed_form_retains_invalid_raw_and_all_four_dates" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.79" />
+  <testcase name="unconfirmed_form_only_replays_same_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.75" />
+  <testcase name="list_loading_and_read_failure_do_not_claim_empty" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="3.056" />
+  <testcase name="genuine_empty_list_exposes_create_without_fake_metrics" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="2.508" />
+  <testcase name="narrow_large_font_form_actions_and_errors_remain_reachable" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="4.648" />
+  <testcase name="renewal_requires_explicit_payment_action_and_keeps_reference_readonly" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="5.971" />
+  <testcase name="committed_form_offers_read_retry_without_payment" classname="com.cooper.lithic.feature.subscription.SubscriptionScreensTest" time="4.954" />
+  <testcase name="paused_detail_offers_resume_without_hiding_paid_history" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="4.082" />
+  <testcase name="current_management_has_independent_active_paused_expired_groups" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="3.472" />
+  <testcase name="paused_expired_coverage_keeps_paused_status_and_explains_expiry" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="4.233">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '已暂停' (ignoreCase: false))
+Semantics of the node:
+Node #1733 at (l=846.0, t=221.0, r=996.0, b=295.0)px, Tag: 'subscription-detail-status'
+IsContainer = 'true'
+Has 1 child, 9 siblings
+Selector used: (TestTag = 'subscription-detail-status')
+
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+at com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest.paused_expired_coverage_keeps_paused_status_and_explains_expiry(M09SubscriptionScreensTest.kt:46)
+</failure>
+  </testcase>
+  <testcase name="stopped_detail_exposes_same_identity_reopen_and_hides_ordinary_renewal" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="3.778" />
+  <testcase name="future_stop_shows_fixed_date_and_explicit_correct_cancel_entries" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="5.266" />
+  <testcase name="payment_history_has_per_fact_correction_and_delete_error_entries" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="5.25" />
+  <testcase name="active_detail_exposes_pause_and_stop_record_operations" classname="com.cooper.lithic.feature.subscription.M09SubscriptionScreensTest" time="4.614" />
+  <testcase name="expiry_needs_no_worker" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="6.9">
+    <failure>java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '已到期' (ignoreCase: false))
+Semantics of the node:
+Node #2456 at (l=846.0, t=201.0, r=996.0, b=275.0)px, Tag: 'subscription-detail-status'
+IsContainer = 'true'
+Has 1 child, 8 siblings
+Selector used: (TestTag = 'subscription-detail-status')
+
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest$expiry_needs_no_worker$1.invokeSuspend(M09SubscriptionLifecycleFlowTest.kt:59)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+at com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest.expiry_needs_no_worker(M09SubscriptionLifecycleFlowTest.kt:54)
+</failure>
+  </testcase>
+  <testcase name="cancel_renewal_keeps_paid_access" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="15.295" />
+  <testcase name="future_prepaid_has_own_label" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="11.381" />
+  <testcase name="stop_reason_does_not_cancel_vendor" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="12.478" />
+  <testcase name="pause_is_not_history" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="21.34" />
+  <testcase name="payment_history_correction_and_delete_require_visible_confirmation" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="13.985" />
+  <testcase name="resume_without_new_payment" classname="com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest" time="31.907" />
+  <testcase name="end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="28.601" />
+  <testcase name="ended_detail_without_late_money_does_not_claim_post_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="7.312" />
+  <testcase name="end_validation_preserves_raw_dates_amount_reason_and_visible_errors" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="4.276" />
+  <testcase name="end_and_correction_forms_are_reachable_at_360dp_with_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="5.387" />
+  <testcase name="missing_detail_never_presents_stale_costs_or_mutation_actions" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="4.847" />
+  <testcase name="end_pending_submission_locks_inputs_and_committed_refresh_only_reads" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="6.614" />
+  <testcase name="correction_initial_read_and_conflict_offer_reload_without_resubmitting" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="4.686" />
+  <testcase name="ended_detail_with_only_future_late_money_does_not_claim_an_observed_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.798" />
+  <testcase name="correcting_end_without_settlement_never_offers_creating_recovery" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.95" />
+  <testcase name="correcting_linked_settlement_keeps_the_existing_event_and_has_no_toggle_or_delete" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.642" />
+  <testcase name="delete_confirmation_states_are_explicit_and_do_not_allow_duplicate_or_unknown_cancel" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="4.577" />
+  <testcase name="detail_routes_regular_and_initial_corrections_separately_from_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="5.201" />
+  <testcase name="ended_detail_with_real_observed_late_money_explains_its_included_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.431" />
+  <testcase name="history_preserves_visible_rows_when_read_fails_and_exposes_database_continuation" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.909" />
+  <testcase name="correction_keeps_direction_and_role_read_only_and_explains_real_refund" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="4.775" />
+  <testcase name="legacy_saved_skeleton_restores_to_the_home_route" classname="com.cooper.lithic.ui.NavigationShellTest" time="2.264" />
+  <testcase name="empty_screen_has_no_fake_metrics" classname="com.cooper.lithic.ui.NavigationShellTest" time="3.415" />
+  <testcase name="secondary_toolbar_back_returns_home" classname="com.cooper.lithic.ui.NavigationShellTest" time="3.873" />
+  <testcase name="future_recorded_end_date_does_not_pretend_the_project_has_already_ended" classname="com.cooper.lithic.ui.NavigationShellTest" time="3.122" />
+  <testcase name="secondary_system_back_returns_home" classname="com.cooper.lithic.ui.NavigationShellTest" time="3.973" />
+  <testcase name="large_text_has_no_blocked_action" classname="com.cooper.lithic.ui.NavigationShellTest" time="5.949" />
+  <testcase name="invalid_restored_stacks_and_primary_routes_have_safe_parents" classname="com.cooper.lithic.ui.NavigationShellTest" time="2.569" />
+  <testcase name="settings_reads_the_persisted_zone_without_fake_controls" classname="com.cooper.lithic.ui.NavigationShellTest" time="4.006" />
+  <testcase name="only_three_primary_destinations" classname="com.cooper.lithic.ui.NavigationShellTest" time="2.436" />
+  <testcase name="primary_selection_matches_its_visible_page" classname="com.cooper.lithic.ui.NavigationShellTest" time="4.659" />
+  <testcase name="back_stack_restores" classname="com.cooper.lithic.ui.NavigationShellTest" time="4.726" />
+  <testcase name="primary_system_back_returns_home" classname="com.cooper.lithic.ui.NavigationShellTest" time="6.178" />
+  <testcase name="real_project_is_not_misrepresented_as_an_empty_ledger" classname="com.cooper.lithic.ui.NavigationShellTest" time="4.414" />
+  <testcase name="repeated_primary_selection_does_not_build_history" classname="com.cooper.lithic.ui.NavigationShellTest" time="6.371" />
+  <testcase name="first_launch_starts_at_home" classname="com.cooper.lithic.ui.NavigationShellTest" time="2.826" />
+  <testcase name="subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="2.465" />
+  <testcase name="project_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="3.975" />
+</testsuite>

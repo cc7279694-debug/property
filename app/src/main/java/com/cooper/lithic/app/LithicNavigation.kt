@@ -306,7 +306,7 @@ internal fun LithicNavigation(
                             model::changeOccurredOn, model::changeDescription, model::save, onRetryRead = model::retryRead) }
                     }
                     entry<ProjectHistory> {
-                        ProjectHistoryScreen(projects.history, onBack, { requestLeave(canonicalBackStack(ProjectDetail(it, ProjectOrigin.HISTORY))) }, model::loadMoreHistory, model::retryRead)
+                        ProjectHistoryScreen(projects.history, onBack, { requestLeave(canonicalBackStack(ProjectDetail(it, ProjectOrigin.HISTORY))) }, model::loadMoreHistory, model::retryRead, mediaRepository = state.mediaRepository)
                     }
                     entry<ProjectEnd> {
                         projects.endEditor?.let { editor -> EndProjectDialog(editor, onBack, model::changeEndedOn, model::changeEndReason,
@@ -327,7 +327,7 @@ internal fun LithicNavigation(
                     }
                     entry<SubscriptionList> {
                         SubscriptionListScreen(subscriptions.list, onBack, { requestLeave(listOf(Home, SubscriptionList, CreateSubscription)) },
-                            { requestLeave(canonicalBackStack(SubscriptionDetail(it))) }, subscriptionModel::loadMore, subscriptionModel::retryRead)
+                            { requestLeave(canonicalBackStack(SubscriptionDetail(it))) }, subscriptionModel::loadMore, subscriptionModel::retryRead, mediaRepository = state.mediaRepository)
                     }
                     entry<CreateSubscription> {
                         subscriptions.editor?.let { editor -> SubscriptionEditorScreen(editor, onBack, subscriptionModel::changeName,
@@ -338,7 +338,7 @@ internal fun LithicNavigation(
                     entry<SubscriptionHistory> {
                         SubscriptionHistoryScreen(subscriptions.stoppedHistory, onBack,
                             { requestLeave(canonicalBackStack(SubscriptionDetail(it, SubscriptionOrigin.HISTORY))) },
-                            subscriptionModel::loadMoreStoppedHistory, subscriptionModel::retryRead)
+                            subscriptionModel::loadMoreStoppedHistory, subscriptionModel::retryRead, mediaRepository = state.mediaRepository)
                     }
                     entry<SubscriptionDetail> { route ->
                         fun stateAction(action: SubscriptionAction) = requestLeave(canonicalBackStack(ChangeSubscriptionState(route.id, action, route.origin)))
