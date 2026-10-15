@@ -127,8 +127,8 @@ class UIComponentsTest {
         compose.runOnIdle {
             val typography = requireNotNull(capturedType)
             assertEquals(38.sp, typography.displayLarge.fontSize)
-            assertEquals(24.sp, typography.headlineLarge.fontSize)
-            assertEquals(24.sp, typography.titleLarge.fontSize)
+            assertEquals(28.sp, typography.headlineLarge.fontSize)
+            assertEquals(20.sp, typography.titleLarge.fontSize)
             assertEquals(16.sp, typography.bodyLarge.fontSize)
             assertEquals(14.sp, typography.bodyMedium.fontSize)
         }

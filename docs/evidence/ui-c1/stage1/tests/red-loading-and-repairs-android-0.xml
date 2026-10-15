@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.media.UIC1CoverPreviewTest" tests="4" failures="1" errors="0" skipped="0" time="58.455" timestamp="2026-10-15T10:36:48" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="loading_64dp_thumbnail_at_200_percent_font_has_complete_visible_progress_representation" classname="com.cooper.lithic.feature.media.UIC1CoverPreviewTest" time="22.936">
+    <failure>java.lang.AssertionError: The complete loading text must fit at 200% font without clipping or ellipsis
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.media.UIC1CoverPreviewTest.loading_64dp_thumbnail_at_200_percent_font_has_complete_visible_progress_representation(UIC1CoverPreviewTest.kt:221)
+</failure>
+  </testcase>
+  <testcase name="end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="24.764" />
+  <testcase name="subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="4.001" />
+  <testcase name="project_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="3.797" />
+</testsuite>

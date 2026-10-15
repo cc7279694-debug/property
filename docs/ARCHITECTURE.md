@@ -2,6 +2,18 @@
 
 更新日期：2026-10-14。M00～M09 已依据用户转交的独立验收结论冻结，历史执行证据和NOTES保留。M10本地单封面、受控图片导入及资源生命周期READY_FOR_REVIEW，独立验收PENDING；下节描述当前实际结构，验证证据另登记，不以源码存在替代实际执行。M11及后续未授权。实际结果和唯一当前状态见 [CURRENT_STATE](CURRENT_STATE.md)及[验收登记](ACCEPTANCE_MATRIX.md)。
 
+## UI-C1阶段1：只读预览、共用视觉与受控图片展示
+
+用户已批准设计并授权Task1～5，只改现在、项目列表、项目详情及必要共享装配；其它页面只继承主题，未进行Task6～8统一。实际运行结果见[阶段1报告](evidence/UI-C1-stage1-verification.md)，未获得用户视觉确认或独立UI冻结。
+
+`LedgerUiStateHolder`继续只装配既有同代Repository。首页总身份计数含历史/停止，预览分别调用`loadCurrentProjectWindow(1, asOf).items.take(3)`与`loadManagementPage(false, null, 3, asOf)`，不新增SQL/DAO或业务存储。项目有界窗口仍50+哨兵；订阅既有全库事实预检保留，不能将整个读取称为O(3)。一次刷新使用同一观察日，四次读取不是跨对象原子快照。请求序号、活动session、generation及Repository身份共同约束发布；失败保留上次成功数据并提示重试。
+
+`CoverPreviewProvider`在当前NavDisplay UI生命周期内共享一个预览加载器，repository身份隔离。IO读/解码最多2个并行任务，按目标物理像素采样，已解码LRU持有像素≤8MiB；超预算单图不缓存，不声称限制整个进程或可见Bitmap总内存。缓存重入先调用原`MediaRepository.openAsset`实际校验，完整元数据/边界匹配后才复用像素；读取失败使该资源旧缓存失效。换repository/离开取消旧任务，不手工recycle仍可能显示的Bitmap。展示不写文件、不重新编码、不持久保存URI或派生结果。
+
+新增菜单和更多操作只持有UI展开状态，真正回调仍经原`requestLeave`及三VM守卫；NavKey、来源链、固定操作身份、原保存/确认流程不变。深浅主题跟随系统，无新主题设置。金额展示复用原AmountFormatter和领域结果。
+
+下方M10段保留媒体协议与交付来源；“完整JPEG”是原校验目标，已有EOI保留/中间熵数据截断的三项拒绝FAIL，不能据展示成功声称输入完整性已验证。本UI支线不修复、不冻结M10。
+
 ## M10：私有单封面、受控导入与资源生命周期
 
 两类记录复用现有Room v2的`local_media_assets`七字段和`coverAssetId`，没有新增表、索引、迁移、图片依赖或成本公式。AppContainer仍是唯一存储owner；[ManagedGeneration](../app/src/main/java/com/cooper/lithic/data/backup/DataGenerationStore.kt)懒创建同代唯一LocalImageStore和活动准备租约集合，并绑定使用同一Room/coordinator的公共删除守卫。[LedgerUiStateHolder](../app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt)装配MediaRepository，页面不直接访问DAO、源URI或私有路径。

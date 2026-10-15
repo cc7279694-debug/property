@@ -41,6 +41,8 @@ import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import com.cooper.lithic.core.design.LithicIcon
+import com.cooper.lithic.feature.media.CoverPreviewProvider
 import com.cooper.lithic.feature.home.HomeShell
 import com.cooper.lithic.feature.project.LeaveDecision
 import com.cooper.lithic.feature.project.MoneyEventEditor
@@ -240,13 +242,16 @@ internal fun LithicNavigation(
         routes.last() == Settings -> Settings
         else -> Home
     }
+    CoverPreviewProvider(state.mediaRepository) {
     Scaffold(modifier = modifier.fillMaxSize().testTag("primary_navigation"), contentWindowInsets = WindowInsets.safeDrawing,
         bottomBar = {
             NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
                 val destinations: List<Pair<NavKey, String>> = listOf(Home to "现在", Review to "回看", Settings to "设置")
                 destinations.forEach { (destination, label) ->
                     NavigationBarItem(selected = currentPrimary == destination, onClick = { requestLeave(canonicalBackStack(destination)) },
-                        icon = { Text(label, style = MaterialTheme.typography.labelLarge) },
+                        icon = { LithicIcon(when (destination) { Home -> LithicIcon.Now; Review -> LithicIcon.Review; else -> LithicIcon.Settings },
+                            null, tint = if (currentPrimary == destination) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.onSurfaceVariant) },
+                        label = { Text(label, style = MaterialTheme.typography.labelLarge) },
                         modifier = Modifier.heightIn(min = 48.dp).testTag(when (destination) { Home -> "tab-now"; Review -> "tab-review"; else -> "tab-settings" }))
                 }
             }
@@ -263,13 +268,19 @@ internal fun LithicNavigation(
             NavDisplay(backStack = routes, modifier = Modifier.weight(1f), onBack = onBack,
                 entryProvider = entryProvider<NavKey> {
                     entry<Home> { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
-                        subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }) }
+                        subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) },
+                        preview = state.homePreview, refreshing = state.isRefreshing, hasReadError = state.readError != null,
+                        onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) },
+                        onOpenSubscription = { requestLeave(canonicalBackStack(SubscriptionDetail(it))) },
+                        onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
+                        onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) },
+                        mediaRepository = state.mediaRepository) }
                     entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) }) }
                     entry<Settings> { SettingsShell(state.recordZone) }
                     entry<ProjectList> {
                         ProjectListScreen(projects.list, onBack, onCreate = { requestLeave(listOf(Home, ProjectList, CreateProject)) },
-                            onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)
+                            onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead, mediaRepository = state.mediaRepository)
                     }
                     entry<ProjectDetail> { route ->
                         ProjectDetailScreen(projects.detail, onBack, onEdit = { requestLeave(canonicalBackStack(ProjectEdit(route.id, route.origin))) },
@@ -359,6 +370,7 @@ internal fun LithicNavigation(
                 })
         }
     }
+    } // Cover previews share the current repository lifetime across NavDisplay entries.
     pendingLeave?.let { target ->
         AlertDialog(onDismissRequest = { pendingLeave = null }, modifier = Modifier.testTag("discard-dialog"), title = { Text("放弃未保存修改？") },
             text = { Text("输入尚未保存。继续编辑会保留这些内容。") },

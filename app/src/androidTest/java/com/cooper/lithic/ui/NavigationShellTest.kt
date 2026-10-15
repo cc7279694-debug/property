@@ -18,6 +18,8 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.hasAnyAncestor
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.StateRestorationTester
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -195,7 +197,9 @@ class NavigationShellTest {
         render()
         compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
-        compose.onAllNodes(hasText("¥0.00", substring = true)).assertCountEquals(0)
+        compose.onNodeWithTag("home-record-overview").assertIsDisplayed()
+        compose.onAllNodes(hasText("¥0.00", substring = true) and
+            hasAnyAncestor(hasTestTag("home-record-overview"))).assertCountEquals(0)
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
         compose.waitUntil(10_000) { compose.onAllNodes(hasText("合成零元项目")).fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("合成零元项目").assertIsDisplayed()

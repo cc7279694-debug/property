@@ -43,6 +43,7 @@ import com.cooper.lithic.app.LedgerUiStateHolder
 import com.cooper.lithic.app.LithicApp
 import com.cooper.lithic.app.StorageInitializationState
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.ui.openHomeCreate
 import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.data.backup.DataGenerationStore
 import com.cooper.lithic.data.backup.ManagedGeneration
@@ -362,7 +363,7 @@ class SubscriptionRenewalFlowTest {
 
     @Test fun narrow_large_font_real_ime_saved_task_and_confirmation() = runBlocking<Unit> {
         val restoration = render(largeFont = true, restorable = true)!!
-        compose.onNodeWithTag("home-create-subscription").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-subscription")
         waitEditor(SubscriptionEditorKind.CREATE)
         compose.onNodeWithTag("subscription-name").performScrollTo().performTextReplacement("大字体保留原任务输入")
         fill("subscription", "180", BillingCycle.MONTHLY, "2026-01-05", "2026-02-01", "2026-03-01", "2026-02-26")
@@ -437,7 +438,7 @@ class SubscriptionRenewalFlowTest {
     }
 
     private fun create(name: String, amount: String, paid: String, from: String, until: String, reminder: String): String {
-        compose.onNodeWithTag("home-create-subscription").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-subscription")
         waitEditor(SubscriptionEditorKind.CREATE)
         compose.onNodeWithTag("subscription-name").performScrollTo().performTextReplacement(name)
         fill("subscription", amount, BillingCycle.MONTHLY, paid, from, until, reminder)

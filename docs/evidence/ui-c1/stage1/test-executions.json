@@ -1,0 +1,230 @@
+[
+  {
+    "phase": "baseline-production",
+    "actualCommandExecutions": [
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:connectedDebugAndroidTest",
+          "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.data.media.M10JpegIntegrityTest,com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest,com.cooper.lithic.ui.NavigationShellTest,com.cooper.lithic.feature.project.ProjectScreensTest,com.cooper.lithic.feature.project.ProjectLifecycleScreensTest,com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest,com.cooper.lithic.feature.media.M10CoverNavigationGuardTest",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 1,
+        "durationSeconds": 470.36
+      }
+    ],
+    "durationSeconds": 470.361,
+    "exitCode": 1,
+    "total": 56,
+    "pass": 52,
+    "fail": 4,
+    "skipped": 0,
+    "jvm": 0,
+    "android": 56,
+    "inputsStable": "PASS"
+  },
+  {
+    "phase": "final-stage1-recheck",
+    "actualCommandExecutions": [
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:testDebugUnitTest",
+          "--rerun-tasks",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 0,
+        "durationSeconds": 40.37
+      },
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:connectedDebugAndroidTest",
+          ":app:lintDebug",
+          ":app:assembleDebug",
+          "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.ui.UIC1ThemeTest,com.cooper.lithic.feature.home.UIC1HomeSampleTest,com.cooper.lithic.app.UIC1HomePreviewTest,com.cooper.lithic.feature.media.UIC1CoverPreviewTest,com.cooper.lithic.feature.project.UIC1ProjectSampleTest,com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest,com.cooper.lithic.ui.UIComponentsTest,com.cooper.lithic.feature.project.ProjectScreensTest,com.cooper.lithic.feature.project.ProjectLifecycleScreensTest,com.cooper.lithic.ui.NavigationShellTest,com.cooper.lithic.ui.StorageUiStateTest,com.cooper.lithic.feature.media.M10CoverEntryScreensTest,com.cooper.lithic.data.media.M10JpegIntegrityTest,com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest",
+          "--continue",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 1,
+        "durationSeconds": 450.444
+      }
+    ],
+    "durationSeconds": 490.816,
+    "exitCode": 1,
+    "total": 188,
+    "pass": 185,
+    "fail": 3,
+    "skipped": 0,
+    "jvm": 86,
+    "android": 102,
+    "inputsStable": "PASS"
+  },
+  {
+    "phase": "final-stage1",
+    "actualCommandExecutions": [
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:testDebugUnitTest",
+          "--rerun-tasks",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 0,
+        "durationSeconds": 44.485
+      },
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:connectedDebugAndroidTest",
+          ":app:lintDebug",
+          ":app:assembleDebug",
+          "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.ui.UIC1ThemeTest,com.cooper.lithic.feature.home.UIC1HomeSampleTest,com.cooper.lithic.app.UIC1HomePreviewTest,com.cooper.lithic.feature.media.UIC1CoverPreviewTest,com.cooper.lithic.feature.project.UIC1ProjectSampleTest,com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest,com.cooper.lithic.ui.UIComponentsTest,com.cooper.lithic.feature.project.ProjectScreensTest,com.cooper.lithic.feature.project.ProjectLifecycleScreensTest,com.cooper.lithic.ui.NavigationShellTest,com.cooper.lithic.ui.StorageUiStateTest,com.cooper.lithic.feature.project.ProjectEntryFlowTest,com.cooper.lithic.feature.project.ProjectLifecycleFlowTest,com.cooper.lithic.feature.project.ProjectNavigationGuardTest,com.cooper.lithic.feature.subscription.SubscriptionRenewalFlowTest,com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest,com.cooper.lithic.feature.subscription.M09SubscriptionNavigationGuardTest,com.cooper.lithic.feature.subscription.M09SubscriptionNavigationFlowTest,com.cooper.lithic.feature.subscription.M09SubscriptionLifecycleFlowTest,com.cooper.lithic.feature.media.M10CoverNavigationGuardTest,com.cooper.lithic.feature.media.M10CoverEntryScreensTest,com.cooper.lithic.ui.ActivityNavigationTest,com.cooper.lithic.data.media.M10JpegIntegrityTest,com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest",
+          "--continue",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 1,
+        "durationSeconds": 1097.227
+      }
+    ],
+    "durationSeconds": 1141.713,
+    "exitCode": 1,
+    "total": 237,
+    "pass": 232,
+    "fail": 5,
+    "skipped": 0,
+    "jvm": 86,
+    "android": 151,
+    "inputsStable": "PASS"
+  },
+  {
+    "phase": "green-samples",
+    "actualCommandExecutions": [
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:connectedDebugAndroidTest",
+          "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.ui.UIC1ThemeTest,com.cooper.lithic.feature.home.UIC1HomeSampleTest,com.cooper.lithic.app.UIC1HomePreviewTest,com.cooper.lithic.feature.media.UIC1CoverPreviewTest,com.cooper.lithic.feature.project.UIC1ProjectSampleTest,com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest,com.cooper.lithic.ui.UIComponentsTest,com.cooper.lithic.feature.project.ProjectScreensTest,com.cooper.lithic.feature.project.ProjectLifecycleScreensTest,com.cooper.lithic.ui.NavigationShellTest,com.cooper.lithic.ui.StorageUiStateTest",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 1,
+        "durationSeconds": 459.191
+      }
+    ],
+    "durationSeconds": 459.193,
+    "exitCode": 1,
+    "total": 93,
+    "pass": 92,
+    "fail": 1,
+    "skipped": 0,
+    "jvm": 0,
+    "android": 93,
+    "inputsStable": "PASS"
+  },
+  {
+    "phase": "red-large-cover",
+    "actualCommandExecutions": [
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:connectedDebugAndroidTest",
+          "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.feature.media.UIC1CoverPreviewTest#corrupt_64dp_thumbnail_at_200_percent_font_has_complete_visible_error_representation",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 1,
+        "durationSeconds": 80.6
+      }
+    ],
+    "durationSeconds": 80.629,
+    "exitCode": 1,
+    "total": 1,
+    "pass": 0,
+    "fail": 1,
+    "skipped": 0,
+    "jvm": 0,
+    "android": 1,
+    "inputsStable": "PASS"
+  },
+  {
+    "phase": "red-loading-and-repairs",
+    "actualCommandExecutions": [
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:connectedDebugAndroidTest",
+          "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.feature.media.UIC1CoverPreviewTest#loading_64dp_thumbnail_at_200_percent_font_has_complete_visible_progress_representation,com.cooper.lithic.feature.project.ProjectLifecycleScreensTest#end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero,com.cooper.lithic.feature.media.M10CoverEntryScreensTest",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 1,
+        "durationSeconds": 113.572
+      }
+    ],
+    "durationSeconds": 114.07,
+    "exitCode": 1,
+    "total": 4,
+    "pass": 3,
+    "fail": 1,
+    "skipped": 0,
+    "jvm": 0,
+    "android": 4,
+    "inputsStable": "PASS"
+  },
+  {
+    "phase": "red-ui-contracts-compiled",
+    "actualCommandExecutions": [
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:connectedDebugAndroidTest",
+          "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.ui.UIC1ThemeTest,com.cooper.lithic.feature.home.UIC1HomeSampleTest,com.cooper.lithic.feature.media.UIC1CoverPreviewTest,com.cooper.lithic.feature.project.UIC1ProjectSampleTest,com.cooper.lithic.feature.project.ProjectLifecycleScreensTest#end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 1,
+        "durationSeconds": 93.371
+      }
+    ],
+    "durationSeconds": 93.372,
+    "exitCode": 1,
+    "total": 14,
+    "pass": 4,
+    "fail": 10,
+    "skipped": 0,
+    "jvm": 0,
+    "android": 14,
+    "inputsStable": "PASS"
+  },
+  {
+    "phase": "red-ui-contracts",
+    "actualCommandExecutions": [
+      {
+        "command": [
+          "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+          ":app:connectedDebugAndroidTest",
+          "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.ui.UIC1ThemeTest,com.cooper.lithic.feature.home.UIC1HomeSampleTest,com.cooper.lithic.feature.media.UIC1CoverPreviewTest,com.cooper.lithic.feature.project.UIC1ProjectSampleTest,com.cooper.lithic.feature.project.ProjectLifecycleScreensTest#end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero",
+          "--max-workers=2",
+          "--console=plain"
+        ],
+        "exitCode": 1,
+        "durationSeconds": 13.374
+      }
+    ],
+    "durationSeconds": 13.375,
+    "exitCode": 1,
+    "total": 0,
+    "pass": 0,
+    "fail": 0,
+    "skipped": 0,
+    "jvm": 0,
+    "android": 0,
+    "inputsStable": "PASS"
+  }
+]

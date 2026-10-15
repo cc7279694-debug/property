@@ -43,6 +43,8 @@ import com.cooper.lithic.app.LedgerUiStateHolder
 import com.cooper.lithic.app.LithicApp
 import com.cooper.lithic.app.StorageInitializationState
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.ui.openHomeCreate
+import com.cooper.lithic.ui.projectDetailAction
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.core.time.FixedBusinessClock
 import com.cooper.lithic.data.backup.DataGenerationStore
@@ -397,7 +399,7 @@ class ProjectLifecycleFlowTest {
     }
 
     private fun createProject(name: String, amount: String): String {
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-project")
         compose.waitUntil(10_000) { model.state.value.editor?.today != null }
         compose.onNodeWithTag("project-name").performScrollTo().performTextReplacement(name)
         compose.onNodeWithTag("project-started-on-input").performScrollTo().performTextReplacement("2026-01-01")
@@ -442,8 +444,7 @@ class ProjectLifecycleFlowTest {
         waitForDetail()
     }
     private fun detailAction(tag: String) {
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag(tag))
-        compose.onNodeWithTag(tag).performClick()
+        compose.projectDetailAction(tag)
     }
     private fun openHistory() {
         compose.onNodeWithTag("tab-review").performClick()

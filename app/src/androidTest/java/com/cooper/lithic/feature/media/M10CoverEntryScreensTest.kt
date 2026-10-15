@@ -19,6 +19,7 @@ import com.cooper.lithic.feature.project.ProjectDetailUiState
 import com.cooper.lithic.feature.subscription.M09SubscriptionFixtures
 import com.cooper.lithic.feature.subscription.SubscriptionDetailScreen
 import com.cooper.lithic.feature.subscription.SubscriptionDetailUiState
+import com.cooper.lithic.ui.openProjectMore
 import java.math.BigDecimal
 import java.time.Instant
 import java.time.LocalDate
@@ -37,7 +38,7 @@ class M10CoverEntryScreensTest {
         } }
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-cover-empty"))
         compose.onNodeWithTag("project-cover-empty").assertIsDisplayed()
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-cover-edit"))
+        compose.openProjectMore()
         compose.onNodeWithTag("project-cover-edit").assertIsDisplayed()
             .assertTextContains("添加封面")
     }

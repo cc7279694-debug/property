@@ -26,6 +26,7 @@ import com.cooper.lithic.app.LedgerUiStateHolder
 import com.cooper.lithic.app.LithicApp
 import com.cooper.lithic.app.StorageInitializationState
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.ui.openHomeCreate
 import com.cooper.lithic.core.time.FixedBusinessClock
 import com.cooper.lithic.data.backup.DataGenerationStore
 import com.cooper.lithic.data.backup.ManagedGeneration
@@ -137,7 +138,7 @@ class SubscriptionNavigationGuardTest {
         withTimeout(15_000) { first.state.first { it.editor?.phase == SubmissionPhase.UNCONFIRMED } }
         onMain { subscription = SubscriptionViewModel(ready.subscriptionRepository, restoredHandle(handle), clock); retain("restored-payment", subscription) }
         render()
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-project")
         compose.onNodeWithTag("pending-submit-dialog").assertIsDisplayed()
         compose.onNodeWithTag("discard-dialog").assertDoesNotExist()
         compose.onNodeWithTag("pending-submit-return-to-form").performClick()
@@ -265,7 +266,7 @@ class SubscriptionNavigationGuardTest {
         withTimeout(15_000) { first.state.first { it.editor?.phase == SubmissionPhase.UNCONFIRMED } }
         onMain { project = ProjectViewModel(ready.repository, restoredHandle(handle), clock); retain("restored-project", project) }
         render()
-        compose.onNodeWithTag("home-create-subscription").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-subscription")
         compose.onNodeWithTag("pending-submit-dialog").assertIsDisplayed()
         compose.onNodeWithTag("pending-submit-return-to-form").performClick()
         compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
@@ -306,7 +307,7 @@ class SubscriptionNavigationGuardTest {
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
     }
     private fun openCreate() {
-        compose.onNodeWithTag("home-create-subscription").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-subscription")
         compose.waitUntil(10_000) { subscription.state.value.editor?.today != null }
     }
     private fun fillVisibleCreate() {

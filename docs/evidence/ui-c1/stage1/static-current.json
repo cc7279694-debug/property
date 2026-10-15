@@ -1,0 +1,168 @@
+{
+  "protectedGitDiff": "PASS",
+  "protectedScopes": [
+    "app/src/main/java/com/cooper/lithic/data",
+    "app/src/main/java/com/cooper/lithic/core/model",
+    "app/src/main/java/com/cooper/lithic/core/time",
+    "app/src/main/java/com/cooper/lithic/domain",
+    "app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/AmountText.kt",
+    "app/schemas",
+    "app/build.gradle.kts",
+    "build.gradle.kts",
+    "settings.gradle.kts",
+    "gradle",
+    "gradle.properties",
+    "app/src/main/AndroidManifest.xml",
+    "app/src/main/res/xml",
+    "docs/ACCEPTANCE_MATRIX.md",
+    "docs/planning/original-v1",
+    "docs/evidence/M10-JPEG-supplement-verification.md"
+  ],
+  "baselineTestMethods": 657,
+  "currentTestMethods": 692,
+  "newMethods": [
+    {
+      "class": "com.cooper.lithic.app.UIC1HomePreviewTest",
+      "method": "failed_refresh_keeps_last_successful_counts_and_previews"
+    },
+    {
+      "class": "com.cooper.lithic.app.UIC1HomePreviewTest",
+      "method": "full_identity_counts_and_current_previews_use_existing_bounded_interfaces"
+    },
+    {
+      "class": "com.cooper.lithic.app.UIC1HomePreviewTest",
+      "method": "future_started_project_and_prepaid_subscription_keep_the_shared_observation_day"
+    },
+    {
+      "class": "com.cooper.lithic.app.UIC1HomePreviewTest",
+      "method": "history_only_ledger_retains_identity_counts_with_empty_current_sections"
+    },
+    {
+      "class": "com.cooper.lithic.app.UIC1HomePreviewTest",
+      "method": "late_old_repository_retry_cannot_publish_after_storage_generation_changes"
+    },
+    {
+      "class": "com.cooper.lithic.app.UIC1HomePreviewTest",
+      "method": "late_retry_failure_cannot_mark_a_later_success_as_stale"
+    },
+    {
+      "class": "com.cooper.lithic.app.UIC1HomePreviewTest",
+      "method": "late_retry_success_cannot_replace_a_later_change_refresh"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.UIC1HomeSampleTest",
+      "method": "dark_home_uses_the_same_subscription_creation_path"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.UIC1HomeSampleTest",
+      "method": "dismissing_the_add_sheet_does_not_start_either_creation"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.UIC1HomeSampleTest",
+      "method": "failed_read_does_not_turn_a_stale_zero_into_a_confirmed_empty_ledger"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.UIC1HomeSampleTest",
+      "method": "history_only_counts_offer_both_history_routes_instead_of_first_record"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.UIC1HomeSampleTest",
+      "method": "project_option_only_calls_the_original_project_creation_callback"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.UIC1HomeSampleTest",
+      "method": "recorded_overview_does_not_offer_an_unimplemented_cost_summary"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.UIC1HomeSampleTest",
+      "method": "refresh_in_progress_does_not_present_a_first_record_action"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.UIC1HomeSampleTest",
+      "method": "successful_empty_home_has_one_first_record_action_instead_of_a_fab"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "cached_success_does_not_hide_deleted_or_corrupted_private_file"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "caller_cancellation_and_loader_close_propagate_without_caching_unreceived_pixels"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "closed_generation_fails_reentry_instead_of_serving_success_cache"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "corrupt_64dp_thumbnail_at_200_percent_font_has_complete_visible_error_representation"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "corrupt_current_bytes_show_error_and_preserve_reference_and_bytes"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "detail_preview_uses_16_by_9_frame_and_retains_original_view_action"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "loading_64dp_thumbnail_at_200_percent_font_has_complete_visible_progress_representation"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "pixel_lru_counts_allocations_evicts_oldest_and_skips_single_oversized_image"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "read_and_decode_concurrency_stays_at_two_and_cancel_releases_slot"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "repository_switch_rejects_late_old_result_and_never_shares_old_success"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "shared_cover_reads_leave_both_references_metadata_and_file_bytes_unchanged"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "thumbnail_is_64dp_and_ordinary_recomposition_does_not_repeat_reads"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "unset_cover_stays_distinct_from_unreadable_referenced_cover"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.UIC1CoverPreviewTest",
+      "method": "verified_cache_reentry_reads_current_bytes_and_target_sizes_get_sampled_pixels"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.UIC1ProjectSampleTest",
+      "method": "more_actions_keep_ending_separate_from_deleting_and_use_existing_callbacks"
+    },
+    {
+      "class": "com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest",
+      "method": "isolated_empty_home_is_real_in_both_themes_and_cancel_add_does_not_write"
+    },
+    {
+      "class": "com.cooper.lithic.ui.UIC1ThemeTest",
+      "method": "compact_cards_keep_long_negative_subcent_zero_and_missing_values_distinct"
+    },
+    {
+      "class": "com.cooper.lithic.ui.UIC1ThemeTest",
+      "method": "dual_theme_uses_distinct_heading_roles_and_a_38sp_primary_figure"
+    },
+    {
+      "class": "com.cooper.lithic.ui.UIC1ThemeTest",
+      "method": "dual_theme_uses_warm_page_and_ink_green_actions_with_readable_pairs"
+    },
+    {
+      "class": "com.cooper.lithic.ui.UIC1ThemeTest",
+      "method": "ordinary_card_aligns_name_status_and_time_beside_its_thumbnail"
+    }
+  ],
+  "missingOriginalMethods": [],
+  "note": "Static identity and protected scope only; execution results reported separately."
+}

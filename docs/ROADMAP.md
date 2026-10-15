@@ -4,6 +4,10 @@
 
 本表保留原M00～M23顺序与精确前置依赖。M00～M09已独立冻结PASS WITH NOTES；本轮M10已获明确授权，起点 `57de897917473f255d43dfb306a8433b366c00eb`、来源 `feat/m09-subscription-lifecycle`，当前 `feat/m10-local-cover-media`，范围见[M10契约](planning/M10_CONTRACT.md)。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；M11～M23未授权，全部历史NOTES保留。
 
+## UI-C1独立支线
+
+2026-10-15用户及ChatGPT书面批准阶段0，并授权独立`feat/ui-c1-visual-redesign`从edc8be7继续Task1～5。该视觉支线不改变M00～M23依赖或授权M11：先现在/项目列表/项目详情真实双主题样板→VISUAL_REVIEW_REQUIRED→用户实际看图确认→另行授权Task6～8。实际阶段1结果见[报告](evidence/UI-C1-stage1-verification.md)，M10三项JPEG拒绝失败保持独立PENDING，正式矩阵和旧案例不改。
+
 ## 执行顺序与依赖解释
 
 按编号逐模块授权与停止；M10前置M06/M09均已冻结。当前仅单封面与本地资源生命周期，复用Room v2及同代owner/coordinator；Q05已由用户确认为首次规范化、恢复已存字节校验后原样保留，完整跨模块验证仍NOT_RUN。完整备份恢复/汇总/通知属于后续模块，Q03/Q04/Q06不关闭，M09 A/B实施及冻结来源继承。M10自动化覆盖、进程边界、APK或部分设备结果均不能替代模块完整交付与独立验收；实际结果只取当前状态及验收登记。完成M10 READY_FOR_REVIEW后停止，不自动进入M11。

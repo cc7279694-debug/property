@@ -4,6 +4,10 @@ import android.content.Context
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertCountEquals
+import androidx.compose.ui.test.hasAnyAncestor
+import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
@@ -135,11 +139,17 @@ class StorageUiStateTest {
         assertEquals(1L, state.projectCount)
         assertEquals(listOf("M05 合成项目"), snapshot.projects.map { it.name })
         assertEquals(1, snapshot.moneyEvents.size)
+        assertEquals(0L, snapshot.moneyEvents.single().amountCents)
         show(holder)
         compose.waitUntil(10_000) { compose.onAllNodesWithTag("primary_navigation").fetchSemanticsNodes().isNotEmpty() }
-        compose.onNodeWithText("¥0.00").assertDoesNotExist()
+        compose.onNodeWithTag("home-record-overview").assertIsDisplayed()
+        compose.onAllNodes(hasText("¥0.00", substring = true) and
+            hasAnyAncestor(hasTestTag("home-record-overview"))).assertCountEquals(0)
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
         compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
+        compose.onNode(hasText("¥0.00") and
+            hasAnyAncestor(hasTestTag("home-project-${snapshot.projects.single().id}")), useUnmergedTree = true)
+            .performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
         compose.waitUntil(10_000) { compose.onAllNodesWithTag("project-row-${snapshot.projects.single().id}").fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("M05 合成项目").assertIsDisplayed()

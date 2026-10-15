@@ -29,6 +29,7 @@ import androidx.compose.ui.test.performTextReplacement
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.espresso.Espresso
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.core.model.ProjectCostResult
@@ -39,6 +40,8 @@ import com.cooper.lithic.data.local.LongTermProjectEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.repository.ProjectDetail
+import com.cooper.lithic.ui.openProjectMore
+import com.cooper.lithic.ui.projectDetailAction
 import java.math.BigDecimal
 import java.time.Instant
 import java.time.LocalDate
@@ -65,8 +68,23 @@ class ProjectLifecycleScreensTest {
         assertEquals("0", state.recoveryAmount)
         assertEquals("2026-01-09", state.recoveryOn)
         assertEquals("实际收到0元", state.recoveryDescription)
-        compose.onNodeWithText("结束不是删除；从结束日期起退出当前项目列表。")
-            .performScrollTo().assertIsDisplayed()
+        // Finish text input before inspecting the footer; IME window panning otherwise races scrolling.
+        Espresso.closeSoftKeyboard()
+        compose.waitForIdle()
+        val endExplanation = compose.onNodeWithText("结束不是删除；从结束日期起退出当前项目列表。")
+        endExplanation.performScrollTo()
+        try { endExplanation.assertIsDisplayed() } catch (failure: AssertionError) {
+            val context = androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().targetContext
+            val folder = java.io.File(context.noBackupFilesDir, "uic1-diagnostics").apply { mkdirs() }
+            val bounds = endExplanation.fetchSemanticsNode().boundsInRoot
+            java.io.File(folder, "end-explanation-bounds.txt").writeText(bounds.toString())
+            androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot()?.let { bitmap ->
+                java.io.FileOutputStream(java.io.File(folder, "end-explanation-failure.png")).use {
+                    bitmap.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it)
+                }
+            }
+            throw failure
+        }
     }
 
     @Test fun end_validation_preserves_raw_dates_amount_reason_and_visible_errors() {
@@ -216,10 +234,12 @@ class ProjectLifecycleScreensTest {
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-correct-event-$SETTLEMENT_ID"))
         compose.onNodeWithTag("project-correct-event-$SETTLEMENT_ID").performClick()
         assertEquals(1, updateEnd.get())
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-delete"))
-        compose.onNodeWithTag("project-delete").performClick()
+        compose.projectDetailAction("project-delete")
         assertEquals(1, deletion.get())
+        compose.openProjectMore()
         compose.onNodeWithTag("project-end").assertDoesNotExist()
+        compose.onNodeWithTag("project-update-end").assertIsDisplayed()
+        Espresso.pressBack()
         assertHoldingDaysFrozen()
         compose.onNodeWithText("包含结束后的实际结算；持有天数不再增加。").assertDoesNotExist()
         compose.onNodeWithText("删除金额记录").assertDoesNotExist()

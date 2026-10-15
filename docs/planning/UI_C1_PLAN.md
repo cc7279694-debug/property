@@ -8,7 +8,7 @@
 
 **Tech Stack:** Kotlin2.3.10、Compose BOM2025.11.01（UI1.9.5/Material3 1.4.0）、Navigation3 1.0.1、Gradle8.14.3/AGP8.13.2/JDK17、min26/target36；Room2.8.5/schema2与现有依赖全部锁定。
 
-**Spec:** [UI_C1_SPEC.md](../design/UI_C1_SPEC.md)，来源为[完整v2](../design/ui-c1/source-v2/CODEX_PROMPT.txt)。日期2026-10-15。阶段0文档方案待确认。
+**Spec:** [UI_C1_SPEC.md](../design/UI_C1_SPEC.md)，来源为[完整v2](../design/ui-c1/source-v2/CODEX_PROMPT.txt)。日期2026-10-15。阶段0已获用户及ChatGPT书面确认；本轮仅执行阶段1 Task1～5。实际逐项结果见[阶段1报告](../evidence/UI-C1-stage1-verification.md)，不以阶段0NOT_RUN或下方原计划勾选框替代执行登记。
 
 ## Global Constraints
 
@@ -32,14 +32,14 @@
 
 | 阶段 | 允许工作 | 交付与门禁 |
 |---|---|---|
-| 0 当前 | 读来源/代码，写本规格/计划，原件归档和文档验证 | `DESIGN_READY_FOR_CONFIRMATION — UI-C1`；待用户书面确认，代码不改 |
-| 1 确认后 | Task1～5：共用主题/导航所需装配、现在/项目列表/项目详情 | 三页×深浅6图+首页空态2图+360dp/200%关键图；`VISUAL_REVIEW_REQUIRED — UI-C1`，待用户实际看图 |
+| 0 已书面批准 | 读来源/代码，写本规格/计划，原件归档和文档验证 | 原`DESIGN_READY_FOR_CONFIRMATION`历史保留；本次用户及ChatGPT已确认 |
+| 1 当前交付 | Task1～5：共用主题/导航所需装配、现在/项目列表/项目详情 | 实际三页×深浅6图+首页空态2图+360dp/200%关键图；`VISUAL_REVIEW_REQUIRED — UI-C1`，待用户实际看图 |
 | 2 看图确认后 | Task6～8：订阅/回看/设置/弹层和所有旧表单统一，完整回归 | 最终APK全8组×双主题16图及压力图，`READY_FOR_REVIEW — UI-C1` |
 | 3 独立验收 | 用户与ChatGPT评审，按反馈范围修正 | 不自授ACCEPTED/FROZEN；M10 JPEG仍独立阻塞，不进入M11 |
 
 ## 允许文件与职责
 
-下列路径以`app/src/main/java/com/cooper/lithic/`为根，均已核对；“拟新增”仅为未来计划，本阶段不创建产品文件。
+下列路径以`app/src/main/java/com/cooper/lithic/`为根，在阶段0核对；“拟新增”是编制时分类。阶段1已获授权的真实文件见执行报告，阶段2文件不得据此提前创建。
 
 | 阶段 | 文件 | 修改理由/保持接口 |
 |---|---|---|
@@ -57,7 +57,7 @@
 
 `data/`、`domain/`、`core/model`、`core/time`、schema/config/工具链为保护区；必要只读调用不等于修改授权。不顺手拆分大文件或重构所有ViewModel。
 
-## Task1 — 实施前冻结真实基线与主题规则（阶段1，尚未执行）
+## Task1 — 实施前冻结真实基线与主题规则（阶段1，已授权）
 
 **Files:** `LithicTheme.kt`、候选UI组件及新增`androidTest/.../ui/UIC1ThemeTest.kt`（拟新增）。
 
@@ -170,7 +170,9 @@
 - [ ] 原账本/私有文件/设置前后核对；不清库/重建AVD/偷偷处理JPEG。更新UI证据和CURRENT_STATE，正式矩阵/历史原件不改。
 - [ ] 差异/凭据/链接检查，Conventional Commit，只推UI分支。返回`READY_FOR_REVIEW — UI-C1`，分别报告UI视觉待验收、全量真实结果、M10仍PENDING；立即停止。
 
-## 独立UI验收清单（阶段0全部NOT_RUN）
+## 独立UI验收清单（保留阶段0编制时全部NOT_RUN）
+
+下表是批准时的基线，不是本次运行状态。阶段1逐项适用范围、实际结果及剩余NOT_RUN见[执行登记第7节](../evidence/UI-C1-stage1-verification.md#7-阶段1验收登记不覆盖正式矩阵)。Task1～5已实施并停在VISUAL_REVIEW_REQUIRED；未获用户实际样板确认。Task6～8不勾选、不执行。
 
 | 编号 | 观察结果/证据要求 | 阶段1范围 | 最终范围 | 当前 |
 |---|---|---|---|---|
@@ -191,8 +193,8 @@
 
 ## 已知问题与本轮停止
 
-M10原652是旧147输入的历史PASS；新增5项只有实际2PASS/3FAIL，起点源码657、输入152。三项为`M10JpegIntegrityTest.jpeg_entropy_truncated_with_eoi_is_rejected`及`M10JpegOldCoverProtectionTest`项目/订阅两拒绝方法，完整名称见[补充报告](../evidence/M10-JPEG-supplement-verification.md)。新UI输入下旧结果全部只能作历史，本阶段无新产品运行结论。
+M10原652是旧147输入的历史PASS；新增5项实际2PASS/3FAIL，UI起点源码657、输入152。三项为`M10JpegIntegrityTest.jpeg_entropy_truncated_with_eoi_is_rejected`及`M10JpegOldCoverProtectionTest`项目/订阅两拒绝方法，完整名称见[补充报告](../evidence/M10-JPEG-supplement-verification.md)。本次最终UI输入174，实际86 JVM＋102 Android＝185 PASS/3 FAIL，新增35全PASS；旧结果只作历史，不能替代新输入运行或Task8全量回归。
 
-已知全库事实预检性能仍归M22；API26/真机/OEM/Release/完整TalkBack/LMK/断电及M11/M12往返保留NOT_RUN。缓存和首页请求发布保护只是拟实施，不登记为已完成。Q05 USER_CONFIRMED，不整体关闭。
+已知全库事实预检性能仍归M22；API26/真机/OEM/Release/完整TalkBack/LMK/断电及M11/M12往返保留NOT_RUN。缓存和首页请求发布保护已实施并有定向测试，实际边界见阶段1报告，不扩张成整个进程硬预算或原子快照。Q05 USER_CONFIRMED，不整体关闭。
 
-当前只完成阶段0；书面方案待确认，尚无UI代码、APK或运行截图。执行门禁来自用户v2第十节，下一步只确认这两份文档，不另选风格、不启动M11。
+阶段0在`edc8be7`完成；本次用户已确认本规格/计划并只授权Task1～5。当前实施结果、输入、测试和样板见阶段1报告；完成后停在VISUAL_REVIEW_REQUIRED，等待实际看图，不能据此开始Task6～8或M11。原阶段0证据/checkpoint保留当时NOT_RUN。

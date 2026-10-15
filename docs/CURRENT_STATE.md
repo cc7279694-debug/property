@@ -1,11 +1,14 @@
 # 当前项目状态
 
-状态日期：2026-10-14（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-15（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
 
-- **UI-C1 独立支线 — 阶段0 DESIGN_READY_FOR_CONFIRMATION（2026-10-15）**：当前UI分支`feat/ui-c1-visual-redesign`，worktree `E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，准确来源`41596820145dc4a3fa6d041728a59540d828108a`。已实际读取v2/旧正文、核对ZIP/manifest并打开两张原图，形成[设计规格](design/UI_C1_SPEC.md)和[实施计划](planning/UI_C1_PLAN.md)。当前仅文档/来源归档，无UI产品代码、APK或运行截图；T01～T14及本轮产品测试全部NOT_RUN。按用户v2第十节等待书面确认，之后仅三页真实样板，再待用户看图确认。以下Git/Next Recommended Task保留M10来源语境，本UI支线的下一步以本条为准，不执行JPEG修复。实际文档验证见[UI证据](evidence/UI-C1-verification.md)。原工作目录保持M10分支及原状态，未覆盖；UI提交SHA由最终Git回执核对。
-- UI-C1两图风格已确认，书面映射尚未确认；首页采用真实计数（含历史）/两类至多3条预览，不实施M13总额。原业务/持久结构/依赖/媒体安全协议/三VM守卫保持；M10 JPEG的三个精确拒绝FAIL仍阻塞冻结，Q05及既有NOTES/平台/完整往返NOT_RUN不变。正式ACCEPTANCE_MATRIX和历史证据不回写；未来与安全修复整合另行授权。
+- **UI-C1 阶段1 — VISUAL_REVIEW_REQUIRED（2026-10-15）**：已按用户及ChatGPT批准的阶段0从`edc8be772a795f40b44f15da79ebf62a529bc074`仅实施Task1～Task5，现在/项目列表/项目详情及必要共享装配。6张最终APK深浅正常图、2张独立空Room宿主空态图、360dp200%首页/详情和菜单/滚动原图见[图册](evidence/ui-c1/stage1/GALLERY.md)；待用户实际看图，不进入Task6～8。最终174输入下86 JVM全PASS，102 Android为99 PASS/3项原JPEG FAIL（合计188，185 PASS/3 FAIL/0跳过）；全部35新增PASS，原657方法身份保留，当前692。此前更广候选A及全部RED/失败历史分开留存，不能合成最终全量通过；Task8全量NOT_RUN。Lint/assemble独立成功，Lint0errors/23warnings。完整[报告](evidence/UI-C1-stage1-verification.md)与[checkpoint](checkpoints/2026-10-15-UI-C1-stage1.md)为本阶段依据，正式矩阵/原件不改。
+
+- UI样板APK本地`build/ui-c1-stage1/lithic-ui-c1-stage1-debug.apk`，13,254,803 bytes，SHA256 `f994d7820a1cb26ec0a11fe527b8e0befb3a8f1d415b62f776f915e20b067a78`，实际安装一致；code8/签名/权限/备份配置核对。仅既有API36，未重建/清数据；原七表所有字段、两私有封面字节、generation/ready/settings精确不变，12项guest设置已恢复。原DB/私人文件/APK不推送。空态宿主浅色系统栏不等于MainActivity系统栏；FAB浮层效果如实留图。真实手机/API26/OEM/Release/完整TalkBack/真实LMK及完整离线写入旅程NOT_RUN；airplane1/wifi0冷启浏览实测，connectivity诊断超时，不宣称defaultNetwork=none。
+
+- UI-C1阶段0文档及两图风格已经书面批准；其当时NOT_RUN与来源历史保留在[阶段0checkpoint](checkpoints/2026-10-15-UI-C1-stage0.md)及[阶段0证据](evidence/UI-C1-verification.md)。当前实际实现/测试须取阶段1报告，不能继续把“等待书面批准”当当前阻碍，也不能用批准书面设计替代用户看实际样板。
 
 - **M10 — PENDING，JPEG补充验证已复现，修复BLOCKED_AT_SCOPE_DECISION**：复核起点本地/远端均为 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`，工作区原先干净；分支 `feat/m10-local-cover-media`，M09冻结来源 `57de897917473f255d43dfb306a8433b366c00eb`。使用原字节合成fixture，在已有API36 AVD通过真实ContentResolver → LocalImageStore确认缺损JPEG被错误接受。新增5方法实跑2 PASS /3 FAIL（退出1、3m13s），生产代码未改；ImageDecoder同样SUCCESS且partialErrors为空。152份完整输入同字节的Lint/assemble另跑成功（退出0、1m22s，0 errors/23 warnings），不是完整回归通过。见[补充报告](evidence/M10-JPEG-supplement-verification.md)、[JSON](evidence/M10-JPEG-supplement-verification.json)及[新checkpoint](checkpoints/2026-10-14-M10-JPEG-supplement.md)。
 - 项目/订阅旧封面和完整资金/付款/状态事实在准备后保持原字节与元数据，测试未提交缺损图；但拒绝断言失败，失败清理断言未到达，M10-T03/T04该边界不能标PASS。有效原设备账本七表、两份私有封面及已安装APK字节实测不变；本轮未重建AVD/清数据/改时钟。完整严格JPEG校验需新增解码能力或显著扩展解析，按用户补充指令第5节提交证据和待授权方案后停止。正式ACCEPTANCE_MATRIX及历史652结果未改；新输入下完整JVM/Android回归NOT_RUN。Q05仍USER_CONFIRMED，M11/M12完整往返和全部平台NOT_RUN保持，不自授ACCEPTED/FROZEN，不进入M11。
@@ -65,9 +68,9 @@
 
 ## Git
 
-- 当前目录 `E:/CODEX/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；仅功能分支 `feat/m10-local-cover-media`，来源 `feat/m09-subscription-lifecycle`，正式冻结起点 `57de897917473f255d43dfb306a8433b366c00eb`。开工本地/远端基线一致、工作区干净，目标此前不存在；从指定起点创建，不从main开始。
-- M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`与冻结回写57de897为历史依据。M10原交付及本次独立复核基准 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`；补充验证提交仅新增测试/必要合成资产/证据及当前交接，不是生产修复，最终SHA与推送结果由Git日志/最终回执核对，避免递归引用。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥、私人原图或真实个人数据。
+- 当前UI工作区：`E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，仅分支`feat/ui-c1-visual-redesign`。本轮从已批准阶段0提交`edc8be772a795f40b44f15da79ebf62a529bc074`继续，原UI来源`41596820145dc4a3fa6d041728a59540d828108a`，未从main开始。实际提交SHA/推送一致性取最终Git回执，避免递归引用自身提交。
+- 原工作目录`E:/CODEX/砺石新APP`保持`feat/m10-local-cover-media`/`41596820145dc4a3fa6d041728a59540d828108a`；main保护`145326ddd4ce28abbf7c2706fe25f9d38c599c3a`。M10复核原基准d7e9、M09冻结57de897等来源及旧证据不改；不回写M10分支、不合并/force/自动PR或公开APK，不提交账本/私钥/私人照片。
 
 ## Next Recommended Task
 
-**由ChatGPT独立复核本次JPEG实测与最小修复提案，并确认是否授权受控严格JPEG预检的新依赖/构建范围。**补充材料READY_FOR_REVIEW，模块仍PENDING且存在3项真实FAIL；不得冻结或启动M11。生产APK与d7e9字节相同，不能当作修复版交付。旧历史、全部NOTES、Q03/Q04/Q06期限及Q05完整跨模块NOT_RUN继承。
+**先由用户查看UI-C1阶段1真实样板并书面确认是否允许Task6～8。**本轮不扩展其它页面、不自行授予视觉或独立验收通过。M10仍有三项JPEG拒绝FAIL，修复方案另行授权和独立复验；不能随UI整合或进入M11。Q03/Q04/Q06期限、Q05 USER_CONFIRMED及完整跨模块NOT_RUN、M00～M09历史NOTES保留。

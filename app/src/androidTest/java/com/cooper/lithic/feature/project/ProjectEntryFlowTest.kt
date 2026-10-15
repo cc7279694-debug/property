@@ -32,6 +32,8 @@ import com.cooper.lithic.app.LedgerUiStateHolder
 import com.cooper.lithic.app.LithicApp
 import com.cooper.lithic.app.StorageInitializationState
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.ui.openHomeCreate
+import com.cooper.lithic.ui.projectDetailAction
 import com.cooper.lithic.core.time.FixedBusinessClock
 import com.cooper.lithic.data.backup.DataGenerationStore
 import com.cooper.lithic.data.backup.ManagedGeneration
@@ -139,7 +141,7 @@ class ProjectEntryFlowTest {
 
     @Test fun rapid_double_tap_creates_only_one_real_project_and_one_appended_event() = runBlocking {
         render()
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-project")
         waitForEditor()
         fillCreate("连点只记一笔", "1000")
         compose.onNodeWithTag("project-save").performScrollTo().performTouchInput { doubleClick() }
@@ -160,7 +162,7 @@ class ProjectEntryFlowTest {
 
     @Test fun failed_save_preserves_form_and_canceling_discard_keeps_the_real_unsubmitted_input() = runBlocking {
         render()
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-project")
         waitForEditor()
         fillCreate("保留失败输入", "1.234")
         compose.onNodeWithTag("project-note").performScrollTo().performTextReplacement("失败后保留备注")
@@ -254,7 +256,7 @@ class ProjectEntryFlowTest {
     }
 
     private fun createFromHome(name: String, amount: String) {
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-project")
         waitForEditor()
         fillCreate(name, amount)
         saveProjectAndWaitForDetail()
@@ -279,8 +281,7 @@ class ProjectEntryFlowTest {
     }
 
     private fun detailAction(tag: String) {
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag(tag))
-        compose.onNodeWithTag(tag).performClick()
+        compose.projectDetailAction(tag)
     }
 
     private fun returnHome() {

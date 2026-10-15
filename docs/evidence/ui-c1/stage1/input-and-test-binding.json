@@ -1,0 +1,49 @@
+{
+  "result": "PASS",
+  "finalPhase": "final-stage1-recheck",
+  "finalInputs": 174,
+  "finalInputZipSha256": "5facf693c375bb6c6426ebad5b384090f1b1092a6b4416891029cd21ba88dc68",
+  "allPhaseZipAndXmlHashesVerified": true,
+  "finalInputEqualsCurrentFiles": true,
+  "baselineMethods": 657,
+  "currentMethods": 692,
+  "originalMethodsRemoved": 0,
+  "newMethods": 35,
+  "newMethodsAllFinalPass": true,
+  "finalRun": {
+    "jvm": 86,
+    "android": 102,
+    "total": 188,
+    "pass": 185,
+    "fail": 3,
+    "skipped": 0,
+    "exitCode": 1
+  },
+  "finalFailCases": [
+    "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+    "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+    "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved"
+  ],
+  "broaderPreviousCandidate": {
+    "jvm": 86,
+    "android": 151,
+    "total": 237,
+    "pass": 232,
+    "fail": 5,
+    "skipped": 0,
+    "exitCode": 1
+  },
+  "changedInputsFromBroaderCandidateToFinal": [
+    "app/src/androidTest/java/com/cooper/lithic/feature/media/UIC1CoverPreviewTest.kt",
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleScreensTest.kt",
+    "app/src/main/java/com/cooper/lithic/feature/media/CoverDisplay.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt"
+  ],
+  "crossCandidateDistinctExecuted": 238,
+  "crossCandidateLatestOutcomes": {
+    "FAIL": 3,
+    "PASS": 235
+  },
+  "sourceMethodsNotSelectedInEitherCandidate": 454,
+  "scope": "Broader A and final B are separate input sets. Their union is coverage history, NOT one final full regression. Task8 full 692-method run NOT_RUN."
+}

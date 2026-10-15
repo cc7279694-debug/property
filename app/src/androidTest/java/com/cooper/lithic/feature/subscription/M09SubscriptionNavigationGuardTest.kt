@@ -18,6 +18,7 @@ import com.cooper.lithic.app.LedgerUiStateHolder
 import com.cooper.lithic.app.LithicApp
 import com.cooper.lithic.app.StorageInitializationState
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.ui.openHomeCreate
 import com.cooper.lithic.data.repository.SubscriptionFacts
 import com.cooper.lithic.feature.project.ProjectViewModel
 import com.cooper.lithic.feature.project.SubmissionPhase
@@ -52,7 +53,7 @@ class M09SubscriptionNavigationGuardTest {
         val facts = M09SubscriptionFixtures.facts()
         fixture.seed(facts)
         attachAndRender(facts, SubmissionPhase.UNCONFIRMED)
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
+        compose.openHomeCreate("home-create-project")
         compose.onNodeWithTag("pending-submit-dialog").assertIsDisplayed()
         compose.onNodeWithTag("discard-dialog").assertDoesNotExist()
         compose.onNodeWithTag("pending-submit-return-to-form").performClick()

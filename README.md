@@ -1,5 +1,8 @@
 # 砺石 LITHIC
 
+
+UI-C1独立支线：阶段0已书面批准，本轮仅Task1～5三页真实双主题样板。当前交付见[阶段1报告](docs/evidence/UI-C1-stage1-verification.md)，样板完成后停在VISUAL_REVIEW_REQUIRED等待用户看图；不进入Task6～8或M11。M10三项JPEG失败保持PENDING。
+
 纯本地 Android 长期成本记录 App，观察具体项目的陪伴时间、真实投入和日均成本。
 
 M00～M09已独立验收冻结：ACCEPTED / FROZEN — PASS WITH NOTES。当前 **M10 — PENDING，JPEG补充验证确认缺损输入被错误接受，尚未修复**。新增5项API36测试为2 PASS /3 FAIL；实际ImageDecoder也未拒绝该输入，按用户补充指令第5节停在新增解码能力的方案决策点。见[补充报告](docs/evidence/M10-JPEG-supplement-verification.md)及[当前状态](docs/CURRENT_STATE.md)。[原M10报告](docs/evidence/M10-verification.md)的652项与设备证据保留历史效力，不代表新输入完整回归通过。M11及后续未授权。
@@ -21,7 +24,7 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 
 ## 文档入口
 
-UI-C1当前只完成独立UI分支的阶段0[设计规格](docs/design/UI_C1_SPEC.md)与[实施计划](docs/planning/UI_C1_PLAN.md)，待用户书面确认；未修改产品代码、未生成UI APK/运行截图。M10 JPEG仍PENDING，正式验收登记和原分支不改。实际阶段0核查见[UI证据](docs/evidence/UI-C1-verification.md)。
+UI-C1阶段0[设计规格](docs/design/UI_C1_SPEC.md)与[实施计划](docs/planning/UI_C1_PLAN.md)已书面批准，Task1～5三页真实样板已交付：[深浅截图与压力图](docs/evidence/ui-c1/stage1/GALLERY.md)。当前VISUAL_REVIEW_REQUIRED，等待用户实际看图；Task6～8未授权。M10 JPEG仍PENDING，正式矩阵及原分支不改。阶段0[历史证据](docs/evidence/UI-C1-verification.md)保留当时状态，当前执行取[阶段1报告](docs/evidence/UI-C1-stage1-verification.md)。
 
 | 阅读内容 | 入口 |
 |---|---|
