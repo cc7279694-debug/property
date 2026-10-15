@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" tests="5" failures="1" errors="0" skipped="0" time="32.778" timestamp="2026-10-15T12:32:32" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="7.983">
+    <failure>java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-detail-outlay')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+at com.cooper.lithic.feature.project.UIC1RefinedDetailTest.large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable(UIC1RefinedDetailTest.kt:219)
+</failure>
+  </testcase>
+  <testcase name="long_return_name_at_200_percent_uses_non_overlapping_48dp_controls_with_full_accessible_names" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="2.636" />
+  <testcase name="saved_cover_precedes_cost_and_both_daily_cost_and_days_fit_normal_first_viewport" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="2.651" />
+  <testcase name="isolated_synthetic_records_and_original_covers_render_three_pages_in_both_themes" classname="com.cooper.lithic.ui.UIC1RefinedVisualEvidenceTest" time="11.871" />
+  <testcase name="isolated_empty_home_is_real_in_both_themes_and_cancel_add_does_not_write" classname="com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest" time="6.653" />
+</testsuite>

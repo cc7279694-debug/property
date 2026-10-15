@@ -2,25 +2,31 @@ package com.cooper.lithic.feature.project
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.EmptyState
 import com.cooper.lithic.core.design.LithicIcon
-import com.cooper.lithic.core.design.PageHeader
 import com.cooper.lithic.core.design.EntryCard
 import com.cooper.lithic.data.media.MediaRepository
 import com.cooper.lithic.feature.media.CoverThumbnail
@@ -46,18 +52,20 @@ internal fun ProjectListScreen(
     ) {
         item {
             Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("project-list-back")) {
-                    LithicIcon(LithicIcon.Back, null)
-                    Text("返回现在", style = MaterialTheme.typography.bodyLarge)
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
+                    IconButton(onBack, Modifier.size(48.dp).testTag("project-list-back")
+                        .semantics { contentDescription = "返回现在" }) {
+                        LithicIcon(LithicIcon.Back, null)
+                    }
+                    Text("长期项目", Modifier.weight(1f).semantics { heading() },
+                        style = MaterialTheme.typography.headlineMedium, softWrap = true)
+                    IconButton(onCreate, Modifier.size(48.dp).testTag("project-list-create")
+                        .semantics { contentDescription = "新增长期项目" }) {
+                        LithicIcon(LithicIcon.Add, null, tint = MaterialTheme.colorScheme.primary)
+                    }
                 }
-                PageHeader("长期项目", subtitle = "记录拥有，让时间说明价值。")
-                Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。",
-                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("project-list-create")) {
-                    LithicIcon(LithicIcon.Add, null, tint = MaterialTheme.colorScheme.onPrimary)
-                    Text("新增长期项目", style = MaterialTheme.typography.bodyLarge)
-                }
-                state.totalCount?.let { Text("当前列表 $it 条长期项目", style = MaterialTheme.typography.bodyMedium,
+                state.totalCount?.let { Text("当前列表 $it 条 · 未结束", style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant) }
                 state.error?.let {
                     Text(it, Modifier.testTag("project-list-error"), style = MaterialTheme.typography.bodyLarge,

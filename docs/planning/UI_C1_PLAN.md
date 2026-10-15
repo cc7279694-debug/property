@@ -198,3 +198,22 @@ M10原652是旧147输入的历史PASS；新增5项实际2PASS/3FAIL，UI起点�
 已知全库事实预检性能仍归M22；API26/真机/OEM/Release/完整TalkBack/LMK/断电及M11/M12往返保留NOT_RUN。缓存和首页请求发布保护已实施并有定向测试，实际边界见阶段1报告，不扩张成整个进程硬预算或原子快照。Q05 USER_CONFIRMED，不整体关闭。
 
 阶段0在`edc8be7`完成；本次用户已确认本规格/计划并只授权Task1～5。当前实施结果、输入、测试和样板见阶段1报告；完成后停在VISUAL_REVIEW_REQUIRED，等待实际看图，不能据此开始Task6～8或M11。原阶段0证据/checkpoint保留当时NOT_RUN。
+
+## 阶段1精修 R1（用户已授权）
+
+**Goal：**落实用户转交的53fd944截图审查六项CHANGES_REQUESTED，使三页首屏接近已选参考的数字/图文层级，并消除新增按钮覆盖。
+
+**Locked：**既定色板/系统字体缩放、产品与页面职责、真实计数/冻结成本口径、Room/DAO/领域/Repository/媒体协议、Nav3守卫、身份/依赖/签名、全部旧测试身份及JPEG三FAIL。
+
+**Adjustable：**HomeShell的真实双指标、单空态与标题栏新增；ProjectListScreen紧凑头部；ProjectDetailScreen封面/指标比例和返回/菜单；CoverDisplay只增加可选裁切比例；相关UI测试和隔离展示证据。无Task6～8、M11或M10修复。
+
+- [x] 原工作树/远端/设备/七表/媒体/设置核对，保留53fd944全部旧证据。
+- [x] 新布局测试先真实RED，再最小改UI。首页双数字/空态唯一/新增与内容几何不交叠；列表首卡位置/200%头部；详情封面/指标同首屏、48dp短返回与完整可读菜单。原测试只做等价选择器/布局驱动适配。
+- [x] 同一候选定向执行新旧UI/全部35旧UI新增方法/三VM及项目流程/媒体入口/原5JPEG，JVM回归、Lint和Debug构建；真实结果逐方法/输入/退出码归档，不能称Task8全量。
+- [x] 最终安装APK拍MainActivity三页深浅六图、360dp200%与新增不遮挡。隔离真实Room/原Repository/引擎+测试时原创封面另拍合成物品六图；独立空Room深浅两图。每图原像素/来源/主题/大小/实际APK指纹登记。
+- [x] 原七表、两封面、默认指针与设置精确核对，恢复guest所有改动；检查差异/链接/敏感信息，提交推送UI分支。
+- [x] 停在VISUAL_REVIEW_REQUIRED — UI-C1（视觉精修复审），等用户看图，不自授接受。
+
+本轮计划不另起业务模块或平行当前状态；实际结果记新精修报告与checkpoint，不改阶段1旧交付或正式矩阵。
+
+本轮实际：181输入，86 JVM全PASS；161 Android157 PASS/4 FAIL，原表单同输入单项复跑PASS但保留偶发时序风险，JPEG三FAIL原样。27张原图已分源，旧692身份＋新增9＝701，全量Task8未跑。新[精修报告](../evidence/UI-C1-refinement-verification.md)和[图册](../evidence/ui-c1/refinement/GALLERY.md)为当前证据；上方174输入等属于53fd944初次交付历史，不覆盖旧结论。停止VISUAL_REVIEW_REQUIRED，未批准视觉。

@@ -19,6 +19,7 @@ import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertContentDescriptionContains
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.StateRestorationTester
@@ -195,7 +196,7 @@ class ProjectLifecycleFlowTest {
         openHistory()
         compose.onNodeWithTag("project-history-row-$id").performClick()
         waitForDetail()
-        compose.onNodeWithTag("project-detail-back").assertTextContains("返回历史档案")
+        compose.onNodeWithTag("project-detail-back").assertContentDescriptionContains("返回历史档案")
         compose.onNodeWithTag("tab-review").assertIsSelected()
         assertEquals(5L, model.state.value.detail.detail!!.cost.heldDays)
     }

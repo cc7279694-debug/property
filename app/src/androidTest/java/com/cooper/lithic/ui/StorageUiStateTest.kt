@@ -11,6 +11,7 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -146,7 +147,7 @@ class StorageUiStateTest {
         compose.onAllNodes(hasText("¥0.00", substring = true) and
             hasAnyAncestor(hasTestTag("home-record-overview"))).assertCountEquals(0)
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
-        compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
+        compose.onNodeWithContentDescription("已录入 1 条长期项目").assertIsDisplayed()
         compose.onNode(hasText("¥0.00") and
             hasAnyAncestor(hasTestTag("home-project-${snapshot.projects.single().id}")), useUnmergedTree = true)
             .performScrollTo().assertIsDisplayed()

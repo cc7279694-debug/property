@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.home.UIC1RefinedHomeTest" tests="50" failures="4" errors="0" skipped="0" time="182.217" timestamp="2026-10-15T12:18:58" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="empty_home_has_one_hero_without_repeated_empty_sections" classname="com.cooper.lithic.feature.home.UIC1RefinedHomeTest" time="3.382" />
+  <testcase name="overview_has_two_separate_real_numeric_metrics_with_history_scope" classname="com.cooper.lithic.feature.home.UIC1RefinedHomeTest" time="2.647" />
+  <testcase name="narrow_double_font_add_action_is_measured_outside_scrollable_content" classname="com.cooper.lithic.feature.home.UIC1RefinedHomeTest" time="2.244" />
+  <testcase name="narrow_double_font_header_keeps_title_unclipped_and_both_icon_actions_reachable" classname="com.cooper.lithic.feature.project.UIC1RefinedListTest" time="1.96" />
+  <testcase name="compact_header_exposes_first_record_without_scrolling_and_retains_create_and_back" classname="com.cooper.lithic.feature.project.UIC1RefinedListTest" time="2.788" />
+  <testcase name="large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="3.014">
+    <failure>java.lang.AssertionError: Menu label must not clip or ellipsize at 200%: 编辑项目资料
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.project.UIC1RefinedDetailTest.large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable(UIC1RefinedDetailTest.kt:146)
+</failure>
+  </testcase>
+  <testcase name="long_return_name_at_200_percent_uses_non_overlapping_48dp_controls_with_full_accessible_names" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="2.482" />
+  <testcase name="saved_cover_precedes_cost_and_both_daily_cost_and_days_fit_normal_first_viewport" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="1.975" />
+  <testcase name="isolated_synthetic_records_and_original_covers_render_three_pages_in_both_themes" classname="com.cooper.lithic.ui.UIC1RefinedVisualEvidenceTest" time="10.458" />
+  <testcase name="isolated_empty_home_is_real_in_both_themes_and_cancel_add_does_not_write" classname="com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest" time="4.685" />
+  <testcase name="dismissing_the_add_sheet_does_not_start_either_creation" classname="com.cooper.lithic.feature.home.UIC1HomeSampleTest" time="2.972" />
+  <testcase name="project_option_only_calls_the_original_project_creation_callback" classname="com.cooper.lithic.feature.home.UIC1HomeSampleTest" time="2.438" />
+  <testcase name="failed_read_does_not_turn_a_stale_zero_into_a_confirmed_empty_ledger" classname="com.cooper.lithic.feature.home.UIC1HomeSampleTest" time="1.589" />
+  <testcase name="history_only_counts_offer_both_history_routes_instead_of_first_record" classname="com.cooper.lithic.feature.home.UIC1HomeSampleTest" time="2.498" />
+  <testcase name="dark_home_uses_the_same_subscription_creation_path" classname="com.cooper.lithic.feature.home.UIC1HomeSampleTest" time="2.739" />
+  <testcase name="successful_empty_home_has_one_first_record_action_instead_of_a_fab" classname="com.cooper.lithic.feature.home.UIC1HomeSampleTest" time="3.548" />
+  <testcase name="recorded_overview_does_not_offer_an_unimplemented_cost_summary" classname="com.cooper.lithic.feature.home.UIC1HomeSampleTest" time="2.488" />
+  <testcase name="refresh_in_progress_does_not_present_a_first_record_action" classname="com.cooper.lithic.feature.home.UIC1HomeSampleTest" time="1.983" />
+  <testcase name="narrow_large_text_form_keeps_ime_error_save_and_back_actions_reachable" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="4.061" />
+  <testcase name="unconfirmed_submission_locks_content_but_allows_safe_replay_action" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.551" />
+  <testcase name="failed_list_read_is_visible_and_keeps_prior_records_instead_of_a_fake_empty_state" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.742" />
+  <testcase name="committed_write_with_failed_refresh_only_offers_read_retry" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.577" />
+  <testcase name="failed_save_preserves_all_controlled_input_and_persistent_error" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.309" />
+  <testcase name="money_editor_uses_absolute_amount_and_selected_outlay_or_recovery" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.552" />
+  <testcase name="editing_project_details_does_not_offer_initial_money_history_changes" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.252" />
+  <testcase name="create_form_exposes_real_payment_date_zero_amount_and_controlled_category" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="13.895">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;2949b23, window-token=android.view.ViewRootImpl$W&#64;2949b23, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectScreensTest.create_form_exposes_real_payment_date_zero_amount_and_controlled_category(ProjectScreensTest.kt:74)
+</failure>
+  </testcase>
+  <testcase name="detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="1.882" />
+  <testcase name="in_flight_submission_disables_editing_and_duplicate_save_actions" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.468" />
+  <testcase name="project_list_opens_stable_identity_and_exposes_database_page_continuation" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.777" />
+  <testcase name="stale_edit_conflict_offers_explicit_reload_without_resubmitting_the_old_command" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.217" />
+  <testcase name="money_editor_preserves_failed_amount_date_and_description" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.033" />
+  <testcase name="not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.513" />
+  <testcase name="initial_edit_read_failure_preserves_raw_and_only_offers_read_recovery" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="2.157" />
+  <testcase name="end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="16.625">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;dd8aaff, window-token=android.view.ViewRootImpl$W&#64;dd8aaff, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+bhv=DEFAULT
+fitSides=
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero(ProjectLifecycleScreensTest.kt:73)
+</failure>
+  </testcase>
+  <testcase name="ended_detail_without_late_money_does_not_claim_post_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.286" />
+  <testcase name="end_validation_preserves_raw_dates_amount_reason_and_visible_errors" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.728" />
+  <testcase name="end_and_correction_forms_are_reachable_at_360dp_with_200_percent_font" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="4.242" />
+  <testcase name="missing_detail_never_presents_stale_costs_or_mutation_actions" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.775" />
+  <testcase name="end_pending_submission_locks_inputs_and_committed_refresh_only_reads" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.728" />
+  <testcase name="correction_initial_read_and_conflict_offer_reload_without_resubmitting" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.853" />
+  <testcase name="ended_detail_with_only_future_late_money_does_not_claim_an_observed_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.82" />
+  <testcase name="correcting_end_without_settlement_never_offers_creating_recovery" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.135" />
+  <testcase name="correcting_linked_settlement_keeps_the_existing_event_and_has_no_toggle_or_delete" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.521" />
+  <testcase name="delete_confirmation_states_are_explicit_and_do_not_allow_duplicate_or_unknown_cancel" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.584" />
+  <testcase name="detail_routes_regular_and_initial_corrections_separately_from_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="17.236">
+    <failure>androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W&#64;a4fb3e7, window-token=android.view.ViewRootImpl$W&#64;efc9b91, has-window-focus=false, layout-params-type=1002, layout-params-string={(408,147)(630x549) gr=TOP START CENTER ty=APPLICATION_SUB_PANEL fmt=TRANSLUCENT
+fl=WATCH_OUTSIDE_TOUCH HARDWARE_ACCELERATED
+bhv=DEFAULT
+fitTypes=STATUS_BARS NAVIGATION_BARS CAPTION_BAR
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, decor-view-string=PopupLayout{id=16908290, res-name=content, visibility=VISIBLE, width=630, height=549, has-focus=false, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(408,147)(630x549) gr=TOP START CENTER ty=APPLICATION_SUB_PANEL fmt=TRANSLUCENT
+fl=WATCH_OUTSIDE_TOUCH HARDWARE_ACCELERATED
+bhv=DEFAULT
+fitTypes=STATUS_BARS NAVIGATION_BARS CAPTION_BAR
+frameRateBoostOnTouch=true
+dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+at java.lang.Thread.getStackTrace(Thread.java:1960)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+at androidx.test.espresso.Espresso.pressBack(Espresso.java:237)
+at com.cooper.lithic.feature.project.ProjectLifecycleScreensTest.detail_routes_regular_and_initial_corrections_separately_from_end_settlement(ProjectLifecycleScreensTest.kt:243)
+</failure>
+  </testcase>
+  <testcase name="ended_detail_with_real_observed_late_money_explains_its_included_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="1.983" />
+  <testcase name="history_preserves_visible_rows_when_read_fails_and_exposes_database_continuation" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="2.881" />
+  <testcase name="correction_keeps_direction_and_role_read_only_and_explains_real_refund" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="3.508" />
+  <testcase name="subscription_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="1.841" />
+  <testcase name="project_without_cover_exposes_safe_placeholder_and_add_cover_entry" classname="com.cooper.lithic.feature.media.M10CoverEntryScreensTest" time="3.2" />
+</testsuite>

@@ -23,6 +23,7 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.StateRestorationTester
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -178,7 +179,8 @@ class NavigationShellTest {
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
         compose.onNodeWithText("暂无记录").assertIsDisplayed()
         compose.onAllNodes(hasText("¥0.00", substring = true)).assertCountEquals(0)
-        compose.onNodeWithText("还没有订阅服务").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("还没有订阅服务").assertDoesNotExist()
+        compose.onNodeWithTag("home-first-record").assertIsDisplayed()
         compose.onNodeWithTag("open-subscription-list").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("tab-review").performClick()
         compose.onNodeWithTag("review-screen").assertIsDisplayed()
@@ -195,7 +197,7 @@ class NavigationShellTest {
         assertEquals(1, snapshot.projects.size)
         assertEquals(0L, snapshot.moneyEvents.single().amountCents)
         render()
-        compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
+        compose.onNodeWithContentDescription("已录入 1 条长期项目").assertIsDisplayed()
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
         compose.onNodeWithTag("home-record-overview").assertIsDisplayed()
         compose.onAllNodes(hasText("¥0.00", substring = true) and

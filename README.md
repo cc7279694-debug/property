@@ -1,7 +1,7 @@
 # 砺石 LITHIC
 
 
-UI-C1独立支线：阶段0已书面批准，本轮仅Task1～5三页真实双主题样板。当前交付见[阶段1报告](docs/evidence/UI-C1-stage1-verification.md)，样板完成后停在VISUAL_REVIEW_REQUIRED等待用户看图；不进入Task6～8或M11。M10三项JPEG失败保持PENDING。
+UI-C1独立支线：阶段0已书面批准，本轮仅Task1～5三页真实双主题样板。53fd944初次样板被要求精修；当前见[视觉精修报告](docs/evidence/UI-C1-refinement-verification.md)及[27张分源原图](docs/evidence/ui-c1/refinement/GALLERY.md)，样板完成后停在VISUAL_REVIEW_REQUIRED等待用户看图；不进入Task6～8或M11。M10三项JPEG失败保持PENDING。
 
 纯本地 Android 长期成本记录 App，观察具体项目的陪伴时间、真实投入和日均成本。
 
@@ -24,7 +24,7 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 
 ## 文档入口
 
-UI-C1阶段0[设计规格](docs/design/UI_C1_SPEC.md)与[实施计划](docs/planning/UI_C1_PLAN.md)已书面批准，Task1～5三页真实样板已交付：[深浅截图与压力图](docs/evidence/ui-c1/stage1/GALLERY.md)。当前VISUAL_REVIEW_REQUIRED，等待用户实际看图；Task6～8未授权。M10 JPEG仍PENDING，正式矩阵及原分支不改。阶段0[历史证据](docs/evidence/UI-C1-verification.md)保留当时状态，当前执行取[阶段1报告](docs/evidence/UI-C1-stage1-verification.md)。
+UI-C1阶段0[设计规格](docs/design/UI_C1_SPEC.md)与[实施计划](docs/planning/UI_C1_PLAN.md)已书面批准，Task1～5三页样板已按CHANGES_REQUESTED精修：[本轮深浅截图与压力图](docs/evidence/ui-c1/refinement/GALLERY.md)；[旧19图](docs/evidence/ui-c1/stage1/GALLERY.md)保留历史。当前VISUAL_REVIEW_REQUIRED，等待用户实际看图；Task6～8未授权。M10 JPEG仍PENDING，正式矩阵及原分支不改。阶段0[历史证据](docs/evidence/UI-C1-verification.md)保留当时状态，当前执行取[精修报告](docs/evidence/UI-C1-refinement-verification.md)，[初次阶段1报告](docs/evidence/UI-C1-stage1-verification.md)只保留历史。
 
 | 阅读内容 | 入口 |
 |---|---|

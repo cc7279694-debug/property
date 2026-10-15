@@ -1,12 +1,17 @@
 package com.cooper.lithic.ui
 
 import android.content.Context
+import android.app.Activity
+import android.content.ContextWrapper
 import android.graphics.Bitmap
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
@@ -50,12 +55,26 @@ class UIC1EmptyVisualEvidenceTest {
             assertEquals(0L, state.projectCount)
             assertEquals(0L, state.subscriptionCount)
             var dark by mutableStateOf(false)
-            compose.setContent { LithicTheme(darkTheme = dark) { Surface { LithicNavigation(state) } } }
+            compose.setContent { LithicTheme(darkTheme = dark) {
+                val view = LocalView.current
+                SideEffect {
+                    val window = checkNotNull(emptyHostActivity(view.context)).window
+                    WindowCompat.setDecorFitsSystemWindows(window, false)
+                    WindowCompat.getInsetsController(window, view).apply {
+                        isAppearanceLightStatusBars = !dark
+                        isAppearanceLightNavigationBars = !dark
+                    }
+                }
+                Surface { LithicNavigation(state) }
+            } }
             for (theme in listOf("light", "dark")) {
                 compose.runOnIdle { dark = theme == "dark" }
                 compose.onNodeWithTag("home-first-record").assertIsDisplayed()
                 compose.onNodeWithTag("home-add-record").assertDoesNotExist()
                 compose.waitForIdle()
+                compose.waitUntil(10_000) {
+                    InstrumentationRegistry.getInstrumentation().uiAutomation.rootInActiveWindow?.packageName?.toString() == context.packageName
+                }
                 val image = checkNotNull(InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot())
                 val output = File(context.noBackupFilesDir, "ui-c1-visual/empty-home-$theme.png")
                 check(output.parentFile!!.mkdirs() || output.parentFile!!.isDirectory)
@@ -72,4 +91,10 @@ class UIC1EmptyVisualEvidenceTest {
             check(root.deleteRecursively())
         }
     }
+}
+
+private fun emptyHostActivity(context: Context): Activity? = when (context) {
+    is Activity -> context
+    is ContextWrapper -> emptyHostActivity(context.baseContext)
+    else -> null
 }

@@ -110,7 +110,9 @@ internal fun CoverThumbnail(assetId: String?, repository: MediaRepository?, pref
 
 /** Only verified current-generation bytes reach the decoder, never a source URI or temp path. */
 @Composable
-internal fun CoverDisplay(assetId: String?, repository: MediaRepository?, prefix: String, modifier: Modifier = Modifier) {
+internal fun CoverDisplay(assetId: String?, repository: MediaRepository?, prefix: String, modifier: Modifier = Modifier,
+    previewAspectRatio: Float = 16f / 9f) {
+    require(previewAspectRatio.isFinite() && previewAspectRatio > 0f)
     if (assetId == null) {
         Surface(modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.surfaceContainerLow, shape = MaterialTheme.shapes.medium) {
             Text("尚未设置封面", Modifier.padding(20.dp).testTag("$prefix-cover-empty"), style = MaterialTheme.typography.bodyLarge)
@@ -121,13 +123,13 @@ internal fun CoverDisplay(assetId: String?, repository: MediaRepository?, prefix
     BoxWithConstraints(modifier.fillMaxWidth()) {
         val density = LocalDensity.current
         val width = if (maxWidth.value.isFinite()) with(density) { maxWidth.roundToPx() }.coerceIn(1, 1600) else 1600
-        val read = coverRead(assetId, repository, CoverPreviewSize(width, (width * 9 / 16).coerceAtLeast(1)))
+        val read = coverRead(assetId, repository, CoverPreviewSize(width, (width / previewAspectRatio).toInt().coerceIn(1, 1600)))
         when (read) {
             CoverReadState.Reading -> Text("正在读取本地封面", Modifier.testTag("$prefix-cover-loading"), style = MaterialTheme.typography.bodyMedium)
             CoverReadState.Failed -> Text("此封面无法读取或校验。记录仍保留，可重新选择或移除封面。",
                 Modifier.testTag("$prefix-cover-error"), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyLarge)
             is CoverReadState.Ready -> Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Image(read.image, contentDescription = "已保存的本地封面", modifier = Modifier.fillMaxWidth().aspectRatio(16f / 9f)
+                Image(read.image, contentDescription = "已保存的本地封面", modifier = Modifier.fillMaxWidth().aspectRatio(previewAspectRatio)
                     .clip(MaterialTheme.shapes.small).clickable { enlarged = true }.testTag("$prefix-cover-image"), contentScale = ContentScale.Crop)
                 TextButton({ enlarged = true }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-cover-view")) { Text("查看封面") }
             }

@@ -4,9 +4,10 @@
 
 ## Current Stage
 
-- **UI-C1 阶段1 — VISUAL_REVIEW_REQUIRED（2026-10-15）**：已按用户及ChatGPT批准的阶段0从`edc8be772a795f40b44f15da79ebf62a529bc074`仅实施Task1～Task5，现在/项目列表/项目详情及必要共享装配。6张最终APK深浅正常图、2张独立空Room宿主空态图、360dp200%首页/详情和菜单/滚动原图见[图册](evidence/ui-c1/stage1/GALLERY.md)；待用户实际看图，不进入Task6～8。最终174输入下86 JVM全PASS，102 Android为99 PASS/3项原JPEG FAIL（合计188，185 PASS/3 FAIL/0跳过）；全部35新增PASS，原657方法身份保留，当前692。此前更广候选A及全部RED/失败历史分开留存，不能合成最终全量通过；Task8全量NOT_RUN。Lint/assemble独立成功，Lint0errors/23warnings。完整[报告](evidence/UI-C1-stage1-verification.md)与[checkpoint](checkpoints/2026-10-15-UI-C1-stage1.md)为本阶段依据，正式矩阵/原件不改。
-
-- UI样板APK本地`build/ui-c1-stage1/lithic-ui-c1-stage1-debug.apk`，13,254,803 bytes，SHA256 `f994d7820a1cb26ec0a11fe527b8e0befb3a8f1d415b62f776f915e20b067a78`，实际安装一致；code8/签名/权限/备份配置核对。仅既有API36，未重建/清数据；原七表所有字段、两私有封面字节、generation/ready/settings精确不变，12项guest设置已恢复。原DB/私人文件/APK不推送。空态宿主浅色系统栏不等于MainActivity系统栏；FAB浮层效果如实留图。真实手机/API26/OEM/Release/完整TalkBack/真实LMK及完整离线写入旅程NOT_RUN；airplane1/wifi0冷启浏览实测，connectivity诊断超时，不宣称defaultNetwork=none。
+- **UI-C1阶段1视觉精修 — VISUAL_REVIEW_REQUIRED（视觉精修复审）**：从`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`按用户转交的CHANGES_REQUESTED只精修六项。真实双计数/全空唯一新增/紧凑列表/封面与核心指标比例/不覆盖新增/短返回及可读菜单已实施。27张新原图分清MainActivity19、合成隔离6、空Room2，见[新图册](evidence/ui-c1/refinement/GALLERY.md)、[精修报告](evidence/UI-C1-refinement-verification.md)、[新checkpoint](checkpoints/2026-10-15-UI-C1-refinement.md)。待用户看图，不授予ACCEPTED/FROZEN，不进入Task6～8/M11。
+- 最终181登记输入：86 JVM全PASS；161 Android为157 PASS/4 FAIL（旧三JPEG＋旧合成表单点击超时），同输入未改方法单项复跑1 PASS，原4失败保留；两命令247唯一身份较晚结果244 PASS/3 FAIL，**不是一次全绿**。旧表单偶发时序根因未完全锁定；原692身份保留，新增9，全部44个UI新增方法在主运行PASS。Task8全量701回归NOT_RUN。独立Lint/assemble退出0，0 errors/23 warnings。真实系统360dp/200%菜单专项1 PASS；完整平台/辅助技术未跑范围不变。
+- 最终Debug APK本地`build/ui-c1-refinement/lithic-ui-c1-refinement-debug.apk`，13,273,760 bytes，SHA256 `05680d06032900531977d216e7719b2b3467649c817035568f2d32dc9c2d8ebd`，安装字节相同；身份/签名/权限/依赖/备份配置保持。原七表所有字段、两封面字节、generation/ready/settings和AVD描述配置精确不变，12项guest设置已恢复；未清库/重建AVD。App/测试APK、原DB与私有图片不推送。完整输入、命令、失败/排除原图与来源见新报告。
+- **53fd944阶段1初次交付已被要求精修，属于历史**：[原报告](evidence/UI-C1-stage1-verification.md)/[原19图](evidence/ui-c1/stage1/GALLERY.md)/[原checkpoint](checkpoints/2026-10-15-UI-C1-stage1.md)不改写。其174输入/692方法/185 PASS＋3 FAIL等只代表旧交付，不能当本轮测试或视觉批准。当前采用上面181输入/701身份/精修复审状态。
 
 - UI-C1阶段0文档及两图风格已经书面批准；其当时NOT_RUN与来源历史保留在[阶段0checkpoint](checkpoints/2026-10-15-UI-C1-stage0.md)及[阶段0证据](evidence/UI-C1-verification.md)。当前实际实现/测试须取阶段1报告，不能继续把“等待书面批准”当当前阻碍，也不能用批准书面设计替代用户看实际样板。
 
@@ -68,9 +69,9 @@
 
 ## Git
 
-- 当前UI工作区：`E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，仅分支`feat/ui-c1-visual-redesign`。本轮从已批准阶段0提交`edc8be772a795f40b44f15da79ebf62a529bc074`继续，原UI来源`41596820145dc4a3fa6d041728a59540d828108a`，未从main开始。实际提交SHA/推送一致性取最终Git回执，避免递归引用自身提交。
+- 当前UI工作区：`E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，仅分支`feat/ui-c1-visual-redesign`。本轮从被要求精修的阶段1提交`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`继续；阶段0批准基线仍为`edc8be772a795f40b44f15da79ebf62a529bc074`，原UI来源`41596820145dc4a3fa6d041728a59540d828108a`，未从main开始。实际提交SHA/推送一致性取最终Git回执，避免递归引用自身提交。
 - 原工作目录`E:/CODEX/砺石新APP`保持`feat/m10-local-cover-media`/`41596820145dc4a3fa6d041728a59540d828108a`；main保护`145326ddd4ce28abbf7c2706fe25f9d38c599c3a`。M10复核原基准d7e9、M09冻结57de897等来源及旧证据不改；不回写M10分支、不合并/force/自动PR或公开APK，不提交账本/私钥/私人照片。
 
 ## Next Recommended Task
 
-**先由用户查看UI-C1阶段1真实样板并书面确认是否允许Task6～8。**本轮不扩展其它页面、不自行授予视觉或独立验收通过。M10仍有三项JPEG拒绝FAIL，修复方案另行授权和独立复验；不能随UI整合或进入M11。Q03/Q04/Q06期限、Q05 USER_CONFIRMED及完整跨模块NOT_RUN、M00～M09历史NOTES保留。
+**先由用户与ChatGPT查看本轮27图精修样板，确认视觉是否达到预期。** 未确认不得进入Task6～8。本轮不扩展其它页面、不自行授予视觉或独立验收通过。M10仍有三项JPEG拒绝FAIL，修复方案另行授权和独立复验；不能随UI整合或进入M11。Q03/Q04/Q06期限、Q05 USER_CONFIRMED及完整跨模块NOT_RUN、M00～M09历史NOTES保留。

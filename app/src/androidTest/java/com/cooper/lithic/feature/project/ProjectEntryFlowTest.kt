@@ -15,6 +15,7 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -112,7 +113,7 @@ class ProjectEntryFlowTest {
         assertEquals(2, snapshot.moneyEvents.size)
         assertEquals(setOf(0L, 12345L), snapshot.moneyEvents.map { it.amountCents }.toSet())
         returnHome()
-        compose.onNodeWithText("已录入 2 条长期项目").assertIsDisplayed()
+        compose.onNodeWithContentDescription("已录入 2 条长期项目").assertIsDisplayed()
         reopenFixture()
         assertEquals(2L, repository.loadSummary().projectCount)
         assertEquals(0L, repository.loadProjectDetail(zeroId)!!.cost.netCents)
@@ -197,7 +198,7 @@ class ProjectEntryFlowTest {
         waitForList()
         assertRowAmount(id, "¥120.00")
         compose.onNodeWithTag("project-list-back").performClick()
-        compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
+        compose.onNodeWithContentDescription("已录入 1 条长期项目").assertIsDisplayed()
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
         waitForList()
         compose.onNodeWithTag("project-row-$id").performClick()
@@ -242,7 +243,7 @@ class ProjectEntryFlowTest {
         compose.onNodeWithTag("project-row-$id").assert(hasText("修订后的项目"))
         assertRowAmount(id, "¥200.00")
         compose.onNodeWithTag("project-list-back").performClick()
-        compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
+        compose.onNodeWithContentDescription("已录入 1 条长期项目").assertIsDisplayed()
     }
 
     private fun render() {

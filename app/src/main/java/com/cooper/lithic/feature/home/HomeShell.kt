@@ -1,13 +1,13 @@
 package com.cooper.lithic.feature.home
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.app.HomePreview
@@ -47,11 +48,19 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     var showAddMenu by remember { mutableStateOf(false) }
     val hasRecords = projectCount > 0L || subscriptionCount > 0L
     val confirmedEmpty = !hasRecords && !refreshing && !hasReadError
-    Box(modifier.fillMaxSize().testTag("home-screen")) {
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
-            .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 112.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp)) {
-            PageHeader("现在", subtitle = "记录长期拥有的物品与持续付费的服务。")
+    Column(modifier.fillMaxSize().testTag("home-screen")) {
+        // A measured toolbar action cannot overlap any point of the scroll viewport.
+        PageHeader("现在", Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 16.dp),
+            subtitle = "记录长期拥有，回看真实投入。", actions = {
+                if (hasRecords) FloatingActionButton({ showAddMenu = true },
+                    Modifier.size(48.dp).testTag("home-add-record"),
+                    containerColor = MaterialTheme.colorScheme.primary, contentColor = MaterialTheme.colorScheme.onPrimary) {
+                    LithicIcon(LithicIcon.Add, "新增记录", tint = MaterialTheme.colorScheme.onPrimary)
+                }
+            })
+        Column(Modifier.weight(1f).fillMaxWidth().testTag("home-scroll-content").verticalScroll(rememberScrollState())
+            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(20.dp)) {
             if (hasReadError) Text("当前显示上次读取结果", Modifier.testTag("home-stale-data"),
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.error)
             if (refreshing) Text("正在刷新本地记录", Modifier.testTag("home-refreshing"),
@@ -64,63 +73,79 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                         Text("新增记录", Modifier.padding(start = 8.dp), style = MaterialTheme.typography.bodyLarge)
                     }
                 }
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                    TextButton(onProjectList, Modifier.heightIn(min = 48.dp).testTag("open-project-list")) { Text("长期项目") }
+                    TextButton(onSubscriptionList, Modifier.heightIn(min = 48.dp).testTag("open-subscription-list")) { Text("订阅服务") }
+                }
             } else {
-                LithicCard(modifier = Modifier.testTag("home-record-overview"), emphasis = true) {
-                    Text("记录概览", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
-                    Text("已录入 $projectCount 条长期项目", style = MaterialTheme.typography.bodyLarge)
-                    Text("已录入 $subscriptionCount 条订阅服务", style = MaterialTheme.typography.bodyLarge)
+                Column(Modifier.testTag("home-record-overview"), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        CountMetric(projectCount, "长期项目", "已录入 $projectCount 条长期项目",
+                            Modifier.weight(1f).testTag("home-project-count"), LithicIcon.Project)
+                        CountMetric(subscriptionCount, "订阅服务", "已录入 $subscriptionCount 条订阅服务",
+                            Modifier.weight(1f).testTag("home-subscription-count"), LithicIcon.Subscription)
+                    }
                     Text("数量包含历史与已停止记录", style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                PreviewHeading("我的长期项目", "open-project-list", onProjectList)
-                val items = preview?.projects.orEmpty().take(3)
-                items.forEach { detail ->
-                    key(detail.project.id) {
-                        val time = "开始：${detail.project.startedOn}" +
-                            if (detail.cost.unavailableReason == null) "\n已持有 ${detail.cost.heldDays} 天" else ""
-                        val cover: (@Composable () -> Unit)? = if (detail.project.coverAssetId == null) null else {
-                            { CoverThumbnail(detail.project.coverAssetId, mediaRepository, "home-project-${detail.project.id}") }
+            if (!confirmedEmpty) {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    PreviewHeading("我的长期项目", "open-project-list", onProjectList)
+                    val items = preview?.projects.orEmpty().take(3)
+                    items.forEach { detail ->
+                        key(detail.project.id) {
+                            val time = "开始：${detail.project.startedOn}" +
+                                if (detail.cost.unavailableReason == null) "\n已持有 ${detail.cost.heldDays} 天" else ""
+                            val cover: (@Composable () -> Unit)? = if (detail.project.coverAssetId == null) null else {
+                                { CoverThumbnail(detail.project.coverAssetId, mediaRepository, "home-project-${detail.project.id}") }
+                            }
+                            EntryCard(detail.project.name, projectStatusLabel(detail), time, detail.cost.dailyRate,
+                                Modifier.testTag("home-project-${detail.project.id}"),
+                                onClick = { onOpenProject(detail.project.id) }, cover = cover)
                         }
-                        EntryCard(detail.project.name, projectStatusLabel(detail), time, detail.cost.dailyRate,
-                            Modifier.testTag("home-project-${detail.project.id}"),
-                            onClick = { onOpenProject(detail.project.id) }, cover = cover)
+                    }
+                    if (items.isEmpty()) {
+                        PreviewEmpty(projectCount, preview?.currentProjectCount, refreshing, hasReadError,
+                            "还没有长期项目", "查看历史档案", "home-project-history", onProjectHistory)
                     }
                 }
-                if (items.isEmpty()) {
-                    PreviewEmpty(projectCount, preview?.currentProjectCount, refreshing, hasReadError,
-                        "还没有长期项目", "查看历史档案", "home-project-history", onProjectHistory)
-                }
-            }
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                PreviewHeading("我的订阅", "open-subscription-list", onSubscriptionList)
-                val items = preview?.subscriptions.orEmpty().take(3)
-                items.forEach { detail ->
-                    key(detail.subscription.id) {
-                        val cover: (@Composable () -> Unit)? = if (detail.subscription.coverAssetId == null) null else {
-                            { CoverThumbnail(detail.subscription.coverAssetId, mediaRepository, "home-subscription-${detail.subscription.id}") }
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    PreviewHeading("我的订阅", "open-subscription-list", onSubscriptionList)
+                    val items = preview?.subscriptions.orEmpty().take(3)
+                    items.forEach { detail ->
+                        key(detail.subscription.id) {
+                            val cover: (@Composable () -> Unit)? = if (detail.subscription.coverAssetId == null) null else {
+                                { CoverThumbnail(detail.subscription.coverAssetId, mediaRepository, "home-subscription-${detail.subscription.id}") }
+                            }
+                            EntryCard(detail.subscription.name, subscriptionStatusLabel(detail.cost.displayStatus),
+                                "折算付费时长：${detail.cost.standardPurchasedDays}天\n历史平均日成本", detail.cost.historicalAverage,
+                                Modifier.testTag("home-subscription-${detail.subscription.id}"),
+                                onClick = { onOpenSubscription(detail.subscription.id) }, cover = cover,
+                                placeholderIcon = LithicIcon.Subscription)
                         }
-                        EntryCard(detail.subscription.name, subscriptionStatusLabel(detail.cost.displayStatus),
-                            "折算付费时长：${detail.cost.standardPurchasedDays}天\n历史平均日成本", detail.cost.historicalAverage,
-                            Modifier.testTag("home-subscription-${detail.subscription.id}"),
-                            onClick = { onOpenSubscription(detail.subscription.id) }, cover = cover,
-                            placeholderIcon = LithicIcon.Subscription)
+                    }
+                    if (items.isEmpty()) {
+                        PreviewEmpty(subscriptionCount, preview?.managedSubscriptionCount, refreshing, hasReadError,
+                            "还没有订阅服务", "查看已停止订阅", "home-subscription-history", onSubscriptionHistory)
                     }
                 }
-                if (items.isEmpty()) {
-                    PreviewEmpty(subscriptionCount, preview?.managedSubscriptionCount, refreshing, hasReadError,
-                        "还没有订阅服务", "查看已停止订阅", "home-subscription-history", onSubscriptionHistory)
-                }
             }
-        }
-        if (hasRecords) FloatingActionButton({ showAddMenu = true }, Modifier.align(Alignment.BottomEnd)
-            .padding(24.dp).testTag("home-add-record"), containerColor = MaterialTheme.colorScheme.primary,
-            contentColor = MaterialTheme.colorScheme.onPrimary) {
-            LithicIcon(LithicIcon.Add, "新增记录", tint = MaterialTheme.colorScheme.onPrimary)
         }
     }
     if (showAddMenu) AddRecordSheet({ showAddMenu = false }, onCreateProject, onCreateSubscription)
+}
+
+@Composable
+private fun CountMetric(count: Long, label: String, accessibleName: String, modifier: Modifier, icon: LithicIcon) {
+    LithicCard(modifier.semantics(mergeDescendants = true) { contentDescription = accessibleName }) {
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically) {
+            Text(count.toString(), Modifier.weight(1f), style = MaterialTheme.typography.displayLarge)
+            LithicIcon(icon, null)
+        }
+        Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
 }
 
 @Composable

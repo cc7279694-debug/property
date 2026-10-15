@@ -77,6 +77,8 @@ M00～M09均已独立验收冻结ACCEPTED / FROZEN — PASS WITH NOTES，全部�
 
 ## 7. UI-C1 当前独立支线授权（2026-10-15）
 
+**当前精修授权：**用户转交ChatGPT对`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`的19图审查：CHANGES_REQUESTED。只在阶段1调整双真实数量指标、紧凑列表头、详情封面/核心指标比例、单一全空新增区、无覆盖新增入口和大字体返回/菜单；可用完全隔离测试宿主、原创测试封面及真实领域计算展示合成物品。原QA/私人文件和默认指针不得覆盖，测试资源不进正式记录。旧证据不改，重新实际验证/留图，只推UI分支并停在`VISUAL_REVIEW_REQUIRED — UI-C1（视觉精修复审）`；不进入Task6～8或M11。
+
 **后续正式授权：**用户及ChatGPT已书面确认阶段0规格/计划，起点`edc8be772a795f40b44f15da79ebf62a529bc074`。本次明确执行Task1～Task5三页真实Android双主题样板及必要共用组件、封面缩略图、导航和新增菜单。完成测试/截图及UI分支提交推送后停在VISUAL_REVIEW_REQUIRED — UI-C1；不得进入Task6～Task8、修改M10分支或启动M11。下文阶段0等待文字保留为历史门禁，不再阻止本次已授权阶段1。
 
 用户本次完整v2契约替代旧UI提示词，实际来源见[设计规格](docs/design/UI_C1_SPEC.md)、[实施计划](docs/planning/UI_C1_PLAN.md)和[原字节v2](docs/design/ui-c1/source-v2/CODEX_PROMPT.txt)。本节是当前UI支线的专属阶段授权，优先于上文M10历史阶段的“仅推M10分支”限制；其余数据/安全/验收规则继承。

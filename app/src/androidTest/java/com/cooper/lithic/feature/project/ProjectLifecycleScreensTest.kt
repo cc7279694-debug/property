@@ -17,6 +17,7 @@ import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertContentDescriptionContains
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -227,7 +228,7 @@ class ProjectLifecycleScreensTest {
                 onCorrectMoney = { corrected = it }, onUpdateEnd = { updateEnd.incrementAndGet() },
                 onDelete = { deletion.incrementAndGet() }, backLabel = "返回历史档案")
         } }
-        compose.onNodeWithTag("project-detail-back").assertTextContains("返回历史档案")
+        compose.onNodeWithTag("project-detail-back").assertContentDescriptionContains("返回历史档案")
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-correct-event-$EVENT_ID"))
         compose.onNodeWithTag("project-correct-event-$EVENT_ID").performClick()
         assertEquals(EVENT_ID, corrected)

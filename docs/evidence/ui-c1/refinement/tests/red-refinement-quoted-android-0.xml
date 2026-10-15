@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite tests="0" failures="0" errors="0" skipped="0" time="0.239" timestamp="2026-10-15T12:03:59" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD)" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <system-err>Android device (emulator-5596) is not found.
+com.google.testing.platform.core.error.UtpException: ErrorName: UNDETERMINED
+NameSpace: com.google.testing.platform
+ErrorCode: 3999
+ErrorType: UNDETERMINED
+Message: Android device (emulator-5596) is not found.
+	at com.android.tools.utp.plugins.deviceprovider.ddmlib.DdmlibAndroidDeviceProvider$provideDevice$1.invoke(DdmlibAndroidDeviceProvider.kt:126)
+	at com.android.tools.utp.plugins.deviceprovider.ddmlib.DdmlibAndroidDeviceProvider$provideDevice$1.invoke(DdmlibAndroidDeviceProvider.kt:120)
+	at com.android.tools.utp.plugins.deviceprovider.profile.DeviceProviderProfileManager.recordSpan(DeviceProviderProfileManager.kt:77)
+	at com.android.tools.utp.plugins.deviceprovider.profile.DeviceProviderProfileManager.recordDeviceProvision(DeviceProviderProfileManager.kt:42)
+	at com.android.tools.utp.plugins.deviceprovider.ddmlib.DdmlibAndroidDeviceProvider.provideDevice(DdmlibAndroidDeviceProvider.kt:120)
+	at com.google.testing.platform.executor.DeviceProviderProxy$provideDevice$1$1.invoke(DeviceProviderProxy.kt:168)
+	at com.google.testing.platform.executor.DeviceProviderProxy$provideDevice$1$1.invoke(DeviceProviderProxy.kt:167)
+	at com.google.testing.platform.core.telemetry.common.noop.NoopDiagnosticsScope.recordEvent(NoopDiagnosticsScope.kt:35)
+	at com.google.testing.platform.core.telemetry.SequentialEventRecordRequest.record$java_com_google_testing_platform_core_telemetry_telemetry_api(EventRecordRequest.kt:71)
+	at com.google.testing.platform.core.telemetry.DiagnosticsExtKt.record(DiagnosticsExt.kt:27)
+	at com.google.testing.platform.core.telemetry.TelemetryKt.createEvent(Telemetry.kt:60)
+	at com.google.testing.platform.executor.DeviceProviderProxy.provideDevice(DeviceProviderProxy.kt:163)
+	at com.google.testing.platform.executor.SingleDeviceExecutor$execute$1.invoke(SingleDeviceExecutor.kt:167)
+	at com.google.testing.platform.executor.SingleDeviceExecutor$execute$1.invoke(SingleDeviceExecutor.kt:167)
+	at com.google.testing.platform.lib.cancellation.ProcessCancellationContext.runUnlessCancelled(ProcessCancellationContext.kt:159)
+	at com.google.testing.platform.executor.SingleDeviceExecutor.execute(SingleDeviceExecutor.kt:167)
+	at com.google.testing.platform.RunnerImpl.run(RunnerImpl.kt:132)
+	at com.google.testing.platform.server.strategy.NonInteractiveServerStrategy$run$exitCode$1$2.invoke(NonInteractiveServerStrategy.kt:126)
+	at com.google.testing.platform.server.strategy.NonInteractiveServerStrategy$run$exitCode$1$2.invoke(NonInteractiveServerStrategy.kt:126)
+	at com.google.testing.platform.core.telemetry.common.noop.NoopDiagnosticsScope.recordEvent(NoopDiagnosticsScope.kt:35)
+	at com.google.testing.platform.core.telemetry.SequentialEventRecordRequest.record$java_com_google_testing_platform_core_telemetry_telemetry_api(EventRecordRequest.kt:71)
+	at com.google.testing.platform.core.telemetry.DiagnosticsExtKt.record(DiagnosticsExt.kt:27)
+	at com.google.testing.platform.core.telemetry.TelemetryKt.createEvent(Telemetry.kt:60)
+	at com.google.testing.platform.server.strategy.NonInteractiveServerStrategy.run(NonInteractiveServerStrategy.kt:123)
+	at com.google.testing.platform.main.MainKt$main$3.invokeSuspend(Main.kt:74)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:108)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+</system-err>
+</testsuite>

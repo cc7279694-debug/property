@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.home.UIC1RefinedHomeTest" tests="8" failures="8" errors="0" skipped="0" time="60.078" timestamp="2026-10-15T12:09:12" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="empty_home_has_one_hero_without_repeated_empty_sections" classname="com.cooper.lithic.feature.home.UIC1RefinedHomeTest" time="4.613">
+    <failure>java.lang.AssertionError: Failed: assertDoesNotExist.
+Reason: Did not expect any node but found '1' node that satisfies: (Text + InputText + EditableText contains '我的长期项目' (ignoreCase: false))
+Node found:
+Node #23 at (l=42.0, t=1115.0, r=722.0, b=1190.0)px
+Text = '[我的长期项目]'
+[Heading]
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 8 siblings
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.assertDoesNotExist(SemanticsNodeInteraction.kt:101)
+at com.cooper.lithic.feature.home.UIC1RefinedHomeTest.empty_home_has_one_hero_without_repeated_empty_sections(UIC1RefinedHomeTest.kt:47)
+</failure>
+  </testcase>
+  <testcase name="overview_has_two_separate_real_numeric_metrics_with_history_scope" classname="com.cooper.lithic.feature.home.UIC1RefinedHomeTest" time="3.595">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'home-project-count' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.feature.home.UIC1RefinedHomeTest.overview_has_two_separate_real_numeric_metrics_with_history_scope(UIC1RefinedHomeTest.kt:31)
+</failure>
+  </testcase>
+  <testcase name="narrow_double_font_add_action_is_measured_outside_scrollable_content" classname="com.cooper.lithic.feature.home.UIC1RefinedHomeTest" time="3.534">
+    <failure>java.lang.AssertionError: Failed: assertExists.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-scroll-content')
+
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode$default(SemanticsNodeInteraction.kt:83)
+at com.cooper.lithic.feature.home.UIC1RefinedHomeTest.narrow_double_font_add_action_is_measured_outside_scrollable_content(UIC1RefinedHomeTest.kt:67)
+</failure>
+  </testcase>
+  <testcase name="narrow_double_font_header_keeps_title_unclipped_and_both_icon_actions_reachable" classname="com.cooper.lithic.feature.project.UIC1RefinedListTest" time="3.291">
+    <failure>java.lang.AssertionError: Failed to assert the following: (ContentDescription = [返回现在])
+Semantics of the node:
+Node #136 at (l=42.0, t=21.0, r=461.0, b=169.0)px, Tag: 'project-list-back'
+Focused = 'false'
+Role = 'Button'
+Text = '[返回现在]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, OnClick, RequestFocus, SetTextSubstitution, ShowTextSubstitution]
+MergeDescendants = 'true'
+Has 6 siblings
+Selector used: (TestTag = 'project-list-back')
+
+at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionEquals(Assertions.kt:141)
+at com.cooper.lithic.feature.project.UIC1RefinedListTest.narrow_double_font_header_keeps_title_unclipped_and_both_icon_actions_reachable(UIC1RefinedListTest.kt:85)
+</failure>
+  </testcase>
+  <testcase name="compact_header_exposes_first_record_without_scrolling_and_retains_create_and_back" classname="com.cooper.lithic.feature.project.UIC1RefinedListTest" time="2.672">
+    <failure>java.lang.AssertionError: A compact header must put the first real record within the first 160dp
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.feature.project.UIC1RefinedListTest.compact_header_exposes_first_record_without_scrolling_and_retains_create_and_back(UIC1RefinedListTest.kt:58)
+</failure>
+  </testcase>
+  <testcase name="large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="16.111">
+    <failure>java.lang.AssertionError: Menu label must not clip or ellipsize at 200%: 管理封面
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.project.UIC1RefinedDetailTest.large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable(UIC1RefinedDetailTest.kt:146)
+</failure>
+  </testcase>
+  <testcase name="long_return_name_at_200_percent_uses_non_overlapping_48dp_controls_with_full_accessible_names" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="16.487">
+    <failure>java.lang.IllegalStateException: Key not present: AccessibilityKey: ContentDescription - consider getOrElse or getOrNull
+at androidx.compose.ui.semantics.SemanticsConfiguration.get(SemanticsConfiguration.kt:49)
+at com.cooper.lithic.feature.project.UIC1RefinedDetailTest.long_return_name_at_200_percent_uses_non_overlapping_48dp_controls_with_full_accessible_names(UIC1RefinedDetailTest.kt:114)
+</failure>
+  </testcase>
+  <testcase name="saved_cover_precedes_cost_and_both_daily_cost_and_days_fit_normal_first_viewport" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="8.319">
+    <failure>java.lang.AssertionError: The saved image should introduce the item before its current cost
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.feature.project.UIC1RefinedDetailTest.saved_cover_precedes_cost_and_both_daily_cost_and_days_fit_normal_first_viewport(UIC1RefinedDetailTest.kt:92)
+</failure>
+  </testcase>
+</testsuite>

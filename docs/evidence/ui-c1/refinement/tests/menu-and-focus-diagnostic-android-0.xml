@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" tests="4" failures="1" errors="0" skipped="0" time="25.145" timestamp="2026-10-15T12:23:39" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable" classname="com.cooper.lithic.feature.project.UIC1RefinedDetailTest" time="5.709">
+    <failure>java.lang.AssertionError: Menu label must not clip or ellipsize at 200%: 编辑项目资料
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at org.junit.Assert.assertFalse(Assert.java:65)
+at com.cooper.lithic.feature.project.UIC1RefinedDetailTest.large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable(UIC1RefinedDetailTest.kt:179)
+</failure>
+  </testcase>
+  <testcase name="create_form_exposes_real_payment_date_zero_amount_and_controlled_category" classname="com.cooper.lithic.feature.project.ProjectScreensTest" time="6.629" />
+  <testcase name="end_form_only_records_recovery_after_explicit_opt_in_and_accepts_zero" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="7.131" />
+  <testcase name="detail_routes_regular_and_initial_corrections_separately_from_end_settlement" classname="com.cooper.lithic.feature.project.ProjectLifecycleScreensTest" time="4.765" />
+</testsuite>

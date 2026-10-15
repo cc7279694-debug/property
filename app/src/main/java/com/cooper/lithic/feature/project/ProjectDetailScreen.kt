@@ -2,6 +2,7 @@ package com.cooper.lithic.feature.project
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -10,12 +11,15 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -27,7 +31,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -40,6 +46,7 @@ import com.cooper.lithic.core.design.StatusBadge
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.media.MediaRepository
+import com.cooper.lithic.data.repository.ProjectDetail
 import com.cooper.lithic.feature.media.CoverDisplay
 import java.math.BigDecimal
 
@@ -60,39 +67,47 @@ internal fun ProjectDetailScreen(
     onEditCover: () -> Unit = {},
 ) {
     var moreExpanded by remember(state.detail?.project?.id) { mutableStateOf(false) }
+    val menuItemHeight = maxOf(48f,
+        MaterialTheme.typography.bodyLarge.lineHeight.value * LocalDensity.current.fontScale + 16f).dp
     Column(modifier.fillMaxSize().testTag("project-detail-screen")) {
         LazyColumn(Modifier.fillMaxSize().testTag("project-detail-content"),
             contentPadding = PaddingValues(horizontal = LithicSpacing.medium, vertical = LithicSpacing.xSmall),
-            verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+            verticalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
             item {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween) {
-                    TextButton(onBack, Modifier.weight(1f, fill = false).heightIn(min = 48.dp).testTag("project-detail-back")) {
+                    IconButton(onBack, Modifier.size(48.dp).testTag("project-detail-back")
+                        .semantics { contentDescription = backLabel }) {
                         LithicIcon(LithicIcon.Back, null)
-                        Text(backLabel, style = MaterialTheme.typography.bodyLarge)
                     }
                     if (!state.missing && state.detail != null) {
                         Box {
-                            TextButton({ moreExpanded = true }, Modifier.heightIn(min = 48.dp).testTag("project-more")) {
+                            IconButton({ moreExpanded = true }, Modifier.size(48.dp).testTag("project-more")
+                                .semantics { contentDescription = "更多操作" }) {
                                 LithicIcon(LithicIcon.More, null)
-                                Text("更多", style = MaterialTheme.typography.bodyLarge)
                             }
-                            DropdownMenu(moreExpanded, { moreExpanded = false }) {
-                                DropdownMenuItem(text = { Text("编辑项目资料") }, modifier = Modifier.testTag("project-edit"),
+                            DropdownMenu(moreExpanded, { moreExpanded = false }, Modifier.widthIn(min = 240.dp, max = 360.dp)) {
+                                DropdownMenuItem(text = { Text("编辑项目资料", style = MaterialTheme.typography.bodyLarge) },
+                                    modifier = Modifier.heightIn(min = menuItemHeight).testTag("project-edit"),
                                     onClick = { moreExpanded = false; onEdit() })
-                                DropdownMenuItem(text = { Text(if (state.detail.project.coverAssetId == null) "添加封面" else "管理封面") },
-                                    modifier = Modifier.testTag("project-cover-edit"), enabled = !state.loading && state.error == null,
+                                DropdownMenuItem(text = { Text(if (state.detail.project.coverAssetId == null) "添加封面" else "管理封面",
+                                    style = MaterialTheme.typography.bodyLarge) },
+                                    modifier = Modifier.heightIn(min = menuItemHeight).testTag("project-cover-edit"), enabled = !state.loading && state.error == null,
                                     onClick = { moreExpanded = false; onEditCover() })
                                 if (state.detail.project.endedOn == null) {
-                                    DropdownMenuItem(text = { Text("结束项目") }, modifier = Modifier.testTag("project-end"),
+                                    DropdownMenuItem(text = { Text("结束项目", style = MaterialTheme.typography.bodyLarge) },
+                                        modifier = Modifier.heightIn(min = menuItemHeight).testTag("project-end"),
                                         onClick = { moreExpanded = false; onEnd() })
                                 } else {
-                                    DropdownMenuItem(text = { Text("修正结束记录") }, modifier = Modifier.testTag("project-update-end"),
+                                    DropdownMenuItem(text = { Text("修正结束记录", style = MaterialTheme.typography.bodyLarge) },
+                                        modifier = Modifier.heightIn(min = menuItemHeight).testTag("project-update-end"),
                                         onClick = { moreExpanded = false; onUpdateEnd() })
                                 }
                                 HorizontalDivider()
-                                DropdownMenuItem(text = { Text("删除项目", color = MaterialTheme.colorScheme.error) },
-                                    modifier = Modifier.testTag("project-delete"), onClick = { moreExpanded = false; onDelete() })
+                                DropdownMenuItem(text = { Text("删除项目", color = MaterialTheme.colorScheme.error,
+                                    style = MaterialTheme.typography.bodyLarge) },
+                                    modifier = Modifier.heightIn(min = menuItemHeight).testTag("project-delete"),
+                                    onClick = { moreExpanded = false; onDelete() })
                             }
                         }
                     }
@@ -112,19 +127,46 @@ internal fun ProjectDetailScreen(
             }
             if (state.missing) item { Text("项目不存在，返回列表查看当前记录。", style = MaterialTheme.typography.bodyLarge) }
             state.detail?.takeUnless { state.missing }?.let { detail ->
+                if (detail.project.coverAssetId != null) {
+                    item { CoverDisplay(detail.project.coverAssetId, mediaRepository, "project", previewAspectRatio = 2.2f) }
+                } else {
+                    item {
+                        TextButton(onEditCover, Modifier.heightIn(min = 48.dp).testTag("project-cover-empty"), enabled = !state.loading && state.error == null) {
+                            LithicIcon(LithicIcon.Image, null)
+                            Text("尚未设置封面 · 添加封面", style = MaterialTheme.typography.bodyMedium)
+                        }
+                    }
+                }
                 item {
                     LithicCard(emphasis = true) {
-                        Text(detail.project.name, style = MaterialTheme.typography.headlineMedium,
-                            modifier = Modifier.testTag("project-detail-name").semantics { heading() })
-                        StatusBadge(projectStatusLabel(detail))
-                        Spacer(Modifier.height(LithicSpacing.xSmall))
-                        Text(if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal)
-                            "截至观察日的日均成本" else "当前日均成本", style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        AmountText(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"))
-                        if (detail.cost.unavailableReason == null) {
-                            Text("已持有${detail.cost.heldDays}天", style = MaterialTheme.typography.bodyLarge)
-                        } else Text("尚未开始，没有有效日均成本。", style = MaterialTheme.typography.bodyMedium)
+                        BoxWithConstraints(Modifier.fillMaxWidth()) {
+                            if (LocalDensity.current.fontScale >= 1.5f || maxWidth < 280.dp) {
+                                Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+                                    ProjectName(detail)
+                                    StatusBadge(projectStatusLabel(detail))
+                                }
+                            } else {
+                                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(LithicSpacing.small),
+                                    verticalAlignment = Alignment.Top) {
+                                    Column(Modifier.weight(1f)) { ProjectName(detail) }
+                                    StatusBadge(projectStatusLabel(detail))
+                                }
+                            }
+                        }
+                        BoxWithConstraints(Modifier.fillMaxWidth()) {
+                            if (LocalDensity.current.fontScale >= 1.5f || maxWidth < 300.dp) {
+                                Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
+                                    ProjectDailyRate(detail)
+                                    ProjectHeldDays(detail)
+                                }
+                            } else {
+                                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(LithicSpacing.medium),
+                                    verticalAlignment = Alignment.CenterVertically) {
+                                    Column(Modifier.weight(1f)) { ProjectDailyRate(detail) }
+                                    Column(Modifier.weight(1f)) { ProjectHeldDays(detail) }
+                                }
+                            }
+                        }
                         Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                         if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal && detail.cost.unavailableReason == null) {
@@ -134,16 +176,6 @@ internal fun ProjectDetailScreen(
                             Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。"
                                 else "结束后仍可补录真实尾款或退款；持有天数不再增加。",
                                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                    }
-                }
-                if (detail.project.coverAssetId != null) {
-                    item { CoverDisplay(detail.project.coverAssetId, mediaRepository, "project") }
-                } else {
-                    item {
-                        TextButton(onEditCover, Modifier.heightIn(min = 48.dp).testTag("project-cover-empty"), enabled = !state.loading && state.error == null) {
-                            LithicIcon(LithicIcon.Image, null)
-                            Text("尚未设置封面 · 添加封面", style = MaterialTheme.typography.bodyMedium)
                         }
                     }
                 }
@@ -205,6 +237,32 @@ internal fun ProjectDetailScreen(
             }
             item { Spacer(Modifier.height(LithicSpacing.medium)) }
         }
+    }
+}
+
+@Composable
+private fun ProjectName(detail: ProjectDetail) {
+    Text(detail.project.name, style = MaterialTheme.typography.headlineMedium,
+        modifier = Modifier.testTag("project-detail-name").semantics { heading() })
+}
+
+@Composable
+private fun ProjectDailyRate(detail: ProjectDetail) {
+    Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xxSmall)) {
+        Text(if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal)
+            "截至观察日的日均成本" else "当前日均成本", style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant)
+        AmountText(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"))
+    }
+}
+
+@Composable
+private fun ProjectHeldDays(detail: ProjectDetail) {
+    Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xxSmall)) {
+        if (detail.cost.unavailableReason == null) {
+            Text("持有时间", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("已持有${detail.cost.heldDays}天", style = MaterialTheme.typography.titleLarge)
+        } else Text("尚未开始，没有有效日均成本。", style = MaterialTheme.typography.bodyMedium)
     }
 }
 

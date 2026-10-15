@@ -3,6 +3,7 @@ package com.cooper.lithic.feature.home
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
@@ -22,8 +23,8 @@ class UIC1HomeSampleTest {
         compose.onNodeWithText("日均成本汇总尚未开放").assertDoesNotExist()
         compose.onNodeWithText("当前日均成本").assertDoesNotExist()
         compose.onNodeWithTag("home-record-overview").assertIsDisplayed()
-        compose.onNodeWithText("已录入 2 条长期项目").assertIsDisplayed()
-        compose.onNodeWithText("已录入 1 条订阅服务").assertIsDisplayed()
+        compose.onNodeWithContentDescription("已录入 2 条长期项目").assertIsDisplayed()
+        compose.onNodeWithContentDescription("已录入 1 条订阅服务").assertIsDisplayed()
     }
 
     @Test fun successful_empty_home_has_one_first_record_action_instead_of_a_fab() {

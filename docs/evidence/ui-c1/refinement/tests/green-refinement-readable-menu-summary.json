@@ -1,0 +1,1003 @@
+{
+  "phase": "green-refinement-readable-menu",
+  "command": [
+    "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+    ":app:connectedDebugAndroidTest",
+    "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.feature.project.UIC1RefinedDetailTest,com.cooper.lithic.ui.UIC1RefinedVisualEvidenceTest,com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "actualCommandExecutions": [
+    {
+      "command": [
+        "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP\\gradlew.bat",
+        ":app:connectedDebugAndroidTest",
+        "-Pandroid.testInstrumentationRunnerArguments.class=com.cooper.lithic.feature.project.UIC1RefinedDetailTest,com.cooper.lithic.ui.UIC1RefinedVisualEvidenceTest,com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest",
+        "--max-workers=2",
+        "--console=plain"
+      ],
+      "exitCode": 1,
+      "durationSeconds": 76.197
+    }
+  ],
+  "startedUtc": "2026-10-15T12:31:20.632215+00:00",
+  "durationSeconds": 76.206,
+  "exitCode": 1,
+  "sourceInputs": [
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "9181841994504144c17e77421661aa8b0be244e6509f4ed9c8b71646e2c98e71",
+      "bytes": 1470
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/AppContainer.kt",
+      "sha256": "ef01763e8a5ce561b9e7a7377cd0a1576cdca8b25a9c97cf3a3f34b2013982ed",
+      "bytes": 3924
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiState.kt",
+      "sha256": "ba8c24ea12869a1e820e33f766921a8ccb5dbd66f5034ee86ad2a3bbefb5bf50",
+      "bytes": 1424
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+      "sha256": "49860f5d7f75413fdeb5a0a565a6ab674623836fb11eb4ffd3d9be6bd63c806a",
+      "bytes": 7481
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApp.kt",
+      "sha256": "034d138b4456dfa24486e4a36e53a4fae88d90f4301521334e55f014d932942d",
+      "bytes": 3018
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApplication.kt",
+      "sha256": "61d63fb08148d47774b0f258cfa716a8bbfef56f3aeb47e477cae1aad9574f19",
+      "bytes": 360
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "sha256": "d92455e5e53d3b560098fe44d98067bbc538a4c2455ddbdc298ca98c4355422f",
+      "bytes": 33542
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt",
+      "sha256": "f84de7c1c045eeea015f5800d2753438178879fd52bde1fedd6d03935d5a4f52",
+      "bytes": 8591
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "sha256": "76f8b4717a08aea278d2e6fe61407e9e16b29745bef3992f5c62932a27a66653",
+      "bytes": 1803
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/SubscriptionNavigationPolicy.kt",
+      "sha256": "482610fd3d9fb3d5c82f151a2e0a57cd681f02ac96e15d1eafabcd1d27ec40a6",
+      "bytes": 804
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/AmountText.kt",
+      "sha256": "9c9204910edf0d3ab956102dd6add4af7ef65afc0970ec91308a1358b429e4e2",
+      "bytes": 2653
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/EntryCard.kt",
+      "sha256": "f47c7e67deabfe91549cb63557f1894c6992477ddbe4c64ca6bbc8324b2845c8",
+      "bytes": 4738
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/FormFields.kt",
+      "sha256": "3a6bed08928bbf685f7db9c2a5d04a5e1740d8f74bf58c9e1f081063777d052e",
+      "bytes": 4108
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt",
+      "sha256": "d9c6937c9dca56e1fe2e1664c484a62be521f51ffe76b72e4a50e4ed97862ec5",
+      "bytes": 5117
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/design/UiPrimitives.kt",
+      "sha256": "15b7e1513c7e2de6a24198e4d452fef18a6ce41736a72bc5f1e5026328b9e58b",
+      "bytes": 5569
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/DomainModels.kt",
+      "sha256": "3807573c32289b29ff0aca1251787a8c635ced85fc5af34608037e98a99a6bbb",
+      "bytes": 1021
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/model/Money.kt",
+      "sha256": "2025ecafeb3669055b385de0f1e31476cfd12d58e5e1bfcab5e37bc14946987b",
+      "bytes": 1670
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/core/time/BusinessClock.kt",
+      "sha256": "f07bedc77a51a238ba27e1cc118aba480b4694666a23d1020b26c85ca0eae803",
+      "bytes": 508
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/DataGenerationStore.kt",
+      "sha256": "fc225c43de75b01e6ba00713325b87995238e015d283baa0396a8a3ff8eeddc3",
+      "bytes": 16472
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/CategoryDao.kt",
+      "sha256": "31de922049256172a223204c697d2a49a2faeb5d87832b5ff801dccc18fd70b5",
+      "bytes": 513
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/CategoryNames.kt",
+      "sha256": "c39c6dc01c64fd5d66103f784ca24d5948328968bdb43e5af5a60eb52012e6d9",
+      "bytes": 465
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseConverters.kt",
+      "sha256": "daaa33a7a83071d480247e918fcc58ff85d0bb650c064591a81e173f684a4225",
+      "bytes": 1696
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseMigrations.kt",
+      "sha256": "b256e3580fa295c3b6d0abbbb7a66d594bd9651cb9b5a0c71fc80176a09a47fb",
+      "bytes": 2906
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/DatabaseSchemaValidation.kt",
+      "sha256": "2a7bb97c05d35374d5896f13537a81c1586cb07618d31a6ea86309620e563aef",
+      "bytes": 11188
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/LithicDatabase.kt",
+      "sha256": "504565c8ba2f29d57db6d3ef0b2afe979f2c37dba3f01bca5466af0871e8eb19",
+      "bytes": 6741
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/MediaDao.kt",
+      "sha256": "ecc7a39b605efc68d50bf893cb4227353a79bd92e1c8d896dbf20cb70327173a",
+      "bytes": 1439
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectDao.kt",
+      "sha256": "d52c187f3f8a78766b41f1331b5436fe27e22c8c03164138e11b2c6453f76692",
+      "bytes": 8382
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectEntities.kt",
+      "sha256": "79f047b0fd223be8d42e67b4232c207fbae9903df123577c7a85f105a19ce049",
+      "bytes": 3393
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/StoredValueValidation.kt",
+      "sha256": "bfbd110a93a92955c4cf83f6b6212f2122a2e37bfcd39a5d89dd5db24aadad89",
+      "bytes": 854
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/SubscriptionDao.kt",
+      "sha256": "3762c03a5d701b3c5e47ffebeea8c91e596f8f9867e78002ee618e018f41a879",
+      "bytes": 6696
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/SubscriptionEntities.kt",
+      "sha256": "9305fe143a7756853814be6f4c1d944b693f9b4020773941d00d81b27e25728e",
+      "bytes": 2537
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/AndroidImageCodec.kt",
+      "sha256": "198a6c18fee5894e5f5f128304f5b52ec83ccf381cf5805aa49cf979dfe0f61a",
+      "bytes": 16879
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/LocalImageStore.kt",
+      "sha256": "5532db06b465b4b581c103db7d693d9fc59c27ba3fbc64438c194a3a9fa5bb5f",
+      "bytes": 18958
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/MediaContracts.kt",
+      "sha256": "4111d1cc2a2a8eca03e45d71151b49784b7aec4ee2a19996d0f34bf5d7e5f626",
+      "bytes": 2472
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/MediaFileProtocol.kt",
+      "sha256": "8f283283c8cc596574799f4669f27e6abe26e4c9fc57be02ae7aff9d58550ac7",
+      "bytes": 11672
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/MediaRepository.kt",
+      "sha256": "5f93ded34ca555843e279d4c0f4f20b6498c20984bd75610c52c60c4b46ddc2f",
+      "bytes": 19807
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/LedgerReadRepository.kt",
+      "sha256": "f859bfd5ff1532f4d236fd195754d927cc12352a5501cf534acaba5d5bb8cedd",
+      "bytes": 1379
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/LocalWriteCoordinator.kt",
+      "sha256": "2b9b1a75d3a4d3d01ea11994f072f689db9f2ec8ebf29afb3a3c01f24de11091",
+      "bytes": 550
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectLifecycleCommands.kt",
+      "sha256": "195c8f2b88ea628e017f4a0fcba3525782af1ed9d542bb6e70831df20dfb3c5a",
+      "bytes": 1302
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectRepository.kt",
+      "sha256": "4c4a9bda253bae78b98235069ca6f2010fba22f1748274ea6cdc75a62c60ee7c",
+      "bytes": 8253
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/ProjectWriteRepository.kt",
+      "sha256": "f5b9e9f2836be0d655caa8e414331e9c18d7f506eb1e748548df158b7e5375a8",
+      "bytes": 29134
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionCommands.kt",
+      "sha256": "1efbe67d12e1e2ccfa438a18eb71d0cfb64122e8f2ff4281511ebd858a665d2c",
+      "bytes": 1852
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionLifecycleCommands.kt",
+      "sha256": "d0b1455d33afd39793532f7992a77d6e8f42432bb0b5db18c7a1d138d6937fed",
+      "bytes": 2598
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/repository/SubscriptionRepository.kt",
+      "sha256": "521bddc21c0bf1adaa5464ad4105dfffc3d00bb63d98bd1bd72a5cc9c92a68af",
+      "bytes": 50676
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/settings/SettingsStore.kt",
+      "sha256": "111c0877c59b2b1ea130331906ce3786b04e23662a9618db432a3d908f7fed43",
+      "bytes": 7859
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectCostEngine.kt",
+      "sha256": "b94f255023052ed3e60978ebd0bd7eb6b47ca70abafca17858b5bbdef9251795",
+      "bytes": 2280
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/project/ProjectLifecycleRules.kt",
+      "sha256": "43263e1caba1e91ca372d96f1db7e1ecc04bc0ef41bf2fd1a81f8b0f00e8d7e3",
+      "bytes": 582
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngine.kt",
+      "sha256": "896d0f24bb511e1025c01320b94312df28a6018aede61d330846f956bd48a4e6",
+      "bytes": 5552
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionIntervalRules.kt",
+      "sha256": "2c44a034acefba7114a51a8bd3f9b7eed9c8aa9920cc5aa2e4e19a4cae9cb9c0",
+      "bytes": 1437
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/domain/subscription/SubscriptionModels.kt",
+      "sha256": "d348cae9dedc6cb231d528da47b9cbb8ce61fa1c9cc49bce2667bc4cd30cf358",
+      "bytes": 1956
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/home/AddRecordSheet.kt",
+      "sha256": "d17bc7c5d9d9d510abcb9b1f757002e96b5c521e0182fc8ae404f64c75a65542",
+      "bytes": 3618
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/home/HomeShell.kt",
+      "sha256": "13f7d87f19880c222f262b5726f6f748973833e5183048692886a679fded221b",
+      "bytes": 11259
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverDisplay.kt",
+      "sha256": "c37d500524f11044cfccd36897d9ab801c75ba05c915a947bbca75384fe524be",
+      "bytes": 10323
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverPreviewLoader.kt",
+      "sha256": "57d73c8df781e489c06a4bb459bfc55d71fe6fd01e30af4d3c4e780786965f58",
+      "bytes": 7164
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverSavedState.kt",
+      "sha256": "b8319dba2c1de2df850ef491b2834e66e59502022e92d58e9db1edd07f197c97",
+      "bytes": 7383
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/CoverViewModel.kt",
+      "sha256": "f85a6cd62ffe8447790f4c3aee42f3fe4f5a5d20533b5e87a3fa4c4ee9683ab0",
+      "bytes": 20336
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/CoverPicker.kt",
+      "sha256": "9955667d873ff4eb3d417bfb2610ffa841b9676120b61f1feeebdf41a005311c",
+      "bytes": 6103
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/DeleteProjectDialog.kt",
+      "sha256": "ed29cfce0b92e9565a09a376cb56aa1bcc13286e0fb7a9db9d86c69c258422c4",
+      "bytes": 4046
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/EndProjectDialog.kt",
+      "sha256": "e99cb5b63b969c5e5dea40d46610211c9e4a339d15d3b815ec2d6a0f8e5d53af",
+      "bytes": 7664
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventCorrectionScreen.kt",
+      "sha256": "21b7abfb37258e63c0ba8bb52d5fa7ca1f57c029d8c335027d3c1f6c5da106e2",
+      "bytes": 3722
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventEditor.kt",
+      "sha256": "48f73a6fe705c503a669ad314f36af43efee168de36b1a9f5c6aa6311c5a549c",
+      "bytes": 4523
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt",
+      "sha256": "143d7dd60675bd0b247f1e4651030e3ea0ac20a42fceed1f480aba43861d5506",
+      "bytes": 17526
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectEditorScreen.kt",
+      "sha256": "68202223cf2463f67fa95821d8fcd6ae898cd3712d3d2ef51818dceaab95bace",
+      "bytes": 5843
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectHistoryScreen.kt",
+      "sha256": "12fe7b22e4668ae2a2aefda25e569a43ea3ce1f1276fa220152915ca8f13b409",
+      "bytes": 4180
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectInputs.kt",
+      "sha256": "0889c0865084b8b121ef9ae8db0c8fd91730127d812e66b8c04d89bc8d91590c",
+      "bytes": 8649
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectListScreen.kt",
+      "sha256": "eee84d615220d7692487dbd3fb95f58d4beeadd0d64525021170f0dd3352edab",
+      "bytes": 5924
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectUiModels.kt",
+      "sha256": "e7b83310a3f1958c46567f104059d25f3cc8a8c8176c0add4c5a340282a0bd2d",
+      "bytes": 5228
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt",
+      "sha256": "b4da126ecc9b4c5836352717fd2a57031e5c84ed9902bcb79bdd9c685e815fc4",
+      "bytes": 47509
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/review/ReviewShell.kt",
+      "sha256": "bacf20bac5d04f4487abec068d2f3806d6be47f2b0796018fecf3d12a945f623",
+      "bytes": 3280
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt",
+      "sha256": "3e7160248d3c40d44d6283a3d0cfd7ff874688051e65cfbbe05b884942235e62",
+      "bytes": 2630
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/RenewalEditorScreen.kt",
+      "sha256": "2c488a9cf39613726a618d8bde4a9a4ec5e62e4e017e7ea37adc72aa30cc50ae",
+      "bytes": 3654
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt",
+      "sha256": "ae93f25f271fd8fab9212dde96d78f121c45cef483391a556f1d5ca4c8150e43",
+      "bytes": 17881
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionEditorScreen.kt",
+      "sha256": "d4fd49f7ed7d5cc70563de30da6a8ec6e418982fa3977c7c6e77ecf40d7fa0b5",
+      "bytes": 12330
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt",
+      "sha256": "a57b195b49c5f4d812f61e6873899de597ef11836cac714fc8d96d632b63ef29",
+      "bytes": 4719
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionHistoryScreen.kt",
+      "sha256": "45578b7c36075880863f641db2486b02ce14a8ecdff4670614351a2bd2698a3f",
+      "bytes": 3885
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionListScreen.kt",
+      "sha256": "c3fb2032d598d8b13f7fcb0e7e80ed5480279b3fbf9bcbcedabb56e2bf42e3f2",
+      "bytes": 5844
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionStateDialog.kt",
+      "sha256": "73d89b3431721e8fbeca6675acb7706601b87e42e3abf8c4ddcee322d9841ae9",
+      "bytes": 7834
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionUiModels.kt",
+      "sha256": "4257af2c7faa8197cde7df8ebec1ea06f2044eced867eff4319101aa9a2de95c",
+      "bytes": 4256
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionViewModel.kt",
+      "sha256": "ebcea567f05c9324e2bcbffc27a54058b9a69e917b59d375e7fec93ca627c922",
+      "bytes": 52141
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_placeholder.xml",
+      "sha256": "a5e6b9edb88e74cef2583dee0d4bcd7d1f44329e942a89135b8b0471043375b5",
+      "bytes": 474
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_add.xml",
+      "sha256": "25f9e20e7802baed416926adfa49d0ede966a46acb6513460d7104db24d17f6d",
+      "bytes": 539
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_back.xml",
+      "sha256": "2ace805d90a420a46833920d3db11622a4b57f193b3049e7f17811335e29ab70",
+      "bytes": 551
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_chevron_right.xml",
+      "sha256": "ef7008d72777ed97f980d79d4701d0f95a44bfb9c32423146d57866d106b689c",
+      "bytes": 531
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_close.xml",
+      "sha256": "b527a3f4f996a0f2ca3d2faefb2d2bbff39bf92b6681c7eee056ff71c813fd4b",
+      "bytes": 537
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_image.xml",
+      "sha256": "abf40aa94c6c61ae1434b547977a36c0e95e8db180996193b33ebf9f095e6f7c",
+      "bytes": 585
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_image_error.xml",
+      "sha256": "40e0807b34e8f9c132720bccf6a58a9427f85f66b54d8c0c4cbde25149103170",
+      "bytes": 875
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_more.xml",
+      "sha256": "2efefe13ec3c436be5f3a1a029fd4e53bcea2cd3a0f80c3d27ce68b0f820e627",
+      "bytes": 565
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_now.xml",
+      "sha256": "c74b88daea272e2af8163f844b30c382d18973ab8b5a59ab87129851563615fa",
+      "bytes": 574
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_project.xml",
+      "sha256": "da181244d9561b913afff5d9920893b0cfea52fc238a6989eb03069efc395f84",
+      "bytes": 584
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_review.xml",
+      "sha256": "cec2ff6670cabd1b3ba38913e2a2d18087dd082965f6c87d3b81c38c8f7f81ca",
+      "bytes": 587
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_settings.xml",
+      "sha256": "9d05f220386e00aeba0ca446c76cfc60b2fe846ef2e7ecb72ff59fb132102df4",
+      "bytes": 599
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_ui_subscription.xml",
+      "sha256": "dd169e624114d350dbd7e7807a2b08af94020bf8086d8ebbb75a1ab8c47ca48f",
+      "bytes": 600
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "bc0e5e4c1d032a28919d573dfade56196748d70ccb80556d4e53639d9b076b78",
+      "bytes": 313
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "06b1c248f25639badfe9166626a7226792ed3af0daba734c75927c7ea0268497",
+      "bytes": 299
+    },
+    {
+      "path": "app/src/main/res/values-night/themes.xml",
+      "sha256": "e0b95c3d7ae5d5c0d756504babe47cc6cb1b352e9dea2940847871be02206410",
+      "bytes": 294
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "sha256": "b870cc4467465fa7135a72206ced9aa01131272382301dfcfa7be0ba26ada481",
+      "bytes": 499
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "60d637642543fc11016253c447e2d2af8352e249454f8d0d87cd03702dec9071",
+      "bytes": 1075
+    },
+    {
+      "path": "app/src/debug/res/values/strings.xml",
+      "sha256": "5fff0b848e24da015bc071599cb4d8df5bf12a895cb0bb41d9306df34ffd1b1c",
+      "bytes": 125
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/design/AmountFormatterTest.kt",
+      "sha256": "d7907b0041ccb512c30600f230479115580e81dfb3f168394820e2705015870a",
+      "bytes": 3052
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "sha256": "213c7a42d5e5f1cf8ac1a19f739249a079f21957ab8d151a95b9f8182270edd4",
+      "bytes": 2724
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "sha256": "e221dc0d5ec7e902dda70b6f0ff4440723fcfd3879e0b70c8da3e62c4b69989e",
+      "bytes": 1316
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "sha256": "1c8600d20d9ded785b21c45919443ecf84234ef6313aeacd4d4616fd8210f86b",
+      "bytes": 10493
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/project/ProjectLifecycleRulesTest.kt",
+      "sha256": "f5cfd5689c8c6f4e603eea10e8b6d40f70b801c213b8efce40970abc373c19f1",
+      "bytes": 2483
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+      "sha256": "5b4ae21ff851d5ef54ae6751555a64fbad77412f8752f4544c870db20501d868",
+      "bytes": 4377
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "sha256": "6c0aaab78675ed5053e86d8a493ea6d1b3692cd666f1fdd6da1decb423f3c73b",
+      "bytes": 17805
+    },
+    {
+      "path": "app/src/androidTest/AndroidManifest.xml",
+      "sha256": "978c52495c8802c56643b154ae976d6a0140395f57c0a1bfc0249c72e626dbc5",
+      "bytes": 596
+    },
+    {
+      "path": "app/src/androidTest/assets/m10_jpeg_integrity/complete.jpg",
+      "sha256": "2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907",
+      "bytes": 59334
+    },
+    {
+      "path": "app/src/androidTest/assets/m10_jpeg_integrity/entropy_cut_eoi_retained.jpg",
+      "sha256": "f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a",
+      "bytes": 20194
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/app/AppContainerTest.kt",
+      "sha256": "481f75ba923a7dcec38b70f46251e2be9bf51ae6399877fb428ebbc639e0a00e",
+      "bytes": 9686
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/app/UIC1HomePreviewTest.kt",
+      "sha256": "dac3e2eccd34992673ea0d5a6a9a02cc7e87964da90796a513648424e67e20f0",
+      "bytes": 14927
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/backup/DataGenerationStoreTest.kt",
+      "sha256": "eb354f6a4508d1de6fe17843a4b1234e0f74e5e70db5898c7ca5822ddb921e52",
+      "bytes": 15720
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/MetadataValidationTest.kt",
+      "sha256": "25f0ac919e457f9196089d3c11d44b0413416199514d456d93dd2a2d9f016236",
+      "bytes": 4829
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/ProjectDatabaseTest.kt",
+      "sha256": "faa948dff47286c51702e23d009bca5f382de4b5c15322c1e9fdc7383c51640d",
+      "bytes": 30669
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/SubscriptionMigrationTest.kt",
+      "sha256": "77282b9ddb098937dd2122ae8271f185e90a5df018ec696b90c79812ffca1319",
+      "bytes": 28311
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/local/V1DatabaseFixture.kt",
+      "sha256": "04ab9d94201716e9a0c4e86deeea9da7a971982847a4ea6c239e041ee826cc78",
+      "bytes": 10533
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/LocalImageStoreTest.kt",
+      "sha256": "5b06491c4f2af1c739be9f84dbadde674ba8be9ad1a17af4de5c2db9a216d183",
+      "bytes": 28223
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceFixtures.kt",
+      "sha256": "bdb652f06d62b435f49093e3c3b4f33ddb87771e59f0a52a8112ac8d59479740",
+      "bytes": 1033
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceProvider.java",
+      "sha256": "57fcc9b6441649c53adb2b846e93e0f84b9b19116333ba1e8d80fc1d53a34e90",
+      "bytes": 2976
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegFixtures.kt",
+      "sha256": "8de5a88387e718eb5e16e9184e7727cc9197fffc53ebba030585855845da215e",
+      "bytes": 2459
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegIntegrityTest.kt",
+      "sha256": "8f5c92b94e14455435cd20731c30fcdd2ae3313ec7e8a94546297a4bf2e8ebb9",
+      "bytes": 8138
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegOldCoverProtectionTest.kt",
+      "sha256": "a554388458d0c46636584d81858c503daf912ede74175ac04d01154697db129d",
+      "bytes": 12390
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ProcessBoundaryRunner.kt",
+      "sha256": "deeab1b99af9287c23301b1cb79a855a45a57ecfaca139c8147ae789b2eed4b3",
+      "bytes": 11724
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/MediaRepositoryTest.kt",
+      "sha256": "59e854b7c1a022b9d16a146223633113f65d23ced34795c53f8de6b2e6d58f5b",
+      "bytes": 35856
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectLifecycleRepositoryTest.kt",
+      "sha256": "0fc422d787a7341a786cb156af49a64f6448a27d7e56ef941916ee9246380a60",
+      "bytes": 33170
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectRepositoryTest.kt",
+      "sha256": "799c4a64ad83a4d3cf83e55d9d1ea4b94f3ffe7e40f1e57158158aa678ceaf86",
+      "bytes": 37213
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionLifecycleRepositoryTest.kt",
+      "sha256": "31de635372a13e780d51d7575108c4b278d731129c8f960a0bb7f93d32a5f4ad",
+      "bytes": 51247
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionRepositoryTest.kt",
+      "sha256": "09c7dc12d37df90466b858fb9f2823c7c16c292e5f42434f28d086389b1aa1ca",
+      "bytes": 28320
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/settings/PausedReturnDispatcher.kt",
+      "sha256": "9e2ff1e2d365a12b7240a3cba09ae40efd682a74b2371ea54ccb9a58779fe4c9",
+      "bytes": 1169
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/settings/SettingsStoreTest.kt",
+      "sha256": "79cef62bbd10d84a118baab4fe908591cf4cc0c9a4ae18f0eaa928308e833e51",
+      "bytes": 8080
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/home/UIC1HomeSampleTest.kt",
+      "sha256": "92a85be0ac7a090862a9aa058e6118598f4d215513b6bafc6cc699448d56a71a",
+      "bytes": 5951
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/home/UIC1RefinedHomeTest.kt",
+      "sha256": "0bfe688d3fcc002ed2e9fc03964fdf4bc7cb1294b94563b8227398d00098b137",
+      "bytes": 4061
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverEntryScreensTest.kt",
+      "sha256": "06d2b409d143dd566f6da4a2ecaebca1380a09a57d85579b8aaf8b772e178303",
+      "bytes": 3569
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverNavigationGuardTest.kt",
+      "sha256": "f3515bf93032b93722141d84c9969c576442aae52c994c32868893e1b4c8fcf5",
+      "bytes": 15030
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverRoutesTest.kt",
+      "sha256": "d57eb552be3cb69600d3d89c57564e723edec5bd83942ce41e2c926643802a28",
+      "bytes": 3514
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverViewModelTest.kt",
+      "sha256": "fb391295d5b0ea33d3af491dd3a5df0e9658c6655cb82aba4d036b440ba6ba9d",
+      "bytes": 29870
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/UIC1CoverPreviewTest.kt",
+      "sha256": "24eec3c8158bd015d67309619eebab478c5dadcc2e56e440df9a1267ab441d40",
+      "bytes": 25956
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectDateInputTest.kt",
+      "sha256": "4317754af0e35f991014dd193a3465d946a8d6a55e51c72cc8e58b468a1849a4",
+      "bytes": 5524
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectEntryFlowTest.kt",
+      "sha256": "d9d88385ab518663216b46b792adc9341d743aff7cc65a6897470723dada5d80",
+      "bytes": 17261
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleFlowTest.kt",
+      "sha256": "b1a1bd663a665c1974f8e2166b358d33d850c1deba6259714fb6dd2ff7a1be3a",
+      "bytes": 27545
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleRoutesTest.kt",
+      "sha256": "ca3b4467ab37fbfe7983969f738a2981ca3917dbce796b667f164d0f5da4306a",
+      "bytes": 3173
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleScreensTest.kt",
+      "sha256": "450643ce0efdd9e8f9bc3b99f30426425d3a6763dc967763da9dc2f03314525c",
+      "bytes": 22768
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt",
+      "sha256": "403c43c453beee335a80e5857fd8e620c7bc957395f73fda6c2083b9524b0c8d",
+      "bytes": 43063
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectNavigationGuardTest.kt",
+      "sha256": "6b84b05c475466d3c6d042177facae3407538ba301885ad16819e69234f455db",
+      "bytes": 12074
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectRoutesTest.kt",
+      "sha256": "f8cfff471fd2c760263af6efd17eaef7364687e6e6d8f2a396e01eb867cf756c",
+      "bytes": 1657
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectScreensTest.kt",
+      "sha256": "8aeb5e7154b21788d0d77112ff837f427157bc662217a53a31c0a32934d8b57d",
+      "bytes": 19761
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt",
+      "sha256": "7d1db2514fb57fe5d30e7ac45e7c0eecfa3f5abd5f30b55b75e49fb96b053682",
+      "bytes": 29657
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1ProjectSampleTest.kt",
+      "sha256": "785a88c7f99d4a24bc157c69553f402c9d6f333e582072c5f5af71930d77c1bb",
+      "bytes": 2125
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1RefinedDetailTest.kt",
+      "sha256": "29a2b34b87636b460476daa601e94fb1384f339ad3c09c090f5802dde364ad26",
+      "bytes": 15539
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1RefinedListTest.kt",
+      "sha256": "a719ac4d6b6b65aaebfafa3d540ba1c7e3972921a4c4e902f2e3dff5794d7975",
+      "bytes": 5424
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionFixtures.kt",
+      "sha256": "67480918f2d45d9a27b4d640e5b81a696691b4fbe0ce2b606b77f82024738cdf",
+      "bytes": 10073
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleFlowTest.kt",
+      "sha256": "f7ec0763e7ee0d576b7e133b07bf97107e49bb2a852adb2fdd5c0ca11e4c4d18",
+      "bytes": 17616
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleViewModelTest.kt",
+      "sha256": "23ba44044b78442d6e8947e70dad6323bcfbcae69d9fe1b14315d4926e69c105",
+      "bytes": 27968
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationFlowTest.kt",
+      "sha256": "08b0f8965af8e79dc7c2b9cdb4db440de2038f257fac511102069efa0d7214f8",
+      "bytes": 5343
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationGuardTest.kt",
+      "sha256": "2c1c0f2004c54f7e970b23704df9b36335b2299077647e527e513d5b9caa683d",
+      "bytes": 6005
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionRoutesTest.kt",
+      "sha256": "9fd3c7d123cbb16870da29b3dc13e64ac7ead935265c161513b3b1f514f315d4",
+      "bytes": 3312
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionScreensTest.kt",
+      "sha256": "9fe901e9b8f7a59ce84594a3c895067487efbe8395f954a22e185524276f4a56",
+      "bytes": 6317
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionViewModelTest.kt",
+      "sha256": "213707742503e3f6185e733ebca1cbb27d5c1e942acff20f83930042e2f85edd",
+      "bytes": 5633
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionNavigationGuardTest.kt",
+      "sha256": "b16c900fa9e611fac579ead1b6d06fb1fc48626a0e0a9e7673f3f47891bf29f1",
+      "bytes": 19901
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt",
+      "sha256": "6f84f3a7019da007294536f43356b191866b616a808a10df561c88e60aff0c96",
+      "bytes": 34684
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRoutesTest.kt",
+      "sha256": "da8747312b3b6708472a8fef73fdc659f18c543464276b932c628126745b11fe",
+      "bytes": 3977
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionScreensTest.kt",
+      "sha256": "d51b3e339049422e7091b87b07b6badc49f45d016cd80097597794377836cee2",
+      "bytes": 17939
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionViewModelTest.kt",
+      "sha256": "519d24085c2a50954501d91c1e87e3768ffea2132f615b3ed00397d53f1f515f",
+      "bytes": 20312
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/ActivityNavigationTest.kt",
+      "sha256": "661d4ba3b086947ab7959fa836db84f5c89c26b3a52b7e738617f41b5cdd6697",
+      "bytes": 2617
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/NavigationShellTest.kt",
+      "sha256": "b837424c9013f395ef8b3cdce6d863824464310a59bcf2bf35068fe0b3c819bd",
+      "bytes": 16074
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/StorageUiStateTest.kt",
+      "sha256": "25b2ffe6932b1559783ac610a6379f3a17530830a461eec8a270f22969250700",
+      "bytes": 11597
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1EmptyVisualEvidenceTest.kt",
+      "sha256": "760928b610ddb3f3043065542e57f5f1bd7b3268b499b40e258f7fb35a778bc0",
+      "bytes": 5175
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1RefinedVisualEvidenceTest.kt",
+      "sha256": "2c8da84c05c2528d5235750aecccc2a60da4d61fbca811270319ac72e4de8e77",
+      "bytes": 20678
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1TestActions.kt",
+      "sha256": "fbe4bb9996b58dc26a1d8094fa31942db80a367b0af896141908178af1fb51cf",
+      "bytes": 1522
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1ThemeTest.kt",
+      "sha256": "06147159516480c626697f1be17eae453e597dea0de53e3b1695702617580483",
+      "bytes": 10124
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/UIComponentsTest.kt",
+      "sha256": "ec2f23feead76333af0538303bf52ad1053fac96b73b22f5a966f877474d0d60",
+      "bytes": 16993
+    },
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json",
+      "sha256": "a765bcde9a519ff68f1513b5a58d08c1702c2b6e6e8b798d561c4ef4cfe5eb6a",
+      "bytes": 11187
+    },
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/2.json",
+      "sha256": "00f1215ae6d3fcb3213c760fb7af1d1e7158580f206c9532a541c14857e94a78",
+      "bytes": 21700
+    },
+    {
+      "path": "gradlew",
+      "sha256": "b187b4c52e749f5760afdd6fadc31b2a98ad35fb249bf0dff03b72650f320409",
+      "bytes": 8733
+    },
+    {
+      "path": "gradlew.bat",
+      "sha256": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b",
+      "bytes": 2937
+    },
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "328c89754cc5a082288de4aef970f971878fb84b73377369761c60b746db38bf",
+      "bytes": 2814
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "393251b329a632d3d47d2fede86fc250544caff7b8026acf33fe627a3221ebc8",
+      "bytes": 325
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "a28c59f22bd3afff23266b5711b619633f5fc2cba26c56c1ef000ffac3ed53e9",
+      "bytes": 344
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "sha256": "82f8eeb76253b257667b60cf2757d7b9055fa7030b3e9d24f206e71038d89abf",
+      "bytes": 3116
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "c85fff2be83329fd8824ddf8c1005cd74b3e8b69110b404f57ab615c7ee9d9c7",
+      "bytes": 432
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "1f97506f7ca338e0f394aa1c98bc13ccbdf8c36b6c24eb0e90fdda78ab6d4245",
+      "bytes": 340
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+      "bytes": 43764
+    }
+  ],
+  "sourceZip": "green-refinement-readable-menu-source.zip",
+  "sourceZipSha256": "4c5207c380c22a5bd7f0e8aa26892563e4dab66f78ae1b808eeb9a414934c807",
+  "inputsStable": "PASS",
+  "reports": [
+    {
+      "kind": "android",
+      "path": "green-refinement-readable-menu-android-0.xml",
+      "sha256": "410cde3b80c7f216c12355941b19a5a28dffc984fe1079fe7c9c203ee81f7c93",
+      "bytes": 2116,
+      "counts": {
+        "tests": 5,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "devices": [
+        "Lithic_M01_API_36(AVD) - 16"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.UIC1RefinedDetailTest",
+      "name": "large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Action performScrollTo() failed.\nReason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'project-detail-outlay')\n\nat androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)\nat androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)\nat androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)\nat androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)\nat com.cooper.lithic.feature.project.UIC1RefinedDetailTest.large_text_more_menu_keeps_all_actions_readable_and_money_facts_remain_reachable(UIC1RefinedDetailTest.kt:219)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.UIC1RefinedDetailTest",
+      "name": "long_return_name_at_200_percent_uses_non_overlapping_48dp_controls_with_full_accessible_names",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.project.UIC1RefinedDetailTest",
+      "name": "saved_cover_precedes_cost_and_both_daily_cost_and_days_fit_normal_first_viewport",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1RefinedVisualEvidenceTest",
+      "name": "isolated_synthetic_records_and_original_covers_render_three_pages_in_both_themes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1EmptyVisualEvidenceTest",
+      "name": "isolated_empty_home_is_real_in_both_themes_and_cancel_add_does_not_write",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    }
+  ],
+  "total": 5,
+  "pass": 4,
+  "fail": 1,
+  "skipped": 0,
+  "jvm": 0,
+  "android": 5,
+  "original549Present": "NOT_CHECKED_PARTIAL_STAGE1",
+  "newDistinctTests": null
+}
