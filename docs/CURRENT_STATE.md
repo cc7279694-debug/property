@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **UI-C1 独立支线 — 阶段0 DESIGN_READY_FOR_CONFIRMATION（2026-10-15）**：当前UI分支`feat/ui-c1-visual-redesign`，worktree `E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，准确来源`41596820145dc4a3fa6d041728a59540d828108a`。已实际读取v2/旧正文、核对ZIP/manifest并打开两张原图，形成[设计规格](design/UI_C1_SPEC.md)和[实施计划](planning/UI_C1_PLAN.md)。当前仅文档/来源归档，无UI产品代码、APK或运行截图；T01～T14及本轮产品测试全部NOT_RUN。按用户v2第十节等待书面确认，之后仅三页真实样板，再待用户看图确认。以下Git/Next Recommended Task保留M10来源语境，本UI支线的下一步以本条为准，不执行JPEG修复。实际文档验证见[UI证据](evidence/UI-C1-verification.md)。原工作目录保持M10分支及原状态，未覆盖；UI提交SHA由最终Git回执核对。
+- UI-C1两图风格已确认，书面映射尚未确认；首页采用真实计数（含历史）/两类至多3条预览，不实施M13总额。原业务/持久结构/依赖/媒体安全协议/三VM守卫保持；M10 JPEG的三个精确拒绝FAIL仍阻塞冻结，Q05及既有NOTES/平台/完整往返NOT_RUN不变。正式ACCEPTANCE_MATRIX和历史证据不回写；未来与安全修复整合另行授权。
+
 - **M10 — PENDING，JPEG补充验证已复现，修复BLOCKED_AT_SCOPE_DECISION**：复核起点本地/远端均为 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`，工作区原先干净；分支 `feat/m10-local-cover-media`，M09冻结来源 `57de897917473f255d43dfb306a8433b366c00eb`。使用原字节合成fixture，在已有API36 AVD通过真实ContentResolver → LocalImageStore确认缺损JPEG被错误接受。新增5方法实跑2 PASS /3 FAIL（退出1、3m13s），生产代码未改；ImageDecoder同样SUCCESS且partialErrors为空。152份完整输入同字节的Lint/assemble另跑成功（退出0、1m22s，0 errors/23 warnings），不是完整回归通过。见[补充报告](evidence/M10-JPEG-supplement-verification.md)、[JSON](evidence/M10-JPEG-supplement-verification.json)及[新checkpoint](checkpoints/2026-10-14-M10-JPEG-supplement.md)。
 - 项目/订阅旧封面和完整资金/付款/状态事实在准备后保持原字节与元数据，测试未提交缺损图；但拒绝断言失败，失败清理断言未到达，M10-T03/T04该边界不能标PASS。有效原设备账本七表、两份私有封面及已安装APK字节实测不变；本轮未重建AVD/清数据/改时钟。完整严格JPEG校验需新增解码能力或显著扩展解析，按用户补充指令第5节提交证据和待授权方案后停止。正式ACCEPTANCE_MATRIX及历史652结果未改；新输入下完整JVM/Android回归NOT_RUN。Q05仍USER_CONFIRMED，M11/M12完整往返和全部平台NOT_RUN保持，不自授ACCEPTED/FROZEN，不进入M11。
 

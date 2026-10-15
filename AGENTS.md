@@ -75,4 +75,14 @@ M00～M09均已独立验收冻结ACCEPTED / FROZEN — PASS WITH NOTES，全部�
 
 完整工作流与报告格式见[执行规范](docs/EXECUTION_PROTOCOL.md)。测试状态为 PASS / FAIL / NOT_RUN / BLOCKED；不能把计划案例或构建通过替代真实业务验证。
 
+## 7. UI-C1 当前独立支线授权（2026-10-15）
+
+用户本次完整v2契约替代旧UI提示词，实际来源见[设计规格](docs/design/UI_C1_SPEC.md)、[实施计划](docs/planning/UI_C1_PLAN.md)和[原字节v2](docs/design/ui-c1/source-v2/CODEX_PROMPT.txt)。本节是当前UI支线的专属阶段授权，优先于上文M10历史阶段的“仅推M10分支”限制；其余数据/安全/验收规则继承。
+
+仅从`41596820145dc4a3fa6d041728a59540d828108a`在独立worktree、`feat/ui-c1-visual-redesign`实施及提交推送本轮文件，不回写M10分支。阶段0只交设计映射/规格/计划并停在DESIGN_READY_FOR_CONFIRMATION，待用户书面确认后才能修改产品代码。阶段1只做现在/长期项目列表/详情及共用组件的真实双主题样板，停在VISUAL_REVIEW_REQUIRED；用户实际看图确认前不得扩展其余页面。最终交付READY_FOR_REVIEW，不能自行冻结或进入M11。
+
+双主题共用布局/操作且跟随系统，不新增主题持久设置。Room v2、实体/迁移/DAO、领域引擎、Repository业务、owner/coordinator、媒体安全协议、应用身份/签名/versionCode/权限/工具链不改；不授权JPEG修复、JNI/NDK/CMake或新依赖。首页无假汇总/搜索/筛选，订阅两种日均/时长语义继承。所有旧业务操作、三VM守卫、固定身份及原测试断言保留。
+
+M10仍PENDING，原652仅历史PASS；新增5实跑2PASS/3FAIL，新152输入完整回归NOT_RUN。不得删/忽略JPEG失败或把UI结果当M10验收。正式ACCEPTANCE_MATRIX、原规划及历史证据不改；唯一CURRENT_STATE追加独立UI进度，UI验收另登记。只用已有专用AVD，不重建/wipe/清数据/改宿主时钟，不提交私人账本/原照片/密钥/APK。
+
 通知协议继承当前用户规范：只有目标全部完成且无待办时才发完成标记；存在阻塞、授权/选择需求或未解决失败时发阻塞标记。标记仅用于最终回复，不写进工具标题、进度或普通状态文本。

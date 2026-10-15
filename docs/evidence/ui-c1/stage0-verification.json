@@ -1,0 +1,698 @@
+{
+  "date": "2026-10-15",
+  "kind": "UI-C1 stage0 documentation verification",
+  "result": "PASS",
+  "notProductTest": true,
+  "notIndependentAcceptance": true,
+  "sourceHead": "41596820145dc4a3fa6d041728a59540d828108a",
+  "uiBranch": "feat/ui-c1-visual-redesign",
+  "sourceZipAndManifest": "PASS",
+  "referencesActuallyViewed": 2,
+  "v2SourceSha256": "92d93941e05d99ac2fad142695775995943ea0e2364cc024a9a4d2daac437b9e",
+  "sourceGitAppTree": "4fb4d6a47ebbbc286fa309c60695136ceea156b3",
+  "productAndTestGitContentUnchanged": true,
+  "productSourceMethods": 657,
+  "knownJpegFailuresHistoricalOnly": [
+    "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+    "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+    "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved"
+  ],
+  "knownJpegFailuresRerun": false,
+  "originalM10WorktreeUnchangedAndClean": true,
+  "originalM10RemoteAtSource": true,
+  "protectedMainUnchanged": true,
+  "protectedPaths": [
+    "app",
+    "gradle",
+    "gradlew",
+    "gradlew.bat",
+    "build.gradle.kts",
+    "settings.gradle.kts",
+    "gradle.properties",
+    "docs/ACCEPTANCE_MATRIX.md",
+    "docs/planning/original-v1",
+    "docs/ARCHITECTURE.md",
+    "docs/DECISIONS.md",
+    "docs/ROADMAP.md",
+    "docs/TOOLCHAIN_LOCK.md"
+  ],
+  "formalAcceptanceRegistryUnchanged": true,
+  "currentDocLinks": 118,
+  "links": [
+    {
+      "source": "docs/design/UI_C1_SPEC.md",
+      "target": "docs/design/ui-c1/source-v2/CODEX_PROMPT.txt"
+    },
+    {
+      "source": "docs/design/UI_C1_SPEC.md",
+      "target": "docs/design/ui-c1/source-v1/CODEX_PROMPT.txt"
+    },
+    {
+      "source": "docs/design/UI_C1_SPEC.md",
+      "target": "docs/design/ui-c1/source-v1/ui-reference-dark.png"
+    },
+    {
+      "source": "docs/design/UI_C1_SPEC.md",
+      "target": "docs/design/ui-c1/source-v1/ui-reference-light.png"
+    },
+    {
+      "source": "docs/design/UI_C1_SPEC.md",
+      "target": "docs/design/ui-c1/SOURCES.json"
+    },
+    {
+      "source": "docs/design/UI_C1_SPEC.md",
+      "target": "docs/evidence/ui-c1/stage0-verification.json"
+    },
+    {
+      "source": "docs/design/UI_C1_SPEC.md",
+      "target": "docs/planning/UI_C1_PLAN.md"
+    },
+    {
+      "source": "docs/planning/UI_C1_PLAN.md",
+      "target": "docs/design/UI_C1_SPEC.md"
+    },
+    {
+      "source": "docs/planning/UI_C1_PLAN.md",
+      "target": "docs/design/ui-c1/source-v2/CODEX_PROMPT.txt"
+    },
+    {
+      "source": "docs/planning/UI_C1_PLAN.md",
+      "target": "docs/evidence/M10-JPEG-supplement-verification.md"
+    },
+    {
+      "source": "docs/evidence/UI-C1-verification.md",
+      "target": "docs/design/ui-c1/source-v2/CODEX_PROMPT.txt"
+    },
+    {
+      "source": "docs/evidence/UI-C1-verification.md",
+      "target": "docs/design/UI_C1_SPEC.md"
+    },
+    {
+      "source": "docs/evidence/UI-C1-verification.md",
+      "target": "docs/planning/UI_C1_PLAN.md"
+    },
+    {
+      "source": "docs/evidence/UI-C1-verification.md",
+      "target": "docs/checkpoints/2026-10-15-UI-C1-stage0.md"
+    },
+    {
+      "source": "docs/evidence/UI-C1-verification.md",
+      "target": "docs/design/ui-c1/SOURCES.json"
+    },
+    {
+      "source": "docs/evidence/UI-C1-verification.md",
+      "target": "docs/evidence/ui-c1/stage0-verification.json"
+    },
+    {
+      "source": "docs/evidence/UI-C1-verification.md",
+      "target": "docs/evidence/M10-JPEG-supplement-verification.md"
+    },
+    {
+      "source": "docs/checkpoints/2026-10-15-UI-C1-stage0.md",
+      "target": "docs/design/UI_C1_SPEC.md"
+    },
+    {
+      "source": "docs/checkpoints/2026-10-15-UI-C1-stage0.md",
+      "target": "docs/planning/UI_C1_PLAN.md"
+    },
+    {
+      "source": "docs/checkpoints/2026-10-15-UI-C1-stage0.md",
+      "target": "docs/evidence/UI-C1-verification.md"
+    },
+    {
+      "source": "docs/checkpoints/2026-10-15-UI-C1-stage0.md",
+      "target": "docs/evidence/ui-c1/stage0-verification.json"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M10-JPEG-supplement-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/CURRENT_STATE.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M10-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/TOOLCHAIN_LOCK.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/design/UI_C1_SPEC.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/UI_C1_PLAN.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/UI-C1-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "PROJECT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M08_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M08-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M08-verification.json"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M08-files.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/checkpoints/2026-10-13-M08.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M09_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M09-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M09-verification.json"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M09-files.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/checkpoints/2026-10-13-M09.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M10_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M10-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M10-verification.json"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M10-files.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/checkpoints/2026-10-13-M10.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M10-JPEG-supplement-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M10-JPEG-supplement-verification.json"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/checkpoints/2026-10-14-M10-JPEG-supplement.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/CURRENT_STATE.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/ROADMAP.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/DECISIONS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/ARCHITECTURE.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/EXECUTION_PROTOCOL.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/README.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M00_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M01_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M02_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M03_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M04_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M05_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M07_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M07-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M07-verification.json"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/checkpoints/2026-10-12-M07.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/M06_CONTRACT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M06-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M06-verification.json"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/checkpoints/2026-10-12-M06.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M05-verification.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/evidence/M05-verification.json"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/checkpoints/2026-10-12-M05.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/TOOLCHAIN_LOCK.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/SPEC_ISSUES.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/BASELINE_COMPARISON.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/CLARIFICATIONS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "LITHIC_V1_产品与开发规划.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/original-v1/source.zip"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/planning/original-v1/lithic_v1_plan/README.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "PROJECT.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/CURRENT_STATE.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/DECISIONS.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/ARCHITECTURE.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/ROADMAP.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/planning/README.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "LITHIC_V1_产品与开发规划.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/SPEC_ISSUES.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/planning/M10_CONTRACT.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/EXECUTION_PROTOCOL.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/design/UI_C1_SPEC.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/planning/UI_C1_PLAN.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/design/ui-c1/source-v2/CODEX_PROMPT.txt"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/design/UI_C1_SPEC.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/planning/UI_C1_PLAN.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/UI-C1-verification.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M10-JPEG-supplement-verification.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M10-JPEG-supplement-verification.json"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/checkpoints/2026-10-14-M10-JPEG-supplement.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/m10-tests/final-split-verification.json"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/m10-device/manual/final-storage-device-proof.json"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/DECISIONS.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/planning/M09_CONTRACT.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M09-verification.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M09-verification.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M09-verification.json"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M09-files.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/checkpoints/2026-10-13-M09.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M08-verification.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M08-verification.json"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/evidence/M08-files.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/checkpoints/2026-10-13-M08.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/SPEC_ISSUES.md"
+    },
+    {
+      "source": "docs/CURRENT_STATE.md",
+      "target": "docs/ARCHITECTURE.md"
+    }
+  ],
+  "candidateContrast": [
+    {
+      "name": "light body",
+      "foreground": "#17221D",
+      "background": "#F6F5F1",
+      "ratio": 15.004,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "light secondary",
+      "foreground": "#596A61",
+      "background": "#FFFFFF",
+      "ratio": 5.739,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "light primary button",
+      "foreground": "#FFFFFF",
+      "background": "#365F4A",
+      "ratio": 7.26,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "light outline",
+      "foreground": "#647C6D",
+      "background": "#FFFFFF",
+      "ratio": 4.52,
+      "minimum": 3,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "dark body",
+      "foreground": "#F1F3ED",
+      "background": "#111815",
+      "ratio": 16.119,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "dark secondary",
+      "foreground": "#B4BFB7",
+      "background": "#1B2520",
+      "ratio": 8.315,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "dark primary button",
+      "foreground": "#17221D",
+      "background": "#9EBCAA",
+      "ratio": 7.972,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "dark outline",
+      "foreground": "#667D70",
+      "background": "#1B2520",
+      "ratio": 3.553,
+      "minimum": 3,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "light error",
+      "foreground": "#9A3D34",
+      "background": "#FFFFFF",
+      "ratio": 6.794,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "dark error",
+      "foreground": "#F2B6AC",
+      "background": "#1B2520",
+      "ratio": 9.055,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "light status",
+      "foreground": "#365F4A",
+      "background": "#E6EFE7",
+      "ratio": 6.176,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    },
+    {
+      "name": "dark status",
+      "foreground": "#C3D9CA",
+      "background": "#2D4135",
+      "ratio": 7.346,
+      "minimum": 4.5,
+      "result": "PASS",
+      "scope": "candidate pair only, not rendered UI"
+    }
+  ],
+  "candidateContrastNotRenderedValidation": true,
+  "credentialPatternScan": "PASS",
+  "uiAcceptance": [
+    {
+      "id": "UI-C1-T01",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T02",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T03",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T04",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T05",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T06",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T07",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T08",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T09",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T10",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T11",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T12",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T13",
+      "result": "NOT_RUN"
+    },
+    {
+      "id": "UI-C1-T14",
+      "result": "NOT_RUN"
+    }
+  ],
+  "jvm": "NOT_RUN",
+  "android": "NOT_RUN",
+  "lint": "NOT_RUN",
+  "assemble": "NOT_RUN",
+  "device": "NOT_RUN",
+  "apkGenerated": false,
+  "actualUiScreenshots": 0,
+  "writtenSpecApproval": "PENDING",
+  "sampleVisualApproval": "PENDING",
+  "stopReason": "User v2 section10 requires written confirmation after stage0 before product code",
+  "m10Status": "PENDING / three known rejection FAIL remain unresolved; no new product run",
+  "q05": "USER_CONFIRMED",
+  "m11m12Roundtrip": "NOT_RUN"
+}

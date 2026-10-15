@@ -21,6 +21,8 @@ Debug APK 输出在 `app/build/outputs/apk/debug/`。构建下载依赖与 App �
 
 ## 文档入口
 
+UI-C1当前只完成独立UI分支的阶段0[设计规格](docs/design/UI_C1_SPEC.md)与[实施计划](docs/planning/UI_C1_PLAN.md)，待用户书面确认；未修改产品代码、未生成UI APK/运行截图。M10 JPEG仍PENDING，正式验收登记和原分支不改。实际阶段0核查见[UI证据](docs/evidence/UI-C1-verification.md)。
+
 | 阅读内容 | 入口 |
 |---|---|
 | 项目是什么、明确不做什么 | [PROJECT.md](PROJECT.md) |
