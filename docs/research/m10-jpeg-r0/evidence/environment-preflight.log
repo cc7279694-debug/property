@@ -1,0 +1,195 @@
+{
+    "kind":  "ENVIRONMENT_PREFLIGHT_ONLY",
+    "recordedUtc":  "2026-10-16T04:46:36.7218191Z",
+    "worktree":  "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r0\\砺石新APP",
+    "branch":  "research/m10-jpeg-strict-r0",
+    "sourceHead":  "41596820145dc4a3fa6d041728a59540d828108a",
+    "tools":  [
+                  {
+                      "name":  "cmake",
+                      "found":  false,
+                      "path":  null
+                  },
+                  {
+                      "name":  "ninja",
+                      "found":  false,
+                      "path":  null
+                  },
+                  {
+                      "name":  "clang",
+                      "found":  false,
+                      "path":  null
+                  },
+                  {
+                      "name":  "clang-cl",
+                      "found":  false,
+                      "path":  null
+                  },
+                  {
+                      "name":  "gcc",
+                      "found":  false,
+                      "path":  null
+                  },
+                  {
+                      "name":  "cl",
+                      "found":  false,
+                      "path":  null
+                  },
+                  {
+                      "name":  "python",
+                      "found":  true,
+                      "path":  "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+                  },
+                  {
+                      "name":  "gh",
+                      "found":  true,
+                      "path":  "C:\\Program Files\\GitHub CLI\\gh.exe"
+                  },
+                  {
+                      "name":  "agent-reach",
+                      "found":  false,
+                      "path":  null
+                  },
+                  {
+                      "name":  "mcporter",
+                      "found":  false,
+                      "path":  null
+                  }
+              ],
+    "sdkLocations":  [
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk",
+                             "exists":  false,
+                             "children":  [
+
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk-bundle",
+                             "exists":  false,
+                             "children":  [
+
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmake",
+                             "exists":  false,
+                             "children":  [
+
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools",
+                             "exists":  true,
+                             "children":  [
+                                              "35.0.0",
+                                              "36.0.0",
+                                              "37.0.0"
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools",
+                             "exists":  true,
+                             "children":  [
+                                              "latest"
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\Android\\Sdk\\ndk",
+                             "exists":  false,
+                             "children":  [
+
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\Android\\Sdk\\ndk-bundle",
+                             "exists":  false,
+                             "children":  [
+
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\Android\\Sdk\\cmake",
+                             "exists":  false,
+                             "children":  [
+
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\Android\\Sdk\\build-tools",
+                             "exists":  false,
+                             "children":  [
+
+                                          ]
+                         },
+                         {
+                             "path":  "C:\\Users\\CDD\\AppData\\Local\\Android\\Sdk\\cmdline-tools",
+                             "exists":  false,
+                             "children":  [
+
+                                          ]
+                         }
+                     ],
+    "otherLocations":  [
+                           {
+                               "path":  "C:/Program Files/CMake/bin/cmake.exe",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "C:/Program Files/Microsoft Visual Studio",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "C:/Program Files (x86)/Microsoft Visual Studio",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "C:/BuildTools",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "C:/msys64",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "C:/mingw64",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "E:/Android/ndk",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "E:/Android/cmake",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "E:/AndroidSDK",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "E:/SDK",
+                               "exists":  false
+                           },
+                           {
+                               "path":  "C:/Program Files/Git/usr/bin/gpg.exe",
+                               "exists":  true
+                           }
+                       ],
+    "selectedEnvironmentPaths":  {
+                                     "ANDROID_HOME":  null,
+                                     "ANDROID_SDK_ROOT":  null,
+                                     "ANDROID_NDK_HOME":  null,
+                                     "ANDROID_NDK_ROOT":  null,
+                                     "NDK_HOME":  null,
+                                     "CMAKE_HOME":  null
+                                 },
+    "androidNativePoc":  "BLOCKED",
+    "hostNativePoc":  "BLOCKED",
+    "reason":  "No NDK/CMake in configured SDK locations, no C/C++ compiler in PATH or checked conventional locations.",
+    "scope":  "Targeted inventory, not a whole-disk proof that no compiler exists anywhere. No installation, build, device operation or broad environment dump."
+}

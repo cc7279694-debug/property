@@ -1,8 +1,15 @@
 # 当前项目状态
 
-状态日期：2026-10-14（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-16（Asia/Shanghai）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R0技术研究 — BLOCKED，待ChatGPT独立技术审查**：在独立`research/m10-jpeg-strict-r0`工作区，从锁定M10来源`41596820145dc4a3fa6d041728a59540d828108a`开展只读研究/隔离预检。已核对两张原JPEG的锁定SHA及确切删除字节、官方libjpeg-turbo3.2.0源码包SHA与GPG签名、既有APK四ABI及资源模型；不改生产代码、测试断言、构建/权限或JPEG/PNG协议。
+- **关键环境缺口**：已检查SDK及常规位置无NDK/CMake，PATH及常规位置无C/C++编译器；未安装工具。Windows宿主与Android严格解码PoC、native内存/CPU/取消/加载及新ABI/APK增量均NOT_RUN／未测；没有严格decoder返回码/警告实测，不得GO。A1/A2仅对后续隔离PoC给CONDITIONAL_GO；现有Android最小补强B由既有实测反证为NO_GO。
+- **模块状态继承**：本次用户明确确认、且已核对远端UI正式冻结文档提交`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`；UI-C1 ACCEPTED / FROZEN — PASS WITH NOTES，未将UI代码合入研究分支。M00～M09原冻结不变；M10仍PENDING，原3项JPEG拒绝FAIL、原M10-T03/T04边界保持；Q05 USER_CONFIRMED，M11/M12完整往返NOT_RUN，M11 NOT_AUTHORIZED。UI-C1 N1～N4、旧超时UNKNOWN及平台NOT_RUN继续保留。
+- 交接见[可行性报告](research/M10_JPEG_R0_FEASIBILITY.md)、[实验矩阵](research/M10_JPEG_R0_TEST_MATRIX.md)、[仅设计的生产提案](research/M10_JPEG_R0_PRODUCTION_PROPOSAL.md)。本轮只提交研究材料、非敏感证据和此状态记录；没有产品测试/构建/安装/设备操作或M10修复。提交推送后停止，不进入M11。
+
+以下M10及更早模块状态、测试结果与限制保留当时语境；当前研究授权和停止边界以上节为准。
 
 - **M10 — PENDING，JPEG补充验证已复现，修复BLOCKED_AT_SCOPE_DECISION**：复核起点本地/远端均为 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`，工作区原先干净；分支 `feat/m10-local-cover-media`，M09冻结来源 `57de897917473f255d43dfb306a8433b366c00eb`。使用原字节合成fixture，在已有API36 AVD通过真实ContentResolver → LocalImageStore确认缺损JPEG被错误接受。新增5方法实跑2 PASS /3 FAIL（退出1、3m13s），生产代码未改；ImageDecoder同样SUCCESS且partialErrors为空。152份完整输入同字节的Lint/assemble另跑成功（退出0、1m22s，0 errors/23 warnings），不是完整回归通过。见[补充报告](evidence/M10-JPEG-supplement-verification.md)、[JSON](evidence/M10-JPEG-supplement-verification.json)及[新checkpoint](checkpoints/2026-10-14-M10-JPEG-supplement.md)。
 - 项目/订阅旧封面和完整资金/付款/状态事实在准备后保持原字节与元数据，测试未提交缺损图；但拒绝断言失败，失败清理断言未到达，M10-T03/T04该边界不能标PASS。有效原设备账本七表、两份私有封面及已安装APK字节实测不变；本轮未重建AVD/清数据/改时钟。完整严格JPEG校验需新增解码能力或显著扩展解析，按用户补充指令第5节提交证据和待授权方案后停止。正式ACCEPTANCE_MATRIX及历史652结果未改；新输入下完整JVM/Android回归NOT_RUN。Q05仍USER_CONFIRMED，M11/M12完整往返和全部平台NOT_RUN保持，不自授ACCEPTED/FROZEN，不进入M11。
@@ -62,9 +69,9 @@
 
 ## Git
 
-- 当前目录 `E:/CODEX/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；仅功能分支 `feat/m10-local-cover-media`，来源 `feat/m09-subscription-lifecycle`，正式冻结起点 `57de897917473f255d43dfb306a8433b366c00eb`。开工本地/远端基线一致、工作区干净，目标此前不存在；从指定起点创建，不从main开始。
+- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r0/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；仅提交推送`research/m10-jpeg-strict-r0`，起点`41596820145dc4a3fa6d041728a59540d828108a`，非main。原`E:/CODEX/砺石新APP`保持M10来源分支/4159682，原UI工作区保持`feat/ui-c1-visual-redesign`/`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`；不修改这两处分支或工作目录。回写自身SHA与远端一致性以实际Git回执为准，避免递归自引用。
 - M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`与冻结回写57de897为历史依据。M10原交付及本次独立复核基准 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`；补充验证提交仅新增测试/必要合成资产/证据及当前交接，不是生产修复，最终SHA与推送结果由Git日志/最终回执核对，避免递归引用。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥、私人原图或真实个人数据。
 
 ## Next Recommended Task
 
-**由ChatGPT独立复核本次JPEG实测与最小修复提案，并确认是否授权受控严格JPEG预检的新依赖/构建范围。**补充材料READY_FOR_REVIEW，模块仍PENDING且存在3项真实FAIL；不得冻结或启动M11。生产APK与d7e9字节相同，不能当作修复版交付。旧历史、全部NOTES、Q03/Q04/Q06期限及Q05完整跨模块NOT_RUN继承。
+**BLOCKED — M10-R0 feasibility。停止等待ChatGPT独立技术审查，评估环境提案、A1/A2资源门槛及是否另行批准NDK/CMake和隔离native PoC。**本轮没有生产接入授权，M10继续PENDING／3 JPEG FAIL，UI-C1正式冻结不受影响，M11 NOT_AUTHORIZED。旧历史、全部NOTES、Q03/Q04/Q06期限及Q05完整跨模块NOT_RUN继承。

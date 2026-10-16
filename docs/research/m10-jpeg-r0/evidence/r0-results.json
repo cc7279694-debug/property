@@ -1,0 +1,83 @@
+{
+  "kind": "R0_RESEARCH_RESULT_NOT_DECODER_TEST",
+  "overall": "BLOCKED",
+  "reason": "Required NDK/CMake and host C compiler unavailable in inspected locations; native resource ceilings unproven. No toolchain installed.",
+  "sourceHead": "41596820145dc4a3fa6d041728a59540d828108a",
+  "uiFrozenDocumentationHead": "0dce7dd0725a54be4f0280870ef6ca47c48ea7ed",
+  "branch": "research/m10-jpeg-strict-r0",
+  "preflightRuns": [
+    {
+      "log": "locked-inputs-preflight.log",
+      "exit": 0,
+      "kind": "PREFLIGHT_ONLY"
+    },
+    {
+      "log": "upstream-verification.log",
+      "exit": 0,
+      "kind": "PREFLIGHT_ONLY"
+    }
+  ],
+  "lockedInputs": [
+    {
+      "file": "app/src/androidTest/assets/m10_jpeg_integrity/complete.jpg",
+      "bytes": 59334,
+      "sha256": "2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907",
+      "geometryOnly": {
+        "sofMarker": "0xc0",
+        "precision": 8,
+        "height": 256,
+        "width": 256,
+        "components": 3
+      },
+      "hasEoi": true,
+      "strictDecodeActual": "NOT_RUN",
+      "strictReturnCode": null,
+      "strictWarnings": null,
+      "strictErrors": null
+    },
+    {
+      "file": "app/src/androidTest/assets/m10_jpeg_integrity/entropy_cut_eoi_retained.jpg",
+      "bytes": 20194,
+      "sha256": "f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a",
+      "geometryOnly": {
+        "sofMarker": "0xc0",
+        "precision": 8,
+        "height": 256,
+        "width": 256,
+        "components": 3
+      },
+      "hasEoi": true,
+      "strictDecodeActual": "NOT_RUN",
+      "strictReturnCode": null,
+      "strictWarnings": null,
+      "strictErrors": null
+    }
+  ],
+  "sourceRelease": "3.2.0",
+  "sourceTarSha256": "6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e",
+  "gpgSignature": "VALIDSIG_FINGERPRINT_MATCH",
+  "strictDecoderRuns": 0,
+  "hostStrictDecoderRuns": 0,
+  "androidExperiments": 0,
+  "newFixturesGenerated": 0,
+  "strictReturnCodes": null,
+  "strictWarnings": null,
+  "nativePeakBytes": null,
+  "nativeCpuSeconds": null,
+  "nativeCancelAndFaultTests": "NOT_RUN",
+  "newAbiBuilds": "NOT_RUN",
+  "newApkDeltaBytes": null,
+  "recommendation": {
+    "A1": "CONDITIONAL_GO_FOR_FUTURE_ISOLATED_POC_ONLY",
+    "A2": "CONDITIONAL_GO_FOR_FUTURE_ISOLATED_POC_ONLY",
+    "B": "NO_GO_AS_ONLY_STRICT_GATE_FROM_HISTORICAL_API36_EVIDENCE",
+    "production": "NO_GO_UNTIL_RESOURCE_AND_COMPATIBILITY_GATES_PROVEN"
+  },
+  "moduleStatus": {
+    "UI-C1": "ACCEPTED / FROZEN \u2014 PASS WITH NOTES",
+    "M10": "PENDING; original three JPEG FAIL preserved",
+    "M11": "NOT_AUTHORIZED"
+  },
+  "noProductionFilesModified": true,
+  "noDeviceContacted": true
+}
