@@ -497,3 +497,26 @@ M00～M09冻结，M10 JPEG三项拒绝失败独立PENDING。视觉改版不能�
 ### Consequences
 
 只调整必要Compose展示及相关测试；原四层业务/媒体协议、Nav3守卫、身份、依赖和历史证据不变。以新精修报告的实际测试/原图为本轮依据，停在VISUAL_REVIEW_REQUIRED等待用户看图；不授予ACCEPTED/FROZEN，不开始Task6～8或M11。
+
+
+## 2026-10-16 — Preserve frozen Room export bytes across Windows checkouts
+
+### Decision
+
+Keep committed Room v1/v2 JSON exports byte-identical using scoped `app/schemas/** -text`; restore checkout-converted copies directly from the unchanged Git blobs. No schema/SQL/version/identity, migration, fixture constant or test assertion changes.
+
+### Context
+
+The first UI-C1 whole run actually executed718 methods:693 PASS/25 FAIL.22 failures stopped at the existing frozen-v1 resource SHA check;3 were known JPEG failures. Git core.autocrlf=true had converted347 LF to CRLF. Original M04/M08/M09/HEAD v1 SHA351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b was unchanged; test APK packaged the converted worktree bytes. Both exports have now been restored to their committed bytes, with zero Git schema diff. Actual rebuilt test-APK assets independently match both blobs.
+
+### Alternatives
+
+Changing the frozen SHA/weakening tests would conceal the source-preservation error. Changing global Git settings would affect unrelated projects. A scoped file attribute preserves the existing reference without either change.
+
+### Reason
+
+The exports are immutable build/test reference inputs. A Windows checkout must not alter their bytes. This is repository byte preservation, not a database or product change.
+
+### Consequences
+
+Preserve the first full failure and its complete input archive. New full input must record the two restored raw-file hashes and rerun all three commands; resource preflight/static checks do not replace runtime migration tests. See [diagnosis and exact evidence](evidence/ui-c1/stage2/schema-integrity/v1-fixture-diagnosis.md). New full rerun is pending at this decision's recording time; M10 JPEG remains unresolved.

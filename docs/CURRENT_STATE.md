@@ -6,9 +6,9 @@
 
 - **UI-C1阶段2 — IN_PROGRESS**：用户实际看完f000639精修27图确认视觉；转交ChatGPT独立视觉复审PASS WITH NOTES，并明确授权Task6～8。本轮开始核对的基线/本地/远端均`f000639c62fce71be0a9240425c8e27b1a5ed974`，当时工作树干净；原M10/main未变。锁定阶段1布局与业务/存储/媒体/守卫/身份/依赖，先Task6再Task7再Task8。完整[用户指令](design/ui-c1/source-stage2/USER_INSTRUCTIONS.md)、[当前计划](planning/UI_C1_PLAN.md)。阶段1下方数字均为历史，不代表本轮已重新执行；全量回归/最终16图尚NOT_RUN。M10三FAIL/旧表单偶发超时/Q03～Q06及平台未执行边界保留，不自行接受/冻结。
 
-- **Task6已提交 `e9bb44f`，Task7已验证待提交，Task8随后启动**：7项真实RED；首轮GREEN设备阻塞0方法；重启后65项63PASS/2状态文字语义FAIL；两行修正后的14项全部PASS，后续仅文字字号调整的6项及Lint/assemble全部PASS（0错误/23原警告）。原失败保留，不拼成一次全绿；原701测试文件不改，新增10，当前源码711方法，完整Task8仍NOT_RUN。12张配对检查图明确逐图来源与两版APK，见[Task6报告](evidence/UI-C1-task6-verification.md)。M10三JPEG、旧表单超时及所有未执行边界保留。
+- **Task6已提交 `e9bb44f`，Task7已提交 `45e9116`，Task8完整验证进行中**：7项真实RED；首轮GREEN设备阻塞0方法；重启后65项63PASS/2状态文字语义FAIL；两行修正后的14项全部PASS，后续仅文字字号调整的6项及Lint/assemble全部PASS（0错误/23原警告）。原失败保留，不拼成一次全绿；原701测试文件不改，新增10，当前源码711方法，完整Task8仍NOT_RUN。12张配对检查图明确逐图来源与两版APK，见[Task6报告](evidence/UI-C1-task6-verification.md)。M10三JPEG、旧表单超时及所有未执行边界保留。
 
-Task7：8个真实复用表单及既有弹窗已经统一，保护业务回调/输入/日期/守卫。旧保存诊断1 PASS但不关闭偶发风险；新增系统安全区真实RED后只修测试宿主safeDrawing。新视觉有效资料4项RED；第一次68项67PASS/1FAIL为新测试误要求短标题必须换行，修正该新期望后7项复验全PASS，Lint/assemble退出0（缓存任务按缓存登记）。正式长标题换行、原全部断言仍保留。新空Room宿主提供实际宿主与APK元数据。详见[Task7验证](evidence/ui-c1/stage2/task7/verification.md)。当前源码718方法＝86 JVM＋632 Android，原701保留；这不是全量执行结果。Task8最终冻结输入/无过滤全量/最终16图与数据复核仍NOT_RUN。
+Task7：8个真实复用表单及既有弹窗已经统一，保护业务回调/输入/日期/守卫。旧保存诊断1 PASS但不关闭偶发风险；新增系统安全区真实RED后只修测试宿主safeDrawing。新视觉有效资料4项RED；第一次68项67PASS/1FAIL为新测试误要求短标题必须换行，修正该新期望后7项复验全PASS，Lint/assemble退出0（缓存任务按缓存登记）。正式长标题换行、原全部断言仍保留。新空Room宿主提供实际宿主与APK元数据。详见[Task7验证](evidence/ui-c1/stage2/task7/verification.md)。当前源码718方法＝86 JVM＋632 Android，原701保留；这不是全量执行结果。Task8首轮完整718方法为693PASS/25FAIL：22项冻结v1资源SHA前置失败＋3JPEG。已证实检出CRLF转换，恢复原v1/v2 Git blob原字节，schema Git差异为0，只补换行保护属性；新测试APK两资源均逐字节核对一致。现在将锁定修正后的完整输入重跑全部三条命令，尚未宣称22项迁移复测PASS。最终16图、APK及全程数据核查待实际完成。
 
 以下为阶段1交付历史及继承边界；当前执行授权以上行为准。
 

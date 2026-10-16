@@ -1,0 +1,362 @@
+{
+  "diagnosis": "CONFIRMED_CHECKOUT_CRLF_CONVERSION_OF_FROZEN_V1_TEST_RESOURCE",
+  "generated_utc": "2026-10-16T01:23:51.245337+00:00",
+  "scope": "Read-only diagnosis while final unfiltered Android test command is running. No Gradle, ADB, Git mutation, source edit, or APK mutation. Only this report JSON and Markdown are written.",
+  "head": "45e91163b07bcfe41927310ef37dabe7f003cdfd",
+  "branch": "feat/ui-c1-visual-redesign",
+  "fixture": {
+    "path": "app/src/androidTest/java/com/cooper/lithic/data/local/V1DatabaseFixture.kt",
+    "sha256": "04ab9d94201716e9a0c4e86deeea9da7a971982847a4ea6c239e041ee826cc78",
+    "expected_export_sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+    "relevant_lines": {
+      "16": "    const val EXPORT_SHA256 = \"351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b\"",
+      "34": "            .open(\"com.cooper.lithic.data.local.LithicDatabase/1.json\").use { it.readBytes() }",
+      "35": "        check(sha256(exportedBytes) == EXPORT_SHA256) { \"The frozen v1 export changed\" }"
+    },
+    "failure_before_database_creation": true
+  },
+  "schema_path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json",
+  "worktree": {
+    "bytes": 11187,
+    "sha256": "a765bcde9a519ff68f1513b5a58d08c1702c2b6e6e8b798d561c4ef4cfe5eb6a",
+    "crlf": 347,
+    "lf_total": 347,
+    "bare_lf": 0,
+    "bare_cr": 0,
+    "terminal_newline": false,
+    "utf8_bom": false
+  },
+  "historical_git_blobs": {
+    "current_HEAD": {
+      "ref": "45e91163b07bcfe41927310ef37dabe7f003cdfd",
+      "blob_id": "0158d4a176d1a78c379909d5892b0104da26c4ff",
+      "bytes": 10840,
+      "sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "crlf": 0,
+      "lf_total": 347,
+      "bare_lf": 347,
+      "bare_cr": 0,
+      "terminal_newline": false,
+      "utf8_bom": false,
+      "matches_expected_fixture_hash": true,
+      "worktree_crlf_to_lf_is_exact": true,
+      "json_structurally_equal": true
+    },
+    "original_M04": {
+      "ref": "1b7058ebb9dfbe904252a08efe6815d9952971ad",
+      "blob_id": "0158d4a176d1a78c379909d5892b0104da26c4ff",
+      "bytes": 10840,
+      "sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "crlf": 0,
+      "lf_total": 347,
+      "bare_lf": 347,
+      "bare_cr": 0,
+      "terminal_newline": false,
+      "utf8_bom": false,
+      "matches_expected_fixture_hash": true,
+      "worktree_crlf_to_lf_is_exact": true,
+      "json_structurally_equal": true
+    },
+    "M08_review": {
+      "ref": "a716bc5ad9e3ab49cbe858f2c966fecf93e09fbb",
+      "blob_id": "0158d4a176d1a78c379909d5892b0104da26c4ff",
+      "bytes": 10840,
+      "sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "crlf": 0,
+      "lf_total": 347,
+      "bare_lf": 347,
+      "bare_cr": 0,
+      "terminal_newline": false,
+      "utf8_bom": false,
+      "matches_expected_fixture_hash": true,
+      "worktree_crlf_to_lf_is_exact": true,
+      "json_structurally_equal": true
+    },
+    "M09_freeze": {
+      "ref": "57de897917473f255d43dfb306a8433b366c00eb",
+      "blob_id": "0158d4a176d1a78c379909d5892b0104da26c4ff",
+      "bytes": 10840,
+      "sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "crlf": 0,
+      "lf_total": 347,
+      "bare_lf": 347,
+      "bare_cr": 0,
+      "terminal_newline": false,
+      "utf8_bom": false,
+      "matches_expected_fixture_hash": true,
+      "worktree_crlf_to_lf_is_exact": true,
+      "json_structurally_equal": true
+    }
+  },
+  "proof": {
+    "worktree_raw_matches_expected": false,
+    "CRLF_to_LF_only_equals_original_HEAD_blob_byte_for_byte": true,
+    "all_historical_blobs_equal": true,
+    "JSON_object_equality": true,
+    "byte_length_delta_is_exact_CR_count": true,
+    "original_version": 1,
+    "original_identityHash": "bdbb5a3f035020f10628f46ddfa4551d",
+    "schema_version_or_SQL_change_required": false
+  },
+  "git_eol": {
+    "ls_files_eol": "i/lf    w/crlf  attr/                 \tapp/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json",
+    "attributes_for_v1": "",
+    "core_autocrlf_origin": "file:C:/Program Files/Git/etc/gitconfig\ttrue",
+    "gitattributes_sha256": "d91d5dcd77e4b23f07ff826e6fa1de8f9b159c3a209a797192c46a0cc8d93b29"
+  },
+  "build_asset_source": {
+    "path": "app/build.gradle.kts",
+    "line": 40,
+    "declaration": "sourceSets.getByName(\"androidTest\").assets.srcDir(\"$projectDir/schemas\")"
+  },
+  "current_APKs_read_only": [
+    {
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 12982546,
+      "sha256": "4bfd57231a9028ed5c2cd6961e2c59756936b688c6bf90159d58743301889c46",
+      "frozen_v1_assets": []
+    },
+    {
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2919086,
+      "sha256": "46756beab59e0c069f260136a5d71a32f24ca4d01e1e65ef98e7acce48800ba1",
+      "frozen_v1_assets": [
+        {
+          "path": "assets/com.cooper.lithic.data.local.LithicDatabase/1.json",
+          "bytes": 11187,
+          "sha256": "a765bcde9a519ff68f1513b5a58d08c1702c2b6e6e8b798d561c4ef4cfe5eb6a",
+          "crlf": 347,
+          "lf_total": 347,
+          "bare_lf": 0,
+          "bare_cr": 0,
+          "terminal_newline": false,
+          "utf8_bom": false,
+          "equals_worktree_bytes": true,
+          "crlf_to_lf_equals_HEAD_blob": true,
+          "matches_expected_fixture_hash": false
+        }
+      ]
+    }
+  ],
+  "frozen_finalfull_source": {
+    "path": "build/ui-c1-stage2/stage2-final-full-source.zip",
+    "sha256": "a765bcde9a519ff68f1513b5a58d08c1702c2b6e6e8b798d561c4ef4cfe5eb6a",
+    "matches_summary_zip_hash": true,
+    "entry": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json",
+    "bytes": 11187,
+    "crlf": 347,
+    "lf_total": 347,
+    "bare_lf": 0,
+    "bare_cr": 0,
+    "terminal_newline": false,
+    "utf8_bom": false,
+    "equals_current_worktree": true,
+    "source_inputs_total": 187,
+    "all_source_inputs_currently_match_frozen_summary": true,
+    "input_mismatches": []
+  },
+  "live_full_run_log_snapshot": {
+    "path": "build/ui-c1-stage2/stage2-final-full-1.log",
+    "snapshot_bytes": 15598,
+    "snapshot_sha256": "21bc4e279e2c0fdf21b7c1962c2cba82b35efe6c98f3cd9f33bf587adb6779c7",
+    "last_progress": [
+      "Tests 415/632 completed. (0 skipped) (25 failed)"
+    ],
+    "observed_v1_fixture_hash_failures": 22,
+    "observed_other_failures": 3,
+    "failures": [
+      {
+        "class": "com.cooper.lithic.data.local.ProjectDatabaseTest",
+        "method": "schema_v1_has_only_four_business_tables",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v1_hash_rejects_nocase_primary_key_without_migration",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v1_hash_rejects_sqliteXforeign_user_table_without_migration",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "committed_v1_wal_is_respected_during_upgrade",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v2_reopens_and_old_project_writes_still_work",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v1_hash_rejects_room_master_table_trigger_without_migration",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_identity_with_extra_business_table_is_rejected_before_migration",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "create_failure_during_real_room_upgrade_rolls_back_v1_schema_and_facts",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v2_hash_rejects_nocase_primary_key_without_repair",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "v1_to_v2_preserves_projects",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "version_zero_is_rejected_without_initializing_existing_file",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_identity_with_extra_column_is_rejected_before_migration",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v2_hash_rejects_room_master_table_trigger_without_repair",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "v1_generation_upgrade_keeps_pointer_ready_settings_zone_and_media",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v2_hash_rejects_sqliteXforeign_user_table_without_repair",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v1_hash_rejects_android_metadata_trigger_without_migration",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v2_hash_rejects_android_metadata_trigger_without_repair",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "broken_v1_foreign_key_is_rejected_before_migration",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_v1_legacy_identity_migrates_without_changing_old_rows",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "arbitrary_room_identity_is_rejected_without_changing_old_facts",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "known_identity_with_missing_index_is_rejected_before_migration",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.local.SubscriptionMigrationTest",
+        "method": "unknown_version_is_rejected_without_changing_old_facts",
+        "error": "java.lang.IllegalStateException: The frozen v1 export changed",
+        "first_frame": "at com.cooper.lithic.data.local.V1DatabaseFixture.create(V1DatabaseFixture.kt:35)",
+        "is_v1_hash_failure": true
+      },
+      {
+        "class": "com.cooper.lithic.data.media.M10JpegIntegrityTest",
+        "method": "jpeg_entropy_truncated_with_eoi_is_rejected",
+        "error": "java.lang.AssertionError: EOI-retained entropy-cut JPEG must be rejected, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=1b633367-ef15-40bb-b88d-c1e89177c1a0, relativePath=media/1b633367-ef15-40bb-b88d-c1e89177c1a0.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))",
+        "first_frame": "at org.junit.Assert.fail(Assert.java:89)",
+        "is_v1_hash_failure": false
+      },
+      {
+        "class": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest",
+        "method": "project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+        "error": "java.lang.AssertionError: Expected INVALID_IMAGE from the actual JPEG source, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=b12d2a7c-a791-485f-a2e1-88091d53ef9c, relativePath=media/b12d2a7c-a791-485f-a2e1-88091d53ef9c.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))",
+        "first_frame": "at org.junit.Assert.fail(Assert.java:89)",
+        "is_v1_hash_failure": false
+      },
+      {
+        "class": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest",
+        "method": "subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+        "error": "java.lang.AssertionError: Expected INVALID_IMAGE from the actual JPEG source, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=6fda98fd-ad2e-4fe4-8ac7-a6fb4c682914, relativePath=media/6fda98fd-ad2e-4fe4-8ac7-a6fb4c682914.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))",
+        "first_frame": "at org.junit.Assert.fail(Assert.java:89)",
+        "is_v1_hash_failure": false
+      }
+    ],
+    "not_a_final_suite_result": true,
+    "summary_warning": "stage2-final-full-summary.json currently summarizes completed JVM command only (86 tests); it is not an Android/full-suite PASS.",
+    "snapshot_utc": "2026-10-16T01:24:17.203267+00:00",
+    "ansi_color_removed_for_parsing": true
+  },
+  "recommendation": [
+    "Wait for all currently running full-suite commands to finish; preserve their original logs/XML/source ZIP unchanged.",
+    "Restore only the exact original frozen v1 bytes from unchanged HEAD Git blob 0158d4a176d1a78c379909d5892b0104da26c4ff into the working-tree file. This restores the original export, not a Room schema/version/SQL/content change; no expected hash or assertion changes.",
+    "Add exact-path .gitattributes protection: app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json -text. This preserves the exact frozen blob against Windows checkout EOL conversion. Do not normalize the repository or touch v2.",
+    "Before a new run verify v1 raw SHA256 equals the unchanged EXPORT_SHA256; JSON version/identity/SQL are unchanged and Git v1 blob ID remains 0158d4a176d1a78c379909d5892b0104da26c4ff.",
+    "Capture a new frozen input/ZIP snapshot and rerun all three authorized verification commands, without class filtering. Verify new test APK asset equals original bytes and keep the three independent known JPEG failures visible.",
+    "No production database, migration, domain logic, fixture identity, assertion, schema2, dependency, or existing full-run evidence needs modification."
+  ],
+  "changes_made_by_this_subtask": [
+    "build/ui-c1-stage2/v1-fixture-diagnosis.md",
+    "build/ui-c1-stage2/v1-fixture-diagnosis.json"
+  ],
+  "git_status_observed": "M docs/CURRENT_STATE.md"
+}

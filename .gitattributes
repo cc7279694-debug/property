@@ -20,3 +20,6 @@ docs/evidence/ui-c1/refinement/** -text
 # UI-C1 stage2 request and actual execution evidence retain original bytes.
 docs/design/ui-c1/source-stage2/** -text whitespace=cr-at-eol
 docs/evidence/ui-c1/stage2/** -text whitespace=cr-at-eol,-blank-at-eol,-blank-at-eof
+
+# Preserve frozen Room schema export bytes across Windows checkouts.
+app/schemas/** -text
