@@ -4,13 +4,14 @@
 
 ## Current Stage
 
-- **M10-R1隔离native PoC — BLOCKED，等待ChatGPT独立技术审查**：用户正式授权固定研究工具及隔离实验，另确认仅两工具许可范围。从R0 `c4cd90b148cce99ba497d864be1176c90408a4da`建独立`research/m10-jpeg-strict-r1`，工作区`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r1/砺石新APP`；M10来源`41596820145dc4a3fa6d041728a59540d828108a`未改。不修改产品代码/断言/Gradle/权限/Room/Repository/媒体协议，不创建正式JNI，不构建或安装App。
-- **本轮实证**：固定NDK28.2.13676358/CMake3.22.1/Ninja1.10.2实际可用，官方3.2.0源码重新验SHA/GPG。安装CLI异常退出保留，不改为成功。四ABI实际COMPILED、API26 triple/ELF16KiB对齐与符号审计通过；实际只有既有API36 x86_64 CLI及shared加载运行。两锁样本分别ACCEPT/REJECT，两方案均有真实警告与返回；22份完整原创JPEG两路径44调用ACCEPT。累计122次decoder调用、121结构化返回、1监督超时（519次已完成内部迭代），不是产品JUnit或全PASS。
-- **资源仍阻塞**：40MP444完整图峰值约232～259MiB进程RSS；RSS不是堆，MAXMEMORY不是全native硬cap。一次检查空档6.141秒、一次晚取消120秒超时原因为UNKNOWN；相同输入复核成功不能关闭。原catalogue生成240秒超时导致最后444输出未完成，已保留原字节并在新目录单独完成合法444验证，未将截断文件当健康误拒。总堆/最坏CPU/取消闭环未证明，生产NO_GO；A2只对继续资源设计审查给CONDITIONAL_GO。JNI/真实OOM/其他ABI运行/API26/16KiB页设备及正式APK增量NOT_RUN。
+- **M10-R2资源安全架构 — READY_FOR_REVIEW，等待ChatGPT独立架构审查**：用户仅授权DOCS / ARCHITECTURE ONLY；从R1锁定`2cdad4aa40f9503aad13245670adc9a4d13db32b`建立独立`research/m10-jpeg-strict-r2`，worktree `E:/CODEX/.codex/worktrees/m10-jpeg-strict-r2/砺石新APP`。本轮只新增四份研究文档与checkpoint、更新本文件，不改生产/测试/配置/原始报告，不运行native/设备实验、工具安装或App构建，不启动R3/M11。
+- **R2推荐PROPOSED**：B1同UID私有bound worker＋A2低层计费，JPEG严格解码及规范化都在worker，串行单会话、退休确证后才发布准备；小型typed AIDL/受控FD、消费者pin及私有JPEG stage v2均只设计未实现。B1不是文件权限沙箱，也不保证全设备内存安全；需要更强安全隔离则另审B2。A单独同进程不采用，C有界spill作待批备选，D若拒原合法输入须PRODUCT_COMPATIBILITY_CHANGE_REQUIRED。只对下一轮隔离验证建议CONDITIONAL_GO，生产仍NO_GO。见[R2决策](research/M10_JPEG_R2_DECISION.md)、[架构](research/M10_JPEG_R2_ARCHITECTURE.md)、[预算](research/M10_JPEG_R2_RESOURCE_BUDGET.md)、[恢复](research/M10_JPEG_R2_FAILURE_RECOVERY.md)。
+- **R1继承实证，本轮未复跑**：固定NDK28.2.13676358/CMake3.22.1/Ninja1.10.2实际可用，官方3.2.0已验SHA/GPG；安装CLI异常退出保留。四ABI COMPILED、API26 triple/ELF16KiB与符号审计；实际仅API36 x86_64 CLI/shared运行。两锁样本A1/A2接受/拒绝，22份完整原创JPEG双路径44调用ACCEPT。累计122次decoder调用、121结构化返回、1监督超时（519次完成内部迭代），不是产品全PASS。
+- **资源仍未证明**：40MP444 A2约232MiB、A1约259MiB进程RSS；RSS不是堆、MAXMEMORY不是总native硬cap。6.141秒检查空档及晚取消120秒无结果仍UNKNOWN，复跑成功不关闭。R1原不完整444生成事故和后续完整444验证均保留；总分配/Bitmap峰值、最坏CPU/取消闭环、API26进程身份/终止/恢复、真实OOM、其他ABI/真机/16KiB页/JNI/APK增量仍NOT_RUN。具体E01～E10需新授权，不以R2文档检查补成PASS。
 - **模块状态继承**：本次用户明确确认、且已核对远端UI正式冻结文档提交`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`；UI-C1 ACCEPTED / FROZEN — PASS WITH NOTES，未将UI代码合入研究分支。M00～M09原冻结不变；M10仍PENDING，原3项JPEG拒绝FAIL、原M10-T03/T04边界保持；Q05 USER_CONFIRMED，M11/M12完整往返NOT_RUN，M11 NOT_AUTHORIZED。UI-C1 N1～N4、旧超时UNKNOWN及平台NOT_RUN继续保留。
-- R0已由用户转交独立审查：研究材料PASS WITH NOTES，技术可行性当时BLOCKED/0 native实验；其[可行性原件](research/M10_JPEG_R0_FEASIBILITY.md)、[原矩阵](research/M10_JPEG_R0_TEST_MATRIX.md)、[原提案](research/M10_JPEG_R0_PRODUCTION_PROPOSAL.md)保持不变。本轮交接见[R1执行](research/M10_JPEG_R1_EXECUTION.md)、[实际结果](research/M10_JPEG_R1_RESULTS.md)、[资源报告](research/M10_JPEG_R1_RESOURCE_REPORT.md)、[生产建议](research/M10_JPEG_R1_PRODUCTION_RECOMMENDATION.md)及[R1 checkpoint](checkpoints/2026-10-16-M10-JPEG-R1.md)。只推研究分支，完成后停止；不得自行接入生产或进入M11。
+- R0研究材料独立PASS WITH NOTES，技术可行性当时BLOCKED/0 native实验；其[可行性原件](research/M10_JPEG_R0_FEASIBILITY.md)、[原矩阵](research/M10_JPEG_R0_TEST_MATRIX.md)、[原提案](research/M10_JPEG_R0_PRODUCTION_PROPOSAL.md)不改。R1[执行](research/M10_JPEG_R1_EXECUTION.md)、[实际结果](research/M10_JPEG_R1_RESULTS.md)、[资源报告](research/M10_JPEG_R1_RESOURCE_REPORT.md)、[生产建议](research/M10_JPEG_R1_PRODUCTION_RECOMMENDATION.md)及[R1 checkpoint](checkpoints/2026-10-16-M10-JPEG-R1.md)保持历史BLOCKED语境。当前交接见[R2 checkpoint](checkpoints/2026-10-16-M10-JPEG-R2.md)，只推R2研究分支后停止。
 
-以下M10及更早模块状态、测试结果与限制保留当时语境；当前研究授权和停止边界以上节为准。
+以下M10及更早模块状态、测试结果与限制保留当时语境；当前研究授权和停止边界以上节为准。UI-C1最终完整回归仍为86 JVM PASS＋629 Android PASS/3 FAIL＝718项715 PASS/3 FAIL、整体FAIL，冻结结论不替代该结果；N1～N4不自动关闭。
 
 - **M10 — PENDING，JPEG补充验证已复现，修复BLOCKED_AT_SCOPE_DECISION**：复核起点本地/远端均为 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`，工作区原先干净；分支 `feat/m10-local-cover-media`，M09冻结来源 `57de897917473f255d43dfb306a8433b366c00eb`。使用原字节合成fixture，在已有API36 AVD通过真实ContentResolver → LocalImageStore确认缺损JPEG被错误接受。新增5方法实跑2 PASS /3 FAIL（退出1、3m13s），生产代码未改；ImageDecoder同样SUCCESS且partialErrors为空。152份完整输入同字节的Lint/assemble另跑成功（退出0、1m22s，0 errors/23 warnings），不是完整回归通过。见[补充报告](evidence/M10-JPEG-supplement-verification.md)、[JSON](evidence/M10-JPEG-supplement-verification.json)及[新checkpoint](checkpoints/2026-10-14-M10-JPEG-supplement.md)。
 - 项目/订阅旧封面和完整资金/付款/状态事实在准备后保持原字节与元数据，测试未提交缺损图；但拒绝断言失败，失败清理断言未到达，M10-T03/T04该边界不能标PASS。有效原设备账本七表、两份私有封面及已安装APK字节实测不变；本轮未重建AVD/清数据/改时钟。完整严格JPEG校验需新增解码能力或显著扩展解析，按用户补充指令第5节提交证据和待授权方案后停止。正式ACCEPTANCE_MATRIX及历史652结果未改；新输入下完整JVM/Android回归NOT_RUN。Q05仍USER_CONFIRMED，M11/M12完整往返和全部平台NOT_RUN保持，不自授ACCEPTED/FROZEN，不进入M11。
@@ -70,9 +71,9 @@
 
 ## Git
 
-- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；仅提交推送`research/m10-jpeg-strict-r1`，起点R0 `c4cd90b148cce99ba497d864be1176c90408a4da`，非main。原R0目录/分支保留c4cd90b；原`E:/CODEX/砺石新APP`保持M10来源分支/4159682，原UI工作区保持`feat/ui-c1-visual-redesign`/`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`；不修改这些分支或工作目录。回写自身SHA与远端一致性以实际Git回执为准，避免递归自引用。
+- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r2/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；仅提交推送`research/m10-jpeg-strict-r2`，起点R1 `2cdad4aa40f9503aad13245670adc9a4d13db32b`，非main。原R1分支/目录保留2cdad4a、原R0保留c4cd90b；原`E:/CODEX/砺石新APP`保持M10来源分支/4159682，原UI工作区保持`feat/ui-c1-visual-redesign`/`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`；不修改这些分支或工作目录。回写自身SHA与远端一致性以实际Git回执为准，避免递归自引用。
 - M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`与冻结回写57de897为历史依据。M10原交付及本次独立复核基准 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`；补充验证提交仅新增测试/必要合成资产/证据及当前交接，不是生产修复，最终SHA与推送结果由Git日志/最终回执核对，避免递归引用。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥、私人原图或真实个人数据。
 
 ## Next Recommended Task
 
-**BLOCKED — M10-R1 isolated native PoC。停止等待ChatGPT独立技术审查本轮结果，明确总堆/CPU/取消预算及下一步资源方案；研究工具已安装，不再等待安装授权。**生产依赖/JNI/allocator/上游patch或隔离进程仍须另行批准。本轮没有生产接入授权，M10继续PENDING／3 JPEG FAIL，UI-C1正式冻结不受影响，M11 NOT_AUTHORIZED。旧历史、全部NOTES、Q03/Q04/Q06期限及Q05完整跨模块NOT_RUN继承。
+**READY_FOR_REVIEW — M10-R2 Resource Architecture。停止等待ChatGPT独立架构审查四份R2提案。**推荐只面向下一轮隔离验证的CONDITIONAL_GO，生产仍NO_GO；E01～E10及数值预算、私有进程/AIDL/JNI/上游backend/stage v2/兼容规则均须新授权，不自行开始R3。M10继续PENDING／3 JPEG FAIL，UI-C1冻结不受影响，M11 NOT_AUTHORIZED；旧历史、全部NOTES、Q03/Q04/Q06期限及Q05跨模块NOT_RUN继承。
