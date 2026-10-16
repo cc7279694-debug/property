@@ -231,13 +231,13 @@ M10原652是旧147输入的历史PASS；新增5项实际2PASS/3FAIL，UI起点�
 
 **依赖与验证顺序：**Task6复用现有设计/媒体预览和只读原模型；先新布局/文案测试RED，再最小展示变更； root独占设备/构建。定向GREEN、深浅截图、本地代码复核及Task6提交后才Task7生产修改。Task7先实际清单和旧超时诊断，保留历史，不简单加时/盲跑。Task8先冻结所有输入，再JVM/Android无class过滤/Lint+assemble三条命令逐条日志/退出码/XML/方法集合；原JPEG三失败导致整体FAIL，如实报告，不强改GREEN。全量期间不改输入；若改必须重新完整跑最终输入。
 
-- [ ] 核对唯一UI工作树、本地/远端、原账本/两封面/generation/ready/settings/记录时区/设备设置，保存源码身份701。
-- [ ] Task6新布局/指标与可用页面RED→展示实现→定向测试/深浅原图/代码复核→独立提交。
+- [x] 核对唯一UI工作树、本地/远端、原账本/两封面/generation/ready/settings/记录时区/设备设置，保存源码身份701。
+- [x] Task6新布局/指标与可用页面RED→展示实现→定向测试/深浅原图/代码复核→独立提交。
 - [x] Task7实际清单、旧超时诊断、表单展示与定向验证完成；范围明确提交。完整三VM/IME/旋转与全量核查继续由Task8最终输入验证，不把定向结果当全量。
-- [ ] Task8同一最终完整输入无过滤全量、方法/业务断言核对，记录真实FAIL及未测。
-- [ ] 最终APK实际安装与16主图+状态/空态/压力/真实IME/历史/确认图，每图双APK/来源/前台/设置指纹；逐图看原像素并直接对照两参考原图。
-- [ ] 七表完整事实/原媒体字节/时区/同代与设置前后核对、恢复guest改动；T01～T14逐项范围和缺失证据。
-- [ ] 新报告/checkpoint/唯一当前状态、差异/链接/凭据检查，仅UI分支推送，READY_FOR_REVIEW — UI-C1后停止；不自授ACCEPTED/FROZEN。
+- [x] Task8同一最终完整输入无过滤全量、方法/业务断言核对，记录真实FAIL及未测。
+- [x] 最终APK实际安装与16主图+状态/空态/压力/真实IME/历史/确认图，每图双APK/来源/前台/设置指纹；逐图看原像素并直接对照两参考原图。
+- [x] 七表完整事实/原媒体字节/时区/同代与设置前后核对、恢复guest改动；T01～T14逐项范围和缺失证据。
+- [x] 新报告/checkpoint/唯一当前状态、差异/链接/凭据检查，仅UI分支推送，READY_FOR_REVIEW — UI-C1后停止；不自授ACCEPTED/FROZEN。
 
 
 ### Task7 execution contract (2026-10-15)
@@ -245,3 +245,8 @@ M10原652是旧147输入的历史PASS；新增5项实际2PASS/3FAIL，UI起点�
 Task6 committed `e9bb44f` before Task7 implementation. Goal: extend approved visual system across the 8 actual form implementations and existing dialogs. Scope: presentation-only shared headers/controlled inputs, existing form layout, dialog touch targets and UI tests. Protect every raw value/date, field error, callback, enabled predicate, branch, operation identity, three VM guards and all storage/domain/media protocols. No new business flows, dependencies or permissions. [Actual inventory](../evidence/ui-c1/stage2/task7/form-inventory.md) identifies all reused modes. Verify new visual contracts against old source first, then existing forms/date/guard/cover tests; diagnose the historical save timeout without changing its 10-second wait or removing assertions. Final same-input whole-suite evidence and fresh final APK/gallery belong to Task8.
 
 Task7真实结果与新测试期望纠正见[执行报告](../evidence/ui-c1/stage2/task7/verification.md)。旧保存间歇根因继续UNKNOWN；M10三JPEG保留FAIL。
+
+
+### Task8最终实际交付（2026-10-16）
+
+Task6～8实施与验证已收口，阶段结果READY_FOR_REVIEW，独立验收PENDING。187项同一最终输入，718方法715PASS/3原JPEGFAIL，整体FAIL；原701保留新增17。首轮22项资源字节失败及修正后的全量重新运行分别保留。最终68张同APK原图、真实IME/360dp200%、七表/两封面/代际/13项设置精确核对，见[阶段2报告](../evidence/UI-C1-stage2-verification.md)与[最终图册](../evidence/ui-c1/stage2/FINAL_GALLERY.md)。最终提交/仅UI分支推送以最后Git回执确认。原阶段0表格保持NOT_RUN历史，不写正式矩阵、不自授冻结、不修M10/进入M11。

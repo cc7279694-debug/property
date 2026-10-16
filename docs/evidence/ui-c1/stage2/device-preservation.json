@@ -1,0 +1,63 @@
+{
+  "result": "PASS",
+  "device": "emulator-5596",
+  "avd": "Lithic_M01_API_36",
+  "schemaVersion": 2,
+  "roomIdentity": "a8fd277b0ef08ce9cf59b704734d0c25",
+  "tableCounts": {
+    "categories": 2,
+    "long_term_projects": 4,
+    "project_money_events": 7,
+    "local_media_assets": 2,
+    "subscriptions": 4,
+    "subscription_renewals": 6,
+    "subscription_state_changes": 5
+  },
+  "allSevenTablesExactRowEquality": true,
+  "noNewActiveQaRows": true,
+  "factsSha256": "ae1f912ab792afe35628ee2fd75e0be24b43dbd8d2daa3af3a3a50a33d18f204",
+  "sameGenerationPointerReadyAndSettings": true,
+  "integrityCheck": "ok",
+  "foreignKeyCheck": [],
+  "privateMedia": [
+    {
+      "id": "6ef0c664-dffd-417e-b9d8-7bbbe824f6e2",
+      "relativePath": "media/6ef0c664-dffd-417e-b9d8-7bbbe824f6e2.png",
+      "sha256": "4a4a8b55db208e631f6ad2e27bb8521aa6542e26419dd87b23f2af4a65467cec",
+      "bytes": 5645
+    },
+    {
+      "id": "b96c1ab2-1d6e-4b54-bbaf-08e48e342f2d",
+      "relativePath": "media/b96c1ab2-1d6e-4b54-bbaf-08e48e342f2d.jpg",
+      "sha256": "7f40e0945123521ee523376b4615dda81ae1cae7db524fa2bf030c8d42fd98fc",
+      "bytes": 6005
+    }
+  ],
+  "avdDescriptorAndConfigUnchanged": [
+    {
+      "path": "C:/Users/CDD/.android/avd/Lithic_M01_API_36.ini",
+      "sha256": "a13c3fd2492d875a77a68262842b8912c3df6f67f4f2e329748774b465e3b902"
+    },
+    {
+      "path": "E:/Android/avd/Lithic_M01_API_36_fresh.avd/config.ini",
+      "sha256": "555d10f2c3fe3bd8cd1c231ceea06c77532d132d39236a7f31c9fc839506bf54"
+    }
+  ],
+  "deviceSettingsRestoredExactly": {
+    "system/font_scale": "1.0",
+    "system/accelerometer_rotation": "1",
+    "system/user_rotation": "0",
+    "system/show_ime_with_hard_keyboard": "null",
+    "secure/ui_night_mode": "1",
+    "secure/default_input_method": "com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+    "global/airplane_mode_on": "0",
+    "global/auto_time": "1",
+    "global/auto_time_zone": "1",
+    "size": "Physical size: 1080x1920",
+    "density": "Physical density: 420",
+    "night": "Night mode: no",
+    "wifi": "1"
+  },
+  "installedApkSha256": "4bfd57231a9028ed5c2cd6961e2c59756936b688c6bf90159d58743301889c46",
+  "scope": "Owned existing API36 emulator only; read-only DB/WAL copies after controlled force-stop; raw database/private originals remain ignored locally. No physical/API26/OEM/Release/LMK or restore claim."
+}

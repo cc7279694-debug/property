@@ -1,0 +1,180 @@
+{
+  "frozenSourceHead": "6a25965225ace3212d1653d15b45fc56ef87411e",
+  "sourceInputsSha256": "6e10034a61e9ffc666be545645b04ea5a13bc022aa510cb5dde97694485a4f2f",
+  "originalMethods": 701,
+  "retainedOriginalMethods": 701,
+  "missing": [],
+  "newMethods": [
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "prepaid_future_period_is_compared_with_elapsed_days_without_replacing_current_plan",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "detail_distinguishes_loading_error_missing_and_stale_facts_with_mutations_disabled",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "stop_record_action_keeps_provider_cancellation_disclaimer_visible_before_callback",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "current_and_stopped_lists_distinguish_loading_failed_empty_and_stale_original_rows",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "compact_management_header_keeps_first_service_visible_and_accessible_actions_working",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.feature.subscription.UIC1SubscriptionVisualTest",
+      "name": "referenced_unreadable_cover_is_distinct_from_no_cover_and_keeps_original_identity_clickable",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1FormVisualTest",
+      "name": "light_project_header_wraps_and_zero_amount_keeps_save_and_back_callbacks",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1FormVisualTest",
+      "name": "dark_committed_reenable_keeps_wrapped_header_read_only_values_and_only_read_recovery",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1FormVisualTest",
+      "name": "dark_money_form_keeps_raw_precision_date_and_wrapped_failure_reachable",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1FormVisualTest",
+      "name": "light_subscription_form_keeps_four_raw_dates_error_and_explicit_payment_confirmation",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1SecondaryPagesTest",
+      "name": "settings_exposes_installed_version_and_persisted_zone_as_read_only_information",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1SecondaryPagesTest",
+      "name": "project_history_loading_or_read_failure_never_claims_a_successful_empty_archive",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1SecondaryPagesTest",
+      "name": "settings_keeps_backup_warning_prominent_and_has_no_unimplemented_reminder_entry",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1SecondaryPagesTest",
+      "name": "review_only_offers_real_history_routes_without_guessing_ledger_absence",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1Stage2EmptyEvidenceTest",
+      "name": "isolated_empty_room_home_supplies_final_stage2_dual_theme_evidence_without_writes",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIC1Stage2EvidenceTest",
+      "name": "isolated_subscription_history_operations_and_error_states_supply_stage2_evidence",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.ui.UIComponentsTest",
+      "name": "synthetic_form_save_target_stays_above_system_navigation_insets",
+      "result": "PASS",
+      "failureType": null,
+      "message": null
+    }
+  ],
+  "failures": [
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.M10JpegIntegrityTest",
+      "name": "jpeg_entropy_truncated_with_eoi_is_rejected",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: EOI-retained entropy-cut JPEG must be rejected, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=49d1a311-b22c-4536-8855-f6d9b115b33e, relativePath=media/49d1a311-b22c-4536-8855-f6d9b115b33e.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.M10JpegIntegrityTest$jpeg_entropy_truncated_with_eoi_is_rejected$1.invokeSuspend(M10JpegIntegrityTest.kt:65)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.M10JpegIntegrityTest.jpeg_entropy_truncated_with_eoi_is_rejected(M10JpegIntegrityTest.kt:60)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest",
+      "name": "project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected INVALID_IMAGE from the actual JPEG source, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=eb0b3f82-ff95-4752-ac8a-e4983709b0f9, relativePath=media/eb0b3f82-ff95-4752-ac8a-e4983709b0f9.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.assertBrokenSelectionPreservesOldCover(M10JpegOldCoverProtectionTest.kt:152)\nat com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.access$assertBrokenSelectionPreservesOldCover(M10JpegOldCoverProtectionTest.kt:38)\nat com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest$assertBrokenSelectionPreservesOldCover$1.invokeSuspend(Unknown Source:15)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved(M10JpegOldCoverProtectionTest.kt:68)\n"
+    },
+    {
+      "kind": "android",
+      "class": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest",
+      "name": "subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+      "result": "FAIL",
+      "failureType": null,
+      "message": "java.lang.AssertionError: Expected INVALID_IMAGE from the actual JPEG source, got Success(value=PreparedImage(asset=LocalMediaAssetEntity(id=7ba10289-7ebd-4964-8008-84f1757b630a, relativePath=media/7ba10289-7ebd-4964-8008-84f1757b630a.jpg, mime=image/jpeg, width=256, height=256, byteLength=18820, sha256=e6054776e4a0c956d2552e33adf71456834c636153d2b3c713b82518e3153570)))\nat org.junit.Assert.fail(Assert.java:89)\nat org.junit.Assert.assertTrue(Assert.java:42)\nat com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.assertBrokenSelectionPreservesOldCover(M10JpegOldCoverProtectionTest.kt:152)\nat com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.access$assertBrokenSelectionPreservesOldCover(M10JpegOldCoverProtectionTest.kt:38)\nat com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest$assertBrokenSelectionPreservesOldCover$1.invokeSuspend(Unknown Source:15)\nat kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)\nat kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)\nat kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)\nat kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)\nat kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)\nat kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)\nat kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)\nat com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest.subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved(M10JpegOldCoverProtectionTest.kt:73)\n"
+    }
+  ],
+  "overall": "FAIL",
+  "total": 718,
+  "jvm": 86,
+  "android": 632,
+  "pass": 715,
+  "fail": 3,
+  "skipped": 0,
+  "sourceArchiveSha256": "296a8942079262cea9b614136df488facdbab4bab38418deba6abfd855383dcd",
+  "testAssertionsAudit": "stage2-final-restored-static.json; original UIComponents test retained with separately disclosed diagnostics/test-host safe insets only"
+}

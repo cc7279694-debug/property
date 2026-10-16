@@ -1,0 +1,108 @@
+[
+  {
+    "name": "project-native-name-ime",
+    "observation": [
+      "Typed UIC1_DRAFT through native input into new unsaved project; actual screenshot reviewed separately"
+    ],
+    "guestUtc": "2026-10-16T02:04:37Z",
+    "fontScale": "2.0",
+    "density": "Physical density: 420\r\nOverride density: 480",
+    "size": "Physical size: 1080x1920",
+    "night": "Night mode: no",
+    "activityFocus": [
+      "mCurrentFocus=Window{9acbd20 u0 com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity}",
+      "mFocusedApp=ActivityRecord{82806564 u0 com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity t2957}"
+    ],
+    "imeDiagnosticLines": [
+      "mCurId=com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+      "mInputShown=true"
+    ],
+    "imeInsets": [
+      "InsetsSource id=3 type=ime frame=[0,1023][1080,1920] visibleFrame=[0,1023][1080,1920] visible=true flags= sideHint=BOTTOM boundingRects=null",
+      "mSource=InsetsSource id=3 type=ime frame=[0,1023][1080,1920] visibleFrame=[0,1023][1080,1920] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    ],
+    "visibleImeUiNodes": [],
+    "ownVisibleText": [
+      "新增长期项目",
+      "UIC1_DRAFT",
+      "名称",
+      "2026-10-16",
+      "开始拥有日期",
+      "年-月-日，例如2026-01-01",
+      "现在",
+      "回看",
+      "设置"
+    ],
+    "nativeImeClaimRule": "Only assert actually visible IME when original screenshot visibly contains software keys and matching package nodes; dumpsys alone is insufficient."
+  },
+  {
+    "name": "project-native-invalid-submit",
+    "observation": [
+      "Clicked Save while native decimal IME remained visible; raw1.234 is invalid and no valid write intended"
+    ],
+    "guestUtc": "2026-10-16T02:07:37Z",
+    "fontScale": "2.0",
+    "density": "Physical density: 420\r\nOverride density: 480",
+    "size": "Physical size: 1080x1920",
+    "night": "Night mode: no",
+    "activityFocus": [
+      "mCurrentFocus=Window{9acbd20 u0 com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity}",
+      "mFocusedApp=ActivityRecord{82806564 u0 com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity t2957}"
+    ],
+    "imeDiagnosticLines": [
+      "mCurId=com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+      "mInputShown=true"
+    ],
+    "imeInsets": [
+      "InsetsSource id=3 type=ime frame=[0,1155][1080,1920] visibleFrame=[0,1155][1080,1920] visible=true flags= sideHint=BOTTOM boundingRects=null",
+      "mSource=InsetsSource id=3 type=ime frame=[0,1155][1080,1920] visibleFrame=[0,1155][1080,1920] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    ],
+    "visibleImeUiNodes": [],
+    "ownVisibleText": [
+      "付款日期默认同开始拥有日期；先付款后收到时，请修改为真实付款日。",
+      "类别",
+      "其他",
+      "备注（可选）",
+      "现在",
+      "回看",
+      "设置"
+    ],
+    "nativeImeClaimRule": "Only assert actually visible IME when original screenshot visibly contains software keys and matching package nodes; dumpsys alone is insufficient."
+  },
+  {
+    "name": "project-native-dark-error",
+    "observation": [
+      "Theme switched on dirty validated form; raw1.234 retained and native numeric keyboard actually visible in original PNG; no claim from UIAutomator IME nodes"
+    ],
+    "guestUtc": "2026-10-16T02:11:05Z",
+    "fontScale": "2.0",
+    "density": "Physical density: 420\r\nOverride density: 480",
+    "size": "Physical size: 1080x1920",
+    "night": "Night mode: yes",
+    "activityFocus": [
+      "mCurrentFocus=Window{c5b8bf2 u0 com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity}",
+      "mFocusedApp=ActivityRecord{82806564 u0 com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity t2957}"
+    ],
+    "imeDiagnosticLines": [
+      "mCurId=com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME",
+      "mInputShown=true"
+    ],
+    "imeInsets": [
+      "InsetsSource id=3 type=ime frame=[0,1155][1080,1920] visibleFrame=[0,1155][1080,1920] visible=true flags= sideHint=BOTTOM boundingRects=null",
+      "mSource=InsetsSource id=3 type=ime frame=[0,1155][1080,1920] visibleFrame=[0,1155][1080,1920] visible=true flags= sideHint=BOTTOM boundingRects=null"
+    ],
+    "visibleImeUiNodes": [],
+    "ownVisibleText": [
+      "2026-10-16",
+      "年-月-日，例如2026-01-01",
+      "选择开始拥有日期",
+      "1.234",
+      "初始实际投入（元）",
+      "金额最多保留两位小数。",
+      "现在",
+      "回看",
+      "设置"
+    ],
+    "nativeImeClaimRule": "Only assert actually visible IME when original screenshot visibly contains software keys and matching package nodes; dumpsys alone is insufficient."
+  }
+]

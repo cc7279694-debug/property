@@ -1,0 +1,639 @@
+{
+  "result": "PASS",
+  "apkSha256": "4bfd57231a9028ed5c2cd6961e2c59756936b688c6bf90159d58743301889c46",
+  "testApkSha256": "458e589cc52435cd6ffe693670f49af9dfd7ba671cc19cab9142f5003060e2f8",
+  "sourceTestTypePrefixesChecked": [
+    {
+      "source": "app/src/test/java/com/cooper/lithic/core/design/AmountFormatterTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/core/design/AmountFormatterTest"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/core/design/AmountFormatterTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/core/design/AmountFormatterTestKt"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/core/model/MoneyParserTest"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/core/model/MoneyParserTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/core/model/MoneyParserTestKt"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/core/time/BusinessClockTest"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/core/time/BusinessClockTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/core/time/BusinessClockTestKt"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/domain/project/ProjectCostEngineTest"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/domain/project/ProjectCostEngineTestKt"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/domain/project/ProjectLifecycleRulesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/domain/project/ProjectLifecycleRulesTest"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/domain/project/ProjectLifecycleRulesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/domain/project/ProjectLifecycleRulesTestKt"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/domain/subscription/SubscriptionAccumulationTest"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/domain/subscription/SubscriptionAccumulationTestKt"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/domain/subscription/SubscriptionCostEngineTest"
+    },
+    {
+      "source": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/domain/subscription/SubscriptionCostEngineTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/app/AppContainerTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/app/AppContainerTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/app/AppContainerTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/app/AppContainerTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/app/UIC1HomePreviewTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/app/UIC1HomePreviewTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/app/UIC1HomePreviewTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/app/UIC1HomePreviewTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/backup/DataGenerationStoreTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/backup/DataGenerationStoreTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/backup/DataGenerationStoreTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/backup/DataGenerationStoreTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/MetadataValidationTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/local/MetadataValidationTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/MetadataValidationTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/local/MetadataValidationTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/ProjectDatabaseTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/local/ProjectDatabaseTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/ProjectDatabaseTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/local/ProjectDatabaseTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/SubscriptionMigrationTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/local/SubscriptionMigrationTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/SubscriptionMigrationTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/local/SubscriptionMigrationTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/V1DatabaseFixture.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/local/V1DatabaseFixture"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/V1DatabaseFixture.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/local/V1DatabaseFixtureKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/LocalImageStoreTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/LocalImageStoreTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/LocalImageStoreTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/LocalImageStoreTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/SyntheticImageSource"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10ImageSourceFixtures"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ImageSourceFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10ImageSourceFixturesKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10JpegFixtures"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10JpegObservation"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10JpegFixturesKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegIntegrityTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegIntegrityTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10JpegIntegrityTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegOldCoverProtectionTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegOldCoverProtectionTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ProcessBoundaryRunner.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10ProcessBoundaryRunner"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/M10ProcessBoundaryRunner.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/M10ProcessBoundaryRunnerKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/MediaRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/MediaRepositoryTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/media/MediaRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/media/MediaRepositoryTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectLifecycleRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/repository/ProjectLifecycleRepositoryTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectLifecycleRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/repository/ProjectLifecycleRepositoryTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/repository/ProjectRepositoryTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/repository/ProjectRepositoryTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionLifecycleRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/repository/SubscriptionLifecycleRepositoryTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionLifecycleRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/repository/SubscriptionLifecycleRepositoryTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/repository/SubscriptionRepositoryTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/SubscriptionRepositoryTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/repository/SubscriptionRepositoryTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/settings/PausedReturnDispatcher.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/settings/PausedReturnDispatcher"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/settings/PausedReturnDispatcher.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/settings/PausedReturnDispatcherKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/settings/SettingsStoreTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/settings/SettingsStoreTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/settings/SettingsStoreTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/data/settings/SettingsStoreTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/home/UIC1HomeSampleTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/home/UIC1HomeSampleTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/home/UIC1HomeSampleTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/home/UIC1HomeSampleTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/home/UIC1RefinedHomeTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/home/UIC1RefinedHomeTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/home/UIC1RefinedHomeTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/home/UIC1RefinedHomeTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverEntryScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/M10CoverEntryScreensTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverEntryScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/M10CoverEntryScreensTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverNavigationGuardTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/M10CoverNavigationGuardTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverNavigationGuardTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/M10CoverNavigationGuardTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/M10CoverRoutesTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/M10CoverRoutesTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/M10CoverViewModelTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/M10CoverViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/M10CoverViewModelTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/UIC1CoverPreviewTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/UIC1CoverPreviewTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/media/UIC1CoverPreviewTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/media/UIC1CoverPreviewTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectDateInputTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectDateInputTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectDateInputTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectDateInputTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectEntryFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectEntryFlowTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectEntryFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectEntryFlowTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectLifecycleFlowTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectLifecycleFlowTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectLifecycleRoutesTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectLifecycleRoutesTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectLifecycleScreensTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectLifecycleScreensTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectLifecycleViewModelTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectLifecycleViewModelTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectNavigationGuardTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectNavigationGuardTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectNavigationGuardTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectNavigationGuardTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectRoutesTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectRoutesTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectScreensTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectScreensTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectViewModelTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/ProjectViewModelTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1ProjectSampleTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/UIC1ProjectSampleTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1ProjectSampleTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/UIC1ProjectSampleTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1RefinedDetailTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/UIC1RefinedDetailTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1RefinedDetailTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/UIC1RefinedDetailTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1RefinedListTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/UIC1RefinedListTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/project/UIC1RefinedListTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/project/UIC1RefinedListTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionFixtures"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionRoomFixture"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09MutableBusinessClock"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionFixtures.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionFixturesKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionLifecycleFlowTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionLifecycleFlowTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionLifecycleViewModelTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionLifecycleViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionLifecycleViewModelTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionNavigationFlowTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionNavigationFlowTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationGuardTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionNavigationGuardTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionNavigationGuardTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionNavigationGuardTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionRoutesTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionRoutesTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionScreensTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionScreensTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionViewModelTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/M09SubscriptionViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/M09SubscriptionViewModelTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionNavigationGuardTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionNavigationGuardTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionNavigationGuardTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionNavigationGuardTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionRoutesTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRoutesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionRoutesTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionScreensTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionScreensTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionScreensTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionViewModelTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionViewModelTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/SubscriptionViewModelTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/UIC1SubscriptionVisualTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/UIC1SubscriptionVisualTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/subscription/UIC1SubscriptionVisualTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/feature/subscription/UIC1SubscriptionVisualTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/ActivityNavigationTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/ActivityNavigationTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/ActivityNavigationTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/ActivityNavigationTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/NavigationShellTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UnsupportedTestRoute"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/NavigationShellTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/NavigationShellTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/NavigationShellTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/NavigationShellTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/StorageUiStateTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/StorageUiStateTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/StorageUiStateTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/StorageUiStateTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1EmptyVisualEvidenceTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1EmptyVisualEvidenceTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1EmptyVisualEvidenceTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1EmptyVisualEvidenceTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1FormVisualTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1FormVisualTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1FormVisualTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1FormVisualTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1RefinedVisualEvidenceTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1RefinedVisualEvidenceTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1RefinedVisualEvidenceTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1RefinedVisualEvidenceTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1SecondaryPagesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1SecondaryPagesTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1SecondaryPagesTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1SecondaryPagesTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1Stage2EmptyEvidenceTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1Stage2EmptyEvidenceTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1Stage2EmptyEvidenceTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1Stage2EmptyEvidenceTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1Stage2EvidenceTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1Stage2EvidenceTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1Stage2EvidenceTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1Stage2EvidenceTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1TestActions.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1TestActionsKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1ThemeTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1ThemeTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIC1ThemeTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIC1ThemeTestKt"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIComponentsTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIComponentsTest"
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/ui/UIComponentsTest.kt",
+      "descriptorPrefix": "Lcom/cooper/lithic/ui/UIComponentsTestKt"
+    }
+  ],
+  "matches": [],
+  "syntheticDexStringsAbsent": [
+    "音乐年卡",
+    "云盘空间",
+    "阅读月卡",
+    "旧健身订阅",
+    "随身相机",
+    "旧通勤耳机",
+    "UIC1_DRAFT",
+    "ui-c1-stage2-isolated",
+    "fixture-source.json"
+  ],
+  "androidTestAssetPathsAbsentFromTarget": [
+    "m10_jpeg_integrity/complete.jpg",
+    "m10_jpeg_integrity/entropy_cut_eoi_retained.jpg"
+  ],
+  "schemaExportsAbsentFromTargetApk": true,
+  "testApkFrozenSchemaResources": [
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/1.json",
+      "bytes": 10840,
+      "sha256": "351b2e7c1fb952bce961c52948a6711c999f59c79dfd66e2da5564d2697b823b",
+      "packagedTestAssetEqualsFrozenGitBlob": true
+    },
+    {
+      "path": "app/schemas/com.cooper.lithic.data.local.LithicDatabase/2.json",
+      "bytes": 21042,
+      "sha256": "ceb49b458c4c5baa08066586f209f96842935f5456a0a53a01220f6d958f7131",
+      "packagedTestAssetEqualsFrozenGitBlob": true
+    }
+  ],
+  "scope": "Literal DEX type-prefix and string scan of the final artifacts plus ZIP assets; original AndroidX Debug ComponentActivity test manifest dependency is inherited, not a Release quality claim."
+}

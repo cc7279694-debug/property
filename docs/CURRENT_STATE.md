@@ -4,11 +4,11 @@
 
 ## Current Stage
 
-- **UI-C1阶段2 — IN_PROGRESS**：用户实际看完f000639精修27图确认视觉；转交ChatGPT独立视觉复审PASS WITH NOTES，并明确授权Task6～8。本轮开始核对的基线/本地/远端均`f000639c62fce71be0a9240425c8e27b1a5ed974`，当时工作树干净；原M10/main未变。锁定阶段1布局与业务/存储/媒体/守卫/身份/依赖，先Task6再Task7再Task8。完整[用户指令](design/ui-c1/source-stage2/USER_INSTRUCTIONS.md)、[当前计划](planning/UI_C1_PLAN.md)。阶段1下方数字均为历史，不代表本轮已重新执行；全量回归/最终16图尚NOT_RUN。M10三FAIL/旧表单偶发超时/Q03～Q06及平台未执行边界保留，不自行接受/冻结。
-
-- **Task6已提交 `e9bb44f`，Task7已提交 `45e9116`，Task8完整验证进行中**：7项真实RED；首轮GREEN设备阻塞0方法；重启后65项63PASS/2状态文字语义FAIL；两行修正后的14项全部PASS，后续仅文字字号调整的6项及Lint/assemble全部PASS（0错误/23原警告）。原失败保留，不拼成一次全绿；原701测试文件不改，新增10，当前源码711方法，完整Task8仍NOT_RUN。12张配对检查图明确逐图来源与两版APK，见[Task6报告](evidence/UI-C1-task6-verification.md)。M10三JPEG、旧表单超时及所有未执行边界保留。
-
-Task7：8个真实复用表单及既有弹窗已经统一，保护业务回调/输入/日期/守卫。旧保存诊断1 PASS但不关闭偶发风险；新增系统安全区真实RED后只修测试宿主safeDrawing。新视觉有效资料4项RED；第一次68项67PASS/1FAIL为新测试误要求短标题必须换行，修正该新期望后7项复验全PASS，Lint/assemble退出0（缓存任务按缓存登记）。正式长标题换行、原全部断言仍保留。新空Room宿主提供实际宿主与APK元数据。详见[Task7验证](evidence/ui-c1/stage2/task7/verification.md)。当前源码718方法＝86 JVM＋632 Android，原701保留；这不是全量执行结果。Task8首轮完整718方法为693PASS/25FAIL：22项冻结v1资源SHA前置失败＋3JPEG。已证实检出CRLF转换，恢复原v1/v2 Git blob原字节，schema Git差异为0，只补换行保护属性；新测试APK两资源均逐字节核对一致。现在将锁定修正后的完整输入重跑全部三条命令，尚未宣称22项迁移复测PASS。最终16图、APK及全程数据核查待实际完成。
+- **UI-C1阶段2 — READY_FOR_REVIEW**：从用户已确认27图的`f000639c62fce71be0a9240425c8e27b1a5ed974`只执行Task6～8。Task6 `e9bb44f`先提交，Task7 `45e9116`后提交，最终测试输入冻结`6a25965225ace3212d1653d15b45fc56ef87411e`，187项指纹`6e10034a61e9ffc666be545645b04ea5a13bc022aa510cb5dde97694485a4f2f`。证据提交在其后，不改变产品/测试输入。只交付UI分支，不自授接受、修M10或进入M11。
+- **实际完整结果：718＝715 PASS／3原JPEG FAIL／0 SKIPPED，整体FAIL**。86 JVM全部PASS，632 Android629PASS/3FAIL；原701保留、新增17全PASS。三正式命令退出0/1/0；Lint/assemble成功，缓存任务如实标注。首轮693PASS/25FAIL完整保留；其中22项schema原资源CRLF前置失败经恢复原Git blob字节及-text保护后，新完整回归逐身份全部PASS。schema对象/版本/fixture期望/原业务断言未改。
+- **最终68张原图**：52张真实MainActivity（16正式深浅主图＋36附图）、14张隔离资料、2张空Room；同APK SHA `4bfd57231a9028ed5c2cd6961e2c59756936b688c6bf90159d58743301889c46`，12,982,546字节。实现者逐张直接检查，独立视觉/代码验收仍PENDING。真实360dp/系统200%、字母/数字IME、1.234错误raw、Back/旋转/主题与取消路径有实际证据；没有全模式/状态/主题原生穷举或完整TalkBack承诺。
+- **保护核对PASS**：七表30行全部字段/集合、原2封面字节、GMT记录时区、generation/pointer/ready/settings及AVD描述/config不变；SQL完整性ok/FK空，13项设备设置完整恢复，最终安装APK字节一致。默认QA未新增或删除。旧表单保存仍INTERMITTENT / ROOT_CAUSE_UNKNOWN；M10三JPEG及Q03～Q06/平台/备份恢复边界保持。
+- 实际[阶段2报告](evidence/UI-C1-stage2-verification.md)、[最终图册](evidence/ui-c1/stage2/FINAL_GALLERY.md)、[断言对照](evidence/ui-c1/stage2/task8/final-test-crosswalk.md)、[真实保护核对](evidence/ui-c1/stage2/device-preservation.json)、[checkpoint](checkpoints/2026-10-16-UI-C1-stage2.md)。Task6/7和首次完整失败均保留历史，不改正式ACCEPTANCE_MATRIX、原130案例或16组边界。
 
 以下为阶段1交付历史及继承边界；当前执行授权以上行为准。
 
@@ -77,9 +77,9 @@ Task7：8个真实复用表单及既有弹窗已经统一，保护业务回调/�
 
 ## Git
 
-- 当前UI工作区：`E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，仅分支`feat/ui-c1-visual-redesign`。本轮从被要求精修的阶段1提交`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`继续；阶段0批准基线仍为`edc8be772a795f40b44f15da79ebf62a529bc074`，原UI来源`41596820145dc4a3fa6d041728a59540d828108a`，未从main开始。实际提交SHA/推送一致性取最终Git回执，避免递归引用自身提交。
+- 当前UI工作区：`E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，仅分支`feat/ui-c1-visual-redesign`。本轮阶段2从已确认精修提交`f000639c62fce71be0a9240425c8e27b1a5ed974`继续；`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`是阶段1初次交付历史；阶段0批准基线仍为`edc8be772a795f40b44f15da79ebf62a529bc074`，原UI来源`41596820145dc4a3fa6d041728a59540d828108a`，未从main开始。实际提交SHA/推送一致性取最终Git回执，避免递归引用自身提交。
 - 原工作目录`E:/CODEX/砺石新APP`保持`feat/m10-local-cover-media`/`41596820145dc4a3fa6d041728a59540d828108a`；main保护`145326ddd4ce28abbf7c2706fe25f9d38c599c3a`。M10复核原基准d7e9、M09冻结57de897等来源及旧证据不改；不回写M10分支、不合并/force/自动PR或公开APK，不提交账本/私钥/私人照片。
 
 ## Next Recommended Task
 
-**先由用户与ChatGPT查看本轮27图精修样板，确认视觉是否达到预期。** 未确认不得进入Task6～8。本轮不扩展其它页面、不自行授予视觉或独立验收通过。M10仍有三项JPEG拒绝FAIL，修复方案另行授权和独立复验；不能随UI整合或进入M11。Q03/Q04/Q06期限、Q05 USER_CONFIRMED及完整跨模块NOT_RUN、M00～M09历史NOTES保留。
+**停止，等待用户和ChatGPT独立查看本轮68张原图及同输入718项真实结果。**本轮只报告READY_FOR_REVIEW，不自动接受/冻结、不继续开发。M10 JPEG三FAIL修复方案仍须另行授权；不进入M11或合并main。Q03/Q04/Q06期限、Q05 USER_CONFIRMED、M11/M12 NOT_RUN、历史M00～M09全部NOTES保留。
