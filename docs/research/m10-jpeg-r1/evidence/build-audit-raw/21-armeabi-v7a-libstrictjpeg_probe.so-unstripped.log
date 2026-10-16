@@ -1,0 +1,574 @@
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              DYN (Shared object file)
+  Machine:                           ARM
+  Version:                           0x1
+  Entry point address:               0x0
+  Start of program headers:          52 (bytes into file)
+  Start of section headers:          3429988 (bytes into file)
+  Flags:                             0x5000200
+  Size of this header:               52 (bytes)
+  Size of program headers:           32 (bytes)
+  Number of program headers:         9
+  Size of section headers:           40 (bytes)
+  Number of section headers:         35
+  Section header string table index: 33
+
+Elf file type is DYN (Shared object file)
+Entry point 0x0
+There are 9 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  PHDR           0x000034 0x00000034 0x00000034 0x00120 0x00120 R   0x4
+  LOAD           0x000000 0x00000000 0x00000000 0x9d7b0 0x9d7b0 R E 0x4000
+  LOAD           0x09d7b0 0x000a17b0 0x000a17b0 0x00b1c 0x01850 RW  0x4000
+  LOAD           0x09e2cc 0x000a62cc 0x000a62cc 0x000f0 0x0010c RW  0x4000
+  DYNAMIC        0x09dca4 0x000a1ca4 0x000a1ca4 0x000c8 0x000c8 RW  0x4
+  GNU_RELRO      0x09d7b0 0x000a17b0 0x000a17b0 0x00b1c 0x01850 R   0x1
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x0
+  NOTE           0x000154 0x00000154 0x00000154 0x000bc 0x000bc R   0x4
+  EXIDX          0x005dc4 0x00005dc4 0x00005dc4 0x025c8 0x025c8 R   0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .note.android.ident .note.gnu.build-id .dynsym .gnu.version .gnu.version_r .gnu.hash .dynstr .rel.dyn .ARM.exidx .rel.plt .ARM.extab .rodata .text .plt 
+   02     .data.rel.ro .fini_array .dynamic .got .got.plt .relro_padding 
+   03     .data .bss 
+   04     .dynamic 
+   05     .data.rel.ro .fini_array .dynamic .got .got.plt .relro_padding 
+   06     
+   07     .note.android.ident .note.gnu.build-id 
+   08     .ARM.exidx 
+   None   .comment .ARM.attributes .debug_loc .debug_abbrev .debug_info .debug_ranges .debug_str .debug_frame .debug_line .symtab .shstrtab .strtab 
+Dynamic section at offset 0x9dca4 contains 25 entries:
+  Tag        Type           Name/Value
+  0x00000001 (NEEDED)       Shared library: [libm.so]
+  0x00000001 (NEEDED)       Shared library: [libdl.so]
+  0x00000001 (NEEDED)       Shared library: [libc.so]
+  0x0000000e (SONAME)       Library soname: [libstrictjpeg_probe.so]
+  0x0000001e (FLAGS)        BIND_NOW 
+  0x6ffffffb (FLAGS_1)      NOW 
+  0x00000011 (REL)          0x519c
+  0x00000012 (RELSZ)        3112 (bytes)
+  0x00000013 (RELENT)       8 (bytes)
+  0x6ffffffa (RELCOUNT)     334
+  0x00000017 (JMPREL)       0x838c
+  0x00000002 (PLTRELSZ)     2336 (bytes)
+  0x00000003 (PLTGOT)       0xa1e30
+  0x00000014 (PLTREL)       REL
+  0x00000006 (SYMTAB)       0x210
+  0x0000000b (SYMENT)       16 (bytes)
+  0x00000005 (STRTAB)       0x3180
+  0x0000000a (STRSZ)        8218 (bytes)
+  0x6ffffef5 (GNU_HASH)     0x2510
+  0x0000001a (FINI_ARRAY)   0xa1c9c
+  0x0000001c (FINI_ARRAYSZ) 8 (bytes)
+  0x6ffffff0 (VERSYM)       0x2100
+  0x6ffffffe (VERNEED)      0x24e0
+  0x6fffffff (VERNEEDNUM)   1
+  0x00000000 (NULL)         0x0
+
+Symbol table '.dynsym' contains 495 entries:
+   Num:    Value  Size Type    Bind   Vis       Ndx Name
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT   UND 
+     1: 00000000     0 FUNC    GLOBAL DEFAULT   UND __cxa_finalize@LIBC
+     2: 00000000     0 FUNC    GLOBAL DEFAULT   UND __cxa_atexit@LIBC
+     3: 00000000     0 FUNC    GLOBAL DEFAULT   UND __register_atfork@LIBC
+     4: 00000000     0 FUNC    GLOBAL DEFAULT   UND strcmp@LIBC
+     5: 00000000     0 FUNC    GLOBAL DEFAULT   UND __errno@LIBC
+     6: 00000000     0 FUNC    GLOBAL DEFAULT   UND strtoull@LIBC
+     7: 00000000     0 FUNC    GLOBAL DEFAULT   UND sigemptyset@LIBC
+     8: 00000000     0 FUNC    GLOBAL DEFAULT   UND clock_gettime@LIBC
+     9: 00000000     0 FUNC    GLOBAL DEFAULT   UND calloc@LIBC
+    10: 00000000     0 FUNC    GLOBAL DEFAULT   UND fopen@LIBC
+    11: 00000000     0 FUNC    GLOBAL DEFAULT   UND fileno@LIBC
+    12: 00000000     0 FUNC    GLOBAL DEFAULT   UND fstat@LIBC
+    13: 00000000     0 FUNC    GLOBAL DEFAULT   UND strerror@LIBC
+    14: 00000000     0 FUNC    GLOBAL DEFAULT   UND free@LIBC
+    15: 00000000     0 FUNC    GLOBAL DEFAULT   UND fclose@LIBC
+    16: 00000000     0 FUNC    GLOBAL DEFAULT   UND getrusage@LIBC
+    17: 00000000     0 FUNC    GLOBAL DEFAULT   UND fgets@LIBC
+    18: 00000000     0 FUNC    GLOBAL DEFAULT   UND sscanf@LIBC
+    19: 00000000     0 FUNC    GLOBAL DEFAULT   UND malloc@LIBC
+    20: 00000000     0 FUNC    GLOBAL DEFAULT   UND fread@LIBC
+    21: 00000000     0 FUNC    GLOBAL DEFAULT   UND fgetc@LIBC
+    22: 00000000     0 FUNC    GLOBAL DEFAULT   UND ferror@LIBC
+    23: 00000000     0 OBJECT  GLOBAL DEFAULT   UND __stack_chk_guard@LIBC
+    24: 00000000     0 FUNC    GLOBAL DEFAULT   UND __stack_chk_fail@LIBC
+    25: 00000000     0 FUNC    GLOBAL DEFAULT   UND sigaction@LIBC
+    26: 00000000     0 FUNC    GLOBAL DEFAULT   UND __vsnprintf_chk@LIBC
+    27: 00000000     0 FUNC    GLOBAL DEFAULT   UND printf@LIBC
+    28: 00000000     0 FUNC    GLOBAL DEFAULT   UND putchar@LIBC
+    29: 00000000     0 FUNC    GLOBAL DEFAULT   UND opendir@LIBC
+    30: 00000000     0 FUNC    GLOBAL DEFAULT   UND readdir@LIBC
+    31: 00000000     0 FUNC    GLOBAL DEFAULT   UND closedir@LIBC
+    32: 00000000     0 FUNC    GLOBAL DEFAULT   UND setjmp@LIBC
+    33: 00000000     0 FUNC    GLOBAL DEFAULT   UND longjmp@LIBC
+    34: 00000000     0 FUNC    GLOBAL DEFAULT   UND strstr@LIBC
+    35: 00000000     0 FUNC    GLOBAL DEFAULT   UND exit@LIBC
+    36: 00000000     0 FUNC    GLOBAL DEFAULT   UND fprintf@LIBC
+    37: 00000000     0 OBJECT  GLOBAL DEFAULT   UND stderr@LIBC
+    38: 00000000     0 FUNC    GLOBAL DEFAULT   UND getenv@LIBC
+    39: 00000000     0 FUNC    GLOBAL DEFAULT   UND strlen@LIBC
+    40: 00000000     0 FUNC    GLOBAL DEFAULT   UND strncpy@LIBC
+    41: 00000000     0 FUNC    GLOBAL DEFAULT   UND __strlen_chk@LIBC
+    42: 00000000     0 FUNC    GLOBAL DEFAULT   UND getc@LIBC
+    43: 00000000     0 FUNC    GLOBAL DEFAULT   UND ungetc@LIBC
+    44: 00000000     0 FUNC    GLOBAL DEFAULT   UND strrchr@LIBC
+    45: 00000000     0 FUNC    GLOBAL DEFAULT   UND strcasecmp@LIBC
+    46: 00000000     0 FUNC    GLOBAL DEFAULT   UND setenv@LIBC
+    47: 00000000     0 FUNC    GLOBAL DEFAULT   UND memcmp@LIBC
+    48: 00000000     0 FUNC    GLOBAL DEFAULT   UND __fread_chk@LIBC_N
+    49: 00000000     0 FUNC    GLOBAL DEFAULT   UND feof@LIBC
+    50: 00000000     0 FUNC    GLOBAL DEFAULT   UND __strncpy_chk2@LIBC
+    51: 00000000     0 FUNC    GLOBAL DEFAULT   UND memchr@LIBC
+    52: 00000000     0 FUNC    GLOBAL DEFAULT   UND realloc@LIBC
+    53: 00000000     0 FUNC    GLOBAL DEFAULT   UND fwrite@LIBC
+    54: 00000000     0 FUNC    GLOBAL DEFAULT   UND fflush@LIBC
+    55: 00000000     0 FUNC    GLOBAL DEFAULT   UND putc@LIBC
+    56: 00000000     0 FUNC    GLOBAL DEFAULT   UND pthread_getspecific@LIBC
+    57: 00000000     0 FUNC    GLOBAL DEFAULT   UND memset@LIBC
+    58: 00000000     0 FUNC    GLOBAL DEFAULT   UND pthread_once@LIBC
+    59: 00000000     0 FUNC    GLOBAL DEFAULT   UND pthread_mutex_lock@LIBC
+    60: 00000000     0 FUNC    GLOBAL DEFAULT   UND pthread_mutex_unlock@LIBC
+    61: 00000000     0 FUNC    GLOBAL DEFAULT   UND pthread_setspecific@LIBC
+    62: 00000000     0 FUNC    GLOBAL DEFAULT   UND memcpy@LIBC
+    63: 00000000     0 FUNC    GLOBAL DEFAULT   UND abort@LIBC
+    64: 00000000     0 FUNC    GLOBAL DEFAULT   UND pthread_key_delete@LIBC
+    65: 00000000     0 FUNC    GLOBAL DEFAULT   UND pthread_key_create@LIBC
+    66: 0008ec09    96 FUNC    GLOBAL DEFAULT    13 _tr_flush_bits
+    67: 00086beb    64 FUNC    GLOBAL DEFAULT    13 spng_get_hist
+    68: 00087933   112 FUNC    GLOBAL DEFAULT    13 spng_set_phys
+    69: 000879a5   312 FUNC    GLOBAL DEFAULT    13 spng_set_splt
+    70: 00039479  1740 FUNC    GLOBAL DEFAULT    13 jpeg_idct_16x16
+    71: 00086291   168 FUNC    GLOBAL DEFAULT    13 spng_set_png_file
+    72: 00050b41  2084 FUNC    GLOBAL DEFAULT    13 tj3DecodeYUVPlanes8
+    73: 00027425   384 FUNC    GLOBAL DEFAULT    13 j12init_d_diff_controller
+    74: 0007e6e1   288 FUNC    GLOBAL DEFAULT    13 jpeg_mem_dest_tj
+    75: 0008c905   240 FUNC    GLOBAL DEFAULT    13 deflatePrime
+    76: 0004ca51   320 FUNC    GLOBAL DEFAULT    13 tjCompress
+    77: 0004f3f9   644 FUNC    GLOBAL DEFAULT    13 tj3SetCroppingRegion
+    78: 0001e861  1744 FUNC    GLOBAL DEFAULT    13 j12init_color_deconverter
+    79: 00034f31   964 FUNC    GLOBAL DEFAULT    13 jpeg_idct_float
+    80: 000867cd    50 FUNC    GLOBAL DEFAULT    13 spng_get_ihdr
+    81: 00086f07   156 FUNC    GLOBAL DEFAULT    13 spng_set_plte
+    82: 00051ae9    14 FUNC    GLOBAL DEFAULT    13 tjInitTransform
+    83: 00079aa1  1658 FUNC    GLOBAL DEFAULT    13 jtransform_adjust_parameters
+    84: 00054c89   284 FUNC    GLOBAL DEFAULT    13 jpeg_write_scanlines
+    85: 0003c925  1460 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_14x14
+    86: 0008c08d   136 FUNC    GLOBAL DEFAULT    13 deflateReset
+    87: 00088699   136 FUNC    GLOBAL DEFAULT    13 inflateResetKeep
+    88: 00085659   828 FUNC    GLOBAL DEFAULT    13 spng_encode_image
+    89: 0004f00d    76 FUNC    GLOBAL DEFAULT    13 tjDecompressHeader
+    90: 00054c27    96 FUNC    GLOBAL DEFAULT    13 jpeg_start_compress
+    91: 0004c731   640 FUNC    GLOBAL DEFAULT    13 tjCompress2
+    92: 0004f059   384 FUNC    GLOBAL DEFAULT    13 tj3GetICCProfile
+    93: 0005093d   516 FUNC    GLOBAL DEFAULT    13 tjDecompressToYUV2
+    94: 000564b1   704 FUNC    GLOBAL DEFAULT    13 jpeg_default_colorspace
+    95: 000231c5    64 FUNC    GLOBAL DEFAULT    13 jinit_lossless_decompressor
+    96: 00045be7    56 FUNC    GLOBAL DEFAULT    13 j12copy_sample_rows
+    97: 00035711   956 FUNC    GLOBAL DEFAULT    13 jpeg_idct_ifast
+    98: 0008a353    76 FUNC    GLOBAL DEFAULT    13 inflateValidate
+    99: 00047a1d   268 FUNC    GLOBAL DEFAULT    13 tjBufSize
+   100: 00017b25   122 FUNC    GLOBAL DEFAULT    13 jpeg_finish_decompress
+   101: 0008bdad    34 FUNC    GLOBAL DEFAULT    13 deflateInit_
+   102: 000471f5    44 FUNC    GLOBAL DEFAULT    13 tj3GetErrorStr
+   103: 0003ad99   570 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_3x3
+   104: 00013d24    68 OBJECT  GLOBAL DEFAULT    12 deflate_copyright
+   105: 0008acf5    32 FUNC    GLOBAL DEFAULT    13 inflate_fixed
+   106: 00086423    26 FUNC    GLOBAL DEFAULT    13 spng_set_image_limits
+   107: 0009b519   300 FUNC    GLOBAL DEFAULT    13 j16init_write_ppm
+   108: 000643ad    52 FUNC    GLOBAL DEFAULT    13 jinit_lhuff_encoder
+   109: 0003f0e1   384 FUNC    GLOBAL DEFAULT    13 jinit_memory_mgr
+   110: 00086961    70 FUNC    GLOBAL DEFAULT    13 spng_get_chrm_int
+   111: 00051af9   520 FUNC    GLOBAL DEFAULT    13 tj3TransformBufSize
+   112: 00017ad1    42 FUNC    GLOBAL DEFAULT    13 jpeg_input_complete
+   113: 00040119  1020 FUNC    GLOBAL DEFAULT    13 jinit_1pass_quantizer
+   114: 00031e4d   180 FUNC    GLOBAL DEFAULT    13 j12init_d_post_controller
+   115: 00045b89    18 FUNC    GLOBAL DEFAULT    13 jround_up
+   116: 00040117     2 FUNC    GLOBAL DEFAULT    13 jpeg_mem_term
+   117: 000900f5   224 FUNC    GLOBAL DEFAULT    13 compress2_z
+   118: 0004d56d  1004 FUNC    GLOBAL DEFAULT    13 tj3CompressFromYUV8
+   119: 000902a1    22 FUNC    GLOBAL DEFAULT    13 compress_z
+   120: 00052ea5   352 FUNC    GLOBAL DEFAULT    13 tjSaveImage
+   121: 00010af8   320 OBJECT  GLOBAL DEFAULT    12 jpeg_natural_order
+   122: 00040e5d  1116 FUNC    GLOBAL DEFAULT    13 j12init_1pass_quantizer
+   123: 0008bdd1   476 FUNC    GLOBAL DEFAULT    13 deflateInit2_
+   124: 00047941     4 FUNC    GLOBAL DEFAULT    13 tj3Alloc
+   125: 000946a9    80 FUNC    GLOBAL DEFAULT    13 j12init_read_ppm
+   126: 0004f1d9    76 FUNC    GLOBAL DEFAULT    13 tj3GetScalingFactors
+   127: 000533ab    72 FUNC    GLOBAL DEFAULT    13 jpeg_write_tables
+   128: 00036fad   466 FUNC    GLOBAL DEFAULT    13 jpeg_idct_3x3
+   129: 00089f05   164 FUNC    GLOBAL DEFAULT    13 inflateSetDictionary
+   130: 00086a77    62 FUNC    GLOBAL DEFAULT    13 spng_get_sbit
+   131: 0004f271   392 FUNC    GLOBAL DEFAULT    13 tj3SetScalingFactor
+   132: 000189dd   214 FUNC    GLOBAL DEFAULT    13 jpeg_read_raw_data
+   133: 00024f19    64 FUNC    GLOBAL DEFAULT    13 j16init_lossless_decompressor
+   134: 00038e7d  1532 FUNC    GLOBAL DEFAULT    13 jpeg_idct_15x15
+   135: 0008a699   146 FUNC    GLOBAL DEFAULT    13 adler32_combine
+   136: 0008fcb9   172 FUNC    GLOBAL DEFAULT    13 _tr_tally
+   137: 0004830d    30 FUNC    GLOBAL DEFAULT    13 tjPlaneSizeYUV
+   138: 00086881   224 FUNC    GLOBAL DEFAULT    13 spng_get_chrm
+   139: 00086aed   186 FUNC    GLOBAL DEFAULT    13 spng_get_text
+   140: 00087229   120 FUNC    GLOBAL DEFAULT    13 spng_set_gama
+   141: 00091529    84 FUNC    GLOBAL DEFAULT    13 j16init_read_png
+   142: 00045c59   144 FUNC    GLOBAL DEFAULT    13 jinit_arith_decoder
+   143: 0008c115   534 FUNC    GLOBAL DEFAULT    13 deflateSetDictionary
+   144: 00017da7   548 FUNC    GLOBAL DEFAULT    13 jpeg_crop_scanline
+   145: 0008a72b   146 FUNC    GLOBAL DEFAULT    13 adler32_combine64
+   146: 00087b5b   236 FUNC    GLOBAL DEFAULT    13 spng_set_unknown_chunks
+   147: 0002a139   344 FUNC    GLOBAL DEFAULT    13 jinit_d_coef_controller
+   148: 0003c2f9  1580 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_13x13
+   149: 000888b5   184 FUNC    GLOBAL DEFAULT    13 inflateInit2_
+   150: 00086ab5    56 FUNC    GLOBAL DEFAULT    13 spng_get_srgb
+   151: 00056e01   126 FUNC    GLOBAL DEFAULT    13 jpeg_enable_lossless
+   152: 0008d0c9   286 FUNC    GLOBAL DEFAULT    13 deflateBound_z
+   153: 00084551    48 FUNC    GLOBAL DEFAULT    13 spng_get_row_info
+   154: 000774f5   222 FUNC    GLOBAL DEFAULT    13 jpeg12_write_raw_data
+   155: 00018afd    98 FUNC    GLOBAL DEFAULT    13 jpeg_finish_output
+   156: 00027f95   128 FUNC    GLOBAL DEFAULT    13 j12init_inverse_dct
+   157: 000784e9   668 FUNC    GLOBAL DEFAULT    13 jpeg_read_icc_profile
+   158: 0001ab89    52 FUNC    GLOBAL DEFAULT    13 jpeg_set_marker_processor
+   159: 0003afd5  1036 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_9x9
+   160: 0008b6ed   980 FUNC    GLOBAL DEFAULT    13 crc32_z
+   161: 00011ef6    47 OBJECT  GLOBAL DEFAULT    12 inflate_copyright
+   162: 0008a44d     8 FUNC    GLOBAL DEFAULT    13 zlibCompileFlags
+   163: 00047f65   184 FUNC    GLOBAL DEFAULT    13 tj3YUVPlaneWidth
+   164: 0009abb1   356 FUNC    GLOBAL DEFAULT    13 jinit_write_ppm
+   165: 000267d3   174 FUNC    GLOBAL DEFAULT    13 jpeg_huff_decode
+   166: 0004710d   114 FUNC    GLOBAL DEFAULT    13 tj3Destroy
+   167: 000533f5   112 FUNC    GLOBAL DEFAULT    13 jinit_marker_writer
+   168: 000279dd   384 FUNC    GLOBAL DEFAULT    13 j16init_d_diff_controller
+   169: 00086019   360 FUNC    GLOBAL DEFAULT    13 spng_ctx_free
+   170: 00047945     4 FUNC    GLOBAL DEFAULT    13 tjAlloc
+   171: 00017afb    42 FUNC    GLOBAL DEFAULT    13 jpeg_has_multiple_scans
+   172: 00024969   376 FUNC    GLOBAL DEFAULT    13 jinit_d_diff_controller
+   173: 00089e87   126 FUNC    GLOBAL DEFAULT    13 inflateGetDictionary
+   174: 00037181   964 FUNC    GLOBAL DEFAULT    13 jpeg_idct_9x9
+   175: 000400df     6 FUNC    GLOBAL DEFAULT    13 jpeg_get_small
+   176: 0008ad15  2508 FUNC    GLOBAL DEFAULT    13 inflate_fast
+   177: 0007f91d    84 FUNC    GLOBAL DEFAULT    13 jinit_read_png
+   178: 00063411    64 FUNC    GLOBAL DEFAULT    13 j12init_lossless_compressor
+   179: 00018b65    84 FUNC    GLOBAL DEFAULT    13 jinit_input_controller
+   180: 00030e91   104 FUNC    GLOBAL DEFAULT    13 jinit_phuff_decoder
+   181: 000400e5     6 FUNC    GLOBAL DEFAULT    13 jpeg_free_small
+   182: 00084ab9    44 FUNC    GLOBAL DEFAULT    13 spng_encode_row
+   183: 00061ab5   260 FUNC    GLOBAL DEFAULT    13 jinit_forward_dct
+   184: 0003891d  1376 FUNC    GLOBAL DEFAULT    13 jpeg_idct_14x14
+   185: 0003e609  1548 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_4x4
+   186: 0008a405    58 FUNC    GLOBAL DEFAULT    13 inflateCodesUsed
+   187: 0008643d    38 FUNC    GLOBAL DEFAULT    13 spng_get_image_limits
+   188: 00049245   288 FUNC    GLOBAL DEFAULT    13 tj3LoadImage8
+   189: 00075e91   420 FUNC    GLOBAL DEFAULT    13 j16init_c_diff_controller
+   190: 000872ed   228 FUNC    GLOBAL DEFAULT    13 spng_set_iccp
+   191: 00078f0d   318 FUNC    GLOBAL DEFAULT    13 jtransform_parse_crop_spec
+   192: 000707a1   408 FUNC    GLOBAL DEFAULT    13 jinit_c_diff_controller
+   193: 00017b9f    46 FUNC    GLOBAL DEFAULT    13 jpeg_abort
+   194: 00072101    88 FUNC    GLOBAL DEFAULT    13 jinit_arith_encoder
+   195: 000902cd    26 FUNC    GLOBAL DEFAULT    13 compressBound_z
+   196: 00089fa9    60 FUNC    GLOBAL DEFAULT    13 inflateGetHeader
+   197: 0007a339 12184 FUNC    GLOBAL DEFAULT    13 jtransform_execute_transform
+   198: 00056311    42 FUNC    GLOBAL DEFAULT    13 jpeg_quality_scaling
+   199: 0003bde1  1304 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_12x12
+   200: 0008c7e9   146 FUNC    GLOBAL DEFAULT    13 deflatePending
+   201: 00080f89  4204 FUNC    GLOBAL DEFAULT    13 spng_decode_scanline
+   202: 000777f9   232 FUNC    GLOBAL DEFAULT    13 jpeg12_read_scanlines
+   203: 00031b21   180 FUNC    GLOBAL DEFAULT    13 jinit_d_post_controller
+   204: 0003dc0d  1496 FUNC    GLOBAL DEFAULT    13 jpeg_idct_4x4
+   205: 0008ec69   204 FUNC    GLOBAL DEFAULT    13 _tr_align
+   206: 00047949     4 FUNC    GLOBAL DEFAULT    13 tj3Free
+   207: 000480ff    24 FUNC    GLOBAL DEFAULT    13 TJBUFSIZEYUV
+   208: 0005314d   122 FUNC    GLOBAL DEFAULT    13 jpeg_suppress_tables
+   209: 00086cdd    62 FUNC    GLOBAL DEFAULT    13 spng_get_time
+   210: 00087cab   162 FUNC    GLOBAL DEFAULT    13 spng_set_exif
+   211: 0005cb0d   392 FUNC    GLOBAL DEFAULT    13 j12init_downsampler
+   212: 000902b7    22 FUNC    GLOBAL DEFAULT    13 compress
+   213: 00047b9d   968 FUNC    GLOBAL DEFAULT    13 tj3YUVBufSize
+   214: 00053305    92 FUNC    GLOBAL DEFAULT    13 jpeg_write_marker
+   215: 00064c41  1332 FUNC    GLOBAL DEFAULT    13 jpeg_make_c_derived_tbl
+   216: 00045b9b    54 FUNC    GLOBAL DEFAULT    13 jcopy_sample_rows
+   217: 00089e2d    90 FUNC    GLOBAL DEFAULT    13 inflateEnd
+   218: 00086ba7    68 FUNC    GLOBAL DEFAULT    13 spng_get_bkgd
+   219: 00047221    44 FUNC    GLOBAL DEFAULT    13 tjGetErrorStr2
+   220: 00085e51   232 FUNC    GLOBAL DEFAULT    13 spng_ctx_new
+   221: 0004a829   288 FUNC    GLOBAL DEFAULT    13 tj3LoadImage12
+   222: 00056771   496 FUNC    GLOBAL DEFAULT    13 jpeg_set_colorspace
+   223: 000788c1   300 FUNC    GLOBAL DEFAULT    13 jpeg_write_coefficients
+   224: 0008c9f5   400 FUNC    GLOBAL DEFAULT    13 deflateParams
+   225: 0008683f    64 FUNC    GLOBAL DEFAULT    13 spng_get_trns
+   226: 00054da5   222 FUNC    GLOBAL DEFAULT    13 jpeg_write_raw_data
+   227: 00063be5    64 FUNC    GLOBAL DEFAULT    13 j16init_lossless_compressor
+   228: 00055091  2280 FUNC    GLOBAL DEFAULT    13 jinit_c_master_control
+   229: 000864d1   216 FUNC    GLOBAL DEFAULT    13 spng_set_option
+   230: 00045c1f    56 FUNC    GLOBAL DEFAULT    13 j16copy_sample_rows
+   231: 00048b41  1688 FUNC    GLOBAL DEFAULT    13 tj3Decompress8
+   232: 000732c1    52 FUNC    GLOBAL DEFAULT    13 jinit_phuff_encoder
+   233: 000178b7     4 FUNC    GLOBAL DEFAULT    13 jpeg_abort_decompress
+   234: 0002bea5   420 FUNC    GLOBAL DEFAULT    13 j12init_d_main_controller
+   235: 00088a21   126 FUNC    GLOBAL DEFAULT    13 inflatePrime
+   236: 0008a1b5    66 FUNC    GLOBAL DEFAULT    13 inflateSyncPoint
+   237: 00049979  1140 FUNC    GLOBAL DEFAULT    13 tj3SaveImage8
+   238: 0004bb81   288 FUNC    GLOBAL DEFAULT    13 tj3LoadImage16
+   239: 000178bb    94 FUNC    GLOBAL DEFAULT    13 jpeg_read_header
+   240: 0001b521  1808 FUNC    GLOBAL DEFAULT    13 jinit_master_decompress
+   241: 00024401    64 FUNC    GLOBAL DEFAULT    13 j12init_lossless_decompressor
+   242: 00038345  1496 FUNC    GLOBAL DEFAULT    13 jpeg_idct_13x13
+   243: 000901d5   204 FUNC    GLOBAL DEFAULT    13 compress2
+   244: 0008eafb   270 FUNC    GLOBAL DEFAULT    13 _tr_stored_block
+   245: 00088721   142 FUNC    GLOBAL DEFAULT    13 inflateReset
+   246: 0009b055   304 FUNC    GLOBAL DEFAULT    13 j12init_write_ppm
+   247: 0009a071   600 FUNC    GLOBAL DEFAULT    13 j16init_write_png
+   248: 0008cb85   972 FUNC    GLOBAL DEFAULT    13 deflate
+   249: 00013f68   256 OBJECT  GLOBAL DEFAULT    12 _length_code
+   250: 0004e4e5   364 FUNC    GLOBAL DEFAULT    13 tjEncodeYUVPlanes
+   251: 0007e61d   194 FUNC    GLOBAL DEFAULT    13 jcopy_markers_execute
+   252: 00017be7    22 FUNC    GLOBAL DEFAULT    13 jpeg_alloc_quant_table
+   253: 00087d8d    32 FUNC    GLOBAL DEFAULT    13 spng_strerror
+   254: 00053361    66 FUNC    GLOBAL DEFAULT    13 jpeg_write_m_header
+   255: 0003b831  1456 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_11x11
+   256: 0008896d   180 FUNC    GLOBAL DEFAULT    13 inflateInit_
+   257: 00047b29   116 FUNC    GLOBAL DEFAULT    13 TJBUFSIZE
+   258: 0004ebc1    90 FUNC    GLOBAL DEFAULT    13 tjEncodeYUV
+   259: 00052969   972 FUNC    GLOBAL DEFAULT    13 tjTransform
+   260: 000764a9   232 FUNC    GLOBAL DEFAULT    13 j12init_c_main_controller
+   261: 00086385   158 FUNC    GLOBAL DEFAULT    13 spng_get_png_buffer
+   262: 00090301    84 FUNC    GLOBAL DEFAULT    13 j12init_read_png
+   263: 0004f8f5  2428 FUNC    GLOBAL DEFAULT    13 tj3DecompressToYUVPlanes8
+   264: 00017c15   160 FUNC    GLOBAL DEFAULT    13 jpeg_start_decompress
+   265: 0003a665  1844 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_5x5
+   266: 000878bf   116 FUNC    GLOBAL DEFAULT    13 spng_set_hist
+   267: 0009bc10   468 FUNC    WEAK   DEFAULT    13 __emutls_get_address
+   268: 0004cb91    46 FUNC    GLOBAL DEFAULT    13 tjEncodeYUV2
+   269: 000178b3     4 FUNC    GLOBAL DEFAULT    13 jpeg_destroy_decompress
+   270: 00078785   314 FUNC    GLOBAL DEFAULT    13 jpeg_read_coefficients
+   271: 00086d87    68 FUNC    GLOBAL DEFAULT    13 spng_get_offs
+   272: 00087199   144 FUNC    GLOBAL DEFAULT    13 spng_set_chrm_int
+   273: 0004ea55   364 FUNC    GLOBAL DEFAULT    13 tjEncodeYUV3
+   274: 0004f67d   484 FUNC    GLOBAL DEFAULT    13 tjDecompress2
+   275: 0008c87d   136 FUNC    GLOBAL DEFAULT    13 deflateUsed
+   276: 00086671   348 FUNC    GLOBAL DEFAULT    13 spng_decoded_image_size
+   277: 00017fcd   232 FUNC    GLOBAL DEFAULT    13 jpeg_read_scanlines
+   278: 00018ab3    74 FUNC    GLOBAL DEFAULT    13 jpeg_start_output
+   279: 00023785   128 FUNC    GLOBAL DEFAULT    13 jinit_inverse_dct
+   280: 0008a47d     6 FUNC    GLOBAL DEFAULT    13 zcfree
+   281: 000483e9   188 FUNC    GLOBAL DEFAULT    13 tjPlaneHeight
+   282: 00048651   880 FUNC    GLOBAL DEFAULT    13 tj3Compress8
+   283: 000772c5   276 FUNC    GLOBAL DEFAULT    13 jpeg_write_icc_profile
+   284: 000561a1   368 FUNC    GLOBAL DEFAULT    13 jpeg_set_linear_quality
+   285: 00086e09   254 FUNC    GLOBAL DEFAULT    13 spng_set_ihdr
+   286: 0005dc25   776 FUNC    GLOBAL DEFAULT    13 j12init_c_prep_controller
+   287: 0003692d  1664 FUNC    GLOBAL DEFAULT    13 jpeg_idct_5x5
+   288: 00045bdd    10 FUNC    GLOBAL DEFAULT    13 jzero_far
+   289: 0008a39f   102 FUNC    GLOBAL DEFAULT    13 inflateMark
+   290: 000215c9   896 FUNC    GLOBAL DEFAULT    13 j16init_color_deconverter
+   291: 0002cf21   772 FUNC    GLOBAL DEFAULT    13 jinit_merged_upsampler
+   292: 00047181   116 FUNC    GLOBAL DEFAULT    13 tjDestroy
+   293: 00061175    64 FUNC    GLOBAL DEFAULT    13 jinit_lossless_compressor
+   294: 00078209   214 FUNC    GLOBAL DEFAULT    13 jpeg12_read_raw_data
+   295: 0001bd71  1744 FUNC    GLOBAL DEFAULT    13 jinit_color_deconverter
+   296: 00045bd1    12 FUNC    GLOBAL DEFAULT    13 jcopy_block_row
+   297: 00040109    10 FUNC    GLOBAL DEFAULT    13 jpeg_open_backing_store
+   298: 00037e89  1212 FUNC    GLOBAL DEFAULT    13 jpeg_idct_12x12
+   299: 00040113     4 FUNC    GLOBAL DEFAULT    13 jpeg_mem_init
+   300: 0008c5fd   176 FUNC    GLOBAL DEFAULT    13 deflateGetDictionary
+   301: 00098a1d   628 FUNC    GLOBAL DEFAULT    13 jinit_write_png
+   302: 0008c765   132 FUNC    GLOBAL DEFAULT    13 deflateSetHeader
+   303: 00086c2b    68 FUNC    GLOBAL DEFAULT    13 spng_get_phys
+   304: 00086c6f   110 FUNC    GLOBAL DEFAULT    13 spng_get_splt
+   305: 0007e9b9    84 FUNC    GLOBAL DEFAULT    13 jinit_read_bmp
+   306: 0004f225    76 FUNC    GLOBAL DEFAULT    13 tjGetScalingFactors
+   307: 000775d3   548 FUNC    GLOBAL DEFAULT    13 jpeg12_crop_scanline
+   308: 000400f7    18 FUNC    GLOBAL DEFAULT    13 jpeg_mem_available
+   309: 00086181    76 FUNC    GLOBAL DEFAULT    13 spng_set_png_buffer
+   310: 00017bfd    24 FUNC    GLOBAL DEFAULT    13 jpeg_alloc_huff_table
+   311: 00047101    12 FUNC    GLOBAL DEFAULT    13 tj3Init
+   312: 000560c3   220 FUNC    GLOBAL DEFAULT    13 jpeg_add_quant_table
+   313: 0001a84d   156 FUNC    GLOBAL DEFAULT    13 jpeg_save_markers
+   314: 0001b4c1    82 FUNC    GLOBAL DEFAULT    13 jpeg_new_colormap
+   315: 0003b3e1  1104 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_10x10
+   316: 00013d68   512 OBJECT  GLOBAL DEFAULT    12 _dist_code
+   317: 00086d1b   108 FUNC    GLOBAL DEFAULT    13 spng_get_unknown_chunks
+   318: 0004794d     4 FUNC    GLOBAL DEFAULT    13 tjFree
+   319: 0004af61  1144 FUNC    GLOBAL DEFAULT    13 tj3SaveImage12
+   320: 000799fd   164 FUNC    GLOBAL DEFAULT    13 jtransform_perfect_transform
+   321: 00032179   104 FUNC    GLOBAL DEFAULT    13 j16init_d_post_controller
+   322: 000717a1  1504 FUNC    GLOBAL DEFAULT    13 jpeg12_fdct_islow
+   323: 0008a317    60 FUNC    GLOBAL DEFAULT    13 inflateUndermine
+   324: 00086463    26 FUNC    GLOBAL DEFAULT    13 spng_set_chunk_limits
+   325: 000867ff    64 FUNC    GLOBAL DEFAULT    13 spng_get_plte
+   326: 0004d959   628 FUNC    GLOBAL DEFAULT    13 tjCompressFromYUV
+   327: 00078401   232 FUNC    GLOBAL DEFAULT    13 jpeg16_read_scanlines
+   328: 00087431   108 FUNC    GLOBAL DEFAULT    13 spng_set_sbit
+   329: 00052d35   368 FUNC    GLOBAL DEFAULT    13 tjLoadImage
+   330: 000515bd  1000 FUNC    GLOBAL DEFAULT    13 tj3DecodeYUV8
+   331: 00087069   304 FUNC    GLOBAL DEFAULT    13 spng_set_chrm
+   332: 000875a9   636 FUNC    GLOBAL DEFAULT    13 spng_set_text
+   333: 0004c2b9  1144 FUNC    GLOBAL DEFAULT    13 tj3SaveImage16
+   334: 00046e25   300 FUNC    GLOBAL DEFAULT    13 tj3InitVersion
+   335: 00089fe5   464 FUNC    GLOBAL DEFAULT    13 inflateSync
+   336: 00017801   178 FUNC    GLOBAL DEFAULT    13 jpeg_CreateDecompress
+   337: 0005e2cd  1084 FUNC    GLOBAL DEFAULT    13 j16init_color_converter
+   338: 000865a9   200 FUNC    GLOBAL DEFAULT    13 spng_get_option
+   339: 00049df1   896 FUNC    GLOBAL DEFAULT    13 tj3Compress12
+   340: 0003a401   612 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_6x6
+   341: 0008d1e7     4 FUNC    GLOBAL DEFAULT    13 deflateBound
+   342: 000a1bc0    40 OBJECT  GLOBAL DEFAULT    15 z_errmsg
+   343: 0008755b    76 FUNC    GLOBAL DEFAULT    13 spng_set_srgb
+   344: 0004d2f1   636 FUNC    GLOBAL DEFAULT    13 tjCompressFromYUVPlanes
+   345: 0005f9b1   392 FUNC    GLOBAL DEFAULT    13 j16init_downsampler
+   346: 00071d81   896 FUNC    GLOBAL DEFAULT    13 jpeg12_fdct_ifast
+   347: 000902e7    26 FUNC    GLOBAL DEFAULT    13 compressBound
+   348: 00083add  2052 FUNC    GLOBAL DEFAULT    13 spng_decode_image
+   349: 0004f8d5    32 FUNC    GLOBAL DEFAULT    13 tjDecompressToYUV
+   350: 000770a9   232 FUNC    GLOBAL DEFAULT    13 jinit_c_main_controller
+   351: 00037939  1360 FUNC    GLOBAL DEFAULT    13 jpeg_idct_11x11
+   352: 00010c38   456 OBJECT  GLOBAL DEFAULT    12 jpeg_aritab
+   353: 000864a3    44 FUNC    GLOBAL DEFAULT    13 spng_set_crc_action
+   354: 00015609  4504 FUNC    GLOBAL DEFAULT    13 main
+   355: 0004eccd   520 FUNC    GLOBAL DEFAULT    13 tj3DecompressHeader
+   356: 00045b81     8 FUNC    GLOBAL DEFAULT    13 jdiv_round_up
+   357: 0002ed91   772 FUNC    GLOBAL DEFAULT    13 j12init_merged_upsampler
+   358: 000821b5   460 FUNC    GLOBAL DEFAULT    13 spng_decode_row
+   359: 000480e7    24 FUNC    GLOBAL DEFAULT    13 tjBufSizeYUV
+   360: 0004b3e1   896 FUNC    GLOBAL DEFAULT    13 tj3Compress16
+   361: 0008a483   530 FUNC    GLOBAL DEFAULT    13 adler32_z
+   362: 0008bac5   144 FUNC    GLOBAL DEFAULT    13 crc32_combine_gen64
+   363: 0008bce9   196 FUNC    GLOBAL DEFAULT    13 crc32_combine
+   364: 00028c09   344 FUNC    GLOBAL DEFAULT    13 j12init_d_coef_controller
+   365: 00036711   540 FUNC    GLOBAL DEFAULT    13 jpeg_idct_6x6
+   366: 00088aa1  4816 FUNC    GLOBAL DEFAULT    13 inflate
+   367: 0008e9a5   100 FUNC    GLOBAL DEFAULT    13 _tr_init
+   368: 000869a9    88 FUNC    GLOBAL DEFAULT    13 spng_get_gama
+   369: 0008a7bd  1336 FUNC    GLOBAL DEFAULT    13 inflate_table
+   370: 0007904d  2478 FUNC    GLOBAL DEFAULT    13 jtransform_request_workspace
+   371: 00033e65   604 FUNC    GLOBAL DEFAULT    13 j16init_upsampler
+   372: 0003f099    72 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_1x1
+   373: 00070da9   260 FUNC    GLOBAL DEFAULT    13 j12init_forward_dct
+   374: 0005a0f9   776 FUNC    GLOBAL DEFAULT    13 jinit_c_prep_controller
+   375: 000887af   262 FUNC    GLOBAL DEFAULT    13 inflateReset2
+   376: 000400eb     6 FUNC    GLOBAL DEFAULT    13 jpeg_get_large
+   377: 0008bb55   144 FUNC    GLOBAL DEFAULT    13 crc32_combine_gen
+   378: 0008bbe5    64 FUNC    GLOBAL DEFAULT    13 crc32_combine_op
+   379: 0007e519   258 FUNC    GLOBAL DEFAULT    13 jcopy_markers_setup
+   380: 00047879   200 FUNC    GLOBAL DEFAULT    13 tj3Get
+   381: 000258a9  3664 FUNC    GLOBAL DEFAULT    13 jpeg_make_d_derived_tbl
+   382: 000400f1     6 FUNC    GLOBAL DEFAULT    13 jpeg_free_large
+   383: 00099645   608 FUNC    GLOBAL DEFAULT    13 j12init_write_png
+   384: 00050475  1224 FUNC    GLOBAL DEFAULT    13 tj3DecompressToYUV8
+   385: 000190b9   242 FUNC    GLOBAL DEFAULT    13 jpeg_resync_to_restart
+   386: 000750a9   288 FUNC    GLOBAL DEFAULT    13 j12init_c_coef_controller
+   387: 00086a01    56 FUNC    GLOBAL DEFAULT    13 spng_get_gama_int
+   388: 0001b009  1048 FUNC    GLOBAL DEFAULT    13 jpeg_calc_output_dimensions
+   389: 0003e5e9    32 FUNC    GLOBAL DEFAULT    13 jpeg_idct_1x1
+   390: 0008d03d   140 FUNC    GLOBAL DEFAULT    13 deflateTune
+   391: 000861ef   160 FUNC    GLOBAL DEFAULT    13 spng_set_png_stream
+   392: 0004efc1    76 FUNC    GLOBAL DEFAULT    13 tjDecompressHeader2
+   393: 00056961  1184 FUNC    GLOBAL DEFAULT    13 jpeg_simple_progression
+   394: 00026881   184 FUNC    GLOBAL DEFAULT    13 jinit_huff_decoder
+   395: 00032f51   604 FUNC    GLOBAL DEFAULT    13 j12init_upsampler
+   396: 00039b45  1268 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_islow
+   397: 0008a695     4 FUNC    GLOBAL DEFAULT    13 adler32
+   398: 0008b6e1    12 FUNC    GLOBAL DEFAULT    13 get_crc_table
+   399: 0008647d    38 FUNC    GLOBAL DEFAULT    13 spng_get_chunk_limits
+   400: 0004eed5   236 FUNC    GLOBAL DEFAULT    13 tjDecompressHeader3
+   401: 00053145     4 FUNC    GLOBAL DEFAULT    13 jpeg_destroy_compress
+   402: 0003d521  1772 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_16x16
+   403: 00087add   126 FUNC    GLOBAL DEFAULT    13 spng_set_time
+   404: 00037545  1012 FUNC    GLOBAL DEFAULT    13 jpeg_idct_10x10
+   405: 0008a455    32 FUNC    GLOBAL DEFAULT    13 zError
+   406: 0004cbc1  1840 FUNC    GLOBAL DEFAULT    13 tj3CompressFromYUVPlanes8
+   407: 0004dbd1  2324 FUNC    GLOBAL DEFAULT    13 tj3EncodeYUVPlanes8
+   408: 00075879   420 FUNC    GLOBAL DEFAULT    13 j12init_c_diff_controller
+   409: 000628f1  1504 FUNC    GLOBAL DEFAULT    13 jpeg_fdct_islow
+   410: 00084581    54 FUNC    GLOBAL DEFAULT    13 spng_encode_scanline
+   411: 00087825   154 FUNC    GLOBAL DEFAULT    13 spng_set_bkgd
+   412: 00087dad    12 FUNC    GLOBAL DEFAULT    13 spng_version_string
+   413: 000352f5  1052 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_float
+   414: 00051f49  1912 FUNC    GLOBAL DEFAULT    13 tj3Transform
+   415: 0005307d   200 FUNC    GLOBAL DEFAULT    13 jpeg_CreateCompress
+   416: 00065175  1068 FUNC    GLOBAL DEFAULT    13 jpeg_gen_optimal_table
+   417: 000778e1  1740 FUNC    GLOBAL DEFAULT    13 jpeg12_skip_scanlines
+   418: 000266f9   218 FUNC    GLOBAL DEFAULT    13 jpeg_fill_bit_buffer
+   419: 00086a39    62 FUNC    GLOBAL DEFAULT    13 spng_get_iccp
+   420: 00086fa3   196 FUNC    GLOBAL DEFAULT    13 spng_set_trns
+   421: 00097fc5   404 FUNC    GLOBAL DEFAULT    13 jinit_write_bmp
+   422: 0009633d    80 FUNC    GLOBAL DEFAULT    13 j16init_read_ppm
+   423: 00034d51    92 FUNC    GLOBAL DEFAULT    13 jpeg_std_error
+   424: 000533a3     8 FUNC    GLOBAL DEFAULT    13 jpeg_write_m_byte
+   425: 00056379   308 FUNC    GLOBAL DEFAULT    13 jpeg_set_defaults
+   426: 0003220d   604 FUNC    GLOBAL DEFAULT    13 jinit_upsampler
+   427: 0003a039   968 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_7x7
+   428: 00035acd  1028 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_ifast
+   429: 0008bfad   224 FUNC    GLOBAL DEFAULT    13 deflateEnd
+   430: 00047951   204 FUNC    GLOBAL DEFAULT    13 tj3JPEGBufSize
+   431: 000773d9   284 FUNC    GLOBAL DEFAULT    13 jpeg12_write_scanlines
+   432: 00063251   448 FUNC    GLOBAL DEFAULT    13 jpeg_fdct_float
+   433: 000872a1    76 FUNC    GLOBAL DEFAULT    13 spng_set_gama_int
+   434: 000789ed   502 FUNC    GLOBAL DEFAULT    13 jpeg_copy_critical_parameters
+   435: 00047275    20 FUNC    GLOBAL DEFAULT    13 tjGetErrorCode
+   436: 000480d5    18 FUNC    GLOBAL DEFAULT    13 tjBufSizeYUV2
+   437: 00047289  1520 FUNC    GLOBAL DEFAULT    13 tj3Set
+   438: 0002c6e1   420 FUNC    GLOBAL DEFAULT    13 j16init_d_main_controller
+   439: 0008a441    12 FUNC    GLOBAL DEFAULT    13 zlibVersion
+   440: 00085f41   216 FUNC    GLOBAL DEFAULT    13 spng_ctx_new2
+   441: 00086dcb    62 FUNC    GLOBAL DEFAULT    13 spng_get_exif
+   442: 0002b669   420 FUNC    GLOBAL DEFAULT    13 jinit_d_main_controller
+   443: 000363a5   876 FUNC    GLOBAL DEFAULT    13 jpeg_idct_7x7
+   444: 00062ed1   896 FUNC    GLOBAL DEFAULT    13 jpeg_fdct_ifast
+   445: 0008dce5   478 FUNC    GLOBAL DEFAULT    13 deflateCopy
+   446: 0008ed35  1768 FUNC    GLOBAL DEFAULT    13 _tr_flush_block
+   447: 0004801d   184 FUNC    GLOBAL DEFAULT    13 tj3YUVPlaneHeight
+   448: 00058ffd   388 FUNC    GLOBAL DEFAULT    13 jinit_downsampler
+   449: 00017921   432 FUNC    GLOBAL DEFAULT    13 jpeg_consume_input
+   450: 00047261    20 FUNC    GLOBAL DEFAULT    13 tj3GetErrorCode
+   451: 000782e5   284 FUNC    GLOBAL DEFAULT    13 jpeg16_write_scanlines
+   452: 000655a1    56 FUNC    GLOBAL DEFAULT    13 jinit_huff_encoder
+   453: 0003ec15  1156 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_2x2
+   454: 00048119   500 FUNC    GLOBAL DEFAULT    13 tj3YUVPlaneSize
+   455: 0004f861   116 FUNC    GLOBAL DEFAULT    13 tjDecompress
+   456: 0008bc25   196 FUNC    GLOBAL DEFAULT    13 crc32_combine64
+   457: 0008a1f7   288 FUNC    GLOBAL DEFAULT    13 inflateCopy
+   458: 0008a475     8 FUNC    GLOBAL DEFAULT    13 zcalloc
+   459: 0004832d   188 FUNC    GLOBAL DEFAULT    13 tjPlaneWidth
+   460: 00053149     4 FUNC    GLOBAL DEFAULT    13 jpeg_abort_compress
+   461: 0003ced9  1608 FUNC    GLOBAL DEFAULT    13 jpeg12_idct_15x15
+   462: 00082381    44 FUNC    GLOBAL DEFAULT    13 spng_decode_chunks
+   463: 0004e651  1028 FUNC    GLOBAL DEFAULT    13 tj3EncodeYUV8
+   464: 000531c7   318 FUNC    GLOBAL DEFAULT    13 jpeg_finish_compress
+   465: 00054e83   524 FUNC    GLOBAL DEFAULT    13 jinit_compress_master
+   466: 000766c5   232 FUNC    GLOBAL DEFAULT    13 j16init_c_main_controller
+   467: 00087c47   100 FUNC    GLOBAL DEFAULT    13 spng_set_offs
+   468: 00092a35    80 FUNC    GLOBAL DEFAULT    13 jinit_read_ppm
+   469: 0004ec1d   176 FUNC    GLOBAL DEFAULT    13 tjInitDecompress
+   470: 00051479   324 FUNC    GLOBAL DEFAULT    13 tjDecodeYUVPlanes
+   471: 00017bcd    26 FUNC    GLOBAL DEFAULT    13 jpeg_destroy
+   472: 0003e1e5  1028 FUNC    GLOBAL DEFAULT    13 jpeg_idct_2x2
+   473: 0004724d    20 FUNC    GLOBAL DEFAULT    13 tjGetErrorStr
+   474: 000484a5   176 FUNC    GLOBAL DEFAULT    13 tjInitCompress
+   475: 0004a171  1720 FUNC    GLOBAL DEFAULT    13 tj3Decompress12
+   476: 00041c91   828 FUNC    GLOBAL DEFAULT    13 jinit_2pass_quantizer
+   477: 0008bac1     4 FUNC    GLOBAL DEFAULT    13 crc32
+   478: 00084c5d  2364 FUNC    GLOBAL DEFAULT    13 spng_encode_chunks
+   479: 00048555   248 FUNC    GLOBAL DEFAULT    13 tj3SetICCProfile
+   480: 00050271   516 FUNC    GLOBAL DEFAULT    13 tjDecompressToYUVPlanes
+   481: 000768e1   288 FUNC    GLOBAL DEFAULT    13 jinit_c_coef_controller
+   482: 0005633b    60 FUNC    GLOBAL DEFAULT    13 jpeg_set_quality
+   483: 00019269   172 FUNC    GLOBAL DEFAULT    13 jinit_marker_reader
+   484: 00025481    68 FUNC    GLOBAL DEFAULT    13 jinit_lhuff_decoder
+   485: 00056f3d  1084 FUNC    GLOBAL DEFAULT    13 jinit_color_converter
+   486: 00043e59   936 FUNC    GLOBAL DEFAULT    13 j12init_2pass_quantizer
+   487: 0007e8b9   140 FUNC    GLOBAL DEFAULT    13 jpeg_mem_src_tj
+   488: 000519a5   324 FUNC    GLOBAL DEFAULT    13 tjDecodeYUV
+   489: 00060acd   776 FUNC    GLOBAL DEFAULT    13 j16init_c_prep_controller
+   490: 0004b761  1056 FUNC    GLOBAL DEFAULT    13 tj3Decompress16
+   491: 0005a7a1  1084 FUNC    GLOBAL DEFAULT    13 j12init_color_converter
+   492: 000180b5  1740 FUNC    GLOBAL DEFAULT    13 jpeg_skip_scanlines
+   493: 00035ed1  1236 FUNC    GLOBAL DEFAULT    13 jpeg_idct_islow
+   494: 0008c6ad   182 FUNC    GLOBAL DEFAULT    13 deflateResetKeep

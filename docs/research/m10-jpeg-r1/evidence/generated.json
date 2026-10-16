@@ -1,0 +1,169 @@
+{
+  "generator": {
+    "localPath": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\generate_fixtures",
+    "remoteName": "generate_fixtures",
+    "bytes": 1284136,
+    "sha256": "918c361dca6053b12e9a6c58b757ae011e35caca357b830c28fee6a878f04317",
+    "remoteSha256Readback": "918c361dca6053b12e9a6c58b757ae011e35caca357b830c28fee6a878f04317",
+    "push": {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5596",
+        "push",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\generate_fixtures",
+        "/data/local/tmp/lithic-m10-r1-20261016/generate_fixtures"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\generate_fixtures: 1 file pushed, 0 skipped. 14.9 MB/s (1284136 bytes in 0.082s)\r\n",
+      "hostWallSeconds": 0.36100440000154776
+    }
+  },
+  "generation": {
+    "exitCode": null,
+    "status": "OUTPUTS_RECOVERED_AFTER_DRIVER_TIMEOUT",
+    "originalSupervisorTimeoutSeconds": 240,
+    "originalGeneratorPid": 21974,
+    "processNoLongerRunning": {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "ps -A -o PID,ARGS | grep '^[[:space:]]*[0-9]* generate_fixtures /data/local/tmp/lithic-m10-r1-20261016/generated' || true"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "hostWallSeconds": 0.18248970000058762
+    },
+    "note": "Original generator exit unknown. Validate each complete file through decoders; do not claim generator exit 0."
+  },
+  "pull": {
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5596",
+      "pull",
+      "/data/local/tmp/lithic-m10-r1-20261016/generated/.",
+      "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\fixtures"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": "/data/local/tmp/lithic-m10-r1-20261016/generated/./: 22 files pulled, 0 skipped. 18.7 MB/s (53761271 bytes in 2.735s)\r\n",
+    "hostWallSeconds": 3.114811199997348
+  },
+  "outputs": [
+    {
+      "name": "baseline_1x1.jpg",
+      "bytes": 633,
+      "sha256": "785db87f2c6c614155be5d485cc4bb64e26aea69f84c370c0d55f1c8a39efba8"
+    },
+    {
+      "name": "baseline_1x40000.jpg",
+      "bytes": 119936,
+      "sha256": "6a1c2a7ac21b599940a67feae833da5e3e833b3f8529a45cd2c37d3eaafbac1d"
+    },
+    {
+      "name": "baseline_40000x1.jpg",
+      "bytes": 98099,
+      "sha256": "8db2a06c47fa23cd8fbdab55be1056d2d9c3d78d4bb2df5f031e7633f9d4ee9b"
+    },
+    {
+      "name": "baseline_gray.jpg",
+      "bytes": 20460,
+      "sha256": "fa52fbba912e6cd2c96135dbf7b8b8eb212074128e92917b687aa4c5087f1eac"
+    },
+    {
+      "name": "baseline_native_rgb_444.jpg",
+      "bytes": 61906,
+      "sha256": "7a23dc71c19c9f5050345fa05524af7e67fc2b1e2627e1dbf5f48736d4ca7d37"
+    },
+    {
+      "name": "baseline_restart_420.jpg",
+      "bytes": 28526,
+      "sha256": "6227577ac5bb8a4b8eb85789d5a6caf9afe6f1cd76e7ea205aeec72717193d98"
+    },
+    {
+      "name": "baseline_rgb_420.jpg",
+      "bytes": 28464,
+      "sha256": "7b2481fc23a23b546aae92665088b8f6f9784a982cb9b5955528cb411edb6eb4"
+    },
+    {
+      "name": "baseline_rgb_444.jpg",
+      "bytes": 49443,
+      "sha256": "484cd0b157a9557160b9f68c614ced4e23f608971edb70a69a5a50db4060c4be"
+    },
+    {
+      "name": "exif_orientation_1.jpg",
+      "bytes": 28500,
+      "sha256": "9068171519be98137f59c8dfe781afcb61fa6b41c485292a0429d176fdf4f125"
+    },
+    {
+      "name": "exif_orientation_2.jpg",
+      "bytes": 28500,
+      "sha256": "0c11f83c7e7f7c7d3099ebe6adf164fcb846983515abb85ca41e459d9c5c8cc0"
+    },
+    {
+      "name": "exif_orientation_3.jpg",
+      "bytes": 28500,
+      "sha256": "22ab0acd3b32b80500b444c59343b3fc774b2461171d400859e52fed8006adc9"
+    },
+    {
+      "name": "exif_orientation_4.jpg",
+      "bytes": 28500,
+      "sha256": "59a81637790a75dfb5471fe847e8dd052b01e2294686c7278f9eb2c1b171ea4a"
+    },
+    {
+      "name": "exif_orientation_5.jpg",
+      "bytes": 28500,
+      "sha256": "627e3c06466681018399a919c1b9963cc9d74bcf715efdc6e4af9afd9acf1a59"
+    },
+    {
+      "name": "exif_orientation_6.jpg",
+      "bytes": 28500,
+      "sha256": "682c6cd3fa4461befd9ee71c74d97615ca4b594a3a0822165af5a70c99d7eaee"
+    },
+    {
+      "name": "exif_orientation_7.jpg",
+      "bytes": 28500,
+      "sha256": "5820014b96c8e2002719d7422340c9dbd604714c0fc1fbe63a7bed20f629b5eb"
+    },
+    {
+      "name": "exif_orientation_8.jpg",
+      "bytes": 28500,
+      "sha256": "a84537abe110070c9e5020e32118048b1b1528d5cce152c224801b632c2358f0"
+    },
+    {
+      "name": "large_40mp_baseline_420.jpg",
+      "bytes": 17163380,
+      "sha256": "c2c2fa54d49ab8155321175a66596ce8d35ed9927d9f3dfe2bbb6a00c5fbb5c7"
+    },
+    {
+      "name": "large_40mp_progressive_420.jpg",
+      "bytes": 15458857,
+      "sha256": "2b02f35f08a8cb36d31a0a4f01e8810f554be67619950c8e2b0d0d2be873c5c8"
+    },
+    {
+      "name": "large_40mp_progressive_444.jpg",
+      "bytes": 20406272,
+      "sha256": "ec0a7075f307f8702bd03080a8ece90ecbfafbc498162d4f1a9da05df22de700"
+    },
+    {
+      "name": "progressive_restart_420.jpg",
+      "bytes": 27239,
+      "sha256": "b39be49b30775c0bd9033fde823451be30167c38706e4d1a8b27c4d518201d8c"
+    },
+    {
+      "name": "progressive_rgb_420.jpg",
+      "bytes": 25612,
+      "sha256": "32190756bd9b2b1c14996ecd2667ef0b761013e58c21646f334e45c2102319d6"
+    },
+    {
+      "name": "progressive_rgb_444.jpg",
+      "bytes": 44444,
+      "sha256": "56ea3c98c9ba7900bd5efaa2552faa975e49c79d3088debfbacaace6ddced43e"
+    }
+  ]
+}

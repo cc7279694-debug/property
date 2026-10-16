@@ -1,0 +1,52 @@
+{
+  "purpose": "Observed driver diagnostics, not native image rejection or product PASS",
+  "observations": [
+    {
+      "stage": "sdk list",
+      "exitCode": 3221226505,
+      "raw": "sdk-list-command.json",
+      "result": "Complete list printed; abnormal process exit"
+    },
+    {
+      "stage": "sdkmanager install",
+      "exitCode": 3221226505,
+      "raw": "install-command.json",
+      "result": "Semicolon package components lost; package not found"
+    },
+    {
+      "stage": "direct official install",
+      "exitCode": 3221226505,
+      "raw": "install-direct-command.json",
+      "result": "Official downloads/unzips completed; abnormal exit; actual tools independently verified"
+    },
+    {
+      "stage": "read-only android sdk info",
+      "exitCode": 1,
+      "result": "Unsupported diagnostic subcommand; no package or SDK mutation"
+    },
+    {
+      "stage": "first harness configure",
+      "exitCode": 1,
+      "raw": "build-runs/20261016T085023.972900Z-19932/06-x86_64-probe-configure.log",
+      "result": "Probe checked wrong CMake variable; fixed research CMake to check NDK actual ANDROID_PLATFORM_LEVEL=26"
+    },
+    {
+      "stage": "first generator catalogue",
+      "exitCode": null,
+      "supervisorStatus": "TIMEOUT",
+      "hostWallSeconds": 240.07804549999855,
+      "result": "Original exit unknown. Process21974 no longer present on recovery. 22outputs collected without asserting completed healthy generation."
+    },
+    {
+      "stage": "first derivation attempt",
+      "exitCode": 1,
+      "result": "Generator had not finished/pulled; input fixture directory absent; no derived files written"
+    },
+    {
+      "stage": "expanded driver",
+      "exitCode": 1,
+      "raw": "expanded.jsonl",
+      "result": "Stopped immediately after 120.063s timeout on --cancel-after-progress1000; unexecuted tail not silently marked passed"
+    }
+  ]
+}

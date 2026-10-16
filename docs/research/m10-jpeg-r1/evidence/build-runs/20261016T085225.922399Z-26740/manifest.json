@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 1,
+  "purpose": "RESEARCH_ONLY_NOT_PRODUCTION_JNI",
+  "runId": "20261016T085225.922399Z-26740",
+  "startedUtc": "2026-10-16T08:52:25.923386+00:00",
+  "status": "COMPILED_NOT_RUNTIME_VERIFIED",
+  "repo": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+  "source": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\source\\libjpeg-turbo-3.2.0",
+  "sourceArchive": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\upstream\\libjpeg-turbo-3.2.0.tar.gz",
+    "sha256": "6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e",
+    "bytes": 2537858
+  },
+  "sdk": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk",
+  "jdk": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1",
+  "ndk": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358",
+  "ndkVersion": "28.2.13676358",
+  "cmakeVersion": "3.22.1",
+  "androidApi": 26,
+  "selectedAbis": [
+    "x86_64"
+  ],
+  "commands": [
+    {
+      "label": "cmake-version",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\cmake\\3.22.1\\bin\\cmake.exe",
+        "--version"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:52:26.660281+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\00-cmake-version.log",
+      "exitCode": 0,
+      "wallSeconds": 0.099496,
+      "endedUtc": "2026-10-16T08:52:26.759783+00:00",
+      "logBytes": 106,
+      "logSha256": "49bf8d147ddeed5040c89759270f9e9e97a159f262951f40fdd87891ed52ca80"
+    },
+    {
+      "label": "ninja-version",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\cmake\\3.22.1\\bin\\ninja.exe",
+        "--version"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:52:26.761827+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\01-ninja-version.log",
+      "exitCode": 0,
+      "wallSeconds": 0.022322,
+      "endedUtc": "2026-10-16T08:52:26.784344+00:00",
+      "logBytes": 8,
+      "logSha256": "9bcfd4b3386e68831ecc63645a6036ab76d58e442b17454674516ee6c4c84bf2"
+    },
+    {
+      "label": "clang-version",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "--version"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:52:26.786345+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\02-clang-version.log",
+      "exitCode": 0,
+      "wallSeconds": 0.616203,
+      "endedUtc": "2026-10-16T08:52:27.403445+00:00",
+      "logBytes": 382,
+      "logSha256": "085bca985b7228fb0e2d5dc0e3554777df5a33392b1fbd39b89f0afb00de3a1f"
+    },
+    {
+      "label": "x86_64-upstream-configure",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\cmake\\3.22.1\\bin\\cmake.exe",
+        "-S",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\source\\libjpeg-turbo-3.2.0",
+        "-B",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\upstream",
+        "-G",
+        "Ninja",
+        "-DCMAKE_MAKE_PROGRAM=C:/Users/CDD/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/MirraAndroid/sdk/cmake/3.22.1/bin/ninja.exe",
+        "-DCMAKE_TOOLCHAIN_FILE=C:/Users/CDD/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/MirraAndroid/sdk/ndk/28.2.13676358/build/cmake/android.toolchain.cmake",
+        "-DANDROID_ABI=x86_64",
+        "-DANDROID_PLATFORM=android-26",
+        "-DCMAKE_SYSTEM_VERSION=26",
+        "-DANDROID_STL=none",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_POSITION_INDEPENDENT_CODE=ON",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-z,max-page-size=16384",
+        "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-z,max-page-size=16384",
+        "-DCMAKE_INSTALL_PREFIX=E:/CODEX/.codex/worktrees/m10-jpeg-strict-r1/砺石新APP/build/m10-jpeg-r1/native/x86_64/prefix",
+        "-DCMAKE_INSTALL_LIBDIR=lib",
+        "-DCMAKE_INSTALL_INCLUDEDIR=include",
+        "-DENABLE_SHARED=OFF",
+        "-DENABLE_STATIC=ON",
+        "-DWITH_SIMD=OFF",
+        "-DWITH_TURBOJPEG=ON",
+        "-DWITH_TOOLS=OFF",
+        "-DWITH_TESTS=OFF",
+        "-DWITH_FUZZ=OFF",
+        "-DWITH_JNA=",
+        "-DWITH_SYSTEM_SPNG=OFF",
+        "-DWITH_SYSTEM_ZLIB=OFF"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:52:27.405540+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\03-x86_64-upstream-configure.log",
+      "exitCode": 0,
+      "wallSeconds": 0.821488,
+      "endedUtc": "2026-10-16T08:52:28.226919+00:00",
+      "logBytes": 2609,
+      "logSha256": "24fd033140ad9a1380c12aee5b132689d6812320b6cc04cc62e175c90eebc3e2"
+    },
+    {
+      "label": "x86_64-upstream-build",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\cmake\\3.22.1\\bin\\cmake.exe",
+        "--build",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\upstream",
+        "--target",
+        "jpeg-static",
+        "turbojpeg-static",
+        "--parallel",
+        "2"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:52:28.228925+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\04-x86_64-upstream-build.log",
+      "exitCode": 0,
+      "wallSeconds": 41.152685,
+      "endedUtc": "2026-10-16T08:53:09.382172+00:00",
+      "logBytes": 18965,
+      "logSha256": "cfcd49ce509e3132d361adf68111b05361f304876990c00e6d0683fdc7f33e1e"
+    },
+    {
+      "label": "x86_64-upstream-install",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\cmake\\3.22.1\\bin\\cmake.exe",
+        "--install",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\upstream"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:09.385181+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\05-x86_64-upstream-install.log",
+      "exitCode": 0,
+      "wallSeconds": 0.234961,
+      "endedUtc": "2026-10-16T08:53:09.620859+00:00",
+      "logBytes": 3503,
+      "logSha256": "956723dc5e648f6e940daaabb87d820a9aba7b15c3e830d13ad6d53bb46b9ff3"
+    },
+    {
+      "label": "x86_64-probe-configure",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\cmake\\3.22.1\\bin\\cmake.exe",
+        "-S",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\docs\\research\\m10-jpeg-r1\\native",
+        "-B",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe",
+        "-G",
+        "Ninja",
+        "-DCMAKE_MAKE_PROGRAM=C:/Users/CDD/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/MirraAndroid/sdk/cmake/3.22.1/bin/ninja.exe",
+        "-DCMAKE_TOOLCHAIN_FILE=C:/Users/CDD/AppData/Local/Packages/OpenAI.Codex_2p2nqsd0c76g0/LocalCache/Local/MirraAndroid/sdk/ndk/28.2.13676358/build/cmake/android.toolchain.cmake",
+        "-DANDROID_ABI=x86_64",
+        "-DANDROID_PLATFORM=android-26",
+        "-DCMAKE_SYSTEM_VERSION=26",
+        "-DANDROID_STL=none",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_POSITION_INDEPENDENT_CODE=ON",
+        "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON",
+        "-DCMAKE_EXE_LINKER_FLAGS=-Wl,-z,max-page-size=16384",
+        "-DCMAKE_SHARED_LINKER_FLAGS=-Wl,-z,max-page-size=16384",
+        "-DR1_JPEG_PREFIX=E:/CODEX/.codex/worktrees/m10-jpeg-strict-r1/砺石新APP/build/m10-jpeg-r1/native/x86_64/prefix"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:09.626438+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\06-x86_64-probe-configure.log",
+      "exitCode": 0,
+      "wallSeconds": 0.410686,
+      "endedUtc": "2026-10-16T08:53:10.037070+00:00",
+      "logBytes": 172,
+      "logSha256": "b7251d449dfd1e7cc6f5fd9767f1c7f1a6e60cf694250aa18a7204eb65ba4941"
+    },
+    {
+      "label": "x86_64-probe-build",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\cmake\\3.22.1\\bin\\cmake.exe",
+        "--build",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe",
+        "--parallel",
+        "2"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:10.040072+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\07-x86_64-probe-build.log",
+      "exitCode": 0,
+      "wallSeconds": 1.412057,
+      "endedUtc": "2026-10-16T08:53:11.451991+00:00",
+      "logBytes": 389,
+      "logSha256": "75076c4e61ef4a8267b86913ca505616960711f20a2e12b5ab59fbfb9b7bd15d"
+    },
+    {
+      "label": "x86_64-strictjpeg_probe-elf",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\strictjpeg_probe"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:11.457500+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\08-x86_64-strictjpeg_probe-elf.log",
+      "exitCode": 0,
+      "wallSeconds": 0.169894,
+      "endedUtc": "2026-10-16T08:53:11.627416+00:00",
+      "logBytes": 3895,
+      "logSha256": "cf1745025b1b55fee875c9237d72e37e1eb5fba3c903983f11757633d6d8c112"
+    },
+    {
+      "label": "x86_64-strictjpeg_probe-symbols",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--dyn-syms",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\strictjpeg_probe"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:11.630551+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\09-x86_64-strictjpeg_probe-symbols.log",
+      "exitCode": 0,
+      "wallSeconds": 0.093496,
+      "endedUtc": "2026-10-16T08:53:11.724458+00:00",
+      "logBytes": 3985,
+      "logSha256": "db41f11713938e4f5c3a0037a14e158d1e805d16ff28153eef2e2a8a84a60435"
+    },
+    {
+      "label": "x86_64-strictjpeg_probe-strip",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-strip.exe",
+        "--strip-unneeded",
+        "-o",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\strictjpeg_probe.stripped",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\strictjpeg_probe"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:11.727980+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\10-x86_64-strictjpeg_probe-strip.log",
+      "exitCode": 0,
+      "wallSeconds": 0.118695,
+      "endedUtc": "2026-10-16T08:53:11.846480+00:00",
+      "logBytes": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "x86_64-strictjpeg_probe-stripped-elf",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\strictjpeg_probe.stripped"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:11.848480+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\11-x86_64-strictjpeg_probe-stripped-elf.log",
+      "exitCode": 0,
+      "wallSeconds": 0.083087,
+      "endedUtc": "2026-10-16T08:53:11.931521+00:00",
+      "logBytes": 3804,
+      "logSha256": "8e5e18bb8ac572119ec97ef7b4869b347d2083d35cffecaa874795cf1436f09d"
+    },
+    {
+      "label": "x86_64-libstrictjpeg_probe.so-elf",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\libstrictjpeg_probe.so"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:11.953116+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\12-x86_64-libstrictjpeg_probe.so-elf.log",
+      "exitCode": 0,
+      "wallSeconds": 0.068452,
+      "endedUtc": "2026-10-16T08:53:12.021262+00:00",
+      "logBytes": 3914,
+      "logSha256": "f89542627f367f7cedcdf5c98a5f7c12d2f161c61c8e786142c2b0196a98c8b9"
+    },
+    {
+      "label": "x86_64-libstrictjpeg_probe.so-symbols",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--dyn-syms",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\libstrictjpeg_probe.so"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.024298+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\13-x86_64-libstrictjpeg_probe.so-symbols.log",
+      "exitCode": 0,
+      "wallSeconds": 0.103494,
+      "endedUtc": "2026-10-16T08:53:12.128575+00:00",
+      "logBytes": 38288,
+      "logSha256": "77b7c06dd2117427c93b326e62a357c72450d306ad6a0f050b33705045677cdb"
+    },
+    {
+      "label": "x86_64-libstrictjpeg_probe.so-strip",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-strip.exe",
+        "--strip-unneeded",
+        "-o",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\libstrictjpeg_probe.so.stripped",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\libstrictjpeg_probe.so"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.132591+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\14-x86_64-libstrictjpeg_probe.so-strip.log",
+      "exitCode": 0,
+      "wallSeconds": 0.078438,
+      "endedUtc": "2026-10-16T08:53:12.210759+00:00",
+      "logBytes": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "x86_64-libstrictjpeg_probe.so-stripped-elf",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\libstrictjpeg_probe.so.stripped"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.213762+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\15-x86_64-libstrictjpeg_probe.so-stripped-elf.log",
+      "exitCode": 0,
+      "wallSeconds": 0.076776,
+      "endedUtc": "2026-10-16T08:53:12.291171+00:00",
+      "logBytes": 3824,
+      "logSha256": "608ab868893b926aff556d88a794e6d78e4867c500a753c10072a885b72b93fa"
+    },
+    {
+      "label": "x86_64-generate_fixtures-elf",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\generate_fixtures"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.324457+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\16-x86_64-generate_fixtures-elf.log",
+      "exitCode": 0,
+      "wallSeconds": 0.093494,
+      "endedUtc": "2026-10-16T08:53:12.417765+00:00",
+      "logBytes": 3896,
+      "logSha256": "84deef8983463786f9d57f2fdd372282a5bc2dcfa37b860321f7e0bf09d18cca"
+    },
+    {
+      "label": "x86_64-generate_fixtures-symbols",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--dyn-syms",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\generate_fixtures"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.420737+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\17-x86_64-generate_fixtures-symbols.log",
+      "exitCode": 0,
+      "wallSeconds": 0.084288,
+      "endedUtc": "2026-10-16T08:53:12.505341+00:00",
+      "logBytes": 2669,
+      "logSha256": "7cd0406bed553c6bf839fdaf5229a858df7acc874832a9c2f2685a146c39d47e"
+    },
+    {
+      "label": "x86_64-generate_fixtures-strip",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-strip.exe",
+        "--strip-unneeded",
+        "-o",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\generate_fixtures.stripped",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\generate_fixtures"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.509780+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\18-x86_64-generate_fixtures-strip.log",
+      "exitCode": 0,
+      "wallSeconds": 0.08838,
+      "endedUtc": "2026-10-16T08:53:12.597835+00:00",
+      "logBytes": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "x86_64-generate_fixtures-stripped-elf",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\generate_fixtures.stripped"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.600797+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\19-x86_64-generate_fixtures-stripped-elf.log",
+      "exitCode": 0,
+      "wallSeconds": 0.071424,
+      "endedUtc": "2026-10-16T08:53:12.671951+00:00",
+      "logBytes": 3805,
+      "logSha256": "25499f02dbc987cbec2e1cadeecc416ddb5ba0c5e639b7d46e1539010bacd937"
+    },
+    {
+      "label": "x86_64-jpeg-archive-members",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-ar.exe",
+        "t",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\prefix\\lib\\libjpeg.a"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.685547+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\20-x86_64-jpeg-archive-members.log",
+      "exitCode": 0,
+      "wallSeconds": 0.115298,
+      "endedUtc": "2026-10-16T08:53:12.800471+00:00",
+      "logBytes": 1455,
+      "logSha256": "cab2dfbcaa2a7753c45ef2265e968e6ee88740666e08b106f8d015d25424d9c3"
+    },
+    {
+      "label": "x86_64-turbojpeg-archive-members",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-ar.exe",
+        "t",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\prefix\\lib\\libturbojpeg.a"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "startedUtc": "2026-10-16T08:53:12.826703+00:00",
+      "log": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\21-x86_64-turbojpeg-archive-members.log",
+      "exitCode": 0,
+      "wallSeconds": 0.142444,
+      "endedUtc": "2026-10-16T08:53:12.969445+00:00",
+      "logBytes": 1799,
+      "logSha256": "31ea481582e8390321f316f5b35de5d079e41a3156566605442736ec2ad2a1a8"
+    }
+  ],
+  "abis": [
+    {
+      "abi": "x86_64",
+      "status": "COMPILED",
+      "runtimeStatus": "NOT_RUN",
+      "outputs": [
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\strictjpeg_probe",
+          "bytes": 3863544,
+          "sha256": "e21f5dc236fc129a6e129ee2281a5e6907dcee015bb65ecafa5dc25abcc4e11e",
+          "ptLoadAlignments": [
+            16384,
+            16384,
+            16384
+          ],
+          "stripped": {
+            "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\strictjpeg_probe.stripped",
+            "bytes": 380864,
+            "sha256": "a39395ad59d0cf756084cfab76c94bb0077a418650ce923400bd348046d17704"
+          },
+          "needed": [
+            "libm.so",
+            "libdl.so",
+            "libc.so"
+          ]
+        },
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\libstrictjpeg_probe.so",
+          "bytes": 4659760,
+          "sha256": "12f7066af414b66554cc1e9711bb02258c7cc2b6089c0d0d42fd91646ab73cfc",
+          "ptLoadAlignments": [
+            16384,
+            16384,
+            16384
+          ],
+          "stripped": {
+            "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\libstrictjpeg_probe.so.stripped",
+            "bytes": 1137136,
+            "sha256": "f50fc36787b7c56e126be0b4e17320c14a8dcdb7398569152144c32aeeee24cf"
+          },
+          "needed": [
+            "libm.so",
+            "libdl.so",
+            "libc.so"
+          ]
+        },
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\generate_fixtures",
+          "bytes": 1284136,
+          "sha256": "918c361dca6053b12e9a6c58b757ae011e35caca357b830c28fee6a878f04317",
+          "ptLoadAlignments": [
+            16384,
+            16384,
+            16384
+          ],
+          "stripped": {
+            "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\artifacts\\generate_fixtures.stripped",
+            "bytes": 377592,
+            "sha256": "65b0a924296b1aeb7d0283242a4e8fe191dea83167fb4d433ade71773057e547"
+          },
+          "needed": [
+            "libm.so",
+            "libdl.so",
+            "libc.so"
+          ]
+        },
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\prefix\\lib\\libjpeg.a",
+          "bytes": 5768006,
+          "sha256": "c6d42857009b7193d93a7ebc38ff561d87ad83aee5995c2281132fb85075e370"
+        },
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\prefix\\lib\\libturbojpeg.a",
+          "bytes": 8751890,
+          "sha256": "2b043dd737ba991429f676172ee8946f03c7ae07d02101833361a48f2d6809c9"
+        }
+      ],
+      "configuration": [
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\upstream\\CMakeCache.txt",
+          "bytes": 28693,
+          "sha256": "75a99e3ecb3cfae2bda2916b4d4a8409a2dfae9dd7289ed84a95aa61aeb92ab4"
+        },
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\upstream\\compile_commands.json",
+          "bytes": 280498,
+          "sha256": "cdfb85e94af1e5855f316475a295159dc3ddf575d99a12ec53bf7a0b19085417"
+        },
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\CMakeCache.txt",
+          "bytes": 16547,
+          "sha256": "be8b69674d876719ab61afa3d4aff45eb909f5dbc77ff6c6fba6b1709b032dd9"
+        },
+        {
+          "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\native\\x86_64\\probe\\compile_commands.json",
+          "bytes": 3720,
+          "sha256": "a434b90fc4cfc2cdf8cab97f98e190cf44797afe16fa3dd1f69645984ec6ddeb"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "WITH_SIMD=OFF is a research configuration, not a production performance result.",
+    "3.2.0 TurboJPEG includes upstream bundled spng/zlib objects even with tools/tests OFF.",
+    "Shared probe includes main() and is for ELF/size inspection only; no JNI export/load proof."
+  ],
+  "sourceManifest": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\build-runs\\20261016T085225.922399Z-26740\\source-inputs.json",
+    "sha256": "b5cfd1c201d016bed0ea9540bad44cbce4135e497cc5ed10c0d7d342684efeeb",
+    "fileCount": 613
+  },
+  "researchInputs": [
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\docs\\research\\m10-jpeg-r1\\native\\CMakeLists.txt",
+      "bytes": 2435,
+      "sha256": "b151267619f2eb42965ce5e0cc24b945c49455ff9ca5c4df4d14f295a6daa474"
+    },
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\docs\\research\\m10-jpeg-r1\\native\\strictjpeg_probe.c",
+      "bytes": 36560,
+      "sha256": "954938adc6c2fcea91a5469d28ed864b3230abe520ac99561e88f69eee10ba58"
+    },
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\docs\\research\\m10-jpeg-r1\\scripts\\build_native.py",
+      "bytes": 15348,
+      "sha256": "a6f74d08022a36abf755cfc8ca5751c51be026f46176101e11c18be40761d89a"
+    },
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\docs\\research\\m10-jpeg-r1\\native\\generate_fixtures.c",
+      "bytes": 10626,
+      "sha256": "b37c03cd5cb4168bdfa718ca7786388e4694fcb7a3bf0f029470fd1e1dc0e978"
+    }
+  ],
+  "inputsStable": true,
+  "endedUtc": "2026-10-16T08:53:13.709448+00:00"
+}

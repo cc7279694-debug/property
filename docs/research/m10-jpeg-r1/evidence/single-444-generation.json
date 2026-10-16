@@ -1,0 +1,36 @@
+{
+  "binary": {
+    "localPath": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\generate_single_444",
+    "remoteName": "generate_single_444",
+    "bytes": 1273464,
+    "sha256": "293c59642beedc5f478dbd7bf202885a03c89dafbc65de480c4d4f33f3a820d4",
+    "remoteSha256Readback": "293c59642beedc5f478dbd7bf202885a03c89dafbc65de480c4d4f33f3a820d4",
+    "push": {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5596",
+        "push",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\generate_single_444",
+        "/data/local/tmp/lithic-m10-r1-20261016/generate_single_444"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\generate_single_444: 1 file pushed, 0 skipped. 109.5 MB/s (1273464 bytes in 0.011s)\r\n",
+      "hostWallSeconds": 0.5793799000020954
+    }
+  },
+  "generation": {
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5596",
+      "shell",
+      "/data/local/tmp/lithic-m10-r1-20261016/generate_single_444 /data/local/tmp/lithic-m10-r1-20261016/single444"
+    ],
+    "exitCode": 0,
+    "stdout": "{\"fixture\":\"valid_40mp_progressive_444.jpg\",\"status\":\"GENERATED_NOT_DECODE_VERIFIED\",\"pixel_algorithm\":\"lithic-coordinate-v1\",\"seed\":324508639,\"width\":8000,\"height\":5000,\"components\":3,\"jpeg_color_space\":\"YCbCr\",\"sampling\":\"4:4:4\",\"quality\":85,\"dct\":\"ISLOW\",\"optimize_coding\":false,\"progressive\":true,\"restart_interval_mcus\":0,\"exif_orientation\":0,\"row_buffer_bytes\":24000,\"size_bytes\":27445246}\r\n",
+    "stderr": "",
+    "hostWallSeconds": 56.696826500003226
+  }
+}
