@@ -520,3 +520,27 @@ The exports are immutable build/test reference inputs. A Windows checkout must n
 ### Consequences
 
 Preserve the first full failure and its complete input archive. New full input must record the two restored raw-file hashes and rerun all three commands; resource preflight/static checks do not replace runtime migration tests. See [diagnosis and exact evidence](evidence/ui-c1/stage2/schema-integrity/v1-fixture-diagnosis.md). New full rerun is pending at this decision's recording time; M10 JPEG remains unresolved.
+
+## 2026-10-16 — UI-C1正式冻结与M10失败分开登记
+
+### Decision
+
+依据用户本次正式转交的ChatGPT阶段2独立验收，登记 **UI-C1 ACCEPTED / FROZEN — PASS WITH NOTES**，T01～T14仅在本阶段接受。评审交付SHA为`0e01382b95fa183c3510aa7b341458fb6888ed49`，冻结产品及测试输入SHA为`6a25965225ace3212d1653d15b45fc56ef87411e`。本次只回写文档；独立结论来源为用户的正式冻结请求，不由Codex或本地子代理授予。
+
+### Context
+
+Light/Dark、首页、两类列表及详情、历史/回看、设置、新增菜单、既有表单及确认弹窗、共用图标/卡片/封面/金额/状态已完成独立验收。[阶段2实际报告](evidence/UI-C1-stage2-verification.md)及[最终68图](evidence/ui-c1/stage2/FINAL_GALLERY.md)保持原件。其718项实际结果仍为86 JVM PASS、Android629 PASS/3 FAIL，合计715 PASS/3 FAIL，**整体FAIL**；原701身份保留，新17全PASS，Lint0错误/23警告，Debug构建成功。本次未重跑上述测试、构建、安装或核验APK，不改变实际执行结果。
+
+### Alternatives
+
+把UI冻结扩大为全应用/M10通过；将整体FAIL改成PASS；改写历史报告、原失败或旧checkpoint；把源码审查或文档核查计作新产品测试；因UI冻结自动启动JPEG修复或M11。均不采用。
+
+### Reason
+
+用户已明确授予UI-C1阶段性正式接受，展示层验收和媒体输入完整性属于不同边界。记录正式结论与原执行事实、剩余风险，确保后续会话继承真实状态而不重写证据。
+
+### Consequences
+
+N1～N4全部保持未关闭：N1缺损JPEG错误接受与3项拒绝FAIL、M10独立PENDING；N2旧合成表单保存偶发10秒超时，测试宿主安全区域改善但根因仍UNKNOWN / INTERMITTENT；N3大字体标题换行、订阅详情文字密度仍可优化；N4真机/API26/OEM/Release/完整TalkBack/真实LMK/断电/完整备份恢复仍NOT_RUN。UI-C1接受不消除这些边界。
+
+M00～M09原冻结、历史证据与NOTES、原130案例/16组边界、Q03/Q04/Q06处理期限保持。Q05为USER_CONFIRMED，M11/M12完整往返NOT_RUN；M11为NOT_AUTHORIZED。只提交推送`feat/ui-c1-visual-redesign`正式验收文档；M10 PENDING — JPEG REPAIR NOT STARTED（本次未启动），不修改产品/测试/配置/APK或M10分支，不合并main，不进入M11。详细状态及原执行范围见[正式验收登记](ACCEPTANCE_MATRIX.md#ui-c1-正式独立验收与冻结记录2026-10-16)和[新checkpoint](checkpoints/2026-10-16-UI-C1-accepted.md)，旧决定保持其当时语境。

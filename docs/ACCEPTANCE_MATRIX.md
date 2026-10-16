@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录 M00～M09 实际执行/独立验收历史与本轮M10实际交付；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
+本文件记录 M00～M09 实际执行/独立验收历史、M10历史交付及UI-C1正式独立验收；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-14。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09 正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`，详见[M09正式记录](#m09-独立代码验收与正式冻结记录2026-10-13)。本轮 **M10 — READY_FOR_REVIEW，独立验收PENDING**，相同147输入的652项分开执行覆盖与真实设备结果见末尾新增登记，不自行授予冻结。全部历史评审/NOTES、执行验收及当时交付证据保留；原130案例及16组完整跨模块补测继续 NOT_RUN，M11未授权。
+日期：2026-10-16。执行项 PASS 表示当时实际执行通过，NOT_RUN表示未执行，历史PENDING保留当时语境。M00～M09原正式冻结及全部NOTES不变；**UI-C1 — ACCEPTED / FROZEN — PASS WITH NOTES**，交付评审SHA `0e01382b95fa183c3510aa7b341458fb6888ed49`，见[本次正式记录](#ui-c1-正式独立验收与冻结记录2026-10-16)。**M10仍PENDING，缺损JPEG三项FAIL；UI最终718项为715 PASS/3 FAIL，整体FAIL。**旧652项及M10-T03/T04的PASS仅为原交付历史，不覆盖后来发现的JPEG边界。全部历史评审/执行原件保留；原130案例及16组完整跨模块补测仍NOT_RUN，Q05 USER_CONFIRMED、M11/M12完整往返NOT_RUN、M11 NOT_AUTHORIZED。本次仅正式验收文档回写，不重新运行产品测试或改变其结果。
 
 ## 独立验收记录
 
@@ -673,3 +673,61 @@ M09两项已确认产品规则继续保留原来源与实施验证：用户完�
 最终APK code8/0.1.0-m10-debug，12,755,115 bytes，SHA `939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094`与实际设备字节相同；v2签名/旧证书、90生产类/测试排除/九域备份配置已核对。Room v2/原v1/v2导出/冻结引擎/唯一owner及依赖122→122不变，无新schema/迁移或图片依赖。
 
 NOTES：Room与文件不跨资源原子；无有效归属凭据的中断残留/unknown保守保留，操作凭据不是永久草稿/备份。SavedState不保证force-stop/断电/真实LMK；空间不足可能表现DATABASE但原子性不能降低；性能归M22。Q05 USER_CONFIRMED，完整M11/M12往返及Q05-V01～V03仍NOT_RUN、不整体CLOSED；Q03/Q04/Q06期限、M09 A/B来源及全部历史NOTES不变。真机/API26/OEM/Release/完整TalkBack/真实LMK/断电、完整备份恢复和Q06回退均NOT_RUN。Debug不保存不可丢失重要记录。独立验收PENDING，停止在M10，不合并main或进入M11；提交SHA与推送以实际Git日志/最终回执核对。
+
+## UI-C1 正式独立验收与冻结记录（2026-10-16）
+
+**正式结论：ACCEPTED / FROZEN — PASS WITH NOTES。**来源为用户在本会话明确转交的ChatGPT阶段2独立验收结论及《UI-C1正式冻结回写》请求；本次Codex仅登记该结论，不自行授予验收，也不以本地文档复核替代ChatGPT独立验收。
+
+| 验收身份 | 基准 |
+|---|---|
+| 仓库／分支 | `cc7279694-debug/property`／`feat/ui-c1-visual-redesign` |
+| 评审交付SHA／本次回写起点 | `0e01382b95fa183c3510aa7b341458fb6888ed49`；开始前已实际核对本地与远端一致、工作区干净 |
+| 冻结产品及测试输入SHA | `6a25965225ace3212d1653d15b45fc56ef87411e` |
+| 187项输入指纹 | `6e10034a61e9ffc666be545645b04ea5a13bc022aa510cb5dde97694485a4f2f` |
+| 既有交付证据 | [阶段2报告](evidence/UI-C1-stage2-verification.md)、[68张最终原图](evidence/ui-c1/stage2/FINAL_GALLERY.md)、[逐方法对照](evidence/ui-c1/stage2/task8/final-test-crosswalk.md)、[设备保护核对](evidence/ui-c1/stage2/device-preservation.json) |
+
+已接受范围：Light/Dark双主题、首页、长期项目列表与详情、订阅列表与详情、历史档案与回看、设置、新增菜单、原有表单及确认对话框，以及图标、卡片、封面、金额和状态组件统一。**只接受本阶段展示层交付，不代表全应用或M10通过。**
+
+下表是本次独立验收状态，原实现者T01～T14执行表、截图来源和覆盖缺口仍在阶段2报告保留。逐项接受不将原NOT_RUN、局部展示注入或隔离宿主证据扩大为新的实际产品验证。
+
+| UI-C1案例 | 本阶段独立验收状态 | 继承的范围与限制 |
+|---|---|---|
+| T01 | ACCEPTED / FROZEN — PASS WITH NOTES | 双主题及切换，保留原数据零写与宿主系统栏边界 |
+| T02 | ACCEPTED / FROZEN — PASS WITH NOTES | 真实首页数量及空态，不引入M13总成本 |
+| T03 | ACCEPTED / FROZEN — PASS WITH NOTES | 新增菜单与原回调，主账本取消和隔离Room写入证据分开 |
+| T04 | ACCEPTED / FROZEN — PASS WITH NOTES | 列表、排序与分页，非长期性能基准 |
+| T05 | ACCEPTED / FROZEN — PASS WITH NOTES | 封面展示/缓存/错误区分；N1的JPEG输入完整性失败不被覆盖 |
+| T06 | ACCEPTED / FROZEN — PASS WITH NOTES | 长期项目金额与结束后纠错，保留原Room/领域及手工范围 |
+| T07 | ACCEPTED / FROZEN — PASS WITH NOTES | 订阅成本和时长口径、预付与状态；隔离观察日来源不变 |
+| T08 | ACCEPTED / FROZEN — PASS WITH NOTES | 原业务操作可达性；未原生手动成功写入每一业务模式 |
+| T09 | ACCEPTED / FROZEN — PASS WITH NOTES | 三VM、原Back/恢复/提交守卫；非LMK或断电证明 |
+| T10 | ACCEPTED / FROZEN — PASS WITH NOTES | 加载/空/错误/陈旧数据；受控错误图非真实磁盘故障 |
+| T11 | ACCEPTED / FROZEN — PASS WITH NOTES | 360dp/200%字体、原生IME与输入；未穷举全部组合，保留N2/N3 |
+| T12 | ACCEPTED / FROZEN — PASS WITH NOTES | 触控/语义/对比度与可达性；完整TalkBack仍NOT_RUN |
+| T13 | ACCEPTED / FROZEN — PASS WITH NOTES | 既有最终APK/离线检查，保留平台及完整备份NOT_RUN |
+| T14 | ACCEPTED / FROZEN — PASS WITH NOTES | 分阶段实施及最终证据交付；本次正式结论取代原待验收状态 |
+
+### 原样继承的实际执行结果（本次未重跑）
+
+| 项目 | 原实际结果 |
+|---|---|
+| JVM | 86 PASS |
+| Android | 629 PASS／3 FAIL，共632项 |
+| 合计 | **718项，715 PASS／3 FAIL／0 SKIPPED；整体FAIL** |
+| 原测试身份与新增项 | 原701项全部保留；新增17项全部PASS |
+| Lint／Debug构建 | 0错误、23警告；Debug构建成功；原命令退出0/1/0及缓存状态保持 |
+
+三项FAIL仍是`M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected`、`M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved`及`M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved`。停在拒绝断言，不能声称后续保护断言已通过。独立接受UI-C1不改变这些失败，不把本次文档回写登记为新测试PASS。
+
+### 必须保留的NOTES（均未关闭）
+
+| 编号 | 尚存事项 |
+|---|---|
+| N1 | M10缺损JPEG仍会被错误接受，三项拒绝测试FAIL，M10独立验收仍PENDING；JPEG修复未完成，本次未启动。 |
+| N2 | 旧合成表单保存偶发10秒超时；测试宿主安全区域已改善，根因仍UNKNOWN / INTERMITTENT。 |
+| N3 | 大字体下部分标题换行、订阅详情文字密度较高，保留后续优化事项，不在本次修改UI。 |
+| N4 | 真机、API26、OEM、Release、完整TalkBack、真实LMK、断电及完整备份恢复仍NOT_RUN。 |
+
+M00～M09原冻结、全部历史NOTES与原130条归档案例/16组跨模块边界保持；Q03/Q04/Q06及后续期限不变。Q05为USER_CONFIRMED，M11/M12完整往返仍NOT_RUN；**M11 NOT_AUTHORIZED**。
+
+本次正式结论仅取代UI-C1旧READY_FOR_REVIEW/PENDING的当前效力；阶段0/1/精修/阶段2报告、画廊、XML/日志、原失败及旧checkpoint原件不改。另见[正式验收checkpoint](checkpoints/2026-10-16-UI-C1-accepted.md)。本次仅核对文档、Git差异、链接和敏感信息，提交推送授权UI分支；最终文档提交SHA与远端一致性以实际Git回执为准。不修改产品/测试/配置/APK，不操作M10分支或main，不进入M11。

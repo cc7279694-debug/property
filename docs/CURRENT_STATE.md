@@ -4,13 +4,21 @@
 
 ## Current Stage
 
-- **UI-C1阶段2 — READY_FOR_REVIEW**：从用户已确认27图的`f000639c62fce71be0a9240425c8e27b1a5ed974`只执行Task6～8。Task6 `e9bb44f`先提交，Task7 `45e9116`后提交，最终测试输入冻结`6a25965225ace3212d1653d15b45fc56ef87411e`，187项指纹`6e10034a61e9ffc666be545645b04ea5a13bc022aa510cb5dde97694485a4f2f`。证据提交在其后，不改变产品/测试输入。只交付UI分支，不自授接受、修M10或进入M11。
+- **UI-C1 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户本次明确转交的ChatGPT阶段2独立验收正式结论回写，评审交付SHA为`0e01382b95fa183c3510aa7b341458fb6888ed49`，冻结产品及测试输入SHA为`6a25965225ace3212d1653d15b45fc56ef87411e`，187项指纹`6e10034a61e9ffc666be545645b04ea5a13bc022aa510cb5dde97694485a4f2f`。T01～T14仅在本阶段按独立结论正式接受；不扩大为全应用或M10通过。本次仅文档回写，不重新运行产品测试、构建、安装或核验APK。
 - **实际完整结果：718＝715 PASS／3原JPEG FAIL／0 SKIPPED，整体FAIL**。86 JVM全部PASS，632 Android629PASS/3FAIL；原701保留、新增17全PASS。三正式命令退出0/1/0；Lint/assemble成功，缓存任务如实标注。首轮693PASS/25FAIL完整保留；其中22项schema原资源CRLF前置失败经恢复原Git blob字节及-text保护后，新完整回归逐身份全部PASS。schema对象/版本/fixture期望/原业务断言未改。
-- **最终68张原图**：52张真实MainActivity（16正式深浅主图＋36附图）、14张隔离资料、2张空Room；同APK SHA `4bfd57231a9028ed5c2cd6961e2c59756936b688c6bf90159d58743301889c46`，12,982,546字节。实现者逐张直接检查，独立视觉/代码验收仍PENDING。真实360dp/系统200%、字母/数字IME、1.234错误raw、Back/旋转/主题与取消路径有实际证据；没有全模式/状态/主题原生穷举或完整TalkBack承诺。
+- **最终68张原图及已接受范围**：52张真实MainActivity（16正式深浅主图＋36附图）、14张隔离资料、2张空Room；既有APK SHA `4bfd57231a9028ed5c2cd6961e2c59756936b688c6bf90159d58743301889c46`，12,982,546字节。双主题、首页、项目/订阅列表及详情、历史档案、回看、设置、新增菜单、原有表单/确认对话框及统一组件已获本次独立验收。真实360dp/系统200%、IME、错误raw、Back/旋转/主题与取消路径沿用既有证据；不扩大原生穷举或平台覆盖。
 - **保护核对PASS**：七表30行全部字段/集合、原2封面字节、GMT记录时区、generation/pointer/ready/settings及AVD描述/config不变；SQL完整性ok/FK空，13项设备设置完整恢复，最终安装APK字节一致。默认QA未新增或删除。旧表单保存仍INTERMITTENT / ROOT_CAUSE_UNKNOWN；M10三JPEG及Q03～Q06/平台/备份恢复边界保持。
-- 实际[阶段2报告](evidence/UI-C1-stage2-verification.md)、[最终图册](evidence/ui-c1/stage2/FINAL_GALLERY.md)、[断言对照](evidence/ui-c1/stage2/task8/final-test-crosswalk.md)、[真实保护核对](evidence/ui-c1/stage2/device-preservation.json)、[checkpoint](checkpoints/2026-10-16-UI-C1-stage2.md)。Task6/7和首次完整失败均保留历史，不改正式ACCEPTANCE_MATRIX、原130案例或16组边界。
+- 正式结论与T01～T14见[验收登记](ACCEPTANCE_MATRIX.md#ui-c1-正式独立验收与冻结记录2026-10-16)及[正式验收checkpoint](checkpoints/2026-10-16-UI-C1-accepted.md)。既有[阶段2报告](evidence/UI-C1-stage2-verification.md)、[最终图册](evidence/ui-c1/stage2/FINAL_GALLERY.md)、[断言对照](evidence/ui-c1/stage2/task8/final-test-crosswalk.md)、[真实保护核对](evidence/ui-c1/stage2/device-preservation.json)及[交付checkpoint](checkpoints/2026-10-16-UI-C1-stage2.md)保持原件。其READY_FOR_REVIEW/PENDING为当时历史，当前效力由本次正式结论取代；不改旧测试、失败记录、原130案例及16组边界。Lint仍为0错误/23警告，Debug构建成功，均为此前执行结果，不是本次新跑PASS。
+- **模块边界**：M00～M09原冻结状态不变；UI-C1正式冻结；M10独立验收仍PENDING、JPEG修复未完成且本次未启动；Q05为USER_CONFIRMED，M11/M12完整往返NOT_RUN；M11为NOT_AUTHORIZED。
 
-以下为阶段1交付历史及继承边界；当前执行授权以上行为准。
+| 必须保留的NOTES | 当前状态与边界 |
+|---|---|
+| N1 | M10缺损JPEG仍被错误接受，三项拒绝测试FAIL；M10独立验收PENDING，JPEG REPAIR NOT STARTED（本次）。未关闭。 |
+| N2 | 旧合成表单保存偶发10秒超时；测试宿主安全区域已改善，根因仍UNKNOWN / INTERMITTENT，不因既有复跑PASS或本次冻结关闭。 |
+| N3 | 大字体下部分标题换行、订阅详情文字密度较高，保留后续优化事项；本次不修改UI或自动关闭。 |
+| N4 | 真机、API26、OEM、Release、完整TalkBack、真实LMK、断电及完整备份恢复仍NOT_RUN。 |
+
+以下为阶段1、M10及既有模块交付历史和继承边界；其中“当前/等待/未授权”等用语保留其当时语境，本轮正式状态以上节为准，后续实施仍须另行授权。
 
 - **UI-C1阶段1视觉精修 — VISUAL_REVIEW_REQUIRED（视觉精修复审）**：从`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`按用户转交的CHANGES_REQUESTED只精修六项。真实双计数/全空唯一新增/紧凑列表/封面与核心指标比例/不覆盖新增/短返回及可读菜单已实施。27张新原图分清MainActivity19、合成隔离6、空Room2，见[新图册](evidence/ui-c1/refinement/GALLERY.md)、[精修报告](evidence/UI-C1-refinement-verification.md)、[新checkpoint](checkpoints/2026-10-15-UI-C1-refinement.md)。待用户看图，不授予ACCEPTED/FROZEN，不进入Task6～8/M11。
 - 最终181登记输入：86 JVM全PASS；161 Android为157 PASS/4 FAIL（旧三JPEG＋旧合成表单点击超时），同输入未改方法单项复跑1 PASS，原4失败保留；两命令247唯一身份较晚结果244 PASS/3 FAIL，**不是一次全绿**。旧表单偶发时序根因未完全锁定；原692身份保留，新增9，全部44个UI新增方法在主运行PASS。Task8全量701回归NOT_RUN。独立Lint/assemble退出0，0 errors/23 warnings。真实系统360dp/200%菜单专项1 PASS；完整平台/辅助技术未跑范围不变。
@@ -59,7 +67,7 @@
 
 ## Pending / Current Problems / Technical Debt
 
-- **M10 JPEG输入完整性：**保留EOI但图像数据缺失的锁定样本被扫描、BitmapFactory、normalize及真实prepareImport接受，产生18,820字节规范化图片和有效准备租约。新3项拒绝测试明确FAIL；尚未实施生产修复，后续需先由ChatGPT确认受控严格解码预检方案及新增依赖/构建边界。不得以输出可解码、日志警告或旧652 PASS掩盖缺口。正式登记不改，补测状态在本文件与新证据中如实记录。
+- **M10 JPEG输入完整性：**保留EOI但图像数据缺失的锁定样本被扫描、BitmapFactory、normalize及真实prepareImport接受，产生18,820字节规范化图片和有效准备租约。新3项拒绝测试明确FAIL；尚未实施生产修复，后续需先由ChatGPT确认受控严格解码预检方案及新增依赖/构建边界。不得以输出可解码、日志警告或旧652 PASS掩盖缺口。历史执行结果不改；本次正式登记仅追加UI-C1冻结及M10待处理边界，不将UI验收视为JPEG修复。
 - **M07 NOTES 继续有效：**ProjectAbsent 只确认当前不存在，不证明历史删除操作身份；多条旧 END_SETTLEMENT 明确冲突，没有自动修复；媒体数据/文件生命周期清理归 M10。原20条 Lint 提示及历史执行证据保留。M05 写后刷新与分页交接已在 M06 实施并独立验收，不改写历史 NOTES。
 - Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q02 M17/M18 视图集成仍 NOT_RUN。Q03 长期100/1000日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M12 完整导入、切换、验证后回退、中断、共同校验、清理及 Q06-V01～V03 完整流程仍 NOT_RUN。原 ZIP/43 原件/24 模块、130 案例及16组完整跨模块补测不改。
 - [M09 两项流程风险](SPEC_ISSUES.md)由用户M09指令明确A/B产品规则：允许同身份重开，默认固定最晚已确认付费边界；保持USER_CONFIRMED / IMPLEMENTED / VERIFIED及原来源，两个流程风险已按模块证据关闭，现获独立审查认可。原全量失败及诊断保留，不由本次回写重新实施或验证。M04 首次初始化中断残留 generation 不得静默清除真实数据；M08 版本预检与无损升级已完成，不能代替 M12 完整恢复/故障回退。
@@ -77,9 +85,9 @@
 
 ## Git
 
-- 当前UI工作区：`E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，仅分支`feat/ui-c1-visual-redesign`。本轮阶段2从已确认精修提交`f000639c62fce71be0a9240425c8e27b1a5ed974`继续；`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`是阶段1初次交付历史；阶段0批准基线仍为`edc8be772a795f40b44f15da79ebf62a529bc074`，原UI来源`41596820145dc4a3fa6d041728a59540d828108a`，未从main开始。实际提交SHA/推送一致性取最终Git回执，避免递归引用自身提交。
+- 当前UI工作区：`E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`，仅分支`feat/ui-c1-visual-redesign`。本次正式回写起点与评审交付SHA均为`0e01382b95fa183c3510aa7b341458fb6888ed49`，开始前已核对本地/远端一致且工作区干净；冻结产品/测试输入仍为`6a25965225ace3212d1653d15b45fc56ef87411e`。阶段2来源`f000639c62fce71be0a9240425c8e27b1a5ed974`、阶段1初交`53fd944fe70a912fd4c1e1fa76d4ec31d1a103d5`、阶段0批准`edc8be772a795f40b44f15da79ebf62a529bc074`及原UI来源`41596820145dc4a3fa6d041728a59540d828108a`保留。仅提交推送本轮正式验收文档；最终回写SHA/远端一致性见实际Git回执，避免递归引用自身提交。
 - 原工作目录`E:/CODEX/砺石新APP`保持`feat/m10-local-cover-media`/`41596820145dc4a3fa6d041728a59540d828108a`；main保护`145326ddd4ce28abbf7c2706fe25f9d38c599c3a`。M10复核原基准d7e9、M09冻结57de897等来源及旧证据不改；不回写M10分支、不合并/force/自动PR或公开APK，不提交账本/私钥/私人照片。
 
 ## Next Recommended Task
 
-**停止，等待用户和ChatGPT独立查看本轮68张原图及同输入718项真实结果。**本轮只报告READY_FOR_REVIEW，不自动接受/冻结、不继续开发。M10 JPEG三FAIL修复方案仍须另行授权；不进入M11或合并main。Q03/Q04/Q06期限、Q05 USER_CONFIRMED、M11/M12 NOT_RUN、历史M00～M09全部NOTES保留。
+**正式回写提交并推送后停止。UI-C1 ACCEPTED / FROZEN — PASS WITH NOTES；M10 PENDING — JPEG REPAIR NOT STARTED。**本次未授权M10修复或M11；后续方案与实施等待用户另行授权，不合并main。N1～N4、整体回归FAIL、Q03/Q04/Q06期限、Q05 USER_CONFIRMED、M11/M12 NOT_RUN及M00～M09全部历史NOTES继续保留。
