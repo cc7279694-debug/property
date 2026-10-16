@@ -2,12 +2,15 @@ package com.cooper.lithic.feature.project
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -29,18 +32,26 @@ internal fun DeleteProjectDialog(
     val needsRead = state.needsInitialRead || state.conflict || state.phase == SubmissionPhase.COMMITTED
     AlertDialog(onDismissRequest = { if (canCancel) onCancel() },
         modifier = modifier.testTag("project-delete-dialog"),
+        shape = MaterialTheme.shapes.large,
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
         title = { Text("永久删除项目？", style = MaterialTheme.typography.titleLarge) },
         text = {
             Column(Modifier.verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
-                Text(state.projectName, style = MaterialTheme.typography.bodyLarge)
-                Text("将删除项目及金额记录，历史统计也会重算；无法在App内撤回。",
-                    style = MaterialTheme.typography.bodyLarge)
+                Text(state.projectName, style = MaterialTheme.typography.titleMedium)
+                Surface(shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.errorContainer) {
+                    Text("将删除项目及金额记录，历史统计也会重算；无法在App内撤回。",
+                        Modifier.fillMaxWidth().padding(LithicSpacing.medium),
+                        color = MaterialTheme.colorScheme.onErrorContainer,
+                        style = MaterialTheme.typography.bodyLarge)
+                }
                 if (state.loading) Text("正在核对项目与金额记录", style = MaterialTheme.typography.bodyLarge)
                 if (state.busy) Text("正在删除本地记录", style = MaterialTheme.typography.bodyLarge)
                 state.message?.let {
-                    Text(it, Modifier.testTag("project-delete-message"), color = MaterialTheme.colorScheme.error,
-                        style = MaterialTheme.typography.bodyLarge)
+                    Surface(shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.errorContainer) {
+                        Text(it, Modifier.fillMaxWidth().padding(LithicSpacing.medium).testTag("project-delete-message"),
+                            color = MaterialTheme.colorScheme.onErrorContainer, style = MaterialTheme.typography.bodyLarge)
+                    }
                 }
                 if (state.phase == SubmissionPhase.UNCONFIRMED && !state.conflict) {
                     Text("删除结果尚未确认。请核对原提交，期间不能改选项目或重复创建删除操作。",

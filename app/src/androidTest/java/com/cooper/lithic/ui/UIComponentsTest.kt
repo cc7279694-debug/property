@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -231,7 +232,9 @@ class UIComponentsTest {
         compose.waitForIdle()
         compose.onNodeWithTag("save").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp)
         saveFormScreenshot("form-keyboard.png")
+        recordSaveDiagnostic("before-click", saves.get())
         compose.onNodeWithTag("save").performClick()
+        recordSaveDiagnostic("after-click", saves.get())
         compose.waitUntil(10_000) { saves.get() > 0 }
         assertEquals(1, saves.get())
         assertEquals("测试项目", savedName)
@@ -254,6 +257,55 @@ class UIComponentsTest {
         assertTextFits(name)
         compose.onNodeWithText(amount, useUnmergedTree = true).performScrollTo().assertIsDisplayed()
         assertTextFits(amount)
+    }
+
+    @Test fun synthetic_form_save_target_stays_above_system_navigation_insets() {
+        compose.setContent { LargeTextHost { SyntheticFormHost(onSave = { _, _, _ -> }, onBack = {}) } }
+        compose.onNodeWithTag("form-name").performScrollTo().performTextInput("测试项目")
+        compose.onNodeWithTag("save").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp)
+        val bounds = compose.onNodeWithTag("save").fetchSemanticsNode().boundsInRoot
+        var safeBottom = 0
+        compose.runOnIdle {
+            val activity = androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry.getInstance()
+                .getActivitiesInStage(androidx.test.runner.lifecycle.Stage.RESUMED).single()
+            val view = activity.window.decorView
+            val bottom = androidx.core.view.ViewCompat.getRootWindowInsets(view)!!
+                .getInsets(androidx.core.view.WindowInsetsCompat.Type.navigationBars()).bottom
+            safeBottom = view.height - bottom
+        }
+        assertTrue("Full save target $bounds must be above system navigation boundary $safeBottom", bounds.bottom <= safeBottom)
+    }
+
+    /** Diagnostics only: no retry, timeout change, semantic click substitution or assertion removal. */
+    private fun recordSaveDiagnostic(phase: String, saves: Int) {
+        val instrumentation = InstrumentationRegistry.getInstrumentation()
+        val directory = File(instrumentation.targetContext.cacheDir, "ui-c1-form-diagnostic")
+        check(directory.isDirectory || directory.mkdirs())
+        val text = StringBuilder("phase=$phase saves=$saves\n")
+        text.append("saveBounds=").append(compose.onNodeWithTag("save").fetchSemanticsNode().boundsInRoot).append('\n')
+        text.append("nameSemantics=").append(compose.onNodeWithTag("form-name").fetchSemanticsNode().config).append('\n')
+        instrumentation.runOnMainSync {
+            val activities = androidx.test.runner.lifecycle.ActivityLifecycleMonitorRegistry.getInstance()
+                .getActivitiesInStage(androidx.test.runner.lifecycle.Stage.RESUMED)
+            for (activity in activities) {
+                val view = activity.window.decorView
+                val insets = androidx.core.view.ViewCompat.getRootWindowInsets(view)
+                text.append("activity=").append(activity.javaClass.name)
+                    .append(" focus=").append(view.hasWindowFocus())
+                    .append(" viewHeight=").append(view.height)
+                    .append(" navInsets=").append(insets?.getInsets(androidx.core.view.WindowInsetsCompat.Type.navigationBars()))
+                    .append(" imeVisible=").append(insets?.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime()))
+                    .append(" imeInsets=").append(insets?.getInsets(androidx.core.view.WindowInsetsCompat.Type.ime())).append('\n')
+            }
+            text.append("mainThread=").append(Thread.currentThread().state).append('\n')
+        }
+        for (command in listOf("dumpsys window windows", "dumpsys input_method")) {
+            val descriptor = instrumentation.uiAutomation.executeShellCommand(command)
+            android.os.ParcelFileDescriptor.AutoCloseInputStream(descriptor).use { input ->
+                text.append(command).append('\n').append(input.bufferedReader().readText()).append('\n')
+            }
+        }
+        File(directory, "$phase.txt").writeText(text.toString())
     }
 
     private fun assertTextFits(text: String) {
@@ -297,7 +349,7 @@ private fun LargeTextHost(content: @Composable () -> Unit) {
     val density = LocalDensity.current
     CompositionLocalProvider(LocalDensity provides Density(density.density, fontScale = 2f)) {
         LithicTheme {
-            Surface(Modifier.fillMaxSize()) {
+            Surface(Modifier.fillMaxSize().safeDrawingPadding()) {
                 Box(Modifier.width(360.dp).fillMaxHeight()) { content() }
             }
         }

@@ -30,6 +30,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.lithicFieldColors
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.data.local.CategoryEntity
 import com.cooper.lithic.data.local.CategoryType
@@ -64,6 +65,7 @@ internal fun ProjectDateInput(
             label = { Text(label) }, enabled = enabled, singleLine = true,
             isError = error != null,
             supportingText = { Text(error ?: "年-月-日，例如2026-01-01", style = MaterialTheme.typography.bodyMedium) },
+            shape = MaterialTheme.shapes.small, colors = lithicFieldColors(),
             textStyle = MaterialTheme.typography.bodyLarge,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text, imeAction = ImeAction.Next),
         )
@@ -176,6 +178,7 @@ internal fun ProjectNoteInput(
             .semantics { error?.let { semanticsError(it) } },
         label = { Text(label) }, enabled = enabled, minLines = 2, isError = error != null,
         supportingText = if (error == null) null else ({ Text(error, style = MaterialTheme.typography.bodyMedium) }),
+        shape = MaterialTheme.shapes.small, colors = lithicFieldColors(),
         textStyle = MaterialTheme.typography.bodyLarge,
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Default))
 }

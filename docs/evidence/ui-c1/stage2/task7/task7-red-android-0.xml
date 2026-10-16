@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.ui.UIC1FormVisualTest" tests="5" failures="5" errors="0" skipped="0" time="107.892" timestamp="2026-10-15T15:29:22" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="light_project_header_wraps_and_zero_amount_keeps_save_and_back_callbacks" classname="com.cooper.lithic.ui.UIC1FormVisualTest" time="32.265">
+    <failure>java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+at com.cooper.lithic.data.local.CategoryEntity.&lt;init&gt;(ProjectEntities.kt:23)
+at com.cooper.lithic.ui.UIC1FormVisualTest.light_project_header_wraps_and_zero_amount_keeps_save_and_back_callbacks(UIC1FormVisualTest.kt:75)
+</failure>
+  </testcase>
+  <testcase name="dark_committed_reenable_keeps_wrapped_header_read_only_values_and_only_read_recovery" classname="com.cooper.lithic.ui.UIC1FormVisualTest" time="6.952">
+    <failure>java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+at com.cooper.lithic.data.local.CategoryEntity.&lt;init&gt;(ProjectEntities.kt:23)
+at com.cooper.lithic.ui.UIC1FormVisualTest.subscription(UIC1FormVisualTest.kt:233)
+at com.cooper.lithic.ui.UIC1FormVisualTest.dark_committed_reenable_keeps_wrapped_header_read_only_values_and_only_read_recovery(UIC1FormVisualTest.kt:171)
+</failure>
+  </testcase>
+  <testcase name="dark_money_form_keeps_raw_precision_date_and_wrapped_failure_reachable" classname="com.cooper.lithic.ui.UIC1FormVisualTest" time="52.592">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'money-editor-back-header' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.ui.UIC1FormVisualTest.assertHeader(UIC1FormVisualTest.kt:197)
+at com.cooper.lithic.ui.UIC1FormVisualTest.assertHeader$default(UIC1FormVisualTest.kt:195)
+at com.cooper.lithic.ui.UIC1FormVisualTest.dark_money_form_keeps_raw_precision_date_and_wrapped_failure_reachable(UIC1FormVisualTest.kt:116)
+</failure>
+  </testcase>
+  <testcase name="light_subscription_form_keeps_four_raw_dates_error_and_explicit_payment_confirmation" classname="com.cooper.lithic.ui.UIC1FormVisualTest" time="3.928">
+    <failure>java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+at com.cooper.lithic.data.local.CategoryEntity.&lt;init&gt;(ProjectEntities.kt:23)
+at com.cooper.lithic.ui.UIC1FormVisualTest.subscription(UIC1FormVisualTest.kt:233)
+at com.cooper.lithic.ui.UIC1FormVisualTest.light_subscription_form_keeps_four_raw_dates_error_and_explicit_payment_confirmation(UIC1FormVisualTest.kt:139)
+</failure>
+  </testcase>
+  <testcase name="synthetic_form_save_target_stays_above_system_navigation_insets" classname="com.cooper.lithic.ui.UIComponentsTest" time="8.684">
+    <failure>java.lang.AssertionError: Full save target Rect.fromLTRB(42.0, 1767.0, 1038.0, 1920.0) must be above system navigation boundary 1857
+at org.junit.Assert.fail(Assert.java:89)
+at org.junit.Assert.assertTrue(Assert.java:42)
+at com.cooper.lithic.ui.UIComponentsTest.synthetic_form_save_target_stays_above_system_navigation_insets(UIComponentsTest.kt:275)
+</failure>
+  </testcase>
+</testsuite>

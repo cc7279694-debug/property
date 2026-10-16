@@ -233,8 +233,15 @@ M10原652是旧147输入的历史PASS；新增5项实际2PASS/3FAIL，UI起点�
 
 - [ ] 核对唯一UI工作树、本地/远端、原账本/两封面/generation/ready/settings/记录时区/设备设置，保存源码身份701。
 - [ ] Task6新布局/指标与可用页面RED→展示实现→定向测试/深浅原图/代码复核→独立提交。
-- [ ] Task7实际枚举及旧表单超时诊断→最小样式/可达性调整→三VM/IME/旋转/原操作回归→独立提交。
+- [x] Task7实际清单、旧超时诊断、表单展示与定向验证完成；范围明确提交。完整三VM/IME/旋转与全量核查继续由Task8最终输入验证，不把定向结果当全量。
 - [ ] Task8同一最终完整输入无过滤全量、方法/业务断言核对，记录真实FAIL及未测。
 - [ ] 最终APK实际安装与16主图+状态/空态/压力/真实IME/历史/确认图，每图双APK/来源/前台/设置指纹；逐图看原像素并直接对照两参考原图。
 - [ ] 七表完整事实/原媒体字节/时区/同代与设置前后核对、恢复guest改动；T01～T14逐项范围和缺失证据。
 - [ ] 新报告/checkpoint/唯一当前状态、差异/链接/凭据检查，仅UI分支推送，READY_FOR_REVIEW — UI-C1后停止；不自授ACCEPTED/FROZEN。
+
+
+### Task7 execution contract (2026-10-15)
+
+Task6 committed `e9bb44f` before Task7 implementation. Goal: extend approved visual system across the 8 actual form implementations and existing dialogs. Scope: presentation-only shared headers/controlled inputs, existing form layout, dialog touch targets and UI tests. Protect every raw value/date, field error, callback, enabled predicate, branch, operation identity, three VM guards and all storage/domain/media protocols. No new business flows, dependencies or permissions. [Actual inventory](../evidence/ui-c1/stage2/task7/form-inventory.md) identifies all reused modes. Verify new visual contracts against old source first, then existing forms/date/guard/cover tests; diagnose the historical save timeout without changing its 10-second wait or removing assertions. Final same-input whole-suite evidence and fresh final APK/gallery belong to Task8.
+
+Task7真实结果与新测试期望纠正见[执行报告](../evidence/ui-c1/stage2/task7/verification.md)。旧保存间歇根因继续UNKNOWN；M10三JPEG保留FAIL。

@@ -21,6 +21,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.FormHeader
+import com.cooper.lithic.core.design.LithicCard
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.data.media.MediaRepository
 import com.cooper.lithic.feature.media.CoverDisplay
@@ -43,11 +45,10 @@ internal fun CoverPickerContent(state: CoverEditorUiState, repository: MediaRepo
     val locked = state.loading || state.preparing || state.phase != SubmissionPhase.IDLE || state.conflict || state.missing
     Column(Modifier.fillMaxSize().testTag("cover-editor-screen").verticalScroll(rememberScrollState()).imePadding().padding(LithicSpacing.medium),
         verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
-        TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("cover-editor-back")) { Text("返回详情") }
-        Text("本地封面", style = MaterialTheme.typography.headlineLarge)
+        FormHeader("本地封面", onBack, "cover-editor-back", "返回详情")
         if (state.name.isNotBlank()) Text(state.name, Modifier.testTag("cover-editor-name"), style = MaterialTheme.typography.titleLarge)
         if (state.loading) Text("正在读取已保存记录", Modifier.testTag("cover-editor-loading"))
-        if (state.name.isNotBlank() && !state.loading) CoverDisplay(state.oldAssetId, repository, "editor")
+        if (state.name.isNotBlank() && !state.loading) LithicCard { CoverDisplay(state.oldAssetId, repository, "editor") }
         else Text("封面信息尚未完成读取。", Modifier.testTag("cover-editor-unavailable"), style = MaterialTheme.typography.bodyMedium)
         Text("只保存你选中的静态JPEG或PNG。原相册图片不会被修改。", style = MaterialTheme.typography.bodyMedium)
         state.message?.let { Text(it, Modifier.testTag("cover-editor-error"), color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyLarge) }

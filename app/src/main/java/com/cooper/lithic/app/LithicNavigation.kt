@@ -15,6 +15,8 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -373,7 +375,7 @@ internal fun LithicNavigation(
     } // Cover previews share the current repository lifetime across NavDisplay entries.
     pendingLeave?.let { target ->
         AlertDialog(onDismissRequest = { pendingLeave = null }, modifier = Modifier.testTag("discard-dialog"), title = { Text("放弃未保存修改？") },
-            text = { Text("输入尚未保存。继续编辑会保留这些内容。") },
+            text = { Text("输入尚未保存。继续编辑会保留这些内容。", Modifier.verticalScroll(rememberScrollState())) },
             confirmButton = { TextButton(onClick = {
                 pendingLeave = null
                 if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), coverModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
@@ -381,13 +383,13 @@ internal fun LithicNavigation(
                     model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
                     coverModel?.consumeCommitted(); model.discardForm(); subscriptionModel.discardForm(); coverModel?.discardForm(); navigate(target)
                     if (deletedCommitted) cleanupMedia() }
-            }, modifier = Modifier.testTag("discard-confirm")) { Text("放弃修改") } },
-            dismissButton = { TextButton(onClick = { pendingLeave = null }, modifier = Modifier.testTag("discard-keep")) { Text("继续编辑") } })
+            }, modifier = Modifier.heightIn(min = 48.dp).testTag("discard-confirm")) { Text("放弃修改") } },
+            dismissButton = { TextButton(onClick = { pendingLeave = null }, modifier = Modifier.heightIn(min = 48.dp).testTag("discard-keep")) { Text("继续编辑") } })
     }
     if (pendingWarning) {
         AlertDialog(onDismissRequest = { pendingWarning = false }, modifier = Modifier.testTag("pending-submit-dialog"), title = { Text("请先核对保存结果") },
-            text = { Text("提交正在进行或结果尚未确认。原始输入已保留，请返回原操作核对并重试同一保存。") },
-            confirmButton = { TextButton(onClick = { pendingWarning = false }, modifier = Modifier.testTag("pending-submit-keep")) { Text("继续核对") } },
+            text = { Text("提交正在进行或结果尚未确认。原始输入已保留，请返回原操作核对并重试同一保存。", Modifier.verticalScroll(rememberScrollState())) },
+            confirmButton = { TextButton(onClick = { pendingWarning = false }, modifier = Modifier.heightIn(min = 48.dp).testTag("pending-submit-keep")) { Text("继续核对") } },
             dismissButton = {
                 val origin = projectOrigin(routes.last())
                 val projectRecovery: NavKey? = if (projectLeave == LeaveDecision.BLOCK_PENDING) when {
@@ -407,7 +409,7 @@ internal fun LithicNavigation(
                 val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery, coverRecovery).filter { it != routes.last() }
                 Column { recoveryTargets.forEach { recovery ->
                     TextButton(onClick = { pendingWarning = false; navigate(canonicalBackStack(recovery)) },
-                        modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == coverRecovery) "pending-submit-return-to-cover" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else "pending-submit-return-to-project")) {
+                        modifier = Modifier.heightIn(min = 48.dp).testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == coverRecovery) "pending-submit-return-to-cover" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else "pending-submit-return-to-project")) {
                         Text(if (recovery == coverRecovery) "返回待核对封面" else if (recovery == subscriptionRecovery) "返回待核对订阅记录" else "返回待核对项目")
                     }
                 } }

@@ -1,0 +1,14 @@
+{
+  "auditType": "STATIC_ONLY",
+  "baseline": "f000639c62fce71be0a9240425c8e27b1a5ed974",
+  "result": "FAIL",
+  "limitations": [
+    "No Kotlin compilation or business/runtime equivalence claim",
+    "No test execution, APK/device/ledger verification or acceptance",
+    "Allowed display-file behavior still needs human diff review"
+  ],
+  "rawLogsRead": false,
+  "failures": [
+    "unsupported function form: rejects_gross_outlay_overflow"
+  ]
+}

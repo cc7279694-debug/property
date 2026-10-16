@@ -92,6 +92,7 @@ private fun ControlledTextField(
             error?.let { semanticsError(it) }
         }, label = { Text(label) }, enabled = enabled, isError = error != null,
         supportingText = if (error == null) null else ({ Text(error, style = MaterialTheme.typography.bodyMedium) }),
+        shape = MaterialTheme.shapes.small, colors = lithicFieldColors(),
         textStyle = MaterialTheme.typography.bodyLarge, singleLine = true,
         keyboardOptions = keyboardOptions, keyboardActions = keyboardActions(onImeAction))
 }

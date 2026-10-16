@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.cooper.lithic.ui.UIC1FormVisualTest" tests="4" failures="4" errors="0" skipped="0" time="58.457" timestamp="2026-10-15T15:31:14" hostname="localhost">
+  <properties>
+    <property name="device" value="Lithic_M01_API_36(AVD) - 16" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="light_project_header_wraps_and_zero_amount_keeps_save_and_back_callbacks" classname="com.cooper.lithic.ui.UIC1FormVisualTest" time="34.888">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'project-editor-back-header' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.ui.UIC1FormVisualTest.assertHeader(UIC1FormVisualTest.kt:197)
+at com.cooper.lithic.ui.UIC1FormVisualTest.light_project_header_wraps_and_zero_amount_keeps_save_and_back_callbacks(UIC1FormVisualTest.kt:86)
+</failure>
+  </testcase>
+  <testcase name="dark_committed_reenable_keeps_wrapped_header_read_only_values_and_only_read_recovery" classname="com.cooper.lithic.ui.UIC1FormVisualTest" time="5.661">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'renewal-editor-back-header' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.ui.UIC1FormVisualTest.assertHeader(UIC1FormVisualTest.kt:197)
+at com.cooper.lithic.ui.UIC1FormVisualTest.dark_committed_reenable_keeps_wrapped_header_read_only_values_and_only_read_recovery(UIC1FormVisualTest.kt:179)
+</failure>
+  </testcase>
+  <testcase name="dark_money_form_keeps_raw_precision_date_and_wrapped_failure_reachable" classname="com.cooper.lithic.ui.UIC1FormVisualTest" time="7.465">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'money-editor-back-header' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.ui.UIC1FormVisualTest.assertHeader(UIC1FormVisualTest.kt:197)
+at com.cooper.lithic.ui.UIC1FormVisualTest.assertHeader$default(UIC1FormVisualTest.kt:195)
+at com.cooper.lithic.ui.UIC1FormVisualTest.dark_money_form_keeps_raw_precision_date_and_wrapped_failure_reachable(UIC1FormVisualTest.kt:116)
+</failure>
+  </testcase>
+  <testcase name="light_subscription_form_keeps_four_raw_dates_error_and_explicit_payment_confirmation" classname="com.cooper.lithic.ui.UIC1FormVisualTest" time="8.403">
+    <failure>java.lang.AssertionError: Assert failed: The component with TestTag = 'subscription-editor-back-header' is not displayed!
+at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+at com.cooper.lithic.ui.UIC1FormVisualTest.assertHeader(UIC1FormVisualTest.kt:197)
+at com.cooper.lithic.ui.UIC1FormVisualTest.assertHeader$default(UIC1FormVisualTest.kt:195)
+at com.cooper.lithic.ui.UIC1FormVisualTest.light_subscription_form_keeps_four_raw_dates_error_and_explicit_payment_confirmation(UIC1FormVisualTest.kt:150)
+</failure>
+  </testcase>
+</testsuite>
