@@ -1,0 +1,35 @@
+package com.cooper.lithic.m10r3.probe;
+
+import java.util.function.BooleanSupplier;
+
+/** Initial legacy-behavior extraction for RED; replaced after observing failures. */
+final class BindingResponsibility {
+    interface Operations { boolean bind(); void unbind(); }
+    enum BindState { QUEUED, CALLING, RETURNED_TRUE, RETURNED_FALSE, THREW, CLOSED_NOT_STARTED }
+    enum CleanupState { NOT_NEEDED, REQUIRED, DEFERRED, UNBINDING, UNBOUND, NOT_REGISTERED, UNBIND_UNKNOWN }
+    private final Operations operations;
+    private BindState bind = BindState.QUEUED;
+    private CleanupState cleanup = CleanupState.NOT_NEEDED;
+    private boolean bound, requested;
+    private Throwable bindingError, cleanupError;
+    BindingResponsibility(Operations operations) { this.operations = operations; }
+    void executeBind(BooleanSupplier stillAuthorized) {
+        try { bound = operations.bind(); bind = bound ? BindState.RETURNED_TRUE : BindState.RETURNED_FALSE; cleanup = bound ? CleanupState.REQUIRED : CleanupState.NOT_NEEDED; }
+        catch (Throwable error) { bindingError = error; bind = BindState.THREW; }
+    }
+    void requestCleanup() {
+        requested = true;
+        if (bound) {
+            bound = false;
+            try { operations.unbind(); cleanup = CleanupState.UNBOUND; }
+            catch (Throwable error) { cleanupError = error; cleanup = CleanupState.UNBIND_UNKNOWN; }
+        }
+    }
+    synchronized BindState bindState() { return bind; }
+    synchronized CleanupState cleanupState() { return cleanup; }
+    synchronized boolean cleanupRequested() { return requested; }
+    synchronized boolean hasCleanupDuty() { return bound; }
+    synchronized Throwable bindingError() { return bindingError; }
+    synchronized Throwable cleanupError() { return cleanupError; }
+    synchronized Throwable firstCleanupError() { return cleanupError; }
+}

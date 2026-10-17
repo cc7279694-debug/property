@@ -1,0 +1,24 @@
+package com.cooper.lithic.m10r3.probe;
+
+import java.io.IOException;
+
+/** Research-only durable authorization decision; Android ownership validation remains in StageStore. */
+final class StageAuthorization {
+    interface Revocation {
+        boolean sameOwnerRevoked() throws Exception;
+        void writeSameOwnerRevoke() throws Exception;
+    }
+
+    static boolean isAuthorized(boolean current,boolean stateExists,String status,boolean pin,
+            boolean terminal,boolean revoked,boolean pending) {
+        // Initial extraction preserves the existing predicate for the behavioral RED run.
+        return current&&stateExists&&pin&&!terminal&&!revoked;
+    }
+
+    static void revokeVerified(Revocation durable) throws Exception {
+        if(!durable.sameOwnerRevoked())durable.writeSameOwnerRevoke();
+        // Initial extraction preserves the missing read-back for the behavioral RED run.
+    }
+
+    private StageAuthorization() {}
+}

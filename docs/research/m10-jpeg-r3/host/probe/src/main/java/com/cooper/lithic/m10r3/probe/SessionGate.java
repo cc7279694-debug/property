@@ -42,6 +42,9 @@ public final class SessionGate {
         return true;
     }
 
+    /** One decision with the same memory boundary as handshake, result and failure. */
+    public synchronized boolean grant() { return handshaken && !revoked && !dead; }
+
     public synchronized boolean result(int protocol, String nonce, String attempt, String generation,
             String sha, long size, String status, boolean fdClosed) {
         if (!handshaken || revoked || results != 0 || protocol != this.protocol

@@ -1,0 +1,122 @@
+JUnit version 4.13.2
+...E.E.E.E.E.E.E..E.E..E.E..E.E.E.E.E.E..E
+Time: 0.032
+There were 18 failures:
+1) securityExceptionPreservesBindingErrorAndCleanup(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.securityExceptionPreservesBindingErrorAndCleanup(BindingResponsibilityTest.java:66)
+2) deniedAndNotRegisteredIsKnownNoRegistration(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError: expected:<NOT_REGISTERED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.deniedAndNotRegisteredIsKnownNoRegistration(BindingResponsibilityTest.java:85)
+3) cleanupDuringBindDefersUntilTrueReturn(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError: expected:<DEFERRED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.cleanupDuringBindDefersUntilTrueReturn(BindingResponsibilityTest.java:122)
+4) unknownUnbindDoesNotEraseOrSilentlyRetryDuty(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.unknownUnbindDoesNotEraseOrSilentlyRetryDuty(BindingResponsibilityTest.java:103)
+5) bindErrorIsRecordedAndStillCleansResponsibility(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.bindErrorIsRecordedAndStillCleansResponsibility(BindingResponsibilityTest.java:78)
+6) returnedFalseStillCleansMatchingRegistration(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.returnedFalseStillCleansMatchingRegistration(BindingResponsibilityTest.java:58)
+7) bindRuntimeExceptionAlsoHasMatchingCleanup(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.bindRuntimeExceptionAlsoHasMatchingCleanup(BindingResponsibilityTest.java:72)
+8) cleanupBeforeQueueExecutesPreventsBinding(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError: expected:<0> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.cleanupBeforeQueueExecutesPreventsBinding(BindingResponsibilityTest.java:40)
+9) trueThenNotRegisteredIsUnknownAndPreservesDuty(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.trueThenNotRegisteredIsUnknownAndPreservesDuty(BindingResponsibilityTest.java:94)
+10) failedBeforeQueuedBindNeverCallsAndroid(com.cooper.lithic.m10r3.probe.BindingResponsibilityTest)
+java.lang.AssertionError: expected:<0> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.BindingResponsibilityTest.failedBeforeQueuedBindNeverCallsAndroid(BindingResponsibilityTest.java:32)
+11) duplicateLabelsAndDuplicateResourceAreRejected(com.cooper.lithic.m10r3.probe.HostFdScopeTest)
+java.lang.AssertionError: duplicate label
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.HostFdScopeTest.duplicateLabelsAndDuplicateResourceAreRejected(HostFdScopeTest.java:99)
+12) unknownCloseRemainsUnknownAndIsNotRetriedAutomatically(com.cooper.lithic.m10r3.probe.HostFdScopeTest)
+java.lang.AssertionError: expected:<1> but was:<2>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.HostFdScopeTest.unknownCloseRemainsUnknownAndIsNotRetriedAutomatically(HostFdScopeTest.java:77)
+13) multipleCloseFailuresRetainFirstAndSuppressed(com.cooper.lithic.m10r3.probe.HostFdScopeTest)
+java.lang.AssertionError: expected same:<java.io.IOException: output> was not:<java.io.IOException: source>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotSame(Assert.java:829)
+	at org.junit.Assert.assertSame(Assert.java:772)
+	at org.junit.Assert.assertSame(Assert.java:783)
+	at com.cooper.lithic.m10r3.probe.HostFdScopeTest.multipleCloseFailuresRetainFirstAndSuppressed(HostFdScopeTest.java:51)
+14) knownClosedScopeNeverClosesResourcesTwice(com.cooper.lithic.m10r3.probe.HostFdScopeTest)
+java.lang.AssertionError: expected:<1> but was:<2>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.HostFdScopeTest.knownClosedScopeNeverClosesResourcesTwice(HostFdScopeTest.java:68)
+15) runtimeCloseFailureDoesNotSkipRemainingResource(com.cooper.lithic.m10r3.probe.HostFdScopeTest)
+java.lang.IllegalStateException: native wrapper error
+	at com.cooper.lithic.m10r3.probe.HostFdScopeTest.runtimeCloseFailureDoesNotSkipRemainingResource(HostFdScopeTest.java:82)
+16) ownershipAfterCloseIsRejectedWithoutClosingUnownedResource(com.cooper.lithic.m10r3.probe.HostFdScopeTest)
+java.lang.AssertionError: closed scope cannot acquire
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.HostFdScopeTest.ownershipAfterCloseIsRejectedWithoutClosingUnownedResource(HostFdScopeTest.java:92)
+17) bothHostCopiesCloseWhenStartThrows(com.cooper.lithic.m10r3.probe.HostFdScopeTest)
+java.lang.AssertionError: expected:<[output, source]> but was:<[source, output]>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.HostFdScopeTest.bothHostCopiesCloseWhenStartThrows(HostFdScopeTest.java:32)
+18) oneCloseFailureStillClosesAllAndPreservesEvidence(com.cooper.lithic.m10r3.probe.HostFdScopeTest)
+java.lang.AssertionError: expected:<[output, source]> but was:<[source, output]>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.HostFdScopeTest.oneCloseFailureStillClosesAllAndPreservesEvidence(HostFdScopeTest.java:40)
+
+FAILURES!!!
+Tests run: 24,  Failures: 18
+

@@ -1,0 +1,20 @@
+JUnit version 4.13.2
+..................E.E..
+Time: 0.014
+There were 2 failures:
+1) grantRequiresCompletedHandshake(com.cooper.lithic.m10r3.probe.SessionGateFailureFenceTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.SessionGateFailureFenceTest.grantRequiresCompletedHandshake(SessionGateFailureFenceTest.java:14)
+2) grantCannotInterleaveItsRevokedAndDeadChecks(com.cooper.lithic.m10r3.probe.SessionGateFailureFenceTest)
+java.lang.AssertionError: grant must be one synchronized memory decision
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.cooper.lithic.m10r3.probe.SessionGateFailureFenceTest.grantCannotInterleaveItsRevokedAndDeadChecks(SessionGateFailureFenceTest.java:18)
+
+FAILURES!!!
+Tests run: 21,  Failures: 2
+

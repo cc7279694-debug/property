@@ -1,8 +1,17 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；H2-D1离线故障分析/失败围栏/恢复设计READY_FOR_REVIEW，H2仍BLOCKED；本轮无设备观察）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；H2-D2A研究失败围栏实现READY_FOR_REVIEW，IMPLEMENTED / PENDING_ANDROID_VERIFICATION；本轮无设备观察）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R3-F1B-H2-D2A — READY_FOR_REVIEW**：用户转交D1独立PASS WITH NOTES（仅离线设计）；锁定`f85b8a9c5d14a745f8d9e3a33ca43c9c41eba890`，独立worktree及分支`research/m10-jpeg-h2-d2a-failure-fence`。本轮仅研究Host失败围栏/N01/连接/Host FD代码、离线测试及研究APK构建；没有调用ADB、安装或操作App/AVD、恢复H2、修改生产代码/WorkerService/AIDL/Manifest/Gradle/权限/依赖。
+- **研究实现**：Invocation/Ticket/epoch与短失败优先、固定首次原因、late回调拒绝、grant原子化、CURRENT/RECEIPT候选后验复核；健康result/death乱序保持。持久撤销同owner回读；REVOKED/终结/pending拒绝，recordOutput同谓词；普通run仅同lease验证旧stage终结，recover明确拒绝。绑定false/throw先围栏再匹配解绑，UNKNOWN保留责任；Host source/output及duplicate FD整体finally，附加rebind连接同责任helper。
+- **实际离线结果**：最终145个唯一JUnit方法PASS＝旧F1-A60（源码/断言字节相同）＋新85；原D1模型另22 PASS，不计Android。真实RED/GREEN保留；最终38构建输入与源码哈希匹配、12 XML逐方法一致。研究两模块Debug构建18秒成功；Lint0错误/7警告。新Probe62501字节/SHA`c5a8c704e9a40ffd38d698a0b76748b38be308b050d046be2f5238c4277455f9`，Outsider10473字节/原`a51c...`；新旧签名连续、min26/target36/无权限/Worker非导出及独立进程实核。旧F1-A两APK及SHA未覆盖。未构建正式App。
+- **状态与风险**：N01、H2-N04及连接/FD修复仅**IMPLEMENTED / PENDING_ANDROID_VERIFICATION**，不CLOSED。D2B主线程I/O、同步trace/fsync、混合5秒期限、永久Binder/磁盘等待及真实ANR根因未解决；无watchdog/有界响应保证。已开始的慢I/O不能瞬间撤回，未知保持准入关闭。N02/N03历史及H1单次API36边界保留。
+- **现场不变更与停止**：仅继承H2末次attempt`586d0904-eaac-403a-895a-48c34cd98810`、DELIVERY_UNKNOWN/pin=true/source8192；本轮没有重新核对设备。H2 FAIL/ANR、R3完整生命周期BLOCKED/原29项0 PASS/1 UNKNOWN/28 NOT_RUN、历史UNKNOWN、M10 PENDING/三JPEG FAIL、UI-C1冻结PASS WITH NOTES、M11 NOT_AUTHORIZED全部保留。只推D2A，等待ChatGPT独立代码审查，不进入D2B/恢复/normal/生产修复。
+- **D2A交接**：[执行](research/M10_JPEG_H2_D2A_EXECUTION.md)、[代码与设计差异](research/M10_JPEG_H2_D2A_CODE_REVIEW.md)、[测试及产物](research/M10_JPEG_H2_D2A_TEST_RESULTS.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-H2-D2A.md)。
+
+以下D1及更早段落为历史交付；D1的独立验收来源为本轮用户转交，不把历史设计原件改写为实现完成：
 
 - **M10-R3-F1B-H2-D1 — READY_FOR_REVIEW（仅设计）**：来源锁定`7612c0461df59fabf85d01d32e9b051eaab6bc1f`，独立worktree/分支`research/m10-jpeg-strict-r3-h2-d1`。仅离线审查、既有证据、最小方案与纯宿主模型；ADB/设备/App操作0，研究APK与正式代码不改，不恢复现场。
 - **确定与未知**：确认5秒bind await混合main排队/绑定、主线程与同步trace有I/O；H2-N04失败出口未撤销/解绑、late连接仍安装endpoint，另有解绑异常责任和FD finally静态缺口。ANR真实阻塞点、bind边界与系统迟到原因仍UNKNOWN；没有真实ANR栈可归因，不能把fsync/锁假设写成根因。

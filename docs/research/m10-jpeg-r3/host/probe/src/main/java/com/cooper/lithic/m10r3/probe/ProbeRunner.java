@@ -15,7 +15,11 @@ final class ProbeRunner {
     final Context context;final StageStore store;final File reports;
     final ExecutorService executor=Executors.newSingleThreadExecutor();
     volatile int rejectedCommands;
-    Session activeSession; // Access only while holding store.authorizationLock.
+    final InvocationFence invocations=new InvocationFence();
+    static final class Invocation {
+        InvocationFence.Ticket ticket;
+        Session session;
+    }
     ProbeRunner(Context c)throws Exception {context=c.getApplicationContext();store=new StageStore(context);reports=new File(context.getFilesDir(),"r3-reports");if(!reports.isDirectory()&&!reports.mkdir())throw new IOException("reports");}
     static void require(boolean ok,String message){if(!ok)throw new AssertionError(message);}
     static boolean claim(Context context,String command,String run)throws Exception {
@@ -31,18 +35,31 @@ final class ProbeRunner {
         catch(Exception failure){ProbeSupport.event("COMMAND_CLAIM_FAILED","detail",failure.toString());return;}
         executor.execute(()->{
             long start=SystemClock.elapsedRealtime();
+            final Invocation invocation=new Invocation();
             try {
+                if ("run".equals(command)||"fault".equals(command)) invocation.ticket=invocations.begin();
                 ProbeSupport.event("CASE_BEGIN","runId",run,"command",command,"case",String.valueOf(name),"fault",String.valueOf(fault));
                 JSONObject result;
                 if(command.equals("recover"))result=recover();
-                else if(command.equals("fault"))result=runCase(activity,run,"fault",fault);
-                else if(command.equals("run"))result=runCase(activity,run,name,null);
+                else if(command.equals("fault"))result=runCase(activity,run,"fault",fault,invocation);
+                else if(command.equals("run"))result=runCase(activity,run,name,null,invocation);
                 else throw new IllegalArgumentException("unknown command");
                 result.put("status","PASS").put("runId",run).put("case",String.valueOf(name)).put("hostPid",android.os.Process.myPid()).put("hostUid",android.os.Process.myUid()).put("wallMs",SystemClock.elapsedRealtime()-start).put("formalReferences",0);
-                StageStore.atomic(reports,run+".json",result);ProbeSupport.event("CASE_PASS","runId",run);
+                require(invocation.ticket==null||invocation.ticket.firstFailure()==null,"report eligibility fenced");
+                StageStore.atomic(reports,run+".json",result);
+                require(invocation.ticket==null||invocation.ticket.firstFailure()==null,"report write completed after failure: result unknown");
+                ProbeSupport.event("CASE_PASS","runId",run);
             }catch(Throwable failure){
-                ProbeSupport.event("CASE_FAIL_STOP","runId",run,"detail",failure.toString());
-                try{StageStore.atomic(reports,run+".json",new JSONObject().put("status","FAIL").put("runId",run).put("detail",failure.toString()));}catch(Exception e){ProbeSupport.event("REPORT_ERROR","detail",e.toString());}
+                // Short memory fence FIRST. No trace, disk, Binder, or main-thread wait here.
+                if(invocation.ticket!=null)invocations.fail(invocation.ticket,failure.toString());
+                Session failed=invocation.session;
+                if(failed!=null) {
+                    try { store.revoke(failed.id); failed.durableFence="VERIFIED"; }
+                    catch(Throwable revokeError) { failed.durableFence="UNKNOWN"; failure.addSuppressed(revokeError); }
+                    failed.unbind(); // Keeps failed/unknown responsibility; never removes stage/pin.
+                }
+                ProbeSupport.event("CASE_FAIL_STOP","runId",run,"detail",failure.toString(),"firstFailure",invocation.ticket==null?"NO_INVOCATION":invocation.ticket.firstFailure(),"durableFence",failed==null?"NO_COMPLETE_SESSION":failed.durableFence);
+                try{StageStore.atomic(reports,run+".json",new JSONObject().put("status","FAIL").put("runId",run).put("detail",failure.toString()).put("suppressed",Arrays.toString(failure.getSuppressed())).put("durableFence",failed==null?"NO_COMPLETE_SESSION":failed.durableFence));}catch(Exception e){ProbeSupport.event("REPORT_ERROR","detail",e.toString());}
             }
         });
     }
@@ -53,36 +70,26 @@ final class ProbeRunner {
         new CountDownLatch(1).await(); // Only a controlled external command kills this Host itself.
     }
     JSONObject recover()throws Exception {
-        String id=store.currentAttempt();
-        if(id==null){store.closeAllPriorAttempts();return new JSONObject().put("recovery","NO_CURRENT_ALL_STAGES_CHECKED");}
-        store.owner(id);
-        boolean initialHeld=!store.canAcquireGuard(id),initialSource=store.sourceExists(id);long begin=SystemClock.elapsedRealtime();
-        // No new worker is bound here. The same-inode guard, not an old/new PID, is the evidence.
-        while(!store.canAcquireGuard(id)&&SystemClock.elapsedRealtime()-begin<10000){
-            require(store.sourceExists(id),"live source disappeared during recovery");ProbeSupport.event("RECOVERY_UNKNOWN_PRESERVE","attempt",id);Thread.sleep(40);
-        }
-        require(store.canAcquireGuard(id),"BLOCKED: old consumer cannot converge internally");
-        synchronized(store.authorizationLock){
-            store.closeAllPriorAttempts();
-            if(activeSession!=null)activeSession.gate.revoke("RECOVERED");
-        }
-        require(!store.sourceExists(id),"cleanup failed");
-        return new JSONObject().put("attemptId",id).put("initialGuardHeld",initialHeld).put("initialSourceExists",initialSource).put("recoveryWaitMs",SystemClock.elapsedRealtime()-begin).put("recoveryProof","OWNED_KERNEL_LEASE_AND_OLD_CLIENT_DEATH_GRANT_FENCE").put("replayed",false).put("newWorkerStarted",false).put("cleanup",true).put("businessCommit",false);
+        throw new IOException("D2A_RECOVERY_NOT_AUTHORIZED: preserve all prior stages");
     }
-    JSONObject runCase(Activity activity,String run,String name,String cut)throws Exception {
+    JSONObject runCase(Activity activity,String run,String name,String cut,Invocation invocation)throws Exception {
         require(ProbeSupport.mainOwner,"synthetic main owner missing");
         require("REJECT".equals(ProbeSupport.role("unknown")),"unknown role accepted");
         final Session s;
         synchronized(store.authorizationLock){
             // No Binder call/wait in this section. Failure preserves current.json;
             // a newly created but unpublished stage remains discoverable next time.
-            store.closeAllPriorAttempts();
-            if(activeSession!=null)activeSession.gate.revoke("REPLACED");
-            s=new Session();store.publishCurrent(s.id);activeSession=s;
+            store.assertAllTerminal(); // Ordinary run never repairs or clears a prior attempt.
+            require(invocations.isAdmitted(invocation.ticket),"invocation fenced before create");
+            s=new Session(invocation); invocation.session=s; invocations.attach(invocation.ticket,s.gate);
+            InvocationFence.Candidate publication=invocations.beginCandidate(invocation.ticket,InvocationFence.CandidateKind.CURRENT);
+            require(publication!=null,"current publication fenced");
+            store.publishCurrent(s.id);
+            require(invocations.finishCandidate(publication),"current publication result unknown after failure");
         }
         fault(run,"before_pin",cut,s);store.pin(s.id,"DELIVERY_UNKNOWN");fault(run,"after_pin",cut,s);
         if(name.equals("stage_model"))return stageModel(s);
-        s.bind();require(s.connected.await(5,TimeUnit.SECONDS),"bind timeout");require(s.worker!=null,"worker unavailable");
+        s.bind();require(s.connected.await(5,TimeUnit.SECONDS),"bind timeout");require(s.open()&&s.worker!=null&&s.binding.bindState()==BindingResponsibility.BindState.RETURNED_TRUE,"worker unavailable or invocation fenced");
         if(name.equals("revoked_reserve")){
             require(store.cleanup(s.id)&&store.revoked(s.id)&&!s.gate.isRevoked(),"persistent-only revoke setup");require(!s.reserve(),"SAFETY: durably revoked hello accepted");
             require(s.death.await(5,TimeUnit.SECONDS),"rejected worker not retired");s.unbind();require(store.cleanup(s.id),"revoked cleanup failed");
@@ -95,21 +102,38 @@ final class ProbeRunner {
         String scenario=name.equals("fault")?"normal":name;
         request.putString("scenario",scenario);
         request.putInt("durationMs",name.equals("fault")&&cut.equals("before_result")?30000:name.equals("ignore_cancel")?3500:name.equals("late_success")?350:600);
-        ParcelFileDescriptor source=store.open(s.id,"source.bin",ParcelFileDescriptor.MODE_READ_ONLY);
+        HostFdScope hostFds=new HostFdScope();
+        java.io.FileDescriptor sourceDescriptor=null,outputDescriptor=null;
+        boolean deniedStart=false;
+        try(HostFdScope owned=hostFds) {
+        try {
+        ParcelFileDescriptor source=owned.own("source",store.open(s.id,"source.bin",ParcelFileDescriptor.MODE_READ_ONLY));
+        sourceDescriptor=source.getFileDescriptor();
         File out=StageStore.safe(store.dir(s.id),"output.bin");require(out.createNewFile(),"output exclusive");
         store.recordOutput(s.id);android.system.StructStat outStat=Os.lstat(out.getPath());request.putLong("outputDevice",outStat.st_dev);request.putLong("outputInode",outStat.st_ino);
-        ParcelFileDescriptor output=store.open(s.id,"output.bin",ParcelFileDescriptor.MODE_READ_WRITE);
+        ParcelFileDescriptor output=owned.own("output",store.open(s.id,"output.bin",ParcelFileDescriptor.MODE_READ_WRITE));
+        outputDescriptor=output.getFileDescriptor();
         if(name.equals("revoked_start")){
             store.revoke(s.id);store.pin(s.id,"REVOKED");require(!s.gate.isRevoked(),"persistent-only start revoke setup");
-            try{require(!s.worker.start(ProbeSupport.envelope(request),source,output),"SAFETY: late grant after revoke");}finally{source.close();output.close();}
+            require(!s.worker.start(ProbeSupport.envelope(request),source,output),"SAFETY: late grant after revoke");
+            deniedStart=true;
+        } else {
+            require(s.open(),"invocation fenced before start");
+            // Deliberately change shared offset; the Worker must still use pread.
+            Os.lseek(source.getFileDescriptor(),123,OsConstants.SEEK_SET);
+            require(s.worker.start(ProbeSupport.envelope(request),source,output),"start rejected");
+        }
+        } catch(Throwable failure){s.failMemory(failure.toString());throw failure;}
+        } catch(Throwable failure){s.failMemory(failure.toString());throw failure;} finally {
+            ProbeSupport.event("HOST_FD_SCOPE","attempt",s.id,"allClosed",hostFds.allClosed(),"sourceEBADF",closedDescriptor(sourceDescriptor),"outputEBADF",closedDescriptor(outputDescriptor));
+        }
+        require(hostFds.allClosed()&&closedDescriptor(sourceDescriptor)&&closedDescriptor(outputDescriptor),"Host FD close unconfirmed");
+        ProbeSupport.event("HOST_DATA_FDS_CLOSED","attempt",s.id,"hostOnly",true);
+        if(deniedStart){
             require(!store.canAcquireGuard(s.id)&&store.sourceExists(s.id),"lease lost after denied source grant");
-            s.retire();require(s.death.await(5,TimeUnit.SECONDS),"revoked worker not retired");s.unbind();require(store.cleanup(s.id),"revoke cleanup");
+            s.retire();require(s.death.await(5,TimeUnit.SECONDS),"revoked worker not retired");s.unbind();require(s.connectionClosed(),"unbind unresolved");require(store.cleanup(s.id),"revoke cleanup");
             return new JSONObject().put("lateSourceGrantRejected",true).put("durableFenceTestWithoutMemoryRevoke",true).put("formalReferences",0);
         }
-        // Deliberately change shared offset before transfer; worker must use explicit pread.
-        Os.lseek(source.getFileDescriptor(),123,OsConstants.SEEK_SET);
-        require(s.worker.start(ProbeSupport.envelope(request),source,output),"start rejected");
-        source.close();output.close();ProbeSupport.event("HOST_DATA_FDS_CLOSED","attempt",s.id);
         if(name.equals("intent_replay")){
             int before=rejectedCommands;CountDownLatch replay=new CountDownLatch(1);
             activity.runOnUiThread(()->{((ProbeActivity)activity).onNewIntent(new Intent(activity,ProbeActivity.class).putExtra("command","run").putExtra("case","intent_replay").putExtra("runId",run));replay.countDown();});
@@ -120,16 +144,34 @@ final class ProbeRunner {
         require(!store.cleanup(s.id),"SAFETY: cleanup accepted live consumer");
         require(!s.gate.canPrepare(),"prepared without result/death");
         if(name.equals("fd_duplicate")){
-            ParcelFileDescriptor dup=store.open(s.id,"source.bin",ParcelFileDescriptor.MODE_READ_ONLY),dupOut=store.open(s.id,"output.bin",ParcelFileDescriptor.MODE_READ_WRITE);
-            try{require(!s.worker.start(ProbeSupport.envelope(request),dup,dupOut),"SAFETY: duplicate consumer accepted");}finally{dup.close();dupOut.close();}
+            try(HostFdScope duplicates=new HostFdScope()){
+                try {
+                    ParcelFileDescriptor dup=duplicates.own("source",store.open(s.id,"source.bin",ParcelFileDescriptor.MODE_READ_ONLY));
+                    ParcelFileDescriptor dupOut=duplicates.own("output",store.open(s.id,"output.bin",ParcelFileDescriptor.MODE_READ_WRITE));
+                    require(!s.worker.start(ProbeSupport.envelope(request),dup,dupOut),"SAFETY: duplicate consumer accepted");
+                }catch(Throwable failure){s.failMemory(failure.toString());throw failure;}
+            }catch(Throwable failure){s.failMemory(failure.toString());throw failure;}
         }
         if(name.equals("rebind")){
-            Session second=s;CountDownLatch rebound=new CountDownLatch(1);
-            ServiceConnection connection=new ServiceConnection(){public void onServiceConnected(ComponentName n,IBinder b){ProbeSupport.event("DUPLICATE_BIND","sameEndpoint",b.equals(second.worker.asBinder()));rebound.countDown();}public void onServiceDisconnected(ComponentName n){}};
-            activity.runOnUiThread(()->context.bindService(new Intent(context,WorkerService.class),connection,Context.BIND_AUTO_CREATE));
-            require(rebound.await(2,TimeUnit.SECONDS),"rebind unavailable");
-            require(!s.worker.reserve(ProbeSupport.envelope(s.identity),s.callback),"SAFETY: duplicate reservation");
-            context.unbindService(connection);
+            CountDownLatch rebound=new CountDownLatch(1);
+            ServiceConnection duplicateConnection=new ServiceConnection(){
+                public void onServiceConnected(ComponentName n,IBinder b){
+                    if(!s.open()){s.failMemory("LATE_DUPLICATE_BIND");rebound.countDown();return;}
+                    ProbeSupport.event("DUPLICATE_BIND","sameEndpoint",b.equals(s.worker.asBinder()));rebound.countDown();
+                }
+                public void onServiceDisconnected(ComponentName n){ProbeSupport.event("DUPLICATE_SERVICE_DISCONNECTED","attempt",s.id);}
+            };
+            BindingResponsibility duplicate=new BindingResponsibility(BindingResponsibility.fenced(new BindingResponsibility.Operations(){
+                public boolean bind(){return context.bindService(new Intent(context,WorkerService.class),duplicateConnection,Context.BIND_AUTO_CREATE);}
+                public void unbind(){context.unbindService(duplicateConnection);}
+            },(reason,error)->s.failMemory(reason+": "+error)));
+            try {
+                activity.runOnUiThread(()->{duplicate.executeBind(s::open);if(duplicate.bindState()!=BindingResponsibility.BindState.RETURNED_TRUE)rebound.countDown();});
+                require(rebound.await(2,TimeUnit.SECONDS)&&s.open()&&duplicate.bindState()==BindingResponsibility.BindState.RETURNED_TRUE,"rebind unavailable");
+                require(!s.worker.reserve(ProbeSupport.envelope(s.identity),s.callback),"SAFETY: duplicate reservation");
+            }catch(Throwable failure){s.failMemory(failure.toString());throw failure;}
+            finally {duplicate.requestCleanup();if(duplicate.hasCleanupDuty())s.failMemory("DUPLICATE_UNBIND_UNKNOWN");}
+            require(s.open(),"duplicate connection cleanup unresolved");
         }
         require(!store.canAcquireGuard(s.id),"SAFETY: repeat messages lost consumer lease");
         if(name.equals("cancel")||name.equals("ignore_cancel")||name.equals("late_success")||name.equals("unbind")||name.equals("normal_finish")){
@@ -158,8 +200,20 @@ final class ProbeRunner {
         require(store.canAcquireGuard(s.id),"guard retained after endpoint death");
         boolean expectedSuccess=name.equals("normal")||name.equals("identities")||name.equals("fd_duplicate")||name.equals("rebind")||name.equals("death_race")||name.equals("intent_replay");
         require(s.gate.canPrepare()==expectedSuccess,"prepare differs from expected outcome "+s.gate.status());
-        if(expectedSuccess){require(s.gate.acceptedResults()==1,"duplicate result accepted");StageStore.atomic(store.dir(s.id),"receipt.json",store.receipt(s.id,true));}
+        require(s.connectionClosed(),"connection cleanup unconfirmed");
+        if(expectedSuccess){
+            require(s.gate.acceptedResults()==1,"duplicate result accepted");
+            synchronized(store.authorizationLock){
+                require(store.isCurrentAuthorized(s.id),"receipt durable authority rejected");
+                InvocationFence.Candidate receipt=invocations.beginCandidate(invocation.ticket,InvocationFence.CandidateKind.RECEIPT);
+                require(receipt!=null,"receipt candidate fenced");
+                StageStore.atomic(store.dir(s.id),"receipt.json",store.receipt(s.id,true));
+                require(invocations.finishCandidate(receipt),"receipt landed after failure: quarantine, no cleanup");
+            }
+        }
+        require(s.open(),"invocation fenced before cleanup");
         require(store.cleanup(s.id),"cleanup failed after death");
+        if(expectedSuccess)require(invocations.markTerminal(invocation.ticket),"terminal eligibility unknown");
         return new JSONObject().put("attemptId",s.id).put("workerPid",s.workerPid).put("workerUid",s.workerUid).put("resultStatus",s.gate.status()).put("acceptedResults",s.gate.acceptedResults()).put("syntheticPrepared",s.gate.canPrepare()).put("endpointDeath",s.gate.isDead()).put("sourceRemoved",!store.sourceExists(s.id)).put("kind","SYNTHETIC_TASK_ONLY");
     }
     void writeFaultReceipt(Session s,String run,String cut)throws Exception {
@@ -184,37 +238,84 @@ final class ProbeRunner {
         require(!StageStore.safe(store.dir(s.id),"asset.json").exists(),"formal record created");
         return new JSONObject().put("model","RESEARCH_NOT_PRODUCTION_GC").put("v1RejectsV2",true).put("badReceiptsRejected",true).put("unknownPreserved",true).put("formalReferences",0);
     }
+    static boolean closedDescriptor(java.io.FileDescriptor fd){
+        if(fd==null)return false;
+        try{Os.fstat(fd);return false;}catch(ErrnoException e){return e.errno==OsConstants.EBADF;}
+    }
     final class Session {
         final String id=UUID.randomUUID().toString();final JSONObject owner;final Bundle identity;final SessionGate gate;
         final CountDownLatch connected=new CountDownLatch(1),result=new CountDownLatch(1),death=new CountDownLatch(1);
-        volatile IWorker worker;volatile int workerPid=-1,workerUid=-1;volatile boolean bound,disconnected;
-        Session()throws Exception{owner=store.create(id);identity=ProbeSupport.identity(owner);gate=new SessionGate(1,identity.getString("sessionNonce"),id,identity.getString("generationIdentity"),identity.getString("sourceSHA256"),8192,android.os.Process.myUid());}
+        final Invocation invocation;
+        final BindingResponsibility binding;
+        volatile IWorker worker;volatile IBinder endpoint;volatile int workerPid=-1,workerUid=-1;
+        volatile boolean disconnected;volatile String durableFence="NOT_ATTEMPTED";
+        Session(Invocation invocation)throws Exception{
+            this.invocation=invocation;owner=store.create(id);identity=ProbeSupport.identity(owner);
+            gate=new SessionGate(1,identity.getString("sessionNonce"),id,identity.getString("generationIdentity"),identity.getString("sourceSHA256"),8192,android.os.Process.myUid());
+            binding=new BindingResponsibility(BindingResponsibility.fenced(new BindingResponsibility.Operations(){
+                public boolean bind(){return context.bindService(new Intent(context,WorkerService.class),connection,Context.BIND_AUTO_CREATE);}
+                public void unbind(){context.unbindService(connection);}
+            },(reason,error)->failMemory(reason+": "+error)));
+        }
+        boolean open(){return invocations.isCurrentOpen(invocation.ticket);}
+        void failMemory(String reason){invocations.fail(invocation.ticket,reason);}
+        boolean connectionClosed(){return binding.cleanupState()==BindingResponsibility.CleanupState.UNBOUND||binding.cleanupState()==BindingResponsibility.CleanupState.NOT_REGISTERED;}
+        void signalConnectedIfReady(){if(open()&&worker!=null&&binding.bindState()==BindingResponsibility.BindState.RETURNED_TRUE)connected.countDown();}
         final IHost.Stub callback=new IHost.Stub(){
             public boolean hello(SessionEnvelope envelope){Bundle b=ProbeSupport.bundle(envelope);int uid=Binder.getCallingUid(),pid=Binder.getCallingPid();boolean ok=false;
                 try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->{
-                    boolean accepted=ProbeSupport.same(identity,b)&&pid!=android.os.Process.myPid()&&gate.handshake(uid,pid,b.getInt("workerPid"),b.getInt("workerUid"),!b.getBoolean("ownerInitialized",true));
-                    if(accepted){workerPid=pid;workerUid=uid;}return accepted;
+                    return invocations.decide(invocation.ticket,()->{
+                        boolean accepted=ProbeSupport.same(identity,b)&&pid!=android.os.Process.myPid()&&gate.handshake(uid,pid,b.getInt("workerPid"),b.getInt("workerUid"),!b.getBoolean("ownerInitialized",true));
+                        if(accepted){workerPid=pid;workerUid=uid;}return accepted;
+                    });
                 });}catch(Exception error){ProbeSupport.event("CALLBACK_AUTHORITY_REJECTED","attempt",id,"callback","hello","detail",error.toString());}
                 ProbeSupport.event("SYNC_HELLO","callingUid",uid,"callingPid",pid,"claimedPid",b.getInt("workerPid"),"accepted",ok);return ok;}
             public boolean grant(SessionEnvelope envelope){Bundle b=ProbeSupport.bundle(envelope);int uid=Binder.getCallingUid(),pid=Binder.getCallingPid();boolean ok=false;
-                try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->uid==workerUid&&pid==workerPid&&ProbeSupport.same(identity,b)&&!gate.isRevoked()&&!gate.isDead());}
+                try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->invocations.decide(invocation.ticket,()->uid==workerUid&&pid==workerPid&&ProbeSupport.same(identity,b)&&gate.grant()));}
                 catch(Exception error){ProbeSupport.event("CALLBACK_AUTHORITY_REJECTED","attempt",id,"callback","grant","detail",error.toString());}
                 ProbeSupport.event("FD_GRANT_DECISION","attempt",id,"accepted",ok);return ok;}
             public boolean result(SessionEnvelope envelope){Bundle b=ProbeSupport.bundle(envelope);int uid=Binder.getCallingUid(),pid=Binder.getCallingPid();if(b.getBoolean("delayHostResult")){ProbeSupport.event("RESULT_RACE_CALLBACK_ENTERED","attempt",id);try{Thread.sleep(350);}catch(InterruptedException e){Thread.currentThread().interrupt();}}
                 boolean ok=false;
-                try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->uid==workerUid&&pid==workerPid&&ProbeSupport.same(identity,b)&&"SYNTHETIC_TASK_ONLY".equals(b.getString("kind"))&&gate.result(b.getInt("protocolVersion"),b.getString("sessionNonce"),b.getString("attemptId"),b.getString("generationIdentity"),b.getString("sourceSHA256"),b.getLong("sourceSize"),b.getString("workerResult"),b.getBoolean("fdClosed")));}
+                try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->invocations.decide(invocation.ticket,()->uid==workerUid&&pid==workerPid&&ProbeSupport.same(identity,b)&&"SYNTHETIC_TASK_ONLY".equals(b.getString("kind"))&&gate.result(b.getInt("protocolVersion"),b.getString("sessionNonce"),b.getString("attemptId"),b.getString("generationIdentity"),b.getString("sourceSHA256"),b.getLong("sourceSize"),b.getString("workerResult"),b.getBoolean("fdClosed"))));}
                 catch(Exception error){ProbeSupport.event("CALLBACK_AUTHORITY_REJECTED","attempt",id,"callback","result","detail",error.toString());}
                 ProbeSupport.event("HOST_RESULT","attempt",id,"callingUid",uid,"callingPid",pid,"accepted",ok,"status",b.getString("workerResult"),"fdClosed",b.getBoolean("fdClosed"));
-                if(ProbeSupport.same(identity,b))result.countDown();return ok;}
+                if(ok)result.countDown();return ok;}
         };
         final ServiceConnection connection=new ServiceConnection(){
-            public void onServiceConnected(ComponentName n,IBinder binder){if(disconnected){ProbeSupport.event("AUTO_RECONNECT_REJECTED");return;}worker=IWorker.Stub.asInterface(binder);try{binder.linkToDeath(()->{gate.died();disconnected=true;ProbeSupport.event("WORKER_ENDPOINT_DIED","attempt",id);death.countDown();new Handler(Looper.getMainLooper()).post(()->unbind());},0);}catch(RemoteException e){gate.died();death.countDown();}connected.countDown();}
+            public void onServiceConnected(ComponentName n,IBinder binder){
+                IWorker proposed=IWorker.Stub.asInterface(binder); // Binder helper outside short memory decision.
+                boolean accepted=invocations.decide(invocation.ticket,()->{
+                    if(disconnected||endpoint!=null)return false;
+                    endpoint=binder;worker=proposed;return true;
+                });
+                if(!accepted){if(open())failMemory("DUPLICATE_OR_DISCONNECTED_ENDPOINT");ProbeSupport.event("LATE_CONNECTION_REJECTED","attempt",id,"epoch",invocation.ticket.epoch());unbind();return;}
+                try{binder.linkToDeath(()->{
+                    if(endpoint!=binder)return;
+                    gate.died();disconnected=true;
+                    ProbeSupport.event("WORKER_ENDPOINT_DIED","attempt",id,"epoch",invocation.ticket.epoch());death.countDown();
+                },0);}catch(RemoteException e){
+                    gate.died();disconnected=true;ProbeSupport.event("LINK_DEATH_REMOTE_GONE","attempt",id,"detail",e.toString());death.countDown();
+                }catch(Throwable e){failMemory("LINK_DEATH_UNKNOWN: "+e);unbind();connected.countDown();return;}
+                if(!open()){unbind();return;}
+                signalConnectedIfReady();
+            }
             public void onServiceDisconnected(ComponentName n){ProbeSupport.event("SERVICE_DISCONNECTED","attempt",id);}
-            public void onBindingDied(ComponentName n){ProbeSupport.event("BINDING_DIED","attempt",id);}
+            public void onBindingDied(ComponentName n){failMemory("BINDING_DIED");ProbeSupport.event("BINDING_DIED","attempt",id);unbind();connected.countDown();}
+            public void onNullBinding(ComponentName n){failMemory("NULL_BINDING");ProbeSupport.event("NULL_BINDING","attempt",id);unbind();connected.countDown();}
         };
-        void bind(){new Handler(Looper.getMainLooper()).post(()->{bound=context.bindService(new Intent(context,WorkerService.class),connection,Context.BIND_AUTO_CREATE);if(!bound)connected.countDown();});}
-        boolean reserve()throws Exception{return worker.reserve(ProbeSupport.envelope(identity),callback);}
+        void bind(){new Handler(Looper.getMainLooper()).post(()->{
+            binding.executeBind(this::open);
+            if(binding.bindState()!=BindingResponsibility.BindState.RETURNED_TRUE){
+                failMemory("BIND_"+binding.bindState()+": "+binding.bindingError());connected.countDown();
+            } else {signalConnectedIfReady();if(!open())unbind();}
+            ProbeSupport.event("BIND_ATTEMPT_STATE","attempt",id,"bind",binding.bindState(),"cleanup",binding.cleanupState(),"error",String.valueOf(binding.bindingError()));
+        });}
+        boolean reserve()throws Exception{return open()&&worker.reserve(ProbeSupport.envelope(identity),callback);}
         void retire(){try{if(worker!=null&&!gate.isDead())worker.retire(identity.getString("sessionNonce"),id);}catch(RemoteException e){ProbeSupport.event("RETIRE_REMOTE_GONE","attempt",id);}}
-        synchronized void unbind(){if(bound){bound=false;context.unbindService(connection);}}
+        void unbind(){
+            binding.requestCleanup();
+            if(binding.cleanupState()==BindingResponsibility.CleanupState.UNBIND_UNKNOWN)failMemory("UNBIND_UNKNOWN: "+binding.firstCleanupError());
+            ProbeSupport.event("HOST_CONNECTION_CLEANUP","attempt",id,"bind",binding.bindState(),"cleanup",binding.cleanupState(),"duty",binding.hasCleanupDuty(),"error",String.valueOf(binding.firstCleanupError()));
+        }
     }
 }

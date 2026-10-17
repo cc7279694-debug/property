@@ -1,0 +1,32 @@
+{
+  "kind": "DIRECT_REAL_JAVA_COORDINATOR",
+  "compileExit": 0,
+  "testExit": 0,
+  "uniqueMethods": 42,
+  "legacySessionGateMethods": 17,
+  "newSessionGateMethods": 4,
+  "newInvocationMethods": 21,
+  "inputs": [
+    {
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/SessionGate.java",
+      "sha256": "8e0d52b7b405eb837def089ca43f7f0b8826b9e2448e87c079a1b1d403ecf8e0"
+    },
+    {
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/InvocationFence.java",
+      "sha256": "401794aa87cd7a497372345be3f8de5c2401f88dab38a238b5baa277a086b9d8"
+    },
+    {
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/test/java/com/cooper/lithic/m10r3/probe/SessionGateTest.java",
+      "sha256": "1d873accfb815bb8f519ac0b5bb3819fefee9cfa1adc8d022201530e48002b61"
+    },
+    {
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/test/java/com/cooper/lithic/m10r3/probe/SessionGateFailureFenceTest.java",
+      "sha256": "35db0315e73bb5b70aef3a046250f922cb529011414e3a37eedf5c38d4ae4d91"
+    },
+    {
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/test/java/com/cooper/lithic/m10r3/probe/InvocationFenceTest.java",
+      "sha256": "76e639b16c024ead170877ab6d35b4e1de0a766327cec91b091aad401a4603e8"
+    }
+  ],
+  "note": "Final helper API includes creation-only isAdmitted before Gate exists. 128 internal race repetitions count as one method; no Android execution."
+}

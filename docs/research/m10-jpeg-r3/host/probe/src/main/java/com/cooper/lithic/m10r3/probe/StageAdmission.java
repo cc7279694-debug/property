@@ -19,10 +19,12 @@ final class StageAdmission {
         void publish(String id) throws Exception;
     }
     static void closeAll(Backend b) throws Exception {
-        withAllLeases(b,null);
+        withAllLeases(b,null,false);
     }
-    static void publish(Backend b,String id) throws Exception { withAllLeases(b,id); }
-    private static void withAllLeases(Backend b,String newId) throws Exception {
+    /** Ordinary run may observe terminal proofs, never manufacture them or clean an old attempt. */
+    static void assertAllTerminal(Backend b) throws Exception { withAllLeases(b,null,true); }
+    static void publish(Backend b,String id) throws Exception { withAllLeases(b,id,false); }
+    private static void withAllLeases(Backend b,String newId,boolean terminalOnly) throws Exception {
         List<String> ids=new ArrayList<>(b.attempts());
         if(new HashSet<>(ids).size()!=ids.size())throw new IOException("duplicate stage");
         Collections.sort(ids);
@@ -36,7 +38,9 @@ final class StageAdmission {
             // A check followed by a new acquisition would leave a consumer admission gap.
             for(String id:ids)leases.add(b.acquire(id));
             for(String id:ids)b.validate(id);
-            if(newId!=null) {
+            if(terminalOnly) {
+                for(String id:ids)b.verifyTerminal(id);
+            } else if(newId!=null) {
                 for(String id:ids)if(!id.equals(newId))b.verifyTerminal(id);
                 if(b.terminal(newId))throw new IOException("cannot republish terminal attempt");
                 b.publish(newId);

@@ -1,0 +1,65 @@
+JUnit version 4.13.2
+.E...E.E.E..E...E.E....E..E
+Time: 0.013
+There were 9 failures:
+1) missingStatusCannotAuthorize(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.missingStatusCannotAuthorize(StageAuthorizationTest.java:17)
+2) unknownRevokeReadBackPropagates(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError: unknown durability must fail
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.unknownRevokeReadBackPropagates(StageAuthorizationTest.java:33)
+3) unknownStateCannotAuthorize(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.unknownStateCannotAuthorize(StageAuthorizationTest.java:16)
+4) lostRevokeWriteIsNotSuccessful(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError: missing revoke readback must fail
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.lostRevokeWriteIsNotSuccessful(StageAuthorizationTest.java:32)
+5) pendingMetadataCannotAuthorize(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.pendingMetadataCannotAuthorize(StageAuthorizationTest.java:18)
+6) successfulRevokeIsReadBack(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError: expected:<2> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.successfulRevokeIsReadBack(StageAuthorizationTest.java:30)
+7) repeatedSameOwnerRevokeIsIdempotentAndReadBack(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError: expected:<4> but was:<2>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.repeatedSameOwnerRevokeIsIdempotentAndReadBack(StageAuthorizationTest.java:31)
+8) revokedPinWithoutRevokeFileCannotAuthorize(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.revokedPinWithoutRevokeFileCannotAuthorize(StageAuthorizationTest.java:14)
+9) cleanedStateCannotAuthorizeEvenWithPin(com.cooper.lithic.m10r3.probe.StageAuthorizationTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageAuthorizationTest.cleanedStateCannotAuthorizeEvenWithPin(StageAuthorizationTest.java:15)
+
+FAILURES!!!
+Tests run: 18,  Failures: 9
+

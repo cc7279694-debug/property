@@ -1,0 +1,4 @@
+# Research inputs and raw evidence retain exact bytes across Windows checkouts.
+* -text
+# JUnit prints trailing empty lines; preserve raw logs instead of rewriting evidence.
+evidence/** whitespace=cr-at-eol,-blank-at-eof

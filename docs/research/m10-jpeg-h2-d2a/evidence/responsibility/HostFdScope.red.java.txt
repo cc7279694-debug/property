@@ -1,0 +1,23 @@
+package com.cooper.lithic.m10r3.probe;
+
+import java.io.Closeable;
+import java.io.IOException;
+import java.util.LinkedHashMap;
+
+/** Initial sequential-close extraction for RED; replaced after observing failures. */
+final class HostFdScope implements AutoCloseable {
+    enum State { OPEN, CLOSED, CLOSE_UNKNOWN }
+    private final LinkedHashMap<String, Closeable> resources = new LinkedHashMap<>();
+    private final LinkedHashMap<String, State> states = new LinkedHashMap<>();
+    private final LinkedHashMap<String, Throwable> errors = new LinkedHashMap<>();
+    <T extends Closeable> T own(String label, T resource) { resources.put(label, resource); states.put(label, State.OPEN); return resource; }
+    @Override public void close() throws IOException {
+        for (String label : resources.keySet()) {
+            try { resources.get(label).close(); states.put(label, State.CLOSED); }
+            catch (IOException error) { states.put(label, State.CLOSE_UNKNOWN); errors.put(label, error); throw error; }
+        }
+    }
+    synchronized State state(String label) { return states.get(label); }
+    synchronized Throwable closeError(String label) { return errors.get(label); }
+    synchronized boolean allClosed() { return !states.containsValue(State.OPEN) && !states.containsValue(State.CLOSE_UNKNOWN); }
+}

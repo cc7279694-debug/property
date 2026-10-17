@@ -101,21 +101,44 @@ final class StageStore {
         return ids;
     }
     void closeAllPriorAttempts()throws Exception {synchronized(authorizationLock){StageAdmission.closeAll(admissionBackend());}}
+    void assertAllTerminal()throws Exception {synchronized(authorizationLock){StageAdmission.assertAllTerminal(admissionBackend(true));}}
     void publishCurrent(String id)throws Exception {synchronized(authorizationLock){StageAdmission.publish(admissionBackend(),id);}}
-    StageAdmission.Backend admissionBackend(){return new StageAdmission.Backend(){
+    StageAdmission.Backend admissionBackend(){return admissionBackend(false);}
+    StageAdmission.Backend admissionBackend(boolean rejectPending){return new StageAdmission.Backend(){
         public List<String> attempts()throws Exception{return StageStore.this.attempts();}
         public String currentAttempt()throws Exception{return StageStore.this.currentAttempt();}
         public StageAdmission.Lease acquire(String id)throws Exception {attempt(id);LocalServerSocket lease=new LocalServerSocket("lithic-r3-"+id);return lease::close;}
-        public void validate(String id)throws Exception {validateStage(id,true);}
+        public void validate(String id)throws Exception {
+            validateStage(id,true);
+            if(rejectPending){
+                // Even an apparently terminal proof cannot authorize ordinary run while any
+                // metadata write is unresolved. This executes with every consumer lease held.
+                String[] names=dir(id).list();require(names!=null,"stage unreadable");
+                StageAuthorization.assertNoPending(Arrays.asList(names));
+            }
+        }
         public boolean terminal(String id)throws Exception {return safe(dir(id),"cleanup.json").exists();}
         public void revoke(String id)throws Exception {StageStore.this.revoke(id);}
         public void removeKnownData(String id)throws Exception {StageStore.this.removeKnownData(id);}
         public void writeTerminal(String id)throws Exception {StageStore.this.writeTerminal(id);}
         public void verifyTerminal(String id)throws Exception {StageStore.this.verifyTerminal(id);}
-        public void publish(String id)throws Exception {require(!revoked(id),"revoked attempt cannot publish");atomic(root,"current.json",new JSONObject().put("attemptId",id));}
+        public void publish(String id)throws Exception {
+            require(!revoked(id),"revoked attempt cannot publish");
+            // Only the exclusively created, not-yet-pinned candidate can be published. An old
+            // REVOKED/pinned attempt without revoked.json must not regain authority via current.
+            require(!safe(dir(id),"state.json").exists(),"existing state cannot republish");
+            atomic(root,"current.json",new JSONObject().put("attemptId",id));
+        }
     };}
     boolean isCurrentAuthorized(String id)throws Exception {
-        synchronized(authorizationLock){if(!id.equals(currentAttempt()))return false;JSONObject j=owner(id);validateStage(id,true);File state=safe(dir(id),"state.json");return state.exists()&&read(state).getBoolean("pin")&&!safe(dir(id),"cleanup.json").exists()&&!revokedWithOwner(id,j);}
+        synchronized(authorizationLock){if(!id.equals(currentAttempt()))return false;JSONObject j=owner(id);validateStage(id,true);return authorityWithOwner(id,j);}
+    }
+    boolean authorityWithOwner(String id,JSONObject owner)throws Exception {
+        File d=dir(id),state=safe(d,"state.json");JSONObject s=state.exists()?read(state):null;
+        if(s!=null)validateState(s,owner);
+        File[] entries=d.listFiles();require(entries!=null,"stage unreadable");boolean pending=false;
+        for(File entry:entries){require(KNOWN_CHILDREN.contains(entry.getName()),"unknown child preserved: "+entry.getName());regular(safe(d,entry.getName()));pending|=entry.getName().endsWith(".pending");}
+        return StageAuthorization.isAuthorized(id.equals(currentAttempt()),s!=null,s==null?null:s.getString("requestStatus"),s!=null&&s.getBoolean("pin"),safe(d,"cleanup.json").exists(),revokedWithOwner(id,owner),pending);
     }
     void validateStage(String id,boolean rejectUnknown)throws Exception {
         JSONObject j=owner(id);File d=dir(id);File[] entries=d.listFiles();require(entries!=null,"stage unreadable");
@@ -167,16 +190,39 @@ final class StageStore {
     static String retainedHash(File d,String name)throws Exception {File f=safe(d,name);if(!f.exists())return "ABSENT";regular(f);return ProbeSupport.sha(ProbeSupport.bytes(f));}
     boolean revoked(String id)throws Exception {synchronized(authorizationLock){return revokedWithOwner(id,owner(id));}}
     boolean revokedWithOwner(String id,JSONObject j)throws Exception {File f=safe(dir(id),"revoked.json");if(!f.exists())return false;JSONObject r=read(f);sameOwner(r,j,"revoked");require(Boolean.TRUE.equals(r.get("revoked")),"revoke shape");return true;}
-    void revoke(String id)throws Exception {synchronized(authorizationLock){JSONObject o=owner(id);if(!revokedWithOwner(id,o))atomic(dir(id),"revoked.json",new JSONObject(o.toString()).put("revoked",true));}}
+    void revoke(String id)throws Exception {synchronized(authorizationLock){JSONObject o=owner(id);StageAuthorization.revokeVerified(new StageAuthorization.Revocation(){public boolean sameOwnerRevoked()throws Exception{sameOwner(owner(id),o);require(!safe(dir(id),"revoked.json.pending").exists(),"revoke pending");return revokedWithOwner(id,o);}public void writeSameOwnerRevoke()throws Exception{atomic(dir(id),"revoked.json",new JSONObject(o.toString()).put("revoked",true));}});}}
     void recordOutput(String id) throws Exception {
-        synchronized(authorizationLock){JSONObject o=owner(id);File d=dir(id);File state=safe(d,"state.json");require(id.equals(currentAttempt())&&state.exists()&&read(state).getBoolean("pin")&&!revokedWithOwner(id,o)&&!safe(d,"cleanup.json").exists(),"output authorization revoked");StructStat s=Os.lstat(safe(d,"output.bin").getPath());require(OsConstants.S_ISREG(s.st_mode),"output regular");atomic(d,"output-owner.json",new JSONObject().put("attemptId",id).put("sessionNonce",o.getString("sessionNonce")).put("device",s.st_dev).put("inode",s.st_ino));}
+        synchronized(authorizationLock){
+            JSONObject o=owner(id);File d=dir(id);
+            // Output is exclusively created before its inode metadata exists. Full validateStage
+            // would reject that expected intermediate state; use the identical authority predicate
+            // with strict namespace/source validation, then establish this one new output identity.
+            require(authorityWithOwner(id,o),"output authorization revoked");
+            require(safe(d,"source.bin").exists()&&ownedSource(id,o),"output source identity rejected");
+            for(String n:new String[]{"receipt.json","receipt.json.pending"}){File f=safe(d,n);if(f.exists())require(validReceipt(read(f),o),"receipt rejected");}
+            StructStat s=Os.lstat(safe(d,"output.bin").getPath());require(OsConstants.S_ISREG(s.st_mode),"output regular");
+            File metadata=safe(d,"output-owner.json");
+            if(metadata.exists()){
+                JSONObject previous=read(metadata);validateOutputOwner(previous,o);
+                require(StageIdentity.sameInode(true,previous.getLong("device"),previous.getLong("inode"),s.st_dev,s.st_ino),"output identity changed");
+                return;
+            }
+            atomic(d,"output-owner.json",new JSONObject().put("attemptId",id).put("sessionNonce",o.getString("sessionNonce")).put("device",s.st_dev).put("inode",s.st_ino));
+            JSONObject recorded=read(metadata);validateOutputOwner(recorded,o);
+            require(StageIdentity.sameInode(true,recorded.getLong("device"),recorded.getLong("inode"),s.st_dev,s.st_ino),"output identity readback");
+        }
     }
     static void validateOutputOwner(JSONObject o,JSONObject j)throws Exception {
         require(keys(o).equals(set("attemptId","sessionNonce","device","inode"))&&o.getString("attemptId").equals(j.getString("attemptId"))&&o.getString("sessionNonce").equals(j.getString("sessionNonce"))&&integral(o.get("device"))&&integral(o.get("inode")),"output owner");
     }
+    boolean ownedSource(String id,JSONObject j)throws Exception {
+        File src=safe(dir(id),"source.bin");
+        if(src.exists()){StructStat s=Os.lstat(src.getPath());return StageIdentity.sameInode(OsConstants.S_ISREG(s.st_mode),j.getLong("sourceDevice"),j.getLong("sourceInode"),s.st_dev,s.st_ino)&&s.st_size==j.getLong("sourceSize")&&ProbeSupport.sha(ProbeSupport.bytes(src)).equals(j.getString("sourceSHA256"));}
+        return true;
+    }
     boolean ownedSourceAndOutput(String id,JSONObject j) throws Exception {
-        File d=dir(id),src=safe(d,"source.bin"),out=safe(d,"output.bin"),metadata=safe(d,"output-owner.json");
-        if(src.exists()){StructStat s=Os.lstat(src.getPath());if(!StageIdentity.sameInode(OsConstants.S_ISREG(s.st_mode),j.getLong("sourceDevice"),j.getLong("sourceInode"),s.st_dev,s.st_ino)||s.st_size!=j.getLong("sourceSize")||!ProbeSupport.sha(ProbeSupport.bytes(src)).equals(j.getString("sourceSHA256")))return false;}
+        File d=dir(id),out=safe(d,"output.bin"),metadata=safe(d,"output-owner.json");
+        if(!ownedSource(id,j))return false;
         if(out.exists()){if(!metadata.isFile())return false;JSONObject o=read(metadata);validateOutputOwner(o,j);StructStat s=Os.lstat(out.getPath());if(!StageIdentity.sameInode(OsConstants.S_ISREG(s.st_mode),o.getLong("device"),o.getLong("inode"),s.st_dev,s.st_ino))return false;}
         else if(metadata.exists())return false;
         return true;

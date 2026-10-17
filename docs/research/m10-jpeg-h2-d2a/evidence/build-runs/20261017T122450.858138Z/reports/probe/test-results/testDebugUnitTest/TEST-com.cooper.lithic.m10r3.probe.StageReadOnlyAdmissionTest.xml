@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-17T12:25:28.643Z" hostname="WHOCARE" time="0.004">
+  <properties/>
+  <testcase name="corruptOwnerReceiptInodeOrUnknownChildBlocks" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.001"/>
+  <testcase name="duplicateNamespaceIdentityBlocks" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.001"/>
+  <testcase name="confirmedTerminalPriorAllowsReadOnlyAdmission" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="terminalProofWithPendingMetadataStillBlocksOrdinaryRun" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="unpointedNonterminalStageBlocksWithoutMutation" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="currentOutsideNamespaceBlocks" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="terminalAdmissionCanRepeatWithoutCleanupOrPointerChange" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="leaseReleaseUnknownDoesNotBecomeSuccessfulAdmission" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.001"/>
+  <testcase name="occupiedConsumerLeaseBlocksAdmission" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="pinnedNonterminalPriorIsNeverAutomaticallyClosed" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="allLeasesStayHeldThroughEveryTerminalProof" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="laterBusyLeaseReleasesPreviouslyAcquiredLease" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <testcase name="noStagesAllowsFreshRunWithoutPublishing" classname="com.cooper.lithic.m10r3.probe.StageReadOnlyAdmissionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
