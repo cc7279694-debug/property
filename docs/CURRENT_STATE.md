@@ -1,8 +1,15 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；M10-R3-F1B-G2-R原AVD上线后，唯一只读预检因未知ps UID标签停止）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；G2R-U1完成有限UID取证及最小研究兼容修复/宿主测试，等待独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R3-F1B-G2R-U1 — READY_FOR_REVIEW**：用户转交G2-R研究交付PASS WITH NOTES、真实双快照BLOCKED；本轮从锁定`f4de91342410b58d63526182a1402486e12e3990`建立独立worktree/分支`research/m10-jpeg-strict-r3-f1b-g2r-u1`。仅授权有限只读UID诊断、Python最小兼容修复、宿主测试和文档；不运行完整设备预检或任何App。
+- **本轮实证与修改**：原AVD已在线，未启动/重启。API36/boot1与三包当前UID/APK SHA核对一致。一次legacy ps＋一次实际支持UID列的ps发现唯一未知ASCII标签uwb（1行），按USER/PID/PPID/NAME在内存关联数字UID1083；AOSP Android16 AID_UWB1083核对一致。仅将gate原UID规则提取共享函数并加精确uwb1083；Service/stage、verify采集协议、生产代码及原测试不变。完整进程数据仅内存，受限证据保留标签/计数/数值和命令字节/SHA；不能追认G2-R缺失的原token/SHA。
+- **本轮验证与限度**：RED103唯一方法93 PASS/10 FAIL，GREEN103 PASS＝原81＋新增22，0 ERROR/SKIP，旧方法身份及断言保留；实际safe_idle仅通过FakeCollector宿主集成。受限真实观察的宿主审计PASS，不可重放私有完整行。三次取证脚本前置格式错误在ps之前停止，历史记录保留；共36次ADB读取，其中31条有逐条完整性元数据，另5身份显示无原始SHA。ps总2，安装/应用启动停止/清理/完整预检均0。数字采样研究行为空不是完整双快照或无Worker门禁证明；新Service/stage、私人元数据前后比较、私人字节、Android案例/构建均NOT_RUN。
+- **U1交接与停止**：[执行](research/M10_JPEG_R3_F1B_G2R_U1_EXECUTION.md)、[测试](research/M10_JPEG_R3_F1B_G2R_U1_TEST_RESULTS.md)、[决策](research/M10_JPEG_R3_F1B_G2R_U1_DECISION.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2R-U1.md)。只提交推送U1分支后停止，等待ChatGPT独立审查；不因宿主全通过运行设备preflight。N01～N03、历史attach/R1超时UNKNOWN、R3原29项0 PASS/1 UNKNOWN/28 NOT_RUN、M10 PENDING/3 JPEG FAIL、UI-C1冻结PASS WITH NOTES及M11 NOT_AUTHORIZED不变。
+
+以下为G2-R历史停止点；保留其原BLOCKED及缺失输入边界，本轮新观察不回填旧证据：
 
 - **M10-R3-F1B-G2-R — BLOCKED，等待独立审查**：来源G2锁定`2de44c79173e7fa52841b55542e5ddcc5399a30a`，独立worktree/分支`research/m10-jpeg-strict-r3-f1b-g2-resume`。按本轮新授权先核对ADB/Windows进程/端口与F0原AVD路径、ini/config SHA及程序路径，另记录本轮工具SHA（F0无程序SHA基线）；确认未运行后只启动一次，禁snapshot加载/保存、不改配置或清数据。240秒有界等待循环实际44.766秒后确认原AVD/API36/serial/boot1（从启动请求到确认约65.805秒）。
 - **唯一真实预检与停止**：原G1代码/入口未改，07:45:49～07:45:58 UTC运行一次。首轮完整服务输出分类NO_TARGET_RECORD；ps检查报`unknown ps UID label`，进程退出2并停止。第二轮、双快照一致性及PREFLIGHT_ELIGIBLE均NOT_RUN，没有改规则或重试。首ps失败路径未保留具体标签/SHA，不能将结束输入套用为首轮实证。

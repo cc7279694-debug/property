@@ -68,6 +68,22 @@ def complete_text(value, profile):
     return text
 
 
+def resolve_ps_uid(user):
+    """Decode the existing USER column; unknown app-like identities fail closed."""
+    match = re.fullmatch(r'u(\d+)_a(\d+)', user)
+    if user.isascii() and user.isdecimal():
+        return int(user)
+    if match:
+        return int(match[1]) * 100000 + 10000 + int(match[2])
+    # Exact AOSP AID_UWB, confirmed by U1 USER+UID row correlation (API36).
+    # No general allowance for unknown u-prefixed labels or numeric fallback.
+    if user == 'uwb':
+        return 1083
+    need((re.fullmatch(r'[a-z][a-z0-9_-]*', user) is not None
+          and not user.startswith('u')) or user == 'usb', 'unknown ps UID label')
+    return None
+
+
 def process_rows(value, uids):
     """Validate every ps row, then retain only research identity rows in results.
 
@@ -86,17 +102,7 @@ def process_rows(value, uids):
              ppid.isascii() and ppid.isdecimal(), 'invalid ps PID/PPID')
         need(int(pid) not in seen, 'duplicate ps PID')
         seen.add(int(pid))
-        match = re.fullmatch(r'u(\d+)_a(\d+)', user)
-        if user.isascii() and user.isdecimal():
-            uid = int(user)
-        elif match:
-            uid = int(match[1]) * 100000 + 10000 + int(match[2])
-        else:
-            # Kernel/platform identities are names; an unknown app/user label
-            # cannot be treated as a platform identity or silently discarded.
-            need((re.fullmatch(r'[a-z][a-z0-9_-]*', user) is not None
-                  and not user.startswith('u')) or user == 'usb', 'unknown ps UID label')
-            uid = None
+        uid = resolve_ps_uid(user)
         related = name in (PROBE, OUTSIDER, SERVICE.PROCESS) or name.startswith((PROBE + ':', OUTSIDER + ':'))
         if related or uid in uids.values():
             need(uid is not None, 'research process UID not resolved')

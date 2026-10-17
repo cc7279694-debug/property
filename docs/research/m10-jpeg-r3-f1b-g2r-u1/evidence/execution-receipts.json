@@ -1,0 +1,58 @@
+{
+  "initialEnvironmentObservations": {
+    "deviceOnline": true,
+    "emulatorLauncherPID": 16988,
+    "qemuPID": 20516,
+    "sameAVDAndPort": true,
+    "startAttempts": 0,
+    "kind": "tool observed decoded facts; not raw command replay",
+    "initialDevicesQueries": 1,
+    "additionalIdentityOnlyQueries": 4,
+    "rawSHAAvailable": false
+  },
+  "diagnosticAttempts": [
+    {
+      "attempt": 1,
+      "status": "BLOCKED",
+      "reason": "device identity/boot mismatch",
+      "commandCount": 4,
+      "psCommandCount": 0,
+      "outerProcessExitCode": 1,
+      "scriptSHAAvailable": false
+    },
+    {
+      "attempt": 2,
+      "status": "BLOCKED",
+      "reason": "package APK path not recognized",
+      "commandCount": 6,
+      "psCommandCount": 0,
+      "outerProcessExitCode": 1,
+      "scriptSHAAvailable": true
+    },
+    {
+      "attempt": 3,
+      "status": "BLOCKED",
+      "reason": "package APK path not recognized",
+      "commandCount": 6,
+      "psCommandCount": 0,
+      "outerProcessExitCode": 1,
+      "scriptSHAAvailable": true
+    },
+    {
+      "attempt": 4,
+      "status": "OBSERVED_NOT_PREFLIGHT",
+      "reason": null,
+      "commandCount": 15,
+      "psCommandCount": 2,
+      "outerProcessExitCode": 0,
+      "scriptSHAAvailable": true
+    }
+  ],
+  "archivedAdbCommandCount": 31,
+  "additionalUnarchivedIdentityQueries": 5,
+  "totalAdbReads": 36,
+  "totalPsReads": 2,
+  "deviceWrites": 0,
+  "fullPreflightInvocations": 0,
+  "appLifecycleCalls": 0
+}

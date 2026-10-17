@@ -1,0 +1,85 @@
+{
+  "scope": "UID_DIAGNOSIS_ONLY_NOT_PREFLIGHT",
+  "startedAtUtc": "2026-10-17T08:06:25.314083+00:00",
+  "serial": "emulator-5596",
+  "fullProcessStdoutArchived": false,
+  "unrelatedProcessNamesArchived": false,
+  "appLifecycleCalls": 0,
+  "legacyPsLimit": 1,
+  "numericPsLimit": 1,
+  "commands": [
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "get-state"
+      ],
+      "startedAtUtc": "2026-10-17T08:06:25.314083+00:00",
+      "exitCode": 0,
+      "stdoutBytes": 8,
+      "stdoutSHA256": "5a49c5eb1807bf1dd12637504e6a6e49f1c9c4bce601ae34c9984843074b129c",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "complete": true,
+      "finishedAtUtc": "2026-10-17T08:06:25.411322+00:00"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "emu",
+        "avd",
+        "name"
+      ],
+      "startedAtUtc": "2026-10-17T08:06:25.412324+00:00",
+      "exitCode": 0,
+      "stdoutBytes": 25,
+      "stdoutSHA256": "e70bced4c3e5cfe0c9376a4da38a9d73235e7ef507a52272639bd53ce4312e2b",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "complete": true,
+      "finishedAtUtc": "2026-10-17T08:06:25.506526+00:00"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "startedAtUtc": "2026-10-17T08:06:25.507526+00:00",
+      "exitCode": 0,
+      "stdoutBytes": 4,
+      "stdoutSHA256": "0a6b5e02cbe592ef9285db1440db99874166326dff103608c6dfd5068ec714f5",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "complete": true,
+      "finishedAtUtc": "2026-10-17T08:06:25.629621+00:00"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "startedAtUtc": "2026-10-17T08:06:25.629621+00:00",
+      "exitCode": 0,
+      "stdoutBytes": 3,
+      "stdoutSHA256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "complete": true,
+      "finishedAtUtc": "2026-10-17T08:06:25.741413+00:00"
+    }
+  ],
+  "status": "BLOCKED",
+  "reason": "device identity/boot mismatch",
+  "finishedAtUtc": "2026-10-17T08:06:25.742414+00:00"
+}
