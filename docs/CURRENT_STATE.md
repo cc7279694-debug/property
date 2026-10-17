@@ -1,15 +1,16 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；H2-D2B离线候选已构建，API26/27启动兼容性缺口，BLOCKED / 等待独立设计审查；无设备观察）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；D2A独立备注来源已补齐；H2-D2B仍有API26/27启动兼容性缺口，BLOCKED / 等待独立设计审查；本次仅文档，无设备观察）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
 
 - **M10-R3-F1B-H2-D2B — BLOCKED**：用户转交D2A独立PASS WITH NOTES，仅研究Java/145 JVM/22模型及研究构建。锁定`59e61cd856b4039c693eb0f280eaf1f2ac838b6b`，独立worktree/分支`research/m10-jpeg-h2-d2b-host-scheduling`；先以`23b7ad0`提交范围，再实施Host调度/时序/诊断候选。没有ADB/设备操作、APK安装或运行，没有恢复H2。
 - **离线候选**：Activity仅有界入队；角色/owner/Runner/claim进入同一有界串行后台队列，活跃键拒绝重放，未确认claim不开始Invocation。Host trace移独立有界writer，丢失/写失败/超时sticky UNKNOWN；持久StageStore授权/revoke/receipt/terminal仍同步。六边界/实际单调时长、独立watchdog、阶段5s/绑定总15s/POSTED至完成30s不可重置；不保证Android最坏响应/远端退出，也不覆盖POSTED前磁盘阻塞。
 - **实际结果**：最终229唯一JUnit PASS＝原145（全部原测试字节/断言保持）＋新84；16 XML身份匹配。D1模型另22 PASS；源码静态契约另8 PASS，不计Android。46输入SHA一致；研究两模块Debug最终33秒成功，Lint0错误/8警告（新增fixed-rate追赶警告保留）。Probe80297字节，SHA`984ffc9b29a5ded2f05c47db657e17ef13ce847ad8fa4a4e5b62fef264a725bc`；Outsider10473字节/原a51c…；Manifest/证书实核，原D2A/F1-A产物未覆盖。首次语法编译失败和中间记录保留，不当TDD RED。
-- **阻塞与建议**：API26/27异步身份尚未就绪时，原WorkerService.main.onBind会role(UNKNOWN)拒绝；不以main等待/默认Worker解决。候选尚不具备安装资格。提交独立审查A（保留API26/27必要的原有有界身份探测同步例外）或B（另审Worker异步就绪协作、超当前范围），均未实施。API28 framework提示与后台/proc核验不是同一证据，不扩称所有Worker已ready。独立编号D2A-N01～N05原文仍NOT_PROVIDED，已请求补充，不编造。
+- **阻塞与建议**：API26/27异步身份尚未就绪时，原WorkerService.main.onBind会role(UNKNOWN)拒绝；不以main等待/默认Worker解决。候选尚不具备安装资格。提交独立审查A（保留API26/27必要的原有有界身份探测同步例外）或B（另审Worker异步就绪协作、超当前范围），均未实施。API28 framework提示与后台/proc核验不是同一证据，不扩称所有Worker已ready。D2A-N01～N05原文现已由用户补齐，来源缺口解除，但不解除技术阻塞或自动关闭NOTE。
+- **D2A独立备注补录（仅文档）**：用户转交ChatGPT对`59e61cd856b4039c693eb0f280eaf1f2ac838b6b`的五条原文及处理边界；单独保存[来源/逐条状态](research/M10_JPEG_H2_D2B_REVIEW_NOTES_SUPPLEMENT.md)。N01候选部分实施、ANR根因UNKNOWN；N02独立watchdog已实施/宿主测试、Android最坏响应UNKNOWN；N03继承fail-closed且内存/磁盘非原子；N04 PENDING_ANDROID_VERIFICATION；N05 ANALYZED / DESIGN_ONLY / PENDING_INDEPENDENT_REVIEW，不改D1失败终结。不混用旧F1-A编号，不改写旧报告中的当时NOT_PROVIDED。补录前D2B为`1721f81ceb7ecf949038a6ad64732a0ae0bbea98`；本次没有重跑测试、Lint、构建或Android验证，原229/22/8及APK证据继续按历史统计。
 - **N05与保护**：成功终结口径不改；正常取消、已验证失败终结和资源未知分别设计，失败仍须D1独立恢复门禁，不自动markTerminal。WorkerService/AIDL/Manifest/依赖/StageStore磁盘格式/正式产品代码均不改。仅继承H2末次现场，不重新观察；H2 FAIL/UNKNOWN、原R3 0 PASS/1 UNKNOWN/28 NOT_RUN及完整生命周期BLOCKED、M10 PENDING/三JPEG FAIL、UI-C1冻结、M11 NOT_AUTHORIZED全部保留。
-- **D2B交接与停止**：[执行](research/M10_JPEG_H2_D2B_EXECUTION.md)、[线程/时序与兼容设计](research/M10_JPEG_H2_D2B_THREAD_TIMING_DESIGN.md)、[测试/实物](research/M10_JPEG_H2_D2B_TEST_RESULTS.md)、[N05与来源缺口](research/M10_JPEG_H2_D2B_N05_AND_RISKS.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-H2-D2B.md)。只推D2B后停止，等待独立审查，不安装APK、不恢复或重试normal。
+- **D2B交接与停止**：[执行](research/M10_JPEG_H2_D2B_EXECUTION.md)、[线程/时序与兼容设计](research/M10_JPEG_H2_D2B_THREAD_TIMING_DESIGN.md)、[测试/实物](research/M10_JPEG_H2_D2B_TEST_RESULTS.md)、[N05方案](research/M10_JPEG_H2_D2B_N05_AND_RISKS.md)、[当前备注补录](research/M10_JPEG_H2_D2B_REVIEW_NOTES_SUPPLEMENT.md)、[补录checkpoint](checkpoints/2026-10-17-M10-JPEG-H2-D2B-notes-supplement.md)。原[交付checkpoint](checkpoints/2026-10-17-M10-JPEG-H2-D2B.md)保留历史。只推D2B后停止，等待独立审查，不安装APK、不恢复或重试normal。
 
 以下D2A及更早段落为历史交付；其独立审查来源与当前D2B阻塞以上节为准：
 

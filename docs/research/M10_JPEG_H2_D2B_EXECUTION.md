@@ -2,6 +2,8 @@
 
 2026-10-17。**BLOCKED — M10-R3-F1B-H2-D2B**。离线研究候选、测试及APK已形成；存在API26/27启动兼容缺口，不具备设备验证或安装资格，等待独立设计/代码审查。
 
+**后续来源补录（2026-10-17）**：用户已补齐D2A-N01～N05原文，见[独立备注及逐条处理](M10_JPEG_H2_D2B_REVIEW_NOTES_SUPPLEMENT.md)。下述实施、测试与来源缺口段落保留`1721f81`交付时点事实；当前来源状态以补录为准，技术BLOCKED及原结果不变。本次只补文档，没有再次测试、构建或设备操作；原交付清单保持原字节，补录文件由独立文档核查清单登记。
+
 ## 来源、范围与边界
 
 仓库`cc7279694-debug/property`；用户转交D2A独立PASS WITH NOTES，范围仅研究Java、145 JVM、22模型及研究构建。锁定来源`59e61cd856b4039c693eb0f280eaf1f2ac838b6b`，本地/远端一致，原工作区干净。独立worktree：`E:/CODEX/.codex/worktrees/m10-jpeg-h2-d2b-host-scheduling/砺石新APP`；分支`research/m10-jpeg-h2-d2b-host-scheduling`。

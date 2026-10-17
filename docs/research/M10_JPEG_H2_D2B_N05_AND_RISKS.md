@@ -2,6 +2,8 @@
 
 2026-10-17。仅设计/源码审查；不更改D1失败终结语义。[线程及阻塞设计](M10_JPEG_H2_D2B_THREAD_TIMING_DESIGN.md)。
 
+**后续来源补录（2026-10-17）**：用户在`1721f81`交付后提供完整D2A-N01～N05，原文与逐条状态见[补录](M10_JPEG_H2_D2B_REVIEW_NOTES_SUPPLEMENT.md)。下节“审查来源缺口”表保留原交付时点，当前来源已补齐；N05仍为设计、等待独立审查，不据此改写旧NOTE或关闭技术风险。
+
 ## N05准确原因
 
 以D2A锁定源为准：ProbeRunner第201～216行只在expectedSuccess时调用markTerminal；InvocationFence第109～115行还要求receiptCommitted和gate.canPrepare，后者仅允许SUCCESS、唯一结果、FD关闭与匹配死亡。因此非SUCCESS即使资源已证实终结，仍不会释放内存Ticket。

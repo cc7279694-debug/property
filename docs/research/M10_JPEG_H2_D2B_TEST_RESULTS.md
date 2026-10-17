@@ -2,6 +2,8 @@
 
 2026-10-17。**HOST_ONLY / 总体BLOCKED**。宿主通过不覆盖[API26/27兼容性缺口](M10_JPEG_H2_D2B_THREAD_TIMING_DESIGN.md)，不代表真实ANR已修复。
 
+**后续来源补录（2026-10-17）**：用户在`1721f81`交付后补齐五条审查备注，当前来源及状态见[补录](M10_JPEG_H2_D2B_REVIEW_NOTES_SUPPLEMENT.md)。以下测试、产物和当时NOT_PROVIDED记录均保留原运行语境；本次只补文档，未重新执行测试、Lint、构建或Android验证。
+
 ## 唯一测试口径
 
 | 分组 | 唯一方法 | 结果 |

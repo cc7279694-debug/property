@@ -1,0 +1,23 @@
+D2A独立审查备注：D2A-N01～N05
+来源：ChatGPT对提交 59e61cd856b4039c693eb0f280eaf1f2ac838b6b 的独立代码审查。
+正式结论：D2A PASS WITH NOTES，仅限研究Java代码、离线测试和APK构建。
+D2A-N01 — ANR根因未解决
+H2 ANR根因仍为UNKNOWN。主线程同步文件操作、同步Trace以及混合5秒绑定期限尚未修复。
+D2A-N02 — 缺少独立Watchdog
+没有独立watchdog。若执行线程永久阻塞，不能保证失败围栏及时触发。
+D2A-N03 — 内存与磁盘状态无法原子完成
+持久撤销或receipt的磁盘写入不能与内存失败做到原子完成；结果未知时必须继续阻塞。
+D2A-N04 — Android实际验证缺失
+真实Android bindService、Binder、FD关闭、Service死亡与文件同步尚未验证。
+D2A-N05 — 非SUCCESS终结语义风险
+我发现一个后续兼容性问题：markTerminal()只在预期SUCCESS路径调用。取消等非成功场景即使完成资源收口，其Invocation也可能持续阻止下一次任务。
+必须区分“已经验证的安全终结”与“仍未知的失败”，不能直接放宽准入。
+这属于后续多场景连续运行的代码级风险，并非H2已经发生的新数据破坏。
+本轮D2B处理边界
+- N01、N02：D2B重点分析与修复方向。
+- N03：保留D2A已有fail-closed安全约束，不得削弱。
+- N04：保持PENDING_ANDROID_VERIFICATION，不以宿主测试冒充设备通过。
+- N05：本轮先完成源码分析、终结状态设计和必要宿主测试；若需要改变D1冻结的失败终结口径，必须停止申请独立审查。
+以上均为ChatGPT独立审查备注，不是仓库历史记录或F1-A的同名NOTE。
+请在D2B研究文档中单独记录来源、状态及处理结果，不要改写旧NOTE。
+本轮仍不授权ADB、APK安装、H2现场恢复或normal重跑。M10 PENDING、三项JPEG FAIL、UI-C1冻结及M11 NOT_AUTHORIZED保持不变。
