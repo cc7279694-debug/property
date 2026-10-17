@@ -1,0 +1,34 @@
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+
+> Configure project :outsider
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :probe:preBuild UP-TO-DATE
+> Task :probe:preDebugBuild UP-TO-DATE
+> Task :probe:javaPreCompileDebug
+> Task :probe:checkDebugAarMetadata
+> Task :probe:processDebugNavigationResources
+> Task :probe:compileDebugNavigationResources
+> Task :probe:generateDebugResValues
+> Task :probe:mapDebugSourceSetPaths
+> Task :probe:generateDebugResources
+> Task :probe:compileDebugAidl FAILED
+> Task :probe:mergeDebugResources
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':probe:compileDebugAidl'.
+> A failure occurred while executing com.android.build.gradle.tasks.AidlCompile$AidlCompileRunnable
+   > java.nio.charset.MalformedInputException: Input length = 1
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 58s
+9 actionable tasks: 9 executed

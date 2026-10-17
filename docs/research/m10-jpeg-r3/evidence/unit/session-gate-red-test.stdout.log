@@ -1,0 +1,113 @@
+JUnit version 4.13.2
+.E.E.E.E.E.E.E..E.E.E.E.E..E.E.E
+Time: 0.011
+There were 15 failures:
+1) deathBeforeQueuedMatchingResultCanConvergeOnce(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.deathBeforeQueuedMatchingResultCanConvergeOnce(SessionGateTest.java:37)
+2) deathWithoutMatchingResultStaysUnknownAndCannotPrepare(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.deathWithoutMatchingResultStaysUnknownAndCannotPrepare(SessionGateTest.java:49)
+3) revocationRejectsLateSuccessAndCannotBeOverwritten(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.revocationRejectsLateSuccessAndCannotBeOverwritten(SessionGateTest.java:164)
+4) revocationAfterQueuedSuccessStillForbidsPreparation(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.revocationAfterQueuedSuccessStillForbidsPreparation(SessionGateTest.java:177)
+5) matchingResultRequiresWorkerDeathBeforePreparation(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.matchingResultRequiresWorkerDeathBeforePreparation(SessionGateTest.java:27)
+6) missingIdentityOrUnknownStatusCannotConsumeResultSlot(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.missingIdentityOrUnknownStatusCannotConsumeResultSlot(SessionGateTest.java:127)
+7) unconfirmedApplicationRoleCannotStartSession(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.unconfirmedApplicationRoleCannotStartSession(SessionGateTest.java:88)
+8) concurrentDuplicateResultsAreAcceptedAtMostOnce(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.concurrentDuplicateResultsAreAcceptedAtMostOnce(SessionGateTest.java:200)
+9) wrongUidCannotClaimSameApplicationWorker(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.wrongUidCannotClaimSameApplicationWorker(SessionGateTest.java:71)
+10) nullRevocationReasonStillRevokesPermanently(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.nullRevocationReasonStillRevokesPermanently(SessionGateTest.java:189)
+11) eachResultIdentityFieldMustMatchExactly(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.eachResultIdentityFieldMustMatchExactly(SessionGateTest.java:112)
+12) everyFailureOutcomeForbidsPreparationEvenAfterDeath(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.everyFailureOutcomeForbidsPreparationEvenAfterDeath(SessionGateTest.java:153)
+13) claimedPidMustMatchPositiveActualBinderCallerPid(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.claimedPidMustMatchPositiveActualBinderCallerPid(SessionGateTest.java:81)
+14) repeatedHandshakeCannotReplaceCurrentWorker(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.repeatedHandshakeCannotReplaceCurrentWorker(SessionGateTest.java:93)
+15) successfulComputationWithoutFdCloseCannotPrepare(com.cooper.lithic.m10r3.probe.SessionGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.hello(SessionGateTest.java:18)
+	at com.cooper.lithic.m10r3.probe.SessionGateTest.successfulComputationWithoutFdCloseCannotPrepare(SessionGateTest.java:140)
+
+FAILURES!!!
+Tests run: 17,  Failures: 15
+

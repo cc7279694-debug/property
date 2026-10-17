@@ -1,0 +1,63 @@
+{
+  "status": "BLOCKED",
+  "atUtc": "2026-10-16T15:06:41.951841+00:00",
+  "failure": "0cecd3e8-bd56-4068-8cdf-0926c28e272e: no complete report within 20 seconds; UNKNOWN",
+  "completedScenarios": [],
+  "attemptedScenarios": [
+    {
+      "kind": "case",
+      "case": "normal",
+      "runId": "0cecd3e8-bd56-4068-8cdf-0926c28e272e"
+    }
+  ],
+  "protection": {
+    "status": "PASS",
+    "productionAPKAndUIDUnchanged": true,
+    "productionPrivateMetadataUnchanged": true,
+    "deviceSettingsUnchanged": true,
+    "privateByteIntegrity": "NOT_RUN",
+    "limitation": "No private ledger/cover contents were read or copied"
+  },
+  "notRunAfterStop": {
+    "normalCases": [
+      "identities",
+      "cancel",
+      "ignore_cancel",
+      "late_success",
+      "worker_kill",
+      "unbind",
+      "rebind",
+      "fd_duplicate",
+      "stage_model",
+      "normal_finish",
+      "revoked_reserve",
+      "revoked_start",
+      "death_race",
+      "intent_replay"
+    ],
+    "faultWindows": [
+      "before_pin",
+      "after_pin",
+      "before_fd",
+      "after_fd_before_ack",
+      "before_result",
+      "after_result",
+      "before_receipt",
+      "receipt_pending",
+      "receipt_renamed",
+      "receipt_synced",
+      "before_retire",
+      "after_retire"
+    ],
+    "packageForceStop": true,
+    "outsider": true
+  },
+  "api26": "NOT_RUN",
+  "realNativeSIGSEGV": "NOT_RUN",
+  "realOOM": "NOT_RUN",
+  "LMK": "NOT_RUN",
+  "productionJPEGAssertions": "NOT_RUN; historical three FAIL unchanged",
+  "privateByteIntegrity": "NOT_RUN",
+  "noProductionAPKInstallOrPrivateContentRead": true,
+  "researchSourceOnly": true
+}

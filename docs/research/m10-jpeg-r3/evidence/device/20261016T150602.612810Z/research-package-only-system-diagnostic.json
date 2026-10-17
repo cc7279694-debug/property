@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5596",
+    "shell",
+    "logcat -d -v threadtime -s ActivityManager:V ActivityTaskManager:V '*:S' | grep -F com.cooper.lithic.m10r3.probe"
+  ],
+  "exitCode": 0,
+  "scope": "RESEARCH_PACKAGE_LINES_ONLY"
+}

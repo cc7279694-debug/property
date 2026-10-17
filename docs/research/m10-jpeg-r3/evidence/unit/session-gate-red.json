@@ -1,0 +1,45 @@
+{
+  "phase": "RED",
+  "utc": "2026-10-16T14:21:11.810677+00:00",
+  "kind": "HOST_ONLY_RESEARCH_GATE_UNIT",
+  "commands": [
+    {
+      "name": "compile",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javac.exe",
+        "--release",
+        "8",
+        "-cp",
+        "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+        "-d",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\砺石新APP\\build\\m10-jpeg-r3\\session-gate-unit\\red",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\砺石新APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\src\\main\\java\\com\\cooper\\lithic\\m10r3\\probe\\SessionGate.java",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\砺石新APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\src\\test\\java\\com\\cooper\\lithic\\m10r3\\probe\\SessionGateTest.java"
+      ],
+      "exitCode": 0,
+      "wallSeconds": 1.5309999999954016
+    },
+    {
+      "name": "test",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+        "-cp",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\砺石新APP\\build\\m10-jpeg-r3\\session-gate-unit\\red;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+        "org.junit.runner.JUnitCore",
+        "com.cooper.lithic.m10r3.probe.SessionGateTest"
+      ],
+      "exitCode": 1,
+      "wallSeconds": 0.3440000000045984
+    }
+  ],
+  "inputs": {
+    "docs\\research\\m10-jpeg-r3\\host\\probe\\src\\main\\java\\com\\cooper\\lithic\\m10r3\\probe\\SessionGate.java": {
+      "sha256": "3238e1e7616612762ece923d360edebd3907918a86b66ddb5d73bb9e3822770b",
+      "bytes": 1037
+    },
+    "docs\\research\\m10-jpeg-r3\\host\\probe\\src\\test\\java\\com\\cooper\\lithic\\m10r3\\probe\\SessionGateTest.java": {
+      "sha256": "1d873accfb815bb8f519ac0b5bb3819fefee9cfa1adc8d022201530e48002b61",
+      "bytes": 8992
+    }
+  }
+}

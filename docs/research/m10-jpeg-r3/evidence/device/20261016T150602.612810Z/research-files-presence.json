@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5596",
+    "shell",
+    "run-as",
+    "com.cooper.lithic.m10r3.probe",
+    "sh",
+    "-c",
+    "'if [ -d files ]; then find files -maxdepth 2 -type f; else echo NO_RESEARCH_FILES_DIRECTORY; fi'"
+  ],
+  "exitCode": 0,
+  "stdout": "NO_RESEARCH_FILES_DIRECTORY\r\n",
+  "stderr": "",
+  "kind": "READ_ONLY_RESEARCH_PACKAGE_DIAGNOSTIC"
+}

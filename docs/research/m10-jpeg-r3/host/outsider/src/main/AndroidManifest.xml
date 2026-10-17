@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <queries><package android:name="com.cooper.lithic.m10r3.probe"/></queries>
+    <application android:label="R3 different UID binding probe" android:allowBackup="false" android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        <activity android:name=".OutsiderActivity" android:exported="true"/>
+    </application>
+</manifest>

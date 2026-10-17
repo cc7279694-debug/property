@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5596",
+    "shell",
+    "ps -A -o UID,PID,NAME | awk '$3 == \"com.cooper.lithic.m10r3.probe\" || $3 == \"com.cooper.lithic.m10r3.probe:jpeg_worker\" {print}'"
+  ],
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "",
+  "kind": "READ_ONLY_RESEARCH_PACKAGE_DIAGNOSTIC"
+}

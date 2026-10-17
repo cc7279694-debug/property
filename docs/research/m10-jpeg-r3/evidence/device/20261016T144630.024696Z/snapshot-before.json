@@ -1,0 +1,45 @@
+{
+  "atUtc": "2026-10-16T14:46:32.108015+00:00",
+  "name": "before",
+  "device": {
+    "serial": "emulator-5596",
+    "avd": "Lithic_M01_API_36",
+    "api": 36
+  },
+  "productionPackage": {
+    "package": "com.cooper.lithic.debug",
+    "present": true,
+    "uid": 10216,
+    "apks": [
+      {
+        "codePath": "/data/app/~~Hfx3ccRDZ8SRp7KGvW7MJA==/com.cooper.lithic.debug-0iLZLprup1DPNDXh1HN2XQ==/base.apk",
+        "sha256": "4bfd57231a9028ed5c2cd6961e2c59756936b688c6bf90159d58743301889c46"
+      }
+    ]
+  },
+  "productionPrivateMetadata": {
+    "status": "PASS",
+    "method": "find + stat only; sorted aggregate; no private content read",
+    "roots": [
+      "files",
+      "no_backup",
+      "databases",
+      "shared_prefs"
+    ],
+    "recordCount": 188,
+    "aggregateSHA256": "326e7f5576fdb03ba0b57012ada3c12b06adf147726946e9f8df2b856d4a8a83",
+    "rawPathsArchived": false,
+    "privateByteIntegrity": "NOT_RUN",
+    "limitation": "Metadata equality is not byte-level ledger/cover integrity proof"
+  },
+  "settings": {
+    "font_scale": "1.0",
+    "user_rotation": "0",
+    "accelerometer_rotation": "1",
+    "night_mode_setting": "1",
+    "night_mode_effective": "Night mode: no",
+    "wm_size": "Physical size: 1080x1920",
+    "wm_density": "Physical density: 420"
+  },
+  "privateByteIntegrity": "NOT_RUN"
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.SessionGateTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-16T14:56:31.807Z" hostname="WHOCARE" time="0.017">
+  <properties/>
+  <testcase name="deathBeforeQueuedMatchingResultCanConvergeOnce" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.002"/>
+  <testcase name="deathWithoutMatchingResultStaysUnknownAndCannotPrepare" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="revocationRejectsLateSuccessAndCannotBeOverwritten" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="revocationAfterQueuedSuccessStillForbidsPreparation" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="matchingResultRequiresWorkerDeathBeforePreparation" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="missingIdentityOrUnknownStatusCannotConsumeResultSlot" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.001"/>
+  <testcase name="unconfirmedApplicationRoleCannotStartSession" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="deadOrRevokedSessionCannotHandshakeAgain" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="concurrentDuplicateResultsAreAcceptedAtMostOnce" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.004"/>
+  <testcase name="wrongUidCannotClaimSameApplicationWorker" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="nullRevocationReasonStillRevokesPermanently" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.001"/>
+  <testcase name="eachResultIdentityFieldMustMatchExactly" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="everyFailureOutcomeForbidsPreparationEvenAfterDeath" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="resultBeforeHandshakeCannotAuthorizePreparation" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="claimedPidMustMatchPositiveActualBinderCallerPid" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <testcase name="repeatedHandshakeCannotReplaceCurrentWorker" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.002"/>
+  <testcase name="successfulComputationWithoutFdCloseCannotPrepare" classname="com.cooper.lithic.m10r3.probe.SessionGateTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

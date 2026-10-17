@@ -1,0 +1,18 @@
+package com.cooper.lithic.m10r3.probe;
+
+/** Research-only compileable starting stub; the first behavioral run must fail. */
+public final class SessionGate {
+    public SessionGate(int protocol, String nonce, String attempt, String generation, String sha,
+            long size, int hostUid) {}
+    public synchronized boolean handshake(int callingUid, int callingPid, int claimedPid,
+            int workerUid, boolean roleReady) { return false; }
+    public synchronized boolean result(int protocol, String nonce, String attempt, String generation,
+            String sha, long size, String status, boolean fdClosed) { return false; }
+    public synchronized void revoke(String reason) {}
+    public synchronized void died() {}
+    public synchronized boolean canPrepare() { return false; }
+    public synchronized boolean isRevoked() { return false; }
+    public synchronized boolean isDead() { return false; }
+    public synchronized int acceptedResults() { return 0; }
+    public synchronized String status() { return "PENDING"; }
+}
