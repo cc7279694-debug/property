@@ -1,8 +1,15 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；H2-D2B-A1方案A研究代码与离线验证READY_FOR_REVIEW，独立验收及实际Android验证PENDING；无设备操作）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；A2隔离API26无命令冷启动因缺少已安装API26镜像BLOCKED；A1已获用户转交的离线独立PASS WITH NOTES，Android验证仍PENDING；无设备操作）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-H2-D2B-A2 — BLOCKED**：用户正式授权仅检查独立API26环境，并只在已安装镜像且隔离条件通过后进行一次无command/case/runId的Host启动。来源`971f742452422ce6b31462123c351d112eb48101`经本地/远端核对一致，新分支`research/m10-jpeg-h2-d2b-a2-api26-smoke`，独立短路径worktree `E:/CODEX/.codex/worktrees/lithic-a2-api26/砺石新APP`。A1的独立结论由本次用户转交：PASS WITH NOTES，仅离线代码与研究APK，不扩大为Android通过。
+- **A2实际SDK检查**：锁定A1 SDK只有API36与37.0的google_apis/x86_64 image；默认Android SDK无system-images；Process/User/Machine的ANDROID_HOME/ANDROID_SDK_ROOT六变量均未配置。package.xml/source.properties的API字段、字节与SHA及真实退出0的环境查询已保存。已检查根目录内没有API26镜像，立即停止环境推进，未下载/升级/切换镜像。
+- **A2未执行边界**：0新AVD创建/启动、0ADB、0安装/Activity启动。未证明运行环境隔离，不写隔离PASS；Host启动/角色/READY/ANR日志/UID及研究文件观察均NOT_RUN，不是运行后UNKNOWN或FAIL。A1 APK本轮实物复核NOT_RUN，仅引用原审计。Worker早期onBind本就未授权，继续NOT_RUN；身份门禁Android验证PENDING，watchdog Android最坏响应历史UNKNOWN，本轮未测试。
+- **A2保护与交接**：原API36 AVD及H2 stage完全未访问，不宣称私人字节/188项元数据一致已验证。研究/正式代码、测试、APK、依赖及原失败证据不改，本轮没有重跑JUnit/Lint/构建。只推A2分支后停止，等待ChatGPT独立验收；[执行](research/M10_JPEG_H2_D2B_A2_EXECUTION.md)、[结果/风险](research/M10_JPEG_H2_D2B_A2_RESULTS.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-H2-D2B-A2.md)。全部D2A-N01～N05和历史NOTE、H2 FAIL/UNKNOWN、R3完整生命周期BLOCKED、M10 PENDING/三JPEG FAIL、UI-C1冻结、M11 NOT_AUTHORIZED保持。
+
+以下A1及更早段落保留历史交付；A1独立PASS WITH NOTES来源及当前A2环境阻塞以上节为准，原报告/测试结果不回写：
 
 - **M10-R3-F1B-H2-D2B-A1 — READY_FOR_REVIEW**：用户转交D2B备注补录PASS WITH NOTES，明确批准API26/27方案A。锁定来源`3792917c7938c2ec78789df0a53a27215f4ee099`，独立worktree及分支`research/m10-jpeg-h2-d2b-api26-a1`，先以`2557b28`提交范围再实施。只做研究Host/Support最小修复、宿主回归与研究APK构建，未调用ADB、操作设备、安装/运行APK或恢复H2。
 - **A1身份边界**：Support/API26-27必要main角色入口允许最多256字节/proc读取；同步角色观测本身不足以READY、不设置owner、不等待后台。API28+framework提示与后台/proc交叉核验分开；Binder/非main和Host claim要求完整READY。新gate对冲突/异常sticky失败，在飞同步观测未确认不得READY；后台流程完整完成且最后一致观测结束后才可统一发布READY。100ms为返回后拒绝策略，非syscall硬期限；真实主线程耗时、ANR和Android调度仍NOT_RUN。

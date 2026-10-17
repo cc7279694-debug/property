@@ -1,0 +1,137 @@
+{
+  "status": "BLOCKED",
+  "reason": "NO_INSTALLED_API26_IMAGE_IN_CONFIGURED_SDK_ROOTS",
+  "startedUtc": "2026-10-17T14:55:52.615860+00:00",
+  "endedUtc": "2026-10-17T14:55:53.112597+00:00",
+  "invocation": [
+    "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-a2-api26\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2-api26-smoke\\inspect_sdk.py"
+  ],
+  "scriptSHA256": "d33bc8aed55065c0214b42289121758a1b3df6014cbf617be33cb2a5437cf5e3",
+  "a1SdkSource": {
+    "path": "docs\\research\\m10-jpeg-h2-d2b-api26-a1\\evidence\\build-runs\\20261017T142151.230105Z\\result.json",
+    "bytes": 1530,
+    "sha256": "604c2935c9e336d6fb742d16f87791ea09dea021084f9e9c00ca5f273b6f978d"
+  },
+  "environmentQuery": {
+    "argv": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "$rows=@(); foreach($scope in @('Process','User','Machine')) { foreach($name in @('ANDROID_HOME','ANDROID_SDK_ROOT')) { $rows += [PSCustomObject]@{scope=$scope;name=$name;value=[Environment]::GetEnvironmentVariable($name,$scope)} } }; $rows | ConvertTo-Json -Depth 4"
+    ],
+    "exitCode": 0,
+    "stdout": {
+      "bytes": 629,
+      "sha256": "713ba2e48cd1651136d6d8e6381003fdd652866b4b6d148a12f7b5c16a547872"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "environment": [
+    {
+      "scope": "Process",
+      "name": "ANDROID_HOME",
+      "value": null
+    },
+    {
+      "scope": "Process",
+      "name": "ANDROID_SDK_ROOT",
+      "value": null
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_HOME",
+      "value": null
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_SDK_ROOT",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_HOME",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_SDK_ROOT",
+      "value": null
+    }
+  ],
+  "sdkRoots": [
+    {
+      "origin": "A1 recorded SDK",
+      "configuredRoot": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk",
+      "resolvedRoot": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk",
+      "exists": true,
+      "systemImagesExists": true,
+      "api26DirectoryExists": false,
+      "packages": [
+        {
+          "metadata": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64\\package.xml",
+          "integrity": {
+            "bytes": 19301,
+            "sha256": "86953beccd209f58673d73d58c44ae162c6bfba3ee6f373a25038d9a9a539841"
+          },
+          "packagePaths": [
+            "system-images;android-36;google_apis;x86_64"
+          ],
+          "apiLevels": [
+            "36"
+          ],
+          "sourceProperties": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64\\source.properties",
+          "sourcePropertiesIntegrity": {
+            "bytes": 356,
+            "sha256": "edfc961bd9128fbfea84b4c61aac3a72ea270ca286425e22b3ed01ac759b1fc3"
+          },
+          "sourcePropertiesApiLines": [
+            "AndroidVersion.ApiLevel=36"
+          ]
+        },
+        {
+          "metadata": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\system-images\\android-37.0\\google_apis\\x86_64\\package.xml",
+          "integrity": {
+            "bytes": 19419,
+            "sha256": "bb564bbd70e0de0889a4ebb941cfb74591e445cfedafa1b02cf454a2986deab4"
+          },
+          "packagePaths": [
+            "system-images;android-37.0;google_apis;x86_64"
+          ],
+          "apiLevels": [
+            "37.0"
+          ],
+          "sourceProperties": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\system-images\\android-37.0\\google_apis\\x86_64\\source.properties",
+          "sourcePropertiesIntegrity": {
+            "bytes": 403,
+            "sha256": "bf15b0b43bd0155b258b3756cf523dd917735042633edbb645b34c285a45832d"
+          },
+          "sourcePropertiesApiLines": [
+            "AndroidVersion.ApiLevel=37.0"
+          ]
+        }
+      ]
+    },
+    {
+      "origin": "Default Android SDK",
+      "configuredRoot": "C:/Users/CDD/AppData/Local/Android/Sdk",
+      "resolvedRoot": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\Android\\Sdk",
+      "exists": true,
+      "systemImagesExists": false,
+      "api26DirectoryExists": false,
+      "packages": []
+    }
+  ],
+  "api26ImagePresent": false,
+  "sdkmanagerInvoked": false,
+  "imageDownloadedOrUpgraded": false,
+  "avdCreatedOrModified": false,
+  "adbInvoked": false,
+  "appsInstalledOrLaunched": false,
+  "oldH2StageAccessed": false
+}

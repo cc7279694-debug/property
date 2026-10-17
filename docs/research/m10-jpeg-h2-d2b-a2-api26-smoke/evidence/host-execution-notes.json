@@ -1,0 +1,32 @@
+{
+  "scope": "Host Git/documentation observations; not Android runtime evidence",
+  "initialExploration": [
+    {
+      "exitCode": 1,
+      "detail": "Combined read-only SDK listing ended with Get-Item of absent ANDROID_HOME/ANDROID_SDK_ROOT variables. Dedicated Process/User/Machine query later returned exit 0 and all six values null."
+    },
+    {
+      "exitCode": 1,
+      "detail": "Combined Git/source read ended with absent source worktree local.properties. The SDK path was instead taken from the locked A1 actual build result.json; no path was fabricated."
+    }
+  ],
+  "worktreeCreation": {
+    "firstOperationId": "bcbf240a-5f12-4781-9bbb-cea592610368",
+    "firstResult": "FAILED",
+    "firstDirectoryName": "m10-jpeg-h2-d2b-a2-api26-smoke",
+    "failure": "Filename too long for two inherited BindingFailureFenceIntegrationTest XML paths; fatal: Could not reset index file to revision HEAD",
+    "failedTargetExistsAfterToolFailure": false,
+    "failedWorktreeListedAfterToolFailure": false,
+    "secondOperationId": "e441e413-4d84-45cf-a7f4-63ce658a3f30",
+    "secondResult": "COMPLETED",
+    "secondDirectoryName": "lithic-a2-api26",
+    "existingWorkspaceResetOrOverwritten": false,
+    "globalSettingsChanged": false
+  },
+  "avdAttempts": 0,
+  "adbCalls": 0,
+  "apkInstallAttempts": 0,
+  "activityLaunchAttempts": 0,
+  "h2StageAccessed": false,
+  "environmentBlocker": "API26 image absent in checked configured/default SDK roots"
+}
