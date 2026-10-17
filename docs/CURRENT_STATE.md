@@ -1,12 +1,13 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；本轮F0在设备可用性预检处停止）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；F0获准启动原AVD后的补充交付）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
 
-- **M10-R3-F0 Attach专项诊断 — BLOCKED / UNRESOLVED，等待ChatGPT独立审查**：用户正式授权最小非破坏性诊断，来源R3 `17b2cb40d8f3b95136f3d43e5c91cd7aee7b8e5d`；独立`research/m10-jpeg-strict-r3-f0`、worktree `E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f0/砺石新APP`。固定`emulator-5596 get-state`退出1、78ms，not found；devices清单为空，Windows指定进程名查询仅adb PID5568。当前设备不可访问EVIDENCED，历史attach根因仍UNKNOWN；不采用Host源码确诊或模拟器/ART已定位的结论。
-- **F0实际范围**：仅新诊断脚本预检与只读可用性证据，Host/Outsider各0次启动；未安装/打包/修改研究APK或正式App，未运行原29场景、JUnit/Lint/Gradle，未启动/重启/重建/清理AVD或写系统设置。当前三包SHA/UID/Manifest、API/资源/进程、正式数据和设置前后保护快照/私有字节一致性均NOT_RUN，不能用R3历史值重新授PASS。交接：[诊断](research/M10_JPEG_R3_F0_DIAGNOSIS.md)、[时间线](research/M10_JPEG_R3_F0_TIMELINE.md)、[评估](research/M10_JPEG_R3_F0_ROOT_CAUSE_ASSESSMENT.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-R3-F0.md)。
-- **用户转交R3独立结论**：研究工程与有限测试交付PASS WITH NOTES；Worker生命周期BLOCKED；B1生产NO-GO。另有`runCase()`旧stage只核对guard、尚未强制旧attempt恢复/撤销/清理的静态NOTE，源码确认但本轮不修复、不归因attach。只推F0后停止，原AVD上线/连接诊断及任何启动重试均需另行授权；不进入其他生命周期/资源研究或M11。
+- **M10-R3-F0 Attach专项诊断 — READY_FOR_REVIEW / D INTERMITTENT_RECOVERED，等待ChatGPT独立审查**：在用户另行明确批准“允许仅启动原模拟器”后，仅启动既有AVD并实核serial/AVD/API36、boot、实际三包SHA/UID及私有worker Manifest。未重建/wipe/清数据/改设置/安装或修改APK。Host仅1次裸启动，PID3928/UID10218，取得Zygote fork、am_proc_bound、APPLICATION_ROLE/trace和Activity显示（1572ms）；同锁定APK此次启动成功，不关闭原两次attach UNKNOWN。
+- **F0对照与NOTE**：Outsider仅1次启动，PID4062/UID10219，系统明确拒绝绑定非导出UID10218 Worker；未观察到worker。辅助Activity退出报ServiceConnectionLeaked，堆栈指向OutsiderActivity.java:14，保留原堆栈与最小待批清理提案，未修复；拒绝实证不等于辅助流程零错误。runCase旧stage guard-only静态NOTE继续保留。原29场景、API26/native/OOM/LMK、JUnit/Lint/Gradle和正式App构建均NOT_RUN，不将F0观察记入R3案例。
+- **F0资源/保护与限制**：三包SHA与基准一致（UID10218/10219/10216）；正式APK、188条私有元数据聚合及主题/字体/旋转/wm前后一致，私人字节一致性NOT_RUN。短时CPU忙碌约0.928%，load均值随启动逐步下降；PSI权限被拒，原组合cat退出1保留，不宣称完整资源健康/上界。日志限实际研究PID、核心系统事件及4000行窗口，完整堆栈可审阅，仍有过滤/缺行局限。无私人内容读取/复制、无完整设备日志/APK提交。原AVD保持在线，研究Host/Outsider进程未被终止，未见worker。
+- **本次交接与来源**：从首轮F0干净且远端一致的ef25b4d继续同一独立分支/工作区；原R3锁定17b2cb4、首次不可访问证据和旧checkpoint不变。交接：[诊断](research/M10_JPEG_R3_F0_DIAGNOSIS.md)、[时间线](research/M10_JPEG_R3_F0_TIMELINE.md)、[评估](research/M10_JPEG_R3_F0_ROOT_CAUSE_ASSESSMENT.md)、[补充checkpoint](checkpoints/2026-10-17-M10-JPEG-R3-F0-resume.md)。用户转交R3研究工程独立PASS WITH NOTES仅限原交付；生命周期BLOCKED，B1生产NO-GO，M10仍PENDING/3JPEG FAIL，UI-C1冻结、M11未授权。只推F0后停止，不自授研究或生产验收，不开始辅助修复、旧attempt收口或后续场景。
 
 以下R3停止点及更早状态为继承事实；F0未替代其失败/UNKNOWN或扩大验收。
 
@@ -80,9 +81,9 @@
 
 ## Git
 
-- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f0/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；仅提交推送`research/m10-jpeg-strict-r3-f0`，起点R3 `17b2cb40d8f3b95136f3d43e5c91cd7aee7b8e5d`，非main。原R3工作区/分支保留17b2cb4，R2保留2912601、R1保留2cdad4a、R0保留c4cd90b；原`E:/CODEX/砺石新APP`保持M10来源分支/4159682，原UI工作区保持`feat/ui-c1-visual-redesign`/`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`；不修改这些分支或工作目录。最终SHA/远端一致性取Git回执，避免递归自引用。
+- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f0/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；仅提交推送`research/m10-jpeg-strict-r3-f0`，起点R3 `17b2cb40d8f3b95136f3d43e5c91cd7aee7b8e5d`，本次补充从首轮F0 `ef25b4d403be026511b036890ccfd3961eb651c5`继续，非main。原R3工作区/分支保留17b2cb4，R2保留2912601、R1保留2cdad4a、R0保留c4cd90b；原`E:/CODEX/砺石新APP`保持M10来源分支/4159682，原UI工作区保持`feat/ui-c1-visual-redesign`/`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`；不修改这些分支或工作目录。最终SHA/远端一致性取Git回执，避免递归自引用。
 - M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`与冻结回写57de897为历史依据。M10原交付及本次独立复核基准 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`；补充验证提交仅新增测试/必要合成资产/证据及当前交接，不是生产修复，最终SHA与推送结果由Git日志/最终回执核对，避免递归引用。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥、私人原图或真实个人数据。
 
 ## Next Recommended Task
 
-**BLOCKED — M10-R3-F0 Attach Diagnosis。停止等待ChatGPT独立审查设备不可访问的预检结果。**需要新的明确授权使原AVD恢复在线/排查连接，之后才继续受限F0一次无参数Host及有条件的Outsider对照。当前历史attach根因UNKNOWN；原R3生命周期BLOCKED、B1生产NO-GO，旧stage静态NOTE不修复。M10 PENDING／3 JPEG FAIL、UI-C1冻结、M11 NOT_AUTHORIZED及全部历史NOTES/未执行边界保持。
+**READY_FOR_REVIEW — M10-R3-F0 Attach Diagnosis。停止等待ChatGPT独立审查此次启动链、日志/资源局限与辅助连接泄漏NOTE。**本次D INTERMITTENT_RECOVERED不能解释历史失败；原两次UNKNOWN保留，不能把AVD重新上线或移除extras单独归因。辅助APK最小修复、旧attempt恢复/撤销/清理及R3生命周期须另行授权；M10 PENDING/3JPEG FAIL、UI-C1冻结、M11 NOT_AUTHORIZED及全部旧NOTES/未执行边界保持。

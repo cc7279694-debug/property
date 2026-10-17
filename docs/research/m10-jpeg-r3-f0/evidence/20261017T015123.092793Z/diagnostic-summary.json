@@ -1,0 +1,63 @@
+{
+  "scope": "F0_DIAGNOSIS_ONLY",
+  "status": "READY_FOR_REVIEW",
+  "classification": "D_INTERMITTENT_RECOVERED",
+  "classificationEvidence": "Same locked Host APK reached am_proc_bound, APPLICATION_ROLE and Activity display in one bare launch",
+  "historicalAttachRootCause": "UNKNOWN",
+  "historicalTwoR3UnknownsPreserved": true,
+  "r3OriginalMatrixUnchanged": {
+    "pass": 0,
+    "unknown": 1,
+    "notRun": 28
+  },
+  "host": {
+    "launches": 1,
+    "pid": 3928,
+    "uid": 10218,
+    "amExit": 0,
+    "forkEpoch": 1792202164.624,
+    "procStartEpoch": 1792202164.632,
+    "boundEpoch": 1792202164.83,
+    "applicationTraceWallMs": 1792202164958,
+    "displayEpoch": 1792202166.078,
+    "displayTimeMs": 1572,
+    "commandWallMs": 1750.0,
+    "intentExtras": []
+  },
+  "outsider": {
+    "launches": 1,
+    "pid": 4062,
+    "uid": 10219,
+    "amExit": 0,
+    "bindingDenied": true,
+    "serviceConnectionLeakedObserved": true,
+    "leakRepair": "NOT_IMPLEMENTED_REQUIRES_NEW_AUTHORIZATION"
+  },
+  "worker": "NOT_OBSERVED_IN_PROCESS_SAMPLES_OR_RETAINED_LOGS; not lifecycle proof",
+  "protection": {
+    "productionAPKAndUIDUnchanged": true,
+    "productionPrivateMetadataUnchanged": true,
+    "deviceSettingsUnchanged": true,
+    "privateByteIntegrity": "NOT_RUN",
+    "status": "PASS"
+  },
+  "commands": {
+    "count": 103,
+    "exit0": 91,
+    "exit1": 12,
+    "meaning": "Command returns, not test pass counts"
+  },
+  "limitations": [
+    "Authorized AVD startup and removal of Intent extras both differ from historical attempts; causation unresolved",
+    "Kernel pressure files denied; partial cat exit1 retained",
+    "Bounded 4000-line log windows; 3 Host and 2 outsider mixed-package lines initially excluded",
+    "Host scope subsequently limited to target PID/core system actors; 9 non-core actor lines kept only outside Git",
+    "No API26, real native crash/OOM/LMK, old stage repair, R3 lifecycle cases, product tests or builds"
+  ],
+  "sourceNote": "Prior runCase guard-only closure gap remains static NOTE, not attach root cause",
+  "productionStatus": {
+    "M10": "PENDING / three JPEG FAIL",
+    "UI-C1": "ACCEPTED / FROZEN \u2014 PASS WITH NOTES",
+    "M11": "NOT_AUTHORIZED"
+  }
+}

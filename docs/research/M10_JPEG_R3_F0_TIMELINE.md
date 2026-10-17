@@ -1,5 +1,47 @@
 # M10-R3-F0 — 实际诊断时间线
 
+## 当前补充时间线 — 2026-10-17
+
+**READY_FOR_REVIEW / D INTERMITTENT_RECOVERED**；以下UTC取自设备epoch或宿主启动登记，北京时间加8小时，未写时钟。
+
+| UTC / 北京时间 | 事件 | 实证 |
+|---|---|---|
+| 01:51:36.914 / 09:51:36.914 | 按用户新批准启动原AVD | 既有ini与数据，launcher PID1044；不是boot完成声明 |
+| 01:51:53～01:52:20 | 冷启动get-state多次offline | 10次退出1，保留；不发App启动 |
+| 01:52:24以后 | ADB出现device | boot属性当时仍空，不提前授PASS |
+| 01:55:14.730 / 09:55:14.730 | boot_completed实读1 | 后续身份/APK/保护预检通过，无旧Host/worker |
+| 01:56:04.552 / 09:56:04.552 | 唯一Host START | bare组件，无extras |
+| 01:56:04.624 / .632 | Zygote fork / AM Start proc | PID3928，UID10218 |
+| 01:56:04.830 | am_proc_bound | Start proc至bound约198ms |
+| 01:56:04.958（日志.959） | APPLICATION_ROLE与私有trace | HOST、syntheticOwner=true，不是正式AppContainer门禁 |
+| 01:56:05.501 / .535 | onCreate / onResume事件 | 目标PID确实到达Activity生命周期 |
+| 01:56:06.078 | Displayed | TotalTime1572ms，am命令wall1750ms，退出0 |
+| 01:58:07.211 | 唯一Outsider START | 无实验extras，UID10219 |
+| 01:58:07.287 / .297 / .388 | fork / Start proc / bound | PID4062；已到达进程绑定 |
+| 01:58:07.860 / .922 | 系统拒绝 / 应用记录bindingDenied | 私有Worker跨UID绑定被拒；不授R3案例PASS |
+| 01:58:08.870 | ActivityThread ServiceConnectionLeaked | 独立辅助代码NOTE，堆栈指向OutsiderActivity.java:14；未修复 |
+| 01:58:37.414 | 结束进程采样 | Host3928/Outsider4062仍在，未见worker；未终止进程 |
+
+原件：[Host核心日志](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/host-core-system.log)、[Host trace](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/host-research-traces.log)、[Outsider日志与完整关联堆栈](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/outsider-scoped-system.log)、[对照结果](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/outsider-result-read.log)、[完整命令](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/adb-commands.jsonl)。Host原始启动登记的49行是初筛计数，发布版本40行及9行外移说明见[筛选登记](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/host-core-filter.json)，不是删改原R3日志。
+
+### 当前分层结果
+
+| 项目 | F0实际结果/边界 |
+|---|---|
+| 原AVD/API36/三包实际SHA与UID/私有Manifest | PASS（当前设备核对） |
+| 一次裸Host绑定/Application/Activity显示 | PASS（仅F0启动） |
+| 一次Outsider绑定/私有Service拒绝 | 拒绝事实PASS；辅助Activity有ServiceConnectionLeaked NOTE |
+| 资源与系统观察 | MEASURED；load均值偏高但短时近空闲，PSI拒绝，ART全状态UNKNOWN |
+| 正式APK、私有元数据、设置保护 | PASS（前后比较），私人字节一致性NOT_RUN |
+| Host/worker双进程会话/FD/pin/终止/恢复 | NOT_RUN；无worker实例，不扩大为架构通过 |
+| API26/native fatal/OOM/LMK/原29/产品测试/构建 | NOT_RUN |
+
+分类D只表示这次能够启动；AVD从离线被正常启动、Intent从历史带extras变为裸启动，两个条件都变了，不能单独归因。历史两次attach UNKNOWN、R3 0PASS/1UNKNOWN/28NOT_RUN保持。
+
+---
+
+## 首次交付历史时间线（ef25b4d）
+
 日期：2026-10-17。**BLOCKED**。只有Windows侧ADB可用性证据；没有新的Android进程、attach或应用初始化时间线。
 
 配套：[诊断](M10_JPEG_R3_F0_DIAGNOSIS.md) · [评估](M10_JPEG_R3_F0_ROOT_CAUSE_ASSESSMENT.md)。

@@ -1,5 +1,37 @@
 # M10-R3-F0 — 根因分级与最小后续建议
 
+## 当前补充结论 — D INTERMITTENT_RECOVERED
+
+2026-10-17。**READY_FOR_REVIEW — M10-R3-F0 Attach Diagnosis**。用户另行批准仅启动原AVD后，同一锁定Host APK一次无参数启动取得fork、am_proc_bound、APPLICATION_ROLE/trace与Activity显示完整链。**EVIDENCED是这次启动成功；原两次失败的根因仍UNKNOWN。**
+
+| 指定分类 | 当前判定 |
+|---|---|
+| A DEVICE_OR_RUNTIME_SUSPECTED | 对历史根因仍UNKNOWN。最初设备不可访问已实证且经批准上线；当前负载/权限观察不足证明历史Zygote/ART调度故障 |
+| B RESEARCH_HOST_SPECIFIC_SUSPECTED | 目前无持续Host特异性失败证据，不能用本次成功反推所有Host路径无缺陷 |
+| C HOST_CODE_DEFECT_CONFIRMED | 历史attach致因未确认。另有辅助Outsider资源清理缺陷实证，不能混为Host attach根因 |
+| D INTERMITTENT_RECOVERED | **EVIDENCED，采用本类**：同APK裸启动绑定与Application/Activity成功 |
+| E UNRESOLVED | 历史根因仍未解决；首次设备不可访问停止点保留，不再作为当前设备状态 |
+
+当前与历史同时有两项差异：经用户批准从停止状态启动原AVD，且启动Intent无原run/case等extras。未隔离单个变量，没有充分依据说“模拟器重启修复了bug”“command参数导致超时”或“Host源码已被证明正确”。也未更改等待阈值、工具链、签名、APK或App源码。
+
+### 新辅助代码NOTE：ServiceConnectionLeaked
+
+Outsider进程已完成系统attach（am_proc_bound），系统明确拒绝非导出Worker的跨UID访问，随后Activity销毁时出现`android.app.ServiceConnectionLeaked`，堆栈指向`OutsiderActivity.onCreate():14`。这是**EVIDENCED的辅助Activity连接注册清理问题**；没有看到Worker连接成功或实例，不能将异常文字“originally bound here”解读为系统越权绑定成功。对照App不是纯启动基线，更不是零错误通过。
+
+**只提案、不实施：**若另行批准辅助APK最小修复，将ServiceConnection引用置于完整清理路径可见的作用域，明确拒绝/异常/成功后的解注册责任，验证拒绝路径不残留Activity注册；不得仅换Application Context、吞异常或删除告警来冒充资源清理。精确API行为和异常分类须再核对并用同一拒绝场景复验。范围只限Outsider helper，不改变Host/Worker协议、不重新安装正式App，不增加其他实验。
+
+用户原`runCase()`旧stage只查guard、未强制恢复/撤销/清理的静态NOTE仍保留，尚未修复或运行；它与本次辅助告警和历史attach超时均没有已证因果关系。
+
+### 后续边界
+
+本轮设备实验已结束，不再次启动、不执行原29场景。先等待ChatGPT独立审查这次启动链、资源/日志局限和辅助NOTE。若继续，需另行批准最小辅助修复及旧attempt收口，再申请R3生命周期范围；Host本次成功不自动打开后续授权。
+
+**R3 Worker生命周期仍BLOCKED、B1生产NO-GO、M10 PENDING/三项JPEG FAIL、UI-C1冻结PASS WITH NOTES、M11 NOT_AUTHORIZED。**原两次UNKNOWN、R1 120秒UNKNOWN、API26与native/OOM/LMK等未运行事项保持。这里只提交研究结果，不授ACCEPTED/FROZEN。原F0不可访问证据和旧checkpoint完整保留如下。
+
+---
+
+## 首次交付历史评估（ef25b4d）
+
 2026-10-17。**BLOCKED — M10-R3-F0 Attach Diagnosis**。当前可定位到“授权ADB目标不可访问”，无法再定位历史Host attach失败。
 
 [诊断与来源](M10_JPEG_R3_F0_DIAGNOSIS.md) · [实际时间线](M10_JPEG_R3_F0_TIMELINE.md)。

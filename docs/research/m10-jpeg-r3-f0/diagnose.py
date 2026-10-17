@@ -85,19 +85,25 @@ class Diagnostic(S.Supervisor):
             # Discover target child IDs from package-bearing system events before PID filtering.
             if any(pkg in msg for pkg in packages):
                 for q in re.findall(r'(?:Start proc |Killing |ProcessRecord\{\w+ )(\d+)',msg):pids.add(int(q))
-                if pid not in [4251] and tag in ('LITHIC_R3','AndroidRuntime'):pids.add(pid)
+                if tag in ('LITHIC_R3','AndroidRuntime'):pids.add(pid)
         for line in raw.stdout.decode('utf-8','replace').splitlines():
             m=pattern.match(line)
             if not m:continue
             epoch=float(m[1]); pid=int(m[2]); tag=m[5].strip(); msg=m[6]
             if epoch < start_epoch-0.25:continue
-            keep=pid in pids or any(pkg in msg for pkg in packages)
+            system_tags={'ActivityManager','ActivityTaskManager','am_proc_start','am_proc_bound',
+                         'am_proc_died','am_kill','wm_create_activity','wm_restart_activity',
+                         'wm_set_resumed_activity','wm_activity_launch_time'}
+            keep=pid in pids or (tag in system_tags and any(pkg in msg for pkg in packages))
             if not keep and tag in ('Zygote','zygote','zygote64','art','libc','DEBUG','am_proc_start','am_proc_died','am_kill'):
                 keep=any(re.search(r'(?<!\d)'+str(q)+r'(?!\d)',msg) for q in pids)
             if keep:
                 # Never export a line that also names another Android application package.
                 other=re.findall(r'\b(?:com|org|net)\.[A-Za-z0-9_.]+',msg)
-                if any(not any(x.startswith(pkg) for pkg in packages) for x in other):
+                # Framework/library stack class names are not other application identities.
+                framework=('com.android.internal.','com.android.server.','com.android.org.',
+                           'org.json.','org.xml.','org.apache.')
+                if any(not x.startswith(tuple(packages)+framework) for x in other):
                     dropped+=1;continue
                 selected.append(line);seen.append(epoch)
         text='\n'.join(selected)+ ('\n' if selected else '')
@@ -126,7 +132,7 @@ def preflight(d):
     code=pkgs[S.PROBE]['apks'][0]['codePath']
     raw=d.adb('exec-out','cat',code,label='read-installed-probe-APK-for-manifest',private_metadata=True)
     if hashlib.sha256(raw.stdout).hexdigest()!=EXPECTED[S.PROBE]:raise S.StopExperiment('APK read identity mismatch')
-    scratch=Path('E:/CODEX/.codex/research-build/m10-r3-f0')/d.output.name
+    scratch=Path('E:/CODEX/.codex/research-build/m10-r3-f0')/d.output.name/'manifest-audit'
     scratch.mkdir(parents=True,exist_ok=False); apk=scratch/'installed-probe.apk';apk.write_bytes(raw.stdout)
     aapt=S.SDK/'build-tools/36.0.0/aapt2.exe'
     m=d.command([str(aapt),'dump','xmltree',str(apk),'--file','AndroidManifest.xml'],label='actual-installed-manifest')

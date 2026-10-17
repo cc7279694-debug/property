@@ -1,0 +1,60 @@
+         1792202287.208   763  1949 I wm_create_activity: [0,231971970,2968,com.cooper.lithic.m10r3.outsider/.OutsiderActivity,NULL,NULL,NULL,268435456]
+         1792202287.211   763  1949 I ActivityTaskManager: START u0 {flg=0x10000000 xflg=0x4 cmp=com.cooper.lithic.m10r3.outsider/.OutsiderActivity} with LAUNCH_MULTIPLE from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+         1792202287.287   528   528 D Zygote  : Forked child process 4062
+         1792202287.297   763   803 I am_proc_start: [0,4062,10219,com.cooper.lithic.m10r3.outsider,next-top-activity,{com.cooper.lithic.m10r3.outsider/com.cooper.lithic.m10r3.outsider.OutsiderActivity}]
+         1792202287.297   763   803 I ActivityManager: Start proc 4062:com.cooper.lithic.m10r3.outsider/u0a219 for next-top-activity {com.cooper.lithic.m10r3.outsider/com.cooper.lithic.m10r3.outsider.OutsiderActivity}
+         1792202287.323  4062  4062 I .m10r3.outsider: Late-enabling -Xcheck:jni
+         1792202287.358  4062  4062 I .m10r3.outsider: Using CollectorTypeCMC GC.
+         1792202287.360  4062  4062 W .m10r3.outsider: Unexpected CPU variant for x86: x86_64.
+         1792202287.360  4062  4062 W .m10r3.outsider: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+         1792202287.388   763  1058 I am_proc_bound: [0,4062,com.cooper.lithic.m10r3.outsider]
+         1792202287.543  4062  4062 D nativeloader: Configuring clns-9 for other apk /data/app/~~Obglokpdeu2pMyzsJvuyzA==/com.cooper.lithic.m10r3.outsider-Tu7jU96JBP_KC0edHCN2FA==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~Obglokpdeu2pMyzsJvuyzA==/com.cooper.lithic.m10r3.outsider-Tu7jU96JBP_KC0edHCN2FA==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.cooper.lithic.m10r3.outsider
+         1792202287.557  4062  4062 I .m10r3.outsider: AssetManager2(0x782ff20a7118) locale list changing from [] to [en-US]
+         1792202287.594  4062  4062 V GraphicsEnvironment: Currently set values for:
+         1792202287.594  4062  4062 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+         1792202287.595  4062  4062 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+         1792202287.595  4062  4062 V GraphicsEnvironment: com.cooper.lithic.m10r3.outsider is not listed in per-application setting
+         1792202287.596  4062  4062 V GraphicsEnvironment: com.cooper.lithic.m10r3.outsider is not listed in ANGLE allowlist or settings, returning default
+         1792202287.596  4062  4062 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+         1792202287.674   763  1702 I wm_restart_activity: [0,231971970,2968,com.cooper.lithic.m10r3.outsider/.OutsiderActivity]
+         1792202287.677   763  1702 I wm_set_resumed_activity: [0,com.cooper.lithic.m10r3.outsider/.OutsiderActivity,realStartActivityLocked - onActivityStateChanged]
+         1792202287.743  4062  4080 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+         1792202287.749  4062  4062 I .m10r3.outsider: AssetManager2(0x782ff20a67b8) locale list changing from [] to [en-US]
+         1792202287.849  4062  4062 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+         1792202287.860   763  1294 W ActivityManager: Permission Denial: Accessing service com.cooper.lithic.m10r3.probe/.WorkerService from pid=4062, uid=10219 that is not exported from uid 10218
+         1792202287.864  4062  4080 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+         1792202287.865  4062  4080 I EGL_emulation: Opening libGLESv2_emulation.so
+         1792202287.914  4062  4080 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+         1792202287.922  4062  4062 I LITHIC_R3: {"uid":10219,"pid":4062,"status":"PASS","bindingDenied":true,"error":"java.lang.SecurityException: Not allowed to bind to service Intent { xflg=0x4 cmp=com.cooper.lithic.m10r3.probe\/.WorkerService }"}
+         1792202287.944  4062  4062 I wm_on_create_called: [231971970,com.cooper.lithic.m10r3.outsider.OutsiderActivity,performCreate,86]
+         1792202288.026  4062  4062 D CompatChangeReporter: Compat change id reported: 377864165; UID 10219; state: ENABLED
+         1792202288.032  4062  4062 D DesktopModeFlags: Toggle override initialized to: OVERRIDE_UNSET
+         1792202288.058   763  1949 I wm_set_resumed_activity: [0,com.cooper.lithic.m10r3.probe/.ProbeActivity,resumeTopActivity - onActivityStateChanged]
+         1792202288.273   763  1949 I ActivityTaskManager: Activity reported stop, but no longer stopping: ActivityRecord{257892879 u0 com.cooper.lithic.m10r3.probe/.ProbeActivity t2967} RESUMED
+         1792202288.861  4062  4062 I wm_on_destroy_called: [231971970,com.cooper.lithic.m10r3.outsider.OutsiderActivity,performDestroy,0]
+         1792202288.870  4062  4062 E ActivityThread: Activity com.cooper.lithic.m10r3.outsider.OutsiderActivity has leaked ServiceConnection com.cooper.lithic.m10r3.outsider.OutsiderActivity$1@b108cb2 that was originally bound here
+         1792202288.870  4062  4062 E ActivityThread: android.app.ServiceConnectionLeaked: Activity com.cooper.lithic.m10r3.outsider.OutsiderActivity has leaked ServiceConnection com.cooper.lithic.m10r3.outsider.OutsiderActivity$1@b108cb2 that was originally bound here
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.LoadedApk$ServiceDispatcher.<init>(LoadedApk.java:2093)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.LoadedApk.getServiceDispatcherCommon(LoadedApk.java:1967)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.LoadedApk.getServiceDispatcher(LoadedApk.java:1946)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.ContextImpl.bindServiceCommon(ContextImpl.java:2216)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.ContextImpl.bindService(ContextImpl.java:2092)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.content.ContextWrapper.bindService(ContextWrapper.java:891)
+         1792202288.870  4062  4062 E ActivityThread: 	at com.cooper.lithic.m10r3.outsider.OutsiderActivity.onCreate(OutsiderActivity.java:14)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.Activity.performCreate(Activity.java:9155)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.Activity.performCreate(Activity.java:9133)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1521)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:4262)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:4467)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:222)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.servertransaction.TransactionExecutor.executeNonLifecycleItem(TransactionExecutor.java:133)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.servertransaction.TransactionExecutor.executeTransactionItems(TransactionExecutor.java:103)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:80)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2823)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.os.Handler.dispatchMessage(Handler.java:110)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.os.Looper.loopOnce(Looper.java:248)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.os.Looper.loop(Looper.java:338)
+         1792202288.870  4062  4062 E ActivityThread: 	at android.app.ActivityThread.main(ActivityThread.java:9067)
+         1792202288.870  4062  4062 E ActivityThread: 	at java.lang.reflect.Method.invoke(Native Method)
+         1792202288.870  4062  4062 E ActivityThread: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+         1792202288.870  4062  4062 E ActivityThread: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)

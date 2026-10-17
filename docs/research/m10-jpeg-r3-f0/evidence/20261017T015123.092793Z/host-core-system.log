@@ -1,0 +1,40 @@
+         1792202164.540   763  1058 I wm_create_activity: [0,257892879,2967,com.cooper.lithic.m10r3.probe/.ProbeActivity,NULL,NULL,NULL,268435456]
+         1792202164.552   763  1058 I ActivityTaskManager: START u0 {flg=0x10000000 xflg=0x5 cmp=com.cooper.lithic.m10r3.probe/.ProbeActivity} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+         1792202164.624   528   528 D Zygote  : Forked child process 3928
+         1792202164.631   763   803 I am_proc_start: [0,3928,10218,com.cooper.lithic.m10r3.probe,next-top-activity,{com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}]
+         1792202164.632   763   803 I ActivityManager: Start proc 3928:com.cooper.lithic.m10r3.probe/u0a218 for next-top-activity {com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}
+         1792202164.654  3928  3928 I hic.m10r3.probe: Late-enabling -Xcheck:jni
+         1792202164.771  3928  3928 I hic.m10r3.probe: Using CollectorTypeCMC GC.
+         1792202164.774  3928  3928 W hic.m10r3.probe: Unexpected CPU variant for x86: x86_64.
+         1792202164.774  3928  3928 W hic.m10r3.probe: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, alderlake, default
+         1792202164.830   763  1935 I am_proc_bound: [0,3928,com.cooper.lithic.m10r3.probe]
+         1792202164.877  3928  3928 D nativeloader: Configuring clns-9 for other apk /data/app/~~ZQY6jvuiNGaONZ1US5fftg==/com.cooper.lithic.m10r3.probe-93IVnMZKhR1TDkjZMenfSA==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~ZQY6jvuiNGaONZ1US5fftg==/com.cooper.lithic.m10r3.probe-93IVnMZKhR1TDkjZMenfSA==/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.cooper.lithic.m10r3.probe
+         1792202164.886  3928  3928 I hic.m10r3.probe: AssetManager2(0x782ff20a7118) locale list changing from [] to [en-US]
+         1792202164.906  3928  3928 V GraphicsEnvironment: Currently set values for:
+         1792202164.906  3928  3928 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+         1792202164.906  3928  3928 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+         1792202164.906  3928  3928 V GraphicsEnvironment: com.cooper.lithic.m10r3.probe is not listed in per-application setting
+         1792202164.907  3928  3928 V GraphicsEnvironment: com.cooper.lithic.m10r3.probe is not listed in ANGLE allowlist or settings, returning default
+         1792202164.907  3928  3928 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+         1792202164.959  3928  3928 I LITHIC_R3: {"event":"APPLICATION_ROLE","pid":3928,"uid":10218,"process":"com.cooper.lithic.m10r3.probe","wallMs":1792202164958,"elapsedNs":262567860000,"role":"HOST","syntheticOwner":true,"api26Path":"bounded-proc-self-cmdline"}
+         1792202165.034   763  1935 I wm_restart_activity: [0,257892879,2967,com.cooper.lithic.m10r3.probe/.ProbeActivity]
+         1792202165.036   763  1935 I wm_set_resumed_activity: [0,com.cooper.lithic.m10r3.probe/.ProbeActivity,realStartActivityLocked - onActivityStateChanged]
+         1792202165.103  3928  3947 I DisplayManager: Choreographer implicitly registered for the refresh rate.
+         1792202165.174  3928  3928 I hic.m10r3.probe: AssetManager2(0x782ff20a7438) locale list changing from [] to [en-US]
+         1792202165.228  3928  3928 E ashmem  : Pinning is deprecated since Android Q. Please use trim or other methods.
+         1792202165.382  3928  3928 D CompatChangeReporter: Compat change id reported: 377864165; UID 10218; state: ENABLED
+         1792202165.389  3928  3928 D DesktopModeFlags: Toggle override initialized to: OVERRIDE_UNSET
+         1792202165.495  3928  3947 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+         1792202165.495  3928  3947 I EGL_emulation: Opening libGLESv2_emulation.so
+         1792202165.501  3928  3928 I wm_on_create_called: [257892879,com.cooper.lithic.m10r3.probe.ProbeActivity,performCreate,241]
+         1792202165.502  3928  3928 I wm_on_start_called: [257892879,com.cooper.lithic.m10r3.probe.ProbeActivity,handleStartActivity,0]
+         1792202165.521  3928  3947 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+         1792202165.535  3928  3928 I wm_on_resume_called: [257892879,com.cooper.lithic.m10r3.probe.ProbeActivity,RESUME_ACTIVITY,27]
+         1792202165.622  3928  3928 W HWUI    : Unknown dataspace 0
+         1792202165.805  3928  3928 I wm_on_top_resumed_gained_called: [257892879,com.cooper.lithic.m10r3.probe.ProbeActivity,topStateChangedWhenResumed]
+         1792202166.060  3928  3928 I viewroot_draw_event: [VRI[ProbeActivity],reportDrawFinished seqId=0]
+         1792202166.078   763   792 I wm_activity_launch_time: [0,257892879,com.cooper.lithic.m10r3.probe/.ProbeActivity,1572]
+         1792202166.078   763   792 I ActivityTaskManager: Displayed com.cooper.lithic.m10r3.probe/.ProbeActivity for user 0: +1s572ms
+         1792202166.170  3928  3928 D InsetsController: hide(ime(), fromIme=false)
+         1792202166.171  3928  3928 I ImeTracker: com.cooper.lithic.m10r3.probe:ad70a2a5: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+         1792202167.308  3928  3934 I hic.m10r3.probe: Compiler allocated 5042KB to compile void android.view.ViewRootImpl.performTraversals()

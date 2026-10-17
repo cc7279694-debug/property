@@ -1,5 +1,35 @@
 # M10-R3-F0 — Host Attach专项诊断
 
+## 当前补充交付 — 原AVD获准上线后
+
+2026-10-17。**READY_FOR_REVIEW — M10-R3-F0 Attach Diagnosis**。分类 **D INTERMITTENT_RECOVERED / EVIDENCED**：同一锁定Host APK本次无参数启动已到达系统绑定、Application trace及Activity显示。**历史两次attach根因仍UNKNOWN**，不关闭R3 UNKNOWN或授予生命周期/生产通过。
+
+本轮附件`ac886943-5757-4b5e-b56b-e5ce7ed81aa1`与首轮附件字节相同，SHA仍为`ff0f90631f8cfd78747f3be8f01452f3228990f1c6bc56eb3c3601e37ce953a4`。用户随后明确回复 **“允许仅启动原模拟器”**。从本分支干净且远端一致的首轮交付`ef25b4d403be026511b036890ccfd3961eb651c5`继续；未重建分支/覆盖工作。锁定R3来源17b2cb4不变。
+
+### 授权操作与实际结果
+
+- 仅启动已有ini映射的`E:/Android/avd/Lithic_M01_API_36_fresh.avd`，端口5596，既有镜像/工具；未wipe、重建、清数据、改设置或安装APK。使用既有无窗口/无音频、不加载/保存snapshot参数；没有在已运行AVD上执行重启。启动登记含配置哈希与实际参数：[授权启动](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/authorized-avd-start.json)。冷启动曾offline，后实际boot_completed=1；全部失败返回保留。
+- 实核serial/AVD/API36/x86_64、三包APK SHA、三个不同UID与设备读出的研究Manifest。probe10218/outsider10219/正式10216，三哈希均与锁值一致；worker exported=false、`:jpeg_worker`。研究APK只读复制到本机忽略目录供既有aapt2读取，不安装/打包/上传。见[安装身份](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/installed-packages.json)、[实际Manifest](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/installed-probe-manifest.txt)。
+- **Host仅1次**裸`am start -W -n`，无command/case/fault/runId。PID3928/UID10218，Zygote fork、am_proc_bound、APPLICATION_ROLE/独立trace、onCreate/Resume和Displayed相互印证；TotalTime1572ms、命令wall1750ms。不是仅凭Status ok判断成功。
+- **Outsider仅1次**，PID4062/UID10219；系统绑定完成后明确Permission Denial，拒绝访问UID10218的非导出Worker，研究结果bindingDenied=true。没有调用Worker API；采样与保留日志没有worker。此为F0启动/拒绝观察，**不计入R3原29项**。
+- 新发现辅助Activity销毁时报`ServiceConnectionLeaked`，堆栈指向OutsiderActivity.java:14。拒绝结果仍有系统实证，但辅助对照不是“无错误全PASS”；**仅登记NOTE及待批最小修复，不修改APK源码**，详见[根因评估](M10_JPEG_R3_F0_ROOT_CAUSE_ASSESSMENT.md)。
+
+### 资源、日志与数据保护
+
+实际4个在线CPU；启动后loadavg14.31→后续9.01→结束2.09，短时/proc/stat样本忙碌约0.928%、iowait/steal0%。MemAvailable前后1,177,560/1,212,780kB，/data可用8,097,308/8,098,016KiB；Zygote running，debug_app=null、wait_for_debugger=0。**这是当前短时观察，不证明历史无压力或CPU/内存上界**。PSI文件读权限被拒，组合cat前后都退出1，保留部分stdout及stderr，不改为PASS；artd/secondary属性为空，不能推断已验证ART全部健康。见[资源](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/health-before.json)、[补充CPU/运行状态](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/prelaunch-runtime-state.json)、[结束资源](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/health-after.json)。
+
+日志按epoch窗口、实际研究PID和核心系统事件取证，包含Zygote/ART/ActivityManager及目标进程堆栈，不仅按包名筛选。未清日志；不受限logcat只在内存筛选，未落盘提交。Host初筛49行再限制目标PID/核心系统，发布40行；9行非核心actor只移至本机忽略目录，初筛另丢3条混包行；Outsider保留60行，丢2条混包行。保留4000行尾窗口及筛选局限，**不凭缺行宣称无异常**。诊断脚本仅修正技术类名筛选、核心actor范围、去掉旧system PID常量及本地审计目录冲突；研究APK及旧R3源码不改。Host执行时脚本快照与当前版本均已登记SHA，见[22份来源输入](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/source-inputs.json)、[Host筛选登记](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/host-core-filter.json)。
+
+正式APK/UID、188条私有元数据聚合和主题/字体/旋转/wm前后一致，且开始元数据与R3旧聚合一致。**保护比较PASS仅限这些实际项目，私有字节一致性NOT_RUN**；不读/复制私人账本或图片。见[保护比较](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/protection-comparison.json)。结束仍观察到Host/Outsider进程，未观察到worker；未kill/force-stop或关闭AVD。原AVD保持在线，等待后续授权。
+
+实际103条命令为91次退出0、12次退出1（10次冷启动offline、2次PSI拒绝），**不是103个测试案例**。无本轮JUnit/Lint/Gradle/产品APK构建，无29项生命周期/FD/故障实验；M10三FAIL、R1 120秒UNKNOWN、旧stage静态NOTE及所有平台NOT_RUN保留。
+
+完整[补充结果](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/diagnostic-summary.json)、[命令原件](m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/adb-commands.jsonl)、[新checkpoint](../checkpoints/2026-10-17-M10-JPEG-R3-F0-resume.md)。提交推送同一F0分支后停止；这是F0研究交付，不自授ACCEPTED，不进入R3生命周期、M11或任何生产修复。
+
+---
+
+## 首次交付历史原文（ef25b4d；非当前停止原因）
+
 2026-10-17（Asia/Shanghai）。**BLOCKED — M10-R3-F0 Attach Diagnosis**。本轮在设备可用性预检停止，Host与Outsider均未启动；历史attach根因仍UNKNOWN。
 
 入口：[时间线](M10_JPEG_R3_F0_TIMELINE.md) · [根因评估](M10_JPEG_R3_F0_ROOT_CAUSE_ASSESSMENT.md) · [checkpoint](../checkpoints/2026-10-17-M10-JPEG-R3-F0.md)。
