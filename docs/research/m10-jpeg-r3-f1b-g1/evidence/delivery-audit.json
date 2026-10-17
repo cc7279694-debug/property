@@ -1,0 +1,635 @@
+{
+  "status": "PASS",
+  "scope": "HOST_FILES_ONLY_NO_ADB_OR_ANDROID_TOOLS",
+  "base": "04561e14d5d5694f99dadf35d9a92e42d851e9bd",
+  "finalMethods": 81,
+  "newMethods": 65,
+  "oldStageMethodsRetained": 16,
+  "pythonASTFiles": [
+    "docs\\research\\m10-jpeg-r3-f1b-g1\\gate.py",
+    "docs\\research\\m10-jpeg-r3-f1b-g1\\run_host_tests.py",
+    "docs\\research\\m10-jpeg-r3-f1b-g1\\service_record.py",
+    "docs\\research\\m10-jpeg-r3-f1b-g1\\test_gate.py",
+    "docs\\research\\m10-jpeg-r3-f1b-g1\\test_service_record.py",
+    "docs\\research\\m10-jpeg-r3-f1b\\verify.py"
+  ],
+  "localLinkCount": 78,
+  "links": [
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-G1.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_ANDROID_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_RESOURCE_LIFECYCLE.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1A_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_LIFECYCLE_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_FD_RECOVERY.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R3.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_ARCHITECTURE.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_RESOURCE_BUDGET.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_FAILURE_RECOVERY.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_FEASIBILITY.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_TEST_MATRIX.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_PRODUCTION_PROPOSAL.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_RESOURCE_REPORT.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_PRODUCTION_RECOMMENDATION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R1.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R2.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M10-JPEG-supplement-verification.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M10-JPEG-supplement-verification.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-14-M10-JPEG-supplement.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md#m09-独立代码验收与正式冻结记录2026-10-13"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/m10-tests/final-split-verification.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/m10-device/manual/final-storage-device-proof.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "DECISIONS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "planning/M09_CONTRACT.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-files.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-13-M09.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-verification.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-verification.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-files.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-13-M08.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md#m08-独立代码验收与正式冻结记录2026-10-13"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "SPEC_ISSUES.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "ARCHITECTURE.md"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/verify.py"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/service_record.py"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/gate.py"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/test_service_record.py"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/test_gate.py"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/run_host_tests.py"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/.gitattributes"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/f1b-20261017-01/blocked-service-record-detail.txt"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/f1b-20261017-01/blocked-service-detail-scope.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/red-supervisor.log"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/green-final.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/green-final.log"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "M10_JPEG_R3_F1B_G1_TEST_RESULTS.md"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "M10_JPEG_R3_F1B_G1_DECISION.md"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md",
+      "target": "../checkpoints/2026-10-17-M10-JPEG-R3-F1B-G1.md"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/green-final.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/green-final.log"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/red-supervisor.log"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/red-composition.log"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/red-composition-gate.py.txt"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/red-composition-test.py.txt"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/classifier/"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/green-integrated-01.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/red-process-completeness.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b-g1/evidence/red-process-completeness-02.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G1_DECISION.md",
+      "target": "M10_JPEG_R3_F1B_G1_TEST_RESULTS.md"
+    },
+    {
+      "file": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G1.md",
+      "target": "../research/M10_JPEG_R3_F1B_G1_EXECUTION.md"
+    },
+    {
+      "file": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G1.md",
+      "target": "../research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md"
+    },
+    {
+      "file": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G1.md",
+      "target": "../research/M10_JPEG_R3_F1B_G1_DECISION.md"
+    }
+  ],
+  "sensitiveFindings": [],
+  "historical": [
+    {
+      "prefix": "docs/research/m10-jpeg-r3-f1b/evidence/",
+      "trackedPathsUnchanged": 32
+    },
+    {
+      "prefix": "docs/planning/original-v1/",
+      "trackedPathsUnchanged": 44
+    },
+    {
+      "prefix": "app/",
+      "trackedPathsUnchanged": 147
+    },
+    {
+      "prefix": "docs/research/m10-jpeg-r3/host/",
+      "trackedPathsUnchanged": 27
+    }
+  ],
+  "protectedLocalRefs": {
+    "origin/main": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a",
+    "feat/m10-local-cover-media": "41596820145dc4a3fa6d041728a59540d828108a",
+    "feat/ui-c1-visual-redesign": "0dce7dd0725a54be4f0280870ef6ca47c48ea7ed",
+    "research/m10-jpeg-strict-r3-f1b": "04561e14d5d5694f99dadf35d9a92e42d851e9bd",
+    "research/m10-jpeg-strict-r3-f1": "f23180a4c086d0fc01f944a83174d52e9ad62dbd"
+  },
+  "trackedChanged": [
+    "docs/CURRENT_STATE.md",
+    "docs/research/m10-jpeg-r3-f1b/verify.py"
+  ],
+  "files": {
+    "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G1.md": {
+      "bytes": 1730,
+      "sha256": "3e29c8f6efe93475b415d4253320086f5c14cd9717f103bc244c7eba8f62e946"
+    },
+    "docs/CURRENT_STATE.md": {
+      "bytes": 29557,
+      "sha256": "9fd9ecf69ec9730a9bdfedd388d87917e0202e2cb59e65c45110e964302814af"
+    },
+    "docs/research/m10-jpeg-r3-f1b/verify.py": {
+      "bytes": 15347,
+      "sha256": "ad116cc3ab41a8974cf8a8d997319395fff7c81e6283c73fd35074fc811516e8"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/.gitattributes": {
+      "bytes": 161,
+      "sha256": "b4d5c8e90c98ca32563a7d635944e8273508eba5ca563908d6058f9289c738c9"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/green-parser-final.json": {
+      "bytes": 860,
+      "sha256": "e46f70c59411f7b9eedddf7570a2f7e72935ed3ba217fd02da6e3a2ad69871d6"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/green-parser-final.log": {
+      "bytes": 5120,
+      "sha256": "040bf67209f1a1f00ca19f657f47948b918ec9a3bab1bc0dac6bcebb0ef2419b"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/green-parser-reviewed.json": {
+      "bytes": 860,
+      "sha256": "b0aff1e1a6dbb3ff512cde4b013e2ef9c4e61b25a554f3cb52130e7c20b31333"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/green-parser-reviewed.log": {
+      "bytes": 5764,
+      "sha256": "a61af699d13dba04f1e241041025a0767250af3401f40ccb435505232f54a8c5"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/green-parser.json": {
+      "bytes": 860,
+      "sha256": "55b009653b9760ac3ec47b5a5c38d97a3fdb76fbe0fb87cb4f9fd35b44c82f71"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/green-parser.log": {
+      "bytes": 4963,
+      "sha256": "606c3d9b58f339f6e6d56bf65358d95f57b984fdb71c987470fcaa2153abc4d6"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-boundary-hardening.json": {
+      "bytes": 832,
+      "sha256": "820d006f03604506573cf5581140a1b968d4dacf5d8b82619a6ef5d08a48a9d9"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-boundary-hardening.log": {
+      "bytes": 6848,
+      "sha256": "7238c908f0926ea89bcdee1ba912036b6690fbcdb8984000f2f253c16e43ff41"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-conflict-service_record.py.txt": {
+      "bytes": 12188,
+      "sha256": "c165780a29e5229f6d193c9e4d70c98f35cff26abb4d9bff3e1d0b17c9eb8cdb"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-conflict-test_service_record.py.txt": {
+      "bytes": 11856,
+      "sha256": "861f35e56a7e8e0379d63a72c8294e3fa169ad4e7ac757fb7fe602d13e4cbc07"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-conflicting-body.json": {
+      "bytes": 860,
+      "sha256": "e7443765d68712547285bec55c74bea0986d29e7aba0509ac6660c9c95ccfb43"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-conflicting-body.log": {
+      "bytes": 6439,
+      "sha256": "6931553310dae40711eaf534ef58cbc5a6fee8b9faadd69bf40616b3ee53c8b0"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-foreign-pending.json": {
+      "bytes": 860,
+      "sha256": "162ea897c4e3d4c4657e74d592ab3ba8d7b511613b86d091b7dc25cfcff236d7"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-foreign-pending.log": {
+      "bytes": 5880,
+      "sha256": "a4e6943c38b99f59192ba1292872346c1e50de8418e03041a1518c57d0fb2668"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-foreign-service_record.py.txt": {
+      "bytes": 12216,
+      "sha256": "521270ad2a7c517ed085f0856d15e367ef1bd7cd258db7971d900bf5661b53bd"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-foreign-test_service_record.py.txt": {
+      "bytes": 11091,
+      "sha256": "129662999e55e16e79f08770b81a1bbf454b3a90b7d601cbcaad43ae51e97fd4"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-review-conflicts.json": {
+      "bytes": 860,
+      "sha256": "0b0813b30c4b3df5b6eda0c5ae95476d02f2a4a2412f8866cc776647c9e129a3"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-review-conflicts.log": {
+      "bytes": 8746,
+      "sha256": "52b2c133902972119510b474bc61bc73a7911a7d61a5783f0b62c2b17f60f30b"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-review-final-methods.json": {
+      "bytes": 860,
+      "sha256": "fbdd82c0e6c3870f61b417b61aa7023d2f65c14166ef102505ba2bb895c33323"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-review-final-methods.log": {
+      "bytes": 8545,
+      "sha256": "587677d85cd4c51cb067b15353bfd1b34a2d163b91e9383d8f6427810909dcfe"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-review-final-service_record.py.txt": {
+      "bytes": 12188,
+      "sha256": "c165780a29e5229f6d193c9e4d70c98f35cff26abb4d9bff3e1d0b17c9eb8cdb"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-review-final-test_service_record.py.txt": {
+      "bytes": 12164,
+      "sha256": "64de3a34d235f45dff6e013bbbd01cc4c4bdb055c56158f7199a6a00fc6fd737"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-review-service_record.py.txt": {
+      "bytes": 12188,
+      "sha256": "c165780a29e5229f6d193c9e4d70c98f35cff26abb4d9bff3e1d0b17c9eb8cdb"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-review-test_service_record.py.txt": {
+      "bytes": 12120,
+      "sha256": "1e91b83d8151944f5381d42a524c4433b4164b482e49087043aa0192adb91862"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-service-record.py.txt": {
+      "bytes": 11618,
+      "sha256": "eb490b99a71741dfe91d7a07bed4eebaa0b12572ee642f3c259683d9a5990b9a"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/classifier/red-test-service-record.py.txt": {
+      "bytes": 10741,
+      "sha256": "58f8b3b5e1dec49f12722d2278d303203f685a532e3d1e09d773617d200fcaa6"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/green-final.json": {
+      "bytes": 14020,
+      "sha256": "72907bd5deb3106f83cc1e28cfea571c897918b703eab8ba65280b546ede4c7e"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/green-final.log": {
+      "bytes": 12525,
+      "sha256": "ddb527581ddee0cff559e6a64f4e99d9155dac710f15d81378f4fcce86c88e9f"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/green-integrated-01.json": {
+      "bytes": 13729,
+      "sha256": "e1e614e84eaf7665008bf92da484f7a47a42d66bdb78f155a36de776b4a2101b"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/green-integrated-01.log": {
+      "bytes": 12201,
+      "sha256": "e7cbd3b09e1c9f78489e3911ec73c66a766ff63f3643afc0200b84b896aa1098"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-composition-gate.py.txt": {
+      "bytes": 10007,
+      "sha256": "b8da8d871697375308f3c14ae3209e68a5a5e48806747ef11030355c94a545df"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-composition-test.py.txt": {
+      "bytes": 14904,
+      "sha256": "9de5ed9f83cc5731518e5767d965e9d305ffcfcbc5788bbc95554fe3cb19e57f"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-composition.log": {
+      "bytes": 22501,
+      "sha256": "d60c5375acf3b1a786847bedc8e90461359d6328cd797a052052168fbf4442a1"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-process-completeness-02.json": {
+      "bytes": 14036,
+      "sha256": "d4be67009745678e07f2c0ca27d54290a86a49284e8486812225933b54021bb3"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-process-completeness-02.log": {
+      "bytes": 15693,
+      "sha256": "fcd3552de34001ce0e0d9978976788fa3fbd0563bf004e82f8f9035daae64d4d"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-process-completeness.json": {
+      "bytes": 14033,
+      "sha256": "d7fd87bac5f6445654bd8b46da458e345bfde816479c8769e07f1d9ae1e6e9d3"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-process-completeness.log": {
+      "bytes": 12525,
+      "sha256": "055e47b68b0379196bbd774c9437b6a13b45cfe02a279d11686b23f3f78654f6"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-process-gate.py.txt": {
+      "bytes": 10778,
+      "sha256": "f06a07f43a02d77cddd266358f8097ce094aea6e5f924e811416de2c485f463e"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-process-test.py.txt": {
+      "bytes": 15537,
+      "sha256": "51570e7494e3d307570545c5fedb45bb2ed3f0f4fdcc61d0a425ee4cdd0cabbb"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-supervisor-old-verify.py.txt": {
+      "bytes": 12646,
+      "sha256": "0969e99675d7419f251a4ab2116386c3009d4a6b9b77a0bf7c57c51dc3557756"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/evidence/red-supervisor.log": {
+      "bytes": 2068,
+      "sha256": "1fab2808d5ee00517d9801b8ed15d5612b2bbded850f0e374dacfd9dfa166233"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/gate.py": {
+      "bytes": 10859,
+      "sha256": "bd05bfe4baed3156dcef8da39f9341e90418da64a77848ccf7e6af2dee7610a3"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/run_host_tests.py": {
+      "bytes": 4157,
+      "sha256": "b9ca21c714d089e2ff7d9d60832cf4557cc8d96ad0e3eabfab1fa7e6d0b20a3a"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/service_record.py": {
+      "bytes": 12728,
+      "sha256": "0ed3db01ea8eb9c6997227557ef64675ad69f4236cfe28a690c8a8a512206d08"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/test_gate.py": {
+      "bytes": 15537,
+      "sha256": "51570e7494e3d307570545c5fedb45bb2ed3f0f4fdcc61d0a425ee4cdd0cabbb"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/test_service_record.py": {
+      "bytes": 12164,
+      "sha256": "64de3a34d235f45dff6e013bbbd01cc4c4bdb055c56158f7199a6a00fc6fd737"
+    },
+    "docs/research/M10_JPEG_R3_F1B_G1_DECISION.md": {
+      "bytes": 5134,
+      "sha256": "f4bcd6cb34c87e5e71f0653c58e870fa987f50d88c24422d6b3d3703cc74fc75"
+    },
+    "docs/research/M10_JPEG_R3_F1B_G1_EXECUTION.md": {
+      "bytes": 5785,
+      "sha256": "0eca926fb199551a2b2e78f2755ddffa94547ed9f1b784062f6fd2572fa2970c"
+    },
+    "docs/research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md": {
+      "bytes": 5897,
+      "sha256": "93eab2023fbe35a725376c72bd0da20f985b005d08315e908b2016c60656bc33"
+    }
+  },
+  "limits": [
+    "Regex secret scan is scoped, not an absolute secret absence proof.",
+    "No private bytes or live device state were read or validated.",
+    "Delivery audit SHA and final commit are outside their own recursive manifest."
+  ],
+  "protectedWorktrees": [
+    {
+      "path": "E:/CODEX/砺石新APP",
+      "head": "41596820145dc4a3fa6d041728a59540d828108a",
+      "trackedAndUntrackedStatus": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP",
+      "head": "0dce7dd0725a54be4f0280870ef6ca47c48ea7ed",
+      "trackedAndUntrackedStatus": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r0/砺石新APP",
+      "head": "c4cd90b148cce99ba497d864be1176c90408a4da",
+      "trackedAndUntrackedStatus": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r1/砺石新APP",
+      "head": "2cdad4aa40f9503aad13245670adc9a4d13db32b",
+      "trackedAndUntrackedStatus": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r2/砺石新APP",
+      "head": "2912601899f0282ecc6aa32d5cf26a7b44c24c63",
+      "trackedAndUntrackedStatus": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3/砺石新APP",
+      "head": "17b2cb40d8f3b95136f3d43e5c91cd7aee7b8e5d",
+      "trackedAndUntrackedStatus": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f0/砺石新APP",
+      "head": "f513725b862d3422b371883536557c4233bed2e6",
+      "trackedAndUntrackedStatus": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1/砺石新APP",
+      "head": "f23180a4c086d0fc01f944a83174d52e9ad62dbd",
+      "trackedAndUntrackedStatus": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1b/砺石新APP",
+      "head": "04561e14d5d5694f99dadf35d9a92e42d851e9bd",
+      "trackedAndUntrackedStatus": "CLEAN"
+    }
+  ],
+  "protectedRemoteRefsBeforePush": {
+    "refs/heads/feat/m10-local-cover-media": "41596820145dc4a3fa6d041728a59540d828108a",
+    "refs/heads/feat/ui-c1-visual-redesign": "0dce7dd0725a54be4f0280870ef6ca47c48ea7ed",
+    "refs/heads/main": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a",
+    "refs/heads/research/m10-jpeg-strict-r3-f1b": "04561e14d5d5694f99dadf35d9a92e42d851e9bd"
+  },
+  "newBranchAbsentBeforePush": true,
+  "whitespacePolicy": "CR-at-EOL allowed for byte-preserved Windows research; only immutable raw evidence excludes blank-at-EOL/EOF. Source still checked."
+}

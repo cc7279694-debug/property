@@ -1,0 +1,385 @@
+{
+  "scope": "HOST_ONLY_SYNTHETIC_AND_LOCKED_FIXTURES_NO_ANDROID_CALLS",
+  "startedAtUtc": "2026-10-17T06:47:09.405300+00:00",
+  "python": "3.12.4",
+  "command": [
+    "docs/research/m10-jpeg-r3-f1b-g1/run_host_tests.py",
+    "--tag",
+    "red-process-completeness-02"
+  ],
+  "testMethods": 81,
+  "uniqueMethods": 81,
+  "counts": {
+    "PASS": 80,
+    "FAIL": 1,
+    "ERROR": 0,
+    "SKIP": 0
+  },
+  "status": "FAIL",
+  "subprocessTripwireEnabled": true,
+  "methods": [
+    {
+      "id": "test_service_record.ServiceRecordTests.test_active_start_execution_restart_fields_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_alternate_target_class_spelling_is_not_misclassified_absent",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_binding_section_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_complete_synthetic_idle_record_is_candidate_not_eligibility",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_conflicting_target_identity_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_duplicate_empty_services_sentinel_is_conflicting",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_duplicate_target_records_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_elapsed_idle_ages_do_not_make_semantic_record_changed",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_empty_active_services_section_does_not_prove_absence",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_empty_complete_no_service_profile_has_no_target",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_empty_services_sentinel_is_terminal",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_foreign_record_header_cannot_hide_research_identity_fields",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_foreign_service_recent_caller_alone_is_not_service_identity",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_hash_or_byte_count_mismatch_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_invalid_uid_inputs_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_known_pending_global_section_with_target_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_locked_derivative_alone_never_proves_complete_boundary",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_malformed_duplicate_field_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_malformed_worker_record_header_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_missing_envelope_metadata_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_missing_mandatory_field_blocks_app_null_shortcut",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_multiple_active_user_sections_or_mismatched_user_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_name_in_last_anr_does_not_make_active_target_record",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_nonzero_foreground_count_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_permission_or_start_allowance_change_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_restart_or_background_timeout_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_service_associated_process_blocks_even_when_external_ps_missing",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_sibling_service_is_boundary_not_part_of_target",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_target_outside_active_services_is_not_accepted",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_truncated_or_incomplete_envelope_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_truncated_target_tail_blocks_even_with_recomputed_envelope",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_type_coercion_does_not_accept_invalid_metadata",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_unknown_target_field_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_unknown_target_top_level_section_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_unrelated_pending_worker_class_is_not_our_target",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_unrelated_service_body_does_not_count_as_worker",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_unsupported_profile_or_missing_final_newline_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_service_record.ServiceRecordTests.test_whitespace_or_control_corruption_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_active_service_association_blocks_independent_of_ps",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_actual_worker_blocks_even_idle_service_and_absent_stage",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_complete_consistent_synthetic_pair_is_eligible_in_research_scope",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_formal_app_normal_process_does_not_become_research_consumer",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_gate_cannot_be_given_precomputed_stage_pass_instead_of_facts",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_incorrect_or_missing_environment_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_malformed_or_incomplete_ps_cannot_be_silently_empty",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_missing_or_unknown_installed_identity_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_missing_stage_collection_or_instability_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_namespace_ancestor_symlink_blocks_even_without_stage",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_old_actual_f1b_evidence_remains_incomplete_not_android_eligible",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_one_snapshot_reused_id_or_overlapping_times_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_package_name_presence_and_path_must_match_identity",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_process_capture_failure_diagnostic_or_truncation_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_process_uid_conflict_and_unknown_same_uid_process_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_ps_header_without_actual_process_rows_is_incomplete",
+      "status": "FAIL"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_revoked_or_nonterminal_stage_never_bypasses_existing_verifier",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_service_apk_path_must_equal_actual_installed_probe_path",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_service_app_null_alone_is_not_enough",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_terminal_stage_uses_unchanged_owner_receipt_inode_checks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_two_individually_safe_stage_snapshots_must_still_match",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_two_service_or_process_states_disagree_stop",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_uid_collisions_invalid_types_or_second_snapshot_change_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.PreflightCompositionTests.test_unknown_stage_and_unknown_child_remain_blocked_not_deleted",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.SupervisorIntegrationTests.test_actual_supervisor_keeps_unknown_inventory_blocked",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.SupervisorIntegrationTests.test_host_suite_never_launches_subprocess_android_or_otherwise",
+      "status": "PASS"
+    },
+    {
+      "id": "test_gate.SupervisorIntegrationTests.test_supervisor_accepts_complete_consistent_synthetic_idle_snapshots",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_absent_namespace_safe_only_for_preflight",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_active_pin_and_unknown_request_state_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_current_missing_or_mismatch_blocks_postnormal",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_duplicate_inventory_bool_numbers_and_oversize_metadata_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_full_identity_mismatch_and_extra_keys_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_missing_or_malformed_terminal_proof_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_namespace_external_entries_ignored_and_snapshot_unmodified",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_orphan_metadata_and_missing_directory_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_output_owner_mismatch_blocks",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_receipt_hash_retirement_and_identity_mismatch_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_revoked_state_blocks_without_cleanup_or_recovery",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_symlink_and_noncanonical_paths_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_terminal_with_matching_normal_current_passes",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_terminal_without_receipt_preflight_only",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_unknown_child_pending_source_output_and_nested_path_block",
+      "status": "PASS"
+    },
+    {
+      "id": "test_stage_check.HostStageSnapshotTest.test_wrong_owner_guard_or_stage_inode_blocks",
+      "status": "PASS"
+    }
+  ],
+  "inputs": {
+    "docs/research/m10-jpeg-r3-f1b/evidence/f1b-20261017-01/blocked-service-record-detail.txt": {
+      "bytes": 1413,
+      "sha256": "4080746899e8fcfb71f63c77599f5ff10c972ae3ab70983126155679b9add571"
+    },
+    "docs/research/m10-jpeg-r3-f1b/stage_check.py": {
+      "bytes": 10945,
+      "sha256": "3c747624f246a2f51420f58e240dda9c15d8877acbd123716c5963085dfd61df"
+    },
+    "docs/research/m10-jpeg-r3-f1b/test_stage_check.py": {
+      "bytes": 8229,
+      "sha256": "e3a9bb0345f31c24898b4e470aa9dc2be03ac63dca15e08d08694977c3549a8c"
+    },
+    "docs/research/m10-jpeg-r3-f1b/verify.py": {
+      "bytes": 15347,
+      "sha256": "ad116cc3ab41a8974cf8a8d997319395fff7c81e6283c73fd35074fc811516e8"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/gate.py": {
+      "bytes": 10778,
+      "sha256": "f06a07f43a02d77cddd266358f8097ce094aea6e5f924e811416de2c485f463e"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/run_host_tests.py": {
+      "bytes": 4157,
+      "sha256": "b9ca21c714d089e2ff7d9d60832cf4557cc8d96ad0e3eabfab1fa7e6d0b20a3a"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/service_record.py": {
+      "bytes": 12728,
+      "sha256": "0ed3db01ea8eb9c6997227557ef64675ad69f4236cfe28a690c8a8a512206d08"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/test_gate.py": {
+      "bytes": 15537,
+      "sha256": "51570e7494e3d307570545c5fedb45bb2ed3f0f4fdcc61d0a425ee4cdd0cabbb"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/test_service_record.py": {
+      "bytes": 12164,
+      "sha256": "64de3a34d235f45dff6e013bbbd01cc4c4bdb055c56158f7199a6a00fc6fd737"
+    }
+  },
+  "logSHA256": "fcd3552de34001ce0e0d9978976788fa3fbd0563bf004e82f8f9035daae64d4d"
+}

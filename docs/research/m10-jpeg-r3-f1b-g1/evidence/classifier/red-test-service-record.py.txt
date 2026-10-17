@@ -1,0 +1,211 @@
+"""HOST_ONLY parser tests; all complete captures below are explicitly synthetic.
+
+The unchanged historical 32-line derivative is evidence of field values, not a
+complete dumpsys capture and never earns preflight eligibility by itself.
+"""
+import hashlib
+import importlib.util
+from pathlib import Path
+import unittest
+
+HERE = Path(__file__).resolve().parent
+LOCKED = HERE.parent / 'm10-jpeg-r3-f1b/evidence/f1b-20261017-01/blocked-service-record-detail.txt'
+LOCKED_SHA = '4080746899e8fcfb71f63c77599f5ff10c972ae3ab70983126155679b9add571'
+PROBE = 'com.cooper.lithic.m10r3.probe'
+OUTSIDER = 'com.cooper.lithic.m10r3.outsider'
+HEADER = 'ACTIVITY MANAGER SERVICES (dumpsys activity services)\n'
+
+
+def body():
+    raw = LOCKED.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != LOCKED_SHA:
+        raise AssertionError('historical fixture bytes changed')
+    return '\n'.join(raw.decode('utf-8').splitlines()[1:]) + '\n'
+
+
+def synthetic_capture(text=None):
+    """Envelope is SYNTHETIC and never represents a newly executed ADB call."""
+    if text is None:
+        text = HEADER + '  User 0 active services:\n' + body()
+    raw = text.encode('utf-8')
+    return {'stdout': text, 'exitCode': 0, 'stderr': '', 'complete': True,
+            'truncated': False, 'stdoutBytes': len(raw),
+            'stdoutSHA256': hashlib.sha256(raw).hexdigest(),
+            'profile': 'api36-f1b-v1'}
+
+
+def classify(capture, probe_uid=10218, outsider_uid=10219):
+    spec = importlib.util.spec_from_file_location('g1_service_record', HERE / 'service_record.py')
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.classify_capture(capture, probe_uid, outsider_uid)
+
+
+class ServiceRecordTests(unittest.TestCase):
+    def blocked(self, capture):
+        result = classify(capture)
+        self.assertEqual('BLOCKED', result['classification'])
+        self.assertTrue(result['reasons'])
+        self.assertIsNone(result['record'])
+
+    def mutate(self, old, new):
+        return synthetic_capture(HEADER + '  User 0 active services:\n' + body().replace(old, new))
+
+    def test_complete_synthetic_idle_record_is_candidate_not_eligibility(self):
+        result = classify(synthetic_capture())
+        self.assertEqual('INACTIVE_RECORD_CANDIDATE', result['classification'])
+        self.assertEqual([], result['reasons'])
+        self.assertEqual(PROBE + '/.WorkerService', result['record']['component'])
+        self.assertEqual(10219, result['record']['recentCallingUid'])
+
+    def test_locked_derivative_alone_never_proves_complete_boundary(self):
+        self.blocked(synthetic_capture(LOCKED.read_bytes().decode('utf-8')))
+
+    def test_name_in_last_anr_does_not_make_active_target_record(self):
+        capture = synthetic_capture(HEADER + '  Last ANR service:\n' + body().replace('  * ServiceRecord{', 'ServiceRecord{', 1) + '\n  (nothing)\n')
+        self.assertEqual('NO_TARGET_RECORD', classify(capture)['classification'])
+
+    def test_unrelated_service_body_does_not_count_as_worker(self):
+        other = body().replace(PROBE, 'com.example.unrelated').replace(OUTSIDER, 'com.example.caller')
+        capture = synthetic_capture(HEADER + '  User 0 active services:\n' + other)
+        self.assertEqual('NO_TARGET_RECORD', classify(capture)['classification'])
+
+    def test_sibling_service_is_boundary_not_part_of_target(self):
+        other = body().replace(PROBE, 'com.example.unrelated').replace(OUTSIDER, 'com.example.caller')
+        result = classify(synthetic_capture(HEADER + '  User 0 active services:\n' + body() + other))
+        self.assertEqual('INACTIVE_RECORD_CANDIDATE', result['classification'])
+
+    def test_service_associated_process_blocks_even_when_external_ps_missing(self):
+        self.blocked(self.mutate('app=null', 'app=ProcessRecord{abcdef 1234:' + PROBE + ':jpeg_worker/u0a218}'))
+
+    def test_binding_section_blocks(self):
+        self.blocked(synthetic_capture(HEADER + '  User 0 active services:\n' + body() + '    Bindings:\n      * IntentBindRecord{1}\n'))
+
+    def test_active_start_execution_restart_fields_block(self):
+        for field in ('startRequested=true', 'delayed=true', 'pendingStarts=[StartItem{1}]',
+                      'deliveredStarts=[StartItem{1}]', 'executeNesting=1',
+                      'restartCount=1', 'nextRestartTime=+1s', 'isForeground=true'):
+            with self.subTest(field=field):
+                self.blocked(synthetic_capture(HEADER + '  User 0 active services:\n' + body() + '    ' + field + '\n'))
+
+    def test_nonzero_foreground_count_blocks(self):
+        self.blocked(self.mutate('startForegroundCount=0', 'startForegroundCount=1'))
+
+    def test_restart_or_background_timeout_blocks(self):
+        for old, new in [('restartTime=--', 'restartTime=+1s'), ('startingBgTimeout=--', 'startingBgTimeout=+1s')]:
+            with self.subTest(field=old):
+                self.blocked(self.mutate(old, new))
+
+    def test_permission_or_start_allowance_change_blocks(self):
+        self.blocked(self.mutate('mAllowStart_byBindings=DENIED', 'mAllowStart_byBindings=ALLOWED'))
+
+    def test_unknown_target_field_blocks(self):
+        self.blocked(synthetic_capture(HEADER + '  User 0 active services:\n' + body() + '    futureWorkerState=idle\n'))
+
+    def test_missing_mandatory_field_blocks_app_null_shortcut(self):
+        for field in ('    processName=' + PROBE + ':jpeg_worker\n',
+                      '    startForegroundCount=0\n', '    recentCallingUid=10219\n',
+                      '    mAllowWiu_byBindings=DENIED\n'):
+            with self.subTest(field=field):
+                self.blocked(self.mutate(field, ''))
+
+    def test_malformed_duplicate_field_blocks(self):
+        self.blocked(self.mutate('    app=null\n', '    app=null\n    app=null\n'))
+
+    def test_conflicting_target_identity_blocks(self):
+        for old, new in [('packageName=' + PROBE, 'packageName=com.example.other'),
+                         ('processName=' + PROBE + ':jpeg_worker', 'processName=' + PROBE),
+                         ('recentCallingUid=10219', 'recentCallingUid=10218'),
+                         (' u0 ', ' u10 ')]:
+            with self.subTest(identity=old):
+                self.blocked(self.mutate(old, new))
+
+    def test_duplicate_target_records_block(self):
+        self.blocked(synthetic_capture(HEADER + '  User 0 active services:\n' + body() + body()))
+
+    def test_malformed_worker_record_header_blocks(self):
+        self.blocked(self.mutate('ServiceRecord{17f772c u0 ', 'ServiceRecord{BROKEN '))
+
+    def test_target_outside_active_services_is_not_accepted(self):
+        self.blocked(synthetic_capture(HEADER + body()))
+
+    def test_unknown_target_top_level_section_blocks(self):
+        self.blocked(synthetic_capture(HEADER + '  Future worker services:\n' + body()))
+
+    def test_known_pending_global_section_with_target_blocks(self):
+        self.blocked(synthetic_capture(HEADER + '  Pending services:\n' + body()))
+
+    def test_empty_complete_no_service_profile_has_no_target(self):
+        self.assertEqual('NO_TARGET_RECORD', classify(synthetic_capture(HEADER + '\n  (nothing)\n'))['classification'])
+
+    def test_truncated_or_incomplete_envelope_blocks(self):
+        for field, value in [('complete', False), ('truncated', True), ('exitCode', 1), ('stderr', 'dump timeout')]:
+            capture = synthetic_capture()
+            capture[field] = value
+            with self.subTest(field=field):
+                self.blocked(capture)
+
+    def test_hash_or_byte_count_mismatch_blocks(self):
+        for field, value in [('stdoutBytes', 1), ('stdoutSHA256', '0' * 64)]:
+            capture = synthetic_capture()
+            capture[field] = value
+            with self.subTest(field=field):
+                self.blocked(capture)
+
+    def test_missing_envelope_metadata_blocks(self):
+        for field in ('complete', 'truncated', 'stdoutBytes', 'stdoutSHA256', 'profile'):
+            capture = synthetic_capture()
+            del capture[field]
+            with self.subTest(field=field):
+                self.blocked(capture)
+
+    def test_type_coercion_does_not_accept_invalid_metadata(self):
+        for field, value in [('exitCode', False), ('complete', 1), ('truncated', 0),
+                             ('stdoutBytes', True), ('stdout', None), ('stderr', [])]:
+            capture = synthetic_capture()
+            capture[field] = value
+            with self.subTest(field=field):
+                self.blocked(capture)
+
+    def test_unsupported_profile_or_missing_final_newline_blocks(self):
+        capture = synthetic_capture()
+        capture['profile'] = 'future-api37'
+        self.blocked(capture)
+        self.blocked(synthetic_capture((HEADER + '  User 0 active services:\n' + body()).rstrip('\n')))
+
+    def test_truncated_target_tail_blocks_even_with_recomputed_envelope(self):
+        text = HEADER + '  User 0 active services:\n' + '\n'.join(body().splitlines()[:-1]) + '\n'
+        self.blocked(synthetic_capture(text))
+
+    def test_multiple_active_user_sections_or_mismatched_user_block(self):
+        for text in [HEADER + '  User 0 active services:\n' + body() + '  User 0 active services:\n',
+                     HEADER + '  User 1 active services:\n' + body()]:
+            with self.subTest(text=text[:100]):
+                self.blocked(synthetic_capture(text))
+
+    def test_invalid_uid_inputs_block(self):
+        for probe, outsider in [(True, 10219), (10218, 10218), (10218, -1), (110218, 10219), ('10218', 10219)]:
+            with self.subTest(probe=probe, outsider=outsider):
+                self.assertEqual('BLOCKED', classify(synthetic_capture(), probe, outsider)['classification'])
+
+    def test_whitespace_or_control_corruption_blocks(self):
+        for text in [(HEADER + '  User 0 active services:\n' + body()).replace('    app=null', '\tapp=null'),
+                     HEADER + '  User 0 active services:\n' + body() + '\x00\n']:
+            with self.subTest(text=text[:90]):
+                self.blocked(synthetic_capture(text))
+
+    def test_empty_active_services_section_does_not_prove_absence(self):
+        self.blocked(synthetic_capture(HEADER + '  User 0 active services:\n'))
+
+    def test_alternate_target_class_spelling_is_not_misclassified_absent(self):
+        self.blocked(self.mutate('/.WorkerService', '/' + PROBE + '.WorkerService'))
+
+    def test_elapsed_idle_ages_do_not_make_semantic_record_changed(self):
+        first = classify(synthetic_capture())
+        second = classify(self.mutate('-1h18m21s755ms', '-1h18m22s122ms'))
+        self.assertEqual('INACTIVE_RECORD_CANDIDATE', second['classification'])
+        self.assertEqual(first['record'], second['record'])
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

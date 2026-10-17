@@ -1,0 +1,266 @@
+"""Fail-closed parser for a complete API36 research dumpsys capture.
+
+Pure host code: this module never invokes ADB, changes device state, or grants
+preflight eligibility. A candidate needs the independent identity, process,
+stage, and repeated-snapshot checks in the supervising caller. Capture metadata
+must be supplied by that caller's trusted bounded collector, not inferred from
+the appearance of a cropped text file. Unknown Android dump formats are blocked.
+"""
+import hashlib
+import re
+
+PROBE = 'com.cooper.lithic.m10r3.probe'
+OUTSIDER = 'com.cooper.lithic.m10r3.outsider'
+COMPONENT = PROBE + '/.WorkerService'
+PROCESS = PROBE + ':jpeg_worker'
+HEADER = 'ACTIVITY MANAGER SERVICES (dumpsys activity services)'
+PROFILE = 'api36-f1b-v1'
+MAX_CAPTURE_BYTES = 1024 * 1024
+
+_ACTIVE = re.compile(r'  User (0|[1-9][0-9]*) active services:')
+_RECORD = re.compile(
+    r'  \* ServiceRecord\{([0-9a-f]+) u(0|[1-9][0-9]*) '
+    r'([A-Za-z0-9_.]+/[A-Za-z0-9_.$]+)(?: c:([A-Za-z0-9_.]+))?\}')
+_PENDING_SECTION = re.compile(
+    r'  (?:Pending services:|Restarting services:|Destroying services:|'
+    r'Connection bindings to services:|User [0-9]+ delayed start services:|'
+    r'User [0-9]+ starting in background:)')
+_DURATION = r'-[0-9]+(?:d[0-9]+h[0-9]+m[0-9]+s[0-9]+ms|h[0-9]+m[0-9]+s[0-9]+ms|m[0-9]+s[0-9]+ms|s[0-9]+ms|ms)'
+
+
+def _blocked(reason):
+    return {'classification': 'BLOCKED', 'reasons': [reason], 'record': None}
+
+
+def _foreign_record_claims_research_identity(lines):
+    identity_fields = {'intent', 'packageName', 'processName', 'baseDir', 'dataDir', 'app'}
+    package_token = re.compile(re.escape(PROBE) + r'(?=$|[:/}\s-])')
+    for line in lines:
+        key, separator, value = line.strip().partition('=')
+        if separator and key in identity_fields and package_token.search(value):
+            return True
+    return False
+
+
+def _capture_text(capture):
+    required = {'stdout', 'exitCode', 'stderr', 'complete', 'truncated',
+                'stdoutBytes', 'stdoutSHA256', 'profile'}
+    if not isinstance(capture, dict) or not required.issubset(capture):
+        raise ValueError('incomplete capture envelope')
+    # Extra provenance is owned by the collector and cannot change parser rules.
+    if type(capture['exitCode']) is not int or capture['exitCode'] != 0:
+        raise ValueError('dumpsys did not finish successfully')
+    if type(capture['complete']) is not bool or not capture['complete']:
+        raise ValueError('capture completeness is not proven')
+    if type(capture['truncated']) is not bool or capture['truncated']:
+        raise ValueError('truncated capture')
+    if type(capture['stderr']) is not str or capture['stderr'] != '':
+        raise ValueError('dumpsys diagnostic or malformed stderr')
+    if type(capture['stdout']) is not str:
+        raise ValueError('stdout must be strict decoded text')
+    text = capture['stdout']
+    raw = text.encode('utf-8', errors='strict')
+    if (type(capture['stdoutBytes']) is not int or
+            capture['stdoutBytes'] != len(raw) or
+            not 0 < len(raw) <= MAX_CAPTURE_BYTES):
+        raise ValueError('capture byte length mismatch or limit exceeded')
+    digest = capture['stdoutSHA256']
+    if (type(digest) is not str or not re.fullmatch(r'[0-9a-f]{64}', digest) or
+            hashlib.sha256(raw).hexdigest() != digest):
+        raise ValueError('capture SHA-256 mismatch')
+    if type(capture['profile']) is not str or capture['profile'] != PROFILE:
+        raise ValueError('unsupported dumpsys profile')
+    if not text.endswith('\n') or any(ord(c) < 32 and c not in '\r\n' for c in text):
+        raise ValueError('missing final newline or invalid control character')
+    if '\ufffd' in text or '\r' in text.replace('\r\n', ''):
+        raise ValueError('lossy decoding or malformed newlines')
+    lines = text.splitlines()
+    if not lines or lines[0] != HEADER:
+        raise ValueError('full supported dumpsys header is missing')
+    return lines
+
+
+def _idle_target(header, lines, probe_uid, outsider_uid):
+    record_id, user, component, caller = header.groups()
+    if int(user) != 0 or component != COMPONENT or caller != OUTSIDER:
+        raise ValueError('WorkerService record identity differs from the locked profile')
+    fields = {}
+    for line in lines:
+        if not line.strip():
+            continue
+        if not line.startswith('    ') or line.startswith('     '):
+            raise ValueError('unknown target record indentation or nested state')
+        key, separator, value = line[4:].partition('=')
+        if not separator or key in fields:
+            raise ValueError('malformed or duplicate target record field')
+        fields[key] = value
+
+    fixed = {
+        'intent': '{cmp=' + COMPONENT + '}',
+        'packageName': PROBE,
+        'processName': PROCESS,
+        'targetSdkVersion': '36',
+        'dataDir': '/data/user/0/' + PROBE,
+        'app': 'null',
+        'useNewWiuLogic_forCapabilities()': 'true',
+        'useNewWiuLogic_forStart()': 'true',
+        'useNewBfslLogic()': 'true',
+        'mAllowWiu_noBinding': 'DENIED',
+        'mAllowWiu_inBindService': 'DENIED',
+        'mAllowWiu_byBindings': 'DENIED',
+        'getFgsAllowWiu_legacy': 'DENIED',
+        'getFgsAllowWiu_new': 'DENIED',
+        'getFgsAllowWiu_forStart': 'DENIED',
+        'getFgsAllowWiu_forCapabilities': 'DENIED',
+        'allowUiJobScheduling': 'false',
+        'recentCallingPackage': OUTSIDER,
+        'recentCallingUid': str(outsider_uid),
+        'mAllowStart_noBinding': 'DENIED',
+        'mAllowStart_inBindService': 'DENIED',
+        'mAllowStart_byBindings': 'DENIED',
+        'getFgsAllowStart_legacy': 'DENIED',
+        'getFgsAllowStart_new': 'DENIED',
+        'getFgsAllowStart': 'DENIED',
+        'startForegroundCount': '0',
+        'infoAllowStartForeground': 'null',
+    }
+    variable = {'baseDir', 'createTime', 'lastActivity'}
+    if set(fields) != set(fixed) | variable:
+        raise ValueError('missing mandatory field or unknown/active target state')
+    for key, expected in fixed.items():
+        if fields[key] != expected:
+            raise ValueError('non-idle or inconsistent target field: ' + key)
+    base_dir = fields['baseDir']
+    if not re.fullmatch(r'/data/app/~~[A-Za-z0-9_+=-]+/' + re.escape(PROBE) +
+                        r'-[A-Za-z0-9_+=-]+/base\.apk', base_dir):
+        raise ValueError('unexpected target APK location')
+    if not re.fullmatch(_DURATION + r' startingBgTimeout=--', fields['createTime']):
+        raise ValueError('background start timeout or unknown createTime format')
+    if not re.fullmatch(_DURATION + r' restartTime=-- createdFromFg=true', fields['lastActivity']):
+        raise ValueError('restart state or unknown lastActivity format')
+    # Elapsed display times advance while idle. Normalize their volatile values,
+    # retain actual record/UID/APK identity for the two-snapshot comparison.
+    return {'recordId': record_id, 'user': 0, 'component': component,
+            'packageName': PROBE, 'processName': PROCESS,
+            'probeUid': probe_uid, 'recentCallingPackage': OUTSIDER,
+            'recentCallingUid': outsider_uid, 'baseDir': base_dir,
+            'dataDir': fields['dataDir'], 'app': None,
+            'bindings': 'ABSENT_IN_COMPLETE_SUPPORTED_RECORD',
+            'pendingStarts': 'ABSENT_IN_COMPLETE_SUPPORTED_RECORD',
+            'executing': 'ABSENT_IN_COMPLETE_SUPPORTED_RECORD',
+            'restarting': 'ABSENT_IN_COMPLETE_SUPPORTED_RECORD',
+            'startForegroundCount': 0, 'profile': PROFILE}
+
+
+def classify_capture(capture, probe_uid, outsider_uid):
+    """Classify a complete capture, with no device calls or grant side effects."""
+    try:
+        if (type(probe_uid) is not int or type(outsider_uid) is not int or
+                not 10000 <= probe_uid < 100000 or
+                not 10000 <= outsider_uid < 100000 or probe_uid == outsider_uid):
+            raise ValueError('invalid or conflicting user-0 research UID evidence')
+        lines = _capture_text(capture)
+        section = None
+        active_user = None
+        seen_users = set()
+        section_records = 0
+        targets = []
+        record_header = None
+        record_lines = []
+        saw_supported_section = False
+
+        def finish_record():
+            nonlocal record_header, record_lines
+            if record_header is not None:
+                component = record_header.group(3)
+                if component == PROBE + '/' + PROBE + '.WorkerService':
+                    raise ValueError('unsupported spelling of target component')
+                if component == COMPONENT:
+                    if int(record_header.group(2)) != active_user:
+                        raise ValueError('record user conflicts with active-services section')
+                    targets.append(_idle_target(record_header, record_lines, probe_uid, outsider_uid))
+                elif _foreign_record_claims_research_identity(record_lines):
+                    raise ValueError('conflicting target identity in unrelated record')
+            record_header = None
+            record_lines = []
+
+        def finish_section():
+            if section == 'ACTIVE' and section_records == 0:
+                raise ValueError('empty active-services section is incomplete or unsupported')
+
+        for line in lines[1:]:
+            if not line.strip():
+                if record_header is not None:
+                    record_lines.append(line)
+                continue
+            if section == 'EMPTY':
+                raise ValueError('empty-services sentinel must be terminal')
+            active = _ACTIVE.fullmatch(line)
+            if active:
+                finish_record()
+                finish_section()
+                user = int(active.group(1))
+                if user in seen_users:
+                    raise ValueError('duplicate active-services user section')
+                seen_users.add(user)
+                section = 'ACTIVE'
+                active_user = user
+                section_records = 0
+                saw_supported_section = True
+                continue
+            if line == '  Last ANR service:':
+                finish_record()
+                finish_section()
+                if saw_supported_section or section is not None:
+                    raise ValueError('unexpected or duplicate Last ANR section')
+                section = 'LAST_ANR'
+                continue
+            if _PENDING_SECTION.fullmatch(line):
+                finish_record()
+                finish_section()
+                section = 'NON_IDLE'
+                saw_supported_section = True
+                continue
+            if line == '  (nothing)':
+                finish_record()
+                finish_section()
+                if seen_users or section == 'NON_IDLE':
+                    raise ValueError('conflicting empty-services sentinel')
+                section = 'EMPTY'
+                saw_supported_section = True
+                continue
+            if section == 'LAST_ANR':
+                # This historical section cannot authorize or deny a currently
+                # active Worker. The exact active section is parsed separately.
+                continue
+            if section == 'NON_IDLE':
+                if PROBE in line or PROCESS in line:
+                    raise ValueError('target appears in pending/restarting/binding section')
+                if not line.startswith('  '):
+                    raise ValueError('unknown non-idle section boundary')
+                continue
+            if section != 'ACTIVE':
+                raise ValueError('unknown dumpsys section or missing active-services boundary')
+            match = _RECORD.fullmatch(line)
+            if match:
+                finish_record()
+                record_header = match
+                section_records += 1
+                continue
+            if line.startswith('  * ') or not line.startswith('    '):
+                raise ValueError('unknown service-record header or top-level boundary')
+            if record_header is None:
+                raise ValueError('orphan service-record field')
+            record_lines.append(line)
+        finish_record()
+        finish_section()
+        if not saw_supported_section:
+            raise ValueError('no complete current-services section')
+        if len(targets) > 1:
+            raise ValueError('multiple target ServiceRecords')
+        if not targets:
+            return {'classification': 'NO_TARGET_RECORD', 'reasons': [], 'record': None}
+        return {'classification': 'INACTIVE_RECORD_CANDIDATE', 'reasons': [],
+                'record': targets[0]}
+    except (ValueError, TypeError, UnicodeError, OverflowError) as error:
+        return _blocked(str(error))

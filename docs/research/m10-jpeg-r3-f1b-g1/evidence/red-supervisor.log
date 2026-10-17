@@ -1,0 +1,27 @@
+test_supervisor_accepts_complete_consistent_synthetic_idle_snapshots (__main__.SupervisorIntegrationTests.test_supervisor_accepts_complete_consistent_synthetic_idle_snapshots) ... FAIL
+
+======================================================================
+FAIL: test_supervisor_accepts_complete_consistent_synthetic_idle_snapshots (__main__.SupervisorIntegrationTests.test_supervisor_accepts_complete_consistent_synthetic_idle_snapshots)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-strict-r3-f1b-g1\��ʯ��APP\docs\research\m10-jpeg-r3-f1b-g1\test_gate.py", line 75, in test_supervisor_accepts_complete_consistent_synthetic_idle_snapshots
+    result = module.safe_idle(fake, 'host-synthetic')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-strict-r3-f1b-g1\��ʯ��APP\docs\research\m10-jpeg-r3-f1b\verify.py", line 91, in safe_idle
+    require('.WorkerService' not in text,'existing Worker service or pending binding: stop')
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-strict-r3-f1b-g1\��ʯ��APP\docs\research\m10-jpeg-r3-f1b\verify.py", line 18, in require
+    if not ok:raise S.StopExperiment(why)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+r3_read_only_helpers.StopExperiment: existing Worker service or pending binding: stop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-strict-r3-f1b-g1\��ʯ��APP\docs\research\m10-jpeg-r3-f1b-g1\test_gate.py", line 77, in test_supervisor_accepts_complete_consistent_synthetic_idle_snapshots
+    self.fail('complete safe synthetic record must not be name-blocked: ' + str(error))
+AssertionError: complete safe synthetic record must not be name-blocked: existing Worker service or pending binding: stop
+
+----------------------------------------------------------------------
+Ran 1 test in 0.232s
+
+FAILED (failures=1)

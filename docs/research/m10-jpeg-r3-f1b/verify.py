@@ -7,6 +7,8 @@ HERE=Path(__file__).resolve().parent
 REPO=HERE.parents[2]
 spec=importlib.util.spec_from_file_location('f0_helpers',REPO/'docs/research/m10-jpeg-r3-f0/diagnose.py')
 D=importlib.util.module_from_spec(spec);spec.loader.exec_module(D)
+spec=importlib.util.spec_from_file_location('g1_gate',REPO/'docs/research/m10-jpeg-r3-f1b-g1/gate.py')
+G=importlib.util.module_from_spec(spec);spec.loader.exec_module(G)
 S=D.S;S.DEVICE_ROOT=HERE/'evidence'
 os.environ['JAVA_HOME']='C:/Users/CDD/AppData/Local/MirraAndroid/jdk17/jdk-17.0.20.1+1'
 APK_ROOT=Path('E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1/砺石新APP/docs/research/m10-jpeg-r3/host')
@@ -54,7 +56,7 @@ class Bounded(D.Diagnostic):
     def inventory(self,label):
         script="if [ -e files ]; then find files -exec stat -c '%f|%d|%i|%s|%Y|%Z|%n' {} +; else printf 'ABSENT\\n'; fi"
         p=self.adb('shell','run-as',S.PROBE,'sh','-c',shlex.quote(script),label=label+'-stat')
-        require(not p.stderr.strip(),'research inventory diagnostics')
+        require(p.returncode==0 and not p.stderr and p.stdout,'incomplete research inventory')
         entries=[];objects={};hashes={}
         for line in p.stdout.decode().splitlines():
             if line=='ABSENT':continue
@@ -65,11 +67,19 @@ class Bounded(D.Diagnostic):
             known=re.fullmatch(r'files/synthetic-stages/(?:current\.json|[0-9a-f-]{36}/(?:owner|state|receipt|cleanup|revoked|output-owner)\.json)',path)
             if known and kind=='regular':
                 require(item['size']<=16384,'bounded synthetic JSON exceeded')
-                raw=self.adb('exec-out','run-as',S.PROBE,'cat',path,label=label+'-read-'+path.replace('/','_')).stdout
+                read=self.adb('exec-out','run-as',S.PROBE,'cat',path,label=label+'-read-'+path.replace('/','_'))
+                require(read.returncode==0 and not read.stderr,'synthetic metadata read failed')
+                raw=read.stdout
                 require(len(raw)==item['size'],'synthetic JSON changed during read')
                 target=self.output/'synthetic-json'/label/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
                 objects[path]=json.loads(raw.decode('utf-8'),object_pairs_hook=no_duplicate);hashes[path]=hashlib.sha256(raw).hexdigest()
-        value={'atUtc':S.utc_now(),'entries':entries,'json':objects,'sha256':hashes}
+        require(p.stdout.strip()==b'ABSENT' or b'ABSENT' not in p.stdout,'conflicting inventory absence')
+        repeated=self.adb('shell','run-as',S.PROBE,'sh','-c',shlex.quote(script),label=label+'-stat-after')
+        require(repeated.returncode==0 and not repeated.stderr and repeated.stdout==p.stdout,
+                'inventory changed during read; stop without cleanup')
+        value={'atUtc':S.utc_now(),'entries':entries,'json':objects,'sha256':hashes,
+               'collection':{'complete':True,'stable':True,'truncated':False,'exitCode':0,'stderr':'',
+                             'statBytes':len(p.stdout),'statSHA256':hashlib.sha256(p.stdout).hexdigest()}}
         save(self.output/(label+'.json'),value);return value
 
 def validate_stages(snapshot,expected_current=None):
@@ -77,22 +87,50 @@ def validate_stages(snapshot,expected_current=None):
     return m.validate_snapshot(snapshot,expected_current=expected_current)
 
 def safe_idle(d,label):
-    packages={p:d.package(p) for p in (S.PROBE,S.OUTSIDER)}
-    save(d.output/(label+'-packages.json'),packages)
-    d.research_uids={p:packages[p]['uid'] for p in packages}
-    require(packages[S.PROBE]['uid']!=packages[S.OUTSIDER]['uid'],'Outsider does not have a distinct UID')
-    ps=d.processes(label+'-processes')
-    require(not any(x['name']==S.PROBE+':jpeg_worker' for x in ps['rows']),'active old worker: stop without install/cleanup')
-    require(all(x['name'] in (S.PROBE,S.OUTSIDER) for x in ps['rows']),'unrecognized process under research UID')
-    services=d.adb('shell','dumpsys','activity','services',S.PROBE,label=label+'-services',private_metadata=True)
-    text=services.stdout.decode('utf-8','replace')
-    selected=[x for x in text.splitlines() if S.PROBE in x]
-    save(d.output/(label+'-services.json'),{'matchingLines':selected,'unrelatedLinesArchived':False,'workerMentioned':'.WorkerService' in text})
-    require('.WorkerService' not in text,'existing Worker service or pending binding: stop')
-    snapshot=d.inventory(label+'-files');result=validate_stages(snapshot)
-    save(d.output/(label+'-stage-check.json'),result)
-    require(result['status']=='PASS','unsafe or unknown prior research stage: '+str(result['reasons']))
-    return {'packages':packages,'processes':ps,'inventory':snapshot,'stageCheck':result}
+    # G1 only changes the research gate. This remains a read-only entry point;
+    # neither a candidate nor an eligible snapshot grants install/launch authority.
+    samples=[]
+    for index in range(2):
+        sample_label=label+'-sample-'+str(index+1)
+        started=S.utc_now()
+        identity=d.verify_device()
+        boot=d.adb('shell','getprop','sys.boot_completed',label=sample_label+'-boot')
+        boot_text=G.complete_text(G.capture(boot,'boot-v1'),'boot-v1').strip()
+        packages={p:d.package(p) for p in (S.PRODUCTION,S.PROBE,S.OUTSIDER)}
+        d.research_uids={p:packages[p]['uid'] for p in (S.PROBE,S.OUTSIDER)}
+        processes=G.capture(d.adb('shell','ps','-A','-o','USER,PID,PPID,NAME',
+                                label=sample_label+'-processes',private_metadata=True),
+                            'ps-user-pid-ppid-name-v1')
+        services=G.capture(d.adb('shell','dumpsys','activity','services',S.PROBE,
+                               label=sample_label+'-services',private_metadata=True),
+                           'api36-f1b-v1')
+        inventory=d.inventory(sample_label+'-files')
+        sample={'sampleId':sample_label,'startedAtUtc':started,'finishedAtUtc':S.utc_now(),
+                'environment':{'serial':identity['serial'],'avd':identity['avd'],
+                               'api':int(identity['api']),'bootComplete':boot_text},
+                'packages':packages,'processes':processes,'services':services,'inventory':inventory}
+        require(identity['state']=='device','device is not online')
+        samples.append(sample)
+        # Decide on full unredacted output in memory, not a cropped derivative.
+        # Archive only scoped parser output and original byte/hash provenance.
+        service_result=G.SERVICE.classify_capture(services,packages[S.PROBE]['uid'],packages[S.OUTSIDER]['uid'])
+        save(d.output/(sample_label+'-services.json'),{
+            'classification':service_result,'capture':{k:v for k,v in services.items() if k!='stdout'},
+            'rawStdoutArchived':False})
+        try:rows=G.process_rows(processes,d.research_uids)
+        except ValueError as error:
+            save(d.output/(sample_label+'-processes.json'),{'classification':'BLOCKED','reason':str(error)})
+            raise S.StopExperiment(str(error))
+        save(d.output/(sample_label+'-processes.json'),{
+            'rows':rows,'capture':{k:v for k,v in processes.items() if k!='stdout'},
+            'unrelatedProcessRowsArchived':False})
+        # Fail immediately for an unsafe/incomplete first capture; never retry it.
+        G.stage_signature(inventory)
+        require(service_result['classification']!='BLOCKED',str(service_result['reasons']))
+    result=G.evaluate_preflight(samples)
+    save(d.output/(label+'-gate.json'),result)
+    require(result['classification']=='PREFLIGHT_ELIGIBLE','research gate: '+str(result['reasons']))
+    return dict(result,packages={p:samples[-1]['packages'][p] for p in (S.PROBE,S.OUTSIDER)})
 
 def protection(d,label):
     value=d.snapshot(label)
@@ -139,7 +177,7 @@ def main():
         require(not (d.output/'blocked.json').exists(),'previous failure: mutation/retry prohibited')
         with (d.output/(args.phase+'-attempt.json')).open('x',encoding='utf-8') as f:json.dump({'phase':args.phase,'utc':S.utc_now(),'scriptSHA256':S.sha256_file(Path(__file__))},f)
         (d.output/(args.phase+'-script.py.txt')).write_bytes(Path(__file__).read_bytes())
-        save(d.output/(args.phase+'-input-sha.json'),{str(f.relative_to(REPO)):{'bytes':f.stat().st_size,'sha256':S.sha256_file(f)} for f in (Path(__file__),HERE/'stage_check.py',REPO/'docs/research/m10-jpeg-r3-f0/diagnose.py',REPO/'docs/research/m10-jpeg-r3/scripts/run_device.py')})
+        save(d.output/(args.phase+'-input-sha.json'),{str(f.relative_to(REPO)):{'bytes':f.stat().st_size,'sha256':S.sha256_file(f)} for f in (Path(__file__),HERE/'stage_check.py',REPO/'docs/research/m10-jpeg-r3-f1b-g1/gate.py',REPO/'docs/research/m10-jpeg-r3-f1b-g1/service_record.py',REPO/'docs/research/m10-jpeg-r3-f0/diagnose.py',REPO/'docs/research/m10-jpeg-r3/scripts/run_device.py')})
     else:
         with (d.output/'finish-attempt.json').open('x',encoding='utf-8') as f:json.dump({'phase':'finish','utc':S.utc_now(),'scriptSHA256':S.sha256_file(Path(__file__))},f)
         (d.output/'finish-script.py.txt').write_bytes(Path(__file__).read_bytes())
