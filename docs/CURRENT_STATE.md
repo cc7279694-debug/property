@@ -1,8 +1,16 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；D2A独立备注来源已补齐；H2-D2B仍有API26/27启动兼容性缺口，BLOCKED / 等待独立设计审查；本次仅文档，无设备观察）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；H2-D2B-A1方案A研究代码与离线验证READY_FOR_REVIEW，独立验收及实际Android验证PENDING；无设备操作）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R3-F1B-H2-D2B-A1 — READY_FOR_REVIEW**：用户转交D2B备注补录PASS WITH NOTES，明确批准API26/27方案A。锁定来源`3792917c7938c2ec78789df0a53a27215f4ee099`，独立worktree及分支`research/m10-jpeg-h2-d2b-api26-a1`，先以`2557b28`提交范围再实施。只做研究Host/Support最小修复、宿主回归与研究APK构建，未调用ADB、操作设备、安装/运行APK或恢复H2。
+- **A1身份边界**：Support/API26-27必要main角色入口允许最多256字节/proc读取；同步角色观测本身不足以READY、不设置owner、不等待后台。API28+framework提示与后台/proc交叉核验分开；Binder/非main和Host claim要求完整READY。新gate对冲突/异常sticky失败，在飞同步观测未确认不得READY；后台流程完整完成且最后一致观测结束后才可统一发布READY。100ms为返回后拒绝策略，非syscall硬期限；真实主线程耗时、ANR和Android调度仍NOT_RUN。
+- **A1实际结果**：完整295唯一JUnit PASS＝原229（16份测试源码/断言字节保持）＋新66，17份XML逐项一致、0失败/错误/跳过。D1另22模型PASS、原静态另8/新增静态另4 PASS。最终48输入/ASCII投影字节一致；研究构建17秒/99任务执行、Gradle及收集脚本退出0，Lint0错误/8原警告。Probe83,761字节/SHA`0d98316faf6cb18b589bad526a5d8260cea825a408ed949f32855bd7a7d31b8a`；Outsider10,473字节/原a51c…；两APK实物Manifest/签名/DEX/SHA核验、六旧APK保护通过。首次Gradle成功但收集wrapper编码退出1、旧语义seam4FAIL、真实候选3FAIL及修复后GREEN均保留，不重复累计或冒充Android实证。
+- **A1限制/历史**：兼容修复仅IMPLEMENTED / PENDING_ANDROID_VERIFICATION，不能宣布真实API26/27可启动或H2 ANR已解决。D2A-N01～N05全部保留，N03未知仍fail-closed，N04待Android，N05不实现失败自动terminal、不改D1。WorkerService/AIDL/Manifest/依赖/权限/StageStore/正式App/旧测试不变。H2旧现场与FAIL/UNKNOWN、R3原0 PASS/1 UNKNOWN/28 NOT_RUN及完整生命周期BLOCKED、M10 PENDING/三JPEG FAIL、UI-C1冻结、M11 NOT_AUTHORIZED保持。
+- **A1停止交接**：[执行](research/M10_JPEG_H2_D2B_A1_EXECUTION.md)、[API兼容/差异/风险](research/M10_JPEG_H2_D2B_A1_COMPATIBILITY.md)、[RED/GREEN/回归/产物](research/M10_JPEG_H2_D2B_A1_TEST_RESULTS.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-H2-D2B-A1.md)。只推A1分支后停止，等待ChatGPT独立代码审查，不自动安装新版APK、恢复stage或执行normal。
+
+以下D2B及更早段落为历史交付；其API26/27兼容选项A现获本轮授权并实施离线候选，不能用历史未授权语句否定当前明确要求，也不改写当时BLOCKED与测试证据：
 
 - **M10-R3-F1B-H2-D2B — BLOCKED**：用户转交D2A独立PASS WITH NOTES，仅研究Java/145 JVM/22模型及研究构建。锁定`59e61cd856b4039c693eb0f280eaf1f2ac838b6b`，独立worktree/分支`research/m10-jpeg-h2-d2b-host-scheduling`；先以`23b7ad0`提交范围，再实施Host调度/时序/诊断候选。没有ADB/设备操作、APK安装或运行，没有恢复H2。
 - **离线候选**：Activity仅有界入队；角色/owner/Runner/claim进入同一有界串行后台队列，活跃键拒绝重放，未确认claim不开始Invocation。Host trace移独立有界writer，丢失/写失败/超时sticky UNKNOWN；持久StageStore授权/revoke/receipt/terminal仍同步。六边界/实际单调时长、独立watchdog、阶段5s/绑定总15s/POSTED至完成30s不可重置；不保证Android最坏响应/远端退出，也不覆盖POSTED前磁盘阻塞。
@@ -141,7 +149,7 @@
 
 ## Pending / Current Problems / Technical Debt
 
-- **H2-N04 / 研究失败收口：**D2A研究围栏/持久N01/连接与FD责任已实施且获用户转交的离线独立PASS WITH NOTES，Android仍待验证；D2B调度候选因API26/27启动兼容性BLOCKED。失败终结不自动放行，H2非终结stage不具备恢复执行资格；真实ANR阻塞点和首次unknown进程身份仍UNKNOWN。
+- **H2-N04 / 研究失败收口：**D2A研究围栏/持久旧N01/连接与FD责任已实施且获用户转交的离线独立PASS WITH NOTES，Android仍待验证；D2B的API26/27兼容缺口已有A1研究修复与宿主证据，独立验收及真实启动待验证，历史BLOCKED保留。失败终结不自动放行，H2非终结stage不具备恢复执行资格；真实ANR阻塞点和首次unknown进程身份仍UNKNOWN。
 - **M10 JPEG输入完整性：**保留EOI但图像数据缺失的锁定样本被扫描、BitmapFactory、normalize及真实prepareImport接受，产生18,820字节规范化图片和有效准备租约。新3项拒绝测试明确FAIL；尚未实施生产修复，后续需先由ChatGPT确认受控严格解码预检方案及新增依赖/构建边界。不得以输出可解码、日志警告或旧652 PASS掩盖缺口。正式登记不改，补测状态在本文件与新证据中如实记录。
 - **M07 NOTES 继续有效：**ProjectAbsent 只确认当前不存在，不证明历史删除操作身份；多条旧 END_SETTLEMENT 明确冲突，没有自动修复；媒体数据/文件生命周期清理归 M10。原20条 Lint 提示及历史执行证据保留。M05 写后刷新与分页交接已在 M06 实施并独立验收，不改写历史 NOTES。
 - Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q02 M17/M18 视图集成仍 NOT_RUN。Q03 长期100/1000日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M12 完整导入、切换、验证后回退、中断、共同校验、清理及 Q06-V01～V03 完整流程仍 NOT_RUN。原 ZIP/43 原件/24 模块、130 案例及16组完整跨模块补测不改。

@@ -1,0 +1,41 @@
+test_background_verification_has_distinct_completion (test_a1_integration.IdentityIntegrationContract.test_background_verification_has_distinct_completion) ... FAIL
+test_cmdline_reader_uses_actual_bounded_parser_and_resource_scope (test_a1_integration.IdentityIntegrationContract.test_cmdline_reader_uses_actual_bounded_parser_and_resource_scope) ... FAIL
+test_host_claim_checks_full_identity_not_name_hint (test_a1_integration.IdentityIntegrationContract.test_host_claim_checks_full_identity_not_name_hint) ... FAIL
+test_role_uses_gate_and_never_promotes_global_identity (test_a1_integration.IdentityIntegrationContract.test_role_uses_gate_and_never_promotes_global_identity) ... FAIL
+
+======================================================================
+FAIL: test_background_verification_has_distinct_completion (test_a1_integration.IdentityIntegrationContract.test_background_verification_has_distinct_completion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-h2-d2b-api26-a1\砺石新APP\docs\research\m10-jpeg-h2-d2b-api26-a1\test_a1_integration.py", line 20, in test_background_verification_has_distinct_completion
+    self.assertIn('identity.beginBackground(', text)
+AssertionError: 'identity.beginBackground(' not found in '{\n        try {\n            String actual=ProbeSupport.processName26();\n            if(!"UNKNOWN".equals(ProbeSupport.processName)&&!actual.equals(ProbeSupport.processName))throw new IOException("framework/proc process identity conflict");\n            ProbeSupport.processName=actual;\n            String role=ProbeSupport.knownRole(actual);\n            if("REJECT".equals(role))throw new IOException("unknown research role");\n            if("HOST".equals(role)) {\n                File owner=new File(getFilesDir(),"synthetic-main-owner");\n                if(Files.isSymbolicLink(owner.toPath()))throw new IOException("owner link");\n                if(!owner.exists()){\n                    if(!owner.createNewFile())throw new IOException("owner exclusive create");\n                    try(FileOutputStream out=new FileOutputStream(owner)){out.getFD().sync();}\n                    ProbeSupport.syncDir(getFilesDir());\n                }\n                if(!OsConstants.S_ISREG(Os.lstat(owner.getPath()).st_mode)||owner.length()!=0)throw new IOException("owner marker shape");\n                ProbeSupport.mainOwner=true;\n                runner=new ProbeRunner(this);\n            }\n            ProbeSupport.event("APPLICATION_ROLE","role",role,"syntheticOwner",ProbeSupport.mainOwner,"api26Path","background-bounded-proc-self-cmdline");\n        }catch(Exception error){ProbeSupport.mainOwner=false;ProbeSupport.identityError=error.toString();throw error;}\n        finally{ProbeSupport.identityReady.countDown();}\n    }'
+
+======================================================================
+FAIL: test_cmdline_reader_uses_actual_bounded_parser_and_resource_scope (test_a1_integration.IdentityIntegrationContract.test_cmdline_reader_uses_actual_bounded_parser_and_resource_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-h2-d2b-api26-a1\砺石新APP\docs\research\m10-jpeg-h2-d2b-api26-a1\test_a1_integration.py", line 29, in test_cmdline_reader_uses_actual_bounded_parser_and_resource_scope
+    self.assertIn('ProcessIdentityGate.readCmdline(', text)
+AssertionError: 'ProcessIdentityGate.readCmdline(' not found in '{\n        try(FileInputStream in=new FileInputStream("/proc/self/cmdline")) {\n            byte[] b=new byte[256]; int n=in.read(b); if(n<=0)throw new IOException("empty cmdline");\n            int end=0; while(end<n&&b[end]!=0)end++; if(end==n)throw new IOException("unbounded cmdline");\n            return new String(b,0,end,StandardCharsets.UTF_8);\n        }\n    }'
+
+======================================================================
+FAIL: test_host_claim_checks_full_identity_not_name_hint (test_a1_integration.IdentityIntegrationContract.test_host_claim_checks_full_identity_not_name_hint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-h2-d2b-api26-a1\砺石新APP\docs\research\m10-jpeg-h2-d2b-api26-a1\test_a1_integration.py", line 33, in test_host_claim_checks_full_identity_not_name_hint
+    self.assertIn('identity.verifiedRole()', text)
+AssertionError: 'identity.verifiedRole()' not found in '{\n        WeakReference<Activity> reference=new WeakReference<>(activity);\n        HostCommandQueue.Submission submitted=commands.submit(command,run,()->{\n            if(!ProbeSupport.mainOwner||!"HOST".equals(ProbeSupport.knownRole(ProbeSupport.processName)))throw new IOException("unconfirmed Host/owner");\n            return ProbeRunner.claim(this,command,run);\n        },()->{\n            Activity current=reference.get();\n            if(current==null)throw new IOException("activity unavailable");\n            if("kill_host".equals(command)){\n                ProbeSupport.event("HOST_SELF_SIGKILL","targetIsSelf",true);\n                ProbeSupport.flushDiagnostics(2000);\n                android.os.Process.killProcess(android.os.Process.myPid());return;\n            }\n            if(runner==null)throw new IOException("runner not initialized");\n            runner.dispatch(current,command,run,name,fault);\n        });\n        if(submitted==HostCommandQueue.Submission.DUPLICATE&&runner!=null)runner.rejectedCommands.incrementAndGet();\n        if(submitted!=HostCommandQueue.Submission.ACCEPTED)ProbeSupport.event("COMMAND_ADMISSION","runId",run,"outcome",submitted);\n    }'
+
+======================================================================
+FAIL: test_role_uses_gate_and_never_promotes_global_identity (test_a1_integration.IdentityIntegrationContract.test_role_uses_gate_and_never_promotes_global_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-h2-d2b-api26-a1\砺石新APP\docs\research\m10-jpeg-h2-d2b-api26-a1\test_a1_integration.py", line 14, in test_role_uses_gate_and_never_promotes_global_identity
+    self.assertIn('identity.role(', text)
+AssertionError: 'identity.role(' not found in '{\n        // API26 has no Application.getProcessName. Only a background/Binder caller may\n        // wait briefly for the queued identity read; main remains nonblocking/fail-closed.\n        if("UNKNOWN".equals(name)&&android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()){\n            try{if(!identityReady.await(1000,java.util.concurrent.TimeUnit.MILLISECONDS)||identityError!=null)return "REJECT";}\n            catch(InterruptedException e){Thread.currentThread().interrupt();return "REJECT";}\n            return knownRole(processName);\n        }\n        return knownRole(name);\n    }'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.004s
+
+FAILED (failures=4)

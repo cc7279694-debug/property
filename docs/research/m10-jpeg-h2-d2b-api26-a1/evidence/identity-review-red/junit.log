@@ -1,0 +1,181 @@
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#api27MainPendingProbeRecognizesWorkerWithoutReady
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#staleUnknownCanObserveCompletedVerifiedIdentity
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#clockSubtractionOverflowFailsClosed
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserPropagatesReadFailure
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#clockBackwardsFailsClosed
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#readerIOExceptionIsStickyFailure
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#apiBelow26RemainsUnsupported
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserNeverConsumesBeyond256Bytes
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#snapshotHasExplicitPendingAndUnknownDuration
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#binderReadyAfterOriginalWaitDeadlineStillRejects
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#backgroundCannotBecomeReadyWhileSyncProbeIsUnresolved
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#api28WithoutHintCannotGuessWorker
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#resourceCloseFailureIsStickyFailure
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#binderTimeoutDoesNotDeclareGlobalReady
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#api26HostProbeNeverMasqueradesAsWorker
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#repeatedBackgroundMismatchCannotReplaceVerifiedRole
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserHandlesShortReadsWithoutExceedingBound
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#subBudgetProbeCanReturnRoleOnly
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserRejectsEmptyInput
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#binderInterruptionRestoresInterruptAndRejects
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#failedGateRejectsKnownMainClaim
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#successfulBackgroundCannotWashAwayProbeFailure
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#invalidCallerDoesNotPoisonIndependentVerification
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#probeVersusBackgroundConflictIsSticky
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserAllowsTrailingArgumentsOnlyAfterNul
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#repeatedFailureKeepsFirstReason
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#api26MainPendingProbeRecognizesWorkerWithoutReady
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#readyMainDoesNotRepeatProcProbe
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#repeatedCompleteCannotReopenFailedGate
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserRejectsMissingNul
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#negativeStartClockIsUnknownEvenWhenDeltaPositive
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#completeWithoutBackgroundObservationFailsClosed
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#negativeFinishClockIsUnknownEvenWhenDeltaPositive
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#unknownProcessNameCannotDefaultToWorker
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#pendingProbeCannotAuthorizeBinder
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#exactProbeTimeBudgetRejects
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#missingReaderFailsClosed
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#mainProbeNeverWaitsForBackground
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserAcceptsHealthyWorkerCmdline
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#lateConflictingProbeCannotPublishOverCompletedBackground
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#nullCallerIsRejectedWithoutReading
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#concurrentConflictingProbesCannotAuthorizeBinder
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#binderEarlyCanProceedOnlyAfterBackgroundCompletion
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#api28MainUsesHintWithoutProcRead
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#independentBackgroundObservationDoesNotSetReady
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#missingClockFailsClosed
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#failureDuringUnlockedProbeCannotBeOverwritten
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserRejectsControlCharacters
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#failedBackgroundCannotBeBypassedByKnownClaim
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserRejectsZeroProgressRead
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#snapshotReportsRoleOnlyProbeAndMeasuredNanos
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#malformedFrameworkHintIsRejected
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#unknownBackgroundObservationFailsClosed
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#successfulBackgroundConfirmsRole
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserRejectsNonAscii
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#arbitraryCallerUnknownIsRejectedWithoutReading
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserRejectsUnknownValidAsciiName
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#concurrentConsistentProbesRequireAllToFinishBeforeReady
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#callerConflictCannotBorrowVerifiedWorkerIdentity
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#frameworkHintConflictIsStickyFailure
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserRejectsEmptyFirstArg
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#snapshotMutationCannotModifyGate
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#frameworkVersusBackgroundConflictIsSticky
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#frameworkHintDoesNotAuthorizeEarlyBinder
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#clockExceptionFailsClosed
+METHOD com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest#parserAcceptsHealthyHostCmdline
+org.junit.ComparisonFailure: expected:<[REJECT]> but was:<[WORKER]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest.binderReadyAfterOriginalWaitDeadlineStillRejects(ProcessIdentityGateTest.java:106)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:105)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:94)
+	at IdentityTestRunner.main(IdentityTestRunner.java:12)
+org.junit.ComparisonFailure: expected:<[REJECT]> but was:<[WORKER]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest.negativeStartClockIsUnknownEvenWhenDeltaPositive(ProcessIdentityGateTest.java:90)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:105)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:94)
+	at IdentityTestRunner.main(IdentityTestRunner.java:12)
+org.junit.ComparisonFailure: expected:<[REJECT]> but was:<[WORKER]>
+	at org.junit.Assert.assertEquals(Assert.java:117)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest.negativeFinishClockIsUnknownEvenWhenDeltaPositive(ProcessIdentityGateTest.java:91)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:105)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:94)
+	at IdentityTestRunner.main(IdentityTestRunner.java:12)
+TOTAL run=66 failed=3 ignored=0

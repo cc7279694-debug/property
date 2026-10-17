@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" tests="66" skipped="0" failures="0" errors="0" timestamp="2026-10-17T14:20:57.734Z" hostname="WHOCARE" time="1.054">
+  <properties/>
+  <testcase name="api27MainPendingProbeRecognizesWorkerWithoutReady" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.002"/>
+  <testcase name="staleUnknownCanObserveCompletedVerifiedIdentity" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="clockSubtractionOverflowFailsClosed" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="parserPropagatesReadFailure" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="clockBackwardsFailsClosed" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="readerIOExceptionIsStickyFailure" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="apiBelow26RemainsUnsupported" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="parserNeverConsumesBeyond256Bytes" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="snapshotHasExplicitPendingAndUnknownDuration" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="binderReadyAfterOriginalWaitDeadlineStillRejects" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="1.007"/>
+  <testcase name="backgroundCannotBecomeReadyWhileSyncProbeIsUnresolved" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.002"/>
+  <testcase name="api28WithoutHintCannotGuessWorker" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="resourceCloseFailureIsStickyFailure" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="binderTimeoutDoesNotDeclareGlobalReady" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.003"/>
+  <testcase name="api26HostProbeNeverMasqueradesAsWorker" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="repeatedBackgroundMismatchCannotReplaceVerifiedRole" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="parserHandlesShortReadsWithoutExceedingBound" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="subBudgetProbeCanReturnRoleOnly" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="parserRejectsEmptyInput" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="binderInterruptionRestoresInterruptAndRejects" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="failedGateRejectsKnownMainClaim" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="successfulBackgroundCannotWashAwayProbeFailure" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="invalidCallerDoesNotPoisonIndependentVerification" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="probeVersusBackgroundConflictIsSticky" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="parserAllowsTrailingArgumentsOnlyAfterNul" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="repeatedFailureKeepsFirstReason" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="api26MainPendingProbeRecognizesWorkerWithoutReady" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="readyMainDoesNotRepeatProcProbe" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="repeatedCompleteCannotReopenFailedGate" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="parserRejectsMissingNul" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="negativeStartClockIsUnknownEvenWhenDeltaPositive" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="completeWithoutBackgroundObservationFailsClosed" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="negativeFinishClockIsUnknownEvenWhenDeltaPositive" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="unknownProcessNameCannotDefaultToWorker" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="pendingProbeCannotAuthorizeBinder" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.003"/>
+  <testcase name="exactProbeTimeBudgetRejects" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="missingReaderFailsClosed" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="mainProbeNeverWaitsForBackground" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="parserAcceptsHealthyWorkerCmdline" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="lateConflictingProbeCannotPublishOverCompletedBackground" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.002"/>
+  <testcase name="nullCallerIsRejectedWithoutReading" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="concurrentConflictingProbesCannotAuthorizeBinder" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.002"/>
+  <testcase name="binderEarlyCanProceedOnlyAfterBackgroundCompletion" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="api28MainUsesHintWithoutProcRead" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="independentBackgroundObservationDoesNotSetReady" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="missingClockFailsClosed" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="failureDuringUnlockedProbeCannotBeOverwritten" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.003"/>
+  <testcase name="parserRejectsControlCharacters" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="failedBackgroundCannotBeBypassedByKnownClaim" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="parserRejectsZeroProgressRead" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="snapshotReportsRoleOnlyProbeAndMeasuredNanos" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="malformedFrameworkHintIsRejected" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="unknownBackgroundObservationFailsClosed" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="successfulBackgroundConfirmsRole" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="parserRejectsNonAscii" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="arbitraryCallerUnknownIsRejectedWithoutReading" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="parserRejectsUnknownValidAsciiName" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="concurrentConsistentProbesRequireAllToFinishBeforeReady" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.002"/>
+  <testcase name="callerConflictCannotBorrowVerifiedWorkerIdentity" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.001"/>
+  <testcase name="frameworkHintConflictIsStickyFailure" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="parserRejectsEmptyFirstArg" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="snapshotMutationCannotModifyGate" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="frameworkVersusBackgroundConflictIsSticky" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="frameworkHintDoesNotAuthorizeEarlyBinder" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.003"/>
+  <testcase name="clockExceptionFailsClosed" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <testcase name="parserAcceptsHealthyHostCmdline" classname="com.cooper.lithic.m10r3.probe.ProcessIdentityGateTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

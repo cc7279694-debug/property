@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.HostFdScopeTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-17T14:22:00.092Z" hostname="WHOCARE" time="0.007">
+  <properties/>
+  <testcase name="duplicateLabelsAndDuplicateResourceAreRejected" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.003"/>
+  <testcase name="sourceClosesWhenOutputCreationFails" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.0"/>
+  <testcase name="unknownCloseRemainsUnknownAndIsNotRetriedAutomatically" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.001"/>
+  <testcase name="multipleCloseFailuresRetainFirstAndSuppressed" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.001"/>
+  <testcase name="knownClosedScopeNeverClosesResourcesTwice" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.0"/>
+  <testcase name="runtimeCloseFailureDoesNotSkipRemainingResource" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.001"/>
+  <testcase name="ownershipAfterCloseIsRejectedWithoutClosingUnownedResource" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.0"/>
+  <testcase name="bothHostCopiesCloseWhenStartThrows" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.0"/>
+  <testcase name="operationFailureRemainsPrimaryWhenClosingAlsoFails" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.001"/>
+  <testcase name="oneCloseFailureStillClosesAllAndPreservesEvidence" classname="com.cooper.lithic.m10r3.probe.HostFdScopeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

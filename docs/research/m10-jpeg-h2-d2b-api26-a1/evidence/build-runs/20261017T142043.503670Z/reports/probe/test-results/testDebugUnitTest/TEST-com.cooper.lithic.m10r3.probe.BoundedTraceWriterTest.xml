@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2026-10-17T14:20:57.389Z" hostname="WHOCARE" time="0.158">
+  <properties/>
+  <testcase name="writerFailureNotifiesObserverFromWriterWithoutProducerParticipation" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.007"/>
+  <testcase name="observedExternalDiagnosticFailureIsSticky" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="sinkRunsOnDedicatedWriterInsteadOfProducer" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.01"/>
+  <testcase name="firstLossReasonIsNeverReplaced" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="concurrentAcceptedEventsHaveUniqueSequenceAndOneWriter" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.004"/>
+  <testcase name="boundedDrainTimeoutDoesNotClaimSinkStopped" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.041"/>
+  <testcase name="utf8BoundCountsBytesInsteadOfCharacters" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.015"/>
+  <testcase name="offerAfterCloseRetainsExplicitLoss" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.002"/>
+  <testcase name="observerExceptionIsPreservedWithoutClearingUnknown" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="unknownObserverRunsOnceAfterStickyFailure" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="blockedInFlightEntryConsumesCapacity" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="blockedSinkCannotBlockProducer" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="sourceThreadMetadataAndSequenceAreCaptured" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.008"/>
+  <testcase name="nullPayloadIsUnknownRatherThanSilentDrop" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="closeDoesNotWaitForBlockedSink" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="successfulDrainHasCompleteCounts" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.013"/>
+  <testcase name="sinkFailureIsStickyAndNextEvidenceCanStillBeWritten" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.016"/>
+  <testcase name="invalidQueueConfigurationIsRejected" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="pendingIsExplicitBeforeAnyFailure" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.014"/>
+  <testcase name="drainInterruptionIsNotCompleteEvidence" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <testcase name="oversizedPayloadIsExplicitlyRejected" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.0"/>
+  <testcase name="healthSnapshotNeverCallsOverridableThrowableFormatting" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.0"/>
+  <testcase name="queueOverflowCannotBecomeCompleteAfterLaterDrain" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.013"/>
+  <testcase name="invalidDrainTimeoutIsRejected" classname="com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

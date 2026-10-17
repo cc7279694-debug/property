@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.StageAdmissionTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-17T14:22:01.229Z" hostname="WHOCARE" time="0.003">
+  <properties/>
+  <testcase name="everyStageIsPreflightedBeforeAnyMutation" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.002"/>
+  <testcase name="safelyClosedPriorAllowsExactlyTheRequestedNewPointer" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="cleanupFailureKeepsCurrentAndNoTerminalProof" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="currentMustBelongToTheValidatedNamespace" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="unpointedLiveConsumerBlocksAdmission" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="wrongInodeBlocksBeforeAnyRemoval" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="terminalRecoveryIsIdempotentAndDoesNotRepeatDeletion" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.001"/>
+  <testcase name="occupiedOldConsumerBlocksClosureAndPointerReplacement" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="corruptOwnerBlocksBeforeAnyRevocation" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="unknownChildBlocksAdmissionAndIsNotRemoved" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="unknownStageWithNoCurrentIsStillVisited" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="corruptReceiptBlocksBeforeAnyRevocation" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="completeClosureRevokesAndVerifiesBeforeReleasingTheSameLease" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <testcase name="newPointerRequiresAllOtherStagesToBeTerminal" classname="com.cooper.lithic.m10r3.probe.StageAdmissionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

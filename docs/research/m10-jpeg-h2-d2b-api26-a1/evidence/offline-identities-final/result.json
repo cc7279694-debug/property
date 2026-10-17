@@ -1,0 +1,103 @@
+{
+  "hostOnly": true,
+  "deviceCommands": 0,
+  "suites": [
+    {
+      "suite": "original-static",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b",
+        "-p",
+        "test_source_contract.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "methods": 8,
+      "identities": [
+        "test_source_contract.HostSourceContract.test_activity_does_not_claim_on_ui",
+        "test_source_contract.HostSourceContract.test_activity_does_not_construct_runner_on_ui",
+        "test_source_contract.HostSourceContract.test_application_oncreate_does_not_open_owner_or_proc",
+        "test_source_contract.HostSourceContract.test_authority_writes_remain_synchronous_store_operations",
+        "test_source_contract.HostSourceContract.test_grant_and_result_recheck_timing_in_short_authorization",
+        "test_source_contract.HostSourceContract.test_reserve_does_not_return_before_final_deadline_observation",
+        "test_source_contract.HostSourceContract.test_trace_producer_does_not_do_logcat_or_file_io",
+        "test_source_contract.HostSourceContract.test_trace_producer_has_no_global_synchronized_monitor"
+      ],
+      "logBytes": 1345,
+      "logSHA256": "3911c9d574a0a95c518057aec1395c2e327ffde294eac2cf07064c580b22db80"
+    },
+    {
+      "suite": "a1-integration",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-api26-a1",
+        "-p",
+        "test_a1_integration.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "methods": 4,
+      "identities": [
+        "test_a1_integration.IdentityIntegrationContract.test_background_verification_has_distinct_completion",
+        "test_a1_integration.IdentityIntegrationContract.test_cmdline_reader_uses_actual_bounded_parser_and_resource_scope",
+        "test_a1_integration.IdentityIntegrationContract.test_host_claim_checks_full_identity_not_name_hint",
+        "test_a1_integration.IdentityIntegrationContract.test_role_uses_gate_and_never_promotes_global_identity"
+      ],
+      "logBytes": 785,
+      "logSHA256": "45bf58aaa402d0b9471c8ca8a1cff2799cf14d3fc871b2f6f06823e67039d570"
+    },
+    {
+      "suite": "d1-models",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d1",
+        "-p",
+        "test_fence_model.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "methods": 22,
+      "identities": [
+        "test_fence_model.FailureFenceTests.test_all_120_post_failure_schedules_stay_closed",
+        "test_fence_model.FailureFenceTests.test_duplicate_failure_keeps_first_reason_and_verified_revoke",
+        "test_fence_model.FailureFenceTests.test_failed_queued_bind_never_enters_binding",
+        "test_fence_model.FailureFenceTests.test_failure_after_death_rejects_late_result",
+        "test_fence_model.FailureFenceTests.test_failure_revokes_existing_attempt_before_any_late_grant",
+        "test_fence_model.FailureFenceTests.test_healthy_result_death_both_orders_preserve_original_contract",
+        "test_fence_model.FailureFenceTests.test_inflight_bind_return_preserves_cleanup_for_every_outcome",
+        "test_fence_model.FailureFenceTests.test_not_registered_after_successful_bind_stays_unknown",
+        "test_fence_model.FailureFenceTests.test_old_endpoint_death_does_not_retire_current_endpoint",
+        "test_fence_model.FailureFenceTests.test_old_epoch_and_wrong_identity_cannot_authorize",
+        "test_fence_model.FailureFenceTests.test_persistence_unknown_keeps_memory_fence_and_admission_closed",
+        "test_fence_model.FailureFenceTests.test_revoked_pin_without_revoked_file_is_denied_in_proposal",
+        "test_fence_model.FailureFenceTests.test_unbind_exception_never_erases_responsibility",
+        "test_fence_model.RecoveryDesignTests.test_every_missing_or_unknown_precondition_blocks_before_deletion",
+        "test_fence_model.RecoveryDesignTests.test_failed_attempt_terminal_keeps_current_without_success_receipt",
+        "test_fence_model.RecoveryDesignTests.test_free_lease_does_not_replace_old_host_quiescence",
+        "test_fence_model.RecoveryDesignTests.test_historical_h2_snapshot_is_not_recovery_eligibility",
+        "test_fence_model.RecoveryDesignTests.test_lease_loss_or_pending_restart_still_blocks",
+        "test_fence_model.RecoveryDesignTests.test_partial_deletion_requires_separate_review_not_proof_fabrication",
+        "test_fence_model.RecoveryDesignTests.test_separate_execution_permission_is_always_required",
+        "test_fence_model.RecoveryDesignTests.test_terminal_replay_verifies_without_deleting_twice",
+        "test_fence_model.RecoveryDesignTests.test_terminal_sync_failure_may_clear_pin_but_never_allows_admission"
+      ],
+      "logBytes": 3632,
+      "logSHA256": "80bee4e559d46bd3dfd2f9878dd28ed6efce56eb396b434e1ebacd40e4bc2b44"
+    }
+  ]
+}

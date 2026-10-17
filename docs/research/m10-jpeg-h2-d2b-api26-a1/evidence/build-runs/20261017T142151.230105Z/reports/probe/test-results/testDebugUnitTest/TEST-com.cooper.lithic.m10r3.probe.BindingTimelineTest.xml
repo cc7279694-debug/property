@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.BindingTimelineTest" tests="34" skipped="0" failures="0" errors="0" timestamp="2026-10-17T14:21:59.805Z" hostname="WHOCARE" time="0.021">
+  <properties/>
+  <testcase name="duplicateBoundaryCannotExtendDeadline" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.006"/>
+  <testcase name="clockExceptionIsExplicitUnknown" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.002"/>
+  <testcase name="snapshotContainsThreadAndNanosForEveryAcceptedBoundary" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="firstFailureIsDeliveredExactlyOnce" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="explicitCompletionStopsFutureDeadlineObservation" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="queuedTimeoutClosesMemoryFence" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="helloMayPrecedeReserveReturnButDoesNotFinishHandshake" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="normalBoundariesProduceBothReadyFacts" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="durationSnapshotPreservesMissingAndEarlyCallbackSemantics" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="callbackAtExactDeadlineIsRejectedWithoutWaitingForTimer" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="reserveReturnMayPrecedeHello" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="invalidBudgetsAreRejected" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="callbackWaitStartsAtActualSuccessfulBindReturn" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="unpostedTimelineDoesNotInventDeadlineOrClaimSuccess" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="unissuedReserveIsBoundedAfterConnection" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="invocationTotalRemainsArmedAfterHello" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="bindingTotalCannotBeResetByPhaseProgress" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="returnedFalseImmediatelyFences" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="earlyConnectedDoesNotCancelSynchronousBindDeadline" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="failureCallbackExceptionIsPreservedAsUnknown" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="monotonicRegressionIsUnknownAndFailClosed" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="synchronousBindHasItsOwnDeadline" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="helloWaitHasItsOwnDeadline" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="completionRequiresHandshakeFacts" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="failureCallbackRunsOutsideTimelineMonitor" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="snapshotDerivesActualMonotonicPhaseDurations" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="negativeClockIsRejected" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="helloAloneDoesNotHideHungReserveCall" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="arithmeticOverflowRejectsInsteadOfWrappingDeadline" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="lateReturnIsRecordedButDoesNotRestoreAuthority" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.001"/>
+  <testcase name="reserveBeforeBothBindingFactsIsRejected" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="connectedMayPrecedeSuccessfulBindReturn" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="thrownBindIsDistinctUnknownResult" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <testcase name="rejectedReserveImmediatelyFences" classname="com.cooper.lithic.m10r3.probe.BindingTimelineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

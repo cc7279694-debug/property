@@ -18,8 +18,9 @@ final class ProbeSupport {
     static volatile Context context;
     static volatile String processName = "UNKNOWN";
     static volatile boolean mainOwner;
-    static volatile String identityError;
-    static final java.util.concurrent.CountDownLatch identityReady=new java.util.concurrent.CountDownLatch(1);
+    // A role hint may permit onBind; only this gate's independent background READY
+    // permits a Binder/authorization caller. A name alone is never that proof.
+    static final ProcessIdentityGate identity=new ProcessIdentityGate();
     private static volatile BoundedTraceWriter diagnostics;
     private static final java.util.concurrent.atomic.AtomicLong earlyTraceLoss=new java.util.concurrent.atomic.AtomicLong();
     private static final java.util.concurrent.atomic.AtomicReference<Runnable> diagnosticFence=new java.util.concurrent.atomic.AtomicReference<>();
@@ -41,7 +42,8 @@ final class ProbeSupport {
         return new JSONObject().put("status",h.status).put("attempted",h.attempted).put("accepted",h.accepted).put("written",h.written)
             .put("dropped",h.dropped).put("writeFailures",h.writeFailures).put("pending",h.pending)
             .put("firstFailure",String.valueOf(h.firstFailure)).put("firstFailureDetail",String.valueOf(h.firstFailureDetail)).put("traceObserverFailures",h.observerFailures).put("earlyTraceLoss",earlyTraceLoss.get())
-            .put("commandQueue",context instanceof ProbeApplication?((ProbeApplication)context).queueSummary():JSONObject.NULL);
+            .put("commandQueue",context instanceof ProbeApplication?((ProbeApplication)context).queueSummary():JSONObject.NULL)
+            .put("identity",new JSONObject(identity.snapshot()));
     }
     static boolean flushDiagnostics(long timeoutMs)throws InterruptedException{
         if(android.os.Looper.myLooper()==android.os.Looper.getMainLooper())throw new IllegalStateException("trace drain on main");
@@ -72,20 +74,15 @@ final class ProbeSupport {
     }
     static String knownRole(String name){return PKG.equals(name)?"HOST":(PKG+":jpeg_worker").equals(name)?"WORKER":"REJECT";}
     static String role(String name) {
-        // API26 has no Application.getProcessName. Only a background/Binder caller may
-        // wait briefly for the queued identity read; main remains nonblocking/fail-closed.
-        if("UNKNOWN".equals(name)&&android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()){
-            try{if(!identityReady.await(1000,java.util.concurrent.TimeUnit.MILLISECONDS)||identityError!=null)return "REJECT";}
-            catch(InterruptedException e){Thread.currentThread().interrupt();return "REJECT";}
-            return knownRole(processName);
-        }
-        return knownRole(name);
+        // API26/27's approved exception reads only the bounded process identity.
+        // It does not initialize owner/READY or wait for the background initializer.
+        return identity.role(name,android.os.Build.VERSION.SDK_INT,
+            android.os.Looper.myLooper()==android.os.Looper.getMainLooper(),
+            ProbeSupport::processName26,SystemClock::elapsedRealtimeNanos);
     }
     static String processName26() throws IOException {
         try(FileInputStream in=new FileInputStream("/proc/self/cmdline")) {
-            byte[] b=new byte[256]; int n=in.read(b); if(n<=0)throw new IOException("empty cmdline");
-            int end=0; while(end<n&&b[end]!=0)end++; if(end==n)throw new IOException("unbounded cmdline");
-            return new String(b,0,end,StandardCharsets.UTF_8);
+            return ProcessIdentityGate.readCmdline(in);
         }
     }
     static String sha(byte[] bytes) throws Exception {

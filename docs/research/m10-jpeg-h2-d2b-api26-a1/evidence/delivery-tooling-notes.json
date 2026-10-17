@@ -1,0 +1,22 @@
+{
+  "scope": "Host delivery audit tooling only; not JUnit or Android behavior",
+  "source": "Observed local verification command outputs retained in this Codex turn",
+  "intermediateFindings": [
+    {
+      "finding": "Raw CRLF evidence was reported as trailing whitespace by staged diff checking",
+      "resolution": "Preserved all raw bytes; whitespace exemption is restricted to the new raw evidence subtree. Authored source and documents remain checked."
+    },
+    {
+      "finding": "Initial raw-versus-index SHA comparison failed on docs/CURRENT_STATE.md because Git text normalization changes CRLF to LF",
+      "resolution": "Delivery inventory records both worktree byte SHA-256 and Git index byte SHA-256, allowing only exact CRLF-to-LF normalization."
+    },
+    {
+      "finding": "git show colon-path failed with exit 128 and Filename too long on a nested XML evidence path",
+      "resolution": "Index object IDs are enumerated once, then exact staged blobs are read by git cat-file; no global Git or Windows settings changed."
+    }
+  ],
+  "productOrResearchJavaChangedByTheseFixes": false,
+  "rawEvidenceRewritten": false,
+  "independentOfJunitResults": true,
+  "finalOutcome": "PASS as recorded by delivery-verification.json"
+}

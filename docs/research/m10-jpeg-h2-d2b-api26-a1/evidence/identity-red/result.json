@@ -1,0 +1,54 @@
+{
+  "kind": "HOST_JVM_ONLY",
+  "phase": "red",
+  "redSeam": "Explicit legacy-semantics compilable adapter; not original source or Android execution",
+  "inputs": [
+    {
+      "path": "docs\\research\\m10-jpeg-h2-d2b-api26-a1\\evidence\\identity-red\\ProcessIdentityGate.java",
+      "bytes": 1639,
+      "sha256": "efb126aba0e77e431b89889b6bd3fac5eb55fb9aaf13a7f0a2cd090ed4917da2"
+    },
+    {
+      "path": "docs\\research\\m10-jpeg-r3\\host\\probe\\src\\test\\java\\com\\cooper\\lithic\\m10r3\\probe\\ProcessIdentityGateTest.java",
+      "bytes": 16618,
+      "sha256": "222c1cdead0057a0cd19998f0095a444da3604dc6b220fa7934e60592f319911"
+    }
+  ],
+  "commands": [
+    {
+      "name": "javac",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javac.exe",
+        "-encoding",
+        "UTF-8",
+        "-cp",
+        "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+        "-d",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\砺石新APP\\build\\a1-identity-jvm\\1792246672923680100",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\砺石新APP\\docs\\research\\m10-jpeg-h2-d2b-api26-a1\\evidence\\identity-red\\ProcessIdentityGate.java",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\砺石新APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\src\\test\\java\\com\\cooper\\lithic\\m10r3\\probe\\ProcessIdentityGateTest.java",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\砺石新APP\\build\\a1-identity-jvm\\1792246672923680100\\IdentityTestRunner.java"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.4060000000026776,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "log": "docs\\research\\m10-jpeg-h2-d2b-api26-a1\\evidence\\identity-red\\javac.log"
+    },
+    {
+      "name": "junit",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+        "-cp",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\砺石新APP\\build\\a1-identity-jvm\\1792246672923680100;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+        "IdentityTestRunner",
+        "red"
+      ],
+      "exitCode": 1,
+      "elapsedSeconds": 0.3279999999940628,
+      "bytes": 8806,
+      "sha256": "66f4636d2b81fbdcf0c27cde73cd476db491672837b2bfce082775faa45a01a5",
+      "log": "docs\\research\\m10-jpeg-h2-d2b-api26-a1\\evidence\\identity-red\\junit.log"
+    }
+  ]
+}

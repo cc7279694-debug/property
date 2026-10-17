@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="r3-outsider"
+    android:compileSdkVersion="36"
+    android:compileSdkVersionCodename="16"
+    package="com.cooper.lithic.m10r3.outsider"
+    platformBuildVersionCode="36"
+    platformBuildVersionName="16">
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="36" />
+
+    <queries>
+
+        <package
+            android:name="com.cooper.lithic.m10r3.probe" />
+    </queries>
+
+    <application
+        android:theme="@ref/0x1030241"
+        android:label="R3 different UID binding probe"
+        android:debuggable="true"
+        android:allowBackup="false"
+        android:extractNativeLibs="false">
+
+        <activity
+            android:name="com.cooper.lithic.m10r3.outsider.OutsiderActivity"
+            android:exported="true" />
+    </application>
+</manifest>
