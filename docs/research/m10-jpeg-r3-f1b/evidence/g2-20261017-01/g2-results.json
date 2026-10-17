@@ -1,0 +1,68 @@
+{
+  "task": "M10-R3-F1B-G2",
+  "status": "BLOCKED",
+  "blocker": "emulator-5596 get-state: device not found",
+  "limits": "No claim that the AVD is stopped, deleted, unsafe or active elsewhere; exact authorized ADB serial unavailable.",
+  "preflightInvocationCount": 1,
+  "preflightExitCode": 2,
+  "endingInvocationCount": 1,
+  "endingExitCode": 2,
+  "adbCommands": 2,
+  "allCommandExitCodes": [
+    1,
+    1
+  ],
+  "commandTypes": [
+    "get-state"
+  ],
+  "snapshotsCollected": 0,
+  "serviceClassification": {
+    "status": "NOT_RUN",
+    "value": null
+  },
+  "composedEligibility": {
+    "status": "NOT_RUN",
+    "value": null
+  },
+  "checks": {
+    "avdIdentity": "NOT_RUN",
+    "api36": "NOT_RUN",
+    "bootComplete": "NOT_RUN",
+    "formalAPKAndUID": "NOT_RUN",
+    "researchAPKsAndUIDs": "NOT_RUN",
+    "workerProcessObservation": "NOT_RUN",
+    "sample1CompleteServiceRecord": "NOT_RUN",
+    "sample2CompleteServiceRecord": "NOT_RUN",
+    "stageCurrentPinReceipt": "NOT_RUN",
+    "twoSnapshotConsistency": "NOT_RUN",
+    "NO_TARGET_RECORD": "NOT_RUN",
+    "INACTIVE_RECORD_CANDIDATE": "NOT_RUN",
+    "serviceBLOCKEDClassification": "NOT_RUN",
+    "PREFLIGHT_ELIGIBLE": "NOT_RUN",
+    "formalPrivateMetadataComparison": "NOT_RUN",
+    "deviceSettingsComparison": "NOT_RUN"
+  },
+  "operationCounts": {
+    "install": 0,
+    "appLaunch": 0,
+    "normal": 0,
+    "Outsider": 0,
+    "cleanup": 0,
+    "signals": 0,
+    "rebootOrAVDStart": 0,
+    "preflightRetries": 0
+  },
+  "privateByteIntegrity": "NOT_RUN",
+  "privateContentRead": false,
+  "unrelatedAppLogsArchived": false,
+  "knownSourceFactsPreserved": {
+    "G1": "PASS WITH NOTES (user-transferred independent review, supervisor/HOST_ONLY only)",
+    "R3AndroidCases": "0 PASS / 1 UNKNOWN / 28 NOT_RUN",
+    "M10": "PENDING / three JPEG FAIL",
+    "UI-C1": "ACCEPTED / FROZEN - PASS WITH NOTES",
+    "M11": "NOT_AUTHORIZED",
+    "N01": "OPEN_NOT_TESTED",
+    "N02": "PRESERVED",
+    "N03": "NOT_RUN"
+  }
+}

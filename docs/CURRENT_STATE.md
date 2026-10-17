@@ -1,8 +1,15 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；M10-R3-F1B-G1研究门禁修正等待独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；M10-R3-F1B-G2真实只读预检因授权设备不可达停止）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R3-F1B-G2 — BLOCKED，等待独立审查**：用户授权锁定G1入口的一次真实只读preflight；来源`7ff737ecd54746aaed580a15fac92126009d5c44`，独立worktree/分支`research/m10-jpeg-strict-r3-f1b-g2`。2026-10-17 07:19:16 UTC首条`emulator-5596 get-state`退出1并报告device not found，预检进程退出2；07:19:39 UTC必要只读结束核查首条同样失败，随后停止。没有修改G1源码/规则或恢复环境。
+- **G2实际结果与限度**：总计2条只读状态查询，均非超时；0设备快照、0新增Android案例PASS。AVD/API36/boot、三包当前APK/UID、活跃Worker、ServiceRecord分类、stage/current/pin/receipt、双快照一致性与前后保护比较全部NOT_RUN。总体BLOCKED是连接环境，不是服务分类BLOCKED；不能由旧证据推定当前设备或私有数据状态。无安装/启动/清理/信号、无ADB预检重试、无私人账本或图片字节读取。
+- **G1独立来源与继承**：本轮用户转交G1独立**PASS WITH NOTES，仅限研究监督器和宿主测试**，评审7ff737e。原81项HOST_ONLY PASS保留、本轮未重跑，不替代Android门禁。N01～N03、历史UNKNOWN、原29场景0 PASS/1 UNKNOWN/28 NOT_RUN、M10 PENDING/三JPEG FAIL、R3生命周期BLOCKED、UI-C1冻结PASS WITH NOTES与M11 NOT_AUTHORIZED均保留。
+- **G2交接**：[执行](research/M10_JPEG_R3_F1B_G2_EXECUTION.md)、[设备门禁结果](research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md)、[风险与决策](research/M10_JPEG_R3_F1B_G2_DECISION.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md)。提交推送G2后立即停止，不自动安装APK或运行Outsider/normal。
+
+以下为G1交付历史；其独立审查来源与当前G2结果以上节为准：
 
 - **M10-R3-F1B-G1 — READY_FOR_REVIEW**：用户本轮仅授权研究Python、宿主测试、文档及提交推送。来源锁定`04561e14d5d5694f99dadf35d9a92e42d851e9bd`，独立worktree/分支`research/m10-jpeg-strict-r3-f1b-g1`。原监督器全局名称否决已替换为完整ServiceRecord候选分类、独立进程/已装身份/stage检查及双快照一致性组合；未知/冲突/活动/截断fail-closed。未修改WorkerService、StageStore、正式产品或历史证据。
 - **本轮实际验证**：81个唯一Python方法PASS（新38分类＋27组合/原监督器FakeCollector集成＋原16 stage），0 FAIL/ERROR/SKIP；真实RED/GREEN及输入SHA保留。没有调用ADB、Android工具或构建，没有安装/启动任何App；Outsider/normal、FD/lease/死亡/真实清理仍NOT_RUN。宿主合成PREFLIGHT_ELIGIBLE不等于设备资格、租约或安装/启动授权。历史F1B裁剪资料无法组成完整双快照，保持其BLOCKED结论。
@@ -88,9 +95,9 @@
 
 ## Git
 
-- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1b-g1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；只提交推送`research/m10-jpeg-strict-r3-f1b-g1`，来源F1B锁定`04561e14d5d5694f99dadf35d9a92e42d851e9bd`，最终SHA/远端一致性取Git回执。F1B原分支保持04561e1、F1-A为f23180a、F0为f513725、R3为17b2cb4、R2为2912601、R1为2cdad4a、R0为c4cd90b；原M10工作区/分支4159682、UI-C1为0dce7dd、main远端145326d。没有合并、reset、force或修改这些分支/工作区。
+- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1b-g2/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；只提交推送`research/m10-jpeg-strict-r3-f1b-g2`，来源G1锁定`7ff737ecd54746aaed580a15fac92126009d5c44`，最终SHA/远端一致性取Git回执。G1原分支保持7ff737e、F1B为04561e1、F1-A为f23180a、F0为f513725、R3为17b2cb4、R2为2912601、R1为2cdad4a、R0为c4cd90b；原M10工作区/分支4159682、UI-C1为0dce7dd、main远端145326d。没有合并、reset、force或修改这些分支/工作区。
 - M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`与冻结回写57de897为历史依据。M10原交付及本次独立复核基准 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`；补充验证提交仅新增测试/必要合成资产/证据及当前交接，不是生产修复，最终SHA与推送结果由Git日志/最终回执核对，避免递归引用。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥、私人原图或真实个人数据。
 
 ## Next Recommended Task
 
-**READY_FOR_REVIEW — M10-R3-F1B-G1。立即停止，等待ChatGPT独立审查研究门禁与81项宿主证据。**未执行实时预检，不能认定设备当前闲置或安全；历史F1B Android Normal仍BLOCKED。未经另行授权不安装、不启动Outsider/normal，不清理/终止旧研究状态，不开展其他28项或取消/故障恢复/native。N01～N03、历史UNKNOWN、M10三FAIL与M11未授权均保留。
+**BLOCKED — M10-R3-F1B-G2。立即停止，等待ChatGPT独立审查环境阻塞与用户下一授权。**原授权串号目前不可达，真实服务/进程/stage和两轮快照均未取得，不能认定设备当前闲置或安全。本轮不恢复模拟器、不重试预检、不安装或启动Outsider/normal，不清理/终止旧研究状态，不开展其他28项或取消/故障恢复/native。N01～N03、历史UNKNOWN、M10三FAIL与M11未授权均保留。

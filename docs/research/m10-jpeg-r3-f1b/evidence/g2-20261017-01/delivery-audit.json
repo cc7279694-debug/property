@@ -1,0 +1,488 @@
+{
+  "auditStatus": "PASS",
+  "deviceTaskStatus": "BLOCKED",
+  "base": "7ff737ecd54746aaed580a15fac92126009d5c44",
+  "scope": "OFFLINE_DELIVERY_AUDIT_NOT_DEVICE_VALIDATION",
+  "lockedG1InputsUnchanged": true,
+  "executedSourceHashesMatch": true,
+  "historicalTrackedPathsUnchangedExcept": [
+    "docs/CURRENT_STATE.md"
+  ],
+  "actualADBCommands": 2,
+  "actualADBCommandTypes": [
+    "get-state"
+  ],
+  "allADBExitCodes": [
+    1,
+    1
+  ],
+  "deviceSnapshots": 0,
+  "installCount": 0,
+  "appLaunchCount": 0,
+  "preflightRetries": 0,
+  "privateByteIntegrity": "NOT_RUN",
+  "localLinkCount": 77,
+  "links": [
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-G1.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_ANDROID_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_RESOURCE_LIFECYCLE.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1A_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_LIFECYCLE_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_FD_RECOVERY.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R3.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_DECISION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_ARCHITECTURE.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_RESOURCE_BUDGET.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_FAILURE_RECOVERY.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_FEASIBILITY.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_TEST_MATRIX.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_PRODUCTION_PROPOSAL.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_EXECUTION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_RESULTS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_RESOURCE_REPORT.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_PRODUCTION_RECOMMENDATION.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R1.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R2.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M10-JPEG-supplement-verification.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M10-JPEG-supplement-verification.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-14-M10-JPEG-supplement.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md#m09-独立代码验收与正式冻结记录2026-10-13"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/m10-tests/final-split-verification.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/m10-device/manual/final-storage-device-proof.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "DECISIONS.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "planning/M09_CONTRACT.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-files.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-13-M09.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-verification.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-verification.json"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-files.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-13-M08.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md#m08-独立代码验收与正式冻结记录2026-10-13"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "SPEC_ISSUES.md"
+    },
+    {
+      "file": "docs/CURRENT_STATE.md",
+      "target": "ARCHITECTURE.md"
+    },
+    {
+      "file": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md",
+      "target": "../research/M10_JPEG_R3_F1B_G2_EXECUTION.md"
+    },
+    {
+      "file": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md",
+      "target": "../research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md"
+    },
+    {
+      "file": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md",
+      "target": "../research/M10_JPEG_R3_F1B_G2_DECISION.md"
+    },
+    {
+      "file": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md",
+      "target": "../research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-results.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DECISION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/adb-commands.jsonl"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DECISION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-results.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-results.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-preflight-execution.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/blocked.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-ending-execution.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-ending-error.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/adb-commands.jsonl"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-command-integrity.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-contract.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/adb-commands.jsonl"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-preflight-execution.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/blocked.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-ending-execution.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-ending-error.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-command-integrity.json"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1b-g2/end_protection.py"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "M10_JPEG_R3_F1B_G2_DECISION.md"
+    },
+    {
+      "file": "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md",
+      "target": "../checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md"
+    }
+  ],
+  "sensitiveFindings": [],
+  "protectedWorktrees": [
+    {
+      "path": "E:/CODEX/砺石新APP",
+      "head": "41596820145dc4a3fa6d041728a59540d828108a",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/lithic-ui-c1/砺石新APP",
+      "head": "0dce7dd0725a54be4f0280870ef6ca47c48ea7ed",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r0/砺石新APP",
+      "head": "c4cd90b148cce99ba497d864be1176c90408a4da",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r1/砺石新APP",
+      "head": "2cdad4aa40f9503aad13245670adc9a4d13db32b",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r2/砺石新APP",
+      "head": "2912601899f0282ecc6aa32d5cf26a7b44c24c63",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3/砺石新APP",
+      "head": "17b2cb40d8f3b95136f3d43e5c91cd7aee7b8e5d",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f0/砺石新APP",
+      "head": "f513725b862d3422b371883536557c4233bed2e6",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1/砺石新APP",
+      "head": "f23180a4c086d0fc01f944a83174d52e9ad62dbd",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1b/砺石新APP",
+      "head": "04561e14d5d5694f99dadf35d9a92e42d851e9bd",
+      "status": "CLEAN"
+    },
+    {
+      "path": "E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1b-g1/砺石新APP",
+      "head": "7ff737ecd54746aaed580a15fac92126009d5c44",
+      "status": "CLEAN"
+    }
+  ],
+  "protectedRemoteRefs": {
+    "refs/heads/feat/m10-local-cover-media": "41596820145dc4a3fa6d041728a59540d828108a",
+    "refs/heads/feat/ui-c1-visual-redesign": "0dce7dd0725a54be4f0280870ef6ca47c48ea7ed",
+    "refs/heads/main": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a",
+    "refs/heads/research/m10-jpeg-strict-r3-f1b": "04561e14d5d5694f99dadf35d9a92e42d851e9bd",
+    "refs/heads/research/m10-jpeg-strict-r3-f1b-g1": "7ff737ecd54746aaed580a15fac92126009d5c44"
+  },
+  "newRemoteBranchAbsentBeforePush": true,
+  "files": {
+    "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md": {
+      "bytes": 1851,
+      "sha256": "4f47bc4c4245f5e0a695a5ae6aee04d5bde9dd1c563d545e39b595894a892399"
+    },
+    "docs/CURRENT_STATE.md": {
+      "bytes": 31394,
+      "sha256": "84d01f0d31e5893b939853610b7ab321670276444799f09b25294b195f381457"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/adb-commands.jsonl": {
+      "bytes": 691,
+      "sha256": "c0d19cd7d471586f09f6af142088672d45c695d133092c5872011fcbe13e7013"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/blocked.json": {
+      "bytes": 212,
+      "sha256": "8110cc381fcccfbbb71ad88538a5f29c53d125eb2dacf565f2dd92ad1da7e56c"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-command-integrity.json": {
+      "bytes": 1478,
+      "sha256": "eec73888ec427da1c51a581478de30357f5a8dab9c0464a780c1e4bcf17b863a"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-contract.json": {
+      "bytes": 2599,
+      "sha256": "13b45d42cdd6ff6f4ea36d0ba2adb68f02d9fd576f4f1c1cd0f96da493c0f792"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-ending-attempt.json": {
+      "bytes": 176,
+      "sha256": "1ea6a8d2dd2730c93006f91249301f49b053b991b134bf000f9234276193a165"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-ending-console.log": {
+      "bytes": 51,
+      "sha256": "c38bf218b927f52b09947622563e4aa023338446235aa867f4c165f9d5307c8b"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-ending-error.json": {
+      "bytes": 180,
+      "sha256": "c684eef94fbbbcdc897fc58f99a97a8d611e33b8cb603ac015603dc3d98430a4"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-ending-execution.json": {
+      "bytes": 382,
+      "sha256": "7712caeff4ba9a99a96cb290c65e83813e01f66125ebceee1d66c0bd77f29897"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-preflight-console.log": {
+      "bytes": 125,
+      "sha256": "3e4f537340d268bb43649f59f4ddd77973a42d8d04d2713581dff223704cd39a"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-preflight-execution.json": {
+      "bytes": 350,
+      "sha256": "3f2c6e664f8740e309669a30f8d70e2271f807ca8e7226198227a1d6c9794b3a"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/g2-results.json": {
+      "bytes": 2034,
+      "sha256": "826f00c19d6c9d0faacc70b3bb3a6d4c1ed24cf48afc22caf3ae864c5fd9eb12"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/preflight-attempt.json": {
+      "bytes": 149,
+      "sha256": "1f7c1a38bb34866a331bdf4b67b5d6f00c32f16c3df054d666ef829f2abd802c"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/preflight-input-sha.json": {
+      "bytes": 992,
+      "sha256": "f8cecf03020db98c955cc6320779a0fc30f0dcfffb03772f10b2499b88e80041"
+    },
+    "docs/research/m10-jpeg-r3-f1b/evidence/g2-20261017-01/preflight-script.py.txt": {
+      "bytes": 15347,
+      "sha256": "ad116cc3ab41a8974cf8a8d997319395fff7c81e6283c73fd35074fc811516e8"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g2/.gitattributes": {
+      "bytes": 97,
+      "sha256": "4be02220e86e3751af42470625c80a991439972166a658fecffa9a00b44700ec"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g2/end_protection.py": {
+      "bytes": 6007,
+      "sha256": "9a0b97f899ac5c2124cfed9a3795deb6a8064a29ca57de1582e035390bd19427"
+    },
+    "docs/research/M10_JPEG_R3_F1B_G2_DECISION.md": {
+      "bytes": 2679,
+      "sha256": "40362fc185e5b2d196b4c39912e5f2eadddf8c71cae416671f3276c7f77ecaa9"
+    },
+    "docs/research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md": {
+      "bytes": 3977,
+      "sha256": "449015906f76771f53843d675687c270ca53f82785cba59e88fa86a0ad0fd53f"
+    },
+    "docs/research/M10_JPEG_R3_F1B_G2_EXECUTION.md": {
+      "bytes": 5674,
+      "sha256": "fdfd0b38e35a6384ba6bb0214d9a6e678a1d1443da48e7cdbbabdc81dd5aa408"
+    }
+  },
+  "limits": [
+    "Source/Git checks do not prove current installed APK or private bytes unchanged.",
+    "ASCII command digest metadata is derived offline from archived text.",
+    "Secret scan is scoped pattern verification, not an absolute guarantee.",
+    "No full ServiceRecord or snapshots were collected."
+  ]
+}

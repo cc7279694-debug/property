@@ -1,0 +1,65 @@
+{
+  "task": "M10-R3-F1B-G2",
+  "source": "7ff737ecd54746aaed580a15fac92126009d5c44",
+  "goal": "one unchanged G1 CLI read-only preflight; then ending protection only",
+  "allowedDevice": "emulator-5596 / Lithic_M01_API_36 / API36",
+  "preflightEntry": "docs/research/m10-jpeg-r3-f1b/verify.py preflight",
+  "outputRootReason": "unchanged G1 Supervisor restricts outputs to F1B/evidence; new unique g2 subdirectory only",
+  "preflightRunsAllowed": 1,
+  "installAllowed": false,
+  "launchAllowed": false,
+  "forbidden": [
+    "cleanup",
+    "kill",
+    "force-stop",
+    "unbind",
+    "clear-data",
+    "reboot",
+    "wipe",
+    "normal",
+    "Outsider",
+    "29-case-suite",
+    "production changes"
+  ],
+  "endingEntry": "docs/research/m10-jpeg-r3-f1b-g2/end_protection.py",
+  "endingEntrySHA256": "9a0b97f899ac5c2124cfed9a3795deb6a8064a29ca57de1582e035390bd19427",
+  "lockedInputs": {
+    "docs/research/m10-jpeg-r3-f1b/evidence/f1b-20261017-01/blocked-service-record-detail.txt": {
+      "bytes": 1413,
+      "sha256": "4080746899e8fcfb71f63c77599f5ff10c972ae3ab70983126155679b9add571"
+    },
+    "docs/research/m10-jpeg-r3-f1b/stage_check.py": {
+      "bytes": 10945,
+      "sha256": "3c747624f246a2f51420f58e240dda9c15d8877acbd123716c5963085dfd61df"
+    },
+    "docs/research/m10-jpeg-r3-f1b/test_stage_check.py": {
+      "bytes": 8229,
+      "sha256": "e3a9bb0345f31c24898b4e470aa9dc2be03ac63dca15e08d08694977c3549a8c"
+    },
+    "docs/research/m10-jpeg-r3-f1b/verify.py": {
+      "bytes": 15347,
+      "sha256": "ad116cc3ab41a8974cf8a8d997319395fff7c81e6283c73fd35074fc811516e8"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/gate.py": {
+      "bytes": 10859,
+      "sha256": "bd05bfe4baed3156dcef8da39f9341e90418da64a77848ccf7e6af2dee7610a3"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/run_host_tests.py": {
+      "bytes": 4157,
+      "sha256": "b9ca21c714d089e2ff7d9d60832cf4557cc8d96ad0e3eabfab1fa7e6d0b20a3a"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/service_record.py": {
+      "bytes": 12728,
+      "sha256": "0ed3db01ea8eb9c6997227557ef64675ad69f4236cfe28a690c8a8a512206d08"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/test_gate.py": {
+      "bytes": 15537,
+      "sha256": "51570e7494e3d307570545c5fedb45bb2ed3f0f4fdcc61d0a425ee4cdd0cabbb"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/test_service_record.py": {
+      "bytes": 12164,
+      "sha256": "64de3a34d235f45dff6e013bbbd01cc4c4bdb055c56158f7199a6a00fc6fd737"
+    }
+  },
+  "inheritedG1Review": "PASS WITH NOTES, research supervisor and HOST_ONLY tests only"
+}
