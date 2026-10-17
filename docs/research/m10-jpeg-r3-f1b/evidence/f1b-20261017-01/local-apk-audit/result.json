@@ -1,0 +1,67 @@
+{
+  "status": "PASS_HOST_ONLY",
+  "sourceInputsUnchangedFromLockedF1A": 27,
+  "apks": [
+    {
+      "module": "probe",
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\build\\outputs\\apk\\debug\\probe-debug.apk",
+      "bytes": 50205,
+      "sha256": "a3eea12dfe05736a69c473fa812d0b52a43c8100bbed2cffd0ba9c8f5f0ea684",
+      "package": "com.cooper.lithic.m10r3.probe",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": []
+    },
+    {
+      "module": "outsider",
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\outsider\\build\\outputs\\apk\\debug\\outsider-debug.apk",
+      "bytes": 10473,
+      "sha256": "a51c4984f07986c8df52b3dbbf7f946523e4c259aa67ab5e8f9b3feffdf41879",
+      "package": "com.cooper.lithic.m10r3.outsider",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": []
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+        "manifest",
+        "print",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\build\\outputs\\apk\\debug\\probe-debug.apk"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\build\\outputs\\apk\\debug\\probe-debug.apk"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+        "manifest",
+        "print",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\outsider\\build\\outputs\\apk\\debug\\outsider-debug.apk"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\outsider\\build\\outputs\\apk\\debug\\outsider-debug.apk"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "apkInstalled": false,
+  "installedSigningContinuity": "NOT_RUN_SAFETY_PREFLIGHT_BLOCKED",
+  "androidVerification": "NOT_RUN"
+}
