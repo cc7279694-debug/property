@@ -1,0 +1,111 @@
+{
+  "atUTC": "2026-10-17T01:40:06.939195+00:00",
+  "sourceCommit": "17b2cb40d8f3b95136f3d43e5c91cd7aee7b8e5d",
+  "branch": "research/m10-jpeg-strict-r3-f0",
+  "outcome": "BLOCKED",
+  "classification": "UNRESOLVED",
+  "currentBlocker": "ADB_TARGET_UNAVAILABLE",
+  "historicalAttachRootCause": "UNKNOWN",
+  "documentsChecked": 5,
+  "localLinksChecked": 67,
+  "missingLinks": 0,
+  "executionInputSHA256Checked": 7,
+  "hashMismatches": 0,
+  "scriptAST": "PASS_SYNTAX_ONLY",
+  "newJVMAndroidTests": "NOT_RUN",
+  "buildLintAPKInstall": "NOT_RUN",
+  "hostStarts": 0,
+  "outsiderStarts": 0,
+  "currentDeviceAPKUIDManifestChecks": "NOT_RUN",
+  "currentDeviceResourceAndProtectionSnapshots": "NOT_RUN",
+  "privateByteIntegrity": "NOT_RUN",
+  "commands": {
+    "count": 4,
+    "exits": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "allExecutedCommandsReadOnly": true
+  },
+  "scopeViolations": 0,
+  "binaryAPKPrivateMediaDatabaseDeliveryFiles": 0,
+  "credentialPatternHits": 0,
+  "protectedGitEvidence": "docs/research/m10-jpeg-r3-f0/evidence/git-protection-before-commit.json",
+  "membersExcludingSelf": {
+    "docs/CURRENT_STATE.md": {
+      "bytes": 26969,
+      "sha256": "dce1409ea6f8b1c028c2eea0b91435e49d17d17421d5671006b29ae85e4936c4",
+      "gitBlobSHA256": "824069f46cac461eb277ac3a063261801660c316c11800b16a794eeb0d000798"
+    },
+    "docs/checkpoints/2026-10-17-M10-JPEG-R3-F0.md": {
+      "bytes": 3479,
+      "sha256": "9227a0a477a91c1e08ed4341c5ea559490d92c4547a9d71f7b526c4051c74980",
+      "gitBlobSHA256": "9227a0a477a91c1e08ed4341c5ea559490d92c4547a9d71f7b526c4051c74980"
+    },
+    "docs/research/M10_JPEG_R3_F0_DIAGNOSIS.md": {
+      "bytes": 5970,
+      "sha256": "fd5c30b7a8fd6d1c55fa4d3bceea42c5a0a9c139247961019f0c6662d0fa8d77",
+      "gitBlobSHA256": "fd5c30b7a8fd6d1c55fa4d3bceea42c5a0a9c139247961019f0c6662d0fa8d77"
+    },
+    "docs/research/M10_JPEG_R3_F0_ROOT_CAUSE_ASSESSMENT.md": {
+      "bytes": 3689,
+      "sha256": "b8a66752673495880d949231f9559f8f08c879843cfcf3cfdd577bf51f3da0ee",
+      "gitBlobSHA256": "b8a66752673495880d949231f9559f8f08c879843cfcf3cfdd577bf51f3da0ee"
+    },
+    "docs/research/M10_JPEG_R3_F0_TIMELINE.md": {
+      "bytes": 3107,
+      "sha256": "12357c8633764d21923f7dd63b30b924366604e33f2ecbafae1de1abee651f1d",
+      "gitBlobSHA256": "12357c8633764d21923f7dd63b30b924366604e33f2ecbafae1de1abee651f1d"
+    },
+    "docs/research/m10-jpeg-r3-f0/.gitattributes": {
+      "bytes": 9,
+      "sha256": "48747480eddba024928d03be9bf83dc579e5515768647507a767e8187a85c9ab",
+      "gitBlobSHA256": "48747480eddba024928d03be9bf83dc579e5515768647507a767e8187a85c9ab"
+    },
+    "docs/research/m10-jpeg-r3-f0/diagnose.py": {
+      "bytes": 13417,
+      "sha256": "1c683f2094e38c44c2140f1a82eefda27b33cfc6f7c7df2a58cbae33c6b7aa01",
+      "gitBlobSHA256": "1c683f2094e38c44c2140f1a82eefda27b33cfc6f7c7df2a58cbae33c6b7aa01"
+    },
+    "docs/research/m10-jpeg-r3-f0/evidence/20261017T013551.734384Z/adb-commands.jsonl": {
+      "bytes": 1598,
+      "sha256": "3904f265356908adcec0bf9a6d18eef47c5a039e99d7c4134563fec885c2a5ff",
+      "gitBlobSHA256": "3904f265356908adcec0bf9a6d18eef47c5a039e99d7c4134563fec885c2a5ff"
+    },
+    "docs/research/m10-jpeg-r3-f0/evidence/20261017T013551.734384Z/availability.json": {
+      "bytes": 690,
+      "sha256": "0cb71b212c741761f06efd54677e6d1620d5542a1a75810776d73e54e002d039",
+      "gitBlobSHA256": "0cb71b212c741761f06efd54677e6d1620d5542a1a75810776d73e54e002d039"
+    },
+    "docs/research/m10-jpeg-r3-f0/evidence/20261017T013551.734384Z/preflight-blocked.json": {
+      "bytes": 189,
+      "sha256": "62e7e37fe0828a078c7a12dbb2f91099d4be1240b481d6ac0aa8b6129e8c4d9f",
+      "gitBlobSHA256": "62e7e37fe0828a078c7a12dbb2f91099d4be1240b481d6ac0aa8b6129e8c4d9f"
+    },
+    "docs/research/m10-jpeg-r3-f0/evidence/20261017T013551.734384Z/source-inputs.json": {
+      "bytes": 1475,
+      "sha256": "cb6a3e9bc3f742015c76e92ced190160328f8774efd7c56d183fd9d2ff8013db",
+      "gitBlobSHA256": "cb6a3e9bc3f742015c76e92ced190160328f8774efd7c56d183fd9d2ff8013db"
+    },
+    "docs/research/m10-jpeg-r3-f0/evidence/git-protection-before-commit.json": {
+      "bytes": 1663,
+      "sha256": "483964c7031dc96bc41d6acdb0390c6adc80a16a589118ce9f06847e26f2ac8f",
+      "gitBlobSHA256": "483964c7031dc96bc41d6acdb0390c6adc80a16a589118ce9f06847e26f2ac8f"
+    }
+  },
+  "selfHashExcluded": true,
+  "gitIndexVerification": {
+    "files": 13,
+    "statusCounts": {
+      "M": 1,
+      "A": 12
+    },
+    "inputAndRawEvidenceBytesPreserved": true,
+    "worktreeCRLFToGitLFExceptions": [
+      "docs/CURRENT_STATE.md"
+    ],
+    "selfRecordRestagedAfterWriting": true
+  }
+}
