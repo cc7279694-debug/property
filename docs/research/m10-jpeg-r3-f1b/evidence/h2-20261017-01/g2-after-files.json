@@ -1,0 +1,218 @@
+{
+  "atUtc": "2026-10-17T09:39:24.746140+00:00",
+  "entries": [
+    {
+      "path": "files",
+      "type": "directory",
+      "device": 65079,
+      "inode": 590885,
+      "size": 4096,
+      "mode": "41f9",
+      "mtime": 1792229888,
+      "ctime": 1792229888
+    },
+    {
+      "path": "files/synthetic-main-owner",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590886,
+      "size": 0,
+      "mode": "8180",
+      "mtime": 1792202164,
+      "ctime": 1792202164
+    },
+    {
+      "path": "files/r3-traces",
+      "type": "directory",
+      "device": 65079,
+      "inode": 590887,
+      "size": 4096,
+      "mode": "41c0",
+      "mtime": 1792229884,
+      "ctime": 1792229884
+    },
+    {
+      "path": "files/r3-traces/trace-3928.jsonl",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590888,
+      "size": 218,
+      "mode": "8180",
+      "mtime": 1792202164,
+      "ctime": 1792202164
+    },
+    {
+      "path": "files/r3-traces/trace-6423.jsonl",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590403,
+      "size": 1171,
+      "mode": "8180",
+      "mtime": 1792229903,
+      "ctime": 1792229903
+    },
+    {
+      "path": "files/synthetic-stages",
+      "type": "directory",
+      "device": 65079,
+      "inode": 590410,
+      "size": 4096,
+      "mode": "41c0",
+      "mtime": 1792229896,
+      "ctime": 1792229896
+    },
+    {
+      "path": "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810",
+      "type": "directory",
+      "device": 65079,
+      "inode": 590815,
+      "size": 4096,
+      "mode": "41c0",
+      "mtime": 1792229897,
+      "ctime": 1792229897
+    },
+    {
+      "path": "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810/source.bin",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590829,
+      "size": 8192,
+      "mode": "8180",
+      "mtime": 1792229890,
+      "ctime": 1792229890
+    },
+    {
+      "path": "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810/consumer.guard",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590838,
+      "size": 0,
+      "mode": "8180",
+      "mtime": 1792229891,
+      "ctime": 1792229891
+    },
+    {
+      "path": "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810/owner.json",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590839,
+      "size": 495,
+      "mode": "8180",
+      "mtime": 1792229891,
+      "ctime": 1792229892
+    },
+    {
+      "path": "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810/state.json",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590883,
+      "size": 541,
+      "mode": "8180",
+      "mtime": 1792229896,
+      "ctime": 1792229897
+    },
+    {
+      "path": "files/synthetic-stages/current.json",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590851,
+      "size": 52,
+      "mode": "8180",
+      "mtime": 1792229895,
+      "ctime": 1792229896
+    },
+    {
+      "path": "files/r3-reports",
+      "type": "directory",
+      "device": 65079,
+      "inode": 590807,
+      "size": 4096,
+      "mode": "41c0",
+      "mtime": 1792229903,
+      "ctime": 1792229903
+    },
+    {
+      "path": "files/r3-reports/h2_e22caecf8afc4a72957afc061c68d5a3.json",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590884,
+      "size": 113,
+      "mode": "8180",
+      "mtime": 1792229903,
+      "ctime": 1792229903
+    },
+    {
+      "path": "files/r3-command-claims",
+      "type": "directory",
+      "device": 65079,
+      "inode": 590810,
+      "size": 4096,
+      "mode": "41c0",
+      "mtime": 1792229888,
+      "ctime": 1792229888
+    },
+    {
+      "path": "files/r3-command-claims/run-h2_e22caecf8afc4a72957afc061c68d5a3.claim",
+      "type": "regular",
+      "device": 65079,
+      "inode": 590811,
+      "size": 24,
+      "mode": "8180",
+      "mtime": 1792229888,
+      "ctime": 1792229888
+    }
+  ],
+  "json": {
+    "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810/owner.json": {
+      "protocol": "lithic-r3-synthetic-stage",
+      "version": 2,
+      "attemptId": "586d0904-eaac-403a-895a-48c34cd98810",
+      "sessionNonce": "80e16f4e-f17c-47a7-92ba-ce4ccaed751f",
+      "generationIdentity": "synthetic-generation-r3",
+      "consumerLeaseName": "lithic-r3-586d0904-eaac-403a-895a-48c34cd98810",
+      "stageDevice": 65079,
+      "stageInode": 590815,
+      "sourceSHA256": "3faac63d133ee546e983a131136bc44c9d3c0910d1c6b143d60509ef90a386e7",
+      "sourceSize": 8192,
+      "sourceDevice": 65079,
+      "sourceInode": 590829,
+      "guardDevice": 65079,
+      "guardInode": 590838
+    },
+    "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810/state.json": {
+      "protocol": "lithic-r3-synthetic-stage",
+      "version": 2,
+      "attemptId": "586d0904-eaac-403a-895a-48c34cd98810",
+      "sessionNonce": "80e16f4e-f17c-47a7-92ba-ce4ccaed751f",
+      "generationIdentity": "synthetic-generation-r3",
+      "consumerLeaseName": "lithic-r3-586d0904-eaac-403a-895a-48c34cd98810",
+      "stageDevice": 65079,
+      "stageInode": 590815,
+      "sourceSHA256": "3faac63d133ee546e983a131136bc44c9d3c0910d1c6b143d60509ef90a386e7",
+      "sourceSize": 8192,
+      "sourceDevice": 65079,
+      "sourceInode": 590829,
+      "guardDevice": 65079,
+      "guardInode": 590838,
+      "requestStatus": "DELIVERY_UNKNOWN",
+      "pin": true
+    },
+    "files/synthetic-stages/current.json": {
+      "attemptId": "586d0904-eaac-403a-895a-48c34cd98810"
+    }
+  },
+  "sha256": {
+    "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810/owner.json": "dc70a49da23001da623de374c8c0f2fe01bafed4846f6c7ad41313da2b2f8c93",
+    "files/synthetic-stages/586d0904-eaac-403a-895a-48c34cd98810/state.json": "4224acb2100b3a7914f26d39f3bd995cd05c0f849068e5650fd7f4e4833b5388",
+    "files/synthetic-stages/current.json": "f6a9a3bdafeb2f703a77da27c25f4034a647a58d13f8509d5dd8e0585c0ee50d"
+  },
+  "collection": {
+    "complete": true,
+    "stable": true,
+    "truncated": false,
+    "exitCode": 0,
+    "stderr": "",
+    "statBytes": 1413,
+    "statSHA256": "589154d5ef8b7afe89a5244fbc0c3354ae1ddc0644e7283e2569c622d3cebf2f"
+  }
+}

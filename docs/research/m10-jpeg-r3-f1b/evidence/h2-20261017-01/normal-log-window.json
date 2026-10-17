@@ -1,0 +1,70 @@
+{
+  "deviceEpochStart": "1792229880.833067040",
+  "deviceEpochEnd": "1792229898.553437638",
+  "pids": [],
+  "coverage": {
+    "main": {
+      "status": "PASS",
+      "retainedStart": true,
+      "rawBytes": 13421606,
+      "rawSHA256": "0708297c17051f0cda10753b258212109fdfbb915001cc982677395014b876ce"
+    },
+    "system": {
+      "status": "PASS",
+      "retainedStart": true,
+      "rawBytes": 1827846,
+      "rawSHA256": "57025548deb05f9c875c677298f6c52b6b1f2c2b1a4dcdb7c68a9b98906bf752"
+    },
+    "crash": {
+      "status": "PASS",
+      "retainedStart": true,
+      "rawBytes": 295,
+      "rawSHA256": "b9346e8853fff05dbdfa3846708a9b201cb048fe6ec8c3c9bf61f45c62d9e443"
+    },
+    "events": {
+      "status": "PASS",
+      "retainedStart": true,
+      "rawBytes": 343445,
+      "rawSHA256": "d2c08af4215ed362b075a9b4fc61808daa924779613046a84e1c5454454601e6"
+    }
+  },
+  "events": [
+    {
+      "epoch": 1792229881.382,
+      "pid": 762,
+      "tag": "ActivityTaskManager",
+      "message": "START u0 {flg=0x10000000 xflg=0x5 cmp=com.cooper.lithic.m10r3.probe/.ProbeActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0"
+    },
+    {
+      "epoch": 1792229881.659,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Start proc 6423:com.cooper.lithic.m10r3.probe/u0a218 for next-top-activity {com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}"
+    },
+    {
+      "epoch": 1792229881.379,
+      "pid": 762,
+      "tag": "wm_create_activity",
+      "message": "[0,166285654,2970,com.cooper.lithic.m10r3.probe/.ProbeActivity,NULL,NULL,NULL,268435456]"
+    },
+    {
+      "epoch": 1792229881.659,
+      "pid": 762,
+      "tag": "am_proc_start",
+      "message": "[0,6423,10218,com.cooper.lithic.m10r3.probe,next-top-activity,{com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}]"
+    },
+    {
+      "epoch": 1792229882.803,
+      "pid": 762,
+      "tag": "am_proc_bound",
+      "message": "[0,6423,com.cooper.lithic.m10r3.probe]"
+    },
+    {
+      "epoch": 1792229889.482,
+      "pid": 6423,
+      "tag": "wm_on_create_called",
+      "message": "[166285654,com.cooper.lithic.m10r3.probe.ProbeActivity,performCreate,4591]"
+    }
+  ],
+  "fullUnrelatedLogsArchived": false
+}

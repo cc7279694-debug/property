@@ -1,0 +1,40 @@
+{
+  "scripts": {
+    "docs/research/m10-jpeg-r3-f1b-h2/audit_evidence.py": {
+      "bytes": 3089,
+      "sha256": "a58d92a99403c3b3492c6365148f83145de71e2b487651c22dfe8c1f88d4e37e"
+    },
+    "docs/research/m10-jpeg-r3-f1b-h2/collect_ending_logs.py": {
+      "bytes": 6819,
+      "sha256": "08b060b8eb844932fade4781bcc82ed5e497afea9c492f404facb6d8fc56f5f8"
+    },
+    "docs/research/m10-jpeg-r3-f1b-h2/collect_final.py": {
+      "bytes": 6989,
+      "sha256": "b29ba60010a19be341a43c88c4a220a80288f69974556dbfaa80591c9e86e57b"
+    },
+    "docs/research/m10-jpeg-r3-f1b-h2/collect_stopped.py": {
+      "bytes": 7039,
+      "sha256": "c201b998544a2dbeef8a7a6892a3ee468a9ae9b38b29d51ceca2e9fccb0a706f"
+    },
+    "docs/research/m10-jpeg-r3-f1b-h2/normal_once.py": {
+      "bytes": 12147,
+      "sha256": "f0febb33713215f091452d135b858b53c3e6eed9bec2d38906e62d71934aa0fe"
+    },
+    "docs/research/m10-jpeg-r3-f1b-h2/protect_final.py": {
+      "bytes": 4329,
+      "sha256": "11769184b8313cd1e1746620bf875165e6773986b04e18e7107cd5dec8ab50b2"
+    },
+    "docs/research/m10-jpeg-r3-f1b-h2/run_readonly.py": {
+      "bytes": 6975,
+      "sha256": "f572fd751754ca5d674f5513019d66f97ad83d4e4ccc55275b10328c5e2cc981"
+    }
+  },
+  "scope": "H2_RESEARCH_HELPERS_ONLY",
+  "unchangedAfterTheirActualExecution": true,
+  "syntaxOnlyForAuditScript": "OFFLINE_AUDIT_EXECUTED_NO_ADB",
+  "normalExecutorStatus": "BLOCKED",
+  "collectorsWithErrorsPreserved": [
+    "collect_stopped.py",
+    "collect_final.py"
+  ]
+}

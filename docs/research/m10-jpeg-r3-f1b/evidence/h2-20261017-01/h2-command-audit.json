@@ -1,0 +1,32 @@
+{
+  "overall": "BLOCKED",
+  "sourceCommit": "0dc49621f44f31eed0cdfc4d0dbb56d8756b667a",
+  "rawCommandLogRows": 152,
+  "integrityRows": 152,
+  "initialDeviceCommands": 1,
+  "totalADBCommands": 153,
+  "installCount": 0,
+  "activityStartCount": 1,
+  "normalStartCount": 1,
+  "outsiderStartCount": 0,
+  "fullPreflightAttempts": 1,
+  "nonzeroADBExitCodes": [],
+  "subprocessTimeouts": 0,
+  "amReportedTimeout": true,
+  "normalStructuredResult": "FAIL_BIND_TIMEOUT",
+  "supplementalCollectorErrors": [
+    "report length bound/identity: exec-out shell quoting",
+    "trace grew between earlier snapshot and later exact read"
+  ],
+  "firstEndingProcessClassification": "BLOCKED_UNKNOWN_PROCESS_UNDER_RESEARCH_IDENTITY",
+  "firstEndingClassificationCannotBeReconstructed": true,
+  "finalProcessClassification": "PASS_HOST_ONLY_NOT_RETROACTIVE_RESOLUTION",
+  "privateByteIntegrity": "NOT_RUN",
+  "originalR3Counts": {
+    "PASS": 0,
+    "UNKNOWN": 1,
+    "NOT_RUN": 28
+  },
+  "oldJPEGTests": "THREE_FAIL_UNCHANGED",
+  "noNewAVDStart": true
+}

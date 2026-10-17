@@ -1,0 +1,15 @@
+         1792229881.382   762  1014 I ActivityTaskManager: START u0 {flg=0x10000000 xflg=0x5 cmp=com.cooper.lithic.m10r3.probe/.ProbeActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+         1792229881.659   762   808 I ActivityManager: Start proc 6423:com.cooper.lithic.m10r3.probe/u0a218 for next-top-activity {com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}
+         1792229911.877   762  6473 I ActivityManager: Collecting stacks for pid 6423 into temporary file temp_anr_7668772233553379703.txt
+         1792229925.583   762  6473 E ActivityManager: Aborted stack trace dump (current primary pid=6423); deadline exceeded.
+         1792229936.776   762  6474 E ActivityManager: ANR in com.cooper.lithic.m10r3.probe (com.cooper.lithic.m10r3.probe/.ProbeActivity)
+         1792229936.776   762  6474 E ActivityManager: PID: 6423
+         1792229936.776   762  6474 E ActivityManager: Reason: Input dispatching timed out (f060033 com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity is not responding. Waited 5001ms for FocusEvent(hasFocus=true)).
+         1792229936.776   762  6474 E ActivityManager: Parent: com.cooper.lithic.m10r3.probe/.ProbeActivity
+         1792229936.776   762  6474 E ActivityManager:   57% 6423/com.cooper.lithic.m10r3.probe: 4% user + 53% kernel / faults: 762 minor 23 major
+         1792229953.755   762   809 I ActivityManager: Process PhantomProcessRecord {e3100cb 6488:6423:crash_dump64/u0a218} died
+         1792229953.757   762   809 I ActivityManager: Process PhantomProcessRecord {11d60a8 6493:6423:com.cooper.lithic.m10r3.probe/u0a218} died
+         1792229959.089   762  6474 D ActivityManager: Completed ANR of com.cooper.lithic.m10r3.probe in 45395ms, latency 54ms
+         1792229961.449   762   808 I ActivityManager: Start proc 6610:com.cooper.lithic.m10r3.probe:jpeg_worker/u0a218 for service {com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.WorkerService}
+         1792229995.420   762  5771 I ActivityManager: Process com.cooper.lithic.m10r3.probe:jpeg_worker (pid 6610) has died: vis BTOP
+         1792229995.421   762  5771 W ActivityManager: Scheduling restart of crashed service com.cooper.lithic.m10r3.probe/.WorkerService in 1000ms for connection

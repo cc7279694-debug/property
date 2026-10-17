@@ -1,0 +1,17 @@
+         1792229881.658   528   528 D Zygote  : Forked child process 6423
+         1792229884.472  6423  6423 I LITHIC_R3: {"event":"APPLICATION_ROLE","pid":6423,"uid":10218,"process":"com.cooper.lithic.m10r3.probe","wallMs":1792229884472,"elapsedNs":6826002004607,"role":"HOST","syntheticOwner":true,"api26Path":"bounded-proc-self-cmdline"}
+         1792229889.482  6423  6442 I LITHIC_R3: {"event":"CASE_BEGIN","pid":6423,"uid":10218,"process":"com.cooper.lithic.m10r3.probe","wallMs":1792229889482,"elapsedNs":6831012370701,"runId":"h2_e22caecf8afc4a72957afc061c68d5a3","command":"run","case":"normal","fault":"null"}
+         1792229894.214  6423  6442 I LITHIC_R3: {"event":"STAGE_CREATED","pid":6423,"uid":10218,"process":"com.cooper.lithic.m10r3.probe","wallMs":1792229894214,"elapsedNs":6835744137762,"attempt":"586d0904-eaac-403a-895a-48c34cd98810","sourceSHA256":"3faac63d133ee546e983a131136bc44c9d3c0910d1c6b143d60509ef90a386e7"}
+         1792229897.657  6423  6442 I LITHIC_R3: {"event":"PIN_DURABLE","pid":6423,"uid":10218,"process":"com.cooper.lithic.m10r3.probe","wallMs":1792229897657,"elapsedNs":6839187323330,"attempt":"586d0904-eaac-403a-895a-48c34cd98810","state":"DELIVERY_UNKNOWN"}
+         1792229903.069  6423  6442 I LITHIC_R3: {"event":"CASE_FAIL_STOP","pid":6423,"uid":10218,"process":"com.cooper.lithic.m10r3.probe","wallMs":1792229903069,"elapsedNs":6844599170181,"runId":"h2_e22caecf8afc4a72957afc061c68d5a3","detail":"java.lang.AssertionError: bind timeout"}
+         1792229905.772   762   798 I ActivityTaskManager: Displayed com.cooper.lithic.m10r3.probe/.ProbeActivity for user 0: +24s415ms
+         1792229923.341  6423  6423 I libc    : Requested dump for pid 6423 (hic.m10r3.probe)
+         1792229961.449   528   528 D Zygote  : Forked child process 6610
+         1792229965.247  6610  6610 I LITHIC_R3: {"event":"APPLICATION_ROLE","pid":6610,"uid":10218,"process":"com.cooper.lithic.m10r3.probe:jpeg_worker","wallMs":1792229965246,"elapsedNs":6906776494400,"role":"WORKER","syntheticOwner":false,"api26Path":"bounded-proc-self-cmdline"}
+         1792229965.398  6610  6610 I LITHIC_R3: {"event":"SERVICE_CREATED","pid":6610,"uid":10218,"process":"com.cooper.lithic.m10r3.probe:jpeg_worker","wallMs":1792229965398,"elapsedNs":6906928176826}
+         1792229965.403  6610  6610 I LITHIC_R3: {"event":"SERVICE_BOUND","pid":6610,"uid":10218,"process":"com.cooper.lithic.m10r3.probe:jpeg_worker","wallMs":1792229965403,"elapsedNs":6906933456313}
+         1792229995.403  6610  6641 I LITHIC_R3: {"event":"RETIRE_REQUESTED","pid":6610,"uid":10218,"process":"com.cooper.lithic.m10r3.probe:jpeg_worker","wallMs":1792229995403,"elapsedNs":6936933393058,"reason":"UNRESERVED_DEADLINE"}
+         1792229995.408  6610  6641 I LITHIC_R3: {"event":"SELF_SIGKILL","pid":6610,"uid":10218,"process":"com.cooper.lithic.m10r3.probe:jpeg_worker","wallMs":1792229995408,"elapsedNs":6936937884905,"reason":"UNRESERVED_DEADLINE","targetIsSelf":true}
+         1792229995.421  6423  6433 I LITHIC_R3: {"event":"WORKER_ENDPOINT_DIED","pid":6423,"uid":10218,"process":"com.cooper.lithic.m10r3.probe","wallMs":1792229995421,"elapsedNs":6936950696598,"attempt":"586d0904-eaac-403a-895a-48c34cd98810"}
+         1792229995.422   528   528 I Zygote  : Process 6610 exited due to signal 9 (Killed)
+         1792229995.424  6423  6423 I LITHIC_R3: {"event":"SERVICE_DISCONNECTED","pid":6423,"uid":10218,"process":"com.cooper.lithic.m10r3.probe","wallMs":1792229995424,"elapsedNs":6936954355274,"attempt":"586d0904-eaac-403a-895a-48c34cd98810"}

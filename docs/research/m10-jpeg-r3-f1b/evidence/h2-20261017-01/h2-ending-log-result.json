@@ -1,0 +1,300 @@
+{
+  "status": "BLOCKED_PRESERVED",
+  "atUtc": "2026-10-17T09:42:10.460144+00:00",
+  "researchPids": [
+    6423,
+    6610
+  ],
+  "deviceEpochStart": "1792229880.833067040",
+  "deviceEpochEnd": "1792230127.953948353",
+  "buffers": {
+    "main": {
+      "exitCode": 0,
+      "bytes": 13733024,
+      "sha256": "3451c07a0d6fa07b4054005f9a3e01d21099d67af6afc76e6f23d5b996227009",
+      "oldestEpoch": 1792223058.348,
+      "latestEpoch": 1792230126.644,
+      "unparsedLines": 0,
+      "scopedEntries": 17,
+      "foreignMixedLinesWithheld": 0,
+      "windowCoverage": "PASS",
+      "fullRawArchived": false
+    },
+    "system": {
+      "exitCode": 0,
+      "bytes": 1847346,
+      "sha256": "bb706cf656c73ce2f9fbcd46d8bb2646dbf03993ec01abd5a01c680c0e21cefa",
+      "oldestEpoch": 1792223063.628,
+      "latestEpoch": 1792230095.529,
+      "unparsedLines": 0,
+      "scopedEntries": 15,
+      "foreignMixedLinesWithheld": 0,
+      "windowCoverage": "PASS",
+      "fullRawArchived": false
+    },
+    "crash": {
+      "exitCode": 0,
+      "bytes": 295,
+      "sha256": "b9346e8853fff05dbdfa3846708a9b201cb048fe6ec8c3c9bf61f45c62d9e443",
+      "oldestEpoch": 1792229349.876,
+      "latestEpoch": 1792229702.969,
+      "unparsedLines": 0,
+      "scopedEntries": 0,
+      "foreignMixedLinesWithheld": 0,
+      "windowCoverage": "PASS",
+      "fullRawArchived": false
+    },
+    "events": {
+      "exitCode": 0,
+      "bytes": 356967,
+      "sha256": "704a8267d0473e77146ff466400a5a02016b6707683dae367249623a95bc78e5",
+      "oldestEpoch": 1792223058.348,
+      "latestEpoch": 1792230099.615,
+      "unparsedLines": 0,
+      "scopedEntries": 7,
+      "foreignMixedLinesWithheld": 0,
+      "windowCoverage": "PASS",
+      "fullRawArchived": false
+    }
+  },
+  "events": [
+    {
+      "epoch": 1792229881.658,
+      "pid": 528,
+      "tag": "Zygote",
+      "message": "Forked child process 6423"
+    },
+    {
+      "epoch": 1792229884.472,
+      "pid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"APPLICATION_ROLE\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229884472,\"elapsedNs\":6826002004607,\"role\":\"HOST\",\"syntheticOwner\":true,\"api26Path\":\"bounded-proc-self-cmdline\"}"
+    },
+    {
+      "epoch": 1792229889.482,
+      "pid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"CASE_BEGIN\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229889482,\"elapsedNs\":6831012370701,\"runId\":\"h2_e22caecf8afc4a72957afc061c68d5a3\",\"command\":\"run\",\"case\":\"normal\",\"fault\":\"null\"}"
+    },
+    {
+      "epoch": 1792229894.214,
+      "pid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"STAGE_CREATED\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229894214,\"elapsedNs\":6835744137762,\"attempt\":\"586d0904-eaac-403a-895a-48c34cd98810\",\"sourceSHA256\":\"3faac63d133ee546e983a131136bc44c9d3c0910d1c6b143d60509ef90a386e7\"}"
+    },
+    {
+      "epoch": 1792229897.657,
+      "pid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"PIN_DURABLE\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229897657,\"elapsedNs\":6839187323330,\"attempt\":\"586d0904-eaac-403a-895a-48c34cd98810\",\"state\":\"DELIVERY_UNKNOWN\"}"
+    },
+    {
+      "epoch": 1792229903.069,
+      "pid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"CASE_FAIL_STOP\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229903069,\"elapsedNs\":6844599170181,\"runId\":\"h2_e22caecf8afc4a72957afc061c68d5a3\",\"detail\":\"java.lang.AssertionError: bind timeout\"}"
+    },
+    {
+      "epoch": 1792229905.772,
+      "pid": 762,
+      "tag": "ActivityTaskManager",
+      "message": "Displayed com.cooper.lithic.m10r3.probe/.ProbeActivity for user 0: +24s415ms"
+    },
+    {
+      "epoch": 1792229923.341,
+      "pid": 6423,
+      "tag": "libc",
+      "message": "Requested dump for pid 6423 (hic.m10r3.probe)"
+    },
+    {
+      "epoch": 1792229961.449,
+      "pid": 528,
+      "tag": "Zygote",
+      "message": "Forked child process 6610"
+    },
+    {
+      "epoch": 1792229965.247,
+      "pid": 6610,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"APPLICATION_ROLE\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229965246,\"elapsedNs\":6906776494400,\"role\":\"WORKER\",\"syntheticOwner\":false,\"api26Path\":\"bounded-proc-self-cmdline\"}"
+    },
+    {
+      "epoch": 1792229965.398,
+      "pid": 6610,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"SERVICE_CREATED\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229965398,\"elapsedNs\":6906928176826}"
+    },
+    {
+      "epoch": 1792229965.403,
+      "pid": 6610,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"SERVICE_BOUND\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229965403,\"elapsedNs\":6906933456313}"
+    },
+    {
+      "epoch": 1792229995.403,
+      "pid": 6610,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"RETIRE_REQUESTED\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229995403,\"elapsedNs\":6936933393058,\"reason\":\"UNRESERVED_DEADLINE\"}"
+    },
+    {
+      "epoch": 1792229995.408,
+      "pid": 6610,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"SELF_SIGKILL\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229995408,\"elapsedNs\":6936937884905,\"reason\":\"UNRESERVED_DEADLINE\",\"targetIsSelf\":true}"
+    },
+    {
+      "epoch": 1792229995.421,
+      "pid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"WORKER_ENDPOINT_DIED\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229995421,\"elapsedNs\":6936950696598,\"attempt\":\"586d0904-eaac-403a-895a-48c34cd98810\"}"
+    },
+    {
+      "epoch": 1792229995.422,
+      "pid": 528,
+      "tag": "Zygote",
+      "message": "Process 6610 exited due to signal 9 (Killed)"
+    },
+    {
+      "epoch": 1792229995.424,
+      "pid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"SERVICE_DISCONNECTED\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229995424,\"elapsedNs\":6936954355274,\"attempt\":\"586d0904-eaac-403a-895a-48c34cd98810\"}"
+    },
+    {
+      "epoch": 1792229881.382,
+      "pid": 762,
+      "tag": "ActivityTaskManager",
+      "message": "START u0 {flg=0x10000000 xflg=0x5 cmp=com.cooper.lithic.m10r3.probe/.ProbeActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0"
+    },
+    {
+      "epoch": 1792229881.659,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Start proc 6423:com.cooper.lithic.m10r3.probe/u0a218 for next-top-activity {com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}"
+    },
+    {
+      "epoch": 1792229911.877,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Collecting stacks for pid 6423 into temporary file temp_anr_7668772233553379703.txt"
+    },
+    {
+      "epoch": 1792229925.583,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Aborted stack trace dump (current primary pid=6423); deadline exceeded."
+    },
+    {
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "ANR in com.cooper.lithic.m10r3.probe (com.cooper.lithic.m10r3.probe/.ProbeActivity)"
+    },
+    {
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "PID: 6423"
+    },
+    {
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Reason: Input dispatching timed out (f060033 com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity is not responding. Waited 5001ms for FocusEvent(hasFocus=true))."
+    },
+    {
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Parent: com.cooper.lithic.m10r3.probe/.ProbeActivity"
+    },
+    {
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "  57% 6423/com.cooper.lithic.m10r3.probe: 4% user + 53% kernel / faults: 762 minor 23 major"
+    },
+    {
+      "epoch": 1792229953.755,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Process PhantomProcessRecord {e3100cb 6488:6423:crash_dump64/u0a218} died"
+    },
+    {
+      "epoch": 1792229953.757,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Process PhantomProcessRecord {11d60a8 6493:6423:com.cooper.lithic.m10r3.probe/u0a218} died"
+    },
+    {
+      "epoch": 1792229959.089,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Completed ANR of com.cooper.lithic.m10r3.probe in 45395ms, latency 54ms"
+    },
+    {
+      "epoch": 1792229961.449,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Start proc 6610:com.cooper.lithic.m10r3.probe:jpeg_worker/u0a218 for service {com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.WorkerService}"
+    },
+    {
+      "epoch": 1792229995.42,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Process com.cooper.lithic.m10r3.probe:jpeg_worker (pid 6610) has died: vis BTOP"
+    },
+    {
+      "epoch": 1792229995.421,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Scheduling restart of crashed service com.cooper.lithic.m10r3.probe/.WorkerService in 1000ms for connection"
+    },
+    {
+      "epoch": 1792229881.379,
+      "pid": 762,
+      "tag": "wm_create_activity",
+      "message": "[0,166285654,2970,com.cooper.lithic.m10r3.probe/.ProbeActivity,NULL,NULL,NULL,268435456]"
+    },
+    {
+      "epoch": 1792229881.659,
+      "pid": 762,
+      "tag": "am_proc_start",
+      "message": "[0,6423,10218,com.cooper.lithic.m10r3.probe,next-top-activity,{com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}]"
+    },
+    {
+      "epoch": 1792229882.803,
+      "pid": 762,
+      "tag": "am_proc_bound",
+      "message": "[0,6423,com.cooper.lithic.m10r3.probe]"
+    },
+    {
+      "epoch": 1792229889.482,
+      "pid": 6423,
+      "tag": "wm_on_create_called",
+      "message": "[166285654,com.cooper.lithic.m10r3.probe.ProbeActivity,performCreate,4591]"
+    },
+    {
+      "epoch": 1792229961.449,
+      "pid": 762,
+      "tag": "am_proc_start",
+      "message": "[0,6610,10218,com.cooper.lithic.m10r3.probe:jpeg_worker,service,{com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.WorkerService}]"
+    },
+    {
+      "epoch": 1792229964.898,
+      "pid": 762,
+      "tag": "am_proc_bound",
+      "message": "[0,6610,com.cooper.lithic.m10r3.probe:jpeg_worker]"
+    },
+    {
+      "epoch": 1792229995.42,
+      "pid": 762,
+      "tag": "am_proc_died",
+      "message": "[0,6610,com.cooper.lithic.m10r3.probe:jpeg_worker,100,3]"
+    }
+  ],
+  "commands": 7,
+  "launches": 0,
+  "privateContentsRead": false,
+  "doesNotClearEarlierUnknowns": true
+}

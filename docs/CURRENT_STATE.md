@@ -1,8 +1,16 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；H1研究包更新及唯一Outsider系统复验交付，等待独立审查；未执行normal）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；H2唯一normal已执行但BLOCKED，等待ChatGPT独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R3-F1B-H2 — BLOCKED**：用户转交H1独立PASS WITH NOTES，仅研究APK更新/一次Outsider；从锁定`0dc49621f44f31eed0cdfc4d0dbb56d8756b667a`建立独立worktree/分支`research/m10-jpeg-strict-r3-f1b-h2`。本轮只执行一次normal及必要只读保护，旧研究/正式代码、APK、规则和证据不改。
+- **预检与唯一执行**：原AVD在线，启动/安装0次；新原G1/U1双快照实际PREFLIGHT_ELIGIBLE（闲置服务、无研究进程、stage ABSENT），7脚本及27构建输入相同，三包SHA/UID实核。runId `h2_e22caecf8afc4a72957afc061c68d5a3`发送前标记fsync；唯一am返回timeout/LaunchState UNKNOWN，立即停止新实验，未重发。
+- **失败与迟到行为**：Host6423/UID10218真实run报告FAIL bind timeout，系统Input-dispatch ANR、根因UNKNOWN。迟到Worker6610同UID/不同PID、syntheticOwner=false，未reserve/hello/FD，30秒UNRESERVED_DEADLINE自行退出；Binder及OS死亡单独成立，不算正常认证退休或lease释放。
+- **保守残留与保护**：实际current指向`586d0904-eaac-403a-895a-48c34cd98810`，DELIVERY_UNKNOWN/pin=true/source8192保留，无成功receipt/终结proof，stage BLOCKED，不清理/恢复。首轮process BLOCKED的原未知名称无法回溯，末次Host-only/NO_TARGET_RECORD不回写它。两处只读收集UNKNOWN及原响应保留；最终正式APK/UID、188→188元数据聚合及设置相同，私人字节NOT_RUN。153条ADB含1normal/0安装/0Outsider；无产品构建/Lint/JVM/JPEG重跑。
+- **H2交接及停止**：[执行](research/M10_JPEG_R3_F1B_H2_EXECUTION.md)、[Android结果](research/M10_JPEG_R3_F1B_H2_ANDROID_RESULTS.md)、[生命周期](research/M10_JPEG_R3_F1B_H2_RESOURCE_LIFECYCLE.md)、[决策](research/M10_JPEG_R3_F1B_H2_DECISION.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-R3-F1B-H2.md)。仅推H2后停止，不能再运行normal/恢复。N01～N03历史保留，H1 N03 API36实证单独继承；R3原29项0 PASS/1 UNKNOWN/28 NOT_RUN、完整生命周期BLOCKED、历史attach/R1超时UNKNOWN、M10 PENDING/3 JPEG FAIL、UI-C1冻结及M11 NOT_AUTHORIZED不变。
+
+以下H1及更早各段为历史交付，当前状态/授权以上节为准。H1独立PASS WITH NOTES由当前用户转交，原报告不回写：
 
 - **M10-R3-F1B-H1 — READY_FOR_REVIEW**：用户转交U2独立PASS WITH NOTES，从锁定`a3dc3ac9635d5572317d38b94519d70c12052955`建立独立worktree/分支`research/m10-jpeg-strict-r3-f1b-h1`。本轮仅新完整安全预检、锁定研究APK更新及一次Outsider验证；旧研究APK源码/Manifest/Gradle、G1/U1规则、正式产品及历史证据不改。
 - **本轮资格与更新**：原AVD在线，启动0次；新的原verify双快照实际PREFLIGHT_ELIGIBLE，未复用U2资格。F1-A 27构建输入、两原始APK SHA/签名/Manifest实核；Probe/Outsider各install-r一次Success，目标SHA正确、UID10218/10219保持。每包更新后即时检查研究进程/服务/stage及文件保护均通过，未卸载/降级/清数据；测试前再次确认无活动研究消费者及危险stage。
@@ -124,9 +132,9 @@
 
 ## Git
 
-- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1b-g2-resume/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；只提交推送`research/m10-jpeg-strict-r3-f1b-g2-resume`，来源G2锁定`2de44c79173e7fa52841b55542e5ddcc5399a30a`，最终SHA/远端一致性取Git回执。G2原分支保持2de44c7、G1为7ff737e、F1B为04561e1、F1-A为f23180a、F0为f513725、R3为17b2cb4、R2为2912601、R1为2cdad4a、R0为c4cd90b；原M10工作区/分支4159682、UI-C1为0dce7dd、main远端145326d。没有合并、reset、force或修改这些分支/工作区。
+- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1b-h2/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；只提交推送`research/m10-jpeg-strict-r3-f1b-h2`，来源H1锁定`0dc49621f44f31eed0cdfc4d0dbb56d8756b667a`，最终SHA/远端一致性取Git回执。全部旧研究分支、原M10工作区/分支4159682、UI-C1为0dce7dd、main远端145326d保持；无merge/reset/force/覆盖。
 - M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`与冻结回写57de897为历史依据。M10原交付及本次独立复核基准 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`；补充验证提交仅新增测试/必要合成资产/证据及当前交接，不是生产修复，最终SHA与推送结果由Git日志/最终回执核对，避免递归引用。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥、私人原图或真实个人数据。
 
 ## Next Recommended Task
 
-**BLOCKED — M10-R3-F1B-G2-R。立即停止，等待ChatGPT独立审查未知ps UID标签阻塞。**原AVD现已上线，但只读门禁未通过；不改G1规则、不额外取证或重试，不安装或启动/停止Outsider/normal及正式App，不清理旧研究状态，不开展其他28项、取消/故障恢复、JNI或M11。模拟器保持运行；N01～N03、历史UNKNOWN、M10三FAIL与UI冻结等状态均保留。
+**BLOCKED — M10-R3-F1B-H2。立即停止等待ChatGPT独立审查bind timeout、Host ANR、迟到Worker及保守残留。**不重跑normal，不启动新消费者，不recover/清理stage或修改门禁/超时，不安装、终止、重启设备，不开展其他28项、取消/故障注入、JNI或M11。末次Host仍在、Worker未见，current/pin/source尚未安全收口；未来实验须另行授权处理阻塞，不能因进程暂未出现或lease瞬时可得而继续。

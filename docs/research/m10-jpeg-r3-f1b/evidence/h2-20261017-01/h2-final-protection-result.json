@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "atUtc": "2026-10-17T09:42:57.672636+00:00",
+  "checks": {
+    "formalAPKAndUIDUnchanged": true,
+    "formalPrivateMetadataUnchanged": true,
+    "deviceSettingsUnchanged": true,
+    "researchAPKAndUIDUnchanged": true
+  },
+  "packages": {
+    "com.cooper.lithic.m10r3.probe": {
+      "package": "com.cooper.lithic.m10r3.probe",
+      "present": true,
+      "uid": 10218,
+      "apks": [
+        {
+          "codePath": "/data/app/~~rHSou5LUXV_0WJUKT-3-1A==/com.cooper.lithic.m10r3.probe-LiXQ3Dq4_0rKc5k_hMvT8A==/base.apk",
+          "sha256": "a3eea12dfe05736a69c473fa812d0b52a43c8100bbed2cffd0ba9c8f5f0ea684"
+        }
+      ]
+    },
+    "com.cooper.lithic.m10r3.outsider": {
+      "package": "com.cooper.lithic.m10r3.outsider",
+      "present": true,
+      "uid": 10219,
+      "apks": [
+        {
+          "codePath": "/data/app/~~YkavostKmgbOvOrCCiLwWg==/com.cooper.lithic.m10r3.outsider-OWvjQhgO0eqj_A1byRjDQg==/base.apk",
+          "sha256": "a51c4984f07986c8df52b3dbbf7f946523e4c259aa67ab5e8f9b3feffdf41879"
+        }
+      ]
+    }
+  },
+  "formalBefore": {
+    "status": "PASS",
+    "method": "find + stat only; sorted aggregate; no private content read",
+    "roots": [
+      "files",
+      "no_backup",
+      "databases",
+      "shared_prefs"
+    ],
+    "recordCount": 188,
+    "aggregateSHA256": "326e7f5576fdb03ba0b57012ada3c12b06adf147726946e9f8df2b856d4a8a83",
+    "rawPathsArchived": false,
+    "privateByteIntegrity": "NOT_RUN",
+    "limitation": "Metadata equality is not byte-level ledger/cover integrity proof"
+  },
+  "formalAfter": {
+    "status": "PASS",
+    "method": "find + stat only; sorted aggregate; no private content read",
+    "roots": [
+      "files",
+      "no_backup",
+      "databases",
+      "shared_prefs"
+    ],
+    "recordCount": 188,
+    "aggregateSHA256": "326e7f5576fdb03ba0b57012ada3c12b06adf147726946e9f8df2b856d4a8a83",
+    "rawPathsArchived": false,
+    "privateByteIntegrity": "NOT_RUN",
+    "limitation": "Metadata equality is not byte-level ledger/cover integrity proof"
+  },
+  "privateByteIntegrity": "NOT_RUN",
+  "stageStatus": "BLOCKED",
+  "processStatus": "PASS",
+  "serviceClassification": "NO_TARGET_RECORD",
+  "adbCommands": 31,
+  "installCount": 0,
+  "activityLaunchCount": 0,
+  "originalBlockersPreserved": true
+}
