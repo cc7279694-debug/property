@@ -1,0 +1,18 @@
+package com.cooper.lithic.m10r3.probe;
+
+/** Extracted synchronous legacy seam, kept only until the behavioral RED is recorded. */
+public final class BoundedTraceWriter implements AutoCloseable {
+    public interface Sink { void write(Entry entry) throws Exception; }
+    public static final class Entry {
+        public final long sequence = 1L, createdNano = System.nanoTime();
+        public final String producerThread = Thread.currentThread().getName(), payload;
+        Entry(String payload) { this.payload = payload; }
+    }
+    private final Sink sink;
+    public BoundedTraceWriter(int capacity, int maxUtf8Bytes, Sink sink) { this.sink = sink; }
+    public boolean offer(String payload) {
+        try { sink.write(new Entry(payload)); return true; }
+        catch (Exception failure) { return false; }
+    }
+    public void close() { }
+}

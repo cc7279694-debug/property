@@ -1,0 +1,22 @@
+JUnit version 4.13.2
+.........E.................E..............
+Time: 0.511
+There were 2 failures:
+1) durationSnapshotPreservesMissingAndEarlyCallbackSemantics(com.cooper.lithic.m10r3.probe.BindingTimelineTest)
+java.lang.AssertionError: expected:<-1> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.BindingTimelineTest.durationSnapshotPreservesMissingAndEarlyCallbackSemantics(BindingTimelineTest.java:223)
+2) snapshotDerivesActualMonotonicPhaseDurations(com.cooper.lithic.m10r3.probe.BindingTimelineTest)
+java.lang.AssertionError: expected:<1000000000> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.BindingTimelineTest.snapshotDerivesActualMonotonicPhaseDurations(BindingTimelineTest.java:212)
+
+FAILURES!!!
+Tests run: 40,  Failures: 2
+

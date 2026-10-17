@@ -1,0 +1,13 @@
+JUnit version 4.13.2
+.E
+Time: 0.348
+There was 1 failure:
+1) blockedSinkCannotBlockProducer(com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest)
+java.lang.AssertionError: producer waits for diagnostic sink
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.cooper.lithic.m10r3.probe.BoundedTraceWriterTest.blockedSinkCannotBlockProducer(BoundedTraceWriterTest.java:18)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+

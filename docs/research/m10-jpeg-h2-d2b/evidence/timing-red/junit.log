@@ -1,0 +1,20 @@
+JUnit version 4.13.2
+.E.E
+Time: 2.167
+There were 2 failures:
+1) queuedTimeoutClosesMemoryFence(com.cooper.lithic.m10r3.probe.BindingTimelineTest)
+java.lang.AssertionError: expected:<UI_BIND_QUEUE_TIMEOUT> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.BindingTimelineTest.queuedTimeoutClosesMemoryFence(BindingTimelineTest.java:18)
+2) independentTimerClosesFenceWithoutCallerProgress(com.cooper.lithic.m10r3.probe.DeadlineWatchdogTest)
+java.lang.AssertionError: watchdog must progress independently
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.cooper.lithic.m10r3.probe.DeadlineWatchdogTest.independentTimerClosesFenceWithoutCallerProgress(DeadlineWatchdogTest.java:19)
+
+FAILURES!!!
+Tests run: 2,  Failures: 2
+

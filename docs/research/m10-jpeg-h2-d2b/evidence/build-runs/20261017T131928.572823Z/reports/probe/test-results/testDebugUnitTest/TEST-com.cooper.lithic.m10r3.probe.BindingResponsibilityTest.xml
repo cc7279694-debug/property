@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-17T13:20:08.579Z" hostname="WHOCARE" time="0.059">
+  <properties/>
+  <testcase name="externalBindAndUnbindDoNotHoldMonitor" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.002"/>
+  <testcase name="oldResponsibilityCannotCleanDifferentConnection" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.005"/>
+  <testcase name="securityExceptionPreservesBindingErrorAndCleanup" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.0"/>
+  <testcase name="deniedAndNotRegisteredIsKnownNoRegistration" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.001"/>
+  <testcase name="cleanupDuringBindDefersUntilTrueReturn" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.019"/>
+  <testcase name="unknownUnbindDoesNotEraseOrSilentlyRetryDuty" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.001"/>
+  <testcase name="bindErrorIsRecordedAndStillCleansResponsibility" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.002"/>
+  <testcase name="returnedFalseStillCleansMatchingRegistration" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.001"/>
+  <testcase name="bindRuntimeExceptionAlsoHasMatchingCleanup" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.003"/>
+  <testcase name="knownUnboundCleanupIsIdempotent" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.0"/>
+  <testcase name="cleanupBeforeQueueExecutesPreventsBinding" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.003"/>
+  <testcase name="trueThenNotRegisteredIsUnknownAndPreservesDuty" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.0"/>
+  <testcase name="returnedTrueKeepsDutyUntilExplicitCleanup" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.001"/>
+  <testcase name="failedBeforeQueuedBindNeverCallsAndroid" classname="com.cooper.lithic.m10r3.probe.BindingResponsibilityTest" time="0.016"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

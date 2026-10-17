@@ -1,0 +1,1070 @@
+P d 596	928	83748	<TOTAL>
+P d 596	624	81140	com
+P d 596	624	81140	com.cooper
+P d 596	624	81140	com.cooper.lithic
+P d 596	624	81140	com.cooper.lithic.m10r3
+P d 596	624	81140	com.cooper.lithic.m10r3.probe
+C d 48	48	9835	com.cooper.lithic.m10r3.probe.StageStore
+M d 1	1	372	com.cooper.lithic.m10r3.probe.StageStore <clinit>()
+M d 1	1	179	com.cooper.lithic.m10r3.probe.StageStore <init>(android.content.Context)
+M d 1	1	370	com.cooper.lithic.m10r3.probe.StageStore void atomic(java.io.File,java.lang.String,org.json.JSONObject)
+M d 1	1	101	com.cooper.lithic.m10r3.probe.StageStore void attempt(java.lang.String)
+M d 1	1	60	com.cooper.lithic.m10r3.probe.StageStore java.util.Set extended(java.lang.String[])
+M d 1	1	135	com.cooper.lithic.m10r3.probe.StageStore java.util.Map fields(org.json.JSONObject)
+M d 1	1	55	com.cooper.lithic.m10r3.probe.StageStore boolean integral(java.lang.Object)
+M d 1	1	71	com.cooper.lithic.m10r3.probe.StageStore java.util.Set keys(org.json.JSONObject)
+M d 1	1	143	com.cooper.lithic.m10r3.probe.StageStore boolean legacyV1Recognizes(org.json.JSONObject)
+M d 1	1	69	com.cooper.lithic.m10r3.probe.StageStore org.json.JSONObject read(java.io.File)
+M d 1	1	111	com.cooper.lithic.m10r3.probe.StageStore void regular(java.io.File)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.StageStore void require(boolean,java.lang.String)
+M d 1	1	79	com.cooper.lithic.m10r3.probe.StageStore java.lang.String retainedHash(java.io.File,java.lang.String)
+M d 1	1	197	com.cooper.lithic.m10r3.probe.StageStore java.io.File safe(java.io.File,java.lang.String)
+M d 1	1	74	com.cooper.lithic.m10r3.probe.StageStore void sameOwner(org.json.JSONObject,org.json.JSONObject,java.lang.String[])
+M d 1	1	50	com.cooper.lithic.m10r3.probe.StageStore java.util.Set set(java.lang.String[])
+M d 1	1	624	com.cooper.lithic.m10r3.probe.StageStore boolean validReceipt(org.json.JSONObject,org.json.JSONObject)
+M d 1	1	213	com.cooper.lithic.m10r3.probe.StageStore void validateOutputOwner(org.json.JSONObject,org.json.JSONObject)
+M d 1	1	163	com.cooper.lithic.m10r3.probe.StageStore void validateState(org.json.JSONObject,org.json.JSONObject)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.StageStore com.cooper.lithic.m10r3.probe.StageAdmission$Backend admissionBackend()
+M d 1	1	41	com.cooper.lithic.m10r3.probe.StageStore com.cooper.lithic.m10r3.probe.StageAdmission$Backend admissionBackend(boolean)
+M d 1	1	72	com.cooper.lithic.m10r3.probe.StageStore void assertAllTerminal()
+M d 1	1	209	com.cooper.lithic.m10r3.probe.StageStore java.util.List attempts()
+M d 1	1	383	com.cooper.lithic.m10r3.probe.StageStore boolean authorityWithOwner(java.lang.String,org.json.JSONObject)
+M d 1	1	90	com.cooper.lithic.m10r3.probe.StageStore boolean canAcquireGuard(java.lang.String)
+M d 1	1	419	com.cooper.lithic.m10r3.probe.StageStore boolean cleanup(java.lang.String)
+M d 1	1	72	com.cooper.lithic.m10r3.probe.StageStore void closeAllPriorAttempts()
+M d 1	1	657	com.cooper.lithic.m10r3.probe.StageStore org.json.JSONObject create(java.lang.String)
+M d 1	1	168	com.cooper.lithic.m10r3.probe.StageStore java.lang.String currentAttempt()
+M d 1	1	49	com.cooper.lithic.m10r3.probe.StageStore java.io.File dir(java.lang.String)
+M d 1	1	108	com.cooper.lithic.m10r3.probe.StageStore boolean isCurrentAuthorized(java.lang.String)
+M d 1	1	100	com.cooper.lithic.m10r3.probe.StageStore android.os.ParcelFileDescriptor open(java.lang.String,java.lang.String,int)
+M d 1	1	207	com.cooper.lithic.m10r3.probe.StageStore boolean ownedSource(java.lang.String,org.json.JSONObject)
+M d 1	1	221	com.cooper.lithic.m10r3.probe.StageStore boolean ownedSourceAndOutput(java.lang.String,org.json.JSONObject)
+M d 1	1	685	com.cooper.lithic.m10r3.probe.StageStore org.json.JSONObject owner(java.lang.String)
+M d 1	1	228	com.cooper.lithic.m10r3.probe.StageStore void pin(java.lang.String,java.lang.String)
+M d 1	1	72	com.cooper.lithic.m10r3.probe.StageStore void publishCurrent(java.lang.String)
+M d 1	1	245	com.cooper.lithic.m10r3.probe.StageStore org.json.JSONObject receipt(java.lang.String,boolean)
+M d 1	1	545	com.cooper.lithic.m10r3.probe.StageStore void recordOutput(java.lang.String)
+M d 1	1	279	com.cooper.lithic.m10r3.probe.StageStore void removeKnownData(java.lang.String)
+M d 1	1	80	com.cooper.lithic.m10r3.probe.StageStore void revoke(java.lang.String)
+M d 1	1	72	com.cooper.lithic.m10r3.probe.StageStore boolean revoked(java.lang.String)
+M d 1	1	125	com.cooper.lithic.m10r3.probe.StageStore boolean revokedWithOwner(java.lang.String,org.json.JSONObject)
+M d 1	1	59	com.cooper.lithic.m10r3.probe.StageStore boolean sourceExists(java.lang.String)
+M d 1	1	513	com.cooper.lithic.m10r3.probe.StageStore void validateStage(java.lang.String,boolean)
+M d 1	1	45	com.cooper.lithic.m10r3.probe.StageStore void verifyTerminal(java.lang.String)
+M d 1	1	505	com.cooper.lithic.m10r3.probe.StageStore void verifyTerminalWithOwner(java.lang.String,org.json.JSONObject)
+M d 1	1	299	com.cooper.lithic.m10r3.probe.StageStore void writeTerminal(java.lang.String)
+F d 0	0	19	com.cooper.lithic.m10r3.probe.StageStore java.util.Set KNOWN_CHILDREN
+F d 0	0	18	com.cooper.lithic.m10r3.probe.StageStore java.util.Set OWNER_KEYS
+F d 0	0	18	com.cooper.lithic.m10r3.probe.StageStore java.util.Set STATES
+F d 0	0	10	com.cooper.lithic.m10r3.probe.StageStore java.lang.Object authorizationLock
+F d 0	0	11	com.cooper.lithic.m10r3.probe.StageStore java.io.File root
+C d 30	30	4237	com.cooper.lithic.m10r3.probe.BindingTimeline
+M d 1	1	132	com.cooper.lithic.m10r3.probe.BindingTimeline <init>(com.cooper.lithic.m10r3.probe.BindingTimeline$Clock,com.cooper.lithic.m10r3.probe.BindingTimeline$Limits,com.cooper.lithic.m10r3.probe.BindingTimeline$FailureFence)
+M d 1	1	185	com.cooper.lithic.m10r3.probe.BindingTimeline boolean allowedLocked(com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary)
+M d 1	1	77	com.cooper.lithic.m10r3.probe.BindingTimeline boolean bindingReadyLocked()
+M d 1	1	435	com.cooper.lithic.m10r3.probe.BindingTimeline void checkLocked(long)
+M d 1	1	140	com.cooper.lithic.m10r3.probe.BindingTimeline void deliverFailure()
+M d 1	1	126	com.cooper.lithic.m10r3.probe.BindingTimeline long durationNanos(com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary,com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary,boolean)
+M d 1	1	43	com.cooper.lithic.m10r3.probe.BindingTimeline void failLocked(java.lang.String)
+M d 1	1	77	com.cooper.lithic.m10r3.probe.BindingTimeline boolean handshakeReadyLocked()
+M d 1	1	43	com.cooper.lithic.m10r3.probe.BindingTimeline boolean has(com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary)
+M d 1	1	421	com.cooper.lithic.m10r3.probe.BindingTimeline boolean mark(com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary,boolean,java.lang.String)
+M d 1	1	83	com.cooper.lithic.m10r3.probe.BindingTimeline void record(com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary,long)
+M d 1	1	184	com.cooper.lithic.m10r3.probe.BindingTimeline java.lang.Long sampleLocked()
+M d 1	1	55	com.cooper.lithic.m10r3.probe.BindingTimeline long time(com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary)
+M d 1	1	44	com.cooper.lithic.m10r3.probe.BindingTimeline boolean bindReturned(boolean,java.lang.String)
+M d 1	1	90	com.cooper.lithic.m10r3.probe.BindingTimeline boolean bindingReady()
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingTimeline boolean callBegin()
+M d 1	1	92	com.cooper.lithic.m10r3.probe.BindingTimeline void checkDeadline()
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingTimeline boolean completed()
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingTimeline boolean connectedAccepted()
+M d 1	1	66	com.cooper.lithic.m10r3.probe.BindingTimeline java.lang.Throwable failureDeliveryError()
+M d 1	1	66	com.cooper.lithic.m10r3.probe.BindingTimeline java.lang.String firstFailure()
+M d 1	1	90	com.cooper.lithic.m10r3.probe.BindingTimeline boolean handshakeReady()
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingTimeline boolean helloAccepted()
+M d 1	1	86	com.cooper.lithic.m10r3.probe.BindingTimeline boolean isCompleted()
+M d 1	1	326	com.cooper.lithic.m10r3.probe.BindingTimeline java.lang.String phase()
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingTimeline boolean posted()
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingTimeline boolean reserveIssued()
+M d 1	1	45	com.cooper.lithic.m10r3.probe.BindingTimeline boolean reserveReturned(boolean)
+M d 1	1	759	com.cooper.lithic.m10r3.probe.BindingTimeline java.util.Map snapshot()
+M d 1	1	80	com.cooper.lithic.m10r3.probe.BindingTimeline void watchdogUnknown(java.lang.String)
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline boolean bound
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline com.cooper.lithic.m10r3.probe.BindingTimeline$Clock clock
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline boolean complete
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline com.cooper.lithic.m10r3.probe.BindingTimeline$FailureFence failure
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline boolean failureDelivered
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline java.lang.Throwable failureDeliveryError
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline boolean failureDeliveryUnknown
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline java.lang.String firstFailure
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline long lastSample
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline com.cooper.lithic.m10r3.probe.BindingTimeline$Limits limits
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline boolean reserved
+F d 0	0	18	com.cooper.lithic.m10r3.probe.BindingTimeline java.util.EnumMap threads
+F d 0	0	18	com.cooper.lithic.m10r3.probe.BindingTimeline java.util.EnumMap times
+C d 25	26	3651	com.cooper.lithic.m10r3.probe.WorkerService
+M d 1	1	39	com.cooper.lithic.m10r3.probe.WorkerService void $r8$lambda$_vX9cud7_Z_EWJUeTYb5G3hykJE(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService com.cooper.lithic.m10r3.probe.IHost -$$Nest$fgetclient(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService java.util.concurrent.ExecutorService -$$Nest$fgetcompute(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService android.net.LocalServerSocket -$$Nest$fgetconsumerLease(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService java.util.concurrent.ScheduledExecutorService -$$Nest$fgetcontrol(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService android.os.Bundle -$$Nest$fgetrequest(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService boolean -$$Nest$fgetstarted(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService void -$$Nest$fputcancelled(com.cooper.lithic.m10r3.probe.WorkerService,boolean)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService void -$$Nest$fputclient(com.cooper.lithic.m10r3.probe.WorkerService,com.cooper.lithic.m10r3.probe.IHost)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService void -$$Nest$fputconsumerLease(com.cooper.lithic.m10r3.probe.WorkerService,android.net.LocalServerSocket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService void -$$Nest$fputrequest(com.cooper.lithic.m10r3.probe.WorkerService,android.os.Bundle)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.WorkerService void -$$Nest$fputstarted(com.cooper.lithic.m10r3.probe.WorkerService,boolean)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.WorkerService boolean -$$Nest$mauthorized(com.cooper.lithic.m10r3.probe.WorkerService,java.lang.String,java.lang.String)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.WorkerService void -$$Nest$mselfExit(com.cooper.lithic.m10r3.probe.WorkerService,java.lang.String,long)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.WorkerService void -$$Nest$mwork(com.cooper.lithic.m10r3.probe.WorkerService,android.os.Bundle,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+M d 1	1	77	com.cooper.lithic.m10r3.probe.WorkerService <init>()
+M d 1	1	121	com.cooper.lithic.m10r3.probe.WorkerService boolean authorized(java.lang.String,java.lang.String)
+M d 1	1	46	com.cooper.lithic.m10r3.probe.WorkerService void lambda$onCreate$1()
+M d 1	1	82	com.cooper.lithic.m10r3.probe.WorkerService void lambda$selfExit$0(java.lang.String)
+M d 1	1	134	com.cooper.lithic.m10r3.probe.WorkerService void selfExit(java.lang.String,long)
+M d 1	1	2216	com.cooper.lithic.m10r3.probe.WorkerService void work(android.os.Bundle,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+M d 1	1	104	com.cooper.lithic.m10r3.probe.WorkerService android.os.IBinder onBind(android.content.Intent)
+M d 1	1	81	com.cooper.lithic.m10r3.probe.WorkerService void onCreate()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.WorkerService int onStartCommand(android.content.Intent,int,int)
+M d 1	1	61	com.cooper.lithic.m10r3.probe.WorkerService boolean onUnbind(android.content.Intent)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.WorkerService boolean cancelled
+F d 0	0	10	com.cooper.lithic.m10r3.probe.WorkerService com.cooper.lithic.m10r3.probe.IHost client
+F d 0	0	10	com.cooper.lithic.m10r3.probe.WorkerService java.util.concurrent.ExecutorService compute
+F d 0	0	10	com.cooper.lithic.m10r3.probe.WorkerService android.net.LocalServerSocket consumerLease
+F d 0	0	10	com.cooper.lithic.m10r3.probe.WorkerService java.util.concurrent.ScheduledExecutorService control
+F d 0	0	10	com.cooper.lithic.m10r3.probe.WorkerService com.cooper.lithic.m10r3.probe.IWorker$Stub endpoint
+F d 0	0	10	com.cooper.lithic.m10r3.probe.WorkerService boolean exiting
+F d 0	0	10	com.cooper.lithic.m10r3.probe.WorkerService android.os.Bundle request
+F d 0	0	10	com.cooper.lithic.m10r3.probe.WorkerService boolean started
+C d 24	24	4602	com.cooper.lithic.m10r3.probe.ProbeSupport
+M d 1	1	86	com.cooper.lithic.m10r3.probe.ProbeSupport <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.ProbeSupport <init>()
+M d 1	1	383	com.cooper.lithic.m10r3.probe.ProbeSupport android.os.Bundle bundle(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	274	com.cooper.lithic.m10r3.probe.ProbeSupport byte[] bytes(java.io.File)
+M d 1	1	43	com.cooper.lithic.m10r3.probe.ProbeSupport void clearDiagnosticFence(java.lang.Runnable)
+M d 1	1	299	com.cooper.lithic.m10r3.probe.ProbeSupport org.json.JSONObject diagnosticSummary()
+M d 1	1	123	com.cooper.lithic.m10r3.probe.ProbeSupport boolean diagnosticUnknown()
+M d 1	1	441	com.cooper.lithic.m10r3.probe.ProbeSupport com.cooper.lithic.m10r3.probe.SessionEnvelope envelope(android.os.Bundle)
+M d 1	1	299	com.cooper.lithic.m10r3.probe.ProbeSupport void event(java.lang.String,java.lang.Object[])
+M d 1	1	105	com.cooper.lithic.m10r3.probe.ProbeSupport boolean flushDiagnostics(long)
+M d 1	1	209	com.cooper.lithic.m10r3.probe.ProbeSupport android.os.Bundle identity(org.json.JSONObject)
+M d 1	1	170	com.cooper.lithic.m10r3.probe.ProbeSupport void initializeDiagnostics()
+M d 1	1	79	com.cooper.lithic.m10r3.probe.ProbeSupport java.lang.String knownRole(java.lang.String)
+M d 1	1	166	com.cooper.lithic.m10r3.probe.ProbeSupport void lambda$initializeDiagnostics$0(com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry)
+M d 1	1	58	com.cooper.lithic.m10r3.probe.ProbeSupport void lambda$initializeDiagnostics$1()
+M d 1	1	371	com.cooper.lithic.m10r3.probe.ProbeSupport void persistLine(java.lang.String)
+M d 1	1	194	com.cooper.lithic.m10r3.probe.ProbeSupport java.lang.String processName26()
+M d 1	1	227	com.cooper.lithic.m10r3.probe.ProbeSupport boolean readOnlyDescriptor(android.os.ParcelFileDescriptor)
+M d 1	1	162	com.cooper.lithic.m10r3.probe.ProbeSupport java.lang.String role(java.lang.String)
+M d 1	1	281	com.cooper.lithic.m10r3.probe.ProbeSupport boolean same(android.os.Bundle,android.os.Bundle)
+M d 1	1	63	com.cooper.lithic.m10r3.probe.ProbeSupport void setDiagnosticFence(java.lang.Runnable)
+M d 1	1	129	com.cooper.lithic.m10r3.probe.ProbeSupport java.lang.String sha(byte[])
+M d 1	1	140	com.cooper.lithic.m10r3.probe.ProbeSupport void syncDir(java.io.File)
+M d 1	1	102	com.cooper.lithic.m10r3.probe.ProbeSupport void writeWorkerEvent(java.lang.String)
+F d 0	0	14	com.cooper.lithic.m10r3.probe.ProbeSupport java.lang.String PKG
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeSupport android.content.Context context
+F d 0	0	18	com.cooper.lithic.m10r3.probe.ProbeSupport java.util.concurrent.atomic.AtomicReference diagnosticFence
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeSupport com.cooper.lithic.m10r3.probe.BoundedTraceWriter diagnostics
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeSupport java.util.concurrent.atomic.AtomicLong earlyTraceLoss
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeSupport java.lang.String identityError
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeSupport java.util.concurrent.CountDownLatch identityReady
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeSupport boolean mainOwner
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeSupport java.lang.String processName
+C d 22	22	2793	com.cooper.lithic.m10r3.probe.BoundedTraceWriter
+M d 1	1	39	com.cooper.lithic.m10r3.probe.BoundedTraceWriter void $r8$lambda$NBnK5P_Hn4b8LLonzDVoreUfs0E(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong -$$Nest$fgetaccepted(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong -$$Nest$fgetattempted(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong -$$Nest$fgetdropped(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicReference -$$Nest$fgetfailure(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicReference -$$Nest$fgetobserverFailure(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong -$$Nest$fgetobserverFailures(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicInteger -$$Nest$fgetpending(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicInteger -$$Nest$fgetproducers(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicBoolean -$$Nest$fgetterminated(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong -$$Nest$fgetwriteFailures(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong -$$Nest$fgetwritten(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	49	com.cooper.lithic.m10r3.probe.BoundedTraceWriter <init>(int,int,com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Sink)
+M d 1	1	377	com.cooper.lithic.m10r3.probe.BoundedTraceWriter <init>(int,int,com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Sink,java.lang.Runnable)
+M d 1	1	32	com.cooper.lithic.m10r3.probe.BoundedTraceWriter void lambda$new$0()
+M d 1	1	49	com.cooper.lithic.m10r3.probe.BoundedTraceWriter boolean reject(java.lang.String,java.lang.Throwable)
+M d 1	1	339	com.cooper.lithic.m10r3.probe.BoundedTraceWriter void runWriter()
+M d 1	1	236	com.cooper.lithic.m10r3.probe.BoundedTraceWriter boolean awaitDrained(long,java.util.concurrent.TimeUnit)
+M d 1	1	53	com.cooper.lithic.m10r3.probe.BoundedTraceWriter void close()
+M d 1	1	743	com.cooper.lithic.m10r3.probe.BoundedTraceWriter boolean offer(java.lang.String)
+M d 1	1	153	com.cooper.lithic.m10r3.probe.BoundedTraceWriter void recordFailure(java.lang.String,java.lang.Throwable)
+M d 1	1	43	com.cooper.lithic.m10r3.probe.BoundedTraceWriter com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health snapshot()
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong accepted
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong attempted
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.Semaphore available
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter int capacity
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicBoolean closed
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong dropped
+F d 0	0	18	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicReference failure
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter int maxUtf8Bytes
+F d 0	0	18	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicReference observerFailure
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong observerFailures
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.lang.Runnable onUnknown
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicInteger pending
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicInteger producers
+F d 0	0	18	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.ConcurrentLinkedQueue queue
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong sequence
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Sink sink
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicBoolean terminated
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong writeFailures
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter java.util.concurrent.atomic.AtomicLong written
+C d 22	22	2287	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2
+M d 1	1	41	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$PrSH0Wnc-uzmOF0p9g7N3KrSwB0(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,int,int,android.os.Bundle)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$VcRIWIwAy59pF5GgYl4_cRkNhb8(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,android.os.Bundle,int,int)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$WoytAkjOvufcHIv4ciINWWUdAAg(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$ZYDjdWHr7TcCbjHZ3pxXtMOt5_M(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,int,int,android.os.Bundle)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$hbqivJoWlHKYUqXlu-Fhr5SxV7I(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,android.os.Bundle,int,int)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$qDNPGYKkdgGNz6x20_IZNA35NUI(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,int,int,android.os.Bundle)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$vNQnSMczuLmN5JhJst-lXQVU58c(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$voPWYgCdUkxOCleP6-GngvnGCrc(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,int,int,android.os.Bundle)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean $r8$lambda$y83fL7lepRNA8jW1XMCc7z3C8fM(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2)
+M d 1	1	43	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	60	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$grant$3()
+M d 1	1	118	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$grant$4(int,int,android.os.Bundle)
+M d 1	1	74	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$grant$5(int,int,android.os.Bundle)
+M d 1	1	60	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$hello$0()
+M d 1	1	178	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$hello$1(android.os.Bundle,int,int)
+M d 1	1	74	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$hello$2(android.os.Bundle,int,int)
+M d 1	1	60	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$result$6()
+M d 1	1	242	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$result$7(int,int,android.os.Bundle)
+M d 1	1	74	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean lambda$result$8(int,int,android.os.Bundle)
+M d 1	1	215	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean grant(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	262	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean hello(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	386	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 boolean result(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 com.cooper.lithic.m10r3.probe.ProbeRunner$Session this$1
+C d 20	20	893	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket
+M d 1	1	37	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean -$$Nest$fgetcurrentPublished(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean -$$Nest$fgetcurrentStarted(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket long -$$Nest$fgetepoch(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket java.lang.String -$$Nest$fgetfirstFailure(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket com.cooper.lithic.m10r3.probe.SessionGate -$$Nest$fgetgate(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket com.cooper.lithic.m10r3.probe.InvocationFence -$$Nest$fgetowner(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean -$$Nest$fgetreceiptCommitted(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean -$$Nest$fgetreceiptStarted(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean -$$Nest$fgetterminal(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket void -$$Nest$fputcurrentPublished(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,boolean)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket void -$$Nest$fputcurrentStarted(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,boolean)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket void -$$Nest$fputfirstFailure(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,java.lang.String)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket void -$$Nest$fputgate(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,com.cooper.lithic.m10r3.probe.SessionGate)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket void -$$Nest$fputreceiptCommitted(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,boolean)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket void -$$Nest$fputreceiptStarted(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,boolean)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket void -$$Nest$fputterminal(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,boolean)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket <init>(com.cooper.lithic.m10r3.probe.InvocationFence,long)
+M d 1	1	39	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket <init>(com.cooper.lithic.m10r3.probe.InvocationFence,long,com.cooper.lithic.m10r3.probe.InvocationFence-IA)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket long epoch()
+M d 1	1	35	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket java.lang.String firstFailure()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean currentPublished
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean currentStarted
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket long epoch
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket java.lang.String firstFailure
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket com.cooper.lithic.m10r3.probe.SessionGate gate
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket com.cooper.lithic.m10r3.probe.InvocationFence owner
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean receiptCommitted
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean receiptStarted
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Ticket boolean terminal
+C d 17	17	9855	com.cooper.lithic.m10r3.probe.ProbeRunner
+M d 1	1	39	com.cooper.lithic.m10r3.probe.ProbeRunner void $r8$lambda$A9Xye-wJ3E1idQIJVAcRV8mCn-Y(android.app.Activity)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.ProbeRunner void $r8$lambda$DhLSahXssL2WFo0j-Hd2GQ4krUQ(com.cooper.lithic.m10r3.probe.ProbeRunner,com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.ProbeRunner void $r8$lambda$uYz0XpLrxrWVC7qeToTBCETrd6Y(java.util.concurrent.CountDownLatch)
+M d 1	1	177	com.cooper.lithic.m10r3.probe.ProbeRunner <init>(android.content.Context)
+M d 1	1	319	com.cooper.lithic.m10r3.probe.ProbeRunner boolean claim(android.content.Context,java.lang.String,java.lang.String)
+M d 1	1	77	com.cooper.lithic.m10r3.probe.ProbeRunner boolean closedDescriptor(java.io.FileDescriptor)
+M d 1	1	50	com.cooper.lithic.m10r3.probe.ProbeRunner void lambda$dispatch$0(com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation)
+M d 1	1	108	com.cooper.lithic.m10r3.probe.ProbeRunner void lambda$runCase$1(android.app.Activity,java.lang.String,java.util.concurrent.CountDownLatch)
+M d 1	1	84	com.cooper.lithic.m10r3.probe.ProbeRunner void lambda$runCase$2(com.cooper.lithic.m10r3.probe.ProbeRunner$Session,java.lang.String,java.lang.Throwable)
+M d 1	1	76	com.cooper.lithic.m10r3.probe.ProbeRunner void lambda$runCase$3(com.cooper.lithic.m10r3.probe.BindingResponsibility,com.cooper.lithic.m10r3.probe.ProbeRunner$Session,java.util.concurrent.CountDownLatch)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.ProbeRunner void require(boolean,java.lang.String)
+M d 1	1	2089	com.cooper.lithic.m10r3.probe.ProbeRunner void dispatch(android.app.Activity,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+M d 1	1	293	com.cooper.lithic.m10r3.probe.ProbeRunner void fault(java.lang.String,java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	45	com.cooper.lithic.m10r3.probe.ProbeRunner org.json.JSONObject recover()
+M d 1	1	4793	com.cooper.lithic.m10r3.probe.ProbeRunner org.json.JSONObject runCase(android.app.Activity,java.lang.String,java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation)
+M d 1	1	1197	com.cooper.lithic.m10r3.probe.ProbeRunner org.json.JSONObject stageModel(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	270	com.cooper.lithic.m10r3.probe.ProbeRunner void writeFaultReceipt(com.cooper.lithic.m10r3.probe.ProbeRunner$Session,java.lang.String,java.lang.String)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner android.content.Context context
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner com.cooper.lithic.m10r3.probe.InvocationFence invocations
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner java.util.concurrent.atomic.AtomicInteger rejectedCommands
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner java.io.File reports
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner com.cooper.lithic.m10r3.probe.StageStore store
+C d 16	16	1763	com.cooper.lithic.m10r3.probe.HostCommandQueue
+M d 1	1	39	com.cooper.lithic.m10r3.probe.HostCommandQueue void $r8$lambda$7308KzXgHR50uDM48I6srKshRrg(com.cooper.lithic.m10r3.probe.HostCommandQueue,java.lang.String,java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Claim,com.cooper.lithic.m10r3.probe.HostCommandQueue$Task)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.HostCommandQueue void $r8$lambda$QWtGejJEaSAnZ0wHaaECXPZn_fg(com.cooper.lithic.m10r3.probe.HostCommandQueue,com.cooper.lithic.m10r3.probe.HostCommandQueue$Initializer)
+M d 1	1	41	com.cooper.lithic.m10r3.probe.HostCommandQueue <init>(int,com.cooper.lithic.m10r3.probe.HostCommandQueue$Initializer)
+M d 1	1	199	com.cooper.lithic.m10r3.probe.HostCommandQueue <init>(int,com.cooper.lithic.m10r3.probe.HostCommandQueue$Initializer,com.cooper.lithic.m10r3.probe.HostCommandQueue$Observer)
+M d 1	1	188	com.cooper.lithic.m10r3.probe.HostCommandQueue void execute(java.lang.String,java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Claim,com.cooper.lithic.m10r3.probe.HostCommandQueue$Task)
+M d 1	1	54	com.cooper.lithic.m10r3.probe.HostCommandQueue java.lang.Thread lambda$new$0(java.lang.Runnable)
+M d 1	1	73	com.cooper.lithic.m10r3.probe.HostCommandQueue void lambda$new$1(com.cooper.lithic.m10r3.probe.HostCommandQueue$Initializer)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.HostCommandQueue void lambda$submit$2(java.lang.String,java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Claim,com.cooper.lithic.m10r3.probe.HostCommandQueue$Task)
+M d 1	1	88	com.cooper.lithic.m10r3.probe.HostCommandQueue void observe(java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome,java.lang.Throwable)
+M d 1	1	133	com.cooper.lithic.m10r3.probe.HostCommandQueue boolean valid(java.lang.String,java.lang.String)
+M d 1	1	81	com.cooper.lithic.m10r3.probe.HostCommandQueue void close()
+M d 1	1	35	com.cooper.lithic.m10r3.probe.HostCommandQueue java.lang.Throwable initializationError()
+M d 1	1	35	com.cooper.lithic.m10r3.probe.HostCommandQueue java.lang.Throwable observerError()
+M d 1	1	43	com.cooper.lithic.m10r3.probe.HostCommandQueue long observerFailures()
+M d 1	1	49	com.cooper.lithic.m10r3.probe.HostCommandQueue com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness readiness()
+M d 1	1	460	com.cooper.lithic.m10r3.probe.HostCommandQueue com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission submit(java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Claim,com.cooper.lithic.m10r3.probe.HostCommandQueue$Task)
+F d 0	0	19	com.cooper.lithic.m10r3.probe.HostCommandQueue java.util.Set activeKeys
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostCommandQueue java.lang.Object admission
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostCommandQueue boolean closed
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostCommandQueue java.util.concurrent.ThreadPoolExecutor executor
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostCommandQueue java.lang.Throwable initializationError
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostCommandQueue com.cooper.lithic.m10r3.probe.HostCommandQueue$Observer observer
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostCommandQueue java.lang.Throwable observerError
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostCommandQueue java.util.concurrent.atomic.AtomicLong observerFailures
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostCommandQueue com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness readiness
+C d 16	16	2432	com.cooper.lithic.m10r3.probe.ProbeRunner$Session
+M d 1	1	39	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void $r8$lambda$6uiXKMq6qybicT7ABVoeUaSm218(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void $r8$lambda$lpXvlcJLHqRFHE8UoNzGqlsyrKE(com.cooper.lithic.m10r3.probe.ProbeRunner$Session,java.lang.String,java.lang.Throwable)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session long $r8$lambda$yK9Ydy_cOcTP4-mkXmCgPPXw5V0()
+M d 1	1	375	com.cooper.lithic.m10r3.probe.ProbeRunner$Session <init>(com.cooper.lithic.m10r3.probe.ProbeRunner,com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation)
+M d 1	1	278	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void lambda$bind$1()
+M d 1	1	84	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void lambda$new$0(java.lang.String,java.lang.Throwable)
+M d 1	1	72	com.cooper.lithic.m10r3.probe.ProbeRunner$Session boolean accepting()
+M d 1	1	135	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void bind()
+M d 1	1	79	com.cooper.lithic.m10r3.probe.ProbeRunner$Session boolean connectionClosed()
+M d 1	1	53	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void failMemory(java.lang.String)
+M d 1	1	81	com.cooper.lithic.m10r3.probe.ProbeRunner$Session boolean open()
+M d 1	1	252	com.cooper.lithic.m10r3.probe.ProbeRunner$Session boolean reserve()
+M d 1	1	129	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void retire()
+M d 1	1	81	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void signalConnectedIfReady()
+M d 1	1	203	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void timingEvent(java.lang.String,boolean)
+M d 1	1	223	com.cooper.lithic.m10r3.probe.ProbeRunner$Session void unbind()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session com.cooper.lithic.m10r3.probe.BindingResponsibility binding
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session com.cooper.lithic.m10r3.probe.IHost$Stub callback
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session java.util.concurrent.CountDownLatch connected
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session android.content.ServiceConnection connection
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session java.util.concurrent.CountDownLatch death
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session boolean disconnected
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session java.lang.String durableFence
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session android.os.IBinder endpoint
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session com.cooper.lithic.m10r3.probe.SessionGate gate
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session java.lang.String id
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session android.os.Bundle identity
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation invocation
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session org.json.JSONObject owner
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session java.util.concurrent.CountDownLatch result
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session com.cooper.lithic.m10r3.probe.ProbeRunner this$0
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session com.cooper.lithic.m10r3.probe.BindingTimeline timeline
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session com.cooper.lithic.m10r3.probe.DeadlineWatchdog watchdog
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session com.cooper.lithic.m10r3.probe.IWorker worker
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session int workerPid
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Session int workerUid
+C d 13	14	1774	com.cooper.lithic.m10r3.probe.ProbeApplication
+M d 1	1	39	com.cooper.lithic.m10r3.probe.ProbeApplication void $r8$lambda$PpvAx250CwJ4Wvu4MdPvyy_BgzA(com.cooper.lithic.m10r3.probe.ProbeApplication)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.ProbeApplication void $r8$lambda$Pr2_lf_SJg0vVs6xocHZFOukRUw(com.cooper.lithic.m10r3.probe.ProbeApplication,java.lang.ref.WeakReference,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeApplication boolean $r8$lambda$Xw_jWkyExOLjqzde8PNbctfpLz8(com.cooper.lithic.m10r3.probe.ProbeApplication,java.lang.String,java.lang.String)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.ProbeApplication void $r8$lambda$h6qG4ZuvFrsIEPR2nr2yB1_VQOI(com.cooper.lithic.m10r3.probe.ProbeApplication,java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome,java.lang.Throwable)
+M d 1	1	39	com.cooper.lithic.m10r3.probe.ProbeApplication <init>()
+M d 1	1	584	com.cooper.lithic.m10r3.probe.ProbeApplication void initializeIdentity()
+M d 1	1	110	com.cooper.lithic.m10r3.probe.ProbeApplication void lambda$onCreate$0(java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome,java.lang.Throwable)
+M d 1	1	92	com.cooper.lithic.m10r3.probe.ProbeApplication boolean lambda$submit$1(java.lang.String,java.lang.String)
+M d 1	1	190	com.cooper.lithic.m10r3.probe.ProbeApplication void lambda$submit$2(java.lang.ref.WeakReference,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+M d 1	1	110	com.cooper.lithic.m10r3.probe.ProbeApplication void onCreate()
+M d 1	1	91	com.cooper.lithic.m10r3.probe.ProbeApplication boolean queueObserverUnknown()
+M d 1	1	169	com.cooper.lithic.m10r3.probe.ProbeApplication org.json.JSONObject queueSummary()
+M d 1	1	149	com.cooper.lithic.m10r3.probe.ProbeApplication void submit(android.app.Activity,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeApplication com.cooper.lithic.m10r3.probe.HostCommandQueue commands
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeApplication com.cooper.lithic.m10r3.probe.ProbeRunner runner
+C d 13	13	1818	com.cooper.lithic.m10r3.probe.InvocationFence
+M d 1	1	40	com.cooper.lithic.m10r3.probe.InvocationFence <init>()
+M d 1	1	81	com.cooper.lithic.m10r3.probe.InvocationFence boolean ownedCurrent(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	59	com.cooper.lithic.m10r3.probe.InvocationFence void requireOwnedCurrent(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	147	com.cooper.lithic.m10r3.probe.InvocationFence void attach(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,com.cooper.lithic.m10r3.probe.SessionGate)
+M d 1	1	142	com.cooper.lithic.m10r3.probe.InvocationFence com.cooper.lithic.m10r3.probe.InvocationFence$Ticket begin()
+M d 1	1	226	com.cooper.lithic.m10r3.probe.InvocationFence com.cooper.lithic.m10r3.probe.InvocationFence$Candidate beginCandidate(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind)
+M d 1	1	114	com.cooper.lithic.m10r3.probe.InvocationFence boolean decide(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,java.util.function.BooleanSupplier)
+M d 1	1	202	com.cooper.lithic.m10r3.probe.InvocationFence void fail(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,java.lang.String)
+M d 1	1	214	com.cooper.lithic.m10r3.probe.InvocationFence boolean finishCandidate(com.cooper.lithic.m10r3.probe.InvocationFence$Candidate)
+M d 1	1	106	com.cooper.lithic.m10r3.probe.InvocationFence boolean isAdmitted(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	114	com.cooper.lithic.m10r3.probe.InvocationFence boolean isCurrentOpen(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	90	com.cooper.lithic.m10r3.probe.InvocationFence boolean isTerminal(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+M d 1	1	198	com.cooper.lithic.m10r3.probe.InvocationFence boolean markTerminal(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.InvocationFence com.cooper.lithic.m10r3.probe.InvocationFence$Ticket current
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence long epoch
+C d 12	12	1605	com.cooper.lithic.m10r3.probe.SessionGate
+M d 1	1	132	com.cooper.lithic.m10r3.probe.SessionGate <init>(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,long,int)
+M d 1	1	183	com.cooper.lithic.m10r3.probe.SessionGate boolean isKnownStatus(java.lang.String)
+M d 1	1	67	com.cooper.lithic.m10r3.probe.SessionGate int acceptedResults()
+M d 1	1	130	com.cooper.lithic.m10r3.probe.SessionGate boolean canPrepare()
+M d 1	1	70	com.cooper.lithic.m10r3.probe.SessionGate void died()
+M d 1	1	94	com.cooper.lithic.m10r3.probe.SessionGate boolean grant()
+M d 1	1	130	com.cooper.lithic.m10r3.probe.SessionGate boolean handshake(int,int,int,int,boolean)
+M d 1	1	66	com.cooper.lithic.m10r3.probe.SessionGate boolean isDead()
+M d 1	1	66	com.cooper.lithic.m10r3.probe.SessionGate boolean isRevoked()
+M d 1	1	206	com.cooper.lithic.m10r3.probe.SessionGate boolean result(int,java.lang.String,java.lang.String,java.lang.String,java.lang.String,long,java.lang.String,boolean)
+M d 1	1	126	com.cooper.lithic.m10r3.probe.SessionGate void revoke(java.lang.String)
+M d 1	1	154	com.cooper.lithic.m10r3.probe.SessionGate java.lang.String status()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.SessionGate java.lang.String attempt
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate boolean dead
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate boolean fdClosed
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate java.lang.String generation
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate boolean handshaken
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate int hostUid
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate java.lang.String nonce
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate int protocol
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate java.lang.String resultStatus
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate int results
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate java.lang.String revocationReason
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate boolean revoked
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate java.lang.String sha
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionGate long size
+C d 12	12	844	com.cooper.lithic.m10r3.probe.StageStore$1
+M d 1	1	39	com.cooper.lithic.m10r3.probe.StageStore$1 void $r8$lambda$z2l2qZDildu_nussf6cPai3KWN4(android.net.LocalServerSocket)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.StageStore$1 <init>(com.cooper.lithic.m10r3.probe.StageStore,boolean)
+M d 1	1	102	com.cooper.lithic.m10r3.probe.StageStore$1 com.cooper.lithic.m10r3.probe.StageAdmission$Lease acquire(java.lang.String)
+M d 1	1	43	com.cooper.lithic.m10r3.probe.StageStore$1 java.util.List attempts()
+M d 1	1	43	com.cooper.lithic.m10r3.probe.StageStore$1 java.lang.String currentAttempt()
+M d 1	1	143	com.cooper.lithic.m10r3.probe.StageStore$1 void publish(java.lang.String)
+M d 1	1	41	com.cooper.lithic.m10r3.probe.StageStore$1 void removeKnownData(java.lang.String)
+M d 1	1	41	com.cooper.lithic.m10r3.probe.StageStore$1 void revoke(java.lang.String)
+M d 1	1	63	com.cooper.lithic.m10r3.probe.StageStore$1 boolean terminal(java.lang.String)
+M d 1	1	103	com.cooper.lithic.m10r3.probe.StageStore$1 void validate(java.lang.String)
+M d 1	1	41	com.cooper.lithic.m10r3.probe.StageStore$1 void verifyTerminal(java.lang.String)
+M d 1	1	41	com.cooper.lithic.m10r3.probe.StageStore$1 void writeTerminal(java.lang.String)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.StageStore$1 com.cooper.lithic.m10r3.probe.StageStore this$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.StageStore$1 boolean val$rejectPending
+C d 12	12	2542	com.cooper.lithic.m10r3.probe.WorkerService$1
+M d 1	1	39	com.cooper.lithic.m10r3.probe.WorkerService$1 void $r8$lambda$Gbwxq8apjqJg8Xc8vIwQFSw8ry8(com.cooper.lithic.m10r3.probe.WorkerService$1)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.WorkerService$1 void $r8$lambda$HNyAQh24vzsEoc7RjiefEKUbINw(com.cooper.lithic.m10r3.probe.WorkerService$1,android.os.Bundle,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.WorkerService$1 void $r8$lambda$jQxxXM4KGm_qGgVFlD5wgaCzw2w(com.cooper.lithic.m10r3.probe.WorkerService$1)
+M d 1	1	43	com.cooper.lithic.m10r3.probe.WorkerService$1 <init>(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	66	com.cooper.lithic.m10r3.probe.WorkerService$1 void lambda$reserve$0()
+M d 1	1	50	com.cooper.lithic.m10r3.probe.WorkerService$1 void lambda$reserve$1()
+M d 1	1	52	com.cooper.lithic.m10r3.probe.WorkerService$1 void lambda$start$2(android.os.Bundle,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+M d 1	1	78	com.cooper.lithic.m10r3.probe.WorkerService$1 boolean cancel(java.lang.String,java.lang.String)
+M d 1	1	169	com.cooper.lithic.m10r3.probe.WorkerService$1 android.os.Bundle inspect()
+M d 1	1	899	com.cooper.lithic.m10r3.probe.WorkerService$1 boolean reserve(com.cooper.lithic.m10r3.probe.SessionEnvelope,com.cooper.lithic.m10r3.probe.IHost)
+M d 1	1	71	com.cooper.lithic.m10r3.probe.WorkerService$1 boolean retire(java.lang.String,java.lang.String)
+M d 1	1	919	com.cooper.lithic.m10r3.probe.WorkerService$1 boolean start(com.cooper.lithic.m10r3.probe.SessionEnvelope,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.WorkerService$1 com.cooper.lithic.m10r3.probe.WorkerService this$0
+C d 11	11	1467	com.cooper.lithic.m10r3.probe.BindingResponsibility
+M d 1	1	71	com.cooper.lithic.m10r3.probe.BindingResponsibility <init>(com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations)
+M d 1	1	53	com.cooper.lithic.m10r3.probe.BindingResponsibility com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations fenced(com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations,com.cooper.lithic.m10r3.probe.BindingResponsibility$FailureFence)
+M d 1	1	66	com.cooper.lithic.m10r3.probe.BindingResponsibility com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState bindState()
+M d 1	1	66	com.cooper.lithic.m10r3.probe.BindingResponsibility java.lang.Throwable bindingError()
+M d 1	1	66	com.cooper.lithic.m10r3.probe.BindingResponsibility java.lang.Throwable cleanupError()
+M d 1	1	66	com.cooper.lithic.m10r3.probe.BindingResponsibility boolean cleanupRequested()
+M d 1	1	66	com.cooper.lithic.m10r3.probe.BindingResponsibility com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState cleanupState()
+M d 1	1	385	com.cooper.lithic.m10r3.probe.BindingResponsibility void executeBind(java.util.function.BooleanSupplier)
+M d 1	1	66	com.cooper.lithic.m10r3.probe.BindingResponsibility java.lang.Throwable firstCleanupError()
+M d 1	1	102	com.cooper.lithic.m10r3.probe.BindingResponsibility boolean hasCleanupDuty()
+M d 1	1	316	com.cooper.lithic.m10r3.probe.BindingResponsibility void requestCleanup()
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingResponsibility boolean attempted
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingResponsibility com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState bind
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingResponsibility java.lang.Throwable bindingError
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingResponsibility com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState cleanup
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingResponsibility java.lang.Throwable cleanupError
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingResponsibility java.lang.Throwable firstCleanupError
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingResponsibility com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations operations
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingResponsibility boolean requested
+C d 4	10	692	com.cooper.lithic.m10r3.probe.IWorker$Stub
+M d 1	1	50	com.cooper.lithic.m10r3.probe.IWorker$Stub <init>()
+M d 1	1	81	com.cooper.lithic.m10r3.probe.IWorker$Stub com.cooper.lithic.m10r3.probe.IWorker asInterface(android.os.IBinder)
+M d 1	1	32	com.cooper.lithic.m10r3.probe.IWorker$Stub android.os.IBinder asBinder()
+M d 1	1	341	com.cooper.lithic.m10r3.probe.IWorker$Stub boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)
+F d 0	0	13	com.cooper.lithic.m10r3.probe.IWorker$Stub int TRANSACTION_cancel
+F d 0	0	12	com.cooper.lithic.m10r3.probe.IWorker$Stub int TRANSACTION_inspect
+F d 0	0	12	com.cooper.lithic.m10r3.probe.IWorker$Stub int TRANSACTION_reserve
+F d 0	0	12	com.cooper.lithic.m10r3.probe.IWorker$Stub int TRANSACTION_retire
+F d 0	0	12	com.cooper.lithic.m10r3.probe.IWorker$Stub int TRANSACTION_start
+C d 10	10	189	com.cooper.lithic.m10r3.probe.StageAdmission$Backend
+M d 1	1	13	com.cooper.lithic.m10r3.probe.StageAdmission$Backend com.cooper.lithic.m10r3.probe.StageAdmission$Lease acquire(java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend java.util.List attempts()
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend java.lang.String currentAttempt()
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend void publish(java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend void removeKnownData(java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend void revoke(java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend boolean terminal(java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend void validate(java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend void verifyTerminal(java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAdmission$Backend void writeTerminal(java.lang.String)
+C d 9	9	1139	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3
+M d 1	1	41	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 boolean $r8$lambda$QgjgUI8AEYUV4GI4BaNUAPcRSPs(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3,android.os.IBinder,com.cooper.lithic.m10r3.probe.IWorker)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 void $r8$lambda$St7KihB4jVkiwbbJo7DExkukX-8(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3,android.os.IBinder)
+M d 1	1	43	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	102	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 boolean lambda$onServiceConnected$0(android.os.IBinder,com.cooper.lithic.m10r3.probe.IWorker)
+M d 1	1	146	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 void lambda$onServiceConnected$1(android.os.IBinder)
+M d 1	1	96	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 void onBindingDied(android.content.ComponentName)
+M d 1	1	95	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 void onNullBinding(android.content.ComponentName)
+M d 1	1	431	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 void onServiceConnected(android.content.ComponentName,android.os.IBinder)
+M d 1	1	61	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 void onServiceDisconnected(android.content.ComponentName)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 com.cooper.lithic.m10r3.probe.ProbeRunner$Session this$1
+C d 4	8	536	com.cooper.lithic.m10r3.probe.IHost$Stub
+M d 1	1	50	com.cooper.lithic.m10r3.probe.IHost$Stub <init>()
+M d 1	1	81	com.cooper.lithic.m10r3.probe.IHost$Stub com.cooper.lithic.m10r3.probe.IHost asInterface(android.os.IBinder)
+M d 1	1	32	com.cooper.lithic.m10r3.probe.IHost$Stub android.os.IBinder asBinder()
+M d 1	1	225	com.cooper.lithic.m10r3.probe.IHost$Stub boolean onTransact(int,android.os.Parcel,android.os.Parcel,int)
+F d 0	0	13	com.cooper.lithic.m10r3.probe.IHost$Stub int TRANSACTION_grant
+F d 0	0	12	com.cooper.lithic.m10r3.probe.IHost$Stub int TRANSACTION_hello
+F d 0	0	12	com.cooper.lithic.m10r3.probe.IHost$Stub int TRANSACTION_result
+C d 8	8	932	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy
+M d 1	1	44	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy <init>(android.os.IBinder)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy android.os.IBinder asBinder()
+M d 1	1	148	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy boolean cancel(java.lang.String,java.lang.String)
+M d 1	1	35	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy java.lang.String getInterfaceDescriptor()
+M d 1	1	136	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy android.os.Bundle inspect()
+M d 1	1	148	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy boolean reserve(com.cooper.lithic.m10r3.probe.SessionEnvelope,com.cooper.lithic.m10r3.probe.IHost)
+M d 1	1	148	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy boolean retire(java.lang.String,java.lang.String)
+M d 1	1	152	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy boolean start(com.cooper.lithic.m10r3.probe.SessionEnvelope,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.IWorker$Stub$Proxy android.os.IBinder mRemote
+C d 4	8	454	com.cooper.lithic.m10r3.probe.ProbeActivity
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeActivity <init>()
+M d 1	1	201	com.cooper.lithic.m10r3.probe.ProbeActivity void accept(android.content.Intent)
+M d 1	1	92	com.cooper.lithic.m10r3.probe.ProbeActivity void onCreate(android.os.Bundle)
+M d 1	1	49	com.cooper.lithic.m10r3.probe.ProbeActivity void onNewIntent(android.content.Intent)
+C d 7	7	313	com.cooper.lithic.m10r3.probe.IWorker$Default
+M d 1	1	40	com.cooper.lithic.m10r3.probe.IWorker$Default <init>()
+M d 1	1	34	com.cooper.lithic.m10r3.probe.IWorker$Default android.os.IBinder asBinder()
+M d 1	1	33	com.cooper.lithic.m10r3.probe.IWorker$Default boolean cancel(java.lang.String,java.lang.String)
+M d 1	1	33	com.cooper.lithic.m10r3.probe.IWorker$Default android.os.Bundle inspect()
+M d 1	1	33	com.cooper.lithic.m10r3.probe.IWorker$Default boolean reserve(com.cooper.lithic.m10r3.probe.SessionEnvelope,com.cooper.lithic.m10r3.probe.IHost)
+M d 1	1	33	com.cooper.lithic.m10r3.probe.IWorker$Default boolean retire(java.lang.String,java.lang.String)
+M d 1	1	33	com.cooper.lithic.m10r3.probe.IWorker$Default boolean start(com.cooper.lithic.m10r3.probe.SessionEnvelope,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+C d 5	6	597	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary
+M d 1	1	72	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary[] $values()
+M d 1	1	205	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary <init>(java.lang.String,int)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary valueOf(java.lang.String)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary[] values()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary[] $VALUES
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary BIND_CALL_BEGIN
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary BIND_RETURNED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary COMPLETED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary CONNECTED_ACCEPTED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary HELLO_ACCEPTED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary RESERVE_ISSUED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary RESERVE_RETURNED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary com.cooper.lithic.m10r3.probe.BindingTimeline$Boundary UI_BIND_POSTED
+C d 6	6	688	com.cooper.lithic.m10r3.probe.DeadlineWatchdog
+M d 1	1	39	com.cooper.lithic.m10r3.probe.DeadlineWatchdog void $r8$lambda$2lsN4SfwXVD9Eg4zfS4spQ9Il8c(com.cooper.lithic.m10r3.probe.DeadlineWatchdog)
+M d 1	1	113	com.cooper.lithic.m10r3.probe.DeadlineWatchdog <init>(com.cooper.lithic.m10r3.probe.BindingTimeline)
+M d 1	1	54	com.cooper.lithic.m10r3.probe.DeadlineWatchdog java.lang.Thread lambda$new$0(java.lang.Runnable)
+M d 1	1	73	com.cooper.lithic.m10r3.probe.DeadlineWatchdog void lambda$start$1()
+M d 1	1	109	com.cooper.lithic.m10r3.probe.DeadlineWatchdog void close()
+M d 1	1	180	com.cooper.lithic.m10r3.probe.DeadlineWatchdog void start()
+F d 0	0	10	com.cooper.lithic.m10r3.probe.DeadlineWatchdog boolean closed
+F d 0	0	18	com.cooper.lithic.m10r3.probe.DeadlineWatchdog java.util.concurrent.ScheduledFuture future
+F d 0	0	10	com.cooper.lithic.m10r3.probe.DeadlineWatchdog boolean started
+F d 0	0	10	com.cooper.lithic.m10r3.probe.DeadlineWatchdog com.cooper.lithic.m10r3.probe.BindingTimeline timeline
+F d 0	0	10	com.cooper.lithic.m10r3.probe.DeadlineWatchdog java.util.concurrent.ScheduledThreadPoolExecutor timer
+C d 5	6	455	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness
+M d 1	1	57	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness[] $values()
+M d 1	1	125	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness <init>(java.lang.String,int)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness valueOf(java.lang.String)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness[] values()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness[] $VALUES
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness BOOTSTRAPPING
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness CLOSED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness READY
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness com.cooper.lithic.m10r3.probe.HostCommandQueue$Readiness UNKNOWN
+C d 6	6	1087	com.cooper.lithic.m10r3.probe.HostFdScope
+M d 1	1	68	com.cooper.lithic.m10r3.probe.HostFdScope <init>()
+M d 1	1	151	com.cooper.lithic.m10r3.probe.HostFdScope boolean allClosed()
+M d 1	1	357	com.cooper.lithic.m10r3.probe.HostFdScope void close()
+M d 1	1	90	com.cooper.lithic.m10r3.probe.HostFdScope java.lang.Throwable closeError(java.lang.String)
+M d 1	1	194	com.cooper.lithic.m10r3.probe.HostFdScope java.io.Closeable own(java.lang.String,java.io.Closeable)
+M d 1	1	90	com.cooper.lithic.m10r3.probe.HostFdScope com.cooper.lithic.m10r3.probe.HostFdScope$State state(java.lang.String)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostFdScope java.io.IOException closeFailure
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostFdScope boolean closed
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostFdScope boolean closing
+F d 0	0	18	com.cooper.lithic.m10r3.probe.HostFdScope java.util.IdentityHashMap owned
+F d 0	0	18	com.cooper.lithic.m10r3.probe.HostFdScope java.util.LinkedHashMap resources
+C d 6	6	620	com.cooper.lithic.m10r3.probe.IHost$Stub$Proxy
+M d 1	1	44	com.cooper.lithic.m10r3.probe.IHost$Stub$Proxy <init>(android.os.IBinder)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.IHost$Stub$Proxy android.os.IBinder asBinder()
+M d 1	1	35	com.cooper.lithic.m10r3.probe.IHost$Stub$Proxy java.lang.String getInterfaceDescriptor()
+M d 1	1	140	com.cooper.lithic.m10r3.probe.IHost$Stub$Proxy boolean grant(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	140	com.cooper.lithic.m10r3.probe.IHost$Stub$Proxy boolean hello(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	140	com.cooper.lithic.m10r3.probe.IHost$Stub$Proxy boolean result(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.IHost$Stub$Proxy android.os.IBinder mRemote
+C d 5	6	154	com.cooper.lithic.m10r3.probe.IWorker
+M d 1	1	13	com.cooper.lithic.m10r3.probe.IWorker boolean cancel(java.lang.String,java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.IWorker android.os.Bundle inspect()
+M d 1	1	12	com.cooper.lithic.m10r3.probe.IWorker boolean reserve(com.cooper.lithic.m10r3.probe.SessionEnvelope,com.cooper.lithic.m10r3.probe.IHost)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.IWorker boolean retire(java.lang.String,java.lang.String)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.IWorker boolean start(com.cooper.lithic.m10r3.probe.SessionEnvelope,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+F d 0	0	14	com.cooper.lithic.m10r3.probe.IWorker java.lang.String DESCRIPTOR
+C d 6	6	330	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate
+M d 1	1	37	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate boolean -$$Nest$fgetfinished(com.cooper.lithic.m10r3.probe.InvocationFence$Candidate)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind -$$Nest$fgetkind(com.cooper.lithic.m10r3.probe.InvocationFence$Candidate)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate com.cooper.lithic.m10r3.probe.InvocationFence$Ticket -$$Nest$fgetticket(com.cooper.lithic.m10r3.probe.InvocationFence$Candidate)
+M d 1	1	36	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate void -$$Nest$fputfinished(com.cooper.lithic.m10r3.probe.InvocationFence$Candidate,boolean)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate <init>(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind)
+M d 1	1	39	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate <init>(com.cooper.lithic.m10r3.probe.InvocationFence$Ticket,com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind,com.cooper.lithic.m10r3.probe.InvocationFence-IA)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate boolean finished
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind kind
+F d 0	0	10	com.cooper.lithic.m10r3.probe.InvocationFence$Candidate com.cooper.lithic.m10r3.probe.InvocationFence$Ticket ticket
+C d 5	5	517	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState
+M d 1	1	64	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState[] $values()
+M d 1	1	165	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState <init>(java.lang.String,int)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState valueOf(java.lang.String)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState[] values()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState[] $VALUES
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState CALLING
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState CLOSED_NOT_STARTED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState QUEUED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState RETURNED_FALSE
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState RETURNED_TRUE
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState com.cooper.lithic.m10r3.probe.BindingResponsibility$BindState THREW
+C d 5	5	553	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState
+M d 1	1	68	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState[] $values()
+M d 1	1	185	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState <init>(java.lang.String,int)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState valueOf(java.lang.String)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState[] values()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState[] $VALUES
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState DEFERRED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState NOT_NEEDED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState NOT_REGISTERED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState REQUIRED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState UNBINDING
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState UNBIND_UNKNOWN
+F d 0	0	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState com.cooper.lithic.m10r3.probe.BindingResponsibility$CleanupState UNBOUND
+C d 5	5	482	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome
+M d 1	1	61	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome[] $values()
+M d 1	1	145	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome <init>(java.lang.String,int)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome valueOf(java.lang.String)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome[] values()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome[] $VALUES
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome CLAIM_REPLAY
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome CLAIM_UNKNOWN
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome EXECUTED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome INITIALIZATION_UNKNOWN
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome TASK_FAILED
+C d 5	5	519	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission
+M d 1	1	65	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission[] $values()
+M d 1	1	165	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission <init>(java.lang.String,int)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission valueOf(java.lang.String)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission[] values()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission[] $VALUES
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission ACCEPTED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission CLOSED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission DUPLICATE
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission INITIALIZATION_UNKNOWN
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission INVALID
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission com.cooper.lithic.m10r3.probe.HostCommandQueue$Submission QUEUE_FULL
+C d 5	5	411	com.cooper.lithic.m10r3.probe.HostFdScope$State
+M d 1	1	53	com.cooper.lithic.m10r3.probe.HostFdScope$State com.cooper.lithic.m10r3.probe.HostFdScope$State[] $values()
+M d 1	1	105	com.cooper.lithic.m10r3.probe.HostFdScope$State <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.HostFdScope$State <init>(java.lang.String,int)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.HostFdScope$State com.cooper.lithic.m10r3.probe.HostFdScope$State valueOf(java.lang.String)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.HostFdScope$State com.cooper.lithic.m10r3.probe.HostFdScope$State[] values()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostFdScope$State com.cooper.lithic.m10r3.probe.HostFdScope$State[] $VALUES
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostFdScope$State com.cooper.lithic.m10r3.probe.HostFdScope$State CLOSED
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostFdScope$State com.cooper.lithic.m10r3.probe.HostFdScope$State CLOSE_UNKNOWN
+F d 0	0	12	com.cooper.lithic.m10r3.probe.HostFdScope$State com.cooper.lithic.m10r3.probe.HostFdScope$State OPEN
+C d 5	5	247	com.cooper.lithic.m10r3.probe.IHost$Default
+M d 1	1	40	com.cooper.lithic.m10r3.probe.IHost$Default <init>()
+M d 1	1	34	com.cooper.lithic.m10r3.probe.IHost$Default android.os.IBinder asBinder()
+M d 1	1	33	com.cooper.lithic.m10r3.probe.IHost$Default boolean grant(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	33	com.cooper.lithic.m10r3.probe.IHost$Default boolean hello(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	33	com.cooper.lithic.m10r3.probe.IHost$Default boolean result(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+C d 5	5	300	com.cooper.lithic.m10r3.probe.IHost$_Parcel
+M d 1	1	41	com.cooper.lithic.m10r3.probe.IHost$_Parcel java.lang.Object -$$Nest$smreadTypedObject(android.os.Parcel,android.os.Parcelable$Creator)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.IHost$_Parcel void -$$Nest$smwriteTypedObject(android.os.Parcel,android.os.Parcelable,int)
+M d 1	1	39	com.cooper.lithic.m10r3.probe.IHost$_Parcel <init>()
+M d 1	1	55	com.cooper.lithic.m10r3.probe.IHost$_Parcel java.lang.Object readTypedObject(android.os.Parcel,android.os.Parcelable$Creator)
+M d 1	1	59	com.cooper.lithic.m10r3.probe.IHost$_Parcel void writeTypedObject(android.os.Parcel,android.os.Parcelable,int)
+C d 5	5	300	com.cooper.lithic.m10r3.probe.IWorker$_Parcel
+M d 1	1	41	com.cooper.lithic.m10r3.probe.IWorker$_Parcel java.lang.Object -$$Nest$smreadTypedObject(android.os.Parcel,android.os.Parcelable$Creator)
+M d 1	1	38	com.cooper.lithic.m10r3.probe.IWorker$_Parcel void -$$Nest$smwriteTypedObject(android.os.Parcel,android.os.Parcelable,int)
+M d 1	1	39	com.cooper.lithic.m10r3.probe.IWorker$_Parcel <init>()
+M d 1	1	55	com.cooper.lithic.m10r3.probe.IWorker$_Parcel java.lang.Object readTypedObject(android.os.Parcel,android.os.Parcelable$Creator)
+M d 1	1	59	com.cooper.lithic.m10r3.probe.IWorker$_Parcel void writeTypedObject(android.os.Parcel,android.os.Parcelable,int)
+C d 5	5	375	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind
+M d 1	1	49	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind[] $values()
+M d 1	1	85	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind <clinit>()
+M d 1	1	39	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind <init>(java.lang.String,int)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind valueOf(java.lang.String)
+M d 1	1	47	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind[] values()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind[] $VALUES
+F d 0	0	12	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind CURRENT
+F d 0	0	12	com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind com.cooper.lithic.m10r3.probe.InvocationFence$CandidateKind RECEIPT
+C d 5	5	281	com.cooper.lithic.m10r3.probe.SessionEnvelope$1
+M d 1	1	40	com.cooper.lithic.m10r3.probe.SessionEnvelope$1 <init>()
+M d 1	1	48	com.cooper.lithic.m10r3.probe.SessionEnvelope$1 com.cooper.lithic.m10r3.probe.SessionEnvelope createFromParcel(android.os.Parcel)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.SessionEnvelope$1 java.lang.Object createFromParcel(android.os.Parcel)
+M d 1	1	35	com.cooper.lithic.m10r3.probe.SessionEnvelope$1 com.cooper.lithic.m10r3.probe.SessionEnvelope[] newArray(int)
+M d 1	1	40	com.cooper.lithic.m10r3.probe.SessionEnvelope$1 java.lang.Object[] newArray(int)
+C d 5	5	2555	com.cooper.lithic.m10r3.probe.SessionEnvelope
+M d 1	1	48	com.cooper.lithic.m10r3.probe.SessionEnvelope <clinit>()
+M d 1	1	101	com.cooper.lithic.m10r3.probe.SessionEnvelope <init>()
+M d 1	1	34	com.cooper.lithic.m10r3.probe.SessionEnvelope int describeContents()
+M d 1	1	1733	com.cooper.lithic.m10r3.probe.SessionEnvelope void readFromParcel(android.os.Parcel)
+M d 1	1	317	com.cooper.lithic.m10r3.probe.SessionEnvelope void writeToParcel(android.os.Parcel,int)
+F d 0	0	19	com.cooper.lithic.m10r3.probe.SessionEnvelope android.os.Parcelable$Creator CREATOR
+F d 0	0	11	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String attemptId
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String consumerLeaseName
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope boolean delayHostResult
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope int durationMs
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope boolean fdClosed
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String generationIdentity
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope long guardDevice
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope long guardInode
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String kind
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope long outputDevice
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope long outputInode
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope boolean ownerInitialized
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope int protocolVersion
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String requestStatus
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String resourceCloseStatus
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String scenario
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String sessionNonce
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope long sourceDevice
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope long sourceInode
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String sourceSHA256
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope long sourceSize
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope int workerPid
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope java.lang.String workerResult
+F d 0	0	10	com.cooper.lithic.m10r3.probe.SessionEnvelope int workerUid
+C d 5	5	931	com.cooper.lithic.m10r3.probe.StageAdmission
+M d 1	1	40	com.cooper.lithic.m10r3.probe.StageAdmission <init>()
+M d 1	1	41	com.cooper.lithic.m10r3.probe.StageAdmission void assertAllTerminal(com.cooper.lithic.m10r3.probe.StageAdmission$Backend)
+M d 1	1	41	com.cooper.lithic.m10r3.probe.StageAdmission void closeAll(com.cooper.lithic.m10r3.probe.StageAdmission$Backend)
+M d 1	1	39	com.cooper.lithic.m10r3.probe.StageAdmission void publish(com.cooper.lithic.m10r3.probe.StageAdmission$Backend,java.lang.String)
+M d 1	1	706	com.cooper.lithic.m10r3.probe.StageAdmission void withAllLeases(com.cooper.lithic.m10r3.probe.StageAdmission$Backend,java.lang.String,boolean)
+C d 3	4	130	com.cooper.lithic.m10r3.probe.IHost
+M d 1	1	13	com.cooper.lithic.m10r3.probe.IHost boolean grant(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.IHost boolean hello(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+M d 1	1	12	com.cooper.lithic.m10r3.probe.IHost boolean result(com.cooper.lithic.m10r3.probe.SessionEnvelope)
+F d 0	0	14	com.cooper.lithic.m10r3.probe.IHost java.lang.String DESCRIPTOR
+C d 4	4	395	com.cooper.lithic.m10r3.probe.StageAuthorization
+M d 1	1	40	com.cooper.lithic.m10r3.probe.StageAuthorization <init>()
+M d 1	1	121	com.cooper.lithic.m10r3.probe.StageAuthorization void assertNoPending(java.lang.Iterable)
+M d 1	1	93	com.cooper.lithic.m10r3.probe.StageAuthorization boolean isAuthorized(boolean,boolean,java.lang.String,boolean,boolean,boolean,boolean)
+M d 1	1	77	com.cooper.lithic.m10r3.probe.StageAuthorization void revokeVerified(com.cooper.lithic.m10r3.probe.StageAuthorization$Revocation)
+C d 3	3	320	com.cooper.lithic.m10r3.probe.BindingResponsibility$1
+M d 1	1	47	com.cooper.lithic.m10r3.probe.BindingResponsibility$1 <init>(com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations,com.cooper.lithic.m10r3.probe.BindingResponsibility$FailureFence)
+M d 1	1	136	com.cooper.lithic.m10r3.probe.BindingResponsibility$1 boolean bind()
+M d 1	1	41	com.cooper.lithic.m10r3.probe.BindingResponsibility$1 void unbind()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.BindingResponsibility$1 com.cooper.lithic.m10r3.probe.BindingResponsibility$FailureFence val$failureFence
+F d 0	0	11	com.cooper.lithic.m10r3.probe.BindingResponsibility$1 com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations val$operations
+C d 3	3	685	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health
+M d 1	1	392	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health <init>(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	39	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health <init>(com.cooper.lithic.m10r3.probe.BoundedTraceWriter,com.cooper.lithic.m10r3.probe.BoundedTraceWriter-IA)
+M d 1	1	46	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health boolean hasLoss()
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health long accepted
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health long attempted
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health long dropped
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health java.lang.String firstFailure
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health java.lang.Throwable firstFailureCause
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health java.lang.String firstFailureDetail
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health java.lang.Throwable observerFailureCause
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health long observerFailures
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health int pending
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health int producers
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health java.lang.String status
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health long writeFailures
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health boolean writerTerminated
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Health long written
+C d 3	3	359	com.cooper.lithic.m10r3.probe.ProbeRunner$1
+M d 1	1	52	com.cooper.lithic.m10r3.probe.ProbeRunner$1 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner,com.cooper.lithic.m10r3.probe.ProbeRunner$Session,java.util.concurrent.CountDownLatch)
+M d 1	1	138	com.cooper.lithic.m10r3.probe.ProbeRunner$1 void onServiceConnected(android.content.ComponentName,android.os.IBinder)
+M d 1	1	61	com.cooper.lithic.m10r3.probe.ProbeRunner$1 void onServiceDisconnected(android.content.ComponentName)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$1 com.cooper.lithic.m10r3.probe.ProbeRunner this$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$1 java.util.concurrent.CountDownLatch val$rebound
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$1 com.cooper.lithic.m10r3.probe.ProbeRunner$Session val$s
+C d 3	3	270	com.cooper.lithic.m10r3.probe.ProbeRunner$2
+M d 1	1	48	com.cooper.lithic.m10r3.probe.ProbeRunner$2 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner,android.content.ServiceConnection)
+M d 1	1	76	com.cooper.lithic.m10r3.probe.ProbeRunner$2 boolean bind()
+M d 1	1	49	com.cooper.lithic.m10r3.probe.ProbeRunner$2 void unbind()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$2 com.cooper.lithic.m10r3.probe.ProbeRunner this$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$2 android.content.ServiceConnection val$duplicateConnection
+C d 3	3	475	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$1
+M d 1	1	48	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$1 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session,com.cooper.lithic.m10r3.probe.ProbeRunner)
+M d 1	1	273	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$1 boolean bind()
+M d 1	1	57	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$1 void unbind()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$1 com.cooper.lithic.m10r3.probe.ProbeRunner$Session this$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$1 com.cooper.lithic.m10r3.probe.ProbeRunner val$this$0
+C d 3	3	344	com.cooper.lithic.m10r3.probe.StageIdentity
+M d 1	1	40	com.cooper.lithic.m10r3.probe.StageIdentity <init>()
+M d 1	1	57	com.cooper.lithic.m10r3.probe.StageIdentity boolean sameInode(boolean,long,long,long,long)
+M d 1	1	191	com.cooper.lithic.m10r3.probe.StageIdentity boolean sameRecord(java.util.Map,java.util.Map,java.util.Set)
+C d 3	3	387	com.cooper.lithic.m10r3.probe.StageStore$2
+M d 1	1	52	com.cooper.lithic.m10r3.probe.StageStore$2 <init>(com.cooper.lithic.m10r3.probe.StageStore,java.lang.String,org.json.JSONObject)
+M d 1	1	134	com.cooper.lithic.m10r3.probe.StageStore$2 boolean sameOwnerRevoked()
+M d 1	1	93	com.cooper.lithic.m10r3.probe.StageStore$2 void writeSameOwnerRevoke()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.StageStore$2 com.cooper.lithic.m10r3.probe.StageStore this$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.StageStore$2 java.lang.String val$id
+F d 0	0	11	com.cooper.lithic.m10r3.probe.StageStore$2 org.json.JSONObject val$o
+C d 2	2	187	com.cooper.lithic.m10r3.probe.AuthorizationFence
+M d 1	1	39	com.cooper.lithic.m10r3.probe.AuthorizationFence <init>()
+M d 1	1	84	com.cooper.lithic.m10r3.probe.AuthorizationFence boolean decide(java.lang.Object,com.cooper.lithic.m10r3.probe.AuthorizationFence$Decision,com.cooper.lithic.m10r3.probe.AuthorizationFence$Decision)
+C d 2	2	92	com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations
+M d 1	1	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations boolean bind()
+M d 1	1	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$Operations void unbind()
+C d 2	2	355	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits
+M d 1	1	132	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits <init>(long,long,long,long,long,long)
+M d 1	1	95	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits com.cooper.lithic.m10r3.probe.BindingTimeline$Limits researchDefaults()
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits long bindingTotal
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits long call
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits long connection
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits long handshake
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits long invocationTotal
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BindingTimeline$Limits long queue
+C d 2	2	124	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticLambda1
+M d 1	1	40	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticLambda1 <init>()
+M d 1	1	38	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticLambda1 void run()
+C d 2	2	143	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticLambda2
+M d 1	1	44	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticLambda2 <init>(com.cooper.lithic.m10r3.probe.BoundedTraceWriter)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticLambda2 void run()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.BoundedTraceWriter f$0
+C d 2	2	241	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry
+M d 1	1	84	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry <init>(long,java.lang.String,int)
+M d 1	1	39	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry <init>(long,java.lang.String,int,com.cooper.lithic.m10r3.probe.BoundedTraceWriter-IA)
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry long createdNano
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry java.lang.String payload
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry java.lang.String producerThread
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry long sequence
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry int utf8Bytes
+C d 2	2	126	com.cooper.lithic.m10r3.probe.DeadlineWatchdog$$ExternalSyntheticLambda0
+M d 1	1	40	com.cooper.lithic.m10r3.probe.DeadlineWatchdog$$ExternalSyntheticLambda0 <init>()
+M d 1	1	40	com.cooper.lithic.m10r3.probe.DeadlineWatchdog$$ExternalSyntheticLambda0 java.lang.Thread newThread(java.lang.Runnable)
+C d 2	2	143	com.cooper.lithic.m10r3.probe.DeadlineWatchdog$$ExternalSyntheticLambda1
+M d 1	1	44	com.cooper.lithic.m10r3.probe.DeadlineWatchdog$$ExternalSyntheticLambda1 <init>(com.cooper.lithic.m10r3.probe.DeadlineWatchdog)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.DeadlineWatchdog$$ExternalSyntheticLambda1 void run()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.DeadlineWatchdog$$ExternalSyntheticLambda1 com.cooper.lithic.m10r3.probe.DeadlineWatchdog f$0
+C d 2	2	126	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda0
+M d 1	1	40	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda0 <init>()
+M d 1	1	40	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda0 java.lang.Thread newThread(java.lang.Runnable)
+C d 2	2	162	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda1
+M d 1	1	48	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda1 <init>(com.cooper.lithic.m10r3.probe.HostCommandQueue,com.cooper.lithic.m10r3.probe.HostCommandQueue$Initializer)
+M d 1	1	46	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda1 void run()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda1 com.cooper.lithic.m10r3.probe.HostCommandQueue f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda1 com.cooper.lithic.m10r3.probe.HostCommandQueue$Initializer f$1
+C d 2	2	238	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2
+M d 1	1	64	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2 <init>(com.cooper.lithic.m10r3.probe.HostCommandQueue,java.lang.String,java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Claim,com.cooper.lithic.m10r3.probe.HostCommandQueue$Task)
+M d 1	1	62	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2 void run()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.HostCommandQueue f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2 java.lang.String f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2 java.lang.String f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2 java.lang.String f$3
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.HostCommandQueue$Claim f$4
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostCommandQueue$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.HostCommandQueue$Task f$5
+C d 2	2	144	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda0
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda0 <init>(com.cooper.lithic.m10r3.probe.ProbeApplication)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda0 void initialize()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda0 com.cooper.lithic.m10r3.probe.ProbeApplication f$0
+C d 2	2	144	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda1
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda1 <init>(com.cooper.lithic.m10r3.probe.ProbeApplication)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda1 void onComplete(java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome,java.lang.Throwable)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda1 com.cooper.lithic.m10r3.probe.ProbeApplication f$0
+C d 2	2	184	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda2
+M d 1	1	52	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda2 <init>(com.cooper.lithic.m10r3.probe.ProbeApplication,java.lang.String,java.lang.String)
+M d 1	1	52	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda2 boolean claim()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.ProbeApplication f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda2 java.lang.String f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda2 java.lang.String f$2
+C d 2	2	239	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3
+M d 1	1	64	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3 <init>(com.cooper.lithic.m10r3.probe.ProbeApplication,java.lang.ref.WeakReference,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+M d 1	1	62	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3 com.cooper.lithic.m10r3.probe.ProbeApplication f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3 java.lang.ref.WeakReference f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3 java.lang.String f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3 java.lang.String f$3
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3 java.lang.String f$4
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeApplication$$ExternalSyntheticLambda3 java.lang.String f$5
+C d 2	2	146	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda0
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda0 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda0 boolean getAsBoolean()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda0 com.cooper.lithic.m10r3.probe.ProbeRunner$Session f$0
+C d 2	2	182	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda1
+M d 1	1	52	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda1 <init>(android.app.Activity,java.lang.String,java.util.concurrent.CountDownLatch)
+M d 1	1	50	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda1 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda1 android.app.Activity f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda1 java.lang.String f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda1 java.util.concurrent.CountDownLatch f$2
+C d 2	2	144	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda2
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda2 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda2 void close(java.lang.String,java.lang.Throwable)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.ProbeRunner$Session f$0
+C d 2	2	182	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda3
+M d 1	1	52	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda3 <init>(com.cooper.lithic.m10r3.probe.BindingResponsibility,com.cooper.lithic.m10r3.probe.ProbeRunner$Session,java.util.concurrent.CountDownLatch)
+M d 1	1	50	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda3 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda3 com.cooper.lithic.m10r3.probe.BindingResponsibility f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda3 com.cooper.lithic.m10r3.probe.ProbeRunner$Session f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda3 java.util.concurrent.CountDownLatch f$2
+C d 2	2	144	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda4
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda4 <init>(java.util.concurrent.CountDownLatch)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda4 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda4 java.util.concurrent.CountDownLatch f$0
+C d 2	2	144	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda5
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda5 <init>(android.app.Activity)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda5 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda5 android.app.Activity f$0
+C d 2	2	163	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda6
+M d 1	1	48	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda6 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner,com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation)
+M d 1	1	46	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda6 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda6 com.cooper.lithic.m10r3.probe.ProbeRunner f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$$ExternalSyntheticLambda6 com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation f$1
+C d 2	2	144	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda0
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda0 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda0 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda0 com.cooper.lithic.m10r3.probe.ProbeRunner$Session f$0
+C d 2	2	126	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda1
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda1 <init>()
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda1 long nowNanos()
+C d 2	2	144	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda2
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda2 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda2 void fail(java.lang.String)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.ProbeRunner$Session f$0
+C d 2	2	144	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda3
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda3 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda3 void close(java.lang.String,java.lang.Throwable)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$$ExternalSyntheticLambda3 com.cooper.lithic.m10r3.probe.ProbeRunner$Session f$0
+C d 2	2	203	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda0
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda0 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,android.os.Bundle,int,int)
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda0 boolean getAsBoolean()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda0 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda0 android.os.Bundle f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda0 int f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda0 int f$3
+C d 2	2	146	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda1
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda1 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2)
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda1 boolean evaluate()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda1 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+C d 2	2	203	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda2
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda2 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,int,int,android.os.Bundle)
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda2 boolean evaluate()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda2 int f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda2 int f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda2 android.os.Bundle f$3
+C d 2	2	203	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda3
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda3 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,int,int,android.os.Bundle)
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda3 boolean getAsBoolean()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda3 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda3 int f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda3 int f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda3 android.os.Bundle f$3
+C d 2	2	146	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda4
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda4 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2)
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda4 boolean evaluate()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda4 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+C d 2	2	203	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda5
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda5 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,int,int,android.os.Bundle)
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda5 boolean evaluate()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda5 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda5 int f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda5 int f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda5 android.os.Bundle f$3
+C d 2	2	146	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda6
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda6 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2)
+M d 1	1	44	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda6 boolean evaluate()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda6 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+C d 2	2	203	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda7
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda7 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,android.os.Bundle,int,int)
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda7 boolean evaluate()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda7 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda7 android.os.Bundle f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda7 int f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda7 int f$3
+C d 2	2	203	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda8
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda8 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2,int,int,android.os.Bundle)
+M d 1	1	56	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda8 boolean getAsBoolean()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda8 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda8 int f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda8 int f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$2$$ExternalSyntheticLambda8 android.os.Bundle f$3
+C d 2	2	184	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda0
+M d 1	1	52	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda0 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3,android.os.IBinder,com.cooper.lithic.m10r3.probe.IWorker)
+M d 1	1	52	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda0 boolean getAsBoolean()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda0 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda0 android.os.IBinder f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda0 com.cooper.lithic.m10r3.probe.IWorker f$2
+C d 2	2	163	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda1
+M d 1	1	48	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda1 <init>(com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3,android.os.IBinder)
+M d 1	1	46	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda1 void binderDied()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda1 com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Session$3$$ExternalSyntheticLambda1 android.os.IBinder f$1
+C d 2	2	124	com.cooper.lithic.m10r3.probe.ProbeSupport$$ExternalSyntheticLambda0
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeSupport$$ExternalSyntheticLambda0 <init>()
+M d 1	1	38	com.cooper.lithic.m10r3.probe.ProbeSupport$$ExternalSyntheticLambda0 void write(com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry)
+C d 2	2	124	com.cooper.lithic.m10r3.probe.ProbeSupport$$ExternalSyntheticLambda1
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeSupport$$ExternalSyntheticLambda1 <init>()
+M d 1	1	38	com.cooper.lithic.m10r3.probe.ProbeSupport$$ExternalSyntheticLambda1 void run()
+C d 2	2	93	com.cooper.lithic.m10r3.probe.StageAuthorization$Revocation
+M d 1	1	13	com.cooper.lithic.m10r3.probe.StageAuthorization$Revocation boolean sameOwnerRevoked()
+M d 1	1	12	com.cooper.lithic.m10r3.probe.StageAuthorization$Revocation void writeSameOwnerRevoke()
+C d 2	2	148	com.cooper.lithic.m10r3.probe.StageStore$$ExternalSyntheticLambda0
+M d 1	1	44	com.cooper.lithic.m10r3.probe.StageStore$$ExternalSyntheticLambda0 <init>(java.util.Set)
+M d 1	1	46	com.cooper.lithic.m10r3.probe.StageStore$$ExternalSyntheticLambda0 void accept(java.lang.Object)
+F d 0	0	12	com.cooper.lithic.m10r3.probe.StageStore$$ExternalSyntheticLambda0 java.util.Set f$0
+C d 2	2	144	com.cooper.lithic.m10r3.probe.StageStore$1$$ExternalSyntheticLambda0
+M d 1	1	44	com.cooper.lithic.m10r3.probe.StageStore$1$$ExternalSyntheticLambda0 <init>(android.net.LocalServerSocket)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.StageStore$1$$ExternalSyntheticLambda0 void close()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.StageStore$1$$ExternalSyntheticLambda0 android.net.LocalServerSocket f$0
+C d 2	2	144	com.cooper.lithic.m10r3.probe.WorkerService$$ExternalSyntheticLambda0
+M d 1	1	44	com.cooper.lithic.m10r3.probe.WorkerService$$ExternalSyntheticLambda0 <init>(java.lang.String)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.WorkerService$$ExternalSyntheticLambda0 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.WorkerService$$ExternalSyntheticLambda0 java.lang.String f$0
+C d 2	2	144	com.cooper.lithic.m10r3.probe.WorkerService$$ExternalSyntheticLambda1
+M d 1	1	44	com.cooper.lithic.m10r3.probe.WorkerService$$ExternalSyntheticLambda1 <init>(com.cooper.lithic.m10r3.probe.WorkerService)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.WorkerService$$ExternalSyntheticLambda1 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.WorkerService$$ExternalSyntheticLambda1 com.cooper.lithic.m10r3.probe.WorkerService f$0
+C d 2	2	201	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda0
+M d 1	1	56	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda0 <init>(com.cooper.lithic.m10r3.probe.WorkerService$1,android.os.Bundle,android.os.ParcelFileDescriptor,android.os.ParcelFileDescriptor)
+M d 1	1	54	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda0 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda0 com.cooper.lithic.m10r3.probe.WorkerService$1 f$0
+F d 0	0	11	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda0 android.os.Bundle f$1
+F d 0	0	11	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda0 android.os.ParcelFileDescriptor f$2
+F d 0	0	11	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda0 android.os.ParcelFileDescriptor f$3
+C d 2	2	144	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda1
+M d 1	1	44	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda1 <init>(com.cooper.lithic.m10r3.probe.WorkerService$1)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda1 void binderDied()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda1 com.cooper.lithic.m10r3.probe.WorkerService$1 f$0
+C d 2	2	144	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda2
+M d 1	1	44	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda2 <init>(com.cooper.lithic.m10r3.probe.WorkerService$1)
+M d 1	1	42	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda2 void run()
+F d 0	0	12	com.cooper.lithic.m10r3.probe.WorkerService$1$$ExternalSyntheticLambda2 com.cooper.lithic.m10r3.probe.WorkerService$1 f$0
+C d 1	1	78	com.cooper.lithic.m10r3.probe.R
+M d 1	1	38	com.cooper.lithic.m10r3.probe.R <init>()
+C d 1	1	80	com.cooper.lithic.m10r3.probe.AuthorizationFence$Decision
+M d 1	1	12	com.cooper.lithic.m10r3.probe.AuthorizationFence$Decision boolean evaluate()
+C d 1	1	80	com.cooper.lithic.m10r3.probe.BindingResponsibility$FailureFence
+M d 1	1	12	com.cooper.lithic.m10r3.probe.BindingResponsibility$FailureFence void close(java.lang.String,java.lang.Throwable)
+C d 1	1	439	com.cooper.lithic.m10r3.probe.BindingTimeline$1
+M d 1	1	360	com.cooper.lithic.m10r3.probe.BindingTimeline$1 <clinit>()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.BindingTimeline$1 int[] $SwitchMap$com$cooper$lithic$m10r3$probe$BindingTimeline$Boundary
+C d 1	1	81	com.cooper.lithic.m10r3.probe.BindingTimeline$Clock
+M d 1	1	13	com.cooper.lithic.m10r3.probe.BindingTimeline$Clock long nowNanos()
+C d 1	1	81	com.cooper.lithic.m10r3.probe.BindingTimeline$FailureFence
+M d 1	1	13	com.cooper.lithic.m10r3.probe.BindingTimeline$FailureFence void fail(java.lang.String)
+C d 1	1	103	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticBackportWithForwarding0
+M d 1	1	63	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$$ExternalSyntheticBackportWithForwarding0 boolean m(java.util.concurrent.atomic.AtomicReference,java.lang.Object,java.lang.Object)
+C d 1	1	136	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Failure
+M d 1	1	48	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Failure <init>(java.lang.String,java.lang.Throwable)
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Failure java.lang.Throwable cause
+F d 0	0	10	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Failure java.lang.String reason
+C d 1	1	81	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Sink
+M d 1	1	13	com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Sink void write(com.cooper.lithic.m10r3.probe.BoundedTraceWriter$Entry)
+C d 1	1	81	com.cooper.lithic.m10r3.probe.HostCommandQueue$Claim
+M d 1	1	13	com.cooper.lithic.m10r3.probe.HostCommandQueue$Claim boolean claim()
+C d 1	1	81	com.cooper.lithic.m10r3.probe.HostCommandQueue$Initializer
+M d 1	1	13	com.cooper.lithic.m10r3.probe.HostCommandQueue$Initializer void initialize()
+C d 1	1	81	com.cooper.lithic.m10r3.probe.HostCommandQueue$Observer
+M d 1	1	13	com.cooper.lithic.m10r3.probe.HostCommandQueue$Observer void onComplete(java.lang.String,java.lang.String,com.cooper.lithic.m10r3.probe.HostCommandQueue$Outcome,java.lang.Throwable)
+C d 1	1	81	com.cooper.lithic.m10r3.probe.HostCommandQueue$Task
+M d 1	1	13	com.cooper.lithic.m10r3.probe.HostCommandQueue$Task void run()
+C d 1	1	151	com.cooper.lithic.m10r3.probe.HostFdScope$Entry
+M d 1	1	52	com.cooper.lithic.m10r3.probe.HostFdScope$Entry <init>(java.io.Closeable)
+F d 0	0	11	com.cooper.lithic.m10r3.probe.HostFdScope$Entry java.lang.Throwable error
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostFdScope$Entry java.io.Closeable resource
+F d 0	0	10	com.cooper.lithic.m10r3.probe.HostFdScope$Entry com.cooper.lithic.m10r3.probe.HostFdScope$State state
+C d 1	1	139	com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation
+M d 1	1	40	com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation <init>()
+F d 0	0	11	com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation com.cooper.lithic.m10r3.probe.ProbeRunner$Session session
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation com.cooper.lithic.m10r3.probe.InvocationFence$Ticket ticket
+F d 0	0	10	com.cooper.lithic.m10r3.probe.ProbeRunner$Invocation java.lang.Runnable traceFence
+C d 1	1	87	com.cooper.lithic.m10r3.probe.StageAdmission$Lease
+M d 1	1	13	com.cooper.lithic.m10r3.probe.StageAdmission$Lease void close()
+C d 0	0	36	com.cooper.lithic.m10r3.probe.BoundedTraceWriter-IA
+C d 0	0	36	com.cooper.lithic.m10r3.probe.InvocationFence-IA

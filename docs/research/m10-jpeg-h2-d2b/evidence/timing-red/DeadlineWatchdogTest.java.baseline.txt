@@ -1,0 +1,22 @@
+package com.cooper.lithic.m10r3.probe;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/** Independent host timer execution is not an Android worst-case response-time guarantee. */
+public final class DeadlineWatchdogTest {
+    @Test public void independentTimerClosesFenceWithoutCallerProgress() throws Exception {
+        AtomicLong now = new AtomicLong(1_000_000_000L);
+        CountDownLatch fenced = new CountDownLatch(1);
+        BindingTimeline timeline = new BindingTimeline(now::get,
+                BindingTimeline.Limits.researchDefaults(), reason -> fenced.countDown());
+        timeline.posted(); now.addAndGet(5_000_000_000L);
+        try (DeadlineWatchdog watchdog = new DeadlineWatchdog(timeline)) {
+            watchdog.start();
+            assertTrue("watchdog must progress independently", fenced.await(2, TimeUnit.SECONDS));
+        }
+    }
+}

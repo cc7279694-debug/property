@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-10-17T13:20:10.512Z" hostname="WHOCARE" time="0.031">
+  <properties/>
+  <testcase name="everyPendingMetadataKindBlocksOrdinaryRun" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.007"/>
+  <testcase name="missingStatusCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="revokeWriteFailureIsNotMasked" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.001"/>
+  <testcase name="deliveryUnknownWithVerifiedPinCanAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="unknownRevokeReadBackPropagates" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="unknownStateCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="lostRevokeWriteIsNotSuccessful" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="wrongOwnerReadFailureNeverWrites" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.002"/>
+  <testcase name="completedMetadataNamespaceHasNoPending" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="pendingMetadataCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="durableRevokeCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="missingPinCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="successfulRevokeIsReadBack" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.001"/>
+  <testcase name="repeatedSameOwnerRevokeIsIdempotentAndReadBack" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="fdSentWithVerifiedPinCanAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="missingStateCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.002"/>
+  <testcase name="terminalProofCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="revokedPinWithoutRevokeFileCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="noncurrentAttemptCannotAuthorize" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <testcase name="cleanedStateCannotAuthorizeEvenWithPin" classname="com.cooper.lithic.m10r3.probe.StageAuthorizationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -15,24 +15,72 @@ import java.util.*;
 
 final class ProbeSupport {
     static final String PKG = "com.cooper.lithic.m10r3.probe";
-    static Context context;
-    static String processName = "UNKNOWN";
-    static boolean mainOwner;
-    static synchronized void event(String name, Object... pairs) {
+    static volatile Context context;
+    static volatile String processName = "UNKNOWN";
+    static volatile boolean mainOwner;
+    static volatile String identityError;
+    static final java.util.concurrent.CountDownLatch identityReady=new java.util.concurrent.CountDownLatch(1);
+    private static volatile BoundedTraceWriter diagnostics;
+    private static final java.util.concurrent.atomic.AtomicLong earlyTraceLoss=new java.util.concurrent.atomic.AtomicLong();
+    private static final java.util.concurrent.atomic.AtomicReference<Runnable> diagnosticFence=new java.util.concurrent.atomic.AtomicReference<>();
+    static synchronized void initializeDiagnostics(){
+        if(diagnostics!=null)return;
+        diagnostics=new BoundedTraceWriter(256,16384,entry->{
+            JSONObject j=new JSONObject(entry.payload).put("traceSequence",entry.sequence).put("producerThread",entry.producerThread).put("createdNano",entry.createdNano);
+            BoundedTraceWriter.Health h=diagnostics.snapshot();
+            j.put("diagnosticStatus",h.status).put("dropped",h.dropped).put("writeFailures",h.writeFailures);
+            persistLine(j.toString());
+        },()->{Runnable fence=diagnosticFence.get();if(fence!=null)fence.run();});
+        if(earlyTraceLoss.get()!=0)diagnostics.recordFailure("TRACE_BEFORE_INITIALIZATION",null);
+    }
+    static void setDiagnosticFence(Runnable fence){diagnosticFence.set(fence);if(diagnosticUnknown()&&fence!=null)fence.run();}
+    static void clearDiagnosticFence(Runnable fence){diagnosticFence.compareAndSet(fence,null);}
+    static boolean diagnosticUnknown(){BoundedTraceWriter d=diagnostics;return d==null||earlyTraceLoss.get()!=0||d.snapshot().hasLoss()||(context instanceof ProbeApplication&&((ProbeApplication)context).queueObserverUnknown());}
+    static JSONObject diagnosticSummary()throws Exception{
+        BoundedTraceWriter.Health h=diagnostics.snapshot();
+        return new JSONObject().put("status",h.status).put("attempted",h.attempted).put("accepted",h.accepted).put("written",h.written)
+            .put("dropped",h.dropped).put("writeFailures",h.writeFailures).put("pending",h.pending)
+            .put("firstFailure",String.valueOf(h.firstFailure)).put("firstFailureDetail",String.valueOf(h.firstFailureDetail)).put("traceObserverFailures",h.observerFailures).put("earlyTraceLoss",earlyTraceLoss.get())
+            .put("commandQueue",context instanceof ProbeApplication?((ProbeApplication)context).queueSummary():JSONObject.NULL);
+    }
+    static boolean flushDiagnostics(long timeoutMs)throws InterruptedException{
+        if(android.os.Looper.myLooper()==android.os.Looper.getMainLooper())throw new IllegalStateException("trace drain on main");
+        return diagnostics.awaitDrained(timeoutMs,java.util.concurrent.TimeUnit.MILLISECONDS)&&!diagnosticUnknown();
+    }
+    static void event(String name, Object... pairs) {
+        if(diagnostics==null){earlyTraceLoss.incrementAndGet();return;}
         try {
             JSONObject j = new JSONObject().put("event",name).put("pid",Process.myPid()).put("uid",Process.myUid())
                 .put("process",processName).put("wallMs",System.currentTimeMillis()).put("elapsedNs",SystemClock.elapsedRealtimeNanos());
             for(int i=0;i<pairs.length;i+=2) j.put((String)pairs[i],pairs[i+1]);
-            String line=j.toString(); Log.i("LITHIC_R3",line);
-            if(context!=null) {
-                File dir=new File(context.getFilesDir(),"r3-traces"); if(!dir.isDirectory()&&!dir.mkdir())throw new IOException("trace mkdir");
-                try(FileOutputStream o=new FileOutputStream(new File(dir,"trace-"+Process.myPid()+".jsonl"),true)) {
-                    o.write((line+"\n").getBytes(StandardCharsets.UTF_8)); o.getFD().sync();
-                }
-            }
-        } catch(Exception e) { Log.e("LITHIC_R3","TRACE_ERROR "+e); }
+            String line=j.toString();
+            if("WORKER".equals(knownRole(processName)))writeWorkerEvent(line);
+            else diagnostics.offer(line);
+        } catch(Exception error) {
+            if(diagnostics!=null)diagnostics.recordFailure("EVENT_ENCODING_UNKNOWN",error);
+        }
     }
-    static String role(String name) { return PKG.equals(name)?"HOST":(PKG+":jpeg_worker").equals(name)?"WORKER":"REJECT"; }
+    // Existing Worker diagnostic semantics remain synchronous; no Host producer enters this sink.
+    private static void writeWorkerEvent(String line){try{persistLine(line);}catch(Exception e){Log.e("LITHIC_R3","TRACE_ERROR "+e);}}
+    private static synchronized void persistLine(String line)throws Exception{
+        Log.i("LITHIC_R3",line);
+        if(context==null)throw new IOException("trace context not ready");
+        File dir=new File(context.getFilesDir(),"r3-traces");if(!dir.isDirectory()&&!dir.mkdir())throw new IOException("trace mkdir");
+        try(FileOutputStream out=new FileOutputStream(new File(dir,"trace-"+Process.myPid()+".jsonl"),true)){
+            out.write((line+"\n").getBytes(StandardCharsets.UTF_8));out.getFD().sync();
+        }
+    }
+    static String knownRole(String name){return PKG.equals(name)?"HOST":(PKG+":jpeg_worker").equals(name)?"WORKER":"REJECT";}
+    static String role(String name) {
+        // API26 has no Application.getProcessName. Only a background/Binder caller may
+        // wait briefly for the queued identity read; main remains nonblocking/fail-closed.
+        if("UNKNOWN".equals(name)&&android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()){
+            try{if(!identityReady.await(1000,java.util.concurrent.TimeUnit.MILLISECONDS)||identityError!=null)return "REJECT";}
+            catch(InterruptedException e){Thread.currentThread().interrupt();return "REJECT";}
+            return knownRole(processName);
+        }
+        return knownRole(name);
+    }
     static String processName26() throws IOException {
         try(FileInputStream in=new FileInputStream("/proc/self/cmdline")) {
             byte[] b=new byte[256]; int n=in.read(b); if(n<=0)throw new IOException("empty cmdline");

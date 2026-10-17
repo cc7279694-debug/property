@@ -1,0 +1,12 @@
+package com.cooper.lithic.m10r3.probe;
+
+/** Compileable unimplemented D2B timing seam, captured only for behavioral RED. */
+final class BindingTimeline {
+    interface Clock { long nowNanos(); }
+    interface FailureFence { void fail(String reason); }
+    static final class Limits { static Limits researchDefaults() { return new Limits(); } }
+    BindingTimeline(Clock clock, Limits limits, FailureFence failure) { }
+    boolean posted() { return true; }
+    void checkDeadline() { }
+    String firstFailure() { return null; }
+}

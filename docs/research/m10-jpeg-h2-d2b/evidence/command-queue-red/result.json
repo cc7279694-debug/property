@@ -1,0 +1,54 @@
+{
+  "phase": "red",
+  "kind": "HOST_JVM_ONLY",
+  "redWitness": "compilable old synchronous scheduling semantics; not old source API",
+  "inputs": [
+    {
+      "path": "docs\\research\\m10-jpeg-h2-d2b\\evidence\\command-queue-red\\HostCommandQueue.java",
+      "bytes": 2308,
+      "sha256": "e3d3216f3fc1783c0f77bf4b0702f0d836febd13a7026a0149827f678ab7ac9d"
+    },
+    {
+      "path": "docs\\research\\m10-jpeg-r3\\host\\probe\\src\\test\\java\\com\\cooper\\lithic\\m10r3\\probe\\HostCommandQueueTest.java",
+      "bytes": 17326,
+      "sha256": "da55b84ee160f3f7d670de80c6c5bf385ed9838894a4345c41cf8aeb93e52b68"
+    }
+  ],
+  "commands": [
+    {
+      "label": "javac",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javac.exe",
+        "-encoding",
+        "UTF-8",
+        "-cp",
+        "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+        "-d",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-host-scheduling\\砺石新APP\\build\\d2b-command-queue\\1792242787594057300",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-host-scheduling\\砺石新APP\\docs\\research\\m10-jpeg-h2-d2b\\evidence\\command-queue-red\\HostCommandQueue.java",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-host-scheduling\\砺石新APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\src\\test\\java\\com\\cooper\\lithic\\m10r3\\probe\\HostCommandQueueTest.java",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-host-scheduling\\砺石新APP\\build\\d2b-command-queue\\1792242787594057300\\QueueTestRunner.java"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 1.9529999999940628,
+      "log": "docs\\research\\m10-jpeg-h2-d2b\\evidence\\command-queue-red\\javac.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "junit",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+        "-cp",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-host-scheduling\\砺石新APP\\build\\d2b-command-queue\\1792242787594057300;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+        "QueueTestRunner",
+        "red"
+      ],
+      "exitCode": 1,
+      "elapsedSeconds": 0.39100000000325963,
+      "log": "docs\\research\\m10-jpeg-h2-d2b\\evidence\\command-queue-red\\junit.log",
+      "bytes": 2215,
+      "sha256": "b66b65fd96aa5493ed916e91b36b6f1b788ffbb749aaac540cba861cfb9a0762"
+    }
+  ]
+}

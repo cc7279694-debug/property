@@ -1,0 +1,13 @@
+package: name='com.cooper.lithic.m10r3.outsider' versionCode='1' versionName='r3-outsider' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'26'
+targetSdkVersion:'36'
+application: label='R3 different UID binding probe' icon=''
+application-debuggable
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+other-activities
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales:
+densities:

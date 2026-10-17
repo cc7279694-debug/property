@@ -1,0 +1,21 @@
+package com.cooper.lithic.m10r3.probe;
+
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicReference;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/** Host JVM timing policy only, never evidence of Android scheduling or resource termination. */
+public final class BindingTimelineTest {
+    @Test public void queuedTimeoutClosesMemoryFence() {
+        AtomicLong now = new AtomicLong(1_000_000_000L);
+        AtomicReference<String> failure = new AtomicReference<>();
+        BindingTimeline timeline = new BindingTimeline(now::get,
+                BindingTimeline.Limits.researchDefaults(), failure::set);
+        assertTrue(timeline.posted());
+        now.addAndGet(5_000_000_000L);
+        timeline.checkDeadline();
+        assertEquals("UI_BIND_QUEUE_TIMEOUT", failure.get());
+        assertEquals("UI_BIND_QUEUE_TIMEOUT", timeline.firstFailure());
+    }
+}

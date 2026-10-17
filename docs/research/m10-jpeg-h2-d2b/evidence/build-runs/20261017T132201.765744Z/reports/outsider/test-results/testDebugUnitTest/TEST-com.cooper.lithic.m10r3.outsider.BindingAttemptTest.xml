@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-17T13:22:21.023Z" hostname="WHOCARE" time="0.021">
+  <properties/>
+  <testcase name="returnedFalseWithoutRegistrationIsExplicitlyClassified" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.008"/>
+  <testcase name="deniedBeforeRegistrationRecordsExpectedUnregisteredCleanup" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.001"/>
+  <testcase name="destroyRetryCanReleaseConnectionWithoutErasingEarlierCleanupFailure" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.0"/>
+  <testcase name="unexpectedlyUnregisteredSuccessfulBindIsNotTreatedAsHarmless" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.001"/>
+  <testcase name="returnedTrueReleasesConnectionButNeverPassesSecurityProbe" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.001"/>
+  <testcase name="returnedFalseStillReleasesPossibleRegistration" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.001"/>
+  <testcase name="destroyAfterSuccessfulCleanupDoesNotUnbindTwice" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.001"/>
+  <testcase name="destroyWithoutAnyBindingAttemptDoesNotUnbind" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.0"/>
+  <testcase name="fatalBindingErrorIsRethrownAfterCleanupInsteadOfReportedAsRejection" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.002"/>
+  <testcase name="deniedAfterRegistrationStillReleasesConnection" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.001"/>
+  <testcase name="unexpectedBindingExceptionStillReleasesRegistrationAndFailsProbe" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.0"/>
+  <testcase name="secondRunCannotRegisterTheSameConnectionAgain" classname="com.cooper.lithic.m10r3.outsider.BindingAttemptTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

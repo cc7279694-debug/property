@@ -1,0 +1,29 @@
+test_activity_does_not_claim_on_ui (__main__.HostSourceContract.test_activity_does_not_claim_on_ui) ... ok
+test_activity_does_not_construct_runner_on_ui (__main__.HostSourceContract.test_activity_does_not_construct_runner_on_ui) ... ok
+test_application_oncreate_does_not_open_owner_or_proc (__main__.HostSourceContract.test_application_oncreate_does_not_open_owner_or_proc) ... ok
+test_authority_writes_remain_synchronous_store_operations (__main__.HostSourceContract.test_authority_writes_remain_synchronous_store_operations) ... ok
+test_grant_and_result_recheck_timing_in_short_authorization (__main__.HostSourceContract.test_grant_and_result_recheck_timing_in_short_authorization) ... FAIL
+test_reserve_does_not_return_before_final_deadline_observation (__main__.HostSourceContract.test_reserve_does_not_return_before_final_deadline_observation) ... FAIL
+test_trace_producer_does_not_do_logcat_or_file_io (__main__.HostSourceContract.test_trace_producer_does_not_do_logcat_or_file_io) ... ok
+test_trace_producer_has_no_global_synchronized_monitor (__main__.HostSourceContract.test_trace_producer_has_no_global_synchronized_monitor) ... ok
+
+======================================================================
+FAIL: test_grant_and_result_recheck_timing_in_short_authorization (__main__.HostSourceContract.test_grant_and_result_recheck_timing_in_short_authorization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-h2-d2b-host-scheduling\砺石新APP\docs\research\m10-jpeg-h2-d2b\test_source_contract.py", line 50, in test_grant_and_result_recheck_timing_in_short_authorization
+    self.assertIn('accepting()', text)
+AssertionError: 'accepting()' not found in '{Bundle b=ProbeSupport.bundle(envelope);int uid=Binder.getCallingUid(),pid=Binder.getCallingPid();boolean ok=false;\n                try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->invocations.decide(invocation.ticket,()->uid==workerUid&&pid==workerPid&&ProbeSupport.same(identity,b)&&gate.grant()));}\n                catch(Exception error){ProbeSupport.event("CALLBACK_AUTHORITY_REJECTED","attempt",id,"callback","grant","detail",error.toString());}\n                ProbeSupport.event("FD_GRANT_DECISION","attempt",id,"accepted",ok);return ok;}'
+
+======================================================================
+FAIL: test_reserve_does_not_return_before_final_deadline_observation (__main__.HostSourceContract.test_reserve_does_not_return_before_final_deadline_observation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\m10-jpeg-h2-d2b-host-scheduling\砺石新APP\docs\research\m10-jpeg-h2-d2b\test_source_contract.py", line 44, in test_reserve_does_not_return_before_final_deadline_observation
+    self.assertNotIn('return accepted&&open()', text)
+AssertionError: 'return accepted&&open()' unexpectedly found in '{\n            require(timeline.reserveIssued()&&open(),"reserve deadline/fence");timingEvent("RESERVE_ISSUED",true);\n            boolean accepted=false;\n            try{accepted=worker.reserve(ProbeSupport.envelope(identity),callback);return accepted&&open();}\n            finally{boolean observed=timeline.reserveReturned(accepted);timingEvent("RESERVE_RETURNED",observed);}\n        }'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.010s
+
+FAILED (failures=2)

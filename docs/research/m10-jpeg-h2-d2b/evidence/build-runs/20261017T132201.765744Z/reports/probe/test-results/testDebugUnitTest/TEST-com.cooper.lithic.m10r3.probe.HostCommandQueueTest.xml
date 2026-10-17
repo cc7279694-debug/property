@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-10-17T13:22:18.093Z" hostname="WHOCARE" time="0.125">
+  <properties/>
+  <testcase name="completedKeyIsReleasedButDurableClaimStillRejectsReplay" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.013"/>
+  <testcase name="observerFailureIsExplicitlyRetained" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.005"/>
+  <testcase name="inFlightReplayIsRejectedWithoutWaitingBehindActiveInvocation" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.007"/>
+  <testcase name="fullQueueRejectsWithoutCallerExecutionOrClaim" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.003"/>
+  <testcase name="missingClaimOrTaskIsRejectedWithoutSideEffects" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.002"/>
+  <testcase name="initializationUnknownIsStickyForLaterSubmissions" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.003"/>
+  <testcase name="claimFalseNeverInvokesTaskAndIsReportedAsReplay" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.007"/>
+  <testcase name="concurrentReplayHasExactlyOneAcceptedInMemoryOwner" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.021"/>
+  <testcase name="claimExceptionNeverInvokesTaskAndRetainsOriginalError" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.003"/>
+  <testcase name="initializationRunsOffSubmittingThread" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.002"/>
+  <testcase name="bootstrapClaimAndTaskUseSameSerialWorker" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.027"/>
+  <testcase name="initializationFailureRejectsAlreadyQueuedCommandWithoutClaim" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.005"/>
+  <testcase name="invalidCapacityOrMissingInitializerCannotCreateExecutionPath" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.0"/>
+  <testcase name="malformedRunIdIsRejectedBeforeAnyClaim" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.002"/>
+  <testcase name="taskFailureIsReportedWithoutRepeatingClaimOrTask" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.002"/>
+  <testcase name="blockedBootstrapDoesNotBlockSubmitOrClaim" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.005"/>
+  <testcase name="closeRejectsNewCommandsWithoutInterruptingActiveTask" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.003"/>
+  <testcase name="queuedInvocationsNeverOverlap" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.005"/>
+  <testcase name="malformedCommandIsRejectedBeforeAnyClaim" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.001"/>
+  <testcase name="taskCannotStartBeforeClaimReturnsDurablyConfirmed" classname="com.cooper.lithic.m10r3.probe.HostCommandQueueTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

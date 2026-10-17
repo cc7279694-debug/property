@@ -1,0 +1,8 @@
+package com.cooper.lithic.m10r3.probe;
+
+/** Compileable unimplemented D2B timer seam, captured only for behavioral RED. */
+final class DeadlineWatchdog implements AutoCloseable {
+    DeadlineWatchdog(BindingTimeline timeline) { }
+    void start() { }
+    @Override public void close() { }
+}

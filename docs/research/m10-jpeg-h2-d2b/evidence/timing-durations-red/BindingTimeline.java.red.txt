@@ -1,0 +1,227 @@
+package com.cooper.lithic.m10r3.probe;
+
+import java.util.Collections;
+import java.util.EnumMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
+/**
+ * Research timing policy. Its monitor contains memory operations only. A failure callback is
+ * delivered after releasing that monitor and must itself only close the short memory fence.
+ * Time expiration never proves that Binder, a remote process, an FD or a consumer has stopped.
+ */
+final class BindingTimeline {
+    interface Clock { long nowNanos(); }
+    interface FailureFence { void fail(String reason); }
+    static final class Limits {
+        final long queue, call, connection, handshake, bindingTotal, invocationTotal;
+        Limits(long queue, long call, long connection, long handshake,
+               long bindingTotal, long invocationTotal) {
+            if (queue <= 0 || call <= 0 || connection <= 0 || handshake <= 0
+                    || bindingTotal <= 0 || invocationTotal < bindingTotal)
+                throw new IllegalArgumentException("positive, nested timing budgets required");
+            this.queue = queue; this.call = call; this.connection = connection;
+            this.handshake = handshake; this.bindingTotal = bindingTotal;
+            this.invocationTotal = invocationTotal;
+        }
+        /** Research policy, not measured Android latency or a device response-time guarantee. */
+        static Limits researchDefaults() {
+            long five = TimeUnit.SECONDS.toNanos(5);
+            return new Limits(five, five, five, five,
+                    TimeUnit.SECONDS.toNanos(15), TimeUnit.SECONDS.toNanos(30));
+        }
+    }
+    private enum Boundary {
+        UI_BIND_POSTED, BIND_CALL_BEGIN, BIND_RETURNED, CONNECTED_ACCEPTED,
+        RESERVE_ISSUED, HELLO_ACCEPTED, RESERVE_RETURNED, COMPLETED
+    }
+    private final Clock clock;
+    private final Limits limits;
+    private final FailureFence failure;
+    private final EnumMap<Boundary, Long> times = new EnumMap<>(Boundary.class);
+    private final EnumMap<Boundary, Long> threads = new EnumMap<>(Boundary.class);
+    private long lastSample = -1;
+    private String firstFailure;
+    private boolean failureDelivered, failureDeliveryUnknown, bound, reserved, complete;
+    private Throwable failureDeliveryError;
+
+    BindingTimeline(Clock clock, Limits limits, FailureFence failure) {
+        this.clock = Objects.requireNonNull(clock);
+        this.limits = Objects.requireNonNull(limits);
+        this.failure = Objects.requireNonNull(failure);
+    }
+
+    boolean posted() { return mark(Boundary.UI_BIND_POSTED, true, null); }
+    boolean callBegin() { return mark(Boundary.BIND_CALL_BEGIN, true, null); }
+    boolean bindReturned(boolean answer, String error) {
+        return mark(Boundary.BIND_RETURNED, answer, error);
+    }
+    boolean connectedAccepted() { return mark(Boundary.CONNECTED_ACCEPTED, true, null); }
+    boolean reserveIssued() { return mark(Boundary.RESERVE_ISSUED, true, null); }
+    boolean helloAccepted() { return mark(Boundary.HELLO_ACCEPTED, true, null); }
+    boolean reserveReturned(boolean answer) { return mark(Boundary.RESERVE_RETURNED, answer, null); }
+    /** Caller separately verifies terminal proof and report; this is not such proof. */
+    boolean completed() { return mark(Boundary.COMPLETED, true, null); }
+
+    private boolean mark(Boundary boundary, boolean answer, String error) {
+        boolean accepted;
+        synchronized (this) {
+            if (complete) return false;
+            Long now = sampleLocked();
+            if (now != null) checkLocked(now);
+            if (now == null) accepted = false;
+            else if (firstFailure != null) {
+                // Retain late return/callback timestamps, without granting any renewed authority.
+                if (!times.containsKey(boundary)) record(boundary, now);
+                accepted = false;
+            } else if (times.containsKey(boundary)) {
+                failLocked("DUPLICATE_" + boundary); accepted = false;
+            } else if (!allowedLocked(boundary)) {
+                failLocked("OUT_OF_ORDER_" + boundary); accepted = false;
+            } else {
+                record(boundary, now);
+                if (boundary == Boundary.BIND_RETURNED) {
+                    bound = answer && error == null;
+                    if (!bound) failLocked(error == null ? "BIND_RETURNED_FALSE" : "BIND_THROW_UNKNOWN");
+                } else if (boundary == Boundary.RESERVE_RETURNED) {
+                    reserved = answer;
+                    if (!answer) failLocked("RESERVE_RETURNED_FALSE");
+                } else if (boundary == Boundary.COMPLETED) complete = true;
+                checkLocked(now); // Checked arithmetic also applies to the first posted deadline.
+                accepted = firstFailure == null;
+            }
+        }
+        deliverFailure();
+        return accepted;
+    }
+
+    private boolean allowedLocked(Boundary boundary) {
+        switch (boundary) {
+            case UI_BIND_POSTED: return times.isEmpty();
+            case BIND_CALL_BEGIN: return has(Boundary.UI_BIND_POSTED);
+            case BIND_RETURNED: return has(Boundary.BIND_CALL_BEGIN);
+            // Android may deliver onServiceConnected before bindService returns.
+            case CONNECTED_ACCEPTED: return has(Boundary.BIND_CALL_BEGIN);
+            case RESERVE_ISSUED: return bindingReadyLocked();
+            // A synchronous reserve invokes hello before returning to the Host caller.
+            case HELLO_ACCEPTED: case RESERVE_RETURNED: return has(Boundary.RESERVE_ISSUED);
+            case COMPLETED: return handshakeReadyLocked();
+            default: return false;
+        }
+    }
+
+    void checkDeadline() {
+        synchronized (this) {
+            Long now = sampleLocked();
+            if (now != null) checkLocked(now);
+        }
+        deliverFailure();
+    }
+
+    /** Scheduling/clock errors are UNKNOWN failures, never normal image rejection or retirement. */
+    void watchdogUnknown(String reason) {
+        synchronized (this) { if (!complete) failLocked(reason); }
+        deliverFailure();
+    }
+
+    private Long sampleLocked() {
+        Long now = null;
+        if (complete) return lastSample;
+        // This trusted adapter is only a monotonic clock read, never user I/O or a wait.
+        // Sampling inside the short monitor avoids false regression from reordered readers.
+        try { now = clock.nowNanos(); }
+        catch (Throwable error) { failLocked("MONOTONIC_CLOCK_UNKNOWN"); }
+        if (now != null) {
+            if (now < 0 || (lastSample >= 0 && now < lastSample))
+                failLocked("MONOTONIC_CLOCK_REGRESSION");
+            else lastSample = now;
+        }
+        return now;
+    }
+
+    private void checkLocked(long now) {
+        if (complete || firstFailure != null || !has(Boundary.UI_BIND_POSTED)) return;
+        try {
+            long posted = time(Boundary.UI_BIND_POSTED);
+            long deadline = Math.addExact(posted, limits.invocationTotal);
+            String reason = "INVOCATION_TOTAL_TIMEOUT";
+            if (!handshakeReadyLocked()) {
+                long bindingDeadline = Math.addExact(posted, limits.bindingTotal);
+                if (bindingDeadline <= deadline) { deadline = bindingDeadline; reason = "BINDING_TOTAL_TIMEOUT"; }
+                long start, budget; String phaseReason;
+                if (!has(Boundary.BIND_CALL_BEGIN)) {
+                    start = posted; budget = limits.queue; phaseReason = "UI_BIND_QUEUE_TIMEOUT";
+                } else if (!has(Boundary.BIND_RETURNED)) {
+                    start = time(Boundary.BIND_CALL_BEGIN); budget = limits.call; phaseReason = "BIND_SYNC_CALL_TIMEOUT";
+                } else if (!has(Boundary.CONNECTED_ACCEPTED)) {
+                    start = time(Boundary.BIND_RETURNED); budget = limits.connection; phaseReason = "CONNECTION_CALLBACK_TIMEOUT";
+                } else if (!has(Boundary.RESERVE_ISSUED)) {
+                    start = Math.max(time(Boundary.CONNECTED_ACCEPTED), time(Boundary.BIND_RETURNED));
+                    budget = limits.handshake; phaseReason = "RESERVE_NOT_ISSUED_TIMEOUT";
+                } else {
+                    start = time(Boundary.RESERVE_ISSUED); budget = limits.handshake;
+                    phaseReason = has(Boundary.HELLO_ACCEPTED) ? "RESERVE_SYNC_RETURN_TIMEOUT" : "HELLO_TIMEOUT";
+                }
+                long phaseDeadline = Math.addExact(start, budget);
+                if (phaseDeadline <= deadline) { deadline = phaseDeadline; reason = phaseReason; }
+            }
+            if (now >= deadline) failLocked(reason);
+        } catch (ArithmeticException error) { failLocked("DEADLINE_ARITHMETIC_UNKNOWN"); }
+    }
+
+    private void record(Boundary b, long now) { times.put(b, now); threads.put(b, Thread.currentThread().getId()); }
+    private void failLocked(String reason) { if (firstFailure == null) firstFailure = reason; }
+    private void deliverFailure() {
+        final String reason;
+        synchronized (this) {
+            if (firstFailure == null || failureDelivered) return;
+            failureDelivered = true; reason = firstFailure;
+        }
+        try { failure.fail(reason); }
+        catch (Throwable error) {
+            synchronized (this) { failureDeliveryUnknown = true; failureDeliveryError = error; }
+        }
+    }
+
+    private boolean has(Boundary b) { return times.containsKey(b); }
+    private long time(Boundary b) { return times.get(b); }
+    private boolean bindingReadyLocked() { return bound && has(Boundary.BIND_RETURNED) && has(Boundary.CONNECTED_ACCEPTED); }
+    private boolean handshakeReadyLocked() { return reserved && has(Boundary.RESERVE_RETURNED) && has(Boundary.HELLO_ACCEPTED); }
+    synchronized boolean bindingReady() { return firstFailure == null && bindingReadyLocked(); }
+    synchronized boolean handshakeReady() { return firstFailure == null && handshakeReadyLocked(); }
+    synchronized boolean isCompleted() { return complete && firstFailure == null; }
+    synchronized String firstFailure() { return firstFailure; }
+    synchronized Throwable failureDeliveryError() { return failureDeliveryError; }
+    synchronized String phase() {
+        if (firstFailure != null) return "FAILED";
+        if (complete) return "COMPLETED";
+        if (!has(Boundary.UI_BIND_POSTED)) return "NOT_POSTED";
+        if (handshakeReadyLocked()) return "INVOCATION_RUNNING";
+        if (!has(Boundary.BIND_CALL_BEGIN)) return "UI_BIND_QUEUED";
+        if (!has(Boundary.BIND_RETURNED)) return "BIND_CALL_RUNNING";
+        if (!has(Boundary.CONNECTED_ACCEPTED)) return "AWAITING_CONNECTION";
+        if (!has(Boundary.RESERVE_ISSUED)) return "AWAITING_RESERVE";
+        return has(Boundary.HELLO_ACCEPTED) ? "AWAITING_RESERVE_RETURN" : "AWAITING_HELLO";
+    }
+
+    synchronized Map<String, Long> snapshot() {
+        Map<String, Long> result = new LinkedHashMap<>();
+        for (Boundary b : Boundary.values()) {
+            result.put(b + "_NANOS", has(b) ? time(b) : -1L);
+            result.put(b + "_THREAD_ID", threads.containsKey(b) ? threads.get(b) : -1L);
+        }
+        result.put("SAMPLE_NANOS", lastSample);
+        result.put("FAILURE_DELIVERY_UNKNOWN", failureDeliveryUnknown ? 1L : 0L);
+        result.put("BOUND_TRUE", bound ? 1L : 0L);
+        result.put("RESERVE_TRUE", reserved ? 1L : 0L);
+        if (has(Boundary.UI_BIND_POSTED)) {
+            try {
+                result.put("BINDING_TOTAL_DEADLINE_NANOS", Math.addExact(time(Boundary.UI_BIND_POSTED), limits.bindingTotal));
+                result.put("INVOCATION_TOTAL_DEADLINE_NANOS", Math.addExact(time(Boundary.UI_BIND_POSTED), limits.invocationTotal));
+            } catch (ArithmeticException error) { result.put("DEADLINE_ARITHMETIC_UNKNOWN", 1L); }
+        }
+        return Collections.unmodifiableMap(result);
+    }
+}
