@@ -1,8 +1,16 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；H2唯一normal已执行但BLOCKED，等待ChatGPT独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；H2-D1离线故障分析/失败围栏/恢复设计READY_FOR_REVIEW，H2仍BLOCKED；本轮无设备观察）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R3-F1B-H2-D1 — READY_FOR_REVIEW（仅设计）**：来源锁定`7612c0461df59fabf85d01d32e9b051eaab6bc1f`，独立worktree/分支`research/m10-jpeg-strict-r3-h2-d1`。仅离线审查、既有证据、最小方案与纯宿主模型；ADB/设备/App操作0，研究APK与正式代码不改，不恢复现场。
+- **确定与未知**：确认5秒bind await混合main排队/绑定、主线程与同步trace有I/O；H2-N04失败出口未撤销/解绑、late连接仍安装endpoint，另有解绑异常责任和FD finally静态缺口。ANR真实阻塞点、bind边界与系统迟到原因仍UNKNOWN；没有真实ANR栈可归因，不能把fsync/锁假设写成根因。
+- **设计与验证**：Invocation/epoch短失败围栏、持久未知阻塞、绑定责任与late隔离、健康result/death乱序保持；具体恢复需旧authority/绑定/重启收口、完整owner/inode/hash及持续lease，全前提独立证明。30份输入SHA/39条观察离线派生；旧相关谓词模型RED1 FAIL，最终22个唯一宿主方法PASS（含120抽象顺序，不另计测试）。不是Android PASS，也未实施N04/N01。
+- **现场与停止**：仅继承H2末次current=`586d0904-eaac-403a-895a-48c34cd98810`、DELIVERY_UNKNOWN/pin=true/source8192及未终结事实；D1没有重新核对设备。H2 normal FAIL、ANR/UNKNOWN、迟到Worker与收集异常原件不变。当前恢复无执行资格，不直接用原recover，不启动normal。三设计及[checkpoint](checkpoints/2026-10-17-M10-JPEG-H2-D1.md)待ChatGPT独立审查；只推D1后停止。
+- **D1交接**：[根因分析](research/M10_JPEG_H2_D1_ROOT_CAUSE_ANALYSIS.md)、[失败围栏](research/M10_JPEG_H2_D1_FAILURE_FENCE_DESIGN.md)、[受控恢复提案](research/M10_JPEG_H2_D1_SAFE_RECOVERY_PROPOSAL.md)、[纯模型/测试](research/m10-jpeg-h2-d1/README.md)。N01～N03保留；R3原29项0 PASS/1 UNKNOWN/28 NOT_RUN及完整生命周期BLOCKED、历史UNKNOWN、M10 PENDING/3 JPEG FAIL、UI-C1 ACCEPTED/FROZEN — PASS WITH NOTES、M11 NOT_AUTHORIZED均不改。
+
+以下H2及更早各段保留历史交付，当前D1授权/停止边界以上节为准，不将设计当现场修复：
 
 - **M10-R3-F1B-H2 — BLOCKED**：用户转交H1独立PASS WITH NOTES，仅研究APK更新/一次Outsider；从锁定`0dc49621f44f31eed0cdfc4d0dbb56d8756b667a`建立独立worktree/分支`research/m10-jpeg-strict-r3-f1b-h2`。本轮只执行一次normal及必要只读保护，旧研究/正式代码、APK、规则和证据不改。
 - **预检与唯一执行**：原AVD在线，启动/安装0次；新原G1/U1双快照实际PREFLIGHT_ELIGIBLE（闲置服务、无研究进程、stage ABSENT），7脚本及27构建输入相同，三包SHA/UID实核。runId `h2_e22caecf8afc4a72957afc061c68d5a3`发送前标记fsync；唯一am返回timeout/LaunchState UNKNOWN，立即停止新实验，未重发。
@@ -114,6 +122,7 @@
 
 ## Pending / Current Problems / Technical Debt
 
+- **H2-N04 / 研究失败收口：**dispatch失败不撤销、late绑定/解绑异常及FD失败出口缺口已由D1离线源码确认，最小方案未实施；H2非终结stage仅继承原归档，不具备恢复资格。N01持久REVOKED语义是未来依赖，模型拒绝测试不代表原代码已修。真实ANR阻塞点和首次unknown进程身份仍未知。
 - **M10 JPEG输入完整性：**保留EOI但图像数据缺失的锁定样本被扫描、BitmapFactory、normalize及真实prepareImport接受，产生18,820字节规范化图片和有效准备租约。新3项拒绝测试明确FAIL；尚未实施生产修复，后续需先由ChatGPT确认受控严格解码预检方案及新增依赖/构建边界。不得以输出可解码、日志警告或旧652 PASS掩盖缺口。正式登记不改，补测状态在本文件与新证据中如实记录。
 - **M07 NOTES 继续有效：**ProjectAbsent 只确认当前不存在，不证明历史删除操作身份；多条旧 END_SETTLEMENT 明确冲突，没有自动修复；媒体数据/文件生命周期清理归 M10。原20条 Lint 提示及历史执行证据保留。M05 写后刷新与分页交接已在 M06 实施并独立验收，不改写历史 NOTES。
 - Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q02 M17/M18 视图集成仍 NOT_RUN。Q03 长期100/1000日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M12 完整导入、切换、验证后回退、中断、共同校验、清理及 Q06-V01～V03 完整流程仍 NOT_RUN。原 ZIP/43 原件/24 模块、130 案例及16组完整跨模块补测不改。
@@ -132,9 +141,9 @@
 
 ## Git
 
-- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-f1b-h2/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；只提交推送`research/m10-jpeg-strict-r3-f1b-h2`，来源H1锁定`0dc49621f44f31eed0cdfc4d0dbb56d8756b667a`，最终SHA/远端一致性取Git回执。全部旧研究分支、原M10工作区/分支4159682、UI-C1为0dce7dd、main远端145326d保持；无merge/reset/force/覆盖。
+- 当前研究目录`E:/CODEX/.codex/worktrees/m10-jpeg-strict-r3-h2-d1/砺石新APP`，origin `https://github.com/cc7279694-debug/property.git`；只提交推送`research/m10-jpeg-strict-r3-h2-d1`，来源H2锁定`7612c0461df59fabf85d01d32e9b051eaab6bc1f`，最终SHA/远端一致性取Git回执。H2及全部旧研究分支、原M10工作区/分支4159682、UI-C1为0dce7dd、main远端145326d保持；无merge/reset/force/覆盖。
 - M09评审HEAD `bfc25378927ca8d04eaecbb9d2b1455d72633da9`与冻结回写57de897为历史依据。M10原交付及本次独立复核基准 `d7e9a92096b70d6e5976ebcc65dbdfda32b17296`；补充验证提交仅新增测试/必要合成资产/证据及当前交接，不是生产修复，最终SHA与推送结果由Git日志/最终回执核对，避免递归引用。main保护基线 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`；不合并main、不force、不自动PR/公开APK，不提交数据库、私钥、私人原图或真实个人数据。
 
 ## Next Recommended Task
 
-**BLOCKED — M10-R3-F1B-H2。立即停止等待ChatGPT独立审查bind timeout、Host ANR、迟到Worker及保守残留。**不重跑normal，不启动新消费者，不recover/清理stage或修改门禁/超时，不安装、终止、重启设备，不开展其他28项、取消/故障注入、JNI或M11。末次Host仍在、Worker未见，current/pin/source尚未安全收口；未来实验须另行授权处理阻塞，不能因进程暂未出现或lease瞬时可得而继续。
+**READY_FOR_REVIEW — M10-R3-F1B-H2-D1。提交后停止等待ChatGPT独立审查三份离线设计。**当前H2生命周期/恢复仍BLOCKED，设备当前状态未观察。设计不是修改APK、退役旧研究Host、恢复/删除stage或运行normal的授权；未来补丁/构建、受控退役/保留数据更新、专项恢复均须另获批准。原FAIL、UNKNOWN、NOT_RUN、M10/UI-C1/M11状态及现场保护继续有效。

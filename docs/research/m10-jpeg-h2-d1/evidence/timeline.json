@@ -1,0 +1,473 @@
+{
+  "observations": [
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-events.log",
+      "line": 1,
+      "epoch": 1792229881.379,
+      "pid": 762,
+      "tid": 1014,
+      "tag": "wm_create_activity",
+      "message": "[0,166285654,2970,com.cooper.lithic.m10r3.probe/.ProbeActivity,NULL,NULL,NULL,268435456]"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 1,
+      "epoch": 1792229881.382,
+      "pid": 762,
+      "tid": 1014,
+      "tag": "ActivityTaskManager",
+      "message": "START u0 {flg=0x10000000 xflg=0x5 cmp=com.cooper.lithic.m10r3.probe/.ProbeActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 2000 (BAL_ALLOW_PERMISSION) result code=0"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 1,
+      "epoch": 1792229881.658,
+      "pid": 528,
+      "tid": 528,
+      "tag": "Zygote",
+      "message": "Forked child process 6423"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 2,
+      "epoch": 1792229881.659,
+      "pid": 762,
+      "tid": 808,
+      "tag": "ActivityManager",
+      "message": "Start proc 6423:com.cooper.lithic.m10r3.probe/u0a218 for next-top-activity {com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-events.log",
+      "line": 2,
+      "epoch": 1792229881.659,
+      "pid": 762,
+      "tid": 808,
+      "tag": "am_proc_start",
+      "message": "[0,6423,10218,com.cooper.lithic.m10r3.probe,next-top-activity,{com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity}]"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-events.log",
+      "line": 3,
+      "epoch": 1792229882.803,
+      "pid": 762,
+      "tid": 1880,
+      "tag": "am_proc_bound",
+      "message": "[0,6423,com.cooper.lithic.m10r3.probe]"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 2,
+      "epoch": 1792229884.472,
+      "pid": 6423,
+      "tid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"APPLICATION_ROLE\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229884472,\"elapsedNs\":6826002004607,\"role\":\"HOST\",\"syntheticOwner\":true,\"api26Path\":\"bounded-proc-self-cmdline\"}",
+      "researchEvent": {
+        "event": "APPLICATION_ROLE",
+        "pid": 6423,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe",
+        "wallMs": 1792229884472,
+        "elapsedNs": 6826002004607,
+        "role": "HOST",
+        "syntheticOwner": true,
+        "api26Path": "bounded-proc-self-cmdline"
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 3,
+      "epoch": 1792229889.482,
+      "pid": 6423,
+      "tid": 6442,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"CASE_BEGIN\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229889482,\"elapsedNs\":6831012370701,\"runId\":\"h2_e22caecf8afc4a72957afc061c68d5a3\",\"command\":\"run\",\"case\":\"normal\",\"fault\":\"null\"}",
+      "researchEvent": {
+        "event": "CASE_BEGIN",
+        "pid": 6423,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe",
+        "wallMs": 1792229889482,
+        "elapsedNs": 6831012370701,
+        "runId": "h2_e22caecf8afc4a72957afc061c68d5a3",
+        "command": "run",
+        "case": "normal",
+        "fault": "null"
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-events.log",
+      "line": 4,
+      "epoch": 1792229889.482,
+      "pid": 6423,
+      "tid": 6423,
+      "tag": "wm_on_create_called",
+      "message": "[166285654,com.cooper.lithic.m10r3.probe.ProbeActivity,performCreate,4591]"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 4,
+      "epoch": 1792229894.214,
+      "pid": 6423,
+      "tid": 6442,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"STAGE_CREATED\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229894214,\"elapsedNs\":6835744137762,\"attempt\":\"586d0904-eaac-403a-895a-48c34cd98810\",\"sourceSHA256\":\"3faac63d133ee546e983a131136bc44c9d3c0910d1c6b143d60509ef90a386e7\"}",
+      "researchEvent": {
+        "event": "STAGE_CREATED",
+        "pid": 6423,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe",
+        "wallMs": 1792229894214,
+        "elapsedNs": 6835744137762,
+        "attempt": "586d0904-eaac-403a-895a-48c34cd98810",
+        "sourceSHA256": "3faac63d133ee546e983a131136bc44c9d3c0910d1c6b143d60509ef90a386e7"
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 5,
+      "epoch": 1792229897.657,
+      "pid": 6423,
+      "tid": 6442,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"PIN_DURABLE\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229897657,\"elapsedNs\":6839187323330,\"attempt\":\"586d0904-eaac-403a-895a-48c34cd98810\",\"state\":\"DELIVERY_UNKNOWN\"}",
+      "researchEvent": {
+        "event": "PIN_DURABLE",
+        "pid": 6423,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe",
+        "wallMs": 1792229897657,
+        "elapsedNs": 6839187323330,
+        "attempt": "586d0904-eaac-403a-895a-48c34cd98810",
+        "state": "DELIVERY_UNKNOWN"
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 6,
+      "epoch": 1792229903.069,
+      "pid": 6423,
+      "tid": 6442,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"CASE_FAIL_STOP\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229903069,\"elapsedNs\":6844599170181,\"runId\":\"h2_e22caecf8afc4a72957afc061c68d5a3\",\"detail\":\"java.lang.AssertionError: bind timeout\"}",
+      "researchEvent": {
+        "event": "CASE_FAIL_STOP",
+        "pid": 6423,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe",
+        "wallMs": 1792229903069,
+        "elapsedNs": 6844599170181,
+        "runId": "h2_e22caecf8afc4a72957afc061c68d5a3",
+        "detail": "java.lang.AssertionError: bind timeout"
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 7,
+      "epoch": 1792229905.772,
+      "pid": 762,
+      "tid": 798,
+      "tag": "ActivityTaskManager",
+      "message": "Displayed com.cooper.lithic.m10r3.probe/.ProbeActivity for user 0: +24s415ms"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 3,
+      "epoch": 1792229911.877,
+      "pid": 762,
+      "tid": 6473,
+      "tag": "ActivityManager",
+      "message": "Collecting stacks for pid 6423 into temporary file temp_anr_7668772233553379703.txt"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 8,
+      "epoch": 1792229923.341,
+      "pid": 6423,
+      "tid": 6423,
+      "tag": "libc",
+      "message": "Requested dump for pid 6423 (hic.m10r3.probe)"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 4,
+      "epoch": 1792229925.583,
+      "pid": 762,
+      "tid": 6473,
+      "tag": "ActivityManager",
+      "message": "Aborted stack trace dump (current primary pid=6423); deadline exceeded."
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 5,
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tid": 6474,
+      "tag": "ActivityManager",
+      "message": "ANR in com.cooper.lithic.m10r3.probe (com.cooper.lithic.m10r3.probe/.ProbeActivity)"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 6,
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tid": 6474,
+      "tag": "ActivityManager",
+      "message": "PID: 6423"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 7,
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tid": 6474,
+      "tag": "ActivityManager",
+      "message": "Reason: Input dispatching timed out (f060033 com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.ProbeActivity is not responding. Waited 5001ms for FocusEvent(hasFocus=true))."
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 8,
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tid": 6474,
+      "tag": "ActivityManager",
+      "message": "Parent: com.cooper.lithic.m10r3.probe/.ProbeActivity"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 9,
+      "epoch": 1792229936.776,
+      "pid": 762,
+      "tid": 6474,
+      "tag": "ActivityManager",
+      "message": "  57% 6423/com.cooper.lithic.m10r3.probe: 4% user + 53% kernel / faults: 762 minor 23 major"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 10,
+      "epoch": 1792229953.755,
+      "pid": 762,
+      "tid": 809,
+      "tag": "ActivityManager",
+      "message": "Process PhantomProcessRecord {e3100cb 6488:6423:crash_dump64/u0a218} died"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 11,
+      "epoch": 1792229953.757,
+      "pid": 762,
+      "tid": 809,
+      "tag": "ActivityManager",
+      "message": "Process PhantomProcessRecord {11d60a8 6493:6423:com.cooper.lithic.m10r3.probe/u0a218} died"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 12,
+      "epoch": 1792229959.089,
+      "pid": 762,
+      "tid": 6474,
+      "tag": "ActivityManager",
+      "message": "Completed ANR of com.cooper.lithic.m10r3.probe in 45395ms, latency 54ms"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 9,
+      "epoch": 1792229961.449,
+      "pid": 528,
+      "tid": 528,
+      "tag": "Zygote",
+      "message": "Forked child process 6610"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 13,
+      "epoch": 1792229961.449,
+      "pid": 762,
+      "tid": 808,
+      "tag": "ActivityManager",
+      "message": "Start proc 6610:com.cooper.lithic.m10r3.probe:jpeg_worker/u0a218 for service {com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.WorkerService}"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-events.log",
+      "line": 5,
+      "epoch": 1792229961.449,
+      "pid": 762,
+      "tid": 808,
+      "tag": "am_proc_start",
+      "message": "[0,6610,10218,com.cooper.lithic.m10r3.probe:jpeg_worker,service,{com.cooper.lithic.m10r3.probe/com.cooper.lithic.m10r3.probe.WorkerService}]"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-events.log",
+      "line": 6,
+      "epoch": 1792229964.898,
+      "pid": 762,
+      "tid": 1880,
+      "tag": "am_proc_bound",
+      "message": "[0,6610,com.cooper.lithic.m10r3.probe:jpeg_worker]"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 10,
+      "epoch": 1792229965.247,
+      "pid": 6610,
+      "tid": 6610,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"APPLICATION_ROLE\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229965246,\"elapsedNs\":6906776494400,\"role\":\"WORKER\",\"syntheticOwner\":false,\"api26Path\":\"bounded-proc-self-cmdline\"}",
+      "researchEvent": {
+        "event": "APPLICATION_ROLE",
+        "pid": 6610,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe:jpeg_worker",
+        "wallMs": 1792229965246,
+        "elapsedNs": 6906776494400,
+        "role": "WORKER",
+        "syntheticOwner": false,
+        "api26Path": "bounded-proc-self-cmdline"
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 11,
+      "epoch": 1792229965.398,
+      "pid": 6610,
+      "tid": 6610,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"SERVICE_CREATED\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229965398,\"elapsedNs\":6906928176826}",
+      "researchEvent": {
+        "event": "SERVICE_CREATED",
+        "pid": 6610,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe:jpeg_worker",
+        "wallMs": 1792229965398,
+        "elapsedNs": 6906928176826
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 12,
+      "epoch": 1792229965.403,
+      "pid": 6610,
+      "tid": 6610,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"SERVICE_BOUND\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229965403,\"elapsedNs\":6906933456313}",
+      "researchEvent": {
+        "event": "SERVICE_BOUND",
+        "pid": 6610,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe:jpeg_worker",
+        "wallMs": 1792229965403,
+        "elapsedNs": 6906933456313
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 13,
+      "epoch": 1792229995.403,
+      "pid": 6610,
+      "tid": 6641,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"RETIRE_REQUESTED\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229995403,\"elapsedNs\":6936933393058,\"reason\":\"UNRESERVED_DEADLINE\"}",
+      "researchEvent": {
+        "event": "RETIRE_REQUESTED",
+        "pid": 6610,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe:jpeg_worker",
+        "wallMs": 1792229995403,
+        "elapsedNs": 6936933393058,
+        "reason": "UNRESERVED_DEADLINE"
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 14,
+      "epoch": 1792229995.408,
+      "pid": 6610,
+      "tid": 6641,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"SELF_SIGKILL\",\"pid\":6610,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe:jpeg_worker\",\"wallMs\":1792229995408,\"elapsedNs\":6936937884905,\"reason\":\"UNRESERVED_DEADLINE\",\"targetIsSelf\":true}",
+      "researchEvent": {
+        "event": "SELF_SIGKILL",
+        "pid": 6610,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe:jpeg_worker",
+        "wallMs": 1792229995408,
+        "elapsedNs": 6936937884905,
+        "reason": "UNRESERVED_DEADLINE",
+        "targetIsSelf": true
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 14,
+      "epoch": 1792229995.42,
+      "pid": 762,
+      "tid": 5771,
+      "tag": "ActivityManager",
+      "message": "Process com.cooper.lithic.m10r3.probe:jpeg_worker (pid 6610) has died: vis BTOP"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-events.log",
+      "line": 7,
+      "epoch": 1792229995.42,
+      "pid": 762,
+      "tid": 5771,
+      "tag": "am_proc_died",
+      "message": "[0,6610,com.cooper.lithic.m10r3.probe:jpeg_worker,100,3]"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 15,
+      "epoch": 1792229995.421,
+      "pid": 6423,
+      "tid": 6433,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"WORKER_ENDPOINT_DIED\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229995421,\"elapsedNs\":6936950696598,\"attempt\":\"586d0904-eaac-403a-895a-48c34cd98810\"}",
+      "researchEvent": {
+        "event": "WORKER_ENDPOINT_DIED",
+        "pid": 6423,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe",
+        "wallMs": 1792229995421,
+        "elapsedNs": 6936950696598,
+        "attempt": "586d0904-eaac-403a-895a-48c34cd98810"
+      }
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-system.log",
+      "line": 15,
+      "epoch": 1792229995.421,
+      "pid": 762,
+      "tid": 5771,
+      "tag": "ActivityManager",
+      "message": "Scheduling restart of crashed service com.cooper.lithic.m10r3.probe/.WorkerService in 1000ms for connection"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 16,
+      "epoch": 1792229995.422,
+      "pid": 528,
+      "tid": 528,
+      "tag": "Zygote",
+      "message": "Process 6610 exited due to signal 9 (Killed)"
+    },
+    {
+      "source": "docs/research/m10-jpeg-r3-f1b/evidence/h2-20261017-01/h2-ending-window-main.log",
+      "line": 17,
+      "epoch": 1792229995.424,
+      "pid": 6423,
+      "tid": 6423,
+      "tag": "LITHIC_R3",
+      "message": "{\"event\":\"SERVICE_DISCONNECTED\",\"pid\":6423,\"uid\":10218,\"process\":\"com.cooper.lithic.m10r3.probe\",\"wallMs\":1792229995424,\"elapsedNs\":6936954355274,\"attempt\":\"586d0904-eaac-403a-895a-48c34cd98810\"}",
+      "researchEvent": {
+        "event": "SERVICE_DISCONNECTED",
+        "pid": 6423,
+        "uid": 10218,
+        "process": "com.cooper.lithic.m10r3.probe",
+        "wallMs": 1792229995424,
+        "elapsedNs": 6936954355274,
+        "attempt": "586d0904-eaac-403a-895a-48c34cd98810"
+      }
+    }
+  ],
+  "kind": "DERIVED_FROM_LOCKED_SCOPED_LOGS_NOT_NEW_ANDROID_EVIDENCE"
+}

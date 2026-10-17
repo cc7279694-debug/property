@@ -1,0 +1,54 @@
+{
+  "stage": "GREEN_PROPOSED_MODEL_ONLY",
+  "atUtc": "2026-10-17T10:43:56.160763+00:00",
+  "argv": [
+    "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "test_fence_model"
+  ],
+  "exitCode": 0,
+  "inputs": {
+    "fence_model.py": {
+      "bytes": 6249,
+      "sha256": "54869c8ee7b88a294dcbfcd0a719f3780f6534d665f00a1bbb1532e50fd607cd"
+    },
+    "test_fence_model.py": {
+      "bytes": 7984,
+      "sha256": "752370c695206e927ce6f871e2501517eae15efc6837a90bed8d763895dc3ad8"
+    }
+  },
+  "logBytes": 3632,
+  "logSHA256": "a1c485b466d573d92f8053faceb2edd6e62a9e996b9ca3d64691d72a8abf89e4",
+  "methods": [
+    "FailureFenceTests.test_failure_revokes_existing_attempt_before_any_late_grant",
+    "FailureFenceTests.test_persistence_unknown_keeps_memory_fence_and_admission_closed",
+    "FailureFenceTests.test_duplicate_failure_keeps_first_reason_and_verified_revoke",
+    "FailureFenceTests.test_failed_queued_bind_never_enters_binding",
+    "FailureFenceTests.test_inflight_bind_return_preserves_cleanup_for_every_outcome",
+    "FailureFenceTests.test_unbind_exception_never_erases_responsibility",
+    "FailureFenceTests.test_not_registered_after_successful_bind_stays_unknown",
+    "FailureFenceTests.test_old_epoch_and_wrong_identity_cannot_authorize",
+    "FailureFenceTests.test_old_endpoint_death_does_not_retire_current_endpoint",
+    "FailureFenceTests.test_healthy_result_death_both_orders_preserve_original_contract",
+    "FailureFenceTests.test_failure_after_death_rejects_late_result",
+    "FailureFenceTests.test_revoked_pin_without_revoked_file_is_denied_in_proposal",
+    "FailureFenceTests.test_all_120_post_failure_schedules_stay_closed",
+    "RecoveryDesignTests.test_historical_h2_snapshot_is_not_recovery_eligibility",
+    "RecoveryDesignTests.test_every_missing_or_unknown_precondition_blocks_before_deletion",
+    "RecoveryDesignTests.test_free_lease_does_not_replace_old_host_quiescence",
+    "RecoveryDesignTests.test_lease_loss_or_pending_restart_still_blocks",
+    "RecoveryDesignTests.test_failed_attempt_terminal_keeps_current_without_success_receipt",
+    "RecoveryDesignTests.test_partial_deletion_requires_separate_review_not_proof_fabrication",
+    "RecoveryDesignTests.test_terminal_sync_failure_may_clear_pin_but_never_allows_admission",
+    "RecoveryDesignTests.test_terminal_replay_verifies_without_deleting_twice",
+    "RecoveryDesignTests.test_separate_execution_permission_is_always_required"
+  ],
+  "uniqueMethods": 22,
+  "abstractPostFailureSchedules": 120,
+  "androidExecution": false,
+  "realCodeChanged": false,
+  "modelAssumption": "Atomic transitions and independently true recovery facts; no Android synchronization or FD proof"
+}

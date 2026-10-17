@@ -1,0 +1,19 @@
+"""RED baseline: abstract replay of legacy relevant predicates, not Java execution.
+
+Identity/current/pin/source are assumed valid. dispatch failure only writes FAIL.
+The next revision will model the proposed failure fence; no APK is changed.
+"""
+
+
+class Fence:
+    def __init__(self):
+        self.report_failed = False
+        self.gate_revoked = False
+        self.durable_revoked = False
+        self.pin = True
+
+    def fail(self, reason):
+        self.report_failed = True
+
+    def may_authorize(self, operation):
+        return self.pin and not self.gate_revoked and not self.durable_revoked

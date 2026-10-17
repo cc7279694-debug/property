@@ -1,0 +1,28 @@
+{
+  "status": "PASS_OFFLINE_INPUT_AND_DERIVATION_ONLY",
+  "measurements": {
+    "pin_to_fail_elapsed_ms": 5411.846851,
+    "worker_create_to_deadline_elapsed_ms": 30005.216232,
+    "worker_process_start_minus_fail_wall_ms": 58380.0,
+    "scope": "TIMESTAMP_DIFFERENCES_NOT_INDIVIDUAL_FSYNC_OR_BIND_DURATION"
+  },
+  "threadIDs": {
+    "host": 6423,
+    "host_executor": 6442,
+    "host_death_callback_observed": 6433,
+    "worker": 6610,
+    "worker_deadline_thread": 6641
+  },
+  "h2Attempt": "586d0904-eaac-403a-895a-48c34cd98810",
+  "h2State": "DELIVERY_UNKNOWN",
+  "h2Pin": true,
+  "h2SourceSize": 8192,
+  "h2NormalResult": "FAIL",
+  "anrBlockingStack": "UNKNOWN_NOT_IN_ARCHIVE",
+  "firstEndingUnknownProcessIdentity": "UNKNOWN_ORIGINAL_ROW_NOT_ARCHIVED",
+  "h2Lifecycle": "BLOCKED",
+  "sourceAndRawEvidenceUnchanged": true,
+  "androidTests": "NOT_RUN",
+  "deviceCalls": 0,
+  "currentDeviceState": "NOT_OBSERVED"
+}

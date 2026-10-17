@@ -1,0 +1,61 @@
+{
+  "scope": "PURE_HOST_MODEL_ONLY",
+  "atUtc": "2026-10-17T10:50:35.886484+00:00",
+  "python": "3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]",
+  "argv": [
+    "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-B",
+    "-X",
+    "utf8",
+    "-m",
+    "unittest",
+    "-v",
+    "test_fence_model"
+  ],
+  "exitCode": 0,
+  "inputs": {
+    "fence_model.py": {
+      "bytes": 6254,
+      "sha256": "76ab8107b427bb398881cf51b8b7d065113d296b051ab0b02efd046c99244eae"
+    },
+    "test_fence_model.py": {
+      "bytes": 7984,
+      "sha256": "752370c695206e927ce6f871e2501517eae15efc6837a90bed8d763895dc3ad8"
+    },
+    "verify_models.py": {
+      "bytes": 2102,
+      "sha256": "be845f0b8d39114abf00d0ac2446c0d483a56fd3dd706f6862bbe26b3a634772"
+    }
+  },
+  "uniqueMethods": 22,
+  "methods": [
+    "FailureFenceTests.test_failure_revokes_existing_attempt_before_any_late_grant",
+    "FailureFenceTests.test_persistence_unknown_keeps_memory_fence_and_admission_closed",
+    "FailureFenceTests.test_duplicate_failure_keeps_first_reason_and_verified_revoke",
+    "FailureFenceTests.test_failed_queued_bind_never_enters_binding",
+    "FailureFenceTests.test_inflight_bind_return_preserves_cleanup_for_every_outcome",
+    "FailureFenceTests.test_unbind_exception_never_erases_responsibility",
+    "FailureFenceTests.test_not_registered_after_successful_bind_stays_unknown",
+    "FailureFenceTests.test_old_epoch_and_wrong_identity_cannot_authorize",
+    "FailureFenceTests.test_old_endpoint_death_does_not_retire_current_endpoint",
+    "FailureFenceTests.test_healthy_result_death_both_orders_preserve_original_contract",
+    "FailureFenceTests.test_failure_after_death_rejects_late_result",
+    "FailureFenceTests.test_revoked_pin_without_revoked_file_is_denied_in_proposal",
+    "FailureFenceTests.test_all_120_post_failure_schedules_stay_closed",
+    "RecoveryDesignTests.test_historical_h2_snapshot_is_not_recovery_eligibility",
+    "RecoveryDesignTests.test_every_missing_or_unknown_precondition_blocks_before_deletion",
+    "RecoveryDesignTests.test_free_lease_does_not_replace_old_host_quiescence",
+    "RecoveryDesignTests.test_lease_loss_or_pending_restart_still_blocks",
+    "RecoveryDesignTests.test_failed_attempt_terminal_keeps_current_without_success_receipt",
+    "RecoveryDesignTests.test_partial_deletion_requires_separate_review_not_proof_fabrication",
+    "RecoveryDesignTests.test_terminal_sync_failure_may_clear_pin_but_never_allows_admission",
+    "RecoveryDesignTests.test_terminal_replay_verifies_without_deleting_twice",
+    "RecoveryDesignTests.test_separate_execution_permission_is_always_required"
+  ],
+  "abstractPostFailureSchedules": 120,
+  "recoveryFacts": 20,
+  "logBytes": 3632,
+  "logSHA256": "3954ceed54c310da34b556f4b2e68c8b35e757a5e1297fe17a2914481073e149",
+  "androidExecution": false,
+  "h2Lifecycle": "BLOCKED_UNCHANGED"
+}

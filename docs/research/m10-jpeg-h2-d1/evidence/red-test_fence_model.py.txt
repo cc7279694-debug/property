@@ -1,0 +1,15 @@
+"""Design-level synthetic assertions. No Android, device, files or real cleanup."""
+import unittest
+from fence_model import Fence
+
+
+class FailureFenceTests(unittest.TestCase):
+    def test_failure_revokes_existing_attempt_before_any_late_grant(self):
+        session = Fence()
+        self.assertTrue(session.may_authorize('grant'))
+        session.fail('BIND_TIMEOUT')
+        self.assertFalse(session.may_authorize('grant'))
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
