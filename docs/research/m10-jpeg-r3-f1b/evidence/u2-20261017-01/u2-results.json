@@ -1,0 +1,106 @@
+{
+  "status": "READY_FOR_REVIEW",
+  "classification": "PREFLIGHT_ELIGIBLE",
+  "sourceCommit": "92cecaef48300629cc4136371f9dd4018d275ae6",
+  "completePreflightAttempts": 1,
+  "endingAttempts": 1,
+  "emulatorStartAttempts": 0,
+  "adbCommands": {
+    "preflight": 55,
+    "ending": 29,
+    "initialDevicesDisplay": 1,
+    "total": 85,
+    "allRecordedCommandsExitZero": true,
+    "timedOut": 0,
+    "observerRawHashRecords": 84,
+    "initialDevicesHashKind": "DECODED_DISPLAY_NOT_RAW"
+  },
+  "processObservations": [
+    {
+      "label": "preflight-sample-1-processes",
+      "phase": "preflight",
+      "index": 34,
+      "stdoutBytes": 17942,
+      "stdoutSHA256": "9be81a9482d0a90e4a5c5afbf2930af764c3f3d0b8278fab56e5bbd795b62f04",
+      "headerMatches": true,
+      "uwbCount": 1,
+      "uwbMappedUID": 1083,
+      "unknownUIDLabels": {},
+      "malformedRowCount": 0,
+      "fullProcessRowsArchived": false
+    },
+    {
+      "label": "preflight-sample-2-processes",
+      "phase": "preflight",
+      "index": 52,
+      "stdoutBytes": 17964,
+      "stdoutSHA256": "bcba77fbe073365627b213628e87d7c9b42f9f6012d67f9199f008f2388977b7",
+      "headerMatches": true,
+      "uwbCount": 1,
+      "uwbMappedUID": 1083,
+      "unknownUIDLabels": {},
+      "malformedRowCount": 0,
+      "fullProcessRowsArchived": false
+    },
+    {
+      "label": "g2-after-processes",
+      "phase": "ending",
+      "index": 26,
+      "stdoutBytes": 17960,
+      "stdoutSHA256": "116a37b1a78cb62f540f8dbb722adf5cee970303cf65c953532663ffe0c3d56e",
+      "headerMatches": true,
+      "uwbCount": 1,
+      "uwbMappedUID": 1083,
+      "unknownUIDLabels": {},
+      "malformedRowCount": 0,
+      "fullProcessRowsArchived": false
+    }
+  ],
+  "sampleWindows": [
+    {
+      "sampleId": "preflight-sample-1",
+      "commandWindowStartUtc": "2026-10-17T08:28:31.742894+00:00",
+      "commandWindowEndUtc": "2026-10-17T08:28:33.845416+00:00",
+      "firstCommandIndex": 20,
+      "lastCommandIndex": 37
+    },
+    {
+      "sampleId": "preflight-sample-2",
+      "commandWindowStartUtc": "2026-10-17T08:28:33.860929+00:00",
+      "commandWindowEndUtc": "2026-10-17T08:28:35.912260+00:00",
+      "firstCommandIndex": 38,
+      "lastCommandIndex": 55
+    }
+  ],
+  "checks": {
+    "device": "PASS",
+    "allThreePackageIdentities": "PASS",
+    "serviceClassification": "PASS: NO_TARGET_RECORD twice",
+    "uwbMappingAndResearchProcessUIDs": "PASS",
+    "stageCurrentPinReceiptAndUnknownChildren": "PASS: namespace ABSENT twice",
+    "independentSnapshots": "PASS",
+    "semanticSnapshotConsistency": "PASS",
+    "formalAPKUIDProtection": "PASS",
+    "formalPrivateMetadataProtection": "PASS",
+    "deviceSettingsProtection": "PASS",
+    "researchPackagesProtection": "PASS",
+    "privateByteIntegrity": "NOT_RUN",
+    "actualInactiveRecordCandidatePath": "NOT_RUN",
+    "androidLifecycleScenarios": "NOT_RUN",
+    "hostTestRerun": "NOT_RUN",
+    "buildOrLint": "NOT_RUN"
+  },
+  "formalMetadata": {
+    "beforeCount": 188,
+    "afterCount": 188,
+    "aggregateSHA256": "326e7f5576fdb03ba0b57012ada3c12b06adf147726946e9f8df2b856d4a8a83"
+  },
+  "newUnknownUIDLabels": 0,
+  "applicationLifecycleCalls": 0,
+  "cleanupOrSignals": 0,
+  "privacy": {
+    "fullPsOrDumpsysArchived": false,
+    "formalPrivatePathsOrContentsArchived": false
+  },
+  "scope": "RESEARCH_READONLY_SNAPSHOT_ONLY_NO_INSTALL_OR_EXECUTION_AUTHORITY"
+}

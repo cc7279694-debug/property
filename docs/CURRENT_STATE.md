@@ -1,8 +1,15 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；G2R-U1完成有限UID取证及最小研究兼容修复/宿主测试，等待独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；G2R-U2唯一真实只读双快照通过，等待独立审查；未安装或启动App）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R3-F1B-G2R-U2 — READY_FOR_REVIEW**：用户转交U1独立PASS WITH NOTES，从锁定`92cecaef48300629cc4136371f9dd4018d275ae6`建立独立worktree/分支`research/m10-jpeg-strict-r3-f1b-g2r-u2`。7份执行脚本与U1历史GREEN输入SHA实际核对一致；原G1/U1规则、旧研究/产品源码和测试不改。
+- **本轮真实预检**：原AVD已在线，未启动或重启。唯一实际verify preflight退出0；两份独立采集均NO_TARGET_RECORD、研究进程[]、stage命名空间ABSENT，uwb各1次映射1083、无未知UID/格式问题。原evaluate_preflight实际得到PREFLIGHT_ELIGIBLE，限两个只读观察的研究语义状态一致，不证明全进程原文相同、持续无消费者、lease释放或Worker死亡，更不授权安装/运行APK。
+- **本轮结束保护与限度**：一次G2结束入口，进程/stage/保护JSON均PASS；三包UID/APK身份不变，正式私有元数据实际188→188且聚合SHA相同、设备设置相同。共85条ADB读取（preflight55＋ending29＋初始devices1），0非零退出/超时；84条有原始完整性SHA，初始devices是解码显示hash。完整ps/dumpsys/私有元数据只在内存，无私人内容归档。启动AVD/安装/App生命周期/清理/信号均0。私人字节、INACTIVE_RECORD_CANDIDATE实机路径、宿主测试重跑/构建/Lint及Android生命周期案例均NOT_RUN。
+- **U2交接与停止**：[执行](research/M10_JPEG_R3_F1B_G2R_U2_EXECUTION.md)、[设备结果](research/M10_JPEG_R3_F1B_G2R_U2_DEVICE_RESULTS.md)、[决策](research/M10_JPEG_R3_F1B_G2R_U2_DECISION.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2R-U2.md)。只提交推送U2后立即停止，等待ChatGPT独立审查。N01～N03、R3原29项0 PASS/1 UNKNOWN/28 NOT_RUN、历史attach/R1超时UNKNOWN、M10 PENDING/3 JPEG FAIL、UI-C1冻结PASS WITH NOTES及M11 NOT_AUTHORIZED不变。
+
+以下为U1历史交付；其独立PASS WITH NOTES来源以上节为准，原G2/G2-R失败与缺失输入不改写：
 
 - **M10-R3-F1B-G2R-U1 — READY_FOR_REVIEW**：用户转交G2-R研究交付PASS WITH NOTES、真实双快照BLOCKED；本轮从锁定`f4de91342410b58d63526182a1402486e12e3990`建立独立worktree/分支`research/m10-jpeg-strict-r3-f1b-g2r-u1`。仅授权有限只读UID诊断、Python最小兼容修复、宿主测试和文档；不运行完整设备预检或任何App。
 - **本轮实证与修改**：原AVD已在线，未启动/重启。API36/boot1与三包当前UID/APK SHA核对一致。一次legacy ps＋一次实际支持UID列的ps发现唯一未知ASCII标签uwb（1行），按USER/PID/PPID/NAME在内存关联数字UID1083；AOSP Android16 AID_UWB1083核对一致。仅将gate原UID规则提取共享函数并加精确uwb1083；Service/stage、verify采集协议、生产代码及原测试不变。完整进程数据仅内存，受限证据保留标签/计数/数值和命令字节/SHA；不能追认G2-R缺失的原token/SHA。

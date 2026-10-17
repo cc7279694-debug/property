@@ -1,0 +1,51 @@
+{
+  "startedAtUtc": "2026-10-17T08:28:19.7605725+00:00",
+  "finishedAtUtc": "2026-10-17T08:28:22.3946719+00:00",
+  "status": "TARGET_ONLINE_NO_START",
+  "adbDevicesExitCode": 0,
+  "targetRows": [
+    "emulator-5596          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:8"
+  ],
+  "otherADBRowCount": 0,
+  "decodedDisplayBytes": 140,
+  "decodedDisplaySHA256": "1912b4c9ae20d14425a56336afbc7b82e4a1b7a843e6cb077184527216c45f25",
+  "hashKind": "POWERSHELL_DECODED_DISPLAY_NOT_RAW_ADB_BYTES",
+  "targetEmulatorProcesses": [
+    {
+      "Name": "emulator.exe",
+      "ProcessId": 16988,
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+      "CommandLine": "\"C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe\" -avd Lithic_M01_API_36 -port 5596 -no-window -no-audio -no-snapshot-load -no-snapshot-save"
+    },
+    {
+      "Name": "qemu-system-x86_64-headless.exe",
+      "ProcessId": 20516,
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "CommandLine": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M01_API_36 -port 5596 -no-window -no-audio -no-snapshot-load -no-snapshot-save"
+    }
+  ],
+  "unclassifiedEmulatorCount": 0,
+  "targetListeners": [
+    {
+      "LocalPort": 5597,
+      "OwningProcess": 20516
+    },
+    {
+      "LocalPort": 5596,
+      "OwningProcess": 20516
+    },
+    {
+      "LocalPort": 5597,
+      "OwningProcess": 20516
+    },
+    {
+      "LocalPort": 5596,
+      "OwningProcess": 20516
+    }
+  ],
+  "iniSHA256": "a13c3fd2492d875a77a68262842b8912c3df6f67f4f2e329748774b465e3b902",
+  "configSHA256": "555d10f2c3fe3bd8cd1c231ceea06c77532d132d39236a7f31c9fc839506bf54",
+  "F0IniConfigMatches": true,
+  "startAttempts": 0,
+  "appLifecycleCalls": 0
+}
