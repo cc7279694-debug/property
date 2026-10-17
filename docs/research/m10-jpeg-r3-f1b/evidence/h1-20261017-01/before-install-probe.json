@@ -1,0 +1,79 @@
+{
+  "atUtc": "2026-10-17T08:47:16.837889+00:00",
+  "status": "PASS",
+  "identity": {
+    "serial": "emulator-5596",
+    "state": "device",
+    "avd": "Lithic_M01_API_36",
+    "api": "36",
+    "abis": "x86_64,arm64-v8a"
+  },
+  "packages": {
+    "com.cooper.lithic.debug": {
+      "package": "com.cooper.lithic.debug",
+      "present": true,
+      "uid": 10216,
+      "apks": [
+        {
+          "codePath": "/data/app/~~Hfx3ccRDZ8SRp7KGvW7MJA==/com.cooper.lithic.debug-0iLZLprup1DPNDXh1HN2XQ==/base.apk",
+          "sha256": "4bfd57231a9028ed5c2cd6961e2c59756936b688c6bf90159d58743301889c46"
+        }
+      ]
+    },
+    "com.cooper.lithic.m10r3.probe": {
+      "package": "com.cooper.lithic.m10r3.probe",
+      "present": true,
+      "uid": 10218,
+      "apks": [
+        {
+          "codePath": "/data/app/~~ZQY6jvuiNGaONZ1US5fftg==/com.cooper.lithic.m10r3.probe-93IVnMZKhR1TDkjZMenfSA==/base.apk",
+          "sha256": "230407d8bc98aeac6fcda632b935551e8ca3322cbdf55cb73baf8bc258cb47d0"
+        }
+      ]
+    },
+    "com.cooper.lithic.m10r3.outsider": {
+      "package": "com.cooper.lithic.m10r3.outsider",
+      "present": true,
+      "uid": 10219,
+      "apks": [
+        {
+          "codePath": "/data/app/~~Obglokpdeu2pMyzsJvuyzA==/com.cooper.lithic.m10r3.outsider-Tu7jU96JBP_KC0edHCN2FA==/base.apk",
+          "sha256": "214a6e98085d77d8fffb0c5be9f9aff70700c0f1e6365a3042b6ccf72385b358"
+        }
+      ]
+    }
+  },
+  "processes": [],
+  "processCapture": {
+    "exitCode": 0,
+    "stderr": "",
+    "complete": true,
+    "truncated": false,
+    "stdoutBytes": 18009,
+    "stdoutSHA256": "52dc368dfdedb91f0b9c3a475fd0cffc7c28efefe8c765e0b88b0d8b5b16c131",
+    "profile": "ps-user-pid-ppid-name-v1"
+  },
+  "service": {
+    "classification": "NO_TARGET_RECORD",
+    "reasons": [],
+    "record": null
+  },
+  "serviceCapture": {
+    "exitCode": 0,
+    "stderr": "",
+    "complete": true,
+    "truncated": false,
+    "stdoutBytes": 68,
+    "stdoutSHA256": "44009d1664d1b66d17ec4859a9e03642b0125d242c05eac9c101806e2397fb7c",
+    "profile": "api36-f1b-v1"
+  },
+  "stage": {
+    "status": "PASS",
+    "reasons": [],
+    "attempts": [],
+    "currentAttempt": null,
+    "namespace": "ABSENT",
+    "evidenceScope": "HOST_SNAPSHOT_ONLY_NOT_ANDROID_LEASE_OR_DEATH_PROOF"
+  },
+  "scope": "ONE_READONLY_SNAPSHOT_NOT_LEASE_OR_DEATH_PROOF"
+}

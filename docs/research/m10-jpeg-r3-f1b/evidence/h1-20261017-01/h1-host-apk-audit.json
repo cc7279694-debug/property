@@ -1,0 +1,132 @@
+{
+  "atUtc": "2026-10-17T08:45:14.009742+00:00",
+  "buildSourceCommit": "f23180a4c086d0fc01f944a83174d52e9ad62dbd",
+  "currentSourceMatches27BuildInputs": true,
+  "inputCount": 27,
+  "commands": [
+    {
+      "module": "probe",
+      "label": "manifest",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+        "manifest",
+        "print",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\build\\outputs\\apk\\debug\\probe-debug.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 1420,
+      "stdoutSHA256": "dc045c0757ab0a273f05497fcc5b13ad0c3b16f69b7400bd6cc8a2a68eb84537",
+      "stderrBytes": 0
+    },
+    {
+      "module": "probe",
+      "label": "signing",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\build\\outputs\\apk\\debug\\probe-debug.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0
+    },
+    {
+      "module": "probe",
+      "label": "old-signing",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\build\\outputs\\apk\\debug\\probe-debug.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0
+    },
+    {
+      "module": "outsider",
+      "label": "manifest",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+        "manifest",
+        "print",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\outsider\\build\\outputs\\apk\\debug\\outsider-debug.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 962,
+      "stdoutSHA256": "00642c66466ec1d2ac5ef00b49eeaec6ea7615bca369c42293ce911cd2172a43",
+      "stderrBytes": 0
+    },
+    {
+      "module": "outsider",
+      "label": "signing",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\outsider\\build\\outputs\\apk\\debug\\outsider-debug.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0
+    },
+    {
+      "module": "outsider",
+      "label": "old-signing",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\outsider\\build\\outputs\\apk\\debug\\outsider-debug.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0
+    }
+  ],
+  "apks": {
+    "probe": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\build\\outputs\\apk\\debug\\probe-debug.apk",
+      "bytes": 50205,
+      "sha256": "a3eea12dfe05736a69c473fa812d0b52a43c8100bbed2cffd0ba9c8f5f0ea684",
+      "package": "com.cooper.lithic.m10r3.probe",
+      "permissions": [],
+      "services": [
+        {
+          "{http://schemas.android.com/apk/res/android}name": "com.cooper.lithic.m10r3.probe.WorkerService",
+          "{http://schemas.android.com/apk/res/android}exported": "false",
+          "{http://schemas.android.com/apk/res/android}process": ":jpeg_worker",
+          "{http://schemas.android.com/apk/res/android}stopWithTask": "false"
+        }
+      ],
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "oldCertificateMatches": true,
+      "oldApkPath": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\probe\\build\\outputs\\apk\\debug\\probe-debug.apk",
+      "oldApkSHA256": "230407d8bc98aeac6fcda632b935551e8ca3322cbdf55cb73baf8bc258cb47d0",
+      "minSdk": "26",
+      "targetSdk": "36",
+      "testOnly": false
+    },
+    "outsider": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f1\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\outsider\\build\\outputs\\apk\\debug\\outsider-debug.apk",
+      "bytes": 10473,
+      "sha256": "a51c4984f07986c8df52b3dbbf7f946523e4c259aa67ab5e8f9b3feffdf41879",
+      "package": "com.cooper.lithic.m10r3.outsider",
+      "permissions": [],
+      "services": [],
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "oldCertificateMatches": true,
+      "oldApkPath": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-r3\\host\\outsider\\build\\outputs\\apk\\debug\\outsider-debug.apk",
+      "oldApkSHA256": "214a6e98085d77d8fffb0c5be9f9aff70700c0f1e6365a3042b6ccf72385b358",
+      "minSdk": "26",
+      "targetSdk": "36",
+      "testOnly": false
+    }
+  },
+  "status": "PASS"
+}

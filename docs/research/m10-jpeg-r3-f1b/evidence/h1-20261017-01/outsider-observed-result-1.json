@@ -1,0 +1,16 @@
+{
+  "present": true,
+  "stat": "8180|10219|273|590894",
+  "bytes": 273,
+  "sha256": "0aded97a90e498305dc602e6a198a6f64880ae55adc111d9c31cf248aff53ede",
+  "result": {
+    "uid": 10219,
+    "pid": 5352,
+    "phase": "onCreate",
+    "status": "PASS",
+    "bindingOutcome": "DENIED",
+    "cleanupStatus": "RELEASED",
+    "bindingDenied": true,
+    "error": "java.lang.SecurityException: Not allowed to bind to service Intent { xflg=0x4 cmp=com.cooper.lithic.m10r3.probe/.WorkerService }"
+  }
+}

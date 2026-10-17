@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-10-17T08:27:54.135400+00:00",
+  "sourceCommit": "a3dc3ac9635d5572317d38b94519d70c12052955",
+  "branch": "research/m10-jpeg-strict-r3-f1b-h1",
+  "scope": "H1_FRESH_PREFLIGHT_THEN_TWO_LOCKED_RESEARCH_UPDATES_AND_MAX_ONE_OUTSIDER_NO_NORMAL",
+  "lockedScripts": {
+    "docs/research/m10-jpeg-r3-f1b/verify.py": {
+      "bytes": 15347,
+      "sha256": "ad116cc3ab41a8974cf8a8d997319395fff7c81e6283c73fd35074fc811516e8"
+    },
+    "docs/research/m10-jpeg-r3-f1b/stage_check.py": {
+      "bytes": 10945,
+      "sha256": "3c747624f246a2f51420f58e240dda9c15d8877acbd123716c5963085dfd61df"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/gate.py": {
+      "bytes": 10989,
+      "sha256": "3fe4c2f3ce232cfa793113f6d8f2a3b3249a4702886357c5c085f186b4fb61ac"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g1/service_record.py": {
+      "bytes": 12728,
+      "sha256": "0ed3db01ea8eb9c6997227557ef64675ad69f4236cfe28a690c8a8a512206d08"
+    },
+    "docs/research/m10-jpeg-r3-f0/diagnose.py": {
+      "bytes": 13954,
+      "sha256": "412ef861f7d76041b55f49320dc287ce4f598f2b2abde574471be088eb952a84"
+    },
+    "docs/research/m10-jpeg-r3/scripts/run_device.py": {
+      "bytes": 29279,
+      "sha256": "234bcca3c9ecc1836e06903d0731a576f2dde44c4a886c92e8e1006ea7657b12"
+    },
+    "docs/research/m10-jpeg-r3-f1b-g2/end_protection.py": {
+      "bytes": 6007,
+      "sha256": "9a0b97f899ac5c2124cfed9a3795deb6a8064a29ca57de1582e035390bd19427"
+    }
+  },
+  "U1GreenInputHashesMatch": true,
+  "u1GreenSHA256": "4ba3d7091e65265129edc96004a5b69f29875ee5fdae5287ad899a8c328c0d20",
+  "testMethodsHistorical": 103,
+  "testsRerun": false,
+  "nativeOrProductionBuild": "NOT_RUN",
+  "observerSource": "Adapted U2 evidence-only launcher; no changes to original gate or returned subprocess results"
+}

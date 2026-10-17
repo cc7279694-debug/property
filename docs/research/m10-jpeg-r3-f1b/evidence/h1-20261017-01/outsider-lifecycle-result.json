@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "runId": "989aa7a9-ba21-422e-bc5a-77e858ac7d87",
+  "externalIdentityOnly": true,
+  "pid": 5352,
+  "uid": 10219,
+  "deviceEpochStart": "1792226955.655449194",
+  "deviceEpochEnd": "1792226968.107993278",
+  "bufferCoverage": {
+    "main": {
+      "status": "PASS",
+      "oldestRetainedAtOrBeforeStart": true,
+      "emptyBeforeAndAfter": false,
+      "rawBytes": 9378144,
+      "rawSHA256": "44905b7e36376b392651bbbdee027102e45c5422d98b6371be9226bca7278cd2"
+    },
+    "system": {
+      "status": "PASS",
+      "oldestRetainedAtOrBeforeStart": true,
+      "emptyBeforeAndAfter": false,
+      "rawBytes": 1590202,
+      "rawSHA256": "fd7cd165029f8af0c0b906dbfc5e0d9eb828675fc7209a54ec75725eb18b7566"
+    },
+    "crash": {
+      "status": "PASS",
+      "oldestRetainedAtOrBeforeStart": false,
+      "emptyBeforeAndAfter": true,
+      "rawBytes": 0,
+      "rawSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "events": {
+      "status": "PASS",
+      "oldestRetainedAtOrBeforeStart": true,
+      "emptyBeforeAndAfter": false,
+      "rawBytes": 229978,
+      "rawSHA256": "715c34ed968ddc60c3ac5f38394fced04adf4ef11fbacb6c26f277cc1c1e6e60"
+    }
+  },
+  "onCreateEvidence": [
+    {
+      "epoch": 1792226956.661,
+      "pid": 5352,
+      "tag": "LITHIC_R3",
+      "message": "{\"uid\":10219,\"pid\":5352,\"phase\":\"onCreate\",\"status\":\"PASS\",\"bindingOutcome\":\"DENIED\",\"cleanupStatus\":\"RELEASED\",\"bindingDenied\":true,\"error\":\"java.lang.SecurityException: Not allowed to bind to service Intent { xflg=0x4 cmp=com.cooper.lithic.m10r3.probe\\/.WorkerService }\"}"
+    }
+  ],
+  "onDestroyEvidence": [
+    {
+      "epoch": 1792226957.237,
+      "pid": 5352,
+      "tag": "LITHIC_R3",
+      "message": "{\"uid\":10219,\"pid\":5352,\"phase\":\"onDestroy\",\"status\":\"PASS\",\"bindingOutcome\":\"DENIED\",\"cleanupStatus\":\"RELEASED\",\"bindingDenied\":true,\"error\":\"java.lang.SecurityException: Not allowed to bind to service Intent { xflg=0x4 cmp=com.cooper.lithic.m10r3.probe\\/.WorkerService }\"}"
+    }
+  ],
+  "systemDestroyEvidence": [
+    {
+      "epoch": 1792226957.238,
+      "pid": 5352,
+      "tag": "wm_on_destroy_called",
+      "message": "[254818546,com.cooper.lithic.m10r3.outsider.OutsiderActivity,performDestroy,25]"
+    }
+  ],
+  "systemDenialEvidence": [
+    {
+      "epoch": 1792226956.624,
+      "pid": 762,
+      "tag": "ActivityManager",
+      "message": "Permission Denial: Accessing service com.cooper.lithic.m10r3.probe/.WorkerService from pid=5352, uid=10219 that is not exported from uid 10218"
+    }
+  ],
+  "processStartEvidence": [
+    {
+      "epoch": 1792226956.073,
+      "pid": 762,
+      "tag": "am_proc_start",
+      "message": "[0,5352,10219,com.cooper.lithic.m10r3.outsider,next-top-activity,{com.cooper.lithic.m10r3.outsider/com.cooper.lithic.m10r3.outsider.OutsiderActivity}]"
+    }
+  ],
+  "leakEvents": [],
+  "unauthorizedBoundEvents": [],
+  "durableResult": {
+    "present": true,
+    "stat": "8180|10219|274|590894",
+    "bytes": 274,
+    "sha256": "575e3a8e964c21f78dd0f78d4c1da3e465326530dbf5ef1bda4f3a184558ca1e",
+    "result": {
+      "uid": 10219,
+      "pid": 5352,
+      "phase": "onDestroy",
+      "status": "PASS",
+      "bindingOutcome": "DENIED",
+      "cleanupStatus": "RELEASED",
+      "bindingDenied": true,
+      "error": "java.lang.SecurityException: Not allowed to bind to service Intent { xflg=0x4 cmp=com.cooper.lithic.m10r3.probe/.WorkerService }"
+    }
+  },
+  "priorError": null,
+  "scope": "ONE_OUTSIDER_ACTIVITY_ONLY_NO_NORMAL"
+}

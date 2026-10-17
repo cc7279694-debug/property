@@ -1,8 +1,16 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；G2R-U2唯一真实只读双快照通过，等待独立审查；未安装或启动App）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-17（Asia/Shanghai；H1研究包更新及唯一Outsider系统复验交付，等待独立审查；未执行normal）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-R3-F1B-H1 — READY_FOR_REVIEW**：用户转交U2独立PASS WITH NOTES，从锁定`a3dc3ac9635d5572317d38b94519d70c12052955`建立独立worktree/分支`research/m10-jpeg-strict-r3-f1b-h1`。本轮仅新完整安全预检、锁定研究APK更新及一次Outsider验证；旧研究APK源码/Manifest/Gradle、G1/U1规则、正式产品及历史证据不改。
+- **本轮资格与更新**：原AVD在线，启动0次；新的原verify双快照实际PREFLIGHT_ELIGIBLE，未复用U2资格。F1-A 27构建输入、两原始APK SHA/签名/Manifest实核；Probe/Outsider各install-r一次Success，目标SHA正确、UID10218/10219保持。每包更新后即时检查研究进程/服务/stage及文件保护均通过，未卸载/降级/清数据；测试前再次确认无活动研究消费者及危险stage。
+- **唯一Outsider实证**：外部runId989aa7a9-ba21-422e-bc5a-77e858ac7d87仅Intent action/证据身份，App不消费nonce。实际PID5352/UID10219，系统拒绝非导出Probe UID10218；App真实DENIED/RELEASED、新onDestroy持久结果及对应系统销毁事件一致。四buffer完整有界读取覆盖销毁后10.869993秒，无对应ServiceConnectionLeaked/越权Worker事件，结论限本次API36观察，不扩为无限期无泄漏。
+- **结束保护与限制**：正式APK/UID、188→188私有元数据聚合及设置相同，新研究包身份正确；stage ABSENT、Worker未见，ServiceRecord9879f0e为INACTIVE_RECORD_CANDIDATE。Outsider进程5352仍在，系统记录冻结，不当作进程死亡。205条ADB命令含2更新/1启动，0非零退出/超时；原G2结束JSON0/0仅局部只读阶段，有新sidecar澄清。未读私人账本/图片/业务行，私人字节NOT_RUN；无normal/其他生命周期/构建/Lint/JVM/JPEG重跑。
+- **H1交接与停止**：[执行](research/M10_JPEG_R3_F1B_H1_EXECUTION.md)、[Android结果](research/M10_JPEG_R3_F1B_H1_ANDROID_RESULTS.md)、[资源生命周期](research/M10_JPEG_R3_F1B_H1_RESOURCE_LIFECYCLE.md)、[决策](research/M10_JPEG_R3_F1B_H1_DECISION.md)、[checkpoint](checkpoints/2026-10-17-M10-JPEG-R3-F1B-H1.md)。只推H1后立即停止等待ChatGPT独立验收。N01/N02未改，N03原历史保留、本轮新证据不自动CLOSED；R3原29项0 PASS/1 UNKNOWN/28 NOT_RUN、历史attach/R1超时UNKNOWN、M10 PENDING/3 JPEG FAIL、UI-C1冻结及M11 NOT_AUTHORIZED不变。
+
+以下为U2历史交付；其独立PASS WITH NOTES来源以上节为准，原观察窗口与限制不扩大：
 
 - **M10-R3-F1B-G2R-U2 — READY_FOR_REVIEW**：用户转交U1独立PASS WITH NOTES，从锁定`92cecaef48300629cc4136371f9dd4018d275ae6`建立独立worktree/分支`research/m10-jpeg-strict-r3-f1b-g2r-u2`。7份执行脚本与U1历史GREEN输入SHA实际核对一致；原G1/U1规则、旧研究/产品源码和测试不改。
 - **本轮真实预检**：原AVD已在线，未启动或重启。唯一实际verify preflight退出0；两份独立采集均NO_TARGET_RECORD、研究进程[]、stage命名空间ABSENT，uwb各1次映射1083、无未知UID/格式问题。原evaluate_preflight实际得到PREFLIGHT_ELIGIBLE，限两个只读观察的研究语义状态一致，不证明全进程原文相同、持续无消费者、lease释放或Worker死亡，更不授权安装/运行APK。

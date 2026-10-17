@@ -1,0 +1,122 @@
+{
+  "status": "READY_FOR_REVIEW",
+  "sourceCommit": "a3dc3ac9635d5572317d38b94519d70c12052955",
+  "freshPreflight": "PREFLIGHT_ELIGIBLE",
+  "installResults": {
+    "probe": {
+      "status": "PASS",
+      "atUtc": "2026-10-17T08:47:21.371768+00:00",
+      "observation": "INSTALL_R_SUCCESS",
+      "installed": {
+        "package": "com.cooper.lithic.m10r3.probe",
+        "present": true,
+        "uid": 10218,
+        "apks": [
+          {
+            "codePath": "/data/app/~~rHSou5LUXV_0WJUKT-3-1A==/com.cooper.lithic.m10r3.probe-LiXQ3Dq4_0rKc5k_hMvT8A==/base.apk",
+            "sha256": "a3eea12dfe05736a69c473fa812d0b52a43c8100bbed2cffd0ba9c8f5f0ea684"
+          }
+        ]
+      },
+      "uidUnchanged": true,
+      "probeFilesMetadataUnchanged": true,
+      "outsiderSyntheticResultUnchanged": false,
+      "manifestEvidence": "INSTALLED_SHA_EQUALS_HOST_AUDITED_APK; IDENTICAL_MANIFEST_AND_CERTIFICATE",
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "postUpdateSnapshot": "after-install-probe.json"
+    },
+    "outsider": {
+      "status": "PASS",
+      "atUtc": "2026-10-17T08:47:35.342159+00:00",
+      "observation": "INSTALL_R_SUCCESS",
+      "installed": {
+        "package": "com.cooper.lithic.m10r3.outsider",
+        "present": true,
+        "uid": 10219,
+        "apks": [
+          {
+            "codePath": "/data/app/~~YkavostKmgbOvOrCCiLwWg==/com.cooper.lithic.m10r3.outsider-OWvjQhgO0eqj_A1byRjDQg==/base.apk",
+            "sha256": "a51c4984f07986c8df52b3dbbf7f946523e4c259aa67ab5e8f9b3feffdf41879"
+          }
+        ]
+      },
+      "uidUnchanged": true,
+      "probeFilesMetadataUnchanged": true,
+      "outsiderSyntheticResultUnchanged": true,
+      "manifestEvidence": "INSTALLED_SHA_EQUALS_HOST_AUDITED_APK; IDENTICAL_MANIFEST_AND_CERTIFICATE",
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "postUpdateSnapshot": "after-install-outsider.json"
+    }
+  },
+  "singleOutsider": {
+    "runId": "989aa7a9-ba21-422e-bc5a-77e858ac7d87",
+    "runIdScope": "external action and evidence only; not an app-level persisted nonce",
+    "pid": 5352,
+    "uid": 10219,
+    "bindingOutcome": "DENIED",
+    "cleanupStatus": "RELEASED",
+    "durablePhase": "onDestroy",
+    "postSystemDestroyObservationSeconds": 10.869993,
+    "leakEvents": 0,
+    "fullBufferCoverage": {
+      "main": "PASS",
+      "system": "PASS",
+      "crash": "PASS",
+      "events": "PASS"
+    }
+  },
+  "ending": {
+    "formalAPKUIDUnchanged": true,
+    "formalMetadataBeforeCount": 188,
+    "formalMetadataAfterCount": 188,
+    "formalMetadataAggregateSHA256": "326e7f5576fdb03ba0b57012ada3c12b06adf147726946e9f8df2b856d4a8a83",
+    "deviceSettingsUnchanged": true,
+    "researchPackagesAreTargets": true,
+    "serviceClassification": "INACTIVE_RECORD_CANDIDATE",
+    "stage": {
+      "status": "PASS",
+      "reasons": [],
+      "attempts": [],
+      "currentAttempt": null,
+      "namespace": "ABSENT",
+      "evidenceScope": "HOST_SNAPSHOT_ONLY_NOT_ANDROID_LEASE_OR_DEATH_PROOF"
+    },
+    "researchProcesses": [
+      {
+        "uid": 10219,
+        "pid": 5352,
+        "ppid": 528,
+        "name": "com.cooper.lithic.m10r3.outsider"
+      }
+    ],
+    "privateByteIntegrity": "NOT_RUN"
+  },
+  "counts": {
+    "scope": "WHOLE_H1_NOT_INHERITED_READONLY_ENDING_HELPER_COUNTS",
+    "adbReadsAndMutationsInMainLog": 204,
+    "initialDevicesRead": 1,
+    "totalAdbCommands": 205,
+    "researchUpdates": 2,
+    "outsiderLaunches": 1,
+    "probeActivityLaunches": 0,
+    "normalOrOtherCases": 0,
+    "clearUninstallKillSignals": 0,
+    "emulatorStartAttempts": 0,
+    "nonzeroCommands": 0,
+    "timeouts": 0,
+    "hostApkAuditCommands": 6,
+    "endingHelperCountFieldsScope": "g2-ending-result.json hardcoded zero install/launch counts describe only its own read-only phase; H1 total is 2/1",
+    "probeInstallOutsiderSyntheticResultFalseField": "not checked for Probe phase; actual unchanged check performed for Outsider update phase"
+  },
+  "preserved": {
+    "N01": "OPEN_NOT_TESTED",
+    "N02": "unchanged conservative retention",
+    "N03": "preserved; new scoped H1 evidence pending independent review, not CLOSED",
+    "R3Original29": "0 PASS / 1 UNKNOWN / 28 NOT_RUN",
+    "M10": "PENDING; original 3 JPEG FAIL",
+    "UI-C1": "ACCEPTED / FROZEN - PASS WITH NOTES",
+    "M11": "NOT_AUTHORIZED",
+    "oldAttachAndR1Timeout": "UNKNOWN"
+  },
+  "formalBusinessDataScope": "No production entry or cross-UID data access invoked; private ledger/image bytes and row comparison NOT_RUN"
+}

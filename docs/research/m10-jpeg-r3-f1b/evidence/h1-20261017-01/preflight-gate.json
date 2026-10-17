@@ -1,0 +1,41 @@
+{
+  "classification": "PREFLIGHT_ELIGIBLE",
+  "reasons": [],
+  "samples": [
+    {
+      "sampleId": "preflight-sample-1",
+      "service": {
+        "classification": "NO_TARGET_RECORD",
+        "reasons": [],
+        "record": null
+      },
+      "processes": [],
+      "stageCheck": {
+        "status": "PASS",
+        "reasons": [],
+        "attempts": [],
+        "currentAttempt": null,
+        "namespace": "ABSENT",
+        "evidenceScope": "HOST_SNAPSHOT_ONLY_NOT_ANDROID_LEASE_OR_DEATH_PROOF"
+      }
+    },
+    {
+      "sampleId": "preflight-sample-2",
+      "service": {
+        "classification": "NO_TARGET_RECORD",
+        "reasons": [],
+        "record": null
+      },
+      "processes": [],
+      "stageCheck": {
+        "status": "PASS",
+        "reasons": [],
+        "attempts": [],
+        "currentAttempt": null,
+        "namespace": "ABSENT",
+        "evidenceScope": "HOST_SNAPSHOT_ONLY_NOT_ANDROID_LEASE_OR_DEATH_PROOF"
+      }
+    }
+  ],
+  "scope": "RESEARCH_SNAPSHOT_ONLY_NOT_LEASE_DEATH_OR_EXECUTION_AUTHORITY"
+}
