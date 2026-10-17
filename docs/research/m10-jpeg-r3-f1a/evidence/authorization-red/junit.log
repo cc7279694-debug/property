@@ -1,0 +1,32 @@
+JUnit version 4.13.2
+.E.E.E.E..................
+Time: 3.023
+There were 4 failures:
+1) revokedPriorAttemptCannotConsumeQueuedResult(com.cooper.lithic.m10r3.probe.AuthorizationFenceTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.revokedPriorAttemptCannotConsumeQueuedResult(AuthorizationFenceTest.java:14)
+2) closeAndPublishCannotInterleaveBetweenAuthorityAndMutation(com.cooper.lithic.m10r3.probe.AuthorizationFenceTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.closeAndPublishCannotInterleaveBetweenAuthorityAndMutation(AuthorizationFenceTest.java:47)
+3) replacedCurrentCannotHandshakeOrGrantAgain(com.cooper.lithic.m10r3.probe.AuthorizationFenceTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.replacedCurrentCannotHandshakeOrGrantAgain(AuthorizationFenceTest.java:21)
+4) corruptDurableAuthorityDoesNotRunMutation(com.cooper.lithic.m10r3.probe.AuthorizationFenceTest)
+java.lang.AssertionError: corrupt authority must be reported to fail-closed callback
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.corruptDurableAuthorityDoesNotRunMutation(AuthorizationFenceTest.java:27)
+
+FAILURES!!!
+Tests run: 22,  Failures: 4
+

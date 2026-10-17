@@ -1,0 +1,25 @@
+package com.cooper.lithic.m10r3.probe;
+
+import java.util.List;
+
+/** Research-only admission orchestration; the Android adapter owns FD/lease/file checks. */
+final class StageAdmission {
+    interface Lease extends AutoCloseable { @Override void close() throws Exception; }
+    interface Backend {
+        List<String> attempts() throws Exception;
+        String currentAttempt() throws Exception;
+        Lease acquire(String id) throws Exception;
+        void validate(String id) throws Exception;
+        boolean terminal(String id) throws Exception;
+        void revoke(String id) throws Exception;
+        void removeKnownData(String id) throws Exception;
+        void writeTerminal(String id) throws Exception;
+        void verifyTerminal(String id) throws Exception;
+        void publish(String id) throws Exception;
+    }
+    static void closeAll(Backend b) throws Exception {
+        String prior=b.currentAttempt();
+        if(prior!=null)try(Lease ignored=b.acquire(prior)) { /* legacy guard-only admission */ }
+    }
+    static void publish(Backend b,String id) throws Exception { b.publish(id); }
+}

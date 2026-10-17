@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.m10r3.probe.AuthorizationFenceTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-10-17T02:45:06.386Z" hostname="WHOCARE" time="0.012">
+  <properties/>
+  <testcase name="revokedPriorAttemptCannotConsumeQueuedResult" classname="com.cooper.lithic.m10r3.probe.AuthorizationFenceTest" time="0.004"/>
+  <testcase name="closeAndPublishCannotInterleaveBetweenAuthorityAndMutation" classname="com.cooper.lithic.m10r3.probe.AuthorizationFenceTest" time="0.004"/>
+  <testcase name="replacedCurrentCannotHandshakeOrGrantAgain" classname="com.cooper.lithic.m10r3.probe.AuthorizationFenceTest" time="0.001"/>
+  <testcase name="corruptDurableAuthorityDoesNotRunMutation" classname="com.cooper.lithic.m10r3.probe.AuthorizationFenceTest" time="0.001"/>
+  <testcase name="validCurrentKeepsSessionGateDuplicateProtection" classname="com.cooper.lithic.m10r3.probe.AuthorizationFenceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

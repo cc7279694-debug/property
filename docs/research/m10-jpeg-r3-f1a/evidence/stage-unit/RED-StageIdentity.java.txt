@@ -1,0 +1,13 @@
+package com.cooper.lithic.m10r3.probe;
+
+import java.util.*;
+
+/** Pure exact-identity comparisons shared by the Android stage adapter and host tests. */
+final class StageIdentity {
+    static boolean sameRecord(Map<String,Object> identity,Map<String,Object> record,Set<String> extraKeys) {
+        return true;
+    }
+    static boolean sameInode(boolean regular,long expectedDevice,long expectedInode,long device,long inode) {
+        return true;
+    }
+}

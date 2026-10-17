@@ -1,0 +1,337 @@
+{
+  "buildExit": 0,
+  "projectionInputsMatchCurrentSources": true,
+  "inputCount": 27,
+  "old17SourceByteIdentical": true,
+  "old17MethodIdentitiesRetained": true,
+  "sourceTestIdentitiesExactlyMatchXml": true,
+  "uniqueJUnitMethods": 60,
+  "pass": 60,
+  "fail": 0,
+  "androidTestsRun": false,
+  "lint": {
+    "probe": {
+      "errors": 0,
+      "warnings": 4
+    },
+    "outsider": {
+      "errors": 0,
+      "warnings": 3
+    }
+  },
+  "apks": {
+    "probe": {
+      "applicationId": "com.cooper.lithic.m10r3.probe",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": [],
+      "services": [
+        {
+          "{http://schemas.android.com/apk/res/android}name": "com.cooper.lithic.m10r3.probe.WorkerService",
+          "{http://schemas.android.com/apk/res/android}exported": "false",
+          "{http://schemas.android.com/apk/res/android}process": ":jpeg_worker",
+          "{http://schemas.android.com/apk/res/android}stopWithTask": "false"
+        }
+      ],
+      "bytes": 50205,
+      "sha256": "a3eea12dfe05736a69c473fa812d0b52a43c8100bbed2cffd0ba9c8f5f0ea684",
+      "nativeLibraries": 0,
+      "junitHamcrestPackaged": false
+    },
+    "outsider": {
+      "applicationId": "com.cooper.lithic.m10r3.outsider",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": [],
+      "services": [],
+      "bytes": 10473,
+      "sha256": "a51c4984f07986c8df52b3dbbf7f946523e4c259aa67ab5e8f9b3feffdf41879",
+      "nativeLibraries": 0,
+      "junitHamcrestPackaged": false
+    }
+  },
+  "commands": [
+    {
+      "module": "probe",
+      "audit": "manifest",
+      "exitCode": 0
+    },
+    {
+      "module": "probe",
+      "audit": "badging",
+      "exitCode": 0
+    },
+    {
+      "module": "probe",
+      "audit": "signing",
+      "exitCode": 0
+    },
+    {
+      "module": "probe",
+      "audit": "dex-packages",
+      "exitCode": 0
+    },
+    {
+      "module": "outsider",
+      "audit": "manifest",
+      "exitCode": 0
+    },
+    {
+      "module": "outsider",
+      "audit": "badging",
+      "exitCode": 0
+    },
+    {
+      "module": "outsider",
+      "audit": "signing",
+      "exitCode": 0
+    },
+    {
+      "module": "outsider",
+      "audit": "dex-packages",
+      "exitCode": 0
+    }
+  ],
+  "tests": [
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.revokedPriorAttemptCannotConsumeQueuedResult",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.closeAndPublishCannotInterleaveBetweenAuthorityAndMutation",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.replacedCurrentCannotHandshakeOrGrantAgain",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.corruptDurableAuthorityDoesNotRunMutation",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.validCurrentKeepsSessionGateDuplicateProtection",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.deathBeforeQueuedMatchingResultCanConvergeOnce",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.deathWithoutMatchingResultStaysUnknownAndCannotPrepare",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.revocationRejectsLateSuccessAndCannotBeOverwritten",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.revocationAfterQueuedSuccessStillForbidsPreparation",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.matchingResultRequiresWorkerDeathBeforePreparation",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.missingIdentityOrUnknownStatusCannotConsumeResultSlot",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.unconfirmedApplicationRoleCannotStartSession",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.deadOrRevokedSessionCannotHandshakeAgain",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.concurrentDuplicateResultsAreAcceptedAtMostOnce",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.wrongUidCannotClaimSameApplicationWorker",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.nullRevocationReasonStillRevokesPermanently",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.eachResultIdentityFieldMustMatchExactly",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.everyFailureOutcomeForbidsPreparationEvenAfterDeath",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.resultBeforeHandshakeCannotAuthorizePreparation",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.claimedPidMustMatchPositiveActualBinderCallerPid",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.repeatedHandshakeCannotReplaceCurrentWorker",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.SessionGateTest.successfulComputationWithoutFdCloseCannotPrepare",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.everyStageIsPreflightedBeforeAnyMutation",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.safelyClosedPriorAllowsExactlyTheRequestedNewPointer",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.cleanupFailureKeepsCurrentAndNoTerminalProof",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.currentMustBelongToTheValidatedNamespace",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.unpointedLiveConsumerBlocksAdmission",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.wrongInodeBlocksBeforeAnyRemoval",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.terminalRecoveryIsIdempotentAndDoesNotRepeatDeletion",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.occupiedOldConsumerBlocksClosureAndPointerReplacement",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.corruptOwnerBlocksBeforeAnyRevocation",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.unknownChildBlocksAdmissionAndIsNotRemoved",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.unknownStageWithNoCurrentIsStillVisited",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.corruptReceiptBlocksBeforeAnyRevocation",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.completeClosureRevokesAndVerifiesBeforeReleasingTheSameLease",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageAdmissionTest.newPointerRequiresAllOtherStagesToBeTerminal",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.wrongGenerationIsRejected",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.nonceMismatchRejectsLateIdentity",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.exactFullIdentityIsAccepted",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.unknownRecordFieldIsRejected",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.missingProofFieldIsRejected",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.oldAttemptCannotMatchNewAttempt",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.matchingRegularInodeIsAccepted",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.missingIdentityFieldIsRejected",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.wrongSourceInodeIsRejected",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.wrongDeviceIsRejected",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.nonRegularResourceIsRejected",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.probe.StageIdentityTest.numericStringDoesNotMasqueradeAsAnInode",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.returnedFalseWithoutRegistrationIsExplicitlyClassified",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.deniedBeforeRegistrationRecordsExpectedUnregisteredCleanup",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.destroyRetryCanReleaseConnectionWithoutErasingEarlierCleanupFailure",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.unexpectedlyUnregisteredSuccessfulBindIsNotTreatedAsHarmless",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.returnedTrueReleasesConnectionButNeverPassesSecurityProbe",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.returnedFalseStillReleasesPossibleRegistration",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.destroyAfterSuccessfulCleanupDoesNotUnbindTwice",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.destroyWithoutAnyBindingAttemptDoesNotUnbind",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.fatalBindingErrorIsRethrownAfterCleanupInsteadOfReportedAsRejection",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.deniedAfterRegistrationStillReleasesConnection",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.unexpectedBindingExceptionStillReleasesRegistrationAndFailsProbe",
+      "pass": true
+    },
+    {
+      "identity": "com.cooper.lithic.m10r3.outsider.BindingAttemptTest.secondRunCannotRegisterTheSameConnectionAgain",
+      "pass": true
+    }
+  ]
+}

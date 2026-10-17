@@ -1,0 +1,78 @@
+JUnit version 4.13.2
+.E.E..E.E.E..E.E.E.E.E
+Time: 0.012
+There were 10 failures:
+1) wrongGenerationIsRejected(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.wrongGenerationIsRejected(StageIdentityTest.java:15)
+2) nonceMismatchRejectsLateIdentity(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.nonceMismatchRejectsLateIdentity(StageIdentityTest.java:14)
+3) unknownRecordFieldIsRejected(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.unknownRecordFieldIsRejected(StageIdentityTest.java:17)
+4) missingProofFieldIsRejected(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.missingProofFieldIsRejected(StageIdentityTest.java:19)
+5) oldAttemptCannotMatchNewAttempt(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.oldAttemptCannotMatchNewAttempt(StageIdentityTest.java:13)
+6) missingIdentityFieldIsRejected(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.missingIdentityFieldIsRejected(StageIdentityTest.java:16)
+7) wrongSourceInodeIsRejected(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.wrongSourceInodeIsRejected(StageIdentityTest.java:21)
+8) wrongDeviceIsRejected(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.wrongDeviceIsRejected(StageIdentityTest.java:22)
+9) nonRegularResourceIsRejected(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.nonRegularResourceIsRejected(StageIdentityTest.java:23)
+10) numericStringDoesNotMasqueradeAsAnInode(com.cooper.lithic.m10r3.probe.StageIdentityTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.probe.StageIdentityTest.numericStringDoesNotMasqueradeAsAnInode(StageIdentityTest.java:18)
+
+FAILURES!!!
+Tests run: 12,  Failures: 10
+

@@ -1,0 +1,112 @@
+{
+  "utc": "2026-10-17T02:42:03.886920+00:00",
+  "deviceOperations": "identity reads only; no install,launch,kill or settings mutation",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exitCode": 0,
+      "stdout": " M docs/research/m10-jpeg-r3/host/outsider/build.gradle.kts\n M docs/research/m10-jpeg-r3/host/outsider/src/main/java/com/cooper/lithic/m10r3/outsider/OutsiderActivity.java\n M docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/ProbeRunner.java\n D docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/StageStore.java\n?? docs/research/m10-jpeg-r3-f1a/\n?? docs/research/m10-jpeg-r3/host/outsider/src/main/java/com/cooper/lithic/m10r3/outsider/BindingAttempt.java\n?? docs/research/m10-jpeg-r3/host/outsider/src/test/\n?? docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/AuthorizationFence.java\n?? docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/StageAdmission.java\n?? docs/research/m10-jpeg-r3/host/probe/src/test/java/com/cooper/lithic/m10r3/probe/AuthorizationFenceTest.java\n?? docs/research/m10-jpeg-r3/host/probe/src/test/java/com/cooper/lithic/m10r3/probe/StageAdmissionTest.java\n?? docs/research/m10-jpeg-r3/scripts/audit_f1a.py\n?? docs/research/m10-jpeg-r3/scripts/build_f1a.py\n?? docs/research/m10-jpeg-r3/scripts/run_f1a_jvm.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exitCode": 0,
+      "stdout": "f513725b862d3422b371883536557c4233bed2e6\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exitCode": 0,
+      "stdout": "research/m10-jpeg-strict-r3-f1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "log",
+        "-4",
+        "--format=%H %s"
+      ],
+      "exitCode": 0,
+      "stdout": "f513725b862d3422b371883536557c4233bed2e6 docs(research): record recovered M10 R3 F0 startup evidence\nef25b4d403be026511b036890ccfd3961eb651c5 docs(research): record blocked M10 R3 F0 attach preflight\n17b2cb40d8f3b95136f3d43e5c91cd7aee7b8e5d test(research): record M10 R3 probe and startup blocker\n2912601899f0282ecc6aa32d5cf26a7b44c24c63 docs(research): design M10 R2 JPEG resource architecture\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exitCode": 0,
+      "stdout": "https://github.com/cc7279694-debug/property.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-c",
+        "http.version=HTTP/1.1",
+        "ls-remote",
+        "--heads",
+        "origin",
+        "main",
+        "feat/m10-local-cover-media",
+        "feat/ui-c1-visual-redesign",
+        "research/m10-jpeg-strict-r3-f0",
+        "research/m10-jpeg-strict-r3-f1"
+      ],
+      "exitCode": 0,
+      "stdout": "41596820145dc4a3fa6d041728a59540d828108a\trefs/heads/feat/m10-local-cover-media\n0dce7dd0725a54be4f0280870ef6ca47c48ea7ed\trefs/heads/feat/ui-c1-visual-redesign\n145326ddd4ce28abbf7c2706fe25f9d38c599c3a\trefs/heads/main\nf513725b862d3422b371883536557c4233bed2e6\trefs/heads/research/m10-jpeg-strict-r3-f0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "devices",
+        "-l"
+      ],
+      "exitCode": 0,
+      "stdout": "List of devices attached\r\nemulator-5596          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:2\r\n\r\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop",
+        "ro.boot.qemu.avd_name"
+      ],
+      "exitCode": 0,
+      "stdout": "Lithic_M01_API_36\r\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5596",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "exitCode": 0,
+      "stdout": "36\r\n",
+      "stderr": ""
+    }
+  ]
+}

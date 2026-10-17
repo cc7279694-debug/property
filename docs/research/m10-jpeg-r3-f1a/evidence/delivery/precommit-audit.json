@@ -1,0 +1,821 @@
+{
+  "branch": "research/m10-jpeg-strict-r3-f1",
+  "headBeforeCommit": "f513725b862d3422b371883536557c4233bed2e6",
+  "changedFiles": 79,
+  "statusCounts": {
+    "A": 74,
+    "M": 5,
+    "D": 0
+  },
+  "scopePass": true,
+  "secretPatternHits": [],
+  "forbiddenArtifacts": 0,
+  "sourceInputs27IndexMatchBuild": true,
+  "localLinksChecked": 80,
+  "links": [
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1A_CODE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1A.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_EXECUTION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_LIFECYCLE_RESULTS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_FD_RECOVERY.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_DECISION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R3.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_DECISION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_ARCHITECTURE.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_RESOURCE_BUDGET.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_FAILURE_RECOVERY.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_FEASIBILITY.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_TEST_MATRIX.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_PRODUCTION_PROPOSAL.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_EXECUTION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_RESULTS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_RESOURCE_REPORT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_PRODUCTION_RECOMMENDATION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R1.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R2.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M10-JPEG-supplement-verification.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M10-JPEG-supplement-verification.json",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-14-M10-JPEG-supplement.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/m10-tests/final-split-verification.json",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/m10-device/manual/final-storage-device-proof.json",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "DECISIONS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "planning/M09_CONTRACT.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-verification.json",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M09-files.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-13-M09.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-verification.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-verification.json",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "evidence/M08-files.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-13-M08.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "SPEC_ISSUES.md",
+      "exists": true
+    },
+    {
+      "from": "docs/CURRENT_STATE.md",
+      "target": "ARCHITECTURE.md",
+      "exists": true
+    },
+    {
+      "from": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1A.md",
+      "target": "../research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1A.md",
+      "target": "../research/M10_JPEG_R3_F1A_CODE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "from": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1A.md",
+      "target": "../research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1A.md",
+      "target": "../research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/result.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_CODE_REVIEW.md",
+      "target": "M10_JPEG_R3_F1A_EXECUTION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_CODE_REVIEW.md",
+      "target": "M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_CODE_REVIEW.md",
+      "target": "m10-jpeg-r3-f0/evidence/20261017T015123.092793Z/outsider-scoped-system.log",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "M10_JPEG_R3_F1A_CODE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "../checkpoints/2026-10-17-M10-JPEG-R3-F1A.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/gradle.log",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/inputs.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/result.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/artifact-audit.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/signing-continuity.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1a/evidence/preflight/read-only-checks.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md",
+      "target": "m10-jpeg-r3-f1a/evidence/delivery/precommit-audit.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "M10_JPEG_R3_F1A_EXECUTION.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "M10_JPEG_R3_F1A_CODE_REVIEW.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/artifact-audit.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/outsider-unit/README.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/outsider-unit/red.log",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/outsider-unit/green.log",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/stage-unit/RED-junit.txt",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/stage-unit/RED-StageAdmission.java.txt",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/stage-unit/identity-RED-junit.txt",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/stage-unit/RED-StageIdentity.java.txt",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/stage-unit/GREEN-junit.txt",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/authorization-red/README.md",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/authorization-red/junit.log",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/authorization-green/junit.log",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/preflight/jdk-versions.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/gradle.log",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/inputs.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/result.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/artifact-audit.json",
+      "exists": true
+    },
+    {
+      "from": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md",
+      "target": "m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/signing-continuity.json",
+      "exists": true
+    }
+  ],
+  "rawWhitespaceCheck": {
+    "argv": [
+      "git",
+      "-c",
+      "core.whitespace=cr-at-eol",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exitCode": 2,
+    "stdout": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-green/junit.log:6: new blank line at EOF.\ndocs/research/m10-jpeg-r3-f1a/evidence/authorization-red/junit.log:32: new blank line at EOF.\ndocs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/green.log:6: new blank line at EOF.\ndocs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/red.log:76: new blank line at EOF.\ndocs/research/m10-jpeg-r3-f1a/evidence/stage-unit/GREEN-junit.txt:6: new blank line at EOF.\ndocs/research/m10-jpeg-r3-f1a/evidence/stage-unit/RED-junit.txt:78: new blank line at EOF.\ndocs/research/m10-jpeg-r3-f1a/evidence/stage-unit/identity-RED-junit.txt:78: new blank line at EOF.\n",
+    "stderr": ""
+  },
+  "sourceScriptsDocsWhitespaceCheck": {
+    "argv": [
+      "git",
+      "-c",
+      "core.whitespace=cr-at-eol",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".",
+      ":(exclude)docs/research/m10-jpeg-r3-f1a/evidence/**"
+    ],
+    "exitCode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "rawLogException": "Only seven original JUnit outputs contain final blank line; bytes preserved, not reformatted or suppressed.",
+  "protectedFilesUnchanged": [
+    "app",
+    "gradle",
+    "gradlew",
+    "gradlew.bat",
+    "settings.gradle.kts",
+    "build.gradle.kts",
+    "AGENTS.md",
+    "PROJECT.md",
+    "docs/ACCEPTANCE_MATRIX.md",
+    "docs/planning/original-v1",
+    "docs/research/m10-jpeg-r3-f0",
+    "docs/research/M10_JPEG_R3_EXECUTION.md",
+    "docs/research/M10_JPEG_R3_LIFECYCLE_RESULTS.md",
+    "docs/research/M10_JPEG_R3_FD_RECOVERY.md",
+    "docs/research/M10_JPEG_R3_DECISION.md"
+  ],
+  "changes": [
+    {
+      "status": "M",
+      "path": "docs/CURRENT_STATE.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/checkpoints/2026-10-17-M10-JPEG-R3-F1A.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/M10_JPEG_R3_F1A_CODE_REVIEW.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/M10_JPEG_R3_F1A_EXECUTION.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/M10_JPEG_R3_F1A_TEST_RESULTS.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/.gitattributes"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-green/compile.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-green/junit.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-green/result.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-red/README.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-red/authorization-fence-baseline.java.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-red/compile.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-red/junit.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/authorization-red/result.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/artifact-audit.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/gradle.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/inputs.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/outsider-apk-badging.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/outsider-apk-dex-packages.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/outsider-apk-manifest.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/outsider-apk-signing.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/outsider-old-apk-signing.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/probe-apk-badging.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/probe-apk-dex-packages.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/probe-apk-manifest.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/probe-apk-signing.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/probe-old-apk-signing.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/outsider/intermediates/lint_intermediate_text_report/debug/lintReportDebug/lint-results-debug.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/outsider/reports/lint-results-debug.html"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/outsider/reports/lint-results-debug.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/outsider/reports/lint-results-debug.xml"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/outsider/test-results/testDebugUnitTest/TEST-com.cooper.lithic.m10r3.outsider.BindingAttemptTest.xml"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/probe/intermediates/lint_intermediate_text_report/debug/lintReportDebug/lint-results-debug.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/probe/reports/lint-results-debug.html"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/probe/reports/lint-results-debug.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/probe/reports/lint-results-debug.xml"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/probe/test-results/testDebugUnitTest/TEST-com.cooper.lithic.m10r3.probe.AuthorizationFenceTest.xml"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/probe/test-results/testDebugUnitTest/TEST-com.cooper.lithic.m10r3.probe.SessionGateTest.xml"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/probe/test-results/testDebugUnitTest/TEST-com.cooper.lithic.m10r3.probe.StageAdmissionTest.xml"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/reports/probe/test-results/testDebugUnitTest/TEST-com.cooper.lithic.m10r3.probe.StageIdentityTest.xml"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/result.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/build-runs/20261017T024420.362749Z/signing-continuity.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/delivery/precommit-audit.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/README.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/green-compile.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/green-result.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/green.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/red-binding-attempt-baseline.java.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/red-compile.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/red-result.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/outsider-unit/red.log"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/preflight/jdk-versions.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/preflight/read-only-checks.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/GREEN-exit.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/GREEN-inputs.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/GREEN-junit.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/README.md"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/RED-StageAdmission.java.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/RED-StageIdentity.java.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/RED-exit.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/RED-inputs.json"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/RED-junit.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/identity-RED-exit.txt"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3-f1a/evidence/stage-unit/identity-RED-junit.txt"
+    },
+    {
+      "status": "M",
+      "path": "docs/research/m10-jpeg-r3/host/outsider/build.gradle.kts"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/host/outsider/src/main/java/com/cooper/lithic/m10r3/outsider/BindingAttempt.java"
+    },
+    {
+      "status": "M",
+      "path": "docs/research/m10-jpeg-r3/host/outsider/src/main/java/com/cooper/lithic/m10r3/outsider/OutsiderActivity.java"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/host/outsider/src/test/java/com/cooper/lithic/m10r3/outsider/BindingAttemptTest.java"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/AuthorizationFence.java"
+    },
+    {
+      "status": "M",
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/ProbeRunner.java"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/StageAdmission.java"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/StageIdentity.java"
+    },
+    {
+      "status": "M",
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/main/java/com/cooper/lithic/m10r3/probe/StageStore.java"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/test/java/com/cooper/lithic/m10r3/probe/AuthorizationFenceTest.java"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/test/java/com/cooper/lithic/m10r3/probe/StageAdmissionTest.java"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/host/probe/src/test/java/com/cooper/lithic/m10r3/probe/StageIdentityTest.java"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/scripts/audit_f1a.py"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/scripts/build_f1a.py"
+    },
+    {
+      "status": "A",
+      "path": "docs/research/m10-jpeg-r3/scripts/run_f1a_jvm.py"
+    }
+  ],
+  "auditSelfNotContentHashed": true,
+  "protectedWorktrees": [
+    {
+      "worktree": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3-f0\\砺石新APP",
+      "HEAD": "f513725b862d3422b371883536557c4233bed2e6",
+      "worktreeClean": true
+    },
+    {
+      "worktree": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r3\\砺石新APP",
+      "HEAD": "17b2cb40d8f3b95136f3d43e5c91cd7aee7b8e5d",
+      "worktreeClean": true
+    },
+    {
+      "worktree": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r2\\砺石新APP",
+      "HEAD": "2912601899f0282ecc6aa32d5cf26a7b44c24c63",
+      "worktreeClean": true
+    },
+    {
+      "worktree": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP",
+      "HEAD": "2cdad4aa40f9503aad13245670adc9a4d13db32b",
+      "worktreeClean": true
+    },
+    {
+      "worktree": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r0\\砺石新APP",
+      "HEAD": "c4cd90b148cce99ba497d864be1176c90408a4da",
+      "worktreeClean": true
+    },
+    {
+      "worktree": "E:\\CODEX\\.codex\\worktrees\\lithic-ui-c1\\砺石新APP",
+      "HEAD": "0dce7dd0725a54be4f0280870ef6ca47c48ea7ed",
+      "worktreeClean": true
+    },
+    {
+      "worktree": "E:\\CODEX\\砺石新APP",
+      "HEAD": "41596820145dc4a3fa6d041728a59540d828108a",
+      "worktreeClean": true
+    }
+  ],
+  "evidenceIndexByteIdenticalFiles": 58
+}

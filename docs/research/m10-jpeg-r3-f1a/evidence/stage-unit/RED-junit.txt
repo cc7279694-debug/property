@@ -1,0 +1,78 @@
+JUnit version 4.13.2
+.E.E.E.E.E.E.E..E.E.E.E.E.E
+Time: 0.022
+There were 13 failures:
+1) everyStageIsPreflightedBeforeAnyMutation(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: must fail closed
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.fails(StageAdmissionTest.java:32)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.everyStageIsPreflightedBeforeAnyMutation(StageAdmissionTest.java:45)
+2) safelyClosedPriorAllowsExactlyTheRequestedNewPointer(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.safelyClosedPriorAllowsExactlyTheRequestedNewPointer(StageAdmissionTest.java:57)
+3) cleanupFailureKeepsCurrentAndNoTerminalProof(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: must fail closed
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.fails(StageAdmissionTest.java:32)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.cleanupFailureKeepsCurrentAndNoTerminalProof(StageAdmissionTest.java:43)
+4) currentMustBelongToTheValidatedNamespace(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: must fail closed
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.fails(StageAdmissionTest.java:32)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.currentMustBelongToTheValidatedNamespace(StageAdmissionTest.java:52)
+5) unpointedLiveConsumerBlocksAdmission(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: must fail closed
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.fails(StageAdmissionTest.java:32)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.unpointedLiveConsumerBlocksAdmission(StageAdmissionTest.java:47)
+6) wrongInodeBlocksBeforeAnyRemoval(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: must fail closed
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.fails(StageAdmissionTest.java:32)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.wrongInodeBlocksBeforeAnyRemoval(StageAdmissionTest.java:41)
+7) terminalRecoveryIsIdempotentAndDoesNotRepeatDeletion(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.terminalRecoveryIsIdempotentAndDoesNotRepeatDeletion(StageAdmissionTest.java:50)
+8) corruptOwnerBlocksBeforeAnyRevocation(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: must fail closed
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.fails(StageAdmissionTest.java:32)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.corruptOwnerBlocksBeforeAnyRevocation(StageAdmissionTest.java:39)
+9) unknownChildBlocksAdmissionAndIsNotRemoved(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: must fail closed
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.fails(StageAdmissionTest.java:32)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.unknownChildBlocksAdmissionAndIsNotRemoved(StageAdmissionTest.java:42)
+10) unknownStageWithNoCurrentIsStillVisited(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.unknownStageWithNoCurrentIsStillVisited(StageAdmissionTest.java:60)
+11) corruptReceiptBlocksBeforeAnyRevocation(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: must fail closed
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.fails(StageAdmissionTest.java:32)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.corruptReceiptBlocksBeforeAnyRevocation(StageAdmissionTest.java:40)
+12) completeClosureRevokesAndVerifiesBeforeReleasingTheSameLease(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: expected:<[enumerate, acquire:old, validate:old, revoke:old, remove:old, terminal:old, verified:old, release:old]> but was:<[acquire:old, release:old]>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.completeClosureRevokesAndVerifiesBeforeReleasingTheSameLease(StageAdmissionTest.java:35)
+13) newPointerRequiresAllOtherStagesToBeTerminal(com.cooper.lithic.m10r3.probe.StageAdmissionTest)
+java.lang.AssertionError: unclosed prior must block
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.m10r3.probe.StageAdmissionTest.newPointerRequiresAllOtherStagesToBeTerminal(StageAdmissionTest.java:54)
+
+FAILURES!!!
+Tests run: 14,  Failures: 13
+

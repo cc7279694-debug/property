@@ -1,0 +1,76 @@
+JUnit version 4.13.2
+.E.E.E.E..E.E..E.E.E.E
+Time: 0.014
+There were 10 failures:
+1) returnedFalseWithoutRegistrationIsExplicitlyClassified(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected:<NOT_REGISTERED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.returnedFalseWithoutRegistrationIsExplicitlyClassified(BindingAttemptTest.java:44)
+2) deniedBeforeRegistrationRecordsExpectedUnregisteredCleanup(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected:<NOT_REGISTERED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.deniedBeforeRegistrationRecordsExpectedUnregisteredCleanup(BindingAttemptTest.java:21)
+3) destroyRetryCanReleaseConnectionWithoutErasingEarlierCleanupFailure(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected:<FAILED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.destroyRetryCanReleaseConnectionWithoutErasingEarlierCleanupFailure(BindingAttemptTest.java:59)
+4) unexpectedlyUnregisteredSuccessfulBindIsNotTreatedAsHarmless(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected:<FAILED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.unexpectedlyUnregisteredSuccessfulBindIsNotTreatedAsHarmless(BindingAttemptTest.java:85)
+5) returnedFalseStillReleasesPossibleRegistration(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected:<RELEASED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.returnedFalseStillReleasesPossibleRegistration(BindingAttemptTest.java:37)
+6) destroyAfterSuccessfulCleanupDoesNotUnbindTwice(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.destroyAfterSuccessfulCleanupDoesNotUnbindTwice(BindingAttemptTest.java:71)
+7) fatalBindingErrorIsRethrownAfterCleanupInsteadOfReportedAsRejection(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.fatalBindingErrorIsRethrownAfterCleanupInsteadOfReportedAsRejection(BindingAttemptTest.java:99)
+8) deniedAfterRegistrationStillReleasesConnection(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected:<RELEASED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.deniedAfterRegistrationStillReleasesConnection(BindingAttemptTest.java:12)
+9) unexpectedBindingExceptionStillReleasesRegistrationAndFailsProbe(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected:<RELEASED> but was:<NOT_NEEDED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.unexpectedBindingExceptionStillReleasesRegistrationAndFailsProbe(BindingAttemptTest.java:52)
+10) secondRunCannotRegisterTheSameConnectionAgain(com.cooper.lithic.m10r3.outsider.BindingAttemptTest)
+java.lang.AssertionError: expected java.lang.IllegalStateException to be thrown, but nothing was thrown
+	at org.junit.Assert.assertThrows(Assert.java:1028)
+	at org.junit.Assert.assertThrows(Assert.java:981)
+	at com.cooper.lithic.m10r3.outsider.BindingAttemptTest.secondRunCannotRegisterTheSameConnectionAgain(BindingAttemptTest.java:91)
+
+FAILURES!!!
+Tests run: 12,  Failures: 10
+

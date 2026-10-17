@@ -15,6 +15,7 @@ final class ProbeRunner {
     final Context context;final StageStore store;final File reports;
     final ExecutorService executor=Executors.newSingleThreadExecutor();
     volatile int rejectedCommands;
+    Session activeSession; // Access only while holding store.authorizationLock.
     ProbeRunner(Context c)throws Exception {context=c.getApplicationContext();store=new StageStore(context);reports=new File(context.getFilesDir(),"r3-reports");if(!reports.isDirectory()&&!reports.mkdir())throw new IOException("reports");}
     static void require(boolean ok,String message){if(!ok)throw new AssertionError(message);}
     static boolean claim(Context context,String command,String run)throws Exception {
@@ -52,24 +53,33 @@ final class ProbeRunner {
         new CountDownLatch(1).await(); // Only a controlled external command kills this Host itself.
     }
     JSONObject recover()throws Exception {
-        File pointer=new File(store.root,"current.json");if(!pointer.exists())return new JSONObject().put("recovery","NO_STAGE");
-        String id=StageStore.read(pointer).getString("attemptId");store.owner(id);
+        String id=store.currentAttempt();
+        if(id==null){store.closeAllPriorAttempts();return new JSONObject().put("recovery","NO_CURRENT_ALL_STAGES_CHECKED");}
+        store.owner(id);
         boolean initialHeld=!store.canAcquireGuard(id),initialSource=store.sourceExists(id);long begin=SystemClock.elapsedRealtime();
         // No new worker is bound here. The same-inode guard, not an old/new PID, is the evidence.
         while(!store.canAcquireGuard(id)&&SystemClock.elapsedRealtime()-begin<10000){
             require(store.sourceExists(id),"live source disappeared during recovery");ProbeSupport.event("RECOVERY_UNKNOWN_PRESERVE","attempt",id);Thread.sleep(40);
         }
         require(store.canAcquireGuard(id),"BLOCKED: old consumer cannot converge internally");
-        require(store.cleanup(id),"BLOCKED: owner/receipt cannot be safely reclaimed");
+        synchronized(store.authorizationLock){
+            store.closeAllPriorAttempts();
+            if(activeSession!=null)activeSession.gate.revoke("RECOVERED");
+        }
         require(!store.sourceExists(id),"cleanup failed");
         return new JSONObject().put("attemptId",id).put("initialGuardHeld",initialHeld).put("initialSourceExists",initialSource).put("recoveryWaitMs",SystemClock.elapsedRealtime()-begin).put("recoveryProof","OWNED_KERNEL_LEASE_AND_OLD_CLIENT_DEATH_GRANT_FENCE").put("replayed",false).put("newWorkerStarted",false).put("cleanup",true).put("businessCommit",false);
     }
     JSONObject runCase(Activity activity,String run,String name,String cut)throws Exception {
         require(ProbeSupport.mainOwner,"synthetic main owner missing");
         require("REJECT".equals(ProbeSupport.role("unknown")),"unknown role accepted");
-        File old=new File(store.root,"current.json");
-        if(old.exists()){String prior=StageStore.read(old).getString("attemptId");require(store.canAcquireGuard(prior),"prior consumer live: no second grant");}
-        Session s=new Session();StageStore.atomic(store.root,"current.json",new JSONObject().put("attemptId",s.id));
+        final Session s;
+        synchronized(store.authorizationLock){
+            // No Binder call/wait in this section. Failure preserves current.json;
+            // a newly created but unpublished stage remains discoverable next time.
+            store.closeAllPriorAttempts();
+            if(activeSession!=null)activeSession.gate.revoke("REPLACED");
+            s=new Session();store.publishCurrent(s.id);activeSession=s;
+        }
         fault(run,"before_pin",cut,s);store.pin(s.id,"DELIVERY_UNKNOWN");fault(run,"after_pin",cut,s);
         if(name.equals("stage_model"))return stageModel(s);
         s.bind();require(s.connected.await(5,TimeUnit.SECONDS),"bind timeout");require(s.worker!=null,"worker unavailable");
@@ -180,11 +190,20 @@ final class ProbeRunner {
         volatile IWorker worker;volatile int workerPid=-1,workerUid=-1;volatile boolean bound,disconnected;
         Session()throws Exception{owner=store.create(id);identity=ProbeSupport.identity(owner);gate=new SessionGate(1,identity.getString("sessionNonce"),id,identity.getString("generationIdentity"),identity.getString("sourceSHA256"),8192,android.os.Process.myUid());}
         final IHost.Stub callback=new IHost.Stub(){
-            public boolean hello(SessionEnvelope envelope){Bundle b=ProbeSupport.bundle(envelope);int uid=Binder.getCallingUid(),pid=Binder.getCallingPid();boolean notRevoked;try{notRevoked=!store.revoked(id);}catch(Exception e){notRevoked=false;}boolean ok=notRevoked&&ProbeSupport.same(identity,b)&&pid!=android.os.Process.myPid()&&gate.handshake(uid,pid,b.getInt("workerPid"),b.getInt("workerUid"),!b.getBoolean("ownerInitialized",true));
-                if(ok){workerPid=pid;workerUid=uid;}ProbeSupport.event("SYNC_HELLO","callingUid",uid,"callingPid",pid,"claimedPid",b.getInt("workerPid"),"accepted",ok);return ok;}
-            public boolean grant(SessionEnvelope envelope){Bundle b=ProbeSupport.bundle(envelope);boolean ok=false;try{ok=Binder.getCallingUid()==workerUid&&Binder.getCallingPid()==workerPid&&ProbeSupport.same(identity,b)&&!gate.isRevoked()&&!gate.isDead()&&!store.revoked(id);}catch(Exception e){ok=false;}ProbeSupport.event("FD_GRANT_DECISION","attempt",id,"accepted",ok);return ok;}
+            public boolean hello(SessionEnvelope envelope){Bundle b=ProbeSupport.bundle(envelope);int uid=Binder.getCallingUid(),pid=Binder.getCallingPid();boolean ok=false;
+                try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->{
+                    boolean accepted=ProbeSupport.same(identity,b)&&pid!=android.os.Process.myPid()&&gate.handshake(uid,pid,b.getInt("workerPid"),b.getInt("workerUid"),!b.getBoolean("ownerInitialized",true));
+                    if(accepted){workerPid=pid;workerUid=uid;}return accepted;
+                });}catch(Exception error){ProbeSupport.event("CALLBACK_AUTHORITY_REJECTED","attempt",id,"callback","hello","detail",error.toString());}
+                ProbeSupport.event("SYNC_HELLO","callingUid",uid,"callingPid",pid,"claimedPid",b.getInt("workerPid"),"accepted",ok);return ok;}
+            public boolean grant(SessionEnvelope envelope){Bundle b=ProbeSupport.bundle(envelope);int uid=Binder.getCallingUid(),pid=Binder.getCallingPid();boolean ok=false;
+                try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->uid==workerUid&&pid==workerPid&&ProbeSupport.same(identity,b)&&!gate.isRevoked()&&!gate.isDead());}
+                catch(Exception error){ProbeSupport.event("CALLBACK_AUTHORITY_REJECTED","attempt",id,"callback","grant","detail",error.toString());}
+                ProbeSupport.event("FD_GRANT_DECISION","attempt",id,"accepted",ok);return ok;}
             public boolean result(SessionEnvelope envelope){Bundle b=ProbeSupport.bundle(envelope);int uid=Binder.getCallingUid(),pid=Binder.getCallingPid();if(b.getBoolean("delayHostResult")){ProbeSupport.event("RESULT_RACE_CALLBACK_ENTERED","attempt",id);try{Thread.sleep(350);}catch(InterruptedException e){Thread.currentThread().interrupt();}}
-                boolean ok=uid==workerUid&&pid==workerPid&&ProbeSupport.same(identity,b)&&"SYNTHETIC_TASK_ONLY".equals(b.getString("kind"))&&gate.result(b.getInt("protocolVersion"),b.getString("sessionNonce"),b.getString("attemptId"),b.getString("generationIdentity"),b.getString("sourceSHA256"),b.getLong("sourceSize"),b.getString("workerResult"),b.getBoolean("fdClosed"));
+                boolean ok=false;
+                try{ok=AuthorizationFence.decide(store.authorizationLock,()->store.isCurrentAuthorized(id),()->uid==workerUid&&pid==workerPid&&ProbeSupport.same(identity,b)&&"SYNTHETIC_TASK_ONLY".equals(b.getString("kind"))&&gate.result(b.getInt("protocolVersion"),b.getString("sessionNonce"),b.getString("attemptId"),b.getString("generationIdentity"),b.getString("sourceSHA256"),b.getLong("sourceSize"),b.getString("workerResult"),b.getBoolean("fdClosed")));}
+                catch(Exception error){ProbeSupport.event("CALLBACK_AUTHORITY_REJECTED","attempt",id,"callback","result","detail",error.toString());}
                 ProbeSupport.event("HOST_RESULT","attempt",id,"callingUid",uid,"callingPid",pid,"accepted",ok,"status",b.getString("workerResult"),"fdClosed",b.getBoolean("fdClosed"));
                 if(ProbeSupport.same(identity,b))result.countDown();return ok;}
         };
