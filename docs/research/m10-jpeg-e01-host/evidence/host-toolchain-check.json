@@ -1,0 +1,20 @@
+{
+  "python": "3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)]",
+  "compiler": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+  "compilerSha256": "7d31c6f6fad98987b6c9d21b800afaa8b3e37f052e94aaddc941d42ff2a35579",
+  "argv": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+    "--target=x86_64-pc-windows-msvc",
+    "-fuse-ld=lld",
+    "host_toolchain_check.c",
+    "-o",
+    "host_toolchain_check.exe"
+  ],
+  "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-e01\\\u783a\u77f3\u65b0APP\\build\\m10-e01-host",
+  "inputSource": "#include <stdio.h>\n#include <stdlib.h>\nint main(void) { void *p = malloc(1); free(p); return 0; }\n",
+  "inputSha256": "efa29d5050147b3a7dcc8b410ca1cbd8662d01a1e14293c5ff8658fdf08573e4",
+  "exitCode": 1,
+  "output": "In file included from host_toolchain_check.c:1:\r\nIn file included from C:\\Program Files (x86)\\Windows Kits\\10\\Include/10.0.10240.0/ucrt/stdio.h:11:\r\nC:\\Program Files (x86)\\Windows Kits\\10\\Include/10.0.10240.0/ucrt/corecrt.h:10:10: fatal error: 'vcruntime.h' file not found\r\n   10 | #include <vcruntime.h>\r\n      |          ^~~~~~~~~~~~~\r\n1 error generated.\r\n",
+  "executableExists": false,
+  "nativeAllocatorExperiment": "NOT_RUN"
+}

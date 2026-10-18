@@ -1,0 +1,37 @@
+test_32bit_add_overflow (test_e01_audit.ArithmeticTests.test_32bit_add_overflow) ... ok
+test_32bit_multiply_overflow (test_e01_audit.ArithmeticTests.test_32bit_multiply_overflow) ... ok
+test_64bit_multiply_overflow (test_e01_audit.ArithmeticTests.test_64bit_multiply_overflow) ... ok
+test_exact_32bit_boundary (test_e01_audit.ArithmeticTests.test_exact_32bit_boundary) ... ok
+test_exact_64bit_boundary (test_e01_audit.ArithmeticTests.test_exact_64bit_boundary) ... ok
+test_negative_operand_rejected (test_e01_audit.ArithmeticTests.test_negative_operand_rejected) ... ok
+test_oversize_operand_not_hidden_by_zero (test_e01_audit.ArithmeticTests.test_oversize_operand_not_hidden_by_zero) ... ok
+test_unsupported_word_size_rejected (test_e01_audit.ArithmeticTests.test_unsupported_word_size_rejected) ... ok
+test_baseline_header_does_not_prove_single_scan (test_e01_audit.HeaderTests.test_baseline_header_does_not_prove_single_scan) ... ok
+test_duplicate_component_id_rejected (test_e01_audit.HeaderTests.test_duplicate_component_id_rejected) ... ok
+test_header_only_is_enough_for_model_not_integrity (test_e01_audit.HeaderTests.test_header_only_is_enough_for_model_not_integrity) ... ok
+test_invalid_segment_length_rejected (test_e01_audit.HeaderTests.test_invalid_segment_length_rejected) ... ok
+test_metadata_segments_skipped_by_declared_length (test_e01_audit.HeaderTests.test_metadata_segments_skipped_by_declared_length) ... ok
+test_progressive_frame_metadata (test_e01_audit.HeaderTests.test_progressive_frame_metadata) ... ok
+test_reported_file_size_mismatch_rejected (test_e01_audit.HeaderTests.test_reported_file_size_mismatch_rejected) ... ok
+test_sos_before_frame_rejected (test_e01_audit.HeaderTests.test_sos_before_frame_rejected) ... ok
+test_truncated_segment_rejected (test_e01_audit.HeaderTests.test_truncated_segment_rejected) ... ok
+test_zero_sampling_rejected (test_e01_audit.HeaderTests.test_zero_sampling_rejected) ... ok
+test_32bit_row_pointer_payload (test_e01_audit.PayloadTests.test_32bit_row_pointer_payload) ... ok
+test_40mp_420_includes_vertical_mcu_padding (test_e01_audit.PayloadTests.test_40mp_420_includes_vertical_mcu_padding) ... ok
+test_40mp_444_payload (test_e01_audit.PayloadTests.test_40mp_444_payload) ... ok
+test_40mp_gray_payload (test_e01_audit.PayloadTests.test_40mp_gray_payload) ... ok
+test_baseline_full_buffer_remains_possible (test_e01_audit.PayloadTests.test_baseline_full_buffer_remains_possible) ... ok
+test_narrow_tall_and_wide_420 (test_e01_audit.PayloadTests.test_narrow_tall_and_wide_420) ... ok
+test_outside_pixel_model_rejected (test_e01_audit.PayloadTests.test_outside_pixel_model_rejected) ... ok
+test_tiny_420_padded_blocks (test_e01_audit.PayloadTests.test_tiny_420_padded_blocks) ... ok
+test_two_components_not_silently_rejected (test_e01_audit.PayloadTests.test_two_components_not_silently_rejected) ... ok
+test_changed_allocator_source_blocks_reuse (test_e01_audit.SourceIdentityTests.test_changed_allocator_source_blocks_reuse) ... ok
+test_duplicate_entry_rejected (test_e01_audit.SourceIdentityTests.test_duplicate_entry_rejected) ... ok
+test_matching_source_returns_verified_path (test_e01_audit.SourceIdentityTests.test_matching_source_returns_verified_path) ... ok
+test_missing_source_blocks_inventory (test_e01_audit.SourceIdentityTests.test_missing_source_blocks_inventory) ... ok
+test_path_escape_rejected (test_e01_audit.SourceIdentityTests.test_path_escape_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.035s
+
+OK

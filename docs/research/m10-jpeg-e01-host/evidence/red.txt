@@ -1,0 +1,316 @@
+test_32bit_add_overflow (test_e01_audit.ArithmeticTests.test_32bit_add_overflow) ... FAIL
+test_32bit_multiply_overflow (test_e01_audit.ArithmeticTests.test_32bit_multiply_overflow) ... FAIL
+test_64bit_multiply_overflow (test_e01_audit.ArithmeticTests.test_64bit_multiply_overflow) ... FAIL
+test_exact_32bit_boundary (test_e01_audit.ArithmeticTests.test_exact_32bit_boundary) ... FAIL
+test_exact_64bit_boundary (test_e01_audit.ArithmeticTests.test_exact_64bit_boundary) ... FAIL
+test_negative_operand_rejected (test_e01_audit.ArithmeticTests.test_negative_operand_rejected) ... FAIL
+test_oversize_operand_not_hidden_by_zero (test_e01_audit.ArithmeticTests.test_oversize_operand_not_hidden_by_zero) ... FAIL
+test_unsupported_word_size_rejected (test_e01_audit.ArithmeticTests.test_unsupported_word_size_rejected) ... FAIL
+test_baseline_header_does_not_prove_single_scan (test_e01_audit.HeaderTests.test_baseline_header_does_not_prove_single_scan) ... FAIL
+test_duplicate_component_id_rejected (test_e01_audit.HeaderTests.test_duplicate_component_id_rejected) ... FAIL
+test_header_only_is_enough_for_model_not_integrity (test_e01_audit.HeaderTests.test_header_only_is_enough_for_model_not_integrity) ... FAIL
+test_invalid_segment_length_rejected (test_e01_audit.HeaderTests.test_invalid_segment_length_rejected) ... FAIL
+test_metadata_segments_skipped_by_declared_length (test_e01_audit.HeaderTests.test_metadata_segments_skipped_by_declared_length) ... FAIL
+test_progressive_frame_metadata (test_e01_audit.HeaderTests.test_progressive_frame_metadata) ... FAIL
+test_reported_file_size_mismatch_rejected (test_e01_audit.HeaderTests.test_reported_file_size_mismatch_rejected) ... FAIL
+test_sos_before_frame_rejected (test_e01_audit.HeaderTests.test_sos_before_frame_rejected) ... FAIL
+test_truncated_segment_rejected (test_e01_audit.HeaderTests.test_truncated_segment_rejected) ... FAIL
+test_zero_sampling_rejected (test_e01_audit.HeaderTests.test_zero_sampling_rejected) ... FAIL
+test_32bit_row_pointer_payload (test_e01_audit.PayloadTests.test_32bit_row_pointer_payload) ... FAIL
+test_40mp_420_includes_vertical_mcu_padding (test_e01_audit.PayloadTests.test_40mp_420_includes_vertical_mcu_padding) ... FAIL
+test_40mp_444_payload (test_e01_audit.PayloadTests.test_40mp_444_payload) ... FAIL
+test_40mp_gray_payload (test_e01_audit.PayloadTests.test_40mp_gray_payload) ... FAIL
+test_baseline_full_buffer_remains_possible (test_e01_audit.PayloadTests.test_baseline_full_buffer_remains_possible) ... FAIL
+test_narrow_tall_and_wide_420 (test_e01_audit.PayloadTests.test_narrow_tall_and_wide_420) ... 
+  test_narrow_tall_and_wide_420 (test_e01_audit.PayloadTests.test_narrow_tall_and_wide_420) (width=1, height=40000) ... FAIL
+  test_narrow_tall_and_wide_420 (test_e01_audit.PayloadTests.test_narrow_tall_and_wide_420) (width=40000, height=1) ... FAIL
+test_outside_pixel_model_rejected (test_e01_audit.PayloadTests.test_outside_pixel_model_rejected) ... FAIL
+test_tiny_420_padded_blocks (test_e01_audit.PayloadTests.test_tiny_420_padded_blocks) ... FAIL
+test_two_components_not_silently_rejected (test_e01_audit.PayloadTests.test_two_components_not_silently_rejected) ... FAIL
+test_changed_allocator_source_blocks_reuse (test_e01_audit.SourceIdentityTests.test_changed_allocator_source_blocks_reuse) ... FAIL
+test_duplicate_entry_rejected (test_e01_audit.SourceIdentityTests.test_duplicate_entry_rejected) ... FAIL
+test_matching_source_returns_verified_path (test_e01_audit.SourceIdentityTests.test_matching_source_returns_verified_path) ... FAIL
+test_missing_source_blocks_inventory (test_e01_audit.SourceIdentityTests.test_missing_source_blocks_inventory) ... FAIL
+test_path_escape_rejected (test_e01_audit.SourceIdentityTests.test_path_escape_rejected) ... FAIL
+
+======================================================================
+FAIL: test_32bit_add_overflow (test_e01_audit.ArithmeticTests.test_32bit_add_overflow)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 28, in test_32bit_add_overflow
+    with self.assertRaises(OverflowError):
+AssertionError: OverflowError not raised
+
+======================================================================
+FAIL: test_32bit_multiply_overflow (test_e01_audit.ArithmeticTests.test_32bit_multiply_overflow)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 32, in test_32bit_multiply_overflow
+    with self.assertRaises(OverflowError):
+AssertionError: OverflowError not raised
+
+======================================================================
+FAIL: test_64bit_multiply_overflow (test_e01_audit.ArithmeticTests.test_64bit_multiply_overflow)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 39, in test_64bit_multiply_overflow
+    with self.assertRaises(OverflowError):
+AssertionError: OverflowError not raised
+
+======================================================================
+FAIL: test_exact_32bit_boundary (test_e01_audit.ArithmeticTests.test_exact_32bit_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 25, in test_exact_32bit_boundary
+    self.assertEqual(audit.checked_add(4294967294, 1, 32), 4294967295)
+AssertionError: None != 4294967295
+
+======================================================================
+FAIL: test_exact_64bit_boundary (test_e01_audit.ArithmeticTests.test_exact_64bit_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 36, in test_exact_64bit_boundary
+    self.assertEqual(audit.checked_add(18446744073709551614, 1, 64), 18446744073709551615)
+AssertionError: None != 18446744073709551615
+
+======================================================================
+FAIL: test_negative_operand_rejected (test_e01_audit.ArithmeticTests.test_negative_operand_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 43, in test_negative_operand_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_oversize_operand_not_hidden_by_zero (test_e01_audit.ArithmeticTests.test_oversize_operand_not_hidden_by_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 47, in test_oversize_operand_not_hidden_by_zero
+    with self.assertRaises(OverflowError):
+AssertionError: OverflowError not raised
+
+======================================================================
+FAIL: test_unsupported_word_size_rejected (test_e01_audit.ArithmeticTests.test_unsupported_word_size_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 51, in test_unsupported_word_size_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_baseline_header_does_not_prove_single_scan (test_e01_audit.HeaderTests.test_baseline_header_does_not_prove_single_scan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 63, in test_baseline_header_does_not_prove_single_scan
+    self.assertEqual(self.parse(header(marker=0xC0)).get("coding"), "baseline_scan_layout_unknown")
+AssertionError: None != 'baseline_scan_layout_unknown'
+
+======================================================================
+FAIL: test_duplicate_component_id_rejected (test_e01_audit.HeaderTests.test_duplicate_component_id_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 92, in test_duplicate_component_id_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_header_only_is_enough_for_model_not_integrity (test_e01_audit.HeaderTests.test_header_only_is_enough_for_model_not_integrity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 71, in test_header_only_is_enough_for_model_not_integrity
+    self.assertEqual(self.parse(raw).get("width"), 1)
+AssertionError: None != 1
+
+======================================================================
+FAIL: test_invalid_segment_length_rejected (test_e01_audit.HeaderTests.test_invalid_segment_length_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 78, in test_invalid_segment_length_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_metadata_segments_skipped_by_declared_length (test_e01_audit.HeaderTests.test_metadata_segments_skipped_by_declared_length)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 67, in test_metadata_segments_skipped_by_declared_length
+    self.assertEqual(self.parse(raw).get("width"), 8000)
+AssertionError: None != 8000
+
+======================================================================
+FAIL: test_progressive_frame_metadata (test_e01_audit.HeaderTests.test_progressive_frame_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 60, in test_progressive_frame_metadata
+    self.assertEqual(self.parse(header()), frame())
+AssertionError: {} != {'width': 8000, 'height': 5000, 'precision[63 chars]ive'}
+- {}
++ {'coding': 'progressive',
++  'height': 5000,
++  'precision': 8,
++  'sampling': ((2, 2), (1, 1), (1, 1)),
++  'width': 8000}
+
+======================================================================
+FAIL: test_reported_file_size_mismatch_rejected (test_e01_audit.HeaderTests.test_reported_file_size_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 97, in test_reported_file_size_mismatch_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_sos_before_frame_rejected (test_e01_audit.HeaderTests.test_sos_before_frame_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 82, in test_sos_before_frame_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_truncated_segment_rejected (test_e01_audit.HeaderTests.test_truncated_segment_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 74, in test_truncated_segment_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zero_sampling_rejected (test_e01_audit.HeaderTests.test_zero_sampling_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 86, in test_zero_sampling_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_32bit_row_pointer_payload (test_e01_audit.PayloadTests.test_32bit_row_pointer_payload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 116, in test_32bit_row_pointer_payload
+    self.assertEqual(audit.coefficient_payload(frame(), 32).get("rowPointerBytes"), 5008)
+AssertionError: None != 5008
+
+======================================================================
+FAIL: test_40mp_420_includes_vertical_mcu_padding (test_e01_audit.PayloadTests.test_40mp_420_includes_vertical_mcu_padding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 104, in test_40mp_420_includes_vertical_mcu_padding
+    self.assertEqual(result.get("coefficientBytes"), 120192000)
+AssertionError: None != 120192000
+
+======================================================================
+FAIL: test_40mp_444_payload (test_e01_audit.PayloadTests.test_40mp_444_payload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 110, in test_40mp_444_payload
+    self.assertEqual(audit.coefficient_payload(frame(sampling=((1, 1),) * 3), 64).get("coefficientBytes"), 240000000)
+AssertionError: None != 240000000
+
+======================================================================
+FAIL: test_40mp_gray_payload (test_e01_audit.PayloadTests.test_40mp_gray_payload)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 113, in test_40mp_gray_payload
+    self.assertEqual(audit.coefficient_payload(frame(sampling=((1, 1),)), 64).get("coefficientBytes"), 80000000)
+AssertionError: None != 80000000
+
+======================================================================
+FAIL: test_baseline_full_buffer_remains_possible (test_e01_audit.PayloadTests.test_baseline_full_buffer_remains_possible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 128, in test_baseline_full_buffer_remains_possible
+    self.assertEqual(result.get("coefficientBytes"), 120192000)
+AssertionError: None != 120192000
+
+======================================================================
+FAIL: test_narrow_tall_and_wide_420 (test_e01_audit.PayloadTests.test_narrow_tall_and_wide_420) (width=1, height=40000)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 124, in test_narrow_tall_and_wide_420
+    self.assertEqual(audit.coefficient_payload(frame(width, height), 32).get("coefficientBytes"), 1920000)
+AssertionError: None != 1920000
+
+======================================================================
+FAIL: test_narrow_tall_and_wide_420 (test_e01_audit.PayloadTests.test_narrow_tall_and_wide_420) (width=40000, height=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 124, in test_narrow_tall_and_wide_420
+    self.assertEqual(audit.coefficient_payload(frame(width, height), 32).get("coefficientBytes"), 1920000)
+AssertionError: None != 1920000
+
+======================================================================
+FAIL: test_outside_pixel_model_rejected (test_e01_audit.PayloadTests.test_outside_pixel_model_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 135, in test_outside_pixel_model_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_tiny_420_padded_blocks (test_e01_audit.PayloadTests.test_tiny_420_padded_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 119, in test_tiny_420_padded_blocks
+    self.assertEqual(audit.coefficient_payload(frame(1, 1), 32).get("coefficientBytes"), 768)
+AssertionError: None != 768
+
+======================================================================
+FAIL: test_two_components_not_silently_rejected (test_e01_audit.PayloadTests.test_two_components_not_silently_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 132, in test_two_components_not_silently_rejected
+    self.assertEqual(audit.coefficient_payload(frame(1, 1, ((1, 1),) * 2), 64).get("coefficientBytes"), 256)
+AssertionError: None != 256
+
+======================================================================
+FAIL: test_changed_allocator_source_blocks_reuse (test_e01_audit.SourceIdentityTests.test_changed_allocator_source_blocks_reuse)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 153, in test_changed_allocator_source_blocks_reuse
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_duplicate_entry_rejected (test_e01_audit.SourceIdentityTests.test_duplicate_entry_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 167, in test_duplicate_entry_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_matching_source_returns_verified_path (test_e01_audit.SourceIdentityTests.test_matching_source_returns_verified_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 149, in test_matching_source_returns_verified_path
+    self.assertEqual(audit.verify_locked_tree(self.root, self.lock), ["unit.c"])
+AssertionError: Lists differ: [] != ['unit.c']
+
+Second list contains 1 additional elements.
+First extra element 0:
+'unit.c'
+
+- []
++ ['unit.c']
+
+======================================================================
+FAIL: test_missing_source_blocks_inventory (test_e01_audit.SourceIdentityTests.test_missing_source_blocks_inventory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 158, in test_missing_source_blocks_inventory
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_path_escape_rejected (test_e01_audit.SourceIdentityTests.test_path_escape_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-e01\��ʯ��APP\docs\research\m10-jpeg-e01-host\test_e01_audit.py", line 163, in test_path_escape_rejected
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.035s
+
+FAILED (failures=33)
