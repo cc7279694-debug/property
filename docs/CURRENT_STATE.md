@@ -1,8 +1,14 @@
 # 当前项目状态
 
-状态日期：2026-10-18（Asia/Shanghai；E01临时Linux native CI限定验证PASS；全量资源覆盖仍NOT_PROVEN）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-18（Asia/Shanghai；集中 JPEG 候选 HOST_STRESS_PASS，真实接入 BLOCKED；E01 全量资源覆盖仍 NOT_PROVEN）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10 JPEG 集中候选 — BLOCKED / WAITING_REVIEW**：用户授权同任务集中开发；从 `2d0a60aca9020fccfca192091b421412f2369316` 创建 `codex/m10-jpeg-accelerated-candidate`，独立 worktree `E:/CODEX/.codex/worktrees/lithic-jpeg-candidate/砺石新APP`。严格 FD 核心、失败分类、计费/释放验证和隔离 JNI 组件已实现；未接入 App、未改持久协议、未生成 APK。正式 M10 app 与 `41596820145dc4a3fa6d041728a59540d828108a` 差异为空。
+- **本轮真实证据**：代码 `791d44e8ee2b3636031a1073c3df690585309853` 的[最终 CI](https://github.com/cc7279694-debug/property/actions/runs/39109960477) PASS；GCC无sanitizer 134次＋Clang ASan/UBSan 134次，共268次 probe（含三类40MP、每点 fail-at/from、7阶段故障及格式边界），原12项分配测试各657断言、40个FD用例各882断言；8次 Linux JNI 调用及载入错误检查通过。锁定健康图 ACCEPT、缺损图 code117 严格拒绝。8项 Python 导出审计 GREEN；分类和审计 RED 均保留。NDK28.2/CMake3.22.1 API26 四 ABI 编译/ELF重审通过，未在 Android 执行；不是32位实际解码证据。40MP444 GCC 计费峰值240,265,637B、进程RSS236,212KiB，不是堆/RSS/手机总cap。实验512MiB请求预算未变成产品限制。
+- **生产阻塞与停止边界**：B1正常生命周期未通过，原v1准备资源恢复没有严格源凭据/持久消费者pin，真实接入依赖本轮禁止修改的stage/归属协议；不采用同进程旁路。取消最坏时延、Android加载/Binder/FD/死亡/恢复、真实OOM及完整兼容仍NOT_RUN/NOT_PROVEN。M10 PENDING/原三JPEG FAIL（未重跑）、R3 BLOCKED、UI-C1 FROZEN、M11 NOT_AUTHORIZED、D2A-N01～N05/A1-N01～N04及所有历史NOTE不变。没有AVD/ADB/APK或H2/C2现场操作。[统一报告](research/M10_JPEG_ACCELERATED_REPORT.md)、[小型结果/SHA](research/m10-jpeg-accelerated/RESULTS.json)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-ACCELERATED.md)。只推本研究分支后停止等待ChatGPT独立验收，不自动修持久协议或操作设备。
+
+以下为首次 E01 CI 的历史口径；当时40MP等NOT_RUN不改写，其本轮新增宿主覆盖以上述集中候选为准：
 
 - **M10 E01 native CI — HOST_LIMITED_PASS / WAITING_REVIEW**：从`dafb7bc031bd67f44ca7d62e251785f8905d0ab7`继续`codex/m10-r2-e01-host`；用户授权Ubuntu24.04临时runner，Actions实核启用，公开仓库精确commit匿名fetch、contents:read、只触发本研究分支代码push。已测试代码`a4075344cc667c1f6795442f883cde75f01d2ea8`，[首次CI](https://github.com/cc7279694-debug/property/actions/runs/39105247179)41秒成功，固定官方3.2.0归档与两JPEG实际SHA通过。没有安装本机工具/下载镜像或AVD/ADB/APK/运行现场操作。
 - **实际native结果与限制**：GCC13.3及Clang18.1.3 ASan/UBSan/LSan下12唯一C测试各657断言PASS（24次方法执行），显式mutation RED各6断言失败保留；共114次probe（每构建57）覆盖13步正常轨迹的fail-at/from、首次manager/半创建destroy、预算边界；所有实际清理live/blocks/badFrees归零、已取得FD关闭/mem=NULL。健康图256行finish，缺损图78行出现1次警告、代码117并严格拒绝。峰值46,382B只代表该小样本计费请求，不是总内存/手机cap。40MP/progressive/32位/Android、所有路径、CPU取消、真实系统OOM等仍NOT_RUN，E01全量NOT_PROVEN。M10 PENDING/三JPEG FAIL、UI-C1 FROZEN、M11 NOT_AUTHORIZED、H2/C2、R3 BLOCKED及全部历史NOTE/UNKNOWN不变。[报告](research/m10-jpeg-e01-native/README.md)、[checkpoint](checkpoints/2026-10-18-M10-E01-NATIVE-CI.md)。提交后停止等待ChatGPT限定验收，不接入生产。

@@ -1,0 +1,486 @@
+{
+  "scope": "ISOLATED_RESEARCH_NOT_APP",
+  "status": "BLOCKED_PERSISTENT_WORKER_PROTOCOL",
+  "baseline": "2d0a60aca9020fccfca192091b421412f2369316",
+  "codeCommit": "791d44e8ee2b3636031a1073c3df690585309853",
+  "ci": {
+    "run": "https://github.com/cc7279694-debug/property/actions/runs/39109960477",
+    "status": "success",
+    "red": "https://github.com/cc7279694-debug/property/actions/runs/39109476240",
+    "redCode": "4e99f2cbaa4a9a50f41d8a42af435097b171fa92",
+    "redObserved": "unsupported SOF header returned IMAGE_REJECT code60 instead of INFRA_ERROR",
+    "priorFirstGreen": "https://github.com/cc7279694-debug/property/actions/runs/39108893754",
+    "historical114": "https://github.com/cc7279694-debug/property/actions/runs/39105247179"
+  },
+  "fixedSource": {
+    "bytes": 2537858,
+    "commit": "791d44e8ee2b3636031a1073c3df690585309853",
+    "sha256": "6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e"
+  },
+  "generated40MP": [
+    {
+      "bytes": 17163380,
+      "matchesPriorR1Lock": true,
+      "name": "large_40mp_baseline_420.jpg",
+      "origin": "NEW_SYNTHETIC_R1_ALGORITHM",
+      "sha256": "c2c2fa54d49ab8155321175a66596ce8d35ed9927d9f3dfe2bbb6a00c5fbb5c7"
+    },
+    {
+      "bytes": 15458857,
+      "matchesPriorR1Lock": true,
+      "name": "large_40mp_progressive_420.jpg",
+      "origin": "NEW_SYNTHETIC_R1_ALGORITHM",
+      "sha256": "2b02f35f08a8cb36d31a0a4f01e8810f554be67619950c8e2b0d0d2be873c5c8"
+    },
+    {
+      "bytes": 27445246,
+      "matchesPriorR1Lock": true,
+      "name": "large_40mp_progressive_444.jpg",
+      "origin": "NEW_SYNTHETIC_R1_ALGORITHM",
+      "sha256": "0555234207d5ddf84d236d812487a659f2dac34a9d82109a941628553c7b67e6"
+    }
+  ],
+  "native": {
+    "gcc": {
+      "probeRuns": 134,
+      "accepts": 40,
+      "sanitizer": false,
+      "allMeteredReleased": true,
+      "allAcquiredFdsClosed": true,
+      "large": {
+        "large_40mp_baseline_420.jpg": {
+          "status": "ACCEPT",
+          "width": 8000,
+          "height": 5000,
+          "attempts": 13,
+          "peak": 333126,
+          "peakRssKiB": 30296,
+          "wallNs": 398270335,
+          "cpuNs": 398215949,
+          "cleanupWallNs": 5829,
+          "cleanupCpuNs": 5769,
+          "live": 0,
+          "liveBlocks": 0,
+          "badFrees": 0,
+          "rowsRead": 5000,
+          "finishComplete": true
+        },
+        "large_40mp_progressive_420.jpg": {
+          "status": "ACCEPT",
+          "width": 8000,
+          "height": 5000,
+          "attempts": 16,
+          "peak": 120535371,
+          "peakRssKiB": 119264,
+          "wallNs": 701964146,
+          "cpuNs": 701835507,
+          "cleanupWallNs": 4947,
+          "cleanupCpuNs": 4927,
+          "live": 0,
+          "liveBlocks": 0,
+          "badFrees": 0,
+          "rowsRead": 5000,
+          "finishComplete": true
+        },
+        "large_40mp_progressive_444.jpg": {
+          "status": "ACCEPT",
+          "width": 8000,
+          "height": 5000,
+          "attempts": 14,
+          "peak": 240265637,
+          "peakRssKiB": 236212,
+          "wallNs": 1115859597,
+          "cpuNs": 1115783291,
+          "cleanupWallNs": 6089,
+          "cleanupCpuNs": 6059,
+          "live": 0,
+          "liveBlocks": 0,
+          "badFrees": 0,
+          "rowsRead": 5000,
+          "finishComplete": true
+        }
+      }
+    },
+    "clang": {
+      "probeRuns": 134,
+      "accepts": 40,
+      "sanitizer": true,
+      "allMeteredReleased": true,
+      "allAcquiredFdsClosed": true,
+      "large": {
+        "large_40mp_baseline_420.jpg": {
+          "status": "ACCEPT",
+          "width": 8000,
+          "height": 5000,
+          "attempts": 13,
+          "peak": 333126,
+          "peakRssKiB": 30424,
+          "wallNs": 1073086694,
+          "cpuNs": 1072975807,
+          "cleanupWallNs": 12809,
+          "cleanupCpuNs": 12739,
+          "live": 0,
+          "liveBlocks": 0,
+          "badFrees": 0,
+          "rowsRead": 5000,
+          "finishComplete": true
+        },
+        "large_40mp_progressive_420.jpg": {
+          "status": "ACCEPT",
+          "width": 8000,
+          "height": 5000,
+          "attempts": 16,
+          "peak": 120535371,
+          "peakRssKiB": 159368,
+          "wallNs": 1713958677,
+          "cpuNs": 1713714448,
+          "cleanupWallNs": 15893,
+          "cleanupCpuNs": 15824,
+          "live": 0,
+          "liveBlocks": 0,
+          "badFrees": 0,
+          "rowsRead": 5000,
+          "finishComplete": true
+        },
+        "large_40mp_progressive_444.jpg": {
+          "status": "ACCEPT",
+          "width": 8000,
+          "height": 5000,
+          "attempts": 14,
+          "peak": 240265637,
+          "peakRssKiB": 289288,
+          "wallNs": 2468580569,
+          "cpuNs": 2468291191,
+          "cleanupWallNs": 15333,
+          "cleanupCpuNs": 15263,
+          "live": 0,
+          "liveBlocks": 0,
+          "badFrees": 0,
+          "rowsRead": 5000,
+          "finishComplete": true
+        }
+      }
+    }
+  },
+  "budget": [
+    {
+      "assertions": 657,
+      "compiler": "gcc",
+      "failed": 0,
+      "status": "PASS",
+      "suite": "e01_budget",
+      "tests": 12
+    },
+    {
+      "assertions": 657,
+      "compiler": "clang",
+      "failed": 0,
+      "status": "PASS",
+      "suite": "e01_budget",
+      "tests": 12
+    }
+  ],
+  "fd": [
+    {
+      "callerOwnershipVerified": true,
+      "cases": 40,
+      "compiler": "gcc",
+      "failed": 0,
+      "ownedCloseSyscallVerified": true,
+      "realJpeg": true,
+      "tests": 882
+    },
+    {
+      "callerOwnershipVerified": true,
+      "cases": 40,
+      "compiler": "clang",
+      "failed": 0,
+      "ownedCloseSyscallVerified": true,
+      "realJpeg": true,
+      "tests": 882
+    }
+  ],
+  "jniHost": [
+    {
+      "Android": "NOT_RUN",
+      "callerOffsetPreserved": true,
+      "jniCalls": 8
+    },
+    {
+      "Android": "NOT_RUN",
+      "loadFailurePreserved": true
+    }
+  ],
+  "lockedCoreOutcomes": [
+    {
+      "compiler": "gcc",
+      "label": "new-core-lock/complete.jpg",
+      "status": "ACCEPT",
+      "errorCode": 0,
+      "rowsRead": 256,
+      "finishComplete": true,
+      "live": 0,
+      "badFrees": 0,
+      "fdClosed": true
+    },
+    {
+      "compiler": "gcc",
+      "label": "new-core-lock/entropy_cut_eoi_retained.jpg",
+      "status": "IMAGE_REJECT",
+      "errorCode": 117,
+      "rowsRead": 78,
+      "finishComplete": false,
+      "live": 0,
+      "badFrees": 0,
+      "fdClosed": true
+    },
+    {
+      "compiler": "clang",
+      "label": "new-core-lock/complete.jpg",
+      "status": "ACCEPT",
+      "errorCode": 0,
+      "rowsRead": 256,
+      "finishComplete": true,
+      "live": 0,
+      "badFrees": 0,
+      "fdClosed": true
+    },
+    {
+      "compiler": "clang",
+      "label": "new-core-lock/entropy_cut_eoi_retained.jpg",
+      "status": "IMAGE_REJECT",
+      "errorCode": 117,
+      "rowsRead": 78,
+      "finishComplete": false,
+      "live": 0,
+      "badFrees": 0,
+      "fdClosed": true
+    }
+  ],
+  "supervisor": [
+    {
+      "androidTermination": "NOT_RUN",
+      "mode": "TIMEOUT",
+      "nativeCleanup": "UNKNOWN",
+      "outputBytes": 0,
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "phase": "UNKNOWN_STOPPED_EARLY",
+      "returnCode": -9,
+      "status": "OBSERVED",
+      "structuredNativeResult": false,
+      "wallSeconds": 0.1007983119999949
+    },
+    {
+      "androidTermination": "NOT_RUN",
+      "mode": "NATIVE_CRASH",
+      "nativeCleanup": "UNKNOWN",
+      "outputBytes": 0,
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "phase": "UNKNOWN_STOPPED_EARLY",
+      "returnCode": -6,
+      "status": "OBSERVED",
+      "structuredNativeResult": false,
+      "wallSeconds": 0.05638102700000047
+    }
+  ],
+  "androidCompile": {
+    "status": "COMPILED_NOT_ANDROID_RUN",
+    "ndk": "28.2.13676358",
+    "cmake": "3.22.1",
+    "ninja": "1.10.2",
+    "clang": "Android (13624864, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)",
+    "commands": 31,
+    "allExit0": true,
+    "artifacts": {
+      "arm64-v8a": {
+        "status": "COMPILED_NOT_ANDROID_RUN",
+        "bytes": 1607640,
+        "sha256": "7cf89f3c73df15bc2ffa94e6a676c7754edfd035857efb26a4e328899c3e8f90",
+        "machine": "AArch64",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ]
+      },
+      "armeabi-v7a": {
+        "status": "COMPILED_NOT_ANDROID_RUN",
+        "bytes": 1321948,
+        "sha256": "b3ed971b58f0c1f426eac7c0ac4ef89cae6c1674c16f6cfa3cb962908defe662",
+        "machine": "ARM",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ]
+      },
+      "x86": {
+        "status": "COMPILED_NOT_ANDROID_RUN",
+        "bytes": 1454824,
+        "sha256": "a197924d35a222c56db96dd93e09f75a9f8505c345c7b129bc0d65c4aa7c8814",
+        "machine": "Intel 80386",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ]
+      },
+      "x86_64": {
+        "status": "COMPILED_NOT_ANDROID_RUN",
+        "bytes": 1699576,
+        "sha256": "12b5e515a320009ca6b2cdb51f1455cf39c17d86de45aaa5a5cb2884c32b3ef4",
+        "machine": "Advanced Micro Devices X86-64",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ]
+      }
+    },
+    "sourceInputs": [
+      {
+        "source": "docs/research/m10-jpeg-e01-native/strict_probe.c",
+        "bytes": 24538,
+        "sha256": "806a9229c339a7fa12fac3386207806862a09f24d5deb99f1394816ab658f069",
+        "matchesCurrent": true
+      },
+      {
+        "source": "docs/research/m10-jpeg-e01-native/strict_core.h",
+        "bytes": 2763,
+        "sha256": "2c5d112d81336b2f3f55b378f3db874ba7db90a5cec2c96a84a0164614944ecc",
+        "matchesCurrent": true
+      },
+      {
+        "source": "docs/research/m10-jpeg-e01-native/budget.c",
+        "bytes": 3847,
+        "sha256": "7210346866d6051aa78b0c176fa75d84d830f3638197e3b5f79912ae947751fa",
+        "matchesCurrent": true
+      },
+      {
+        "source": "docs/research/m10-jpeg-e01-native/budget.h",
+        "bytes": 851,
+        "sha256": "275b956d32ca2ece6190f921aa6254443391c3bec60fb8582b1abcbb433de2fc",
+        "matchesCurrent": true
+      },
+      {
+        "source": "docs/research/m10-jpeg-e01-native/jmem_budget.c",
+        "bytes": 1933,
+        "sha256": "639abfd00fa095d2346d5e185c2111fcd5ff5087306d13f4ba6b743d3a1d0ca5",
+        "matchesCurrent": true
+      },
+      {
+        "source": "docs/research/m10-jpeg-accelerated/jni_bridge.c",
+        "bytes": 2190,
+        "sha256": "d4e6b46f39875b0ee982266e8a6edf44cfb1799b52f4a3912c125dadfb09dad7",
+        "matchesCurrent": true
+      },
+      {
+        "source": "docs/research/m10-jpeg-accelerated/StrictJpegCandidate.java",
+        "bytes": 1237,
+        "sha256": "c7fee1ecabb38a3fbf0cfdea5afba244fa588076994efbfaa8ac61add6544762",
+        "matchesCurrent": true
+      },
+      {
+        "source": "docs/research/m10-jpeg-accelerated/CMakeLists.txt",
+        "bytes": 1928,
+        "sha256": "aee352795754c3ce6e144569dc4d3897bf477b96e4ae313d5f3fa947dcc7fd08",
+        "matchesCurrent": true
+      },
+      {
+        "source": "docs/research/m10-jpeg-accelerated/build_android.py",
+        "bytes": 10385,
+        "sha256": "512f878c3b6c0c9b2df0ddcc9715c540a1312c9938f338697ef6cecced13c1fa",
+        "matchesCurrent": false
+      }
+    ],
+    "driverCurrentSHA256": "5beb35517e7e3ee1770ab4c65afb185ab22c71e3369067063dd4d225fed7917b",
+    "driverChangedAfterBuild": "only export parser; original ELF logs reaudited; binary hashes rechecked",
+    "auditTests": {
+      "RED": {
+        "methods": 8,
+        "failures": 4,
+        "errors": 3,
+        "success": false
+      },
+      "GREEN": {
+        "methods": 8,
+        "failures": 0,
+        "errors": 0,
+        "success": true
+      }
+    }
+  },
+  "originalThreeJpegTests": "HISTORICAL_FAIL_NOT_RERUN",
+  "AndroidRuntime": "NOT_RUN",
+  "fullE01": "NOT_PROVEN",
+  "localRawIndexes": [
+    {
+      "path": "build/m10-jpeg-accelerated/run-39109960477.final.raw.log",
+      "bytes": 694003,
+      "sha256": "7303de8942b59a2620f4ae6cefdaa21c4871918db2d5991be74aadca338d043d"
+    },
+    {
+      "path": "build/m10-jpeg-accelerated/run-39109476240.red.raw.log",
+      "bytes": 134702,
+      "sha256": "106c1c220f20c5f277e439836d85709f4656040e9014087ef8c51534a0585276"
+    },
+    {
+      "path": "E:/CODEX/.codex/research-builds/lithic-jpeg-candidate-20261018/logs/05-arm64-v8a-candidate-configure.log",
+      "bytes": 674,
+      "sha256": "ec28a8522fc5fd1ceaef770eb9820352492e0c965f1bdaf1c733e91066409e4a"
+    },
+    {
+      "path": "E:/CODEX/.codex/research-builds/lithic-jpeg-candidate-20261018-v2/summary.json",
+      "bytes": 32439,
+      "sha256": "1f647fcaa287b2ec3c2098b79e236f634b264ec4a3c2ce1e6485502870d2541b"
+    },
+    {
+      "path": "E:/CODEX/.codex/research-builds/lithic-jpeg-candidate-20261018-v2/source-inputs.json",
+      "bytes": 1653,
+      "sha256": "2fc71e77542fddf43d9a7c96b8e8b835c4248cf2373fe6f3dcd2b273217dd762"
+    },
+    {
+      "path": "E:/CODEX/.codex/research-builds/lithic-jpeg-candidate-20261018-v2/reaudit.json",
+      "bytes": 1525,
+      "sha256": "c4d460cb9603b403212fb76f3af3c07e8be75a26db206b95c6564faff97e0012"
+    },
+    {
+      "path": "E:/CODEX/.codex/research-builds/lithic-jpeg-candidate-20261018-v2/RED-audit-unittest.log",
+      "bytes": 5895,
+      "sha256": "068741e11db38898de151976bfd2e0515a4d7fec8398cc5123c8f77cda92b8ea"
+    },
+    {
+      "path": "E:/CODEX/.codex/research-builds/lithic-jpeg-candidate-20261018-v2/GREEN-audit-unittest.log",
+      "bytes": 1233,
+      "sha256": "0d7a11e02f6afeee2128d3641a1ddae57cff81558b03d0504523c2431dc3fe70"
+    }
+  ]
+}
