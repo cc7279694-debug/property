@@ -172,6 +172,13 @@ def controlled_process_end(probe, path, root):
 def matrix(compiler, flags, source, build, root, generated, healthy, corrupt, originals):
     common = [compiler, "-std=c11", "-O1", "-g", "-fno-omit-frame-pointer", "-Wall", "-Wextra", "-Werror", *flags,
               "-I", CORE, "-I", source / "src", "-I", build]
+    budget_test = build / "budget_test"
+    base.run(compiler + "/compile-budget-tests", [*common, CORE / "budget_test.c", CORE / "budget.c", "-o", budget_test], root)
+    _, raw = base.run(compiler + "/budget-tests", [budget_test], root)
+    budget_result = base.last_json(raw)
+    if budget_result.get("tests") != 12 or budget_result.get("failed") != 0 or budget_result.get("status") != "PASS":
+        raise RuntimeError("Native allocation/free regression failed")
+    emit("BUDGET_RESULT", compiler=compiler, **budget_result)
     probe = build / "candidate_probe"
     base.run(compiler + "/compile-core", [*common, CORE / "strict_probe.c", CORE / "budget.c", build / "libjpeg.a", "-lm", "-o", probe], root)
     fd_test = build / "fd_test"
