@@ -1,8 +1,14 @@
 # 当前项目状态
 
-状态日期：2026-10-18（Asia/Shanghai；Stage V2 / Worker 审查整改离线验证完成，Android 门禁待授权，等待独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-18（Asia/Shanghai；独立Android验收在新AVD配置准入BLOCKED，未启动设备，等待集中审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10 JPEG isolated Android validation — BLOCKED / HOST_SUPERVISOR_CLI_CONFIG_COMPATIBILITY**：用户授权从 `b756f96b699f3b70d43144f6c92815917fb563f6` 建立 `codex/m10-jpeg-android-isolated-validation`。原App APK SHA `0ada2631…47dbf`不变，测试APK离线构建3m12s成功、SHA `3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a`、原证书/包名/runner/锁样本核对通过；app子树与来源相同。
+- **本轮真实结果**：既有API26/36镜像可用；API26官方create一次exit0，后置监督器错误要求CLI未生成的AvdId而BLOCKED。注册名/path/API/ABI/image匹配，实际config为`avd.id/avd.name=<build>`、data path `<temp>`；不据此断言App或镜像失败。启动/安装/测试/ADB均0；API36创建也0。新marker和config保留，不改判、不重试或清场。22宿主mock方法PASS但遗漏实际模板格式，不计Android。原三JPEG本轮NOT_RUN，历史FAIL保留。
+- **下一步与边界**：只等待ChatGPT审查CLI配置身份/占位项和保留新AVD的安全接续条件，不再次create或自动启动。同期没有任何H2/C2运行访问、下载/升级/新许可、故障注入、恢复GC或产品改动。M10 PENDING、UI-C1冻结、M11 NOT_AUTHORIZED、全部历史NOTE（含D2A/A1）/FAIL/UNKNOWN/NOT_RUN保留。见[集中报告](research/M10_JPEG_ANDROID_ISOLATED_VALIDATION.md)、[原始结果](research/m10-jpeg-android-isolated/evidence/RESULTS.json)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-ANDROID-ISOLATED.md)。
+
+以下为上一离线整改的历史交付口径，当前真实设备验收状态以上述为准：
 
 - **M10 Stage V2 / Worker review fix — READY_FOR_REVIEW / ANDROID_NOT_RUN**：用户锁定来源 `8ff9e5a6adefddab68eaf4bec5663b4d376ce2d7`，本轮独立分支 `codex/m10-jpeg-worker-stage-v2-review-fix`，worktree `E:/CODEX/.codex/worktrees/lithic-jpeg-review-fix/砺石新APP`。已修正认证退休 ACK 先于解绑、在途/排队 RPC 责任、源流锁外读取及 producer lease、失败发布/取消与保守残留；未新增磁盘字段或改业务范围。
 - **最终同组验证**：199 输入前后 raw/LF 摘要一致；完整 **308 唯一 JVM PASS＝86＋Stage79＋Worker143**，原236身份保留，0失败/错误/跳过；另9 Python PASS。Lint0错误/23警告、Debug和Android测试源码编译PASS。四ABI/许可证/签名/APK静态核查PASS，真实加载NOT_RUN。当前APK 13,931,874字节，SHA `0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf`，未提交/安装/发布。中间288与定向143/12不重复统计。

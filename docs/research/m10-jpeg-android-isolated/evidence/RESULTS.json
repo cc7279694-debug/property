@@ -1,0 +1,200 @@
+{
+  "status": "BLOCKED",
+  "reason": "HOST_SUPERVISOR_CLI_CONFIG_COMPATIBILITY",
+  "source": "b756f96b699f3b70d43144f6c92815917fb563f6",
+  "branch": "codex/m10-jpeg-android-isolated-validation",
+  "utc": "2026-10-18T12:22:02.343067+00:00",
+  "appInputs": {
+    "unchanged": true,
+    "gitTree": "89679a188c2b6e6793962041383a9f92337e126f"
+  },
+  "apks": [
+    {
+      "kind": "app",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 13931874,
+      "sha256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+      "packageName": "com.cooper.lithic.debug",
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ],
+      "workerManifest": "E: service (line=32)\r\n        A: android:name(0x01010003)=\"com.cooper.lithic.data.media.jpegworker.JpegWorkerService\" (Raw: \"com.cooper.lithic.data.media.jpegworker.JpegWorkerService\")\r\n        A: android:exported(0x01010010)=(type 0x12)0x0\r\n        A: android:process(0x01010011)=\":jpeg_worker\" (Raw: \":jpeg_worker\")\r"
+    },
+    {
+      "kind": "test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-android\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 2234890,
+      "sha256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a",
+      "packageName": "com.cooper.lithic.debug.test",
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ],
+      "instrumentationManifest": "E: instrumentation (line=9)\r\n      A: android:label(0x01010001)=\"M10 test-only process boundary probe\" (Raw: \"M10 test-only process boundary probe\")\r\n      A: android:name(0x01010003)=\"com.cooper.lithic.data.media.M10ProcessBoundaryRunner\" (Raw: \"com.cooper.lithic.data.media.M10ProcessBoundaryRunner\")\r\n      A: android:targetPackage(0x01010021)=\"com.cooper.lithic.debug\" (Raw: \"com.cooper.lithic.debug\")\r\n      A: android:handleProfiling(0x01010022)=(type 0x12)0x0\r\n      A: android:functionalTest(0x01010023)=(type 0x12)0x0\r"
+    }
+  ],
+  "instrumentationComponent": "com.cooper.lithic.debug.test/com.cooper.lithic.data.media.M10ProcessBoundaryRunner",
+  "build": {
+    "testApk": "PASS",
+    "exit": 0,
+    "elapsed": "3m12s",
+    "appApk": "REUSED_LOCKED_BYTES_NOT_REBUILT",
+    "jvmAndLint": "NOT_RERUN_PREVIOUS_EVIDENCE_RETAINED",
+    "nativeHostPressure": "NOT_RERUN"
+  },
+  "hostTests": {
+    "uniqueMethods": 22,
+    "pass": 22,
+    "failures": 0,
+    "errors": 0,
+    "androidSubprocessesMocked": true,
+    "initialRun": {
+      "pass": 18,
+      "errors": 2,
+      "reason": "fixtures lagged corrected SDK selection and sysdir audit; original log retained"
+    },
+    "coverageGap": "Synthetic config assumed AvdId; actual official CLI output differs. Host PASS does not prove Android admission."
+  },
+  "counts": {
+    "api26": {
+      "create": 1,
+      "start": 0,
+      "install": 0,
+      "instrumentation": 0
+    },
+    "api36": {
+      "create": 0,
+      "start": 0,
+      "install": 0,
+      "instrumentation": 0
+    },
+    "adb": 0,
+    "downloads": 0,
+    "oldScenesAccess": 0
+  },
+  "androidMatrix": {
+    "API26_avdmanagerCreateCommand": "PASS_EXIT_0",
+    "API26_postCreateAdmission": "BLOCKED",
+    "API26_boot_install_lifecycle": "NOT_RUN",
+    "API36_create_boot_install_lifecycle": "NOT_RUN",
+    "allNativeABIAndroidLoads": "NOT_RUN",
+    "healthyJpegWorkerRetirement": "NOT_RUN",
+    "damagedJpegWorkerRetirement": "NOT_RUN",
+    "originalThreeJpegTestsThisRun": "NOT_RUN_HISTORICAL_FAIL_UNCHANGED",
+    "PNG_v1_businessRegression": "NOT_RUN",
+    "cancel_timeout_death_recovery_gc": "NOT_RUN_NOT_AUTHORIZED"
+  },
+  "confirmed": {
+    "registryFilenameAndPath": "EXACT_NEW_API26_NAME_AND_DATA_ROOT",
+    "apiAbiImage": "EXPECTED_API26_GOOGLE_APIS_X86_64_R16",
+    "AvdId": "ABSENT",
+    "avd.id": "<build>",
+    "avd.name": "<build>",
+    "disk.dataPartition.path": "<temp>",
+    "archivedC2SamePlaceholderFormat": true,
+    "actualAndroidName": "NOT_RUN",
+    "isolationOnRunningDevice": "NOT_RUN"
+  },
+  "faultClassification": "Verifier assumed a UI-style AvdId field absent in official CLI config. This does not establish wrong AVD, broken image, or App failure. Runtime identity and placeholder interpretation remain unverified; no live rule relaxation or retry.",
+  "preservedNewRoot": "E:/CODEX/.codex/research-env/lithic-m10-android-20261018-v1/api26",
+  "futureReviewProposal": [
+    "Define official CLI descriptor/config identity rules from captured actual format; do not require an unsupported UI-only field.",
+    "Review <build>/<temp> sentinel semantics and explicit datadir containment before any launch.",
+    "Authorize verification/adoption of the existing newly created AVD if safe; never rerun create or erase the marker.",
+    "Keep runtime AVD name/API/serial/boot and APK/UID gates before installation/testing."
+  ],
+  "auditHelperCorrections": [
+    "Native aapt rejected a non-ASCII absolute argv path; rerun artifact audit with ASCII basename plus exact working directory, without copying or changing APK. First raw error retained.",
+    "aapt boolean false appeared as (type 0x12)0x0; exact matcher supports this and literal false. No APK bytes changed."
+  ],
+  "retained": {
+    "M10": "PENDING",
+    "threeJpegTests": "HISTORICAL_FAIL",
+    "UI_C1": "ACCEPTED_FROZEN_PASS_WITH_NOTES",
+    "M11": "NOT_AUTHORIZED",
+    "H2_C2_Runtime": "UNTOUCHED",
+    "D2A_N01_N05_A1_N01_N04_AllHistoricalNotes": "RETAINED"
+  },
+  "evidence": [
+    {
+      "path": "api26-closing.json",
+      "bytes": 2412,
+      "sha256": "a9f428c295fe2e0ad9ef36106375294c7140c1704e5f65bbac5c939fb3cedb46"
+    },
+    {
+      "path": "api26-commands.jsonl",
+      "bytes": 1838,
+      "sha256": "a85ab0f561b82d85efd2c46816a5a292ba53460a090d8df4eac32665cb4c0db2"
+    },
+    {
+      "path": "api26-create-marker.json",
+      "bytes": 306,
+      "sha256": "43a098869eb6f9b611c6ed8d5ec59334945fe4368598222a72f0bea3c785e7b1"
+    },
+    {
+      "path": "api26-create-supervisor.log",
+      "bytes": 1127,
+      "sha256": "9b15bcd3014f116e55c21ef6175b8ca1350325f7b304767cf7d9f0e16415394b"
+    },
+    {
+      "path": "api26-generated-config.ini",
+      "bytes": 3461,
+      "sha256": "14f4964dbfbefc3f15c4f5d5b65ede5562197e8131c73fd82e6d80465e9288d5"
+    },
+    {
+      "path": "api26-generated-descriptor.ini",
+      "bytes": 148,
+      "sha256": "d29dd6f7b8cc6012c1eb95fc20d43e0f54417616c46d310d5b69f373e05f888d"
+    },
+    {
+      "path": "apk-audit-first-path-error.log",
+      "bytes": 422,
+      "sha256": "f26cfacc83543e6a6cfd794d1c810075869e8ed96a2e8d54586e2ec5b6a3106e"
+    },
+    {
+      "path": "apk-audit.json",
+      "bytes": 6318,
+      "sha256": "b5f45ffe3b3d0498e4b77b06971e3e575600e95cd76472115ba207ddb309d02f"
+    },
+    {
+      "path": "app-signature.log",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    {
+      "path": "environment-audit.json",
+      "bytes": 9448,
+      "sha256": "6ece58834082f5ac048017e1bda17ee07dcc086b6e51b1f8828b73f8c8e4648b"
+    },
+    {
+      "path": "preflight-lock.json",
+      "bytes": 884,
+      "sha256": "9e664b55246815f6718b7e7354a7ffa4de63202ee594e4a2ebc63f81988edee7"
+    },
+    {
+      "path": "supervisor-host-tests-final.log",
+      "bytes": 3216,
+      "sha256": "1b31b03056de25c3f5879938185686bc885f4d7b5694a91c06de91fd57d20a7f"
+    },
+    {
+      "path": "supervisor-host-tests-initial.log",
+      "bytes": 5836,
+      "sha256": "e661f76baac433dec1d4de3e698c2ae264b75af2fc9d2c089f6abf1b45a4e668"
+    },
+    {
+      "path": "test-apk-build.log",
+      "bytes": 10652,
+      "sha256": "ee607b2c3f7fff47c582f8210804870a094652e5ce0446a9ea2ffd7bc9b66908"
+    },
+    {
+      "path": "test-signature.log",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    }
+  ]
+}

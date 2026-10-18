@@ -1,0 +1,71 @@
+{
+  "status": "BLOCKED_AVD_CONFIGURATION_ADMISSION",
+  "utc": "2026-10-18T12:18:32.134733+00:00",
+  "configFacts": {
+    "registeredName": "Lithic_M10V_API26_20261018",
+    "AvdId": "ABSENT",
+    "avd.id": "<build>",
+    "avd.name": "<build>",
+    "disk.dataPartition.path": "<temp>",
+    "api": "26",
+    "abi": "x86_64",
+    "imagePath": "EXACT_EXPECTED_API26_R16"
+  },
+  "files": [
+    {
+      "path": "avds/Lithic_M10V_API26_20261018.ini",
+      "bytes": 148,
+      "sha256": "d29dd6f7b8cc6012c1eb95fc20d43e0f54417616c46d310d5b69f373e05f888d"
+    },
+    {
+      "path": "data/Lithic_M10V_API26_20261018.avd/config.ini",
+      "bytes": 3461,
+      "sha256": "14f4964dbfbefc3f15c4f5d5b65ede5562197e8131c73fd82e6d80465e9288d5"
+    },
+    {
+      "path": "data/Lithic_M10V_API26_20261018.avd/userdata.img",
+      "bytes": 576716800,
+      "sha256": "c4219b87ba2b1b8e8c882cede0779d91782d134420d0191027e95209192bb640"
+    },
+    {
+      "path": "operations/create.json",
+      "bytes": 306,
+      "sha256": "43a098869eb6f9b611c6ed8d5ec59334945fe4368598222a72f0bea3c785e7b1"
+    }
+  ],
+  "processes": {
+    "utc": "2026-10-18T12:18:32.0489209Z",
+    "emulatorProcessCount": 0,
+    "freeKiB": 3440320,
+    "newAvdProcesses": []
+  },
+  "processCommand": {
+    "argv": [
+      "powershell.exe",
+      "-NoProfile",
+      "-Command",
+      "$m=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'});$o=Get-CimInstance Win32_OperatingSystem;[pscustomobject]@{utc=[DateTime]::UtcNow.ToString('o');emulatorProcessCount=$m.Count;freeKiB=$o.FreePhysicalMemory;newAvdProcesses=@($m | Where-Object {$_.CommandLine -match 'Lithic_M10V_API26_20261018|Lithic_M10V_API36_20261018'} | Select-Object ProcessId,Name,CommandLine)}|ConvertTo-Json -Depth 4 -Compress"
+    ],
+    "exit": 0,
+    "stdoutBytes": 104,
+    "stdoutSHA256": "dd74591ebed5d9a26e814614ac7015ccc32fe8533e9318776b889fac9e87f0eb"
+  },
+  "counts": {
+    "api26": {
+      "create": 1,
+      "start": 0,
+      "install": 0,
+      "instrumentation": 0
+    },
+    "api36": {
+      "create": 0,
+      "start": 0,
+      "install": 0,
+      "instrumentation": 0
+    },
+    "adb": 0,
+    "downloads": 0,
+    "oldScenesAccess": 0
+  },
+  "nextAndroidOperation": "NOT_AUTHORIZED_AFTER_FAILED_GATE; preserve current new AVD/config/marker; no retries or edits"
+}

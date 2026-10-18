@@ -1,0 +1,272 @@
+{
+  "scope": "Read-only Windows SDK/image/tool/resource inventory; no ADB/Android tool invocation, AVD creation/start or old AVD data access",
+  "sourceCommit": "b756f96b699f3b70d43144f6c92815917fb563f6",
+  "priorObservationPreciseUtc": "NOT_RETAINED: live static checks earlier in this same agent turn; resource sample below has exact current UTC bounds",
+  "api26": {
+    "classification": "MEASURED",
+    "image": "E:/CODEX/.codex/research-env/lithic-a2r-api26/sdk/system-images/android-26/google_apis/x86_64",
+    "package": "system-images;android-26;google_apis;x86_64",
+    "revision": 16,
+    "abi": "x86_64",
+    "expectedSource": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/installed-image-audit/result.json",
+    "expectedSourceClassification": "HISTORICAL_EXPECTATION",
+    "verification": "Read every one of the 11 official image originals and compared current size/SHA-256 with historical locked records; all match",
+    "allOriginalFilesSizeAndShaMatch": true,
+    "licenseTextCopiedOrArchived": false,
+    "files": [
+      {
+        "name": "advancedFeatures.ini",
+        "bytes": 152,
+        "sha256": "d272c766f27bb8753c5847dda9a6bdd8d4b187882f5dea50c407fe697fb166c8",
+        "sizeMatch": true,
+        "shaMatch": true
+      },
+      {
+        "name": "kernel-ranchu",
+        "bytes": 5593392,
+        "sha256": "b07008dd499038633386d2fd122e957c89c94fb33d804ea0d2d33d6a14bbd029",
+        "sizeMatch": true,
+        "shaMatch": true
+      },
+      {
+        "name": "NOTICE.txt",
+        "bytes": 1665383,
+        "sha256": "55c377454d4eaa80e29b0e91804f85e435d83f4664ba2448e165a190d96bec1e",
+        "sizeMatch": true,
+        "shaMatch": true,
+        "contentRetained": false
+      },
+      {
+        "name": "build.prop",
+        "bytes": 2018,
+        "sha256": "b7a9c27f62de80f21798353ea4bfaeeae444a047749c3cd195b0e1c3c40504e1",
+        "sizeMatch": true,
+        "shaMatch": true
+      },
+      {
+        "name": "userdata.img",
+        "bytes": 576716800,
+        "sha256": "c4219b87ba2b1b8e8c882cede0779d91782d134420d0191027e95209192bb640",
+        "sizeMatch": true,
+        "shaMatch": true,
+        "meaning": "Official read-only SDK template, not any AVD userdata"
+      },
+      {
+        "name": "source.properties",
+        "bytes": 294,
+        "sha256": "7359e05a9d54b107581dbc530391985ac414e28828484aa4487b4e070d62aaed",
+        "sizeMatch": true,
+        "shaMatch": true
+      },
+      {
+        "name": "data/misc/wifi/WifiConfigStore.xml",
+        "bytes": 2427,
+        "sha256": "f9fb2931f1d952ea0503b277d71fea3468b3cd3ecb6e5e441f21b7521aceb1a3",
+        "sizeMatch": true,
+        "shaMatch": true
+      },
+      {
+        "name": "ramdisk.img",
+        "bytes": 2060272,
+        "sha256": "2be5c37057f4054d03dc9bab4fb592d97c6cefd83e9f03c939739e73f999ed6f",
+        "sizeMatch": true,
+        "shaMatch": true
+      },
+      {
+        "name": "system.img",
+        "bytes": 2686451712,
+        "sha256": "342348217f0bb8365bfc10b61f6d8533433a1cbb058de4ca0d52be5e1a7c5b9e",
+        "sizeMatch": true,
+        "shaMatch": true
+      },
+      {
+        "name": "vendor.img",
+        "bytes": 102760448,
+        "sha256": "aa8fbf2fa28237124e68725fbf56c8b3da98126b721289b16562769efedd1cd5",
+        "sizeMatch": true,
+        "shaMatch": true
+      },
+      {
+        "name": "encryptionkey.img",
+        "bytes": 1048576,
+        "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+        "sizeMatch": true,
+        "shaMatch": true
+      }
+    ],
+    "generatedPackageXml": {
+      "bytes": 19209,
+      "sha256": "aaab7f4381969c6de68a7c081e0d33d167e90ea6eb9047b98e684df5d635e002",
+      "identityParsed": true,
+      "contentRetained": false
+    }
+  },
+  "api36": {
+    "classification": "MEASURED",
+    "image": "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/system-images/android-36/google_apis/x86_64",
+    "package": "system-images;android-36;google_apis;x86_64",
+    "revision": 7,
+    "abi": "x86_64",
+    "extensionLevel": 17,
+    "declaredEmulatorDependency": "35.4.9",
+    "generatedPackageXml": {
+      "bytes": 19301,
+      "sha256": "86953beccd209f58673d73d58c44ae162c6bfba3ee6f373a25038d9a9a539841",
+      "identityParsed": true,
+      "contentRetained": false
+    },
+    "currentImageFiles": [
+      {
+        "name": "advancedFeatures.ini",
+        "bytes": 791,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "build.prop",
+        "bytes": 5631,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "encryptionkey.img",
+        "bytes": 18874368,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "kernel-ranchu",
+        "bytes": 20489216,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "kernel_cmdline.txt",
+        "bytes": 32,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "ramdisk.img",
+        "bytes": 2184133,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "source.properties",
+        "bytes": 356,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "system.img",
+        "bytes": 4415553536,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "vendor.img",
+        "bytes": 108003328,
+        "sha256": "NOT_RETAINED"
+      },
+      {
+        "name": "VerifiedBootParams.textproto",
+        "bytes": 356,
+        "sha256": "NOT_RETAINED"
+      }
+    ],
+    "topLevelFilesAreSymlinks": false,
+    "userdataTemplatePresent": false,
+    "userdataTemplateCaveat": "Do not assume the API26 fixed file list applies to this newer API36 SDK package; no old AVD data inspected"
+  },
+  "tools": {
+    "classification": "MEASURED",
+    "primarySdk": "C:/Users/CDD/AppData/Local/MirraAndroid/sdk",
+    "researchSdk": "E:/CODEX/.codex/research-env/lithic-a2r-api26/sdk",
+    "emulatorVersion": "37.1.11",
+    "emulatorBuildId": "15917651",
+    "commandLineToolsVersion": "23.0",
+    "platformToolsResearchVersion": "37.0.1",
+    "bothEmulatorExecutableSha256": "dede05844d17902a7c74f2cee2bbe97ec9afaaf22ebc35a7cdc6d7c1eaa0b9dd",
+    "bothAvdmanagerBatchSha256": "2307299b666c61610d1f35b36ea05c2d24c43ddec33e755d40a52797a21d2aa1",
+    "primaryEmulatorAuthenticode": {
+      "status": "Valid",
+      "signer": "CN=Google LLC, O=Google LLC, L=Mountain View, S=California, C=US, SERIALNUMBER=3582691, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US"
+    },
+    "rootDirectoryReparsePointObserved": false,
+    "toolInvocations": 0,
+    "sdkUpdatesDownloads": 0
+  },
+  "parentEnvironmentEarlierObservation": {
+    "classification": "CURRENT_SNAPSHOT",
+    "ANDROID_AVD_HOME": "E:/Android/avd",
+    "otherMatchingAndroidJavaQemuEmulatorAdbServerVariables": [],
+    "globalEnvironmentModified": false
+  },
+  "isolationRecommendation": {
+    "newExclusiveUserAvdEmulatorHomes": true,
+    "removeLegacyAndroidSdkHomeInChild": true,
+    "consistentSdkRootVariables": true,
+    "neverUseInheritedAvdHome": true,
+    "keepOriginalH2AndC2Untouched": true,
+    "memorySafetyThreshold": "UNKNOWN; available RAM and host commit are observations, not proof of safe guest/native memory limits",
+    "hypervisorAcceleration": "NOT_RUN; no emulator -accel-check invoked"
+  },
+  "historicalC2": {
+    "classification": "HISTORICAL_EXPECTATION",
+    "source": "docs/research/M10_JPEG_H2_D2B_A2R_C2_EXECUTION.md",
+    "guestMemoryMiB": 1536,
+    "cores": 2,
+    "bootDeadlineSeconds": 300,
+    "result": "API26_BOOT_TIMEOUT",
+    "cause": "UNKNOWN",
+    "notEvidenceOfCurrentNewGuestFailure": true
+  },
+  "deviceOperations": {
+    "adbCommands": 0,
+    "avdCreate": 0,
+    "emulatorStart": 0,
+    "apkInstall": 0,
+    "appStart": 0,
+    "oldAvdDataAccess": 0
+  },
+  "onlyWrittenFile": "build/android-validation/environment-audit.json",
+  "currentResourceSnapshot": {
+    "sampleStartUtc": "2026-10-18T12:07:44.9867344Z",
+    "sampleEndUtc": "2026-10-18T12:07:53.8381543Z",
+    "listeningPorts": [],
+    "hypervisorPresent": true,
+    "totalVisibleMemoryKiB": 16648500,
+    "emulatorQemuProcessCount": 0,
+    "freePhysicalMemoryKiB": 2572768,
+    "processes": [
+      {
+        "Name": "adb.exe",
+        "ProcessId": 10576,
+        "ParentProcessId": 15348
+      }
+    ],
+    "percentCommitted": 85,
+    "virtualizationCaveat": "HypervisorPresent=true and firmware flag=false are retained as independent measured fields; no conclusion about runtime emulator acceleration",
+    "commitLimitBytes": 33579642880,
+    "physicalCores": 4,
+    "committedBytes": 28852674560,
+    "hostCaption": "Microsoft Windows 11 家庭版 中文版",
+    "disks": [
+      {
+        "Name": "C",
+        "Used": 202308456448,
+        "Free": 16112103424
+      },
+      {
+        "Name": "D",
+        "Used": 237759668224,
+        "Free": 54589526016
+      },
+      {
+        "Name": "E",
+        "Used": 944100421632,
+        "Free": 56085889024
+      }
+    ],
+    "virtualizationFirmwareEnabled": false,
+    "cpuName": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+    "logicalProcessors": 8,
+    "availableMiB": 2253,
+    "adbProcessCount": 1,
+    "listeningPortRange": "5554-5699",
+    "classification": "CURRENT_SNAPSHOT"
+  }
+}

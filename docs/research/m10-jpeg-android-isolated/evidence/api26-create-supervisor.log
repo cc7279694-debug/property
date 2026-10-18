@@ -1,0 +1,13 @@
+{"detail": "AVD identity mismatch", "errorType": "RuntimeError", "status": "BLOCKED"}
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 403, in <module>
+    main()
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 396, in main
+    getattr(supervisor, args.operation.replace("-", "_"))()
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 267, in create
+    self.verify_avd()
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 194, in verify_avd
+    need(cfg.get("AvdId") == self.name and cfg.get("abi.type") == "x86_64", "AVD identity mismatch")
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 46, in need
+    raise RuntimeError(message)
+RuntimeError: AVD identity mismatch
