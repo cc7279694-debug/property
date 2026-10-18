@@ -29,6 +29,9 @@ internal class StageRecords(
 
     fun fingerprint(file: File): JpegStageV2.FileIdentity {
         if (!file.isFile || Files.isSymbolicLink(file.toPath())) blocked("Stage file is not regular")
+        // A probe may hash a nonempty file by opening and closing it. Doing that
+        // to a corrupted guard could drop a same-process POSIX lock before reject.
+        if (file.name in setOf(".namespace.guard", "consumer.guard") && file.length() != 0L) blocked("JPEG guard is not empty")
         val found = probe(file)
         if (found.device < 0 || found.inode <= 0 || found.bytes < 0 || !found.sha256.matches(Regex("[0-9a-f]{64}"))) blocked("Invalid stage file identity")
         return found

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" tests="23" skipped="0" failures="0" errors="0" timestamp="2026-10-18T11:37:45.727Z" hostname="WHOCARE" time="0.063">
+  <properties/>
+  <testcase name="cancellationMaySupersedeNormalBeforeDetach" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="deadlineRejectsLaterNormalAuthorization" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="unpreparedDetachedProcessCannotAcquireNewBinding" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="requestAfterDetachIsRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="duplicateHostDeathCannotClaimExitTwice" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="unboundNewProcessCannotAcceptRetirement" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="deadlineWhileBoundCannotKillAndRestartWorker" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="unknownDataCloseCannotArmNormal" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="deadlineAfterUnknownDetachCanExitWithoutNewBinding" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="duplicateRequestIsIdempotentBeforeDetach" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="revokedAuthorizationCannotBecomeNormalAgain" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="duplicateBindingRejectedWithoutExpandingConsumerCount" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="unauthenticatedNormalCannotArm" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="deadlineAndDetachRaceClaimsExactlyOneExit" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.03"/>
+  <testcase name="acknowledgedNormalExitsOnlyAfterDetach" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="authenticatedClosedResultArmsWhileStillBound" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.001"/>
+  <testcase name="unpreparedDetachIsNotAuthenticatedRetirement" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="revokedWorkMayExitWithUnknownNativeCloseOnlyAfterDetach" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="terminalProcessCannotAcquireNewBinding" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="knownDeadHostAllowsExitWithoutUiDetach" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="normalAckDoesNotExitBeforeOnUnbind" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <testcase name="deathAndDetachRaceClaimsExactlyOneExit" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.031"/>
+  <testcase name="unauthenticatedRevokeCannotArm" classname="com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

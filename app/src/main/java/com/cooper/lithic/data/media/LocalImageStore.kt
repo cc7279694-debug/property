@@ -157,7 +157,10 @@ class LocalImageStore(
     private suspend fun prepareJpeg(input: InputStream, assetId: String): PreparedImage {
         val protocol = files.jpeg
         val owner = JpegStageV2.Owner(files.generation.name, assetId, UUID.randomUUID().toString(), UUID.randomUUID().toString(), UUID.randomUUID().toString())
-        val snapshot = protocol.create(owner, input)
+        // Cooperative checks surround source reads; they cannot interrupt a provider blocked
+        // inside read(). Such an attempt keeps its producer ownership until read returns.
+        val callerContext = currentCoroutineContext()
+        val snapshot = protocol.create(owner, input) { callerContext.ensureActive() }
         val guard = protocol.guardFile(owner)
         val guardStat = Os.lstat(guard.path)
         var observed: JpegWorkerResult? = null

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-18T11:37:45.515Z" hostname="WHOCARE" time="0.015">
+  <properties/>
+  <testcase name="unknownTextCannotTurnIntoSuccess" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.003"/>
+  <testcase name="observerFailureAlsoRemainsRecorded" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.001"/>
+  <testcase name="executorRejectionIsUnknownNotHandled" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.001"/>
+  <testcase name="repeatedExecutorInvocationStillOnlyRunsHandlerOnce" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.001"/>
+  <testcase name="resumeCancellationAndInactiveObservationShareOnceClaim" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.001"/>
+  <testcase name="callbackIsOnlyQueuedAtCancellation" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.0"/>
+  <testcase name="concurrentAbandonmentQueuesOnlyOneCleanup" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.003"/>
+  <testcase name="noAbandonmentCreatesNoWork" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.0"/>
+  <testcase name="failedHandlerIsNotRetriedAutomatically" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.001"/>
+  <testcase name="inactiveResultIsDeliveredExactlyOnce" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.001"/>
+  <testcase name="throwingHandlerRemainsFailed" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.001"/>
+  <testcase name="originalObjectIsPassedWithoutProofSynthesis" classname="com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

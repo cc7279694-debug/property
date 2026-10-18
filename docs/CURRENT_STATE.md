@@ -1,8 +1,15 @@
 # 当前项目状态
 
-状态日期：2026-10-18（Asia/Shanghai；Worker / Stage V2 接入候选离线/构建通过，Android安全门禁未验证，等待独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-18（Asia/Shanghai；Stage V2 / Worker 审查整改离线验证完成，Android 门禁待授权，等待独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10 Stage V2 / Worker review fix — READY_FOR_REVIEW / ANDROID_NOT_RUN**：用户锁定来源 `8ff9e5a6adefddab68eaf4bec5663b4d376ce2d7`，本轮独立分支 `codex/m10-jpeg-worker-stage-v2-review-fix`，worktree `E:/CODEX/.codex/worktrees/lithic-jpeg-review-fix/砺石新APP`。已修正认证退休 ACK 先于解绑、在途/排队 RPC 责任、源流锁外读取及 producer lease、失败发布/取消与保守残留；未新增磁盘字段或改业务范围。
+- **最终同组验证**：199 输入前后 raw/LF 摘要一致；完整 **308 唯一 JVM PASS＝86＋Stage79＋Worker143**，原236身份保留，0失败/错误/跳过；另9 Python PASS。Lint0错误/23警告、Debug和Android测试源码编译PASS。四ABI/许可证/签名/APK静态核查PASS，真实加载NOT_RUN。当前APK 13,931,874字节，SHA `0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf`，未提交/安装/发布。中间288与定向143/12不重复统计。
+- **剩余准入**：本轮ADB/AVD/安装/启动/H2/C2访问均0。真实API26/API36 Binder/FD/退休、取消/超时/死亡恢复/GC与手机内存安全NOT_RUN；永久阻塞源读取及超出有限清理窗口的在途Binder继续UNKNOWN/pin/准入关闭，不承诺自动收口。下一步只等待ChatGPT审查及另行明确设备许可，[集中报告及可执行计划](research/M10_JPEG_STAGE_V2_REVIEW_FIX.md)、[结果索引](research/m10-jpeg-stage-v2-review-fix/RESULTS.json)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-STAGE-V2-REVIEW-FIX.md)。
+- **正式与历史状态保持**：M10 PENDING/原三JPEG FAIL（本轮NOT_RUN）；UI-C1 ACCEPTED/FROZEN PASS WITH NOTES；R3完整生命周期BLOCKED；M11 NOT_AUTHORIZED。D2A-N01～N05、A1-N01～N04及全部历史NOTE/FAIL/UNKNOWN/NOT_RUN保留。H2 DELIVERY_UNKNOWN/pin=true、C2只继承历史，没有重新观察。Room/schema/备份格式/冻结算法/UI-C1及原三JPEG断言不改。
+
+以下为上一接入候选的历史交付口径，当前分支状态以上述整改为准：
 
 - **M10 JPEG Worker / Stage V2 candidate — BLOCKED_ANDROID_GATES / WAITING_REVIEW**：当前用户集中授权从 `717d541578ebf761e2e1c70a842ca8b7e5dab5b2` 建立 `codex/m10-jpeg-worker-stage-v2-candidate`，独立 worktree `E:/CODEX/.codex/worktrees/lithic-jpeg-stage-v2/砺石新APP`。已实现私有V2 owner/源身份/pin/撤销/凭据/恢复准入、候选非导出Worker及主进程接入；PNG/v1和旧封面保守保留，Room/schema/备份格式/冻结算法/UI不改。只在当前候选分支构建、提交推送，独立验收前不合并或发布。
 - **本轮真实验证**：236唯一JVM PASS＝原86＋Stage67＋Worker83；完整212项后最终Worker83定向回归，重复执行不叠加。另9项Python PASS；Lint0错误/23警告、Debug构建与Android测试源码编译PASS。首次Lint3错误与Windows两个中间测试失败原件保留；API26原子FD标志经四ABI实际预处理核验。固定3.2.0四ABI缓存/源码/strip及最终APK内SHA、许可证、非导出Worker/权限/原证书核验通过，未重跑宿主压测。APK13,851,571字节，SHA `9100b0b27d283ae83a826b9020ce160c66b3f7a57aed38698c62d8317a0741f3`，仅当前忽略构建目录保留，未安装/发布。

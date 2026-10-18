@@ -208,4 +208,248 @@ class JpegStageV2Test {
         blocked { p.revoke(o, "different_catch") }; assertArrayEquals(first, marker.readBytes()); refuseSync = false
         p.revoke(o, "third_catch"); assertArrayEquals(first, marker.readBytes()); assertTrue(p.snapshot(o).pinned)
     }
+
+    @Test fun source_copy_releases_namespace_but_holds_exclusive_producer_guard() {
+        val root = temporary.newFolder(); val p = protocol(root); val o = owner(); var observed = false
+        var guardProbe: FileChannel? = null
+        val input = object : java.io.InputStream() {
+            override fun read(): Int = error("bulk read expected")
+            override fun read(bytes: ByteArray, offset: Int, length: Int): Int {
+                if (observed) return -1
+                observed = true
+                // Exercise the real protocol from within the untrusted stream callback.
+                // It must acquire the namespace rather than inheriting our create lock.
+                assertEquals(o, protocol(root).ownerFor(o.assetId))
+                guardProbe = FileChannel.open(File(root, o.assetId + "/consumer.guard").toPath(), StandardOpenOption.WRITE)
+                assertThrows(java.nio.channels.OverlappingFileLockException::class.java) { guardProbe!!.tryLock() }
+                // Keep this test-only descriptor open until create releases its producer
+                // lease: POSIX closing any same-process FD can drop that inode's locks.
+                blocked { protocol(root).registerConsumer(o, worker) }
+                blocked { protocol(root).markDelivery(o) }
+                assertFalse(File(root, o.assetId + "/source.v2").exists())
+                assertFalse(File(root, o.assetId + "/pin.v2").exists())
+                bytes[offset] = 7
+                return 1
+            }
+        }
+        try { p.create(o, input) } finally { guardProbe?.close() }
+        assertTrue(observed)
+        assertEquals(JpegStageV2.State.SOURCE_STAGED, p.snapshot(o).state)
+    }
+
+    @Test fun source_copy_blocking_reader_does_not_block_namespace_inspection_or_allow_new_session() {
+        val root = temporary.newFolder(); val p = protocol(root); val o = owner()
+        val entered = java.util.concurrent.CountDownLatch(1); val release = java.util.concurrent.CountDownLatch(1)
+        val pool = java.util.concurrent.Executors.newFixedThreadPool(2)
+        val input = object : java.io.InputStream() {
+            var sent = false
+            override fun read(): Int = error("bulk read expected")
+            override fun read(bytes: ByteArray, offset: Int, length: Int): Int {
+                if (sent) return -1
+                sent = true; entered.countDown()
+                check(release.await(30, TimeUnit.SECONDS)) { "test did not release synthetic source" }
+                bytes[offset] = 9; return 1
+            }
+        }
+        val copying = pool.submit<JpegStageV2.Snapshot> { p.create(o, input) }
+        var copied: JpegStageV2.Snapshot? = null
+        try {
+            assertTrue(entered.await(10, TimeUnit.SECONDS))
+            val observer = pool.submit {
+                assertEquals(o, protocol(root).ownerFor(o.assetId))
+                blocked { protocol(root).admission() }
+                blocked { protocol(root).create(owner(), ByteArrayInputStream(byteArrayOf(1))) }
+                blocked { protocol(root).safeCleanup(o) }
+                assertTrue(File(root, o.assetId + "/source.bin").exists())
+                assertFalse(File(root, o.assetId + "/pin.v2").exists())
+            }
+            observer.get(15, TimeUnit.SECONDS)
+        } finally {
+            release.countDown(); pool.shutdown()
+            try { copied = copying.get(15, TimeUnit.SECONDS) }
+            finally { assertTrue(pool.awaitTermination(15, TimeUnit.SECONDS)) }
+        }
+        assertEquals(JpegStageV2.State.SOURCE_STAGED, copied?.state)
+    }
+
+    @Test fun source_copy_reentrant_gc_and_restart_cannot_claim_unpublished_attempt() {
+        val root = temporary.newFolder(); val p = protocol(root); val o = owner(); var sent = false
+        val input = object : java.io.InputStream() {
+            override fun read(): Int = error("bulk read expected")
+            override fun read(bytes: ByteArray, offset: Int, length: Int): Int {
+                if (sent) return -1
+                sent = true
+                assertEquals(o, protocol(root).ownerFor(o.assetId))
+                blocked { protocol(root).snapshot(o) }
+                blocked { protocol(root).safeCleanup(o) }
+                blocked { protocol(root).releaseSource(o) }
+                blocked { protocol(root).recordPrepared(o) }
+                assertTrue(File(root, o.assetId + "/source.bin").exists())
+                bytes[offset] = 6; return 1
+            }
+        }
+        p.create(o, input)
+        p.registerConsumer(o, worker)
+        assertTrue(p.snapshot(o).pinned)
+    }
+
+    @Test fun source_copy_cancellation_retains_original_object_and_legacy_v1_bytes() {
+        val root = temporary.newFolder(); val legacy = temporary.newFolder("legacy-v1"); val existing = File(legacy, "image.jpg")
+        val oldBytes = byteArrayOf(1, 3, 5, 7); existing.writeBytes(oldBytes)
+        val p = protocol(root); val o = owner(); val cancellation = java.util.concurrent.CancellationException("synthetic caller cancellation")
+        val input = object : java.io.InputStream() { override fun read(): Int = throw cancellation }
+        val observed = assertThrows(java.util.concurrent.CancellationException::class.java) { p.create(o, input) }
+        assertSame(cancellation, observed)
+        assertArrayEquals(oldBytes, existing.readBytes())
+        assertFalse(File(root, o.assetId).exists())
+        p.admission()
+    }
+
+    @Test fun source_copy_replaced_source_cannot_be_published_after_successful_read() {
+        val root = temporary.newFolder(); val p = protocol(root); val o = owner(); var sent = false
+        val input = object : java.io.InputStream() {
+            override fun read(): Int = error("bulk read expected")
+            override fun read(bytes: ByteArray, offset: Int, length: Int): Int {
+                if (sent) return -1
+                sent = true
+                val source = File(root, o.assetId + "/source.bin")
+                check(source.renameTo(File(root.parentFile, "retained-original-${UUID.randomUUID()}")))
+                source.writeBytes(byteArrayOf(99))
+                bytes[offset] = 7; return 1
+            }
+        }
+        blocked { p.create(o, input) }
+        assertArrayEquals(byteArrayOf(99), File(root, o.assetId + "/source.bin").readBytes())
+        assertFalse(File(root, o.assetId + "/source.v2").exists())
+        assertFalse(File(root, "abort-${o.attemptId}.v2").exists())
+        blocked { protocol(root).admission() }
+    }
+
+    @Test fun source_copy_namespace_competitor_is_rejected_before_touching_locked_inode() {
+        val root = temporary.newFolder(); val o = owner(); var namespaceProbes = 0; var observed = false
+        val probe: (File) -> JpegStageV2.FileIdentity = { file ->
+            if (file.name == ".namespace.guard") namespaceProbes++
+            fileIdentity(file)
+        }
+        val competitor = JpegStageV2(root, generation, probe) { check(it.isDirectory) }
+        val p = JpegStageV2(root, generation, probe) { directory ->
+            if (!observed && directory.name == o.assetId && File(directory, "owner.v2").exists()) {
+                observed = true
+                val probesBefore = namespaceProbes
+                blocked { competitor.ownerFor(o.assetId) }
+                assertEquals("Competing namespace admission must happen before opening or probing the guard", probesBefore, namespaceProbes)
+            }
+        }
+        p.create(o, ByteArrayInputStream(byteArrayOf(7)))
+        assertTrue(observed)
+        assertEquals(JpegStageV2.State.SOURCE_STAGED, p.snapshot(o).state)
+    }
+
+    @Test fun source_copy_checkpoint_cancel_before_read_is_outside_namespace_and_never_delivers() {
+        val root = temporary.newFolder(); val p = protocol(root); val o = owner(); var reads = 0
+        val cancellation = java.util.concurrent.CancellationException("cancel before source read")
+        val input = object : java.io.InputStream() { override fun read(): Int { reads++; return 1 } }
+        val observed = assertThrows(java.util.concurrent.CancellationException::class.java) {
+            p.create(o, input) {
+                assertEquals(o, protocol(root).ownerFor(o.assetId))
+                throw cancellation
+            }
+        }
+        assertSame(cancellation, observed); assertEquals(0, reads)
+        assertFalse(File(root, o.assetId).exists())
+        assertTrue(File(root, "abort-${o.attemptId}.v2").readText().contains("sourceBytes=0"))
+        p.admission()
+    }
+
+    @Test fun source_copy_checkpoint_cancel_after_read_preserves_v1_and_original_failure() {
+        val root = temporary.newFolder(); val legacy = temporary.newFolder("legacy-v1-after-read")
+        val old = File(legacy, "prepared.png").also { it.writeBytes(byteArrayOf(2, 4, 6)) }
+        val p = protocol(root); val o = owner(); var reads = 0
+        val cancellation = java.util.concurrent.CancellationException("cancel returned source read")
+        val input = object : java.io.InputStream() {
+            override fun read(): Int = error("bulk read expected")
+            override fun read(bytes: ByteArray, offset: Int, length: Int): Int { reads++; bytes[offset] = 7; return 1 }
+        }
+        val observed = assertThrows(java.util.concurrent.CancellationException::class.java) {
+            p.create(o, input) {
+                assertEquals(o, protocol(root).ownerFor(o.assetId))
+                if (reads > 0) throw cancellation
+            }
+        }
+        assertSame(cancellation, observed); assertEquals(1, reads)
+        assertArrayEquals(byteArrayOf(2, 4, 6), old.readBytes())
+        assertFalse(File(root, o.assetId).exists())
+        assertTrue(File(root, "abort-${o.attemptId}.v2").readText().contains("sourceBytes=0"))
+        p.admission()
+    }
+
+    @Test fun source_copy_unclassified_failure_releases_own_fds_but_preserves_unknown_stage() {
+        val root = temporary.newFolder(); val p = protocol(root); val o = owner()
+        val unknown = AssertionError("synthetic unclassified provider failure")
+        val input = object : java.io.InputStream() { override fun read(): Int = throw unknown }
+        assertSame(unknown, assertThrows(AssertionError::class.java) { p.create(o, input) })
+        val stage = File(root, o.assetId)
+        assertEquals(setOf("owner.v2", "consumer.guard", "source.bin"), stage.listFiles()!!.map { it.name }.toSet())
+        // Release is a resource observation, never a recovery/cleanup authorization.
+        FileChannel.open(File(stage, "consumer.guard").toPath(), StandardOpenOption.WRITE).use { channel ->
+            channel.tryLock().use { lease -> assertNotNull(lease) }
+        }
+        blocked { protocol(root).admission() }; blocked { protocol(root).safeCleanup(o) }
+        assertFalse(File(root, "abort-${o.attemptId}.v2").exists())
+        assertTrue(File(stage, "source.bin").exists())
+    }
+
+    @Test fun source_copy_interrupted_input_aborts_only_its_verified_unpublished_bytes() {
+        val root = temporary.newFolder(); val p = protocol(root); val o = owner(); var sent = false
+        val interrupted = java.io.InterruptedIOException("synthetic provider interruption")
+        val input = object : java.io.InputStream() {
+            override fun read(): Int = error("bulk read expected")
+            override fun read(bytes: ByteArray, offset: Int, length: Int): Int {
+                assertEquals(o, protocol(root).ownerFor(o.assetId))
+                if (sent) throw interrupted
+                sent = true; bytes[offset] = 4; return 1
+            }
+        }
+        val failure = assertThrows(JpegStageV2.Blocked::class.java) { p.create(o, input) }
+        assertSame(interrupted, failure.cause)
+        assertFalse(File(root, o.assetId).exists())
+        assertTrue(File(root, "abort-${o.attemptId}.v2").readText().contains("sourceBytes=1"))
+        p.admission()
+    }
+
+    @Test fun source_copy_publication_sync_unknown_preserves_stage_without_claiming_or_cleaning() {
+        val root = temporary.newFolder(); val o = owner(); var sourceFinished = false
+        val p = JpegStageV2(root, generation, ::fileIdentity) { directory ->
+            if (sourceFinished && directory.name == o.assetId) throw java.io.IOException("synthetic publication fsync failure")
+        }
+        val input = object : java.io.InputStream() {
+            var sent = false
+            override fun read(): Int = error("bulk read expected")
+            override fun read(bytes: ByteArray, offset: Int, length: Int): Int {
+                if (sent) { sourceFinished = true; return -1 }
+                sent = true; bytes[offset] = 3; return 1
+            }
+        }
+        blocked { p.create(o, input) }
+        assertArrayEquals(byteArrayOf(3), File(root, o.assetId + "/source.bin").readBytes())
+        assertFalse(File(root, o.assetId + "/source.v2").exists())
+        assertFalse(File(root, o.assetId + "/pin.v2").exists())
+        blocked { protocol(root).admission() }; blocked { protocol(root).safeCleanup(o) }
+        assertFalse(File(root, "abort-${o.attemptId}.v2").exists())
+    }
+
+    @Test fun source_copy_nonempty_guard_is_rejected_before_any_identity_reader_can_open_it() {
+        val root = temporary.newFolder(); val o = owner()
+        val p = JpegStageV2(root, generation, { file ->
+            if (file.name in setOf(".namespace.guard", "consumer.guard") && file.length() != 0L) {
+                throw AssertionError("A corrupted guard must be rejected before the identity reader can open its inode")
+            }
+            fileIdentity(file)
+        }) { check(it.isDirectory) }
+        p.create(o, ByteArrayInputStream(byteArrayOf(7)))
+        val guard = File(root, o.assetId + "/consumer.guard").also { it.writeBytes(byteArrayOf(1)) }
+        blocked { p.snapshot(o) }
+        assertArrayEquals(byteArrayOf(1), guard.readBytes())
+        assertTrue(File(root, o.assetId + "/source.bin").exists())
+    }
 }

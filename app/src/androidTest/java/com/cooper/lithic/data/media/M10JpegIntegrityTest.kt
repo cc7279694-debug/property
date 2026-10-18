@@ -32,7 +32,10 @@ class M10JpegIntegrityTest {
         store = LocalImageStore(root)
     }
 
-    @After fun tearDown() {
+    @After fun tearDown() = runBlocking {
+        // A failed or unknown consumer must preserve both its source fixture and private stage.
+        // Propagate the original close failure before deleting any synthetic resource.
+        if (::store.isInitialized) store.closeForGeneration()
         sources.forEach { it.delete() }
         if (::root.isInitialized) {
             check(root.canonicalFile.parentFile == context.noBackupFilesDir.canonicalFile)

@@ -1,0 +1,52 @@
+$ ["C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe", "-cp", "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-compiler-embeddable\\2.3.10\\6e349e33b398eb4f0227ceb5b99db2535a982670\\kotlin-compiler-embeddable-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-script-runtime\\2.3.10\\1964f711f069f184f7848971fdcbdd15f26ef79\\kotlin-script-runtime-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-reflect\\1.6.10\\1cbe9c92c12a94eea200d23c2bbaedaf3daf5132\\kotlin-reflect-1.6.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-daemon-embeddable\\2.3.10\\5d578a9d479980dcf1144e721cb3502f0c23316e\\kotlin-daemon-embeddable-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlinx\\kotlinx-coroutines-core-jvm\\1.8.0\\ac1dc37a30a93150b704022f8d895ee1bd3a36b3\\kotlinx-coroutines-core-jvm-1.8.0.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar", "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler", "-no-stdlib", "-no-reflect", "-jvm-target", "17", "-classpath", "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar", "-d", "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\build\\review-fix\\stage-host\\guard-reader-red-classes", "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\app\\src\\main\\java\\com\\cooper\\lithic\\data\\media\\jpegstage\\JpegStageV2.kt", "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\app\\src\\main\\java\\com\\cooper\\lithic\\data\\media\\jpegstage\\StageRecords.kt", "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\app\\src\\test\\java\\com\\cooper\\lithic\\data\\media\\jpegstage\\JpegStageV2Test.kt"]
+
+EXIT=0
+$ ["C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javac.exe", "-cp", "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar", "-d", "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\build\\review-fix\\stage-host\\guard-reader-red-classes", "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\build\\review-fix\\stage-host\\StageTargetRunner.java"]
+
+EXIT=0
+$ ["C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe", "-cp", "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\build\\review-fix\\stage-host\\guard-reader-red-classes;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar", "StageTargetRunner", "source_copy_nonempty_guard_"]
+FAIL source_copy_nonempty_guard_is_rejected_before_any_identity_reader_can_open_it
+java.lang.AssertionError: unexpected exception type thrown; expected:<com.cooper.lithic.data.media.jpegstage.JpegStageV2.Blocked> but was:<java.lang.AssertionError>
+	at org.junit.Assert.assertThrows(Assert.java:1020)
+	at org.junit.Assert.assertThrows(Assert.java:981)
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2Test.blocked(JpegStageV2Test.kt:63)
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2Test.source_copy_nonempty_guard_is_rejected_before_any_identity_reader_can_open_it(JpegStageV2Test.kt:451)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.rules.ExternalResource$1.evaluate(ExternalResource.java:54)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at StageTargetRunner.main(StageTargetRunner.java:17)
+Caused by: java.lang.AssertionError: A corrupted guard must be rejected before the identity reader can open its inode
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2Test.source_copy_nonempty_guard_is_rejected_before_any_identity_reader_can_open_it$lambda$0(JpegStageV2Test.kt:445)
+	at com.cooper.lithic.data.media.jpegstage.StageRecords.fingerprint(StageRecords.kt:32)
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2.load(JpegStageV2.kt:344)
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2.snapshot$lambda$0(JpegStageV2.kt:223)
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2.locked(JpegStageV2.kt:560)
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2.snapshot(JpegStageV2.kt:223)
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2Test.source_copy_nonempty_guard_is_rejected_before_any_identity_reader_can_open_it$lambda$3(JpegStageV2Test.kt:451)
+	at com.cooper.lithic.data.media.jpegstage.JpegStageV2Test.blocked$lambda$0(JpegStageV2Test.kt:63)
+	at org.junit.Assert.assertThrows(Assert.java:1001)
+	... 27 more
+
+TESTS=1 FAILURES=1
+
+EXIT=1

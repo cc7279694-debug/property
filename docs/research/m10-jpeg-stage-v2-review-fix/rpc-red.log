@@ -1,0 +1,134 @@
+JUnit version 4.13.2
+.E.E.E.E.E.E.E.E.E..E.E.E.E.E..E.E.E.E
+Time: 0.034
+There were 18 failures:
+1) lateQueuedRpcNeverRunsAfterConnectionClosure(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.lateQueuedRpcNeverRunsAfterConnectionClosure(JpegRpcBindingDutyTest.java:33)
+2) successfulBindingOwnsOneRpcTicket(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<0> but was:<2>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.successfulBindingOwnsOneRpcTicket(JpegRpcBindingDutyTest.java:10)
+3) invalidCompletionCannotClaimResourceProof(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.invalidCompletionCannotClaimResourceProof(JpegRpcBindingDutyTest.java:20)
+4) duplicateCompletionCannotReleaseNewerRpc(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.duplicateCompletionCannotReleaseNewerRpc(JpegRpcBindingDutyTest.java:19)
+5) inflightClosureNeedsMatchingReturnBeforeCleanup(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.inflightClosureNeedsMatchingReturnBeforeCleanup(JpegRpcBindingDutyTest.java:16)
+6) wrongTicketCannotReleaseInFlightRpc(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.wrongTicketCannotReleaseInFlightRpc(JpegRpcBindingDutyTest.java:18)
+7) simultaneousClosureAndRpcClaimHasOneLinearization(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.simultaneousClosureAndRpcClaimHasOneLinearization(JpegRpcBindingDutyTest.java:38)
+8) closureBeforeUiBindRunsPreventsNewBind(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.closureBeforeUiBindRunsPreventsNewBind(JpegRpcBindingDutyTest.java:22)
+9) competingRpcStartsCannotBothOwnTheConnection(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<1> but was:<2>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.competingRpcStartsCannotBothOwnTheConnection(JpegRpcBindingDutyTest.java:39)
+10) timedOutRpcDoesNotReleaseItsTicket(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.timedOutRpcDoesNotReleaseItsTicket(JpegRpcBindingDutyTest.java:26)
+11) repeatedIdleClosureIsIdempotent(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<0> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.repeatedIdleClosureIsIdempotent(JpegRpcBindingDutyTest.java:21)
+12) earlyConnectedCallbackCannotReplaceActualBindReturn(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<0> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.earlyConnectedCallbackCannotReplaceActualBindReturn(JpegRpcBindingDutyTest.java:11)
+13) cleanupClaimPermanentlyRejectsQueuedRpc(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<0> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.cleanupClaimPermanentlyRejectsQueuedRpc(JpegRpcBindingDutyTest.java:14)
+14) unboundInvocationCannotClaimRpc(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<0> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.unboundInvocationCannotClaimRpc(JpegRpcBindingDutyTest.java:9)
+15) thrownBindNeverAllowsRpc(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<0> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.thrownBindNeverAllowsRpc(JpegRpcBindingDutyTest.java:13)
+16) activeRpcPreventsCleanupClaim(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.activeRpcPreventsCleanupClaim(JpegRpcBindingDutyTest.java:15)
+17) completionAfterClosedGateCannotReopenAuthorization(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<0> but was:<2>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.completionAfterClosedGateCannotReopenAuthorization(JpegRpcBindingDutyTest.java:37)
+18) falseBindNeverAllowsRpc(com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest)
+java.lang.AssertionError: expected:<0> but was:<1>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.falseBindNeverAllowsRpc(JpegRpcBindingDutyTest.java:12)
+
+FAILURES!!!
+Tests run: 20,  Failures: 18
+

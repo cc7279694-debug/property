@@ -63,6 +63,11 @@ internal class MediaFileProtocol(private val supplied: File) {
     /** Open and hash the same non-linked inode, including a post-read path/size check. */
     fun identity(file: File): JpegStageV2.FileIdentity {
         val empty = Os.lstat(file.path)
+        // Even a corrupt guard must never enter the descriptor-based hashing path:
+        // closing another FD for that inode can release this process's POSIX lease.
+        if (file.name.endsWith(".guard") && (!OsConstants.S_ISREG(empty.st_mode) || empty.st_size != 0L)) {
+            path("Private JPEG guard must remain a regular empty inode")
+        }
         if (OsConstants.S_ISREG(empty.st_mode) && empty.st_size == 0L) {
             // POSIX process locks can be released when ANY descriptor for the same
             // inode is closed. Never open/close a guard while its FileLock is held.

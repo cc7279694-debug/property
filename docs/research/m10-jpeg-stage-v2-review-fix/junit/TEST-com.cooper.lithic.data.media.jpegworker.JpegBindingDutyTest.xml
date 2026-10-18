@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-18T11:37:45.548Z" hostname="WHOCARE" time="0.003">
+  <properties/>
+  <testcase name="duplicateCleanupCannotRunTwice" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.002"/>
+  <testcase name="unsolicitedCleanupSuccessRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <testcase name="bindCannotBeginAfterCleanupWasClaimed" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <testcase name="duplicateBindReturnRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <testcase name="trueReturnRetainsResponsibility" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <testcase name="thrownBindStillAttemptsCleanup" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.001"/>
+  <testcase name="falseReturnStillAttemptsCleanup" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <testcase name="bindReturnRecordedEvenAfterCleanupClaim" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <testcase name="unbindErrorRetainsUnknownResponsibility" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <testcase name="notAttemptedNeedsNoUnbind" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <testcase name="unsolicitedCleanupFailureRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

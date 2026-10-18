@@ -1,0 +1,134 @@
+{
+  "status": "PASS_STATIC_ARTIFACT_NOT_ANDROID_LOAD",
+  "apk": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 13931874,
+    "sha256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+    "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9"
+  },
+  "native": [
+    {
+      "abi": "arm64-v8a",
+      "bytes": 284136,
+      "sha256": "44cc13c6921a0bda3a2e298eb232c1ad0f0863c2ab33cbf8e74807a65d2ea0de",
+      "stripMatchesAPK": true,
+      "elf": {
+        "machine": "AArch64",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ],
+        "androidAPI": 26,
+        "ndk": "r28c",
+        "ndkBuild": "13676358"
+      },
+      "androidRuntime": "NOT_RUN"
+    },
+    {
+      "abi": "armeabi-v7a",
+      "bytes": 218760,
+      "sha256": "f212d2b51448f919bbbf48b30a68a7f795261fe5ebdef72e919e1ea2c45faabd",
+      "stripMatchesAPK": true,
+      "elf": {
+        "machine": "ARM",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ],
+        "androidAPI": 26,
+        "ndk": "r28c",
+        "ndkBuild": "13676358"
+      },
+      "androidRuntime": "NOT_RUN"
+    },
+    {
+      "abi": "x86",
+      "bytes": 328884,
+      "sha256": "8531d0a92fd4cf407660796cc310dd4350e94a538be44a45be17c57bef644d97",
+      "stripMatchesAPK": true,
+      "elf": {
+        "machine": "Intel 80386",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ],
+        "androidAPI": 26,
+        "ndk": "r28c",
+        "ndkBuild": "13676358"
+      },
+      "androidRuntime": "NOT_RUN"
+    },
+    {
+      "abi": "x86_64",
+      "bytes": 342256,
+      "sha256": "25b0fa227d1380beb995a7d360f4c29964e72d8d288b62b3aa2ac7cfbb37a116",
+      "stripMatchesAPK": true,
+      "elf": {
+        "machine": "Advanced Micro Devices X86-64",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ],
+        "androidAPI": 26,
+        "ndk": "r28c",
+        "ndkBuild": "13676358"
+      },
+      "androidRuntime": "NOT_RUN"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "LICENSE.md",
+      "bytes": 6077,
+      "sha256": "ba6bceebcba0fdd35488477c2cca8c4632ce82c74dbfbc87d886ce6fc4433579"
+    },
+    {
+      "name": "LITHIC_CHANGES.txt",
+      "bytes": 532,
+      "sha256": "c727e8ea660b395f5538f4dc3c766bf411982b83a3e4f2e3e2981c684efb59e0"
+    },
+    {
+      "name": "README.ijg",
+      "bytes": 12799,
+      "sha256": "75815e3bf6484201a3c3d17a1bbf10f2e8e3237f84df10a2357ea896db2a81d6"
+    }
+  ],
+  "worker": {
+    "nonExported": true,
+    "process": ":jpeg_worker",
+    "aaptRecord": "          E: service (line=32)\n            A: http://schemas.android.com/apk/res/android:name(0x01010003)=\"com.cooper.lithic.data.media.jpegworker.JpegWorkerService\" (Raw: \"com.cooper.lithic.data.media.jpegworker.JpegWorkerService\")\n            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false\n            A: http://schemas.android.com/apk/res/android:process(0x01010011)=\":jpeg_worker\" (Raw: \":jpeg_worker\")"
+  },
+  "nativeSourceAssembly": "cde2f1e5c19573996d0d89372a06230693e8808fe2b786d9451c3f976b45fd8d"
+}

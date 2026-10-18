@@ -1,0 +1,433 @@
+{
+  "status": "OFFLINE_READY_FOR_REVIEW_ANDROID_NOT_RUN",
+  "baseline": "8ff9e5a6adefddab68eaf4bec5663b4d376ce2d7",
+  "branch": "codex/m10-jpeg-worker-stage-v2-review-fix",
+  "utc": "2026-10-18T11:38:10.048313+00:00",
+  "inputs": {
+    "fileCount": 199,
+    "rawAggregate": "b9e25a8b0a8214f24aa29224d4ce74f7aaf0c70988d2452ba6fa67ce62d897f0",
+    "logicalAggregate": "35a8fec07ae3680b5a2ef748b13771a51ff63b1077995e5cb7199c9c6b17000f",
+    "unchangedBeforeAfter": true,
+    "stagedAppGitTree": "89679a188c2b6e6793962041383a9f92337e126f",
+    "scope": "app/src, app/schemas, Gradle/scripts, SDK locator and pinned native build inputs; docs evidence excluded"
+  },
+  "finalGradle": {
+    "exit": 0,
+    "tasks": [
+      ":app:assembleDebug",
+      ":app:compileDebugAndroidTestKotlin",
+      ":app:lintDebug",
+      ":app:testDebugUnitTest"
+    ],
+    "success": "BUILD SUCCESSFUL in 14m 24s",
+    "log": "final-gradle.log"
+  },
+  "jvm": {
+    "uniqueMethods": 308,
+    "pass": 308,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "sourceMethodIdentitiesMatchXML": true,
+    "originalBaselineIdentitiesRetained": 236,
+    "addedIdentities": 72,
+    "domainAndDesign": 86,
+    "stage": 79,
+    "worker": 143,
+    "suites": [
+      {
+        "suite": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "tests": 8,
+        "seconds": 0.06
+      },
+      {
+        "suite": "com.cooper.lithic.core.model.MoneyParserTest",
+        "tests": 7,
+        "seconds": 0.056
+      },
+      {
+        "suite": "com.cooper.lithic.core.time.BusinessClockTest",
+        "tests": 2,
+        "seconds": 0.02
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegstage.JpegStageV2Test",
+        "tests": 79,
+        "seconds": 782.679
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest",
+        "tests": 12,
+        "seconds": 0.015
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest",
+        "tests": 11,
+        "seconds": 0.003
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegDecoderPolicyTest",
+        "tests": 7,
+        "seconds": 0.002
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegFailurePublicationTest",
+        "tests": 4,
+        "seconds": 0.001
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegPublicationDeadlineTest",
+        "tests": 3,
+        "seconds": 0.001
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest",
+        "tests": 17,
+        "seconds": 0.001
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegRetirementAcknowledgementTest",
+        "tests": 8,
+        "seconds": 0.001
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest",
+        "tests": 12,
+        "seconds": 0.001
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest",
+        "tests": 23,
+        "seconds": 0.063
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegRetirementOrderingTest",
+        "tests": 2,
+        "seconds": 0.001
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest",
+        "tests": 20,
+        "seconds": 0.077
+      },
+      {
+        "suite": "com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest",
+        "tests": 24,
+        "seconds": 0.031
+      },
+      {
+        "suite": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "tests": 22,
+        "seconds": 0.123
+      },
+      {
+        "suite": "com.cooper.lithic.domain.project.ProjectLifecycleRulesTest",
+        "tests": 4,
+        "seconds": 0.01
+      },
+      {
+        "suite": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "tests": 6,
+        "seconds": 0.032
+      },
+      {
+        "suite": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "tests": 37,
+        "seconds": 0.022
+      }
+    ],
+    "raw": "junit/",
+    "methodIdentitySHA256": "2050e1214e84f53454606497a40a872990550c44aed4ec8f16ce8c1eca6b289b"
+  },
+  "additionalHostChecks": {
+    "pythonAssemblyTests": 9,
+    "directStageNewTests": 12,
+    "directWorkerTests": 143,
+    "counting": "Direct reruns and intermediate288 are not added to the final308 unique JVM methods."
+  },
+  "red": {
+    "stageOldSource": {
+      "methods": 6,
+      "failures": 6
+    },
+    "guardOldSource": {
+      "methods": 1,
+      "failures": 1
+    },
+    "retirementOldGate": {
+      "methods": 2,
+      "failures": 2
+    },
+    "handshakeFailClosedStub": {
+      "methods": 23,
+      "failures": 22
+    },
+    "ackFailClosedStub": {
+      "methods": 8,
+      "failures": 2
+    },
+    "failurePublicationStub": {
+      "methods": 4,
+      "failures": 1
+    },
+    "deadlineStub": {
+      "methods": 3,
+      "failures": 2
+    },
+    "rpcOldDutyWithNoopSeam": {
+      "methods": 20,
+      "failures": 18
+    },
+    "note": "Stub/mutation runs are labelled explicitly; they are not Android failures. Stage initial3 overlap the later6 and are not counted twice."
+  },
+  "lint": {
+    "severity": {
+      "Warning": 23
+    },
+    "status": "PASS_NO_ERRORS_WARNINGS_RETAINED"
+  },
+  "androidTestSourceCompilation": "PASS_NOT_DEVICE_EXECUTION",
+  "androidRuntime": {
+    "allTests": "NOT_RUN",
+    "newNaturalLifecycleMethods": 2,
+    "originalThreeJpegFailures": "HISTORICAL_FAIL_UNCHANGED_THIS_RUN_NOT_RUN",
+    "nativeAllFourABIs": "NOT_RUN",
+    "deviceOperations": {
+      "adb": 0,
+      "avd": 0,
+      "install": 0,
+      "start": 0,
+      "h2c2Access": 0
+    }
+  },
+  "artifact": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 13931874,
+    "sha256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+    "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9"
+  },
+  "artifactScope": "Four packaged ABIs, pinned source/strip/ELF/API26 notes,16KiB alignment, licenses,manifest and certificate checked statically; no Android load proof.",
+  "intermediate": {
+    "summary": "intermediate-summary.json",
+    "supersededBy": "RPC ticket gate final frozen inputs",
+    "finalRunMustNotBeInferredFromIntermediate": true
+  },
+  "auditCorrection": {
+    "raw": "artifact-audit-first.log",
+    "cause": "audit-only matcher expected hex false; aapt printed literal false",
+    "productInputsChanged": false,
+    "sameApkRechecked": "PASS"
+  },
+  "retained": {
+    "M10": "PENDING",
+    "threeJpegTests": "FAIL_HISTORICAL",
+    "UI_C1": "ACCEPTED_FROZEN_PASS_WITH_NOTES",
+    "M11": "NOT_AUTHORIZED",
+    "D2A_N01_N05_A1_N01_N04": "ALL_RETAINED",
+    "H2_C2": "UNTOUCHED_HISTORICAL_STATE_ONLY"
+  },
+  "remaining": [
+    "Real API26/API36 bound-service lifecycle and all native ABI loads NOT_RUN.",
+    "Cancellation/timeout/death fault-injection hooks and device permissions require independent review.",
+    "In-flight Binder past final cleanup window retains binding,pin and UNKNOWN; no automatic late cleanup hook.",
+    "Permanently blocked source-provider read cannot be forcibly cancelled; mobile hash/fsync worst latency unknown.",
+    "512MiB requested-allocation budget is not RSS or device safety cap."
+  ],
+  "evidence": [
+    {
+      "path": "ack-red.log",
+      "bytes": 988,
+      "sha256": "24fd6de89ce1eba9fe3511305c3c6a46cc514c0539869825a94cea0a759d63d1"
+    },
+    {
+      "path": "apk-config.json",
+      "bytes": 1349,
+      "sha256": "5ec4132b7cb9a7491887e46d3f63217711e33ab57ea1e842bf5d53f5d3696a48"
+    },
+    {
+      "path": "artifact-audit-first.log",
+      "bytes": 341,
+      "sha256": "1df8b39ddac0985365f3819b98824063f8b591a6cdafcd10e8056efd0fddda6c"
+    },
+    {
+      "path": "artifact-audit.json",
+      "bytes": 4231,
+      "sha256": "9b34de56882914cb73793776f049a92a9e735537040b23b45d69971ce10e985f"
+    },
+    {
+      "path": "assembly-tests.log",
+      "bytes": 112,
+      "sha256": "7f678934c2c775d17c40ffccb0e14236050bbbf733652087fa7e4e4977125452"
+    },
+    {
+      "path": "deadline-red.log",
+      "bytes": 1205,
+      "sha256": "186d3eae30d7b4376832f752ef2ad6304de3ab35e461bb46f6ab9fde1c1b3836"
+    },
+    {
+      "path": "failure-publication-red.log",
+      "bytes": 561,
+      "sha256": "d935f44d6961f6a9646063510a767aa5fff1694b95acb836aee1d22f0442a4b9"
+    },
+    {
+      "path": "final-gradle.log",
+      "bytes": 4000,
+      "sha256": "0bafc292e3ea6c06e91ccf11a4efbda9d1416fc9b41030ac7a721c592692417e"
+    },
+    {
+      "path": "guard-red.log",
+      "bytes": 7550,
+      "sha256": "b283cda9fda613e5ca55ea816367f7613416b94ac2011f8c79454951b4489180"
+    },
+    {
+      "path": "handshake-red.log",
+      "bytes": 12210,
+      "sha256": "de53caacb27b9743a9521ab52732d75aca3395ec9551b87d1a2a7cf1aa04359a"
+    },
+    {
+      "path": "intermediate-summary.json",
+      "bytes": 377,
+      "sha256": "a4a478216c9cbabe2b11d017388be733495c734af125c3c9685b5ed83f0868de"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.core.design.AmountFormatterTest.xml",
+      "bytes": 1536,
+      "sha256": "3e7112021083244a938a541b0663f34abe3cb2f6f141c7d64e73894e084196bb"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.core.model.MoneyParserTest.xml",
+      "bytes": 1221,
+      "sha256": "0d1a706b6df279b3dac32c7427ade751d1e5fea16790932cfaffe39eeebafbe2"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.core.time.BusinessClockTest.xml",
+      "bytes": 605,
+      "sha256": "6f427ef1136054799514b423b86d9ba22684b7c762e4e9d0ca9ca599262606b2"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegstage.JpegStageV2Test.xml",
+      "bytes": 12421,
+      "sha256": "470ef923e040493b892f75004ad1fbb0c8320dc2a1790cb3e05e935fb8635c48"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.xml",
+      "bytes": 2171,
+      "sha256": "4a3fe0c5b69d906088976338fa77fa8112a6bbcc81b96c106601d36514f28ac7"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest.xml",
+      "bytes": 1874,
+      "sha256": "21469bed65c739f7c3ab96793b8950b7e2aefa6fbe32e0b2274f1700ee798f16"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegDecoderPolicyTest.xml",
+      "bytes": 1270,
+      "sha256": "88ec825ae1cb704d50720ba5e433792a8d60fb82ef7c902e48e0d19e4aed9e16"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegFailurePublicationTest.xml",
+      "bytes": 981,
+      "sha256": "430c812df3409312535bf89e32d225aa684def1dba2faa60d7cf5e82a13f5e4f"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegPublicationDeadlineTest.xml",
+      "bytes": 832,
+      "sha256": "52249007d5b6c8bce79ded7861bd481b5f06989dd691ad23b93ca7d9257d91b0"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest.xml",
+      "bytes": 2708,
+      "sha256": "248cf4fdfbfded6cac71fa39a30dcd4fd3e70e7264fe64b9f89604a4d05cb5ec"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementAcknowledgementTest.xml",
+      "bytes": 1626,
+      "sha256": "39b1f58ea815c22b4e02385855f69522a84a0611e87f559dfaf03eded68ae820"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest.xml",
+      "bytes": 2071,
+      "sha256": "5570c4c76abe6eb2d4403476cb36ed518f3f800d1f83790777eaf43bb3db8876"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest.xml",
+      "bytes": 3909,
+      "sha256": "6d9833cda52a17e91734deb17ba047a7a71812db5ead2a23b0a749aba4d53f10"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementOrderingTest.xml",
+      "bytes": 669,
+      "sha256": "ce00d0701ab6f3608da330cf8984564016c66cacb6c96481964b02f29b2c78ea"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.xml",
+      "bytes": 3294,
+      "sha256": "35b99aff5d8eea6cb972660652452d7436b13280bb017816a67f206602b87148"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest.xml",
+      "bytes": 3592,
+      "sha256": "ffa7afd61ad8e415c0c70d7309b8fcc79dad1d697dc9f8ea2d809b08a8198d65"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+      "bytes": 3512,
+      "sha256": "73ba0ff82f3281164ec7fbf2c76cdabd6d3135cc3df2a28d2014775d70a5a6c2"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.domain.project.ProjectLifecycleRulesTest.xml",
+      "bytes": 986,
+      "sha256": "3324e91a84df99c430ed5ee6554d9adc0c24b1645ffc66e4ac1a0179cb1dab4b"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest.xml",
+      "bytes": 1370,
+      "sha256": "35d084ee0d4d90dfc81eb384c2e79049d9fdf58c8ce727d4bba8607b6180a6c1"
+    },
+    {
+      "path": "junit/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+      "bytes": 6093,
+      "sha256": "2f932d099e5e44ce52e1dcf07be12a71b367f189060e1a7e7d7d0141de5e386c"
+    },
+    {
+      "path": "lint.xml",
+      "bytes": 23468,
+      "sha256": "9c285639c42cd6329ef9f7f64a0478aa503bab1acd6836b288e0dbf80eba4484"
+    },
+    {
+      "path": "retirement-order-red.log",
+      "bytes": 1028,
+      "sha256": "510b7688060d7bbff9bebe8aa4c21f423fdfff330feaf50ad464496fb27f1c8b"
+    },
+    {
+      "path": "rpc-red.log",
+      "bytes": 8811,
+      "sha256": "530b8d6b04102a6c174ca126985d4cbda3692310467a73f2ad57382d550d9659"
+    },
+    {
+      "path": "signature.txt",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    {
+      "path": "source-safety.json",
+      "bytes": 1101,
+      "sha256": "fb4309da2dd82b8074500f28d396fec7e086cd24adb023f07619e9c331ef908c"
+    },
+    {
+      "path": "stage-direct-green.log",
+      "bytes": 5038,
+      "sha256": "5d1acf2a02e04d1b85de334f2c52afc80cff16696a1aaa3e944c5745b699ade3"
+    },
+    {
+      "path": "stage-red.log",
+      "bytes": 21408,
+      "sha256": "2fa20cdb66acc517222a8eea9ff7952ae3d93007ec4fa65315b8ae3d9bdcc8b0"
+    },
+    {
+      "path": "worker-direct-green.log",
+      "bytes": 199,
+      "sha256": "a58d1cb6f07f96b393b6ab707765a99969f768dac1d38af9045ee69dd71719d9"
+    }
+  ]
+}

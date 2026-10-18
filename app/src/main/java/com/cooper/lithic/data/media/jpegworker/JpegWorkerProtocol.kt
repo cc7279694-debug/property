@@ -7,6 +7,7 @@ import android.os.Parcel
 import android.os.ParcelFileDescriptor
 import android.system.Os
 import android.system.OsConstants
+import android.util.Log
 import com.cooper.lithic.data.media.MediaNativeFlags
 import java.io.File
 import java.io.IOException
@@ -82,6 +83,23 @@ internal object JpegWorkerWire {
     fun identity(bundle: Bundle)=JpegWorkerIdentity(bundle.getInt("pid"),bundle.getInt("uid"),bundle.getLong("start"))
     fun identityBundle(identity: JpegWorkerIdentity)=Bundle().apply {
         putInt("pid",identity.pid);putInt("uid",identity.uid);putLong("start",identity.startTicks)
+    }
+    fun retirementReply(phase:String,request:JpegWorkerRequest,worker:JpegWorkerIdentity)=Bundle().apply {
+        putBoolean("accepted",true);putString("phase",phase)
+        putBundle("request",request.bundle());putBundle("worker",identityBundle(worker))
+    }
+    fun requireRetirementReply(reply:Bundle,phase:String,request:JpegWorkerRequest,worker:JpegWorkerIdentity) {
+        if(reply.keySet()!=setOf("accepted","phase","request","worker"))throw IOException("Retirement acknowledgement shape unknown")
+        val claimed=reply.getBundle("worker") ?: throw IOException("Retirement Worker absent")
+        if(claimed.keySet()!=setOf("pid","uid","start"))throw IOException("Retirement Worker shape unknown")
+        val acknowledged=reply.getBundle("request") ?: throw IOException("Retirement request absent")
+        if(!JpegRetirementGate.acknowledgement(phase,reply.getString("phase"),JpegWorkerRequest.read(acknowledged)==request,
+                identity(claimed)==worker,reply.getBoolean("accepted")))throw IOException("Retirement acknowledgement conflict")
+    }
+    /** Bounded lifecycle diagnostics, with no file path, source bytes or business contents. */
+    fun event(phase:String,request:JpegWorkerRequest?,worker:JpegWorkerIdentity?) {
+        Log.i("LITHIC_JPEG","$phase attempt=${request?.attemptId ?: "NONE"} session=${request?.sessionId ?: "NONE"} "+
+            "worker=${worker?.pid ?: 0}/${worker?.uid ?: 0}/${worker?.startTicks ?: 0} at=${android.os.SystemClock.elapsedRealtime()}")
     }
     fun call(endpoint: IBinder, code: Int, write: (Parcel)->Unit = {}): Bundle {
         val data=Parcel.obtain();val reply=Parcel.obtain()

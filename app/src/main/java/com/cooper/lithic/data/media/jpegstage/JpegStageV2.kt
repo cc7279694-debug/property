@@ -5,10 +5,13 @@ import java.io.IOException
 import java.io.InputStream
 import java.nio.ByteBuffer
 import java.nio.channels.FileChannel
+import java.nio.channels.FileLock
 import java.nio.channels.OverlappingFileLockException
 import java.nio.file.LinkOption
 import java.nio.file.StandardOpenOption
 import java.util.UUID
+import java.util.concurrent.CancellationException
+import java.util.concurrent.atomic.AtomicBoolean
 
 /** Candidate private JPEG protocol. Immutable receipts never become business facts. */
 internal class JpegStageV2(
@@ -17,6 +20,13 @@ internal class JpegStageV2(
     identity: (File) -> FileIdentity,
     syncDirectory: (File) -> Unit,
 ) {
+    private companion object {
+        // POSIX record locks can be dropped by closing ANY same-process FD for that
+        // inode. Reject local contention before opening another namespace guard FD.
+        // A single bounded gate avoids an unbounded per-path lock registry; the
+        // durable FileLock still arbitrates different Android processes.
+        val namespaceAdmission = AtomicBoolean(false)
+    }
     data class Owner(val generation: String, val assetId: String, val attemptId: String, val sessionId: String, val nonce: String)
     data class FileIdentity(val device: Long, val inode: Long, val bytes: Long, val sha256: String)
     data class WorkerIdentity(val pid: Int, val uid: Int, val startTicks: Long)
@@ -57,8 +67,116 @@ internal class JpegStageV2(
         val worker: WorkerIdentity?, val pin: Map<String, String>?, val terminal: Map<String, String>?,
         val revoked: Boolean, val delivered: Boolean, val prepared: Boolean, val cleanup: Boolean)
 
-    /** Creates source and output exclusively. Partial failures remain blocked, never inferred safe. */
-    fun create(owner: Owner, sourceInput: InputStream): Snapshot = locked {
+    private class FreshCreation(
+        val owner: Owner, val directory: File, val guardIdentity: FileIdentity,
+        val source: File, val sourceChannel: FileChannel, val initialSource: FileIdentity,
+        val producerChannel: FileChannel, val producerLease: FileLock,
+    ) : java.io.Closeable {
+        fun requireProducer() {
+            if (!producerChannel.isOpen || !producerLease.isValid) throw Blocked("JPEG producer lease is not held")
+        }
+        fun closeProducer() {
+            var failure: Exception? = null
+            try { if (producerLease.isValid) producerLease.release() } catch (error: Exception) { failure = error }
+            try { producerChannel.close() } catch (error: Exception) {
+                if (failure == null) failure = error else failure.addSuppressed(error)
+            }
+            if (failure != null) throw failure
+        }
+        override fun close() {
+            var failure: Exception? = null
+            try { sourceChannel.close() } catch (error: Exception) { failure = error }
+            try { closeProducer() } catch (error: Exception) {
+                if (failure == null) failure = error else failure.addSuppressed(error)
+            }
+            if (failure != null) throw failure
+        }
+    }
+
+    /**
+     * Registration and publication are short namespace transactions. The untrusted
+     * provider stream is consumed outside that lock, under this attempt's existing
+     * consumer.guard as an exclusive producer lease. Unpublished stages admit no FD
+     * delivery, cleanup or restart recovery. A blocking read is not forcibly cancelled.
+     */
+    fun create(owner: Owner, sourceInput: InputStream, checkActive: () -> Unit = {}): Snapshot {
+        try {
+            return locked { beginCreation(owner) }.use { fresh ->
+                var copyFailure: Exception? = null
+                var closeFailure: Exception? = null
+                var abortEligible = false
+                try {
+                    val buffer = ByteArray(8192)
+                    var total = 0L
+                    while (true) {
+                        val count = try {
+                            checkActive()
+                            val read = sourceInput.read(buffer)
+                            checkActive()
+                            read
+                        } catch (failure: Exception) { abortEligible = true; throw failure }
+                        if (count < 0) break
+                        if (count == 0) { abortEligible = true; blocked("Source stream made no progress") }
+                        total = Math.addExact(total, count.toLong())
+                        if (total > 64L * 1024 * 1024) { abortEligible = true; throw SourceLimitExceeded("Source exceeds original input limit") }
+                        val bytes = ByteBuffer.wrap(buffer, 0, count)
+                        while (bytes.hasRemaining()) fresh.sourceChannel.write(bytes)
+                    }
+                    fresh.sourceChannel.force(true)
+                    if (total == 0L) { abortEligible = true; blocked("Empty JPEG source") }
+                } catch (failure: Exception) { copyFailure = failure }
+                finally {
+                    try { fresh.sourceChannel.close() } catch (failure: Exception) { closeFailure = failure }
+                }
+                // No cancellation callback or external stream code runs while a
+                // namespace lock is held, including the final publication check.
+                if (copyFailure == null && closeFailure == null) {
+                    try { checkActive() } catch (failure: Exception) { abortEligible = true; copyFailure = failure }
+                }
+                val failure = copyFailure ?: closeFailure
+                if (failure != null) {
+                    if (closeFailure != null && closeFailure !== failure) failure.addSuppressed(closeFailure)
+                    try {
+                        locked {
+                            try {
+                                if (abortEligible && closeFailure == null && !fresh.sourceChannel.isOpen) {
+                                    abortFreshCreation(fresh, failure)
+                                }
+                            } finally { fresh.closeProducer() }
+                        }
+                    } catch (cleanupFailure: Exception) { failure.addSuppressed(cleanupFailure) }
+                    // In particular preserve the original CancellationException.
+                    // Unknown cleanup remains attached and the stage stays blocking.
+                    throw failure
+                }
+                locked {
+                    try {
+                        requireFreshCreation(fresh)
+                        // Establish producer FD closure before making any complete
+                        // source/output pair visible. A close error leaves this
+                        // unpublished stage blocked; it cannot admit a consumer.
+                        fresh.closeProducer()
+                        files.sync(fresh.directory)
+                        files.put(files.child(fresh.directory, "source.v2"), fileValues(fresh.directory, files.fingerprint(fresh.source)))
+                        val output = files.child(fresh.directory, "image.jpg")
+                        createEmpty(output)
+                        files.put(files.child(fresh.directory, "output.v2"), fileValues(fresh.directory, files.fingerprint(output)))
+                        asSnapshot(load(owner))
+                    } finally {
+                        // Publication and producer FD release share the namespace
+                        // critical section. A new consumer cannot race a late close.
+                        fresh.closeProducer()
+                    }
+                }
+            }
+        } catch (failure: CancellationException) { throw failure }
+        catch (failure: SourceLimitExceeded) { throw failure }
+        catch (failure: Blocked) { throw failure }
+        catch (failure: Exception) { throw Blocked("JPEG durable state could not be established", failure) }
+    }
+
+    /** Called only under the namespace lock; no provider callbacks are invoked. */
+    private fun beginCreation(owner: Owner): FreshCreation {
         validOwner(owner)
         admissionLocked()
         if (files.exists(files.child(root, "abort-${owner.attemptId}.v2"))) blocked("An aborted JPEG attempt cannot regain authority")
@@ -70,45 +188,31 @@ internal class JpegStageV2(
         val guardIdentity = files.fingerprint(guard)
         files.put(files.child(directory, "owner.v2"), ownerValues(owner) + mapOf("guardDevice" to guardIdentity.device.toString(), "guardInode" to guardIdentity.inode.toString()))
         val source = files.child(directory, "source.bin")
-        val channel = FileChannel.open(source.toPath(), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS)
-        var initialSource: FileIdentity? = null
-        var copyFailure: Exception? = null
-        var closeFailure: Exception? = null
-        var abortEligible = false
+        var producerChannel: FileChannel? = null
+        var producerLease: FileLock? = null
+        var sourceChannel: FileChannel? = null
         try {
-            initialSource = files.fingerprint(source)
-            val buffer = ByteArray(8192)
-            var total = 0L
-            while (true) {
-                val count = try { sourceInput.read(buffer) } catch (failure: Exception) { abortEligible = true; throw failure }
-                if (count < 0) break
-                if (count == 0) { abortEligible = true; blocked("Source stream made no progress") }
-                total = Math.addExact(total, count.toLong())
-                if (total > 64L * 1024 * 1024) { abortEligible = true; throw SourceLimitExceeded("Source exceeds original input limit") }
-                val bytes = ByteBuffer.wrap(buffer, 0, count)
-                while (bytes.hasRemaining()) channel.write(bytes)
+            producerChannel = FileChannel.open(guard.toPath(), StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS)
+            producerLease = try { producerChannel.tryLock() } catch (_: OverlappingFileLockException) { null }
+            if (producerLease == null) blocked("Fresh JPEG producer guard is occupied")
+            files.requireIdentity(guard, guardIdentity)
+            sourceChannel = FileChannel.open(source.toPath(), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS)
+            return FreshCreation(owner, directory, guardIdentity, source, sourceChannel, files.fingerprint(source), producerChannel, producerLease)
+        } catch (failure: Throwable) {
+            // Registration failures retain their unknown files; only close our FDs.
+            for (resource in listOfNotNull(sourceChannel, producerLease, producerChannel)) {
+                try { resource.close() } catch (closeFailure: Throwable) { failure.addSuppressed(closeFailure) }
             }
-            channel.force(true)
-            if (total == 0L) { abortEligible = true; blocked("Empty JPEG source") }
-        } catch (failure: Exception) { copyFailure = failure }
-        finally {
-            try { channel.close() } catch (failure: Exception) { closeFailure = failure }
-        }
-        if (copyFailure != null || closeFailure != null) {
-            val failure = copyFailure ?: closeFailure!!
-            if (abortEligible && closeFailure == null && !channel.isOpen && initialSource != null) {
-                try { abortFreshCreation(owner, directory, initialSource, guardIdentity, failure) }
-                catch (abortFailure: Exception) { failure.addSuppressed(abortFailure) }
-            }
-            if (closeFailure != null && closeFailure !== failure) failure.addSuppressed(closeFailure)
             throw failure
         }
-        files.sync(directory)
-        files.put(files.child(directory, "source.v2"), fileValues(directory, files.fingerprint(source)))
-        val output = files.child(directory, "image.jpg")
-        createEmpty(output)
-        files.put(files.child(directory, "output.v2"), fileValues(directory, files.fingerprint(output)))
-        asSnapshot(load(owner))
+    }
+
+    private fun requireFreshCreation(fresh: FreshCreation) {
+        fresh.requireProducer()
+        if (fresh.sourceChannel.isOpen || readOwner(fresh.directory) != fresh.owner) blocked("JPEG producer ownership is incomplete")
+        if (fresh.directory.listFiles()?.map { it.name }?.toSet() != setOf("owner.v2", "consumer.guard", "source.bin")) blocked("Unpublished JPEG stage changed before publication")
+        files.requireInode(fresh.source, fresh.initialSource)
+        files.requireIdentity(files.child(fresh.directory, "consumer.guard"), fresh.guardIdentity)
     }
 
     fun ownerFor(assetId: String): Owner = locked {
@@ -364,12 +468,15 @@ internal class JpegStageV2(
     private fun createEmpty(file: File) { FileChannel.open(file.toPath(), StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE, LinkOption.NOFOLLOW_LINKS).use { it.force(true) }; files.sync(file.parentFile ?: blocked("JPEG stage file has no parent")) }
 
     /** Only this still-running create call can issue a NO_CONSUMER proof; restart never does. */
-    private fun abortFreshCreation(owner: Owner, directory: File, initialSource: FileIdentity, guardIdentity: FileIdentity, failure: Exception) {
-        if (readOwner(directory) != owner) blocked("Cannot abort a different JPEG owner")
+    private fun abortFreshCreation(fresh: FreshCreation, failure: Exception) {
+        requireFreshCreation(fresh)
+        val owner = fresh.owner
+        val directory = fresh.directory
+        val guardIdentity = fresh.guardIdentity
         val names = directory.listFiles()?.map { it.name }?.toSet() ?: blocked("Cannot inspect failed creation")
         if (names != setOf("owner.v2", "consumer.guard", "source.bin")) blocked("Failed creation has unknown or delivered state")
         val source = files.child(directory, "source.bin")
-        files.requireInode(source, initialSource)
+        files.requireInode(source, fresh.initialSource)
         files.requireIdentity(files.child(directory, "consumer.guard"), guardIdentity)
         val finalSource = files.fingerprint(source)
         if (finalSource.bytes !in 0..64L * 1024 * 1024) blocked("Failed creation source is outside ownership bounds")
@@ -379,11 +486,17 @@ internal class JpegStageV2(
             "sourceBytes" to finalSource.bytes.toString(), "sourceSha" to finalSource.sha256, "reasonHash" to files.digest(failure.javaClass.name), "proof" to "NO_CONSUMER")
         files.put(marker, proof)
         if (files.confirm(marker, abortKeys) != proof) blocked("Failed creation abort proof is not durable")
-        // Still under the original namespace lease; no registration/FD delivery could interleave.
+        // The same exclusive producer lease survived copying and proof creation.
+        // Source/output receipts are absent and namespace admission is still held;
+        // no consumer registration or FD delivery could have occurred.
         if (directory.listFiles()?.map { it.name }?.toSet() != names) blocked("Failed creation changed before cleanup")
         files.requireIdentity(source, finalSource)
         files.requireIdentity(files.child(directory, "consumer.guard"), guardIdentity)
         if (files.read(files.child(directory, "owner.v2"), ownerKeys) != ownerRecord) blocked("Failed creation owner changed")
+        // Windows cannot delete a still-locked guard. Release only here, after the
+        // durable NO_CONSUMER proof and all identities are checked, while namespace
+        // remains held. This exception NEVER applies to pinned consumer cleanup.
+        fresh.closeProducer()
         files.delete(source)
         files.delete(files.child(directory, "consumer.guard"))
         files.delete(files.child(directory, "owner.v2"))
@@ -424,6 +537,7 @@ internal class JpegStageV2(
     }
 
     private fun <T> locked(action: () -> T): T {
+        if (!namespaceAdmission.compareAndSet(false, true)) blocked("JPEG protocol is concurrently changing in this process")
         try {
             if (!files.exists(root)) {
                 val parent = root.parentFile ?: blocked("JPEG namespace has no parent")
@@ -449,6 +563,7 @@ internal class JpegStageV2(
         } catch (failure: SourceLimitExceeded) { throw failure }
         catch (failure: Blocked) { throw failure }
         catch (failure: Exception) { throw Blocked("JPEG durable state could not be established", failure) }
+        finally { namespaceAdmission.set(false) }
     }
     private fun blocked(message: String): Nothing = throw Blocked(message)
 }

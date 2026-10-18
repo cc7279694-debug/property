@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" tests="24" skipped="0" failures="0" errors="0" timestamp="2026-10-18T11:37:45.893Z" hostname="WHOCARE" time="0.031">
+  <properties/>
+  <testcase name="resultThenMatchingDeathMayPrepare" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.001"/>
+  <testcase name="duplicateHelloRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="heldGuardCannotPrepare" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="failureBeforeDeliveryRejects" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="nonceMismatchRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="unknownStartRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="missingSourceCloseCannotPrepare" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="wrongUidRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="duplicateResultCannotPrepareTwice" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="firstFailureIsImmutable" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="oldFailureCannotAffectNewFence" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="wrongProcessResultRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="processMissingWithoutBinderDeathCannotPrepare" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="onlyOneDelivery" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="resultAfterFailureRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="nonSuccessSafeTerminationStillNotPrepare" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.001"/>
+  <testcase name="sameProcessRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="closedFdWithoutDeathCannotPrepare" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="matchingDeathThenResultMayPrepare" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="deliveryFailureRaceHasSingleLinearization" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.029"/>
+  <testcase name="oldEpochResultRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="cancelAfterSuccessBeforeDeathRejectsPrepare" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="resultRequiresDelivery" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <testcase name="unknownWorkerNeverGrants" classname="com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,22 @@
+JUnit version 4.13.2
+..E.E
+Time: 0.012
+There were 2 failures:
+1) backwardsOrInvalidClockCannotApprovePublication(com.cooper.lithic.data.media.jpegworker.JpegPublicationDeadlineTest)
+java.lang.AssertionError: expected:<CLOCK_UNKNOWN> but was:<RESULT_READY>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.data.media.jpegworker.JpegPublicationDeadlineTest.backwardsOrInvalidClockCannotApprovePublication(JpegPublicationDeadlineTest.java:7)
+2) delayedWatchdogCannotAllowExpiredPublication(com.cooper.lithic.data.media.jpegworker.JpegPublicationDeadlineTest)
+java.lang.AssertionError: expected:<TIMEOUT> but was:<RESULT_READY>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.data.media.jpegworker.JpegPublicationDeadlineTest.delayedWatchdogCannotAllowExpiredPublication(JpegPublicationDeadlineTest.java:6)
+
+FAILURES!!!
+Tests run: 3,  Failures: 2
+

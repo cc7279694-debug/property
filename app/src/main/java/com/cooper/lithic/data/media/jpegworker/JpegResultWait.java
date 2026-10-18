@@ -25,4 +25,12 @@ public final class JpegResultWait {
     public static boolean mayReleaseAdmission(boolean consumerEnded,boolean connectionCleaned) {
         return consumerEnded&&connectionCleaned;
     }
+    /** Publishing a known failure must not race its pending persistent-revoke actor. */
+    public static boolean mayPublishFailure(boolean revokeCompleted,boolean revokeVerified) {
+        return revokeCompleted&&revokeVerified;
+    }
+    public static Decision publicationAt(long nowMs,long bornMs,long deadlineMs) {
+        if(bornMs<0||nowMs<bornMs||deadlineMs<=bornMs)return Decision.CLOCK_UNKNOWN;
+        return nowMs<deadlineMs?Decision.RESULT_READY:Decision.TIMEOUT;
+    }
 }

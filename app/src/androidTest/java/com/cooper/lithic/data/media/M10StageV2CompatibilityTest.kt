@@ -31,6 +31,17 @@ class M10StageV2CompatibilityTest {
     }
     @After fun removeOnlySyntheticRoot() {
         check(root.canonicalFile.parentFile == context.noBackupFilesDir.canonicalFile && root.name.startsWith("m10-v2-candidate-"))
+        if (::files.isInitialized && files.hasJpegPreparations) {
+            try {
+                files.jpeg.admission()
+            } catch (failure: IOException) {
+                android.util.Log.w("LITHIC_M10_TEST", "RETAINED_UNPROVEN_STAGE:${root.name}:${failure.javaClass.simpleName}")
+                M10JpegObservation.record("v2-retained-unproven-stage", org.json.JSONObject()
+                    .put("category", "RETAINED_UNPROVEN_STAGE").put("generation", root.name)
+                    .put("reason", failure.javaClass.simpleName).put("cleanup", "NOT_PERFORMED"))
+                return
+            }
+        }
         root.deleteRecursively()
     }
     private fun legacy(): LocalMediaAssetEntity {

@@ -36,19 +36,34 @@ class JpegWorkerService : Service() {
     private lateinit var identity:JpegWorkerIdentity
     private val revoked=AtomicBoolean(false)
     private val finished=AtomicBoolean(false)
+    private val dataResourcesClosed=AtomicBoolean(false)
+    private val retirement=JpegRetirementHandshake()
     private var delivered=false
     private var guardStream:ParcelFileDescriptor.AutoCloseOutputStream?=null
     private var guardLease:FileLock?=null
-    private val hostDeath=IBinder.DeathRecipient { revoked.set(true);selfExit(0) }
+    private val hostDeath=IBinder.DeathRecipient {
+        revoked.set(true)
+        if(retirement.hostDied())exitProcess("HOST_BINDER_DIED")
+    }
 
     override fun onCreate() {
         super.onCreate()
         check(JpegProcessRole.role(packageName)==JpegProcessRole.Role.WORKER) {"Unverified Worker role"}
         identity=JpegProcessRole.identity()
-        // A stray bind cannot leave a permanent idle service process.
-        control.schedule({if(synchronized(monitor){request==null})selfExit(0)},30,TimeUnit.SECONDS)
+        // Fence a stray bind at the deadline; an unknown UI detach is not a claimed process stop.
+        control.schedule({if(synchronized(monitor){request==null})requestDeadlineExit("UNRESERVED_DEADLINE")},30,TimeUnit.SECONDS)
     }
-    override fun onBind(intent:Intent?):IBinder? = if(JpegProcessRole.role(packageName)==JpegProcessRole.Role.WORKER) endpoint else null
+    override fun onBind(intent:Intent?):IBinder? =
+        if(JpegProcessRole.role(packageName)==JpegProcessRole.Role.WORKER&&retirement.onBound())endpoint else null
+
+    override fun onUnbind(intent:Intent?):Boolean {
+        JpegWorkerWire.event("WORKER_ON_UNBIND",request,identity)
+        // RETIRE/REVOKE was authenticated and acknowledged while this service still had a binding.
+        // Unbind itself confers neither data-FD closure nor consumer/process death proof.
+        if(retirement.onUnbind())exitProcess("AUTHENTICATED_DETACH")
+        else requestDeadlineExit("UNPREPARED_DETACH") // Exit is fail-closed, never an authenticated SUCCESS proof.
+        return false
+    }
 
     private val endpoint=object:Binder() {
         override fun onTransact(code:Int,data:Parcel,reply:Parcel?,flags:Int):Boolean {
@@ -57,20 +72,27 @@ class JpegWorkerService : Service() {
             try {
                 data.enforceInterface(JpegWorkerWire.DESCRIPTOR)
                 if(Binder.getCallingUid()!=Process.myUid()||Binder.getCallingPid()==Process.myPid())throw SecurityException("Worker caller rejected")
+                var acknowledgement:Bundle?=null
                 when(code) {
                     JpegWorkerWire.RESERVE -> reserve(data)
                     JpegWorkerWire.DELIVER -> deliver(data)
                     JpegWorkerWire.RETIRE -> {
-                        authenticate(JpegWorkerRequest.read(data.readBundle(javaClass.classLoader) ?: throw IOException("Missing retire identity")))
-                        if(!finished.get())throw IOException("Worker has not closed data resources")
-                        selfExit(100)
+                        val incoming=JpegWorkerRequest.read(data.readBundle(javaClass.classLoader) ?: throw IOException("Missing retire identity"))
+                        authenticate(incoming)
+                        if(!retirement.prepareNormal(true,finished.get()&&dataResourcesClosed.get()))throw IOException("Worker normal retirement not eligible")
+                        acknowledgement=JpegWorkerWire.retirementReply("RETIRE_ARMED",incoming,identity)
+                        JpegWorkerWire.event("WORKER_RETIRE_ARMED",incoming,identity)
                     }
                     JpegWorkerWire.REVOKE -> {
-                        authenticate(JpegWorkerRequest.read(data.readBundle(javaClass.classLoader) ?: throw IOException("Missing revoke identity")))
-                        revoked.set(true);selfExit(50)
+                        val incoming=JpegWorkerRequest.read(data.readBundle(javaClass.classLoader) ?: throw IOException("Missing revoke identity"))
+                        authenticate(incoming,allowRevoked=true)
+                        if(!retirement.prepareRevoked(true))throw IOException("Worker revoked retirement not eligible")
+                        revoked.set(true)
+                        acknowledgement=JpegWorkerWire.retirementReply("REVOKE_ARMED",incoming,identity)
+                        JpegWorkerWire.event("WORKER_REVOKE_ARMED",incoming,identity)
                     }
                 }
-                reply?.writeNoException();reply?.writeBundle(Bundle().apply{putBoolean("accepted",true)})
+                reply?.writeNoException();reply?.writeBundle(acknowledgement ?: Bundle().apply{putBoolean("accepted",true)})
             } catch(error:Exception) {reply?.writeException(error)}
             return true
         }
@@ -87,14 +109,14 @@ class JpegWorkerService : Service() {
         }
         callback.linkToDeath(hostDeath,0)
         if(!JpegWorkerWire.callback(callback,JpegWorkerWire.HELLO,next,identity,JpegWorkerWire.policyBundle())) {
-            revoked.set(true);selfExit(0);throw IOException("Synchronous identity hello denied")
+            requestDeadlineExit("SYNCHRONOUS_HELLO_DENIED");throw IOException("Synchronous identity hello denied")
         }
-        control.schedule({revoked.set(true);selfExit(0)},JpegWorkerWire.HARD_DEADLINE_MS,TimeUnit.MILLISECONDS)
+        control.schedule({requestDeadlineExit("WORKER_HARD_DEADLINE")},JpegWorkerWire.HARD_DEADLINE_MS,TimeUnit.MILLISECONDS)
     }
-    private fun authenticate(incoming:JpegWorkerRequest) {
+    private fun authenticate(incoming:JpegWorkerRequest,allowRevoked:Boolean=false) {
         val expected=synchronized(monitor){request}
         val actual=JpegProcessRole.identity(Binder.getCallingPid())
-        if(expected!=incoming||actual!=host||Binder.getCallingUid()!=identity.uid||revoked.get())throw SecurityException("Stale Worker command")
+        if(expected!=incoming||actual!=host||Binder.getCallingUid()!=identity.uid||(!allowRevoked&&revoked.get()))throw SecurityException("Stale Worker command")
     }
     private fun deliver(data:Parcel) {
         val incoming=JpegWorkerRequest.read(data.readBundle(javaClass.classLoader) ?: throw IOException("Missing delivery identity"))
@@ -184,6 +206,7 @@ class JpegWorkerService : Service() {
             sourceClosed=JpegWorkerWire.close(source);outputClosed=JpegWorkerWire.close(output)
             val clean=try {scratch==null||clearKnownScratch(scratch)}catch(_:Exception){false}
             if(!sourceClosed||!outputClosed||!clean){outcome=JpegWorkerOutcome.RESULT_UNKNOWN;detail="RESOURCE_CLOSE_UNKNOWN"}
+            dataResourcesClosed.set(sourceClosed&&outputClosed&&clean)
             finished.set(true)
         }
         val reply=Bundle().apply {
@@ -194,9 +217,9 @@ class JpegWorkerService : Service() {
         }
         if(!revoked.get())try {
             val accepted=client?.let{JpegWorkerWire.callback(it,JpegWorkerWire.RESULT,request,identity,reply)}==true
-            if(!accepted){revoked.set(true);selfExit(0)}
-        }catch(_:Exception){revoked.set(true);selfExit(0)}
-        // No next task: an authenticated Host retirement or the independent hard deadline ends this process.
+            if(!accepted)requestDeadlineExit("RESULT_REJECTED")
+        }catch(_:Exception){requestDeadlineExit("RESULT_CALLBACK_UNKNOWN")}
+        // No next task: authenticated retirement plus detach, or a detached/dead Host, permits exit.
     }
     private fun clearKnownScratch(dir:File):Boolean {
         if(dir.parentFile!=cacheDir||!dir.name.startsWith("jpeg-compute-"))return false
@@ -204,11 +227,18 @@ class JpegWorkerService : Service() {
         if(children.any{it.name !in setOf("source.bin","normalized.jpg")||java.nio.file.Files.isSymbolicLink(it.toPath())||!it.isFile})return false
         return children.all{it.delete()}&&dir.delete()
     }
-    private fun selfExit(delayMs:Long) {
-        control.schedule({
-            // If native is still running, retain guard until OS closes it; never expose an early released lease.
-            if(finished.get())try {guardLease?.release();guardStream?.close()}catch(_:Exception) { /* Process exit still closes resources. */ }
+    private fun requestDeadlineExit(reason:String) {
+        revoked.set(true)
+        JpegWorkerWire.event(reason,request,identity)
+        // While bound, killing would let BIND_AUTO_CREATE restart a worker without the old lease.
+        // A blocked Host detach therefore remains UNKNOWN, not a claimed bounded native termination.
+        if(retirement.deadline())exitProcess(reason)
+    }
+    private fun exitProcess(reason:String) {
+        control.execute {
+            JpegWorkerWire.event("WORKER_EXIT_$reason",request,identity)
+            // Never release the consumer guard in advance. The OS closes it with the process.
             Process.killProcess(Process.myPid())
-        },delayMs,TimeUnit.MILLISECONDS)
+        }
     }
 }
