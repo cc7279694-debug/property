@@ -50,14 +50,23 @@ def audit(elf, symbols, machine):
             "Unexpected or absent Android runtime dependency")
     require(not re.search(r"\s+main\s*$", symbols, re.MULTILINE), "Unexpected main symbol")
     exports = []
+    jni_definition = False
     for line in symbols.splitlines():
-        match = re.match(r"\s*\d+:\s+\S+\s+\S+\s+\S+\s+GLOBAL\s+DEFAULT\s+(\d+)\s+(\S+)\s*$", line)
-        if match:
-            exports.append(match.group(2))
-    require(JNI_NAME in exports, "JNI symbol not present with default visibility")
-    require(set(exports) == {JNI_NAME}, "Unexpected defined global export")
+        match = re.match(r"\s*\d+:\s+\S+\s+\S+\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)(?:\s+\(\d+\))?\s*$", line)
+        if not match:
+            continue
+        kind, binding, visibility, section, name = match.groups()
+        if (name == JNI_NAME and kind == "FUNC" and binding == "GLOBAL" and
+                visibility == "DEFAULT" and section.isdecimal()):
+            jni_definition = True
+        if (section not in {"UND", "UNDEF"} and
+                binding in {"GLOBAL", "WEAK", "UNIQUE", "GNU_UNIQUE"} and
+                visibility in {"DEFAULT", "PROTECTED"}):
+            exports.append(name)
+    require(jni_definition, "JNI symbol not present as a defined default-visible global function")
+    require(set(exports) == {JNI_NAME}, "Unexpected defined visible export")
     return {"machine": machine, "loadAlignments": aligns, "needed": needed,
-            "definedGlobalExports": sorted(set(exports))}
+            "definedVisibleExports": sorted(set(exports))}
 
 
 def main():
