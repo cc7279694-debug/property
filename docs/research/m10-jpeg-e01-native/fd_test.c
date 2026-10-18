@@ -96,6 +96,8 @@ int main(int argc, char **argv)
   CHECK(baseline.width > 0 && baseline.height > 0);
   CHECK(baseline.rows_read == baseline.height && baseline.finish_complete);
   CHECK(baseline.small_calls > 0 && baseline.large_calls > 0);
+  CHECK(baseline.caller_calls > 0 && baseline.attempts > 0);
+  CHECK(baseline.attempts == baseline.small_calls + baseline.large_calls + baseline.caller_calls);
   CHECK(baseline.compressed_read > 0);
   CHECK(baseline.timings_available && baseline.wall_ns > 0);
   CHECK(baseline.cleanup_wall_ns <= baseline.wall_ns);

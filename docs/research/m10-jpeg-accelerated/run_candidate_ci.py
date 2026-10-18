@@ -204,6 +204,10 @@ def matrix(compiler, flags, source, build, root, generated, healthy, corrupt, or
             raise RuntimeError("Incomplete JPEG accepted")
         if not value.get("timingsAvailable") or not value.get("rssAvailable"):
             raise RuntimeError("Real metrics unavailable on Linux runner")
+        if (value["wallNs"] <= 0 or value["cpuNs"] <= 0 or value["peakRssKiB"] <= 0 or
+                value["decodeWallNs"] > value["wallNs"] or value["cleanupWallNs"] > value["wallNs"] or
+                value["decodeCpuNs"] > value["cpuNs"] or value["cleanupCpuNs"] > value["cpuNs"]):
+            raise RuntimeError("Missing or inconsistent native metrics")
         results.append((label, value))
         emit("OBSERVATION", compiler=compiler, label=label, **value)
         return value
@@ -211,6 +215,10 @@ def matrix(compiler, flags, source, build, root, generated, healthy, corrupt, or
     large_results = {}
     for path in healthy:
         value = case("healthy/" + path.name, path)
+        if (value["attempts"] <= 0 or
+                value["attempts"] != sum(value[k] for k in ("smallCalls", "largeCalls", "callerCalls")) or
+                any(value[k] <= 0 for k in ("smallCalls", "largeCalls", "callerCalls"))):
+            raise RuntimeError("Allocation sweep baseline incomplete")
         if path.name.startswith(("cmyk", "ycck")):
             if (value["inputComponents"] != 4 or value["outputComponents"] != 4 or
                     value["jpegColorSpace"] != (5 if path.name.startswith("ycck") else 4) or
@@ -232,7 +240,7 @@ def matrix(compiler, flags, source, build, root, generated, healthy, corrupt, or
             for index in range(1, normal["attempts"] + 1):
                 expected = ("ACCEPT", "RESOURCE_REJECT") if mode == "--fail-at" else ("RESOURCE_REJECT",)
                 value = case(name + "/" + mode[2:] + "/" + str(index), path, (mode, str(index)), expected)
-                if value["injected"] < 1:
+                if value["injected"] < 1 or (mode == "--fail-at" and value["injected"] != 1):
                     raise RuntimeError("Missing actual injection")
         # This explicitly separates 64MiB input from decoder working memory.
         value = case(name + "/request-cap-64MiB", path, ("--limit", str(64 * 1024 * 1024)), ("ACCEPT", "RESOURCE_REJECT"))
@@ -246,6 +254,10 @@ def matrix(compiler, flags, source, build, root, generated, healthy, corrupt, or
         expected_rows = 1 if phase == "scanline" else (value["height"] if phase in ("finish", "release") else 0)
         if value["rowsRead"] != expected_rows or value["finishComplete"] != (phase == "release") or value["warnings"]:
             raise RuntimeError("Fault did not reach the required real decode boundary")
+        if phase != "create" and (value["width"] != 8000 or value["height"] != 5000):
+            raise RuntimeError("Phase fault input identity/dimensions missing")
+        if phase not in ("create", "header") and value["outputComponents"] != 3:
+            raise RuntimeError("Phase fault never initialized real RGB output")
     if compiler == "gcc":
         controlled_process_end(probe, generated / "large_40mp_progressive_444.jpg", root)
         host_jni(common, source, build, root, generated, originals)
