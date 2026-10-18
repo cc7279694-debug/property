@@ -1,0 +1,34 @@
+name: M10 JPEG accelerated candidate
+on:
+  push:
+    branches: [codex/m10-jpeg-accelerated-candidate]
+    paths:
+      - .github/workflows/m10-jpeg-candidate.yml
+      - docs/research/m10-jpeg-accelerated/*.py
+      - docs/research/m10-jpeg-accelerated/*.c
+      - docs/research/m10-jpeg-e01-native/*.c
+      - docs/research/m10-jpeg-e01-native/*.h
+permissions:
+  contents: read
+jobs:
+  native:
+    if: github.repository == 'cc7279694-debug/property' && github.ref == 'refs/heads/codex/m10-jpeg-accelerated-candidate'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Anonymous exact-commit research checkout
+        env:
+          CANDIDATE_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$CANDIDATE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git init --quiet research
+          cd research
+          git remote add origin https://github.com/cc7279694-debug/property.git
+          GIT_TERMINAL_PROMPT=0 git -c credential.helper= fetch --depth=1 --no-tags origin "$CANDIDATE_SHA"
+          git checkout --quiet --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$CANDIDATE_SHA"
+      - name: Synthetic 40MP, native fault and format matrix
+        working-directory: research
+        run: python3 -B docs/research/m10-jpeg-accelerated/run_candidate_ci.py
