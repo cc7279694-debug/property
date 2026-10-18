@@ -1,0 +1,125 @@
+{
+  "create-attempt.json": {
+    "startedUtc": "2026-10-18T04:19:51.281128+00:00",
+    "name": "Lithic_A2RC2_API26_20261018",
+    "data": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avd-data\\Lithic_A2RC2_API26_20261018.avd",
+    "serial": "emulator-5612"
+  },
+  "created.json": {
+    "name": "Lithic_A2RC2_API26_20261018",
+    "serial": "emulator-5612",
+    "sdk": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk",
+    "data": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avd-data\\Lithic_A2RC2_API26_20261018.avd",
+    "avdHome": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avds",
+    "createdUtc": "2026-10-18T04:20:22.478840+00:00",
+    "config": {
+      "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avd-data\\Lithic_A2RC2_API26_20261018.avd\\config.ini",
+      "bytes": 3675,
+      "sha256": "1d724d80bbd6956516864ee60be77fdf11a56d1d77a8de81badefca653ba7f03"
+    },
+    "descriptor": {
+      "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avds\\Lithic_A2RC2_API26_20261018.ini",
+      "bytes": 136,
+      "sha256": "5f100a4176099e3b297e0da36b2a5628571aa711ca48cd8abee4c04ee7a8068a"
+    },
+    "image": [
+      {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\source.properties",
+        "bytes": 294,
+        "sha256": "7359e05a9d54b107581dbc530391985ac414e28828484aa4487b4e070d62aaed"
+      },
+      {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\package.xml",
+        "bytes": 19209,
+        "sha256": "aaab7f4381969c6de68a7c081e0d33d167e90ea6eb9047b98e684df5d635e002"
+      },
+      {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\system.img",
+        "bytes": 2686451712,
+        "sha256": "342348217f0bb8365bfc10b61f6d8533433a1cbb058de4ca0d52be5e1a7c5b9e"
+      },
+      {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\ramdisk.img",
+        "bytes": 2060272,
+        "sha256": "2be5c37057f4054d03dc9bab4fb592d97c6cefd83e9f03c939739e73f999ed6f"
+      },
+      {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\kernel-ranchu",
+        "bytes": 5593392,
+        "sha256": "b07008dd499038633386d2fd122e957c89c94fb33d804ea0d2d33d6a14bbd029"
+      }
+    ]
+  },
+  "discovery-attempt.json": {
+    "startedUtc": "2026-10-18T04:21:51.335185+00:00",
+    "argv": [
+      "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+      "devices",
+      "-l"
+    ],
+    "attemptsAllowed": 1
+  },
+  "discovery-confirmed.json": {
+    "serial": "emulator-5612",
+    "avd": "Lithic_A2RC2_API26_20261018",
+    "hostProcesses": [
+      {
+        "ProcessId": 20024,
+        "Name": "emulator.exe",
+        "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe -avd Lithic_A2RC2_API26_20261018 -port 5612 -datadir E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avd-data\\Lithic_A2RC2_API26_20261018.avd -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2"
+      },
+      {
+        "ProcessId": 22572,
+        "Name": "qemu-system-x86_64-headless.exe",
+        "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_A2RC2_API26_20261018 -port 5612 -datadir E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avd-data\\Lithic_A2RC2_API26_20261018.avd -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2"
+      }
+    ],
+    "observedState": "offline"
+  },
+  "emulator-spawned.json": {
+    "pid": 20024,
+    "spawnedUtc": "2026-10-18T04:21:38.195078+00:00",
+    "argv": [
+      "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+      "-avd",
+      "Lithic_A2RC2_API26_20261018",
+      "-port",
+      "5612",
+      "-datadir",
+      "E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avd-data\\Lithic_A2RC2_API26_20261018.avd",
+      "-sysdir",
+      "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64",
+      "-no-snapshot",
+      "-no-window",
+      "-no-audio",
+      "-no-boot-anim",
+      "-memory",
+      "1536",
+      "-cores",
+      "2"
+    ]
+  },
+  "start-attempt.json": {
+    "startedUtc": "2026-10-18T04:21:37.690943+00:00",
+    "argv": [
+      "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+      "-avd",
+      "Lithic_A2RC2_API26_20261018",
+      "-port",
+      "5612",
+      "-datadir",
+      "E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avd-data\\Lithic_A2RC2_API26_20261018.avd",
+      "-sysdir",
+      "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64",
+      "-no-snapshot",
+      "-no-window",
+      "-no-audio",
+      "-no-boot-anim",
+      "-memory",
+      "1536",
+      "-cores",
+      "2"
+    ],
+    "attemptsAllowed": 1
+  }
+}

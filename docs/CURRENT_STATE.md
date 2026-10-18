@@ -1,8 +1,14 @@
 # 当前项目状态
 
-状态日期：2026-10-18（Asia/Shanghai；A2-R-C1交付整改/静态诊断，原A2-R唯一AVD创建仍FAIL；本轮无SDK/AVD/ADB/App执行）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-18（Asia/Shanghai；A2-R-C2独立AVD创建成功，唯一启动未在期限内取得boot完成，BLOCKED；APK安装/Host启动均0）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-H2-D2B-A2-R-C2 — BLOCKED / API26_BOOT_TIMEOUT**：用户转交C1已验收并授权C2；来源`797eb591cc8293d9d68503243d2a94462fe79610`，新分支`research/m10-jpeg-h2-d2b-a2r-c2-isolated`，短路径worktree `E:/CODEX/.codex/worktrees/lithic-c2/砺石新APP`。在新C2根/AVD/端口5612下应用子进程旧SDK_HOME移除及防继承，全局环境不改。11镜像原件＋536工具逐SHA、锁定A1 APK签名/Manifest及48构建输入实核；6唯一宿主guard测试PASS，无产品构建/JUnit/Lint重跑。
+- **C2实际执行**：创建1次exit0，新配置/注册/数据/镜像身份通过；模拟器spawn1次，`-no-snapshot`，全局devices仅1次，此后126条ADB均定向`emulator-5612`。61轮boot读取仍为空，300秒期限届满监督器退出1并停止。全部133条运行命令exit0不能替代boot门禁通过。APK安装0、Activity启动0、重试/kill/清理0。结束只读确认正确AVD名、实际API26、boot仍为空；Host角色/耗时/ANR/Worker/stage均未实测，READY UNKNOWN，根因UNKNOWN。
+- **C2保护/停止**：旧A2-R marker/空目录/缺失.ini不变，原APK、限定环境、所选镜像结束核查通过；新模拟器及数据保留，活跃日志仅本地，提交结束不可变前缀快照。未访问原API36/H2，不宣称私人字节验证。只提交C2并停止等待独立验收，不重启/安装/启动Host/扩大诊断。D2A-N01～N05、A1-N01～N04及历史NOTE，M10 PENDING/三JPEG FAIL、UI-C1 FROZEN、M11 NOT_AUTHORIZED、H2 DELIVERY_UNKNOWN/pin=true与R3完整生命周期BLOCKED保持。[执行/矩阵](research/M10_JPEG_H2_D2B_A2R_C2_EXECUTION.md)、[证据](research/m10-jpeg-h2-d2b-a2r-c2/README.md)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-H2-D2B-A2R-C2.md)。
+
+以下C1及A2-R原段落保留历史。C1已验收来源为本轮用户指令，不改其原交付状态；C2只应用其环境提案，不改写旧创建FAIL或旧重试流程偏差：
 
 - **M10-H2-D2B-A2-R-C1 — READY_FOR_REVIEW（仅交付整改/静态诊断）**：来源`4ee27bfcbe5903d6a49d4a92203de8a63686ba66`与本地干净工作区匹配，继续`research/m10-jpeg-h2-d2b-a2r-api26-isolated`。检查原86项变更及继承跟踪文件，7份许可正文退出当前跟踪但本地原字节保留；保留官方URL、原始SHA/blob和结果索引，没有脱敏XML或历史改写，旧远端提交仍可经Git历史访问正文。[整改](research/M10_JPEG_H2_D2B_A2R_C1_REMEDIATION.md)、[SDK静态诊断](research/M10_JPEG_H2_D2B_A2R_C1_SDK_STATIC_DIAGNOSIS.md)、[证据索引](research/m10-jpeg-h2-d2b-a2r-c1/README.md)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-H2-D2B-A2R-C1.md)。
 - **C1流程更正**：首次安装FAIL后第二次尝试未找到明确追加授权，登记`PROCESS_DEVIATION — RETRY_WITHOUT_RECORDED_ADDITIONAL_AUTHORIZATION`。预算澄清不是重试许可；旧“受控重试”不再作为权限结论，两次FAIL及原日志不改写。

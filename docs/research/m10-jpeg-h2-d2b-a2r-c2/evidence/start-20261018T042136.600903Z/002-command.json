@@ -1,0 +1,26 @@
+{
+  "label": "host-emulator-inventory",
+  "argv": [
+    "powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "$p=Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'};$m=@($p | Where-Object {$_.CommandLine -match 'Lithic_A2RC2_API26_20261018|(?<![0-9])5612(?![0-9])'} | Select-Object ProcessId,Name,CommandLine); @{target=$m;totalEmulatorProcesses=@($p).Count}|ConvertTo-Json -Depth 5 -Compress"
+  ],
+  "startedUtc": "2026-10-18T04:21:50.024717+00:00",
+  "exitCode": 0,
+  "endedUtc": "2026-10-18T04:21:51.192070+00:00",
+  "stdout": {
+    "bytes": 1035,
+    "sha256": "14cd1dd2607cc1f944eb9229cbcf8728dd914aa8aa19743e867e3596508bcf03",
+    "savedBytes": 1035,
+    "savedSha256": "14cd1dd2607cc1f944eb9229cbcf8728dd914aa8aa19743e867e3596508bcf03",
+    "privacyFiltered": false
+  },
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "savedBytes": 0,
+    "savedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "privacyFiltered": false
+  }
+}

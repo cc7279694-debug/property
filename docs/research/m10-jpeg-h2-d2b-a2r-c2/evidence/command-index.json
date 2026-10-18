@@ -1,0 +1,1885 @@
+{
+  "sourceC1": "797eb591cc8293d9d68503243d2a94462fe79610",
+  "actualOperations": {
+    "avdCreate": 1,
+    "emulatorSpawn": 1,
+    "apkInstall": 0,
+    "activityLaunch": 0,
+    "globalAdbDevices": 1
+  },
+  "commandCount": 133,
+  "adbCommandCount": 127,
+  "nonzeroCommands": [],
+  "targetedAdbAlwaysNewSerial": true,
+  "bootPolls": 61,
+  "mutationRetries": 0,
+  "records": [
+    {
+      "record": "evidence\\closing-20261018T042703.129674Z\\001-command.json",
+      "label": "ending-state",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:27:05.838038+00:00",
+      "endedUtc": "2026-10-18T04:27:06.133061+00:00"
+    },
+    {
+      "record": "evidence\\closing-20261018T042703.129674Z\\002-command.json",
+      "label": "ending-avd-name",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "emu",
+        "avd",
+        "name"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:27:06.442263+00:00",
+      "endedUtc": "2026-10-18T04:27:06.801386+00:00"
+    },
+    {
+      "record": "evidence\\closing-20261018T042703.129674Z\\003-command.json",
+      "label": "ending-api",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:27:06.879347+00:00",
+      "endedUtc": "2026-10-18T04:27:07.034931+00:00"
+    },
+    {
+      "record": "evidence\\closing-20261018T042703.129674Z\\004-command.json",
+      "label": "ending-boot",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:27:07.168544+00:00",
+      "endedUtc": "2026-10-18T04:27:07.289658+00:00"
+    },
+    {
+      "record": "evidence\\create-20261018T041949.674262Z\\001-command.json",
+      "label": "host-emulator-inventory",
+      "argv": [
+        "powershell.exe",
+        "-NoProfile",
+        "-Command",
+        "$p=Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'};$m=@($p | Where-Object {$_.CommandLine -match 'Lithic_A2RC2_API26_20261018|(?<![0-9])5612(?![0-9])'} | Select-Object ProcessId,Name,CommandLine); @{target=$m;totalEmulatorProcesses=@($p).Count}|ConvertTo-Json -Depth 5 -Compress"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:19:50.033353+00:00",
+      "endedUtc": "2026-10-18T04:19:51.040216+00:00"
+    },
+    {
+      "record": "evidence\\create-20261018T041949.674262Z\\002-command.json",
+      "label": "avd-create",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\bin\\avdmanager.bat",
+        "create",
+        "avd",
+        "--name",
+        "Lithic_A2RC2_API26_20261018",
+        "--path",
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-c2-api26\\avd-data\\Lithic_A2RC2_API26_20261018.avd",
+        "--package",
+        "system-images;android-26;google_apis;x86_64",
+        "--abi",
+        "x86_64",
+        "--tag",
+        "google_apis",
+        "--device",
+        "pixel"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:19:51.453413+00:00",
+      "endedUtc": "2026-10-18T04:20:22.066354+00:00"
+    },
+    {
+      "record": "evidence\\host-ending-20261018T042852.720178Z\\001-command.json",
+      "label": "host-emulator-inventory",
+      "argv": [
+        "powershell.exe",
+        "-NoProfile",
+        "-Command",
+        "$p=Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'};$m=@($p | Where-Object {$_.CommandLine -match 'Lithic_A2RC2_API26_20261018|(?<![0-9])5612(?![0-9])'} | Select-Object ProcessId,Name,CommandLine); @{target=$m;totalEmulatorProcesses=@($p).Count}|ConvertTo-Json -Depth 5 -Compress"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:28:52.729333+00:00",
+      "endedUtc": "2026-10-18T04:28:54.013119+00:00"
+    },
+    {
+      "record": "evidence\\preflight-20261018T041741.206888Z\\001-command.json",
+      "label": "host-emulator-inventory",
+      "argv": [
+        "powershell.exe",
+        "-NoProfile",
+        "-Command",
+        "$p=Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'};$m=@($p | Where-Object {$_.CommandLine -match 'Lithic_A2RC2_API26_20261018|(?<![0-9])5612(?![0-9])'} | Select-Object ProcessId,Name,CommandLine); @{target=$m;totalEmulatorProcesses=@($p).Count}|ConvertTo-Json -Depth 5 -Compress"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:19:34.546974+00:00",
+      "endedUtc": "2026-10-18T04:19:35.767822+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\001-command.json",
+      "label": "host-emulator-inventory",
+      "argv": [
+        "powershell.exe",
+        "-NoProfile",
+        "-Command",
+        "$p=Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'};$m=@($p | Where-Object {$_.CommandLine -match 'Lithic_A2RC2_API26_20261018|(?<![0-9])5612(?![0-9])'} | Select-Object ProcessId,Name,CommandLine); @{target=$m;totalEmulatorProcesses=@($p).Count}|ConvertTo-Json -Depth 5 -Compress"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:36.620319+00:00",
+      "endedUtc": "2026-10-18T04:21:37.512795+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\002-command.json",
+      "label": "host-emulator-inventory",
+      "argv": [
+        "powershell.exe",
+        "-NoProfile",
+        "-Command",
+        "$p=Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'};$m=@($p | Where-Object {$_.CommandLine -match 'Lithic_A2RC2_API26_20261018|(?<![0-9])5612(?![0-9])'} | Select-Object ProcessId,Name,CommandLine); @{target=$m;totalEmulatorProcesses=@($p).Count}|ConvertTo-Json -Depth 5 -Compress"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:50.024717+00:00",
+      "endedUtc": "2026-10-18T04:21:51.192070+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\003-command.json",
+      "label": "single-global-device-discovery",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "devices",
+        "-l"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:51.484644+00:00",
+      "endedUtc": "2026-10-18T04:21:51.685678+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\004-command.json",
+      "label": "boot-state-3",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:51.938809+00:00",
+      "endedUtc": "2026-10-18T04:21:52.182746+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\005-command.json",
+      "label": "boot-progress-4",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:52.346540+00:00",
+      "endedUtc": "2026-10-18T04:21:52.499633+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\006-command.json",
+      "label": "boot-state-5",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:55.628414+00:00",
+      "endedUtc": "2026-10-18T04:21:55.768018+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\007-command.json",
+      "label": "boot-progress-6",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:55.895844+00:00",
+      "endedUtc": "2026-10-18T04:21:56.134565+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\008-command.json",
+      "label": "boot-state-7",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:59.306848+00:00",
+      "endedUtc": "2026-10-18T04:21:59.498071+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\009-command.json",
+      "label": "boot-progress-8",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:21:59.612377+00:00",
+      "endedUtc": "2026-10-18T04:21:59.819911+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\010-command.json",
+      "label": "boot-state-9",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:02.862833+00:00",
+      "endedUtc": "2026-10-18T04:22:03.070852+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\011-command.json",
+      "label": "boot-progress-10",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:03.207915+00:00",
+      "endedUtc": "2026-10-18T04:22:03.377978+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\012-command.json",
+      "label": "boot-state-11",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:06.471048+00:00",
+      "endedUtc": "2026-10-18T04:22:06.607653+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\013-command.json",
+      "label": "boot-progress-12",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:06.743355+00:00",
+      "endedUtc": "2026-10-18T04:22:06.896518+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\014-command.json",
+      "label": "boot-state-13",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:10.070725+00:00",
+      "endedUtc": "2026-10-18T04:22:10.687323+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\015-command.json",
+      "label": "boot-progress-14",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:10.830054+00:00",
+      "endedUtc": "2026-10-18T04:22:11.029844+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\016-command.json",
+      "label": "boot-state-15",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:14.182351+00:00",
+      "endedUtc": "2026-10-18T04:22:14.332580+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\017-command.json",
+      "label": "boot-progress-16",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:14.512772+00:00",
+      "endedUtc": "2026-10-18T04:22:14.737737+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\018-command.json",
+      "label": "boot-state-17",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:17.866211+00:00",
+      "endedUtc": "2026-10-18T04:22:18.028677+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\019-command.json",
+      "label": "boot-progress-18",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:18.278393+00:00",
+      "endedUtc": "2026-10-18T04:22:18.431679+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\020-command.json",
+      "label": "boot-state-19",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:21.672705+00:00",
+      "endedUtc": "2026-10-18T04:22:21.787489+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\021-command.json",
+      "label": "boot-progress-20",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:21.895240+00:00",
+      "endedUtc": "2026-10-18T04:22:22.013021+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\022-command.json",
+      "label": "boot-state-21",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:25.173102+00:00",
+      "endedUtc": "2026-10-18T04:22:25.286106+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\023-command.json",
+      "label": "boot-progress-22",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:25.416556+00:00",
+      "endedUtc": "2026-10-18T04:22:25.660145+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\024-command.json",
+      "label": "boot-state-23",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:28.900331+00:00",
+      "endedUtc": "2026-10-18T04:22:29.017396+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\025-command.json",
+      "label": "boot-progress-24",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:29.135485+00:00",
+      "endedUtc": "2026-10-18T04:22:29.271161+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\026-command.json",
+      "label": "boot-state-25",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:32.362438+00:00",
+      "endedUtc": "2026-10-18T04:22:32.468360+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\027-command.json",
+      "label": "boot-progress-26",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:32.571338+00:00",
+      "endedUtc": "2026-10-18T04:22:32.682631+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\028-command.json",
+      "label": "boot-state-27",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:35.798962+00:00",
+      "endedUtc": "2026-10-18T04:22:35.933957+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\029-command.json",
+      "label": "boot-progress-28",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:36.138891+00:00",
+      "endedUtc": "2026-10-18T04:22:36.267699+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\030-command.json",
+      "label": "boot-state-29",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:39.544066+00:00",
+      "endedUtc": "2026-10-18T04:22:39.666951+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\031-command.json",
+      "label": "boot-progress-30",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:39.881222+00:00",
+      "endedUtc": "2026-10-18T04:22:40.000533+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\032-command.json",
+      "label": "boot-state-31",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:43.225632+00:00",
+      "endedUtc": "2026-10-18T04:22:43.357850+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\033-command.json",
+      "label": "boot-progress-32",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:43.711567+00:00",
+      "endedUtc": "2026-10-18T04:22:43.839756+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\034-command.json",
+      "label": "boot-state-33",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:47.120017+00:00",
+      "endedUtc": "2026-10-18T04:22:47.635301+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\035-command.json",
+      "label": "boot-progress-34",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:48.040575+00:00",
+      "endedUtc": "2026-10-18T04:22:48.185915+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\036-command.json",
+      "label": "boot-state-35",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:51.556130+00:00",
+      "endedUtc": "2026-10-18T04:22:51.726100+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\037-command.json",
+      "label": "boot-progress-36",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:22:59.905596+00:00",
+      "endedUtc": "2026-10-18T04:23:00.168122+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\038-command.json",
+      "label": "boot-state-37",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:16.584217+00:00",
+      "endedUtc": "2026-10-18T04:23:19.359837+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\039-command.json",
+      "label": "boot-progress-38",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:22.582427+00:00",
+      "endedUtc": "2026-10-18T04:23:23.585179+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\040-command.json",
+      "label": "boot-state-39",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:27.945057+00:00",
+      "endedUtc": "2026-10-18T04:23:29.896319+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\041-command.json",
+      "label": "boot-progress-40",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:31.565430+00:00",
+      "endedUtc": "2026-10-18T04:23:33.233848+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\042-command.json",
+      "label": "boot-state-41",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:38.486659+00:00",
+      "endedUtc": "2026-10-18T04:23:40.090565+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\043-command.json",
+      "label": "boot-progress-42",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:41.784059+00:00",
+      "endedUtc": "2026-10-18T04:23:43.878963+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\044-command.json",
+      "label": "boot-state-43",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:49.649112+00:00",
+      "endedUtc": "2026-10-18T04:23:50.846812+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\045-command.json",
+      "label": "boot-progress-44",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:52.181983+00:00",
+      "endedUtc": "2026-10-18T04:23:53.190093+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\046-command.json",
+      "label": "boot-state-45",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:57.407025+00:00",
+      "endedUtc": "2026-10-18T04:23:58.378101+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\047-command.json",
+      "label": "boot-progress-46",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:23:59.711100+00:00",
+      "endedUtc": "2026-10-18T04:24:01.509586+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\048-command.json",
+      "label": "boot-state-47",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:06.107920+00:00",
+      "endedUtc": "2026-10-18T04:24:08.275424+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\049-command.json",
+      "label": "boot-progress-48",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:10.457256+00:00",
+      "endedUtc": "2026-10-18T04:24:13.095427+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\050-command.json",
+      "label": "boot-state-49",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:18.968298+00:00",
+      "endedUtc": "2026-10-18T04:24:20.371614+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\051-command.json",
+      "label": "boot-progress-50",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:22.019843+00:00",
+      "endedUtc": "2026-10-18T04:24:23.362374+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\052-command.json",
+      "label": "boot-state-51",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:27.308161+00:00",
+      "endedUtc": "2026-10-18T04:24:28.357765+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\053-command.json",
+      "label": "boot-progress-52",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:29.421893+00:00",
+      "endedUtc": "2026-10-18T04:24:30.419820+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\054-command.json",
+      "label": "boot-state-53",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:34.237352+00:00",
+      "endedUtc": "2026-10-18T04:24:35.018626+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\055-command.json",
+      "label": "boot-progress-54",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:35.241227+00:00",
+      "endedUtc": "2026-10-18T04:24:35.368618+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\056-command.json",
+      "label": "boot-state-55",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:38.500535+00:00",
+      "endedUtc": "2026-10-18T04:24:39.012655+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\057-command.json",
+      "label": "boot-progress-56",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:39.232972+00:00",
+      "endedUtc": "2026-10-18T04:24:39.926830+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\058-command.json",
+      "label": "boot-state-57",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:43.019868+00:00",
+      "endedUtc": "2026-10-18T04:24:43.306361+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\059-command.json",
+      "label": "boot-progress-58",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:43.535918+00:00",
+      "endedUtc": "2026-10-18T04:24:43.654571+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\060-command.json",
+      "label": "boot-state-59",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:46.754147+00:00",
+      "endedUtc": "2026-10-18T04:24:47.250048+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\061-command.json",
+      "label": "boot-progress-60",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:47.511450+00:00",
+      "endedUtc": "2026-10-18T04:24:47.638862+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\062-command.json",
+      "label": "boot-state-61",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:50.697637+00:00",
+      "endedUtc": "2026-10-18T04:24:50.803369+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\063-command.json",
+      "label": "boot-progress-62",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:50.994950+00:00",
+      "endedUtc": "2026-10-18T04:24:51.119395+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\064-command.json",
+      "label": "boot-state-63",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:54.373043+00:00",
+      "endedUtc": "2026-10-18T04:24:54.483963+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\065-command.json",
+      "label": "boot-progress-64",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:54.714390+00:00",
+      "endedUtc": "2026-10-18T04:24:54.834062+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\066-command.json",
+      "label": "boot-state-65",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:58.048983+00:00",
+      "endedUtc": "2026-10-18T04:24:58.161752+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\067-command.json",
+      "label": "boot-progress-66",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:24:58.365075+00:00",
+      "endedUtc": "2026-10-18T04:24:58.488355+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\068-command.json",
+      "label": "boot-state-67",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:01.684388+00:00",
+      "endedUtc": "2026-10-18T04:25:01.790389+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\069-command.json",
+      "label": "boot-progress-68",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:02.168541+00:00",
+      "endedUtc": "2026-10-18T04:25:02.283193+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\070-command.json",
+      "label": "boot-state-69",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:05.486201+00:00",
+      "endedUtc": "2026-10-18T04:25:05.930430+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\071-command.json",
+      "label": "boot-progress-70",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:06.274462+00:00",
+      "endedUtc": "2026-10-18T04:25:06.398367+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\072-command.json",
+      "label": "boot-state-71",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:09.660700+00:00",
+      "endedUtc": "2026-10-18T04:25:10.076438+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\073-command.json",
+      "label": "boot-progress-72",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:10.372987+00:00",
+      "endedUtc": "2026-10-18T04:25:10.599067+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\074-command.json",
+      "label": "boot-state-73",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:13.862447+00:00",
+      "endedUtc": "2026-10-18T04:25:14.172666+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\075-command.json",
+      "label": "boot-progress-74",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:14.535030+00:00",
+      "endedUtc": "2026-10-18T04:25:14.657951+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\076-command.json",
+      "label": "boot-state-75",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:17.870243+00:00",
+      "endedUtc": "2026-10-18T04:25:18.270316+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\077-command.json",
+      "label": "boot-progress-76",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:18.490849+00:00",
+      "endedUtc": "2026-10-18T04:25:18.604607+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\078-command.json",
+      "label": "boot-state-77",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:21.976896+00:00",
+      "endedUtc": "2026-10-18T04:25:22.094066+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\079-command.json",
+      "label": "boot-progress-78",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:22.303308+00:00",
+      "endedUtc": "2026-10-18T04:25:22.446238+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\080-command.json",
+      "label": "boot-state-79",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:25.622141+00:00",
+      "endedUtc": "2026-10-18T04:25:25.838237+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\081-command.json",
+      "label": "boot-progress-80",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:26.060797+00:00",
+      "endedUtc": "2026-10-18T04:25:26.176868+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\082-command.json",
+      "label": "boot-state-81",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:29.384478+00:00",
+      "endedUtc": "2026-10-18T04:25:29.494156+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\083-command.json",
+      "label": "boot-progress-82",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:29.703251+00:00",
+      "endedUtc": "2026-10-18T04:25:29.821495+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\084-command.json",
+      "label": "boot-state-83",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:33.046687+00:00",
+      "endedUtc": "2026-10-18T04:25:33.484926+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\085-command.json",
+      "label": "boot-progress-84",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:33.715152+00:00",
+      "endedUtc": "2026-10-18T04:25:33.842938+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\086-command.json",
+      "label": "boot-state-85",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:37.060125+00:00",
+      "endedUtc": "2026-10-18T04:25:37.432903+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\087-command.json",
+      "label": "boot-progress-86",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:37.702312+00:00",
+      "endedUtc": "2026-10-18T04:25:37.881149+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\088-command.json",
+      "label": "boot-state-87",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:41.107804+00:00",
+      "endedUtc": "2026-10-18T04:25:41.436315+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\089-command.json",
+      "label": "boot-progress-88",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:41.719439+00:00",
+      "endedUtc": "2026-10-18T04:25:41.882441+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\090-command.json",
+      "label": "boot-state-89",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:45.075529+00:00",
+      "endedUtc": "2026-10-18T04:25:45.288200+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\091-command.json",
+      "label": "boot-progress-90",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:45.461140+00:00",
+      "endedUtc": "2026-10-18T04:25:45.600330+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\092-command.json",
+      "label": "boot-state-91",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:48.805175+00:00",
+      "endedUtc": "2026-10-18T04:25:49.158956+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\093-command.json",
+      "label": "boot-progress-92",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:49.366984+00:00",
+      "endedUtc": "2026-10-18T04:25:49.483712+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\094-command.json",
+      "label": "boot-state-93",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:52.948574+00:00",
+      "endedUtc": "2026-10-18T04:25:53.272474+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\095-command.json",
+      "label": "boot-progress-94",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:53.479798+00:00",
+      "endedUtc": "2026-10-18T04:25:53.596275+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\096-command.json",
+      "label": "boot-state-95",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:56.765384+00:00",
+      "endedUtc": "2026-10-18T04:25:56.881781+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\097-command.json",
+      "label": "boot-progress-96",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:25:57.070818+00:00",
+      "endedUtc": "2026-10-18T04:25:57.195046+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\098-command.json",
+      "label": "boot-state-97",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:00.357404+00:00",
+      "endedUtc": "2026-10-18T04:26:00.810339+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\099-command.json",
+      "label": "boot-progress-98",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:00.978496+00:00",
+      "endedUtc": "2026-10-18T04:26:01.108928+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\100-command.json",
+      "label": "boot-state-99",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:04.248938+00:00",
+      "endedUtc": "2026-10-18T04:26:04.628559+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\101-command.json",
+      "label": "boot-progress-100",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:04.860877+00:00",
+      "endedUtc": "2026-10-18T04:26:04.991418+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\102-command.json",
+      "label": "boot-state-101",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:08.156939+00:00",
+      "endedUtc": "2026-10-18T04:26:08.384604+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\103-command.json",
+      "label": "boot-progress-102",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:08.534536+00:00",
+      "endedUtc": "2026-10-18T04:26:08.649651+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\104-command.json",
+      "label": "boot-state-103",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:11.812279+00:00",
+      "endedUtc": "2026-10-18T04:26:12.186089+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\105-command.json",
+      "label": "boot-progress-104",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:12.416311+00:00",
+      "endedUtc": "2026-10-18T04:26:12.822399+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\106-command.json",
+      "label": "boot-state-105",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:16.257824+00:00",
+      "endedUtc": "2026-10-18T04:26:16.898864+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\107-command.json",
+      "label": "boot-progress-106",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:17.247071+00:00",
+      "endedUtc": "2026-10-18T04:26:17.392806+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\108-command.json",
+      "label": "boot-state-107",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:20.569109+00:00",
+      "endedUtc": "2026-10-18T04:26:21.098968+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\109-command.json",
+      "label": "boot-progress-108",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:21.331340+00:00",
+      "endedUtc": "2026-10-18T04:26:21.470040+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\110-command.json",
+      "label": "boot-state-109",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:24.669668+00:00",
+      "endedUtc": "2026-10-18T04:26:24.893071+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\111-command.json",
+      "label": "boot-progress-110",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:25.098585+00:00",
+      "endedUtc": "2026-10-18T04:26:25.237093+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\112-command.json",
+      "label": "boot-state-111",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:28.358500+00:00",
+      "endedUtc": "2026-10-18T04:26:28.661983+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\113-command.json",
+      "label": "boot-progress-112",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:28.795958+00:00",
+      "endedUtc": "2026-10-18T04:26:28.923640+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\114-command.json",
+      "label": "boot-state-113",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:32.057736+00:00",
+      "endedUtc": "2026-10-18T04:26:32.582015+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\115-command.json",
+      "label": "boot-progress-114",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:32.843675+00:00",
+      "endedUtc": "2026-10-18T04:26:32.973770+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\116-command.json",
+      "label": "boot-state-115",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:36.241197+00:00",
+      "endedUtc": "2026-10-18T04:26:36.706218+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\117-command.json",
+      "label": "boot-progress-116",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:36.942241+00:00",
+      "endedUtc": "2026-10-18T04:26:37.121562+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\118-command.json",
+      "label": "boot-state-117",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:40.346095+00:00",
+      "endedUtc": "2026-10-18T04:26:40.605705+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\119-command.json",
+      "label": "boot-progress-118",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:40.754232+00:00",
+      "endedUtc": "2026-10-18T04:26:40.878636+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\120-command.json",
+      "label": "boot-state-119",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:44.072915+00:00",
+      "endedUtc": "2026-10-18T04:26:44.472441+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\121-command.json",
+      "label": "boot-progress-120",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:44.662487+00:00",
+      "endedUtc": "2026-10-18T04:26:44.807463+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\122-command.json",
+      "label": "boot-state-121",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:48.036298+00:00",
+      "endedUtc": "2026-10-18T04:26:48.315528+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\123-command.json",
+      "label": "boot-progress-122",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:48.551385+00:00",
+      "endedUtc": "2026-10-18T04:26:48.686908+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\124-command.json",
+      "label": "boot-state-123",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "get-state"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:51.853831+00:00",
+      "endedUtc": "2026-10-18T04:26:52.279160+00:00"
+    },
+    {
+      "record": "evidence\\start-20261018T042136.600903Z\\125-command.json",
+      "label": "boot-progress-124",
+      "argv": [
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5612",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-18T04:26:52.445262+00:00",
+      "endedUtc": "2026-10-18T04:26:52.577244+00:00"
+    }
+  ]
+}
