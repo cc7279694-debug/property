@@ -1,0 +1,20 @@
+{
+  "timeUtc": "2026-10-18T03:47:24.296854+00:00",
+  "argv": [
+    "git",
+    "-c",
+    "http.version=HTTP/1.1",
+    "ls-remote",
+    "--heads",
+    "origin",
+    "refs/heads/research/m10-jpeg-h2-d2b-a2r-api26-isolated",
+    "refs/heads/main",
+    "refs/heads/feat/m10-local-cover-media",
+    "refs/heads/feat/ui-c1-visual-redesign"
+  ],
+  "exitCode": 0,
+  "stdout": "41596820145dc4a3fa6d041728a59540d828108a\trefs/heads/feat/m10-local-cover-media\n0dce7dd0725a54be4f0280870ef6ca47c48ea7ed\trefs/heads/feat/ui-c1-visual-redesign\n145326ddd4ce28abbf7c2706fe25f9d38c599c3a\trefs/heads/main\n4ee27bfcbe5903d6a49d4a92203de8a63686ba66\trefs/heads/research/m10-jpeg-h2-d2b-a2r-api26-isolated\n",
+  "stderr": "",
+  "stdoutSha256": "5ec2d51afb3c77fb375ff81de2f636b5c3912f008544103c277ce10e5239c32d",
+  "note": "Fresh remote read before C1 commit; earlier transport errors did not alter refs."
+}

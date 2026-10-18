@@ -1,0 +1,10 @@
+Compiled from "AndroidLocationsProvider.kt"
+public interface com.android.prefs.AndroidLocationsProvider {
+  public abstract java.nio.file.Path getPrefsLocation() throws com.android.prefs.AndroidLocationsException;
+
+  public abstract java.nio.file.Path getAvdLocation() throws com.android.prefs.AndroidLocationsException;
+
+  public abstract java.nio.file.Path getGradleAvdLocation() throws com.android.prefs.AndroidLocationsException;
+
+  public abstract java.nio.file.Path getUserHomeLocation();
+}

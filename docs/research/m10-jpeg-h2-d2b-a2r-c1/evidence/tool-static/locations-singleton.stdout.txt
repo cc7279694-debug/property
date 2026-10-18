@@ -1,0 +1,29 @@
+Compiled from "AndroidLocationsSingleton.kt"
+public final class com.android.prefs.AndroidLocationsSingleton extends com.android.prefs.AbstractAndroidLocations {
+  public static final com.android.prefs.AndroidLocationsSingleton INSTANCE;
+
+  private com.android.prefs.AndroidLocationsSingleton();
+    Code:
+       0: aload_0
+       1: getstatic     #12                 // Field com/android/utils/EnvironmentProvider.DIRECT:Lcom/android/utils/EnvironmentProvider$DirectEnvironmentProvider;
+       4: dup
+       5: ldc           #13                 // String DIRECT
+       7: invokestatic  #19                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+      10: checkcast     #8                  // class com/android/utils/EnvironmentProvider
+      13: new           #21                 // class com/android/utils/StdLogger
+      16: dup
+      17: getstatic     #27                 // Field com/android/utils/StdLogger$Level.VERBOSE:Lcom/android/utils/StdLogger$Level;
+      20: invokespecial #30                 // Method com/android/utils/StdLogger."<init>":(Lcom/android/utils/StdLogger$Level;)V
+      23: checkcast     #32                 // class com/android/utils/ILogger
+      26: iconst_1
+      27: invokespecial #35                 // Method com/android/prefs/AbstractAndroidLocations."<init>":(Lcom/android/utils/EnvironmentProvider;Lcom/android/utils/ILogger;Z)V
+      30: return
+
+  static {};
+    Code:
+       0: new           #2                  // class com/android/prefs/AndroidLocationsSingleton
+       3: dup
+       4: invokespecial #40                 // Method "<init>":()V
+       7: putstatic     #43                 // Field INSTANCE:Lcom/android/prefs/AndroidLocationsSingleton;
+      10: return
+}

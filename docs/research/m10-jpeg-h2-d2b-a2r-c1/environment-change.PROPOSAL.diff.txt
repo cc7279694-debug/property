@@ -1,0 +1,19 @@
+UNAPPLIED PROPOSAL ONLY — C1 does not authorize editing or executing the launcher.
+Target: docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/smoke_isolated.py
+Frozen input SHA256: b60844fc5a81999dab5fa62b34a4b747e7a344b3668d29ce69fb07bdbd3945e9
+
+@@ def environment():
+-    return dict(os.environ, JAVA_HOME=str(JDK), ANDROID_HOME=str(SDK),
++    env = dict(os.environ)
++    env.pop("ANDROID_SDK_HOME", None)
++    env.update(JAVA_HOME=str(JDK), ANDROID_HOME=str(SDK),
+                 ANDROID_SDK_ROOT=str(SDK), ANDROID_AVD_HOME=str(AVD_HOME),
+-                ANDROID_USER_HOME=str(USER_HOME), ANDROID_EMULATOR_HOME=str(EMULATOR_HOME),
+-                ANDROID_SDK_HOME=str(ROOT / "legacy-home"))
++                ANDROID_USER_HOME=str(USER_HOME),
++                ANDROID_EMULATOR_HOME=str(EMULATOR_HOME))
++    return env
+
+No global environment update. Preserve all prior directories and create marker.
+Applying this proposal, creating a new attempt, or running any Android tool
+requires separate authorization. Existing single-attempt guard stays in force.

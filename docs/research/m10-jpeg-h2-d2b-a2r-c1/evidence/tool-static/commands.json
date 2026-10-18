@@ -1,0 +1,137 @@
+{
+  "purpose": "Static class disassembly only; no target classes initialized/executed",
+  "avdmanagerInvoked": false,
+  "adbOrEmulatorInvoked": false,
+  "records": [
+    {
+      "label": "locations-provider",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-classpath",
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\common\\tools.common.jar",
+        "-c",
+        "-p",
+        "com.android.prefs.AndroidLocationsProvider"
+      ],
+      "startedUtc": "2026-10-18T03:36:14.880771+00:00",
+      "exitCode": 0,
+      "inputJar": {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\common\\tools.common.jar",
+        "bytes": 570290,
+        "sha256": "ed2fea24fd74c82cac6ca964b8a3f5b33f7aa8f675bd6fb51ee78772f49995f2"
+      },
+      "stdout": {
+        "bytes": 507,
+        "sha256": "543f60a81ea265c59722b8d795fd953dd10d47ea287a282f4348e11be06deb07"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "locations-singleton",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-classpath",
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\common\\tools.common.jar",
+        "-c",
+        "-p",
+        "com.android.prefs.AndroidLocationsSingleton"
+      ],
+      "startedUtc": "2026-10-18T03:36:15.406907+00:00",
+      "exitCode": 0,
+      "inputJar": {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\common\\tools.common.jar",
+        "bytes": 570290,
+        "sha256": "ed2fea24fd74c82cac6ca964b8a3f5b33f7aa8f675bd6fb51ee78772f49995f2"
+      },
+      "stdout": {
+        "bytes": 1812,
+        "sha256": "24c54e196b1c006462312b9a8b1513f789fd70a7e2c8cbe676041dc91600fb93"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "android-location",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-classpath",
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\common\\tools.common.jar",
+        "-c",
+        "-p",
+        "com.android.prefs.AndroidLocation"
+      ],
+      "startedUtc": "2026-10-18T03:36:16.015232+00:00",
+      "exitCode": 0,
+      "inputJar": {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\common\\tools.common.jar",
+        "bytes": 570290,
+        "sha256": "ed2fea24fd74c82cac6ca964b8a3f5b33f7aa8f675bd6fb51ee78772f49995f2"
+      },
+      "stdout": {
+        "bytes": 14809,
+        "sha256": "8d163128c13312711021e1d2dd5ca1a58222ecbc3ba504cc869a1fc0be1d9e49"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "avd-manager",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-classpath",
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\sdklib\\sdklib.core.jar",
+        "-c",
+        "-p",
+        "com.android.sdklib.internal.avd.AvdManager"
+      ],
+      "startedUtc": "2026-10-18T03:36:16.543312+00:00",
+      "exitCode": 0,
+      "inputJar": {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\sdklib\\sdklib.core.jar",
+        "bytes": 1732466,
+        "sha256": "d055d92797f758144ddcb5939b239c9c516183e164289502aa86a0ec7d468138"
+      },
+      "stdout": {
+        "bytes": 206453,
+        "sha256": "554699e15730b19538f85d52b5e86ae22da51f0fa1a405a770dc7fe2b89f5ff7"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "avd-manager-cli",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-classpath",
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\sdklib\\libavdmanager_lib.jar",
+        "-c",
+        "-p",
+        "com.android.sdklib.tool.AvdManagerCli"
+      ],
+      "startedUtc": "2026-10-18T03:36:17.163395+00:00",
+      "exitCode": 0,
+      "inputJar": {
+        "path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\lib\\sdklib\\libavdmanager_lib.jar",
+        "bytes": 28429,
+        "sha256": "c896984c1e1d7468b28f2c98f23e7da20b2b23743a1563a7d67208e294939738"
+      },
+      "stdout": {
+        "bytes": 194026,
+        "sha256": "88cee6785adfc69699753a4e690e9761c445d849ab1cff6c1358ea84d0867d11"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

@@ -1,5 +1,9 @@
 # A2-R 研究证据入口
 
+C1当前交付见[整改](../M10_JPEG_H2_D2B_A2R_C1_REMEDIATION.md)和[静态诊断](../M10_JPEG_H2_D2B_A2R_C1_SDK_STATIC_DIAGNOSIS.md)。本地许可/XML原件不再跟踪，原始字节、官方URL及Git blob见[来源索引](../m10-jpeg-h2-d2b-a2r-c1/LICENSE_SOURCE_INDEX.md)。**未提交脱敏XML，索引不能冒充官方原XML；旧远端提交仍可经Git历史访问正文。**
+
+`verify_delivery.py`及其`delivery-verification.json`是当时提交前的历史验证，不适用于C1新HEAD；不要重跑，它会写历史结果且依赖已移出跟踪的本地原件。干净克隆不含这些原件，C1验证入口见[新证据索引](../m10-jpeg-h2-d2b-a2r-c1/README.md)。安装重试的追加授权未核实，预算答复不作为批准依据。
+
 当前结论以[执行报告](../M10_JPEG_H2_D2B_A2R_EXECUTION.md)和[结果](../M10_JPEG_H2_D2B_A2R_RESULTS.md)为准：固定官方镜像已下载/解包，独立文件后置校验通过；SDK管理器异常退出仍FAIL。唯一AVD创建命令因SDK目录定位错误失败，已停止，无AVD/ADB/App运行。
 
 重要证据优先关系：

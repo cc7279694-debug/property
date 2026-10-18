@@ -1,5 +1,7 @@
 # M10-H2-D2B-A2-R — 官方API26镜像与隔离冷启动执行记录
 
+> C1交付更正：本报告的原命令、退出码和哈希保持历史含义。7份嵌入SDK许可正文的原件现仅本地保留，当前跟踪入口为[来源索引](m10-jpeg-h2-d2b-a2r-c1/LICENSE_SOURCE_INDEX.md)。首次安装FAIL后的再次尝试没有可核实追加授权，登记为[流程偏差](M10_JPEG_H2_D2B_A2R_C1_REMEDIATION.md)；下文“受控重试”仅描述次数/预算控制。AVD错误文本不等于已证明SDK根缺失，见[静态诊断](M10_JPEG_H2_D2B_A2R_C1_SDK_STATIC_DIAGNOSIS.md)。
+
 2026-10-18，Asia/Shanghai。**BLOCKED — M10-H2-D2B-A2-R**。本轮已实际下载并解包固定Google API26 x86_64 Google APIs r16，独立核验全部11个原始文件的尺寸/CRC及SHA清单。SDK管理器异常退出保留，镜像可用后置条件单独证明。随后**唯一AVD创建命令失败**：`Can't locate Android SDK installation directory for the AVD .ini file.`。已停止，不重试创建、不清理残留。模拟器启动、ADB、APK安装和Host启动均为0。
 
 这不是旧A2的“未安装API26”阻塞。许可匹配已有接受记录，用户已明确3GiB只限制下载流量；二者均不再作为当前阻塞。
@@ -59,7 +61,7 @@
 
 - 原CRLF副本17107字节、SHA256 `00eceefbf21af958ba76722fdf3330143d7176e4626f341c3d8925a6e40726ea`，以及[原错误判定和命令](m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-capacity-gate/result.json)均原样保留，明确已被纠正证据取代，不再作为有效门禁。
 - 更正为Java安全解析**原始官方XML的license节点**，再调用实际SDK `TrimStringAdapter.unmarshal`与UTF-8 SHA1，退出0，得到 **`24333f8a63b6825ea9c5514f83c2829b004d1fee`**。
-- [原XML逐字节抽取的LF许可文本](m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/android-sdk-license.xml-extracted.utf8.txt)：16962字节、SHA256 `1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16`；与CRLF副本仅换行不同。
+- [LF许可原件元数据索引（正文仅本地保留）](m10-jpeg-h2-d2b-a2r-c1/LICENSE_SOURCE_INDEX.md)：16962字节、SHA256 `1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16`；与CRLF副本仅换行不同。索引不是许可正文或原XML。
 - 正确哈希匹配当前MirraAndroid SDK及默认Android SDK已有接受记录。**不需要接受新许可**；本轮没有执行`--licenses`、`yes`、`setAccepted`或写入接受哈希，旧许可文件保持。
 
 完整纠正命令、原始stdout/stderr、HTTP200/206和ZIP目录见[更正及容量取证](m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/result.json)。初次研究环境清单6,614,571字节仅反映当时的SDK查询元数据/临时文件；后来新增ZIP尾段65536字节，没有完整image或AVD。没有将临时DLL、缓存、镜像或尾段二进制提交到Git。

@@ -1,0 +1,161 @@
+{
+  "timeUtc": "2026-10-18T03:42:15.392811+00:00",
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-Command",
+    "$r=@(); foreach($scope in @('Process','User','Machine')) { foreach($name in @('ANDROID_PREFS_ROOT','JAVA_OPTS','AVDMANAGER_OPTS','JAVA_TOOL_OPTIONS','_JAVA_OPTIONS','JDK_JAVA_OPTIONS')) {$v=[Environment]::GetEnvironmentVariable($name,$scope); $r += [PSCustomObject]@{scope=$scope;name=$name;value=$v}} }; $r|ConvertTo-Json -Depth 3 -Compress"
+  ],
+  "exitCode": 0,
+  "rawStdoutBytes": 1023,
+  "rawStdoutSha256": "9815c22a854eab0b4c7be91d7194cff54956040ace1bb9d4051839018e768dbf",
+  "rows": [
+    {
+      "scope": "Process",
+      "name": "ANDROID_PREFS_ROOT",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Process",
+      "name": "JAVA_OPTS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Process",
+      "name": "AVDMANAGER_OPTS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Process",
+      "name": "JAVA_TOOL_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Process",
+      "name": "_JAVA_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Process",
+      "name": "JDK_JAVA_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_PREFS_ROOT",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "User",
+      "name": "JAVA_OPTS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "User",
+      "name": "AVDMANAGER_OPTS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "User",
+      "name": "JAVA_TOOL_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "User",
+      "name": "_JAVA_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "User",
+      "name": "JDK_JAVA_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_PREFS_ROOT",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Machine",
+      "name": "JAVA_OPTS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Machine",
+      "name": "AVDMANAGER_OPTS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Machine",
+      "name": "JAVA_TOOL_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Machine",
+      "name": "_JAVA_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    },
+    {
+      "scope": "Machine",
+      "name": "JDK_JAVA_OPTIONS",
+      "present": false,
+      "bytes": 0,
+      "sha256": null,
+      "androidPathOverrideMentioned": false
+    }
+  ],
+  "rawValuesArchived": false,
+  "scope": "Current C1 read-only observation; not original create environment proof"
+}

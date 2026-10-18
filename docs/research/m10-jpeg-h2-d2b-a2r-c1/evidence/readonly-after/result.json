@@ -1,0 +1,179 @@
+{
+  "phase": "after",
+  "timeUtc": "2026-10-18T03:47:22.175661+00:00",
+  "environment": [
+    {
+      "scope": "Process",
+      "name": "ANDROID_HOME",
+      "value": null
+    },
+    {
+      "scope": "Process",
+      "name": "ANDROID_SDK_ROOT",
+      "value": null
+    },
+    {
+      "scope": "Process",
+      "name": "ANDROID_USER_HOME",
+      "value": null
+    },
+    {
+      "scope": "Process",
+      "name": "ANDROID_AVD_HOME",
+      "value": "E:\\Android\\avd"
+    },
+    {
+      "scope": "Process",
+      "name": "ANDROID_EMULATOR_HOME",
+      "value": null
+    },
+    {
+      "scope": "Process",
+      "name": "ANDROID_SDK_HOME",
+      "value": null
+    },
+    {
+      "scope": "Process",
+      "name": "JAVA_HOME",
+      "value": null
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_HOME",
+      "value": null
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_SDK_ROOT",
+      "value": null
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_USER_HOME",
+      "value": null
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_AVD_HOME",
+      "value": "E:\\Android\\avd"
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_EMULATOR_HOME",
+      "value": null
+    },
+    {
+      "scope": "User",
+      "name": "ANDROID_SDK_HOME",
+      "value": null
+    },
+    {
+      "scope": "User",
+      "name": "JAVA_HOME",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_HOME",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_SDK_ROOT",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_USER_HOME",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_AVD_HOME",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_EMULATOR_HOME",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "ANDROID_SDK_HOME",
+      "value": null
+    },
+    {
+      "scope": "Machine",
+      "name": "JAVA_HOME",
+      "value": null
+    }
+  ],
+  "query": {
+    "argv": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "$r=@(); foreach($scope in @('Process','User','Machine')) { foreach($name in @('ANDROID_HOME','ANDROID_SDK_ROOT','ANDROID_USER_HOME','ANDROID_AVD_HOME','ANDROID_EMULATOR_HOME','ANDROID_SDK_HOME','JAVA_HOME')) {$r += [PSCustomObject]@{scope=$scope;name=$name;value=[Environment]::GetEnvironmentVariable($name,$scope)}} }; $r|ConvertTo-Json -Depth 3 -Compress"
+    ],
+    "exitCode": 0,
+    "stdoutBytes": 1234,
+    "stdoutSha256": "224cfb3957ac2b0278d98478fa4ed7f869c1008e0cc23569960a3e0594968156",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "researchRoot": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26",
+  "metadataEntryCount": 816,
+  "metadataAggregateSha256": "6c8ffd317e08482245ecf6791532072dce4cf8cc4e32a00851e5d9cb344f34a5",
+  "selectedFileHashes": [
+    {
+      "path": "sdk/cmdline-tools/latest/source.properties",
+      "exists": true,
+      "bytes": 86,
+      "sha256": "a22ee118ce3bc68e682c16b4ad7a710f00f3ad7c7b01a4c67b63ad5e384d6b64"
+    },
+    {
+      "path": "sdk/emulator/source.properties",
+      "exists": true,
+      "bytes": 103,
+      "sha256": "ee589ca350515c29dc3bad30dd5ebe8efb11d1a50c17c8815125d3c4bd12a3a8"
+    },
+    {
+      "path": "sdk/platform-tools/source.properties",
+      "exists": true,
+      "bytes": 38,
+      "sha256": "2dccd788c0234d8cf7f7457377e57f57527a86a629c6ed54feb8af0f549dac38"
+    },
+    {
+      "path": "sdk/system-images/android-26/google_apis/x86_64/source.properties",
+      "exists": true,
+      "bytes": 294,
+      "sha256": "7359e05a9d54b107581dbc530391985ac414e28828484aa4487b4e070d62aaed"
+    },
+    {
+      "path": "sdk/licenses/android-sdk-license",
+      "exists": true,
+      "bytes": 42,
+      "sha256": "70fd2713ca385fd6b14c1d5577ce8349996699186a3a216e9643a09098c26dca"
+    },
+    {
+      "path": "a2r-smoke-state/create-attempt.json",
+      "exists": true,
+      "bytes": 227,
+      "sha256": "5fc9cf89b241adbfc6349f3c50cc8fb09c3c15d8b4bcc8b91074dd4c77fb2509"
+    }
+  ],
+  "smokeScript": {
+    "bytes": 24689,
+    "sha256": "b60844fc5a81999dab5fa62b34a4b747e7a344b3668d29ce69fb07bdbd3945e9"
+  },
+  "avdCreateOrAndroidToolsExecuted": false,
+  "originalApi36OrH2Accessed": false,
+  "comparison": {
+    "globalAndProcessEnvironmentUnchanged": true,
+    "researchMetadataUnchanged": true,
+    "selectedFilesUnchanged": true,
+    "smokeScriptUnchanged": true
+  },
+  "status": "PASS_READONLY_COMPARISON"
+}

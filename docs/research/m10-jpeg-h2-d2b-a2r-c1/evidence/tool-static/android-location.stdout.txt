@@ -1,0 +1,262 @@
+Compiled from "AndroidLocation.java"
+public final class com.android.prefs.AndroidLocation {
+  public static final java.lang.String FOLDER_DOT_ANDROID;
+
+  public static final java.lang.String FOLDER_AVD;
+
+  public static final java.lang.String ANDROID_PREFS_ROOT;
+
+  static java.lang.String sPrefsLocation;
+
+  private static java.lang.String sAvdLocation;
+
+  public com.android.prefs.AndroidLocation();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static java.lang.String getFolder() throws com.android.prefs.AndroidLocation$AndroidLocationException;
+    Code:
+       0: getstatic     #7                  // Field com/android/utils/EnvironmentProvider.DIRECT:Lcom/android/utils/EnvironmentProvider$DirectEnvironmentProvider;
+       3: new           #13                 // class com/android/utils/StdLogger
+       6: dup
+       7: getstatic     #15                 // Field com/android/utils/StdLogger$Level.VERBOSE:Lcom/android/utils/StdLogger$Level;
+      10: invokespecial #21                 // Method com/android/utils/StdLogger."<init>":(Lcom/android/utils/StdLogger$Level;)V
+      13: invokestatic  #24                 // Method getFolder:(Lcom/android/utils/EnvironmentProvider;Lcom/android/utils/ILogger;)Ljava/lang/String;
+      16: areturn
+
+  public static java.lang.String getFolder(com.android.utils.EnvironmentProvider, com.android.utils.ILogger) throws com.android.prefs.AndroidLocation$AndroidLocationException;
+    Code:
+       0: getstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+       3: ifnonnull     14
+       6: aload_0
+       7: aload_1
+       8: invokestatic  #34                 // Method findHomeFolder:(Lcom/android/utils/EnvironmentProvider;Lcom/android/utils/ILogger;)Ljava/lang/String;
+      11: putstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+      14: new           #37                 // class java/io/File
+      17: dup
+      18: getstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+      21: invokespecial #39                 // Method java/io/File."<init>":(Ljava/lang/String;)V
+      24: astore_2
+      25: aload_2
+      26: invokevirtual #42                 // Method java/io/File.exists:()Z
+      29: ifne          75
+      32: aload_2
+      33: invokestatic  #46                 // Method com/android/utils/FileUtils.mkdirs:(Ljava/io/File;)Ljava/io/File;
+      36: pop
+      37: goto          105
+      40: astore_3
+      41: new           #54                 // class com/android/prefs/AndroidLocation$AndroidLocationException
+      44: dup
+      45: ldc           #56                 // String Unable to create folder \'%1$s\'. This is the path of preference folder expected by the Android tools.
+      47: iconst_1
+      48: anewarray     #2                  // class java/lang/Object
+      51: dup
+      52: iconst_0
+      53: getstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+      56: aastore
+      57: invokestatic  #58                 // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+      60: invokespecial #64                 // Method com/android/prefs/AndroidLocation$AndroidLocationException."<init>":(Ljava/lang/String;)V
+      63: astore        4
+      65: aload         4
+      67: aload_3
+      68: invokevirtual #65                 // Method com/android/prefs/AndroidLocation$AndroidLocationException.initCause:(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+      71: pop
+      72: aload         4
+      74: athrow
+      75: aload_2
+      76: invokevirtual #69                 // Method java/io/File.isFile:()Z
+      79: ifeq          105
+      82: new           #54                 // class com/android/prefs/AndroidLocation$AndroidLocationException
+      85: dup
+      86: ldc           #72                 // String %1$s is not a directory!\nThis is the path of preference folder expected by the Android tools.
+      88: iconst_1
+      89: anewarray     #2                  // class java/lang/Object
+      92: dup
+      93: iconst_0
+      94: getstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+      97: aastore
+      98: invokestatic  #58                 // Method java/lang/String.format:(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+     101: invokespecial #64                 // Method com/android/prefs/AndroidLocation$AndroidLocationException."<init>":(Ljava/lang/String;)V
+     104: athrow
+     105: getstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+     108: areturn
+    Exception table:
+       from    to  target type
+          32    37    40   Class java/lang/SecurityException
+
+  public static java.lang.String getFolderWithoutWrites();
+    Code:
+       0: getstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+       3: ifnonnull     31
+       6: getstatic     #7                  // Field com/android/utils/EnvironmentProvider.DIRECT:Lcom/android/utils/EnvironmentProvider$DirectEnvironmentProvider;
+       9: new           #13                 // class com/android/utils/StdLogger
+      12: dup
+      13: getstatic     #15                 // Field com/android/utils/StdLogger$Level.VERBOSE:Lcom/android/utils/StdLogger$Level;
+      16: invokespecial #21                 // Method com/android/utils/StdLogger."<init>":(Lcom/android/utils/StdLogger$Level;)V
+      19: invokestatic  #34                 // Method findHomeFolder:(Lcom/android/utils/EnvironmentProvider;Lcom/android/utils/ILogger;)Ljava/lang/String;
+      22: putstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+      25: goto          31
+      28: astore_0
+      29: aconst_null
+      30: areturn
+      31: getstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+      34: areturn
+    Exception table:
+       from    to  target type
+           6    25    28   Class com/android/prefs/AndroidLocation$AndroidLocationException
+
+  public static java.lang.String getAvdFolder() throws com.android.prefs.AndroidLocation$AndroidLocationException;
+    Code:
+       0: getstatic     #74                 // Field sAvdLocation:Ljava/lang/String;
+       3: ifnonnull     76
+       6: getstatic     #7                  // Field com/android/utils/EnvironmentProvider.DIRECT:Lcom/android/utils/EnvironmentProvider$DirectEnvironmentProvider;
+       9: new           #13                 // class com/android/utils/StdLogger
+      12: dup
+      13: getstatic     #15                 // Field com/android/utils/StdLogger$Level.VERBOSE:Lcom/android/utils/StdLogger$Level;
+      16: invokespecial #21                 // Method com/android/utils/StdLogger."<init>":(Lcom/android/utils/StdLogger$Level;)V
+      19: iconst_1
+      20: anewarray     #77                 // class com/android/prefs/AndroidLocation$Global
+      23: dup
+      24: iconst_0
+      25: getstatic     #79                 // Field com/android/prefs/AndroidLocation$Global.ANDROID_AVD_HOME:Lcom/android/prefs/AndroidLocation$Global;
+      28: aastore
+      29: invokestatic  #83                 // Method findValidPath:(Lcom/android/utils/EnvironmentProvider;Lcom/android/utils/ILogger;[Lcom/android/prefs/AndroidLocation$Global;)Ljava/lang/String;
+      32: astore_0
+      33: aload_0
+      34: ifnonnull     46
+      37: invokestatic  #87                 // Method getFolder:()Ljava/lang/String;
+      40: invokedynamic #90,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      45: astore_0
+      46: aload_0
+      47: putstatic     #74                 // Field sAvdLocation:Ljava/lang/String;
+      50: getstatic     #74                 // Field sAvdLocation:Ljava/lang/String;
+      53: getstatic     #94                 // Field java/io/File.separator:Ljava/lang/String;
+      56: invokevirtual #97                 // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+      59: ifne          76
+      62: getstatic     #74                 // Field sAvdLocation:Ljava/lang/String;
+      65: getstatic     #94                 // Field java/io/File.separator:Ljava/lang/String;
+      68: invokedynamic #101,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      73: putstatic     #74                 // Field sAvdLocation:Ljava/lang/String;
+      76: getstatic     #74                 // Field sAvdLocation:Ljava/lang/String;
+      79: areturn
+
+  public static java.lang.String getUserHomeFolder() throws com.android.prefs.AndroidLocation$AndroidLocationException;
+    Code:
+       0: getstatic     #7                  // Field com/android/utils/EnvironmentProvider.DIRECT:Lcom/android/utils/EnvironmentProvider$DirectEnvironmentProvider;
+       3: new           #13                 // class com/android/utils/StdLogger
+       6: dup
+       7: getstatic     #15                 // Field com/android/utils/StdLogger$Level.VERBOSE:Lcom/android/utils/StdLogger$Level;
+      10: invokespecial #21                 // Method com/android/utils/StdLogger."<init>":(Lcom/android/utils/StdLogger$Level;)V
+      13: iconst_3
+      14: anewarray     #77                 // class com/android/prefs/AndroidLocation$Global
+      17: dup
+      18: iconst_0
+      19: getstatic     #104                // Field com/android/prefs/AndroidLocation$Global.TEST_TMPDIR:Lcom/android/prefs/AndroidLocation$Global;
+      22: aastore
+      23: dup
+      24: iconst_1
+      25: getstatic     #107                // Field com/android/prefs/AndroidLocation$Global.USER_HOME:Lcom/android/prefs/AndroidLocation$Global;
+      28: aastore
+      29: dup
+      30: iconst_2
+      31: getstatic     #110                // Field com/android/prefs/AndroidLocation$Global.HOME:Lcom/android/prefs/AndroidLocation$Global;
+      34: aastore
+      35: invokestatic  #83                 // Method findValidPath:(Lcom/android/utils/EnvironmentProvider;Lcom/android/utils/ILogger;[Lcom/android/prefs/AndroidLocation$Global;)Ljava/lang/String;
+      38: areturn
+
+  private static java.lang.String findHomeFolder(com.android.utils.EnvironmentProvider, com.android.utils.ILogger) throws com.android.prefs.AndroidLocation$AndroidLocationException;
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iconst_4
+       3: anewarray     #77                 // class com/android/prefs/AndroidLocation$Global
+       6: dup
+       7: iconst_0
+       8: getstatic     #113                // Field com/android/prefs/AndroidLocation$Global.ANDROID_PREFS_ROOT:Lcom/android/prefs/AndroidLocation$Global;
+      11: aastore
+      12: dup
+      13: iconst_1
+      14: getstatic     #104                // Field com/android/prefs/AndroidLocation$Global.TEST_TMPDIR:Lcom/android/prefs/AndroidLocation$Global;
+      17: aastore
+      18: dup
+      19: iconst_2
+      20: getstatic     #107                // Field com/android/prefs/AndroidLocation$Global.USER_HOME:Lcom/android/prefs/AndroidLocation$Global;
+      23: aastore
+      24: dup
+      25: iconst_3
+      26: getstatic     #110                // Field com/android/prefs/AndroidLocation$Global.HOME:Lcom/android/prefs/AndroidLocation$Global;
+      29: aastore
+      30: invokestatic  #83                 // Method findValidPath:(Lcom/android/utils/EnvironmentProvider;Lcom/android/utils/ILogger;[Lcom/android/prefs/AndroidLocation$Global;)Ljava/lang/String;
+      33: astore_2
+      34: aload_2
+      35: ifnonnull     59
+      38: new           #54                 // class com/android/prefs/AndroidLocation$AndroidLocationException
+      41: dup
+      42: aload_0
+      43: ldc           #116                // String ANDROID_PREFS_ROOT
+      45: invokeinterface #117,  2          // InterfaceMethod com/android/utils/EnvironmentProvider.getSystemProperty:(Ljava/lang/String;)Ljava/lang/String;
+      50: invokedynamic #120,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      55: invokespecial #64                 // Method com/android/prefs/AndroidLocation$AndroidLocationException."<init>":(Ljava/lang/String;)V
+      58: athrow
+      59: aload_2
+      60: getstatic     #94                 // Field java/io/File.separator:Ljava/lang/String;
+      63: invokevirtual #97                 // Method java/lang/String.endsWith:(Ljava/lang/String;)Z
+      66: ifne          79
+      69: aload_2
+      70: getstatic     #94                 // Field java/io/File.separator:Ljava/lang/String;
+      73: invokedynamic #101,  0            // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      78: astore_2
+      79: aload_2
+      80: getstatic     #94                 // Field java/io/File.separator:Ljava/lang/String;
+      83: invokedynamic #121,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      88: areturn
+
+  public static void resetFolder();
+    Code:
+       0: aconst_null
+       1: putstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+       4: aconst_null
+       5: putstatic     #74                 // Field sAvdLocation:Ljava/lang/String;
+       8: return
+
+  private static java.lang.String findValidPath(com.android.utils.EnvironmentProvider, com.android.utils.ILogger, com.android.prefs.AndroidLocation$Global...) throws com.android.prefs.AndroidLocation$AndroidLocationException;
+    Code:
+       0: aload_2
+       1: astore_3
+       2: aload_3
+       3: arraylength
+       4: istore        4
+       6: iconst_0
+       7: istore        5
+       9: iload         5
+      11: iload         4
+      13: if_icmpge     46
+      16: aload_3
+      17: iload         5
+      19: aaload
+      20: astore        6
+      22: aload         6
+      24: aload_0
+      25: aload_1
+      26: iconst_1
+      27: invokevirtual #122                // Method com/android/prefs/AndroidLocation$Global.validatePath:(Lcom/android/utils/EnvironmentProvider;Lcom/android/utils/ILogger;Z)Ljava/lang/String;
+      30: astore        7
+      32: aload         7
+      34: ifnull        40
+      37: aload         7
+      39: areturn
+      40: iinc          5, 1
+      43: goto          9
+      46: aconst_null
+      47: areturn
+
+  static {};
+    Code:
+       0: aconst_null
+       1: putstatic     #30                 // Field sPrefsLocation:Ljava/lang/String;
+       4: aconst_null
+       5: putstatic     #74                 // Field sAvdLocation:Ljava/lang/String;
+       8: return
+}

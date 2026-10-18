@@ -1,5 +1,7 @@
 # M10-H2-D2B-A2-R — 实际结果与停止决策
 
+> C1更正：两次安装仍FAIL，第二次的追加执行授权未找到，现登记流程偏差；预算答复不授权重试。原件正文退出当前跟踪范围、本地原字节与旧Git历史保留。下文结果是A2-R当时的观察，不是C1重新执行；[整改及依据](M10_JPEG_H2_D2B_A2R_C1_REMEDIATION.md)、[目录冲突静态诊断](M10_JPEG_H2_D2B_A2R_C1_SDK_STATIC_DIAGNOSIS.md)。
+
 2026-10-18。**BLOCKED — M10-H2-D2B-A2-R**。本轮完成固定官方镜像下载/解包及全部原始文件完整性核对，随后唯一AVD创建命令失败。**当前阻塞是SDK工具无法为AVD `.ini` 定位SDK安装目录，不是新许可、预算或本地缺镜像。**
 
 | 检查 | 结果 | 证据或限制 |
@@ -33,7 +35,7 @@
 
 用户已明确预算仅限下载流量，展开尺寸不再阻塞。官方r16镜像已完整解包，全部原始文件与官方中央目录尺寸/CRC一致；没有更换版本或镜像。当前AVD创建命令失败后，未重试、清理或补造SDK结构，停止等待独立审查。结束快照中目标数据目录为空、注册`.ini`不存在、无start/install/launch marker、目标模拟器及SDK写入进程观察为空。
 
-**许可无需新的接受决定**。初次9cb2a…是CRLF取证错误，已保留并纠正；正确XML许可标识24333f8a…匹配既有记录。[更正证据与完整LF文本](m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/result.json)优先于初次错误gate。本轮未改许可接受文件。
+**许可无需新的接受决定**。初次9cb2a…是CRLF取证错误，已保留并纠正；正确XML许可标识24333f8a…匹配既有记录。[更正结果索引](m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/result.json)优先于初次错误gate；许可正文按C1仅本地保留。本轮未改许可接受文件。
 
 SDK查询/安装器异常退出、首次HEAD TLS错误、错误许可取证及创建失败均保留，不倒改原日志。镜像后置条件PASS与管理器FAIL分开；未保留整ZIP，不冒充独立整归档SHA验证。下一步仅建议独立审查AVD/SDK目录发现问题及最小修复，不能自动执行现有监督器start/observe入口。
 
