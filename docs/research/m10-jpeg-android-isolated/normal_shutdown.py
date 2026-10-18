@@ -6,7 +6,7 @@ from pathlib import Path
 import socket
 import time
 
-from natural_tests import APP_SHA, TEST_SHA, METHODS, immutable
+from natural_tests import APP_SHA, TEST_SHA, METHODS, immutable, prior_result
 
 
 def normal_exit(supervisor, evidence_api=None):
@@ -14,7 +14,7 @@ def normal_exit(supervisor, evidence_api=None):
     if supervisor.api != 26 or supervisor.serial != "emulator-5624":
         raise RuntimeError("Only the newly isolated API26 has conditional exit authorization")
     for index, method in enumerate(METHODS):
-        result = json.loads((Path(supervisor.evidence) / f"method-{index:02d}" / "result.json").read_text())
+        result = prior_result(Path(supervisor.evidence) / f"method-{index:02d}" / "result.json", index)
         expected = {"status": "PASS", "method": method, "serial": supervisor.serial,
                     "api": 26, "appSHA256": APP_SHA, "testSHA256": TEST_SHA}
         if any(result.get(key) != value for key, value in expected.items()):

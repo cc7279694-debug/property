@@ -1,0 +1,110 @@
+{
+  "fiveQueries": [
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5624",
+        "get-state"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-18T13:40:23.774920+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "ZGV2aWNlDQo=",
+      "stdoutBytes": 8,
+      "stdoutSHA256": "5a49c5eb1807bf1dd12637504e6a6e49f1c9c4bce601ae34c9984843074b129c",
+      "utc": "2026-10-18T13:40:23.628911+00:00"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5624",
+        "shell",
+        "getprop",
+        "sys.boot_completed"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-18T13:40:24.068582+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "MQ0K",
+      "stdoutBytes": 3,
+      "stdoutSHA256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "utc": "2026-10-18T13:40:23.842374+00:00"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5624",
+        "shell",
+        "getprop",
+        "ro.build.version.sdk"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-18T13:40:24.269864+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "MjYNCg==",
+      "stdoutBytes": 4,
+      "stdoutSHA256": "2218c54ac6a0d40e422f1e643c5df24bcbbe62f33ffe335ca2501dc36629c402",
+      "utc": "2026-10-18T13:40:24.144750+00:00"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5624",
+        "shell",
+        "getprop",
+        "ro.product.cpu.abi"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-18T13:40:24.454344+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "eDg2XzY0DQo=",
+      "stdoutBytes": 8,
+      "stdoutSHA256": "73639484b8886a56b085ee97e76ead4218da03db9c2e5c88dd656c06bca60243",
+      "utc": "2026-10-18T13:40:24.337517+00:00"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5624",
+        "emu",
+        "avd",
+        "name"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-18T13:40:24.681726+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "TGl0aGljX00xMFZfQVBJMjZfMjAyNjEwMTgNDQpPSw0NCg==",
+      "stdoutBytes": 34,
+      "stdoutSHA256": "d1953b751a178e7212c67ca7c872767396424dd118aaf5855abb30663098843b",
+      "utc": "2026-10-18T13:40:24.531650+00:00"
+    }
+  ],
+  "prefixBytes": 16779,
+  "prefixSHA256": "b98df8bf6541c5f33817b4fae1527c980b3dc6e11c343cb0c8676774f0a4260e",
+  "scope": "ORIGINAL_QUERY_BYTES_NOT_REISSUED"
+}

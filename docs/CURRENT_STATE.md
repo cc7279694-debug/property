@@ -1,13 +1,16 @@
 # 当前项目状态
 
-状态日期：2026-10-18（Asia/Shanghai；Android监督器整改已交付，唯一API26启动在首个Windows子进程身份门禁BLOCKED，等待独立审查）。本文件是当前分支唯一实时状态；归档/checkpoint仅记录历史。
+状态日期：2026-10-18（Asia/Shanghai；现有API26接续及两次自然测试已执行，缺损项日志连续性UNKNOWN，停止等待独立审查）。本文件为唯一当前状态；归档/checkpoint保留历史，不回写旧失败。
 
 ## Current Stage
 
-- **M10 JPEG Android isolated resume — BLOCKED / WINDOWS_QEMU_IDENTITY_FIRST_SAMPLE_NULL**：来源 `939e88b3fc79f3b9fd160737022f3bd795a07f37`，当前分支 `codex/m10-jpeg-android-isolated-resume`。真实CLI占位值/唯一注册/镜像/路径核验、独立adoption及固定9方法真实instrumentation执行器和只读证据层已实现；最终191唯一Python方法189 PASS/2 SKIP，不计Android。原22监督器测试身份保留；两symlink SKIP因本机权限，junction/hardlink通过。
-- **实际设备结果**：原4文件size/SHA最终仍一致，旧create exit0/失败证据不改。首次静态adopt被本轮CIM子进程专属空TEMP目录阻塞，精确补充无链接且必须为空的目录合同并记录独立元数据；保留该exit1，新的immutable adoption-proof PASS，不写旧create-proof。本轮API26新增create0/start1/ADB0/安装0/测试0。launcher32880/子QEMU32032首个CIM的ExecutablePath为空，监督器立即停止；必要Windows结束观察同PID路径已可读、5624/5625监听，但不能回改失败或证明boot。所有Android/原三JPEG/PNG/v1/业务回归NOT_RUN；API36全部0/NOT_RUN。
-- **当前新现场与下一步**：`Lithic_M10V_API26_20261018`、目标`emulator-5624`、目录`E:/CODEX/.codex/research-env/lithic-m10-android-20261018-v1/api26`保持运行与数据，没有boot-proof或APK安装。不得重发start、重建、清marker、关闭、安装或自动续测。唯一设备准入阻塞是冷启动身份属性暂缺的安全等待合同及已运行新设备后续许可；只等待ChatGPT独立审查。详见[集中报告](research/M10_JPEG_ANDROID_ISOLATED_RESUME.md)、[真实结果](research/m10-jpeg-android-isolated-resume/evidence/RESULTS.json)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-ANDROID-ISOLATED-RESUME.md)。
-- **保护与正式状态**：没有重建/替换APK，App SHA `0ada2631…47dbf`、测试APK SHA `3b0005a3…4282a`、App子树`89679a188c2b6e6793962041383a9f92337e126f`不变。没有产品代码/原JPEG断言/Room/备份/算法/UI变更、下载/升级/许可证接受、故障注入、设备退出或H2/C2/旧AVD访问。M10 PENDING/三JPEG历史FAIL、UI-C1 ACCEPTED/FROZEN PASS WITH NOTES、M11 NOT_AUTHORIZED，D2A-N01～N05/A1-N01～N04及全部NOTE/FAIL/UNKNOWN/NOT_RUN保留。
+- **M10 JPEG Android runtime resume — BLOCKED / DAMAGED_GATE_LOG_CONTINUITY**：来源 `3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f`；分支 `codex/m10-jpeg-android-runtime-resume`。原launcher32880/QEMU32032、创建时间、完整路径/参数、5624/5625归属通过有界双观察核验；本轮独立steady-state proof观察boot1/API26/x86_64/正确AVD，原首次300秒时限NOT_PROVEN，旧start/失败不改。
+- **实际运行**：API26新增create0/start0，两锁定APK各安装1次；405条ADB全定向5624，其中2安装、2单方法instrumentation、401只读，均原始exit0但不代替门禁。健康JUnit1PASS（2.041s），pin/FD/认证退休/死亡/终结证据经原字节追加核验PASS；原因Windows CRLF读取转换产生的原外层UNKNOWN仍保留，未重跑或覆盖。缺损JUnit1PASS（1.258s）、真实INVALID_IMAGE/code117，但日志前缀被环形缓冲淘汰，完整生命周期门禁UNKNOWN。后续7方法/原三JPEG断言/API36全部NOT_RUN；没有放宽连续性条件、重试或故障注入。
+- **宿主与范围**：最终234唯一Python方法232PASS/2SKIP（原191保留；symlink权限两项跳过）。有界身份、真实console CRCRLF、原字节取证和精确离线补充核验有回归；未重跑JVM/native全量/Lint/Gradle。App/Test SHA `0ada2631…47dbf`/`3b0005a3…4282a`，App子树`89679a188c2b6e6793962041383a9f92337e126f`不变，无产品代码/原JPEG断言/Room/备份/算法/UI变化或新下载/SDK许可。
+- **结束现场及下一步**：原新AVD `Lithic_M10V_API26_20261018/emulator-5624`、目录`E:/CODEX/.codex/research-env/lithic-m10-android-20261018-v1/api26`继续运行；结束只读无活动App/Worker，2个合成Stage归属/终结/无pin及匹配Worker缺失核验PASS。当前安全状态不补足缺失的原日志区间。不自动重测、关闭、重建或清理；只提交ChatGPT独立审查取证连续性和已收集证据。见[集中报告](research/M10_JPEG_ANDROID_RUNTIME_RESUME.md)、[真实结果](research/m10-jpeg-android-runtime-resume/evidence/RESULTS.json)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-ANDROID-RUNTIME-RESUME.md)。
+- **正式/历史状态**：M10 PENDING、三JPEG历史FAIL（对应原断言本轮NOT_RUN）、UI-C1 ACCEPTED/FROZEN PASS WITH NOTES、M11 NOT_AUTHORIZED；R3原29项、D2A/A1及所有NOTE/FAIL/UNKNOWN保留。原H2 DELIVERY_UNKNOWN/pin=true、C2及旧AVD未访问。上一轮CIM首次null失败及本轮console误拦/健康外层UNKNOWN均保留独立来源，不用后续证据覆写原件。
+
+上一续接监督器交付及首次CIM阻塞见[原报告](research/M10_JPEG_ANDROID_ISOLATED_RESUME.md)，本轮是新的有限授权，不改原结论。
 
 上一AVD创建阶段的22项宿主测试及AvdId错误门禁仍为历史事实，见[原报告](research/M10_JPEG_ANDROID_ISOLATED_VALIDATION.md)，不回写旧PASS或覆盖旧证据。
 

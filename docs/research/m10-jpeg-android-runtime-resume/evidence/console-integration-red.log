@@ -1,0 +1,54 @@
+test_api26_start_is_prohibited_before_any_start_side_effect (test_runtime_resume.RuntimeResumeTest.test_api26_start_is_prohibited_before_any_start_side_effect) ... ok
+test_boot_observation_deadline_does_not_become_new_startup_proof (test_runtime_resume.RuntimeResumeTest.test_boot_observation_deadline_does_not_become_new_startup_proof) ... ok
+test_console_conflicting_payload_and_lone_cr_still_rejected (test_runtime_resume.RuntimeResumeTest.test_console_conflicting_payload_and_lone_cr_still_rejected) ... ERROR
+test_identity_unknown_never_sends_adb (test_runtime_resume.RuntimeResumeTest.test_identity_unknown_never_sends_adb) ... ok
+test_normal_identity_requires_current_resume_proof_before_adb (test_runtime_resume.RuntimeResumeTest.test_normal_identity_requires_current_resume_proof_before_adb) ... ok
+test_real_console_double_cr_is_not_a_conflicting_avd_name (test_runtime_resume.RuntimeResumeTest.test_real_console_double_cr_is_not_a_conflicting_avd_name) ... ERROR
+test_reconciliation_consumes_existing_queries_without_reissuing_adb (test_runtime_resume.RuntimeResumeTest.test_reconciliation_consumes_existing_queries_without_reissuing_adb) ... ERROR
+test_reconciliation_rejects_wrong_serial_before_new_observation (test_runtime_resume.RuntimeResumeTest.test_reconciliation_rejects_wrong_serial_before_new_observation) ... ERROR
+test_resume_writes_separate_proof_preserving_original_start_failure (test_runtime_resume.RuntimeResumeTest.test_resume_writes_separate_proof_preserving_original_start_failure) ... ok
+test_runtime_path_failure_never_sends_adb (test_runtime_resume.RuntimeResumeTest.test_runtime_path_failure_never_sends_adb) ... ok
+
+======================================================================
+ERROR: test_console_conflicting_payload_and_lone_cr_still_rejected (test_runtime_resume.RuntimeResumeTest.test_console_conflicting_payload_and_lone_cr_still_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 83, in test_console_conflicting_payload_and_lone_cr_still_rejected
+    validate.verify_console_name(value, self.s.name)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'isolated_android_validate_under_test' has no attribute 'verify_console_name'
+
+======================================================================
+ERROR: test_real_console_double_cr_is_not_a_conflicting_avd_name (test_runtime_resume.RuntimeResumeTest.test_real_console_double_cr_is_not_a_conflicting_avd_name)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 77, in test_real_console_double_cr_is_not_a_conflicting_avd_name
+    self.s.identity()
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 488, in identity
+    need(name and name[0] == self.name and all(x == "OK" for x in name[1:]), "Actual AVD name mismatch")
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 50, in need
+    raise RuntimeError(message)
+RuntimeError: Actual AVD name mismatch
+
+======================================================================
+ERROR: test_reconciliation_consumes_existing_queries_without_reissuing_adb (test_runtime_resume.RuntimeResumeTest.test_reconciliation_consumes_existing_queries_without_reissuing_adb)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 99, in test_reconciliation_consumes_existing_queries_without_reissuing_adb
+    self.s.reconcile_resume()
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Supervisor' object has no attribute 'reconcile_resume'
+
+======================================================================
+ERROR: test_reconciliation_rejects_wrong_serial_before_new_observation (test_runtime_resume.RuntimeResumeTest.test_reconciliation_rejects_wrong_serial_before_new_observation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 110, in test_reconciliation_rejects_wrong_serial_before_new_observation
+    self.s.reconcile_resume()
+    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Supervisor' object has no attribute 'reconcile_resume'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.124s
+
+FAILED (errors=4)

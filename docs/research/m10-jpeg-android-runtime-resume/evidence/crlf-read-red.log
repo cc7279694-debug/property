@@ -1,0 +1,55 @@
+test_actual_api26_crlf_hash_matches_parser_and_lifecycle_assessment (test_device_evidence.DeviceEvidenceTest.test_actual_api26_crlf_hash_matches_parser_and_lifecycle_assessment) ... FAIL
+test_actual_api26_crlf_instrumentation_bytes_survive_after_collection (test_device_evidence.DeviceEvidenceTest.test_actual_api26_crlf_instrumentation_bytes_survive_after_collection) ... FAIL
+test_any_ledger_path_is_forbidden_before_command (test_device_evidence.DeviceEvidenceTest.test_any_ledger_path_is_forbidden_before_command) ... ok
+test_before_and_after_serial_conflict_is_blocked (test_device_evidence.DeviceEvidenceTest.test_before_and_after_serial_conflict_is_blocked) ... ok
+test_damaged_adapter_assessment_uses_real_parser_contract (test_device_evidence.DeviceEvidenceTest.test_damaged_adapter_assessment_uses_real_parser_contract) ... ok
+test_fixed_api_and_serial_mismatch_blocks (test_device_evidence.DeviceEvidenceTest.test_fixed_api_and_serial_mismatch_blocks) ... ok
+test_fresh_install_absent_no_backup_is_observed_without_creating_it (test_device_evidence.DeviceEvidenceTest.test_fresh_install_absent_no_backup_is_observed_without_creating_it) ... ok
+test_guard_is_never_read_as_content (test_device_evidence.DeviceEvidenceTest.test_guard_is_never_read_as_content) ... ok
+test_healthy_adapter_assessment_uses_real_parser_contract (test_device_evidence.DeviceEvidenceTest.test_healthy_adapter_assessment_uses_real_parser_contract) ... ok
+test_instrumentation_parsed_method_mismatch_blocks (test_device_evidence.DeviceEvidenceTest.test_instrumentation_parsed_method_mismatch_blocks) ... ok
+test_invalid_utf8_instrumentation_is_rejected_without_replacement_decode (test_device_evidence.DeviceEvidenceTest.test_invalid_utf8_instrumentation_is_rejected_without_replacement_decode) ... ok
+test_link_stat_is_rejected (test_device_evidence.DeviceEvidenceTest.test_link_stat_is_rejected) ... ok
+test_log_delta_only_contains_new_lines (test_device_evidence.DeviceEvidenceTest.test_log_delta_only_contains_new_lines) ... ok
+test_log_prefix_rotation_is_not_silently_ignored (test_device_evidence.DeviceEvidenceTest.test_log_prefix_rotation_is_not_silently_ignored) ... ok
+test_png_success_remains_assertion_level_not_independent_media_bytes (test_device_evidence.DeviceEvidenceTest.test_png_success_remains_assertion_level_not_independent_media_bytes) ... ok
+test_png_unexpected_worker_log_blocks (test_device_evidence.DeviceEvidenceTest.test_png_unexpected_worker_log_blocks) ... ok
+test_preflight_missing_evidence_cannot_be_assessed_pass (test_device_evidence.DeviceEvidenceTest.test_preflight_missing_evidence_cannot_be_assessed_pass) ... ok
+test_private_ps_filter_accepts_explicit_numeric_uid (test_device_evidence.DeviceEvidenceTest.test_private_ps_filter_accepts_explicit_numeric_uid) ... ok
+test_private_ps_filter_requires_full_command_status (test_device_evidence.DeviceEvidenceTest.test_private_ps_filter_requires_full_command_status) ... ok
+test_private_ps_other_uid_or_named_uid_is_rejected (test_device_evidence.DeviceEvidenceTest.test_private_ps_other_uid_or_named_uid_is_rejected) ... ok
+test_private_ps_unknown_same_uid_process_is_retained_for_blocking (test_device_evidence.DeviceEvidenceTest.test_private_ps_unknown_same_uid_process_is_retained_for_blocking) ... ok
+test_protection_missing_cleanup_proof_blocks (test_device_evidence.DeviceEvidenceTest.test_protection_missing_cleanup_proof_blocks) ... ok
+test_protection_missing_old_facts_flag_blocks (test_device_evidence.DeviceEvidenceTest.test_protection_missing_old_facts_flag_blocks) ... ok
+test_protection_success_requires_both_observations_and_both_workers (test_device_evidence.DeviceEvidenceTest.test_protection_success_requires_both_observations_and_both_workers) ... ok
+test_raw_instrumentation_hash_mismatch_stops (test_device_evidence.DeviceEvidenceTest.test_raw_instrumentation_hash_mismatch_stops) ... ok
+test_real_proc_stat_extracts_start_ticks (test_device_evidence.DeviceEvidenceTest.test_real_proc_stat_extracts_start_ticks) ... ok
+test_shell_script_is_one_explicitly_quoted_remote_command (test_device_evidence.DeviceEvidenceTest.test_shell_script_is_one_explicitly_quoted_remote_command) ... ok
+test_stages_function_does_not_list_absent_no_backup (test_device_evidence.DeviceEvidenceTest.test_stages_function_does_not_list_absent_no_backup) ... ok
+test_truncated_proc_stat_is_rejected (test_device_evidence.DeviceEvidenceTest.test_truncated_proc_stat_is_rejected) ... ok
+test_unapproved_serial_never_issues_commands (test_device_evidence.DeviceEvidenceTest.test_unapproved_serial_never_issues_commands) ... ok
+test_unknown_method_never_issues_commands (test_device_evidence.DeviceEvidenceTest.test_unknown_method_never_issues_commands) ... ok
+
+======================================================================
+FAIL: test_actual_api26_crlf_hash_matches_parser_and_lifecycle_assessment (test_device_evidence.DeviceEvidenceTest.test_actual_api26_crlf_hash_matches_parser_and_lifecycle_assessment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_device_evidence.py", line 177, in test_actual_api26_crlf_hash_matches_parser_and_lifecycle_assessment
+    self.assertEqual("PASS", evidence.assess(method, prior, current, parsed)["status"])
+AssertionError: 'PASS' != 'BLOCKED'
+- PASS
++ BLOCKED
+
+
+======================================================================
+FAIL: test_actual_api26_crlf_instrumentation_bytes_survive_after_collection (test_device_evidence.DeviceEvidenceTest.test_actual_api26_crlf_instrumentation_bytes_survive_after_collection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_device_evidence.py", line 172, in test_actual_api26_crlf_instrumentation_bytes_survive_after_collection
+    self.assertEqual(ACTUAL_CRLF_INSTRUMENTATION, current["instrumentationText"].encode("utf-8"))
+AssertionError: b'INS[27 chars]ts=1\r\nINSTRUMENTATION_STATUS: stream=\r\ncom[837 chars]: -1' != b'INS[27 chars]ts=1\nINSTRUMENTATION_STATUS: stream=\ncom.coo[793 chars]: -1'
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.035s
+
+FAILED (failures=2)

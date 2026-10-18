@@ -1,0 +1,9 @@
+{"detail": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion: UNKNOWN; preserve device and method evidence", "errorType": "MethodBlocked", "status": "BLOCKED"}
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 736, in <module>
+    main()
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 722, in main
+    natural_tests.run_one(supervisor, args.method)
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\natural_tests.py", line 186, in run_one
+    raise MethodBlocked(f"{method}: {result['status']}; preserve device and method evidence")
+natural_tests.MethodBlocked: com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion: UNKNOWN; preserve device and method evidence

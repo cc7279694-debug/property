@@ -1,0 +1,81 @@
+{
+  "api": 26,
+  "appSHA256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+  "index": 0,
+  "instrumentation": {
+    "decodedBytes": 873,
+    "decodedSHA256": "43f01ee4afe4a4cdd19fa0f9e0d07c1e6934e6c9571c7ae73276cfed760f4640",
+    "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+    "reason": "Matching start, completion and single-test summary",
+    "status": "PASS",
+    "testCount": 1
+  },
+  "instrumentationCommandsIssued": 1,
+  "lifecycle": {
+    "checks": {
+      "authenticated_retirement_partial_order": "PASS",
+      "durable_stage_ownership_and_terminal_cleanup": "PASS",
+      "independent_process_absence": "PASS",
+      "instrumentation": "PASS",
+      "structured_observations": "PASS"
+    },
+    "errors": [],
+    "evidence_levels": {
+      "guard_release": "STRUCTURED_IN_PROCESS_OBSERVATION",
+      "host_fd_open_close": "EXECUTED_CODE_INVARIANT_ONLY",
+      "native_loading": "EXECUTED_CODE_INVARIANT_ONLY",
+      "persistent_pin_terminal_cleanup": "INDEPENDENT_OBSERVATION",
+      "raw_binder_hello_fields": "NOT_RUN",
+      "retirement_ack_phase_identity": "INDEPENDENT_OBSERVATION",
+      "source_fd_read_only_mode": "EXECUTED_CODE_INVARIANT_ONLY",
+      "synchronous_hello": "EXECUTED_CODE_INVARIANT_ONLY",
+      "worker_fd_closure": "STRUCTURED_IN_PROCESS_OBSERVATION",
+      "worker_os_absence": "INDEPENDENT_OBSERVATION",
+      "write_to_read_only_source": "NOT_RUN"
+    },
+    "identity": {
+      "attempt": "e95e3eb2-2e44-4864-bd56-f89dafa63a0b",
+      "generation": "m10-worker-review-0cd29ab2-dbf0-4791-bae0-2049d3ff5934",
+      "hostPid": 6589,
+      "hostUid": 10077,
+      "session": "f4806193-a155-4c5e-b34e-bfbac68e9712",
+      "workerPid": 6617,
+      "workerStartTicks": 177649,
+      "workerUid": 10077
+    },
+    "phases": {
+      "HOST_BINDER_DIED": 1777451,
+      "HOST_RETIRE_ACKNOWLEDGED": 1777394,
+      "HOST_UNBIND_RETURNED": 1777396,
+      "WORKER_EXIT_AUTHENTICATED_DETACH": 1777398,
+      "WORKER_ON_UNBIND": 1777397,
+      "WORKER_RETIRE_ARMED": 1777393
+    },
+    "status": "PASS"
+  },
+  "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+  "originalStatus": "UNKNOWN",
+  "scope": "OFFLINE_RAW_BYTE_REASSESSMENT_NO_DEVICE_REEXECUTION",
+  "serial": "emulator-5624",
+  "sourceEvidence": {
+    "after.json": {
+      "bytes": 18787,
+      "sha256": "393f13d83e81e86e610321ba8bc904f217cb07cf2bad8401bad6b713a6362b1b"
+    },
+    "before.json": {
+      "bytes": 627,
+      "sha256": "bf4264396005565ee287340c9cab2e2b13674edf5c79188284ae966610f47e9e"
+    },
+    "instrumentation.txt": {
+      "bytes": 873,
+      "sha256": "43f01ee4afe4a4cdd19fa0f9e0d07c1e6934e6c9571c7ae73276cfed760f4640"
+    },
+    "result.json": {
+      "bytes": 1642,
+      "sha256": "522069f2c0e048392149cbd75efdfa8730aebc3c85c6a393d8ffb4dda7653beb"
+    }
+  },
+  "status": "PASS",
+  "supersedesOriginal": false,
+  "testSHA256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a"
+}

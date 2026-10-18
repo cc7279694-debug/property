@@ -131,7 +131,7 @@ class SupervisorHostTest(unittest.TestCase):
         audit_file.parent.mkdir(parents=True)
         audit_file.write_text(json.dumps({
             "sourceCommit": "b756f96b699f3b70d43144f6c92815917fb563f6",
-            "observationSourceCommit": "939e88b3fc79f3b9fd160737022f3bd795a07f37",
+            "observationSourceCommit": "3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f",
             "freshUtc": "2026-10-18T00:00:00+00:00",
             "api26": {"allOriginalFilesSizeAndShaMatch": True},
             "api36": {"generatedPackageXml": {"identityParsed": True}},
@@ -150,8 +150,13 @@ class SupervisorHostTest(unittest.TestCase):
 
     def test_identity_uses_one_absolute_deadline_across_checks(self):
         now = [100.0]
+        self.s.home.mkdir(parents=True)
+        (self.s.home / "resumed-steady-state-proof.json").write_text(json.dumps({
+            "type": "RESUMED_STEADY_STATE_PROOF", "status": "PASS", "serial": self.s.serial,
+            "sourceCommit": "3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f", "first300SecondStartup": "NOT_PROVEN"}))
         self.s.verify_avd = Mock()
         self.s.validate_process = Mock(side_effect=lambda **kw: now.__setitem__(0, now[0] + 2))
+        self.s.runtime_paths = Mock(return_value={})
         calls = []
         def adb(*args, **kwargs):
             calls.append((args, kwargs))
@@ -166,14 +171,21 @@ class SupervisorHostTest(unittest.TestCase):
         self.assertEqual(1, calls[0][1]["timeout"])
 
     def test_start_does_not_reset_boot_deadline_after_polling(self):
+        # Original absolute startup deadline contract now applies only to new API36.
+        self.s.api = 36
+        self.s.name = "Lithic_M10V_API36_20261018"
+        self.s.serial = "emulator-5626"
+        self.s.home = validate.BASE / "api36"
+        self.s.data = self.s.home / "data" / (self.s.name + ".avd")
+        self.s.api26_exit_gate = Mock()
         self.s.home.mkdir(parents=True)
         audit = validate.ROOT / "build/android-validation/environment-audit.json"
         audit.parent.mkdir(parents=True)
         audit.write_bytes(b"{}")
         self.s.config_observation = {"configIntegrity": {"sha256": "synthetic-config"},
                                      "descriptorIntegrity": {"sha256": "synthetic-descriptor"}}
-        (self.s.home / "adoption-proof.json").write_text(json.dumps({
-            "status": "PASS", "api": 26, "avd": self.s.name, "data": str(self.s.data),
+        (self.s.home / "create-proof.json").write_text(json.dumps({
+            "status": "PASS", "api": 36, "avd": self.s.name, "data": str(self.s.data),
             "configuration": self.s.config_observation,
             "environmentAuditSHA256": hashlib.sha256(audit.read_bytes()).hexdigest()}))
         self.s.verify_avd = Mock(return_value={})
@@ -258,32 +270,40 @@ class SupervisorHostTest(unittest.TestCase):
             self.s.installed(validate.APP, validate.APP_SHA)
 
     def test_process_data_path_prefix_does_not_prove_ownership(self):
-        self.s.processes = Mock(return_value={"targets": [{
-            "ProcessId": 12345,
-            "ExecutablePath": str(validate.TOOLS / "emulator/emulator.exe"),
-            "CommandLine": ('emulator.exe -avd ' + self.s.name + ' -port 5624 -datadir "' +
-                            str(self.s.data) + '.other"')}]})
+        found = self.process_fixture()
+        found["targets"][0]["CommandLine"] = found["targets"][0]["CommandLine"].replace(str(self.s.data), str(self.s.data) + ".other")
         with self.assertRaises(RuntimeError):
             self.s.validate_process()
 
     def test_missing_target_process_command_line_fails_closed(self):
-        self.s.processes = Mock(return_value={"targets": [{
-            "ProcessId": 12345,
-            "ExecutablePath": str(validate.TOOLS / "emulator/emulator.exe"),
-            "CommandLine": None}]})
+        found = self.process_fixture()
+        found["targets"][0]["CommandLine"] = None
         with self.assertRaises(RuntimeError):
             self.s.validate_process()
 
     def test_exact_normal_command_line_can_prove_target_process(self):
+        found = self.process_fixture()
+        with patch.object(validate.time, "sleep"):
+            self.assertIs(found, self.s.validate_process())
+
+    def process_fixture(self):
         executable = self.s.sdk / "emulator/emulator.exe"
-        target = {"ProcessId": 12345, "ExecutablePath": str(executable),
-                  "CommandLine": subprocess.list2cmdline([
-                      str(executable), "-avd", self.s.name, "-port", str(self.s.port),
-                      "-datadir", str(self.s.data), "-data", str(self.s.data / "userdata-qemu.img"),
-                      "-cache", str(self.s.data / "cache.img")])}
-        found = {"targets": [target]}
+        qemu = self.s.sdk / "emulator/qemu/windows-x86_64/qemu-system-x86_64-headless.exe"
+        args = self.s.launch_arguments()
+        target = {"ProcessId": 12345, "ParentProcessId": 11000, "Name": "emulator.exe",
+                  "CreationDate": "2026-10-18T00:00:00.0000000Z", "ExecutablePath": str(executable),
+                  "CommandLine": subprocess.list2cmdline(args)}
+        child = {"ProcessId": 12346, "ParentProcessId": 12345, "Name": qemu.name,
+                 "CreationDate": "2026-10-18T00:00:00.1000000Z", "ExecutablePath": str(qemu),
+                 "CommandLine": subprocess.list2cmdline([str(qemu), *args[1:]])}
+        found = {"targets": [target, child], "emulatorProcessCount": 2, "ports": [
+            {"LocalAddress": "127.0.0.1", "LocalPort": port, "OwningProcess": 12346} for port in (5624, 5625)]}
+        import copy
+        self.s.resume_anchor = Mock(return_value=copy.deepcopy(found))
+        self.s.process_spec = Mock(return_value={"avd": self.s.name, "port": self.s.port,
+            "launcherExe": str(executable), "qemuExe": str(qemu), "argv": args})
         self.s.processes = Mock(return_value=found)
-        self.assertIs(found, self.s.validate_process())
+        return found
 
     def test_existing_reparse_ancestor_blocks_nonexistent_new_root(self):
         ancestor = self.root / "synthetic-reparse-ancestor"

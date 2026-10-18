@@ -22,6 +22,7 @@ import ctypes
 from datetime import datetime, timezone
 
 import avd_identity
+import runtime_identity
 
 ROOT = Path(__file__).resolve().parents[3]
 BASE = Path("E:/CODEX/.codex/research-env/lithic-m10-android-20261018-v1")
@@ -47,6 +48,14 @@ def utc():
 def need(condition, message):
     if not condition:
         raise RuntimeError(message)
+
+
+def verify_console_name(text, expected):
+    """Only the observed console CRCRLF/CRLF transport framing is normalized."""
+    need(isinstance(text, str) and len(text) <= 1024, "Console name output missing/oversized")
+    normalized = text.replace("\r\r\n", "\n").replace("\r\n", "\n")
+    need("\r" not in normalized and normalized.strip("\n").split("\n") == [expected, "OK"],
+         "Actual AVD name or console completion conflicts")
 
 
 def digest(data):
@@ -131,7 +140,7 @@ class Supervisor:
         self.home = BASE / f"api{api}"
         self.data = self.home / "data" / f"{self.name}.avd"
         self.registry = self.home / "avds"
-        self.evidence = ROOT / "build/android-resume/evidence" / f"api{api}"
+        self.evidence = ROOT / "build/android-runtime-resume/evidence" / f"api{api}"
         self.evidence.mkdir(parents=True, exist_ok=True)
         self.journal = self.evidence / "commands.jsonl"
         self.env = self.environment()
@@ -198,7 +207,7 @@ class Supervisor:
     def audit(self):
         report = json.loads((ROOT / "build/android-validation/environment-audit.json").read_text(encoding="utf-8"))
         need(report.get("sourceCommit") == "b756f96b699f3b70d43144f6c92815917fb563f6" and
-             report.get("observationSourceCommit") == "939e88b3fc79f3b9fd160737022f3bd795a07f37" and
+             report.get("observationSourceCommit") == "3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f" and
              bool(report.get("freshUtc")) and
              report.get("api26", {}).get("allOriginalFilesSizeAndShaMatch") is True and
              report.get("api36", {}).get("generatedPackageXml", {}).get("identityParsed") is True and
@@ -359,32 +368,57 @@ class Supervisor:
                  not within(candidate, BASE), "Existing host diagnostic temporary directory is not safe")
             avd_identity.unlinked_ancestors(candidate)
             host_env[key] = str(candidate)
+        historical = "32880,32032" if self.api == 26 else ""
         script = "$p=@(Get-CimInstance Win32_Process); $m=@($p | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'}); "
-        script += f"$t=@($m | Where-Object {{$_.CommandLine -like '*{self.name}*'}}); "
-        script += "$o=Get-CimInstance Win32_OperatingSystem; [pscustomobject]@{emulatorProcessCount=$m.Count; freeKiB=$o.FreePhysicalMemory; totalKiB=$o.TotalVisibleMemorySize; targets=@($t | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine)} | ConvertTo-Json -Depth 4 -Compress"
+        script += f"$ports=@(Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object {{$_.LocalPort -in @({self.port},{self.port+1})}}); "
+        script += f"$named=@($m | Where-Object {{$_.CommandLine -like '*{self.name}*' -or $_.CommandLine -like '*{self.data}*'}}); "
+        script += f"$ids=@(@({historical}) + @($named.ProcessId) + @($ports.OwningProcess)); "
+        script += "$t=@($p | Where-Object {$_.ProcessId -in $ids -or ($_.Name -match '^(emulator|qemu-system).*\\.exe$' -and $_.ParentProcessId -in $ids)}); "
+        script += "$rows=@($t | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine,@{Name='CreationDate';Expression={if ($_.CreationDate) {$_.CreationDate.ToUniversalTime().ToString('o')} else {$null}}}); "
+        script += "$o=Get-CimInstance Win32_OperatingSystem; [pscustomobject]@{utc=[DateTime]::UtcNow.ToString('o');emulatorProcessCount=$m.Count;freeKiB=$o.FreePhysicalMemory;totalKiB=$o.TotalVisibleMemorySize;targets=$rows;ports=@($ports | Select-Object LocalAddress,LocalPort,OwningProcess)} | ConvertTo-Json -Depth 5 -Compress"
         found = json.loads(self.run(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", script],
                                     timeout=timeout, child_env=host_env))
         return found
 
     def validate_process(self, timeout=30):
-        found = self.processes(timeout=timeout)
-        targets = found.get("targets", [])
-        need(bool(targets), "No independently identified new-AVD process")
-        for target in targets:
-            command = target.get("CommandLine") or ""
-            tokens = windows_arguments(command)
-            for key, expected in (("-avd", self.name), ("-port", str(self.port)),
-                                  ("-datadir", str(self.data)), ("-data", str(self.data / "userdata-qemu.img")),
-                                  ("-cache", str(self.data / "cache.img"))):
-                need(tokens.count(key) == 1, "Missing/duplicate process argument: " + key)
-                index = tokens.index(key) + 1
-                need(index < len(tokens), "Truncated process argument")
-                if key in ("-datadir", "-data", "-cache"):
-                    need(Path(tokens[index]).resolve() == Path(expected).resolve(), "Process storage path ambiguous")
-                else:
-                    need(tokens[index] == expected, "Process argument conflicts: " + key)
-            need(within(Path(target.get("ExecutablePath") or ""), self.sdk / "emulator"), "Unexpected emulator executable")
-        return found
+        anchor = self.resume_anchor() if self.api == 26 else getattr(self, "_runtime_anchor", None)
+        if self.api == 36 and anchor is None and (self.home / "boot-proof.json").is_file():
+            anchor = json.loads(avd_identity.read_bytes(self.home / "boot-proof.json"))["processIdentityProof"]["anchor"]
+        proof = runtime_identity.await_complete(self.processes, anchor, self.process_spec(),
+                    windows_arguments, timeout=min(30, timeout), clock=time.monotonic, sleep=time.sleep)
+        self.note({"operation": "BOUNDED_READ_ONLY_CIM_IDENTITY", "proof": proof})
+        need(proof.get("status") == "PASS", "Process identity gate: " + str(proof.get("reason", proof.get("status"))))
+        self.process_proof = proof
+        self._runtime_anchor = proof["anchor"]
+        return proof["snapshot"]
+
+    def launch_arguments(self):
+        return [str(self.sdk / "emulator/emulator.exe"), "-avd", self.name, "-port", str(self.port),
+                "-datadir", str(self.data), "-data", str(self.data / "userdata-qemu.img"),
+                "-cache", str(self.data / "cache.img"), "-sysdir",
+                str(self.sdk / f"system-images/android-{self.api}/google_apis/x86_64"),
+                "-no-snapshot", "-no-window", "-no-audio", "-no-boot-anim", "-memory", "1536", "-cores", "2"]
+
+    def resume_anchor(self):
+        path = ROOT / "docs/research/m10-jpeg-android-isolated-resume/evidence/ending-windows.json"
+        value = json.loads(avd_identity.read_bytes(path))
+        need({row.get("ProcessId") for row in value.get("targets", [])} == {32880, 32032},
+             "Historical original instance anchor unavailable")
+        return value
+
+    def process_spec(self):
+        launcher = self.sdk / "emulator/emulator.exe"
+        qemu = self.sdk / "emulator/qemu/windows-x86_64/qemu-system-x86_64-headless.exe"
+        if not getattr(self, "_runtime_tools_verified", False):
+            report = json.loads((ROOT / "build/android-validation/environment-audit.json").read_text(encoding="utf-8"))
+            need(file_digest(launcher, launcher.stat().st_size) == report["tools"]["bothEmulatorExecutableSha256"],
+                 "Launcher binary differs from measured locked SDK")
+            rows = [row for row in report["tools"]["qemuCurrentBinaries"] if Path(row["path"]).resolve() == qemu.resolve()]
+            need(len(rows) == 1 and rows[0]["authenticode"]["status"] == "Valid" and
+                 file_digest(qemu, rows[0]["bytes"]) == rows[0]["sha256"], "QEMU binary identity unavailable")
+            self._runtime_tools_verified = True
+        return {"avd": self.name, "port": self.port, "launcherExe": str(launcher),
+                "qemuExe": str(qemu), "argv": self.launch_arguments()}
 
     def runtime_paths(self):
         """Observe actual resolved QEMU paths; child TEMP alone is never proof."""
@@ -445,15 +479,94 @@ class Supervisor:
             value = deadline - time.monotonic()
             need(value > 0, "Fixed boot deadline exhausted during identity proof")
             return min(30, value)
+        if self.api == 26:
+            proof = json.loads(avd_identity.read_bytes(self.home / "resumed-steady-state-proof.json"))
+            need(proof.get("type") == "RESUMED_STEADY_STATE_PROOF" and proof.get("status") == "PASS" and
+                 proof.get("sourceCommit") == "3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f" and
+                 proof.get("serial") == self.serial and proof.get("first300SecondStartup") == "NOT_PROVEN",
+                 "Current resume proof is missing or not the authorized steady-state observation")
         self.verify_avd()
         self.validate_process(timeout=remaining())  # Mandatory before any targeted ADB request.
+        self.runtime_observation = self.runtime_paths()
         need(self.adb("get-state", timeout=remaining()) == "device", "New target is not online")
         need(self.adb("shell", "getprop", "sys.boot_completed", timeout=remaining()) == "1", "System boot is not complete")
         need(self.adb("shell", "getprop", "ro.build.version.sdk", timeout=remaining()) == str(self.api), "Actual API mismatch")
         need(self.adb("shell", "getprop", "ro.product.cpu.abi", timeout=remaining()) == "x86_64", "Actual ABI mismatch")
-        name = self.adb("emu", "avd", "name", timeout=remaining()).splitlines()
-        need(name and name[0] == self.name and all(x == "OK" for x in name[1:]), "Actual AVD name mismatch")
+        verify_console_name(self.adb("emu", "avd", "name", timeout=remaining()), self.name)
+
+    def resume(self):
+        """New steady-state evidence, never a rewrite of the failed initial boot."""
+        need(self.api == 26, "Only the original isolated API26 is authorized for resume")
+        self.marker("runtime-resume")
+        self.validate_process(timeout=30)
+        self.verify_avd()
         self.runtime_observation = self.runtime_paths()
+        self.apk_audit()
+        deadline = time.monotonic() + 30
+        def remaining():
+            value = deadline - time.monotonic()
+            need(value > 0, "Steady-state boot observation deadline exhausted; preserve running instance")
+            return min(10, value)
+        while True:
+            state = self.adb("get-state", timeout=remaining(), allowed=(0, 1))
+            if state == "device":
+                boot = self.adb("shell", "getprop", "sys.boot_completed", timeout=remaining())
+                if boot == "1":
+                    need(self.adb("shell", "getprop", "ro.build.version.sdk", timeout=remaining()) == "26", "Actual API mismatch")
+                    need(self.adb("shell", "getprop", "ro.product.cpu.abi", timeout=remaining()) == "x86_64", "Actual ABI mismatch")
+                    verify_console_name(self.adb("emu", "avd", "name", timeout=remaining()), self.name)
+                    self.validate_process(timeout=remaining())
+                    immutable(self.home / "resumed-steady-state-proof.json", {
+                        "type": "RESUMED_STEADY_STATE_PROOF", "status": "PASS", "utc": utc(),
+                        "sourceCommit": "3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f", "serial": self.serial,
+                        "api": 26, "avd": self.name, "observedBootCompleted": "1", "first300SecondStartup": "NOT_PROVEN",
+                        "originalStartFailure": "PRESERVED_NOT_RECLASSIFIED", "newCreate": 0, "newStart": 0,
+                        "processIdentityProof": self.process_proof, "runtimePaths": self.runtime_observation})
+                    return
+            remaining()
+            time.sleep(min(2, max(0, deadline - time.monotonic())))
+
+    def reconcile_resume(self):
+        """Correct only the proven console framing defect, without reissuing queries."""
+        need(self.api == 26 and not (self.home / "resumed-steady-state-proof.json").exists(),
+             "Only this unproved API26 steady-state admission can be reconciled")
+        marker = json.loads(avd_identity.read_bytes(self.home / "operations/runtime-resume.json"))
+        need(marker.get("operation") == "runtime-resume" and marker.get("serial") == self.serial,
+             "Original current-authorized resume attempt missing")
+        raw = avd_identity.read_bytes(self.journal)
+        all_rows = [json.loads(line) for line in raw.decode("utf-8").splitlines() if line]
+        rows = [row for row in all_rows if row.get("argv") and str(row["argv"][0]).lower().endswith("adb.exe")]
+        suffixes = [["get-state"], ["shell", "getprop", "sys.boot_completed"],
+                    ["shell", "getprop", "ro.build.version.sdk"], ["shell", "getprop", "ro.product.cpu.abi"],
+                    ["emu", "avd", "name"]]
+        need(len(rows) == 5, "Exactly the five original admission queries are required")
+        outputs = []
+        for row, suffix in zip(rows, suffixes):
+            need(row.get("argv") == [str(TOOLS / "platform-tools/adb.exe"), "-s", self.serial, *suffix] and
+                 row.get("exitCode") == 0 and row.get("stderrBytes") == 0 and
+                 base64.b64decode(row.get("stderrBase64", ""), validate=True) == b"", "Original query identity/status incomplete")
+            output = base64.b64decode(row["stdoutBase64"], validate=True)
+            need(len(output) == row.get("stdoutBytes") and digest(output) == row.get("stdoutSHA256"),
+                 "Original query raw integrity missing")
+            outputs.append(output.decode("utf-8", errors="strict"))
+        need([value.strip() for value in outputs[:4]] == ["device", "1", "26", "x86_64"], "Captured boot/API/ABI conflict")
+        need("\r\r\n" in outputs[4], "Only the observed CRCRLF framing defect is eligible")
+        verify_console_name(outputs[4], self.name)
+        self.marker("runtime-resume-console-reconcile")
+        immutable(self.evidence / "resume-query-prefix.json", {"prefixBytes": len(raw), "prefixSHA256": digest(raw),
+            "fiveQueries": rows, "scope": "ORIGINAL_QUERY_BYTES_NOT_REISSUED"})
+        self.validate_process(timeout=30)
+        self.verify_avd()
+        paths = self.runtime_paths()
+        self.apk_audit()
+        immutable(self.home / "resumed-steady-state-proof.json", {
+            "type": "RESUMED_STEADY_STATE_PROOF", "status": "PASS", "utc": utc(),
+            "sourceCommit": "3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f", "serial": self.serial, "api": 26,
+            "avd": self.name, "observedBootCompleted": "1", "observedBootQueryEndUtc": rows[1]["endUtc"],
+            "first300SecondStartup": "NOT_PROVEN", "originalStartFailure": "PRESERVED_NOT_RECLASSIFIED",
+            "resumeSupervisorFailure": "PRESERVED_CRCRLF_PARSER_FAILURE", "queryEvidence": "EXISTING_FIVE_QUERIES_REPARSED_NO_REISSUE",
+            "queryPrefixBytes": len(raw), "queryPrefixSHA256": digest(raw), "newCreate": 0, "newStart": 0,
+            "processIdentityProof": self.process_proof, "runtimePaths": paths})
 
     def create(self):
         need(self.api == 36, "API26 creation is prohibited; only adopt the preserved CLI output")
@@ -479,6 +592,7 @@ class Supervisor:
                   "environmentAuditSHA256": digest((ROOT / "build/android-validation/environment-audit.json").read_bytes())})
 
     def start(self):
+        need(self.api == 36, "API26_START_NOT_AUTHORIZED: resume the original instance; never start again")
         self.verify_avd()
         self.api26_exit_gate()
         name = "adoption-proof.json" if self.api == 26 else "create-proof.json"
@@ -495,17 +609,13 @@ class Supervisor:
             other_home = BASE / f"api{other}"
             if other != self.api:
                 need(not (other_home / "operations/start.json").exists() or
-                     (other_home / "boot-proof.json").is_file(), "Other isolated boot remains unproved; no parallel start")
+                     (other_home / "normal-exit-proof.json").is_file(), "Other isolated instance has not safely exited")
         temporary = self.home / "runtime-temp"
         unlinked_ancestors(temporary)
         temporary.mkdir(exist_ok=True)
         need(not any(temporary.iterdir()), "Runtime temp is not a fresh empty dedicated directory")
         self.marker("start")
-        args = [str(self.sdk / "emulator/emulator.exe"), "-avd", self.name, "-port", str(self.port),
-                "-datadir", str(self.data), "-data", str(self.data / "userdata-qemu.img"),
-                "-cache", str(self.data / "cache.img"), "-sysdir", str(self.audit()),
-                "-no-snapshot", "-no-window", "-no-audio", "-no-boot-anim",
-                "-memory", "1536", "-cores", "2"]
+        args = self.launch_arguments()
         began = time.monotonic()
         with (self.evidence / "emulator.log").open("xb") as log:
             child = subprocess.Popen(args, env=self.env, stdout=log, stderr=subprocess.STDOUT,
@@ -529,7 +639,7 @@ class Supervisor:
                     need(time.monotonic() <= deadline, "Boot proof exceeded the single fixed deadline")
                     immutable(self.home / "boot-proof.json", {"status": "PASS", "utc": utc(), "serial": self.serial,
                               "avd": self.name, "api": self.api, "launcherPid": child.pid,
-                              "runtimePaths": self.runtime_observation})
+                              "runtimePaths": self.runtime_observation, "processIdentityProof": self.process_proof})
                     return
             time.sleep(min(2, max(0, deadline - time.monotonic())))
         raise RuntimeError("Boot deadline exhausted; no retry or cleanup")
@@ -602,7 +712,7 @@ def main():
     import natural_tests
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("api", type=int, choices=CONFIG)
-    parser.add_argument("operation", choices=("adopt", "create", "start", "install", "test", "close-readonly"))
+    parser.add_argument("operation", choices=("resume", "reconcile-resume", "create", "start", "install", "test", "close-readonly"))
     parser.add_argument("--kind", choices=("app", "test"))
     parser.add_argument("--method", choices=natural_tests.METHODS)
     args = parser.parse_args()

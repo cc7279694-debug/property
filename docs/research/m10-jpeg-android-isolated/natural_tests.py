@@ -112,7 +112,7 @@ def run_one(supervisor, method, evidence_api=None):
         if not path.is_file():
             raise MethodBlocked("Previous single-method gate is not proven")
         try:
-            prior = json.loads(path.read_text(encoding="utf-8"))
+            prior = prior_result(path, preceding)
         except (ValueError, OSError) as error:
             raise MethodBlocked("Previous method evidence unreadable: no new command") from error
         if any(prior.get(key) != value for key, value in {
@@ -185,3 +185,13 @@ def run_one(supervisor, method, evidence_api=None):
     if result["status"] != "PASS":
         raise MethodBlocked(f"{method}: {result['status']}; preserve device and method evidence")
     return result
+
+
+def prior_result(path, index):
+    """Only the specifically proved byte-reading supplement can resolve gate 0."""
+    path = Path(path)
+    original = json.loads(path.read_bytes().decode("utf-8", errors="strict"))
+    if index == 0 and original.get("status") == "UNKNOWN" and (path.parent/"raw-byte-reassessment.json").is_file():
+        from raw_reassessment import effective_result
+        return effective_result(path.parent)
+    return original

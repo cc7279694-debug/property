@@ -230,7 +230,9 @@ def after(s,method,prior):
         result["workerProc"]={str(pid):worker_absence(s,pid,start) for pid,start in workers}
         instrument=Path(s.evidence)/f"method-{METHODS.index(method):02d}"/"instrumentation.txt"
         need(instrument.is_file() and instrument.stat().st_size<=1024*1024,"Complete instrumentation raw output unavailable")
-        result["instrumentationText"]=instrument.read_text(encoding="utf-8")
+        # Preserve the exact decoded wire bytes: text-mode universal newline handling
+        # would rewrite genuine CRLF and invalidate the parser/raw evidence digest.
+        result["instrumentationText"]=instrument.read_bytes().decode("utf-8", errors="strict")
         return result
     except (ValueError,KeyError,OSError,RuntimeError,TypeError) as error:
         return {**result,"status":"BLOCKED","errors":[str(error)]}

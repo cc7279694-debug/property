@@ -1,0 +1,80 @@
+{
+  "status": "BLOCKED_DAMAGED_GATE_LOG_CONTINUITY",
+  "source": "3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f",
+  "branch": "codex/m10-jpeg-android-runtime-resume",
+  "utc": "2026-10-18T13:57:37.159159+00:00",
+  "hostTests": {
+    "unique": 234,
+    "pass": 232,
+    "skip": 2,
+    "fail": 0
+  },
+  "identity": {
+    "existingLauncherPid": 32880,
+    "existingQemuPid": 32032,
+    "creationAndParentage": "MATCH_ORIGINAL",
+    "steadyState": "PASS",
+    "observedBoot": "1",
+    "api": 26,
+    "abi": "x86_64",
+    "first300SecondStartup": "NOT_PROVEN",
+    "originalFailureReclassified": false
+  },
+  "operations": {
+    "api26NewCreate": 0,
+    "api26NewStart": 0,
+    "appInstall": 1,
+    "testInstall": 1,
+    "instrumentation": 2,
+    "adbTotal": 405,
+    "adbReadOnly": 401,
+    "adbNonzero": 0,
+    "adbSerials": [
+      "emulator-5624"
+    ],
+    "shutdown": 0,
+    "faultInjection": 0,
+    "api36CreateStartInstallTest": 0
+  },
+  "android": {
+    "healthy": {
+      "executions": 1,
+      "junit": "PASS",
+      "originalWrapper": "UNKNOWN_RAW_READING_DEFECT_PRESERVED",
+      "supplementalEvidenceGate": "PASS_OFFLINE_BYTE_EXACT_REASSESSMENT_NO_RERUN",
+      "hostPid": 6589,
+      "workerPid": 6617,
+      "uid": 10077
+    },
+    "damaged": {
+      "executions": 1,
+      "junit": "PASS",
+      "workerOutcome": "INVALID_IMAGE",
+      "nativeRejectionCode": 117,
+      "fullLifecycleGate": "UNKNOWN_LOG_PREFIX_ROTATED",
+      "hostPid": 7457,
+      "workerPid": 7483,
+      "uid": 10077
+    },
+    "remainingSevenMethods": "NOT_RUN",
+    "originalThreeJPEGAssertions": "NOT_RUN",
+    "api36": "NOT_RUN"
+  },
+  "ending": {
+    "status": "PASS",
+    "activeAppWorkerRows": [],
+    "verifiedTerminalStageCount": 2,
+    "avd": "RUNNING_PRESERVED",
+    "originalStartAndCreateMarkersUnchanged": true,
+    "oldH2C2Access": 0,
+    "personalLedgerImageBytesRead": 0
+  },
+  "formal": {
+    "M10": "PENDING",
+    "threeHistoricalJPEG": "FAIL_PRESERVED",
+    "UI-C1": "FROZEN_PASS_WITH_NOTES",
+    "M11": "NOT_AUTHORIZED"
+  },
+  "sourceScriptsAfterByteFixUnchanged": true,
+  "appGitTree": "89679a188c2b6e6793962041383a9f92337e126f"
+}

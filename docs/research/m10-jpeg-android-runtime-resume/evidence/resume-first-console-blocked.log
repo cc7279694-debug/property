@@ -1,0 +1,11 @@
+{"detail": "Actual AVD name mismatch", "errorType": "RuntimeError", "status": "BLOCKED"}
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 688, in <module>
+    main()
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 681, in main
+    getattr(supervisor, args.operation.replace("-", "_"))()
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 511, in resume
+    need(name and name[0] == self.name and all(line == "OK" for line in name[1:]), "Actual AVD name mismatch")
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 50, in need
+    raise RuntimeError(message)
+RuntimeError: Actual AVD name mismatch

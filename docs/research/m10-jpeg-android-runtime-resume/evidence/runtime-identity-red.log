@@ -1,0 +1,131 @@
+test_actual_ending_snapshot_has_complete_matching_identity (test_runtime_identity.RuntimeIdentityTests.test_actual_ending_snapshot_has_complete_matching_identity) ... FAIL
+test_actual_first_null_input_is_not_backfilled_with_missing_creation_or_ports (test_runtime_identity.RuntimeIdentityTests.test_actual_first_null_input_is_not_backfilled_with_missing_creation_or_ports) ... ok
+test_additional_unknown_argument_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_additional_unknown_argument_is_blocked) ... ok
+test_argument_parser_failure_is_fail_closed (test_runtime_identity.RuntimeIdentityTests.test_argument_parser_failure_is_fail_closed) ... ok
+test_collector_returning_after_total_deadline_cannot_pass (test_runtime_identity.RuntimeIdentityTests.test_collector_returning_after_total_deadline_cannot_pass) ... ok
+test_command_line_cannot_substitute_for_empty_executable_path (test_runtime_identity.RuntimeIdentityTests.test_command_line_cannot_substitute_for_empty_executable_path) ... FAIL
+test_complete_new_snapshot_with_null_path_is_pending_not_pass (test_runtime_identity.RuntimeIdentityTests.test_complete_new_snapshot_with_null_path_is_pending_not_pass) ... FAIL
+test_conflict_after_one_complete_sample_stops_without_further_observation (test_runtime_identity.RuntimeIdentityTests.test_conflict_after_one_complete_sample_stops_without_further_observation) ... FAIL
+test_creation_time_replacement_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_creation_time_replacement_is_blocked) ... ok
+test_dotnet_utc_seven_digit_creation_time_matches_original_instant (test_runtime_identity.RuntimeIdentityTests.test_dotnet_utc_seven_digit_creation_time_matches_original_instant) ... FAIL
+test_extra_target_qemu_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_extra_target_qemu_is_blocked) ... ok
+test_fresh_anchor_requires_creation_information_before_waiting (test_runtime_identity.RuntimeIdentityTests.test_fresh_anchor_requires_creation_information_before_waiting) ... ok
+test_fresh_start_locks_first_observed_complete_process_identity (test_runtime_identity.RuntimeIdentityTests.test_fresh_start_locks_first_observed_complete_process_identity) ... FAIL
+test_missing_required_identity_fields_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_missing_required_identity_fields_is_blocked) ... ok
+test_no_listening_port_is_pending_with_complete_process_identity (test_runtime_identity.RuntimeIdentityTests.test_no_listening_port_is_pending_with_complete_process_identity) ... FAIL
+test_non_loopback_listener_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_non_loopback_listener_is_blocked) ... ok
+test_null_then_two_complete_samples_succeeds (test_runtime_identity.RuntimeIdentityTests.test_null_then_two_complete_samples_succeeds) ... FAIL
+test_one_pass_sample_does_not_complete_the_gate (test_runtime_identity.RuntimeIdentityTests.test_one_pass_sample_does_not_complete_the_gate) ... ok
+test_original_argv_path_change_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_original_argv_path_change_is_blocked) ... ok
+test_parent_child_change_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_parent_child_change_is_blocked) ... ok
+test_persistent_null_exhausts_one_fixed_deadline (test_runtime_identity.RuntimeIdentityTests.test_persistent_null_exhausts_one_fixed_deadline) ... FAIL
+test_process_id_replacement_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_process_id_replacement_is_blocked) ... ok
+test_query_timeout_uses_remaining_total_budget (test_runtime_identity.RuntimeIdentityTests.test_query_timeout_uses_remaining_total_budget) ... FAIL
+test_target_port_owned_by_another_process_is_blocked (test_runtime_identity.RuntimeIdentityTests.test_target_port_owned_by_another_process_is_blocked) ... ok
+test_wrong_executable_is_blocked_even_with_expected_command_line (test_runtime_identity.RuntimeIdentityTests.test_wrong_executable_is_blocked_even_with_expected_command_line) ... ok
+
+======================================================================
+FAIL: test_actual_ending_snapshot_has_complete_matching_identity (test_runtime_identity.RuntimeIdentityTests.test_actual_ending_snapshot_has_complete_matching_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 64, in test_actual_ending_snapshot_has_complete_matching_identity
+    self.assertEqual("PASS", self.classify(fixture())["status"])
+AssertionError: 'PASS' != 'BLOCKED'
+- PASS
++ BLOCKED
+
+
+======================================================================
+FAIL: test_command_line_cannot_substitute_for_empty_executable_path (test_runtime_identity.RuntimeIdentityTests.test_command_line_cannot_substitute_for_empty_executable_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 102, in test_command_line_cannot_substitute_for_empty_executable_path
+    self.assertEqual("PENDING", self.classify(value)["status"])
+AssertionError: 'PENDING' != 'BLOCKED'
+- PENDING
++ BLOCKED
+
+
+======================================================================
+FAIL: test_complete_new_snapshot_with_null_path_is_pending_not_pass (test_runtime_identity.RuntimeIdentityTests.test_complete_new_snapshot_with_null_path_is_pending_not_pass)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 85, in test_complete_new_snapshot_with_null_path_is_pending_not_pass
+    self.assertEqual("PENDING", self.classify(value)["status"])
+AssertionError: 'PENDING' != 'BLOCKED'
+- PENDING
++ BLOCKED
+
+
+======================================================================
+FAIL: test_conflict_after_one_complete_sample_stops_without_further_observation (test_runtime_identity.RuntimeIdentityTests.test_conflict_after_one_complete_sample_stops_without_further_observation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 138, in test_conflict_after_one_complete_sample_stops_without_further_observation
+    self.assertEqual(2, len(fake.timeouts))
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_dotnet_utc_seven_digit_creation_time_matches_original_instant (test_runtime_identity.RuntimeIdentityTests.test_dotnet_utc_seven_digit_creation_time_matches_original_instant)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 109, in test_dotnet_utc_seven_digit_creation_time_matches_original_instant
+    self.assertEqual("PASS", self.classify(value)["status"])
+AssertionError: 'PASS' != 'BLOCKED'
+- PASS
++ BLOCKED
+
+
+======================================================================
+FAIL: test_fresh_start_locks_first_observed_complete_process_identity (test_runtime_identity.RuntimeIdentityTests.test_fresh_start_locks_first_observed_complete_process_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 155, in test_fresh_start_locks_first_observed_complete_process_identity
+    self.assertEqual(2, len(fake.timeouts))
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_no_listening_port_is_pending_with_complete_process_identity (test_runtime_identity.RuntimeIdentityTests.test_no_listening_port_is_pending_with_complete_process_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 121, in test_no_listening_port_is_pending_with_complete_process_identity
+    self.assertEqual("PENDING", self.classify(value)["status"])
+AssertionError: 'PENDING' != 'BLOCKED'
+- PENDING
++ BLOCKED
+
+
+======================================================================
+FAIL: test_null_then_two_complete_samples_succeeds (test_runtime_identity.RuntimeIdentityTests.test_null_then_two_complete_samples_succeeds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 89, in test_null_then_two_complete_samples_succeeds
+    self.assertEqual("PASS", fake.run()["status"])
+AssertionError: 'PASS' != 'BLOCKED'
+- PASS
++ BLOCKED
+
+
+======================================================================
+FAIL: test_persistent_null_exhausts_one_fixed_deadline (test_runtime_identity.RuntimeIdentityTests.test_persistent_null_exhausts_one_fixed_deadline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 96, in test_persistent_null_exhausts_one_fixed_deadline
+    self.assertEqual("IDENTITY_WINDOW_EXHAUSTED", result["reason"])
+AssertionError: 'IDENTITY_WINDOW_EXHAUSTED' != 'EARLY_EXECUTABLE_PATH_NOT_HANDLED'
+- IDENTITY_WINDOW_EXHAUSTED
++ EARLY_EXECUTABLE_PATH_NOT_HANDLED
+
+
+======================================================================
+FAIL: test_query_timeout_uses_remaining_total_budget (test_runtime_identity.RuntimeIdentityTests.test_query_timeout_uses_remaining_total_budget)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_identity.py", line 144, in test_query_timeout_uses_remaining_total_budget
+    self.assertLess(fake.timeouts[-1], fake.timeouts[0])
+AssertionError: 30.0 not less than 30.0
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.096s
+
+FAILED (failures=10)

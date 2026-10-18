@@ -6,6 +6,8 @@ from unittest.mock import patch
 import hashlib
 import copy
 import json
+import tempfile
+from natural_tests import parse_instrumentation
 
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import device_evidence as evidence
@@ -13,6 +15,11 @@ from test_lifecycle_evidence import fixture
 from natural_tests import METHODS
 
 METHOD="com.cooper.lithic.data.media.M10StageV2CompatibilityTest#png_still_uses_v1_preparation_and_original_output_limits"
+
+
+# Exact non-sensitive API26 method-00 instrumentation wire bytes, observed 2026-10-18.
+# Original immutable evidence remains unchanged; CRLF is part of the locked input.
+ACTUAL_CRLF_INSTRUMENTATION=b'INSTRUMENTATION_STATUS: numtests=1\r\nINSTRUMENTATION_STATUS: stream=\r\ncom.cooper.lithic.data.media.M10WorkerRetirementReviewTest:\r\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\r\nINSTRUMENTATION_STATUS: test=healthy_jpeg_retires_real_worker_before_stage_completion\r\nINSTRUMENTATION_STATUS: class=com.cooper.lithic.data.media.M10WorkerRetirementReviewTest\r\nINSTRUMENTATION_STATUS: current=1\r\nINSTRUMENTATION_STATUS_CODE: 1\r\nINSTRUMENTATION_STATUS: numtests=1\r\nINSTRUMENTATION_STATUS: stream=.\r\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\r\nINSTRUMENTATION_STATUS: test=healthy_jpeg_retires_real_worker_before_stage_completion\r\nINSTRUMENTATION_STATUS: class=com.cooper.lithic.data.media.M10WorkerRetirementReviewTest\r\nINSTRUMENTATION_STATUS: current=1\r\nINSTRUMENTATION_STATUS_CODE: 0\r\nINSTRUMENTATION_RESULT: stream=\r\n\r\nTime: 2.041\r\n\r\nOK (1 test)\r\n\r\n\r\nINSTRUMENTATION_CODE: -1'
 
 class Dummy:
     serial="emulator-5624"
@@ -144,5 +151,34 @@ class DeviceEvidenceTest(unittest.TestCase):
     def test_instrumentation_parsed_method_mismatch_blocks(self):
         args=list(self.completed());args[-1]["method"]=METHODS[1]
         self.assertEqual("BLOCKED",evidence.assess(*args)["status"])
+
+    def after_from_instrumentation_bytes(self, raw):
+        method, prior, completed, _ = self.completed()
+        observed = {f"observation-{index}.json": row for index, row in enumerate(completed["newObservations"])}
+        snapshot = {**completed, "stages": completed["newStages"], "observations": observed,
+                    "phaseLog": completed["newPhaseLog"]}
+        snapshot.pop("instrumentationText", None)
+        with tempfile.TemporaryDirectory() as temporary:
+            s = Dummy(); s.evidence = Path(temporary)
+            directory = s.evidence / "method-00"; directory.mkdir()
+            (directory / "instrumentation.txt").write_bytes(raw)
+            with patch.object(evidence, "snapshot", return_value=snapshot), patch.object(evidence, "worker_absence", return_value={"pid":202,"startTicks":5000,"absent":True}):
+                return method, prior, evidence.after(s, method, prior)
+    def test_actual_api26_crlf_instrumentation_bytes_survive_after_collection(self):
+        self.assertEqual(873, len(ACTUAL_CRLF_INSTRUMENTATION))
+        self.assertEqual("43f01ee4afe4a4cdd19fa0f9e0d07c1e6934e6c9571c7ae73276cfed760f4640", hashlib.sha256(ACTUAL_CRLF_INSTRUMENTATION).hexdigest())
+        _, _, current = self.after_from_instrumentation_bytes(ACTUAL_CRLF_INSTRUMENTATION)
+        self.assertEqual("PASS", current["status"])
+        self.assertEqual(ACTUAL_CRLF_INSTRUMENTATION, current["instrumentationText"].encode("utf-8"))
+    def test_actual_api26_crlf_hash_matches_parser_and_lifecycle_assessment(self):
+        method, prior, current = self.after_from_instrumentation_bytes(ACTUAL_CRLF_INSTRUMENTATION)
+        parsed = parse_instrumentation(ACTUAL_CRLF_INSTRUMENTATION.decode("utf-8"), method)
+        self.assertEqual("PASS", parsed["status"])
+        self.assertEqual("PASS", evidence.assess(method, prior, current, parsed)["status"])
+    def test_invalid_utf8_instrumentation_is_rejected_without_replacement_decode(self):
+        _, _, current = self.after_from_instrumentation_bytes(ACTUAL_CRLF_INSTRUMENTATION+b"\xff")
+        self.assertEqual("BLOCKED", current["status"])
+        self.assertNotIn("instrumentationText", current)
+        self.assertIn("utf-8", current["errors"][0])
 
 if __name__=="__main__":unittest.main(verbosity=2)

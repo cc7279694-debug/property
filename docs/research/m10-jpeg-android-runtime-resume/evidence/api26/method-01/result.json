@@ -1,0 +1,45 @@
+{
+  "api": 26,
+  "appSHA256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+  "finishedUTC": "2026-10-18T13:51:21.749095+00:00",
+  "fixtures": {
+    "fixtures": [
+      {
+        "bytes": 59334,
+        "name": "assets/m10_jpeg_integrity/complete.jpg",
+        "sha256": "2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907"
+      },
+      {
+        "bytes": 20194,
+        "name": "assets/m10_jpeg_integrity/entropy_cut_eoi_retained.jpg",
+        "sha256": "f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a"
+      }
+    ],
+    "status": "PASS",
+    "testAPK": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a"
+  },
+  "hostUID": 10077,
+  "index": 1,
+  "instrumentation": {
+    "decodedBytes": 885,
+    "decodedSHA256": "a0967c4974d1d9cd0d99bb98cfb45431595c231c9d7068dd4a1b4fc3a9e21d63",
+    "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+    "reason": "Matching start, completion and single-test summary",
+    "status": "PASS",
+    "testCount": 1
+  },
+  "instrumentationCommandsIssued": 1,
+  "lifecycle": {
+    "errors": [
+      "Required before/after/instrumentation evidence missing, mismatched or non-PASS"
+    ],
+    "evidence_levels": {},
+    "status": "BLOCKED"
+  },
+  "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+  "serial": "emulator-5624",
+  "startedUTC": "2026-10-18T13:50:14.825673+00:00",
+  "status": "UNKNOWN",
+  "testSHA256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a",
+  "testUID": 10078
+}

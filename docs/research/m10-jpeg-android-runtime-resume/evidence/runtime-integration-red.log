@@ -1,0 +1,75 @@
+test_api26_start_is_prohibited_before_any_start_side_effect (test_runtime_resume.RuntimeResumeTest.test_api26_start_is_prohibited_before_any_start_side_effect) ... ERROR
+test_boot_observation_deadline_does_not_become_new_startup_proof (test_runtime_resume.RuntimeResumeTest.test_boot_observation_deadline_does_not_become_new_startup_proof) ... ERROR
+test_identity_unknown_never_sends_adb (test_runtime_resume.RuntimeResumeTest.test_identity_unknown_never_sends_adb) ... ERROR
+test_normal_identity_requires_current_resume_proof_before_adb (test_runtime_resume.RuntimeResumeTest.test_normal_identity_requires_current_resume_proof_before_adb) ... FAIL
+test_resume_writes_separate_proof_preserving_original_start_failure (test_runtime_resume.RuntimeResumeTest.test_resume_writes_separate_proof_preserving_original_start_failure) ... ERROR
+test_runtime_path_failure_never_sends_adb (test_runtime_resume.RuntimeResumeTest.test_runtime_path_failure_never_sends_adb) ... ERROR
+
+======================================================================
+ERROR: test_api26_start_is_prohibited_before_any_start_side_effect (test_runtime_resume.RuntimeResumeTest.test_api26_start_is_prohibited_before_any_start_side_effect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 51, in test_api26_start_is_prohibited_before_any_start_side_effect
+    self.s.start()
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 485, in start
+    proof = json.loads(avd_identity.read_bytes(self.home / name).decode("utf-8"))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\avd_identity.py", line 42, in read_bytes
+    found = path.lstat()
+            ^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 847, in lstat
+    return self.stat(follow_symlinks=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 840, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] ϵͳ�Ҳ���ָ�����ļ���: 'C:\\Users\\CDD\\AppData\\Local\\Temp\\lithic-android-host-0tj_a37z\\isolated\\api26\\adoption-proof.json'
+
+======================================================================
+ERROR: test_boot_observation_deadline_does_not_become_new_startup_proof (test_runtime_resume.RuntimeResumeTest.test_boot_observation_deadline_does_not_become_new_startup_proof)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 64, in test_boot_observation_deadline_does_not_become_new_startup_proof
+    self.s.resume()
+    ^^^^^^^^^^^^^
+AttributeError: 'Supervisor' object has no attribute 'resume'
+
+======================================================================
+ERROR: test_identity_unknown_never_sends_adb (test_runtime_resume.RuntimeResumeTest.test_identity_unknown_never_sends_adb)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 39, in test_identity_unknown_never_sends_adb
+    self.s.resume()
+    ^^^^^^^^^^^^^
+AttributeError: 'Supervisor' object has no attribute 'resume'
+
+======================================================================
+ERROR: test_resume_writes_separate_proof_preserving_original_start_failure (test_runtime_resume.RuntimeResumeTest.test_resume_writes_separate_proof_preserving_original_start_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 27, in test_resume_writes_separate_proof_preserving_original_start_failure
+    self.s.resume()
+    ^^^^^^^^^^^^^
+AttributeError: 'Supervisor' object has no attribute 'resume'
+
+======================================================================
+ERROR: test_runtime_path_failure_never_sends_adb (test_runtime_resume.RuntimeResumeTest.test_runtime_path_failure_never_sends_adb)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 46, in test_runtime_path_failure_never_sends_adb
+    self.s.resume()
+    ^^^^^^^^^^^^^
+AttributeError: 'Supervisor' object has no attribute 'resume'
+
+======================================================================
+FAIL: test_normal_identity_requires_current_resume_proof_before_adb (test_runtime_resume.RuntimeResumeTest.test_normal_identity_requires_current_resume_proof_before_adb)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-runtime-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_runtime_resume.py", line 56, in test_normal_identity_requires_current_resume_proof_before_adb
+    with self.assertRaises((RuntimeError, OSError)):
+AssertionError: (<class 'RuntimeError'>, <class 'OSError'>) not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.063s
+
+FAILED (failures=1, errors=5)
