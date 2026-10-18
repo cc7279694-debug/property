@@ -50,10 +50,13 @@ open class MediaRepository(
     }
 
     open suspend fun prepareImport(uri: Uri, assetId: String): MediaResult<PreparedImage> = reconcilePreparationCancellation(assetId) {
-        write {
+        // Store registration/close fencing is local and short. Never retain the shared
+        // Room/settings/snapshot mutex while awaiting source/native/Binder work.
+        withContext(Dispatchers.IO) { storage {
             StoredValueValidation.requireUuid(assetId)
+            requireOpen()
             value(images.prepareImport(resolver, uri, assetId))
-        }
+        } }
     }
 
     open suspend fun restorePrepared(assetId: String): MediaResult<PreparedImage> = reconcilePreparationCancellation(assetId) {

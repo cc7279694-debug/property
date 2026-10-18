@@ -1,0 +1,78 @@
+JUnit version 4.13.2
+............................................................E.E..E.E.E.E..E.E.E.E
+Time: 0.134
+There were 10 failures:
+1) unknownTextCannotTurnIntoSuccess(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<RESULT_UNKNOWN> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.unknownTextCannotTurnIntoSuccess(JpegAbandonedDeliveryTest.java:15)
+2) observerFailureAlsoRemainsRecorded(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<FAILED> but was:<SCHEDULED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.observerFailureAlsoRemainsRecorded(JpegAbandonedDeliveryTest.java:19)
+3) repeatedExecutorInvocationStillOnlyRunsHandlerOnce(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.repeatedExecutorInvocationStillOnlyRunsHandlerOnce(JpegAbandonedDeliveryTest.java:21)
+4) resumeCancellationAndInactiveObservationShareOnceClaim(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.resumeCancellationAndInactiveObservationShareOnceClaim(JpegAbandonedDeliveryTest.java:13)
+5) callbackIsOnlyQueuedAtCancellation(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.callbackIsOnlyQueuedAtCancellation(JpegAbandonedDeliveryTest.java:11)
+6) concurrentAbandonmentQueuesOnlyOneCleanup(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.concurrentAbandonmentQueuesOnlyOneCleanup(JpegAbandonedDeliveryTest.java:20)
+7) failedHandlerIsNotRetriedAutomatically(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.failedHandlerIsNotRetriedAutomatically(JpegAbandonedDeliveryTest.java:17)
+8) inactiveResultIsDeliveredExactlyOnce(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<1> but was:<0>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.inactiveResultIsDeliveredExactlyOnce(JpegAbandonedDeliveryTest.java:12)
+9) throwingHandlerRemainsFailed(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected:<FAILED> but was:<SCHEDULED>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.throwingHandlerRemainsFailed(JpegAbandonedDeliveryTest.java:16)
+10) originalObjectIsPassedWithoutProofSynthesis(com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest)
+java.lang.AssertionError: expected same:<java.lang.Object@1b40d5f0> was not:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotSame(Assert.java:829)
+	at org.junit.Assert.assertSame(Assert.java:772)
+	at org.junit.Assert.assertSame(Assert.java:783)
+	at com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.originalObjectIsPassedWithoutProofSynthesis(JpegAbandonedDeliveryTest.java:14)
+
+FAILURES!!!
+Tests run: 71,  Failures: 10
+

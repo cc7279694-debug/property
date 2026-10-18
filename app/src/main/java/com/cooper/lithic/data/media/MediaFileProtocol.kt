@@ -11,6 +11,8 @@ import java.nio.file.Files
 import java.nio.file.StandardOpenOption
 import java.util.UUID
 import org.json.JSONObject
+import com.cooper.lithic.data.media.jpegstage.JpegStageV2
+import java.security.MessageDigest
 
 /** Ownership receipts identify interrupted files; Room is the committed media truth. */
 
@@ -23,6 +25,9 @@ internal class MediaFileProtocol(private val supplied: File) {
         }
     }
     private val preparations: File get() = child(media, ".m10-imports")
+    private val jpegPreparations: File get() = child(media, ".m10-jpeg-v2")
+    val hasJpegPreparations: Boolean get() = jpegPreparations.exists()
+    val jpeg by lazy { JpegStageV2(jpegPreparations, generation.name, ::identity, ::syncDirectory) }
     private val ownerKeys = setOf("protocol", "version", "assetId", "generation")
     private val assetKeys = setOf("id", "relativePath", "mime", "width", "height", "byteLength", "sha256")
     private val knownNames = setOf("owner.json", "asset.json", "owned-final.json", "source.bin", "image.jpg", "image.png", ".encoding")
@@ -47,7 +52,48 @@ internal class MediaFileProtocol(private val supplied: File) {
 
     fun stage(id: String): File {
         requireId(id)
-        return child(preparations, id)
+        val old = child(preparations, id)
+        val strict = child(jpegPreparations, id)
+        if (old.exists() && strict.exists()) path("Conflicting private image preparations must be preserved")
+        return if (strict.exists()) strict else old
+    }
+
+    fun isJpegStage(id: String): Boolean { requireId(id); return child(jpegPreparations, id).exists() }
+
+    /** Open and hash the same non-linked inode, including a post-read path/size check. */
+    fun identity(file: File): JpegStageV2.FileIdentity {
+        val empty = Os.lstat(file.path)
+        if (OsConstants.S_ISREG(empty.st_mode) && empty.st_size == 0L) {
+            // POSIX process locks can be released when ANY descriptor for the same
+            // inode is closed. Never open/close a guard while its FileLock is held.
+            val checked = Os.lstat(file.path)
+            if (!OsConstants.S_ISREG(checked.st_mode) || checked.st_size != 0L ||
+                checked.st_dev != empty.st_dev || checked.st_ino != empty.st_ino) path("Private empty JPEG inode changed")
+            return JpegStageV2.FileIdentity(empty.st_dev, empty.st_ino, 0L,
+                MessageDigest.getInstance("SHA-256").digest().joinToString("") { "%02x".format(it.toInt() and 255) })
+        }
+        val fd = Os.open(file.path, OsConstants.O_RDONLY or OsConstants.O_NOFOLLOW or MediaNativeFlags.CLOSE_ON_EXEC, 0)
+        try {
+            val before = Os.fstat(fd)
+            if (!OsConstants.S_ISREG(before.st_mode) || before.st_size !in 0..AndroidImageCodec.SOURCE_LIMIT) path("Invalid private JPEG file identity")
+            val digest = MessageDigest.getInstance("SHA-256")
+            val buffer = ByteArray(64 * 1024)
+            var count = 0L
+            while (true) {
+                val read = Os.read(fd, buffer, 0, buffer.size)
+                if (read == 0) break
+                if (count > AndroidImageCodec.SOURCE_LIMIT - read) path("Private JPEG changed beyond its limit")
+                count += read
+                digest.update(buffer, 0, read)
+            }
+            val after = Os.fstat(fd)
+            val named = Os.lstat(file.path)
+            if (count != before.st_size || after.st_size != before.st_size ||
+                after.st_dev != before.st_dev || after.st_ino != before.st_ino ||
+                named.st_dev != before.st_dev || named.st_ino != before.st_ino || !OsConstants.S_ISREG(named.st_mode)) path("Private JPEG identity changed")
+            return JpegStageV2.FileIdentity(before.st_dev, before.st_ino, count,
+                digest.digest().joinToString("") { "%02x".format(it.toInt() and 255) })
+        } finally { Os.close(fd) }
     }
 
     fun child(parent: File, name: String): File {
@@ -59,6 +105,7 @@ internal class MediaFileProtocol(private val supplied: File) {
     }
 
     fun createStage(id: String): File {
+        if (isJpegStage(id)) path("A strict JPEG preparation cannot be reused as v1")
         val area = preparations
         if (!area.isDirectory && !area.mkdir()) throw IOException("Cannot create the private image preparation area")
         val directory = stage(id)
@@ -75,6 +122,11 @@ internal class MediaFileProtocol(private val supplied: File) {
 
     fun hasOwner(directory: File, id: String): Boolean {
         if (!directory.isDirectory) return false
+        if (isJpegStage(id)) return runCatching {
+            val owner = jpeg.ownerFor(id)
+            jpeg.snapshot(owner)
+            directory == child(jpegPreparations, id)
+        }.getOrDefault(false)
         return try {
             val owner = readJson(child(directory, "owner.json"))
             owner.keys().asSequence().toSet() == ownerKeys && owner.getString("protocol") == "lithic-m10-import" && owner.getInt("version") == 1 && owner.getString("assetId") == id && owner.getString("generation") == generation.name
@@ -94,6 +146,7 @@ internal class MediaFileProtocol(private val supplied: File) {
 
     fun saveAsset(directory: File, asset: LocalMediaAssetEntity) {
         finalFile(asset)
+        if (isJpegStage(asset.id)) requireStrictAsset(asset)
         writeNewJson(child(directory, "asset.json"), JSONObject().put("id", asset.id).put("relativePath", asset.relativePath).put("mime", asset.mime)
             .put("width", asset.width).put("height", asset.height).put("byteLength", asset.byteLength).put("sha256", asset.sha256))
         syncDirectory(directory)
@@ -110,23 +163,31 @@ internal class MediaFileProtocol(private val supplied: File) {
         }
         if (asset.id != id || asset.sha256 != asset.sha256.lowercase() || asset.byteLength <= 0 || asset.byteLength>AndroidImageCodec.STORED_LIMIT || maxOf(asset.width, asset.height)>AndroidImageCodec.EDGE_LIMIT) path("The prepared image metadata is invalid")
         finalFile(asset)
+        if (isJpegStage(id)) requireStrictAsset(asset)
         return asset
+    }
+
+    private fun requireStrictAsset(asset: LocalMediaAssetEntity) {
+        val prepared = jpeg.verifyPrepared(jpeg.ownerFor(asset.id))
+        if (asset.mime != "image/jpeg" || prepared.output.bytes != asset.byteLength || prepared.output.sha256 != asset.sha256 ||
+            prepared.width != asset.width || prepared.height != asset.height) path("Strict JPEG receipt and metadata differ")
     }
 
     fun preparedFile(asset: LocalMediaAssetEntity): File = child(requireOwner(asset.id), if (asset.mime == "image/png")"image.png" else "image.jpg")
 
     fun candidates(): List<LocalMediaAssetEntity> {
         val area = preparations
-        if (!area.exists())return emptyList()
-        if (!area.isDirectory)path("The private preparation area is not a directory")
-        val children = area.listFiles() ?: throw IOException("Cannot inspect the private preparation area")
-        return children.sortedBy {
+        if (area.exists() && !area.isDirectory)path("The private preparation area is not a directory")
+        val children = if (area.exists()) area.listFiles() ?: throw IOException("Cannot inspect the private preparation area") else emptyArray()
+        val old = children.sortedBy {
             it.name
         }.mapNotNull { directory ->
             try {
                 requireId(directory.name)
                 val safe = stage(directory.name)
-                if (hasOwner(safe, directory.name))readAsset(directory.name) else null
+                if (hasOwner(safe, directory.name)) readAsset(directory.name).takeIf {
+                    it.mime != "image/jpeg"
+                } else null
             }
             catch (_: IOException) {
                 null
@@ -134,6 +195,16 @@ internal class MediaFileProtocol(private val supplied: File) {
                 null
             }
         }
+        val strict = if (jpegPreparations.isDirectory) (jpegPreparations.listFiles()
+            ?: throw IOException("Cannot inspect strict JPEG preparations")).mapNotNull { directory ->
+            runCatching {
+                requireId(directory.name)
+                val owner = jpeg.ownerFor(directory.name)
+                jpeg.verifyPrepared(owner)
+                readAsset(directory.name)
+            }.getOrNull()
+        } else emptyList()
+        return old + strict
     }
 
     fun incompleteOwnedIds(): List<String> {
@@ -187,6 +258,12 @@ internal class MediaFileProtocol(private val supplied: File) {
     }
 
     fun deleteKnownStage(id: String): Boolean {
+        if (isJpegStage(id)) {
+            val owner = jpeg.ownerFor(id)
+            jpeg.revoke(owner, "HOST_DISCARD")
+            jpeg.safeCleanup(owner)
+            return true // Keep terminal proof/tombstone; never apply the v1 deletion loop.
+        }
         val directory = requireOwner(id)
         // Unknown children are preserved even when the operation receipt itself is valid.
         for (name in knownNames.filter {

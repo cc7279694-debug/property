@@ -1,0 +1,286 @@
+{
+  "status": "PASS_STATIC_UAPI_NOT_ANDROID_RUN",
+  "ndk": "28.2.13676358",
+  "compilerSHA256": "7d31c6f6fad98987b6c9d21b800afaa8b3e37f052e94aaddc941d42ff2a35579",
+  "purpose": "Use the API26 Linux open O_CLOEXEC flag atomically without referencing the API27 Java OsConstants.O_CLOEXEC field. This is not runtime FD behavior proof.",
+  "targets": [
+    {
+      "abi": "arm64-v8a",
+      "target": "aarch64-linux-android26",
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "-target",
+        "aarch64-linux-android26",
+        "-dM",
+        "-E",
+        "-x",
+        "c",
+        "-include",
+        "fcntl.h",
+        "-"
+      ],
+      "stdinBytes": 0,
+      "exitCode": 0,
+      "O_CLOEXEC": {
+        "raw": "02000000",
+        "decimal": 524288,
+        "hex": "0x80000"
+      },
+      "__ANDROID_API__": {
+        "raw": "__ANDROID_MIN_SDK_VERSION__",
+        "resolved": 26
+      },
+      "__ANDROID_MIN_SDK_VERSION__": "26",
+      "macroOutputBytes": 28853,
+      "macroOutputSHA256": "a5344ced5268017e9028ce92a66f5e7b2c90ccb7028094fdbe2118103f0a6c6f",
+      "macroStderrBytes": 0,
+      "macroStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencyCommand": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "-target",
+        "aarch64-linux-android26",
+        "-M",
+        "-E",
+        "-x",
+        "c",
+        "-include",
+        "fcntl.h",
+        "-MT",
+        "M10_API26",
+        "-"
+      ],
+      "dependencyExitCode": 0,
+      "dependencyOutputBytes": 8635,
+      "dependencyOutputSHA256": "0edc17a79a97c1e6a0650e79272ad983994dbb2f0fc170b95a58475d333674db",
+      "dependencyStderrBytes": 0,
+      "dependencyStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualFcntlHeaders": [
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/linux/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/aarch64-linux-android/asm/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/asm-generic/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/bits/fcntl.h"
+      ]
+    },
+    {
+      "abi": "armeabi-v7a",
+      "target": "armv7a-linux-androideabi26",
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "-target",
+        "armv7a-linux-androideabi26",
+        "-dM",
+        "-E",
+        "-x",
+        "c",
+        "-include",
+        "fcntl.h",
+        "-"
+      ],
+      "stdinBytes": 0,
+      "exitCode": 0,
+      "O_CLOEXEC": {
+        "raw": "02000000",
+        "decimal": 524288,
+        "hex": "0x80000"
+      },
+      "__ANDROID_API__": {
+        "raw": "__ANDROID_MIN_SDK_VERSION__",
+        "resolved": 26
+      },
+      "__ANDROID_MIN_SDK_VERSION__": "26",
+      "macroOutputBytes": 28747,
+      "macroOutputSHA256": "1f3923b6a1653c5cc95170e173ccb472a8d5ac0ac6bf183bbd556adbccadccc2",
+      "macroStderrBytes": 0,
+      "macroStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencyCommand": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "-target",
+        "armv7a-linux-androideabi26",
+        "-M",
+        "-E",
+        "-x",
+        "c",
+        "-include",
+        "fcntl.h",
+        "-MT",
+        "M10_API26",
+        "-"
+      ],
+      "dependencyExitCode": 0,
+      "dependencyOutputBytes": 8428,
+      "dependencyOutputSHA256": "b1f295aedf3e86ca08a9a9c5e973eaa38fd758923619dce75ae1fc0910f44ca8",
+      "dependencyStderrBytes": 0,
+      "dependencyStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualFcntlHeaders": [
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/linux/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/arm-linux-androideabi/asm/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/asm-generic/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/bits/fcntl.h"
+      ]
+    },
+    {
+      "abi": "x86",
+      "target": "i686-linux-android26",
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "-target",
+        "i686-linux-android26",
+        "-dM",
+        "-E",
+        "-x",
+        "c",
+        "-include",
+        "fcntl.h",
+        "-"
+      ],
+      "stdinBytes": 0,
+      "exitCode": 0,
+      "O_CLOEXEC": {
+        "raw": "02000000",
+        "decimal": 524288,
+        "hex": "0x80000"
+      },
+      "__ANDROID_API__": {
+        "raw": "__ANDROID_MIN_SDK_VERSION__",
+        "resolved": 26
+      },
+      "__ANDROID_MIN_SDK_VERSION__": "26",
+      "macroOutputBytes": 28506,
+      "macroOutputSHA256": "c7972554c8fc9e74646b525c0f8e0b46beaf7570452e14159c96e2f76c4fb88d",
+      "macroStderrBytes": 0,
+      "macroStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencyCommand": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "-target",
+        "i686-linux-android26",
+        "-M",
+        "-E",
+        "-x",
+        "c",
+        "-include",
+        "fcntl.h",
+        "-MT",
+        "M10_API26",
+        "-"
+      ],
+      "dependencyExitCode": 0,
+      "dependencyOutputBytes": 8850,
+      "dependencyOutputSHA256": "e14e2a3257c7896ead6d3e159bcb3450b74387e05f04269f71beb1be42fe9aa7",
+      "dependencyStderrBytes": 0,
+      "dependencyStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualFcntlHeaders": [
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/linux/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/i686-linux-android/asm/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/asm-generic/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/bits/fcntl.h"
+      ]
+    },
+    {
+      "abi": "x86_64",
+      "target": "x86_64-linux-android26",
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "-target",
+        "x86_64-linux-android26",
+        "-dM",
+        "-E",
+        "-x",
+        "c",
+        "-include",
+        "fcntl.h",
+        "-"
+      ],
+      "stdinBytes": 0,
+      "exitCode": 0,
+      "O_CLOEXEC": {
+        "raw": "02000000",
+        "decimal": 524288,
+        "hex": "0x80000"
+      },
+      "__ANDROID_API__": {
+        "raw": "__ANDROID_MIN_SDK_VERSION__",
+        "resolved": 26
+      },
+      "__ANDROID_MIN_SDK_VERSION__": "26",
+      "macroOutputBytes": 28628,
+      "macroOutputSHA256": "a7526023d8e9cbaee4da6bdc060eb08b3e4b080280dcdae394d96a8ba6a9f33e",
+      "macroStderrBytes": 0,
+      "macroStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "dependencyCommand": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+        "-target",
+        "x86_64-linux-android26",
+        "-M",
+        "-E",
+        "-x",
+        "c",
+        "-include",
+        "fcntl.h",
+        "-MT",
+        "M10_API26",
+        "-"
+      ],
+      "dependencyExitCode": 0,
+      "dependencyOutputBytes": 8860,
+      "dependencyOutputSHA256": "004c9b7a1434e119220012517aa3ea244deaabdc80da07e6505b3c9bdff9c457",
+      "dependencyStderrBytes": 0,
+      "dependencyStderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualFcntlHeaders": [
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/linux/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/x86_64-linux-android/asm/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/asm-generic/fcntl.h",
+        "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/bits/fcntl.h"
+      ]
+    }
+  ],
+  "headers": [
+    {
+      "pathWithinNDK": "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/fcntl.h",
+      "bytes": 7794,
+      "sha256": "eaf521da53a52c6b8e48fb86a1bc1023658d68e36c5d25deff9bad85758fe3f3"
+    },
+    {
+      "pathWithinNDK": "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/linux/fcntl.h",
+      "bytes": 2194,
+      "sha256": "3ef61aa14e5d57320b5e6bd66aaaa7dd4ee5db75e6dff1a933151e73b159612f"
+    },
+    {
+      "pathWithinNDK": "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/aarch64-linux-android/asm/fcntl.h",
+      "bytes": 362,
+      "sha256": "033e0650290b368ffa97c2f72c1fa670b17462a29cda067bc8cc95423d1e117d"
+    },
+    {
+      "pathWithinNDK": "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/asm-generic/fcntl.h",
+      "bytes": 2540,
+      "sha256": "0344cc9d595fd81deb2c0bdce745c189448f7955ffc0618ffc7be20bbfd4b509"
+    },
+    {
+      "pathWithinNDK": "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/bits/fcntl.h",
+      "bytes": 1739,
+      "sha256": "fbe8ab3796a2698acf12f22105df60f204f7aebf3067c2b2d34da604535d299e"
+    },
+    {
+      "pathWithinNDK": "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/arm-linux-androideabi/asm/fcntl.h",
+      "bytes": 360,
+      "sha256": "a67bc789bf7b3d9fe62d6a238dec66f317f217be17f20323ac35cd6f73ff034f"
+    },
+    {
+      "pathWithinNDK": "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/i686-linux-android/asm/fcntl.h",
+      "bytes": 204,
+      "sha256": "6c9355fe91c426182946518feb76bd73ea6264a6969deb1bfd66222bfa2b436d"
+    },
+    {
+      "pathWithinNDK": "toolchains/llvm/prebuilt/windows-x86_64/sysroot/usr/include/x86_64-linux-android/asm/fcntl.h",
+      "bytes": 204,
+      "sha256": "6c9355fe91c426182946518feb76bd73ea6264a6969deb1bfd66222bfa2b436d"
+    }
+  ],
+  "officialHeaderRepository": "https://android.googlesource.com/platform/bionic/",
+  "headerEmbeddedProvenanceURL": "https://android.googlesource.com/platform/bionic/+/master/libc/kernel/",
+  "provenanceScope": "Existing installed NDK files and actual -M preprocessor dependency output; no network/download or claim that a moving remote branch was byte-verified. Full macro/dependency outputs handled only in memory; hashes/bytes and necessary values retained.",
+  "diagnosticNote": "Initial harness tried -H with forced -include; clang returned exit0 and empty trace, so the harness refused to issue an evidence result. Actual -M dependency output was then collected; macro/compiler conditions were not relaxed."
+}

@@ -203,8 +203,13 @@ class DataGenerationStore(
         lifecycle.withLock {
             if (active === generation) {
                 withContext(NonCancellable) {
+                    var closeStarted = false
                     try {
                         coordinator.withWrite {
+                            // A persistent or live JPEG consumer retains this owner. A
+                            // refused close must not release the root or close Room.
+                            generation.images.closeForGeneration()
+                            closeStarted = true
                             try {
                                 generation.settings.closeWithinWrite()
                             } finally {
@@ -212,8 +217,10 @@ class DataGenerationStore(
                             }
                         }
                     } finally {
-                        active = null
-                        releaseRoot()
+                        if (closeStarted) {
+                            active = null
+                            releaseRoot()
+                        }
                     }
                 }
             }

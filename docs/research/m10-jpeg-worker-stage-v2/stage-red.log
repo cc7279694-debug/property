@@ -1,0 +1,157 @@
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+
+> Task :app:prepareStrictJpegCandidateNative
+{"status": "PACKAGING_VERIFIED_NOT_ANDROID_RUN", "abis": ["arm64-v8a", "armeabi-v7a", "x86", "x86_64"], "report": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\generated\\m10StrictJpeg\\assembly.json"}
+
+> Task :app:preBuild
+> Task :app:preDebugBuild
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources
+> Task :app:generateDebugResValues
+> Task :app:compileDebugNavigationResources
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:javaPreCompileDebug
+> Task :app:preDebugUnitTestBuild
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugResources
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-jpeg-stage-v2/��ʯ��APP/app/src/main/java/com/cooper/lithic/data/media/jpegstage/StageRecords.kt:92:14 Java type mismatch: inferred type is 'File?', but 'File' was expected.
+w: file:///E:/CODEX/.codex/worktrees/lithic-jpeg-stage-v2/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:706:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-jpeg-stage-v2/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-jpeg-stage-v2/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+
+> Task :app:testDebugUnitTest
+
+JpegStageV2Test > output_tamper_blocks_prepared_restore FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > second_unfinished_stage_is_blocked FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > known_terminal_cleanup_is_idempotent FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > delivery_without_pin_rejected FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > wrong_record_version_is_rejected FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > register_replay_is_idempotent FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > pin_is_persisted_before_delivery FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > nonterminal_cleanup_is_blocked FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > success_requires_strict_finish_and_destroy FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > wrong_generation_rejected FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > success_needs_binder_death FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > verified_failure_can_end_resources_without_publication FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > complete_requires_released_real_file_lock FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > creates_v2_owner_and_real_source FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > guard_inode_replacement_is_rejected FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > wrong_process_instance_cannot_complete FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > conflicting_worker_registration_rejected FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > revoked_state_is_never_authorized FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > terminal_receipt_survives_host_restart FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > pin_record_tamper_blocks_authorization FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > unknown_outcome_cannot_end_resources FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > success_needs_matching_process_death FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > duplicate_result_cannot_publish FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > cancelled_late_success_cannot_publish FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > duplicate_record_key_is_rejected FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > success_receipt_unlocks_pin_then_prepares_real_output FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > unknown_child_is_preserved_and_blocks_cleanup FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > truncated_record_is_rejected FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > source_byte_tamper_blocks_receipt FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > persistent_revoke_survives_new_protocol_instance FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+JpegStageV2Test > success_needs_both_fd_closures FAILED
+    com.cooper.lithic.data.media.jpegstage.JpegStageV2$Blocked at JpegStageV2Test.kt:33
+
+34 tests completed, 31 failed
+
+> Task :app:testDebugUnitTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///E:/CODEX/.codex/worktrees/lithic-jpeg-stage-v2/%E7%A0%BA%E7%9F%B3%E6%96%B0APP/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 3m 24s
+29 actionable tasks: 29 executed

@@ -1,0 +1,372 @@
+{
+  "status": "PASS_STATIC_PACKAGING_NOT_ANDROID_RUN",
+  "ndk": "28.2.13676358",
+  "stripVersion": "llvm-strip, compatible with GNU strip\nLLVM (http://llvm.org/):\n  LLVM version 19.0.1 (/mnt/disks/build-disk/src/android/llvm-r530567/out/llvm-project/llvm 97a699bf4812a18fb657c2779f5296a4ab2694d2)\n  Optimized build.",
+  "reproductionArguments": [
+    "--strip-unneeded",
+    "-o",
+    "<new audit output>",
+    "<locked unstripped input>"
+  ],
+  "artifacts": [
+    {
+      "abi": "arm64-v8a",
+      "originalBytes": 1607640,
+      "originalSHA256": "7cf89f3c73df15bc2ffa94e6a676c7754edfd035857efb26a4e328899c3e8f90",
+      "strippedBytes": 284136,
+      "strippedSHA256": "44cc13c6921a0bda3a2e298eb232c1ad0f0863c2ab33cbf8e74807a65d2ea0de",
+      "independentStripMatchesAGP": true,
+      "audit": {
+        "machine": "AArch64",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ]
+      },
+      "androidIdentNotePresent": true,
+      "api26Runtime": "NOT_RUN; inherited compiler __ANDROID_API__==26 proof; ELF notes do not prove API compatibility",
+      "androidIdent": {
+        "api": 26,
+        "ndk": "r28c",
+        "ndkBuild": "13676358"
+      },
+      "buildId": "7897d43decfff88c3b7a360ce6fd38f4fc915ca1"
+    },
+    {
+      "abi": "armeabi-v7a",
+      "originalBytes": 1321948,
+      "originalSHA256": "b3ed971b58f0c1f426eac7c0ac4ef89cae6c1674c16f6cfa3cb962908defe662",
+      "strippedBytes": 218760,
+      "strippedSHA256": "f212d2b51448f919bbbf48b30a68a7f795261fe5ebdef72e919e1ea2c45faabd",
+      "independentStripMatchesAGP": true,
+      "audit": {
+        "machine": "ARM",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ]
+      },
+      "androidIdentNotePresent": true,
+      "api26Runtime": "NOT_RUN; inherited compiler __ANDROID_API__==26 proof; ELF notes do not prove API compatibility",
+      "androidIdent": {
+        "api": 26,
+        "ndk": "r28c",
+        "ndkBuild": "13676358"
+      },
+      "buildId": "dfd7af8bc3dd52ba94bc0d48bdf4724253e59589"
+    },
+    {
+      "abi": "x86",
+      "originalBytes": 1454824,
+      "originalSHA256": "a197924d35a222c56db96dd93e09f75a9f8505c345c7b129bc0d65c4aa7c8814",
+      "strippedBytes": 328884,
+      "strippedSHA256": "8531d0a92fd4cf407660796cc310dd4350e94a538be44a45be17c57bef644d97",
+      "independentStripMatchesAGP": true,
+      "audit": {
+        "machine": "Intel 80386",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ]
+      },
+      "androidIdentNotePresent": true,
+      "api26Runtime": "NOT_RUN; inherited compiler __ANDROID_API__==26 proof; ELF notes do not prove API compatibility",
+      "androidIdent": {
+        "api": 26,
+        "ndk": "r28c",
+        "ndkBuild": "13676358"
+      },
+      "buildId": "bf4068badd3c822bbb3358c5196ff58b848776cd"
+    },
+    {
+      "abi": "x86_64",
+      "originalBytes": 1699576,
+      "originalSHA256": "12b5e515a320009ca6b2cdb51f1455cf39c17d86de45aaa5a5cb2884c32b3ef4",
+      "strippedBytes": 342256,
+      "strippedSHA256": "25b0fa227d1380beb995a7d360f4c29964e72d8d288b62b3aa2ac7cfbb37a116",
+      "independentStripMatchesAGP": true,
+      "audit": {
+        "machine": "Advanced Micro Devices X86-64",
+        "loadAlignments": [
+          16384,
+          16384
+        ],
+        "needed": [
+          "libm.so",
+          "libdl.so",
+          "libc.so"
+        ],
+        "definedVisibleExports": [
+          "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+        ]
+      },
+      "androidIdentNotePresent": true,
+      "api26Runtime": "NOT_RUN; inherited compiler __ANDROID_API__==26 proof; ELF notes do not prove API compatibility",
+      "androidIdent": {
+        "api": 26,
+        "ndk": "r28c",
+        "ndkBuild": "13676358"
+      },
+      "buildId": "98ad25c8fa99621c3239318ecd16e607e684b315"
+    }
+  ],
+  "commandCount": 17,
+  "commands": [
+    {
+      "label": "strip-version",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-strip.exe",
+        "--version"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\strip-version.log",
+      "logBytes": 224,
+      "logSHA256": "6aad27814a2540e7553214d8231e91cbbb42db447d801030091ec60fc42dae8e"
+    },
+    {
+      "label": "arm64-v8a-strip",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-strip.exe",
+        "--strip-unneeded",
+        "-o",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\build\\m10-native-assembly\\strip-audit\\arm64-v8a-libstrictjpeg_candidate.so",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\generated\\m10StrictJpeg\\jniLibs\\arm64-v8a\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\arm64-v8a-strip.log",
+      "logBytes": 8,
+      "logSHA256": "a3680b6601c39b586ea892ad2bbaa58a7f72b62a64f73917b09aa8c5f188110e"
+    },
+    {
+      "label": "arm64-v8a-elf",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\arm64-v8a\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\arm64-v8a-elf.log",
+      "logBytes": 3688,
+      "logSHA256": "5968f6f62283e674fd1fe404b109e65383bbe874b44007645899488f0255fbf5"
+    },
+    {
+      "label": "arm64-v8a-dynamic",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--dyn-syms",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\arm64-v8a\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\arm64-v8a-dynamic.log",
+      "logBytes": 2244,
+      "logSHA256": "787926233b0e6a2b4b17d78e2ea3c079a634b095cf5e218f0c62219d126648dc"
+    },
+    {
+      "label": "arm64-v8a-notes",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--notes",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\arm64-v8a\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\arm64-v8a-notes.log",
+      "logBytes": 800,
+      "logSHA256": "ff84dccee524b4b732b63f31a4171e65481eddd9fa08d10ddd770b9d6afeb751"
+    },
+    {
+      "label": "armeabi-v7a-strip",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-strip.exe",
+        "--strip-unneeded",
+        "-o",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\build\\m10-native-assembly\\strip-audit\\armeabi-v7a-libstrictjpeg_candidate.so",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\generated\\m10StrictJpeg\\jniLibs\\armeabi-v7a\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\armeabi-v7a-strip.log",
+      "logBytes": 8,
+      "logSHA256": "a3680b6601c39b586ea892ad2bbaa58a7f72b62a64f73917b09aa8c5f188110e"
+    },
+    {
+      "label": "armeabi-v7a-elf",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\armeabi-v7a\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\armeabi-v7a-elf.log",
+      "logBytes": 3326,
+      "logSHA256": "4171748d11e5b19efb99c2ca8b41efcdb7a5831299663c41c938eabbe9b66881"
+    },
+    {
+      "label": "armeabi-v7a-dynamic",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--dyn-syms",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\armeabi-v7a\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\armeabi-v7a-dynamic.log",
+      "logBytes": 2083,
+      "logSHA256": "866b89db5f32ff48de3e71e4132be1af41c8c6b377668e8f1b5e230548d2c93d"
+    },
+    {
+      "label": "armeabi-v7a-notes",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--notes",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\armeabi-v7a\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\armeabi-v7a-notes.log",
+      "logBytes": 800,
+      "logSHA256": "b41a80478be32de82488e71900f18532abd4f220d55728bdb28b49e249f6bbea"
+    },
+    {
+      "label": "x86-strip",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-strip.exe",
+        "--strip-unneeded",
+        "-o",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\build\\m10-native-assembly\\strip-audit\\x86-libstrictjpeg_candidate.so",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\generated\\m10StrictJpeg\\jniLibs\\x86\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\x86-strip.log",
+      "logBytes": 8,
+      "logSHA256": "a3680b6601c39b586ea892ad2bbaa58a7f72b62a64f73917b09aa8c5f188110e"
+    },
+    {
+      "label": "x86-elf",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\x86\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\x86-elf.log",
+      "logBytes": 3316,
+      "logSHA256": "349638618ad023720ec270485bc2ad2f6183d849c75ca2572c750096115fae8c"
+    },
+    {
+      "label": "x86-dynamic",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--dyn-syms",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\x86\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\x86-dynamic.log",
+      "logBytes": 2008,
+      "logSHA256": "37d67ec5dc65ddeda027134aa73b09204e852ca4975d65f315606cbf7aa476e7"
+    },
+    {
+      "label": "x86-notes",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--notes",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\x86\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\x86-notes.log",
+      "logBytes": 800,
+      "logSHA256": "c4024aa13e45f722386a13ee66a968e4e2e9d166ca4ac7494382c9d262b27c29"
+    },
+    {
+      "label": "x86_64-strip",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-strip.exe",
+        "--strip-unneeded",
+        "-o",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\build\\m10-native-assembly\\strip-audit\\x86_64-libstrictjpeg_candidate.so",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\generated\\m10StrictJpeg\\jniLibs\\x86_64\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\x86_64-strip.log",
+      "logBytes": 8,
+      "logSHA256": "a3680b6601c39b586ea892ad2bbaa58a7f72b62a64f73917b09aa8c5f188110e"
+    },
+    {
+      "label": "x86_64-elf",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "-h",
+        "-l",
+        "-d",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\x86_64\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\x86_64-elf.log",
+      "logBytes": 3710,
+      "logSHA256": "5b46d8737eff63ce99717fdbae6fe1b9d05e1dab51fa763b1e2419bc4525d774"
+    },
+    {
+      "label": "x86_64-dynamic",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--dyn-syms",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\x86_64\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\x86_64-dynamic.log",
+      "logBytes": 2244,
+      "logSHA256": "b55c5ca45e9bba45bb290f5ede4cc35cae0cdad6b11eaf6c96a7c249c8afacf8"
+    },
+    {
+      "label": "x86_64-notes",
+      "arguments": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\ndk\\28.2.13676358\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-readelf.exe",
+        "--notes",
+        "-W",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\app\\build\\intermediates\\stripped_native_libs\\debug\\stripDebugDebugSymbols\\out\\lib\\x86_64\\libstrictjpeg_candidate.so"
+      ],
+      "exitCode": 0,
+      "log": "build\\m10-native-assembly\\strip-audit\\x86_64-notes.log",
+      "logBytes": 800,
+      "logSHA256": "0afe41b52ecd636aec212935170470d6c1112edf2aa8d19884dc0171428bd91d"
+    }
+  ],
+  "scope": "No source changes, compilation, APK/device operation; exact independent strip reproduction then actual AGP output ELF audit"
+}

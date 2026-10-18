@@ -1,0 +1,38 @@
+{
+  "scope": "HOST_ASSEMBLY_ONLY_NOT_ANDROID",
+  "unitMethods": 9,
+  "passed": 9,
+  "redInitial": "module absent; not a behavior regression RED",
+  "redOutputGuard": "9 methods: 6 passed, 3 missing guard errors",
+  "logs": [
+    {
+      "name": "RED.log",
+      "bytes": 619,
+      "sha256": "2b573ae6c46f5ac88c3cb97d718ab2122c7089ab1099aa126621e86971f14f23"
+    },
+    {
+      "name": "output-guard-RED.log",
+      "bytes": 2077,
+      "sha256": "41bed80cb9ac247aab0aecbf703cdb55fee2617fdedbf0c0ba72a1059af81320"
+    },
+    {
+      "name": "final-GREEN.log",
+      "bytes": 112,
+      "sha256": "69b88a7793801784e95b28af12af0968a296310a0d4fddebd152fafe1a239c82"
+    },
+    {
+      "name": "final-assembly.log",
+      "bytes": 245,
+      "sha256": "8d506f3c2439715f286a48be8be7ad163bbe0a5b513ceec275b5ff01245979c1"
+    },
+    {
+      "name": "javac.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "jniHeaderSignature": "(IJ)[J",
+  "archiveSHA256": "6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e",
+  "packaging": "4 ABIs verified; generated assets include exact upstream LICENSE.md and README.ijg plus changes notice",
+  "rawEvidenceDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\\u783a\u77f3\u65b0APP\\build\\m10-native-assembly"
+}

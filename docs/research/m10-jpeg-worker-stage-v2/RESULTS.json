@@ -1,0 +1,505 @@
+{
+  "status": "BLOCKED_ANDROID_VALIDATION; OFFLINE_CANDIDATE_READY_FOR_INDEPENDENT_REVIEW",
+  "branch": "codex/m10-jpeg-worker-stage-v2-candidate",
+  "baseline": "717d541578ebf761e2e1c70a842ca8b7e5dab5b2",
+  "scope": "Candidate private Stage V2 + App/JNI/Worker integration; no device operations or M10 acceptance",
+  "jvm": {
+    "uniqueMethods": 236,
+    "pass": 236,
+    "failure": 0,
+    "error": 0,
+    "skip": 0,
+    "originalUnchanged": 86,
+    "stage": 67,
+    "worker": 83,
+    "runs": [
+      {
+        "methods": 212,
+        "testResult": "PASS",
+        "overallBuild": "FAIL: 3 Lint errors, preserved"
+      },
+      {
+        "methods": 83,
+        "result": "PASS; targeted final frozen input regression"
+      }
+    ],
+    "counting": "Original86 + Stage67 + final Worker83; earlier63/directJava/mutation/repeated83 are not added",
+    "xml": "jvm-results.xml",
+    "rawXML": [
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.core.design.AmountFormatterTest.xml",
+        "bytes": 1535,
+        "sha256": "65226669087fb977099862800b7b3b84113fe78fd95a71218e899954e99e77da"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.core.model.MoneyParserTest.xml",
+        "bytes": 1224,
+        "sha256": "219dc435439bcf92f1923ca4fbf8c41cc34b6626695e1204b81046dc9f1907a1"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.core.time.BusinessClockTest.xml",
+        "bytes": 606,
+        "sha256": "e56e61646982ed086fbe551e356010b2dac758de20096409e03d940f4918b569"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.data.media.jpegstage.JpegStageV2Test.xml",
+        "bytes": 10299,
+        "sha256": "58a1a45a671a0574b09940d1f4849d55524888a6fa0b486d09f5939f96e55b3f"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest.xml",
+        "bytes": 1874,
+        "sha256": "163110eb13aa90e2bd29dc25c34976070f38c94ae19a705616dd568342945d33"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.data.media.jpegworker.JpegDecoderPolicyTest.xml",
+        "bytes": 1272,
+        "sha256": "b327d4a6924c500dc2775905048241600ca1c00a1b93280c4a3b2bb66ee4bf71"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest.xml",
+        "bytes": 2708,
+        "sha256": "4167f7e6e7f3e5b767b1d5b1f6180c690e05f3a2dd7541e89d3ab69da8f017c2"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest.xml",
+        "bytes": 3593,
+        "sha256": "bb0cf9f40c6fee23563892d104d36acebc799c90fc2e3a4dbb86a53df6c82ef5"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+        "bytes": 3516,
+        "sha256": "f60963fe67aa0dd49401aec8bb5278af99a3eafb5387c9c869e4225b0aaceb25"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.domain.project.ProjectLifecycleRulesTest.xml",
+        "bytes": 987,
+        "sha256": "fa18ce01ae9b5ec6186b881e792cc00b2eaf11e967c74abcdc54f1cf3448e58e"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest.xml",
+        "bytes": 1367,
+        "sha256": "e12848665250119f8dadafee16f5698e33a0f3cabe8613a022b9678f069fec88"
+      },
+      {
+        "path": "build/m10-worker-stage-v2/full-212-results/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+        "bytes": 6105,
+        "sha256": "8758f29efe170abd783c71d60a3b8cdc996d96ce5814301a519a6daa886ebef7"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.xml",
+        "bytes": 2174,
+        "sha256": "f9788d0b283683234546114227eb4b13dec966e33b8909cc50d5cc2909856641"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest.xml",
+        "bytes": 1880,
+        "sha256": "22898c15259bafaadee86eb07dcd632b83186a38c6e21587f0ed3d408f208b8b"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.data.media.jpegworker.JpegDecoderPolicyTest.xml",
+        "bytes": 1274,
+        "sha256": "9450db68e88c62886041259b2f2ccedabbbb65c179b3e12fc0b648c5b2d466d9"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest.xml",
+        "bytes": 2716,
+        "sha256": "faab27311736d86e8011381e1a1258bb5033e7f2c92becfd0ae666cd778a124c"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest.xml",
+        "bytes": 2073,
+        "sha256": "4b1f3375fc0c228a2b96f8f931c869d8419ed83b400f28cf572afffab86cec8e"
+      },
+      {
+        "path": "app/build/test-results/testDebugUnitTest/TEST-com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest.xml",
+        "bytes": 3596,
+        "sha256": "cfa42c6c40816b0e01f9b05f7842641ef91fd4f23f305d1ae6e4fb33221c3e4a"
+      }
+    ],
+    "stageSourceSHA256": {
+      "app/src/main/java/com/cooper/lithic/data/media/jpegstage/JpegStageV2.kt": "efcf187b21c87c939387e44b09dde84a325b29156cad479f53a405eef894c705",
+      "app/src/main/java/com/cooper/lithic/data/media/jpegstage/StageRecords.kt": "870a1dc44c61687ebf497e149c6080983412aeabfd6f6d92f0515e88fd76406f",
+      "app/src/test/java/com/cooper/lithic/data/media/jpegstage/JpegStageV2Test.kt": "3d5a23b03605a5a43c04d6beec16518582bf963d48d3eb69b38712a2a1500bd4"
+    },
+    "directorySync": "INJECTED host adapter, NOT Android directory fsync",
+    "deathBinderFDConnection": "SYNTHETIC facts in JVM; NOT Android runtime proof"
+  },
+  "tdd": {
+    "stageRed": {
+      "methods": 34,
+      "failure": 31,
+      "errors": 0,
+      "initialReason": "RED: not implemented",
+      "raw": {
+        "path": "build/m10-worker-stage-v2/stage-red.xml",
+        "bytes": 155781,
+        "sha256": "d6e6e3f03d7cdc20717f5758ee65f7b5a331042b9c0f74fd27e8431be53ca4ba"
+      }
+    },
+    "mutations": [
+      {
+        "label": "fence",
+        "methodsExecuted": 35,
+        "failures": 5,
+        "compileExitCode": 0,
+        "testExitCode": 1,
+        "raw": {
+          "path": "build/jpeg-worker-tests/mutation-red.txt",
+          "bytes": 2414,
+          "sha256": "8f896b9c04b52562da0bebbab297fe3fe4236fc855027379f7ac45d479b107df"
+        }
+      },
+      {
+        "label": "wait-admission",
+        "methodsExecuted": 59,
+        "failures": 7,
+        "compileExitCode": 0,
+        "testExitCode": 1,
+        "raw": {
+          "path": "build/jpeg-worker-tests/wait-mutation-red.txt",
+          "bytes": 3523,
+          "sha256": "4c565cf8a19c6391a194ad1cbf9a7bf8a9a75da764fcdaa0e4e118ae4a0d9611"
+        }
+      },
+      {
+        "label": "abandoned-dropped",
+        "methodsExecuted": 71,
+        "failures": 10,
+        "compileExitCode": 0,
+        "testExitCode": 1,
+        "raw": {
+          "path": "build/jpeg-worker-tests/abandoned-mutation-dropped/red.txt",
+          "bytes": 5349,
+          "sha256": "c45c0b564fd2e1266c8029a6011ae8797e27c9445855364b6b2c02e603503059"
+        }
+      },
+      {
+        "label": "abandoned-duplicate",
+        "methodsExecuted": 71,
+        "failures": 5,
+        "compileExitCode": 0,
+        "testExitCode": 1,
+        "raw": {
+          "path": "build/jpeg-worker-tests/abandoned-mutation-duplicate/red.txt",
+          "bytes": 2675,
+          "sha256": "961806a6389af656f63521f97e27dd52e4708bc94e0bedf7b105301364cffcd7"
+        }
+      },
+      {
+        "label": "abandoned-swallowed",
+        "methodsExecuted": 71,
+        "failures": 3,
+        "compileExitCode": 0,
+        "testExitCode": 1,
+        "raw": {
+          "path": "build/jpeg-worker-tests/abandoned-mutation-swallowed/red.txt",
+          "bytes": 1703,
+          "sha256": "9bbdfb4aec89edee34ba81996bc4fab504a7c5c3c74e6b0baff5d84c2a12cf46"
+        }
+      },
+      {
+        "label": "retirement",
+        "methodsExecuted": 83,
+        "failures": 5,
+        "compileExitCode": 0,
+        "testExitCode": 1,
+        "raw": {
+          "path": "build/jpeg-worker-tests/retirement-mutation/red.txt",
+          "bytes": 2412,
+          "sha256": "d8b93ab2f08e8b2cb6c38ee1b60bf8cd2cd03fda40decec1b4dd081bc7e671fc"
+        }
+      }
+    ],
+    "compilerPrerequisites": "Missing-class/missing-build-properties errors are NOT behavior RED"
+  },
+  "hostPython": {
+    "uniqueMethods": 9,
+    "pass": 9,
+    "log": "assembly-tests.log"
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 23,
+    "newSuppressions": false,
+    "reportSHA256": "3d0dd36d5c66e920058363a41cac0e3963876e6ea41f0f9128751ac6df6801f3"
+  },
+  "build": {
+    "final": "PASS",
+    "command": ":app:testDebugUnitTest --tests com.cooper.lithic.data.media.jpegworker.* :app:lintDebug :app:assembleDebug :app:compileDebugAndroidTestKotlin",
+    "properties": "Three fixed paths documented in app/src/main/cpp/README.md; no new downloads",
+    "log": "final-build.log",
+    "firstFullFailure": "initial-full-run.log",
+    "toolchain": {
+      "jdk": "17.0.20.1+1",
+      "gradle": "8.14.3",
+      "agp": "8.13.2",
+      "kotlin": "2.3.10",
+      "ndk": "28.2.13676358",
+      "buildTools": "36.0.0"
+    }
+  },
+  "apk": {
+    "apk": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-stage-v2\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 13851571,
+    "sha256": "9100b0b27d283ae83a826b9020ce160c66b3f7a57aed38698c62d8317a0741f3",
+    "applicationId": "com.cooper.lithic.debug",
+    "versionCode": 8,
+    "versionName": "0.1.0-m10-debug",
+    "permissions": [
+      "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "mergedManifest": "app\\build\\intermediates\\merged_manifests\\debug\\processDebugManifest\\AndroidManifest.xml",
+    "backupConfig": "allowBackup=false; legacy/cloud/device-transfer exclude all nine domains",
+    "versions": {
+      "agp": "8.13.2",
+      "kotlin": "2.3.10",
+      "compose-bom": "2025.11.01",
+      "activity-compose": "1.12.4",
+      "navigation3": "1.0.1",
+      "serialization": "1.9.0",
+      "startup": "1.1.1",
+      "junit": "4.13.2",
+      "room": "2.8.5",
+      "ksp": "2.3.6",
+      "datastore": "1.2.1",
+      "coroutines": "1.10.2",
+      "androidx-test": "1.7.0",
+      "androidx-test-junit": "1.3.0",
+      "compose-test": "1.9.5",
+      "lifecycle": "2.10.0",
+      "espresso": "3.7.0"
+    },
+    "wrapperJarSha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+    "scope": "Artifact/config checks only; signature, install and offline launch require separate evidence",
+    "nativeLibraries": [
+      {
+        "path": "lib/arm64-v8a/libstrictjpeg_candidate.so",
+        "bytes": 284136,
+        "sha256": "44cc13c6921a0bda3a2e298eb232c1ad0f0863c2ab33cbf8e74807a65d2ea0de"
+      },
+      {
+        "path": "lib/armeabi-v7a/libstrictjpeg_candidate.so",
+        "bytes": 218760,
+        "sha256": "f212d2b51448f919bbbf48b30a68a7f795261fe5ebdef72e919e1ea2c45faabd"
+      },
+      {
+        "path": "lib/x86/libstrictjpeg_candidate.so",
+        "bytes": 328884,
+        "sha256": "8531d0a92fd4cf407660796cc310dd4350e94a538be44a45be17c57bef644d97"
+      },
+      {
+        "path": "lib/x86_64/libstrictjpeg_candidate.so",
+        "bytes": 342256,
+        "sha256": "25b0fa227d1380beb995a7d360f4c29964e72d8d288b62b3aa2ac7cfbb37a116"
+      }
+    ],
+    "licenseAssets": [
+      {
+        "path": "assets/third_party/libjpeg-turbo-3.2.0/LICENSE.md",
+        "bytes": 6077,
+        "sha256": "ba6bceebcba0fdd35488477c2cca8c4632ce82c74dbfbc87d886ce6fc4433579"
+      },
+      {
+        "path": "assets/third_party/libjpeg-turbo-3.2.0/LITHIC_CHANGES.txt",
+        "bytes": 532,
+        "sha256": "c727e8ea660b395f5538f4dc3c766bf411982b83a3e4f2e3e2981c684efb59e0"
+      },
+      {
+        "path": "assets/third_party/libjpeg-turbo-3.2.0/README.ijg",
+        "bytes": 12799,
+        "sha256": "75815e3bf6484201a3c3d17a1bbf10f2e8e3237f84df10a2357ea896db2a81d6"
+      }
+    ],
+    "worker": {
+      "name": "com.cooper.lithic.data.media.jpegworker.JpegWorkerService",
+      "exported": false,
+      "process": ":jpeg_worker",
+      "sameUIDResponsibilityBoundary": true,
+      "hostileNativeSandbox": false
+    },
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "signature": "v2 verified",
+    "installed": "NOT_RUN"
+  },
+  "inputCoverage": {
+    "files": 174,
+    "selection": "All regular app/src files + app/build.gradle.kts + version catalog/wrapper/root build/settings + native assembly script; sorted POSIX relative path + NUL + SHA256 digest bytes",
+    "aggregateRawSHA256": "65790000fa8471702cc4cf0d52492a9f17a594a02f672dc04e4dea2cc89ca3a9",
+    "aggregateTextLFNormalizedSHA256": "263ed43c8582f28b967014857f2cec2202db217edf57fd6686d66f275b172e86",
+    "note": "Raw hashes describe actual Windows inputs; normalized hash permits text CRLF/LF Git checkout differences. Not an APK bit-reproducibility claim."
+  },
+  "native": {
+    "version": "3.2.0",
+    "newNativeStressRuns": 0,
+    "newNativeLibraryCompiles": 0,
+    "fourABIExactSourceAndCache": "BUILD_RESULTS.json",
+    "stripAndELF": "STRIPPED_NATIVE_AUDIT.json",
+    "api26AtomicOpenFlags": "FD_FLAGS_AUDIT.json",
+    "historicalCI": "https://github.com/cc7279694-debug/property/actions/runs/39109960477",
+    "freshCI": "NOT_RUN"
+  },
+  "android": {
+    "executed": 0,
+    "newCompatibilityMethods": 4,
+    "compatibilitySourceCompiled": "PASS",
+    "runtime": "NOT_RUN",
+    "originalThreeJPEG": "HISTORICAL_FAIL_RETAINED; NOT_RUN in this candidate",
+    "jpegAssertionFiles": [
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegIntegrityTest.kt",
+        "bytes": 8138,
+        "sha256": "8f5c92b94e14455435cd20731c30fcdd2ae3313ec7e8a94546297a4bf2e8ebb9"
+      },
+      {
+        "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegOldCoverProtectionTest.kt",
+        "bytes": 12390,
+        "sha256": "a554388458d0c46636584d81858c503daf912ede74175ac04d01154697db129d"
+      }
+    ],
+    "adbCommands": 0,
+    "avdOperations": 0,
+    "installs": 0,
+    "appStarts": 0,
+    "H2C2": "NOT_ACCESSED; private byte comparison NOT_RUN"
+  },
+  "remainingGates": [
+    "Safe independent Android environment and explicit device-operation authorization",
+    "Actual Binder/UID/start/FD/connection/process death/lease evidence",
+    "Cancellation, staging I/O worst response, timeout/native crash/OOM and interrupted recovery/GC",
+    "Original three JPEG assertions, healthy images, project/subscription old-cover facts, PNG and business regression",
+    "True device/native/RSS budget; 512MiB is accounted requests only",
+    "Long-lived all-stage admission scan performance"
+  ],
+  "formalState": {
+    "M10": "PENDING; three JPEG FAIL retained",
+    "UI-C1": "ACCEPTED/FROZEN PASS WITH NOTES",
+    "R3_B1": "BLOCKED",
+    "M11": "NOT_AUTHORIZED",
+    "notes": "D2A-N01..N05, A1-N01..N04 and all historical FAIL/UNKNOWN/NOT_RUN retained"
+  },
+  "localRawEvidencePreserved": [
+    {
+      "path": "build/m10-worker-stage-v2/stage-red.xml",
+      "bytes": 155781,
+      "sha256": "d6e6e3f03d7cdc20717f5758ee65f7b5a331042b9c0f74fd27e8431be53ca4ba"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/stage-windows-filekey-failure.xml",
+      "bytes": 267516,
+      "sha256": "4981bea5be3219b896b65918d2e10df39d85af69970457fc6680a5d38b2d8590"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/stage-windows-lock-read-failure.xml",
+      "bytes": 272527,
+      "sha256": "ea9062f23d1a9ee5725b4f2cdc12e2c83f381ef9d1e2d38d3e183dbfc18e2918"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/stage-green-63.xml",
+      "bytes": 9646,
+      "sha256": "7c72973bcec3d940d18f302dd7c4db751415abce88b2e5f9d12601e1a16cd2d0"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/stage-red.log",
+      "bytes": 1061,
+      "sha256": "f8a9c64f4a05e921750c775a11b4c402338296a833f37f08dfcfc8276b96f753"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/green-attempt01.log",
+      "bytes": 14150,
+      "sha256": "6cd142251885fbb1b47b876eae4ed4b576616ce1ff2778f1986a82313dd4c080"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/green-attempt02.log",
+      "bytes": 14358,
+      "sha256": "20a4e4681f6a766f8bfb519f57ed5868f318922e72b2c857472b7193740fd704"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/stage-green-attempt03.log",
+      "bytes": 2242,
+      "sha256": "ba9a8958f8a80edeef2f34d93389a82e492035881c27a614f4d058f9c43649fe"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/final-verification.log",
+      "bytes": 6931,
+      "sha256": "563470dede75c13fbeedbf04df8093fd0d558cef76762899beaab44bb4c1485e"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/final-repair-verification.log",
+      "bytes": 10200,
+      "sha256": "325919ec87760c5ef1775b6e2a9376e3c0f27c48e37dcd44de698c5b0cdbc0e8"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/final-frozen-verification.log",
+      "bytes": 4151,
+      "sha256": "39b6397c8ec23a4c77b3be51240583f23007036cf5603479a6986590909f7bb0"
+    },
+    {
+      "path": "build/m10-worker-stage-v2/lint-initial-failure.xml",
+      "bytes": 30926,
+      "sha256": "39280a134b300861eae9ec5398d0effe4db5e27de78207eaadbc7384a6042ebd"
+    }
+  ],
+  "committedEvidence": [
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/apk-signature.txt",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/assembly-tests.log",
+      "bytes": 1262,
+      "sha256": "be7768a53d840a1ccfaf4b6b5c314717e6a339456dcaa86c4adbeb8aedc416c8"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/BUILD_RESULTS.json",
+      "bytes": 1379,
+      "sha256": "c3cbccf7de09dfb0d2ef00d250da9fd169f47c9bc71ff644f7fc08accb5324f5"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/FD_FLAGS_AUDIT.json",
+      "bytes": 11659,
+      "sha256": "5ee2aba5436d96566f22547b22c28b725185748e5780caa491339d60ba8d94b3"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/final-build.log",
+      "bytes": 4151,
+      "sha256": "39b6397c8ec23a4c77b3be51240583f23007036cf5603479a6986590909f7bb0"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/initial-full-run.log",
+      "bytes": 6931,
+      "sha256": "563470dede75c13fbeedbf04df8093fd0d558cef76762899beaab44bb4c1485e"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/jvm-results.xml",
+      "bytes": 39216,
+      "sha256": "f43a8d3ace30a98f8a30d05eb56064b5822ceab7a1e9900b537337dce47281a6"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/stage-red.log",
+      "bytes": 7998,
+      "sha256": "e2e9d4765c971cc939b731c289247bcf15dbae0efe24c309f7476cfced50da57"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/STRIPPED_NATIVE_AUDIT.json",
+      "bytes": 16871,
+      "sha256": "50211c15810bba9c9910be0cdc2a528ffa2081073f5a846d3c5287d19f74fd86"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/test_build_inputs.py",
+      "bytes": 2477,
+      "sha256": "df7c4d4616310e9419dd7081280ba501e63f3cee8d914426c04dc48764a93db2"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/worker-abandoned-red.log",
+      "bytes": 5349,
+      "sha256": "c45c0b564fd2e1266c8029a6011ae8797e27c9445855364b6b2c02e603503059"
+    },
+    {
+      "path": "docs/research/m10-jpeg-worker-stage-v2/worker-retirement-red.log",
+      "bytes": 2412,
+      "sha256": "d8b93ab2f08e8b2cb6c38ee1b60bf8cd2cd03fda40decec1b4dd081bc7e671fc"
+    }
+  ]
+}

@@ -6,7 +6,10 @@ import com.cooper.lithic.data.local.ProjectMoneyEventEntity
 import com.cooper.lithic.data.repository.SubscriptionFacts
 import java.time.Instant
 
-enum class MediaFailureKind { PATH, UNSUPPORTED, INVALID_IMAGE, TOO_LARGE, IO, DATABASE, CONFLICT, NOT_FOUND, IN_USE }
+enum class MediaFailureKind {
+    PATH, UNSUPPORTED, INVALID_IMAGE, TOO_LARGE, IO, DATABASE, CONFLICT, NOT_FOUND, IN_USE,
+    RESOURCE_REJECTED, TIMEOUT, NATIVE_CRASH, LOAD_ERROR, RESULT_UNKNOWN,
+}
 
 sealed interface MediaResult<out T> {
     data class Success<T>(val value: T) : MediaResult<T>

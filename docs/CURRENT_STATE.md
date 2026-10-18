@@ -1,8 +1,15 @@
 # 当前项目状态
 
-状态日期：2026-10-18（Asia/Shanghai；集中 JPEG 候选 HOST_STRESS_PASS，真实接入 BLOCKED；E01 全量资源覆盖仍 NOT_PROVEN）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-18（Asia/Shanghai；Worker / Stage V2 接入候选离线/构建通过，Android安全门禁未验证，等待独立审查）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10 JPEG Worker / Stage V2 candidate — BLOCKED_ANDROID_GATES / WAITING_REVIEW**：当前用户集中授权从 `717d541578ebf761e2e1c70a842ca8b7e5dab5b2` 建立 `codex/m10-jpeg-worker-stage-v2-candidate`，独立 worktree `E:/CODEX/.codex/worktrees/lithic-jpeg-stage-v2/砺石新APP`。已实现私有V2 owner/源身份/pin/撤销/凭据/恢复准入、候选非导出Worker及主进程接入；PNG/v1和旧封面保守保留，Room/schema/备份格式/冻结算法/UI不改。只在当前候选分支构建、提交推送，独立验收前不合并或发布。
+- **本轮真实验证**：236唯一JVM PASS＝原86＋Stage67＋Worker83；完整212项后最终Worker83定向回归，重复执行不叠加。另9项Python PASS；Lint0错误/23警告、Debug构建与Android测试源码编译PASS。首次Lint3错误与Windows两个中间测试失败原件保留；API26原子FD标志经四ABI实际预处理核验。固定3.2.0四ABI缓存/源码/strip及最终APK内SHA、许可证、非导出Worker/权限/原证书核验通过，未重跑宿主压测。APK13,851,571字节，SHA `9100b0b27d283ae83a826b9020ce160c66b3f7a57aed38698c62d8317a0741f3`，仅当前忽略构建目录保留，未安装/发布。
+- **未验证/保护边界**：源流阻塞、真实绑定/FD/死亡/取消/恢复、Android目录fsync及手机内存安全仍NOT_RUN/NOT_PROVEN；本轮没有安全独立设备操作许可，AVD/ADB/安装/启动/H2/C2访问0。合成终结事实及Windows真实文件测试不冒充Android证明；UNKNOWN保pin/禁止叠加，弃置结果只在完整终结证据成立时收口。原v1 JPEG不补造严格源凭据、旧封面保守保留；stage全量准入性能与未知cache清理仍需验证。[结果/SHA](research/m10-jpeg-worker-stage-v2/RESULTS.json)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-WORKER-STAGE-V2.md)。
+- **正式状态不变**：M10 PENDING/原三JPEG FAIL（本轮NOT_RUN）；R3/B1完整生命周期BLOCKED；UI-C1 ACCEPTED/FROZEN — PASS WITH NOTES；M11 NOT_AUTHORIZED。D2A-N01～N05、A1-N01～N04及全部历史NOTE/FAIL/UNKNOWN保留。H2旧DELIVERY_UNKNOWN/pin=true、C2保留只继承历史，未重新观察。见[集中报告](research/M10_JPEG_WORKER_STAGE_V2_REPORT.md)。
+
+以下为前一集中候选及更早研究的历史口径，不再作为当前分支“未接入App”的描述：
 
 - **M10 JPEG 集中候选 — BLOCKED / WAITING_REVIEW**：用户授权同任务集中开发；从 `2d0a60aca9020fccfca192091b421412f2369316` 创建 `codex/m10-jpeg-accelerated-candidate`，独立 worktree `E:/CODEX/.codex/worktrees/lithic-jpeg-candidate/砺石新APP`。严格 FD 核心、失败分类、计费/释放验证和隔离 JNI 组件已实现；未接入 App、未改持久协议、未生成 APK。正式 M10 app 与 `41596820145dc4a3fa6d041728a59540d828108a` 差异为空。
 - **本轮真实证据**：代码 `791d44e8ee2b3636031a1073c3df690585309853` 的[最终 CI](https://github.com/cc7279694-debug/property/actions/runs/39109960477) PASS；GCC无sanitizer 134次＋Clang ASan/UBSan 134次，共268次 probe（含三类40MP、每点 fail-at/from、7阶段故障及格式边界），原12项分配测试各657断言、40个FD用例各882断言；8次 Linux JNI 调用及载入错误检查通过。锁定健康图 ACCEPT、缺损图 code117 严格拒绝。8项 Python 导出审计 GREEN；分类和审计 RED 均保留。NDK28.2/CMake3.22.1 API26 四 ABI 编译/ELF重审通过，未在 Android 执行；不是32位实际解码证据。40MP444 GCC 计费峰值240,265,637B、进程RSS236,212KiB，不是堆/RSS/手机总cap。实验512MiB请求预算未变成产品限制。

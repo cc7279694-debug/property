@@ -1,0 +1,43 @@
+JUnit version 4.13.2
+........................................................................E..E.E.......E.E
+Time: 0.107
+There were 5 failures:
+1) binderDeathAloneIsInsufficient(com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest.binderDeathAloneIsInsufficient(JpegRetirementGateTest.java:12)
+2) heldGuardBlocksPreparation(com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest.heldGuardBlocksPreparation(JpegRetirementGateTest.java:14)
+3) unbindUnknownNeverAllowsRetire(com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest.unbindUnknownNeverAllowsRetire(JpegRetirementGateTest.java:6)
+4) unbindIsNotDeathProof(com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest.unbindIsNotDeathProof(JpegRetirementGateTest.java:11)
+5) processAbsentAloneIsInsufficient(com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest.processAbsentAloneIsInsufficient(JpegRetirementGateTest.java:13)
+
+FAILURES!!!
+Tests run: 83,  Failures: 5
+

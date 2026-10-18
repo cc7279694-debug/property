@@ -11,6 +11,11 @@
         android:roundIcon="@drawable/ic_launcher_placeholder"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lithic">
+        <!-- Candidate compute process: no exported entry or second business owner. -->
+        <service
+            android:name=".data.media.jpegworker.JpegWorkerService"
+            android:exported="false"
+            android:process=":jpeg_worker" />
         <!-- Use system fonts only; do not auto-request downloadable Emoji fonts. -->
         <provider
             android:name="androidx.startup.InitializationProvider"

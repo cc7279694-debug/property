@@ -11,6 +11,8 @@ android {
     namespace = "com.cooper.lithic"
     compileSdk = 36
     buildToolsVersion = "36.0.0"
+    // Reuse the already installed/research-verified toolchain; no SDK auto-upgrade.
+    ndkVersion = "28.2.13676358"
 
     defaultConfig {
         applicationId = "com.cooper.lithic"
@@ -38,6 +40,33 @@ android {
     }
     // Exact exported schema fixtures are test-only assets; never packaged in the app APK.
     sourceSets.getByName("androidTest").assets.srcDir("$projectDir/schemas")
+    // Candidate native libraries/notices are verified from the locked source build.
+    // No binary, SDK path or downloaded dependency is committed to this repository.
+    sourceSets.getByName("main").jniLibs.srcDir(layout.buildDirectory.dir("generated/m10StrictJpeg/jniLibs"))
+    sourceSets.getByName("main").assets.srcDir(layout.buildDirectory.dir("generated/m10StrictJpeg/assets"))
+}
+
+val prepareStrictJpegCandidateNative by tasks.registering(Exec::class) {
+    group = "build"
+    description = "Verify the locked four-ABI JPEG candidate and generate JNI/license packaging inputs"
+    // Every build checks the source/binary/ELF correspondence, including local caches.
+    outputs.upToDateWhen { false }
+    doFirst {
+        fun required(name: String): String = providers.gradleProperty(name).orNull
+            ?: throw GradleException("Missing -P$name; see app/src/main/cpp/README.md")
+        commandLine(
+            providers.gradleProperty("strictJpegPython").getOrElse("python"), "-B",
+            rootProject.file("scripts/build_m10_worker_candidate.py").absolutePath,
+            "--sdk", required("strictJpegSdk"),
+            "--archive", required("strictJpegArchive"),
+            "--native-root", required("strictJpegNativeRoot"),
+            "--output", layout.buildDirectory.dir("generated/m10StrictJpeg").get().asFile.absolutePath,
+        )
+    }
+}
+
+tasks.named("preBuild") {
+    dependsOn(prepareStrictJpegCandidateNative)
 }
 
 kotlin {
