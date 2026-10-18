@@ -1,0 +1,40 @@
+name: M10 E01 native host research
+
+on:
+  push:
+    branches: [codex/m10-r2-e01-host]
+    paths:
+      - .github/workflows/m10-e01-native.yml
+      - docs/research/m10-jpeg-e01-native/*.c
+      - docs/research/m10-jpeg-e01-native/*.h
+      - docs/research/m10-jpeg-e01-native/run_ci.py
+
+permissions:
+  contents: read
+
+jobs:
+  native-host:
+    if: github.repository == 'cc7279694-debug/property' && github.ref == 'refs/heads/codex/m10-r2-e01-host'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      # Public source only: no token, credentials, third-party action or upload.
+      - name: Fetch exact research commit without credentials
+        env:
+          E01_SHA: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$E01_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git init --quiet research
+          cd research
+          git remote add origin https://github.com/cc7279694-debug/property.git
+          GIT_TERMINAL_PROMPT=0 git -c credential.helper= fetch --no-tags --depth=1 origin "$E01_SHA"
+          git checkout --quiet --detach FETCH_HEAD
+          test "$(git rev-parse HEAD)" = "$E01_SHA"
+      - name: Fixed source, real native RED and GREEN, sanitizer
+        working-directory: research
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -B docs/research/m10-jpeg-e01-native/run_ci.py
