@@ -1,8 +1,13 @@
 # 当前项目状态
 
-状态日期：2026-10-18（Asia/Shanghai；M10 R2-E01转回宿主资源研究，32项Python测试PASS；native验证缺宿主CRT，BLOCKED）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-18（Asia/Shanghai；E01临时Linux native CI限定验证PASS；全量资源覆盖仍NOT_PROVEN）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10 E01 native CI — HOST_LIMITED_PASS / WAITING_REVIEW**：从`dafb7bc031bd67f44ca7d62e251785f8905d0ab7`继续`codex/m10-r2-e01-host`；用户授权Ubuntu24.04临时runner，Actions实核启用，公开仓库精确commit匿名fetch、contents:read、只触发本研究分支代码push。已测试代码`a4075344cc667c1f6795442f883cde75f01d2ea8`，[首次CI](https://github.com/cc7279694-debug/property/actions/runs/39105247179)41秒成功，固定官方3.2.0归档与两JPEG实际SHA通过。没有安装本机工具/下载镜像或AVD/ADB/APK/运行现场操作。
+- **实际native结果与限制**：GCC13.3及Clang18.1.3 ASan/UBSan/LSan下12唯一C测试各657断言PASS（24次方法执行），显式mutation RED各6断言失败保留；共114次probe（每构建57）覆盖13步正常轨迹的fail-at/from、首次manager/半创建destroy、预算边界；所有实际清理live/blocks/badFrees归零、已取得FD关闭/mem=NULL。健康图256行finish，缺损图78行出现1次警告、代码117并严格拒绝。峰值46,382B只代表该小样本计费请求，不是总内存/手机cap。40MP/progressive/32位/Android、所有路径、CPU取消、真实系统OOM等仍NOT_RUN，E01全量NOT_PROVEN。M10 PENDING/三JPEG FAIL、UI-C1 FROZEN、M11 NOT_AUTHORIZED、H2/C2、R3 BLOCKED及全部历史NOTE/UNKNOWN不变。[报告](research/m10-jpeg-e01-native/README.md)、[checkpoint](checkpoints/2026-10-18-M10-E01-NATIVE-CI.md)。提交后停止等待ChatGPT限定验收，不接入生产。
+
+以下Windows前置研究与更早交付保留历史，其缺CRT事实未改写：
 
 - **M10 R2-E01 HOST — PARTIAL / BLOCKED_HOST_NATIVE_TOOLCHAIN**：本轮用户切回产品JPEG资源问题，仅独立研究代码/宿主测试；新分支`codex/m10-r2-e01-host`、独立worktree `E:/CODEX/.codex/worktrees/lithic-e01/砺石新APP`，基于累计研究`bc3b4e3ce533246ccd1a06f738c4a871d3f263d1`，正式M10基线仍`41596820145dc4a3fa6d041728a59540d828108a`。新增只读输入/SOF/系数payload模型，32唯一Python方法RED/GREEN；16项输入及8源码原tar成员核对一致，复用5旧样本，未重复decoder实验。系数/行指针只属CALCULATED，不能作总native预算、图片完整性或native释放PASS。
 - **E01具体阻塞与边界**：一次Windows host最小malloc编译在`vcruntime.h`缺失处exit1，无executable；真实native分配覆盖、逐点失败释放及32位/sanitizer仍NOT_RUN。已核实创建前预算接缝、小池slop失败重试及ICC直接malloc范围，未编写未经执行验证的allocator、未安装/下载工具。没有AVD/ADB/APK操作或H2/C2现场访问，没有产品/Worker/JNI/UI-C1/旧断言修改。M10 PENDING/三JPEG FAIL、R3 BLOCKED、全部NOTE/UNKNOWN、UI-C1 FROZEN、M11 NOT_AUTHORIZED不变。只推研究分支后停止，等待ChatGPT限定审查；[代码/测试/阻塞证据](research/m10-jpeg-e01-host/README.md)、[checkpoint](checkpoints/2026-10-18-M10-R2-E01-HOST.md)。
