@@ -1,0 +1,135 @@
+[
+  {
+    "label": "current-head",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP",
+    "startedUtc": "2026-10-18T02:39:43.394430+00:00",
+    "environmentOverride": {
+      "JAVA_HOME": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1"
+    },
+    "exitCode": 0,
+    "endedUtc": "2026-10-18T02:39:43.494777+00:00",
+    "stdout": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\current-head.stdout.log",
+      "bytes": 41,
+      "sha256": "027fdd248473429ecd63f187a53d66bb77ec28a51adc37d5ae8d5b4be0838e43"
+    },
+    "stderr": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\current-head.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "a1-a2-research-source-diff",
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "971f742452422ce6b31462123c351d112eb48101",
+      "349264371b8b9849dfe83a5ddee74f204129d4ad",
+      "--",
+      "docs/research/m10-jpeg-r3/host"
+    ],
+    "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP",
+    "startedUtc": "2026-10-18T02:39:43.497792+00:00",
+    "environmentOverride": {
+      "JAVA_HOME": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1"
+    },
+    "exitCode": 0,
+    "endedUtc": "2026-10-18T02:39:43.644760+00:00",
+    "stdout": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\a1-a2-research-source-diff.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\a1-a2-research-source-diff.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "probe-signature",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\\u783a\u77f3\u65b0APP\\build\\a1-artifacts\\20261017T142151.230105Z\\probe-debug.apk"
+    ],
+    "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP",
+    "startedUtc": "2026-10-18T02:39:43.669914+00:00",
+    "environmentOverride": {
+      "JAVA_HOME": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1"
+    },
+    "exitCode": 0,
+    "endedUtc": "2026-10-18T02:39:44.255922+00:00",
+    "stdout": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\probe-signature.stdout.log",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    "stderr": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\probe-signature.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "probe-manifest",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "manifest",
+      "print",
+      "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\\u783a\u77f3\u65b0APP\\build\\a1-artifacts\\20261017T142151.230105Z\\probe-debug.apk"
+    ],
+    "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP",
+    "startedUtc": "2026-10-18T02:39:44.258924+00:00",
+    "environmentOverride": {
+      "JAVA_HOME": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1"
+    },
+    "exitCode": 0,
+    "endedUtc": "2026-10-18T02:39:45.801764+00:00",
+    "stdout": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\probe-manifest.stdout.log",
+      "bytes": 1420,
+      "sha256": "dc045c0757ab0a273f05497fcc5b13ad0c3b16f69b7400bd6cc8a2a68eb84537"
+    },
+    "stderr": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\probe-manifest.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "probe-badging",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "badging",
+      "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\\u783a\u77f3\u65b0APP\\build\\a1-artifacts\\20261017T142151.230105Z\\probe-debug.apk"
+    ],
+    "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP",
+    "startedUtc": "2026-10-18T02:39:45.805760+00:00",
+    "environmentOverride": {
+      "JAVA_HOME": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1"
+    },
+    "exitCode": 0,
+    "endedUtc": "2026-10-18T02:39:45.880602+00:00",
+    "stdout": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\probe-badging.stdout.log",
+      "bytes": 715,
+      "sha256": "cadce42a1b6802b56010376c4ae3ed9028098c81f9d2248ea70d35cfe2c3f273"
+    },
+    "stderr": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\apk-audit\\probe-badging.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]

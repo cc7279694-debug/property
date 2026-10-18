@@ -1,0 +1,178 @@
+{
+  "startedUtc": "2026-10-18T02:38:22.533812+00:00",
+  "endedUtc": "2026-10-18T02:38:23.744105+00:00",
+  "sourceCommit": "349264371b8b9849dfe83a5ddee74f204129d4ad",
+  "status": "BLOCKED_NEW_LICENSE",
+  "reason": "Required canonical license hash is not present in existing acceptance records",
+  "package": "system-images;android-26;google_apis;x86_64",
+  "revision": 16,
+  "channel": "channel-0",
+  "officialMetadata": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\official-metadata-20261018T023649.606169Z\\sys-img2-3.xml",
+    "bytes": 237880,
+    "sha256": "ad71946ba2d002f86d9ece1121b74aec494b420aa6b8fdac83fa5ce52b51dcb4"
+  },
+  "archive": {
+    "url": "https://dl.google.com/android/repository/sys-img/google_apis/x86_64-26_r16.zip",
+    "declaredBytes": 980740438,
+    "declaredSha1": "0eb13cc91cf164b617eaf85e4030289cb18189de",
+    "declaredSha1IsNotMeasured": true,
+    "head": {
+      "method": "HEAD",
+      "url": "https://dl.google.com/android/repository/sys-img/google_apis/x86_64-26_r16.zip",
+      "imageBodyDownloaded": false,
+      "error": "URLError: <urlopen error [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1000)>"
+    }
+  },
+  "budget": {
+    "bytes": 3221225472,
+    "archiveWithinBudget": true,
+    "archiveMiB": 935.307,
+    "installedImageAndAvdPeak": "NOT_RUN",
+    "fullInstructionBudgetDefinition": "UNAVAILABLE_CONTENT_REFERENCE_ONLY"
+  },
+  "freeSpace": {
+    "C:/": 16216694784,
+    "E:/": 67942899712
+  },
+  "license": {
+    "id": "android-sdk-license",
+    "datePrintedInText": "January 16, 2019",
+    "canonicalSha1": "9cb2a03b2d1e90fca50530f79975338d0d278f2c",
+    "canonicalizer": "Actual installed SDK TrimStringAdapter.unmarshal + UTF8 SHA1",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+      "--class-path",
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\lib\\repository\\repository-core.jar;C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\lib\\external\\jakarta\\xml\\bind\\jakarta.xml.bind-api\\2.3.2\\jakarta.xml.bind-api-2.3.2.jar",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\LicenseCanonical.java",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\official-metadata-20261018T023649.606169Z\\android-sdk-license.txt"
+    ],
+    "exitCode": 0,
+    "stdout": {
+      "bytes": 42,
+      "sha256": "002e8b293c27a8fc76cd3dcee55a229389b30364250ea905aa2e894f20a82481"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "acceptanceRecords": [
+      {
+        "path": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\licenses\\android-sdk-license",
+        "exists": true,
+        "file": {
+          "bytes": 42,
+          "sha256": "70fd2713ca385fd6b14c1d5577ce8349996699186a3a216e9643a09098c26dca"
+        },
+        "acceptedHashes": [
+          "24333f8a63b6825ea9c5514f83c2829b004d1fee"
+        ],
+        "matchesRequiredCanonicalHash": false,
+        "unchanged": true
+      },
+      {
+        "path": "C:\\Users\\CDD\\AppData\\Local\\Android\\Sdk\\licenses\\android-sdk-license",
+        "exists": true,
+        "file": {
+          "bytes": 42,
+          "sha256": "70fd2713ca385fd6b14c1d5577ce8349996699186a3a216e9643a09098c26dca"
+        },
+        "acceptedHashes": [
+          "24333f8a63b6825ea9c5514f83c2829b004d1fee"
+        ],
+        "matchesRequiredCanonicalHash": false,
+        "unchanged": true
+      }
+    ],
+    "acceptedByThisTask": false,
+    "researchSdkLicenseFileExists": false
+  },
+  "dedicatedEnvironment": {
+    "logicalRoot": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26",
+    "resolvedRoot": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26",
+    "totalFileBytes": 6614571,
+    "inventory": [
+      {
+        "path": "home",
+        "directory": true
+      },
+      {
+        "path": "home\\bin",
+        "directory": true
+      },
+      {
+        "path": "sdk",
+        "directory": true
+      },
+      {
+        "path": "sdk\\.sdk",
+        "directory": true
+      },
+      {
+        "path": "sdk\\.sdk\\arch",
+        "directory": true
+      },
+      {
+        "path": "sdk\\.sdk\\objects",
+        "directory": true
+      },
+      {
+        "path": "sdk\\.sdk\\objects\\92a5652d382a18e89c4881ec57041fc7d885ca80",
+        "directory": false,
+        "bytes": 2,
+        "sha256": "08da7c45cb204377e7e42249cda5713fa865116ddbb4cb5a1949b2e5b438a6ab"
+      },
+      {
+        "path": "sdk\\.sdk\\objects\\e20769e5c3e645fc048877ef7c98e6a46ad0d548",
+        "directory": false,
+        "bytes": 429527,
+        "sha256": "5e75641cad805e0e3e62b7c741aa960421b60bd064434df71642b1df131fd06e"
+      },
+      {
+        "path": "sdk\\.sdk\\refs",
+        "directory": true
+      },
+      {
+        "path": "sdk\\.sdk\\refs\\head",
+        "directory": false,
+        "bytes": 41,
+        "sha256": "a1719dfd305aa6b41ea2440377344653149c24c89077082032500f6c87974679"
+      },
+      {
+        "path": "sdk\\.sdk\\refs\\remote",
+        "directory": false,
+        "bytes": 41,
+        "sha256": "b2c1da4e589c46ca2ad263d2b6cb350fd0277e728a59cf6ef503abbfd4e2a1f2"
+      },
+      {
+        "path": "sdk\\.sdk\\unzips",
+        "directory": true
+      },
+      {
+        "path": "temp",
+        "directory": true
+      },
+      {
+        "path": "temp\\hsperfdata_CDD",
+        "directory": true
+      },
+      {
+        "path": "temp\\lib-downloader_jni-12306496252185475872.dll",
+        "directory": false,
+        "bytes": 3092480,
+        "sha256": "6d0233a4dbe7156bb2ec5539a1004e8acc136e50cdfe381531570ff8bb324b0a"
+      },
+      {
+        "path": "temp\\lib-downloader_jni-2689060326447343660.dll",
+        "directory": false,
+        "bytes": 3092480,
+        "sha256": "6d0233a4dbe7156bb2ec5539a1004e8acc136e50cdfe381531570ff8bb324b0a"
+      }
+    ]
+  },
+  "imageInstallInvoked": false,
+  "avdCreatedOrStarted": false,
+  "adbInvoked": false,
+  "apkInstalledOrLaunched": false,
+  "originalApi36OrH2Accessed": false
+}

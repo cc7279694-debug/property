@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "startedUtc": "2026-10-18T02:57:54.310430+00:00",
+  "adbInvoked": false,
+  "avdCreatedOrStarted": false,
+  "checkedParents": [
+    "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64",
+    "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis",
+    "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26",
+    "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images",
+    "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk",
+    "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26"
+  ],
+  "generatedPackageMetadata": "PASS",
+  "targetedSdkWriters": [],
+  "writerQuery": {
+    "argv": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "$r=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(java|javaw|android-cli|android)\\.exe$' -and $_.CommandLine -like '*lithic-a2r-api26*'} | Select-Object ProcessId,ParentProcessId,Name,CommandLine); ConvertTo-Json -InputObject $r -Depth 4 -Compress"
+    ],
+    "exitCode": 0,
+    "stdoutBytes": 4,
+    "stdoutSha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+  },
+  "centralDirectoryNoUnknownEntryTypes": true,
+  "imagePostconditionAvailable": true,
+  "installerExitStillFailure": true,
+  "endedUtc": "2026-10-18T02:57:55.373960+00:00"
+}

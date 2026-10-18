@@ -1,0 +1,15 @@
+package: name='com.cooper.lithic.m10r3.probe' versionCode='1' versionName='r3-research' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'26'
+targetSdkVersion:'36'
+application: label='LITHIC R3 RESEARCH ONLY' icon=''
+application-debuggable
+launchable-activity: name='com.cooper.lithic.m10r3.probe.ProbeActivity'  label='' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+other-services
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales:
+densities:

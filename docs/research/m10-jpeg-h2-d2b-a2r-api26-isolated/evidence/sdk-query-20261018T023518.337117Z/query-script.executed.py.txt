@@ -1,0 +1,60 @@
+"""A2-R: official SDK query only; never installs, accepts licenses or uses ADB."""
+from pathlib import Path
+import datetime
+import hashlib
+import json
+import os
+import subprocess
+import sys
+
+HERE = Path(__file__).resolve().parent
+ENV_ROOT = Path('E:/CODEX/.codex/research-env/lithic-a2r-api26')
+SDK = ENV_ROOT / 'sdk'
+TOOL = Path('C:/Users/CDD/AppData/Local/MirraAndroid/sdk/cmdline-tools/latest/bin/sdkmanager.bat')
+JDK = Path('C:/Users/CDD/AppData/Local/MirraAndroid/jdk17/jdk-17.0.20.1+1')
+
+
+def digest(data):
+    return {'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+
+
+def main():
+    stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
+    out = HERE / 'evidence' / ('sdk-query-' + stamp)
+    out.mkdir(parents=True, exist_ok=False)
+    for p in (SDK, ENV_ROOT / 'home', ENV_ROOT / 'temp'):
+        p.mkdir(parents=True, exist_ok=True)
+        if p.is_symlink():
+            raise RuntimeError('Research environment must not be a symlink')
+    env = os.environ.copy()
+    env.update(JAVA_HOME=str(JDK), ANDROID_HOME=str(SDK), ANDROID_SDK_ROOT=str(SDK),
+               ANDROID_USER_HOME=str(ENV_ROOT / 'home'),
+               TEMP=str(ENV_ROOT / 'temp'), TMP=str(ENV_ROOT / 'temp'))
+    env.pop('ANDROID_CLI_BIN', None)
+    env.pop('REPO_OS_OVERRIDE', None)
+    argv = [str(TOOL), '--list', '--channel=0', '--sdk_root=' + str(SDK)]
+    start = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    try:
+        r = subprocess.run(argv, env=env, stdin=subprocess.DEVNULL,
+                           stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=180)
+        stdout, stderr, code, timed_out = r.stdout, r.stderr, r.returncode, False
+    except subprocess.TimeoutExpired as e:
+        stdout, stderr, code, timed_out = e.stdout or b'', e.stderr or b'', None, True
+    (out / 'stdout.log').write_bytes(stdout)
+    (out / 'stderr.log').write_bytes(stderr)
+    target = [line for line in stdout.decode('utf-8', errors='replace').splitlines()
+              if 'android-26' in line and 'x86_64' in line]
+    result = {'startedUtc': start, 'endedUtc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'argv': argv, 'exitCode': code, 'timeout': timed_out, 'targetLines': target,
+              'stdout': digest(stdout), 'stderr': digest(stderr),
+              'sdkmanager': {'path': str(TOOL), **digest(TOOL.read_bytes())},
+              'script': digest(Path(__file__).read_bytes()),
+              'researchSdkLogical': str(SDK), 'researchSdkResolved': str(SDK.resolve()),
+              'licensesAccepted': False, 'installInvoked': False, 'adbInvoked': False}
+    (out / 'result.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps(result, indent=2))
+    return 0 if code == 0 and not timed_out else 2
+
+
+if __name__ == '__main__':
+    sys.exit(main())

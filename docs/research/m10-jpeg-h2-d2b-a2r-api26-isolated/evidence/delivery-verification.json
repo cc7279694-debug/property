@@ -1,0 +1,977 @@
+{
+  "status": "PASS",
+  "timeUtc": "2026-10-18T03:05:51.516453+00:00",
+  "branch": "research/m10-jpeg-h2-d2b-a2r-api26-isolated",
+  "sourceCommit": "349264371b8b9849dfe83a5ddee74f204129d4ad",
+  "trackedChanged": [
+    "docs/CURRENT_STATE.md"
+  ],
+  "stagedNewFilesInAllowedScope": 85,
+  "checkedFileCount": 85,
+  "localLinksChecked": 128,
+  "localLinks": [
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_A2R_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_A2R_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-18-M10-JPEG-H2-D2B-A2R.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_A2_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_A2_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-H2-D2B-A2.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_A1_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_A1_COMPATIBILITY.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_A1_TEST_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-H2-D2B-A1.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_REVIEW_NOTES_SUPPLEMENT.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_THREAD_TIMING_DESIGN.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_TEST_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_N05_AND_RISKS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2B_REVIEW_NOTES_SUPPLEMENT.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-H2-D2B-notes-supplement.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-H2-D2B.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2A_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2A_CODE_REVIEW.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D2A_TEST_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-H2-D2A.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-H2-D1.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D1_ROOT_CAUSE_ANALYSIS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D1_FAILURE_FENCE_DESIGN.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_H2_D1_SAFE_RECOVERY_PROPOSAL.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/m10-jpeg-h2-d1/README.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_H2_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_H2_ANDROID_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_H2_RESOURCE_LIFECYCLE.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_H2_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-H2.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_H1_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_H1_ANDROID_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_H1_RESOURCE_LIFECYCLE.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_H1_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-H1.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_U2_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_U2_DEVICE_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_U2_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2R-U2.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_U1_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_U1_TEST_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_U1_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2R-U1.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_DEVICE_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2R_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2R.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2_DEVICE_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G2_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-G2.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_TEST_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_G1_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B-G1.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_ANDROID_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_RESOURCE_LIFECYCLE.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1B_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-17-M10-JPEG-R3-F1B.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_F1A_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_LIFECYCLE_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_FD_RECOVERY.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R3_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R3.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_DECISION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_ARCHITECTURE.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_RESOURCE_BUDGET.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R2_FAILURE_RECOVERY.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_FEASIBILITY.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_TEST_MATRIX.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R0_PRODUCTION_PROPOSAL.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_EXECUTION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_RESULTS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_RESOURCE_REPORT.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "research/M10_JPEG_R1_PRODUCTION_RECOMMENDATION.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R1.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-16-M10-JPEG-R2.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M10-JPEG-supplement-verification.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M10-JPEG-supplement-verification.json"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-14-M10-JPEG-supplement.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/m10-tests/final-split-verification.json"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/m10-device/manual/final-storage-device-proof.json"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "DECISIONS.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "planning/M09_CONTRACT.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M09-verification.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M09-verification.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M09-verification.json"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M09-files.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-13-M09.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M08-verification.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M08-verification.json"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "evidence/M08-files.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "checkpoints/2026-10-13-M08.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "ACCEPTANCE_MATRIX.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "SPEC_ISSUES.md"
+    },
+    {
+      "from": "docs\\CURRENT_STATE.md",
+      "target": "ARCHITECTURE.md"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/USER_SCOPE.md"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023518.337117Z/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023604.949325Z/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/official-metadata-20261018T023649.606169Z/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-capacity-gate/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/android-sdk-license.xml-extracted.utf8.txt"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install-retry-1/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/installed-image-audit/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/pre-avd-storage-gate/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/local-tools-copy/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/002-command.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/failure.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/closing-host-snapshot/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "M10_JPEG_H2_D2B_A2R_RESULTS.md"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "target": "../checkpoints/2026-10-18-M10-JPEG-H2-D2B-A2R.md"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_RESULTS.md",
+      "target": "m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/result.json"
+    },
+    {
+      "from": "docs\\research\\M10_JPEG_H2_D2B_A2R_RESULTS.md",
+      "target": "M10_JPEG_H2_D2B_A2R_EXECUTION.md"
+    },
+    {
+      "from": "docs\\checkpoints\\2026-10-18-M10-JPEG-H2-D2B-A2R.md",
+      "target": "../research/M10_JPEG_H2_D2B_A2R_EXECUTION.md"
+    },
+    {
+      "from": "docs\\checkpoints\\2026-10-18-M10-JPEG-H2-D2B-A2R.md",
+      "target": "../research/M10_JPEG_H2_D2B_A2R_RESULTS.md"
+    },
+    {
+      "from": "docs\\checkpoints\\2026-10-18-M10-JPEG-H2-D2B-A2R.md",
+      "target": "../research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/result.json"
+    },
+    {
+      "from": "docs\\checkpoints\\2026-10-18-M10-JPEG-H2-D2B-A2R.md",
+      "target": "../research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/delivery-verification.json"
+    },
+    {
+      "from": "docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\README.md",
+      "target": "../M10_JPEG_H2_D2B_A2R_EXECUTION.md"
+    },
+    {
+      "from": "docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\README.md",
+      "target": "../M10_JPEG_H2_D2B_A2R_RESULTS.md"
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/checkpoints/2026-10-18-M10-JPEG-H2-D2B-A2R.md",
+      "bytes": 3047,
+      "sha256": "ddd9abe709e627d5b2af0ad7c829600eab2cde7b8332d86af34d9e93af3f5134"
+    },
+    {
+      "path": "docs/CURRENT_STATE.md",
+      "bytes": 59153,
+      "sha256": "cc09c434dc88e1173ff1cc0fa9131410e64850706b52bf92c38154a44fbb24a6"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/.gitattributes",
+      "bytes": 30,
+      "sha256": "acec6a532b4bcce3d7deba50ca3eb70936c1611dc8568dbf46112b47e1ab2176"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/audit_apk.py",
+      "bytes": 6680,
+      "sha256": "c071238cf33bee736fad3be7adfc24ffb49c2c4006f102ac5b300de1a522f38d"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/audit_installed_image.py",
+      "bytes": 6334,
+      "sha256": "eff5209429b2a86f047d7d1cf308237d2f3d2163384899d2458d511c0477791b"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/closing_snapshot.py",
+      "bytes": 3100,
+      "sha256": "0da32bc62ae8247376303e9b11602ce8cb1e4ef6fa45acf9436927e138260f7a"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/correct_license_and_inspect_archive.py",
+      "bytes": 5998,
+      "sha256": "3bdbf7929bfcbef3bf22f81f2c35d039880cbe3d5013d3ed233f02ef6308d6e7"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/a1-a2-research-source-diff.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/a1-a2-research-source-diff.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/commands.json",
+      "bytes": 6274,
+      "sha256": "607fef08224c3d2ea49b6e4986b6ab45f13a17b6ddca71bf37ffce9f5abf7159"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/current-head.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/current-head.stdout.log",
+      "bytes": 41,
+      "sha256": "027fdd248473429ecd63f187a53d66bb77ec28a51adc37d5ae8d5b4be0838e43"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/probe-badging.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/probe-badging.stdout.log",
+      "bytes": 715,
+      "sha256": "cadce42a1b6802b56010376c4ae3ed9028098c81f9d2248ea70d35cfe2c3f273"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/probe-manifest.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/probe-manifest.stdout.log",
+      "bytes": 1420,
+      "sha256": "dc045c0757ab0a273f05497fcc5b13ad0c3b16f69b7400bd6cc8a2a68eb84537"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/probe-signature.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/probe-signature.stdout.log",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/result.json",
+      "bytes": 3434,
+      "sha256": "3097ea495a9063c3a1aee40d58e016ef07073e59371c6b5c29cf8a68fa574ad3"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/apk-audit/source-input-comparison.json",
+      "bytes": 19383,
+      "sha256": "4002be4b9eac0be8a4145b604a38614fe15d5de25dd73fd3f0a86a4435b4a674"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/closing-host-snapshot/result.json",
+      "bytes": 2372,
+      "sha256": "7c6f63cde9a9171016270ec9326d89224d51fb197afa2d9e666b03ff1a41a9c2"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/closing-host-snapshot/target-processes.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/closing-host-snapshot/target-processes.stdout.json",
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025802.416783Z/failure.json",
+      "bytes": 275,
+      "sha256": "9d249806d9b2f1d77a3a37c9c63d65505e746a585dbf9e5847f8561096c3ac5e"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/000-host-emulator-inventory.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/000-host-emulator-inventory.stdout.log",
+      "bytes": 42,
+      "sha256": "803aeba78aa65490dfcc5c786f07dffac1f8277737701c667192f00a2b27fe83"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/001-avd-create.stderr.log",
+      "bytes": 122,
+      "sha256": "c129dd0d965692de49904529e1c7e7d826b584ef08308243c8b6a5c0566eb3fa"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/001-avd-create.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/001-command.json",
+      "bytes": 1075,
+      "sha256": "cbf889ac783c9e2be00038d48b90e1bb579b4c2759da4f675929fb751d76ebb8"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/002-command.json",
+      "bytes": 1121,
+      "sha256": "9ba6abff7ef88d43baff3abcd573265f4da55cfabb12c76f64037edff1275fbb"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/empty-research-user-homes.json",
+      "bytes": 270,
+      "sha256": "c48641e16bcc0f97790bcb25fbaaad237772b8b7991d136a160e804fc3537b64"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/create-20261018T025903.791601Z/failure.json",
+      "bytes": 262,
+      "sha256": "762af809cf1a859bcd4ac31f0f9371a695501aa23ae711bcec6e4a66cae3d52c"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/git-baseline.json",
+      "bytes": 1129,
+      "sha256": "b4609b389a7586538017485df4f7056596b9c6e468950b5add568ef3c895d1ba"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/host-execution-notes.json",
+      "bytes": 870,
+      "sha256": "a0b82a0b27f54714d3ede47a3b17332c9f663ab07f0850cfcb1b67ca14b2855b"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install/intent.json",
+      "bytes": 651,
+      "sha256": "22e220eb6fcb901046dfe38357d6415fb19b7ea659bfbe5dc92d55fa81ef91b7"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install/result.json",
+      "bytes": 1043,
+      "sha256": "3ccc5b4012dab8460040bcf5a7f67eeed247b8edb19465faf58c3c6ed3f765d8"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install/stderr.log",
+      "bytes": 1374,
+      "sha256": "e48b00cff90ea1c1dd65d758639cd9c98fd7d2c3aa2b27b95eb54ecd08c063de"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install/stdout.log",
+      "bytes": 94484,
+      "sha256": "affc9ff30c05c40586920705f5812fe1be3e8e42283eb987d75504380fe7a804"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install-retry-1/intent.json",
+      "bytes": 767,
+      "sha256": "7bc69a0dafde6cf24cff2cd374056480be5866daa0ac392696407f51801495d3"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install-retry-1/result.json",
+      "bytes": 1157,
+      "sha256": "8271c036ef32d59dde0fb29bc0f6640b3ea015b6fca2c186a2b6a0e90545f52d"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install-retry-1/stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/image-install-retry-1/stdout.log",
+      "bytes": 208509,
+      "sha256": "6885d6f249e5ec0a746ed4f09f931ae4586a1727417f06c818379a1e6e02228f"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/installed-image-audit/package.xml",
+      "bytes": 19209,
+      "sha256": "aaab7f4381969c6de68a7c081e0d33d167e90ea6eb9047b98e684df5d635e002"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/installed-image-audit/result.json",
+      "bytes": 4850,
+      "sha256": "b349d75ac12033dc6a74d3c1eec3774f81ef659c9958ce0124279310fc9cc06d"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/installed-image-audit/source.properties",
+      "bytes": 294,
+      "sha256": "7359e05a9d54b107581dbc530391985ac414e28828484aa4487b4e070d62aaed"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-capacity-gate/canonicalizer.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-capacity-gate/canonicalizer.stdout.log",
+      "bytes": 42,
+      "sha256": "002e8b293c27a8fc76cd3dcee55a229389b30364250ea905aa2e894f20a82481"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-capacity-gate/result.json",
+      "bytes": 6475,
+      "sha256": "53542af24f1de18c2202c86b2bc3f21047b5dd71a37a98637d1326fb08a85747"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/android-sdk-license.xml-extracted.utf8.txt",
+      "bytes": 16962,
+      "sha256": "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/archive-tail.headers.log",
+      "bytes": 615,
+      "sha256": "7597f1e7fc9539723150fc2f53782afa7c2692e034660acd3e4787c6fd2e081d"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/official-archive-head.stderr.log",
+      "bytes": 472,
+      "sha256": "da78be84347613be1a07bad081e7608a4f6ff91a1da88a8a538bd212c1e584eb"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/official-archive-head.stdout.log",
+      "bytes": 554,
+      "sha256": "3f36a7739fdbcb985fe8f8879774f14310d6b719dacc4d91ad654a93fe0c4d0d"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/official-archive-tail.stderr.log",
+      "bytes": 472,
+      "sha256": "4fbf7d4ee2afa4a6d97259a7eb2d2de72106be831ed4e4d673eb1b659bbec9a3"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/official-archive-tail.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/result.json",
+      "bytes": 6889,
+      "sha256": "f1561840739aa00995b1bf69974bed8d7369e35a99a0d9140f35aff6293a754f"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/xml-canonicalizer.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/license-correction-archive-metadata/xml-canonicalizer.stdout.log",
+      "bytes": 42,
+      "sha256": "64fcd12db19087df85e289e8748282f06a253cfd672e417d04605e68824b3be5"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/local-tools-copy/result.json",
+      "bytes": 103772,
+      "sha256": "583371173d36fcc114f4da43b57ecf8c1a004a131a15f3514224ed2ae5e4e7e8"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/official-metadata-20261018T023649.606169Z/android-sdk-license.txt",
+      "bytes": 17107,
+      "sha256": "00eceefbf21af958ba76722fdf3330143d7176e4626f341c3d8925a6e40726ea"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/official-metadata-20261018T023649.606169Z/result.json",
+      "bytes": 2423,
+      "sha256": "abb87f72fd1d8a1a006197bc4802a4341262bc3c7e3028e6bb4026c0f869d3cf"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/official-metadata-20261018T023649.606169Z/sys-img2-3.xml",
+      "bytes": 237880,
+      "sha256": "ad71946ba2d002f86d9ece1121b74aec494b420aa6b8fdac83fa5ce52b51dcb4"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/pre-avd-storage-gate/official-central-directory.json",
+      "bytes": 4848,
+      "sha256": "705e52c25a4d940b3a0027c75093eefd00681d6ea997ee3c41cb35e0bdd052c4"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/pre-avd-storage-gate/result.json",
+      "bytes": 1460,
+      "sha256": "fed0f540a9ea541e1b5d4d6cdfad3c29f529a8a60ae64545cf94cfc65d7d7588"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/pre-avd-storage-gate/target-sdk-writers.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/pre-avd-storage-gate/target-sdk-writers.stdout.json",
+      "bytes": 4,
+      "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023518.337117Z/query-script.executed.py.txt",
+      "bytes": 2876,
+      "sha256": "5a390ce4fb33327228cab21e2284e8a68336501969d7e493fed0e7e0de528f52"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023518.337117Z/result.json",
+      "bytes": 1251,
+      "sha256": "26f099607f15bf18882b48b62843f0154efaacb0d5ae18d181f93dc90ca55b09"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023518.337117Z/stderr.log",
+      "bytes": 526,
+      "sha256": "bfda5e6f3910dc9e6cec8804f858f64efd7d91018ebdec6be05b1c40c608f261"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023518.337117Z/stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023604.949325Z/result.json",
+      "bytes": 1899,
+      "sha256": "14fea09297547ac3cd80f9e274e25af83e14d3a9eae89348c5287cc3a6750481"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023604.949325Z/stderr.log",
+      "bytes": 353,
+      "sha256": "49e62456c2c76978705a1223fd20eb18a8abed76ef3ac41633667b9e4b126d50"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/evidence/sdk-query-20261018T023604.949325Z/stdout.log",
+      "bytes": 124196,
+      "sha256": "a8ad98a20f745e1f4da522b28a54ecbfc68ae095615c5b41ab331327880deb4e"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/inspect_official_metadata.py",
+      "bytes": 2997,
+      "sha256": "9db5b7dce7e22f4d2a5c283183fc4f9a397769715df138fb1a0bd6a3a4e5a74f"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/install_image.py",
+      "bytes": 3586,
+      "sha256": "062d66b94fab0dda989eb81418cb5a7930c7146c1031809f51a416b3ff699e28"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/LicenseCanonical.java",
+      "bytes": 1955,
+      "sha256": "41d36989beb0fb05a18e28368afb1ec78f7a46015137b0df78632b47048b6e16"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/pre_avd_storage_gate.py",
+      "bytes": 5293,
+      "sha256": "cd40e20c2041a1c4a1a3fc5ce4eca9ca5a2a0f97649e80e967aa4a09dc9babe2"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/prepare_tools.py",
+      "bytes": 2316,
+      "sha256": "ddaf6ae4944855b919eae7d3fa2e46b8517e5be8adb5c6ab695c52e6148caf3e"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/query_sdk.py",
+      "bytes": 3737,
+      "sha256": "1b6e8fab1e9d0586404345f65ae503e19baf184feab9f791edb8ce6da09920f5"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/README.md",
+      "bytes": 1589,
+      "sha256": "d8236111ecae1cc89e8b6de3844eb7971c445d2c60f33de2498ab9e32723b060"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/record_gate.py",
+      "bytes": 6429,
+      "sha256": "d57d798ebae855a11fcfea2a029b7cefb18283d808fcf1fa15f7885287003415"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/smoke_isolated.py",
+      "bytes": 24689,
+      "sha256": "b60844fc5a81999dab5fa62b34a4b747e7a344b3668d29ce69fb07bdbd3945e9"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/USER_SCOPE.md",
+      "bytes": 1783,
+      "sha256": "ee55d30facd25f3636f71ab312eb95993acb6a372b3ebde196e0d17457222fa6"
+    },
+    {
+      "path": "docs/research/m10-jpeg-h2-d2b-a2r-api26-isolated/verify_delivery.py",
+      "bytes": 8629,
+      "sha256": "5cf313adf0e6ee6367bd2ae72bdee305748035821ebafca414dee3251c2d0b0e"
+    },
+    {
+      "path": "docs/research/M10_JPEG_H2_D2B_A2R_EXECUTION.md",
+      "bytes": 14657,
+      "sha256": "f830684b0f93b388cbd02964be74276a242cd2e1ead63f16e0b9dd58055d36b7"
+    },
+    {
+      "path": "docs/research/M10_JPEG_H2_D2B_A2R_RESULTS.md",
+      "bytes": 5788,
+      "sha256": "43d33f8a5ce513dcd859e830f3194388b022f7a318e7cd1404ca8e0e68c893c9"
+    }
+  ],
+  "queries": [
+    {
+      "directory": "sdk-query-20261018T023518.337117Z",
+      "exitCode": 1,
+      "targetLines": []
+    },
+    {
+      "directory": "sdk-query-20261018T023604.949325Z",
+      "exitCode": 3221226505,
+      "targetLines": [
+        "  system-images/android-26/default/x86_64                                                 1.0.0                  Intel x86_64 Atom System Image                                                  ",
+        "  system-images/android-26/google_apis/x86_64                                             16.0.0                 Google APIs Intel x86_64 Atom System Image                                      "
+      ]
+    }
+  ],
+  "highConfidenceSecretScan": "NO_MATCH",
+  "forbiddenBinaryFileScan": "NO_MATCH",
+  "pythonSyntax": "PASS",
+  "oldTrackedInputsChangedOutsideCurrentState": false,
+  "initialCrlfLicenseBlocker": "SUPERSEDED_FALSE_DIFFERENCE",
+  "currentBlocker": "AVD_CREATE_SDK_DIRECTORY_DISCOVERY_FAILURE",
+  "deviceExperiments": "NOT_RUN",
+  "productTestsLintBuild": "NOT_RUN",
+  "rawEvidenceExcludedFromWhitespaceNormalization": true
+}

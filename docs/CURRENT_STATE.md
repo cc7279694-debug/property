@@ -1,8 +1,15 @@
 # 当前项目状态
 
-状态日期：2026-10-17（Asia/Shanghai；A2隔离API26无命令冷启动因缺少已安装API26镜像BLOCKED；A1已获用户转交的离线独立PASS WITH NOTES，Android验证仍PENDING；无设备操作）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-18（Asia/Shanghai；新A2-R已下载/解包固定官方API26 r16并独立核验文件，唯一AVD创建失败BLOCKED；未启动AVD/ADB/App）。本文件是当前分支的唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M10-H2-D2B-A2-R — BLOCKED / AVD_CREATE_SDK_DISCOVERY**：用户已明确授权符合条件的官方API26镜像下载安装，并进一步确认3GiB仅限制下载流量，允许展开及AVD超过。从旧A2 `349264371b8b9849dfe83a5ddee74f204129d4ad`建立新独立分支`research/m10-jpeg-h2-d2b-a2r-api26-isolated`及短路径worktree `E:/CODEX/.codex/worktrees/lithic-a2r/砺石新APP`。本轮不是旧A2重交付；[执行](research/M10_JPEG_H2_D2B_A2R_EXECUTION.md)、[结果/风险](research/M10_JPEG_H2_D2B_A2R_RESULTS.md)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-H2-D2B-A2R.md)。
+- **A2-R镜像实际结果**：官方sdkmanager第一次bootstrap网络失败退出1；第二次实际列出r16仍0xC0000409，原异常保留。官方XML/HEAD/Range取证，包935.307MiB、展开逻辑3.144GiB；用户已明确预算仅下载。首次安装约260MiB断开，唯一受控重试100%解包仍0xC0000409，两命令FAIL不改。随后独立11文件尺寸/CRC对比官方中央目录并计算SHA、唯一包/父路径/无目标写入进程门禁PASS，确认已提取镜像资源可用，不覆盖安装器FAIL、不伪造整ZIP实测SHA。既有工具536文件1279464244字节本地复制/逐SHA一致，0工具下载/升级。
+- **A2-R许可纠正**：初次把XML许可导出为CRLF后取得9cb2a…是假差异，“新许可阻塞”结论已撤销；原错误gate保留并明确SUPERSEDED。实际Java直接从官方XML读取许可再由SDK TrimStringAdapter规范化，得到`24333f8a63b6825ea9c5514f83c2829b004d1fee`，匹配两SDK既有接受记录，无新许可需接受。原接受文件未改；仅向独立SDK复制匹配的既有接受文件。完整原文、CRLF/LF差异及纠正命令已归档。
+- **A2-R当前阻塞/保护**：首次宿主create预检对空研究用户目录误拦，当时0AVD命令；仅在证明空目录/无旧AVD后修正。随后唯一实际create命令退出1，Can't locate Android SDK installation directory for the AVD .ini file. 保留新空数据目录及create marker，注册.ini不存在；未重试/清理/伪造SDK结构。0模拟器启动/0ADB/0APK安装/0Host启动，Host/READY/早绑定均NOT_RUN。A1原APK及48构建输入宿主审计PASS，不替代Android。原API36/H2设备现场未访问，不宣称私人字节/188项元数据重验。只推新A2-R后停止，等待独立审查；M10 PENDING/三JPEG FAIL、UI-C1冻结、M11 NOT_AUTHORIZED、R3完整生命周期BLOCKED及全部历史NOTE/FAIL/UNKNOWN/NOT_RUN保持。
+
+以下旧A2及更早段落保留历史；本轮下载安装授权、许可纠正及AVD创建阻塞以上节为准，未改写旧证据：
 
 - **M10-H2-D2B-A2 — BLOCKED**：用户正式授权仅检查独立API26环境，并只在已安装镜像且隔离条件通过后进行一次无command/case/runId的Host启动。来源`971f742452422ce6b31462123c351d112eb48101`经本地/远端核对一致，新分支`research/m10-jpeg-h2-d2b-a2-api26-smoke`，独立短路径worktree `E:/CODEX/.codex/worktrees/lithic-a2-api26/砺石新APP`。A1的独立结论由本次用户转交：PASS WITH NOTES，仅离线代码与研究APK，不扩大为Android通过。
 - **A2实际SDK检查**：锁定A1 SDK只有API36与37.0的google_apis/x86_64 image；默认Android SDK无system-images；Process/User/Machine的ANDROID_HOME/ANDROID_SDK_ROOT六变量均未配置。package.xml/source.properties的API字段、字节与SHA及真实退出0的环境查询已保存。已检查根目录内没有API26镜像，立即停止环境推进，未下载/升级/切换镜像。

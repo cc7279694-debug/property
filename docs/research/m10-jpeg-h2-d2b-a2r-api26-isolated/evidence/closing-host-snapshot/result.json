@@ -1,0 +1,83 @@
+{
+  "startedUtc": "2026-10-18T03:00:45.379256+00:00",
+  "status": "BLOCKED_AVD_CREATION",
+  "avdCreateCommands": 1,
+  "emulatorStarts": 0,
+  "adbCommands": 0,
+  "apkInstalls": 0,
+  "activityStarts": 0,
+  "originalApi36OrH2Accessed": false,
+  "cleanupOrRetryAfterAvdCreateFailure": false,
+  "paths": [
+    {
+      "path": "avds",
+      "exists": true,
+      "directory": true,
+      "fileBytes": 0,
+      "attributes": 16
+    },
+    {
+      "path": "avd-data",
+      "exists": true,
+      "directory": true,
+      "fileBytes": 0,
+      "attributes": 16
+    },
+    {
+      "path": "avd-data\\Lithic_A2R_API26_20261018.avd",
+      "exists": true,
+      "directory": true,
+      "fileBytes": 0,
+      "attributes": 16
+    },
+    {
+      "path": "a2r-smoke-state",
+      "exists": true,
+      "directory": true,
+      "fileBytes": 0,
+      "attributes": 16
+    },
+    {
+      "path": "a2r-smoke-state\\create-attempt.json",
+      "exists": true,
+      "directory": false,
+      "fileBytes": 227,
+      "attributes": 32,
+      "sha256": "5fc9cf89b241adbfc6349f3c50cc8fb09c3c15d8b4bcc8b91074dd4c77fb2509"
+    },
+    {
+      "path": "android-user",
+      "exists": true,
+      "directory": true,
+      "fileBytes": 0,
+      "attributes": 16
+    },
+    {
+      "path": "emulator-home",
+      "exists": true,
+      "directory": true,
+      "fileBytes": 0,
+      "attributes": 16
+    }
+  ],
+  "hostQuery": {
+    "argv": [
+      "powershell.exe",
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      "$r=@(Get-CimInstance Win32_Process | Where-Object {$_.Name -match '^(emulator|qemu-system|java|javaw|android-cli|android).*\\.exe$' -and $_.CommandLine -match 'Lithic_A2R_API26_20261018|lithic-a2r-api26|(?<![0-9])5610(?![0-9])'} | Select-Object ProcessId,ParentProcessId,Name,CommandLine); ConvertTo-Json -InputObject $r -Depth 4 -Compress"
+    ],
+    "exitCode": 0,
+    "stdoutBytes": 4,
+    "stdoutSha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "targetProcesses": [],
+  "avdIniExists": false,
+  "avdDataExists": true,
+  "startAttemptExists": false,
+  "hostLaunchAttemptExists": false,
+  "endedUtc": "2026-10-18T03:00:46.451410+00:00"
+}

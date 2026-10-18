@@ -1,0 +1,35 @@
+{
+  "url": "https://dl.google.com/android/repository/sys-img/google_apis/sys-img2-3.xml",
+  "startedUtc": "20261018T023649.606169Z",
+  "package": "system-images;android-26;google_apis;x86_64",
+  "downloadBudgetBytes": 3221225472,
+  "licensesAccepted": false,
+  "imageDownloadInvoked": false,
+  "installInvoked": false,
+  "httpStatus": 200,
+  "finalUrl": "https://dl.google.com/android/repository/sys-img/google_apis/sys-img2-3.xml",
+  "metadata": {
+    "bytes": 237880,
+    "sha256": "ad71946ba2d002f86d9ece1121b74aec494b420aa6b8fdac83fa5ce52b51dcb4"
+  },
+  "targetXml": "<remotePackage xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" path=\"system-images;android-26;google_apis;x86_64\">\n    <type-details xsi:type=\"sys-img:sysImgDetailsType\">\n      <api-level>26</api-level>\n      <base-extension>true</base-extension>\n      <tag>\n        <id>google_apis</id>\n        <display>Google APIs</display>\n      </tag>\n      <vendor>\n        <id>google</id>\n        <display>Google Inc.</display>\n      </vendor>\n      <abi>x86_64</abi>\n    </type-details>\n    <revision>\n      <major>16</major>\n    </revision>\n    <display-name>Google APIs Intel x86_64 Atom System Image</display-name>\n    <uses-license ref=\"android-sdk-license\" />\n    <dependencies>\n      <dependency path=\"emulator\">\n        <min-revision>\n          <major>26</major>\n          <minor>1</minor>\n          <micro>3</micro>\n        </min-revision>\n      </dependency>\n    </dependencies>\n    <channelRef ref=\"channel-0\" />\n    <archives>\n      <archive>\n        <complete>\n          <size>980740438</size>\n          <checksum type=\"sha1\">0eb13cc91cf164b617eaf85e4030289cb18189de</checksum>\n          <url>x86_64-26_r16.zip</url>\n        </complete>\n      </archive>\n    </archives>\n  </remotePackage>\n  ",
+  "licenses": [
+    {
+      "id": "android-sdk-license",
+      "utf8Bytes": 16962,
+      "rawSha256": "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16",
+      "rawTrimmedSha1Candidate": "9002c006f4b8d9a16e715a9fa4df30ddb8abf9d9",
+      "canonicalComparison": "PENDING_ACTUAL_SDK_CANONICALIZER"
+    }
+  ],
+  "freeSpace": {
+    "C:/": {
+      "freeBytes": 16222674944
+    },
+    "E:/": {
+      "freeBytes": 67943186432
+    }
+  },
+  "status": "METADATA_READ_REQUIRES_LICENSE_AND_CAPACITY_GATE",
+  "endedUtc": "2026-10-18T02:36:50.274251+00:00"
+}

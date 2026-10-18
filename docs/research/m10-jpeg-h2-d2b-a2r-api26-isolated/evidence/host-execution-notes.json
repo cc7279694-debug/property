@@ -1,0 +1,22 @@
+{
+  "source": "Observed tool results in this A2-R session; not synthetic Android results",
+  "utilityIssues": [
+    {
+      "item": "Initial delivery verifier",
+      "status": "FAIL",
+      "reason": "CRLF exported license compared against XML LF digest; corrected using original XML. Original bad gate and text preserved."
+    },
+    {
+      "item": "Delivery verifier self-result link",
+      "status": "FAIL",
+      "reason": "First link pass expected the output JSON before it was generated; fixed only self-output ordering. Other links remain checked."
+    },
+    {
+      "item": "Read-only avdmanager help without JAVA_HOME",
+      "status": "FAIL",
+      "reason": "Tool printed JAVA_HOME not set. Later explicit existing JDK17 used; no AVD or App action in help."
+    }
+  ],
+  "deviceOperations": 0,
+  "originalApi36OrH2Accessed": false
+}

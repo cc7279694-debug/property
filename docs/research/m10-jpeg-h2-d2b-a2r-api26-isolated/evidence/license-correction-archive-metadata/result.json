@@ -1,0 +1,201 @@
+{
+  "status": "LICENSE_GATE_CORRECTED_MATCHES_EXISTING_ACCEPTANCE",
+  "requiredCanonicalSha1FromActualSdkOnXml": "24333f8a63b6825ea9c5514f83c2829b004d1fee",
+  "originalCrlfDerivedHashIsInvalidForXmlLicenseIdentity": "9cb2a03b2d1e90fca50530f79975338d0d278f2c",
+  "reason": "Original Python write_text on Windows converted LF XML text to CRLF before SDK canonicalization",
+  "xmlExtractedText": {
+    "bytes": 16962,
+    "sha256": "1f8729233617b193fd619213792ae16a41b95d2bbbf525dfe66998252ba68b16"
+  },
+  "originalCrlfFilePreserved": {
+    "bytes": 17107,
+    "sha256": "00eceefbf21af958ba76722fdf3330143d7176e4626f341c3d8925a6e40726ea"
+  },
+  "onlyNewlineDifference": true,
+  "newLicenseRequired": false,
+  "licenseAcceptedOrWrittenByThisTask": false,
+  "acceptedFileUnchanged": {
+    "bytes": 42,
+    "sha256": "70fd2713ca385fd6b14c1d5577ce8349996699186a3a216e9643a09098c26dca"
+  },
+  "commands": [
+    {
+      "name": "xml-canonicalizer",
+      "argv": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/jdk17/jdk-17.0.20.1+1/bin/java.exe",
+        "--class-path",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\lib\\repository\\repository-core.jar;C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\lib\\external\\jakarta\\xml\\bind\\jakarta.xml.bind-api\\2.3.2\\jakarta.xml.bind-api-2.3.2.jar",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\LicenseCanonical.java",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\official-metadata-20261018T023649.606169Z\\sys-img2-3.xml",
+        "--xml"
+      ],
+      "startedUtc": "2026-10-18T02:43:33.487658+00:00",
+      "endedUtc": "2026-10-18T02:43:34.551435+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "bytes": 42,
+        "sha256": "64fcd12db19087df85e289e8748282f06a253cfd672e417d04605e68824b3be5"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "official-archive-head",
+      "argv": [
+        "curl.exe",
+        "--proto",
+        "=https",
+        "--max-time",
+        "45",
+        "--head",
+        "https://dl.google.com/android/repository/sys-img/google_apis/x86_64-26_r16.zip"
+      ],
+      "startedUtc": "2026-10-18T02:43:34.552439+00:00",
+      "endedUtc": "2026-10-18T02:43:35.094020+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "bytes": 554,
+        "sha256": "3f36a7739fdbcb985fe8f8879774f14310d6b719dacc4d91ad654a93fe0c4d0d"
+      },
+      "stderr": {
+        "bytes": 472,
+        "sha256": "da78be84347613be1a07bad081e7608a4f6ff91a1da88a8a538bd212c1e584eb"
+      }
+    },
+    {
+      "name": "official-archive-tail",
+      "argv": [
+        "curl.exe",
+        "--proto",
+        "=https",
+        "--max-time",
+        "45",
+        "--fail",
+        "--max-filesize",
+        "1048576",
+        "--range",
+        "980674902-980740437",
+        "--dump-header",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\evidence\\license-correction-archive-metadata\\archive-tail.headers.log",
+        "--output",
+        "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\download-metadata\\archive-tail.bin",
+        "https://dl.google.com/android/repository/sys-img/google_apis/x86_64-26_r16.zip"
+      ],
+      "startedUtc": "2026-10-18T02:43:35.095122+00:00",
+      "endedUtc": "2026-10-18T02:43:35.991278+00:00",
+      "exitCode": 0,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 472,
+        "sha256": "4fbf7d4ee2afa4a6d97259a7eb2d2de72106be831ed4e4d673eb1b659bbec9a3"
+      }
+    }
+  ],
+  "archiveMetadata": {
+    "headExitCode": 0,
+    "tailExitCode": 0,
+    "declaredCompressedBytes": 980740438,
+    "tailFile": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\download-metadata\\archive-tail.bin",
+    "tail": {
+      "bytes": 65536,
+      "sha256": "05ad15d1c50a9ece3de709b6ce791cb201c553d5f1d640a7037f78002b8cd515"
+    },
+    "endOfCentralDirectory": {
+      "disk": 0,
+      "centralDirectoryDisk": 0,
+      "entriesOnDisk": 15,
+      "entriesTotal": 15,
+      "centralDirectoryBytes": 989,
+      "centralDirectoryOffset": 980739427,
+      "commentBytes": 0
+    },
+    "entries": [
+      {
+        "name": "x86_64/",
+        "compressedBytes": 0,
+        "uncompressedBytes": 0
+      },
+      {
+        "name": "x86_64/advancedFeatures.ini",
+        "compressedBytes": 108,
+        "uncompressedBytes": 152
+      },
+      {
+        "name": "x86_64/kernel-ranchu",
+        "compressedBytes": 5532653,
+        "uncompressedBytes": 5593392
+      },
+      {
+        "name": "x86_64/NOTICE.txt",
+        "compressedBytes": 203451,
+        "uncompressedBytes": 1665383
+      },
+      {
+        "name": "x86_64/build.prop",
+        "compressedBytes": 838,
+        "uncompressedBytes": 2018
+      },
+      {
+        "name": "x86_64/userdata.img",
+        "compressedBytes": 16205723,
+        "uncompressedBytes": 576716800
+      },
+      {
+        "name": "x86_64/source.properties",
+        "compressedBytes": 182,
+        "uncompressedBytes": 294
+      },
+      {
+        "name": "x86_64/data/",
+        "compressedBytes": 0,
+        "uncompressedBytes": 0
+      },
+      {
+        "name": "x86_64/data/misc/",
+        "compressedBytes": 0,
+        "uncompressedBytes": 0
+      },
+      {
+        "name": "x86_64/data/misc/wifi/",
+        "compressedBytes": 0,
+        "uncompressedBytes": 0
+      },
+      {
+        "name": "x86_64/data/misc/wifi/WifiConfigStore.xml",
+        "compressedBytes": 677,
+        "uncompressedBytes": 2427
+      },
+      {
+        "name": "x86_64/ramdisk.img",
+        "compressedBytes": 2057430,
+        "uncompressedBytes": 2060272
+      },
+      {
+        "name": "x86_64/system.img",
+        "compressedBytes": 934405746,
+        "uncompressedBytes": 2686451712
+      },
+      {
+        "name": "x86_64/vendor.img",
+        "compressedBytes": 22330837,
+        "uncompressedBytes": 102760448
+      },
+      {
+        "name": "x86_64/encryptionkey.img",
+        "compressedBytes": 1033,
+        "uncompressedBytes": 1048576
+      }
+    ],
+    "declaredUncompressedBytes": 3376301474,
+    "centralDirectoryVerifiedBytes": 989
+  },
+  "imageInstalled": false,
+  "adbInvoked": false,
+  "avdOrAppStarted": false,
+  "supersedes": "../license-capacity-gate/result.json (license conclusion only; original remains unchanged)"
+}

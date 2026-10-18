@@ -1,0 +1,74 @@
+{
+  "startedUtc": "2026-10-18T02:39:43.336644+00:00",
+  "status": "PASS",
+  "hostOnly": true,
+  "apkBuilt": false,
+  "apkInstalled": false,
+  "adbInvoked": false,
+  "sourceA1": "971f742452422ce6b31462123c351d112eb48101",
+  "sourceA2": "349264371b8b9849dfe83a5ddee74f204129d4ad",
+  "sourceCorrespondenceLimit": "Locked A1 build provenance plus input byte comparison; no rebuild or source-to-bytecode proof.",
+  "apkBefore": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\\u783a\u77f3\u65b0APP\\build\\a1-artifacts\\20261017T142151.230105Z\\probe-debug.apk",
+    "bytes": 83761,
+    "sha256": "0d98316faf6cb18b589bad526a5d8260cea825a408ed949f32855bd7a7d31b8a"
+  },
+  "inputCount": 48,
+  "allBuildInputsByteIdentical": true,
+  "lockedBuildRecords": [
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-api26-a1\\evidence\\build-runs\\20261017T142151.230105Z\\result.json",
+      "bytes": 1530,
+      "sha256": "604c2935c9e336d6fb742d16f87791ea09dea021084f9e9c00ca5f273b6f978d"
+    },
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-api26-a1\\evidence\\build-runs\\20261017T142151.230105Z\\inputs.json",
+      "bytes": 10246,
+      "sha256": "b7a35e09247f758560915ec4da67a0fc2701fd09444112a795e9b699ccd959c0"
+    },
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-api26-a1\\evidence\\build-runs\\20261017T142151.230105Z\\artifact-audit\\result.json",
+      "bytes": 201594,
+      "sha256": "9d75cff936b4f192d64672314b98cab50d57654f31c2a09c674435bcbb93c587"
+    }
+  ],
+  "observedHead": "349264371b8b9849dfe83a5ddee74f204129d4ad",
+  "tools": [
+    {
+      "path": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "bytes": 3233,
+      "sha256": "549dd0028b0314a5112d6b56e2de7800e713f297da4508b513a735546e52ce38"
+    },
+    {
+      "path": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "bytes": 2783,
+      "sha256": "7603a0a7ec99140c08918c35a1d8c3c85a795d40956d3897cce1dc6b45b87fa4"
+    },
+    {
+      "path": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "bytes": 5423200,
+      "sha256": "babf3122e515ddb954c5ac4669e085ce990536c035e3072de30127bddd6e3608"
+    }
+  ],
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "manifest": {
+    "package": "com.cooper.lithic.m10r3.probe",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "usesPermissionCount": 0,
+    "workerExported": false,
+    "workerProcess": ":jpeg_worker",
+    "allowBackup": false
+  },
+  "apkAfter": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-h2-d2b-api26-a1\\\u783a\u77f3\u65b0APP\\build\\a1-artifacts\\20261017T142151.230105Z\\probe-debug.apk",
+    "bytes": 83761,
+    "sha256": "0d98316faf6cb18b589bad526a5d8260cea825a408ed949f32855bd7a7d31b8a"
+  },
+  "endedUtc": "2026-10-18T02:39:45.884601+00:00",
+  "auditScript": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\lithic-a2r\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-jpeg-h2-d2b-a2r-api26-isolated\\audit_apk.py",
+    "bytes": 6680,
+    "sha256": "c071238cf33bee736fad3be7adfc24ffb49c2c4006f102ac5b300de1a522f38d"
+  }
+}
