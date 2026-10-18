@@ -1,0 +1,13 @@
+{"detail": "Unknown preserved directory: runtime-temp", "errorType": "RuntimeError", "status": "BLOCKED"}
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 582, in <module>
+    main()
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 575, in main
+    getattr(supervisor, args.operation.replace("-", "_"))()
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 296, in adopt
+    visit(self.home)
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 288, in visit
+    need(relative in allowed_dirs, "Unknown preserved directory: " + relative)
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 49, in need
+    raise RuntimeError(message)
+RuntimeError: Unknown preserved directory: runtime-temp

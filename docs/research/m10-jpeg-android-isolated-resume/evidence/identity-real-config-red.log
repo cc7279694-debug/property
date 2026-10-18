@@ -1,0 +1,18 @@
+test_real_cli_config_should_be_accepted_without_AvdId (__main__.RealCliRegression.test_real_cli_config_should_be_accepted_without_AvdId) ... ERROR
+
+======================================================================
+ERROR: test_real_cli_config_should_be_accepted_without_AvdId (__main__.RealCliRegression.test_real_cli_config_should_be_accepted_without_AvdId)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\build\android-resume\old_identity_red.py", line 20, in test_real_cli_config_should_be_accepted_without_AvdId
+    s.verify_avd()
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 194, in verify_avd
+    need(cfg.get("AvdId") == self.name and cfg.get("abi.type") == "x86_64", "AVD identity mismatch")
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 46, in need
+    raise RuntimeError(message)
+RuntimeError: AVD identity mismatch
+
+----------------------------------------------------------------------
+Ran 1 test in 0.034s
+
+FAILED (errors=1)

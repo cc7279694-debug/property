@@ -1,0 +1,242 @@
+{
+  "api26": {
+    "abi": "x86_64",
+    "allOriginalFilesSizeAndShaMatch": true,
+    "classification": "MEASURED",
+    "expectedSource": "docs/research/m10-jpeg-android-isolated/evidence/environment-audit.json",
+    "expectedSourceClassification": "HISTORICAL_EXPECTATION",
+    "files": [
+      {
+        "bytes": 152,
+        "name": "advancedFeatures.ini",
+        "sha256": "d272c766f27bb8753c5847dda9a6bdd8d4b187882f5dea50c407fe697fb166c8",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 5593392,
+        "name": "kernel-ranchu",
+        "sha256": "b07008dd499038633386d2fd122e957c89c94fb33d804ea0d2d33d6a14bbd029",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 1665383,
+        "contentRetained": false,
+        "name": "NOTICE.txt",
+        "sha256": "55c377454d4eaa80e29b0e91804f85e435d83f4664ba2448e165a190d96bec1e",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 2018,
+        "name": "build.prop",
+        "sha256": "b7a9c27f62de80f21798353ea4bfaeeae444a047749c3cd195b0e1c3c40504e1",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 576716800,
+        "meaning": "Official read-only SDK template; no AVD userdata",
+        "name": "userdata.img",
+        "sha256": "c4219b87ba2b1b8e8c882cede0779d91782d134420d0191027e95209192bb640",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 294,
+        "name": "source.properties",
+        "sha256": "7359e05a9d54b107581dbc530391985ac414e28828484aa4487b4e070d62aaed",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 2427,
+        "name": "data/misc/wifi/WifiConfigStore.xml",
+        "sha256": "f9fb2931f1d952ea0503b277d71fea3468b3cd3ecb6e5e441f21b7521aceb1a3",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 2060272,
+        "name": "ramdisk.img",
+        "sha256": "2be5c37057f4054d03dc9bab4fb592d97c6cefd83e9f03c939739e73f999ed6f",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 2686451712,
+        "name": "system.img",
+        "sha256": "342348217f0bb8365bfc10b61f6d8533433a1cbb058de4ca0d52be5e1a7c5b9e",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 102760448,
+        "name": "vendor.img",
+        "sha256": "aa8fbf2fa28237124e68725fbf56c8b3da98126b721289b16562769efedd1cd5",
+        "shaMatch": true,
+        "sizeMatch": true
+      },
+      {
+        "bytes": 1048576,
+        "name": "encryptionkey.img",
+        "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+        "shaMatch": true,
+        "sizeMatch": true
+      }
+    ],
+    "generatedPackageXml": {
+      "bytes": 19209,
+      "contentRetained": false,
+      "identityParsed": true,
+      "sha256": "aaab7f4381969c6de68a7c081e0d33d167e90ea6eb9047b98e684df5d635e002"
+    },
+    "image": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64",
+    "licenseTextCopiedOrArchived": false,
+    "package": "system-images;android-26;google_apis;x86_64",
+    "revision": 16,
+    "verification": "Fresh all 11 original files size/SHA comparison; archive SHA not measured"
+  },
+  "api36": {
+    "abi": "x86_64",
+    "classification": "MEASURED",
+    "currentHashesMeaning": "CURRENT_LOCAL_FILE_PIN_ONLY; historical SHA NOT_RETAINED; not official archive validation",
+    "currentImageFiles": [
+      {
+        "bytes": 791,
+        "name": "advancedFeatures.ini",
+        "sha256": "3a6a894957ccf0ca2dfcc12e3221fc80c3509282bb38d2f61ae54a10395b3575"
+      },
+      {
+        "bytes": 5631,
+        "name": "build.prop",
+        "sha256": "c562e0f7e962179c291ec6996443d5f22fe08f11603689440910ba6e92db6995"
+      },
+      {
+        "bytes": 18874368,
+        "name": "encryptionkey.img",
+        "sha256": "522bd0b6a2c92e37de465059bb9487bb9597a9aae032b469a8ebe0b38146d8c3"
+      },
+      {
+        "bytes": 20489216,
+        "name": "kernel-ranchu",
+        "sha256": "3f2c91f26b27e7c3a6f4a158383d7fb9a4cc87a2c321fc3ad77dc833b9e61a86"
+      },
+      {
+        "bytes": 32,
+        "name": "kernel_cmdline.txt",
+        "sha256": "ec34f1f155caa37116a3396e454beefab1eed40b66d95027450a1e4dbb95b2ff"
+      },
+      {
+        "bytes": 2184133,
+        "name": "ramdisk.img",
+        "sha256": "d7fb5ecbdff6846696eef4dd69fc2c9a6d4e702d6fd1088391ef813e4cb0279f"
+      },
+      {
+        "bytes": 356,
+        "name": "source.properties",
+        "sha256": "edfc961bd9128fbfea84b4c61aac3a72ea270ca286425e22b3ed01ac759b1fc3"
+      },
+      {
+        "bytes": 4415553536,
+        "name": "system.img",
+        "sha256": "eb4bd8cc387915563a0a051c51ac58012e183e1bd21bb0fe2e82f1b255de45a1"
+      },
+      {
+        "bytes": 108003328,
+        "name": "vendor.img",
+        "sha256": "e6a3b07a3c77aaedda5763af0fb9196f8f91c7676371db6e81fb6ba2d74e941d"
+      },
+      {
+        "bytes": 356,
+        "name": "VerifiedBootParams.textproto",
+        "sha256": "e0e5a6095b96561c85934c0bf5d7566c62a7328834a07a35cf224fc72aeb3d00"
+      }
+    ],
+    "declaredEmulatorDependency": "35.4.9",
+    "extensionLevel": 17,
+    "generatedPackageXml": {
+      "bytes": 19301,
+      "contentRetained": false,
+      "identityParsed": true,
+      "sha256": "86953beccd209f58673d73d58c44ae162c6bfba3ee6f373a25038d9a9a539841"
+    },
+    "image": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64",
+    "licenseTextCopiedOrArchived": false,
+    "package": "system-images;android-36;google_apis;x86_64",
+    "revision": 7,
+    "topLevelFilesAreSymlinks": false,
+    "userdataTemplatePresent": false
+  },
+  "deviceOperations": {
+    "adbCommands": 0,
+    "apkInstall": 0,
+    "appStart": 0,
+    "avdCreate": 0,
+    "emulatorStart": 0,
+    "oldAvdDataAccess": 0
+  },
+  "endedUtc": "2026-10-18T13:10:24.869131+00:00",
+  "freshUtc": "2026-10-18T13:09:32.317585+00:00",
+  "licenseTextCopiedOrArchived": false,
+  "observationSourceCommit": "939e88b3fc79f3b9fd160737022f3bd795a07f37",
+  "scope": "Fresh read-only SDK originals, tools, and APK files; no device or old AVD access",
+  "sourceCommit": "b756f96b699f3b70d43144f6c92815917fb563f6",
+  "startedUtc": "2026-10-18T13:09:32.317585+00:00",
+  "tools": {
+    "authenticodeCommand": {
+      "argv": [
+        "C:\\Users\\CDD\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$s=Get-AuthenticodeSignature -LiteralPath 'C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe'; [pscustomobject]@{status=$s.Status.ToString();signer=$s.SignerCertificate.Subject} | ConvertTo-Json -Compress"
+      ],
+      "cwd": null,
+      "endedUtc": "2026-10-18T13:10:24.868012+00:00",
+      "exit": 0,
+      "startedUtc": "2026-10-18T13:10:23.337089+00:00",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBytes": 225,
+      "stdoutSHA256": "0e8388af533b88f0c242788ca56ab6275a7ca01e1a70f0d86a934266f7cc0f72"
+    },
+    "avdmanagerFiles": [
+      {
+        "bytes": 2774,
+        "name": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\avdmanager.bat",
+        "sha256": "2307299b666c61610d1f35b36ea05c2d24c43ddec33e755d40a52797a21d2aa1"
+      },
+      {
+        "bytes": 2774,
+        "name": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\cmdline-tools\\latest\\bin\\avdmanager.bat",
+        "sha256": "2307299b666c61610d1f35b36ea05c2d24c43ddec33e755d40a52797a21d2aa1"
+      }
+    ],
+    "bothAvdmanagerBatchSha256": "2307299b666c61610d1f35b36ea05c2d24c43ddec33e755d40a52797a21d2aa1",
+    "bothEmulatorExecutableSha256": "dede05844d17902a7c74f2cee2bbe97ec9afaaf22ebc35a7cdc6d7c1eaa0b9dd",
+    "deviceToolInvocations": 0,
+    "emulatorBuildId": "15917651",
+    "emulatorFiles": [
+      {
+        "bytes": 22423192,
+        "name": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+        "sha256": "dede05844d17902a7c74f2cee2bbe97ec9afaaf22ebc35a7cdc6d7c1eaa0b9dd"
+      },
+      {
+        "bytes": 22423192,
+        "name": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+        "sha256": "dede05844d17902a7c74f2cee2bbe97ec9afaaf22ebc35a7cdc6d7c1eaa0b9dd"
+      }
+    ],
+    "emulatorVersion": "37.1.11",
+    "primaryEmulatorAuthenticode": {
+      "signer": "CN=Google LLC, O=Google LLC, L=Mountain View, S=California, C=US, SERIALNUMBER=3582691, OID.2.5.4.15=Private Organization, OID.1.3.6.1.4.1.311.60.2.1.2=Delaware, OID.1.3.6.1.4.1.311.60.2.1.3=US",
+      "status": "Valid"
+    },
+    "primarySdk": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk",
+    "researchSdk": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk",
+    "sdkUpdatesDownloads": 0
+  }
+}

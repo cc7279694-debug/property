@@ -1,0 +1,18 @@
+test_api36_r7_real_layout_has_no_userdata_image (__main__.EmptyApi36.test_api36_r7_real_layout_has_no_userdata_image) ... ERROR
+
+======================================================================
+ERROR: test_api36_r7_real_layout_has_no_userdata_image (__main__.EmptyApi36.test_api36_r7_real_layout_has_no_userdata_image)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\build\android-resume\api36-layout-red.py", line 10, in test_api36_r7_real_layout_has_no_userdata_image
+    ns['identity'].verify_configuration(self.root/'api36/avds',data,self.sdk,'Lithic_M10V_API36_20261018',36)
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\avd_identity.py", line 181, in verify_configuration
+    require(item.is_file() and item.stat().st_size > 0, "Image payload absent: " + filename)
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\avd_identity.py", line 23, in require
+    raise ConfigurationBlocked(message)
+avd_identity.ConfigurationBlocked: Image payload absent: userdata.img
+
+----------------------------------------------------------------------
+Ran 1 test in 0.093s
+
+FAILED (errors=1)

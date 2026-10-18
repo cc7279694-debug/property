@@ -1,0 +1,11 @@
+
+  use '-cache <file>' to specify a /cache partition image. if <file> does
+  not exist, it will be created empty. by default, the cache partition is
+  backed by a temporary file that is deleted when the emulator exits.
+  using the -cache option allows it to be persistent.
+
+  the '-no-cache' option can be used to disable the cache partition.
+
+  see '-help-disk-images' for more information about disk image files
+
+

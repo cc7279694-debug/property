@@ -131,6 +131,8 @@ class SupervisorHostTest(unittest.TestCase):
         audit_file.parent.mkdir(parents=True)
         audit_file.write_text(json.dumps({
             "sourceCommit": "b756f96b699f3b70d43144f6c92815917fb563f6",
+            "observationSourceCommit": "939e88b3fc79f3b9fd160737022f3bd795a07f37",
+            "freshUtc": "2026-10-18T00:00:00+00:00",
             "api26": {"allOriginalFilesSizeAndShaMatch": True},
             "api36": {"generatedPackageXml": {"identityParsed": True}},
             "tools": {"primaryEmulatorAuthenticode": {"status": "Valid"}},
@@ -165,7 +167,15 @@ class SupervisorHostTest(unittest.TestCase):
 
     def test_start_does_not_reset_boot_deadline_after_polling(self):
         self.s.home.mkdir(parents=True)
-        (self.s.home / "create-proof.json").write_text('{"status":"PASS"}')
+        audit = validate.ROOT / "build/android-validation/environment-audit.json"
+        audit.parent.mkdir(parents=True)
+        audit.write_bytes(b"{}")
+        self.s.config_observation = {"configIntegrity": {"sha256": "synthetic-config"},
+                                     "descriptorIntegrity": {"sha256": "synthetic-descriptor"}}
+        (self.s.home / "adoption-proof.json").write_text(json.dumps({
+            "status": "PASS", "api": 26, "avd": self.s.name, "data": str(self.s.data),
+            "configuration": self.s.config_observation,
+            "environmentAuditSHA256": hashlib.sha256(audit.read_bytes()).hexdigest()}))
         self.s.verify_avd = Mock(return_value={})
         self.s.audit = Mock(return_value=self.root / "image")
         self.s.processes = Mock(return_value={"targets": [], "freeKiB": 8 * 1024 * 1024})
@@ -269,7 +279,8 @@ class SupervisorHostTest(unittest.TestCase):
         target = {"ProcessId": 12345, "ExecutablePath": str(executable),
                   "CommandLine": subprocess.list2cmdline([
                       str(executable), "-avd", self.s.name, "-port", str(self.s.port),
-                      "-datadir", str(self.s.data)])}
+                      "-datadir", str(self.s.data), "-data", str(self.s.data / "userdata-qemu.img"),
+                      "-cache", str(self.s.data / "cache.img")])}
         found = {"targets": [target]}
         self.s.processes = Mock(return_value=found)
         self.assertIs(found, self.s.validate_process())
@@ -290,6 +301,19 @@ class SupervisorHostTest(unittest.TestCase):
         self.assertFalse(target.exists())
 
     def test_create_issues_one_non_forced_command_and_keeps_marker(self):
+        # Same one-shot create contract, now using the only newly authorized API36
+        # identity. API26 is adopted and must not be created a second time.
+        self.s.api = 36
+        self.s.name = "Lithic_M10V_API36_20261018"
+        self.s.serial = "emulator-5626"
+        self.s.home = validate.BASE / "api36"
+        self.s.data = self.s.home / "data" / (self.s.name + ".avd")
+        self.s.registry = self.s.home / "avds"
+        self.s.api26_exit_gate = Mock()
+        self.s.config_observation = {"configIntegrity": {}, "descriptorIntegrity": {}}
+        audit = validate.ROOT / "build/android-validation/environment-audit.json"
+        audit.parent.mkdir(parents=True)
+        audit.write_bytes(b"{}")
         self.s.audit = Mock(return_value=self.root / "image")
         self.s.processes = Mock(return_value={"targets": []})
         self.s.verify_avd = Mock(return_value={})

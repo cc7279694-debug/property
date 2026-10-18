@@ -1,0 +1,46 @@
+{
+  "utc": "2026-10-18T13:17:07.5816356Z",
+  "scope": "READ_ONLY_ENDING_NO_ADB",
+  "emulatorProcessCount": 2,
+  "targets": [
+    {
+      "ProcessId": 32880,
+      "ParentProcessId": 22676,
+      "CreationDate": "2026-10-18T21:16:37.545823+08:00",
+      "Name": "emulator.exe",
+      "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+      "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe -avd Lithic_M10V_API26_20261018 -port 5624 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2"
+    },
+    {
+      "ProcessId": 32032,
+      "ParentProcessId": 32880,
+      "CreationDate": "2026-10-18T21:16:38.05046+08:00",
+      "Name": "qemu-system-x86_64-headless.exe",
+      "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M10V_API26_20261018 -port 5624 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2"
+    }
+  ],
+  "ports": [
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5625,
+      "OwningProcess": 32032
+    },
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5624,
+      "OwningProcess": 32032
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5625,
+      "OwningProcess": 32032
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5624,
+      "OwningProcess": 32032
+    }
+  ],
+  "forbiddenOperationsIssued": 0
+}

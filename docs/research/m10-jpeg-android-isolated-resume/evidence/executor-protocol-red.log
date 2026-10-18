@@ -1,0 +1,56 @@
+test_after_failure_is_unknown_not_pass (__main__.NaturalTests.test_after_failure_is_unknown_not_pass) ... ok
+test_allowlist_is_fixed_nine_natural_methods (__main__.NaturalTests.test_allowlist_is_fixed_nine_natural_methods) ... ok
+test_control_characters_are_unknown (__main__.NaturalTests.test_control_characters_are_unknown) ... ok
+test_corrupt_prior_result_blocks_next (__main__.NaturalTests.test_corrupt_prior_result_blocks_next) ... ok
+test_crash_protocol_is_fail (__main__.NaturalTests.test_crash_protocol_is_fail) ... ok
+test_different_method_is_unknown (__main__.NaturalTests.test_different_method_is_unknown) ... ok
+test_duplicate_instrumentation_component_blocks (__main__.NaturalTests.test_duplicate_instrumentation_component_blocks) ... ok
+test_duplicate_terminal_is_unknown (__main__.NaturalTests.test_duplicate_terminal_is_unknown) ... ok
+test_exit_zero_is_not_a_test_result (__main__.NaturalTests.test_exit_zero_is_not_a_test_result) ... ok
+test_extra_malformed_protocol_code_is_unknown (__main__.NaturalTests.test_extra_malformed_protocol_code_is_unknown) ... FAIL
+test_failed_prior_result_blocks_next (__main__.NaturalTests.test_failed_prior_result_blocks_next) ... ok
+test_failure_status_is_fail_even_if_ok_text_present (__main__.NaturalTests.test_failure_status_is_fail_even_if_ok_text_present) ... ok
+test_fixture_changed_bytes_are_rejected (__main__.NaturalTests.test_fixture_changed_bytes_are_rejected) ... ok
+test_fixture_duplicate_entry_rejected (__main__.NaturalTests.test_fixture_duplicate_entry_rejected) ... ok
+test_fixture_missing_blocks (__main__.NaturalTests.test_fixture_missing_blocks) ... ok
+test_fixture_original_apk_hash_is_required (__main__.NaturalTests.test_fixture_original_apk_hash_is_required) ... ok
+test_identity_and_package_checks_precede_instrumentation (__main__.NaturalTests.test_identity_and_package_checks_precede_instrumentation) ... ok
+test_instrumentation_component_mismatch_blocks (__main__.NaturalTests.test_instrumentation_component_mismatch_blocks) ... ok
+test_later_method_cannot_run_without_prior_pass (__main__.NaturalTests.test_later_method_cannot_run_without_prior_pass) ... ok
+test_lifecycle_unknown_blocks_successful_test (__main__.NaturalTests.test_lifecycle_unknown_blocks_successful_test) ... ok
+test_marker_precedes_only_instrumentation (__main__.NaturalTests.test_marker_precedes_only_instrumentation) ... ok
+test_matching_prior_pass_permits_next_single_method (__main__.NaturalTests.test_matching_prior_pass_permits_next_single_method) ... ok
+test_missing_numtests_is_unknown (__main__.NaturalTests.test_missing_numtests_is_unknown) ... ok
+test_missing_start_is_unknown (__main__.NaturalTests.test_missing_start_is_unknown) ... ok
+test_multiple_tests_are_unknown (__main__.NaturalTests.test_multiple_tests_are_unknown) ... ok
+test_ok_text_without_protocol_is_unknown (__main__.NaturalTests.test_ok_text_without_protocol_is_unknown) ... ok
+test_parser_unknown_preserves_output_and_stops (__main__.NaturalTests.test_parser_unknown_preserves_output_and_stops) ... ok
+test_preflight_unknown_blocks_test (__main__.NaturalTests.test_preflight_unknown_blocks_test) ... ok
+test_prior_pass_from_other_serial_blocks (__main__.NaturalTests.test_prior_pass_from_other_serial_blocks) ... ok
+test_real_instrumentation_success_requires_matching_single_method (__main__.NaturalTests.test_real_instrumentation_success_requires_matching_single_method) ... ok
+test_replacement_decoding_is_unknown (__main__.NaturalTests.test_replacement_decoding_is_unknown) ... ok
+test_result_records_source_and_command_without_claiming_android_cleanup (__main__.NaturalTests.test_result_records_source_and_command_without_claiming_android_cleanup) ... ok
+test_same_method_cannot_be_reissued (__main__.NaturalTests.test_same_method_cannot_be_reissued) ... ok
+test_single_instrumentation_command_and_no_fault_extras (__main__.NaturalTests.test_single_instrumentation_command_and_no_fault_extras) ... ok
+test_skipped_protocol_is_not_pass (__main__.NaturalTests.test_skipped_protocol_is_not_pass) ... ok
+test_status_file_is_never_overwritten (__main__.NaturalTests.test_status_file_is_never_overwritten) ... ok
+test_timeout_is_unknown_and_not_retried (__main__.NaturalTests.test_timeout_is_unknown_and_not_retried) ... ok
+test_truncated_protocol_is_unknown (__main__.NaturalTests.test_truncated_protocol_is_unknown) ... ok
+test_unknown_instrumentation_still_collects_readonly_after (__main__.NaturalTests.test_unknown_instrumentation_still_collects_readonly_after) ... ok
+test_unknown_method_is_rejected_before_any_operation (__main__.NaturalTests.test_unknown_method_is_rejected_before_any_operation) ... ok
+
+======================================================================
+FAIL: test_extra_malformed_protocol_code_is_unknown (__main__.NaturalTests.test_extra_malformed_protocol_code_is_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_natural_tests.py", line 104, in test_extra_malformed_protocol_code_is_unknown
+    self.assertEqual("UNKNOWN",natural.parse_instrumentation(instrument()+"INSTRUMENTATION_CODE: unfinished\n",natural.METHODS[0])["status"])
+AssertionError: 'UNKNOWN' != 'PASS'
+- UNKNOWN
++ PASS
+
+
+----------------------------------------------------------------------
+Ran 40 tests in 0.500s
+
+FAILED (failures=1)

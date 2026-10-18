@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """One-operation isolated Android supervisor. No retries, cleanup, or test traversal.
 
-Only the root executor may run this file. The test subcommand deliberately stops:
-the root executor must inspect actual lifecycle evidence before authorizing a next
-method. All subprocess bytes are kept once, in the ignored JSONL command journal.
+Only the root executor may run this file. Each test operation executes one fixed
+natural method and requires its full evidence before any next method. All command
+bytes are kept once in the ignored JSONL journal. No retries or cleanup are offered.
 """
 from __future__ import annotations
 
@@ -14,11 +14,14 @@ import json
 import os
 from pathlib import Path
 import re
+import stat
 import subprocess
 import sys
 import time
 import ctypes
 from datetime import datetime, timezone
+
+import avd_identity
 
 ROOT = Path(__file__).resolve().parents[3]
 BASE = Path("E:/CODEX/.codex/research-env/lithic-m10-android-20261018-v1")
@@ -48,6 +51,24 @@ def need(condition, message):
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def file_digest(path, expected_size):
+    avd_identity.unlinked_ancestors(path)
+    before = path.lstat()
+    need(stat.S_ISREG(before.st_mode) and before.st_size == expected_size,
+         "File type/size does not match locked evidence")
+    measured, count = hashlib.sha256(), 0
+    with path.open("rb") as stream:
+        while block := stream.read(1024 * 1024):
+            measured.update(block)
+            count += len(block)
+            need(count <= expected_size, "File grew during integrity read")
+    after = path.lstat()
+    need((before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns) ==
+         (after.st_dev, after.st_ino, after.st_size, after.st_mtime_ns) and count == expected_size,
+         "File identity changed during integrity read")
+    return measured.hexdigest()
 
 
 def immutable(path, value):
@@ -110,7 +131,7 @@ class Supervisor:
         self.home = BASE / f"api{api}"
         self.data = self.home / "data" / f"{self.name}.avd"
         self.registry = self.home / "avds"
-        self.evidence = ROOT / "build/android-validation/evidence" / f"api{api}"
+        self.evidence = ROOT / "build/android-resume/evidence" / f"api{api}"
         self.evidence.mkdir(parents=True, exist_ok=True)
         self.journal = self.evidence / "commands.jsonl"
         self.env = self.environment()
@@ -128,7 +149,8 @@ class Supervisor:
         env.update({"JAVA_HOME": str(JDK), "ANDROID_HOME": str(self.sdk),
                     "ANDROID_SDK_ROOT": str(self.sdk), "ANDROID_USER_HOME": str(self.home / "android-user"),
                     "ANDROID_AVD_HOME": str(self.registry), "ANDROID_EMULATOR_HOME": str(self.home / "emulator-home"),
-                    "ANDROID_SERIAL": self.serial})
+                    "ANDROID_SERIAL": self.serial, "TEMP": str(self.home / "runtime-temp"),
+                    "TMP": str(self.home / "runtime-temp")})
         need("ANDROID_SDK_HOME" not in env, "Deprecated SDK home must be absent")
         return env
 
@@ -138,20 +160,28 @@ class Supervisor:
             stream.flush()
             os.fsync(stream.fileno())
 
-    def run(self, args, timeout=30, input_bytes=None, allowed=(0,), cwd=None):
+    def run(self, args, timeout=30, input_bytes=None, allowed=(0,), cwd=None, child_env=None):
         begin = utc()
+        selected_env = self.env if child_env is None else child_env
+        need(set(selected_env) == set(self.env) and
+             all(selected_env[key] == value for key, value in self.env.items() if key not in ("TEMP", "TMP")),
+             "Only explicit host diagnostic TEMP/TMP overrides are permitted")
+        environment_overrides = {key: selected_env[key] for key in ("TEMP", "TMP")
+                                 if selected_env[key] != self.env[key]}
         try:
             completed = subprocess.run([str(x) for x in args], input=input_bytes, capture_output=True,
-                                       cwd=cwd, env=self.env, timeout=timeout, creationflags=CREATION_NO_WINDOW)
+                                       cwd=cwd, env=selected_env, timeout=timeout, creationflags=CREATION_NO_WINDOW)
             code, stdout, stderr = completed.returncode, completed.stdout, completed.stderr
         except subprocess.TimeoutExpired as error:
             # Never retry, cancel an Android task, kill an emulator, or claim this is a rejection.
             self.note({"utc": begin, "endUtc": utc(), "argv": [str(x) for x in args], "cwd": str(cwd) if cwd else None,
                        "status": "COMMAND_TIMEOUT_UNKNOWN", "timeoutSeconds": timeout,
+                       "environmentOverrides": environment_overrides,
                        "stdoutBase64": base64.b64encode(error.stdout or b"").decode(),
                        "stderrBase64": base64.b64encode(error.stderr or b"").decode()})
             raise RuntimeError("Command supervision timeout: preserve device state") from error
         self.note({"utc": begin, "endUtc": utc(), "argv": [str(x) for x in args], "cwd": str(cwd) if cwd else None, "exitCode": code,
+                   "environmentOverrides": environment_overrides,
                    "stdoutBytes": len(stdout), "stdoutSHA256": digest(stdout),
                    "stderrBytes": len(stderr), "stderrSHA256": digest(stderr),
                    "stdoutBase64": base64.b64encode(stdout).decode(),
@@ -168,6 +198,8 @@ class Supervisor:
     def audit(self):
         report = json.loads((ROOT / "build/android-validation/environment-audit.json").read_text(encoding="utf-8"))
         need(report.get("sourceCommit") == "b756f96b699f3b70d43144f6c92815917fb563f6" and
+             report.get("observationSourceCommit") == "939e88b3fc79f3b9fd160737022f3bd795a07f37" and
+             bool(report.get("freshUtc")) and
              report.get("api26", {}).get("allOriginalFilesSizeAndShaMatch") is True and
              report.get("api36", {}).get("generatedPackageXml", {}).get("identityParsed") is True and
              report.get("tools", {}).get("primaryEmulatorAuthenticode", {}).get("status") == "Valid",
@@ -181,35 +213,157 @@ class Supervisor:
         need(found.get("SystemImage.Abi") == "x86_64" and found.get("SystemImage.TagId") == "google_apis", "Wrong image identity")
         if self.api == 26:
             need(found.get("Pkg.Revision") == "16", "API26 must remain official locked r16")
+        else:
+            need(found.get("Pkg.Revision") == "7", "API36 must remain official locked r7")
         need((image / "system.img").is_file(), "Existing system image missing")
         return image
 
+    def image_metadata_lock(self):
+        report = json.loads((ROOT / "build/android-validation/environment-audit.json").read_text(encoding="utf-8"))
+        current = report[f"api{self.api}"]
+        rows = current["files" if self.api == 26 else "currentImageFiles"]
+        selected = [row for row in rows if row.get("name") == "source.properties"]
+        need(len(selected) == 1, "Unique current image metadata digest missing")
+        return {"source.properties": selected[0]["sha256"],
+                "package.xml": current["generatedPackageXml"]["sha256"]}
+
+    def image_file_lock(self, filename):
+        report = json.loads((ROOT / "build/android-validation/environment-audit.json").read_text(encoding="utf-8"))
+        rows = report[f"api{self.api}"]["files" if self.api == 26 else "currentImageFiles"]
+        selected = [row for row in rows if row.get("name") == filename]
+        need(len(selected) == 1 and bool(re.fullmatch(r"[0-9a-f]{64}", selected[0].get("sha256", ""))),
+             "Locked official image file digest missing")
+        return selected[0]
+
     def verify_avd(self):
-        image = self.audit()
-        for path in (self.data, self.registry, self.registry / f"{self.name}.ini", self.data / "config.ini"):
-            unlinked_ancestors(path)
-        ini = properties(self.registry / f"{self.name}.ini")
-        need(Path(ini.get("path", "")).resolve() == self.data.resolve(), "AVD registry/data mismatch")
-        cfg = properties(self.data / "config.ini")
-        need(cfg.get("AvdId") == self.name and cfg.get("abi.type") == "x86_64", "AVD identity mismatch")
-        image_path = Path(cfg.get("image.sysdir.1", "").replace("\\", "/"))
-        if not image_path.is_absolute():
-            image_path = self.sdk / image_path
-        need(image_path.resolve() == image.resolve(), "AVD uses an unapproved image")
-        for key in ("disk.dataPartition.path", "disk.cachePartition.path", "sdcard.path"):
-            value = cfg.get(key)
-            if value:
-                candidate = Path(value)
-                need(within(candidate if candidate.is_absolute() else self.data / candidate, self.home), "AVD file escapes isolation")
-        need(within(self.data, self.home) and within(self.registry, self.home), "AVD isolation failed")
-        return cfg
+        self.audit()
+        self.config_observation = avd_identity.verify_configuration(
+            self.registry, self.data, self.sdk, self.name, self.api,
+            expected_image_digest=self.image_metadata_lock())
+        return self.config_observation["configuration"]
+
+    def vacant(self):
+        observed = self.processes()
+        need(isinstance(observed.get("targets"), list) and not observed["targets"],
+             "Current target process absence is not proven")
+        need(int(observed.get("freeKiB", 0)) >= (1536 + 1024) * 1024,
+             "Insufficient free host memory for guest plus headroom")
+        import socket
+        for port in (self.port, self.port + 1):
+            with socket.socket() as sock:
+                sock.bind(("127.0.0.1", port))
+        return observed
+
+    def adopt(self):
+        """Admit the preserved API26 CLI output, without rewriting old evidence."""
+        need(self.api == 26, "Only the preserved API26 AVD may be adopted")
+        self.verify_avd()
+        source = ROOT / "docs/research/m10-jpeg-android-isolated/evidence"
+        locked = (
+            (source / "api26-generated-config.ini", self.data / "config.ini"),
+            (source / "api26-generated-descriptor.ini", self.registry / (self.name + ".ini")),
+            (source / "api26-create-marker.json", self.home / "operations/create.json"),
+        )
+        identities = []
+        for original, current in locked:
+            before, after = avd_identity.read_bytes(original), avd_identity.read_bytes(current)
+            need(before == after, "Preserved official-create byte identity changed: " + current.name)
+            identities.append({"name": current.name, "bytes": len(after), "sha256": digest(after)})
+        journal = avd_identity.read_bytes(source / "api26-commands.jsonl")
+        rows = [json.loads(row) for row in journal.decode("utf-8").splitlines() if row]
+        creates = [row for row in rows if "create" in row.get("argv", []) and "avd" in row.get("argv", [])]
+        need(len(creates) == 1 and creates[0].get("exitCode") == 0, "Historical unique official create exit0 missing")
+        argv = creates[0]["argv"]
+        need(argv.count("-n") == 1 and argv[argv.index("-n") + 1] == self.name and
+             argv.count("-p") == 1 and Path(argv[argv.index("-p") + 1]).resolve() == self.data.resolve(),
+             "Historical official create target conflicts")
+        need(not (self.home / "operations/start.json").exists() and
+             not (self.home / "create-proof.json").exists(), "Preserved API26 must not have been started or reclassified")
+        closing_bytes = avd_identity.read_bytes(source / "api26-closing.json")
+        closing = json.loads(closing_bytes.decode("utf-8"))
+        files = closing.get("files", [])
+        need(len(files) == 4 and len({row.get("path") for row in files}) == 4,
+             "Original preserved file inventory is not the four locked files")
+        expected = {row["path"]: row for row in files}
+        allowed_dirs = {"avds", "data", "data/" + self.name + ".avd", "operations", "android-user", "emulator-home"}
+        present = set()
+        def configured_temp_observation():
+            temporary = self.home / "runtime-temp"
+            provenance = "CURRENT_CHILD_TEMP_CONFIGURED_OBSERVED_EMPTY_NOT_OLD_FILE"
+            if not temporary.exists():
+                return {"exists": False, "path": str(temporary), "provenance": provenance}
+            avd_identity.unlinked_ancestors(temporary)
+            before = temporary.lstat()
+            need(stat.S_ISDIR(before.st_mode) and not any(temporary.iterdir()),
+                 "Configured child temporary directory is not empty")
+            after = temporary.lstat()
+            need((before.st_dev, before.st_ino, before.st_mtime_ns) ==
+                 (after.st_dev, after.st_ino, after.st_mtime_ns),
+                 "Configured child temporary directory changed during observation")
+            return {"exists": True, "path": str(temporary), "empty": True,
+                    "device": after.st_dev, "inode": after.st_ino,
+                    "createdNs": after.st_ctime_ns, "modifiedNs": after.st_mtime_ns,
+                    "fileAttributes": getattr(after, "st_file_attributes", 0),
+                    "provenance": provenance}
+        def visit(directory):
+            for entry in directory.iterdir():
+                avd_identity.unlinked_ancestors(entry)
+                relative = entry.relative_to(self.home).as_posix()
+                kind = entry.lstat()
+                if stat.S_ISDIR(kind.st_mode):
+                    if relative == "runtime-temp":
+                        configured_temp_observation()
+                        continue
+                    need(relative in allowed_dirs, "Unknown preserved directory: " + relative)
+                    visit(entry)
+                else:
+                    need(relative in expected, "Unknown preserved file: " + relative)
+                    row = expected[relative]
+                    need(file_digest(entry, row["bytes"]) == row["sha256"],
+                         "Preserved file integrity differs: " + relative)
+                    present.add(relative)
+        visit(self.home)
+        need(present == set(expected), "Preserved file inventory is incomplete")
+        vacant = self.vacant()
+        # The read-only child process can create its configured TEMP directory.
+        # Recheck after that command; no file or nested directory is admitted.
+        configured_temp = configured_temp_observation()
+        immutable(self.home / "adoption-proof.json", {
+            "status": "PASS", "scope": "STATIC_ADOPTION_NOT_RUNTIME", "utc": utc(),
+            "sourceCommit": "939e88b3fc79f3b9fd160737022f3bd795a07f37", "api": self.api,
+            "avd": self.name, "serial": self.serial, "data": str(self.data), "registry": str(self.registry),
+            "preservedIdentities": identities, "originalJournalSHA256": digest(journal),
+            "originalClosingSHA256": digest(closing_bytes), "preservedFileInventory": files,
+            "configuredChildTemporaryDirectory": configured_temp,
+            "configuration": self.config_observation, "vacancyObservation": vacant,
+            "environmentAuditSHA256": digest((ROOT / "build/android-validation/environment-audit.json").read_bytes())})
+
+    def api26_exit_gate(self):
+        if self.api != 36:
+            return
+        proof = json.loads(avd_identity.read_bytes(BASE / "api26/normal-exit-proof.json").decode("utf-8"))
+        need(proof.get("status") == "PASS" and proof.get("api") == 26 and
+             proof.get("serial") == "emulator-5624" and
+             all(proof.get(key) is True for key in ("allNaturalMethodsPassed", "consumersSafe", "osProcessEnded")),
+             "API26 safe natural validation and normal exit are not proven")
 
     def processes(self, timeout=30):
         # Full system process rows stay in PowerShell memory. Only matching new-AVD rows leave it.
+        # CIM is a host diagnostic, not Android runtime: it must not create a new
+        # AVD home merely because PowerShell initializes its TEMP directory.
+        host_env = self.env.copy()
+        for key in ("TEMP", "TMP"):
+            original = os.environ.get(key, "")
+            candidate = Path(original)
+            need(bool(original) and candidate.is_absolute() and candidate.is_dir() and
+                 not within(candidate, BASE), "Existing host diagnostic temporary directory is not safe")
+            avd_identity.unlinked_ancestors(candidate)
+            host_env[key] = str(candidate)
         script = "$p=@(Get-CimInstance Win32_Process); $m=@($p | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'}); "
         script += f"$t=@($m | Where-Object {{$_.CommandLine -like '*{self.name}*'}}); "
         script += "$o=Get-CimInstance Win32_OperatingSystem; [pscustomobject]@{emulatorProcessCount=$m.Count; freeKiB=$o.FreePhysicalMemory; totalKiB=$o.TotalVisibleMemorySize; targets=@($t | Select-Object ProcessId,ParentProcessId,Name,ExecutablePath,CommandLine)} | ConvertTo-Json -Depth 4 -Compress"
-        found = json.loads(self.run(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", script], timeout=timeout))
+        found = json.loads(self.run(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", script],
+                                    timeout=timeout, child_env=host_env))
         return found
 
     def validate_process(self, timeout=30):
@@ -219,16 +373,66 @@ class Supervisor:
         for target in targets:
             command = target.get("CommandLine") or ""
             tokens = windows_arguments(command)
-            for key, expected in (("-avd", self.name), ("-port", str(self.port)), ("-datadir", str(self.data))):
+            for key, expected in (("-avd", self.name), ("-port", str(self.port)),
+                                  ("-datadir", str(self.data)), ("-data", str(self.data / "userdata-qemu.img")),
+                                  ("-cache", str(self.data / "cache.img"))):
                 need(tokens.count(key) == 1, "Missing/duplicate process argument: " + key)
                 index = tokens.index(key) + 1
                 need(index < len(tokens), "Truncated process argument")
-                if key == "-datadir":
-                    need(Path(tokens[index]).resolve() == self.data.resolve(), "Process data directory ambiguous")
+                if key in ("-datadir", "-data", "-cache"):
+                    need(Path(tokens[index]).resolve() == Path(expected).resolve(), "Process storage path ambiguous")
                 else:
                     need(tokens[index] == expected, "Process argument conflicts: " + key)
             need(within(Path(target.get("ExecutablePath") or ""), self.sdk / "emulator"), "Unexpected emulator executable")
         return found
+
+    def runtime_paths(self):
+        """Observe actual resolved QEMU paths; child TEMP alone is never proof."""
+        cfg, integrity = avd_identity.properties(self.data / "hardware-qemu.ini")
+        definitions = avd_identity.read_bytes(self.sdk / "emulator/lib/hardware-properties.ini", limit=512 * 1024)
+        official_names = set(re.findall(r"^name\s*=\s*(\S+)\s*$", definitions.decode("utf-8"), re.M))
+        need(cfg.get("avd.name") == self.name and cfg.get("avd.id") == self.name,
+             "Runtime AVD identity has not resolved to the isolated registration")
+        expected = {"disk.dataPartition.path": self.data / "userdata-qemu.img",
+                    "disk.cachePartition.path": self.data / "cache.img"}
+        readonly = {
+            "kernel.path": {"kernel-ranchu", "kernel-ranchu-64"},
+            "disk.ramdisk.path": {"ramdisk.img"},
+            "disk.dataPartition.initPath": {"userdata.img"},
+            "disk.systemPartition.initPath": {"system.img"},
+            "disk.vendorPartition.initPath": {"vendor.img"},
+        }
+        writable = {"disk.dataPartition.path", "disk.cachePartition.path", "hw.sdCard.path",
+                    "hw.logcatOutput.path",
+                    "disk.systemPartition.path", "disk.vendorPartition.path",
+                    "disk.encryptionKeyPartition.path", "disk.snapStorage.path"}
+        image = self.sdk / f"system-images/android-{self.api}/google_apis/x86_64"
+        observed = {}
+        for key, value in cfg.items():
+            if not value or not (key.endswith(".path") or key.endswith(".initPath")):
+                continue
+            need(key in official_names, "Runtime path field is absent from installed official schema: " + key)
+            need(key in writable or key in readonly, "Unknown runtime path field: " + key)
+            path = avd_identity.path_value(value, self.data)
+            if key in readonly:
+                found = [filename for filename in readonly[key] if path.resolve() in
+                         {(image / filename).resolve(), (self.data / filename).resolve()}]
+                need(len(found) == 1, "Runtime read-only image path conflicts: " + key)
+                lock = self.image_file_lock(found[0])
+                if within(path, self.data):
+                    need(file_digest(path, lock["bytes"]) == lock["sha256"],
+                         "AVD template copy differs from locked official image: " + key)
+            else:
+                need(within(path, self.data) or
+                     (key == "hw.logcatOutput.path" and within(path, self.home / "runtime-temp")),
+                     "Unconfined runtime writable path: " + key)
+            if key in expected:
+                need(path.resolve() == expected[key].resolve(), "Explicit runtime storage path differs: " + key)
+            observed[key] = str(path.resolve())
+        need(all(key in observed for key in expected), "Actual data/cache runtime paths missing")
+        return {"status": "PASS", "hardwareConfigIntegrity": integrity, "paths": observed,
+                "officialHardwareSchemaSHA256": digest(definitions),
+                "runtimeIdentity": self.name, "temporaryPaths": "NO_UNRESOLVED_WRITABLE_PATH_ACCEPTED"}
 
     def adb(self, *args, timeout=30, allowed=(0,), cwd=None):
         need(self.serial in ("emulator-5624", "emulator-5626"), "Unauthorized serial")
@@ -249,15 +453,19 @@ class Supervisor:
         need(self.adb("shell", "getprop", "ro.product.cpu.abi", timeout=remaining()) == "x86_64", "Actual ABI mismatch")
         name = self.adb("emu", "avd", "name", timeout=remaining()).splitlines()
         need(name and name[0] == self.name and all(x == "OK" for x in name[1:]), "Actual AVD name mismatch")
+        self.runtime_observation = self.runtime_paths()
 
     def create(self):
+        need(self.api == 36, "API26 creation is prohibited; only adopt the preserved CLI output")
+        self.api26_exit_gate()
         self.audit()
         need(not self.home.exists(), "Do not reuse/overwrite an existing environment")
         before = self.processes()
         need(not before.get("targets"), "AVD name already has a process")
         self.home.mkdir(parents=True, exist_ok=False)
         self.marker("create")
-        for path in (self.registry, self.home / "android-user", self.home / "emulator-home", self.data.parent):
+        for path in (self.registry, self.home / "android-user", self.home / "emulator-home",
+                     self.home / "runtime-temp", self.data.parent):
             path.mkdir(parents=True, exist_ok=False)
         managers = list((self.sdk / "cmdline-tools").glob("*/bin/avdmanager.bat"))
         need(len(managers) == 1, "avdmanager version is ambiguous")
@@ -266,27 +474,37 @@ class Supervisor:
                  timeout=120, input_bytes=b"no\n")
         self.verify_avd()
         immutable(self.home / "create-proof.json", {"status": "PASS", "utc": utc(), "api": self.api,
-                  "avd": self.name, "data": str(self.data), "registry": str(self.registry)})
+                  "avd": self.name, "data": str(self.data), "registry": str(self.registry),
+                  "configuration": self.config_observation,
+                  "environmentAuditSHA256": digest((ROOT / "build/android-validation/environment-audit.json").read_bytes())})
 
     def start(self):
         self.verify_avd()
-        need(json.loads((self.home / "create-proof.json").read_text())["status"] == "PASS", "Creation proof missing")
-        observed = self.processes()
-        need(not observed.get("targets"), "Do not launch a second instance")
-        # Host admission estimate only, never a JPEG native/RSS cap. No process is killed to make room.
-        need(int(observed.get("freeKiB", 0)) >= (1536 + 1024) * 1024, "Insufficient free host memory for guest plus headroom")
+        self.api26_exit_gate()
+        name = "adoption-proof.json" if self.api == 26 else "create-proof.json"
+        proof = json.loads(avd_identity.read_bytes(self.home / name).decode("utf-8"))
+        need(proof.get("status") == "PASS" and proof.get("api") == self.api and
+             proof.get("avd") == self.name and Path(proof.get("data", "")).resolve() == self.data.resolve(),
+             "Current matching adoption/creation proof missing")
+        need(proof.get("configuration", {}).get("configIntegrity") == self.config_observation["configIntegrity"] and
+             proof.get("configuration", {}).get("descriptorIntegrity") == self.config_observation["descriptorIntegrity"] and
+             proof.get("environmentAuditSHA256") == digest((ROOT / "build/android-validation/environment-audit.json").read_bytes()),
+             "Configuration/environment changed after immutable admission proof")
+        self.vacant()
         for other in CONFIG:
             other_home = BASE / f"api{other}"
             if other != self.api:
                 need(not (other_home / "operations/start.json").exists() or
                      (other_home / "boot-proof.json").is_file(), "Other isolated boot remains unproved; no parallel start")
-        import socket
-        for port in (self.port, self.port + 1):
-            with socket.socket() as sock:
-                sock.bind(("127.0.0.1", port))
+        temporary = self.home / "runtime-temp"
+        unlinked_ancestors(temporary)
+        temporary.mkdir(exist_ok=True)
+        need(not any(temporary.iterdir()), "Runtime temp is not a fresh empty dedicated directory")
         self.marker("start")
         args = [str(self.sdk / "emulator/emulator.exe"), "-avd", self.name, "-port", str(self.port),
-                "-datadir", str(self.data), "-sysdir", str(self.audit()), "-no-snapshot", "-no-window", "-no-audio", "-no-boot-anim",
+                "-datadir", str(self.data), "-data", str(self.data / "userdata-qemu.img"),
+                "-cache", str(self.data / "cache.img"), "-sysdir", str(self.audit()),
+                "-no-snapshot", "-no-window", "-no-audio", "-no-boot-anim",
                 "-memory", "1536", "-cores", "2"]
         began = time.monotonic()
         with (self.evidence / "emulator.log").open("xb") as log:
@@ -310,7 +528,8 @@ class Supervisor:
                     self.identity(deadline=deadline)
                     need(time.monotonic() <= deadline, "Boot proof exceeded the single fixed deadline")
                     immutable(self.home / "boot-proof.json", {"status": "PASS", "utc": utc(), "serial": self.serial,
-                              "avd": self.name, "api": self.api, "launcherPid": child.pid})
+                              "avd": self.name, "api": self.api, "launcherPid": child.pid,
+                              "runtimePaths": self.runtime_observation})
                     return
             time.sleep(min(2, max(0, deadline - time.monotonic())))
         raise RuntimeError("Boot deadline exhausted; no retry or cleanup")
@@ -380,19 +599,23 @@ class Supervisor:
 
 
 def main():
+    import natural_tests
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("api", type=int, choices=CONFIG)
-    parser.add_argument("operation", choices=("create", "start", "install", "test", "close-readonly"))
+    parser.add_argument("operation", choices=("adopt", "create", "start", "install", "test", "close-readonly"))
     parser.add_argument("--kind", choices=("app", "test"))
+    parser.add_argument("--method", choices=natural_tests.METHODS)
     args = parser.parse_args()
-    if args.operation == "test":
-        raise RuntimeError("BLOCKED: lifecycle test execution/evidence validation is root-executor-only; no automatic test path")
     supervisor = Supervisor(args.api)
-    if args.operation == "install":
+    if args.operation == "test":
+        need(args.method is not None and args.kind is None, "Specify exactly one permitted natural test method")
+        natural_tests.run_one(supervisor, args.method)
+    elif args.operation == "install":
         need(args.kind is not None, "Specify exactly one APK kind")
+        need(args.method is None, "Test method is only valid for test")
         supervisor.install(args.kind)
     else:
-        need(args.kind is None, "APK kind is only valid for install")
+        need(args.kind is None and args.method is None, "APK/test selection conflicts with operation")
         getattr(supervisor, args.operation.replace("-", "_"))()
     print(json.dumps({"status": "PASS", "operation": args.operation, "api": args.api,
                       "evidence": str(supervisor.evidence)}, sort_keys=True))

@@ -1,0 +1,91 @@
+{
+  "status": "BLOCKED_WINDOWS_QEMU_IDENTITY_FIRST_SAMPLE_NULL",
+  "source": "939e88b3fc79f3b9fd160737022f3bd795a07f37",
+  "branch": "codex/m10-jpeg-android-isolated-resume",
+  "utc": "2026-10-18T13:18:40.851008+00:00",
+  "hostTests": {
+    "unique": 191,
+    "pass": 189,
+    "skip": 2,
+    "fail": 0,
+    "androidEvidence": false
+  },
+  "api26": {
+    "newCreate": 0,
+    "start": 1,
+    "appInstall": 0,
+    "testInstall": 0,
+    "instrumentation": 0,
+    "adbCommands": 0,
+    "boot": "NOT_RUN",
+    "runtimeIdentity": "BLOCKED_AT_FIRST_CIM_SAMPLE",
+    "staticAdoption": "PASS",
+    "staticAdoptionInvocations": 2,
+    "launcherPid": 32880,
+    "qemuPid": 32032,
+    "serial": "emulator-5624",
+    "avd": "Lithic_M10V_API26_20261018",
+    "scene": "RUNNING_PRESERVED_NO_APK_INSTALLED"
+  },
+  "api36": {
+    "create": 0,
+    "start": 0,
+    "install": 0,
+    "test": "NOT_RUN"
+  },
+  "originalFourFiles": [
+    {
+      "path": "avds/Lithic_M10V_API26_20261018.ini",
+      "bytes": 148,
+      "sha256": "d29dd6f7b8cc6012c1eb95fc20d43e0f54417616c46d310d5b69f373e05f888d",
+      "currentSize": 148,
+      "currentSHA256": "d29dd6f7b8cc6012c1eb95fc20d43e0f54417616c46d310d5b69f373e05f888d",
+      "unchanged": true
+    },
+    {
+      "path": "data/Lithic_M10V_API26_20261018.avd/config.ini",
+      "bytes": 3461,
+      "sha256": "14f4964dbfbefc3f15c4f5d5b65ede5562197e8131c73fd82e6d80465e9288d5",
+      "currentSize": 3461,
+      "currentSHA256": "14f4964dbfbefc3f15c4f5d5b65ede5562197e8131c73fd82e6d80465e9288d5",
+      "unchanged": true
+    },
+    {
+      "path": "data/Lithic_M10V_API26_20261018.avd/userdata.img",
+      "bytes": 576716800,
+      "sha256": "c4219b87ba2b1b8e8c882cede0779d91782d134420d0191027e95209192bb640",
+      "currentSize": 576716800,
+      "currentSHA256": "c4219b87ba2b1b8e8c882cede0779d91782d134420d0191027e95209192bb640",
+      "unchanged": true
+    },
+    {
+      "path": "operations/create.json",
+      "bytes": 306,
+      "sha256": "43a098869eb6f9b611c6ed8d5ec59334945fe4368598222a72f0bea3c785e7b1",
+      "currentSize": 306,
+      "currentSHA256": "43a098869eb6f9b611c6ed8d5ec59334945fe4368598222a72f0bea3c785e7b1",
+      "unchanged": true
+    }
+  ],
+  "executedInputsUnchanged": true,
+  "emulatorLogSnapshot": {
+    "scope": "IMMUTABLE_PREFIX_OF_STILL_OPEN_EMULATOR_LOG_NOT_CLOSED_FULL_LOG",
+    "prefixBytes": 6205,
+    "sha256": "9a1f9db9be8b5e3f321c6e0ee549e4ead83b0ae3d63a62bf0fe54a607b43b3bd"
+  },
+  "formalStates": {
+    "M10": "PENDING",
+    "originalThreeJPEG": "HISTORICAL_FAIL_THIS_RUN_NOT_RUN",
+    "UI-C1": "ACCEPTED_FROZEN_PASS_WITH_NOTES",
+    "M11": "NOT_AUTHORIZED"
+  },
+  "forbiddenOperations": {
+    "oldH2C2Access": 0,
+    "restart": 0,
+    "shutdown": 0,
+    "faultInjection": 0,
+    "appBuild": 0,
+    "sdkDownloadUpgradeLicense": 0
+  },
+  "note": "Later read-only same-PID executable path is present; this does not retroactively pass first sample or authorize continuation."
+}

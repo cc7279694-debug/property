@@ -1,0 +1,19 @@
+SourceCommit=939e88b3fc79f3b9fd160737022f3bd795a07f37
+test_authorized_test_dispatch_must_reach_mock_executor_once (__main__.BaselineDispatchGap.test_authorized_test_dispatch_must_reach_mock_executor_once) ... FAIL
+Local baseline copy SHA256=babca1cc707ab03b9751ddd53c3ac0feb4bcc192b174fc31bab643838336297a
+
+======================================================================
+FAIL: test_authorized_test_dispatch_must_reach_mock_executor_once (__main__.BaselineDispatchGap.test_authorized_test_dispatch_must_reach_mock_executor_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\build\android-resume\check_baseline_dispatch.py", line 28, in test_authorized_test_dispatch_must_reach_mock_executor_once
+    self.assertEqual("EXECUTED_ONCE",observed,"Locked baseline lacks single-method execution: no Android command issued")
+AssertionError: 'EXECUTED_ONCE' != 'BLOCKED: BLOCKED: lifecycle test executio[63 chars]path'
+- EXECUTED_ONCE
++ BLOCKED: BLOCKED: lifecycle test execution/evidence validation is root-executor-only; no automatic test path
+ : Locked baseline lacks single-method execution: no Android command issued
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)

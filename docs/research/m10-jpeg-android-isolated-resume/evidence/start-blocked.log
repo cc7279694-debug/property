@@ -1,0 +1,13 @@
+{"detail": "Unexpected emulator executable", "errorType": "RuntimeError", "status": "BLOCKED"}
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 626, in <module>
+    main()
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 619, in main
+    getattr(supervisor, args.operation.replace("-", "_"))()
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 519, in start
+    self.validate_process(timeout=remaining)
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 386, in validate_process
+    need(within(Path(target.get("ExecutablePath") or ""), self.sdk / "emulator"), "Unexpected emulator executable")
+  File "E:\CODEX\.codex\worktrees\lithic-jpeg-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 49, in need
+    raise RuntimeError(message)
+RuntimeError: Unexpected emulator executable
