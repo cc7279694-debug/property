@@ -6,8 +6,15 @@ on:
       - .github/workflows/m10-jpeg-candidate.yml
       - docs/research/m10-jpeg-accelerated/*.py
       - docs/research/m10-jpeg-accelerated/*.c
+      - docs/research/m10-jpeg-accelerated/*.java
+      - docs/research/m10-jpeg-accelerated/CMakeLists.txt
       - docs/research/m10-jpeg-e01-native/*.c
       - docs/research/m10-jpeg-e01-native/*.h
+      - docs/research/m10-jpeg-e01-native/run_ci.py
+      - docs/research/m10-jpeg-r1/native/generate_fixtures.c
+      - docs/research/m10-jpeg-r1/scripts/derive_fixtures.py
+      - docs/research/m10-jpeg-e01-host/source-lock.json
+      - app/src/androidTest/assets/m10_jpeg_integrity/*.jpg
 permissions:
   contents: read
 jobs:

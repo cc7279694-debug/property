@@ -49,6 +49,7 @@ def sha(path):
 def configure(source, build, compiler, flags):
     base.run(compiler + "/configure", ["cmake", "-G", "Ninja", "-S", source, "-B", build,
         "-DCMAKE_C_COMPILER=" + compiler, "-DCMAKE_BUILD_TYPE=Debug",
+        "-DCMAKE_POSITION_INDEPENDENT_CODE=ON",
         "-DCMAKE_C_FLAGS=" + " ".join(["-O1", "-g", "-fno-omit-frame-pointer", *flags, "-I" + str(CORE)]),
         "-DENABLE_SHARED=OFF", "-DENABLE_STATIC=ON", "-DWITH_TURBOJPEG=OFF",
         "-DWITH_TOOLS=OFF", "-DWITH_TESTS=OFF", "-DWITH_SIMD=OFF"], build.parent)
@@ -109,6 +110,13 @@ def create_inputs(source, stock, root):
     data = bytearray(parent.read_bytes())
     markers, _ = derive.parse_original(bytes(data))
     sof = next(m for m in markers if m.code in derive.SOF_MARKERS)
+    # Header-only capability probes, not complete valid compatibility samples.
+    unsupported = bytearray(data)
+    unsupported[sof.payload_offset - 3] = 0xC5
+    mutate("unsupported-sof-header-only.jpg", parent, bytes(unsupported), ("INFRA_ERROR",))
+    dimension = bytearray(data)
+    dimension[sof.payload_offset + 1:sof.payload_offset + 5] = (1).to_bytes(2, "big") + (65501).to_bytes(2, "big")
+    mutate("decoder-dimension-header-only.jpg", parent, bytes(dimension), ("RESOURCE_REJECT",))
     data[sof.payload_offset + 1:sof.payload_offset + 5] = (5001).to_bytes(2, "big") + (8000).to_bytes(2, "big")
     mutate("over-40mp-header.jpg", parent, bytes(data), ("RESOURCE_REJECT",))
     oversize = root / "over-64mib.jpg"
@@ -196,10 +204,17 @@ def matrix(compiler, flags, source, build, root, generated, healthy, corrupt, or
     large_results = {}
     for path in healthy:
         value = case("healthy/" + path.name, path)
+        if path.name.startswith(("cmyk", "ycck")):
+            if (value["inputComponents"] != 4 or value["outputComponents"] != 4 or
+                    value["jpegColorSpace"] != (5 if path.name.startswith("ycck") else 4) or
+                    value["outputColorSpace"] != 4 or value["dataPrecision"] != 8):
+                raise RuntimeError("Four-component compatibility path not exercised")
         if path.name.startswith("large_40mp_"):
             if value["width"] * value["height"] != 40000000:
                 raise RuntimeError("Stress dimensions differ")
             large_results[path.name] = value
+    if set(large_results) != {"large_40mp_baseline_420.jpg", "large_40mp_progressive_420.jpg", "large_40mp_progressive_444.jpg"}:
+        raise RuntimeError("Required 40MP coverage missing")
     for path, expected in corrupt:
         case("mutation/" + path.name, path, expected=expected)
     for path in originals:
@@ -219,8 +234,11 @@ def matrix(compiler, flags, source, build, root, generated, healthy, corrupt, or
     phase_parent = generated / "large_40mp_progressive_420.jpg"
     for phase in ("create", "header", "start", "row", "scanline", "finish", "release"):
         value = case("phase-fault/" + phase, phase_parent, ("--fault-phase", phase), ("INFRA_ERROR",))
-        if not value["phaseFaultInjected"] or value["errorCode"] != -2100:
+        if not value["phaseFaultInjected"] or value["errorCode"] != -2100 or value["phase"] != phase:
             raise RuntimeError("Phase fault missing/misclassified")
+        expected_rows = 1 if phase == "scanline" else (value["height"] if phase in ("finish", "release") else 0)
+        if value["rowsRead"] != expected_rows or value["finishComplete"] != (phase == "release") or value["warnings"]:
+            raise RuntimeError("Fault did not reach the required real decode boundary")
     if compiler == "gcc":
         controlled_process_end(probe, generated / "large_40mp_progressive_444.jpg", root)
     emit("MATRIX_RESULT", compiler=compiler, sanitizer=bool(flags), probeRuns=len(results),
