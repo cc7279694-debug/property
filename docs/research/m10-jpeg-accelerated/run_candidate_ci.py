@@ -241,9 +241,39 @@ def matrix(compiler, flags, source, build, root, generated, healthy, corrupt, or
             raise RuntimeError("Fault did not reach the required real decode boundary")
     if compiler == "gcc":
         controlled_process_end(probe, generated / "large_40mp_progressive_444.jpg", root)
+        host_jni(common, source, build, root, generated, originals)
     emit("MATRIX_RESULT", compiler=compiler, sanitizer=bool(flags), probeRuns=len(results),
          accepts=sum(v["status"] == "ACCEPT" for _, v in results),
          allMeteredReleased=True, allAcquiredFdsClosed=True, large=large_results)
+
+
+def host_jni(common, source, build, root, generated, originals):
+    # Exercise this exact bridge in a real JVM. No Android lifecycle inference.
+    javac, java = shutil.which("javac"), shutil.which("java")
+    if not javac or not java:
+        raise RuntimeError("Existing runner JDK missing; no automatic install")
+    include = Path(javac).resolve().parents[1] / "include"
+    if not (include / "jni.h").is_file() or not (include / "linux/jni_md.h").is_file():
+        raise RuntimeError("Existing Linux JNI headers missing")
+    base.run("host-jni/version", [java, "-version"], root)
+    library = build / "libstrictjpeg_candidate_host.so"
+    base.run("host-jni/compile-native", [*common, "-fPIC", "-shared", "-DE01_NO_MAIN",
+        "-I", include, "-I", include / "linux", HERE / "jni_bridge.c",
+        CORE / "strict_probe.c", CORE / "budget.c", build / "libjpeg.a", "-lm", "-o", library], root)
+    classes = build / "classes"
+    classes.mkdir()
+    base.run("host-jni/javac", [javac, "-d", classes, HERE / "StrictJpegCandidate.java", HERE / "JniHostTest.java"], root)
+    command = [java, "--add-opens=java.base/java.io=ALL-UNNAMED", "-cp", classes, "JniHostTest"]
+    _, text = base.run("host-jni/execute", [*command, library, *originals, generated / "large_40mp_progressive_420.jpg"], root)
+    value = base.last_json(text)
+    if value.get("jniCalls") != 8 or not value.get("callerOffsetPreserved"):
+        raise RuntimeError("JNI host runtime contract failed")
+    emit("JNI_HOST", **value)
+    _, text = base.run("host-jni/load-error", [*command, "load-error", root / "does-not-exist.so"], root)
+    value = base.last_json(text)
+    if not value.get("loadFailurePreserved"):
+        raise RuntimeError("Host load failure swallowed")
+    emit("JNI_HOST", **value)
 
 
 def main():

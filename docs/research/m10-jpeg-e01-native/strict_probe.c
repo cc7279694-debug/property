@@ -134,14 +134,23 @@ static void strict_fatal(j_common_ptr decoder)
   int code = decoder->err->msg_code;
   enum e01_status status = E01_IMAGE;
 
-  if (code == JERR_OUT_OF_MEMORY || code == JERR_NO_BACKING_STORE)
+  if (code == JERR_OUT_OF_MEMORY || code == JERR_NO_BACKING_STORE ||
+      code == JERR_IMAGE_TOO_BIG || code == JERR_WIDTH_OVERFLOW)
     status = E01_RESOURCE;
   else if (context->result.phase == E01_PHASE_CREATE ||
+           code == JERR_SOF_UNSUPPORTED || code == JERR_NOT_COMPILED ||
+           code == JERR_NOTIMPL || code == JERR_CONVERSION_NOTIMPL ||
+           code == JERR_FRACT_SAMPLE_NOTIMPL || code == JERR_COMPONENT_COUNT ||
+           (code == JERR_EMPTY_IMAGE && context->decoder.image_height == 0 &&
+            context->decoder.image_width > 0 && context->decoder.num_components > 0) ||
            code == JERR_BAD_LIB_VERSION || code == JERR_BAD_STRUCT_SIZE ||
            code == JERR_BAD_ALIGN_TYPE || code == JERR_BAD_ALLOC_CHUNK ||
            code == JERR_BAD_STATE || code == JERR_BAD_POOL_ID ||
            code == JERR_BAD_VIRTUAL_ACCESS || code == JERR_VIRTUAL_BUG)
     status = E01_INFRA;
+  /* Codec capacity/unsupported coding modes are not proof of corrupt input.
+   * In particular DNL may legally start with height zero. Preserve its error
+   * code and refuse as a research capability gap, never a lenient success. */
   abort_decode(context, status, code);
 }
 
