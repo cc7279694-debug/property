@@ -1,14 +1,17 @@
 # 当前项目状态
 
-状态日期：2026-10-18（Asia/Shanghai；现有API26接续及两次自然测试已执行，缺损项日志连续性UNKNOWN，停止等待独立审查）。本文件为唯一当前状态；归档/checkpoint保留历史，不回写旧失败。
+状态日期：2026-10-18（Asia/Shanghai；日志监督器离线整改完成，原API26实例不存在，Android续验停止）。本文件为唯一当前状态；历史证据/checkpoint不改写。
 
 ## Current Stage
 
-- **M10 JPEG Android runtime resume — BLOCKED / DAMAGED_GATE_LOG_CONTINUITY**：来源 `3474f639c2a831d26e74eeeff5ec8db0f6ea7a3f`；分支 `codex/m10-jpeg-android-runtime-resume`。原launcher32880/QEMU32032、创建时间、完整路径/参数、5624/5625归属通过有界双观察核验；本轮独立steady-state proof观察boot1/API26/x86_64/正确AVD，原首次300秒时限NOT_PROVEN，旧start/失败不改。
-- **实际运行**：API26新增create0/start0，两锁定APK各安装1次；405条ADB全定向5624，其中2安装、2单方法instrumentation、401只读，均原始exit0但不代替门禁。健康JUnit1PASS（2.041s），pin/FD/认证退休/死亡/终结证据经原字节追加核验PASS；原因Windows CRLF读取转换产生的原外层UNKNOWN仍保留，未重跑或覆盖。缺损JUnit1PASS（1.258s）、真实INVALID_IMAGE/code117，但日志前缀被环形缓冲淘汰，完整生命周期门禁UNKNOWN。后续7方法/原三JPEG断言/API36全部NOT_RUN；没有放宽连续性条件、重试或故障注入。
-- **宿主与范围**：最终234唯一Python方法232PASS/2SKIP（原191保留；symlink权限两项跳过）。有界身份、真实console CRCRLF、原字节取证和精确离线补充核验有回归；未重跑JVM/native全量/Lint/Gradle。App/Test SHA `0ada2631…47dbf`/`3b0005a3…4282a`，App子树`89679a188c2b6e6793962041383a9f92337e126f`不变，无产品代码/原JPEG断言/Room/备份/算法/UI变化或新下载/SDK许可。
-- **结束现场及下一步**：原新AVD `Lithic_M10V_API26_20261018/emulator-5624`、目录`E:/CODEX/.codex/research-env/lithic-m10-android-20261018-v1/api26`继续运行；结束只读无活动App/Worker，2个合成Stage归属/终结/无pin及匹配Worker缺失核验PASS。当前安全状态不补足缺失的原日志区间。不自动重测、关闭、重建或清理；只提交ChatGPT独立审查取证连续性和已收集证据。见[集中报告](research/M10_JPEG_ANDROID_RUNTIME_RESUME.md)、[真实结果](research/m10-jpeg-android-runtime-resume/evidence/RESULTS.json)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-ANDROID-RUNTIME-RESUME.md)。
-- **正式/历史状态**：M10 PENDING、三JPEG历史FAIL（对应原断言本轮NOT_RUN）、UI-C1 ACCEPTED/FROZEN PASS WITH NOTES、M11 NOT_AUTHORIZED；R3原29项、D2A/A1及所有NOTE/FAIL/UNKNOWN保留。原H2 DELIVERY_UNKNOWN/pin=true、C2及旧AVD未访问。上一轮CIM首次null失败及本轮console误拦/健康外层UNKNOWN均保留独立来源，不用后续证据覆写原件。
+- **M10 Android final natural validation — BLOCKED / ORIGINAL_API26_INSTANCE_ABSENT**：来源 `31a85a9c1e0ecbba373cce0b29d6ad82767aa7c3`，独立分支 `codex/m10-jpeg-android-final-natural-validation`。15:08:31 UTC只读CIM结果 `targets=[] / ports=[] / emulatorProcessCount=0`；原launcher32880/QEMU32032已不在，消失原因UNKNOWN。按当前授权立即停止所有Android准入；不启动替代实例。
+- **已实现、待Android验证**：单方法测试前连续受限tag采集；原始stdout/stderr、SHA、observer就绪/生存/受控结束与EOF；容量/期限/中断/身份及六阶段偏序校验。真实Supervisor强制此路径，无snapshot-only降级；旧prefix比较仅保留历史/宿主兼容路径。采集器本身不证明logd绝无不可见丢失。源码与限定结果见[集中报告](research/M10_JPEG_ANDROID_FINAL_NATURAL_VALIDATION.md)。
+- **实际宿主回归**：322唯一Python方法，320PASS / 2SKIP / 0FAIL / 0ERROR；原234身份全部保留，新增88全部PASS。2SKIP为本机符号链接权限，测试输入前后SHA一致。RED、时钟粒度及header边界中间失败如实保留。没有重跑JVM/native全量、Lint、Gradle或APK构建。
+- **本轮设备操作全部0**：ADB、AVD创建/启动、APK安装、instrumentation、正常退出及API36操作均0。boot/API/AVD/已安装APK/UID、当前两Stage、私人字节完整性均NOT_RUN。健康项继承用户确认的限定补验PASS、未重跑；旧缺损项完整窗口UNKNOWN不变。新缺损自然验证、剩余7项及API36均NOT_RUN；没有生成本轮Android PASS。
+- **下一步边界**：提交ChatGPT独立审查离线整改和环境阻塞。原实例已消失，现授权不允许重启/替代；后续环境选择与执行需新的明确授权。没有实施跨轮门禁旁路、恢复或未知清理。见[结果](research/m10-jpeg-android-final-natural/evidence/RESULTS.json)、[checkpoint](checkpoints/2026-10-18-M10-JPEG-ANDROID-FINAL-NATURAL.md)。
+- **正式状态保持**：M10 PENDING、原三JPEG历史FAIL；UI-C1 ACCEPTED/FROZEN PASS WITH NOTES；M11 NOT_AUTHORIZED。旧缺损before/after/result和全部历史证据不变。R3原29项、D2A-N01～N05、A1-N01～N04和全部NOTE/FAIL/UNKNOWN/NOT_RUN继承。原H2 DELIVERY_UNKNOWN/pin=true、C2及旧设备/私有数据均未访问或操作。
+
+上一现有API26续接的真实两次自然测试与旧缺损UNKNOWN见[原报告](research/M10_JPEG_ANDROID_RUNTIME_RESUME.md)；原报告结束时AVD运行只代表当时观察，不覆盖本轮实例已不存在的事实。
 
 上一续接监督器交付及首次CIM阻塞见[原报告](research/M10_JPEG_ANDROID_ISOLATED_RESUME.md)，本轮是新的有限授权，不改原结论。
 

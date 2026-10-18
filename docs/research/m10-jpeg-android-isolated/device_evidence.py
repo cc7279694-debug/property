@@ -212,12 +212,21 @@ def before(s,method):
     except (ValueError,KeyError,OSError,RuntimeError,TypeError) as error:
         return {**result,"status":"BLOCKED","errors":[str(error)]}
 
-def after(s,method,prior):
+def after(s,method,prior,*,capture=None):
     result={"status":"BLOCKED","method":method,"serial":s.serial,"api":s.api,"errors":[]}
     try:
         result=snapshot(s,method)
         need(prior.get("uid")==result["uid"] and prior.get("serial")==result["serial"] and prior.get("api")==result["api"],"After identity conflicts with before")
-        result["newPhaseLog"]=new_log_lines(prior["phaseLog"],result["phaseLog"])
+        if capture is None:
+            need(not getattr(s,"continuous_capture_required",False),"Continuous capture missing; snapshot fallback forbidden")
+            result["newPhaseLog"]=new_log_lines(prior["phaseLog"],result["phaseLog"])
+        else:
+            from continuous_evidence import consume_capture
+            proof=capture()
+            directory=Path(s.evidence)/f"method-{METHODS.index(method):02d}"/"continuous-log"
+            scoped=consume_capture(proof,directory,prior["phaseLog"],expected_serial=s.serial)
+            result["newPhaseLog"]=scoped["newPhaseLog"]
+            result["continuousCapture"]=scoped
         need(all(result["stages"].get(key)==value for key,value in prior["stages"].items()),"Old synthetic Stage changed/disappeared")
         need(all(result["observations"].get(key)==value for key,value in prior["observations"].items()),"Old immutable observation changed/disappeared")
         result["newStages"]={key:value for key,value in result["stages"].items() if key not in prior["stages"]}

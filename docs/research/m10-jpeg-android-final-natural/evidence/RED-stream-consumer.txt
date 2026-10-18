@@ -1,0 +1,21 @@
+test_continuous_evidence (unittest.loader._FailedTest.test_continuous_evidence) ... ERROR
+
+======================================================================
+ERROR: test_continuous_evidence (unittest.loader._FailedTest.test_continuous_evidence)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_continuous_evidence
+Traceback (most recent call last):
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_continuous_evidence.py", line 9, in <module>
+    from continuous_evidence import consume_capture
+ModuleNotFoundError: No module named 'continuous_evidence'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

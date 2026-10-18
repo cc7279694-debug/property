@@ -1,0 +1,329 @@
+test_capture_raw_bytes_can_be_independently_reverified (__main__.ContinuousLogTest.test_capture_raw_bytes_can_be_independently_reverified) ... FAIL
+test_command_is_serial_scoped_read_only_main_buffer (__main__.ContinuousLogTest.test_command_is_serial_scoped_read_only_main_buffer) ... FAIL
+test_deadline_independently_bounds_a_blocked_observer (__main__.ContinuousLogTest.test_deadline_independently_bounds_a_blocked_observer) ... FAIL
+test_early_clean_exit_is_unknown_not_a_normal_capture_end (__main__.ContinuousLogTest.test_early_clean_exit_is_unknown_not_a_normal_capture_end) ... FAIL
+test_early_nonzero_exit_is_preserved (__main__.ContinuousLogTest.test_early_nonzero_exit_is_preserved) ... FAIL
+test_event_without_header_does_not_prove_reader_ready (__main__.ContinuousLogTest.test_event_without_header_does_not_prove_reader_ready) ... FAIL
+test_expected_serial_mismatch_is_rejected (__main__.ContinuousLogTest.test_expected_serial_mismatch_is_rejected) ... FAIL
+test_finish_is_idempotent_and_does_not_rewrite_proof (__main__.ContinuousLogTest.test_finish_is_idempotent_and_does_not_rewrite_proof) ... FAIL
+test_historical_devices_are_not_capture_targets (__main__.ContinuousLogTest.test_historical_devices_are_not_capture_targets) ... FAIL
+test_invalid_utf8_is_not_replacement_decoded_into_success (__main__.ContinuousLogTest.test_invalid_utf8_is_not_replacement_decoded_into_success) ... FAIL
+test_launch_error_is_retained_without_another_attempt (__main__.ContinuousLogTest.test_launch_error_is_retained_without_another_attempt) ... FAIL
+test_live_header_and_complete_pipe_bytes_are_preserved (__main__.ContinuousLogTest.test_live_header_and_complete_pipe_bytes_are_preserved) ... FAIL
+test_live_process_without_actual_header_never_becomes_ready (__main__.ContinuousLogTest.test_live_process_without_actual_header_never_becomes_ready) ... FAIL
+test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) ... 
+  test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) (marker=b'logcat: Unexpected EOF!\n') ... FAIL
+  test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) (marker=b'dropped 8 log messages\n') ... FAIL
+  test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) (marker=b'buffer overflow\n') ... FAIL
+  test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) (marker=b'chatty: uid=10077 expire 3 lines\n') ... FAIL
+test_old_capture_directory_is_not_overwritten_or_started (__main__.ContinuousLogTest.test_old_capture_directory_is_not_overwritten_or_started) ... FAIL
+test_partial_final_line_is_truncated_unknown (__main__.ContinuousLogTest.test_partial_final_line_is_truncated_unknown) ... FAIL
+test_post_capture_byte_tamper_is_rejected (__main__.ContinuousLogTest.test_post_capture_byte_tamper_is_rejected) ... FAIL
+test_real_historical_rotation_is_replayed_without_old_prefix_dependency (__main__.ContinuousLogTest.test_real_historical_rotation_is_replayed_without_old_prefix_dependency) ... FAIL
+test_real_history_duplicate_event_does_not_pass_phase_validator (__main__.ContinuousLogTest.test_real_history_duplicate_event_does_not_pass_phase_validator) ... ok
+test_real_history_impossible_monotonic_order_does_not_pass (__main__.ContinuousLogTest.test_real_history_impossible_monotonic_order_does_not_pass) ... ok
+test_real_history_missing_event_does_not_pass_phase_validator (__main__.ContinuousLogTest.test_real_history_missing_event_does_not_pass_phase_validator) ... ok
+test_real_history_wrong_emitter_does_not_pass_phase_validator (__main__.ContinuousLogTest.test_real_history_wrong_emitter_does_not_pass_phase_validator) ... ok
+test_replaying_historical_data_does_not_change_original_unknown (__main__.ContinuousLogTest.test_replaying_historical_data_does_not_change_original_unknown) ... ok
+test_same_capture_cannot_launch_a_second_observer (__main__.ContinuousLogTest.test_same_capture_cannot_launch_a_second_observer) ... FAIL
+test_second_main_header_is_not_silently_treated_as_a_reconnect (__main__.ContinuousLogTest.test_second_main_header_is_not_silently_treated_as_a_reconnect) ... FAIL
+test_stderr_diagnostics_cannot_be_ignored (__main__.ContinuousLogTest.test_stderr_diagnostics_cannot_be_ignored) ... FAIL
+test_stderr_overflow_is_not_hidden_by_complete_stdout (__main__.ContinuousLogTest.test_stderr_overflow_is_not_hidden_by_complete_stdout) ... FAIL
+test_stdout_overflow_retains_bounded_prefix_and_marks_unknown (__main__.ContinuousLogTest.test_stdout_overflow_retains_bounded_prefix_and_marks_unknown) ... FAIL
+test_unknown_capture_cannot_be_relabelled_by_reader (__main__.ContinuousLogTest.test_unknown_capture_cannot_be_relabelled_by_reader) ... FAIL
+
+======================================================================
+FAIL: test_capture_raw_bytes_can_be_independently_reverified (__main__.ContinuousLogTest.test_capture_raw_bytes_can_be_independently_reverified)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 216, in test_capture_raw_bytes_can_be_independently_reverified
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_command_is_serial_scoped_read_only_main_buffer (__main__.ContinuousLogTest.test_command_is_serial_scoped_read_only_main_buffer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 91, in test_command_is_serial_scoped_read_only_main_buffer
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_deadline_independently_bounds_a_blocked_observer (__main__.ContinuousLogTest.test_deadline_independently_bounds_a_blocked_observer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 208, in test_deadline_independently_bounds_a_blocked_observer
+    capture = self.make(max_seconds=.25, readiness_timeout=.1)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_early_clean_exit_is_unknown_not_a_normal_capture_end (__main__.ContinuousLogTest.test_early_clean_exit_is_unknown_not_a_normal_capture_end)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 140, in test_early_clean_exit_is_unknown_not_a_normal_capture_end
+    capture = self.make(tail="time.sleep(.12)")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_early_nonzero_exit_is_preserved (__main__.ContinuousLogTest.test_early_nonzero_exit_is_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 147, in test_early_nonzero_exit_is_preserved
+    capture = self.make(tail="time.sleep(.12); raise SystemExit(17)")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_event_without_header_does_not_prove_reader_ready (__main__.ContinuousLogTest.test_event_without_header_does_not_prove_reader_ready)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 108, in test_event_without_header_does_not_prove_reader_ready
+    capture = self.make(stdout=LINE, readiness_timeout=.15)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_expected_serial_mismatch_is_rejected (__main__.ContinuousLogTest.test_expected_serial_mismatch_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 240, in test_expected_serial_mismatch_is_rejected
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_finish_is_idempotent_and_does_not_rewrite_proof (__main__.ContinuousLogTest.test_finish_is_idempotent_and_does_not_rewrite_proof)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 131, in test_finish_is_idempotent_and_does_not_rewrite_proof
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_historical_devices_are_not_capture_targets (__main__.ContinuousLogTest.test_historical_devices_are_not_capture_targets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 247, in test_historical_devices_are_not_capture_targets
+    self.assertIsNotNone(ContinuousLogCapture)
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_invalid_utf8_is_not_replacement_decoded_into_success (__main__.ContinuousLogTest.test_invalid_utf8_is_not_replacement_decoded_into_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 192, in test_invalid_utf8_is_not_replacement_decoded_into_success
+    capture = self.make(stdout=HEADER + b"\xff\n")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_launch_error_is_retained_without_another_attempt (__main__.ContinuousLogTest.test_launch_error_is_retained_without_another_attempt)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 253, in test_launch_error_is_retained_without_another_attempt
+    self.assertIsNotNone(ContinuousLogCapture)
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_live_header_and_complete_pipe_bytes_are_preserved (__main__.ContinuousLogTest.test_live_header_and_complete_pipe_bytes_are_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 76, in test_live_header_and_complete_pipe_bytes_are_preserved
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_live_process_without_actual_header_never_becomes_ready (__main__.ContinuousLogTest.test_live_process_without_actual_header_never_becomes_ready)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 101, in test_live_process_without_actual_header_never_becomes_ready
+    capture = self.make(stdout=b"", readiness_timeout=.15)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) (marker=b'logcat: Unexpected EOF!\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 182, in test_observable_drop_markers_are_unknown
+    capture = self.make(stdout=HEADER + marker)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) (marker=b'dropped 8 log messages\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 182, in test_observable_drop_markers_are_unknown
+    capture = self.make(stdout=HEADER + marker)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) (marker=b'buffer overflow\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 182, in test_observable_drop_markers_are_unknown
+    capture = self.make(stdout=HEADER + marker)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) (marker=b'chatty: uid=10077 expire 3 lines\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 182, in test_observable_drop_markers_are_unknown
+    capture = self.make(stdout=HEADER + marker)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_old_capture_directory_is_not_overwritten_or_started (__main__.ContinuousLogTest.test_old_capture_directory_is_not_overwritten_or_started)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 113, in test_old_capture_directory_is_not_overwritten_or_started
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_partial_final_line_is_truncated_unknown (__main__.ContinuousLogTest.test_partial_final_line_is_truncated_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 197, in test_partial_final_line_is_truncated_unknown
+    capture = self.make(stdout=HEADER + LINE.rstrip(b"\r\n"))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_post_capture_byte_tamper_is_rejected (__main__.ContinuousLogTest.test_post_capture_byte_tamper_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 224, in test_post_capture_byte_tamper_is_rejected
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_real_historical_rotation_is_replayed_without_old_prefix_dependency (__main__.ContinuousLogTest.test_real_historical_rotation_is_replayed_without_old_prefix_dependency)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 276, in test_real_historical_rotation_is_replayed_without_old_prefix_dependency
+    capture = self.make(stdout=replay)
+              ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_same_capture_cannot_launch_a_second_observer (__main__.ContinuousLogTest.test_same_capture_cannot_launch_a_second_observer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 123, in test_same_capture_cannot_launch_a_second_observer
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_second_main_header_is_not_silently_treated_as_a_reconnect (__main__.ContinuousLogTest.test_second_main_header_is_not_silently_treated_as_a_reconnect)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 187, in test_second_main_header_is_not_silently_treated_as_a_reconnect
+    capture = self.make(stdout=HEADER + LINE + HEADER)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_stderr_diagnostics_cannot_be_ignored (__main__.ContinuousLogTest.test_stderr_diagnostics_cannot_be_ignored)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 203, in test_stderr_diagnostics_cannot_be_ignored
+    capture = self.make(stderr=b"adb: device offline\n")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_stderr_overflow_is_not_hidden_by_complete_stdout (__main__.ContinuousLogTest.test_stderr_overflow_is_not_hidden_by_complete_stdout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 165, in test_stderr_overflow_is_not_hidden_by_complete_stdout
+    capture = self.make(max_stderr_bytes=64,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_stdout_overflow_retains_bounded_prefix_and_marks_unknown (__main__.ContinuousLogTest.test_stdout_overflow_retains_bounded_prefix_and_marks_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 155, in test_stdout_overflow_retains_bounded_prefix_and_marks_unknown
+    capture = self.make(stdout=HEADER, max_stdout_bytes=256,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+======================================================================
+FAIL: test_unknown_capture_cannot_be_relabelled_by_reader (__main__.ContinuousLogTest.test_unknown_capture_cannot_be_relabelled_by_reader)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 233, in test_unknown_capture_cannot_be_relabelled_by_reader
+    capture = self.make(stdout=HEADER + b"tail")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 59, in make
+    self.assertIsNotNone(ContinuousLogCapture, "Continuous capture implementation is missing")
+AssertionError: unexpectedly None : Continuous capture implementation is missing
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.060s
+
+FAILED (failures=27)

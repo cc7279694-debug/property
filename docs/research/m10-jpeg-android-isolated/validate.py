@@ -133,6 +133,8 @@ def windows_arguments(command):
 
 
 class Supervisor:
+    continuous_capture_required = True
+
     def __init__(self, api):
         self.api = api
         self.name, self.port, self.sdk = CONFIG[api]
@@ -140,10 +142,15 @@ class Supervisor:
         self.home = BASE / f"api{api}"
         self.data = self.home / "data" / f"{self.name}.avd"
         self.registry = self.home / "avds"
-        self.evidence = ROOT / "build/android-runtime-resume/evidence" / f"api{api}"
+        self.evidence = ROOT / "build/android-final-natural/evidence" / f"api{api}"
         self.evidence.mkdir(parents=True, exist_ok=True)
         self.journal = self.evidence / "commands.jsonl"
         self.env = self.environment()
+
+    def new_log_capture(self, directory):
+        from continuous_log import ContinuousLogCapture
+        return ContinuousLogCapture(TOOLS / "platform-tools/adb.exe", self.serial,
+                                    Path(directory) / "continuous-log", env=self.env)
 
     def environment(self):
         env = os.environ.copy()

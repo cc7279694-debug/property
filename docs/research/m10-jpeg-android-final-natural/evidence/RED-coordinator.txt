@@ -1,0 +1,269 @@
+test_actual_required_mode_cannot_fall_back_to_legacy_snapshot_only (test_final_capture_integration.FinalCaptureIntegrationTest.test_actual_required_mode_cannot_fall_back_to_legacy_snapshot_only) ... FAIL
+test_capture_finish_exception_is_unknown_and_keeps_readonly_ending (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_finish_exception_is_unknown_and_keeps_readonly_ending) ... ERROR
+test_capture_is_finished_after_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_is_finished_after_instrumentation) ... ERROR
+test_capture_is_started_before_the_single_instrumentation_command (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_is_started_before_the_single_instrumentation_command) ... ERROR
+test_capture_proof_is_preserved_even_when_junit_fails (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_proof_is_preserved_even_when_junit_fails) ... ERROR
+test_capture_start_failure_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_start_failure_never_issues_instrumentation) ... ERROR
+test_factory_failure_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_factory_failure_never_issues_instrumentation) ... ERROR
+test_factory_receives_the_exclusive_current_method_directory (test_final_capture_integration.FinalCaptureIntegrationTest.test_factory_receives_the_exclusive_current_method_directory) ... ERROR
+test_instrumentation_exception_still_finishes_the_capture (test_final_capture_integration.FinalCaptureIntegrationTest.test_instrumentation_exception_still_finishes_the_capture) ... ERROR
+test_instrumentation_failure_still_finishes_the_capture (test_final_capture_integration.FinalCaptureIntegrationTest.test_instrumentation_failure_still_finishes_the_capture) ... ERROR
+test_live_capture_is_checked_before_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_live_capture_is_checked_before_instrumentation) ... ERROR
+test_live_unknown_status_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_live_unknown_status_never_issues_instrumentation) ... ERROR
+test_not_live_capture_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_not_live_capture_never_issues_instrumentation) ... ERROR
+test_original_unknown_evidence_is_never_rewritten (test_final_capture_integration.FinalCaptureIntegrationTest.test_original_unknown_evidence_is_never_rewritten) ... ERROR
+test_readonly_after_failure_does_not_abandon_the_collector (test_final_capture_integration.FinalCaptureIntegrationTest.test_readonly_after_failure_does_not_abandon_the_collector) ... ERROR
+test_start_unknown_status_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_start_unknown_status_never_issues_instrumentation) ... ERROR
+test_unknown_capture_never_automatically_runs_a_following_method (test_final_capture_integration.FinalCaptureIntegrationTest.test_unknown_capture_never_automatically_runs_a_following_method) ... ERROR
+test_unknown_capture_overrides_successful_junit (test_final_capture_integration.FinalCaptureIntegrationTest.test_unknown_capture_overrides_successful_junit) ... ERROR
+
+======================================================================
+ERROR: test_capture_finish_exception_is_unknown_and_keeps_readonly_ending (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_finish_exception_is_unknown_and_keeps_readonly_ending)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 96, in test_capture_finish_exception_is_unknown_and_keeps_readonly_ending
+    self.collector.finish_error=RuntimeError("reader did not drain"); self.blocked()
+                                                                      ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_capture_is_finished_after_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_is_finished_after_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 87, in test_capture_is_finished_after_instrumentation
+    self.run_first()
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_capture_is_started_before_the_single_instrumentation_command (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_is_started_before_the_single_instrumentation_command)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 63, in test_capture_is_started_before_the_single_instrumentation_command
+    row=self.run_first(); self.assertEqual("PASS",row["status"])
+        ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_capture_proof_is_preserved_even_when_junit_fails (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_proof_is_preserved_even_when_junit_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 126, in test_capture_proof_is_preserved_even_when_junit_fails
+    self.sup.response="INSTRUMENTATION_FAILED: synthetic host fixture\n"; self.blocked()
+                                                                          ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_capture_start_failure_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_capture_start_failure_never_issues_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 70, in test_capture_start_failure_never_issues_instrumentation
+    self.collector.start_error=RuntimeError("ready UNKNOWN"); self.blocked()
+                                                              ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_factory_failure_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_factory_failure_never_issues_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 84, in test_factory_failure_never_issues_instrumentation
+    self.factory=broken_factory; self.blocked()
+                                 ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_factory_receives_the_exclusive_current_method_directory (test_final_capture_integration.FinalCaptureIntegrationTest.test_factory_receives_the_exclusive_current_method_directory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 114, in test_factory_receives_the_exclusive_current_method_directory
+    self.run_first(); self.assertEqual(1,len(self.factory_calls))
+    ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_instrumentation_exception_still_finishes_the_capture (test_final_capture_integration.FinalCaptureIntegrationTest.test_instrumentation_exception_still_finishes_the_capture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 101, in test_instrumentation_exception_still_finishes_the_capture
+    self.sup.run_error=TimeoutError("instrumentation UNKNOWN"); self.blocked()
+                                                                ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_instrumentation_failure_still_finishes_the_capture (test_final_capture_integration.FinalCaptureIntegrationTest.test_instrumentation_failure_still_finishes_the_capture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 106, in test_instrumentation_failure_still_finishes_the_capture
+    self.sup.response="INSTRUMENTATION_FAILED: synthetic host fixture\n"; self.blocked()
+                                                                          ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_live_capture_is_checked_before_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_live_capture_is_checked_before_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 67, in test_live_capture_is_checked_before_instrumentation
+    self.run_first()
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_live_unknown_status_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_live_unknown_status_never_issues_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 80, in test_live_unknown_status_never_issues_instrumentation
+    self.collector.live_status="UNKNOWN"; self.blocked()
+                                          ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_not_live_capture_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_not_live_capture_never_issues_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 74, in test_not_live_capture_never_issues_instrumentation
+    self.collector.live_error=RuntimeError("observer exited"); self.blocked()
+                                                               ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_original_unknown_evidence_is_never_rewritten (test_final_capture_integration.FinalCaptureIntegrationTest.test_original_unknown_evidence_is_never_rewritten)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 124, in test_original_unknown_evidence_is_never_rewritten
+    self.run_first(); self.assertEqual(raw,path.read_bytes())
+    ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_readonly_after_failure_does_not_abandon_the_collector (test_final_capture_integration.FinalCaptureIntegrationTest.test_readonly_after_failure_does_not_abandon_the_collector)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 110, in test_readonly_after_failure_does_not_abandon_the_collector
+    self.evidence.after_error=RuntimeError("stage UNKNOWN"); self.blocked()
+                                                             ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_start_unknown_status_never_issues_instrumentation (test_final_capture_integration.FinalCaptureIntegrationTest.test_start_unknown_status_never_issues_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 77, in test_start_unknown_status_never_issues_instrumentation
+    self.collector.start_status="UNKNOWN"; self.blocked()
+                                           ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_unknown_capture_never_automatically_runs_a_following_method (test_final_capture_integration.FinalCaptureIntegrationTest.test_unknown_capture_never_automatically_runs_a_following_method)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 129, in test_unknown_capture_never_automatically_runs_a_following_method
+    self.collector.status="UNKNOWN"; self.blocked()
+                                     ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+ERROR: test_unknown_capture_overrides_successful_junit (test_final_capture_integration.FinalCaptureIntegrationTest.test_unknown_capture_overrides_successful_junit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 91, in test_unknown_capture_overrides_successful_junit
+    self.collector.status="UNKNOWN"; self.blocked(); row=self.result()
+                                     ^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 61, in blocked
+    with self.assertRaises(natural.MethodBlocked): self.run_first()
+                                                   ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 58, in run_first
+    return natural.run_one(self.sup,natural.METHODS[0],self.evidence,capture_factory=self.factory)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: run_one() got an unexpected keyword argument 'capture_factory'
+
+======================================================================
+FAIL: test_actual_required_mode_cannot_fall_back_to_legacy_snapshot_only (test_final_capture_integration.FinalCaptureIntegrationTest.test_actual_required_mode_cannot_fall_back_to_legacy_snapshot_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_final_capture_integration.py", line 119, in test_actual_required_mode_cannot_fall_back_to_legacy_snapshot_only
+    with self.assertRaises(natural.MethodBlocked): natural.run_one(self.sup,natural.METHODS[0],self.evidence)
+AssertionError: MethodBlocked not raised
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.068s
+
+FAILED (failures=1, errors=17)

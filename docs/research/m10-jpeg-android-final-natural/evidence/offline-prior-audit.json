@@ -1,0 +1,75 @@
+{
+  "sourceCommit": "31a85a9c1e0ecbba373cce0b29d6ad82767aa7c3",
+  "mode": "OFFLINE_READ_ONLY_NO_ANDROID_COMMANDS",
+  "originalStatus": "UNKNOWN",
+  "originalAdapterErrors": [
+    "Lifecycle log rotated or prior prefix changed"
+  ],
+  "historicalRawFiles": {
+    "before.json": {
+      "bytes": 9205,
+      "sha256": "a9f89a9d5859defdab28b5b192bb2795409bfe6e629ad0d9a488231299b05f94"
+    },
+    "after.json": {
+      "bytes": 16288,
+      "sha256": "33b929372c1ed87d38f50eef5e82460d579e74e08ea5c995916d63448f5c65ae"
+    },
+    "result.json": {
+      "bytes": 1675,
+      "sha256": "1ff34aa43aec6f3cf07aaf701a8ce0126b415faf5fef9d593be9f303ffa3d559"
+    },
+    "instrumentation.txt": {
+      "bytes": 885,
+      "sha256": "a0967c4974d1d9cd0d99bb98cfb45431595c231c9d7068dd4a1b4fc3a9e21d63"
+    },
+    "attempt.json": {
+      "bytes": 313,
+      "sha256": "694810b59fbebd17728dec5df759cf2453698d2d748a7aeec41c5f9113790bb4"
+    }
+  },
+  "observedIdentity": {
+    "generation": "m10-worker-review-84dd4152-d2af-4da0-9936-96f271d3d784",
+    "attempt": "878d3544-05fb-462a-9f19-b08ace2e7041",
+    "session": "fd71b830-e3d5-4fbe-ab66-f9d34131eb9c",
+    "hostPid": 7457,
+    "hostUid": 10077,
+    "workerPid": 7483,
+    "workerUid": 10077,
+    "workerStartTicks": 204264
+  },
+  "offlineComponents": {
+    "rawSingleJUnit": "PASS",
+    "capturedSixRetirementPhases": "PASS",
+    "capturedStageOwnerTerminalCleanup": "PASS",
+    "continuousCaptureStartedBeforeTest": "NOT_RUN",
+    "continuousLogObserverLivenessAndEnd": "NOT_RUN",
+    "fullOriginalWindowCompleteness": "UNKNOWN",
+    "wholeLifecycle": "UNKNOWN"
+  },
+  "missingAdapterFields": [
+    "newStages",
+    "newObservations",
+    "workerProc",
+    "instrumentationText"
+  ],
+  "capturedPhaseTimes": {
+    "WORKER_RETIRE_ARMED": 2042874,
+    "HOST_RETIRE_ACKNOWLEDGED": 2042876,
+    "HOST_UNBIND_RETURNED": 2042877,
+    "WORKER_ON_UNBIND": 2042878,
+    "WORKER_EXIT_AUTHENTICATED_DETACH": 2042878,
+    "HOST_BINDER_DIED": 2042911
+  },
+  "decision": "Original UNKNOWN must remain; existing bytes cannot prove uninterrupted original log collection. Use separately authorized new attempt with continuous capture if fresh device gates pass.",
+  "historicalFilesModified": false,
+  "currentAuthorizationOutcome": {
+    "status": "BLOCKED",
+    "reason": "Root executor reports current read-only CIM observation: original API26 instance absent (targets=[], ports=[]). No replacement/start authorized.",
+    "evidenceOrigin": "ROOT_EXECUTOR_ACTUAL_CIM_OBSERVATION",
+    "newDamagedMethod": "NOT_RUN",
+    "remainingSevenMethods": "NOT_RUN",
+    "API36": "NOT_RUN",
+    "androidCommandsByThisAudit": 0,
+    "rawHistoricalLogDuplicated": false
+  }
+}

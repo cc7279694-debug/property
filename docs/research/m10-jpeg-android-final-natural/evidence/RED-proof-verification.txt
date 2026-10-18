@@ -1,0 +1,96 @@
+test_capture_raw_bytes_can_be_independently_reverified (__main__.ContinuousLogTest.test_capture_raw_bytes_can_be_independently_reverified) ... ok
+test_command_is_serial_scoped_read_only_main_buffer (__main__.ContinuousLogTest.test_command_is_serial_scoped_read_only_main_buffer) ... ok
+test_deadline_independently_bounds_a_blocked_observer (__main__.ContinuousLogTest.test_deadline_independently_bounds_a_blocked_observer) ... ok
+test_early_clean_exit_is_unknown_not_a_normal_capture_end (__main__.ContinuousLogTest.test_early_clean_exit_is_unknown_not_a_normal_capture_end) ... ok
+test_early_nonzero_exit_is_preserved (__main__.ContinuousLogTest.test_early_nonzero_exit_is_preserved) ... ok
+test_event_without_header_does_not_prove_reader_ready (__main__.ContinuousLogTest.test_event_without_header_does_not_prove_reader_ready) ... ok
+test_expected_serial_mismatch_is_rejected (__main__.ContinuousLogTest.test_expected_serial_mismatch_is_rejected) ... ok
+test_finish_is_idempotent_and_does_not_rewrite_proof (__main__.ContinuousLogTest.test_finish_is_idempotent_and_does_not_rewrite_proof) ... ok
+test_historical_devices_are_not_capture_targets (__main__.ContinuousLogTest.test_historical_devices_are_not_capture_targets) ... ok
+test_invalid_utf8_is_not_replacement_decoded_into_success (__main__.ContinuousLogTest.test_invalid_utf8_is_not_replacement_decoded_into_success) ... ok
+test_launch_error_is_retained_without_another_attempt (__main__.ContinuousLogTest.test_launch_error_is_retained_without_another_attempt) ... ok
+test_live_header_and_complete_pipe_bytes_are_preserved (__main__.ContinuousLogTest.test_live_header_and_complete_pipe_bytes_are_preserved) ... ok
+test_live_process_without_actual_header_never_becomes_ready (__main__.ContinuousLogTest.test_live_process_without_actual_header_never_becomes_ready) ... ok
+test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) ... 
+  test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) (field='limits') ... ERROR
+  test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) (field='process') ... ERROR
+  test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) (field='stdout') ... ERROR
+  test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) (field='stderr') ... ERROR
+test_observable_drop_markers_are_unknown (__main__.ContinuousLogTest.test_observable_drop_markers_are_unknown) ... ok
+test_old_capture_directory_is_not_overwritten_or_started (__main__.ContinuousLogTest.test_old_capture_directory_is_not_overwritten_or_started) ... ok
+test_partial_final_line_is_truncated_unknown (__main__.ContinuousLogTest.test_partial_final_line_is_truncated_unknown) ... ok
+test_post_capture_byte_tamper_is_rejected (__main__.ContinuousLogTest.test_post_capture_byte_tamper_is_rejected) ... ok
+test_reader_exception_preserves_incomplete_eof_and_original_error (__main__.ContinuousLogTest.test_reader_exception_preserves_incomplete_eof_and_original_error) ... ok
+test_ready_byte_boundary_must_contain_the_actual_full_header (__main__.ContinuousLogTest.test_ready_byte_boundary_must_contain_the_actual_full_header) ... FAIL
+test_real_historical_rotation_is_replayed_without_old_prefix_dependency (__main__.ContinuousLogTest.test_real_historical_rotation_is_replayed_without_old_prefix_dependency) ... ok
+test_real_history_duplicate_event_does_not_pass_phase_validator (__main__.ContinuousLogTest.test_real_history_duplicate_event_does_not_pass_phase_validator) ... ok
+test_real_history_impossible_monotonic_order_does_not_pass (__main__.ContinuousLogTest.test_real_history_impossible_monotonic_order_does_not_pass) ... ok
+test_real_history_missing_event_does_not_pass_phase_validator (__main__.ContinuousLogTest.test_real_history_missing_event_does_not_pass_phase_validator) ... ok
+test_real_history_wrong_emitter_does_not_pass_phase_validator (__main__.ContinuousLogTest.test_real_history_wrong_emitter_does_not_pass_phase_validator) ... ok
+test_replaying_historical_data_does_not_change_original_unknown (__main__.ContinuousLogTest.test_replaying_historical_data_does_not_change_original_unknown) ... ok
+test_reverse_capture_time_order_is_rejected (__main__.ContinuousLogTest.test_reverse_capture_time_order_is_rejected) ... ok
+test_same_capture_cannot_launch_a_second_observer (__main__.ContinuousLogTest.test_same_capture_cannot_launch_a_second_observer) ... ok
+test_second_main_header_is_not_silently_treated_as_a_reconnect (__main__.ContinuousLogTest.test_second_main_header_is_not_silently_treated_as_a_reconnect) ... ok
+test_status_pass_cannot_override_unclosed_reader_proof (__main__.ContinuousLogTest.test_status_pass_cannot_override_unclosed_reader_proof) ... ok
+test_stderr_diagnostics_cannot_be_ignored (__main__.ContinuousLogTest.test_stderr_diagnostics_cannot_be_ignored) ... ok
+test_stderr_overflow_is_not_hidden_by_complete_stdout (__main__.ContinuousLogTest.test_stderr_overflow_is_not_hidden_by_complete_stdout) ... ok
+test_stdout_overflow_retains_bounded_prefix_and_marks_unknown (__main__.ContinuousLogTest.test_stdout_overflow_retains_bounded_prefix_and_marks_unknown) ... ok
+test_unknown_capture_cannot_be_relabelled_by_reader (__main__.ContinuousLogTest.test_unknown_capture_cannot_be_relabelled_by_reader) ... ok
+test_wrong_command_is_rejected_even_when_status_claims_pass (__main__.ContinuousLogTest.test_wrong_command_is_rejected_even_when_status_claims_pass) ... ok
+
+======================================================================
+ERROR: test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) (field='limits')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 296, in test_nonobject_evidence_fields_fail_closed_with_validation_error
+    read_verified(capture.directory)
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\continuous_log.py", line 346, in read_verified
+    need(type(limits.get(key)) is int and 0 < limits[key] <= ceiling, "Missing capture byte bound")
+              ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) (field='process')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 296, in test_nonobject_evidence_fields_fail_closed_with_validation_error
+    read_verified(capture.directory)
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\continuous_log.py", line 366, in read_verified
+    need(type(process.get("pid")) is int and process["pid"] > 0
+              ^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) (field='stdout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 296, in test_nonobject_evidence_fields_fail_closed_with_validation_error
+    read_verified(capture.directory)
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\continuous_log.py", line 373, in read_verified
+    need(meta.get("file") == name + ".raw" and meta.get("eof") is True
+         ^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_nonobject_evidence_fields_fail_closed_with_validation_error (__main__.ContinuousLogTest.test_nonobject_evidence_fields_fail_closed_with_validation_error) (field='stderr')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 296, in test_nonobject_evidence_fields_fail_closed_with_validation_error
+    read_verified(capture.directory)
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\continuous_log.py", line 373, in read_verified
+    need(meta.get("file") == name + ".raw" and meta.get("eof") is True
+         ^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+FAIL: test_ready_byte_boundary_must_contain_the_actual_full_header (__main__.ContinuousLogTest.test_ready_byte_boundary_must_contain_the_actual_full_header)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-final-natural\砺石新APP\docs\research\m10-jpeg-android-isolated\test_continuous_log.py", line 266, in test_ready_byte_boundary_must_contain_the_actual_full_header
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 35 tests in 3.843s
+
+FAILED (failures=1, errors=4)

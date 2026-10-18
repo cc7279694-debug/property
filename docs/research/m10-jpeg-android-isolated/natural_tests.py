@@ -95,7 +95,7 @@ def audit_fixtures(audit):
     return {"status": "PASS", "testAPK": TEST_SHA, "fixtures": values}
 
 
-def run_one(supervisor, method, evidence_api=None):
+def run_one(supervisor, method, evidence_api=None, *, capture_factory=None):
     """Issue exactly one permitted method; any non-PASS durably stops traversal.
 
     The adapter protocol is before(s, method), after(s, method, before), and
@@ -131,9 +131,31 @@ def run_one(supervisor, method, evidence_api=None):
               "instrumentation": {"status": "NOT_RUN"}, "lifecycle": {"status": "NOT_RUN"}}
     before = None
     issued = False
+    collector = None
+    capture_finished = False
+    capture_proof = None
+
+    def finish_capture():
+        # A failed drain must never trigger a second stop/finish operation.
+        nonlocal capture_finished, capture_proof
+        if not capture_finished:
+            capture_finished = True
+            try:
+                capture_proof = collector.finish()
+                if not isinstance(capture_proof, dict):
+                    raise ValueError("Log observer finish did not return structured evidence")
+            except Exception as error:
+                capture_proof = {"status": "UNKNOWN", "reason": str(error),
+                                 "errorType": type(error).__name__}
+        return capture_proof
+
     try:
         if evidence_api is None:
             import device_evidence as evidence_api
+        if capture_factory is None and callable(getattr(supervisor, "new_log_capture", None)):
+            capture_factory = lambda s, directory: s.new_log_capture(directory)
+        if getattr(supervisor, "continuous_capture_required", False) and capture_factory is None:
+            raise MethodBlocked("Continuous log observer required; snapshot-only fallback forbidden")
         supervisor.identity()
         audit = supervisor.apk_audit()
         result["fixtures"] = audit_fixtures(audit)
@@ -147,6 +169,16 @@ def run_one(supervisor, method, evidence_api=None):
         immutable(directory / "before.json", before)
         if before.get("status") != "PASS":
             raise MethodBlocked("Current device/worker/stage evidence is not eligible")
+        if capture_factory is not None:
+            collector = capture_factory(supervisor, directory)
+            ready = collector.start()
+            result["logCaptureStarted"] = ready
+            if not isinstance(ready, dict) or ready.get("status") != "PASS":
+                raise MethodBlocked("Continuous log observer readiness UNKNOWN")
+            live = collector.assert_live()
+            result["logCaptureLiveBeforeCommand"] = live
+            if not isinstance(live, dict) or live.get("status") != "PASS":
+                raise MethodBlocked("Continuous log observer liveness UNKNOWN")
         supervisor.marker(f"natural-test-{index:02d}")
         immutable(directory / "attempt.json", {"status": "ATTEMPT_ISSUED", "method": method,
                   "serial": supervisor.serial, "api": supervisor.api, "component": COMPONENT})
@@ -154,6 +186,7 @@ def run_one(supervisor, method, evidence_api=None):
                          "evidence": str(directory), "automaticRetry": False})
         issued = True
         result["instrumentationCommandsIssued"] = 1
+        result["instrumentationIssuedUTC"] = datetime.now(timezone.utc).isoformat()
         # am instrument may stop/relaunch only this isolated test target as part of normal
         # instrumentation; no force-stop, fault extra, clear, kill, or retry is issued.
         try:
@@ -164,8 +197,10 @@ def run_one(supervisor, method, evidence_api=None):
         except Exception as error:
             result["instrumentation"] = {"status": "UNKNOWN", "reason": str(error), "errorType": type(error).__name__,
                                          "rawBytes": "See immutable supervisor command journal; device completion unproved"}
+        result["instrumentationReturnedUTC"] = datetime.now(timezone.utc).isoformat()
         # This remains a read-only ending observation even after a failed or timed-out method.
-        after = evidence_api.after(supervisor, method, before)
+        after = (evidence_api.after(supervisor, method, before, capture=finish_capture)
+                 if collector is not None else evidence_api.after(supervisor, method, before))
         immutable(directory / "after.json", after)
         result["lifecycle"] = evidence_api.assess(method, before, after, result["instrumentation"])
         states = (result["instrumentation"].get("status"), result["lifecycle"].get("status"))
@@ -178,6 +213,11 @@ def run_one(supervisor, method, evidence_api=None):
     except Exception as error:
         result["status"] = "UNKNOWN" if issued else "BLOCKED"
         result["error"] = {"type": type(error).__name__, "detail": str(error)}
+    finally:
+        if collector is not None:
+            result["logCapture"] = finish_capture()
+            if result["logCapture"].get("status") != "PASS" and result["status"] == "PASS":
+                result["status"] = "UNKNOWN"
     result["finishedUTC"] = datetime.now(timezone.utc).isoformat()
     immutable(directory / "result.json", result)
     supervisor.note({"operation": "ONE_NATURAL_METHOD_RESULT", "method": method, "status": result["status"],
