@@ -1,0 +1,31 @@
+{
+  "readLimitSeconds": 30,
+  "readerWallSeconds": 0.3490763000008883,
+  "records": {
+    "no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json": {
+      "metadata": {
+        "bytes": 390,
+        "device": 64512,
+        "inode": 115488,
+        "links": 1,
+        "sha256": "0ecf28718f3618cbde2bba10ea07094e047b0e101367650f657ae6b77702da37",
+        "type": "regular",
+        "uid": 10077
+      },
+      "text": "{\"protocol\":\"M10_B1B2_SAFETY_ATTEMPT_V1\",\"method\":\"com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers\",\"runId\":\"5d5131cc-071f-4857-be43-c6c6a4187f06\",\"api\":26,\"hostPid\":5881,\"hostUid\":10077,\"hostStartTicks\":205846,\"bootId\":\"6c697468-6963-4000-8000-000000000001\",\"status\":\"ATTEMPT_ISSUED\",\"roomOrFormalCoverCommitted\":false}\n"
+    },
+    "no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json": {
+      "metadata": {
+        "bytes": 2439,
+        "device": 64512,
+        "inode": 115490,
+        "links": 1,
+        "sha256": "d8ee1fab947efa91787a255674714f3e51069bdefcc38ca726343424287dca53",
+        "type": "regular",
+        "uid": 10077
+      },
+      "text": "{\"protocol\":\"M10_B1B2_PREFLIGHT_V1\",\"runId\":\"5d5131cc-071f-4857-be43-c6c6a4187f06\",\"method\":\"com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers\",\"status\":\"PASS\",\"noConsumerWork\":true,\"reflectedClasses\":[{\"class\":\"com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest\",\"declaredMethods\":1,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.M10B1CancellationSafetyTest\",\"declaredMethods\":10,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.M10B1ExactProcessFaultTest\",\"declaredMethods\":34,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.M10JpegResourceEvidenceTest\",\"declaredMethods\":25,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.M10ResourceSampler\",\"declaredMethods\":12,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.M10B1B2SafetySupport\",\"declaredMethods\":9,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.M10B1ClosureObservations\",\"declaredMethods\":6,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence\",\"declaredMethods\":10,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics\",\"declaredMethods\":8,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics$Session\",\"declaredMethods\":21,\"scan\":\"PASS\"},{\"class\":\"com.cooper.lithic.data.media.jpegworker.JpegBootIdentity\",\"declaredMethods\":1,\"scan\":\"PASS\"}],\"before\":{\"stageRoots\":0,\"stageMetadataRows\":0,\"stageMetadataSHA256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"businessOrImageBytesRead\":false,\"evidenceNamespaceExcluded\":\"m10-b1b2-safety\"},\"after\":{\"stageRoots\":0,\"stageMetadataRows\":0,\"stageMetadataSHA256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"businessOrImageBytesRead\":false,\"evidenceNamespaceExcluded\":\"m10-b1b2-safety\"},\"processesBefore\":{\"status\":\"ABSENT_AT_OBSERVATION\",\"source\":\"ACTIVITY_MANAGER_SAME_UID\",\"workerRows\":0,\"externalSupervisorProcVerification\":\"REQUIRED_SEPARATELY\"},\"processesAfter\":{\"status\":\"ABSENT_AT_OBSERVATION\",\"source\":\"ACTIVITY_MANAGER_SAME_UID\",\"workerRows\":0,\"externalSupervisorProcVerification\":\"REQUIRED_SEPARATELY\"},\"bootIdBefore\":\"6c697468-6963-4000-8000-000000000001\",\"bootIdAfter\":\"6c697468-6963-4000-8000-000000000001\",\"bootStable\":true,\"mainRoleAndExactHostInstance\":true,\"stageCreatedByMethod\":false,\"workerStartedByMethod\":false,\"deviceAdmissionOutsideThisMethod\":\"REQUIRED\"}\n"
+    }
+  },
+  "utc": "2026-10-19T10:23:41.572672+00:00"
+}

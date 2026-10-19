@@ -6,7 +6,9 @@ The only device writes are fresh files beneath this task's new target package.
 from __future__ import annotations
 import json
 from pathlib import Path
+import re
 import shlex
+import stat
 import sys
 
 from fresh_environment import FreshSupervisor, APP, APP_SHA, TEST, TEST_SHA, ARTIFACTS, ARTIFACTS_SHA
@@ -48,6 +50,65 @@ def claim_transfer(supervisor):
     return directory
 
 
+def ensure_owned_input_parent(supervisor, uid, claim):
+    """Prospective only: prepare files/ within a new, unfinished exclusive claim.
+
+    A consumed/UNKNOWN claim is never an entrance to retry this operation.
+    Existing directories are inspected, never chmodded or replaced.
+    """
+    supervisor.scope()
+    need(type(uid) is int and 0 < uid < 2 ** 31 and
+         claim == supervisor.evidence / "input-transfer" and claim.is_dir() and not claim.is_symlink(),
+         "Input parent lacks its exclusive transfer claim")
+    marker = claim / "attempt.json"
+    done = claim / "result.json"
+    need(marker.is_file() and not marker.is_symlink() and marker.stat().st_nlink == 1 and
+         not done.exists() and not done.is_symlink(), "Transfer claim already consumed or unowned")
+    value = json.loads(marker.read_text(encoding="utf-8"))
+    expected = {**supervisor.binding(), "operation": "FRESH_B2_INPUT_TRANSFER",
+                "automaticRetry": False, "inputBasenames": list(NAMES)}
+    need(set(value) == set(expected) | {"utc"} and all(value.get(k) == v for k, v in expected.items()) and
+         isinstance(value.get("utc"), str) and value["utc"], "Transfer claim identity conflicts")
+    root = "/data/user/0/" + APP
+    script = ("set -e; umask 077; "
+              f"[ \"$(id -u)\" = '{uid}' ]; [ \"$(pwd -P)\" = '{root}' ]; "
+              f"[ -d . ]; [ \"$(stat -c '%u' .)\" = '{uid}' ]; "
+              "printf 'M10_INPUT_PARENT_BEGIN\\n'; stat -c 'ROOT_B|%f:%u:%d:%i' .; "
+              "[ ! -L files ]; "
+              "if [ -e files ]; then [ -d files ]; stat -c 'FILES_B|%f:%u:%d:%i' files; state=EXISTING; "
+              "else printf 'FILES_B|ABSENT\\n'; mkdir files; state=CREATED; fi; "
+              "[ ! -L files ]; [ -d files ]; stat -c 'FILES_E|%f:%u:%d:%i' files; "
+              "stat -c 'ROOT_E|%f:%u:%d:%i' .; printf 'M10_INPUT_PARENT_END|%s\\n' \"$state\"")
+    raw = supervisor.adb("shell", "run-as " + APP + " sh -c " + shlex.quote(script))
+    lines = raw.splitlines()
+    need(len(lines) == 6 and lines[0] == "M10_INPUT_PARENT_BEGIN" and
+         lines[-1] in ("M10_INPUT_PARENT_END|CREATED", "M10_INPUT_PARENT_END|EXISTING"),
+         "Input parent proof incomplete or unknown")
+
+    def metadata(line, prefix):
+        need(line.startswith(prefix), "Input parent proof order conflicts")
+        values = line[len(prefix):].split(":")
+        need(len(values) == 4 and re.fullmatch(r"[0-9a-f]+", values[0]) and
+             all(re.fullmatch(r"[1-9][0-9]*", x) for x in values[1:]), "Malformed input parent identity")
+        mode, owner, device, inode = int(values[0], 16), *(int(x) for x in values[1:])
+        need(stat.S_ISDIR(mode) and not stat.S_ISLNK(mode) and owner == uid,
+             "Input parent/root is not an owned non-link directory")
+        return {"mode": mode, "uid": owner, "device": device, "inode": inode}
+
+    root_before, root_after = metadata(lines[1], "ROOT_B|"), metadata(lines[4], "ROOT_E|")
+    parent = metadata(lines[3], "FILES_E|")
+    status = lines[-1].split("|")[1]
+    need(root_before == root_after and parent["device"] == root_before["device"] and
+         parent["inode"] != root_before["inode"], "Input private root/parent identity changed")
+    if status == "CREATED":
+        need(lines[2] == "FILES_B|ABSENT" and stat.S_IMODE(parent["mode"]) == 0o700,
+             "New input parent is not an exclusively created 0700 directory")
+    else:
+        need(metadata(lines[2], "FILES_B|") == parent, "Existing input parent changed during validation")
+    return {"status": status, "path": "files", "privateRoot": root,
+            "root": root_after, "parent": parent, "scope": "OWNED_SYNTHETIC_TEST_PACKAGE_ONLY"}
+
+
 def transfer(api):
     s = FreshSupervisor(api)
     s.identity()
@@ -70,9 +131,7 @@ def transfer(api):
     try:
         worker = s.adb("shell", "pidof", APP + ":jpeg_worker", allowed=(0, 1))
         need(worker == "", "Worker exists or process absence is unknown")
-        parent = s.adb("shell", "run-as", APP, "stat", "-c", "%f:%u", "files").split(":")
-        need(len(parent) == 2 and int(parent[0], 16) & 0xF000 == 0x4000 and int(parent[1]) == uid,
-             "App files parent is not an owned non-link directory")
+        result["inputParent"] = ensure_owned_input_parent(s, uid, directory)
         script = (f"[ ! -e {DESTINATION} ] && [ ! -L {DESTINATION} ] && "
                   f"mkdir {DESTINATION} && chmod 700 {DESTINATION}")
         s.adb("shell", "run-as " + APP + " sh -c " + shlex.quote(script))

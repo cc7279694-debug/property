@@ -242,8 +242,7 @@ def run_one(s, index):
     prior_diagnostics, prior_events = [], []
     capture = fresh.capture_module()
     for normal in range(7):
-        old = s.evidence / "safety-methods" / f"method-{normal:02d}"
-        m.prior_gate(life.strict_json(fresh.avd_identity.read_bytes(old / "result.json", limit=4*1024*1024).decode()), normal, s.api, s.serial, test_sha)
+        prerequisite, old = m.admitted_method(s, normal, test_sha)
         proof, text = capture.read_verified(old / "continuous-log", expected_serial=s.serial)
         prior_diagnostics.append(proof["handshake"]["authenticatedRawLine"])
         prior_events.extend(x for x in text.splitlines(keepends=True) if " LITHIC_JPEG" in x and x not in prior_events)

@@ -1,0 +1,62 @@
+{
+  "doesNotBoundProcessRss": true,
+  "guestFieldsKiB": {
+    "MemAvailable": 1048052,
+    "MemFree": 329212,
+    "MemTotal": 1530888,
+    "SwapFree": 0,
+    "SwapTotal": 0
+  },
+  "guestOriginalDecoded": "MemTotal:        1530888 kB\r\nMemFree:          329212 kB\r\nMemAvailable:    1048052 kB\r\nBuffers:           20060 kB\r\nCached:           704504 kB\r\nSwapCached:            0 kB\r\nActive:           840384 kB\r\nInactive:         238628 kB\r\nActive(anon):     357300 kB\r\nInactive(anon):     2764 kB\r\nActive(file):     483084 kB\r\nInactive(file):   235864 kB\r\nUnevictable:         256 kB\r\nMlocked:             256 kB\r\nSwapTotal:             0 kB\r\nSwapFree:              0 kB\r\nDirty:                 0 kB\r\nWriteback:             0 kB\r\nAnonPages:        354740 kB\r\nMapped:           385960 kB\r\nShmem:              5616 kB\r\nSlab:              61232 kB\r\nSReclaimable:      25584 kB\r\nSUnreclaim:        35648 kB\r\nKernelStack:       12880 kB\r\nPageTables:        17500 kB\r\nNFS_Unstable:          0 kB\r\nBounce:                0 kB\r\nWritebackTmp:          0 kB\r\nCommitLimit:      765444 kB\r\nCommitted_AS:   26248416 kB\r\nVmallocTotal:   34359738367 kB\r\nVmallocUsed:       75396 kB\r\nVmallocChunk:   34359586308 kB\r\nHugePages_Total:       0\r\nHugePages_Free:        0\r\nHugePages_Rsvd:        0\r\nHugePages_Surp:        0\r\nHugepagesize:       2048 kB\r\nDirectMap4k:       14168 kB\r\nDirectMap2M:     1558528 kB\r\nDirectMap1G:           0 kB",
+  "guestOriginalSHA256": "1616871b10f7bdb4d6ec764aede1620ada247e2d81662f2260d1cc12bb04d860",
+  "host": {
+    "emulatorProcessCount": 4,
+    "freeKiB": 3050228,
+    "ports": [
+      {
+        "LocalAddress": "::1",
+        "LocalPort": 5665,
+        "OwningProcess": 18424
+      },
+      {
+        "LocalAddress": "::1",
+        "LocalPort": 5664,
+        "OwningProcess": 18424
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5665,
+        "OwningProcess": 18424
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5664,
+        "OwningProcess": 18424
+      }
+    ],
+    "targets": [
+      {
+        "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe -avd Lithic_M10B1B2_API26_20261019 -port 5664 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+        "CreationDate": "2026-10-19T08:36:19.5886560Z",
+        "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+        "Name": "emulator.exe",
+        "ParentProcessId": 5304,
+        "ProcessId": 40472
+      },
+      {
+        "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M10B1B2_API26_20261019 -port 5664 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+        "CreationDate": "2026-10-19T08:36:20.2536240Z",
+        "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+        "Name": "qemu-system-x86_64-headless.exe",
+        "ParentProcessId": 40472,
+        "ProcessId": 18424
+      }
+    ],
+    "totalKiB": 16648500,
+    "utc": "2026-10-19T10:30:15.2676617Z"
+  },
+  "nativeRequestBudgetBytes": 536870912,
+  "scope": "AVD_TEST_ENVIRONMENT_OBSERVATION_NOT_PHONE_SAFETY_CAP",
+  "serial": "emulator-5664",
+  "utc": "2026-10-19T10:30:15.898285+00:00"
+}

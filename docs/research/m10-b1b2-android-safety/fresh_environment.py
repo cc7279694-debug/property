@@ -1,7 +1,8 @@
 """Fresh B1/B2 supervisor; only root may invoke one explicit operation.
 
-There is no test traversal, old-instance resume, reset, retry, cleanup, kill or
-exit command. Import does not touch an SDK, AVD, device or evidence directory.
+There is no test traversal, reset, retry, cleanup or Android process-kill entry.
+safe-exit is a separately gated, one-shot emulator-console normal shutdown.
+Import does not touch an SDK, AVD, device or evidence directory.
 """
 from __future__ import annotations
 import argparse
@@ -41,8 +42,10 @@ ARTIFACTS = HERE / "artifact-inputs.json"
 ARTIFACTS_SHA = "5a515b293303841c67ce305938fef70d00b0d5db99b78b04b90fb114041ed5ae"
 TEST_SUPPLEMENT = HERE / "test-artifact-audit-v3.json"
 TEST_SUPPLEMENT_SHA = "444b67acc1681ca1e82ae95250284c42b8fc08f3721a9907303ab30a8c38d7d7"
-OPERATIONS = ("audit", "create", "start", "identity", "install-app", "install-test", "ending-readonly")
+OPERATIONS = ("audit", "create", "start", "identity", "install-app", "install-test", "ending-readonly", "safe-exit")
 SERIALS = frozenset({"emulator-5664", "emulator-5666"})
+RESUME_SOURCE = "532817ebaac5f59e0eb458c7d85d17765112606a"
+EXIT_PROTOCOL = "M10_B1B2_SAFE_NORMAL_EXIT_V1"
 _CAPTURE = None
 
 
@@ -73,6 +76,43 @@ def capture_module():
         module.HANDSHAKE_TAIL = module.TAIL[:-1] + [module.DIAGNOSTIC_TAG + ":I", "*:S"]
         _CAPTURE = module
     return _CAPTURE
+
+
+def classify_exit_observation(snapshot, anchor, spec):
+    """Pure classification after the one console quit; never authorizes a kill.
+
+    A disappearing anchored process may remain PENDING. Reused PID, changed
+    creation identity, a foreign child/port, missing fields or changed argv block.
+    """
+    try:
+        need(isinstance(snapshot, dict) and isinstance(snapshot.get("targets"), list) and
+             isinstance(snapshot.get("ports"), list), "Exit process/port snapshot incomplete")
+        need(anchor.get("version") == 1 and len(anchor.get("processes", [])) == 2, "Exit anchor incomplete")
+        expected = {row["pid"]: row for row in anchor["processes"]}
+        need(len(expected) == 2 and {row["role"] for row in expected.values()} == {"launcher", "qemu"}, "Exit process anchor ambiguous")
+        seen = set()
+        for row in snapshot["targets"]:
+            pid = row.get("ProcessId")
+            need(type(pid) is int and pid in expected and pid not in seen, "Exit target process replacement/unknown child")
+            seen.add(pid)
+            old = expected[pid]
+            need(row.get("ParentProcessId") == old["parentPid"] and row.get("Name", "").lower() == old["name"] and
+                 runtime_identity._instant(row.get("CreationDate")) == old["created"] and
+                 runtime_identity._path(row.get("ExecutablePath")) == old["expectedExecutable"], "Exit process instance identity changed/unknown")
+            runtime_identity._arguments(row.get("CommandLine"), spec["argv"], old["expectedExecutable"], legacy.windows_arguments)
+        qemu_pid = next(row["pid"] for row in expected.values() if row["role"] == "qemu")
+        ports = set()
+        for row in snapshot["ports"]:
+            pair = (row.get("LocalAddress"), row.get("LocalPort"))
+            need(pair not in ports and pair[0] in ("127.0.0.1", "::1") and type(pair[1]) is int and
+                 pair[1] in (spec["port"], spec["port"] + 1) and type(row.get("OwningProcess")) is int and row["OwningProcess"] == qemu_pid,
+                 "Exit port conflict/unknown ownership")
+            ports.add(pair)
+        complete = not snapshot["targets"] and not snapshot["ports"]
+        return {"status": "PASS" if complete else "PENDING", "osProcessEnded": not snapshot["targets"],
+                "portsEnded": not snapshot["ports"]}
+    except Exception as error:
+        return {"status": "UNKNOWN", "type": type(error).__name__, "detail": str(error)}
 
 
 class FreshSupervisor(legacy.Supervisor):
@@ -107,7 +147,7 @@ class FreshSupervisor(legacy.Supervisor):
 
     def marker(self, operation):
         self.scope()
-        need(operation in ("create", "start", "install-app", "install-test"), "Unknown one-shot operation")
+        need(operation in ("create", "start", "install-app", "install-test", "safe-exit"), "Unknown one-shot operation")
         need(self.home.is_dir(), "Fresh environment has not been created")
         immutable(self.home / "operations" / (operation + ".json"),
                   {**self.binding(), "operation": operation, "utc": utc(), "status": "ATTEMPT_ISSUED"})
@@ -183,10 +223,29 @@ class FreshSupervisor(legacy.Supervisor):
     def api26_exit_gate(self):
         if self.api != 36: return
         proof = json.loads(avd_identity.read_bytes(BASE / "api26/safety-exit-proof.json"))
-        need(proof.get("sourceCommit") == SOURCE and proof.get("status") == "PASS" and
+        need(proof.get("protocol") == EXIT_PROTOCOL and proof.get("sourceCommit") == SOURCE and
+             proof.get("resumeSourceCommit") == RESUME_SOURCE and proof.get("status") == "PASS" and
              proof.get("serial") == "emulator-5664" and proof.get("api") == 26 and
-             all(proof.get(k) is True for k in ("allAuthorizedMethodsPassed", "consumersSafe", "osProcessEnded", "portsEnded", "normalExitObserved")),
+             proof.get("avd") == profile(26)["name"] and proof.get("base") == str(BASE) and
+             proof.get("data") == str(profile(26)["home"] / "data" / (profile(26)["name"] + ".avd")) and
+             proof.get("appSHA256") == APP_SHA and proof.get("testSHA256") == TEST_SHA and
+             proof.get("mechanism") == "TARGETED_EMULATOR_CONSOLE_NORMAL_QUIT_ADB_TRANSPORT" and
+             proof.get("consoleCommandsIssued") == 1 and proof.get("androidKillCommandsIssued") == 0 and
+             all(proof.get(k) is True for k in ("allAuthorizedMethodsPassed", "consumersSafe", "osProcessEnded", "portsEnded", "normalExitObserved")) and
+             len(proof.get("endedObservations", [])) == 2 and
+             all(x.get("classification", {}).get("status") == "PASS" and
+                 x.get("snapshot", {}).get("targets") == [] and x.get("snapshot", {}).get("ports") == []
+                 for x in proof["endedObservations"]),
              "This task API26 safe validation/exit is not proven; API36 remains NOT_RUN")
+        raw = avd_identity.read_bytes(BASE / "api26/safety-exit-before.json", limit=8*1024*1024)
+        need(digest(raw) == proof.get("beforeSHA256"), "API26 independent exit qualification changed")
+        before = json.loads(raw)
+        need(before.get("protocol") == EXIT_PROTOCOL and before.get("status") == "PASS_BEFORE_CONSOLE_QUIT" and
+             before.get("serial") == proof["serial"] and before.get("testSHA256") == TEST_SHA and
+             before.get("authorization", {}).get("normalMethods") == 7 and
+             before.get("authorization", {}).get("faultOperations") == 5 and
+             len(before.get("snapshots", [])) == 2,
+             "API26 exit did not have complete safety-method/consumer qualification")
 
     def create(self):
         self.scope(); self.api26_exit_gate(); self.audit()
@@ -442,6 +501,154 @@ class FreshSupervisor(legacy.Supervisor):
         result["appUID"] = self.installed(APP, APP_SHA) if (self.home / "install-app-proof.json").is_file() else None
         result["testUID"] = self.installed(TEST, TEST_SHA) if (self.home / "install-test-proof.json").is_file() else None
         return result  # observation only; no consumer-safe/normal-exit claim
+
+    def _exit_authorization(self):
+        """Only immutable, independent PASS gates; two expected Host interruptions
+        require their separate exact-death/non-success recovery PASS records.
+        """
+        import safety_device as normal
+        import fault_device as fault
+        need(len(normal.METHODS) == 7 and len(fault.METHODS) == 5 and
+             callable(getattr(normal, "admitted_method", None)), "Current safety admission contract is unavailable")
+        references, faults = [], []
+        capture = capture_module()
+        for index in range(7):
+            row, directory = normal.admitted_method(self, index, TEST_SHA)
+            normal.prior_gate(row, index, self.api, self.serial, TEST_SHA)
+            need(row.get("deviceProof", {}).get("status") == "PASS" and
+                 row.get("instrumentation", {}).get("status") == "PASS" and row.get("capture", {}).get("status") == "PASS",
+                 "Safety method lacks independent runtime/JUnit/capture PASS")
+            proof, unused = capture.read_verified(directory / "continuous-log", expected_serial=self.serial)
+            need(proof == row["capture"] and proof.get("status") == "PASS", "Normal original capture integrity is not PASS")
+            references.append({"kind": "normal", "index": index, "directory": str(directory),
+                               "validatedResultSHA256": digest(json.dumps(row, sort_keys=True).encode())})
+        for index in range(5):
+            directory = self.evidence / "exact-fault-methods" / f"operation-{index:02d}"
+            raw = avd_identity.read_bytes(directory / "result.json", limit=4*1024*1024)
+            row = json.loads(raw)
+            expected = "EXPECTED_INTERRUPTION_AWAITING_RECOVERY" if index in (1, 3) else "PASS"
+            need(row.get("status") == expected and row.get("index") == index and
+                 row.get("method") == fault.METHODS[index] and row.get("kind") == fault.KINDS[index] and
+                 all(row.get(k) == value for k, value in self.binding().items()) and
+                 row.get("testSHA256") == TEST_SHA and row.get("instrumentationCommandsIssued") == 1 and
+                 row.get("processEndProof", {}).get("status") == "PASS" and
+                 row.get("stageProof", {}).get("status") == "PASS" and
+                 row["stageProof"].get("closed") is (index not in (1, 3)),
+                 "Fault/death/recovery safety gate unresolved or foreign")
+            proof, unused = capture.read_verified(directory / "continuous-log", expected_serial=self.serial)
+            need(proof == row.get("capture") and proof.get("status") == "PASS", "Fault original capture integrity is not PASS")
+            expected_junit = "EXPECTED_INSTRUMENTATION_INTERRUPTION_NOT_PASS" if index in (1, 3) else "PASS"
+            need(row.get("instrumentation", {}).get("status") == expected_junit, "Fault instrumentation category conflicts")
+            if index in (2, 4):
+                prior = faults[index - 1]
+                need(row.get("checkpoint") == prior.get("checkpoint") and row.get("targetProof") == prior.get("targetProof") and
+                     row.get("runId") != prior.get("runId"), "Interrupted Host lacks its matching independent recovery")
+            faults.append(row)
+            references.append({"kind": "fault", "index": index, "path": str(directory / "result.json"), "sha256": digest(raw)})
+        final_path = self.evidence / "exact-fault-methods/operation-04/after.json"
+        final_raw = avd_identity.read_bytes(final_path, limit=8*1024*1024)
+        return {"normalMethods": 7, "faultOperations": 5, "references": references,
+                "faults": faults, "finalSnapshot": json.loads(final_raw),
+                "finalSnapshotPath": str(final_path), "finalSnapshotSHA256": digest(final_raw),
+                "hostInterruptionsAreNotJUnitPass": True}
+
+    @staticmethod
+    def _exit_consumers_safe(snapshot, authorization):
+        import fault_device as fault
+        normal = fault.evidence_module()
+        need(snapshot.get("identity", {}).get("status") == "PASS" and snapshot.get("appSHA256") == APP_SHA and
+             snapshot.get("testSHA256") == TEST_SHA and type(snapshot.get("uid")) is int and
+             type(snapshot.get("testUID")) is int and snapshot["uid"] != snapshot["testUID"],
+             "Current App/consumer process identity is unknown or not quiescent")
+        need(not normal._preflight_processes(snapshot.get("processes"), snapshot["uid"]),
+             "Current Host/Worker is still running; no normal exit qualification")
+        need(all(snapshot[key] == authorization["finalSnapshot"].get(key) for key in
+                 ("uid", "testUID", "stages", "observations", "diagnostics", "safety")),
+             "Synthetic state changed after the last independently proven recovery")
+        known = {row["checkpoint"]["owner"]["generation"]: row["checkpoint"] for row in authorization["faults"]}
+        need(len(known) == 3 and isinstance(snapshot.get("stages"), dict), "Fault Stage ownership incomplete")
+        for generation, stage in snapshot["stages"].items():
+            if generation.startswith("m10-b1-fault-"):
+                need(generation in known, "Unknown fault Stage must be preserved")
+                cp = known[generation]
+                fault.stage_proof(stage, cp, closed=True, host_ended=cp["kind"] != fault.KINDS[0])
+            else:
+                normal.terminal_stage(stage, abandoned="abandoned.v2" in stage["records"],
+                                      allow_failed_output=generation.startswith("m10-b1-delay-"))
+        need(set(known) <= set(snapshot["stages"]), "An authorized fault Stage vanished without retained proof")
+
+    def safe_exit(self):
+        """One normal console quit after all gates. No App kill/fallback/retry.
+
+        The internal transport is intentionally unavailable through public adb().
+        Console ACK, OS process end, ports end and safety qualification are distinct.
+        """
+        self.scope()
+        need(self.api in (26, 36) and self.serial == {26: "emulator-5664", 36: "emulator-5666"}[self.api], "Old/unknown exit target")
+        authorization = self._exit_authorization()  # no exit marker/command on missing tests
+        import fault_device as fault
+        adapter = fault.evidence_module()
+        boot = fault.boot_epoch(self.adb("shell", "settings", "get", "global", "boot_count"))
+        need(all(row["checkpoint"]["bootId"] == boot for row in authorization["faults"]),
+             "Current BOOT_COUNT differs from authenticated fault/Stage ownership")
+        before = []
+        for unused in range(2):
+            observed = adapter.snapshot(self, TEST_SHA)
+            self._exit_consumers_safe(observed, authorization)
+            if before:
+                need(all(observed[key] == before[0][key] for key in
+                         ("uid", "testUID", "stages", "observations", "diagnostics", "safety")),
+                     "Consumer/Stage snapshot changed before normal exit")
+            before.append(observed)
+        need(fault.boot_epoch(self.adb("shell", "settings", "get", "global", "boot_count")) == boot,
+             "BOOT_COUNT changed during normal-exit qualification")
+        self.validate_process()
+        anchor, spec = self.process_proof["anchor"], self.process_spec()
+        qualified = {**self.binding(), "protocol": EXIT_PROTOCOL, "resumeSourceCommit": RESUME_SOURCE,
+                     "status": "PASS_BEFORE_CONSOLE_QUIT", "testSHA256": TEST_SHA,
+                     "authorization": {k: v for k, v in authorization.items() if k != "finalSnapshot"},
+                     "snapshots": before, "processAnchor": anchor, "bootId": boot, "utc": utc()}
+        immutable(self.home / "safety-exit-before.json", qualified)
+        before_hash = digest(avd_identity.read_bytes(self.home / "safety-exit-before.json", limit=8*1024*1024))
+        self.marker("safe-exit")
+        result = {**self.binding(), "protocol": EXIT_PROTOCOL, "resumeSourceCommit": RESUME_SOURCE, "status": "UNKNOWN",
+                  "testSHA256": TEST_SHA, "mechanism": "TARGETED_EMULATOR_CONSOLE_NORMAL_QUIT_ADB_TRANSPORT",
+                  "consoleCommandsIssued": 1, "androidKillCommandsIssued": 0, "beforeSHA256": before_hash,
+                  "allAuthorizedMethodsPassed": True, "consumersSafe": True, "osProcessEnded": False,
+                  "portsEnded": False, "normalExitObserved": False, "endedObservations": []}
+        # Anchored PIDs stay in the host-only collector even after their argv is
+        # gone/replaced. This never adds any historical/other AVD identifiers.
+        self.historical_process_ids = ",".join(str(row["pid"]) for row in anchor["processes"])
+        try:
+            reply = self.run([legacy.TOOLS / "platform-tools/adb.exe", "-s", self.serial, "emu", "kill"], timeout=15)
+            result["consoleReply"] = reply
+            need(reply.splitlines() in (["OK"], ["OK: killing emulator, bye bye", "OK"]), "Normal console acknowledgement UNKNOWN; never resend")
+            deadline = time.monotonic() + 30
+            consecutive = []
+            while time.monotonic() < deadline:
+                observed = self.processes(timeout=min(10, deadline-time.monotonic()))
+                need(time.monotonic() <= deadline, "Normal exit OS observation exceeded its fixed deadline")
+                classified = classify_exit_observation(observed, anchor, spec)
+                record = {"snapshot": observed, "classification": classified}
+                self.note({"operation": "B1B2_NORMAL_EXIT_READ_ONLY_OBSERVATION", **record})
+                need(classified["status"] != "UNKNOWN", "Exit process/port identity conflict; preserve scene")
+                if classified["status"] == "PASS":
+                    consecutive.append(record)
+                    if len(consecutive) == 2:
+                        result.update(status="PASS", osProcessEnded=True, portsEnded=True,
+                                      normalExitObserved=True, endedObservations=consecutive, utc=utc())
+                        break
+                else:
+                    consecutive = []
+                time.sleep(min(2, max(0, deadline-time.monotonic())))
+            need(result["status"] == "PASS", "Normal exit bounded OS/port observation UNKNOWN")
+        except Exception as error:
+            result["error"] = {"type": type(error).__name__, "detail": str(error)}
+            immutable(self.home / "safety-exit-result.json", result)
+            raise
+        immutable(self.home / "safety-exit-result.json", result)
+        immutable(self.home / "safety-exit-proof.json", result)
+        return result
 
     def _old_forbidden(self, *args, **kwargs):
         raise RuntimeError("Old adopt/resume/reconcile entry prohibited in this fresh task")

@@ -1,0 +1,14 @@
+test_explicit_gated_normal_exit_entry_exists (test_resume_exit.ResumeExitTest.test_explicit_gated_normal_exit_entry_exists) ... FAIL
+
+======================================================================
+FAIL: test_explicit_gated_normal_exit_entry_exists (test_resume_exit.ResumeExitTest.test_explicit_gated_normal_exit_entry_exists)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_exit.py", line 13, in test_explicit_gated_normal_exit_entry_exists
+    self.assertIn("safe-exit", s.OPERATIONS)
+AssertionError: 'safe-exit' not found in ('audit', 'create', 'start', 'identity', 'install-app', 'install-test', 'ending-readonly')
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (failures=1)

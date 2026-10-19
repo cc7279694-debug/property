@@ -1,0 +1,152 @@
+{
+  "scope": "HOST_ONLY_GIT_BASH_NATIVE_COMMANDS_NOT_ANDROID_PASS",
+  "status": "PASS",
+  "uniqueTestMethods": 11,
+  "firstRedMethods": 8,
+  "red": {
+    "originalFixtureAuthoringOffByOne": "red.raw retained; corrected before implementation",
+    "corrected": "red-corrected-fixture.raw",
+    "baselineByteAtATime2MiBResult": "fixed30s subprocess timeout retained"
+  },
+  "green": "green-final.raw",
+  "samples": [
+    {
+      "scope": "HOST_ONLY_SYNTHETIC_BYTES_NOT_ORIGINAL_ANDROID_JSON",
+      "inputBytes": 390,
+      "inputSHA256": "9d45a492dfae70b07796a5ce598d334e1557b086ffe956af7e525447c1969d02",
+      "wallSeconds": 0.9840000000040163,
+      "deadlineSeconds": 30,
+      "exitCode": 0,
+      "stdoutBytes": 1583,
+      "stdoutSHA256": "355fe419b97cbb5c8a5b9e39c00cce330a3d0677c880c16690d8442e56a39208",
+      "stderrRaw": "0+1 records in\n0+1 records out\n390 bytes copied, 0.0002283 s, 1.7 MB/s\n0+1 records in\n0+1 records out\n390 bytes copied, 0.0001869 s, 2.1 MB/s\n0+1 records in\n0+1 records out\n390 bytes copied, 0.0001862 s, 2.1 MB/s\n",
+      "stderrProof": {
+        "passes": 3,
+        "stderrBytes": 213,
+        "stderrSHA256": "bbfbe738938a0f3d51dc72bad0bef8356c03811679b9c86b9572725243965fb4"
+      },
+      "fileMetadata": {
+        "type": "regular",
+        "device": 3398968339,
+        "inode": 41376821576504207,
+        "bytes": 390,
+        "uid": 197619,
+        "links": 1,
+        "sha256": "9d45a492dfae70b07796a5ce598d334e1557b086ffe956af7e525447c1969d02"
+      },
+      "scriptSHA256": "87e335821f80d727af240e94e4a49e095ac0bf15ba3182c0c5ea27e9bf19b9b5"
+    },
+    {
+      "scope": "HOST_ONLY_SYNTHETIC_BYTES_NOT_ORIGINAL_ANDROID_JSON",
+      "inputBytes": 2439,
+      "inputSHA256": "30c93efe3cb9b23a33537d2e977592681cdaeff745b082c861c3aef64e6b8dd1",
+      "wallSeconds": 0.9689999999973224,
+      "deadlineSeconds": 30,
+      "exitCode": 0,
+      "stdoutBytes": 4353,
+      "stdoutSHA256": "936c7aea7dbf6bcfc6840d837c4a35c7870109c9b201226fa5aa9f70ee291def",
+      "stderrRaw": "0+1 records in\n0+1 records out\n2439 bytes (2.4 kB, 2.4 KiB) copied, 0.0001734 s, 14.1 MB/s\n0+1 records in\n0+1 records out\n2439 bytes (2.4 kB, 2.4 KiB) copied, 0.0006104 s, 4.0 MB/s\n0+1 records in\n0+1 records out\n2439 bytes (2.4 kB, 2.4 KiB) copied, 0.0001836 s, 13.3 MB/s\n",
+      "stderrProof": {
+        "passes": 3,
+        "stderrBytes": 272,
+        "stderrSHA256": "b6219fa4c6c312a7c1ff4c3815b397eaf69d9b3fbc1c6a16ef094dbbb0e4ca9f"
+      },
+      "fileMetadata": {
+        "type": "regular",
+        "device": 3398968339,
+        "inode": 41658296553214863,
+        "bytes": 2439,
+        "uid": 197619,
+        "links": 1,
+        "sha256": "30c93efe3cb9b23a33537d2e977592681cdaeff745b082c861c3aef64e6b8dd1"
+      },
+      "scriptSHA256": "0732abc3be56b1ec746858a8ebca6ebffbe9a0d9b2cd2c72ccc9561c98b67541"
+    },
+    {
+      "scope": "HOST_ONLY_SYNTHETIC_BYTES_NOT_ORIGINAL_ANDROID_JSON",
+      "inputBytes": 2097152,
+      "inputSHA256": "1e0efc5511b1cb01f8cd7deb24f5bfc764dce5dde03c10a4e9a511f96a90c1c3",
+      "wallSeconds": 1.0309999999954016,
+      "deadlineSeconds": 30,
+      "exitCode": 0,
+      "stdoutBytes": 2834061,
+      "stdoutSHA256": "6deaf4aa0465ba42dafdd34291a06d5dd49fe8ef5fd1d5415d99fcdf22834cbb",
+      "stderrRaw": "32+0 records in\n32+0 records out\n2097152 bytes (2.1 MB, 2.0 MiB) copied, 0.0534745 s, 39.2 MB/s\n32+0 records in\n32+0 records out\n2097152 bytes (2.1 MB, 2.0 MiB) copied, 0.0471528 s, 44.5 MB/s\n32+0 records in\n32+0 records out\n2097152 bytes (2.1 MB, 2.0 MiB) copied, 0.045148 s, 46.5 MB/s\n",
+      "stderrProof": {
+        "passes": 3,
+        "stderrBytes": 287,
+        "stderrSHA256": "5f45c511846f2a36327652a61ea7db5f8ffd62dfa314889902bac1ee70678a6e"
+      },
+      "fileMetadata": {
+        "type": "regular",
+        "device": 3398968339,
+        "inode": 41939771529925519,
+        "bytes": 2097152,
+        "uid": 197619,
+        "links": 1,
+        "sha256": "1e0efc5511b1cb01f8cd7deb24f5bfc764dce5dde03c10a4e9a511f96a90c1c3"
+      },
+      "scriptSHA256": "cc37130ce8c468f92783ba49e8982e2ed239e61b9d883988f6bb0757f4bfcd68"
+    }
+  ],
+  "sources": {
+    "E:/CODEX/.codex/worktrees/lithic-b1b2-resume/\u783a\u77f3\u65b0APP/docs/research/m10-b1b2-android-safety/safety_device.py": "71f356f79e2c3a5e9b951b00530baca0708cd2df40adc708aa9352121ba69c48",
+    "E:/CODEX/.codex/worktrees/lithic-b1b2-resume/\u783a\u77f3\u65b0APP/docs/research/m10-b1b2-android-safety/test_resume_reader.py": "02deec259042b240dd110bc4ae8a9376c8c2be96cb7dbf6d5520c9b7bd2b47c1"
+  },
+  "AndroidReadBundle": "NOT_RUN_BY_THIS_AGENT",
+  "deviceCommands": 0,
+  "unknowns": [
+    "Android dd stderr layout and pipefail actual compatibility require root only real read",
+    "2MiB existing real Android file absent: full inode-backed maximum file performance remains NOT_RUN unless safe permitted evidence input exists",
+    "HOST timing is not emulator timing; /dev/zero flow probe cannot prove inode-backed file stability"
+  ],
+  "previousSafetyMethods": {
+    "methods": 22,
+    "status": "PASS",
+    "raw": "prior-22-green.raw",
+    "change": "single old implementation expectation bs=1 replaced by 64KiB bound plus new H0/H1 requirements; old identities and fixtures unchanged"
+  },
+  "methods": [
+    "test_real_head_failure_stays_rejected_and_hashes_locked",
+    "test_live_hashes_required_payload_and_pre_post_must_agree",
+    "test_live_identity_uid_and_end_unchanged",
+    "test_live_reader_uses_64k_not_bytewise_and_same_deadline",
+    "test_stderr_requires_dd_counts_and_refuses_unknown_diagnostics",
+    "test_android_dd_transfer_format_is_scoped_counts_not_error_suppression",
+    "test_exact_command_journal_binds_raw_bytes_and_serial",
+    "test_extra_or_truncated_command_journal_never_accepted",
+    "test_actual_live_entry_never_accepts_legacy_no_hash_or_stderr_warning",
+    "test_real_host_2mib_pipeline_finishes_within_30s",
+    "test_real_host_dd_and_base64_fail_stop_without_end"
+  ],
+  "finalReaderSources": {
+    "docs/research/m10-b1b2-android-safety/safety_device.py": "5bd79f4b9b18a480990c7fd3292c83b22a42ffda13cb81de0f30d34639c6bb7c",
+    "docs/research/m10-b1b2-android-safety/test_resume_reader.py": "57a8292070908adcb05f5fc47941bfdaaed649d9819caab50f9dd828d15ce088"
+  },
+  "rawEvidence": {
+    "green-final.raw": {
+      "bytes": 1750,
+      "sha256": "5a60f635206fa7d14e345d4b2c089b9fef7cb72c5fe26b6d4b4e829cee7d12c7"
+    },
+    "prior-22-green.raw": {
+      "bytes": 3670,
+      "sha256": "3b392d455dccb45d143b316c3d41cde3f6ba7685573025647edc8ca6fd1fbbc2"
+    },
+    "red-corrected-fixture.raw": {
+      "bytes": 12496,
+      "sha256": "272a089d8211a0be6c24c0d8f05f0b93b771f45f059c9464f4066f2656c41379"
+    },
+    "red.raw": {
+      "bytes": 9684,
+      "sha256": "2d9102a4ca0eb8e2127857320e2603ae0dc99bb3da5646c4115717b8a5480fa1"
+    }
+  },
+  "sourceScope": "Whole-module sources are point-in-time hashes at the named host run; other independent preflight code is edited concurrently. Exact reader function hashes isolate this evidence.",
+  "readerFunctionSHA256": {
+    "parse_bundle": "177be5dc470cd8404e0b355b9785e58da7dac948e23f915bb4e605f50ac2c643",
+    "bundle_script": "8660150607bdfa53b0ac23228cec5e865c112d8318e5539a91a448482ddbbf84",
+    "validate_dd_stderr": "c4187f34b0b960471ad4e9a685b00e52e0c08188be481cc0156bc3ff213a5715",
+    "reader_command_proof": "4d1371e7d7e56aa904e52f90961fbba994250d34e2472df1b4f2a66c11f2cc2a",
+    "read_bundle": "db45bb6d7d9848a4099005103440e4ee1e0d6b3017a8be557d3361a9bb090699"
+  }
+}

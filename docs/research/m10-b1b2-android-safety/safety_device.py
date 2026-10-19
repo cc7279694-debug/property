@@ -73,6 +73,193 @@ def prior_gate(row, index, api, serial, test_sha):
     return True
 
 
+
+def _preflight_processes(value, uid):
+    need(isinstance(value, dict) and value.get("complete") is True and value.get("worker_absent") is True and
+         value.get("uid") == uid and type(value.get("rawBytes")) is int and value["rawBytes"] > 0 and
+         re.fullmatch(r"[a-f0-9]{64}", value.get("rawSHA256", "")), "Incomplete independent preflight process observation")
+    rows = value.get("rows")
+    need(isinstance(rows, list) and len(rows) <= 1, "Unknown or multiple same-UID preflight processes")
+    for row in rows:
+        need(row.get("name") == APP and row.get("uid") == uid and
+             all(type(row.get(k)) is int and row[k] > 0 for k in ("pid", "startTicks")),
+             "Active Worker or unknown same-UID preflight identity")
+    return rows
+
+
+def _same_preflight_environment(before, after):
+    need(before.get("uid") == after.get("uid") and before.get("testUID") == after.get("testUID") and
+         type(after.get("uid")) is int and type(after.get("testUID")) is int and
+         after["uid"] > 0 and after["testUID"] > 0 and after["uid"] != after["testUID"], "Preflight App/Test UID changed")
+    need(before.get("appSHA256") == after.get("appSHA256") == APP_SHA and
+         before.get("testSHA256") == after.get("testSHA256") == fresh.TEST_SHA,
+         "Preflight locked APK identity changed")
+    a, b = before.get("identity", {}), after.get("identity", {})
+    api = a.get("api"); profile = fresh.profile(api)
+    need(a.get("status") == b.get("status") == "PASS" and
+         all(a.get(k) == b.get(k) == profile[v] for k, v in (("api", "api"), ("avd", "name"), ("serial", "serial"))),
+         "Preflight device identity conflicts")
+    need(all(a.get(k) == b.get(k) for k in ("base", "data", "appSHA256", "runtimePaths")) and
+         a.get("appSHA256") == APP_SHA and a.get("runtimePaths", {}).get("status") == "PASS", "Preflight runtime path/image changed")
+    pa, pb = a.get("processIdentityProof", {}), b.get("processIdentityProof", {})
+    need(pa.get("status") == pb.get("status") == "PASS" and pa.get("anchor") and pa.get("anchor") == pb.get("anchor"),
+         "Preflight emulator instance/creation identity changed")
+    return api
+
+
+def preflight_records(before, after, run_id, grouped, phases, boot_id=None):
+    """Pure verification of actual in-process identity, not a post-JUnit liveness demand.
+
+    A report is only usable with locked instrumentation/capture and independent
+    file/identity snapshots. No disappeared Host is used as FD/guard death proof.
+    """
+    api = _same_preflight_environment(before, after)
+    uid = after["uid"]
+    _preflight_processes(before.get("processes"), uid)
+    end_rows = _preflight_processes(after.get("processes"), uid)
+    need(not phases and all(not snap.get(key) for snap in (before, after) for key in ("stages", "observations", "diagnostics")),
+         "Reflection unexpectedly created or encountered a consumer")
+    added = delta(before, after, "safety")
+    need(set(added) == {run_id} and added[run_id].get("children") == ["attempt.json", "result.json"], "Preflight namespace/record set conflicts")
+    path = "no_backup/m10-b1b2-safety/" + run_id
+    need(set(grouped) == {path + "/attempt.json", path + "/result.json"}, "Preflight read group is not exactly its two records")
+    parsed = {}
+    for name in ("attempt.json", "result.json"):
+        raw, metadata = grouped[path + "/" + name]
+        expected = added[run_id]["files"][name]
+        need(isinstance(raw, str) and 0 < len(raw.encode("utf8")) <= 16384 and
+             metadata == {**expected, "sha256": hashlib.sha256(raw.encode("utf8")).hexdigest()} and
+             metadata.get("bytes") == len(raw.encode("utf8")) and metadata.get("uid") == uid and
+             metadata.get("type") == "regular" and metadata.get("links") == 1,
+             "Preflight raw byte/length/SHA/inode/UID proof conflicts")
+        parsed[name] = life.strict_json(raw)
+    attempt, result = parsed["attempt.json"], parsed["result.json"]
+    need(attempt.get("protocol") == "M10_B1B2_SAFETY_ATTEMPT_V1" and attempt.get("status") == "ATTEMPT_ISSUED" and
+         attempt.get("runId") == run_id and attempt.get("method") == METHODS[0] and attempt.get("api") == api and
+         attempt.get("hostUid") == uid and attempt.get("roomOrFormalCoverCommitted") is False and
+         all(type(attempt.get(k)) is int and attempt[k] > 0 for k in ("hostPid", "hostStartTicks")),
+         "Direct preflight execution identity is missing/invalid")
+    need(re.fullmatch(r"6c697468-6963-4000-8000-[a-f0-9]{12}", attempt.get("bootId", "")) and
+         attempt["bootId"] == result.get("bootIdBefore") == result.get("bootIdAfter") and
+         (boot_id is None or attempt["bootId"] == boot_id), "Preflight BOOT_COUNT identity changed or unknown")
+    need(result.get("protocol") == "M10_B1B2_PREFLIGHT_V1" and result.get("status") == "PASS" and
+         result.get("runId") == run_id and result.get("method") == METHODS[0] and
+         all(result.get(k) is True for k in ("noConsumerWork", "bootStable", "mainRoleAndExactHostInstance")) and
+         all(result.get(k) is False for k in ("stageCreatedByMethod", "workerStartedByMethod")) and
+         result.get("deviceAdmissionOutsideThisMethod") == "REQUIRED", "Preflight direct boot/role/assertHost proof incomplete")
+    stage = {"stageRoots": 0, "stageMetadataRows": 0, "stageMetadataSHA256": hashlib.sha256(b"").hexdigest(),
+             "businessOrImageBytesRead": False, "evidenceNamespaceExcluded": "m10-b1b2-safety"}
+    need(result.get("before") == result.get("after") == stage, "Preflight Stage metadata is not unchanged/consumer-free")
+    no_worker = {"status": "ABSENT_AT_OBSERVATION", "source": "ACTIVITY_MANAGER_SAME_UID", "workerRows": 0,
+                 "externalSupervisorProcVerification": "REQUIRED_SEPARATELY"}
+    need(result.get("processesBefore") == result.get("processesAfter") == no_worker, "In-method Worker absence proof incomplete")
+    reflected = result.get("reflectedClasses", [])
+    need(len(reflected) == len(REFLECTED_CLASSES) and {x.get("class") for x in reflected} == REFLECTED_CLASSES and
+         all(x.get("scan") == "PASS" and type(x.get("declaredMethods")) is int and x["declaredMethods"] > 0 for x in reflected),
+         "New classes not actually reflected")
+    if end_rows:
+        need(end_rows[0]["pid"] == attempt["hostPid"] and end_rows[0]["startTicks"] == attempt["hostStartTicks"],
+             "Post-JUnit live Host is another instance")
+    return {"status": "PASS", "preflight": result, "attempt": attempt,
+            "hostIdentityEvidence": {"source": "DIRECT_IN_PROCESS_BEGIN_AND_ASSERT_HOST",
+                "externalRunningHostObserved": bool(end_rows),
+                "afterLifetime": "EXACT_HOST_STILL_PRESENT" if end_rows else "HOST_NOT_PRESENT_AT_POST_INSTRUMENTATION_OBSERVATION",
+                "externalObservationLimit": "NO_INDEPENDENT_DURING_EXECUTION_PS_WAS_REQUIRED_OR_CLAIMED"},
+            "resourceScope": "NO_CONSUMER_CREATED_NOT_A_RESOURCE_RELEASE_PROOF"}
+
+
+def _legacy_preflight():
+    directory = HERE / "evidence/api26-run/method-00"
+    names = ("before.json", "after.json", "attempt.json", "result.json", "instrumentation.txt",
+             "continuous-log/capture.json", "continuous-log/stdout.raw", "continuous-log/stderr.raw")
+    raw = {name: fresh.avd_identity.read_bytes(directory / name, limit=1024 * 1024) for name in names}
+    values = {name: life.strict_json(raw[name].decode("utf8")) for name in names if name.endswith(".json")}
+    old = values["result.json"]
+    need(old.get("status") == "UNKNOWN" and old.get("index") == 0 and old.get("instrumentationCommandsIssued") == 1 and
+         old.get("appSHA256") == APP_SHA and old.get("testSHA256") == fresh.TEST_SHA,
+         "Historical UNKNOWN is not the locked source")
+    need(parse_instrumentation(raw["instrumentation.txt"].decode("utf8"), METHODS[0]) == old.get("instrumentation"),
+         "Historical original JUnit bytes differ")
+    plan = method_plan(0, old["runId"], old["api"])
+    need(values["attempt.json"].get("argv") == plan["argv"] and old.get("method") == plan["method"],
+         "Original issued method/run identity differs")
+    proof, text = fresh.capture_module().read_verified(directory / "continuous-log", expected_serial=old["serial"])
+    need(old.get("capture") == proof, "Historical original continuous capture conflicts")
+    phases = scoped_lines(text, proof["handshake"]["authenticatedRawLine"], (), ())
+    return directory, values, {name: hashlib.sha256(value).hexdigest() for name, value in raw.items()}, phases
+
+
+def resume_preflight(s, grouped, current, boot_id):
+    """Root supplies its single bounded current read/snapshot; this does no device call.
+    Never changes old result/marker or emits another Instrumentation command.
+    """
+    directory, legacy, hashes, phases = _legacy_preflight()
+    old = legacy["result.json"]
+    need(s.api == old["api"] and s.serial == old["serial"], "Only the locked API26 UNKNOWN can be resumed")
+    proof = preflight_records(legacy["before.json"], legacy["after.json"], old["runId"], grouped, phases, boot_id)
+    _same_preflight_environment(legacy["after.json"], current)
+    current_rows = _preflight_processes(current.get("processes"), current["uid"])
+    need(not current_rows or (current_rows[0]["pid"] == proof["attempt"]["hostPid"] and
+         current_rows[0]["startTicks"] == proof["attempt"]["hostStartTicks"]), "Resume encountered another live Host instance")
+    need(all(current.get(k) == legacy["after.json"].get(k) for k in ("stages", "observations", "diagnostics", "safety")),
+         "Synthetic state changed before independent preflight resume")
+    evidence = s.evidence / "preflight-resume"
+    fresh.avd_identity.unlinked_ancestors(evidence); evidence.mkdir(exist_ok=False)
+    records = {}
+    for path, (raw, metadata) in grouped.items():
+        name = path.rsplit("/", 1)[1]
+        filename = "preflight-" + name
+        with (evidence / filename).open("xb") as stream: stream.write(raw.encode("utf8"))
+        records[path] = {"file": filename, "metadata": metadata}
+    payload = {**s.binding(), "protocol": "M10_B1B2_PREFLIGHT_READ_ONLY_RESUME_V1", "status": "PASS",
+               "testSHA256": fresh.TEST_SHA, "runId": old["runId"], "index": 0, "method": METHODS[0],
+               "instrumentationCommandsIssued": 0, "originalStatus": "UNKNOWN", "originalsSHA256": hashes,
+               "bootId": boot_id, "records": records, "deviceProof": proof, "continuationSnapshot": current,
+               "instrumentation": old["instrumentation"], "capture": old["capture"],
+               "scope": "NEW_READ_ONLY_ADMISSION_PRESERVES_OLD_UNKNOWN_NOT_NEW_ANDROID_TEST_PASS"}
+    fresh.immutable(evidence / "admission.json", payload)
+    fresh.immutable(s.home / "preflight-resume-admission.json", {**s.binding(), "status": "PASS",
+         "protocol": "M10_B1B2_PREFLIGHT_RESUME_POINTER_V1", "testSHA256": fresh.TEST_SHA,
+         "sha256": hashlib.sha256(fresh.avd_identity.read_bytes(evidence / "admission.json", limit=1024 * 1024)).hexdigest(), "evidenceDirectory": str(evidence)})
+    return payload
+
+
+def admitted_method(s, index, test_sha):
+    """One admission seam shared by ordinary methods, faults and safe AVD exit."""
+    pointer_path = s.home / "preflight-resume-admission.json"
+    if index != 0 or not pointer_path.exists():
+        directory = s.evidence / "safety-methods" / f"method-{index:02d}"
+        row = life.strict_json(fresh.avd_identity.read_bytes(directory / "result.json", limit=4 * 1024 * 1024).decode("utf8"))
+        prior_gate(row, index, s.api, s.serial, test_sha)
+        return row, directory
+    pointer = s.require_proof(pointer_path)
+    evidence = s.evidence / "preflight-resume"
+    need(pointer.get("protocol") == "M10_B1B2_PREFLIGHT_RESUME_POINTER_V1" and pointer.get("testSHA256") == test_sha and
+         pointer.get("evidenceDirectory") == str(evidence), "Independent preflight admission pointer conflicts")
+    raw = fresh.avd_identity.read_bytes(evidence / "admission.json", limit=1024 * 1024)
+    need(hashlib.sha256(raw).hexdigest() == pointer.get("sha256"), "Independent preflight admission bytes changed")
+    row = life.strict_json(raw.decode("utf8")); directory, legacy, hashes, phases = _legacy_preflight()
+    prior_gate(row, 0, s.api, s.serial, test_sha)
+    need(row.get("protocol") == "M10_B1B2_PREFLIGHT_READ_ONLY_RESUME_V1" and row.get("originalStatus") == "UNKNOWN" and
+         row.get("originalsSHA256") == hashes and row.get("runId") == legacy["result.json"]["runId"] and
+         row.get("instrumentationCommandsIssued") == 0, "Independent admission changed the old UNKNOWN or source")
+    grouped = {}
+    for path, entry in row["records"].items():
+        name = path.rsplit("/", 1)[1]
+        need(entry.get("file") == "preflight-" + name and name in ("attempt.json", "result.json"), "Admission original path conflicts")
+        grouped[path] = (fresh.avd_identity.read_bytes(evidence / entry["file"], limit=16384).decode("utf8"), entry["metadata"])
+    proof = preflight_records(legacy["before.json"], legacy["after.json"], row["runId"], grouped, phases, row["bootId"])
+    need(row.get("deviceProof") == proof and row.get("capture") == legacy["result.json"]["capture"] and
+         row.get("instrumentation") == legacy["result.json"]["instrumentation"], "Independent admission revalidation differs")
+    current = row["continuationSnapshot"]
+    _same_preflight_environment(legacy["after.json"], current)
+    current_rows = _preflight_processes(current.get("processes"), current["uid"])
+    need(not current_rows or (current_rows[0]["pid"] == proof["attempt"]["hostPid"] and
+         current_rows[0]["startTicks"] == proof["attempt"]["hostStartTicks"]), "Resume encountered another live Host instance")
+    need(all(current.get(k) == legacy["after.json"].get(k) for k in ("stages", "observations", "diagnostics", "safety")),
+         "Admission continuation baseline conflicts")
+    return row, directory
+
 def private_path(path, *, content=False):
     need(isinstance(path, str) and len(path) <= 512, "Invalid private path")
     parts = path.split("/")
@@ -123,7 +310,7 @@ def metadata_many(s, paths, uid):
     return result
 
 
-def parse_bundle(text, paths, uid, limits):
+def parse_bundle(text, paths, uid, limits, *, required_hashes=False):
     """Pure parser for bounded raw bytes and before/after inode/length checks."""
     need(len(text.encode()) <= sum(4 * ((limits[p] + 3) // 3) + limits[p] // 40 + 1024 for p in paths) + 65536, "Evidence group exceeds bound")
     lines = text.splitlines(); need(lines and lines.pop(0) == "M10_BUNDLE_BEGIN", "Evidence group header missing")
@@ -138,13 +325,22 @@ def parse_bundle(text, paths, uid, limits):
         need(lines and lines[0].startswith("B|" + path + "|"), "Evidence group file/order mismatch")
         before = parse_metadata(lines.pop(0)[len(path) + 3:], uid)
         need(before["type"] == "regular" and 0 < before["bytes"] <= limits[path], "Record size/type invalid")
+        file_hash = None
+        if lines and lines[0].startswith("H0|"):
+            value = lines.pop(0).split("|")
+            need(len(value) == 3 and value[1] == path and re.fullmatch(r"[0-9a-f]{64}", value[2]), "Invalid before-file SHA")
+            file_hash = value[2]
+        need(not required_hashes or file_hash is not None, "Live reader requires device before/after SHA")
         encoded = []
-        while lines and not lines[0].startswith("E|"):
+        while lines and not lines[0].startswith(("E|", "H1|")):
             encoded.append(lines.pop(0))
+        if file_hash is not None:
+            need(lines and lines.pop(0) == "H1|" + path + "|" + file_hash, "File SHA changed during read")
         need(lines and lines[0].startswith("E|" + path + "|"), "Evidence group file terminator missing")
         after = parse_metadata(lines.pop(0)[len(path) + 3:], uid)
         raw = base64.b64decode("".join(encoded), validate=True)
         need(before == after and len(raw) == before["bytes"] and len(raw) <= limits[path], "Record changed/truncated while reading")
+        need(file_hash is None or hashlib.sha256(raw).hexdigest() == file_hash, "Device/file/payload SHA mismatch")
         result[path] = (raw.decode("utf-8", "strict"), {**before, "sha256": hashlib.sha256(raw).hexdigest()})
     for path in expected_ancestors:
         need(lines and lines.pop(0) == "A1|" + path + "|" + ancestors[path], "Synthetic ancestor changed during read")
@@ -167,18 +363,75 @@ def bundle_script(paths, limits=None):
         script += f"[ ! -L '{path}' ]; [ -d '{path}' ]; stat -c 'A0|{path}|%f|%d|%i|%s|%u|%h' '{path}'; "
     for path in paths:
         limit = limits[path]
-        script += f"[ ! -L '{path}' ]; [ -f '{path}' ]; n=$(stat -c '%s' '{path}'); [ \"$n\" -gt 0 ]; [ \"$n\" -le {limit} ]; stat -c 'B|{path}|%f|%d|%i|%s|%u|%h' '{path}'; dd if='{path}' bs=1 count={limit + 1} | base64; stat -c 'E|{path}|%f|%d|%i|%s|%u|%h' '{path}'; "
+        # The extra block makes concurrent growth observable without byte-at-a-time I/O.
+        # All three reads stay bounded even if a writer grows the file after stat.
+        bounded = f"dd if='{path}' bs=65536 count={limit // 65536 + 1}"
+        script += f"[ ! -L '{path}' ]; [ -f '{path}' ]; n=$(stat -c '%s' '{path}'); [ \"$n\" -gt 0 ]; [ \"$n\" -le {limit} ]; stat -c 'B|{path}|%f|%d|%i|%s|%u|%h' '{path}'; "
+        script += f"h=$({bounded} | sha256sum); h=${{h%% *}}; printf 'H0|{path}|%s\\n' \"$h\"; {bounded} | base64; h=$({bounded} | sha256sum); h=${{h%% *}}; printf 'H1|{path}|%s\\n' \"$h\"; stat -c 'E|{path}|%f|%d|%i|%s|%u|%h' '{path}'; "
     for path in ancestors:
         script += f"[ ! -L '{path}' ]; stat -c 'A1|{path}|%f|%d|%i|%s|%u|%h' '{path}'; "
     script += f"printf 'M10_BUNDLE_END|{len(paths)}\\n'"
     return script
 
 
+def validate_dd_stderr(raw, file_sizes):
+    """Accept only exact successful dd accounting, never discard remote stderr."""
+    need(isinstance(raw, bytes) and len(raw) <= 65536, "Reader stderr oversized/unknown")
+    lines = raw.decode("ascii", "strict").splitlines()
+    passes = 0
+    for size in file_sizes:
+        for _ in range(3):
+            full, partial = divmod(size, 65536)
+            expected = f"{full}+{int(partial != 0)} records "
+            need(len(lines) >= 2 and lines.pop(0) == expected + "in" and lines.pop(0) == expected + "out", "dd record accounting missing/conflicting")
+            if lines and re.match(r"[0-9]+ bytes ", lines[0]):
+                line = lines.pop(0)
+                number = r"[0-9]+(?:\.[0-9]+)?(?:e[+-]?[0-9]+)?"
+                gnu = rf"{size} bytes(?: \([^\r\n()]{{1,64}}\))? copied, {number} s, {number} [A-Za-z]+/s"
+                android = rf"{size} bytes transferred in {number} secs \({number} bytes/sec\)"
+                need(re.fullmatch(gnu, line) is not None or re.fullmatch(android, line) is not None, "Unknown dd transfer diagnostic")
+            passes += 1
+    need(not lines, "Unexpected reader stderr")
+    return {"passes": passes, "stderrBytes": len(raw), "stderrSHA256": hashlib.sha256(raw).hexdigest()}
+
+
+def reader_command_proof(s, offset, text, paths, sizes):
+    """Bind stdout/stderr to exactly this serial command in its append-only journal."""
+    maximum = sum(4 * ((size + 2) // 3) for size in sizes) * 2 + 256 * 1024
+    with s.journal.open("rb") as stream:
+        stream.seek(offset)
+        addition = stream.read(maximum + 1)
+    need(0 < len(addition) <= maximum and addition.endswith(b"\n") and len(addition.splitlines()) == 1, "Reader command journal missing/overlapped/truncated")
+    row = life.strict_json(addition.decode("utf-8"))
+    argv = row.get("argv")
+    expected_shell = "run-as " + APP + " sh -c " + shlex.quote(bundle_script(paths, {p: n for p, n in zip(paths, sizes)}))
+    # sizes passed here are read limits, not final byte counts; actual sizes come from parser below.
+    need(isinstance(argv, list) and len(argv) == 5 and Path(argv[0]).name.lower() == "adb.exe" and argv[1:] == ["-s", s.serial, "shell", expected_shell], "Reader journal command/serial mismatch")
+    need(row.get("exitCode") == 0 and isinstance(row.get("utc"), str) and isinstance(row.get("endUtc"), str), "Reader command status/time missing")
+    from datetime import datetime
+    start, end = (datetime.fromisoformat(row[k]) for k in ("utc", "endUtc"))
+    need(start.tzinfo is not None and end.tzinfo is not None and 0 <= (end - start).total_seconds() <= 30,
+         "Reader command timing outside fixed 30s boundary")
+    decoded = {}
+    for key in ("stdout", "stderr"):
+        raw = base64.b64decode(row.get(key + "Base64", ""), validate=True)
+        need(len(raw) == row.get(key + "Bytes") and hashlib.sha256(raw).hexdigest() == row.get(key + "SHA256"), "Reader raw command integrity mismatch")
+        decoded[key] = raw
+    need(decoded["stdout"].decode("utf-8", "strict").strip() == text, "Reader returned bytes differ from command journal")
+    return decoded
+
+
 def read_bundle(s, paths, uid, limits=None):
     paths = sorted(paths)
     limits = {path: (limits or {}).get(path, 16384) for path in paths}
     script = bundle_script(paths, limits)
-    return parse_bundle(private(s, script), paths, uid, limits)
+    need(not s.journal.is_symlink() and s.journal.is_file(), "Reader journal unavailable")
+    offset = s.journal.stat().st_size
+    text = private(s, script)
+    command = reader_command_proof(s, offset, text, paths, [limits[p] for p in paths])
+    result = parse_bundle(text, paths, uid, limits, required_hashes=True)
+    validate_dd_stderr(command["stderr"], [result[p][1]["bytes"] for p in paths])
+    return result
 
 
 def exists(s, path):
@@ -471,14 +724,7 @@ def evaluate(s, index, run_id, before, after, phases):
         path = "no_backup/m10-b1b2-safety/" + run_id
         need(new_safety[run_id]["children"] == ["attempt.json", "result.json"], "Preflight evidence incomplete")
         grouped = read_bundle(s, [path + "/attempt.json", path + "/result.json"], uid)
-        result = life.strict_json(grouped[path + "/result.json"][0]); attempt = life.strict_json(grouped[path + "/attempt.json"][0])
-        need(result.get("status") == "PASS" and result.get("runId") == run_id and result.get("method") == METHODS[0] and result.get("bootStable") is True and result.get("mainRoleAndExactHostInstance") is True and result.get("stageCreatedByMethod") is False and result.get("workerStartedByMethod") is False and result.get("before") == result.get("after"), "Preflight is not direct boot/role/reflection proof")
-        reflected = result.get("reflectedClasses", [])
-        need(len(reflected) == len(REFLECTED_CLASSES) and {x.get("class") for x in reflected} == REFLECTED_CLASSES and
-             all(x.get("scan") == "PASS" and type(x.get("declaredMethods")) is int and x["declaredMethods"] > 0 for x in reflected), "New classes not actually reflected")
-        need(attempt.get("runId") == run_id and attempt.get("method") == METHODS[0] and attempt.get("hostUid") == uid and attempt.get("bootId") == result.get("bootIdBefore") == result.get("bootIdAfter"), "Direct preflight attempt/boot mismatch")
-        need(any(row.get("pid") == attempt.get("hostPid") and row.get("startTicks") == attempt.get("hostStartTicks") for row in after["processes"]["rows"]), "Exact preflight Host not independently observed")
-        return {"status": "PASS", "preflight": result, "attempt": attempt}
+        return preflight_records(before, after, run_id, grouped, phases)
     need(len(new_stages) == 1, "Expected exactly one new isolated Stage")
     generation, stage = next(iter(new_stages.items()))
     if index == 1:
@@ -597,8 +843,7 @@ def run_one(s, index):
     prior_diagnostics, prior_events = [], []
     capture = fresh.capture_module()
     for previous in range(index):
-        old = root / f"method-{previous:02d}"
-        prior_gate(life.strict_json((old / "result.json").read_text()), previous, s.api, s.serial, test_sha)
+        previous_row, old = admitted_method(s, previous, test_sha)
         proof, text = capture.read_verified(old / "continuous-log", expected_serial=s.serial)
         prior_diagnostics.append(proof["handshake"]["authenticatedRawLine"])
         prior_events.extend(line for line in text.splitlines(keepends=True) if " LITHIC_JPEG" in line and line not in prior_events)
@@ -617,7 +862,10 @@ def run_one(s, index):
         if index == 0:
             need(all(not before[key] for key in ("stages", "observations", "diagnostics", "safety")), "Fresh first-method synthetic namespaces are not empty")
         else:
-            previous_after = life.strict_json(fresh.avd_identity.read_bytes(root / f"method-{index - 1:02d}" / "after.json", limit=1024 * 1024).decode("utf-8"))
+            previous_row, previous_directory = admitted_method(s, index - 1, test_sha)
+            previous_after = previous_row.get("continuationSnapshot")
+            if previous_after is None:
+                previous_after = life.strict_json(fresh.avd_identity.read_bytes(previous_directory / "after.json", limit=1024 * 1024).decode("utf-8"))
             need(all(before[key] == previous_after[key] for key in ("stages", "observations", "diagnostics", "safety")), "Synthetic evidence changed between authorized methods")
         for generation, stage in before["stages"].items(): terminal_stage(stage, abandoned="abandoned.v2" in stage["records"], allow_failed_output=generation.startswith("m10-b1-delay-"))
         components = s.adb("shell", "pm", "list", "instrumentation").splitlines()

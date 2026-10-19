@@ -1,0 +1,143 @@
+test_boot_drift_rejects_even_if_host_has_disappeared (__main__.ResumePreflightTest.test_boot_drift_rejects_even_if_host_has_disappeared) ... ERROR
+test_different_live_pid_or_start_ticks_is_rejected (__main__.ResumePreflightTest.test_different_live_pid_or_start_ticks_is_rejected) ... ERROR
+test_incomplete_external_process_proof_stays_unknown (__main__.ResumePreflightTest.test_incomplete_external_process_proof_stays_unknown) ... ERROR
+test_live_file_length_sha_uid_or_inode_conflict_rejects (__main__.ResumePreflightTest.test_live_file_length_sha_uid_or_inode_conflict_rejects) ... ERROR
+test_main_assertion_and_identity_fields_cannot_be_guessed (__main__.ResumePreflightTest.test_main_assertion_and_identity_fields_cannot_be_guessed) ... ERROR
+test_missing_reflected_class_or_no_worker_evidence_rejects (__main__.ResumePreflightTest.test_missing_reflected_class_or_no_worker_evidence_rejects) ... ERROR
+test_original_evaluate_replays_real_empty_after_without_requiring_live_host (__main__.ResumePreflightTest.test_original_evaluate_replays_real_empty_after_without_requiring_live_host) ... ERROR
+test_real_empty_before_after_host_is_legal_short_instrumentation (__main__.ResumePreflightTest.test_real_empty_before_after_host_is_legal_short_instrumentation) ... ERROR
+test_same_runtime_anchor_required (__main__.ResumePreflightTest.test_same_runtime_anchor_required) ... ERROR
+test_still_live_matching_host_is_supported (__main__.ResumePreflightTest.test_still_live_matching_host_is_supported) ... ERROR
+test_worker_event_or_consumer_namespace_prevents_preflight (__main__.ResumePreflightTest.test_worker_event_or_consumer_namespace_prevents_preflight) ... ERROR
+
+======================================================================
+ERROR: test_boot_drift_rejects_even_if_host_has_disappeared (__main__.ResumePreflightTest.test_boot_drift_rejects_even_if_host_has_disappeared)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 71, in test_boot_drift_rejects_even_if_host_has_disappeared
+    with self.assertRaises((ValueError,RuntimeError)):self.check()
+                                                      ^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 48, in check
+    return s.preflight_records(self.before,self.after,self.run,self.grouped(),"",self.boot)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_different_live_pid_or_start_ticks_is_rejected (__main__.ResumePreflightTest.test_different_live_pid_or_start_ticks_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 61, in test_different_live_pid_or_start_ticks_is_rejected
+    with self.assertRaises((ValueError,RuntimeError)):self.check()
+                                                      ^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 48, in check
+    return s.preflight_records(self.before,self.after,self.run,self.grouped(),"",self.boot)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_incomplete_external_process_proof_stays_unknown (__main__.ResumePreflightTest.test_incomplete_external_process_proof_stays_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 90, in test_incomplete_external_process_proof_stays_unknown
+    with self.assertRaises((ValueError,RuntimeError)):self.check()
+                                                      ^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 48, in check
+    return s.preflight_records(self.before,self.after,self.run,self.grouped(),"",self.boot)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_live_file_length_sha_uid_or_inode_conflict_rejects (__main__.ResumePreflightTest.test_live_file_length_sha_uid_or_inode_conflict_rejects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 86, in test_live_file_length_sha_uid_or_inode_conflict_rejects
+    with self.assertRaises((ValueError,RuntimeError)):s.preflight_records(self.before,self.after,self.run,grouped,"",self.boot)
+                                                      ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_main_assertion_and_identity_fields_cannot_be_guessed (__main__.ResumePreflightTest.test_main_assertion_and_identity_fields_cannot_be_guessed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 65, in test_main_assertion_and_identity_fields_cannot_be_guessed
+    with self.assertRaises((ValueError,RuntimeError)):self.check()
+                                                      ^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 48, in check
+    return s.preflight_records(self.before,self.after,self.run,self.grouped(),"",self.boot)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_missing_reflected_class_or_no_worker_evidence_rejects (__main__.ResumePreflightTest.test_missing_reflected_class_or_no_worker_evidence_rejects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 74, in test_missing_reflected_class_or_no_worker_evidence_rejects
+    with self.assertRaises((ValueError,RuntimeError)):self.check()
+                                                      ^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 48, in check
+    return s.preflight_records(self.before,self.after,self.run,self.grouped(),"",self.boot)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_original_evaluate_replays_real_empty_after_without_requiring_live_host (__main__.ResumePreflightTest.test_original_evaluate_replays_real_empty_after_without_requiring_live_host)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 95, in test_original_evaluate_replays_real_empty_after_without_requiring_live_host
+    self.assertEqual("PASS",s.evaluate(Mock(),0,self.run,self.before,self.after,"")["status"])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\safety_device.py", line 480, in evaluate
+    need(any(row.get("pid") == attempt.get("hostPid") and row.get("startTicks") == attempt.get("hostStartTicks") for row in after["processes"]["rows"]), "Exact preflight Host not independently observed")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 51, in need
+    raise RuntimeError(message)
+RuntimeError: Exact preflight Host not independently observed
+
+======================================================================
+ERROR: test_real_empty_before_after_host_is_legal_short_instrumentation (__main__.ResumePreflightTest.test_real_empty_before_after_host_is_legal_short_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 51, in test_real_empty_before_after_host_is_legal_short_instrumentation
+    proof=self.check();self.assertEqual("PASS",proof["status"])
+          ^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 48, in check
+    return s.preflight_records(self.before,self.after,self.run,self.grouped(),"",self.boot)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_same_runtime_anchor_required (__main__.ResumePreflightTest.test_same_runtime_anchor_required)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 98, in test_same_runtime_anchor_required
+    with self.assertRaises((ValueError,RuntimeError)):self.check()
+                                                      ^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 48, in check
+    return s.preflight_records(self.before,self.after,self.run,self.grouped(),"",self.boot)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_still_live_matching_host_is_supported (__main__.ResumePreflightTest.test_still_live_matching_host_is_supported)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 57, in test_still_live_matching_host_is_supported
+    self.assertEqual("PASS",self.check()["status"])
+                            ^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 48, in check
+    return s.preflight_records(self.before,self.after,self.run,self.grouped(),"",self.boot)
+           ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+======================================================================
+ERROR: test_worker_event_or_consumer_namespace_prevents_preflight (__main__.ResumePreflightTest.test_worker_event_or_consumer_namespace_prevents_preflight)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_preflight.py", line 79, in test_worker_event_or_consumer_namespace_prevents_preflight
+    with self.assertRaises((ValueError,RuntimeError)):s.preflight_records(self.before,self.after,self.run,grouped,"LITHIC_JPEG: event",self.boot)
+                                                      ^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'preflight_records'
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.036s
+
+FAILED (errors=11)

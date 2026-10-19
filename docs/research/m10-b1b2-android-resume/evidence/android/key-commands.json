@@ -1,0 +1,68 @@
+{
+  "scope": "Exact selected original rows with stdout/stderr Base64",
+  "commands": [
+    {
+      "originalRow": 97,
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5664",
+        "shell",
+        "am",
+        "instrument",
+        "-w",
+        "-r",
+        "-e",
+        "class",
+        "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+        "-e",
+        "m10SafetyPermit",
+        "M10_B1B2_ISOLATED_V1",
+        "-e",
+        "m10SafetyRunId",
+        "e6782ca1-2710-4157-83a0-23aab9e770c1",
+        "-e",
+        "m10SafetyExpectedApi",
+        "26",
+        "com.cooper.lithic.debug.test/com.cooper.lithic.data.media.M10ProcessBoundaryRunner"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-19T10:28:00.593387+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "SU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogbnVtdGVzdHM9MQ0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogc3RyZWFtPQ0KY29tLmNvb3Blci5saXRoaWMuZGF0YS5tZWRpYS5NMTBXb3JrZXJSZXRpcmVtZW50UmV2aWV3VGVzdDoNCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IGlkPUFuZHJvaWRKVW5pdFJ1bm5lcg0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogdGVzdD1oZWFsdGh5X2pwZWdfcmV0aXJlc19yZWFsX3dvcmtlcl9iZWZvcmVfc3RhZ2VfY29tcGxldGlvbg0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogY2xhc3M9Y29tLmNvb3Blci5saXRoaWMuZGF0YS5tZWRpYS5NMTBXb3JrZXJSZXRpcmVtZW50UmV2aWV3VGVzdA0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogY3VycmVudD0xDQpJTlNUUlVNRU5UQVRJT05fU1RBVFVTX0NPREU6IDENCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IG51bXRlc3RzPTENCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IHN0cmVhbT0uDQpJTlNUUlVNRU5UQVRJT05fU1RBVFVTOiBpZD1BbmRyb2lkSlVuaXRSdW5uZXINCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IHRlc3Q9aGVhbHRoeV9qcGVnX3JldGlyZXNfcmVhbF93b3JrZXJfYmVmb3JlX3N0YWdlX2NvbXBsZXRpb24NCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IGNsYXNzPWNvbS5jb29wZXIubGl0aGljLmRhdGEubWVkaWEuTTEwV29ya2VyUmV0aXJlbWVudFJldmlld1Rlc3QNCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IGN1cnJlbnQ9MQ0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVU19DT0RFOiAwDQpJTlNUUlVNRU5UQVRJT05fUkVTVUxUOiBzdHJlYW09DQoNClRpbWU6IDIuMjc2DQoNCk9LICgxIHRlc3QpDQoNCg0KSU5TVFJVTUVOVEFUSU9OX0NPREU6IC0xDQo=",
+      "stdoutBytes": 875,
+      "stdoutSHA256": "56e77c836b3cd3570693aae57d0c2bdef578e5a0a6b2628acd45beea1b047df8",
+      "utc": "2026-10-19T10:27:57.452939+00:00"
+    },
+    {
+      "originalRow": 169,
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5664",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "stat",
+        "-c",
+        "%f:%u",
+        "files"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-19T10:31:52.870219+00:00",
+      "environmentOverrides": {},
+      "exitCode": 1,
+      "stderrBase64": "c3RhdDogJ2ZpbGVzJzogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeQ0K",
+      "stderrBytes": 42,
+      "stderrSHA256": "82249728733bb3e8ae7fc24dd113022d489604cad744a39d3829e5faec108b2f",
+      "stdoutBase64": "",
+      "stdoutBytes": 0,
+      "stdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "utc": "2026-10-19T10:31:52.738149+00:00"
+    }
+  ]
+}

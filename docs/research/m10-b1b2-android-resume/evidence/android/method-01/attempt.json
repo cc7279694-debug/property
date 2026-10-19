@@ -1,0 +1,34 @@
+{
+  "api": 26,
+  "appSHA256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+  "argv": [
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+    "-e",
+    "m10SafetyPermit",
+    "M10_B1B2_ISOLATED_V1",
+    "-e",
+    "m10SafetyRunId",
+    "e6782ca1-2710-4157-83a0-23aab9e770c1",
+    "-e",
+    "m10SafetyExpectedApi",
+    "26",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.data.media.M10ProcessBoundaryRunner"
+  ],
+  "deviceProof": {
+    "status": "NOT_RUN"
+  },
+  "index": 1,
+  "instrumentationCommandsIssued": 0,
+  "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+  "runId": "e6782ca1-2710-4157-83a0-23aab9e770c1",
+  "serial": "emulator-5664",
+  "status": "ATTEMPT_ISSUED",
+  "testSHA256": "37ad9ec91964b6a0b8a870ec35032164ebcdb6a1c41522e780cb7af343fcd338"
+}

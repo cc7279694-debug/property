@@ -95,8 +95,8 @@ class FreshEnvironmentTest(unittest.TestCase):
             self.assertEqual(original_tail, continuous_log.TAIL)
             self.assertEqual(original_handshake_tail, continuous_log.HANDSHAKE_TAIL)
 
-    def test_no_test_cleanup_exit_or_retry_cli_entry(self):
-        self.assertEqual(("audit", "create", "start", "identity", "install-app", "install-test", "ending-readonly"),
+    def test_no_test_cleanup_or_retry_cli_but_explicit_conditional_exit(self):
+        self.assertEqual(("audit", "create", "start", "identity", "install-app", "install-test", "ending-readonly", "safe-exit"),
                          s.OPERATIONS)
 
     def test_global_adb_or_emulator_mutation_not_exposed(self):

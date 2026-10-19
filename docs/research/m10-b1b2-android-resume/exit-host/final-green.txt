@@ -1,0 +1,34 @@
+test_absent_processes_and_ports_is_pass (test_resume_exit.ResumeExitTest.test_absent_processes_and_ports_is_pass) ... ok
+test_all_twelve_authorizations_include_separate_host_recovery (test_resume_exit.ResumeExitTest.test_all_twelve_authorizations_include_separate_host_recovery) ... ok
+test_any_normal_unknown_blocks_exit_authorization (test_resume_exit.ResumeExitTest.test_any_normal_unknown_blocks_exit_authorization) ... ok
+test_boot_epoch_conflict_blocks_before_console_quit (test_resume_exit.ResumeExitTest.test_boot_epoch_conflict_blocks_before_console_quit) ... ok
+test_changed_parent_or_arguments_is_unknown (test_resume_exit.ResumeExitTest.test_changed_parent_or_arguments_is_unknown) ... ok
+test_console_ack_does_not_replace_process_and_port_end (test_resume_exit.ResumeExitTest.test_console_ack_does_not_replace_process_and_port_end) ... ok
+test_duplicate_port_is_unknown (test_resume_exit.ResumeExitTest.test_duplicate_port_is_unknown) ... ok
+test_exclusive_pre_exit_record_prevents_second_console_command (test_resume_exit.ResumeExitTest.test_exclusive_pre_exit_record_prevents_second_console_command) ... ok
+test_explicit_gated_normal_exit_entry_exists (test_resume_exit.ResumeExitTest.test_explicit_gated_normal_exit_entry_exists) ... ok
+test_fault_unknown_or_unclosed_resource_never_authorizes_exit (test_resume_exit.ResumeExitTest.test_fault_unknown_or_unclosed_resource_never_authorizes_exit) ... ok
+test_foreign_child_is_unknown (test_resume_exit.ResumeExitTest.test_foreign_child_is_unknown) ... ok
+test_full_exit_proof_opens_api36_but_before_tamper_blocks (test_resume_exit.ResumeExitTest.test_full_exit_proof_opens_api36_but_before_tamper_blocks) ... ok
+test_host_interruption_without_matching_recovery_blocks (test_resume_exit.ResumeExitTest.test_host_interruption_without_matching_recovery_blocks) ... ok
+test_incomplete_empty_process_list_is_not_consumer_proof (test_resume_exit.ResumeExitTest.test_incomplete_empty_process_list_is_not_consumer_proof) ... ok
+test_legacy_boolean_only_exit_proof_does_not_open_api36 (test_resume_exit.ResumeExitTest.test_legacy_boolean_only_exit_proof_does_not_open_api36) ... ok
+test_live_anchored_process_is_pending_not_ended (test_resume_exit.ResumeExitTest.test_live_anchored_process_is_pending_not_ended) ... ok
+test_missing_authorization_never_marks_or_quits (test_resume_exit.ResumeExitTest.test_missing_authorization_never_marks_or_quits) ... ok
+test_missing_port_evidence_is_unknown (test_resume_exit.ResumeExitTest.test_missing_port_evidence_is_unknown) ... ok
+test_null_executable_does_not_count_as_dead (test_resume_exit.ResumeExitTest.test_null_executable_does_not_count_as_dead) ... ok
+test_old_target_is_rejected_before_authorization (test_resume_exit.ResumeExitTest.test_old_target_is_rejected_before_authorization) ... ok
+test_pid_reuse_with_other_creation_is_unknown (test_resume_exit.ResumeExitTest.test_pid_reuse_with_other_creation_is_unknown) ... ok
+test_port_replacement_after_quit_stays_unknown (test_resume_exit.ResumeExitTest.test_port_replacement_after_quit_stays_unknown) ... ok
+test_post_quit_observation_over_deadline_stays_unknown (test_resume_exit.ResumeExitTest.test_post_quit_observation_over_deadline_stays_unknown) ... ok
+test_public_adb_cannot_bypass_conditional_exit (test_resume_exit.ResumeExitTest.test_public_adb_cannot_bypass_conditional_exit) ... ok
+test_two_consumer_snapshots_must_match (test_resume_exit.ResumeExitTest.test_two_consumer_snapshots_must_match) ... ok
+test_two_real_ended_observations_publish_exit_proof (test_resume_exit.ResumeExitTest.test_two_real_ended_observations_publish_exit_proof) ... ok
+test_unknown_console_reply_is_not_retried (test_resume_exit.ResumeExitTest.test_unknown_console_reply_is_not_retried) ... ok
+test_unknown_consumer_never_marks_or_quits (test_resume_exit.ResumeExitTest.test_unknown_consumer_never_marks_or_quits) ... ok
+test_wrong_port_owner_is_unknown (test_resume_exit.ResumeExitTest.test_wrong_port_owner_is_unknown) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.313s
+
+OK

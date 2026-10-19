@@ -1,0 +1,26 @@
+{
+  "scope": "HOST_ONLY_NO_DEVICE_CALLS",
+  "red": {
+    "tests": 11,
+    "errors": 11,
+    "cause": "10 missing new validator functions; 1 original evaluate falsely required short-lived Host after Instrumentation"
+  },
+  "green": {
+    "uniqueMethods": 15,
+    "passed": 15
+  },
+  "fixtureScope": "Real archived before/after/JUnit/capture bytes; direct report bodies in unit tests are explicitly synthetic and never Android evidence",
+  "originalUnknownPreserved": true,
+  "files": [
+    {
+      "file": "red-original.log",
+      "bytes": 12899,
+      "sha256": "12b8916174bbb69cced7c588f5d2c7efe417b80936625d3aab1d71bac299a7ef"
+    },
+    {
+      "file": "green-final-original.log",
+      "bytes": 2405,
+      "sha256": "5ddd62d05bc40684c9b5fab53b8b1a9e7fcee8c8ddcd5d508abf13fd5495ccce"
+    }
+  ]
+}

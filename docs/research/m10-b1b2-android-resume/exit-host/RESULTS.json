@@ -1,0 +1,17 @@
+{
+  "scope": "HOST_ONLY_SUPERVISOR_EXIT_CONTROL_NOT_ANDROID",
+  "sourceCommit": "532817ebaac5f59e0eb458c7d85d17765112606a",
+  "feature": "One controlled normal emulator-console quit, only after all safety gates",
+  "freshEnvironmentSHA256": "982ea7596a31277f835769e3d7c939166826081771560a06f6362fbc031a4302",
+  "testSourceSHA256": "7eee09d3877fc1dbc6ff4bd7a5a65d6a03c3dd26ae3360c1bad26c60e2ee8715",
+  "red": {"exitCode": 1, "uniqueMethods": 1, "failures": 1, "path": "red.txt", "sha256": "4552d0816ff7186b2895ca1984063b24c146fe30eb778cf83007576a69f36041"},
+  "green": {"exitCode": 0, "uniqueMethods": 29, "pass": 29, "path": "final-green.txt", "sha256": "94ad8f608ad844312cfc9f8b5229d221ee2d6dd04d15fdd13588c3c7c414b622"},
+  "regression": {"exitCode": 0, "uniqueMethods": 20, "pass": 20, "path": "fresh-regression.txt", "sha256": "37be5a599adda366fff43387cb949fe20687eb4a9a1c7190acebc38b871ff8a1"},
+  "intermediateGreen": {"uniqueMethods": 20, "path": "green.txt", "sha256": "e1b2f94b3eddf7a20d5f13e57596db5a8b0ac2c420bcba03c19b55bad4253b57", "notAddedToFinalCount": true},
+  "actualDeviceCallsByThisSubtask": 0,
+  "actualNormalExitStatus": "NOT_RUN",
+  "conditionalEntry": "python -B docs/research/m10-b1b2-android-safety/fresh_environment.py 26 safe-exit",
+  "exitQualification": "Seven normal gates plus five exact-fault/recovery records; both Host interruptions independently recovered; same boot; two immutable final consumer snapshots; authenticated Stage closure; two matching Windows PID/creation/argv/SDK/port disappearance observations",
+  "transport": "Targeted adb emu kill is emulator-console normal quit, never shell kill or Android Process.killProcess",
+  "noRetryFallbackOrAppDataCleanup": true
+}

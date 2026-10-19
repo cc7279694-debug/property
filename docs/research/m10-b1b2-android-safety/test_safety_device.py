@@ -171,7 +171,8 @@ class SafetyDeviceTest(unittest.TestCase):
   script=s.bundle_script([path],{path:16384})
   self.assertTrue(script.startswith('set -e; set -o pipefail; '))
   self.assertNotIn('head ',script)
-  self.assertIn("dd if='"+path+"' bs=1 count=16385 | base64",script)
+  self.assertIn("dd if='"+path+"' bs=65536 count=1 | base64",script)
+  self.assertIn("H0|"+path,script);self.assertIn("H1|"+path,script)
   for part in ("B|"+path+"|%f|%d|%i|%s|%u|%h","E|"+path+"|%f|%d|%i|%s|%u|%h","M10_BUNDLE_END|1"):
    self.assertIn(part,script)
 

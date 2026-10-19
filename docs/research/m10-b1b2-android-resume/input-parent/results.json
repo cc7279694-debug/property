@@ -1,0 +1,30 @@
+{
+  "status": "PROSPECTIVE_FIX",
+  "Android": "NOT_RUN_AFTER_TRANSFER_STOP",
+  "deviceOperations": 0,
+  "newTests": 5,
+  "priorTests": 4,
+  "red": "red.raw",
+  "green": "green-final.raw",
+  "priorGreen": "prior-4-green.raw",
+  "scope": "owned private files parent prepared only after fresh exclusive transfer claim, existing parent never chmod/replaced",
+  "oldUnknown": "PRESERVED_NO_RETRY_OR_CLAIM_RESET",
+  "sources": {
+    "docs/research/m10-b1b2-android-safety/stage_inputs.py": "aa6a91d2d185fc2dfeb80b86f12bd042820e3f19ddece689ec7f01b69dc1bb94",
+    "docs/research/m10-b1b2-android-safety/test_resume_inputs.py": "8dd277c228d7c7a797ed5f35a40c9f10c3d9840e08a13b63755d9579e90a875e"
+  },
+  "evidence": {
+    "green-final.raw": {
+      "bytes": 920,
+      "sha256": "ee132534e4acd05cccc3227adbe46526b9feb915a5c29429514d96936309f572"
+    },
+    "prior-4-green.raw": {
+      "bytes": 717,
+      "sha256": "8fbb63fe8b7d3b1fb9dbd914c3e3801f826989d38217f6956d0bde228632757f"
+    },
+    "red.raw": {
+      "bytes": 5129,
+      "sha256": "2bbfeac6cb2b454c59ea3e56de7cdf379228b6ab084942fbeb97a8d820afbf1f"
+    }
+  }
+}

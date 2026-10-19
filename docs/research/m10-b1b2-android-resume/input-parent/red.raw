@@ -1,0 +1,55 @@
+test_link_file_wrong_owner_or_device_is_fail_closed (__main__.InputParentResumeTest.test_link_file_wrong_owner_or_device_is_fail_closed) ... ERROR
+test_missing_wrong_or_already_finished_claim_refuses_before_device (__main__.InputParentResumeTest.test_missing_wrong_or_already_finished_claim_refuses_before_device) ... ERROR
+test_owned_absent_parent_is_created_after_exclusive_claim (__main__.InputParentResumeTest.test_owned_absent_parent_is_created_after_exclusive_claim) ... ERROR
+test_owned_existing_parent_must_be_same_inode_and_not_rewritten (__main__.InputParentResumeTest.test_owned_existing_parent_must_be_same_inode_and_not_rewritten) ... ERROR
+test_race_partial_root_change_or_command_exception_never_retries (__main__.InputParentResumeTest.test_race_partial_root_change_or_command_exception_never_retries) ... ERROR
+
+======================================================================
+ERROR: test_link_file_wrong_owner_or_device_is_fail_closed (__main__.InputParentResumeTest.test_link_file_wrong_owner_or_device_is_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_inputs.py", line 30, in test_link_file_wrong_owner_or_device_is_fail_closed
+    with self.assertRaises((RuntimeError,ValueError)):s.ensure_owned_input_parent(fake,10077,claim)
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'prospective_stage_inputs' has no attribute 'ensure_owned_input_parent'
+
+======================================================================
+ERROR: test_missing_wrong_or_already_finished_claim_refuses_before_device (__main__.InputParentResumeTest.test_missing_wrong_or_already_finished_claim_refuses_before_device)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_inputs.py", line 46, in test_missing_wrong_or_already_finished_claim_refuses_before_device
+    with self.assertRaises(RuntimeError):s.ensure_owned_input_parent(fake,10077,claim)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'prospective_stage_inputs' has no attribute 'ensure_owned_input_parent'
+
+======================================================================
+ERROR: test_owned_absent_parent_is_created_after_exclusive_claim (__main__.InputParentResumeTest.test_owned_absent_parent_is_created_after_exclusive_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_inputs.py", line 19, in test_owned_absent_parent_is_created_after_exclusive_claim
+    fake=self.fake(tmp);claim=s.claim_transfer(fake);v=s.ensure_owned_input_parent(fake,10077,claim)
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'prospective_stage_inputs' has no attribute 'ensure_owned_input_parent'
+
+======================================================================
+ERROR: test_owned_existing_parent_must_be_same_inode_and_not_rewritten (__main__.InputParentResumeTest.test_owned_existing_parent_must_be_same_inode_and_not_rewritten)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_inputs.py", line 24, in test_owned_existing_parent_must_be_same_inode_and_not_rewritten
+    fake=self.fake(tmp,output('EXISTING'));claim=s.claim_transfer(fake);v=s.ensure_owned_input_parent(fake,10077,claim)
+                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'prospective_stage_inputs' has no attribute 'ensure_owned_input_parent'
+
+======================================================================
+ERROR: test_race_partial_root_change_or_command_exception_never_retries (__main__.InputParentResumeTest.test_race_partial_root_change_or_command_exception_never_retries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_inputs.py", line 36, in test_race_partial_root_change_or_command_exception_never_retries
+    with self.assertRaises((RuntimeError,ValueError)):s.ensure_owned_input_parent(fake,10077,claim)
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'prospective_stage_inputs' has no attribute 'ensure_owned_input_parent'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.046s
+
+FAILED (errors=5)

@@ -1,0 +1,473 @@
+{
+  "api": 26,
+  "appSHA256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+  "avd": "Lithic_M10B1B2_API26_20261019",
+  "base": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1",
+  "bootId": "6c697468-6963-4000-8000-000000000001",
+  "capture": {
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5664",
+      "logcat",
+      "-b",
+      "main",
+      "-v",
+      "threadtime",
+      "-s",
+      "LITHIC_JPEG:I",
+      "LITHIC_B2_RESOURCE:E",
+      "LITHIC_M10_CAPTURE:I",
+      "*:S"
+    ],
+    "diagnosticScope": "HOST_OBSERVER_WINDOW_ONLY_NOT_UNOBSERVABLE_LOGD_LOSS_PROOF",
+    "ended": {
+      "monotonicNs": 30140024708300,
+      "utc": "2026-10-19T09:10:53.837256+00:00"
+    },
+    "errors": [],
+    "format": "LITHIC_SINGLE_METHOD_CONTINUOUS_LOG_V1",
+    "handshake": {
+      "authenticatedAt": {
+        "monotonicNs": 30138656168500,
+        "stdoutBytes": 111,
+        "utc": "2026-10-19T09:10:52.469038+00:00"
+      },
+      "authenticatedRawLine": "10-19 09:10:52.038  5869  5869 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=e1a12d356c8541ea8d404bfdbabf1d6d\r\n",
+      "completed": {
+        "monotonicNs": 30138656089300,
+        "utc": "2026-10-19T09:10:52.468040+00:00"
+      },
+      "diagnosticEmissionCount": 1,
+      "issued": {
+        "monotonicNs": 30138296527300,
+        "utc": "2026-10-19T09:10:52.109068+00:00"
+      },
+      "message": "M10_CAPTURE_READY nonce=e1a12d356c8541ea8d404bfdbabf1d6d",
+      "nonce": "e1a12d356c8541ea8d404bfdbabf1d6d",
+      "tag": "LITHIC_M10_CAPTURE",
+      "writerResult": {
+        "exitCode": 0,
+        "nonce": "e1a12d356c8541ea8d404bfdbabf1d6d",
+        "serial": "emulator-5664",
+        "status": "PASS",
+        "tag": "LITHIC_M10_CAPTURE"
+      }
+    },
+    "limits": {
+      "readinessSeconds": 10,
+      "seconds": 360,
+      "stderrBytes": 65536,
+      "stdoutBytes": 2097152,
+      "stopSeconds": 3
+    },
+    "monotonicClock": "time.perf_counter_ns",
+    "priorDiagnostics": [],
+    "process": {
+      "controlledHostObserverStop": true,
+      "createdByThisCapture": true,
+      "exitCode": 1,
+      "pid": 40160
+    },
+    "readinessProtocol": "DIAGNOSTIC_NONCE_V1",
+    "ready": {
+      "monotonicNs": 30138656168500,
+      "stdoutBytes": 111,
+      "utc": "2026-10-19T09:10:52.469038+00:00"
+    },
+    "serial": "emulator-5664",
+    "started": {
+      "monotonicNs": 30138243909500,
+      "utc": "2026-10-19T09:10:52.056361+00:00"
+    },
+    "status": "PASS",
+    "stderr": {
+      "bytes": 0,
+      "eof": true,
+      "file": "stderr.raw",
+      "observedBytes": 0,
+      "readerStopped": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 111,
+      "eof": true,
+      "file": "stdout.raw",
+      "observedBytes": 111,
+      "readerStopped": true,
+      "sha256": "f1ccc558e484b12296cb26b5d8fc24d98e1518c119e8e313c266a42b53dbc6f7"
+    },
+    "stopRequested": {
+      "monotonicNs": 30139964745900,
+      "utc": "2026-10-19T09:10:53.776700+00:00"
+    }
+  },
+  "continuationSnapshot": {
+    "appSHA256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+    "diagnostics": {},
+    "identity": {
+      "api": 26,
+      "appSHA256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+      "avd": "Lithic_M10B1B2_API26_20261019",
+      "base": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1",
+      "data": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd",
+      "processIdentityProof": {
+        "anchor": {
+          "processes": [
+            {
+              "created": [
+                1792398979,
+                588656000
+              ],
+              "expectedExecutable": "e:\\codex\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+              "name": "emulator.exe",
+              "parentPid": 5304,
+              "pid": 40472,
+              "role": "launcher"
+            },
+            {
+              "created": [
+                1792398980,
+                253624000
+              ],
+              "expectedExecutable": "e:\\codex\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+              "name": "qemu-system-x86_64-headless.exe",
+              "parentPid": 40472,
+              "pid": 18424,
+              "role": "qemu"
+            }
+          ],
+          "spec": {
+            "argv": [
+              "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+              "-avd",
+              "Lithic_M10B1B2_API26_20261019",
+              "-port",
+              "5664",
+              "-datadir",
+              "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd",
+              "-data",
+              "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img",
+              "-cache",
+              "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img",
+              "-sysdir",
+              "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64",
+              "-no-snapshot",
+              "-no-window",
+              "-no-audio",
+              "-no-boot-anim",
+              "-memory",
+              "1536",
+              "-cores",
+              "2"
+            ],
+            "avd": "Lithic_M10B1B2_API26_20261019",
+            "launcherExe": "e:\\codex\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+            "port": 5664,
+            "qemuExe": "e:\\codex\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe"
+          },
+          "version": 1
+        },
+        "elapsedSeconds": 9.68699999999808,
+        "observations": [
+          {
+            "elapsedSeconds": 4.186999999998079,
+            "reason": "COMPLETE_IDENTITY_OBSERVED",
+            "status": "PASS"
+          },
+          {
+            "elapsedSeconds": 9.68699999999808,
+            "reason": "COMPLETE_IDENTITY_OBSERVED",
+            "status": "PASS"
+          }
+        ],
+        "reason": "TWO_COMPLETE_MATCHING_OBSERVATIONS",
+        "scope": "CURRENT_READ_ONLY_WINDOWS_IDENTITY",
+        "snapshot": {
+          "emulatorProcessCount": 4,
+          "freeKiB": 2967748,
+          "ports": [
+            {
+              "LocalAddress": "::1",
+              "LocalPort": 5665,
+              "OwningProcess": 18424
+            },
+            {
+              "LocalAddress": "::1",
+              "LocalPort": 5664,
+              "OwningProcess": 18424
+            },
+            {
+              "LocalAddress": "127.0.0.1",
+              "LocalPort": 5665,
+              "OwningProcess": 18424
+            },
+            {
+              "LocalAddress": "127.0.0.1",
+              "LocalPort": 5664,
+              "OwningProcess": 18424
+            }
+          ],
+          "targets": [
+            {
+              "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe -avd Lithic_M10B1B2_API26_20261019 -port 5664 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+              "CreationDate": "2026-10-19T08:36:19.5886560Z",
+              "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+              "Name": "emulator.exe",
+              "ParentProcessId": 5304,
+              "ProcessId": 40472
+            },
+            {
+              "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M10B1B2_API26_20261019 -port 5664 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+              "CreationDate": "2026-10-19T08:36:20.2536240Z",
+              "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+              "Name": "qemu-system-x86_64-headless.exe",
+              "ParentProcessId": 40472,
+              "ProcessId": 18424
+            }
+          ],
+          "totalKiB": 16648500,
+          "utc": "2026-10-19T10:23:33.6984219Z"
+        },
+        "status": "PASS",
+        "windowSeconds": 30
+      },
+      "runtimePaths": {
+        "hardwareConfigIntegrity": {
+          "bytes": 4653,
+          "sha256": "93da32940240a2dad71b03f9802e9543fa8ba90d5d70f0e6607deeb642eefa49"
+        },
+        "officialHardwareSchemaSHA256": "13a89cc7cfa84c5fe48cd7eb8d296bca321dcd0d90f7bcb751efd963ae2c653d",
+        "paths": {
+          "disk.cachePartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img",
+          "disk.dataPartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img",
+          "disk.encryptionKeyPartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\encryptionkey.img",
+          "disk.ramdisk.path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\ramdisk.img",
+          "disk.systemPartition.initPath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\system.img",
+          "disk.vendorPartition.initPath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\vendor.img",
+          "kernel.path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\kernel-ranchu"
+        },
+        "runtimeIdentity": "Lithic_M10B1B2_API26_20261019",
+        "status": "PASS",
+        "temporaryPaths": "NO_UNRESOLVED_WRITABLE_PATH_ACCEPTED"
+      },
+      "serial": "emulator-5664",
+      "sourceCommit": "08ce4b663b52127f400fa18bd13eb12fe04a8797",
+      "status": "PASS"
+    },
+    "observations": {},
+    "processes": {
+      "complete": true,
+      "rawBytes": 4114,
+      "rawSHA256": "6d71cc9c00c6cf196f338891068049d827507182eb9deb6a3310cd0b4f1c242e",
+      "rows": [],
+      "uid": 10077,
+      "worker_absent": true
+    },
+    "safety": {
+      "5d5131cc-071f-4857-be43-c6c6a4187f06": {
+        "children": [
+          "attempt.json",
+          "result.json"
+        ],
+        "files": {
+          "attempt.json": {
+            "bytes": 390,
+            "device": 64512,
+            "inode": 115488,
+            "links": 1,
+            "type": "regular",
+            "uid": 10077
+          },
+          "result.json": {
+            "bytes": 2439,
+            "device": 64512,
+            "inode": 115490,
+            "links": 1,
+            "type": "regular",
+            "uid": 10077
+          }
+        }
+      }
+    },
+    "stages": {},
+    "testSHA256": "37ad9ec91964b6a0b8a870ec35032164ebcdb6a1c41522e780cb7af343fcd338",
+    "testUID": 10078,
+    "uid": 10077
+  },
+  "data": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd",
+  "deviceProof": {
+    "attempt": {
+      "api": 26,
+      "bootId": "6c697468-6963-4000-8000-000000000001",
+      "hostPid": 5881,
+      "hostStartTicks": 205846,
+      "hostUid": 10077,
+      "method": "com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers",
+      "protocol": "M10_B1B2_SAFETY_ATTEMPT_V1",
+      "roomOrFormalCoverCommitted": false,
+      "runId": "5d5131cc-071f-4857-be43-c6c6a4187f06",
+      "status": "ATTEMPT_ISSUED"
+    },
+    "hostIdentityEvidence": {
+      "afterLifetime": "HOST_NOT_PRESENT_AT_POST_INSTRUMENTATION_OBSERVATION",
+      "externalObservationLimit": "NO_INDEPENDENT_DURING_EXECUTION_PS_WAS_REQUIRED_OR_CLAIMED",
+      "externalRunningHostObserved": false,
+      "source": "DIRECT_IN_PROCESS_BEGIN_AND_ASSERT_HOST"
+    },
+    "preflight": {
+      "after": {
+        "businessOrImageBytesRead": false,
+        "evidenceNamespaceExcluded": "m10-b1b2-safety",
+        "stageMetadataRows": 0,
+        "stageMetadataSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stageRoots": 0
+      },
+      "before": {
+        "businessOrImageBytesRead": false,
+        "evidenceNamespaceExcluded": "m10-b1b2-safety",
+        "stageMetadataRows": 0,
+        "stageMetadataSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stageRoots": 0
+      },
+      "bootIdAfter": "6c697468-6963-4000-8000-000000000001",
+      "bootIdBefore": "6c697468-6963-4000-8000-000000000001",
+      "bootStable": true,
+      "deviceAdmissionOutsideThisMethod": "REQUIRED",
+      "mainRoleAndExactHostInstance": true,
+      "method": "com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers",
+      "noConsumerWork": true,
+      "processesAfter": {
+        "externalSupervisorProcVerification": "REQUIRED_SEPARATELY",
+        "source": "ACTIVITY_MANAGER_SAME_UID",
+        "status": "ABSENT_AT_OBSERVATION",
+        "workerRows": 0
+      },
+      "processesBefore": {
+        "externalSupervisorProcVerification": "REQUIRED_SEPARATELY",
+        "source": "ACTIVITY_MANAGER_SAME_UID",
+        "status": "ABSENT_AT_OBSERVATION",
+        "workerRows": 0
+      },
+      "protocol": "M10_B1B2_PREFLIGHT_V1",
+      "reflectedClasses": [
+        {
+          "class": "com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest",
+          "declaredMethods": 1,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.M10B1CancellationSafetyTest",
+          "declaredMethods": 10,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.M10B1ExactProcessFaultTest",
+          "declaredMethods": 34,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.M10JpegResourceEvidenceTest",
+          "declaredMethods": 25,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.M10ResourceSampler",
+          "declaredMethods": 12,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.M10B1B2SafetySupport",
+          "declaredMethods": 9,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.M10B1ClosureObservations",
+          "declaredMethods": 6,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence",
+          "declaredMethods": 10,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics",
+          "declaredMethods": 8,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics$Session",
+          "declaredMethods": 21,
+          "scan": "PASS"
+        },
+        {
+          "class": "com.cooper.lithic.data.media.jpegworker.JpegBootIdentity",
+          "declaredMethods": 1,
+          "scan": "PASS"
+        }
+      ],
+      "runId": "5d5131cc-071f-4857-be43-c6c6a4187f06",
+      "stageCreatedByMethod": false,
+      "status": "PASS",
+      "workerStartedByMethod": false
+    },
+    "resourceScope": "NO_CONSUMER_CREATED_NOT_A_RESOURCE_RELEASE_PROOF",
+    "status": "PASS"
+  },
+  "index": 0,
+  "instrumentation": {
+    "decodedBytes": 872,
+    "decodedSHA256": "69bf66ee3188886b0998ca670cd6657aad340b7f3b7a8bbe4bfeea6549967369",
+    "method": "com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers",
+    "reason": "Matching start, completion and single-test summary",
+    "status": "PASS",
+    "testCount": 1
+  },
+  "instrumentationCommandsIssued": 0,
+  "method": "com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers",
+  "originalStatus": "UNKNOWN",
+  "originalsSHA256": {
+    "after.json": "8b64d1a55b0c4793e8e6262074def54c4887402fa5cd90096c757ed3425d3a18",
+    "attempt.json": "a6ad4e0762109e1c891efaf2a00f4ff296d988dfcc5a6c749ad59994ab3f30d5",
+    "before.json": "8031ac2457c02d968f144e1a782937806c8fbe5c93c6e9e337b7f0a07818218c",
+    "continuous-log/capture.json": "341b028a09faf128e189d93f481aa811e769e35de2274594c754531bfa3b43c0",
+    "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "continuous-log/stdout.raw": "f1ccc558e484b12296cb26b5d8fc24d98e1518c119e8e313c266a42b53dbc6f7",
+    "instrumentation.txt": "69bf66ee3188886b0998ca670cd6657aad340b7f3b7a8bbe4bfeea6549967369",
+    "result.json": "27d93d0f45804002cf72a392f4c222e3c6a02738dcc4424d484690104657fd23"
+  },
+  "protocol": "M10_B1B2_PREFLIGHT_READ_ONLY_RESUME_V1",
+  "records": {
+    "no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json": {
+      "file": "preflight-attempt.json",
+      "metadata": {
+        "bytes": 390,
+        "device": 64512,
+        "inode": 115488,
+        "links": 1,
+        "sha256": "0ecf28718f3618cbde2bba10ea07094e047b0e101367650f657ae6b77702da37",
+        "type": "regular",
+        "uid": 10077
+      }
+    },
+    "no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json": {
+      "file": "preflight-result.json",
+      "metadata": {
+        "bytes": 2439,
+        "device": 64512,
+        "inode": 115490,
+        "links": 1,
+        "sha256": "d8ee1fab947efa91787a255674714f3e51069bdefcc38ca726343424287dca53",
+        "type": "regular",
+        "uid": 10077
+      }
+    }
+  },
+  "runId": "5d5131cc-071f-4857-be43-c6c6a4187f06",
+  "scope": "NEW_READ_ONLY_ADMISSION_PRESERVES_OLD_UNKNOWN_NOT_NEW_ANDROID_TEST_PASS",
+  "serial": "emulator-5664",
+  "sourceCommit": "08ce4b663b52127f400fa18bd13eb12fe04a8797",
+  "status": "PASS",
+  "testSHA256": "37ad9ec91964b6a0b8a870ec35032164ebcdb6a1c41522e780cb7af343fcd338"
+}

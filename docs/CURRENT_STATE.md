@@ -1,8 +1,19 @@
 # 当前项目状态
 
-状态日期：2026-10-19（Asia/Shanghai；B1/B2独立Android验收BLOCKED，M10仍PENDING）。本文件为唯一当前状态，历史证据不改写。
+状态日期：2026-10-19（Asia/Shanghai；B1/B2 Android安全续验BLOCKED，输入准备UNKNOWN；M10仍PENDING）。本文件为唯一当前状态，历史证据不改写。
 
 ## Current Stage
+
+- **M10 B1/B2 ANDROID SAFETY RESUME — BLOCKED / WAITING_CHATGPT_REVIEW**：来源 `532817ebaac5f59e0eb458c7d85d17765112606a`；分支 `codex/m10-b1b2-android-safety-resume`；独立worktree `E:/CODEX/.codex/worktrees/lithic-b1b2-resume/砺石新APP`。仅研究Python/测试及文档差异，App/Test APK、Room/备份/算法/UI及JPEG旧断言不改；不重复旧18项整套。
+- **三接缝与实际验证**：有界dd＋pipefail原两JSON读回0.349秒PASS，前后inode/UID/长度与三方SHA稳定；短命Host按真实运行中begin/assertHost报告核验，结束后Host缺失不替代Worker/FD证明。旧method-00 UNKNOWN保留，新不可变续接准入PASS，预检JUnit未重跑。新增受控正常退出/API36衔接仅宿主验证、设备NOT_RUN。三个接缝最终55唯一宿主PASS；2MiB普通文件性能HOST_ONLY，Android0.681秒仅无写入流吞吐，不冒充普通文件inode验证。
+- **新健康冒烟**：API26原同实例、安装字节与UID核验PASS；健康JUnit1 PASS，Host7128/Worker7154，同UID10077/startTicks668444；唯一结果、FD/pin、认证退休六阶段、Binder死亡、独立进程结束、guard及Stage终结清理实际PASS。不是B1异常或B2大图PASS。
+- **停止原因**：输入准备唯一一次在不存在的`files`目录stat时exit1，结果UNKNOWN/files=[]；发生在目录创建/图片写入之前。图片上传0、三张40MP/取消/迟到RPC/其他B1异常及故障恢复全NOT_RUN，API36全NOT_RUN。停止设备后仅离线增加合法私有父目录准备，新5＋旧4宿主PASS，ANDROID_NOT_RUN；原已消费claim/UNKNOWN不可重用或删除。
+- **本轮计数与现场**：API26新增创建0、启动0、App/Test安装各0、Instrumentation1、故障终止0、退出0；目标 `Lithic_M10B1B2_API26_20261019 / emulator-5664` 同launcher40472/QEMU18424/创建身份与路径端口保持。结束UID10077下无Host/Worker，唯一健康Stage终结且自有载荷已清，旧两预检记录不变、输入父/目标目录ABSENT。API26仍运行，没有访问H2/C2/旧API26/保留API36，不读取私人账本/图片字节。
+- **下一步唯一执行阻塞**：审阅输入父目录最小修复及本次无写入证据后，另行明确新受控传输续接身份/入口；不重试旧claim。本批已停止，B1异常/B2真实40MP资源仍是正式冻结门禁。见[集中报告](research/M10_B1B2_ANDROID_SAFETY_RESUME.md)、[关键证据](research/m10-b1b2-android-resume/evidence/android/INDEX.json)、[checkpoint](checkpoints/2026-10-19-M10-B1B2-ANDROID-SAFETY-RESUME.md)。M10 PENDING/原三JPEG历史FAIL、UI-C1 FROZEN、M11 NOT_AUTHORIZED、D2A-N01～N05/A1-N01～N04及全部旧NOTE/UNKNOWN/NOT_RUN不变；只推当前分支后等独立验收。
+
+## 前次独立Android验收摘要（532817e历史）
+
+以下是前次任务停止时的真实结论，原件保持；“本轮”、新建/安装次数和读取NOT_RUN等均指532817e形成当时，本次新读回和独立准入不改写旧UNKNOWN。
 
 - **M10 B1/B2 ANDROID SAFETY VALIDATION — BLOCKED / WAITING_CHATGPT_REVIEW**：来源 `08ce4b663b52127f400fa18bd13eb12fe04a8797`；分支 `codex/m10-b1b2-android-safety-validation`；worktree `E:/CODEX/.codex/worktrees/lithic-b1b2-android/砺石新APP`。只新增隔离androidTest、监督器及必要证据；正式App、旧测试/三JPEG断言、Room/schema/备份/金额算法/UI均零差异。旧18项自然测试未重复。
 - **实际设备**：全新 `Lithic_M10B1B2_API26_20261019 / emulator-5664`；创建1、实际spawn1、App/Test各安装1、Instrumentation1；故障终止/图片传输0。API36全0、NOT_RUN。原App SHA `b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c`不变；新Test-only最终SHA `37ad9ec91964b6a0b8a870ec35032164ebcdb6a1c41522e780cb7af343fcd338`，旧bb00及未安装v2/ece保留。

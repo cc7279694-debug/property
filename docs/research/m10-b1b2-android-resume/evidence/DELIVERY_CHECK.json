@@ -1,0 +1,32 @@
+{
+  "status": "PASS_DELIVERY_STATIC_CHECKS_NOT_ANDROID_TEST",
+  "sourceCommit": "532817ebaac5f59e0eb458c7d85d17765112606a",
+  "verifiedAndroidIndexEntries": 27,
+  "newSupervisorMethodCounts": {
+    "test_resume_reader.py": 11,
+    "test_resume_preflight.py": 15,
+    "test_resume_exit.py": 29,
+    "test_resume_inputs.py": 5
+  },
+  "finalHostEvidence": "55 core seams PASS; input-parent 5 new plus 4 existing PASS, independently logged",
+  "changedSupervisorSHA256": {
+    "safety_device.py": "5bd79f4b9b18a480990c7fd3292c83b22a42ffda13cb81de0f30d34639c6bb7c",
+    "fresh_environment.py": "982ea7596a31277f835769e3d7c939166826081771560a06f6362fbc031a4302",
+    "fault_device.py": "65d8d10ae271dea0aa0a56c98533277af3e7fa4c5bf2f12be40f6508ae180ae3",
+    "stage_inputs.py": "aa6a91d2d185fc2dfeb80b86f12bd042820e3f19ddece689ec7f01b69dc1bb94",
+    "test_resume_reader.py": "57a8292070908adcb05f5fc47941bfdaaed649d9819caab50f9dd828d15ce088",
+    "test_resume_preflight.py": "2430f3bea123d52a9bf8200d3bd21a5021d4c2d7d0b7474450e31ad77143dc79",
+    "test_resume_exit.py": "7eee09d3877fc1dbc6ff4bd7a5a65d6a03c3dd26ae3360c1bad26c60e2ee8715",
+    "test_resume_inputs.py": "8dd277c228d7c7a797ed5f35a40c9f10c3d9840e08a13b63755d9579e90a875e",
+    "test_fresh_environment.py": "58310e0d7bba337f22b93283b3e6e6d23a0e36a95a8badec53aad3659281b70f",
+    "test_safety_device.py": "eecca745ba86a41293e1fb0bc9b58df883c4df38e44646548139a1763a0da91c"
+  },
+  "protectedProductAndOldEvidenceDiff": "EMPTY",
+  "oldMethod00": "UNKNOWN_PRESERVED",
+  "transferAttempt": "UNKNOWN_PRESERVED_NO_UPLOAD",
+  "currentHealthySmoke": "PASS",
+  "checkedLocalMarkdownLinks": 153,
+  "newEvidenceFilesBeforeThisCheck": 53,
+  "maxNewEvidenceFileBytes": 199302,
+  "scope": "Read-only host delivery checks, no ADB; prospective parent fix not executed on Android"
+}

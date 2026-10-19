@@ -1,0 +1,85 @@
+test_android_dd_transfer_format_is_scoped_counts_not_error_suppression (__main__.ResumeReaderTest.test_android_dd_transfer_format_is_scoped_counts_not_error_suppression) ... ERROR
+test_live_hashes_required_payload_and_pre_post_must_agree (__main__.ResumeReaderTest.test_live_hashes_required_payload_and_pre_post_must_agree) ... ERROR
+test_live_identity_uid_and_end_unchanged (__main__.ResumeReaderTest.test_live_identity_uid_and_end_unchanged) ... ERROR
+test_live_reader_uses_64k_not_bytewise_and_same_deadline (__main__.ResumeReaderTest.test_live_reader_uses_64k_not_bytewise_and_same_deadline) ... FAIL
+test_real_head_failure_stays_rejected_and_hashes_locked (__main__.ResumeReaderTest.test_real_head_failure_stays_rejected_and_hashes_locked) ... ERROR
+test_real_host_2mib_pipeline_finishes_within_30s (__main__.ResumeReaderTest.test_real_host_2mib_pipeline_finishes_within_30s) ... FAIL
+test_real_host_dd_and_base64_fail_stop_without_end (__main__.ResumeReaderTest.test_real_host_dd_and_base64_fail_stop_without_end) ... FAIL
+test_stderr_requires_dd_counts_and_refuses_unknown_diagnostics (__main__.ResumeReaderTest.test_stderr_requires_dd_counts_and_refuses_unknown_diagnostics) ... ERROR
+
+======================================================================
+ERROR: test_android_dd_transfer_format_is_scoped_counts_not_error_suppression (__main__.ResumeReaderTest.test_android_dd_transfer_format_is_scoped_counts_not_error_suppression)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_reader.py", line 50, in test_android_dd_transfer_format_is_scoped_counts_not_error_suppression
+    self.assertEqual(3,s.validate_dd_stderr((row*3).encode(),[3])['passes'])
+                       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'validate_dd_stderr'
+
+======================================================================
+ERROR: test_live_hashes_required_payload_and_pre_post_must_agree (__main__.ResumeReaderTest.test_live_hashes_required_payload_and_pre_post_must_agree)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_reader.py", line 32, in test_live_hashes_required_payload_and_pre_post_must_agree
+    good=bundle(); self.assertEqual('{}\n',s.parse_bundle(good,[P],10001,{P:1024},required_hashes=True)[P][0])
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: parse_bundle() got an unexpected keyword argument 'required_hashes'
+
+======================================================================
+ERROR: test_live_identity_uid_and_end_unchanged (__main__.ResumeReaderTest.test_live_identity_uid_and_end_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_reader.py", line 39, in test_live_identity_uid_and_end_unchanged
+    with self.assertRaises((RuntimeError,ValueError)):s.parse_bundle(bad,[P],10001,{P:1024},required_hashes=True)
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: parse_bundle() got an unexpected keyword argument 'required_hashes'
+
+======================================================================
+ERROR: test_real_head_failure_stays_rejected_and_hashes_locked (__main__.ResumeReaderTest.test_real_head_failure_stays_rejected_and_hashes_locked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_reader.py", line 30, in test_real_head_failure_stays_rejected_and_hashes_locked
+    with self.assertRaises((RuntimeError,ValueError)):s.parse_bundle((f/'stdout.raw').read_text(),paths,10077,{p:16384 for p in paths},required_hashes=True)
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: parse_bundle() got an unexpected keyword argument 'required_hashes'
+
+======================================================================
+ERROR: test_stderr_requires_dd_counts_and_refuses_unknown_diagnostics (__main__.ResumeReaderTest.test_stderr_requires_dd_counts_and_refuses_unknown_diagnostics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_reader.py", line 45, in test_stderr_requires_dd_counts_and_refuses_unknown_diagnostics
+    self.assertEqual(3,s.validate_dd_stderr((row*3).encode(),[3])['passes'])
+                       ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'validate_dd_stderr'
+
+======================================================================
+FAIL: test_live_reader_uses_64k_not_bytewise_and_same_deadline (__main__.ResumeReaderTest.test_live_reader_uses_64k_not_bytewise_and_same_deadline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_reader.py", line 41, in test_live_reader_uses_64k_not_bytewise_and_same_deadline
+    text=s.bundle_script([P],{P:2*1024*1024}); self.assertIn('bs=65536 count=33',text); self.assertNotIn('bs=1 ',text); self.assertNotIn('2>/dev/null',text);self.assertNotIn('status=none',text)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'bs=65536 count=33' not found in 'set -e; set -o pipefail; printf \'M10_BUNDLE_BEGIN\\n\'; [ ! -L \'no_backup\' ]; [ -d \'no_backup\' ]; stat -c \'A0|no_backup|%f|%d|%i|%s|%u|%h\' \'no_backup\'; [ ! -L \'no_backup/m10-b1b2-safety\' ]; [ -d \'no_backup/m10-b1b2-safety\' ]; stat -c \'A0|no_backup/m10-b1b2-safety|%f|%d|%i|%s|%u|%h\' \'no_backup/m10-b1b2-safety\'; [ ! -L \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111\' ]; [ -d \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111\' ]; stat -c \'A0|no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111|%f|%d|%i|%s|%u|%h\' \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111\'; [ ! -L \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111/result.json\' ]; [ -f \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111/result.json\' ]; n=$(stat -c \'%s\' \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111/result.json\'); [ "$n" -gt 0 ]; [ "$n" -le 2097152 ]; stat -c \'B|no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111/result.json|%f|%d|%i|%s|%u|%h\' \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111/result.json\'; dd if=\'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111/result.json\' bs=1 count=2097153 | base64; stat -c \'E|no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111/result.json|%f|%d|%i|%s|%u|%h\' \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111/result.json\'; [ ! -L \'no_backup\' ]; stat -c \'A1|no_backup|%f|%d|%i|%s|%u|%h\' \'no_backup\'; [ ! -L \'no_backup/m10-b1b2-safety\' ]; stat -c \'A1|no_backup/m10-b1b2-safety|%f|%d|%i|%s|%u|%h\' \'no_backup/m10-b1b2-safety\'; [ ! -L \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111\' ]; stat -c \'A1|no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111|%f|%d|%i|%s|%u|%h\' \'no_backup/m10-b1b2-safety/11111111-1111-4111-8111-111111111111\'; printf \'M10_BUNDLE_END|1\\n\''
+
+======================================================================
+FAIL: test_real_host_2mib_pipeline_finishes_within_30s (__main__.ResumeReaderTest.test_real_host_2mib_pipeline_finishes_within_30s)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_reader.py", line 54, in test_real_host_2mib_pipeline_finishes_within_30s
+    raw=b'{"sample":"'+b'x'*(2*1024*1024-13)+b'"}\n'; self.assertEqual(2*1024*1024,len(raw))
+                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2097152 != 2097153
+
+======================================================================
+FAIL: test_real_host_dd_and_base64_fail_stop_without_end (__main__.ResumeReaderTest.test_real_host_dd_and_base64_fail_stop_without_end)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_resume_reader.py", line 69, in test_real_host_dd_and_base64_fail_stop_without_end
+    self.assertEqual(23,result.returncode);self.assertNotIn(b'M10_BUNDLE_END',result.stdout);self.assertIn(b'HOST_SYNTHETIC_',result.stderr)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 23 != 0
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.402s
+
+FAILED (failures=3, errors=5)

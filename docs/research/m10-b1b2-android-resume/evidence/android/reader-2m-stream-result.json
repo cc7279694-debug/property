@@ -1,0 +1,33 @@
+{
+  "bytesPerPass": 2097152,
+  "command": {
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5664",
+      "shell",
+      "run-as com.cooper.lithic.debug sh -c 'set -e; set -o pipefail; printf '\"'\"'M10_PERF_BEGIN\\n'\"'\"'; h=$(dd if=/dev/zero bs=65536 count=32 | sha256sum); h=${h%% *}; printf '\"'\"'H0|%s\\n'\"'\"' \"$h\"; dd if=/dev/zero bs=65536 count=32 | base64; h=$(dd if=/dev/zero bs=65536 count=32 | sha256sum); h=${h%% *}; printf '\"'\"'H1|%s\\nM10_PERF_END\\n'\"'\"' \"$h\"'"
+    ],
+    "cwd": null,
+    "endUtc": "2026-10-19T10:25:39.423175+00:00",
+    "environmentOverrides": {},
+    "exitCode": 0,
+    "stderrBytes": 292,
+    "stderrSHA256": "853a5202739ea661bead27bf2450ba597257715c79844f034c94b10f0b8e8d79",
+    "stdoutBytes": 2869958,
+    "stdoutSHA256": "bfbd519476375adbcdad51b14217ff86412dcf0267aab02996f97e96accbac78",
+    "utc": "2026-10-19T10:25:38.901588+00:00"
+  },
+  "fileMetadataProof": "SEPARATE_REAL_ORIGINAL_JSON_PAIR",
+  "passes": 3,
+  "payloadSHA256": "5647f05ec18958947d32874eeb788fa396a05d0bab7c1b71f112ceb7e9b31eee",
+  "scope": "ANDROID_READ_ONLY_2MIB_STREAM_THROUGHPUT_NOT_REGULAR_FILE_INODE_PROOF",
+  "status": "PASS",
+  "stderrProof": {
+    "passes": 3,
+    "stderrBytes": 292,
+    "stderrSHA256": "853a5202739ea661bead27bf2450ba597257715c79844f034c94b10f0b8e8d79"
+  },
+  "timeoutSeconds": 30,
+  "wallSeconds": 0.681293599998753
+}
