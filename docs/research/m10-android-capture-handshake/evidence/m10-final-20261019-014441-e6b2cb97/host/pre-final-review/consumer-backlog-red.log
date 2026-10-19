@@ -1,0 +1,14 @@
+test_old_business_after_current_diagnostic_is_not_treated_as_backlog (test_handshake_consumer.HandshakeConsumerTest.test_old_business_after_current_diagnostic_is_not_treated_as_backlog) ... FAIL
+
+======================================================================
+FAIL: test_old_business_after_current_diagnostic_is_not_treated_as_backlog (test_handshake_consumer.HandshakeConsumerTest.test_old_business_after_current_diagnostic_is_not_treated_as_backlog)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 90, in test_old_business_after_current_diagnostic_is_not_treated_as_backlog
+    with self.assertRaises(ValueError): self.consume(raw, prior_phases=self.phases[0])
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.024s
+
+FAILED (failures=1)

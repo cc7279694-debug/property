@@ -9,6 +9,7 @@ import json
 import re
 import subprocess
 import time
+import uuid
 
 import avd_identity
 import natural_tests
@@ -16,7 +17,7 @@ import runtime_identity
 from validate import (Supervisor, ROOT, BASE, TOOLS, CONFIG, need, immutable,
                       utc, digest, properties, file_digest, windows_arguments, CREATION_NO_WINDOW)
 
-SOURCE = "946ac16c217cb1d96cde77558aacb9802bcd5c4f"
+SOURCE = "ca79e1c8fe77de050145a463fbd35df95556d413"
 
 
 class CampaignSupervisor(Supervisor):
@@ -56,6 +57,37 @@ class CampaignSupervisor(Supervisor):
             "campaignId": self.campaign_id, "sourceCommit": SOURCE, "utc": utc(),
             "operation": operation, "api": self.api, "serial": self.serial,
             "avd": self.name, "data": str(self.data), "status": "ATTEMPT_ISSUED"})
+
+    def new_log_capture(self, directory):
+        from continuous_log import ContinuousLogCapture, read_verified
+        directory = Path(directory)
+        index = int(directory.name.removeprefix("method-"))
+        prior = []
+        for previous in range(index):
+            old = self.evidence / f"method-{previous:02d}"
+            result = json.loads(avd_identity.read_bytes(old / "result.json"))
+            need(result.get("status") == "PASS" and result.get("serial") == self.serial and
+                 result.get("method") == natural_tests.METHODS[previous], "Prior capture method not eligible")
+            proof, _ = read_verified(old / "continuous-log", expected_serial=self.serial)
+            need(proof.get("readinessProtocol") == "DIAGNOSTIC_NONCE_V1", "Prior capture has no authenticated handshake")
+            prior.append(proof["handshake"]["authenticatedRawLine"])
+        need(len(prior) == len(set(prior)), "Duplicate prior diagnostic identity")
+        self.capture_prior_diagnostics = tuple(prior)
+        nonce = uuid.uuid4().hex
+
+        def write_diagnostic(message):
+            need(message == "M10_CAPTURE_READY nonce=" + nonce, "Diagnostic message identity conflict")
+            self.marker(f"capture-diagnostic-{index:02d}")
+            reply = self.adb("shell", "log", "-p", "i", "-t", "LITHIC_M10_CAPTURE", message,
+                             timeout=10)
+            need(reply == "", "Diagnostic command returned unexpected output")
+            return {"status": "PASS", "serial": self.serial, "exitCode": 0,
+                    "tag": "LITHIC_M10_CAPTURE", "nonce": nonce,
+                    "scope": "SUPERVISOR_DIAGNOSTIC_ONLY_NO_BUSINESS_OR_WORKER_ASSERTION"}
+
+        return ContinuousLogCapture(TOOLS / "platform-tools/adb.exe", self.serial,
+            directory / "continuous-log", env=self.env, handshake_writer=write_diagnostic,
+            nonce=nonce, prior_diagnostics=self.capture_prior_diagnostics)
 
     def audit(self):
         report = json.loads((ROOT / "build/android-validation/environment-audit.json").read_bytes())
@@ -141,6 +173,27 @@ class CampaignSupervisor(Supervisor):
             time.sleep(min(2, max(0, deadline-time.monotonic())))
         raise RuntimeError("Same-launch boot observation timeout; preserve scene")
 
+    def admit_running(self):
+        """Fresh independent observations, never an old campaign boot proof."""
+        need(not self.boot_proof_path.exists(), "Campaign already has a boot proof")
+        self.marker("admit-running")
+        self.verify_avd()
+        current = self.processes()
+        # This is this task's actual fresh snapshot; the previous batch's
+        # boot/start records are not used as a substitute for live identity.
+        observed = runtime_identity.classify(current, None, self.process_spec(), windows_arguments)
+        need(observed.get("status") == "PASS", "Current running instance identity incomplete/conflicting")
+        self._runtime_anchor = observed["anchor"]
+        self.validate_process()
+        self.runtime_observation = self.runtime_paths()
+        self.verify_android_identity()
+        immutable(self.boot_proof_path, {
+            "type": "CURRENT_RUNNING_INSTANCE_ADMISSION", "campaignId": self.campaign_id,
+            "sourceCommit": SOURCE, "status": "PASS", "utc": utc(), "api": self.api,
+            "serial": self.serial, "avd": self.name, "newCreate": 0, "newStart": 0,
+            "processIdentityProof": self.process_proof, "runtimePaths": self.runtime_observation,
+            "priorCampaignProofUsedAsCurrentProof": False})
+
     def identity(self, deadline=None):
         need(self.boot_proof_path.is_file() or getattr(self, "_starting", False),
              "No current campaign boot admission")
@@ -173,6 +226,22 @@ class CampaignSupervisor(Supervisor):
              all(proof.get(k) is True for k in ("allNaturalMethodsPassed", "consumersSafe", "osProcessEnded")),
              "This campaign API26 natural tests/exit not proved")
 
+    def prepare_profile(self):
+        # avdmanager may create SDK preference/temp files before the emulator
+        # starts. Reuse only this campaign's bounded profile directories; never
+        # delete them or require them to be empty to hide legitimate SDK output.
+        for name in ("runtime-temp", "android-user", "emulator-home"):
+            path = self.control / name
+            avd_identity.unlinked_ancestors(path)
+            path.mkdir(exist_ok=True)
+            need(path.is_dir(), "Campaign SDK profile is not a directory")
+
+    def create(self):
+        need(self.api == 36, "Only the conditionally authorized new API36 may be created")
+        self.api26_exit_gate()
+        self.prepare_profile()
+        super().create()
+
     def start_campaign(self):
         self.api26_exit_gate()
         self.verify_avd()
@@ -185,9 +254,7 @@ class CampaignSupervisor(Supervisor):
                 "campaignId": self.campaign_id, "configuration": config,
                 "priorRuntimePaths": paths, "oldProofsRewritten": False,
                 "guestConsumerState": "MUST_BE_CHECKED_AFTER_BOOT_BEFORE_TEST"})
-        for path in (self.control / "runtime-temp", self.control / "android-user",
-                     self.control / "emulator-home"):
-            path.mkdir(exist_ok=False)
+        self.prepare_profile()
         self.marker("start")
         args = self.launch_arguments()
         began = time.monotonic()
@@ -245,6 +312,7 @@ class CampaignSupervisor(Supervisor):
                 self.note({"operation": "REUSE_LOCKED_INSTALLED_APK", "package": row["packageName"],
                            "uid": uid, "sha256": row["sha256"]})
             else:
+                need(self.api == 36, "Existing API26 package missing; no installation in running-instance reuse")
                 self.install(row["kind"])
 
 
@@ -252,7 +320,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("campaign_id")
     p.add_argument("api", type=int, choices=(26, 36))
-    p.add_argument("operation", choices=("preflight", "start", "admit-started", "packages", "method", "exit", "create36"))
+    p.add_argument("operation", choices=("preflight", "start", "admit-started", "admit-running", "packages", "method", "exit", "create36"))
     p.add_argument("--index", type=int, choices=range(9))
     a = p.parse_args()
     s = CampaignSupervisor(a.api, a.campaign_id)
@@ -260,6 +328,7 @@ def main():
         s.verify_avd(); immutable(s.evidence / "vacancy.json", s.vacant())
     elif a.operation == "start": s.start_campaign()
     elif a.operation == "admit-started": s.admit_started()
+    elif a.operation == "admit-running": s.admit_running()
     elif a.operation == "packages": s.ensure_apks()
     elif a.operation == "method":
         need(a.index is not None, "Select exactly one method")

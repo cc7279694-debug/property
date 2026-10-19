@@ -1,0 +1,46 @@
+{
+  "emulatorProcessCount": 2,
+  "freeKiB": 4142944,
+  "ports": [
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5625,
+      "OwningProcess": 26072
+    },
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5624,
+      "OwningProcess": 26072
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5625,
+      "OwningProcess": 26072
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5624,
+      "OwningProcess": 26072
+    }
+  ],
+  "targets": [
+    {
+      "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe -avd Lithic_M10V_API26_20261018 -port 5624 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+      "CreationDate": "2026-10-19T01:02:08.7802420Z",
+      "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+      "Name": "emulator.exe",
+      "ParentProcessId": 1900,
+      "ProcessId": 16720
+    },
+    {
+      "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M10V_API26_20261018 -port 5624 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api26\\data\\Lithic_M10V_API26_20261018.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+      "CreationDate": "2026-10-19T01:02:09.0324070Z",
+      "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "Name": "qemu-system-x86_64-headless.exe",
+      "ParentProcessId": 16720,
+      "ProcessId": 26072
+    }
+  ],
+  "totalKiB": 16648500,
+  "utc": "2026-10-19T01:44:45.0947476Z"
+}

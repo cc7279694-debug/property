@@ -1,0 +1,160 @@
+test_crlf_diagnostic_matches_exact_raw_line_without_rewriting (test_handshake_consumer.HandshakeConsumerTest.test_crlf_diagnostic_matches_exact_raw_line_without_rewriting) ... ERROR
+test_duplicate_current_diagnostic_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_duplicate_current_diagnostic_is_rejected) ... ERROR
+test_duplicate_prior_diagnostic_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_duplicate_prior_diagnostic_is_rejected) ... ERROR
+test_main_header_is_context_and_not_readiness_evidence (test_handshake_consumer.HandshakeConsumerTest.test_main_header_is_context_and_not_readiness_evidence) ... ERROR
+test_new_business_before_ready_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_new_business_before_ready_is_rejected) ... ERROR
+test_no_historical_business_log_is_required_for_matching_diagnostic (test_handshake_consumer.HandshakeConsumerTest.test_no_historical_business_log_is_required_for_matching_diagnostic) ... ERROR
+test_only_independently_authenticated_prior_diagnostics_are_backlog (test_handshake_consumer.HandshakeConsumerTest.test_only_independently_authenticated_prior_diagnostics_are_backlog) ... ERROR
+test_prior_diagnostic_after_current_handshake_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_prior_diagnostic_after_current_handshake_is_rejected) ... ERROR
+test_unknown_diagnostic_tag_or_format_is_not_treated_as_business (test_handshake_consumer.HandshakeConsumerTest.test_unknown_diagnostic_tag_or_format_is_not_treated_as_business) ... 
+  test_unknown_diagnostic_tag_or_format_is_not_treated_as_business (test_handshake_consumer.HandshakeConsumerTest.test_unknown_diagnostic_tag_or_format_is_not_treated_as_business) (extra='10-19 01:02:03.004  909  909 I LITHIC_OTHER: M10_CAPTURE_READY nonce=0123456789abcdef0123456789abcdef\n') ... ERROR
+  test_unknown_diagnostic_tag_or_format_is_not_treated_as_business (test_handshake_consumer.HandshakeConsumerTest.test_unknown_diagnostic_tag_or_format_is_not_treated_as_business) (extra='10-19 01:02:03.004  909  909 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY bad=0123456789abcdef0123456789abcdef\n') ... ERROR
+test_unproven_prior_allowlist_in_proof_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_unproven_prior_allowlist_in_proof_is_rejected) ... ERROR
+test_wrong_nonce_diagnostic_cannot_be_discarded (test_handshake_consumer.HandshakeConsumerTest.test_wrong_nonce_diagnostic_cannot_be_discarded) ... ERROR
+
+======================================================================
+ERROR: test_crlf_diagnostic_matches_exact_raw_line_without_rewriting (test_handshake_consumer.HandshakeConsumerTest.test_crlf_diagnostic_matches_exact_raw_line_without_rewriting)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 96, in test_crlf_diagnostic_matches_exact_raw_line_without_rewriting
+    result = self.consume(raw, authenticated=current)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_duplicate_current_diagnostic_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_duplicate_current_diagnostic_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 60, in test_duplicate_current_diagnostic_is_rejected
+    with self.assertRaises(ValueError): self.consume(raw)
+                                        ^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_duplicate_prior_diagnostic_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_duplicate_prior_diagnostic_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 77, in test_duplicate_prior_diagnostic_is_rejected
+    with self.assertRaises(ValueError): self.consume(raw, prior=(prior,))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_main_header_is_context_and_not_readiness_evidence (test_handshake_consumer.HandshakeConsumerTest.test_main_header_is_context_and_not_readiness_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 52, in test_main_header_is_context_and_not_readiness_evidence
+    self.assertEqual(6, len(self.consume(raw)["newPhaseLog"].splitlines()))
+                            ^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_new_business_before_ready_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_new_business_before_ready_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 86, in test_new_business_before_ready_is_rejected
+    with self.assertRaises(ValueError): self.consume(raw)
+                                        ^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_no_historical_business_log_is_required_for_matching_diagnostic (test_handshake_consumer.HandshakeConsumerTest.test_no_historical_business_log_is_required_for_matching_diagnostic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 46, in test_no_historical_business_log_is_required_for_matching_diagnostic
+    result = self.consume(raw)
+             ^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_only_independently_authenticated_prior_diagnostics_are_backlog (test_handshake_consumer.HandshakeConsumerTest.test_only_independently_authenticated_prior_diagnostics_are_backlog)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 65, in test_only_independently_authenticated_prior_diagnostics_are_backlog
+    result = self.consume(raw, prior=(prior,))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_prior_diagnostic_after_current_handshake_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_prior_diagnostic_after_current_handshake_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 82, in test_prior_diagnostic_after_current_handshake_is_rejected
+    with self.assertRaises(ValueError): self.consume(raw, prior=(prior,))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_unknown_diagnostic_tag_or_format_is_not_treated_as_business (test_handshake_consumer.HandshakeConsumerTest.test_unknown_diagnostic_tag_or_format_is_not_treated_as_business) (extra='10-19 01:02:03.004  909  909 I LITHIC_OTHER: M10_CAPTURE_READY nonce=0123456789abcdef0123456789abcdef\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 91, in test_unknown_diagnostic_tag_or_format_is_not_treated_as_business
+    self.consume((diagnostic() + extra + "\n".join(self.phases) + "\n").encode())
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_unknown_diagnostic_tag_or_format_is_not_treated_as_business (test_handshake_consumer.HandshakeConsumerTest.test_unknown_diagnostic_tag_or_format_is_not_treated_as_business) (extra='10-19 01:02:03.004  909  909 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY bad=0123456789abcdef0123456789abcdef\n')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 91, in test_unknown_diagnostic_tag_or_format_is_not_treated_as_business
+    self.consume((diagnostic() + extra + "\n".join(self.phases) + "\n").encode())
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_unproven_prior_allowlist_in_proof_is_rejected (test_handshake_consumer.HandshakeConsumerTest.test_unproven_prior_allowlist_in_proof_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 72, in test_unproven_prior_allowlist_in_proof_is_rejected
+    with self.assertRaises(ValueError): self.consume(raw, proof_prior=(prior,))
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+======================================================================
+ERROR: test_wrong_nonce_diagnostic_cannot_be_discarded (test_handshake_consumer.HandshakeConsumerTest.test_wrong_nonce_diagnostic_cannot_be_discarded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 56, in test_wrong_nonce_diagnostic_cannot_be_discarded
+    with self.assertRaises(ValueError): self.consume(raw)
+                                        ^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_handshake_consumer.py", line 41, in consume
+    return consume_capture(proof, self.directory, prior_phases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: consume_capture() got an unexpected keyword argument 'prior_diagnostics'
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.073s
+
+FAILED (errors=12)

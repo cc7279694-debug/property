@@ -1,0 +1,93 @@
+--- docs/research/m10-jpeg-android-isolated/continuous_log.py before-race-reconstructed
++++ docs/research/m10-jpeg-android-isolated/continuous_log.py after-race-actual
+@@ -293,6 +293,13 @@
+             while True:
+                 raw = self._streams["stdout"]["raw"]
+                 alive = self._process.poll() is None
++                # Readers record bytes/EOF under this lock before publishing
++                # _abort() outside it. Inspect those observations directly so
++                # READY cannot race ahead of an already-observed failure.
++                if self._streams["stderr"]["observed"]:
++                    self._errors.append("STDERR_NOT_EMPTY")
++                if any(state["eof"] or state["readerStopped"] for state in self._streams.values()):
++                    self._errors.append("OBSERVER_READER_STATE_UNKNOWN")
+                 if self._errors or not alive:
+                     break
+                 if time.monotonic() >= limit:
+@@ -326,8 +333,10 @@
+             return {"status": "UNKNOWN", "errors": ["OBSERVER_NOT_IN_READY_WINDOW"]}
+         with self._lock:
+             alive = self._process is not None and self._process.poll() is None
+-            intact = not self._errors and self._stop is None and all(
+-                not state["eof"] and not state["readerStopped"] for state in self._streams.values())
++            intact = (not self._errors and self._stop is None
++                and self._streams["stderr"]["observed"] == 0
++                and all(not state["eof"] and not state["readerStopped"]
++                        for state in self._streams.values()))
+             in_bound = (time.perf_counter_ns() - self._started["monotonicNs"]) / 1e9 < self.limits["seconds"]
+             if alive and intact and in_bound:
+                 return {"status": "PASS", "observerPid": self._process.pid,
+--- docs/research/m10-jpeg-android-isolated/test_capture_handshake.py before-race-reconstructed
++++ docs/research/m10-jpeg-android-isolated/test_capture_handshake.py after-race-actual
+@@ -147,6 +147,61 @@
+         with self.assertRaises(ValueError):
+             read_verified(capture.directory)
+ 
++    def test_ready_rejects_observed_stderr_before_error_publication(self):
++        capture = self.make()
++        original = capture.handshake_writer
++
++        def writer(message):
++            result = original(message)
++            # Model the exact interval after the reader records a byte under
++            # its lock and before _abort() can publish its error outside it.
++            with capture._lock:
++                capture._streams["stderr"]["observed"] = 1
++                self.assertEqual([], capture._errors)
++            return result
++
++        capture.handshake_writer = writer
++        self.assertEqual("UNKNOWN", capture.start()["status"])
++        self.assertIsNone(capture.finish()["ready"])
++
++    def test_assert_live_rejects_observed_stderr_before_error_publication(self):
++        capture = self.make()
++        self.assertEqual("PASS", capture.start()["status"])
++        with capture._lock:
++            capture._streams["stderr"]["observed"] = 1
++            self.assertEqual([], capture._errors)
++        self.assertEqual("UNKNOWN", capture.assert_live()["status"])
++
++    def test_ready_rejects_reader_eof_before_error_publication(self):
++        capture = self.make()
++        original = capture.handshake_writer
++
++        def writer(message):
++            result = original(message)
++            with capture._lock:
++                capture._streams["stderr"]["eof"] = True
++                self.assertEqual([], capture._errors)
++            return result
++
++        capture.handshake_writer = writer
++        self.assertEqual("UNKNOWN", capture.start()["status"])
++        self.assertIsNone(capture.finish()["ready"])
++
++    def test_ready_rejects_stopped_reader_before_error_publication(self):
++        capture = self.make()
++        original = capture.handshake_writer
++
++        def writer(message):
++            result = original(message)
++            with capture._lock:
++                capture._streams["stderr"]["readerStopped"] = True
++                self.assertEqual([], capture._errors)
++            return result
++
++        capture.handshake_writer = writer
++        self.assertEqual("UNKNOWN", capture.start()["status"])
++        self.assertIsNone(capture.finish()["ready"])
++
+ 
+ if __name__ == "__main__":
+     unittest.main()

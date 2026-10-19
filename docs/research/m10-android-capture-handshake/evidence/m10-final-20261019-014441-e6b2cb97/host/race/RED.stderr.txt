@@ -1,0 +1,53 @@
+test_ready_rejects_observed_stderr_before_error_publication (test_capture_handshake.CaptureHandshakeTest.test_ready_rejects_observed_stderr_before_error_publication) ... FAIL
+test_assert_live_rejects_observed_stderr_before_error_publication (test_capture_handshake.CaptureHandshakeTest.test_assert_live_rejects_observed_stderr_before_error_publication) ... FAIL
+test_ready_rejects_reader_eof_before_error_publication (test_capture_handshake.CaptureHandshakeTest.test_ready_rejects_reader_eof_before_error_publication) ... FAIL
+test_ready_rejects_stopped_reader_before_error_publication (test_capture_handshake.CaptureHandshakeTest.test_ready_rejects_stopped_reader_before_error_publication) ... FAIL
+
+======================================================================
+FAIL: test_ready_rejects_observed_stderr_before_error_publication (test_capture_handshake.CaptureHandshakeTest.test_ready_rejects_observed_stderr_before_error_publication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\砺石新APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 164, in test_ready_rejects_observed_stderr_before_error_publication
+    self.assertEqual("UNKNOWN", capture.start()["status"])
+AssertionError: 'UNKNOWN' != 'PASS'
+- UNKNOWN
++ PASS
+
+
+======================================================================
+FAIL: test_assert_live_rejects_observed_stderr_before_error_publication (test_capture_handshake.CaptureHandshakeTest.test_assert_live_rejects_observed_stderr_before_error_publication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\砺石新APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 173, in test_assert_live_rejects_observed_stderr_before_error_publication
+    self.assertEqual("UNKNOWN", capture.assert_live()["status"])
+AssertionError: 'UNKNOWN' != 'PASS'
+- UNKNOWN
++ PASS
+
+
+======================================================================
+FAIL: test_ready_rejects_reader_eof_before_error_publication (test_capture_handshake.CaptureHandshakeTest.test_ready_rejects_reader_eof_before_error_publication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\砺石新APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 187, in test_ready_rejects_reader_eof_before_error_publication
+    self.assertEqual("UNKNOWN", capture.start()["status"])
+AssertionError: 'UNKNOWN' != 'PASS'
+- UNKNOWN
++ PASS
+
+
+======================================================================
+FAIL: test_ready_rejects_stopped_reader_before_error_publication (test_capture_handshake.CaptureHandshakeTest.test_ready_rejects_stopped_reader_before_error_publication)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\砺石新APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 202, in test_ready_rejects_stopped_reader_before_error_publication
+    self.assertEqual("UNKNOWN", capture.start()["status"])
+AssertionError: 'UNKNOWN' != 'PASS'
+- UNKNOWN
++ PASS
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.546s
+
+FAILED (failures=4)

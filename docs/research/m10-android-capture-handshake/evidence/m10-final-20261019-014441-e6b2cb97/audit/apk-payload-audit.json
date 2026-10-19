@@ -1,0 +1,57 @@
+{
+  "adbCommands": 0,
+  "appSHA256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+  "avdCommands": 0,
+  "binaryPayloadArchived": false,
+  "buildCommands": 0,
+  "environmentAuditSHA256": "0d1706021233df3647fd8f7a251c199612f4881bc90ad3779dc01c09eeffce8d",
+  "nativeABIs": [
+    "arm64-v8a",
+    "armeabi-v7a",
+    "x86",
+    "x86_64"
+  ],
+  "observationSourceCommit": "ca79e1c8fe77de050145a463fbd35df95556d413",
+  "runtimeLoad": "NOT_RUN",
+  "sampleVerification": {
+    "fixtures": [
+      {
+        "bytes": 59334,
+        "name": "assets/m10_jpeg_integrity/complete.jpg",
+        "sha256": "2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907"
+      },
+      {
+        "bytes": 20194,
+        "name": "assets/m10_jpeg_integrity/entropy_cut_eoi_retained.jpg",
+        "sha256": "f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a"
+      }
+    ],
+    "status": "PASS",
+    "testAPK": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a"
+  },
+  "status": "PASS",
+  "strictLibraryEntries": [
+    {
+      "bytes": 284136,
+      "entry": "lib/arm64-v8a/libstrictjpeg_candidate.so",
+      "sha256": "44cc13c6921a0bda3a2e298eb232c1ad0f0863c2ab33cbf8e74807a65d2ea0de"
+    },
+    {
+      "bytes": 218760,
+      "entry": "lib/armeabi-v7a/libstrictjpeg_candidate.so",
+      "sha256": "f212d2b51448f919bbbf48b30a68a7f795261fe5ebdef72e919e1ea2c45faabd"
+    },
+    {
+      "bytes": 328884,
+      "entry": "lib/x86/libstrictjpeg_candidate.so",
+      "sha256": "8531d0a92fd4cf407660796cc310dd4350e94a538be44a45be17c57bef644d97"
+    },
+    {
+      "bytes": 342256,
+      "entry": "lib/x86_64/libstrictjpeg_candidate.so",
+      "sha256": "25b0fa227d1380beb995a7d360f4c29964e72d8d288b62b3aa2ac7cfbb37a116"
+    }
+  ],
+  "technicalSourceCommit": "b756f96b699f3b70d43144f6c92815917fb563f6",
+  "testSHA256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a"
+}

@@ -5,8 +5,9 @@ The observer starts before instrumentation, preserves its entire filtered stream
 No Android process is stopped and no log buffer is cleared or reconfigured.
 
 A PASS proves this observer's recorded window, not that Android logd can never
-drop an unreported message. A real main-buffer header is a readiness condition,
-not a substitute for the independent six-phase/attempt/identity consumer.
+drop an unreported message. New captures authenticate an end-to-end nonce sent
+after the reader starts; legacy V1 evidence retains its original header contract.
+Neither condition substitutes for six-phase/attempt/identity verification.
 """
 from __future__ import annotations
 
@@ -17,6 +18,7 @@ import math
 import os
 from pathlib import Path
 import re
+import secrets
 import subprocess
 import threading
 import time
@@ -26,6 +28,12 @@ FORMAT = "LITHIC_SINGLE_METHOD_CONTINUOUS_LOG_V1"
 SERIALS = frozenset({"emulator-5624", "emulator-5626"})
 HEADERS = (b"--------- beginning of main\n", b"--------- beginning of main\r\n")
 TAIL = ["logcat", "-b", "main", "-v", "threadtime", "-s", "LITHIC_JPEG:I", "*:S"]
+HANDSHAKE_PROTOCOL = "DIAGNOSTIC_NONCE_V1"
+DIAGNOSTIC_TAG = "LITHIC_M10_CAPTURE"
+HANDSHAKE_TAIL = TAIL[:-1] + [DIAGNOSTIC_TAG + ":I", "*:S"]
+DIAGNOSTIC_LINE = re.compile(
+    r"\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3,9} +[1-9][0-9]* +[1-9][0-9]* I "
+    + DIAGNOSTIC_TAG + r": M10_CAPTURE_READY nonce=([0-9a-f]{32})\r?\n\Z")
 DROP = re.compile(rb"logcat:|unexpected eof|buffer.{0,20}overflow|"
                   rb"\bdropped\b|\blost [0-9]+\b|\bchatty:|\btruncated\b", re.I)
 
@@ -45,7 +53,7 @@ def need(condition, detail):
         raise ValueError(detail)
 
 
-def stream_errors(raw, final=False):
+def stream_errors(raw, final=False, require_header=True):
     errors = []
     if DROP.search(raw):
         errors.append("VISIBLE_STREAM_LOSS_OR_DIAGNOSTIC")
@@ -59,11 +67,34 @@ def stream_errors(raw, final=False):
         if final or error.reason != "unexpected end of data":
             errors.append("STDOUT_INVALID_UTF8")
     if final:
-        if not any(raw.startswith(header) for header in HEADERS):
+        if require_header and not any(raw.startswith(header) for header in HEADERS):
             errors.append("MAIN_BUFFER_HEADER_NOT_PROVEN")
+        if not require_header and b"--------- beginning of main" in raw and not any(
+                raw.startswith(header) for header in HEADERS):
+            errors.append("MAIN_BUFFER_HEADER_POSITION_UNKNOWN")
         if not raw.endswith(b"\n"):
             errors.append("STDOUT_PARTIAL_FINAL_LINE")
     return errors
+
+
+def diagnostic_state(raw, nonce, prior_diagnostics):
+    """Parse complete lines only; unknown, duplicate or reordered tags fail closed."""
+    seen = set()
+    current = None
+    for line in raw.decode("utf-8", errors="strict").splitlines(keepends=True):
+        if not line.endswith("\n") or DIAGNOSTIC_TAG not in line:
+            continue
+        match = DIAGNOSTIC_LINE.fullmatch(line)
+        need(match is not None, "HANDSHAKE_MALFORMED_DIAGNOSTIC")
+        need(line not in seen, "HANDSHAKE_DUPLICATE_DIAGNOSTIC")
+        seen.add(line)
+        if match[1] == nonce:
+            need(current is None, "HANDSHAKE_DUPLICATE_DIAGNOSTIC")
+            current = line
+        else:
+            need(line in prior_diagnostics, "HANDSHAKE_UNEXPECTED_DIAGNOSTIC")
+            need(current is None, "HANDSHAKE_LATE_PRIOR_DIAGNOSTIC")
+    return current
 
 
 class ContinuousLogCapture:
@@ -78,7 +109,8 @@ class ContinuousLogCapture:
     def __init__(self, adb_path, serial, directory, *, env=None,
                  max_stdout_bytes=2 * 1024 * 1024, max_stderr_bytes=65536,
                  max_seconds=360, readiness_timeout=10, stop_timeout=3,
-                 popen_factory=subprocess.Popen):
+                 popen_factory=subprocess.Popen, handshake_writer=None, nonce=None,
+                 prior_diagnostics=()):
         need(serial in SERIALS, "Observer serial outside isolated natural-test environment")
         for bound, ceiling in ((max_stdout_bytes, 2 * 1024 * 1024),
                                (max_stderr_bytes, 65536)):
@@ -90,7 +122,23 @@ class ContinuousLogCapture:
         self.adb_path = Path(adb_path).resolve()
         self.serial = serial
         self.directory = Path(directory)
-        self.command = [str(self.adb_path), "-s", serial, *TAIL]
+        need(handshake_writer is None or callable(handshake_writer), "Invalid handshake writer")
+        self.handshake_writer = handshake_writer
+        self.nonce = (nonce or secrets.token_hex(16)) if handshake_writer is not None else None
+        need(self.nonce is None or (isinstance(self.nonce, str) and re.fullmatch(
+            r"[0-9a-f]{32}", self.nonce)), "Invalid handshake nonce")
+        need(isinstance(prior_diagnostics, (tuple, list)) and all(
+            isinstance(line, str) and DIAGNOSTIC_LINE.fullmatch(line)
+            for line in prior_diagnostics), "Invalid prior diagnostics")
+        need(len(set(prior_diagnostics)) == len(prior_diagnostics), "Duplicate prior diagnostic")
+        need(len({DIAGNOSTIC_LINE.fullmatch(line)[1] for line in prior_diagnostics})
+             == len(prior_diagnostics), "Conflicting prior diagnostic nonce")
+        need(self.nonce is None or all(DIAGNOSTIC_LINE.fullmatch(line)[1] != self.nonce
+            for line in prior_diagnostics), "Nonce reuses an authenticated prior diagnostic")
+        self.prior_diagnostics = list(prior_diagnostics)
+        self._handshake = None
+        self.command = [str(self.adb_path), "-s", serial,
+                        *(HANDSHAKE_TAIL if handshake_writer is not None else TAIL)]
         self.env = dict(env) if env is not None else None
         self.limits = {"stdoutBytes": max_stdout_bytes, "stderrBytes": max_stderr_bytes,
                        "seconds": max_seconds, "readinessSeconds": readiness_timeout,
@@ -164,6 +212,13 @@ class ContinuousLogCapture:
                         state["raw"].extend(retained)
                     overflow = state["observed"] > bound
                     visible = stream_errors(bytes(state["raw"])) if name == "stdout" else []
+                    if name == "stdout" and self.handshake_writer is not None:
+                        try:
+                            diagnostic_state(bytes(state["raw"]), self.nonce, self.prior_diagnostics)
+                        except (ValueError, UnicodeDecodeError) as error:
+                            # An incomplete UTF-8 suffix can be a normal pipe chunk.
+                            if not isinstance(error, UnicodeDecodeError) or error.reason != "unexpected end of data":
+                                visible.append(str(error))
                     self._lock.notify_all()
                 if overflow:
                     self._abort(name.upper() + "_LIMIT_EXCEEDED")
@@ -190,6 +245,10 @@ class ContinuousLogCapture:
         # Refuse old evidence, even if it is an empty directory. No overwrite.
         self.directory.mkdir(parents=True, exist_ok=False)
         self._started = stamp()
+        # The diagnostic write consumes the same readiness budget; do not reset
+        # the clock when the write returns. The writer's command is independently
+        # bounded by supervision, while the capture watchdog bounds all recording.
+        ready_deadline = time.monotonic() + self.limits["readinessSeconds"]
         for name, state in self._streams.items():
             state["file"] = (self.directory / (name + ".raw")).open("xb", buffering=0)
         try:
@@ -210,18 +269,58 @@ class ContinuousLogCapture:
         except (OSError, ValueError) as error:
             self._error("HOST_OBSERVER_LAUNCH_ERROR: " + str(error))
             return self.finish()
-        limit = time.monotonic() + self.limits["readinessSeconds"]
+        if self.handshake_writer is not None:
+            message = "M10_CAPTURE_READY nonce=" + self.nonce
+            self._handshake = {"tag": DIAGNOSTIC_TAG, "nonce": self.nonce,
+                "message": message, "issued": stamp(), "completed": None,
+                "writerResult": None, "authenticatedRawLine": None,
+                "authenticatedAt": None, "diagnosticEmissionCount": 1}
+            try:
+                result = self.handshake_writer(message)
+                self._handshake["completed"] = stamp()
+                self._handshake["writerResult"] = clone(result)
+                need(isinstance(result, dict) and result.get("status") == "PASS"
+                    and result.get("serial") == self.serial and type(result.get("exitCode")) is int
+                    and result["exitCode"] == 0
+                    and result.get("tag") == DIAGNOSTIC_TAG and result.get("nonce") == self.nonce,
+                    "HANDSHAKE_WRITE_NOT_PROVEN")
+            except Exception as error:
+                self._error(str(error) if isinstance(error, ValueError) else
+                            "HANDSHAKE_WRITE_ERROR: " + str(error))
+                return self.finish()
+        limit = ready_deadline
         with self._lock:
             while True:
                 raw = self._streams["stdout"]["raw"]
                 alive = self._process.poll() is None
+                # Readers record bytes/EOF under this lock before publishing
+                # _abort() outside it. Inspect those observations directly so
+                # READY cannot race ahead of an already-observed failure.
+                if self._streams["stderr"]["observed"]:
+                    self._errors.append("STDERR_NOT_EMPTY")
+                if any(state["eof"] or state["readerStopped"] for state in self._streams.values()):
+                    self._errors.append("OBSERVER_READER_STATE_UNKNOWN")
                 if self._errors or not alive:
                     break
-                if any(raw.startswith(header) for header in HEADERS):
+                if time.monotonic() >= limit:
+                    break
+                diagnostic = None
+                if self.handshake_writer is not None:
+                    try:
+                        diagnostic = diagnostic_state(bytes(raw), self.nonce, self.prior_diagnostics)
+                    except (ValueError, UnicodeDecodeError) as error:
+                        self._errors.append(str(error))
+                        break
+                if diagnostic is not None or (self.handshake_writer is None and any(
+                        raw.startswith(header) for header in HEADERS)):
                     self._ready = {**stamp(), "stdoutBytes": len(raw)}
+                    if diagnostic is not None:
+                        self._handshake["authenticatedRawLine"] = diagnostic
+                        self._handshake["authenticatedAt"] = clone(self._ready)
                     return {"status": "PASS", "serial": self.serial,
                             "observerPid": self._process.pid, "ready": clone(self._ready),
-                            "scope": "ACTUAL_MAIN_HEADER_AND_OWNED_HOST_READER_ALIVE"}
+                            "scope": "END_TO_END_DIAGNOSTIC_AND_OWNED_HOST_READER_ALIVE" if diagnostic
+                            else "ACTUAL_MAIN_HEADER_AND_OWNED_HOST_READER_ALIVE"}
                 remaining = limit - time.monotonic()
                 if remaining <= 0:
                     break
@@ -234,8 +333,10 @@ class ContinuousLogCapture:
             return {"status": "UNKNOWN", "errors": ["OBSERVER_NOT_IN_READY_WINDOW"]}
         with self._lock:
             alive = self._process is not None and self._process.poll() is None
-            intact = not self._errors and self._stop is None and all(
-                not state["eof"] and not state["readerStopped"] for state in self._streams.values())
+            intact = (not self._errors and self._stop is None
+                and self._streams["stderr"]["observed"] == 0
+                and all(not state["eof"] and not state["readerStopped"]
+                        for state in self._streams.values()))
             in_bound = (time.perf_counter_ns() - self._started["monotonicNs"]) / 1e9 < self.limits["seconds"]
             if alive and intact and in_bound:
                 return {"status": "PASS", "observerPid": self._process.pid,
@@ -279,8 +380,14 @@ class ContinuousLogCapture:
                     os.fsync(state["file"].fileno())
                     state["file"].close()
             raw = bytes(self._streams["stdout"]["raw"])
-            for error in stream_errors(raw, final=True):
+            for error in stream_errors(raw, final=True, require_header=self.handshake_writer is None):
                 self._error(error)
+            if self.handshake_writer is not None:
+                try:
+                    need(diagnostic_state(raw, self.nonce, self.prior_diagnostics) is not None,
+                         "HANDSHAKE_DIAGNOSTIC_NOT_PROVEN")
+                except (ValueError, UnicodeDecodeError) as error:
+                    self._error(str(error))
             if self._ready is None:
                 self._error("READINESS_NOT_PROVEN")
             if self._streams["stderr"]["observed"]:
@@ -298,6 +405,9 @@ class ContinuousLogCapture:
                 "limits": self.limits, "errors": list(self._errors),
                 "monotonicClock": "time.perf_counter_ns",
                 "diagnosticScope": "HOST_OBSERVER_WINDOW_ONLY_NOT_UNOBSERVABLE_LOGD_LOSS_PROOF"}
+            if self.handshake_writer is not None:
+                self._proof.update(readinessProtocol=HANDSHAKE_PROTOCOL,
+                    handshake=clone(self._handshake), priorDiagnostics=self.prior_diagnostics)
             for name, state in self._streams.items():
                 data = bytes(state["raw"])
                 self._proof[name] = {"file": name + ".raw", "bytes": len(data),
@@ -337,9 +447,12 @@ def read_verified(directory, *, expected_serial=None):
     serial = proof.get("serial")
     need(serial in SERIALS and (expected_serial is None or serial == expected_serial), "Capture serial mismatch")
     command = proof.get("command")
-    need(isinstance(command, list) and len(command) == 11 and isinstance(command[0], str)
+    handshake_mode = proof.get("readinessProtocol") == HANDSHAKE_PROTOCOL
+    need(proof.get("readinessProtocol") in (None, HANDSHAKE_PROTOCOL), "Unknown readiness protocol")
+    tail = HANDSHAKE_TAIL if handshake_mode else TAIL
+    need(isinstance(command, list) and len(command) == 3 + len(tail) and isinstance(command[0], str)
          and Path(command[0]).is_absolute()
-         and command[1:] == ["-s", serial, *TAIL], "Observer command is not fixed-serial read-only capture")
+         and command[1:] == ["-s", serial, *tail], "Observer command is not fixed-serial read-only capture")
     need(proof.get("errors") == [], "Capture contains unknown/error state")
     limits = proof.get("limits", {})
     need(isinstance(limits, dict), "Capture limits are not an object")
@@ -386,11 +499,54 @@ def read_verified(directory, *, expected_serial=None):
         need(hashlib.sha256(raw).hexdigest() == meta.get("sha256"), "Capture raw SHA mismatch")
         streams[name] = raw
     need(not streams["stderr"], "Capture stderr is not empty")
-    errors = stream_errors(streams["stdout"], final=True)
+    errors = stream_errors(streams["stdout"], final=True, require_header=not handshake_mode)
     need(not errors, "Capture raw stream invalid: " + ", ".join(errors))
     ready_size = proof["ready"].get("stdoutBytes")
-    need(type(ready_size) is int and len(HEADERS[0]) <= ready_size <= len(streams["stdout"]),
+    need(type(ready_size) is int and 0 < ready_size <= len(streams["stdout"]),
          "Ready header byte evidence absent")
-    need(any(streams["stdout"][:ready_size].startswith(header) for header in HEADERS),
-         "Actual complete main header was not captured at readiness")
+    if handshake_mode:
+        handshake = proof.get("handshake")
+        prior = proof.get("priorDiagnostics")
+        need(isinstance(handshake, dict) and isinstance(prior, list) and all(
+            isinstance(line, str) and DIAGNOSTIC_LINE.fullmatch(line) for line in prior)
+            and len(set(prior)) == len(prior), "Malformed prior diagnostic proof")
+        need(len({DIAGNOSTIC_LINE.fullmatch(line)[1] for line in prior}) == len(prior),
+             "Conflicting prior diagnostic nonce")
+        nonce = handshake.get("nonce")
+        need(isinstance(nonce, str) and re.fullmatch(r"[0-9a-f]{32}", nonce)
+            and handshake.get("tag") == DIAGNOSTIC_TAG
+            and handshake.get("message") == "M10_CAPTURE_READY nonce=" + nonce
+            and handshake.get("diagnosticEmissionCount") == 1
+            and all(DIAGNOSTIC_LINE.fullmatch(line)[1] != nonce for line in prior),
+            "Malformed diagnostic identity proof")
+        result = handshake.get("writerResult")
+        need(isinstance(result, dict) and result.get("status") == "PASS"
+            and result.get("serial") == serial and type(result.get("exitCode")) is int
+            and result["exitCode"] == 0
+            and result.get("tag") == DIAGNOSTIC_TAG and result.get("nonce") == nonce,
+            "Diagnostic write not proven")
+        for key in ("issued", "completed", "authenticatedAt"):
+            value = handshake.get(key)
+            need(isinstance(value, dict) and type(value.get("monotonicNs")) is int
+                 and isinstance(value.get("utc"), str), "Handshake timing absent")
+            try:
+                utc = datetime.fromisoformat(value["utc"])
+            except ValueError as error:
+                raise ValueError("Malformed handshake UTC") from error
+            need(utc.tzinfo is not None, "Handshake UTC timezone absent")
+        readiness_seconds = limits.get("readinessSeconds")
+        need(type(readiness_seconds) in (int, float) and math.isfinite(readiness_seconds)
+            and 0 < readiness_seconds <= 30
+            and (timestamps[1] - timestamps[0]) / 1e9 <= readiness_seconds,
+            "Handshake exceeded its readiness budget")
+        need(timestamps[0] <= handshake["issued"]["monotonicNs"]
+            <= handshake["completed"]["monotonicNs"] <= timestamps[1]
+            and handshake["authenticatedAt"] == proof["ready"], "Handshake timing conflicts")
+        authenticated = diagnostic_state(streams["stdout"], nonce, prior)
+        need(authenticated == handshake.get("authenticatedRawLine")
+            and diagnostic_state(streams["stdout"][:ready_size], nonce, prior) == authenticated,
+            "Actual matching diagnostic not captured at readiness")
+    else:
+        need(any(streams["stdout"][:ready_size].startswith(header) for header in HEADERS),
+             "Actual complete main header was not captured at readiness")
     return proof, streams["stdout"].decode("utf-8", errors="strict")

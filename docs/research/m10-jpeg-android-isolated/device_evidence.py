@@ -224,7 +224,8 @@ def after(s,method,prior,*,capture=None):
             from continuous_evidence import consume_capture
             proof=capture()
             directory=Path(s.evidence)/f"method-{METHODS.index(method):02d}"/"continuous-log"
-            scoped=consume_capture(proof,directory,prior["phaseLog"],expected_serial=s.serial)
+            scoped=consume_capture(proof,directory,prior["phaseLog"],expected_serial=s.serial,
+                                   prior_diagnostics=getattr(s,"capture_prior_diagnostics",()))
             result["newPhaseLog"]=scoped["newPhaseLog"]
             result["continuousCapture"]=scoped
         need(all(result["stages"].get(key)==value for key,value in prior["stages"].items()),"Old synthetic Stage changed/disappeared")

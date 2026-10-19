@@ -1,0 +1,33 @@
+{
+  "priorRootEvidence": "build/handshake-targeted/FINAL_DELIVERY_RESULTS.json",
+  "rows": [
+    {
+      "file": "docs/research/m10-jpeg-android-isolated/continuous_log.py",
+      "beforeSHA256": "62c51aeeff81c80cac964833ececeef2d2e1d6af948a1bb1bfa76380930d866e",
+      "afterSHA256": "a704636e692d697c62750d572c85c07ca814c89789a9ec832b52cfd6f631db31",
+      "beforeProvenance": "RECONSTRUCTED_FROM_CURRENT_PLUS_EXACT_AGENT_PATCH; must compare to independently captured pre-edit SHA",
+      "afterProvenance": "ACTUAL_CURRENT_BYTES_CAPTURED_AFTER_HOST_ONLY_FIX",
+      "bytesBefore": 28980,
+      "bytesAfter": 29584,
+      "independentPreEditRootSHA256": "62c51aeeff81c80cac964833ececeef2d2e1d6af948a1bb1bfa76380930d866e",
+      "reconstructedBeforeMatchesIndependentRootCapture": true
+    },
+    {
+      "file": "docs/research/m10-jpeg-android-isolated/test_capture_handshake.py",
+      "beforeSHA256": "c262c00a47d174959347d9dd004934fe698a0ed2eff2a405949988e4b4f49986",
+      "afterSHA256": "1cb0c4d2eaf92b198f2b6f437bdc1ce09563a2f6107b76392feb13a329863dfe",
+      "beforeProvenance": "RECONSTRUCTED_FROM_CURRENT_PLUS_EXACT_AGENT_PATCH; must compare to independently captured pre-edit SHA",
+      "afterProvenance": "ACTUAL_CURRENT_BYTES_CAPTURED_AFTER_HOST_ONLY_FIX",
+      "bytesBefore": 7071,
+      "bytesAfter": 9246,
+      "independentPreEditRootSHA256": "c262c00a47d174959347d9dd004934fe698a0ed2eff2a405949988e4b4f49986",
+      "reconstructedBeforeMatchesIndependentRootCapture": true
+    }
+  ],
+  "status": "PASS",
+  "qualification": "Before bytes reconstructed using exact reversible agent patch; SHA independently matches actual source hashes captured by root before this edit and used for preceding Android executions. Not described as a new pre-edit byte capture.",
+  "androidRerunAfterFix": false,
+  "patchSHA256": "454d62b7ce14f843d1373e63c7719f86895ebbc198d2d57efa91b3e734a299cb",
+  "red": "RED.json",
+  "green": "GREEN.json"
+}

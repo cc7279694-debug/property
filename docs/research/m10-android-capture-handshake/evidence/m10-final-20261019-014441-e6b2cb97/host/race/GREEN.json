@@ -1,0 +1,13 @@
+{
+  "phase": "GREEN",
+  "exit": 0,
+  "uniqueTestMethods": [
+    "test_ready_rejects_observed_stderr_before_error_publication",
+    "test_assert_live_rejects_observed_stderr_before_error_publication",
+    "test_ready_rejects_reader_eof_before_error_publication",
+    "test_ready_rejects_stopped_reader_before_error_publication"
+  ],
+  "stdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSHA256": "b90b4975de190d7a1485218ddbc58f1bf2d3e20e98ee21b0a0fc2afdb11ee8e1",
+  "scope": "HOST_ONLY state observations at reader/error publication boundaries; no adb or Android process"
+}

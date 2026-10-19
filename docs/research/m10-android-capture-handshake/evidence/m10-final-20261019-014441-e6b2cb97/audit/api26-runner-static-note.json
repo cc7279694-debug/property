@@ -1,0 +1,111 @@
+{
+  "status": "CONFIRMED",
+  "apkSHA256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a",
+  "decodedMethodDescriptors": [
+    {
+      "dex": "classes4.dex",
+      "class": "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;",
+      "method": "$r8$lambda$G9D6E3XNF05rZeg8BlDmp71blIw",
+      "returnType": "Z",
+      "parameterTypes": [
+        "Lorg/json/JSONArray;",
+        "Landroid/graphics/ImageDecoder$DecodeException;"
+      ],
+      "declaredMethodDefinition": {
+        "accessFlags": "0x1009",
+        "codeOffset": 164292
+      }
+    },
+    {
+      "dex": "classes4.dex",
+      "class": "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;",
+      "method": "$r8$lambda$ZDQm_uZqp3cTq_HtUBmAL2Ffk4Y",
+      "returnType": "V",
+      "parameterTypes": [
+        "Lorg/json/JSONArray;",
+        "Landroid/graphics/ImageDecoder;",
+        "Landroid/graphics/ImageDecoder$ImageInfo;",
+        "Landroid/graphics/ImageDecoder$Source;"
+      ],
+      "declaredMethodDefinition": {
+        "accessFlags": "0x1009",
+        "codeOffset": 165408
+      }
+    },
+    {
+      "dex": "classes4.dex",
+      "class": "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;",
+      "method": "android_decoders_report_locked_fixture_outcomes$lambda$3",
+      "returnType": "V",
+      "parameterTypes": [
+        "Lorg/json/JSONArray;",
+        "Landroid/graphics/ImageDecoder;",
+        "Landroid/graphics/ImageDecoder$ImageInfo;",
+        "Landroid/graphics/ImageDecoder$Source;"
+      ],
+      "declaredMethodDefinition": {
+        "accessFlags": "0x1a",
+        "codeOffset": 165516
+      }
+    },
+    {
+      "dex": "classes4.dex",
+      "class": "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;",
+      "method": "android_decoders_report_locked_fixture_outcomes$lambda$3$0",
+      "returnType": "Z",
+      "parameterTypes": [
+        "Lorg/json/JSONArray;",
+        "Landroid/graphics/ImageDecoder$DecodeException;"
+      ],
+      "declaredMethodDefinition": {
+        "accessFlags": "0x1a",
+        "codeOffset": 164320
+      }
+    }
+  ],
+  "scope": "Read-only existing locked Test APK DEX table; no rebuild or device operation",
+  "cause": "The test class itself has a compiler-generated declared method whose signature references ImageDecoder$DecodeException; API26 JUnit reflection resolves all declared method parameter types before choosing the filtered test.",
+  "sourceFindings": [
+    {
+      "classification": "CONFIRMED",
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10JpegIntegrityTest.kt",
+      "lines": [
+        101,
+        104,
+        106,
+        107,
+        113
+      ],
+      "finding": "API>=28 guard surrounds a diagnostic method body, but Kotlin/D8 generated direct methods on the test class reference API28 ImageDecoder types in method signatures."
+    },
+    {
+      "classification": "CONFIRMED",
+      "path": "app/src/main/java/com/cooper/lithic/data/media/AndroidImageCodec.kt",
+      "lines": [
+        3,
+        4,
+        56,
+        65,
+        71,
+        78
+      ],
+      "finding": "Production image normalization uses BitmapFactory; no ImageDecoder declaration appears in this inspected codec file."
+    }
+  ],
+  "runtimeEvidence": {
+    "path": "build/m10-final-campaign/m10-final-20261019-014441-e6b2cb97/api26/method-02/instrumentation.txt",
+    "lines": [
+      25,
+      28,
+      29,
+      38
+    ],
+    "classification": "CONFIRMED",
+    "finding": "Class.getDeclaredMethods triggers missing ImageDecoder$DecodeException before the selected test method body."
+  },
+  "recommendation": {
+    "classification": "DESIGN_ONLY_NOT_IMPLEMENTED",
+    "scope": "Future separately authorized test-only compatibility fix and replacement APK review",
+    "proposal": "Move every API28 ImageDecoder diagnostic reference, callback and caught API28 exception into an API28-only helper class whose method exposed to the API26 JUnit test class has no API28 type in its signature. Preserve original import/integrity assertions. Rebuild would change the locked Test APK and is outside the present task."
+  }
+}

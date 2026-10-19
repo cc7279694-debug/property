@@ -1,0 +1,228 @@
+{
+  "campaignId": "m10-final-20261019-014441-e6b2cb97",
+  "sourceCommit": "ca79e1c8fe77de050145a463fbd35df95556d413",
+  "branch": "codex/m10-android-capture-handshake-validation",
+  "status": "BLOCKED",
+  "blocker": "API26_LOCKED_TEST_APK_CLASS_INITIALIZATION_ImageDecoder_DecodeException",
+  "api26": {
+    "serial": "emulator-5624",
+    "avd": "Lithic_M10V_API26_20261018",
+    "methods": [
+      {
+        "index": 0,
+        "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+        "status": "PASS",
+        "instrumentation": "PASS",
+        "testBody": "PASS",
+        "captureHandshake": "PASS",
+        "lifecycle": "PASS",
+        "result": "api26/method-00/result.json",
+        "evidenceLevels": {
+          "guard_release": "STRUCTURED_IN_PROCESS_OBSERVATION",
+          "host_fd_open_close": "EXECUTED_CODE_INVARIANT_ONLY",
+          "native_loading": "EXECUTED_CODE_INVARIANT_ONLY",
+          "persistent_pin_terminal_cleanup": "INDEPENDENT_OBSERVATION",
+          "raw_binder_hello_fields": "NOT_RUN",
+          "retirement_ack_phase_identity": "INDEPENDENT_OBSERVATION",
+          "source_fd_read_only_mode": "EXECUTED_CODE_INVARIANT_ONLY",
+          "synchronous_hello": "EXECUTED_CODE_INVARIANT_ONLY",
+          "worker_fd_closure": "STRUCTURED_IN_PROCESS_OBSERVATION",
+          "worker_os_absence": "INDEPENDENT_OBSERVATION",
+          "write_to_read_only_source": "NOT_RUN"
+        }
+      },
+      {
+        "index": 1,
+        "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+        "status": "PASS",
+        "instrumentation": "PASS",
+        "testBody": "PASS",
+        "captureHandshake": "PASS",
+        "lifecycle": "PASS",
+        "result": "api26/method-01/result.json",
+        "evidenceLevels": {
+          "guard_release": "STRUCTURED_IN_PROCESS_OBSERVATION",
+          "host_fd_open_close": "EXECUTED_CODE_INVARIANT_ONLY",
+          "native_loading": "EXECUTED_CODE_INVARIANT_ONLY",
+          "persistent_pin_terminal_cleanup": "INDEPENDENT_OBSERVATION",
+          "raw_binder_hello_fields": "NOT_RUN",
+          "retirement_ack_phase_identity": "INDEPENDENT_OBSERVATION",
+          "source_fd_read_only_mode": "EXECUTED_CODE_INVARIANT_ONLY",
+          "synchronous_hello": "EXECUTED_CODE_INVARIANT_ONLY",
+          "worker_fd_closure": "STRUCTURED_IN_PROCESS_OBSERVATION",
+          "worker_os_absence": "INDEPENDENT_OBSERVATION",
+          "write_to_read_only_source": "NOT_RUN"
+        }
+      },
+      {
+        "index": 2,
+        "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#valid_control_jpeg_imports_successfully",
+        "status": "FAIL",
+        "instrumentation": "FAIL",
+        "testBody": "NOT_RUN_CLASS_INITIALIZATION_FAILURE",
+        "captureHandshake": "PASS",
+        "lifecycle": "BLOCKED",
+        "result": "api26/method-02/result.json",
+        "evidenceLevels": {}
+      },
+      {
+        "index": 3,
+        "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+        "status": "NOT_RUN",
+        "reason": "Stopped after method-02 test class initialization failure; no retry"
+      },
+      {
+        "index": 4,
+        "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+        "status": "NOT_RUN",
+        "reason": "Stopped after method-02 test class initialization failure; no retry"
+      },
+      {
+        "index": 5,
+        "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+        "status": "NOT_RUN",
+        "reason": "Stopped after method-02 test class initialization failure; no retry"
+      },
+      {
+        "index": 6,
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#png_still_uses_v1_preparation_and_original_output_limits",
+        "status": "NOT_RUN",
+        "reason": "Stopped after method-02 test class initialization failure; no retry"
+      },
+      {
+        "index": 7,
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_uncommitted_jpeg_is_preserved_without_fabricated_receipt",
+        "status": "NOT_RUN",
+        "reason": "Stopped after method-02 test class initialization failure; no retry"
+      },
+      {
+        "index": 8,
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation",
+        "status": "NOT_RUN",
+        "reason": "Stopped after method-02 test class initialization failure; no retry"
+      }
+    ],
+    "PASS": 2,
+    "FAIL": 1,
+    "NOT_RUN": 6,
+    "handshakePASS": 3,
+    "testInitializationFailures": 1,
+    "newCreate": 0,
+    "newStart": 0,
+    "newInstall": 0,
+    "normalExit": 0,
+    "deviceFinalState": "PRESERVED_RUNNING",
+    "endingProtection": "api26/ending-protection.json"
+  },
+  "api36": {
+    "methods": [
+      {
+        "index": 0,
+        "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      },
+      {
+        "index": 1,
+        "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      },
+      {
+        "index": 2,
+        "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#valid_control_jpeg_imports_successfully",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      },
+      {
+        "index": 3,
+        "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      },
+      {
+        "index": 4,
+        "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      },
+      {
+        "index": 5,
+        "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      },
+      {
+        "index": 6,
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#png_still_uses_v1_preparation_and_original_output_limits",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      },
+      {
+        "index": 7,
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_uncommitted_jpeg_is_preserved_without_fabricated_receipt",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      },
+      {
+        "index": 8,
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation",
+        "status": "NOT_RUN",
+        "reason": "API26 all-nine-PASS and safe normal-exit prerequisite not met"
+      }
+    ],
+    "newCreate": 0,
+    "newStart": 0,
+    "newInstall": 0
+  },
+  "commands": {
+    "journalRecords": 1081,
+    "journalCounts": {
+      "readonlyCIM": 14,
+      "journalNotes": 14,
+      "readonlyADB": 1047,
+      "diagnosticLogWrites": 3,
+      "instrumentation": 3
+    },
+    "nonzeroExitCommands": [],
+    "additionalOwnedHostLogcatReaders": 3,
+    "allDeviceSerials": [
+      "emulator-5624"
+    ],
+    "allADBIncludingReaders": 1056,
+    "readerControlledStopExitCodes": [
+      1,
+      1,
+      1
+    ],
+    "readerExitExplanation": "Windows owned Host reader controlled termination returns 1; no unexpected reader exit, stderr or capture errors; this is not Android process termination."
+  },
+  "privacy": {
+    "privateLedgerOrCoverBytes": "NOT_RUN",
+    "h2C2OldDevicesAccessed": false,
+    "onlySyntheticResearchStageFactsRetained": true
+  },
+  "state": {
+    "M10": "PENDING",
+    "historicalJPEGFailures": 3,
+    "UI_C1": "ACCEPTED / FROZEN — PASS WITH NOTES",
+    "M11": "NOT_AUTHORIZED",
+    "oldCampaignResultsRewritten": false
+  },
+  "hostValidation": {
+    "tests": 113,
+    "targetedMethods": 43,
+    "selectedLegacyMethods": 70,
+    "PASS": 113,
+    "FAIL": 0,
+    "ERROR": 0,
+    "SKIP": 0,
+    "finalResults": "host/FINAL_113.json",
+    "sourceSHAStableBeforeAfter": true,
+    "afterAndroidOfflineGuardFix": true,
+    "androidRerun": false,
+    "rawCaptureOfflineReplay": "host/final-offline-replay.json"
+  },
+  "evidenceIndex": "INDEX.json",
+  "staticAuditTiming": "APK/ABI audit runtimeLoad NOT_RUN records pre-device static phase; methods 0/1 provide later API26 x86_64 executed-code evidence only."
+}

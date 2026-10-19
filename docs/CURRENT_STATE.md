@@ -1,15 +1,17 @@
 # 当前项目状态
 
-状态日期：2026-10-19（Asia/Shanghai；新集中批次API26一次冷启动及环境准入完成，首项连续采集就绪UNKNOWN，停止）。本文件为唯一当前状态，历史结果不改写。
+状态日期：2026-10-19（Asia/Shanghai；日志握手实测通过，API26两项PASS，第三项测试类初始化FAIL后停止）。本文件为唯一当前状态，历史结果不改写。
 
 ## Current Stage
 
-- **M10 Android final campaign — BLOCKED / CONTINUOUS_LOG_CAPTURE_READINESS_UNKNOWN**：来源`946ac16c217cb1d96cde77558aacb9802bcd5c4f`；分支`codex/m10-jpeg-android-final-campaign`；新批次`m10-final-20261019-005717-97808a30`。首项采集器10秒stdout/stderr均0字节、ready=null，未发送任何instrumentation；按关键门禁立即停止。新九项无JUnit执行，余8项/API36 NOT_RUN；没有重试或改写旧UNKNOWN。
-- **环境已实际恢复**：复用专用`Lithic_M10V_API26_20261018/emulator-5624`，注册/config与原字节相同，qcow2 backing均在独立数据根。创建0、冷启动1、安装0。当前launcher16720/QEMU26072、真实路径/创建时间/参数/端口、boot1/API26/x86_64/AVD及已装锁定APK/UID通过核验。初次Host审计缺字段、包名子串假设造成的中断保留，已按真实证据最小修正；未重启。首次300秒时限NOT_PROVEN，新的同次启动steady-state证明不回填旧boot/exit证明。
-- **实际计数与结束现场**：360次journal定向只读ADB＋1个连续logcat reader；App/Test实际UID10077/10078，SHA`0ada2631…47dbf`/`3b0005a3…4282a`。结束只读PASS，无活动App/Worker，旧2个Stage及4份观察与本轮前置完全相同。专用API26继续运行，未正常退出或清理；API36创建/启动/安装/测试全0。采集结束仅停止自有Host adb reader，不是Android App/Worker。
-- **代码/验证范围**：只增加campaign身份、独占marker、当前进程anchor与新批次退出凭据接缝，13项必要Host测试全PASS；未重跑数百项历史/原生压测，未重建APK。连续采集器、App子树`89679a188c2b6e6793962041383a9f92337e126f`、原JPEG断言、Room、备份、算法及UI不变。见[集中报告](research/M10_JPEG_ANDROID_FINAL_CAMPAIGN.md)、[结果矩阵](research/m10-jpeg-android-final-campaign/evidence/m10-final-20261019-005717-97808a30/RESULTS.json)、[checkpoint](checkpoints/2026-10-19-M10-JPEG-ANDROID-FINAL-CAMPAIGN.md)。
-- **下一步**：独立审查冷启动后无匹配日志时的可验证采集就绪机制；本轮未注入诊断日志、改过滤器、放宽门槛或再发测试。不得自动推进API36、故障场景、恢复或生产集成。
-- **正式/历史状态不变**：M10 PENDING、三JPEG历史FAIL；旧健康限定补验PASS、旧缺损完整窗口UNKNOWN；UI-C1 ACCEPTED/FROZEN PASS WITH NOTES；M11 NOT_AUTHORIZED。H2 DELIVERY_UNKNOWN/pin=true、C2及其他历史设备未访问。D2A-N01～N05、A1-N01～N04与全部旧NOTE/UNKNOWN/NOT_RUN/原始证据继承，私人字节完整性NOT_RUN。
+- **M10 日志握手集中验收 — BLOCKED / API26_TEST_APK_CLASS_INITIALIZATION**：来源 `ca79e1c8fe77de050145a463fbd35df95556d413`；分支 `codex/m10-android-capture-handshake-validation`；新批次 `m10-final-20261019-014441-e6b2cb97`。三次真实端到端诊断 nonce 握手PASS；API26健康Worker与锁定缺损拒绝/退休两项PASS，第三项runner初始化FAIL、正文NOT_RUN，后六项/API36全部NOT_RUN，按门禁停止，不重跑。
+- **当前阻塞**：锁定 Test APK 的 `M10JpegIntegrityTest` 本类synthetic方法签名引用API28 `ImageDecoder$DecodeException`，API26 JUnit反射解析时失败。源码、真实trace和锁定APK DEX相符；不将其扩大为生产健康导入失败。下一步仅等待ChatGPT独立审查，未经另行授权不修改测试APK或继续设备验证。
+- **实际现场**：重新独立核验专用 `Lithic_M10V_API26_20261018/emulator-5624` 同实例launcher16720/QEMU26072、真实路径/创建时间/参数/端口、boot1/API26/x86_64/AVD与锁定App/Test SHA、UID10077/10078。本轮创建0、启动0、安装0、Instrumentation3、诊断日志3、正常退出0；API36全0。结束只读保护PASS，无活动App/Worker，4个合成Stage及8份观察均核验，第三项未新增/修改，专用API26继续运行。旧首次启动时限NOT_PROVEN仍保留，不回填旧证明。
+- **实现/验证**：仅研究Python采集器、解释器及当前实例准入接缝；reader先建立再写唯一诊断，实际认证后READY，原始字节全留存，诊断与退休六阶段分开。最终43针对性＋70选定回归＝113唯一宿主PASS；Android停止后另补stderr/EOF就绪竞态（含于43），仅离线验证，三份实际stderr均0、不改原捕获。完整历史/原生压测/Gradle/Lint/构建NOT_RUN，App子树与锁定两APK不改。见[集中报告](research/M10_ANDROID_CAPTURE_HANDSHAKE_VALIDATION.md)、[结果/证据索引](research/m10-android-capture-handshake/evidence/m10-final-20261019-014441-e6b2cb97/RESULTS.json)、[checkpoint](checkpoints/2026-10-19-M10-ANDROID-CAPTURE-HANDSHAKE.md)。
+- **证据边界**：前两项的JUnit、唯一身份、退休偏序、Stage终结/清理及独立Worker进程缺失观察PASS；FD/guard结构化观察、同步hello/Host FD等执行代码不变量与原始Binder字段/写只读FD NOT_RUN在结果中分别保留，不扩大为全部生命周期通过。私人账本/封面字节未读，字节完整性NOT_RUN。
+- **正式/历史状态不变**：M10 PENDING、三JPEG历史FAIL；UI-C1 ACCEPTED/FROZEN PASS WITH NOTES；M11 NOT_AUTHORIZED。旧批次 `m10-final-20261019-005717-97808a30` method-00 BLOCKED、旧健康限定PASS和旧缺损完整窗口UNKNOWN原样保留。H2 DELIVERY_UNKNOWN/pin=true、C2及其他历史设备未访问；D2A-N01～N05、A1-N01～N04与全部旧NOTE/FAIL/UNKNOWN/NOT_RUN继承。
+
+上一批次[集中验收](research/M10_JPEG_ANDROID_FINAL_CAMPAIGN.md)的采集就绪UNKNOWN及零JUnit执行是原时点事实，不由本批新证据改写。
 
 上一批次[日志整改交付](research/M10_JPEG_ANDROID_FINAL_NATURAL_VALIDATION.md)中原实例不存在是当时真实观察；本轮获新授权后只冷启动一次，不将旧阻塞回写为PASS。
 

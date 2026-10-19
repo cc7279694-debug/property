@@ -103,6 +103,17 @@ class CampaignTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):
             supervisor.ensure_apks()
 
+    def test_sdk_created_campaign_profile_is_preserved_without_resetting_start(self):
+        supervisor = self.make(api=36)
+        supervisor.prepare_profile()
+        path = supervisor.control / "android-user" / "sdk-created.properties"
+        path.write_bytes(b"synthetic SDK preference\n")
+        supervisor.marker("start")
+        supervisor.prepare_profile()
+        self.assertEqual(b"synthetic SDK preference\n", path.read_bytes())
+        with self.assertRaises(FileExistsError):
+            supervisor.marker("start")
+
 
 if __name__ == "__main__":
     unittest.main()

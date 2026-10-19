@@ -1,0 +1,161 @@
+test_authenticated_old_diagnostic_is_allowed_only_before_current (test_capture_handshake.CaptureHandshakeTest.test_authenticated_old_diagnostic_is_allowed_only_before_current) ... ERROR
+test_delay_within_fixed_bound_preserves_real_arrival (test_capture_handshake.CaptureHandshakeTest.test_delay_within_fixed_bound_preserves_real_arrival) ... ERROR
+test_duplicate_current_diagnostic_fails_closed (test_capture_handshake.CaptureHandshakeTest.test_duplicate_current_diagnostic_fails_closed) ... ERROR
+test_filter_mismatch_times_out_instead_of_using_header (test_capture_handshake.CaptureHandshakeTest.test_filter_mismatch_times_out_instead_of_using_header) ... ERROR
+test_header_alone_does_not_satisfy_handshake (test_capture_handshake.CaptureHandshakeTest.test_header_alone_does_not_satisfy_handshake) ... ERROR
+test_no_matching_history_can_become_ready_only_after_exact_handshake (test_capture_handshake.CaptureHandshakeTest.test_no_matching_history_can_become_ready_only_after_exact_handshake) ... ERROR
+test_reader_early_exit_never_becomes_ready (test_capture_handshake.CaptureHandshakeTest.test_reader_early_exit_never_becomes_ready) ... ERROR
+test_replayed_old_diagnostic_after_current_is_rejected (test_capture_handshake.CaptureHandshakeTest.test_replayed_old_diagnostic_after_current_is_rejected) ... ERROR
+test_reverification_rejects_nonce_proof_tamper (test_capture_handshake.CaptureHandshakeTest.test_reverification_rejects_nonce_proof_tamper) ... ERROR
+test_stderr_and_nonpass_writer_cannot_make_ready (test_capture_handshake.CaptureHandshakeTest.test_stderr_and_nonpass_writer_cannot_make_ready) ... ERROR
+test_writer_exception_preserves_unknown_and_closes_owned_host_reader (test_capture_handshake.CaptureHandshakeTest.test_writer_exception_preserves_unknown_and_closes_owned_host_reader) ... ERROR
+test_wrong_nonce_fails_closed (test_capture_handshake.CaptureHandshakeTest.test_wrong_nonce_fails_closed) ... ERROR
+
+======================================================================
+ERROR: test_authenticated_old_diagnostic_is_allowed_only_before_current (test_capture_handshake.CaptureHandshakeTest.test_authenticated_old_diagnostic_is_allowed_only_before_current)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 127, in test_authenticated_old_diagnostic_is_allowed_only_before_current
+    capture = self.make(initial=line(OTHER).encode(), prior=(line(OTHER),))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_delay_within_fixed_bound_preserves_real_arrival (test_capture_handshake.CaptureHandshakeTest.test_delay_within_fixed_bound_preserves_real_arrival)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 98, in test_delay_within_fixed_bound_preserves_real_arrival
+    capture = self.make(delay=.08)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_duplicate_current_diagnostic_fails_closed (test_capture_handshake.CaptureHandshakeTest.test_duplicate_current_diagnostic_fails_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 93, in test_duplicate_current_diagnostic_fails_closed
+    capture = self.make(emitted=(line() + line()).encode())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_filter_mismatch_times_out_instead_of_using_header (test_capture_handshake.CaptureHandshakeTest.test_filter_mismatch_times_out_instead_of_using_header)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 105, in test_filter_mismatch_times_out_instead_of_using_header
+    capture = self.make(emitted=b"", timeout=.15)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_header_alone_does_not_satisfy_handshake (test_capture_handshake.CaptureHandshakeTest.test_header_alone_does_not_satisfy_handshake)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 83, in test_header_alone_does_not_satisfy_handshake
+    capture = self.make(initial=b"--------- beginning of main\n", emitted=b"", timeout=.15)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_no_matching_history_can_become_ready_only_after_exact_handshake (test_capture_handshake.CaptureHandshakeTest.test_no_matching_history_can_become_ready_only_after_exact_handshake)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 71, in test_no_matching_history_can_become_ready_only_after_exact_handshake
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_reader_early_exit_never_becomes_ready (test_capture_handshake.CaptureHandshakeTest.test_reader_early_exit_never_becomes_ready)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 110, in test_reader_early_exit_never_becomes_ready
+    capture = self.make(exit_early=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_replayed_old_diagnostic_after_current_is_rejected (test_capture_handshake.CaptureHandshakeTest.test_replayed_old_diagnostic_after_current_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 135, in test_replayed_old_diagnostic_after_current_is_rejected
+    capture = self.make(emitted=(line() + line(OTHER)).encode(), prior=(line(OTHER),))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_reverification_rejects_nonce_proof_tamper (test_capture_handshake.CaptureHandshakeTest.test_reverification_rejects_nonce_proof_tamper)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 140, in test_reverification_rejects_nonce_proof_tamper
+    capture = self.make()
+              ^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_stderr_and_nonpass_writer_cannot_make_ready (test_capture_handshake.CaptureHandshakeTest.test_stderr_and_nonpass_writer_cannot_make_ready)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 122, in test_stderr_and_nonpass_writer_cannot_make_ready
+    capture = self.make(stderr=b"logcat: invalid filter\n", writer_status="UNKNOWN")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_writer_exception_preserves_unknown_and_closes_owned_host_reader (test_capture_handshake.CaptureHandshakeTest.test_writer_exception_preserves_unknown_and_closes_owned_host_reader)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 115, in test_writer_exception_preserves_unknown_and_closes_owned_host_reader
+    capture = self.make(writer_error=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+======================================================================
+ERROR: test_wrong_nonce_fails_closed (test_capture_handshake.CaptureHandshakeTest.test_wrong_nonce_fails_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 88, in test_wrong_nonce_fails_closed
+    capture = self.make(emitted=line(OTHER).encode())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-handshake\��ʯ��APP\docs\research\m10-jpeg-android-isolated\test_capture_handshake.py", line 63, in make
+    self.capture = ContinuousLogCapture(
+                   ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ContinuousLogCapture.__init__() got an unexpected keyword argument 'handshake_writer'
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.031s
+
+FAILED (errors=12)
