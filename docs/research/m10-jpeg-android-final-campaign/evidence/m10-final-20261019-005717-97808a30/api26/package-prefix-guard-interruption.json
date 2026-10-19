@@ -1,0 +1,31 @@
+{
+  "cause": "pm list packages applies substring filtering; the known locked test package is also returned",
+  "error": "Ambiguous installed package",
+  "installationCommands": 0,
+  "originalEvidenceChanged": false,
+  "rawFirstCommand": {
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5624",
+      "shell",
+      "pm",
+      "list",
+      "packages",
+      "com.cooper.lithic.debug"
+    ],
+    "cwd": null,
+    "endUtc": "2026-10-19T01:05:26.195502+00:00",
+    "environmentOverrides": {},
+    "exitCode": 0,
+    "stderrBase64": "",
+    "stderrBytes": 0,
+    "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdoutBase64": "cGFja2FnZTpjb20uY29vcGVyLmxpdGhpYy5kZWJ1Zw0KcGFja2FnZTpjb20uY29vcGVyLmxpdGhpYy5kZWJ1Zy50ZXN0DQo=",
+    "stdoutBytes": 71,
+    "stdoutSHA256": "05b67dd2bf48c9510fa00550038d0b5c3802ab9105b3e39dc272c27437a0456b",
+    "utc": "2026-10-19T01:05:25.170063+00:00"
+  },
+  "status": "BLOCKED_OLD_HOST_GUARD",
+  "subsequentCorrection": "Accept only exact pinned app/test names, then independently verify exact installed APK SHA and UID. Unknown names still block."
+}

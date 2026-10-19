@@ -375,7 +375,7 @@ class Supervisor:
                  not within(candidate, BASE), "Existing host diagnostic temporary directory is not safe")
             avd_identity.unlinked_ancestors(candidate)
             host_env[key] = str(candidate)
-        historical = "32880,32032" if self.api == 26 else ""
+        historical = getattr(self, "historical_process_ids", "32880,32032" if self.api == 26 else "")
         script = "$p=@(Get-CimInstance Win32_Process); $m=@($p | Where-Object {$_.Name -match '^(emulator|qemu-system).*\\.exe$'}); "
         script += f"$ports=@(Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object {{$_.LocalPort -in @({self.port},{self.port+1})}}); "
         script += f"$named=@($m | Where-Object {{$_.CommandLine -like '*{self.name}*' -or $_.CommandLine -like '*{self.data}*'}}); "

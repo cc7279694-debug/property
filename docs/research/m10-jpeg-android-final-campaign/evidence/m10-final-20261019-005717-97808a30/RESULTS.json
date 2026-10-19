@@ -1,0 +1,132 @@
+{
+  "API26": {
+    "apkInstallCommands": 0,
+    "avd": "Lithic_M10V_API26_20261018",
+    "bootStatus": "PASS_SAME_CAMPAIGN_SINGLE_LAUNCH_STEADY_STATE",
+    "coldStartCommands": 1,
+    "collectorADBCommands": 1,
+    "creationCommands": 0,
+    "ending": "PRESERVED_RUNNING_NO_ACTIVE_APP_OR_WORKER",
+    "first300Seconds": "NOT_PROVEN_HOST_AUDIT_SCHEMA_INTERRUPTION_PRESERVED",
+    "instrumentationCommands": 0,
+    "journalADBCommands": 360,
+    "journalADBNonzeroExitCodes": [],
+    "methods": [
+      {
+        "index": 0,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+        "reason": "CAPTURE_READINESS_UNKNOWN_BEFORE_INSTRUMENTATION",
+        "status": "BLOCKED"
+      },
+      {
+        "index": 1,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+        "reason": "PREREQUISITE_BLOCKED",
+        "status": "NOT_RUN"
+      },
+      {
+        "index": 2,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#valid_control_jpeg_imports_successfully",
+        "reason": "PREREQUISITE_BLOCKED",
+        "status": "NOT_RUN"
+      },
+      {
+        "index": 3,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+        "reason": "PREREQUISITE_BLOCKED",
+        "status": "NOT_RUN"
+      },
+      {
+        "index": 4,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+        "reason": "PREREQUISITE_BLOCKED",
+        "status": "NOT_RUN"
+      },
+      {
+        "index": 5,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+        "reason": "PREREQUISITE_BLOCKED",
+        "status": "NOT_RUN"
+      },
+      {
+        "index": 6,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#png_still_uses_v1_preparation_and_original_output_limits",
+        "reason": "PREREQUISITE_BLOCKED",
+        "status": "NOT_RUN"
+      },
+      {
+        "index": 7,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_uncommitted_jpeg_is_preserved_without_fabricated_receipt",
+        "reason": "PREREQUISITE_BLOCKED",
+        "status": "NOT_RUN"
+      },
+      {
+        "index": 8,
+        "junit": "NOT_RUN",
+        "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation",
+        "reason": "PREREQUISITE_BLOCKED",
+        "status": "NOT_RUN"
+      }
+    ],
+    "normalExitCommands": 0,
+    "oldStageAndObservationBytesUnchangedAcrossCampaign": true,
+    "oldSyntheticStages": 2,
+    "reuseInstalledAPK": [
+      {
+        "package": "com.cooper.lithic.debug",
+        "sha256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+        "uid": 10077
+      },
+      {
+        "package": "com.cooper.lithic.debug.test",
+        "sha256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a",
+        "uid": 10078
+      }
+    ],
+    "serial": "emulator-5624",
+    "totalADBCommandsIncludingCollector": 361
+  },
+  "API36": {
+    "creationCommands": 0,
+    "installCommands": 0,
+    "instrumentationCommands": 0,
+    "startCommands": 0,
+    "status": "NOT_RUN"
+  },
+  "APKBuilds": 0,
+  "blocker": "CONTINUOUS_LOG_CAPTURE_READINESS_UNKNOWN",
+  "branch": "codex/m10-jpeg-android-final-campaign",
+  "campaignId": "m10-final-20261019-005717-97808a30",
+  "logger": {
+    "AndroidAppStoppedByCollector": false,
+    "ownedHostObserverExitCode": 1,
+    "ownedHostObserverPid": 21740,
+    "ready": null,
+    "status": "UNKNOWN",
+    "stderrBytes": 0,
+    "stdoutBytes": 0
+  },
+  "preserved": {
+    "C2": "NOT_ACCESSED",
+    "H2": "NOT_ACCESSED_DELIVERY_UNKNOWN_PIN_TRUE",
+    "M10": "PENDING",
+    "M11": "NOT_AUTHORIZED",
+    "UI_C1": "FROZEN",
+    "historicalThreeJPEG": "FAIL",
+    "oldDamaged": "UNKNOWN",
+    "oldHealthy": "LIMITED_SUPPLEMENT_PASS"
+  },
+  "privateLedgerAndCoverBytes": "NOT_READ",
+  "rawPrivateByteIntegrity": "NOT_RUN",
+  "sourceCommit": "946ac16c217cb1d96cde77558aacb9802bcd5c4f",
+  "status": "BLOCKED",
+  "toolDownloads": 0
+}

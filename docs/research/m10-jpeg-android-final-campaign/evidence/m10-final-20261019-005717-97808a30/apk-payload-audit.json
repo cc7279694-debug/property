@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "scope": "Host-only ZIP payload inspection of locked original APKs; no Android load claim",
+  "observations": [
+    {
+      "kind": "app",
+      "nativeABIs": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86",
+        "x86_64"
+      ],
+      "nativeLibraries": [
+        {
+          "path": "lib/arm64-v8a/libandroidx.graphics.path.so",
+          "bytes": 10096,
+          "sha256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6"
+        },
+        {
+          "path": "lib/arm64-v8a/libdatastore_shared_counter.so",
+          "bytes": 7784,
+          "sha256": "178f89a2c6c9234ddf980dd4cd1f3616186a46b2b932aafa6707abd04c5fd76a"
+        },
+        {
+          "path": "lib/arm64-v8a/libstrictjpeg_candidate.so",
+          "bytes": 284136,
+          "sha256": "44cc13c6921a0bda3a2e298eb232c1ad0f0863c2ab33cbf8e74807a65d2ea0de"
+        },
+        {
+          "path": "lib/armeabi-v7a/libandroidx.graphics.path.so",
+          "bytes": 7252,
+          "sha256": "41399eba6fc2a60f6f14642375c1824f3cf25eb8fec7397d753730a3ceda3e2b"
+        },
+        {
+          "path": "lib/armeabi-v7a/libdatastore_shared_counter.so",
+          "bytes": 5916,
+          "sha256": "b4a465c02ee3ab581128ce8fedf83b40f6868c73c74b88e98908803229947e6a"
+        },
+        {
+          "path": "lib/armeabi-v7a/libstrictjpeg_candidate.so",
+          "bytes": 218760,
+          "sha256": "f212d2b51448f919bbbf48b30a68a7f795261fe5ebdef72e919e1ea2c45faabd"
+        },
+        {
+          "path": "lib/x86/libandroidx.graphics.path.so",
+          "bytes": 9284,
+          "sha256": "eb0570b41fd3bff25d8204a967c03bd7550719e768b791f680cc40cbe35f29af"
+        },
+        {
+          "path": "lib/x86/libdatastore_shared_counter.so",
+          "bytes": 6124,
+          "sha256": "ad9ce026fa71181a87aaa5f86019902ca02bf132c20fb04c28b1e781e68d8df0"
+        },
+        {
+          "path": "lib/x86/libstrictjpeg_candidate.so",
+          "bytes": 328884,
+          "sha256": "8531d0a92fd4cf407660796cc310dd4350e94a538be44a45be17c57bef644d97"
+        },
+        {
+          "path": "lib/x86_64/libandroidx.graphics.path.so",
+          "bytes": 10760,
+          "sha256": "4e56c996f13670e70082658de7880c4020eabf4f25e43387f88ed78a713fc9f0"
+        },
+        {
+          "path": "lib/x86_64/libdatastore_shared_counter.so",
+          "bytes": 7336,
+          "sha256": "ccd1862ef8f854d2322f3ee07adebd107890ded3b7c96b8f3528ac99aab4a4f6"
+        },
+        {
+          "path": "lib/x86_64/libstrictjpeg_candidate.so",
+          "bytes": 342256,
+          "sha256": "25b0fa227d1380beb995a7d360f4c29964e72d8d288b62b3aa2ac7cfbb37a116"
+        }
+      ]
+    },
+    {
+      "kind": "test",
+      "samples": [
+        {
+          "path": "assets/m10_jpeg_integrity/complete.jpg",
+          "bytes": 59334,
+          "sha256": "2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907",
+          "matchesLocked": true
+        },
+        {
+          "path": "assets/m10_jpeg_integrity/entropy_cut_eoi_retained.jpg",
+          "bytes": 20194,
+          "sha256": "f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a",
+          "matchesLocked": true
+        }
+      ]
+    }
+  ],
+  "deviceOperations": 0
+}

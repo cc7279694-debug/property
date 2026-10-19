@@ -1,0 +1,67 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5624",
+    "logcat",
+    "-b",
+    "main",
+    "-v",
+    "threadtime",
+    "-s",
+    "LITHIC_JPEG:I",
+    "*:S"
+  ],
+  "diagnosticScope": "HOST_OBSERVER_WINDOW_ONLY_NOT_UNOBSERVABLE_LOGD_LOSS_PROOF",
+  "ended": {
+    "monotonicNs": 1160209157800,
+    "utc": "2026-10-19T01:07:54.021421+00:00"
+  },
+  "errors": [
+    "READINESS_NOT_PROVEN",
+    "MAIN_BUFFER_HEADER_NOT_PROVEN",
+    "STDOUT_PARTIAL_FINAL_LINE"
+  ],
+  "format": "LITHIC_SINGLE_METHOD_CONTINUOUS_LOG_V1",
+  "limits": {
+    "readinessSeconds": 10,
+    "seconds": 360,
+    "stderrBytes": 65536,
+    "stdoutBytes": 2097152,
+    "stopSeconds": 3
+  },
+  "monotonicClock": "time.perf_counter_ns",
+  "process": {
+    "controlledHostObserverStop": true,
+    "createdByThisCapture": true,
+    "exitCode": 1,
+    "pid": 21740
+  },
+  "ready": null,
+  "serial": "emulator-5624",
+  "started": {
+    "monotonicNs": 1149992739600,
+    "utc": "2026-10-19T01:07:43.804836+00:00"
+  },
+  "status": "UNKNOWN",
+  "stderr": {
+    "bytes": 0,
+    "eof": true,
+    "file": "stderr.raw",
+    "observedBytes": 0,
+    "readerStopped": true,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 0,
+    "eof": true,
+    "file": "stdout.raw",
+    "observedBytes": 0,
+    "readerStopped": true,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stopRequested": {
+    "monotonicNs": 1160125899200,
+    "utc": "2026-10-19T01:07:53.938569+00:00"
+  }
+}

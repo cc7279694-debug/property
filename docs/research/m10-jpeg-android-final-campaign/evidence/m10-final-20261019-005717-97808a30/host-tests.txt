@@ -1,0 +1,18 @@
+test_campaign_id_rejects_path_traversal_and_malformed_identity (test_campaign.CampaignTests.test_campaign_id_rejects_path_traversal_and_malformed_identity) ... ok
+test_cold_start_arguments_preserve_disk_and_explicit_snapshot_disable (test_campaign.CampaignTests.test_cold_start_arguments_preserve_disk_and_explicit_snapshot_disable) ... ok
+test_duplicate_operation_marker_fails_and_keeps_original_bytes (test_campaign.CampaignTests.test_duplicate_operation_marker_fails_and_keeps_original_bytes) ... ok
+test_evidence_and_operation_markers_are_new_campaign_scoped (test_campaign.CampaignTests.test_evidence_and_operation_markers_are_new_campaign_scoped) ... ok
+test_identity_without_new_campaign_boot_proof_cannot_send_adb (test_campaign.CampaignTests.test_identity_without_new_campaign_boot_proof_cannot_send_adb) ... ok
+test_new_process_identity_uses_current_anchor_without_old_resume_anchor (test_campaign.CampaignTests.test_new_process_identity_uses_current_anchor_without_old_resume_anchor) ... ok
+test_pm_substring_filter_accepts_only_the_two_pinned_packages (test_campaign.CampaignTests.test_pm_substring_filter_accepts_only_the_two_pinned_packages) ... ok
+test_ack_unknown_does_not_retry (test_normal_shutdown.NormalShutdownTest.test_ack_unknown_does_not_retry) ... ok
+test_missing_gate_never_exits (test_normal_shutdown.NormalShutdownTest.test_missing_gate_never_exits) ... ok
+test_once_and_os_proof_required (test_normal_shutdown.NormalShutdownTest.test_once_and_os_proof_required) ... ok
+test_other_or_old_device_never_exits (test_normal_shutdown.NormalShutdownTest.test_other_or_old_device_never_exits) ... ok
+test_unknown_consumer_never_exits (test_normal_shutdown.NormalShutdownTest.test_unknown_consumer_never_exits) ... ok
+test_unknown_gate_never_exits (test_normal_shutdown.NormalShutdownTest.test_unknown_gate_never_exits) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.645s
+
+OK

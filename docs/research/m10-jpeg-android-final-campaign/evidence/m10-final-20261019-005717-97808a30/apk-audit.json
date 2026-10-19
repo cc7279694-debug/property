@@ -1,0 +1,145 @@
+{
+  "apks": [
+    {
+      "bytes": 13931874,
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "kind": "app",
+      "minSdk": 26,
+      "packageName": "com.cooper.lithic.debug",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ],
+      "sha256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+      "targetSdk": 36,
+      "workerManifest": "      E: service (line=32)\r\n        A: android:name(0x01010003)=\"com.cooper.lithic.data.media.jpegworker.JpegWorkerService\" (Raw: \"com.cooper.lithic.data.media.jpegworker.JpegWorkerService\")\r\n        A: android:exported(0x01010010)=(type 0x12)0x0\r\n        A: android:process(0x01010011)=\":jpeg_worker\" (Raw: \":jpeg_worker\")\r\n"
+    },
+    {
+      "bytes": 2234890,
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "instrumentationManifest": "    E: instrumentation (line=9)\r\n      A: android:label(0x01010001)=\"M10 test-only process boundary probe\" (Raw: \"M10 test-only process boundary probe\")\r\n      A: android:name(0x01010003)=\"com.cooper.lithic.data.media.M10ProcessBoundaryRunner\" (Raw: \"com.cooper.lithic.data.media.M10ProcessBoundaryRunner\")\r\n      A: android:targetPackage(0x01010021)=\"com.cooper.lithic.debug\" (Raw: \"com.cooper.lithic.debug\")\r\n      A: android:handleProfiling(0x01010022)=(type 0x12)0x0\r\n      A: android:functionalTest(0x01010023)=(type 0x12)0x0\r\n",
+      "kind": "test",
+      "minSdk": 26,
+      "packageName": "com.cooper.lithic.debug.test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-android\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ],
+      "sha256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a",
+      "targetSdk": 36
+    }
+  ],
+  "appGitTree": "89679a188c2b6e6793962041383a9f92337e126f",
+  "applicationId": "com.cooper.lithic.debug",
+  "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt.exe",
+        "dump",
+        "badging",
+        "app-debug.apk"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug",
+      "endedUtc": "2026-10-19T00:58:27.163288+00:00",
+      "exit": 0,
+      "startedUtc": "2026-10-19T00:58:27.015422+00:00",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBytes": 5426,
+      "stdoutSHA256": "7dfc2d5abb00b45b0cae190758de46ee5628f8c5aa5686a529dc65aa773fc7aa"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt.exe",
+        "dump",
+        "xmltree",
+        "app-debug.apk",
+        "AndroidManifest.xml"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug",
+      "endedUtc": "2026-10-19T00:58:27.374937+00:00",
+      "exit": 0,
+      "startedUtc": "2026-10-19T00:58:27.163288+00:00",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBytes": 5633,
+      "stdoutSHA256": "44853d055b5794c9773bbc77a6a48e221e5e4fafbbd18b40152d56c7c61cddf7"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "app-debug.apk"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug",
+      "endedUtc": "2026-10-19T00:58:28.472318+00:00",
+      "exit": 0,
+      "startedUtc": "2026-10-19T00:58:27.374937+00:00",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBytes": 972,
+      "stdoutSHA256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt.exe",
+        "dump",
+        "badging",
+        "app-debug-androidTest.apk"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-android\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug",
+      "endedUtc": "2026-10-19T00:58:28.590391+00:00",
+      "exit": 0,
+      "startedUtc": "2026-10-19T00:58:28.509833+00:00",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBytes": 1167,
+      "stdoutSHA256": "fc666b8f2efdc81a83ff50248f551a0aed1e2d00f1416538fc34cb805f9540af"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt.exe",
+        "dump",
+        "xmltree",
+        "app-debug-androidTest.apk",
+        "AndroidManifest.xml"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-android\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug",
+      "endedUtc": "2026-10-19T00:58:28.652730+00:00",
+      "exit": 0,
+      "startedUtc": "2026-10-19T00:58:28.590391+00:00",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBytes": 4146,
+      "stdoutSHA256": "49e849117c8f7683d2630ac5377289095d4d8981187a1cd7bb8099d441749386"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "app-debug-androidTest.apk"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-android\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug",
+      "endedUtc": "2026-10-19T00:58:29.245623+00:00",
+      "exit": 0,
+      "startedUtc": "2026-10-19T00:58:28.652730+00:00",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBytes": 972,
+      "stdoutSHA256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    }
+  ],
+  "endedUtc": "2026-10-19T00:58:29.247132+00:00",
+  "instrumentationComponent": "com.cooper.lithic.debug.test/com.cooper.lithic.data.media.M10ProcessBoundaryRunner",
+  "observationSourceCommit": "946ac16c217cb1d96cde77558aacb9802bcd5c4f",
+  "scope": "Fresh static original APK audit only; Android load/install/runtime NOT_RUN",
+  "source": "b756f96b699f3b70d43144f6c92815917fb563f6",
+  "status": "PASS",
+  "testApplicationId": "com.cooper.lithic.debug.test",
+  "utc": "2026-10-19T00:58:26.734947+00:00"
+}

@@ -1,0 +1,174 @@
+{
+  "api": 26,
+  "appSHA256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+  "error": {
+    "detail": "Continuous log observer readiness UNKNOWN",
+    "type": "MethodBlocked"
+  },
+  "finishedUTC": "2026-10-19T01:07:54.108054+00:00",
+  "fixtures": {
+    "fixtures": [
+      {
+        "bytes": 59334,
+        "name": "assets/m10_jpeg_integrity/complete.jpg",
+        "sha256": "2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907"
+      },
+      {
+        "bytes": 20194,
+        "name": "assets/m10_jpeg_integrity/entropy_cut_eoi_retained.jpg",
+        "sha256": "f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a"
+      }
+    ],
+    "status": "PASS",
+    "testAPK": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a"
+  },
+  "hostUID": 10077,
+  "index": 0,
+  "instrumentation": {
+    "status": "NOT_RUN"
+  },
+  "instrumentationCommandsIssued": 0,
+  "lifecycle": {
+    "status": "NOT_RUN"
+  },
+  "logCapture": {
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5624",
+      "logcat",
+      "-b",
+      "main",
+      "-v",
+      "threadtime",
+      "-s",
+      "LITHIC_JPEG:I",
+      "*:S"
+    ],
+    "diagnosticScope": "HOST_OBSERVER_WINDOW_ONLY_NOT_UNOBSERVABLE_LOGD_LOSS_PROOF",
+    "ended": {
+      "monotonicNs": 1160209157800,
+      "utc": "2026-10-19T01:07:54.021421+00:00"
+    },
+    "errors": [
+      "READINESS_NOT_PROVEN",
+      "MAIN_BUFFER_HEADER_NOT_PROVEN",
+      "STDOUT_PARTIAL_FINAL_LINE"
+    ],
+    "format": "LITHIC_SINGLE_METHOD_CONTINUOUS_LOG_V1",
+    "limits": {
+      "readinessSeconds": 10,
+      "seconds": 360,
+      "stderrBytes": 65536,
+      "stdoutBytes": 2097152,
+      "stopSeconds": 3
+    },
+    "monotonicClock": "time.perf_counter_ns",
+    "process": {
+      "controlledHostObserverStop": true,
+      "createdByThisCapture": true,
+      "exitCode": 1,
+      "pid": 21740
+    },
+    "ready": null,
+    "serial": "emulator-5624",
+    "started": {
+      "monotonicNs": 1149992739600,
+      "utc": "2026-10-19T01:07:43.804836+00:00"
+    },
+    "status": "UNKNOWN",
+    "stderr": {
+      "bytes": 0,
+      "eof": true,
+      "file": "stderr.raw",
+      "observedBytes": 0,
+      "readerStopped": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 0,
+      "eof": true,
+      "file": "stdout.raw",
+      "observedBytes": 0,
+      "readerStopped": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stopRequested": {
+      "monotonicNs": 1160125899200,
+      "utc": "2026-10-19T01:07:53.938569+00:00"
+    }
+  },
+  "logCaptureStarted": {
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5624",
+      "logcat",
+      "-b",
+      "main",
+      "-v",
+      "threadtime",
+      "-s",
+      "LITHIC_JPEG:I",
+      "*:S"
+    ],
+    "diagnosticScope": "HOST_OBSERVER_WINDOW_ONLY_NOT_UNOBSERVABLE_LOGD_LOSS_PROOF",
+    "ended": {
+      "monotonicNs": 1160209157800,
+      "utc": "2026-10-19T01:07:54.021421+00:00"
+    },
+    "errors": [
+      "READINESS_NOT_PROVEN",
+      "MAIN_BUFFER_HEADER_NOT_PROVEN",
+      "STDOUT_PARTIAL_FINAL_LINE"
+    ],
+    "format": "LITHIC_SINGLE_METHOD_CONTINUOUS_LOG_V1",
+    "limits": {
+      "readinessSeconds": 10,
+      "seconds": 360,
+      "stderrBytes": 65536,
+      "stdoutBytes": 2097152,
+      "stopSeconds": 3
+    },
+    "monotonicClock": "time.perf_counter_ns",
+    "process": {
+      "controlledHostObserverStop": true,
+      "createdByThisCapture": true,
+      "exitCode": 1,
+      "pid": 21740
+    },
+    "ready": null,
+    "serial": "emulator-5624",
+    "started": {
+      "monotonicNs": 1149992739600,
+      "utc": "2026-10-19T01:07:43.804836+00:00"
+    },
+    "status": "UNKNOWN",
+    "stderr": {
+      "bytes": 0,
+      "eof": true,
+      "file": "stderr.raw",
+      "observedBytes": 0,
+      "readerStopped": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 0,
+      "eof": true,
+      "file": "stdout.raw",
+      "observedBytes": 0,
+      "readerStopped": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stopRequested": {
+      "monotonicNs": 1160125899200,
+      "utc": "2026-10-19T01:07:53.938569+00:00"
+    }
+  },
+  "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+  "serial": "emulator-5624",
+  "startedUTC": "2026-10-19T01:06:54.987793+00:00",
+  "status": "BLOCKED",
+  "testSHA256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a",
+  "testUID": 10078
+}

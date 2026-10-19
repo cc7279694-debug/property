@@ -1,0 +1,202 @@
+{
+  "api": 26,
+  "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+  "noBackupStatus": "PRESENT",
+  "observations": {
+    "worker-review-result-0c78c03b-f185-4a9d-ba96-363e2b46a95c.json": {
+      "filename": "worker-review-result-0c78c03b-f185-4a9d-ba96-363e2b46a95c.json",
+      "metadata": {
+        "bytes": 653,
+        "device": 64512,
+        "inode": 115522,
+        "sha256": "cb9e67831fb7be904e9193e933fa239a4a6ba9da7211c3b2170ecad37cab60d0",
+        "type": "regular"
+      },
+      "name": "worker-review-result",
+      "value": {
+        "attempt": "878d3544-05fb-462a-9f19-b08ace2e7041",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "Strict JPEG rejection code=117",
+        "generation": "m10-worker-review-84dd4152-d2af-4da0-9936-96f271d3d784",
+        "guardReleased": true,
+        "hostPid": 7457,
+        "hostUid": 10077,
+        "matchingProcessDead": true,
+        "outcome": "INVALID_IMAGE",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": false,
+        "session": "fd71b830-e3d5-4fbe-ab66-f9d34131eb9c",
+        "sourceClosed": true,
+        "strictFinished": false,
+        "workerPid": 7483,
+        "workerStartTicks": 204264,
+        "workerUid": 10077
+      }
+    },
+    "worker-review-result-9ec07a03-0e89-4cab-ab76-7f8e7c9cfe85.json": {
+      "filename": "worker-review-result-9ec07a03-0e89-4cab-ab76-7f8e7c9cfe85.json",
+      "metadata": {
+        "bytes": 642,
+        "device": 64512,
+        "inode": 115488,
+        "sha256": "39d270ba521c69dc35bce98fbf1f52baf2331f757165025a4e9855c9acc3c855",
+        "type": "regular"
+      },
+      "name": "worker-review-result",
+      "value": {
+        "attempt": "e95e3eb2-2e44-4864-bd56-f89dafa63a0b",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "STRICT_FINISHED_NORMALIZED",
+        "generation": "m10-worker-review-0cd29ab2-dbf0-4791-bae0-2049d3ff5934",
+        "guardReleased": true,
+        "hostPid": 6589,
+        "hostUid": 10077,
+        "matchingProcessDead": true,
+        "outcome": "SUCCESS",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": false,
+        "session": "f4806193-a155-4c5e-b34e-bfbac68e9712",
+        "sourceClosed": true,
+        "strictFinished": true,
+        "workerPid": 6617,
+        "workerStartTicks": 177649,
+        "workerUid": 10077
+      }
+    },
+    "worker-review-terminal-5d9593e1-9f5f-41e9-af77-52614148ee24.json": {
+      "filename": "worker-review-terminal-5d9593e1-9f5f-41e9-af77-52614148ee24.json",
+      "metadata": {
+        "bytes": 641,
+        "device": 64512,
+        "inode": 115457,
+        "sha256": "077a4c45a84010809beb18e661342d0230b109b57d2794cc1257df7c3f95311d",
+        "type": "regular"
+      },
+      "name": "worker-review-terminal",
+      "value": {
+        "attempt": "e95e3eb2-2e44-4864-bd56-f89dafa63a0b",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "STRICT_FINISHED_NORMALIZED",
+        "generation": "m10-worker-review-0cd29ab2-dbf0-4791-bae0-2049d3ff5934",
+        "guardReleased": true,
+        "hostPid": 6589,
+        "hostUid": 10077,
+        "matchingProcessDead": true,
+        "outcome": "SUCCESS",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": true,
+        "session": "f4806193-a155-4c5e-b34e-bfbac68e9712",
+        "sourceClosed": true,
+        "strictFinished": true,
+        "workerPid": 6617,
+        "workerStartTicks": 177649,
+        "workerUid": 10077
+      }
+    },
+    "worker-review-terminal-846a88f4-8a48-484e-9502-997a122d0782.json": {
+      "filename": "worker-review-terminal-846a88f4-8a48-484e-9502-997a122d0782.json",
+      "metadata": {
+        "bytes": 652,
+        "device": 64512,
+        "inode": 115536,
+        "sha256": "096da530fce2bdc04e55900042b5aa447bfe4380de759b0c09e63d13f82333f3",
+        "type": "regular"
+      },
+      "name": "worker-review-terminal",
+      "value": {
+        "attempt": "878d3544-05fb-462a-9f19-b08ace2e7041",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "Strict JPEG rejection code=117",
+        "generation": "m10-worker-review-84dd4152-d2af-4da0-9936-96f271d3d784",
+        "guardReleased": true,
+        "hostPid": 7457,
+        "hostUid": 10077,
+        "matchingProcessDead": true,
+        "outcome": "INVALID_IMAGE",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": true,
+        "session": "fd71b830-e3d5-4fbe-ab66-f9d34131eb9c",
+        "sourceClosed": true,
+        "strictFinished": false,
+        "workerPid": 7483,
+        "workerStartTicks": 204264,
+        "workerUid": 10077
+      }
+    }
+  },
+  "phaseLog": "--------- beginning of main\r\n--------- beginning of system",
+  "processes": {
+    "complete": true,
+    "rawBytes": 4546,
+    "rawSHA256": "b5fd9406a2206370c3e2e300508a76f7bba107b39067d1a425017d5258e89fdd",
+    "rows": [],
+    "uid": 10077,
+    "worker_absent": true
+  },
+  "serial": "emulator-5624",
+  "stages": {
+    "m10-worker-review-0cd29ab2-dbf0-4791-bae0-2049d3ff5934": {
+      "asset": "f7dc4e02-e7b5-4668-b12f-923cd44d6a77",
+      "namespaceGuard": {
+        "bytes": 0,
+        "device": 64512,
+        "inode": 115437,
+        "type": "regular"
+      },
+      "records": {
+        "__metadata__": "{\"complete\": true, \"entries\": {\"cleaned.v2\": {\"bytes\": 153, \"device\": 64512, \"inode\": 115453, \"sha256\": \"3b32e056920ad09693be61b8f89b722818783d5e5fca3284ebcf70ebcf700475\", \"type\": \"regular\"}, \"cleanup-intent.v2\": {\"bytes\": 153, \"device\": 64512, \"inode\": 115506, \"sha256\": \"3b32e056920ad09693be61b8f89b722818783d5e5fca3284ebcf70ebcf700475\", \"type\": \"regular\"}, \"consumer.guard\": {\"bytes\": 0, \"device\": 64512, \"inode\": 115440, \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"sha256Origin\": \"DERIVED_FROM_VERIFIED_ZERO_LENGTH_NO_CONTENT_READ\", \"type\": \"regular\"}, \"delivered.v2\": {\"bytes\": 148, \"device\": 64512, \"inode\": 115482, \"sha256\": \"693c6b38c68847f4777e0ebc1990417d6c7d01e79461f45af10d216686ed7b12\", \"type\": \"regular\"}, \"output.v2\": {\"bytes\": 181, \"device\": 64512, \"inode\": 115478, \"sha256\": \"696ed0359daa9dbcb177380a977d746749c2ab33682681e5b4e5fd682e36061d\", \"type\": \"regular\"}, \"owner.v2\": {\"bytes\": 415, \"device\": 64512, \"inode\": 115441, \"sha256\": \"b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\", \"type\": \"regular\"}, \"pin.v2\": {\"bytes\": 188, \"device\": 64512, \"inode\": 115481, \"sha256\": \"46dfbb81b495f124e89cc4dbf42bfab1ed8929f18ef69ea0d5ec735726d0437b\", \"type\": \"regular\"}, \"prepared.v2\": {\"bytes\": 153, \"device\": 64512, \"inode\": 115490, \"sha256\": \"3b32e056920ad09693be61b8f89b722818783d5e5fca3284ebcf70ebcf700475\", \"type\": \"regular\"}, \"revoked.v2\": {\"bytes\": 151, \"device\": 64512, \"inode\": 115501, \"sha256\": \"0095799ca0589166f2c3c39cd814898a61b5502017cc76d2ff7a2165d05c343c\", \"type\": \"regular\"}, \"source.v2\": {\"bytes\": 185, \"device\": 64512, \"inode\": 115455, \"sha256\": \"5924cdf97f22dc8e5a092b7154e06cc1102db2a5a7acfc2e9cf49e9b59d33fea\", \"type\": \"regular\"}, \"terminal.v2\": {\"bytes\": 552, \"device\": 64512, \"inode\": 115489, \"sha256\": \"9ededec7b09d6bb5153b15f08d4f391910a722267d1b1844b35102098936d3cf\", \"type\": \"regular\"}}}",
+        "cleaned.v2": "ownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\nterminalHash=9ededec7b09d6bb5153b15f08d4f391910a722267d1b1844b35102098936d3cf\n",
+        "cleanup-intent.v2": "ownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\nterminalHash=9ededec7b09d6bb5153b15f08d4f391910a722267d1b1844b35102098936d3cf\n",
+        "consumer.guard": "",
+        "delivered.v2": "ownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\npinHash=46dfbb81b495f124e89cc4dbf42bfab1ed8929f18ef69ea0d5ec735726d0437b\n",
+        "output.v2": "bytes=0\ndevice=64512\ninode=115457\nownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\nsha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+        "owner.v2": "assetId=f7dc4e02-e7b5-4668-b12f-923cd44d6a77\nattemptId=e95e3eb2-2e44-4864-bd56-f89dafa63a0b\ndecoderPolicy=libjpeg-turbo-3.2.0-e01-strict-v1\ngeneration=m10-worker-review-0cd29ab2-dbf0-4791-bae0-2049d3ff5934\nguardDevice=64512\nguardInode=115440\nnonce=4ee73b06-8a54-4d46-932f-a1e0e8f14226\nnormalizationPolicy=m10-jpeg-normalize-v1\nprotocol=lithic-m10-jpeg-stage\nsessionId=f4806193-a155-4c5e-b34e-bfbac68e9712\nversion=2\n",
+        "pin.v2": "ownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\npid=6617\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstartTicks=177649\nuid=10077\n",
+        "prepared.v2": "ownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\nterminalHash=9ededec7b09d6bb5153b15f08d4f391910a722267d1b1844b35102098936d3cf\n",
+        "revoked.v2": "ownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\nreasonHash=611496f412cac947be720d17a0ee6d7463221d14731fbc18244756271e8f5189\n",
+        "source.v2": "bytes=59334\ndevice=64512\ninode=115453\nownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\nsha256=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\n",
+        "terminal.v2": "binderDead=true\nconnectionCleaned=true\ndecoderDestroyed=true\nheight=256\nmatchingProcessDead=true\noutcome=SUCCESS\noutputBytes=51408\noutputDevice=64512\noutputFdClosed=true\noutputInode=115457\noutputSha=cf2ad0fbdca610c17f65935ab06f794856e8c4fea8482565b9842fc51cab874d\nownerHash=b5aa1172d6a74cb4f3399681d119f3df6ce188a0fa8171bf2eabcc65e64266b5\npinHash=46dfbb81b495f124e89cc4dbf42bfab1ed8929f18ef69ea0d5ec735726d0437b\nresultCount=1\nsourceFdClosed=true\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstrictFinished=true\nwidth=256\n"
+      }
+    },
+    "m10-worker-review-84dd4152-d2af-4da0-9936-96f271d3d784": {
+      "asset": "07b82c96-955f-426c-9969-2692bbbdf424",
+      "namespaceGuard": {
+        "bytes": 0,
+        "device": 64512,
+        "inode": 123017,
+        "type": "regular"
+      },
+      "records": {
+        "__metadata__": "{\"complete\": true, \"entries\": {\"cleaned.v2\": {\"bytes\": 153, \"device\": 64512, \"inode\": 123022, \"sha256\": \"d06ec6336d89de011d233fb3b428d46cf4fc1d4724f2dc12d36e8579343e1bc5\", \"type\": \"regular\"}, \"cleanup-intent.v2\": {\"bytes\": 153, \"device\": 64512, \"inode\": 123034, \"sha256\": \"d06ec6336d89de011d233fb3b428d46cf4fc1d4724f2dc12d36e8579343e1bc5\", \"type\": \"regular\"}, \"consumer.guard\": {\"bytes\": 0, \"device\": 64512, \"inode\": 123020, \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"sha256Origin\": \"DERIVED_FROM_VERIFIED_ZERO_LENGTH_NO_CONTENT_READ\", \"type\": \"regular\"}, \"delivered.v2\": {\"bytes\": 148, \"device\": 64512, \"inode\": 123028, \"sha256\": \"c3235bd5f057ad8dad6a8cc150941680f2a9e276d92c915c720e5488a814ccee\", \"type\": \"regular\"}, \"output.v2\": {\"bytes\": 181, \"device\": 64512, \"inode\": 123025, \"sha256\": \"8f10c81333ea621a1e6d008467e5d262d0559400d33936c2a4a361f050f8e2d3\", \"type\": \"regular\"}, \"owner.v2\": {\"bytes\": 415, \"device\": 64512, \"inode\": 123021, \"sha256\": \"783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\", \"type\": \"regular\"}, \"pin.v2\": {\"bytes\": 188, \"device\": 64512, \"inode\": 123027, \"sha256\": \"d5b087df3c49a2cbb509e7a76a0918e1c00e807e4c98be24d25aa370b11b82ff\", \"type\": \"regular\"}, \"revoked.v2\": {\"bytes\": 151, \"device\": 64512, \"inode\": 123029, \"sha256\": \"a7f06b6ea3779d8a45d40b34732ee7c7f903ec4ad8dd274b6b4e46dab021a837\", \"type\": \"regular\"}, \"source.v2\": {\"bytes\": 185, \"device\": 64512, \"inode\": 123023, \"sha256\": \"9b40fe1239d25d3189c174b97f67547c70ec41fbea8651bb6acb03b612cc5193\", \"type\": \"regular\"}, \"terminal.v2\": {\"bytes\": 489, \"device\": 64512, \"inode\": 123033, \"sha256\": \"11e8b6a3fef2e4307361f4c7bd2e8b294202afc00734c340e532f4643c29d470\", \"type\": \"regular\"}}}",
+        "cleaned.v2": "ownerHash=783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\nterminalHash=11e8b6a3fef2e4307361f4c7bd2e8b294202afc00734c340e532f4643c29d470\n",
+        "cleanup-intent.v2": "ownerHash=783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\nterminalHash=11e8b6a3fef2e4307361f4c7bd2e8b294202afc00734c340e532f4643c29d470\n",
+        "consumer.guard": "",
+        "delivered.v2": "ownerHash=783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\npinHash=d5b087df3c49a2cbb509e7a76a0918e1c00e807e4c98be24d25aa370b11b82ff\n",
+        "output.v2": "bytes=0\ndevice=64512\ninode=123024\nownerHash=783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\nsha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+        "owner.v2": "assetId=07b82c96-955f-426c-9969-2692bbbdf424\nattemptId=878d3544-05fb-462a-9f19-b08ace2e7041\ndecoderPolicy=libjpeg-turbo-3.2.0-e01-strict-v1\ngeneration=m10-worker-review-84dd4152-d2af-4da0-9936-96f271d3d784\nguardDevice=64512\nguardInode=123020\nnonce=aa4ff9b9-c130-4e1b-a9f1-7de0e422b603\nnormalizationPolicy=m10-jpeg-normalize-v1\nprotocol=lithic-m10-jpeg-stage\nsessionId=fd71b830-e3d5-4fbe-ab66-f9d34131eb9c\nversion=2\n",
+        "pin.v2": "ownerHash=783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\npid=7483\nsourceHash=f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a\nstartTicks=204264\nuid=10077\n",
+        "revoked.v2": "ownerHash=783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\nreasonHash=7fde55b8a8acb4afa45ba9966dd9c81ace7954a03a54f44d12dc0f98186d6299\n",
+        "source.v2": "bytes=20194\ndevice=64512\ninode=123022\nownerHash=783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\nsha256=f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a\n",
+        "terminal.v2": "binderDead=true\nconnectionCleaned=true\ndecoderDestroyed=true\nheight=none\nmatchingProcessDead=true\noutcome=IMAGE\noutputBytes=none\noutputDevice=none\noutputFdClosed=true\noutputInode=none\noutputSha=none\nownerHash=783c98e954d9b8119fb3834d6d830ea50c32d4c36d39be5ef7ad4fd8ca5cc8b4\npinHash=d5b087df3c49a2cbb509e7a76a0918e1c00e807e4c98be24d25aa370b11b82ff\nresultCount=1\nsourceFdClosed=true\nsourceHash=f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a\nstrictFinished=false\nwidth=none\n"
+      }
+    }
+  },
+  "status": "PASS",
+  "uid": 10077
+}

@@ -55,7 +55,10 @@ def normal_exit(supervisor, evidence_api=None):
                          "matchingProcessesBefore": targets, "after": last,
                          "portsClosed": [supervisor.port, supervisor.port + 1],
                          "command": "targeted emulator-console normal exit", "appKill": False}
-                immutable(supervisor.home / "normal-exit-proof.json", proof)
+                if hasattr(supervisor, "campaign_id"):
+                    proof["campaignId"] = supervisor.campaign_id
+                immutable(getattr(supervisor, "normal_exit_proof_path",
+                                  supervisor.home / "normal-exit-proof.json"), proof)
                 return proof
         time.sleep(1)
     raise RuntimeError("Normal exit OS proof UNKNOWN; preserve state and block API36")
