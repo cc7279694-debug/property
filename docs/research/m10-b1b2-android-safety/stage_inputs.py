@@ -1,6 +1,7 @@
 """One-shot, root-invoked transfer of three locked synthetic B2 inputs.
 
-No APK, private ledger, image discovery, consumer, deletion or retry entry.
+No APK, private ledger, image discovery, consumer, deletion or automatic retry.
+The explicit source-scoped mainline claim never reuses an older consumed claim.
 The only device writes are fresh files beneath this task's new target package.
 """
 from __future__ import annotations
@@ -22,6 +23,9 @@ LOCKED_SHA = (
     "2b02f35f08a8cb36d31a0a4f01e8810f554be67619950c8e2b0d0d2be873c5c8",
     "0555234207d5ddf84d236d812487a659f2dac34a9d82109a941628553c7b67e6",
 )
+LOCKED_BYTES = (17163380, 15458857, 27445246)
+MAINLINE_SOURCE = "45c77007218f8d4e54f43b318c9a3c22c057c90d"
+MAINLINE_CLAIM = "input-transfer-mainline-45c77007218f"
 
 
 def selected_inputs(audit):
@@ -41,12 +45,45 @@ def private_path(name):
     return DESTINATION + "/" + name
 
 
-def claim_transfer(supervisor):
+def mainline_admission(supervisor, identity, boot_id, boot_count, uid, test_uid, rows):
+    """Bind the separately authorized transfer to real current identity observations."""
+    binding = supervisor.binding()
+    need(isinstance(identity, dict) and identity.get("status") == "PASS" and
+         all(identity.get(k) == v for k, v in binding.items()) and
+         identity.get("runtimePaths", {}).get("status") == "PASS" and
+         identity.get("processIdentityProof", {}).get("status") == "PASS",
+         "Mainline transfer runtime identity is incomplete/conflicting")
+    need(isinstance(boot_id, str) and re.fullmatch(r"[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}", boot_id) and
+         isinstance(boot_count, str) and re.fullmatch(r"0|[1-9][0-9]*", boot_count) and
+         type(uid) is int and type(test_uid) is int and 0 < uid < 2 ** 31 and
+         0 < test_uid < 2 ** 31 and uid != test_uid,
+         "Mainline transfer boot/User 0 UID proof missing")
+    inputs = [{"basename": row.get("basename"), "bytes": row.get("bytes"), "sha256": row.get("sha256")} for row in rows]
+    expected = [{"basename": name, "bytes": size, "sha256": sha} for name, size, sha in zip(NAMES, LOCKED_BYTES, LOCKED_SHA)]
+    need(inputs == expected, "Mainline fixed input bytes/SHA conflict")
+    return {"sourceCommit": MAINLINE_SOURCE, "identity": identity, "bootId": boot_id,
+            "bootCount": boot_count, "appUID": uid, "testUID": test_uid,
+            "appSHA256": APP_SHA, "testSHA256": TEST_SHA, "inputs": inputs}
+
+
+def validate_mainline_admission(supervisor, value):
+    need(isinstance(value, dict), "Mainline transfer admission missing")
+    expected = mainline_admission(supervisor, value.get("identity"), value.get("bootId"),
+        value.get("bootCount"), value.get("appUID"), value.get("testUID"), value.get("inputs", []))
+    need(value == expected, "Mainline transfer source/APK/boot admission conflicts")
+    return expected
+
+
+def claim_transfer(supervisor, *, mainline_admission=None):
     supervisor.scope()
-    directory = supervisor.evidence / "input-transfer"
+    extra = {}
+    if mainline_admission is not None:
+        admission = validate_mainline_admission(supervisor, mainline_admission)
+        extra = {"mainlineSourceCommit": MAINLINE_SOURCE, "mainlineAdmission": admission}
+    directory = supervisor.evidence / (MAINLINE_CLAIM if extra else "input-transfer")
     directory.mkdir(exist_ok=False)
     immutable(directory / "attempt.json", {**supervisor.binding(), "utc": utc(),
-              "operation": "FRESH_B2_INPUT_TRANSFER", "automaticRetry": False, "inputBasenames": NAMES})
+              "operation": "FRESH_B2_INPUT_TRANSFER", "automaticRetry": False, "inputBasenames": NAMES, **extra})
     return directory
 
 
@@ -58,7 +95,8 @@ def ensure_owned_input_parent(supervisor, uid, claim):
     """
     supervisor.scope()
     need(type(uid) is int and 0 < uid < 2 ** 31 and
-         claim == supervisor.evidence / "input-transfer" and claim.is_dir() and not claim.is_symlink(),
+         claim.name in ("input-transfer", MAINLINE_CLAIM) and
+         claim == supervisor.evidence / claim.name and claim.is_dir() and not claim.is_symlink(),
          "Input parent lacks its exclusive transfer claim")
     marker = claim / "attempt.json"
     done = claim / "result.json"
@@ -67,12 +105,26 @@ def ensure_owned_input_parent(supervisor, uid, claim):
     value = json.loads(marker.read_text(encoding="utf-8"))
     expected = {**supervisor.binding(), "operation": "FRESH_B2_INPUT_TRANSFER",
                 "automaticRetry": False, "inputBasenames": list(NAMES)}
+    admission = None
+    if claim.name == MAINLINE_CLAIM:
+        admission = validate_mainline_admission(supervisor, value.get("mainlineAdmission"))
+        need(admission["appUID"] == uid, "Mainline input parent UID conflicts")
+        expected.update(mainlineSourceCommit=MAINLINE_SOURCE, mainlineAdmission=admission)
     need(set(value) == set(expected) | {"utc"} and all(value.get(k) == v for k, v in expected.items()) and
          isinstance(value.get("utc"), str) and value["utc"], "Transfer claim identity conflicts")
+    if admission is not None:
+        need(supervisor.adb("shell", "cat", "/proc/sys/kernel/random/boot_id") == admission["bootId"],
+             "Mainline transfer boot changed before parent preparation")
+        need(supervisor.adb("shell", "settings", "get", "global", "boot_count") == admission["bootCount"],
+             "Mainline BOOT_COUNT changed before parent preparation")
     root = "/data/user/0/" + APP
+    alias = "/data/data/" + APP
     script = ("set -e; umask 077; "
-              f"[ \"$(id -u)\" = '{uid}' ]; [ \"$(pwd -P)\" = '{root}' ]; "
+              f"[ \"$(id -u)\" = '{uid}' ]; case \"$(pwd -P)\" in '{root}'|'{alias}') ;; *) exit 1 ;; esac; "
               f"[ -d . ]; [ \"$(stat -c '%u' .)\" = '{uid}' ]; "
+              "root_meta=$(stat -c '%f:%u:%d:%i' .); "
+              f"[ \"$root_meta\" = \"$(stat -c '%f:%u:%d:%i' '{root}')\" ]; "
+              f"[ \"$root_meta\" = \"$(stat -c '%f:%u:%d:%i' '{alias}')\" ]; "
               "printf 'M10_INPUT_PARENT_BEGIN\\n'; stat -c 'ROOT_B|%f:%u:%d:%i' .; "
               "[ ! -L files ]; "
               "if [ -e files ]; then [ -d files ]; stat -c 'FILES_B|%f:%u:%d:%i' files; state=EXISTING; "
@@ -109,9 +161,10 @@ def ensure_owned_input_parent(supervisor, uid, claim):
             "root": root_after, "parent": parent, "scope": "OWNED_SYNTHETIC_TEST_PACKAGE_ONLY"}
 
 
-def transfer(api):
+def transfer(api, *, mainline=False):
+    need(type(mainline) is bool, "Mainline transfer requires explicit authorization selector")
     s = FreshSupervisor(api)
-    s.identity()
+    identity = s.identity()
     uid = s.installed(APP, APP_SHA)
     s.apk_audit()
     proof = s.require_proof(s.home / "install-test-proof.json")
@@ -126,7 +179,12 @@ def transfer(api):
         path = Path(row["path"])
         need(path.is_absolute() and file_digest(path, row["bytes"]) == row["sha256"],
              "Locked synthetic source changed")
-    directory = claim_transfer(s)
+    admission = None
+    if mainline:
+        admission = mainline_admission(s, identity,
+            s.adb("shell", "cat", "/proc/sys/kernel/random/boot_id"),
+            s.adb("shell", "settings", "get", "global", "boot_count"), uid, test_uid, rows)
+    directory = claim_transfer(s, mainline_admission=admission)
     result = {"status": "UNKNOWN", "source": "LOCKED_SYNTHETIC_NOT_USER_IMAGES", "files": []}
     try:
         worker = s.adb("shell", "pidof", APP + ":jpeg_worker", allowed=(0, 1))
@@ -179,5 +237,6 @@ def transfer(api):
 
 
 if __name__ == "__main__":
-    need(len(sys.argv) == 2 and sys.argv[1] in ("26", "36"), "Only an explicit fresh API target is supported")
-    print(json.dumps(transfer(int(sys.argv[1])), sort_keys=True))
+    need(len(sys.argv) in (2, 3) and sys.argv[1] in ("26", "36") and
+         (len(sys.argv) == 2 or sys.argv[2] == "--mainline"), "Only an explicit fresh API and fixed mainline selector are supported")
+    print(json.dumps(transfer(int(sys.argv[1]), mainline=len(sys.argv) == 3), sort_keys=True))

@@ -1,0 +1,61 @@
+{
+  "status": "PROSPECTIVE_FIX_ANDROID_NOT_RUN",
+  "sourceCommit": "45c77007218f8d4e54f43b318c9a3c22c057c90d",
+  "confirmedCause": "Actual pwd -P is /data/data/com.cooper.lithic.debug; previous exact /data/user/0 predicate rejects it before any directory/image write. Actual CWD/USER0/DATA mode,UID,device,inode all equal.",
+  "change": "Only the two exact App roots are accepted; full CWD == USER0 == DATA stat identities and actual UID required before parent preparation. Six-line success protocol unchanged.",
+  "newMethods": 4,
+  "red": {
+    "raw": "input-alias-red.raw",
+    "tests": 4,
+    "failures": 2
+  },
+  "green": {
+    "raw": "input-alias-green.raw",
+    "tests": 4,
+    "failures": 0
+  },
+  "relatedRegressions": {
+    "mainlineClaim": 6,
+    "privateParent": 5,
+    "originalLockedInputs": 4
+  },
+  "runScope": "HOST_GIT_BASH_REAL_PREFIX_WITH_STUBBED_COMMAND_RETURNS_USING_LOCKED_REAL_ANDROID_METADATA_NOT_ANDROID_MKDIR_PASS",
+  "deviceCallsByAgent": 0,
+  "transferRetry": 0,
+  "oldUnknown": "PRESERVED",
+  "newConsumedMainlineUnknown": "PRESERVED_NO_NEW_CLAIM_OR_RETRY_CREATED",
+  "sourceSHA256": "2249d96e95768cd8b7593417edb919f075ebd0aff45da46fd990634303aaf64d",
+  "testSHA256": "4b38d9b6d1192abaf7b8e9b820b4981abcb75ebac354e76faa401c4de5207b18",
+  "lockedActualFixtures": {
+    "mainline-parent-alias-readonly.json": {
+      "bytes": 8065,
+      "sha256": "af9ab883bdc551374dd3f22f972ce0152799bd99483c4326804d6d53bf080d54"
+    },
+    "failed-parent-command.json": {
+      "bytes": 1290,
+      "sha256": "e3f7a5b9f80eac71b0039def8024fda34a78a591eb5e336456983f45e589f12e"
+    }
+  },
+  "rawEvidence": {
+    "input-alias-green.raw": {
+      "bytes": 855,
+      "sha256": "f228f458a96420b92ab1b7c4cd09a57443eea7464bbf8853b320b81c1a483476"
+    },
+    "input-alias-red.raw": {
+      "bytes": 2839,
+      "sha256": "1797672c23611b939ca3b721ba5ad61ff7d7578d713afe485efb0852a96caafd"
+    },
+    "input-locked-alias-regression4.raw": {
+      "bytes": 717,
+      "sha256": "ad49dbdf0b91c215dea0b36e13717d6c2fbdb9b10566ba2567d403f9beeecd6c"
+    },
+    "input-parent-alias-regression5.raw": {
+      "bytes": 920,
+      "sha256": "e98abf63586e3a7ca0f8161846d075e004f3bfa605cff88920d358efa1d44c79"
+    },
+    "input-transfer-alias-regression6.raw": {
+      "bytes": 1125,
+      "sha256": "8f453ffdac5fb07bd9076d9039da908e18e7094d0097b3fd0283b0abb6952e23"
+    }
+  }
+}

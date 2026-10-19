@@ -1,0 +1,80 @@
+test_boot_change_stops_before_parent_write_and_wrong_claim_path_rejected (__main__.MainlineTransferTest.test_boot_change_stops_before_parent_write_and_wrong_claim_path_rejected) ... ERROR
+test_fixed_destination_and_three_complete_lengths_are_unchanged (__main__.MainlineTransferTest.test_fixed_destination_and_three_complete_lengths_are_unchanged) ... ERROR
+test_new_claim_reuses_owned_parent_check_only_after_actual_boot_match (__main__.MainlineTransferTest.test_new_claim_reuses_owned_parent_check_only_after_actual_boot_match) ... ERROR
+test_new_explicit_claim_does_not_touch_old_unknown (__main__.MainlineTransferTest.test_new_explicit_claim_does_not_touch_old_unknown) ... ERROR
+test_second_new_claim_and_legacy_unknown_are_never_reused (__main__.MainlineTransferTest.test_second_new_claim_and_legacy_unknown_are_never_reused) ... ERROR
+test_source_boot_uid_apk_fixture_and_runtime_conflicts_refuse_before_claim (__main__.MainlineTransferTest.test_source_boot_uid_apk_fixture_and_runtime_conflicts_refuse_before_claim) ... ERROR
+
+======================================================================
+ERROR: test_boot_change_stops_before_parent_write_and_wrong_claim_path_rejected (__main__.MainlineTransferTest.test_boot_change_stops_before_parent_write_and_wrong_claim_path_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 47, in test_boot_change_stops_before_parent_write_and_wrong_claim_path_rejected
+    fake,identity=self.fake(temp);new=s.claim_transfer(fake,mainline_admission=self.admission(fake,identity));fake.adb.side_effect=['22222222-2222-4222-8222-222222222222']
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 20, in admission
+    return s.mainline_admission(fake,identity,BOOT,'1',10077,10078,rows)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'mainline_stage_inputs' has no attribute 'mainline_admission'
+
+======================================================================
+ERROR: test_fixed_destination_and_three_complete_lengths_are_unchanged (__main__.MainlineTransferTest.test_fixed_destination_and_three_complete_lengths_are_unchanged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 54, in test_fixed_destination_and_three_complete_lengths_are_unchanged
+    self.assertEqual('files/m10-b2-test-inputs',s.DESTINATION);self.assertEqual((17163380,15458857,27445246),s.LOCKED_BYTES)
+                                                                                                             ^^^^^^^^^^^^^^
+AttributeError: module 'mainline_stage_inputs' has no attribute 'LOCKED_BYTES'
+
+======================================================================
+ERROR: test_new_claim_reuses_owned_parent_check_only_after_actual_boot_match (__main__.MainlineTransferTest.test_new_claim_reuses_owned_parent_check_only_after_actual_boot_match)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 43, in test_new_claim_reuses_owned_parent_check_only_after_actual_boot_match
+    fake,identity=self.fake(temp);new=s.claim_transfer(fake,mainline_admission=self.admission(fake,identity));result=s.ensure_owned_input_parent(fake,10077,new)
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 20, in admission
+    return s.mainline_admission(fake,identity,BOOT,'1',10077,10078,rows)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'mainline_stage_inputs' has no attribute 'mainline_admission'
+
+======================================================================
+ERROR: test_new_explicit_claim_does_not_touch_old_unknown (__main__.MainlineTransferTest.test_new_explicit_claim_does_not_touch_old_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 24, in test_new_explicit_claim_does_not_touch_old_unknown
+    new=s.claim_transfer(fake,mainline_admission=self.admission(fake,identity))
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 20, in admission
+    return s.mainline_admission(fake,identity,BOOT,'1',10077,10078,rows)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'mainline_stage_inputs' has no attribute 'mainline_admission'
+
+======================================================================
+ERROR: test_second_new_claim_and_legacy_unknown_are_never_reused (__main__.MainlineTransferTest.test_second_new_claim_and_legacy_unknown_are_never_reused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 29, in test_second_new_claim_and_legacy_unknown_are_never_reused
+    fake,identity=self.fake(temp);proof=self.admission(fake,identity);new=s.claim_transfer(fake,mainline_admission=proof);before=(new/'attempt.json').read_bytes()
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 20, in admission
+    return s.mainline_admission(fake,identity,BOOT,'1',10077,10078,rows)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'mainline_stage_inputs' has no attribute 'mainline_admission'
+
+======================================================================
+ERROR: test_source_boot_uid_apk_fixture_and_runtime_conflicts_refuse_before_claim (__main__.MainlineTransferTest.test_source_boot_uid_apk_fixture_and_runtime_conflicts_refuse_before_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 38, in test_source_boot_uid_apk_fixture_and_runtime_conflicts_refuse_before_claim
+    fake,identity=self.fake(temp);ad=self.admission(fake,identity);change(ad)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-resume\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_mainline_inputs.py", line 20, in admission
+    return s.mainline_admission(fake,identity,BOOT,'1',10077,10078,rows)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'mainline_stage_inputs' has no attribute 'mainline_admission'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.031s
+
+FAILED (errors=6)

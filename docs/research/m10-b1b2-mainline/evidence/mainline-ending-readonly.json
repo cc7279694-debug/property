@@ -1,0 +1,298 @@
+{
+  "avdExit": "NOT_RUN",
+  "b1": "NOT_RUN",
+  "b2": "NOT_RUN",
+  "bootCount": "1",
+  "parentDiagnosis": "UID|10077\r\nPWD|/data/data/com.cooper.lithic.debug\r\nROOT|41c0:10077:64512:115162\r\nFILES|ABSENT\r\nDEST|ABSENT\r\nEND",
+  "scope": "ENDING_READ_ONLY_AFTER_MAINLINE_INPUT_PREFLIGHT_FAILURE_NO_RETRY",
+  "snapshot": {
+    "appSHA256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+    "diagnostics": {},
+    "identity": {
+      "api": 26,
+      "appSHA256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+      "avd": "Lithic_M10B1B2_API26_20261019",
+      "base": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1",
+      "data": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd",
+      "processIdentityProof": {
+        "anchor": {
+          "processes": [
+            {
+              "created": [
+                1792398979,
+                588656000
+              ],
+              "expectedExecutable": "e:\\codex\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+              "name": "emulator.exe",
+              "parentPid": 5304,
+              "pid": 40472,
+              "role": "launcher"
+            },
+            {
+              "created": [
+                1792398980,
+                253624000
+              ],
+              "expectedExecutable": "e:\\codex\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+              "name": "qemu-system-x86_64-headless.exe",
+              "parentPid": 40472,
+              "pid": 18424,
+              "role": "qemu"
+            }
+          ],
+          "spec": {
+            "argv": [
+              "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+              "-avd",
+              "Lithic_M10B1B2_API26_20261019",
+              "-port",
+              "5664",
+              "-datadir",
+              "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd",
+              "-data",
+              "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img",
+              "-cache",
+              "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img",
+              "-sysdir",
+              "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64",
+              "-no-snapshot",
+              "-no-window",
+              "-no-audio",
+              "-no-boot-anim",
+              "-memory",
+              "1536",
+              "-cores",
+              "2"
+            ],
+            "avd": "Lithic_M10B1B2_API26_20261019",
+            "launcherExe": "e:\\codex\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+            "port": 5664,
+            "qemuExe": "e:\\codex\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe"
+          },
+          "version": 1
+        },
+        "elapsedSeconds": 9.953000000001339,
+        "observations": [
+          {
+            "elapsedSeconds": 4.186999999998079,
+            "reason": "COMPLETE_IDENTITY_OBSERVED",
+            "status": "PASS"
+          },
+          {
+            "elapsedSeconds": 9.953000000001339,
+            "reason": "COMPLETE_IDENTITY_OBSERVED",
+            "status": "PASS"
+          }
+        ],
+        "reason": "TWO_COMPLETE_MATCHING_OBSERVATIONS",
+        "scope": "CURRENT_READ_ONLY_WINDOWS_IDENTITY",
+        "snapshot": {
+          "emulatorProcessCount": 4,
+          "freeKiB": 2354988,
+          "ports": [
+            {
+              "LocalAddress": "::1",
+              "LocalPort": 5665,
+              "OwningProcess": 18424
+            },
+            {
+              "LocalAddress": "::1",
+              "LocalPort": 5664,
+              "OwningProcess": 18424
+            },
+            {
+              "LocalAddress": "127.0.0.1",
+              "LocalPort": 5665,
+              "OwningProcess": 18424
+            },
+            {
+              "LocalAddress": "127.0.0.1",
+              "LocalPort": 5664,
+              "OwningProcess": 18424
+            }
+          ],
+          "targets": [
+            {
+              "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe -avd Lithic_M10B1B2_API26_20261019 -port 5664 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+              "CreationDate": "2026-10-19T08:36:19.5886560Z",
+              "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\emulator.exe",
+              "Name": "emulator.exe",
+              "ParentProcessId": 5304,
+              "ProcessId": 40472
+            },
+            {
+              "CommandLine": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M10B1B2_API26_20261019 -port 5664 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img -sysdir E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+              "CreationDate": "2026-10-19T08:36:20.2536240Z",
+              "ExecutablePath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+              "Name": "qemu-system-x86_64-headless.exe",
+              "ParentProcessId": 40472,
+              "ProcessId": 18424
+            }
+          ],
+          "totalKiB": 16648500,
+          "utc": "2026-10-19T13:34:19.2289251Z"
+        },
+        "status": "PASS",
+        "windowSeconds": 30
+      },
+      "runtimePaths": {
+        "hardwareConfigIntegrity": {
+          "bytes": 4653,
+          "sha256": "93da32940240a2dad71b03f9802e9543fa8ba90d5d70f0e6607deeb642eefa49"
+        },
+        "officialHardwareSchemaSHA256": "13a89cc7cfa84c5fe48cd7eb8d296bca321dcd0d90f7bcb751efd963ae2c653d",
+        "paths": {
+          "disk.cachePartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\cache.img",
+          "disk.dataPartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\userdata-qemu.img",
+          "disk.encryptionKeyPartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-b1b2-20261019-v1\\api26\\data\\Lithic_M10B1B2_API26_20261019.avd\\encryptionkey.img",
+          "disk.ramdisk.path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\ramdisk.img",
+          "disk.systemPartition.initPath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\system.img",
+          "disk.vendorPartition.initPath": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\vendor.img",
+          "kernel.path": "E:\\CODEX\\.codex\\research-env\\lithic-a2r-api26\\sdk\\system-images\\android-26\\google_apis\\x86_64\\kernel-ranchu"
+        },
+        "runtimeIdentity": "Lithic_M10B1B2_API26_20261019",
+        "status": "PASS",
+        "temporaryPaths": "NO_UNRESOLVED_WRITABLE_PATH_ACCEPTED"
+      },
+      "serial": "emulator-5664",
+      "sourceCommit": "08ce4b663b52127f400fa18bd13eb12fe04a8797",
+      "status": "PASS"
+    },
+    "observations": {
+      "worker-review-result-1cafdcf6-aad8-42b9-9932-68de9cc04baa.json": {
+        "metadata": {
+          "bytes": 642,
+          "device": 64512,
+          "inode": 122956,
+          "links": 1,
+          "sha256": "b5feba2f058ecffcd4525fdd62dfb2d81f0fcec113d93fe07cb66fb991c39ec8",
+          "type": "regular",
+          "uid": 10077
+        },
+        "value": {
+          "attempt": "6483a1f9-9820-4f61-a7cf-b49380c8d86e",
+          "binderDead": true,
+          "connectionCleaned": true,
+          "decoderDestroyed": true,
+          "detail": "STRICT_FINISHED_NORMALIZED",
+          "generation": "m10-worker-review-ddfb0f81-481f-45ce-994a-d779b29caa4b",
+          "guardReleased": true,
+          "hostPid": 7128,
+          "hostUid": 10077,
+          "matchingProcessDead": true,
+          "outcome": "SUCCESS",
+          "outputClosed": true,
+          "pinBeforeDelivery": true,
+          "resultCount": 1,
+          "safeCleanup": false,
+          "session": "0a96fead-72ee-465d-8387-c105745ae715",
+          "sourceClosed": true,
+          "strictFinished": true,
+          "workerPid": 7154,
+          "workerStartTicks": 668444,
+          "workerUid": 10077
+        }
+      },
+      "worker-review-terminal-25d62a73-7a3c-4c94-bb04-bbb1dcc83c4a.json": {
+        "metadata": {
+          "bytes": 641,
+          "device": 64512,
+          "inode": 122936,
+          "links": 1,
+          "sha256": "94349f486fc4bfbd2816bcafccc3d705308615dc0b0d2e201db0edd4e3aa1952",
+          "type": "regular",
+          "uid": 10077
+        },
+        "value": {
+          "attempt": "6483a1f9-9820-4f61-a7cf-b49380c8d86e",
+          "binderDead": true,
+          "connectionCleaned": true,
+          "decoderDestroyed": true,
+          "detail": "STRICT_FINISHED_NORMALIZED",
+          "generation": "m10-worker-review-ddfb0f81-481f-45ce-994a-d779b29caa4b",
+          "guardReleased": true,
+          "hostPid": 7128,
+          "hostUid": 10077,
+          "matchingProcessDead": true,
+          "outcome": "SUCCESS",
+          "outputClosed": true,
+          "pinBeforeDelivery": true,
+          "resultCount": 1,
+          "safeCleanup": true,
+          "session": "0a96fead-72ee-465d-8387-c105745ae715",
+          "sourceClosed": true,
+          "strictFinished": true,
+          "workerPid": 7154,
+          "workerStartTicks": 668444,
+          "workerUid": 10077
+        }
+      }
+    },
+    "processes": {
+      "complete": true,
+      "rawBytes": 4142,
+      "rawSHA256": "525a3f5dbc818bcab8f0fe6b59243495ba525df1673a17f80e11affaa98fec6e",
+      "rows": [],
+      "uid": 10077,
+      "worker_absent": true
+    },
+    "safety": {
+      "5d5131cc-071f-4857-be43-c6c6a4187f06": {
+        "children": [
+          "attempt.json",
+          "result.json"
+        ],
+        "files": {
+          "attempt.json": {
+            "bytes": 390,
+            "device": 64512,
+            "inode": 115488,
+            "links": 1,
+            "type": "regular",
+            "uid": 10077
+          },
+          "result.json": {
+            "bytes": 2439,
+            "device": 64512,
+            "inode": 115490,
+            "links": 1,
+            "type": "regular",
+            "uid": 10077
+          }
+        }
+      }
+    },
+    "stages": {
+      "m10-worker-review-ddfb0f81-481f-45ce-994a-d779b29caa4b": {
+        "asset": "15fcc610-1f0a-4f58-881e-ad6ff6b38bfc",
+        "namespaceGuard": {
+          "bytes": 0,
+          "device": 64512,
+          "inode": 122902,
+          "links": 1,
+          "type": "regular",
+          "uid": 10077
+        },
+        "records": {
+          "__metadata__": "{\"complete\": true, \"entries\": {\"cleaned.v2\": {\"bytes\": 153, \"device\": 64512, \"inode\": 122907, \"links\": 1, \"sha256\": \"f1b9a52984988917436af0466ee1329354776ea7e07e9375ef11d236a2f21186\", \"type\": \"regular\", \"uid\": 10077}, \"cleanup-intent.v2\": {\"bytes\": 153, \"device\": 64512, \"inode\": 122962, \"links\": 1, \"sha256\": \"f1b9a52984988917436af0466ee1329354776ea7e07e9375ef11d236a2f21186\", \"type\": \"regular\", \"uid\": 10077}, \"consumer.guard\": {\"bytes\": 0, \"device\": 64512, \"inode\": 122904, \"links\": 1, \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"type\": \"regular\", \"uid\": 10077}, \"delivered.v2\": {\"bytes\": 148, \"device\": 64512, \"inode\": 122939, \"links\": 1, \"sha256\": \"65697fcaf906662638cc2a2234c646868163b2b7ea2e1868405366e1fd8a4851\", \"type\": \"regular\", \"uid\": 10077}, \"output.v2\": {\"bytes\": 181, \"device\": 64512, \"inode\": 122937, \"links\": 1, \"sha256\": \"b735e953f4a12f5736790b41c687845bb69beed90335eb9b8a64a6a311ba4793\", \"type\": \"regular\", \"uid\": 10077}, \"owner.v2\": {\"bytes\": 415, \"device\": 64512, \"inode\": 122906, \"links\": 1, \"sha256\": \"b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\", \"type\": \"regular\", \"uid\": 10077}, \"pin.v2\": {\"bytes\": 188, \"device\": 64512, \"inode\": 122938, \"links\": 1, \"sha256\": \"02607efd7916e9ce0fc9e584c3ff4cd7c0221dc9faf1d5e75403f227a9487b31\", \"type\": \"regular\", \"uid\": 10077}, \"prepared.v2\": {\"bytes\": 153, \"device\": 64512, \"inode\": 122959, \"links\": 1, \"sha256\": \"f1b9a52984988917436af0466ee1329354776ea7e07e9375ef11d236a2f21186\", \"type\": \"regular\", \"uid\": 10077}, \"revoked.v2\": {\"bytes\": 151, \"device\": 64512, \"inode\": 122961, \"links\": 1, \"sha256\": \"0e74d3199fa478dcaff6b48a4b24f0b97bcb234f9e2eb6e7ec1238f56f93a2af\", \"type\": \"regular\", \"uid\": 10077}, \"source.v2\": {\"bytes\": 185, \"device\": 64512, \"inode\": 122914, \"links\": 1, \"sha256\": \"2a149603620b029cc5b4be9f8a169695626d1466f4c1642d9accd958af9a8073\", \"type\": \"regular\", \"uid\": 10077}, \"terminal.v2\": {\"bytes\": 552, \"device\": 64512, \"inode\": 122957, \"links\": 1, \"sha256\": \"0c9a57b60a8dc4a566b71793eb00a32b424ff6afd3c57867eddadb12e3695f57\", \"type\": \"regular\", \"uid\": 10077}}}",
+          "cleaned.v2": "ownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\nterminalHash=0c9a57b60a8dc4a566b71793eb00a32b424ff6afd3c57867eddadb12e3695f57\n",
+          "cleanup-intent.v2": "ownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\nterminalHash=0c9a57b60a8dc4a566b71793eb00a32b424ff6afd3c57867eddadb12e3695f57\n",
+          "consumer.guard": "",
+          "delivered.v2": "ownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\npinHash=02607efd7916e9ce0fc9e584c3ff4cd7c0221dc9faf1d5e75403f227a9487b31\n",
+          "output.v2": "bytes=0\ndevice=64512\ninode=122936\nownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\nsha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+          "owner.v2": "assetId=15fcc610-1f0a-4f58-881e-ad6ff6b38bfc\nattemptId=6483a1f9-9820-4f61-a7cf-b49380c8d86e\ndecoderPolicy=libjpeg-turbo-3.2.0-e01-strict-v1\ngeneration=m10-worker-review-ddfb0f81-481f-45ce-994a-d779b29caa4b\nguardDevice=64512\nguardInode=122904\nnonce=2d41dfa6-3cca-47dd-8e94-2593f4ddbe79\nnormalizationPolicy=m10-jpeg-normalize-v1\nprotocol=lithic-m10-jpeg-stage\nsessionId=0a96fead-72ee-465d-8387-c105745ae715\nversion=2\n",
+          "pin.v2": "ownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\npid=7154\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstartTicks=668444\nuid=10077\n",
+          "prepared.v2": "ownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\nterminalHash=0c9a57b60a8dc4a566b71793eb00a32b424ff6afd3c57867eddadb12e3695f57\n",
+          "revoked.v2": "ownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\nreasonHash=611496f412cac947be720d17a0ee6d7463221d14731fbc18244756271e8f5189\n",
+          "source.v2": "bytes=59334\ndevice=64512\ninode=122907\nownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\nsha256=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\n",
+          "terminal.v2": "binderDead=true\nconnectionCleaned=true\ndecoderDestroyed=true\nheight=256\nmatchingProcessDead=true\noutcome=SUCCESS\noutputBytes=51408\noutputDevice=64512\noutputFdClosed=true\noutputInode=122936\noutputSha=cf2ad0fbdca610c17f65935ab06f794856e8c4fea8482565b9842fc51cab874d\nownerHash=b0e4aab3367a3cac919b628e2bfe10ae74d088628da8d1b768e9de79d83fb48e\npinHash=02607efd7916e9ce0fc9e584c3ff4cd7c0221dc9faf1d5e75403f227a9487b31\nresultCount=1\nsourceFdClosed=true\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstrictFinished=true\nwidth=256\n"
+        },
+        "remainingPayloadMetadata": {}
+      }
+    },
+    "testSHA256": "37ad9ec91964b6a0b8a870ec35032164ebcdb6a1c41522e780cb7af343fcd338",
+    "testUID": 10078,
+    "uid": 10077
+  },
+  "status": "PASS_READ_ONLY_ENDING_NOT_EXPERIMENT_PASS"
+}

@@ -1,8 +1,18 @@
 # 当前项目状态
 
-状态日期：2026-10-19（Asia/Shanghai；B1/B2 Android安全续验BLOCKED，输入准备UNKNOWN；M10仍PENDING）。本文件为唯一当前状态，历史证据不改写。
+状态日期：2026-10-19（Asia/Shanghai；B1/B2主线续验BLOCKED，新传输claim路径别名检查UNKNOWN；M10仍PENDING）。本文件为唯一当前状态，历史证据不改写。
 
 ## Current Stage
+
+- **M10 B1/B2 MAINLINE — BLOCKED / WAITING_CHATGPT_REVIEW**：从`45c77007218f8d4e54f43b318c9a3c22c057c90d`继续同分支`codex/m10-b1b2-android-safety-resume`和隔离worktree。仅输入监督器/目标宿主测试及必要证据文档变化；App/Test及正式业务不改，不重建环境/安装APK，不重复旧18项自然测试。
+- **实际准入**：原API26 launcher40472/QEMU18424创建身份、路径端口、boot/API/ABI及App/Test字节与UID10077/10078核验PASS；只有上一健康terminal Stage，无活动Worker/未知消费者。新的固定`input-transfer-mainline-45c77007218f`绑定当前设备/boot/APK/UID及三固定输入，仅执行一次。
+- **真实阻塞**：新claim在父目录创建前exit1，UNKNOWN/files=[]。实际pwd为`/data/data/com.cooper.lithic.debug`，旧helper硬要求`/data/user/0/...`；一次只读双路径对照确认与cwd同`41c0:10077:64512:115162`且最终App目录非链接。仅离线修正严格别名身份验证，Android写入分支仍NOT_RUN；旧/新已消费claim不覆盖、不重试。B2三图/B1全部异常与恢复/API36均NOT_RUN，无本轮40MP资源数据。
+- **本轮操作与结束**：新建claim1，图片上传0；AVD创建/启动0，App/Test安装各0，JUnit0，故障终止0，正常退出0。API26仍同实例运行，目标UID无Host/Worker；唯一健康Stage及原预检记录未变，输入父/目标目录ABSENT。原未入Git journal和原始证据保留，不访问H2/C2或其他旧AVD。
+- **下一步执行阻塞**：先独立审阅真实别名证据及最小修正，再明确新传输续接边界；不能重用本次UNKNOWN。正式冻结仍缺B1异常/B2资源系统实证，不能登记M10通过。见[唯一简短报告](research/M10_B1B2_MAINLINE_RESULTS.md)、[实际证据](research/m10-b1b2-mainline/evidence/INDEX.json)、[checkpoint](checkpoints/2026-10-19-M10-B1B2-MAINLINE.md)。M10 PENDING/三JPEG历史FAIL、UI-C1 FROZEN、M11 NOT_AUTHORIZED、全部历史NOTE/UNKNOWN/NOT_RUN保持，提交后等待独立验收。
+
+## 前次安全续验摘要（45c7700历史）
+
+以下是45c7700形成时的结论和计数；本次新的传输claim/UNKNOWN不改写其原件。
 
 - **M10 B1/B2 ANDROID SAFETY RESUME — BLOCKED / WAITING_CHATGPT_REVIEW**：来源 `532817ebaac5f59e0eb458c7d85d17765112606a`；分支 `codex/m10-b1b2-android-safety-resume`；独立worktree `E:/CODEX/.codex/worktrees/lithic-b1b2-resume/砺石新APP`。仅研究Python/测试及文档差异，App/Test APK、Room/备份/算法/UI及JPEG旧断言不改；不重复旧18项整套。
 - **三接缝与实际验证**：有界dd＋pipefail原两JSON读回0.349秒PASS，前后inode/UID/长度与三方SHA稳定；短命Host按真实运行中begin/assertHost报告核验，结束后Host缺失不替代Worker/FD证明。旧method-00 UNKNOWN保留，新不可变续接准入PASS，预检JUnit未重跑。新增受控正常退出/API36衔接仅宿主验证、设备NOT_RUN。三个接缝最终55唯一宿主PASS；2MiB普通文件性能HOST_ONLY，Android0.681秒仅无写入流吞吐，不冒充普通文件inode验证。

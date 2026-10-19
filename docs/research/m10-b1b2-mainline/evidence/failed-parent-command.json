@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5664",
+    "shell",
+    "run-as com.cooper.lithic.debug sh -c 'set -e; umask 077; [ \"$(id -u)\" = '\"'\"'10077'\"'\"' ]; [ \"$(pwd -P)\" = '\"'\"'/data/user/0/com.cooper.lithic.debug'\"'\"' ]; [ -d . ]; [ \"$(stat -c '\"'\"'%u'\"'\"' .)\" = '\"'\"'10077'\"'\"' ]; printf '\"'\"'M10_INPUT_PARENT_BEGIN\\n'\"'\"'; stat -c '\"'\"'ROOT_B|%f:%u:%d:%i'\"'\"' .; [ ! -L files ]; if [ -e files ]; then [ -d files ]; stat -c '\"'\"'FILES_B|%f:%u:%d:%i'\"'\"' files; state=EXISTING; else printf '\"'\"'FILES_B|ABSENT\\n'\"'\"'; mkdir files; state=CREATED; fi; [ ! -L files ]; [ -d files ]; stat -c '\"'\"'FILES_E|%f:%u:%d:%i'\"'\"' files; stat -c '\"'\"'ROOT_E|%f:%u:%d:%i'\"'\"' .; printf '\"'\"'M10_INPUT_PARENT_END|%s\\n'\"'\"' \"$state\"'"
+  ],
+  "cwd": null,
+  "endUtc": "2026-10-19T13:32:14.999404+00:00",
+  "environmentOverrides": {},
+  "exitCode": 1,
+  "stderrBase64": "",
+  "stderrBytes": 0,
+  "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdoutBase64": "",
+  "stdoutBytes": 0,
+  "stdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "utc": "2026-10-19T13:32:14.843413+00:00"
+}

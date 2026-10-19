@@ -1,0 +1,52 @@
+{
+  "scope": "HOST_ONLY_SOURCE_SCOPED_NEW_AUTHORIZATION_NOT_RETRY_OF_OLD_UNKNOWN",
+  "status": "PASS",
+  "sourceCommit": "45c77007218f8d4e54f43b318c9a3c22c057c90d",
+  "newClaim": "input-transfer-mainline-45c77007218f",
+  "entry": "python -B docs/research/m10-b1b2-android-safety/stage_inputs.py 26 --mainline",
+  "order": [
+    "Fresh identity/App/Test actual SHA/User0 UID gates",
+    "three locked host file length/SHA gates",
+    "actual bootId and BOOT_COUNT",
+    "exclusive new claim and durable attempt binding",
+    "actual bootId/BOOT_COUNT recheck before parent preparation",
+    "owned private files parent: exclusive create0700 only if absent",
+    "unchanged exact files/m10-b2-test-inputs destination and original bounded transfer verification"
+  ],
+  "newMethods": 6,
+  "regressions": {
+    "original": 4,
+    "inputParent": 5
+  },
+  "red": "input-transfer-red.raw",
+  "green": "input-transfer-green.raw",
+  "prior": [
+    "input-transfer-prior4.raw",
+    "input-transfer-prior5.raw"
+  ],
+  "deviceCallsByAgent": 0,
+  "AndroidTransfer": "NOT_RUN_BY_AGENT",
+  "oldClaim": "PRESERVED_UNKNOWN_UNTOUCHED_AND_NO_AUTOMATIC_FALLBACK",
+  "sources": {
+    "docs/research/m10-b1b2-android-safety/stage_inputs.py": "874a028263d4f1ab1dc7ecd63d4d03fca34d1470e3b9c77961ad5e11187c439c",
+    "docs/research/m10-b1b2-android-safety/test_mainline_inputs.py": "3f6c2aac39a82e210e7dbb1cfbd663d19efd053a3b0be4d30eed9db73b9ffb0e"
+  },
+  "raw": {
+    "input-transfer-green.raw": {
+      "bytes": 1125,
+      "sha256": "2d77d51f793b75c616cbb3c9ffce3a1d6bca639de11db6da456685002bec3277"
+    },
+    "input-transfer-prior4.raw": {
+      "bytes": 717,
+      "sha256": "78e178a42ab28e7c5d3d08a7d4af64b084241a879d721c6416f7ad3ce6192f51"
+    },
+    "input-transfer-prior5.raw": {
+      "bytes": 920,
+      "sha256": "51740e4eb4d693e54a34eb0e9dcce994316debabf4178c0e2fb47a74fceb8b4f"
+    },
+    "input-transfer-red.raw": {
+      "bytes": 7735,
+      "sha256": "bdeb1f4084d56a6555bb185b08aa4d48b701767dfd651c603bd2bdc084f9a5ce"
+    }
+  }
+}
