@@ -1,15 +1,18 @@
 # 当前项目状态
 
-状态日期：2026-10-19（Asia/Shanghai；API36新UID准入、类加载及九项自然测试PASS；等待独立验收）。本文件为唯一当前状态，历史结果不改写。
+状态日期：2026-10-19（Asia/Shanghai；最终安全收口结论：BLOCKED，暂不建议冻结M10）。本文件为唯一当前状态，历史证据不改写。
 
 ## Current Stage
 
-- **M10 API36 UID集中续验 — READY_FOR_REVIEW**：来源 `d225dfc2d9ba74227cebab68a98176110145e50a`；分支 `codex/m10-api36-uid-resume`；独立worktree `E:/CODEX/.codex/worktrees/lithic-uid-resume/砺石新APP`。沿用campaign `m10-final-20261019-022830-2a602443`、独立续接 `m10-uid-20261019-040339-e0b26457`；原boot、首次App安装marker和UID UNKNOWN不修改，新增证明不回填旧PASS。
-- **最小修复/宿主**：唯一目标Packages/User0安装状态内解析userId/appId，并核对codePath、明确归属权限UID、独立数字UID及原APK SHA/签名；冲突/重复/跨包/跨用户/截断拒绝。新API36专属续接监督器封闭创建/启动/App重装/退出及重试入口。53 UID＋22原监督器＋26续接＝101唯一宿主PASS；RED和中间异常保留。App/测试源码、Room/备份/算法/UI/Worker/Stage/JNI/Gradle不改，两APK未重建。
-- **API36实际**：复用 `Lithic_M10V_API36_20261018/emulator-5626` 的原launcher33512/QEMU32252及精确创建时间、隔离盘/端口/boot/API36/x86_64身份。新建0/启动0/App安装0/Test安装1，App UID10216/Test10217；原App SHA `0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf`、Test SHA `73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f` 全程匹配。类加载1＋自然9真实JUnit和nonce/连续日志/资源门禁全PASS；8个Worker、48条退休事件，原三缺陷断言及业务保护/PNG/v1兼容新证据通过。
-- **结束现场/边界**：唯一结束只读resourceStatus PASS，无App/Worker活动进程；2个持久review Stage、10份观察有效、无未知消费者，设备保持运行，未退出或清理。其他6 invocation的测试临时根不冒称8个持久独立Stage。部分FD/guard/业务事实为结构化观察、部分Host FD/同步hello为代码不变量；raw Binder字段/写只读FD、完整异常取消/超时/恢复、硬内存上限、其他ABI/真机/OEM/Release/完整备份仍未证明。Codex复核不能替代ChatGPT独立验收。
-- **继承/停止**：API26先前类加载/九项PASS WITH NOTES及正常退出由本轮用户转交ChatGPT独立验收，本轮设备命令0、仅读旧退出证明。M10 PENDING、三JPEG历史FAIL、旧API36 UID UNKNOWN、R3完整生命周期BLOCKED、UI-C1 ACCEPTED/FROZEN PASS WITH NOTES、M11 NOT_AUTHORIZED保持；H2 DELIVERY_UNKNOWN/pin=true、C2及其他历史现场不访问。D2A-N01～N05、A1-N01～N04和全部旧NOTE/FAIL/UNKNOWN/NOT_RUN保留，未读真实私人账本或图片。
-- **交付入口/下一步**：[集中报告](research/M10_API36_UID_RESUME.md)、[独立续接原始结果](research/m10-api36-uid-resume/evidence/m10-uid-20261019-040339-e0b26457/RESULTS.json)、[checkpoint](checkpoints/2026-10-19-M10-API36-UID-RESUME.md)。本轮没有剩余执行门禁阻塞；只提交推送指定分支后停止，等待ChatGPT限定独立审查，不自行冻结M10或扩测/开始M11。
+- **M10 FINAL SAFETY CLOSURE — BLOCKED / WAITING_INDEPENDENT_REVIEW**：来源 `9f378199c8bebb2a96d3d061efe16b3e966906ba`；分支 `codex/m10-final-safety-closure`；独立worktree `E:/CODEX/.codex/worktrees/lithic-safety-closure/砺石新APP`。本轮用户转交ChatGPT已独立验收API26/API36各九项自然测试PASS WITH NOTES，18项不重复，原文件/UNKNOWN/三JPEG历史FAIL不重写；正式M10分支尚未合并候选。
+- **本轮实证**：当前7个纯Java组件与12个既有测试类重新编译，143方法PASS；当前Stage Kotlin重新编译，15个既有定向安全方法PASS。另1组件刻画为REPRODUCES_OPEN_BLOCKER：在途RPC晚于两次清理机会返回后未自动清理连接；不是问题修复、不是Android PASS。核对7份历史来源、4份大图原件SHA，复用原native/sanitizer结果，不重做压测。
+- **恰两类技术BLOCKING**：B1异常会话最终收口/恢复（迟到RPC缺后续清理责任、无结构化结果的旧Stage无通用恢复器）；B2当前Android全链40MP资源/异常释放尚未实测。当前未发现确定金额破坏或已引用旧图误删路径，但代码审查不能替代Android故障证据。保守UNKNOWN/pin不能被当作恢复完成，512MiB请求预算不能当RSS硬cap。不擅自放宽协议或加入未验证恢复代码。
+- **运行与保护**：本轮ADB/AVD/APK/设备故障操作、正常流程重跑、产品代码修改、APK构建/下载均0；不观察或操作保留API36/H2/C2及旧现场。设备当前状态NOT_OBSERVED_THIS_TASK，只引用上轮结束证据，不能声称本轮再次确认在线/消费者为空。本轮指令第4条要求另行明确故障授权与全新合成环境，尚未执行该设备批次。
+- **下一步/边界**：[唯一冻结建议报告](research/M10_FINAL_SAFETY_CLOSURE.md)明确29场景等价映射、B1最小收口契约及有限A/B/C/D/G/I异常族、B2仅三类40MP；先独立审查契约与准确设备操作范围，再执行新合成环境验证，不继续加正常测试。M10 PENDING；UI-C1 FROZEN；M11 NOT_AUTHORIZED；R3原29为0 PASS/1 UNKNOWN/28 NOT_RUN，D2A-N01～N05、A1-N01～N04、历史attach/ANR/R1超时/6.141秒空档及全部NOTE/FAIL/UNKNOWN/NOT_RUN保持。原API36自然交付见[报告](research/M10_API36_UID_RESUME.md)，本轮不扩大该限定验收。
+
+## 继承的历史阶段摘要
+
+以下保留原有历史摘要；其中“本轮”“当前”等措辞均指各段落形成当时的任务，不指本次最终安全收口。本次设备操作为0，历史独立报告及原始证据未改写。
 
 上一轮d225交付中的API36安装UID阻塞是当时事实，见[原测试APK兼容报告](research/M10_ANDROID_TEST_APK_COMPAT_FINAL.md)；本轮独立新准入与PASS不修改该旧UNKNOWN或原文件。
 

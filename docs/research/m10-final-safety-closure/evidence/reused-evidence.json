@@ -1,0 +1,155 @@
+{
+  "type": "OFFLINE_EVIDENCE_AND_FIXTURE_REVALIDATION_NOT_NEW_ANDROID_PASS",
+  "utc": "2026-10-19T04:51:46.467440+00:00",
+  "sourceCommit": "9f378199c8bebb2a96d3d061efe16b3e966906ba",
+  "historicalSources": [
+    {
+      "reference": "docs/research/M10_JPEG_R3_LIFECYCLE_RESULTS.md",
+      "bytes": 6108,
+      "sha256": "cf3ae0bee930579aabb20d2828b8946eeaa42f192d51f72d9aaf250ee85fc6ac",
+      "historicalOriginalUnchanged": true
+    },
+    {
+      "reference": "docs/research/M10_JPEG_R2_DECISION.md",
+      "bytes": 14124,
+      "sha256": "fa677ecf59025bf06a69a56aa210437a76267c4270f7235a10f4a90913b3ef9f",
+      "historicalOriginalUnchanged": true
+    },
+    {
+      "reference": "docs/research/M10_JPEG_R2_RESOURCE_BUDGET.md",
+      "bytes": 15454,
+      "sha256": "7bd1b123cc7cea5770f1ecde5cba43c7273182502bba7f383f1514910b1ca053",
+      "historicalOriginalUnchanged": true
+    },
+    {
+      "reference": "docs/research/m10-jpeg-stage-v2-review-fix/RESULTS.json",
+      "bytes": 14957,
+      "sha256": "bc1f5bec760525e901a7d33b291f7dcf9c24ff427271861489e7d34d93f6cd4a",
+      "historicalOriginalUnchanged": true
+    },
+    {
+      "reference": "docs/research/m10-jpeg-accelerated/RESULTS.json",
+      "bytes": 15138,
+      "sha256": "e1ab5d454a0fc4c0ea19aabccefebf1d48c4e9c3f7df64414115e4b4d2099038",
+      "historicalOriginalUnchanged": true
+    },
+    {
+      "reference": "docs/research/m10-api36-uid-resume/evidence/m10-uid-20261019-040339-e0b26457/RESULTS.json",
+      "bytes": 6529,
+      "sha256": "8323412251723d53bdf9d2613fd0ce89b773b932dd1c7f366154402a63d39359",
+      "historicalOriginalUnchanged": true
+    },
+    {
+      "reference": "docs/research/m10-android-test-compat/evidence/m10-final-20261019-022830-2a602443/api26/control/normal-exit-proof.json",
+      "bytes": 2566,
+      "sha256": "d20b98314e162f9771fe32fa04fd85e96f1c76e82900da056b7e81cbfcd44ad6",
+      "historicalOriginalUnchanged": true
+    }
+  ],
+  "currentAppMainGitTree": "2f04a7e931b864c42ffcb1b4ee7f9dbe0cc8a82c",
+  "productionChanges": 0,
+  "fixtures": [
+    {
+      "originalPath": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\fixtures\\large_40mp_baseline_420.jpg",
+      "bytes": 17163380,
+      "sha256": "c2c2fa54d49ab8155321175a66596ce8d35ed9927d9f3dfe2bbb6a00c5fbb5c7",
+      "role": "HEALTHY_BASELINE_420",
+      "freshHostHashCheck": "MATCH",
+      "nativeExecutionThisTask": "NOT_RUN",
+      "copiedOrCommitted": false
+    },
+    {
+      "originalPath": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\fixtures\\large_40mp_progressive_420.jpg",
+      "bytes": 15458857,
+      "sha256": "2b02f35f08a8cb36d31a0a4f01e8810f554be67619950c8e2b0d0d2be873c5c8",
+      "role": "HEALTHY_PROGRESSIVE_420",
+      "freshHostHashCheck": "MATCH",
+      "nativeExecutionThisTask": "NOT_RUN",
+      "copiedOrCommitted": false
+    },
+    {
+      "originalPath": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\single444\\valid_40mp_progressive_444.jpg",
+      "bytes": 27445246,
+      "sha256": "0555234207d5ddf84d236d812487a659f2dac34a9d82109a941628553c7b67e6",
+      "role": "HEALTHY_PROGRESSIVE_444",
+      "freshHostHashCheck": "MATCH",
+      "nativeExecutionThisTask": "NOT_RUN",
+      "copiedOrCommitted": false
+    },
+    {
+      "originalPath": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\砺石新APP\\build\\m10-jpeg-r1\\fixtures\\large_40mp_progressive_444.jpg",
+      "bytes": 20406272,
+      "sha256": "ec0a7075f307f8702bd03080a8ece90ecbfafbc498162d4f1a9da05df22de700",
+      "role": "HISTORICAL_DAMAGED_NOT_HEALTHY_444",
+      "freshHostHashCheck": "MATCH",
+      "nativeExecutionThisTask": "NOT_RUN",
+      "copiedOrCommitted": false
+    }
+  ],
+  "reusedLinuxGcc40MPMeasurements": {
+    "large_40mp_baseline_420.jpg": {
+      "status": "ACCEPT",
+      "width": 8000,
+      "height": 5000,
+      "attempts": 13,
+      "peak": 333126,
+      "peakRssKiB": 30296,
+      "wallNs": 398270335,
+      "cpuNs": 398215949,
+      "cleanupWallNs": 5829,
+      "cleanupCpuNs": 5769,
+      "live": 0,
+      "liveBlocks": 0,
+      "badFrees": 0,
+      "rowsRead": 5000,
+      "finishComplete": true
+    },
+    "large_40mp_progressive_420.jpg": {
+      "status": "ACCEPT",
+      "width": 8000,
+      "height": 5000,
+      "attempts": 16,
+      "peak": 120535371,
+      "peakRssKiB": 119264,
+      "wallNs": 701964146,
+      "cpuNs": 701835507,
+      "cleanupWallNs": 4947,
+      "cleanupCpuNs": 4927,
+      "live": 0,
+      "liveBlocks": 0,
+      "badFrees": 0,
+      "rowsRead": 5000,
+      "finishComplete": true
+    },
+    "large_40mp_progressive_444.jpg": {
+      "status": "ACCEPT",
+      "width": 8000,
+      "height": 5000,
+      "attempts": 14,
+      "peak": 240265637,
+      "peakRssKiB": 236212,
+      "wallNs": 1115859597,
+      "cpuNs": 1115783291,
+      "cleanupWallNs": 6089,
+      "cleanupCpuNs": 6059,
+      "live": 0,
+      "liveBlocks": 0,
+      "badFrees": 0,
+      "rowsRead": 5000,
+      "finishComplete": true
+    }
+  },
+  "measurementContext": "Prior Linux CI; recreated fixtures matched original R1 SHA. Not new execution or current Android Worker measurements.",
+  "ciReferenceOnly": "https://github.com/cc7279694-debug/property/actions/runs/39109960477",
+  "newAndroidTests": 0,
+  "repeatedNaturalTests": 0,
+  "newADB_AVD_APKOperations": 0,
+  "deviceFinalState": "NOT_OBSERVED_THIS_TASK; last API36 ending proof only, no device access",
+  "frozenState": {
+    "M10": "PENDING",
+    "historicalJpegFailures": "3 FAIL RETAINED",
+    "UI-C1": "FROZEN",
+    "M11": "NOT_AUTHORIZED",
+    "H2_C2": "NOT_ACCESSED"
+  }
+}

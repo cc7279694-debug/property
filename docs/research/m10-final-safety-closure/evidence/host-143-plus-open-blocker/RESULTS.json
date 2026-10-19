@@ -1,0 +1,34 @@
+{
+  "finishedUtc": "2026-10-19T04:50:16.840902+00:00",
+  "classification": "HOST_ONLY",
+  "sourceCommit": "9f378199c8bebb2a96d3d061efe16b3e966906ba",
+  "productionComponents": 7,
+  "existingTestClasses": 12,
+  "compilation": "PASS",
+  "regression": {
+    "group": "EXISTING_COMPONENT_REGRESSION",
+    "tests": 143,
+    "uniqueTests": 143,
+    "failures": 0,
+    "ignored": 0,
+    "assumptionFailures": 0,
+    "actualJUnitExit": 0,
+    "status": "PASS_HOST_COMPONENT_REGRESSION_ONLY"
+  },
+  "newCharacterization": {
+    "group": "REPRODUCES_OPEN_BLOCKER",
+    "tests": 1,
+    "uniqueTests": 1,
+    "failures": 0,
+    "ignored": 0,
+    "assumptionFailures": 0,
+    "actualJUnitExit": 0,
+    "status": "REPRODUCES_OPEN_BLOCKER"
+  },
+  "productSafetyGate": "BLOCKED_NOT_FIXED",
+  "Android": "NOT_RUN",
+  "limits": "Real JpegBindingDuty only. Not the full Client, Binder, Service, FD, native or Android lifecycle.",
+  "deviceCommands": 0,
+  "APKBuilds": 0,
+  "productionChanges": 0
+}
