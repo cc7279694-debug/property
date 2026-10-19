@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-10-19T06:38:30.086Z" hostname="WHOCARE" time="0.095">
+  <properties/>
+  <testcase name="lateQueuedRpcNeverRunsAfterConnectionClosure" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.003"/>
+  <testcase name="successfulBindingOwnsOneRpcTicket" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="invalidCompletionCannotClaimResourceProof" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="duplicateCompletionCannotReleaseNewerRpc" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.001"/>
+  <testcase name="inflightClosureNeedsMatchingReturnBeforeCleanup" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="wrongTicketCannotReleaseInFlightRpc" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="simultaneousClosureAndRpcClaimHasOneLinearization" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.038"/>
+  <testcase name="closureBeforeUiBindRunsPreventsNewBind" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="competingRpcStartsCannotBothOwnTheConnection" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.039"/>
+  <testcase name="rpcExceptionStillCompletesMatchingTicket" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="timedOutRpcDoesNotReleaseItsTicket" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.012"/>
+  <testcase name="repeatedIdleClosureIsIdempotent" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.001"/>
+  <testcase name="earlyConnectedCallbackCannotReplaceActualBindReturn" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="cleanupClaimPermanentlyRejectsQueuedRpc" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="unboundInvocationCannotClaimRpc" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="completedRpcMayCloseThenUnbind" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="thrownBindNeverAllowsRpc" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="activeRpcPreventsCleanupClaim" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <testcase name="completionAfterClosedGateCannotReopenAuthorization" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.001"/>
+  <testcase name="falseBindNeverAllowsRpc" classname="com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

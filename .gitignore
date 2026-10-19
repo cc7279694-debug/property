@@ -19,6 +19,8 @@ keystore.properties
 *.aab
 *.hprof
 .kotlin/
+# 宿主研究脚本生成的缓存保留本地，不进入证据或源码提交。
+docs/research/**/__pycache__/
 
 # 真实用户数据和个人备份不能提交；未来合成测试样本另行审查
 app-data/

@@ -30,8 +30,15 @@ internal class JpegStageV2(
     data class Owner(val generation: String, val assetId: String, val attemptId: String, val sessionId: String, val nonce: String)
     data class FileIdentity(val device: Long, val inode: Long, val bytes: Long, val sha256: String)
     data class WorkerIdentity(val pid: Int, val uid: Int, val startTicks: Long)
+    data class SupervisorIdentity(val bootId: String, val pid: Int, val uid: Int, val startTicks: Long)
+    data class RecoveryRequest(val owner: Owner, val supervisor: SupervisorIdentity, val worker: WorkerIdentity?,
+        val source: FileIdentity, val output: FileIdentity, val guard: FileIdentity)
+    enum class HostClosure { ORIGINAL_INSTANCE_ENDED, SAME_SESSION_QUIESCENT }
+    data class ClosureProof(val request: RecoveryRequest, val observedBootId: String, val hostClosure: HostClosure,
+        val workerEnded: Boolean, val hostFdsClosed: Boolean, val noFutureRpc: Boolean,
+        val connectionCleaned: Boolean, val noConsumerActorsEnded: Boolean)
     enum class Outcome { SUCCESS, IMAGE, RESOURCE, LOAD, CANCELLED, TIMEOUT, NATIVE_CRASH, RESULT_UNKNOWN }
-    enum class State { SOURCE_STAGED, PINNED, DELIVERY_UNKNOWN, REVOKED, TERMINAL, PREPARED }
+    enum class State { SOURCE_STAGED, PINNED, DELIVERY_UNKNOWN, REVOKED, TERMINAL, PREPARED, ABANDONED }
     data class Snapshot(val owner: Owner, val source: FileIdentity, val state: State, val pinned: Boolean, val worker: WorkerIdentity?, val outcome: Outcome?)
     data class Completion(
         val owner: Owner, val worker: WorkerIdentity, val outcome: Outcome,
@@ -46,10 +53,60 @@ internal class JpegStageV2(
     class Blocked(message: String, cause: Throwable? = null) : IOException(message, cause)
     class SourceLimitExceeded(message: String) : IOException(message)
 
+    /** Only this fresh create can attach a supervisor; old v2 stages are never backfilled. */
+    fun create(owner: Owner, sourceInput: InputStream, supervisor: SupervisorIdentity, checkActive: () -> Unit = {}): Snapshot =
+        createInternal(owner, sourceInput, checkActive, supervisor.also(::validSupervisor))
+
+    /** A legacy or incomplete stage is preserved; it cannot acquire a guessed supervisor. */
+    fun pendingRecoveryOwners(): List<Owner> = locked {
+        val children = root.listFiles() ?: blocked("Cannot list JPEG recovery namespace")
+        children.sortedBy { it.name }.mapNotNull { directory ->
+            if (directory.name == ".namespace.guard") return@mapNotNull null
+            if (directory.name.startsWith("abort-")) { validateAbort(directory); return@mapNotNull null }
+            validId(directory.name)
+            val loaded = load(readOwner(directory))
+            if (loaded.terminal == null && loaded.abandoned == null && loaded.supervisor != null) loaded.owner else null
+        }
+    }
+
+    /** Independent failure closure. No result, decode success or per-FD callback is synthesized. */
+    fun recoverNoResult(owner: Owner, verifyClosure: (RecoveryRequest) -> ClosureProof): Snapshot = locked {
+        val loaded = load(owner)
+        if (loaded.terminal != null || loaded.prepared) blocked("A completed JPEG cannot be abandoned")
+        if (loaded.supervisor == null) blocked("Legacy JPEG has no registered supervisor")
+        consumerLease(loaded) {
+            val current = load(owner)
+            if (current.abandoned != null) return@consumerLease asSnapshot(current)
+            // A startup/GC probe must not cancel an active original session merely
+            // because its Worker has not acquired the consumer guard yet. This
+            // read-only closure preflight is not the final termination evidence.
+            val candidate = recoveryRequest(current)
+            validateClosure(candidate, verifyClosure(candidate))
+            val admitted = load(owner)
+            if (recoveryRequest(admitted) != candidate || admitted.terminal != null || admitted.abandoned != null)
+                blocked("JPEG recovery admission changed before durable revocation")
+            if (!admitted.revoked) files.put(files.child(admitted.directory, "revoked.v2"),
+                mapOf("ownerHash" to ownerHash(current.directory), "reasonHash" to files.digest("NO_RESULT_RECOVERY")))
+            val revoked = load(owner)
+            if (!revoked.revoked) blocked("Recovery revocation was not confirmed")
+            // Only a fresh second proof after confirmed durable revocation can
+            // authorize independent non-success closure under these same leases.
+            val request = recoveryRequest(revoked)
+            val proof = verifyClosure(request)
+            validateClosure(request, proof)
+            val after = load(owner)
+            if (recoveryRequest(after) != request || after.terminal != null || after.abandoned != null)
+                blocked("JPEG identity changed while verifying independent closure")
+            files.put(files.child(after.directory, "abandoned.v2"), abandonedValues(after, proof))
+            asSnapshot(load(owner))
+        }
+    }
+
     private val files = StageRecords(identity, syncDirectory)
     private val known = setOf("owner.v2", "source.v2", "output.v2", "source.bin", "image.jpg", "consumer.guard",
         "pin.v2", "delivered.v2", "revoked.v2", "terminal.v2", "prepared.v2", "cleanup-intent.v2", "cleaned.v2",
-        "source-release-intent.v2", "source-released.v2", "asset.json", "owned-final.json")
+        "source-release-intent.v2", "source-released.v2", "asset.json", "owned-final.json",
+        "supervisor.v2", "abandoned.v2", "abandoned-cleanup-intent.v2", "abandoned-cleaned.v2")
     private val decoderPolicy = "libjpeg-turbo-3.2.0-e01-strict-v1"
     private val normalizationPolicy = "m10-jpeg-normalize-v1"
     private val ownerKeys = setOf("protocol", "version", "generation", "assetId", "attemptId", "sessionId", "nonce", "guardDevice", "guardInode", "decoderPolicy", "normalizationPolicy")
@@ -62,10 +119,16 @@ internal class JpegStageV2(
     private val releaseKeys = proofKeys + "sourceHash"
     private val terminalKeys = setOf("ownerHash", "pinHash", "sourceHash", "outcome", "resultCount", "sourceFdClosed", "outputFdClosed",
         "binderDead", "matchingProcessDead", "strictFinished", "decoderDestroyed", "connectionCleaned", "outputDevice", "outputInode", "outputBytes", "outputSha", "width", "height")
+    private val supervisorKeys = setOf("ownerHash", "bootId", "pid", "uid", "startTicks")
+    private val abandonedKeys = setOf("version", "ownerHash", "supervisorHash", "pinHash", "sourceRecordHash", "sourceHash",
+        "outputDevice", "outputInode", "outputBytes", "outputSha", "observedBootId", "hostClosure", "workerEnded",
+        "hostFdsClosed", "noFutureRpc", "connectionCleaned", "noConsumerActorsEnded", "proof")
+    private val abandonedCleanupKeys = setOf("ownerHash", "abandonedHash")
 
     private data class Loaded(val owner: Owner, val directory: File, val source: FileIdentity, val initialOutput: FileIdentity,
         val worker: WorkerIdentity?, val pin: Map<String, String>?, val terminal: Map<String, String>?,
-        val revoked: Boolean, val delivered: Boolean, val prepared: Boolean, val cleanup: Boolean)
+        val revoked: Boolean, val delivered: Boolean, val prepared: Boolean, val cleanup: Boolean,
+        val supervisor: SupervisorIdentity?, val abandoned: Map<String, String>?)
 
     private class FreshCreation(
         val owner: Owner, val directory: File, val guardIdentity: FileIdentity,
@@ -99,7 +162,10 @@ internal class JpegStageV2(
      * consumer.guard as an exclusive producer lease. Unpublished stages admit no FD
      * delivery, cleanup or restart recovery. A blocking read is not forcibly cancelled.
      */
-    fun create(owner: Owner, sourceInput: InputStream, checkActive: () -> Unit = {}): Snapshot {
+    fun create(owner: Owner, sourceInput: InputStream, checkActive: () -> Unit = {}): Snapshot =
+        createInternal(owner, sourceInput, checkActive, null)
+
+    private fun createInternal(owner: Owner, sourceInput: InputStream, checkActive: () -> Unit, supervisor: SupervisorIdentity?): Snapshot {
         try {
             return locked { beginCreation(owner) }.use { fresh ->
                 var copyFailure: Exception? = null
@@ -161,6 +227,9 @@ internal class JpegStageV2(
                         val output = files.child(fresh.directory, "image.jpg")
                         createEmpty(output)
                         files.put(files.child(fresh.directory, "output.v2"), fileValues(fresh.directory, files.fingerprint(output)))
+                        if (supervisor != null) files.put(files.child(fresh.directory, "supervisor.v2"),
+                            mapOf("ownerHash" to ownerHash(fresh.directory), "bootId" to supervisor.bootId,
+                                "pid" to supervisor.pid.toString(), "uid" to supervisor.uid.toString(), "startTicks" to supervisor.startTicks.toString()))
                         asSnapshot(load(owner))
                     } finally {
                         // Publication and producer FD release share the namespace
@@ -254,6 +323,7 @@ internal class JpegStageV2(
     /** A lock alone never proves retirement. All independent evidence must match first. */
     fun complete(completion: Completion): Snapshot = locked {
         val loaded = load(completion.owner)
+        if (loaded.abandoned != null) blocked("Independent failure closure cannot become a decoder result")
         if (loaded.worker != completion.worker || !loaded.delivered || completion.source != loaded.source || completion.outcome == Outcome.RESULT_UNKNOWN ||
             completion.resultCount != 1 || !completion.sourceFdClosed || !completion.outputFdClosed || !completion.binderDead || !completion.matchingProcessDead || !completion.connectionCleaned) blocked("Incomplete or mismatched JPEG termination proof")
         if (completion.outcome == Outcome.SUCCESS && (loaded.revoked || !completion.strictFinished || !completion.decoderDestroyed)) blocked("JPEG success has no current strict authority")
@@ -302,6 +372,24 @@ internal class JpegStageV2(
     /** Keeps a small terminal tombstone. Unknown children and business metadata are never deleted. */
     fun safeCleanup(owner: Owner) = locked {
         val loaded = load(owner)
+        if (loaded.abandoned != null) {
+            consumerLease(loaded) {
+                val current = load(owner)
+                val proof = mapOf("ownerHash" to ownerHash(current.directory),
+                    "abandonedHash" to files.digest(files.child(current.directory, "abandoned.v2")))
+                files.put(files.child(current.directory, "abandoned-cleanup-intent.v2"), proof)
+                // load() established exact original source and abandoned output bytes/inodes
+                // under this same namespace and consumer lease. Unknown children fail above.
+                load(owner)
+                for (name in listOf("source.bin", "image.jpg")) {
+                    val file = files.child(current.directory, name)
+                    if (files.exists(file)) files.delete(file)
+                }
+                files.sync(current.directory)
+                files.put(files.child(current.directory, "abandoned-cleaned.v2"), proof)
+            }
+            return@locked
+        }
         if (loaded.terminal == null) blocked("Cannot clean an unterminated JPEG consumer")
         consumerLease(loaded) {
             val current = load(owner)
@@ -329,7 +417,7 @@ internal class JpegStageV2(
             validId(directory.name)
             val owner = readOwner(directory)
             val loaded = load(owner)
-            if (loaded.terminal == null) blocked("An old JPEG consumer has no terminal proof")
+            if (loaded.terminal == null && loaded.abandoned == null) blocked("An old JPEG consumer has no terminal proof")
             consumerLease(loaded) { load(owner) }
         }
     }
@@ -346,11 +434,17 @@ internal class JpegStageV2(
         val source = readFileIdentity(directory, "source.v2")
         if (source.bytes !in 1..64L * 1024 * 1024) blocked("Invalid original JPEG source size")
         val initialOutput = readFileIdentity(directory, "output.v2")
+        val supervisor = optional(directory, "supervisor.v2", supervisorKeys)?.let {
+            requireOwnerHash(directory, it)
+            SupervisorIdentity(it.getValue("bootId"), integer(it, "pid"), integer(it, "uid"), number(it, "startTicks")).also(::validSupervisor)
+        }
         val pin = optional(directory, "pin.v2", pinKeys)?.also {
             requireOwnerHash(directory, it)
             if (it["sourceHash"] != source.sha256) blocked("JPEG consumer source mismatch")
         }
         val worker = pin?.let { WorkerIdentity(integer(it, "pid"), integer(it, "uid"), number(it, "startTicks")).also(::validWorker) }
+        if (supervisor != null && worker != null && (supervisor.uid != worker.uid || supervisor.pid == worker.pid))
+            blocked("JPEG supervisor and consumer identities conflict")
         val delivered = optional(directory, "delivered.v2", deliveryKeys)?.also {
             requireOwnerHash(directory, it)
             if (pin == null || it["pinHash"] != files.digest(files.child(directory, "pin.v2"))) blocked("JPEG delivery has no matching pin")
@@ -370,6 +464,37 @@ internal class JpegStageV2(
             if (outcome == Outcome.SUCCESS && (it["strictFinished"] != "true" || it["decoderDestroyed"] != "true")) blocked("JPEG receipt lacks strict finish")
             if (outcome == Outcome.SUCCESS && (outputFields.first() == "none" || integer(it, "width") !in 1..1600 || integer(it, "height") !in 1..1600 || number(it, "outputBytes") !in 1..2L * 1024 * 1024)) blocked("Invalid successful JPEG terminal output")
         }
+        val abandoned = optional(directory, "abandoned.v2", abandonedKeys)?.also {
+            requireOwnerHash(directory, it)
+            if (terminal != null || !revoked || supervisor == null || it["version"] != "1" ||
+                it["supervisorHash"] != files.digest(files.child(directory, "supervisor.v2")) ||
+                it["pinHash"] != (pin?.let { files.digest(files.child(directory, "pin.v2")) } ?: "none") ||
+                it["sourceRecordHash"] != files.digest(files.child(directory, "source.v2")) || it["sourceHash"] != source.sha256)
+                blocked("Independent JPEG closure identity mismatch")
+            val mode = try { HostClosure.valueOf(it.getValue("hostClosure")) }
+                catch (failure: IllegalArgumentException) { throw Blocked("Unknown JPEG Host closure mode", failure) }
+            val observedBoot = it.getValue("observedBootId"); validId(observedBoot)
+            if (mode == HostClosure.SAME_SESSION_QUIESCENT && observedBoot != supervisor.bootId)
+                blocked("A different boot cannot attest same live session quiescence")
+            if (listOf("workerEnded", "hostFdsClosed", "noFutureRpc", "connectionCleaned").any { key -> it[key] != "true" })
+                blocked("Independent JPEG closure lacks actor termination")
+            if (it["noConsumerActorsEnded"] !in setOf("true", "false") ||
+                (worker == null && (delivered || it["proof"] != "NO_CONSUMER" || it["noConsumerActorsEnded"] != "true")) ||
+                (worker != null && it["proof"] != "NO_RESULT_CONSUMER")) blocked("Independent JPEG no-consumer proof is incomplete")
+            val output = terminalOutput(it)
+            if (output.device != initialOutput.device || output.inode != initialOutput.inode || output.bytes !in 0..2L * 1024 * 1024)
+                blocked("Independent JPEG output ownership mismatch")
+        }
+        fun requireAbandonedProof(values: Map<String, String>) {
+            if (abandoned == null || values["ownerHash"] != ownerHash(directory) ||
+                values["abandonedHash"] != files.digest(files.child(directory, "abandoned.v2")))
+                blocked("Independent JPEG cleanup proof mismatch")
+        }
+        val abandonedCleanup = optional(directory, "abandoned-cleanup-intent.v2", abandonedCleanupKeys)?.also(::requireAbandonedProof)
+        optional(directory, "abandoned-cleaned.v2", abandonedCleanupKeys)?.also {
+            requireAbandonedProof(it)
+            if (abandonedCleanup != it) blocked("Independent JPEG cleanup has no matching intent")
+        }
         fun requireProof(values: Map<String, String>) {
             if (terminal == null || values["ownerHash"] != ownerHash(directory) || values["terminalHash"] != files.digest(files.child(directory, "terminal.v2"))) blocked("JPEG completion proof mismatch")
         }
@@ -386,13 +511,15 @@ internal class JpegStageV2(
         optional(directory, "source-released.v2", releaseKeys)?.also { requireProof(it); if (releaseIntent != it) blocked("JPEG source release has no matching intent") }
         val sourceFile = files.child(directory, "source.bin")
         if (files.exists(sourceFile)) files.requireIdentity(sourceFile, source)
-        else if (cleanupIntent == null && releaseIntent == null) blocked("JPEG original source disappeared")
+        else if (cleanupIntent == null && releaseIntent == null && abandonedCleanup == null) blocked("JPEG original source disappeared")
         val outputFile = files.child(directory, "image.jpg")
         if (files.exists(outputFile)) {
             files.requireInode(outputFile, initialOutput)
             if (terminal?.get("outcome") == Outcome.SUCCESS.name) files.requireIdentity(outputFile, terminalOutput(terminal))
-        } else if (cleanupIntent == null) blocked("JPEG output disappeared")
-        return Loaded(owner, directory, source, initialOutput, worker, pin, terminal, revoked, delivered, prepared, cleanupIntent != null)
+            if (abandoned != null) files.requireIdentity(outputFile, terminalOutput(abandoned))
+        } else if (cleanupIntent == null && abandonedCleanup == null) blocked("JPEG output disappeared")
+        return Loaded(owner, directory, source, initialOutput, worker, pin, terminal, revoked, delivered, prepared,
+            cleanupIntent != null || abandonedCleanup != null, supervisor, abandoned)
     }
 
     private fun prepared(loaded: Loaded): Prepared {
@@ -407,6 +534,7 @@ internal class JpegStageV2(
 
     private fun asSnapshot(loaded: Loaded): Snapshot {
         val state = when {
+            loaded.abandoned != null -> State.ABANDONED
             loaded.cleanup -> State.TERMINAL
             loaded.revoked -> State.REVOKED
             loaded.prepared -> State.PREPARED
@@ -415,8 +543,41 @@ internal class JpegStageV2(
             loaded.pin != null -> State.PINNED
             else -> State.SOURCE_STAGED
         }
-        return Snapshot(loaded.owner, loaded.source, state, loaded.pin != null && loaded.terminal == null, loaded.worker, loaded.terminal?.let(::outcome))
+        return Snapshot(loaded.owner, loaded.source, state, loaded.pin != null && loaded.terminal == null && loaded.abandoned == null, loaded.worker, loaded.terminal?.let(::outcome))
     }
+
+    private fun recoveryRequest(loaded: Loaded): RecoveryRequest {
+        val supervisor = loaded.supervisor ?: blocked("JPEG supervisor registration missing")
+        if (loaded.worker == null && loaded.delivered) blocked("JPEG delivery lacks a consumer identity")
+        val output = files.fingerprint(files.child(loaded.directory, "image.jpg"))
+        if (output.device != loaded.initialOutput.device || output.inode != loaded.initialOutput.inode || output.bytes !in 0..2L * 1024 * 1024)
+            blocked("JPEG recovery output identity is invalid")
+        return RecoveryRequest(loaded.owner, supervisor, loaded.worker, loaded.source, output,
+            files.fingerprint(files.child(loaded.directory, "consumer.guard")))
+    }
+
+    private fun validateClosure(request: RecoveryRequest, proof: ClosureProof) {
+        validId(proof.observedBootId)
+        if (proof.request != request || !proof.workerEnded || !proof.hostFdsClosed || !proof.noFutureRpc || !proof.connectionCleaned)
+            blocked("Independent JPEG closure remains unknown")
+        if (proof.hostClosure == HostClosure.SAME_SESSION_QUIESCENT && proof.observedBootId != request.supervisor.bootId)
+            blocked("Cross-boot closure cannot describe the current session")
+        if (request.worker == null && !proof.noConsumerActorsEnded)
+            blocked("No pin does not prove that a reserved Worker cannot act")
+    }
+
+    private fun abandonedValues(loaded: Loaded, proof: ClosureProof): Map<String, String> = mapOf(
+        "version" to "1", "ownerHash" to ownerHash(loaded.directory),
+        "supervisorHash" to files.digest(files.child(loaded.directory, "supervisor.v2")),
+        "pinHash" to (loaded.pin?.let { files.digest(files.child(loaded.directory, "pin.v2")) } ?: "none"),
+        "sourceRecordHash" to files.digest(files.child(loaded.directory, "source.v2")), "sourceHash" to loaded.source.sha256,
+        "outputDevice" to proof.request.output.device.toString(), "outputInode" to proof.request.output.inode.toString(),
+        "outputBytes" to proof.request.output.bytes.toString(), "outputSha" to proof.request.output.sha256,
+        "observedBootId" to proof.observedBootId, "hostClosure" to proof.hostClosure.name,
+        "workerEnded" to proof.workerEnded.toString(), "hostFdsClosed" to proof.hostFdsClosed.toString(),
+        "noFutureRpc" to proof.noFutureRpc.toString(), "connectionCleaned" to proof.connectionCleaned.toString(),
+        "noConsumerActorsEnded" to proof.noConsumerActorsEnded.toString(),
+        "proof" to if (loaded.worker == null) "NO_CONSUMER" else "NO_RESULT_CONSUMER")
 
     private fun readOwner(directory: File): Owner {
         val record = files.read(files.child(directory, "owner.v2"), ownerKeys)
@@ -460,6 +621,10 @@ internal class JpegStageV2(
     private fun hash(value: String) { if (!value.matches(Regex("[0-9a-f]{64}"))) blocked("Invalid JPEG digest") }
     private fun outcome(record: Map<String, String>) = try { Outcome.valueOf(record.getValue("outcome")) } catch (failure: IllegalArgumentException) { throw Blocked("Unknown JPEG outcome", failure) }
     private fun validWorker(worker: WorkerIdentity) { if (worker.pid <= 0 || worker.uid < 0 || worker.startTicks <= 0) blocked("Unverified JPEG worker identity") }
+    private fun validSupervisor(supervisor: SupervisorIdentity) {
+        validId(supervisor.bootId)
+        if (supervisor.pid <= 0 || supervisor.uid < 0 || supervisor.startTicks <= 0) blocked("Unverified JPEG supervisor identity")
+    }
     private fun validId(value: String) { if (runCatching { UUID.fromString(value).toString() }.getOrNull() != value || value.length != 36) blocked("Invalid canonical JPEG identity") }
     private fun validOwner(owner: Owner) {
         if (owner.generation != generation || !owner.generation.matches(Regex("[a-zA-Z0-9._-]{1,128}"))) blocked("JPEG generation mismatch")

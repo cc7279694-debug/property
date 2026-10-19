@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-19T06:38:29.946Z" hostname="WHOCARE" time="0.004">
+  <properties/>
+  <testcase name="deadWithoutResultIsUnknownNotTimeout" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="totalDeadlineDoesNotExtendForLateDeath" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="lateResultCannotReviveDeadUnknown" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="backwardsClockFailsClosed" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="bothTerminationAndConnectionCleanupMayRelease" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="deathAloneAllowsShortResultOrderingWindow" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="resultBeforeDeathIsAccepted" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="resultAfterTotalDeadlineIsTimeout" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="negativeDeadlineRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="liveWorkerAtDeadlineIsTimeout" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.001"/>
+  <testcase name="lateResultCannotReviveTimeout" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="deathThenResultWithinWindowIsAccepted" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="closedBindingWithoutConsumerProofBlocksAdmission" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="bindingUnknownBlocksAdmissionDespiteConsumerEnd" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="liveWorkerWithoutResultWaits" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <testcase name="repeatedDeathDoesNotExtendWindow" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.001"/>
+  <testcase name="negativeGraceRejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

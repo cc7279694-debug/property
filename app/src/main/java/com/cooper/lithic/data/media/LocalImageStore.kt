@@ -25,6 +25,8 @@ import kotlinx.coroutines.withContext
 import java.io.InputStream
 import java.util.UUID
 import com.cooper.lithic.data.media.jpegstage.JpegStageV2
+import com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifier
+import com.cooper.lithic.data.media.jpegworker.AndroidJpegRecoveryProbe
 import com.cooper.lithic.data.media.jpegworker.JpegWorkerClient
 import com.cooper.lithic.data.media.jpegworker.JpegWorkerRuntime
 import com.cooper.lithic.data.media.jpegworker.JpegWorkerRequest
@@ -156,20 +158,44 @@ class LocalImageStore(
 
     private suspend fun prepareJpeg(input: InputStream, assetId: String): PreparedImage {
         val protocol = files.jpeg
+        val recoveryProbe = AndroidJpegRecoveryProbe(JpegWorkerRuntime.requireHostContext())
+        // Only exact old Host/Worker instances that really ended can recover on restart.
+        // Active/missing identities, legacy stages and unknown children remain blocked.
+        recoverAbandonedJpegStages(recoveryProbe)
+        val supervisor = try { recoveryProbe.currentSupervisor() }
+        catch (error: IOException) { throw JpegStageV2.Blocked("JPEG supervisor OS identity is unproven", error) }
         val owner = JpegStageV2.Owner(files.generation.name, assetId, UUID.randomUUID().toString(), UUID.randomUUID().toString(), UUID.randomUUID().toString())
         // Cooperative checks surround source reads; they cannot interrupt a provider blocked
         // inside read(). Such an attempt keeps its producer ownership until read returns.
         val callerContext = currentCoroutineContext()
-        val snapshot = protocol.create(owner, input) { callerContext.ensureActive() }
+        val snapshot = protocol.create(owner, input, supervisor) { callerContext.ensureActive() }
         val guard = protocol.guardFile(owner)
         val guardStat = Os.lstat(guard.path)
         var observed: JpegWorkerResult? = null
         fun cleanupProvedTerminal() {
             val known = protocol.snapshot(owner)
-            if (known.outcome != null && !known.pinned) protocol.safeCleanup(owner)
+            if (!known.pinned && (known.outcome != null || known.state == JpegStageV2.State.ABANDONED)) protocol.safeCleanup(owner)
+        }
+        fun closeWithoutStructuredResult(result: JpegWorkerResult): Boolean {
+            val worker = result.workerIdentity ?: return false
+            if (!result.originalSessionQuiescent || !result.hostFdsClosed || !result.rpcQuiescent ||
+                !result.consumerEnded || !result.connectionCleaned || result.outcome == JpegWorkerOutcome.SUCCESS) return false
+            val live = JpegRecoveryVerifier.LiveQuiescence(owner, supervisor,
+                JpegStageV2.WorkerIdentity(worker.pid, worker.uid, worker.startTicks),
+                result.hostFdsClosed, result.rpcQuiescent, result.originalSessionQuiescent,
+                result.connectionCleaned, result.binderDead, result.matchingProcessDead, result.guardReleased)
+            // The protocol takes and retains its real namespace/consumer lease around
+            // OS verification, durable revoke, proof readback and the non-success record.
+            protocol.recoverNoResult(owner) { request -> verifyRecoveryClosure(recoveryProbe, request, live) }
+            cleanupProvedTerminal()
+            return true
         }
         fun abandoned(result: JpegWorkerResult) {
             protocol.revoke(owner, "CALLER_CANCELLED")
+            if (protocol.snapshot(owner).state == JpegStageV2.State.ABANDONED) {
+                cleanupProvedTerminal()
+                return
+            }
             val worker = result.workerIdentity
             if (worker != null && result.consumerEnded && result.connectionCleaned && result.resultCount == 1 &&
                 result.sourceFdClosed && result.outputFdClosed && result.outcome in setOf(JpegWorkerOutcome.SUCCESS, JpegWorkerOutcome.CANCELLED)) {
@@ -179,6 +205,8 @@ class LocalImageStore(
                         sourceFdClosed = true, outputFdClosed = true, binderDead = true, matchingProcessDead = true,
                         strictFinished = result.strictFinished, decoderDestroyed = result.decoderDestroyed, connectionCleaned = true))
                 }
+            } else if (result.outcome != JpegWorkerOutcome.SUCCESS) {
+                closeWithoutStructuredResult(result)
             }
             // Cancellation is never evidence of retirement. Only the durable receipt
             // (possibly just proved above) can permit removal of this attempt's bytes.
@@ -210,7 +238,9 @@ class LocalImageStore(
             }
             if (result.outcome != JpegWorkerOutcome.SUCCESS) protocol.revoke(owner, result.outcome.name)
             var terminalProved = false
-            if (worker != null && result.consumerEnded && result.connectionCleaned) {
+            if (worker != null && result.consumerEnded && result.connectionCleaned &&
+                result.resultCount == 1 && result.sourceFdClosed && result.outputFdClosed &&
+                outcome != JpegStageV2.Outcome.RESULT_UNKNOWN) {
                 val output = if (result.canPrepare) files.identity(protocol.outputFile(owner)) else null
                 if (output != null && (output.sha256 != result.outputSha256 || output.bytes != result.outputSize || result.mime != "image/jpeg")) {
                     throw ImageStoreException(MediaFailureKind.RESULT_UNKNOWN, "Worker output evidence differs from its private inode")
@@ -220,6 +250,8 @@ class LocalImageStore(
                     result.resultCount, result.sourceFdClosed, result.outputFdClosed, result.binderDead, result.matchingProcessDead,
                     result.strictFinished, result.decoderDestroyed, connectionCleaned = result.connectionCleaned))
                 terminalProved = true
+            } else if (result.outcome != JpegWorkerOutcome.SUCCESS) {
+                terminalProved = closeWithoutStructuredResult(result)
             }
             if (!result.canPrepare) {
                 // Reclaim only a fully proved terminal attempt. Unknown consumers keep
@@ -283,6 +315,27 @@ class LocalImageStore(
             throw error
         }
     }
+
+    /** Never reads business rows or changes a cover. Missing closure evidence stops the whole admission. */
+    internal fun recoverAbandonedJpegStages(
+        probe: JpegRecoveryVerifier.Probe = AndroidJpegRecoveryProbe(JpegWorkerRuntime.requireHostContext()),
+    ) {
+        val protocol = files.jpeg
+        for (owner in protocol.pendingRecoveryOwners()) {
+            protocol.recoverNoResult(owner) { request -> verifyRecoveryClosure(probe, request) }
+            protocol.safeCleanup(owner)
+        }
+        // This also checks legacy/unknown/nonterminal entries that were deliberately
+        // not eligible for recovery. No stage is skipped to let a new consumer run.
+        protocol.admission()
+    }
+
+    private fun verifyRecoveryClosure(
+        probe: JpegRecoveryVerifier.Probe,
+        request: JpegStageV2.RecoveryRequest,
+        live: JpegRecoveryVerifier.LiveQuiescence? = null,
+    ): JpegStageV2.ClosureProof = try { JpegRecoveryVerifier(probe).verify(request, live) }
+    catch (error: IOException) { throw JpegStageV2.Blocked("JPEG consumer closure is unproven", error) }
 
     suspend fun restorePrepared(assetId: String): MediaResult<PreparedImage> = receivingPreparation(assetId) {
         guarded {

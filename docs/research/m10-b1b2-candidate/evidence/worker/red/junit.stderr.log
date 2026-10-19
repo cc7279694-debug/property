@@ -1,0 +1,7 @@
+Exception in thread "Thread-16" java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.lambda$simultaneousReturnAndRepeatedSameCleanupRequestDispatchOnce$8(JpegBindingContinuationTest.java:75)
+	at java.base/java.lang.Thread.run(Thread.java:840)

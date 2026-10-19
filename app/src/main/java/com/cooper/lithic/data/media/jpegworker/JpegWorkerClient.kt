@@ -45,10 +45,19 @@ internal class JpegWorkerClient(context:Context) {
             // Technical category only: do not print source paths, private data or image bytes.
             Log.e("LITHIC_JPEG","ABANDONED_RESULT_HOOK_UNKNOWN:${error.javaClass.simpleName}")
         })
+        // A later quiescence proof is not another accepted RESULT. It only closes this failed Session.
+        val lateClosure=JpegAbandonedDelivery<JpegWorkerResult>(safety,{value ->
+            check(value.outcome!=JpegWorkerOutcome.SUCCESS&&value.originalSessionQuiescent)
+            abandonedResult(value)
+            if(value.mayReleaseSupervisor)admission.set(false)
+        },{error ->
+            control.recordError("LATE_CLOSURE_HOOK_UNKNOWN",error)
+            Log.e("LITHIC_JPEG","LATE_CLOSURE_HOOK_UNKNOWN:${error.javaClass.simpleName}")
+        })
         continuation.invokeOnCancellation {control.fail(JpegWorkerOutcome.CANCELLED)}
         supervisor.execute {
             val result=if(!admission.compareAndSet(false,true)) JpegWorkerResult(JpegWorkerOutcome.RESULT_UNKNOWN,detail="NONTERMINAL_CONSUMER_BLOCKS_ADMISSION")
-            else try {run(source,output,guard,request,beforeDelivery,control)}
+            else try {run(source,output,guard,request,beforeDelivery,control) {lateClosure.abandon(it)}}
             catch(error:Exception) {control.fail(JpegWorkerOutcome.RESULT_UNKNOWN);JpegWorkerResult(control.failure.get() ?: JpegWorkerOutcome.RESULT_UNKNOWN,detail="SUPERVISION_UNKNOWN:${error.javaClass.simpleName}")}
             // If no conclusive process/lease proof exists admission remains closed. Restart also sees the durable pin.
             if(result.mayReleaseSupervisor)admission.set(false)
@@ -80,7 +89,8 @@ internal class JpegWorkerClient(context:Context) {
         }
     }
 
-    private fun run(source:File,output:File,guard:File,request:JpegWorkerRequest,beforeDelivery:(JpegWorkerIdentity)->Unit,control:Control):JpegWorkerResult {
+    private fun run(source:File,output:File,guard:File,request:JpegWorkerRequest,beforeDelivery:(JpegWorkerIdentity)->Unit,control:Control,
+                    lateResult:(JpegWorkerResult)->Unit):JpegWorkerResult {
         if(JpegProcessRole.role(app.packageName)!=JpegProcessRole.Role.MAIN)throw IOException("Only verified main process may supervise")
         val gate=JpegSessionFence(request.attemptId,request.sessionId,request.nonce,Process.myPid(),Process.myUid())
         control.gate.set(gate)
@@ -93,10 +103,14 @@ internal class JpegWorkerClient(context:Context) {
         val binding=JpegBindingDuty();val bound=AtomicBoolean(false)
         val unbound=AtomicBoolean(false);val bindingError=AtomicReference<String?>()
         val dataClosed=AtomicBoolean(false)
+        val hostCloseUnknown=AtomicBoolean(false);val hostFdsClosed=AtomicBoolean(false)
+        val runFinished=AtomicBoolean(false);val lateNeeded=AtomicBoolean(false);val lateQueued=AtomicBoolean(false)
+        val lateWake=AtomicReference<(() -> Unit)?>(null)
         val main=Handler(Looper.getMainLooper())
         val death=IBinder.DeathRecipient {
             gate.binderDied();died.countDown()
             JpegWorkerWire.event("HOST_BINDER_DIED",request,worker.get())
+            lateWake.get()?.invoke()
         }
         val callback=object:Binder() {
             override fun onTransact(code:Int,data:Parcel,reply:Parcel?,flags:Int):Boolean {
@@ -147,20 +161,27 @@ internal class JpegWorkerClient(context:Context) {
             override fun onNullBinding(name:ComponentName){bindingError.set("NULL_BINDING");connected.countDown()}
             override fun onBindingDied(name:ComponentName){bindingError.set("BINDING_DIED");connected.countDown()}
         }
+        val cleanupDone=CountDownLatch(1)
+        val cleanupContinuation=Runnable {
+            // Duty invokes this once and outside its monitor, only after the actual bind/RPC return.
+            if(!main.post {
+                try {
+                    if(binding.takeCleanup())try {
+                        app.unbindService(connection);binding.cleanupSucceeded()
+                        JpegWorkerWire.event("HOST_UNBIND_RETURNED",request,worker.get())
+                    }catch(error:Exception){binding.cleanupFailed(error.javaClass.simpleName);bindingError.set("UNBIND_UNKNOWN:${error.javaClass.simpleName}")}
+                    unbound.set(binding.cleaned())
+                }finally {cleanupDone.countDown();lateWake.get()?.invoke()}
+            }) {
+                bindingError.set("UNBIND_DISPATCH_UNKNOWN")
+                cleanupDone.countDown()
+                throw java.util.concurrent.RejectedExecutionException("Main cleanup dispatch rejected")
+            }
+        }
         fun cleanupConnection():Boolean {
             if(binding.cleaned()){unbound.set(true);return true}
-            if(!binding.closeRpcAdmission()) {
-                bindingError.compareAndSet(null,"UNBIND_BLOCKED_INFLIGHT_RPC");return false
-            }
-            val cleaned=CountDownLatch(1)
-            if(main.post {
-                if(binding.takeCleanup())try {
-                    app.unbindService(connection);binding.cleanupSucceeded()
-                    JpegWorkerWire.event("HOST_UNBIND_RETURNED",request,worker.get())
-                }
-                catch(error:Exception){binding.cleanupFailed(error.javaClass.simpleName);bindingError.set("UNBIND_UNKNOWN:${error.javaClass.simpleName}")}
-                unbound.set(binding.cleaned());cleaned.countDown()
-            })try {cleaned.await(5,TimeUnit.SECONDS)}catch(error:InterruptedException) {
+            binding.requestQuiescentCleanup(cleanupContinuation)
+            if(binding.isQuiescent())try {cleanupDone.await(5,TimeUnit.SECONDS)}catch(error:InterruptedException) {
                 bindingError.set("UNBIND_WAIT_INTERRUPTED");Thread.currentThread().interrupt()
             }
             return unbound.get()
@@ -172,6 +193,50 @@ internal class JpegWorkerClient(context:Context) {
         },JpegWorkerWire.HARD_DEADLINE_MS,TimeUnit.MILLISECONDS)
         var hostSource:ParcelFileDescriptor?=null;var hostOutput:ParcelFileDescriptor?=null;var hostGuard:ParcelFileDescriptor?=null
         var normalRetire=false
+        fun retiredProof(identity:JpegWorkerIdentity):Pair<Boolean,Boolean> {
+            var gone=false;var released=false
+            repeat(20) {
+                if(!gone)try {gone=JpegProcessRole.instanceAbsent(identity)}catch(error:Exception){control.recordError("OS_DEATH_UNKNOWN",error)}
+                if(!gone)Thread.sleep(25)
+            }
+            if(gone)released=try {
+                JpegWorkerWire.open(guard,OsConstants.O_RDWR).use {fd ->
+                    val st=Os.fstat(fd.fileDescriptor)
+                    if(st.st_dev!=request.guardDevice||st.st_ino!=request.guardInode||st.st_size!=0L)false
+                    else ParcelFileDescriptor.AutoCloseOutputStream(ParcelFileDescriptor.dup(fd.fileDescriptor)).use {stream ->
+                        val lease=stream.channel.tryLock();if(lease==null)false else {lease.release();true}
+                    }
+                }
+            }catch(error:Exception){control.recordError("GUARD_UNKNOWN",error);false}
+            return gone to released
+        }
+        lateWake.set {
+            // Both orders are legal: detach before death, or death before the delayed detach.
+            if(runFinished.get()&&lateNeeded.get()&&control.failure.get()!=null&&worker.get()!=null&&
+                binding.cleaned()&&binding.isQuiescent()&&hostFdsClosed.get()&&died.count==0L&&lateQueued.compareAndSet(false,true)) {
+                supervisor.execute {
+                    try {
+                        if(control.confirmedRevoke()) {
+                            val identity=worker.get() ?: throw IOException("Late Worker identity absent")
+                            val (gone,released)=retiredProof(identity)
+                            if(gone&&released&&binding.cleaned()&&binding.isQuiescent()) {
+                                gate.ended(true,true,true)
+                                val envelope=result.get()
+                                val failure=control.failure.get() ?: JpegWorkerOutcome.RESULT_UNKNOWN
+                                check(failure!=JpegWorkerOutcome.SUCCESS)
+                                lateResult(JpegWorkerResult(failure,identity,gate.acceptedResults(),
+                                    envelope?.getBoolean("sourceClosed")==true,envelope?.getBoolean("outputClosed")==true,
+                                    binderDead=true,matchingProcessDead=true,guardReleased=true,
+                                    strictFinished=envelope?.getBoolean("strictFinished")==true,
+                                    decoderDestroyed=envelope?.getBoolean("decoderDestroyed")==true,
+                                    detail="LATE_FAILED_SESSION_QUIESCENCE",connectionCleaned=true,hostFdsClosed=true,
+                                    rpcQuiescent=true,originalSessionQuiescent=true))
+                            }
+                        }
+                    }catch(error:Exception){control.recordError("LATE_QUIESCENCE_UNKNOWN",error)}
+                }
+            }
+        }
         try {
             if(!main.post {
                 try {
@@ -208,6 +273,7 @@ internal class JpegWorkerClient(context:Context) {
             val closedOutput=JpegWorkerWire.close(hostOutput);hostOutput=null
             val closedGuard=JpegWorkerWire.close(hostGuard);hostGuard=null
             dataClosed.set(closedSource&&closedOutput&&closedGuard)
+            if(!dataClosed.get())hostCloseUnknown.set(true)
             if(!dataClosed.get())throw IOException("Host descriptor close unknown")
             val wait=JpegResultWait(deadline,500)
             while(true) {
@@ -239,6 +305,7 @@ internal class JpegWorkerClient(context:Context) {
         catch(error:Exception) {control.recordError("INVOCATION_FAILED",error);control.fail(JpegWorkerOutcome.RESULT_UNKNOWN)}
         finally {
             val closedSource=JpegWorkerWire.close(hostSource);val closedOutput=JpegWorkerWire.close(hostOutput);val closedGuard=JpegWorkerWire.close(hostGuard)
+            hostFdsClosed.set(closedSource&&closedOutput&&closedGuard&&!hostCloseUnknown.get())
             if(!closedSource||!closedOutput||!closedGuard)control.fail(JpegWorkerOutcome.RESULT_UNKNOWN)
             try {if(control.failure.get()!=null) {
                 // Disk fsync and remote Binder have separate executors. A hung REVOKE transaction
@@ -297,13 +364,20 @@ internal class JpegWorkerClient(context:Context) {
         if(finalOutcome!=JpegWorkerOutcome.SUCCESS&&!control.confirmedRevoke()) {
             control.recordCode("FAILURE_REVOKE_NOT_CONFIRMED");finalOutcome=JpegWorkerOutcome.RESULT_UNKNOWN
         }
-        return JpegWorkerResult(finalOutcome,identity,gate.acceptedResults(),
+        val originalQuiescent=finalOutcome!=JpegWorkerOutcome.SUCCESS&&control.revokeSucceeded.get()&&control.revokeFinished.count==0L&&
+            hostFdsClosed.get()&&binding.isQuiescent()&&unbound.get()&&died.count==0L&&processGone&&guardReleased
+        val published=JpegWorkerResult(finalOutcome,identity,gate.acceptedResults(),
             envelope?.getBoolean("sourceClosed")==true,envelope?.getBoolean("outputClosed")==true,
             died.count==0L,processGone,guardReleased,envelope?.getBoolean("strictFinished")==true,
             envelope?.getBoolean("decoderDestroyed")==true,envelope?.getInt("width") ?: 0,envelope?.getInt("height") ?: 0,
             if((envelope?.getInt("width") ?: 0)>0)"image/jpeg" else "",envelope?.getString("outputSha") ?: "",
             envelope?.getLong("outputSize") ?: 0, control.firstError.get() ?: bindingError.get() ?: envelope?.getString("detail") ?: "NO_STRUCTURED_RESULT",
-            connectionCleaned=unbound.get())
+            connectionCleaned=unbound.get(),hostFdsClosed=hostFdsClosed.get(),rpcQuiescent=binding.isQuiescent(),
+            originalSessionQuiescent=originalQuiescent)
+        lateNeeded.set(finalOutcome!=JpegWorkerOutcome.SUCCESS&&!originalQuiescent)
+        runFinished.set(true)
+        lateWake.get()?.invoke()
+        return published
     }
     private fun <T> boundedRpc(binding:JpegBindingDuty,action:()->T):T {
         // Tickets are claimed at actual queue execution and released only by the matching real return.

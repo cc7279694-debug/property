@@ -1,0 +1,491 @@
+{
+  "status": "OFFLINE_CANDIDATE_VERIFIED_NOT_ANDROID",
+  "artifacts": [
+    {
+      "name": "app",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 13900723,
+      "sha256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+      "applicationId": "com.cooper.lithic.debug",
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ]
+    },
+    {
+      "name": "test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 2688755,
+      "sha256": "bb00c0f6e34059170d20124eab739b43ccbc257ecc265def28906077fc0cb78c",
+      "applicationId": "com.cooper.lithic.debug.test",
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ]
+    }
+  ],
+  "native": {
+    "archiveSHA256": "6f30092cef9fb839779646608f4ee14ae3cbac989c47fa05e841b0841f09878e",
+    "generatedFourABIs": [
+      {
+        "abi": "arm64-v8a",
+        "bytes": 1607640,
+        "sha256": "7cf89f3c73df15bc2ffa94e6a676c7754edfd035857efb26a4e328899c3e8f90",
+        "audit": {
+          "machine": "AArch64",
+          "loadAlignments": [
+            16384,
+            16384
+          ],
+          "needed": [
+            "libm.so",
+            "libdl.so",
+            "libc.so"
+          ],
+          "definedVisibleExports": [
+            "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+          ]
+        }
+      },
+      {
+        "abi": "armeabi-v7a",
+        "bytes": 1321948,
+        "sha256": "b3ed971b58f0c1f426eac7c0ac4ef89cae6c1674c16f6cfa3cb962908defe662",
+        "audit": {
+          "machine": "ARM",
+          "loadAlignments": [
+            16384,
+            16384
+          ],
+          "needed": [
+            "libm.so",
+            "libdl.so",
+            "libc.so"
+          ],
+          "definedVisibleExports": [
+            "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+          ]
+        }
+      },
+      {
+        "abi": "x86",
+        "bytes": 1454824,
+        "sha256": "a197924d35a222c56db96dd93e09f75a9f8505c345c7b129bc0d65c4aa7c8814",
+        "audit": {
+          "machine": "Intel 80386",
+          "loadAlignments": [
+            16384,
+            16384
+          ],
+          "needed": [
+            "libm.so",
+            "libdl.so",
+            "libc.so"
+          ],
+          "definedVisibleExports": [
+            "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+          ]
+        }
+      },
+      {
+        "abi": "x86_64",
+        "bytes": 1699576,
+        "sha256": "12b5e515a320009ca6b2cdb51f1455cf39c17d86de45aaa5a5cb2884c32b3ef4",
+        "audit": {
+          "machine": "Advanced Micro Devices X86-64",
+          "loadAlignments": [
+            16384,
+            16384
+          ],
+          "needed": [
+            "libm.so",
+            "libdl.so",
+            "libc.so"
+          ],
+          "definedVisibleExports": [
+            "Java_com_cooper_lithic_research_StrictJpegCandidate_validateReadonlyFd"
+          ]
+        }
+      }
+    ],
+    "packagedFourABIs": [
+      {
+        "abi": "arm64-v8a",
+        "bytes": 284136,
+        "sha256": "44cc13c6921a0bda3a2e298eb232c1ad0f0863c2ab33cbf8e74807a65d2ea0de",
+        "sameAsLockedHistoricalApp": true,
+        "sameAsAgpStripped": true
+      },
+      {
+        "abi": "armeabi-v7a",
+        "bytes": 218760,
+        "sha256": "f212d2b51448f919bbbf48b30a68a7f795261fe5ebdef72e919e1ea2c45faabd",
+        "sameAsLockedHistoricalApp": true,
+        "sameAsAgpStripped": true
+      },
+      {
+        "abi": "x86",
+        "bytes": 328884,
+        "sha256": "8531d0a92fd4cf407660796cc310dd4350e94a538be44a45be17c57bef644d97",
+        "sameAsLockedHistoricalApp": true,
+        "sameAsAgpStripped": true
+      },
+      {
+        "abi": "x86_64",
+        "bytes": 342256,
+        "sha256": "25b0fa227d1380beb995a7d360f4c29964e72d8d288b62b3aa2ac7cfbb37a116",
+        "sameAsLockedHistoricalApp": true,
+        "sameAsAgpStripped": true
+      }
+    ],
+    "notices": [
+      {
+        "name": "LICENSE.md",
+        "bytes": 6077,
+        "sha256": "ba6bceebcba0fdd35488477c2cca8c4632ce82c74dbfbc87d886ce6fc4433579"
+      },
+      {
+        "name": "LITHIC_CHANGES.txt",
+        "bytes": 532,
+        "sha256": "c727e8ea660b395f5538f4dc3c766bf411982b83a3e4f2e3e2981c684efb59e0"
+      },
+      {
+        "name": "README.ijg",
+        "bytes": 12799,
+        "sha256": "75815e3bf6484201a3c3d17a1bbf10f2e8e3237f84df10a2357ea896db2a81d6"
+      }
+    ],
+    "scope": "PACKAGED_EXISTING_ELF_NOT_NEW_ANDROID_LOADING"
+  },
+  "historicalApksUnchanged": true,
+  "releaseDiagnostics": "NOOP_BYTECODE_VERIFIED_NO_RELEASE_APK",
+  "dexApi26DeclaredMetadata": {
+    "scope": "API26_DECLARED_CLASS_METADATA_ONLY",
+    "status": "PASS",
+    "apiDatabase": {
+      "path": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platforms\\android-36\\data\\api-versions.xml",
+      "sha256": "923f7e6367759e127679b6b5a4156ee801100e3cc07dc1d99cb811e791e45435",
+      "classes": 6735
+    },
+    "classes": [
+      {
+        "descriptor": "Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;",
+        "declaredMethods": 15,
+        "status": "PASS",
+        "violations": []
+      },
+      {
+        "descriptor": "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;",
+        "declaredMethods": 17,
+        "status": "PASS",
+        "violations": []
+      },
+      {
+        "descriptor": "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;",
+        "declaredMethods": 28,
+        "status": "PASS",
+        "violations": []
+      },
+      {
+        "descriptor": "Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;",
+        "declaredMethods": 13,
+        "status": "PASS",
+        "violations": []
+      },
+      {
+        "descriptor": "Lcom/cooper/lithic/data/media/M10JpegResourceEvidenceTest;",
+        "declaredMethods": 27,
+        "status": "PASS",
+        "violations": []
+      },
+      {
+        "descriptor": "Lcom/cooper/lithic/data/media/M10ResourceSampler;",
+        "declaredMethods": 14,
+        "status": "PASS",
+        "violations": []
+      }
+    ],
+    "limitations": [
+      "Does not execute Android reflection or verify transitive code paths.",
+      "Only Android framework class introduction versions in the local official SDK XML are evaluated.",
+      "Annotations, method bodies, exception catch tables, transitive non-Android types and member-level API introductions are not admission proofs.",
+      "API28 helper references are intentional behind SDK_INT guard; no claim that all DEX API28 code references are absent."
+    ]
+  },
+  "affectedJvm": {
+    "uniqueMethods": 297,
+    "existingWorkerMethods": 143,
+    "existingStageMethods": 79,
+    "newMethods": 75,
+    "suites": [
+      {
+        "className": "com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest",
+        "tests": 16,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest.xml",
+        "sha256": "aae9bdb788c96b9936e1bad7f70e198ef18fbedeb091bdc8529585d4dab45a26"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegstage.JpegStageV2Test",
+        "tests": 106,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegstage.JpegStageV2Test.xml",
+        "sha256": "4014b85e2f82d9f80bb40230e3ce093878ca42a3dadc5c2514c6e45e0f236caa"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest",
+        "tests": 12,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegAbandonedDeliveryTest.xml",
+        "sha256": "7d4b6e6b2d6f3af042e6b0bc0b4d50e1e5a0bcfa8ff6a141a810b014b213addf"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest",
+        "tests": 11,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.xml",
+        "sha256": "a12ef309aa6ea960191bbb324a48aec0d02f590d2d63ffc8fd4eab84b8ffe7fe"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest",
+        "tests": 11,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegBindingDutyTest.xml",
+        "sha256": "f15f472ec27e7eeb473dc1a11a50f482e82d6def0703fa759323a5c2c0cfb58c"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegDecoderPolicyTest",
+        "tests": 7,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegDecoderPolicyTest.xml",
+        "sha256": "9fbfd0d60e5bfa97f0b9532eb78154ed21da100c5de96966c1a92d864916b7ec"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegFailurePublicationTest",
+        "tests": 4,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegFailurePublicationTest.xml",
+        "sha256": "3c4786475ae2282372c23d201120d8e84f9b07e065142c219e55a244eed9cceb"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegPublicationDeadlineTest",
+        "tests": 3,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegPublicationDeadlineTest.xml",
+        "sha256": "e0dd312aa1f3c0f428ced268fc5bd700d427c436d91e48ff3def6d5b561deeac"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest",
+        "tests": 21,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.xml",
+        "sha256": "138d7d0d663cc135d2bf295f6dfb04c63975eba24d7faefefef691ab0ed07012"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest",
+        "tests": 17,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegResultWaitTest.xml",
+        "sha256": "05bc7d2047087bdf87ef22bb4a565cb495d6067818ba6caa7db8a04375716775"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegRetirementAcknowledgementTest",
+        "tests": 8,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementAcknowledgementTest.xml",
+        "sha256": "d424ffc4f202c3c6055ef823422a2072a74157f66f54f0ee83efa84e3d33633d"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest",
+        "tests": 12,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementGateTest.xml",
+        "sha256": "8a7f97a14627ffd69ed7237504ae97c51203ac5cc58dafe9c4908a0ec6f3bb8b"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest",
+        "tests": 23,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementHandshakeTest.xml",
+        "sha256": "516372561eb21bc15844922e855594c5ca48ea0500486f88033a18771f01b514"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegRetirementOrderingTest",
+        "tests": 2,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegRetirementOrderingTest.xml",
+        "sha256": "236157360569041c20584d0acddb7be53d3c23e0f73316c41b2c1ba807f60dff"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest",
+        "tests": 20,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegRpcBindingDutyTest.xml",
+        "sha256": "c990002c178e38bc7c808ced2b9dabfc788fb1d4c3a01d38cb2838c1729a679a"
+      },
+      {
+        "className": "com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest",
+        "tests": 24,
+        "xml": "TEST-com.cooper.lithic.data.media.jpegworker.JpegSessionFenceTest.xml",
+        "sha256": "3b5bdc6904d743e9b6d3024780ff07c9afca56afecf5346f6a011a13acf53224"
+      }
+    ],
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 10,
+    "Information": 0
+  },
+  "finalInputs": {
+    "files": 195,
+    "beforeAfterSame": true,
+    "normalizedAggregateSHA256": "50a44032750dcae72ba32111d625339f9f62d4fab6a5bbe5d57660bdbb58e73f"
+  },
+  "finalDeltaSinceJvmRun": "ONLY_NEW_B2_ANDROIDTEST_FAILURE_EVIDENCE_BRANCH; MAIN_DEBUG_RELEASE_JVM_INPUTS_IDENTICAL",
+  "commands": [
+    {
+      "label": "app-badging",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 5429,
+      "stdoutSHA256": "e339c3a330ac685015f77650825f831158e64a657416ea11a2d601dc24bfc739",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "app-manifest",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit": 0,
+      "stdoutBytes": 7441,
+      "stdoutSHA256": "14483369c691050a9c3554da8204d3182aee56781eef57d018dc34c75137b8c2",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "app-signature",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "test-badging",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 1170,
+      "stdoutSHA256": "57344bee6a715bb2a176c23f640389bdfdb53fdd2bb7e54a7b2b30f832098979",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "test-manifest",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit": 0,
+      "stdoutBytes": 5349,
+      "stdoutSHA256": "f33eeb57f59afdbb5f857deb1a02ab43b8690f7b7c21d835c02224eeff55e1c6",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "test-signature",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "historical-app-signature",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-jpeg-review-fix\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "JpegResourceDiagnostics-release-bytecode",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-c",
+        "-p",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\tmp\\kotlin-classes\\release\\com\\cooper\\lithic\\data\\media\\jpegworker\\JpegResourceDiagnostics.class"
+      ],
+      "exit": 0,
+      "stdoutBytes": 2189,
+      "stdoutSHA256": "956968dad97b9121ed3691b2470976d97eecf1970ff2b7dae47fc74e86450e7d",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "JpegResourceDiagnostics-Session-release-bytecode",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-c",
+        "-p",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\tmp\\kotlin-classes\\release\\com\\cooper\\lithic\\data\\media\\jpegworker\\JpegResourceDiagnostics$Session.class"
+      ],
+      "exit": 0,
+      "stdoutBytes": 1299,
+      "stdoutSHA256": "9f20283b8c3451382634d92f3648fd7347b8d3f1ac6f0dd6210a497eabb69640",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "deviceOperations": 0,
+  "androidB1": "NOT_RUN",
+  "androidB2Three40MP": "NOT_RUN",
+  "postBuildTestStrengthening": {
+    "onlyChangedInput": "app/src/test/java/com/cooper/lithic/data/media/jpegworker/JpegBindingContinuationTest.java",
+    "sourceRawSHA256": "21ed01e0e8805c59d7fa5591c5d3228aa8e8bb5a1b49d07494ae562f2bf37796",
+    "meaning": "Added outer assertions to detect recorded callback AssertionError; method identities unchanged",
+    "latestJavaComponentRun": "../worker/green-callback-assertions/RESULTS.json",
+    "junitPass": 154,
+    "compileExit": 0,
+    "junitExit": 0,
+    "currentUniqueTotalStill": 297,
+    "firstUnifiedXmlPreserved": true,
+    "mainDebugReleaseAndroidTestAndApkBuildInputsUnchanged": true,
+    "noDeviceOrApkRebuildAfterTestOnlyChange": true
+  }
+}

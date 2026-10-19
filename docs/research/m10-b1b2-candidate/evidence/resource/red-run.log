@@ -1,0 +1,122 @@
+JUnit version 4.13.2
+.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E
+Time: 0.02
+There were 21 failures:
+1) missing_duplicate_or_overflowed_metrics_are_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.proc(JpegResourceEvidence.java:10)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$missing_duplicate_or_overflowed_metrics_are_rejected$13(JpegResourceEvidenceTest.java:59)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.missing_duplicate_or_overflowed_metrics_are_rejected(JpegResourceEvidenceTest.java:59)
+2) duplicate_marker_field_is_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$duplicate_marker_field_is_rejected$1(JpegResourceEvidenceTest.java:35)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.duplicate_marker_field_is_rejected(JpegResourceEvidenceTest.java:35)
+3) permit_size_is_bounded_and_has_no_nul(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$permit_size_is_bounded_and_has_no_nul$7(JpegResourceEvidenceTest.java:41)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.permit_size_is_bounded_and_has_no_nul(JpegResourceEvidenceTest.java:41)
+4) native_unavailable_metric_remains_unknown(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.nativeResult(JpegResourceEvidence.java:11)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$native_unavailable_metric_remains_unknown$20(JpegResourceEvidenceTest.java:70)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.native_unavailable_metric_remains_unknown(JpegResourceEvidenceTest.java:70)
+5) native_array_shape_and_status_are_checked(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.nativeResult(JpegResourceEvidence.java:11)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$native_array_shape_and_status_are_checked$23(JpegResourceEvidenceTest.java:75)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.native_array_shape_and_status_are_checked(JpegResourceEvidenceTest.java:75)
+6) monotonic_delta_overflow_or_backwards_time_is_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.delta(JpegResourceEvidence.java:12)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.monotonic_delta_overflow_or_backwards_time_is_rejected(JpegResourceEvidenceTest.java:77)
+7) unknown_marker_field_is_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$unknown_marker_field_is_rejected$2(JpegResourceEvidenceTest.java:36)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.unknown_marker_field_is_rejected(JpegResourceEvidenceTest.java:36)
+8) filename_cannot_substitute_incomplete_444_as_healthy(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$filename_cannot_substitute_incomplete_444_as_healthy$5(JpegResourceEvidenceTest.java:39)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.filename_cannot_substitute_incomplete_444_as_healthy(JpegResourceEvidenceTest.java:39)
+9) missing_marker_identity_is_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$missing_marker_identity_is_rejected$4(JpegResourceEvidenceTest.java:38)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.missing_marker_identity_is_rejected(JpegResourceEvidenceTest.java:38)
+10) size_and_sha_must_match_fixed_fixture(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$size_and_sha_must_match_fixed_fixture$6(JpegResourceEvidenceTest.java:40)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.size_and_sha_must_match_fixed_fixture(JpegResourceEvidenceTest.java:40)
+11) native_unbalanced_or_incomplete_success_is_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.nativeResult(JpegResourceEvidence.java:11)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$native_unbalanced_or_incomplete_success_is_rejected$21(JpegResourceEvidenceTest.java:72)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.native_unbalanced_or_incomplete_success_is_rejected(JpegResourceEvidenceTest.java:72)
+12) wrong_pid_uid_or_startticks_is_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.proc(JpegResourceEvidence.java:10)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$wrong_pid_uid_or_startticks_is_rejected$9(JpegResourceEvidenceTest.java:53)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.wrong_pid_uid_or_startticks_is_rejected(JpegResourceEvidenceTest.java:53)
+13) non_synthetic_generation_is_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$non_synthetic_generation_is_rejected$3(JpegResourceEvidenceTest.java:37)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.non_synthetic_generation_is_rejected(JpegResourceEvidenceTest.java:37)
+14) all_three_original_fixture_identities_are_supported(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.all_three_original_fixture_identities_are_supported(JpegResourceEvidenceTest.java:44)
+15) proc_status_preserves_rss_and_lifetime_hwm_as_distinct_metrics(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.proc(JpegResourceEvidence.java:10)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.proc_status_preserves_rss_and_lifetime_hwm_as_distinct_metrics(JpegResourceEvidenceTest.java:48)
+16) wrong_units_negative_or_rss_greater_than_hwm_are_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.proc(JpegResourceEvidence.java:10)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$wrong_units_negative_or_rss_greater_than_hwm_are_rejected$16(JpegResourceEvidenceTest.java:64)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.wrong_units_negative_or_rss_greater_than_hwm_are_rejected(JpegResourceEvidenceTest.java:64)
+17) native_success_contains_balanced_real_release_and_metrics(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.nativeResult(JpegResourceEvidence.java:11)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.native_success_contains_balanced_real_release_and_metrics(JpegResourceEvidenceTest.java:69)
+18) conflicting_uid_credentials_are_rejected(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.proc(JpegResourceEvidence.java:10)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$conflicting_uid_credentials_are_rejected$12(JpegResourceEvidenceTest.java:57)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.conflicting_uid_credentials_are_rejected(JpegResourceEvidenceTest.java:57)
+19) every_request_host_and_boot_field_is_matched(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.every_request_host_and_boot_field_is_matched(JpegResourceEvidenceTest.java:32)
+20) fixed_permit_round_trips_without_weakening_identity(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.permit(JpegResourceEvidence.java:8)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.fixed_permit_round_trips_without_weakening_identity(JpegResourceEvidenceTest.java:27)
+21) proc_stat_truncation_is_not_a_zero_measurement(com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest)
+java.lang.UnsupportedOperationException: Not implemented
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidence.proc(JpegResourceEvidence.java:10)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.lambda$proc_stat_truncation_is_not_a_zero_measurement$19(JpegResourceEvidenceTest.java:68)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.rejected(JpegResourceEvidenceTest.java:24)
+	at com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.proc_stat_truncation_is_not_a_zero_measurement(JpegResourceEvidenceTest.java:68)
+
+FAILURES!!!
+Tests run: 21,  Failures: 21
+

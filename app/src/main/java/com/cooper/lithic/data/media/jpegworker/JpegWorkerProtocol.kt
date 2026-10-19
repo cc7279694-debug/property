@@ -59,9 +59,14 @@ internal data class JpegWorkerResult(
     val outputSha256: String = "", val outputSize: Long = 0,
     val detail: String = "",
     val connectionCleaned: Boolean = false,
+    // Host observations, never fabricated Worker RESULT/FD flags. Used only for failed-session recovery.
+    val hostFdsClosed: Boolean = false,
+    val rpcQuiescent: Boolean = false,
+    val originalSessionQuiescent: Boolean = false,
 ) {
     val consumerEnded: Boolean get() = binderDead && matchingProcessDead && guardReleased
-    val mayReleaseSupervisor: Boolean get() = JpegResultWait.mayReleaseAdmission(consumerEnded, connectionCleaned)
+    val mayReleaseSupervisor: Boolean get() = JpegResultWait.mayReleaseAdmission(consumerEnded, connectionCleaned) &&
+        (canPrepare || originalSessionQuiescent)
     val canPrepare: Boolean get() = outcome==JpegWorkerOutcome.SUCCESS && resultCount==1 &&
         consumerEnded && connectionCleaned && sourceFdClosed && outputFdClosed && strictFinished && decoderDestroyed
 }

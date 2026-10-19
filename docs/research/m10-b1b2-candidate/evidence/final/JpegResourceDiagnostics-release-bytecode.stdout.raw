@@ -1,0 +1,37 @@
+Compiled from "JpegResourceDiagnostics.kt"
+public final class com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics {
+  public static final com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics INSTANCE;
+
+  private static final com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics$Session inactive;
+
+  public static final int $stable;
+
+  private com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics();
+    Code:
+       0: aload_0
+       1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public final com.cooper.lithic.data.media.jpegworker.JpegResourceDiagnostics$Session open(android.content.Context, com.cooper.lithic.data.media.jpegworker.JpegWorkerRequest);
+    Code:
+       0: aload_1
+       1: ldc           #15                 // String context
+       3: invokestatic  #21                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_2
+       7: ldc           #23                 // String request
+       9: invokestatic  #21                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: getstatic     #27                 // Field inactive:Lcom/cooper/lithic/data/media/jpegworker/JpegResourceDiagnostics$Session;
+      15: areturn
+
+  static {};
+    Code:
+       0: new           #2                  // class com/cooper/lithic/data/media/jpegworker/JpegResourceDiagnostics
+       3: dup
+       4: invokespecial #31                 // Method "<init>":()V
+       7: putstatic     #34                 // Field INSTANCE:Lcom/cooper/lithic/data/media/jpegworker/JpegResourceDiagnostics;
+      10: new           #36                 // class com/cooper/lithic/data/media/jpegworker/JpegResourceDiagnostics$Session
+      13: dup
+      14: invokespecial #37                 // Method com/cooper/lithic/data/media/jpegworker/JpegResourceDiagnostics$Session."<init>":()V
+      17: putstatic     #27                 // Field inactive:Lcom/cooper/lithic/data/media/jpegworker/JpegResourceDiagnostics$Session;
+      20: return
+}

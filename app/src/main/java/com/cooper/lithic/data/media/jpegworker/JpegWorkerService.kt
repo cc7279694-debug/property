@@ -39,6 +39,7 @@ class JpegWorkerService : Service() {
     private val dataResourcesClosed=AtomicBoolean(false)
     private val retirement=JpegRetirementHandshake()
     private var delivered=false
+    @Volatile private var resourceDiagnostics:JpegResourceDiagnostics.Session?=null
     private var guardStream:ParcelFileDescriptor.AutoCloseOutputStream?=null
     private var guardLease:FileLock?=null
     private val hostDeath=IBinder.DeathRecipient {
@@ -148,11 +149,14 @@ class JpegWorkerService : Service() {
         var sourceClosed=false;var outputClosed=false
         var width=0;var height=0;var bytes=0L;var sha=""
         var scratch:File?=null
+        val diagnostics=JpegResourceDiagnostics.open(this,request)
+        resourceDiagnostics=diagnostics
         try {
             if(revoked.get())throw IOException("Worker revoked before decode")
             try {System.loadLibrary("strictjpeg_candidate")}catch(error:LinkageError){outcome=JpegWorkerOutcome.LOAD_ERROR;throw IOException("Native load rejected",error)}
             val native=StrictJpegCandidate.validateReadonlyFd(source.fd,JpegWorkerWire.REQUEST_BUDGET)
             if(native==null||native.size!=16)throw IOException("Native result absent")
+            diagnostics.nativeComplete(native)
             destroyed=native[7]==1L && native[15]==1L && native[3]==0L && native[4]==0L && native[5]==0L
             strictFinished=native[0]==0L && native[10]==1L && native[8]==native[9] && native[6]==1L && destroyed
             when(native[0]) {
@@ -182,7 +186,9 @@ class JpegWorkerService : Service() {
             val again=Os.fstat(source.fileDescriptor)
             if(again.st_dev!=request.sourceDevice||again.st_ino!=request.sourceInode||again.st_size!=request.sourceSize)throw IOException("Source identity changed")
             val normalized=File(dir,"normalized.jpg")
+            diagnostics.normalizationStarted()
             val info=AndroidImageCodec.normalize(copy,normalized,"image/jpeg",ImageStoreFaults.NONE)
+            diagnostics.normalizationFinished()
             if(info.mime!="image/jpeg"||normalized.length() !in 1..AndroidImageCodec.STORED_LIMIT)throw IOException("Normalized output identity")
             width=info.width;height=info.height;bytes=normalized.length();sha=JpegWorkerWire.sha(normalized)
             if(revoked.get())throw IOException("Worker revoked before output")
@@ -208,6 +214,7 @@ class JpegWorkerService : Service() {
             if(!sourceClosed||!outputClosed||!clean){outcome=JpegWorkerOutcome.RESULT_UNKNOWN;detail="RESOURCE_CLOSE_UNKNOWN"}
             dataResourcesClosed.set(sourceClosed&&outputClosed&&clean)
             finished.set(true)
+            diagnostics.finish(outcome.name,sourceClosed,outputClosed,clean)
         }
         val reply=Bundle().apply {
             putString("decoderPolicy",JpegDecoderPolicy.DECODER);putString("normalizationPolicy",JpegDecoderPolicy.NORMALIZATION)
@@ -236,9 +243,11 @@ class JpegWorkerService : Service() {
     }
     private fun exitProcess(reason:String) {
         control.execute {
-            JpegWorkerWire.event("WORKER_EXIT_$reason",request,identity)
-            // Never release the consumer guard in advance. The OS closes it with the process.
-            Process.killProcess(Process.myPid())
+            try {resourceDiagnostics?.retiring()} finally {
+                JpegWorkerWire.event("WORKER_EXIT_$reason",request,identity)
+                // Never release the consumer guard in advance. The OS closes it with the process.
+                Process.killProcess(Process.myPid())
+            }
         }
     }
 }

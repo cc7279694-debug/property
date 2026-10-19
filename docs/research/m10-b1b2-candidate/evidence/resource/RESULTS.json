@@ -1,0 +1,90 @@
+{
+  "scope": "OFFLINE_REAL_JAVA_JUNIT_ONLY_NOT_ANDROID",
+  "tests": 21,
+  "uniqueTests": 21,
+  "testIds": [
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.fixed_permit_round_trips_without_weakening_identity",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.every_request_host_and_boot_field_is_matched",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.duplicate_marker_field_is_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.unknown_marker_field_is_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.non_synthetic_generation_is_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.missing_marker_identity_is_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.filename_cannot_substitute_incomplete_444_as_healthy",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.size_and_sha_must_match_fixed_fixture",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.permit_size_is_bounded_and_has_no_nul",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.all_three_original_fixture_identities_are_supported",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.proc_status_preserves_rss_and_lifetime_hwm_as_distinct_metrics",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.wrong_pid_uid_or_startticks_is_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.conflicting_uid_credentials_are_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.missing_duplicate_or_overflowed_metrics_are_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.wrong_units_negative_or_rss_greater_than_hwm_are_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.proc_stat_truncation_is_not_a_zero_measurement",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.native_success_contains_balanced_real_release_and_metrics",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.native_unavailable_metric_remains_unknown",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.native_unbalanced_or_incomplete_success_is_rejected",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.native_array_shape_and_status_are_checked",
+    "com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest.monotonic_delta_overflow_or_backwards_time_is_rejected"
+  ],
+  "red": {
+    "tests": 21,
+    "failures": 21,
+    "exitCode": 1,
+    "reason": "Complete API stub deliberately throws UnsupportedOperationException; no production-bug assertion",
+    "sourceStubSHA256": "NOT_RECORDED"
+  },
+  "green": {
+    "tests": 21,
+    "failures": 0,
+    "exitCode": 0,
+    "status": "PASS"
+  },
+  "finalInputSHA256": {
+    "app/src/test/java/com/cooper/lithic/data/media/jpegworker/JpegResourceEvidenceTest.java": "ef62cbfbbbb15e475c689d179a7fc612ab4f224bdaae042508934356c46d1119",
+    "app/src/debug/java/com/cooper/lithic/data/media/jpegworker/JpegResourceEvidence.java": "111c4cbcd48eb7828c8c0fa0fd6ee6c5731ed84c984a45faf08a1e0a2626f6a8"
+  },
+  "raw": [
+    {
+      "file": "red-run.log",
+      "bytes": 13180,
+      "sha256": "114ce67cbf995e85a84a933f4ad41e1db98d6611bc1615ed1742dd68ca086f37",
+      "source": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\build\\b2-resource-host\\red\\run.log"
+    },
+    {
+      "file": "green-run.log",
+      "bytes": 76,
+      "sha256": "74eda2f4db746de67a8fa987ee1c5db0e8d4109f9cd26d826434197ffea2477b",
+      "source": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\build\\b2-resource-host\\green\\final-api26-safe.log"
+    }
+  ],
+  "jdk": "C:/Users/CDD/AppData/Local/MirraAndroid/jdk17/jdk-17.0.20.1+1",
+  "commands": {
+    "compile": "javac -cp <existing junit4.13.2;hamcrest1.3> -d <ignored classes> JpegResourceEvidence.java JpegResourceEvidenceTest.java",
+    "run": "java -cp <ignored classes;existing junit;existing hamcrest> org.junit.runner.JUnitCore com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest"
+  },
+  "compileEvidence": "Both javac calls returned exit0 in executor output; zero-output Tee did not create a compile.log, so no compiler raw file is invented.",
+  "archivePreparation": "Initial copy expected absent zero-output compile.log and stopped before copying any file. Corrected selection copies only actual run logs; no test rerun.",
+  "androidResourceMethods": {
+    "count": 3,
+    "status": "NOT_RUN"
+  },
+  "deviceOperations": 0,
+  "gradleOrApkBuildsByAgent": 0,
+  "nativeStressReruns": 0,
+  "covered": [
+    "fixed permit fields/fixture bytes/sha",
+    "complete owner/request/host/boot match",
+    "duplicate/unknown/missing marker",
+    "proc PID/UID/startTicks",
+    "RSS/HWM distinct",
+    "missing/duplicate/unit/overflow counters",
+    "native16 shape/cleanup/metric unavailable",
+    "monotonic deltas"
+  ],
+  "notProven": [
+    "Android loading and filesystem behavior",
+    "Worker native/normalization metrics",
+    "real 40MP runtime",
+    "resource cap or worst-case response",
+    "post-retiring-tail peak"
+  ]
+}

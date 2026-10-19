@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-19T06:15:36.541Z" hostname="WHOCARE" time="0.038">
+  <properties/>
+  <testcase name="decreased_boot_count_and_unknown_epoch_cannot_prove_process_death" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.02"/>
+  <testcase name="exact_old_host_and_worker_ended_can_form_non_success_proof" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.003"/>
+  <testcase name="old_worker_quiescence_cannot_close_a_different_process_instance" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="a_single_missing_host_pid_does_not_prove_worker_end" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="missing_worker_does_not_prove_original_host_or_future_rpc_end" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="uid_conflict_and_unknown_process_role_are_rejected" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="monotonic_boot_epoch_proves_prior_processes_ended_without_pid_guess" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="boot_observation_conflict_keeps_stage_unknown" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.0"/>
+  <testcase name="any_inflight_rpc_or_unknown_host_fd_blocks_recovery" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.002"/>
+  <testcase name="proc_permission_error_is_unknown_never_absence" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="same_host_requires_scoped_quiescent_session" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="same_host_with_all_live_and_os_facts_can_form_non_success_proof" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.0"/>
+  <testcase name="dispatch_failure_or_unproven_binder_guard_state_blocks_recovery" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.002"/>
+  <testcase name="boot_count_encoding_is_canonical_and_has_checked_range" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="missing_consumer_identity_is_not_inferred_from_an_empty_pin" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <testcase name="old_session_quiescence_cannot_close_another_attempt" classname="com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

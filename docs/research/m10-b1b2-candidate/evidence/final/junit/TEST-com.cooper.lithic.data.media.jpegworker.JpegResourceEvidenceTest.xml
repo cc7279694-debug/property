@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" tests="21" skipped="0" failures="0" errors="0" timestamp="2026-10-19T06:38:29.904Z" hostname="WHOCARE" time="0.038">
+  <properties/>
+  <testcase name="missing_duplicate_or_overflowed_metrics_are_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.021"/>
+  <testcase name="duplicate_marker_field_is_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="permit_size_is_bounded_and_has_no_nul" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="native_unavailable_metric_remains_unknown" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="native_array_shape_and_status_are_checked" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="monotonic_delta_overflow_or_backwards_time_is_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.0"/>
+  <testcase name="unknown_marker_field_is_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="filename_cannot_substitute_incomplete_444_as_healthy" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="missing_marker_identity_is_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="size_and_sha_must_match_fixed_fixture" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="native_unbalanced_or_incomplete_success_is_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="wrong_pid_uid_or_startticks_is_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="non_synthetic_generation_is_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="all_three_original_fixture_identities_are_supported" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="proc_status_preserves_rss_and_lifetime_hwm_as_distinct_metrics" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="wrong_units_negative_or_rss_greater_than_hwm_are_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.002"/>
+  <testcase name="native_success_contains_balanced_real_release_and_metrics" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.0"/>
+  <testcase name="conflicting_uid_credentials_are_rejected" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.0"/>
+  <testcase name="every_request_host_and_boot_field_is_matched" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="fixed_permit_round_trips_without_weakening_identity" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.001"/>
+  <testcase name="proc_stat_truncation_is_not_a_zero_measurement" classname="com.cooper.lithic.data.media.jpegworker.JpegResourceEvidenceTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

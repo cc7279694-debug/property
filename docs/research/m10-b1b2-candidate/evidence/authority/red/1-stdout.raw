@@ -1,0 +1,26 @@
+JUnit version 4.13.2
+..E.....E.....E..E..
+Time: 0.291
+There were 4 failures:
+1) exact_old_host_and_worker_ended_can_form_non_success_proof(com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest)
+java.io.IOException: Recovery authority not implemented
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifier.verify(JpegRecoveryVerifier.kt:22)
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifier.verify$default(JpegRecoveryVerifier.kt:21)
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest.exact_old_host_and_worker_ended_can_form_non_success_proof(JpegRecoveryVerifierTest.kt:44)
+2) monotonic_boot_epoch_proves_prior_processes_ended_without_pid_guess(com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest)
+java.io.IOException: Recovery authority not implemented
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifier.verify(JpegRecoveryVerifier.kt:22)
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifier.verify$default(JpegRecoveryVerifier.kt:21)
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest.monotonic_boot_epoch_proves_prior_processes_ended_without_pid_guess(JpegRecoveryVerifierTest.kt:97)
+3) same_host_with_all_live_and_os_facts_can_form_non_success_proof(com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest)
+java.io.IOException: Recovery authority not implemented
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifier.verify(JpegRecoveryVerifier.kt:22)
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest.same_host_with_all_live_and_os_facts_can_form_non_success_proof(JpegRecoveryVerifierTest.kt:62)
+4) boot_count_encoding_is_canonical_and_has_checked_range(com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest)
+java.io.IOException: Boot epoch not implemented
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifier$Companion.bootId(JpegRecoveryVerifier.kt:25)
+	at com.cooper.lithic.data.media.jpegstage.JpegRecoveryVerifierTest.boot_count_encoding_is_canonical_and_has_checked_range(JpegRecoveryVerifierTest.kt:109)
+
+FAILURES!!!
+Tests run: 16,  Failures: 4
+

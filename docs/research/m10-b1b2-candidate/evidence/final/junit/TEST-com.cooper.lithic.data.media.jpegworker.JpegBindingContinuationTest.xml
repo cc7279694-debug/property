@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-19T06:38:29.818Z" hostname="WHOCARE" time="0.012">
+  <properties/>
+  <testcase name="callbackMayAcquireDutyFromAnotherThreadBecauseItRunsOutsideLock" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.002"/>
+  <testcase name="thrownBindDispatchesItsCleanupResponsibility" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.001"/>
+  <testcase name="callingBindIsNotQuiescentAndCannotUnbind" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.0"/>
+  <testcase name="dispatchFailureDoesNotClaimOrEraseUnbindResponsibility" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.001"/>
+  <testcase name="callbackCannotReopenRpcOrSuccessAfterFailure" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.0"/>
+  <testcase name="cancelledBeforeBindCannotCreateNewBinding" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.001"/>
+  <testcase name="falseBindReturnDispatchesItsCleanupResponsibility" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.001"/>
+  <testcase name="exceptionReturnAlsoContinuesMatchingResponsibility" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.002"/>
+  <testcase name="simultaneousReturnAndRepeatedSameCleanupRequestDispatchOnce" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.003"/>
+  <testcase name="permanentlyInflightRpcNeverDispatchesOrClaimsCleanup" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.001"/>
+  <testcase name="lateActualReturnDispatchesOriginalCleanupExactlyOnce" classname="com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

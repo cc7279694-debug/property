@@ -1,0 +1,85 @@
+JUnit version 4.13.2
+.............E.E.E.E.E.E.E.E.E.E.E...................................................................................................................................
+Time: 0.264
+There were 11 failures:
+1) callbackMayAcquireDutyFromAnotherThreadBecauseItRunsOutsideLock(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.callbackMayAcquireDutyFromAnotherThreadBecauseItRunsOutsideLock(JpegBindingContinuationTest.java:63)
+2) thrownBindDispatchesItsCleanupResponsibility(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.thrownBindDispatchesItsCleanupResponsibility(JpegBindingContinuationTest.java:50)
+3) callingBindIsNotQuiescentAndCannotUnbind(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.callingBindIsNotQuiescentAndCannotUnbind(JpegBindingContinuationTest.java:41)
+4) dispatchFailureDoesNotClaimOrEraseUnbindResponsibility(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.dispatchFailureDoesNotClaimOrEraseUnbindResponsibility(JpegBindingContinuationTest.java:58)
+5) callbackCannotReopenRpcOrSuccessAfterFailure(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.callbackCannotReopenRpcOrSuccessAfterFailure(JpegBindingContinuationTest.java:70)
+6) cancelledBeforeBindCannotCreateNewBinding(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.cancelledBeforeBindCannotCreateNewBinding(JpegBindingContinuationTest.java:54)
+7) falseBindReturnDispatchesItsCleanupResponsibility(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.falseBindReturnDispatchesItsCleanupResponsibility(JpegBindingContinuationTest.java:46)
+8) exceptionReturnAlsoContinuesMatchingResponsibility(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.exceptionReturnAlsoContinuesMatchingResponsibility(JpegBindingContinuationTest.java:35)
+9) simultaneousReturnAndRepeatedSameCleanupRequestDispatchOnce(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.simultaneousReturnAndRepeatedSameCleanupRequestDispatchOnce(JpegBindingContinuationTest.java:77)
+10) permanentlyInflightRpcNeverDispatchesOrClaimsCleanup(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.permanentlyInflightRpcNeverDispatchesOrClaimsCleanup(JpegBindingContinuationTest.java:80)
+11) lateActualReturnDispatchesOriginalCleanupExactlyOnce(com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest)
+java.lang.AssertionError: A late real RPC return must retain an original-session cleanup continuation
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertNotNull(Assert.java:713)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.listen(JpegBindingContinuationTest.java:18)
+	at com.cooper.lithic.data.media.jpegworker.JpegBindingContinuationTest.lateActualReturnDispatchesOriginalCleanupExactlyOnce(JpegBindingContinuationTest.java:26)
+
+FAILURES!!!
+Tests run: 154,  Failures: 11
+

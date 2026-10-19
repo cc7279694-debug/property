@@ -1,0 +1,71 @@
+{
+  "status": "READY_FOR_ANDROID_SAFETY_REVIEW",
+  "source": "f1ca58b286381a053c551e6b0383d5141e3b9565",
+  "branch": "codex/m10-b1-recovery-b2-resource-candidate",
+  "report": "../M10_B1_RECOVERY_B2_RESOURCE_CANDIDATE.md",
+  "results": "evidence/final/RESULTS.json",
+  "jvmUniquePass": 297,
+  "newJvmMethods": 75,
+  "androidB1": "NOT_RUN",
+  "androidB2Three40MP": "NOT_RUN",
+  "deviceOperations": 0,
+  "nativeStressReruns": 0,
+  "product": "M10_PENDING",
+  "historicalJpegFailures": "THREE_FAIL_PRESERVED_NOT_RERUN",
+  "UI_C1": "FROZEN",
+  "M11": "NOT_AUTHORIZED",
+  "old18NaturalTests": "NOT_RERUN_PREVIOUS_INDEPENDENT_PASS_WITH_NOTES_INHERITED",
+  "scope": {
+    "roomSchemaDaoFrozenBusinessUiManifestGradleNativeUnchanged": true,
+    "workerOriginalTestFilesByteEquivalent": 12,
+    "stageOldLinesDeleted": 0,
+    "lockedAndroidClassesUnchanged": 4
+  },
+  "artifacts": [
+    {
+      "name": "app",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 13900723,
+      "sha256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+      "applicationId": "com.cooper.lithic.debug",
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ]
+    },
+    {
+      "name": "test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\鐮虹煶鏂癆PP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 2688755,
+      "sha256": "bb00c0f6e34059170d20124eab739b43ccbc257ecc265def28906077fc0cb78c",
+      "applicationId": "com.cooper.lithic.debug.test",
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ]
+    }
+  ],
+  "B1AndroidLimits": [
+    "old v2 without supervisor",
+    "no accurate pinned worker",
+    "source unpublished",
+    "permanently in-flight RPC",
+    "dispatch/unbind/persistent revocation unknown",
+    "boot/OS/file identity unknown"
+  ],
+  "B2Scope": "sampled RSS/PSS lower bound; HWM through sample; retirement tail NOT_PROVEN; request budget NOT_PROCESS_CAP",
+  "cacheCleanup": "Automatic review rejected removal; generated cache retained locally and excluded from commit",
+  "postBuildTestStrengthening": {
+    "onlyChangedInput": "app/src/test/java/com/cooper/lithic/data/media/jpegworker/JpegBindingContinuationTest.java",
+    "sourceRawSHA256": "21ed01e0e8805c59d7fa5591c5d3228aa8e8bb5a1b49d07494ae562f2bf37796",
+    "meaning": "Added outer assertions to detect recorded callback AssertionError; method identities unchanged",
+    "latestJavaComponentRun": "../worker/green-callback-assertions/RESULTS.json",
+    "junitPass": 154,
+    "compileExit": 0,
+    "junitExit": 0,
+    "currentUniqueTotalStill": 297,
+    "firstUnifiedXmlPreserved": true,
+    "mainDebugReleaseAndroidTestAndApkBuildInputsUnchanged": true,
+    "noDeviceOrApkRebuildAfterTestOnlyChange": true
+  }
+}

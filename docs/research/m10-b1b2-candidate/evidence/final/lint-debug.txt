@@ -1,0 +1,156 @@
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\app\src\main\java\com\cooper\lithic\data\media\AndroidImageCodec.kt:6: Warning: Avoid using android.media.ExifInterface; use androidx.exifinterface.media.ExifInterface instead [ExifInterface]
+import android.media.ExifInterface
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\app\src\main\java\com\cooper\lithic\data\media\AndroidImageCodec.kt:78: Warning: Avoid using android.media.ExifInterface; use androidx.exifinterface.media.ExifInterface instead [ExifInterface]
+            val orientation = if (info.mime == "image/jpeg") ExifInterface(source.path).getAttributeInt(ExifInterface.TAG_ORIENTATION, 1) else 1
+                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ExifInterface":
+   The android.media.ExifInterface implementation has some known security bugs
+   in older versions of Android. There is a new implementation available of
+   this library in the support library, which is preferable.
+
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\app\build.gradle.kts:20: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+        targetSdk = 36
+        ~~~~~~~~~~~~~~
+
+   Explanation for issues of type "OldTargetApi":
+   When your application or sdk runs on a version of Android that is more
+   recent than your targetSdkVersion specifies that it has been tested with,
+   various compatibility modes kick in. This ensures that your application
+   continues to work, but it may look out of place. For example, if the
+   targetSdkVersion is less than 14, your app may get an option button in the
+   UI.
+
+   To fix this issue, set the targetSdkVersion to the highest available value.
+   Then test your app to make sure everything works correctly. You may want to
+   consult the compatibility notes to see what changes apply to each version
+   you are adding support for:
+   https://developer.android.com/reference/android/os/Build.VERSION_CODES.html
+   as well as follow this guide:
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.
+   html
+
+   https://developer.android.com/distribute/best-practices/develop/target-sdk.html
+
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\gradle\libs.versions.toml:5: Warning: A newer version of androidx.activity:activity-compose than 1.12.4 is available: 1.13.0 [GradleDependency]
+activity-compose = "1.12.4"
+                   ~~~~~~~~
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\gradle\libs.versions.toml:13: Warning: A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-android than 1.10.2 is available: 1.11.0 [GradleDependency]
+coroutines = "1.10.2"
+             ~~~~~~~~
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\gradle\libs.versions.toml:16: Warning: A newer version of androidx.compose.ui:ui-test-manifest than 1.9.5 is available: 1.12.1 [GradleDependency]
+compose-test = "1.9.5"
+               ~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\app\src\main\res\values\strings.xml:4: Warning: The resource R.string.skeleton_title appears to be unused [UnusedResources]
+    <string name="skeleton_title">砺石 LITHIC</string>
+            ~~~~~~~~~~~~~~~~~~~~~
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\app\src\main\res\values\strings.xml:5: Warning: The resource R.string.skeleton_version appears to be unused [UnusedResources]
+    <string name="skeleton_version">M01 工程验证版</string>
+            ~~~~~~~~~~~~~~~~~~~~~~~
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\app\src\main\res\values\strings.xml:6: Warning: The resource R.string.skeleton_notice appears to be unused [UnusedResources]
+    <string name="skeleton_notice">业务功能尚未接入</string>
+            ~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedResources":
+   Unused resources make applications larger and slow down builds.
+
+
+   The unused resource check can ignore tests. If you want to include
+   resources that are only referenced from tests, consider packaging them in a
+   test source set instead.
+
+   You can include test sources in the unused resource check by setting the
+   system property lint.unused-resources.include-tests =true, and to exclude
+   them (usually for performance reasons), use
+   lint.unused-resources.exclude-tests =true.
+   ,
+
+   Available options:
+
+   **skip-libraries** (default is true):
+   Whether the unused resource check should skip reporting unused resources in libraries.
+
+   Many libraries will declare resources that are part of the library surface; other modules depending on the library will also reference the resources. To avoid reporting all these resources as unused (in the context of a library), the unused resource check normally skips reporting unused resources in libraries. Instead, run the unused resource check on the consuming app module (along with `checkDependencies=true`).
+
+   However, there are cases where you want to check that all the resources declared in a library are used; in that case, you can disable the skip option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UnusedResources">
+           <option name="skip-libraries" value="true" />
+       </issue>
+   </lint>
+   ```
+
+E:\CODEX\.codex\worktrees\lithic-b1b2-candidate\砺石新APP\app\src\main\java\com\cooper\lithic\data\media\AndroidImageCodec.kt:85: Warning: Use the KTX extension function Bitmap.scale instead? [UseKtx]
+                val outputBitmap = if (width == oriented.width && height == oriented.height) oriented else Bitmap.createScaledBitmap(oriented, width, height, true)
+                                                                                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UseKtx":
+   The Android KTX libraries decorates the Android platform SDK as well as
+   various libraries with more convenient extension functions available from
+   Kotlin, allowing you to use default parameters, named parameters, and
+   more.
+
+   Available options:
+
+   **remove-defaults** (default is true):
+   Whether to skip arguments that match the defaults provided by the extension.
+
+   Extensions often provide default values for some of the parameters. For example:
+   ```kotlin
+   fun Path.readLines(charset: Charset = Charsets.UTF_8): List<String> { return Files.readAllLines(this, charset) }
+   ```
+   This lint check will by default automatically omit parameters that match the default, so if your code was calling
+
+   ```kotlin
+   Files.readAllLines(file, Charset.UTF_8)
+   ```
+   lint would replace this with
+   ```kotlin
+   file.readLines()
+   ```
+   rather than
+
+   ```kotlin
+   file.readLines(Charset.UTF_8
+   ```
+   You can turn this behavior off using this option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UseKtx">
+           <option name="remove-defaults" value="true" />
+       </issue>
+   </lint>
+   ```
+
+   **require-present** (default is true):
+   Whether to only offer extensions already available.
+
+   This option lets you only have lint suggest extension replacements if those extensions are already available on the class path (in other words, you're already depending on the library containing the extension method.)
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UseKtx">
+           <option name="require-present" value="true" />
+       </issue>
+   </lint>
+   ```
+
+0 errors, 10 warnings

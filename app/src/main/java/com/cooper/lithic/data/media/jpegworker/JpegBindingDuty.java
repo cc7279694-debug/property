@@ -11,9 +11,20 @@ public final class JpegBindingDuty {
     private boolean cleanupClaimed, cleaned, rpcClosed;
     private long nextRpcTicket, activeRpcTicket;
     private String cleanupError;
+    private Runnable quiescentCleanup;
+    private boolean quiescentDispatched;
+    private String quiescentDispatchError;
     public synchronized boolean begin() {if(returned!=Returned.NOT_CALLED||cleanupClaimed||cleaned||rpcClosed)return false;returned=Returned.CALLING;return true;}
-    public synchronized void returned(boolean bound) {if(returned!=Returned.CALLING)throw new IllegalStateException("bind return order");returned=bound?Returned.BOUND:Returned.FALSE;}
-    public synchronized void threw() {if(returned!=Returned.CALLING)throw new IllegalStateException("bind exception order");returned=Returned.THREW;}
+    public void returned(boolean bound) {
+        Runnable notify;
+        synchronized(this){if(returned!=Returned.CALLING)throw new IllegalStateException("bind return order");returned=bound?Returned.BOUND:Returned.FALSE;notify=takeQuiescentDispatch();}
+        dispatch(notify);
+    }
+    public void threw() {
+        Runnable notify;
+        synchronized(this){if(returned!=Returned.CALLING)throw new IllegalStateException("bind exception order");returned=Returned.THREW;notify=takeQuiescentDispatch();}
+        dispatch(notify);
+    }
     public synchronized boolean takeCleanup() {if(!closeRpcAdmission())return false;if(returned==Returned.NOT_CALLED){cleaned=true;return false;}if(cleanupClaimed||cleaned)return false;cleanupClaimed=true;return true;}
     public synchronized void cleanupSucceeded() {if(!cleanupClaimed)throw new IllegalStateException("cleanup not claimed");cleaned=true;cleanupError=null;}
     public synchronized void cleanupFailed(String error) {if(!cleanupClaimed)throw new IllegalStateException("cleanup not claimed");cleanupError=error==null?"UNBIND_UNKNOWN":error;}
@@ -26,12 +37,39 @@ public final class JpegBindingDuty {
         if(nextRpcTicket==Long.MAX_VALUE){rpcClosed=true;return 0;}
         activeRpcTicket=++nextRpcTicket;return activeRpcTicket;
     }
-    public synchronized boolean finishRpc(long ticket) {
-        if(ticket<=0||ticket!=activeRpcTicket)return false;
-        activeRpcTicket=0;return true;
+    public boolean finishRpc(long ticket) {
+        Runnable notify;
+        synchronized(this){if(ticket<=0||ticket!=activeRpcTicket)return false;activeRpcTicket=0;notify=takeQuiescentDispatch();}
+        dispatch(notify);return true;
     }
     /** Closing RPC admission is irreversible; only a matching actual return releases an in-flight ticket. */
-    public synchronized boolean closeRpcAdmission() {rpcClosed=true;return activeRpcTicket==0;}
+    public synchronized boolean closeRpcAdmission() {rpcClosed=true;return isQuiescent();}
+    public synchronized boolean isQuiescent() {return rpcClosed&&activeRpcTicket==0&&returned!=Returned.CALLING;}
+    /** Register the original Session's sole continuation. Never run external code under this monitor. */
+    public void requestQuiescentCleanup(Runnable callback) {
+        Objects.requireNonNull(callback);
+        Runnable notify;
+        synchronized(this) {
+            if(quiescentCleanup!=null&&quiescentCleanup!=callback)throw new IllegalStateException("Conflicting cleanup continuation");
+            quiescentCleanup=callback;rpcClosed=true;notify=takeQuiescentDispatch();
+        }
+        dispatch(notify);
+    }
+    public synchronized String quiescentDispatchError(){return quiescentDispatchError;}
+    private Runnable takeQuiescentDispatch() {
+        if(!isQuiescent()||quiescentCleanup==null||quiescentDispatched)return null;
+        quiescentDispatched=true;return quiescentCleanup;
+    }
+    private void dispatch(Runnable callback) {
+        if(callback==null)return;
+        try {callback.run();}
+        catch(Throwable error) {
+            synchronized(this){if(quiescentDispatchError==null)quiescentDispatchError=error.getClass().getSimpleName();}
+            // Rejected dispatch retains the unclaimed connection responsibility and explicit UNKNOWN.
+            if(error instanceof VirtualMachineError)throw (VirtualMachineError)error;
+            if(error instanceof ThreadDeath)throw (ThreadDeath)error;
+        }
+    }
     public <T> T callRpc(Callable<T> action) throws Exception {
         Objects.requireNonNull(action);
         long ticket=claimRpc();

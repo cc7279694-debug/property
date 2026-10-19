@@ -1,0 +1,77 @@
+{
+  "scope": "HOST_ONLY_REAL_KOTLIN_STAGE_FILES_NOT_ANDROID",
+  "phase": "red",
+  "selectedMethods": [
+    "recovery_active_or_unknown_host_preflight_cannot_revoke_original_session",
+    "recovery_durable_revoke_precedes_closure_probe",
+    "recovery_final_probe_unknown_preserves_revoke_and_pin_without_receipt"
+  ],
+  "selectedUniqueCount": 3,
+  "sourceSHA256": {
+    "app/src/main/java/com/cooper/lithic/data/media/jpegstage/JpegStageV2.kt": "fd8ccb57a395767c0aea07cccb6d20290691b5f235241eb1b447120a474fca3e",
+    "app/src/main/java/com/cooper/lithic/data/media/jpegstage/StageRecords.kt": "a42873d0e3b49b6f12b497c081ea98df11751d3ace210da8fc5edbcdc2644aaf",
+    "app/src/test/java/com/cooper/lithic/data/media/jpegstage/JpegStageV2Test.kt": "798d3c33bf81d90d6bee0936f9871390b8c01371f7ea7209885540a32973faf1",
+    "docs/research/m10-b1b2-candidate/StageRecoveryRunner.java": "94a46f7d85ea7c7b74a9c9e22df706e1a00eca21a68625e595de26825909fbd4"
+  },
+  "sourcesUnchanged": true,
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+        "-cp",
+        "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-compiler-embeddable\\2.3.10\\6e349e33b398eb4f0227ceb5b99db2535a982670\\kotlin-compiler-embeddable-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-script-runtime\\2.3.10\\1964f711f069f184f7848971fdcbdd15f26ef79\\kotlin-script-runtime-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-reflect\\1.6.10\\1cbe9c92c12a94eea200d23c2bbaedaf3daf5132\\kotlin-reflect-1.6.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-daemon-embeddable\\2.3.10\\5d578a9d479980dcf1144e721cb3502f0c23316e\\kotlin-daemon-embeddable-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlinx\\kotlinx-coroutines-core-jvm\\1.8.0\\ac1dc37a30a93150b704022f8d895ee1bd3a36b3\\kotlinx-coroutines-core-jvm-1.8.0.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+        "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler",
+        "-no-stdlib",
+        "-no-reflect",
+        "-jvm-target",
+        "17",
+        "-classpath",
+        "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar",
+        "-d",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-stage\\red-20261019T060714.119636Z\\classes",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\src\\main\\java\\com\\cooper\\lithic\\data\\media\\jpegstage\\JpegStageV2.kt",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\src\\main\\java\\com\\cooper\\lithic\\data\\media\\jpegstage\\StageRecords.kt",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\src\\test\\java\\com\\cooper\\lithic\\data\\media\\jpegstage\\JpegStageV2Test.kt"
+      ],
+      "exit": 0,
+      "startedUTC": "2026-10-19T06:07:14.201330+00:00",
+      "finishedUTC": "2026-10-19T06:07:32.487525+00:00",
+      "stdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javac.exe",
+        "-encoding",
+        "UTF-8",
+        "-cp",
+        "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar",
+        "-d",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-stage\\red-20261019T060714.119636Z\\classes",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-b1b2-candidate\\StageRecoveryRunner.java"
+      ],
+      "exit": 0,
+      "startedUTC": "2026-10-19T06:07:32.488530+00:00",
+      "finishedUTC": "2026-10-19T06:07:33.470133+00:00",
+      "stdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+        "-cp",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-stage\\red-20261019T060714.119636Z\\classes;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar",
+        "StageRecoveryRunner",
+        "recovery_active_or_unknown_host_preflight_cannot_revoke_original_session",
+        "recovery_durable_revoke_precedes_closure_probe",
+        "recovery_final_probe_unknown_preserves_revoke_and_pin_without_receipt"
+      ],
+      "exit": 1,
+      "startedUTC": "2026-10-19T06:07:33.471136+00:00",
+      "finishedUTC": "2026-10-19T06:08:32.747530+00:00",
+      "stdoutSHA256": "5bca0fce32e50e7e614de194e3881e104a5590659aab0c70f77839a95981fce8",
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-stage\\red-20261019T060714.119636Z"
+}

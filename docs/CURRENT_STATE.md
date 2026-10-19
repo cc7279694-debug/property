@@ -1,18 +1,19 @@
 # 当前项目状态
 
-状态日期：2026-10-19（Asia/Shanghai；最终安全收口结论：BLOCKED，暂不建议冻结M10）。本文件为唯一当前状态，历史证据不改写。
+状态日期：2026-10-19（Asia/Shanghai；B1/B2离线候选READY_FOR_ANDROID_SAFETY_REVIEW，M10仍PENDING）。本文件为唯一当前状态，历史证据不改写。
 
 ## Current Stage
 
-- **M10 FINAL SAFETY CLOSURE — BLOCKED / WAITING_INDEPENDENT_REVIEW**：来源 `9f378199c8bebb2a96d3d061efe16b3e966906ba`；分支 `codex/m10-final-safety-closure`；独立worktree `E:/CODEX/.codex/worktrees/lithic-safety-closure/砺石新APP`。本轮用户转交ChatGPT已独立验收API26/API36各九项自然测试PASS WITH NOTES，18项不重复，原文件/UNKNOWN/三JPEG历史FAIL不重写；正式M10分支尚未合并候选。
-- **本轮实证**：当前7个纯Java组件与12个既有测试类重新编译，143方法PASS；当前Stage Kotlin重新编译，15个既有定向安全方法PASS。另1组件刻画为REPRODUCES_OPEN_BLOCKER：在途RPC晚于两次清理机会返回后未自动清理连接；不是问题修复、不是Android PASS。核对7份历史来源、4份大图原件SHA，复用原native/sanitizer结果，不重做压测。
-- **恰两类技术BLOCKING**：B1异常会话最终收口/恢复（迟到RPC缺后续清理责任、无结构化结果的旧Stage无通用恢复器）；B2当前Android全链40MP资源/异常释放尚未实测。当前未发现确定金额破坏或已引用旧图误删路径，但代码审查不能替代Android故障证据。保守UNKNOWN/pin不能被当作恢复完成，512MiB请求预算不能当RSS硬cap。不擅自放宽协议或加入未验证恢复代码。
-- **运行与保护**：本轮ADB/AVD/APK/设备故障操作、正常流程重跑、产品代码修改、APK构建/下载均0；不观察或操作保留API36/H2/C2及旧现场。设备当前状态NOT_OBSERVED_THIS_TASK，只引用上轮结束证据，不能声称本轮再次确认在线/消费者为空。本轮指令第4条要求另行明确故障授权与全新合成环境，尚未执行该设备批次。
-- **下一步/边界**：[唯一冻结建议报告](research/M10_FINAL_SAFETY_CLOSURE.md)明确29场景等价映射、B1最小收口契约及有限A/B/C/D/G/I异常族、B2仅三类40MP；先独立审查契约与准确设备操作范围，再执行新合成环境验证，不继续加正常测试。M10 PENDING；UI-C1 FROZEN；M11 NOT_AUTHORIZED；R3原29为0 PASS/1 UNKNOWN/28 NOT_RUN，D2A-N01～N05、A1-N01～N04、历史attach/ANR/R1超时/6.141秒空档及全部NOTE/FAIL/UNKNOWN/NOT_RUN保持。原API36自然交付见[报告](research/M10_API36_UID_RESUME.md)，本轮不扩大该限定验收。
+- **M10 B1 RECOVERY / B2 RESOURCE CANDIDATE — READY_FOR_ANDROID_SAFETY_REVIEW**：锁定来源 `f1ca58b286381a053c551e6b0383d5141e3b9565`；分支 `codex/m10-b1-recovery-b2-resource-candidate`；独立worktree `E:/CODEX/.codex/worktrees/lithic-b1b2-candidate/砺石新APP`。仅候选代码与离线验证，不合并正式M10；API26/API36各九项自然限定独立验收继承，18项不重复。
+- **B1实际修复**：真实RPC/bind返回唤醒原Session唯一主线程清理责任；持久supervisor＋同租约两阶段资格/撤销校验＋独立非成功abandoned凭据和幂等清理；Store接入新导入前保守恢复。无结构化结果不伪造terminal/FD回执/解码成功。首次资格拒绝不扰动旧授权，晚期收口未知保pin/全局准入关闭。实现和宿主GREEN仅为IMPLEMENTED / PENDING_ANDROID_VERIFICATION，不CLOSED。
+- **B2可执行工具**：三个固定40MP原件SHA实核，完整444严格采用`single444/valid_40mp_progressive_444.jpg`。新增三Android方法贯通Stage/Worker/native/规范化/认证退休；Debug显式合成permit诊断、Release NOOP，真实native16/进程身份/CPU/RSS/PSS/FD与终结分开记录。结构化失败安全收口仍是操作失败；未结构化/未知结果保持保守。三个Android方法全部NOT_RUN，512MiB仅计费请求预算，采样峰值下界/HWM尾部NOT_PROVEN不冒充手机cap。
+- **实际验证**：受影响297唯一JVM PASS＝旧Worker143＋旧Stage79＋新75，16 XML，0失败/错误/跳过；RED/GREEN原件保留。Lint0错误/10警告（本轮offline实际输出，不改历史23）；Debug App/Test构建、Release Kotlin编译、四ABI/native声明/签名/Manifest/静态DEX检查PASS。B2 androidTest失败收口分支重编时App/JVM输入一致；之后仅加强新JUnit11项回调外断言并重编回归154 PASS，APK输入不变，补测与原XML分别登记不叠加。候选App SHA `b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c`；Test SHA `bb00c0f6e34059170d20124eab739b43ccbc257ecc265def28906077fc0cb78c`。旧锁定APK保持，产物未提交/安装/发布。
+- **剩余真实门禁**：B1 Android取消/超时/迟到RPC/死亡及恢复/GC、BOOT_COUNT适配可读性未运行；B2当前Android全链40MP资源与异常释放未测。缺Worker身份/旧V2无supervisor/源未发布/永久RPC或派发/FD/进程/归属未知不可自动恢复，明确保留。普通代码已整改，不以宿主结果关闭两个系统安全门禁；[前次BLOCKED报告](research/M10_FINAL_SAFETY_CLOSURE.md)与所有旧证据不改。
+- **交付与停止**：[唯一集中报告/精确下一轮授权提案](research/M10_B1_RECOVERY_B2_RESOURCE_CANDIDATE.md)、[小型结果索引](research/m10-b1b2-candidate/RESULTS.json)、[checkpoint](checkpoints/2026-10-19-M10-B1-RECOVERY-B2-RESOURCE-CANDIDATE.md)。本轮ADB/AVD/APK安装/启动/故障操作/下载均0，H2/C2/保留API36及其他旧现场未观察/触碰，设备状态NOT_OBSERVED_THIS_TASK。M10 PENDING/三JPEG历史FAIL、UI-C1 FROZEN、M11 NOT_AUTHORIZED、R3原29为0 PASS/1 UNKNOWN/28 NOT_RUN、D2A-N01～N05/A1-N01～N04及全部历史NOTE/FAIL/UNKNOWN/NOT_RUN保持。提交推送候选后停止等待独立代码审查，不自动开展设备实验。
 
 ## 继承的历史阶段摘要
 
-以下保留原有历史摘要；其中“本轮”“当前”等措辞均指各段落形成当时的任务，不指本次最终安全收口。本次设备操作为0，历史独立报告及原始证据未改写。
+以下保留原有历史摘要；其中“本轮”“当前”等措辞均指各段落形成当时的任务，不指本次B1/B2离线候选。本次设备操作为0，历史独立报告及原始证据未改写。
 
 上一轮d225交付中的API36安装UID阻塞是当时事实，见[原测试APK兼容报告](research/M10_ANDROID_TEST_APK_COMPAT_FINAL.md)；本轮独立新准入与PASS不修改该旧UNKNOWN或原文件。
 
