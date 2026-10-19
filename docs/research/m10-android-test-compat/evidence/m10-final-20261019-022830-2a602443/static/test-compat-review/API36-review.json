@@ -1,0 +1,54 @@
+{
+  "kind": "CODEX_OFFLINE_EVIDENCE_REVIEW_NOT_CHATGPT_INDEPENDENT_ACCEPTANCE",
+  "campaign": "m10-final-20261019-022830-2a602443",
+  "api": 36,
+  "journalRowsObserved": 97,
+  "journalBytesObserved": 134916,
+  "journalSHA256Observed": "635928a0e7a4c002708ed00fafb97c5c57cfa83e495848775d3540024b378164",
+  "status": "BLOCKED_INSTALLED_UID_PARSER",
+  "confirmedCause": {
+    "file": "docs/research/m10-jpeg-android-isolated/validate.py",
+    "lines": "673-682",
+    "parserAccepts": "userId=<digits> only",
+    "actualPackageField": "appId=10216",
+    "actualAdditionalEvidence": "permission uid=10216 and User 0 installed=true; no userId field",
+    "classification": "CONFIRMED_FORMAT_MISMATCH_NOT_APP_OR_NATIVE_FAILURE",
+    "admissionUID": "NOT_ACCEPTED_BY_LOCKED_GATE"
+  },
+  "countsAtStop": {
+    "avdCreates": 1,
+    "emulatorStarts": 1,
+    "appInstalls": 1,
+    "testInstalls": 0,
+    "instrumentation": 0,
+    "diagnosticWrites": 0,
+    "normalExits": 0,
+    "adbCommandCountAtStop": 75
+  },
+  "appInstall": {
+    "actualADB": "exit0 explicit Success",
+    "installedByteSHA256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+    "installedPath": "/data/app/~~M1zpeWsVVjHy3BjKWqnZzQ==/com.cooper.lithic.debug-Qs7vBwRoV40Ct_R1yYviGA==/base.apk",
+    "packageDumpsysBytes": 5835,
+    "packageDumpsysSHA256": "f6dc967d8c09a4655d4a84a7dbbc7809c91ab3577f09219456cf561f1b9b5f80",
+    "packageState": "User 0 installed=true stopped=true notLaunched=true",
+    "overallTwoAPKDeployment": "INCOMPLETE_APP_ONLY_TEST_NOT_INSTALLED",
+    "installAppProof": "NOT_COMPLETED_BECAUSE_UID_GATE_FAILED"
+  },
+  "notRun": [
+    "test APK installation",
+    "class-loading preflight on API36",
+    "all nine natural Android tests",
+    "Worker/Binder/FD/native loading on API36",
+    "ImageDecoder diagnostic helper execution",
+    "API36 retirement or cleanup validation"
+  ],
+  "scopeLimits": [
+    "appId is observed candidate evidence, not retroactive gate PASS",
+    "no independent API36 Stage or consumer snapshot has been verified by this review",
+    "journal may gain necessary ending-readonly commands; these are counts at stop only",
+    "new API36 preserved after stop; no retry/install-test permitted in this review"
+  ],
+  "reviewerDeviceOperations": 0,
+  "rawEvidenceChanged": false
+}

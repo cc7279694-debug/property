@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    ":app:assembleDebugAndroidTest",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-PstrictJpegSdk=C:/Users/CDD/AppData/Local/MirraAndroid/sdk",
+    "-PstrictJpegArchive=E:/CODEX/.codex/worktrees/m10-jpeg-strict-r1/砺石新APP/build/m10-jpeg-r1/upstream/libjpeg-turbo-3.2.0.tar.gz",
+    "-PstrictJpegNativeRoot=E:/CODEX/.codex/research-builds/lithic-jpeg-candidate-20261018-v2"
+  ],
+  "sourceCommit": "b2862062391a0c3008fe792db583b4abc5e146f9",
+  "task": "TEST_APK_ONLY",
+  "offline": true,
+  "javaHome": "C:/Users/CDD/AppData/Local/MirraAndroid/jdk17/jdk-17.0.20.1+1",
+  "startedUnix": 1792376785.055781
+}

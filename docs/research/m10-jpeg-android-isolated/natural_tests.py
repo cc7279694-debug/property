@@ -17,7 +17,7 @@ import zipfile
 APP = "com.cooper.lithic.debug"
 TEST = APP + ".test"
 APP_SHA = "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf"
-TEST_SHA = "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a"
+TEST_SHA = "73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f"
 COMPONENT = TEST + "/com.cooper.lithic.data.media.M10ProcessBoundaryRunner"
 PREFIX = "com.cooper.lithic.data.media."
 METHODS = (

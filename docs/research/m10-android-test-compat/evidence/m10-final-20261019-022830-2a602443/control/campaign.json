@@ -1,0 +1,16 @@
+{
+  "automaticRetry": false,
+  "campaignId": "m10-final-20261019-022830-2a602443",
+  "methods": [
+    "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+    "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+    "com.cooper.lithic.data.media.M10JpegIntegrityTest#valid_control_jpeg_imports_successfully",
+    "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+    "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+    "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+    "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#png_still_uses_v1_preparation_and_original_output_limits",
+    "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_uncommitted_jpeg_is_preserved_without_fabricated_receipt",
+    "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation"
+  ],
+  "sourceCommit": "b2862062391a0c3008fe792db583b4abc5e146f9"
+}

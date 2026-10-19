@@ -1,0 +1,62 @@
+{
+  "adbCommands": 0,
+  "appSHA256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+  "avdCommands": 0,
+  "binaryPayloadArchived": false,
+  "buildCommands": 0,
+  "freshUtc": "2026-10-19T02:24:10.276098+00:00",
+  "licenseAssets": [
+    {
+      "bytes": 6077,
+      "contentRetained": false,
+      "entry": "assets/third_party/libjpeg-turbo-3.2.0/LICENSE.md",
+      "sha256": "ba6bceebcba0fdd35488477c2cca8c4632ce82c74dbfbc87d886ce6fc4433579"
+    },
+    {
+      "bytes": 532,
+      "contentRetained": false,
+      "entry": "assets/third_party/libjpeg-turbo-3.2.0/LITHIC_CHANGES.txt",
+      "sha256": "c727e8ea660b395f5538f4dc3c766bf411982b83a3e4f2e3e2981c684efb59e0"
+    },
+    {
+      "bytes": 12799,
+      "contentRetained": false,
+      "entry": "assets/third_party/libjpeg-turbo-3.2.0/README.ijg",
+      "sha256": "75815e3bf6484201a3c3d17a1bbf10f2e8e3237f84df10a2357ea896db2a81d6"
+    }
+  ],
+  "licenseTextArchived": false,
+  "nativeABIs": [
+    "arm64-v8a",
+    "armeabi-v7a",
+    "x86",
+    "x86_64"
+  ],
+  "newTestAPK": "PENDING_ROOT_AUDIT",
+  "observationSourceCommit": "b2862062391a0c3008fe792db583b4abc5e146f9",
+  "runtimeLoad": "NOT_RUN_BY_THIS_STATIC_AUDIT",
+  "status": "PASS_STATIC_ORIGINAL_APP",
+  "strictLibraryEntries": [
+    {
+      "bytes": 284136,
+      "entry": "lib/arm64-v8a/libstrictjpeg_candidate.so",
+      "sha256": "44cc13c6921a0bda3a2e298eb232c1ad0f0863c2ab33cbf8e74807a65d2ea0de"
+    },
+    {
+      "bytes": 218760,
+      "entry": "lib/armeabi-v7a/libstrictjpeg_candidate.so",
+      "sha256": "f212d2b51448f919bbbf48b30a68a7f795261fe5ebdef72e919e1ea2c45faabd"
+    },
+    {
+      "bytes": 328884,
+      "entry": "lib/x86/libstrictjpeg_candidate.so",
+      "sha256": "8531d0a92fd4cf407660796cc310dd4350e94a538be44a45be17c57bef644d97"
+    },
+    {
+      "bytes": 342256,
+      "entry": "lib/x86_64/libstrictjpeg_candidate.so",
+      "sha256": "25b0fa227d1380beb995a7d360f4c29964e72d8d288b62b3aa2ac7cfbb37a116"
+    }
+  ],
+  "strictLibraryExpectedSource": "Historical fixed original App payload audit; compared current unchanged App bytes"
+}

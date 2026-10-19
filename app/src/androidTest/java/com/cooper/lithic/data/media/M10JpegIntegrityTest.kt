@@ -3,15 +3,12 @@ package com.cooper.lithic.data.media
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.ImageDecoder
 import android.os.Build
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import java.io.File
-import java.nio.ByteBuffer
 import java.util.UUID
 import kotlinx.coroutines.runBlocking
-import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.After
 import org.junit.Assert.*
@@ -99,21 +96,7 @@ class M10JpegIntegrityTest {
                 report.put("normalize", JSONObject().put("result", "FAILURE").put("kind", failure.kind.name).put("message", failure.message))
             }
             if (Build.VERSION.SDK_INT >= 28) {
-                val partialErrors = JSONArray()
-                try {
-                    val decoded = ImageDecoder.decodeBitmap(ImageDecoder.createSource(ByteBuffer.wrap(bytes))) { decoder, _, _ ->
-                        decoder.allocator = ImageDecoder.ALLOCATOR_SOFTWARE
-                        decoder.setOnPartialImageListener { failure ->
-                            partialErrors.put(JSONObject().put("error", failure.error).put("message", failure.message))
-                            false
-                        }
-                    }
-                    report.put("imageDecoder", bitmapOutcome(decoded).put("partialErrors", partialErrors))
-                    decoded.recycle()
-                } catch (failure: ImageDecoder.DecodeException) {
-                    report.put("imageDecoder", JSONObject().put("result", "FAILURE").put("error", failure.error)
-                        .put("message", failure.message).put("partialErrors", partialErrors))
-                }
+                report.put("imageDecoder", M10Api28ImageDecoderDiagnostics.report(bytes, ::bitmapOutcome))
             } else report.put("imageDecoder", "NOT_AVAILABLE_BEFORE_API28")
             M10JpegObservation.record("decoder-layers", report)
             if (name == M10JpegFixtures.COMPLETE) {

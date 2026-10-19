@@ -17,7 +17,7 @@ import runtime_identity
 from validate import (Supervisor, ROOT, BASE, TOOLS, CONFIG, need, immutable,
                       utc, digest, properties, file_digest, windows_arguments, CREATION_NO_WINDOW)
 
-SOURCE = "ca79e1c8fe77de050145a463fbd35df95556d413"
+SOURCE = "b2862062391a0c3008fe792db583b4abc5e146f9"
 
 
 class CampaignSupervisor(Supervisor):
@@ -58,11 +58,15 @@ class CampaignSupervisor(Supervisor):
             "operation": operation, "api": self.api, "serial": self.serial,
             "avd": self.name, "data": str(self.data), "status": "ATTEMPT_ISSUED"})
 
+    def authenticated_baseline_diagnostics(self):
+        """No historical event is trusted unless a scoped subclass verifies it."""
+        return ()
+
     def new_log_capture(self, directory):
         from continuous_log import ContinuousLogCapture, read_verified
         directory = Path(directory)
         index = int(directory.name.removeprefix("method-"))
-        prior = []
+        prior = list(self.authenticated_baseline_diagnostics())
         for previous in range(index):
             old = self.evidence / f"method-{previous:02d}"
             result = json.loads(avd_identity.read_bytes(old / "result.json"))

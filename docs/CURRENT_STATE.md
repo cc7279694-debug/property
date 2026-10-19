@@ -1,15 +1,17 @@
 # 当前项目状态
 
-状态日期：2026-10-19（Asia/Shanghai；日志握手实测通过，API26两项PASS，第三项测试类初始化FAIL后停止）。本文件为唯一当前状态，历史结果不改写。
+状态日期：2026-10-19（Asia/Shanghai；API26新测试APK类加载与九项PASS，API36安装UID准入UNKNOWN后停止）。本文件为唯一当前状态，历史结果不改写。
 
 ## Current Stage
 
-- **M10 日志握手集中验收 — BLOCKED / API26_TEST_APK_CLASS_INITIALIZATION**：来源 `ca79e1c8fe77de050145a463fbd35df95556d413`；分支 `codex/m10-android-capture-handshake-validation`；新批次 `m10-final-20261019-014441-e6b2cb97`。三次真实端到端诊断 nonce 握手PASS；API26健康Worker与锁定缺损拒绝/退休两项PASS，第三项runner初始化FAIL、正文NOT_RUN，后六项/API36全部NOT_RUN，按门禁停止，不重跑。
-- **当前阻塞**：锁定 Test APK 的 `M10JpegIntegrityTest` 本类synthetic方法签名引用API28 `ImageDecoder$DecodeException`，API26 JUnit反射解析时失败。源码、真实trace和锁定APK DEX相符；不将其扩大为生产健康导入失败。下一步仅等待ChatGPT独立审查，未经另行授权不修改测试APK或继续设备验证。
-- **实际现场**：重新独立核验专用 `Lithic_M10V_API26_20261018/emulator-5624` 同实例launcher16720/QEMU26072、真实路径/创建时间/参数/端口、boot1/API26/x86_64/AVD与锁定App/Test SHA、UID10077/10078。本轮创建0、启动0、安装0、Instrumentation3、诊断日志3、正常退出0；API36全0。结束只读保护PASS，无活动App/Worker，4个合成Stage及8份观察均核验，第三项未新增/修改，专用API26继续运行。旧首次启动时限NOT_PROVEN仍保留，不回填旧证明。
-- **实现/验证**：仅研究Python采集器、解释器及当前实例准入接缝；reader先建立再写唯一诊断，实际认证后READY，原始字节全留存，诊断与退休六阶段分开。最终43针对性＋70选定回归＝113唯一宿主PASS；Android停止后另补stderr/EOF就绪竞态（含于43），仅离线验证，三份实际stderr均0、不改原捕获。完整历史/原生压测/Gradle/Lint/构建NOT_RUN，App子树与锁定两APK不改。见[集中报告](research/M10_ANDROID_CAPTURE_HANDSHAKE_VALIDATION.md)、[结果/证据索引](research/m10-android-capture-handshake/evidence/m10-final-20261019-014441-e6b2cb97/RESULTS.json)、[checkpoint](checkpoints/2026-10-19-M10-ANDROID-CAPTURE-HANDSHAKE.md)。
-- **证据边界**：前两项的JUnit、唯一身份、退休偏序、Stage终结/清理及独立Worker进程缺失观察PASS；FD/guard结构化观察、同步hello/Host FD等执行代码不变量与原始Binder字段/写只读FD NOT_RUN在结果中分别保留，不扩大为全部生命周期通过。私人账本/封面字节未读，字节完整性NOT_RUN。
-- **正式/历史状态不变**：M10 PENDING、三JPEG历史FAIL；UI-C1 ACCEPTED/FROZEN PASS WITH NOTES；M11 NOT_AUTHORIZED。旧批次 `m10-final-20261019-005717-97808a30` method-00 BLOCKED、旧健康限定PASS和旧缺损完整窗口UNKNOWN原样保留。H2 DELIVERY_UNKNOWN/pin=true、C2及其他历史设备未访问；D2A-N01～N05、A1-N01～N04与全部旧NOTE/FAIL/UNKNOWN/NOT_RUN继承。
+- **M10 测试 APK 兼容集中验收 — BLOCKED / API36_INSTALLED_UID_FORMAT**：来源 `b2862062391a0c3008fe792db583b4abc5e146f9`；分支 `codex/m10-android-test-apk-compat-final`；独立worktree `E:/CODEX/.codex/worktrees/lithic-test-compat/砺石新APP`；新批次 `m10-final-20261019-022830-2a602443`。只调整3份androidTest与必要研究门禁，生产源码/schema/构建配置/原断言不变；不借用旧Test的PASS。
+- **已验证增量**：ImageDecoder及API28 synthetic签名隔离到独立helper；新DEX五类76方法（28 synthetic）/21字段无API26元数据违规；API26实际Class.forName/getDeclaredMethods预检PASS、九项自然测试全部PASS。宿主85唯一方法PASS、仅Test APK离线构建PASS；完整JVM/native/Lint未重跑。App仍 `0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf`，新Test `73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f`，同签名、Manifest/样本不变，旧Test与历史证据保留。
+- **API26结束现场**：复用专用 `Lithic_M10V_API26_20261018/emulator-5624` 同实例；创建0/启动0/App安装0/Test更新1，UID10077/10078、原私有根归属/已有合成资源不变；类加载1＋自然9真实Instrumentation、10次nonce握手均通过。随后一次授权正常退出，目标进程及5624/5625端口结束，旧首次启动时限NOT_PROVEN不改写。
+- **当前唯一执行阻塞/API36现场**：前置门禁满足后，新专用 `Lithic_M10V_API36_20261018/emulator-5626` 创建1/启动1，boot/身份PASS；App安装1返回Success且字节一致，但真实dumpsys用 `appId=10216`、旧解析器只接受 `userId=`，UID准入UNKNOWN，立即停止。Test安装0/类加载0/九项全NOT_RUN；没有改规则或重试。新实例launcher33512/QEMU32252保持运行，结束只读无App/Worker PID、目标服务为空、no_backup ABSENT；这些观察不替代UID授权。只等待ChatGPT独立审查，不自行续测或终止设备。
+- **证据入口/边界**：[集中报告](research/M10_ANDROID_TEST_APK_COMPAT_FINAL.md)、[新批次索引](research/m10-android-test-compat/evidence/m10-final-20261019-022830-2a602443/RESULTS.json)、[checkpoint](checkpoints/2026-10-19-M10-ANDROID-TEST-APK-COMPAT-FINAL.md)。API26退休/Stage/OS观察与部分FD/guard结构化观察、同步hello/Host FD代码不变量分别登记；原始Binder字段/写只读FD、API28诊断helper实跑、取消/故障/恢复/其他ABI/真机/完整备份等NOT_RUN，不扩大为完整生命周期通过。私人账本/图片字节未读、私人字节完整性NOT_RUN。
+- **正式/历史状态保持**：M10 PENDING、三个JPEG历史FAIL；本批API26对应断言的新PASS只作独立候选证据；UI-C1 ACCEPTED/FROZEN PASS WITH NOTES，M11 NOT_AUTHORIZED。H2 DELIVERY_UNKNOWN/pin=true、C2及其他历史设备未访问。D2A-N01～N05、A1-N01～N04和全部旧NOTE/FAIL/UNKNOWN/NOT_RUN继承，不自行关闭或冻结。
+
+前一批 `m10-final-20261019-014441-e6b2cb97` 的两项PASS、第三项API26测试类初始化FAIL及其后NOT_RUN保持历史原件，见[原报告](research/M10_ANDROID_CAPTURE_HANDSHAKE_VALIDATION.md)。本轮只在新Test及新批次验证兼容修复，没有回填旧结果。
 
 上一批次[集中验收](research/M10_JPEG_ANDROID_FINAL_CAMPAIGN.md)的采集就绪UNKNOWN及零JUnit执行是原时点事实，不由本批新证据改写。
 

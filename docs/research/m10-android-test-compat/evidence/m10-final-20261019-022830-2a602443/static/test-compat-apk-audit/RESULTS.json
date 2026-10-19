@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "initialHostAuditFormatInterruption": "Expected sdkVersion key; aapt2 actually emits minSdkVersion. Raw successful tool outputs reused, no tool/device rerun.",
+  "newTestSHA256": "73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f",
+  "oldTestSHA256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a",
+  "bytes": 2235926,
+  "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "nonDexEntriesIdentical": 52,
+  "manifestAndAssetsUnchanged": true,
+  "dependenciesSourceUnchanged": true,
+  "permissions": [
+    "android.permission.REORDER_TASKS"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+        "-jar",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\lib\\apksigner.jar",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-test-compat\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 972,
+      "stdoutSHA256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-test-compat\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 1170,
+      "stdoutSHA256": "57344bee6a715bb2a176c23f640389bdfdb53fdd2bb7e54a7b2b30f832098979",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "--file",
+        "AndroidManifest.xml",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-test-compat\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 5349,
+      "stdoutSHA256": "f33eeb57f59afdbb5f857deb1a02ab43b8690f7b7c21d835c02224eeff55e1c6",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

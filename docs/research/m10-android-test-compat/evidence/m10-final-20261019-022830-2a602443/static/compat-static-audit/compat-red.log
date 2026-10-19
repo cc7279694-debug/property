@@ -1,0 +1,245 @@
+test_api36_never_inherits_api26_historical_diagnostics (test_compat_campaign.CompatCampaignTests.test_api36_never_inherits_api26_historical_diagnostics) ... ERROR
+test_duplicate_or_unverified_diagnostic_is_not_whitelisted (test_compat_campaign.CompatCampaignTests.test_duplicate_or_unverified_diagnostic_is_not_whitelisted) ... ERROR
+test_historical_diagnostics_are_authenticated_without_borrowing_old_junit (test_compat_campaign.CompatCampaignTests.test_historical_diagnostics_are_authenticated_without_borrowing_old_junit) ... ERROR
+test_loader_proof_is_bound_to_campaign_api_and_new_test_sha (test_compat_campaign.CompatCampaignTests.test_loader_proof_is_bound_to_campaign_api_and_new_test_sha) ... ERROR
+test_method_without_loader_proof_never_calls_instrumentation (test_compat_campaign.CompatCampaignTests.test_method_without_loader_proof_never_calls_instrumentation) ... ERROR
+test_second_update_cannot_issue_another_install (test_compat_campaign.CompatCampaignTests.test_second_update_cannot_issue_another_install) ... ERROR
+test_unchanged_check_rejects_identity_observation_or_stage_difference (test_compat_campaign.CompatCampaignTests.test_unchanged_check_rejects_identity_observation_or_stage_difference) ... ERROR
+test_unknown_loader_status_stays_closed (test_compat_campaign.CompatCampaignTests.test_unknown_loader_status_stays_closed) ... ERROR
+test_update_detects_changed_private_owner (test_compat_campaign.CompatCampaignTests.test_update_detects_changed_private_owner) ... ERROR
+test_update_detects_changed_stage_and_does_not_clean (test_compat_campaign.CompatCampaignTests.test_update_detects_changed_stage_and_does_not_clean) ... ERROR
+test_update_detects_uid_change (test_compat_campaign.CompatCampaignTests.test_update_detects_uid_change) ... ERROR
+test_update_rejects_blocked_stage_before_install (test_compat_campaign.CompatCampaignTests.test_update_rejects_blocked_stage_before_install) ... ERROR
+test_update_rejects_missing_explicit_success (test_compat_campaign.CompatCampaignTests.test_update_rejects_missing_explicit_success) ... ERROR
+test_update_rejects_wrong_api_without_install (test_compat_campaign.CompatCampaignTests.test_update_rejects_wrong_api_without_install) ... ERROR
+test_update_uses_one_replacing_install_and_preserves_application (test_compat_campaign.CompatCampaignTests.test_update_uses_one_replacing_install_and_preserves_application) ... ERROR
+
+======================================================================
+ERROR: test_api36_never_inherits_api26_historical_diagnostics (test_compat_campaign.CompatCampaignTests.test_api36_never_inherits_api26_historical_diagnostics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_duplicate_or_unverified_diagnostic_is_not_whitelisted (test_compat_campaign.CompatCampaignTests.test_duplicate_or_unverified_diagnostic_is_not_whitelisted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_historical_diagnostics_are_authenticated_without_borrowing_old_junit (test_compat_campaign.CompatCampaignTests.test_historical_diagnostics_are_authenticated_without_borrowing_old_junit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_loader_proof_is_bound_to_campaign_api_and_new_test_sha (test_compat_campaign.CompatCampaignTests.test_loader_proof_is_bound_to_campaign_api_and_new_test_sha)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_method_without_loader_proof_never_calls_instrumentation (test_compat_campaign.CompatCampaignTests.test_method_without_loader_proof_never_calls_instrumentation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_second_update_cannot_issue_another_install (test_compat_campaign.CompatCampaignTests.test_second_update_cannot_issue_another_install)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_unchanged_check_rejects_identity_observation_or_stage_difference (test_compat_campaign.CompatCampaignTests.test_unchanged_check_rejects_identity_observation_or_stage_difference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_unknown_loader_status_stays_closed (test_compat_campaign.CompatCampaignTests.test_unknown_loader_status_stays_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_update_detects_changed_private_owner (test_compat_campaign.CompatCampaignTests.test_update_detects_changed_private_owner)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_update_detects_changed_stage_and_does_not_clean (test_compat_campaign.CompatCampaignTests.test_update_detects_changed_stage_and_does_not_clean)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_update_detects_uid_change (test_compat_campaign.CompatCampaignTests.test_update_detects_uid_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_update_rejects_blocked_stage_before_install (test_compat_campaign.CompatCampaignTests.test_update_rejects_blocked_stage_before_install)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_update_rejects_missing_explicit_success (test_compat_campaign.CompatCampaignTests.test_update_rejects_missing_explicit_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_update_rejects_wrong_api_without_install (test_compat_campaign.CompatCampaignTests.test_update_rejects_wrong_api_without_install)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+======================================================================
+ERROR: test_update_uses_one_replacing_install_and_preserves_application (test_compat_campaign.CompatCampaignTests.test_update_uses_one_replacing_install_and_preserves_application)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-test-compat\��ʯ��APP\docs\research\m10-android-test-compat\test_compat_campaign.py", line 13, in setUp
+    self.m = importlib.import_module("compat_campaign")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py", line 90, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1324, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'compat_campaign'
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.097s
+
+FAILED (errors=15)

@@ -1,0 +1,101 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5624",
+    "logcat",
+    "-b",
+    "main",
+    "-v",
+    "threadtime",
+    "-s",
+    "LITHIC_JPEG:I",
+    "LITHIC_M10_CAPTURE:I",
+    "*:S"
+  ],
+  "diagnosticScope": "HOST_OBSERVER_WINDOW_ONLY_NOT_UNOBSERVABLE_LOGD_LOSS_PROOF",
+  "ended": {
+    "monotonicNs": 6861530330500,
+    "utc": "2026-10-19T02:42:55.342602+00:00"
+  },
+  "errors": [],
+  "format": "LITHIC_SINGLE_METHOD_CONTINUOUS_LOG_V1",
+  "handshake": {
+    "authenticatedAt": {
+      "monotonicNs": 6800962489700,
+      "stdoutBytes": 1621,
+      "utc": "2026-10-19T02:41:54.774931+00:00"
+    },
+    "authenticatedRawLine": "10-19 02:41:53.649 17970 17970 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=c29be23d94cb466cbaf8659b2c2f4737\r\n",
+    "completed": {
+      "monotonicNs": 6800962413600,
+      "utc": "2026-10-19T02:41:54.774931+00:00"
+    },
+    "diagnosticEmissionCount": 1,
+    "issued": {
+      "monotonicNs": 6800589220100,
+      "utc": "2026-10-19T02:41:54.401972+00:00"
+    },
+    "message": "M10_CAPTURE_READY nonce=c29be23d94cb466cbaf8659b2c2f4737",
+    "nonce": "c29be23d94cb466cbaf8659b2c2f4737",
+    "tag": "LITHIC_M10_CAPTURE",
+    "writerResult": {
+      "exitCode": 0,
+      "nonce": "c29be23d94cb466cbaf8659b2c2f4737",
+      "serial": "emulator-5624",
+      "status": "PASS",
+      "tag": "LITHIC_M10_CAPTURE"
+    }
+  },
+  "limits": {
+    "readinessSeconds": 10,
+    "seconds": 360,
+    "stderrBytes": 65536,
+    "stdoutBytes": 2097152,
+    "stopSeconds": 3
+  },
+  "monotonicClock": "time.perf_counter_ns",
+  "priorDiagnostics": [
+    "10-19 01:48:29.183  8550  8550 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=ea61f142fce9478fafe81c4bb31ec2f5\r\n",
+    "10-19 01:50:30.592  9999  9999 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=93b2cc4f8e1d4fc585dcd2f4654a283e\r\n",
+    "10-19 01:52:40.799 11801 11801 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=db195c0ee6724e1db151c05788734a6f\r\n"
+  ],
+  "process": {
+    "controlledHostObserverStop": true,
+    "createdByThisCapture": true,
+    "exitCode": 1,
+    "pid": 568
+  },
+  "readinessProtocol": "DIAGNOSTIC_NONCE_V1",
+  "ready": {
+    "monotonicNs": 6800962489700,
+    "stdoutBytes": 1621,
+    "utc": "2026-10-19T02:41:54.774931+00:00"
+  },
+  "serial": "emulator-5624",
+  "started": {
+    "monotonicNs": 6799027449300,
+    "utc": "2026-10-19T02:41:52.839802+00:00"
+  },
+  "status": "PASS",
+  "stderr": {
+    "bytes": 0,
+    "eof": true,
+    "file": "stderr.raw",
+    "observedBytes": 0,
+    "readerStopped": true,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 1621,
+    "eof": true,
+    "file": "stdout.raw",
+    "observedBytes": 1621,
+    "readerStopped": true,
+    "sha256": "913ff1423554aa0600efb9aad668a64a3d4c37b3c87c862cb548dd979d4dae0e"
+  },
+  "stopRequested": {
+    "monotonicNs": 6861464052000,
+    "utc": "2026-10-19T02:42:55.276206+00:00"
+  }
+}

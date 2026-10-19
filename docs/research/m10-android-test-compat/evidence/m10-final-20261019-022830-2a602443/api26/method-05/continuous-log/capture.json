@@ -1,0 +1,108 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5624",
+    "logcat",
+    "-b",
+    "main",
+    "-v",
+    "threadtime",
+    "-s",
+    "LITHIC_JPEG:I",
+    "LITHIC_M10_CAPTURE:I",
+    "*:S"
+  ],
+  "diagnosticScope": "HOST_OBSERVER_WINDOW_ONLY_NOT_UNOBSERVABLE_LOGD_LOSS_PROOF",
+  "ended": {
+    "monotonicNs": 7902807630900,
+    "utc": "2026-10-19T03:00:16.619592+00:00"
+  },
+  "errors": [],
+  "format": "LITHIC_SINGLE_METHOD_CONTINUOUS_LOG_V1",
+  "handshake": {
+    "authenticatedAt": {
+      "monotonicNs": 7821812599300,
+      "stdoutBytes": 3464,
+      "utc": "2026-10-19T02:58:55.624734+00:00"
+    },
+    "authenticatedRawLine": "10-19 02:58:54.526 32464 32464 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=8b501602549d41aea7bdf7e9cd8521d5\r\n",
+    "completed": {
+      "monotonicNs": 7821812532700,
+      "utc": "2026-10-19T02:58:55.624734+00:00"
+    },
+    "diagnosticEmissionCount": 1,
+    "issued": {
+      "monotonicNs": 7821536937200,
+      "utc": "2026-10-19T02:58:55.349134+00:00"
+    },
+    "message": "M10_CAPTURE_READY nonce=8b501602549d41aea7bdf7e9cd8521d5",
+    "nonce": "8b501602549d41aea7bdf7e9cd8521d5",
+    "tag": "LITHIC_M10_CAPTURE",
+    "writerResult": {
+      "exitCode": 0,
+      "nonce": "8b501602549d41aea7bdf7e9cd8521d5",
+      "scope": "SUPERVISOR_DIAGNOSTIC_ONLY_NO_BUSINESS_OR_WORKER_ASSERTION",
+      "serial": "emulator-5624",
+      "status": "PASS",
+      "tag": "LITHIC_M10_CAPTURE"
+    }
+  },
+  "limits": {
+    "readinessSeconds": 10,
+    "seconds": 360,
+    "stderrBytes": 65536,
+    "stdoutBytes": 2097152,
+    "stopSeconds": 3
+  },
+  "monotonicClock": "time.perf_counter_ns",
+  "priorDiagnostics": [
+    "10-19 01:48:29.183  8550  8550 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=ea61f142fce9478fafe81c4bb31ec2f5\r\n",
+    "10-19 01:50:30.592  9999  9999 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=93b2cc4f8e1d4fc585dcd2f4654a283e\r\n",
+    "10-19 01:52:40.799 11801 11801 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=db195c0ee6724e1db151c05788734a6f\r\n",
+    "10-19 02:41:53.649 17970 17970 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=c29be23d94cb466cbaf8659b2c2f4737\r\n",
+    "10-19 02:44:27.759 19791 19791 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=a42fadcd90494a1ea087150083819a68\r\n",
+    "10-19 02:47:10.291 21993 21993 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=9355333755334435ab748e6418324c1e\r\n",
+    "10-19 02:50:08.438 24562 24562 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=3d69f7e990f546efb41666181fda23e4\r\n",
+    "10-19 02:53:04.868 27193 27193 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=6bf0bae718404d188f1858e159745d8d\r\n",
+    "10-19 02:55:50.110 29785 29785 I LITHIC_M10_CAPTURE: M10_CAPTURE_READY nonce=c14d24ecdc854fe98872893140c53cb8\r\n"
+  ],
+  "process": {
+    "controlledHostObserverStop": true,
+    "createdByThisCapture": true,
+    "exitCode": 1,
+    "pid": 33940
+  },
+  "readinessProtocol": "DIAGNOSTIC_NONCE_V1",
+  "ready": {
+    "monotonicNs": 7821812599300,
+    "stdoutBytes": 3464,
+    "utc": "2026-10-19T02:58:55.624734+00:00"
+  },
+  "serial": "emulator-5624",
+  "started": {
+    "monotonicNs": 7821477222300,
+    "utc": "2026-10-19T02:58:55.289582+00:00"
+  },
+  "status": "PASS",
+  "stderr": {
+    "bytes": 0,
+    "eof": true,
+    "file": "stderr.raw",
+    "observedBytes": 0,
+    "readerStopped": true,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "bytes": 5818,
+    "eof": true,
+    "file": "stdout.raw",
+    "observedBytes": 5818,
+    "readerStopped": true,
+    "sha256": "1d7fe2dab25dbb4fb3b17000986f2911ef21d55b9cdd9f7f4bd58389c6047d8f"
+  },
+  "stopRequested": {
+    "monotonicNs": 7902745230700,
+    "utc": "2026-10-19T03:00:16.557904+00:00"
+  }
+}

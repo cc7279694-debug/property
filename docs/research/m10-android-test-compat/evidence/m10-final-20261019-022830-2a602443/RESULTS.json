@@ -1,0 +1,215 @@
+{
+  "M10": "PENDING",
+  "M11": "NOT_AUTHORIZED",
+  "UI-C1": "FROZEN",
+  "apis": {
+    "26": {
+      "classLoading": "PASS",
+      "counts": {
+        "adbCommands": 6372,
+        "apkInstalls": 1,
+        "avdCreates": 0,
+        "diagnosticWrites": 10,
+        "emulatorStarts": 0,
+        "instrumentation": 10,
+        "journalCommandRows": 6406,
+        "nonzeroCommandExits": 0,
+        "normalEmulatorExits": 1,
+        "testAPKUpdates": 1
+      },
+      "hostContinuousLogReaders": 10,
+      "journal": {
+        "fullJournalBytes": 6129137,
+        "fullJournalRows": 6439,
+        "fullJournalSHA256": "205da3802b685e5195deebf1a5306e44a35b5b89eab219459c44c7c3ee2d07b8",
+        "subsetBytes": 665832,
+        "subsetSHA256": "3e66d59d5c3ddd6156ac01aebdee2bda956d1bb0f3f077d6a51785d7ced8341e"
+      },
+      "methods": [
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-00/result.json",
+          "index": 0,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+          "status": "PASS"
+        },
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-01/result.json",
+          "index": 1,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+          "status": "PASS"
+        },
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-02/result.json",
+          "index": 2,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#valid_control_jpeg_imports_successfully",
+          "status": "PASS"
+        },
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-03/result.json",
+          "index": 3,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+          "status": "PASS"
+        },
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-04/result.json",
+          "index": 4,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+          "status": "PASS"
+        },
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-05/result.json",
+          "index": 5,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+          "status": "PASS"
+        },
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-06/result.json",
+          "index": 6,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#png_still_uses_v1_preparation_and_original_output_limits",
+          "status": "PASS"
+        },
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-07/result.json",
+          "index": 7,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_uncommitted_jpeg_is_preserved_without_fabricated_receipt",
+          "status": "PASS"
+        },
+        {
+          "JUnit": "PASS",
+          "evidence": "api26/method-08/result.json",
+          "index": 8,
+          "instrumentationCommandsIssued": 1,
+          "lifecycle": "PASS",
+          "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation",
+          "status": "PASS"
+        }
+      ],
+      "naturalPASS": 9,
+      "normalExitProved": true,
+      "serial": "emulator-5624"
+    },
+    "36": {
+      "classLoading": "NOT_RUN",
+      "counts": {
+        "adbCommands": 84,
+        "apkInstalls": 1,
+        "avdCreates": 1,
+        "diagnosticWrites": 0,
+        "emulatorStarts": 1,
+        "instrumentation": 0,
+        "journalCommandRows": 102,
+        "nonzeroCommandExits": 19,
+        "normalEmulatorExits": 0,
+        "testAPKUpdates": 0
+      },
+      "emulatorLogLocalOnly": {
+        "classification": "LOCAL_LOG_OBSERVED_PREFIX_ONLY_NOT_FINAL_COMPLETE_LOG",
+        "contentArchived": false,
+        "fileBytesAtEndOfRead": 15465,
+        "grewWhileRead": false,
+        "localPath": "E:\\CODEX\\.codex\\worktrees\\lithic-test-compat\\\u783a\u77f3\u65b0APP\\build\\m10-final-campaign\\m10-final-20261019-022830-2a602443\\api36\\emulator.log",
+        "mayRemainActive": true,
+        "prefixBytes": 15465,
+        "prefixSHA256": "790db4658fe1ffb6f98ccf37bb2a7b62c5a294b7b5e78942e947558d4fbd0bd9"
+      },
+      "hostContinuousLogReaders": 0,
+      "journal": {
+        "fullJournalBytes": 154070,
+        "fullJournalRows": 109,
+        "fullJournalSHA256": "1c67c2b2c8f509fb015def67ee2aa76bf77b00b2cc6d38b7c9779fbc52a7e3fb",
+        "subsetBytes": 124182,
+        "subsetSHA256": "ee22ac3a2eb9ce73e84086f517fdf5f031eef1872587d3a7acdeac2bee9e6a29"
+      },
+      "methods": [
+        {
+          "index": 0,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        },
+        {
+          "index": 1,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        },
+        {
+          "index": 2,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        },
+        {
+          "index": 3,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        },
+        {
+          "index": 4,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        },
+        {
+          "index": 5,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        },
+        {
+          "index": 6,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        },
+        {
+          "index": 7,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        },
+        {
+          "index": 8,
+          "reason": "No attempt/result in this final batch",
+          "status": "NOT_RUN"
+        }
+      ],
+      "naturalPASS": 0,
+      "normalExitProved": false,
+      "serial": "emulator-5626"
+    }
+  },
+  "appSHA256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+  "campaignId": "m10-final-20261019-022830-2a602443",
+  "collectedUtc": "2026-10-19T03:21:29.052792+00:00",
+  "copiedRawEvidence": {
+    "bytes": 1489212,
+    "files": 167
+  },
+  "evidenceInterpretation": "New batch only; unchanged historical FAIL/UNKNOWN/NOT_RUN are not reclassified. JUnit is distinct from lifecycle/resource acceptance.",
+  "fullRepeatedJournalsArchived": false,
+  "historicalTestSHA256": "3b0005a31afa753e9a9709323572250c0c5c63153c68ca1f882755c98724282a",
+  "offlineEvidenceReviewClassification": "CODEX_OFFLINE_EVIDENCE_REVIEW_NOT_CHATGPT_INDEPENDENT_ACCEPTANCE",
+  "originalThreeJPEGFailures": "HISTORICAL_FAIL_PRESERVED",
+  "privateLedgerAndCoverByteIntegrity": "NOT_RUN",
+  "scopeStatus": "BLOCKED_OR_NOT_RUN_GATES_REMAIN",
+  "sourceCommit": "b2862062391a0c3008fe792db583b4abc5e146f9",
+  "testSHA256": "73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f"
+}

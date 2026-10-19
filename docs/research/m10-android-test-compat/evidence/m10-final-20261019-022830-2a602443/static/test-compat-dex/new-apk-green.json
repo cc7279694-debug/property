@@ -1,0 +1,1456 @@
+{
+  "status": "PASS",
+  "scope": "API26_DECLARED_CLASS_METADATA_ONLY",
+  "apiLevel": 26,
+  "apk": {
+    "path": "app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+    "bytes": 2235926,
+    "sha256": "73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f"
+  },
+  "apiDatabase": {
+    "path": "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platforms/android-36/data/api-versions.xml",
+    "sha256": "923f7e6367759e127679b6b5a4156ee801100e3cc07dc1d99cb811e791e45435",
+    "classes": 6735
+  },
+  "dexEntries": [
+    {
+      "entry": "classes.dex",
+      "bytes": 2008520,
+      "sha256": "85253eee1da79f61a07c14a5a04044ceffa8bcd6c981ffa6d53365dfaf4feb11"
+    },
+    {
+      "entry": "classes2.dex",
+      "bytes": 17060,
+      "sha256": "4b7cce9a85b2de6b819b978fbf83bfebf11b82ad27e93a868a999842168f4219"
+    },
+    {
+      "entry": "classes3.dex",
+      "bytes": 240444,
+      "sha256": "3178ec78741fb53d4723ced3198a152235ee9accae3bf7abb2ddcd565e6aa617"
+    },
+    {
+      "entry": "classes4.dex",
+      "bytes": 1154208,
+      "sha256": "26f56d5942442354e56c839795ed8853edb79726c0a12dd9eab013cef74f79e1"
+    },
+    {
+      "entry": "classes5.dex",
+      "bytes": 618188,
+      "sha256": "4f0b97aabcc65d7c1025acd1a2d93b080644afb7f59e43f663a2115142dfbc83"
+    },
+    {
+      "entry": "classes6.dex",
+      "bytes": 174536,
+      "sha256": "39ebbecddb47715dd998af5443d418a297be042593afbbd0b86991847795e171"
+    },
+    {
+      "entry": "classes7.dex",
+      "bytes": 262832,
+      "sha256": "c951857fa0490d5022eea8c40fa491f5100c21f203d58276b45f09a93bbbfb43"
+    },
+    {
+      "entry": "classes8.dex",
+      "bytes": 643580,
+      "sha256": "000e09ba9d93815bb190adf024fba6cb0a9f514efaa519ad8758d743aaabf349"
+    },
+    {
+      "entry": "classes9.dex",
+      "bytes": 119372,
+      "sha256": "8d493a956786fea85fb4d1177bafcad6b23497cc0270d91bf1c5838131e200eb"
+    }
+  ],
+  "targets": [
+    {
+      "dex": "classes4.dex",
+      "descriptor": "Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;",
+      "accessFlags": "0x11",
+      "superclass": "Ljava/lang/Object;",
+      "interfaces": [],
+      "declaredMethods": [
+        {
+          "name": "$r8$lambda$8VNmbvpsQEMC4BIWotgf4W7uk_M",
+          "returns": "Lkotlin/Unit;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/MediaFileProtocol;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;",
+            "Ljava/lang/String;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/MediaFileProtocol;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;Ljava/lang/String;)Lkotlin/Unit;",
+          "synthetic": true,
+          "accessFlags": "0x1009",
+          "codeOffset": 215364
+        },
+        {
+          "name": "$r8$lambda$CXQ3xIwDaCrdSfdRZVoOXRp1VF4",
+          "returns": "Lkotlin/Unit;",
+          "parameters": [
+            "Ljava/util/concurrent/atomic/AtomicReference;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;",
+            "Lcom/cooper/lithic/data/media/MediaFileProtocol;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;",
+            "Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Snapshot;",
+            "Ljava/util/concurrent/atomic/AtomicBoolean;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;"
+          ],
+          "descriptor": "(Ljava/util/concurrent/atomic/AtomicReference;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;Lcom/cooper/lithic/data/media/MediaFileProtocol;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Snapshot;Ljava/util/concurrent/atomic/AtomicBoolean;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;)Lkotlin/Unit;",
+          "synthetic": true,
+          "accessFlags": "0x1009",
+          "codeOffset": 215392
+        },
+        {
+          "name": "$r8$lambda$gSfprFuprja3SYg5thsMbmEmzaM",
+          "returns": "Lkotlin/Unit;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;",
+            "Ljava/util/concurrent/atomic/AtomicBoolean;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerResult;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;Ljava/util/concurrent/atomic/AtomicBoolean;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerResult;)Lkotlin/Unit;",
+          "synthetic": true,
+          "accessFlags": "0x1009",
+          "codeOffset": 215420
+        },
+        {
+          "name": "<clinit>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10008",
+          "codeOffset": 215904
+        },
+        {
+          "name": "<init>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10001",
+          "codeOffset": 215932
+        },
+        {
+          "name": "access$runOne",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;",
+            "Ljava/lang/String;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerOutcome;",
+            "Lkotlin/coroutines/Continuation;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;Ljava/lang/String;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerOutcome;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 212868
+        },
+        {
+          "name": "observe",
+          "returns": "V",
+          "parameters": [
+            "Ljava/lang/String;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerResult;",
+            "Z",
+            "Z"
+          ],
+          "descriptor": "(Ljava/lang/String;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerResult;ZZ)V",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 216056
+        },
+        {
+          "name": "runOne",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Ljava/lang/String;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerOutcome;",
+            "Lkotlin/coroutines/Continuation;"
+          ],
+          "descriptor": "(Ljava/lang/String;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerOutcome;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 212896
+        },
+        {
+          "name": "runOne$lambda$0",
+          "returns": "Lkotlin/Unit;",
+          "parameters": [
+            "Ljava/util/concurrent/atomic/AtomicReference;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;",
+            "Lcom/cooper/lithic/data/media/MediaFileProtocol;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;",
+            "Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Snapshot;",
+            "Ljava/util/concurrent/atomic/AtomicBoolean;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;"
+          ],
+          "descriptor": "(Ljava/util/concurrent/atomic/AtomicReference;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;Lcom/cooper/lithic/data/media/MediaFileProtocol;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Snapshot;Ljava/util/concurrent/atomic/AtomicBoolean;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;)Lkotlin/Unit;",
+          "synthetic": false,
+          "accessFlags": "0x1a",
+          "codeOffset": 215448
+        },
+        {
+          "name": "runOne$lambda$1",
+          "returns": "Lkotlin/Unit;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/MediaFileProtocol;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;",
+            "Ljava/lang/String;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/MediaFileProtocol;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;Ljava/lang/String;)Lkotlin/Unit;",
+          "synthetic": false,
+          "accessFlags": "0x1a",
+          "codeOffset": 215796
+        },
+        {
+          "name": "runOne$lambda$2",
+          "returns": "Lkotlin/Unit;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;",
+            "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;",
+            "Ljava/util/concurrent/atomic/AtomicBoolean;",
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerResult;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10WorkerRetirementReviewTest;Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$Owner;Ljava/util/concurrent/atomic/AtomicBoolean;Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerResult;)Lkotlin/Unit;",
+          "synthetic": false,
+          "accessFlags": "0x1a",
+          "codeOffset": 215844
+        },
+        {
+          "name": "stageIdentity",
+          "returns": "Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$WorkerIdentity;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/jpegworker/JpegWorkerIdentity;)Lcom/cooper/lithic/data/media/jpegstage/JpegStageV2$WorkerIdentity;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 212816
+        },
+        {
+          "name": "uuid",
+          "returns": "Ljava/lang/String;",
+          "parameters": [],
+          "descriptor": "()Ljava/lang/String;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 215320
+        },
+        {
+          "name": "healthy_jpeg_retires_real_worker_before_stage_completion",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 215968
+        },
+        {
+          "name": "locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 216012
+        }
+      ],
+      "declaredFields": [
+        {
+          "name": "$stable",
+          "type": "I",
+          "accessFlags": "0x19"
+        },
+        {
+          "name": "context",
+          "type": "Landroid/content/Context;",
+          "accessFlags": "0x12"
+        }
+      ],
+      "status": "PASS",
+      "androidTypeChecks": [
+        {
+          "origin": "field:context",
+          "descriptor": "Landroid/content/Context;",
+          "since": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "dex": "classes4.dex",
+      "descriptor": "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;",
+      "accessFlags": "0x11",
+      "superclass": "Ljava/lang/Object;",
+      "interfaces": [],
+      "declaredMethods": [
+        {
+          "name": "<clinit>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10008",
+          "codeOffset": 166448
+        },
+        {
+          "name": "<init>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10001",
+          "codeOffset": 166476
+        },
+        {
+          "name": "access$bitmapOutcome",
+          "returns": "Lorg/json/JSONObject;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;",
+            "Landroid/graphics/Bitmap;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;Landroid/graphics/Bitmap;)Lorg/json/JSONObject;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 165564
+        },
+        {
+          "name": "access$getContext$p",
+          "returns": "Landroid/content/Context;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;)Landroid/content/Context;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 165396
+        },
+        {
+          "name": "access$getRoot$p",
+          "returns": "Ljava/io/File;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;)Ljava/io/File;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 165444
+        },
+        {
+          "name": "access$getSources$p",
+          "returns": "Ljava/util/List;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;)Ljava/util/List;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 165540
+        },
+        {
+          "name": "access$getStore$p",
+          "returns": "Lcom/cooper/lithic/data/media/LocalImageStore;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;)Lcom/cooper/lithic/data/media/LocalImageStore;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 165420
+        },
+        {
+          "name": "access$outcome",
+          "returns": "Lorg/json/JSONObject;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;",
+            "Lcom/cooper/lithic/data/media/MediaResult;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;Lcom/cooper/lithic/data/media/MediaResult;)Lorg/json/JSONObject;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 165592
+        },
+        {
+          "name": "access$uuid",
+          "returns": "Ljava/lang/String;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegIntegrityTest;)Ljava/lang/String;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 165468
+        },
+        {
+          "name": "bitmapOutcome",
+          "returns": "Lorg/json/JSONObject;",
+          "parameters": [
+            "Landroid/graphics/Bitmap;"
+          ],
+          "descriptor": "(Landroid/graphics/Bitmap;)Lorg/json/JSONObject;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 165620
+        },
+        {
+          "name": "outcome",
+          "returns": "Lorg/json/JSONObject;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/MediaResult;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/MediaResult;)Lorg/json/JSONObject;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 165996
+        },
+        {
+          "name": "uuid",
+          "returns": "Ljava/lang/String;",
+          "parameters": [],
+          "descriptor": "()Ljava/lang/String;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 165496
+        },
+        {
+          "name": "android_decoders_report_locked_fixture_outcomes",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 166532
+        },
+        {
+          "name": "jpeg_entropy_truncated_with_eoi_is_rejected",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 167860
+        },
+        {
+          "name": "setUp",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 167904
+        },
+        {
+          "name": "tearDown",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 168140
+        },
+        {
+          "name": "valid_control_jpeg_imports_successfully",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 168184
+        }
+      ],
+      "declaredFields": [
+        {
+          "name": "$stable",
+          "type": "I",
+          "accessFlags": "0x19"
+        },
+        {
+          "name": "context",
+          "type": "Landroid/content/Context;",
+          "accessFlags": "0x12"
+        },
+        {
+          "name": "root",
+          "type": "Ljava/io/File;",
+          "accessFlags": "0x2"
+        },
+        {
+          "name": "sources",
+          "type": "Ljava/util/List;",
+          "accessFlags": "0x12"
+        },
+        {
+          "name": "store",
+          "type": "Lcom/cooper/lithic/data/media/LocalImageStore;",
+          "accessFlags": "0x2"
+        }
+      ],
+      "status": "PASS",
+      "androidTypeChecks": [
+        {
+          "origin": "field:context",
+          "descriptor": "Landroid/content/Context;",
+          "since": 1
+        },
+        {
+          "origin": "parameter:access$bitmapOutcome:1",
+          "descriptor": "Landroid/graphics/Bitmap;",
+          "since": 1
+        },
+        {
+          "origin": "return:access$getContext$p",
+          "descriptor": "Landroid/content/Context;",
+          "since": 1
+        },
+        {
+          "origin": "parameter:bitmapOutcome:0",
+          "descriptor": "Landroid/graphics/Bitmap;",
+          "since": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "dex": "classes4.dex",
+      "descriptor": "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;",
+      "accessFlags": "0x11",
+      "superclass": "Ljava/lang/Object;",
+      "interfaces": [],
+      "declaredMethods": [
+        {
+          "name": "$r8$lambda$t3xVndSGjqdxOindFqzXAnLA-LY",
+          "returns": "Ljava/lang/CharSequence;",
+          "parameters": [
+            "B"
+          ],
+          "descriptor": "(B)Ljava/lang/CharSequence;",
+          "synthetic": true,
+          "accessFlags": "0x1009",
+          "codeOffset": 171196
+        },
+        {
+          "name": "<clinit>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10008",
+          "codeOffset": 188816
+        },
+        {
+          "name": "<init>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10001",
+          "codeOffset": 188844
+        },
+        {
+          "name": "access$assertBrokenSelectionPreservesOldCover",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;",
+            "Lcom/cooper/lithic/data/media/CoverTargetType;",
+            "Lkotlin/coroutines/Continuation;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;Lcom/cooper/lithic/data/media/CoverTargetType;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 171296
+        },
+        {
+          "name": "access$getClock$p",
+          "returns": "Lcom/cooper/lithic/core/time/FixedBusinessClock;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;)Lcom/cooper/lithic/core/time/FixedBusinessClock;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 171076
+        },
+        {
+          "name": "access$getContext$p",
+          "returns": "Landroid/content/Context;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;)Landroid/content/Context;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 171052
+        },
+        {
+          "name": "access$getGeneration$p",
+          "returns": "Lcom/cooper/lithic/data/backup/ManagedGeneration;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;)Lcom/cooper/lithic/data/backup/ManagedGeneration;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 171100
+        },
+        {
+          "name": "access$getRoot$p",
+          "returns": "Ljava/io/File;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;)Ljava/io/File;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 171172
+        },
+        {
+          "name": "access$getSources$p",
+          "returns": "Ljava/util/List;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;)Ljava/util/List;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 188456
+        },
+        {
+          "name": "access$project",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;",
+            "Lkotlin/coroutines/Continuation;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 171324
+        },
+        {
+          "name": "access$setGeneration$p",
+          "returns": "V",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;",
+            "Lcom/cooper/lithic/data/backup/ManagedGeneration;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;Lcom/cooper/lithic/data/backup/ManagedGeneration;)V",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 188968
+        },
+        {
+          "name": "access$setRepository$p",
+          "returns": "V",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;",
+            "Lcom/cooper/lithic/data/media/MediaRepository;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;Lcom/cooper/lithic/data/media/MediaRepository;)V",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 188992
+        },
+        {
+          "name": "access$setRoot$p",
+          "returns": "V",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;",
+            "Ljava/io/File;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;Ljava/io/File;)V",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 189016
+        },
+        {
+          "name": "access$subscription",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;",
+            "Lkotlin/coroutines/Continuation;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 171352
+        },
+        {
+          "name": "access$uuid",
+          "returns": "Ljava/lang/String;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10JpegOldCoverProtectionTest;)Ljava/lang/String;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 188292
+        },
+        {
+          "name": "assertBrokenSelectionPreservesOldCover",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/CoverTargetType;",
+            "Lkotlin/coroutines/Continuation;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/CoverTargetType;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 171380
+        },
+        {
+          "name": "finalCoverHashes",
+          "returns": "Ljava/util/Map;",
+          "parameters": [],
+          "descriptor": "()Ljava/util/Map;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 188480
+        },
+        {
+          "name": "project",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Lkotlin/coroutines/Continuation;"
+          ],
+          "descriptor": "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 186360
+        },
+        {
+          "name": "sha",
+          "returns": "Ljava/lang/String;",
+          "parameters": [
+            "[B"
+          ],
+          "descriptor": "([B)Ljava/lang/String;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 188320
+        },
+        {
+          "name": "sha$lambda$0",
+          "returns": "Ljava/lang/CharSequence;",
+          "parameters": [
+            "B"
+          ],
+          "descriptor": "(B)Ljava/lang/CharSequence;",
+          "synthetic": false,
+          "accessFlags": "0x1a",
+          "codeOffset": 171224
+        },
+        {
+          "name": "source",
+          "returns": "Lcom/cooper/lithic/data/media/SyntheticImageSource;",
+          "parameters": [
+            "Ljava/lang/String;"
+          ],
+          "descriptor": "(Ljava/lang/String;)Lcom/cooper/lithic/data/media/SyntheticImageSource;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 171124
+        },
+        {
+          "name": "subscription",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Lkotlin/coroutines/Continuation;"
+          ],
+          "descriptor": "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 187148
+        },
+        {
+          "name": "success",
+          "returns": "Ljava/lang/Object;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/MediaResult;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/MediaResult;)Ljava/lang/Object;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 188200
+        },
+        {
+          "name": "uuid",
+          "returns": "Ljava/lang/String;",
+          "parameters": [],
+          "descriptor": "()Ljava/lang/String;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 188412
+        },
+        {
+          "name": "project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 189040
+        },
+        {
+          "name": "setUp",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 189084
+        },
+        {
+          "name": "subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 189128
+        },
+        {
+          "name": "tearDown",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 189172
+        }
+      ],
+      "declaredFields": [
+        {
+          "name": "$stable",
+          "type": "I",
+          "accessFlags": "0x19"
+        },
+        {
+          "name": "clock",
+          "type": "Lcom/cooper/lithic/core/time/FixedBusinessClock;",
+          "accessFlags": "0x12"
+        },
+        {
+          "name": "context",
+          "type": "Landroid/content/Context;",
+          "accessFlags": "0x12"
+        },
+        {
+          "name": "date",
+          "type": "Ljava/time/LocalDate;",
+          "accessFlags": "0x12"
+        },
+        {
+          "name": "generation",
+          "type": "Lcom/cooper/lithic/data/backup/ManagedGeneration;",
+          "accessFlags": "0x2"
+        },
+        {
+          "name": "repository",
+          "type": "Lcom/cooper/lithic/data/media/MediaRepository;",
+          "accessFlags": "0x2"
+        },
+        {
+          "name": "root",
+          "type": "Ljava/io/File;",
+          "accessFlags": "0x2"
+        },
+        {
+          "name": "sources",
+          "type": "Ljava/util/List;",
+          "accessFlags": "0x12"
+        },
+        {
+          "name": "time",
+          "type": "Ljava/time/Instant;",
+          "accessFlags": "0x12"
+        }
+      ],
+      "status": "PASS",
+      "androidTypeChecks": [
+        {
+          "origin": "field:context",
+          "descriptor": "Landroid/content/Context;",
+          "since": 1
+        },
+        {
+          "origin": "return:access$getContext$p",
+          "descriptor": "Landroid/content/Context;",
+          "since": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "dex": "classes4.dex",
+      "descriptor": "Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;",
+      "accessFlags": "0x11",
+      "superclass": "Ljava/lang/Object;",
+      "interfaces": [],
+      "declaredMethods": [
+        {
+          "name": "<clinit>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10008",
+          "codeOffset": 210884
+        },
+        {
+          "name": "<init>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10001",
+          "codeOffset": 210912
+        },
+        {
+          "name": "access$getContext$p",
+          "returns": "Landroid/content/Context;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;)Landroid/content/Context;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 210552
+        },
+        {
+          "name": "access$getFiles$p",
+          "returns": "Lcom/cooper/lithic/data/media/MediaFileProtocol;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;)Lcom/cooper/lithic/data/media/MediaFileProtocol;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 210836
+        },
+        {
+          "name": "access$getRoot$p",
+          "returns": "Ljava/io/File;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;)Ljava/io/File;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 210860
+        },
+        {
+          "name": "access$legacy",
+          "returns": "Lcom/cooper/lithic/data/local/LocalMediaAssetEntity;",
+          "parameters": [
+            "Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;"
+          ],
+          "descriptor": "(Lcom/cooper/lithic/data/media/M10StageV2CompatibilityTest;)Lcom/cooper/lithic/data/local/LocalMediaAssetEntity;",
+          "synthetic": true,
+          "accessFlags": "0x1019",
+          "codeOffset": 210576
+        },
+        {
+          "name": "legacy",
+          "returns": "Lcom/cooper/lithic/data/local/LocalMediaAssetEntity;",
+          "parameters": [],
+          "descriptor": "()Lcom/cooper/lithic/data/local/LocalMediaAssetEntity;",
+          "synthetic": false,
+          "accessFlags": "0x12",
+          "codeOffset": 210604
+        },
+        {
+          "name": "createSyntheticRoot",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 210948
+        },
+        {
+          "name": "legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 211176
+        },
+        {
+          "name": "legacy_uncommitted_jpeg_is_preserved_without_fabricated_receipt",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 211220
+        },
+        {
+          "name": "png_still_uses_v1_preparation_and_original_output_limits",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 211264
+        },
+        {
+          "name": "removeOnlySyntheticRoot",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 211308
+        },
+        {
+          "name": "unresolved_v2_pin_blocks_owner_close_and_preserves_source",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 211832
+        }
+      ],
+      "declaredFields": [
+        {
+          "name": "$stable",
+          "type": "I",
+          "accessFlags": "0x19"
+        },
+        {
+          "name": "context",
+          "type": "Landroid/content/Context;",
+          "accessFlags": "0x12"
+        },
+        {
+          "name": "files",
+          "type": "Lcom/cooper/lithic/data/media/MediaFileProtocol;",
+          "accessFlags": "0x2"
+        },
+        {
+          "name": "root",
+          "type": "Ljava/io/File;",
+          "accessFlags": "0x2"
+        }
+      ],
+      "status": "PASS",
+      "androidTypeChecks": [
+        {
+          "origin": "field:context",
+          "descriptor": "Landroid/content/Context;",
+          "since": 1
+        },
+        {
+          "origin": "return:access$getContext$p",
+          "descriptor": "Landroid/content/Context;",
+          "since": 1
+        }
+      ],
+      "violations": []
+    },
+    {
+      "dex": "classes4.dex",
+      "descriptor": "Lcom/cooper/lithic/data/media/M10Api26TestClassLoadingPreflight;",
+      "accessFlags": "0x11",
+      "superclass": "Ljava/lang/Object;",
+      "interfaces": [],
+      "declaredMethods": [
+        {
+          "name": "<clinit>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10008",
+          "codeOffset": 159924
+        },
+        {
+          "name": "<init>",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x10001",
+          "codeOffset": 159944
+        },
+        {
+          "name": "natural_campaign_declared_methods_are_loadable",
+          "returns": "V",
+          "parameters": [],
+          "descriptor": "()V",
+          "synthetic": false,
+          "accessFlags": "0x11",
+          "codeOffset": 159968
+        }
+      ],
+      "declaredFields": [
+        {
+          "name": "$stable",
+          "type": "I",
+          "accessFlags": "0x19"
+        }
+      ],
+      "status": "PASS",
+      "androidTypeChecks": [],
+      "violations": []
+    }
+  ],
+  "api28Helpers": [
+    {
+      "class": "com.cooper.lithic.data.media.M10Api28ImageDecoderDiagnostics",
+      "status": "NOT_LOAD_ON_API26",
+      "meaning": "Declared as API28-only by the test design; parser does not prove execution guarding.",
+      "definitions": [
+        {
+          "dex": "classes4.dex",
+          "descriptor": "Lcom/cooper/lithic/data/media/M10Api28ImageDecoderDiagnostics$$ExternalSyntheticLambda0;",
+          "accessFlags": "0x1011",
+          "superclass": "Ljava/lang/Object;",
+          "interfaces": [
+            "Landroid/graphics/ImageDecoder$OnHeaderDecodedListener;"
+          ],
+          "declaredMethods": [
+            {
+              "name": "<init>",
+              "returns": "V",
+              "parameters": [
+                "Lorg/json/JSONArray;"
+              ],
+              "descriptor": "(Lorg/json/JSONArray;)V",
+              "synthetic": true,
+              "accessFlags": "0x11001",
+              "codeOffset": 160084
+            },
+            {
+              "name": "onHeaderDecoded",
+              "returns": "V",
+              "parameters": [
+                "Landroid/graphics/ImageDecoder;",
+                "Landroid/graphics/ImageDecoder$ImageInfo;",
+                "Landroid/graphics/ImageDecoder$Source;"
+              ],
+              "descriptor": "(Landroid/graphics/ImageDecoder;Landroid/graphics/ImageDecoder$ImageInfo;Landroid/graphics/ImageDecoder$Source;)V",
+              "synthetic": false,
+              "accessFlags": "0x11",
+              "codeOffset": 160112
+            }
+          ],
+          "declaredFields": [
+            {
+              "name": "f$0",
+              "type": "Lorg/json/JSONArray;",
+              "accessFlags": "0x1011"
+            }
+          ],
+          "status": "FAIL",
+          "androidTypeChecks": [
+            {
+              "origin": "interface",
+              "descriptor": "Landroid/graphics/ImageDecoder$OnHeaderDecodedListener;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:onHeaderDecoded:0",
+              "descriptor": "Landroid/graphics/ImageDecoder;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:onHeaderDecoded:1",
+              "descriptor": "Landroid/graphics/ImageDecoder$ImageInfo;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:onHeaderDecoded:2",
+              "descriptor": "Landroid/graphics/ImageDecoder$Source;",
+              "since": 28
+            }
+          ],
+          "violations": [
+            {
+              "origin": "interface",
+              "descriptor": "Landroid/graphics/ImageDecoder$OnHeaderDecodedListener;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:onHeaderDecoded:0",
+              "descriptor": "Landroid/graphics/ImageDecoder;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:onHeaderDecoded:1",
+              "descriptor": "Landroid/graphics/ImageDecoder$ImageInfo;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:onHeaderDecoded:2",
+              "descriptor": "Landroid/graphics/ImageDecoder$Source;",
+              "since": 28
+            }
+          ]
+        },
+        {
+          "dex": "classes4.dex",
+          "descriptor": "Lcom/cooper/lithic/data/media/M10Api28ImageDecoderDiagnostics$$ExternalSyntheticLambda1;",
+          "accessFlags": "0x1011",
+          "superclass": "Ljava/lang/Object;",
+          "interfaces": [
+            "Landroid/graphics/ImageDecoder$OnPartialImageListener;"
+          ],
+          "declaredMethods": [
+            {
+              "name": "<init>",
+              "returns": "V",
+              "parameters": [
+                "Lorg/json/JSONArray;"
+              ],
+              "descriptor": "(Lorg/json/JSONArray;)V",
+              "synthetic": true,
+              "accessFlags": "0x11001",
+              "codeOffset": 160172
+            },
+            {
+              "name": "onPartialImage",
+              "returns": "Z",
+              "parameters": [
+                "Landroid/graphics/ImageDecoder$DecodeException;"
+              ],
+              "descriptor": "(Landroid/graphics/ImageDecoder$DecodeException;)Z",
+              "synthetic": false,
+              "accessFlags": "0x11",
+              "codeOffset": 160140
+            }
+          ],
+          "declaredFields": [
+            {
+              "name": "f$0",
+              "type": "Lorg/json/JSONArray;",
+              "accessFlags": "0x1011"
+            }
+          ],
+          "status": "FAIL",
+          "androidTypeChecks": [
+            {
+              "origin": "interface",
+              "descriptor": "Landroid/graphics/ImageDecoder$OnPartialImageListener;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:onPartialImage:0",
+              "descriptor": "Landroid/graphics/ImageDecoder$DecodeException;",
+              "since": 28
+            }
+          ],
+          "violations": [
+            {
+              "origin": "interface",
+              "descriptor": "Landroid/graphics/ImageDecoder$OnPartialImageListener;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:onPartialImage:0",
+              "descriptor": "Landroid/graphics/ImageDecoder$DecodeException;",
+              "since": 28
+            }
+          ]
+        },
+        {
+          "dex": "classes4.dex",
+          "descriptor": "Lcom/cooper/lithic/data/media/M10Api28ImageDecoderDiagnostics;",
+          "accessFlags": "0x11",
+          "superclass": "Ljava/lang/Object;",
+          "interfaces": [],
+          "declaredMethods": [
+            {
+              "name": "$r8$lambda$9hiViJcG_9Zr6pg6YkB4TjN0Ijw",
+              "returns": "Z",
+              "parameters": [
+                "Lorg/json/JSONArray;",
+                "Landroid/graphics/ImageDecoder$DecodeException;"
+              ],
+              "descriptor": "(Lorg/json/JSONArray;Landroid/graphics/ImageDecoder$DecodeException;)Z",
+              "synthetic": true,
+              "accessFlags": "0x1009",
+              "codeOffset": 160200
+            },
+            {
+              "name": "$r8$lambda$hmjYaqeLXyjfTrlm1fXquMPvFPU",
+              "returns": "V",
+              "parameters": [
+                "Lorg/json/JSONArray;",
+                "Landroid/graphics/ImageDecoder;",
+                "Landroid/graphics/ImageDecoder$ImageInfo;",
+                "Landroid/graphics/ImageDecoder$Source;"
+              ],
+              "descriptor": "(Lorg/json/JSONArray;Landroid/graphics/ImageDecoder;Landroid/graphics/ImageDecoder$ImageInfo;Landroid/graphics/ImageDecoder$Source;)V",
+              "synthetic": true,
+              "accessFlags": "0x1009",
+              "codeOffset": 160548
+            },
+            {
+              "name": "<clinit>",
+              "returns": "V",
+              "parameters": [],
+              "descriptor": "()V",
+              "synthetic": false,
+              "accessFlags": "0x10008",
+              "codeOffset": 160572
+            },
+            {
+              "name": "<init>",
+              "returns": "V",
+              "parameters": [],
+              "descriptor": "()V",
+              "synthetic": false,
+              "accessFlags": "0x10002",
+              "codeOffset": 160604
+            },
+            {
+              "name": "report$lambda$0",
+              "returns": "V",
+              "parameters": [
+                "Lorg/json/JSONArray;",
+                "Landroid/graphics/ImageDecoder;",
+                "Landroid/graphics/ImageDecoder$ImageInfo;",
+                "Landroid/graphics/ImageDecoder$Source;"
+              ],
+              "descriptor": "(Lorg/json/JSONArray;Landroid/graphics/ImageDecoder;Landroid/graphics/ImageDecoder$ImageInfo;Landroid/graphics/ImageDecoder$Source;)V",
+              "synthetic": false,
+              "accessFlags": "0x1a",
+              "codeOffset": 160628
+            },
+            {
+              "name": "report$lambda$0$0",
+              "returns": "Z",
+              "parameters": [
+                "Lorg/json/JSONArray;",
+                "Landroid/graphics/ImageDecoder$DecodeException;"
+              ],
+              "descriptor": "(Lorg/json/JSONArray;Landroid/graphics/ImageDecoder$DecodeException;)Z",
+              "synthetic": false,
+              "accessFlags": "0x1a",
+              "codeOffset": 160228
+            },
+            {
+              "name": "report",
+              "returns": "Lorg/json/JSONObject;",
+              "parameters": [
+                "[B",
+                "Lkotlin/jvm/functions/Function1;"
+              ],
+              "descriptor": "([BLkotlin/jvm/functions/Function1;)Lorg/json/JSONObject;",
+              "synthetic": false,
+              "accessFlags": "0x11",
+              "codeOffset": 160316
+            }
+          ],
+          "declaredFields": [
+            {
+              "name": "$stable",
+              "type": "I",
+              "accessFlags": "0x19"
+            },
+            {
+              "name": "INSTANCE",
+              "type": "Lcom/cooper/lithic/data/media/M10Api28ImageDecoderDiagnostics;",
+              "accessFlags": "0x19"
+            }
+          ],
+          "status": "FAIL",
+          "androidTypeChecks": [
+            {
+              "origin": "parameter:$r8$lambda$9hiViJcG_9Zr6pg6YkB4TjN0Ijw:1",
+              "descriptor": "Landroid/graphics/ImageDecoder$DecodeException;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:$r8$lambda$hmjYaqeLXyjfTrlm1fXquMPvFPU:1",
+              "descriptor": "Landroid/graphics/ImageDecoder;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:$r8$lambda$hmjYaqeLXyjfTrlm1fXquMPvFPU:2",
+              "descriptor": "Landroid/graphics/ImageDecoder$ImageInfo;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:$r8$lambda$hmjYaqeLXyjfTrlm1fXquMPvFPU:3",
+              "descriptor": "Landroid/graphics/ImageDecoder$Source;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:report$lambda$0:1",
+              "descriptor": "Landroid/graphics/ImageDecoder;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:report$lambda$0:2",
+              "descriptor": "Landroid/graphics/ImageDecoder$ImageInfo;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:report$lambda$0:3",
+              "descriptor": "Landroid/graphics/ImageDecoder$Source;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:report$lambda$0$0:1",
+              "descriptor": "Landroid/graphics/ImageDecoder$DecodeException;",
+              "since": 28
+            }
+          ],
+          "violations": [
+            {
+              "origin": "parameter:$r8$lambda$9hiViJcG_9Zr6pg6YkB4TjN0Ijw:1",
+              "descriptor": "Landroid/graphics/ImageDecoder$DecodeException;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:$r8$lambda$hmjYaqeLXyjfTrlm1fXquMPvFPU:1",
+              "descriptor": "Landroid/graphics/ImageDecoder;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:$r8$lambda$hmjYaqeLXyjfTrlm1fXquMPvFPU:2",
+              "descriptor": "Landroid/graphics/ImageDecoder$ImageInfo;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:$r8$lambda$hmjYaqeLXyjfTrlm1fXquMPvFPU:3",
+              "descriptor": "Landroid/graphics/ImageDecoder$Source;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:report$lambda$0:1",
+              "descriptor": "Landroid/graphics/ImageDecoder;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:report$lambda$0:2",
+              "descriptor": "Landroid/graphics/ImageDecoder$ImageInfo;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:report$lambda$0:3",
+              "descriptor": "Landroid/graphics/ImageDecoder$Source;",
+              "since": 28
+            },
+            {
+              "origin": "parameter:report$lambda$0$0:1",
+              "descriptor": "Landroid/graphics/ImageDecoder$DecodeException;",
+              "since": 28
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Does not execute Android reflection or verify transitive code paths.",
+    "Only Android framework class introduction versions in the local official SDK XML are evaluated.",
+    "Annotations, method bodies, exception catch tables, transitive non-Android types and member-level API introductions are not admission proofs.",
+    "API28 helper references are intentional behind SDK_INT guard; no claim that all DEX API28 code references are absent."
+  ]
+}

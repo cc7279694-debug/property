@@ -1,0 +1,152 @@
+{
+  "api": 36,
+  "avd": "Lithic_M10V_API36_20261018",
+  "campaignId": "m10-final-20261019-022830-2a602443",
+  "elapsedSeconds": 118.15599999999904,
+  "oldBootAndExitProofsRewritten": false,
+  "processIdentityProof": {
+    "anchor": {
+      "processes": [
+        {
+          "created": [
+            1792379583,
+            580570000
+          ],
+          "expectedExecutable": "c:\\users\\cdd\\appdata\\local\\mirraandroid\\sdk\\emulator\\emulator.exe",
+          "name": "emulator.exe",
+          "parentPid": 28004,
+          "pid": 33512,
+          "role": "launcher"
+        },
+        {
+          "created": [
+            1792379583,
+            752254000
+          ],
+          "expectedExecutable": "c:\\users\\cdd\\appdata\\local\\mirraandroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+          "name": "qemu-system-x86_64-headless.exe",
+          "parentPid": 33512,
+          "pid": 32252,
+          "role": "qemu"
+        }
+      ],
+      "spec": {
+        "argv": [
+          "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+          "-avd",
+          "Lithic_M10V_API36_20261018",
+          "-port",
+          "5626",
+          "-datadir",
+          "E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd",
+          "-data",
+          "E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\userdata-qemu.img",
+          "-cache",
+          "E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\cache.img",
+          "-sysdir",
+          "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64",
+          "-no-snapshot",
+          "-no-window",
+          "-no-audio",
+          "-no-boot-anim",
+          "-memory",
+          "1536",
+          "-cores",
+          "2"
+        ],
+        "avd": "Lithic_M10V_API36_20261018",
+        "launcherExe": "c:\\users\\cdd\\appdata\\local\\mirraandroid\\sdk\\emulator\\emulator.exe",
+        "port": 5626,
+        "qemuExe": "c:\\users\\cdd\\appdata\\local\\mirraandroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe"
+      },
+      "version": 1
+    },
+    "elapsedSeconds": 13.65599999999904,
+    "observations": [
+      {
+        "elapsedSeconds": 6.95299999999952,
+        "reason": "COMPLETE_IDENTITY_OBSERVED",
+        "status": "PASS"
+      },
+      {
+        "elapsedSeconds": 13.65599999999904,
+        "reason": "COMPLETE_IDENTITY_OBSERVED",
+        "status": "PASS"
+      }
+    ],
+    "reason": "TWO_COMPLETE_MATCHING_OBSERVATIONS",
+    "scope": "CURRENT_READ_ONLY_WINDOWS_IDENTITY",
+    "snapshot": {
+      "emulatorProcessCount": 2,
+      "freeKiB": 1444504,
+      "ports": [
+        {
+          "LocalAddress": "::1",
+          "LocalPort": 5627,
+          "OwningProcess": 32252
+        },
+        {
+          "LocalAddress": "::1",
+          "LocalPort": 5626,
+          "OwningProcess": 32252
+        },
+        {
+          "LocalAddress": "127.0.0.1",
+          "LocalPort": 5627,
+          "OwningProcess": 32252
+        },
+        {
+          "LocalAddress": "127.0.0.1",
+          "LocalPort": 5626,
+          "OwningProcess": 32252
+        }
+      ],
+      "targets": [
+        {
+          "CommandLine": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe -avd Lithic_M10V_API36_20261018 -port 5626 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\cache.img -sysdir C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+          "CreationDate": "2026-10-19T03:13:03.5805700Z",
+          "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+          "Name": "emulator.exe",
+          "ParentProcessId": 28004,
+          "ProcessId": 33512
+        },
+        {
+          "CommandLine": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M10V_API36_20261018 -port 5626 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd -data E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\userdata-qemu.img -cache E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\cache.img -sysdir C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64 -no-snapshot -no-window -no-audio -no-boot-anim -memory 1536 -cores 2",
+          "CreationDate": "2026-10-19T03:13:03.7522540Z",
+          "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+          "Name": "qemu-system-x86_64-headless.exe",
+          "ParentProcessId": 33512,
+          "ProcessId": 32252
+        }
+      ],
+      "totalKiB": 16648500,
+      "utc": "2026-10-19T03:14:59.7537163Z"
+    },
+    "status": "PASS",
+    "windowSeconds": 30
+  },
+  "runtimePaths": {
+    "hardwareConfigIntegrity": {
+      "bytes": 4619,
+      "sha256": "56c8fe58835191156a3fc92f5c795a195bd9d4a8ae89ec501d4083bb1f435dc0"
+    },
+    "officialHardwareSchemaSHA256": "13a89cc7cfa84c5fe48cd7eb8d296bca321dcd0d90f7bcb751efd963ae2c653d",
+    "paths": {
+      "disk.cachePartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\cache.img",
+      "disk.dataPartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\userdata-qemu.img",
+      "disk.encryptionKeyPartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m10-android-20261018-v1\\api36\\data\\Lithic_M10V_API36_20261018.avd\\encryptionkey.img",
+      "disk.ramdisk.path": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64\\ramdisk.img",
+      "disk.systemPartition.initPath": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64\\system.img",
+      "disk.vendorPartition.initPath": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64\\vendor.img",
+      "kernel.path": "C:\\Users\\CDD\\AppData\\Local\\Packages\\OpenAI.Codex_2p2nqsd0c76g0\\LocalCache\\Local\\MirraAndroid\\sdk\\system-images\\android-36\\google_apis\\x86_64\\kernel-ranchu"
+    },
+    "runtimeIdentity": "Lithic_M10V_API36_20261018",
+    "status": "PASS",
+    "temporaryPaths": "NO_UNRESOLVED_WRITABLE_PATH_ACCEPTED"
+  },
+  "serial": "emulator-5626",
+  "sourceCommit": "b2862062391a0c3008fe792db583b4abc5e146f9",
+  "status": "PASS",
+  "type": "CAMPAIGN_COLD_BOOT_PROOF",
+  "utc": "2026-10-19T03:15:01.737510+00:00"
+}
