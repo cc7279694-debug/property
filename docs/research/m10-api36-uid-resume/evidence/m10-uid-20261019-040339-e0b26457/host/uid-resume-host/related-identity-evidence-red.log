@@ -1,0 +1,158 @@
+test_both_identity_fields_agree (test_installed_uid.InstalledUidTest.test_both_identity_fields_agree) ... ok
+test_conflicting_appid_userid_rejected (test_installed_uid.InstalledUidTest.test_conflicting_appid_userid_rejected) ... ok
+test_cross_user_uid_rejected (test_installed_uid.InstalledUidTest.test_cross_user_uid_rejected) ... ok
+test_duplicate_appid_even_same_value_rejected (test_installed_uid.InstalledUidTest.test_duplicate_appid_even_same_value_rejected) ... ok
+test_duplicate_codepath_even_matching_rejected (test_installed_uid.InstalledUidTest.test_duplicate_codepath_even_matching_rejected) ... FAIL
+test_duplicate_installed_flag_rejected (test_installed_uid.InstalledUidTest.test_duplicate_installed_flag_rejected) ... ok
+test_duplicate_owned_permission_uid_rejected (test_installed_uid.InstalledUidTest.test_duplicate_owned_permission_uid_rejected) ... FAIL
+test_duplicate_packages_region_rejected (test_installed_uid.InstalledUidTest.test_duplicate_packages_region_rejected) ... ok
+test_duplicate_permission_source_package_rejected (test_installed_uid.InstalledUidTest.test_duplicate_permission_source_package_rejected) ... FAIL
+test_duplicate_target_package_rejected (test_installed_uid.InstalledUidTest.test_duplicate_target_package_rejected) ... ok
+test_duplicate_user_zero_rejected (test_installed_uid.InstalledUidTest.test_duplicate_user_zero_rejected) ... ok
+test_duplicate_userid_even_same_value_rejected (test_installed_uid.InstalledUidTest.test_duplicate_userid_even_same_value_rejected) ... ok
+test_foreign_package_in_packages_region_rejected (test_installed_uid.InstalledUidTest.test_foreign_package_in_packages_region_rejected) ... ok
+test_incomplete_packages_region_rejected (test_installed_uid.InstalledUidTest.test_incomplete_packages_region_rejected) ... ok
+test_independent_locked_sibling_same_uid_rejected (test_installed_uid.InstalledUidTest.test_independent_locked_sibling_same_uid_rejected) ... ok
+test_independent_query_for_test_cannot_return_app (test_installed_uid.InstalledUidTest.test_independent_query_for_test_cannot_return_app) ... ok
+test_independent_query_unexpected_format_rejected (test_installed_uid.InstalledUidTest.test_independent_query_unexpected_format_rejected) ... ok
+test_independent_query_unknown_suffix_rejected (test_installed_uid.InstalledUidTest.test_independent_query_unknown_suffix_rejected) ... ok
+test_independent_target_duplicate_rejected (test_installed_uid.InstalledUidTest.test_independent_target_duplicate_rejected) ... ok
+test_independent_uid_mismatch_rejected (test_installed_uid.InstalledUidTest.test_independent_uid_mismatch_rejected) ... ok
+test_independent_uid_missing_rejected (test_installed_uid.InstalledUidTest.test_independent_uid_missing_rejected) ... ok
+test_independent_user_zero_query_failure_rejected (test_installed_uid.InstalledUidTest.test_independent_user_zero_query_failure_rejected) ... ok
+test_independent_wrong_package_rejected (test_installed_uid.InstalledUidTest.test_independent_wrong_package_rejected) ... ok
+test_installed_apk_sha_mismatch_remains_rejected (test_installed_uid.InstalledUidTest.test_installed_apk_sha_mismatch_remains_rejected) ... ok
+test_installed_false_rejected (test_installed_uid.InstalledUidTest.test_installed_false_rejected) ... ok
+test_isolated_uid_not_ordinary_application (test_installed_uid.InstalledUidTest.test_isolated_uid_not_ordinary_application) ... ok
+test_locked_fixture_bytes_and_sha (test_installed_uid.InstalledUidTest.test_locked_fixture_bytes_and_sha) ... ok
+test_malformed_codepath_rejected (test_installed_uid.InstalledUidTest.test_malformed_codepath_rejected) ... FAIL
+test_malformed_signed_uid_rejected (test_installed_uid.InstalledUidTest.test_malformed_signed_uid_rejected) ... ok
+test_missing_codepath_rejected (test_installed_uid.InstalledUidTest.test_missing_codepath_rejected) ... FAIL
+test_missing_installed_flag_rejected (test_installed_uid.InstalledUidTest.test_missing_installed_flag_rejected) ... ok
+test_nested_codepath_rejected (test_installed_uid.InstalledUidTest.test_nested_codepath_rejected) ... FAIL
+test_nested_other_package_header_rejected (test_installed_uid.InstalledUidTest.test_nested_other_package_header_rejected) ... ok
+test_nested_uid_field_rejected (test_installed_uid.InstalledUidTest.test_nested_uid_field_rejected) ... ok
+test_other_package_identity_cannot_supply_target_identity (test_installed_uid.InstalledUidTest.test_other_package_identity_cannot_supply_target_identity) ... ok
+test_other_permission_uid_does_not_provide_target_identity (test_installed_uid.InstalledUidTest.test_other_permission_uid_does_not_provide_target_identity) ... ok
+test_other_user_cannot_satisfy_user_zero (test_installed_uid.InstalledUidTest.test_other_user_cannot_satisfy_user_zero) ... ok
+test_owned_permission_truncated_record_rejected (test_installed_uid.InstalledUidTest.test_owned_permission_truncated_record_rejected) ... FAIL
+test_owned_permission_uid_malformed_rejected (test_installed_uid.InstalledUidTest.test_owned_permission_uid_malformed_rejected) ... FAIL
+test_permission_uid_cannot_supply_missing_package_identity (test_installed_uid.InstalledUidTest.test_permission_uid_cannot_supply_missing_package_identity) ... ok
+test_pm_path_ambiguity_remains_rejected (test_installed_uid.InstalledUidTest.test_pm_path_ambiguity_remains_rejected) ... ok
+test_real_api26_userid_and_independent_uid (test_installed_uid.InstalledUidTest.test_real_api26_userid_and_independent_uid) ... ok
+test_real_api36_appid_and_independent_uid (test_installed_uid.InstalledUidTest.test_real_api36_appid_and_independent_uid) ... ok
+test_real_api36_independent_query_bytes (test_installed_uid.InstalledUidTest.test_real_api36_independent_query_bytes) ... ok
+test_real_owned_permission_uid_conflict_rejected (test_installed_uid.InstalledUidTest.test_real_owned_permission_uid_conflict_rejected) ... FAIL
+test_real_target_codepath_must_match_pm_path (test_installed_uid.InstalledUidTest.test_real_target_codepath_must_match_pm_path) ... FAIL
+test_system_uid_not_ordinary_application (test_installed_uid.InstalledUidTest.test_system_uid_not_ordinary_application) ... ok
+test_target_app_prefix_can_also_return_distinct_locked_test (test_installed_uid.InstalledUidTest.test_target_app_prefix_can_also_return_distinct_locked_test) ... ok
+test_test_package_can_have_no_permission_definitions (test_installed_uid.InstalledUidTest.test_test_package_can_have_no_permission_definitions) ... ok
+test_uid_trailing_tokens_rejected (test_installed_uid.InstalledUidTest.test_uid_trailing_tokens_rejected) ... ok
+test_unknown_locked_prefix_package_rejected (test_installed_uid.InstalledUidTest.test_unknown_locked_prefix_package_rejected) ... ok
+test_user_zero_alias_is_not_canonical_user_zero (test_installed_uid.InstalledUidTest.test_user_zero_alias_is_not_canonical_user_zero) ... ok
+test_wrong_target_package_rejected (test_installed_uid.InstalledUidTest.test_wrong_target_package_rejected) ... ok
+
+======================================================================
+FAIL: test_duplicate_codepath_even_matching_rejected (test_installed_uid.InstalledUidTest.test_duplicate_codepath_even_matching_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 195, in test_duplicate_codepath_even_matching_rejected
+    self.blocked(minimal("userId=10216").replace("    codePath=/data/app/isolated", "    codePath=/data/app/isolated\n    codePath=/data/app/isolated"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_owned_permission_uid_rejected (test_installed_uid.InstalledUidTest.test_duplicate_owned_permission_uid_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 209, in test_duplicate_owned_permission_uid_rejected
+    self.blocked(changed, paths="package:" + historical_path(36))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_permission_source_package_rejected (test_installed_uid.InstalledUidTest.test_duplicate_permission_source_package_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 213, in test_duplicate_permission_source_package_rejected
+    self.blocked(changed, paths="package:" + historical_path(36))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_malformed_codepath_rejected (test_installed_uid.InstalledUidTest.test_malformed_codepath_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 201, in test_malformed_codepath_rejected
+    self.blocked(minimal("userId=10216").replace("codePath=/data/app/isolated", "codePath=/data/app/isolated trailing=value"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_missing_codepath_rejected (test_installed_uid.InstalledUidTest.test_missing_codepath_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 192, in test_missing_codepath_rejected
+    self.blocked(minimal("userId=10216").replace("    codePath=/data/app/isolated\n", ""))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_nested_codepath_rejected (test_installed_uid.InstalledUidTest.test_nested_codepath_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 198, in test_nested_codepath_rejected
+    self.blocked(minimal("userId=10216").replace("    codePath=", "      codePath="))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_owned_permission_truncated_record_rejected (test_installed_uid.InstalledUidTest.test_owned_permission_truncated_record_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 221, in test_owned_permission_truncated_record_rejected
+    self.blocked(changed, paths="package:" + historical_path(36))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_owned_permission_uid_malformed_rejected (test_installed_uid.InstalledUidTest.test_owned_permission_uid_malformed_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 217, in test_owned_permission_uid_malformed_rejected
+    self.blocked(changed, paths="package:" + historical_path(36))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_real_owned_permission_uid_conflict_rejected (test_installed_uid.InstalledUidTest.test_real_owned_permission_uid_conflict_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 205, in test_real_owned_permission_uid_conflict_rejected
+    self.blocked(changed, paths="package:" + historical_path(36))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_real_target_codepath_must_match_pm_path (test_installed_uid.InstalledUidTest.test_real_target_codepath_must_match_pm_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 189, in test_real_target_codepath_must_match_pm_path
+    self.blocked(changed, paths="package:" + historical_path(36))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 55, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 53 tests in 0.066s
+
+FAILED (failures=10)

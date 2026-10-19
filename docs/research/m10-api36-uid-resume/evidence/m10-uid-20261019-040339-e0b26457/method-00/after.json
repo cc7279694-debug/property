@@ -1,0 +1,247 @@
+{
+  "api": 36,
+  "continuousCapture": {
+    "metadata": {
+      "authenticatedDiagnosticsExcluded": 2,
+      "captureProofSHA256": "8b33e9f7dfa431f1bade14e60fac15cb96fcf3732aea87862471b30c935aca03",
+      "globalLoggerLosslessness": "NOT_PROVEN_BY_HOST_CAPTURE_ALONE",
+      "newPhaseLines": 6,
+      "oldBacklogLines": 0,
+      "oldUnknownReclassified": false,
+      "rawFilesRewritten": false,
+      "rawStderr": {
+        "bytes": 0,
+        "eof": true,
+        "file": "stderr.raw",
+        "observedBytes": 0,
+        "readerStopped": true,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "rawStdout": {
+        "bytes": 1422,
+        "eof": true,
+        "file": "stdout.raw",
+        "observedBytes": 1422,
+        "readerStopped": true,
+        "sha256": "9c9e2b621de7c2de2fed216d689f26f6f91401fed663a481be3c455851601cd2"
+      },
+      "scope": "VERIFIED_CONTINUOUS_METHOD_CAPTURE_WITH_EXACT_INITIAL_BACKLOG",
+      "serial": "emulator-5626"
+    },
+    "newPhaseLog": "10-19 04:06:36.163  6085  6094 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196716\n10-19 04:06:36.165  6064  6083 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196718\n10-19 04:06:36.168  6085  6085 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196721\n10-19 04:06:36.170  6085  6098 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196722\n10-19 04:06:36.173  6064  6064 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196726\n10-19 04:06:36.186  6064  6075 I LITHIC_JPEG: HOST_BINDER_DIED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196739"
+  },
+  "instrumentationText": "INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.media.M10WorkerRetirementReviewTest\r\nINSTRUMENTATION_STATUS: current=1\r\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\r\nINSTRUMENTATION_STATUS: numtests=1\r\nINSTRUMENTATION_STATUS: stream=\r\ncom.cooper.lithic.data.media.M10WorkerRetirementReviewTest:\r\nINSTRUMENTATION_STATUS: test=healthy_jpeg_retires_real_worker_before_stage_completion\r\nINSTRUMENTATION_STATUS_CODE: 1\r\nINSTRUMENTATION_STATUS: class=com.cooper.lithic.data.media.M10WorkerRetirementReviewTest\r\nINSTRUMENTATION_STATUS: current=1\r\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\r\nINSTRUMENTATION_STATUS: numtests=1\r\nINSTRUMENTATION_STATUS: stream=.\r\nINSTRUMENTATION_STATUS: test=healthy_jpeg_retires_real_worker_before_stage_completion\r\nINSTRUMENTATION_STATUS_CODE: 0\r\nINSTRUMENTATION_RESULT: stream=\r\n\r\nTime: 3.943\r\n\r\nOK (1 test)\r\n\r\n\r\nINSTRUMENTATION_CODE: -1",
+  "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+  "newObservations": [
+    {
+      "filename": "worker-review-result-47c09b21-8ecf-41ef-84df-047d7e6ca159.json",
+      "metadata": {
+        "bytes": 642,
+        "device": 65079,
+        "inode": 566860,
+        "sha256": "173277f179e343ce46ce9feed4eccc74274fb6d05e753563c34b3d97956ac815",
+        "type": "regular"
+      },
+      "name": "worker-review-result",
+      "value": {
+        "attempt": "12376ddc-fb65-4cec-bdd5-683bce289564",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "STRICT_FINISHED_NORMALIZED",
+        "generation": "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788",
+        "guardReleased": true,
+        "hostPid": 6064,
+        "hostUid": 10216,
+        "matchingProcessDead": true,
+        "outcome": "SUCCESS",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": false,
+        "session": "8680a7fb-997d-4c5f-81ae-d3f8de319d68",
+        "sourceClosed": true,
+        "strictFinished": true,
+        "workerPid": 6085,
+        "workerStartTicks": 319374,
+        "workerUid": 10216
+      }
+    },
+    {
+      "filename": "worker-review-terminal-21258d0c-6d36-408b-a1c2-e4fbccdbc670.json",
+      "metadata": {
+        "bytes": 641,
+        "device": 65079,
+        "inode": 566855,
+        "sha256": "a1e3c7c0425d807970ed450710ed52decbb4b38a3cbb1a159b586973ba7a5251",
+        "type": "regular"
+      },
+      "name": "worker-review-terminal",
+      "value": {
+        "attempt": "12376ddc-fb65-4cec-bdd5-683bce289564",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "STRICT_FINISHED_NORMALIZED",
+        "generation": "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788",
+        "guardReleased": true,
+        "hostPid": 6064,
+        "hostUid": 10216,
+        "matchingProcessDead": true,
+        "outcome": "SUCCESS",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": true,
+        "session": "8680a7fb-997d-4c5f-81ae-d3f8de319d68",
+        "sourceClosed": true,
+        "strictFinished": true,
+        "workerPid": 6085,
+        "workerStartTicks": 319374,
+        "workerUid": 10216
+      }
+    }
+  ],
+  "newPhaseLog": "10-19 04:06:36.163  6085  6094 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196716\n10-19 04:06:36.165  6064  6083 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196718\n10-19 04:06:36.168  6085  6085 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196721\n10-19 04:06:36.170  6085  6098 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196722\n10-19 04:06:36.173  6064  6064 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196726\n10-19 04:06:36.186  6064  6075 I LITHIC_JPEG: HOST_BINDER_DIED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196739",
+  "newStages": {
+    "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788": {
+      "asset": "78a0ff64-72bc-4d0a-93ad-f93b7e0f7794",
+      "namespaceGuard": {
+        "bytes": 0,
+        "device": 65079,
+        "inode": 566831,
+        "type": "regular"
+      },
+      "records": {
+        "__metadata__": "{\"complete\": true, \"entries\": {\"cleaned.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566853, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"cleanup-intent.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566864, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"consumer.guard\": {\"bytes\": 0, \"device\": 65079, \"inode\": 566833, \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"sha256Origin\": \"DERIVED_FROM_VERIFIED_ZERO_LENGTH_NO_CONTENT_READ\", \"type\": \"regular\"}, \"delivered.v2\": {\"bytes\": 148, \"device\": 65079, \"inode\": 566858, \"sha256\": \"fac366c26e5ef42bcdc745d0fca5d47d8b1880a3c8721355495e2ecfb2ee3116\", \"type\": \"regular\"}, \"output.v2\": {\"bytes\": 181, \"device\": 65079, \"inode\": 566856, \"sha256\": \"3f3b63c84c7c0c3a2c4556c22335882001f36485b39ae282a6cc2bcc2271b455\", \"type\": \"regular\"}, \"owner.v2\": {\"bytes\": 415, \"device\": 65079, \"inode\": 566844, \"sha256\": \"f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\", \"type\": \"regular\"}, \"pin.v2\": {\"bytes\": 188, \"device\": 65079, \"inode\": 566857, \"sha256\": \"87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\", \"type\": \"regular\"}, \"prepared.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566862, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"revoked.v2\": {\"bytes\": 151, \"device\": 65079, \"inode\": 566863, \"sha256\": \"d431ff0f51f5d26a66bc5d686e4e79f750beffa955286ae33eed5ee2654f813c\", \"type\": \"regular\"}, \"source.v2\": {\"bytes\": 185, \"device\": 65079, \"inode\": 566854, \"sha256\": \"fb154bdc582ae076688c67f7cbb9d7d5a81d1d7bc1a081d5041ce09196c4c1a8\", \"type\": \"regular\"}, \"terminal.v2\": {\"bytes\": 552, \"device\": 65079, \"inode\": 566861, \"sha256\": \"6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\", \"type\": \"regular\"}}}",
+        "cleaned.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "cleanup-intent.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "consumer.guard": "",
+        "delivered.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npinHash=87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\n",
+        "output.v2": "bytes=0\ndevice=65079\ninode=566855\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nsha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+        "owner.v2": "assetId=78a0ff64-72bc-4d0a-93ad-f93b7e0f7794\nattemptId=12376ddc-fb65-4cec-bdd5-683bce289564\ndecoderPolicy=libjpeg-turbo-3.2.0-e01-strict-v1\ngeneration=m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788\nguardDevice=65079\nguardInode=566833\nnonce=52c5513f-9f20-4d2c-a5e7-749f6958a480\nnormalizationPolicy=m10-jpeg-normalize-v1\nprotocol=lithic-m10-jpeg-stage\nsessionId=8680a7fb-997d-4c5f-81ae-d3f8de319d68\nversion=2\n",
+        "pin.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npid=6085\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstartTicks=319374\nuid=10216\n",
+        "prepared.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "revoked.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nreasonHash=611496f412cac947be720d17a0ee6d7463221d14731fbc18244756271e8f5189\n",
+        "source.v2": "bytes=59334\ndevice=65079\ninode=566853\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nsha256=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\n",
+        "terminal.v2": "binderDead=true\nconnectionCleaned=true\ndecoderDestroyed=true\nheight=256\nmatchingProcessDead=true\noutcome=SUCCESS\noutputBytes=51882\noutputDevice=65079\noutputFdClosed=true\noutputInode=566855\noutputSha=673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npinHash=87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\nresultCount=1\nsourceFdClosed=true\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstrictFinished=true\nwidth=256\n"
+      }
+    }
+  },
+  "noBackupStatus": "PRESENT",
+  "observations": {
+    "worker-review-result-47c09b21-8ecf-41ef-84df-047d7e6ca159.json": {
+      "filename": "worker-review-result-47c09b21-8ecf-41ef-84df-047d7e6ca159.json",
+      "metadata": {
+        "bytes": 642,
+        "device": 65079,
+        "inode": 566860,
+        "sha256": "173277f179e343ce46ce9feed4eccc74274fb6d05e753563c34b3d97956ac815",
+        "type": "regular"
+      },
+      "name": "worker-review-result",
+      "value": {
+        "attempt": "12376ddc-fb65-4cec-bdd5-683bce289564",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "STRICT_FINISHED_NORMALIZED",
+        "generation": "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788",
+        "guardReleased": true,
+        "hostPid": 6064,
+        "hostUid": 10216,
+        "matchingProcessDead": true,
+        "outcome": "SUCCESS",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": false,
+        "session": "8680a7fb-997d-4c5f-81ae-d3f8de319d68",
+        "sourceClosed": true,
+        "strictFinished": true,
+        "workerPid": 6085,
+        "workerStartTicks": 319374,
+        "workerUid": 10216
+      }
+    },
+    "worker-review-terminal-21258d0c-6d36-408b-a1c2-e4fbccdbc670.json": {
+      "filename": "worker-review-terminal-21258d0c-6d36-408b-a1c2-e4fbccdbc670.json",
+      "metadata": {
+        "bytes": 641,
+        "device": 65079,
+        "inode": 566855,
+        "sha256": "a1e3c7c0425d807970ed450710ed52decbb4b38a3cbb1a159b586973ba7a5251",
+        "type": "regular"
+      },
+      "name": "worker-review-terminal",
+      "value": {
+        "attempt": "12376ddc-fb65-4cec-bdd5-683bce289564",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "STRICT_FINISHED_NORMALIZED",
+        "generation": "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788",
+        "guardReleased": true,
+        "hostPid": 6064,
+        "hostUid": 10216,
+        "matchingProcessDead": true,
+        "outcome": "SUCCESS",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": true,
+        "session": "8680a7fb-997d-4c5f-81ae-d3f8de319d68",
+        "sourceClosed": true,
+        "strictFinished": true,
+        "workerPid": 6085,
+        "workerStartTicks": 319374,
+        "workerUid": 10216
+      }
+    }
+  },
+  "phaseLog": "--------- beginning of main\r\n10-19 04:06:36.163  6085  6094 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196716\r\n10-19 04:06:36.165  6064  6083 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196718\r\n10-19 04:06:36.168  6085  6085 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196721\r\n10-19 04:06:36.170  6085  6098 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196722\r\n10-19 04:06:36.173  6064  6064 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196726\r\n10-19 04:06:36.186  6064  6075 I LITHIC_JPEG: HOST_BINDER_DIED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196739",
+  "processes": {
+    "complete": true,
+    "rawBytes": 12369,
+    "rawSHA256": "48323e4477b8975247d0e8c9b36adf4ad20560c780775dc1bcd0be87b603c969",
+    "rows": [],
+    "uid": 10216,
+    "worker_absent": true
+  },
+  "serial": "emulator-5626",
+  "stages": {
+    "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788": {
+      "asset": "78a0ff64-72bc-4d0a-93ad-f93b7e0f7794",
+      "namespaceGuard": {
+        "bytes": 0,
+        "device": 65079,
+        "inode": 566831,
+        "type": "regular"
+      },
+      "records": {
+        "__metadata__": "{\"complete\": true, \"entries\": {\"cleaned.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566853, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"cleanup-intent.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566864, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"consumer.guard\": {\"bytes\": 0, \"device\": 65079, \"inode\": 566833, \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"sha256Origin\": \"DERIVED_FROM_VERIFIED_ZERO_LENGTH_NO_CONTENT_READ\", \"type\": \"regular\"}, \"delivered.v2\": {\"bytes\": 148, \"device\": 65079, \"inode\": 566858, \"sha256\": \"fac366c26e5ef42bcdc745d0fca5d47d8b1880a3c8721355495e2ecfb2ee3116\", \"type\": \"regular\"}, \"output.v2\": {\"bytes\": 181, \"device\": 65079, \"inode\": 566856, \"sha256\": \"3f3b63c84c7c0c3a2c4556c22335882001f36485b39ae282a6cc2bcc2271b455\", \"type\": \"regular\"}, \"owner.v2\": {\"bytes\": 415, \"device\": 65079, \"inode\": 566844, \"sha256\": \"f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\", \"type\": \"regular\"}, \"pin.v2\": {\"bytes\": 188, \"device\": 65079, \"inode\": 566857, \"sha256\": \"87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\", \"type\": \"regular\"}, \"prepared.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566862, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"revoked.v2\": {\"bytes\": 151, \"device\": 65079, \"inode\": 566863, \"sha256\": \"d431ff0f51f5d26a66bc5d686e4e79f750beffa955286ae33eed5ee2654f813c\", \"type\": \"regular\"}, \"source.v2\": {\"bytes\": 185, \"device\": 65079, \"inode\": 566854, \"sha256\": \"fb154bdc582ae076688c67f7cbb9d7d5a81d1d7bc1a081d5041ce09196c4c1a8\", \"type\": \"regular\"}, \"terminal.v2\": {\"bytes\": 552, \"device\": 65079, \"inode\": 566861, \"sha256\": \"6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\", \"type\": \"regular\"}}}",
+        "cleaned.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "cleanup-intent.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "consumer.guard": "",
+        "delivered.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npinHash=87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\n",
+        "output.v2": "bytes=0\ndevice=65079\ninode=566855\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nsha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+        "owner.v2": "assetId=78a0ff64-72bc-4d0a-93ad-f93b7e0f7794\nattemptId=12376ddc-fb65-4cec-bdd5-683bce289564\ndecoderPolicy=libjpeg-turbo-3.2.0-e01-strict-v1\ngeneration=m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788\nguardDevice=65079\nguardInode=566833\nnonce=52c5513f-9f20-4d2c-a5e7-749f6958a480\nnormalizationPolicy=m10-jpeg-normalize-v1\nprotocol=lithic-m10-jpeg-stage\nsessionId=8680a7fb-997d-4c5f-81ae-d3f8de319d68\nversion=2\n",
+        "pin.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npid=6085\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstartTicks=319374\nuid=10216\n",
+        "prepared.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "revoked.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nreasonHash=611496f412cac947be720d17a0ee6d7463221d14731fbc18244756271e8f5189\n",
+        "source.v2": "bytes=59334\ndevice=65079\ninode=566853\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nsha256=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\n",
+        "terminal.v2": "binderDead=true\nconnectionCleaned=true\ndecoderDestroyed=true\nheight=256\nmatchingProcessDead=true\noutcome=SUCCESS\noutputBytes=51882\noutputDevice=65079\noutputFdClosed=true\noutputInode=566855\noutputSha=673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npinHash=87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\nresultCount=1\nsourceFdClosed=true\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstrictFinished=true\nwidth=256\n"
+      }
+    }
+  },
+  "status": "PASS",
+  "uid": 10216,
+  "workerProc": {
+    "6085": {
+      "absent": true,
+      "origin": "INDEPENDENT_TARGETED_PROC_DIRECTORY_CHECK",
+      "pid": 6085,
+      "startTicks": 319374
+    }
+  }
+}

@@ -1,0 +1,92 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        1ce1d87 com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity filter 88addac
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      androidx.profileinstaller.action.SAVE_PROFILE:
+        f2be4b4 com.cooper.lithic.debug/androidx.profileinstaller.ProfileInstallReceiver filter 17c9bfe
+          Action: "androidx.profileinstaller.action.SAVE_PROFILE"
+      androidx.profileinstaller.action.INSTALL_PROFILE:
+        f2be4b4 com.cooper.lithic.debug/androidx.profileinstaller.ProfileInstallReceiver filter cc4a980
+          Action: "androidx.profileinstaller.action.INSTALL_PROFILE"
+      androidx.profileinstaller.action.SKIP_FILE:
+        f2be4b4 com.cooper.lithic.debug/androidx.profileinstaller.ProfileInstallReceiver filter 4615bb9
+          Action: "androidx.profileinstaller.action.SKIP_FILE"
+      androidx.profileinstaller.action.BENCHMARK_OPERATION:
+        f2be4b4 com.cooper.lithic.debug/androidx.profileinstaller.ProfileInstallReceiver filter e09ff5f
+          Action: "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+
+Permissions:
+  Permission [com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION] (c9768dd):
+    sourcePackage=com.cooper.lithic.debug
+    uid=10077 gids=null type=0 prot=signature
+    perm=Permission{6592c52 com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION}
+    packageSetting=PackageSetting{8e50b23 com.cooper.lithic.debug/10077}
+
+Registered ContentProviders:
+  com.cooper.lithic.debug/androidx.startup.InitializationProvider:
+    Provider{2fc9820 com.cooper.lithic.debug/androidx.startup.InitializationProvider}
+
+ContentProvider Authorities:
+  [com.cooper.lithic.debug.androidx-startup]:
+    Provider{2fc9820 com.cooper.lithic.debug/androidx.startup.InitializationProvider}
+      applicationInfo=ApplicationInfo{4a6b5d9 com.cooper.lithic.debug}
+
+Key Set Manager:
+  [com.cooper.lithic.debug]
+      Signing KeySets: 21
+
+Packages:
+  Package [com.cooper.lithic.debug] (8e50b23):
+    userId=10077
+    pkg=Package{539bb9e com.cooper.lithic.debug}
+    codePath=/data/app/com.cooper.lithic.debug-fopMXPbuOqICjSiMm4nwbg==
+    resourcePath=/data/app/com.cooper.lithic.debug-fopMXPbuOqICjSiMm4nwbg==
+    legacyNativeLibraryDir=/data/app/com.cooper.lithic.debug-fopMXPbuOqICjSiMm4nwbg==/lib
+    primaryCpuAbi=x86_64
+    secondaryCpuAbi=null
+    versionCode=8 minSdk=26 targetSdk=36
+    versionName=0.1.0-m10-debug
+    splits=[base]
+    apkSigningVersion=2
+    applicationInfo=ApplicationInfo{4a6b5d9 com.cooper.lithic.debug}
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privateFlags=[ PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ]
+    dataDir=/data/user/0/com.cooper.lithic.debug
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2026-10-18 13:44:35
+    firstInstallTime=2026-10-18 13:44:42
+    lastUpdateTime=2026-10-18 13:44:42
+    signatures=PackageSignatures{af3367f [5a59588f]}
+    installPermissionsFixed=true installStatus=1
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    declared permissions:
+      com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: prot=signature, INSTALLED
+    requested permissions:
+      com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+    install permissions:
+      com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+    User 0: ceDataInode=115302 installed=true hidden=false suspended=false stopped=false notLaunched=false enabled=0 instant=false
+      runtime permissions:
+
+Package Changes:
+  Sequence number=4
+  User 0:
+    seq=3, package=com.google.android.gms
+
+
+Dexopt state:
+  [com.cooper.lithic.debug]
+    Instruction Set: x86_64
+      path: /data/app/com.cooper.lithic.debug-fopMXPbuOqICjSiMm4nwbg==/base.apk
+      status: /data/app/com.cooper.lithic.debug-fopMXPbuOqICjSiMm4nwbg==/oat/x86_64/base.odex[status=kOatUpToDate, compi
+      lation_filter=quicken]
+
+
+Compiler stats:
+  [com.cooper.lithic.debug]
+    (No recorded stats)

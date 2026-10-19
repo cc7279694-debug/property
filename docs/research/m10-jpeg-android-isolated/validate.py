@@ -23,6 +23,7 @@ from datetime import datetime, timezone
 
 import avd_identity
 import runtime_identity
+import installed_uid
 
 ROOT = Path(__file__).resolve().parents[3]
 BASE = Path("E:/CODEX/.codex/research-env/lithic-m10-android-20261018-v1")
@@ -677,9 +678,11 @@ class Supervisor:
         need(re.fullmatch(r"[A-Za-z0-9_./=+~\-]+", path), "Unsafe installed path")
         need(self.adb("shell", "sha256sum", path).split()[0] == expected_sha, "Installed bytes differ")
         package_info = self.adb("shell", "dumpsys", "package", package)
-        uids = set(re.findall(r"\buserId=(\d+)\b", package_info))
-        need(len(uids) == 1, "Installed UID unknown")
-        return int(next(iter(uids)))
+        uid = installed_uid.package_uid(package_info, package, path)
+        independent = self.adb("shell", "pm", "list", "packages", "-U", "--user", "0", package)
+        need(installed_uid.listed_uid(independent, package) == uid,
+             "Installed UID conflicts with independent User 0 query")
+        return uid
 
     def install(self, kind):
         self.identity()

@@ -1,0 +1,64 @@
+{
+  "type": "RUNTIME_BYTES_VERSUS_STAGED_GIT_BYTES",
+  "sourceCommit": "d225dfc2d9ba74227cebab68a98176110145e50a",
+  "resumeId": "m10-uid-20261019-040339-e0b26457",
+  "note": "Original runtime hashes retained; Git text normalization is explicitly compared, never substituted for raw evidence hashes.",
+  "inputs": [
+    {
+      "path": "docs/research/m10-android-test-compat/compat_campaign.py",
+      "runtimeSHA256": "ff1d61aa43ba0ffa97686dc172e41964029964a760cae5e65bc8a76ebcda7d6b",
+      "stagedGitContentSHA256": "821abd317129d82b07e009972710af0eb83928d3dc2906eaf55b0ce84611b087",
+      "rawEqual": false,
+      "lfNormalizedEqual": true
+    },
+    {
+      "path": "docs/research/m10-api36-uid-resume/resume.py",
+      "runtimeSHA256": "4cd57918e3f41a03e3ac3b169e5cd91ce8c65e9afe3a0ea72769c3fcaf74b603",
+      "stagedGitContentSHA256": "4cd57918e3f41a03e3ac3b169e5cd91ce8c65e9afe3a0ea72769c3fcaf74b603",
+      "rawEqual": true,
+      "lfNormalizedEqual": true
+    },
+    {
+      "path": "docs/research/m10-api36-uid-resume/test_resume.py",
+      "runtimeSHA256": "3ca07a325668b2ad1cdc1c4b71bb22e60f109597e62ab6b02ec9b14b39214bd1",
+      "stagedGitContentSHA256": "3ca07a325668b2ad1cdc1c4b71bb22e60f109597e62ab6b02ec9b14b39214bd1",
+      "rawEqual": true,
+      "lfNormalizedEqual": true
+    },
+    {
+      "path": "docs/research/m10-jpeg-android-isolated/device_evidence.py",
+      "runtimeSHA256": "7e262c3d40c12b4c76381fadb4b4f79a9fa9ff34be7e4495721bfc4e8df44abd",
+      "stagedGitContentSHA256": "7e262c3d40c12b4c76381fadb4b4f79a9fa9ff34be7e4495721bfc4e8df44abd",
+      "rawEqual": true,
+      "lfNormalizedEqual": true
+    },
+    {
+      "path": "docs/research/m10-jpeg-android-isolated/installed_uid.py",
+      "runtimeSHA256": "3565e216aec77507445d21cd4157c6e3c8b0bd050ae3c8b29a9c6f2e53f455cc",
+      "stagedGitContentSHA256": "3565e216aec77507445d21cd4157c6e3c8b0bd050ae3c8b29a9c6f2e53f455cc",
+      "rawEqual": true,
+      "lfNormalizedEqual": true
+    },
+    {
+      "path": "docs/research/m10-jpeg-android-isolated/natural_tests.py",
+      "runtimeSHA256": "b11a6271968ac43c2db5336c7a4599b9c8a4a07308bc83982a985880a55dbde1",
+      "stagedGitContentSHA256": "b11a6271968ac43c2db5336c7a4599b9c8a4a07308bc83982a985880a55dbde1",
+      "rawEqual": true,
+      "lfNormalizedEqual": true
+    },
+    {
+      "path": "docs/research/m10-jpeg-android-isolated/test_installed_uid.py",
+      "runtimeSHA256": "bb8c6bde2e288fb7280746cc087f00da8de3fa773d98b039e8f4112a14cadbfe",
+      "stagedGitContentSHA256": "bb8c6bde2e288fb7280746cc087f00da8de3fa773d98b039e8f4112a14cadbfe",
+      "rawEqual": true,
+      "lfNormalizedEqual": true
+    },
+    {
+      "path": "docs/research/m10-jpeg-android-isolated/validate.py",
+      "runtimeSHA256": "b76ee8cb4199295c48041687be4b70d573f8a2c09c1b6f8719400de4d27b465b",
+      "stagedGitContentSHA256": "b76ee8cb4199295c48041687be4b70d573f8a2c09c1b6f8719400de4d27b465b",
+      "rawEqual": true,
+      "lfNormalizedEqual": true
+    }
+  ]
+}

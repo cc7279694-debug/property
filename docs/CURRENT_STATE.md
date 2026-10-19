@@ -1,15 +1,17 @@
 # 当前项目状态
 
-状态日期：2026-10-19（Asia/Shanghai；API26新测试APK类加载与九项PASS，API36安装UID准入UNKNOWN后停止）。本文件为唯一当前状态，历史结果不改写。
+状态日期：2026-10-19（Asia/Shanghai；API36新UID准入、类加载及九项自然测试PASS；等待独立验收）。本文件为唯一当前状态，历史结果不改写。
 
 ## Current Stage
 
-- **M10 测试 APK 兼容集中验收 — BLOCKED / API36_INSTALLED_UID_FORMAT**：来源 `b2862062391a0c3008fe792db583b4abc5e146f9`；分支 `codex/m10-android-test-apk-compat-final`；独立worktree `E:/CODEX/.codex/worktrees/lithic-test-compat/砺石新APP`；新批次 `m10-final-20261019-022830-2a602443`。只调整3份androidTest与必要研究门禁，生产源码/schema/构建配置/原断言不变；不借用旧Test的PASS。
-- **已验证增量**：ImageDecoder及API28 synthetic签名隔离到独立helper；新DEX五类76方法（28 synthetic）/21字段无API26元数据违规；API26实际Class.forName/getDeclaredMethods预检PASS、九项自然测试全部PASS。宿主85唯一方法PASS、仅Test APK离线构建PASS；完整JVM/native/Lint未重跑。App仍 `0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf`，新Test `73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f`，同签名、Manifest/样本不变，旧Test与历史证据保留。
-- **API26结束现场**：复用专用 `Lithic_M10V_API26_20261018/emulator-5624` 同实例；创建0/启动0/App安装0/Test更新1，UID10077/10078、原私有根归属/已有合成资源不变；类加载1＋自然9真实Instrumentation、10次nonce握手均通过。随后一次授权正常退出，目标进程及5624/5625端口结束，旧首次启动时限NOT_PROVEN不改写。
-- **当前唯一执行阻塞/API36现场**：前置门禁满足后，新专用 `Lithic_M10V_API36_20261018/emulator-5626` 创建1/启动1，boot/身份PASS；App安装1返回Success且字节一致，但真实dumpsys用 `appId=10216`、旧解析器只接受 `userId=`，UID准入UNKNOWN，立即停止。Test安装0/类加载0/九项全NOT_RUN；没有改规则或重试。新实例launcher33512/QEMU32252保持运行，结束只读无App/Worker PID、目标服务为空、no_backup ABSENT；这些观察不替代UID授权。只等待ChatGPT独立审查，不自行续测或终止设备。
-- **证据入口/边界**：[集中报告](research/M10_ANDROID_TEST_APK_COMPAT_FINAL.md)、[新批次索引](research/m10-android-test-compat/evidence/m10-final-20261019-022830-2a602443/RESULTS.json)、[checkpoint](checkpoints/2026-10-19-M10-ANDROID-TEST-APK-COMPAT-FINAL.md)。API26退休/Stage/OS观察与部分FD/guard结构化观察、同步hello/Host FD代码不变量分别登记；原始Binder字段/写只读FD、API28诊断helper实跑、取消/故障/恢复/其他ABI/真机/完整备份等NOT_RUN，不扩大为完整生命周期通过。私人账本/图片字节未读、私人字节完整性NOT_RUN。
-- **正式/历史状态保持**：M10 PENDING、三个JPEG历史FAIL；本批API26对应断言的新PASS只作独立候选证据；UI-C1 ACCEPTED/FROZEN PASS WITH NOTES，M11 NOT_AUTHORIZED。H2 DELIVERY_UNKNOWN/pin=true、C2及其他历史设备未访问。D2A-N01～N05、A1-N01～N04和全部旧NOTE/FAIL/UNKNOWN/NOT_RUN继承，不自行关闭或冻结。
+- **M10 API36 UID集中续验 — READY_FOR_REVIEW**：来源 `d225dfc2d9ba74227cebab68a98176110145e50a`；分支 `codex/m10-api36-uid-resume`；独立worktree `E:/CODEX/.codex/worktrees/lithic-uid-resume/砺石新APP`。沿用campaign `m10-final-20261019-022830-2a602443`、独立续接 `m10-uid-20261019-040339-e0b26457`；原boot、首次App安装marker和UID UNKNOWN不修改，新增证明不回填旧PASS。
+- **最小修复/宿主**：唯一目标Packages/User0安装状态内解析userId/appId，并核对codePath、明确归属权限UID、独立数字UID及原APK SHA/签名；冲突/重复/跨包/跨用户/截断拒绝。新API36专属续接监督器封闭创建/启动/App重装/退出及重试入口。53 UID＋22原监督器＋26续接＝101唯一宿主PASS；RED和中间异常保留。App/测试源码、Room/备份/算法/UI/Worker/Stage/JNI/Gradle不改，两APK未重建。
+- **API36实际**：复用 `Lithic_M10V_API36_20261018/emulator-5626` 的原launcher33512/QEMU32252及精确创建时间、隔离盘/端口/boot/API36/x86_64身份。新建0/启动0/App安装0/Test安装1，App UID10216/Test10217；原App SHA `0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf`、Test SHA `73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f` 全程匹配。类加载1＋自然9真实JUnit和nonce/连续日志/资源门禁全PASS；8个Worker、48条退休事件，原三缺陷断言及业务保护/PNG/v1兼容新证据通过。
+- **结束现场/边界**：唯一结束只读resourceStatus PASS，无App/Worker活动进程；2个持久review Stage、10份观察有效、无未知消费者，设备保持运行，未退出或清理。其他6 invocation的测试临时根不冒称8个持久独立Stage。部分FD/guard/业务事实为结构化观察、部分Host FD/同步hello为代码不变量；raw Binder字段/写只读FD、完整异常取消/超时/恢复、硬内存上限、其他ABI/真机/OEM/Release/完整备份仍未证明。Codex复核不能替代ChatGPT独立验收。
+- **继承/停止**：API26先前类加载/九项PASS WITH NOTES及正常退出由本轮用户转交ChatGPT独立验收，本轮设备命令0、仅读旧退出证明。M10 PENDING、三JPEG历史FAIL、旧API36 UID UNKNOWN、R3完整生命周期BLOCKED、UI-C1 ACCEPTED/FROZEN PASS WITH NOTES、M11 NOT_AUTHORIZED保持；H2 DELIVERY_UNKNOWN/pin=true、C2及其他历史现场不访问。D2A-N01～N05、A1-N01～N04和全部旧NOTE/FAIL/UNKNOWN/NOT_RUN保留，未读真实私人账本或图片。
+- **交付入口/下一步**：[集中报告](research/M10_API36_UID_RESUME.md)、[独立续接原始结果](research/m10-api36-uid-resume/evidence/m10-uid-20261019-040339-e0b26457/RESULTS.json)、[checkpoint](checkpoints/2026-10-19-M10-API36-UID-RESUME.md)。本轮没有剩余执行门禁阻塞；只提交推送指定分支后停止，等待ChatGPT限定独立审查，不自行冻结M10或扩测/开始M11。
+
+上一轮d225交付中的API36安装UID阻塞是当时事实，见[原测试APK兼容报告](research/M10_ANDROID_TEST_APK_COMPAT_FINAL.md)；本轮独立新准入与PASS不修改该旧UNKNOWN或原文件。
 
 前一批 `m10-final-20261019-014441-e6b2cb97` 的两项PASS、第三项API26测试类初始化FAIL及其后NOT_RUN保持历史原件，见[原报告](research/M10_ANDROID_CAPTURE_HANDSHAKE_VALIDATION.md)。本轮只在新Test及新批次验证兼容修复，没有回填旧结果。
 

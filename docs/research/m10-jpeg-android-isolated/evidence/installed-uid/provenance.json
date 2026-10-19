@@ -1,0 +1,64 @@
+{
+  "scope": "Exact historical target-package-only stdout; no new Android observation",
+  "inputs": [
+    {
+      "file": "api26-dumpsys-package.raw",
+      "source": "docs/research/m10-android-test-compat/evidence/m10-final-20261019-022830-2a602443/api26/commands-key-subset.jsonl",
+      "sourceLine": 18,
+      "bytes": 4278,
+      "sha256": "5945e95a8f7e1b89afac439c4cff831a3f4ab3a6feba292b29ea69583ea86262",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5624",
+        "shell",
+        "dumpsys",
+        "package",
+        "com.cooper.lithic.debug"
+      ],
+      "utc": "2026-10-19T02:38:01.343935+00:00",
+      "exitCode": 0
+    },
+    {
+      "file": "api36-dumpsys-package.raw",
+      "source": "docs/research/m10-android-test-compat/evidence/m10-final-20261019-022830-2a602443/api36/commands-key-subset.jsonl",
+      "sourceLine": 89,
+      "bytes": 5835,
+      "sha256": "f6dc967d8c09a4655d4a84a7dbbc7809c91ab3577f09219456cf561f1b9b5f80",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5626",
+        "shell",
+        "dumpsys",
+        "package",
+        "com.cooper.lithic.debug"
+      ],
+      "utc": "2026-10-19T03:15:49.861402+00:00",
+      "exitCode": 0
+    },
+    {
+      "file": "api36-independent-user0-uid.raw",
+      "source": "build/uid36-readonly-diagnostic/commands.jsonl",
+      "sourceLine": 12,
+      "bytes": 43,
+      "sha256": "be21d4476ab8ffec35ba6c6e35e71b9ce008b126e6f0db4c51c6acb796734493",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5626",
+        "shell",
+        "pm",
+        "list",
+        "packages",
+        "-U",
+        "--user",
+        "0",
+        "com.cooper.lithic.debug"
+      ],
+      "utc": "2026-10-19T03:56:11.263883+00:00",
+      "exitCode": 0,
+      "scope": "Fresh root-only readonly diagnostic format observation; not admission PASS"
+    }
+  ]
+}

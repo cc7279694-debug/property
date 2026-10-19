@@ -1,0 +1,308 @@
+test_both_identity_fields_agree (test_installed_uid.InstalledUidTest.test_both_identity_fields_agree) ... ok
+test_conflicting_appid_userid_rejected (test_installed_uid.InstalledUidTest.test_conflicting_appid_userid_rejected) ... FAIL
+test_cross_user_uid_rejected (test_installed_uid.InstalledUidTest.test_cross_user_uid_rejected) ... FAIL
+test_duplicate_appid_even_same_value_rejected (test_installed_uid.InstalledUidTest.test_duplicate_appid_even_same_value_rejected) ... ok
+test_duplicate_installed_flag_rejected (test_installed_uid.InstalledUidTest.test_duplicate_installed_flag_rejected) ... FAIL
+test_duplicate_packages_region_rejected (test_installed_uid.InstalledUidTest.test_duplicate_packages_region_rejected) ... FAIL
+test_duplicate_target_package_rejected (test_installed_uid.InstalledUidTest.test_duplicate_target_package_rejected) ... FAIL
+test_duplicate_user_zero_rejected (test_installed_uid.InstalledUidTest.test_duplicate_user_zero_rejected) ... FAIL
+test_duplicate_userid_even_same_value_rejected (test_installed_uid.InstalledUidTest.test_duplicate_userid_even_same_value_rejected) ... FAIL
+test_foreign_package_in_packages_region_rejected (test_installed_uid.InstalledUidTest.test_foreign_package_in_packages_region_rejected) ... ok
+test_incomplete_packages_region_rejected (test_installed_uid.InstalledUidTest.test_incomplete_packages_region_rejected) ... FAIL
+test_independent_locked_sibling_same_uid_rejected (test_installed_uid.InstalledUidTest.test_independent_locked_sibling_same_uid_rejected) ... FAIL
+test_independent_query_unexpected_format_rejected (test_installed_uid.InstalledUidTest.test_independent_query_unexpected_format_rejected) ... FAIL
+test_independent_query_unknown_suffix_rejected (test_installed_uid.InstalledUidTest.test_independent_query_unknown_suffix_rejected) ... FAIL
+test_independent_target_duplicate_rejected (test_installed_uid.InstalledUidTest.test_independent_target_duplicate_rejected) ... FAIL
+test_independent_uid_mismatch_rejected (test_installed_uid.InstalledUidTest.test_independent_uid_mismatch_rejected) ... FAIL
+test_independent_uid_missing_rejected (test_installed_uid.InstalledUidTest.test_independent_uid_missing_rejected) ... FAIL
+test_independent_user_zero_query_failure_rejected (test_installed_uid.InstalledUidTest.test_independent_user_zero_query_failure_rejected) ... FAIL
+test_independent_wrong_package_rejected (test_installed_uid.InstalledUidTest.test_independent_wrong_package_rejected) ... FAIL
+test_installed_apk_sha_mismatch_remains_rejected (test_installed_uid.InstalledUidTest.test_installed_apk_sha_mismatch_remains_rejected) ... ok
+test_installed_false_rejected (test_installed_uid.InstalledUidTest.test_installed_false_rejected) ... FAIL
+test_locked_fixture_bytes_and_sha (test_installed_uid.InstalledUidTest.test_locked_fixture_bytes_and_sha) ... ok
+test_malformed_signed_uid_rejected (test_installed_uid.InstalledUidTest.test_malformed_signed_uid_rejected) ... ok
+test_missing_installed_flag_rejected (test_installed_uid.InstalledUidTest.test_missing_installed_flag_rejected) ... FAIL
+test_other_package_identity_cannot_supply_target_identity (test_installed_uid.InstalledUidTest.test_other_package_identity_cannot_supply_target_identity) ... FAIL
+test_other_user_cannot_satisfy_user_zero (test_installed_uid.InstalledUidTest.test_other_user_cannot_satisfy_user_zero) ... FAIL
+test_permission_uid_cannot_supply_missing_package_identity (test_installed_uid.InstalledUidTest.test_permission_uid_cannot_supply_missing_package_identity) ... FAIL
+test_pm_path_ambiguity_remains_rejected (test_installed_uid.InstalledUidTest.test_pm_path_ambiguity_remains_rejected) ... ok
+test_real_api26_userid_and_independent_uid (test_installed_uid.InstalledUidTest.test_real_api26_userid_and_independent_uid) ... FAIL
+test_real_api36_appid_and_independent_uid (test_installed_uid.InstalledUidTest.test_real_api36_appid_and_independent_uid) ... ERROR
+test_target_app_prefix_can_also_return_distinct_locked_test (test_installed_uid.InstalledUidTest.test_target_app_prefix_can_also_return_distinct_locked_test) ... ERROR
+test_uid_trailing_tokens_rejected (test_installed_uid.InstalledUidTest.test_uid_trailing_tokens_rejected) ... FAIL
+test_wrong_target_package_rejected (test_installed_uid.InstalledUidTest.test_wrong_target_package_rejected) ... FAIL
+
+======================================================================
+ERROR: test_real_api36_appid_and_independent_uid (test_installed_uid.InstalledUidTest.test_real_api36_appid_and_independent_uid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 61, in test_real_api36_appid_and_independent_uid
+    self.assertEqual(self.installed(), 10216)
+                     ^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 44, in installed
+    return instance.installed(package, SHA)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\validate.py", line 681, in installed
+    need(len(uids) == 1, "Installed UID unknown")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\validate.py", line 50, in need
+    raise RuntimeError(message)
+RuntimeError: Installed UID unknown
+
+======================================================================
+ERROR: test_target_app_prefix_can_also_return_distinct_locked_test (test_installed_uid.InstalledUidTest.test_target_app_prefix_can_also_return_distinct_locked_test)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 64, in test_target_app_prefix_can_also_return_distinct_locked_test
+    self.assertEqual(self.installed(listing=f"package:{APP} uid:10216\npackage:{TEST} uid:10217"), 10216)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 44, in installed
+    return instance.installed(package, SHA)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\validate.py", line 681, in installed
+    need(len(uids) == 1, "Installed UID unknown")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\validate.py", line 50, in need
+    raise RuntimeError(message)
+RuntimeError: Installed UID unknown
+
+======================================================================
+FAIL: test_conflicting_appid_userid_rejected (test_installed_uid.InstalledUidTest.test_conflicting_appid_userid_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 70, in test_conflicting_appid_userid_rejected
+    self.blocked(minimal("appId=10216\n    userId=10217"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_cross_user_uid_rejected (test_installed_uid.InstalledUidTest.test_cross_user_uid_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 109, in test_cross_user_uid_rejected
+    self.blocked(minimal("userId=110216"), f"package:{APP} uid:110216")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_installed_flag_rejected (test_installed_uid.InstalledUidTest.test_duplicate_installed_flag_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 100, in test_duplicate_installed_flag_rejected
+    self.blocked(minimal("userId=10216", "User 0: installed=true installed=true"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_packages_region_rejected (test_installed_uid.InstalledUidTest.test_duplicate_packages_region_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 85, in test_duplicate_packages_region_rejected
+    self.blocked(minimal("userId=10216") + minimal("userId=10216"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_target_package_rejected (test_installed_uid.InstalledUidTest.test_duplicate_target_package_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 88, in test_duplicate_target_package_rejected
+    self.blocked(minimal("userId=10216").replace("\nQueries:", f"\n  Package [{APP}] (abc):\n    userId=10216\n    User 0: installed=true\n\nQueries:"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_user_zero_rejected (test_installed_uid.InstalledUidTest.test_duplicate_user_zero_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 106, in test_duplicate_user_zero_rejected
+    self.blocked(minimal("userId=10216", "User 0: installed=true\n    User 0: installed=true"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_duplicate_userid_even_same_value_rejected (test_installed_uid.InstalledUidTest.test_duplicate_userid_even_same_value_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 73, in test_duplicate_userid_even_same_value_rejected
+    self.blocked(minimal("userId=10216\n    userId=10216"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_incomplete_packages_region_rejected (test_installed_uid.InstalledUidTest.test_incomplete_packages_region_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 118, in test_incomplete_packages_region_rejected
+    self.blocked(minimal("userId=10216").split("\nQueries:")[0])
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_locked_sibling_same_uid_rejected (test_installed_uid.InstalledUidTest.test_independent_locked_sibling_same_uid_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 136, in test_independent_locked_sibling_same_uid_rejected
+    self.blocked(minimal("userId=10216"), f"package:{APP} uid:10216\npackage:{TEST} uid:10216")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_query_unexpected_format_rejected (test_installed_uid.InstalledUidTest.test_independent_query_unexpected_format_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 142, in test_independent_query_unexpected_format_rejected
+    self.blocked(minimal("userId=10216"), f"package:{APP} uid=10216")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_query_unknown_suffix_rejected (test_installed_uid.InstalledUidTest.test_independent_query_unknown_suffix_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 145, in test_independent_query_unknown_suffix_rejected
+    self.blocked(minimal("userId=10216"), f"package:{APP} uid:10216 user:10")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_target_duplicate_rejected (test_installed_uid.InstalledUidTest.test_independent_target_duplicate_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 130, in test_independent_target_duplicate_rejected
+    self.blocked(minimal("userId=10216"), f"package:{APP} uid:10216\npackage:{APP} uid:10216")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_uid_mismatch_rejected (test_installed_uid.InstalledUidTest.test_independent_uid_mismatch_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 124, in test_independent_uid_mismatch_rejected
+    self.blocked(minimal("userId=10216"), f"package:{APP} uid:10217")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_uid_missing_rejected (test_installed_uid.InstalledUidTest.test_independent_uid_missing_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 127, in test_independent_uid_missing_rejected
+    self.blocked(minimal("userId=10216"), "")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_user_zero_query_failure_rejected (test_installed_uid.InstalledUidTest.test_independent_user_zero_query_failure_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 139, in test_independent_user_zero_query_failure_rejected
+    self.blocked(minimal("userId=10216"), query_error=True)
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_independent_wrong_package_rejected (test_installed_uid.InstalledUidTest.test_independent_wrong_package_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 133, in test_independent_wrong_package_rejected
+    self.blocked(minimal("userId=10216"), "package:other.app uid:10216")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_installed_false_rejected (test_installed_uid.InstalledUidTest.test_installed_false_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 94, in test_installed_false_rejected
+    self.blocked(minimal("userId=10216", "User 0: installed=false"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_missing_installed_flag_rejected (test_installed_uid.InstalledUidTest.test_missing_installed_flag_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 97, in test_missing_installed_flag_rejected
+    self.blocked(minimal("userId=10216", "User 0: hidden=false"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_other_package_identity_cannot_supply_target_identity (test_installed_uid.InstalledUidTest.test_other_package_identity_cannot_supply_target_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 82, in test_other_package_identity_cannot_supply_target_identity
+    self.blocked(minimal("versionCode=8") + f"Other:\n  Package [{TEST}] (abc):\n    userId=10216\n")
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_other_user_cannot_satisfy_user_zero (test_installed_uid.InstalledUidTest.test_other_user_cannot_satisfy_user_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 103, in test_other_user_cannot_satisfy_user_zero
+    self.blocked(minimal("userId=10216", "User 10: installed=true"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_permission_uid_cannot_supply_missing_package_identity (test_installed_uid.InstalledUidTest.test_permission_uid_cannot_supply_missing_package_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 79, in test_permission_uid_cannot_supply_missing_package_identity
+    self.blocked("Permissions:\n  uid=10216 userId=10216\n" + minimal("versionCode=8"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_real_api26_userid_and_independent_uid (test_installed_uid.InstalledUidTest.test_real_api26_userid_and_independent_uid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 58, in test_real_api26_userid_and_independent_uid
+    self.assertIn(("shell", "pm", "list", "packages", "-U", "--user", "0", APP), self.calls)
+AssertionError: ('shell', 'pm', 'list', 'packages', '-U', '--user', '0', 'com.cooper.lithic.debug') not found in [('shell', 'pm', 'path', 'com.cooper.lithic.debug'), ('shell', 'sha256sum', '/data/app/isolated/base.apk'), ('shell', 'dumpsys', 'package', 'com.cooper.lithic.debug')]
+
+======================================================================
+FAIL: test_uid_trailing_tokens_rejected (test_installed_uid.InstalledUidTest.test_uid_trailing_tokens_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 115, in test_uid_trailing_tokens_rejected
+    self.blocked(minimal("userId=10216 arbitrary=1"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_wrong_target_package_rejected (test_installed_uid.InstalledUidTest.test_wrong_target_package_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 121, in test_wrong_target_package_rejected
+    self.blocked(minimal("userId=10216", package=TEST))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.062s
+
+FAILED (failures=24, errors=2)

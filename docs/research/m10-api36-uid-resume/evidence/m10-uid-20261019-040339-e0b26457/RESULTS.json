@@ -1,0 +1,168 @@
+{
+  "api": 36,
+  "appSHA256": "0ada263192dbaa1256bff6c613e6d57a69e1160b17d4844d1e1cfcc9cf847dbf",
+  "appUIDAdmission": "PASS",
+  "bytePreservation": "Every copied source was stable-read and destination bytes were independently re-read and compared exactly.",
+  "campaignId": "m10-final-20261019-022830-2a602443",
+  "classLoader": "PASS",
+  "copiedRawBytes": 872911,
+  "copiedRawFiles": 143,
+  "countsFromFullCurrentJournal": {
+    "adbCommands": 2275,
+    "appInstalls": 0,
+    "avdCreates": 0,
+    "diagnosticWrites": 10,
+    "emulatorStarts": 0,
+    "instrumentation": 10,
+    "nonzeroCommands": 0,
+    "testInstalls": 1,
+    "unknownCommands": 0
+  },
+  "diagnosticCounts": {
+    "adbCommands": 9,
+    "appInstalls": 0,
+    "avdCreates": 0,
+    "diagnosticWrites": 0,
+    "emulatorStarts": 0,
+    "instrumentation": 0,
+    "nonzeroCommands": 0,
+    "testInstalls": 0,
+    "unknownCommands": 0
+  },
+  "ending": {
+    "deviceLeftRunning": true,
+    "newCreate": 0,
+    "newStart": 0,
+    "resourceStatus": "PASS",
+    "status": "OBSERVED"
+  },
+  "historicalState": {
+    "API26": "Historical 9 PASS; no API26 device operation in this continuation",
+    "M10": "PENDING",
+    "M11": "NOT_AUTHORIZED",
+    "UI-C1": "FROZEN",
+    "historicalJPEGFailures": "3 FAIL retained",
+    "priorAPI36UID": "UNKNOWN preserved; new proof is independent"
+  },
+  "methods": [
+    {
+      "index": 0,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+      "result": "method-00/result.json",
+      "status": "PASS"
+    },
+    {
+      "index": 1,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+      "result": "method-01/result.json",
+      "status": "PASS"
+    },
+    {
+      "index": 2,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#valid_control_jpeg_imports_successfully",
+      "result": "method-02/result.json",
+      "status": "PASS"
+    },
+    {
+      "index": 3,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+      "result": "method-03/result.json",
+      "status": "PASS"
+    },
+    {
+      "index": 4,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+      "result": "method-04/result.json",
+      "status": "PASS"
+    },
+    {
+      "index": 5,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+      "result": "method-05/result.json",
+      "status": "PASS"
+    },
+    {
+      "index": 6,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#png_still_uses_v1_preparation_and_original_output_limits",
+      "result": "method-06/result.json",
+      "status": "PASS"
+    },
+    {
+      "index": 7,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_uncommitted_jpeg_is_preserved_without_fabricated_receipt",
+      "result": "method-07/result.json",
+      "status": "PASS"
+    },
+    {
+      "index": 8,
+      "instrumentation": "PASS",
+      "instrumentationCommandsIssued": 1,
+      "lifecycle": "PASS",
+      "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation",
+      "result": "method-08/result.json",
+      "status": "PASS"
+    }
+  ],
+  "notProven": [
+    "raw Binder hello fields",
+    "read-only source write attempt",
+    "all FD cleanup paths",
+    "native memory hard cap",
+    "cancellation",
+    "timeout termination",
+    "process fault recovery",
+    "other ABIs at runtime",
+    "real phone/OEM",
+    "full backup/restore"
+  ],
+  "priorEvidenceReferencesOnly": {
+    "api26NormalExit": {
+      "bytes": 2566,
+      "existingRepositoryEvidence": "docs/research/m10-android-test-compat/evidence/m10-final-20261019-022830-2a602443/api26/control/normal-exit-proof.json",
+      "localPath": "E:\\CODEX\\.codex\\worktrees\\lithic-uid-resume\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-android-test-compat\\evidence\\m10-final-20261019-022830-2a602443\\api26\\control\\normal-exit-proof.json",
+      "sha256": "d20b98314e162f9771fe32fa04fd85e96f1c76e82900da056b7e81cbfcd44ad6"
+    },
+    "originalApi36Boot": {
+      "bytes": 7476,
+      "existingRepositoryEvidence": "docs/research/m10-android-test-compat/evidence/m10-final-20261019-022830-2a602443/api36/control/boot-proof.json",
+      "localPath": "E:\\CODEX\\.codex\\worktrees\\lithic-uid-resume\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-android-test-compat\\evidence\\m10-final-20261019-022830-2a602443\\api36\\control\\boot-proof.json",
+      "sha256": "da8d64ff5c9575f6c1336f4004a1cf1c3761118f4b645572324bd3d4acb043a8"
+    },
+    "originalApi36InstallUnknown": {
+      "bytes": 113,
+      "existingRepositoryEvidence": "docs/research/m10-android-test-compat/evidence/m10-final-20261019-022830-2a602443/api36/campaign-stop.json",
+      "localPath": "E:\\CODEX\\.codex\\worktrees\\lithic-uid-resume\\\u783a\u77f3\u65b0APP\\docs\\research\\m10-android-test-compat\\evidence\\m10-final-20261019-022830-2a602443\\api36\\campaign-stop.json",
+      "sha256": "5ae8846a750859b3954e921f2ad56ccbaca58dc6f6d1724c51b6d579c2724aeb"
+    }
+  },
+  "resumeId": "m10-uid-20261019-040339-e0b26457",
+  "serial": "emulator-5626",
+  "sourceCommit": "d225dfc2d9ba74227cebab68a98176110145e50a",
+  "status": "READY_FOR_REVIEW",
+  "testInstallAdmission": "PASS",
+  "testSHA256": "73d96ec9aceb23919183074a0dd101b1b7460187e4cb1ff5d3ed8ab9f9b3d98f"
+}

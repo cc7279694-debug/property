@@ -1,0 +1,388 @@
+{
+  "api": 36,
+  "continuousCapture": {
+    "metadata": {
+      "authenticatedDiagnosticsExcluded": 10,
+      "captureProofSHA256": "66215abb9bb1a4d8d974ec15ae68d5b9e6deb9fbc681de990b83bdf159786629",
+      "globalLoggerLosslessness": "NOT_PROVEN_BY_HOST_CAPTURE_ALONE",
+      "newPhaseLines": 0,
+      "oldBacklogLines": 48,
+      "oldUnknownReclassified": false,
+      "rawFilesRewritten": false,
+      "rawStderr": {
+        "bytes": 0,
+        "eof": true,
+        "file": "stderr.raw",
+        "observedBytes": 0,
+        "readerStopped": true,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "rawStdout": {
+        "bytes": 10519,
+        "eof": true,
+        "file": "stdout.raw",
+        "observedBytes": 10519,
+        "readerStopped": true,
+        "sha256": "43fa038bf515e44a6e6b6eb39adaa7c9484f36b1961073c3ac9c93053e40a50f"
+      },
+      "scope": "VERIFIED_CONTINUOUS_METHOD_CAPTURE_WITH_EXACT_INITIAL_BACKLOG",
+      "serial": "emulator-5626"
+    },
+    "newPhaseLog": ""
+  },
+  "instrumentationText": "INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.media.M10StageV2CompatibilityTest\r\nINSTRUMENTATION_STATUS: current=1\r\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\r\nINSTRUMENTATION_STATUS: numtests=1\r\nINSTRUMENTATION_STATUS: stream=\r\ncom.cooper.lithic.data.media.M10StageV2CompatibilityTest:\r\nINSTRUMENTATION_STATUS: test=legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation\r\nINSTRUMENTATION_STATUS_CODE: 1\r\nINSTRUMENTATION_STATUS: class=com.cooper.lithic.data.media.M10StageV2CompatibilityTest\r\nINSTRUMENTATION_STATUS: current=1\r\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\r\nINSTRUMENTATION_STATUS: numtests=1\r\nINSTRUMENTATION_STATUS: stream=.\r\nINSTRUMENTATION_STATUS: test=legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation\r\nINSTRUMENTATION_STATUS_CODE: 0\r\nINSTRUMENTATION_RESULT: stream=\r\n\r\nTime: 0.664\r\n\r\nOK (1 test)\r\n\r\n\r\nINSTRUMENTATION_CODE: -1",
+  "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation",
+  "newObservations": [],
+  "newPhaseLog": "",
+  "newStages": {},
+  "noBackupStatus": "PRESENT",
+  "observations": {
+    "entropy-cut-import-769c18df-b1b9-46ab-9026-8fc5d3de2821.json": {
+      "filename": "entropy-cut-import-769c18df-b1b9-46ab-9026-8fc5d3de2821.json",
+      "metadata": {
+        "bytes": 143,
+        "device": 65079,
+        "inode": 566893,
+        "sha256": "7d1543bdeac56cf25d45a43e2f8949f19c207528d275441e9f2569de80d33360",
+        "type": "regular"
+      },
+      "name": "entropy-cut-import",
+      "value": {
+        "activePreparedLease": false,
+        "kind": "INVALID_IMAGE",
+        "message": "The selected JPEG is incomplete or damaged",
+        "result": "FAILURE"
+      }
+    },
+    "old-cover-project-a1e51daa-f42e-4ca9-903e-e33633c59058.json": {
+      "filename": "old-cover-project-a1e51daa-f42e-4ca9-903e-e33633c59058.json",
+      "metadata": {
+        "bytes": 723,
+        "device": 65079,
+        "inode": 566929,
+        "sha256": "31d0ab6868a25ecd0c3508d9e6dc2280901296852371206f1ee43331c9eb355e",
+        "type": "regular"
+      },
+      "name": "old-cover-project",
+      "value": {
+        "declaredMime": "image/jpeg",
+        "failureMessage": "The selected JPEG is incomplete or damaged",
+        "mediaTableIntact": true,
+        "newFormalMetadataExists": false,
+        "oldCoverAssetId": "3fbe7a22-dbea-4542-af9e-2d414d7295d9",
+        "oldCoverSha256After": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "oldCoverSha256Before": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "oldFactsIntact": true,
+        "prepareResult": "INVALID_IMAGE",
+        "prepareWronglyAccepted": false,
+        "privateFinalFilesIntact": true,
+        "replacementAssetId": "e6d4cd93-ed4b-40e7-9b55-9929935906a8",
+        "replacementPreparedLeaseActive": false,
+        "source": "entropy_cut_eoi_retained.jpg",
+        "targetType": "PROJECT"
+      }
+    },
+    "old-cover-project-cleanup-849b86f2-84ba-4e06-beee-b3356820dc0a.json": {
+      "filename": "old-cover-project-cleanup-849b86f2-84ba-4e06-beee-b3356820dc0a.json",
+      "metadata": {
+        "bytes": 767,
+        "device": 65079,
+        "inode": 566936,
+        "sha256": "864a3ed7c9733a95976a7799bae6a2136f646f882882ea06b88c6daf3e3824e0",
+        "type": "regular"
+      },
+      "name": "old-cover-project-cleanup",
+      "value": {
+        "declaredMime": "image/jpeg",
+        "failedPreparationCleanupVerified": true,
+        "failureMessage": "The selected JPEG is incomplete or damaged",
+        "mediaTableIntact": true,
+        "newFormalMetadataExists": false,
+        "oldCoverAssetId": "3fbe7a22-dbea-4542-af9e-2d414d7295d9",
+        "oldCoverSha256After": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "oldCoverSha256Before": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "oldFactsIntact": true,
+        "prepareResult": "INVALID_IMAGE",
+        "prepareWronglyAccepted": false,
+        "privateFinalFilesIntact": true,
+        "replacementAssetId": "e6d4cd93-ed4b-40e7-9b55-9929935906a8",
+        "replacementPreparedLeaseActive": false,
+        "source": "entropy_cut_eoi_retained.jpg",
+        "targetType": "PROJECT"
+      }
+    },
+    "old-cover-subscription-71bf9a43-7e99-4cc7-b65c-e2987b1e0a12.json": {
+      "filename": "old-cover-subscription-71bf9a43-7e99-4cc7-b65c-e2987b1e0a12.json",
+      "metadata": {
+        "bytes": 728,
+        "device": 65079,
+        "inode": 566934,
+        "sha256": "700a9b6ff22d4c702e98ef9224ddafa59d71d5fe155ac6830263b8171b33238e",
+        "type": "regular"
+      },
+      "name": "old-cover-subscription",
+      "value": {
+        "declaredMime": "image/jpeg",
+        "failureMessage": "The selected JPEG is incomplete or damaged",
+        "mediaTableIntact": true,
+        "newFormalMetadataExists": false,
+        "oldCoverAssetId": "4d299089-a112-4094-9c5d-986bc18e271d",
+        "oldCoverSha256After": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "oldCoverSha256Before": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "oldFactsIntact": true,
+        "prepareResult": "INVALID_IMAGE",
+        "prepareWronglyAccepted": false,
+        "privateFinalFilesIntact": true,
+        "replacementAssetId": "08dd0242-951d-407e-82b2-cd935d24c1a1",
+        "replacementPreparedLeaseActive": false,
+        "source": "entropy_cut_eoi_retained.jpg",
+        "targetType": "SUBSCRIPTION"
+      }
+    },
+    "old-cover-subscription-cleanup-9afdcd6c-2419-4fdf-8390-47b678a33116.json": {
+      "filename": "old-cover-subscription-cleanup-9afdcd6c-2419-4fdf-8390-47b678a33116.json",
+      "metadata": {
+        "bytes": 772,
+        "device": 65079,
+        "inode": 566942,
+        "sha256": "3ad3689b3a7780c8e7837c444fddf3bc5370eb83cf0867ce5aa2129ba6ad82ed",
+        "type": "regular"
+      },
+      "name": "old-cover-subscription-cleanup",
+      "value": {
+        "declaredMime": "image/jpeg",
+        "failedPreparationCleanupVerified": true,
+        "failureMessage": "The selected JPEG is incomplete or damaged",
+        "mediaTableIntact": true,
+        "newFormalMetadataExists": false,
+        "oldCoverAssetId": "4d299089-a112-4094-9c5d-986bc18e271d",
+        "oldCoverSha256After": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "oldCoverSha256Before": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "oldFactsIntact": true,
+        "prepareResult": "INVALID_IMAGE",
+        "prepareWronglyAccepted": false,
+        "privateFinalFilesIntact": true,
+        "replacementAssetId": "08dd0242-951d-407e-82b2-cd935d24c1a1",
+        "replacementPreparedLeaseActive": false,
+        "source": "entropy_cut_eoi_retained.jpg",
+        "targetType": "SUBSCRIPTION"
+      }
+    },
+    "valid-control-76eac881-4892-49d7-911e-63a098fc39d4.json": {
+      "filename": "valid-control-76eac881-4892-49d7-911e-63a098fc39d4.json",
+      "metadata": {
+        "bytes": 245,
+        "device": 65079,
+        "inode": 566903,
+        "sha256": "5f3e86f348e4ce895697a6ee87c399c07615be2bc724651392e537f345057112",
+        "type": "regular"
+      },
+      "name": "valid-control",
+      "value": {
+        "assetId": "83b6833a-120d-47fd-b99d-1afc85162d87",
+        "byteLength": 51882,
+        "height": 256,
+        "mime": "image/jpeg",
+        "result": "SUCCESS",
+        "storedSha256": "673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a",
+        "width": 256
+      }
+    },
+    "worker-review-result-47c09b21-8ecf-41ef-84df-047d7e6ca159.json": {
+      "filename": "worker-review-result-47c09b21-8ecf-41ef-84df-047d7e6ca159.json",
+      "metadata": {
+        "bytes": 642,
+        "device": 65079,
+        "inode": 566860,
+        "sha256": "173277f179e343ce46ce9feed4eccc74274fb6d05e753563c34b3d97956ac815",
+        "type": "regular"
+      },
+      "name": "worker-review-result",
+      "value": {
+        "attempt": "12376ddc-fb65-4cec-bdd5-683bce289564",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "STRICT_FINISHED_NORMALIZED",
+        "generation": "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788",
+        "guardReleased": true,
+        "hostPid": 6064,
+        "hostUid": 10216,
+        "matchingProcessDead": true,
+        "outcome": "SUCCESS",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": false,
+        "session": "8680a7fb-997d-4c5f-81ae-d3f8de319d68",
+        "sourceClosed": true,
+        "strictFinished": true,
+        "workerPid": 6085,
+        "workerStartTicks": 319374,
+        "workerUid": 10216
+      }
+    },
+    "worker-review-result-79eac6d5-233c-4126-ab1f-ab34f61b5d9d.json": {
+      "filename": "worker-review-result-79eac6d5-233c-4126-ab1f-ab34f61b5d9d.json",
+      "metadata": {
+        "bytes": 653,
+        "device": 65079,
+        "inode": 566879,
+        "sha256": "8e4c381dc842eafc3bb19e0f25cb6f5e373b666c39f06e4220bca90548c50f32",
+        "type": "regular"
+      },
+      "name": "worker-review-result",
+      "value": {
+        "attempt": "54223581-a91d-47f5-94d3-bb4800723f98",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "Strict JPEG rejection code=117",
+        "generation": "m10-worker-review-bafc32db-597b-4813-a273-cb2242330f2f",
+        "guardReleased": true,
+        "hostPid": 6669,
+        "hostUid": 10216,
+        "matchingProcessDead": true,
+        "outcome": "INVALID_IMAGE",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": false,
+        "session": "32658220-2389-4eb9-99a6-86e4a2eac883",
+        "sourceClosed": true,
+        "strictFinished": false,
+        "workerPid": 6690,
+        "workerStartTicks": 325763,
+        "workerUid": 10216
+      }
+    },
+    "worker-review-terminal-21258d0c-6d36-408b-a1c2-e4fbccdbc670.json": {
+      "filename": "worker-review-terminal-21258d0c-6d36-408b-a1c2-e4fbccdbc670.json",
+      "metadata": {
+        "bytes": 641,
+        "device": 65079,
+        "inode": 566855,
+        "sha256": "a1e3c7c0425d807970ed450710ed52decbb4b38a3cbb1a159b586973ba7a5251",
+        "type": "regular"
+      },
+      "name": "worker-review-terminal",
+      "value": {
+        "attempt": "12376ddc-fb65-4cec-bdd5-683bce289564",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "STRICT_FINISHED_NORMALIZED",
+        "generation": "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788",
+        "guardReleased": true,
+        "hostPid": 6064,
+        "hostUid": 10216,
+        "matchingProcessDead": true,
+        "outcome": "SUCCESS",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": true,
+        "session": "8680a7fb-997d-4c5f-81ae-d3f8de319d68",
+        "sourceClosed": true,
+        "strictFinished": true,
+        "workerPid": 6085,
+        "workerStartTicks": 319374,
+        "workerUid": 10216
+      }
+    },
+    "worker-review-terminal-64a722d3-b656-48c2-ac9f-b78b09b56490.json": {
+      "filename": "worker-review-terminal-64a722d3-b656-48c2-ac9f-b78b09b56490.json",
+      "metadata": {
+        "bytes": 652,
+        "device": 65079,
+        "inode": 566874,
+        "sha256": "f8c22542517669b5aeb05dca092f0e98b89682aedfec9a3c368e673cefd2a277",
+        "type": "regular"
+      },
+      "name": "worker-review-terminal",
+      "value": {
+        "attempt": "54223581-a91d-47f5-94d3-bb4800723f98",
+        "binderDead": true,
+        "connectionCleaned": true,
+        "decoderDestroyed": true,
+        "detail": "Strict JPEG rejection code=117",
+        "generation": "m10-worker-review-bafc32db-597b-4813-a273-cb2242330f2f",
+        "guardReleased": true,
+        "hostPid": 6669,
+        "hostUid": 10216,
+        "matchingProcessDead": true,
+        "outcome": "INVALID_IMAGE",
+        "outputClosed": true,
+        "pinBeforeDelivery": true,
+        "resultCount": 1,
+        "safeCleanup": true,
+        "session": "32658220-2389-4eb9-99a6-86e4a2eac883",
+        "sourceClosed": true,
+        "strictFinished": false,
+        "workerPid": 6690,
+        "workerStartTicks": 325763,
+        "workerUid": 10216
+      }
+    }
+  },
+  "phaseLog": "--------- beginning of main\r\n10-19 04:06:36.163  6085  6094 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196716\r\n10-19 04:06:36.165  6064  6083 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196718\r\n10-19 04:06:36.168  6085  6085 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196721\r\n10-19 04:06:36.170  6085  6098 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196722\r\n10-19 04:06:36.173  6064  6064 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196726\r\n10-19 04:06:36.186  6064  6075 I LITHIC_JPEG: HOST_BINDER_DIED attempt=12376ddc-fb65-4cec-bdd5-683bce289564 session=8680a7fb-997d-4c5f-81ae-d3f8de319d68 worker=6085/10216/319374 at=3196739\r\n10-19 04:07:38.010  6690  6701 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=54223581-a91d-47f5-94d3-bb4800723f98 session=32658220-2389-4eb9-99a6-86e4a2eac883 worker=6690/10216/325763 at=3258563\r\n10-19 04:07:38.011  6669  6688 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=54223581-a91d-47f5-94d3-bb4800723f98 session=32658220-2389-4eb9-99a6-86e4a2eac883 worker=6690/10216/325763 at=3258564\r\n10-19 04:07:38.015  6669  6669 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=54223581-a91d-47f5-94d3-bb4800723f98 session=32658220-2389-4eb9-99a6-86e4a2eac883 worker=6690/10216/325763 at=3258568\r\n10-19 04:07:38.018  6690  6690 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=54223581-a91d-47f5-94d3-bb4800723f98 session=32658220-2389-4eb9-99a6-86e4a2eac883 worker=6690/10216/325763 at=3258571\r\n10-19 04:07:38.019  6690  6703 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=54223581-a91d-47f5-94d3-bb4800723f98 session=32658220-2389-4eb9-99a6-86e4a2eac883 worker=6690/10216/325763 at=3258572\r\n10-19 04:07:38.036  6669  6679 I LITHIC_JPEG: HOST_BINDER_DIED attempt=54223581-a91d-47f5-94d3-bb4800723f98 session=32658220-2389-4eb9-99a6-86e4a2eac883 worker=6690/10216/325763 at=3258589\r\n10-19 04:09:37.792  7667  7677 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=f5990c33-19ba-453c-83be-429e86b6fa97 session=cc3384a5-27ea-4a22-9a46-28ea96bb9236 worker=7667/10216/337264 at=3378345\r\n10-19 04:09:37.799  7632  7665 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=f5990c33-19ba-453c-83be-429e86b6fa97 session=cc3384a5-27ea-4a22-9a46-28ea96bb9236 worker=7667/10216/337264 at=3378352\r\n10-19 04:09:37.807  7632  7632 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=f5990c33-19ba-453c-83be-429e86b6fa97 session=cc3384a5-27ea-4a22-9a46-28ea96bb9236 worker=7667/10216/337264 at=3378360\r\n10-19 04:09:37.809  7667  7667 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=f5990c33-19ba-453c-83be-429e86b6fa97 session=cc3384a5-27ea-4a22-9a46-28ea96bb9236 worker=7667/10216/337264 at=3378359\r\n10-19 04:09:37.815  7667  7679 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=f5990c33-19ba-453c-83be-429e86b6fa97 session=cc3384a5-27ea-4a22-9a46-28ea96bb9236 worker=7667/10216/337264 at=3378368\r\n10-19 04:09:37.884  7632  7644 I LITHIC_JPEG: HOST_BINDER_DIED attempt=f5990c33-19ba-453c-83be-429e86b6fa97 session=cc3384a5-27ea-4a22-9a46-28ea96bb9236 worker=7667/10216/337264 at=3378437\r\n10-19 04:12:26.618  8654  8663 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=47b76e4a-8a72-49cd-acab-730bd1c3b17a session=f076ade7-88a9-4165-97ee-6f100739d657 worker=8654/10216/354582 at=3547171\r\n10-19 04:12:26.621  8632  8652 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=47b76e4a-8a72-49cd-acab-730bd1c3b17a session=f076ade7-88a9-4165-97ee-6f100739d657 worker=8654/10216/354582 at=3547174\r\n10-19 04:12:26.628  8654  8654 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=47b76e4a-8a72-49cd-acab-730bd1c3b17a session=f076ade7-88a9-4165-97ee-6f100739d657 worker=8654/10216/354582 at=3547181\r\n10-19 04:12:26.631  8654  8667 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=47b76e4a-8a72-49cd-acab-730bd1c3b17a session=f076ade7-88a9-4165-97ee-6f100739d657 worker=8654/10216/354582 at=3547183\r\n10-19 04:12:26.634  8632  8632 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=47b76e4a-8a72-49cd-acab-730bd1c3b17a session=f076ade7-88a9-4165-97ee-6f100739d657 worker=8654/10216/354582 at=3547187\r\n10-19 04:12:26.654  8632  8642 I LITHIC_JPEG: HOST_BINDER_DIED attempt=47b76e4a-8a72-49cd-acab-730bd1c3b17a session=f076ade7-88a9-4165-97ee-6f100739d657 worker=8654/10216/354582 at=3547207\r\n10-19 04:14:11.329  9677  9688 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=b9ad6f9b-f0e2-4d7f-8205-920b96075ea6 session=3db3507e-02dc-422b-8e2e-abf0236f808b worker=9677/10216/364824 at=3651882\r\n10-19 04:14:11.333  9650  9675 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=b9ad6f9b-f0e2-4d7f-8205-920b96075ea6 session=3db3507e-02dc-422b-8e2e-abf0236f808b worker=9677/10216/364824 at=3651886\r\n10-19 04:14:11.342  9650  9650 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=b9ad6f9b-f0e2-4d7f-8205-920b96075ea6 session=3db3507e-02dc-422b-8e2e-abf0236f808b worker=9677/10216/364824 at=3651895\r\n10-19 04:14:11.345  9677  9677 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=b9ad6f9b-f0e2-4d7f-8205-920b96075ea6 session=3db3507e-02dc-422b-8e2e-abf0236f808b worker=9677/10216/364824 at=3651898\r\n10-19 04:14:11.346  9677  9690 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=b9ad6f9b-f0e2-4d7f-8205-920b96075ea6 session=3db3507e-02dc-422b-8e2e-abf0236f808b worker=9677/10216/364824 at=3651899\r\n10-19 04:14:11.374  9650  9660 I LITHIC_JPEG: HOST_BINDER_DIED attempt=b9ad6f9b-f0e2-4d7f-8205-920b96075ea6 session=3db3507e-02dc-422b-8e2e-abf0236f808b worker=9677/10216/364824 at=3651927\r\n10-19 04:14:22.051  9696  9707 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=eca8ebe5-deac-415b-8f59-06cbae8c7e52 session=472e515c-7ff7-4666-bf39-a46358c52680 worker=9696/10216/366101 at=3662604\r\n10-19 04:14:22.054  9650  9675 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=eca8ebe5-deac-415b-8f59-06cbae8c7e52 session=472e515c-7ff7-4666-bf39-a46358c52680 worker=9696/10216/366101 at=3662607\r\n10-19 04:14:22.061  9696  9696 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=eca8ebe5-deac-415b-8f59-06cbae8c7e52 session=472e515c-7ff7-4666-bf39-a46358c52680 worker=9696/10216/366101 at=3662614\r\n10-19 04:14:22.064  9650  9650 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=eca8ebe5-deac-415b-8f59-06cbae8c7e52 session=472e515c-7ff7-4666-bf39-a46358c52680 worker=9696/10216/366101 at=3662617\r\n10-19 04:14:22.068  9696  9709 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=eca8ebe5-deac-415b-8f59-06cbae8c7e52 session=472e515c-7ff7-4666-bf39-a46358c52680 worker=9696/10216/366101 at=3662620\r\n10-19 04:14:22.087  9650  9693 I LITHIC_JPEG: HOST_BINDER_DIED attempt=eca8ebe5-deac-415b-8f59-06cbae8c7e52 session=472e515c-7ff7-4666-bf39-a46358c52680 worker=9696/10216/366101 at=3662640\r\n10-19 04:15:47.923 10756 10767 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=87c618b2-6b89-4b9e-9f77-e9120cdeeb0f session=dbd932c1-0440-461f-9808-65ba9bdfb03f worker=10756/10216/374670 at=3748476\r\n10-19 04:15:47.925 10730 10754 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=87c618b2-6b89-4b9e-9f77-e9120cdeeb0f session=dbd932c1-0440-461f-9808-65ba9bdfb03f worker=10756/10216/374670 at=3748478\r\n10-19 04:15:47.927 10756 10756 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=87c618b2-6b89-4b9e-9f77-e9120cdeeb0f session=dbd932c1-0440-461f-9808-65ba9bdfb03f worker=10756/10216/374670 at=3748480\r\n10-19 04:15:47.929 10756 10769 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=87c618b2-6b89-4b9e-9f77-e9120cdeeb0f session=dbd932c1-0440-461f-9808-65ba9bdfb03f worker=10756/10216/374670 at=3748483\r\n10-19 04:15:47.931 10730 10730 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=87c618b2-6b89-4b9e-9f77-e9120cdeeb0f session=dbd932c1-0440-461f-9808-65ba9bdfb03f worker=10756/10216/374670 at=3748484\r\n10-19 04:15:47.944 10730 10740 I LITHIC_JPEG: HOST_BINDER_DIED attempt=87c618b2-6b89-4b9e-9f77-e9120cdeeb0f session=dbd932c1-0440-461f-9808-65ba9bdfb03f worker=10756/10216/374670 at=3748497\r\n10-19 04:15:52.191 10775 10787 I LITHIC_JPEG: WORKER_RETIRE_ARMED attempt=f3a5681c-2293-466b-9eaf-377c8e8bd57f session=7a491b0e-499c-4c00-be2c-0df69be7ead5 worker=10775/10216/375200 at=3752744\r\n10-19 04:15:52.195 10730 10754 I LITHIC_JPEG: HOST_RETIRE_ACKNOWLEDGED attempt=f3a5681c-2293-466b-9eaf-377c8e8bd57f session=7a491b0e-499c-4c00-be2c-0df69be7ead5 worker=10775/10216/375200 at=3752748\r\n10-19 04:15:52.199 10775 10775 I LITHIC_JPEG: WORKER_ON_UNBIND attempt=f3a5681c-2293-466b-9eaf-377c8e8bd57f session=7a491b0e-499c-4c00-be2c-0df69be7ead5 worker=10775/10216/375200 at=3752752\r\n10-19 04:15:52.201 10775 10789 I LITHIC_JPEG: WORKER_EXIT_AUTHENTICATED_DETACH attempt=f3a5681c-2293-466b-9eaf-377c8e8bd57f session=7a491b0e-499c-4c00-be2c-0df69be7ead5 worker=10775/10216/375200 at=3752754\r\n10-19 04:15:52.202 10730 10730 I LITHIC_JPEG: HOST_UNBIND_RETURNED attempt=f3a5681c-2293-466b-9eaf-377c8e8bd57f session=7a491b0e-499c-4c00-be2c-0df69be7ead5 worker=10775/10216/375200 at=3752756\r\n10-19 04:15:52.210 10730 10741 I LITHIC_JPEG: HOST_BINDER_DIED attempt=f3a5681c-2293-466b-9eaf-377c8e8bd57f session=7a491b0e-499c-4c00-be2c-0df69be7ead5 worker=10775/10216/375200 at=3752763",
+  "processes": {
+    "complete": true,
+    "rawBytes": 12227,
+    "rawSHA256": "a9e877ee11b94641446533485845e0c082e3e7403fe799d6ddfc127fcf66238c",
+    "rows": [],
+    "uid": 10216,
+    "worker_absent": true
+  },
+  "serial": "emulator-5626",
+  "stages": {
+    "m10-worker-review-bafc32db-597b-4813-a273-cb2242330f2f": {
+      "asset": "65602b1b-041f-4d2e-9082-1b5dea5d2a59",
+      "namespaceGuard": {
+        "bytes": 0,
+        "device": 65079,
+        "inode": 566868,
+        "type": "regular"
+      },
+      "records": {
+        "__metadata__": "{\"complete\": true, \"entries\": {\"cleaned.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566872, \"sha256\": \"472bbe847102b1d762d456767dae5a138bb72ab7dcb8d086c8e59d0856277b7e\", \"type\": \"regular\"}, \"cleanup-intent.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566881, \"sha256\": \"472bbe847102b1d762d456767dae5a138bb72ab7dcb8d086c8e59d0856277b7e\", \"type\": \"regular\"}, \"consumer.guard\": {\"bytes\": 0, \"device\": 65079, \"inode\": 566870, \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"sha256Origin\": \"DERIVED_FROM_VERIFIED_ZERO_LENGTH_NO_CONTENT_READ\", \"type\": \"regular\"}, \"delivered.v2\": {\"bytes\": 148, \"device\": 65079, \"inode\": 566877, \"sha256\": \"5086f77b6889a8dcd8b7436f4468a1f7dac180fa02749c576c9acbc68c1d64c3\", \"type\": \"regular\"}, \"output.v2\": {\"bytes\": 181, \"device\": 65079, \"inode\": 566875, \"sha256\": \"d75f4171ed3ba6c3e7f15aa52f5e726ab3525422a83bd5b7710ff7b36c975cf7\", \"type\": \"regular\"}, \"owner.v2\": {\"bytes\": 415, \"device\": 65079, \"inode\": 566871, \"sha256\": \"fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\", \"type\": \"regular\"}, \"pin.v2\": {\"bytes\": 188, \"device\": 65079, \"inode\": 566876, \"sha256\": \"3d5f7f08046db94e5b7ba2d40195fdce5962091e9aa7b648870c098cb66915a8\", \"type\": \"regular\"}, \"revoked.v2\": {\"bytes\": 151, \"device\": 65079, \"inode\": 566878, \"sha256\": \"3ec9ae36edc4261530a530afe59e579bf62f1bb0bab2f13374ac249df97af606\", \"type\": \"regular\"}, \"source.v2\": {\"bytes\": 185, \"device\": 65079, \"inode\": 566873, \"sha256\": \"77527348e04f8c2d14ded3519133356a0bdb39f55d75a2af1f8b5799308ae848\", \"type\": \"regular\"}, \"terminal.v2\": {\"bytes\": 489, \"device\": 65079, \"inode\": 566880, \"sha256\": \"b69a6947c267255cded2b57444f1b099aec2543d8afdf5c5e6e3ad3d7212dea0\", \"type\": \"regular\"}}}",
+        "cleaned.v2": "ownerHash=fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\nterminalHash=b69a6947c267255cded2b57444f1b099aec2543d8afdf5c5e6e3ad3d7212dea0\n",
+        "cleanup-intent.v2": "ownerHash=fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\nterminalHash=b69a6947c267255cded2b57444f1b099aec2543d8afdf5c5e6e3ad3d7212dea0\n",
+        "consumer.guard": "",
+        "delivered.v2": "ownerHash=fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\npinHash=3d5f7f08046db94e5b7ba2d40195fdce5962091e9aa7b648870c098cb66915a8\n",
+        "output.v2": "bytes=0\ndevice=65079\ninode=566874\nownerHash=fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\nsha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+        "owner.v2": "assetId=65602b1b-041f-4d2e-9082-1b5dea5d2a59\nattemptId=54223581-a91d-47f5-94d3-bb4800723f98\ndecoderPolicy=libjpeg-turbo-3.2.0-e01-strict-v1\ngeneration=m10-worker-review-bafc32db-597b-4813-a273-cb2242330f2f\nguardDevice=65079\nguardInode=566870\nnonce=edceb399-ce9c-4103-a03f-a2c6316f061d\nnormalizationPolicy=m10-jpeg-normalize-v1\nprotocol=lithic-m10-jpeg-stage\nsessionId=32658220-2389-4eb9-99a6-86e4a2eac883\nversion=2\n",
+        "pin.v2": "ownerHash=fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\npid=6690\nsourceHash=f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a\nstartTicks=325763\nuid=10216\n",
+        "revoked.v2": "ownerHash=fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\nreasonHash=7fde55b8a8acb4afa45ba9966dd9c81ace7954a03a54f44d12dc0f98186d6299\n",
+        "source.v2": "bytes=20194\ndevice=65079\ninode=566872\nownerHash=fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\nsha256=f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a\n",
+        "terminal.v2": "binderDead=true\nconnectionCleaned=true\ndecoderDestroyed=true\nheight=none\nmatchingProcessDead=true\noutcome=IMAGE\noutputBytes=none\noutputDevice=none\noutputFdClosed=true\noutputInode=none\noutputSha=none\nownerHash=fbedec110bd3b7114f67941467dac178bcbe7347ac43ccc1dcf298745379b427\npinHash=3d5f7f08046db94e5b7ba2d40195fdce5962091e9aa7b648870c098cb66915a8\nresultCount=1\nsourceFdClosed=true\nsourceHash=f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a\nstrictFinished=false\nwidth=none\n"
+      }
+    },
+    "m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788": {
+      "asset": "78a0ff64-72bc-4d0a-93ad-f93b7e0f7794",
+      "namespaceGuard": {
+        "bytes": 0,
+        "device": 65079,
+        "inode": 566831,
+        "type": "regular"
+      },
+      "records": {
+        "__metadata__": "{\"complete\": true, \"entries\": {\"cleaned.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566853, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"cleanup-intent.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566864, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"consumer.guard\": {\"bytes\": 0, \"device\": 65079, \"inode\": 566833, \"sha256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\", \"sha256Origin\": \"DERIVED_FROM_VERIFIED_ZERO_LENGTH_NO_CONTENT_READ\", \"type\": \"regular\"}, \"delivered.v2\": {\"bytes\": 148, \"device\": 65079, \"inode\": 566858, \"sha256\": \"fac366c26e5ef42bcdc745d0fca5d47d8b1880a3c8721355495e2ecfb2ee3116\", \"type\": \"regular\"}, \"output.v2\": {\"bytes\": 181, \"device\": 65079, \"inode\": 566856, \"sha256\": \"3f3b63c84c7c0c3a2c4556c22335882001f36485b39ae282a6cc2bcc2271b455\", \"type\": \"regular\"}, \"owner.v2\": {\"bytes\": 415, \"device\": 65079, \"inode\": 566844, \"sha256\": \"f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\", \"type\": \"regular\"}, \"pin.v2\": {\"bytes\": 188, \"device\": 65079, \"inode\": 566857, \"sha256\": \"87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\", \"type\": \"regular\"}, \"prepared.v2\": {\"bytes\": 153, \"device\": 65079, \"inode\": 566862, \"sha256\": \"6dda80881130e714c6e22e5520d011748b5a1ad3e47745a733a25e9b73cd3666\", \"type\": \"regular\"}, \"revoked.v2\": {\"bytes\": 151, \"device\": 65079, \"inode\": 566863, \"sha256\": \"d431ff0f51f5d26a66bc5d686e4e79f750beffa955286ae33eed5ee2654f813c\", \"type\": \"regular\"}, \"source.v2\": {\"bytes\": 185, \"device\": 65079, \"inode\": 566854, \"sha256\": \"fb154bdc582ae076688c67f7cbb9d7d5a81d1d7bc1a081d5041ce09196c4c1a8\", \"type\": \"regular\"}, \"terminal.v2\": {\"bytes\": 552, \"device\": 65079, \"inode\": 566861, \"sha256\": \"6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\", \"type\": \"regular\"}}}",
+        "cleaned.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "cleanup-intent.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "consumer.guard": "",
+        "delivered.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npinHash=87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\n",
+        "output.v2": "bytes=0\ndevice=65079\ninode=566855\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nsha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\n",
+        "owner.v2": "assetId=78a0ff64-72bc-4d0a-93ad-f93b7e0f7794\nattemptId=12376ddc-fb65-4cec-bdd5-683bce289564\ndecoderPolicy=libjpeg-turbo-3.2.0-e01-strict-v1\ngeneration=m10-worker-review-f29c0c65-ed3b-476c-8ad0-921f0166a788\nguardDevice=65079\nguardInode=566833\nnonce=52c5513f-9f20-4d2c-a5e7-749f6958a480\nnormalizationPolicy=m10-jpeg-normalize-v1\nprotocol=lithic-m10-jpeg-stage\nsessionId=8680a7fb-997d-4c5f-81ae-d3f8de319d68\nversion=2\n",
+        "pin.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npid=6085\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstartTicks=319374\nuid=10216\n",
+        "prepared.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nterminalHash=6b5c3339255a1eed80514c991276bfcb73dd482b11bb8ccf47cc93ab28550d03\n",
+        "revoked.v2": "ownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nreasonHash=611496f412cac947be720d17a0ee6d7463221d14731fbc18244756271e8f5189\n",
+        "source.v2": "bytes=59334\ndevice=65079\ninode=566853\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\nsha256=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\n",
+        "terminal.v2": "binderDead=true\nconnectionCleaned=true\ndecoderDestroyed=true\nheight=256\nmatchingProcessDead=true\noutcome=SUCCESS\noutputBytes=51882\noutputDevice=65079\noutputFdClosed=true\noutputInode=566855\noutputSha=673d7e89bf1f611b71203c183d533f175a1fbbb5cc0de6a222ae5cd567d8270a\nownerHash=f30ebf474639fd0f3d8991715b6b946673fd68a6cca21de6e64fcebee5083332\npinHash=87612c471cf61932b0bd36b24d25c20da66315dd8a2494749c3b3d9376d9fe4c\nresultCount=1\nsourceFdClosed=true\nsourceHash=2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907\nstrictFinished=true\nwidth=256\n"
+      }
+    }
+  },
+  "status": "PASS",
+  "uid": 10216,
+  "workerProc": {}
+}

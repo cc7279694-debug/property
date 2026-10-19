@@ -1,0 +1,83 @@
+test_both_identity_fields_agree (test_installed_uid.InstalledUidTest.test_both_identity_fields_agree) ... ok
+test_conflicting_appid_userid_rejected (test_installed_uid.InstalledUidTest.test_conflicting_appid_userid_rejected) ... ok
+test_cross_user_uid_rejected (test_installed_uid.InstalledUidTest.test_cross_user_uid_rejected) ... ok
+test_duplicate_appid_even_same_value_rejected (test_installed_uid.InstalledUidTest.test_duplicate_appid_even_same_value_rejected) ... ok
+test_duplicate_installed_flag_rejected (test_installed_uid.InstalledUidTest.test_duplicate_installed_flag_rejected) ... ok
+test_duplicate_packages_region_rejected (test_installed_uid.InstalledUidTest.test_duplicate_packages_region_rejected) ... ok
+test_duplicate_target_package_rejected (test_installed_uid.InstalledUidTest.test_duplicate_target_package_rejected) ... ok
+test_duplicate_user_zero_rejected (test_installed_uid.InstalledUidTest.test_duplicate_user_zero_rejected) ... ok
+test_duplicate_userid_even_same_value_rejected (test_installed_uid.InstalledUidTest.test_duplicate_userid_even_same_value_rejected) ... ok
+test_foreign_package_in_packages_region_rejected (test_installed_uid.InstalledUidTest.test_foreign_package_in_packages_region_rejected) ... ok
+test_incomplete_packages_region_rejected (test_installed_uid.InstalledUidTest.test_incomplete_packages_region_rejected) ... ok
+test_independent_locked_sibling_same_uid_rejected (test_installed_uid.InstalledUidTest.test_independent_locked_sibling_same_uid_rejected) ... ok
+test_independent_query_for_test_cannot_return_app (test_installed_uid.InstalledUidTest.test_independent_query_for_test_cannot_return_app) ... ok
+test_independent_query_unexpected_format_rejected (test_installed_uid.InstalledUidTest.test_independent_query_unexpected_format_rejected) ... ok
+test_independent_query_unknown_suffix_rejected (test_installed_uid.InstalledUidTest.test_independent_query_unknown_suffix_rejected) ... ok
+test_independent_target_duplicate_rejected (test_installed_uid.InstalledUidTest.test_independent_target_duplicate_rejected) ... ok
+test_independent_uid_mismatch_rejected (test_installed_uid.InstalledUidTest.test_independent_uid_mismatch_rejected) ... ok
+test_independent_uid_missing_rejected (test_installed_uid.InstalledUidTest.test_independent_uid_missing_rejected) ... ok
+test_independent_user_zero_query_failure_rejected (test_installed_uid.InstalledUidTest.test_independent_user_zero_query_failure_rejected) ... ok
+test_independent_wrong_package_rejected (test_installed_uid.InstalledUidTest.test_independent_wrong_package_rejected) ... ok
+test_installed_apk_sha_mismatch_remains_rejected (test_installed_uid.InstalledUidTest.test_installed_apk_sha_mismatch_remains_rejected) ... ok
+test_installed_false_rejected (test_installed_uid.InstalledUidTest.test_installed_false_rejected) ... ok
+test_isolated_uid_not_ordinary_application (test_installed_uid.InstalledUidTest.test_isolated_uid_not_ordinary_application) ... ok
+test_locked_fixture_bytes_and_sha (test_installed_uid.InstalledUidTest.test_locked_fixture_bytes_and_sha) ... ok
+test_malformed_signed_uid_rejected (test_installed_uid.InstalledUidTest.test_malformed_signed_uid_rejected) ... ok
+test_missing_installed_flag_rejected (test_installed_uid.InstalledUidTest.test_missing_installed_flag_rejected) ... ok
+test_nested_other_package_header_rejected (test_installed_uid.InstalledUidTest.test_nested_other_package_header_rejected) ... ok
+test_nested_uid_field_rejected (test_installed_uid.InstalledUidTest.test_nested_uid_field_rejected) ... ok
+test_other_package_identity_cannot_supply_target_identity (test_installed_uid.InstalledUidTest.test_other_package_identity_cannot_supply_target_identity) ... ok
+test_other_user_cannot_satisfy_user_zero (test_installed_uid.InstalledUidTest.test_other_user_cannot_satisfy_user_zero) ... ok
+test_permission_uid_cannot_supply_missing_package_identity (test_installed_uid.InstalledUidTest.test_permission_uid_cannot_supply_missing_package_identity) ... ok
+test_pm_path_ambiguity_remains_rejected (test_installed_uid.InstalledUidTest.test_pm_path_ambiguity_remains_rejected) ... ok
+test_real_api26_userid_and_independent_uid (test_installed_uid.InstalledUidTest.test_real_api26_userid_and_independent_uid) ... ok
+test_real_api36_appid_and_independent_uid (test_installed_uid.InstalledUidTest.test_real_api36_appid_and_independent_uid) ... ok
+test_real_api36_independent_query_bytes (test_installed_uid.InstalledUidTest.test_real_api36_independent_query_bytes) ... ERROR
+test_system_uid_not_ordinary_application (test_installed_uid.InstalledUidTest.test_system_uid_not_ordinary_application) ... ok
+test_target_app_prefix_can_also_return_distinct_locked_test (test_installed_uid.InstalledUidTest.test_target_app_prefix_can_also_return_distinct_locked_test) ... ok
+test_uid_trailing_tokens_rejected (test_installed_uid.InstalledUidTest.test_uid_trailing_tokens_rejected) ... ok
+test_unknown_locked_prefix_package_rejected (test_installed_uid.InstalledUidTest.test_unknown_locked_prefix_package_rejected) ... ok
+test_user_zero_alias_is_not_canonical_user_zero (test_installed_uid.InstalledUidTest.test_user_zero_alias_is_not_canonical_user_zero) ... ok
+test_wrong_target_package_rejected (test_installed_uid.InstalledUidTest.test_wrong_target_package_rejected) ... ok
+test_adb_or_jvm_override_fails_closed (test_validate.SupervisorHostTest.test_adb_or_jvm_override_fails_closed) ... ok
+test_apk_certificate_conflict_is_rejected (test_validate.SupervisorHostTest.test_apk_certificate_conflict_is_rejected) ... ok
+test_apk_hash_conflict_is_rejected (test_validate.SupervisorHostTest.test_apk_hash_conflict_is_rejected) ... ok
+test_apk_instrumentation_conflict_is_rejected (test_validate.SupervisorHostTest.test_apk_instrumentation_conflict_is_rejected) ... ok
+test_command_timeout_is_unknown_without_automatic_retry (test_validate.SupervisorHostTest.test_command_timeout_is_unknown_without_automatic_retry) ... ok
+test_create_issues_one_non_forced_command_and_keeps_marker (test_validate.SupervisorHostTest.test_create_issues_one_non_forced_command_and_keeps_marker) ... ok
+test_duplicate_configuration_keys_are_rejected (test_validate.SupervisorHostTest.test_duplicate_configuration_keys_are_rejected) ... ok
+test_exact_normal_command_line_can_prove_target_process (test_validate.SupervisorHostTest.test_exact_normal_command_line_can_prove_target_process) ... ok
+test_existing_reparse_ancestor_blocks_nonexistent_new_root (test_validate.SupervisorHostTest.test_existing_reparse_ancestor_blocks_nonexistent_new_root) ... ok
+test_identity_uses_one_absolute_deadline_across_checks (test_validate.SupervisorHostTest.test_identity_uses_one_absolute_deadline_across_checks) ... ok
+test_installed_uid_conflict_is_rejected (test_validate.SupervisorHostTest.test_installed_uid_conflict_is_rejected) ... ok
+test_legacy_home_is_removed_only_from_child_environment (test_validate.SupervisorHostTest.test_legacy_home_is_removed_only_from_child_environment) ... ok
+test_matching_synthetic_apk_audit_can_pass_without_android (test_validate.SupervisorHostTest.test_matching_synthetic_apk_audit_can_pass_without_android) ... ok
+test_missing_target_process_command_line_fails_closed (test_validate.SupervisorHostTest.test_missing_target_process_command_line_fails_closed) ... ok
+test_nonzero_command_records_raw_result_and_stops (test_validate.SupervisorHostTest.test_nonzero_command_records_raw_result_and_stops) ... ok
+test_operation_marker_is_exclusive_and_preserves_first_attempt (test_validate.SupervisorHostTest.test_operation_marker_is_exclusive_and_preserves_first_attempt) ... ok
+test_original_and_unknown_serials_are_rejected_before_command (test_validate.SupervisorHostTest.test_original_and_unknown_serials_are_rejected_before_command) ... ok
+test_process_data_path_prefix_does_not_prove_ownership (test_validate.SupervisorHostTest.test_process_data_path_prefix_does_not_prove_ownership) ... ok
+test_source_has_no_global_adb_or_destructive_command_tokens (test_validate.SupervisorHostTest.test_source_has_no_global_adb_or_destructive_command_tokens) ... ok
+test_start_does_not_reset_boot_deadline_after_polling (test_validate.SupervisorHostTest.test_start_does_not_reset_boot_deadline_after_polling) ... ok
+test_targeted_adb_always_uses_fixed_serial (test_validate.SupervisorHostTest.test_targeted_adb_always_uses_fixed_serial) ... ok
+test_wrong_image_api_is_rejected_before_creation (test_validate.SupervisorHostTest.test_wrong_image_api_is_rejected_before_creation) ... ok
+
+======================================================================
+ERROR: test_real_api36_independent_query_bytes (test_installed_uid.InstalledUidTest.test_real_api36_independent_query_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 64, in test_real_api36_independent_query_bytes
+    raw = (FIXTURES / "api36-independent-user0-uid.raw").read_bytes()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1019, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\CODEX\\.codex\\worktrees\\lithic-uid-resume\\砺石新APP\\docs\\research\\m10-jpeg-android-isolated\\evidence\\installed-uid\\api36-independent-user0-uid.raw'
+
+----------------------------------------------------------------------
+Ran 63 tests in 0.517s
+
+FAILED (errors=1)

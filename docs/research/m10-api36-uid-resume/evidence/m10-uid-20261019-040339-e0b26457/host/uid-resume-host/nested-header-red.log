@@ -1,0 +1,16 @@
+test_nested_other_package_header_rejected (test_installed_uid.InstalledUidTest.test_nested_other_package_header_rejected) ... FAIL
+
+======================================================================
+FAIL: test_nested_other_package_header_rejected (test_installed_uid.InstalledUidTest.test_nested_other_package_header_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 154, in test_nested_other_package_header_rejected
+    self.blocked(minimal("userId=10216").replace("\nQueries:", f"\n    Package [{TEST}] (abc):\n\nQueries:"))
+  File "E:\CODEX\.codex\worktrees\lithic-uid-resume\砺石新APP\docs\research\m10-jpeg-android-isolated\test_installed_uid.py", line 47, in blocked
+    with self.assertRaises(RuntimeError):
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=1)

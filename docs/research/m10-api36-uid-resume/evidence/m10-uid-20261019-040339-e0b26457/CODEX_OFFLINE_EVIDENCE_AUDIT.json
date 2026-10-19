@@ -1,0 +1,319 @@
+{
+  "scope": "CODEX_LOCAL_AUDIT_NOT_CHATGPT_ACCEPTANCE",
+  "status": "PASS",
+  "api": 36,
+  "serial": "emulator-5626",
+  "resumeId": "m10-uid-20261019-040339-e0b26457",
+  "testMethods": 9,
+  "testPass": 9,
+  "uniqueWorkerInvocations": 8,
+  "uniqueWorkerIdentities": 8,
+  "retirementEvents": 48,
+  "newPersistentReviewStages": 2,
+  "persistentStageRecordsSHAValidated": 21,
+  "oldStageSnapshotsUnchanged": 15,
+  "oldObservationSnapshotsUnchanged": 55,
+  "endingReadOnly": {
+    "status": "PASS",
+    "sourceStatus": "OBSERVED",
+    "resourceStatus": "PASS",
+    "deviceLeftRunning": true,
+    "appUID": 10216,
+    "testUID": 10217,
+    "appAndWorkerProcessRows": 0,
+    "stages": 2,
+    "observations": 10,
+    "stageAndObservationsUnchangedFromMethod08": true,
+    "proofSHA256": "858befd4ccd2038d3a1bd587e6f08cbc87f67693767f6a49880f39a9c5ca3c0f"
+  },
+  "checks": [
+    {
+      "index": 0,
+      "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#healthy_jpeg_retires_real_worker_before_stage_completion",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 1,
+      "phases": 6,
+      "oldStageUnchanged": 0,
+      "sourceFileSHA256": {
+        "before.json": "be0a6d3e7ecae0fcce5bd0408836f3862587a3b421b30f54c29fc9c5e03dee86",
+        "after.json": "5965497729cc73fbac40c942d011642500d0352d9a6ed23198a5d83a4ae57424",
+        "result.json": "a72878eb02bd0c3565b2c8d743f28491b5636b90e98ff0e396dfca78ffcccbb1",
+        "attempt.json": "1473377d4fbc96aa68e23286abffa41fa0676550ab9d17e9066ea8e90915c0d1",
+        "instrumentation.txt": "5f1ad2a36ec44b9f0f9e2e0190b215124dca84e7885d58d90013ef90b0b943c5",
+        "continuous-log/stdout.raw": "9c9e2b621de7c2de2fed216d689f26f6f91401fed663a481be3c455851601cd2",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "8b33e9f7dfa431f1bade14e60fac15cb96fcf3732aea87862471b30c935aca03"
+      },
+      "evidenceLevels": {
+        "synchronous_hello": "EXECUTED_CODE_INVARIANT_ONLY",
+        "host_fd_open_close": "EXECUTED_CODE_INVARIANT_ONLY",
+        "source_fd_read_only_mode": "EXECUTED_CODE_INVARIANT_ONLY",
+        "write_to_read_only_source": "NOT_RUN",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "retirement_ack_phase_identity": "INDEPENDENT_OBSERVATION",
+        "worker_fd_closure": "STRUCTURED_IN_PROCESS_OBSERVATION",
+        "guard_release": "STRUCTURED_IN_PROCESS_OBSERVATION",
+        "persistent_pin_terminal_cleanup": "INDEPENDENT_OBSERVATION",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "native_loading": "EXECUTED_CODE_INVARIANT_ONLY"
+      }
+    },
+    {
+      "index": 1,
+      "method": "com.cooper.lithic.data.media.M10WorkerRetirementReviewTest#locked_damaged_jpeg_is_rejected_and_real_worker_safely_retires",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 1,
+      "phases": 6,
+      "oldStageUnchanged": 1,
+      "sourceFileSHA256": {
+        "before.json": "681c196cbeee50d422d57ad536f90d6d6a02b95358472edd1c0808ec5ccd72fc",
+        "after.json": "0c5e6aa618352ec0f810e4fa93eb9ee88cb42ef2d537fd852ea6ca0e55281dfb",
+        "result.json": "27da894122990b638487c7d809bbecae3f357a78817fb406e39968b9d4ee845e",
+        "attempt.json": "ce86919dfc1bc320b0b9b17c7344c88fe0e2f82b46b880782272704685d8f8d9",
+        "instrumentation.txt": "fc405213114654e632b986b4cdd9c459a8310373b3d336e618eacd37415906d2",
+        "continuous-log/stdout.raw": "d1a49077b2b56af9b841df4ad79c4517bf483790b3c29f655315e7aabdc74d9a",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "2347cdf5ffbb8956fff7c2ae6b89838b2b066dc9bb622a7276479729110cdb86"
+      },
+      "evidenceLevels": {
+        "synchronous_hello": "EXECUTED_CODE_INVARIANT_ONLY",
+        "host_fd_open_close": "EXECUTED_CODE_INVARIANT_ONLY",
+        "source_fd_read_only_mode": "EXECUTED_CODE_INVARIANT_ONLY",
+        "write_to_read_only_source": "NOT_RUN",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "retirement_ack_phase_identity": "INDEPENDENT_OBSERVATION",
+        "worker_fd_closure": "STRUCTURED_IN_PROCESS_OBSERVATION",
+        "guard_release": "STRUCTURED_IN_PROCESS_OBSERVATION",
+        "persistent_pin_terminal_cleanup": "INDEPENDENT_OBSERVATION",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "native_loading": "EXECUTED_CODE_INVARIANT_ONLY"
+      }
+    },
+    {
+      "index": 2,
+      "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#valid_control_jpeg_imports_successfully",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 1,
+      "phases": 6,
+      "oldStageUnchanged": 2,
+      "sourceFileSHA256": {
+        "before.json": "3420b2dc4f59339b4be81401a396cb1920326fe21984a14ef780adeac0334cc8",
+        "after.json": "0f2042a283767443a6071e239b3cff5d42d63e90b3266ca00727081d86263689",
+        "result.json": "235be8d14d15ad34138165815912a4f9a7175b0765bd3b2923c138255c8c9589",
+        "attempt.json": "769d12f5990a04019096a5e7b31f2c550a8a0bdcfabbc08c1a4bb8c6a317e6c5",
+        "instrumentation.txt": "bd5ccf1c7c0f3793d4f27e5290ddc77ee926a2957cf5a39f4f132a6aed0a372e",
+        "continuous-log/stdout.raw": "9b9ddcebdc43821af00f416b4697ad7e640a2276062102c2b88ef8c52f098b14",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "c73148c4170359d16f22fff0c0ab797d7bc88e1269734559dc2e599ee969c7ec"
+      },
+      "evidenceLevels": {
+        "business_facts": "EXECUTED_TEST_ASSERTIONS_ONLY",
+        "png_v1_contract": "NOT_APPLICABLE",
+        "per_invocation_pin_guard_fd": "EXECUTED_CODE_INVARIANT_ONLY",
+        "authenticated_retirement_phases": "INDEPENDENT_OBSERVATION",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "write_to_read_only_source": "NOT_RUN"
+      }
+    },
+    {
+      "index": 3,
+      "method": "com.cooper.lithic.data.media.M10JpegIntegrityTest#jpeg_entropy_truncated_with_eoi_is_rejected",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 1,
+      "phases": 6,
+      "oldStageUnchanged": 2,
+      "sourceFileSHA256": {
+        "before.json": "fe2170bb767b9fa608ce3f14d5eef8a025a7c0523912fa86bb8a093117b4ef9e",
+        "after.json": "791fab82458e9ae4482aa7bb197fad480f0a903c17481808a783d208319b4759",
+        "result.json": "14b186a7cb7582f377419242b9e53f08ce3713e915a59958c2636a1ffb962202",
+        "attempt.json": "ebec99f8bcde1bc5db693ebeff7ff10f0edad4241c24c0e18de7c339f629ddff",
+        "instrumentation.txt": "14ecfbddcf6ff051eab3679534315a5237080e0445da05eaff76093fb0b81f83",
+        "continuous-log/stdout.raw": "6fe47b4c01ea31ffe532d6a566413c65c9cf3ad1bb6c4c78f05351fd28ad8219",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "d0838881681869281815ce61b889c78d26c0314054d37cbeba1d275c441f55e1"
+      },
+      "evidenceLevels": {
+        "business_facts": "EXECUTED_TEST_ASSERTIONS_ONLY",
+        "png_v1_contract": "NOT_APPLICABLE",
+        "per_invocation_pin_guard_fd": "EXECUTED_CODE_INVARIANT_ONLY",
+        "authenticated_retirement_phases": "INDEPENDENT_OBSERVATION",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "write_to_read_only_source": "NOT_RUN"
+      }
+    },
+    {
+      "index": 4,
+      "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#project_entropy_cut_jpeg_is_rejected_and_old_cover_and_money_are_preserved",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 2,
+      "phases": 12,
+      "oldStageUnchanged": 2,
+      "sourceFileSHA256": {
+        "before.json": "cf0e610e50d9c2fc24d1948954d27cb604020c4fc22dcfd35353681b8d6efe40",
+        "after.json": "b0145bfc1abd2cbd2624cb913fede149e96892d12391ed7062b524e43edec233",
+        "result.json": "8c3760a51b3c638ee38c48afa4291edcfa8075b11ca52064ea151168edb4d47c",
+        "attempt.json": "e34600ed67963243d6eed39be412fc46d788bb836267cfea101b314496a0f19f",
+        "instrumentation.txt": "babd26e589f42616e281ddb750a6f89f57254b8a82226b42487ba25d997beaca",
+        "continuous-log/stdout.raw": "cce44c70519788aee4b79a2efb3532c6a7eec806bb57bb447ff9d08b02484d03",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "05d692bea0204f800a2c465b03db75ed4ab9f24fc6b10e683f1773a7053f5485"
+      },
+      "evidenceLevels": {
+        "business_facts": "STRUCTURED_IN_PROCESS_OBSERVATION",
+        "png_v1_contract": "NOT_APPLICABLE",
+        "per_invocation_pin_guard_fd": "EXECUTED_CODE_INVARIANT_ONLY",
+        "authenticated_retirement_phases": "INDEPENDENT_OBSERVATION",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "write_to_read_only_source": "NOT_RUN"
+      }
+    },
+    {
+      "index": 5,
+      "method": "com.cooper.lithic.data.media.M10JpegOldCoverProtectionTest#subscription_entropy_cut_jpeg_is_rejected_and_old_cover_payments_and_states_are_preserved",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 2,
+      "phases": 12,
+      "oldStageUnchanged": 2,
+      "sourceFileSHA256": {
+        "before.json": "cf687e5329dedeb7f5d913e97cb817b7cfc44129c33cf220b90029804a1494af",
+        "after.json": "6d4fbd937a5f0c3711d2cb52178f7d053cb91a1f56317363dfc8fa0acb658bf6",
+        "result.json": "aebb5fb823ffcf37f488c1844bede8b16ca70dc37f131978274c14d0302af0d8",
+        "attempt.json": "0c8436ff26826b31d8a19a268b3a73e8e5f1d532e5f860e80dd1b66ab2e96b84",
+        "instrumentation.txt": "0241e756827ac99425be638387a26c9886be603f4e2ad3bd01c4088284937035",
+        "continuous-log/stdout.raw": "bc93a8ace1f1ff708d3233889f665d6813e2aad662e5149cc08e1f16fa399c13",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "c678075a855580073e0be4279ae2c521d0bdca55f1f21db9c530a668defef019"
+      },
+      "evidenceLevels": {
+        "business_facts": "STRUCTURED_IN_PROCESS_OBSERVATION",
+        "png_v1_contract": "NOT_APPLICABLE",
+        "per_invocation_pin_guard_fd": "EXECUTED_CODE_INVARIANT_ONLY",
+        "authenticated_retirement_phases": "INDEPENDENT_OBSERVATION",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "write_to_read_only_source": "NOT_RUN"
+      }
+    },
+    {
+      "index": 6,
+      "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#png_still_uses_v1_preparation_and_original_output_limits",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 0,
+      "phases": 0,
+      "oldStageUnchanged": 2,
+      "sourceFileSHA256": {
+        "before.json": "8f65db79c82ef16f90c45b7d6db89d32fa55cd22f2d7c4328af3dde536a3fff7",
+        "after.json": "41ebaf76caeb0fbe18d9741d72944faad6090f26406e29b2da9129be84bbf529",
+        "result.json": "aa0d0af7c7428c711311ad29c06d80211230acad3f041cec368fb4558facad5e",
+        "attempt.json": "2848fd5be1f20c06ef41322484b8bd980eb1af2b5b05be117a6dbd49e8ae27eb",
+        "instrumentation.txt": "54e981da690e6689c3d36e7b6c5df2222ed0297843d25b1469bcaa662bfb39e3",
+        "continuous-log/stdout.raw": "f2ce7465968b7bb9a829f09beabe18ba4ea7f8be5385cad1a14fd4d93ea95116",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "83fdfb244d89a06a334049ce157329915c0de47b74212f4c026d5b0a9f583d72"
+      },
+      "evidenceLevels": {
+        "business_facts": "EXECUTED_TEST_ASSERTIONS_ONLY",
+        "png_v1_contract": "EXECUTED_TEST_ASSERTIONS_ONLY",
+        "per_invocation_pin_guard_fd": "EXECUTED_CODE_INVARIANT_ONLY",
+        "authenticated_retirement_phases": "NOT_APPLICABLE",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "write_to_read_only_source": "NOT_RUN"
+      }
+    },
+    {
+      "index": 7,
+      "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_uncommitted_jpeg_is_preserved_without_fabricated_receipt",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 0,
+      "phases": 0,
+      "oldStageUnchanged": 2,
+      "sourceFileSHA256": {
+        "before.json": "da5c6e4bdb792d8709f7086ea97b064bfe8835defca471a7d7f9a46fed55ff01",
+        "after.json": "0cd81b31c8434b9d54b13202c8a57db759de12b2fe4b15d61e499e21fb240740",
+        "result.json": "c254865c62fa9f995a40eb614c9ea5a347af83ad0f68ec60cfdd1bdc721a2321",
+        "attempt.json": "aa27a3a72715a86cf1586bdfc4fd0bea79cebcd60b66875225ed56a350f3e063",
+        "instrumentation.txt": "16568decc1fdadb993c40e15509050f3e221e7ed4a4567de140b655659c144e4",
+        "continuous-log/stdout.raw": "412d2ff6bbbfd76a0f941d43dfefb75bfc72f9d00005c71a695a31d459a8af22",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "c2396141f1c5f7e64bc178f6ef00444c5acf4c3bee05b66e836b723f4ce68347"
+      },
+      "evidenceLevels": {
+        "business_facts": "EXECUTED_TEST_ASSERTIONS_ONLY",
+        "png_v1_contract": "EXECUTED_TEST_ASSERTIONS_ONLY",
+        "per_invocation_pin_guard_fd": "EXECUTED_CODE_INVARIANT_ONLY",
+        "authenticated_retirement_phases": "NOT_APPLICABLE",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "write_to_read_only_source": "NOT_RUN"
+      }
+    },
+    {
+      "index": 8,
+      "method": "com.cooper.lithic.data.media.M10StageV2CompatibilityTest#legacy_owned_final_is_viewable_but_does_not_prove_a_new_strict_preparation",
+      "status": "PASS",
+      "junit": "PASS",
+      "captureSHA": "PASS",
+      "lifecycleAssessmentRecomputed": "PASS",
+      "workers": 0,
+      "phases": 0,
+      "oldStageUnchanged": 2,
+      "sourceFileSHA256": {
+        "before.json": "7ce1ac5bfcc5f44a6626ae656e64a64f7281bd7e7eaafecb3fdcbd68348c17ea",
+        "after.json": "51e14f536560fc0c2ae6babf2d2cc5cbb15527004700a9ef4976eabb2e00e3f1",
+        "result.json": "1369f978aa5ff1f383d2c3806e915cdf9171b290b925fa7ef331016961adf251",
+        "attempt.json": "afabefbeaf45446e5eecb633a284af7ee3b825f64e1bd464acf69cecb9f7ae8e",
+        "instrumentation.txt": "005940ece108f6682474a8da7895ff471b41df7d2bdd1b711c1cd8f844f1d187",
+        "continuous-log/stdout.raw": "43fa038bf515e44a6e6b6eb39adaa7c9484f36b1961073c3ac9c93053e40a50f",
+        "continuous-log/stderr.raw": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "continuous-log/capture.json": "66215abb9bb1a4d8d974ec15ae68d5b9e6deb9fbc681de990b83bdf159786629"
+      },
+      "evidenceLevels": {
+        "business_facts": "EXECUTED_TEST_ASSERTIONS_ONLY",
+        "png_v1_contract": "EXECUTED_TEST_ASSERTIONS_ONLY",
+        "per_invocation_pin_guard_fd": "EXECUTED_CODE_INVARIANT_ONLY",
+        "authenticated_retirement_phases": "NOT_APPLICABLE",
+        "worker_os_absence": "INDEPENDENT_OBSERVATION",
+        "raw_binder_hello_fields": "NOT_RUN",
+        "write_to_read_only_source": "NOT_RUN"
+      }
+    }
+  ],
+  "limits": [
+    "Raw Binder hello fields and attempted writes to readonly FD remain NOT_RUN",
+    "Host FD and per-invocation pin/guard/native loading claims retain executed-code-invariant-only limits",
+    "Business cover/money/payment/state preservation is structured in-process observation plus unchanged JUnit assertions, not copied private DB bytes",
+    "PNG and v1 contracts are executed assertions; zero new Worker/Stage/observations confirmed",
+    "No API26 rerun, device action, source changes, APK build, fault injection, cancellation or recovery by this audit",
+    "Continuous host capture does not prove all unobservable logd losses absent",
+    "M10 remains PENDING; historical FAIL/UNKNOWN/NOT_RUN not reclassified",
+    "Only two retirement-review generations persist in the audited permanent namespace; the other six Worker invocations used locked test-owned temporary roots and were not all independently retained as Stage records"
+  ]
+}
