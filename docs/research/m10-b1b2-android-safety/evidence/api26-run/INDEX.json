@@ -1,0 +1,129 @@
+{
+  "status": "BLOCKED_METHOD00_UNKNOWN_PRESERVED",
+  "copiedRawEvidence": [
+    {
+      "path": "create-proof.json",
+      "bytes": 7602,
+      "sha256": "902359cbef9745c429b8672824771e2a15656a6483044d78d38dd04d511eaf5b",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "boot-proof.json",
+      "bytes": 7563,
+      "sha256": "85236bab39d5e526620e1ad475671dc94af3e4438bf9b2213fbd0c5093af30ad",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "install-app-proof.json",
+      "bytes": 646,
+      "sha256": "cb22fe3dcb8e5d47bc24ca8b4cbc6c80a72da222a0850f86acabfd994ac2347f",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "install-test-proof.json",
+      "bytes": 652,
+      "sha256": "e6b07c8f6ffc2b7181577aa240e0122f230e35d6fee24dd093cd9a59f0ce69e8",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "operations/create.json",
+      "bytes": 528,
+      "sha256": "ba523c33ab8e3c5e4f80b9ba7ce6a9b10dcad2b6923a1deec67dfc025c8ae796",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "operations/start.json",
+      "bytes": 527,
+      "sha256": "47ab7f486f9b286a04e4a27f6a7ebdd7c76f9547f204a3bdcf0b38c135f4836b",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "operations/install-app.json",
+      "bytes": 533,
+      "sha256": "10ea263a7397e75aeb2a9aa827c54229dbe97032472f13e43b62870c6faa809f",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "operations/install-test.json",
+      "bytes": 534,
+      "sha256": "27cd88d6b7ac0b0a1189f6ce4353f70a7a332594368c1badb73b8b34abd6ca4f",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "method-00/after.json",
+      "bytes": 8741,
+      "sha256": "8b64d1a55b0c4793e8e6262074def54c4887402fa5cd90096c757ed3425d3a18",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "method-00/attempt.json",
+      "bytes": 1024,
+      "sha256": "a6ad4e0762109e1c891efaf2a00f4ff296d988dfcc5a6c749ad59994ab3f30d5",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "method-00/before.json",
+      "bytes": 8209,
+      "sha256": "8031ac2457c02d968f144e1a782937806c8fbe5c93c6e9e337b7f0a07818218c",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "method-00/instrumentation.txt",
+      "bytes": 872,
+      "sha256": "69bf66ee3188886b0998ca670cd6657aad340b7f3b7a8bbe4bfeea6549967369",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "method-00/result.json",
+      "bytes": 3921,
+      "sha256": "27d93d0f45804002cf72a392f4c222e3c6a02738dcc4424d484690104657fd23",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "method-00/continuous-log/capture.json",
+      "bytes": 2709,
+      "sha256": "341b028a09faf128e189d93f481aa811e769e35de2274594c754531bfa3b43c0",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "method-00/continuous-log/stderr.raw",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "method-00/continuous-log/stdout.raw",
+      "bytes": 111,
+      "sha256": "f1ccc558e484b12296cb26b5d8fc24d98e1518c119e8e313c266a42b53dbc6f7",
+      "copiedRawBytes": true
+    },
+    {
+      "path": "ending-readonly.json",
+      "bytes": 8883,
+      "sha256": "6048cbecbb7888b1a96dda9b710f71e4e8b43fde03ee6567d4d9907250af7162",
+      "copiedRawBytes": true
+    }
+  ],
+  "commandIndex": "command-index.json",
+  "keyCommands": "key-commands.json",
+  "actualOperations": {
+    "api26": {
+      "create": 1,
+      "emulatorSpawn": 1,
+      "installApp": 1,
+      "installTest": 1,
+      "instrumentation": 1,
+      "workerFaultKill": 0,
+      "hostFaultKill": 0,
+      "inputTransfers": 0
+    },
+    "api36": {
+      "create": 0,
+      "emulatorSpawn": 0,
+      "installApp": 0,
+      "installTest": 0,
+      "instrumentation": 0
+    }
+  },
+  "noFurtherDeviceOperationsAfterEnding": true
+}

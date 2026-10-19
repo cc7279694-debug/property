@@ -1,0 +1,269 @@
+{
+  "status": "HOST_IDENTITIES_VERIFIED_ANDROID_NOT_RUN",
+  "observedAtUTC": "2026-10-19T07:29:02.158592+00:00",
+  "gitHead": "08ce4b663b52127f400fa18bd13eb12fe04a8797",
+  "artifacts": [
+    {
+      "name": "app",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 13900723,
+      "sha256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+      "applicationId": "com.cooper.lithic.debug",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ],
+      "contract": {
+        "worker": "com.cooper.lithic.data.media.jpegworker.JpegWorkerService",
+        "exported": false,
+        "process": ":jpeg_worker"
+      },
+      "packagedStrictJpegABIs": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "x86",
+        "x86_64"
+      ],
+      "largeFixturesBundled": false
+    },
+    {
+      "name": "test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 2688755,
+      "sha256": "bb00c0f6e34059170d20124eab739b43ccbc257ecc265def28906077fc0cb78c",
+      "applicationId": "com.cooper.lithic.debug.test",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ],
+      "contract": {
+        "instrumentation": "com.cooper.lithic.debug.test/com.cooper.lithic.data.media.M10ProcessBoundaryRunner",
+        "targetPackage": "com.cooper.lithic.debug"
+      },
+      "packagedStrictJpegABIs": [],
+      "largeFixturesBundled": false
+    }
+  ],
+  "fixtures": [
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\\u783a\u77f3\u65b0APP\\build\\m10-jpeg-r1\\fixtures\\large_40mp_baseline_420.jpg",
+      "basename": "large_40mp_baseline_420.jpg",
+      "bytes": 17163380,
+      "sha256": "c2c2fa54d49ab8155321175a66596ce8d35ed9927d9f3dfe2bbb6a00c5fbb5c7",
+      "headerOnlyNotNewDecode": {
+        "sof": "baseline",
+        "width": 8000,
+        "height": 5000,
+        "sampling": [
+          "0x22",
+          "0x11",
+          "0x11"
+        ]
+      }
+    },
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\\u783a\u77f3\u65b0APP\\build\\m10-jpeg-r1\\fixtures\\large_40mp_progressive_420.jpg",
+      "basename": "large_40mp_progressive_420.jpg",
+      "bytes": 15458857,
+      "sha256": "2b02f35f08a8cb36d31a0a4f01e8810f554be67619950c8e2b0d0d2be873c5c8",
+      "headerOnlyNotNewDecode": {
+        "sof": "progressive",
+        "width": 8000,
+        "height": 5000,
+        "sampling": [
+          "0x22",
+          "0x11",
+          "0x11"
+        ]
+      }
+    },
+    {
+      "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\\u783a\u77f3\u65b0APP\\build\\m10-jpeg-r1\\single444\\valid_40mp_progressive_444.jpg",
+      "basename": "valid_40mp_progressive_444.jpg",
+      "bytes": 27445246,
+      "sha256": "0555234207d5ddf84d236d812487a659f2dac34a9d82109a941628553c7b67e6",
+      "headerOnlyNotNewDecode": {
+        "sof": "progressive",
+        "width": 8000,
+        "height": 5000,
+        "sampling": [
+          "0x11",
+          "0x11",
+          "0x11"
+        ]
+      }
+    }
+  ],
+  "excludedIncomplete444": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\m10-jpeg-strict-r1\\\u783a\u77f3\u65b0APP\\build\\m10-jpeg-r1\\fixtures\\large_40mp_progressive_444.jpg",
+    "historicalSHA256": "ec0a7075f307f8702bd03080a8ece90ecbfafbc498162d4f1a9da05df22de700",
+    "used": false,
+    "rehashedThisTask": false
+  },
+  "dexApi26DeclaredMetadata": [
+    {
+      "artifact": "app",
+      "scope": "API26_DECLARED_CLASS_METADATA_ONLY",
+      "status": "PASS",
+      "targets": [
+        {
+          "descriptor": "Lcom/cooper/lithic/data/media/jpegworker/JpegResourceEvidence;",
+          "methods": 12,
+          "status": "PASS",
+          "violations": []
+        },
+        {
+          "descriptor": "Lcom/cooper/lithic/data/media/jpegworker/JpegResourceDiagnostics;",
+          "methods": 10,
+          "status": "PASS",
+          "violations": []
+        },
+        {
+          "descriptor": "Lcom/cooper/lithic/data/media/jpegworker/JpegResourceDiagnostics$Session;",
+          "methods": 23,
+          "status": "PASS",
+          "violations": []
+        },
+        {
+          "descriptor": "Lcom/cooper/lithic/data/media/jpegworker/JpegBootIdentity;",
+          "methods": 3,
+          "status": "PASS",
+          "violations": []
+        }
+      ]
+    },
+    {
+      "artifact": "test",
+      "scope": "API26_DECLARED_CLASS_METADATA_ONLY",
+      "status": "PASS",
+      "targets": [
+        {
+          "descriptor": "Lcom/cooper/lithic/data/media/M10JpegResourceEvidenceTest;",
+          "methods": 27,
+          "status": "PASS",
+          "violations": []
+        },
+        {
+          "descriptor": "Lcom/cooper/lithic/data/media/M10ResourceSampler;",
+          "methods": 14,
+          "status": "PASS",
+          "violations": []
+        }
+      ]
+    }
+  ],
+  "commandIntegrity": [
+    {
+      "label": "app-badging",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 5429,
+      "stdoutSHA256": "e339c3a330ac685015f77650825f831158e64a657416ea11a2d601dc24bfc739",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "app-manifest",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit": 0,
+      "stdoutBytes": 7441,
+      "stdoutSHA256": "14483369c691050a9c3554da8204d3182aee56781eef57d018dc34c75137b8c2",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "app-signature",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "test-badging",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 1170,
+      "stdoutSHA256": "57344bee6a715bb2a176c23f640389bdfdb53fdd2bb7e54a7b2b30f832098979",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "test-manifest",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit": 0,
+      "stdoutBytes": 5349,
+      "stdoutSHA256": "f33eeb57f59afdbb5f857deb1a02ab43b8690f7b7c21d835c02224eeff55e1c6",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "test-signature",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "fullRawLocalOnly": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-android\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-android-host-artifact-audit-v2",
+  "initialAuditToolFailure": {
+    "localRaw": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-android\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-android-host-artifact-audit",
+    "cause": "Audit expected instrumentation in aapt2 badging; it is actually decoded from unique Manifest instrumentation block in final audit. No device/product failure."
+  },
+  "deviceOperations": 0,
+  "builds": 0,
+  "downloads": 0,
+  "copiedBinaries": 0,
+  "limitations": [
+    "DEX declared class metadata does not execute reflection or inspect every method body/member API introduction.",
+    "Installed APK/UID, JNI loading, BOOT_COUNT, /proc access, PSS, Binder/FD/retirement remain device gates.",
+    "Target manifest files are explicitly extracted exact blocks, not complete official or original Manifest artifacts."
+  ]
+}

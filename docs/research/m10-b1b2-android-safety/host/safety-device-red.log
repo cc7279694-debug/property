@@ -1,0 +1,59 @@
+.EFEEE
+======================================================================
+ERROR: test_exact_method_and_opt_in_parameters_are_assembled_once (__main__.SafetyDeviceTest.test_exact_method_and_opt_in_parameters_are_assembled_once)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\build\safety-device-host\red\test_safety_device.py", line 17, in test_exact_method_and_opt_in_parameters_are_assembled_once
+    p=s.method_plan(0,'11111111-1111-4111-8111-111111111111',26)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\build\safety-device-host\red\safety_device.py", line 3, in method_plan
+    def method_plan(*a,**k):raise NotImplementedError("RED missing bounded driver")
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: RED missing bounded driver
+
+======================================================================
+ERROR: test_prior_failed_or_different_apk_blocks_without_new_command (__main__.SafetyDeviceTest.test_prior_failed_or_different_apk_blocks_without_new_command)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\build\safety-device-host\red\test_safety_device.py", line 32, in test_prior_failed_or_different_apk_blocks_without_new_command
+    good={'status':'PASS','index':0,'method':s.METHODS[0],'api':26,'serial':'emulator-5664','appSHA256':s.APP_SHA,'testSHA256':'a'*64}
+                                             ~~~~~~~~~^^^
+IndexError: tuple index out of range
+
+======================================================================
+ERROR: test_private_content_whitelist_excludes_images_and_business (__main__.SafetyDeviceTest.test_private_content_whitelist_excludes_images_and_business)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\build\safety-device-host\red\test_safety_device.py", line 23, in test_private_content_whitelist_excludes_images_and_business
+    self.assertEqual(good,s.private_path(good,content=True))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\build\safety-device-host\red\safety_device.py", line 4, in private_path
+    def private_path(*a,**k):raise NotImplementedError("RED missing whitelist")
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: RED missing whitelist
+
+======================================================================
+ERROR: test_unknown_diagnostic_duplicate_or_hook_error_is_not_filtered_success (__main__.SafetyDeviceTest.test_unknown_diagnostic_duplicate_or_hook_error_is_not_filtered_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\build\safety-device-host\red\test_safety_device.py", line 28, in test_unknown_diagnostic_duplicate_or_hook_error_is_not_filtered_success
+    self.assertEqual('',s.scoped_lines(diagnostic,diagnostic,(),()))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\build\safety-device-host\red\safety_device.py", line 5, in scoped_lines
+    def scoped_lines(*a,**k):raise NotImplementedError("RED missing capture interpretation")
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError: RED missing capture interpretation
+
+======================================================================
+FAIL: test_only_fixed_six_methods_no_old_fault_or_traversal (__main__.SafetyDeviceTest.test_only_fixed_six_methods_no_old_fault_or_traversal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\build\safety-device-host\red\test_safety_device.py", line 12, in test_only_fixed_six_methods_no_old_fault_or_traversal
+    self.assertEqual(6,len(s.METHODS));self.assertEqual(6,len(set(s.METHODS)))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 6 != 0
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+FAILED (failures=1, errors=4)

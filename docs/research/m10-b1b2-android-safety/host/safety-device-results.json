@@ -1,0 +1,42 @@
+{
+  "scope": "HOST_ASSEMBLY_WHITELIST_AND_SYNTHETIC_EVIDENCE_PARSERS_ONLY",
+  "uniqueMethods": [
+    "test_only_fixed_six_methods_no_old_fault_or_traversal",
+    "test_exact_method_and_opt_in_parameters_are_assembled_once",
+    "test_private_content_whitelist_excludes_images_and_business",
+    "test_unknown_diagnostic_duplicate_or_hook_error_is_not_filtered_success",
+    "test_prior_failed_or_different_apk_blocks_without_new_command",
+    "test_api26_and_api36_only_uuid_required",
+    "test_bound_bundle_consumes_exact_bytes_and_end_marker",
+    "test_cancel_initial_unknown_plus_complete_late_is_not_duplicate_result",
+    "test_cancel_revoke_phases_require_real_identity_and_partial_order",
+    "test_payload_residual_blocks_terminal_without_content_read"
+  ],
+  "red": {
+    "methods": 6,
+    "nonPassing": 5,
+    "passed": 1,
+    "meaning": "Deliberately absent driver API stub; not an Android test or product regression."
+  },
+  "green": {
+    "methods": 10,
+    "failures": 0,
+    "errors": 0,
+    "exit": 0
+  },
+  "inputs": [
+    {
+      "path": "docs/research/m10-b1b2-android-safety/safety_device.py",
+      "bytes": 46694,
+      "sha256": "3fee721a9532bbdd9f5ed4627bbdbca4a3adb12cbf84d44315d8523b14be3336"
+    },
+    {
+      "path": "docs/research/m10-b1b2-android-safety/test_safety_device.py",
+      "bytes": 6153,
+      "sha256": "a4f8014fff95860c2d6a230e5deab837549ab8113cdb8226ffe4b4fd3a9dd7f4"
+    }
+  ],
+  "androidOperations": 0,
+  "commandsExposed": "Single fixed index 0..5 only; no traversal, create/start/install/kill/cleanup/exit entry",
+  "actualAndroidResults": "NOT_RUN"
+}

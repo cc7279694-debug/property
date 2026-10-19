@@ -1,0 +1,62 @@
+{
+  "status": "HOST_OBSERVATION_POLICY_ONLY",
+  "red": {
+    "compileExit": 0,
+    "junitExit": 1,
+    "tests": 18,
+    "failures": 18,
+    "against": "Deliberately missing implementation API stub under ignored build; no Android execution"
+  },
+  "green": {
+    "compileExit": 0,
+    "junitExit": 0,
+    "tests": 18,
+    "failures": 0,
+    "actualHelper": "androidTest/M10B1ClosureObservations.java"
+  },
+  "uniqueMethods": [
+    "initialUnknownDoesNotClaimClosureAndLateProofDoes",
+    "fullyKnownInitialCancellationMayCloseOnce",
+    "incompleteInitialMissingIdentityMayOnlyWait",
+    "lateProofThenIncompleteInitialNeverClaimsTwice",
+    "duplicateInitialIsConflict",
+    "duplicateLateIsConflict",
+    "thirdObservationIsConflict",
+    "differentWorkerIsConflictEvenWhenIncomplete",
+    "successfulOutcomeCannotClaimCancellationClosure",
+    "absentWorkerCannotClaimCompleteClosure",
+    "duplicateCompleteProofCannotRecoverTwice",
+    "stoppedWindowCannotStartNewRecovery",
+    "fakeWorkerDataCloseOrResultIsRejected",
+    "unknownOrIncompleteLateProofCannotClose",
+    "claimedOriginalQuiescenceCannotOmitActualFlags",
+    "unregisteredWorkerNeverReceivesAuthority",
+    "secondWorkerRegistrationCannotReplaceIdentity",
+    "concurrentCompleteEntriesHaveExactlyOneClaim"
+  ],
+  "sourceInputs": [
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10B1ClosureObservations.java",
+      "sha256": "5e39b35fc45cde5a5a20fb92e7fad145058da8617c9e0f1c4bbeb3f7d30bbab2"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10B1CancellationSafetyTest.kt",
+      "sha256": "852d385803a29034dc42e220d6380f0cd1b4b205228219e7907e2d1586301893"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/M10B1B2SafetyPreflightTest.kt",
+      "sha256": "5a38b5770dd9d8ed076fda6ab2dfd3a2c042b920c1c1c8dc5b6866f4319fe205"
+    },
+    {
+      "path": "docs/research/m10-b1b2-android-safety/host/M10B1ClosureObservationsTest.java",
+      "sha256": "91c80d8354ea7dd861286083448f655412551da80a309b0758fadeeb1a4d350b"
+    }
+  ],
+  "limits": [
+    "Pure Java observes only supplied real Client facts; no Android evidence is created by host tests.",
+    "Kotlin adapters are pending root Android test APK compilation.",
+    "Any callback-error.json independently blocks device acceptance, including an error after the initial result write.",
+    "Initial observation is not equivalent to a structured Worker RESULT; only one complete original-session closure may recover."
+  ],
+  "deviceOperations": 0
+}

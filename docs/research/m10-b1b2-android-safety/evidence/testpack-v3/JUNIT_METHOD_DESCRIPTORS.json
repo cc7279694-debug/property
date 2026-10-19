@@ -1,0 +1,47 @@
+{
+  "status": "PASS_STATIC_NOT_ANDROID",
+  "methods": [
+    {
+      "class": "M10B1B2SafetyPreflightTest",
+      "method": "new_safety_classes_and_boot_role_are_ready_without_consumers",
+      "descriptor": "()V",
+      "javapExit": 0
+    },
+    {
+      "class": "M10B1CancellationSafetyTest",
+      "method": "delayed_real_delivery_return_keeps_binding_until_original_failed_session_closes",
+      "descriptor": "()V",
+      "javapExit": 0
+    },
+    {
+      "class": "M10B1CancellationSafetyTest",
+      "method": "cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt",
+      "descriptor": "()V",
+      "javapExit": 0
+    },
+    {
+      "class": "M10B1ExactProcessFaultTest",
+      "method": "exact_worker_death_after_pin_before_data_fd",
+      "descriptor": "()V",
+      "javapExit": 0
+    },
+    {
+      "class": "M10B1ExactProcessFaultTest",
+      "method": "exact_host_death_after_pin_before_data_fd",
+      "descriptor": "()V",
+      "javapExit": 0
+    },
+    {
+      "class": "M10B1ExactProcessFaultTest",
+      "method": "exact_host_death_after_real_retirement_before_receipt",
+      "descriptor": "()V",
+      "javapExit": 0
+    },
+    {
+      "class": "M10B1ExactProcessFaultTest",
+      "method": "recover_only_exact_ended_host_fault_without_new_consumer",
+      "descriptor": "()V",
+      "javapExit": 0
+    }
+  ]
+}

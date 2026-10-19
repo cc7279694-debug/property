@@ -1,0 +1,185 @@
+{
+  "argv": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+    "-Xmx256m",
+    "-XX:MaxMetaspaceSize=128m",
+    "-XX:ReservedCodeCacheSize=64m",
+    "-XX:+UseSerialGC",
+    "-cp",
+    "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\com.android.tools.build\\builder\\8.13.2\\92e06fde9f28276c57c4c81eefce4e72ec9cefc9\\builder-8.13.2.jar",
+    "com.android.tools.r8.D8",
+    "--min-api",
+    "26",
+    "--debug",
+    "--lib",
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platforms\\android-36\\android.jar",
+    "--classpath",
+    "E:\\CODEX\\.codex\\research-build\\md-50784c33\\old-main-and-test-classes.jar",
+    "--output",
+    "E:\\CODEX\\.codex\\research-build\\md-50784c33\\dex",
+    "--classpath",
+    "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar",
+    "--classpath",
+    "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlinx\\kotlinx-coroutines-core-jvm\\1.10.2\\4a9f78ef49483748e2c129f3d124b8fa249dafbf\\kotlinx-coroutines-core-jvm-1.10.2.jar",
+    "--classpath",
+    "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\23.0.0\\8cc20c07506ec18e0834947b84a864bfc094484e\\annotations-23.0.0.jar",
+    "--classpath",
+    "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar",
+    "--classpath",
+    "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+    "--classpath",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-android\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-new-tests-kotlinc\\core-1.7.0-classes.jar",
+    "--classpath",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-android\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-new-tests-kotlinc\\monitor-1.8.0-classes.jar",
+    "--classpath",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-android\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-new-tests-kotlinc\\runner-1.7.0-classes.jar",
+    "--classpath",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-android\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-new-tests-kotlinc\\junit-1.3.0-classes.jar",
+    "E:\\CODEX\\.codex\\research-build\\md-50784c33\\new-test-classes.jar"
+  ],
+  "exit": 0,
+  "d8Jar": {
+    "path": "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\com.android.tools.build\\builder\\8.13.2\\92e06fde9f28276c57c4c81eefce4e72ec9cefc9\\builder-8.13.2.jar",
+    "bytes": 15823022,
+    "sha256": "7d393f8553120c7d7a869cb33c4279aad9485986773f63af97af08ea2e1ff37a"
+  },
+  "programClasses": [
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ClosureObservations$Decision.class",
+      "bytes": 1287,
+      "sha256": "48023943a76f23aa2e8040e5d12ab655821a3f8c477578aa0bd1ef318fcd8eeb"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ClosureObservations$Observation.class",
+      "bytes": 1211,
+      "sha256": "8b7651f0fbf3251d95ac889d7a7c611a86334159872c1dd045f1129db0363e51"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ClosureObservations$Origin.class",
+      "bytes": 1290,
+      "sha256": "8362241180439f3ad93a1dc00abd064811ffca480a622bf9ee98bf25b9090176"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ClosureObservations.class",
+      "bytes": 3289,
+      "sha256": "015bfa96132bec287e69c062f759117a0765e7cf92b22e321746dbf28bd7bafc"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1B2SafetyPreflightTest$Companion.class",
+      "bytes": 935,
+      "sha256": "d0b93aa6dd7ad743b2fc71813c6c4a651358bb7f9895d2aae5680e0c1f90444f"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1B2SafetyPreflightTest.class",
+      "bytes": 6429,
+      "sha256": "f8ce860c52f6ff29faa33c739f3128bc41f9d0389247a920f8019db58685e692"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1B2SafetySupport$Run.class",
+      "bytes": 5422,
+      "sha256": "7635a44527d81b9f9f07ccbc7977b2b663bdc98acda1048d4f99ebab266c7b93"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1B2SafetySupport$stages$visit$$inlined$sortedBy$1.class",
+      "bytes": 2133,
+      "sha256": "d3c2dc42635190820d130a66e71eb0f153b6cfe819ac4207626dc2d5e8583c53"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1B2SafetySupport.class",
+      "bytes": 17703,
+      "sha256": "63bb2117f3a6209abd4d5239dbb93615b46408c66844f957c9ca7094717f5bd4"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$2.class",
+      "bytes": 3618,
+      "sha256": "5b5245bca7253184c21fb86f86bc90031d1527574436a053ee5676847cf8dcb3"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$invocation$1.class",
+      "bytes": 22997,
+      "sha256": "edb895d352c7fe475f971b7ad6b82163e2ea4fdfa5389bdd2d44e66391996294"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1.class",
+      "bytes": 20843,
+      "sha256": "3719ae398dd23536918132c29abb3b1c5e72e278a41df807c813b1ca16f34440"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$Companion.class",
+      "bytes": 979,
+      "sha256": "420559ddd904794ad3dfa69df57b7c18a22ff40758890ed3ee1ebe0542390bdf"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$DelayedDeliveryContext$bindService$bridge$1$onServiceConnected$proxy$1.class",
+      "bytes": 5944,
+      "sha256": "57c7035c9f07310e2319ec0ebf45710ea461d78d88bc4c60213cc10acca31001"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$DelayedDeliveryContext$bindService$bridge$1.class",
+      "bytes": 2699,
+      "sha256": "c03a362eca682e78eb015a4f0ff94c80234075e5b5e47c2084982072a3540118"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$DelayedDeliveryContext.class",
+      "bytes": 7482,
+      "sha256": "db1527446e4bf23e17e232457a4d385aed0e4527036e4ff28e8a2add7bab9820"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$delayed_real_delivery_return_keeps_binding_until_original_failed_session_closes$1$1.class",
+      "bytes": 17642,
+      "sha256": "d1132468428a45d5b7d6bf354fd36001551267017f22823d0c4ccb3a8c81645b"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest$delayed_real_delivery_return_keeps_binding_until_original_failed_session_closes$1.class",
+      "bytes": 33805,
+      "sha256": "b028feaf7c04273cd3d3e4f4e78bc5882204f1c034244f44b0860ad41a0c37ac"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1CancellationSafetyTest.class",
+      "bytes": 7668,
+      "sha256": "fb0b4fb2cf6b66071f83bf9ef7c4e53c69b6c159ff2492bf5ffe2996ada916a6"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ExactProcessFaultTest$Companion.class",
+      "bytes": 1164,
+      "sha256": "8ecc7ab80ac1c80f1b9fe29fa4915223b21600e66c1e2cdc8b96768736846456"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ExactProcessFaultTest$exact_host_death_after_pin_before_data_fd$1.class",
+      "bytes": 3920,
+      "sha256": "d425e99661a1e1ee5c528a2631007c26384dd2be2109525c662827480f37fd38"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ExactProcessFaultTest$exact_host_death_after_real_retirement_before_receipt$1.class",
+      "bytes": 4010,
+      "sha256": "d0d72669bb9a89cbcb3dbea6c25ce0ae9e90dc5e3f49a9812ebc805bb5525e52"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ExactProcessFaultTest$exact_worker_death_after_pin_before_data_fd$1.class",
+      "bytes": 3939,
+      "sha256": "6b405d960b9385cb4523ae064e27c7383a33458df2e416b5eec5f5015f473b93"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ExactProcessFaultTest$inject$1.class",
+      "bytes": 2748,
+      "sha256": "22b535d7e3d45d8e48a59bb6d3acd9e0142f1aaf5f5ff910d7b0f07298e12c54"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ExactProcessFaultTest$Kind.class",
+      "bytes": 2196,
+      "sha256": "2239e1db8e75d284ee2ba98a42d8ab3474df3c5c6956ab090dd2d0f66ad6e801"
+    },
+    {
+      "entry": "com/cooper/lithic/data/media/M10B1ExactProcessFaultTest.class",
+      "bytes": 40038,
+      "sha256": "8e661e4ae112bbb68604c2618ab685f1de66e92e61e13e562277a27032ae715c"
+    }
+  ],
+  "classpathJar": {
+    "path": "E:\\CODEX\\.codex\\research-build\\md-50784c33\\old-main-and-test-classes.jar",
+    "bytes": 5447805,
+    "sha256": "3c4420284dbcf995b8760a2ecbb6be6ac12b8c11cd7d5c6d4ad07fc9028c4cea"
+  },
+  "classpathClassFiles": 1940,
+  "heapCapMiB": 256
+}

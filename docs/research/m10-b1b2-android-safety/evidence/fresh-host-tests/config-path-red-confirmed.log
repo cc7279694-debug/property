@@ -1,0 +1,32 @@
+test_unknown_nonempty_config_path_cannot_reach_launch (test_fresh_environment.FreshEnvironmentTest.test_unknown_nonempty_config_path_cannot_reach_launch) ... FAIL
+test_known_startup_writable_path_must_stay_in_new_data_root (test_fresh_environment.FreshEnvironmentTest.test_known_startup_writable_path_must_stay_in_new_data_root) ... FAIL
+test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments (test_fresh_environment.FreshEnvironmentTest.test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments) ... FAIL
+
+======================================================================
+FAIL: test_unknown_nonempty_config_path_cannot_reach_launch (test_fresh_environment.FreshEnvironmentTest.test_unknown_nonempty_config_path_cannot_reach_launch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 227, in test_unknown_nonempty_config_path_cannot_reach_launch
+    with self.assertRaisesRegex(RuntimeError, "Unknown startup path"):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_known_startup_writable_path_must_stay_in_new_data_root (test_fresh_environment.FreshEnvironmentTest.test_known_startup_writable_path_must_stay_in_new_data_root)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 234, in test_known_startup_writable_path_must_stay_in_new_data_root
+    with self.assertRaisesRegex(RuntimeError, "writable path escapes"):
+AssertionError: RuntimeError not raised
+
+======================================================================
+FAIL: test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments (test_fresh_environment.FreshEnvironmentTest.test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 243, in test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments
+    with self.assertRaisesRegex(RuntimeError, "Explicit launch"):
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.063s
+
+FAILED (failures=3)

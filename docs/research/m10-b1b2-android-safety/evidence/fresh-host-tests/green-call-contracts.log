@@ -1,0 +1,29 @@
+test_both_profiles_have_only_new_roots_names_and_serials (test_fresh_environment.FreshEnvironmentTest.test_both_profiles_have_only_new_roots_names_and_serials) ... ok
+test_child_environment_removes_old_home_without_global_change (test_fresh_environment.FreshEnvironmentTest.test_child_environment_removes_old_home_without_global_change) ... ok
+test_create_claim_precedes_one_official_command_and_failure_stays_claimed (test_fresh_environment.FreshEnvironmentTest.test_create_claim_precedes_one_official_command_and_failure_stays_claimed) ... ok
+test_environment_proof_does_not_depend_on_rebuilt_test_apk (test_fresh_environment.FreshEnvironmentTest.test_environment_proof_does_not_depend_on_rebuilt_test_apk) ... ok
+test_failed_start_retains_marker_and_cannot_launch_second_instance (test_fresh_environment.FreshEnvironmentTest.test_failed_start_retains_marker_and_cannot_launch_second_instance) ... ERROR
+test_fresh_marker_is_exclusive_bound_and_cannot_reset (test_fresh_environment.FreshEnvironmentTest.test_fresh_marker_is_exclusive_bound_and_cannot_reset) ... ok
+test_global_adb_or_emulator_mutation_not_exposed (test_fresh_environment.FreshEnvironmentTest.test_global_adb_or_emulator_mutation_not_exposed) ... ok
+test_memory_gate_failure_creates_no_environment_and_runs_no_tool (test_fresh_environment.FreshEnvironmentTest.test_memory_gate_failure_creates_no_environment_and_runs_no_tool) ... ok
+test_new_targeted_adb_uses_only_5664 (test_fresh_environment.FreshEnvironmentTest.test_new_targeted_adb_uses_only_5664) ... ok
+test_no_test_cleanup_exit_or_retry_cli_entry (test_fresh_environment.FreshEnvironmentTest.test_no_test_cleanup_exit_or_retry_cli_entry) ... ok
+test_old_adopt_resume_and_reconcile_are_disabled (test_fresh_environment.FreshEnvironmentTest.test_old_adopt_resume_and_reconcile_are_disabled) ... ok
+test_old_and_unknown_serials_rejected_before_command (test_fresh_environment.FreshEnvironmentTest.test_old_and_unknown_serials_rejected_before_command) ... ok
+test_private_log_module_does_not_change_old_allowed_serials (test_fresh_environment.FreshEnvironmentTest.test_private_log_module_does_not_change_old_allowed_serials) ... ok
+
+======================================================================
+ERROR: test_failed_start_retains_marker_and_cannot_launch_second_instance (test_fresh_environment.FreshEnvironmentTest.test_failed_start_retains_marker_and_cannot_launch_second_instance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 146, in test_failed_start_retains_marker_and_cannot_launch_second_instance
+    item.start()
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\fresh_environment.py", line 272, in start
+    child = subprocess.Popen(args, env=self.env, stdout=log, stderr=subprocess.STDOUT,
+                                       ^^^^^^^^
+AttributeError: 'FreshSupervisor' object has no attribute 'env'
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.080s
+
+FAILED (errors=1)

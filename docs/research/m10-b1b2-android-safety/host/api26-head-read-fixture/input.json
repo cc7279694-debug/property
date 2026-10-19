@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5664",
+    "shell",
+    "run-as com.cooper.lithic.debug sh -c 'set -e; printf '\"'\"'M10_BUNDLE_BEGIN\\n'\"'\"'; [ ! -L '\"'\"'no_backup'\"'\"' ]; [ -d '\"'\"'no_backup'\"'\"' ]; stat -c '\"'\"'A0|no_backup|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety'\"'\"' ]; [ -d '\"'\"'no_backup/m10-b1b2-safety'\"'\"' ]; stat -c '\"'\"'A0|no_backup/m10-b1b2-safety|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"' ]; [ -d '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"' ]; stat -c '\"'\"'A0|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"' ]; [ -f '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"' ]; n=$(stat -c '\"'\"'%s'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"'); [ \"$n\" -gt 0 ]; [ \"$n\" -le 16384 ]; stat -c '\"'\"'B|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"'; head -c 16385 '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"' | base64; stat -c '\"'\"'E|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"' ]; [ -f '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"' ]; n=$(stat -c '\"'\"'%s'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"'); [ \"$n\" -gt 0 ]; [ \"$n\" -le 16384 ]; stat -c '\"'\"'B|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"'; head -c 16385 '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"' | base64; stat -c '\"'\"'E|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"'; [ ! -L '\"'\"'no_backup'\"'\"' ]; stat -c '\"'\"'A1|no_backup|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety'\"'\"' ]; stat -c '\"'\"'A1|no_backup/m10-b1b2-safety|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"' ]; stat -c '\"'\"'A1|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"'; printf '\"'\"'M10_BUNDLE_END|2\\n'\"'\"''"
+  ],
+  "cwd": null,
+  "endUtc": "2026-10-19T09:11:13.324728+00:00",
+  "environmentOverrides": {},
+  "exitCode": 0,
+  "stderrBytes": 44,
+  "stderrSHA256": "4423a13d491fda68c8a12e66dc8f641e1ebbdd1951a98da540eb8da8a6ee51c2",
+  "stdoutBytes": 880,
+  "stdoutSHA256": "f3833d22285248965d848fe4234b95f13a1badfcfad6c1b08161478d0a1d52d7",
+  "utc": "2026-10-19T09:11:13.120637+00:00",
+  "classification": "LOCKED_ACTUAL_API26_READ_COMMAND_FAILURE_NOT_TEST_PASS",
+  "sourceJournal": "build\\m10-b1b2-android-safety\\api26\\commands.jsonl",
+  "sourceJournalLine": 211,
+  "methodResultPreserved": "UNKNOWN",
+  "originalRecordBytesUnavailable": true,
+  "AndroidRetryOrNewRead": "NOT_RUN"
+}

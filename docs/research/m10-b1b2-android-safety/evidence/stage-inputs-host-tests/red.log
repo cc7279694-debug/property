@@ -1,0 +1,35 @@
+test_only_three_locked_fixture_records_are_selected (test_stage_inputs.InputTransferTest.test_only_three_locked_fixture_records_are_selected) ... ERROR
+test_remote_paths_cannot_escape_fixed_fresh_private_directory (test_stage_inputs.InputTransferTest.test_remote_paths_cannot_escape_fixed_fresh_private_directory) ... ERROR
+test_single_exclusive_claim_is_never_reset_after_failure (test_stage_inputs.InputTransferTest.test_single_exclusive_claim_is_never_reset_after_failure) ... ERROR
+
+======================================================================
+ERROR: test_only_three_locked_fixture_records_are_selected (test_stage_inputs.InputTransferTest.test_only_three_locked_fixture_records_are_selected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_stage_inputs.py", line 18, in test_only_three_locked_fixture_records_are_selected
+    rows = s.selected_inputs(audit)
+           ^^^^^^^^^^^^^^^^^
+AttributeError: module 'fresh_stage_inputs' has no attribute 'selected_inputs'
+
+======================================================================
+ERROR: test_remote_paths_cannot_escape_fixed_fresh_private_directory (test_stage_inputs.InputTransferTest.test_remote_paths_cannot_escape_fixed_fresh_private_directory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_stage_inputs.py", line 29, in test_remote_paths_cannot_escape_fixed_fresh_private_directory
+    self.assertEqual(s.DESTINATION + "/" + name, s.private_path(name))
+                                                 ^^^^^^^^^^^^^^
+AttributeError: module 'fresh_stage_inputs' has no attribute 'private_path'
+
+======================================================================
+ERROR: test_single_exclusive_claim_is_never_reset_after_failure (test_stage_inputs.InputTransferTest.test_single_exclusive_claim_is_never_reset_after_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_stage_inputs.py", line 37, in test_single_exclusive_claim_is_never_reset_after_failure
+    claim = s.claim_transfer(supervisor)
+            ^^^^^^^^^^^^^^^^
+AttributeError: module 'fresh_stage_inputs' has no attribute 'claim_transfer'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.042s
+
+FAILED (errors=3)

@@ -1,0 +1,129 @@
+{
+  "scope": "Exact selected original command rows, unchanged Base64 stdout/stderr; no unrelated process-list bodies",
+  "commands": [
+    {
+      "journalRow": 113,
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5664",
+        "install",
+        "app-debug.apk"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug",
+      "endUtc": "2026-10-19T08:45:58.001739+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "UGVyZm9ybWluZyBTdHJlYW1lZCBJbnN0YWxsDQpTdWNjZXNzDQo=",
+      "stdoutBytes": 38,
+      "stdoutSHA256": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3",
+      "utc": "2026-10-19T08:45:45.328237+00:00"
+    },
+    {
+      "journalRow": 149,
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5664",
+        "install",
+        "app-debug-androidTest.apk"
+      ],
+      "cwd": "E:\\CODEX\\.codex\\research-build\\md-50784c33",
+      "endUtc": "2026-10-19T09:08:02.306934+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "UGVyZm9ybWluZyBTdHJlYW1lZCBJbnN0YWxsDQpTdWNjZXNzDQo=",
+      "stdoutBytes": 38,
+      "stdoutSHA256": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3",
+      "utc": "2026-10-19T09:08:00.208891+00:00"
+    },
+    {
+      "journalRow": 184,
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5664",
+        "shell",
+        "am",
+        "instrument",
+        "-w",
+        "-r",
+        "-e",
+        "class",
+        "com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers",
+        "-e",
+        "m10SafetyPermit",
+        "M10_B1B2_ISOLATED_V1",
+        "-e",
+        "m10SafetyRunId",
+        "5d5131cc-071f-4857-be43-c6c6a4187f06",
+        "-e",
+        "m10SafetyExpectedApi",
+        "26",
+        "com.cooper.lithic.debug.test/com.cooper.lithic.data.media.M10ProcessBoundaryRunner"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-19T09:10:53.663893+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "SU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogbnVtdGVzdHM9MQ0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogc3RyZWFtPQ0KY29tLmNvb3Blci5saXRoaWMuZGF0YS5tZWRpYS5NMTBCMUIyU2FmZXR5UHJlZmxpZ2h0VGVzdDoNCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IGlkPUFuZHJvaWRKVW5pdFJ1bm5lcg0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogdGVzdD1uZXdfc2FmZXR5X2NsYXNzZXNfYW5kX2Jvb3Rfcm9sZV9hcmVfcmVhZHlfd2l0aG91dF9jb25zdW1lcnMNCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IGNsYXNzPWNvbS5jb29wZXIubGl0aGljLmRhdGEubWVkaWEuTTEwQjFCMlNhZmV0eVByZWZsaWdodFRlc3QNCklOU1RSVU1FTlRBVElPTl9TVEFUVVM6IGN1cnJlbnQ9MQ0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVU19DT0RFOiAxDQpJTlNUUlVNRU5UQVRJT05fU1RBVFVTOiBudW10ZXN0cz0xDQpJTlNUUlVNRU5UQVRJT05fU1RBVFVTOiBzdHJlYW09Lg0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogaWQ9QW5kcm9pZEpVbml0UnVubmVyDQpJTlNUUlVNRU5UQVRJT05fU1RBVFVTOiB0ZXN0PW5ld19zYWZldHlfY2xhc3Nlc19hbmRfYm9vdF9yb2xlX2FyZV9yZWFkeV93aXRob3V0X2NvbnN1bWVycw0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogY2xhc3M9Y29tLmNvb3Blci5saXRoaWMuZGF0YS5tZWRpYS5NMTBCMUIyU2FmZXR5UHJlZmxpZ2h0VGVzdA0KSU5TVFJVTUVOVEFUSU9OX1NUQVRVUzogY3VycmVudD0xDQpJTlNUUlVNRU5UQVRJT05fU1RBVFVTX0NPREU6IDANCklOU1RSVU1FTlRBVElPTl9SRVNVTFQ6IHN0cmVhbT0NCg0KVGltZTogMC4xMTcNCg0KT0sgKDEgdGVzdCkNCg0KDQpJTlNUUlVNRU5UQVRJT05fQ09ERTogLTENCg==",
+      "stdoutBytes": 874,
+      "stdoutSHA256": "600ed5e2fdd2855cbb378c514a715e14181e673fee037c65f1a322103408977b",
+      "utc": "2026-10-19T09:10:52.470042+00:00"
+    },
+    {
+      "journalRow": 211,
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5664",
+        "shell",
+        "run-as com.cooper.lithic.debug sh -c 'set -e; printf '\"'\"'M10_BUNDLE_BEGIN\\n'\"'\"'; [ ! -L '\"'\"'no_backup'\"'\"' ]; [ -d '\"'\"'no_backup'\"'\"' ]; stat -c '\"'\"'A0|no_backup|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety'\"'\"' ]; [ -d '\"'\"'no_backup/m10-b1b2-safety'\"'\"' ]; stat -c '\"'\"'A0|no_backup/m10-b1b2-safety|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"' ]; [ -d '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"' ]; stat -c '\"'\"'A0|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"' ]; [ -f '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"' ]; n=$(stat -c '\"'\"'%s'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"'); [ \"$n\" -gt 0 ]; [ \"$n\" -le 16384 ]; stat -c '\"'\"'B|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"'; head -c 16385 '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"' | base64; stat -c '\"'\"'E|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/attempt.json'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"' ]; [ -f '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"' ]; n=$(stat -c '\"'\"'%s'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"'); [ \"$n\" -gt 0 ]; [ \"$n\" -le 16384 ]; stat -c '\"'\"'B|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"'; head -c 16385 '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"' | base64; stat -c '\"'\"'E|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06/result.json'\"'\"'; [ ! -L '\"'\"'no_backup'\"'\"' ]; stat -c '\"'\"'A1|no_backup|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety'\"'\"' ]; stat -c '\"'\"'A1|no_backup/m10-b1b2-safety|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety'\"'\"'; [ ! -L '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"' ]; stat -c '\"'\"'A1|no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06|%f|%d|%i|%s|%u|%h'\"'\"' '\"'\"'no_backup/m10-b1b2-safety/5d5131cc-071f-4857-be43-c6c6a4187f06'\"'\"'; printf '\"'\"'M10_BUNDLE_END|2\\n'\"'\"''"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-19T09:11:13.324728+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "aGVhZDogbm90IGludGVnZXI6IGMNCmhlYWQ6IG5vdCBpbnRlZ2VyOiBjDQo=",
+      "stderrBytes": 44,
+      "stderrSHA256": "4423a13d491fda68c8a12e66dc8f641e1ebbdd1951a98da540eb8da8a6ee51c2",
+      "stdoutBase64": "TTEwX0JVTkRMRV9CRUdJTg0KQTB8bm9fYmFja3VwfDQxZjl8NjQ1MTJ8MTE1MzE5fDQwOTZ8MTAwNzd8NA0KQTB8bm9fYmFja3VwL20xMC1iMWIyLXNhZmV0eXw0MWMwfDY0NTEyfDExNTQ2N3w0MDk2fDEwMDc3fDMNCkEwfG5vX2JhY2t1cC9tMTAtYjFiMi1zYWZldHkvNWQ1MTMxY2MtMDcxZi00ODU3LWJlNDMtYzZjNmE0MTg3ZjA2fDQxYzB8NjQ1MTJ8MTE1NDY4fDQwOTZ8MTAwNzd8Mg0KQnxub19iYWNrdXAvbTEwLWIxYjItc2FmZXR5LzVkNTEzMWNjLTA3MWYtNDg1Ny1iZTQzLWM2YzZhNDE4N2YwNi9hdHRlbXB0Lmpzb258ODE4MHw2NDUxMnwxMTU0ODh8MzkwfDEwMDc3fDENCkV8bm9fYmFja3VwL20xMC1iMWIyLXNhZmV0eS81ZDUxMzFjYy0wNzFmLTQ4NTctYmU0My1jNmM2YTQxODdmMDYvYXR0ZW1wdC5qc29ufDgxODB8NjQ1MTJ8MTE1NDg4fDM5MHwxMDA3N3wxDQpCfG5vX2JhY2t1cC9tMTAtYjFiMi1zYWZldHkvNWQ1MTMxY2MtMDcxZi00ODU3LWJlNDMtYzZjNmE0MTg3ZjA2L3Jlc3VsdC5qc29ufDgxODB8NjQ1MTJ8MTE1NDkwfDI0Mzl8MTAwNzd8MQ0KRXxub19iYWNrdXAvbTEwLWIxYjItc2FmZXR5LzVkNTEzMWNjLTA3MWYtNDg1Ny1iZTQzLWM2YzZhNDE4N2YwNi9yZXN1bHQuanNvbnw4MTgwfDY0NTEyfDExNTQ5MHwyNDM5fDEwMDc3fDENCkExfG5vX2JhY2t1cHw0MWY5fDY0NTEyfDExNTMxOXw0MDk2fDEwMDc3fDQNCkExfG5vX2JhY2t1cC9tMTAtYjFiMi1zYWZldHl8NDFjMHw2NDUxMnwxMTU0Njd8NDA5NnwxMDA3N3wzDQpBMXxub19iYWNrdXAvbTEwLWIxYjItc2FmZXR5LzVkNTEzMWNjLTA3MWYtNDg1Ny1iZTQzLWM2YzZhNDE4N2YwNnw0MWMwfDY0NTEyfDExNTQ2OHw0MDk2fDEwMDc3fDINCk0xMF9CVU5ETEVfRU5EfDINCg==",
+      "stdoutBytes": 880,
+      "stdoutSHA256": "f3833d22285248965d848fe4234b95f13a1badfcfad6c1b08161478d0a1d52d7",
+      "utc": "2026-10-19T09:11:13.120637+00:00"
+    },
+    {
+      "journalRow": 239,
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5664",
+        "shell",
+        "settings",
+        "get",
+        "global",
+        "boot_count"
+      ],
+      "cwd": null,
+      "endUtc": "2026-10-19T09:15:22.212988+00:00",
+      "environmentOverrides": {},
+      "exitCode": 0,
+      "stderrBase64": "",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBase64": "MQ0K",
+      "stdoutBytes": 3,
+      "stdoutSHA256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "utc": "2026-10-19T09:15:21.998423+00:00"
+    }
+  ]
+}

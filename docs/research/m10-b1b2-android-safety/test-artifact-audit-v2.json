@@ -1,0 +1,310 @@
+{
+  "status": "PASS_OFFLINE_TEST_ARTIFACT_ONLY",
+  "sourceCommit": "08ce4b663b52127f400fa18bd13eb12fe04a8797",
+  "app": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+    "bytes": 13900723,
+    "sha256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+    "rebuilt": false
+  },
+  "oldTest": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-candidate\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+    "sha256": "bb00c0f6e34059170d20124eab739b43ccbc257ecc265def28906077fc0cb78c",
+    "preserved": true
+  },
+  "newTest": {
+    "path": "E:\\CODEX\\.codex\\research-build\\md-62a6b3de\\app-debug-androidTest.apk",
+    "bytes": 2094286,
+    "sha256": "ece86ed56bc321615266b6dc689287fdfe0a435df1e136a9fdd8ed40694848b7"
+  },
+  "certificateSHA256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "applicationId": "com.cooper.lithic.debug.test",
+  "instrumentation": "com.cooper.lithic.debug.test/com.cooper.lithic.data.media.M10ProcessBoundaryRunner",
+  "targetPackage": "com.cooper.lithic.debug",
+  "minSdk": 26,
+  "targetSdk": 36,
+  "manifestByteIdenticalToOldTest": true,
+  "assetEntriesPreserved": 4,
+  "assetsByteIdenticalToOldTest": true,
+  "nativeLibrariesInTest": 0,
+  "sourcesSHA256": {
+    "M10B1B2SafetyPreflightTest.kt": "5a38b5770dd9d8ed076fda6ab2dfd3a2c042b920c1c1c8dc5b6866f4319fe205",
+    "M10B1B2SafetySupport.kt": "c29957cb1122d90594b4f73d1348a244f6fbd4aa5ea0f9d23f244c90b527975a",
+    "M10B1CancellationSafetyTest.kt": "411ccba3102a538b1a164ed9882b05617558f8fdefc78d41a2e292d0b7d32d8a",
+    "M10B1ClosureObservations.java": "5e39b35fc45cde5a5a20fb92e7fad145058da8617c9e0f1c4bbeb3f7d30bbab2"
+  },
+  "originalCompiledTestFiles": [
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes.dex",
+      "sha256": "85253eee1da79f61a07c14a5a04044ceffa8bcd6c981ffa6d53365dfaf4feb11"
+    },
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes2.dex",
+      "sha256": "4b7cce9a85b2de6b819b978fbf83bfebf11b82ad27e93a868a999842168f4219"
+    },
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes3.dex",
+      "sha256": "3178ec78741fb53d4723ced3198a152235ee9accae3bf7abb2ddcd565e6aa617"
+    },
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes5.dex",
+      "sha256": "4f0b97aabcc65d7c1025acd1a2d93b080644afb7f59e43f663a2115142dfbc83"
+    },
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes6.dex",
+      "sha256": "39ebbecddb47715dd998af5443d418a297be042593afbbd0b86991847795e171"
+    },
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes7.dex",
+      "sha256": "c951857fa0490d5022eea8c40fa491f5100c21f203d58276b45f09a93bbbfb43"
+    },
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes8.dex",
+      "sha256": "000e09ba9d93815bb190adf024fba6cb0a9f514efaa519ad8758d743aaabf349"
+    },
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes9.dex",
+      "sha256": "8d493a956786fea85fb4d1177bafcad6b23497cc0270d91bf1c5838131e200eb"
+    },
+    {
+      "meaning": "Original complete DEX byte payload retained, not recompiled",
+      "entry": "classes4.dex",
+      "sha256": "102cad8827395061f059865c03a8059002588fe65875271c7cb0833ba573fd18"
+    }
+  ],
+  "newClassDeclaredMetadata": {
+    "Lcom/cooper/lithic/data/media/M10B1B2SafetyPreflightTest$Companion;": {
+      "status": "PASS",
+      "declaredMethods": 2,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1B2SafetyPreflightTest;": {
+      "status": "PASS",
+      "declaredMethods": 3,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1B2SafetySupport$$ExternalSyntheticLambda0;": {
+      "status": "PASS",
+      "declaredMethods": 2,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1B2SafetySupport$Run;": {
+      "status": "PASS",
+      "declaredMethods": 18,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1B2SafetySupport$stages$visit$$inlined$sortedBy$1;": {
+      "status": "PASS",
+      "declaredMethods": 2,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1B2SafetySupport;": {
+      "status": "PASS",
+      "declaredMethods": 11,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$Companion;": {
+      "status": "PASS",
+      "declaredMethods": 2,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$2;": {
+      "status": "PASS",
+      "declaredMethods": 5,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$invocation$1$$ExternalSyntheticBackportWithForwarding0;": {
+      "status": "PASS",
+      "declaredMethods": 1,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$invocation$1$$ExternalSyntheticLambda1;": {
+      "status": "PASS",
+      "declaredMethods": 2,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$invocation$1$$ExternalSyntheticLambda2;": {
+      "status": "PASS",
+      "declaredMethods": 2,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$invocation$1$$ExternalSyntheticLambda3;": {
+      "status": "PASS",
+      "declaredMethods": 2,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$invocation$1$$ExternalSyntheticLambda4;": {
+      "status": "PASS",
+      "declaredMethods": 2,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1$invocation$1;": {
+      "status": "PASS",
+      "declaredMethods": 13,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest$cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt$1;": {
+      "status": "PASS",
+      "declaredMethods": 5,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1CancellationSafetyTest;": {
+      "status": "PASS",
+      "declaredMethods": 11,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1ClosureObservations$Decision;": {
+      "status": "PASS",
+      "declaredMethods": 5,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1ClosureObservations$Observation;": {
+      "status": "PASS",
+      "declaredMethods": 1,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1ClosureObservations$Origin;": {
+      "status": "PASS",
+      "declaredMethods": 5,
+      "violations": []
+    },
+    "Lcom/cooper/lithic/data/media/M10B1ClosureObservations;": {
+      "status": "PASS",
+      "declaredMethods": 7,
+      "violations": []
+    }
+  },
+  "junitMethods": [
+    {
+      "class": "M10B1B2SafetyPreflightTest",
+      "method": "new_safety_classes_and_boot_role_are_ready_without_consumers",
+      "descriptor": "()V",
+      "public": true
+    },
+    {
+      "class": "M10B1CancellationSafetyTest",
+      "method": "cancellation_after_persistent_pin_before_fd_delivery_closes_only_failed_attempt",
+      "descriptor": "()V",
+      "public": true
+    }
+  ],
+  "dexEntries": [
+    {
+      "entry": "classes.dex",
+      "bytes": 2008520,
+      "sha256": "85253eee1da79f61a07c14a5a04044ceffa8bcd6c981ffa6d53365dfaf4feb11"
+    },
+    {
+      "entry": "classes2.dex",
+      "bytes": 17060,
+      "sha256": "4b7cce9a85b2de6b819b978fbf83bfebf11b82ad27e93a868a999842168f4219"
+    },
+    {
+      "entry": "classes3.dex",
+      "bytes": 240444,
+      "sha256": "3178ec78741fb53d4723ced3198a152235ee9accae3bf7abb2ddcd565e6aa617"
+    },
+    {
+      "entry": "classes5.dex",
+      "bytes": 618188,
+      "sha256": "4f0b97aabcc65d7c1025acd1a2d93b080644afb7f59e43f663a2115142dfbc83"
+    },
+    {
+      "entry": "classes6.dex",
+      "bytes": 174536,
+      "sha256": "39ebbecddb47715dd998af5443d418a297be042593afbbd0b86991847795e171"
+    },
+    {
+      "entry": "classes7.dex",
+      "bytes": 262832,
+      "sha256": "c951857fa0490d5022eea8c40fa491f5100c21f203d58276b45f09a93bbbfb43"
+    },
+    {
+      "entry": "classes8.dex",
+      "bytes": 643580,
+      "sha256": "000e09ba9d93815bb190adf024fba6cb0a9f514efaa519ad8758d743aaabf349"
+    },
+    {
+      "entry": "classes9.dex",
+      "bytes": 119372,
+      "sha256": "8d493a956786fea85fb4d1177bafcad6b23497cc0270d91bf1c5838131e200eb"
+    },
+    {
+      "entry": "classes4.dex",
+      "bytes": 1204824,
+      "sha256": "102cad8827395061f059865c03a8059002588fe65875271c7cb0833ba573fd18"
+    },
+    {
+      "entry": "classes10.dex",
+      "bytes": 55980,
+      "sha256": "f8e7987b15790e0b44d79d6dd7b07aa21f0b875e639177c4f1ad77b603f3538a"
+    }
+  ],
+  "apiXmlSHA256": "923f7e6367759e127679b6b5a4156ee801100e3cc07dc1d99cb811e791e45435",
+  "commands": [
+    {
+      "name": "test-signature-v2-1c00f16c",
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\research-build\\md-62a6b3de\\app-debug-androidTest.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 311,
+      "stdoutSHA256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "test-badging-v2-1c00f16c",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\research-build\\md-62a6b3de\\app-debug-androidTest.apk"
+      ],
+      "exit": 0,
+      "stdoutBytes": 1170,
+      "stdoutSHA256": "57344bee6a715bb2a176c23f640389bdfdb53fdd2bb7e54a7b2b30f832098979",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "test-manifest-v2-1c00f16c",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "E:\\CODEX\\.codex\\research-build\\md-62a6b3de\\app-debug-androidTest.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit": 0,
+      "stdoutBytes": 5349,
+      "stdoutSHA256": "f33eeb57f59afdbb5f857deb1a02ab43b8690f7b7c21d835c02224eeff55e1c6",
+      "stderrBytes": 0,
+      "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "scope": "New four-source classes packaged; no product code/main/native rebuild; no APK install or Android execution",
+  "limitations": [
+    "Declared-class metadata check is not actual API26 reflection or runtime verification.",
+    "Android lifecycle/fault/resource tests remain NOT_RUN."
+  ],
+  "rawEvidenceDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-android\\\u783a\u77f3\u65b0APP\\build\\m10-b1b2-d8-test-20261019T082739.054050Z",
+  "Android": "NOT_RUN",
+  "APKInstallations": 0,
+  "deviceCommands": 0
+}

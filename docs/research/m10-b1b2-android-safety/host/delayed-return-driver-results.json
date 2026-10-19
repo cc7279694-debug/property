@@ -1,0 +1,17 @@
+{
+  "classification": "PURE_HOST_DRIVER_TESTS_NOT_ANDROID",
+  "status": "PASS",
+  "uniqueMethods": 17,
+  "previousMethods": 14,
+  "newMethods": 3,
+  "exitCode": 0,
+  "rawBytes": 121,
+  "rawSHA256": "383b7838aae1d064aa8840594c8d95b712d3811e2a895d161de13a427561bc92",
+  "scope": "Fixed seven non-destructive methods; exact fault methods are a separate driver. No device command was run.",
+  "actualAndroid": "NOT_RUN",
+  "sources": {
+    "docs\\research\\m10-b1b2-android-safety\\safety_device.py": "86b7d0ac398e9ca64c274e51fd13c5698e0b407473771676507dd7f9982185a3",
+    "docs\\research\\m10-b1b2-android-safety\\test_safety_device.py": "f54af7025e3dbf466dce7cf3c6b48ef31a0197f0fdd121ef44f8bf5eebc7cfb1",
+    "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\media\\M10B1CancellationSafetyTest.kt": "8d22efcc1949de686699f0015db507258a00801eab4166159ce956aea6ba4023"
+  }
+}

@@ -1,0 +1,35 @@
+test_unknown_nonempty_config_path_cannot_reach_launch (test_fresh_environment.FreshEnvironmentTest.test_unknown_nonempty_config_path_cannot_reach_launch) ... ERROR
+test_known_startup_writable_path_must_stay_in_new_data_root (test_fresh_environment.FreshEnvironmentTest.test_known_startup_writable_path_must_stay_in_new_data_root) ... ERROR
+test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments (test_fresh_environment.FreshEnvironmentTest.test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments) ... ERROR
+
+======================================================================
+ERROR: test_unknown_nonempty_config_path_cannot_reach_launch (test_fresh_environment.FreshEnvironmentTest.test_unknown_nonempty_config_path_cannot_reach_launch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 228, in test_unknown_nonempty_config_path_cannot_reach_launch
+    item.config_path_preflight()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FreshSupervisor' object has no attribute 'config_path_preflight'
+
+======================================================================
+ERROR: test_known_startup_writable_path_must_stay_in_new_data_root (test_fresh_environment.FreshEnvironmentTest.test_known_startup_writable_path_must_stay_in_new_data_root)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 235, in test_known_startup_writable_path_must_stay_in_new_data_root
+    item.config_path_preflight()
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FreshSupervisor' object has no attribute 'config_path_preflight'
+
+======================================================================
+ERROR: test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments (test_fresh_environment.FreshEnvironmentTest.test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 241, in test_legal_temp_placeholder_requires_explicit_owned_data_cache_arguments
+    self.assertEqual("PASS", item.config_path_preflight()["status"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FreshSupervisor' object has no attribute 'config_path_preflight'
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.052s
+
+FAILED (errors=3)

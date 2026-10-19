@@ -1,8 +1,20 @@
 # 当前项目状态
 
-状态日期：2026-10-19（Asia/Shanghai；B1/B2离线候选READY_FOR_ANDROID_SAFETY_REVIEW，M10仍PENDING）。本文件为唯一当前状态，历史证据不改写。
+状态日期：2026-10-19（Asia/Shanghai；B1/B2独立Android验收BLOCKED，M10仍PENDING）。本文件为唯一当前状态，历史证据不改写。
 
 ## Current Stage
+
+- **M10 B1/B2 ANDROID SAFETY VALIDATION — BLOCKED / WAITING_CHATGPT_REVIEW**：来源 `08ce4b663b52127f400fa18bd13eb12fe04a8797`；分支 `codex/m10-b1b2-android-safety-validation`；worktree `E:/CODEX/.codex/worktrees/lithic-b1b2-android/砺石新APP`。只新增隔离androidTest、监督器及必要证据；正式App、旧测试/三JPEG断言、Room/schema/备份/金额算法/UI均零差异。旧18项自然测试未重复。
+- **实际设备**：全新 `Lithic_M10B1B2_API26_20261019 / emulator-5664`；创建1、实际spawn1、App/Test各安装1、Instrumentation1；故障终止/图片传输0。API36全0、NOT_RUN。原App SHA `b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c`不变；新Test-only最终SHA `37ad9ec91964b6a0b8a870ec35032164ebcdb6a1c41522e780cb7af343fcd338`，旧bb00及未安装v2/ece保留。
+- **首项门禁**：新类反射JUnit实际1 PASS，nonce连续采集PASS；独立读取预检JSON时管道上游`head`实际报错、末端base64仍exit0，读回payload为空，整体 **UNKNOWN**。未回填旧result、未重跑。已用真实输入做最小离线有界dd＋pipefail整改，22目标宿主PASS，**新Android读取链仍NOT_RUN**。完整BOOT_COUNT稳定性/Worker对照凭据未取得；结束时只读BOOT_COUNT实际为1。
+- **停止范围**：健康冒烟、B1取消/迟到RPC/错session/重复回执/GC/Worker和Host故障恢复，以及B2三个40MP Android测量全部NOT_RUN。源SHA只在宿主核验，没有Worker/RSS/PSS/CPU/native16实际数据；512MiB不作手机内存cap。新故障入口的宿主GREEN不授予设备准入。
+- **结束现场**：只读核验同一launcher40472/QEMU18424及创建身份/端口/隔离路径，目标UID10077下Host/Worker列表为空；Stage V2/消费者观察/B2诊断均0，只留下一个预检记录目录（attempt390B/result2439B）。新API26保持运行，未退出、重启或清理；未访问H2/C2/保留API36/其他历史AVD，不读取私人账本/图片。早期环境和安装前常量阻断记录保留，均发生在实际动作前，不冒充第二次spawn/install。
+- **下一步唯一执行阻塞**：需独立审阅此次门禁错误及离线整改，并先确认Android只读有界读取兼容和现有现场；本批已停止，不能自动再发测试。B1异常和B2大图安全仍为正式冻结BLOCKING，不能将首项JUnit PASS代替全部独立资格。见[集中报告](research/M10_B1B2_ANDROID_SAFETY_VALIDATION.md)、[真实证据索引](research/m10-b1b2-android-safety/evidence/api26-run/INDEX.json)、[checkpoint](checkpoints/2026-10-19-M10-B1B2-ANDROID-SAFETY-VALIDATION.md)。
+- **冻结历史不变**：M10 PENDING/原三JPEG历史FAIL，UI-C1 ACCEPTED/FROZEN PASS WITH NOTES，M11 NOT_AUTHORIZED，R3原29项及D2A-N01～N05/A1-N01～N04和全部历史NOTE/FAIL/UNKNOWN/NOT_RUN保留；实现者不授予ACCEPTED/FROZEN。只推本分支后停止，不合并正式M10或main。
+
+## 前一离线候选阶段摘要（08ce历史）
+
+以下原“本轮”等措辞仅指前一候选任务；其设备0与NOT_RUN均为当时事实，不是本次新设备操作计数。
 
 - **M10 B1 RECOVERY / B2 RESOURCE CANDIDATE — READY_FOR_ANDROID_SAFETY_REVIEW**：锁定来源 `f1ca58b286381a053c551e6b0383d5141e3b9565`；分支 `codex/m10-b1-recovery-b2-resource-candidate`；独立worktree `E:/CODEX/.codex/worktrees/lithic-b1b2-candidate/砺石新APP`。仅候选代码与离线验证，不合并正式M10；API26/API36各九项自然限定独立验收继承，18项不重复。
 - **B1实际修复**：真实RPC/bind返回唤醒原Session唯一主线程清理责任；持久supervisor＋同租约两阶段资格/撤销校验＋独立非成功abandoned凭据和幂等清理；Store接入新导入前保守恢复。无结构化结果不伪造terminal/FD回执/解码成功。首次资格拒绝不扰动旧授权，晚期收口未知保pin/全局准入关闭。实现和宿主GREEN仅为IMPLEMENTED / PENDING_ANDROID_VERIFICATION，不CLOSED。
@@ -13,7 +25,7 @@
 
 ## 继承的历史阶段摘要
 
-以下保留原有历史摘要；其中“本轮”“当前”等措辞均指各段落形成当时的任务，不指本次B1/B2离线候选。本次设备操作为0，历史独立报告及原始证据未改写。
+以下保留原有历史摘要；其中“本轮”“当前”等措辞均指各段落形成当时的任务，不指本次B1/B2 Android安全验收；下文设备操作为0仅指前一离线候选阶段，历史独立报告及原始证据未改写。
 
 上一轮d225交付中的API36安装UID阻塞是当时事实，见[原测试APK兼容报告](research/M10_ANDROID_TEST_APK_COMPAT_FINAL.md)；本轮独立新准入与PASS不修改该旧UNKNOWN或原文件。
 

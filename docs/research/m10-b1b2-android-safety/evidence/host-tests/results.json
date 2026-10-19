@@ -1,0 +1,75 @@
+{
+  "classifier": {
+    "androidAdmission": false,
+    "androidIdentity": "NOT_RUN",
+    "classification": "LOCKED_HOST_OBSERVATION_NOT_CURRENT_DEVICE_PROOF",
+    "freeKiB": 2138072,
+    "observationUtc": "2026-10-19T07:28:02.2164389Z",
+    "operationCounts": {
+      "adb": 0,
+      "apkInstall": 0,
+      "avdCreate": 0,
+      "emulatorStart": 0,
+      "instrumentation": 0
+    },
+    "processIdentity": "NOT_RUN",
+    "reasons": [
+      "INSUFFICIENT_FREE_HOST_MEMORY"
+    ],
+    "requiredFreeKiB": 2621440,
+    "sourceCommit": "08ce4b663b52127f400fa18bd13eb12fe04a8797",
+    "status": "BLOCKED"
+  },
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "docs\\research\\m10-b1b2-android-safety",
+    "-p",
+    "test_supervise.py",
+    "-v"
+  ],
+  "errors": 0,
+  "exitCode": 0,
+  "failures": 0,
+  "initialRed": {
+    "errors": 1,
+    "exitCode": 1,
+    "failures": 9,
+    "issue": "Unimplemented output shape; preserved before confirmed failing run",
+    "testsRun": 10,
+    "textLog": "red.log"
+  },
+  "raw": {
+    "final-stderr.raw": {
+      "bytes": 1544,
+      "sha256": "e4f5358a9fb88e85744083f885142188ab86071d2512fe581315e3fc096959d7"
+    },
+    "final-stdout.raw": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "red": {
+    "errors": 0,
+    "exitCode": 1,
+    "failures": 9,
+    "sourceStubArchived": false,
+    "testsRun": 10,
+    "textLog": "red-confirmed.log"
+  },
+  "scope": "HOST_ONLY_NOT_ANDROID_VERIFICATION",
+  "sourceAfterSHA256": {
+    "supervise.py": "9c86aef778bcaef8de58009d1ce2f5cc817ff26c40cd19f1a29881ca055323b6",
+    "test_supervise.py": "027d686657f41106e6f6142e51d13e781c7779d9c63ca167006fed8bdfb82c8e"
+  },
+  "sourceBeforeSHA256": {
+    "supervise.py": "9c86aef778bcaef8de58009d1ce2f5cc817ff26c40cd19f1a29881ca055323b6",
+    "test_supervise.py": "027d686657f41106e6f6142e51d13e781c7779d9c63ca167006fed8bdfb82c8e"
+  },
+  "sourceUnchanged": true,
+  "testsRun": 10,
+  "uniqueTestMethods": 10
+}

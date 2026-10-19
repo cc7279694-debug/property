@@ -1,0 +1,28 @@
+test_start_waits_for_runtime_paths_before_any_targeted_adb (test_fresh_environment.FreshEnvironmentTest.test_start_waits_for_runtime_paths_before_any_targeted_adb) ... FAIL
+
+======================================================================
+FAIL: test_start_waits_for_runtime_paths_before_any_targeted_adb (test_fresh_environment.FreshEnvironmentTest.test_start_waits_for_runtime_paths_before_any_targeted_adb)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 207, in test_start_waits_for_runtime_paths_before_any_targeted_adb
+    item.start()
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\fresh_environment.py", line 284, in start
+    state = self.adb("get-state", timeout=query_time(), allowed=(0, 1))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1134, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1138, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\unittest\mock.py", line 1199, in _execute_mock_call
+    result = effect(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 194, in adb
+    self.assertIn("PATHS", events)
+AssertionError: 'PATHS' not found in ['CIM']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.025s
+
+FAILED (failures=1)

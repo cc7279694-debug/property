@@ -1,0 +1,44 @@
+{
+  "classification": "OFFLINE_READER_FIX_AND_HOST_POSIX_TESTS_ONLY",
+  "status": "PASS",
+  "uniqueMethods": 22,
+  "previousMethods": 19,
+  "newMethods": 3,
+  "red": {
+    "tests": 22,
+    "missingNewPureBuilderErrors": 2,
+    "raw": "bounded-read-red.raw"
+  },
+  "green": {
+    "tests": 22,
+    "failures": 0,
+    "errors": 0,
+    "exitCode": 0,
+    "raw": "bounded-read-green.raw",
+    "rawBytes": 3890,
+    "rawSHA256": "65c372180c683ed0e805e584ffda5227145e4bec85ba651d089b3a6eea2378eb"
+  },
+  "confirmed": [
+    "Locked API26 head command emitted two head: not integer: c diagnostics; exit0 is last-stage pipeline status.",
+    "Both before/after file identities and byte lengths remained equal, but both encoded payloads were empty.",
+    "Actual Git Bash host runs the generated bounded dd script; injected first-stage dd failure exits23 with no END marker."
+  ],
+  "supportedHypothesis": [
+    "API26 head implementation does not support this -c form; exact binary identity was not queried."
+  ],
+  "unknown": [
+    "Android dd and pipefail compatibility for the revised reader NOT_RUN.",
+    "Actual Android result.json body remains unread; original method00 stays UNKNOWN."
+  ],
+  "change": "Pure script builder uses set -e + set -o pipefail + dd bs=1 count=limit+1; preserves stat/length/inode/UID/size/hash/END checks. No stderr suppression.",
+  "originalCommandFixture": "api26-head-read-fixture/input.json",
+  "originalCommandStdoutSHA256": "f3833d22285248965d848fe4234b95f13a1badfcfad6c1b08161478d0a1d52d7",
+  "originalCommandStderrSHA256": "4423a13d491fda68c8a12e66dc8f641e1ebbdd1951a98da540eb8da8a6ee51c2",
+  "sources": {
+    "docs\\research\\m10-b1b2-android-safety\\safety_device.py": "5fd76916f7e2cb45055b752999e11aadf75898257432674af53f97872dd5a0dd",
+    "docs\\research\\m10-b1b2-android-safety\\test_safety_device.py": "d11c1a62384a572649be3ae741604f99af755a01d23b3174763541535eec153b"
+  },
+  "deviceCommands": 0,
+  "AppOrTestAPKChanged": false,
+  "oldMethodResultModified": false
+}

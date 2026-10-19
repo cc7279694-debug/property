@@ -1,0 +1,34 @@
+{
+  "api": 26,
+  "appSHA256": "b7c90277fa6c27e6ab314aa52c293de8e445ba6a3deba9e984ab96f4280e8a4c",
+  "argv": [
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers",
+    "-e",
+    "m10SafetyPermit",
+    "M10_B1B2_ISOLATED_V1",
+    "-e",
+    "m10SafetyRunId",
+    "5d5131cc-071f-4857-be43-c6c6a4187f06",
+    "-e",
+    "m10SafetyExpectedApi",
+    "26",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.data.media.M10ProcessBoundaryRunner"
+  ],
+  "deviceProof": {
+    "status": "NOT_RUN"
+  },
+  "index": 0,
+  "instrumentationCommandsIssued": 0,
+  "method": "com.cooper.lithic.data.media.M10B1B2SafetyPreflightTest#new_safety_classes_and_boot_role_are_ready_without_consumers",
+  "runId": "5d5131cc-071f-4857-be43-c6c6a4187f06",
+  "serial": "emulator-5664",
+  "status": "ATTEMPT_ISSUED",
+  "testSHA256": "37ad9ec91964b6a0b8a870ec35032164ebcdb6a1c41522e780cb7af343fcd338"
+}

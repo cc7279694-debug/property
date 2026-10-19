@@ -1,0 +1,35 @@
+test_private_capture_exact_filter_keeps_resource_errors_and_nonce (test_fresh_environment.FreshEnvironmentTest.test_private_capture_exact_filter_keeps_resource_errors_and_nonce) ... FAIL
+
+======================================================================
+FAIL: test_private_capture_exact_filter_keeps_resource_errors_and_nonce (test_fresh_environment.FreshEnvironmentTest.test_private_capture_exact_filter_keeps_resource_errors_and_nonce)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 90, in test_private_capture_exact_filter_keeps_resource_errors_and_nonce
+    self.assertEqual(["-s", "emulator-5664", "logcat", "-b", "main", "-v", "threadtime", "-s",
+AssertionError: Lists differ: ['-s'[77 chars]JPEG:I', 'LITHIC_B2_RESOURCE:E', 'LITHIC_M10_CAPTURE:I', '*:S'] != ['-s'[77 chars]JPEG:I', 'LITHIC_M10_CAPTURE:I', '*:S']
+
+First differing element 9:
+'LITHIC_B2_RESOURCE:E'
+'LITHIC_M10_CAPTURE:I'
+
+First list contains 1 additional elements.
+First extra element 11:
+'*:S'
+
+  ['-s',
+   'emulator-5664',
+   'logcat',
+   '-b',
+   'main',
+   '-v',
+   'threadtime',
+   '-s',
+   'LITHIC_JPEG:I',
+-  'LITHIC_B2_RESOURCE:E',
+   'LITHIC_M10_CAPTURE:I',
+   '*:S']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.013s
+
+FAILED (failures=1)

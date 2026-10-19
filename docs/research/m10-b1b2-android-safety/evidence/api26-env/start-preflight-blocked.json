@@ -1,0 +1,29 @@
+{
+  "status": "BLOCKED_BEFORE_EMULATOR_SPAWN",
+  "utc": "2026-10-19T08:32:25.789582+00:00",
+  "supervisorInvocation": [
+    "python",
+    "-B",
+    "docs/research/m10-b1b2-android-safety/fresh_environment.py",
+    "26",
+    "start"
+  ],
+  "observedExitCode": 1,
+  "observedError": "Fresh runtime temp not empty",
+  "sourceScriptSHA256": "20f921b979e6d57b84c69a018449135ed1cc6fa9b79f8036e09240c91e883799",
+  "observedDiagnosticOrigin": "Decoded exec tool output; not a fabricated raw stderr file",
+  "startMarkerExists": false,
+  "emulatorSpawnEvents": 0,
+  "adbCommands": 0,
+  "preflightJournalBytes": 5579,
+  "preflightJournalSHA256": "9332ab373932612e5b46cbd3203d7d1445ddf0b41eb1f6ec860f7d032d353582",
+  "temporaryMetadata": [
+    {
+      "path": "runtime-temp\\hsperfdata_CDD",
+      "directory": true,
+      "bytes": null,
+      "modifiedNs": 1792397435439361500
+    }
+  ],
+  "oldEvidenceRewritten": false
+}

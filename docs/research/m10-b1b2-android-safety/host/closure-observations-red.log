@@ -1,0 +1,104 @@
+JUnit version 4.13.2
+.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E.E
+Time: 0.022
+There were 18 failures:
+1) thirdObservationIsConflict(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.thirdObservationIsConflict(M10B1ClosureObservationsTest.java:18)
+2) lateProofThenIncompleteInitialNeverClaimsTwice(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.lateProofThenIncompleteInitialNeverClaimsTwice(M10B1ClosureObservationsTest.java:15)
+3) fakeWorkerDataCloseOrResultIsRejected(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.fakeWorkerDataCloseOrResultIsRejected(M10B1ClosureObservationsTest.java:24)
+4) successfulOutcomeCannotClaimCancellationClosure(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.successfulOutcomeCannotClaimCancellationClosure(M10B1ClosureObservationsTest.java:20)
+5) claimedOriginalQuiescenceCannotOmitActualFlags(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.claimedOriginalQuiescenceCannotOmitActualFlags(M10B1ClosureObservationsTest.java:26)
+6) absentWorkerCannotClaimCompleteClosure(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.absentWorkerCannotClaimCompleteClosure(M10B1ClosureObservationsTest.java:21)
+7) duplicateCompleteProofCannotRecoverTwice(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.duplicateCompleteProofCannotRecoverTwice(M10B1ClosureObservationsTest.java:22)
+8) differentWorkerIsConflictEvenWhenIncomplete(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.differentWorkerIsConflictEvenWhenIncomplete(M10B1ClosureObservationsTest.java:19)
+9) duplicateInitialIsConflict(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.duplicateInitialIsConflict(M10B1ClosureObservationsTest.java:16)
+10) concurrentCompleteEntriesHaveExactlyOneClaim(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.concurrentCompleteEntriesHaveExactlyOneClaim(M10B1ClosureObservationsTest.java:29)
+11) duplicateLateIsConflict(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.duplicateLateIsConflict(M10B1ClosureObservationsTest.java:17)
+12) secondWorkerRegistrationCannotReplaceIdentity(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.secondWorkerRegistrationCannotReplaceIdentity(M10B1ClosureObservationsTest.java:28)
+13) unregisteredWorkerNeverReceivesAuthority(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.AssertionError: unexpected exception type thrown; expected:<java.lang.IllegalStateException> but was:<java.lang.UnsupportedOperationException>
+	at org.junit.Assert.assertThrows(Assert.java:1020)
+	at org.junit.Assert.assertThrows(Assert.java:981)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.unregisteredWorkerNeverReceivesAuthority(M10B1ClosureObservationsTest.java:27)
+	... 32 trimmed
+Caused by: java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.observe(M10B1ClosureObservations.java:7)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.lambda$unregisteredWorkerNeverReceivesAuthority$11(M10B1ClosureObservationsTest.java:27)
+	at org.junit.Assert.assertThrows(Assert.java:1001)
+	... 35 more
+14) initialUnknownDoesNotClaimClosureAndLateProofDoes(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.initialUnknownDoesNotClaimClosureAndLateProofDoes(M10B1ClosureObservationsTest.java:12)
+15) incompleteInitialMissingIdentityMayOnlyWait(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.incompleteInitialMissingIdentityMayOnlyWait(M10B1ClosureObservationsTest.java:14)
+16) stoppedWindowCannotStartNewRecovery(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.stoppedWindowCannotStartNewRecovery(M10B1ClosureObservationsTest.java:23)
+17) unknownOrIncompleteLateProofCannotClose(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.unknownOrIncompleteLateProofCannotClose(M10B1ClosureObservationsTest.java:25)
+18) fullyKnownInitialCancellationMayCloseOnce(com.cooper.lithic.data.media.M10B1ClosureObservationsTest)
+java.lang.UnsupportedOperationException: RED missing observation policy
+	at com.cooper.lithic.data.media.M10B1ClosureObservations.registerWorker(M10B1ClosureObservations.java:6)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.gate(M10B1ClosureObservationsTest.java:8)
+	at com.cooper.lithic.data.media.M10B1ClosureObservationsTest.fullyKnownInitialCancellationMayCloseOnce(M10B1ClosureObservationsTest.java:13)
+
+FAILURES!!!
+Tests run: 18,  Failures: 18
+

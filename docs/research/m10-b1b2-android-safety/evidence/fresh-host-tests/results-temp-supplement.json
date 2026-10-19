@@ -1,0 +1,27 @@
+{
+  "apkSupplementHostProof": "test-supplement-host-proof.json",
+  "deviceOperationsByThisAgent": 0,
+  "errors": 0,
+  "exitCode": 0,
+  "failures": 0,
+  "newTempTests": 2,
+  "oldEvidenceChanged": false,
+  "scope": "HOST_ONLY_TEMP_AND_APK_SUPPLEMENT_SEAMS",
+  "sourceSHA256": {
+    "fresh_avd_identity.py": "69bc3fba1a6330fd990418dc327b7bfccc4c99791f127ac80450528dfd44d219",
+    "fresh_environment.py": "ce9d52b7543d4a20dda7615ad93f7a2255f4813c35f5420f15ccd680a92db8e8",
+    "test_fresh_environment.py": "f54a783762c404e9ece01f96fc4ea6f41b0aac450a915c730545e4fe3c889479"
+  },
+  "tempPolicy": "Preserve only observed empty hsperfdata_CDD; allocate exclusive emulator-session child; existing child or unknown/nonempty residual blocks before marker/Popen; no cleanup/retry.",
+  "tempRED": {
+    "errors": 1,
+    "log": "temp-seam-red.log",
+    "methods": 2,
+    "observedError": "Fresh runtime temp not empty before Popen; kept as real regression evidence",
+    "pass": 1
+  },
+  "testLog": "green-temp-and-supplement.log",
+  "testLogSHA256": "03fef6d594181799e8d6a52c320f597aa80749b04d35974d943b829089211e7d",
+  "testsRun": 20,
+  "uniqueTestMethods": 20
+}

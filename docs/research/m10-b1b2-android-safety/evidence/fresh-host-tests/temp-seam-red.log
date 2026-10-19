@@ -1,0 +1,19 @@
+test_empty_java_perf_directory_is_preserved_with_fresh_child_temp (test_fresh_environment.FreshEnvironmentTest.test_empty_java_perf_directory_is_preserved_with_fresh_child_temp) ... ERROR
+test_existing_child_or_nonempty_perf_stops_before_marker_and_popen (test_fresh_environment.FreshEnvironmentTest.test_existing_child_or_nonempty_perf_stops_before_marker_and_popen) ... ok
+
+======================================================================
+ERROR: test_empty_java_perf_directory_is_preserved_with_fresh_child_temp (test_fresh_environment.FreshEnvironmentTest.test_empty_java_perf_directory_is_preserved_with_fresh_child_temp)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 198, in test_empty_java_perf_directory_is_preserved_with_fresh_child_temp
+    item.start()
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\fresh_environment.py", line 320, in start
+    need(temporary.is_dir() and not any(temporary.iterdir()), "Fresh runtime temp not empty")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 51, in need
+    raise RuntimeError(message)
+RuntimeError: Fresh runtime temp not empty
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.068s
+
+FAILED (errors=1)

@@ -1,0 +1,11 @@
+{
+  "status": "BLOCKED_BEFORE_INSTALL_COMMAND",
+  "observationUtc": "2026-10-19T09:06:53.901548+00:00",
+  "sourceSHA256": "a7b5c17c5e1d756ab59376e120e259a58237ecee3db65b97f6aeafe674e6734c",
+  "exitCode": 1,
+  "actualError": "New locked Test APK bytes differ",
+  "cause": "Stale v2 byte-count constant 2094286, while final audited v3 is 2118862",
+  "installMarkerExists": false,
+  "testInstallCommandsIssued": 0,
+  "evidenceType": "Decoded tool completion and source order; not reconstructed raw stderr"
+}

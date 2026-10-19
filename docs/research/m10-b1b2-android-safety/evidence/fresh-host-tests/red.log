@@ -1,0 +1,114 @@
+test_both_profiles_have_only_new_roots_names_and_serials (test_fresh_environment.FreshEnvironmentTest.test_both_profiles_have_only_new_roots_names_and_serials) ... FAIL
+test_child_environment_removes_old_home_without_global_change (test_fresh_environment.FreshEnvironmentTest.test_child_environment_removes_old_home_without_global_change) ... FAIL
+test_fresh_marker_is_exclusive_bound_and_cannot_reset (test_fresh_environment.FreshEnvironmentTest.test_fresh_marker_is_exclusive_bound_and_cannot_reset) ... FAIL
+test_new_targeted_adb_uses_only_5664 (test_fresh_environment.FreshEnvironmentTest.test_new_targeted_adb_uses_only_5664) ... FAIL
+test_no_test_cleanup_exit_or_retry_cli_entry (test_fresh_environment.FreshEnvironmentTest.test_no_test_cleanup_exit_or_retry_cli_entry) ... ERROR
+test_old_adopt_resume_and_reconcile_are_disabled (test_fresh_environment.FreshEnvironmentTest.test_old_adopt_resume_and_reconcile_are_disabled) ... ERROR
+test_old_and_unknown_serials_rejected_before_command (test_fresh_environment.FreshEnvironmentTest.test_old_and_unknown_serials_rejected_before_command) ... FAIL
+test_private_log_module_does_not_change_old_allowed_serials (test_fresh_environment.FreshEnvironmentTest.test_private_log_module_does_not_change_old_allowed_serials) ... ERROR
+
+======================================================================
+ERROR: test_no_test_cleanup_exit_or_retry_cli_entry (test_fresh_environment.FreshEnvironmentTest.test_no_test_cleanup_exit_or_retry_cli_entry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 82, in test_no_test_cleanup_exit_or_retry_cli_entry
+    s.OPERATIONS)
+    ^^^^^^^^^^^^
+AttributeError: module 'fresh_b1b2_environment' has no attribute 'OPERATIONS'
+
+======================================================================
+ERROR: test_old_adopt_resume_and_reconcile_are_disabled (test_fresh_environment.FreshEnvironmentTest.test_old_adopt_resume_and_reconcile_are_disabled)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 69, in test_old_adopt_resume_and_reconcile_are_disabled
+    with self.assertRaises(RuntimeError): getattr(item, name)()
+                                          ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 277, in adopt
+    self.verify_avd()
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 256, in verify_avd
+    self.audit()
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-jpeg-android-isolated\validate.py", line 216, in audit
+    report = json.loads((ROOT / "build/android-validation/environment-audit.json").read_text(encoding="utf-8"))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\CDD\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'E:\\CODEX\\.codex\\worktrees\\lithic-b1b2-android\\��ʯ��APP\\build\\android-validation\\environment-audit.json'
+
+======================================================================
+ERROR: test_private_log_module_does_not_change_old_allowed_serials (test_fresh_environment.FreshEnvironmentTest.test_private_log_module_does_not_change_old_allowed_serials)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 76, in test_private_log_module_does_not_change_old_allowed_serials
+    fresh = s.capture_module()
+            ^^^^^^^^^^^^^^^^
+AttributeError: module 'fresh_b1b2_environment' has no attribute 'capture_module'
+
+======================================================================
+FAIL: test_both_profiles_have_only_new_roots_names_and_serials (test_fresh_environment.FreshEnvironmentTest.test_both_profiles_have_only_new_roots_names_and_serials)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 18, in test_both_profiles_have_only_new_roots_names_and_serials
+    self.assertEqual(f"Lithic_M10B1B2_API{api}_20261019", p["name"])
+AssertionError: 'Lithic_M10B1B2_API26_20261019' != 'Lithic_M10V_API26_20261018'
+- Lithic_M10B1B2_API26_20261019
+?           ^^^^              ^
++ Lithic_M10V_API26_20261018
+?           ^              ^
+
+
+======================================================================
+FAIL: test_child_environment_removes_old_home_without_global_change (test_fresh_environment.FreshEnvironmentTest.test_child_environment_removes_old_home_without_global_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 50, in test_child_environment_removes_old_home_without_global_change
+    self.assertEqual("emulator-5664", child["ANDROID_SERIAL"])
+AssertionError: 'emulator-5664' != 'emulator-5624'
+- emulator-5664
+?            ^
++ emulator-5624
+?            ^
+
+
+======================================================================
+FAIL: test_fresh_marker_is_exclusive_bound_and_cannot_reset (test_fresh_environment.FreshEnvironmentTest.test_fresh_marker_is_exclusive_bound_and_cannot_reset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 64, in test_fresh_marker_is_exclusive_bound_and_cannot_reset
+    self.assertIn(b"08ce4b663b52127f400fa18bd13eb12fe04a8797", first)
+AssertionError: b'08ce4b663b52127f400fa18bd13eb12fe04a8797' not found in b'{\n  "api": 26,\n  "avd": "Lithic_M10V_API26_20261018",\n  "data": "E:\\\\CODEX\\\\.codex\\\\research-env\\\\lithic-m10-android-20261018-v1\\\\api26\\\\data\\\\Lithic_M10V_API26_20261018.avd",\n  "operation": "create",\n  "serial": "emulator-5624",\n  "status": "ATTEMPT_ISSUED",\n  "utc": "2026-10-19T07:46:22.008880+00:00"\n}\n'
+
+======================================================================
+FAIL: test_new_targeted_adb_uses_only_5664 (test_fresh_environment.FreshEnvironmentTest.test_new_targeted_adb_uses_only_5664)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 36, in test_new_targeted_adb_uses_only_5664
+    self.assertEqual(["-s", "emulator-5664", "get-state"], item.run.call_args.args[0][1:])
+AssertionError: Lists differ: ['-s', 'emulator-5664', 'get-state'] != ['-s', 'emulator-5624', 'get-state']
+
+First differing element 1:
+'emulator-5664'
+'emulator-5624'
+
+- ['-s', 'emulator-5664', 'get-state']
+?                    ^
+
++ ['-s', 'emulator-5624', 'get-state']
+?                    ^
+
+
+======================================================================
+FAIL: test_old_and_unknown_serials_rejected_before_command (test_fresh_environment.FreshEnvironmentTest.test_old_and_unknown_serials_rejected_before_command)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_fresh_environment.py", line 42, in test_old_and_unknown_serials_rejected_before_command
+    with self.assertRaises(RuntimeError): item.adb("get-state")
+AssertionError: RuntimeError not raised
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.084s
+
+FAILED (failures=5, errors=3)

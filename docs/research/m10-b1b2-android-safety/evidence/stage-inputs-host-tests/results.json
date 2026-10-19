@@ -1,0 +1,47 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "docs\\research\\m10-b1b2-android-safety",
+    "-p",
+    "test_stage_inputs.py",
+    "-v"
+  ],
+  "exitCode": 0,
+  "green": "4 PASS, 0 FAIL, 0 ERROR",
+  "limitations": [
+    "Android shell -T / binary stdin / mode / remote SHA checks are executable design only, NOT_RUN by this agent.",
+    "Current Test artifact supplement must be locked by root before actual transfer.",
+    "UNKNOWN or timeout keeps created input directory/files; no retry or delete entry exists."
+  ],
+  "raw": {
+    "stderr.raw": {
+      "bytes": 753,
+      "sha256": "5a40d85018f4d89f33053f67bc6ca695c05437209db09c113b5b23c8d4124907"
+    },
+    "stdout.raw": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "red": {
+    "errors": 3,
+    "log": "red.log",
+    "methods": 3,
+    "reason": "Missing pure helpers before extraction; no device action"
+  },
+  "scope": "PURE_HOST_ONLY_NO_BINARY_TRANSFER_OR_ANDROID_QUERY",
+  "sourceAfterSHA256": {
+    "stage_inputs.py": "b87be0124e00df535614bdff1bdfbe2aade0ace1ad23001d09eb1ecdd64d5eb7",
+    "test_stage_inputs.py": "77752ee541ab6241285269ecdda596d0d8d4986e01ee1955fb05cfb266a4c40c"
+  },
+  "sourceBeforeSHA256": {
+    "stage_inputs.py": "b87be0124e00df535614bdff1bdfbe2aade0ace1ad23001d09eb1ecdd64d5eb7",
+    "test_stage_inputs.py": "77752ee541ab6241285269ecdda596d0d8d4986e01ee1955fb05cfb266a4c40c"
+  },
+  "sourceUnchanged": true,
+  "uniqueTestMethods": 4
+}

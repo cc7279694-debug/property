@@ -1,0 +1,54 @@
+{
+  "callContractsFirstRun": {
+    "errors": 1,
+    "log": "green-call-contracts.log",
+    "meaning": "Synthetic fixture lacked env; corrected only fixture, original error retained",
+    "methods": 13
+  },
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "docs\\research\\m10-b1b2-android-safety",
+    "-p",
+    "test_fresh_environment.py",
+    "-v"
+  ],
+  "errors": 0,
+  "exitCode": 0,
+  "failures": 0,
+  "noClaim": "No real creation/start/install/CIM/ADB/capture/JUnit/Android result is established by these host tests.",
+  "raw": {
+    "stderr.raw": {
+      "bytes": 2268,
+      "sha256": "a777dc076cd3d12fb87dd7e1f21dcfe1694663a8d479de586c7179fb5c6746d3"
+    },
+    "stdout.raw": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "red": {
+    "errors": 3,
+    "failures": 5,
+    "log": "red.log",
+    "meaning": "Previous old target assumptions and missing fresh entrypoints; raw failures preserved",
+    "methods": 8
+  },
+  "scope": "SYNTHETIC_HOST_ONLY_ZERO_ANDROID_OR_SDK_INVOCATIONS",
+  "sourceAfterSHA256": {
+    "fresh_avd_identity.py": "69bc3fba1a6330fd990418dc327b7bfccc4c99791f127ac80450528dfd44d219",
+    "fresh_environment.py": "2cf76606f03afcc1d2f5dbec33b0d48733ac53eb8a6e3824ffb27eaaaaf8e065",
+    "test_fresh_environment.py": "683ed5e061d00b296995d1d9dc5fd2961ac991b498ee134283611dada2f8d6c6"
+  },
+  "sourceBeforeSHA256": {
+    "fresh_avd_identity.py": "69bc3fba1a6330fd990418dc327b7bfccc4c99791f127ac80450528dfd44d219",
+    "fresh_environment.py": "2cf76606f03afcc1d2f5dbec33b0d48733ac53eb8a6e3824ffb27eaaaaf8e065",
+    "test_fresh_environment.py": "683ed5e061d00b296995d1d9dc5fd2961ac991b498ee134283611dada2f8d6c6"
+  },
+  "sourceUnchanged": true,
+  "testsRun": 13,
+  "uniqueTestMethods": 13
+}

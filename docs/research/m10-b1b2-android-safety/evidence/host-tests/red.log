@@ -1,0 +1,141 @@
+test_any_existing_registration_blocks (test_supervise.HostPreconditionTest.test_any_existing_registration_blocks) ... FAIL
+test_existing_base_is_not_reused (test_supervise.HostPreconditionTest.test_existing_base_is_not_reused) ... FAIL
+test_memory_cannot_exceed_total_observed_memory (test_supervise.HostPreconditionTest.test_memory_cannot_exceed_total_observed_memory) ... FAIL
+test_missing_malformed_or_bool_memory_is_unknown_blocked (test_supervise.HostPreconditionTest.test_missing_malformed_or_bool_memory_is_unknown_blocked) ... FAIL
+test_missing_port_or_registration_observation_blocks (test_supervise.HostPreconditionTest.test_missing_port_or_registration_observation_blocks) ... FAIL
+test_occupied_target_port_blocks (test_supervise.HostPreconditionTest.test_occupied_target_port_blocks) ... FAIL
+test_old_base_or_wrong_scope_never_inherits_authorization (test_supervise.HostPreconditionTest.test_old_base_or_wrong_scope_never_inherits_authorization) ... FAIL
+test_one_kib_below_unchanged_threshold_still_blocks (test_supervise.HostPreconditionTest.test_one_kib_below_unchanged_threshold_still_blocks) ... FAIL
+test_real_locked_input_blocks_memory_without_android_claim (test_supervise.HostPreconditionTest.test_real_locked_input_blocks_memory_without_android_claim) ... FAIL
+test_threshold_equality_is_host_only_not_android_admission (test_supervise.HostPreconditionTest.test_threshold_equality_is_host_only_not_android_admission) ... ERROR
+
+======================================================================
+ERROR: test_threshold_equality_is_host_only_not_android_admission (test_supervise.HostPreconditionTest.test_threshold_equality_is_host_only_not_android_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 39, in test_threshold_equality_is_host_only_not_android_admission
+    self.assertEqual("NOT_RUN", result["processIdentity"])
+                                ~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'processIdentity'
+
+======================================================================
+FAIL: test_any_existing_registration_blocks (test_supervise.HostPreconditionTest.test_any_existing_registration_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 54, in test_any_existing_registration_blocks
+    self.assertBlocked(value, "FRESH_REGISTRATIONS_NOT_ABSENT")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+======================================================================
+FAIL: test_existing_base_is_not_reused (test_supervise.HostPreconditionTest.test_existing_base_is_not_reused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 48, in test_existing_base_is_not_reused
+    self.assertBlocked(self.ready_host, "FRESH_BASE_NOT_ABSENT")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+======================================================================
+FAIL: test_memory_cannot_exceed_total_observed_memory (test_supervise.HostPreconditionTest.test_memory_cannot_exceed_total_observed_memory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 78, in test_memory_cannot_exceed_total_observed_memory
+    self.assertBlocked(self.ready_host, "MEMORY_OBSERVATION_INVALID")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+======================================================================
+FAIL: test_missing_malformed_or_bool_memory_is_unknown_blocked (test_supervise.HostPreconditionTest.test_missing_malformed_or_bool_memory_is_unknown_blocked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 60, in test_missing_malformed_or_bool_memory_is_unknown_blocked
+    self.assertBlocked(value, "MEMORY_OBSERVATION_INVALID")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+======================================================================
+FAIL: test_missing_port_or_registration_observation_blocks (test_supervise.HostPreconditionTest.test_missing_port_or_registration_observation_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 74, in test_missing_port_or_registration_observation_blocks
+    self.assertBlocked(value, reason)
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+======================================================================
+FAIL: test_occupied_target_port_blocks (test_supervise.HostPreconditionTest.test_occupied_target_port_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 44, in test_occupied_target_port_blocks
+    self.assertBlocked(self.ready_host, "TARGET_PORTS_NOT_PROVEN_EMPTY")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+======================================================================
+FAIL: test_old_base_or_wrong_scope_never_inherits_authorization (test_supervise.HostPreconditionTest.test_old_base_or_wrong_scope_never_inherits_authorization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 67, in test_old_base_or_wrong_scope_never_inherits_authorization
+    self.assertBlocked(observation, "OBSERVATION_SCOPE_CONFLICT")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+======================================================================
+FAIL: test_one_kib_below_unchanged_threshold_still_blocks (test_supervise.HostPreconditionTest.test_one_kib_below_unchanged_threshold_still_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 33, in test_one_kib_below_unchanged_threshold_still_blocks
+    self.assertBlocked(self.ready_host, "INSUFFICIENT_FREE_HOST_MEMORY")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+======================================================================
+FAIL: test_real_locked_input_blocks_memory_without_android_claim (test_supervise.HostPreconditionTest.test_real_locked_input_blocks_memory_without_android_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 29, in test_real_locked_input_blocks_memory_without_android_claim
+    self.assertBlocked(self.observed, "INSUFFICIENT_FREE_HOST_MEMORY")
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\��ʯ��APP\docs\research\m10-b1b2-android-safety\test_supervise.py", line 20, in assertBlocked
+    self.assertEqual("BLOCKED", result["status"])
+AssertionError: 'BLOCKED' != 'HOST_PRECONDITIONS_ONLY'
+- BLOCKED
++ HOST_PRECONDITIONS_ONLY
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.008s
+
+FAILED (failures=9, errors=1)

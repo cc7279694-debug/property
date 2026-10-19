@@ -1,0 +1,23 @@
+.....E........E.......
+======================================================================
+ERROR: test_bundle_script_requires_bounded_dd_and_pipefail_before_output (test_safety_device.SafetyDeviceTest.test_bundle_script_requires_bounded_dd_and_pipefail_before_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\砺石新APP\docs\research\m10-b1b2-android-safety\test_safety_device.py", line 171, in test_bundle_script_requires_bounded_dd_and_pipefail_before_output
+    script=s.bundle_script([path],{path:16384})
+           ^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'bundle_script'
+
+======================================================================
+ERROR: test_host_posix_first_pipeline_failure_stops_without_complete_end (test_safety_device.SafetyDeviceTest.test_host_posix_first_pipeline_failure_stops_without_complete_end)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-b1b2-android\砺石新APP\docs\research\m10-b1b2-android-safety\test_safety_device.py", line 183, in test_host_posix_first_pipeline_failure_stops_without_complete_end
+    script=s.bundle_script([path],{path:16384})
+           ^^^^^^^^^^^^^^^
+AttributeError: module 'safety_device' has no attribute 'bundle_script'
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.045s
+
+FAILED (errors=2)
