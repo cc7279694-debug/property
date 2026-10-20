@@ -1,5 +1,7 @@
 # 验收登记
 
+当前正式结论：**M12 — ACCEPTED / FROZEN — PASS WITH NOTES**，评审`e34187632468c9c3aaf7bb5d04d30a26320a18b0`，见[本次正式登记](#m12正式冻结登记2026-10-20)。本次仅文档回写；下方旧交付段落保留当时状态，不将Q06整体CLOSED，M13未授权。
+
 ## M11正式独立冻结登记（2026-10-20）
 
 - 来源：用户本轮正式转交ChatGPT独立验收，M11 **ACCEPTED / FROZEN — PASS WITH NOTES**。
@@ -9,9 +11,9 @@
 - 本节只是独立结论登记，未因文档回写重跑测试。原M11-A限定冻结保留；M10 PENDING / DEFERRED和UI-C1冻结不变，M12本轮获开发授权但未经独立验收不得FROZEN。
 
 
-本文件记录 M00～M09 实际执行与独立验收历史，以及M11-A核心冻结与M11-B候选的执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
+本文件记录 M00～M09 实际执行与独立验收历史，以及M11-A/M11/M12的执行与正式冻结登记；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅备份核心已由用户转交独立冻结结论；M11已按顶部独立结论正式限定冻结；文末候选READY_FOR_REVIEW保留为历史执行记录；M12现按本轮契约获开发授权、未冻结。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；各次新增执行分节记录，不回填历史。
+日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅备份核心已由用户转交独立冻结结论；M11已按其独立结论正式限定冻结；文末候选READY_FOR_REVIEW保留为历史执行记录；M12已按[本次独立结论](#m12正式冻结登记2026-10-20)正式冻结（PASS WITH NOTES）。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；各次新增执行分节记录，不回填历史。
 
 ## 独立验收记录
 
@@ -721,3 +723,30 @@ BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝�
 第一例许可shell回读仅LF→CRLF，监督器中断；同一许可原始485B的exec-out/设备SHA严格一致，没有重复终止，随后首次独立重启PASS。外层ADB退出码未取得仍为null/NOT_CAPTURED，不补记0；Android中断、kill-intent、旧PID消失及新进程完整核验均保留。前期Runner清单被AGP覆写已在安装前拦截、修为显式Test构建开关；名字/安装前缀解析差异均留原证据，无重复安装/故障方法。
 
 仅上述真实子门禁待独立验收，**不自行将M12或Q06整体ACCEPTED/FROZEN/CLOSED**。坏新代后再终止、清理中终止、真实断电/LMK/ENOSPC及未测平台保持NOT_RUN；全部原报告/130案例/历史FAIL/UNKNOWN/NOTES保留。M10 PENDING/DEFERRED、UI-C1冻结不变，M13未授权。更多故障不自动执行。
+
+## M12正式冻结登记（2026-10-20）
+
+**正式结论：ACCEPTED / FROZEN — PASS WITH NOTES。** 来源为用户本轮正式转交的ChatGPT独立验收结论；评审提交及本次文档回写起点为`e34187632468c9c3aaf7bb5d04d30a26320a18b0`，分支`codex/m12-process-death-validation`，仓库`cc7279694-debug/property`。原M12候选提交为`b5691419ad8f113b837a4cb16e4c1e47227e2752`。下方登记的是此前实际执行证据获得独立认可，**本次没有重新运行产品测试、构建、安装或设备操作**。上文候选交付时的PENDING和历史NOT_RUN保留原语境，当前正式状态以本节为准；原报告、结果、checkpoint和130条规划原件均不改写。
+
+### 冻结范围与既有证据
+
+- M12安全完整恢复：严格format v1 / ZIP与七表关联校验、预览及明确覆盖确认、独立私有generation完整重建、设置和JPEG/PNG原字节、验证后AtomicFile切换、持久首次打开回退、旧写任务退休及已知前代保守清理；不修改Room v2、冻结业务算法或备份格式。
+- **96项JVM PASS**（33项M12新增＋63项定向回归），[逐类结果](evidence/m12/jvm-results.json)。**74项Android唯一方法PASS**（35新增＋39回归），[逐类结果](evidence/m12/android-results.json)：73项使用Test `88e9c1a…`，最终真实SAF续接1项使用`d426c58e…`，不能写成同一Test身份的一次全量回归。
+- **真实SAF恢复PASS**：[原候选报告](evidence/M12-verification.md)、[原证明](evidence/m12/saf-restore-proof.json)及[截图](evidence/m12/saf-restore-success.png)。从M11的3691B合成备份预览取消，再确认覆盖；七表/设置和五张登记JPEG/合法PNG原字节一致，旧独有类别不混入。旧两次驱动FAIL及claims、全部RED/初始化错误保持历史原样，不改成PASS。
+- **M12-T04三个真实进程终止场景PASS**：[三点报告](evidence/M12-process-death-verification.md)、[原始结果](evidence/m12-process-death/results.json)。每场景一次自身终止，分别由新进程独立验证所选代七表、设置、媒体原字节、完整性/外键及再次打开；不将预期中断调用计为JUnit PASS，也不把同一核验方法的三种case重复计为三个唯一方法。
+
+| 真实终止点 | 终止PID → 独立核验PID | 重启结果 | 独立验收登记 |
+|---|---|---|---|
+| 切换前 | 9900 → 10092 | 完整旧A，新候选未生效 | PASS |
+| SWITCHING持久化后 | 10360 → 10534 | 完整新B，无混合数据集 | PASS |
+| STABLE持久化后 | 10799 → 10975 | 保持完整新B，不回到陈旧旧集 | PASS |
+
+### 必须保留的NOTES与未运行边界
+
+1. **第一例ADB外层退出码仍NOT_CAPTURED**：原`exitCode=null`、`exitCodeStatus=NOT_CAPTURED_AFTER_SUPERVISOR_ASSERTION`不改。shell回读485B许可多出CR的观察原样保留；随后原始字节与设备SHA严格一致、没有重发终止，并取得首次独立重启核验。不能补写外层exit0，也不能把Android中断代码当作Windows客户端退出码。[原记录](evidence/m12-process-death/BEFORE_SWITCH/execute-command.json)、[精确字节核对](evidence/m12-process-death/BEFORE_SWITCH/permit-readback-analysis.json)。
+2. **Q06不整体CLOSED**：本次认可三个指定真实终止子门禁；坏新代后再次终止、旧代清理中途终止、真实断电、真实LMK、真实磁盘耗尽/永久阻塞提供方等未运行项继续NOT_RUN。既有受控回退、未知残留保守保护的证据不替代这些故障实测。
+3. **平台边界继续NOT_RUN**：API26、真机/OEM、Release/正式签名、完整TalkBack、真实权限撤回与提供方断电持久性等既有未执行事项保持，不扩大API36合成场景结论。
+4. **恢复与媒体边界不变**：未知准备残留保守保留，不猜测递归清理；多份副本需要额外磁盘空间，payload预算不是整机资源硬上限；SAF阻塞取消不保证即时；登记媒体原字节恢复不等于M10严格JPEG导入通过，Q05及其他跨模块边界保持。
+5. **M10 PENDING / DEFERRED**、三项历史JPEG FAIL、全部UNKNOWN/NOT_RUN/安全NOTES、原始证据及H2/C2/M10等受保护现场不变；UI-C1与M00～M09、M11原冻结结论不变。不自动合并、发布、重跑或进入M13。
+
+本次仅对当前状态、验收登记和决策记录做文档回写，检查范围/链接/敏感信息与Git差异后提交推送当前功能分支。冻结依据是用户转交的ChatGPT正式结论，本地文档核对或辅助审阅不是新的一轮独立验收或产品测试。

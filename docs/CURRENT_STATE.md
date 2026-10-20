@@ -6,10 +6,10 @@
 
 - **M11-A — ACCEPTED / FROZEN — PASS WITH NOTES（仅备份核心）**：用户本轮明确转交ChatGPT独立验收结论，锁定来源`79771fcf5978a938d240d517dd4dacb1d21021a6`。原报告、113项JVM和5项Android源码、未运行媒体/SAF及临时文件NOTES保持历史原样；不把独立审查登记为重跑测试。
 - **M11 — ACCEPTED / FROZEN — PASS WITH NOTES**：用户本轮转交ChatGPT独立结论，评审`635e33a57c66c286fa5c19f009a5565a1e70b8e2`；仅限冻结M09/schema2、format1完整手动导出、登记JPEG/PNG原字节及真实SAF。149 JVM、16＋1分两Test身份的既有执行证据与全部旧失败/NOT_RUN原样保留，不是本轮重跑。原M11-A核心限定冻结不变。[正式登记](ACCEPTANCE_MATRIX.md#m11正式独立冻结登记2026-10-20)。
-- **M12 — READY_FOR_REVIEW / PENDING_INDEPENDENT_REVIEW（未冻结）**：原b5691419ad8f113b837a4cb16e4c1e47227e2752候选及96 JVM/74 Android证据保留。本轮`codex/m12-process-death-validation`在原全合成API36完成BEFORE_SWITCH、持久SWITCHING、持久STABLE三个自身终止点，各仅一次；三个独立新进程的七表/设置/原媒体及二次打开核验均PASS。正式App原SHA3bb0d801…及默认账本完全不变，专用Test e23be35a…只更新一次。指定M12-T04/Q06进程门禁已取得真实证据，仍待ChatGPT独立验收，不自行FROZEN。[本轮集中报告](evidence/M12-process-death-verification.md)，[原候选报告](evidence/M12-verification.md)。
-- **本轮许可与停止点**：仅复用`Lithic_M11B_Final_API36_20261020 / emulator-5686`原实例和三个新合成目录，核实准确PID/UID/startTicks后由测试调用自身终止3次；已完成并停止新增实验。AVD创建/启动/停止0，App安装0，Test同签名更新1。H2/C2/M10/私人数据不访问；不自动重跑、清理、断电、终止模拟器或进入M13。
-- **M10 — PENDING / DEFERRED**：候选`codex/m10-b1b2-android-safety-resume`仍为`732333b7a2803ec1f4487e437a581979a270e3ee`，不合并。三JPEG历史FAIL及全部UNKNOWN/NOT_RUN/NOTES、未入Git设备记录、H2/C2/M10保留现场均未改。本轮仅复用既有合成API36 `Lithic_M11B_Final_API36_20261020 / emulator-5686`；旧设备不访问/清理/重跑。保留的[M10末次报告](https://github.com/cc7279694-debug/property/blob/732333b7a2803ec1f4487e437a581979a270e3ee/docs/research/M10_B1B2_MAINLINE_RESULTS.md)不改判。
-- **继承边界**：M00～M09与UI-C1冻结结论保留；本分支不含M10 Worker/Stage V2/JNI或UI-C1页面，不改Room schema/DAO/领域/备份format v1/业务事实。M11-B设置页是本轮授权的必要产品入口。下方旧模块授权与数字仅为历史。
+- **M12 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户本轮正式转交的ChatGPT独立验收结论，评审提交`e34187632468c9c3aaf7bb5d04d30a26320a18b0`。原M12候选`b5691419ad8f113b837a4cb16e4c1e47227e2752`的96项JVM、74项Android及真实SAF恢复证据，连同M12-T04三个真实进程终止场景PASS，均作为冻结依据登记；本次不重跑。第一例ADB外层exit=null / NOT_CAPTURED保持，完整Q06不整体CLOSED。[正式验收登记](ACCEPTANCE_MATRIX.md#m12正式冻结登记2026-10-20)，[原候选报告](evidence/M12-verification.md)，[三点报告](evidence/M12-process-death-verification.md)。
+- **本轮仅冻结回写**：只更新CURRENT_STATE、ACCEPTANCE_MATRIX及DECISIONS并提交推送当前分支。测试、构建、APK、设备、原始证据和保留现场均不操作；正式结论来自用户转交的独立验收，不是本轮新增测试PASS。提交后停止，M13未授权，等待用户决定。
+- **M10 — PENDING / DEFERRED**：候选`codex/m10-b1b2-android-safety-resume`仍为`732333b7a2803ec1f4487e437a581979a270e3ee`，不合并。三JPEG历史FAIL及全部UNKNOWN/NOT_RUN/NOTES、未入Git设备记录、H2/C2/M10保留现场均未改。既有合成API36及H2/C2/M10等全部受保护现场不访问、不清理、不重跑；本轮无设备操作。保留的[M10末次报告](https://github.com/cc7279694-debug/property/blob/732333b7a2803ec1f4487e437a581979a270e3ee/docs/research/M10_B1B2_MAINLINE_RESULTS.md)不改判。
+- **继承边界**：M00～M09与UI-C1冻结结论保留；本分支不含M10 Worker/Stage V2/JNI或UI-C1页面，不改Room schema/DAO/领域/备份format v1/业务事实。既有M11/M12设置入口及产品代码本轮不修改。下方旧模块授权与数字仅为历史。
 - **已知限制**：准备中断的未知私有半文件保守保留，不做递归扫盘；临时副本与ZIP可能同时占用空间，payload预算不是整个磁盘硬上限。SAF阻塞调用不能保证即时取消；成功只证明已观察到关闭并读回相同字节，不承诺提供方断电持久性。Q05原字节及完整M12往返边界不变。
 
 ## 继承的冻结基线与历史验证
@@ -45,25 +45,25 @@
 ## Pending / Current Problems / Technical Debt
 
 - **M07 NOTES 继续有效：**ProjectAbsent 只确认当前不存在，不证明历史删除操作身份；多条旧 END_SETTLEMENT 明确冲突，没有自动修复；媒体数据/文件生命周期清理归 M10。原20条 Lint 提示及历史执行证据保留。M05 写后刷新与分页交接已在 M06 实施并独立验收，不改写历史 NOTES。
-- Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q02 M17/M18 视图集成仍 NOT_RUN。Q03 长期100/1000日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M12导入/切换/共同校验与受控回退已有原候选证据；本轮三个指定真实进程终止子门禁PASS待独立审查，Q06-V01～V03更广真实故障（坏新代后再终止、清理中终止等）仍NOT_RUN，不整体CLOSED。原 ZIP/43 原件/24 模块、130 案例及16组完整跨模块补测不改。
+- Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q02 M17/M18 视图集成仍 NOT_RUN。Q03 长期100/1000日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M12导入/切换/共同校验与受控回退已有原候选证据；三个指定真实进程终止子门禁PASS已由用户转交的本次独立结论确认，Q06-V01～V03更广真实故障（坏新代后再终止、清理中终止等）仍NOT_RUN，不整体CLOSED。原 ZIP/43 原件/24 模块、130 案例及16组完整跨模块补测不改。
 - [M09 两项流程风险](SPEC_ISSUES.md)由用户M09指令明确A/B产品规则：允许同身份重开，默认固定最晚已确认付费边界；保持USER_CONFIRMED / IMPLEMENTED / VERIFIED及原来源，两个流程风险已按模块证据关闭，现获独立审查认可。原全量失败及诊断保留，不由本次回写重新实施或验证。M04 首次初始化中断残留 generation 不得静默清除真实数据；M08 版本预检与无损升级已完成，不能代替 M12 完整恢复/故障回退。
 - **CurrentAbsence：**只证明当前缺失，不提供永久删除操作日志；继续保留M07的ProjectAbsent和旧END_SETTLEMENT冲突边界。
 - **空间不足：**真实 SQLite 满页可能被 Android/Room 回滚异常表现为普通 DATABASE；继续保留输入、事务原子性及同命令恢复，不按消息猜测或宣称所有磁盘满均准确分类。
 - **性能与恢复：**全量存储事实预检在长期大数据下的性能仍待M22验证；1000 条分页是正确性/查询范围验证，不是长期性能基准，必要完整历史计算不保证无限历史恒定耗时。SavedState 不是持久业务草稿；已保存任务的 SIGKILL/Recents 不保证未保存状态、force-stop、断电或真实LMK后的未持久化草稿恢复。
-- **数据保障：**M11完整导出已冻结，M12恢复及本轮三个终止点已提供候选证据、仍待独立验收；Debug 暂不用于不可丢失的长期个人记录。M10 媒体、M13 汇总、M14 搜索/类别 CRUD、替换、多段复用、图表/排行、单独资金事件删除及后续集成保持原边界/NOT_RUN。
+- **数据保障：**M11完整导出已冻结，M12安全恢复及三个指定终止点已独立冻结（PASS WITH NOTES），仍不代表所有平台/故障路径已验证；Debug 暂不用于不可丢失的长期个人记录。M10 媒体、M13 汇总、M14 搜索/类别 CRUD、替换、多段复用、图表/排行、单独资金事件删除及后续集成保持原边界/NOT_RUN。
 - **平台与独立执行：**真机、API26、OEM 备份/迁移、完整 TalkBack、真实内存压力 LMK、Release/正式签名升级仍 NOT_RUN；Debug 空 ComponentActivity 测试宿主不得未经 Release 验证正式交付。M01 独立未重装，M02/M03 独立未重跑本机 Gradle，M04～M07 独立未重跑本机 Gradle/安装等全部历史 NOTES 保留。M08 独立审查未在用户 Windows 本机重新运行 Gradle、重新安装 APK 或独立核验 APK 字节；超大 JSON 未整体重新解析，验收依据源码/XML/日志/迁移及设备证据。**M09 ChatGPT独立审查未在用户Windows本机重新运行Gradle或独立核验最终APK字节。**各次Codex验收回写均未重跑产品测试；549项PASS来自M09原实施执行证据，不把独立源码审查或本次文档核查视为重新执行。TypeScript/ESLint 不适用，NO-SOURCE 不计 PASS。
 
 - **后续 schema 升级：**必须同步维护既有数据库版本预检及已知 Room 身份，不因 M08 通过就放过未知版本或结构不匹配库。
 
 ## Data / Architecture
 
-Room v2七表、Migration1→2、Settings/DataStore记录时区、AppContainer唯一owner/coordinator保持。M11-B在同一协调器持有期读取七表/设置并复制已登记媒体原字节；私有副本核验后释放协调器，随后生成完整ZIP并写手动SAF目标。目标关闭、全量读回匹配后才显示成功。媒体不完整或不受认证时明确失败。没有直接复制活动.db或自动备份。M12已在独立代重建、校验后切换并完成合成SAF往返和本轮三点真实自身终止验证；API26/真机/OEM、提供方断电持久性及更广故障仍NOT_RUN。详见[ARCHITECTURE](ARCHITECTURE.md)。
+Room v2七表、Migration1→2、Settings/DataStore记录时区、AppContainer唯一owner/coordinator保持。M11-B在同一协调器持有期读取七表/设置并复制已登记媒体原字节；私有副本核验后释放协调器，随后生成完整ZIP并写手动SAF目标。目标关闭、全量读回匹配后才显示成功。媒体不完整或不受认证时明确失败。没有直接复制活动.db或自动备份。M12已在独立代重建、校验后切换并完成合成SAF往返和此前三点真实自身终止验证（本次只登记正式冻结）；API26/真机/OEM、提供方断电持久性及更广故障仍NOT_RUN。详见[ARCHITECTURE](ARCHITECTURE.md)。
 
 ## Git
 
-- 当前分支`codex/m12-process-death-validation`，工作区`E:/CODEX/.codex/worktrees/lithic-m12-t04/砺石新APP`，起点b5691419ad8f113b837a4cb16e4c1e47227e2752本地/远端核对，起始干净；仅提交推送该分支，最终SHA见Git回执。原M12/M11/M10/UI-C1/main不改。
+- 本次冻结回写分支`codex/m12-process-death-validation`，工作区`E:/CODEX/.codex/worktrees/lithic-m12-t04/砺石新APP`；评审及回写起点`e34187632468c9c3aaf7bb5d04d30a26320a18b0`已核对本地/远端且起始干净。只提交推送本分支三份文档，最终SHA见Git回执；原M12候选、M11/M10/UI-C1/main不改。
 - M09冻结、M10正式/未冻结候选、UI-C1及main均不合并或修改；完整原规划和历史证据不改。
 
 ## Next Recommended Task
 
-本轮三个指定真实终止门禁已完成，提交后只等待ChatGPT独立验收。第一例外层ADB退出码未捕获，原许可精确字节/设备SHA、实际中断与首次重启核验独立保留，详情见报告；不得补写exit0。M12不自冻结，不进入M13或追加Q06故障实验；M10不恢复。
+M12正式冻结已登记。提交推送后停止，等待用户明确授权；不自动进入M13，不继续Q06故障实验或M10。第一例外层ADB退出码NOT_CAPTURED与全部历史FAIL/UNKNOWN/NOT_RUN/NOTES仍有效，不得补写exit0或把Q06整体CLOSED。

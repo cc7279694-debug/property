@@ -424,3 +424,25 @@ M03独立审查登记了STOPPED再启用入口和多期预付默认停止两项�
 ### Consequences
 
 不新增schema/操作审计系统/次数指标。已付剩余期可能因明确停止被截断贡献，金额-only纠错仍合法；扩张计划停止后的覆盖须先处理停止计划。已删除事实只可核对当前缺失，不提供永久command重放证明。PAUSED无覆盖仍继承M03的PAUSED主状态，辅助显示覆盖已到期。Q03～Q06及M10～M23范围不变，两项M09流程风险仅按本轮已完成真实验证关闭；独立冻结仍需ChatGPT验收。完整回归、最终APK/设备及交付证据见[M09报告](evidence/M09-verification.md)，历史失败保留，Git自身SHA和推送以实际回执为准。SavedState只覆盖系统实际保存的任务状态，不是永久草稿，也不承诺force-stop、断电或真实LMK恢复；完整备份恢复仍归M11/M12。
+
+## 2026-10-20 — M12独立冻结登记与未运行故障边界
+
+### Decision
+
+依据用户本轮正式转交的ChatGPT结论，登记 **M12 — ACCEPTED / FROZEN — PASS WITH NOTES**，评审提交`e34187632468c9c3aaf7bb5d04d30a26320a18b0`。只回写文档，不改变安全恢复架构、产品代码或任何原始证据；完整登记见[验收矩阵](ACCEPTANCE_MATRIX.md#m12正式冻结登记2026-10-20)。
+
+### Context
+
+原候选`b5691419ad8f113b837a4cb16e4c1e47227e2752`提供96项JVM、74项Android及真实SAF恢复证据，随后评审提交补齐切换前、持久SWITCHING后、持久STABLE后三个真实自身终止与独立重启核验PASS。以上均是此前执行结果，本轮没有重跑。原报告和checkpoint保留交付时的候选状态，当前状态由本次正式登记更新。
+
+### Alternatives
+
+仅因旧报告仍写PENDING而拒绝回写；为使历史看似一致而改写旧失败/证据；将三个指定子门禁扩为全部Q06 CLOSED；自动进入M13。均不符合当前用户授权。
+
+### Reason
+
+独立结论和实际证据应可追溯且分开记录：正式冻结认可限定恢复能力，不把未验证平台或故障变成PASS，也不重复执行已完成测试或接触保留现场。
+
+### Consequences
+
+第一例ADB外层exit=null / NOT_CAPTURED（原status为NOT_CAPTURED_AFTER_SUPERVISOR_ASSERTION）继续保留；真实断电/LMK、旧代清理中断、坏新代后再次终止、真实ENOSPC、API26、真机/OEM及其他原NOT_RUN不改，Q06不整体CLOSED。原96/74及三个真实场景不相互累加为新全量测试。M10 PENDING / DEFERRED、三个历史JPEG FAIL和全部安全NOTES/UNKNOWN/现场保护继承。只提交推送`codex/m12-process-death-validation`的本轮文档回写，之后停止等待用户授权；M13未自动授权。
