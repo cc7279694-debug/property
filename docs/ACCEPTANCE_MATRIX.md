@@ -768,3 +768,12 @@ BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝�
 最终同App/Test：113 JVM＋36 Android＝149唯一方法PASS，0失败/错误/跳过；新增27 JVM＋35 Android，另1项既有跨代回归。不是全历史回归。Lint 0错误/9警告；Debug与Test构建通过、最终安装SHA/签名/UID一致。App code8/0.1.0-m13-debug SHA `6b4925409db634a126dfc56cddd6fb345d0692856c6691e5eb6017491ec668da`。截图宿主裁切修正只改androidTest，App字节不变；新最终Test重新跑36项，旧结果/截图保留本地。
 
 [集中报告与原始证据](evidence/M13-verification.md)、[计数](evidence/m13/results.json)、[内部版准入](INTERNAL_RELEASE.md)。唯一许可设备原5686，默认账本/设置保护不变；无其他设备/故障操作。备份选择回调在隔离宿主接合成文件，本轮不重复声称系统SAF新通过。Release、稳定签名、真实重要数据、真机/API26/OEM、完整TalkBack/LMK/断电仍NOT_RUN；M10 PENDING / DEFERRED/三历史JPEG FAIL、UI-C1独立冻结、Q03～Q06与历史NOTES不变。M13等待独立验收，不自行ACCEPTED/FROZEN或进入M14。
+
+
+## M13-T01～T05独立结论与T06签名前置阻塞（2026-10-20）
+
+用户本轮转交对`775951b9373c67460b713548fba1f3f263e84b45`的独立结论：**T01～T05 PASS WITH NOTES；正式M13仍PENDING，T06 NOT_RUN**。此前执行报告/113 JVM/36 Android/截图和历史状态原样保留，不将本次核对登记为重跑PASS。
+
+本轮T06仅只读检查Git、正式applicationId、Gradle签名接线、已知位置的文件元数据和既有Debug APK SHA。正式包名已声明为`com.cooper.lithic`，但未发现项目发布签名配置/登记，用户长期密钥位置和备份保管尚未确认；不证明整机不存在其他密钥。未读取密钥/密码，未构建、签名、生成密钥、ADB/AVD/安装/页面或账本操作。
+
+按用户第2、6条，签名门禁BLOCKED，安装/同签名升级/真实正式页面/SAF往返及首次真实录入均NOT_RUN。[短报告与保管方案](evidence/M13-T06-readiness.md)。M10 PENDING / DEFERRED、三历史JPEG FAIL、UI-C1、Q03～Q06及全部NOTES/UNKNOWN/NOT_RUN不改。停止等待用户完成本地签名保管，不自行冻结M13或进入M14。
