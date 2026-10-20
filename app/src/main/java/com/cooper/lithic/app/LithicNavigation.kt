@@ -37,6 +37,7 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -191,8 +192,21 @@ internal fun LithicNavigation(
         }
     }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
+    val dateObserver = remember(state.businessClock, state.generationId) {
+        BusinessDateObserver(state.overview?.asOf ?: state.businessClock.today())
+    }
+    val latestRetry by androidx.compose.runtime.rememberUpdatedState(onRetryLedger)
+    LaunchedEffect(lifecycle, dateObserver, state.recordZone) {
+        lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            dateObserver.observe(state.businessClock, state.recordZone, {
+                model.refresh()
+                subscriptionModel.refresh()
+                latestRetry()
+            })
+        }
+    }
     DisposableEffect(lifecycle, model, subscriptionModel) {
-        val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) { model.refresh(); subscriptionModel.refresh(); onRetryLedger() } }
+        val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) { model.refresh(); subscriptionModel.refresh(); latestRetry() } }
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
     }
@@ -223,7 +237,7 @@ internal fun LithicNavigation(
             NavDisplay(backStack = routes, modifier = Modifier.weight(1f), onBack = onBack,
                 entryProvider = entryProvider<NavKey> {
                     entry<Home> { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
-                        subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }) }
+                        subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }, overview = state.overview) }
                     entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) }) }
                     entry<Settings> { SettingsShell(state.recordZone, backupState = backupState,

@@ -1,5 +1,16 @@
 # 当前架构事实
 
+
+## M13：首页只读汇总（2026-10-20）
+
+`ReportRepository`依附现有generation/owner和`LocalWriteCoordinator`；在锁内取得一个BusinessClock日期，使用同一个Room事务，以50个身份为一批读取完整金额/付款/状态事实。`OverviewEngine`复用冻结M02/M03，原精度BigDecimal相加；两类和类别同时产生，不从列表已加载窗口拼总额。仅新增ProjectDao只读孤儿计数，不改schema/业务写入。
+
+`LedgerUiStateHolder`持有同一次overview，监听七表变更；请求序号及repository/generation身份阻止同代旧请求与旧代迟到结果覆盖。读取失败保留带日期的上次结果并明确反馈，不显示假零。初始化失败仍走原存储保护页。
+
+现有Nav3/三栏/表单/恢复守卫保持。STARTED范围的日期观察器按记录时区下一午夜触发，最长60秒复核系统时钟变化；停止时取消，返回前台重读，不创建后台任务。跨日同时刷新项目/订阅和首页；M12恢复新代自动创建新读模型，不保存派生金额。
+
+M13测试只通过显式`m13Isolated`测试构建选择plain Application runner，真实组件在新合成私有owner中运行，不启动默认账本。正式默认runner与M12故障runner入口保留，M13不执行其故障场景。Debug仅为内部候选，稳定签名/Release另设门槛。
+
 ## M12安全恢复候选增量（2026-10-20）
 
 基于已独立冻结M11 `635e33a`、Room v2和backup format v1；不包含延期M10的Worker/Stage V2/JNI。以下为真实实现，执行结果另见当前验收登记；下方旧阶段的未实施描述保留为当时架构历史。

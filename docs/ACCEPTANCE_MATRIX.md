@@ -750,3 +750,21 @@ BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝�
 5. **M10 PENDING / DEFERRED**、三项历史JPEG FAIL、全部UNKNOWN/NOT_RUN/安全NOTES、原始证据及H2/C2/M10等受保护现场不变；UI-C1与M00～M09、M11原冻结结论不变。不自动合并、发布、重跑或进入M13。
 
 本次仅对当前状态、验收登记和决策记录做文档回写，检查范围/链接/敏感信息与Git差异后提交推送当前功能分支。冻结依据是用户转交的ChatGPT正式结论，本地文档核对或辅助审阅不是新的一轮独立验收或产品测试。
+
+
+## M13 首页与核心内部候选执行登记（2026-10-20）
+
+来源`2e298ceb87a30d436a64180ccaf7d819e55ae005`，分支`codex/m13-home-core`。用户正式授权M13及原5686合成实例中的新隔离账本/测试宿主；本节是Codex真实执行，不是ChatGPT独立冻结结论。原130条案例、历史checkpoint和所有旧FAIL/UNKNOWN/NOT_RUN不改。
+
+| 案例 | 当前执行结果 | 验证边界 |
+|---|---|---|
+| M13-T01 | PASS | 冻结M02/M03统一成本、真实Room读及UI写后刷新 |
+| M13-T02 | PASS | 活跃范围、0/负、未来开始/结束、暂停/到期/停止、预付未生效 |
+| M13-T03 | PASS | 两类/类别未舍入精确和、类别类型隔离、103＋103跨批一致读取、舍入说明 |
+| M13-T04 | PASS | 空库、有记录0、相抵0、不活跃、读取错误均区分 |
+| M13-T05 | PASS | 真实前台观察循环/Activity返回、写后刷新、备份恢复新代及旧读迟到；日期为注入业务时钟，未修改设备日期 |
+| M13-T06 | NOT_RUN | 合成核心UI闭环子项PASS；稳定签名内部版安装、正式升级与首次真实录入未执行，Debug不能替代原完整案例 |
+
+最终同App/Test：113 JVM＋36 Android＝149唯一方法PASS，0失败/错误/跳过；新增27 JVM＋35 Android，另1项既有跨代回归。不是全历史回归。Lint 0错误/9警告；Debug与Test构建通过、最终安装SHA/签名/UID一致。App code8/0.1.0-m13-debug SHA `6b4925409db634a126dfc56cddd6fb345d0692856c6691e5eb6017491ec668da`。截图宿主裁切修正只改androidTest，App字节不变；新最终Test重新跑36项，旧结果/截图保留本地。
+
+[集中报告与原始证据](evidence/M13-verification.md)、[计数](evidence/m13/results.json)、[内部版准入](INTERNAL_RELEASE.md)。唯一许可设备原5686，默认账本/设置保护不变；无其他设备/故障操作。备份选择回调在隔离宿主接合成文件，本轮不重复声称系统SAF新通过。Release、稳定签名、真实重要数据、真机/API26/OEM、完整TalkBack/LMK/断电仍NOT_RUN；M10 PENDING / DEFERRED/三历史JPEG FAIL、UI-C1独立冻结、Q03～Q06与历史NOTES不变。M13等待独立验收，不自行ACCEPTED/FROZEN或进入M14。

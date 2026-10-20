@@ -6,6 +6,7 @@ import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.core.time.ZonedBusinessClock
 import com.cooper.lithic.data.repository.ProjectRepository
 import com.cooper.lithic.data.repository.SubscriptionRepository
+import com.cooper.lithic.data.repository.ReportRepository
 import java.time.Clock
 import java.time.ZoneId
 import kotlinx.coroutines.CancellationException
@@ -15,7 +16,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -27,9 +27,12 @@ internal class LedgerUiStateHolder(
     private val mutableState = MutableStateFlow<LedgerUiState>(LedgerUiState.Initializing)
     val state: StateFlow<LedgerUiState> = mutableState.asStateFlow()
     private var recoveryWarning: String? = null
+    // Accessed on the ViewModel's Main dispatcher. An older explicit retry cannot publish later.
+    private var refreshSequence = 0L
     init {
         viewModelScope.launch {
             storageStates.collectLatest { storage ->
+                refreshSequence++
                 when (storage) {
                     StorageInitializationState.Initializing -> mutableState.value = LedgerUiState.Initializing
                     is StorageInitializationState.Failed -> mutableState.value = LedgerUiState.Failed
@@ -43,12 +46,14 @@ internal class LedgerUiStateHolder(
                                 val clock = clockFactory(zone)
                                 val repository = ProjectRepository(generation.database, generation.coordinator, clock)
                                 val subscriptions = SubscriptionRepository(generation.database, generation.coordinator, clock)
-                                LedgerUiState.Ready(repository.loadSummary().projectCount, zone, repository, clock,
-                                    subscriptions, subscriptions.loadSubscriptionCount(), readError = storage.recoveryWarning,
-                                    generationId = generation.id)
+                                val reports = ReportRepository(generation.database, generation.coordinator, clock)
+                                val overview = reports.loadOverview()
+                                LedgerUiState.Ready(overview.projectCount, zone, repository, clock,
+                                    subscriptions, overview.subscriptionCount, readError = storage.recoveryWarning,
+                                    generationId = generation.id, overview = overview, reportRepository = reports)
                             }
                             mutableState.value = ready
-                            merge(ready.repository.changes, ready.subscriptionRepository.changes).collectLatest { refresh(ready) }
+                            checkNotNull(ready.reportRepository).changes.collectLatest { refresh(ready) }
                         } catch (cancelled: CancellationException) { throw cancelled }
                         catch (_: Exception) {
                             val previous = mutableState.value
@@ -65,14 +70,18 @@ internal class LedgerUiStateHolder(
     }
     private suspend fun refresh(ready: LedgerUiState.Ready) {
         if (currentReady(ready) == null) return
+        val request = ++refreshSequence
         try {
-            val counts = withContext(Dispatchers.IO) {
-                ready.repository.loadSummary().projectCount to ready.subscriptionRepository.loadSubscriptionCount()
+            val overview = withContext(Dispatchers.IO) {
+                checkNotNull(ready.reportRepository).loadOverview()
             }
+            if (request != refreshSequence) return
             val current = currentReady(ready) ?: return
-            mutableState.value = current.copy(projectCount = counts.first, subscriptionCount = counts.second, readError = recoveryWarning)
+            mutableState.value = current.copy(projectCount = overview.projectCount, subscriptionCount = overview.subscriptionCount,
+                overview = overview, readError = recoveryWarning)
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) {
+            if (request != refreshSequence) return
             val current = currentReady(ready) ?: return
             mutableState.value = current.copy(readError = readFailureMessage())
         }

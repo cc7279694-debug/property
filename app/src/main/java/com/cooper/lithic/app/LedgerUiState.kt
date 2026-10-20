@@ -3,6 +3,8 @@ package com.cooper.lithic.app
 import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.data.repository.ProjectRepository
 import com.cooper.lithic.data.repository.SubscriptionRepository
+import com.cooper.lithic.data.repository.ReportRepository
+import com.cooper.lithic.domain.report.OverviewResult
 import java.time.ZoneId
 
 /** Derived read state; database owners never enter saved navigation state. */
@@ -17,6 +19,8 @@ sealed interface LedgerUiState {
         val subscriptionCount: Long,
         val readError: String? = null,
         val generationId: String = "test-generation",
+        val overview: OverviewResult? = null,
+        val reportRepository: ReportRepository? = null,
     ) : LedgerUiState
     data object Failed : LedgerUiState
 }

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5686",
+    "shell",
+    "ps -A -o UID,PID,NAME"
+  ],
+  "exitCode": 0,
+  "rawBytes": 12815,
+  "rawSha256": "471b7c0b9dec7305ab2e06f1d6f625a759dc5398284aec84c68d2e98916d6839",
+  "rows": [
+    {
+      "uid": "10217",
+      "pid": 15252,
+      "name": "com.cooper.lithic.debug.test"
+    }
+  ]
+}

@@ -446,3 +446,26 @@ M03独立审查登记了STOPPED再启用入口和多期预付默认停止两项�
 ### Consequences
 
 第一例ADB外层exit=null / NOT_CAPTURED（原status为NOT_CAPTURED_AFTER_SUPERVISOR_ASSERTION）继续保留；真实断电/LMK、旧代清理中断、坏新代后再次终止、真实ENOSPC、API26、真机/OEM及其他原NOT_RUN不改，Q06不整体CLOSED。原96/74及三个真实场景不相互累加为新全量测试。M10 PENDING / DEFERRED、三个历史JPEG FAIL和全部安全NOTES/UNKNOWN/现场保护继承。只提交推送`codex/m12-process-death-validation`的本轮文档回写，之后停止等待用户授权；M13未自动授权。
+
+
+## 2026-10-20 — M13单快照首页与内部候选边界
+
+### Decision
+
+首页总额/两类/类别由同代协调器、一个Room事务和一个记录时区日期产生；分页只界定读取批次，不截断参与汇总的身份/完整历史。复用M02/M03，聚合不再舍入；UI说明分项舍入及非实际扣款口径。
+
+### Context
+
+用户已授权从M12正式冻结回写2e298ceb建立M13，M10延期不阻塞原M13依赖。原数量读模型无法提供一致的日均汇总，恢复换代和迟到读取需要统一保护。
+
+### Alternatives
+
+不采用列表窗口相加、分开读取两类、第二存储owner、复制公式或后台任务。类别可能为0/负数，用签名金额列表，避免比例图误导。
+
+### Reason
+
+同快照可验证总额/小计/类别一致；有界批次减少完整历史同时驻留。日期循环只在前台运行，继承唯一owner、记录时区和恢复守卫。
+
+### Consequences
+
+M13内部Debug可合成验证，不等于原T06稳定签名/首次真实记录许可或Release。M10 PENDING / DEFERRED、三历史JPEG FAIL、UI-C1独立冻结及Q05/Q06/其他平台NOT_RUN保持；不得自动进入M14。

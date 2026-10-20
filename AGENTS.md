@@ -6,7 +6,7 @@
 
 继承用户提供的高级全栈协作原则：简单、稳定、快速、可维护、可扩展；正确性和数据安全优先；读取事实后再行动；每次只执行已授权模块。
 
-**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用React/Capacitor默认建议。M00～M09已冻结，M11-A由用户转交ChatGPT独立结论ACCEPTED/FROZEN—PASS WITH NOTES（仅备份核心，来源79771fcf5978a938d240d517dd4dacb1d21021a6）。M11现由用户转交ChatGPT独立结论ACCEPTED / FROZEN — PASS WITH NOTES，评审635e33a57c66c286fa5c19f009a5565a1e70b8e2。当前授权M12安全完整恢复，从该冻结基线隔离继续，不合并M10 Worker/Stage V2/JNI。M10 PENDING / DEFERRED，历史FAIL/UNKNOWN/NOT_RUN/NOTES和设备现场保持。
+**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用React/Capacitor默认建议。M00～M09已冻结，M11-A由用户转交ChatGPT独立结论ACCEPTED/FROZEN—PASS WITH NOTES（仅备份核心，来源79771fcf5978a938d240d517dd4dacb1d21021a6）。M11现由用户转交ChatGPT独立结论ACCEPTED / FROZEN — PASS WITH NOTES，评审635e33a57c66c286fa5c19f009a5565a1e70b8e2。M12已由用户转交独立验收冻结（评审e34187632468c9c3aaf7bb5d04d30a26320a18b0）。当前授权M13首页与核心内部候选，依[M13契约](docs/planning/M13_CONTRACT.md)执行，不合并M10 Worker/Stage V2/JNI或独立UI-C1页面。M10 PENDING / DEFERRED，历史FAIL/UNKNOWN/NOT_RUN/NOTES和设备现场保持。
 
 事实源顺序：当前用户要求 → 本文件 → PROJECT.md → 实际代码/schema/Git → CURRENT_STATE.md → DECISIONS.md → ARCHITECTURE.md → ROADMAP.md → README → 聊天/模型经验。完整原始规划是产品与模块验收来源；规格矛盾进入问题清单，不能用低优先级摘要改掉产品规则。
 
@@ -69,7 +69,7 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 - 独立模块用独立功能分支，保留用户未提交内容。禁止在 main/master 直接开发。
 - 提交前查差异、实际验证、无关改动、敏感信息与临时文件；Conventional Commits；只推当前功能分支。
 - 未经明确授权不得合并 main、自动合并 PR、force push、重置/删除远程历史、部署或发布。
-- 本轮用户只授权M12最终三点真实自身终止验收，来源b5691419ad8f113b837a4cb16e4c1e47227e2752，只提交/推送`codex/m12-process-death-validation`。只用既有5686合成实例及独立测试目录，每点一次；不重跑全量、不追加故障、不修改旧候选或未入Git记录，不合并main/M10、发布或进入M13。
+- 本轮来源2e298ceb87a30d436a64180ccaf7d819e55ae005，只提交/推送`codex/m13-home-core`。只做M13首页与核心内部Debug候选；设备许可限原5686合成实例、新隔离账本/测试宿主及同签名更新。稳定签名、真实重要数据首次录入、发布和M14仍未授权。M12三个自身终止测试是冻结历史，本轮不重跑。
 - 实现者只可报 READY_FOR_REVIEW；ACCEPTED / FROZEN 需要独立验收结果，不能自己授予。
 - 每个模块结束同步当前状态、适用决策与验收证据，输出模块报告并立即停止。
 

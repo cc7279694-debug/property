@@ -1,0 +1,119 @@
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+
+> Task :app:testDebugUnitTest FAILED
+
+OverviewEngineTest > categories_without_records_are_kept_without_faking_records FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:97
+
+OverviewEngineTest > payment_unknown_on_observation_day_has_no_current_contribution FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:171
+
+OverviewEngineTest > prepaid_future_subscription_does_not_replace_current_price_before_boundary FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:273
+
+OverviewEngineTest > home_uses_same_engines_for_project_and_current_subscription FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:55
+
+OverviewEngineTest > missing_category_relationship_is_rejected_for_each_record_type FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:274
+
+OverviewEngineTest > duplicate_identity_is_rejected_within_each_record_type FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:274
+
+OverviewEngineTest > combine_preserves_exact_rates_merges_categories_and_adds_all_counts FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:273
+
+OverviewEngineTest > duplicate_category_id_is_rejected_even_when_name_or_kind_differs FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:274
+
+OverviewEngineTest > malformed_frozen_subscription_snapshot_is_propagated_without_partial_total FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:274
+
+OverviewEngineTest > positive_and_negative_rates_can_cancel_to_real_zero_without_hiding_records FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:119
+
+OverviewEngineTest > negative_and_tiny_nonzero_project_rates_are_not_clamped_or_display_rounded FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:273
+
+OverviewEngineTest > no_zero_confused_with_empty FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:44
+
+OverviewEngineTest > category_sum_matches_type_without_intermediate_decimal128_rounding FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:273
+
+OverviewEngineTest > project_end_day_and_post_end_settlement_never_reenter_current_total FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:273
+
+OverviewEngineTest > blank_identity_category_relationship_and_category_name_are_rejected FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:274
+
+OverviewEngineTest > inactive_only_records_are_not_empty_and_category_rows_remain FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:86
+
+OverviewEngineTest > active_only_aggregate_keeps_all_record_counts_and_zero_categories FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:273
+
+OverviewEngineTest > records_in_different_types_may_share_the_same_identity FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:273
+
+OverviewEngineTest > categories_sort_by_name_then_id_independent_of_input_order FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:141
+
+OverviewEngineTest > combine_rejects_different_dates_conflicting_names_and_count_overflow FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:274
+
+OverviewEngineTest > subscription_wrapper_identity_must_match_its_frozen_snapshot FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:274
+
+OverviewEngineTest > category_of_wrong_type_is_rejected_for_each_record_type FAILED
+    java.lang.AssertionError at OverviewEngineTest.kt:274
+
+23 tests completed, 22 failed
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///E:/CODEX/.codex/worktrees/lithic-m13/%E7%A0%BA%E7%9F%B3%E6%96%B0APP/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 12s
+26 actionable tasks: 4 executed, 22 up-to-date

@@ -16,10 +16,12 @@ android {
         applicationId = "com.cooper.lithic"
         minSdk = 26
         targetSdk = 36
-        versionCode = 7
-        versionName = "0.1.0-m09"
+        versionCode = 8
+        versionName = "0.1.0-m13"
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
-        testInstrumentationRunner = if (providers.gradleProperty("m12T04ProcessDeath").orNull == "true")
+        testInstrumentationRunner = if (providers.gradleProperty("m13Isolated").orNull == "true")
+            "com.cooper.lithic.app.M13IsolatedRunner"
+        else if (providers.gradleProperty("m12T04ProcessDeath").orNull == "true")
             "com.cooper.lithic.data.backup.M12ProcessDeathRunner"
         else "androidx.test.runner.AndroidJUnitRunner"
     }

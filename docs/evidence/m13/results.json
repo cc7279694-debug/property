@@ -1,0 +1,70 @@
+{
+  "jvmUniqueMethods": 113,
+  "androidUniqueMethods": 36,
+  "totalUniqueMethods": 149,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "newJvmMethods": 27,
+  "newAndroidMethods": 35,
+  "existingAndroidRegressionMethods": 1,
+  "lint": {
+    "errors": 0,
+    "warnings": 9
+  },
+  "androidClasses": {
+    "report": {
+      "status": "PASS",
+      "testClass": "com.cooper.lithic.data.repository.ReportRepositoryTest",
+      "expected": 16,
+      "passed": 16,
+      "exitCode": 0,
+      "defaultLedgerUnchanged": true
+    },
+    "integration": {
+      "status": "PASS",
+      "testClass": "com.cooper.lithic.app.M13HomeIntegrationTest",
+      "expected": 8,
+      "passed": 8,
+      "exitCode": 0,
+      "defaultLedgerUnchanged": true
+    },
+    "ui": {
+      "status": "PASS",
+      "testClass": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+      "expected": 6,
+      "passed": 6,
+      "exitCode": 0,
+      "defaultLedgerUnchanged": true
+    },
+    "journey": {
+      "status": "PASS",
+      "testClass": "com.cooper.lithic.app.M13CoreJourneyTest",
+      "expected": 2,
+      "passed": 2,
+      "exitCode": 0,
+      "defaultLedgerUnchanged": true
+    },
+    "screenshots": {
+      "status": "PASS",
+      "testClass": "com.cooper.lithic.feature.home.M13HomeScreenshotsTest",
+      "expected": 3,
+      "passed": 3,
+      "exitCode": 0,
+      "defaultLedgerUnchanged": true
+    },
+    "generation": {
+      "status": "PASS",
+      "testClass": "com.cooper.lithic.app.LedgerGenerationRefreshTest",
+      "expected": 1,
+      "passed": 1,
+      "exitCode": 0,
+      "defaultLedgerUnchanged": true
+    }
+  },
+  "appSha256": "6b4925409db634a126dfc56cddd6fb345d0692856c6691e5eb6017491ec668da",
+  "testSha256": "4ff081b6cf12d9d965f1d7c9fb70df3f8cf10045c3703eea55c39db9c55c4ba3",
+  "stableSignedRelease": "NOT_RUN",
+  "M13": "READY_FOR_REVIEW",
+  "M10": "PENDING / DEFERRED"
+}

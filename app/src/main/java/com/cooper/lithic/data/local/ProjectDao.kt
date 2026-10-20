@@ -20,6 +20,8 @@ interface ProjectDao {
     suspend fun endSettlementsForProject(projectId: String): List<ProjectMoneyEventEntity>
 
     @Query("SELECT COUNT(*) FROM long_term_projects") suspend fun countProjects(): Long
+    @Query("SELECT COUNT(*) FROM project_money_events e WHERE NOT EXISTS (SELECT 1 FROM long_term_projects p WHERE p.id=e.projectId)")
+    suspend fun countOrphanEvents(): Long
     @Query("SELECT COUNT(*) FROM long_term_projects WHERE endedOn IS NULL OR endedOn > :asOf")
     suspend fun countCurrentProjects(asOf: LocalDate): Long
     @Query("SELECT COUNT(*) FROM long_term_projects WHERE endedOn IS NOT NULL AND endedOn <= :asOf")

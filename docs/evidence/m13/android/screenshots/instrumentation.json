@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5686",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.home.M13HomeScreenshotsTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "utc": "2026-10-20T10:00:44.540585+00:00",
+  "seconds": 10.188,
+  "exitCode": 0,
+  "timedOut": false,
+  "stdoutBytes": 2217,
+  "stdoutSha256": "4034c63775125145e5a44eb3dda1b8cc90489b250ecfc789cba8b417de5bdc26",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
