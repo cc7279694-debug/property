@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.BackupExportControllerTest" tests="14" skipped="0" failures="1" errors="0" timestamp="2026-10-20T02:12:22.981Z" hostname="WHOCARE" time="0.101">
+  <properties/>
+  <testcase name="one_selection_blocks_repeated_clicks_until_cancelled" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.017"/>
+  <testcase name="explicit_cancelled_result_preserves_service_cleanup_outcome" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.008"/>
+  <testcase name="uncertified_registered_media_blocks_complete_export_with_preserved_source_feedback" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.005"/>
+  <testcase name="success_is_only_shown_after_complete_export_result" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.005"/>
+  <testcase name="unexpected_exception_deletes_only_selected_target_and_reports_failure" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.021"/>
+  <testcase name="incomplete_target_failure_is_not_success_and_reports_residual" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="coroutine_cancellation_closes_selected_target_without_success" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.012">
+    <failure message="java.lang.AssertionError: expected:&lt;IDLE&gt; but was:&lt;EXPORTING&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;IDLE&gt; but was:&lt;EXPORTING&gt;
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.feature.settings.BackupExportControllerTest$coroutine_cancellation_closes_selected_target_without_success$1.invokeSuspend(BackupExportControllerTest.kt:120)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source)
+	at com.cooper.lithic.feature.settings.BackupExportControllerTest.coroutine_cancellation_closes_selected_target_without_success(BackupExportControllerTest.kt:107)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:112)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:40)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:54)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:53)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92)
+	at jdk.proxy1/jdk.proxy1.$Proxy4.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:183)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:122)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:72)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
+  <testcase name="interrupted_delivery_does_not_delete_unproven_target" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="duplicate_callback_after_verified_success_does_not_delete_completed_backup" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="process_recreation_never_restarts_export_on_late_picker_delivery" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.008"/>
+  <testcase name="launch_failure_releases_chooser_state_and_remains_retryable" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.001"/>
+  <testcase name="corrupt_source_has_explicit_failure_without_claiming_partial_backup" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="verified_target_remains_success_when_owned_temporary_files_cannot_be_cleaned" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="active_export_blocks_second_chooser_and_duplicate_result" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,467 @@
+{
+  "date": "2026-10-20",
+  "base": "79771fcf5978a938d240d517dd4dacb1d21021a6",
+  "branch": "codex/m11b-complete-backup-export",
+  "overall": "BLOCKED; not M11 frozen",
+  "build": {
+    "exitCode": 0,
+    "summary": "BUILD SUCCESSFUL in 2m 57s",
+    "command": "./gradlew.bat --offline --no-daemon --max-workers=2 :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest"
+  },
+  "jvm": {
+    "tests": 143,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "baseline": 113,
+    "new": 30,
+    "sourceXmlExact": true,
+    "uniqueMethods": 143,
+    "newMethods": [
+      "com.cooper.lithic.data.backup.BackupCancellationTest#actual_io_checkpoint_still_observes_cancellation_and_delivers_cleanup_outcome",
+      "com.cooper.lithic.data.backup.BackupCancellationTest#verified_result_is_not_lost_at_dispatcher_return_after_late_cancel",
+      "com.cooper.lithic.data.backup.BackupMediaBudgetTest#an_empty_or_admitted_media_set_remains_valid",
+      "com.cooper.lithic.data.backup.BackupMediaBudgetTest#entry_count_and_total_bytes_are_rejected_before_copying_any_media",
+      "com.cooper.lithic.data.backup.BackupPngInspectionTest#intact_static_png_checks_all_chunks_and_dimensions",
+      "com.cooper.lithic.data.backup.BackupPngInspectionTest#truncation_checksum_damage_or_extra_bytes_are_not_valid_media",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#archive_path_must_be_new_private_sibling_outside_payload_tree",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#cancellation_checkpoint_is_observed_during_archive_and_target_streaming",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#complete_archive_includes_exact_nonempty_media_and_is_verified_from_central_directory",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#missing_changed_and_over_limit_media_cannot_form_manifest",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#required_media_must_have_exact_unique_entries_and_counts",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#source_archive_change_is_rejected_before_target_is_opened",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#target_copy_verifies_closed_readback_with_exact_whole_archive_hash",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#target_write_close_readback_failure_or_truncation_never_returns_success",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#truncated_central_directory_extra_entry_and_replaced_manifest_are_rejected",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#active_export_blocks_second_chooser_and_duplicate_result",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#coroutine_cancellation_closes_selected_target_without_success",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#corrupt_source_has_explicit_failure_without_claiming_partial_backup",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#duplicate_callback_after_verified_success_does_not_delete_completed_backup",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#explicit_cancelled_result_preserves_service_cleanup_outcome",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#incomplete_target_failure_is_not_success_and_reports_residual",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#interrupted_delivery_does_not_delete_unproven_target",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#launch_failure_releases_chooser_state_and_remains_retryable",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#one_selection_blocks_repeated_clicks_until_cancelled",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#process_recreation_never_restarts_export_on_late_picker_delivery",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#rejected_picker_uri_reports_possible_residual_without_starting_export",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#success_is_only_shown_after_complete_export_result",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#uncertified_registered_media_blocks_complete_export_with_preserved_source_feedback",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#unexpected_exception_deletes_only_selected_target_and_reports_failure",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#verified_target_remains_success_when_owned_temporary_files_cannot_be_cleaned"
+    ]
+  },
+  "lint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 7,
+    "Information": 0
+  },
+  "android": {
+    "sourceMethods": 477,
+    "baselineMethods": 468,
+    "newMethods": 9,
+    "runtime": "NOT_RUN; isolated avdmanager create failed; no ADB/install/start"
+  },
+  "operations": {
+    "avdCreate": 1,
+    "avdStart": 0,
+    "adb": 0,
+    "appInstall": 0,
+    "testInstall": 0,
+    "activityStart": 0,
+    "instrumentation": 0
+  },
+  "blocking": [
+    "Full registered JPEG/PNG encoding coverage is not certified; do not skip or label a partial backup complete.",
+    "No real Android or SAF export because the exclusive AVD creation failed."
+  ],
+  "changedCodeInputs": [
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/backup/CompleteBackupExportTest.kt",
+      "bytes": 9267,
+      "sha256": "c09683c3bf0dde0becb5e6aa3772d14a004bee1d7e2f48ea2abad67ecf5e5720",
+      "lfSha256": "c09683c3bf0dde0becb5e6aa3772d14a004bee1d7e2f48ea2abad67ecf5e5720"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/settings/BackupSettingsUiTest.kt",
+      "bytes": 2500,
+      "sha256": "9a90a2d3da1d76416e1b8af63084f4ebe770d4a21009c210ae3fed44ee65b8ee",
+      "lfSha256": "9a90a2d3da1d76416e1b8af63084f4ebe770d4a21009c210ae3fed44ee65b8ee"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/ui/NavigationShellTest.kt",
+      "bytes": 15460,
+      "sha256": "f054202a004d48c442ca28d210e5af603f5ea1e5b087096f9f862f767e6c127c",
+      "lfSha256": "f054202a004d48c442ca28d210e5af603f5ea1e5b087096f9f862f767e6c127c"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApp.kt",
+      "bytes": 3121,
+      "sha256": "8c365a7892983bddd3a35fe5d88e10a42446c2630ee60c48ebe7559c70fdc8fa",
+      "lfSha256": "8c365a7892983bddd3a35fe5d88e10a42446c2630ee60c48ebe7559c70fdc8fa"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "bytes": 26450,
+      "sha256": "aebc82c9dfbcc223e3eead79a3a5ed8ce117eeb14b72e7cf23bcf70aaa29c376",
+      "lfSha256": "aebc82c9dfbcc223e3eead79a3a5ed8ce117eeb14b72e7cf23bcf70aaa29c376"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "bytes": 2669,
+      "sha256": "95861a3a27937bbeda3959e02db555f0e58b1183d4805bf4005d030919984c08",
+      "lfSha256": "95861a3a27937bbeda3959e02db555f0e58b1183d4805bf4005d030919984c08"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupCancellation.kt",
+      "bytes": 596,
+      "sha256": "6b4404840c895cbb802e670c98bddb688c0efbc1c4adad5c8ad52634fd955c25",
+      "lfSha256": "6b4404840c895cbb802e670c98bddb688c0efbc1c4adad5c8ad52634fd955c25"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupEntryFiles.kt",
+      "bytes": 9121,
+      "sha256": "0ac501106d617fab10f7e57bc02f722bbd040c655d2a0e35bc910799e02d96e6",
+      "lfSha256": "6aa5b250e2da983769f8802b3720c5443832d82eaa25188e3e15d6b6e5d2c718"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupExportService.kt",
+      "bytes": 5601,
+      "sha256": "3ef577bc7ee638a946d13f438df8330215f3c3eddd3ffb0b058610c733a17c81",
+      "lfSha256": "1c53755344ae297ad1302c93b241fea60516b3888dbdf8f94cee927af5b83f95"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupExporter.kt",
+      "bytes": 4252,
+      "sha256": "7bc60707f71015787166affbd5af5c55607f45cfec23a23e5d6e65221115fb26",
+      "lfSha256": "7d2df742623cc9097d2128a2e88b57d534867a69d43a1d61189e01a834e5a6b4"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupManifest.kt",
+      "bytes": 3667,
+      "sha256": "983cbbc179c5bd7cde61e56e155ce089c1f69204707a0988fa149164232deca3",
+      "lfSha256": "7ea673a9c8451c9bf6888791f6ac36c38983f4aecb61bff22571c4712b7a228b"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupMediaBudget.kt",
+      "bytes": 764,
+      "sha256": "65007186001e809738ab307bbd221b5efed57af98c152aec5109467d0f95cbc2",
+      "lfSha256": "65007186001e809738ab307bbd221b5efed57af98c152aec5109467d0f95cbc2"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupMediaSnapshot.kt",
+      "bytes": 5976,
+      "sha256": "7a71f4711982a5e6e0be6d9233540d2289bbcf08df9299fc6f907d71d2733506",
+      "lfSha256": "7a71f4711982a5e6e0be6d9233540d2289bbcf08df9299fc6f907d71d2733506"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupPngInspection.kt",
+      "bytes": 4627,
+      "sha256": "38996737d503c45c61ac69244afd6c6bf64882680ea5d31afed6b7caab57775d",
+      "lfSha256": "38996737d503c45c61ac69244afd6c6bf64882680ea5d31afed6b7caab57775d"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/RoomBackupSnapshotSource.kt",
+      "bytes": 3189,
+      "sha256": "363884e7a4f1e1f826cb8846616b4f4be616ae243d17270fa90f0e2f4bfb93ba",
+      "lfSha256": "538d88a364b8d8cd742b7322e865274ff0757525990be170b4161f800f5b1c7b"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/VerifiedBackupArchive.kt",
+      "bytes": 9263,
+      "sha256": "6b10283b7867fce4c90e2bac7ce58b203b8af6b8b09776934483ef06561fa0e8",
+      "lfSha256": "6b10283b7867fce4c90e2bac7ce58b203b8af6b8b09776934483ef06561fa0e8"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/BackupDocumentPicker.kt",
+      "bytes": 1283,
+      "sha256": "73566a45f5d371cf8180b4c7854b6854c2db5e66bac64837efde849fd2545803",
+      "lfSha256": "73566a45f5d371cf8180b4c7854b6854c2db5e66bac64837efde849fd2545803"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/BackupExportController.kt",
+      "bytes": 5455,
+      "sha256": "3e92c0c687bd70bfad426e7477b1a30f83dd23125830e1f3ab6d880c3ed1c80d",
+      "lfSha256": "3e92c0c687bd70bfad426e7477b1a30f83dd23125830e1f3ab6d880c3ed1c80d"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/BackupExportViewModel.kt",
+      "bytes": 1719,
+      "sha256": "e5f8769b2978d33d901bd7a78d9536365655736ae96c8ce07b69c8fadb66bb8e",
+      "lfSha256": "e5f8769b2978d33d901bd7a78d9536365655736ae96c8ce07b69c8fadb66bb8e"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/SafBackupTarget.kt",
+      "bytes": 1735,
+      "sha256": "24f24ed2d669199f18e57fe0348ec624634d5072eec502ea336f0336ffe3d397",
+      "lfSha256": "24f24ed2d669199f18e57fe0348ec624634d5072eec502ea336f0336ffe3d397"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt",
+      "bytes": 4840,
+      "sha256": "a8049fc254d6b89f501624892339f475d6de74e406926bd560c5fdb4508499bf",
+      "lfSha256": "a8049fc254d6b89f501624892339f475d6de74e406926bd560c5fdb4508499bf"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/backup/BackupCancellationTest.kt",
+      "bytes": 1417,
+      "sha256": "bfbb4d19234865c12ec8d66e9b2d057be3453a9b940c1cea66c1327de95885f1",
+      "lfSha256": "bfbb4d19234865c12ec8d66e9b2d057be3453a9b940c1cea66c1327de95885f1"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/backup/BackupMediaBudgetTest.kt",
+      "bytes": 899,
+      "sha256": "324f4f11f49d8f632abb606f16e455b75991186d90a7c69809cdb4923a31e669",
+      "lfSha256": "324f4f11f49d8f632abb606f16e455b75991186d90a7c69809cdb4923a31e669"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/backup/BackupPngInspectionTest.kt",
+      "bytes": 1977,
+      "sha256": "aec9df47adb16075b018b42524f533f808a885f2322dd889a318415abf8ff72b",
+      "lfSha256": "aec9df47adb16075b018b42524f533f808a885f2322dd889a318415abf8ff72b"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt",
+      "bytes": 9141,
+      "sha256": "402a48716a9f05e8ca9a4c7338e4989da8aa5b15aced68e73839d26905c1651e",
+      "lfSha256": "402a48716a9f05e8ca9a4c7338e4989da8aa5b15aced68e73839d26905c1651e"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt",
+      "bytes": 10272,
+      "sha256": "bd89b1a25675d602378744cad7b9bc059c19ed120df80e2995566bfec4051ea9",
+      "lfSha256": "bd89b1a25675d602378744cad7b9bc059c19ed120df80e2995566bfec4051ea9"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "app",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m11b\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 12744959,
+      "sha256": "5c227edd00c15687deebb05dfe618c71e56afa2c96f9c0e9b9a42f8a971692d5",
+      "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "v2SignatureVerified": true,
+      "nativeEntries": [
+        "lib/arm64-v8a/libandroidx.graphics.path.so",
+        "lib/arm64-v8a/libdatastore_shared_counter.so",
+        "lib/armeabi-v7a/libandroidx.graphics.path.so",
+        "lib/armeabi-v7a/libdatastore_shared_counter.so",
+        "lib/x86/libandroidx.graphics.path.so",
+        "lib/x86/libdatastore_shared_counter.so",
+        "lib/x86_64/libandroidx.graphics.path.so",
+        "lib/x86_64/libdatastore_shared_counter.so"
+      ],
+      "package": "com.cooper.lithic.debug",
+      "versionCode": 7,
+      "versionName": "0.1.0-m09-debug",
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ],
+      "backupConfig": "allowBackup=false; legacy/cloud/device-transfer exclude all nine domains"
+    },
+    {
+      "kind": "test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m11b\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 1952492,
+      "sha256": "d84d022b4fd72b2e35349bed3319214425ed257657477d67f72ca9467e881d4b",
+      "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "v2SignatureVerified": true,
+      "nativeEntries": [],
+      "package": "com.cooper.lithic.debug.test",
+      "targetPackage": "com.cooper.lithic.debug",
+      "instrumentation": "com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner",
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ],
+      "minSdk": 26,
+      "targetSdk": 36
+    }
+  ],
+  "evidence": [
+    {
+      "path": "apk/apk-audit.json",
+      "bytes": 2177,
+      "sha256": "439d0dfc186b3c247b38b780277d1911e35d3a6dcfbac9b3fb428e9f2d318a47"
+    },
+    {
+      "path": "apk/apk-verification.json",
+      "bytes": 1338,
+      "sha256": "bb038d53a1ec8d13270bdf646b8a06908819a28132d820090276fc4684316dc1"
+    },
+    {
+      "path": "apk/app-signature.txt",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    {
+      "path": "apk/test-badging.txt",
+      "bytes": 1170,
+      "sha256": "57344bee6a715bb2a176c23f640389bdfdb53fdd2bb7e54a7b2b30f832098979"
+    },
+    {
+      "path": "apk/test-manifest.txt",
+      "bytes": 4750,
+      "sha256": "600714b9f18f699491a7b72119c69ade206930dcea1d40f3ed7ecad84811318b"
+    },
+    {
+      "path": "apk/test-signature.txt",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    {
+      "path": "delivery.log",
+      "bytes": 5723,
+      "sha256": "d9c3150d0e9816bc4062cc3c041e97a1855b91b4da8b05947a88c9c8c3848fed"
+    },
+    {
+      "path": "environment/create-command.json",
+      "bytes": 1143,
+      "sha256": "1f840bf50cdca1b97660597530e8e455f14f56e72fdc7b64a6e3f19bee96c924"
+    },
+    {
+      "path": "environment/create-result.json",
+      "bytes": 292,
+      "sha256": "8e29e0676572bb77545609f75d111b77ed32d76bc458e14e463da078d13f0263"
+    },
+    {
+      "path": "environment/create-stderr.log",
+      "bytes": 123,
+      "sha256": "8ab07fcefe26308792bf945be5f994d35e940c2ed5681c735091c6319da361e8"
+    },
+    {
+      "path": "environment/create-stdout.log",
+      "bytes": 87,
+      "sha256": "f8a408665fb80180169a6ef44d3f071b0da14c493f2dabc40e26871ce45952c8"
+    },
+    {
+      "path": "environment/create.claim",
+      "bytes": 549,
+      "sha256": "21cb75c5c0060e302c626221fc33c390f89499e0d93551f8696c3c369fec3eae"
+    },
+    {
+      "path": "environment/post-create-readonly.json",
+      "bytes": 2139,
+      "sha256": "77e889193171838d09abd3b7c7e182d4a3ab18df64980e755e8fbc689f9b3e59"
+    },
+    {
+      "path": "final-checked.log",
+      "bytes": 5755,
+      "sha256": "32dc34a4b9db32dd53d8d0902f1d18c53831040325262c385967efa60743c157"
+    },
+    {
+      "path": "final.log",
+      "bytes": 10678,
+      "sha256": "afd242ba3625d2e531e4d8b88d2b050a059c34d177b807ce5b4ac823e9abc14e"
+    },
+    {
+      "path": "green.log",
+      "bytes": 10333,
+      "sha256": "d1967ece10939ad7085fcfa9f573463eb5f7572b4646a6fffed754389675e004"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.core.design.AmountFormatterTest.xml",
+      "bytes": 1533,
+      "sha256": "f0c8fb1789b8cb0dc5b41aaa44090d064a0dec0f4085d3d8b1ba23c8070c849b"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.core.model.MoneyParserTest.xml",
+      "bytes": 1220,
+      "sha256": "d39ad42846cbb63c2ee5eee0f02e3b97364b1f83f0678a1a2e21f532c66f8d0a"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.core.time.BusinessClockTest.xml",
+      "bytes": 606,
+      "sha256": "c42d830daec90502dd20d90832896fd0720aa4fb7db6b431ddcf258ae8ee3ba8"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.data.backup.BackupCancellationTest.xml",
+      "bytes": 686,
+      "sha256": "b4c1b466902c097f3a2f488f9d5deaccbed4db860dc2d829f67a029f2d4a7a7d"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.data.backup.BackupDtosTest.xml",
+      "bytes": 1494,
+      "sha256": "229cfe38b009020c1e0587d25ec88ed0b6824597cc7dd7cbf4dc1cdedc91c432"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.data.backup.BackupFilesTest.xml",
+      "bytes": 2227,
+      "sha256": "16f11846d965e7d69fe5d260086518ff24252a22c20b48dc29b61ae6d1fa1a5e"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.data.backup.BackupMediaBudgetTest.xml",
+      "bytes": 649,
+      "sha256": "a9ec5022cef456dc9f5a238cce4411b86eec2f5d79f247b0806ca087f65b876d"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.data.backup.BackupPngInspectionTest.xml",
+      "bytes": 657,
+      "sha256": "7ad765e234bf8890206b3274584e60d4b703b7620bdc3a5f5e72df42674272e1"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.data.backup.BackupRecordLimitTest.xml",
+      "bytes": 939,
+      "sha256": "a4b9a53036df5f980a36984513b74763c60fcce0b8d69d67cd9c694580156630"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.data.backup.CompleteBackupArchiveTest.xml",
+      "bytes": 1876,
+      "sha256": "cb98e4253831d9cebc99428c90e119a0da82cc8b035d91a3270e76d56a7f4a28"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.data.backup.CoordinatedBackupReaderTest.xml",
+      "bytes": 1007,
+      "sha256": "1ccacf13ae738b2dfc2c3a91f991bfe35ecbf844d85fb5477d44720a3f118665"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+      "bytes": 3512,
+      "sha256": "2e035854b301dff2ceead24ded2a96acce0d939702d0a0fd6dbb85713632aa91"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.domain.project.ProjectLifecycleRulesTest.xml",
+      "bytes": 985,
+      "sha256": "60d9810a87d69b727ac5ab1b5eb7cef5ecf9a6b1c2eac19d96e1e779abc9ba27"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest.xml",
+      "bytes": 1370,
+      "sha256": "c1b92c1f753c619b44f5e6d842ab15d7545148decb37cb6941c70a21658b6d68"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+      "bytes": 6119,
+      "sha256": "05f657f6a3c4ccb3106e856c1e59e2cc25663e25d4805711c9c59fdbd5b0243e"
+    },
+    {
+      "path": "jvm/TEST-com.cooper.lithic.feature.settings.BackupExportControllerTest.xml",
+      "bytes": 2952,
+      "sha256": "12dd5d5da0db9c9c3ba15ba0135983fc80b4c6fd76b009448dfc501933752809"
+    },
+    {
+      "path": "lint-results-debug.txt",
+      "bytes": 4833,
+      "sha256": "75324d765ec38bb62540d564e6b39b0593bd3586d7e9bc9af488a28acaea0f48"
+    },
+    {
+      "path": "lint-results-debug.xml",
+      "bytes": 7878,
+      "sha256": "e5f5e4de24d2132516eed9958e46265cc3c8289d47ac0fb1cf93655bd8eaab12"
+    },
+    {
+      "path": "red-controller.xml",
+      "bytes": 8113,
+      "sha256": "acecd353458952f32271327e2fc2ee24e2df203af91db1c3497b036766750121"
+    },
+    {
+      "path": "red.log",
+      "bytes": 15057,
+      "sha256": "a56496f80319e853fe3ba0693d44a2d745b4232211769bf7230a72f8ad88a2cd"
+    },
+    {
+      "path": "verified.log",
+      "bytes": 7708,
+      "sha256": "2e08077cb4885299a2b9b89402a59bf336cc522b6d98c8c1b76cc1f8f58157e8"
+    }
+  ]
+}

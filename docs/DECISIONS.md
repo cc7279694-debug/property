@@ -1,5 +1,11 @@
 # 决策记录
 
+## 2026-10-20 — M11-A独立冻结与M11-B授权
+
+**User-confirmed：**用户转交ChatGPT对79771fcf5978a938d240d517dd4dacb1d21021a6的ACCEPTED / FROZEN — PASS WITH NOTES，仅限备份核心。原Android/媒体/SAF未运行及临时文件边界不自动关闭。当前授权从其隔离实现M11-B媒体只读快照和手动完整导出，不合并未冻结M10 Worker/Stage V2/JNI，不进入M12。
+
+**Implementation limitation / BLOCKING，非产品改规：**现有冻结基线没有严格JPEG证明，Bitmap解码成功不能代替它。本候选对未能证明完整性的JPEG及PNG编码保持拒绝，不能把只支持可认证PNG子集当作已批准的永久兼容范围。空媒体及通过校验的记录可走完整归档；正式M11冻结仍需完整格式覆盖和真实Android/SAF证据。
+
 ## 2026-10-20 — M10延期，M11-A从冻结M09隔离先行
 
 **状态：User-confirmed；来源：用户本轮“暂停M10，启动M11-A备份导出核心”指令。**

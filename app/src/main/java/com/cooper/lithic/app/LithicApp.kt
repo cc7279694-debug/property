@@ -21,13 +21,16 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.feature.project.ProjectViewModel
 import com.cooper.lithic.feature.subscription.SubscriptionViewModel
+import com.cooper.lithic.feature.settings.BackupExportUiState
 
 /** Normal navigation only exists after both real storage reads have succeeded. */
 @Composable
 internal fun LithicApp(state: LedgerUiState, onExit: () -> Unit, projectViewModel: ProjectViewModel? = null, onRetryLedger: () -> Unit = {},
-    subscriptionViewModel: SubscriptionViewModel? = null) {
+    subscriptionViewModel: SubscriptionViewModel? = null, backupState: BackupExportUiState = BackupExportUiState(),
+    onExportBackup: (() -> Unit)? = null, onCancelBackup: () -> Unit = {}) {
     when (state) {
-        is LedgerUiState.Ready -> LithicNavigation(state, projectViewModel = projectViewModel, onRetryLedger = onRetryLedger, subscriptionViewModel = subscriptionViewModel)
+        is LedgerUiState.Ready -> LithicNavigation(state, projectViewModel = projectViewModel, onRetryLedger = onRetryLedger, subscriptionViewModel = subscriptionViewModel,
+            backupState = backupState, onExportBackup = onExportBackup, onCancelBackup = onCancelBackup)
         LedgerUiState.Initializing -> StorageGate("storage_loading") {
             Text("正在读取本地记录", style = MaterialTheme.typography.headlineLarge)
             Text("请稍候，读取完成后会显示你的记录。", style = MaterialTheme.typography.bodyLarge)

@@ -65,6 +65,7 @@ import com.cooper.lithic.feature.subscription.SubscriptionStateEditorKind
 import com.cooper.lithic.data.repository.SubscriptionStateAction
 import com.cooper.lithic.feature.review.ReviewShell
 import com.cooper.lithic.feature.settings.SettingsShell
+import com.cooper.lithic.feature.settings.BackupExportUiState
 import kotlinx.serialization.Serializable
 
 /** Retained under its original name so previously saved M04 state can be decoded. */
@@ -78,6 +79,9 @@ internal fun LithicNavigation(
     projectViewModel: ProjectViewModel? = null,
     onRetryLedger: () -> Unit = {},
     subscriptionViewModel: SubscriptionViewModel? = null,
+    backupState: BackupExportUiState = BackupExportUiState(),
+    onExportBackup: (() -> Unit)? = null,
+    onCancelBackup: () -> Unit = {},
 ) {
     val owner = checkNotNull(LocalView.current.findViewTreeViewModelStoreOwner())
     val model = projectViewModel ?: remember(owner, state.repository) {
@@ -204,7 +208,8 @@ internal fun LithicNavigation(
                         subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }) }
                     entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) }) }
-                    entry<Settings> { SettingsShell(state.recordZone) }
+                    entry<Settings> { SettingsShell(state.recordZone, backupState = backupState,
+                        onExportBackup = onExportBackup, onCancelBackup = onCancelBackup) }
                     entry<ProjectList> {
                         ProjectListScreen(projects.list, onBack, onCreate = { requestLeave(listOf(Home, ProjectList, CreateProject)) },
                             onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)

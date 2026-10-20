@@ -1,0 +1,49 @@
+{
+  "scope": "Static final APK audit only; no Android runtime, install, or device commands",
+  "buildLog": "build/m11b-verification/delivery.log",
+  "buildSuccessfulObserved": true,
+  "artifacts": [
+    {
+      "kind": "app",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m11b\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 12744959,
+      "sha256": "5c227edd00c15687deebb05dfe618c71e56afa2c96f9c0e9b9a42f8a971692d5",
+      "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "v2SignatureVerified": true,
+      "nativeEntries": [
+        "lib/arm64-v8a/libandroidx.graphics.path.so",
+        "lib/arm64-v8a/libdatastore_shared_counter.so",
+        "lib/armeabi-v7a/libandroidx.graphics.path.so",
+        "lib/armeabi-v7a/libdatastore_shared_counter.so",
+        "lib/x86/libandroidx.graphics.path.so",
+        "lib/x86/libdatastore_shared_counter.so",
+        "lib/x86_64/libandroidx.graphics.path.so",
+        "lib/x86_64/libdatastore_shared_counter.so"
+      ],
+      "package": "com.cooper.lithic.debug",
+      "versionCode": 7,
+      "versionName": "0.1.0-m09-debug",
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ],
+      "backupConfig": "allowBackup=false; legacy/cloud/device-transfer exclude all nine domains"
+    },
+    {
+      "kind": "test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m11b\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 1952492,
+      "sha256": "d84d022b4fd72b2e35349bed3319214425ed257657477d67f72ca9467e881d4b",
+      "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "v2SignatureVerified": true,
+      "nativeEntries": [],
+      "package": "com.cooper.lithic.debug.test",
+      "targetPackage": "com.cooper.lithic.debug",
+      "instrumentation": "com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner",
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ],
+      "minSdk": 26,
+      "targetSdk": 36
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources
+> Task :app:generateDebugResValues
+> Task :app:compileDebugNavigationResources
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:javaPreCompileDebug
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugResources
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:706:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:kspDebugUnitTestKotlin
+
+> Task :app:compileDebugUnitTestKotlin FAILED
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupPngInspectionTest.kt:15:30 Unresolved reference 'BackupPngInspection'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupPngInspectionTest.kt:22:19 Unresolved reference 'BackupPngInspection'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:31:23 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:32:31 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:64:9 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:67:25 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:76:29 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:83:25 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:85:25 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:91:23 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:94:9 Unresolved reference 'BackupTargetCopy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:102:23 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:103:25 Unresolved reference 'BackupTargetCopy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:104:25 Unresolved reference 'BackupTargetCopy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:105:25 Unresolved reference 'BackupTargetCopy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:106:25 Unresolved reference 'BackupTargetCopy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:107:25 Unresolved reference 'BackupTargetCopy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:113:23 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:116:25 Unresolved reference 'BackupTargetCopy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:125:25 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:127:21 Unresolved reference 'BackupArchiveFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CompleteBackupArchiveTest.kt:129:25 Unresolved reference 'BackupTargetCopy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:3:38 Unresolved reference 'BackupExportResult'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:4:38 Unresolved reference 'BackupFailureReason'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:5:38 Unresolved reference 'BackupTarget'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:22:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:25:22 Unresolved reference 'BackupUiPhase'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:35:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:35:51 Cannot infer type for value parameter 'received'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:38:13 Unresolved reference 'BackupExportResult'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:43:22 Unresolved reference 'BackupUiPhase'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:53:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:55:20 Suspension functions can only be called within coroutine body.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:56:13 Unresolved reference 'BackupExportResult'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:60:20 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:61:22 Unresolved reference 'BackupUiPhase'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:72:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:73:13 Unresolved reference 'BackupExportResult'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:73:39 Unresolved reference 'BackupFailureReason'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:77:22 Unresolved reference 'BackupUiPhase'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:85:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:86:13 Unresolved reference 'BackupExportResult'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:86:39 Unresolved reference 'BackupFailureReason'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:98:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:110:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:112:41 Suspension functions can only be called within coroutine body.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:116:20 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:120:22 Unresolved reference 'BackupUiPhase'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:126:78 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:129:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:137:22 Unresolved reference 'BackupUiPhase'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:142:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:145:22 Unresolved reference 'BackupUiPhase'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:153:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:164:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:166:13 Unresolved reference 'BackupExportResult'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:179:26 Unresolved reference 'BackupExportController'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:179:51 Unresolved reference 'BackupExportResult'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b/��ʯ��APP/app/src/test/java/com/cooper/lithic/feature/settings/BackupExportControllerTest.kt:187:73 Unresolved reference 'BackupTarget'.
+
+> Task :app:copyRoomSchemas NO-SOURCE
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugUnitTestKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 7s
+24 actionable tasks: 24 executed

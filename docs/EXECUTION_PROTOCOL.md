@@ -1,5 +1,7 @@
 # 单模块开发协作与执行规范
 
+**M11-B当前授权**：从已独立冻结M11-A 79771fc先行完整导出候选，包括只读媒体、归档/目标读回、SAF及设置页。此前M11-A禁止开放入口的阶段边界已被本轮授权取代。M10延期及旧现场保护不变，真实设备须先确认全新环境；不得把未运行项或兼容性缺口标PASS，M12未授权。
+
 **2026-10-20当前授权**：用户暂停M10设备研究，保持PENDING / DEFERRED并保留全部现场；仅M11-A备份导出核心候选从M09冻结回写隔离先行。执行范围和禁止事项见当前AGENTS；下文M09及旧阶段描述为历史。正式完整M11仍须媒体集成和Android门禁，不自授冻结、不进入M12。
 
 本文件依据当前用户协作规范和[总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)第7、9节落地；[原执行模板](planning/original-v1/lithic_v1_plan/docs/templates/EXECUTE_ONE_MODULE.md)已归档，本文件管理当前执行，原模板不是新的授权。

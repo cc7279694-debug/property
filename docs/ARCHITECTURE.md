@@ -1,8 +1,16 @@
 # 当前架构事实
 
+## M11-B候选增量（2026-10-20）
+
+基于冻结M11-A 79771fc。`RoomBackupSnapshotSource.captureInto`在同一协调器持有期内将七表/设置交给媒体快照；源文件逐项核对只读FD、UID/dev/inode/nlink及前后身份、原字节长度/SHA，再对内部副本做格式和尺寸检查。复制前核对媒体条目数和累计字节预算，未知/变化拒绝，不对源文件重新编码或写入。
+
+`BackupExportService` → 完整manifest/ZIP → 本地ZipFile中央目录和条目核验 → 本次SAF URI写入/关闭 → 全量读回匹配。成功和取消结果在原调用方检查点与安全返回边界处理，验证成功后不会因返回时取消丢失结果而误删已完成文件。内部未知残留不递归扫除；目标删除只限当前手动选择的失败尝试。设置页只开放导出，恢复未开放；进程重启不自动重跑。
+
+这是未验收候选：JPEG严格完整性未获得可信证明，PNG仅当前可认证编码子集；不能以Bitmap成功冒充它们均已满足产品兼容范围。真实Android/SAF尚NOT_RUN，不能由宿主归档测试代替。未加入M10 Worker/Stage V2/JNI，Room/schema/领域规则不变。
+
 更新日期：2026-10-20。本候选从已冻结M09回写`57de897917473f255d43dfb306a8433b366c00eb`演进；M10暂停且未合并，UI-C1冻结分支保持独立。实际状态见[CURRENT_STATE](CURRENT_STATE.md)。下文M09及更早阶段的执行数字保留为历史，不是本轮重新运行的Android结果。
 
-## M11-A：一致业务快照与导出核心候选
+## M11-A：一致业务快照与导出核心（以下保留A冻结时范围）
 
 `ManagedGeneration.backupSnapshotSource()`提供只读入口。`RoomBackupSnapshotSource`取得原`LocalWriteCoordinator.withSnapshot`，在同一持有期读取SettingsStore的记录时区并完成Room事务七表读取；先核对总记录上限、分400个订阅ID读取关联历史，再逐表核对完整行数。DTO只保留持久事实，以字符串ID、人民币分、ISO日期/时间与显式枚举表示；不存派生成本。Settings仅含M09实际存在的`record_zone_id`，不制造尚未实现的偏好或通知水位。
 

@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录 M00～M09 实际执行与独立验收历史，以及M11-A核心候选的本轮执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
+本文件记录 M00～M09 实际执行与独立验收历史，以及M11-A核心冻结与M11-B候选的执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅核心候选待独立审查，不是正式M11通过；M12未授权。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；本轮新增执行只记在末尾M11-A，不回填历史。
+日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅备份核心已由用户转交独立冻结结论；M11-B当前BLOCKED，不是正式M11通过；M12未授权。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；各次新增执行分节记录，不回填历史。
 
 ## 独立验收记录
 
@@ -644,3 +644,23 @@ M09两项已确认产品规则继续保留原来源与实施验证：用户完�
 最终同源码四任务重执行 **BUILD SUCCESSFUL in 5m 4s**：JVM113/113，0失败/错误/跳过（11份XML，源码方法完全对应，旧86身份/源码未改）；Lint0错误/7警告；Debug assemble与Android测试Kotlin编译PASS。新增5个Android测试方法仍NOT_RUN。运行依赖122→122完全相同，无工具链升级。APK静态身份、权限/备份排除、签名检查实际PASS，不等于安装或设备通过。
 
 原始RED、112项首轮失败、Windows null fileKey诊断、环境转义与缓存Lint失败均保留，不改成PASS。完整数字、命令、输入/日志SHA和APK身份见[集中报告](evidence/M11A-verification.md)及[必要证据](evidence/m11a/results.json)。归档130原案例、16组完整跨模块补测、历史XML/checkpoint不改写；此登记仅M11-A核心子集，不自授正式M11 ACCEPTED/FROZEN。
+
+## M11-A 独立冻结登记与M11-B当前执行（2026-10-20）
+
+用户本轮明确转交ChatGPT结论：M11-A **ACCEPTED / FROZEN — PASS WITH NOTES，仅限备份核心代码**；指定锁定来源`79771fcf5978a938d240d517dd4dacb1d21021a6`。不另臆造独立评审HEAD或扩大范围。原M11-A报告、checkpoint、113项结果及所有未运行/临时文件NOTES不改写；该结论不等于已重跑Android、媒体或SAF。
+
+M11-B来源为上述冻结提交，分支`codex/m11b-complete-backup-export`。当前 **BLOCKED / 候选待独立审查**；执行证据见[M11-B集中报告](evidence/M11B-verification.md)及[小型结果索引](evidence/m11b/results.json)。正式M11未冻结，M12未授权。
+
+| 原案例 | 本轮实际子断言 | 实际状态 / 未满足范围 |
+|---|---|---|
+| M11-T01 全实体/图片/设置 | 七表与设置DTO沿用；空媒体合法、登记媒体完整集合/条目检查；新增合成Android6项源码 | 宿主归档子集PASS；真实Room/非空媒体/完整编码/SAF NOT_RUN，完整案例未通过 |
+| M11-T02 一致快照 | 同一协调器内七表、设置与媒体复制，原协调器宿主回归；新增真实Room阻写测试源码 | 宿主协调器回归PASS；新Android实际并发NOT_RUN，不以源码代替通过 |
+| M11-T03 长度与SHA | 本地ZIP中央目录/结束边界、每条payload/manifest、目标写后关闭及全量读回 | 实际宿主PASS；真实媒体/SAF提供方NOT_RUN |
+| M11-T04 失败不成功 | 写入/flush/close/读回故障、取消、重复回调、残留反馈；Android缺图/坏图/目标故障源码 | 宿主PASS；真实SAF取消、空间不足、写入/关闭失败NOT_RUN |
+| M11-T05 纯手动明文 | 设置只有导出入口/明文说明，恢复未开放；无自动、密码、云同步或CSV | 源码/最终APK权限审计PASS；真实设置/系统保存器操作NOT_RUN |
+
+最终同一构建输入：**143/143 JVM PASS**（113原＋30新，16份XML，0失败/错误/跳过，源码与结果身份完全一致）；Lint **0错误/7警告**；Debug及Android测试APK构建PASS，四任务exit0、2m57s。477项Android方法（原M09 463＋M11-A 5＋本轮9）仅编译，运行全NOT_RUN，本轮没有安装/启动APK或调用ADB。
+
+真实RED保留：初始缺API编译失败；138项中1项取消反馈失败，修复后通过；其后两次Lint分别发现O_CLOEXEC Java字段API27、fcntlInt API30不适用API26，原失败不删。最终依据已安装官方NDK UAPI常量以API21 Os.open原子传入close-on-exec标志，不提高minSdk、不新增native依赖，不把Lint通过当作API26运行证明。
+
+BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝整份备份，不静默漏图；全新隔离AVD创建唯一一次exit1，真实导出门禁未完成。未知内部半文件保守保留；提供方阻塞取消、断电持久性、真机/OEM/Release及M12往返仍NOT_RUN。M10 PENDING / DEFERRED、三JPEG历史FAIL、全部UNKNOWN/NOTES与UI-C1冻结原样保留。

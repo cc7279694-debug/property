@@ -6,14 +6,14 @@ import androidx.room.withTransaction
  * Reads only this owned generation. Every business/settings mutation and generation close uses
  * its coordinator. Media metadata is retained here; this does not certify or export media bytes.
  */
-class RoomBackupSnapshotSource internal constructor(generation: ManagedGeneration) : BackupSnapshotSource {
-    private val reader = CoordinatedBackupReader(generation.coordinator) {
+class RoomBackupSnapshotSource internal constructor(private val generation: ManagedGeneration) : BackupSnapshotSource {
+    internal suspend fun <T> captureInto(consume: suspend (BackupSnapshot) -> T): T = generation.coordinator.withSnapshot {
         // Validate the settings owner before touching Room: a closed generation must not reopen it.
         // The coordinator remains held through all reads, so this value cannot straddle a write.
         val settings = BackupSettingsV1(
             generation.settings.backupRecordZoneWithinSnapshot(generation.coordinator).id,
         )
-        generation.database.withTransaction {
+        val snapshot = generation.database.withTransaction {
             val database = generation.database
             val counts = TABLES.map { table ->
                 database.openHelper.readableDatabase.query("SELECT COUNT(*) FROM $table").use { cursor ->
@@ -43,9 +43,10 @@ class RoomBackupSnapshotSource internal constructor(generation: ManagedGeneratio
                 settings,
             )
         }
+        consume(snapshot)
     }
 
-    override suspend fun capture(): BackupSnapshot = reader.capture()
+    override suspend fun capture(): BackupSnapshot = captureInto { it }
 
     private companion object {
         // Fixed names, never SQL identifiers from external input. Match the count/row order above.

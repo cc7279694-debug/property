@@ -39,10 +39,17 @@ internal data class PreparedBackupCore(
         val owner = directory.resolve(".backup-core-owner")
         require(Files.isRegularFile(owner, NOFOLLOW_LINKS) && Files.size(owner) == ownerToken.toByteArray(Charsets.UTF_8).size.toLong() &&
             Files.readAllBytes(owner).contentEquals(ownerToken.toByteArray(Charsets.UTF_8))) { "Candidate ownership is unknown" }
-        val children = Files.list(directory).use { stream -> stream.iterator().asSequence().map { it.fileName.toString() }.toSet() }
-        require(children == entries.map { it.path }.toSet() + ".backup-core-owner" && entries.all { '/' !in it.path }) { "Unknown candidate residue; preserve it" }
+        val folders = entries.flatMap { entry ->
+            val segments = entry.path.split('/')
+            (1 until segments.size).map { segments.take(it).joinToString("/") }
+        }.toSet()
+        val children = Files.walk(directory).use { stream -> stream.iterator().asSequence().filter { it != directory }
+            .map { directory.relativize(it).joinToString("/") }.toSet() }
+        require(children == entries.map { it.path }.toSet() + folders + ".backup-core-owner") { "Unknown candidate residue; preserve it" }
+        folders.forEach { BackupEntryFiles.requireDirectory(directory.resolve(it)) }
         entries.forEach { BackupEntryFiles.verify(directory, it) }
         entries.forEach { Files.delete(directory.resolve(it.path)) }
+        folders.sortedByDescending { it.length }.forEach { Files.delete(directory.resolve(it)) }
         Files.delete(owner)
         Files.delete(directory)
     }
@@ -76,7 +83,8 @@ internal object BackupEntryFiles {
         requirePath(name); requireDirectory(directory)
         require(exclusiveLimit > 0)
         val file = directory.resolve(name)
-        require(file.parent == directory && !Files.exists(file, NOFOLLOW_LINKS)) { "Core output exists or is not a direct child" }
+        require(file.normalize().startsWith(directory) && !Files.exists(file, NOFOLLOW_LINKS)) { "Core output exists or leaves candidate" }
+        requireDirectory(file.parent)
         val digest = MessageDigest.getInstance("SHA-256")
         var length = 0L
         open(file).use { output ->

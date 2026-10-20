@@ -226,7 +226,8 @@ class NavigationShellTest {
         compose.onNodeWithTag("tab-settings").performClick()
         compose.onNodeWithText("Asia/Shanghai").assertIsDisplayed()
         compose.onAllNodes(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Switch)).assertCountEquals(0)
-        compose.onNodeWithText("完整备份与恢复尚未开放").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("export-complete-backup").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("恢复功能尚未开放").performScrollTo().assertIsDisplayed()
     }
 
     @Test
