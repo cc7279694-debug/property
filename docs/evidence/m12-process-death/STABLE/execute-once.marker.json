@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5686",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M12ProcessDeathTest#execute_self_termination",
+    "-e",
+    "m12T04Campaign",
+    "947977ca-8d20-4c60-97f0-86899be58a45",
+    "-e",
+    "m12T04Case",
+    "STABLE",
+    "-e",
+    "m12T04AppSha",
+    "3bb0d801300889d5c97f85dd768a14701f3a3f67aacd55dca929aa86e8233107",
+    "-e",
+    "m12T04TestSha",
+    "e23be35a8f5b11b8dcf93f10ac3c24103d48736c3a96cef9bb61f0de4ae8e91f",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.data.backup.M12ProcessDeathRunner"
+  ],
+  "campaign": "947977ca-8d20-4c60-97f0-86899be58a45",
+  "case": "STABLE",
+  "maxSelfKills": 1
+}

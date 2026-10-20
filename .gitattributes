@@ -18,3 +18,5 @@ docs/evidence/m11b-final/** -text -whitespace
 
 # M12 raw command, XML and restore evidence keeps its observed bytes.
 docs/evidence/m12/** -text -whitespace
+# M12 real self-termination evidence must preserve raw PTY/exec-out byte differences.
+docs/evidence/m12-process-death/** -text -whitespace

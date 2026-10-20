@@ -700,8 +700,24 @@ BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝�
 | M12-T01 | BackupRoundTripTest、RestoreGenerationWriterTest、真实SAF：七表/设置/类别/备注/付款/状态/所有登记图片原字节往返 | PASS（候选范围；不包含M10未冻结导入） |
 | M12-T02 | BackupValidatorTest20、Writer/Coordinator缺图损坏/格式/身份拒绝；旧集与指针不变 | PASS |
 | M12-T03 | 候选IO/目录冲突/迟插失败回滚、切前失败、旧集保留 | 受控故障PASS；真实ENOSPC/永久阻塞读NOT_RUN |
-| M12-T04 | 异常检查点和持久SWITCHING/ROLLED_BACK重开/首次打开失败回退已PASS | **原要求真实切前/切后进程终止NOT_RUN**；未获具体故障操作许可，不用异常替代 |
+| M12-T04 | 原异常/回退证据保留；本轮新增三个真实自身终止＋三个独立重启完整核验 | **三个指定点PASS，独立待审**；见下节，不扩展为全部Q06故障或断电 |
 | M12-T05 | 新Repository依观察日重算日数、150→180预付边界及过期/STOPPED，事实不变 | PASS |
 | M12-T06 | 空媒体与非空完整替换、旧独有类别不混入；未知字段/媒体/外键失败不部分激活 | PASS |
 
 设置页真实SAF成功前，先保留两次测试驱动FAIL与两claim；经实际DocumentsUI树确认误点preview_icon后，只修测试选择器，严格旧集/claim/唯一哨兵准入下追加第三claim取得成功。旧失败不改判，当前新代STABLE/旧完整代暂保留。App SHA3bb0d801…、最终Test d426c58e…，签名/权限/四ABI/输入及结束身份见报告。API26/真机/OEM/Release/TalkBack/LMK/断电、真实磁盘耗尽、Q06-V01～V03完整故障仍NOT_RUN；Q05仍USER_CONFIRMED，当前只实测登记媒体的M11→M12子集。不自行CLOSED任何旧NOTE。M10延期与原三JPEG FAIL、UI-C1冻结不变；不进入下一模块。
+
+## M12-T04 / Q06指定进程终止门禁追加（2026-10-20）
+
+本轮用户明确授权三个独立合成目录各一次自身终止，来源b5691419ad8f113b837a4cb16e4c1e47227e2752，分支codex/m12-process-death-validation。[唯一集中报告](evidence/M12-process-death-verification.md)，[实际结果与输入](evidence/m12-process-death/results.json)。
+
+| 指定点 | 真正终止 → 独立核验PID | 当前选定数据集 | 本次执行 |
+|---|---|---|---|
+| 切换前 | 9900 → 10092 | 完整旧A；候选B未生效 | PASS |
+| SWITCHING持久化后 | 10360 → 10534 | 完整新B | PASS |
+| STABLE持久化后 | 10799 → 10975 | 完整新B，不回旧记录 | PASS |
+
+七表/设置逐字段、JPEG/PNG原字节、完整性/FK及再次打开均实际核验。三次中断调用是预期Process crashed，不能登记为JUnit PASS；三个重启调用各1项JUnit PASS，两种唯一方法由case参数区分。此前96 JVM/74 Android原证据保留，本轮未重跑。Test专用构建/Lint成功1m1s，0错误9警告；生产App原SHA3bb0d801…/默认账本不变，新Test e23be35a…同签名更新一次。没有App安装或AVD创建/启动/停止，没有访问其他设备或私人数据。
+
+第一例许可shell回读仅LF→CRLF，监督器中断；同一许可原始485B的exec-out/设备SHA严格一致，没有重复终止，随后首次独立重启PASS。外层ADB退出码未取得仍为null/NOT_CAPTURED，不补记0；Android中断、kill-intent、旧PID消失及新进程完整核验均保留。前期Runner清单被AGP覆写已在安装前拦截、修为显式Test构建开关；名字/安装前缀解析差异均留原证据，无重复安装/故障方法。
+
+仅上述真实子门禁待独立验收，**不自行将M12或Q06整体ACCEPTED/FROZEN/CLOSED**。坏新代后再终止、清理中终止、真实断电/LMK/ENOSPC及未测平台保持NOT_RUN；全部原报告/130案例/历史FAIL/UNKNOWN/NOTES保留。M10 PENDING/DEFERRED、UI-C1冻结不变，M13未授权。更多故障不自动执行。
