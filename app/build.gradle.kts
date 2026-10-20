@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.kotlinx.serialization.core)
+    // Already present transitively at this exact version; used directly by backup format v1.
+    implementation(libs.kotlinx.serialization.json)
     // Explicit for the manifest override; retain the already resolved runtime version.
     implementation(libs.androidx.startup.runtime)
     testImplementation(libs.junit)

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.CoordinatedBackupReaderTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-10-20T01:48:14.340Z" hostname="WHOCARE" time="0.178">
+  <properties/>
+  <testcase name="capture_waits_for_whole_coordinated_write_before_reading" classname="com.cooper.lithic.data.backup.CoordinatedBackupReaderTest" time="0.075"/>
+  <testcase name="cancelled_capture_releases_lock_without_returning_partial_snapshot" classname="com.cooper.lithic.data.backup.CoordinatedBackupReaderTest" time="0.087"/>
+  <testcase name="read_failure_returns_no_snapshot_and_releases_coordinator" classname="com.cooper.lithic.data.backup.CoordinatedBackupReaderTest" time="0.007"/>
+  <testcase name="coordinated_write_cannot_mix_business_and_settings_versions" classname="com.cooper.lithic.data.backup.CoordinatedBackupReaderTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -34,8 +34,14 @@ class SettingsStore private constructor(
 
     /** Immutable business zone, validated from the persisted preferences during open. */
     suspend fun recordZone(): ZoneId = coordinator.withSnapshot {
+        backupRecordZoneWithinSnapshot(coordinator)
+    }
+
+    /** Backup already owns this non-reentrant coordinator; never acquire it for a second time. */
+    internal suspend fun backupRecordZoneWithinSnapshot(expectedCoordinator: LocalWriteCoordinator): ZoneId {
+        if (coordinator !== expectedCoordinator) throw SettingsStorageException("Backup uses a different settings coordinator")
         if (closed) throw SettingsStorageException("Settings store is closed")
-        readZone(dataStore.data.first())
+        return readZone(dataStore.data.first())
     }
 
     suspend fun close() = coordinator.withWrite { closeWithinWrite() }

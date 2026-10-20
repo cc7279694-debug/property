@@ -1,0 +1,151 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources
+> Task :app:generateDebugResValues
+> Task :app:compileDebugNavigationResources
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:javaPreCompileDebug
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugResources
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:706:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:kspDebugUnitTestKotlin
+
+> Task :app:compileDebugUnitTestKotlin
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:51:44 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:81:20 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:89:21 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:102:20 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:102:63 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:103:67 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:104:45 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:104:69 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:104:96 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:104:125 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:109:24 Unresolved reference 'BackupSettingsV1'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:110:62 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:117:35 Unresolved reference 'copy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:120:38 Unresolved reference 'copy'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:127:9 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:128:20 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:130:9 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:130:34 Unresolved reference 'BackupSettingsV1'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:131:20 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:131:46 Unresolved reference 'BackupSettingsV1'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:135:15 Unresolved reference 'BackupJson'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupDtosTest.kt:143:9 Unresolved reference 'BackupDtoMapper'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:25 Unresolved reference 'BackupSnapshot'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:40 Unresolved reference 'BackupDataV1'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:53 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:66 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:79 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:92 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:105 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:118 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:131 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:15:145 Unresolved reference 'BackupSettingsV1'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:20:20 Unresolved reference 'BackupCoreStager'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:21:78 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:22:45 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:22:49 Unresolved reference 'BackupEntryFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:22:89 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:23:34 Argument type mismatch: actual type is 'File', but 'Path!' was expected.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:28:20 Unresolved reference 'BackupCoreStager'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:29:15 None of the following candidates is applicable:
+
+static fun write(p0: Path!, p1: ByteArray!, vararg p2: OpenOption!): Path!:
+  Argument type mismatch: actual type is 'File', but 'Path!' was expected.
+
+static fun write(p0: Path!, p1: (Mutable)Iterable<out CharSequence!>!, vararg p2: OpenOption!): Path!:
+  Argument type mismatch: actual type is 'File', but 'Path!' was expected.
+  Argument type mismatch: actual type is 'ByteArray', but '(Mutable)Iterable<out CharSequence!>!' was expected.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:30:25 Unresolved reference 'BackupEntryFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:30:86 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:40:29 Unresolved reference 'BackupEntryFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:40:96 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:47:29 Unresolved reference 'BackupEntryFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:47:75 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:49:25 Unresolved reference 'BackupEntryFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:49:77 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:50:9 Unresolved reference 'BackupEntryFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:50:67 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:51:25 Unresolved reference 'BackupEntryFiles'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:51:83 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:55:20 Unresolved reference 'BackupCoreStager'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:56:24 Unresolved reference 'BackupManifestV1'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:62:42 Unresolved reference 'it'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:66:20 Unresolved reference 'BackupCoreStager'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:67:24 Unresolved reference 'BackupManifestV1'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:69:9 Unresolved reference 'BackupArchiveWriter'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:75:32 Method 'iterator()' is ambiguous for this expression. Applicable candidates:
+fun <T> Enumeration<T>.iterator(): Iterator<T>
+fun <T> Iterator<T>.iterator(): Iterator<T>
+fun <K, V> Map<out K, V>.iterator(): Iterator<Map.Entry<K, V>>
+fun <K, V> MutableMap<K, V>.iterator(): MutableIterator<MutableMap.MutableEntry<K, V>>
+fun CharSequence.iterator(): CharIterator
+fun BufferedInputStream.iterator(): ByteIterator
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:75:59 Unresolved reference 'BackupFileEntry'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:77:25 Unresolved reference 'BackupArchiveWriter'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:82:24 Unresolved reference 'BackupExporter'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:82:39 Unresolved reference 'BackupSnapshotSource'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:84:22 Unresolved reference 'BackupExportReadiness'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:89:20 Unresolved reference 'BackupCoreStager'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupFilesTest.kt:91:25 Unresolved reference 'BackupManifestV1'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupRecordLimitTest.kt:10:31 Unresolved reference 'requireBackupRecordCounts'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupRecordLimitTest.kt:31:13 Unresolved reference 'requireBackupRecordCounts'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:24:22 Unresolved reference 'CoordinatedBackupReader'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:27:29 Suspension functions can only be called within coroutine body.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:30:23 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:55:23 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:56:13 Unresolved reference 'CoordinatedBackupReader'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:67:22 Unresolved reference 'CoordinatedBackupReader'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:84:23 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:85:13 Unresolved reference 'CoordinatedBackupReader'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/CoordinatedBackupReaderTest.kt:87:23 Suspension functions can only be called within coroutine body.
+
+> Task :app:compileDebugUnitTestKotlin FAILED
+> Task :app:copyRoomSchemas NO-SOURCE
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugUnitTestKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 8s
+24 actionable tasks: 24 executed

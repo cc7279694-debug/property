@@ -30,6 +30,9 @@ class ManagedGeneration internal constructor(
     private val closeAction: suspend (ManagedGeneration) -> Unit,
 ) {
     suspend fun close() = closeAction(this)
+
+    /** Logical read only. Full export still requires separately verified media integration. */
+    fun backupSnapshotSource(): BackupSnapshotSource = RoomBackupSnapshotSource(this)
 }
 
 /** Initial generation ownership only. Backup import, switching and rollback belong to M12. */

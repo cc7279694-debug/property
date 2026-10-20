@@ -1,6 +1,16 @@
 # 当前架构事实
 
-更新日期：2026-10-13。M00～M08 已独立验收冻结；M09 的订阅状态、同身份重开及付款历史纠错已接入现有架构，实际四任务549唯一方法PASS及最终APK/API36旅程已验证，当前READY_FOR_REVIEW、独立PENDING，不自授冻结。当前用户授权仅到 M09，M10 未授权。下文区分 M09 当前实现与 M08 及更早阶段的继承事实；实际执行结果和唯一当前状态见 [CURRENT_STATE](CURRENT_STATE.md)及[验收登记](ACCEPTANCE_MATRIX.md)。
+更新日期：2026-10-20。本候选从已冻结M09回写`57de897917473f255d43dfb306a8433b366c00eb`演进；M10暂停且未合并，UI-C1冻结分支保持独立。实际状态见[CURRENT_STATE](CURRENT_STATE.md)。下文M09及更早阶段的执行数字保留为历史，不是本轮重新运行的Android结果。
+
+## M11-A：一致业务快照与导出核心候选
+
+`ManagedGeneration.backupSnapshotSource()`提供只读入口。`RoomBackupSnapshotSource`取得原`LocalWriteCoordinator.withSnapshot`，在同一持有期读取SettingsStore的记录时区并完成Room事务七表读取；先核对总记录上限、分400个订阅ID读取关联历史，再逐表核对完整行数。DTO只保留持久事实，以字符串ID、人民币分、ISO日期/时间与显式枚举表示；不存派生成本。Settings仅含M09实际存在的`record_zone_id`，不制造尚未实现的偏好或通知水位。
+
+内部`BackupExporter.prepareCore()`将脱离数据库的快照流式写为私有`data.json`和`settings.json`，关闭后重新读取校验长度/SHA；format v1 manifest与内部ZIP写入器核对实际字节并传播目标写入/关闭异常。内部无媒体合成归档只用于验证核心；`exportComplete()`始终返回`MEDIA_INTEGRATION_REQUIRED`且不打开目标，没有正式UI/SAF成功入口。
+
+成功候选有显式`close()`，只删除经私有随机凭据、精确子项、内容哈希确认的本次文件；未知/变化残留拒绝清理。Windows的Basic fileKey实际为null，不能作为inode证明；此处是单owner内部临时文件责任，不是M10媒体GC协议。准备中断保留候选，逐文件清理不具多文件原子性，尚无跨进程恢复/自动扫描。
+
+本阶段尚未复制封面字节，未证明媒体/Room/DataStore跨资源完整快照；后续必须在同一协调边界复制已验证不可变媒体，或经独立审查的等价租约方式，再接SAF和用户界面。Room schema、DAO、领域引擎、UI及generation切换协议均未改变；完整M11及M12仍未完成。真实Room/DataStore/SAF和设备验证仍NOT_RUN，不能用JVM核心结果替代。
 
 ## M09：订阅状态、同身份重开与付款历史修正
 

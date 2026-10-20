@@ -1,0 +1,121 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources
+> Task :app:generateDebugResValues
+> Task :app:compileDebugNavigationResources
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:parseDebugLocalResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:mergeDebugResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:javaPreCompileDebug
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:checkDebugAndroidTestAarMetadata
+> Task :app:processDebugAndroidTestNavigationResources
+> Task :app:compileDebugAndroidTestNavigationResources
+> Task :app:generateDebugAndroidTestResValues
+> Task :app:mapDebugAndroidTestSourceSetPaths
+> Task :app:generateDebugAndroidTestResources
+> Task :app:processDebugResources
+> Task :app:mergeDebugAndroidTestResources
+> Task :app:processDebugAndroidTestManifest
+> Task :app:processDebugAndroidTestResources
+> Task :app:extractProguardFiles
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:desugarDebugFileDependencies
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeExtDexDebug
+> Task :app:mergeLibDexDebug
+> Task :app:mergeDebugJniLibFolders
+> Task :app:mergeDebugNativeLibs
+
+> Task :app:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libdatastore_shared_counter.so. Run with --info option to learn more.
+
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:706:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:kspDebugAndroidTestKotlin
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:generateDebugLintReportModel
+> Task :app:generateDebugUnitTestLintModel
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:testDebugUnitTest
+> Task :app:lintAnalyzeDebug
+> Task :app:lintAnalyzeDebugAndroidTest
+> Task :app:lintAnalyzeDebugUnitTest
+> Task :app:dexBuilderDebug
+
+> Task :app:lintReportDebug
+Wrote HTML report to file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/build/reports/lint-results-debug.html
+
+> Task :app:lintDebug
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:mergeProjectDexDebug
+> Task :app:mergeDebugJavaResource
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+> Task :app:compileDebugAndroidTestKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectLifecycleRepositoryTest.kt:398:30 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Deferred<MutationResult>'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectRepositoryTest.kt:525:34 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Deferred<MutationResult>'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:320:48 Unnecessary non-null assertion (!!) on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:320:58 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:321:49 Unnecessary non-null assertion (!!) on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:321:59 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:341:101 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:362:95 Unnecessary safe call on a non-null receiver of type 'MoneyCorrectionUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:393:73 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:494:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:502:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:664:72 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:698:70 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:704:70 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:710:82 Unnecessary safe call on a non-null receiver of type 'MoneyCorrectionUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:716:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:339:65 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:350:78 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:479:67 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:493:65 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:497:70 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt:171:78 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11a/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt:171:104 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+
+BUILD SUCCESSFUL in 5m 4s
+65 actionable tasks: 65 executed

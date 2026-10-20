@@ -1,5 +1,7 @@
 # 单模块开发协作与执行规范
 
+**2026-10-20当前授权**：用户暂停M10设备研究，保持PENDING / DEFERRED并保留全部现场；仅M11-A备份导出核心候选从M09冻结回写隔离先行。执行范围和禁止事项见当前AGENTS；下文M09及旧阶段描述为历史。正式完整M11仍须媒体集成和Android门禁，不自授冻结、不进入M12。
+
 本文件依据当前用户协作规范和[总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)第7、9节落地；[原执行模板](planning/original-v1/lithic_v1_plan/docs/templates/EXECUTE_ONE_MODULE.md)已归档，本文件管理当前执行，原模板不是新的授权。
 
 ## 执行流程
@@ -8,7 +10,7 @@
 
 实现者不得跳过验收开始下一模块。文档任务仅检查文档，不机械新增产品测试。业务计算、迁移、恢复、导入导出等重要逻辑优先可重复测试。
 
-M00～M08已独立冻结PASS WITH NOTES。当前用户明确授权M09，起点0063ca504ca48ef9c7231d79dc155e9bf4bc8c82/feat/m08-subscription-renewals，当前feat/m09-subscription-lifecycle；[M09契约](planning/M09_CONTRACT.md)已固定A/B规则、状态/付款事实CAS、原子重开和安全删除。原455＋新增94＝549唯一方法实际PASS、最终code7APK及专用API36旅程均已留证，当前READY_FOR_REVIEW、独立PENDING。Room2/引擎/owner/时区/工具链不变，禁止M10及媒体/备份/通知/汇总；Q03～Q06保持。完成READY_FOR_REVIEW后停止，不自授冻结。旧模块下方执行要求属于当时历史，不阻止本轮用户明确授权的M09；原件与旧证据不改。
+M00～M09已独立冻结PASS WITH NOTES。[M09契约](planning/M09_CONTRACT.md)的A/B规则、状态/付款事实CAS、原子重开和安全删除保持不变。M09原549唯一方法及专用API36旅程属于历史证据，不代表M11-A实际运行。当前只按顶部授权执行M11-A核心，保持Room2/引擎/owner/时区/工具链；Q03～Q06及历史NOTES保留。旧模块下方执行要求属于当时历史；本轮READY_FOR_REVIEW后停止，不自授完整M11冻结，不进入M12或恢复M10研究。
 
 Task Contract 包含 Goal、Scope、Out of Scope、Constraints、Dependencies、Acceptance Criteria、Verification。修改前能解释为什么改该文件、可能破坏什么、如何验证。
 

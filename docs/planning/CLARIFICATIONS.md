@@ -1,5 +1,7 @@
 # Q02～Q07 澄清与模块测试要求
 
+2026-10-20续接：下文是M09基线以前的澄清来源和跨模块测试计划。Q05的后续USER_CONFIRMED语义见[当前问题清单](../SPEC_ISSUES.md)，取代其早期PROPOSED口径；原16组完整补测仍NOT_RUN。本轮只授权M11-A核心，不修改原130案例，不恢复M10实验、不进入M12。
+
 日期：2026-10-11。此文件记录当前有效解释、尚未确认建议与补测边界，不修改原件、不新增功能。Q02/Q07 在 M02 用户附件中正式确认，来源和有效规则见[当前决策](../DECISIONS.md)与[M02 契约](M02_CONTRACT.md)；当前仅授权[M03](M03_CONTRACT.md)纯领域模块。其余标为建议的期望仍须明确确认。
 
 原130案例均保持NOT_RUN；下表16组补充子场景也保留NOT_RUN，不计入原130数量。它们涉及跨模块，不能用本轮领域验证替代尚未实施的视图、总线、通知或恢复验证；本轮实际测试仅写入[当前验收登记](../ACCEPTANCE_MATRIX.md)。原案例正文见[原矩阵](original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)及[原JSON](original-v1/lithic_v1_plan/docs/acceptance-cases.json)。

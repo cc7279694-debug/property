@@ -1,8 +1,8 @@
 # 验收登记
 
-本文件记录 M00～M08 实际执行与独立验收历史；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
+本文件记录 M00～M09 实际执行与独立验收历史，以及M11-A核心候选的本轮执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-13。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M08 正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**；当前 M08 依据用户转交的 ChatGPT 正式独立代码验收结论，评审 HEAD `a716bc5ad9e3ab49cbe858f2c966fecf93e09fbb`，完整登记见末尾。全部历史评审/NOTES、执行验收及当时交付证据保留，本轮只回写结论，不重新运行测试或增加产品测试 PASS。原130案例及16组完整跨模块补测继续 NOT_RUN；M09 未授权。
+日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅核心候选待独立审查，不是正式M11通过；M12未授权。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；本轮新增执行只记在末尾M11-A，不回填历史。
 
 ## 独立验收记录
 
@@ -628,3 +628,19 @@ Task3038已STOPPED/HaveState=true/Bundle6360bytes后UID SIGKILL，旧PID14365消
 M09两项已确认产品规则继续保留原来源与实施验证：用户完整M09执行指令SHA-256 `d83fb2d77190b0c49df8b5adf9a6e13c8cae8ca203513f9f5e98b0729350eaab`、[DECISIONS](DECISIONS.md)、[M09契约](planning/M09_CONTRACT.md)和[问题清单](SPEC_ISSUES.md)登记A/B规则；[M09报告](evidence/M09-verification.md)、[原结构化证据](evidence/M09-verification.json)与[历史checkpoint](checkpoints/2026-10-13-M09.md)保留实际实施与验证。A规则允许STOPPED后同身份重开，覆盖内不创建付款，未来已付未生效仍EXPIRED，无覆盖时显式真实付款与ENABLED同事务；B规则默认停止固定全部已确认覆盖最晚边界与业务今天中的较晚日，后续付款不静默延长，需明确修正或取消计划。维持USER_CONFIRMED / IMPLEMENTED / VERIFIED及已关闭的两项流程风险，本次不重新定案、不修改实现，不自动关闭Q03～Q06或未来模块事项。
 
 本节正式结论取代M09此前READY_FOR_REVIEW/PENDING的当前效力；上节执行登记及原报告/checkpoint保留当时状态。本次仅更新唯一CURRENT_STATE与本登记，检查Git差异、链接、敏感信息、工作区及历史资料保护后，提交并推送 `feat/m09-subscription-lifecycle`。回写提交自身SHA、推送及远端一致以实际Git日志/最终回执核对，避免递归自引用。不修改业务代码、WHOCARE、原规划或旧证据，不合并main、不force、不进入M10；完成后立即停止。
+
+## M11-A 核心候选当前执行（2026-10-20）
+
+用户本轮只授权从冻结M09回写`57de897917473f255d43dfb306a8433b366c00eb`隔离先行M11-A；当前`codex/m11a-backup-export-core`，**READY_FOR_REVIEW，独立验收PENDING**。M10为PENDING / DEFERRED，三JPEG历史FAIL与全部UNKNOWN/NOT_RUN/NOTES及设备现场保留；本轮无设备操作。完整M11未冻结，M12未授权。
+
+| 对应原案例 | 本轮实际核心子集 | 未取得的完整验收 |
+|---|---|---|
+| M11-T01 | PASS：七表每个v2字段映射、设置白名单、整数分/ISO/枚举与稳定JSON；原86＋新增27 JVM共113 PASS | 真实Room/DataStore五项仅编译，运行NOT_RUN；媒体元数据不等于媒体字节，原完整T01仍NOT_RUN |
+| M11-T02 | PASS：生产使用的同一coordinator读写互斥、写前/读中一致性、失败及取消释放 | 实际Room/DataStore/媒体并发与Android运行NOT_RUN，不以JVM替代原完整T02 |
+| M11-T03 | PASS：真实内部文件长度/SHA、manifest v1字段、无媒体合成ZIP逐条核对，变化即拒绝 | 封面复制、Q05字节完整往返、SAF与原完整T03仍NOT_RUN |
+| M11-T04 | PASS：内部输出写入/关闭失败、资源边界、内容变化不返回成功；完整入口不打开目标，固定拒绝媒体未集成 | 系统URI/空间不足/取消/不完整目标删除和原完整T04仍NOT_RUN |
+| M11-T05 | 本轮未新增密码/自动备份/CSV/云端及用户成功入口 | 正式用户路径未开放，原完整T05仍NOT_RUN |
+
+最终同源码四任务重执行 **BUILD SUCCESSFUL in 5m 4s**：JVM113/113，0失败/错误/跳过（11份XML，源码方法完全对应，旧86身份/源码未改）；Lint0错误/7警告；Debug assemble与Android测试Kotlin编译PASS。新增5个Android测试方法仍NOT_RUN。运行依赖122→122完全相同，无工具链升级。APK静态身份、权限/备份排除、签名检查实际PASS，不等于安装或设备通过。
+
+原始RED、112项首轮失败、Windows null fileKey诊断、环境转义与缓存Lint失败均保留，不改成PASS。完整数字、命令、输入/日志SHA和APK身份见[集中报告](evidence/M11A-verification.md)及[必要证据](evidence/m11a/results.json)。归档130原案例、16组完整跨模块补测、历史XML/checkpoint不改写；此登记仅M11-A核心子集，不自授正式M11 ACCEPTED/FROZEN。

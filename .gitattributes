@@ -7,3 +7,5 @@ gradlew text eol=lf
 gradlew.bat text eol=crlf
 gradle/wrapper/gradle-wrapper.jar -text
 gradle/wrapper/gradle-wrapper.properties text eol=lf
+# M11-A actual command/XML evidence retains recorded bytes, including failed runs.
+docs/evidence/m11a/** -text -whitespace

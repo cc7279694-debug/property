@@ -6,7 +6,7 @@
 
 继承用户提供的高级全栈协作原则：简单、稳定、快速、可维护、可扩展；正确性和数据安全优先；读取事实后再行动；每次只执行已授权模块。
 
-**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用规范里的 React / Capacitor 默认建议。不得因此启动 React、Vite、Next.js 工程，也不得自行改回混合架构。M00～M08已独立冻结；当前用户正式授权M09订阅状态、同身份重新开通及真实付款历史纠错/删除。继承Room v2、冻结领域引擎和唯一数据owner，不新增表/索引/迁移或依赖。
+**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用规范里的 React / Capacitor 默认建议。不得因此启动 React、Vite、Next.js 工程，也不得自行改回混合架构。M00～M09已独立冻结；当前用户正式授权M11-A备份导出核心候选，从M09冻结回写`57de897917473f255d43dfb306a8433b366c00eb`独立开发。M10为PENDING / DEFERRED，其候选、历史JPEG FAIL、UNKNOWN、NOT_RUN及设备现场原样保留，不合并到本分支。
 
 事实源顺序：当前用户要求 → 本文件 → PROJECT.md → 实际代码/schema/Git → CURRENT_STATE.md → DECISIONS.md → ARCHITECTURE.md → ROADMAP.md → README → 聊天/模型经验。完整原始规划是产品与模块验收来源；规格矛盾进入问题清单，不能用低优先级摘要改掉产品规则。
 
@@ -62,14 +62,14 @@ Bug 按复现 → 定位 → 理解 → 假设 → 修复 → 验证 → 回归�
 
 遇到阻塞规格矛盾只记录问题与建议，等待确认；高风险删除、真实数据修改、不可逆迁移、生产发布、force push 等必须暂停。
 
-M00～M08均独立验收冻结ACCEPTED / FROZEN — PASS WITH NOTES，全部历史独立未重跑本机Gradle/安装/APK字节及超大JSON限制等NOTES保留，见[验收登记](docs/ACCEPTANCE_MATRIX.md)。当前用户授权M09暂停/恢复/到期/停止、计划修正取消、STOPPED同身份重新开通、逐笔续费纠错/安全删除，A/B规则及事务/UI/测试边界见[M09契约](docs/planning/M09_CONTRACT.md)。默认停止固定所有已确认付费最晚边界与今天中的较晚日，不随付款变化；同日只CAS修正原状态。无当前也无未来覆盖的重开须真实付款＋ENABLED同事务，不虚构ACTIVE；暂停无覆盖仍由M03显示PAUSED并说明覆盖到期。原455回归及新增测试实际执行，专用API36合成设备旅程、最终code7 APK及完整文档/Git在本轮范围。M09两流程风险现已用户确认、实施并实际验证关闭；M09交付READY_FOR_REVIEW、独立PENDING，不能自授冻结；Q03～Q06及M10～M13边界继承。禁止M10、媒体、备份恢复、跨类型汇总、通知/Worker、自动扣款/退款/补差、云端、WHOCARE、main合并/force/公开APK。完成READY_FOR_REVIEW后停止，独立PENDING，M10未授权。
+M00～M09独立验收冻结及全部历史NOTES继承[验收登记](docs/ACCEPTANCE_MATRIX.md)。当前只做M11-A：Room v2七表与SettingsStore一致读取、稳定format v1 DTO/manifest、文件真实长度/SHA与写入关闭失败保护。完整媒体未集成时必须拒绝完整导出，不开放正式成功入口，不把核心文件称为完整备份。只用合成数据；不改Room schema、冻结业务算法/M09语义、UI，不做恢复/代切换/CSV/云同步/自动备份/密码，不授权M12。不得ADB、AVD、APK安装或操作M10/H2/C2等现场，不新建传输claim、不重跑JPEG/40MP/故障实验。原规划M11依赖M10由用户本次明确改为仅M11-A核心隔离先行；原规划/案例不改，正式M11完整门禁不降低。
 
 ## 6. Git 与验收
 
 - 独立模块用独立功能分支，保留用户未提交内容。禁止在 main/master 直接开发。
 - 提交前查差异、实际验证、无关改动、敏感信息与临时文件；Conventional Commits；只推当前功能分支。
 - 未经明确授权不得合并 main、自动合并 PR、force push、重置/删除远程历史、部署或发布。
-- 用户本轮只授权提交/推送 `feat/m09-subscription-lifecycle`，起点M08正式验收回写 `0063ca504ca48ef9c7231d79dc155e9bf4bc8c82`、来源 `feat/m08-subscription-renewals`；不从main开始，不授权M10/main合并/公开APK。
+- 用户本轮只授权提交/推送独立候选`codex/m11a-backup-export-core`，来源M09冻结回写`57de897917473f255d43dfb306a8433b366c00eb`；不从main或M10开始，不合并M10/main、不发布APK。原M10候选分支及本地未入Git运行记录不修改。
 - 实现者只可报 READY_FOR_REVIEW；ACCEPTED / FROZEN 需要独立验收结果，不能自己授予。
 - 每个模块结束同步当前状态、适用决策与验收证据，输出模块报告并立即停止。
 

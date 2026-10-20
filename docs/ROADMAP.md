@@ -1,12 +1,14 @@
 # V1 模块路线与执行闸门
 
+**2026-10-20当前授权覆盖**：用户决定M10保持PENDING / DEFERRED，暂停其设备续验并保留现场；仅M11-A导出核心从已冻结M09隔离先行。完整M11仍依赖后续媒体集成与完整Android门禁，不降低原验收要求；M12不授权。下文原顺序及历史阶段描述保留，原规划归档不改写。
+
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-本表保留原M00～M23顺序与精确前置依赖。M00～M08已独立冻结PASS WITH NOTES；本轮M09已实施验证并交付READY_FOR_REVIEW、独立PENDING，起点0063ca504ca48ef9c7231d79dc155e9bf4bc8c82/feat/m08-subscription-renewals，当前feat/m09-subscription-lifecycle，范围见[M09契约](planning/M09_CONTRACT.md)。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；M10～M23未授权，全部历史NOTES保留。
+本表保留原M00～M23顺序与精确前置依赖。M00～M09已独立冻结PASS WITH NOTES，M10延期，当前只授权M11-A核心候选。M09范围仍见[M09契约](planning/M09_CONTRACT.md)；其原执行报告的READY_FOR_REVIEW为历史，冻结回写57de897为本分支起点。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；全部历史NOTES保留。
 
 ## 执行顺序与依赖解释
 
-按编号逐模块授权与停止；M09前置M08已冻结，当前实现订阅状态与付款历史纠错/删除，复用Room v2、唯一owner/固定时区/冻结引擎，用户A/B正式规则已登记。媒体、完整备份恢复、汇总和通知仍属后续模块。Q03～Q06不关闭；M09两流程风险只能在本轮真实实现/验证后关闭。完成M09 READY_FOR_REVIEW后停止，不自动进入M10。
+原计划按编号逐模块授权与停止；本轮只有顶部所述M11-A有限例外。M09两流程风险的实施/验收结论按原记录保留，Q03～Q06与后续完整媒体、备份恢复、汇总和通知边界不变。M11-A交付后停止，不自动进入完整M11或M12，也不恢复M10设备实验。
 
 24计划的“必须先验收”与原JSON逐条一致，无前向依赖或环。后续还需读原计划、引用规格、适用验收、当前澄清和实际代码，不能只凭路线表开始工程。
 
@@ -24,8 +26,8 @@
 | M07 | 结束/回收/删除/历史修正 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m07.md) | M06 | 结束与回收同事务、不重复回收；无回收站 |
 | M08 | 订阅/真实续费与schema v2 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m08.md) | M03、M04、M05、M07 | v1→v2保旧记录，不自动付款 |
 | M09 | 暂停/恢复/到期/停止 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m09.md) | M08 | 无后台仍正确EXPIRED、贡献0；不替服务商取消 |
-| M10 | 单封面与本地资源生命周期 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m10.md) | M06、M09 | 删相册原图不影响封面；不做相册 |
-| M11 | 完整逻辑导出format v1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m11.md) | M10 | 全业务/图片/设置一致快照；无CSV/自动备份 |
+| M10 | 单封面与本地资源生命周期 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m10.md) | M06、M09 | PENDING / DEFERRED；历史JPEG FAIL及研究现场保留 |
+| M11 | 完整逻辑导出format v1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m11.md) | M10（完整阶段）；M11-A获授权从M09先行 | M11-A核心READY_FOR_REVIEW；完整M11未冻结，媒体未集成时拒绝完整成功，无CSV/自动备份 |
 | M12 | 校验/覆盖恢复/故障回退 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m12.md) | M11 | 完整往返与故障注入；失败保旧，不合并 |
 | M13 | 首页与安全核心内部版 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m13.md) | M07、M09、M12 | 统一引擎、完整核心含备份恢复；非完整V1 |
 | M14 | 类别/搜索/分页/排序 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m14.md) | M13 | 合并无孤儿汇总不变，不跨类型/FTS |

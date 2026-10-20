@@ -1,5 +1,15 @@
 # 决策记录
 
+## 2026-10-20 — M10延期，M11-A从冻结M09隔离先行
+
+**状态：User-confirmed；来源：用户本轮“暂停M10，启动M11-A备份导出核心”指令。**
+
+用户将M10设为PENDING / DEFERRED，保留三个JPEG历史FAIL、全部UNKNOWN/NOT_RUN/NOTES、候选分支和设备现场；不清理、重跑或合并。M11-A从M09冻结回写`57de897917473f255d43dfb306a8433b366c00eb`独立实现业务/设置一致快照、format v1和文件完整性核心，不带入M10 Worker/Stage V2。
+
+这是对原M11依赖顺序的有限例外，不改变原规划或降低完整备份标准。正式媒体未集成时完整导出必须拒绝完成；不开放正式成功入口，不将核心文件当作完整备份。完整M11仍待媒体/SAF/Android验证及独立验收，M12未授权；Room v2、冻结算法、业务和UI不变。
+
+Q05沿用用户M10已确认的首次规范化、后续导出/恢复校验后原字节保留；不因代码从M09隔离而退回PROPOSED。确认来源见[当前问题清单](SPEC_ISSUES.md)的锁定M10引用，完整跨模块往返仍NOT_RUN，不由M11-A核心测试关闭。
+
 记录类型：User-confirmed（用户已确认）、Inherited planning default（继承规划工程解释）、Local operating rule（本轮执行规范）、Proposed（未接受建议）、Superseded（已取代）。建议不能自动变成已接受产品需求。
 
 ## 2026-10-11 — 继承纯本地长期成本产品边界
