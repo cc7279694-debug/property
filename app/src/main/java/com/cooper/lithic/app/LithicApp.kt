@@ -16,21 +16,29 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.feature.project.ProjectViewModel
 import com.cooper.lithic.feature.subscription.SubscriptionViewModel
 import com.cooper.lithic.feature.settings.BackupExportUiState
+import com.cooper.lithic.feature.settings.BackupRestoreUiState
 
 /** Normal navigation only exists after both real storage reads have succeeded. */
 @Composable
 internal fun LithicApp(state: LedgerUiState, onExit: () -> Unit, projectViewModel: ProjectViewModel? = null, onRetryLedger: () -> Unit = {},
     subscriptionViewModel: SubscriptionViewModel? = null, backupState: BackupExportUiState = BackupExportUiState(),
-    onExportBackup: (() -> Unit)? = null, onCancelBackup: () -> Unit = {}) {
+    onExportBackup: (() -> Unit)? = null, onCancelBackup: () -> Unit = {},
+    restoreState: BackupRestoreUiState = BackupRestoreUiState(), onRestoreBackup: (() -> Unit)? = null,
+    onCancelRestore: () -> Unit = {}, onConfirmRestore: () -> Unit = {}, onDiscardRestore: () -> Unit = {}) {
     when (state) {
-        is LedgerUiState.Ready -> LithicNavigation(state, projectViewModel = projectViewModel, onRetryLedger = onRetryLedger, subscriptionViewModel = subscriptionViewModel,
-            backupState = backupState, onExportBackup = onExportBackup, onCancelBackup = onCancelBackup)
+        is LedgerUiState.Ready -> key(state.generationId) {
+            LithicNavigation(state, projectViewModel = projectViewModel, onRetryLedger = onRetryLedger, subscriptionViewModel = subscriptionViewModel,
+                backupState = backupState, onExportBackup = onExportBackup, onCancelBackup = onCancelBackup,
+                restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
+                onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore)
+        }
         LedgerUiState.Initializing -> StorageGate("storage_loading") {
             Text("正在读取本地记录", style = MaterialTheme.typography.headlineLarge)
             Text("请稍候，读取完成后会显示你的记录。", style = MaterialTheme.typography.bodyLarge)

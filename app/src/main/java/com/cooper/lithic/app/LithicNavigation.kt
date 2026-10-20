@@ -20,6 +20,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -66,6 +67,8 @@ import com.cooper.lithic.data.repository.SubscriptionStateAction
 import com.cooper.lithic.feature.review.ReviewShell
 import com.cooper.lithic.feature.settings.SettingsShell
 import com.cooper.lithic.feature.settings.BackupExportUiState
+import com.cooper.lithic.feature.settings.BackupRestoreUiState
+import com.cooper.lithic.feature.settings.RestoreUiPhase
 import kotlinx.serialization.Serializable
 
 /** Retained under its original name so previously saved M04 state can be decoded. */
@@ -82,28 +85,40 @@ internal fun LithicNavigation(
     backupState: BackupExportUiState = BackupExportUiState(),
     onExportBackup: (() -> Unit)? = null,
     onCancelBackup: () -> Unit = {},
+    restoreState: BackupRestoreUiState = BackupRestoreUiState(),
+    onRestoreBackup: (() -> Unit)? = null,
+    onCancelRestore: () -> Unit = {},
+    onConfirmRestore: () -> Unit = {},
+    onDiscardRestore: () -> Unit = {},
 ) {
     val owner = checkNotNull(LocalView.current.findViewTreeViewModelStoreOwner())
-    val model = projectViewModel ?: remember(owner, state.repository) {
+    val generationScope = remember(owner) {
         ViewModelProvider(owner, viewModelFactory {
-            initializer { ProjectViewModel(state.repository, createSavedStateHandle(), state.businessClock) }
+            initializer { GenerationUiScopeViewModel(createSavedStateHandle()) }
+        })[GenerationUiScopeViewModel::class.java]
+    }
+    val session = generationScope.bind(state.generationId, state.repository)
+    val model = projectViewModel ?: remember(generationScope, session, state.repository) {
+        ViewModelProvider(generationScope, viewModelFactory {
+            initializer { ProjectViewModel(state.repository, generationScope.savedState, state.businessClock) }
         })[ProjectViewModel::class.java]
     }
     val projects by model.state.collectAsStateWithLifecycle()
-    val subscriptionModel = subscriptionViewModel ?: remember(owner, state.subscriptionRepository) {
-        ViewModelProvider(owner, viewModelFactory {
-            initializer { SubscriptionViewModel(state.subscriptionRepository, createSavedStateHandle(), state.businessClock) }
+    val subscriptionModel = subscriptionViewModel ?: remember(generationScope, session, state.subscriptionRepository) {
+        ViewModelProvider(generationScope, viewModelFactory {
+            initializer { SubscriptionViewModel(state.subscriptionRepository, generationScope.savedState, state.businessClock) }
         })[SubscriptionViewModel::class.java]
     }
     val subscriptions by subscriptionModel.state.collectAsStateWithLifecycle()
-    val backStack = rememberNavBackStack(Home)
+    val backStack = key(session) { rememberNavBackStack(Home) }
     val routes = normalizeBackStack(backStack.toList())
-    var pendingLeave by remember { mutableStateOf<List<NavKey>?>(null) }
-    var pendingWarning by remember { mutableStateOf(false) }
+    var pendingLeave by remember(session) { mutableStateOf<List<NavKey>?>(null) }
+    var pendingWarning by remember(session) { mutableStateOf(false) }
     fun navigate(target: List<NavKey>) {
         if (backStack.toList() != target) { backStack.clear(); backStack.addAll(target) }
     }
     fun requestLeave(target: List<NavKey>) {
+        if (restoreState.phase == RestoreUiPhase.RESTORING) return
         when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision())) {
             LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); navigate(target) }
             LeaveDecision.CONFIRM_DISCARD -> pendingLeave = target
@@ -198,6 +213,9 @@ internal fun LithicNavigation(
             }
         }) { padding ->
         Column(Modifier.padding(padding).consumeWindowInsets(padding)) {
+            if (routes.last() != Settings) restoreState.message?.let { feedback ->
+                Text(feedback, Modifier.padding(16.dp).testTag("backup-restore-global-feedback"))
+            }
             state.readError?.let { error ->
                 Text(error, Modifier.padding(16.dp).testTag("ledger-refresh-error"))
                 TextButton(onClick = onRetryLedger, modifier = Modifier.heightIn(min = 48.dp).testTag("ledger-retry-read")) { Text("重试读取") }
@@ -209,7 +227,9 @@ internal fun LithicNavigation(
                     entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) }) }
                     entry<Settings> { SettingsShell(state.recordZone, backupState = backupState,
-                        onExportBackup = onExportBackup, onCancelBackup = onCancelBackup) }
+                        onExportBackup = onExportBackup, onCancelBackup = onCancelBackup,
+                        restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
+                        onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore) }
                     entry<ProjectList> {
                         ProjectListScreen(projects.list, onBack, onCreate = { requestLeave(listOf(Home, ProjectList, CreateProject)) },
                             onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)

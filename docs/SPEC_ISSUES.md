@@ -1,6 +1,6 @@
 # 规格问题与实施风险
 
-日期：2026-10-20。M00～M09已独立冻结，M10为PENDING / DEFERRED，历史三JPEG FAIL及UNKNOWN/NOT_RUN/NOTES保持。本轮M11-A从M09隔离先行；Q05确认语义继承已核对的[M10锁定登记](https://github.com/cc7279694-debug/property/blob/41596820145dc4a3fa6d041728a59540d828108a/docs/SPEC_ISSUES.md)，不合并其代码或改判验收。下文M09及旧阶段执行描述属于历史；Q03/Q04/Q06期限不变，本地审阅不替代独立验收。
+日期：2026-10-20。M00～M09已独立冻结，M10为PENDING / DEFERRED，历史三JPEG FAIL及UNKNOWN/NOT_RUN/NOTES保持。M11已按用户转交独立结论冻结，M12从635e33a隔离实现；Q05确认语义继承已核对的[M10锁定登记](https://github.com/cc7279694-debug/property/blob/41596820145dc4a3fa6d041728a59540d828108a/docs/SPEC_ISSUES.md)，不合并其代码或改判验收。下文M09及旧阶段执行描述属于历史；Q03/Q04/Q06期限不变，本地审阅不替代独立验收。
 
 ## Q01～Q06 状态与闸门
 
@@ -10,8 +10,8 @@
 | Q02 / USER_CONFIRMED：观察日公式 | 原DOMAIN C03/C04/C13的已结束快照历史分支在M02授权时由用户正式确认；来源见当前决策与M02契约 | M02前规格闸门已满足；M02领域实施/验证、M17/M18集成各按对应模块执行 | 开始前无有效日均/无贡献，结束前按观察日计时，结束日起固定完整天数；事件按occurredOn过滤，结束日末退出，后结算不重新活跃。映射M02-T01～T04、M17-T01/T05、M18-T01/T02；Q02-V01～V03当前补测表仍NOT_RUN，M02实际领域结果仅登记当前验收表，M17/M18仍未实施 |
 | Q03 / PARTIALLY_RESOLVED_BY_SOURCE：里程碑 | 原M03-T02明确订阅生效首日实际经过1天，消除此前该项未知；长期100/1000日节点仍未区分第N持有日与startedOn+N天 | 不再整体阻塞M03；剩余长期日节点须M21前明确 | 继承首日/有效日期并集/年节点规则，补暂停、闰日和7日窗口；映射M03-T02/T04/T05、M21-T01/T03/T05；Q03-V01～V04均NOT_RUN |
 | Q04 / PROPOSED：付费与提醒边界 | 原DOMAIN C08/C10、NOTIFICATION N02允许paidUntilExclusive与reminderDueOn不同，但“有效付费/已过期”筛选可能漏掉赠送间隔提醒 | M20前明确，关联M03/M21 | 建议提醒按真实reminderDueOn及服务状态复核，成本/实际付费经过仍按付费覆盖；不虚构免费期付款。映射M20-T01～T03、M03-T04、M21-T03；Q04-V01～V03均NOT_RUN |
-| Q05 / USER_CONFIRMED：图片往返 | 用户M10指令已确认首次规范化，后续导出/恢复校验后原字节保留；来源见顶部锁定登记 | 产品解释已确认；M11/M12完整往返仍NOT_RUN，不整体CLOSED | 不再次编码；核对字节/SHA/尺寸/格式/上限，缺图或损坏拒绝完整成功。映射M10-T03/T04、M11-T03、M12-T01/T02/T06；Q05-V01～V03完整跨模块仍NOT_RUN |
-| Q06 / ENGINEERING_REQUIRED：持久回退 | 原BACKUP B05/B08要求切换后崩溃/首次打开失败回退，需持久身份及阶段记录 | M04设计、M12实现及故障验证 | M04已在实现前记录[初始数据集设计](planning/M04_CONTRACT.md)：activeId/previousId/stage、完整准备后原子激活、异常不创建空库、同代DB/WAL/SHM/media/settings与受控owner。M04-T05实际执行另登记当前验收；M12正式切换/回退/杀进程及清理仍未实施，M12-T03/T04及Q06-V01～V03全流程仍NOT_RUN，不能CLOSED。禁止靠内存/目录时间猜测 |
+| Q05 / USER_CONFIRMED：图片往返 | 用户M10指令已确认首次规范化，后续导出/恢复校验后原字节保留；来源见顶部锁定登记 | 产品解释已确认；M12候选已验证登记JPEG/PNG原字节导出→恢复→再导出，M10导入到完整往返总闸门仍NOT_RUN，不整体CLOSED | 不再次编码；核对字节/SHA/尺寸/格式/上限，缺图或损坏拒绝完整成功。映射M10-T03/T04、M11-T03、M12-T01/T02/T06；Q05-V01～V03完整跨模块仍NOT_RUN |
+| Q06 / ENGINEERING_REQUIRED：持久回退 | 原BACKUP B05/B08要求切换后崩溃/首次打开失败回退，需持久身份及阶段记录 | M04设计、M12实现及故障验证 | M04已在实现前记录[初始数据集设计](planning/M04_CONTRACT.md)：activeId/previousId/stage、完整准备后原子激活、异常不创建空库、同代DB/WAL/SHM/media/settings与受控owner。M04-T05实际执行另登记当前验收；M12候选已实施持久SWITCHING/ROLLED_BACK、首次打开回退和已知前代清理，并执行异常检查点/重新打开测试；真实杀进程、断电/真实空间耗尽尚未执行。M12-T04及Q06-V01～V03完整故障流程仍NOT_RUN，不能CLOSED。禁止靠内存/目录时间猜测 |
 
 具体输入和对应模块见[CLARIFICATIONS](planning/CLARIFICATIONS.md)。原130案例不改；16组补测子场景单独登记，不增加原矩阵数量或新产品功能。Q02/Q07的M02结论和Q05的M10结论保持各自来源；Q04及Q03剩余解释仍待确认，不将建议直接写成规则。
 

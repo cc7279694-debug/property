@@ -1,0 +1,74 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.RestoreActivationSafetyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.data.backup.RestoreActivationSafetyTest:
+INSTRUMENTATION_STATUS: test=later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.RestoreActivationSafetyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.backup.RestoreActivationSafetyTest$later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue$1.invokeSuspend(RestoreActivationSafetyTest.kt:180)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RestoreActivationSafetyTest.later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue(RestoreActivationSafetyTest.kt:142)
+
+INSTRUMENTATION_STATUS: stream=
+Error in later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue(com.cooper.lithic.data.backup.RestoreActivationSafetyTest):
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.backup.RestoreActivationSafetyTest$later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue$1.invokeSuspend(RestoreActivationSafetyTest.kt:180)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RestoreActivationSafetyTest.later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue(RestoreActivationSafetyTest.kt:142)
+
+INSTRUMENTATION_STATUS: test=later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 1.735
+There was 1 failure:
+1) later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue(com.cooper.lithic.data.backup.RestoreActivationSafetyTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at org.junit.Assert.assertFalse(Assert.java:75)
+	at com.cooper.lithic.data.backup.RestoreActivationSafetyTest$later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue$1.invokeSuspend(RestoreActivationSafetyTest.kt:180)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RestoreActivationSafetyTest.later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue(RestoreActivationSafetyTest.kt:142)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

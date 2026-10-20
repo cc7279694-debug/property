@@ -1,0 +1,120 @@
+{
+  "base": "635e33a57c66c286fa5c19f009a5565a1e70b8e2",
+  "stagedFilesBeforeThisAudit": 135,
+  "secretFindings": 0,
+  "localLinkDestinationsChecked": 245,
+  "protectedRemoteTrackingRefs": {
+    "refs/remotes/origin/main": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a",
+    "refs/remotes/origin/feat/m10-local-cover-media": "41596820145dc4a3fa6d041728a59540d828108a",
+    "refs/remotes/origin/feat/ui-c1-visual-redesign": "0dce7dd0725a54be4f0280870ef6ca47c48ea7ed",
+    "refs/remotes/origin/codex/m11b-final-export-validation": "635e33a57c66c286fa5c19f009a5565a1e70b8e2"
+  },
+  "forbiddenArtifactFindings": 0,
+  "productionIndexComparison": {
+    "app/src/main/java/com/cooper/lithic/app/AppContainer.kt": {
+      "gitIndexSha256": "5c8a094995fd042367f43d48d632155ff0cbd5ac6ed3c02c53effcc07e540aa5",
+      "worktreeRawSha256": "3385524e214aad3006f27d43c98106596bfff91cdfdcea976cb4f63b89a40cb7",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/app/LedgerUiState.kt": {
+      "gitIndexSha256": "3cb101067433e094c8e2be7e1aa51ca3a49ded5c5b64e268dc991fe9a70fda38",
+      "worktreeRawSha256": "61ec6df309ba8c1803293974f5349810be220a84defc8d9425e17a7d0fa270ca",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt": {
+      "gitIndexSha256": "ebb09363079553487428bdc5de7049481726e9d6ebc459c261f0c4a54dc1831a",
+      "worktreeRawSha256": "c2dfc5c79c00d613a53afbfbef33ac2c4de820a4bbe1ded0eecab70a3a946ff4",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/app/LithicApp.kt": {
+      "gitIndexSha256": "db3700a18a264171da8c6a4688cc400418730a95a56b4b222655a846590a8567",
+      "worktreeRawSha256": "84a92b4a6dbf12004be921d09ed6b7e125981a7fc64b939878b36fc01dc6b360",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt": {
+      "gitIndexSha256": "5349d84a7cd34d2963166f5b44fbf5b595605a131b330d9b8b8330358cbc7945",
+      "worktreeRawSha256": "b5166194f63409ec998cc1aac874ec67954432fe49fdebaf4ab46d728fdf94ee",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/app/MainActivity.kt": {
+      "gitIndexSha256": "c56b076189165ffaeee994a3bdb794d333f1f6f775032e9ddb96b2da37ad8a30",
+      "worktreeRawSha256": "acd2e1b4f131b5a251106a1cbe560ae7447c1d103a95dfe50371e75e2c5a9078",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/backup/DataGenerationStore.kt": {
+      "gitIndexSha256": "e8bccdd35608b10d59ab79f70d6dd42e59539af5cf0ec207c046961dfa8bbf66",
+      "worktreeRawSha256": "6254158b73c906d7debd6a5d3bb0bd6a2f6542520ffe40dec598d8b6693d394f",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/backup/RoomBackupSnapshotSource.kt": {
+      "gitIndexSha256": "7dbec0d09823512f37511aac8e5c4fa78cc9e37cffc2d5f14a06c141dc927d44",
+      "worktreeRawSha256": "200458fd0179942a80042c4b1cf9ea0dcb90d0e29535e9e7f7607758b1856db0",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/repository/LocalWriteCoordinator.kt": {
+      "gitIndexSha256": "a2d3b18fe9ba9ddd96c0201e332cbaa2708c25b56c942132a61f2f9305d4a582",
+      "worktreeRawSha256": "33d98e2592b24e4622f9d08820c8ea706f4e925f2c4e5e68756bdd9abff38d4c",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt": {
+      "gitIndexSha256": "7dcc5db474f06fd03e581cde5242d0190ffcd631ec9bbd5ea87f6a8f17f4a00b",
+      "worktreeRawSha256": "983c4a36cf1bfdbe16793081f231a8d08751688210b074b9470314a36655cb28",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/backup/BackupBusinessValidation.kt": {
+      "gitIndexSha256": "b9893887df5e67174fb304aeab648604d4441e11fe1d3aa7fe32699c5b6fb26a",
+      "worktreeRawSha256": "b9893887df5e67174fb304aeab648604d4441e11fe1d3aa7fe32699c5b6fb26a",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/backup/BackupValidator.kt": {
+      "gitIndexSha256": "65c42bd0e314bb97d8b2114d3e8bff01b2f80ccb56e92ec9cb4965057f9266e3",
+      "worktreeRawSha256": "65c42bd0e314bb97d8b2114d3e8bff01b2f80ccb56e92ec9cb4965057f9266e3",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/backup/RestoreContracts.kt": {
+      "gitIndexSha256": "ffaeb13daceea0b3fe29058986f7779daebe4f0fc3ea0901158df804911f6641",
+      "worktreeRawSha256": "d60d7adec78c5c7343623725cc801d863db62114cf16a6fd6e31a2d3547e0fa6",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/backup/RestoreCoordinator.kt": {
+      "gitIndexSha256": "8ce5eb859e597c80dd41301045b34c4c064634aa5fd6adb7f63f0e1a9cc28297",
+      "worktreeRawSha256": "11f312d8481b22d827e1092cf1936e8e2cbeb46664814a2de2dd4bef947317f0",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/backup/RestoredGenerationWriter.kt": {
+      "gitIndexSha256": "1c5dba3cb1ec38445a264026dc2805a724807a4cfac200b8e22d74cb00f96756",
+      "worktreeRawSha256": "1c5dba3cb1ec38445a264026dc2805a724807a4cfac200b8e22d74cb00f96756",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/data/backup/RetiredGenerationCleanup.kt": {
+      "gitIndexSha256": "8f09f3e27a7b425a83f17df134b70f3f5929f54e3001e9fc2b272cdac87c6e9a",
+      "worktreeRawSha256": "8f09f3e27a7b425a83f17df134b70f3f5929f54e3001e9fc2b272cdac87c6e9a",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreController.kt": {
+      "gitIndexSha256": "e1fc12e032b76bfdca53c842e5a022e48656576a446e864717888a1ac23cd36f",
+      "worktreeRawSha256": "e1fc12e032b76bfdca53c842e5a022e48656576a446e864717888a1ac23cd36f",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreDocumentPicker.kt": {
+      "gitIndexSha256": "ff760dd074503ac25a66247439aa5f0d8acdd911fadfb26b47060d91e80c3899",
+      "worktreeRawSha256": "ff760dd074503ac25a66247439aa5f0d8acdd911fadfb26b47060d91e80c3899",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreViewModel.kt": {
+      "gitIndexSha256": "900b8f861e2cd18985284dec6e9aa81d5006ed5e5d04f895389e195eb4f7d441",
+      "worktreeRawSha256": "900b8f861e2cd18985284dec6e9aa81d5006ed5e5d04f895389e195eb4f7d441",
+      "sameTextAfterLfNormalization": true
+    },
+    "app/src/main/java/com/cooper/lithic/feature/settings/RestorePreviewScreen.kt": {
+      "gitIndexSha256": "242aae6978c060098999c2d32f8ece5a5997566f1dda0eb7a5908870c04f2d05",
+      "worktreeRawSha256": "242aae6978c060098999c2d32f8ece5a5997566f1dda0eb7a5908870c04f2d05",
+      "sameTextAfterLfNormalization": true
+    }
+  },
+  "testDriverFinalSha256": "790ed211511193230fbb07e9f1d28fe2a3d2932b9e19b7cf8027161765e0dba3",
+  "auditNotes": [
+    "First attempt assumed a local main branch; repository has only origin/main. Read-only resolution corrected; no protected branch operation performed.",
+    "Git CRLF/LF normalization is explicitly compared; raw build-input hashes are not silently replaced."
+  ]
+}

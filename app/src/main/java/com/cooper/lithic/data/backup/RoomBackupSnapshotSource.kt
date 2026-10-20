@@ -8,6 +8,12 @@ import androidx.room.withTransaction
  */
 class RoomBackupSnapshotSource internal constructor(private val generation: ManagedGeneration) : BackupSnapshotSource {
     internal suspend fun <T> captureInto(consume: suspend (BackupSnapshot) -> T): T = generation.coordinator.withSnapshot {
+        consume(captureWithinOwnedBoundary(generation.coordinator))
+    }
+
+    /** Only the storage owner already holding this exact coordinator may use this retirement read. */
+    internal suspend fun captureWithinOwnedBoundary(expected:com.cooper.lithic.data.repository.LocalWriteCoordinator):BackupSnapshot {
+        check(expected === generation.coordinator)
         // Validate the settings owner before touching Room: a closed generation must not reopen it.
         // The coordinator remains held through all reads, so this value cannot straddle a write.
         val settings = BackupSettingsV1(
@@ -43,7 +49,7 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
                 settings,
             )
         }
-        consume(snapshot)
+        return snapshot
     }
 
     override suspend fun capture(): BackupSnapshot = captureInto { it }

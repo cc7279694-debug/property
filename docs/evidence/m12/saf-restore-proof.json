@@ -1,0 +1,77 @@
+{
+  "result": "PASS",
+  "mode": "PICKER_SELECTION_FIX",
+  "claim": "saf-restore-picker-fix.claim",
+  "resumeOfClaimSha256": "43b4a7a283ddc46846c4f090eea40006fab59630ad80305de6d27fab04ffb2a7",
+  "previousResumeSha256": "f3d8b77eb4d19dbebe684c4be1763f71feda3818a626bb53943c654a7cfd9772",
+  "sourceFailures": [
+    "final-real-saf-restore.stdout",
+    "final-real-saf-restore-resume.stdout"
+  ],
+  "sourceFailure": "final-real-saf-restore.stdout",
+  "realMainActivity": true,
+  "realOpenDocumentPickerSelections": 2,
+  "filename": "m11b-synthetic-0a21510d-ab12-4dda-a226-70848d48865f.lithicbackup",
+  "archiveSha256": "761efcabd55718d0ea6f9bec56f9e4ec490da6766b3dbca0c82a4fba96be5818",
+  "bootId": "837312dd-125c-41f8-92a9-eb2d96e7795e",
+  "uid": 10216,
+  "sourceGeneration": "5886ffc8-317c-4342-a5fe-1ac5f7f85767",
+  "restoredGeneration": "b3f76bf5-27f9-4cc4-b39c-d6feea2f2457",
+  "sentinelId": "9ca647fb-2bb7-4ed0-897d-166173985d72",
+  "beforeCounts": {
+    "categories": 3,
+    "long_term_projects": 1,
+    "project_money_events": 1,
+    "local_media_assets": 5,
+    "subscriptions": 1,
+    "subscription_renewals": 1,
+    "subscription_state_changes": 1
+  },
+  "restoredCounts": {
+    "categories": 2,
+    "long_term_projects": 1,
+    "project_money_events": 1,
+    "local_media_assets": 5,
+    "subscriptions": 1,
+    "subscription_renewals": 1,
+    "subscription_state_changes": 1
+  },
+  "recordZoneId": "GMT",
+  "cancelFeedback": "已取消恢复，当前记录未改变。",
+  "successFeedback": "恢复成功，已重新读取恢复后的本地记录。",
+  "unchangedBeforeConfirmation": true,
+  "cancellationKeptCurrentAndCleanedKnownPreview": true,
+  "fullOverwriteWithoutMerge": true,
+  "allSevenTablesAndSettingsEqual": true,
+  "allFiveImagesOriginalBytes": true,
+  "oldGenerationAndSentinelKept": true,
+  "m11EvidenceAndOriginalClaimsUnchanged": true,
+  "restoreClaimUnchanged": true,
+  "files": [
+    {
+      "path": "media\/m11b-jpeg.jpg",
+      "byteLength": 759,
+      "sha256": "ae4e6adc68d1985a050564ba777208c02fabe662b9ac929e8455f1fffdfa3aac"
+    },
+    {
+      "path": "media\/m11b-rgba.png",
+      "byteLength": 71,
+      "sha256": "670bfad01b940cd29b017a62ab13e2f72c372f4b9d989b713ee7947e4931f7cf"
+    },
+    {
+      "path": "media\/m11b-palette.png",
+      "byteLength": 86,
+      "sha256": "aef1e5835f9ade2686003e5da5ad049c9727bc7971a786237707eace1f87011f"
+    },
+    {
+      "path": "media\/m11b-gray16.png",
+      "byteLength": 69,
+      "sha256": "509d81a7466d8d478f5c75aa77089592e8bcb8cb0ee6116dea2c0bc91a4a834b"
+    },
+    {
+      "path": "media\/m11b-adam7.png",
+      "byteLength": 71,
+      "sha256": "10028196a89908232783e45a3a3c2df71d774d5a39022c723994d2ae0aeb42bc"
+    }
+  ]
+}

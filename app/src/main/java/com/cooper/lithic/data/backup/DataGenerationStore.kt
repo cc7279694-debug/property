@@ -41,10 +41,14 @@ class DataGenerationStore(
     private val root: File = context.noBackupFilesDir,
     private val coordinator: LocalWriteCoordinator = LocalWriteCoordinator(),
     private val initialize: suspend (ManagedGeneration) -> Unit = {},
+    private val restoreProbe: suspend (String) -> Unit = {},
 ) {
     private val lifecycle = Mutex()
     private var active: ManagedGeneration? = null
     private var leasedRoot: String? = null
+    private val prepared = mutableMapOf<String,String>()
+    var lastRecoveryWarning:String? = null
+        private set
 
     suspend fun open(deviceZone: ZoneId = ZoneId.systemDefault()): ManagedGeneration = lifecycle.withLock {
         // Existing active resources are owned by the store and are never closed by a cancelled repeat call.
@@ -86,7 +90,7 @@ class DataGenerationStore(
         } catch (failure: Throwable) {
             acquired?.let { generation ->
                 withContext(NonCancellable + Dispatchers.IO) {
-                    disposeAfterFailure(generation.database, generation.settings, failure)
+                    disposeAfterFailure(generation.database, generation.settings, failure, generation.coordinator)
                     releaseRoot()
                 }
             }
@@ -145,57 +149,252 @@ class DataGenerationStore(
         }
     }
 
-    private suspend fun openExisting(
-        pointer: File,
-        backup: File,
-        generations: File,
-    ): ManagedGeneration {
-        // AtomicFile's committed backup wins. Validate before openRead can rename/delete helpers.
-        val committed = if (backup.exists()) backup else pointer
-        if (!committed.isFile) throw GenerationStorageException("Committed active pointer is missing")
-        val metadata = readPointer(committed)
-        if (!generations.isDirectory) throw GenerationStorageException("Generations directory is missing")
-        val directory = safeChild(generations, metadata.activeId)
-        if (!directory.isDirectory) throw GenerationStorageException("Active generation directory is missing")
-        val paths = generationPaths(directory)
-        if (!paths.database.isFile || paths.database.length() == 0L) {
-            throw GenerationStorageException("Existing generation database is missing or empty")
+    private suspend fun openExisting(pointer:File,backup:File,generations:File):ManagedGeneration {
+        val committed=if(backup.exists()) backup else pointer
+        if(!committed.isFile) throw GenerationStorageException("Committed active pointer is missing")
+        val metadata=readPointer(committed)
+        if(!generations.isDirectory) throw GenerationStorageException("Generations directory is missing")
+        if(backup.exists()) {
+            val bytes=committed.readBytes()
+            if(!bytes.contentEquals(AtomicFile(pointer).readFully())) throw GenerationStorageException("Atomic pointer recovery changed committed metadata")
         }
-        if (!paths.settings.isFile || !paths.media.isDirectory) {
-            throw GenerationStorageException("Existing generation settings or media directory is missing")
-        }
-        validateReady(paths.ready, metadata.activeId)
-        var database: LithicDatabase? = null
-        var settings: SettingsStore? = null
-        try {
-            val openedDatabase = LithicDatabase.open(context, paths.database, requireExisting = true)
-            database = openedDatabase
-            coordinator.withSnapshot { openedDatabase.requireDefaults() }
-            val openedSettings = SettingsStore.open(paths.settings, coordinator, requireExisting = true)
-            settings = openedSettings
-            if (backup.exists()) {
-                val committedBytes = committed.readBytes()
-                val recoveredBytes = AtomicFile(pointer).readFully()
-                if (!committedBytes.contentEquals(recoveredBytes)) {
-                    throw GenerationStorageException("Atomic pointer recovery did not preserve committed metadata")
+        if(metadata.stage in setOf("STABLE","ROLLED_BACK")) {
+            if(metadata.stage=="ROLLED_BACK") lastRecoveryWarning="上次恢复的新数据集未通过校验，当前保留原数据集。"
+            val opened=openNamed(generations,metadata.activeId)
+            try {
+                if(metadata.stage=="STABLE" && metadata.previousId!=null) {
+                    cleanPreviousAfterStableOpen(pointer,generations,opened,metadata.previousId)
                 }
+                return opened
+            } catch(failure:Throwable) {
+                disposeGeneration(opened,failure)
+                throw failure
             }
-            return managed(metadata.activeId, directory, openedDatabase, openedSettings)
-        } catch (failure: Throwable) {
-            disposeAfterFailure(database, settings, failure)
+        }
+        val previous=requireNotNull(metadata.previousId)
+        var candidate:ManagedGeneration?=null
+        try {
+            candidate=openNamed(generations,metadata.activeId)
+            verifyRestoreProof(candidate)
+            writePointer(pointer,metadata.activeId,previous,"STABLE")
+            return candidate
+        } catch(failure:Throwable) {
+            candidate?.let { disposeGeneration(it,failure) }
+            // The old id is persisted with the switch; never guess from directory dates.
+            val old=openNamed(generations,previous)
+            try {
+                writePointer(pointer,previous,metadata.activeId,"ROLLED_BACK")
+                lastRecoveryWarning="恢复的新数据集未通过首次打开校验，已回到原数据集。"
+                return old
+            } catch(rollback:Throwable) { disposeGeneration(old,rollback);rollback.addSuppressed(failure);throw rollback }
+        }
+    }
+
+    /** Later stable startup only. Never rolls current user edits back to an old snapshot. */
+    private suspend fun cleanPreviousAfterStableOpen(pointer:File,generations:File,current:ManagedGeneration,previousId:String) {
+        val currentSnapshot=RoomBackupSnapshotSource(current).capture()
+        RestoredGenerationWriter().verify(current,currentSnapshot)
+        // Unknown previous data must remain on disk. Failure to prove cleanup ownership
+        // does not make an otherwise verified current generation an empty or failed ledger.
+        val previousSnapshot=try {
+            val previous=openNamed(generations,previousId)
+            try { RoomBackupSnapshotSource(previous).capture() }
+            finally { closeChecked(previous) }
+        } catch(cancelled:CancellationException) { throw cancelled }
+        catch(_:Exception) {
+            lastRecoveryWarning="当前数据已打开；上次恢复的旧资源归属无法确认，已保守保留。"
+            return
+        }
+        withContext(NonCancellable) {
+            // Detach the old id durably BEFORE deletion. An interrupted cleanup can then
+            // leave residue, but cannot make a partially deleted directory the fallback.
+            writePointer(pointer,current.id,null,"STABLE")
+            if(!RetiredGenerationCleanup.clean(safeChild(generations,previousId),previousId,current.id,previousSnapshot)) {
+                lastRecoveryWarning="当前数据已打开；未能安全清理的旧资源已保留。"
+            }
+        }
+    }
+
+    private suspend fun openNamed(generations:File,id:String,requireReady:Boolean=true):ManagedGeneration {
+        val directory=safeChild(generations,id)
+        if(!directory.isDirectory) throw GenerationStorageException("Generation directory is missing")
+        val paths=generationPaths(directory)
+        if(!paths.database.isFile || paths.database.length()==0L || !paths.settings.isFile || !paths.media.isDirectory)
+            throw GenerationStorageException("Generation resources are incomplete")
+        if(requireReady) validateReady(paths.ready,id)
+        var database:LithicDatabase?=null
+        var settings:SettingsStore?=null
+        val gate=LocalWriteCoordinator()
+        try {
+            val db=LithicDatabase.open(context,paths.database,requireExisting=true);database=db
+            gate.withSnapshot { db.requireDefaults() }
+            val prefs=SettingsStore.open(paths.settings,gate,requireExisting=true);settings=prefs
+            return managed(id,directory,db,prefs,gate)
+        } catch(failure:Throwable) {
+            disposeAfterFailure(database,settings,failure,gate)
             rethrowStorageFailure(failure)
         }
     }
 
-    private fun managed(id: String, directory: File, database: LithicDatabase, settings: SettingsStore) =
-        ManagedGeneration(id, directory, database, settings, coordinator, ::closeGeneration)
+    /** Prepare a new complete dataset without touching the active pointer or closing the old one. */
+    internal suspend fun prepareRestore(zone:ZoneId,populate:suspend(ManagedGeneration)->Unit):PreparedGeneration = lifecycle.withLock {
+        check(active!=null && leasedRoot!=null) { "Restore requires the current storage owner" }
+        withContext(Dispatchers.IO) {
+            val generations=safeChild(validateRoot(),"generations")
+            val id=UUID.randomUUID().toString();val nonce=UUID.randomUUID().toString()
+            val directory=safeChild(generations,id)
+            if(!directory.mkdir()) throw GenerationStorageException("Cannot create restore generation")
+            val paths=generationPaths(directory)
+            if(!paths.media.mkdir()) throw GenerationStorageException("Cannot create restore media directory")
+            val gate=LocalWriteCoordinator()
+            var db:LithicDatabase?=null;var prefs:SettingsStore?=null
+            try {
+                val database=LithicDatabase.open(context,paths.database);db=database
+                val settings=SettingsStore.open(paths.settings,gate,zone);prefs=settings
+                val fresh=managed(id,directory,database,settings,gate)
+                populate(fresh)
+                val snapshot=RoomBackupSnapshotSource(fresh).capture()
+                RestoredGenerationWriter().verify(fresh,snapshot)
+                val proof=JSONObject().put("formatVersion",FORMAT_VERSION).put("generationId",id).put("nonce",nonce)
+                    .put("dataSha256",restoreDigest { BackupJson.writeData(snapshot.data,it) })
+                    .put("settingsSha256",restoreDigest { BackupJson.writeSettings(snapshot.settings,it) })
+                // Checkpoint/close all owners before readiness and activation eligibility.
+                database.openHelper.writableDatabase.query("PRAGMA wal_checkpoint(FULL)").use { cursor ->
+                    check(cursor.moveToFirst() && cursor.getInt(0)==0) { "Restore WAL checkpoint did not complete" }
+                }
+                gate.withShutdown { settings.closeWithinWrite();database.close() }
+                prefs=null;db=null
+                syncFile(paths.database);syncFile(paths.settings)
+                writeAtomic(safeChild(directory,"restore-proof.json"),proof)
+                val reopened=openNamed(generations,id,requireReady=false)
+                try { verifyRestoreProof(reopened) } finally { closeChecked(reopened) }
+                writeAtomic(paths.ready,JSONObject().put("formatVersion",FORMAT_VERSION).put("generationId",id))
+                syncDirectory(directory);syncDirectory(generations)
+                restoreProbe("PREPARED")
+                prepared[id]=nonce
+                PreparedGeneration(id,directory,nonce)
+            } catch(failure:Throwable) {
+                disposeAfterFailure(db,prefs,failure,gate)
+                rethrowStorageFailure(failure) // Unknown/partial private candidate is preserved, never swept.
+            }
+        }
+    }
+
+    /** Restore's sole activation boundary; all old queued writes are retired under their own gate. */
+    internal suspend fun activateRestore(expectedActiveId:String,candidate:PreparedGeneration,expectedSnapshot:BackupSnapshot?=null):ManagedGeneration = lifecycle.withLock {
+        withContext(NonCancellable+Dispatchers.IO) {
+            val old=active ?: throw GenerationStorageException("Current generation is unavailable")
+            require(old.id==expectedActiveId) { "Current generation changed after preview" }
+            require(prepared[candidate.id]==candidate.nonce) { "Restore capability is stale or unknown" }
+            val storageRoot=validateRoot();val generations=safeChild(storageRoot,"generations")
+            require(safeChild(generations,candidate.id)==candidate.directory) { "Candidate belongs to another owner" }
+            val pointer=safeChild(storageRoot,"active-generation")
+            val metadata=committedPointer(pointer)
+            require(metadata.stage in setOf("STABLE","ROLLED_BACK") && metadata.activeId==old.id) { "Current persisted activation is uncertain" }
+            var next:ManagedGeneration?=null
+            var oldSnapshot:BackupSnapshot?=null
+            try {
+                val checked=openNamed(generations,candidate.id)
+                try {
+                    val proof=readMetadata(safeChild(candidate.directory,"restore-proof.json"),PROOF_FIELDS)
+                    require(proof.getString("nonce")==candidate.nonce)
+                    verifyRestoreProof(checked)
+                } finally { closeChecked(checked) }
+                restoreProbe("BEFORE_SWITCH")
+                old.coordinator.retire(verify={
+                    val observed=RoomBackupSnapshotSource(old).captureWithinOwnedBoundary(old.coordinator)
+                    if(expectedSnapshot!=null) require(observed==expectedSnapshot) { "Records changed after preview; select again" }
+                    oldSnapshot=observed
+                },dispose={
+                    try { old.settings.closeWithinWrite() } finally { old.database.close() }
+                })
+                active=null
+                writePointer(pointer,candidate.id,old.id,"SWITCHING")
+                restoreProbe("AFTER_SWITCH")
+                next=openNamed(generations,candidate.id)
+                restoreProbe("FIRST_OPEN")
+                verifyRestoreProof(next)
+                writePointer(pointer,candidate.id,old.id,"STABLE")
+                active=next;prepared.remove(candidate.id);lastRecoveryWarning=null
+                next
+            } catch(failure:Throwable) {
+                next?.let { disposeGeneration(it,failure) }
+                if(!old.coordinator.isRetired) throw failure // Pre-switch/CAS failure: current resources remain live.
+                // Only this owned switch may be rolled back. Unknown pointer identity is not overwritten.
+                val observed=committedPointer(pointer)
+                require(observed.activeId==old.id || (observed.activeId==candidate.id && observed.previousId==old.id)) {
+                    "Unknown activation metadata; preserved without guessing"
+                }
+                disposeGeneration(old,failure)
+                val reopened=openNamed(generations,old.id)
+                try {
+                    oldSnapshot?.let { require(RoomBackupSnapshotSource(reopened).capture()==it) { "Previous facts changed during restore" } }
+                    writePointer(pointer,old.id,candidate.id,"ROLLED_BACK")
+                    active=reopened
+                    lastRecoveryWarning="恢复未完成，原数据集已重新打开。"
+                } catch(rollback:Throwable) {
+                    disposeGeneration(reopened,rollback);rollback.addSuppressed(failure);active=null;throw rollback
+                }
+                throw GenerationStorageException("Restore failed; previous generation reopened",failure)
+            }
+        }
+    }
+
+    private suspend fun verifyRestoreProof(generation:ManagedGeneration) {
+        val proof=readMetadata(safeChild(generation.directory,"restore-proof.json"),PROOF_FIELDS)
+        require(readId(proof.get("generationId"))==generation.id)
+        readId(proof.get("nonce"))
+        val snapshot=RoomBackupSnapshotSource(generation).capture()
+        require(proof.getString("dataSha256")==restoreDigest { BackupJson.writeData(snapshot.data,it) }) { "Restored facts do not match readiness proof" }
+        require(proof.getString("settingsSha256")==restoreDigest { BackupJson.writeSettings(snapshot.settings,it) }) { "Restored settings do not match readiness proof" }
+        RestoredGenerationWriter().verify(generation,snapshot)
+    }
+
+    private fun restoreDigest(write:(java.io.OutputStream)->Unit):String {
+        val digest=java.security.MessageDigest.getInstance("SHA-256")
+        java.security.DigestOutputStream(object:java.io.OutputStream(){ override fun write(value:Int) {} ;override fun write(bytes:ByteArray,offset:Int,length:Int) {} },digest).use(write)
+        return digest.digest().joinToString("") { "%02x".format(it.toInt() and 255) }
+    }
+    private fun syncFile(file:File) { java.io.RandomAccessFile(file,"rw").use { it.fd.sync() } }
+    private fun syncDirectory(file:File) {
+        BackupEntryFiles.requireDirectory(file.toPath())
+        val before=android.system.Os.lstat(file.path)
+        val fd=android.system.Os.open(file.path,android.system.OsConstants.O_RDONLY or android.system.OsConstants.O_NOFOLLOW,0)
+        try {
+            val held=android.system.Os.fstat(fd)
+            require(android.system.OsConstants.S_ISDIR(held.st_mode) && held.st_uid==android.os.Process.myUid() && held.st_dev==before.st_dev && held.st_ino==before.st_ino)
+            android.system.Os.fsync(fd)
+        } finally { android.system.Os.close(fd) }
+    }
+    private fun writePointer(file:File,activeId:String,previousId:String?,stage:String) {
+        writeAtomic(file,JSONObject().put("formatVersion",FORMAT_VERSION).put("activeId",activeId)
+            .put("previousId",previousId ?: JSONObject.NULL).put("stage",stage))
+        syncDirectory(requireNotNull(file.parentFile))
+    }
+    private fun committedPointer(pointer:File):PointerMetadata {
+        val backup=safeChild(requireNotNull(pointer.parentFile),"active-generation.bak")
+        val selected=if(backup.exists()) backup else pointer
+        val metadata=readPointer(selected)
+        if(backup.exists()) { val bytes=selected.readBytes();require(bytes.contentEquals(AtomicFile(pointer).readFully())) }
+        return metadata
+    }
+    private suspend fun closeChecked(generation:ManagedGeneration) = withContext(NonCancellable) {
+        generation.coordinator.withShutdown {
+            try { generation.settings.closeWithinWrite() } finally { generation.database.close() }
+        }
+    }
+    private suspend fun disposeGeneration(generation:ManagedGeneration,failure:Throwable) =
+        disposeAfterFailure(generation.database,generation.settings,failure,generation.coordinator)
+
+    private fun managed(id:String,directory:File,database:LithicDatabase,settings:SettingsStore,gate:LocalWriteCoordinator=coordinator) =
+        ManagedGeneration(id,directory,database,settings,gate,::closeGeneration)
 
     private suspend fun closeGeneration(generation: ManagedGeneration) = withContext(Dispatchers.IO) {
         lifecycle.withLock {
             if (active === generation) {
                 withContext(NonCancellable) {
                     try {
-                        coordinator.withWrite {
+                        generation.coordinator.withShutdown {
                             try {
                                 generation.settings.closeWithinWrite()
                             } finally {
@@ -215,9 +414,10 @@ class DataGenerationStore(
         database: LithicDatabase?,
         settings: SettingsStore?,
         failure: Throwable,
+        gate:LocalWriteCoordinator=coordinator,
     ) = withContext(NonCancellable) {
         try {
-            coordinator.withWrite {
+            gate.withShutdown {
                 try {
                     settings?.closeWithinWrite()
                 } finally {
@@ -247,15 +447,16 @@ class DataGenerationStore(
 
     private fun readPointer(file: File): PointerMetadata {
         val value = readMetadata(file, setOf("formatVersion", "activeId", "previousId", "stage"))
-        if (value.get("stage") != "STABLE") {
-            throw GenerationStorageException("Generation recovery stage is not supported by M04")
-        }
+        val stage=value.get("stage")
+        if(stage !is String || stage !in setOf("STABLE","SWITCHING","ROLLED_BACK")) throw GenerationStorageException("Unknown generation recovery stage")
         val id = readId(value.get("activeId"))
         val previous = value.get("previousId")
         if (previous != JSONObject.NULL && readId(previous) == id) {
             throw GenerationStorageException("Previous generation cannot equal active generation")
         }
-        return PointerMetadata(id)
+        val previousId=if(previous==JSONObject.NULL) null else readId(previous)
+        if(stage in setOf("SWITCHING","ROLLED_BACK") && previousId==null) throw GenerationStorageException("Switching has no proven previous generation")
+        return PointerMetadata(id,previousId,stage)
     }
 
     private fun validateReady(file: File, id: String) {
@@ -303,6 +504,7 @@ class DataGenerationStore(
         try {
             output = atomic.startWrite()
             output.write(bytes)
+            output.fd.sync()
             atomic.finishWrite(output)
             output = null
             if (!file.isFile || !file.readBytes().contentEquals(bytes)) {
@@ -326,10 +528,11 @@ class DataGenerationStore(
         else -> throw failure
     }
 
-    private data class PointerMetadata(val activeId: String)
+    private data class PointerMetadata(val activeId:String,val previousId:String?,val stage:String)
     private data class GenerationPaths(val database: File, val media: File, val settings: File, val ready: File)
 
     companion object {
+        private val PROOF_FIELDS=setOf("formatVersion","generationId","nonce","dataSha256","settingsSha256")
         private const val FORMAT_VERSION = 1
         private const val MAX_METADATA_BYTES = 16_384L
         private val roots = mutableSetOf<String>()

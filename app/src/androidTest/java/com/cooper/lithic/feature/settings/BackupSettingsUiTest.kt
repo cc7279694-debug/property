@@ -27,7 +27,8 @@ class BackupSettingsUiTest {
         } }
         compose.onNodeWithTag("export-complete-backup").performScrollTo().assertIsDisplayed().performClick()
         assertEquals(1, clicks)
-        compose.onNodeWithText("恢复功能尚未开放").performScrollTo().assertIsDisplayed()
+        // Keep the M11 test identity: a host without a restore callback cannot start an overwrite.
+        compose.onNodeWithTag("restore-complete-backup").performScrollTo().assertIsNotEnabled()
     }
 
     @Test

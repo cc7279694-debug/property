@@ -1,5 +1,20 @@
 # 当前架构事实
 
+## M12安全恢复候选增量（2026-10-20）
+
+基于已独立冻结M11 `635e33a`、Room v2和backup format v1；不包含延期M10的Worker/Stage V2/JNI。以下为真实实现，执行结果另见当前验收登记；下方旧阶段的未实施描述保留为当时架构历史。
+
+`RestoreCoordinator`只读复制SAF输入到独占私有缓存。`BackupValidator`在解压前核对ZIP中央/本地记录和完整压缩流、条目路径/重复/越界/版本/数量/字节预算、严格JSON字段及业务关联/聚合溢出。复用M11 DTO/manifest及冻结领域引擎，解析器另设UTF8名称4096B、单段255B、中央元数据16MiB准入预算；这不是总进程内存硬上限或格式版本升级。未通过的归档不修改当前代。
+
+预览能力只在进程内绑定归档、完整旧事实/设置快照和提取文件身份；用户明确确认后消耗一次令牌。`RestoredGenerationWriter`只填充空的新代，在一Room事务写七表，设置和全部登记媒体原字节写完/校验/关闭/fsync/重新打开后才生成ready。`DataGenerationStore`持同一生命周期锁，在旧协调器内比对预览快照、退休旧任务并关闭旧Room/DataStore，再AtomicFile写SWITCHING(activeNew,previousOld)。新集首次打开全校验通过后写STABLE；失败只在持久身份明确时回到完整旧集并持久ROLLED_BACK/明确警告。未知指针拒绝，不生成空账本。
+
+后续STABLE启动重新验证当前事实和媒体，不拿原恢复hash否定合法后续写入，也不静默回滚到陈旧旧集。唯一已知前代关闭后，先持久清空previous指针，才按完整树、UID/inode/单链接、SHA及ready身份清理；未知子项整代保留，不扫描其他代。中途删除失败只能留下已不可达的保守残留。ROLLED_BACK不触发旧目标清理；异常/进程终止的真实设备门禁仍分别登记。
+
+`AppContainer`共用恢复/关闭互斥，旧写队列在代退休后拒绝；`LedgerUiStateHolder`按generation/repository拒绝旧回调，Nav3和子ViewModelStore在新代或同ID回退重开时换epoch，原表单SavedState不能写回新代。设置页系统选择、七表数量预览、取消/覆盖确认/结果反馈均通过现有Compose组件实现；恢复URI、令牌和确认命令不跨进程重放。
+
+SQLite、DataStore和文件系统不是一个事务；未知/中断私有准备文件保留。format1当前只含M11已实现的记录时区设置；M20通知水位及系统权限不伪造恢复。
+
+
 ## M11-B候选增量（2026-10-20）
 
 基于冻结M11-A 79771fc。`RoomBackupSnapshotSource.captureInto`在同一协调器持有期内将七表/设置交给媒体快照；源文件逐项核对只读FD、UID/dev/inode/nlink及前后身份、原字节长度/SHA，再对内部副本做格式和尺寸检查。复制前核对媒体条目数和累计字节预算，未知/变化拒绝，不对源文件重新编码或写入。

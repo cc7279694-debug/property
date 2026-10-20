@@ -1,0 +1,98 @@
+[
+  {
+    "source": "initial-red.log",
+    "result": "COMPILE_RED",
+    "reason": "Missing restore controller/contracts before implementation",
+    "bytes": 8685,
+    "sha256": "fad1d77c76baf345ace54e3fd2d2334f6c2167115abe5f6c136574924dc9ad49",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\initial-red.log"
+  },
+  {
+    "source": "validator-red.xml",
+    "result": "RED_16_OF_16",
+    "reason": "Missing validator implementation",
+    "bytes": 77673,
+    "sha256": "68c4373d69bddab452061baa41b59d8c34c394b633f90be4a3c5fcf323b4f2ea",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\validator-red.xml"
+  },
+  {
+    "source": "android-structural-red.log",
+    "result": "COMPILE_RED",
+    "reason": "Missing writer/generation/UI interfaces",
+    "bytes": 29878,
+    "sha256": "ba16d8298082e89f915f2ee83bc554760b2fac6248600be585e5d37f00392924",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\android-structural-red.log"
+  },
+  {
+    "source": "first-green.log",
+    "result": "BUILD_FAIL_FIXED",
+    "reason": "Android public OsConstants has no O_DIRECTORY; fixed using verified read-only directory FD",
+    "bytes": 4404,
+    "sha256": "2ddd6a07bff3b8282a64affea597fd3d4e169301e09ddc98dda25c297cff5884",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\first-green.log"
+  },
+  {
+    "source": "validator-padding-red.xml",
+    "result": "RED_1_OF_17",
+    "reason": "Deflate hidden trailing bytes accepted before exact raw compressed consumption",
+    "bytes": 7721,
+    "sha256": "b090118260bc12994d0398379510f86e9bf28fb6fe4463408a7904817021dbfc",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\validator-padding-red.xml"
+  },
+  {
+    "source": "zip-resource-red.xml",
+    "result": "RED_2_OF_2",
+    "reason": "Early ZIP resource admission missing",
+    "bytes": 10030,
+    "sha256": "6192513c2040ea65e1c705ef1e57c9502e0a96f3b76b086f80339f26cb2f1e35",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\zip-resource-red.xml"
+  },
+  {
+    "source": "android/stale-refresh-red.stdout",
+    "result": "ANDROID_RED",
+    "reason": "Old read completion overwrote new generation; host expected-RED classifier initially used wrong exception substring",
+    "bytes": 4989,
+    "sha256": "9bae71fb0f447c50f44d846aaf4a3c290a755aaa68c9598b60562b62e38ba577",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\android\\stale-refresh-red.stdout"
+  },
+  {
+    "source": "android/old-generation-gc-red.stdout",
+    "result": "ANDROID_INITIALIZATION_ERROR",
+    "reason": "JUnit before() returned Map; test body NOT_RUN; explicit Unit fixed harness",
+    "bytes": 5303,
+    "sha256": "79155dfae0caf452c9b679cff50d6e427082162c9c1f8691ec16b8918cb7188e",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\android\\old-generation-gc-red.stdout"
+  },
+  {
+    "source": "android/old-generation-gc-assertion-red.stdout",
+    "result": "ANDROID_RED",
+    "reason": "Known previous generation was retained after later verified stable open",
+    "bytes": 5038,
+    "sha256": "4288eeced6b6906119db0c1df586180f53b13c7cd78bad053ee12fcc8c4640f5",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\android\\old-generation-gc-assertion-red.stdout"
+  },
+  {
+    "source": "android/close-race-red.stdout",
+    "result": "ANDROID_RED",
+    "reason": "Close returned while activation still Initializing; host expected-RED label substring mismatch retained",
+    "bytes": 5019,
+    "sha256": "fa22ec1b8aff46227ecb6d215da67ec41ba355124ad6b1e87f1d2273e7d02fc1",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\android\\close-race-red.stdout"
+  },
+  {
+    "source": "android/final-real-saf-restore.stdout",
+    "result": "ANDROID_FAIL",
+    "reason": "Compose default root requirement threw during system picker handoff; no overwrite",
+    "bytes": 8759,
+    "sha256": "d0188e5d1e799d2d611ea14e73644461ff82bccd97182272f5843df416eb2601",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\android\\final-real-saf-restore.stdout"
+  },
+  {
+    "source": "android/final-real-saf-restore-resume.stdout",
+    "result": "ANDROID_FAIL",
+    "reason": "Bounded preview timed out; real XML later proved preview_icon falsely matched file selection",
+    "bytes": 5783,
+    "sha256": "5c9f1bbedbf3fd065774fd63127a3176817516cfaa5660474b2a3cc89ebf7834",
+    "retainedLocalPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\build\\m12\\android\\final-real-saf-restore-resume.stdout"
+  }
+]

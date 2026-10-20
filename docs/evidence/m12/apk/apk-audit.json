@@ -1,0 +1,54 @@
+{
+  "scope": "Static local artifact audit only; no devices/APK execution/install by this audit",
+  "buildEvidence": {
+    "app": "../final-green.log",
+    "test": "../saf-picker-fix-build.log"
+  },
+  "apks": [
+    {
+      "label": "app",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "applicationId": "com.cooper.lithic.debug",
+      "bytes": 12910837,
+      "sha256": "3bb0d801300889d5c97f85dd768a14701f3a3f67aacd55dca929aa86e8233107",
+      "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ],
+      "nativeEntries": [
+        "lib/arm64-v8a/libandroidx.graphics.path.so",
+        "lib/arm64-v8a/libdatastore_shared_counter.so",
+        "lib/armeabi-v7a/libandroidx.graphics.path.so",
+        "lib/armeabi-v7a/libdatastore_shared_counter.so",
+        "lib/x86/libandroidx.graphics.path.so",
+        "lib/x86/libdatastore_shared_counter.so",
+        "lib/x86_64/libandroidx.graphics.path.so",
+        "lib/x86_64/libdatastore_shared_counter.so"
+      ],
+      "forbiddenM10NativeEntries": [],
+      "forbiddenM10DexMarkers": [],
+      "shaReadStable": true,
+      "instrumentation": null
+    },
+    {
+      "label": "test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m12\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "applicationId": "com.cooper.lithic.debug.test",
+      "bytes": 2281085,
+      "sha256": "d426c58ec36bb5505c6272c5b3f88037a55d9eb397b4a0ef55ba2070f82c098e",
+      "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ],
+      "nativeEntries": [],
+      "forbiddenM10NativeEntries": [],
+      "forbiddenM10DexMarkers": [],
+      "shaReadStable": true,
+      "instrumentation": "androidx.test.runner.AndroidJUnitRunner"
+    }
+  ]
+}

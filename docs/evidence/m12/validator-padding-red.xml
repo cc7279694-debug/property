@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.BackupValidatorTest" tests="17" skipped="0" failures="1" errors="0" timestamp="2026-10-20T06:59:36.713Z" hostname="WHOCARE" time="2.606">
+  <properties/>
+  <testcase name="refuses_inconsistent_media_identity_declared_dimensions_and_resource_budget" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.485"/>
+  <testcase name="refuses_new_format_reader_schema_and_missing_defaulted_manifest_fields" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.123"/>
+  <testcase name="rejects_broken_relations_wrong_category_type_and_changed_or_missing_defaults" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.166"/>
+  <testcase name="rejects_symlink_central_attributes_and_local_central_name_disagreement" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.071"/>
+  <testcase name="validates_archive_created_by_existing_m11_writer" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.365"/>
+  <testcase name="rejects_hidden_bytes_after_deflate_end_even_when_zip_headers_and_crc_agree" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.09">
+    <failure message="java.lang.AssertionError: Unsafe archive was accepted" type="java.lang.AssertionError">java.lang.AssertionError: Unsafe archive was accepted
+	at org.junit.Assert.fail(Assert.java:89)
+	at com.cooper.lithic.data.backup.BackupValidatorTest.rejected(BackupValidatorTest.kt:237)
+	at com.cooper.lithic.data.backup.BackupValidatorTest.rejected$default(BackupValidatorTest.kt:236)
+	at com.cooper.lithic.data.backup.BackupValidatorTest.rejects_hidden_bytes_after_deflate_end_even_when_zip_headers_and_crc_agree(BackupValidatorTest.kt:127)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:112)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:40)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:54)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:53)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92)
+	at jdk.proxy1/jdk.proxy1.$Proxy4.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:183)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:122)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:72)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</failure>
+  </testcase>
+  <testcase name="rejects_invalid_project_lifecycle_or_missing_real_subscription_payment" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.208"/>
+  <testcase name="rejects_money_out_of_range_nonpositive_renewal_overlap_and_wrong_standard_days" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.211"/>
+  <testcase name="propagates_cancellation_during_validation" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.022"/>
+  <testcase name="rejects_truncated_directory_trailing_bytes_crc_and_size_lies" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.079"/>
+  <testcase name="rejects_missing_extra_payload_and_wrong_manifest_hash_length_or_record_counts" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.117"/>
+  <testcase name="rejects_invalid_zone_disagreement_and_malformed_dates_instants_uuid_and_enums" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.16"/>
+  <testcase name="restores_all_facts_shared_media_zero_initial_and_cross_table_operation_ids" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.09"/>
+  <testcase name="refuses_nonempty_extraction_root_without_touching_existing_files" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.019"/>
+  <testcase name="rejects_unsafe_unknown_and_duplicate_zip_paths_before_extraction" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.168"/>
+  <testcase name="rejects_duplicate_ids_operations_category_keys_media_paths_and_state_dates" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.115"/>
+  <testcase name="rejects_duplicate_json_keys_unknown_fields_missing_nullable_fields_and_invalid_utf8" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.112"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

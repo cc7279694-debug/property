@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.BackupExportControllerTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-20T07:23:31.716Z" hostname="WHOCARE" time="0.099">
+  <properties/>
+  <testcase name="one_selection_blocks_repeated_clicks_until_cancelled" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.022"/>
+  <testcase name="explicit_cancelled_result_preserves_service_cleanup_outcome" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.018"/>
+  <testcase name="uncertified_registered_media_blocks_complete_export_with_preserved_source_feedback" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.005"/>
+  <testcase name="success_is_only_shown_after_complete_export_result" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.019"/>
+  <testcase name="rejected_picker_uri_reports_possible_residual_without_starting_export" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.002"/>
+  <testcase name="unexpected_exception_deletes_only_selected_target_and_reports_failure" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="incomplete_target_failure_is_not_success_and_reports_residual" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="coroutine_cancellation_closes_selected_target_without_success" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.006"/>
+  <testcase name="interrupted_delivery_does_not_delete_unproven_target" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="duplicate_callback_after_verified_success_does_not_delete_completed_backup" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="process_recreation_never_restarts_export_on_late_picker_delivery" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="launch_failure_releases_chooser_state_and_remains_retryable" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.002"/>
+  <testcase name="corrupt_source_has_explicit_failure_without_claiming_partial_backup" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.002"/>
+  <testcase name="verified_target_remains_success_when_owned_temporary_files_cannot_be_cleaned" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.003"/>
+  <testcase name="active_export_blocks_second_chooser_and_duplicate_result" classname="com.cooper.lithic.feature.settings.BackupExportControllerTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

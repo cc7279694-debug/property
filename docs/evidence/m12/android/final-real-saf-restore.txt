@@ -1,0 +1,95 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.RealSafRestoreTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.data.backup.RealSafRestoreTest:
+INSTRUMENTATION_STATUS: test=actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.RealSafRestoreTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalStateException: No compose hierarchies found in the app. Possible reasons include: (1) the Activity that calls setContent did not launch; (2) setContent was not called; (3) setContent was called before the ComposeTestRule ran. If setContent is called by the Activity, make sure the Activity is launched after the ComposeTestRule runs
+	at androidx.compose.ui.test.TestOwnerKt.getAllSemanticsNodes(TestOwner.kt:82)
+	at androidx.compose.ui.test.TestOwnerKt.getAllSemanticsNodes$default(TestOwner.kt:74)
+	at androidx.compose.ui.test.SemanticsNodeInteractionCollection.fetchSemanticsNodes(SemanticsNodeInteraction.kt:249)
+	at androidx.compose.ui.test.SemanticsNodeInteractionCollection.fetchSemanticsNodes$default(SemanticsNodeInteraction.kt:245)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.verifyPreview$lambda$0(RealSafRestoreTest.kt:205)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.$r8$lambda$uzHjz1vem65_Sv5OnzU90_FaCc8(Unknown Source:0)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest$$ExternalSyntheticLambda6.invoke(D8$$SyntheticClass:0)
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:747)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.verifyPreview(RealSafRestoreTest.kt:205)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.access$verifyPreview(RealSafRestoreTest.kt:49)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest$actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup$1.invokeSuspend(RealSafRestoreTest.kt:130)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup(RealSafRestoreTest.kt:63)
+
+INSTRUMENTATION_STATUS: stream=
+Error in actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup(com.cooper.lithic.data.backup.RealSafRestoreTest):
+java.lang.IllegalStateException: No compose hierarchies found in the app. Possible reasons include: (1) the Activity that calls setContent did not launch; (2) setContent was not called; (3) setContent was called before the ComposeTestRule ran. If setContent is called by the Activity, make sure the Activity is launched after the ComposeTestRule runs
+	at androidx.compose.ui.test.TestOwnerKt.getAllSemanticsNodes(TestOwner.kt:82)
+	at androidx.compose.ui.test.TestOwnerKt.getAllSemanticsNodes$default(TestOwner.kt:74)
+	at androidx.compose.ui.test.SemanticsNodeInteractionCollection.fetchSemanticsNodes(SemanticsNodeInteraction.kt:249)
+	at androidx.compose.ui.test.SemanticsNodeInteractionCollection.fetchSemanticsNodes$default(SemanticsNodeInteraction.kt:245)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.verifyPreview$lambda$0(RealSafRestoreTest.kt:205)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.$r8$lambda$uzHjz1vem65_Sv5OnzU90_FaCc8(Unknown Source:0)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest$$ExternalSyntheticLambda6.invoke(D8$$SyntheticClass:0)
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:747)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.verifyPreview(RealSafRestoreTest.kt:205)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.access$verifyPreview(RealSafRestoreTest.kt:49)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest$actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup$1.invokeSuspend(RealSafRestoreTest.kt:130)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup(RealSafRestoreTest.kt:63)
+
+INSTRUMENTATION_STATUS: test=actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 10.992
+There was 1 failure:
+1) actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup(com.cooper.lithic.data.backup.RealSafRestoreTest)
+java.lang.IllegalStateException: No compose hierarchies found in the app. Possible reasons include: (1) the Activity that calls setContent did not launch; (2) setContent was not called; (3) setContent was called before the ComposeTestRule ran. If setContent is called by the Activity, make sure the Activity is launched after the ComposeTestRule runs
+	at androidx.compose.ui.test.TestOwnerKt.getAllSemanticsNodes(TestOwner.kt:82)
+	at androidx.compose.ui.test.TestOwnerKt.getAllSemanticsNodes$default(TestOwner.kt:74)
+	at androidx.compose.ui.test.SemanticsNodeInteractionCollection.fetchSemanticsNodes(SemanticsNodeInteraction.kt:249)
+	at androidx.compose.ui.test.SemanticsNodeInteractionCollection.fetchSemanticsNodes$default(SemanticsNodeInteraction.kt:245)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.verifyPreview$lambda$0(RealSafRestoreTest.kt:205)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.$r8$lambda$uzHjz1vem65_Sv5OnzU90_FaCc8(Unknown Source:0)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest$$ExternalSyntheticLambda6.invoke(D8$$SyntheticClass:0)
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:747)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.verifyPreview(RealSafRestoreTest.kt:205)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.access$verifyPreview(RealSafRestoreTest.kt:49)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest$actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup$1.invokeSuspend(RealSafRestoreTest.kt:130)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RealSafRestoreTest.actual_system_selection_preview_cancel_and_explicit_overwrite_restore_the_exact_m11_backup(RealSafRestoreTest.kt:63)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

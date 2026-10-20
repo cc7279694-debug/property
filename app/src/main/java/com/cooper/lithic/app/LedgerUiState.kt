@@ -16,6 +16,7 @@ sealed interface LedgerUiState {
         val subscriptionRepository: SubscriptionRepository,
         val subscriptionCount: Long,
         val readError: String? = null,
+        val generationId: String = "test-generation",
     ) : LedgerUiState
     data object Failed : LedgerUiState
 }

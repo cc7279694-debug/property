@@ -1,0 +1,107 @@
+{
+  "scope": "M12 synthetic-only candidate; implementation review pending",
+  "base": "635e33a57c66c286fa5c19f009a5565a1e70b8e2",
+  "branch": "codex/m12-safe-backup-restore",
+  "jvm": {
+    "tests": 96,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "newM12Methods": 33,
+    "regressionMethods": 63
+  },
+  "android": {
+    "uniquePassingMethods": 74,
+    "newM12Methods": 35,
+    "regressionMethods": 39,
+    "executionIdentities": [
+      {
+        "testSha256": "88e9c1a5f646346065184bc53dffe1a4169f7287ef8e1e68eaab8eab9994cea3",
+        "passingMethods": 73,
+        "sourceChangesAfterward": "Only RealSafRestoreTest driver"
+      },
+      {
+        "testSha256": "d426c58ec36bb5505c6272c5b3f88037a55d9eb397b4a0ef55ba2070f82c098e",
+        "passingMethods": 1,
+        "sourceChangesAfterward": "None"
+      }
+    ],
+    "realSafHistoricalFailures": 2,
+    "notOneMonolithicSuite": true
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 9
+  },
+  "toolchain": {
+    "java": "17.0.20.1+1",
+    "gradle": "8.14.3",
+    "agp": "8.13.2",
+    "kotlin": "2.3.10",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "offline": true
+  },
+  "device": {
+    "avd": "Lithic_M11B_Final_API36_20261020",
+    "serial": "emulator-5686",
+    "api": 36,
+    "abi": "x86_64",
+    "launcherPid": 1284,
+    "qemuPid": 29348,
+    "bootId": "837312dd-125c-41f8-92a9-eb2d96e7795e",
+    "newAvdCreates": 0,
+    "emulatorStarts": 0,
+    "emulatorStops": 0,
+    "appUpdates": 3,
+    "testUpdates": 7,
+    "directedAdbCommands": 98,
+    "lastObservedTestProcess": {
+      "pid": 8987,
+      "uid": 10217,
+      "package": "com.cooper.lithic.debug.test"
+    },
+    "stoppedAnyProcess": false,
+    "newGeneration": "b3f76bf5-27f9-4cc4-b39c-d6feea2f2457",
+    "retainedPreviousGeneration": "5886ffc8-317c-4342-a5fe-1ac5f7f85767",
+    "finalStage": "STABLE",
+    "knownM12CacheResidueObserved": false
+  },
+  "nonzeroCommandRecords": [
+    {
+      "evidenceId": "saf-failure-staging-metadata",
+      "exitCode": 1
+    }
+  ],
+  "unsupportedDiagnostics": [
+    {
+      "id": "final-end-instrumentation",
+      "result": "UNKNOWN",
+      "reason": "dumpsys activity instrumentation reports unsupported; not used as process/resource proof"
+    },
+    {
+      "ids": [
+        "saf-picker-accessibility-tree",
+        "saf-picker-accessibility-stdout"
+      ],
+      "result": "UNKNOWN",
+      "reason": "Commands returned status only; no XML. Subsequent unique synthetic dump file provided actual XML."
+    }
+  ],
+  "notRun": [
+    "M12-T04 deliberate process death before/after pointer switch",
+    "Q06-V01-V03 complete process-death scenarios",
+    "real ENOSPC/power failure/provider permission revocation or permanently blocked read",
+    "API26/physical/OEM/Release/complete TalkBack/LMK",
+    "M10 three original JPEG failure tests; M10 remains PENDING / DEFERRED",
+    "M13 and later modules"
+  ],
+  "status": "READY_FOR_REVIEW candidate; M12 NOT FROZEN; process-death gate remains NOT_RUN",
+  "methodIdentityAudit": {
+    "jvmXmlMatchesCurrentSource": 96,
+    "androidStatusZeroMatchesCurrentSource": 74,
+    "duplicateIdentities": 0,
+    "productionHashesUnchangedAfterFinalBuild": 20,
+    "protectedScopeCount": 15
+  }
+}

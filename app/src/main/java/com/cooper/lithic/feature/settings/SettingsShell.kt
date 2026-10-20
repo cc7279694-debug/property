@@ -30,6 +30,11 @@ internal fun SettingsShell(
     backupState: BackupExportUiState = BackupExportUiState(),
     onExportBackup: (() -> Unit)? = null,
     onCancelBackup: () -> Unit = {},
+    restoreState: BackupRestoreUiState = BackupRestoreUiState(),
+    onRestoreBackup: (() -> Unit)? = null,
+    onCancelRestore: () -> Unit = {},
+    onConfirmRestore: () -> Unit = {},
+    onDiscardRestore: () -> Unit = {},
 ) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("settings-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
@@ -52,7 +57,7 @@ internal fun SettingsShell(
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Text("备份文件可直接读取，请妥善保管。保存位置由您选择。",
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Button(onClick = { onExportBackup?.invoke() }, enabled = onExportBackup != null && backupState.phase == BackupUiPhase.IDLE,
+            Button(onClick = { onExportBackup?.invoke() }, enabled = onExportBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("export-complete-backup")) {
                 Text(when (backupState.phase) {
                     BackupUiPhase.IDLE -> "导出完整备份"
@@ -68,8 +73,39 @@ internal fun SettingsShell(
                 Text(feedback, style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier.testTag("backup-export-feedback").semantics { liveRegion = LiveRegionMode.Polite })
             }
-            Text("恢复功能尚未开放", style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        HorizontalDivider()
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("恢复完整备份", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+            Text("选择备份后先完整校验并展示摘要。只有您再次确认后才覆盖当前内容，不合并记录。",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Button(onClick = { onRestoreBackup?.invoke() },
+                enabled = onRestoreBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
+                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("restore-complete-backup")) {
+                Text(when (restoreState.phase) {
+                    RestoreUiPhase.IDLE -> "选择完整备份"
+                    RestoreUiPhase.CHOOSING -> "正在选择备份"
+                    RestoreUiPhase.VALIDATING -> "正在读取并校验备份"
+                    RestoreUiPhase.PREVIEW -> "请核对下方备份摘要"
+                    RestoreUiPhase.DISCARDING -> "正在取消恢复"
+                    RestoreUiPhase.RESTORING -> "正在安全恢复"
+                })
+            }
+            if (restoreState.phase == RestoreUiPhase.VALIDATING) {
+                TextButton(onClick = onCancelRestore,
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("cancel-backup-restore")) { Text("取消校验") }
+            }
+            if (restoreState.phase == RestoreUiPhase.PREVIEW) {
+                restoreState.preview?.let { RestorePreviewScreen(it, onConfirmRestore, onDiscardRestore) }
+            }
+            if (restoreState.phase == RestoreUiPhase.RESTORING) {
+                Text("正在切换完整本地记录，请稍候。完成前不会开始另一项备份或恢复。",
+                    style = MaterialTheme.typography.bodyMedium)
+            }
+            restoreState.message?.let { feedback ->
+                Text(feedback, style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.testTag("backup-restore-feedback").semantics { liveRegion = LiveRegionMode.Polite })
+            }
         }
         HorizontalDivider()
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {

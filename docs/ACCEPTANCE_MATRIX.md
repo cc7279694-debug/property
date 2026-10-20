@@ -1,8 +1,17 @@
 # 验收登记
 
+## M11正式独立冻结登记（2026-10-20）
+
+- 来源：用户本轮正式转交ChatGPT独立验收，M11 **ACCEPTED / FROZEN — PASS WITH NOTES**。
+- 评审HEAD：`635e33a57c66c286fa5c19f009a5565a1e70b8e2`，分支`codex/m11b-final-export-validation`，本地/远端已核对。
+- 限定范围：冻结M09/schema2、format1完整手动导出、登记JPEG/PNG原字节备份及真实Android SAF用户流程。
+- NOTES：149 JVM及17项Android（16＋1分两Test身份）的既有证据、原RED/FAIL/UNKNOWN/NOT_RUN不改；API26/真机/OEM/Release、提供方磁盘满/权限撤回/断电、完整格式语义穷尽及M12往返未因此PASS。未知中断临时文件保守保留，SAF阻塞不保证即时取消，JPEG字节/容器不冒充严格熵解码。
+- 本节只是独立结论登记，未因文档回写重跑测试。原M11-A限定冻结保留；M10 PENDING / DEFERRED和UI-C1冻结不变，M12本轮获开发授权但未经独立验收不得FROZEN。
+
+
 本文件记录 M00～M09 实际执行与独立验收历史，以及M11-A核心冻结与M11-B候选的执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅备份核心已由用户转交独立冻结结论；M11-B当前READY_FOR_REVIEW，执行证据见文末最终整改分节，不是正式M11通过；M12未授权。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；各次新增执行分节记录，不回填历史。
+日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅备份核心已由用户转交独立冻结结论；M11已按顶部独立结论正式限定冻结；文末候选READY_FOR_REVIEW保留为历史执行记录；M12现按本轮契约获开发授权、未冻结。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；各次新增执行分节记录，不回填历史。
 
 ## 独立验收记录
 
@@ -680,3 +689,19 @@ BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝�
 149个唯一JVM方法PASS（18 XML，原143保留＋6新增）；Lint0错误/7警告；Debug及Android测试APK构建PASS。最终生产App SHA `500cc5349012a20acad630ffa0c05d992f1dd466db20ad7004588f6f7c4dd92a`下16项定向AndroidPASS（Test SHA3f07c553…）；仅测试驱动修正后新Test SHA `2e6e87838ac726be42d4d4b92e5863c92b400ccb454ea15d60f920fa9f21c9c2`执行独立SAF续接方法1 PASS。不是17项同一Test包全量重跑。原SAF方法在保存前控件定位失败，旧FAIL/claim保留，由新参数绑定旧SHA/generation并严格校验合成账本的单次续接获得新PASS；不将旧FAIL改判。
 
 原初次3/6 Android失败、两次平台诊断FAIL、JVM RED及一个辅助元数据命令exit1如实保留。生产缺陷经同进程路径证据定位并最小修复；系统保存器驱动为测试兼容问题。完整原始结果、产物身份、来源哈希和真实成功截图见[简短报告](evidence/M11B-final-verification.md)和[必要证据](evidence/m11b-final/results.json)。M10 PENDING / DEFERRED、三个JPEG历史FAIL、UI-C1冻结、Q03～Q06/所有NOTES保持；API26/真机/OEM/Release/完整备份恢复及提供方断电持久性NOT_RUN。
+
+
+## M12当前执行验收（2026-10-20）
+
+仅候选交审，未独立冻结。来源635e33a，分支codex/m12-safe-backup-restore；[集中报告](evidence/M12-verification.md)与[原始结果](evidence/m12/verification.json)。96 JVM、74 Android唯一方法PASS＝68新增＋102定向回归；73 Android使用88e9c1a…Test、最后真实SAF1项使用d426c58e…Test。旧驱动两FAIL及所有RED/初始化错误保留，不把多次执行累加为新方法数量，不重跑无关模块或改原130案例/16组补测原件。
+
+| 原案例 | 当前真实证据 | 当前边界 |
+|---|---|---|
+| M12-T01 | BackupRoundTripTest、RestoreGenerationWriterTest、真实SAF：七表/设置/类别/备注/付款/状态/所有登记图片原字节往返 | PASS（候选范围；不包含M10未冻结导入） |
+| M12-T02 | BackupValidatorTest20、Writer/Coordinator缺图损坏/格式/身份拒绝；旧集与指针不变 | PASS |
+| M12-T03 | 候选IO/目录冲突/迟插失败回滚、切前失败、旧集保留 | 受控故障PASS；真实ENOSPC/永久阻塞读NOT_RUN |
+| M12-T04 | 异常检查点和持久SWITCHING/ROLLED_BACK重开/首次打开失败回退已PASS | **原要求真实切前/切后进程终止NOT_RUN**；未获具体故障操作许可，不用异常替代 |
+| M12-T05 | 新Repository依观察日重算日数、150→180预付边界及过期/STOPPED，事实不变 | PASS |
+| M12-T06 | 空媒体与非空完整替换、旧独有类别不混入；未知字段/媒体/外键失败不部分激活 | PASS |
+
+设置页真实SAF成功前，先保留两次测试驱动FAIL与两claim；经实际DocumentsUI树确认误点preview_icon后，只修测试选择器，严格旧集/claim/唯一哨兵准入下追加第三claim取得成功。旧失败不改判，当前新代STABLE/旧完整代暂保留。App SHA3bb0d801…、最终Test d426c58e…，签名/权限/四ABI/输入及结束身份见报告。API26/真机/OEM/Release/TalkBack/LMK/断电、真实磁盘耗尽、Q06-V01～V03完整故障仍NOT_RUN；Q05仍USER_CONFIRMED，当前只实测登记媒体的M11→M12子集。不自行CLOSED任何旧NOTE。M10延期与原三JPEG FAIL、UI-C1冻结不变；不进入下一模块。
