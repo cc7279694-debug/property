@@ -6,7 +6,9 @@
 
 `BackupExportService` → 完整manifest/ZIP → 本地ZipFile中央目录和条目核验 → 本次SAF URI写入/关闭 → 全量读回匹配。成功和取消结果在原调用方检查点与安全返回边界处理，验证成功后不会因返回时取消丢失结果而误删已完成文件。内部未知残留不递归扫除；目标删除只限当前手动选择的失败尝试。设置页只开放导出，恢复未开放；进程重启不自动重跑。
 
-这是未验收候选：JPEG严格完整性未获得可信证明，PNG仅当前可认证编码子集；不能以Bitmap成功冒充它们均已满足产品兼容范围。真实Android/SAF尚NOT_RUN，不能由宿主归档测试代替。未加入M10 Worker/Stage V2/JNI，Room/schema/领域规则不变。
+本轮已修正备份与导入的边界：登记JPEG按原SHA/长度、SOF0/1/2容器和实际尺寸/受限可读性检查，PNG按合法颜色/色深、Adam7、CRC/zlib与实际尺寸检查。两者都保持源字节，不以Bitmap成功证明JPEG熵流严格完整。不能明确支持的格式、缺失/变化/不匹配仍拒绝整份导出。未知残留不自动清理；M10缺损JPEG导入问题仍PENDING / DEFERRED。
+
+真实API36发现应用挂载命名空间中`/data/user/0`表现为系统链接，导致内部缓存的严格祖先检查失败。仅将可信Context数据/cache根经过UID/真实目录和精确父子归属检查后canonical化，再执行原有严格祖先门禁；一般媒体路径和payload门禁未放宽。生产修复后16项定向Android通过，新的测试包再完成1项实际MainActivity→SAF导出，独立读取实际归档并核对七表、设置和5张图片原字节。本轮仍为READY_FOR_REVIEW，未加入M10 Worker/Stage V2/JNI，Room/schema/领域规则不变。历史报告中的NOT_RUN保留其当时状态。
 
 更新日期：2026-10-20。本候选从已冻结M09回写`57de897917473f255d43dfb306a8433b366c00eb`演进；M10暂停且未合并，UI-C1冻结分支保持独立。实际状态见[CURRENT_STATE](CURRENT_STATE.md)。下文M09及更早阶段的执行数字保留为历史，不是本轮重新运行的Android结果。
 

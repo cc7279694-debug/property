@@ -1,0 +1,401 @@
+{
+  "source": "3d018e9aedb89052983e6c54af40d03c47ecc9fb",
+  "branch": "codex/m11b-final-export-validation",
+  "scope": "M11-B stored JPEG/PNG lossless backup and real SAF export only; not M10 strict entropy validation/M12 restore",
+  "status": "READY_FOR_REVIEW",
+  "jvm": {
+    "passed": 149,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xmlFiles": 18,
+    "methods": [
+      "com.cooper.lithic.core.design.AmountFormatterTest#large_aggregate_is_exact_and_never_uses_scientific_notation",
+      "com.cooper.lithic.core.design.AmountFormatterTest#exact_one_cent_and_larger_daily_rates_use_normal_rounding",
+      "com.cooper.lithic.core.design.AmountFormatterTest#real_zero_has_two_decimal_places",
+      "com.cooper.lithic.core.design.AmountFormatterTest#ordinary_amount_rounds_half_up_with_both_signs",
+      "com.cooper.lithic.core.design.AmountFormatterTest#missing_amount_is_not_a_zero_amount",
+      "com.cooper.lithic.core.design.AmountFormatterTest#every_nonzero_daily_rate_below_one_cent_remains_explicitly_nonzero",
+      "com.cooper.lithic.core.design.AmountFormatterTest#high_precision_value_is_only_formatted_without_changing_numeric_input",
+      "com.cooper.lithic.core.design.AmountFormatterTest#ordinary_half_cent_is_rounded_and_not_a_daily_rate_boundary",
+      "com.cooper.lithic.core.model.MoneyParserTest#rejects_out_of_range_numbers",
+      "com.cooper.lithic.core.model.MoneyParserTest#accepts_largest_single_amount",
+      "com.cooper.lithic.core.model.MoneyParserTest#direct_money_construction_cannot_bypass_amount_limits",
+      "com.cooper.lithic.core.model.MoneyParserTest#rejects_excess_precision_without_rounding",
+      "com.cooper.lithic.core.model.MoneyParserTest#money_precision_and_zero",
+      "com.cooper.lithic.core.model.MoneyParserTest#rejects_non_decimal_and_signed_input",
+      "com.cooper.lithic.core.model.MoneyParserTest#parses_exact_non_negative_cny",
+      "com.cooper.lithic.core.time.BusinessClockTest#recorded_zone_uses_its_own_calendar_day",
+      "com.cooper.lithic.core.time.BusinessClockTest#fixed_business_date_drives_project_evaluation",
+      "com.cooper.lithic.data.backup.BackupCancellationTest#actual_io_checkpoint_still_observes_cancellation_and_delivers_cleanup_outcome",
+      "com.cooper.lithic.data.backup.BackupCancellationTest#verified_result_is_not_lost_at_dispatcher_return_after_late_cancel",
+      "com.cooper.lithic.data.backup.BackupDtosTest#all_seven_tables_preserve_every_stored_field_and_canonical_date_string",
+      "com.cooper.lithic.data.backup.BackupDtosTest#media_dto_matches_frozen_media_path_rules_and_preserves_safe_existing_names",
+      "com.cooper.lithic.data.backup.BackupDtosTest#nulls_unicode_and_newlines_survive_utf8_without_android_or_class_discriminators",
+      "com.cooper.lithic.data.backup.BackupDtosTest#settings_export_whitelist_contains_only_record_zone_not_permissions_caches_or_tasks",
+      "com.cooper.lithic.data.backup.BackupDtosTest#streaming_encoder_matches_bytes_and_propagates_output_failure",
+      "com.cooper.lithic.data.backup.BackupDtosTest#all_tables_are_sorted_by_stable_id_independently_of_query_order",
+      "com.cooper.lithic.data.backup.BackupDtosTest#integer_cents_are_serialized_exactly_without_floating_point_or_netting_recovery",
+      "com.cooper.lithic.data.backup.BackupFilesTest#entry_write_and_close_failure_do_not_return_verified_entries",
+      "com.cooper.lithic.data.backup.BackupFilesTest#manifest_v1_has_stable_required_fields_and_payload_hashes",
+      "com.cooper.lithic.data.backup.BackupFilesTest#media_not_integrated_blocks_complete_export_before_opening_target_even_for_empty_ledger",
+      "com.cooper.lithic.data.backup.BackupFilesTest#unknown_residue_blocks_candidate_cleanup_without_deleting_any_files",
+      "com.cooper.lithic.data.backup.BackupFilesTest#path_escape_duplicate_and_limit_are_rejected",
+      "com.cooper.lithic.data.backup.BackupFilesTest#archive_bytes_match_manifest_and_target_close_failure_is_failure",
+      "com.cooper.lithic.data.backup.BackupFilesTest#changed_internal_ownership_credential_cannot_delete_payloads",
+      "com.cooper.lithic.data.backup.BackupFilesTest#media_metadata_cannot_be_mistaken_for_copied_verified_media",
+      "com.cooper.lithic.data.backup.BackupFilesTest#archive_owns_one_target_close_and_propagates_target_write_failure",
+      "com.cooper.lithic.data.backup.BackupFilesTest#successful_internal_candidate_can_release_only_its_owned_files",
+      "com.cooper.lithic.data.backup.BackupFilesTest#changing_staged_bytes_is_detected_instead_of_trusting_old_metadata",
+      "com.cooper.lithic.data.backup.BackupFilesTest#closed_core_files_have_hashes_of_actual_utf8_bytes_and_no_complete_manifest",
+      "com.cooper.lithic.data.backup.BackupJpegInspectionTest#registered_baseline_and_progressive_jpeg_keep_their_original_container_and_dimensions",
+      "com.cooper.lithic.data.backup.BackupJpegInspectionTest#byte_integrity_container_scan_does_not_claim_strict_entropy_validation",
+      "com.cooper.lithic.data.backup.BackupJpegInspectionTest#incomplete_segments_missing_eoi_wrong_dimensions_and_unknown_frames_are_rejected",
+      "com.cooper.lithic.data.backup.BackupMediaBudgetTest#an_empty_or_admitted_media_set_remains_valid",
+      "com.cooper.lithic.data.backup.BackupMediaBudgetTest#entry_count_and_total_bytes_are_rejected_before_copying_any_media",
+      "com.cooper.lithic.data.backup.BackupPngCompatibilityTest#exif_and_unknown_ancillary_metadata_are_preserved_but_animation_is_not_a_static_cover",
+      "com.cooper.lithic.data.backup.BackupPngCompatibilityTest#all_standard_color_depth_pairs_and_adam7_are_supported_without_reencoding",
+      "com.cooper.lithic.data.backup.BackupPngCompatibilityTest#palette_order_count_bad_depth_bad_filter_and_extra_inflated_rows_fail_closed",
+      "com.cooper.lithic.data.backup.BackupPngInspectionTest#intact_static_png_checks_all_chunks_and_dimensions",
+      "com.cooper.lithic.data.backup.BackupPngInspectionTest#truncation_checksum_damage_or_extra_bytes_are_not_valid_media",
+      "com.cooper.lithic.data.backup.BackupRecordLimitTest#reaching_the_total_record_limit_is_rejected_before_materializing_rows",
+      "com.cooper.lithic.data.backup.BackupRecordLimitTest#negative_or_missing_table_counts_are_rejected",
+      "com.cooper.lithic.data.backup.BackupRecordLimitTest#total_below_limit_is_accepted",
+      "com.cooper.lithic.data.backup.BackupRecordLimitTest#hostile_count_total_cannot_wrap_into_an_accepted_small_count",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#required_media_must_have_exact_unique_entries_and_counts",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#cancellation_checkpoint_is_observed_during_archive_and_target_streaming",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#missing_changed_and_over_limit_media_cannot_form_manifest",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#complete_archive_includes_exact_nonempty_media_and_is_verified_from_central_directory",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#archive_path_must_be_new_private_sibling_outside_payload_tree",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#target_write_close_readback_failure_or_truncation_never_returns_success",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#target_copy_verifies_closed_readback_with_exact_whole_archive_hash",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#truncated_central_directory_extra_entry_and_replaced_manifest_are_rejected",
+      "com.cooper.lithic.data.backup.CompleteBackupArchiveTest#source_archive_change_is_rejected_before_target_is_opened",
+      "com.cooper.lithic.data.backup.CoordinatedBackupReaderTest#capture_waits_for_whole_coordinated_write_before_reading",
+      "com.cooper.lithic.data.backup.CoordinatedBackupReaderTest#cancelled_capture_releases_lock_without_returning_partial_snapshot",
+      "com.cooper.lithic.data.backup.CoordinatedBackupReaderTest#read_failure_returns_no_snapshot_and_releases_coordinator",
+      "com.cooper.lithic.data.backup.CoordinatedBackupReaderTest#coordinated_write_cannot_mix_business_and_settings_versions",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#dated_event_does_not_rewrite_earlier_days",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#negative_cost_is_not_clamped",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#rejects_gross_outlay_overflow",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#rejects_end_date_before_start",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#q02_v01_ended_snapshot_uses_historical_observation_day",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#post_end_installment_does_not_restart_or_extend_project",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#end_day_removes_current_contribution",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#date_span_is_not_narrowed_to_int_or_rounded_to_zero",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#rejects_recovery_overflow",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#refund_is_separate_from_the_original_outlay",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#leap_day_is_a_real_natural_day",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#same_day_is_one_day",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#empty_event_list_is_valid_zero_cost",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#aggregate_can_exceed_single_event_limit",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#post_end_refund_keeps_duration",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#prepaid_money_before_start_has_no_effective_daily_rate",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#q02_v02_refund_changes_only_its_occurrence_day_and_after",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#zero_cost_is_effective_and_contributes_while_active",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#installments_count_only_after_their_real_payment_day",
+      "com.cooper.lithic.domain.project.ProjectCostEngineTest#unordered_same_day_events_are_all_counted_once",
+      "com.cooper.lithic.domain.project.ProjectLifecycleRulesTest#end_day_is_already_history_but_future_end_is_current",
+      "com.cooper.lithic.domain.project.ProjectLifecycleRulesTest#requires_a_real_nonblank_end_reason",
+      "com.cooper.lithic.domain.project.ProjectLifecycleRulesTest#rejects_end_before_ownership_without_changing_cost_rules",
+      "com.cooper.lithic.domain.project.ProjectLifecycleRulesTest#frozen_engine_keeps_ten_days_after_late_installment_and_negative_recovery",
+      "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest#standard_purchased_days_overflow_fails_without_wrapping",
+      "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest#confirmed_paid_cents_overflow_fails_without_wrapping",
+      "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest#two_real_payments_use_same_accumulation_in_engine",
+      "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest#confirmed_paid_cents_reaches_long_max_exactly",
+      "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest#largest_cycle_multiple_below_long_max_is_safe_then_next_cycle_fails",
+      "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest#standard_purchased_days_reaches_long_max_at_arithmetic_boundary",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#leap_year_natural_366_is_distinct_from_standard_365",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#only_three_fixed_cycles_exist",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#future_pause_and_stop_do_not_change_the_past",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#resume_after_expiry_does_not_create_payment",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#leap_day_start_reaches_365_on_february_27",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#expired_has_zero_current_rate",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#coverage_at_max_date_expires_without_plus_days_overflow",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#unordered_records_produce_identical_history",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#prepaid_future_without_current_coverage_is_expired",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#quarterly_standard_rate",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#later_real_payment_is_legal_input_but_unknown_to_earlier_observation",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#observation_before_all_facts_has_no_cost_or_elapsed_days",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#annual_purchase_not_elapsed_year",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#annual_pause_excludes_ten_days_and_next_real_period_reaches_365",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#monthly_standard_rate",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#zero_amount_is_not_a_real_renewal",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#prepaid_next_rate_does_not_start_early",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#even_identical_same_day_states_require_correction",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#duplicate_same_day_states_are_rejected_in_both_orders",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#coverage_gap_is_not_counted_or_active",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#interval_days_use_long_and_do_not_enumerate_dates",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#empty_history_has_explicit_no_record_reason",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#nested_and_duplicate_coverage_are_rejected",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#default_stop_uses_paid_end_and_preserves_preboundary_service",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#stored_standard_days_must_match_fixed_cycle",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#paused_without_coverage_remains_paused",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#fractional_rate_keeps_decimal128_precision_and_nonzero_value",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#prepaid_cycle_change_starts_at_its_effective_boundary",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#overlaps_rejected",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#writing_rejects_future_payment_using_business_today",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#reversed_coverage_is_rejected",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#reminder_boundary_does_not_extend_paid_coverage",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#empty_coverage_is_rejected",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#interval_start_state_boundary_counts_enabled_date_only_once",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#pause_does_not_erase_paid_history",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#payment_today_and_future_service_are_valid",
+      "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest#explicit_early_stop_excludes_its_first_stopped_day",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#one_selection_blocks_repeated_clicks_until_cancelled",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#explicit_cancelled_result_preserves_service_cleanup_outcome",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#uncertified_registered_media_blocks_complete_export_with_preserved_source_feedback",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#success_is_only_shown_after_complete_export_result",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#rejected_picker_uri_reports_possible_residual_without_starting_export",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#unexpected_exception_deletes_only_selected_target_and_reports_failure",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#incomplete_target_failure_is_not_success_and_reports_residual",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#coroutine_cancellation_closes_selected_target_without_success",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#interrupted_delivery_does_not_delete_unproven_target",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#duplicate_callback_after_verified_success_does_not_delete_completed_backup",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#process_recreation_never_restarts_export_on_late_picker_delivery",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#launch_failure_releases_chooser_state_and_remains_retryable",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#corrupt_source_has_explicit_failure_without_claiming_partial_backup",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#verified_target_remains_success_when_owned_temporary_files_cannot_be_cleaned",
+      "com.cooper.lithic.feature.settings.BackupExportControllerTest#active_export_blocks_second_chooser_and_duplicate_result"
+    ]
+  },
+  "android": {
+    "finalProductionSha256": "500cc5349012a20acad630ffa0c05d992f1dd466db20ad7004588f6f7c4dd92a",
+    "targetedPassingMethods": 17,
+    "fixedAppTests": [
+      {
+        "name": "fixed-platform",
+        "classOrMethod": "com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest",
+        "expectedMethods": 1,
+        "status": "PASS",
+        "statusCodes": [
+          "1",
+          "0"
+        ]
+      },
+      {
+        "name": "fixed-complete",
+        "classOrMethod": "com.cooper.lithic.data.backup.CompleteBackupExportTest",
+        "expectedMethods": 6,
+        "status": "PASS",
+        "statusCodes": [
+          "1",
+          "0",
+          "1",
+          "0",
+          "1",
+          "0",
+          "1",
+          "0",
+          "1",
+          "0",
+          "1",
+          "0"
+        ]
+      },
+      {
+        "name": "fixed-snapshot",
+        "classOrMethod": "com.cooper.lithic.data.backup.RoomBackupSnapshotSourceTest",
+        "expectedMethods": 5,
+        "status": "PASS",
+        "statusCodes": [
+          "1",
+          "0",
+          "1",
+          "0",
+          "1",
+          "0",
+          "1",
+          "0",
+          "1",
+          "0"
+        ]
+      },
+      {
+        "name": "fixed-settings",
+        "classOrMethod": "com.cooper.lithic.feature.settings.BackupSettingsUiTest",
+        "expectedMethods": 3,
+        "status": "PASS",
+        "statusCodes": [
+          "1",
+          "0",
+          "1",
+          "0",
+          "1",
+          "0"
+        ]
+      },
+      {
+        "name": "fixed-saf-cancel",
+        "classOrMethod": "com.cooper.lithic.data.backup.RealSafBackupExportTest#settings_document_picker_cancel_never_reports_success",
+        "expectedMethods": 1,
+        "status": "PASS",
+        "statusCodes": [
+          "1",
+          "0"
+        ]
+      }
+    ],
+    "historicalPickerDriverFailure": {
+      "name": "fixed-saf-export",
+      "classOrMethod": "com.cooper.lithic.data.backup.RealSafBackupExportTest#settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker",
+      "expectedMethods": 1,
+      "status": "FAIL_OR_UNKNOWN",
+      "statusCodes": [
+        "1",
+        "-2"
+      ],
+      "observedJUnitStatus": "FAIL",
+      "historicalClassificationPreserved": true
+    },
+    "newExplicitSafContinuation": {
+      "classOrMethod": "com.cooper.lithic.data.backup.RealSafBackupExportTest#settings_exports_the_proven_synthetic_ledger_with_a_new_explicit_resume_claim",
+      "expectedMethods": 1,
+      "status": "PASS",
+      "statusCodes": [
+        "1",
+        "0"
+      ],
+      "appSha256": "500cc5349012a20acad630ffa0c05d992f1dd466db20ad7004588f6f7c4dd92a",
+      "testSha256": "2e6e87838ac726be42d4d4b92e5863c92b400ccb454ea15d60f920fa9f21c9c2"
+    },
+    "historyPreserved": "Initial 3/6 failures; platform and same-process path diagnostics failed; original SAF driver failed before Save. None are overwritten by continuation PASS."
+  },
+  "operations": {
+    "avdCreate": 1,
+    "avdStart": 1,
+    "appInstalls": 2,
+    "testInstalls": 5,
+    "adbCommandsAfterBootHandoff": 70,
+    "avdDisposition": "Retained online, synthetic data and historical failed claims retained; no stop/wipe/uninstall/clear",
+    "protectedHistoricalDevices": "NOT_TOUCHED"
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 7
+  },
+  "archive": {
+    "status": "PASS",
+    "archiveFilename": "m11b-synthetic-0a21510d-ab12-4dda-a226-70848d48865f.lithicbackup",
+    "bytes": 3691,
+    "sha256": "761efcabd55718d0ea6f9bec56f9e4ec490da6766b3dbca0c82a4fba96be5818",
+    "zipEntries": [
+      "manifest.json",
+      "data.json",
+      "media/m11b-adam7.png",
+      "media/m11b-gray16.png",
+      "media/m11b-jpeg.jpg",
+      "media/m11b-palette.png",
+      "media/m11b-rgba.png",
+      "settings.json"
+    ],
+    "zipCrc": "PASS",
+    "formatVersion": 1,
+    "recordCounts": {
+      "categories": 2,
+      "local_media_assets": 5,
+      "long_term_projects": 1,
+      "project_money_events": 1,
+      "subscription_renewals": 1,
+      "subscription_state_changes": 1,
+      "subscriptions": 1
+    },
+    "files": [
+      {
+        "path": "data.json",
+        "byteLength": 2871,
+        "sha256": "4ddcbf981a5f7f84db0329e9df1d151a74c4d5b5ba944037dd5f58d52c08f414"
+      },
+      {
+        "path": "media/m11b-adam7.png",
+        "byteLength": 71,
+        "sha256": "10028196a89908232783e45a3a3c2df71d774d5a39022c723994d2ae0aeb42bc"
+      },
+      {
+        "path": "media/m11b-gray16.png",
+        "byteLength": 69,
+        "sha256": "509d81a7466d8d478f5c75aa77089592e8bcb8cb0ee6116dea2c0bc91a4a834b"
+      },
+      {
+        "path": "media/m11b-jpeg.jpg",
+        "byteLength": 759,
+        "sha256": "ae4e6adc68d1985a050564ba777208c02fabe662b9ac929e8455f1fffdfa3aac"
+      },
+      {
+        "path": "media/m11b-palette.png",
+        "byteLength": 86,
+        "sha256": "aef1e5835f9ade2686003e5da5ad049c9727bc7971a786237707eace1f87011f"
+      },
+      {
+        "path": "media/m11b-rgba.png",
+        "byteLength": 71,
+        "sha256": "670bfad01b940cd29b017a62ab13e2f72c372f4b9d989b713ee7947e4931f7cf"
+      },
+      {
+        "path": "settings.json",
+        "byteLength": 22,
+        "sha256": "b141ce65933eff9a4eb7b5c2b54573776b78da30ae28bc45e595108615d80c22"
+      }
+    ],
+    "dataTopLevelKeys": [
+      "categories",
+      "projects",
+      "projectMoneyEvents",
+      "mediaAssets",
+      "subscriptions",
+      "subscriptionRenewals",
+      "subscriptionStateChanges"
+    ],
+    "settings": {
+      "recordZoneId": "GMT"
+    },
+    "sourceProof": "android/export-proof.stdout",
+    "scope": "Independent host ZIP read of only this test-created synthetic SAF output; not personal data or M12 restore."
+  },
+  "inputsAtFinalBuild": [
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/backup/BackupArchiveAndroidCompatibilityTest.kt",
+      "sha256": "496341f3cfb9b1bfa430bb3930bbda28eea94ecc721e9194db083017362662ba"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/backup/CompleteBackupExportTest.kt",
+      "sha256": "733864d34be211659431061814e165f0929a59b49c79c8a1c69b01930145fc58"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/backup/RealSafBackupExportTest.kt",
+      "sha256": "3d6223e0654b494b0e2d1625d7ac4964b4fb5570db21a6f15efa995c3dd64bee"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupExportService.kt",
+      "sha256": "b5c416c8bcd9948aec864cc7911ba3479e9d65faba410898cee62357c97f846c"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupJpegInspection.kt",
+      "sha256": "8f10b08b7468e257aa9286162db3f230ca78a56fc89eb2ac31c651b3b520fd91"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupMediaSnapshot.kt",
+      "sha256": "a608c13f3f038e036af40c4f763987e8104bc8c21d2827b9256379e37c3f7fce"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupPngInspection.kt",
+      "sha256": "5ad436939b75109b47112ae621070b4a8639148af9da37897eaa3b065e62bc2a"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt",
+      "sha256": "46c85547e6f6cdc1fd6ede4935e6dba9a31ca32a1160c161d39c1666ec6c60ee"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/backup/BackupPngCompatibilityTest.kt",
+      "sha256": "e03047d333c7dff4ea222bd4632c296915d8fc9a5474d7cccd57297825eb78a9"
+    }
+  ],
+  "notRun": [
+    "M12 restore/round trip",
+    "physical devices/OEM/API26 runtime",
+    "provider disk-full/permission loss/power failure",
+    "M10 strict JPEG native/Worker/Stage V2/B1B2 experiments"
+  ]
+}

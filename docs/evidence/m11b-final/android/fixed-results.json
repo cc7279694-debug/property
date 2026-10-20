@@ -1,0 +1,84 @@
+[
+  {
+    "name": "fixed-platform",
+    "classOrMethod": "com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest",
+    "expectedMethods": 1,
+    "status": "PASS",
+    "statusCodes": [
+      "1",
+      "0"
+    ]
+  },
+  {
+    "name": "fixed-complete",
+    "classOrMethod": "com.cooper.lithic.data.backup.CompleteBackupExportTest",
+    "expectedMethods": 6,
+    "status": "PASS",
+    "statusCodes": [
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0"
+    ]
+  },
+  {
+    "name": "fixed-snapshot",
+    "classOrMethod": "com.cooper.lithic.data.backup.RoomBackupSnapshotSourceTest",
+    "expectedMethods": 5,
+    "status": "PASS",
+    "statusCodes": [
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0"
+    ]
+  },
+  {
+    "name": "fixed-settings",
+    "classOrMethod": "com.cooper.lithic.feature.settings.BackupSettingsUiTest",
+    "expectedMethods": 3,
+    "status": "PASS",
+    "statusCodes": [
+      "1",
+      "0",
+      "1",
+      "0",
+      "1",
+      "0"
+    ]
+  },
+  {
+    "name": "fixed-saf-cancel",
+    "classOrMethod": "com.cooper.lithic.data.backup.RealSafBackupExportTest#settings_document_picker_cancel_never_reports_success",
+    "expectedMethods": 1,
+    "status": "PASS",
+    "statusCodes": [
+      "1",
+      "0"
+    ]
+  },
+  {
+    "name": "fixed-saf-export",
+    "classOrMethod": "com.cooper.lithic.data.backup.RealSafBackupExportTest#settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker",
+    "expectedMethods": 1,
+    "status": "FAIL_OR_UNKNOWN",
+    "statusCodes": [
+      "1",
+      "-2"
+    ]
+  }
+]

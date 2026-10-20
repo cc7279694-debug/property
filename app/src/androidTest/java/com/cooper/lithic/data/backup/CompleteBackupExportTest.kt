@@ -82,15 +82,22 @@ class CompleteBackupExportTest {
     @Test fun target_close_failure_or_wrong_readback_never_reports_success() = runBlocking {
         for (closeFails in listOf(true,false)) {
             var removed = false
+            var opened = false
+            var readBack = false
             val broken = object: BackupTarget {
-                override fun openWrite() = object: ByteArrayOutputStream() {
-                    override fun close() { if(closeFails) throw IOException("synthetic close failure") }
+                override fun openWrite(): OutputStream {
+                    opened = true
+                    return object: ByteArrayOutputStream() {
+                        override fun close() { if(closeFails) throw IOException("synthetic close failure") }
+                    }
                 }
-                override fun openRead() = byteArrayOf(0).inputStream()
+                override fun openRead(): InputStream { readBack = true; return byteArrayOf(0).inputStream() }
                 override fun deletePartial(): Boolean { removed=true;return true }
             }
             assertTrue(BackupExportService(context,generation).export(broken) is BackupExportResult.Failed)
             assertTrue(removed)
+            assertTrue("The intended target failure must actually be reached", opened)
+            assertEquals("Readback is reached only after a successful close", !closeFails, readBack)
         }
     }
 
@@ -115,7 +122,7 @@ class CompleteBackupExportTest {
         assertEquals(saved.data.categories.size+1,generation.backupSnapshotSource().capture().data.categories.size)
     }
 
-    @Test fun jpg_without_a_strict_certificate_is_rejected_and_never_silently_omitted() = runBlocking {
+    @Test fun registered_jpeg_is_backed_up_losslessly_without_a_strict_import_certificate() = runBlocking {
         val at=Instant.parse("2026-01-01T00:00:00Z")
         val bytes=ByteArrayOutputStream().also { output ->
             val bitmap=Bitmap.createBitmap(2,2,Bitmap.Config.ARGB_8888)
@@ -123,10 +130,12 @@ class CompleteBackupExportTest {
         }.toByteArray()
         val source=File(generation.directory,"media/cover.jpg").also { it.writeBytes(bytes) }
         generation.coordinator.withWrite { generation.database.mediaDao().insert(LocalMediaAssetEntity(id(),"media/cover.jpg","image/jpeg",2,2,bytes.size.toLong(),sha(bytes))) }
-        val destination=File(root,"jpeg-blocked.lithicbackup")
+        val destination=File(root,"jpeg-complete.lithicbackup")
         val result=BackupExportService(context,generation).export(target(destination))
-        assertEquals(BackupFailureReason.MEDIA_NOT_CERTIFIED,(result as BackupExportResult.Failed).reason)
-        assertFalse(destination.exists())
+        assertTrue(result is BackupExportResult.Success)
+        ZipFile(destination).use { zip ->
+            assertArrayEquals(bytes,zip.getInputStream(zip.getEntry("media/cover.jpg")).readBytes())
+        }
         assertArrayEquals(bytes,source.readBytes())
     }
 

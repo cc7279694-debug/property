@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "observedBootCompleted": 1,
+  "bootObservedAtUtc": "2026-10-20T03:05:42Z",
+  "proofCreatedAtUtc": "2026-10-20T03:07:09Z",
+  "serial": "emulator-5686",
+  "avd": "Lithic_M11B_Final_API36_20261020",
+  "api": 36,
+  "abi": "x86_64",
+  "launcherPid": 1284,
+  "qemuPid": 29348,
+  "createAttempts": 1,
+  "startAttempts": 1,
+  "adbCommands": 32,
+  "initialOfflineObservations": 4,
+  "appInstalls": 0,
+  "testInstalls": 0,
+  "instrumentation": 0,
+  "evidence": "boot-commands.json",
+  "evidenceSha256": "a4a16a2e1141ddf6e0fc8fd53ba86157c6b461ef6e4d0b68d3f3098ca1c1f270",
+  "parserNote": "Initial helper exit1 due splitlines() treating CRCRLF as extra blank lines. This proof derives exact saved stdout bytes and hashes, accepts only the exact complete expected console response. No device operation or boot polling repeated. Initial four offline command observations remain exit1 in original log."
+}

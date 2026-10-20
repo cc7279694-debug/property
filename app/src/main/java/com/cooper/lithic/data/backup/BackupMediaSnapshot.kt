@@ -20,8 +20,9 @@ internal class BackupMediaSnapshot(private val generation: ManagedGeneration) {
             checkpoint()
             if (asset.byteLength !in 1 until BackupLimits.MAX_MEDIA_BYTES || asset.width !in 1..1600 || asset.height !in 1..1600)
                 throw BackupMediaException("Registered media exceeds stored cover limits")
-            // No trusted JPEG receipt exists at frozen M09. Android's tolerant decode is not one.
-            if (asset.mime != "image/png") throw BackupMediaException("Strict integrity of this registered encoding is not certified", true)
+            // Backup validates already registered original bytes; it is not a new M10 import.
+            if (asset.mime !in setOf("image/png", "image/jpeg"))
+                throw BackupMediaException("Registered media format is not supported for this backup", true)
             val source = generation.directory.toPath().resolve(asset.relativePath)
             val before = ownedSource(source)
             if (before.st_size != asset.byteLength) throw BackupMediaException("Registered media length changed")
@@ -54,14 +55,20 @@ internal class BackupMediaSnapshot(private val generation: ManagedGeneration) {
                 onStaged(core.copy(entries = entries.toList()))
                 if (entry.byteLength != asset.byteLength || !entry.sha256.equals(asset.sha256, ignoreCase=true))
                     throw BackupMediaException("Registered media checksum does not match its actual bytes")
-                val dimensions = BackupPngInspection.inspect(destination.toFile())
+                val dimensions = when (asset.mime) {
+                    "image/png" -> BackupPngInspection.inspect(destination.toFile(), checkpoint)
+                    "image/jpeg" -> BackupJpegInspection.inspect(destination.toFile(), checkpoint)
+                    else -> throw BackupMediaException("Unsupported registered media format", true)
+                }
                 if (dimensions != (asset.width to asset.height)) throw BackupMediaException("Registered dimensions changed")
+                // Readability and actual raster size only. Android JPEG decode is tolerant and
+                // MUST NOT be called a strict entropy-integrity certificate.
                 val options = BitmapFactory.Options().apply { inScaled = false }
                 val bitmap = BitmapFactory.decodeFile(destination.toString(), options)
-                    ?: throw BackupMediaException("Stored PNG cannot be decoded")
+                    ?: throw BackupMediaException("Stored image cannot be read")
                 try {
                     if (bitmap.width != asset.width || bitmap.height != asset.height || options.outMimeType != asset.mime)
-                        throw BackupMediaException("PNG decoder disagrees with recorded dimensions or format")
+                        throw BackupMediaException("Image decoder disagrees with recorded dimensions or format")
                 } finally { bitmap.recycle() }
             } finally { if (fd.valid()) Os.close(fd) }
         }

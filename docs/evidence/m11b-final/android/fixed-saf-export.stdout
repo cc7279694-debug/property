@@ -1,0 +1,77 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.RealSafBackupExportTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.data.backup.RealSafBackupExportTest:
+INSTRUMENTATION_STATUS: test=settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.RealSafBackupExportTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.chooseDownloadsAndSave(RealSafBackupExportTest.kt:199)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.access$chooseDownloadsAndSave(RealSafBackupExportTest.kt:51)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest$settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker$1.invokeSuspend(RealSafBackupExportTest.kt:107)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker(RealSafBackupExportTest.kt:97)
+
+INSTRUMENTATION_STATUS: stream=
+Error in settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker(com.cooper.lithic.data.backup.RealSafBackupExportTest):
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.chooseDownloadsAndSave(RealSafBackupExportTest.kt:199)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.access$chooseDownloadsAndSave(RealSafBackupExportTest.kt:51)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest$settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker$1.invokeSuspend(RealSafBackupExportTest.kt:107)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker(RealSafBackupExportTest.kt:97)
+
+INSTRUMENTATION_STATUS: test=settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 4.197
+There was 1 failure:
+1) settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker(com.cooper.lithic.data.backup.RealSafBackupExportTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.chooseDownloadsAndSave(RealSafBackupExportTest.kt:199)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.access$chooseDownloadsAndSave(RealSafBackupExportTest.kt:51)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest$settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker$1.invokeSuspend(RealSafBackupExportTest.kt:107)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.RealSafBackupExportTest.settings_exports_all_seven_tables_settings_and_registered_images_through_system_document_picker(RealSafBackupExportTest.kt:97)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

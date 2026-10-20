@@ -5,9 +5,10 @@
 ## Current Stage
 
 - **M11-A — ACCEPTED / FROZEN — PASS WITH NOTES（仅备份核心）**：用户本轮明确转交ChatGPT独立验收结论，锁定来源`79771fcf5978a938d240d517dd4dacb1d21021a6`。原报告、113项JVM和5项Android源码、未运行媒体/SAF及临时文件NOTES保持历史原样；不把独立审查登记为重跑测试。
-- **M11-B — BLOCKED / 完整导出候选已构建，等待独立审查**：`codex/m11b-complete-backup-export`，工作区`E:/CODEX/.codex/worktrees/lithic-m11b/砺石新APP`。同协调器七表/设置/只读媒体快照、完整manifest/ZIP及目标关闭后读回、SAF选择位置、取消和失败反馈已接通。最终143 JVM PASS（113原方法＋30新增，XML/源码逐项一致）、Lint0错误/7警告、Debug和Android测试APK构建PASS。见[唯一集中报告](evidence/M11B-verification.md)、[实际结果](evidence/m11b/results.json)与[checkpoint](checkpoints/2026-10-20-M11B.md)。正式M11未冻结，M12未授权。
-- **两个BLOCKING**：①冻结M09/M11-A缺少可复用的严格JPEG验证能力；本候选只对空媒体和当前可认证PNG编码尝试完整导出，JPEG/其他编码明确失败、不忽略。PNG验证覆盖也不等于全部合法PNG兼容。此限制是实现缺口，不是获批缩小产品范围。②全新隔离API36 AVD唯一一次创建exit1，未启动/安装/调用ADB；477项Android源码仅编译，真实Room/媒体/SAF导出、取消与目标故障全部NOT_RUN。不能用宿主结果替代M11-T01～T05完整验收。
-- **M10 — PENDING / DEFERRED**：候选`codex/m10-b1b2-android-safety-resume`仍为`732333b7a2803ec1f4487e437a581979a270e3ee`，不合并。三JPEG历史FAIL及全部UNKNOWN/NOT_RUN/NOTES、未入Git设备记录、H2/C2/M10保留现场均未改。仅创建本轮全新隔离目录的AVD失败现场；旧设备不访问/清理/重跑。保留的[M10末次报告](https://github.com/cc7279694-debug/property/blob/732333b7a2803ec1f4487e437a581979a270e3ee/docs/research/M10_B1B2_MAINLINE_RESULTS.md)不改判。
+- **M11-B — READY_FOR_REVIEW / 最小整改与真实SAF导出已交付，等待ChatGPT独立验收**：分支`codex/m11b-final-export-validation`，来源`3d018e9aedb89052983e6c54af40d03c47ecc9fb`，worktree `E:/CODEX/.codex/worktrees/lithic-m11b-final/砺石新APP`。已登记JPEG/合法标准PNG按原字节无损快照；真实API36设置页→系统保存器→写入关闭→ContentResolver读回校验成功，并独立核验实际3691字节归档，七表、设置、全部5张图片长度/SHA一致，源事实不变。[简短报告](evidence/M11B-final-verification.md)、[结果/输入/原始证据](evidence/m11b-final/results.json)、[checkpoint](checkpoints/2026-10-20-M11B-final.md)。正式M11未冻结，M12未授权。
+- **本轮验证**：149 JVM PASS（原143＋新增6），Lint0错误/7警告、Debug/App测试包构建通过。最终生产App下16项定向Android断言PASS，修正系统保存器测试定位后，新Test包下独立续接SAF方法1 PASS；两Test身份分开登记，不宣称17项在同一Test包重跑。初次3/6导出失败、两次平台诊断失败及原SAF驱动FAIL保留；后续PASS不改旧记录。实际新环境create1/start1，App安装2、Test安装5，包含经真实平台错误定位后的必要更新；未卸载/清数据/重启/重建。
+- **原两个阻塞的当前处理**：图片备份不再错误依赖M10严格熵解码凭据；原登记SHA/长度、容器、实际尺寸、路径/身份和复制前后检查仍执行，JPEG系统可读性不冒充严格完整性。PNG扩展15个合法颜色/色深组合及Adam7，宿主90种内部输入检查、设备真实RGBA/索引/16-bit灰阶/Adam7导出。全新API36创建和真实SAF导出已取得证据，旧创建exit1及旧过窄实现报告保持原样；无本轮已知Blocking，不等于独立冻结。
+- **M10 — PENDING / DEFERRED**：候选`codex/m10-b1b2-android-safety-resume`仍为`732333b7a2803ec1f4487e437a581979a270e3ee`，不合并。三JPEG历史FAIL及全部UNKNOWN/NOT_RUN/NOTES、未入Git设备记录、H2/C2/M10保留现场均未改。本轮仅使用全新API36 `Lithic_M11B_Final_API36_20261020 / emulator-5686`；旧设备不访问/清理/重跑。保留的[M10末次报告](https://github.com/cc7279694-debug/property/blob/732333b7a2803ec1f4487e437a581979a270e3ee/docs/research/M10_B1B2_MAINLINE_RESULTS.md)不改判。
 - **继承边界**：M00～M09与UI-C1冻结结论保留；本分支不含M10 Worker/Stage V2/JNI或UI-C1页面，不改Room schema/DAO/领域/备份format v1/业务事实。M11-B设置页是本轮授权的必要产品入口。下方旧模块授权与数字仅为历史。
 - **已知限制**：准备中断的未知私有半文件保守保留，不做递归扫盘；临时副本与ZIP可能同时占用空间，payload预算不是整个磁盘硬上限。SAF阻塞调用不能保证即时取消；成功只证明已观察到关闭并读回相同字节，不承诺提供方断电持久性。Q05原字节及完整M12往返边界不变。
 
@@ -56,13 +57,13 @@
 
 ## Data / Architecture
 
-Room v2七表、Migration1→2、Settings/DataStore记录时区、AppContainer唯一owner/coordinator保持。M11-B在同一协调器持有期读取七表/设置并复制已登记媒体原字节；私有副本核验后释放协调器，随后生成完整ZIP并写手动SAF目标。目标关闭、全量读回匹配后才显示成功。媒体不完整或不受认证时明确失败。没有直接复制活动.db，没有恢复、代切换或自动备份。真实Android一致性/资源/SAF验证仍NOT_RUN；详见[ARCHITECTURE](ARCHITECTURE.md)。
+Room v2七表、Migration1→2、Settings/DataStore记录时区、AppContainer唯一owner/coordinator保持。M11-B在同一协调器持有期读取七表/设置并复制已登记媒体原字节；私有副本核验后释放协调器，随后生成完整ZIP并写手动SAF目标。目标关闭、全量读回匹配后才显示成功。媒体不完整或不受认证时明确失败。没有直接复制活动.db，没有恢复、代切换或自动备份。本轮API36真实一致快照、媒体与SAF验证见上述证据；API26/真机/OEM、提供方断电持久性和M12恢复仍NOT_RUN。详见[ARCHITECTURE](ARCHITECTURE.md)。
 
 ## Git
 
-- 分支`codex/m11b-complete-backup-export`，origin `https://github.com/cc7279694-debug/property.git`，独立worktree如上；从本地/远端一致的冻结M11-A `79771fcf5978a938d240d517dd4dacb1d21021a6`建立，未从main或M10候选继承。
+- 分支`codex/m11b-final-export-validation`，origin `https://github.com/cc7279694-debug/property.git`，独立worktree如上；本地/远端来源`3d018e9aedb89052983e6c54af40d03c47ecc9fb`已核对。只提交推送当前分支；最终SHA和远端一致性以实际Git回执为准，不自证提交前成功。
 - M09冻结回写`57de897917473f255d43dfb306a8433b366c00eb`、M10正式`41596820145dc4a3fa6d041728a59540d828108a`、M10候选`732333b7a2803ec1f4487e437a581979a270e3ee`、UI-C1冻结`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`与main `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`为保护引用。只提交推送本M11-B候选，最终提交SHA和远端一致性以真实Git回执为准，不自证提交前成功。
 
 ## Next Recommended Task
 
-停止等待ChatGPT独立审查M11-B候选及上述两个阻塞；需要在不合并未冻结M10的边界下明确完整媒体校验能力，再取得真实隔离Android/SAF证据。不得将当前PNG子集升级为已批准产品规则，不自动重试AVD或恢复M10实验，不进入M12。
+停止等待ChatGPT独立验收本轮M11-B媒体整改及真实SAF证据。完整M11不自行ACCEPTED/FROZEN；不进入M12，不恢复M10/B1/B2实验，不操作或清理任何保留设备。新API36合成现场保持在线，旧失败claim及测试缓存保留。

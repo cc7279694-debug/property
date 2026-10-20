@@ -1,0 +1,51 @@
+{
+  "scope": "Static local artifact audit only; no devices/APK execution/install by this audit",
+  "buildEvidence": "../verified-build.log",
+  "apks": [
+    {
+      "label": "app",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m11b-final\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "applicationId": "com.cooper.lithic.debug",
+      "bytes": 12493108,
+      "sha256": "80b62bf2b3cbfd7ac67ed954144dba3923377cba7bcb0a54fa953fb6135d7b6c",
+      "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": [
+        "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+      ],
+      "nativeEntries": [
+        "lib/arm64-v8a/libandroidx.graphics.path.so",
+        "lib/arm64-v8a/libdatastore_shared_counter.so",
+        "lib/armeabi-v7a/libandroidx.graphics.path.so",
+        "lib/armeabi-v7a/libdatastore_shared_counter.so",
+        "lib/x86/libandroidx.graphics.path.so",
+        "lib/x86/libdatastore_shared_counter.so",
+        "lib/x86_64/libandroidx.graphics.path.so",
+        "lib/x86_64/libdatastore_shared_counter.so"
+      ],
+      "forbiddenM10NativeEntries": [],
+      "forbiddenM10DexMarkers": [],
+      "shaReadStable": true,
+      "instrumentation": null
+    },
+    {
+      "label": "test",
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m11b-final\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "applicationId": "com.cooper.lithic.debug.test",
+      "bytes": 1976056,
+      "sha256": "3120ea51c0615338fddecff99ccf12188d1a6e6bbdd2fa26dd0e5fda3648ca0b",
+      "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "permissions": [
+        "android.permission.REORDER_TASKS"
+      ],
+      "nativeEntries": [],
+      "forbiddenM10NativeEntries": [],
+      "forbiddenM10DexMarkers": [],
+      "shaReadStable": true,
+      "instrumentation": "androidx.test.runner.AndroidJUnitRunner"
+    }
+  ]
+}

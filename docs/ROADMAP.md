@@ -1,6 +1,6 @@
 # V1 模块路线与执行闸门
 
-**2026-10-20当前授权覆盖**：用户决定M10保持PENDING / DEFERRED，暂停其设备续验并保留现场；M11-A核心已独立冻结，现从79771fc授权M11-B只读媒体、SAF完整导出候选。完整M11仍依赖后续媒体集成与完整Android门禁，不降低原验收要求；M12不授权。下文原顺序及历史阶段描述保留，原规划归档不改写。
+**2026-10-20当前授权覆盖**：用户决定M10保持PENDING / DEFERRED，暂停其设备续验并保留现场；M11-A核心已独立冻结，现从79771fc授权M11-B只读媒体、SAF完整导出候选。本轮登记媒体无损快照与API36真实SAF证据已取得，完整M11等待独立验收，不降低原验收要求；M12不授权。下文原顺序及历史阶段描述保留，原规划归档不改写。
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
@@ -27,7 +27,7 @@
 | M08 | 订阅/真实续费与schema v2 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m08.md) | M03、M04、M05、M07 | v1→v2保旧记录，不自动付款 |
 | M09 | 暂停/恢复/到期/停止 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m09.md) | M08 | 无后台仍正确EXPIRED、贡献0；不替服务商取消 |
 | M10 | 单封面与本地资源生命周期 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m10.md) | M06、M09 | PENDING / DEFERRED；历史JPEG FAIL及研究现场保留 |
-| M11 | 完整逻辑导出format v1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m11.md) | M10（完整阶段）；M11-A获授权从M09先行 | M11-A核心冻结；M11-B候选待验，格式/设备证据不足仍阻塞完整M11冻结，无CSV/自动备份 |
+| M11 | 完整逻辑导出format v1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m11.md) | M10（完整阶段）；M11-A获授权从M09先行 | M11-A核心冻结；M11-B最终媒体整改/API36真实SAF候选待独立验收，无CSV/自动备份 |
 | M12 | 校验/覆盖恢复/故障回退 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m12.md) | M11 | 完整往返与故障注入；失败保旧，不合并 |
 | M13 | 首页与安全核心内部版 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m13.md) | M07、M09、M12 | 统一引擎、完整核心含备份恢复；非完整V1 |
 | M14 | 类别/搜索/分页/排序 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m14.md) | M13 | 合并无孤儿汇总不变，不跨类型/FTS |

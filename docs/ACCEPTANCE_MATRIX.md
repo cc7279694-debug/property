@@ -2,7 +2,7 @@
 
 本文件记录 M00～M09 实际执行与独立验收历史，以及M11-A核心冻结与M11-B候选的执行结果；[原130条Markdown矩阵](planning/original-v1/lithic_v1_plan/docs/ACCEPTANCE_MATRIX.md)与[原JSON](planning/original-v1/lithic_v1_plan/docs/acceptance-cases.json)完整归档且全 NOT_RUN，不在原件改结果。
 
-日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅备份核心已由用户转交独立冻结结论；M11-B当前BLOCKED，不是正式M11通过；M12未授权。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；各次新增执行分节记录，不回填历史。
+日期：2026-10-20。执行项 PASS 表示当时实际执行通过，NOT_RUN 表示未执行，历史 PENDING 表示当时待独立确认。M00～M09正式结论均为 **ACCEPTED / FROZEN — PASS WITH NOTES**，详见各模块独立验收登记；M10当前 **PENDING / DEFERRED**，UI-C1独立冻结结论保留于其分支。M11-A仅备份核心已由用户转交独立冻结结论；M11-B当前READY_FOR_REVIEW，执行证据见文末最终整改分节，不是正式M11通过；M12未授权。原130案例、16组完整跨模块补测与全部历史NOTES保持原状态；各次新增执行分节记录，不回填历史。
 
 ## 独立验收记录
 
@@ -664,3 +664,19 @@ M11-B来源为上述冻结提交，分支`codex/m11b-complete-backup-export`。�
 真实RED保留：初始缺API编译失败；138项中1项取消反馈失败，修复后通过；其后两次Lint分别发现O_CLOEXEC Java字段API27、fcntlInt API30不适用API26，原失败不删。最终依据已安装官方NDK UAPI常量以API21 Os.open原子传入close-on-exec标志，不提高minSdk、不新增native依赖，不把Lint通过当作API26运行证明。
 
 BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝整份备份，不静默漏图；全新隔离AVD创建唯一一次exit1，真实导出门禁未完成。未知内部半文件保守保留；提供方阻塞取消、断电持久性、真机/OEM/Release及M12往返仍NOT_RUN。M10 PENDING / DEFERRED、三JPEG历史FAIL、全部UNKNOWN/NOTES与UI-C1冻结原样保留。
+
+## M11-B 最小整改与真实导出执行登记（2026-10-20）
+
+来源`3d018e9aedb89052983e6c54af40d03c47ecc9fb`；分支`codex/m11b-final-export-validation`。状态 **READY_FOR_REVIEW**，仅实际执行结果；正式M11由ChatGPT独立验收决定，不自行冻结，不进入M12。旧候选BLOCKED、失败AVD claim及全部历史测试保留，不回填原130条案例。
+
+| 原ID | 本轮已执行范围 | 结果与边界 |
+|---|---|---|
+| M11-T01 | 七表/设置、空媒体、JPEG及RGBA/索引/灰阶16-bit/Adam7共5登记媒体；包括未被封面引用的资产 | PASS：真实Room/归档逐项一致；项目12345分、订阅付款18000分及状态不变。M12恢复不在本轮 |
+| M11-T02 | 写协调器阻止并发业务/媒体变更，脱离快照后允许后续写入 | PASS：RoomBackupSnapshotSourceTest及CompleteBackupExportTest实际Android执行；不宣称跨进程或未知外部写原子 |
+| M11-T03 | 私有归档、实际SAF目标关闭/读回、宿主独立ZIP/CRC/每项长度SHA及媒体原字节 | PASS：3691字节，8 ZIP条目（manifest＋7 payload），5媒体无遗漏 |
+| M11-T04 | 缺图/损坏、真实系统保存器取消、可控目标写入/关闭/错误读回 | PASS：失败不显示成功；目标故障断言确认实际进入写入/读回出口。真实SAF磁盘满/提供方权限撤回/断电NOT_RUN |
+| M11-T05 | 设置页只有手动明文完整导出，无恢复/密码/计划/CSV/云同步 | PASS：设置UI断言及实际MainActivity/SAF；不是M12通过 |
+
+149个唯一JVM方法PASS（18 XML，原143保留＋6新增）；Lint0错误/7警告；Debug及Android测试APK构建PASS。最终生产App SHA `500cc5349012a20acad630ffa0c05d992f1dd466db20ad7004588f6f7c4dd92a`下16项定向AndroidPASS（Test SHA3f07c553…）；仅测试驱动修正后新Test SHA `2e6e87838ac726be42d4d4b92e5863c92b400ccb454ea15d60f920fa9f21c9c2`执行独立SAF续接方法1 PASS。不是17项同一Test包全量重跑。原SAF方法在保存前控件定位失败，旧FAIL/claim保留，由新参数绑定旧SHA/generation并严格校验合成账本的单次续接获得新PASS；不将旧FAIL改判。
+
+原初次3/6 Android失败、两次平台诊断FAIL、JVM RED及一个辅助元数据命令exit1如实保留。生产缺陷经同进程路径证据定位并最小修复；系统保存器驱动为测试兼容问题。完整原始结果、产物身份、来源哈希和真实成功截图见[简短报告](evidence/M11B-final-verification.md)和[必要证据](evidence/m11b-final/results.json)。M10 PENDING / DEFERRED、三个JPEG历史FAIL、UI-C1冻结、Q03～Q06/所有NOTES保持；API26/真机/OEM/Release/完整备份恢复及提供方断电持久性NOT_RUN。

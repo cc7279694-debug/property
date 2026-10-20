@@ -1,0 +1,89 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest:
+INSTRUMENTATION_STATUS: test=archive_pipeline_preserves_platform_exception_and_verifies_real_bytes
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Backup platform phase=capture-and-prepare: java.lang.IllegalArgumentException: Staging ancestors cannot be links; trace=/data/user/0/com.cooper.lithic.debug/cache/m11b-platform-934960631277230340: absolute=true, nioLink=false, mode=17856; /data/user/0/com.cooper.lithic.debug/cache: absolute=true, nioLink=false, mode=17913; /data/user/0/com.cooper.lithic.debug: absolute=true, nioLink=false, mode=16832; /data/user/0: absolute=true, nioLink=true, mode=41471; /data/user: absolute=true, nioLink=false, mode=16873; /data: absolute=true, nioLink=false, mode=16889; /: absolute=true, nioLink=false, mode=16877
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1.invokeSuspend(BackupArchiveAndroidCompatibilityTest.kt:43)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest.archive_pipeline_preserves_platform_exception_and_verifies_real_bytes(BackupArchiveAndroidCompatibilityTest.kt:18)
+	... 32 trimmed
+Caused by: java.lang.IllegalArgumentException: Staging ancestors cannot be links
+	at com.cooper.lithic.data.backup.BackupEntryFiles.requireDirectory(BackupEntryFiles.kt:70)
+	at com.cooper.lithic.data.backup.BackupCoreStager.prepare(BackupEntryFiles.kt:144)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invokeSuspend(BackupArchiveAndroidCompatibilityTest.kt:32)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invoke(Unknown Source:8)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invoke(Unknown Source:4)
+	at com.cooper.lithic.data.backup.RoomBackupSnapshotSource$captureInto$2.invokeSuspend(RoomBackupSnapshotSource.kt:46)
+	... 42 more
+
+INSTRUMENTATION_STATUS: stream=
+Error in archive_pipeline_preserves_platform_exception_and_verifies_real_bytes(com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest):
+java.lang.AssertionError: Backup platform phase=capture-and-prepare: java.lang.IllegalArgumentException: Staging ancestors cannot be links; trace=/data/user/0/com.cooper.lithic.debug/cache/m11b-platform-934960631277230340: absolute=true, nioLink=false, mode=17856; /data/user/0/com.cooper.lithic.debug/cache: absolute=true, nioLink=false, mode=17913; /data/user/0/com.cooper.lithic.debug: absolute=true, nioLink=false, mode=16832; /data/user/0: absolute=true, nioLink=true, mode=41471; /data/user: absolute=true, nioLink=false, mode=16873; /data: absolute=true, nioLink=false, mode=16889; /: absolute=true, nioLink=false, mode=16877
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1.invokeSuspend(BackupArchiveAndroidCompatibilityTest.kt:43)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest.archive_pipeline_preserves_platform_exception_and_verifies_real_bytes(BackupArchiveAndroidCompatibilityTest.kt:18)
+	... 32 trimmed
+Caused by: java.lang.IllegalArgumentException: Staging ancestors cannot be links
+	at com.cooper.lithic.data.backup.BackupEntryFiles.requireDirectory(BackupEntryFiles.kt:70)
+	at com.cooper.lithic.data.backup.BackupCoreStager.prepare(BackupEntryFiles.kt:144)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invokeSuspend(BackupArchiveAndroidCompatibilityTest.kt:32)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invoke(Unknown Source:8)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invoke(Unknown Source:4)
+	at com.cooper.lithic.data.backup.RoomBackupSnapshotSource$captureInto$2.invokeSuspend(RoomBackupSnapshotSource.kt:46)
+	... 42 more
+
+INSTRUMENTATION_STATUS: test=archive_pipeline_preserves_platform_exception_and_verifies_real_bytes
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.156
+There was 1 failure:
+1) archive_pipeline_preserves_platform_exception_and_verifies_real_bytes(com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest)
+java.lang.AssertionError: Backup platform phase=capture-and-prepare: java.lang.IllegalArgumentException: Staging ancestors cannot be links; trace=/data/user/0/com.cooper.lithic.debug/cache/m11b-platform-934960631277230340: absolute=true, nioLink=false, mode=17856; /data/user/0/com.cooper.lithic.debug/cache: absolute=true, nioLink=false, mode=17913; /data/user/0/com.cooper.lithic.debug: absolute=true, nioLink=false, mode=16832; /data/user/0: absolute=true, nioLink=true, mode=41471; /data/user: absolute=true, nioLink=false, mode=16873; /data: absolute=true, nioLink=false, mode=16889; /: absolute=true, nioLink=false, mode=16877
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1.invokeSuspend(BackupArchiveAndroidCompatibilityTest.kt:43)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest.archive_pipeline_preserves_platform_exception_and_verifies_real_bytes(BackupArchiveAndroidCompatibilityTest.kt:18)
+	... 32 trimmed
+Caused by: java.lang.IllegalArgumentException: Staging ancestors cannot be links
+	at com.cooper.lithic.data.backup.BackupEntryFiles.requireDirectory(BackupEntryFiles.kt:70)
+	at com.cooper.lithic.data.backup.BackupCoreStager.prepare(BackupEntryFiles.kt:144)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invokeSuspend(BackupArchiveAndroidCompatibilityTest.kt:32)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invoke(Unknown Source:8)
+	at com.cooper.lithic.data.backup.BackupArchiveAndroidCompatibilityTest$archive_pipeline_preserves_platform_exception_and_verifies_real_bytes$1$core$1.invoke(Unknown Source:4)
+	at com.cooper.lithic.data.backup.RoomBackupSnapshotSource$captureInto$2.invokeSuspend(RoomBackupSnapshotSource.kt:46)
+	... 42 more
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

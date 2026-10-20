@@ -1,0 +1,77 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources
+> Task :app:generateDebugResValues
+> Task :app:compileDebugNavigationResources
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:mergeDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:javaPreCompileDebug
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugResources
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:706:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:kspDebugUnitTestKotlin
+
+> Task :app:compileDebugUnitTestKotlin
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:3:17 Unresolved reference 'image'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:6:14 Unresolved reference 'imageio'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:7:14 Unresolved reference 'imageio'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:8:14 Unresolved reference 'imageio'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:16:33 Unresolved reference 'BackupJpegInspection'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:25:19 Unresolved reference 'BackupJpegInspection'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:34:49 Unresolved reference 'BackupJpegInspection'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:37:19 Unresolved reference 'BufferedImage'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:37:37 Unresolved reference 'BufferedImage'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:39:20 Unresolved reference 'ImageIO'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:41:9 Unresolved reference 'ImageIO'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:41:48 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:41:48 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:41:54 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:44:57 Unresolved reference 'ImageWriteParam'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m11b-final/��ʯ��APP/app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt:45:31 Unresolved reference 'IIOImage'.
+
+> Task :app:compileDebugUnitTestKotlin FAILED
+> Task :app:copyRoomSchemas NO-SOURCE
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugUnitTestKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 9s
+24 actionable tasks: 24 executed

@@ -26,7 +26,7 @@ sealed interface BackupExportResult {
 
 /** Sole writer remains the Host. This service only reads an owned generation and a selected target. */
 class BackupExportService(context: Context, private val generation: ManagedGeneration) {
-    private val cacheRoot = context.applicationContext.cacheDir.toPath()
+    private val cacheRoot = ownedBackupCacheDirectory(context)
     private val producer = context.packageManager.getPackageInfo(context.packageName, 0).versionName
         ?: throw IllegalStateException("Application version is missing")
     suspend fun export(target: BackupTarget): BackupExportResult {
@@ -96,3 +96,24 @@ class BackupExportService(context: Context, private val generation: ManagedGener
 }
 
 private class IncompleteBackupTarget(cause: Throwable): java.io.IOException("Target did not match verified archive", cause)
+
+/** Android may expose /data/user/0 as a system alias only in the app mount namespace.
+ * Normalize only Context's trusted cache root; never relax the payload ancestor/link checks.
+ */
+internal fun ownedBackupCacheDirectory(context: Context): Path {
+    val app = context.applicationContext
+    val data = app.dataDir
+    val cache = app.cacheDir
+    for (directory in listOf(data, cache)) {
+        val stat = android.system.Os.lstat(directory.path)
+        require(android.system.OsConstants.S_ISDIR(stat.st_mode) && stat.st_uid == android.os.Process.myUid()) {
+            "Backup private root ownership is unknown"
+        }
+    }
+    val realData = data.canonicalFile
+    val realCache = cache.canonicalFile
+    require(cache.absoluteFile.parentFile.canonicalFile == realData && realCache.parentFile == realData) {
+        "Backup cache leaves the application data root"
+    }
+    return realCache.toPath().also(BackupEntryFiles::requireDirectory)
+}
