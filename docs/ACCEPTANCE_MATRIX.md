@@ -1,6 +1,24 @@
 # 验收登记
 
-当前交付：**M17 READY_FOR_REVIEW，等待ChatGPT独立验收**，来源`ca289f12a31ce67882a1254f6dbd71a80cad18dc`、分支`codex/m17-item-cost-charts`。144 JVM＋28 Android＝172唯一方法PASS，9图；不是自行冻结。最近正式冻结仍为M16及前序限定模块；M10延期、M13-T06延期、G1未整体通过、Q06边界与历史记录不变。
+当前结论：**M17 — ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户转交的ChatGPT独立源码及证据验收，评审`54360aa0e61779c7efa62b527f8901778a0845a2`，分支`codex/m17-item-cost-charts`。认可原M17-T01～T05、144 JVM＋28 Android＝172唯一方法PASS、Lint0错误9警告及9张隔离截图；本轮仅文档登记，不是重新执行产品测试。M10延期、M13-T06延期、G1未整体通过、Q02的M18未完成部分、Q06边界与历史记录不变。
+
+## M17正式冻结登记（2026-10-21）
+
+**M17 — ACCEPTED / FROZEN — PASS WITH NOTES。** 依据用户本轮正式转交的ChatGPT独立源码及证据验收结论；评审提交`54360aa0e61779c7efa62b527f8901778a0845a2`，评审/回写分支`codex/m17-item-cost-charts`。修改前本地/远端HEAD均为该提交且工作区干净。下方原执行登记、报告、结果和checkpoint保留候选交付时的状态，不覆盖原始证据。
+
+| 获独立认可案例 | 限定冻结范围 |
+|---|---|
+| M17-T01 past_event_boundary | PASS：真实事件边界、历史观察日分母、结束后结算和完整事实读取；Q02仅M17部分。 |
+| M17-T02 subscription_is_step_not_smooth | PASS：生效日阶梯，预付不提前改价，暂停/到期/停止零区间及未来计划边界。 |
+| M17-T03 events_are_accessible | PASS：同日完整事件、超过50条、折抵与日期/状态说明，360dp/200%隔离交互可达；非完整TalkBack。 |
+| M17-T04 negative_values_visible | PASS：0、负值、极小非零、全负与单点按真实值展示，不截0。 |
+| M17-T05 no_forecast | PASS：截至业务观察日/真实结束日；后结算独立，不延长持有天数，未来计划不画预测线。 |
+
+独立认可此前实际结果：**144 JVM PASS（33新增＋111相关回归）＋28 Android PASS（19本模块＋9相关回归）＝172唯一方法，0失败/错误/跳过；Lint0错误9警告；Debug App/Test构建成功；9张隔离截图。** [原报告](evidence/M17-verification.md)、[方法统计](evidence/m17/results.json)、[原始证据](evidence/m17/README.md)、[截图来源](evidence/m17/screenshots/README.md)、[原checkpoint](checkpoints/2026-10-21-M17.md)。本轮仅核对登记文档、Git、链接与敏感信息，未重跑测试、构建、APK核验或设备验证；不把独立验收或文档检查登记为新一次产品PASS。
+
+**NOTES与未执行边界保留：**仅原5672/API36/x86_64合成环境、plain Application隔离runner、隔离ComponentActivity中的真实LithicApp/Nav3，不是MainActivity/私人账本。360dp/200%为LocalDensity画布，注入BusinessClock/前台生命周期不是实际午夜，受控文件往返不是新SAF验收。API26/真机/OEM、Release/稳定签名、系统大字/完整IME/TalkBack、真实进程终止/LMK/断电、长期大数据性能仍NOT_RUN，未穷举调度竞态。240为均匀基础点，另保留真实边界与邻点，不宣称总点数或计算耗时硬上限。
+
+Room3/backup2、冻结领域引擎、M16交易保护及恢复/媒体协议保持；Q02的M18未完成部分和原16组完整跨模块门禁仍NOT_RUN，不整体关闭。原RED/FAIL/UNKNOWN/NOT_RUN/NOTES及全部历史证据不改。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过、Q03～Q06既定边界均保持。登记后停止，不操作设备、不合并main、不开始M18。
 
 ## M17 当前执行验收（2026-10-21）
 

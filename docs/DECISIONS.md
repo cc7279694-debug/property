@@ -1,5 +1,19 @@
 # 决策记录
 
+## 2026-10-21 — M17独立限定冻结与后续授权边界
+
+### Decision
+
+依据用户正式转交的ChatGPT独立源码及证据验收，对`codex/m17-item-cost-charts`评审提交`54360aa0e61779c7efa62b527f8901778a0845a2`登记 **M17 — ACCEPTED / FROZEN — PASS WITH NOTES**。M17-T01～T05、此前144 JVM PASS、28 Android PASS、Lint0错误9警告及9张隔离截图获限定认可，具体范围见[正式登记](ACCEPTANCE_MATRIX.md#m17正式冻结登记2026-10-21)。
+
+### Context / Alternatives / Reason
+
+原报告、结果、截图、checkpoint和下方实施决策记录候选交付时的事实与状态，保持历史原样；新增独立结论更新当前效力，不重写旧RED/FAIL/UNKNOWN/NOT_RUN或补造运行。本轮仅登记文档，未重跑测试、构建、APK核验或设备验证，不将独立审查冒充新一次产品测试。
+
+### Consequences
+
+冻结仅限单项只读成本/价格历史、精确日期和事件访问及同代刷新，Room3/backup2、冻结算法、M16保护和媒体/恢复协议不改。仅API36/x86_64合成验证；LocalDensity大字体、注入时钟、受控文件往返均保留原边界，真机/API26/OEM、Release/稳定签名、完整TalkBack/IME、真实午夜/进程故障/LMK/断电和长期性能仍NOT_RUN。240基础点不等于总点数或成本硬上限。Q02仅M17子断言认可，M18和16组完整跨模块门禁未完成；不整体关闭Q02。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过、全部历史NOTES继续有效。本轮只回写必要登记文档，不合并main，不操作设备；M18须用户另行明确授权。
+
 ## 2026-10-21 — M17固定观察日、精确选日与只读图表边界
 
 ### Decision
