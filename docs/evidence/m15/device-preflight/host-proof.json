@@ -1,0 +1,44 @@
+{
+  "observedAt": "2026-10-21T11:48:12.590613",
+  "processes": [
+    {
+      "ProcessId": 20744,
+      "ParentProcessId": 9240,
+      "CreationDate": "2026-10-21T10:25:24.1274100+08:00",
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+      "CommandLine": "\"C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe\" -avd Lithic_M14_API36_20261021 -port 5672 -datadir E:/CODEX/.codex/research-env/lithic-m14-android-20261021/runtime-data -no-snapshot -no-boot-anim -no-audio -no-window -gpu swiftshader -memory 2048 -cores 2"
+    },
+    {
+      "ProcessId": 7356,
+      "ParentProcessId": 20744,
+      "CreationDate": "2026-10-21T10:25:24.4044110+08:00",
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "CommandLine": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M14_API36_20261021 -port 5672 -datadir E:/CODEX/.codex/research-env/lithic-m14-android-20261021/runtime-data -no-snapshot -no-boot-anim -no-audio -no-window -gpu swiftshader -memory 2048 -cores 2"
+    }
+  ],
+  "ports": [
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5673,
+      "OwningProcess": 7356
+    },
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5672,
+      "OwningProcess": 7356
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5673,
+      "OwningProcess": 7356
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5672,
+      "OwningProcess": 7356
+    }
+  ],
+  "hardwareSha256": "22ca609f4cc2ffa18bd9cf87560a206ea5afc98089ab1397937d610d6d6d9c34",
+  "sameOriginalInstance": true,
+  "preliminaryScriptIssue": "CreationDate fractional trailing zero normalized before equality; no ADB had run"
+}

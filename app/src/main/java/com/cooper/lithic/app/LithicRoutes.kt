@@ -12,6 +12,9 @@ internal data object Home : NavKey
 internal data object Review : NavKey
 
 @Serializable
+internal data object LongTermReview : NavKey
+
+@Serializable
 internal data object Settings : NavKey
 
 @Serializable
@@ -27,7 +30,7 @@ internal data object ProjectList : NavKey
 internal data object ProjectHistory : NavKey
 
 @Serializable
-internal enum class ProjectOrigin { CURRENT, HISTORY }
+internal enum class ProjectOrigin { CURRENT, HISTORY, REVIEW }
 
 @Serializable
 internal data object CreateProject : NavKey
@@ -60,7 +63,7 @@ internal data object SubscriptionList : NavKey
 internal data object CreateSubscription : NavKey
 
 @Serializable
-internal enum class SubscriptionOrigin { CURRENT, HISTORY }
+internal enum class SubscriptionOrigin { CURRENT, HISTORY, REVIEW }
 
 @Serializable
 internal enum class SubscriptionAction { PAUSE, RESUME, REOPEN, STOP }
@@ -97,6 +100,7 @@ internal data class DeleteSubscriptionRenewal(val id: String, val renewalId: Str
 internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (destination) {
     Home -> listOf(Home)
     Review, Settings, ProjectList, SubscriptionList -> listOf(Home, destination)
+    LongTermReview -> listOf(Home, Review, LongTermReview)
     NameSearch -> listOf(Home, NameSearch)
     CategoryManagement -> listOf(Home, Settings, CategoryManagement)
     ProjectHistory -> listOf(Home, Review, ProjectHistory)
@@ -135,6 +139,7 @@ internal fun subscriptionOrigin(destination: NavKey): SubscriptionOrigin = when 
 private fun subscriptionParent(origin: SubscriptionOrigin): List<NavKey> = when (origin) {
     SubscriptionOrigin.CURRENT -> listOf(Home, SubscriptionList)
     SubscriptionOrigin.HISTORY -> listOf(Home, Review, SubscriptionHistory)
+    SubscriptionOrigin.REVIEW -> listOf(Home, Review, LongTermReview)
 }
 
 private fun subscriptionEditorStack(id: String, origin: SubscriptionOrigin, destination: NavKey): List<NavKey> =
@@ -155,6 +160,7 @@ internal fun projectOrigin(destination: NavKey): ProjectOrigin = when (destinati
 private fun projectParent(origin: ProjectOrigin): List<NavKey> = when (origin) {
     ProjectOrigin.CURRENT -> listOf(Home, ProjectList)
     ProjectOrigin.HISTORY -> listOf(Home, Review, ProjectHistory)
+    ProjectOrigin.REVIEW -> listOf(Home, Review, LongTermReview)
 }
 
 private fun editorStack(id: String, origin: ProjectOrigin, destination: NavKey): List<NavKey> =

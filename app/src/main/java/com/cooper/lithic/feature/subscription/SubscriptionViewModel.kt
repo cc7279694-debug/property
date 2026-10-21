@@ -307,7 +307,7 @@ class SubscriptionViewModel(
                 active.putBoolean("conflict", false)
                 message = null
                 mutableState.value = state.value.copy(committedSubscriptionId = id,
-                    committedOrigin = if (detail.cost.displayStatus == SubscriptionDisplayStatus.STOPPED) "HISTORY" else "CURRENT")
+                    committedOrigin = committedSubscriptionOrigin(text(active, "origin"), detail.cost.displayStatus == SubscriptionDisplayStatus.STOPPED))
             }
         } catch (cancelled: CancellationException) { throw cancelled }
         catch (_: Exception) { if (form === active) message = COMMITTED_ERROR }
@@ -332,7 +332,7 @@ class SubscriptionViewModel(
                 active.putString("phase", SubmissionPhase.COMMITTED.name); active.putBoolean("conflict", false)
                 savedState[LAST_CONFIRMED_KEY] = id; message = null
                 mutableState.value = state.value.copy(committedSubscriptionId = id,
-                    committedOrigin = if (detail.cost.displayStatus == SubscriptionDisplayStatus.STOPPED) "HISTORY" else "CURRENT")
+                    committedOrigin = committedSubscriptionOrigin(text(active, "origin"), detail.cost.displayStatus == SubscriptionDisplayStatus.STOPPED))
             } else {
                 active.putBoolean("verifiedNoWrite", true)
                 message = "已核对当前记录：事实已经变化，原始提交不会覆盖当前记录。原始输入已保留，可以返回查看当前记录。"
@@ -387,7 +387,7 @@ class SubscriptionViewModel(
     }
     private fun startOperation(kind: String, id: String, origin: String, action: String = "",
         stateId: String? = null, renewalId: String? = null) {
-        if (form != null || !StoredValueValidation.isUuid(id) || origin !in listOf("CURRENT", "HISTORY") ||
+        if (form != null || !StoredValueValidation.isUuid(id) || !isSubscriptionOriginSupported(origin) ||
             stateId?.let { !StoredValueValidation.isUuid(it) } == true || renewalId?.let { !StoredValueValidation.isUuid(it) } == true) return
         form = newForm(SubscriptionEditorKind.RENEWAL, id).apply {
             putString("kind", kind); putString("origin", origin); putString("action", action)

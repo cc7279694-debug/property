@@ -1,5 +1,14 @@
 # 当前架构事实
 
+## M15：只读全局长期复盘（2026-10-21）
+
+`RankingRepository`是同一ManagedGeneration数据库/协调器/BusinessClock上的非owner只读入口。一次withSnapshot＋Room事务固定业务观察日，按50批读取该类型所有身份及完整资金/付款/状态事实，交给`RankingEngine`复用M02/M03，再全局稳定排序，最后取50×已加载页数。计算量随全部相关事实增长，排序O(n log n)，50只约束显示窗口；无每日快照、持久榜单或缓存表。不可计算项稳定排末且不授予有效排名，0和负值不丢弃，订阅只按已购标准天数。
+
+`ReviewController`按请求序号与榜单隔离结果，刷新重建整个窗口；读取失败显式保留旧快照/日期并提示。`ReviewViewModel`按generation作用域创建，未打开榜单不启动全量排名；写入失效、跨日/前台触发刷新，代更换清旧ViewModel与导航，不让旧代结果展示。Nav3新增LongTermReview与REVIEW详情返回来源，所有编辑仍走原全局未保存/pending/恢复守卫。历史档案直接复用已结束项目和STOPPED订阅列表，不复制管理系统。
+
+Room schema2、backup format1、冻结领域引擎、写入/恢复协议及依赖保持原样。M15当前候选待独立验收，M10延期和M13发行门槛不因此改变。
+
+
 ## M14：两套类别与名称搜索（2026-10-21）
 
 `CategoryRepository`共用generation coordinator及Room事务。新建使用稳定类别UUID、同类型标准名唯一；改名核对原类别，合并预览核对源/目标/影响数后搬移关联并删除源。未知提交保留同参数重试；源缺失仅返回冲突，不冒称历史成功。fallback身份不变，金额、付款、状态不改。

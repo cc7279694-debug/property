@@ -1,0 +1,288 @@
+{
+  "retainedScreenshots": [
+    {
+      "file": "01-project-mixed-companionship.png",
+      "devicePath": "/data/data/com.cooper.lithic.debug/files/m15-evidence/01-project-mixed-companionship-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "bytes": 146759,
+      "sha256": "cedd9ba52f5f5bd1b1a034e518bada3aa4352f90e3ec0e65b3974a8f3c489cb1",
+      "width": 1080,
+      "height": 1920,
+      "source": "M15ScreenshotsJourneyTest / isolated ComponentActivity, real LithicApp and Nav3",
+      "canvasDp": 360,
+      "fontScale": 1
+    },
+    {
+      "file": "02-project-negative-final-cost.png",
+      "devicePath": "/data/data/com.cooper.lithic.debug/files/m15-evidence/02-project-negative-final-cost-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "bytes": 148521,
+      "sha256": "d37f2e6029c9d77c48b5463e3bd8d1d6433a4ff7355b236fdaf55bd9468609f1",
+      "width": 1080,
+      "height": 1920,
+      "source": "M15ScreenshotsJourneyTest / isolated ComponentActivity, real LithicApp and Nav3",
+      "canvasDp": 360,
+      "fontScale": 1
+    },
+    {
+      "file": "03-subscription-standard-time.png",
+      "devicePath": "/data/data/com.cooper.lithic.debug/files/m15-evidence/03-subscription-standard-time-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "bytes": 161862,
+      "sha256": "86e0fc2c5bb72154e2341c45bb6011496ab12b3eb5774c5dea103fe499f63728",
+      "width": 1080,
+      "height": 1920,
+      "source": "M15ScreenshotsJourneyTest / isolated ComponentActivity, real LithicApp and Nav3",
+      "canvasDp": 360,
+      "fontScale": 1
+    },
+    {
+      "file": "05-project-history.png",
+      "devicePath": "/data/data/com.cooper.lithic.debug/files/m15-evidence/05-project-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "bytes": 126903,
+      "sha256": "1db72f36ae8b92581fa433b380d1752b6c1a7a70116dbc8ce27a575ae4400706",
+      "width": 1080,
+      "height": 1920,
+      "source": "M15ScreenshotsJourneyTest / isolated ComponentActivity, real LithicApp and Nav3",
+      "canvasDp": 360,
+      "fontScale": 1
+    },
+    {
+      "file": "06-stopped-subscription-history.png",
+      "devicePath": "/data/data/com.cooper.lithic.debug/files/m15-evidence/06-stopped-subscription-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "bytes": 119771,
+      "sha256": "a4de93cc098c5778600ad654a4116d82fbcad1e9d05f9294e1bcaee8a8817bc7",
+      "width": 1080,
+      "height": 1920,
+      "source": "M15ScreenshotsJourneyTest / isolated ComponentActivity, real LithicApp and Nav3",
+      "canvasDp": 360,
+      "fontScale": 1
+    },
+    {
+      "file": "07-review-360dp-font200-header.png",
+      "devicePath": "/data/data/com.cooper.lithic.debug/files/m15-evidence/07-review-360dp-font200-header-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "bytes": 184654,
+      "sha256": "ab994e7318af312c8af3350ee109bad5a64bb478b2691885544cc97bbbeded3c",
+      "width": 1080,
+      "height": 1920,
+      "source": "M15ScreenshotsJourneyTest / isolated ComponentActivity, real LithicApp and Nav3",
+      "canvasDp": 360,
+      "fontScale": 2
+    },
+    {
+      "file": "08-review-360dp-font200-subscription.png",
+      "devicePath": "/data/data/com.cooper.lithic.debug/files/m15-evidence/08-review-360dp-font200-subscription-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "bytes": 133185,
+      "sha256": "2bdbb19360c162188c8e1cc43dd00fd45b258c446e490ececb1c43f2bedbf921",
+      "width": 1080,
+      "height": 1920,
+      "source": "M15ScreenshotsJourneyTest / isolated ComponentActivity, real LithicApp and Nav3",
+      "canvasDp": 360,
+      "fontScale": 2
+    }
+  ],
+  "producedJourneyImages": 8,
+  "omittedDuplicateEntryImage": "04-history-entry retained on device; no historical screenshots removed",
+  "commands": [
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "files/m15-evidence/01-project-mixed-companionship-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "stdout": "cedd9ba52f5f5bd1b1a034e518bada3aa4352f90e3ec0e65b3974a8f3c489cb1  files/m15-evidence/01-project-mixed-companionship-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "files/m15-evidence/01-project-mixed-companionship-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "bytes": 146759,
+      "sha256": "cedd9ba52f5f5bd1b1a034e518bada3aa4352f90e3ec0e65b3974a8f3c489cb1"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "files/m15-evidence/02-project-negative-final-cost-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "stdout": "d37f2e6029c9d77c48b5463e3bd8d1d6433a4ff7355b236fdaf55bd9468609f1  files/m15-evidence/02-project-negative-final-cost-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "files/m15-evidence/02-project-negative-final-cost-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "bytes": 148521,
+      "sha256": "d37f2e6029c9d77c48b5463e3bd8d1d6433a4ff7355b236fdaf55bd9468609f1"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "files/m15-evidence/03-subscription-standard-time-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "stdout": "86e0fc2c5bb72154e2341c45bb6011496ab12b3eb5774c5dea103fe499f63728  files/m15-evidence/03-subscription-standard-time-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "files/m15-evidence/03-subscription-standard-time-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "bytes": 161862,
+      "sha256": "86e0fc2c5bb72154e2341c45bb6011496ab12b3eb5774c5dea103fe499f63728"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "files/m15-evidence/05-project-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "stdout": "1db72f36ae8b92581fa433b380d1752b6c1a7a70116dbc8ce27a575ae4400706  files/m15-evidence/05-project-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "files/m15-evidence/05-project-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "bytes": 126903,
+      "sha256": "1db72f36ae8b92581fa433b380d1752b6c1a7a70116dbc8ce27a575ae4400706"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "files/m15-evidence/06-stopped-subscription-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "stdout": "a4de93cc098c5778600ad654a4116d82fbcad1e9d05f9294e1bcaee8a8817bc7  files/m15-evidence/06-stopped-subscription-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "files/m15-evidence/06-stopped-subscription-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "bytes": 119771,
+      "sha256": "a4de93cc098c5778600ad654a4116d82fbcad1e9d05f9294e1bcaee8a8817bc7"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "files/m15-evidence/07-review-360dp-font200-header-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "stdout": "ab994e7318af312c8af3350ee109bad5a64bb478b2691885544cc97bbbeded3c  files/m15-evidence/07-review-360dp-font200-header-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "files/m15-evidence/07-review-360dp-font200-header-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "bytes": 184654,
+      "sha256": "ab994e7318af312c8af3350ee109bad5a64bb478b2691885544cc97bbbeded3c"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "files/m15-evidence/08-review-360dp-font200-subscription-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "stdout": "2bdbb19360c162188c8e1cc43dd00fd45b258c446e490ececb1c43f2bedbf921  files/m15-evidence/08-review-360dp-font200-subscription-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+    },
+    {
+      "command": [
+        "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+        "-s",
+        "emulator-5672",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "files/m15-evidence/08-review-360dp-font200-subscription-b4843fd5-2e83-4d15-8242-61c8936e2b96.png"
+      ],
+      "exit": 0,
+      "bytes": 133185,
+      "sha256": "2bdbb19360c162188c8e1cc43dd00fd45b258c446e490ececb1c43f2bedbf921"
+    }
+  ]
+}

@@ -21,34 +21,34 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onProjectHistory: (() -> Unit)? = null,
-    onSubscriptionHistory: (() -> Unit)? = null) {
+    onSubscriptionHistory: (() -> Unit)? = null, onLongTermReview: (() -> Unit)? = null) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("review-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Text("回看", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
-        Text(if (projectCount == 0L) "暂无记录" else "已录入 $projectCount 条长期项目",
+        Text(if (projectCount == 0L) "暂无长期项目记录" else "已录入 $projectCount 条长期项目（含历史）",
             style = MaterialTheme.typography.bodyLarge)
         HorizontalDivider()
-        onSubscriptionHistory?.let { openHistory ->
+        onLongTermReview?.let { openReview ->
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedButton(openHistory, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-subscription-history")) {
-                    Text("已停止订阅", style = MaterialTheme.typography.bodyLarge)
+                OutlinedButton(openReview, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-long-term")) {
+                    Text("长期复盘", style = MaterialTheme.typography.bodyLarge)
                 }
-                Text("查看原服务、真实付款和状态历史，可从原身份重新开通。", style = MaterialTheme.typography.bodyMedium,
+                Text("当前和历史一起看：陪伴时间、日均成本与订阅折算付费时长。", style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
-        for (label in listOf("长期复盘", "历史档案", "成本趋势", "类别分析", "年度回顾")) {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (label == "历史档案" && onProjectHistory != null) {
-                    OutlinedButton(onProjectHistory, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-project-history")) {
-                        Text(label, style = MaterialTheme.typography.bodyLarge)
-                    }
-                    Text("查看已结束的长期项目与真实金额记录", style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant)
-                } else {
-                    Text(label, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.semantics { heading() })
-                    Text("尚未开放", style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text("历史档案", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+            Text("仅包含已结束的长期项目和已停止的订阅。暂停、到期但未停止的订阅仍在服务列表。",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            onProjectHistory?.let { openHistory ->
+                OutlinedButton(openHistory, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-project-history")) {
+                    Text("已结束长期项目", style = MaterialTheme.typography.bodyLarge)
+                }
+            }
+            onSubscriptionHistory?.let { openHistory ->
+                OutlinedButton(openHistory, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-subscription-history")) {
+                    Text("已停止订阅", style = MaterialTheme.typography.bodyLarge)
                 }
             }
         }

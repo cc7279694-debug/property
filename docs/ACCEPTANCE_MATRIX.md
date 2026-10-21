@@ -1,6 +1,23 @@
 # 验收登记
 
-当前正式结论：**M14 ACCEPTED / FROZEN — PASS WITH NOTES**，评审`bf621689180b4d5d86e42f8136e4aafb1971c5fa`，依据用户转交的ChatGPT独立复验登记；本次仅文档回写，不是重新测试。M13-T06 NOT_RUN / DEFERRED、G1未整体通过，M10 PENDING / DEFERRED，M12及此前冻结和全部历史NOTES保持，不将Q06整体CLOSED，不授权M15。
+当前执行：**M15 READY_FOR_REVIEW**，来源M14冻结`f3f4f694f6c3a7348cb7b8b64e795a631f394d12`，分支`codex/m15-history-review`。本轮真实执行133 JVM/32 Android PASS，原T01～T06实现与验证完成，等待独立验收，不自授冻结。M14及此前限定冻结/全部历史证据保持；M13-T06延期、G1未整体通过、M10延期，不将Q06整体CLOSED，不进入M16。
+
+## M15执行登记（2026-10-21）
+
+仅本轮实现者实际执行结果，**READY_FOR_REVIEW**，独立验收PENDING。原130案例及历史报告不改。[集中报告](evidence/M15-verification.md)、[唯一方法/产物身份](evidence/m15/results.json)、[原始证据与7图](evidence/m15/README.md)。
+
+| 原案例 | 本轮结果与边界 |
+|---|---|
+| M15-T01 review_includes_still_active | PASS：8年仍ACTIVE项目参与全局陪伴榜，真实Room与页面均验证。 |
+| M15-T02 history_excludes_paused | PASS：原历史过滤仅已结束/STOPPED，PAUSED/EXPIRED/未来停止排除，实际档案与详情。 |
+| M15-T03 types_rank_separately | PASS：项目两种排名/订阅一个折算时长榜，类型分开，不评分。 |
+| M15-T04 current_final_labels | PASS：逐行当前/已结束截至今天；结束后退款写后改变成本，不增持有天数，跨日及返回前台刷新。 |
+| M15-T05 zero_negative_are_honest | PASS：零/负值保留、BigDecimal未展示舍入排序、105条跨50与同值ID无遗漏，不可计算不伪造0。 |
+| M15-T06 subscription_time_label | PASS：年付3650今天生效，标准365、历史平均10、实际1天；暂停currentRate0不替代历史平均。 |
+
+**133 JVM PASS＝29新增＋104受影响回归；32 Android PASS＝Room12＋备份换代1＋Compose5＋真实Nav3旅程2＋相关首页/代作用域/守卫12**，0失败/错误/跳过。最终构建5m10s、Lint0错误9警告、Debug App/Test，RED及环境/编译准备失败保留。两格式v1受控文件往返（Repository与真实UI各一次）验证七表、设置、媒体原字节、旧代拒读及新代重算；不扩称新的SAF验证。
+
+仅API36/x86_64原5672，App/Test UID10216/10217、同既有Debug证书保留数据更新各1，结束仍原实例在线、no_backup为空、设备设置不变。7图均隔离ComponentActivity中的真实LithicApp/Nav3，360dp；后2为LocalDensity 200%。不是MainActivity/系统大字/正式发行验证。API26/真机/OEM/Release、真实午夜、系统IME/TalkBack、长年性能、LMK/断电等NOT_RUN。M10三历史JPEG FAIL/延期、M13-T06/G1及全部历史NOTE保持。停止等待ChatGPT，不进入M16。
 
 ## M14正式冻结登记（2026-10-21）
 

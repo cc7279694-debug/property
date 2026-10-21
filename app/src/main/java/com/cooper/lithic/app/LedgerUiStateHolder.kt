@@ -8,6 +8,7 @@ import com.cooper.lithic.data.repository.ProjectRepository
 import com.cooper.lithic.data.repository.SubscriptionRepository
 import com.cooper.lithic.data.repository.ReportRepository
 import com.cooper.lithic.data.repository.CategoryRepository
+import com.cooper.lithic.data.repository.RankingRepository
 import com.cooper.lithic.data.repository.SearchRepository
 import java.time.Clock
 import java.time.ZoneId
@@ -54,7 +55,8 @@ internal class LedgerUiStateHolder(
                                     subscriptions, overview.subscriptionCount, readError = storage.recoveryWarning,
                                     generationId = generation.id, overview = overview, reportRepository = reports,
                                     categoryRepository = CategoryRepository(generation.database, generation.coordinator),
-                                    searchRepository = SearchRepository(generation.database, generation.coordinator, clock))
+                                    searchRepository = SearchRepository(generation.database, generation.coordinator, clock),
+                                    rankingRepository = RankingRepository(generation.database, generation.coordinator, clock))
                             }
                             mutableState.value = ready
                             checkNotNull(ready.reportRepository).changes.collectLatest { refresh(ready) }

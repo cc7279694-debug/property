@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **M15 — READY_FOR_REVIEW**：从M14冻结`f3f4f694f6c3a7348cb7b8b64e795a631f394d12`实施历史档案与长期复盘。原T01～T06本轮执行PASS；133定向JVM（29新增＋104回归）、32 Android（20本模块＋12相关回归）全部PASS，Lint0错误9警告、Debug App/Test完成，保留7张真实隔离宿主截图。全局同日快照后50条窗口，写后/跨日/恢复刷新、旧代隔离及真实格式v1往返已验证；仅5672原在线API36实例，同签更新App/Test各1，未启动默认账本，设备保持在线。实际结果见[短报告](evidence/M15-verification.md)、[验收登记](ACCEPTANCE_MATRIX.md#m15执行登记2026-10-21)、[checkpoint](checkpoints/2026-10-21-M15.md)。尚待ChatGPT独立验收，不自行冻结。API26/真机/OEM/Release、系统200%/完整IME/TalkBack、真实午夜和长期性能仍NOT_RUN。
+
 - **M14 — ACCEPTED / FROZEN — PASS WITH NOTES**：用户2026-10-21正式转交ChatGPT对`bf621689180b4d5d86e42f8136e4aafb1971c5fa`的独立复验结论，分支`codex/m14-category-search`。M14-T01～T05、原136项JVM PASS、最终29项Android PASS（原28＋独立截图旅程1）及8张隔离截图获限定认可；原Lint0错误9警告保持。仅API36/x86_64合成验证，截图为隔离ComponentActivity中的真实LithicApp/Nav3，360dp/搜索200%是LocalDensity画布；受控文件目标往返不是新SAF验证。真实竞争、系统200%/完整IME与TalkBack、MainActivity发行入口、API26/真机/OEM/Release仍NOT_RUN。全部RED、原始报告、初次NOT_RUN和历史NOTES保留。本轮仅文档冻结登记及证据链接修正，未重跑测试/构建、核验或操作设备；不将独立复验记作新一次产品测试。[正式登记](ACCEPTANCE_MATRIX.md#m14正式冻结登记2026-10-21)、[原补验报告](evidence/M14-Android-verification.md)、[原结果](evidence/m14-android/results.json)、[原checkpoint](checkpoints/2026-10-21-M14-Android.md)。构建日志链接改指向实际原日志的原字节归档，不补造或重跑。
 - **M11-A — ACCEPTED / FROZEN — PASS WITH NOTES（仅备份核心）**：用户本轮明确转交ChatGPT独立验收结论，锁定来源`79771fcf5978a938d240d517dd4dacb1d21021a6`。原报告、113项JVM和5项Android源码、未运行媒体/SAF及临时文件NOTES保持历史原样；不把独立审查登记为重跑测试。
 - **M11 — ACCEPTED / FROZEN — PASS WITH NOTES**：用户本轮转交ChatGPT独立结论，评审`635e33a57c66c286fa5c19f009a5565a1e70b8e2`；仅限冻结M09/schema2、format1完整手动导出、登记JPEG/PNG原字节及真实SAF。149 JVM、16＋1分两Test身份的既有执行证据与全部旧失败/NOT_RUN原样保留，不是本轮重跑。原M11-A核心限定冻结不变。[正式登记](ACCEPTANCE_MATRIX.md#m11正式独立冻结登记2026-10-20)。
@@ -62,9 +64,9 @@ Room v2七表、Migration1→2、Settings/DataStore记录时区、AppContainer�
 
 ## Git
 
-- 当前功能分支`codex/m14-category-search`，复用干净的隔离工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`，来源`2c5e23a7af713f6a96b345bce2a90e613458f270` / `codex/m13-t06-release-readiness`。当前实现与本模块验证单独提交，不覆盖来源分支，不合并main。
+- 当前功能分支`codex/m15-history-review`，工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`，来源M14冻结`f3f4f694f6c3a7348cb7b8b64e795a631f394d12`。保留来源、其它分支和未入Git现场，不合并main。
 - M09冻结、M10正式/未冻结候选、UI-C1及main均不合并或修改；完整原规划和历史证据不改。
 
 ## Next Recommended Task
 
-M14正式冻结登记完成，停止等待用户另行授权；M15未授权，不自动开始。M13-T06 NOT_RUN / DEFERRED、G1未整体通过，M10 PENDING / DEFERRED及三历史JPEG FAIL保持。本次未核验、操作或停止任何模拟器；先前设备结束状态仅为历史，不推定当前在线。真实竞争、新的真实SAF/IME、API26/真机/OEM/Release及M12第一例外层退出码NOT_CAPTURED、Q06与全部历史NOTE保持。
+M15交付后停止，等待ChatGPT独立验收；不进入M16。M13-T06 NOT_RUN / DEFERRED、G1未整体通过，M10 PENDING / DEFERRED及三历史JPEG FAIL、Q06与所有历史NOTES保持。5672原实例保留在线，不自动停止/清理或授权后续设备操作。

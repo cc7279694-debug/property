@@ -1,0 +1,121 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.app.M15ScreenshotsJourneyTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\app\\M15ScreenshotsJourneyTest.kt",
+  "source_sha256": "5511afa277f83158785027b0861dbb50283d444512280badb35ea59e218eba53",
+  "started_at": "2026-10-21T04:07:59.425884+00:00",
+  "expected": [
+    "mixed_rank_navigation_write_and_day_refresh_with_360dp_font200",
+    "restored_generation_replaces_open_review_and_rejects_old_reader"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 12820847,
+      "sha256": "12e48456bcb6be51c1f47ea71776fa03e4fbd9f99185c8aa2285ff3199f35d57",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2814944,
+      "sha256": "fc1774b8b0e113d9191699c12559d08b3c2cf8a6c69044f7cd5cc2d4e5dc677f",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 50.672,
+  "completed": [
+    "restored_generation_replaces_open_review_and_rejects_old_reader",
+    "mixed_rank_navigation_write_and_day_refresh_with_360dp_font200"
+  ],
+  "bad": [],
+  "stdout_bytes": 3285,
+  "stdout_sha256": "bc11e6c64827e724a6a7c34be881a718983c668523b3526b69a428aa50a47ccb",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.app.M15ScreenshotsJourneyTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "2",
+      "stream": "",
+      "test": "restored_generation_replaces_open_review_and_rejects_old_reader",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.app.M15ScreenshotsJourneyTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "2",
+      "stream": ".",
+      "test": "restored_generation_replaces_open_review_and_rejects_old_reader",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.app.M15ScreenshotsJourneyTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "2",
+      "stream": "",
+      "test": "mixed_rank_navigation_write_and_day_refresh_with_360dp_font200",
+      "status_code": 1
+    },
+    {
+      "M15_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m15-evidence/01-project-mixed-companionship-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "status_code": 2
+    },
+    {
+      "M15_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m15-evidence/02-project-negative-final-cost-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "status_code": 2
+    },
+    {
+      "M15_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m15-evidence/03-subscription-standard-time-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "status_code": 2
+    },
+    {
+      "M15_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m15-evidence/04-history-entry-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "status_code": 2
+    },
+    {
+      "M15_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m15-evidence/05-project-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "status_code": 2
+    },
+    {
+      "M15_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m15-evidence/06-stopped-subscription-history-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "status_code": 2
+    },
+    {
+      "M15_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m15-evidence/07-review-360dp-font200-header-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "status_code": 2
+    },
+    {
+      "M15_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m15-evidence/08-review-360dp-font200-subscription-b4843fd5-2e83-4d15-8242-61c8936e2b96.png",
+      "status_code": 2
+    },
+    {
+      "class": "com.cooper.lithic.app.M15ScreenshotsJourneyTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "2",
+      "stream": ".",
+      "test": "mixed_rank_navigation_write_and_day_refresh_with_360dp_font200",
+      "status_code": 0
+    }
+  ]
+}

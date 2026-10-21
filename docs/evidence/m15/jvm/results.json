@@ -1,0 +1,673 @@
+{
+  "uniqueMethods": 133,
+  "PASS": 133,
+  "FAIL": 0,
+  "SKIPPED": 0,
+  "methods": [
+    {
+      "class": "com.cooper.lithic.app.BusinessDateObserverTest",
+      "method": "scheduling_uses_record_zone_midnight_and_caps_clock_change_detection",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.BusinessDateObserverTest",
+      "method": "scheduling_handles_dst_without_changing_business_zone",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.BusinessDateObserverTest",
+      "method": "resume_after_background_rechecks_before_first_wait",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.BusinessDateObserverTest",
+      "method": "foreground_midnight_refreshes_once_and_same_day_does_not_repeat",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M14NavigationPolicyTest",
+      "method": "category_pending_write_blocks_both_existing_editors",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M14NavigationPolicyTest",
+      "method": "category_management_belongs_to_settings",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M14NavigationPolicyTest",
+      "method": "existing_write_guards_keep_pending_above_discard",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M14NavigationPolicyTest",
+      "method": "incomplete_or_unexpected_stacks_are_rejected",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M14NavigationPolicyTest",
+      "method": "search_is_a_secondary_route_without_an_extra_tab",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M15NavigationPolicyTest",
+      "method": "existing_history_parent_stays_unchanged",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M15NavigationPolicyTest",
+      "method": "valid_review_stack_restores_and_unknown_route_identity_fails_closed",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M15NavigationPolicyTest",
+      "method": "project_review_detail_and_edit_keep_exact_origin",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M15NavigationPolicyTest",
+      "method": "long_term_review_retains_review_tab_and_explicit_back_path",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M15NavigationPolicyTest",
+      "method": "subscription_review_detail_and_renewal_keep_exact_origin",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "large_aggregate_is_exact_and_never_uses_scientific_notation",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "exact_one_cent_and_larger_daily_rates_use_normal_rounding",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "real_zero_has_two_decimal_places",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "ordinary_amount_rounds_half_up_with_both_signs",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "missing_amount_is_not_a_zero_amount",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "every_nonzero_daily_rate_below_one_cent_remains_explicitly_nonzero",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "high_precision_value_is_only_formatted_without_changing_numeric_input",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "ordinary_half_cent_is_rounded_and_not_a_daily_rate_boundary",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.time.BusinessClockTest",
+      "method": "recorded_zone_uses_its_own_calendar_day",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.time.BusinessClockTest",
+      "method": "fixed_business_date_drives_project_evaluation",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.GenerationRetirementTest",
+      "method": "failed_precommit_verification_keeps_original_coordinator_readable",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.GenerationRetirementTest",
+      "method": "retirement_waits_for_inflight_write_then_rejects_queued_old_work",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.GenerationRetirementTest",
+      "method": "close_failure_still_fences_all_old_writes",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "dated_event_does_not_rewrite_earlier_days",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "negative_cost_is_not_clamped",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "rejects_gross_outlay_overflow",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "rejects_end_date_before_start",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "q02_v01_ended_snapshot_uses_historical_observation_day",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "post_end_installment_does_not_restart_or_extend_project",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "end_day_removes_current_contribution",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "date_span_is_not_narrowed_to_int_or_rounded_to_zero",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "rejects_recovery_overflow",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "refund_is_separate_from_the_original_outlay",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "leap_day_is_a_real_natural_day",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "same_day_is_one_day",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "empty_event_list_is_valid_zero_cost",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "aggregate_can_exceed_single_event_limit",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "post_end_refund_keeps_duration",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "prepaid_money_before_start_has_no_effective_daily_rate",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "q02_v02_refund_changes_only_its_occurrence_day_and_after",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "zero_cost_is_effective_and_contributes_while_active",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "installments_count_only_after_their_real_payment_day",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "method": "unordered_same_day_events_are_all_counted_once",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "categories_without_records_are_kept_without_faking_records",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "payment_unknown_on_observation_day_has_no_current_contribution",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "prepaid_future_subscription_does_not_replace_current_price_before_boundary",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "home_uses_same_engines_for_project_and_current_subscription",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "missing_category_relationship_is_rejected_for_each_record_type",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "duplicate_identity_is_rejected_within_each_record_type",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "combine_preserves_exact_rates_merges_categories_and_adds_all_counts",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "duplicate_category_id_is_rejected_even_when_name_or_kind_differs",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "malformed_frozen_subscription_snapshot_is_propagated_without_partial_total",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "positive_and_negative_rates_can_cancel_to_real_zero_without_hiding_records",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "negative_and_tiny_nonzero_project_rates_are_not_clamped_or_display_rounded",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "no_zero_confused_with_empty",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "no_records_preserves_observation_date_and_is_empty",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "category_sum_matches_type_without_intermediate_decimal128_rounding",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "project_end_day_and_post_end_settlement_never_reenter_current_total",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "blank_identity_category_relationship_and_category_name_are_rejected",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "inactive_only_records_are_not_empty_and_category_rows_remain",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "active_only_aggregate_keeps_all_record_counts_and_zero_categories",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "records_in_different_types_may_share_the_same_identity",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "categories_sort_by_name_then_id_independent_of_input_order",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "combine_rejects_different_dates_conflicting_names_and_count_overflow",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "subscription_wrapper_identity_must_match_its_frozen_snapshot",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "method": "category_of_wrong_type_is_rejected_for_each_record_type",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "equal_values_use_stable_id_tiebreak_in_every_order",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "subscription_inactive_states_preserve_purchased_duration_and_historical_average",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "types_rank_separately",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "global_order_is_computed_before_fifty_item_display_windows",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "current_final_labels",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "not_started_projects_are_explicitly_ineligible_and_follow_valid_zero_in_both_orders",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "zero_negative_are_honest",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "review_includes_still_active",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "subscription_time_label",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "no_confirmed_subscription_payments_remain_distinct_from_zero_average",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "daily_rate_order_preserves_unrounded_engine_precision",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "future_prepaid_duration_counts_without_early_current_price_change",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "ended_settlement_changes_cost_without_extending_time_or_reactivating",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "method": "ranking_is_pure_and_empty_inputs_remain_empty",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "leap_year_natural_366_is_distinct_from_standard_365",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "only_three_fixed_cycles_exist",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "future_pause_and_stop_do_not_change_the_past",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "resume_after_expiry_does_not_create_payment",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "leap_day_start_reaches_365_on_february_27",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "expired_has_zero_current_rate",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "coverage_at_max_date_expires_without_plus_days_overflow",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "unordered_records_produce_identical_history",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "prepaid_future_without_current_coverage_is_expired",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "quarterly_standard_rate",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "later_real_payment_is_legal_input_but_unknown_to_earlier_observation",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "observation_before_all_facts_has_no_cost_or_elapsed_days",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "annual_purchase_not_elapsed_year",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "annual_pause_excludes_ten_days_and_next_real_period_reaches_365",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "monthly_standard_rate",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "zero_amount_is_not_a_real_renewal",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "prepaid_next_rate_does_not_start_early",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "even_identical_same_day_states_require_correction",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "duplicate_same_day_states_are_rejected_in_both_orders",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "coverage_gap_is_not_counted_or_active",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "interval_days_use_long_and_do_not_enumerate_dates",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "empty_history_has_explicit_no_record_reason",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "nested_and_duplicate_coverage_are_rejected",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "default_stop_uses_paid_end_and_preserves_preboundary_service",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "stored_standard_days_must_match_fixed_cycle",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "paused_without_coverage_remains_paused",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "fractional_rate_keeps_decimal128_precision_and_nonzero_value",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "prepaid_cycle_change_starts_at_its_effective_boundary",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "overlaps_rejected",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "writing_rejects_future_payment_using_business_today",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "reversed_coverage_is_rejected",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "reminder_boundary_does_not_extend_paid_coverage",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "empty_coverage_is_rejected",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "interval_start_state_boundary_counts_enabled_date_only_once",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "pause_does_not_erase_paid_history",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "payment_today_and_future_service_are_valid",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "method": "explicit_early_stop_excludes_its_first_stopped_day",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.ReviewControllerTest",
+      "method": "switching_view_fences_a_late_previous_view_and_resets_the_window",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.ReviewControllerTest",
+      "method": "initial_read_distinguishes_a_real_empty_snapshot_from_an_unread_screen",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.ReviewControllerTest",
+      "method": "load_more_and_refresh_replace_the_entire_loaded_window",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.ReviewControllerTest",
+      "method": "read_failure_preserves_the_previous_snapshot_and_an_explicit_error",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.ReviewControllerTest",
+      "method": "invalidation_recomputes_a_same_view_instead_of_appending_stale_rows",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.ReviewControllerTest",
+      "method": "a_late_same_view_read_cannot_replace_a_new_business_day",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionReviewOriginTest",
+      "method": "current_and_history_navigation_still_follow_the_real_state",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionReviewOriginTest",
+      "method": "unknown_and_malformed_origins_are_rejected",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionReviewOriginTest",
+      "method": "review_origin_survives_current_and_stopped_commits",
+      "result": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionReviewOriginTest",
+      "method": "review_origin_can_open_existing_state_and_correction_forms",
+      "result": "PASS"
+    }
+  ]
+}

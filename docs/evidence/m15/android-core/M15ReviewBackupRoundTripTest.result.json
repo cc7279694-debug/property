@@ -1,0 +1,69 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M15ReviewBackupRoundTripTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\M15ReviewBackupRoundTripTest.kt",
+  "source_sha256": "69487223c5b004d2f75796ffedb0e89aa0a65ee130c08efa3b16ba9b86e1de9e",
+  "started_at": "2026-10-21T04:07:31.011519+00:00",
+  "expected": [
+    "restored_generation_recomputes_both_types_and_rejects_retired_review_reads"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 12820847,
+      "sha256": "12e48456bcb6be51c1f47ea71776fa03e4fbd9f99185c8aa2285ff3199f35d57",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2814944,
+      "sha256": "fc1774b8b0e113d9191699c12559d08b3c2cf8a6c69044f7cd5cc2d4e5dc677f",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 3.453,
+  "completed": [
+    "restored_generation_recomputes_both_types_and_rejects_retired_review_reads"
+  ],
+  "bad": [],
+  "stdout_bytes": 911,
+  "stdout_sha256": "7b7f04a7dcb0625bf59a65339d98a0afdc00cff0d432cd1e1a4d1711133f85da",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.data.backup.M15ReviewBackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": "",
+      "test": "restored_generation_recomputes_both_types_and_rejects_retired_review_reads",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M15ReviewBackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": ".",
+      "test": "restored_generation_recomputes_both_types_and_rejects_retired_review_reads",
+      "status_code": 0
+    }
+  ]
+}

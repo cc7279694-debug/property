@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "settings get system font_scale; wm density; wm size; settings get system user_rotation; settings get system accelerometer_rotation"
+  ],
+  "exit": 0,
+  "bytes": 60,
+  "sha256": "1dd48f4ade8624b4e2c327a036ab7859119158078f8ccfafa4a35c625d2707be"
+}

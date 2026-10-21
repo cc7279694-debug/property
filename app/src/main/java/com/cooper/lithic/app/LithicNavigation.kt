@@ -70,6 +70,8 @@ import com.cooper.lithic.feature.subscription.SubscriptionStateDialog
 import com.cooper.lithic.feature.subscription.SubscriptionUiState
 import com.cooper.lithic.feature.subscription.SubscriptionStateEditorKind
 import com.cooper.lithic.data.repository.SubscriptionStateAction
+import com.cooper.lithic.feature.review.LongTermReviewScreen
+import com.cooper.lithic.feature.review.ReviewViewModel
 import com.cooper.lithic.feature.review.ReviewShell
 import com.cooper.lithic.feature.settings.SettingsShell
 import com.cooper.lithic.feature.settings.BackupExportUiState
@@ -134,6 +136,16 @@ internal fun LithicNavigation(
     val searchState = searchModel?.state?.collectAsStateWithLifecycle()?.value
     val backStack = key(session) { rememberNavBackStack(Home) }
     val routes = normalizeBackStack(backStack.toList())
+    // Avoid full-ledger ranking until the user first opens review. The generation scope owns
+    // the model; owner replacement clears it before any old result can be presented.
+    val reviewModel = if (LongTermReview in routes) state.rankingRepository?.let { repository ->
+        remember(generationScope, session, repository) {
+            ViewModelProvider(generationScope, viewModelFactory {
+                initializer { ReviewViewModel(repository) }
+            })[ReviewViewModel::class.java]
+        }
+    } else null
+    val reviewState = reviewModel?.state?.collectAsStateWithLifecycle()?.value
     var pendingLeave by remember(session) { mutableStateOf<List<NavKey>?>(null) }
     var pendingWarning by remember(session) { mutableStateOf(false) }
     fun navigate(target: List<NavKey>) {
@@ -153,6 +165,7 @@ internal fun LithicNavigation(
         when (val route = routes.last()) {
             CategoryManagement -> categoryModel?.refresh()
             NameSearch -> searchModel?.refresh()
+            LongTermReview -> reviewModel?.refresh()
             ProjectList -> model.loadList()
             ProjectHistory -> model.loadHistory()
             CreateProject -> model.startCreate()
@@ -201,7 +214,11 @@ internal fun LithicNavigation(
         projects.deletedProjectId?.let {
             val guard = globalLeaveDecision(subscriptionLeave, categoryLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
-            val target = canonicalBackStack(if (projectOrigin(routes.last()) == ProjectOrigin.HISTORY) ProjectHistory else ProjectList)
+            val target = canonicalBackStack(when (projectOrigin(routes.last())) {
+                ProjectOrigin.CURRENT -> ProjectList
+                ProjectOrigin.HISTORY -> ProjectHistory
+                ProjectOrigin.REVIEW -> LongTermReview
+            })
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             model.consumeDeleted()
@@ -223,19 +240,20 @@ internal fun LithicNavigation(
         BusinessDateObserver(state.overview?.asOf ?: state.businessClock.today())
     }
     val latestRetry by androidx.compose.runtime.rememberUpdatedState(onRetryLedger)
-    LaunchedEffect(lifecycle, dateObserver, state.recordZone) {
+    LaunchedEffect(lifecycle, dateObserver, state.recordZone, reviewModel) {
         lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
             dateObserver.observe(state.businessClock, state.recordZone, {
                 model.refresh()
                 subscriptionModel.refresh()
                 searchModel?.refresh()
+                reviewModel?.refresh()
                 latestRetry()
             })
         }
     }
-    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel) {
+    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel, reviewModel) {
         val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) {
-            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); latestRetry()
+            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); reviewModel?.refresh(); latestRetry()
         } }
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
@@ -270,7 +288,14 @@ internal fun LithicNavigation(
                         subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }, overview = state.overview,
                         onSearch = if (searchModel != null) ({ requestLeave(canonicalBackStack(NameSearch)) }) else null) }
                     entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
-                        onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) }) }
+                        onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) },
+                        onLongTermReview = if (state.rankingRepository != null) ({ requestLeave(canonicalBackStack(LongTermReview)) }) else null) }
+                    entry<LongTermReview> {
+                        if (reviewModel != null && reviewState != null) LongTermReviewScreen(reviewState, onBack,
+                            reviewModel::changeRanking, reviewModel::refresh, reviewModel::loadMore,
+                            onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it, ProjectOrigin.REVIEW))) },
+                            onOpenSubscription = { requestLeave(canonicalBackStack(SubscriptionDetail(it, SubscriptionOrigin.REVIEW))) })
+                    }
                     entry<Settings> { SettingsShell(state.recordZone, backupState = backupState,
                         onExportBackup = onExportBackup, onCancelBackup = onCancelBackup,
                         restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
@@ -304,7 +329,11 @@ internal fun LithicNavigation(
                             onUpdateEnd = { requestLeave(canonicalBackStack(ProjectUpdateEnd(route.id, route.origin))) },
                             onCorrectMoney = { requestLeave(canonicalBackStack(ProjectMoneyCorrection(route.id, it, route.origin))) },
                             onDelete = { requestLeave(canonicalBackStack(ProjectDelete(route.id, route.origin))) },
-                            backLabel = if (route.origin == ProjectOrigin.HISTORY) "返回历史档案" else "返回项目列表")
+                            backLabel = when (route.origin) {
+                                ProjectOrigin.CURRENT -> "返回项目列表"
+                                ProjectOrigin.HISTORY -> "返回历史档案"
+                                ProjectOrigin.REVIEW -> "返回长期复盘"
+                            })
                     }
                     entry<CreateProject> {
                         projects.editor?.let { editor -> ProjectEditorScreen(editor, onBack, model::changeName, model::changeStartedOn, model::changeInitialAmount,
@@ -360,7 +389,11 @@ internal fun LithicNavigation(
                             onCancelStop = { requestLeave(canonicalBackStack(CancelSubscriptionStop(route.id, it, route.origin))) },
                             onCorrectRenewal = { requestLeave(canonicalBackStack(CorrectSubscriptionRenewal(route.id, it, route.origin))) },
                             onDeleteRenewal = { requestLeave(canonicalBackStack(DeleteSubscriptionRenewal(route.id, it, route.origin))) },
-                            backLabel = if (route.origin == SubscriptionOrigin.HISTORY) "返回已停止订阅" else "返回订阅列表")
+                            backLabel = when (route.origin) {
+                                SubscriptionOrigin.CURRENT -> "返回订阅列表"
+                                SubscriptionOrigin.HISTORY -> "返回已停止订阅"
+                                SubscriptionOrigin.REVIEW -> "返回长期复盘"
+                            })
                     }
                     entry<ConfirmSubscriptionRenewal> {
                         subscriptions.editor?.let { editor -> RenewalEditorScreen(editor, onBack, subscriptionModel::changeAmount, subscriptionModel::changeCycle,

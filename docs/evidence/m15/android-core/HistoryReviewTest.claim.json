@@ -1,0 +1,42 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.review.HistoryReviewTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\review\\HistoryReviewTest.kt",
+  "source_sha256": "1a64240c1bcbc04218848595aba9489630e2dc3a99f6d3412ed48933a49f70ab",
+  "started_at": "2026-10-21T04:07:34.482547+00:00",
+  "expected": [
+    "current_final_labels_and_zero_negative_results_open_the_exact_project",
+    "subscription_time_label_is_standard_not_elapsed_and_average_uses_real_payments",
+    "unread_failure_empty_and_unavailable_are_distinct_without_fake_zero",
+    "narrow_200percent_test_host_keeps_switches_back_and_rows_reachable",
+    "review_shell_separates_cross_status_review_and_two_exact_archives"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 12820847,
+      "sha256": "12e48456bcb6be51c1f47ea71776fa03e4fbd9f99185c8aa2285ff3199f35d57",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2814944,
+      "sha256": "fc1774b8b0e113d9191699c12559d08b3c2cf8a6c69044f7cd5cc2d4e5dc677f",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ]
+}
