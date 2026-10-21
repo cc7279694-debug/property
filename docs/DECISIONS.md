@@ -1,5 +1,19 @@
 # 决策记录
 
+## 2026-10-21 — M18独立限定冻结与后续授权边界
+
+### Decision
+
+依据用户正式转交的ChatGPT独立源码、Android原始执行及截图复验，对`codex/m18-total-cost-history`评审提交`87211c8a3ed8982cdf7f46080afce10aeda4dda7`登记 **M18 — ACCEPTED / FROZEN — PASS WITH NOTES**。M18-T01～T05、此前174 JVM PASS、17 Android PASS、Lint0错误23警告及10张隔离截图获限定认可，见[正式登记](ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21)。
+
+### Context / Alternatives / Reason
+
+原候选报告、原始结果、截图及checkpoint保留交付时的事实与状态；新增独立结论更新当前效力，不覆盖首次14 PASS/3 FAIL、启动外层回执NOT_CAPTURED或任何历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES。此轮仅文档回写，不重跑测试、构建、核验APK或操作设备，不把审查结论当作新一次运行。
+
+### Consequences
+
+冻结只读总成本历史、同快照汇总与刷新、三线共轴/精确日期/事件访问；Room3、backup2、冻结引擎、M16保护及恢复/媒体协议保持。仅API36/x86_64合成、隔离ComponentActivity；LocalDensity、注入时钟、受控文件往返的验证边界保留，真实设备/系统大字/TalkBack/故障及长期性能等未运行项不升级。Q02仅本轮已验证部分认可，16组完整跨模块门禁不关闭。M10 PENDING / DEFERRED及三历史JPEG FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过保持。只提交推送当前分支的必要登记文档后停止，M19未授权，不合并main或清理设备现场。
+
 ## 2026-10-21 — M18 Android补验的身份与历史边界
 
 用户追加授权新建唯一隔离API36，在`6dfc4a6`候选补齐17 Android与截图。最终17 PASS/10图；首次14 PASS/3 FAIL及原离线NOT_RUN证据保持。修正仅测试精确语义定位和实际Repository合成截图事实，未改生产代码或冻结算法。最终App SHA不变、Test身份独立更新，所有最终结果在同一Test字节下取得；原174 JVM/0错误23警告不重复计执行。

@@ -1,4 +1,4 @@
-<!-- M18 Android补验已完成：READY_FOR_REVIEW，17 Android PASS/10图；等待独立复验，不授权M19。 -->
+<!-- M18已独立限定冻结：ACCEPTED / FROZEN — PASS WITH NOTES；仅文档登记，不授权M19或设备操作。 -->
 # 砺石 LITHIC 协作规范
 
 ## 1. 范围与优先级
@@ -7,7 +7,7 @@
 
 继承用户提供的高级全栈协作原则：简单、稳定、快速、可维护、可扩展；正确性和数据安全优先；读取事实后再行动；每次只执行已授权模块。
 
-**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用React/Capacitor默认建议。M00～M09已冻结，M11-A由用户转交ChatGPT独立结论ACCEPTED/FROZEN—PASS WITH NOTES（仅备份核心，来源79771fcf5978a938d240d517dd4dacb1d21021a6）。M11现由用户转交ChatGPT独立结论ACCEPTED / FROZEN — PASS WITH NOTES，评审635e33a57c66c286fa5c19f009a5565a1e70b8e2。M12已由用户转交独立验收冻结（评审e34187632468c9c3aaf7bb5d04d30a26320a18b0）。M14已由用户转交ChatGPT独立验收冻结PASS WITH NOTES；M15已由用户转交ChatGPT独立结论ACCEPTED / FROZEN — PASS WITH NOTES（评审`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`），M16已由用户转交ChatGPT独立代码及证据结论ACCEPTED / FROZEN — PASS WITH NOTES（评审`d8ce0a8d602c2e9e544662e4b5bf202df5812aef`），冻结替换链/以旧换新及Room schema3/backup format2；[M16契约](docs/planning/M16_CONTRACT.md)保留冻结实施来源；[M17单项目图表](docs/planning/M17_CONTRACT.md)已由用户转交ChatGPT独立结论ACCEPTED / FROZEN — PASS WITH NOTES（评审`54360aa0e61779c7efa62b527f8901778a0845a2`），当前M18用户已明确授权；[M15契约](docs/planning/M15_CONTRACT.md)保留原交付来源，不构成再次开发或设备授权；M13-T01～T05独立PASS WITH NOTES，T06 NOT_RUN / DEFERRED、G1未整体通过，用户明确允许此前提下继续，不登记完整M13冻结，不合并M10 Worker/Stage V2/JNI或独立UI-C1页面。M10 PENDING / DEFERRED，历史FAIL/UNKNOWN/NOT_RUN/NOTES和设备现场保持。
+**本项目专属规划采用原生 Kotlin + Jetpack Compose + Room + DataStore。**它覆盖通用React/Capacitor默认建议。M00～M09已冻结，M11-A由用户转交ChatGPT独立结论ACCEPTED/FROZEN—PASS WITH NOTES（仅备份核心，来源79771fcf5978a938d240d517dd4dacb1d21021a6）。M11现由用户转交ChatGPT独立结论ACCEPTED / FROZEN — PASS WITH NOTES，评审635e33a57c66c286fa5c19f009a5565a1e70b8e2。M12已由用户转交独立验收冻结（评审e34187632468c9c3aaf7bb5d04d30a26320a18b0）。M14已由用户转交ChatGPT独立验收冻结PASS WITH NOTES；M15已由用户转交ChatGPT独立结论ACCEPTED / FROZEN — PASS WITH NOTES（评审`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`），M16已由用户转交ChatGPT独立代码及证据结论ACCEPTED / FROZEN — PASS WITH NOTES（评审`d8ce0a8d602c2e9e544662e4b5bf202df5812aef`），冻结替换链/以旧换新及Room schema3/backup format2；[M16契约](docs/planning/M16_CONTRACT.md)保留冻结实施来源；[M17单项目图表](docs/planning/M17_CONTRACT.md)已由用户转交ChatGPT独立结论ACCEPTED / FROZEN — PASS WITH NOTES（评审`54360aa0e61779c7efa62b527f8901778a0845a2`），M18已由用户转交ChatGPT独立源码、Android原始执行及截图复验结论ACCEPTED / FROZEN — PASS WITH NOTES（评审`87211c8a3ed8982cdf7f46080afce10aeda4dda7`）；[M15契约](docs/planning/M15_CONTRACT.md)保留原交付来源，不构成再次开发或设备授权；M13-T01～T05独立PASS WITH NOTES，T06 NOT_RUN / DEFERRED、G1未整体通过，用户明确允许此前提下继续，不登记完整M13冻结，不合并M10 Worker/Stage V2/JNI或独立UI-C1页面。M10 PENDING / DEFERRED，历史FAIL/UNKNOWN/NOT_RUN/NOTES和设备现场保持。
 
 事实源顺序：当前用户要求 → 本文件 → PROJECT.md → 实际代码/schema/Git → CURRENT_STATE.md → DECISIONS.md → ARCHITECTURE.md → ROADMAP.md → README → 聊天/模型经验。完整原始规划是产品与模块验收来源；规格矛盾进入问题清单，不能用低优先级摘要改掉产品规则。
 
@@ -63,7 +63,7 @@ Bug 按复现 → 定位 → 理解 → 假设 → 修复 → 验证 → 回归�
 
 遇到阻塞规格矛盾只记录问题与建议，等待确认；高风险删除、真实数据修改、不可逆迁移、生产发布、force push 等必须暂停。
 
-M17保持ACCEPTED / FROZEN — PASS WITH NOTES及原证据。本轮用户M18补验授权从评审`6dfc4a6c79918d7e6f2e7c40d8b1c9fc2b5943c1`新建唯一隔离API36 `Lithic_M18_API36_20261021 / emulator-5692`，最终17 Android PASS、10图；仅两份androidTest定位/合成截图修正和测试APK构建，生产App字节不变，原174 JVM/Lint0/23不重跑，首次14/3保留。见[补验报告](docs/evidence/M18-Android-verification.md)。旧5672/5686/H2/C2/M10及其他设备操作0，新5692结束保持在线；不构成后续操作授权。现为READY_FOR_REVIEW，待ChatGPT独立复验，不自行冻结/进入M19。Room3/backup2/冻结引擎/M16保护/恢复及媒体协议不改。plain Application/隔离ComponentActivity、LocalDensity200%、注入时钟、受控文件往返不扩大为MainActivity、系统字号/TalkBack/真机/真午夜/新SAF。Q02完整跨模块与全部历史NOTES/UNKNOWN/NOT_RUN保持。下方M11/M12为继承安全约束和历史说明。
+M17及此前冻结结论保持。M18已由用户正式转交ChatGPT独立复验结论 **ACCEPTED / FROZEN — PASS WITH NOTES**，评审`87211c8a3ed8982cdf7f46080afce10aeda4dda7`；按[正式登记](docs/ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21)限定认可T01～T05、此前174 JVM PASS、17 Android PASS、Lint0错误23警告及10张隔离截图。首次14 PASS/3 FAIL、启动外层回执NOT_CAPTURED、原报告/结果/checkpoint与所有历史NOTES/UNKNOWN/NOT_RUN保持。冻结只读总成本历史/汇总刷新/精确选日事件，不改Room3/backup2/冻结引擎/M16保护/恢复及媒体协议。API36/x86_64合成、plain Application/隔离ComponentActivity、LocalDensity200%、注入跨日、受控文件往返不扩大为MainActivity、系统字号/TalkBack、真机、真实午夜或新SAF/故障恢复。Q02仅已验证模块部分认可，16组完整跨模块门禁不关闭。本轮只登记文档，未重跑测试/构建/核验APK或操作设备，不把原设备结束在线当本轮新观察，不授权任何现场清理。登记后停止，M19未授权；下方M11/M12为继承安全约束和历史说明。
 
 M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字节，缺失/损坏/身份或完整性不明拒绝完整成功。空媒体合法。完整归档先在私有目录校验，再写本次系统保存位置，关闭并读回校验后才报告成功；取消和失败明确反馈。只用合成验证，不修改Room schema、冻结业务算法/M09语义、备份格式编号，恢复/代切换现按用户明确M12授权与[M12契约](docs/planning/M12_CONTRACT.md)实施；不做CSV/云/自动备份/密码，不进入下一模块。设备实验只允许经确认的全新隔离环境；H2/C2/M10保留现场绝对禁止操作。原规划/案例和全部历史NOTES不改；实现/编译通过不等于Android或正式M11冻结。已登记JPEG/PNG备份核验原字节长度/SHA、容器和实际尺寸，不以缺少M10深度解码为由拒绝所有JPEG；Android可读性不冒称严格熵验证。合法标准PNG编码不再人为收窄。未知或不匹配仍拒绝整份导出。
 
@@ -72,7 +72,7 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 - 独立模块用独立功能分支，保留用户未提交内容。禁止在 main/master 直接开发。
 - 提交前查差异、实际验证、无关改动、敏感信息与临时文件；Conventional Commits；只推当前功能分支。
 - 未经明确授权不得合并 main、自动合并 PR、force push、重置/删除远程历史、部署或发布。
-- 本次补验来源`6dfc4a6c79918d7e6f2e7c40d8b1c9fc2b5943c1`；只提交/推送`codex/m18-total-cost-history`必要测试修正/证据/当前登记。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过和全部历史NOTES保持；原保护设备不访问。独立复验前停止；稳定签名、真实录入、发布、M19与main合并未授权。
+- 本次M18冻结登记评审来源`87211c8a3ed8982cdf7f46080afce10aeda4dda7`；仅提交/推送`codex/m18-total-cost-history`必要登记文档。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过、Q02完整16组与全部历史NOTES保持；不改产品/测试、不构建、不操作或清理任何设备，不合并main或启动M19。
 - 实现者只可报 READY_FOR_REVIEW；ACCEPTED / FROZEN 需要独立验收结果，不能自己授予。
 - 每个模块结束同步当前状态、适用决策与验收证据，输出模块报告并立即停止。
 

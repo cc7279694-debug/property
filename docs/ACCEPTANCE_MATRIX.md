@@ -1,8 +1,26 @@
 # 验收登记
 
-当前交付：**M18 — READY_FOR_REVIEW（Android补验完成，等待独立复验）**。原174 JVM PASS保留，本轮未重跑；最终17 Android PASS、0 FAIL/忽略/NOT_RUN，10张隔离截图；仅测试APK定向重建，生产App不变。不是独立ACCEPTED/FROZEN。
+当前状态：**M18 — ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户正式转交的ChatGPT独立复验，评审`87211c8a3ed8982cdf7f46080afce10aeda4dda7`；限定认可M18-T01～T05、此前174 JVM PASS、本次补验17 Android PASS、Lint0错误23警告及10张隔离截图。历史执行和延期门禁保持，不扩大为正式发行或其他模块通过。
 
-## M18 Android补充验收（2026-10-21）
+## M18正式冻结登记（2026-10-21）
+
+**M18 — ACCEPTED / FROZEN — PASS WITH NOTES。** 依据用户本轮正式转交的ChatGPT独立源码、Android原始执行及截图复验结论。评审提交`87211c8a3ed8982cdf7f46080afce10aeda4dda7`，评审/回写分支`codex/m18-total-cost-history`；回写前本地/远端HEAD一致且工作区干净。以下为独立认可范围；下方原候选登记、原报告/结果/checkpoint保留当时状态，不回填历史PASS。
+
+| 获独立认可案例 | 限定冻结范围 |
+|---|---|
+| M18-T01 every_point_matches_reference | PASS：复用冻结引擎的逐观察日参照、未展示舍入三项金额及完整事实读取。 |
+| M18-T02 closed_or_expired_removed | PASS：结束日退出/后结算不重进总额，暂停/过期/停止/未来期边界；Q02仅已验证模块部分。 |
+| M18-T03 today_equals_home | PASS：同快照首页一致、真实Room超过50条完整读取、零负值/预付/M16事实，协调器排队写不混合版本。 |
+| M18-T04 sampling_keeps_spikes | PASS：20年完整日级参照及真实绘图、共同日期/金额尺度、正负峰谷、精确日期查询。 |
+| M18-T05 multi_event_day_not_false_causality | PASS：同日完整事件/非现金说明，超过50条继续查看、详情准确返回/导航守卫、浏览前后事实不变。 |
+
+获认可的此前实际证据：**174 JVM PASS（30新增＋144相关回归）＋17 Android PASS（7＋4＋5＋1），Lint0错误23警告，10张隔离截图。** [原JVM及构建报告](evidence/M18-verification.md)、[原174项统计](evidence/m18/results.json)、[Android报告](evidence/M18-Android-verification.md)、[原始instrumentation](evidence/m18-android/android-final/summary.json)、[17项统计](evidence/m18-android/results.json)、[10图与来源](evidence/m18-android/screenshots/README.md)、[原补验checkpoint](checkpoints/2026-10-21-M18-Android.md)。本轮只是文档登记与Git/链接/敏感信息核查，未重跑产品测试、构建、APK核验或设备操作，不将独立复验写成新一次测试PASS。
+
+**NOTES及未执行边界：**首次14 PASS/3 FAIL、外层启动回执NOT_CAPTURED及所有历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES完整保留。补验仅新5692/API36/x86_64合成环境、plain Application/隔离ComponentActivity，非MainActivity/真实账本；360dp/200%是LocalDensity、跨日为注入时钟/前台生命周期、format2为受控文件往返。真机/API26/OEM、Release/稳定签名、系统字号/完整IME/TalkBack、真实午夜、进程终止/LMK/断电、无限历史性能及最坏取消时延仍NOT_RUN。240是基础绘图预算，事实边界额外保留，不宣称总量或计算成本硬上限。此前设备结束在线不等于本次重新观察，不授权操作或清理现场。
+
+Room3/backup2、冻结算法、M16交易保护及恢复/媒体协议保持。Q02仅本轮已验证领域及限定Android部分获认可；**16组完整跨模块门禁仍NOT_RUN，Q02不整体CLOSED**。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过、Q03～Q06和其余历史边界保持。登记后停止，不合并main、不进入M19。
+
+## M18 Android补充执行登记（2026-10-21，独立复验前历史）
 
 来源`6dfc4a6c79918d7e6f2e7c40d8b1c9fc2b5943c1`，新`Lithic_M18_API36_20261021 / emulator-5692`；四类7＋4＋5＋1＝17唯一方法最终全部PASS。首次14 PASS/3 FAIL和原离线证据保持；仅测试描述/卡片后代定位及补充合成截图事实，原断言语义/方法身份保留。详见[补验报告](evidence/M18-Android-verification.md)、[逐方法真实结果](evidence/m18-android/results.json)、[10图/来源](evidence/m18-android/screenshots/README.md)。
 
