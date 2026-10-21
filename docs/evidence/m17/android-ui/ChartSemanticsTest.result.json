@@ -1,0 +1,180 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.ui.ChartSemanticsTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\ui\\ChartSemanticsTest.kt",
+  "source_sha256": "25538a9495bf3d83acdc599816d9246689f44f71b4f0649b51c885d2677d2f91",
+  "started_at": "2026-10-21T07:27:30.315905+00:00",
+  "expected": [
+    "date_input_selects_exact_date_without_drag_and_rejects_future",
+    "same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit",
+    "negative_subcent_result_retains_accessible_value_and_no_rounded_zero",
+    "paused_subscription_keeps_zero_reason_and_future_plan_is_read_only",
+    "read_failure_and_missing_are_not_fake_zero_or_empty_chart",
+    "narrow_double_font_page_keeps_back_date_and_full_events_reachable"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13543801,
+      "sha256": "2f229050d7a1b6ecbb38286a45f66d86a80c0f77c0ec2a6579113a042c0a8ba5",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2923214,
+      "sha256": "3f19485905c9f822157ad1017768337491cbb49b00a0b37cefbf717f298af41a",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "status": "FAIL_OR_UNKNOWN",
+  "exit_code": 0,
+  "seconds": 31.625,
+  "completed": [
+    "read_failure_and_missing_are_not_fake_zero_or_empty_chart",
+    "date_input_selects_exact_date_without_drag_and_rejects_future",
+    "same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit",
+    "negative_subcent_result_retains_accessible_value_and_no_rounded_zero",
+    "narrow_double_font_page_keeps_back_date_and_full_events_reachable"
+  ],
+  "bad": [
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '暂停' (ignoreCase: false))",
+      "stream": "",
+      "test": "paused_subscription_keeps_zero_reason_and_future_plan_is_read_only",
+      "status_code": -2
+    }
+  ],
+  "stdout_bytes": 7507,
+  "stdout_sha256": "24b18dfb81465a7749bf2e24900768f242c687b698a81386f58f932e90c37ec8",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": "",
+      "test": "read_failure_and_missing_are_not_fake_zero_or_empty_chart",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": ".",
+      "test": "read_failure_and_missing_are_not_fake_zero_or_empty_chart",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": "",
+      "test": "date_input_selects_exact_date_without_drag_and_rejects_future",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": ".",
+      "test": "date_input_selects_exact_date_without_drag_and_rejects_future",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": "",
+      "test": "paused_subscription_keeps_zero_reason_and_future_plan_is_read_only",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '暂停' (ignoreCase: false))",
+      "stream": "",
+      "test": "paused_subscription_keeps_zero_reason_and_future_plan_is_read_only",
+      "status_code": -2
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": "",
+      "test": "same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": ".",
+      "test": "same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": "",
+      "test": "negative_subcent_result_retains_accessible_value_and_no_rounded_zero",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": ".",
+      "test": "negative_subcent_result_retains_accessible_value_and_no_rounded_zero",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "6",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": "",
+      "test": "narrow_double_font_page_keeps_back_date_and_full_events_reachable",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.ChartSemanticsTest",
+      "current": "6",
+      "id": "AndroidJUnitRunner",
+      "numtests": "6",
+      "stream": ".",
+      "test": "narrow_double_font_page_keeps_back_date_and_full_events_reachable",
+      "status_code": 0
+    }
+  ]
+}

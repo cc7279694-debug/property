@@ -41,6 +41,12 @@ internal data object CreateProject : NavKey
 internal data class ProjectDetail(val id: String, val origin: ProjectOrigin = ProjectOrigin.CURRENT, val comparisonId: String? = null) : NavKey
 
 @Serializable
+internal data class ProjectCostHistory(val id: String, val origin: ProjectOrigin = ProjectOrigin.CURRENT, val comparisonId: String? = null) : NavKey
+
+@Serializable
+internal data class SubscriptionPriceHistory(val id: String, val origin: SubscriptionOrigin = SubscriptionOrigin.CURRENT) : NavKey
+
+@Serializable
 internal data class ProjectEdit(val id: String, val origin: ProjectOrigin = ProjectOrigin.CURRENT, val comparisonId: String? = null) : NavKey
 
 @Serializable
@@ -125,6 +131,8 @@ internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (desti
     is ProjectDetail -> projectDetailStack(destination.id, destination.origin, destination.comparisonId)
     is ReplacementComparison -> if (StoredValueValidation.isUuid(destination.id)) projectDetailStack(destination.id, destination.origin, null) + destination else listOf(Home)
     is TradeInProject -> editorStack(destination.id, destination.origin, destination, destination.comparisonId)
+    is ProjectCostHistory -> editorStack(destination.id, destination.origin, destination, destination.comparisonId)
+    is SubscriptionPriceHistory -> subscriptionEditorStack(destination.id, destination.origin, destination)
     is ProjectEdit -> editorStack(destination.id, destination.origin, destination, destination.comparisonId)
     is ProjectMoneyEntry -> editorStack(destination.id, destination.origin, destination, destination.comparisonId)
     is ProjectEnd -> editorStack(destination.id, destination.origin, destination, destination.comparisonId)
@@ -137,6 +145,7 @@ internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (desti
 internal fun subscriptionOrigin(destination: NavKey): SubscriptionOrigin = when (destination) {
     SubscriptionHistory -> SubscriptionOrigin.HISTORY
     is SubscriptionDetail -> destination.origin
+    is SubscriptionPriceHistory -> destination.origin
     is ConfirmSubscriptionRenewal -> destination.origin
     is ChangeSubscriptionState -> destination.origin
     is CorrectSubscriptionState -> destination.origin
@@ -157,6 +166,7 @@ private fun subscriptionEditorStack(id: String, origin: SubscriptionOrigin, dest
 
 internal fun projectOrigin(destination: NavKey): ProjectOrigin = when (destination) {
     is ProjectDetail -> destination.origin
+    is ProjectCostHistory -> destination.origin
     is ReplacementComparison -> destination.origin
     is TradeInProject -> destination.origin
     is ProjectEdit -> destination.origin
@@ -189,6 +199,7 @@ private fun editorStack(id: String, origin: ProjectOrigin, destination: NavKey, 
 
 internal fun projectComparisonId(destination: NavKey): String? = when (destination) {
     is ProjectDetail -> destination.comparisonId
+    is ProjectCostHistory -> destination.comparisonId
     is ProjectEdit -> destination.comparisonId
     is ProjectMoneyEntry -> destination.comparisonId
     is ProjectEnd -> destination.comparisonId

@@ -1,0 +1,228 @@
+{
+  "status": "READY_FOR_REVIEW",
+  "baseline": "ca289f12a31ce67882a1254f6dbd71a80cad18dc",
+  "branch": "codex/m17-item-cost-charts",
+  "jvm": {
+    "total": 144,
+    "passed": 144,
+    "new": 33,
+    "regression": 111,
+    "classes": [
+      {
+        "class_name": "com.cooper.lithic.app.BusinessDateObserverTest",
+        "count": 4,
+        "source": "app/src/test/java/com/cooper/lithic/app/BusinessDateObserverTest.kt",
+        "source_sha256": "20a584830237ab4a8e1d297f145e341e7545cbb7c6f529746bd90fb3c530f571",
+        "xml": "jvm-final/TEST-com.cooper.lithic.app.BusinessDateObserverTest.xml",
+        "git_normalized_sha256": "20a584830237ab4a8e1d297f145e341e7545cbb7c6f529746bd90fb3c530f571"
+      },
+      {
+        "class_name": "com.cooper.lithic.app.M16NavigationPolicyTest",
+        "count": 6,
+        "source": "app/src/test/java/com/cooper/lithic/app/M16NavigationPolicyTest.kt",
+        "source_sha256": "be1f91cb0efadee54b12458655c51cbc59fc738efdc8ffa175e6d3d1a6ddb9b1",
+        "xml": "jvm-final/TEST-com.cooper.lithic.app.M16NavigationPolicyTest.xml",
+        "git_normalized_sha256": "be1f91cb0efadee54b12458655c51cbc59fc738efdc8ffa175e6d3d1a6ddb9b1"
+      },
+      {
+        "class_name": "com.cooper.lithic.app.M17NavigationPolicyTest",
+        "count": 4,
+        "source": "app/src/test/java/com/cooper/lithic/app/M17NavigationPolicyTest.kt",
+        "source_sha256": "7e3985eb8fb67c1e4de17e938c9d4fc24d64fa03a494dd3c272526ac5fc87991",
+        "xml": "jvm-final/TEST-com.cooper.lithic.app.M17NavigationPolicyTest.xml",
+        "git_normalized_sha256": "5996caafbc660a441378bb0eea741bf40cd5a53fde9ca1824081afaeea4c1687"
+      },
+      {
+        "class_name": "com.cooper.lithic.core.design.ChartGeometryTest",
+        "count": 7,
+        "source": "app/src/test/java/com/cooper/lithic/core/design/ChartGeometryTest.kt",
+        "source_sha256": "bf52d42dd1597e523543678c6b5a5ca75b267b89f9bbae8101c7713092747a1d",
+        "xml": "jvm-final/TEST-com.cooper.lithic.core.design.ChartGeometryTest.xml",
+        "git_normalized_sha256": "bf52d42dd1597e523543678c6b5a5ca75b267b89f9bbae8101c7713092747a1d"
+      },
+      {
+        "class_name": "com.cooper.lithic.data.repository.TradeInFactsTest",
+        "count": 7,
+        "source": "app/src/test/java/com/cooper/lithic/data/repository/TradeInFactsTest.kt",
+        "source_sha256": "ab44f0f8f71922fad6a37be00960e71a1a09e6967ca4d17aa73f32c8383e065e",
+        "xml": "jvm-final/TEST-com.cooper.lithic.data.repository.TradeInFactsTest.xml",
+        "git_normalized_sha256": "d25698de2bf366566b233efa964f7b4d91aebc0d433b6e34070b835624a3b40f"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "count": 22,
+        "source": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+        "source_sha256": "1c8600d20d9ded785b21c45919443ecf84234ef6313aeacd4d4616fd8210f86b",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml",
+        "git_normalized_sha256": "03215dd55ed2e809a0115a6307efe3a8e6084b9cef91a019a5798bf19fc5b544"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.report.ItemTimelineTest",
+        "count": 22,
+        "source": "app/src/test/java/com/cooper/lithic/domain/report/ItemTimelineTest.kt",
+        "source_sha256": "8b4d31024aa7854e17aa61bfae71c7d745f07c03664eec09e2c0e64535973cc6",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.report.ItemTimelineTest.xml",
+        "git_normalized_sha256": "8b4d31024aa7854e17aa61bfae71c7d745f07c03664eec09e2c0e64535973cc6"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.report.OverviewEngineTest",
+        "count": 23,
+        "source": "app/src/test/java/com/cooper/lithic/domain/report/OverviewEngineTest.kt",
+        "source_sha256": "a3a51e24f62dcc805921ac74fd08dcd364e3cb1fb68a810e11db3bd982616aa9",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.report.OverviewEngineTest.xml",
+        "git_normalized_sha256": "a3a51e24f62dcc805921ac74fd08dcd364e3cb1fb68a810e11db3bd982616aa9"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "count": 6,
+        "source": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+        "source_sha256": "5b4ae21ff851d5ef54ae6751555a64fbad77412f8752f4544c870db20501d868",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest.xml",
+        "git_normalized_sha256": "792b56e431006949645b3c9331537339446d54a512aee2a24b16933da43d1f37"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "count": 37,
+        "source": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+        "source_sha256": "6c0aaab78675ed5053e86d8a493ea6d1b3692cd666f1fdd6da1decb423f3c73b",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml",
+        "git_normalized_sha256": "ebbb8d344f2c21361bcdb0ff7704e963ca8c14d9ba68e8033e8d103fad201e63"
+      },
+      {
+        "class_name": "com.cooper.lithic.feature.project.ReplacementSubmissionGateTest",
+        "count": 6,
+        "source": "app/src/test/java/com/cooper/lithic/feature/project/ReplacementSubmissionGateTest.kt",
+        "source_sha256": "0551dc99f1e7bb0bc1749947e74d51ab035f9afaf7a68ea3fe040aaa8372ca6f",
+        "xml": "jvm-final/TEST-com.cooper.lithic.feature.project.ReplacementSubmissionGateTest.xml",
+        "git_normalized_sha256": "0551dc99f1e7bb0bc1749947e74d51ab035f9afaf7a68ea3fe040aaa8372ca6f"
+      }
+    ]
+  },
+  "android": {
+    "total": 28,
+    "passed": 28,
+    "new": 19,
+    "regression": 9,
+    "classes": [
+      {
+        "class_name": "com.cooper.lithic.data.repository.M17TimelineRepositoryTest",
+        "count": 7,
+        "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/M17TimelineRepositoryTest.kt",
+        "source_sha256": "342d336f703def919c6cdca394d302110e4a1e3884a7cbd2a29f74d10be8fefc",
+        "result": "android-core-capture-final/M17TimelineRepositoryTest.result.json",
+        "methods": [
+          "q02_real_room_history_keeps_observation_day_denominator_and_separate_post_end_settlement",
+          "one_detail_snapshot_does_not_mix_a_queued_money_write_into_old_history",
+          "missing_zero_and_corrupt_data_remain_distinct_instead_of_a_fake_empty_chart",
+          "trade_in_charts_consume_only_each_projects_saved_events_and_keep_non_cash_facts_once",
+          "format_v2_restore_recomputes_both_charts_from_same_facts_and_rejects_retired_generation_reads",
+          "complete_subscription_history_crosses_fifty_payments_and_retains_actual_price_and_state_boundaries",
+          "complete_project_facts_cross_fifty_events_without_querying_each_display_day"
+        ],
+        "git_normalized_sha256": "342d336f703def919c6cdca394d302110e4a1e3884a7cbd2a29f74d10be8fefc"
+      },
+      {
+        "class_name": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+        "count": 4,
+        "source": "app/src/androidTest/java/com/cooper/lithic/feature/report/M17TimelineViewModelTest.kt",
+        "source_sha256": "594d78257ddd4d7e26d90914efc31220510cd6e5c0da29c4de8d140ae73a6b88",
+        "result": "android-core-capture-final/M17TimelineViewModelTest.result.json",
+        "methods": [
+          "real_write_invalidation_and_business_day_refresh_recompute_without_losing_chosen_history_date",
+          "real_trade_in_event_mapping_keeps_saved_noncash_identity_and_description_without_inventing_payment",
+          "refresh_error_keeps_last_graph_and_explicit_error_while_confirmed_deletion_is_missing",
+          "late_old_request_cannot_replace_new_record_or_its_selected_exact_date"
+        ],
+        "git_normalized_sha256": "efc990e5dd39591f8aacb4cd99db49140b34ef65849872cbb6802b3b149e6036"
+      },
+      {
+        "class_name": "com.cooper.lithic.ui.ChartSemanticsTest",
+        "count": 6,
+        "source": "app/src/androidTest/java/com/cooper/lithic/ui/ChartSemanticsTest.kt",
+        "source_sha256": "3e08d42a683a52eb298182478698a3e7503bb8eee4e3a5044ca2c1c6c31f9cb2",
+        "result": "android-ui-capture-final/ChartSemanticsTest.result.json",
+        "methods": [
+          "read_failure_and_missing_are_not_fake_zero_or_empty_chart",
+          "date_input_selects_exact_date_without_drag_and_rejects_future",
+          "paused_subscription_keeps_zero_reason_and_future_plan_is_read_only",
+          "same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit",
+          "negative_subcent_result_retains_accessible_value_and_no_rounded_zero",
+          "narrow_double_font_page_keeps_back_date_and_full_events_reachable"
+        ],
+        "git_normalized_sha256": "26ae1e9909d858cabafcf21146deb621d0002d0c368cd3a262d8d3305e35082c"
+      },
+      {
+        "class_name": "com.cooper.lithic.app.M17ChartJourneyTest",
+        "count": 2,
+        "source": "app/src/androidTest/java/com/cooper/lithic/app/M17ChartJourneyTest.kt",
+        "source_sha256": "2c1d8689753d554bab2a929ee0814ad67bdfd819da83a6e30af0c0938b355fd9",
+        "result": "android-ui-capture-final/M17ChartJourneyTest.result.json",
+        "methods": [
+          "subscription_steps_pause_gap_and_post_end_adjustments_survive_format2_restore",
+          "real_project_chart_events_negative_values_return_guard_and_foreground_day_refresh"
+        ],
+        "git_normalized_sha256": "13fea8aaa130dace26db03e06f309df88c989e82970ad58922866c9bc693b7da"
+      },
+      {
+        "class_name": "com.cooper.lithic.app.GenerationUiScopeTest",
+        "count": 3,
+        "source": "app/src/androidTest/java/com/cooper/lithic/app/GenerationUiScopeTest.kt",
+        "source_sha256": "81cbfab1f26e471fb416375f5d0e6f0bdfd6bca544dccc979d2fb323a5c0a9fb",
+        "result": "android-regression-capture-final/GenerationUiScopeTest.result.json",
+        "methods": [
+          "process_recreation_with_same_generation_retains_saved_draft_without_old_model_reference",
+          "generation_switch_cancels_old_models_and_drops_old_saved_form_and_navigation_session",
+          "same_generation_rotation_keeps_models_and_saved_form_but_reopened_owner_cannot_reuse_them"
+        ],
+        "git_normalized_sha256": "f7049f1d94bd57fbe2093a27a7da518cb8732bf09bc5bf649d78e374e9bf18a4"
+      },
+      {
+        "class_name": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "count": 6,
+        "source": "app/src/androidTest/java/com/cooper/lithic/feature/home/HomeOverviewUiTest.kt",
+        "source_sha256": "0beb06607e653a3fd48e96c7db208c77a9cd86b039fdfa22d0b79474ab9a0327",
+        "result": "android-regression-capture-final/HomeOverviewUiTest.result.json",
+        "methods": [
+          "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+          "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text",
+          "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+          "unavailable_overview_never_invents_a_zero_cost",
+          "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+          "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results"
+        ],
+        "git_normalized_sha256": "0beb06607e653a3fd48e96c7db208c77a9cd86b039fdfa22d0b79474ab9a0327"
+      }
+    ]
+  },
+  "unique_total": 172,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "lint": {
+    "errors": 0,
+    "warnings": 9
+  },
+  "artifacts": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13543801,
+      "sha256": "3e1298c3c81f8241f67c7c5f48515af7a2031ec5ee56bf5dd0d88bb50845e43b",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2923214,
+      "sha256": "fd025d53d5fdfdedd1e8ec13c9fdf2754b5d326ea7534b64172fbd0f4b6a85e3",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "build_inputs": {
+    "file_count": 281,
+    "sha256": "395116bcfbd769d88729a06ba8245d5052bdc65e90eaed81ed1e2926100bba56",
+    "method": "sorted relative UTF-8 path + NUL + file SHA256 bytes; app/src, app/schemas, gradle and four build configuration files"
+  },
+  "screenshots": 9,
+  "source_hash_note": "source_sha256 is actual build worktree bytes; git_normalized_sha256 is staged Git text bytes. LF/CRLF may differ without source semantic changes. Raw evidence and Room schemas preserve bytes via -text."
+}

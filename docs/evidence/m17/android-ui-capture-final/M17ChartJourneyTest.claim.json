@@ -1,0 +1,39 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.app.M17ChartJourneyTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\app\\M17ChartJourneyTest.kt",
+  "source_sha256": "2c1d8689753d554bab2a929ee0814ad67bdfd819da83a6e30af0c0938b355fd9",
+  "started_at": "2026-10-21T08:08:30.546000+00:00",
+  "expected": [
+    "real_project_chart_events_negative_values_return_guard_and_foreground_day_refresh",
+    "subscription_steps_pause_gap_and_post_end_adjustments_survive_format2_restore"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13543801,
+      "sha256": "3e1298c3c81f8241f67c7c5f48515af7a2031ec5ee56bf5dd0d88bb50845e43b",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2923214,
+      "sha256": "fd025d53d5fdfdedd1e8ec13c9fdf2754b5d326ea7534b64172fbd0f4b6a85e3",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ]
+}

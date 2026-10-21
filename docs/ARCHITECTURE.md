@@ -1,5 +1,19 @@
 # 当前架构事实
 
+## M17：单记录只读成本历史（2026-10-21）
+
+[ItemTimelineRepository](../app/src/main/java/com/cooper/lithic/data/repository/ItemTimelineRepository.kt)是现有generation上的非owner读适配，不创建数据库或写入派生结果。它固定一个BusinessClock观察日，复用原项目/订阅完整详情读取的协调器与Room事务，取得全部关联事实和实体元数据；随后从该不可变快照生成时间线。每个显示点及任意日期选择分别调用冻结M02/M03引擎，不逐点查库、不从列表第一页推断历史，也不在UI复制金额公式。
+
+[时间线模型与日期选择](../app/src/main/java/com/cooper/lithic/domain/report/ItemTimelineModels.kt)以240为均匀基础显示点预算，起止、真实事件、付款/覆盖/状态边界及必要相邻日期另外保留，因此总显示点可以超过240；日期集合不枚举长跨度中的每一天。每个保留点仍执行原引擎的事实扫描/校验，计算成本随事实量与保留点数增长，不能宣称总量固定240或整体O(E+240)。完整事实和事件未被显示采样删除，精确选日不从像素或两位小数反推金额。
+
+[项目时间线](../app/src/main/java/com/cooper/lithic/domain/report/ProjectTimelineEngine.kt)只把开始日至min(业务截止日,真实结束日)作为持有曲线；开始前结果保持无有效日均。结束后真实结算日期作为独立结果调整，不与持有段连线、不延长持有天数；结束日单项日均不因退出当前总额而变0。[订阅时间线](../app/src/main/java/com/cooper/lithic/domain/report/SubscriptionTimelineEngine.kt)保留paidOn与覆盖/状态边界，使用原currentRate和displayStatus绘制阶梯；预付未来期不提前改价，暂停、到期、停止及无覆盖的0值带真实状态说明，不跨零区间平滑连接正价。未来计划可在文字事件中标明尚未生效，但不作为历史曲线点。
+
+[ItemTimelineViewModel](../app/src/main/java/com/cooper/lithic/feature/report/ItemTimelineViewModel.kt)归既有generation UI作用域，后台读取与精确点计算各有请求票据；同记录的新读取使旧选择请求失效，kind/ID与票据共同阻止迟到发布。新快照、选日与精确结果一并发布；缺失确认撤销旧选点，选点发布还核对捕获快照的对象身份，防止读取期间对旧图发起的选点回填新图。Nav3图表entry再次核对路由kind/ID，尚未匹配时不展示另一记录的旧图。离开图表暂停任务，写入失效、跨日与返回前台刷新；恢复换代清旧模型/导航。读错明确提示并可保留带旧截止日的结果，目标缺失与真实0值分开；不把读取异常作为空账本。
+
+[共享Canvas](../app/src/main/java/com/cooper/lithic/core/design/CostChart.kt)按真实自然日期间距绘图，BigDecimal只在归一化坐标时转Float；零线、负值、极小非零和单点均保留可见表达。两类[纯展示页面](../app/src/main/java/com/cooper/lithic/core/design/CostChartPage.kt)提供日期文本输入、显示点文字选择和完整同日事件展开；显示点/事件清单每次扩展50条，事件总数与未展开记录保留。非现金折抵明确标识，不重复计入成本；同日事实不推断小时顺序。没有另建通用图表框架、持久缓存或M18总成本时间线。
+
+原详情来源（含历史、复盘与替换对比）和全局dirty/pending/恢复导航守卫继承。Room schema3、backup format2、金额/日期/状态引擎、业务写入与generation恢复协议、依赖和主题均未改变；M16的冻结范围与历史结论不改。此节描述实际实现，不授予M17验收PASS或冻结；执行结果以[唯一当前状态](CURRENT_STATE.md)及[验收登记](ACCEPTANCE_MATRIX.md)为准。M10延期、M13-T06/G1及所有历史NOTES/UNKNOWN/NOT_RUN继续保留，M18未获授权。
+
 ## M16：替换链与成组折抵（2026-10-21）
 
 `ReplacementRepository`依附同generation/LocalWriteCoordinator和Room事务。replacements表前任/后任各自唯一并有项目RESTRICT外键；共同ReplacementRules校验缺引用、自指、分叉及环。纯link/unlink只写关系；普通项目删除在原事务中对完整关联边CAS后断边，不推断重连。链读取在同一业务日/快照中批量取事实，纵向显示冻结引擎结果；它读取全图元数据和相关交易/链事实，未声称固定50条开销或完成大规模基准。

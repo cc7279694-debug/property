@@ -29,6 +29,7 @@ sealed interface LedgerUiState {
         val searchRepository: SearchRepository? = null,
         val rankingRepository: RankingRepository? = null,
         val replacementRepository: ReplacementRepository? = null,
+        val itemTimelineRepository: com.cooper.lithic.data.repository.ItemTimelineRepository? = null,
     ) : LedgerUiState
     data object Failed : LedgerUiState
 }

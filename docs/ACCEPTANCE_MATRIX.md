@@ -1,6 +1,24 @@
 # 验收登记
 
-当前正式结论：**M16 ACCEPTED / FROZEN — PASS WITH NOTES**，评审`d8ce0a8d602c2e9e544662e4b5bf202df5812aef`，依据用户转交的ChatGPT独立代码及证据验收登记。M16-T01～T06 PASS、原252 JVM/50 Android、Lint0错误9警告和7张隔离截图获限定认可；本轮仅文档回写，不是重新测试。M15及此前冻结/历史证据保持；M10 PENDING / DEFERRED、M13-T06 NOT_RUN / DEFERRED、G1未整体通过，Q06不整体CLOSED，M17未授权。
+当前交付：**M17 READY_FOR_REVIEW，等待ChatGPT独立验收**，来源`ca289f12a31ce67882a1254f6dbd71a80cad18dc`、分支`codex/m17-item-cost-charts`。144 JVM＋28 Android＝172唯一方法PASS，9图；不是自行冻结。最近正式冻结仍为M16及前序限定模块；M10延期、M13-T06延期、G1未整体通过、Q06边界与历史记录不变。
+
+## M17 当前执行验收（2026-10-21）
+
+用户完整附件明确授权；Codex实际执行后READY_FOR_REVIEW，**非独立验收/冻结**。[契约](planning/M17_CONTRACT.md)、[集中报告](evidence/M17-verification.md)、[逐类/方法统计](evidence/m17/results.json)、[原始索引](evidence/m17/README.md)。
+
+| 原案例 | 本轮实际状态 |
+|---|---|
+| M17-T01 past_event_boundary | PASS：维修前/退款后、Q02历史分母/结束后结算、完整105事件及M16三事件只计一次。 |
+| M17-T02 subscription_is_step_not_smooth | PASS：按生效日阶梯；预付不提前改价，暂停/恢复/到期/停止/同ID重开与未来计划。 |
+| M17-T03 events_are_accessible | PASS：同日完整事件/说明、超过50条、折抵标识、日期/状态文字替代、360dp/200%交互可达。非完整TalkBack。 |
+| M17-T04 negative_values_visible | PASS：零/负/极小非零/全负/单点，真实日期间距/零线；源金额不截0。 |
+| M17-T05 no_forecast | PASS：持有期到真实结束日；后结算独立、不增天数；未来预付/停止不画历史预测线。 |
+
+实际**144 JVM＝33新增＋111相关回归，28 Android＝19本模块＋9相关回归，合计172个唯一方法，0失败/错误/跳过**。源码方法与最终XML/Instrumentation身份精确对应，不将重跑叠加；早期口头164 JVM加总错误已按原始11类XML纠正，没有丢失或补造20项。最终Lint0错误9警告、App/Test构建成功，[9图与边界](evidence/m17/screenshots/README.md)。
+
+真实RED/GREEN：时间线/几何29项初次28失败/1通过；设备折抵标签1失败后修复；跨日新图发布时短暂丢失选日1失败后原子发布与捕获快照围栏修复。编译接缝和默认整段文本匹配的测试错误另记，均保留原输出，不改变原业务断言。完整读取、写后/跨日/前台刷新、迟到请求、确认删除、读错留旧图、只浏览不写、format2往返重算及旧代拒读通过。
+
+仅原5672/API36/x86_64全合成环境；plain Application、隔离ComponentActivity中的真实LithicApp/Nav3，非MainActivity/个人账本。LocalDensity360dp/200%不代表系统字号/真机；可变BusinessClock/生命周期不代表真实午夜，受控文件目标不代表新SAF验收。API26/OEM/真机、Release/稳定签名、完整IME/TalkBack、真实进程终止/LMK/断电和长期性能仍NOT_RUN。240为基础点，另保留全部边界/邻点，非总点数或耗时硬上限。M10、M13-T06/G1、Q03～Q06和全部旧NOTES保持；Q02仅M17子断言PASS，原16组完整跨模块记录及M18不回填。Room3/backup2/领域算法/M16组保护/恢复/媒体协议不改。
 
 ## M16正式冻结登记（2026-10-21）
 

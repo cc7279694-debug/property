@@ -1,0 +1,43 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.ui.ChartSemanticsTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\ui\\ChartSemanticsTest.kt",
+  "source_sha256": "3e08d42a683a52eb298182478698a3e7503bb8eee4e3a5044ca2c1c6c31f9cb2",
+  "started_at": "2026-10-21T08:07:52.746486+00:00",
+  "expected": [
+    "date_input_selects_exact_date_without_drag_and_rejects_future",
+    "same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit",
+    "negative_subcent_result_retains_accessible_value_and_no_rounded_zero",
+    "paused_subscription_keeps_zero_reason_and_future_plan_is_read_only",
+    "read_failure_and_missing_are_not_fake_zero_or_empty_chart",
+    "narrow_double_font_page_keeps_back_date_and_full_events_reachable"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13543801,
+      "sha256": "3e1298c3c81f8241f67c7c5f48515af7a2031ec5ee56bf5dd0d88bb50845e43b",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2923214,
+      "sha256": "fd025d53d5fdfdedd1e8ec13c9fdf2754b5d326ea7534b64172fbd0f4b6a85e3",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ]
+}

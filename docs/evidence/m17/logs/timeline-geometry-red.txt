@@ -1,0 +1,164 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:260:37 Unnecessary safe call on a non-null receiver of type 'ReplacementViewModel'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:379:33 Condition is always 'true'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/data/backup/BackupExportService.kt:118:13 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/data/backup/RestoreContracts.kt:9:40 Non-public primary constructor is exposed via the generated 'copy()' method of the 'data' class.
+
+The generated 'copy()' will change its visibility in future releases.
+
+To suppress the warning do one of the following:
+- Annotate the data class with the '@ConsistentCopyVisibility' annotation.
+- Use the '-Xconsistent-data-class-copy-visibility' compiler flag.
+- Annotate the data class with the '@ExposedCopyVisibility' annotation 
+  (Discouraged, but can be used to keep binary compatibility).
+
+To learn more, see the documentation of the '@ConsistentCopyVisibility' and '@ExposedCopyVisibility' annotations.
+
+This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KT-11914.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:722:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ReplacementSavedFacts.kt:46:15 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ReplacementSavedFacts.kt:48:15 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+
+> Task :app:testDebugUnitTest
+
+ChartGeometryTest > all_zero_has_a_visible_finite_centerline FAILED
+    java.lang.IllegalStateException at ChartGeometryTest.kt:24
+
+ChartGeometryTest > mixed_signs_keep_zero_between_positive_and_negative FAILED
+    java.lang.IllegalStateException at ChartGeometryTest.kt:38
+
+ChartGeometryTest > all_negative_values_have_real_negative_space_below_zero FAILED
+    java.lang.IllegalStateException at ChartGeometryTest.kt:31
+
+ChartGeometryTest > extremely_small_nonzero_values_do_not_collapse_to_fake_zero FAILED
+    java.lang.IllegalStateException at ChartGeometryTest.kt:45
+
+ChartGeometryTest > single_day_is_centered_and_large_bigdecimal_range_stays_finite FAILED
+    java.lang.IllegalStateException at ChartGeometryTest.kt:51
+
+ChartGeometryTest > horizontal_spacing_uses_real_dates_instead_of_list_indices FAILED
+    java.lang.IllegalStateException at ChartGeometryTest.kt:17
+
+ItemTimelineTest > before_start_prepayment_is_an_event_but_not_a_fabricated_zero_curve FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:61
+
+ItemTimelineTest > past_event_boundary FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:30
+
+ItemTimelineTest > subscription_only_future_coverage_shows_zero_not_an_active_future_price FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:217
+
+ItemTimelineTest > negative_values_visible FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:101
+
+ItemTimelineTest > subscription_late_payment_respects_paid_on_in_addition_to_coverage FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:180
+
+ItemTimelineTest > subscription_same_identity_reopen_and_fixed_standard_days_remain_frozen_engine_results FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:227
+
+ItemTimelineTest > local_date_extremes_use_bounded_sampling_without_date_overflow FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:140
+
+ItemTimelineTest > subscription_is_step_not_smooth FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:157
+
+ItemTimelineTest > subscription_pause_resume_expiry_and_stopping_are_zero_with_their_real_status FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:169
+
+ItemTimelineTest > no_forecast FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:74
+
+ItemTimelineTest > long_span_preserves_all_event_neighbors_without_enumerating_all_dates FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:122
+
+ItemTimelineTest > empty_future_only_and_invalid_display_limits_fail_or_remain_explicit FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:246
+
+ItemTimelineTest > same_day_multiple_money_events_are_all_counted_and_the_day_is_not_duplicated FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:92
+
+ItemTimelineTest > subscription_long_span_keeps_every_state_and_coverage_neighbor FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:238
+
+ItemTimelineTest > noncash_trade_in_money_is_not_counted_again_as_an_extra_initial_total FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:149
+
+ItemTimelineTest > a_future_end_does_not_truncate_today_or_plot_the_future FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:83
+
+ItemTimelineTest > q02_ended_snapshot_observes_each_historical_day_then_freezes_duration FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:43
+
+ItemTimelineTest > all_fact_boundaries_are_retained_even_when_more_than_the_base_point_limit FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:133
+
+ItemTimelineTest > subscription_gap_is_retained_instead_of_connecting_positive_periods FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:189
+
+ItemTimelineTest > subscription_prepaid_future_period_and_future_stop_are_not_forecast FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:208
+
+ItemTimelineTest > all_zero_all_negative_tiny_nonzero_and_single_day_keep_exact_rates FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:108
+
+ItemTimelineTest > subscription_current_paused_or_stopped_state_does_not_overwrite_past_active_days FAILED
+    java.lang.UnsupportedOperationException at ItemTimelineTest.kt:198
+
+29 tests completed, 28 failed
+
+> Task :app:testDebugUnitTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///E:/CODEX/.codex/worktrees/lithic-m13/%E7%A0%BA%E7%9F%B3%E6%96%B0APP/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 2m 30s
+26 actionable tasks: 7 executed, 19 up-to-date

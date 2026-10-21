@@ -46,6 +46,7 @@ internal fun SubscriptionDetailScreen(
     onCorrectRenewal: (String) -> Unit = {},
     onDeleteRenewal: (String) -> Unit = {},
     backLabel: String = "返回订阅列表",
+    onCostHistory: (() -> Unit)? = null,
 ) {
     Column(modifier.fillMaxSize().testTag("subscription-detail-screen")) {
         LazyColumn(Modifier.fillMaxSize().testTag("subscription-detail-content"),
@@ -64,6 +65,10 @@ internal fun SubscriptionDetailScreen(
             if (state.missing) item { Text("订阅不存在，返回列表查看当前记录。", Modifier.padding(LithicSpacing.medium)
                 .testTag("subscription-detail-missing"), style = MaterialTheme.typography.bodyLarge) }
             state.detail?.takeUnless { state.missing }?.let { detail ->
+                item { onCostHistory?.let { action ->
+                OutlinedButton(action, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
+                    .heightIn(min = 48.dp).testTag("subscription-price-history")) { Text("查看价格历史") }
+            } }
                 item {
                     Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                         verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {

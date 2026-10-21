@@ -81,6 +81,9 @@ import com.cooper.lithic.feature.settings.SettingsShell
 import com.cooper.lithic.feature.settings.BackupExportUiState
 import com.cooper.lithic.feature.settings.BackupRestoreUiState
 import com.cooper.lithic.feature.settings.RestoreUiPhase
+import com.cooper.lithic.feature.report.ItemTimelineViewModel
+import com.cooper.lithic.feature.project.ProjectCostChart
+import com.cooper.lithic.feature.subscription.SubscriptionPriceChart
 import kotlinx.serialization.Serializable
 
 /** Retained under its original name so previously saved M04 state can be decoded. */
@@ -158,6 +161,17 @@ internal fun LithicNavigation(
         }
     } else null
     val reviewState = reviewModel?.state?.collectAsStateWithLifecycle()?.value
+    val chartModel = if (routes.last() is ProjectCostHistory || routes.last() is SubscriptionPriceHistory) {
+        state.itemTimelineRepository?.let { repository ->
+            remember(generationScope, session, repository) {
+                ViewModelProvider(generationScope, viewModelFactory {
+                    initializer { ItemTimelineViewModel(repository, state.businessClock) }
+                })[ItemTimelineViewModel::class.java]
+            }
+        }
+    } else null
+    val chartState = chartModel?.state?.collectAsStateWithLifecycle()?.value
+    DisposableEffect(chartModel) { onDispose { chartModel?.pause() } }
     var pendingLeave by remember(session) { mutableStateOf<List<NavKey>?>(null) }
     var pendingWarning by remember(session) { mutableStateOf(false) }
     fun navigate(target: List<NavKey>) {
@@ -173,7 +187,7 @@ internal fun LithicNavigation(
     }
     val onBack: () -> Unit = { if (routes.size > 1) requestLeave(routes.dropLast(1)) }
     SideEffect { if (backStack.toList() != routes) navigate(routes) }
-    LaunchedEffect(routes.last()) {
+    LaunchedEffect(routes.last(), chartModel) {
         when (val route = routes.last()) {
             CategoryManagement -> categoryModel?.refresh()
             NameSearch -> searchModel?.refresh()
@@ -183,6 +197,8 @@ internal fun LithicNavigation(
             CreateProject -> model.startCreate()
             is ReplacementComparison -> replacementModel?.openComparison(route.id)
             is TradeInProject -> replacementModel?.startTradeIn(route.id)
+            is ProjectCostHistory -> chartModel?.openProject(route.id)
+            is SubscriptionPriceHistory -> chartModel?.openSubscription(route.id)
             is ProjectDetail -> model.openDetail(route.id)
             is ProjectEdit -> model.startEdit(route.id)
             is ProjectMoneyEntry -> model.startMoney(route.id, route.direction)
@@ -267,7 +283,7 @@ internal fun LithicNavigation(
         BusinessDateObserver(state.overview?.asOf ?: state.businessClock.today())
     }
     val latestRetry by androidx.compose.runtime.rememberUpdatedState(onRetryLedger)
-    LaunchedEffect(lifecycle, dateObserver, state.recordZone, reviewModel) {
+    LaunchedEffect(lifecycle, dateObserver, state.recordZone, reviewModel, chartModel) {
         lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
             dateObserver.observe(state.businessClock, state.recordZone, {
                 model.refresh()
@@ -275,13 +291,14 @@ internal fun LithicNavigation(
                 searchModel?.refresh()
                 reviewModel?.refresh()
                 replacementModel?.refresh()
+                chartModel?.refresh()
                 latestRetry()
             })
         }
     }
-    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel, reviewModel, replacementModel) {
+    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel, reviewModel, replacementModel, chartModel) {
         val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) {
-            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); reviewModel?.refresh(); replacementModel?.refresh(); latestRetry()
+            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); reviewModel?.refresh(); replacementModel?.refresh(); chartModel?.refresh(); latestRetry()
         } }
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
@@ -357,6 +374,7 @@ internal fun LithicNavigation(
                             onUpdateEnd = { requestLeave(canonicalBackStack(ProjectUpdateEnd(route.id, route.origin, route.comparisonId))) },
                             onCorrectMoney = { requestLeave(canonicalBackStack(ProjectMoneyCorrection(route.id, it, route.origin, route.comparisonId))) },
                             onDelete = { requestLeave(canonicalBackStack(ProjectDelete(route.id, route.origin, route.comparisonId))) },
+                            onCostHistory = if (state.itemTimelineRepository != null) ({ requestLeave(canonicalBackStack(ProjectCostHistory(route.id, route.origin, route.comparisonId))) }) else null,
                             onReplacement = if (replacementModel != null) ({ requestLeave(canonicalBackStack(ReplacementComparison(route.id, route.origin))) }) else null,
                             onTradeIn = if (replacementModel != null) ({ requestLeave(canonicalBackStack(TradeInProject(route.id, route.origin, route.comparisonId))) }) else null,
                             backLabel = if (route.comparisonId != null) "返回替换对比" else when (route.origin) {
@@ -364,6 +382,20 @@ internal fun LithicNavigation(
                                 ProjectOrigin.HISTORY -> "返回历史档案"
                                 ProjectOrigin.REVIEW -> "返回长期复盘"
                             })
+                    }
+                    entry<ProjectCostHistory> { route ->
+                        val chart = chartState?.takeIf { it.kind == com.cooper.lithic.feature.report.ItemChartKind.PROJECT && it.id == route.id }
+                        if (chartModel != null) ProjectCostChart(chart?.title.orEmpty(),
+                            chart?.project?.timeline, chart?.selectedProject, chart?.events.orEmpty(),
+                            chart?.loading ?: true, chart?.error, chart?.missing ?: false,
+                            chartModel::selectDate, chartModel::refresh, onBack)
+                    }
+                    entry<SubscriptionPriceHistory> { route ->
+                        val chart = chartState?.takeIf { it.kind == com.cooper.lithic.feature.report.ItemChartKind.SUBSCRIPTION && it.id == route.id }
+                        if (chartModel != null) SubscriptionPriceChart(chart?.title.orEmpty(),
+                            chart?.subscription?.timeline, chart?.selectedSubscription, chart?.events.orEmpty(),
+                            chart?.loading ?: true, chart?.error, chart?.missing ?: false,
+                            chartModel::selectDate, chartModel::refresh, onBack)
                     }
                     entry<ReplacementComparison> { route ->
                         if (replacementModel != null && replacements != null) ReplacementComparisonScreen(replacements, onBack,
@@ -430,6 +462,7 @@ internal fun LithicNavigation(
                         fun stateAction(action: SubscriptionAction) = requestLeave(canonicalBackStack(ChangeSubscriptionState(route.id, action, route.origin)))
                         SubscriptionDetailScreen(subscriptions.detail, onBack, { requestLeave(canonicalBackStack(ConfirmSubscriptionRenewal(route.id, route.origin))) },
                             subscriptionModel::loadMoreHistory, subscriptionModel::retryRead,
+                            onCostHistory = if (state.itemTimelineRepository != null) ({ requestLeave(canonicalBackStack(SubscriptionPriceHistory(route.id, route.origin))) }) else null,
                             onPause = { stateAction(SubscriptionAction.PAUSE) }, onResume = { stateAction(SubscriptionAction.RESUME) },
                             onStop = { stateAction(SubscriptionAction.STOP) }, onReopen = { stateAction(SubscriptionAction.REOPEN) },
                             onCorrectState = { requestLeave(canonicalBackStack(CorrectSubscriptionState(route.id, it, route.origin))) },

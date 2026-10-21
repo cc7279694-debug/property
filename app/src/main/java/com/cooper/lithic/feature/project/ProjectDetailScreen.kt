@@ -42,6 +42,7 @@ internal fun ProjectDetailScreen(
     backLabel: String = "返回项目列表",
     onReplacement: (() -> Unit)? = null,
     onTradeIn: (() -> Unit)? = null,
+    onCostHistory: (() -> Unit)? = null,
 ) {
     Column(modifier.fillMaxSize().testTag("project-detail-screen")) {
     LazyColumn(Modifier.fillMaxSize().testTag("project-detail-content"),
@@ -66,6 +67,10 @@ internal fun ProjectDetailScreen(
         }
         if (state.missing) item { Text("项目不存在，返回列表查看当前记录。", Modifier.padding(LithicSpacing.medium)) }
         state.detail?.takeUnless { state.missing }?.let { detail ->
+            item { onCostHistory?.let { action ->
+                OutlinedButton(action, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
+                    .heightIn(min = 48.dp).testTag("project-cost-history")) { Text("查看成本历史") }
+            } }
             item {
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {

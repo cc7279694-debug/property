@@ -1,0 +1,138 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.ChartSemanticsTest:
+INSTRUMENTATION_STATUS: test=read_failure_and_missing_are_not_fake_zero_or_empty_chart
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=read_failure_and_missing_are_not_fake_zero_or_empty_chart
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=date_input_selects_exact_date_without_drag_and_rejects_future
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=date_input_selects_exact_date_without_drag_and_rejects_future
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=paused_subscription_keeps_zero_reason_and_future_plan_is_read_only
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '暂停' (ignoreCase: false))
+Semantics of the node:
+Node #101 at (l=84.0, t=948.0, r=996.0, b=1074.0)px, Tag: 'chart-selected-status'
+Text = '[该日日末：暂停；当前成本贡献为0，不代表免费套餐。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 3 siblings
+Selector used: (TestTag = 'chart-selected-status')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.ChartSemanticsTest.paused_subscription_keeps_zero_reason_and_future_plan_is_read_only(ChartSemanticsTest.kt:109)
+
+INSTRUMENTATION_STATUS: stream=
+Error in paused_subscription_keeps_zero_reason_and_future_plan_is_read_only(com.cooper.lithic.ui.ChartSemanticsTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '暂停' (ignoreCase: false))
+Semantics of the node:
+Node #101 at (l=84.0, t=948.0, r=996.0, b=1074.0)px, Tag: 'chart-selected-status'
+Text = '[该日日末：暂停；当前成本贡献为0，不代表免费套餐。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 3 siblings
+Selector used: (TestTag = 'chart-selected-status')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.ChartSemanticsTest.paused_subscription_keeps_zero_reason_and_future_plan_is_read_only(ChartSemanticsTest.kt:109)
+
+INSTRUMENTATION_STATUS: test=paused_subscription_keeps_zero_reason_and_future_plan_is_read_only
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=negative_subcent_result_retains_accessible_value_and_no_rounded_zero
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=negative_subcent_result_retains_accessible_value_and_no_rounded_zero
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=narrow_double_font_page_keeps_back_date_and_full_events_reachable
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.ChartSemanticsTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=narrow_double_font_page_keeps_back_date_and_full_events_reachable
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 29.968
+There was 1 failure:
+1) paused_subscription_keeps_zero_reason_and_future_plan_is_read_only(com.cooper.lithic.ui.ChartSemanticsTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '暂停' (ignoreCase: false))
+Semantics of the node:
+Node #101 at (l=84.0, t=948.0, r=996.0, b=1074.0)px, Tag: 'chart-selected-status'
+Text = '[该日日末：暂停；当前成本贡献为0，不代表免费套餐。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 3 siblings
+Selector used: (TestTag = 'chart-selected-status')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.ChartSemanticsTest.paused_subscription_keeps_zero_reason_and_future_plan_is_read_only(ChartSemanticsTest.kt:109)
+
+FAILURES!!!
+Tests run: 6,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

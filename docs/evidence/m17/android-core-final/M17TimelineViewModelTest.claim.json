@@ -1,0 +1,41 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\report\\M17TimelineViewModelTest.kt",
+  "source_sha256": "594d78257ddd4d7e26d90914efc31220510cd6e5c0da29c4de8d140ae73a6b88",
+  "started_at": "2026-10-21T07:33:34.385886+00:00",
+  "expected": [
+    "late_old_request_cannot_replace_new_record_or_its_selected_exact_date",
+    "refresh_error_keeps_last_graph_and_explicit_error_while_confirmed_deletion_is_missing",
+    "real_write_invalidation_and_business_day_refresh_recompute_without_losing_chosen_history_date",
+    "real_trade_in_event_mapping_keeps_saved_noncash_identity_and_description_without_inventing_payment"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13543801,
+      "sha256": "2f229050d7a1b6ecbb38286a45f66d86a80c0f77c0ec2a6579113a042c0a8ba5",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2923214,
+      "sha256": "92117b52f7529824fe2661addea60224df0b324aeb67fe0ac7646f3846915617",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ]
+}

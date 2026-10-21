@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "run-as",
+    "com.cooper.lithic.debug",
+    "stat",
+    "-c",
+    "%u:%F",
+    "/data/data/com.cooper.lithic.debug/files/m17-evidence"
+  ],
+  "exit_code": 0,
+  "stdout": "10216:directory\r\n",
+  "sha256": "5fbf1d91d5b451b273d6f57c3f769207942ada1ea29aa3682337294fcb41c221"
+}
