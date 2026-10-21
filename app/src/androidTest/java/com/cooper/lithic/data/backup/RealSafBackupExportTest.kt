@@ -144,10 +144,10 @@ class RealSafBackupExportTest {
             assertEquals(setOf("manifest.json", "data.json", "settings.json") + media.keys, names.toSet())
             val dataBytes = zip.getInputStream(zip.getEntry("data.json")).use { it.readBytes() }
             val settingsBytes = zip.getInputStream(zip.getEntry("settings.json")).use { it.readBytes() }
-            assertEquals(before.data, Json.decodeFromString<BackupDataV1>(dataBytes.decodeToString()))
+            assertEquals(before.data, Json.decodeFromString<BackupDataV2>(dataBytes.decodeToString()))
             assertEquals(before.settings, Json.decodeFromString<BackupSettingsV1>(settingsBytes.decodeToString()))
             val manifest = Json.parseToJsonElement(zip.getInputStream(zip.getEntry("manifest.json")).use { it.reader().readText() }).jsonObject
-            assertEquals(1, manifest.getValue("formatVersion").jsonPrimitive.int)
+            assertEquals(2, manifest.getValue("formatVersion").jsonPrimitive.int)
             val counts = manifest.getValue("recordCounts").jsonObject
             assertEquals(before.data.recordCounts(), counts.mapValues { it.value.jsonPrimitive.long })
             assertEquals(7, counts.size)
@@ -400,7 +400,7 @@ class RealSafBackupExportTest {
             "2026-01-01", null, null, data.mediaAssets.single { it.relativePath == "media/m11b-jpeg.jpg" }.id,
             null, timestamp, timestamp))
         val event = data.projectMoneyEvents.single()
-        check(event == BackupProjectMoneyEventV1(event.id, project.id, "OUTLAY", 12345, "2026-01-01", null, "INITIAL", event.operationId))
+        check(event == BackupProjectMoneyEventV2(event.id, project.id, "OUTLAY", 12345, "2026-01-01", null, "INITIAL", event.operationId,"CASH",null))
         val subscription = data.subscriptions.single()
         check(subscription == BackupSubscriptionV1(subscription.id, "M11-B SAF 合成订阅", LithicDatabase.SUBSCRIPTION_FALLBACK_ID,
             data.mediaAssets.single { it.relativePath == "media/m11b-rgba.png" }.id, null, timestamp, timestamp))

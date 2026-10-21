@@ -24,6 +24,7 @@ import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
+import com.cooper.lithic.data.local.MoneyBasis
 import java.math.BigDecimal
 
 @Composable
@@ -39,6 +40,8 @@ internal fun ProjectDetailScreen(
     onCorrectMoney: (String) -> Unit = {},
     onDelete: () -> Unit = {},
     backLabel: String = "返回项目列表",
+    onReplacement: (() -> Unit)? = null,
+    onTradeIn: (() -> Unit)? = null,
 ) {
     Column(modifier.fillMaxSize().testTag("project-detail-screen")) {
     LazyColumn(Modifier.fillMaxSize().testTag("project-detail-content"),
@@ -95,8 +98,9 @@ internal fun ProjectDetailScreen(
             item {
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
-                    ProjectTotal("累计实际投入", detail.cost.grossOutlayCents, "project-detail-outlay")
-                    ProjectTotal("累计实际收回", detail.cost.recoveryCents, "project-detail-recovery")
+                    val includesCredit = detail.events.any { it.basis == MoneyBasis.TRADE_IN_CREDIT }
+                    ProjectTotal(if (includesCredit) "累计投入（含非现金折抵）" else "累计实际投入", detail.cost.grossOutlayCents, "project-detail-outlay")
+                    ProjectTotal(if (includesCredit) "累计收回（含非现金折抵）" else "累计实际收回", detail.cost.recoveryCents, "project-detail-recovery")
                     ProjectTotal("净投入", detail.cost.netCents, "project-detail-net")
                     Text("类别：${detail.category.name}", style = MaterialTheme.typography.bodyLarge)
                     detail.project.note?.takeIf { it.isNotBlank() }?.let {
@@ -137,10 +141,24 @@ internal fun ProjectDetailScreen(
                 }
             }
             item {
+                onReplacement?.let { action ->
+                    OutlinedButton(action, Modifier.padding(horizontal = LithicSpacing.medium).fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("project-replacement")) { Text("替换链与纵向对比", style = MaterialTheme.typography.bodyLarge) }
+                }
+            }
+            if (detail.project.endedOn == null) item {
+                onTradeIn?.let { action ->
+                    OutlinedButton(action, Modifier.padding(horizontal = LithicSpacing.medium).fillMaxWidth().heightIn(min = 48.dp)
+                        .testTag("project-trade-in")) { Text("记录以旧换新", style = MaterialTheme.typography.bodyLarge) }
+                }
+            }
+            item {
                 TextButton(onDelete, Modifier.padding(horizontal = LithicSpacing.medium)
-                    .fillMaxWidth().heightIn(min = 48.dp).testTag("project-delete")) {
+                    .fillMaxWidth().heightIn(min = 48.dp).testTag("project-delete"), enabled = detail.events.none { it.exchangeGroupId != null }) {
                     Text("删除项目", style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.error)
                 }
+                if (detail.events.any { it.exchangeGroupId != null }) Text("此项目参与以旧换新，暂不支持单独删除或修改交易日期与金额；可继续管理名称、类别、备注及后续真实金额。",
+                    Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-trade-in-protection"), style = MaterialTheme.typography.bodyMedium)
             }
             item {
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
@@ -162,6 +180,9 @@ internal fun ProjectDetailScreen(
                     },
                         style = MaterialTheme.typography.bodyLarge)
                     Text(event.occurredOn.toString(), style = MaterialTheme.typography.bodyMedium)
+                    Text(if (event.basis == MoneyBasis.TRADE_IN_CREDIT) "非现金折抵" else "现金",
+                        Modifier.testTag("project-event-basis-${event.id}"), style = MaterialTheme.typography.bodyMedium)
+                    if (event.exchangeGroupId != null) Text("以旧换新关联事实；金额及日期不能单独修改。", style = MaterialTheme.typography.bodyMedium)
                     AmountText(BigDecimal.valueOf(event.amountCents, 2), unit = AmountUnit.YUAN,
                         style = MaterialTheme.typography.titleLarge)
                     event.description?.takeIf { it.isNotBlank() }?.let { Text(it, style = MaterialTheme.typography.bodyLarge) }
@@ -169,7 +190,7 @@ internal fun ProjectDetailScreen(
                         if (event.role == ProjectMoneyEventRole.END_SETTLEMENT) onUpdateEnd()
                         else onCorrectMoney(event.id)
                     }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("project-correct-event-${event.id}")) {
-                        Text(if (event.role == ProjectMoneyEventRole.END_SETTLEMENT) "修正结束及关联收回" else "纠正这条记录",
+                        Text(if (event.exchangeGroupId != null) "修改关联说明" else if (event.role == ProjectMoneyEventRole.END_SETTLEMENT) "修正结束及关联收回" else "纠正这条记录",
                             style = MaterialTheme.typography.bodyLarge)
                     }
                     HorizontalDivider()

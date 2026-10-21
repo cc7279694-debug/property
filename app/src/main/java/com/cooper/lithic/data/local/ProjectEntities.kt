@@ -10,6 +10,7 @@ import java.time.LocalDate
 
 enum class CategoryType { PROJECT, SUBSCRIPTION }
 enum class ProjectMoneyEventRole { INITIAL, REGULAR, END_SETTLEMENT }
+enum class MoneyBasis { CASH, TRADE_IN_CREDIT }
 
 @Entity(tableName = "categories", indices = [Index(value = ["type", "normalizedName"], unique = true)])
 data class CategoryEntity(
@@ -83,4 +84,6 @@ data class ProjectMoneyEventEntity(
     val description: String? = null,
     val role: ProjectMoneyEventRole,
     val operationId: String,
+    @androidx.room.ColumnInfo(defaultValue = "'CASH'") val basis: MoneyBasis = MoneyBasis.CASH,
+    val exchangeGroupId: String? = null,
 )

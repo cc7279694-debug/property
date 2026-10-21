@@ -1,0 +1,43 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\home\\HomeOverviewUiTest.kt",
+  "source_sha256": "0beb06607e653a3fd48e96c7db208c77a9cd86b039fdfa22d0b79474ab9a0327",
+  "started_at": "2026-10-21T05:55:05.605815+00:00",
+  "expected": [
+    "unavailable_overview_never_invents_a_zero_cost",
+    "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+    "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+    "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results",
+    "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+    "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 14117110,
+      "sha256": "2dcc54802720c6a5c3d6cebc797dca6db228757506b3acd6a2e86b892cf4fe41",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 3175312,
+      "sha256": "ba531c1c51cc6bdbee3ad4084bfa4bfd93777307c3e17248cec71563a1eca00d",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ]
+}

@@ -9,17 +9,20 @@ internal object DatabaseSchemaValidation {
     // Verified against the actual v2 export and KSP RoomOpenDelegate on 2026-10-12.
     private val v2Identities = setOf("a8fd277b0ef08ce9cf59b704734d0c25", "c2791ca206586debaa4a6f2d03386e79")
 
+    private val v3Identities = setOf("0c56480536dc34e026b703bd845dc307", "c8d9fdeec072099df560319f8b238ac9")
+
     fun requireKnownSchema(db: SQLiteDatabase) {
         val version = db.version
         val expected = when (version) {
             1 -> oldTables
             2 -> oldTables + subscriptionTables
+            3 -> v3Tables
             else -> error("Existing database version has no registered migration")
         }
         requireTable(db, masterTable)
         db.rawQuery("SELECT id,identity_hash FROM room_master_table", null).use { cursor ->
             check(cursor.moveToFirst() && cursor.getInt(0) == 42 && !cursor.isNull(1)) { "Existing database has no valid Room identity" }
-            val known = if (version == 1) v1Identities else v2Identities
+            val known = when (version) { 1 -> v1Identities; 2 -> v2Identities; else -> v3Identities }
             check(cursor.getString(1) in known && !cursor.moveToNext()) { "Existing database has an unknown Room identity" }
         }
         val expectedObjects = expected.flatMap { table ->
@@ -49,8 +52,7 @@ internal object DatabaseSchemaValidation {
         val columns = mutableListOf<Column>()
         db.rawQuery("PRAGMA table_info(`${expected.name}`)", null).use { cursor ->
             while (cursor.moveToNext()) {
-                check(cursor.isNull(4)) { "An unexpected column default was found" }
-                columns += Column(cursor.getString(1), cursor.getString(2).uppercase(Locale.ROOT), cursor.getInt(3) != 0, cursor.getInt(5))
+                columns += Column(cursor.getString(1), cursor.getString(2).uppercase(Locale.ROOT), cursor.getInt(3) != 0, cursor.getInt(5), if (cursor.isNull(4)) null else cursor.getString(4))
             }
         }
         check(columns == expected.columns) { "Existing table columns do not match the known schema: ${expected.name}" }
@@ -106,7 +108,7 @@ internal object DatabaseSchemaValidation {
         return fields
     }
 
-    private data class Column(val name: String, val type: String, val notNull: Boolean = true, val primaryKey: Int = 0)
+    private data class Column(val name: String, val type: String, val notNull: Boolean = true, val primaryKey: Int = 0, val defaultValue: String? = null)
     private data class ForeignKey(val child: String, val parent: String, val parentColumn: String = "id", val onUpdate: String = "NO ACTION", val onDelete: String = "RESTRICT")
     private data class Index(val name: String, val unique: Boolean, val columns: List<String>)
     private data class Table(val name: String, val columns: List<Column>, val indices: List<Index> = emptyList(), val foreignKeys: Set<ForeignKey> = emptySet())
@@ -144,4 +146,12 @@ internal object DatabaseSchemaValidation {
                 Index("index_subscription_state_changes_subscriptionId_effectiveOn_id", false, listOf("subscriptionId", "effectiveOn", "id"))),
             setOf(ForeignKey("subscriptionId", "subscriptions"))),
     )
+    private val v3Tables = oldTables.map { table ->
+        if (table.name == "project_money_events") table.copy(columns = table.columns +
+            listOf(Column("basis", "TEXT", defaultValue = "'CASH'"), text("exchangeGroupId", true))) else table
+    } + subscriptionTables + Table("replacements", listOf(id(), text("predecessorId"), text("successorId"), text("createdAt")),
+        listOf(Index("index_replacements_predecessorId", true, listOf("predecessorId")),
+            Index("index_replacements_successorId", true, listOf("successorId"))),
+        setOf(ForeignKey("predecessorId", "long_term_projects"), ForeignKey("successorId", "long_term_projects")))
+
 }

@@ -25,7 +25,7 @@ internal fun RestorePreviewScreen(preview: RestorePreview, onConfirm: () -> Unit
         listOf("long_term_projects" to "长期项目", "project_money_events" to "项目金额记录",
             "subscriptions" to "订阅", "subscription_renewals" to "订阅付款",
             "subscription_state_changes" to "订阅状态记录", "categories" to "类别",
-            "local_media_assets" to "图片").forEach { (key, label) ->
+            "local_media_assets" to "图片", "replacements" to "替换关系").forEach { (key, label) ->
             Column(Modifier.testTag("restore-count-$key")) {
                 Text(label, style = MaterialTheme.typography.bodyLarge)
                 Text("当前 ${preview.currentCounts[key] ?: "未知"} · 备份 ${preview.backupCounts[key] ?: "未知"}",

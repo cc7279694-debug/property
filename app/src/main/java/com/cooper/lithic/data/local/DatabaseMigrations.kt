@@ -20,5 +20,14 @@ object DatabaseMigrations {
             db.execSQL("CREATE INDEX `index_subscription_state_changes_subscriptionId_effectiveOn_id` ON `subscription_state_changes` (`subscriptionId`, `effectiveOn`, `id`)")
         }
     }
-    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2)
+    val MIGRATION_2_3: Migration = object : Migration(2, 3) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("ALTER TABLE `project_money_events` ADD COLUMN `basis` TEXT NOT NULL DEFAULT 'CASH'")
+            db.execSQL("ALTER TABLE `project_money_events` ADD COLUMN `exchangeGroupId` TEXT")
+            db.execSQL("""CREATE TABLE `replacements` (`id` TEXT NOT NULL, `predecessorId` TEXT NOT NULL, `successorId` TEXT NOT NULL, `createdAt` TEXT NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`predecessorId`) REFERENCES `long_term_projects`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT, FOREIGN KEY(`successorId`) REFERENCES `long_term_projects`(`id`) ON UPDATE NO ACTION ON DELETE RESTRICT)""")
+            db.execSQL("CREATE UNIQUE INDEX `index_replacements_predecessorId` ON `replacements` (`predecessorId`)")
+            db.execSQL("CREATE UNIQUE INDEX `index_replacements_successorId` ON `replacements` (`successorId`)")
+        }
+    }
+    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3)
 }

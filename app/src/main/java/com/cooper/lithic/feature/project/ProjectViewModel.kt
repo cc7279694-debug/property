@@ -14,6 +14,7 @@ import com.cooper.lithic.data.local.LithicDatabase
 import com.cooper.lithic.data.local.LongTermProjectEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
+import com.cooper.lithic.data.local.MoneyBasis
 import com.cooper.lithic.data.local.StoredValueValidation
 import com.cooper.lithic.data.repository.AddProjectMoneyEventCommand
 import com.cooper.lithic.data.repository.CreateProjectCommand
@@ -111,7 +112,7 @@ class ProjectViewModel(
         loadInitialForm(requireNotNull(form))
     }
     fun changeEndedOn(value: String) {
-        if (!canChange()) return
+        if (!canChange() || (form?.getString("kind") == "updateEnd" && form?.getBoolean("tradeInProtected") == true)) return
         if (form?.getString("kind") == "end" && form?.getBoolean("recoveryDateExplicit") != true) form?.putString("recoveryOn", value)
         change("endedOn", value)
     }
@@ -126,10 +127,12 @@ class ProjectViewModel(
         publishForm()
     }
     fun changeRecoveryAmount(value: String) {
+        if (protectedEnd()) return
         if (form?.getString("kind") == "updateEnd" && form?.getBundle("settlementBaseline") == null) return
         change("recoveryAmount", value)
     }
     fun changeRecoveryOn(value: String) {
+        if (protectedEnd()) return
         if (!canChange() || (form?.getString("kind") == "updateEnd" && form?.getBundle("settlementBaseline") == null)) return
         form?.putBoolean("recoveryDateExplicit", true)
         change("recoveryOn", value)
@@ -138,6 +141,8 @@ class ProjectViewModel(
         if (form?.getString("kind") == "updateEnd" && form?.getBundle("settlementBaseline") == null) return
         change("recoveryDescription", value)
     }
+    private fun protectedEnd() = form?.getString("kind") == "updateEnd" &&
+        form?.getBundle("settlementBaseline")?.getString("exchangeGroupId") != null
     fun loadMore() {
         if (!listRequested || state.value.list.loading || state.value.list.loadingMore || cursor == null) return
         mutableState.value = state.value.copy(list = state.value.list.copy(loadingMore = true))
@@ -210,6 +215,7 @@ class ProjectViewModel(
         fun raw(key: String, value: String) { if (!preserveRaw || !active.containsKey(key)) active.putString(key, value) }
         active.putBundle("baseline", encodeProject(detail.project))
         active.putString("projectName", detail.project.name)
+        active.putBoolean("tradeInProtected", detail.events.any { it.exchangeGroupId != null })
         active.remove("invalidBaseline")
         message = null
         when (active.getString("kind")) {
@@ -254,7 +260,10 @@ class ProjectViewModel(
                     raw("description", event.description.orEmpty())
                 }
             }
-            "delete" -> active.putParcelableArrayList("eventsBaseline", ArrayList(detail.events.map(::encodeEvent)))
+            "delete" -> {
+                active.putParcelableArrayList("eventsBaseline", ArrayList(detail.events.map(::encodeEvent)))
+                active.putParcelableArrayList("replacementLinksBaseline", ArrayList(detail.replacementLinks.map(ReplacementSavedFacts::link)))
+            }
         }
     }
 
@@ -269,7 +278,7 @@ class ProjectViewModel(
     }
     fun changeName(value: String) = change("name", value)
     fun changeStartedOn(value: String) {
-        if (!canChange()) return
+        if (!canChange() || form?.getBoolean("tradeInProtected") == true) return
         if (form?.getString("kind") == "create" && form?.getBoolean("paidExplicit") != true) form?.putString("initialPaidOn", value)
         change("startedOn", value)
     }
@@ -284,8 +293,10 @@ class ProjectViewModel(
     fun changeDirection(value: MoneyDirection) {
         if (form?.getString("kind") == "money") change("direction", value.name)
     }
-    fun changeAmount(value: String) = change("amount", value)
-    fun changeOccurredOn(value: String) = change("occurredOn", value)
+    fun changeAmount(value: String) { if (!protectedCorrection()) change("amount", value) }
+    fun changeOccurredOn(value: String) { if (!protectedCorrection()) change("occurredOn", value) }
+    private fun protectedCorrection() = form?.getString("kind") == "correctMoney" &&
+        form?.getBundle("eventBaseline")?.getString("exchangeGroupId") != null
     fun changeDescription(value: String) = change("description", value)
 
     fun save() {
@@ -494,7 +505,8 @@ class ProjectViewModel(
             "correctMoney" -> repository.correctMoneyEvent(CorrectMoneyEventCommand(commandId, decodeProject(requireNotNull(envelope.getBundle("baseline"))),
                 decodeEvent(requireNotNull(envelope.getBundle("eventBaseline"))), money(envelope, "amount"),
                 LocalDate.parse(text(envelope, "occurredOn").trim()), nullableText(envelope, "description"), writtenAt))
-            "delete" -> repository.deleteProject(DeleteProjectCommand(commandId, decodeProject(requireNotNull(envelope.getBundle("baseline"))), decodeEvents(envelope)))
+            "delete" -> repository.deleteProject(DeleteProjectCommand(commandId, decodeProject(requireNotNull(envelope.getBundle("baseline"))), decodeEvents(envelope),
+                ReplacementSavedFacts.links(envelope, "replacementLinksBaseline")))
             else -> MutationResult.ValidationFailure("Unknown form")
         }
     }
@@ -603,14 +615,16 @@ class ProjectViewModel(
                 if (active.getString("kind") == "edit") ProjectEditorMode.EDIT else ProjectEditorMode.CREATE,
                 text(active, "projectId"), text(active, "name"), text(active, "startedOn"), text(active, "initialAmount"), text(active, "initialPaidOn"),
                 text(active, "categoryId"), text(active, "note"), categories, clock.today(), phase(), active.getBoolean("dirty"), loadingEditor, errors, message,
-                active.getBoolean("conflict"), needsInitialRead(active)))
+                active.getBoolean("conflict"), needsInitialRead(active), active.getBoolean("tradeInProtected")))
         } else if (active.getString("kind") in listOf("end", "updateEnd")) {
             next = base.copy(endEditor = EndProjectUiState(
                 projectId = text(active, "projectId"), projectName = text(active, "projectName"), correcting = active.getString("kind") == "updateEnd",
                 endedOn = text(active, "endedOn"), endReason = text(active, "endReason"), recordRecovery = active.getBoolean("recordRecovery"),
                 recoveryAmount = text(active, "recoveryAmount"), recoveryOn = text(active, "recoveryOn"), recoveryDescription = text(active, "recoveryDescription"),
                 hasSettlement = active.getBundle("settlementBaseline") != null, today = clock.today(), phase = phase(), dirty = active.getBoolean("dirty"),
-                loading = loadingEditor, errors = errors, message = message, conflict = active.getBoolean("conflict"), needsInitialRead = needsInitialRead(active)))
+                loading = loadingEditor, errors = errors, message = message, conflict = active.getBoolean("conflict"), needsInitialRead = needsInitialRead(active),
+                tradeInProtected = active.getBundle("settlementBaseline")?.getString("exchangeGroupId") != null,
+                tradeInDateProtected = active.getString("kind") == "updateEnd" && active.getBoolean("tradeInProtected")))
         } else if (active.getString("kind") == "correctMoney") {
             next = base.copy(moneyCorrection = MoneyCorrectionUiState(
                 projectId = text(active, "projectId"), eventId = text(active, "eventId"), projectName = text(active, "projectName"),
@@ -618,7 +632,7 @@ class ProjectViewModel(
                 role = ProjectMoneyEventRole.entries.firstOrNull { it.name == text(active, "role") } ?: ProjectMoneyEventRole.REGULAR,
                 amount = text(active, "amount"), occurredOn = text(active, "occurredOn"), description = text(active, "description"), today = clock.today(),
                 phase = phase(), dirty = active.getBoolean("dirty"), loading = loadingEditor, errors = errors, message = message,
-                conflict = active.getBoolean("conflict"), needsInitialRead = needsInitialRead(active)))
+                conflict = active.getBoolean("conflict"), needsInitialRead = needsInitialRead(active), tradeInProtected = protectedCorrection()))
         } else if (active.getString("kind") == "delete") {
             val deleteMessage = message ?: if (phase() == SubmissionPhase.COMMITTED && active.getBoolean("deleteAbsent")) "已核对项目及关联金额记录当前不存在。" else null
             next = base.copy(deleteConfirmation = DeleteProjectUiState(
@@ -699,10 +713,12 @@ class ProjectViewModel(
         putString("id", event.id); putString("projectId", event.projectId); putString("direction", event.direction.name)
         putLong("amountCents", event.amountCents); putString("occurredOn", event.occurredOn.toString()); putString("description", event.description)
         putString("role", event.role.name); putString("operationId", event.operationId)
+        putString("basis", event.basis.name); putString("exchangeGroupId", event.exchangeGroupId)
     }
     private fun decodeEvent(bundle: Bundle): ProjectMoneyEventEntity = ProjectMoneyEventEntity(
         text(bundle, "id"), text(bundle, "projectId"), MoneyDirection.valueOf(text(bundle, "direction")), bundle.getLong("amountCents"),
-        LocalDate.parse(text(bundle, "occurredOn")), bundle.getString("description"), ProjectMoneyEventRole.valueOf(text(bundle, "role")), text(bundle, "operationId"))
+        LocalDate.parse(text(bundle, "occurredOn")), bundle.getString("description"), ProjectMoneyEventRole.valueOf(text(bundle, "role")), text(bundle, "operationId"),
+        MoneyBasis.valueOf(bundle.getString("basis") ?: MoneyBasis.CASH.name), bundle.getString("exchangeGroupId"))
     private fun decodeEvents(bundle: Bundle): List<ProjectMoneyEventEntity> = bundle.getParcelableArrayList<Bundle>("eventsBaseline").orEmpty().map(::decodeEvent)
     private fun encodeProject(project: LongTermProjectEntity): Bundle = Bundle().apply {
         putString("id", project.id); putString("name", project.name); putString("categoryId", project.categoryId)

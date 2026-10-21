@@ -40,4 +40,5 @@ data class DeleteProjectCommand(
     val commandId: String,
     val expectedProject: LongTermProjectEntity,
     val expectedEvents: List<ProjectMoneyEventEntity>,
+    val expectedLinks: List<com.cooper.lithic.data.local.ReplacementEntity> = emptyList(),
 )

@@ -1,0 +1,149 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\M16BackupRoundTripTest.kt",
+  "source_sha256": "5c6144e193618434f1f692ba078bbb9ea22f64e89a1f00405c31fa526b341fa0",
+  "started_at": "2026-10-21T05:53:59.159897+00:00",
+  "expected": [
+    "retained_real_v1_archive_restores_original_seven_tables_settings_media_and_reopens_as_v3",
+    "current_v2_roundtrip_preserves_links_trade_in_all_eight_tables_settings_and_original_media",
+    "old_schema2_switching_generation_with_five_field_v1_proof_migrates_and_verifies_without_false_rollback",
+    "corrupt_v2_group_is_rejected_before_restore_preview_and_current_dataset_stays_readable",
+    "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 14117110,
+      "sha256": "2dcc54802720c6a5c3d6cebc797dca6db228757506b3acd6a2e86b892cf4fe41",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 3175312,
+      "sha256": "ba531c1c51cc6bdbee3ad4084bfa4bfd93777307c3e17248cec71563a1eca00d",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 5.609,
+  "completed": [
+    "retained_real_v1_archive_restores_original_seven_tables_settings_media_and_reopens_as_v3",
+    "old_schema2_switching_generation_with_five_field_v1_proof_migrates_and_verifies_without_false_rollback",
+    "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive",
+    "current_v2_roundtrip_preserves_links_trade_in_all_eight_tables_settings_and_original_media",
+    "corrupt_v2_group_is_rejected_before_restore_preview_and_current_dataset_stays_readable"
+  ],
+  "bad": [],
+  "stdout_bytes": 4072,
+  "stdout_sha256": "8eeac6f4a76bf73ec66017f9a25723b808e53040fcaad89b24ef1d022f2a8102",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "retained_real_v1_archive_restores_original_seven_tables_settings_media_and_reopens_as_v3",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "retained_real_v1_archive_restores_original_seven_tables_settings_media_and_reopens_as_v3",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "old_schema2_switching_generation_with_five_field_v1_proof_migrates_and_verifies_without_false_rollback",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "old_schema2_switching_generation_with_five_field_v1_proof_migrates_and_verifies_without_false_rollback",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "current_v2_roundtrip_preserves_links_trade_in_all_eight_tables_settings_and_original_media",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "current_v2_roundtrip_preserves_links_trade_in_all_eight_tables_settings_and_original_media",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "corrupt_v2_group_is_rejected_before_restore_preview_and_current_dataset_stays_readable",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "corrupt_v2_group_is_rejected_before_restore_preview_and_current_dataset_stays_readable",
+      "status_code": 0
+    }
+  ]
+}

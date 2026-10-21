@@ -4,6 +4,7 @@ import com.cooper.lithic.data.local.CategoryEntity
 import com.cooper.lithic.data.local.LocalMediaAssetEntity
 import com.cooper.lithic.data.local.LongTermProjectEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
+import com.cooper.lithic.data.local.ReplacementEntity
 import com.cooper.lithic.data.local.StoredValueValidation
 import com.cooper.lithic.data.local.SubscriptionEntity
 import com.cooper.lithic.data.local.SubscriptionRenewalEntity
@@ -47,7 +48,54 @@ data class BackupDataV1(
 @Serializable
 data class BackupSettingsV1(val recordZoneId: String)
 
-data class BackupSnapshot(val data: BackupDataV1, val settings: BackupSettingsV1)
+data class BackupSnapshot(val data: BackupDataV2, val settings: BackupSettingsV1) {
+    constructor(data:BackupDataV1,settings:BackupSettingsV1):this(data.upgrade(),settings)
+}
+
+/** Format-v2 stored facts. Nullable fields are still mandatory at strict wire admission. */
+@Serializable
+data class BackupDataV2(
+    val categories:List<BackupCategoryV1>,
+    val projects:List<BackupProjectV1>,
+    val projectMoneyEvents:List<BackupProjectMoneyEventV2>,
+    val mediaAssets:List<BackupMediaAssetV1>,
+    val subscriptions:List<BackupSubscriptionV1>,
+    val subscriptionRenewals:List<BackupSubscriptionRenewalV1>,
+    val subscriptionStateChanges:List<BackupSubscriptionStateChangeV1>,
+    val replacements:List<BackupReplacementV2>,
+) {
+    fun recordCounts():Map<String,Long> = linkedMapOf(
+        "categories" to categories.size.toLong(),"long_term_projects" to projects.size.toLong(),
+        "project_money_events" to projectMoneyEvents.size.toLong(),"local_media_assets" to mediaAssets.size.toLong(),
+        "subscriptions" to subscriptions.size.toLong(),"subscription_renewals" to subscriptionRenewals.size.toLong(),
+        "subscription_state_changes" to subscriptionStateChanges.size.toLong(),"replacements" to replacements.size.toLong())
+    internal fun ordered():BackupDataV2 = copy(categories=categories.sortedBy { it.id },projects=projects.sortedBy { it.id },
+        projectMoneyEvents=projectMoneyEvents.sortedBy { it.id },mediaAssets=mediaAssets.sortedBy { it.id },
+        subscriptions=subscriptions.sortedBy { it.id },subscriptionRenewals=subscriptionRenewals.sortedBy { it.id },
+        subscriptionStateChanges=subscriptionStateChanges.sortedBy { it.id },replacements=replacements.sortedBy { it.id })
+
+    /** Exact old wire projection, solely for authenticating an existing M12 format-1 proof.
+     * New facts may never disappear behind a legacy proof or archive. */
+    internal fun legacyProjection():BackupDataV1 {
+        require(replacements.isEmpty() && projectMoneyEvents.all { it.basis=="CASH" && it.exchangeGroupId==null }) {
+            "New stored facts cannot be authenticated by a legacy restoration proof"
+        }
+        return BackupDataV1(categories,projects,projectMoneyEvents.map {
+            BackupProjectMoneyEventV1(it.id,it.projectId,it.direction,it.amountCents,it.occurredOn,it.description,it.role,it.operationId)
+        },mediaAssets,subscriptions,subscriptionRenewals,subscriptionStateChanges).ordered()
+    }
+}
+
+internal fun BackupDataV1.upgrade():BackupDataV2 = BackupDataV2(categories,projects,projectMoneyEvents.map {
+    BackupProjectMoneyEventV2(it.id,it.projectId,it.direction,it.amountCents,it.occurredOn,it.description,it.role,it.operationId,"CASH",null)
+},mediaAssets,subscriptions,subscriptionRenewals,subscriptionStateChanges,emptyList()).ordered()
+
+@Serializable
+data class BackupProjectMoneyEventV2(val id:String,val projectId:String,val direction:String,val amountCents:Long,
+    val occurredOn:String,val description:String?,val role:String,val operationId:String,val basis:String,val exchangeGroupId:String?)
+
+@Serializable
+data class BackupReplacementV2(val id:String,val predecessorId:String,val successorId:String,val createdAt:String)
 
 @Serializable
 data class BackupCategoryV1(
@@ -148,7 +196,8 @@ object BackupDtoMapper {
         subscriptions: List<SubscriptionEntity>,
         renewals: List<SubscriptionRenewalEntity>,
         states: List<SubscriptionStateChangeEntity>,
-    ): BackupDataV1 = BackupDataV1(
+        replacements:List<ReplacementEntity> = emptyList(),
+    ): BackupDataV2 = BackupDataV2(
         categories = categories.map {
             BackupCategoryV1(it.id, it.type.name, it.name, it.normalizedName, it.isFallback)
         },
@@ -159,9 +208,9 @@ object BackupDtoMapper {
             )
         },
         projectMoneyEvents = events.map {
-            BackupProjectMoneyEventV1(
+            BackupProjectMoneyEventV2(
                 it.id, it.projectId, it.direction.name, it.amountCents, it.occurredOn.toString(),
-                it.description, it.role.name, it.operationId,
+                it.description, it.role.name, it.operationId,it.basis.name,it.exchangeGroupId,
             )
         },
         mediaAssets = media.map {
@@ -184,5 +233,6 @@ object BackupDtoMapper {
                 it.reason, it.note, it.operationId,
             )
         },
+        replacements=replacements.map { BackupReplacementV2(it.id,it.predecessorId,it.successorId,it.createdAt.toString()) },
     ).ordered()
 }

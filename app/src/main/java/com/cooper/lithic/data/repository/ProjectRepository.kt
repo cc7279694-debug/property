@@ -26,6 +26,7 @@ data class ProjectDetail(
     val events: List<ProjectMoneyEventEntity>,
     val cost: ProjectCostResult,
     val asOf: LocalDate,
+    val replacementLinks: List<com.cooper.lithic.data.local.ReplacementEntity> = emptyList(),
 )
 
 data class ProjectPage(
@@ -60,10 +61,11 @@ open class ProjectRepository(
         StoredValueValidation.requireUuid(id)
         return coordinator.withSnapshot {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val project = db.projectDao().findProject(id) ?: return@withTransaction null
                 val category = checkNotNull(db.categoryDao().find(project.categoryId)) { "The project category is missing" }
                 val events = db.projectDao().eventsForProjects(listOf(id))
-                detail(project, category, events, asOf)
+                detail(project, category, events, asOf, db.replacementDao().listReplacements())
             }
         }
     }
@@ -77,6 +79,7 @@ open class ProjectRepository(
         cursor?.let { StoredValueValidation.requireUuid(it.id) }
         return coordinator.withSnapshot {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 loadPageInTransaction(cursor, pageSize, asOf, db.projectDao().countProjects())
             }
         }
@@ -95,6 +98,7 @@ open class ProjectRepository(
         require(pageCount > 0) { "A project window must contain at least one page" }
         return coordinator.withSnapshot {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val count = when (filter) {
                     ProjectFilter.ALL -> db.projectDao().countProjects()
                     ProjectFilter.CURRENT -> db.projectDao().countCurrentProjects(asOf)
@@ -119,7 +123,7 @@ open class ProjectRepository(
 
     // Includes the initial read signal and edits whose row counts do not change.
     open val changes: Flow<Unit> = db.invalidationTracker.createFlow(
-        "long_term_projects", "project_money_events", "categories",
+        "long_term_projects", "project_money_events", "categories", "replacements",
     ).map { Unit }
 
     /** The caller holds the single coordinator boundary and Room read transaction. */
@@ -142,9 +146,10 @@ open class ProjectRepository(
             dao.eventsForProjects(visible.map { it.id }).groupBy { it.projectId }
         val categories = if (visible.isEmpty()) emptyMap() else
             dao.categoriesForProjects(visible.map { it.categoryId }.distinct()).associateBy { it.id }
+        val links = db.replacementDao().listReplacements()
         val items = visible.map { project ->
             val category = checkNotNull(categories[project.categoryId]) { "The project category is missing" }
-            detail(project, category, events[project.id].orEmpty(), asOf)
+            detail(project, category, events[project.id].orEmpty(), asOf, links)
         }
         val next = if (queried.size > pageSize) items.last().let {
             ProjectCursor(it.project.startedOn, it.project.id, if (filter == ProjectFilter.HISTORY) it.cost.heldDays else null)
@@ -157,12 +162,14 @@ open class ProjectRepository(
         category: CategoryEntity,
         events: List<ProjectMoneyEventEntity>,
         asOf: LocalDate,
+        links: List<com.cooper.lithic.data.local.ReplacementEntity>,
     ): ProjectDetail {
         check(category.type == CategoryType.PROJECT) { "A project has an invalid category type" }
         val snapshot = ProjectSnapshot(
             LongTermProject(project.startedOn, project.endedOn),
             events.map { ProjectMoneyEvent(it.direction, Money(it.amountCents), it.occurredOn) },
         )
-        return ProjectDetail(project, category, events, ProjectCostEngine.evaluate(snapshot, asOf), asOf)
+        return ProjectDetail(project, category, events, ProjectCostEngine.evaluate(snapshot, asOf), asOf,
+            links.filter { it.predecessorId == project.id || it.successorId == project.id })
     }
 }

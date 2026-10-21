@@ -30,6 +30,7 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
                 }
             }
             requireBackupRecordCounts(counts)
+            com.cooper.lithic.data.repository.ReplacementStoredFacts.requireValid(database)
             val categories = database.categoryDao().list()
             val projects = database.projectDao().listProjects()
             val events = database.projectDao().listEvents()
@@ -40,12 +41,13 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
             val idChunks = subscriptions.map { it.id }.chunked(IDS_PER_QUERY)
             val renewals = idChunks.flatMap { subscriptionDao.renewalsForSubscriptions(it) }
             val states = idChunks.flatMap { subscriptionDao.statesForSubscriptions(it) }
+            val replacements=database.replacementDao().listReplacements()
             check(counts == listOf(categories.size, projects.size, events.size, media.size,
-                subscriptions.size, renewals.size, states.size).map { it.toLong() }) {
+                subscriptions.size, renewals.size, states.size,replacements.size).map { it.toLong() }) {
                 "A backup query omitted persisted rows"
             }
             BackupSnapshot(
-                BackupDtoMapper.fromRows(categories, projects, events, media, subscriptions, renewals, states),
+                BackupDtoMapper.fromRows(categories, projects, events, media, subscriptions, renewals, states,replacements),
                 settings,
             )
         }
@@ -57,7 +59,7 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
     private companion object {
         // Fixed names, never SQL identifiers from external input. Match the count/row order above.
         val TABLES = listOf("categories", "long_term_projects", "project_money_events", "local_media_assets",
-            "subscriptions", "subscription_renewals", "subscription_state_changes")
+            "subscriptions", "subscription_renewals", "subscription_state_changes","replacements")
         const val IDS_PER_QUERY = 400
     }
 }

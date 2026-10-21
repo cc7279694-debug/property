@@ -1,0 +1,112 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:260:37 Unnecessary safe call on a non-null receiver of type 'ReplacementViewModel'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:379:33 Condition is always 'true'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/data/backup/BackupExportService.kt:115:13 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/data/backup/RestoreContracts.kt:9:40 Non-public primary constructor is exposed via the generated 'copy()' method of the 'data' class.
+
+The generated 'copy()' will change its visibility in future releases.
+
+To suppress the warning do one of the following:
+- Annotate the data class with the '@ConsistentCopyVisibility' annotation.
+- Use the '-Xconsistent-data-class-copy-visibility' compiler flag.
+- Annotate the data class with the '@ExposedCopyVisibility' annotation 
+  (Discouraged, but can be used to keep binary compatibility).
+
+To learn more, see the documentation of the '@ConsistentCopyVisibility' and '@ExposedCopyVisibility' annotations.
+
+This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KT-11914.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:722:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ReplacementSavedFacts.kt:46:15 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/project/ReplacementSavedFacts.kt:48:15 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:checkDebugAndroidTestAarMetadata UP-TO-DATE
+> Task :app:processDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :app:compileDebugAndroidTestNavigationResources UP-TO-DATE
+> Task :app:generateDebugAndroidTestResValues UP-TO-DATE
+> Task :app:mapDebugAndroidTestSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugAndroidTestResources UP-TO-DATE
+> Task :app:mergeDebugAndroidTestResources UP-TO-DATE
+> Task :app:processDebugAndroidTestManifest UP-TO-DATE
+> Task :app:processDebugAndroidTestResources UP-TO-DATE
+> Task :app:kspDebugAndroidTestKotlin
+> Task :app:compileDebugAndroidTestKotlin
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/backup/M16BackupRoundTripTest.kt:156:151 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/backup/M16BackupRoundTripTest.kt:191:93 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/backup/M16BackupRoundTripTest.kt:192:106 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/backup/M16BackupRoundTripTest.kt:193:109 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>?' & 'Serializable?']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/backup/M16BackupRoundTripTest.kt:194:117 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>?' & 'Serializable?']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/backup/M16BackupRoundTripTest.kt:196:124 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/backup/M16BackupRoundTripTest.kt:197:127 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>?' & 'Serializable?']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:26:24 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:26:24 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:33:24 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:33:24 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:40:24 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:40:24 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:48:24 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:48:24 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:53:79 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:53:79 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:59:24 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:59:24 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:64:79 Cannot infer type for type parameter 'R'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/androidTest/java/com/cooper/lithic/data/local/M16MigrationTest.kt:64:79 Unresolved reference. None of the following candidates is applicable because of a receiver type mismatch:
+fun <T : Closeable?, R> T.use(block: (T) -> R): R
+
+> Task :app:compileDebugAndroidTestKotlin FAILED
+> Task :app:copyRoomSchemas NO-SOURCE
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugAndroidTestKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 35s
+30 actionable tasks: 5 executed, 25 up-to-date

@@ -176,7 +176,9 @@ internal object RetiredGenerationCleanup {
         val value = parser.nextValue() as? JSONObject ?: throw IOException("Cleanup metadata is not an object")
         require(parser.nextClean() == '\u0000')
         val names = value.keys()
-        require(buildSet { while (names.hasNext()) add(names.next()) } == fields)
+        val actual=buildSet { while(names.hasNext()) add(names.next()) }
+        require(actual==fields || fields==PROOF_FIELDS && actual==PROOF_FIELDS+"dataFormatVersion")
+        if(fields==PROOF_FIELDS && "dataFormatVersion" in actual) require(value.get("dataFormatVersion")==2)
         return value
     }
 

@@ -256,7 +256,8 @@ class DataGenerationStore(
                 val snapshot=RoomBackupSnapshotSource(fresh).capture()
                 RestoredGenerationWriter().verify(fresh,snapshot)
                 val proof=JSONObject().put("formatVersion",FORMAT_VERSION).put("generationId",id).put("nonce",nonce)
-                    .put("dataSha256",restoreDigest { BackupJson.writeData(snapshot.data,it) })
+                    .put("dataFormatVersion",2)
+                    .put("dataSha256",restoreDigest { RestoreProofData.write(snapshot,2,it) })
                     .put("settingsSha256",restoreDigest { BackupJson.writeSettings(snapshot.settings,it) })
                 // Checkpoint/close all owners before readiness and activation eligibility.
                 database.openHelper.writableDatabase.query("PRAGMA wal_checkpoint(FULL)").use { cursor ->
@@ -296,7 +297,7 @@ class DataGenerationStore(
             try {
                 val checked=openNamed(generations,candidate.id)
                 try {
-                    val proof=readMetadata(safeChild(candidate.directory,"restore-proof.json"),PROOF_FIELDS)
+                    val proof=readRestoreProof(safeChild(candidate.directory,"restore-proof.json"))
                     require(proof.getString("nonce")==candidate.nonce)
                     verifyRestoreProof(checked)
                 } finally { closeChecked(checked) }
@@ -341,11 +342,12 @@ class DataGenerationStore(
     }
 
     private suspend fun verifyRestoreProof(generation:ManagedGeneration) {
-        val proof=readMetadata(safeChild(generation.directory,"restore-proof.json"),PROOF_FIELDS)
+        val proof=readRestoreProof(safeChild(generation.directory,"restore-proof.json"))
         require(readId(proof.get("generationId"))==generation.id)
         readId(proof.get("nonce"))
         val snapshot=RoomBackupSnapshotSource(generation).capture()
-        require(proof.getString("dataSha256")==restoreDigest { BackupJson.writeData(snapshot.data,it) }) { "Restored facts do not match readiness proof" }
+        val dataFormat=if(proof.has("dataFormatVersion")) 2 else 1
+        require(proof.getString("dataSha256")==restoreDigest { RestoreProofData.write(snapshot,dataFormat,it) }) { "Restored facts do not match readiness proof" }
         require(proof.getString("settingsSha256")==restoreDigest { BackupJson.writeSettings(snapshot.settings,it) }) { "Restored settings do not match readiness proof" }
         RestoredGenerationWriter().verify(generation,snapshot)
     }
@@ -467,7 +469,17 @@ class DataGenerationStore(
         }
     }
 
-    private fun readMetadata(file: File, fields: Set<String>): JSONObject {
+    private fun readRestoreProof(file:File):JSONObject {
+        val proof=readMetadataShapes(file,listOf(PROOF_FIELDS,PROOF_FIELDS+"dataFormatVersion"))
+        if(proof.has("dataFormatVersion")) require(proof.get("dataFormatVersion")==2) {
+            "Restoration proof data format is unsupported"
+        }
+        return proof
+    }
+
+    private fun readMetadata(file:File,fields:Set<String>):JSONObject=readMetadataShapes(file,listOf(fields))
+
+    private fun readMetadataShapes(file: File, shapes: List<Set<String>>): JSONObject {
         if (!file.isFile || file.length() !in 1..MAX_METADATA_BYTES) {
             throw GenerationStorageException("Generation metadata is missing or exceeds its size limit")
         }
@@ -478,7 +490,7 @@ class DataGenerationStore(
             if (parser.nextClean() != '\u0000') throw GenerationStorageException("Generation metadata has trailing data")
             val keys = value.keys()
             val actual = buildSet { while (keys.hasNext()) add(keys.next()) }
-            if (actual != fields || value.get("formatVersion") != FORMAT_VERSION) {
+            if (actual !in shapes || value.get("formatVersion") != FORMAT_VERSION) {
                 throw GenerationStorageException("Generation metadata format is unsupported")
             }
             return value

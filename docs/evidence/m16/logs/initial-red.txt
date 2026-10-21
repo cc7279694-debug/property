@@ -1,0 +1,93 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:kspDebugUnitTestKotlin
+
+> Task :app:compileDebugUnitTestKotlin
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:8:20 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:8:68 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:8:75 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:8:102 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:11:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:11:61 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:11:68 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:14:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:14:71 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:14:78 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:14:105 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:14:132 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:17:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:17:71 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:17:78 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:17:105 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:20:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:20:71 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:20:78 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:20:105 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:23:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:23:61 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:23:68 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:26:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:26:66 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:26:73 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:26:100 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:29:20 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:29:73 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:29:80 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:29:107 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:32:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:32:70 Cannot infer type for type parameter 'T'. Specify it explicitly.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:32:77 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:32:104 Unresolved reference 'ReplacementEdge'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:35:20 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:38:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:39:23 Unresolved reference 'ReplacementRules'.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/��ʯ��APP/app/src/test/java/com/cooper/lithic/domain/project/ReplacementRulesTest.kt:42:20 Unresolved reference 'ReplacementRules'.
+
+> Task :app:compileDebugUnitTestKotlin FAILED
+> Task :app:copyRoomSchemas NO-SOURCE
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugUnitTestKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+22 actionable tasks: 2 executed, 20 up-to-date
+BUILD FAILED in 1m 7s

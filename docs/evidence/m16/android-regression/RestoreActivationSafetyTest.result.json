@@ -1,0 +1,189 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\RestoreActivationSafetyTest.kt",
+  "source_sha256": "c23e3eb937e008714224529918ee6058810346a101f89ada3b5413ed8573f77b",
+  "started_at": "2026-10-21T05:55:29.462584+00:00",
+  "expected": [
+    "exception_before_switch_keeps_the_original_pointer_and_complete_readable_dataset",
+    "exception_after_switch_restores_the_complete_original_dataset_and_records_a_stable_pointer",
+    "exception_on_first_new_open_restores_the_complete_original_dataset",
+    "persisted_switching_reopens_complete_new_or_rolls_back_when_new_media_is_damaged",
+    "old_generation_write_is_rejected_after_the_successful_restore_fence",
+    "changed_preview_snapshot_refuses_switch_and_retains_the_new_original_facts",
+    "later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 14117110,
+      "sha256": "2dcc54802720c6a5c3d6cebc797dca6db228757506b3acd6a2e86b892cf4fe41",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 3175312,
+      "sha256": "ba531c1c51cc6bdbee3ad4084bfa4bfd93777307c3e17248cec71563a1eca00d",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 8.047,
+  "completed": [
+    "old_generation_write_is_rejected_after_the_successful_restore_fence",
+    "exception_before_switch_keeps_the_original_pointer_and_complete_readable_dataset",
+    "persisted_switching_reopens_complete_new_or_rolls_back_when_new_media_is_damaged",
+    "changed_preview_snapshot_refuses_switch_and_retains_the_new_original_facts",
+    "exception_after_switch_restores_the_complete_original_dataset_and_records_a_stable_pointer",
+    "later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue",
+    "exception_on_first_new_open_restores_the_complete_original_dataset"
+  ],
+  "bad": [],
+  "stdout_bytes": 5503,
+  "stdout_sha256": "99a5259a12d5b58e2b6cccee9885497c906d9880a821fba3d97bd64e1a317d7e",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": "",
+      "test": "old_generation_write_is_rejected_after_the_successful_restore_fence",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": ".",
+      "test": "old_generation_write_is_rejected_after_the_successful_restore_fence",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": "",
+      "test": "exception_before_switch_keeps_the_original_pointer_and_complete_readable_dataset",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": ".",
+      "test": "exception_before_switch_keeps_the_original_pointer_and_complete_readable_dataset",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": "",
+      "test": "persisted_switching_reopens_complete_new_or_rolls_back_when_new_media_is_damaged",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": ".",
+      "test": "persisted_switching_reopens_complete_new_or_rolls_back_when_new_media_is_damaged",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": "",
+      "test": "changed_preview_snapshot_refuses_switch_and_retains_the_new_original_facts",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": ".",
+      "test": "changed_preview_snapshot_refuses_switch_and_retains_the_new_original_facts",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": "",
+      "test": "exception_after_switch_restores_the_complete_original_dataset_and_records_a_stable_pointer",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": ".",
+      "test": "exception_after_switch_restores_the_complete_original_dataset_and_records_a_stable_pointer",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "6",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": "",
+      "test": "later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "6",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": ".",
+      "test": "later_stable_open_cleans_only_the_known_previous_generation_and_preserves_unknown_old_residue",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "7",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": "",
+      "test": "exception_on_first_new_open_restores_the_complete_original_dataset",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+      "current": "7",
+      "id": "AndroidJUnitRunner",
+      "numtests": "7",
+      "stream": ".",
+      "test": "exception_on_first_new_open_restores_the_complete_original_dataset",
+      "status_code": 0
+    }
+  ]
+}

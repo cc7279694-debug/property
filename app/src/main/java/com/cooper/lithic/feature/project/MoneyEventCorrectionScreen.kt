@@ -42,7 +42,7 @@ internal fun MoneyEventCorrectionScreen(
         Text("纠正金额记录", style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.semantics { heading() })
         Text(state.projectName, style = MaterialTheme.typography.bodyLarge)
-        Text("纠正原记录的金额、真实日期或说明；真实退款请新增收回记录。",
+        Text(if (state.tradeInProtected) "以旧换新关联记录只修改说明，不单独修改金额或真实日期。" else "纠正原记录的金额、真实日期或说明；真实退款请新增收回记录。",
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (state.loading) Text("正在读取原金额记录", style = MaterialTheme.typography.bodyLarge)
         Text("方向：${if (state.direction == MoneyDirection.OUTLAY) "投入" else "收回"}",
@@ -53,10 +53,10 @@ internal fun MoneyEventCorrectionScreen(
             ProjectMoneyEventRole.END_SETTLEMENT -> "结束关联收回"
         }}", Modifier.testTag("correction-role"), style = MaterialTheme.typography.bodyMedium)
         AmountField(state.amount, onAmountChange, Modifier.testTag("correction-amount"), label = "实际金额（元）",
-            error = state.errors["amount"], enabled = state.canEdit)
+            error = state.errors["amount"], enabled = state.canEdit && !state.tradeInProtected)
         state.today?.let { today ->
             ProjectDateInput(state.occurredOn, onOccurredOnChange, today, "真实发生日期", "correction-occurred-on",
-                error = state.errors["occurredOn"], enabled = state.canEdit)
+                error = state.errors["occurredOn"], enabled = state.canEdit && !state.tradeInProtected)
         }
         ProjectNoteInput(state.description, onDescriptionChange, "说明（可选）", "correction-description",
             state.canEdit, state.errors["description"])

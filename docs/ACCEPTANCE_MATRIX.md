@@ -1,6 +1,25 @@
 # 验收登记
 
-当前正式结论：**M15 ACCEPTED / FROZEN — PASS WITH NOTES**，评审`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`，依据用户转交的ChatGPT独立验收登记。M15-T01～T06、此前133 JVM PASS、32 Android PASS及7张隔离截图获限定认可；本轮仅文档回写，不是重新测试。M14及此前冻结/历史证据保持，M10 PENDING / DEFERRED、M13-T06 NOT_RUN / DEFERRED、G1未整体通过，Q06不整体CLOSED，M16未授权。
+当前候选：**M16 READY_FOR_REVIEW**；本轮实施验证252 JVM/50 Android/7图，原M16-T01～T06执行PASS，等待ChatGPT独立审查，不自行ACCEPTED/FROZEN。M15及此前限定冻结保持；M10 PENDING / DEFERRED、M13-T06 NOT_RUN / DEFERRED、G1未整体通过，Q06不整体CLOSED，M17未授权。
+
+## M16候选执行登记（2026-10-21）
+
+从M15冻结回写`661d2b5addc4eca377756f08edb84668ba700736`，在`codex/m16-replacement-trade-in`实施。以下是Codex实际运行证据，**不是独立验收或冻结**。[集中报告](evidence/M16-verification.md)、[精确方法/身份统计](evidence/m16/results.json)、[证据入口](evidence/m16/README.md)。
+
+| 案例 | 本轮实际结果与边界 |
+|---|---|
+| M16-T01 one_predecessor_successor_no_cycles | PASS：纯规则及真实Room验证A→B→C，自指/环/多前后任/缺项/陈旧事实拒绝。 |
+| M16-T02 link_does_not_end_old | PASS：建链/断链不改变金额和生命周期。 |
+| M16-T03 trade_in_balance | PASS：旧回收3000、新现金5000＋折抵3000，新成本8000、净新增5000；真实三笔及零现金/同日。 |
+| M16-T04 trade_in_all_or_nothing | PASS：六处SQL故障回滚、身份/完整事实CAS、精确重放/冲突、用户确认的成组保护。 |
+| M16-T05 delete_middle_does_not_guess | PASS：普通中间项目删除只断相关边、不重连，失败回滚及陈旧关系拒绝。交易项目删除按用户确认禁止。 |
+| M16-T06 v1_backup_upgrade | PASS：真实v1原件校验升级、v2八表/关系/组/设置/媒体往返、损坏保护旧集；旧schema2＋五字段proof＋SWITCHING生产打开兼容。 |
+
+最终**252 JVM PASS＝46新增＋206相关回归；50 Android PASS＝迁移5＋交易19＋备份5＋VM3＋页面旅程2＋代作用域3＋首页6＋恢复守卫7**，总302个唯一方法，0失败/错误/跳过。重复运行不重复计数。最终构建6m51s、Lint0错误9警告、App/Test及最终实际运行字节/同签名一致；schema1/2原blob不改。7张截图来自隔离ComponentActivity中的真实LithicApp/Nav3，360dp及02/04两张200%是LocalDensity画布，不是MainActivity/系统字号。
+
+断组导出、同刻提交时间与pending比较返回上下文有真实RED和最终GREEN，初期缺实现/编译/证书环境失败也如实保留；不是通过改原断言获取PASS。用户确认的整组纠错/撤销排除边界、所有历史NOTES保留。仅原API36/x86_64 5672，同证书App/Test各更新3次、仅新合成根，原实例继续在线且no_backup为空，默认账本/其它设备未访问。
+
+**NOT_RUN / NOTES：**API26、真机/OEM、Release/稳定签名、真实个人记录、系统200%/完整IME/TalkBack、真实午夜、大规模长期性能、新SAF及本轮schema3/format2真实终止/断电/LMK。旧SWITCHING用例是兼容测试，不等于重跑M12三个真实终止点；Q06不整体关闭。M10三历史JPEG FAIL/延期、M13-T06延期/G1未整体通过、Q03～Q06及未来集成期限不变。等待ChatGPT，不进入M17。
 
 ## M15正式冻结登记（2026-10-21）
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.report.OverviewEngineTest" tests="23" skipped="0" failures="0" errors="0" timestamp="2026-10-21T05:18:44.340Z" hostname="WHOCARE" time="0.025">
+  <properties/>
+  <testcase name="categories_without_records_are_kept_without_faking_records" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.005"/>
+  <testcase name="payment_unknown_on_observation_day_has_no_current_contribution" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="prepaid_future_subscription_does_not_replace_current_price_before_boundary" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="home_uses_same_engines_for_project_and_current_subscription" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="missing_category_relationship_is_rejected_for_each_record_type" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="duplicate_identity_is_rejected_within_each_record_type" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="combine_preserves_exact_rates_merges_categories_and_adds_all_counts" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="duplicate_category_id_is_rejected_even_when_name_or_kind_differs" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="malformed_frozen_subscription_snapshot_is_propagated_without_partial_total" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.0"/>
+  <testcase name="positive_and_negative_rates_can_cancel_to_real_zero_without_hiding_records" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.0"/>
+  <testcase name="negative_and_tiny_nonzero_project_rates_are_not_clamped_or_display_rounded" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.0"/>
+  <testcase name="no_zero_confused_with_empty" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.0"/>
+  <testcase name="no_records_preserves_observation_date_and_is_empty" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.0"/>
+  <testcase name="category_sum_matches_type_without_intermediate_decimal128_rounding" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="project_end_day_and_post_end_settlement_never_reenter_current_total" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="blank_identity_category_relationship_and_category_name_are_rejected" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.004"/>
+  <testcase name="inactive_only_records_are_not_empty_and_category_rows_remain" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.0"/>
+  <testcase name="active_only_aggregate_keeps_all_record_counts_and_zero_categories" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="records_in_different_types_may_share_the_same_identity" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <testcase name="categories_sort_by_name_then_id_independent_of_input_order" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.0"/>
+  <testcase name="combine_rejects_different_dates_conflicting_names_and_count_overflow" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.002"/>
+  <testcase name="subscription_wrapper_identity_must_match_its_frozen_snapshot" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.0"/>
+  <testcase name="category_of_wrong_type_is_rejected_for_each_record_type" classname="com.cooper.lithic.domain.report.OverviewEngineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

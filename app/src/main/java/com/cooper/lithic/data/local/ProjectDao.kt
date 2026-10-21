@@ -106,23 +106,27 @@ interface ProjectDao {
         WHERE id = :id AND projectId = :projectId AND direction = :direction
             AND amountCents = :expectedAmountCents AND occurredOn = :expectedOccurredOn
             AND description IS :expectedDescription AND role = :role AND operationId = :operationId
+            AND basis = :basis AND exchangeGroupId IS :exchangeGroupId
     """)
     suspend fun updateEventIfUnchanged(
         id: String, projectId: String, direction: com.cooper.lithic.core.model.MoneyDirection,
         expectedAmountCents: Long, expectedOccurredOn: LocalDate, expectedDescription: String?,
         role: ProjectMoneyEventRole, operationId: String,
         amountCents: Long, occurredOn: LocalDate, description: String?,
+        basis: MoneyBasis = MoneyBasis.CASH, exchangeGroupId: String? = null,
     ): Int
 
     @Query("""
         DELETE FROM project_money_events WHERE id = :id AND projectId = :projectId
             AND direction = :direction AND amountCents = :amountCents AND occurredOn = :occurredOn
             AND description IS :description AND role = :role AND operationId = :operationId
+            AND basis = :basis AND exchangeGroupId IS :exchangeGroupId
     """)
     suspend fun deleteEventIfUnchanged(
         id: String, projectId: String, direction: com.cooper.lithic.core.model.MoneyDirection,
         amountCents: Long, occurredOn: LocalDate, description: String?,
         role: ProjectMoneyEventRole, operationId: String,
+        basis: MoneyBasis = MoneyBasis.CASH, exchangeGroupId: String? = null,
     ): Int
 
     @Query("""

@@ -4,15 +4,17 @@
 
 ## Current Stage
 
-- **M15 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-21正式转交的ChatGPT独立验收结论，评审提交`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`，分支`codex/m15-history-review`。M15-T01～T06、此前133项定向JVM PASS（29新增＋104回归）、32项Android PASS（20本模块＋12相关回归）及7张隔离截图获限定认可；原Lint0错误9警告和Debug App/Test交付记录保留。仅API36/x86_64合成验证，截图为隔离ComponentActivity中的真实LithicApp/Nav3；360dp/后2图200%是LocalDensity画布，跨日使用可变BusinessClock与前台生命周期，受控文件往返不扩为新的SAF验证。API26/真机/OEM/Release/稳定签名、默认MainActivity/真实记录、系统200%/完整IME/TalkBack、真实午夜、长期性能、新SAF/LMK/断电等NOT_RUN。原RED/UNKNOWN/NOT_RUN/NOTES、报告/结果/checkpoint均保持当时状态；本轮仅文档冻结登记，未重跑测试、构建、核验APK或操作设备，不将独立验收视为新一次测试PASS。[正式登记](ACCEPTANCE_MATRIX.md#m15正式冻结登记2026-10-21)、[原短报告](evidence/M15-verification.md)、[原证据](evidence/m15/README.md)、[原checkpoint](checkpoints/2026-10-21-M15.md)。
+- **M16 — READY_FOR_REVIEW**：来源M15冻结回写`661d2b5addc4eca377756f08edb84668ba700736`，分支`codex/m16-replacement-trade-in`。替换链/纵向对比、三笔成组以旧换新、用户确认的保护、Room3及backup2候选已实施。M16-T01～T06本轮执行PASS；最终252 JVM＋50 Android＝302个唯一方法PASS，0失败/错误/跳过，Lint0错误9警告，Debug App/Test构建成功，7张隔离截图。保留全部RED、编译/环境失败及原结果。仅API36/x86_64原5672在线合成实例、plain Application隔离runner；真实LithicApp/Nav3/LocalDensity360dp和200%，受控文件往返不是新SAF验收。原实例/boot/设置保持、no_backup为空、默认账本未开。API26/真机/OEM/Release/稳定签名、系统大字/完整IME/TalkBack、真实午夜/LMK/断电及本轮schema3/format2真实进程终止仍NOT_RUN。没有未解决的本模块确定性失败；等待ChatGPT独立审查，不自行冻结或进入M17。[短报告](evidence/M16-verification.md)、[验收登记](ACCEPTANCE_MATRIX.md#m16候选执行登记2026-10-21)、[原始证据](evidence/m16/README.md)、[checkpoint](checkpoints/2026-10-21-M16.md)。
 
-- **M14 — ACCEPTED / FROZEN — PASS WITH NOTES**：用户2026-10-21正式转交ChatGPT对`bf621689180b4d5d86e42f8136e4aafb1971c5fa`的独立复验结论，分支`codex/m14-category-search`。M14-T01～T05、原136项JVM PASS、最终29项Android PASS（原28＋独立截图旅程1）及8张隔离截图获限定认可；原Lint0错误9警告保持。仅API36/x86_64合成验证，截图为隔离ComponentActivity中的真实LithicApp/Nav3，360dp/搜索200%是LocalDensity画布；受控文件目标往返不是新SAF验证。真实竞争、系统200%/完整IME与TalkBack、MainActivity发行入口、API26/真机/OEM/Release仍NOT_RUN。全部RED、原始报告、初次NOT_RUN和历史NOTES保留。本轮仅文档冻结登记及证据链接修正，未重跑测试/构建、核验或操作设备；不将独立复验记作新一次产品测试。[正式登记](ACCEPTANCE_MATRIX.md#m14正式冻结登记2026-10-21)、[原补验报告](evidence/M14-Android-verification.md)、[原结果](evidence/m14-android/results.json)、[原checkpoint](checkpoints/2026-10-21-M14-Android.md)。构建日志链接改指向实际原日志的原字节归档，不补造或重跑。
+- **M15 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-21正式转交的ChatGPT独立验收结论，评审提交`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`，分支`codex/m15-history-review`。M15-T01～T06、此前133项定向JVM PASS（29新增＋104回归）、32项Android PASS（20本模块＋12相关回归）及7张隔离截图获限定认可；原Lint0错误9警告和Debug App/Test交付记录保留。仅API36/x86_64合成验证，截图为隔离ComponentActivity中的真实LithicApp/Nav3；360dp/后2图200%是LocalDensity画布，跨日使用可变BusinessClock与前台生命周期，受控文件往返不扩为新的SAF验证。API26/真机/OEM/Release/稳定签名、默认MainActivity/真实记录、系统200%/完整IME/TalkBack、真实午夜、长期性能、新SAF/LMK/断电等NOT_RUN。原RED/UNKNOWN/NOT_RUN/NOTES、报告/结果/checkpoint均保持当时状态；当次仅文档冻结登记，未重跑测试、构建、核验APK或操作设备，不将独立验收视为新一次测试PASS。[正式登记](ACCEPTANCE_MATRIX.md#m15正式冻结登记2026-10-21)、[原短报告](evidence/M15-verification.md)、[原证据](evidence/m15/README.md)、[原checkpoint](checkpoints/2026-10-21-M15.md)。
+
+- **M14 — ACCEPTED / FROZEN — PASS WITH NOTES**：用户2026-10-21正式转交ChatGPT对`bf621689180b4d5d86e42f8136e4aafb1971c5fa`的独立复验结论，分支`codex/m14-category-search`。M14-T01～T05、原136项JVM PASS、最终29项Android PASS（原28＋独立截图旅程1）及8张隔离截图获限定认可；原Lint0错误9警告保持。仅API36/x86_64合成验证，截图为隔离ComponentActivity中的真实LithicApp/Nav3，360dp/搜索200%是LocalDensity画布；受控文件目标往返不是新SAF验证。真实竞争、系统200%/完整IME与TalkBack、MainActivity发行入口、API26/真机/OEM/Release仍NOT_RUN。全部RED、原始报告、初次NOT_RUN和历史NOTES保留。当次仅文档冻结登记及证据链接修正，未重跑测试/构建、核验或操作设备；不将独立复验记作新一次产品测试。[正式登记](ACCEPTANCE_MATRIX.md#m14正式冻结登记2026-10-21)、[原补验报告](evidence/M14-Android-verification.md)、[原结果](evidence/m14-android/results.json)、[原checkpoint](checkpoints/2026-10-21-M14-Android.md)。构建日志链接改指向实际原日志的原字节归档，不补造或重跑。
 - **M11-A — ACCEPTED / FROZEN — PASS WITH NOTES（仅备份核心）**：用户本轮明确转交ChatGPT独立验收结论，锁定来源`79771fcf5978a938d240d517dd4dacb1d21021a6`。原报告、113项JVM和5项Android源码、未运行媒体/SAF及临时文件NOTES保持历史原样；不把独立审查登记为重跑测试。
 - **M11 — ACCEPTED / FROZEN — PASS WITH NOTES**：用户本轮转交ChatGPT独立结论，评审`635e33a57c66c286fa5c19f009a5565a1e70b8e2`；仅限冻结M09/schema2、format1完整手动导出、登记JPEG/PNG原字节及真实SAF。149 JVM、16＋1分两Test身份的既有执行证据与全部旧失败/NOT_RUN原样保留，不是本轮重跑。原M11-A核心限定冻结不变。[正式登记](ACCEPTANCE_MATRIX.md#m11正式独立冻结登记2026-10-20)。
-- **M12 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户本轮正式转交的ChatGPT独立验收结论，评审提交`e34187632468c9c3aaf7bb5d04d30a26320a18b0`。原M12候选`b5691419ad8f113b837a4cb16e4c1e47227e2752`的96项JVM、74项Android及真实SAF恢复证据，连同M12-T04三个真实进程终止场景PASS，均作为冻结依据登记；本次不重跑。第一例ADB外层exit=null / NOT_CAPTURED保持，完整Q06不整体CLOSED。[正式验收登记](ACCEPTANCE_MATRIX.md#m12正式冻结登记2026-10-20)，[原候选报告](evidence/M12-verification.md)，[三点报告](evidence/M12-process-death-verification.md)。
+- **M12 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户本轮正式转交的ChatGPT独立验收结论，评审提交`e34187632468c9c3aaf7bb5d04d30a26320a18b0`。原M12候选`b5691419ad8f113b837a4cb16e4c1e47227e2752`的96项JVM、74项Android及真实SAF恢复证据，连同M12-T04三个真实进程终止场景PASS，均作为冻结依据登记；该次冻结回写不重跑。第一例ADB外层exit=null / NOT_CAPTURED保持，完整Q06不整体CLOSED。[正式验收登记](ACCEPTANCE_MATRIX.md#m12正式冻结登记2026-10-20)，[原候选报告](evidence/M12-verification.md)，[三点报告](evidence/M12-process-death-verification.md)。
 - **M13 — PENDING；T01～T05独立PASS WITH NOTES，T06 NOT_RUN / DEFERRED**：独立评审`775951b9373c67460b713548fba1f3f263e84b45`及原113 JVM＋36 Android/截图保持。用户2026-10-21明确暂缓长期签名、正式升级与首次真实录入，允许M14继续；完整M13及G1未通过，不自冻结。[原签名门禁报告](evidence/M13-T06-readiness.md)保留历史原样。
 - **M10 — PENDING / DEFERRED**：候选`codex/m10-b1b2-android-safety-resume`仍为`732333b7a2803ec1f4487e437a581979a270e3ee`，不合并。三JPEG历史FAIL及全部UNKNOWN/NOT_RUN/NOTES、未入Git设备记录、H2/C2/M10保留现场均未改。H2/C2/M10等受保护现场不访问、不清理、不重跑；原5686缺失且未复用，M14补验只用另获授权的全新5672隔离设备。保留的[M10末次报告](https://github.com/cc7279694-debug/property/blob/732333b7a2803ec1f4487e437a581979a270e3ee/docs/research/M10_B1B2_MAINLINE_RESULTS.md)不改判。
-- **继承边界**：M00～M09、M11/M12与UI-C1原冻结结论保持；本分支不合并M10 Worker/Stage V2/JNI或UI-C1页面，不改Room schema v2、领域算法或backup format v1。M14类别只改名称/引用，搜索只读；M11/M12原导出、恢复和换代协议保持。下方旧模块授权与数字仅为历史。
+- **继承边界**：M00～M09、M11/M12与UI-C1原冻结结论保持；本分支不合并M10 Worker/Stage V2/JNI或UI-C1页面；M16明确授权Room schema2→3及backup format1→2，冻结领域算法不改。M14类别只改名称/引用，搜索只读；M11/M12原导出、恢复和换代协议保持。下方旧模块授权与数字仅为历史。
 - **已知限制**：准备中断的未知私有半文件保守保留，不做递归扫盘；临时副本与ZIP可能同时占用空间，payload预算不是整个磁盘硬上限。SAF阻塞调用不能保证即时取消；成功只证明已观察到关闭并读回相同字节，不承诺提供方断电持久性。Q05原字节及完整M12往返边界不变。
 
 ## 继承的冻结基线与历史验证
@@ -53,21 +55,20 @@
 - **CurrentAbsence：**只证明当前缺失，不提供永久删除操作日志；继续保留M07的ProjectAbsent和旧END_SETTLEMENT冲突边界。
 - **空间不足：**真实 SQLite 满页可能被 Android/Room 回滚异常表现为普通 DATABASE；继续保留输入、事务原子性及同命令恢复，不按消息猜测或宣称所有磁盘满均准确分类。
 - **性能与恢复：**全量存储事实预检在长期大数据下的性能仍待M22验证；1000 条分页是正确性/查询范围验证，不是长期性能基准，必要完整历史计算不保证无限历史恒定耗时。SavedState 不是持久业务草稿；已保存任务的 SIGKILL/Recents 不保证未保存状态、force-stop、断电或真实LMK后的未持久化草稿恢复。
-- **数据保障：**M11完整导出已冻结，M12安全恢复及三个指定终止点已独立冻结（PASS WITH NOTES），仍不代表所有平台/故障路径已验证；Debug 暂不用于不可丢失的长期个人记录。M14本次API36定向补验不替代真实竞争、新的真实SAF/IME或其他平台验证。M10媒体、替换、多段复用、图表/排行、单独资金事件删除及后续集成保持原边界/NOT_RUN。
+- **数据保障：**M11完整导出已冻结，M12安全恢复及三个指定终止点已独立冻结（PASS WITH NOTES），仍不代表所有平台/故障路径已验证；Debug 暂不用于不可丢失的长期个人记录。M14本次API36定向补验不替代真实竞争、新的真实SAF/IME或其他平台验证。M10媒体及后续图表/统计等集成保持原边界；M16替换/成组折抵仅按本轮证据登记，不扩大其他未执行项。
 - **平台与独立执行：**真机、API26、OEM 备份/迁移、完整 TalkBack、真实内存压力 LMK、Release/正式签名升级仍 NOT_RUN；Debug 空 ComponentActivity 测试宿主不得未经 Release 验证正式交付。M01 独立未重装，M02/M03 独立未重跑本机 Gradle，M04～M07 独立未重跑本机 Gradle/安装等全部历史 NOTES 保留。M08 独立审查未在用户 Windows 本机重新运行 Gradle、重新安装 APK 或独立核验 APK 字节；超大 JSON 未整体重新解析，验收依据源码/XML/日志/迁移及设备证据。**M09 ChatGPT独立审查未在用户Windows本机重新运行Gradle或独立核验最终APK字节。**各次Codex验收回写均未重跑产品测试；549项PASS来自M09原实施执行证据，不把独立源码审查或本次文档核查视为重新执行。TypeScript/ESLint 不适用，NO-SOURCE 不计 PASS。
 
 - **后续 schema 升级：**必须同步维护既有数据库版本预检及已知 Room 身份，不因 M08 通过就放过未知版本或结构不匹配库。
 
 ## Data / Architecture
 
-Room v2七表、Migration1→2、Settings/DataStore记录时区、AppContainer唯一owner/coordinator保持。M13增加同事务ReportRepository、冻结引擎汇总和前台记录日期刷新，不持久化派生成本；读失败保留旧快照及日期，旧请求/旧代结果受保护。M11-B在同一协调器持有期读取七表/设置并复制已登记媒体原字节；私有副本核验后释放协调器，随后生成完整ZIP并写手动SAF目标。目标关闭、全量读回匹配后才显示成功。媒体不完整或不受认证时明确失败。没有直接复制活动.db或自动备份。M12已在独立代重建、校验后切换并完成合成SAF往返和此前三点真实自身终止验证（本次只登记正式冻结）；API26/真机/OEM、提供方断电持久性及更广故障仍NOT_RUN。详见[ARCHITECTURE](ARCHITECTURE.md)。
+M16候选为Room3八表、显式Migration1→2→3、backup2及旧v1显式DTO升级；旧schema1/2 Git原字节保留。共用唯一generation/owner/coordinator与冻结引擎，替换边和三行成组折抵持久化；用户确认的组保护强制执行。M12 pointer/ready/proof协议仍1，旧五字段hash与新dataFormatVersion2严格区分，不改安全回退/保守残留规则。媒体保持M11原字节、设置/关系/金额在同快照读写；不是M10严格JPEG实现。详见[ARCHITECTURE](ARCHITECTURE.md)。
 
 ## Git
 
-- 当前功能分支`codex/m15-history-review`，工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`，来源M14冻结`f3f4f694f6c3a7348cb7b8b64e795a631f394d12`。保留来源、其它分支和未入Git现场，不合并main。
-- 本轮仅M15冻结文档回写，登记起点/评审HEAD为`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`，本地与远端在修改前完全一致、工作区干净；登记提交与推送以最终Git回执为准。
-- M09冻结、M10正式/未冻结候选、UI-C1及main均不合并或修改；完整原规划和历史证据不改。
+- 当前功能分支`codex/m16-replacement-trade-in`，工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`，来源M15冻结回写`661d2b5addc4eca377756f08edb84668ba700736`；开始时本地/远端基线一致、工作区干净。保留其它分支与未入Git设备现场，不合并main。
+- 本轮仅M16及必要备份/迁移/导航整合；提交推送以最终Git回执为准。原件规划/schema1/2/历史checkpoint和证据不改。
 
 ## Next Recommended Task
 
-M15正式冻结登记完成后停止，等待用户另行授权；M16未授权，不自动开始。M13-T06 NOT_RUN / DEFERRED、G1未整体通过、M10 PENDING / DEFERRED及三历史JPEG FAIL、Q06与全部历史NOTES保持。5672末次在线仅为此前交付记录；本轮未核验或操作任何设备，不推定当前状态，不授权后续操作、清理或停止。
+M16已完成本轮集中验证与候选交付，停止等待ChatGPT独立验收；不自动冻结或进入M17。M13-T06延期/G1未整体通过、M10延期/三历史JPEG FAIL、Q06与全部历史NOTES保持。设备本轮仅明确授权5672原在线合成实例，不构成后续启停/重建/清理或其它设备许可。

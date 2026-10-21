@@ -7,6 +7,7 @@ import com.cooper.lithic.data.repository.ReportRepository
 import com.cooper.lithic.data.repository.CategoryRepository
 import com.cooper.lithic.data.repository.RankingRepository
 import com.cooper.lithic.data.repository.SearchRepository
+import com.cooper.lithic.data.repository.ReplacementRepository
 import com.cooper.lithic.domain.report.OverviewResult
 import java.time.ZoneId
 
@@ -27,6 +28,7 @@ sealed interface LedgerUiState {
         val categoryRepository: CategoryRepository? = null,
         val searchRepository: SearchRepository? = null,
         val rankingRepository: RankingRepository? = null,
+        val replacementRepository: ReplacementRepository? = null,
     ) : LedgerUiState
     data object Failed : LedgerUiState
 }

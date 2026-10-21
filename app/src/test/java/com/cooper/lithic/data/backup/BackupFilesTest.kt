@@ -56,8 +56,8 @@ class BackupFilesTest {
         val manifest = BackupManifestV1.complete(core, "0.1.0-m09", at)
         val json = Json.parseToJsonElement(manifest.encode().decodeToString()).toString()
         for (field in listOf("formatVersion", "minReaderFormat", "producerAppVersion", "sourceDatabaseSchemaVersion", "createdAt", "recordZoneId", "recordCounts", "files")) assertTrue(json.contains("\"$field\""))
-        assertEquals(1, manifest.formatVersion)
-        assertEquals(2, manifest.sourceDatabaseSchemaVersion)
+        assertEquals(2, manifest.formatVersion)
+        assertEquals(3, manifest.sourceDatabaseSchemaVersion)
         assertEquals(at.toString(), manifest.createdAt)
         assertFalse(manifest.files.any { it.path == "manifest.json" })
     }

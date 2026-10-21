@@ -1,0 +1,79 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M16BackupRoundTripTest#complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\M16BackupRoundTripTest.kt",
+  "source_sha256": "7f99ffbe85f53962d24d8d3d56fd1d4ae4dd7d0937c1e132c19c3836c39bae47",
+  "started_at": "2026-10-21T05:14:25.423194+00:00",
+  "expected": [
+    "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 12968303,
+      "sha256": "0694c4e444bf139457412b90b6ae0fb3eea7f840e170e0378d6e9ac12bcff933",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2682839,
+      "sha256": "b62fe5088efe45b8fda278c301a3ec2702dcc162c3e4076f325bc85261acb42a",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "status": "FAIL_OR_UNKNOWN",
+  "exit_code": 0,
+  "seconds": 3.828,
+  "completed": [],
+  "bad": [
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stack": "java.lang.AssertionError: A complete export may not certify an archive whose required transaction facts are missing: Success(byteLength=4212, sha256=a257ceb6e4b1b788602ed4f715cd37a8a869d3ee924afd1d94f7120246aa6f9c, temporaryFilesRemaining=false)",
+      "stream": "",
+      "test": "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive",
+      "status_code": -2
+    }
+  ],
+  "stdout_bytes": 6184,
+  "stdout_sha256": "5698cbddc04464ba061e8aa9e2136a95f611eeb7c8534fdd3aa43fea16809ace",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": "",
+      "test": "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stack": "java.lang.AssertionError: A complete export may not certify an archive whose required transaction facts are missing: Success(byteLength=4212, sha256=a257ceb6e4b1b788602ed4f715cd37a8a869d3ee924afd1d94f7120246aa6f9c, temporaryFilesRemaining=false)",
+      "stream": "",
+      "test": "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive",
+      "status_code": -2
+    }
+  ]
+}

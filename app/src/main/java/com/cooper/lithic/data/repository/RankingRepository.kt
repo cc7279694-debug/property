@@ -75,6 +75,7 @@ open class RankingRepository(
         return coordinator.withSnapshot {
             val observedOn = asOf ?: clock.today()
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 db.requireDefaults()
                 val categories = db.categoryDao().list().associateBy { it.id }
                 val verifiedMedia = mutableSetOf<String>()

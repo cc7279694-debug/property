@@ -1,12 +1,24 @@
 # 当前架构事实
 
+## M16：替换链与成组折抵（2026-10-21）
+
+`ReplacementRepository`依附同generation/LocalWriteCoordinator和Room事务。replacements表前任/后任各自唯一并有项目RESTRICT外键；共同ReplacementRules校验缺引用、自指、分叉及环。纯link/unlink只写关系；普通项目删除在原事务中对完整关联边CAS后断边，不推断重连。链读取在同一业务日/快照中批量取事实，纵向显示冻结引擎结果；它读取全图元数据和相关交易/链事实，未声称固定50条开销或完成大规模基准。
+
+`recordTradeIn`固定command/group/角色派生身份，原项目结束、新项目、旧非现金回收/新现金INITIAL/新非现金REGULAR及可选边原子写入；写前复核完整旧事实、关系、引用、日期和冻结引擎checked累计，全部目标事实相等才识别重放。3笔与唯一INITIAL不会另加总价。用户明确确认的组保护由原写入口强制执行；所有相关读取/写入及备份共同检查完整组。普通金额/订阅计算公式未改。
+
+Room现为3：显式1→2→3，旧事件CASH/null、旧图为空；v3导出和正式/legacy身份同步纳入生产打开前结构预检。备份当前导出2/2/schema3八表；原v1 DTO/serializer保留，真实v1先原字段/文件/计数校验再显式升级。v2新字段严格必填且不fallback。导出前验证共同业务关联；错误不会生成完整成功。
+
+M12 pointer/ready/proof协议仍1；旧五字段proof继续使用原V1投影精确hash，新proof以dataFormatVersion=2声明V2数据hash。旧投影不能丢弃新交易/关系；STABLE合法后续写入与SWITCHING首次完整校验/安全回退边界继承。媒体仍为登记资源原字节。
+
+ReplacementViewModel持有独立固定SavedState提交信封、UNCONFIRMED与全局离开守卫；比较上下文纳入Nav3 canonical栈，generation更换清旧模型。原项目codec保留basis/group/关系确认基线。实际验证与剩余限制见[M16报告](evidence/M16-verification.md)，不以此架构描述替代验收。
+
 ## M15：只读全局长期复盘（2026-10-21）
 
 `RankingRepository`是同一ManagedGeneration数据库/协调器/BusinessClock上的非owner只读入口。一次withSnapshot＋Room事务固定业务观察日，按50批读取该类型所有身份及完整资金/付款/状态事实，交给`RankingEngine`复用M02/M03，再全局稳定排序，最后取50×已加载页数。计算量随全部相关事实增长，排序O(n log n)，50只约束显示窗口；无每日快照、持久榜单或缓存表。不可计算项稳定排末且不授予有效排名，0和负值不丢弃，订阅只按已购标准天数。
 
 `ReviewController`按请求序号与榜单隔离结果，刷新重建整个窗口；读取失败显式保留旧快照/日期并提示。`ReviewViewModel`按generation作用域创建，未打开榜单不启动全量排名；写入失效、跨日/前台触发刷新，代更换清旧ViewModel与导航，不让旧代结果展示。Nav3新增LongTermReview与REVIEW详情返回来源，所有编辑仍走原全局未保存/pending/恢复守卫。历史档案直接复用已结束项目和STOPPED订阅列表，不复制管理系统。
 
-Room schema2、backup format1、冻结领域引擎、写入/恢复协议及依赖保持原样。M15当前候选待独立验收，M10延期和M13发行门槛不因此改变。
+Room schema2、backup format1、冻结领域引擎、写入/恢复协议及依赖保持原样。M15已获限定独立冻结；本段保留M15交付时版本，当前版本演进见M16。M10延期和M13发行门槛不因此改变。
 
 
 ## M14：两套类别与名称搜索（2026-10-21）

@@ -18,6 +18,8 @@ class DatabaseConverters {
     @TypeConverter fun textToDirection(value: String): MoneyDirection = MoneyDirection.valueOf(value)
     @TypeConverter fun roleToText(value: ProjectMoneyEventRole): String = value.name
     @TypeConverter fun textToRole(value: String): ProjectMoneyEventRole = ProjectMoneyEventRole.valueOf(value)
+    @TypeConverter fun basisToText(value: MoneyBasis): String = value.name
+    @TypeConverter fun textToBasis(value: String): MoneyBasis = MoneyBasis.valueOf(value)
     @TypeConverter fun cycleToText(value: BillingCycle): String = value.name
     @TypeConverter fun textToCycle(value: String): BillingCycle = BillingCycle.valueOf(value)
     @TypeConverter fun subscriptionStateToText(value: SubscriptionOperationState): String = value.name

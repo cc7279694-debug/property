@@ -8,6 +8,7 @@ import androidx.room.withTransaction
 import com.cooper.lithic.core.model.Money
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.core.time.BusinessClock
+import com.cooper.lithic.data.local.MoneyBasis
 import com.cooper.lithic.data.local.CategoryType
 import com.cooper.lithic.data.local.LithicDatabase
 import com.cooper.lithic.data.local.LongTermProjectEntity
@@ -49,6 +50,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
     suspend fun endProject(command: EndProjectCommand): MutationResult = coordinator.withWrite {
         storageOperation {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val expected = command.expectedProject
                 validateProjectIdentity(command.commandId, expected)?.let { return@withTransaction MutationResult.ValidationFailure(it) }
                 val current = db.projectDao().findProject(expected.id)
@@ -61,6 +63,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
                     return@withTransaction MutationResult.ValidationFailure(it)
                 }
                 val settlement = command.settlement
+                if (settlement != null && (settlement.basis != MoneyBasis.CASH || settlement.exchangeGroupId != null)) return@withTransaction MutationResult.ValidationFailure("Use the complete trade-in transaction for non-cash settlement")
                 if (settlement != null) {
                     validateSettlement(settlement, expected.id)?.let { return@withTransaction MutationResult.ValidationFailure(it) }
                     if (settlement.operationId != command.commandId) {
@@ -88,6 +91,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
     suspend fun updateEnd(command: UpdateEndCommand): MutationResult = coordinator.withWrite {
         storageOperation {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val expected = command.expectedProject
                 validateProjectIdentity(command.commandId, expected)?.let { return@withTransaction MutationResult.ValidationFailure(it) }
                 val current = db.projectDao().findProject(expected.id)
@@ -99,7 +103,11 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
                 ProjectLifecycleRules.validateEnd(expected.startedOn, command.endedOn, command.endReason)?.let {
                     return@withTransaction MutationResult.ValidationFailure(it)
                 }
+                val grouped = db.projectDao().eventsForProjects(listOf(expected.id)).any { it.exchangeGroupId != null }
+                if (grouped && command.endedOn != expected.endedOn) return@withTransaction MutationResult.ValidationFailure("以旧换新项目的结束日期不能单独修改")
                 val expectedSettlement = command.expectedSettlement
+                if (expectedSettlement?.exchangeGroupId != null && (command.settlementAmountCents != expectedSettlement.amountCents || command.settlementOccurredOn != expectedSettlement.occurredOn))
+                    return@withTransaction MutationResult.ValidationFailure("折抵交易的金额和日期不能单独修改")
                 val targetSettlement = if (expectedSettlement == null) {
                     if (command.settlementAmountCents != null || command.settlementOccurredOn != null || command.settlementDescription != null) {
                         return@withTransaction MutationResult.ValidationFailure("An end without settlement cannot create a payment through correction")
@@ -135,6 +143,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
     suspend fun correctMoneyEvent(command: CorrectMoneyEventCommand): MutationResult = coordinator.withWrite {
         storageOperation {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val expected = command.expectedProject
                 val expectedEvent = command.expectedEvent
                 validateProjectIdentity(command.commandId, expected)?.let { return@withTransaction MutationResult.ValidationFailure(it) }
@@ -151,6 +160,8 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
                     return@withTransaction MutationResult.ValidationFailure("The initial event must remain an initial outlay")
                 }
                 validateRevision(expected, command.updatedAt)?.let { return@withTransaction MutationResult.ValidationFailure(it) }
+                if (expectedEvent.exchangeGroupId != null && (command.amountCents != expectedEvent.amountCents || command.occurredOn != expectedEvent.occurredOn))
+                    return@withTransaction MutationResult.ValidationFailure("折抵交易的金额和日期不能单独修改")
                 val targetEvent = expectedEvent.copy(amountCents = command.amountCents, occurredOn = command.occurredOn, description = command.description)
                 validateAmountAndDate(targetEvent)?.let { return@withTransaction MutationResult.ValidationFailure(it) }
                 val target = expected.copy(updatedAt = command.updatedAt)
@@ -172,6 +183,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
     suspend fun deleteProject(command: DeleteProjectCommand): MutationResult = coordinator.withWrite {
         storageOperation {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val expected = command.expectedProject
                 validateProjectIdentity(command.commandId, expected)?.let { return@withTransaction MutationResult.ValidationFailure(it) }
                 if (command.expectedEvents.any { it.projectId != expected.id || validateEventIdentity(it) != null } ||
@@ -188,10 +200,14 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
                 if (current != expected || events.sortedBy { it.id } != command.expectedEvents.sortedBy { it.id }) {
                     return@withTransaction MutationResult.Conflict("The project or its money history changed after deletion was confirmed")
                 }
+                if (events.any { it.exchangeGroupId != null }) return@withTransaction MutationResult.ValidationFailure("参与以旧换新的项目不能单独删除，需保留完整交易组")
+                val links = db.replacementDao().listReplacements().filter { it.predecessorId == expected.id || it.successorId == expected.id }
+                if (links.sortedBy { it.id } != command.expectedLinks.sortedBy { it.id }) return@withTransaction MutationResult.Conflict("替换关系已改变，请重新确认删除")
+                db.replacementDao().deleteForProject(expected.id)
                 for (event in events) {
                     requireChanged(db.projectDao().deleteEventIfUnchanged(
                         event.id, event.projectId, event.direction, event.amountCents, event.occurredOn,
-                        event.description, event.role, event.operationId,
+                        event.description, event.role, event.operationId, event.basis, event.exchangeGroupId,
                     ))
                 }
                 requireChanged(db.projectDao().deleteProjectIfUnchanged(
@@ -210,6 +226,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
     suspend fun updateProject(command: UpdateProjectCommand): MutationResult = coordinator.withWrite {
         storageOperation {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val expected = command.expected
                 val identities = listOf(command.commandId, expected.id, expected.categoryId, command.categoryId) + listOfNotNull(expected.coverAssetId)
                 if (identities.any { !StoredValueValidation.isUuid(it) }) {
@@ -218,6 +235,8 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
                 if (!command.updatedAt.isAfter(expected.updatedAt)) {
                     return@withTransaction MutationResult.ValidationFailure("An edit revision must be later than the loaded revision")
                 }
+                if (command.startedOn != expected.startedOn && db.projectDao().eventsForProjects(listOf(expected.id)).any { it.exchangeGroupId != null })
+                    return@withTransaction MutationResult.ValidationFailure("参与以旧换新的项目取得日期不能单独修改")
                 val target = expected.copy(
                     name = command.name,
                     startedOn = command.startedOn,
@@ -256,8 +275,10 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
     suspend fun createProject(command: CreateProjectCommand): MutationResult = coordinator.withWrite {
         storageOperation {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val project = command.project
                 val event = command.initialEvent
+                if (event.basis != MoneyBasis.CASH || event.exchangeGroupId != null) return@withTransaction MutationResult.ValidationFailure("Use the complete trade-in transaction for grouped facts")
                 val identities = listOf(command.commandId, project.id, project.categoryId, event.id, event.projectId, event.operationId) + listOfNotNull(project.coverAssetId)
                 if (identities.any { !StoredValueValidation.isUuid(it) }) return@withTransaction MutationResult.ValidationFailure("Business identities must be canonical UUID strings")
                 if (event.operationId != command.commandId) return@withTransaction MutationResult.ValidationFailure("The event operation must match its command")
@@ -287,7 +308,9 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
     suspend fun addMoneyEvent(command: AddProjectMoneyEventCommand): MutationResult = coordinator.withWrite {
         storageOperation {
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 val event = command.event
+                if (event.basis != MoneyBasis.CASH || event.exchangeGroupId != null) return@withTransaction MutationResult.ValidationFailure("Use the complete trade-in transaction for grouped facts")
                 if (listOf(command.commandId, event.id, event.projectId, event.operationId).any { !StoredValueValidation.isUuid(it) }) {
                     return@withTransaction MutationResult.ValidationFailure("Business identities must be canonical UUID strings")
                 }
@@ -363,7 +386,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
         requireChanged(db.projectDao().updateEventIfUnchanged(
             expected.id, expected.projectId, expected.direction, expected.amountCents, expected.occurredOn,
             expected.description, expected.role, expected.operationId,
-            target.amountCents, target.occurredOn, target.description,
+            target.amountCents, target.occurredOn, target.description, expected.basis, expected.exchangeGroupId,
         ))
     }
 

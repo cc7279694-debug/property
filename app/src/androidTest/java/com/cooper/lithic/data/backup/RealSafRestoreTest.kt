@@ -325,7 +325,7 @@ class RealSafRestoreTest {
     private fun readKnownBackup(archive: File): Pair<BackupSnapshot, Map<String, ByteArray>> = ZipFile(archive).use { zip ->
         val paths = setOf("media/m11b-jpeg.jpg", "media/m11b-rgba.png", "media/m11b-palette.png", "media/m11b-gray16.png", "media/m11b-adam7.png")
         assertEquals(setOf("manifest.json", "data.json", "settings.json") + paths, zip.entries().asSequence().map { it.name }.toSet())
-        val data = Json.decodeFromString<BackupDataV1>(zip.getInputStream(zip.getEntry("data.json")).use { it.reader().readText() })
+        val data = Json.decodeFromString<BackupDataV2>(zip.getInputStream(zip.getEntry("data.json")).use { it.reader().readText() })
         val settings = Json.decodeFromString<BackupSettingsV1>(zip.getInputStream(zip.getEntry("settings.json")).use { it.reader().readText() })
         val media = paths.associateWith { zip.getInputStream(zip.getEntry(it)).use { input -> input.readBytes() } }
         data.mediaAssets.forEach { item -> assertEquals(item.byteLength, media.getValue(item.relativePath).size.toLong()); assertEquals(item.sha256, sha(media.getValue(item.relativePath))) }

@@ -1,0 +1,119 @@
+[
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "com.cooper.lithic.app.M16ScreenshotsJourneyTest",
+      "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+    ],
+    "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\app\\M16ScreenshotsJourneyTest.kt",
+    "source_sha256": "fee83594ea552f94093e5528968d345cb7f9883e1b895cb85118b58e92d2678e",
+    "started_at": "2026-10-21T05:54:12.618605+00:00",
+    "expected": [
+      "chain_comparison_navigation_and_unsaved_guard_with_large_font",
+      "trade_in_confirmation_saved_facts_home_review_and_restored_generation_refresh"
+    ],
+    "apk_identity": [
+      {
+        "name": "app",
+        "path": "app/build/outputs/apk/debug/app-debug.apk",
+        "bytes": 14117110,
+        "sha256": "2dcc54802720c6a5c3d6cebc797dca6db228757506b3acd6a2e86b892cf4fe41",
+        "package": "com.cooper.lithic.debug"
+      },
+      {
+        "name": "test",
+        "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+        "bytes": 3175312,
+        "sha256": "ba531c1c51cc6bdbee3ad4084bfa4bfd93777307c3e17248cec71563a1eca00d",
+        "package": "com.cooper.lithic.debug.test"
+      }
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "seconds": 46.125,
+    "completed": [
+      "chain_comparison_navigation_and_unsaved_guard_with_large_font",
+      "trade_in_confirmation_saved_facts_home_review_and_restored_generation_refresh"
+    ],
+    "bad": [],
+    "stdout_bytes": 3098,
+    "stdout_sha256": "d89f7e2feac6a508bacf635bea91020d3c96b8d824df10b11139b313c0d85e8c",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": [
+      {
+        "class": "com.cooper.lithic.app.M16ScreenshotsJourneyTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "2",
+        "stream": "",
+        "test": "chain_comparison_navigation_and_unsaved_guard_with_large_font",
+        "status_code": 1
+      },
+      {
+        "M16_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m16-evidence/01-chain-vertical-comparison-47b3e3b7-8121-409e-8fec-4d0277237345.png",
+        "status_code": 2
+      },
+      {
+        "M16_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m16-evidence/02-chain-360dp-font200-47b3e3b7-8121-409e-8fec-4d0277237345.png",
+        "status_code": 2
+      },
+      {
+        "class": "com.cooper.lithic.app.M16ScreenshotsJourneyTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "2",
+        "stream": ".",
+        "test": "chain_comparison_navigation_and_unsaved_guard_with_large_font",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.app.M16ScreenshotsJourneyTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "2",
+        "stream": "",
+        "test": "trade_in_confirmation_saved_facts_home_review_and_restored_generation_refresh",
+        "status_code": 1
+      },
+      {
+        "M16_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m16-evidence/03-trade-in-confirmation-525aba62-822c-4309-8b74-82e7d8ca974d.png",
+        "status_code": 2
+      },
+      {
+        "M16_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m16-evidence/04-trade-in-confirmation-360dp-font200-525aba62-822c-4309-8b74-82e7d8ca974d.png",
+        "status_code": 2
+      },
+      {
+        "M16_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m16-evidence/05-trade-in-saved-cost-facts-525aba62-822c-4309-8b74-82e7d8ca974d.png",
+        "status_code": 2
+      },
+      {
+        "M16_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m16-evidence/06-trade-in-noncash-event-525aba62-822c-4309-8b74-82e7d8ca974d.png",
+        "status_code": 2
+      },
+      {
+        "M16_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m16-evidence/07-restored-replacement-chain-525aba62-822c-4309-8b74-82e7d8ca974d.png",
+        "status_code": 2
+      },
+      {
+        "class": "com.cooper.lithic.app.M16ScreenshotsJourneyTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "2",
+        "stream": ".",
+        "test": "trade_in_confirmation_saved_facts_home_review_and_restored_generation_refresh",
+        "status_code": 0
+      }
+    ]
+  }
+]

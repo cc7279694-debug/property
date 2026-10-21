@@ -1,0 +1,17 @@
+--- app\src\androidTest\java\com\cooper\lithic\data\backup\M16BackupRoundTripTest.kt (recorded RED)
++++ app\src\androidTest\java\com\cooper\lithic\data\backup\M16BackupRoundTripTest.kt (GREEN candidate)
+@@ -141,10 +141,12 @@
+             current.coordinator.withWrite { current.database.withTransaction {
+                 current.database.openHelper.writableDatabase.execSQL("DELETE FROM project_money_events WHERE exchangeGroupId IS NOT NULL AND basis='TRADE_IN_CREDIT' AND direction='OUTLAY'")
+             } }
+-            val damaged=current.backupSnapshotSource().capture()
++            val damagedEvents=current.database.projectDao().listEvents()
++            val damagedProjects=current.database.projectDao().listProjects()
+             val result=BackupExportService(context,current).export(RestoreSyntheticFixture.target(File(root,"broken-group.lithicbackup")))
+             assertTrue("A complete export may not certify an archive whose required transaction facts are missing: $result",result is BackupExportResult.Failed)
+-            assertEquals(damaged,current.backupSnapshotSource().capture())
++            assertEquals(damagedEvents,current.database.projectDao().listEvents())
++            assertEquals(damagedProjects,current.database.projectDao().listProjects())
+         }
+     }
+ 

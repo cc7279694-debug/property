@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.BackupFilesTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-21T05:49:22.036Z" hostname="WHOCARE" time="0.527">
+  <properties/>
+  <testcase name="entry_write_and_close_failure_do_not_return_verified_entries" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.021"/>
+  <testcase name="manifest_v1_has_stable_required_fields_and_payload_hashes" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.071"/>
+  <testcase name="media_not_integrated_blocks_complete_export_before_opening_target_even_for_empty_ledger" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.005"/>
+  <testcase name="unknown_residue_blocks_candidate_cleanup_without_deleting_any_files" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.058"/>
+  <testcase name="path_escape_duplicate_and_limit_are_rejected" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.023"/>
+  <testcase name="archive_bytes_match_manifest_and_target_close_failure_is_failure" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.092"/>
+  <testcase name="changed_internal_ownership_credential_cannot_delete_payloads" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.035"/>
+  <testcase name="media_metadata_cannot_be_mistaken_for_copied_verified_media" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.031"/>
+  <testcase name="archive_owns_one_target_close_and_propagates_target_write_failure" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.07"/>
+  <testcase name="successful_internal_candidate_can_release_only_its_owned_files" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.045"/>
+  <testcase name="changing_staged_bytes_is_detected_instead_of_trusting_old_metadata" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.033"/>
+  <testcase name="closed_core_files_have_hashes_of_actual_utf8_bytes_and_no_complete_manifest" classname="com.cooper.lithic.data.backup.BackupFilesTest" time="0.04"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

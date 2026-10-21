@@ -1,0 +1,77 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.M16BackupRoundTripTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.data.backup.M16BackupRoundTripTest:
+INSTRUMENTATION_STATUS: test=complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.backup.M16BackupRoundTripTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: A complete export may not certify an archive whose required transaction facts are missing: Success(byteLength=4212, sha256=a257ceb6e4b1b788602ed4f715cd37a8a869d3ee924afd1d94f7120246aa6f9c, temporaryFilesRemaining=false)
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.cooper.lithic.data.backup.M16BackupRoundTripTest$complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive$1$1.invokeSuspend(M16BackupRoundTripTest.kt:146)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.UndispatchedCoroutine.afterResume(CoroutineContext.kt:266)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.M16BackupRoundTripTest.complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive(M16BackupRoundTripTest.kt:138)
+
+INSTRUMENTATION_STATUS: stream=
+Error in complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive(com.cooper.lithic.data.backup.M16BackupRoundTripTest):
+java.lang.AssertionError: A complete export may not certify an archive whose required transaction facts are missing: Success(byteLength=4212, sha256=a257ceb6e4b1b788602ed4f715cd37a8a869d3ee924afd1d94f7120246aa6f9c, temporaryFilesRemaining=false)
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.cooper.lithic.data.backup.M16BackupRoundTripTest$complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive$1$1.invokeSuspend(M16BackupRoundTripTest.kt:146)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.UndispatchedCoroutine.afterResume(CoroutineContext.kt:266)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.M16BackupRoundTripTest.complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive(M16BackupRoundTripTest.kt:138)
+
+INSTRUMENTATION_STATUS: test=complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 1.023
+There was 1 failure:
+1) complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive(com.cooper.lithic.data.backup.M16BackupRoundTripTest)
+java.lang.AssertionError: A complete export may not certify an archive whose required transaction facts are missing: Success(byteLength=4212, sha256=a257ceb6e4b1b788602ed4f715cd37a8a869d3ee924afd1d94f7120246aa6f9c, temporaryFilesRemaining=false)
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at com.cooper.lithic.data.backup.M16BackupRoundTripTest$complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive$1$1.invokeSuspend(M16BackupRoundTripTest.kt:146)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.UndispatchedCoroutine.afterResume(CoroutineContext.kt:266)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.backup.M16BackupRoundTripTest.complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive(M16BackupRoundTripTest.kt:138)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

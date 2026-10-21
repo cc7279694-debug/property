@@ -1,0 +1,19 @@
+--- a/app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt
++++ b/app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt
+@@ -201,11 +201,11 @@
+ 
+ /** The pending dialog uses this route without discarding or reconstructing the fixed command. */
+ internal fun projectRecoveryRoute(state: ProjectUiState, origin: ProjectOrigin, comparisonId: String? = null): NavKey? = when {
+-    state.editor != null -> if (state.editor.mode == ProjectEditorMode.CREATE) CreateProject else ProjectEdit(state.editor.projectId, origin)
+-    state.moneyEditor != null -> ProjectMoneyEntry(state.moneyEditor.projectId, state.moneyEditor.direction, origin)
+-    state.endEditor != null -> if (state.endEditor.correcting) ProjectUpdateEnd(state.endEditor.projectId, origin) else ProjectEnd(state.endEditor.projectId, origin)
+-    state.moneyCorrection != null -> ProjectMoneyCorrection(state.moneyCorrection.projectId, state.moneyCorrection.eventId, origin)
+-    state.deleteConfirmation != null -> ProjectDelete(state.deleteConfirmation.projectId, origin)
++    state.editor != null -> if (state.editor.mode == ProjectEditorMode.CREATE) CreateProject else ProjectEdit(state.editor.projectId, origin, comparisonId)
++    state.moneyEditor != null -> ProjectMoneyEntry(state.moneyEditor.projectId, state.moneyEditor.direction, origin, comparisonId)
++    state.endEditor != null -> if (state.endEditor.correcting) ProjectUpdateEnd(state.endEditor.projectId, origin, comparisonId) else ProjectEnd(state.endEditor.projectId, origin, comparisonId)
++    state.moneyCorrection != null -> ProjectMoneyCorrection(state.moneyCorrection.projectId, state.moneyCorrection.eventId, origin, comparisonId)
++    state.deleteConfirmation != null -> ProjectDelete(state.deleteConfirmation.projectId, origin, comparisonId)
+     else -> null
+ }
+ 

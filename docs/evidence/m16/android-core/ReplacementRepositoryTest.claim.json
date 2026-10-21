@@ -1,0 +1,56 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.repository.ReplacementRepositoryTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\ReplacementRepositoryTest.kt",
+  "source_sha256": "dd2ed21237023a678d3a94fecdb9af22412728bd4f546814a2bd4380b9f9fff6",
+  "started_at": "2026-10-21T05:28:08.148741+00:00",
+  "expected": [
+    "one_predecessor_successor_no_cycles",
+    "link_and_unlink_do_not_end_or_write_money",
+    "trade_in_balance_three_facts_no_duplicate_initial",
+    "trade_in_rolls_back_at_every_write_boundary",
+    "exact_retry_and_double_submit_are_one_complete_transaction",
+    "zero_cash_and_same_day_are_kept_as_real_facts",
+    "stale_money_confirmation_cannot_end_or_create_any_project",
+    "relation_conflict_rejects_entire_trade",
+    "delete_middle_only_detaches_existing_edges",
+    "transaction_groups_and_links_survive_production_database_reopen",
+    "a_project_can_be_new_then_old_in_separate_transaction_groups",
+    "group_money_and_lifecycle_single_endpoint_mutations_are_rejected",
+    "grouped_end_amount_date_correction_rejects_changes_but_keeps_description_identity",
+    "grouped_project_allows_metadata_ordinary_events_and_description_without_erasing_basis",
+    "changed_replacement_confirmation_cannot_silently_delete_new_edges",
+    "relationship_only_writes_invalidate_project_and_comparison_readers",
+    "corrupt_group_read_is_an_error_and_never_an_empty_or_partial_result",
+    "single_payment_limits_and_combined_cost_are_not_confused",
+    "old_category_type_is_reread_inside_trade_transaction_before_any_write"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13416119,
+      "sha256": "f7f5c2b6dd53b3943f4cb814376394951e9cf85e8c7e7cdd1643c0391f84f266",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2880082,
+      "sha256": "7d0114ea8cfe411da4c8c1ca5b51eaaa4d72f6b81f8539ceb6ff205018e803e6",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ]
+}

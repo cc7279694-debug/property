@@ -10,6 +10,12 @@ import com.cooper.lithic.data.local.CategoryType
 import com.cooper.lithic.data.local.LithicDatabase
 import com.cooper.lithic.data.local.LocalMediaAssetEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
+import com.cooper.lithic.data.local.ProjectMoneyEventEntity
+import com.cooper.lithic.data.local.LongTermProjectEntity
+import com.cooper.lithic.data.local.MoneyBasis
+import com.cooper.lithic.data.repository.TradeInFacts
+import com.cooper.lithic.domain.project.ReplacementRules
+import com.cooper.lithic.domain.project.ReplacementEdge
 import com.cooper.lithic.data.local.StoredValueValidation
 import com.cooper.lithic.domain.project.ProjectCostEngine
 import com.cooper.lithic.domain.subscription.BillingCycle
@@ -30,12 +36,14 @@ internal object BackupBusinessValidation {
         val data = snapshot.data
         ZoneId.of(snapshot.settings.recordZoneId)
         require(snapshot.settings.recordZoneId == manifest.recordZoneId) { "Record zones disagree" }
-        require(data.recordCounts() == manifest.recordCounts) { "Record counts disagree" }
+        BackupFormats.requireSupported(manifest)
+        if(manifest.formatVersion==1) data.legacyProjection()
+        require(data.recordCounts() == BackupFormats.normalizedCounts(manifest)) { "Record counts disagree" }
         require(data.recordCounts().values.fold(0L, Math::addExact) < BackupLimits.MAX_RECORDS)
         unique(data.categories.map { it.id }); unique(data.projects.map { it.id })
         unique(data.projectMoneyEvents.map { it.id }); unique(data.mediaAssets.map { it.id })
         unique(data.subscriptions.map { it.id }); unique(data.subscriptionRenewals.map { it.id })
-        unique(data.subscriptionStateChanges.map { it.id })
+        unique(data.subscriptionStateChanges.map { it.id }); unique(data.replacements.map { it.id })
         // These mirror the three actual Room unique indices. A reopening may share its
         // command UUID between a real payment and an ENABLED state in different tables.
         unique(data.projectMoneyEvents.map { it.operationId })
@@ -105,6 +113,16 @@ internal object BackupBusinessValidation {
             // All historical and post-end facts participate. No second implementation of
             // net costs or overflow handling is introduced by the import boundary.
             ProjectCostEngine.evaluate(ProjectSnapshot(project, facts), LocalDate.MAX)
+        }
+        val storedProjects=data.projects.map { row -> LongTermProjectEntity(row.id,row.name,row.categoryId,date(row.startedOn),
+            row.endedOn?.let(::date),row.endReason,row.coverAssetId,row.note,instant(row.createdAt),instant(row.updatedAt)) }
+        val storedEvents=data.projectMoneyEvents.map { event -> ProjectMoneyEventEntity(event.id,event.projectId,
+            MoneyDirection.valueOf(event.direction),event.amountCents,date(event.occurredOn),event.description,
+            ProjectMoneyEventRole.valueOf(event.role),event.operationId,MoneyBasis.valueOf(event.basis),event.exchangeGroupId) }
+        require(TradeInFacts.validate(storedProjects,storedEvents)==null) { "Invalid trade-in transaction facts" }
+        data.replacements.forEach { row -> uuid(row.predecessorId);uuid(row.successorId);instant(row.createdAt) }
+        require(ReplacementRules.validate(projects.keys,data.replacements.map { ReplacementEdge(it.predecessorId,it.successorId) })==null) {
+            "Invalid replacement references, fan-in, fan-out or cycle"
         }
         data.subscriptions.forEach { row ->
             checkpoint()

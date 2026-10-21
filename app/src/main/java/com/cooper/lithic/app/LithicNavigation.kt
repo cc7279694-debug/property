@@ -54,6 +54,10 @@ import com.cooper.lithic.feature.project.ProjectDetailScreen
 import com.cooper.lithic.feature.project.ProjectEditorScreen
 import com.cooper.lithic.feature.project.ProjectListScreen
 import com.cooper.lithic.feature.project.ProjectViewModel
+import com.cooper.lithic.feature.project.ReplacementViewModel
+import com.cooper.lithic.feature.project.ReplacementComparisonScreen
+import com.cooper.lithic.feature.project.TradeInEditorScreen
+import com.cooper.lithic.feature.project.ReplacementFormKind
 import com.cooper.lithic.feature.project.EndProjectDialog
 import com.cooper.lithic.feature.project.MoneyEventCorrectionScreen
 import com.cooper.lithic.feature.project.DeleteProjectDialog
@@ -134,6 +138,14 @@ internal fun LithicNavigation(
         }
     }
     val searchState = searchModel?.state?.collectAsStateWithLifecycle()?.value
+    val replacementModel = state.replacementRepository?.let { repository ->
+        remember(generationScope, session, repository, state.repository) {
+            ViewModelProvider(generationScope, viewModelFactory {
+                initializer { ReplacementViewModel(repository, state.repository, generationScope.savedState, state.businessClock) }
+            })[ReplacementViewModel::class.java]
+        }
+    }
+    val replacements = replacementModel?.state?.collectAsStateWithLifecycle()?.value
     val backStack = key(session) { rememberNavBackStack(Home) }
     val routes = normalizeBackStack(backStack.toList())
     // Avoid full-ledger ranking until the user first opens review. The generation scope owns
@@ -153,8 +165,8 @@ internal fun LithicNavigation(
     }
     fun requestLeave(target: List<NavKey>) {
         if (restoreState.phase == RestoreUiPhase.RESTORING) return
-        when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW)) {
-            LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); navigate(target) }
+        when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW)) {
+            LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); navigate(target) }
             LeaveDecision.CONFIRM_DISCARD -> pendingLeave = target
             LeaveDecision.BLOCK_PENDING -> pendingWarning = true
         }
@@ -169,6 +181,8 @@ internal fun LithicNavigation(
             ProjectList -> model.loadList()
             ProjectHistory -> model.loadHistory()
             CreateProject -> model.startCreate()
+            is ReplacementComparison -> replacementModel?.openComparison(route.id)
+            is TradeInProject -> replacementModel?.startTradeIn(route.id)
             is ProjectDetail -> model.openDetail(route.id)
             is ProjectEdit -> model.startEdit(route.id)
             is ProjectMoneyEntry -> model.startMoney(route.id, route.direction)
@@ -197,22 +211,23 @@ internal fun LithicNavigation(
     val projectLeave = model.leaveDecision()
     val subscriptionLeave = subscriptionModel.leaveDecision()
     val categoryLeave = categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW
-    BackHandler(enabled = routes == listOf(Home) && globalLeaveDecision(projectLeave, subscriptionLeave, categoryLeave) != LeaveDecision.ALLOW) {
+    val replacementLeave = replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW
+    BackHandler(enabled = routes == listOf(Home) && globalLeaveDecision(projectLeave, subscriptionLeave, categoryLeave, replacementLeave) != LeaveDecision.ALLOW) {
         requestLeave(routes)
     }
-    LaunchedEffect(projects.committedProjectId, subscriptionLeave, categoryLeave) {
+    LaunchedEffect(projects.committedProjectId, subscriptionLeave, categoryLeave, replacementLeave) {
         projects.committedProjectId?.let { id ->
-            val guard = globalLeaveDecision(subscriptionLeave, categoryLeave)
+            val guard = globalLeaveDecision(subscriptionLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
-            val target = canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last())))
+            val target = canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last()), projectComparisonId(routes.last())))
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             model.consumeCommitted()
         }
     }
-    LaunchedEffect(projects.deletedProjectId, subscriptionLeave, categoryLeave) {
+    LaunchedEffect(projects.deletedProjectId, subscriptionLeave, categoryLeave, replacementLeave) {
         projects.deletedProjectId?.let {
-            val guard = globalLeaveDecision(subscriptionLeave, categoryLeave)
+            val guard = globalLeaveDecision(subscriptionLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val target = canonicalBackStack(when (projectOrigin(routes.last())) {
                 ProjectOrigin.CURRENT -> ProjectList
@@ -224,15 +239,27 @@ internal fun LithicNavigation(
             model.consumeDeleted()
         }
     }
-    LaunchedEffect(subscriptions.committedSubscriptionId, projectLeave, categoryLeave) {
+    LaunchedEffect(subscriptions.committedSubscriptionId, projectLeave, categoryLeave, replacementLeave) {
         subscriptions.committedSubscriptionId?.let { id ->
-            val guard = globalLeaveDecision(projectLeave, categoryLeave)
+            val guard = globalLeaveDecision(projectLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val origin = SubscriptionOrigin.entries.firstOrNull { it.name == subscriptions.committedOrigin } ?: SubscriptionOrigin.CURRENT
             val target = canonicalBackStack(SubscriptionDetail(id, origin))
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             subscriptionModel.consumeCommitted()
+        }
+    }
+    LaunchedEffect(replacements?.committedProjectId, projectLeave, subscriptionLeave, categoryLeave) {
+        replacements?.committedProjectId?.let { id ->
+            when (globalLeaveDecision(projectLeave, subscriptionLeave, categoryLeave)) {
+                LeaveDecision.BLOCK_PENDING -> pendingWarning = true
+                LeaveDecision.CONFIRM_DISCARD -> pendingLeave = canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last()), projectComparisonId(routes.last())))
+                LeaveDecision.ALLOW -> {
+                    navigate(canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last()), projectComparisonId(routes.last()))))
+                    replacementModel?.consumeCommitted()
+                }
+            }
         }
     }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
@@ -247,13 +274,14 @@ internal fun LithicNavigation(
                 subscriptionModel.refresh()
                 searchModel?.refresh()
                 reviewModel?.refresh()
+                replacementModel?.refresh()
                 latestRetry()
             })
         }
     }
-    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel, reviewModel) {
+    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel, reviewModel, replacementModel) {
         val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) {
-            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); reviewModel?.refresh(); latestRetry()
+            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); reviewModel?.refresh(); replacementModel?.refresh(); latestRetry()
         } }
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
@@ -323,17 +351,36 @@ internal fun LithicNavigation(
                             onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)
                     }
                     entry<ProjectDetail> { route ->
-                        ProjectDetailScreen(projects.detail, onBack, onEdit = { requestLeave(canonicalBackStack(ProjectEdit(route.id, route.origin))) },
-                            onAddMoney = { requestLeave(canonicalBackStack(ProjectMoneyEntry(route.id, it, route.origin))) }, onRetry = model::retryRead,
-                            onEnd = { requestLeave(canonicalBackStack(ProjectEnd(route.id, route.origin))) },
-                            onUpdateEnd = { requestLeave(canonicalBackStack(ProjectUpdateEnd(route.id, route.origin))) },
-                            onCorrectMoney = { requestLeave(canonicalBackStack(ProjectMoneyCorrection(route.id, it, route.origin))) },
-                            onDelete = { requestLeave(canonicalBackStack(ProjectDelete(route.id, route.origin))) },
-                            backLabel = when (route.origin) {
+                        ProjectDetailScreen(projects.detail, onBack, onEdit = { requestLeave(canonicalBackStack(ProjectEdit(route.id, route.origin, route.comparisonId))) },
+                            onAddMoney = { requestLeave(canonicalBackStack(ProjectMoneyEntry(route.id, it, route.origin, route.comparisonId))) }, onRetry = model::retryRead,
+                            onEnd = { requestLeave(canonicalBackStack(ProjectEnd(route.id, route.origin, route.comparisonId))) },
+                            onUpdateEnd = { requestLeave(canonicalBackStack(ProjectUpdateEnd(route.id, route.origin, route.comparisonId))) },
+                            onCorrectMoney = { requestLeave(canonicalBackStack(ProjectMoneyCorrection(route.id, it, route.origin, route.comparisonId))) },
+                            onDelete = { requestLeave(canonicalBackStack(ProjectDelete(route.id, route.origin, route.comparisonId))) },
+                            onReplacement = if (replacementModel != null) ({ requestLeave(canonicalBackStack(ReplacementComparison(route.id, route.origin))) }) else null,
+                            onTradeIn = if (replacementModel != null) ({ requestLeave(canonicalBackStack(TradeInProject(route.id, route.origin, route.comparisonId))) }) else null,
+                            backLabel = if (route.comparisonId != null) "返回替换对比" else when (route.origin) {
                                 ProjectOrigin.CURRENT -> "返回项目列表"
                                 ProjectOrigin.HISTORY -> "返回历史档案"
                                 ProjectOrigin.REVIEW -> "返回长期复盘"
                             })
+                    }
+                    entry<ReplacementComparison> { route ->
+                        if (replacementModel != null && replacements != null) ReplacementComparisonScreen(replacements, onBack,
+                            onOpenProject = { id -> requestLeave(canonicalBackStack(ProjectDetail(id, route.origin, if (id == route.id) null else route.id))) },
+                            onLink = { replacementModel.startLink(route.id) }, onUnlink = { replacementModel.startUnlink(route.id, it) },
+                            onRetry = replacementModel::retryRead, onSelectTarget = replacementModel::selectTarget,
+                            onDirection = replacementModel::changeAsSuccessor, onPreview = replacementModel::preview,
+                            onSave = replacementModel::save, onDismissForm = replacementModel::discardForm,
+                            onLoadMore = replacementModel::loadMoreChoices)
+                    }
+                    entry<TradeInProject> {
+                        replacements?.form?.takeIf { it.kind == ReplacementFormKind.TRADE_IN }?.let { form ->
+                            if (replacementModel != null) TradeInEditorScreen(form, onBack, replacementModel::changeName,
+                                replacementModel::changeDate, replacementModel::changeCash, replacementModel::changeCredit,
+                                replacementModel::changeCategory, replacementModel::changeNote, replacementModel::changeLink,
+                                replacementModel::preview, replacementModel::editConfirmation, replacementModel::save, replacementModel::retryRead)
+                        }
                     }
                     entry<CreateProject> {
                         projects.editor?.let { editor -> ProjectEditorScreen(editor, onBack, model::changeName, model::changeStartedOn, model::changeInitialAmount,
@@ -413,9 +460,9 @@ internal fun LithicNavigation(
             text = { Text("输入尚未保存。继续编辑会保留这些内容。") },
             confirmButton = { TextButton(onClick = {
                 pendingLeave = null
-                if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
+                if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
                 else { model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
-                    model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); navigate(target) }
+                    model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); navigate(target) }
             }, modifier = Modifier.testTag("discard-confirm")) { Text("放弃修改") } },
             dismissButton = { TextButton(onClick = { pendingLeave = null }, modifier = Modifier.testTag("discard-keep")) { Text("继续编辑") } })
     }
@@ -425,21 +472,19 @@ internal fun LithicNavigation(
             confirmButton = { TextButton(onClick = { pendingWarning = false }, modifier = Modifier.testTag("pending-submit-keep")) { Text("继续核对") } },
             dismissButton = {
                 val origin = projectOrigin(routes.last())
-                val projectRecovery: NavKey? = if (projectLeave == LeaveDecision.BLOCK_PENDING) when {
-                    projects.editor != null -> if (projects.editor!!.mode == ProjectEditorMode.CREATE) CreateProject else ProjectEdit(projects.editor!!.projectId, origin)
-                    projects.moneyEditor != null -> ProjectMoneyEntry(projects.moneyEditor!!.projectId, projects.moneyEditor!!.direction, origin)
-                    projects.endEditor != null -> if (projects.endEditor!!.correcting) ProjectUpdateEnd(projects.endEditor!!.projectId, origin) else ProjectEnd(projects.endEditor!!.projectId, origin)
-                    projects.moneyCorrection != null -> ProjectMoneyCorrection(projects.moneyCorrection!!.projectId, projects.moneyCorrection!!.eventId, origin)
-                    projects.deleteConfirmation != null -> ProjectDelete(projects.deleteConfirmation!!.projectId, origin)
-                    else -> null
-                } else null
+                val projectRecovery: NavKey? = if (projectLeave == LeaveDecision.BLOCK_PENDING)
+                    projectRecoveryRoute(projects, origin, projectComparisonId(routes.last())) else null
                 val subscriptionRecovery: NavKey? = if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) subscriptionRecoveryRoute(subscriptions) else null
                 val categoryRecovery: NavKey? = if (categoryLeave == LeaveDecision.BLOCK_PENDING) CategoryManagement else null
-                val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery, categoryRecovery).filter { it != routes.last() }
+                val replacementRecovery: NavKey? = if (replacementLeave == LeaveDecision.BLOCK_PENDING) replacements?.form?.let {
+                    if (it.kind == ReplacementFormKind.TRADE_IN) TradeInProject(it.projectId, origin, projectComparisonId(routes.last()))
+                    else ReplacementComparison(it.projectId, origin)
+                } else null
+                val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery, categoryRecovery, replacementRecovery).filter { it != routes.last() }
                 Column { recoveryTargets.forEach { recovery ->
                     TextButton(onClick = { pendingWarning = false; navigate(canonicalBackStack(recovery)) },
-                        modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else if (recovery == categoryRecovery) "pending-submit-return-to-category" else "pending-submit-return-to-project")) {
-                        Text(if (recovery == subscriptionRecovery) "返回待核对订阅记录" else if (recovery == categoryRecovery) "返回待核对类别" else "返回待核对项目")
+                        modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else if (recovery == categoryRecovery) "pending-submit-return-to-category" else if (recovery == replacementRecovery) "pending-submit-return-to-replacement" else "pending-submit-return-to-project")) {
+                        Text(if (recovery == subscriptionRecovery) "返回待核对订阅记录" else if (recovery == categoryRecovery) "返回待核对类别" else if (recovery == replacementRecovery) "返回待核对替换交易" else "返回待核对项目")
                     }
                 } }
             })

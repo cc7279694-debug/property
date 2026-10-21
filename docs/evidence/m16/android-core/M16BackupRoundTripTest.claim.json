@@ -1,0 +1,42 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\M16BackupRoundTripTest.kt",
+  "source_sha256": "5c6144e193618434f1f692ba078bbb9ea22f64e89a1f00405c31fa526b341fa0",
+  "started_at": "2026-10-21T05:28:12.332639+00:00",
+  "expected": [
+    "retained_real_v1_archive_restores_original_seven_tables_settings_media_and_reopens_as_v3",
+    "current_v2_roundtrip_preserves_links_trade_in_all_eight_tables_settings_and_original_media",
+    "old_schema2_switching_generation_with_five_field_v1_proof_migrates_and_verifies_without_false_rollback",
+    "corrupt_v2_group_is_rejected_before_restore_preview_and_current_dataset_stays_readable",
+    "complete_export_rejects_a_broken_trade_in_group_instead_of_successfully_writing_an_unrestorable_archive"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13416119,
+      "sha256": "f7f5c2b6dd53b3943f4cb814376394951e9cf85e8c7e7cdd1643c0391f84f266",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2880082,
+      "sha256": "7d0114ea8cfe411da4c8c1ca5b51eaaa4d72f6b81f8539ceb6ff205018e803e6",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ]
+}

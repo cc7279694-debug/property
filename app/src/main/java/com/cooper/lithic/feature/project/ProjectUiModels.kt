@@ -44,6 +44,7 @@ data class ProjectEditorUiState(
     val message: String? = null,
     val conflict: Boolean = false,
     val needsInitialRead: Boolean = false,
+    val tradeInProtected: Boolean = false,
 ) {
     val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
     val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE
@@ -98,6 +99,8 @@ data class EndProjectUiState(
     val message: String? = null,
     val conflict: Boolean = false,
     val needsInitialRead: Boolean = false,
+    val tradeInProtected: Boolean = false,
+    val tradeInDateProtected: Boolean = false,
 ) {
     val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
     val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE
@@ -120,6 +123,7 @@ data class MoneyCorrectionUiState(
     val message: String? = null,
     val conflict: Boolean = false,
     val needsInitialRead: Boolean = false,
+    val tradeInProtected: Boolean = false,
 ) {
     val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
     val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE

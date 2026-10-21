@@ -34,6 +34,7 @@ class BackupExportService(context: Context, private val generation: ManagedGener
         // caller at bounded IO checkpoints; it cannot discard a verified success and delete it.
         return withBackupIo { checkpoint ->
             var core: PreparedBackupCore? = null
+            var capturedSnapshot:BackupSnapshot?=null
             var archive: VerifiedBackupArchive? = null
             var cleanupFailed = false
             var operation: Path? = null
@@ -43,6 +44,7 @@ class BackupExportService(context: Context, private val generation: ManagedGener
                 val staging = Files.createTempDirectory(cacheRoot,"lithic-backup-")
                 operation = staging
                 core = RoomBackupSnapshotSource(generation).captureInto { snapshot ->
+                    capturedSnapshot=snapshot
                     checkpoint()
                     val prepared = BackupCoreStager().prepare(snapshot, staging)
                     core = prepared
@@ -51,6 +53,7 @@ class BackupExportService(context: Context, private val generation: ManagedGener
                 checkpoint()
                 val prepared = requireNotNull(core)
                 val manifest = BackupManifestV1.complete(prepared, producer, Instant.now())
+                BackupBusinessValidation.validate(requireNotNull(capturedSnapshot),manifest,checkpoint)
                 archive = BackupArchiveFiles.create(prepared, manifest, staging.resolve("complete.lithicbackup"), checkpoint)
                 checkpoint()
                 try {

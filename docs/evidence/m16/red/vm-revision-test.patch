@@ -1,0 +1,74 @@
+--- a/app/src/androidTest/java/com/cooper/lithic/feature/project/M16ReplacementViewModelTest.kt
++++ b/app/src/androidTest/java/com/cooper/lithic/feature/project/M16ReplacementViewModelTest.kt
+@@ -26,6 +26,7 @@
+ import java.util.UUID
+ import java.util.concurrent.atomic.AtomicBoolean
+ import java.util.concurrent.atomic.AtomicInteger
++import java.util.concurrent.atomic.AtomicReference
+ import kotlinx.coroutines.flow.first
+ import kotlinx.coroutines.runBlocking
+ import kotlinx.coroutines.withTimeout
+@@ -88,10 +89,12 @@
+         val old = seed("旧手机")
+         val firstDelivery = AtomicBoolean(true)
+         val calls = AtomicInteger()
++        val observedResult = AtomicReference<ReplacementMutationResult>()
+         val dropResult = object : ReplacementRepository(generation.database, generation.coordinator, clock) {
+             override suspend fun recordTradeIn(command: TradeInCommand): ReplacementMutationResult {
+                 calls.incrementAndGet()
+                 val result = super.recordTradeIn(command)
++                observedResult.set(result)
+                 if (firstDelivery.getAndSet(false)) throw IOException("Synthetic result delivery lost after real commit")
+                 return result
+             }
+@@ -103,13 +106,18 @@
+         assertTrue(first.state.value.form!!.confirmed)
+         onMain { first.save(); first.save() }
+         await(first) { it.form?.phase == SubmissionPhase.UNCONFIRMED }
++        assertTrue("The real transaction before dropped delivery returned ${observedResult.get()}",
++            observedResult.get() is ReplacementMutationResult.TradeInRecorded)
+         assertEquals(1, calls.get())
+         assertEquals(LeaveDecision.BLOCK_PENDING, first.leaveDecision())
+         onMain { first.discardForm(); first.changeCash("9999") }
+         assertEquals("5000", first.state.value.form!!.cash)
+         val pending = handle.get<Bundle>(KEY)!!
++        val fixedRevision = Instant.parse(pending.getString("writtenAt"))
++        assertEquals(old.updatedAt.plusNanos(1), fixedRevision)
+         val commandId = pending.getString("commandId")!!
+         val restored = model(copyHandle(handle), dropResult)
++        assertEquals(fixedRevision.toString(), pending.getBundle("submitted")!!.getString("writtenAt"))
+         assertEquals(LeaveDecision.BLOCK_PENDING, restored.leaveDecision())
+         assertEquals("5000", restored.state.value.form!!.cash)
+         onMain { restored.save() }
+@@ -131,10 +139,12 @@
+         val old = seed("旧相机")
+         val oldDetail = projects.loadProjectDetail(old.id)!!
+         val command = UUID.randomUUID().toString()
++        val tradeAt = time.plusNanos(1)
+         val newProject = LongTermProjectEntity(TradeInIdentities.newProjectId(command), "新相机", LithicDatabase.PROJECT_FALLBACK_ID,
+-            clock.today(), createdAt = time, updatedAt = time)
+-        assertTrue(replacements.recordTradeIn(TradeInCommand(command, old, oldDetail.events, emptyList(), newProject,
+-            clock.today(), 0, 300_000, true, time)) is ReplacementMutationResult.TradeInRecorded)
++            clock.today(), createdAt = tradeAt, updatedAt = tradeAt)
++        val tradeResult = replacements.recordTradeIn(TradeInCommand(command, old, oldDetail.events, emptyList(), newProject,
++            clock.today(), 0, 300_000, true, tradeAt))
++        assertTrue("Expected a real trade-in commit, got $tradeResult", tradeResult is ReplacementMutationResult.TradeInRecorded)
+         val detail = projects.loadProjectDetail(newProject.id)!!
+         detail.events.forEach { assertEquals(it, ReplacementSavedFacts.event(ReplacementSavedFacts.event(it))) }
+         detail.replacementLinks.forEach { assertEquals(it, ReplacementSavedFacts.link(ReplacementSavedFacts.link(it))) }
+--- a/app/src/main/java/com/cooper/lithic/feature/project/ReplacementViewModel.kt
++++ b/app/src/main/java/com/cooper/lithic/feature/project/ReplacementViewModel.kt
+@@ -134,6 +134,13 @@
+                 val detail = chain?.items?.singleOrNull { it.project.id == text(active, "projectId") }
+                 if (detail == null) active.putString("message", "当前项目不存在，不能提交。")
+                 else {
++                    // A fixed command needs a strictly later revision even for same-tick writes or
++                    // a clock rollback. This initial hydration never runs for a submitted envelope.
++                    if (text(active, "kind") == ReplacementFormKind.TRADE_IN.name) {
++                        val originallyCaptured = Instant.parse(text(active, "writtenAt"))
++                        val minimumRevision = detail.project.updatedAt.plusNanos(1)
++                        active.putString("writtenAt", maxOf(originallyCaptured, minimumRevision).toString())
++                    }
+                     active.putBundle("baseline", ReplacementSavedFacts.project(detail.project))
+                     active.putString("projectName", detail.project.name)
+                     active.putParcelableArrayList("events", ArrayList(detail.events.map(ReplacementSavedFacts::event)))

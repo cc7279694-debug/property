@@ -56,8 +56,10 @@ internal fun EndProjectDialog(
         if (state.loading) Text("正在读取结束资料", style = MaterialTheme.typography.bodyLarge)
         state.today?.let { today ->
             ProjectDateInput(state.endedOn, onEndedOnChange, today, "结束日期", "end-ended-on",
-                error = state.errors["endedOn"], enabled = state.canEdit)
+                error = state.errors["endedOn"], enabled = state.canEdit && !state.tradeInDateProtected)
         }
+        if (state.tradeInProtected) Text("以旧换新的日期和折抵金额不能单独修改；这里可修改结束原因和关联说明。")
+        else if (state.tradeInDateProtected) Text("此项目参与以旧换新，既有结束日期不能单独修改；普通现金结算和说明仍可纠正。")
         ProjectNoteInput(state.endReason, onEndReasonChange, "结束原因", "end-reason", state.canEdit,
             state.errors["endReason"])
         if (!state.correcting) {
@@ -76,10 +78,10 @@ internal fun EndProjectDialog(
         }
         if ((state.correcting && state.hasSettlement) || (!state.correcting && state.recordRecovery)) {
             AmountField(state.recoveryAmount, onRecoveryAmountChange, Modifier.testTag("end-recovery-amount"),
-                label = "实际收回金额（元）", error = state.errors["recoveryAmount"], enabled = state.canEdit)
+                label = if (state.tradeInProtected) "非现金折抵金额（元）" else "实际收回金额（元）", error = state.errors["recoveryAmount"], enabled = state.canEdit && !state.tradeInProtected)
             state.today?.let { today ->
                 ProjectDateInput(state.recoveryOn, onRecoveryOnChange, today, "真实收回日期", "end-recovery-on",
-                    error = state.errors["recoveryOn"], enabled = state.canEdit)
+                    error = state.errors["recoveryOn"], enabled = state.canEdit && !state.tradeInProtected)
             }
             Text("日期默认同结束日；请按真实到账日修改，不记录未来到账。",
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)

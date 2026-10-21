@@ -13,6 +13,8 @@ import com.cooper.lithic.data.local.LocalMediaAssetEntity
 import com.cooper.lithic.data.local.LongTermProjectEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
+import com.cooper.lithic.data.local.MoneyBasis
+import com.cooper.lithic.data.local.ReplacementEntity
 import com.cooper.lithic.data.local.SubscriptionEntity
 import com.cooper.lithic.data.local.SubscriptionRenewalEntity
 import com.cooper.lithic.data.local.SubscriptionStateChangeEntity
@@ -38,10 +40,10 @@ internal class RestoredGenerationWriter {
         val caller = currentCoroutineContext()
         val checkpoint = { caller.ensureActive() }
         val snapshot = backup.snapshot
-        require(backup.manifest.formatVersion == 1 && backup.manifest.minReaderFormat == 1 &&
-            backup.manifest.sourceDatabaseSchemaVersion == 2) { "Unsupported restore format or schema" }
+        BackupFormats.requireSupported(backup.manifest)
+        if(backup.manifest.formatVersion==1) snapshot.data.legacyProjection()
         require(backup.manifest.recordZoneId == snapshot.settings.recordZoneId &&
-            backup.manifest.recordCounts == snapshot.data.recordCounts()) { "Restore manifest disagrees with its validated facts" }
+            BackupFormats.normalizedCounts(backup.manifest) == snapshot.data.recordCounts()) { "Restore manifest disagrees with its validated facts" }
         val media = mediaEntries(snapshot)
         val declared = backup.manifest.files.associateBy { it.path }
         require(declared.size == backup.manifest.files.size &&
@@ -56,7 +58,7 @@ internal class RestoredGenerationWriter {
             ownedDirectory(destinationMedia)
             require(Files.list(destinationMedia).use { !it.findAny().isPresent }) { "Restore destination media is not empty" }
             val sqlite = generation.database.openHelper.writableDatabase
-            check(sqlite.version == 2) { "Restore requires Room schema 2" }
+            check(sqlite.version == 3) { "Restore requires Room schema 3" }
             for (table in TABLES) sqlite.query("SELECT COUNT(*) FROM $table").use { cursor ->
                 check(cursor.moveToFirst() && cursor.getLong(0) == 0L && !cursor.moveToNext()) {
                     "Restore may populate only an empty database"
@@ -88,7 +90,10 @@ internal class RestoredGenerationWriter {
                     value.endReason, value.coverAssetId, value.note, Instant.parse(value.createdAt), Instant.parse(value.updatedAt))) }
                 snapshot.data.projectMoneyEvents.forEach { value -> database.projectDao().insertEvent(ProjectMoneyEventEntity(
                     value.id, value.projectId, MoneyDirection.valueOf(value.direction), value.amountCents,
-                    LocalDate.parse(value.occurredOn), value.description, ProjectMoneyEventRole.valueOf(value.role), value.operationId)) }
+                    LocalDate.parse(value.occurredOn), value.description, ProjectMoneyEventRole.valueOf(value.role), value.operationId,
+                    MoneyBasis.valueOf(value.basis),value.exchangeGroupId)) }
+                snapshot.data.replacements.forEach { value -> database.replacementDao().insert(ReplacementEntity(
+                    value.id,value.predecessorId,value.successorId,Instant.parse(value.createdAt))) }
                 snapshot.data.subscriptions.forEach { value -> database.subscriptionDao().insertSubscription(SubscriptionEntity(
                     value.id, value.name, value.categoryId, value.coverAssetId, value.note, Instant.parse(value.createdAt), Instant.parse(value.updatedAt))) }
                 snapshot.data.subscriptionRenewals.forEach { value -> database.subscriptionDao().insertRenewal(SubscriptionRenewalEntity(
@@ -114,7 +119,7 @@ internal class RestoredGenerationWriter {
             check(actual == expected) { "Restored facts or settings differ from the validated backup" }
             generation.database.requireDefaults()
             val sqlite = generation.database.openHelper.readableDatabase
-            check(sqlite.version == 2) { "Restored database schema changed" }
+            check(sqlite.version == 3) { "Restored database schema changed" }
             sqlite.query("PRAGMA integrity_check").use { cursor ->
                 check(cursor.moveToFirst() && cursor.getString(0) == "ok" && !cursor.moveToNext()) {
                     "Restored SQLite integrity validation failed"
@@ -334,6 +339,6 @@ internal class RestoredGenerationWriter {
         const val CLOSE_ON_EXEC = 0x80000 // Linux Android UAPI O_CLOEXEC; available on API26.
         const val OWNER_READ_WRITE = 0x180 // 0600.
         val TABLES = listOf("categories", "long_term_projects", "project_money_events", "local_media_assets",
-            "subscriptions", "subscription_renewals", "subscription_state_changes")
+            "subscriptions", "subscription_renewals", "subscription_state_changes","replacements")
     }
 }

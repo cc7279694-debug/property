@@ -1,0 +1,42 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.local.M16MigrationTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\local\\M16MigrationTest.kt",
+  "source_sha256": "e5628701f6b54357e90b4b2613206f3090ae9268d83e12010b5e9d5ccc0ac07c",
+  "started_at": "2026-10-21T05:28:02.221562+00:00",
+  "expected": [
+    "frozen_v1_migrates_through_v2_to_v3_without_rewriting_legacy_facts",
+    "frozen_v2_seven_tables_survive_production_upgrade_and_reopen",
+    "fresh_v3_and_v3_reopen_use_the_real_exported_identity_and_defaults",
+    "unknown_v3_identity_is_rejected_without_repair",
+    "failure_after_real_v3_ddl_rolls_back_v2_rows_columns_and_identity"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13416119,
+      "sha256": "f7f5c2b6dd53b3943f4cb814376394951e9cf85e8c7e7cdd1643c0391f84f266",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 2880082,
+      "sha256": "7d0114ea8cfe411da4c8c1ca5b51eaaa4d72f6b81f8539ceb6ff205018e803e6",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ]
+}

@@ -20,6 +20,14 @@ object BackupJson {
         json.encodeToStream(BackupDataV1.serializer(), data.ordered(), output)
     }
 
+    fun writeData(data:BackupDataV2,output:OutputStream) {
+        json.encodeToStream(BackupDataV2.serializer(),data.ordered(),output)
+    }
+
+    fun encodeData(data:BackupDataV2):ByteArray = ByteArrayOutputStream().use { output ->
+        writeData(data,output);output.toByteArray()
+    }
+
     fun writeSettings(settings: BackupSettingsV1, output: OutputStream) {
         json.encodeToStream(BackupSettingsV1.serializer(), settings, output)
     }

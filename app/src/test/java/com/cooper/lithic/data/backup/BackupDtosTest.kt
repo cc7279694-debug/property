@@ -49,7 +49,7 @@ class BackupDtosTest {
             SubscriptionOperationState.PAUSED, "暂时暂停", "保留状态历史", id(11))
         val data = map(events = listOf(event), renewals = listOf(renewal), states = listOf(state))
         val root = Json.parseToJsonElement(BackupJson.encodeData(data).decodeToString()).jsonObject
-        assertEquals(setOf("categories", "projects", "projectMoneyEvents", "mediaAssets", "subscriptions", "subscriptionRenewals", "subscriptionStateChanges"), root.keys)
+        assertEquals(setOf("categories", "projects", "projectMoneyEvents", "mediaAssets", "subscriptions", "subscriptionRenewals", "subscriptionStateChanges", "replacements"), root.keys)
         val p = root.getValue("projects").jsonArray.single().jsonObject
         assertEquals(setOf("id", "name", "categoryId", "startedOn", "endedOn", "endReason", "coverAssetId", "note", "createdAt", "updatedAt"), p.keys)
         assertEquals("相机 📷", p.getValue("name").jsonPrimitive.content)
@@ -68,7 +68,7 @@ class BackupDtosTest {
         assertEquals("media/${id(4)}.jpg", root.getValue("mediaAssets").jsonArray.single().jsonObject.getValue("relativePath").jsonPrimitive.content)
         assertEquals(mapOf("categories" to 2L, "long_term_projects" to 1L, "project_money_events" to 1L,
             "local_media_assets" to 1L, "subscriptions" to 1L, "subscription_renewals" to 1L,
-            "subscription_state_changes" to 1L), data.recordCounts())
+            "subscription_state_changes" to 1L, "replacements" to 0L), data.recordCounts())
     }
 
     @Test fun integer_cents_are_serialized_exactly_without_floating_point_or_netting_recovery() {

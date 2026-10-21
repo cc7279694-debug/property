@@ -53,6 +53,7 @@ open class SearchRepository(
         return coordinator.withSnapshot {
             val observedOn = asOf ?: clock.today()
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 if (normalized.isEmpty()) return@withTransaction empty(normalized, observedOn)
                 val pattern = SearchNames.literalPattern(normalized)
                 val count = db.searchDao().countNames(pattern)
@@ -79,6 +80,7 @@ open class SearchRepository(
                 "A search cursor belongs to one query and observation day"
             }
             db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
                 if (normalized.isEmpty()) return@withTransaction empty(normalized, observedOn)
                 val pattern = SearchNames.literalPattern(normalized)
                 pageInTransaction(normalized, pattern, limit, cursor, db.searchDao().countNames(pattern), observedOn)

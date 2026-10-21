@@ -45,6 +45,7 @@ class ReportRepository(
     suspend fun loadOverview(asOf: LocalDate? = null): OverviewResult = coordinator.withSnapshot {
         val observedOn = asOf ?: clock.today()
         db.withTransaction {
+                ReplacementStoredFacts.requireValid(db)
             check(db.projectDao().countOrphanEvents() == 0L) { "A money event refers to a missing project" }
             check(db.subscriptionDao().countOrphanRenewals() == 0L && db.subscriptionDao().countOrphanStates() == 0L) {
                 "A payment or state refers to a missing subscription"

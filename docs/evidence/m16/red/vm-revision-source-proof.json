@@ -1,0 +1,25 @@
+{
+  "purpose": "Preserve the minimal patch from real Android 1 PASS / 2 FAIL to the strictly-later fixed-revision correction. No historical result is rewritten.",
+  "red_claim": "docs/evidence/m16/android-core/M16ReplacementViewModelTest.claim.json",
+  "red_claim_sha256": "b1b0d2dd0ba9b3198115933f3ddd2ce1f41b36b22adb88a941df3f8ad948cf30",
+  "red_result": "docs/evidence/m16/android-core/M16ReplacementViewModelTest.result.json",
+  "red_test_source": "app/src/androidTest/java/com/cooper/lithic/feature/project/M16ReplacementViewModelTest.kt",
+  "red_test_source_sha256_recorded": "044122506498136fa14185b4b42f476d0e5eaea16380bb1609b775b8a945310c",
+  "red_test_source_reconstructed_in_memory_matches_recorded_hash": true,
+  "matching_byte_encoding": {
+    "line_endings": "LF",
+    "utf8_bom": false,
+    "bytes": 10665,
+    "sha256": "044122506498136fa14185b4b42f476d0e5eaea16380bb1609b775b8a945310c"
+  },
+  "current_test_source_sha256": "550bb3f3ed91e94528739b8dc7345f9c0f16f537bcb78857c63e553cdb82cbdc",
+  "production_source": "app/src/main/java/com/cooper/lithic/feature/project/ReplacementViewModel.kt",
+  "current_production_source_sha256": "c2cf44d2501d8fb764cf17fcd389bd88476a4f997a7aaa199e2e7db5f7342937",
+  "reconstructed_pre_fix_production_utf8_lf_sha256": "5193cd49fe710b50905060ec70b518da9d1708cc715a52c0c8d270a19c57668d",
+  "production_old_hash_limit": "No separate historical per-file production hash was recorded. The reconstructed production hash is calculated from reversing only the shown seven-line hydration insertion; it is not claimed to be independently anchored to the old APK.",
+  "patch": "docs/evidence/m16/red/vm-revision-test.patch",
+  "patch_bytes": 5083,
+  "patch_sha256": "80300cb390387b51015acd233cb2c6d44b07c38ae02913566122a2c591ec3a09",
+  "root_cause": "The initial UI timestamp equaled old.updatedAt; the repository correctly rejected a non-increasing revision. The test decorator then lost that result, and retry could never satisfy the strict revision rule. The unrelated handmade test command had the same timestamp defect.",
+  "safety": "Only unsubmitted initial hydration chooses max(initial captured instant, expected updatedAt + 1ns); commandId, facts, submitted envelope and retry timestamp remain fixed. The test adds explicit transaction-result and fixed-envelope assertions. The 15000ms timeout and production validation stay unchanged."
+}

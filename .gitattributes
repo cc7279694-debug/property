@@ -32,3 +32,10 @@ docs/evidence/m14-android/** -text -whitespace
 
 # M15 captured command, test and screenshot evidence preserves observed bytes.
 docs/evidence/m15/** -text -whitespace
+
+# M16 raw command/test/screenshot evidence preserves observed bytes.
+docs/evidence/m16/** -text -whitespace
+app/src/androidTest/assets/m16/** -text
+
+# Room exports are immutable version fixtures; package original Git bytes on Windows.
+app/schemas/** -text

@@ -1,0 +1,154 @@
+{
+  "status": "READY_FOR_REVIEW — M16",
+  "independent_acceptance": "PENDING",
+  "baseline": "661d2b5addc4eca377756f08edb84668ba700736",
+  "branch": "codex/m16-replacement-trade-in",
+  "jvm": {
+    "unique_pass": 252,
+    "new_M16_methods": 46,
+    "affected_regression_methods": 206,
+    "fail": 0,
+    "error": 0,
+    "skipped": 0,
+    "evidence": "jvm-delivery/"
+  },
+  "android": {
+    "unique_pass": 50,
+    "new_M16_methods": 34,
+    "affected_regression_methods": 16,
+    "fail": 0,
+    "unknown": 0,
+    "skipped": 0,
+    "runs": [
+      {
+        "scope": "android-core-fixed",
+        "class": "com.cooper.lithic.data.local.M16MigrationTest",
+        "pass": 5,
+        "seconds": 4.719,
+        "result": "android-core-fixed/M16MigrationTest.result.json"
+      },
+      {
+        "scope": "android-core-fixed",
+        "class": "com.cooper.lithic.data.repository.ReplacementRepositoryTest",
+        "pass": 19,
+        "seconds": 5.046,
+        "result": "android-core-fixed/ReplacementRepositoryTest.result.json"
+      },
+      {
+        "scope": "android-core-fixed",
+        "class": "com.cooper.lithic.data.backup.M16BackupRoundTripTest",
+        "pass": 5,
+        "seconds": 5.609,
+        "result": "android-core-fixed/M16BackupRoundTripTest.result.json"
+      },
+      {
+        "scope": "android-core-fixed",
+        "class": "com.cooper.lithic.feature.project.M16ReplacementViewModelTest",
+        "pass": 3,
+        "seconds": 2.938,
+        "result": "android-core-fixed/M16ReplacementViewModelTest.result.json"
+      },
+      {
+        "scope": "android-ui",
+        "class": "com.cooper.lithic.app.M16ScreenshotsJourneyTest",
+        "pass": 2,
+        "seconds": 46.125,
+        "result": "android-ui/M16ScreenshotsJourneyTest.result.json"
+      },
+      {
+        "scope": "android-regression",
+        "class": "com.cooper.lithic.app.GenerationUiScopeTest",
+        "pass": 3,
+        "seconds": 2.407,
+        "result": "android-regression/GenerationUiScopeTest.result.json"
+      },
+      {
+        "scope": "android-regression",
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "pass": 6,
+        "seconds": 23.859,
+        "result": "android-regression/HomeOverviewUiTest.result.json"
+      },
+      {
+        "scope": "android-regression",
+        "class": "com.cooper.lithic.data.backup.RestoreActivationSafetyTest",
+        "pass": 7,
+        "seconds": 8.047,
+        "result": "android-regression/RestoreActivationSafetyTest.result.json"
+      }
+    ]
+  },
+  "total_unique_pass": 302,
+  "lint": {
+    "errors": 0,
+    "warnings": 9
+  },
+  "debug_build": "PASS; 6m51s; delivery-build.txt",
+  "build_inputs": {
+    "files": 264,
+    "sha256": "5237adcf5b41298f2064b2272e4b7dac9990883d0e4a6c5cb04cfefc6270a436"
+  },
+  "apk": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 14117110,
+      "sha256": "2dcc54802720c6a5c3d6cebc797dca6db228757506b3acd6a2e86b892cf4fe41",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 3175312,
+      "sha256": "ba531c1c51cc6bdbee3ad4084bfa4bfd93777307c3e17248cec71563a1eca00d",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "installed_uses_final_apk_bytes": true,
+  "app_version": {
+    "code": 11,
+    "name": "0.1.0-m16-debug"
+  },
+  "test_version": {
+    "code": 0,
+    "name": ""
+  },
+  "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "runner": "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner",
+  "device": {
+    "avd": "Lithic_M14_API36_20261021",
+    "serial": "emulator-5672",
+    "api": 36,
+    "abi": "x86_64",
+    "app_uid": 10216,
+    "test_uid": 10217,
+    "same_original_instance": true,
+    "same_boot_id": "0b481eff-e49d-48f9-a740-2d2e9d3ce0e1",
+    "retained_online": true,
+    "app_updates": 3,
+    "test_updates": 3,
+    "create_start_stop_restart_clear_uninstall_kill": 0,
+    "other_device_commands": 0,
+    "default_MainActivity_launches": 0
+  },
+  "screenshots": {
+    "count": 7,
+    "index": "screenshots/index.json",
+    "source": "isolated ComponentActivity; real LithicApp/Nav3; LocalDensity 360dp/200%; no system configuration change"
+  },
+  "not_run": [
+    "API26, physical devices, OEM",
+    "Release, stable signing and first private records; M13-T06/G1 deferred",
+    "new schema3/format2 real process termination, LMK or power loss (M12 original evidence inherited only)",
+    "MainActivity default ledger, real midnight, system 200% font, full IME and TalkBack",
+    "new SAF journey (controlled file round trips only)",
+    "large scale lifetime performance; actual multi-million-event DB overflow injection"
+  ],
+  "inherited": {
+    "M10": "PENDING / DEFERRED; three historical JPEG FAIL unchanged",
+    "M13_T06": "NOT_RUN / DEFERRED",
+    "G1": "NOT_PASSED",
+    "M17": "NOT_AUTHORIZED",
+    "Q06": "not globally CLOSED"
+  }
+}

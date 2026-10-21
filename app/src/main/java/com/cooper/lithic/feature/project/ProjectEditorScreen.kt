@@ -51,8 +51,9 @@ internal fun ProjectEditorScreen(
             error = state.errors["name"], enabled = state.canEdit)
         state.today?.let { today ->
             ProjectDateInput(state.startedOn, onStartedOnChange, today, "开始拥有日期", "project-started-on",
-                error = state.errors["startedOn"], enabled = state.canEdit)
+                error = state.errors["startedOn"], enabled = state.canEdit && !state.tradeInProtected)
         }
+        if (state.tradeInProtected) Text("此项目参与以旧换新，取得日期与关联金额日期保持一致，不能单独修改。")
         if (state.mode == ProjectEditorMode.CREATE) {
             AmountField(state.initialAmount, onInitialAmountChange, Modifier.testTag("project-initial-amount"),
                 label = "初始实际投入（元）", error = state.errors["initialAmount"], enabled = state.canEdit)

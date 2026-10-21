@@ -61,7 +61,7 @@ class BackupValidatorTest {
         })
         val result = validate(zip, Files.createTempDirectory("lithic-import"))
         assertEquals(listOf(id(1), id(2)), result.snapshot.data.categories.map { it.id })
-        assertEquals(data.ordered(), result.snapshot.data)
+        assertEquals(data.upgrade(), result.snapshot.data)
     }
 
     @Test fun refuses_new_format_reader_schema_and_missing_defaulted_manifest_fields() {

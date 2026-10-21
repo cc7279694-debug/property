@@ -48,7 +48,7 @@ class CompleteBackupExportTest {
         val result = BackupExportService(context,generation).export(target(destination))
         assertTrue(result is BackupExportResult.Success)
         ZipFile(destination).use { zip ->
-            val data = Json.decodeFromString<BackupDataV1>(zip.getInputStream(zip.getEntry("data.json")).reader().readText())
+            val data = Json.decodeFromString<BackupDataV2>(zip.getInputStream(zip.getEntry("data.json")).reader().readText())
             assertEquals(before.data,data)
             val settings = Json.decodeFromString<BackupSettingsV1>(zip.getInputStream(zip.getEntry("settings.json")).reader().readText())
             assertEquals(before.settings,settings)

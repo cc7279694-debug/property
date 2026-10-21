@@ -427,7 +427,7 @@ class M12ProcessDeathTest {
         check(old.settings.recordZoneId == "UTC" && new.settings.recordZoneId == "Asia/Shanghai")
         check(old.data.recordCounts().values.all { it > 0 } && new.data.recordCounts().values.all { it > 0 })
         check(old.data.projectMoneyEvents.single().amountCents == 100_000L && new.data.projectMoneyEvents.single().amountCents == 230_000L)
-        fun ids(data: BackupDataV1): Set<String> = (data.categories.filterNot { it.isFallback }.map { it.id } +
+        fun ids(data: BackupDataV2): Set<String> = (data.categories.filterNot { it.isFallback }.map { it.id } +
             data.projects.map { it.id } + data.projectMoneyEvents.flatMap { listOf(it.id, it.operationId) } +
             data.mediaAssets.map { it.id } + data.subscriptions.map { it.id } +
             data.subscriptionRenewals.flatMap { listOf(it.id, it.operationId) } +

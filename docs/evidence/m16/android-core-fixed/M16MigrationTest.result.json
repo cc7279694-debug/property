@@ -1,0 +1,149 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.local.M16MigrationTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\local\\M16MigrationTest.kt",
+  "source_sha256": "e5628701f6b54357e90b4b2613206f3090ae9268d83e12010b5e9d5ccc0ac07c",
+  "started_at": "2026-10-21T05:53:49.363299+00:00",
+  "expected": [
+    "frozen_v1_migrates_through_v2_to_v3_without_rewriting_legacy_facts",
+    "frozen_v2_seven_tables_survive_production_upgrade_and_reopen",
+    "fresh_v3_and_v3_reopen_use_the_real_exported_identity_and_defaults",
+    "unknown_v3_identity_is_rejected_without_repair",
+    "failure_after_real_v3_ddl_rolls_back_v2_rows_columns_and_identity"
+  ],
+  "apk_identity": [
+    {
+      "name": "app",
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 14117110,
+      "sha256": "2dcc54802720c6a5c3d6cebc797dca6db228757506b3acd6a2e86b892cf4fe41",
+      "package": "com.cooper.lithic.debug"
+    },
+    {
+      "name": "test",
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 3175312,
+      "sha256": "ba531c1c51cc6bdbee3ad4084bfa4bfd93777307c3e17248cec71563a1eca00d",
+      "package": "com.cooper.lithic.debug.test"
+    }
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 4.719,
+  "completed": [
+    "fresh_v3_and_v3_reopen_use_the_real_exported_identity_and_defaults",
+    "unknown_v3_identity_is_rejected_without_repair",
+    "failure_after_real_v3_ddl_rolls_back_v2_rows_columns_and_identity",
+    "frozen_v2_seven_tables_survive_production_upgrade_and_reopen",
+    "frozen_v1_migrates_through_v2_to_v3_without_rewriting_legacy_facts"
+  ],
+  "bad": [],
+  "stdout_bytes": 3663,
+  "stdout_sha256": "feebe5c905d7e01c182eac46e585357871e85aa40f349f5452a8dc624a276089",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "fresh_v3_and_v3_reopen_use_the_real_exported_identity_and_defaults",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "fresh_v3_and_v3_reopen_use_the_real_exported_identity_and_defaults",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "unknown_v3_identity_is_rejected_without_repair",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "unknown_v3_identity_is_rejected_without_repair",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "failure_after_real_v3_ddl_rolls_back_v2_rows_columns_and_identity",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "failure_after_real_v3_ddl_rolls_back_v2_rows_columns_and_identity",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "frozen_v2_seven_tables_survive_production_upgrade_and_reopen",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "frozen_v2_seven_tables_survive_production_upgrade_and_reopen",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "frozen_v1_migrates_through_v2_to_v3_without_rewriting_legacy_facts",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M16MigrationTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "frozen_v1_migrates_through_v2_to_v3_without_rewriting_legacy_facts",
+      "status_code": 0
+    }
+  ]
+}

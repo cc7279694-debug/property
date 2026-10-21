@@ -60,7 +60,12 @@ internal class BackupValidator {
             val manifest = decode(zip, manifestRecord, BackupManifestV1.serializer(), null, checkpoint)
             requireManifest(manifest, byName)
             val declared = manifest.files.associateBy { it.path }
-            val data = decode(zip, byName.getValue("data.json"), BackupDataV1.serializer(), declared.getValue("data.json"), checkpoint)
+            val data = if(manifest.formatVersion==1) {
+                // Authenticate original v1 fields, declared length/SHA and seven-table counts before explicit DTO migration.
+                val legacy=decode(zip,byName.getValue("data.json"),BackupDataV1.serializer(),declared.getValue("data.json"),checkpoint)
+                require(legacy.recordCounts()==manifest.recordCounts) { "Legacy record counts disagree" }
+                legacy.upgrade()
+            } else decode(zip,byName.getValue("data.json"),BackupDataV2.serializer(),declared.getValue("data.json"),checkpoint)
             val settings = decode(zip, byName.getValue("settings.json"), BackupSettingsV1.serializer(), declared.getValue("settings.json"), checkpoint)
             val snapshot = BackupSnapshot(data.ordered(), settings)
             BackupBusinessValidation.validate(snapshot, manifest, checkpoint)
@@ -101,11 +106,10 @@ internal class BackupValidator {
     }
 
     private fun requireManifest(manifest: BackupManifestV1, records: Map<String, BackupZipRecord>) {
-        require(manifest.formatVersion == 1 && manifest.minReaderFormat == 1 && manifest.sourceDatabaseSchemaVersion == 2) { "Unsupported backup format or database schema" }
+        BackupFormats.requireSupported(manifest)
         require(manifest.producerAppVersion.isNotBlank() && manifest.producerAppVersion.length <= 128 && manifest.producerAppVersion.none { it.code < 32 || it.code == 127 })
         BackupBusinessValidation.instant(manifest.createdAt)
         ZoneId.of(manifest.recordZoneId)
-        require(manifest.recordCounts.keys == setOf("categories", "long_term_projects", "project_money_events", "local_media_assets", "subscriptions", "subscription_renewals", "subscription_state_changes"))
         require(manifest.recordCounts.values.all { it >= 0 } && manifest.recordCounts.values.fold(0L, Math::addExact) < BackupLimits.MAX_RECORDS)
         val names = manifest.files.map { it.path }
         require(names.size == names.toSet().size && names.toSet() == records.keys - "manifest.json") { "Missing, duplicate or undeclared payload" }
