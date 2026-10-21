@@ -1,0 +1,124 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5692",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.app.M18TotalCostTrendJourneyTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\app\\M18TotalCostTrendJourneyTest.kt",
+  "source_sha256": "69ba754d9f0d898685169b732aa05f4af370e92b0b0005bf9cd11e136ee4f5b3",
+  "started_at": "2026-10-21T11:57:35.885134+00:00",
+  "expected": [
+    "real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh"
+  ],
+  "apk_identity": {
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+    "applications": [
+      {
+        "label": "app",
+        "package": "com.cooper.lithic.debug",
+        "uid": 10216,
+        "bytes": 13164911,
+        "sha256": "a837fd4ae881efbf042587a53b87414a8a94cad935ba74ee99b87e7cce5b8ed9",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~98SmFZDVxroMdD3_pRgNOw==/com.cooper.lithic.debug-8XuC3_ZWaQcOnr_yC6UC3Q==/base.apk",
+        "install_skipped": true
+      },
+      {
+        "label": "test",
+        "package": "com.cooper.lithic.debug.test",
+        "uid": 10217,
+        "bytes": 2923214,
+        "sha256": "f2f01b2d77fb4f12d24338a02218c7175a0ce299b4a9a079178580d4f6d4a257",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~FcMyQ63LN1MWcY7ALf_9sQ==/com.cooper.lithic.debug.test-s3cNtLMHgxKDkjx_b4_AYg==/base.apk",
+        "install_skipped": false
+      }
+    ],
+    "old_device_commands": 0,
+    "default_ledger_opened": false
+  },
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 59.328,
+  "completed": [
+    "real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh"
+  ],
+  "bad": [],
+  "stdout_bytes": 3011,
+  "stdout_sha256": "e1811e4be749cd8b91fd1a8839dae09c44c4eec714e9f008849aeec9ed32bf25",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.app.M18TotalCostTrendJourneyTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": "",
+      "test": "real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh",
+      "status_code": 1
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/01-total-twenty-year-plot-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/01b-total-plot-context-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/02-component-same-scale-plot-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/02b-component-plot-context-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/07-negative-valley-exact-values-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/08-positive-peak-exact-values-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/03-exact-three-amounts-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/04-same-day-event-after-fifty-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/05-360dp-font200-date-entry-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "M18_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m18-evidence/06-360dp-font200-back-8fbe12d5-198d-4e61-ac30-4f21aa57ab0a.png",
+      "status_code": 2
+    },
+    {
+      "class": "com.cooper.lithic.app.M18TotalCostTrendJourneyTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": ".",
+      "test": "real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh",
+      "status_code": 0
+    }
+  ]
+}

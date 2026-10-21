@@ -1,0 +1,175 @@
+{
+  "status": "READY_FOR_REVIEW — M18",
+  "source": "6dfc4a6c79918d7e6f2e7c40d8b1c9fc2b5943c1",
+  "initial": {
+    "pass": 14,
+    "fail": 3,
+    "not_run": 0
+  },
+  "final": {
+    "unique_methods": 17,
+    "pass": 17,
+    "fail": 0,
+    "ignored": 0,
+    "not_run": 0
+  },
+  "methods": [
+    {
+      "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+      "method": "trade_in_contribution_uses_saved_three_money_events_once_and_keeps_noncash_labels",
+      "status": "PASS",
+      "result": "android-final/M18TimelineRepositoryTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+      "method": "ordinary_correction_and_confirmed_deletion_rebuild_history_from_present_facts",
+      "status": "PASS",
+      "result": "android-final/M18TimelineRepositoryTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+      "method": "same_day_events_cross_fifty_preserve_identity_and_post_end_money_without_false_contribution",
+      "status": "PASS",
+      "result": "android-final/M18TimelineRepositoryTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+      "method": "complete_snapshot_and_today_match_home_beyond_fifty_records_without_mutating_facts",
+      "status": "PASS",
+      "result": "android-final/M18TimelineRepositoryTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+      "method": "full_ledger_read_excludes_a_coordinator_queued_write_from_every_captured_record",
+      "status": "PASS",
+      "result": "android-final/M18TimelineRepositoryTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+      "method": "corrupt_reference_rejects_whole_snapshot_instead_of_fake_empty_or_zero",
+      "status": "PASS",
+      "result": "android-final/M18TimelineRepositoryTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+      "method": "format_two_roundtrip_rebuilds_total_events_and_retired_generation_cannot_read",
+      "status": "PASS",
+      "result": "android-final/M18TimelineRepositoryTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "stale_noncancellable_load_cannot_overwrite_new_snapshot_date_or_split_intent",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendViewModelTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "read_failure_keeps_old_timestamped_data_and_never_turns_it_into_empty_or_zero",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendViewModelTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "write_day_and_foreground_refresh_publish_matching_snapshot_point_events_and_preserve_selection",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendViewModelTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "future_selection_and_paused_late_result_do_not_publish_mismatched_amounts_or_write_facts",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendViewModelTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "exact_date_text_entry_avoids_drag_and_future_is_rejected",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendSemanticsTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendSemanticsTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "default_total_can_expand_components_with_one_scale_and_text_values",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendSemanticsTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "failure_is_visible_and_narrow_double_font_controls_remain_reachable",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendSemanticsTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendSemanticsTest.result.json"
+    },
+    {
+      "class": "com.cooper.lithic.app.M18TotalCostTrendJourneyTest",
+      "method": "real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh",
+      "status": "PASS",
+      "result": "android-final/M18TotalCostTrendJourneyTest.result.json"
+    }
+  ],
+  "apk_identity": {
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+    "applications": [
+      {
+        "label": "app",
+        "package": "com.cooper.lithic.debug",
+        "uid": 10216,
+        "bytes": 13164911,
+        "sha256": "a837fd4ae881efbf042587a53b87414a8a94cad935ba74ee99b87e7cce5b8ed9",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~98SmFZDVxroMdD3_pRgNOw==/com.cooper.lithic.debug-8XuC3_ZWaQcOnr_yC6UC3Q==/base.apk",
+        "install_skipped": true
+      },
+      {
+        "label": "test",
+        "package": "com.cooper.lithic.debug.test",
+        "uid": 10217,
+        "bytes": 2923214,
+        "sha256": "f2f01b2d77fb4f12d24338a02218c7175a0ce299b4a9a079178580d4f6d4a257",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~FcMyQ63LN1MWcY7ALf_9sQ==/com.cooper.lithic.debug.test-s3cNtLMHgxKDkjx_b4_AYg==/base.apk",
+        "install_skipped": false
+      }
+    ],
+    "old_device_commands": 0,
+    "default_ledger_opened": false
+  },
+  "screenshots": 10,
+  "device_end": {
+    "status": "PASS",
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "original_instance_and_boot": true,
+    "apk_and_uid_matched": true,
+    "no_backup_empty": true,
+    "settings_match_before_final_tests": true,
+    "avd_left_online": true,
+    "private_ledger_or_image_bytes_read": false,
+    "private_byte_comparison": "NOT_RUN"
+  },
+  "jvm": "174 prior PASS preserved, NOT_RERUN",
+  "lint": "prior 0 errors/23 warnings preserved, NOT_RERUN",
+  "operation_counts": {
+    "avd_create": 1,
+    "avd_start": 1,
+    "app_install": 1,
+    "test_install": 1,
+    "test_update": 1,
+    "instrumentation_calls": 8,
+    "protected_device_commands": 0
+  }
+}

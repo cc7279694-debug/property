@@ -36,7 +36,7 @@
 | M15 | 历史与跨当前历史长期榜 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m15.md) | M14 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T06及此前133 JVM/32 Android/7图获限定认可；M16已另行限定冻结 |
 | M16 | 替换/折抵、schema v3/format v2 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m16.md) | M15 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T06及原252 JVM/50 Android/7图获限定认可，schema3/format2；原冻结范围保留 |
 | M17 | 项目曲线/订阅阶梯图 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m17.md) | M16 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T05及原144 JVM/28 Android/9图、Lint0/9获限定认可；不扩大Q02的M18门禁，见[正式登记](ACCEPTANCE_MATRIX.md#m17正式冻结登记2026-10-21) |
-| M18 | 总成本历史与事件 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m18.md) | M17 | READY_FOR_REVIEW；174 JVM PASS/17 Android NOT_RUN/无新截图，0错误23警告；Q02仅领域子断言，集成及完整跨模块尚未完成 |
+| M18 | 总成本历史与事件 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m18.md) | M17 | READY_FOR_REVIEW；原174 JVM PASS保留，补验17 Android PASS/10张隔离图；仅测试APK修正，原Lint0/23不重跑；等待独立复验，Q02完整跨模块尚未完成 |
 | M19 | 类别/年度/客观回顾 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m19.md) | M18 | 年度按真实日期、类型分开，不生成建议 |
 | M20 | 续费通知、schema v4/format v3 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m20.md) | M19 | 3天候选、复核、去重、恢复水位；无精确闹钟 |
 | M21 | 实际时间里程碑/低打扰 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m21.md) | M20 | 预付不冒充365天，不补旧节点，不游戏化 |

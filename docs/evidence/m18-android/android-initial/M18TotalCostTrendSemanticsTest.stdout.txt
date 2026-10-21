@@ -1,0 +1,164 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest:
+INSTRUMENTATION_STATUS: test=exact_date_text_entry_avoids_drag_and_future_is_rejected
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=exact_date_text_entry_avoids_drag_and_future_is_rejected
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '完整说明50' (ignoreCase: false) as substring)
+Semantics of the node:
+Node #653 at (l=44.0, t=1680.0, r=1036.0, b=2340.0)px, Tag: 'total-trend-event-event-50'
+IsContainer = 'true'
+Has 6 children, 3 siblings
+Selector used: (TestTag = 'total-trend-event-event-50')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest.same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note(M18TotalCostTrendSemanticsTest.kt:73)
+
+INSTRUMENTATION_STATUS: stream=
+Error in same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note(com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '完整说明50' (ignoreCase: false) as substring)
+Semantics of the node:
+Node #653 at (l=44.0, t=1680.0, r=1036.0, b=2340.0)px, Tag: 'total-trend-event-event-50'
+IsContainer = 'true'
+Has 6 children, 3 siblings
+Selector used: (TestTag = 'total-trend-event-event-50')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest.same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note(M18TotalCostTrendSemanticsTest.kt:73)
+
+INSTRUMENTATION_STATUS: test=same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=default_total_can_expand_components_with_one_scale_and_text_values
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (ContentDescription = '总日均成本历史实线' (ignoreCase: false))
+Semantics of the node:
+Node #700 at (l=44.0, t=1680.0, r=1036.0, b=2340.0)px, Tag: 'total-trend-canvas'
+ContentDescription = '[总日均成本历史实线，负值保留。可展开两类贡献，或在下方输入日期和查看文字清单。]'
+CustomActions = '[CustomAccessibilityAction(label=上一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda3@9dde025), CustomAccessibilityAction(label=下一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda4@f61e5fa)]'
+Has 13 siblings
+Selector used: (TestTag = 'total-trend-canvas')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains(Assertions.kt:163)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains$default(Assertions.kt:158)
+	at com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest.default_total_can_expand_components_with_one_scale_and_text_values(M18TotalCostTrendSemanticsTest.kt:40)
+
+INSTRUMENTATION_STATUS: stream=
+Error in default_total_can_expand_components_with_one_scale_and_text_values(com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest):
+java.lang.AssertionError: Failed to assert the following: (ContentDescription = '总日均成本历史实线' (ignoreCase: false))
+Semantics of the node:
+Node #700 at (l=44.0, t=1680.0, r=1036.0, b=2340.0)px, Tag: 'total-trend-canvas'
+ContentDescription = '[总日均成本历史实线，负值保留。可展开两类贡献，或在下方输入日期和查看文字清单。]'
+CustomActions = '[CustomAccessibilityAction(label=上一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda3@9dde025), CustomAccessibilityAction(label=下一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda4@f61e5fa)]'
+Has 13 siblings
+Selector used: (TestTag = 'total-trend-canvas')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains(Assertions.kt:163)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains$default(Assertions.kt:158)
+	at com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest.default_total_can_expand_components_with_one_scale_and_text_values(M18TotalCostTrendSemanticsTest.kt:40)
+
+INSTRUMENTATION_STATUS: test=default_total_can_expand_components_with_one_scale_and_text_values
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=failure_is_visible_and_narrow_double_font_controls_remain_reachable
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=failure_is_visible_and_narrow_double_font_controls_remain_reachable
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=5
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 35.058
+There were 2 failures:
+1) same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note(com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '完整说明50' (ignoreCase: false) as substring)
+Semantics of the node:
+Node #653 at (l=44.0, t=1680.0, r=1036.0, b=2340.0)px, Tag: 'total-trend-event-event-50'
+IsContainer = 'true'
+Has 6 children, 3 siblings
+Selector used: (TestTag = 'total-trend-event-event-50')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest.same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note(M18TotalCostTrendSemanticsTest.kt:73)
+2) default_total_can_expand_components_with_one_scale_and_text_values(com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest)
+java.lang.AssertionError: Failed to assert the following: (ContentDescription = '总日均成本历史实线' (ignoreCase: false))
+Semantics of the node:
+Node #700 at (l=44.0, t=1680.0, r=1036.0, b=2340.0)px, Tag: 'total-trend-canvas'
+ContentDescription = '[总日均成本历史实线，负值保留。可展开两类贡献，或在下方输入日期和查看文字清单。]'
+CustomActions = '[CustomAccessibilityAction(label=上一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda3@9dde025), CustomAccessibilityAction(label=下一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda4@f61e5fa)]'
+Has 13 siblings
+Selector used: (TestTag = 'total-trend-canvas')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains(Assertions.kt:163)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains$default(Assertions.kt:158)
+	at com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest.default_total_can_expand_components_with_one_scale_and_text_values(M18TotalCostTrendSemanticsTest.kt:40)
+
+FAILURES!!!
+Tests run: 5,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1

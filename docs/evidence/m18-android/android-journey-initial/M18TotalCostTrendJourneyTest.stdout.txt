@@ -1,0 +1,97 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.app.M18TotalCostTrendJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.app.M18TotalCostTrendJourneyTest:
+INSTRUMENTATION_STATUS: test=real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M18_COMPONENT_ACTIVITY_SCREENSHOT=/data/data/com.cooper.lithic.debug/files/m18-evidence/01-total-twenty-year-plot-daeff9af-5279-482e-8909-4abf50862435.png
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.app.M18TotalCostTrendJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (ContentDescription = '共同日期和金额尺度' (ignoreCase: false))
+Semantics of the node:
+Node #152 at (l=48.0, t=708.0, r=1032.0, b=1428.0)px, Tag: 'total-trend-canvas'
+ContentDescription = '[总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。]'
+CustomActions = '[CustomAccessibilityAction(label=上一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda3@6ef7b54), CustomAccessibilityAction(label=下一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda4@2834afd)]'
+Has 10 siblings
+Selector used: (TestTag = 'total-trend-canvas')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains(Assertions.kt:163)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains$default(Assertions.kt:158)
+	at com.cooper.lithic.app.M18TotalCostTrendJourneyTest$real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh$1.invokeSuspend(M18TotalCostTrendJourneyTest.kt:128)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.app.M18TotalCostTrendJourneyTest.real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh(M18TotalCostTrendJourneyTest.kt:109)
+
+INSTRUMENTATION_STATUS: stream=
+Error in real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh(com.cooper.lithic.app.M18TotalCostTrendJourneyTest):
+java.lang.AssertionError: Failed to assert the following: (ContentDescription = '共同日期和金额尺度' (ignoreCase: false))
+Semantics of the node:
+Node #152 at (l=48.0, t=708.0, r=1032.0, b=1428.0)px, Tag: 'total-trend-canvas'
+ContentDescription = '[总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。]'
+CustomActions = '[CustomAccessibilityAction(label=上一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda3@6ef7b54), CustomAccessibilityAction(label=下一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda4@2834afd)]'
+Has 10 siblings
+Selector used: (TestTag = 'total-trend-canvas')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains(Assertions.kt:163)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains$default(Assertions.kt:158)
+	at com.cooper.lithic.app.M18TotalCostTrendJourneyTest$real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh$1.invokeSuspend(M18TotalCostTrendJourneyTest.kt:128)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.app.M18TotalCostTrendJourneyTest.real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh(M18TotalCostTrendJourneyTest.kt:109)
+
+INSTRUMENTATION_STATUS: test=real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 9.668
+There was 1 failure:
+1) real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh(com.cooper.lithic.app.M18TotalCostTrendJourneyTest)
+java.lang.AssertionError: Failed to assert the following: (ContentDescription = '共同日期和金额尺度' (ignoreCase: false))
+Semantics of the node:
+Node #152 at (l=48.0, t=708.0, r=1032.0, b=1428.0)px, Tag: 'total-trend-canvas'
+ContentDescription = '[总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。]'
+CustomActions = '[CustomAccessibilityAction(label=上一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda3@6ef7b54), CustomAccessibilityAction(label=下一显示日期, action=com.cooper.lithic.feature.review.TotalCostTrendScreenKt$$ExternalSyntheticLambda4@2834afd)]'
+Has 10 siblings
+Selector used: (TestTag = 'total-trend-canvas')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains(Assertions.kt:163)
+	at androidx.compose.ui.test.AssertionsKt.assertContentDescriptionContains$default(Assertions.kt:158)
+	at com.cooper.lithic.app.M18TotalCostTrendJourneyTest$real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh$1.invokeSuspend(M18TotalCostTrendJourneyTest.kt:128)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.app.M18TotalCostTrendJourneyTest.real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh(M18TotalCostTrendJourneyTest.kt:109)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

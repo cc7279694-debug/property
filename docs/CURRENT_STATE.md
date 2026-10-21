@@ -4,8 +4,8 @@
 
 ## Current Stage
 
-- **M18 — READY_FOR_REVIEW（离线候选，Android集成待验）**：本轮用户完整指令授权，从M17冻结登记`7e74df960e994e3a36f4417f7d83b07ead63763f`建立`codex/m18-total-cost-history`。回看总成本趋势、两类拆分、精确选日/事件、同代完整快照与刷新已实现；复用Overview/M02/M03，不改Room3/backup2/M16组保护/M12恢复或媒体协议。最终174 JVM PASS（30新增＋144回归，0失败/错误/跳过）、Lint0错误23警告、Debug App/Test及Android测试源码编译成功；294构建输入前后一致。23警告比原M17多14条版本提示，未升级或抑制依赖。原导航/领域/空账本RED及初次2处测试导入编译失败保留。
-  原授权5672的launcher20744/QEMU7356只读核对均不存在；未发ADB，未启停/新建AVD、安装或清理任何设备。17新增Android方法和新截图全部NOT_RUN；T01/T02/T04及T03口径/T05事件索引有JVM证据，真实Room、导航/大字、并发/换代与format2往返仍待设备验证，不把M18五项整体标PASS。240仅分桶极值基础预算，边界邻点额外，日级全范围工作随日期数×冻结求值成本（含排序/校验）增长，20年7306日样本不是无限历史性能证明。Q02仅M18领域子断言记录通过，Android与16组完整跨模块未关闭。M10 PENDING / DEFERRED、三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过及全部历史NOTES/UNKNOWN保持。提交推送后停止，不自行冻结、不进入M19。[报告](evidence/M18-verification.md)、[精确结果](evidence/m18/results.json)、[设备缺口](evidence/m18/device-availability.json)、[checkpoint](checkpoints/2026-10-21-M18.md)。
+- **M18 — READY_FOR_REVIEW（Android补验完成，等待独立复验）**：用户明确授权从评审`6dfc4a6c79918d7e6f2e7c40d8b1c9fc2b5943c1`在当前分支补验。新建唯一隔离`Lithic_M18_API36_20261021 / emulator-5692`，最终Repository7＋VM4＋Compose5＋旅程1＝**17 Android PASS、0 FAIL/忽略/NOT_RUN**；10张真实设备Compose原始图。首次14 PASS/3 FAIL为测试定位错误，记录保留；仅两份androidTest修正，生产App字节不变。真实Room完整事实/同日>50、协调器一致性、首页总额、纠错删除、format2往返/旧代拒读、迟到/失败刷新、Nav3及20年正负曲线均有补充证据。仅测试APK定向构建成功，原174 JVM PASS、Lint0错误23警告保持历史且本次未重跑。
+  最终App SHA `a837fd4ae881efbf042587a53b87414a8a94cad935ba74ee99b87e7cce5b8ed9`；Test SHA `f2f01b2d77fb4f12d24338a02218c7175a0ce299b4a9a079178580d4f6d4a257`。新设备创建/启动各1次，App初装1、Test初装1及同签名更新1；结束同实例在线、no_backup空、设置一致。原启动外层回执NOT_CAPTURED保留，实际身份/进程/端口/boot独立证实；旧设备命令0。截图为plain Application/隔离ComponentActivity，360dp/200%为LocalDensity，跨日注入BusinessClock，往返受控文件；不扩为MainActivity/系统大字/TalkBack/真实午夜/SAF/故障恢复。Room3/backup2/冻结引擎/M16保护/媒体协议不改；20年样本不证明无限性能或最坏取消时延。Q02本模块领域及限定Android证据已具备，16组完整跨模块不关闭。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06延期/G1未整体通过、所有NOTES保持。提交后停止，不自行冻结、不进入M19。[补验报告](evidence/M18-Android-verification.md)、[17项结果](evidence/m18-android/results.json)、[10图](evidence/m18-android/screenshots/README.md)、[补验checkpoint](checkpoints/2026-10-21-M18-Android.md)。原[离线报告](evidence/M18-verification.md)与原证据不改。
 
 - **M17 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-21正式转交的ChatGPT独立源码及证据验收结论，评审提交`54360aa0e61779c7efa62b527f8901778a0845a2`，评审/回写分支`codex/m17-item-cost-charts`。M17-T01～T05、此前144 JVM（33新＋111回归）及28 Android（19本模块＋9回归）＝172唯一方法PASS、0失败/错误/跳过，Lint0错误9警告、Debug App/Test构建及9张隔离截图获限定认可。冻结只读项目成本曲线/订阅标准日均阶梯、完整事件/精确日期查询与同代刷新；Room3/backup2/冻结引擎/M16保护不改。Q02仅M17子断言通过，M18及16组完整跨模块门禁仍NOT_RUN，不整体关闭。
   证据仅原5672/API36/x86_64合成环境、plain Application/隔离ComponentActivity中的真实LithicApp/Nav3；恢复为受控文件目标，360dp/200%为LocalDensity，跨日为注入BusinessClock与前台生命周期。API26/真机/OEM/Release/稳定签名、MainActivity个人账本、系统大字/完整IME/TalkBack、真实午夜/进程终止/LMK/断电和长期大数据性能仍NOT_RUN；240为基础点预算，另保留事实边界，不是总点数或计算开销硬上限。原RED/FAIL/UNKNOWN/NOT_RUN/NOTES、报告/结果/截图/checkpoint均保持历史原样。原实施结束时设备在线的记录不视为本轮重新观察；本轮仅文档回写，未重跑测试、构建、APK核验或设备操作。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过保持。停止于冻结登记，不进入M18。[正式登记](ACCEPTANCE_MATRIX.md#m17正式冻结登记2026-10-21)、[原报告](evidence/M17-verification.md)、[原统计](evidence/m17/results.json)、[图源](evidence/m17/screenshots/README.md)、[原checkpoint](checkpoints/2026-10-21-M17.md)。
@@ -56,7 +56,7 @@
 ## Pending / Current Problems / Technical Debt
 
 - **M07 NOTES 继续有效：**ProjectAbsent 只确认当前不存在，不证明历史删除操作身份；多条旧 END_SETTLEMENT 明确冲突，没有自动修复；媒体数据/文件生命周期清理归 M10。原20条 Lint 提示及历史执行证据保留。M05 写后刷新与分页交接已在 M06 实施并独立验收，不改写历史 NOTES。
-- Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q02 M17已有限定冻结，M18本轮领域子断言PASS，M18 Android及16组完整跨模块记录仍NOT_RUN。Q03 长期100/1000日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M12导入/切换/共同校验与受控回退已有原候选证据；三个指定真实进程终止子门禁PASS已由用户转交的本次独立结论确认，Q06-V01～V03更广真实故障（坏新代后再终止、清理中终止等）仍NOT_RUN，不整体CLOSED。原 ZIP/43 原件/24 模块、130 案例及16组完整跨模块补测不改。
+- Q01 CLOSED，Q02/Q07 USER_CONFIRMED；Q02 M17已有限定冻结，M18领域及本次限定Android子断言PASS，16组完整跨模块记录仍NOT_RUN。Q03 长期100/1000日节点在 M21 前，Q04 提醒资格在 M20 前，Q05 图片往返在 M10/M12 前；Q06 **ENGINEERING_REQUIRED**，M12导入/切换/共同校验与受控回退已有原候选证据；三个指定真实进程终止子门禁PASS已由用户转交的本次独立结论确认，Q06-V01～V03更广真实故障（坏新代后再终止、清理中终止等）仍NOT_RUN，不整体CLOSED。原 ZIP/43 原件/24 模块、130 案例及16组完整跨模块补测不改。
 - [M09 两项流程风险](SPEC_ISSUES.md)由用户M09指令明确A/B产品规则：允许同身份重开，默认固定最晚已确认付费边界；保持USER_CONFIRMED / IMPLEMENTED / VERIFIED及原来源，两个流程风险已按模块证据关闭，现获独立审查认可。原全量失败及诊断保留，不由本次回写重新实施或验证。M04 首次初始化中断残留 generation 不得静默清除真实数据；M08 版本预检与无损升级已完成，不能代替 M12 完整恢复/故障回退。
 - **CurrentAbsence：**只证明当前缺失，不提供永久删除操作日志；继续保留M07的ProjectAbsent和旧END_SETTLEMENT冲突边界。
 - **空间不足：**真实 SQLite 满页可能被 Android/Room 回滚异常表现为普通 DATABASE；继续保留输入、事务原子性及同命令恢复，不按消息猜测或宣称所有磁盘满均准确分类。
@@ -73,8 +73,8 @@ M16已限定冻结，当前为Room3八表、显式Migration1→2→3、backup2�
 ## Git
 
 - 当前分支`codex/m18-total-cost-history`，工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`。起点本地/远端M17均为`7e74df960e994e3a36f4417f7d83b07ead63763f`且工作区干净，目标分支此前不存在。仅M18必要代码/定向测试/证据与当前登记；不合并main，旧规划/原证据/冻结引擎/schema/备份协议不改。
-- 最终提交及远端一致性以Git回执为准；不触碰WHOCARE或其他工作区，不录入真实账本、不配置发行签名。原5672不可用后没有设备命令。
+- 最终提交及远端一致性以Git回执为准；不触碰WHOCARE或其他工作区，不录入真实账本、不配置发行签名。原5672不可用后原离线交付未发设备命令；本次追加授权仅新建5692，旧设备操作0。
 
 ## Next Recommended Task
 
-M18离线候选交付后停止等待ChatGPT独立验收；Android17项及真实截图仍需另行明确环境授权，不自行新建/重启5672。M19未授权。M13-T06 NOT_RUN / DEFERRED、G1未整体通过、M10 PENDING / DEFERRED及三历史JPEG FAIL、Q02尚未完成的Android/完整跨模块部分、Q03～Q06与全部历史NOTES保持。
+M18补验交付后停止，等待ChatGPT独立复验；不自行冻结或继续设备操作，M19未授权。M13-T06 NOT_RUN / DEFERRED、G1未整体通过、M10 PENDING / DEFERRED及三历史JPEG FAIL、Q02完整跨模块部分、Q03～Q06与全部历史NOTES保持。

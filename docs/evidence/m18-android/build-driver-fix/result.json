@@ -1,0 +1,25 @@
+{
+  "command": [
+    "gradlew.bat",
+    ":app:assembleDebugAndroidTest",
+    "-Pm13Isolated=true",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "started_at": "2026-10-21T11:55:12.916702+00:00",
+  "exit_code": 0,
+  "seconds": 44.234,
+  "app_before": "a837fd4ae881efbf042587a53b87414a8a94cad935ba74ee99b87e7cce5b8ed9",
+  "app_after": "a837fd4ae881efbf042587a53b87414a8a94cad935ba74ee99b87e7cce5b8ed9",
+  "test_sha256": "f2f01b2d77fb4f12d24338a02218c7175a0ce299b4a9a079178580d4f6d4a257",
+  "logs": {
+    "stdout.txt": {
+      "bytes": 3501,
+      "sha256": "d2d7968ad23494dbf5408bbab4a36a50c9b48f5e9a2c566958ca1834c0d8dd58"
+    },
+    "stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

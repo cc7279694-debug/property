@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5692",
+    "shell",
+    "run-as com.cooper.lithic.debug sh -c 'if [ -L no_backup ]; then exit 9; elif [ ! -e no_backup ]; then echo ABSENT; else ls -lan no_backup; fi'"
+  ],
+  "exit_code": 0,
+  "stdout_sha256": "e1ac1636fe3dba22113ac6e3f53e14aafe22c149d858610c0f363eb392c8f630",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

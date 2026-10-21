@@ -1,4 +1,4 @@
-<!-- M18离线候选READY_FOR_REVIEW：174 JVM PASS，17 Android/新截图NOT_RUN；提交后待独立验收，不授权M19或追加设备操作。 -->
+<!-- M18 Android补验已完成：READY_FOR_REVIEW，17 Android PASS/10图；等待独立复验，不授权M19。 -->
 # 砺石 LITHIC 协作规范
 
 ## 1. 范围与优先级
@@ -63,7 +63,7 @@ Bug 按复现 → 定位 → 理解 → 假设 → 修复 → 验证 → 回归�
 
 遇到阻塞规格矛盾只记录问题与建议，等待确认；高风险删除、真实数据修改、不可逆迁移、生产发布、force push 等必须暂停。
 
-M17已由用户转交ChatGPT独立源码及证据验收，评审`54360aa0e61779c7efa62b527f8901778a0845a2`，限定ACCEPTED / FROZEN — PASS WITH NOTES；按[正式登记](docs/ACCEPTANCE_MATRIX.md#m17正式冻结登记2026-10-21)保留M17-T01～T05、此前144 JVM/28 Android PASS、Lint0错误9警告及9张隔离截图。前次仅文档冻结登记已完成；本轮用户正式授权[M18总成本历史](docs/planning/M18_CONTRACT.md)的只读统计实现、定向验证与交付，现候选READY_FOR_REVIEW，174 JVM PASS/17 Android及新截图NOT_RUN，见[报告](docs/evidence/M18-verification.md)；提交后停止，不进入M19。保持schema3、backup2、冻结引擎/M16保护/恢复及媒体协议；Q02的M18与完整跨模块部分仍未完成。原实施仅5672/API36/x86_64新合成根、plain Application/隔离ComponentActivity，非MainActivity账本；LocalDensity大字体、注入时钟、受控文件往返不扩大为系统/真机/新SAF验证，原未执行项及历史NOTES保留。本轮仅允许重新核验仍在线的原5672实例后使用隔离新合成根；原实例核验两进程均不存在，未发ADB；设备项NOT_RUN，不重启/新建，交付不授权继续追加设备操作。下方M11/M12为继承的数据安全约束和历史说明，不扩大本轮范围。
+M17保持ACCEPTED / FROZEN — PASS WITH NOTES及原证据。本轮用户M18补验授权从评审`6dfc4a6c79918d7e6f2e7c40d8b1c9fc2b5943c1`新建唯一隔离API36 `Lithic_M18_API36_20261021 / emulator-5692`，最终17 Android PASS、10图；仅两份androidTest定位/合成截图修正和测试APK构建，生产App字节不变，原174 JVM/Lint0/23不重跑，首次14/3保留。见[补验报告](docs/evidence/M18-Android-verification.md)。旧5672/5686/H2/C2/M10及其他设备操作0，新5692结束保持在线；不构成后续操作授权。现为READY_FOR_REVIEW，待ChatGPT独立复验，不自行冻结/进入M19。Room3/backup2/冻结引擎/M16保护/恢复及媒体协议不改。plain Application/隔离ComponentActivity、LocalDensity200%、注入时钟、受控文件往返不扩大为MainActivity、系统字号/TalkBack/真机/真午夜/新SAF。Q02完整跨模块与全部历史NOTES/UNKNOWN/NOT_RUN保持。下方M11/M12为继承安全约束和历史说明。
 
 M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字节，缺失/损坏/身份或完整性不明拒绝完整成功。空媒体合法。完整归档先在私有目录校验，再写本次系统保存位置，关闭并读回校验后才报告成功；取消和失败明确反馈。只用合成验证，不修改Room schema、冻结业务算法/M09语义、备份格式编号，恢复/代切换现按用户明确M12授权与[M12契约](docs/planning/M12_CONTRACT.md)实施；不做CSV/云/自动备份/密码，不进入下一模块。设备实验只允许经确认的全新隔离环境；H2/C2/M10保留现场绝对禁止操作。原规划/案例和全部历史NOTES不改；实现/编译通过不等于Android或正式M11冻结。已登记JPEG/PNG备份核验原字节长度/SHA、容器和实际尺寸，不以缺少M10深度解码为由拒绝所有JPEG；Android可读性不冒称严格熵验证。合法标准PNG编码不再人为收窄。未知或不匹配仍拒绝整份导出。
 
@@ -72,7 +72,7 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 - 独立模块用独立功能分支，保留用户未提交内容。禁止在 main/master 直接开发。
 - 提交前查差异、实际验证、无关改动、敏感信息与临时文件；Conventional Commits；只推当前功能分支。
 - 未经明确授权不得合并 main、自动合并 PR、force push、重置/删除远程历史、部署或发布。
-- 本轮来源为M17冻结登记`7e74df960e994e3a36f4417f7d83b07ead63763f`，只提交/推送`codex/m18-total-cost-history`的M18必要变更。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过和全部历史NOTES保持；不访问受保护现场；设备限本轮契约内原在线5672，退出不重建。稳定签名、真实录入、发布、M19和main合并未授权。
+- 本次补验来源`6dfc4a6c79918d7e6f2e7c40d8b1c9fc2b5943c1`；只提交/推送`codex/m18-total-cost-history`必要测试修正/证据/当前登记。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过和全部历史NOTES保持；原保护设备不访问。独立复验前停止；稳定签名、真实录入、发布、M19与main合并未授权。
 - 实现者只可报 READY_FOR_REVIEW；ACCEPTED / FROZEN 需要独立验收结果，不能自己授予。
 - 每个模块结束同步当前状态、适用决策与验收证据，输出模块报告并立即停止。
 

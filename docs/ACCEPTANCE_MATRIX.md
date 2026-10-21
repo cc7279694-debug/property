@@ -1,10 +1,24 @@
 # 验收登记
 
-当前交付：**M18 — READY_FOR_REVIEW（离线候选）**，分支`codex/m18-total-cost-history`，来源M17冻结`7e74df960e994e3a36f4417f7d83b07ead63763f`。174 JVM PASS，Lint0错误23警告、App/Test构建及测试源码编译成功；17 Android和截图NOT_RUN，不宣告M18全部通过或冻结。最近正式限定冻结为M17及此前模块；历史记录与延期门禁保持。
+当前交付：**M18 — READY_FOR_REVIEW（Android补验完成，等待独立复验）**。原174 JVM PASS保留，本轮未重跑；最终17 Android PASS、0 FAIL/忽略/NOT_RUN，10张隔离截图；仅测试APK定向重建，生产App不变。不是独立ACCEPTED/FROZEN。
 
-## M18 当前执行验收（2026-10-21）
+## M18 Android补充验收（2026-10-21）
 
-本轮实际实现与离线验证，**不是独立验收/冻结**。[契约](planning/M18_CONTRACT.md)、[集中报告](evidence/M18-verification.md)、[逐类统计](evidence/m18/results.json)、[原始证据](evidence/m18/README.md)。
+来源`6dfc4a6c79918d7e6f2e7c40d8b1c9fc2b5943c1`，新`Lithic_M18_API36_20261021 / emulator-5692`；四类7＋4＋5＋1＝17唯一方法最终全部PASS。首次14 PASS/3 FAIL和原离线证据保持；仅测试描述/卡片后代定位及补充合成截图事实，原断言语义/方法身份保留。详见[补验报告](evidence/M18-Android-verification.md)、[逐方法真实结果](evidence/m18-android/results.json)、[10图/来源](evidence/m18-android/screenshots/README.md)。
+
+| 案例 | 补验范围 |
+|---|---|
+| M18-T01 | PASS：原JVM独立数值参照保持，Android完整Room事实及与同快照首页一致。 |
+| M18-T02 | PASS：原JVM暂停/过期/停止及边界保持，真实Room结束后结算不重进总额/M16事实补验。 |
+| M18-T03 | PASS：真实Room63记录、完整关联/预付/零负值/同快照首页、协调器排队写不混合。 |
+| M18-T04 | PASS：原全量参考保持；实际20年总线/两类共同尺度、正负峰谷及精确日期截图。 |
+| M18-T05 | PASS：同日56事件及非现金标识、50条继续查看、准确详情返回/守卫、浏览不改业务事实。 |
+
+最终Test SHA `f2f01b2d77fb4f12d24338a02218c7175a0ce299b4a9a079178580d4f6d4a257`；App保留`a837fd4a...`原完整身份见报告。API36/x86_64合成、plain Application/ComponentActivity；LocalDensity200%、注入跨日、受控文件往返，不扩大为MainActivity/系统字号/TalkBack/真午夜/SAF/故障实验。新设备保留在线，no_backup空；旧设备操作0。原启动外层回执NOT_CAPTURED保留、真实新实例独立核对，无重复启动。M10延期/三JPEG FAIL、M13-T06延期/G1、Q02完整16组及全部历史NOTES不关闭。174 JVM与Lint0/23仅继承此前执行，本次不冒充重跑。
+
+## M18 原离线执行登记（2026-10-21，补验前历史）
+
+以下保留补验前的实际实现与离线验证记录；其中Android NOT_RUN是当时状态，当前结果见上方补验，**不是独立验收/冻结**。[契约](planning/M18_CONTRACT.md)、[集中报告](evidence/M18-verification.md)、[逐类统计](evidence/m18/results.json)、[原始证据](evidence/m18/README.md)。
 
 | 原案例 | 本轮实际结果及未运行范围 |
 |---|---|

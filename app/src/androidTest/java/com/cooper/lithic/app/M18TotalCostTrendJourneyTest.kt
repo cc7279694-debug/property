@@ -32,8 +32,11 @@ import com.cooper.lithic.data.backup.DataGenerationStore
 import com.cooper.lithic.data.local.*
 import com.cooper.lithic.data.repository.*
 import com.cooper.lithic.domain.report.CostTimelineEngine
+import com.cooper.lithic.domain.report.OverviewEngine
+import com.cooper.lithic.domain.subscription.BillingCycle
 import java.io.File
 import java.io.FileOutputStream
+import java.math.BigDecimal
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -109,26 +112,61 @@ class M18TotalCostTrendJourneyTest {
     @Test fun real_total_trend_twenty_year_spike_events_navigation_guards_and_refresh(): Unit = runBlocking {
         val generation = owner.openStorage()
         val old = seed("合成二十年记录", today.minusYears(20), 100_000)
-        seed("合成新增当日尖峰", today.minusYears(9).plusDays(17), 90_000_000)
+        val peakDay = today.minusYears(9).plusDays(17)
+        seed("合成新增当日尖峰", peakDay, 90_000_000)
         val repo = ready.repository
+        val valleyDay = today.minusYears(15)
+        val recovered = seed("合成负净成本谷值", valleyDay.minusDays(1), 0)
+        val recovery = ProjectMoneyEventEntity(id(), recovered.id, MoneyDirection.RECOVERY, 180_000_000,
+            valleyDay, "合成已发生收回", role = ProjectMoneyEventRole.REGULAR, operationId = id())
+        assertTrue(repo.appendMoneyEvent(AddProjectMoneyEventCommand(recovery.operationId, recovery)) is MutationResult.Success)
+        val subscription = SubscriptionEntity(id(), "合成月付服务", LithicDatabase.SUBSCRIPTION_FALLBACK_ID,
+            createdAt = timestamp, updatedAt = timestamp)
+        val paymentId = id()
+        val renewal = SubscriptionRenewalEntity(id(), subscription.id, today.minusDays(9), today.minusDays(9),
+            today.plusDays(21), today.plusDays(21), 15_000, BillingCycle.MONTHLY, 30, paymentId)
+        assertTrue(ready.subscriptionRepository.createWithRenewal(CreateSubscriptionCommand(paymentId, subscription, renewal))
+            is SubscriptionMutationResult.Success)
         for (index in 0..50) {
             val event = ProjectMoneyEventEntity(id(), old.id, MoneyDirection.OUTLAY, 100, today,
                 "同日说明${index.toString().padStart(2, '0')}", role = ProjectMoneyEventRole.REGULAR, operationId = id())
             assertTrue(repo.appendMoneyEvent(AddProjectMoneyEventCommand(event.operationId, event)) is MutationResult.Success)
         }
         val before = generation.backupSnapshotSource().capture()
+        val snapshot = ready.totalCostTimelineRepository!!.loadSnapshot(today)
+        val point = CostTimelineEngine.evaluate(snapshot, listOf(today)).single()
+        assertTrue(CostTimelineEngine.point(snapshot, valleyDay).totalRate.signum() < 0)
+        assertTrue(CostTimelineEngine.point(snapshot, peakDay).totalRate.signum() > 0)
+        assertEquals(0, BigDecimal("5").compareTo(point.subscriptionRate))
+        assertEquals(0, OverviewEngine.evaluate(snapshot.overview, today).totalRate.compareTo(point.totalRate))
         click("tab-review"); waitNode("review-screen")
         scrollClick("review-screen", "review-total-cost-trend")
         waitNode(SCREEN); waitNode("total-trend-selected-date")
         scrollTo(SCREEN, "total-trend-canvas")
         compose.onNodeWithTag("total-trend-canvas").assertIsDisplayed()
         capture("01-total-twenty-year-plot", "total-trend-canvas")
+        capture("01b-total-plot-context")
         scrollClick(SCREEN, "total-trend-breakdown")
         scrollTo(SCREEN, "total-trend-canvas")
-        compose.onNodeWithTag("total-trend-canvas").assertContentDescriptionContains("共同日期和金额尺度")
+        compose.onNodeWithTag("total-trend-canvas").assertContentDescriptionEquals(
+            "总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。")
         capture("02-component-same-scale-plot", "total-trend-canvas")
-        val snapshot = ready.totalCostTimelineRepository!!.loadSnapshot(today)
-        val point = CostTimelineEngine.evaluate(snapshot, listOf(today)).single()
+        capture("02b-component-plot-context")
+        for ((date, name) in listOf(valleyDay to "07-negative-valley-exact-values", peakDay to "08-positive-peak-exact-values")) {
+            scrollTo(SCREEN, "total-trend-date-input")
+            compose.onNodeWithTag("total-trend-date-input").performTextReplacement(date.toString())
+            scrollClick(SCREEN, "total-trend-date-apply")
+            scrollTo(SCREEN, "total-trend-selected-date")
+            waitText("total-trend-selected-date", date.toString())
+            scrollTo(SCREEN, "total-trend-total")
+            waitText("total-trend-total", AmountFormatter.formatDailyRate(CostTimelineEngine.point(snapshot, date).totalRate))
+            capture(name)
+        }
+        scrollTo(SCREEN, "total-trend-date-input")
+        compose.onNodeWithTag("total-trend-date-input").performTextReplacement(today.toString())
+        scrollClick(SCREEN, "total-trend-date-apply")
+        scrollTo(SCREEN, "total-trend-selected-date")
+        waitText("total-trend-selected-date", today.toString())
         scrollTo(SCREEN, "total-trend-total")
         waitText("total-trend-total", AmountFormatter.formatDailyRate(point.totalRate))
         capture("03-exact-three-amounts")

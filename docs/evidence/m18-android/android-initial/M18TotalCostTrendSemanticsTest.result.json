@@ -1,0 +1,182 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5692",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\ui\\M18TotalCostTrendSemanticsTest.kt",
+  "source_sha256": "c88f96fdc5486b9068041cda40892a3ee97e6fa4b4aa7010c275b96885b7cdc7",
+  "started_at": "2026-10-21T11:52:21.132661+00:00",
+  "expected": [
+    "default_total_can_expand_components_with_one_scale_and_text_values",
+    "exact_date_text_entry_avoids_drag_and_future_is_rejected",
+    "same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note",
+    "empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty",
+    "failure_is_visible_and_narrow_double_font_controls_remain_reachable"
+  ],
+  "apk_identity": {
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+    "applications": [
+      {
+        "label": "app",
+        "package": "com.cooper.lithic.debug",
+        "uid": 10216,
+        "bytes": 13164911,
+        "sha256": "a837fd4ae881efbf042587a53b87414a8a94cad935ba74ee99b87e7cce5b8ed9",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "installed_path": "/data/app/~~98SmFZDVxroMdD3_pRgNOw==/com.cooper.lithic.debug-8XuC3_ZWaQcOnr_yC6UC3Q==/base.apk"
+      },
+      {
+        "label": "test",
+        "package": "com.cooper.lithic.debug.test",
+        "uid": 10217,
+        "bytes": 2923214,
+        "sha256": "8b225f072e931e42ec62d725973e2425cf5ff8f727293936e59eb58da948f766",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "installed_path": "/data/app/~~VYMj_ZIe-1BCkn7XNwPvSw==/com.cooper.lithic.debug.test-oxAI8y_9bPsAqZfhkCD8gA==/base.apk"
+      }
+    ],
+    "namespace": "ABSENT before first instrumentation",
+    "old_device_commands": 0,
+    "default_ledger_opened": false
+  },
+  "status": "FAIL_OR_UNKNOWN",
+  "exit_code": 0,
+  "seconds": 37.015,
+  "completed": [
+    "exact_date_text_entry_avoids_drag_and_future_is_rejected",
+    "failure_is_visible_and_narrow_double_font_controls_remain_reachable",
+    "empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty"
+  ],
+  "bad": [
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '完整说明50' (ignoreCase: false) as substring)",
+      "stream": "",
+      "test": "same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note",
+      "status_code": -2
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (ContentDescription = '总日均成本历史实线' (ignoreCase: false))",
+      "stream": "",
+      "test": "default_total_can_expand_components_with_one_scale_and_text_values",
+      "status_code": -2
+    }
+  ],
+  "stdout_bytes": 10791,
+  "stdout_sha256": "edea886fca2bed77a794dddc38fa1ef3528d06aaf0373f6ee1c36309a6a25ece",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "exact_date_text_entry_avoids_drag_and_future_is_rejected",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "exact_date_text_entry_avoids_drag_and_future_is_rejected",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '完整说明50' (ignoreCase: false) as substring)",
+      "stream": "",
+      "test": "same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note",
+      "status_code": -2
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "default_total_can_expand_components_with_one_scale_and_text_values",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (ContentDescription = '总日均成本历史实线' (ignoreCase: false))",
+      "stream": "",
+      "test": "default_total_can_expand_components_with_one_scale_and_text_values",
+      "status_code": -2
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "failure_is_visible_and_narrow_double_font_controls_remain_reachable",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "failure_is_visible_and_narrow_double_font_controls_remain_reachable",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": "",
+      "test": "empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "5",
+      "stream": ".",
+      "test": "empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty",
+      "status_code": 0
+    }
+  ]
+}

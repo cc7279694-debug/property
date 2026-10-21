@@ -1,5 +1,11 @@
 # 决策记录
 
+## 2026-10-21 — M18 Android补验的身份与历史边界
+
+用户追加授权新建唯一隔离API36，在`6dfc4a6`候选补齐17 Android与截图。最终17 PASS/10图；首次14 PASS/3 FAIL及原离线NOT_RUN证据保持。修正仅测试精确语义定位和实际Repository合成截图事实，未改生产代码或冻结算法。最终App SHA不变、Test身份独立更新，所有最终结果在同一Test字节下取得；原174 JVM/0错误23警告不重复计执行。
+
+新5692独立AVD/data/snapshot根，旧设备命令0；结束保留在线。启动外层回执NOT_CAPTURED与实际CIM/boot独立证明分别记录。LocalDensity/注入日期/受控备份文件不升级为系统字号、真实午夜或SAF/故障恢复。详见[补验报告](evidence/M18-Android-verification.md)。READY_FOR_REVIEW不等于冻结，Q02完整跨模块/M10延期/M13-T06及G1和全部历史NOTES保持，提交后等待独立复验，不进入M19。
+
 ## 2026-10-21 — M18现有事实重建与显示抽样分离
 
 ### Decision

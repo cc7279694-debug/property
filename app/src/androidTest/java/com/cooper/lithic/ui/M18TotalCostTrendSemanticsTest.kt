@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.core.design.AmountFormatter
 import com.cooper.lithic.core.model.LongTermProject
 import com.cooper.lithic.core.model.Money
 import com.cooper.lithic.core.model.MoneyDirection
@@ -37,14 +38,15 @@ class M18TotalCostTrendSemanticsTest {
         var toggles = 0
         show(state(), toggle = { toggles++ })
         scroll("total-trend-canvas")
-        compose.onNodeWithTag("total-trend-canvas").assertContentDescriptionContains("总日均成本历史实线")
+        compose.onNodeWithTag("total-trend-canvas").assertContentDescriptionEquals(
+            "总日均成本历史实线，负值保留。可展开两类贡献，或在下方输入日期和查看文字清单。")
         scroll("total-trend-breakdown")
         compose.onNodeWithTag("total-trend-breakdown").performClick()
         compose.runOnIdle { assertEquals(1, toggles) }
         scroll("total-trend-project")
         compose.onNodeWithTag("total-trend-project").assertTextContains("−", substring = true)
         scroll("total-trend-subscription")
-        compose.onNodeWithTag("total-trend-subscription").assertTextContains("10.00")
+        compose.onNodeWithTag("total-trend-subscription").assertTextContains(AmountFormatter.formatDailyRate(BigDecimal.TEN))
         scroll("total-trend-selected-status")
         compose.onNodeWithTag("total-trend-selected-status").assertTextContains("正负贡献相互抵消", substring = true)
     }
@@ -70,7 +72,7 @@ class M18TotalCostTrendSemanticsTest {
         show(state(events), open = { kind, id -> opened = kind to id })
         scroll("total-trend-events-more"); compose.onNodeWithTag("total-trend-events-more").performClick()
         scroll("total-trend-event-event-50")
-        compose.onNodeWithTag("total-trend-event-event-50").assertTextContains("完整说明50", substring = true)
+        compose.onNodeWithTag("total-trend-event-event-50").assert(hasAnyDescendant(hasText("完整说明50")))
         compose.onNodeWithText("非现金折抵（不是现金扣款）", useUnmergedTree = true).assertExists()
         scroll("total-trend-open-event-50"); compose.onNodeWithTag("total-trend-open-event-50").performClick()
         compose.runOnIdle { assertEquals(OverviewKind.PROJECT to "record-50", opened) }

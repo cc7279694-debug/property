@@ -1,0 +1,14 @@
+{
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "Get-CimInstance Win32_OperatingSystem | Select-Object FreePhysicalMemory,TotalVisibleMemorySize | ConvertTo-Json"
+  ],
+  "exit_code": 0,
+  "at": "2026-10-21T11:39:15.898344+00:00",
+  "stdout_bytes": 84,
+  "stdout_sha256": "5f51a8fb0030905e22de62fb09407b6b51301df24891a702432960b06e3b1d7e",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
