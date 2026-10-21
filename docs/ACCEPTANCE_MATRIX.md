@@ -1,6 +1,24 @@
 # 验收登记
 
-当前开发结论：**M14 READY_FOR_REVIEW，未独立冻结**；M13-T01～T05独立PASS WITH NOTES，T06 NOT_RUN / DEFERRED、G1未整体通过。M12及此前正式冻结结论保持，用户明确授权M14先行；下方旧交付段落保留当时状态，不将Q06整体CLOSED。
+当前正式结论：**M14 ACCEPTED / FROZEN — PASS WITH NOTES**，评审`bf621689180b4d5d86e42f8136e4aafb1971c5fa`，依据用户转交的ChatGPT独立复验登记；本次仅文档回写，不是重新测试。M13-T06 NOT_RUN / DEFERRED、G1未整体通过，M10 PENDING / DEFERRED，M12及此前冻结和全部历史NOTES保持，不将Q06整体CLOSED，不授权M15。
+
+## M14正式冻结登记（2026-10-21）
+
+**M14 — ACCEPTED / FROZEN — PASS WITH NOTES。** 来源是用户本轮正式转交的ChatGPT独立复验，评审提交`bf621689180b4d5d86e42f8136e4aafb1971c5fa`，评审/回写分支`codex/m14-category-search`。下方初交付与补验执行登记、原报告和checkpoint保留当时状态，不回填历史PASS。
+
+| 获独立认可的案例 | 冻结范围 |
+|---|---|
+| M14-T01 | 同类型类别合并的事务原子性、当前/历史引用、金额/付款/状态及总额保护、失败完整回滚；真实竞争仍NOT_RUN。 |
+| M14-T02 | 跨类型拒绝、默认类别保护、标准名冲突、陈旧确认、重复操作与旧代拒写。 |
+| M14-T03 | 当前/历史名称搜索、真实状态和精确详情路由；复用冻结引擎。 |
+| M14-T04 | 参数化LIKE与特殊字符字面匹配，不扩为备注/金额搜索。 |
+| M14-T05 | 项目/订阅默认排序、稳定ID次排序、分页无重复遗漏。 |
+
+独立认可此前实际证据：**136项JVM PASS**；**最终29项Android PASS＝原28＋截图旅程1**（类别11、搜索/排序12、完整format1往返1、原Compose4、旅程1），0失败/未运行；**8张截图**不另计测试方法。原Lint0错误9警告。原[136项统计](evidence/m14/results.json)、[最终29项及APK身份](evidence/m14-android/results.json)、[原始结果/图库](evidence/m14-android/README.md)、[补验报告](evidence/M14-Android-verification.md)保留；本轮只读取这些既有资料及Git，不执行新的测试、构建、APK或设备操作。
+
+**NOTES / 未扩大范围：**仅API36/x86_64隔离合成验证；截图来自隔离ComponentActivity中的真实LithicApp/Nav3，非MainActivity/正式发行，360dp及搜索200%仅LocalDensity画布，类别/合并页200%、系统字号设置、真实IME/完整TalkBack仍NOT_RUN。备份往返使用受控文件目标，不是新SAF实测；真实并发压力、API26、真机/OEM、Release/稳定签名和真实账本升级仍NOT_RUN。保留三处原测试接缝修正、全部历史RED/UNKNOWN/NOT_RUN和9条Lint提示，不把文档登记或ChatGPT复验写成重新运行测试的PASS。补验报告及索引的构建日志原位于未跟踪本地build目录；本次仅将两份实际原日志原字节归档至logs目录并修正链接，原本地日志仍保留，没有新运行、重造或用其他批次日志替代。
+
+M10 **PENDING / DEFERRED**及三历史JPEG FAIL、M13-T06 **NOT_RUN / DEFERRED**、G1未整体通过、UI-C1原冻结、Q03～Q06及全部历史NOTES保持。M14冻结不授予M15、发行、真实数据录入或任何模拟器操作权限。本轮只提交文档并停止，不合并main。
 
 ## M11正式独立冻结登记（2026-10-20）
 

@@ -36,7 +36,7 @@
 
 现有SDK与镜像复用，无下载/升级：Emulator37.1.11、API36 Google APIs x86_64 r7、JDK17.0.20.1、Gradle8.14.3。经用户另行批准，启动前仅用Gradle正常停止已确认空闲的PID7508构建服务，无强杀。
 
-最终测试包构建及Lint成功（3m51s），**0错误/9条既有警告**；[日志](m14-android/build/test-ui-semantics-fix-build-lint.log)、[Lint XML](m14-android/lint.xml)。原136项JVM与Debug App构建证据继承，本轮未重跑无关历史JVM，App未重新打包替换。
+最终测试包构建及Lint成功（3m51s），**0错误/9条既有警告**；[日志](m14-android/logs/test-ui-semantics-fix-build-lint.log)、[Lint XML](m14-android/lint.xml)。原136项JVM与Debug App构建证据继承，本轮未重跑无关历史JVM，App未重新打包替换。
 
 | 产物 | 字节数 | SHA-256 |
 |---|---:|---|

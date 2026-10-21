@@ -1,16 +1,16 @@
 # V1 模块路线与执行闸门
 
-**2026-10-21当前覆盖**：用户正式授权M14，来源`2c5e23a7af713f6a96b345bce2a90e613458f270`，仅`codex/m14-category-search`。[本轮契约](planning/M14_CONTRACT.md)。M13-T01～T05限定独立通过，T06 NOT_RUN / DEFERRED、G1未整体通过；这是继续开发的明确授权，不是完整M13冻结。下方2026-10-20的授权与停止表述为历史。M10延期、M15未授权、原依赖表/规划归档保持。
+**2026-10-21当前覆盖**：M14已由用户转交ChatGPT独立复验结论 **ACCEPTED / FROZEN — PASS WITH NOTES**，评审`bf621689180b4d5d86e42f8136e4aafb1971c5fa`，本轮仅在`codex/m14-category-search`登记文档。[正式验收](ACCEPTANCE_MATRIX.md#m14正式冻结登记2026-10-21)。M13-T06 NOT_RUN / DEFERRED、G1未整体通过，M10 PENDING / DEFERRED；不授权M15、测试/构建/设备操作或main合并。下方旧日期授权属于历史，原依赖表/规划归档不改。
 
 **2026-10-20当前授权覆盖**：M11、M12已由用户转交独立验收限定冻结PASS WITH NOTES；当前授权M13首页汇总与核心内部Debug候选，依赖M07/M09/M12。M10仍PENDING / DEFERRED且现场不动，不合并Worker/Stage V2/JNI或独立UI-C1分支。M13-T06稳定签名/首次真实记录门槛单独保留，M14未授权。
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-本表保留原M00～M23顺序与精确前置依赖。M00～M09已独立冻结PASS WITH NOTES，M10延期，M11限定冻结，当前只授权M13首页内部候选。M09范围仍见[M09契约](planning/M09_CONTRACT.md)；其原执行报告的READY_FOR_REVIEW为历史，冻结回写57de897为M11-A起点，M11-B从79771fc继续。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；全部历史NOTES保留。
+本表保留原M00～M23顺序与精确前置依赖。M00～M09、M11/M12及M14已限定独立冻结PASS WITH NOTES；M10延期，M13-T06延期且整体发行门槛未通过，M15未授权。M09范围仍见[M09契约](planning/M09_CONTRACT.md)；其原执行报告的READY_FOR_REVIEW为历史，冻结回写57de897为M11-A起点，M11-B从79771fc继续。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；全部历史NOTES保留。
 
 ## 执行顺序与依赖解释
 
-原计划按编号逐模块授权与停止；M11-A/B从M09先行的历史有限例外保留。M09两流程风险的实施/验收结论按原记录保留，Q03～Q06与后续完整媒体、备份恢复、汇总和通知边界不变。M12冻结历史保持；当前M13交付后停止等待独立验收，不自动进入M14或恢复M10设备实验。
+原计划按编号逐模块授权与停止；M11-A/B从M09先行的历史有限例外保留。M09两流程风险的实施/验收结论按原记录保留，Q03～Q06与后续完整媒体、备份恢复、汇总和通知边界不变。M12冻结历史保持；用户此前明确授权M14在M13-T06延期下先行，现M14限定冻结，不据此扩大M13/G1通过范围，不自动进入M15或恢复M10设备实验。
 
 24计划的“必须先验收”与原JSON逐条一致，无前向依赖或环。后续还需读原计划、引用规格、适用验收、当前澄清和实际代码，不能只凭路线表开始工程。
 
@@ -32,7 +32,7 @@
 | M11 | 完整逻辑导出format v1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m11.md) | M10（完整阶段）；M11-A获授权从M09先行 | M11正式限定冻结；完整手动导出/format1/登记JPEG和PNG原字节，无CSV/自动备份 |
 | M12 | 校验/覆盖恢复/故障回退 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m12.md) | M11 | 已限定冻结PASS WITH NOTES，原往返和三个指定终止点通过；完整Q06仍不整体关闭 |
 | M13 | 首页与安全核心内部版 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m13.md) | M07、M09、M12 | 候选READY_FOR_REVIEW：统一引擎、两类/类别/刷新及合成备份恢复已验证；T06稳定签名NOT_RUN，未冻结/非完整V1 |
-| M14 | 类别/搜索/分页/排序 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m14.md) | M13 | 合并无孤儿汇总不变，不跨类型/FTS |
+| M14 | 类别/搜索/分页/排序 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m14.md) | M13 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T05及原136 JVM/最终29 Android/8图获限定认可；M13-T06延期例外不等于G1通过，M15仍未授权 |
 | M15 | 历史与跨当前历史长期榜 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m15.md) | M14 | 8年ACTIVE入陪伴榜；分类型标口径，不评分 |
 | M16 | 替换/折抵、schema v3/format v2 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m16.md) | M15 | 无环/自指/一对多；3笔折抵同事务，迁移旧格式 |
 | M17 | 项目曲线/订阅阶梯图 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m17.md) | M16 | 后事件不改发生前值、负值/断档；不预测 |

@@ -1,5 +1,21 @@
 # 决策记录
 
+## 2026-10-21 — M14独立冻结，发行与后续模块权限不扩大
+
+### Decision
+
+依据用户正式转交的ChatGPT独立复验，对分支`codex/m14-category-search`的`bf621689180b4d5d86e42f8136e4aafb1971c5fa`登记 **M14 — ACCEPTED / FROZEN — PASS WITH NOTES**；覆盖M14-T01～T05、此前136项JVM PASS、最终29项Android PASS与8张隔离截图。此为独立结论回写，不重新执行测试/构建或设备验证。[正式验收及NOTES](ACCEPTANCE_MATRIX.md#m14正式冻结登记2026-10-21)。
+
+### Context / Alternatives
+
+M14已完成类别、名称搜索及稳定分页的限定交付和API36补验；原报告/结果仍记录当时READY_FOR_REVIEW或NOT_RUN。保留历史并另记正式结论，不能改写旧RED或将文档回写、编译/截图替代真实产品测试。
+
+### Reason / Consequences
+
+当前状态和路线采用独立冻结结论，原130案例、原报告/checkpoint、失败与未运行项不改。截图仅隔离ComponentActivity/LocalDensity画布，受控文件往返不扩为新SAF证明；真实竞争、API26/真机/OEM、发行签名等边界保留。原构建日志被build忽略规则排除于评审提交，本次仅原字节归档两份实际日志至可跟踪的logs目录并修正链接；不重跑构建、不重造报告或原始证据、不使用其他批次日志替代，原本地实物保留。
+
+M10 PENDING / DEFERRED、三历史JPEG FAIL、M13-T06 NOT_RUN / DEFERRED及G1未整体通过不变。M14冻结不授权M15、main合并、发行、真实个人记录或任何模拟器操作；文档提交推送后停止。
+
 ## 2026-10-21 — M14获授权先行，发行闸门继续延期
 
 **User-confirmed：**用户明确授权从`2c5e23a7af713f6a96b345bce2a90e613458f270`在`codex/m14-category-search`实施M14。M13-T01～T05限定独立PASS WITH NOTES；T06稳定签名、正式安装升级及首次真实录入NOT_RUN / DEFERRED，G1整体未通过。本次继续开发不等于豁免发行安全门槛，也不自行冻结完整M13。

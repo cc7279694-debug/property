@@ -4,7 +4,7 @@
 
 ## Current Stage
 
-- **M14 — READY_FOR_REVIEW（未冻结）**：实现提交`730fd2a`，来源`2c5e23a7af713f6a96b345bce2a90e613458f270`；两套类别、名称搜索当前历史及稳定分页已实现。原136 JVM、宿主SQLite、构建证据保持。新获授权的唯一API36隔离设备上，**原28项＋新截图旅程1项＝29个唯一Android方法PASS，8张截图**；Lint0错误9警告，补验无产品代码变化，App字节未变。Room合并/回滚、搜索分页及受控文件目标format1往返已实测；截图是隔离ComponentActivity内的真实LithicApp/Nav3，搜索200%为LocalDensity测试画布。[补验报告](evidence/M14-Android-verification.md)、[结果](evidence/m14-android/results.json)、[新checkpoint](checkpoints/2026-10-21-M14-Android.md)。[初交付报告](evidence/M14-verification.md)、[结果](evidence/m14/results.json)及[原checkpoint](checkpoints/2026-10-21-M14.md)保留当时NOT_RUN，不改判历史。
+- **M14 — ACCEPTED / FROZEN — PASS WITH NOTES**：用户2026-10-21正式转交ChatGPT对`bf621689180b4d5d86e42f8136e4aafb1971c5fa`的独立复验结论，分支`codex/m14-category-search`。M14-T01～T05、原136项JVM PASS、最终29项Android PASS（原28＋独立截图旅程1）及8张隔离截图获限定认可；原Lint0错误9警告保持。仅API36/x86_64合成验证，截图为隔离ComponentActivity中的真实LithicApp/Nav3，360dp/搜索200%是LocalDensity画布；受控文件目标往返不是新SAF验证。真实竞争、系统200%/完整IME与TalkBack、MainActivity发行入口、API26/真机/OEM/Release仍NOT_RUN。全部RED、原始报告、初次NOT_RUN和历史NOTES保留。本轮仅文档冻结登记及证据链接修正，未重跑测试/构建、核验或操作设备；不将独立复验记作新一次产品测试。[正式登记](ACCEPTANCE_MATRIX.md#m14正式冻结登记2026-10-21)、[原补验报告](evidence/M14-Android-verification.md)、[原结果](evidence/m14-android/results.json)、[原checkpoint](checkpoints/2026-10-21-M14-Android.md)。构建日志链接改指向实际原日志的原字节归档，不补造或重跑。
 - **M11-A — ACCEPTED / FROZEN — PASS WITH NOTES（仅备份核心）**：用户本轮明确转交ChatGPT独立验收结论，锁定来源`79771fcf5978a938d240d517dd4dacb1d21021a6`。原报告、113项JVM和5项Android源码、未运行媒体/SAF及临时文件NOTES保持历史原样；不把独立审查登记为重跑测试。
 - **M11 — ACCEPTED / FROZEN — PASS WITH NOTES**：用户本轮转交ChatGPT独立结论，评审`635e33a57c66c286fa5c19f009a5565a1e70b8e2`；仅限冻结M09/schema2、format1完整手动导出、登记JPEG/PNG原字节及真实SAF。149 JVM、16＋1分两Test身份的既有执行证据与全部旧失败/NOT_RUN原样保留，不是本轮重跑。原M11-A核心限定冻结不变。[正式登记](ACCEPTANCE_MATRIX.md#m11正式独立冻结登记2026-10-20)。
 - **M12 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户本轮正式转交的ChatGPT独立验收结论，评审提交`e34187632468c9c3aaf7bb5d04d30a26320a18b0`。原M12候选`b5691419ad8f113b837a4cb16e4c1e47227e2752`的96项JVM、74项Android及真实SAF恢复证据，连同M12-T04三个真实进程终止场景PASS，均作为冻结依据登记；本次不重跑。第一例ADB外层exit=null / NOT_CAPTURED保持，完整Q06不整体CLOSED。[正式验收登记](ACCEPTANCE_MATRIX.md#m12正式冻结登记2026-10-20)，[原候选报告](evidence/M12-verification.md)，[三点报告](evidence/M12-process-death-verification.md)。
@@ -67,4 +67,4 @@ Room v2七表、Migration1→2、Settings/DataStore记录时区、AppContainer�
 
 ## Next Recommended Task
 
-等待ChatGPT独立审查M14代码、原136项JVM/宿主SQL及本次29项Android/8张截图证据，仍不自行冻结。补验设备结束时在线且同boot，不自行停止、重建或追加测试；原5686与旧保护现场不访问。不自动M15、签名/发行或M10续验。真实竞争、新的真实SAF/IME、API26/真机/OEM/Release及M12第一例外层退出码NOT_CAPTURED、Q06与全部历史NOTE保持。
+M14正式冻结登记完成，停止等待用户另行授权；M15未授权，不自动开始。M13-T06 NOT_RUN / DEFERRED、G1未整体通过，M10 PENDING / DEFERRED及三历史JPEG FAIL保持。本次未核验、操作或停止任何模拟器；先前设备结束状态仅为历史，不推定当前在线。真实竞争、新的真实SAF/IME、API26/真机/OEM/Release及M12第一例外层退出码NOT_CAPTURED、Q06与全部历史NOTE保持。

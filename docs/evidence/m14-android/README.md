@@ -9,9 +9,9 @@
 - RED：[类别断言](red-category/CategoryRepositoryTest.stdout.txt)、[中间批次类别UI断言](intermediate-ui-red/CategoryManagementScreenTest.stdout.txt)、[搜索UI定位](red-search-ui/SearchScreenTest.stdout.txt)、[旧包截图诊断](red-screenshot-journey/M14ScreenshotsJourneyTest.stdout.txt)。中间目录原名green28不表示全部通过，真实27项中26PASS/1FAIL。
 - 旧包截图诊断运行时，工作区帮助函数已有待打包修订；该claim的source hash是命令发起时工作区文件，**不能当旧APK编译输入证明**。该项FAIL保留；最终29项的当前源码、编译及安装身份另行核对，均匹配。
 - [初次安装](install/commands.json)、[中间Test更新](test-update01/commands.json)、[最终Test更新](test-update02/commands.json)：App始终原SHA；同签名更新仅针对Test。证书和manifest原始输出相邻保存。
-- [被拒绝的隔离Debug证书](rejected-test-certificate/test-certificate.stdout.txt)：该Test未安装；[构建恢复原证书](build/screenshot-test-build-original-debug-identity.log)。不包含密钥、密码或APK。
+- [被拒绝的隔离Debug证书](rejected-test-certificate/test-certificate.stdout.txt)：该Test未安装；[构建恢复原证书](logs/screenshot-test-build-original-debug-identity.log)。不包含密钥、密码或APK。
 - [AVD创建/隔离](device/config-proof.json)、[启动主机身份](device/host-instance-proof.json)、[最终主机身份](device/end/host-instance.json)、[结束设备核查](device/end/commands.json)。SDK与数据目录实物留本地，不归档userdata/镜像/许可正文。
-- [最终构建/Lint](build/test-ui-semantics-fix-build-lint.log)、[Lint XML](lint.xml)，其他构建/前置失败日志同目录保留。
+- [最终构建/Lint](logs/test-ui-semantics-fix-build-lint.log)、[Lint XML](lint.xml)，两份链接目标为既有原日志的原字节归档；其余构建/前置失败原日志仍在本地未跟踪的build目录保留，本次不删除或重造。
 - `reproduction/`为本次`build/m14-android/`薄记录脚本的取证副本，不是通用测试框架；原脚本的路径基于原位置、固定新serial及不可覆盖目录。复核优先读取JSON中的实际命令，不在证据目录直接重新执行安装脚本。
 
 ## 截图来源
