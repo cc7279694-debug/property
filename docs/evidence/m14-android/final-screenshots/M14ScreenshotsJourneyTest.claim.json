@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.app.M14ScreenshotsJourneyTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\app\\M14ScreenshotsJourneyTest.kt",
+  "source_sha256": "e8660061893d512a4e51b10fabe767e39d2b51f5fc77813ef96eee68e4630f14",
+  "started_at": "2026-10-21T02:49:48.449574+00:00",
+  "expected": [
+    "settings_category_writes_merge_and_current_history_search_with_360dp_large_text"
+  ]
+}

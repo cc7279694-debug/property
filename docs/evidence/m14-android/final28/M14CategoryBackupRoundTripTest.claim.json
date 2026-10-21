@@ -1,0 +1,22 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M14CategoryBackupRoundTripTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\M14CategoryBackupRoundTripTest.kt",
+  "source_sha256": "2aeb9042a1a455b5fd26cac21b161f1644524f847a54da20fef3b5f8296acaef",
+  "started_at": "2026-10-21T02:49:17.346255+00:00",
+  "expected": [
+    "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media"
+  ]
+}

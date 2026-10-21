@@ -66,7 +66,17 @@ class CategoryRepositoryTest {
         val after = ReportRepository(db, coordinator, FixedBusinessClock(day)).loadOverview()
         assertEquals(before.totalRate, after.totalRate)
         assertEquals(before.projectRate, after.projectRate)
-        assertEquals(target.id, after.projectCategories.single().categoryId)
+        // The frozen overview retains empty/default categories; only the source disappears.
+        assertEquals(before.projectCategories.map { it.categoryId }.toSet() - source.id,
+            after.projectCategories.map { it.categoryId }.toSet())
+        val sourceCost = before.projectCategories.single { it.categoryId == source.id }
+        val targetCost = before.projectCategories.single { it.categoryId == target.id }
+        assertEquals(targetCost.copy(
+            dailyRate = targetCost.dailyRate.add(sourceCost.dailyRate),
+            contributingCount = targetCost.contributingCount + sourceCost.contributingCount,
+        ), after.projectCategories.single { it.categoryId == target.id })
+        assertEquals(before.projectCategories.filter { it.categoryId != source.id && it.categoryId != target.id },
+            after.projectCategories.filter { it.categoryId != target.id })
         assertEquals(3L, repository.list(CategoryType.PROJECT).single { it.category.id == target.id }.recordCount)
     }
 

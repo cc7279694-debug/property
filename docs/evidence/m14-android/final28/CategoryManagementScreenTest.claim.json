@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\category\\CategoryManagementScreenTest.kt",
+  "source_sha256": "81cb87a103c04aa5be69d1679fe1b9f2db6eb46743f4f418933728ee7aa32cb2",
+  "started_at": "2026-10-21T02:49:20.490781+00:00",
+  "expected": [
+    "fallback_has_no_rename_or_merge_source_action",
+    "merge_confirmation_displays_exact_affected_history_count_before_commit",
+    "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry"
+  ]
+}

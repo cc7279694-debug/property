@@ -1,0 +1,273 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.repository.SearchRepositoryTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\SearchRepositoryTest.kt",
+  "source_sha256": "07524f41bb8b7437bca662b0ecd693d9aeb91a3c94260c8bc64a645b053eff6b",
+  "started_at": "2026-10-21T02:42:16.610883+00:00",
+  "expected": [
+    "search_current_and_history_with_frozen_subscription_statuses",
+    "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+    "only_names_match_not_notes_categories_amounts_or_payments",
+    "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+    "cursor_is_bound_to_query_and_observation_date",
+    "loaded_window_rebuilds_after_identity_and_category_changes",
+    "subscription_future_state_and_payment_use_historical_engine_boundaries",
+    "invalid_stored_category_type_is_a_read_error",
+    "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+    "default_list_paging_with_equal_dates_has_no_duplicates",
+    "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+    "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 3.484,
+  "completed": [
+    "invalid_stored_category_type_is_a_read_error",
+    "search_current_and_history_with_frozen_subscription_statuses",
+    "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+    "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates",
+    "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+    "cursor_is_bound_to_query_and_observation_date",
+    "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+    "loaded_window_rebuilds_after_identity_and_category_changes",
+    "default_list_paging_with_equal_dates_has_no_duplicates",
+    "subscription_future_state_and_payment_use_historical_engine_boundaries",
+    "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+    "only_names_match_not_notes_categories_amounts_or_payments"
+  ],
+  "bad": [],
+  "stdout_bytes": 8824,
+  "stdout_sha256": "6f546ab504bbe42974980695a16de54dc5c1604c2f939c38831449b07fd3df9d",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "invalid_stored_category_type_is_a_read_error",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "invalid_stored_category_type_is_a_read_error",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "search_current_and_history_with_frozen_subscription_statuses",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "search_current_and_history_with_frozen_subscription_statuses",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "4",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "5",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "6",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "cursor_is_bound_to_query_and_observation_date",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "6",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "cursor_is_bound_to_query_and_observation_date",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "7",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "7",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "8",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "loaded_window_rebuilds_after_identity_and_category_changes",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "8",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "loaded_window_rebuilds_after_identity_and_category_changes",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "9",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "default_list_paging_with_equal_dates_has_no_duplicates",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "9",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "default_list_paging_with_equal_dates_has_no_duplicates",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "10",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "subscription_future_state_and_payment_use_historical_engine_boundaries",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "10",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "subscription_future_state_and_payment_use_historical_engine_boundaries",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "11",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "11",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "12",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": "",
+      "test": "only_names_match_not_notes_categories_amounts_or_payments",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "current": "12",
+      "id": "AndroidJUnitRunner",
+      "numtests": "12",
+      "stream": ".",
+      "test": "only_names_match_not_notes_categories_amounts_or_payments",
+      "status_code": 0
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M14CategoryBackupRoundTripTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\M14CategoryBackupRoundTripTest.kt",
+  "source_sha256": "2aeb9042a1a455b5fd26cac21b161f1644524f847a54da20fef3b5f8296acaef",
+  "started_at": "2026-10-21T02:42:20.123764+00:00",
+  "expected": [
+    "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 3.297,
+  "completed": [
+    "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media"
+  ],
+  "bad": [],
+  "stdout_bytes": 921,
+  "stdout_sha256": "8925b06979dae48fbfda1766ee9d8aa925e06cad7c5026283afe60ca4a7f53ca",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.data.backup.M14CategoryBackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": "",
+      "test": "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M14CategoryBackupRoundTripTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": ".",
+      "test": "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media",
+      "status_code": 0
+    }
+  ]
+}

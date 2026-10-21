@@ -1,0 +1,96 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.category.CategoryManagementScreenTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.category.CategoryManagementScreenTest:
+INSTRUMENTATION_STATUS: test=fallback_has_no_rename_or_merge_source_action
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.category.CategoryManagementScreenTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=fallback_has_no_rename_or_merge_source_action
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.category.CategoryManagementScreenTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=merge_confirmation_displays_exact_affected_history_count_before_commit
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.category.CategoryManagementScreenTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '7 条记录' (ignoreCase: false))
+Semantics of the node:
+Node #68 at (l=63.0, t=197.0, r=765.0, b=250.0)px
+Text = '[“设备”的 7 条记录（含历史）将移至“数码”。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 1 sibling
+Selector used: (Text + InputText + EditableText contains '“设备”的 7 条记录（含历史）将移至“数码”。' (ignoreCase: false))
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.category.CategoryManagementScreenTest.merge_confirmation_displays_exact_affected_history_count_before_commit(CategoryManagementScreenTest.kt:46)
+
+INSTRUMENTATION_STATUS: stream=
+Error in merge_confirmation_displays_exact_affected_history_count_before_commit(com.cooper.lithic.feature.category.CategoryManagementScreenTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '7 条记录' (ignoreCase: false))
+Semantics of the node:
+Node #68 at (l=63.0, t=197.0, r=765.0, b=250.0)px
+Text = '[“设备”的 7 条记录（含历史）将移至“数码”。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 1 sibling
+Selector used: (Text + InputText + EditableText contains '“设备”的 7 条记录（含历史）将移至“数码”。' (ignoreCase: false))
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.category.CategoryManagementScreenTest.merge_confirmation_displays_exact_affected_history_count_before_commit(CategoryManagementScreenTest.kt:46)
+
+INSTRUMENTATION_STATUS: test=merge_confirmation_displays_exact_affected_history_count_before_commit
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.category.CategoryManagementScreenTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.category.CategoryManagementScreenTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 14.086
+There was 1 failure:
+1) merge_confirmation_displays_exact_affected_history_count_before_commit(com.cooper.lithic.feature.category.CategoryManagementScreenTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '7 条记录' (ignoreCase: false))
+Semantics of the node:
+Node #68 at (l=63.0, t=197.0, r=765.0, b=250.0)px
+Text = '[“设备”的 7 条记录（含历史）将移至“数码”。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 1 sibling
+Selector used: (Text + InputText + EditableText contains '“设备”的 7 条记录（含历史）将移至“数码”。' (ignoreCase: false))
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.category.CategoryManagementScreenTest.merge_confirmation_displays_exact_affected_history_count_before_commit(CategoryManagementScreenTest.kt:46)
+
+FAILURES!!!
+Tests run: 3,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

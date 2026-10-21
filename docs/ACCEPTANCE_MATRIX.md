@@ -778,7 +778,9 @@ BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝�
 
 按用户第2、6条，签名门禁BLOCKED，安装/同签名升级/真实正式页面/SAF往返及首次真实录入均NOT_RUN。[短报告与保管方案](evidence/M13-T06-readiness.md)。M10 PENDING / DEFERRED、三历史JPEG FAIL、UI-C1、Q03～Q06及全部NOTES/UNKNOWN/NOT_RUN不改。停止等待用户完成本地签名保管，不自行冻结M13或进入M14。
 
-## M14当前执行登记（2026-10-21）
+## M14初次交付执行登记（2026-10-21）
+
+本节保留初交付时的实际状态和NOT_RUN语境；后续明确授权的Android补验另见下一节，不回填或改判原报告。
 
 来源`2c5e23a7af713f6a96b345bce2a90e613458f270`；分支`codex/m14-category-search`。**READY_FOR_REVIEW**，不自授ACCEPTED/FROZEN。用户允许M13签名门槛延期后开发M14，不把完整M13/G1改成通过。原130条及历史验收不改。
 
@@ -795,3 +797,23 @@ BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝�
 授权原`Lithic_M11B_Final_API36_20261020 / emulator-5686`主机进程0、监听0；不启动/重建。ADB、安装及AVD操作0次，截图/大字体/TalkBack仍NOT_RUN。[短报告](evidence/M14-verification.md)、[唯一测试统计/XML](evidence/m14/results.json)、[原始日志](evidence/m14/logs/)。原RED、初次KSP/测试导入构建失败保留，不伪称产品PASS；本地辅助代码审阅不代替ChatGPT独立验收。
 
 M10延期及三历史JPEG FAIL、M13-T06延期、Q03～Q06和全部历史NOTE/UNKNOWN保持；不合并main，不进入M15。
+
+## M14 Android补验当前登记（2026-10-21）
+
+实现提交`730fd2a`，分支`codex/m14-category-search`。用户另行授权全新隔离`Lithic_M14_API36_20261021 / emulator-5672`（API36/x86_64）完成定向验收。**READY_FOR_REVIEW；未经ChatGPT独立验收，不授予ACCEPTED / FROZEN。**
+
+| 原案例 | 本次实际Android证据 |
+|---|---|
+| M14-T01 同类型原子合并 | PASS：两类型类别引用搬移、当前/历史记录、金额/付款/状态不变、总额不变、源删除失败回滚；真实竞争NOT_RUN。 |
+| M14-T02 跨类型拒绝 | PASS：拒绝跨类型/标准名冲突/陈旧预览，fallback受保护且可接收同类型合并；重复合并及旧代拒写保持。 |
+| M14-T03 当前历史搜索 | PASS：真实Room状态搜索、名称限定、窗口重建；隔离LithicApp/Nav3旅程确认当前/历史状态和精确历史详情路由。 |
+| M14-T04 特殊字符 | PASS：真实Room下`%`、`_`、引号、`!`及注入文本按字面匹配；原JVM/宿主SQL证据保持。 |
+| M14-T05 默认排序及分页 | PASS：157条混合搜索、105条列表及同冻结时长历史分页无重复遗漏；当前startedOn、历史heldDays、订阅真实paidOn排序。 |
+
+**原28＋新旅程1＝29个唯一Android方法PASS**，逐方法完成码0、外层exit0；不是全历史回归，8张截图不另计方法。原28身份保留：类别Repository11、搜索/排序12、format1往返1、Compose4。往返实际核对七表/设置/媒体原字节、恢复后的Search/Report等值及旧代拒写，使用受控文件目标，不是新的真实SAF验证。原136 JVM保持此前执行证据；当前Lint0错误9警告。
+
+三处原测试仅修正空/默认类别保留契约、完整句子断言与合并语义节点选择，并加强集合/汇总/完整状态断言；早期真实失败与原始日志保留。补验无产品/schema/引擎/format变更。最终App SHA `59d45ad38b467e5c4bb895c71feab3315bb872d670177ab7457033179c4b35b9`未变，最终Test SHA `7ef8915685801fbbc3cdeb76ab80ff2e4b6d31264aa761cc95071c91ce1e6ff7`承载最终29项；安装回读及源码/逐方法身份见[补验报告](evidence/M14-Android-verification.md)、[结果](evidence/m14-android/results.json)和[证据索引](evidence/m14-android/README.md)。
+
+专用环境根`E:/CODEX/.codex/research-env/lithic-m14-android-20261021`，AVD创建1/启动1、App安装1、Test首次安装1＋同签更新2；没有旧设备ADB、清数据或停止。结束时同boot在线，合成owner已清理、no_backup为空，files保留profileInstalled及m14-evidence截图，cached Test进程5993（UID10217）未强杀。8张图均为隔离ComponentActivity中的真实LithicApp/Nav3；360dp/搜索200%仅LocalDensity测试画布，系统font1/density420未改。类别/合并页200%、真实IME、MainActivity/发行入口、真实竞争、新的真实SAF、API26/物理设备/OEM/Release仍NOT_RUN。
+
+原M14报告/results/checkpoint不改。M13-T06 NOT_RUN / DEFERRED、G1未整体通过，M10 PENDING / DEFERRED及三历史JPEG FAIL、UI-C1独立冻结、Q03～Q06和所有历史NOTE/UNKNOWN保持；不合并main，不进入M15。本地辅助审阅不冒充ChatGPT独立验收。

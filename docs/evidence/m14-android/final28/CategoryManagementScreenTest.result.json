@@ -1,0 +1,93 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\category\\CategoryManagementScreenTest.kt",
+  "source_sha256": "81cb87a103c04aa5be69d1679fe1b9f2db6eb46743f4f418933728ee7aa32cb2",
+  "started_at": "2026-10-21T02:49:20.490781+00:00",
+  "expected": [
+    "fallback_has_no_rename_or_merge_source_action",
+    "merge_confirmation_displays_exact_affected_history_count_before_commit",
+    "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry"
+  ],
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 13.234,
+  "completed": [
+    "fallback_has_no_rename_or_merge_source_action",
+    "merge_confirmation_displays_exact_affected_history_count_before_commit",
+    "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry"
+  ],
+  "bad": [],
+  "stdout_bytes": 2382,
+  "stdout_sha256": "b80e014161e9db8a2a051c3bde826afd8f7140e47c623871b908ff3a5e9a04fa",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": "",
+      "test": "fallback_has_no_rename_or_merge_source_action",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": ".",
+      "test": "fallback_has_no_rename_or_merge_source_action",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": "",
+      "test": "merge_confirmation_displays_exact_affected_history_count_before_commit",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": ".",
+      "test": "merge_confirmation_displays_exact_affected_history_count_before_commit",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": "",
+      "test": "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": ".",
+      "test": "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry",
+      "status_code": 0
+    }
+  ]
+}

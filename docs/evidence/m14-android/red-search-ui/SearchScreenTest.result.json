@@ -1,0 +1,63 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.home.SearchScreenTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\home\\SearchScreenTest.kt",
+  "source_sha256": "623b76904adb60c6f4713fba98c03287e4a49561c20047ec6ead2a45f726b964",
+  "started_at": "2026-10-21T02:43:08.267205+00:00",
+  "expected": [
+    "result_status_and_history_are_visible_and_open_the_exact_record"
+  ],
+  "status": "FAIL_OR_UNKNOWN",
+  "exit_code": 0,
+  "seconds": 7.031,
+  "completed": [],
+  "bad": [
+    {
+      "class": "com.cooper.lithic.feature.home.SearchScreenTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '已停止' (ignoreCase: false))",
+      "stream": "",
+      "test": "result_status_and_history_are_visible_and_open_the_exact_record",
+      "status_code": -2
+    }
+  ],
+  "stdout_bytes": 4709,
+  "stdout_sha256": "b75cc53ed6cc4e97e37bc4c4c23c8865a99c65e9e1c41303ceb94997e0988d36",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.feature.home.SearchScreenTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": "",
+      "test": "result_status_and_history_are_visible_and_open_the_exact_record",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.SearchScreenTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '已停止' (ignoreCase: false))",
+      "stream": "",
+      "test": "result_status_and_history_are_visible_and_open_the_exact_record",
+      "status_code": -2
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "com.cooper.lithic.app.M14ScreenshotsJourneyTest",
+      "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+    ],
+    "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\app\\M14ScreenshotsJourneyTest.kt",
+    "source_sha256": "e8660061893d512a4e51b10fabe767e39d2b51f5fc77813ef96eee68e4630f14",
+    "started_at": "2026-10-21T02:49:48.449574+00:00",
+    "expected": [
+      "settings_category_writes_merge_and_current_history_search_with_360dp_large_text"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "seconds": 51.937,
+    "completed": [
+      "settings_category_writes_merge_and_current_history_search_with_360dp_large_text"
+    ],
+    "bad": [],
+    "stdout_bytes": 2617,
+    "stdout_sha256": "d14432d68c039c1f632db62e85c61af5aea2aa87dd47036ec503f678f6db4304",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": [
+      {
+        "class": "com.cooper.lithic.app.M14ScreenshotsJourneyTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "1",
+        "stream": "",
+        "test": "settings_category_writes_merge_and_current_history_search_with_360dp_large_text",
+        "status_code": 1
+      },
+      {
+        "M14_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m14-evidence/01-project-category-list-db1a43d1-4fc9-43ca-8009-e3cbaec3607c.png",
+        "status_code": 2
+      },
+      {
+        "M14_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m14-evidence/02-project-merge-confirmation-db1a43d1-4fc9-43ca-8009-e3cbaec3607c.png",
+        "status_code": 2
+      },
+      {
+        "M14_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m14-evidence/03-subscription-category-list-db1a43d1-4fc9-43ca-8009-e3cbaec3607c.png",
+        "status_code": 2
+      },
+      {
+        "M14_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m14-evidence/04-subscription-merge-confirmation-db1a43d1-4fc9-43ca-8009-e3cbaec3607c.png",
+        "status_code": 2
+      },
+      {
+        "M14_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m14-evidence/05-search-current-project-db1a43d1-4fc9-43ca-8009-e3cbaec3607c.png",
+        "status_code": 2
+      },
+      {
+        "M14_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m14-evidence/06-search-history-subscription-db1a43d1-4fc9-43ca-8009-e3cbaec3607c.png",
+        "status_code": 2
+      },
+      {
+        "M14_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m14-evidence/07-search-360dp-font200-header-db1a43d1-4fc9-43ca-8009-e3cbaec3607c.png",
+        "status_code": 2
+      },
+      {
+        "M14_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m14-evidence/08-search-360dp-font200-history-db1a43d1-4fc9-43ca-8009-e3cbaec3607c.png",
+        "status_code": 2
+      },
+      {
+        "class": "com.cooper.lithic.app.M14ScreenshotsJourneyTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "1",
+        "stream": ".",
+        "test": "settings_category_writes_merge_and_current_history_search_with_360dp_large_text",
+        "status_code": 0
+      }
+    ]
+  }
+]

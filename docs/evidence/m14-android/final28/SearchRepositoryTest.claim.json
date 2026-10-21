@@ -1,0 +1,33 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.repository.SearchRepositoryTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\SearchRepositoryTest.kt",
+  "source_sha256": "07524f41bb8b7437bca662b0ecd693d9aeb91a3c94260c8bc64a645b053eff6b",
+  "started_at": "2026-10-21T02:49:14.318653+00:00",
+  "expected": [
+    "search_current_and_history_with_frozen_subscription_statuses",
+    "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+    "only_names_match_not_notes_categories_amounts_or_payments",
+    "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+    "cursor_is_bound_to_query_and_observation_date",
+    "loaded_window_rebuilds_after_identity_and_category_changes",
+    "subscription_future_state_and_payment_use_historical_engine_boundaries",
+    "invalid_stored_category_type_is_a_read_error",
+    "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+    "default_list_paging_with_equal_dates_has_no_duplicates",
+    "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+    "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates"
+  ]
+}

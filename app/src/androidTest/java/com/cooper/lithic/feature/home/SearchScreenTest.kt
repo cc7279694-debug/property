@@ -1,6 +1,7 @@
 package com.cooper.lithic.feature.home
 
-import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
@@ -25,7 +26,8 @@ class SearchScreenTest {
         compose.setContent { LithicTheme {
             SearchScreen(SearchUiState(query = "服务", items = listOf(item), totalCount = 1), {}, {}, {}, {}, { opened = it })
         } }
-        compose.onNodeWithTag("search-status-${item.id}").assertTextContains("已停止").assertTextContains("历史记录")
+        compose.onNodeWithTag("search-status-${item.id}", useUnmergedTree = true)
+            .assertIsDisplayed().assertTextEquals("已停止 · 历史记录")
         compose.onNodeWithTag("search-row-${item.id}").performClick()
         assertEquals(item, opened)
     }

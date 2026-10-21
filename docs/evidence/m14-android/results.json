@@ -1,0 +1,130 @@
+{
+  "status": "READY_FOR_REVIEW",
+  "baseline": "730fd2a47c150526787a7889714fc6b66c8b12f8",
+  "branch": "codex/m14-category-search",
+  "device": {
+    "avd": "Lithic_M14_API36_20261021",
+    "serial": "emulator-5672",
+    "api": 36,
+    "abi": "x86_64",
+    "boot_id": "0b481eff-e49d-48f9-a740-2d2e9d3ce0e1",
+    "retained_online": true
+  },
+  "operations": {
+    "avd_create": 1,
+    "avd_start": 1,
+    "app_install": 1,
+    "test_initial_install": 1,
+    "test_updates": 2,
+    "avd_stop": 0,
+    "old_device_commands": 0
+  },
+  "final": {
+    "original28": {
+      "PASS": 28,
+      "FAIL": 0,
+      "NOT_RUN": 0
+    },
+    "screenshot_journey": {
+      "PASS": 1,
+      "FAIL": 0,
+      "NOT_RUN": 0
+    },
+    "unique_methods": [
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#merge_is_atomic_updates_current_and_history_and_preserves_total_and_money",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#subscription_merge_preserves_payments_states_and_identity_except_category",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#rename_conflicts_and_stale_loaded_category_are_rejected",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#failure_after_reference_update_rolls_back_all_rows_and_source_delete",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#stale_merge_count_or_category_does_not_silently_expand_confirmed_scope",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#repeated_merge_cannot_delete_or_move_other_records",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#retired_generation_rejects_category_writes_without_reopening_storage",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#blank_and_control_names_are_rejected_and_fallback_stays_fixed",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#ordinary_category_can_merge_into_same_type_fallback",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#normalized_names_are_unique_per_type_and_creation_can_be_safely_replayed",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest#cross_type_merge_rejected_without_mutating_any_category_or_reference",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#invalid_stored_category_type_is_a_read_error",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#search_current_and_history_with_frozen_subscription_statuses",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#stable_pages_across_both_types_have_no_duplicates_or_omissions",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#history_equal_held_days_keep_stable_identity_paging_across_different_start_dates",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#cursor_is_bound_to_query_and_observation_date",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#history_sorts_by_frozen_held_days_instead_of_purchase_date",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#loaded_window_rebuilds_after_identity_and_category_changes",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#default_list_paging_with_equal_dates_has_no_duplicates",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#subscription_future_state_and_payment_use_historical_engine_boundaries",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#wildcards_quotes_escape_and_sql_injection_text_are_literal",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest#only_names_match_not_notes_categories_amounts_or_payments",
+      "com.cooper.lithic.data.backup.M14CategoryBackupRoundTripTest#renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media",
+      "com.cooper.lithic.feature.category.CategoryManagementScreenTest#fallback_has_no_rename_or_merge_source_action",
+      "com.cooper.lithic.feature.category.CategoryManagementScreenTest#merge_confirmation_displays_exact_affected_history_count_before_commit",
+      "com.cooper.lithic.feature.category.CategoryManagementScreenTest#uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry",
+      "com.cooper.lithic.feature.home.SearchScreenTest#result_status_and_history_are_visible_and_open_the_exact_record",
+      "com.cooper.lithic.app.M14ScreenshotsJourneyTest#settings_category_writes_merge_and_current_history_search_with_360dp_large_text"
+    ],
+    "screenshots": 8
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 9
+  },
+  "app": {
+    "sha256": "59d45ad38b467e5c4bb895c71feab3315bb872d670177ab7457033179c4b35b9",
+    "bytes": 12771695,
+    "applicationId": "com.cooper.lithic.debug"
+  },
+  "test": {
+    "sha256": "7ef8915685801fbbc3cdeb76ab80ff2e4b6d31264aa761cc95071c91ce1e6ff7",
+    "bytes": 2755987,
+    "applicationId": "com.cooper.lithic.debug.test",
+    "runner": "com.cooper.lithic.app.M13IsolatedRunner"
+  },
+  "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "source_checks": [
+    {
+      "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\CategoryRepositoryTest.kt",
+      "sha256": "a32b737ec87c70623a87bbf1853af11e46376f078203e7b3d270b2e2dcbbe532",
+      "pass_count": 11,
+      "seconds": 3.625
+    },
+    {
+      "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\SearchRepositoryTest.kt",
+      "sha256": "07524f41bb8b7437bca662b0ecd693d9aeb91a3c94260c8bc64a645b053eff6b",
+      "pass_count": 12,
+      "seconds": 2.985
+    },
+    {
+      "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\M14CategoryBackupRoundTripTest.kt",
+      "sha256": "2aeb9042a1a455b5fd26cac21b161f1644524f847a54da20fef3b5f8296acaef",
+      "pass_count": 1,
+      "seconds": 3.11
+    },
+    {
+      "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\category\\CategoryManagementScreenTest.kt",
+      "sha256": "81cb87a103c04aa5be69d1679fe1b9f2db6eb46743f4f418933728ee7aa32cb2",
+      "pass_count": 3,
+      "seconds": 13.234
+    },
+    {
+      "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\home\\SearchScreenTest.kt",
+      "sha256": "8be47c184d52d9065fb6ffee85c7893a6fab62fe88ce58fb8776e3598fec96eb",
+      "pass_count": 1,
+      "seconds": 8.141
+    },
+    {
+      "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\app\\M14ScreenshotsJourneyTest.kt",
+      "sha256": "e8660061893d512a4e51b10fabe767e39d2b51f5fc77813ef96eee68e4630f14",
+      "pass_count": 1,
+      "seconds": 51.937
+    }
+  ],
+  "boundaries": [
+    "Debug synthetic API36 x86_64 only",
+    "ComponentActivity screenshots, not MainActivity",
+    "360dp canvas and fontScale 2 only in search; no system font/density change",
+    "Controlled-file backup round trip, not new SAF validation",
+    "Initial historical NOT_RUN and all RED logs preserved",
+    "No production/schema/backup-format/algorithm change",
+    "M14 not frozen; M10 and M13-T06 deferred"
+  ],
+  "historical_failure_note": "red-category: incorrect single-category assumption; intermediate-ui-red: exact-text API misuse; red-search-ui: merged semantics lookup; red-screenshot-journey: old installed APK. Claims record the worktree source at invocation, not independent APK source proof; the old screenshot diagnostic ran while its newer worktree helper was pending packaging. Final29 source hashes do match packaged inputs."
+}

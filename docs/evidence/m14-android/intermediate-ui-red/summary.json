@@ -1,0 +1,685 @@
+[
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+      "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+    ],
+    "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\CategoryRepositoryTest.kt",
+    "source_sha256": "a32b737ec87c70623a87bbf1853af11e46376f078203e7b3d270b2e2dcbbe532",
+    "started_at": "2026-10-21T02:42:14.015908+00:00",
+    "expected": [
+      "merge_is_atomic_updates_current_and_history_and_preserves_total_and_money",
+      "subscription_merge_preserves_payments_states_and_identity_except_category",
+      "cross_type_merge_rejected_without_mutating_any_category_or_reference",
+      "normalized_names_are_unique_per_type_and_creation_can_be_safely_replayed",
+      "blank_and_control_names_are_rejected_and_fallback_stays_fixed",
+      "ordinary_category_can_merge_into_same_type_fallback",
+      "rename_conflicts_and_stale_loaded_category_are_rejected",
+      "stale_merge_count_or_category_does_not_silently_expand_confirmed_scope",
+      "failure_after_reference_update_rolls_back_all_rows_and_source_delete",
+      "repeated_merge_cannot_delete_or_move_other_records",
+      "retired_generation_rejects_category_writes_without_reopening_storage"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "seconds": 2.562,
+    "completed": [
+      "merge_is_atomic_updates_current_and_history_and_preserves_total_and_money",
+      "subscription_merge_preserves_payments_states_and_identity_except_category",
+      "rename_conflicts_and_stale_loaded_category_are_rejected",
+      "failure_after_reference_update_rolls_back_all_rows_and_source_delete",
+      "stale_merge_count_or_category_does_not_silently_expand_confirmed_scope",
+      "repeated_merge_cannot_delete_or_move_other_records",
+      "retired_generation_rejects_category_writes_without_reopening_storage",
+      "blank_and_control_names_are_rejected_and_fallback_stays_fixed",
+      "ordinary_category_can_merge_into_same_type_fallback",
+      "normalized_names_are_unique_per_type_and_creation_can_be_safely_replayed",
+      "cross_type_merge_rejected_without_mutating_any_category_or_reference"
+    ],
+    "bad": [],
+    "stdout_bytes": 8253,
+    "stdout_sha256": "dfa4157fff9ef1d4c8d5d245d9b7aa436f293c3705e42a7d8a28c02118f12cdd",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": [
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "merge_is_atomic_updates_current_and_history_and_preserves_total_and_money",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "merge_is_atomic_updates_current_and_history_and_preserves_total_and_money",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "subscription_merge_preserves_payments_states_and_identity_except_category",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "subscription_merge_preserves_payments_states_and_identity_except_category",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "rename_conflicts_and_stale_loaded_category_are_rejected",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "rename_conflicts_and_stale_loaded_category_are_rejected",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "4",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "failure_after_reference_update_rolls_back_all_rows_and_source_delete",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "4",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "failure_after_reference_update_rolls_back_all_rows_and_source_delete",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "5",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "stale_merge_count_or_category_does_not_silently_expand_confirmed_scope",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "5",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "stale_merge_count_or_category_does_not_silently_expand_confirmed_scope",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "6",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "repeated_merge_cannot_delete_or_move_other_records",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "6",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "repeated_merge_cannot_delete_or_move_other_records",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "7",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "retired_generation_rejects_category_writes_without_reopening_storage",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "7",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "retired_generation_rejects_category_writes_without_reopening_storage",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "8",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "blank_and_control_names_are_rejected_and_fallback_stays_fixed",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "8",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "blank_and_control_names_are_rejected_and_fallback_stays_fixed",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "9",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "ordinary_category_can_merge_into_same_type_fallback",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "9",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "ordinary_category_can_merge_into_same_type_fallback",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "10",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "normalized_names_are_unique_per_type_and_creation_can_be_safely_replayed",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "10",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "normalized_names_are_unique_per_type_and_creation_can_be_safely_replayed",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "11",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": "",
+        "test": "cross_type_merge_rejected_without_mutating_any_category_or_reference",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.CategoryRepositoryTest",
+        "current": "11",
+        "id": "AndroidJUnitRunner",
+        "numtests": "11",
+        "stream": ".",
+        "test": "cross_type_merge_rejected_without_mutating_any_category_or_reference",
+        "status_code": 0
+      }
+    ]
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "com.cooper.lithic.data.repository.SearchRepositoryTest",
+      "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+    ],
+    "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\SearchRepositoryTest.kt",
+    "source_sha256": "07524f41bb8b7437bca662b0ecd693d9aeb91a3c94260c8bc64a645b053eff6b",
+    "started_at": "2026-10-21T02:42:16.610883+00:00",
+    "expected": [
+      "search_current_and_history_with_frozen_subscription_statuses",
+      "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+      "only_names_match_not_notes_categories_amounts_or_payments",
+      "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+      "cursor_is_bound_to_query_and_observation_date",
+      "loaded_window_rebuilds_after_identity_and_category_changes",
+      "subscription_future_state_and_payment_use_historical_engine_boundaries",
+      "invalid_stored_category_type_is_a_read_error",
+      "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+      "default_list_paging_with_equal_dates_has_no_duplicates",
+      "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+      "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "seconds": 3.484,
+    "completed": [
+      "invalid_stored_category_type_is_a_read_error",
+      "search_current_and_history_with_frozen_subscription_statuses",
+      "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+      "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates",
+      "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+      "cursor_is_bound_to_query_and_observation_date",
+      "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+      "loaded_window_rebuilds_after_identity_and_category_changes",
+      "default_list_paging_with_equal_dates_has_no_duplicates",
+      "subscription_future_state_and_payment_use_historical_engine_boundaries",
+      "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+      "only_names_match_not_notes_categories_amounts_or_payments"
+    ],
+    "bad": [],
+    "stdout_bytes": 8824,
+    "stdout_sha256": "6f546ab504bbe42974980695a16de54dc5c1604c2f939c38831449b07fd3df9d",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": [
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "invalid_stored_category_type_is_a_read_error",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "invalid_stored_category_type_is_a_read_error",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "search_current_and_history_with_frozen_subscription_statuses",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "search_current_and_history_with_frozen_subscription_statuses",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "4",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "4",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "5",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "5",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "6",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "cursor_is_bound_to_query_and_observation_date",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "6",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "cursor_is_bound_to_query_and_observation_date",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "7",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "7",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "8",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "loaded_window_rebuilds_after_identity_and_category_changes",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "8",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "loaded_window_rebuilds_after_identity_and_category_changes",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "9",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "default_list_paging_with_equal_dates_has_no_duplicates",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "9",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "default_list_paging_with_equal_dates_has_no_duplicates",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "10",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "subscription_future_state_and_payment_use_historical_engine_boundaries",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "10",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "subscription_future_state_and_payment_use_historical_engine_boundaries",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "11",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "11",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "12",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": "",
+        "test": "only_names_match_not_notes_categories_amounts_or_payments",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.SearchRepositoryTest",
+        "current": "12",
+        "id": "AndroidJUnitRunner",
+        "numtests": "12",
+        "stream": ".",
+        "test": "only_names_match_not_notes_categories_amounts_or_payments",
+        "status_code": 0
+      }
+    ]
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "com.cooper.lithic.data.backup.M14CategoryBackupRoundTripTest",
+      "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+    ],
+    "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\backup\\M14CategoryBackupRoundTripTest.kt",
+    "source_sha256": "2aeb9042a1a455b5fd26cac21b161f1644524f847a54da20fef3b5f8296acaef",
+    "started_at": "2026-10-21T02:42:20.123764+00:00",
+    "expected": [
+      "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media"
+    ],
+    "status": "PASS",
+    "exit_code": 0,
+    "seconds": 3.297,
+    "completed": [
+      "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media"
+    ],
+    "bad": [],
+    "stdout_bytes": 921,
+    "stdout_sha256": "8925b06979dae48fbfda1766ee9d8aa925e06cad7c5026283afe60ca4a7f53ca",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": [
+      {
+        "class": "com.cooper.lithic.data.backup.M14CategoryBackupRoundTripTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "1",
+        "stream": "",
+        "test": "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.M14CategoryBackupRoundTripTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "1",
+        "stream": ".",
+        "test": "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media",
+        "status_code": 0
+      }
+    ]
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+    ],
+    "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\category\\CategoryManagementScreenTest.kt",
+    "source_sha256": "70a11a92cf1bf4eb3a640b9cb78880304b074c83747201cb4ba5ac4b904aa55c",
+    "started_at": "2026-10-21T02:42:23.453165+00:00",
+    "expected": [
+      "fallback_has_no_rename_or_merge_source_action",
+      "merge_confirmation_displays_exact_affected_history_count_before_commit",
+      "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry"
+    ],
+    "status": "FAIL_OR_UNKNOWN",
+    "exit_code": 0,
+    "seconds": 15.969,
+    "completed": [
+      "fallback_has_no_rename_or_merge_source_action",
+      "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry"
+    ],
+    "bad": [
+      {
+        "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "3",
+        "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '7 条记录' (ignoreCase: false))",
+        "stream": "",
+        "test": "merge_confirmation_displays_exact_affected_history_count_before_commit",
+        "status_code": -2
+      }
+    ],
+    "stdout_bytes": 5890,
+    "stdout_sha256": "a4e9ee6ab322cbdc93d47cf2dba6f7e352534affe49eece6208e7679f960afa0",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": [
+      {
+        "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "3",
+        "stream": "",
+        "test": "fallback_has_no_rename_or_merge_source_action",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "3",
+        "stream": ".",
+        "test": "fallback_has_no_rename_or_merge_source_action",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "3",
+        "stream": "",
+        "test": "merge_confirmation_displays_exact_affected_history_count_before_commit",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "3",
+        "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '7 条记录' (ignoreCase: false))",
+        "stream": "",
+        "test": "merge_confirmation_displays_exact_affected_history_count_before_commit",
+        "status_code": -2
+      },
+      {
+        "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "3",
+        "stream": "",
+        "test": "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "3",
+        "stream": ".",
+        "test": "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry",
+        "status_code": 0
+      }
+    ]
+  }
+]

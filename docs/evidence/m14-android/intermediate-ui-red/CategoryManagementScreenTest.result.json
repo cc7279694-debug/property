@@ -1,0 +1,104 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5672",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\category\\CategoryManagementScreenTest.kt",
+  "source_sha256": "70a11a92cf1bf4eb3a640b9cb78880304b074c83747201cb4ba5ac4b904aa55c",
+  "started_at": "2026-10-21T02:42:23.453165+00:00",
+  "expected": [
+    "fallback_has_no_rename_or_merge_source_action",
+    "merge_confirmation_displays_exact_affected_history_count_before_commit",
+    "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry"
+  ],
+  "status": "FAIL_OR_UNKNOWN",
+  "exit_code": 0,
+  "seconds": 15.969,
+  "completed": [
+    "fallback_has_no_rename_or_merge_source_action",
+    "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry"
+  ],
+  "bad": [
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '7 条记录' (ignoreCase: false))",
+      "stream": "",
+      "test": "merge_confirmation_displays_exact_affected_history_count_before_commit",
+      "status_code": -2
+    }
+  ],
+  "stdout_bytes": 5890,
+  "stdout_sha256": "a4e9ee6ab322cbdc93d47cf2dba6f7e352534affe49eece6208e7679f960afa0",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": "",
+      "test": "fallback_has_no_rename_or_merge_source_action",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": ".",
+      "test": "fallback_has_no_rename_or_merge_source_action",
+      "status_code": 0
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": "",
+      "test": "merge_confirmation_displays_exact_affected_history_count_before_commit",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "2",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stack": "java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '7 条记录' (ignoreCase: false))",
+      "stream": "",
+      "test": "merge_confirmation_displays_exact_affected_history_count_before_commit",
+      "status_code": -2
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": "",
+      "test": "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry",
+      "status_code": 1
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryManagementScreenTest",
+      "current": "3",
+      "id": "AndroidJUnitRunner",
+      "numtests": "3",
+      "stream": ".",
+      "test": "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry",
+      "status_code": 0
+    }
+  ]
+}

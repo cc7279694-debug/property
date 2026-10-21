@@ -1,0 +1,96 @@
+Domain verification status:
+
+Key Set Manager:
+  [com.cooper.lithic.debug.test]
+      Signing KeySets: 61
+
+Packages:
+  Package [com.cooper.lithic.debug.test] (5e1da9d):
+    appId=10217
+    pkg=Package{a0a2c8 com.cooper.lithic.debug.test}
+    codePath=/data/app/~~ELj2x5x-8HWfaV3F1ax6YA==/com.cooper.lithic.debug.test-AQMO4IdXNXDIZzAaYNQ4Ew==
+    resourcePath=/data/app/~~ELj2x5x-8HWfaV3F1ax6YA==/com.cooper.lithic.debug.test-AQMO4IdXNXDIZzAaYNQ4Ew==
+    legacyNativeLibraryDir=/data/app/~~ELj2x5x-8HWfaV3F1ax6YA==/com.cooper.lithic.debug.test-AQMO4IdXNXDIZzAaYNQ4Ew==/lib
+    extractNativeLibs=false
+    primaryCpuAbi=null
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=0 minSdk=26 targetSdk=36
+    minExtensionVersions=[]
+    versionName=null
+    hiddenApiEnforcementPolicy=2
+    usesNonSdkApi=false
+    splits=[base]
+    apkSigningVersion=2
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    pageSizeCompat=0
+    queriesPackages=[androidx.test.orchestrator, androidx.test.services, com.google.android.apps.common.testing.services]
+    scannedAsStoppedSystemApp=false
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    usesLibraries:
+      android.test.base
+      android.test.mock
+      android.test.runner
+    usesLibraryFiles:
+      /system/framework/android.test.base.jar
+      /system/framework/android.test.mock.jar
+      /system/framework/android.test.runner.jar
+    timeStamp=2026-10-21 02:49:09
+    lastUpdateTime=2026-10-21 02:49:09
+    installerPackageName=null
+    installerPackageUid=-1
+    initiatingPackageName=com.android.shell
+    originatingPackageName=null
+    packageSource=1
+    appMetadataFilePath=null
+    appMetadataSource=0
+    signatures=PackageSignatures{1e2a9a3 version:2, signatures:[5a59588f], past signatures:[]}
+    installPermissionsFixed=false
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    apexModuleName=null
+    requested permissions:
+      android.permission.REORDER_TASKS
+    install permissions:
+      android.permission.REORDER_TASKS: granted=true
+    User 0: ceDataInode=566904 deDataInode=402038 installed=true hidden=false suspended=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false quarantined=false
+      installReason=0
+      dataDir=/data/user/0/com.cooper.lithic.debug.test
+      firstInstallTime=2026-10-21 02:38:49
+      uninstallReason=0
+      overlay paths:
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+        /data/resource-cache/com.android.systemui-neutral-YRNa.frro
+        /data/resource-cache/com.android.systemui-accent-2xlz.frro
+        /data/resource-cache/com.android.systemui-dynamic-eZFQ.frro
+      legacy overlay paths:
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+      runtime permissions:
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+    com.cooper.lithic.debug:
+      com.cooper.lithic.debug.test
+    com.cooper.lithic.debug.test:
+      com.cooper.lithic.debug
+  queries via component:
+  queryable via interaction:
+    User 0:
+      [com.android.location.fused,com.android.dynsystem,com.android.emulator.multidisplay,com.android.keychain,com.android.providers.settings,com.android.inputdevices,com.android.server.telecom,android,com.android.settings,com.android.localtransport,com.android.DeviceAsWebcam]:
+        com.cooper.lithic.debug.test
+  queryable via uses-library:
+
+Dexopt state:
+  [com.cooper.lithic.debug.test]
+    path: /data/app/~~ELj2x5x-8HWfaV3F1ax6YA==/com.cooper.lithic.debug.test-AQMO4IdXNXDIZzAaYNQ4Ew==/base.apk
+      x86_64: [status=run-from-apk] [reason=unknown] [primary-abi]
+        [location is error]
+      used by other apps: [com.cooper.lithic.debug (isa=x86_64)]
+
+Compiler stats:
+  [com.cooper.lithic.debug.test]
+    (No recorded stats)

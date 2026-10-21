@@ -1,7 +1,8 @@
 package com.cooper.lithic.feature.category
 
 import androidx.compose.ui.test.assertIsNotEnabled
-import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -43,7 +44,8 @@ class CategoryManagementScreenTest {
         compose.setContent { LithicTheme {
             Render(CategoryManagementUiState(loading = false, editor = editor), onConfirm = { confirmed++ })
         } }
-        compose.onNodeWithText("“设备”的 7 条记录（含历史）将移至“数码”。").assertTextContains("7 条记录")
+        compose.onNodeWithText("“设备”的 7 条记录（含历史）将移至“数码”。")
+            .assertIsDisplayed().assertTextEquals("“设备”的 7 条记录（含历史）将移至“数码”。")
         compose.onNodeWithTag("category-merge-confirm").performClick()
         assertEquals(1, confirmed)
     }

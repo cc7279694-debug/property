@@ -1,0 +1,135 @@
+[
+  {
+    "name": "state",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "get-state"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:36:42.557483+00:00",
+    "stdout_bytes": 8,
+    "stdout_sha256": "5a49c5eb1807bf1dd12637504e6a6e49f1c9c4bce601ae34c9984843074b129c",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boot",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "getprop sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:36:42.658357+00:00",
+    "stdout_bytes": 3,
+    "stdout_sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "api",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "getprop ro.build.version.sdk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:36:42.901439+00:00",
+    "stdout_bytes": 4,
+    "stdout_sha256": "0a6b5e02cbe592ef9285db1440db99874166326dff103608c6dfd5068ec714f5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boot-id",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "cat /proc/sys/kernel/random/boot_id"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:36:43.006849+00:00",
+    "stdout_bytes": 38,
+    "stdout_sha256": "143060f35b36f5eb258a5ed623646754a4299b4c025069f4998a151a9fc5bbe5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "avd",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "emu",
+      "avd",
+      "name"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:36:43.095089+00:00",
+    "stdout_bytes": 33,
+    "stdout_sha256": "3a14f2ab503808cffb4bde99e53ada182d27ba0bf8a599d13214f71bf7fe752d",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-certificate",
+    "command": [
+      "cmd",
+      "/c",
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:36:43.770842+00:00",
+    "stdout_bytes": 972,
+    "stdout_sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-manifest",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "xmltree",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "--file",
+      "AndroidManifest.xml"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:36:43.858201+00:00",
+    "stdout_bytes": 7004,
+    "stdout_sha256": "c468f276ea0dc41d56844d775f15911677a90173618efea0c6744f1227234513",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-certificate",
+    "command": [
+      "cmd",
+      "/c",
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:36:44.500788+00:00",
+    "stdout_bytes": 972,
+    "stdout_sha256": "14cbfbc0de1bd9a94954c586a3cfae474c7e9404a844f22848c0bd20adfa66cc",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

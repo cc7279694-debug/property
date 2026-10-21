@@ -1,0 +1,348 @@
+[
+  {
+    "name": "state",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "get-state"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:44.955276+00:00",
+    "stdout_bytes": 8,
+    "stdout_sha256": "5a49c5eb1807bf1dd12637504e6a6e49f1c9c4bce601ae34c9984843074b129c",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boot",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "getprop sys.boot_completed"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:45.056106+00:00",
+    "stdout_bytes": 3,
+    "stdout_sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "api",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "getprop ro.build.version.sdk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:45.158072+00:00",
+    "stdout_bytes": 4,
+    "stdout_sha256": "0a6b5e02cbe592ef9285db1440db99874166326dff103608c6dfd5068ec714f5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boot-id",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "cat /proc/sys/kernel/random/boot_id"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:45.259983+00:00",
+    "stdout_bytes": 38,
+    "stdout_sha256": "143060f35b36f5eb258a5ed623646754a4299b4c025069f4998a151a9fc5bbe5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "avd",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "emu",
+      "avd",
+      "name"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:45.346829+00:00",
+    "stdout_bytes": 33,
+    "stdout_sha256": "3a14f2ab503808cffb4bde99e53ada182d27ba0bf8a599d13214f71bf7fe752d",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-certificate",
+    "command": [
+      "cmd",
+      "/c",
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:45.984750+00:00",
+    "stdout_bytes": 972,
+    "stdout_sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-manifest",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "xmltree",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "--file",
+      "AndroidManifest.xml"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:46.064702+00:00",
+    "stdout_bytes": 7004,
+    "stdout_sha256": "c468f276ea0dc41d56844d775f15911677a90173618efea0c6744f1227234513",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-certificate",
+    "command": [
+      "cmd",
+      "/c",
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:46.575548+00:00",
+    "stdout_bytes": 972,
+    "stdout_sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-manifest",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "xmltree",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "--file",
+      "AndroidManifest.xml"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:46.634040+00:00",
+    "stdout_bytes": 4750,
+    "stdout_sha256": "d43125ed6eb7e184504a9424c022199b95c6c3ed5c7056cc6ae92cefc8904963",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-before-packages",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "pm",
+      "list",
+      "packages",
+      "com.cooper.lithic.debug"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:46.746888+00:00",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-install",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "install",
+      "-t",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:48.198383+00:00",
+    "stdout_bytes": 38,
+    "stdout_sha256": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-installed-path",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "pm",
+      "path",
+      "com.cooper.lithic.debug"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:48.365565+00:00",
+    "stdout_bytes": 104,
+    "stdout_sha256": "08d3675e1b9ab5035039155350c52d518af59755ad5040132ee0fa0ed4281900",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-installed-sha",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "sha256sum",
+      "/data/app/~~XXFBHQY7HjprMVZ8rOmA8w==/com.cooper.lithic.debug-xgMiEcTNsIsEVZTT13P36g==/base.apk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:48.544200+00:00",
+    "stdout_bytes": 162,
+    "stdout_sha256": "5f149b8c96ca3c121881211ac9a74a42a925bff435e9bdca0326f754ca5f7716",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-installed-package",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "dumpsys",
+      "package",
+      "com.cooper.lithic.debug"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:49.431850+00:00",
+    "stdout_bytes": 5400,
+    "stdout_sha256": "7dc20466a5e0d620fae5d930ad1aa2ca3d80f55a5278c0264201e38f44fa9d93",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-before-packages",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "pm",
+      "list",
+      "packages",
+      "com.cooper.lithic.debug.test"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:49.584703+00:00",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-install",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "install",
+      "-t",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:50.198865+00:00",
+    "stdout_bytes": 38,
+    "stdout_sha256": "c4aa470acafcf8576c15b0f0b5ae7e852d1ec5413372d0e6a9272e788e1306d3",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-installed-path",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "pm",
+      "path",
+      "com.cooper.lithic.debug.test"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:50.360758+00:00",
+    "stdout_bytes": 109,
+    "stdout_sha256": "5b304cc244b1878e805fb4f5d74b5b5d3134bdf542ef6fc1ac16a56352636f29",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-installed-sha",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "sha256sum",
+      "/data/app/~~wbmTc9G_9mqZfhF_Kb9Zcg==/com.cooper.lithic.debug.test-7CT6lECMnZ8t4SNIsQKXrw==/base.apk"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:50.517556+00:00",
+    "stdout_bytes": 167,
+    "stdout_sha256": "2122cc5bfedc92c98198759101b56d4b7e5543ac93a0c6144415cce084eb7f63",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-installed-package",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "dumpsys",
+      "package",
+      "com.cooper.lithic.debug.test"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:50.670189+00:00",
+    "stdout_bytes": 3977,
+    "stdout_sha256": "f04051b64cb5da372ecfbb8eacb856b615bf1922c744eae61b0788b1bbb12471",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "instrumentation",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5672",
+      "shell",
+      "pm",
+      "list",
+      "instrumentation"
+    ],
+    "exit_code": 0,
+    "utc": "2026-10-21T02:38:50.808866+00:00",
+    "stdout_bytes": 119,
+    "stdout_sha256": "52ee35eb7231e1ca1e457f6994ed564aaf145c7c3be447abb5af627c0f0c627e",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

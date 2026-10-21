@@ -1,0 +1,205 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.data.repository.CategoryRepositoryTest:
+INSTRUMENTATION_STATUS: test=merge_is_atomic_updates_current_and_history_and_preserves_total_and_money
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: List has more than one element.
+	at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:621)
+	at com.cooper.lithic.data.repository.CategoryRepositoryTest$merge_is_atomic_updates_current_and_history_and_preserves_total_and_money$1.invokeSuspend(CategoryRepositoryTest.kt:69)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.repository.CategoryRepositoryTest.merge_is_atomic_updates_current_and_history_and_preserves_total_and_money(CategoryRepositoryTest.kt:50)
+
+INSTRUMENTATION_STATUS: stream=
+Error in merge_is_atomic_updates_current_and_history_and_preserves_total_and_money(com.cooper.lithic.data.repository.CategoryRepositoryTest):
+java.lang.IllegalArgumentException: List has more than one element.
+	at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:621)
+	at com.cooper.lithic.data.repository.CategoryRepositoryTest$merge_is_atomic_updates_current_and_history_and_preserves_total_and_money$1.invokeSuspend(CategoryRepositoryTest.kt:69)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.repository.CategoryRepositoryTest.merge_is_atomic_updates_current_and_history_and_preserves_total_and_money(CategoryRepositoryTest.kt:50)
+
+INSTRUMENTATION_STATUS: test=merge_is_atomic_updates_current_and_history_and_preserves_total_and_money
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=subscription_merge_preserves_payments_states_and_identity_except_category
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=subscription_merge_preserves_payments_states_and_identity_except_category
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=rename_conflicts_and_stale_loaded_category_are_rejected
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=rename_conflicts_and_stale_loaded_category_are_rejected
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=failure_after_reference_update_rolls_back_all_rows_and_source_delete
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=failure_after_reference_update_rolls_back_all_rows_and_source_delete
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=stale_merge_count_or_category_does_not_silently_expand_confirmed_scope
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=stale_merge_count_or_category_does_not_silently_expand_confirmed_scope
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=repeated_merge_cannot_delete_or_move_other_records
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=repeated_merge_cannot_delete_or_move_other_records
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=retired_generation_rejects_category_writes_without_reopening_storage
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=retired_generation_rejects_category_writes_without_reopening_storage
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=blank_and_control_names_are_rejected_and_fallback_stays_fixed
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=blank_and_control_names_are_rejected_and_fallback_stays_fixed
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=ordinary_category_can_merge_into_same_type_fallback
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=ordinary_category_can_merge_into_same_type_fallback
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=normalized_names_are_unique_per_type_and_creation_can_be_safely_replayed
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=normalized_names_are_unique_per_type_and_creation_can_be_safely_replayed
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=cross_type_merge_rejected_without_mutating_any_category_or_reference
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.data.repository.CategoryRepositoryTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=11
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=cross_type_merge_rejected_without_mutating_any_category_or_reference
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.618
+There was 1 failure:
+1) merge_is_atomic_updates_current_and_history_and_preserves_total_and_money(com.cooper.lithic.data.repository.CategoryRepositoryTest)
+java.lang.IllegalArgumentException: List has more than one element.
+	at kotlin.collections.CollectionsKt___CollectionsKt.single(_Collections.kt:621)
+	at com.cooper.lithic.data.repository.CategoryRepositoryTest$merge_is_atomic_updates_current_and_history_and_preserves_total_and_money$1.invokeSuspend(CategoryRepositoryTest.kt:69)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.data.repository.CategoryRepositoryTest.merge_is_atomic_updates_current_and_history_and_preserves_total_and_money(CategoryRepositoryTest.kt:50)
+
+FAILURES!!!
+Tests run: 11,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
