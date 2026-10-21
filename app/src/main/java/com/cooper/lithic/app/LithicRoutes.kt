@@ -15,6 +15,12 @@ internal data object Review : NavKey
 internal data object Settings : NavKey
 
 @Serializable
+internal data object NameSearch : NavKey
+
+@Serializable
+internal data object CategoryManagement : NavKey
+
+@Serializable
 internal data object ProjectList : NavKey
 
 @Serializable
@@ -91,6 +97,8 @@ internal data class DeleteSubscriptionRenewal(val id: String, val renewalId: Str
 internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (destination) {
     Home -> listOf(Home)
     Review, Settings, ProjectList, SubscriptionList -> listOf(Home, destination)
+    NameSearch -> listOf(Home, NameSearch)
+    CategoryManagement -> listOf(Home, Settings, CategoryManagement)
     ProjectHistory -> listOf(Home, Review, ProjectHistory)
     CreateProject -> listOf(Home, CreateProject)
     CreateSubscription -> listOf(Home, CreateSubscription)

@@ -18,7 +18,7 @@ import java.time.LocalDate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-data class ProjectCursor(val startedOn: LocalDate, val id: String)
+data class ProjectCursor(val startedOn: LocalDate, val id: String, val heldDays: Long? = null)
 
 data class ProjectDetail(
     val project: LongTermProjectEntity,
@@ -135,7 +135,7 @@ open class ProjectRepository(
         val queried = when (filter) {
             ProjectFilter.ALL -> dao.pageProjects(cursor?.startedOn, cursor?.id, pageSize + 1)
             ProjectFilter.CURRENT -> dao.pageCurrentProjects(asOf, cursor?.startedOn, cursor?.id, pageSize + 1)
-            ProjectFilter.HISTORY -> dao.pageHistoryProjects(asOf, cursor?.startedOn, cursor?.id, pageSize + 1)
+            ProjectFilter.HISTORY -> dao.pageHistoryProjects(asOf, cursor?.heldDays, cursor?.id, pageSize + 1)
         }
         val visible = queried.take(pageSize)
         val events = if (visible.isEmpty()) emptyMap() else
@@ -146,7 +146,9 @@ open class ProjectRepository(
             val category = checkNotNull(categories[project.categoryId]) { "The project category is missing" }
             detail(project, category, events[project.id].orEmpty(), asOf)
         }
-        val next = if (queried.size > pageSize) visible.last().let { ProjectCursor(it.startedOn, it.id) } else null
+        val next = if (queried.size > pageSize) items.last().let {
+            ProjectCursor(it.project.startedOn, it.project.id, if (filter == ProjectFilter.HISTORY) it.cost.heldDays else null)
+        } else null
         return ProjectPage(items, next, count, asOf)
     }
 

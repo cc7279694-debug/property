@@ -1,5 +1,14 @@
 # 当前架构事实
 
+## M14：两套类别与名称搜索（2026-10-21）
+
+`CategoryRepository`共用generation coordinator及Room事务。新建使用稳定类别UUID、同类型标准名唯一；改名核对原类别，合并预览核对源/目标/影响数后搬移关联并删除源。未知提交保留同参数重试；源缺失仅返回冲突，不冒称历史成功。fallback身份不变，金额、付款、状态不改。
+
+`SearchDao`以转义LIKE绑定值仅搜索项目/订阅名称，type/ID排序、50+1 sentinel。`SearchRepository`一次Room读事务批量取本页事实，复用M02/M03导出状态；UI请求与写后刷新重建已加载窗口。类别/查询controller直接用于生产ViewModel，序号隔离迟到请求；旧generation被退休后不能写新集。当前项目保留startedOn/ID分页，历史按endedOn-startedOn+1降序与ID次排序，值等同冻结引擎实际持有天数。
+
+首页增加顶部搜索轻入口，设置增加类别管理；沿用原三Tab、详情当前/历史栈及全局pending/discard守卫。新增ViewModel归既有GenerationUiScope，恢复后换epoch；首页、列表和详情继续依赖原Room invalidation刷新。类别字段与引用已在M11/M12 format1，不新增schema或备份字段。设备执行及大字体截图本轮NOT_RUN。
+
+
 
 ## M13：首页只读汇总（2026-10-20）
 

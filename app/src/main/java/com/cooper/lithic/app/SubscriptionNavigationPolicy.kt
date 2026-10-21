@@ -2,10 +2,10 @@ package com.cooper.lithic.app
 
 import com.cooper.lithic.feature.project.LeaveDecision
 
-/** One precedence rule for both features; an uncertain payment can never be discarded. */
-internal fun globalLeaveDecision(projectDecision: LeaveDecision, subscriptionDecision: LeaveDecision): LeaveDecision =
+/** One precedence rule for every editor; an uncertain write can never be discarded. */
+internal fun globalLeaveDecision(vararg decisions: LeaveDecision): LeaveDecision =
     when {
-        projectDecision == LeaveDecision.BLOCK_PENDING || subscriptionDecision == LeaveDecision.BLOCK_PENDING -> LeaveDecision.BLOCK_PENDING
-        projectDecision == LeaveDecision.CONFIRM_DISCARD || subscriptionDecision == LeaveDecision.CONFIRM_DISCARD -> LeaveDecision.CONFIRM_DISCARD
+        LeaveDecision.BLOCK_PENDING in decisions -> LeaveDecision.BLOCK_PENDING
+        LeaveDecision.CONFIRM_DISCARD in decisions -> LeaveDecision.CONFIRM_DISCARD
         else -> LeaveDecision.ALLOW
     }

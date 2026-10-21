@@ -1,0 +1,222 @@
+{
+  "date": "2026-10-21",
+  "base": "2c5e23a7af713f6a96b345bce2a90e613458f270",
+  "branch": "codex/m14-category-search",
+  "module": "READY_FOR_REVIEW",
+  "jvm": {
+    "tests": 136,
+    "passCount": 136,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "com.cooper.lithic.app.BusinessDateObserverTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.app.M14NavigationPolicyTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.core.design.AmountFormatterTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.core.model.MoneyParserTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.core.time.BusinessClockTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.data.local.CategoryNamesTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.data.repository.SearchNamesTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "tests": 22,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.domain.project.ProjectLifecycleRulesTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.domain.report.OverviewEngineTest",
+        "tests": 23,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "tests": 37,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.feature.category.CategoryControllerTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.cooper.lithic.feature.home.SearchControllerTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "android": {
+    "status": "NOT_RUN",
+    "reason": "Authorized original emulator-5686 absent; no restart or new AVD authorized",
+    "compiledMethods": 28,
+    "sources": [
+      {
+        "file": "data/repository/CategoryRepositoryTest.kt",
+        "methods": [
+          "merge_is_atomic_updates_current_and_history_and_preserves_total_and_money",
+          "subscription_merge_preserves_payments_states_and_identity_except_category",
+          "cross_type_merge_rejected_without_mutating_any_category_or_reference",
+          "normalized_names_are_unique_per_type_and_creation_can_be_safely_replayed",
+          "blank_and_control_names_are_rejected_and_fallback_stays_fixed",
+          "ordinary_category_can_merge_into_same_type_fallback",
+          "rename_conflicts_and_stale_loaded_category_are_rejected",
+          "stale_merge_count_or_category_does_not_silently_expand_confirmed_scope",
+          "failure_after_reference_update_rolls_back_all_rows_and_source_delete",
+          "repeated_merge_cannot_delete_or_move_other_records",
+          "retired_generation_rejects_category_writes_without_reopening_storage"
+        ],
+        "count": 11,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "data/repository/SearchRepositoryTest.kt",
+        "methods": [
+          "search_current_and_history_with_frozen_subscription_statuses",
+          "wildcards_quotes_escape_and_sql_injection_text_are_literal",
+          "only_names_match_not_notes_categories_amounts_or_payments",
+          "stable_pages_across_both_types_have_no_duplicates_or_omissions",
+          "cursor_is_bound_to_query_and_observation_date",
+          "loaded_window_rebuilds_after_identity_and_category_changes",
+          "subscription_future_state_and_payment_use_historical_engine_boundaries",
+          "invalid_stored_category_type_is_a_read_error",
+          "default_sorts_use_ownership_date_and_real_paid_on_with_stable_id_ties",
+          "default_list_paging_with_equal_dates_has_no_duplicates",
+          "history_sorts_by_frozen_held_days_instead_of_purchase_date",
+          "history_equal_held_days_keep_stable_identity_paging_across_different_start_dates"
+        ],
+        "count": 12,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "data/backup/M14CategoryBackupRoundTripTest.kt",
+        "methods": [
+          "renamed_and_merged_categories_round_trip_with_exact_facts_settings_and_media"
+        ],
+        "count": 1,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "feature/category/CategoryManagementScreenTest.kt",
+        "methods": [
+          "fallback_has_no_rename_or_merge_source_action",
+          "merge_confirmation_displays_exact_affected_history_count_before_commit",
+          "uncertain_submission_freezes_name_and_cancel_but_allows_exact_retry"
+        ],
+        "count": 3,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "feature/home/SearchScreenTest.kt",
+        "methods": [
+          "result_status_and_history_are_visible_and_open_the_exact_record"
+        ],
+        "count": 1,
+        "status": "NOT_RUN"
+      }
+    ]
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 9
+  },
+  "debugBuild": "PASS",
+  "androidTestBuild": "PASS",
+  "screenshots": "NOT_RUN",
+  "artifacts": {
+    "app": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 12771695,
+      "sha256": "59d45ad38b467e5c4bb895c71feab3315bb872d670177ab7457033179c4b35b9"
+    },
+    "test": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 2546071,
+      "sha256": "9609270b7dde53a91bb4b57f54e763f427625d382f574cda31e818f8dce8d4e4"
+    }
+  },
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "applicationId": "com.cooper.lithic.debug",
+  "versionCode": 9,
+  "versionName": "0.1.0-m14-debug",
+  "roomSchema": 2,
+  "backupFormat": 1,
+  "deviceOperations": {
+    "adb": 0,
+    "avdStarts": 0,
+    "avdCreates": 0,
+    "installations": 0,
+    "killOrClear": 0
+  },
+  "historicalStates": {
+    "M10": "PENDING / DEFERRED",
+    "M13": "PENDING",
+    "M13_T06": "NOT_RUN / DEFERRED",
+    "G1": "NOT_PASSED",
+    "M15": "NOT_AUTHORIZED"
+  }
+}

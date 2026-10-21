@@ -28,6 +28,7 @@ abstract class LithicDatabase : RoomDatabase() {
     abstract fun projectDao(): ProjectDao
     abstract fun mediaDao(): MediaDao
     abstract fun subscriptionDao(): SubscriptionDao
+    abstract fun searchDao(): SearchDao
 
     /** Only fresh generation initialization may add absent defaults. Existing rows must agree. */
     suspend fun initializeDefaults() = withTransaction {

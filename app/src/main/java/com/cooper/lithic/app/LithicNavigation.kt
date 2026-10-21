@@ -43,6 +43,11 @@ import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
 import com.cooper.lithic.feature.home.HomeShell
+import com.cooper.lithic.feature.home.SearchScreen
+import com.cooper.lithic.feature.home.SearchViewModel
+import com.cooper.lithic.feature.category.CategoryManagementScreen
+import com.cooper.lithic.feature.category.CategoryViewModel
+import com.cooper.lithic.data.local.CategoryType
 import com.cooper.lithic.feature.project.LeaveDecision
 import com.cooper.lithic.feature.project.MoneyEventEditor
 import com.cooper.lithic.feature.project.ProjectDetailScreen
@@ -111,6 +116,22 @@ internal fun LithicNavigation(
         })[SubscriptionViewModel::class.java]
     }
     val subscriptions by subscriptionModel.state.collectAsStateWithLifecycle()
+    val categoryModel = state.categoryRepository?.let { repository ->
+        remember(generationScope, session, repository) {
+            ViewModelProvider(generationScope, viewModelFactory {
+                initializer { CategoryViewModel(repository) }
+            })[CategoryViewModel::class.java]
+        }
+    }
+    val categoryState = categoryModel?.state?.collectAsStateWithLifecycle()?.value
+    val searchModel = state.searchRepository?.let { repository ->
+        remember(generationScope, session, repository) {
+            ViewModelProvider(generationScope, viewModelFactory {
+                initializer { SearchViewModel(repository) }
+            })[SearchViewModel::class.java]
+        }
+    }
+    val searchState = searchModel?.state?.collectAsStateWithLifecycle()?.value
     val backStack = key(session) { rememberNavBackStack(Home) }
     val routes = normalizeBackStack(backStack.toList())
     var pendingLeave by remember(session) { mutableStateOf<List<NavKey>?>(null) }
@@ -120,8 +141,8 @@ internal fun LithicNavigation(
     }
     fun requestLeave(target: List<NavKey>) {
         if (restoreState.phase == RestoreUiPhase.RESTORING) return
-        when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision())) {
-            LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); navigate(target) }
+        when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW)) {
+            LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); navigate(target) }
             LeaveDecision.CONFIRM_DISCARD -> pendingLeave = target
             LeaveDecision.BLOCK_PENDING -> pendingWarning = true
         }
@@ -130,6 +151,8 @@ internal fun LithicNavigation(
     SideEffect { if (backStack.toList() != routes) navigate(routes) }
     LaunchedEffect(routes.last()) {
         when (val route = routes.last()) {
+            CategoryManagement -> categoryModel?.refresh()
+            NameSearch -> searchModel?.refresh()
             ProjectList -> model.loadList()
             ProjectHistory -> model.loadHistory()
             CreateProject -> model.startCreate()
@@ -160,33 +183,37 @@ internal fun LithicNavigation(
     }
     val projectLeave = model.leaveDecision()
     val subscriptionLeave = subscriptionModel.leaveDecision()
-    BackHandler(enabled = routes == listOf(Home) && globalLeaveDecision(projectLeave, subscriptionLeave) != LeaveDecision.ALLOW) {
+    val categoryLeave = categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW
+    BackHandler(enabled = routes == listOf(Home) && globalLeaveDecision(projectLeave, subscriptionLeave, categoryLeave) != LeaveDecision.ALLOW) {
         requestLeave(routes)
     }
-    LaunchedEffect(projects.committedProjectId, subscriptionLeave) {
+    LaunchedEffect(projects.committedProjectId, subscriptionLeave, categoryLeave) {
         projects.committedProjectId?.let { id ->
-            if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
+            val guard = globalLeaveDecision(subscriptionLeave, categoryLeave)
+            if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val target = canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last())))
-            if (subscriptionLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             model.consumeCommitted()
         }
     }
-    LaunchedEffect(projects.deletedProjectId, subscriptionLeave) {
+    LaunchedEffect(projects.deletedProjectId, subscriptionLeave, categoryLeave) {
         projects.deletedProjectId?.let {
-            if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
+            val guard = globalLeaveDecision(subscriptionLeave, categoryLeave)
+            if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val target = canonicalBackStack(if (projectOrigin(routes.last()) == ProjectOrigin.HISTORY) ProjectHistory else ProjectList)
-            if (subscriptionLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             model.consumeDeleted()
         }
     }
-    LaunchedEffect(subscriptions.committedSubscriptionId, projectLeave) {
+    LaunchedEffect(subscriptions.committedSubscriptionId, projectLeave, categoryLeave) {
         subscriptions.committedSubscriptionId?.let { id ->
-            if (projectLeave == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
+            val guard = globalLeaveDecision(projectLeave, categoryLeave)
+            if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val origin = SubscriptionOrigin.entries.firstOrNull { it.name == subscriptions.committedOrigin } ?: SubscriptionOrigin.CURRENT
             val target = canonicalBackStack(SubscriptionDetail(id, origin))
-            if (projectLeave == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
+            if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             subscriptionModel.consumeCommitted()
         }
@@ -201,18 +228,21 @@ internal fun LithicNavigation(
             dateObserver.observe(state.businessClock, state.recordZone, {
                 model.refresh()
                 subscriptionModel.refresh()
+                searchModel?.refresh()
                 latestRetry()
             })
         }
     }
-    DisposableEffect(lifecycle, model, subscriptionModel) {
-        val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) { model.refresh(); subscriptionModel.refresh(); latestRetry() } }
+    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel) {
+        val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) {
+            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); latestRetry()
+        } }
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
     }
     val currentPrimary = when {
         Review in routes -> Review
-        routes.last() == Settings -> Settings
+        Settings in routes -> Settings
         else -> Home
     }
     Scaffold(modifier = modifier.fillMaxSize().testTag("primary_navigation"), contentWindowInsets = WindowInsets.safeDrawing,
@@ -237,13 +267,32 @@ internal fun LithicNavigation(
             NavDisplay(backStack = routes, modifier = Modifier.weight(1f), onBack = onBack,
                 entryProvider = entryProvider<NavKey> {
                     entry<Home> { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
-                        subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }, overview = state.overview) }
+                        subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }, overview = state.overview,
+                        onSearch = if (searchModel != null) ({ requestLeave(canonicalBackStack(NameSearch)) }) else null) }
                     entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) }) }
                     entry<Settings> { SettingsShell(state.recordZone, backupState = backupState,
                         onExportBackup = onExportBackup, onCancelBackup = onCancelBackup,
                         restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
-                        onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore) }
+                        onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore,
+                        onManageCategories = if (categoryModel != null) ({ requestLeave(canonicalBackStack(CategoryManagement)) }) else null) }
+                    entry<CategoryManagement> {
+                        if (categoryModel != null && categoryState != null) CategoryManagementScreen(
+                            categoryState, onBack, categoryModel::selectType, categoryModel::startCreate,
+                            categoryModel::startRename, categoryModel::startMerge, categoryModel::changeName,
+                            categoryModel::selectTarget, categoryModel::previewMerge, categoryModel::save,
+                            categoryModel::confirmMerge, categoryModel::dismissEditor, categoryModel::refresh)
+                    }
+                    entry<NameSearch> {
+                        if (searchModel != null && searchState != null) SearchScreen(searchState, onBack,
+                            searchModel::changeQuery, searchModel::refresh, searchModel::loadMore, onOpen = { item ->
+                                // Reuse the established detail/history stacks and their write guards.
+                                val target: NavKey = if (item.type == CategoryType.PROJECT)
+                                    ProjectDetail(item.id, if (item.isHistory) ProjectOrigin.HISTORY else ProjectOrigin.CURRENT)
+                                else SubscriptionDetail(item.id, if (item.isHistory) SubscriptionOrigin.HISTORY else SubscriptionOrigin.CURRENT)
+                                requestLeave(canonicalBackStack(target))
+                            })
+                    }
                     entry<ProjectList> {
                         ProjectListScreen(projects.list, onBack, onCreate = { requestLeave(listOf(Home, ProjectList, CreateProject)) },
                             onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)
@@ -331,9 +380,9 @@ internal fun LithicNavigation(
             text = { Text("输入尚未保存。继续编辑会保留这些内容。") },
             confirmButton = { TextButton(onClick = {
                 pendingLeave = null
-                if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision()) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
+                if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
                 else { model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
-                    model.discardForm(); subscriptionModel.discardForm(); navigate(target) }
+                    model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); navigate(target) }
             }, modifier = Modifier.testTag("discard-confirm")) { Text("放弃修改") } },
             dismissButton = { TextButton(onClick = { pendingLeave = null }, modifier = Modifier.testTag("discard-keep")) { Text("继续编辑") } })
     }
@@ -352,11 +401,12 @@ internal fun LithicNavigation(
                     else -> null
                 } else null
                 val subscriptionRecovery: NavKey? = if (subscriptionLeave == LeaveDecision.BLOCK_PENDING) subscriptionRecoveryRoute(subscriptions) else null
-                val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery).filter { it != routes.last() }
+                val categoryRecovery: NavKey? = if (categoryLeave == LeaveDecision.BLOCK_PENDING) CategoryManagement else null
+                val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery, categoryRecovery).filter { it != routes.last() }
                 Column { recoveryTargets.forEach { recovery ->
                     TextButton(onClick = { pendingWarning = false; navigate(canonicalBackStack(recovery)) },
-                        modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else "pending-submit-return-to-project")) {
-                        Text(if (recovery == subscriptionRecovery) "返回待核对订阅记录" else "返回待核对项目")
+                        modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else if (recovery == categoryRecovery) "pending-submit-return-to-category" else "pending-submit-return-to-project")) {
+                        Text(if (recovery == subscriptionRecovery) "返回待核对订阅记录" else if (recovery == categoryRecovery) "返回待核对类别" else "返回待核对项目")
                     }
                 } }
             })

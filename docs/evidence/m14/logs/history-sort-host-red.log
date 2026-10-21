@@ -1,0 +1,5 @@
+Actual existing ProjectDao history SQL: ['short', 'long']
+Expected frozen-held-days order: ['long', 'short']
+Traceback (most recent call last):
+  File "<stdin>", line 11, in <module>
+AssertionError: RED: historical ownership length is not purchase-date order

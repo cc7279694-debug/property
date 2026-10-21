@@ -14,6 +14,8 @@ interface ProjectDao {
     @Query("SELECT * FROM long_term_projects ORDER BY startedOn, id") suspend fun listProjects(): List<LongTermProjectEntity>
     @Query("SELECT * FROM project_money_events ORDER BY projectId, occurredOn, id") suspend fun listEvents(): List<ProjectMoneyEventEntity>
     @Query("SELECT * FROM long_term_projects WHERE id = :id") suspend fun findProject(id: String): LongTermProjectEntity?
+    @Query("SELECT * FROM long_term_projects WHERE id IN (:ids)")
+    suspend fun projectsForIds(ids: List<String>): List<LongTermProjectEntity>
     @Query("SELECT * FROM project_money_events WHERE operationId = :operationId") suspend fun findEventByOperation(operationId: String): ProjectMoneyEventEntity?
     @Query("SELECT * FROM project_money_events WHERE id = :id") suspend fun findEvent(id: String): ProjectMoneyEventEntity?
     @Query("SELECT * FROM project_money_events WHERE projectId = :projectId AND role = 'END_SETTLEMENT' ORDER BY id LIMIT 2")
@@ -39,11 +41,11 @@ interface ProjectDao {
     @Query("""
         SELECT * FROM long_term_projects
         WHERE endedOn IS NOT NULL AND endedOn <= :asOf
-            AND (:afterStartedOn IS NULL OR startedOn > :afterStartedOn
-                OR (startedOn = :afterStartedOn AND id > :afterId))
-        ORDER BY startedOn, id LIMIT :limit
+            AND (:afterHeldDays IS NULL OR (endedOn - startedOn + 1) < :afterHeldDays
+                OR ((endedOn - startedOn + 1) = :afterHeldDays AND id > :afterId))
+        ORDER BY (endedOn - startedOn + 1) DESC, id ASC LIMIT :limit
     """)
-    suspend fun pageHistoryProjects(asOf: LocalDate, afterStartedOn: LocalDate?, afterId: String?, limit: Int): List<LongTermProjectEntity>
+    suspend fun pageHistoryProjects(asOf: LocalDate, afterHeldDays: Long?, afterId: String?, limit: Int): List<LongTermProjectEntity>
 
     @Query("""
         SELECT * FROM long_term_projects

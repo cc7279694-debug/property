@@ -1,5 +1,14 @@
 # 决策记录
 
+## 2026-10-21 — M14获授权先行，发行闸门继续延期
+
+**User-confirmed：**用户明确授权从`2c5e23a7af713f6a96b345bce2a90e613458f270`在`codex/m14-category-search`实施M14。M13-T01～T05限定独立PASS WITH NOTES；T06稳定签名、正式安装升级及首次真实录入NOT_RUN / DEFERRED，G1整体未通过。本次继续开发不等于豁免发行安全门槛，也不自行冻结完整M13。
+
+**Implementation：**类别复用现有标准化及同类型唯一索引；默认“其他”不可改名/作为合并源，可接收同类型合并。预览源、目标和影响数在确认时复核，一次Room事务只改类别引用后删除源。当前及历史名称搜索使用绑定参数、`!`转义LIKE、type/ID稳定keyset和整窗口一致读取，不加FTS/schema。当前项目按startedOn升序，已结束项目按冻结heldDays降序；同长按ID，不把早买早结束误作陪伴最长。两类成本继续复用冻结引擎。
+
+**Boundary：**schema2/format1、M11/M12协议不变；M10 PENDING / DEFERRED、UI-C1独立冻结与历史NOTES保持。用户限定许可仅复用原5686合成实例，当前主机只读证据显示实例不存在，设备/截图NOT_RUN，不重启/新建、不触碰H2/C2/M10，不签名、不进入M15。
+
+
 ## 2026-10-20 — M11独立冻结与M12安全完整恢复授权
 
 用户转交ChatGPT独立结论：M11 ACCEPTED / FROZEN — PASS WITH NOTES，评审635e33a57c66c286fa5c19f009a5565a1e70b8e2，仅限M09/schema2上的format1手动完整导出、登记JPEG/PNG原字节和真实SAF。原失败/NOT_RUN、两Test身份、真机/OEM/API26/Release/提供方断电持久性等NOTES保留；此为登记，不是重新测试。

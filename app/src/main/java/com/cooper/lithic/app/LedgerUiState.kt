@@ -4,6 +4,8 @@ import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.data.repository.ProjectRepository
 import com.cooper.lithic.data.repository.SubscriptionRepository
 import com.cooper.lithic.data.repository.ReportRepository
+import com.cooper.lithic.data.repository.CategoryRepository
+import com.cooper.lithic.data.repository.SearchRepository
 import com.cooper.lithic.domain.report.OverviewResult
 import java.time.ZoneId
 
@@ -21,6 +23,8 @@ sealed interface LedgerUiState {
         val generationId: String = "test-generation",
         val overview: OverviewResult? = null,
         val reportRepository: ReportRepository? = null,
+        val categoryRepository: CategoryRepository? = null,
+        val searchRepository: SearchRepository? = null,
     ) : LedgerUiState
     data object Failed : LedgerUiState
 }

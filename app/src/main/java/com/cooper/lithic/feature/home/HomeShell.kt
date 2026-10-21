@@ -27,7 +27,7 @@ import com.cooper.lithic.domain.report.OverviewResult
 @Composable
 internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreateProject: () -> Unit,
     subscriptionCount: Long, onSubscriptionList: () -> Unit, onCreateSubscription: () -> Unit,
-    modifier: Modifier = Modifier, overview: OverviewResult? = null) {
+    modifier: Modifier = Modifier, overview: OverviewResult? = null, onSearch: (() -> Unit)? = null) {
     val recordedProjects = overview?.projectCount ?: projectCount
     val recordedSubscriptions = overview?.subscriptionCount ?: subscriptionCount
     Column(
@@ -36,6 +36,11 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
         verticalArrangement = Arrangement.spacedBy(24.dp),
     ) {
         Text("现在", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
+        onSearch?.let { search ->
+            TextButton(onClick = search, modifier = Modifier.heightIn(min = 48.dp).testTag("open-name-search")) {
+                Text("搜索项目与订阅名称", style = MaterialTheme.typography.bodyLarge)
+            }
+        }
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text("当前日均成本", style = MaterialTheme.typography.bodyLarge)
             AmountText(overview?.takeIf { it.hasRecords }?.totalRate,

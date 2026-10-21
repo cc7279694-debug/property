@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.category.CategoryControllerTest" tests="5" skipped="0" failures="4" errors="0" timestamp="2026-10-21T01:45:56.927Z" hostname="WHOCARE" time="12.203">
+  <properties/>
+  <testcase name="unknown_write_keeps_original_command_and_id_for_safe_retry" classname="com.cooper.lithic.feature.category.CategoryControllerTest" time="3.147">
+    <failure message="kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms" type="kotlinx.coroutines.TimeoutCancellationException">kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms
+	at _COROUTINE._BOUNDARY._(CoroutineDebugging.kt:42)
+	at kotlinx.coroutines.flow.StateFlowImpl.collect(StateFlow.kt:406)
+	at kotlinx.coroutines.flow.FlowKt__ReduceKt.first(Reduce.kt:179)
+	at com.cooper.lithic.feature.category.CategoryControllerTest$unknown_write_keeps_original_command_and_id_for_safe_retry$1$1.invokeSuspend(CategoryControllerTest.kt:52)
+	at com.cooper.lithic.feature.category.CategoryControllerTest$unknown_write_keeps_original_command_and_id_for_safe_retry$1.invokeSuspend(CategoryControllerTest.kt:52)
+Caused by: kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+	at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+	at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</failure>
+  </testcase>
+  <testcase name="fallback_cannot_open_a_rename_or_merge_source_editor" classname="com.cooper.lithic.feature.category.CategoryControllerTest" time="0.014"/>
+  <testcase name="pending_write_blocks_leave_and_cannot_be_discarded_or_duplicated" classname="com.cooper.lithic.feature.category.CategoryControllerTest" time="3.019">
+    <failure message="kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms" type="kotlinx.coroutines.TimeoutCancellationException">kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms
+	at _COROUTINE._BOUNDARY._(CoroutineDebugging.kt:42)
+	at com.cooper.lithic.feature.category.CategoryControllerTest$pending_write_blocks_leave_and_cannot_be_discarded_or_duplicated$1$1.invokeSuspend(CategoryControllerTest.kt:31)
+	at com.cooper.lithic.feature.category.CategoryControllerTest$pending_write_blocks_leave_and_cannot_be_discarded_or_duplicated$1.invokeSuspend(CategoryControllerTest.kt:31)
+Caused by: kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+	at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+	at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</failure>
+  </testcase>
+  <testcase name="stale_type_read_does_not_replace_current_category_type" classname="com.cooper.lithic.feature.category.CategoryControllerTest" time="3.005">
+    <failure message="kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms" type="kotlinx.coroutines.TimeoutCancellationException">kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms
+	at _COROUTINE._BOUNDARY._(CoroutineDebugging.kt:42)
+	at com.cooper.lithic.feature.category.CategoryControllerTest$stale_type_read_does_not_replace_current_category_type$1$1.invokeSuspend(CategoryControllerTest.kt:109)
+	at com.cooper.lithic.feature.category.CategoryControllerTest$stale_type_read_does_not_replace_current_category_type$1.invokeSuspend(CategoryControllerTest.kt:109)
+Caused by: kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+	at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+	at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</failure>
+  </testcase>
+  <testcase name="merge_requires_read_preview_then_explicit_confirmation" classname="com.cooper.lithic.feature.category.CategoryControllerTest" time="3.018">
+    <failure message="kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms" type="kotlinx.coroutines.TimeoutCancellationException">kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms
+	at _COROUTINE._BOUNDARY._(CoroutineDebugging.kt:42)
+	at kotlinx.coroutines.flow.StateFlowImpl.collect(StateFlow.kt:406)
+	at kotlinx.coroutines.flow.FlowKt__ReduceKt.first(Reduce.kt:179)
+	at com.cooper.lithic.feature.category.CategoryControllerTest$merge_requires_read_preview_then_explicit_confirmation$1$1.invokeSuspend(CategoryControllerTest.kt:85)
+	at com.cooper.lithic.feature.category.CategoryControllerTest$merge_requires_read_preview_then_explicit_confirmation$1.invokeSuspend(CategoryControllerTest.kt:85)
+Caused by: kotlinx.coroutines.TimeoutCancellationException: Timed out waiting for 3000 ms
+	at kotlinx.coroutines.TimeoutKt.TimeoutCancellationException(Timeout.kt:189)
+	at kotlinx.coroutines.TimeoutCoroutine.run(Timeout.kt:157)
+	at kotlinx.coroutines.EventLoopImplBase$DelayedRunnableTask.run(EventLoop.common.kt:505)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.DefaultExecutor.run(DefaultExecutor.kt:105)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

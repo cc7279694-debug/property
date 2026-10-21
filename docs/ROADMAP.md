@@ -1,5 +1,7 @@
 # V1 模块路线与执行闸门
 
+**2026-10-21当前覆盖**：用户正式授权M14，来源`2c5e23a7af713f6a96b345bce2a90e613458f270`，仅`codex/m14-category-search`。[本轮契约](planning/M14_CONTRACT.md)。M13-T01～T05限定独立通过，T06 NOT_RUN / DEFERRED、G1未整体通过；这是继续开发的明确授权，不是完整M13冻结。下方2026-10-20的授权与停止表述为历史。M10延期、M15未授权、原依赖表/规划归档保持。
+
 **2026-10-20当前授权覆盖**：M11、M12已由用户转交独立验收限定冻结PASS WITH NOTES；当前授权M13首页汇总与核心内部Debug候选，依赖M07/M09/M12。M10仍PENDING / DEFERRED且现场不动，不合并Worker/Stage V2/JNI或独立UI-C1分支。M13-T06稳定签名/首次真实记录门槛单独保留，M14未授权。
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。

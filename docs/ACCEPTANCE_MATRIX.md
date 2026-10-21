@@ -1,6 +1,6 @@
 # 验收登记
 
-当前正式结论：**M12 — ACCEPTED / FROZEN — PASS WITH NOTES**，评审`e34187632468c9c3aaf7bb5d04d30a26320a18b0`，见[本次正式登记](#m12正式冻结登记2026-10-20)。本次仅文档回写；下方旧交付段落保留当时状态，不将Q06整体CLOSED，M13未授权。
+当前开发结论：**M14 READY_FOR_REVIEW，未独立冻结**；M13-T01～T05独立PASS WITH NOTES，T06 NOT_RUN / DEFERRED、G1未整体通过。M12及此前正式冻结结论保持，用户明确授权M14先行；下方旧交付段落保留当时状态，不将Q06整体CLOSED。
 
 ## M11正式独立冻结登记（2026-10-20）
 
@@ -777,3 +777,21 @@ BLOCKING：完整JPEG/PNG编码覆盖尚无可信证明，未认证输入拒绝�
 本轮T06仅只读检查Git、正式applicationId、Gradle签名接线、已知位置的文件元数据和既有Debug APK SHA。正式包名已声明为`com.cooper.lithic`，但未发现项目发布签名配置/登记，用户长期密钥位置和备份保管尚未确认；不证明整机不存在其他密钥。未读取密钥/密码，未构建、签名、生成密钥、ADB/AVD/安装/页面或账本操作。
 
 按用户第2、6条，签名门禁BLOCKED，安装/同签名升级/真实正式页面/SAF往返及首次真实录入均NOT_RUN。[短报告与保管方案](evidence/M13-T06-readiness.md)。M10 PENDING / DEFERRED、三历史JPEG FAIL、UI-C1、Q03～Q06及全部NOTES/UNKNOWN/NOT_RUN不改。停止等待用户完成本地签名保管，不自行冻结M13或进入M14。
+
+## M14当前执行登记（2026-10-21）
+
+来源`2c5e23a7af713f6a96b345bce2a90e613458f270`；分支`codex/m14-category-search`。**READY_FOR_REVIEW**，不自授ACCEPTED/FROZEN。用户允许M13签名门槛延期后开发M14，不把完整M13/G1改成通过。原130条及历史验收不改。
+
+| 原案例 | 当前实际证据与未执行边界 |
+|---|---|
+| M14-T01 同类型原子合并 | 实现/测试源码已齐；宿主SQLite引用搬移、失败回滚、无孤儿PASS。**真实Room金额/首页总额不变及并发场景NOT_RUN**。 |
+| M14-T02 跨类型拒绝 | Repository在事务中校验type、保护默认类别，11项类别Android源码含拒绝/重名/回滚。**实际Android NOT_RUN**。 |
+| M14-T03 当前历史搜索 | Repository复用M02/M03、页面显示明确状态；查询迟到/清空/失效重建的实际生产controller JVM PASS。**真实Room/Android状态搜索NOT_RUN**。 |
+| M14-T04 特殊字符 | 4项SearchNames JVM与5个实际DAO宿主SQLite字面/注入样本PASS；参数绑定及ESCAPE。**Android执行NOT_RUN**。 |
+| M14-T05 默认排序及分页 | 当前startedOn、订阅paidOn排序保留；历史冻结heldDays降序，实际SQL105条同键分页与“早买早结束”RED→GREEN。**真实Room分页NOT_RUN**。 |
+
+最终136个唯一JVM方法PASS（113回归＋23本模块），0失败/错误/跳过。Lint0错误9警告，App/Test Debug构建PASS；28项新增Android源码全部只编译，不计产品PASS。类别/七表/设置/原字节媒体完整format1往返及恢复后的Search/Report等值测试已写，**NOT_RUN**。APK/证书与权限核查PASS只代表产物检查，不代表安装、启动或业务路径通过。
+
+授权原`Lithic_M11B_Final_API36_20261020 / emulator-5686`主机进程0、监听0；不启动/重建。ADB、安装及AVD操作0次，截图/大字体/TalkBack仍NOT_RUN。[短报告](evidence/M14-verification.md)、[唯一测试统计/XML](evidence/m14/results.json)、[原始日志](evidence/m14/logs/)。原RED、初次KSP/测试导入构建失败保留，不伪称产品PASS；本地辅助代码审阅不代替ChatGPT独立验收。
+
+M10延期及三历史JPEG FAIL、M13-T06延期、Q03～Q06和全部历史NOTE/UNKNOWN保持；不合并main，不进入M15。

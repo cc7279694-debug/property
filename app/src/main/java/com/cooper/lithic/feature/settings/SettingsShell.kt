@@ -35,10 +35,17 @@ internal fun SettingsShell(
     onCancelRestore: () -> Unit = {},
     onConfirmRestore: () -> Unit = {},
     onDiscardRestore: () -> Unit = {},
+    onManageCategories: (() -> Unit)? = null,
 ) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("settings-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Text("设置", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
+        onManageCategories?.let { manage ->
+            TextButton(onClick = manage, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("open-category-management")) {
+                Text("管理类别", style = MaterialTheme.typography.bodyLarge)
+            }
+            HorizontalDivider()
+        }
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Text("记录时区", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.semantics { heading() })
             Text(recordZone.id, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.testTag("record-zone"))

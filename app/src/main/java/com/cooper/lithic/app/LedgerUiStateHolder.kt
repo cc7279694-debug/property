@@ -7,6 +7,8 @@ import com.cooper.lithic.core.time.ZonedBusinessClock
 import com.cooper.lithic.data.repository.ProjectRepository
 import com.cooper.lithic.data.repository.SubscriptionRepository
 import com.cooper.lithic.data.repository.ReportRepository
+import com.cooper.lithic.data.repository.CategoryRepository
+import com.cooper.lithic.data.repository.SearchRepository
 import java.time.Clock
 import java.time.ZoneId
 import kotlinx.coroutines.CancellationException
@@ -50,7 +52,9 @@ internal class LedgerUiStateHolder(
                                 val overview = reports.loadOverview()
                                 LedgerUiState.Ready(overview.projectCount, zone, repository, clock,
                                     subscriptions, overview.subscriptionCount, readError = storage.recoveryWarning,
-                                    generationId = generation.id, overview = overview, reportRepository = reports)
+                                    generationId = generation.id, overview = overview, reportRepository = reports,
+                                    categoryRepository = CategoryRepository(generation.database, generation.coordinator),
+                                    searchRepository = SearchRepository(generation.database, generation.coordinator, clock))
                             }
                             mutableState.value = ready
                             checkNotNull(ready.reportRepository).changes.collectLatest { refresh(ready) }
