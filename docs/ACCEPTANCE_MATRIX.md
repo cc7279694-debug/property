@@ -1,6 +1,29 @@
 # 验收登记
 
-当前候选：**M16 READY_FOR_REVIEW**；本轮实施验证252 JVM/50 Android/7图，原M16-T01～T06执行PASS，等待ChatGPT独立审查，不自行ACCEPTED/FROZEN。M15及此前限定冻结保持；M10 PENDING / DEFERRED、M13-T06 NOT_RUN / DEFERRED、G1未整体通过，Q06不整体CLOSED，M17未授权。
+当前正式结论：**M16 ACCEPTED / FROZEN — PASS WITH NOTES**，评审`d8ce0a8d602c2e9e544662e4b5bf202df5812aef`，依据用户转交的ChatGPT独立代码及证据验收登记。M16-T01～T06 PASS、原252 JVM/50 Android、Lint0错误9警告和7张隔离截图获限定认可；本轮仅文档回写，不是重新测试。M15及此前冻结/历史证据保持；M10 PENDING / DEFERRED、M13-T06 NOT_RUN / DEFERRED、G1未整体通过，Q06不整体CLOSED，M17未授权。
+
+## M16正式冻结登记（2026-10-21）
+
+**M16 — ACCEPTED / FROZEN — PASS WITH NOTES。** 来源为用户本轮正式转交的ChatGPT独立代码及证据验收结论，评审提交`d8ce0a8d602c2e9e544662e4b5bf202df5812aef`，评审/回写分支`codex/m16-replacement-trade-in`。修改前本地/远端HEAD均为该提交，工作区干净。下方候选执行登记、原报告/结果/checkpoint保持历史状态；不回填旧PASS或改写原始证据。
+
+| 获独立认可案例 | 限定冻结范围 |
+|---|---|
+| M16-T01 one_predecessor_successor_no_cycles | PASS：一前任/一后任；A→B→C合法，自指/环/多前后任/缺项及陈旧事实拒绝。 |
+| M16-T02 link_does_not_end_old | PASS：纯关联/解除不改变金额或生命周期。 |
+| M16-T03 trade_in_balance | PASS：旧回收3000、新现金5000＋折抵3000，新成本8000、净新增5000；保留唯一INITIAL和三事件身份，零现金/同日边界。 |
+| M16-T04 trade_in_all_or_nothing | PASS：六处SQL故障回滚、完整事实CAS、精确目标重放/冲突及用户确认的交易组保护。 |
+| M16-T05 delete_middle_does_not_guess | PASS：普通中间项目删除只断相关边、不重连；交易项目删除继续受保护。 |
+| M16-T06 v1_backup_upgrade | PASS：真实v1先原格式校验再显式升级；v2八表/关系/折抵/设置/媒体往返，坏备份保护旧集，旧schema2＋五字段proof＋SWITCHING生产打开兼容。 |
+
+**数据范围：Room schema v3、backup format v2。** schema3为八表、basis/group及replacements，显式1→2→3，旧schema1/2原字节不改。format2严格保留新增字段、替换关系和完整折抵组；真实format1验证后补CASH/null/空关系。M12 pointer/ready/proof协议仍1，旧五字段按原v1 serializer/hash核验，新proof明确dataFormatVersion2；不扩大为M10严格JPEG或未来备份格式通过。
+
+独立认可此前实际结果：**252 JVM PASS（46新增＋206回归）＋50 Android PASS（34本模块＋16回归）＝302个唯一方法，0失败/错误/跳过；Lint0错误9警告；7张隔离截图。** [原集中报告](evidence/M16-verification.md)、[原方法/身份统计](evidence/m16/results.json)、[原始证据入口](evidence/m16/README.md)、[截图来源](evidence/m16/screenshots/README.md)。本轮只核对既有记录与Git，并执行文档差异/链接/敏感信息检查；不重跑产品测试、构建、APK或设备核验，不把独立审查记作新一次运行PASS。
+
+**NOTES与未执行边界全部保留：**仅API36/x86_64合成环境、plain Application隔离runner、隔离ComponentActivity/真实LithicApp/Nav3；360dp和02/04两张200%为LocalDensity画布，非MainActivity或系统字号。受控文件往返不是新的SAF验证。API26、真机/OEM、正式发行/Release/稳定签名/真实个人记录、系统200%/完整IME/TalkBack、真实午夜、长期大规模性能、新SAF及schema3/format2真实进程终止、LMK、断电仍NOT_RUN。旧SWITCHING用例不替代M12真实故障门禁，Q06不整体CLOSED。原RED、FAIL、UNKNOWN、NOT_RUN和9条Lint提示不删除、不改写。
+
+**交易保护不解除：**已参与交易项目不能单独删除、改取得/既有结束日期或改单笔成组金额/日期；名称/类别/备注、普通后续金额、首次正常结束与关系仍依原规则。整组纠错/撤销仍未实现、未另行授权；冻结不把该限制自动CLOSED。
+
+M10继续PENDING / DEFERRED，三历史JPEG FAIL与保留现场不变；M13-T06继续NOT_RUN / DEFERRED，G1未整体通过；Q03～Q06及未来验收期限保持。冻结登记后停止，不操作设备、不合并main、不启动M17。
 
 ## M16候选执行登记（2026-10-21）
 

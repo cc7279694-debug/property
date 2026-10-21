@@ -1,5 +1,19 @@
 # 决策记录
 
+## 2026-10-21 — M16独立限定冻结与后续授权边界
+
+### Decision
+
+依据用户转交的ChatGPT独立代码及证据验收，对`codex/m16-replacement-trade-in`评审提交`d8ce0a8d602c2e9e544662e4b5bf202df5812aef`登记 **M16 — ACCEPTED / FROZEN — PASS WITH NOTES**。M16-T01～T06 PASS、原252 JVM/50 Android PASS、Lint0错误9警告及7张隔离截图获限定认可；Room schema3、backup format2及旧格式/proof兼容的具体范围见[正式登记](ACCEPTANCE_MATRIX.md#m16正式冻结登记2026-10-21)。
+
+### Context / Alternatives / Reason
+
+原报告、结果与checkpoint记录候选交付时READY_FOR_REVIEW/PENDING_REVIEW，保持原件和全部历史RED/FAIL/UNKNOWN/NOT_RUN；用新增独立结论更新当前效力，不重写旧执行记录。通过数来自原实施证据，本轮文档核查不是重新运行产品测试、构建或设备验证。
+
+### Consequences
+
+交易组删除/日期/单笔金额保护及整组纠错/撤销排除继续有效。仅API36/x86_64合成证据；真机/API26/OEM、正式发行/稳定签名、系统大字/完整IME/TalkBack、真实故障/LMK/断电、长期性能和新SAF等未运行范围保持，Q06不整体关闭。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED/G1未整体通过及全部旧NOTES均不变。本轮只回写五份登记文档，不改代码或原始证据，不操作/清理设备，不合并main；M17需用户后续明确授权。
+
 ## 2026-10-21 — M16成组折抵与双版本兼容
 
 ### Decision
