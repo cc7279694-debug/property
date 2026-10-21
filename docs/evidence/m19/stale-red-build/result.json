@@ -1,0 +1,11 @@
+{
+  "command": [
+    "gradlew.bat",
+    ":app:assembleDebugAndroidTest",
+    "-Pm13Isolated=true",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "exit_code": 0,
+  "seconds": 17.938
+}

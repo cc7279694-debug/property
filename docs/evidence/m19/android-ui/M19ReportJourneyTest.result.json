@@ -1,0 +1,116 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5692",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.app.M19ReportJourneyTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\app\\M19ReportJourneyTest.kt",
+  "source_sha256": "2ba4db7f3beb581ea578ab6b9f7ef1dd60cb156f2d8e4c2d12ee2db9aa92e072",
+  "started_at": "2026-10-21T14:27:16.364597+00:00",
+  "expected": [
+    "real_category_and_annual_reports_keep_typed_money_navigation_guards_and_readonly_facts"
+  ],
+  "apk_identity": {
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+    "applications": [
+      {
+        "label": "app",
+        "package": "com.cooper.lithic.debug",
+        "uid": 10216,
+        "bytes": 13279599,
+        "sha256": "d8c2440f4eb7f05fef63b4efaf2b683f362f355601040d13c359940567641175",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~BDOA8zwlgbZMeUb1_dycNw==/com.cooper.lithic.debug-4AomI8LXZGwxKdcj16axDw==/base.apk",
+        "install_skipped": false
+      },
+      {
+        "label": "test",
+        "package": "com.cooper.lithic.debug.test",
+        "uid": 10217,
+        "bytes": 2923214,
+        "sha256": "4fca11edc643eb0bed9a73ffa83d03065dc68d6654ab56c2fcd1731bd47d2b6f",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~JZGUzU_jd9-Ux5P9S7Dvjw==/com.cooper.lithic.debug.test-EqoJtcWij8VYdtoD3WObog==/base.apk",
+        "install_skipped": false
+      }
+    ],
+    "old_device_commands": 0,
+    "default_ledger_opened": false
+  },
+  "status": "PASS",
+  "exit_code": 0,
+  "seconds": 31.235,
+  "completed": [
+    "real_category_and_annual_reports_keep_typed_money_navigation_guards_and_readonly_facts"
+  ],
+  "bad": [],
+  "stdout_bytes": 2654,
+  "stdout_sha256": "4be805596eaf9a24fed6949179f2ef4730aeefd2dc6e2e1596852965af59b8e4",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "records": [
+    {
+      "class": "com.cooper.lithic.app.M19ReportJourneyTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": "",
+      "test": "real_category_and_annual_reports_keep_typed_money_navigation_guards_and_readonly_facts",
+      "status_code": 1
+    },
+    {
+      "M19_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m19-evidence/01-category-current-and-history-f18375f6-c879-4e24-8d3a-e5c9723f9f17.png",
+      "status_code": 2
+    },
+    {
+      "M19_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m19-evidence/02-category-annual-trend-and-record-entry-f18375f6-c879-4e24-8d3a-e5c9723f9f17.png",
+      "status_code": 2
+    },
+    {
+      "M19_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m19-evidence/03-annual-project-outlay-recovery-net-f18375f6-c879-4e24-8d3a-e5c9723f9f17.png",
+      "status_code": 2
+    },
+    {
+      "M19_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m19-evidence/04-noncash-trade-in-and-subscription-separate-f18375f6-c879-4e24-8d3a-e5c9723f9f17.png",
+      "status_code": 2
+    },
+    {
+      "M19_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m19-evidence/05-negative-net-and-real-payment-year-f18375f6-c879-4e24-8d3a-e5c9723f9f17.png",
+      "status_code": 2
+    },
+    {
+      "M19_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m19-evidence/06-empty-year-is-not-zero-spend-f18375f6-c879-4e24-8d3a-e5c9723f9f17.png",
+      "status_code": 2
+    },
+    {
+      "M19_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m19-evidence/07-360dp-font200-year-input-f18375f6-c879-4e24-8d3a-e5c9723f9f17.png",
+      "status_code": 2
+    },
+    {
+      "M19_COMPONENT_ACTIVITY_SCREENSHOT": "/data/data/com.cooper.lithic.debug/files/m19-evidence/08-360dp-font200-back-f18375f6-c879-4e24-8d3a-e5c9723f9f17.png",
+      "status_code": 2
+    },
+    {
+      "class": "com.cooper.lithic.app.M19ReportJourneyTest",
+      "current": "1",
+      "id": "AndroidJUnitRunner",
+      "numtests": "1",
+      "stream": ".",
+      "test": "real_category_and_annual_reports_keep_typed_money_navigation_guards_and_readonly_facts",
+      "status_code": 0
+    }
+  ]
+}

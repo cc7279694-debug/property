@@ -1,0 +1,390 @@
+[
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5692",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+      "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+    ],
+    "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\M18TimelineRepositoryTest.kt",
+    "source_sha256": "23e77625b08c58ea6a3f61f836ba48e39969735efe63a90b145c120a1d9421c9",
+    "started_at": "2026-10-21T14:27:59.749643+00:00",
+    "expected": [
+      "complete_snapshot_and_today_match_home_beyond_fifty_records_without_mutating_facts",
+      "full_ledger_read_excludes_a_coordinator_queued_write_from_every_captured_record",
+      "same_day_events_cross_fifty_preserve_identity_and_post_end_money_without_false_contribution",
+      "trade_in_contribution_uses_saved_three_money_events_once_and_keeps_noncash_labels",
+      "corrupt_reference_rejects_whole_snapshot_instead_of_fake_empty_or_zero",
+      "ordinary_correction_and_confirmed_deletion_rebuild_history_from_present_facts",
+      "format_two_roundtrip_rebuilds_total_events_and_retired_generation_cannot_read"
+    ],
+    "apk_identity": {
+      "serial": "emulator-5692",
+      "avd": "Lithic_M18_API36_20261021",
+      "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+      "applications": [
+        {
+          "label": "app",
+          "package": "com.cooper.lithic.debug",
+          "uid": 10216,
+          "bytes": 13279599,
+          "sha256": "d8c2440f4eb7f05fef63b4efaf2b683f362f355601040d13c359940567641175",
+          "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+          "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+          "installed_path": "/data/app/~~BDOA8zwlgbZMeUb1_dycNw==/com.cooper.lithic.debug-4AomI8LXZGwxKdcj16axDw==/base.apk",
+          "install_skipped": false
+        },
+        {
+          "label": "test",
+          "package": "com.cooper.lithic.debug.test",
+          "uid": 10217,
+          "bytes": 2923214,
+          "sha256": "4fca11edc643eb0bed9a73ffa83d03065dc68d6654ab56c2fcd1731bd47d2b6f",
+          "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+          "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+          "installed_path": "/data/app/~~JZGUzU_jd9-Ux5P9S7Dvjw==/com.cooper.lithic.debug.test-EqoJtcWij8VYdtoD3WObog==/base.apk",
+          "install_skipped": false
+        }
+      ],
+      "old_device_commands": 0,
+      "default_ledger_opened": false
+    },
+    "status": "PASS",
+    "exit_code": 0,
+    "seconds": 4.125,
+    "completed": [
+      "trade_in_contribution_uses_saved_three_money_events_once_and_keeps_noncash_labels",
+      "ordinary_correction_and_confirmed_deletion_rebuild_history_from_present_facts",
+      "same_day_events_cross_fifty_preserve_identity_and_post_end_money_without_false_contribution",
+      "complete_snapshot_and_today_match_home_beyond_fifty_records_without_mutating_facts",
+      "full_ledger_read_excludes_a_coordinator_queued_write_from_every_captured_record",
+      "corrupt_reference_rejects_whole_snapshot_instead_of_fake_empty_or_zero",
+      "format_two_roundtrip_rebuilds_total_events_and_retired_generation_cannot_read"
+    ],
+    "bad": [],
+    "stdout_bytes": 5547,
+    "stdout_sha256": "815274caf0f40d48edd48aa306a34cc2dc23c3d6f1cd721aff086574222239ad",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": [
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": "",
+        "test": "trade_in_contribution_uses_saved_three_money_events_once_and_keeps_noncash_labels",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": ".",
+        "test": "trade_in_contribution_uses_saved_three_money_events_once_and_keeps_noncash_labels",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": "",
+        "test": "ordinary_correction_and_confirmed_deletion_rebuild_history_from_present_facts",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": ".",
+        "test": "ordinary_correction_and_confirmed_deletion_rebuild_history_from_present_facts",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": "",
+        "test": "same_day_events_cross_fifty_preserve_identity_and_post_end_money_without_false_contribution",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": ".",
+        "test": "same_day_events_cross_fifty_preserve_identity_and_post_end_money_without_false_contribution",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "4",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": "",
+        "test": "complete_snapshot_and_today_match_home_beyond_fifty_records_without_mutating_facts",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "4",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": ".",
+        "test": "complete_snapshot_and_today_match_home_beyond_fifty_records_without_mutating_facts",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "5",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": "",
+        "test": "full_ledger_read_excludes_a_coordinator_queued_write_from_every_captured_record",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "5",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": ".",
+        "test": "full_ledger_read_excludes_a_coordinator_queued_write_from_every_captured_record",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "6",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": "",
+        "test": "corrupt_reference_rejects_whole_snapshot_instead_of_fake_empty_or_zero",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "6",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": ".",
+        "test": "corrupt_reference_rejects_whole_snapshot_instead_of_fake_empty_or_zero",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "7",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": "",
+        "test": "format_two_roundtrip_rebuilds_total_events_and_retired_generation_cannot_read",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "current": "7",
+        "id": "AndroidJUnitRunner",
+        "numtests": "7",
+        "stream": ".",
+        "test": "format_two_roundtrip_rebuilds_total_events_and_retired_generation_cannot_read",
+        "status_code": 0
+      }
+    ]
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5692",
+      "shell",
+      "am",
+      "instrument",
+      "-w",
+      "-r",
+      "-e",
+      "class",
+      "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+      "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+    ],
+    "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\home\\HomeOverviewUiTest.kt",
+    "source_sha256": "0beb06607e653a3fd48e96c7db208c77a9cd86b039fdfa22d0b79474ab9a0327",
+    "started_at": "2026-10-21T14:28:03.904847+00:00",
+    "expected": [
+      "unavailable_overview_never_invents_a_zero_cost",
+      "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+      "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+      "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results",
+      "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+      "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text"
+    ],
+    "apk_identity": {
+      "serial": "emulator-5692",
+      "avd": "Lithic_M18_API36_20261021",
+      "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+      "applications": [
+        {
+          "label": "app",
+          "package": "com.cooper.lithic.debug",
+          "uid": 10216,
+          "bytes": 13279599,
+          "sha256": "d8c2440f4eb7f05fef63b4efaf2b683f362f355601040d13c359940567641175",
+          "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+          "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+          "installed_path": "/data/app/~~BDOA8zwlgbZMeUb1_dycNw==/com.cooper.lithic.debug-4AomI8LXZGwxKdcj16axDw==/base.apk",
+          "install_skipped": false
+        },
+        {
+          "label": "test",
+          "package": "com.cooper.lithic.debug.test",
+          "uid": 10217,
+          "bytes": 2923214,
+          "sha256": "4fca11edc643eb0bed9a73ffa83d03065dc68d6654ab56c2fcd1731bd47d2b6f",
+          "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+          "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+          "installed_path": "/data/app/~~JZGUzU_jd9-Ux5P9S7Dvjw==/com.cooper.lithic.debug.test-EqoJtcWij8VYdtoD3WObog==/base.apk",
+          "install_skipped": false
+        }
+      ],
+      "old_device_commands": 0,
+      "default_ledger_opened": false
+    },
+    "status": "PASS",
+    "exit_code": 0,
+    "seconds": 20.454,
+    "completed": [
+      "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+      "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text",
+      "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+      "unavailable_overview_never_invents_a_zero_cost",
+      "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+      "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results"
+    ],
+    "bad": [],
+    "stdout_bytes": 4479,
+    "stdout_sha256": "6d8f210ac4cd39e7ccd44a15c5ee5972ba46b13411680f9a0a262cb7b8af867a",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": [
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": "",
+        "test": "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "1",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": ".",
+        "test": "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": "",
+        "test": "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "2",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": ".",
+        "test": "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": "",
+        "test": "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "3",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": ".",
+        "test": "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "4",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": "",
+        "test": "unavailable_overview_never_invents_a_zero_cost",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "4",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": ".",
+        "test": "unavailable_overview_never_invents_a_zero_cost",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "5",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": "",
+        "test": "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "5",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": ".",
+        "test": "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+        "status_code": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "6",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": "",
+        "test": "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results",
+        "status_code": 1
+      },
+      {
+        "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "current": "6",
+        "id": "AndroidJUnitRunner",
+        "numtests": "6",
+        "stream": ".",
+        "test": "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results",
+        "status_code": 0
+      }
+    ]
+  }
+]

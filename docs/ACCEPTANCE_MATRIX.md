@@ -1,6 +1,26 @@
 # 验收登记
 
-当前状态：**M18 — ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户正式转交的ChatGPT独立复验，评审`87211c8a3ed8982cdf7f46080afce10aeda4dda7`；限定认可M18-T01～T05、此前174 JVM PASS、本次补验17 Android PASS、Lint0错误23警告及10张隔离截图。历史执行和延期门禁保持，不扩大为正式发行或其他模块通过。
+当前状态：**M19 — READY_FOR_REVIEW**，T01～T06本轮限定验证PASS，等待ChatGPT独立验收；M18及此前冻结状态不变，未授予M19冻结或G2通过。
+
+## M19执行登记（2026-10-21，独立验收前）
+
+来源M18冻结回写`fdee68314dc03a6385a70250e3b456423557186b`，分支`codex/m19-category-annual-review`。[契约](planning/M19_CONTRACT.md)、[集中报告](evidence/M19-verification.md)、[逐方法原始来源](evidence/m19/results.json)、[8图](evidence/m19/screenshots/README.md)。
+
+| 案例 | 本轮限定结果 |
+|---|---|
+| M19-T01 money_year_is_occurred_year | PASS：JVM真实发生年/结束后结算/纠错；Room实际修改发生日后重新归年。 |
+| M19-T02 outlay_recovery_net | PASS：13000/3500/9500、0/负净额、生产累计addExact/subtractExact及溢出拒绝。 |
+| M19-T03 subscription_year_is_paid_year | PASS：paidOn归年、跨年预付不按覆盖拆分、真实Room付款日纠错。 |
+| M19-T04 types_not_merged_into_cash | PASS：M16三笔原始事实只计一次、项目/订阅分开、实际页面非现金标记。 |
+| M19-T05 category_changes_restate_history | PASS：真实Room新建/改名/原子合并后2026/2028历史重分类且金额事实不变。 |
+| M19-T06 annual_summary_no_judgement | PASS：客观数值/记录入口；0/负值和空年区分，不输出价值评判。 |
+
+**109 JVM PASS（24新＋85回归）、29 Android PASS（16新＋13回归），Lint0错误23警告、Debug App/Test成功、8张截图。** 最终JVM使用stale-green-build/--rerun实际执行109项；29 Android均在最终同一App/Test身份下运行。导航RED1 PASS/2 FAIL、领域RED19 FAIL、首次组合构建import失败和旧数据提示清除的真实Android RED保留；后者已修复，切换选择保留提示直到完整重读成功。
+
+真实Room覆盖57项目＋57订阅、类别改名/合并重分类、完整事实与协调器、发生日/付款日纠错、M16折抵、format2完整合成恢复及旧代拒读。真实页面/VM涵盖年度/类别选择、迟到请求、读错、详情返回/守卫和只读事实。只复用原5692/API36/x86_64，新M19合成根、plain Application/隔离ComponentActivity；LocalDensity200%、注入业务日、受控文件恢复不扩大为MainActivity、系统字号/TalkBack、真实午夜或新SAF/故障验证。
+
+API26/真机/OEM/Release/稳定签名/真实LMK断电、长期性能与最坏取消时延等NOT_RUN。选择意图未承诺进程死亡持久恢复；50为显示窗口，不是全量聚合开销上限。M10延期/三JPEG历史FAIL、M13-T06延期/G1、Q02完整16组与全部历史NOTES保持；原130归档案例不改。M19/G2仅等待独立验收，提交后停止，不进入M20。
+
 
 ## M18正式冻结登记（2026-10-21）
 

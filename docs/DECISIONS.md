@@ -1,5 +1,12 @@
 # 决策记录
 
+## 2026-10-21 — M19以类型化原始资金事实生成只读年度与类别报告
+
+- **Decision**：非破坏性扩展M18 LedgerSnapshot，携带PROJECT_OUTLAY/PROJECT_RECOVERY/SUBSCRIPTION_PAYMENT、稳定行/记录/operation/group身份和非现金标记；与Overview及当前类别在同一次generation协调器/Room事务读取。共享原存储校验，事务外聚合，禁止解析中文展示事件或按金额日期合并合法行。
+- **Context / Reason**：年度真实付款与当前/历史日均成本是不同指标，M16含非现金三笔事实；改名/合并须按当前归属重算。复用已有完整批量读取，避免重复账本/快照表、持久派生结果或备份格式变化。
+- **Alternatives / Consequences**：不从展示文本推断、不按年份逐项目N+1、不保存旧分类快照。金额Long分及溢出拒绝；签名配对逐条核对投影完整性，不替代冻结Room交易规则。显示50条窗口前完成全量聚合，耗时随事实/年度增长，不保证无限历史恒定时间。
+- **Verified / Boundary**：109 JVM/29 Android PASS、8图，见[M19报告](evidence/M19-verification.md)。VM原子发布选择与结果，代/票据拒绝迟到、删除类别明确重置；未承诺进程死亡后保留选择。Nav3原离开守卫保持；Room3/backup2/金额算法/M16保护无变化。M19仅READY_FOR_REVIEW，旧冻结与历史失败/延期不改，M20未授权。
+
 ## 2026-10-21 — M18独立限定冻结与后续授权边界
 
 ### Decision

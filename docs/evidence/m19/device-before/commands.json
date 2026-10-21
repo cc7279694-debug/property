@@ -1,0 +1,113 @@
+[
+  {
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "Get-CimInstance Win32_Process -Filter 'ProcessId=5688 OR ProcessId=34920' | ForEach-Object { [pscustomobject]@{ProcessId=$_.ProcessId;ParentProcessId=$_.ParentProcessId;CreationDate=$_.CreationDate.ToString('o');ExecutablePath=$_.ExecutablePath;CommandLine=$_.CommandLine} } | ConvertTo-Json -Depth 4"
+    ],
+    "name": "original-processes",
+    "exit_code": 0,
+    "at": "2026-10-21T14:12:20.250883+00:00",
+    "stdout_bytes": 1416,
+    "stdout_sha256": "0b1fb2104bd52ada1f80fe7a3aa0a889feb0e7633a15f5ea7b111ffdebcbad01",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5692",
+      "get-state"
+    ],
+    "name": "state",
+    "exit_code": 0,
+    "at": "2026-10-21T14:12:20.498056+00:00",
+    "stdout_bytes": 8,
+    "stdout_sha256": "5a49c5eb1807bf1dd12637504e6a6e49f1c9c4bce601ae34c9984843074b129c",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5692",
+      "shell",
+      "cat /proc/sys/kernel/random/boot_id"
+    ],
+    "name": "boot-id",
+    "exit_code": 0,
+    "at": "2026-10-21T14:12:20.691909+00:00",
+    "stdout_bytes": 38,
+    "stdout_sha256": "e856da2a4832cf78fef767358e914297be58ceaf9ea8c5886874b90515fedbb1",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5692",
+      "shell",
+      "getprop sys.boot_completed"
+    ],
+    "name": "boot",
+    "exit_code": 0,
+    "at": "2026-10-21T14:12:20.818306+00:00",
+    "stdout_bytes": 3,
+    "stdout_sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5692",
+      "shell",
+      "getprop ro.build.version.sdk"
+    ],
+    "name": "api",
+    "exit_code": 0,
+    "at": "2026-10-21T14:12:20.951347+00:00",
+    "stdout_bytes": 4,
+    "stdout_sha256": "0a6b5e02cbe592ef9285db1440db99874166326dff103608c6dfd5068ec714f5",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5692",
+      "shell",
+      "getprop ro.product.cpu.abi"
+    ],
+    "name": "abi",
+    "exit_code": 0,
+    "at": "2026-10-21T14:12:21.078019+00:00",
+    "stdout_bytes": 8,
+    "stdout_sha256": "73639484b8886a56b085ee97e76ead4218da03db9c2e5c88dd656c06bca60243",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5692",
+      "emu",
+      "avd",
+      "name"
+    ],
+    "name": "avd",
+    "exit_code": 0,
+    "at": "2026-10-21T14:12:21.191291+00:00",
+    "stdout_bytes": 33,
+    "stdout_sha256": "ce8daab861239030aa746b47606b2d7099ed42946c93168d4abd0ac57ea98600",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

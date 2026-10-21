@@ -28,6 +28,9 @@ import com.cooper.lithic.domain.report.OverviewSnapshot
 import com.cooper.lithic.domain.report.OverviewSubscription
 import com.cooper.lithic.domain.report.LedgerSnapshot
 import com.cooper.lithic.domain.report.TotalCostEvent
+import com.cooper.lithic.domain.report.FinancialFact
+import com.cooper.lithic.domain.report.FinancialFactKind
+import com.cooper.lithic.domain.report.ReportRecordIdentity
 import com.cooper.lithic.domain.subscription.Renewal
 import com.cooper.lithic.domain.subscription.Subscription
 import com.cooper.lithic.domain.subscription.SubscriptionCostEngine
@@ -134,6 +137,8 @@ class ReportRepository(
             val projects = mutableListOf<OverviewProject>()
             val subscriptions = mutableListOf<OverviewSubscription>()
             val events = mutableListOf<TotalCostEvent>()
+            val financialFacts = mutableListOf<FinancialFact>()
+            val identities = mutableListOf<ReportRecordIdentity>()
             val projectIds = mutableSetOf<String>()
             var cursor: ProjectCursor? = null
             while (true) {
@@ -149,11 +154,16 @@ class ReportRepository(
                     // Validation must include later real facts when observing an earlier day.
                     ProjectCostEngine.evaluate(input, if (input.moneyEvents.any { it.occurredOn.isAfter(asOf) }) LocalDate.MAX else asOf)
                     projects += OverviewProject(row.id, row.categoryId, input)
+                    identities += ReportRecordIdentity(row.id, OverviewKind.PROJECT, row.name, row.categoryId)
                     events += TotalCostEvent("project:${row.id}:start", row.startedOn, OverviewKind.PROJECT,
                         row.id, row.name, "开始拥有", "取得日；金额以各条已保存的资金事件为准。")
                     row.endedOn?.let { ended -> events += TotalCostEvent("project:${row.id}:end", ended,
                         OverviewKind.PROJECT, row.id, row.name, "结束持有", "该日日末退出总额；后续真实结算不重新加入当前贡献。") }
                     for (fact in facts) {
+                        financialFacts += FinancialFact("project-money:${fact.id}", row.id,
+                            if (fact.direction == MoneyDirection.OUTLAY) FinancialFactKind.PROJECT_OUTLAY else FinancialFactKind.PROJECT_RECOVERY,
+                            fact.occurredOn, fact.amountCents, fact.basis == MoneyBasis.TRADE_IN_CREDIT,
+                            fact.operationId, fact.exchangeGroupId)
                         val role = when (fact.role) {
                             ProjectMoneyEventRole.INITIAL -> "初始投入"
                             ProjectMoneyEventRole.REGULAR -> "后续资金事件"
@@ -186,7 +196,11 @@ class ReportRepository(
                     val input = subscriptionSnapshot(row, payments, states)
                     SubscriptionCostEngine.evaluate(input, if (input.renewals.any { it.paidOn.isAfter(asOf) }) LocalDate.MAX else asOf)
                     subscriptions += OverviewSubscription(row.id, row.categoryId, input)
+                    identities += ReportRecordIdentity(row.id, OverviewKind.SUBSCRIPTION, row.name, row.categoryId)
                     for (payment in payments) {
+                        financialFacts += FinancialFact("subscription-payment:${payment.id}", row.id,
+                            FinancialFactKind.SUBSCRIPTION_PAYMENT, payment.paidOn, payment.amountCents,
+                            operationId = payment.operationId)
                         val cycle = when (payment.cycle) {
                             com.cooper.lithic.domain.subscription.BillingCycle.MONTHLY -> "月付"
                             com.cooper.lithic.domain.subscription.BillingCycle.QUARTERLY -> "季付"
@@ -216,7 +230,9 @@ class ReportRepository(
             }
             check(subscriptionIds.size.toLong() == db.subscriptionDao().countSubscriptions()) { "The ledger omitted subscription identities" }
             LedgerSnapshot(OverviewSnapshot(categories.toList(), projects.toList(), subscriptions.toList()),
-                events.sortedWith(compareBy<TotalCostEvent> { it.date }.thenBy { it.id }))
+                events.sortedWith(compareBy<TotalCostEvent> { it.date }.thenBy { it.id }),
+                financialFacts.sortedWith(compareBy<FinancialFact> { it.date }.thenBy { it.id }),
+                identities.sortedWith(compareBy<ReportRecordIdentity> { it.kind.ordinal }.thenBy { it.id }))
         }
     }
 

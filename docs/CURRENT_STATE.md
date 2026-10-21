@@ -4,8 +4,11 @@
 
 ## Current Stage
 
+- **M19 — READY_FOR_REVIEW**：用户本轮正式授权，从M18冻结回写`fdee68314dc03a6385a70250e3b456423557186b`建立`codex/m19-category-annual-review`。类别当前贡献/历史资金/年度趋势和客观年度回顾已实现，类型化原始金额事实来自同一完整快照；Room3/backup2/冻结算法不改。T01～T06按本轮限定证据PASS，109 JVM（24新＋85回归）及29 Android（16新＋13回归）PASS，Lint0错误23警告，Debug App/Test成功，8张原字节截图。最终109 JVM已用--rerun真实重跑；导航/领域RED、Android测试import编译失败及旧数据提示清除的真实Android RED均保留，提示问题已最小修复并验证。[集中报告](evidence/M19-verification.md)、[逐方法结果](evidence/m19/results.json)、[截图来源](evidence/m19/screenshots/README.md)、[checkpoint](checkpoints/2026-10-21-M19.md)。
+  仅核验后复用原5692/API36/x86_64在线实例；App/Test同签名各更新两次，新M19合成根和plain Application/隔离ComponentActivity。设备结束保护PASS且留在线，未操作其他设备；不是MainActivity/个人账本，360dp/200%是LocalDensity，跨日为注入BusinessClock/前台，恢复为受控文件往返。API26/真机/OEM/Release/稳定签名、系统字号/完整IME/TalkBack、真实午夜/故障/LMK/断电、无限历史性能/最坏取消时延及选择意图进程死亡恢复NOT_RUN。M19不自行冻结，不宣告G2整体通过；M18等原冻结不变，M10延期/三JPEG历史FAIL、M13-T06延期/G1、Q02完整16组及全部历史NOTES保留。提交后停止，M20未授权。
+
 - **M18 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户本轮正式转交的ChatGPT独立源码、Android原始执行及截图复验结论，评审提交`87211c8a3ed8982cdf7f46080afce10aeda4dda7`，评审/回写分支`codex/m18-total-cost-history`。M18-T01～T05、此前174 JVM PASS（30新增＋144相关回归）、17 Android PASS（Repository7＋VM4＋Compose5＋旅程1）、Lint0错误23警告及10张隔离截图获限定认可。冻结只读总成本历史、同快照汇总/刷新、三线共轴、精确选日及相关事件访问；Room3/backup2、冻结领域引擎、M16保护及恢复/媒体协议不变。
-  首次14 PASS/3 FAIL、全部历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES、原启动外层回执NOT_CAPTURED和原始报告/结果/截图/checkpoint均保持。原设备证据仅新5692/API36/x86_64全合成、plain Application/隔离ComponentActivity中的真实Compose/Nav3；360dp/200%为LocalDensity，跨日是注入BusinessClock/前台生命周期，format2往返使用受控文件目标，不扩大为MainActivity、系统字体/TalkBack、真实午夜、新SAF或故障恢复。真机/API26/OEM、Release/稳定签名、完整IME/TalkBack、真实进程终止/LMK/断电、无限历史性能及最坏取消时延仍NOT_RUN；240基础预算不是总点数或计算开销硬上限。Q02仅本模块已验证领域/限定Android部分获认可，16组完整跨模块门禁仍NOT_RUN，不整体关闭。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过保持。本轮仅文档冻结登记，未重跑测试、构建、核验APK或操作设备；此前结束在线记录不视为本次新观察。登记后停止，M19未授权。[正式登记](ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21)、[原离线报告](evidence/M18-verification.md)、[补验报告](evidence/M18-Android-verification.md)、[17项结果](evidence/m18-android/results.json)、[10图/来源](evidence/m18-android/screenshots/README.md)、[原补验checkpoint](checkpoints/2026-10-21-M18-Android.md)。
+  首次14 PASS/3 FAIL、全部历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES、原启动外层回执NOT_CAPTURED和原始报告/结果/截图/checkpoint均保持。原设备证据仅新5692/API36/x86_64全合成、plain Application/隔离ComponentActivity中的真实Compose/Nav3；360dp/200%为LocalDensity，跨日是注入BusinessClock/前台生命周期，format2往返使用受控文件目标，不扩大为MainActivity、系统字体/TalkBack、真实午夜、新SAF或故障恢复。真机/API26/OEM、Release/稳定签名、完整IME/TalkBack、真实进程终止/LMK/断电、无限历史性能及最坏取消时延仍NOT_RUN；240基础预算不是总点数或计算开销硬上限。Q02仅本模块已验证领域/限定Android部分获认可，16组完整跨模块门禁仍NOT_RUN，不整体关闭。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过保持。本轮仅文档冻结登记，未重跑测试、构建、核验APK或操作设备；此前结束在线记录不视为本次新观察。该次登记后M19未授权；本轮M19授权见上方。[正式登记](ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21)、[原离线报告](evidence/M18-verification.md)、[补验报告](evidence/M18-Android-verification.md)、[17项结果](evidence/m18-android/results.json)、[10图/来源](evidence/m18-android/screenshots/README.md)、[原补验checkpoint](checkpoints/2026-10-21-M18-Android.md)。
 
 - **M17 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-21正式转交的ChatGPT独立源码及证据验收结论，评审提交`54360aa0e61779c7efa62b527f8901778a0845a2`，评审/回写分支`codex/m17-item-cost-charts`。M17-T01～T05、此前144 JVM（33新＋111回归）及28 Android（19本模块＋9回归）＝172唯一方法PASS、0失败/错误/跳过，Lint0错误9警告、Debug App/Test构建及9张隔离截图获限定认可。冻结只读项目成本曲线/订阅标准日均阶梯、完整事件/精确日期查询与同代刷新；Room3/backup2/冻结引擎/M16保护不改。Q02仅M17子断言通过，M18及16组完整跨模块门禁仍NOT_RUN，不整体关闭。
   证据仅原5672/API36/x86_64合成环境、plain Application/隔离ComponentActivity中的真实LithicApp/Nav3；恢复为受控文件目标，360dp/200%为LocalDensity，跨日为注入BusinessClock与前台生命周期。API26/真机/OEM/Release/稳定签名、MainActivity个人账本、系统大字/完整IME/TalkBack、真实午夜/进程终止/LMK/断电和长期大数据性能仍NOT_RUN；240为基础点预算，另保留事实边界，不是总点数或计算开销硬上限。原RED/FAIL/UNKNOWN/NOT_RUN/NOTES、报告/结果/截图/checkpoint均保持历史原样。原实施结束时设备在线的记录不视为本轮重新观察；本轮仅文档回写，未重跑测试、构建、APK核验或设备操作。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过保持。停止于冻结登记，不进入M18。[正式登记](ACCEPTANCE_MATRIX.md#m17正式冻结登记2026-10-21)、[原报告](evidence/M17-verification.md)、[原统计](evidence/m17/results.json)、[图源](evidence/m17/screenshots/README.md)、[原checkpoint](checkpoints/2026-10-21-M17.md)。
@@ -72,9 +75,9 @@ M16已限定冻结，当前为Room3八表、显式Migration1→2→3、backup2�
 
 ## Git
 
-- 当前分支`codex/m18-total-cost-history`，工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`。本次冻结登记前本地/远端HEAD均为评审提交`87211c8a3ed8982cdf7f46080afce10aeda4dda7`，工作区干净。
-- 本轮仅必要登记文档，原代码/测试/规划/证据不改；最终提交及远端一致性以Git回执为准。不构建、不核验APK或操作设备，不清理任何现场，不合并main。
+- 当前分支`codex/m19-category-annual-review`，工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`。起点本地/远端M18一致为`fdee68314dc03a6385a70250e3b456423557186b`，起始工作区干净；未覆盖原M10工作区。
+- 本轮仅M19代码、定向测试与必要记忆/证据；提交/推送当前功能分支，最终SHA/远端一致性由Git回执核对，不合并main、不发布APK、不操作其他设备。
 
 ## Next Recommended Task
 
-M18正式限定冻结登记完成后停止，等待用户授权；不开始M19或追加设备操作。M13-T06 NOT_RUN / DEFERRED、G1未整体通过、M10 PENDING / DEFERRED及三历史JPEG FAIL、Q02完整16组跨模块、Q03～Q06与全部历史NOTES保持。
+停止于READY_FOR_REVIEW — M19，等待ChatGPT独立验收；不进入M20，不追加设备操作。M10 PENDING / DEFERRED、三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q02完整16组跨模块及其余历史NOTES保持。

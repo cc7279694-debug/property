@@ -78,6 +78,10 @@ import com.cooper.lithic.feature.review.LongTermReviewScreen
 import com.cooper.lithic.feature.review.ReviewViewModel
 import com.cooper.lithic.feature.review.ReviewShell
 import com.cooper.lithic.feature.review.TotalCostTrendScreen
+import com.cooper.lithic.feature.review.AnnualReviewScreen
+import com.cooper.lithic.feature.review.ReportAnalysisViewModel
+import com.cooper.lithic.feature.category.CategoryAnalysisScreen
+import com.cooper.lithic.domain.report.OverviewKind
 import com.cooper.lithic.feature.review.TotalCostTrendViewModel
 import com.cooper.lithic.feature.settings.SettingsShell
 import com.cooper.lithic.feature.settings.BackupExportUiState
@@ -172,6 +176,15 @@ internal fun LithicNavigation(
     } else null
     val trendState = trendModel?.state?.collectAsStateWithLifecycle()?.value
     DisposableEffect(trendModel) { onDispose { trendModel?.pause() } }
+    val analysisModel = if (routes.any { it == AnnualReview || it is CategoryAnalysis }) state.totalCostTimelineRepository?.let { repository ->
+        remember(generationScope, session, repository) {
+            ViewModelProvider(generationScope, viewModelFactory {
+                initializer { ReportAnalysisViewModel(repository, state.businessClock) }
+            })[ReportAnalysisViewModel::class.java]
+        }
+    } else null
+    val analysisState = analysisModel?.state?.collectAsStateWithLifecycle()?.value
+    DisposableEffect(analysisModel) { onDispose { analysisModel?.pause() } }
     val chartModel = if (routes.last() is ProjectCostHistory || routes.last() is SubscriptionPriceHistory) {
         state.itemTimelineRepository?.let { repository ->
             remember(generationScope, session, repository) {
@@ -198,13 +211,19 @@ internal fun LithicNavigation(
     }
     val onBack: () -> Unit = { if (routes.size > 1) requestLeave(routes.dropLast(1)) }
     SideEffect { if (backStack.toList() != routes) navigate(routes) }
-    LaunchedEffect(routes.last(), chartModel, trendModel) {
+    LaunchedEffect(routes.last(), chartModel, trendModel, analysisModel) {
         if (routes.last() != TotalCostTrend) trendModel?.pause()
+        if (routes.last() != AnnualReview && routes.last() !is CategoryAnalysis) analysisModel?.pause()
         when (val route = routes.last()) {
             CategoryManagement -> categoryModel?.refresh()
             NameSearch -> searchModel?.refresh()
             LongTermReview -> reviewModel?.refresh()
             TotalCostTrend -> trendModel?.open()
+            AnnualReview -> analysisModel?.open()
+            is CategoryAnalysis -> {
+                route.categoryId?.let { analysisModel?.selectCategory(if (route.subscription) OverviewKind.SUBSCRIPTION else OverviewKind.PROJECT, it) }
+                analysisModel?.open()
+            }
             ProjectList -> model.loadList()
             ProjectHistory -> model.loadHistory()
             CreateProject -> model.startCreate()
@@ -263,6 +282,8 @@ internal fun LithicNavigation(
                 ProjectOrigin.HISTORY -> ProjectHistory
                 ProjectOrigin.REVIEW -> LongTermReview
                 ProjectOrigin.TREND -> TotalCostTrend
+                ProjectOrigin.CATEGORY -> CategoryAnalysis()
+                ProjectOrigin.ANNUAL -> AnnualReview
             })
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
@@ -297,7 +318,7 @@ internal fun LithicNavigation(
         BusinessDateObserver(state.overview?.asOf ?: state.businessClock.today())
     }
     val latestRetry by androidx.compose.runtime.rememberUpdatedState(onRetryLedger)
-    LaunchedEffect(lifecycle, dateObserver, state.recordZone, reviewModel, chartModel, trendModel) {
+    LaunchedEffect(lifecycle, dateObserver, state.recordZone, reviewModel, chartModel, trendModel, analysisModel) {
         lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
             dateObserver.observe(state.businessClock, state.recordZone, {
                 model.refresh()
@@ -307,13 +328,14 @@ internal fun LithicNavigation(
                 replacementModel?.refresh()
                 chartModel?.refresh()
                 trendModel?.refresh()
+                analysisModel?.refresh()
                 latestRetry()
             })
         }
     }
-    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel, reviewModel, replacementModel, chartModel, trendModel) {
+    DisposableEffect(lifecycle, model, subscriptionModel, categoryModel, searchModel, reviewModel, replacementModel, chartModel, trendModel, analysisModel) {
         val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) {
-            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); reviewModel?.refresh(); replacementModel?.refresh(); chartModel?.refresh(); trendModel?.refresh(); latestRetry()
+            model.refresh(); subscriptionModel.refresh(); categoryModel?.refresh(); searchModel?.refresh(); reviewModel?.refresh(); replacementModel?.refresh(); chartModel?.refresh(); trendModel?.refresh(); analysisModel?.refresh(); latestRetry()
         } }
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
@@ -346,11 +368,28 @@ internal fun LithicNavigation(
                 entryProvider = entryProvider<NavKey> {
                     entry<Home> { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
                         subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }, overview = state.overview,
-                        onSearch = if (searchModel != null) ({ requestLeave(canonicalBackStack(NameSearch)) }) else null) }
+                        onSearch = if (searchModel != null) ({ requestLeave(canonicalBackStack(NameSearch)) }) else null,
+                        onCategoryAnalysis = if (state.totalCostTimelineRepository != null) ({ kind, id -> requestLeave(canonicalBackStack(CategoryAnalysis(id, kind == OverviewKind.SUBSCRIPTION))) }) else null) }
                     entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) },
                         onLongTermReview = if (state.rankingRepository != null) ({ requestLeave(canonicalBackStack(LongTermReview)) }) else null,
-                        onTotalCostTrend = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(TotalCostTrend)) }) else null) }
+                        onTotalCostTrend = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(TotalCostTrend)) }) else null,
+                        onCategoryAnalysis = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(CategoryAnalysis())) }) else null,
+                        onAnnualReview = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(AnnualReview)) }) else null) }
+                    entry<CategoryAnalysis> {
+                        if (analysisModel != null && analysisState != null) CategoryAnalysisScreen(analysisState,
+                            analysisModel::selectCategory, analysisModel::refresh,
+                            onOpenRecord = { kind, id -> requestLeave(canonicalBackStack(
+                                if (kind == OverviewKind.PROJECT) ProjectDetail(id, ProjectOrigin.CATEGORY)
+                                else SubscriptionDetail(id, SubscriptionOrigin.CATEGORY))) }, onBack = onBack)
+                    }
+                    entry<AnnualReview> {
+                        if (analysisModel != null && analysisState != null) AnnualReviewScreen(analysisState,
+                            analysisModel::selectYear, analysisModel::refresh,
+                            onOpenRecord = { kind, id -> requestLeave(canonicalBackStack(
+                                if (kind == OverviewKind.PROJECT) ProjectDetail(id, ProjectOrigin.ANNUAL)
+                                else SubscriptionDetail(id, SubscriptionOrigin.ANNUAL))) }, onBack = onBack)
+                    }
                     entry<TotalCostTrend> {
                         if (trendModel != null && trendState != null) TotalCostTrendScreen(trendState,
                             trendModel::selectDate, trendModel::toggleBreakdown, trendModel::refresh,
@@ -405,6 +444,8 @@ internal fun LithicNavigation(
                                 ProjectOrigin.HISTORY -> "返回历史档案"
                                 ProjectOrigin.REVIEW -> "返回长期复盘"
                                 ProjectOrigin.TREND -> "返回成本趋势"
+                                ProjectOrigin.CATEGORY -> "返回类别分析"
+                                ProjectOrigin.ANNUAL -> "返回年度回顾"
                             })
                     }
                     entry<ProjectCostHistory> { route ->
@@ -498,6 +539,8 @@ internal fun LithicNavigation(
                                 SubscriptionOrigin.HISTORY -> "返回已停止订阅"
                                 SubscriptionOrigin.REVIEW -> "返回长期复盘"
                                 SubscriptionOrigin.TREND -> "返回成本趋势"
+                                SubscriptionOrigin.CATEGORY -> "返回类别分析"
+                                SubscriptionOrigin.ANNUAL -> "返回年度回顾"
                             })
                     }
                     entry<ConfirmSubscriptionRenewal> {

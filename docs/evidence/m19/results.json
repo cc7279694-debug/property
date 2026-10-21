@@ -1,0 +1,817 @@
+{
+  "status": "READY_FOR_REVIEW — M19",
+  "source": "fdee68314dc03a6385a70250e3b456423557186b",
+  "branch": "codex/m19-category-annual-review",
+  "criteria": [
+    {
+      "id": "M19-T01",
+      "name": "money_year_is_occurred_year",
+      "status": "PASS",
+      "scope": "JVM真实发生年/结束后结算/纠错；Room实际修改发生日后重新归年"
+    },
+    {
+      "id": "M19-T02",
+      "name": "outlay_recovery_net",
+      "status": "PASS",
+      "scope": "13000/3500/9500、0/负净额、生产累计addExact/subtractExact及溢出拒绝"
+    },
+    {
+      "id": "M19-T03",
+      "name": "subscription_year_is_paid_year",
+      "status": "PASS",
+      "scope": "paidOn归年、跨年预付不按覆盖拆分、真实Room付款日纠错"
+    },
+    {
+      "id": "M19-T04",
+      "name": "types_not_merged_into_cash",
+      "status": "PASS",
+      "scope": "M16三笔原始事实只计一次、项目/订阅分开、实际页面非现金标记"
+    },
+    {
+      "id": "M19-T05",
+      "name": "category_changes_restate_history",
+      "status": "PASS",
+      "scope": "真实Room新建/改名/原子合并后2026/2028历史重分类且金额事实不变"
+    },
+    {
+      "id": "M19-T06",
+      "name": "annual_summary_no_judgement",
+      "status": "PASS",
+      "scope": "客观数值/记录入口；0/负值和空年区分，不输出价值评判"
+    }
+  ],
+  "jvm": {
+    "tests": 109,
+    "pass": 109,
+    "fail": 0,
+    "errors": 0,
+    "skipped": 0,
+    "new": 24,
+    "related_regression": 85,
+    "execution": "stale-green-build: --rerun actual 109 methods under final inputs; earlier passes/UP-TO-DATE records retained, unique method count remains109",
+    "suites": [
+      {
+        "suite": "com.cooper.lithic.app.M14NavigationPolicyTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.app.M14NavigationPolicyTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.app.M14NavigationPolicyTest",
+            "method": "category_pending_write_blocks_both_existing_editors"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M14NavigationPolicyTest",
+            "method": "category_management_belongs_to_settings"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M14NavigationPolicyTest",
+            "method": "existing_write_guards_keep_pending_above_discard"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M14NavigationPolicyTest",
+            "method": "incomplete_or_unexpected_stacks_are_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M14NavigationPolicyTest",
+            "method": "search_is_a_secondary_route_without_an_extra_tab"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.app.M16NavigationPolicyTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.app.M16NavigationPolicyTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.app.M16NavigationPolicyTest",
+            "method": "comparison_keeps_detail_and_original_review_parent"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M16NavigationPolicyTest",
+            "method": "comparison_target_detail_and_editor_keep_the_comparison_return_path"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M16NavigationPolicyTest",
+            "method": "trade_in_is_a_project_editor_without_a_new_bottom_tab"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M16NavigationPolicyTest",
+            "method": "replacement_pending_participates_in_the_existing_global_guard"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M16NavigationPolicyTest",
+            "method": "invalid_or_self_comparison_identity_is_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M16NavigationPolicyTest",
+            "method": "pending_editor_recovery_keeps_the_real_comparison_return_stack"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.app.M17NavigationPolicyTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.app.M17NavigationPolicyTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.app.M17NavigationPolicyTest",
+            "method": "subscription_chart_keeps_exact_origin_detail_and_saved_stack"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M17NavigationPolicyTest",
+            "method": "invalid_chart_identity_and_injected_stack_are_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M17NavigationPolicyTest",
+            "method": "project_chart_preserves_current_history_review_and_comparison_return"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M17NavigationPolicyTest",
+            "method": "chart_request_obeys_existing_dirty_pending_and_restore_navigation_contract"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.app.M18NavigationPolicyTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.app.M18NavigationPolicyTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.app.M18NavigationPolicyTest",
+            "method": "total_trend_has_review_parent_without_new_bottom_tab"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M18NavigationPolicyTest",
+            "method": "malformed_total_trend_stack_returns_home"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M18NavigationPolicyTest",
+            "method": "invalid_event_identity_cannot_create_detail_route"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M18NavigationPolicyTest",
+            "method": "saved_total_trend_stack_keeps_read_only_return_path"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M18NavigationPolicyTest",
+            "method": "event_subscription_detail_and_renewal_keep_trend_return_path"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M18NavigationPolicyTest",
+            "method": "event_project_detail_and_editor_keep_trend_origin_and_guard_stack"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.app.M19NavigationPolicyTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.app.M19NavigationPolicyTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.app.M19NavigationPolicyTest",
+            "method": "annual_details_and_editors_preserve_exact_record_and_return_origin"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M19NavigationPolicyTest",
+            "method": "category_subscription_renewal_keeps_guarded_detail_parent"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M19NavigationPolicyTest",
+            "method": "annual_review_has_review_parent_without_new_bottom_tab"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M19NavigationPolicyTest",
+            "method": "home_category_destination_retains_exact_identity_and_type"
+          },
+          {
+            "classname": "com.cooper.lithic.app.M19NavigationPolicyTest",
+            "method": "invalid_category_or_wrong_parent_is_rejected"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.data.local.CategoryNamesTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.data.local.CategoryNamesTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.data.local.CategoryNamesTest",
+            "method": "blank_comparison_names_cannot_become_valid_categories"
+          },
+          {
+            "classname": "com.cooper.lithic.data.local.CategoryNamesTest",
+            "method": "full_width_and_case_share_the_same_comparison_name"
+          },
+          {
+            "classname": "com.cooper.lithic.data.local.CategoryNamesTest",
+            "method": "unicode_spacing_and_repeated_spacing_are_normalized"
+          },
+          {
+            "classname": "com.cooper.lithic.data.local.CategoryNamesTest",
+            "method": "punctuation_and_chinese_names_remain_literal"
+          },
+          {
+            "classname": "com.cooper.lithic.data.local.CategoryNamesTest",
+            "method": "device_locale_does_not_change_category_identity"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.data.repository.TradeInFactsTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.data.repository.TradeInFactsTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.data.repository.TradeInFactsTest",
+            "method": "malformed_group_and_reused_operation_are_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.data.repository.TradeInFactsTest",
+            "method": "normal_legacy_cash_does_not_require_a_transaction_group"
+          },
+          {
+            "classname": "com.cooper.lithic.data.repository.TradeInFactsTest",
+            "method": "wrong_project_or_role_derived_identity_is_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.data.repository.TradeInFactsTest",
+            "method": "canonical_three_fact_group_and_zero_cash_are_valid"
+          },
+          {
+            "classname": "com.cooper.lithic.data.repository.TradeInFactsTest",
+            "method": "one_sided_credit_amount_date_and_lifecycle_change_are_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.data.repository.TradeInFactsTest",
+            "method": "cash_basis_cannot_replace_non_cash_credit"
+          },
+          {
+            "classname": "com.cooper.lithic.data.repository.TradeInFactsTest",
+            "method": "missing_or_extra_group_fact_is_rejected"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.domain.report.AnnualReportEngineTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "outlay_recovery_net"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "types_not_merged_into_cash"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "actual_accumulator_checks_each_component_count_and_preserves_old_value_on_overflow"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "post_end_settlement_and_correction_use_business_year_not_lifecycle_or_created_time"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "as_of_cuts_off_future_facts_and_future_paid_years_without_mutating_input"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "single_fact_money_limit_and_invalid_year_are_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "identical_legal_amount_dates_and_names_are_counted_as_distinct_facts"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "subscription_year_is_paid_year"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "unknown_or_incomplete_trade_in_metadata_cannot_become_plain_cash"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "money_year_is_occurred_year"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "annual_summary_no_judgement_zero_negative_and_empty_are_distinct"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+            "method": "duplicate_missing_or_mismatched_typed_facts_are_rejected_not_inferred_from_display_text"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.domain.report.CategoryReportEngineTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+            "method": "historical_only_category_keeps_finished_records_and_zero_current_contribution"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+            "method": "project_and_subscription_categories_keep_distinct_amount_semantics"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+            "method": "not_started_project_is_listed_without_inventing_current_contribution"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+            "method": "corrupt_record_category_or_name_rejects_whole_report"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+            "method": "current_category_rate_uses_frozen_overview_without_rounding"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+            "method": "zero_record_and_empty_category_are_distinct_and_record_order_is_stable"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+            "method": "category_changes_restate_history_using_current_stable_mapping"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.domain.report.CostTimelineEngineTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "empty_observation_list_still_rejects_corrupt_empty_ledger_categories"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "trade_in_reads_three_stored_facts_without_repeating_purchase_total"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "prepayment_is_not_current_price_and_paid_until_is_exclusive"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "every_point_matches_reference_seeded_random_ledger"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "subscription_boundaries_pause_gap_stop_reopen_and_future_stop"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "dates_preserve_callers_order_and_duplicate_observations"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "closed_or_expired_removed_q02_and_post_end_settlement"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "duplicate_or_wrong_record_event_identity_is_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "multi_event_day_not_false_causality_and_prepayment_without_jump"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "empty_inactive_zero_and_cancellation_are_different"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "today_equals_home_without_display_rounding"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "same_day_start_and_end_never_manufactures_a_total_spike"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+            "method": "negative_rate_and_positive_subscription_can_cancel_without_losing_components"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.domain.report.OverviewEngineTest",
+        "tests": 23,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.domain.report.OverviewEngineTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "categories_without_records_are_kept_without_faking_records"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "payment_unknown_on_observation_day_has_no_current_contribution"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "prepaid_future_subscription_does_not_replace_current_price_before_boundary"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "home_uses_same_engines_for_project_and_current_subscription"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "missing_category_relationship_is_rejected_for_each_record_type"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "duplicate_identity_is_rejected_within_each_record_type"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "combine_preserves_exact_rates_merges_categories_and_adds_all_counts"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "duplicate_category_id_is_rejected_even_when_name_or_kind_differs"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "malformed_frozen_subscription_snapshot_is_propagated_without_partial_total"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "positive_and_negative_rates_can_cancel_to_real_zero_without_hiding_records"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "negative_and_tiny_nonzero_project_rates_are_not_clamped_or_display_rounded"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "no_zero_confused_with_empty"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "no_records_preserves_observation_date_and_is_empty"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "category_sum_matches_type_without_intermediate_decimal128_rounding"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "project_end_day_and_post_end_settlement_never_reenter_current_total"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "blank_identity_category_relationship_and_category_name_are_rejected"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "inactive_only_records_are_not_empty_and_category_rows_remain"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "active_only_aggregate_keeps_all_record_counts_and_zero_categories"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "records_in_different_types_may_share_the_same_identity"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "categories_sort_by_name_then_id_independent_of_input_order"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "combine_rejects_different_dates_conflicting_names_and_count_overflow"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "subscription_wrapper_identity_must_match_its_frozen_snapshot"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.OverviewEngineTest",
+            "method": "category_of_wrong_type_is_rejected_for_each_record_type"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.domain.report.TimelineSamplerTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "invalid_budget_is_rejected_instead_of_silently_changing_history"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "empty_ledger_is_not_a_fabricated_zero_history"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "component_cancellation_does_not_erase_subscription_spike_or_negative_valley"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "cancellation_is_checked_while_scanning_and_publishes_no_partial_timeline"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "exact_non_display_date_returns_original_value"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "paid_coverage_and_status_boundaries_survive_even_without_event_metadata"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "empty_ledger_sampling_cannot_hide_corrupt_categories_as_no_records"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "sampling_keeps_spikes_twenty_year_reference_and_all_three_bucket_extrema"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "future_only_facts_do_not_forecast_and_current_cutoff_is_kept"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "extreme_localdate_endpoint_does_not_overflow_neighbour_math"
+          },
+          {
+            "classname": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+            "method": "key_dates_and_neighbours_are_retained_beyond_budget"
+          }
+        ]
+      },
+      {
+        "suite": "com.cooper.lithic.feature.category.CategoryControllerTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "source": "stale-green-build/TEST-com.cooper.lithic.feature.category.CategoryControllerTest.xml",
+        "methods": [
+          {
+            "classname": "com.cooper.lithic.feature.category.CategoryControllerTest",
+            "method": "unknown_write_keeps_original_command_and_id_for_safe_retry"
+          },
+          {
+            "classname": "com.cooper.lithic.feature.category.CategoryControllerTest",
+            "method": "fallback_cannot_open_a_rename_or_merge_source_editor"
+          },
+          {
+            "classname": "com.cooper.lithic.feature.category.CategoryControllerTest",
+            "method": "pending_write_blocks_leave_and_cannot_be_discarded_or_duplicated"
+          },
+          {
+            "classname": "com.cooper.lithic.feature.category.CategoryControllerTest",
+            "method": "stale_type_read_does_not_replace_current_category_type"
+          },
+          {
+            "classname": "com.cooper.lithic.feature.category.CategoryControllerTest",
+            "method": "merge_requires_read_preview_then_explicit_confirmation"
+          }
+        ]
+      }
+    ]
+  },
+  "android": {
+    "tests": 29,
+    "pass": 29,
+    "fail": 0,
+    "new": 16,
+    "related_regression": 13,
+    "classes": [
+      {
+        "test_class": "com.cooper.lithic.data.repository.M19ReportRepositoryTest",
+        "status": "PASS",
+        "tests": 7,
+        "methods": [
+          "correcting_occurrence_year_and_confirmed_deletion_rebuild_reports_from_current_facts",
+          "typed_facts_read_every_project_subscription_and_payment_beyond_fifty_without_writing",
+          "corrupt_category_or_incomplete_trade_in_rejects_whole_report_read",
+          "actual_category_rename_and_merge_restate_all_years_without_changing_money_facts",
+          "queued_write_cannot_mix_typed_money_with_a_different_overview_version",
+          "trade_in_reads_three_saved_facts_once_and_payment_year_can_be_corrected",
+          "format_two_roundtrip_preserves_annual_category_media_facts_and_rejects_old_generation"
+        ],
+        "source": "android-final-core/M19ReportRepositoryTest.result.json"
+      },
+      {
+        "test_class": "com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest",
+        "status": "PASS",
+        "tests": 4,
+        "methods": [
+          "failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty",
+          "old_noncancellable_read_cannot_overwrite_new_year_category_or_observation",
+          "write_foreground_and_day_refresh_keep_intent_and_browsing_changes_no_facts",
+          "merge_of_selected_category_clears_only_invalid_selection_with_explicit_notice"
+        ],
+        "source": "android-final-core/M19ReportAnalysisViewModelTest.result.json"
+      },
+      {
+        "test_class": "com.cooper.lithic.ui.M19ReportSemanticsTest",
+        "status": "PASS",
+        "tests": 4,
+        "methods": [
+          "year_text_entry_can_select_empty_past_year_and_rejects_future_without_callback",
+          "category_record_window_keeps_stable_identity_and_type_and_current_classification",
+          "failure_is_not_empty_and_double_font_date_and_back_controls_remain_reachable",
+          "annual_measures_keep_types_noncash_and_real_zero_distinct_from_empty"
+        ],
+        "source": "android-final-ui/M19ReportSemanticsTest.result.json"
+      },
+      {
+        "test_class": "com.cooper.lithic.app.M19ReportJourneyTest",
+        "status": "PASS",
+        "tests": 1,
+        "methods": [
+          "real_category_and_annual_reports_keep_typed_money_navigation_guards_and_readonly_facts"
+        ],
+        "source": "android-final-ui/M19ReportJourneyTest.result.json"
+      },
+      {
+        "test_class": "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+        "status": "PASS",
+        "tests": 7,
+        "methods": [
+          "trade_in_contribution_uses_saved_three_money_events_once_and_keeps_noncash_labels",
+          "ordinary_correction_and_confirmed_deletion_rebuild_history_from_present_facts",
+          "same_day_events_cross_fifty_preserve_identity_and_post_end_money_without_false_contribution",
+          "complete_snapshot_and_today_match_home_beyond_fifty_records_without_mutating_facts",
+          "full_ledger_read_excludes_a_coordinator_queued_write_from_every_captured_record",
+          "corrupt_reference_rejects_whole_snapshot_instead_of_fake_empty_or_zero",
+          "format_two_roundtrip_rebuilds_total_events_and_retired_generation_cannot_read"
+        ],
+        "source": "android-final-regression/M18TimelineRepositoryTest.result.json"
+      },
+      {
+        "test_class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+        "status": "PASS",
+        "tests": 6,
+        "methods": [
+          "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+          "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text",
+          "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+          "unavailable_overview_never_invents_a_zero_cost",
+          "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+          "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results"
+        ],
+        "source": "android-final-regression/HomeOverviewUiTest.result.json"
+      }
+    ]
+  },
+  "build": {
+    "status": "PASS",
+    "seconds": 162.281,
+    "stable_inputs": {
+      "file_count": 310,
+      "sha256": "0fc64be4dc23f70a185db0183b217e436b242d6c155f3017169722e3ee28e968"
+    },
+    "source": "stale-green-build/result.json",
+    "lint": {
+      "errors": 0,
+      "warnings": 23,
+      "source": "stale-green-build/lint-results-debug.xml"
+    }
+  },
+  "apk": {
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+    "applications": [
+      {
+        "label": "app",
+        "package": "com.cooper.lithic.debug",
+        "uid": 10216,
+        "bytes": 13489384,
+        "sha256": "b4203c3102037752ffb376e4650673942fd43851560db4ced70a8e1d7260f5ac",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~XvLWOKjV_YVZ-QvA9RzWTA==/com.cooper.lithic.debug-n4lPaA3srpEJuFH93MIk6g==/base.apk",
+        "install_skipped": false
+      },
+      {
+        "label": "test",
+        "package": "com.cooper.lithic.debug.test",
+        "uid": 10217,
+        "bytes": 2923214,
+        "sha256": "81e4cf0bfa9119c541e499605fad8d03bcc676d525c7b462e4c198c4a3287a98",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~X5yfeegh9oYBodHa2laJsw==/com.cooper.lithic.debug.test-fRl0Q6MWI-DAxvv5Qo5P7w==/base.apk",
+        "install_skipped": true
+      }
+    ],
+    "old_device_commands": 0,
+    "default_ledger_opened": false
+  },
+  "screenshots": {
+    "count": 8,
+    "source": "screenshots/sources.json",
+    "scope": "Real API36 isolated ComponentActivity/LithicApp; 07/08 LocalDensity 360dp/fontScale2, not MainActivity/system font/TalkBack"
+  },
+  "device_end": {
+    "status": "PASS",
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "original_instance_and_boot": true,
+    "apk_and_uid_matched": true,
+    "no_backup_empty": true,
+    "settings_match_before_final_tests": true,
+    "avd_left_online": true,
+    "private_ledger_or_image_bytes_read": false,
+    "private_byte_comparison": "NOT_RUN"
+  },
+  "history": {
+    "nav_red": {
+      "tests": 3,
+      "pass": 1,
+      "fail": 2,
+      "source": "nav-red/command.json"
+    },
+    "domain_red": {
+      "tests": 19,
+      "pass": 0,
+      "fail": 19,
+      "source": "domain-red/command.json"
+    },
+    "first_combined_build": "FAIL: ambiguous LedgerSnapshot androidTest import, fixed by explicit import; raw green-build log kept",
+    "stale_warning_red": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "source": "android-stale-red/M19ReportAnalysisViewModelTest.result.json",
+      "basis": "Instrumentation AssertionError at retained-error check, status -2 and Tests run1 Failures1; raw broad FAIL_OR_UNKNOWN label unchanged"
+    }
+  },
+  "not_run": [
+    "API26/physical devices/OEM",
+    "Release/stable signing/G1/G2 release acceptance",
+    "MainActivity/default personal ledger",
+    "system font200/full IME/TalkBack",
+    "real midnight/LMK/power failure/process-death intent restore",
+    "SAF roundtrip/fault injection/full Q02 16 cross-module groups",
+    "unbounded historical performance/worst cancellation latency"
+  ],
+  "unchanged": [
+    "M18 ACCEPTED/FROZEN—PASS WITH NOTES",
+    "Room schema3/backup format2/frozen engines/M16 protection",
+    "M10 PENDING/DEFERRED and 3 historical JPEG FAIL",
+    "M13-T06 NOT_RUN/DEFERRED; G1 not fully passed",
+    "M20 NOT_AUTHORIZED; no independent M19 freeze"
+  ],
+  "operations": {
+    "avd_create": 0,
+    "avd_start": 0,
+    "avd_stop": 0,
+    "app_update": 2,
+    "test_update": 2,
+    "final_class_instrumentations": 6,
+    "total_class_or_method_instrumentations": 13,
+    "protected_device_operations": 0
+  }
+}

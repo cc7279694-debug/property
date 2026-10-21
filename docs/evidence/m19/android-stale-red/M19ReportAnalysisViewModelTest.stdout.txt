@@ -1,0 +1,83 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest:
+INSTRUMENTATION_STATUS: test=failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: expected:<尚未刷新：读取或计算失败。下方保留上次截止日和选择的结果，请重试。> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest$failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty$1.invokeSuspend(M19ReportAnalysisViewModelTest.kt:131)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest.failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty(M19ReportAnalysisViewModelTest.kt:108)
+
+INSTRUMENTATION_STATUS: stream=
+Error in failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty(com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest):
+java.lang.AssertionError: expected:<尚未刷新：读取或计算失败。下方保留上次截止日和选择的结果，请重试。> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest$failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty$1.invokeSuspend(M19ReportAnalysisViewModelTest.kt:131)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest.failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty(M19ReportAnalysisViewModelTest.kt:108)
+
+INSTRUMENTATION_STATUS: test=failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.381
+There was 1 failure:
+1) failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty(com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest)
+java.lang.AssertionError: expected:<尚未刷新：读取或计算失败。下方保留上次截止日和选择的结果，请重试。> but was:<null>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:120)
+	at org.junit.Assert.assertEquals(Assert.java:146)
+	at com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest$failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty$1.invokeSuspend(M19ReportAnalysisViewModelTest.kt:131)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest.failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty(M19ReportAnalysisViewModelTest.kt:108)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

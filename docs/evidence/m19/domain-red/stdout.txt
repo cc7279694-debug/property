@@ -1,0 +1,102 @@
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+
+> Task :app:testDebugUnitTest FAILED
+
+AnnualReportEngineTest > outlay_recovery_net FAILED
+    java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:24
+
+AnnualReportEngineTest > types_not_merged_into_cash FAILED
+    java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:44
+
+AnnualReportEngineTest > actual_accumulator_checks_each_component_count_and_preserves_old_value_on_overflow FAILED
+    java.lang.AssertionError at AnnualReportEngineTest.kt:106
+        Caused by: java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:106
+
+AnnualReportEngineTest > post_end_settlement_and_correction_use_business_year_not_lifecycle_or_created_time FAILED
+    java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:67
+
+AnnualReportEngineTest > as_of_cuts_off_future_facts_and_future_paid_years_without_mutating_input FAILED
+    java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:99
+
+AnnualReportEngineTest > single_fact_money_limit_and_invalid_year_are_rejected FAILED
+    java.lang.AssertionError at AnnualReportEngineTest.kt:115
+        Caused by: java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:115
+
+AnnualReportEngineTest > identical_legal_amount_dates_and_names_are_counted_as_distinct_facts FAILED
+    java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:76
+
+AnnualReportEngineTest > subscription_year_is_paid_year FAILED
+    java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:33
+
+AnnualReportEngineTest > unknown_or_incomplete_trade_in_metadata_cannot_become_plain_cash FAILED
+    java.lang.AssertionError at AnnualReportEngineTest.kt:91
+        Caused by: java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:91
+
+AnnualReportEngineTest > money_year_is_occurred_year FAILED
+    java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:17
+
+AnnualReportEngineTest > annual_summary_no_judgement_zero_negative_and_empty_are_distinct FAILED
+    java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:54
+
+AnnualReportEngineTest > duplicate_missing_or_mismatched_typed_facts_are_rejected_not_inferred_from_display_text FAILED
+    java.lang.AssertionError at AnnualReportEngineTest.kt:86
+        Caused by: java.lang.UnsupportedOperationException at AnnualReportEngineTest.kt:86
+
+CategoryReportEngineTest > historical_only_category_keeps_finished_records_and_zero_current_contribution FAILED
+    java.lang.UnsupportedOperationException at CategoryReportEngineTest.kt:36
+
+CategoryReportEngineTest > project_and_subscription_categories_keep_distinct_amount_semantics FAILED
+    java.lang.UnsupportedOperationException at CategoryReportEngineTest.kt:42
+
+CategoryReportEngineTest > not_started_project_is_listed_without_inventing_current_contribution FAILED
+    java.lang.UnsupportedOperationException at CategoryReportEngineTest.kt:57
+
+CategoryReportEngineTest > corrupt_record_category_or_name_rejects_whole_report FAILED
+    java.lang.AssertionError at CategoryReportEngineTest.kt:64
+        Caused by: java.lang.UnsupportedOperationException at CategoryReportEngineTest.kt:64
+
+CategoryReportEngineTest > current_category_rate_uses_frozen_overview_without_rounding FAILED
+    java.lang.UnsupportedOperationException at CategoryReportEngineTest.kt:18
+
+CategoryReportEngineTest > zero_record_and_empty_category_are_distinct_and_record_order_is_stable FAILED
+    java.lang.UnsupportedOperationException at CategoryReportEngineTest.kt:50
+
+CategoryReportEngineTest > category_changes_restate_history_using_current_stable_mapping FAILED
+    java.lang.UnsupportedOperationException at CategoryReportEngineTest.kt:25
+26 actionable tasks: 7 executed, 19 up-to-date

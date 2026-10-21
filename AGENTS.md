@@ -1,4 +1,4 @@
-<!-- M18已独立限定冻结：ACCEPTED / FROZEN — PASS WITH NOTES；仅文档登记，不授权M19或设备操作。 -->
+<!-- 本轮用户正式授权M19：从M18冻结基线实施类别/年度分析；设备仅核验原5692后复用，不授权M20。 -->
 # 砺石 LITHIC 协作规范
 
 ## 1. 范围与优先级
@@ -63,7 +63,7 @@ Bug 按复现 → 定位 → 理解 → 假设 → 修复 → 验证 → 回归�
 
 遇到阻塞规格矛盾只记录问题与建议，等待确认；高风险删除、真实数据修改、不可逆迁移、生产发布、force push 等必须暂停。
 
-M17及此前冻结结论保持。M18已由用户正式转交ChatGPT独立复验结论 **ACCEPTED / FROZEN — PASS WITH NOTES**，评审`87211c8a3ed8982cdf7f46080afce10aeda4dda7`；按[正式登记](docs/ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21)限定认可T01～T05、此前174 JVM PASS、17 Android PASS、Lint0错误23警告及10张隔离截图。首次14 PASS/3 FAIL、启动外层回执NOT_CAPTURED、原报告/结果/checkpoint与所有历史NOTES/UNKNOWN/NOT_RUN保持。冻结只读总成本历史/汇总刷新/精确选日事件，不改Room3/backup2/冻结引擎/M16保护/恢复及媒体协议。API36/x86_64合成、plain Application/隔离ComponentActivity、LocalDensity200%、注入跨日、受控文件往返不扩大为MainActivity、系统字号/TalkBack、真机、真实午夜或新SAF/故障恢复。Q02仅已验证模块部分认可，16组完整跨模块门禁不关闭。本轮只登记文档，未重跑测试/构建/核验APK或操作设备，不把原设备结束在线当本轮新观察，不授权任何现场清理。登记后停止，M19未授权；下方M11/M12为继承安全约束和历史说明。
+M17及此前冻结结论保持。M18已由用户正式转交ChatGPT独立复验结论 **ACCEPTED / FROZEN — PASS WITH NOTES**，评审`87211c8a3ed8982cdf7f46080afce10aeda4dda7`；按[正式登记](docs/ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21)限定认可T01～T05、此前174 JVM PASS、17 Android PASS、Lint0错误23警告及10张隔离截图。首次14 PASS/3 FAIL、启动外层回执NOT_CAPTURED、原报告/结果/checkpoint与所有历史NOTES/UNKNOWN/NOT_RUN保持。冻结只读总成本历史/汇总刷新/精确选日事件，不改Room3/backup2/冻结引擎/M16保护/恢复及媒体协议。API36/x86_64合成、plain Application/隔离ComponentActivity、LocalDensity200%、注入跨日、受控文件往返不扩大为MainActivity、系统字号/TalkBack、真机、真实午夜或新SAF/故障恢复。Q02仅已验证模块部分认可，16组完整跨模块门禁不关闭。M18当次仅登记文档，未重跑测试/构建/核验APK或操作设备；原历史记录不变。当前M19授权与执行见末节；下方M11/M12为继承安全约束和历史说明。
 
 M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字节，缺失/损坏/身份或完整性不明拒绝完整成功。空媒体合法。完整归档先在私有目录校验，再写本次系统保存位置，关闭并读回校验后才报告成功；取消和失败明确反馈。只用合成验证，不修改Room schema、冻结业务算法/M09语义、备份格式编号，恢复/代切换现按用户明确M12授权与[M12契约](docs/planning/M12_CONTRACT.md)实施；不做CSV/云/自动备份/密码，不进入下一模块。设备实验只允许经确认的全新隔离环境；H2/C2/M10保留现场绝对禁止操作。原规划/案例和全部历史NOTES不改；实现/编译通过不等于Android或正式M11冻结。已登记JPEG/PNG备份核验原字节长度/SHA、容器和实际尺寸，不以缺少M10深度解码为由拒绝所有JPEG；Android可读性不冒称严格熵验证。合法标准PNG编码不再人为收窄。未知或不匹配仍拒绝整份导出。
 
@@ -72,10 +72,14 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 - 独立模块用独立功能分支，保留用户未提交内容。禁止在 main/master 直接开发。
 - 提交前查差异、实际验证、无关改动、敏感信息与临时文件；Conventional Commits；只推当前功能分支。
 - 未经明确授权不得合并 main、自动合并 PR、force push、重置/删除远程历史、部署或发布。
-- 本次M18冻结登记评审来源`87211c8a3ed8982cdf7f46080afce10aeda4dda7`；仅提交/推送`codex/m18-total-cost-history`必要登记文档。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过、Q02完整16组与全部历史NOTES保持；不改产品/测试、不构建、不操作或清理任何设备，不合并main或启动M19。
+- 本轮仅提交/推送`codex/m19-category-annual-review`，起点M18冻结回写`fdee68314dc03a6385a70250e3b456423557186b`。M19为READY_FOR_REVIEW候选；M10延期/三JPEG历史FAIL、M13-T06延期/G1、Q02完整16组与全部历史NOTES保持，不合并main、不发布、不启动M20。
 - 实现者只可报 READY_FOR_REVIEW；ACCEPTED / FROZEN 需要独立验收结果，不能自己授予。
 - 每个模块结束同步当前状态、适用决策与验收证据，输出模块报告并立即停止。
 
 完整工作流与报告格式见[执行规范](docs/EXECUTION_PROTOCOL.md)。测试状态为 PASS / FAIL / NOT_RUN / BLOCKED；不能把计划案例或构建通过替代真实业务验证。
 
 通知协议继承当前用户规范：只有目标全部完成且无待办时才发完成标记；存在阻塞、授权/选择需求或未解决失败时发阻塞标记。标记仅用于最终回复，不写进工具标题、进度或普通状态文本。
+
+## M19 当前授权与交付
+
+用户本轮明确授权[M19契约](docs/planning/M19_CONTRACT.md)的产品实现、定向测试及候选提交；覆盖上文M18冻结登记时“不启动M19”的阶段限制，M18及其全部历史结论不改。仅`codex/m19-category-annual-review`，不改Room3/backup2/冻结算法，不操作受保护设备。设备仅重新核验原5692在线身份后使用全新M19合成根，若实例退出则不恢复/新建。本轮已完成109 JVM、29 Android PASS、8张隔离截图和结束保护核对；见[M19报告](docs/evidence/M19-verification.md)。M19待ChatGPT独立验收，不自行冻结；不把隔离ComponentActivity/LocalDensity当MainActivity或系统级大字。M10延期、M13-T06延期/G1/Q02完整16组保持；完成后READY_FOR_REVIEW停止，M20未授权。

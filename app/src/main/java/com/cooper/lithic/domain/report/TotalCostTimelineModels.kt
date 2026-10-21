@@ -3,10 +3,13 @@ package com.cooper.lithic.domain.report
 import java.math.BigDecimal
 import java.time.LocalDate
 
-/** One immutable, complete ledger observation; money facts remain in the existing overview model. */
+/** One immutable, complete ledger observation. Display events never supply money semantics. */
 data class LedgerSnapshot(
     val overview: OverviewSnapshot,
     val events: List<TotalCostEvent> = emptyList(),
+    /** Null preserves M18 caller compatibility, but is not proof of complete annual facts. */
+    val financialFacts: List<FinancialFact>? = null,
+    val recordIdentities: List<ReportRecordIdentity> = emptyList(),
 )
 
 data class TotalCostEvent(

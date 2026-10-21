@@ -1,0 +1,53 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5692",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.review.M19ReportAnalysisViewModelTest#failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\feature\\review\\M19ReportAnalysisViewModelTest.kt",
+  "source_sha256": "dd79967c22f8507d125dfe7f391544e84b1d600b6aa4ee72214417e3a925894b",
+  "started_at": "2026-10-21T14:39:15.743414+00:00",
+  "expected": [
+    "failed_refresh_keeps_matching_old_report_and_never_publishes_fake_empty"
+  ],
+  "apk_identity": {
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+    "applications": [
+      {
+        "label": "app",
+        "package": "com.cooper.lithic.debug",
+        "uid": 10216,
+        "bytes": 13279599,
+        "sha256": "d8c2440f4eb7f05fef63b4efaf2b683f362f355601040d13c359940567641175",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~BDOA8zwlgbZMeUb1_dycNw==/com.cooper.lithic.debug-4AomI8LXZGwxKdcj16axDw==/base.apk",
+        "install_skipped": true
+      },
+      {
+        "label": "test",
+        "package": "com.cooper.lithic.debug.test",
+        "uid": 10217,
+        "bytes": 2923214,
+        "sha256": "81e4cf0bfa9119c541e499605fad8d03bcc676d525c7b462e4c198c4a3287a98",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~X5yfeegh9oYBodHa2laJsw==/com.cooper.lithic.debug.test-fRl0Q6MWI-DAxvv5Qo5P7w==/base.apk",
+        "install_skipped": false
+      }
+    ],
+    "old_device_commands": 0,
+    "default_ledger_opened": false
+  }
+}

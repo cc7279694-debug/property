@@ -1,0 +1,63 @@
+{
+  "command": [
+    "gradlew.bat",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+    "--tests",
+    "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+    "--tests",
+    "com.cooper.lithic.app.M19NavigationPolicyTest",
+    "--tests",
+    "com.cooper.lithic.data.local.CategoryNamesTest",
+    "--tests",
+    "com.cooper.lithic.feature.category.CategoryControllerTest",
+    "--tests",
+    "com.cooper.lithic.app.M14NavigationPolicyTest",
+    "--tests",
+    "com.cooper.lithic.app.M16NavigationPolicyTest",
+    "--tests",
+    "com.cooper.lithic.app.M17NavigationPolicyTest",
+    "--tests",
+    "com.cooper.lithic.app.M18NavigationPolicyTest",
+    "--tests",
+    "com.cooper.lithic.data.repository.TradeInFactsTest",
+    "--tests",
+    "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+    "--tests",
+    "com.cooper.lithic.domain.report.TimelineSamplerTest",
+    "--tests",
+    "com.cooper.lithic.domain.report.OverviewEngineTest",
+    ":app:lintDebug",
+    ":app:assembleDebug",
+    ":app:assembleDebugAndroidTest",
+    "-Pm13Isolated=true",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "classes": [
+    "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+    "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+    "com.cooper.lithic.app.M19NavigationPolicyTest",
+    "com.cooper.lithic.data.local.CategoryNamesTest",
+    "com.cooper.lithic.feature.category.CategoryControllerTest",
+    "com.cooper.lithic.app.M14NavigationPolicyTest",
+    "com.cooper.lithic.app.M16NavigationPolicyTest",
+    "com.cooper.lithic.app.M17NavigationPolicyTest",
+    "com.cooper.lithic.app.M18NavigationPolicyTest",
+    "com.cooper.lithic.data.repository.TradeInFactsTest",
+    "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+    "com.cooper.lithic.domain.report.TimelineSamplerTest",
+    "com.cooper.lithic.domain.report.OverviewEngineTest"
+  ],
+  "exit_code": 0,
+  "seconds": 126.875,
+  "inputs_before": {
+    "file_count": 310,
+    "sha256": "c4bdf743f09bb84ce00318fce47024447e0f81dc1e7783e441417f197a1892ba"
+  },
+  "inputs_after": {
+    "file_count": 310,
+    "sha256": "c4bdf743f09bb84ce00318fce47024447e0f81dc1e7783e441417f197a1892ba"
+  }
+}

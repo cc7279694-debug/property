@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.report.CategoryReportEngineTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-21T14:40:34.113Z" hostname="WHOCARE" time="0.011">
+  <properties/>
+  <testcase name="historical_only_category_keeps_finished_records_and_zero_current_contribution" classname="com.cooper.lithic.domain.report.CategoryReportEngineTest" time="0.007"/>
+  <testcase name="project_and_subscription_categories_keep_distinct_amount_semantics" classname="com.cooper.lithic.domain.report.CategoryReportEngineTest" time="0.001"/>
+  <testcase name="not_started_project_is_listed_without_inventing_current_contribution" classname="com.cooper.lithic.domain.report.CategoryReportEngineTest" time="0.0"/>
+  <testcase name="corrupt_record_category_or_name_rejects_whole_report" classname="com.cooper.lithic.domain.report.CategoryReportEngineTest" time="0.001"/>
+  <testcase name="current_category_rate_uses_frozen_overview_without_rounding" classname="com.cooper.lithic.domain.report.CategoryReportEngineTest" time="0.001"/>
+  <testcase name="zero_record_and_empty_category_are_distinct_and_record_order_is_stable" classname="com.cooper.lithic.domain.report.CategoryReportEngineTest" time="0.0"/>
+  <testcase name="category_changes_restate_history_using_current_stable_mapping" classname="com.cooper.lithic.domain.report.CategoryReportEngineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

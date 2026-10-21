@@ -1,0 +1,59 @@
+{
+  "command": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5692",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.repository.M18TimelineRepositoryTest",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "source": "app\\src\\androidTest\\java\\com\\cooper\\lithic\\data\\repository\\M18TimelineRepositoryTest.kt",
+  "source_sha256": "23e77625b08c58ea6a3f61f836ba48e39969735efe63a90b145c120a1d9421c9",
+  "started_at": "2026-10-21T14:43:57.041649+00:00",
+  "expected": [
+    "complete_snapshot_and_today_match_home_beyond_fifty_records_without_mutating_facts",
+    "full_ledger_read_excludes_a_coordinator_queued_write_from_every_captured_record",
+    "same_day_events_cross_fifty_preserve_identity_and_post_end_money_without_false_contribution",
+    "trade_in_contribution_uses_saved_three_money_events_once_and_keeps_noncash_labels",
+    "corrupt_reference_rejects_whole_snapshot_instead_of_fake_empty_or_zero",
+    "ordinary_correction_and_confirmed_deletion_rebuild_history_from_present_facts",
+    "format_two_roundtrip_rebuilds_total_events_and_retired_generation_cannot_read"
+  ],
+  "apk_identity": {
+    "serial": "emulator-5692",
+    "avd": "Lithic_M18_API36_20261021",
+    "boot_id": "f9583e05-77d0-4308-9ef8-7b7b5656ee7e",
+    "applications": [
+      {
+        "label": "app",
+        "package": "com.cooper.lithic.debug",
+        "uid": 10216,
+        "bytes": 13489384,
+        "sha256": "b4203c3102037752ffb376e4650673942fd43851560db4ced70a8e1d7260f5ac",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~XvLWOKjV_YVZ-QvA9RzWTA==/com.cooper.lithic.debug-n4lPaA3srpEJuFH93MIk6g==/base.apk",
+        "install_skipped": false
+      },
+      {
+        "label": "test",
+        "package": "com.cooper.lithic.debug.test",
+        "uid": 10217,
+        "bytes": 2923214,
+        "sha256": "81e4cf0bfa9119c541e499605fad8d03bcc676d525c7b462e4c198c4a3287a98",
+        "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+        "certificate_basis": "Installed APK SHA equals the actual locally signature-verified APK byte for byte",
+        "installed_path": "/data/app/~~X5yfeegh9oYBodHa2laJsw==/com.cooper.lithic.debug.test-fRl0Q6MWI-DAxvv5Qo5P7w==/base.apk",
+        "install_skipped": true
+      }
+    ],
+    "old_device_commands": 0,
+    "default_ledger_opened": false
+  }
+}

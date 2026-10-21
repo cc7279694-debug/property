@@ -1,5 +1,8 @@
 package com.cooper.lithic.feature.home
 
+import androidx.compose.foundation.clickable
+import androidx.compose.ui.semantics.Role
+import com.cooper.lithic.domain.report.OverviewKind
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,7 +30,8 @@ import com.cooper.lithic.domain.report.OverviewResult
 @Composable
 internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreateProject: () -> Unit,
     subscriptionCount: Long, onSubscriptionList: () -> Unit, onCreateSubscription: () -> Unit,
-    modifier: Modifier = Modifier, overview: OverviewResult? = null, onSearch: (() -> Unit)? = null) {
+    modifier: Modifier = Modifier, overview: OverviewResult? = null, onSearch: (() -> Unit)? = null,
+    onCategoryAnalysis: ((OverviewKind, String) -> Unit)? = null) {
     val recordedProjects = overview?.projectCount ?: projectCount
     val recordedSubscriptions = overview?.subscriptionCount ?: subscriptionCount
     Column(
@@ -80,7 +84,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                 else -> "查看持有时间、实际投入与收回"
             },
                 style = MaterialTheme.typography.bodyMedium)
-            overview?.let { CategoryCosts(it.projectCategories, "home-project-category") }
+            overview?.let { CategoryCosts(it.projectCategories, "home-project-category", onCategoryAnalysis?.let { open -> { id -> open(OverviewKind.PROJECT, id) } }) }
             Button(onClick = onProjectList,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("open-project-list")) {
                 Text("查看长期项目", style = MaterialTheme.typography.bodyLarge)
@@ -102,7 +106,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                 Text("当前无有效订阅；暂停、已到期、已停止或尚未生效的记录不计入当前成本。",
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
-            overview?.let { CategoryCosts(it.subscriptionCategories, "home-subscription-category") }
+            overview?.let { CategoryCosts(it.subscriptionCategories, "home-subscription-category", onCategoryAnalysis?.let { open -> { id -> open(OverviewKind.SUBSCRIPTION, id) } }) }
             Button(onClick = onSubscriptionList,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("open-subscription-list")) {
                 Text("查看订阅服务", style = MaterialTheme.typography.bodyLarge)
@@ -121,13 +125,15 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
 }
 
 @Composable
-private fun CategoryCosts(categories: List<CategoryDailyCost>, tagPrefix: String) {
+private fun CategoryCosts(categories: List<CategoryDailyCost>, tagPrefix: String, onOpen: ((String) -> Unit)? = null) {
     val contributingCategories = categories.filter { it.contributingCount > 0L }
     if (contributingCategories.isEmpty()) return
     Text("类别构成", style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant)
     contributingCategories.forEach { category ->
-        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Column(Modifier.fillMaxWidth().heightIn(min = 48.dp)
+            .then(if (onOpen != null) Modifier.clickable(role = Role.Button) { onOpen(category.categoryId) } else Modifier)
+            .testTag("$tagPrefix-open-${category.categoryId}"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(category.name, style = MaterialTheme.typography.bodyLarge)
             AmountText(category.dailyRate, modifier = Modifier.testTag("$tagPrefix-${category.categoryId}"),
                 style = MaterialTheme.typography.bodyLarge)

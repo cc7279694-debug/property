@@ -1,5 +1,17 @@
 # 当前架构事实
 
+## M19：类型化资金报表与只读页面（2026-10-21）
+
+[ReportRepository](../app/src/main/java/com/cooper/lithic/data/repository/ReportRepository.kt)复用M18同代协调器/Room完整事实读取，额外投影[FinancialFact/ReportRecordIdentity](../app/src/main/java/com/cooper/lithic/domain/report/AnnualReportModels.kt)。raw方向/业务日/续费付款映射三种明确类型，保留operation、折抵组和非现金身份；不从TotalCostEvent中文标题解析金额。不增加持久字段/表，原loadOverview与M18计算/采样不改。
+
+[AnnualReportEngine](../app/src/main/java/com/cooper/lithic/domain/report/AnnualReportEngine.kt)与[CategoryReportEngine](../app/src/main/java/com/cooper/lithic/domain/report/CategoryReportEngine.kt)在事务外使用Long分和exact累计，逐记录多重集合核对完整投影，不将同值合法事实去重。当前贡献复用冻结OverviewEngine，历史/年度按当前分类与真实occurredOn/paidOn；项目投入/收回/净额和订阅付款分开，三笔折抵计一次，空年由事实计数区分。
+
+[ReportAnalysisViewModel](../app/src/main/java/com/cooper/lithic/feature/review/ReportAnalysisViewModel.kt)由generation UI拥有，后台整批算类别/年度，选择意图/捕获快照/票据共同发布，拒绝迟到读取；失败留匹配旧结果并提示，合并类别消失明确重选。年度/类别结果没有数据库或备份缓存；完整事实/全年度成本随数据增长，50仅显示窗口。选择未持久到进程死亡恢复。
+
+首页类别点击与Review入口接[类别分析](../app/src/main/java/com/cooper/lithic/feature/category/CategoryAnalysisScreen.kt)/[年度回顾](../app/src/main/java/com/cooper/lithic/feature/review/AnnualReviewScreen.kt)，CATEGORY/ANNUAL来源贯穿原canonical栈/requestLeave，仍3个底部入口。只读数值/同轴正负条与文字、50条扩展、准确详情、非现金/空年说明；无评价/建议/年度派生表。
+
+Room3、backup2、M16与恢复/媒体协议及冻结引擎保持。109 JVM/29 Android PASS、8隔离图与具体NOT_RUN见[M19报告](evidence/M19-verification.md)；不由架构文字授予独立冻结。下方M18及更早章节中的候选阶段NOT_RUN为当时记录，当前独立状态以[CURRENT_STATE](CURRENT_STATE.md)/[验收登记](ACCEPTANCE_MATRIX.md)为准。
+
 ## M18：全账本只读总成本历史（2026-10-21）
 
 [ReportRepository.loadLedgerSnapshot](../app/src/main/java/com/cooper/lithic/data/repository/ReportRepository.kt)复用原身份/类别/项目金额/续费状态映射、孤儿检查及ReplacementStoredFacts，在一个generation协调器和Room事务内稳定50条分批读取全部当前及历史身份与完整关联事实；同页批量读资金/付款/状态，核对全量计数，不用首页第一页拼统计。事件按业务日期记录所属ID/名称/金额方向/非现金标识，付款与覆盖边界分开，替换边不添钱；只校验封面登记引用，不读取图片字节。首页原loadOverview不变，仅补replacements失效通知。

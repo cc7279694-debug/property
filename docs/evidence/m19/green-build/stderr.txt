@@ -1,0 +1,21 @@
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/review/M19ReportAnalysisViewModelTest.kt:71:65 Overload resolution ambiguity between candidates:
+data class LedgerSnapshot : Any
+data class LedgerSnapshot : Any
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/review/M19ReportAnalysisViewModelTest.kt:111:65 Overload resolution ambiguity between candidates:
+data class LedgerSnapshot : Any
+data class LedgerSnapshot : Any
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugAndroidTestKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 14s
