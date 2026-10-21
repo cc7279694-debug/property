@@ -1,6 +1,25 @@
 # 验收登记
 
-当前执行：**M15 READY_FOR_REVIEW**，来源M14冻结`f3f4f694f6c3a7348cb7b8b64e795a631f394d12`，分支`codex/m15-history-review`。本轮真实执行133 JVM/32 Android PASS，原T01～T06实现与验证完成，等待独立验收，不自授冻结。M14及此前限定冻结/全部历史证据保持；M13-T06延期、G1未整体通过、M10延期，不将Q06整体CLOSED，不进入M16。
+当前正式结论：**M15 ACCEPTED / FROZEN — PASS WITH NOTES**，评审`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`，依据用户转交的ChatGPT独立验收登记。M15-T01～T06、此前133 JVM PASS、32 Android PASS及7张隔离截图获限定认可；本轮仅文档回写，不是重新测试。M14及此前冻结/历史证据保持，M10 PENDING / DEFERRED、M13-T06 NOT_RUN / DEFERRED、G1未整体通过，Q06不整体CLOSED，M16未授权。
+
+## M15正式冻结登记（2026-10-21）
+
+**M15 — ACCEPTED / FROZEN — PASS WITH NOTES。** 来源是用户本轮正式转交的ChatGPT独立验收结论；评审提交`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`，评审/回写分支`codex/m15-history-review`，修改前本地/远端HEAD均为该提交且工作区干净。下方原M15执行登记、原报告/结果/checkpoint与实现时的候选记录保留历史语境，其当前验收效力由本节正式结论更新，不回填旧PASS或改写原件。
+
+| 获独立认可案例 | 限定冻结范围 |
+|---|---|
+| M15-T01 review_includes_still_active | 8年仍持有项目参与全局陪伴榜，当前与历史共同回看。 |
+| M15-T02 history_excludes_paused | 档案仅已结束项目/STOPPED订阅，暂停、到期未停止、未来停止不提前归档。 |
+| M15-T03 types_rank_separately | 两类型分开；项目陪伴/日均榜、订阅折算时长榜，不跨类型评分。 |
+| M15-T04 current_final_labels | 当前/已结束截至今天逐行标注；后续真实结算改变成本、不延长持有天数；写后/跨日/返回前台刷新。 |
+| M15-T05 zero_negative_are_honest | 零/负值及未展示舍入值真实排序，跨50条与稳定ID无遗漏；不可计算项不伪造0。 |
+| M15-T06 subscription_time_label | 明确折算付费时长；3650元年付当天标准365天、历史10元/天、实际1天，暂停currentRate0不冒充历史平均。 |
+
+独立认可此前真实证据：**133 JVM PASS＝29新增＋104受影响回归；32 Android PASS＝20本模块＋12相关回归；7张隔离截图**，截图不另计测试方法。原Lint0错误9警告、Debug App/Test构建记录保留。[原结果及APK身份](evidence/m15/results.json)、[JUnit逐方法/XML](evidence/m15/jvm/results.json)、[Android本模块](evidence/m15/android-core/summary.json)、[相关回归](evidence/m15/android-regression/summary.json)、[截图索引](evidence/m15/screenshots/index.json)、[原集中报告](evidence/M15-verification.md)。本轮只核对既有文档、证据与Git，不重新运行任何产品测试、构建、APK或设备核查。
+
+**NOTES / 验证边界保留：**仅原API36/x86_64的5672隔离合成环境；真实LithicApp/Nav3由隔离ComponentActivity承载，非MainActivity/正式发行。360dp和后2图LocalDensity 200%不等于系统字号验证；跨日为可变BusinessClock＋前台生命周期，不是真实午夜；两次format1往返为受控文件目标，不是新SAF实测。全局排名读全部相关事实后再提供50条窗口，计算/内存随规模增长，不声称固定50条开销。API26/真机/OEM/Release/稳定签名、默认账本与真实个人数据、系统200%/完整IME/TalkBack、真实午夜、长期规模性能、新SAF、LMK/断电及M12故障扩展仍NOT_RUN。全部RED、准备失败、UNKNOWN、历史NOT_RUN、9条Lint警告及其他NOTES原样保留，不将本次独立验收登记为新测试PASS；此前设备结束状态只作历史，本轮未访问、操作、清理或停止任何设备。
+
+M10 **PENDING / DEFERRED**及三历史JPEG FAIL、M13-T06 **NOT_RUN / DEFERRED**、G1未整体通过、UI-C1原冻结、Q03～Q06与全部历史NOTES保持；本次不自动关闭任何NOTE，不扩大发行/真实数据准入。原130条归档案例不改，M16未授权，不合并main。
 
 ## M15执行登记（2026-10-21）
 

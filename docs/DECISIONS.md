@@ -1,5 +1,20 @@
 # 决策记录
 
+## 2026-10-21 — M15独立冻结，验证与后续权限边界不扩大
+
+### Decision
+
+依据用户本轮转交的ChatGPT独立验收，对`codex/m15-history-review`的`ec0b7286b4ca41f0eac84fd4f0b6885c27c5a473`登记 **M15 — ACCEPTED / FROZEN — PASS WITH NOTES**。认可M15-T01～T06及此前133 JVM PASS、32 Android PASS与7张隔离截图，限定范围见[正式登记](ACCEPTANCE_MATRIX.md#m15正式冻结登记2026-10-21)。
+
+### Context / Alternatives / Reason
+
+原执行报告、结果、checkpoint与下方实现决策记录的是交付时READY_FOR_REVIEW/PENDING_REVIEW。保留原字节和历史，通过新增独立结论更新当前验收效力；不改写旧RED/UNKNOWN/NOT_RUN，不将文档回写冒充重跑测试、构建或设备验证。
+
+### Consequences
+
+仅API36/x86_64、合成数据、隔离ComponentActivity/真实Nav3；LocalDensity 200%、可变业务时钟跨日、受控文件备份往返均保留原限定，不扩大到MainActivity、系统字号、真实午夜或新SAF。全量排名规模成本、API26/真机/OEM/Release/稳定签名、真实记录、完整IME/TalkBack、LMK/断电等未运行事项及全部NOTES保留。M10延期及三历史JPEG FAIL、M13-T06延期、G1未整体通过、Q06等不升级或自动关闭。本轮仅五份冻结登记文档，不修改产品/测试、不重新构建或操作设备，不合并main、不进入M16；完成后停止，等待用户另行授权。
+
+
 ## 2026-10-21 — M15先全局计算，再提供一致的显示窗口
 
 ### Decision
