@@ -1,0 +1,158 @@
+{
+  "status": "READY_FOR_REVIEW",
+  "baseline": "7e74df960e994e3a36f4417f7d83b07ead63763f",
+  "branch": "codex/m18-total-cost-history",
+  "jvm": {
+    "total": 174,
+    "passed": 174,
+    "new": 30,
+    "regression": 144,
+    "classes": [
+      {
+        "class_name": "com.cooper.lithic.app.BusinessDateObserverTest",
+        "count": 4,
+        "source": "app/src/test/java/com/cooper/lithic/app/BusinessDateObserverTest.kt",
+        "source_sha256": "20a584830237ab4a8e1d297f145e341e7545cbb7c6f529746bd90fb3c530f571",
+        "xml": "jvm-final/TEST-com.cooper.lithic.app.BusinessDateObserverTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.app.M16NavigationPolicyTest",
+        "count": 6,
+        "source": "app/src/test/java/com/cooper/lithic/app/M16NavigationPolicyTest.kt",
+        "source_sha256": "be1f91cb0efadee54b12458655c51cbc59fc738efdc8ffa175e6d3d1a6ddb9b1",
+        "xml": "jvm-final/TEST-com.cooper.lithic.app.M16NavigationPolicyTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.app.M17NavigationPolicyTest",
+        "count": 4,
+        "source": "app/src/test/java/com/cooper/lithic/app/M17NavigationPolicyTest.kt",
+        "source_sha256": "7e3985eb8fb67c1e4de17e938c9d4fc24d64fa03a494dd3c272526ac5fc87991",
+        "xml": "jvm-final/TEST-com.cooper.lithic.app.M17NavigationPolicyTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.core.design.ChartGeometryTest",
+        "count": 7,
+        "source": "app/src/test/java/com/cooper/lithic/core/design/ChartGeometryTest.kt",
+        "source_sha256": "bf52d42dd1597e523543678c6b5a5ca75b267b89f9bbae8101c7713092747a1d",
+        "xml": "jvm-final/TEST-com.cooper.lithic.core.design.ChartGeometryTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.data.repository.TradeInFactsTest",
+        "count": 7,
+        "source": "app/src/test/java/com/cooper/lithic/data/repository/TradeInFactsTest.kt",
+        "source_sha256": "ab44f0f8f71922fad6a37be00960e71a1a09e6967ca4d17aa73f32c8383e065e",
+        "xml": "jvm-final/TEST-com.cooper.lithic.data.repository.TradeInFactsTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+        "count": 22,
+        "source": "app/src/test/java/com/cooper/lithic/domain/project/ProjectCostEngineTest.kt",
+        "source_sha256": "1c8600d20d9ded785b21c45919443ecf84234ef6313aeacd4d4616fd8210f86b",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.report.ItemTimelineTest",
+        "count": 22,
+        "source": "app/src/test/java/com/cooper/lithic/domain/report/ItemTimelineTest.kt",
+        "source_sha256": "8b4d31024aa7854e17aa61bfae71c7d745f07c03664eec09e2c0e64535973cc6",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.report.ItemTimelineTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.report.OverviewEngineTest",
+        "count": 23,
+        "source": "app/src/test/java/com/cooper/lithic/domain/report/OverviewEngineTest.kt",
+        "source_sha256": "a3a51e24f62dcc805921ac74fd08dcd364e3cb1fb68a810e11db3bd982616aa9",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.report.OverviewEngineTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "count": 6,
+        "source": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionAccumulationTest.kt",
+        "source_sha256": "5b4ae21ff851d5ef54ae6751555a64fbad77412f8752f4544c870db20501d868",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "count": 37,
+        "source": "app/src/test/java/com/cooper/lithic/domain/subscription/SubscriptionCostEngineTest.kt",
+        "source_sha256": "6c0aaab78675ed5053e86d8a493ea6d1b3692cd666f1fdd6da1decb423f3c73b",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.feature.project.ReplacementSubmissionGateTest",
+        "count": 6,
+        "source": "app/src/test/java/com/cooper/lithic/feature/project/ReplacementSubmissionGateTest.kt",
+        "source_sha256": "0551dc99f1e7bb0bc1749947e74d51ab035f9afaf7a68ea3fe040aaa8372ca6f",
+        "xml": "jvm-final/TEST-com.cooper.lithic.feature.project.ReplacementSubmissionGateTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+        "count": 13,
+        "source": "app/src/test/java/com/cooper/lithic/domain/report/CostTimelineEngineTest.kt",
+        "source_sha256": "a4c856906b59d7607a7a6bad13c3a29f6ecbbaea2fa1cd7eeb3a2a2e0f16919e",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.report.CostTimelineEngineTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+        "count": 11,
+        "source": "app/src/test/java/com/cooper/lithic/domain/report/TimelineSamplerTest.kt",
+        "source_sha256": "f88d2e0e92cc6e545f03d642dad867a8d4660f6a006bc6bacd2b28e74a92ab57",
+        "xml": "jvm-final/TEST-com.cooper.lithic.domain.report.TimelineSamplerTest.xml"
+      },
+      {
+        "class_name": "com.cooper.lithic.app.M18NavigationPolicyTest",
+        "count": 6,
+        "source": "app/src/test/java/com/cooper/lithic/app/M18NavigationPolicyTest.kt",
+        "source_sha256": "9bac8204c71f3243de87e275b121f93441ec1bd20f4c75cd8046ae4548f3949e",
+        "xml": "jvm-final/TEST-com.cooper.lithic.app.M18NavigationPolicyTest.xml"
+      }
+    ]
+  },
+  "android": {
+    "executed": 0,
+    "passed": 0,
+    "not_run": 17,
+    "classes": [
+      {
+        "source": "app/src/androidTest/java/com/cooper/lithic/app/M18TotalCostTrendJourneyTest.kt",
+        "count": 1,
+        "status": "NOT_RUN"
+      },
+      {
+        "source": "app/src/androidTest/java/com/cooper/lithic/ui/M18TotalCostTrendSemanticsTest.kt",
+        "count": 5,
+        "status": "NOT_RUN"
+      },
+      {
+        "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/M18TimelineRepositoryTest.kt",
+        "count": 7,
+        "status": "NOT_RUN"
+      },
+      {
+        "source": "app/src/androidTest/java/com/cooper/lithic/feature/review/M18TotalCostTrendViewModelTest.kt",
+        "count": 4,
+        "status": "NOT_RUN"
+      }
+    ],
+    "reason": "Original authorized emulator process identities absent; no ADB"
+  },
+  "screenshots": {
+    "actual": 0,
+    "status": "NOT_RUN"
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 23,
+    "issues": {
+      "OldTargetApi": 1,
+      "AndroidGradlePluginVersion": 2,
+      "GradleDependency": 9,
+      "NewerVersionAvailable": 6,
+      "VisibleForTests": 2,
+      "UnusedResources": 3
+    }
+  },
+  "build": "PASS",
+  "apk": "apk/identities.json",
+  "scope": "JVM plus build/artifact only; no Android execution or new screenshots; worktree source hashes reflect actual build bytes, not Git line-ending normalized blobs"
+}

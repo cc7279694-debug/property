@@ -1,6 +1,24 @@
 # 验收登记
 
-当前结论：**M17 — ACCEPTED / FROZEN — PASS WITH NOTES**。来源为用户转交的ChatGPT独立源码及证据验收，评审`54360aa0e61779c7efa62b527f8901778a0845a2`，分支`codex/m17-item-cost-charts`。认可原M17-T01～T05、144 JVM＋28 Android＝172唯一方法PASS、Lint0错误9警告及9张隔离截图；本轮仅文档登记，不是重新执行产品测试。M10延期、M13-T06延期、G1未整体通过、Q02的M18未完成部分、Q06边界与历史记录不变。
+当前交付：**M18 — READY_FOR_REVIEW（离线候选）**，分支`codex/m18-total-cost-history`，来源M17冻结`7e74df960e994e3a36f4417f7d83b07ead63763f`。174 JVM PASS，Lint0错误23警告、App/Test构建及测试源码编译成功；17 Android和截图NOT_RUN，不宣告M18全部通过或冻结。最近正式限定冻结为M17及此前模块；历史记录与延期门禁保持。
+
+## M18 当前执行验收（2026-10-21）
+
+本轮实际实现与离线验证，**不是独立验收/冻结**。[契约](planning/M18_CONTRACT.md)、[集中报告](evidence/M18-verification.md)、[逐类统计](evidence/m18/results.json)、[原始证据](evidence/m18/README.md)。
+
+| 原案例 | 本轮实际结果及未运行范围 |
+|---|---|
+| M18-T01 every_point_matches_reference | PASS（JVM）：固定seed合成账本100观察日、独立逐项冻结引擎参照、未展示舍入总额/两类贡献精确一致。 |
+| M18-T02 closed_or_expired_removed | PASS（JVM）：Q02结束日退出及后结算不重进总额；暂停/到期/停止重开/未来期/同日边界。真实Room子项NOT_RUN。 |
+| M18-T03 today_equals_home | PASS（JVM同快照口径）；NOT_RUN（真实Room >50条/零负值/预付/M16交易）。不登记完整案例PASS。 |
+| M18-T04 sampling_keeps_spikes | PASS（JVM）：20年7306日完整参考、三线桶极值/事件邻点、峰谷/抵消、非显示日精确查询。Android绘图及截图NOT_RUN。 |
+| M18-T05 multi_event_day_not_false_causality | PASS（JVM同日73事件索引）；NOT_RUN（Android50条窗口/文字/详情返回/只读集成），不登记完整交互PASS。 |
+
+**174 JVM PASS＝30新增（领域24＋导航6）＋144相关回归，0失败/错误/跳过**；源码方法与14份XML精确匹配。最终同组4任务BUILD SUCCESSFUL in 5m39s，294份构建输入前后相同。Lint0错误23警告（较M17增加14条锁版本提示，未改变依赖，原生产文件提示保留）。原导航2/3 FAIL、领域21/22 FAIL、空账本2/2 FAIL与最终GREEN分别保留；首次2处Android测试类型导入编译失败不当行为RED。
+
+**17新增Android方法全部NOT_RUN（Repository7＋VM4＋Compose5＋旅程1），新截图0。** 只读CIM原5672两个进程不存在，未发ADB或操作任何设备；不以编译、旧M17结果或本地辅助审阅冒充新Android PASS。完整快照排队写、跨日/失败/迟到/换代、纠错删除、format2往返/旧代拒读、真实Nav3及360dp/200%均仍待设备执行。截图/系统字号/真实午夜/SAF等不扩大。
+
+Q02仅M18领域子断言有新执行证据，Android/16组完整跨模块未关闭；Q03～Q06与未来期限保持。Room3/backup2/冻结引擎/M16保护/M12恢复不改；M10 PENDING / DEFERRED、三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过与全部历史NOTES保留。停止待独立验收，不进入M19。
 
 ## M17正式冻结登记（2026-10-21）
 

@@ -11,6 +11,7 @@ import com.cooper.lithic.data.local.CategoryEntity
 import com.cooper.lithic.data.local.CategoryType
 import com.cooper.lithic.data.local.LithicDatabase
 import com.cooper.lithic.data.local.LongTermProjectEntity
+import com.cooper.lithic.data.local.MoneyBasis
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.local.StoredValueValidation
@@ -25,6 +26,8 @@ import com.cooper.lithic.domain.report.OverviewProject
 import com.cooper.lithic.domain.report.OverviewResult
 import com.cooper.lithic.domain.report.OverviewSnapshot
 import com.cooper.lithic.domain.report.OverviewSubscription
+import com.cooper.lithic.domain.report.LedgerSnapshot
+import com.cooper.lithic.domain.report.TotalCostEvent
 import com.cooper.lithic.domain.subscription.Renewal
 import com.cooper.lithic.domain.subscription.Subscription
 import com.cooper.lithic.domain.subscription.SubscriptionCostEngine
@@ -110,10 +113,117 @@ class ReportRepository(
         }
     }
 
+    /** Complete M18 facts from one coordinator lease and one Room transaction. This method
+     * deliberately performs no timeline sampling; the transaction ends before CPU work begins.
+     * Existing identity, relation, money and payment validators are shared with the home reader. */
+    suspend fun loadLedgerSnapshot(asOf: LocalDate = clock.today()): LedgerSnapshot = coordinator.withSnapshot {
+        db.withTransaction {
+            ReplacementStoredFacts.requireValid(db)
+            check(db.projectDao().countOrphanEvents() == 0L) { "A money event refers to a missing project" }
+            check(db.subscriptionDao().countOrphanRenewals() == 0L && db.subscriptionDao().countOrphanStates() == 0L) {
+                "A payment or state refers to a missing subscription"
+            }
+            val categoryRows = db.categoryDao().list().associateBy { it.id }
+            val categories = categoryRows.values.map {
+                OverviewCategory(it.id, it.name, when (it.type) {
+                    CategoryType.PROJECT -> OverviewKind.PROJECT
+                    CategoryType.SUBSCRIPTION -> OverviewKind.SUBSCRIPTION
+                })
+            }
+            val verifiedMedia = mutableSetOf<String>()
+            val projects = mutableListOf<OverviewProject>()
+            val subscriptions = mutableListOf<OverviewSubscription>()
+            val events = mutableListOf<TotalCostEvent>()
+            val projectIds = mutableSetOf<String>()
+            var cursor: ProjectCursor? = null
+            while (true) {
+                val rows = db.projectDao().pageProjects(cursor?.startedOn, cursor?.id, BATCH_SIZE)
+                if (rows.isEmpty()) break
+                check(rows.all { projectIds.add(it.id) }) { "A project identity was read twice" }
+                val money = db.projectDao().eventsForProjects(rows.map { it.id }).groupBy { it.projectId }
+                for (row in rows) {
+                    requireIdentity(row.id, row.name, row.categoryId, row.coverAssetId, row.createdAt, row.updatedAt,
+                        CategoryType.PROJECT, categoryRows, verifiedMedia)
+                    val facts = money[row.id].orEmpty()
+                    val input = projectSnapshot(row, facts)
+                    // Validation must include later real facts when observing an earlier day.
+                    ProjectCostEngine.evaluate(input, if (input.moneyEvents.any { it.occurredOn.isAfter(asOf) }) LocalDate.MAX else asOf)
+                    projects += OverviewProject(row.id, row.categoryId, input)
+                    events += TotalCostEvent("project:${row.id}:start", row.startedOn, OverviewKind.PROJECT,
+                        row.id, row.name, "开始拥有", "取得日；金额以各条已保存的资金事件为准。")
+                    row.endedOn?.let { ended -> events += TotalCostEvent("project:${row.id}:end", ended,
+                        OverviewKind.PROJECT, row.id, row.name, "结束持有", "该日日末退出总额；后续真实结算不重新加入当前贡献。") }
+                    for (fact in facts) {
+                        val role = when (fact.role) {
+                            ProjectMoneyEventRole.INITIAL -> "初始投入"
+                            ProjectMoneyEventRole.REGULAR -> "后续资金事件"
+                            ProjectMoneyEventRole.END_SETTLEMENT -> "结束结算"
+                        }
+                        events += TotalCostEvent("money:${fact.id}", fact.occurredOn, OverviewKind.PROJECT,
+                            row.id, row.name, if (fact.direction == MoneyDirection.OUTLAY) "投入" else "收回",
+                            listOfNotNull(role, fact.description?.takeIf(String::isNotBlank)).joinToString("；"),
+                            fact.amountCents, fact.basis == MoneyBasis.TRADE_IN_CREDIT)
+                    }
+                }
+                cursor = rows.last().let { ProjectCursor(it.startedOn, it.id) }
+                if (rows.size < BATCH_SIZE) break
+            }
+            check(projectIds.size.toLong() == db.projectDao().countProjects()) { "The ledger omitted project identities" }
+            val subscriptionIds = mutableSetOf<String>()
+            var afterId: String? = null
+            while (true) {
+                val rows = db.subscriptionDao().validationSubscriptions(afterId, BATCH_SIZE)
+                if (rows.isEmpty()) break
+                check(rows.all { subscriptionIds.add(it.id) }) { "A subscription identity was read twice" }
+                val ids = rows.map { it.id }
+                val paid = db.subscriptionDao().renewalsForSubscriptions(ids).groupBy { it.subscriptionId }
+                val changes = db.subscriptionDao().statesForSubscriptions(ids).groupBy { it.subscriptionId }
+                for (row in rows) {
+                    requireIdentity(row.id, row.name, row.categoryId, row.coverAssetId, row.createdAt, row.updatedAt,
+                        CategoryType.SUBSCRIPTION, categoryRows, verifiedMedia)
+                    val payments = paid[row.id].orEmpty()
+                    val states = changes[row.id].orEmpty()
+                    val input = subscriptionSnapshot(row, payments, states)
+                    SubscriptionCostEngine.evaluate(input, if (input.renewals.any { it.paidOn.isAfter(asOf) }) LocalDate.MAX else asOf)
+                    subscriptions += OverviewSubscription(row.id, row.categoryId, input)
+                    for (payment in payments) {
+                        val cycle = when (payment.cycle) {
+                            com.cooper.lithic.domain.subscription.BillingCycle.MONTHLY -> "月付"
+                            com.cooper.lithic.domain.subscription.BillingCycle.QUARTERLY -> "季付"
+                            com.cooper.lithic.domain.subscription.BillingCycle.YEARLY -> "年付"
+                        }
+                        events += TotalCostEvent("payment:${payment.id}:paid", payment.paidOn, OverviewKind.SUBSCRIPTION,
+                            row.id, row.name, "真实付款", "$cycle；折算${payment.standardDays}天；覆盖[${payment.effectiveFrom}, ${payment.paidUntilExclusive})。", payment.amountCents)
+                        events += TotalCostEvent("payment:${payment.id}:from", payment.effectiveFrom, OverviewKind.SUBSCRIPTION,
+                            row.id, row.name, "付费覆盖生效", "按该期已存周期和标准天数计算；不是另一笔付款。")
+                        events += TotalCostEvent("payment:${payment.id}:until", payment.paidUntilExclusive, OverviewKind.SUBSCRIPTION,
+                            row.id, row.name, "付费覆盖结束", "排他边界；该日不属于上一期，不自动产生付款。")
+                    }
+                    for (change in states) {
+                        val label = when (change.state) {
+                            com.cooper.lithic.domain.subscription.SubscriptionOperationState.ENABLED -> "启用"
+                            com.cooper.lithic.domain.subscription.SubscriptionOperationState.PAUSED -> "暂停"
+                            com.cooper.lithic.domain.subscription.SubscriptionOperationState.STOPPED -> "停止"
+                        }
+                        events += TotalCostEvent("state:${change.id}", change.effectiveOn, OverviewKind.SUBSCRIPTION,
+                            row.id, row.name, "状态变更：$label",
+                            listOfNotNull("以实际生效日为准；不产生付款。", change.reason?.takeIf(String::isNotBlank),
+                                change.note?.takeIf(String::isNotBlank)).joinToString("；"))
+                    }
+                }
+                afterId = rows.last().id
+                if (rows.size < BATCH_SIZE) break
+            }
+            check(subscriptionIds.size.toLong() == db.subscriptionDao().countSubscriptions()) { "The ledger omitted subscription identities" }
+            LedgerSnapshot(OverviewSnapshot(categories.toList(), projects.toList(), subscriptions.toList()),
+                events.sortedWith(compareBy<TotalCostEvent> { it.date }.thenBy { it.id }))
+        }
+    }
+
     /** Includes the first read and fact/category edits that leave identity counts unchanged. */
     val changes: Flow<Unit> = db.invalidationTracker.createFlow(
         "long_term_projects", "project_money_events", "subscriptions", "subscription_renewals",
-        "subscription_state_changes", "categories", "local_media_assets",
+        "subscription_state_changes", "categories", "local_media_assets", "replacements",
     ).map { Unit }
 
     private suspend fun requireIdentity(

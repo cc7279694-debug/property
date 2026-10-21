@@ -1,0 +1,118 @@
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:processDebugManifestForPackage
+> Task :app:processDebugResources
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+
+> Task :app:testDebugUnitTest
+
+CostTimelineEngineTest > trade_in_reads_three_stored_facts_without_repeating_purchase_total FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:161
+
+CostTimelineEngineTest > prepayment_is_not_current_price_and_paid_until_is_exclusive FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:100
+
+CostTimelineEngineTest > every_point_matches_reference_seeded_random_ledger FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:55
+
+CostTimelineEngineTest > subscription_boundaries_pause_gap_stop_reopen_and_future_stop FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:92
+
+CostTimelineEngineTest > dates_preserve_callers_order_and_duplicate_observations FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:179
+
+CostTimelineEngineTest > closed_or_expired_removed_q02_and_post_end_settlement FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:65
+
+CostTimelineEngineTest > duplicate_or_wrong_record_event_identity_is_rejected FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:169
+
+CostTimelineEngineTest > multi_event_day_not_false_causality_and_prepayment_without_jump FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:150
+
+CostTimelineEngineTest > empty_inactive_zero_and_cancellation_are_different FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:122
+
+CostTimelineEngineTest > today_equals_home_without_display_rounding FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:112
+
+CostTimelineEngineTest > same_day_start_and_end_never_manufactures_a_total_spike FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:78
+
+CostTimelineEngineTest > negative_rate_and_positive_subscription_can_cancel_without_losing_components FAILED
+    java.lang.AssertionError at CostTimelineEngineTest.kt:138
+
+TimelineSamplerTest > invalid_budget_is_rejected_instead_of_silently_changing_history FAILED
+    java.lang.AssertionError at TimelineSamplerTest.kt:125
+
+TimelineSamplerTest > component_cancellation_does_not_erase_subscription_spike_or_negative_valley FAILED
+    java.util.NoSuchElementException at TimelineSamplerTest.kt:235
+
+TimelineSamplerTest > cancellation_is_checked_while_scanning_and_publishes_no_partial_timeline FAILED
+    java.lang.AssertionError at TimelineSamplerTest.kt:108
+
+TimelineSamplerTest > exact_non_display_date_returns_original_value FAILED
+    java.lang.AssertionError at TimelineSamplerTest.kt:74
+
+TimelineSamplerTest > paid_coverage_and_status_boundaries_survive_even_without_event_metadata FAILED
+    java.lang.AssertionError at TimelineSamplerTest.kt:86
+
+TimelineSamplerTest > sampling_keeps_spikes_twenty_year_reference_and_all_three_bucket_extrema FAILED
+    java.lang.AssertionError at TimelineSamplerTest.kt:20
+
+TimelineSamplerTest > future_only_facts_do_not_forecast_and_current_cutoff_is_kept FAILED
+    java.lang.AssertionError at TimelineSamplerTest.kt:100
+
+TimelineSamplerTest > extreme_localdate_endpoint_does_not_overflow_neighbour_math FAILED
+    java.lang.AssertionError at TimelineSamplerTest.kt:119
+
+TimelineSamplerTest > key_dates_and_neighbours_are_retained_beyond_budget FAILED
+    java.lang.AssertionError at TimelineSamplerTest.kt:48
+
+22 tests completed, 21 failed
+
+> Task :app:testDebugUnitTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///E:/CODEX/.codex/worktrees/lithic-m13/%E7%A0%BA%E7%9F%B3%E6%96%B0APP/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 32s
+26 actionable tasks: 13 executed, 13 up-to-date

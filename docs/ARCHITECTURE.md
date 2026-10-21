@@ -1,5 +1,15 @@
 # 当前架构事实
 
+## M18：全账本只读总成本历史（2026-10-21）
+
+[ReportRepository.loadLedgerSnapshot](../app/src/main/java/com/cooper/lithic/data/repository/ReportRepository.kt)复用原身份/类别/项目金额/续费状态映射、孤儿检查及ReplacementStoredFacts，在一个generation协调器和Room事务内稳定50条分批读取全部当前及历史身份与完整关联事实；同页批量读资金/付款/状态，核对全量计数，不用首页第一页拼统计。事件按业务日期记录所属ID/名称/金额方向/非现金标识，付款与覆盖边界分开，替换边不添钱；只校验封面登记引用，不读取图片字节。首页原loadOverview不变，仅补replacements失效通知。
+
+[LedgerSnapshot与CostTimelineEngine](../app/src/main/java/com/cooper/lithic/domain/report/CostTimelineEngine.kt)是已有Overview事实的内存封装，按每观察日复用冻结引擎/Overview汇总；原校验在空日期/空账本时仍执行。事件按日索引一次，正负解释也从冻结引擎取值；没有派生数据库或备份字段。[TimelineSampler](../app/src/main/java/com/cooper/lithic/domain/report/TimelineSampler.kt)在事务外Default完整日级流式扫描，40桶每桶三线min/max构成240基础候选，起止和全部事实边界±1额外保留，日期集合共用。内存随事实/保留点增长，时间随日期数×单日冻结引擎求值成本增长（含排序/结构校验及额外事件索引/关键点排序），取消为每日协作检查，不作最坏时限承诺。
+
+[TotalCostTrendViewModel](../app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendViewModel.kt)由原generation UI作用域拥有，读取/选日票据和捕获快照身份共同拒绝旧结果；截止日、选日、精确三额和相关事件一起发布。写入失效、跨日与返回前台重读，恢复换代清旧模型；保留拆分意图，读错留带旧截止的结果并说明尚未刷新，日期调整用notice而非伪称读取失败。[趋势页](../app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendScreen.kt)在回看内显示总线/分项同轴、阶梯、精确日期、50条可扩事件和文字替代；TREND来源贯穿原canonicalBackStack/requestLeave守卫。未改M17共享图表。
+
+Room3/backup2/金额状态算法/M16组保护/M12恢复及媒体规则不变，无新依赖。以上为实际候选结构；174 JVM与编译通过，真实Room/页面/恢复往返/截图17项Android尚NOT_RUN，不能由架构文字授予M18冻结。[当前状态](CURRENT_STATE.md)、[验收登记](ACCEPTANCE_MATRIX.md)为执行结论；M19未授权。
+
 ## M17：单记录只读成本历史（2026-10-21）
 
 [ItemTimelineRepository](../app/src/main/java/com/cooper/lithic/data/repository/ItemTimelineRepository.kt)是现有generation上的非owner读适配，不创建数据库或写入派生结果。它固定一个BusinessClock观察日，复用原项目/订阅完整详情读取的协调器与Room事务，取得全部关联事实和实体元数据；随后从该不可变快照生成时间线。每个显示点及任意日期选择分别调用冻结M02/M03引擎，不逐点查库、不从列表第一页推断历史，也不在UI复制金额公式。

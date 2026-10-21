@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.report.CostTimelineEngineTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-21T10:43:54.302Z" hostname="WHOCARE" time="0.443">
+  <properties/>
+  <testcase name="empty_observation_list_still_rejects_corrupt_empty_ledger_categories" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.132"/>
+  <testcase name="trade_in_reads_three_stored_facts_without_repeating_purchase_total" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.029"/>
+  <testcase name="prepayment_is_not_current_price_and_paid_until_is_exclusive" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.021"/>
+  <testcase name="every_point_matches_reference_seeded_random_ledger" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.223"/>
+  <testcase name="subscription_boundaries_pause_gap_stop_reopen_and_future_stop" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.003"/>
+  <testcase name="dates_preserve_callers_order_and_duplicate_observations" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.002"/>
+  <testcase name="closed_or_expired_removed_q02_and_post_end_settlement" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.001"/>
+  <testcase name="duplicate_or_wrong_record_event_identity_is_rejected" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.007"/>
+  <testcase name="multi_event_day_not_false_causality_and_prepayment_without_jump" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.003"/>
+  <testcase name="empty_inactive_zero_and_cancellation_are_different" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.005"/>
+  <testcase name="today_equals_home_without_display_rounding" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.008"/>
+  <testcase name="same_day_start_and_end_never_manufactures_a_total_spike" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.001"/>
+  <testcase name="negative_rate_and_positive_subscription_can_cancel_without_losing_components" classname="com.cooper.lithic.domain.report.CostTimelineEngineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,101 @@
+{
+  "artifacts": {
+    "app": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 13164911,
+      "sha256": "a837fd4ae881efbf042587a53b87414a8a94cad935ba74ee99b87e7cce5b8ed9",
+      "application_id": "com.cooper.lithic.debug",
+      "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "installed": "NOT_RUN",
+      "uid": "NOT_RUN",
+      "m18_descriptors_present": true,
+      "version_code": 13,
+      "version_name": "0.1.0-m18-debug"
+    },
+    "test": {
+      "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 2923214,
+      "sha256": "8b225f072e931e42ec62d725973e2425cf5ff8f727293936e59eb58da948f766",
+      "application_id": "com.cooper.lithic.debug.test",
+      "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "installed": "NOT_RUN",
+      "uid": "NOT_RUN",
+      "runner": "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner",
+      "m18_test_descriptors_present": [
+        "data/repository/M18TimelineRepositoryTest",
+        "feature/review/M18TotalCostTrendViewModelTest",
+        "ui/M18TotalCostTrendSemanticsTest",
+        "app/M18TotalCostTrendJourneyTest"
+      ]
+    }
+  },
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 311,
+      "stdout_sha256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 5430,
+      "stdout_sha256": "6fe9005bfc900242f75115b24d38e8b1eecf1470ffeeeb2a97c48b47519f8fa5",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 311,
+      "stdout_sha256": "a914347c6ac0dc51bfa01f7e1be7850c4f2b1ef5ce932a325945260fba489bb8",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 1170,
+      "stdout_sha256": "57344bee6a715bb2a176c23f640389bdfdb53fdd2bb7e54a7b2b30f832098979",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 4750,
+      "stdout_sha256": "d43125ed6eb7e184504a9424c022199b95c6c3ed5c7056cc6ae92cefc8904963",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

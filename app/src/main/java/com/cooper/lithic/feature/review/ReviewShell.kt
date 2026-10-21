@@ -21,13 +21,23 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onProjectHistory: (() -> Unit)? = null,
-    onSubscriptionHistory: (() -> Unit)? = null, onLongTermReview: (() -> Unit)? = null) {
+    onSubscriptionHistory: (() -> Unit)? = null, onLongTermReview: (() -> Unit)? = null,
+    onTotalCostTrend: (() -> Unit)? = null) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("review-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Text("回看", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
         Text(if (projectCount == 0L) "暂无长期项目记录" else "已录入 $projectCount 条长期项目（含历史）",
             style = MaterialTheme.typography.bodyLarge)
         HorizontalDivider()
+        onTotalCostTrend?.let { openTrend ->
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                OutlinedButton(openTrend, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-total-cost-trend")) {
+                    Text("成本趋势", style = MaterialTheme.typography.bodyLarge)
+                }
+                Text("按已录入事实回看总日均成本，可展开长期项目和订阅贡献。不是当天实际扣款。",
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
         onLongTermReview?.let { openReview ->
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedButton(openReview, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-long-term")) {

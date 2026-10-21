@@ -17,6 +17,9 @@ internal data object Review : NavKey
 internal data object LongTermReview : NavKey
 
 @Serializable
+internal data object TotalCostTrend : NavKey
+
+@Serializable
 internal data object Settings : NavKey
 
 @Serializable
@@ -32,7 +35,7 @@ internal data object ProjectList : NavKey
 internal data object ProjectHistory : NavKey
 
 @Serializable
-internal enum class ProjectOrigin { CURRENT, HISTORY, REVIEW }
+internal enum class ProjectOrigin { CURRENT, HISTORY, REVIEW, TREND }
 
 @Serializable
 internal data object CreateProject : NavKey
@@ -77,7 +80,7 @@ internal data object SubscriptionList : NavKey
 internal data object CreateSubscription : NavKey
 
 @Serializable
-internal enum class SubscriptionOrigin { CURRENT, HISTORY, REVIEW }
+internal enum class SubscriptionOrigin { CURRENT, HISTORY, REVIEW, TREND }
 
 @Serializable
 internal enum class SubscriptionAction { PAUSE, RESUME, REOPEN, STOP }
@@ -115,6 +118,7 @@ internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (desti
     Home -> listOf(Home)
     Review, Settings, ProjectList, SubscriptionList -> listOf(Home, destination)
     LongTermReview -> listOf(Home, Review, LongTermReview)
+    TotalCostTrend -> listOf(Home, Review, TotalCostTrend)
     NameSearch -> listOf(Home, NameSearch)
     CategoryManagement -> listOf(Home, Settings, CategoryManagement)
     ProjectHistory -> listOf(Home, Review, ProjectHistory)
@@ -159,6 +163,7 @@ private fun subscriptionParent(origin: SubscriptionOrigin): List<NavKey> = when 
     SubscriptionOrigin.CURRENT -> listOf(Home, SubscriptionList)
     SubscriptionOrigin.HISTORY -> listOf(Home, Review, SubscriptionHistory)
     SubscriptionOrigin.REVIEW -> listOf(Home, Review, LongTermReview)
+    SubscriptionOrigin.TREND -> listOf(Home, Review, TotalCostTrend)
 }
 
 private fun subscriptionEditorStack(id: String, origin: SubscriptionOrigin, destination: NavKey): List<NavKey> =
@@ -183,6 +188,7 @@ private fun projectParent(origin: ProjectOrigin): List<NavKey> = when (origin) {
     ProjectOrigin.CURRENT -> listOf(Home, ProjectList)
     ProjectOrigin.HISTORY -> listOf(Home, Review, ProjectHistory)
     ProjectOrigin.REVIEW -> listOf(Home, Review, LongTermReview)
+    ProjectOrigin.TREND -> listOf(Home, Review, TotalCostTrend)
 }
 
 private fun projectDetailStack(id: String, origin: ProjectOrigin, comparisonId: String?): List<NavKey> {

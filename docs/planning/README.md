@@ -1,6 +1,6 @@
 # 规划资料与来源登记
 
-2026-10-21 当前执行入口：[M17契约](M17_CONTRACT.md)与[唯一当前状态](../CURRENT_STATE.md)。M16限定冻结，M17仅等待本轮独立验收；M10延期、M13-T06/G1边界保持，M18未授权。下方2026-10-13来源接入登记保留其历史日期，不作为当前模块授权。
+2026-10-21 当前执行入口：[M18契约](M18_CONTRACT.md)与[唯一当前状态](../CURRENT_STATE.md)。M17已限定冻结，M18离线候选READY_FOR_REVIEW；Android/新截图NOT_RUN，M10延期、M13-T06/G1边界保持，M19未授权。下方旧日期来源接入登记保留历史语境，不作为当前模块授权。
 
 更新日期：2026-10-13。原始Planning Baseline 1.0在M00接入，M00～M08已独立验收冻结PASS WITH NOTES；当前M09实施验证后READY_FOR_REVIEW、独立PENDING，范围见[M09契约](M09_CONTRACT.md)。原规划来源字节不改，当前实际结果另记；Q02/Q07解释、Q03～Q06期限及所有历史独立NOTES保留，M10未授权。
 

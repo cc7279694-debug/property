@@ -1,0 +1,24 @@
+{
+  "observed_at": "2026-10-21T10:29:11.412946+00:00",
+  "command": [
+    "powershell",
+    "-NoProfile",
+    "-Command",
+    "@(Get-CimInstance Win32_Process -Filter 'ProcessId=20744 OR ProcessId=7356' | ForEach-Object { [pscustomobject]@{ProcessId=$_.ProcessId;ParentProcessId=$_.ParentProcessId;CreationDate=$_.CreationDate.ToString('o');ExecutablePath=$_.ExecutablePath;CommandLine=$_.CommandLine} }) | ConvertTo-Json -Depth 4"
+  ],
+  "exit_code": 0,
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "expected_serial": "emulator-5672",
+  "expected_avd": "Lithic_M14_API36_20261021",
+  "original_pids": [
+    20744,
+    7356
+  ],
+  "processes": [],
+  "status": "NOT_RUN",
+  "reason": "Original authorized launcher and QEMU not present; no ADB, restart, creation, installation or screenshots attempted",
+  "adb_calls": 0
+}
