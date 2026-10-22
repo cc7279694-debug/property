@@ -1,4 +1,4 @@
-<!-- 2026-10-22：M19独立限定冻结登记；本轮仅必要文档，不构建、不操作设备、不授权M20。 -->
+<!-- 2026-10-22：M20已按用户转交的独立结论限定冻结；第二次平台收口BLOCKED。当前仅文档登记，末节为最新停止边界。 -->
 # 砺石 LITHIC 协作规范
 
 ## 1. 范围与优先级
@@ -103,3 +103,11 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 ### M20最后一次定向收口停止点
 
 用户另行授权仅原M20/5704冷启动一次，对固定第二run`eb140516-9807-45be-b01b-781a9b76f6c0`做精确收口，覆盖上一停止点的本次重启限制。实际启动身份及旧APK核对通过，但冷启动出现正常App进程与新默认generation，未能证明无新Worker，已停止；没有安装/运行收口测试或取消任务/通知、重开账本Owner。仅正常关闭本轮原实例，AVD和未知现场保留。收口BLOCKED，原22 PASS、平台FAIL及UNKNOWN不改，详见[报告](docs/evidence/M20-Platform-closure.md)。本次没有产品或测试源码变更；提交推送后停止，任何再次启动、取消、恢复或清理须另行明确授权，不冻结M20或进入M21。
+
+## M20当前正式限定冻结登记
+
+用户正式转交ChatGPT对`d3776e0b2852428911ad0f09296680046211b32d`的独立验收：**M20 — ACCEPTED / FROZEN — PASS WITH NOTES**。仅冻结续费Planner、权限/偏好、有限幂等回执、WorkManager集成及Room schema v4、backup format v3兼容实现；M20-T01～T06、此前238 JVM/原22 Android最终PASS、Lint0错误25警告获限定认可，见[正式登记](docs/ACCEPTANCE_MATRIX.md#m20正式限定冻结登记2026-10-22)。上方候选/补验/收口段落均为历史授权与观察，不再表示产品尚待冻结。
+
+第二次平台收口依旧BLOCKED；25个唯一方法最新24 PASS/1 FAIL、首轮21 PASS/1 FAIL、真实平台JUnit两次FAIL及SystemUI截图全部保持。第二次周期任务、OS Job、指定通知及Owner收口UNKNOWN，冷启动App进程/默认generation出现及其触发来源UNKNOWN的边界不改。`Lithic_M20_API36_20261022 / emulator-5704`为**保留 / 隔离测试现场**，未经重新明确授权不得直接复用、删除或清理；不把模拟器退出或独立冻结当作应用收口证明。
+
+M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、G3未通过及全部历史NOTES/NOT_RUN保持；不保证OEM后台准点或exactly-once。当前只提交推送M20分支必要登记文档，不改源码、不构建、不测试、不核验或操作设备。完成后停止，不合并main，不进入M21。

@@ -4,11 +4,11 @@
 
 ## Current Stage
 
-- **M20 — READY_FOR_REVIEW / 独立PENDING**：分支`codex/m20-renewal-notifications`，来源M19冻结回写`33ae4f4da61b066d7e2f1ca25cf5f2353208c183`。实现续费Planner、WorkManager2.12.0非精确持久任务、同代完整事实/权限/偏好复核、稳定tag/ID与成功调用后Receipt、通知设置页面；里程碑只保存偏好，实际发送仍未授权。明确升级Room3→4九表及完整迁移链、backup2→3/旧1/2严格升级、旧proof兼容及恢复激活前截止水位，内部generation metadata仍1。冻结金额/日期/订阅算法、旧schema1/2/3不改。
+- **M20 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-22正式转交的ChatGPT独立源码及证据验收，评审`d3776e0b2852428911ad0f09296680046211b32d`，评审及登记分支`codex/m20-renewal-notifications`。M20-T01～T06、此前238 JVM PASS、原22 Android最终PASS及Lint0错误25警告获限定认可；仅冻结续费Planner、权限/偏好、有限幂等回执、WorkManager集成及Room schema v4、backup format v3兼容实现，不扩大为OEM后台准点保证。见[正式登记](ACCEPTANCE_MATRIX.md#m20正式限定冻结登记2026-10-22)。本轮仅文档回写，未重跑测试、构建、核验APK或操作设备。来源M19冻结回写`33ae4f4da61b066d7e2f1ca25cf5f2353208c183`。实现续费Planner、WorkManager2.12.0非精确持久任务、同代完整事实/权限/偏好复核、稳定tag/ID与成功调用后Receipt、通知设置页面；里程碑只保存偏好，实际发送仍未授权。明确升级Room3→4九表及完整迁移链、backup2→3/旧1/2严格升级、旧proof兼容及恢复激活前截止水位，内部generation metadata仍1。冻结金额/日期/订阅算法、旧schema1/2/3不改。
   **最新定向收口BLOCKED**：用户另行授权从`d2be4cb29a03de100e784527f8e99e86e2cf45d6`仅启动原M20/5704一次。真实新Boot身份、原App/Test字节/证书/UID均通过，但未发出App启动命令时出现正常App PID3115及新增默认active-generation/generations；未能证明无新Worker，立即停止收口。新方法编译/安装/执行、任务取消、通知清除及第二次账本Owner重开均0；原第二次结果SHA不变，周期任务/通知/账本与显式Owner收口仍UNKNOWN或NOT_RUN，不能改判。只正常关闭本轮M20原实例，进程和端口结束，AVD和新旧现场保留。见[平台收口报告](evidence/M20-Platform-closure.md)及[逐项状态](evidence/m20-platform-closure/results.json)。没有重新执行下列测试，也不自行再启动、恢复、取消或进入M21。
   此前238定向JVM PASS（88新增＋150回归）保持，本轮未重跑。用户另行授权的新低资源API36/x86_64 `Lithic_M20_API36_20261022 / emulator-5704`实际完成原22项：最终22 PASS＝首轮未受影响16＋Context修正后Worker6复验，跨Test身份及52个原编译类最终字节不变均有证据；首轮21 PASS/1 FAIL不改写。额外3方法最新2 PASS/1 FAIL（截图、旧任务收口PASS，真实平台通知窗口谓词两次10秒超时FAIL）；全部25个唯一方法最新24 PASS/1 FAIL，实际32次执行29 PASS/3 FAIL。真实WorkManager/OS Job、通知发布、Receipt及业务事实不变子断言通过，真实SystemUI文案可见，但不替代整方法PASS；第二次平台任务显式Owner关闭/周期任务收口UNKNOWN，保守保留，不从模拟器退出推断关闭通过。
   最终Lint0错误25警告、Test构建成功、监督器12项宿主PASS；只改测试/取证接缝，App SHA仍`776c0016…`，最终Test `81560867…`。最终5个截图文件/4个独立画面，设置为隔离ComponentActivity、360dp/200%为LocalDensity，通知为真实SystemUI，不冒充MainActivity/系统字体/TalkBack。新AVD创建/启动/正常退出各1，App安装1，Test安装1＋同签更新2；退出时原进程/端口消失，AVD与UNKNOWN现场保留，旧设备操作0。原启动helper exit1/90秒超时及取证失败保留。QEMU生命周期峰值约3.74GiB，2048MB仅guest配置；新根物理文件约4.04GiB，整机/同时合并峰值NOT_CAPTURED。
-  [补验报告](evidence/M20-Android-verification.md)、[统一结果](evidence/m20-android/results.json)、[补验checkpoint](checkpoints/2026-10-22-M20-Android.md)；[原离线报告](evidence/M20-verification.md)、[原结果](evidence/m20/results.json)、[原checkpoint](checkpoints/2026-10-22-M20.md)及当时22 NOT_RUN/5692未准入保持历史原状。真实重启后的队列、API26/真机/OEM、完整TalkBack与系统大字、LMK/断电等仍NOT_RUN。Q04仍PROPOSED，G1/G2及16组完整门禁不整体通过；发布后落盘前有限重试窗口、回拨时钟归档拒绝、全量事实开销、M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED及全部历史NOTES保持。不能冻结M20，提交后停止等待独立复验，M21未授权。
+  [补验报告](evidence/M20-Android-verification.md)、[统一结果](evidence/m20-android/results.json)、[补验checkpoint](checkpoints/2026-10-22-M20-Android.md)；[原离线报告](evidence/M20-verification.md)、[原结果](evidence/m20/results.json)、[原checkpoint](checkpoints/2026-10-22-M20.md)及当时22 NOT_RUN/5692未准入保持历史原状。真实重启后的队列、API26/真机/OEM、完整TalkBack与系统大字、LMK/断电等仍NOT_RUN。Q04仍PROPOSED，G1/G2及16组完整门禁不整体通过；发布后落盘前有限重试窗口、回拨时钟归档拒绝、全量事实开销、M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED及全部历史NOTES保持。产品限定冻结不改变第二次平台收口BLOCKED；G3未通过。`Lithic_M20_API36_20261022 / emulator-5704`为保留/隔离测试现场，未经重新明确授权不得复用、删除或清理。冷启动新App进程和默认generation条目是事实，具体触发来源及新Worker执行UNKNOWN。提交必要登记文档后停止，M21未授权。
 
 
 - **M19 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-22正式转交的ChatGPT独立源码、JVM/Android原始证据、截图及设备身份验收结论，评审提交`21d6230543ac9c0c491d8da590d230396952f571`，评审/回写分支`codex/m19-category-annual-review`。M19-T01～T06、此前109 JVM PASS（24新＋85相关回归）、29 Android PASS（16新＋13相关回归）、Lint0错误23警告及8张真实隔离截图获限定认可。冻结范围仅类别分析、按真实资金年份归属、客观年度回顾及对应只读完整事实映射；Room schema v3、backup format v2、冻结金额/日期/订阅算法、M16保护及恢复/媒体协议不变。[正式登记](ACCEPTANCE_MATRIX.md#m19正式冻结登记2026-10-22)、[原报告](evidence/M19-verification.md)、[原唯一方法](evidence/m19/results.json)、[8图与来源](evidence/m19/screenshots/README.md)、[原checkpoint](checkpoints/2026-10-21-M19.md)。
@@ -78,13 +78,13 @@
 
 ## Data / Architecture
 
-M16已限定冻结，当前为Room3八表、显式Migration1→2→3、backup2及旧v1显式DTO升级；旧schema1/2 Git原字节保留。共用唯一generation/owner/coordinator与冻结引擎，替换边和三行成组折抵持久化；用户确认的组保护强制执行。M12 pointer/ready/proof协议仍1，旧五字段hash与新dataFormatVersion2严格区分，不改安全回退/保守残留规则。媒体保持M11原字节、设置/关系/金额在同快照读写；不是M10严格JPEG实现。详见[ARCHITECTURE](ARCHITECTURE.md)。
+M20已限定冻结，当前为Room4九表、显式Migration1→2→3→4、backup3及旧format1/2显式DTO升级，含通知Receipt、两偏好和恢复截止；旧schema1/2/3 Git原字节保留。共用唯一generation/owner/coordinator与冻结引擎，M16替换边和三行成组折抵及已确认组保护保持。内部generation metadata仍1；旧proof1/2按原序列化字节认证，旧proof与新dataFormatVersion3严格区分，激活前建立截止保护，不改安全回退/保守残留规则。媒体保持M11原字节、设置/关系/金额在同快照读写；不是M10严格JPEG实现。原架构与[M20实现决策](DECISIONS.md#2026-10-22--m20同代发布回执schema4与format3)共同说明当前系统。
 
 ## Git
 
-- 当前分支`codex/m19-category-annual-review`，工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`。冻结登记前本地与远端HEAD均为评审提交`21d6230543ac9c0c491d8da590d230396952f571`，工作区干净。
+- 当前分支`codex/m20-renewal-notifications`，工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`。本次限定冻结登记前本地与远端HEAD均为评审提交`d3776e0b2852428911ad0f09296680046211b32d`，工作区干净。
 - 本轮只提交/推送必要登记文档，最终SHA与远端一致性由Git回执核对；不修改产品/测试或原证据，不构建、核验APK、操作或清理设备，不合并main。
 
 ## Next Recommended Task
 
-M20候选交付后停止，等待ChatGPT独立验收；真实Android/截图及Room迁移重开仍NOT_RUN，需另行确认安全设备条件后补验，不自行创建/重启设备或进入M21。M19等限定冻结、M10延期/三JPEG历史FAIL、M13-T06延期、G1/G2、Q02完整16组及全部NOTES保持。
+M20产品限定冻结登记后停止，等待用户后续明确授权，不进入M21。第二次平台收口BLOCKED，周期任务/OS Job/指定通知/Owner收口UNKNOWN，M20 AVD保留/隔离，不自行复用、启动、取消、恢复或清理。M19等冻结、M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、G3未通过、Q02完整16组和全部NOTES/NOT_RUN保持。

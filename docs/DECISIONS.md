@@ -1,5 +1,19 @@
 # 决策记录
 
+## 2026-10-22 — M20产品限定冻结与平台收口隔离
+
+### Decision
+
+依据用户正式转交的ChatGPT独立源码及证据结论，对`codex/m20-renewal-notifications`评审提交`d3776e0b2852428911ad0f09296680046211b32d`登记 **M20 — ACCEPTED / FROZEN — PASS WITH NOTES**。M20-T01～T06、此前238 JVM PASS、原22 Android最终PASS及Lint0错误25警告获限定认可；详见[正式登记](ACCEPTANCE_MATRIX.md#m20正式限定冻结登记2026-10-22)。仅冻结续费Planner、权限/偏好、有限幂等回执、WorkManager集成及Room schema v4、backup format v3兼容实现，不承诺厂商后台准点。
+
+### Context / Reason
+
+产品功能的独立认可与额外实验的失败/资源收口是不同结论。25个唯一方法最新24 PASS/1 FAIL、首轮21 PASS/1 FAIL、平台JUnit两次可见性失败和真实SystemUI截图保持；不能将整组额外平台实验标为PASS。第二次定向收口仍BLOCKED，周期任务/OS Job/指定通知/Owner收口UNKNOWN；冷启动后的App进程和默认generation条目是已观察事实，具体触发来源及新Worker执行UNKNOWN。独立结论不替代缺少的结束证明，也不改写旧报告。
+
+### Consequences
+
+`Lithic_M20_API36_20261022 / emulator-5704`及其独立研究根标为保留/隔离测试现场，未经重新明确授权不得复用、删除或清理。发布→Receipt持久化前有限重试、系统节流及OEM差异、API26/真机/Release/真实重启队列、系统字号/TalkBack、LMK/断电等NOTES/NOT_RUN保留；有限幂等不等于exactly-once或用户已收到。M10延期/三JPEG历史FAIL、M13-T06延期、G1/G2未整体通过、Q04 PROPOSED、G3未通过和所有历史门禁保持。里程碑发送仍归未授权的M21。本轮仅必要文档登记，没有重新运行测试/构建、核验APK或操作设备；提交推送后停止，不合并main或进入M21。
+
 ## 2026-10-22 — M19独立限定冻结与后续授权边界
 
 ### Decision

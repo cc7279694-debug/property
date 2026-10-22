@@ -1,6 +1,6 @@
 # V1 模块路线与执行闸门
 
-**2026-10-22 M20当前覆盖**：候选READY_FOR_REVIEW/独立PENDING。此前238 JVM PASS未重跑；另行授权的全新低资源API36补验取得原22项最终22 PASS（首轮16＋Context修正后Worker6），首轮21 PASS/1 FAIL保留。额外3方法最新2 PASS/1 FAIL，平台通知窗口谓词两次超时、第二次平台任务显式收口UNKNOWN保留，真实系统发布子证据不能替代整方法PASS。最终Lint0/25、Test构建成功，App未变；5个截图文件/4个独立画面。仅新5704创建/启动/正常退出各1，AVD及UNKNOWN现场保留，历史设备不操作。见[补验报告](evidence/M20-Android-verification.md)；[原离线报告](evidence/M20-verification.md)的22 NOT_RUN保持历史语境。Room4/backup3仍未冻结，M19等冻结、M10/M13-T06延期、G1/G2/Q04/历史NOTES保持。M21未授权。下方旧登记文字只表示原时点。
+**2026-10-22 M20当前覆盖**：依据用户转交的ChatGPT独立结论，评审`d3776e0b2852428911ad0f09296680046211b32d`，M20 **ACCEPTED / FROZEN — PASS WITH NOTES**。T01～T06、此前238 JVM、原22 Android最终PASS及Lint0错误25警告获限定认可；仅冻结续费Planner、权限/偏好、有限幂等回执、WorkManager集成及Room4/backup3兼容实现，不保证OEM后台准点。25唯一方法最新24 PASS/1 FAIL、首轮21 PASS/1 FAIL、真实平台JUnit两次FAIL及SystemUI截图不改；第二次平台收口仍BLOCKED，周期任务/OS Job/指定通知/Owner收口UNKNOWN，新App进程/默认generation事实及来源UNKNOWN保留。M20 AVD为保留/隔离测试现场，未经重新明确授权不复用或清理。本轮仅文档登记，不重跑测试/构建或操作设备。见[正式登记](ACCEPTANCE_MATRIX.md#m20正式限定冻结登记2026-10-22)。M10/M13-T06延期、G1/G2未整体通过、Q04 PROPOSED、G3未通过及全部历史NOTES/NOT_RUN保持，M21未授权。下方旧登记仅表示原时点。
 
 **2026-10-22当前覆盖**：M19已由用户正式转交ChatGPT独立源码、JVM/Android原始证据、截图及设备身份验收结论，评审`21d6230543ac9c0c491d8da590d230396952f571`，**ACCEPTED / FROZEN — PASS WITH NOTES**。T01～T06、此前109 JVM PASS、29 Android PASS、Lint0错误23警告及8张真实隔离截图获限定认可，见[正式登记](ACCEPTANCE_MATRIX.md#m19正式冻结登记2026-10-22)。仅冻结类别分析、真实资金年份归属、客观年度回顾及对应只读映射，Room3/backup2/冻结算法不改。本轮仅文档登记，不重跑测试/构建或操作设备。M10延期、M13-T06延期/G1未整体通过、G2未自动通过、Q02完整16组及全部历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES保持。登记后停止，M20未授权。下方旧日期授权为历史。
 
@@ -8,11 +8,11 @@
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-本表保留原M00～M23顺序与精确前置依赖。M00～M09、M11/M12及M14已限定独立冻结PASS WITH NOTES；M10延期，M13-T06延期且整体发行门槛未通过，M15已依据用户转交的独立结论限定冻结PASS WITH NOTES；M16、M17、M18均已限定独立冻结，M19已限定独立冻结PASS WITH NOTES，不自动授权M20。M09范围仍见[M09契约](planning/M09_CONTRACT.md)；其原执行报告的READY_FOR_REVIEW为历史，冻结回写57de897为M11-A起点，M11-B从79771fc继续。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；全部历史NOTES保留。
+本表保留原M00～M23顺序与精确前置依赖。M00～M09、M11/M12及M14已限定独立冻结PASS WITH NOTES；M10延期，M13-T06延期且整体发行门槛未通过，M15已依据用户转交的独立结论限定冻结PASS WITH NOTES；M16、M17、M18均已限定独立冻结，M19及M20现已限定独立冻结PASS WITH NOTES，不自动授权M21。M09范围仍见[M09契约](planning/M09_CONTRACT.md)；其原执行报告的READY_FOR_REVIEW为历史，冻结回写57de897为M11-A起点，M11-B从79771fc继续。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；全部历史NOTES保留。
 
 ## 执行顺序与依赖解释
 
-原计划按编号逐模块授权与停止；M11-A/B从M09先行的历史有限例外保留。M09两流程风险的实施/验收结论按原记录保留，Q03～Q06与后续完整媒体、备份恢复、汇总和通知边界不变。M12冻结历史保持；用户此前明确授权M14在M13-T06延期下先行，现M14限定冻结，不据此扩大M13/G1通过范围，M15现限定冻结，M16、M17已限定独立冻结，仍不恢复M10设备实验；M18现已限定独立冻结；M19现限定独立冻结，G2不自动通过，M20仍未授权。
+原计划按编号逐模块授权与停止；M11-A/B从M09先行的历史有限例外保留。M09两流程风险的实施/验收结论按原记录保留，Q03～Q06与后续完整媒体、备份恢复、汇总和通知边界不变。M12冻结历史保持；用户此前明确授权M14在M13-T06延期下先行，现M14限定冻结，不据此扩大M13/G1通过范围，M15现限定冻结，M16、M17已限定独立冻结，仍不恢复M10设备实验；M18现已限定独立冻结；M19及M20现限定独立冻结，G1/G2未整体通过、Q04 PROPOSED、G3未通过，M21未授权。
 
 24计划的“必须先验收”与原JSON逐条一致，无前向依赖或环。后续还需读原计划、引用规格、适用验收、当前澄清和实际代码，不能只凭路线表开始工程。
 
@@ -40,7 +40,7 @@
 | M17 | 项目曲线/订阅阶梯图 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m17.md) | M16 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T05及原144 JVM/28 Android/9图、Lint0/9获限定认可；不扩大Q02的M18门禁，见[正式登记](ACCEPTANCE_MATRIX.md#m17正式冻结登记2026-10-21) |
 | M18 | 总成本历史与事件 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m18.md) | M17 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T05及此前174 JVM/17 Android/10图、Lint0/23获限定认可；首次14/3与NOT_CAPTURED保留，Q02完整16组不关闭；见[正式登记](ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21) |
 | M19 ACCEPTED / FROZEN — PASS WITH NOTES | 类别/年度/客观回顾 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m19.md) | M18 | 年度按真实日期、类型分开，不生成建议 |
-| M20 READY_FOR_REVIEW / 独立PENDING | 续费通知、schema v4/format v3 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m20.md) | M19 | 3天候选、复核、去重、恢复水位；无精确闹钟 |
+| M20 ACCEPTED / FROZEN — PASS WITH NOTES | 续费通知、schema v4/format v3 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m20.md) | M19 | T01～T06限定PASS；238 JVM/原22 Android最终PASS、Lint0/25；额外平台FAIL及第二次收口BLOCKED/UNKNOWN保留，G3未通过 |
 | M21 | 实际时间里程碑/低打扰 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m21.md) | M20 | 预付不冒充365天，不补旧节点，不游戏化 |
 | M22 | 小屏/字体/无障碍/长历史 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m22.md) | M21 | 360dp/200%字体/48dp触控；不加功能 |
 | M23 | 可靠性/签名升级/正式V1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m23.md) | M22 | 全发行schema/旧备份/断网/故障/签名；独立验收后冻结 |

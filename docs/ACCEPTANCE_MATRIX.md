@@ -1,6 +1,29 @@
 # 验收登记
 
-当前状态：**M20 — READY_FOR_REVIEW / 独立PENDING**。M19及此前限定冻结保持；本轮登记真实Android补验，额外平台FAIL和收口UNKNOWN保留，不授予M20、G1/G2或Q04整体通过。
+当前状态：**M20 — ACCEPTED / FROZEN — PASS WITH NOTES**，仅已验证产品功能；第二次平台收口仍BLOCKED，额外平台FAIL及全部UNKNOWN保留。G1/G2未整体通过、Q04 PROPOSED、G3未通过，不由模块冻结自动关闭。
+
+## M20正式限定冻结登记（2026-10-22）
+
+依据用户正式转交的ChatGPT独立验收，评审提交`d3776e0b2852428911ad0f09296680046211b32d`，评审及回写分支`codex/m20-renewal-notifications`，正式登记 **ACCEPTED / FROZEN — PASS WITH NOTES**。独立审查复核原源码、此前238 JVM、原22 Android、真实SystemUI通知截图及两次平台收口证据。本轮仅文档回写，没有运行测试、构建、APK核验或设备操作；下方旧交付与收口状态均保持原时点，不回填历史PASS。
+
+| 原案例 | 独立认可的限定结论 |
+|---|---|
+| M20-T01 three_days_before_once | PASS：记录时区到期前3日09:00候选、稳定逻辑键、正常去重与同代回执；不保证厂商后台准点或exactly-once。 |
+| M20-T02 renewed_before_send_suppresses | PASS：发送前按完整付款/状态/revision复核，预付或有效停止抑制旧候选，旧代拒绝。 |
+| M20-T03 late_delivery_updates_copy | PASS：迟到使用真实剩余日数，过期不发，付费覆盖与提醒边界分离；不据此关闭Q04。 |
+| M20-T04 permission_denial_nonblocking | PASS：权限/渠道/两个独立偏好与错误反馈，拒绝不伪造回执或阻断业务；不扩大为真实权限弹窗/所有平台验证。 |
+| M20-T05 no_exact_alarm_or_network | PASS：原Manifest/APK权限审计，无INTERNET、精确闹钟、忽略电池优化权限及常驻前台服务；未测后台/OEM行为不升级。 |
+| M20-T06 backup_and_migration | PASS：Room1/2/3→4迁移及重开、format1/2恢复与format3九表/设置/媒体/Receipt往返、兼容旧proof及导入截止；不扩大为所有真实故障恢复。 |
+
+冻结范围：续费Planner、权限/偏好、有限幂等回执、WorkManager集成、Room schema v4与backup format v3兼容实现；金额/日期/订阅算法仍继承原冻结版本，里程碑发送不在M20范围。认可此前**238 JVM PASS**、原**22 Android最终PASS**及**Lint 0错误25警告**；原22由未受影响16项与Context修正后Worker6项构成，不称为同一Test SHA一次跑完。证据：[原实现报告](evidence/M20-verification.md)、[Android补验](evidence/M20-Android-verification.md)、[25个唯一方法原记录](evidence/m20-android/results.json)、[真实SystemUI通知图](evidence/m20-android/platform-final-observation/real-notification.png)、[第二次收口报告](evidence/M20-Platform-closure.md)。
+
+必须保留的NOTES与未通过边界：
+
+- 全部25个唯一方法最新仍**24 PASS / 1 FAIL**，额外3项为2 PASS/1 FAIL；首轮22项**21 PASS/1 FAIL**、真实平台JUnit两次10秒可见性断言FAIL、实际32次执行29 PASS/3 FAIL及截图原字节均不改。SystemUI可见与真实发布子证据不能替代整个额外平台测试组PASS。
+- 第二次run`eb140516-9807-45be-b01b-781a9b76f6c0`定向收口仍**BLOCKED**。周期任务`03c42993-0b37-444c-abd6-b8f67f4d43db`、OS Job、指定通知及Owner收口UNKNOWN；账本重开/显式Owner关闭NOT_RUN，不由模拟器退出推定通过。冷启动后App PID3115和默认generation条目出现是事实，具体触发来源及新Worker是否执行仍UNKNOWN。
+- `Lithic_M20_API36_20261022 / emulator-5704`标记为**保留 / 隔离测试现场**，独立研究根及全部新旧现场不删除、不清理，未经重新明确授权不得直接复用。此前正常退出记录仅为历史观察，本轮未检查设备。
+- 系统发布调用成功不等于用户收到；发布后Receipt持久化前崩溃仍可能有限重试，不承诺exactly-once、OEM准点或最坏送达时延。真机/API26/OEM、Release/稳定签名、真实重启队列、系统200%/完整TalkBack、LMK/断电及其他NOT_RUN保持；LocalDensity截图不冒充系统字号或MainActivity。
+- M10 PENDING / DEFERRED、三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、G3未通过、Q02完整16组跨模块门禁及全部历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES保持。原130条案例和历史原件不改。只推送本次登记文档后停止，不合并main、不进入M21。
 
 ## M20第二次平台实验定向收口（2026-10-22）
 
