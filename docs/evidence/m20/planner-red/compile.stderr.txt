@@ -1,0 +1,17 @@
+Exception in thread "main" java.lang.NoClassDefFoundError: kotlin/reflect/jvm/ReflectJvmMapping
+	at org.jetbrains.kotlin.cli.common.arguments.ArgumentUtilsKt.getArgumentAnnotation(argumentUtils.kt:123)
+	at org.jetbrains.kotlin.cli.common.arguments.ArgumentUtilsKt.getCliArgument(argumentUtils.kt:131)
+	at org.jetbrains.kotlin.cli.common.ArgumentsKt.<clinit>(arguments.kt:184)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.exec(CLICompiler.kt:358)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.exec(CLICompiler.kt:337)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.exec(CLICompiler.kt:301)
+	at org.jetbrains.kotlin.cli.common.CLICompiler$Companion.doMainNoExit(CLICompiler.kt:438)
+	at org.jetbrains.kotlin.cli.common.CLICompiler$Companion.doMainNoExit$default(CLICompiler.kt:433)
+	at org.jetbrains.kotlin.cli.common.CLICompiler$Companion.doMain(CLICompiler.kt:425)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler$Companion.main(K2JVMCompiler.kt:231)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.main(K2JVMCompiler.kt)
+Caused by: java.lang.ClassNotFoundException: kotlin.reflect.jvm.ReflectJvmMapping
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 11 more

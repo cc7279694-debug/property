@@ -1,0 +1,12 @@
+{
+  "command": [
+    "gradlew.bat",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.data.repository.M20ReminderDispatchTest",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "exit_code": 1,
+  "seconds": 76.0
+}

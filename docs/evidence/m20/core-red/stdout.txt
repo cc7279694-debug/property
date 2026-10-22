@@ -1,0 +1,147 @@
+Starting a Gradle Daemon, 1 stopped Daemon could not be reused, use --status for details
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:311:37 Unnecessary safe call on a non-null receiver of type 'ReplacementViewModel'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:476:33 Condition is always 'true'.
+
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:processDebugJavaRes
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas
+> Task :app:processDebugUnitTestJavaRes
+
+> Task :app:testDebugUnitTest
+
+M20BackupV3Test > newReadinessProofUsesExplicitFormatThree FAILED
+    java.lang.IllegalArgumentException at M20BackupV3Test.kt:25
+
+M20BackupV3Test > currentArchiveDeclaresSchemaFourAndNineTables FAILED
+    java.lang.AssertionError at M20BackupV3Test.kt:16
+
+RenewalReminderPlannerTest > calendar_underflow_rejected_without_wrapping_or_scheduling_wrong_date FAILED
+    java.lang.AssertionError at RenewalReminderPlannerTest.kt:265
+        Caused by: java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:265
+
+RenewalReminderPlannerTest > payment_not_yet_confirmed_as_of_today_neither_reminds_nor_suppresses FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > already_stopped_suppresses_even_with_paid_coverage FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > q04_paid_coverage_expired_still_has_real_future_reminder_and_unchanged_cost FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > stable_id_handles_minimum_signed_hash_without_negative_overflow FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:272
+
+RenewalReminderPlannerTest > due_boundary_and_later_never_emit_future_tense_reminder FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > disconnected_future_successor_after_reminder_does_not_hide_old_boundary FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > independent_owners_keep_distinct_keys_and_deterministic_candidate_order FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > q04_successor_starting_in_unpaid_gap_before_reminder_suppresses_old_boundary FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > duplicate_owner_or_payment_identity_is_rejected_instead_of_silent_dedup FAILED
+    java.lang.AssertionError at RenewalReminderPlannerTest.kt:250
+        Caused by: java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > corrected_due_date_removes_old_candidate_and_later_uses_new_boundary FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > blank_owner_name_or_source_row_identity_cannot_be_published FAILED
+    java.lang.AssertionError at RenewalReminderPlannerTest.kt:258
+        Caused by: java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > recorded_zone_owns_day_and_nine_even_when_travel_zone_differs FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > duplicate_state_day_is_rejected_instead_of_arbitrary_last_state FAILED
+    java.lang.AssertionError at RenewalReminderPlannerTest.kt:246
+        Caused by: java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > removed_owner_or_original_payment_is_not_a_candidate FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > scheduled_stop_before_or_on_due_suppresses_without_changing_effective_state FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > same_identity_reopened_after_historical_stop_is_eligible FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > schedule_helper_uses_recorded_local_nine_through_daylight_saving_change FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:102
+
+RenewalReminderPlannerTest > full_paid_facts_are_validated_even_if_overlapping_row_is_outside_candidate_window FAILED
+    java.lang.AssertionError at RenewalReminderPlannerTest.kt:238
+        Caused by: java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > confirmed_adjacent_prepaid_successor_suppresses_original_boundary FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > successful_logical_receipt_suppresses_exact_boundary_and_other_keys_do_not FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > renewal_preference_off_suppresses_and_reenable_uses_current_legal_window FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > stop_superseded_by_confirmed_reopen_before_due_is_not_permanent_stop FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > scheduled_stop_after_due_does_not_suppress_prematurely FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > stable_key_and_notification_id_survive_name_and_payment_identity_change FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > exactly_three_business_days_before_has_true_boundary_identity_and_copy FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > pause_is_not_stop_and_does_not_fabricate_payment FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > restored_cutoff_excludes_equal_and_past_triggers_but_keeps_future FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > before_candidate_day_or_before_nine_does_not_publish FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+RenewalReminderPlannerTest > late_first_execution_has_two_real_days_and_next_day_has_one FAILED
+    java.lang.UnsupportedOperationException at RenewalReminderPlannerTest.kt:53
+
+> Task :app:testDebugUnitTest FAILED
+27 actionable tasks: 10 executed, 17 up-to-date

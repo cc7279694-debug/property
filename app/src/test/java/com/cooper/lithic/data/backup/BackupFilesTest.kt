@@ -21,7 +21,7 @@ class BackupFilesTest {
         assertEquals(setOf("data.json", "settings.json"), core.entries.map { it.path }.toSet())
         core.entries.forEach { assertEquals(it, BackupEntryFiles.verify(core.directory, it)) }
         assertFalse(Files.exists(core.directory.resolve("manifest.json")))
-        assertEquals(empty.data.recordCounts(), core.recordCounts)
+        assertEquals(empty.completeRecordCounts(), core.recordCounts)
     }
 
     @Test fun changing_staged_bytes_is_detected_instead_of_trusting_old_metadata() {
@@ -56,8 +56,9 @@ class BackupFilesTest {
         val manifest = BackupManifestV1.complete(core, "0.1.0-m09", at)
         val json = Json.parseToJsonElement(manifest.encode().decodeToString()).toString()
         for (field in listOf("formatVersion", "minReaderFormat", "producerAppVersion", "sourceDatabaseSchemaVersion", "createdAt", "recordZoneId", "recordCounts", "files")) assertTrue(json.contains("\"$field\""))
-        assertEquals(2, manifest.formatVersion)
-        assertEquals(3, manifest.sourceDatabaseSchemaVersion)
+        // Retain the historical method identity; M20 explicitly advances current export.
+        assertEquals(3, manifest.formatVersion)
+        assertEquals(4, manifest.sourceDatabaseSchemaVersion)
         assertEquals(at.toString(), manifest.createdAt)
         assertFalse(manifest.files.any { it.path == "manifest.json" })
     }

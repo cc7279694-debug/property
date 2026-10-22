@@ -11,8 +11,9 @@ internal class CoordinatedBackupReader<T>(
 }
 
 /** Counts are read before materializing rows; reaching the frozen limit is an explicit failure. */
-internal fun requireBackupRecordCounts(counts: List<Long>): Long {
-    require(counts.size == 8) { "A current backup must account for all eight Room v3 tables" }
+internal fun requireBackupRecordCounts(counts: List<Long>, expectedTables: Int = 8): Long {
+    // The default remains the frozen v2 DTO admission helper. Current Room capture explicitly requires nine.
+    require(expectedTables in setOf(8, 9) && counts.size == expectedTables) { "A backup must account for every table in its declared schema" }
     var total = 0L
     counts.forEach { count ->
         require(count >= 0) { "Backup record counts cannot be negative" }

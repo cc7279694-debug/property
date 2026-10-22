@@ -132,3 +132,10 @@ NOT_RUN：真机、API26运行、OEM行为、TalkBack完整审查、真实低内
 沿用上述全部精确版本，未新增依赖或升级：debugRuntimeClasspath **122→122**坐标和版本逐项相同。新增功能使用既有Room2.8.5 createFlow、Lifecycle2.10.0 SavedStateHandle/Activity默认CreationExtras、Compose/Nav3/Coroutines；没有引入viewmodel-compose、DI框架或网络客户端。
 
 本轮Debug code4/0.1.0-m06-debug；JDK17.0.20.1+1、Gradle8.14.3、AGP8.13.2、Kotlin2.3.10、SDK/BuildTools36、专用API36设备的实际完整构建/284测试/APK检查见[M06证据](evidence/M06-verification.md)。Lint0errors/20warnings与M05一致，不升级或抑制。构建保留新测试6处unnecessary safe-call/!!编译警告，未以警告充当失败或掩盖失败；Release/正式签名及其他平台NOT_RUN。
+
+
+## M20：明确授权WorkManager2.12.0（2026-10-22候选）
+
+新增固定androidx.work:work-runtime-ktx:2.12.0；androidTest最小支持work-testing同2.12.0。官方Maven POM/模块/AAR metadata核验与Apache2.0声明索引见[依赖证据](evidence/m20/dependency/official-workmanager.json)，无许可证正文归档。runtime AAR要求minCompileSdk35/minAGP8.6.0，当前compile36/AGP8.13.2/JDK17实际构建通过；其余版本目录原锁定值及Gradle Wrapper不变，不顺便升级工具。
+
+本轮Debug code15/0.1.0-m20-debug，原Debug证书、应用ID及隔离Runner；238 JVM PASS、Lint0错误25警告，Debug App/Test构建成功。新增22 Android仅编译，系统调度/发布/权限和迁移重开NOT_RUN；不能用解析成功或构建通过冒称系统实际运行。最终命令、APK SHA及边界见[M20报告](evidence/M20-verification.md)。

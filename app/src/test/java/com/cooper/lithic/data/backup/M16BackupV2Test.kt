@@ -18,8 +18,9 @@ class M16BackupV2Test {
         val parent=Files.createTempDirectory("m16-format")
         BackupCoreStager().prepare(emptyLegacySnapshot(),parent).use { core ->
             val manifest=BackupManifestV1.complete(core,"m16-test",Instant.parse(AT))
-            assertEquals(2,manifest.formatVersion);assertEquals(2,manifest.minReaderFormat)
-            assertEquals(3,manifest.sourceDatabaseSchemaVersion)
+            // Historical method identity retained; v2 input fixtures below stay v2.
+            assertEquals(3,manifest.formatVersion);assertEquals(3,manifest.minReaderFormat)
+            assertEquals(4,manifest.sourceDatabaseSchemaVersion)
         }
     }
     @Test fun normalized_snapshot_accounts_for_the_eighth_replacement_table() {

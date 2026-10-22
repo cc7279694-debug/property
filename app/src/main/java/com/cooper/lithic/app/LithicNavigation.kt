@@ -84,6 +84,10 @@ import com.cooper.lithic.feature.category.CategoryAnalysisScreen
 import com.cooper.lithic.domain.report.OverviewKind
 import com.cooper.lithic.feature.review.TotalCostTrendViewModel
 import com.cooper.lithic.feature.settings.SettingsShell
+import com.cooper.lithic.feature.settings.NotificationSettingsEntry
+import com.cooper.lithic.feature.settings.NotificationSettingsViewModel
+import com.cooper.lithic.platform.notification.ReminderScheduling
+import androidx.compose.ui.platform.LocalContext
 import com.cooper.lithic.feature.settings.BackupExportUiState
 import com.cooper.lithic.feature.settings.BackupRestoreUiState
 import com.cooper.lithic.feature.settings.RestoreUiPhase
@@ -157,6 +161,16 @@ internal fun LithicNavigation(
     val replacements = replacementModel?.state?.collectAsStateWithLifecycle()?.value
     val backStack = key(session) { rememberNavBackStack(Home) }
     val routes = normalizeBackStack(backStack.toList())
+    val context = LocalContext.current
+    val notificationModel = if (NotificationSettings in routes) state.settingsStore?.let { store ->
+        remember(generationScope, session, store) {
+            ViewModelProvider(generationScope, viewModelFactory {
+                initializer { NotificationSettingsViewModel(store) {
+                    if (context.applicationContext is LithicApplication) ReminderScheduling.request(context)
+                } }
+            })[NotificationSettingsViewModel::class.java]
+        }
+    } else null
     // Avoid full-ledger ranking until the user first opens review. The generation scope owns
     // the model; owner replacement clears it before any old result can be presented.
     val reviewModel = if (LongTermReview in routes) state.rankingRepository?.let { repository ->
@@ -407,7 +421,11 @@ internal fun LithicNavigation(
                         onExportBackup = onExportBackup, onCancelBackup = onCancelBackup,
                         restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
                         onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore,
-                        onManageCategories = if (categoryModel != null) ({ requestLeave(canonicalBackStack(CategoryManagement)) }) else null) }
+                        onManageCategories = if (categoryModel != null) ({ requestLeave(canonicalBackStack(CategoryManagement)) }) else null,
+                        onNotificationClick = if (state.settingsStore != null) ({ requestLeave(canonicalBackStack(NotificationSettings)) }) else null) }
+                    entry<NotificationSettings> {
+                        if (notificationModel != null) NotificationSettingsEntry(notificationModel, onBack)
+                    }
                     entry<CategoryManagement> {
                         if (categoryModel != null && categoryState != null) CategoryManagementScreen(
                             categoryState, onBack, categoryModel::selectType, categoryModel::startCreate,

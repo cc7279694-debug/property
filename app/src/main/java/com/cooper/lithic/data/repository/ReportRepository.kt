@@ -284,6 +284,41 @@ class ReportRepository(
         return ProjectSnapshot(input, facts)
     }
 
+    /** Notification dispatch already holds this generation's non-reentrant coordinator.
+     * Reuses the same raw identity/payment validators; no displayed text or first-page limit. */
+    internal suspend fun loadRenewalReminderSourcesWithinBoundary(expected: LocalWriteCoordinator):
+        List<com.cooper.lithic.domain.reminder.RenewalReminderSource> {
+        check(expected === coordinator)
+        return db.withTransaction {
+            check(db.subscriptionDao().countOrphanRenewals() == 0L && db.subscriptionDao().countOrphanStates() == 0L)
+            val categories = db.categoryDao().list().associateBy { it.id }
+            val verifiedMedia = mutableSetOf<String>()
+            val result = mutableListOf<com.cooper.lithic.domain.reminder.RenewalReminderSource>()
+            var after: String? = null
+            do {
+                val rows = db.subscriptionDao().validationSubscriptions(after, BATCH_SIZE)
+                val ids = rows.map { it.id }
+                val paid = db.subscriptionDao().renewalsForSubscriptions(ids).groupBy { it.subscriptionId }
+                val states = db.subscriptionDao().statesForSubscriptions(ids).groupBy { it.subscriptionId }
+                for (row in rows) {
+                    requireIdentity(row.id, row.name, row.categoryId, row.coverAssetId, row.createdAt, row.updatedAt,
+                        CategoryType.SUBSCRIPTION, categories, verifiedMedia)
+                    val raw = paid[row.id].orEmpty()
+                    val facts = subscriptionSnapshot(row, raw, states[row.id].orEmpty())
+                    SubscriptionCostEngine.evaluate(facts, LocalDate.MAX)
+                    result += com.cooper.lithic.domain.reminder.RenewalReminderSource(row.id, row.name,
+                        raw.zip(facts.renewals).map { (stored, value) ->
+                            com.cooper.lithic.domain.reminder.ReminderRenewal(stored.id, value)
+                        }, facts.stateChanges)
+                }
+                after = rows.lastOrNull()?.id
+            } while (rows.size == BATCH_SIZE)
+            check(result.map { it.ownerId }.toSet().size == result.size)
+            check(result.size.toLong() == db.subscriptionDao().countSubscriptions())
+            result
+        }
+    }
+
     private fun subscriptionSnapshot(
         row: SubscriptionEntity,
         renewals: List<SubscriptionRenewalEntity>,

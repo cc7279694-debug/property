@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.M16BackupV2Test" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-22T02:54:22.052Z" hostname="WHOCARE" time="0.365">
+  <properties/>
+  <testcase name="real_v1_retained_archive_validates_original_counts_then_upgrades_cash_and_empty_links" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.043"/>
+  <testcase name="normalized_snapshot_accounts_for_the_eighth_replacement_table" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.001"/>
+  <testcase name="unsupported_format_and_schema_pairs_cannot_downgrade_to_v1" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.058"/>
+  <testcase name="v2_cycle_or_missing_project_reference_is_rejected" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.028"/>
+  <testcase name="v2_duplicate_link_identity_and_unknown_top_level_field_are_rejected" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.03"/>
+  <testcase name="newly_prepared_complete_archive_declares_format_two_schema_three" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.057"/>
+  <testcase name="v2_complete_trade_in_and_replacement_round_trip_preserves_each_fact_once" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.043"/>
+  <testcase name="v2_unknown_enum_and_incomplete_trade_group_are_rejected_before_extraction" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.031"/>
+  <testcase name="all_eight_tables_are_required_by_the_snapshot_count_budget" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.0"/>
+  <testcase name="v2_trade_credit_mismatch_and_foreign_operation_identity_are_rejected" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.033"/>
+  <testcase name="v2_missing_nullable_or_default_looking_fields_are_never_legacy_defaulted" classname="com.cooper.lithic.data.backup.M16BackupV2Test" time="0.041"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

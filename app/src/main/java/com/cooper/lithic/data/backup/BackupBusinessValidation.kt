@@ -38,8 +38,13 @@ internal object BackupBusinessValidation {
         require(snapshot.settings.recordZoneId == manifest.recordZoneId) { "Record zones disagree" }
         BackupFormats.requireSupported(manifest)
         if(manifest.formatVersion==1) data.legacyProjection()
-        require(data.recordCounts() == BackupFormats.normalizedCounts(manifest)) { "Record counts disagree" }
-        require(data.recordCounts().values.fold(0L, Math::addExact) < BackupLimits.MAX_RECORDS)
+        if(manifest.formatVersion < 3) {
+            require(snapshot.notificationReceipts.isEmpty() && snapshot.reminderPreferences == com.cooper.lithic.data.settings.ReminderPreferences()) {
+                "Legacy archives cannot contain unverified reminder facts"
+            }
+        }
+        require(snapshot.completeRecordCounts() == BackupFormats.normalizedCounts(manifest)) { "Record counts disagree" }
+        require(snapshot.completeRecordCounts().values.fold(0L, Math::addExact) < BackupLimits.MAX_RECORDS)
         unique(data.categories.map { it.id }); unique(data.projects.map { it.id })
         unique(data.projectMoneyEvents.map { it.id }); unique(data.mediaAssets.map { it.id })
         unique(data.subscriptions.map { it.id }); unique(data.subscriptionRenewals.map { it.id })
@@ -77,6 +82,19 @@ internal object BackupBusinessValidation {
         val mediaIds = data.mediaAssets.map { it.id }.toSet()
         val projects = data.projects.associateBy { it.id }
         val subscriptions = data.subscriptions.associateBy { it.id }
+        require(snapshot.notificationReceipts.map { it.logicalKey }.toSet().size == snapshot.notificationReceipts.size) { "Duplicate notification receipt" }
+        val zone = ZoneId.of(snapshot.settings.recordZoneId)
+        val archiveAt = instant(manifest.createdAt)
+        snapshot.notificationReceipts.forEach { row ->
+            checkpoint()
+            val publishedAt = instant(row.publishedAt)
+            com.cooper.lithic.data.local.NotificationReceiptEntity(row.logicalKey, row.ownerId, row.kind, row.boundary, publishedAt)
+            require(row.ownerId in subscriptions) { "Orphaned or wrong-kind notification receipt owner" }
+            require(!publishedAt.isAfter(archiveAt)) { "Receipt publication time is after archive creation" }
+            val boundary = date(row.boundary)
+            require(!publishedAt.isBefore(boundary.minusDays(3).atTime(9, 0).atZone(zone).toInstant()) &&
+                publishedAt.isBefore(boundary.atStartOfDay(zone).toInstant())) { "Receipt publication is outside the renewal candidate window" }
+        }
         data.projectMoneyEvents.forEach {
             checkpoint(); uuid(it.projectId)
             require(it.projectId in projects) { "Orphaned project money event" }

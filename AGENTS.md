@@ -85,3 +85,11 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 用户2026-10-22正式转交ChatGPT对`21d6230543ac9c0c491d8da590d230396952f571`的独立验收，结论 **ACCEPTED / FROZEN — PASS WITH NOTES**，来源与限定范围见[正式登记](docs/ACCEPTANCE_MATRIX.md#m19正式冻结登记2026-10-22)。M19-T01～T06、此前109 JVM/29 Android PASS、Lint0错误23警告及8张真实隔离截图获认可；原[M19契约](docs/planning/M19_CONTRACT.md)/[报告](docs/evidence/M19-verification.md)/结果/checkpoint保持历史原样。类别分析、真实资金年份、客观年度回顾和只读完整事实映射冻结，Room3/backup2/冻结算法保持。
 
 本轮只登记文档和Git核查/提交/推送；未重新执行测试、构建、APK或设备核验，不把原5692结束在线当作本次观察。原导航/领域RED、初次Android测试编译失败、刷新提示Android RED及全部历史FAIL/UNKNOWN/NOT_RUN/NOTES保留。原API36/x86_64合成/隔离ComponentActivity、LocalDensity360dp/200%、注入时钟、受控文件恢复，不扩大为MainActivity、系统字体/TalkBack、真实午夜、真机/API26/OEM、Release或故障覆盖；长期性能、最坏取消时延和进程死亡选择恢复等仍NOT_RUN。M10 PENDING / DEFERRED和三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过保持，G2不自动通过，Q02完整16组跨模块门禁不关闭。提交推送后停止，M20未授权；旧设备与全部历史现场禁止操作或清理。
+
+## M20 当前明确授权覆盖
+
+用户本轮正式授权[M20契约](docs/planning/M20_CONTRACT.md)的实现、迁移、备份兼容及定向验证，覆盖上方M19登记时“不启动M20”的阶段限制。只在codex/m20-renewal-notifications，从33ae4f4建立候选；明确允许schema3→4和backup2→3、WorkManager2.12.0与通知权限，不改冻结业务算法。仅核验原5692在线同实例后新M20合成根；禁止其他设备/个人账本/新建重启停止/清数据。M19等冻结及M10延期、M13-T06延期、G1/G2、Q04 PROPOSED及全部历史NOTES保持；READY_FOR_REVIEW — M20后停止，M21未授权。
+
+### M20本轮候选交付边界
+
+实际238定向JVM PASS（88新＋150回归）、Lint0错误25警告及Debug App/Test构建成功；Room4九表、format3与旧格式/proof兼容是本轮候选变更，未自行冻结。原5692锁定进程身份未取得，仅只读CIM、0 ADB/设备操作；新增22项Android/全部截图NOT_RUN，后续不可把编译或旧M19设备证据当成本轮迁移/通知/权限通过。M20 READY_FOR_REVIEW后等待ChatGPT独立验收，不自动M21。完整依据见[报告](docs/evidence/M20-verification.md)和[当前状态](docs/CURRENT_STATE.md)。

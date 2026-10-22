@@ -29,5 +29,11 @@ object DatabaseMigrations {
             db.execSQL("CREATE UNIQUE INDEX `index_replacements_successorId` ON `replacements` (`successorId`)")
         }
     }
-    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3)
+    val MIGRATION_3_4: Migration = object : Migration(3, 4) {
+        override fun migrate(db: SupportSQLiteDatabase) {
+            db.execSQL("CREATE TABLE `notification_receipts` (`logicalKey` TEXT NOT NULL, `ownerId` TEXT NOT NULL, `kind` TEXT NOT NULL, `boundary` TEXT NOT NULL, `publishedAt` TEXT NOT NULL, PRIMARY KEY(`logicalKey`))")
+            db.execSQL("CREATE INDEX `index_notification_receipts_ownerId` ON `notification_receipts` (`ownerId`)")
+        }
+    }
+    val ALL: Array<Migration> = arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
 }

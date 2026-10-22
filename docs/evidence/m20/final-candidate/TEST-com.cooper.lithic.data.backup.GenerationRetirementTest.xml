@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.GenerationRetirementTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-10-22T02:54:21.896Z" hostname="WHOCARE" time="0.152">
+  <properties/>
+  <testcase name="failed_precommit_verification_keeps_original_coordinator_readable" classname="com.cooper.lithic.data.backup.GenerationRetirementTest" time="0.045"/>
+  <testcase name="retirement_waits_for_inflight_write_then_rejects_queued_old_work" classname="com.cooper.lithic.data.backup.GenerationRetirementTest" time="0.072"/>
+  <testcase name="close_failure_still_fences_all_old_writes" classname="com.cooper.lithic.data.backup.GenerationRetirementTest" time="0.035"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

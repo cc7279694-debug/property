@@ -10,6 +10,7 @@ import com.cooper.lithic.data.local.SubscriptionEntity
 import com.cooper.lithic.data.local.SubscriptionRenewalEntity
 import com.cooper.lithic.data.local.SubscriptionStateChangeEntity
 import kotlinx.serialization.Serializable
+import com.cooper.lithic.data.settings.ReminderPreferences
 
 /** Format v1 is independent of Room's schema number and contains stored facts only. */
 @Serializable
@@ -48,8 +49,54 @@ data class BackupDataV1(
 @Serializable
 data class BackupSettingsV1(val recordZoneId: String)
 
-data class BackupSnapshot(val data: BackupDataV2, val settings: BackupSettingsV1) {
+data class BackupSnapshot(
+    val data: BackupDataV2,
+    val settings: BackupSettingsV1,
+    val notificationReceipts: List<BackupNotificationReceiptV3> = emptyList(),
+    val reminderPreferences: ReminderPreferences = ReminderPreferences(),
+) {
     constructor(data:BackupDataV1,settings:BackupSettingsV1):this(data.upgrade(),settings)
+
+    fun completeRecordCounts(): Map<String, Long> = data.recordCounts() + ("notification_receipts" to notificationReceipts.size.toLong())
+    internal fun currentData(): BackupDataV3 = BackupDataV3(data.categories, data.projects, data.projectMoneyEvents,
+        data.mediaAssets, data.subscriptions, data.subscriptionRenewals, data.subscriptionStateChanges, data.replacements,
+        notificationReceipts).ordered()
+    internal fun currentSettings(): BackupSettingsV3 = BackupSettingsV3(settings.recordZoneId,
+        reminderPreferences.renewalEnabled, reminderPreferences.milestoneEnabled, reminderPreferences.importCutoff?.toString())
+}
+
+/** No defaults on the wire: strict admission requires all fields, including explicit null cutoff. */
+@Serializable
+data class BackupSettingsV3(val recordZoneId: String, val renewalEnabled: Boolean, val milestoneEnabled: Boolean, val importCutoff: String?) {
+    internal fun preferences(): ReminderPreferences = ReminderPreferences(renewalEnabled, milestoneEnabled,
+        importCutoff?.let { value -> java.time.LocalDate.parse(value).also { require(it.toString() == value) } })
+}
+
+@Serializable
+data class BackupNotificationReceiptV3(val logicalKey: String, val ownerId: String, val kind: String, val boundary: String, val publishedAt: String)
+
+@Serializable
+data class BackupDataV3(
+    val categories: List<BackupCategoryV1>,
+    val projects: List<BackupProjectV1>,
+    val projectMoneyEvents: List<BackupProjectMoneyEventV2>,
+    val mediaAssets: List<BackupMediaAssetV1>,
+    val subscriptions: List<BackupSubscriptionV1>,
+    val subscriptionRenewals: List<BackupSubscriptionRenewalV1>,
+    val subscriptionStateChanges: List<BackupSubscriptionStateChangeV1>,
+    val replacements: List<BackupReplacementV2>,
+    val notificationReceipts: List<BackupNotificationReceiptV3>,
+) {
+    internal fun storedData(): BackupDataV2 = BackupDataV2(categories, projects, projectMoneyEvents, mediaAssets,
+        subscriptions, subscriptionRenewals, subscriptionStateChanges, replacements).ordered()
+    fun recordCounts(): Map<String, Long> = storedData().recordCounts() + ("notification_receipts" to notificationReceipts.size.toLong())
+    internal fun ordered(): BackupDataV3 {
+        val old = storedData()
+        return copy(categories = old.categories, projects = old.projects, projectMoneyEvents = old.projectMoneyEvents,
+            mediaAssets = old.mediaAssets, subscriptions = old.subscriptions, subscriptionRenewals = old.subscriptionRenewals,
+            subscriptionStateChanges = old.subscriptionStateChanges, replacements = old.replacements,
+            notificationReceipts = notificationReceipts.sortedBy { it.logicalKey })
+    }
 }
 
 /** Format-v2 stored facts. Nullable fields are still mandatory at strict wire admission. */

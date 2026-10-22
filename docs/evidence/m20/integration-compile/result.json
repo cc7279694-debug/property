@@ -1,0 +1,13 @@
+{
+  "command": [
+    "gradlew.bat",
+    ":app:compileDebugKotlin",
+    ":app:compileDebugUnitTestKotlin",
+    ":app:compileDebugAndroidTestKotlin",
+    "-Pm13Isolated=true",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "exit_code": 1,
+  "seconds": 97.156
+}

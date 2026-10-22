@@ -16,8 +16,8 @@ android {
         applicationId = "com.cooper.lithic"
         minSdk = 26
         targetSdk = 36
-        versionCode = 14
-        versionName = "0.1.0-m19"
+        versionCode = 15
+        versionName = "0.1.0-m20"
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
         testInstrumentationRunner = if (providers.gradleProperty("m13Isolated").orNull == "true")
             "com.cooper.lithic.app.M13IsolatedRunner"
@@ -53,6 +53,7 @@ room {
 }
 
 dependencies {
+    implementation(libs.androidx.work.runtime.ktx)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.material3)
@@ -73,6 +74,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     ksp(libs.androidx.room.compiler)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.work.testing)
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.ext.junit)

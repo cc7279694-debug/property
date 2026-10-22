@@ -646,3 +646,26 @@ M03独立审查登记了STOPPED再启用入口和多期预付默认停止两项�
 ### Consequences
 
 M13内部Debug可合成验证，不等于原T06稳定签名/首次真实记录许可或Release。M10 PENDING / DEFERRED、三历史JPEG FAIL、UI-C1独立冻结及Q05/Q06/其他平台NOT_RUN保持；不得自动进入M14。
+
+
+## 2026-10-22 — M20同代发布回执、schema4与format3
+
+### Decision
+
+本轮用户明确授权的M20候选采用固定WorkManager2.12.0非精确持久任务，复用唯一AppContainer/ManagedGeneration。业务写入、发送前完整重读、权限/偏好/逻辑键复核、系统发布及Receipt持久化由同代协调器串行保护。确定性通知tag使用完整logicalKey、ID稳定，onlyAlertOnce；发布成功调用后才记回执，发布后落盘前崩溃仍可能重试，不宣称exactly-once或用户已收到。
+
+### Context
+
+原NOTIFICATION N02/N04/N05及本轮[M20契约](planning/M20_CONTRACT.md)要求记录时区reminderDueOn−3日09:00起、未到期可补一次、相邻已确认付款抑制。Q04的付费覆盖与提醒日期分离，本轮按明确指令实现工程解释，Q04仍PROPOSED；不复制M03算法，不修改付款或状态。
+
+### Alternatives
+
+不采用精确闹钟、常驻前台服务、网络Push、第二存储owner、先写假Receipt、仅按成本EXPIRED过滤或在切换后才补恢复截止水位。里程碑只保存偏好，实际资格与发送仍归M21。
+
+### Reason
+
+排队任务绑定generation、付款ID及完整事实revision。旧请求、取消、纠错和恢复不能凭旧快照发布。清晨迟到任务等待业务09:00并保留重试资格；发布前重新取时，避免权限检查跨日后仍用旧文案。首个系统发布成功后取消不撤销该事实，回执用NonCancellable写入并继续持有原租约。
+
+### Consequences
+
+显式Room1→2→3→4、真实schema4与预检白名单；format3包含九表、两个偏好及导入截止。旧format1/2先严格验原字段/计数/SHA，再显式补无Receipt的默认偏好。旧proof1/2仍按原序列化字节认证；未发布恢复候选激活前持久化max(既有截止,记录时区恢复日)、proof3并复验，候选触发日必须严格晚于截止。旧SWITCHING恢复亦先验证旧proof再建立保护，失败保守回旧代。schema/format变化不代表已通过设备迁移或M12故障复验，实际边界见[M20报告](evidence/M20-verification.md)。M19等冻结、M10延期、M13-T06延期、G1/G2及所有历史NOTES不变。

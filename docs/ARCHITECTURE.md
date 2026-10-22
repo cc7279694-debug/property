@@ -355,3 +355,14 @@ SettingsStore 为 canonical 设置文件登记唯一所有者；记录 record_zo
 [LithicTheme](../app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt)使用系统字体与系统浅深模式、低饱和蓝灰交互色、中性背景，主38/title24/body16/辅助14sp及六级间距。[AmountText](../app/src/main/java/com/cooper/lithic/core/design/AmountText.kt)只做BigDecimal展示：null为无值、真实0为¥0.00，普通金额HALF_UP两位/toPlainString；日均非零绝对值<0.01为<¥0.01或−<¥0.01，含±0.005，不经Double。[EntryCard](../app/src/main/java/com/cooper/lithic/core/design/EntryCard.kt)接收调用方状态/时间和可选封面/真实点击；[FormFields](../app/src/main/java/com/cooper/lithic/core/design/FormFields.kt)只提供受控输入、错误语义、键盘IME和日期选择回调，不写库。
 
 测试专用合成表单仅在androidTest源码，生产菜单不包含测试宿主、测试合成表单或测试合成记录。Compose测试依赖精确1.9.5匹配既有BOM；Lifecycle显式2.10.0是M04已解析版本；Espresso3.7.0只用于androidTest编译调用真按键并同步，不改变生产返回逻辑。Debug测试宿主Activity与运行依赖的实际变化、真实回归/设备证据另见当前验收和工具链；源码存在本身不作为验证PASS。
+
+
+## M20候选：提醒、迁移及备份水位（未独立验收）
+
+当前候选Room v4新增notification_receipts(logicalKey主键、ownerId索引)，原八表业务结构/事实不变；明确1→2→3→4及版本结构/Room identity预检，历史schema1/2/3保留。SettingsStore在原同代协调器内保存续费/里程碑两个默认开启偏好和导入截止，权限来自当前系统，永不从备份伪授予。
+
+LithicApplication提供WorkManager Configuration.Provider及共享AppContainer的WorkerFactory，移除WorkManager Startup自动初始化及未使用的前台服务。ReminderRuntime观察当前generation、真实续费/状态和偏好变更，启动及恢复后重新协调；唯一周期任务约每日复查，候选为非精确一次任务。任务保存generation/付款ID/完整事实revision；ReminderWorker复核当前owner并交给ReminderRepository，ReportRepository在同一Room事务分批50身份读取全部付款/状态，计算仍复用冻结M03校验。50是读取批次，不是总计算/内存开销硬上限。
+
+ReminderDispatch持有同代协调器，复核完整事实、偏好、Receipt、记录时区业务日和平台权限，再同步调用Publisher、成功后持久Receipt。恢复退休须等待同一租约；取消在发布前阻止执行，发布后回执不可被取消抹掉。系统通知使用完整逻辑tag和稳定ID；有限崩溃重试窗口存在。清晨延后至当日09:00，不将早到抑制误作永久耗尽；任务在实际发布前按真实剩余日数生成文案。无网络、精确闹钟或常驻前台服务。
+
+完整导出format3为九表加偏好/截止，旧format1/2严格验证后显式升级。DataGenerationStore只对未发布的恢复候选建立截止与proof3，先验原proof，再写水位、同步、验证，最后沿既有AtomicFile SWITCHING/STABLE切换；内部metadata格式仍1，不能与backup format混同。旧proof1/2保持原字节契约，不能隐藏新提醒事实。恢复重建未来候选，不复制WorkManager数据库；旧代排队任务拒绝。当前实际验证/NOT_RUN以[集中报告](evidence/M20-verification.md)为准，未运行系统通知或迁移不得由编译替代。

@@ -1,0 +1,30 @@
+[
+  {
+    "label": "compile",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\java.exe",
+      "-cp",
+      "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-compiler-embeddable\\2.3.10\\6e349e33b398eb4f0227ceb5b99db2535a982670\\kotlin-compiler-embeddable-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlinx\\kotlinx-coroutines-core-jvm\\1.10.2\\4a9f78ef49483748e2c129f3d124b8fa249dafbf\\kotlinx-coroutines-core-jvm-1.10.2.jar",
+      "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler",
+      "-no-stdlib",
+      "-no-reflect",
+      "-jvm-target",
+      "17",
+      "-jdk-home",
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1",
+      "-classpath",
+      "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.3.10\\8b80e2f80a3b7daa99c16017f91d4c72cd8b31a6\\kotlin-stdlib-2.3.10.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\junit\\junit\\4.13.2\\8ac9e16d933b6fb43bc7f576336b8f4d7eb5ba12\\junit-4.13.2.jar;C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\org.hamcrest\\hamcrest-core\\1.3\\42a25dc3219429f0e5d060061f71acb49bf010a0\\hamcrest-core-1.3.jar",
+      "-d",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\build\\planner-red",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\src\\main\\java\\com\\cooper\\lithic\\core\\model\\DomainModels.kt",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\src\\main\\java\\com\\cooper\\lithic\\core\\model\\Money.kt",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\src\\main\\java\\com\\cooper\\lithic\\domain\\subscription\\SubscriptionCostEngine.kt",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\src\\main\\java\\com\\cooper\\lithic\\domain\\subscription\\SubscriptionIntervalRules.kt",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\src\\main\\java\\com\\cooper\\lithic\\domain\\subscription\\SubscriptionModels.kt",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\src\\main\\java\\com\\cooper\\lithic\\domain\\reminder\\RenewalReminderPlanner.kt",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\src\\test\\java\\com\\cooper\\lithic\\domain\\reminder\\RenewalReminderPlannerTest.kt"
+    ],
+    "exit_code": 1,
+    "seconds": 0.359
+  }
+]

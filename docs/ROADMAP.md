@@ -1,5 +1,7 @@
 # V1 模块路线与执行闸门
 
+**2026-10-22 M20当前覆盖**：用户已明确授权M20，候选READY_FOR_REVIEW/独立PENDING；238 JVM PASS、Lint0/25、Debug App/Test构建成功，22 Android及截图NOT_RUN（原5692身份门禁未通过，未发送ADB）。Room4/backup3为本候选明确授权变更，M19等冻结、M10/M13-T06延期、G1/G2/Q04/历史NOTES保持。见[M20报告](evidence/M20-verification.md)。M21未授权。下方旧登记文字只表示原时点。
+
 **2026-10-22当前覆盖**：M19已由用户正式转交ChatGPT独立源码、JVM/Android原始证据、截图及设备身份验收结论，评审`21d6230543ac9c0c491d8da590d230396952f571`，**ACCEPTED / FROZEN — PASS WITH NOTES**。T01～T06、此前109 JVM PASS、29 Android PASS、Lint0错误23警告及8张真实隔离截图获限定认可，见[正式登记](ACCEPTANCE_MATRIX.md#m19正式冻结登记2026-10-22)。仅冻结类别分析、真实资金年份归属、客观年度回顾及对应只读映射，Room3/backup2/冻结算法不改。本轮仅文档登记，不重跑测试/构建或操作设备。M10延期、M13-T06延期/G1未整体通过、G2未自动通过、Q02完整16组及全部历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES保持。登记后停止，M20未授权。下方旧日期授权为历史。
 
 **2026-10-20授权历史（现状以页首为准）**：M11、M12已由用户转交独立验收限定冻结PASS WITH NOTES；当前授权M13首页汇总与核心内部Debug候选，依赖M07/M09/M12。M10仍PENDING / DEFERRED且现场不动，不合并Worker/Stage V2/JNI或独立UI-C1分支。M13-T06稳定签名/首次真实记录门槛单独保留，M14未授权。
@@ -38,7 +40,7 @@
 | M17 | 项目曲线/订阅阶梯图 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m17.md) | M16 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T05及原144 JVM/28 Android/9图、Lint0/9获限定认可；不扩大Q02的M18门禁，见[正式登记](ACCEPTANCE_MATRIX.md#m17正式冻结登记2026-10-21) |
 | M18 | 总成本历史与事件 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m18.md) | M17 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T05及此前174 JVM/17 Android/10图、Lint0/23获限定认可；首次14/3与NOT_CAPTURED保留，Q02完整16组不关闭；见[正式登记](ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21) |
 | M19 ACCEPTED / FROZEN — PASS WITH NOTES | 类别/年度/客观回顾 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m19.md) | M18 | 年度按真实日期、类型分开，不生成建议 |
-| M20 NOT_AUTHORIZED | 续费通知、schema v4/format v3 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m20.md) | M19 | 3天候选、复核、去重、恢复水位；无精确闹钟 |
+| M20 READY_FOR_REVIEW / 独立PENDING | 续费通知、schema v4/format v3 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m20.md) | M19 | 3天候选、复核、去重、恢复水位；无精确闹钟 |
 | M21 | 实际时间里程碑/低打扰 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m21.md) | M20 | 预付不冒充365天，不补旧节点，不游戏化 |
 | M22 | 小屏/字体/无障碍/长历史 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m22.md) | M21 | 360dp/200%字体/48dp触控；不加功能 |
 | M23 | 可靠性/签名升级/正式V1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m23.md) | M22 | 全发行schema/旧备份/断网/故障/签名；独立验收后冻结 |

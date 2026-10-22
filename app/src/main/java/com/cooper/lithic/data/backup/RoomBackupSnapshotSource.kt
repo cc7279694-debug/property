@@ -19,6 +19,7 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
         val settings = BackupSettingsV1(
             generation.settings.backupRecordZoneWithinSnapshot(generation.coordinator).id,
         )
+        val reminders = generation.settings.reminderPreferencesWithinSnapshot(generation.coordinator)
         val snapshot = generation.database.withTransaction {
             val database = generation.database
             val counts = TABLES.map { table ->
@@ -29,7 +30,7 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
                     count
                 }
             }
-            requireBackupRecordCounts(counts)
+            requireBackupRecordCounts(counts, expectedTables = 9)
             com.cooper.lithic.data.repository.ReplacementStoredFacts.requireValid(database)
             val categories = database.categoryDao().list()
             val projects = database.projectDao().listProjects()
@@ -42,13 +43,16 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
             val renewals = idChunks.flatMap { subscriptionDao.renewalsForSubscriptions(it) }
             val states = idChunks.flatMap { subscriptionDao.statesForSubscriptions(it) }
             val replacements=database.replacementDao().listReplacements()
+            val receipts=database.notificationReceiptDao().list()
             check(counts == listOf(categories.size, projects.size, events.size, media.size,
-                subscriptions.size, renewals.size, states.size,replacements.size).map { it.toLong() }) {
+                subscriptions.size, renewals.size, states.size,replacements.size,receipts.size).map { it.toLong() }) {
                 "A backup query omitted persisted rows"
             }
             BackupSnapshot(
                 BackupDtoMapper.fromRows(categories, projects, events, media, subscriptions, renewals, states,replacements),
                 settings,
+                receipts.map { BackupNotificationReceiptV3(it.logicalKey, it.ownerId, it.kind, it.boundary, it.publishedAt.toString()) },
+                reminders,
             )
         }
         return snapshot
@@ -59,7 +63,7 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
     private companion object {
         // Fixed names, never SQL identifiers from external input. Match the count/row order above.
         val TABLES = listOf("categories", "long_term_projects", "project_money_events", "local_media_assets",
-            "subscriptions", "subscription_renewals", "subscription_state_changes","replacements")
+            "subscriptions", "subscription_renewals", "subscription_state_changes","replacements","notification_receipts")
         const val IDS_PER_QUERY = 400
     }
 }

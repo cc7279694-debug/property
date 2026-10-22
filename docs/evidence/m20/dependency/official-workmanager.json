@@ -1,0 +1,144 @@
+[
+  {
+    "url": "https://dl.google.com/dl/android/maven2/androidx/work/work-runtime-ktx/2.12.0/work-runtime-ktx-2.12.0.pom",
+    "bytes": 3264,
+    "sha256": "f19d2d7fceb36ce076f9777e9924cc0643da62918bfbb8e4aa71a72f799a289a",
+    "license": "The Apache Software License, Version 2.0",
+    "direct_dependencies": [
+      {
+        "group": "androidx.work",
+        "artifact": "work-runtime",
+        "version": "[2.12.0]"
+      },
+      {
+        "group": "org.jetbrains.kotlin",
+        "artifact": "kotlin-stdlib",
+        "version": "2.1.20"
+      }
+    ]
+  },
+  {
+    "url": "https://dl.google.com/dl/android/maven2/androidx/work/work-runtime/2.12.0/work-runtime-2.12.0.pom",
+    "bytes": 5221,
+    "sha256": "68544d4ed7062252edc5cbc2540b3e071a31ab045baea017c6684c150d357379",
+    "license": "The Apache Software License, Version 2.0",
+    "direct_dependencies": [
+      {
+        "group": "androidx.tracing",
+        "artifact": "tracing-ktx",
+        "version": "1.2.0"
+      },
+      {
+        "group": "androidx.annotation",
+        "artifact": "annotation-experimental",
+        "version": "1.4.1"
+      },
+      {
+        "group": "org.jspecify",
+        "artifact": "jspecify",
+        "version": "1.0.0"
+      },
+      {
+        "group": "androidx.room",
+        "artifact": "room-runtime",
+        "version": "2.7.0"
+      },
+      {
+        "group": "com.google.guava",
+        "artifact": "listenablefuture",
+        "version": "1.0"
+      },
+      {
+        "group": "org.jetbrains.kotlinx",
+        "artifact": "kotlinx-coroutines-android",
+        "version": "1.9.0"
+      },
+      {
+        "group": "androidx.lifecycle",
+        "artifact": "lifecycle-service",
+        "version": "2.6.2"
+      },
+      {
+        "group": "androidx.concurrent",
+        "artifact": "concurrent-futures-ktx",
+        "version": "1.1.0"
+      },
+      {
+        "group": "androidx.startup",
+        "artifact": "startup-runtime",
+        "version": "1.1.1"
+      },
+      {
+        "group": "androidx.core",
+        "artifact": "core",
+        "version": "1.12.0"
+      },
+      {
+        "group": "androidx.lifecycle",
+        "artifact": "lifecycle-livedata",
+        "version": "2.6.2"
+      },
+      {
+        "group": "org.jetbrains.kotlin",
+        "artifact": "kotlin-stdlib",
+        "version": "2.1.20"
+      }
+    ]
+  },
+  {
+    "url": "https://dl.google.com/dl/android/maven2/androidx/work/work-runtime/2.12.0/work-runtime-2.12.0.module",
+    "bytes": 13531,
+    "sha256": "94580b65309cc319020fc18bb4136b035aea2e0c20a448a3df7f7b258a90e296",
+    "component": {
+      "group": "androidx.work",
+      "module": "work-runtime",
+      "version": "2.12.0",
+      "attributes": {
+        "org.gradle.status": "release"
+      }
+    },
+    "variants": [
+      {
+        "name": "sourcesElements",
+        "attributes": {
+          "org.gradle.category": "documentation",
+          "org.gradle.dependency.bundling": "external",
+          "org.gradle.docstype": "sources",
+          "org.gradle.usage": "java-runtime"
+        }
+      },
+      {
+        "name": "releaseVariantReleaseApiPublication",
+        "attributes": {
+          "org.gradle.category": "library",
+          "org.gradle.dependency.bundling": "external",
+          "org.gradle.libraryelements": "aar",
+          "org.gradle.usage": "java-api"
+        }
+      },
+      {
+        "name": "releaseVariantReleaseRuntimePublication",
+        "attributes": {
+          "org.gradle.category": "library",
+          "org.gradle.dependency.bundling": "external",
+          "org.gradle.libraryelements": "aar",
+          "org.gradle.usage": "java-runtime"
+        }
+      },
+      {
+        "name": "libraryVersionMetadata",
+        "attributes": {
+          "org.gradle.category": "documentation",
+          "org.gradle.dependency.bundling": "external",
+          "org.gradle.usage": "library-version-metadata"
+        }
+      }
+    ]
+  },
+  {
+    "url": "https://dl.google.com/dl/android/maven2/androidx/work/work-runtime/2.12.0/work-runtime-2.12.0.aar",
+    "bytes": 1264436,
+    "sha256": "a967c776d2c2ff9a7a541679d2fb51cefdc78d4010fcf68f3fdd4c57c29e89dc",
+    "aar_metadata": "aarFormatVersion=1.0\naarMetadataVersion=1.0\nminCompileSdk=35\nminCompileSdkExtension=0\nminAndroidGradlePluginVersion=8.6.0\ncoreLibraryDesugaringEnabled=false\n"
+  }
+]

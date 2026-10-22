@@ -142,7 +142,7 @@ internal object BackupEntryFiles {
 internal class BackupCoreStager {
     fun prepare(snapshot: BackupSnapshot, parent: Path): PreparedBackupCore {
         BackupEntryFiles.requireDirectory(parent)
-        val counts = snapshot.data.recordCounts()
+        val counts = snapshot.completeRecordCounts()
         require(counts.values.fold(0L, Math::addExact) < BackupLimits.MAX_RECORDS) { "Too many backup records" }
         java.time.ZoneId.of(snapshot.settings.recordZoneId)
         val mediaIds = snapshot.data.mediaAssets.map { it.id }.toSet()
@@ -151,8 +151,8 @@ internal class BackupCoreStager {
         val token = java.util.UUID.randomUUID().toString()
         Files.write(directory.resolve(".backup-core-owner"), token.toByteArray(Charsets.UTF_8), CREATE_NEW, WRITE)
         // This private candidate remains available to its owner on any IO failure; it is never published.
-        val data = BackupEntryFiles.write(directory, "data.json", BackupLimits.MAX_DATA_BYTES) { BackupJson.writeData(snapshot.data, it) }
-        val settings = BackupEntryFiles.write(directory, "settings.json", BackupLimits.MAX_SETTINGS_BYTES) { BackupJson.writeSettings(snapshot.settings, it) }
+        val data = BackupEntryFiles.write(directory, "data.json", BackupLimits.MAX_DATA_BYTES) { BackupJson.writeData(snapshot.currentData(), it) }
+        val settings = BackupEntryFiles.write(directory, "settings.json", BackupLimits.MAX_SETTINGS_BYTES) { BackupJson.writeSettings(snapshot.currentSettings(), it) }
         return PreparedBackupCore(directory, listOf(data, settings), counts.toMap(), snapshot.settings.recordZoneId,
             snapshot.data.mediaAssets.map { it.relativePath }.toSet(), token)
     }

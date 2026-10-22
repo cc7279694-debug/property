@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-22T02:41:18.328Z" hostname="WHOCARE" time="1.812">
+  <properties/>
+  <testcase name="required_media_must_have_exact_unique_entries_and_counts" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.06"/>
+  <testcase name="cancellation_checkpoint_is_observed_during_archive_and_target_streaming" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.21"/>
+  <testcase name="missing_changed_and_over_limit_media_cannot_form_manifest" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.086"/>
+  <testcase name="complete_archive_includes_exact_nonempty_media_and_is_verified_from_central_directory" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.272"/>
+  <testcase name="archive_path_must_be_new_private_sibling_outside_payload_tree" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.088"/>
+  <testcase name="target_write_close_readback_failure_or_truncation_never_returns_success" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.282"/>
+  <testcase name="target_copy_verifies_closed_readback_with_exact_whole_archive_hash" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.213"/>
+  <testcase name="truncated_central_directory_extra_entry_and_replaced_manifest_are_rejected" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.309"/>
+  <testcase name="source_archive_change_is_rejected_before_target_is_opened" classname="com.cooper.lithic.data.backup.CompleteBackupArchiveTest" time="0.288"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

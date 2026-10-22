@@ -22,6 +22,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--expected-version-code", default="1")
     parser.add_argument("--expected-version-name", default="0.1.0-m01-debug")
+    parser.add_argument("--profile", choices=("m01", "m20"), default="m01")
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     apk = args.apk.resolve(strict=True)
@@ -56,6 +57,9 @@ def main() -> None:
     permissions = set(re.findall(r"uses-permission(?:-sdk-23)?: name='([^']+)'", badging))
     # M01 needs no platform permission. AndroidX Core contributes this signature-only guard.
     allowed = {"com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"}
+    if args.profile == "m20":
+        allowed |= {"android.permission.POST_NOTIFICATIONS", "android.permission.WAKE_LOCK",
+                    "android.permission.ACCESS_NETWORK_STATE", "android.permission.RECEIVE_BOOT_COMPLETED"}
     require(permissions <= allowed, f"Unexpected permissions: {sorted(permissions - allowed)}")
     require(re.search(r":allowBackup.*=false", manifest) is not None, "APK allows system backup")
     require(re.search(r":protectionLevel.*=0x00000002", manifest) is not None,
@@ -97,6 +101,12 @@ def main() -> None:
     require(app.attrib[ns + "dataExtractionRules"] == "@xml/data_extraction_rules", "Wrong extraction reference")
     require(not any(node.attrib.get(ns + "name") == "androidx.emoji2.text.EmojiCompatInitializer"
                     for node in app.iter("meta-data")), "Merged manifest enables downloadable Emoji fonts")
+    if args.profile == "m20":
+        require(app.attrib.get(ns + "name") == "com.cooper.lithic.app.LithicApplication", "Wrong unique storage owner")
+        require(not any(node.attrib.get(ns + "name") == "androidx.work.WorkManagerInitializer"
+                        for node in app.iter("meta-data")), "WorkManager would be initialized twice")
+        require(not any(node.attrib.get(ns + "name") == "androidx.work.impl.foreground.SystemForegroundService"
+                        for node in app.findall("service")), "Unused foreground service is present")
 
     catalog = tomllib.loads((root / "gradle/libs.versions.toml").read_text(encoding="utf-8"))
     require(all(re.fullmatch(r"\d+(?:\.\d+)+", value) for value in catalog["versions"].values()),
@@ -115,6 +125,7 @@ def main() -> None:
         "backupConfig": "allowBackup=false; legacy/cloud/device-transfer exclude all nine domains",
         "versions": catalog["versions"], "wrapperJarSha256": wrapper_hash,
         "scope": "Artifact/config checks only; signature, install and offline launch require separate evidence",
+        "permissionProfile": args.profile,
     }
     (args.output / "apk-verification.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))

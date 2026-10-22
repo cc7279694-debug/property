@@ -1,0 +1,231 @@
+{
+  "jvm": {
+    "unique_methods": 238,
+    "pass": 238,
+    "new": 88,
+    "regression": 150,
+    "fail": 0,
+    "error": 0,
+    "skip": 0,
+    "classes": [
+      {
+        "class": "com.cooper.lithic.app.M16NavigationPolicyTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.app.M19NavigationPolicyTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.app.M20NavigationPolicyTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupCancellationTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupDtosTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupFilesTest",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupJpegInspectionTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupMediaBudgetTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupPngCompatibilityTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupPngInspectionTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupRecordLimitTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.BackupValidatorTest",
+        "tests": 20,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.CompleteBackupArchiveTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.CoordinatedBackupReaderTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.GenerationRetirementTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.M16BackupV2Test",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.M16RestoreProofCompatibilityTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.backup.M20BackupV3Test",
+        "tests": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.data.repository.M20ReminderDispatchTest",
+        "tests": 28,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest",
+        "tests": 32,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+        "tests": 37,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.settings.NotificationPermissionStateTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "class": "com.cooper.lithic.feature.settings.NotificationSettingsControllerTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "android": {
+    "executed": 0,
+    "pass": 0,
+    "not_run": 22,
+    "sources": [
+      {
+        "file": "app/src/androidTest/java/com/cooper/lithic/data/backup/M20BackupRestoreTest.kt",
+        "methods": 4,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "app/src/androidTest/java/com/cooper/lithic/data/local/M20DatabaseMigrationTest.kt",
+        "methods": 2,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "app/src/androidTest/java/com/cooper/lithic/data/settings/M20ReminderSettingsTest.kt",
+        "methods": 1,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+        "methods": 7,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsViewModelTest.kt",
+        "methods": 2,
+        "status": "NOT_RUN"
+      },
+      {
+        "file": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+        "methods": 6,
+        "status": "NOT_RUN"
+      }
+    ],
+    "screenshots": "NOT_RUN",
+    "reason": "Locked original 5692 process identities absent; no ADB commands sent"
+  },
+  "lint": {
+    "Warning": 25
+  },
+  "build_input_sha256": "f044e77e00a72f5c916072be6d9521c5145f847458b2e6c2401a26744ba93044"
+}

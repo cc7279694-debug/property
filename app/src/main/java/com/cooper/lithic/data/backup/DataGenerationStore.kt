@@ -9,6 +9,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.time.ZoneId
+import java.time.Clock
 import java.util.UUID
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
@@ -42,6 +43,7 @@ class DataGenerationStore(
     private val coordinator: LocalWriteCoordinator = LocalWriteCoordinator(),
     private val initialize: suspend (ManagedGeneration) -> Unit = {},
     private val restoreProbe: suspend (String) -> Unit = {},
+    private val restoreClock: Clock = Clock.systemUTC(),
 ) {
     private val lifecycle = Mutex()
     private var active: ManagedGeneration? = null
@@ -176,6 +178,7 @@ class DataGenerationStore(
         try {
             candidate=openNamed(generations,metadata.activeId)
             verifyRestoreProof(candidate)
+            protectVerifiedRestoreCandidate(candidate)
             writePointer(pointer,metadata.activeId,previous,"STABLE")
             return candidate
         } catch(failure:Throwable) {
@@ -253,12 +256,17 @@ class DataGenerationStore(
                 val settings=SettingsStore.open(paths.settings,gate,zone);prefs=settings
                 val fresh=managed(id,directory,database,settings,gate)
                 populate(fresh)
+                // Clamp before proof/readiness/activation even for custom restore population adapters.
+                gate.withWrite {
+                    val reminders = settings.reminderPreferencesWithinSnapshot(gate)
+                    settings.restoreRemindersWithinWrite(gate, RestoreReminderProtection.preferences(reminders, zone, restoreClock.instant()))
+                }
                 val snapshot=RoomBackupSnapshotSource(fresh).capture()
                 RestoredGenerationWriter().verify(fresh,snapshot)
                 val proof=JSONObject().put("formatVersion",FORMAT_VERSION).put("generationId",id).put("nonce",nonce)
-                    .put("dataFormatVersion",2)
-                    .put("dataSha256",restoreDigest { RestoreProofData.write(snapshot,2,it) })
-                    .put("settingsSha256",restoreDigest { BackupJson.writeSettings(snapshot.settings,it) })
+                    .put("dataFormatVersion",3)
+                    .put("dataSha256",restoreDigest { RestoreProofData.write(snapshot,3,it) })
+                    .put("settingsSha256",restoreDigest { RestoreProofData.writeSettings(snapshot,3,it) })
                 // Checkpoint/close all owners before readiness and activation eligibility.
                 database.openHelper.writableDatabase.query("PRAGMA wal_checkpoint(FULL)").use { cursor ->
                     check(cursor.moveToFirst() && cursor.getInt(0)==0) { "Restore WAL checkpoint did not complete" }
@@ -300,6 +308,7 @@ class DataGenerationStore(
                     val proof=readRestoreProof(safeChild(candidate.directory,"restore-proof.json"))
                     require(proof.getString("nonce")==candidate.nonce)
                     verifyRestoreProof(checked)
+                    protectVerifiedRestoreCandidate(checked)
                 } finally { closeChecked(checked) }
                 restoreProbe("BEFORE_SWITCH")
                 old.coordinator.retire(verify={
@@ -346,10 +355,41 @@ class DataGenerationStore(
         require(readId(proof.get("generationId"))==generation.id)
         readId(proof.get("nonce"))
         val snapshot=RoomBackupSnapshotSource(generation).capture()
-        val dataFormat=if(proof.has("dataFormatVersion")) 2 else 1
+        val dataFormat=if(proof.has("dataFormatVersion")) proof.getInt("dataFormatVersion") else 1
         require(proof.getString("dataSha256")==restoreDigest { RestoreProofData.write(snapshot,dataFormat,it) }) { "Restored facts do not match readiness proof" }
-        require(proof.getString("settingsSha256")==restoreDigest { BackupJson.writeSettings(snapshot.settings,it) }) { "Restored settings do not match readiness proof" }
+        require(proof.getString("settingsSha256")==restoreDigest { RestoreProofData.writeSettings(snapshot,dataFormat,it) }) { "Restored settings do not match readiness proof" }
         RestoredGenerationWriter().verify(generation,snapshot)
+    }
+
+    /** Called only after authenticating the original proof, while the candidate is unpublished.
+     * This also covers an interrupted legacy SWITCHING restore resumed after an app upgrade.
+     * A crash between the settings write and proof replacement fails closed to the persisted old dataset.
+     */
+    private suspend fun protectVerifiedRestoreCandidate(generation: ManagedGeneration) {
+        val file = safeChild(generation.directory, "restore-proof.json")
+        val original = readRestoreProof(file)
+        val oldFormat = if (original.has("dataFormatVersion")) original.getInt("dataFormatVersion") else 1
+        generation.coordinator.withWrite {
+            val snapshot = RoomBackupSnapshotSource(generation).captureWithinOwnedBoundary(generation.coordinator)
+            val protected = RestoreReminderProtection.preferences(snapshot.reminderPreferences,
+                ZoneId.of(snapshot.settings.recordZoneId), restoreClock.instant())
+            if (oldFormat != 3 || protected != snapshot.reminderPreferences) {
+                generation.settings.restoreRemindersWithinWrite(generation.coordinator, protected)
+                val expected = snapshot.copy(reminderPreferences = protected)
+                val upgraded = JSONObject().put("formatVersion", FORMAT_VERSION).put("generationId", generation.id)
+                    .put("nonce", original.getString("nonce")).put("dataFormatVersion", 3)
+                    .put("dataSha256", restoreDigest { RestoreProofData.write(expected, 3, it) })
+                    .put("settingsSha256", restoreDigest { RestoreProofData.writeSettings(expected, 3, it) })
+                generation.database.openHelper.writableDatabase.query("PRAGMA wal_checkpoint(FULL)").use { cursor ->
+                    check(cursor.moveToFirst() && cursor.getInt(0) == 0) { "Protected candidate WAL checkpoint did not complete" }
+                }
+                syncFile(safeChild(generation.directory, "data.db"))
+                syncFile(generation.settings.file)
+                writeAtomic(file, upgraded)
+                syncDirectory(generation.directory)
+            }
+        }
+        verifyRestoreProof(generation)
     }
 
     private fun restoreDigest(write:(java.io.OutputStream)->Unit):String {
@@ -471,7 +511,7 @@ class DataGenerationStore(
 
     private fun readRestoreProof(file:File):JSONObject {
         val proof=readMetadataShapes(file,listOf(PROOF_FIELDS,PROOF_FIELDS+"dataFormatVersion"))
-        if(proof.has("dataFormatVersion")) require(proof.get("dataFormatVersion")==2) {
+        if(proof.has("dataFormatVersion")) require(proof.get("dataFormatVersion") in setOf(2,3)) {
             "Restoration proof data format is unsupported"
         }
         return proof

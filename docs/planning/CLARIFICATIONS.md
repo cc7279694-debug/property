@@ -84,3 +84,8 @@
 ## 确认与执行闸门
 
 Q02/Q07 在M02获得的用户确认解释继续继承，规则登记当前决策，不改写归档原件；规格确认不等于测试通过。Q04/Q05建议、Q03剩余节点仍按原期限等待明确解释，Q06由对应获准模块设计并验证。M00～M02 已独立验收冻结；M02独立未重跑Windows Gradle的NOTES保留。本轮仅授权 M03，交付后停止，M04 未授权。Q03～Q06 状态与处理期限及原16组 NOT_RUN 补测均保持不变，M17/M18 仍须按自身范围复验 Q02。
+
+
+## 2026-10-22 — M20对Q04的工程限定验证（不改源状态）
+
+当前用户明确要求按原N02真实reminderDueOn构造候选，不能只因paidUntilExclusive已过/成本EXPIRED丢弃。Q04保持PROPOSED；上方原V01～V03 NOT_RUN为历史记录保留。本轮仅新增工程限定JVM子断言PASS：V01已付[09-15,10-15)后成本0、10-17仍有10-20候选；V02迟到剩2天/边界日不发；V03相邻已确认付款、真实停止/偏好/可控Publisher权限抑制以及并发去重。系统通知、真实Android/Room与16组完整跨模块仍NOT_RUN，不构成Q04整体CLOSED或USER_CONFIRMED。见[M20集中报告](../evidence/M20-verification.md)及[238项结果](../evidence/m20/results.json)。

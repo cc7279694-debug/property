@@ -29,6 +29,9 @@ internal data class CategoryAnalysis(val categoryId: String? = null, val subscri
 internal data object Settings : NavKey
 
 @Serializable
+internal data object NotificationSettings : NavKey
+
+@Serializable
 internal data object NameSearch : NavKey
 
 @Serializable
@@ -130,6 +133,7 @@ internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (desti
         listOf(Home, Review, destination) else listOf(Home)
     NameSearch -> listOf(Home, NameSearch)
     CategoryManagement -> listOf(Home, Settings, CategoryManagement)
+    NotificationSettings -> listOf(Home, Settings, NotificationSettings)
     ProjectHistory -> listOf(Home, Review, ProjectHistory)
     CreateProject -> listOf(Home, CreateProject)
     CreateSubscription -> listOf(Home, CreateSubscription)

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "gradlew.bat",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest",
+    "--tests",
+    "com.cooper.lithic.data.backup.M20BackupV3Test",
+    "--tests",
+    "com.cooper.lithic.feature.settings.NotificationSettingsControllerTest",
+    "--tests",
+    "com.cooper.lithic.feature.settings.NotificationPermissionStateTest",
+    "--max-workers=2",
+    "--console=plain"
+  ],
+  "exit_code": 1,
+  "seconds": 129.437
+}

@@ -36,6 +36,7 @@ internal fun SettingsShell(
     onConfirmRestore: () -> Unit = {},
     onDiscardRestore: () -> Unit = {},
     onManageCategories: (() -> Unit)? = null,
+    onNotificationClick: (() -> Unit)? = null,
 ) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("settings-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
@@ -116,8 +117,12 @@ internal fun SettingsShell(
         }
         HorizontalDivider()
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text("提醒功能尚未开放", style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            onNotificationClick?.let { openNotifications ->
+                TextButton(onClick = openNotifications,
+                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("open-notification-settings")) {
+                    Text("提醒设置", style = MaterialTheme.typography.bodyLarge)
+                }
+            }
             Text("当前为 Debug 工程阶段，暂不建议长期保存无法丢失的重要记录",
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }

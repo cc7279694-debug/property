@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" tests="32" skipped="0" failures="0" errors="0" timestamp="2026-10-22T02:54:23.214Z" hostname="WHOCARE" time="0.041">
+  <properties/>
+  <testcase name="calendar_underflow_rejected_without_wrapping_or_scheduling_wrong_date" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.007"/>
+  <testcase name="payment_not_yet_confirmed_as_of_today_neither_reminds_nor_suppresses" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.002"/>
+  <testcase name="future_candidate_keeps_its_original_date_and_late_daytime_is_immediate" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="already_stopped_suppresses_even_with_paid_coverage" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="q04_paid_coverage_expired_still_has_real_future_reminder_and_unchanged_cost" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="stable_id_handles_minimum_signed_hash_without_negative_overflow" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.0"/>
+  <testcase name="due_boundary_and_later_never_emit_future_tense_reminder" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.0"/>
+  <testcase name="disconnected_future_successor_after_reminder_does_not_hide_old_boundary" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="independent_owners_keep_distinct_keys_and_deterministic_candidate_order" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="q04_successor_starting_in_unpaid_gap_before_reminder_suppresses_old_boundary" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.003"/>
+  <testcase name="duplicate_owner_or_payment_identity_is_rejected_instead_of_silent_dedup" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.003"/>
+  <testcase name="corrected_due_date_removes_old_candidate_and_later_uses_new_boundary" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="blank_owner_name_or_source_row_identity_cannot_be_published" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.002"/>
+  <testcase name="recorded_zone_owns_day_and_nine_even_when_travel_zone_differs" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.004"/>
+  <testcase name="duplicate_state_day_is_rejected_instead_of_arbitrary_last_state" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="removed_owner_or_original_payment_is_not_a_candidate" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="scheduled_stop_before_or_on_due_suppresses_without_changing_effective_state" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="same_identity_reopened_after_historical_stop_is_eligible" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="schedule_helper_uses_recorded_local_nine_through_daylight_saving_change" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="full_paid_facts_are_validated_even_if_overlapping_row_is_outside_candidate_window" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="confirmed_adjacent_prepaid_successor_suppresses_original_boundary" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="successful_logical_receipt_suppresses_exact_boundary_and_other_keys_do_not" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.0"/>
+  <testcase name="renewal_preference_off_suppresses_and_reenable_uses_current_legal_window" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="stop_superseded_by_confirmed_reopen_before_due_is_not_permanent_stop" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="scheduled_stop_after_due_does_not_suppress_prematurely" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.0"/>
+  <testcase name="stable_key_and_notification_id_survive_name_and_payment_identity_change" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="exactly_three_business_days_before_has_true_boundary_identity_and_copy" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="pause_is_not_stop_and_does_not_fabricate_payment" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.0"/>
+  <testcase name="missed_candidate_in_early_morning_waits_for_today_nine_instead_of_being_consumed" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.0"/>
+  <testcase name="restored_cutoff_excludes_equal_and_past_triggers_but_keeps_future" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="before_candidate_day_or_before_nine_does_not_publish" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <testcase name="late_first_execution_has_two_real_days_and_next_day_has_one" classname="com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -17,12 +17,13 @@ internal object DatabaseSchemaValidation {
             1 -> oldTables
             2 -> oldTables + subscriptionTables
             3 -> v3Tables
+            4 -> v4Tables
             else -> error("Existing database version has no registered migration")
         }
         requireTable(db, masterTable)
         db.rawQuery("SELECT id,identity_hash FROM room_master_table", null).use { cursor ->
             check(cursor.moveToFirst() && cursor.getInt(0) == 42 && !cursor.isNull(1)) { "Existing database has no valid Room identity" }
-            val known = when (version) { 1 -> v1Identities; 2 -> v2Identities; else -> v3Identities }
+            val known = when (version) { 1 -> v1Identities; 2 -> v2Identities; 3 -> v3Identities; else -> v4Identities }
             check(cursor.getString(1) in known && !cursor.moveToNext()) { "Existing database has an unknown Room identity" }
         }
         val expectedObjects = expected.flatMap { table ->
@@ -154,4 +155,9 @@ internal object DatabaseSchemaValidation {
             Index("index_replacements_successorId", true, listOf("successorId"))),
         setOf(ForeignKey("predecessorId", "long_term_projects"), ForeignKey("successorId", "long_term_projects")))
 
+    // Verified against the actual v4 KSP export/RoomOpenDelegate on 2026-10-22.
+    private val v4Identities = setOf("a9e0c4efc0f4a09ecb7b245ce716a2c3", "66d910677c93cd61b3812c0a2c3764c2")
+    private val v4Tables = v3Tables + Table("notification_receipts",
+        listOf(Column("logicalKey", "TEXT", primaryKey = 1), text("ownerId"), text("kind"), text("boundary"), text("publishedAt")),
+        listOf(Index("index_notification_receipts_ownerId", false, listOf("ownerId"))))
 }

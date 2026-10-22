@@ -63,7 +63,7 @@ internal class RestoreCoordinator(context:Context,private val owner:AppContainer
                 val record=Pending(token,directory,Os.lstat(directory.toString()).st_ino,credential,fileIdentity(source),fileIdentity(payload.resolve("manifest.json")),hashFile(payload.resolve("manifest.json")),bundle,current.id,before)
                 completed=record
                 checkpoint()
-                record to RestorePreview(token,bundle.snapshot.data.recordCounts(),before.data.recordCounts(),
+                record to RestorePreview(token,bundle.snapshot.completeRecordCounts(),before.completeRecordCounts(),
                     bundle.manifest.createdAt,bundle.snapshot.settings.recordZoneId)
             }
             currentCoroutineContext().ensureActive()

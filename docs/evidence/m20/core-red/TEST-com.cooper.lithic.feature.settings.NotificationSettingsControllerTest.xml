@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.NotificationSettingsControllerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-22T02:18:49.583Z" hostname="WHOCARE" time="0.301">
+  <properties/>
+  <testcase name="reading_default_preferences_does_not_write_or_schedule" classname="com.cooper.lithic.feature.settings.NotificationSettingsControllerTest" time="0.239"/>
+  <testcase name="scheduling_failure_reports_saved_preferences_without_reverting_or_rewriting" classname="com.cooper.lithic.feature.settings.NotificationSettingsControllerTest" time="0.011"/>
+  <testcase name="switches_wait_for_persisted_values_and_only_then_request_schedule" classname="com.cooper.lithic.feature.settings.NotificationSettingsControllerTest" time="0.016"/>
+  <testcase name="write_failure_preserves_old_switches_and_is_retryable_without_fake_success" classname="com.cooper.lithic.feature.settings.NotificationSettingsControllerTest" time="0.014"/>
+  <testcase name="unchanged_switch_does_not_write_and_refresh_failure_disables_mutation" classname="com.cooper.lithic.feature.settings.NotificationSettingsControllerTest" time="0.011"/>
+  <testcase name="failed_read_never_uses_default_enabled_values_and_cannot_write" classname="com.cooper.lithic.feature.settings.NotificationSettingsControllerTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

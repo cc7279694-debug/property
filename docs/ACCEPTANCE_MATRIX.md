@@ -1,6 +1,25 @@
 # 验收登记
 
-当前状态：**M19 — ACCEPTED / FROZEN — PASS WITH NOTES**。依据用户2026-10-22转交的ChatGPT独立验收，评审`21d6230543ac9c0c491d8da590d230396952f571`。只登记本模块限定认可，不授予G1/G2整体通过，不关闭其他延期或跨模块门禁。
+当前状态：**M20 — READY_FOR_REVIEW / 独立PENDING**。M19及此前限定冻结保持；本轮只登记真实离线证据，不授予M20、G1/G2或Q04整体通过。
+
+## M20候选执行登记（2026-10-22）
+
+来源M19冻结回写`33ae4f4da61b066d7e2f1ca25cf5f2353208c183`，分支`codex/m20-renewal-notifications`。[契约](planning/M20_CONTRACT.md)、[集中报告](evidence/M20-verification.md)、[结果](evidence/m20/results.json)、[最终构建与输入](evidence/m20/final-candidate/result.json)、[产物核查](evidence/m20/apk/identity.json)。
+
+| 原M20案例 | 本轮限定结果 | 未完成门禁 |
+|---|---|---|
+| T01 three_days_before_once | JVM PASS：3日/9点/时区、迟到、稳定逻辑键、真实协调器并发与回执 | Android唯一持久队列/重启/OEM NOT_RUN |
+| T02 renewed_before_send_suppresses | JVM PASS：预付/纠错/真实停止、事实revision、旧代/取消围栏、发布前跨日复核 | 真实Worker与付款/状态/恢复联动 NOT_RUN |
+| T03 late_delivery_updates_copy | JVM PASS：剩余2天、到期不发及Q04付费/提醒边界分离 | 实际通知发布与截图 NOT_RUN |
+| T04 permission_denial_nonblocking | JVM PASS：偏好/可控Publisher拒绝不写Receipt；设置错误状态 | 平台权限/拒绝后实际业务/360dp和200% NOT_RUN |
+| T05 no_exact_alarm_or_network | 最终合并Manifest与实际APK审计 PASS，无INTERNET/精确闹钟/忽略电池优化/前台服务 | 设备离线和后台实际行为 NOT_RUN |
+| T06 backup_and_migration | JVM PASS：旧v1/v2严格校验、新v3九表/偏好/Receipt归档、proof兼容/截止保护、坏关联拒绝 | 真实1/2/3→4生产开库重开、完整restore/媒体与新水位中断验证 NOT_RUN |
+
+最终238唯一JVM PASS＝88新＋150回归，0失败/错误/跳过；Lint0错误25警告，Debug App/Test构建成功；336个输入前后摘要相同。22个新增Android方法仅编译，0执行、22 NOT_RUN，实际截图全部NOT_RUN。原5692实例未通过只读CIM身份门禁，ADB/安装/启动/创建/停止/清理次数均0，不替换为新设备。
+
+原40项RED/32FAIL、Dispatch25项3FAIL、跨日2FAIL、清晨2FAIL、集成233项230PASS/3旧格式期望FAIL及首个238PASS构建全部保留。只更新3处“当前格式”期望为本轮明确v3/9表，不更改legacy1/2严格拒绝或业务断言；项目Receipt清理误删风险已在候选中撤回，跨类型同UUID保护Android源码NOT_RUN。旧schema1/2/3、规划130条、16组完整跨模块与历史证据均不改。
+
+Q04仍PROPOSED，仅追加V01～V03对应工程限定JVM子项PASS；原补测NOT_RUN/平台缺口保留，不宣称独立用户确认或问题整体CLOSED。发布调用成功不等于收到，发布→Receipt之间仍可能崩溃重试。M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过及全部历史NOTES保持。独立验收PENDING，M21未授权。
 
 ## M19正式冻结登记（2026-10-22）
 

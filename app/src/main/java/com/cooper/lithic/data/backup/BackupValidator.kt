@@ -60,14 +60,24 @@ internal class BackupValidator {
             val manifest = decode(zip, manifestRecord, BackupManifestV1.serializer(), null, checkpoint)
             requireManifest(manifest, byName)
             val declared = manifest.files.associateBy { it.path }
-            val data = if(manifest.formatVersion==1) {
+            val snapshot = if(manifest.formatVersion==1) {
                 // Authenticate original v1 fields, declared length/SHA and seven-table counts before explicit DTO migration.
                 val legacy=decode(zip,byName.getValue("data.json"),BackupDataV1.serializer(),declared.getValue("data.json"),checkpoint)
                 require(legacy.recordCounts()==manifest.recordCounts) { "Legacy record counts disagree" }
-                legacy.upgrade()
-            } else decode(zip,byName.getValue("data.json"),BackupDataV2.serializer(),declared.getValue("data.json"),checkpoint)
-            val settings = decode(zip, byName.getValue("settings.json"), BackupSettingsV1.serializer(), declared.getValue("settings.json"), checkpoint)
-            val snapshot = BackupSnapshot(data.ordered(), settings)
+                val settings = decode(zip, byName.getValue("settings.json"), BackupSettingsV1.serializer(), declared.getValue("settings.json"), checkpoint)
+                BackupSnapshot(legacy.upgrade(), settings, emptyList(), com.cooper.lithic.data.settings.ReminderPreferences())
+            } else if(manifest.formatVersion==2) {
+                val legacy = decode(zip,byName.getValue("data.json"),BackupDataV2.serializer(),declared.getValue("data.json"),checkpoint)
+                require(legacy.recordCounts() == manifest.recordCounts) { "Format-2 original record counts disagree" }
+                val settings = decode(zip, byName.getValue("settings.json"), BackupSettingsV1.serializer(), declared.getValue("settings.json"), checkpoint)
+                BackupSnapshot(legacy.ordered(), settings, emptyList(), com.cooper.lithic.data.settings.ReminderPreferences())
+            } else {
+                val data = decode(zip,byName.getValue("data.json"),BackupDataV3.serializer(),declared.getValue("data.json"),checkpoint)
+                require(data.recordCounts() == manifest.recordCounts) { "Format-3 record counts disagree" }
+                val settings = decode(zip,byName.getValue("settings.json"),BackupSettingsV3.serializer(),declared.getValue("settings.json"),checkpoint)
+                BackupSnapshot(data.storedData(), BackupSettingsV1(settings.recordZoneId),
+                    data.notificationReceipts.sortedBy { it.logicalKey }, settings.preferences())
+            }
             BackupBusinessValidation.validate(snapshot, manifest, checkpoint)
             // Every record, its path, structure, resource budget, format and business relationship
             // has now passed. Extraction has no connection to the active generation.
