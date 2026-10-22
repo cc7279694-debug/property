@@ -2,6 +2,10 @@
 
 当前状态：**M20 — READY_FOR_REVIEW / 独立PENDING**。M19及此前限定冻结保持；本轮登记真实Android补验，额外平台FAIL和收口UNKNOWN保留，不授予M20、G1/G2或Q04整体通过。
 
+## M20第二次平台实验定向收口（2026-10-22）
+
+来源`d2be4cb29a03de100e784527f8e99e86e2cf45d6`。本次收口**BLOCKED**，M20仍READY_FOR_REVIEW/独立PENDING，不增加测试PASS。原M20/5704冷启动1次、正常退出1次，未新建环境、构建/安装APK或执行Instrumentation。原App/Test字节及原第二次结果SHA不变；新Boot核验通过，但实际出现正常App进程和此前不存在的默认generation，无新Worker前提不能确认，按授权停止。周期任务、通知清除、原合成账本一致性及Owner显式收口保持UNKNOWN/NOT_RUN；退出证明不能替代它们。原22最终22 PASS、首轮21 PASS/1 FAIL、额外平台两次FAIL和全部历史证据保持。[短报告](evidence/M20-Platform-closure.md)、[结果](evidence/m20-platform-closure/results.json)、[停止记录](evidence/m20-platform-closure/end-protection/stop-proof.json)。不授予M20/Q04/G1/G2冻结，不进入M21。
+
 ## M20低资源Android补验执行登记（2026-10-22）
 
 来源候选`4353d71aecc23b169aab0f67aab7d4ccaaa845af`，分支`codex/m20-renewal-notifications`。用户另行授权全新隔离API36/x86_64、2048MB/2核/headless/no-snapshot的`Lithic_M20_API36_20261022 / emulator-5704`；下方初交付22 NOT_RUN及原始报告保持当时语境，不回填。[补验报告](evidence/M20-Android-verification.md)、[唯一方法与执行结果](evidence/m20-android/results.json)、[checkpoint](checkpoints/2026-10-22-M20-Android.md)。

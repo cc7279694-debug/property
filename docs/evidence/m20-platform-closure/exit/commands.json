@@ -1,0 +1,212 @@
+[
+  {
+    "name": "original-host",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "[ordered]@{processes=@(Get-CimInstance Win32_Process|Where-Object {$_.Name -match '^(emulator|qemu-system.*)\\.exe$'}|ForEach-Object {[ordered]@{pid=$_.ProcessId;parent=$_.ParentProcessId;created=$_.CreationDate.ToString('o');path=$_.ExecutablePath;command=$_.CommandLine}});ports=@(Get-NetTCPConnection -State Listen -LocalPort 5704,5705 -ErrorAction SilentlyContinue|Select-Object LocalPort,OwningProcess);memory=(Get-CimInstance Win32_OperatingSystem|Select-Object FreePhysicalMemory,FreeVirtualMemory)}|ConvertTo-Json -Depth 6"
+    ],
+    "started": "2026-10-22T06:35:25.922827+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 2526,
+    "stdout_sha256": "a9f5af9812a4c32f8f41568464ae24d4944b9728c15b4ac35b741dfbc8115267",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boot",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "cat /proc/sys/kernel/random/boot_id"
+    ],
+    "started": "2026-10-22T06:35:28.318737+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 38,
+    "stdout_sha256": "0100e9acb41e62897805ed0de7f07697b09ccf911fe01e6739eced8fc9caa833",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-sha",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "sha256sum",
+      "/data/app/~~ZB-RN0yYqFB2mcjHgKCS7w==/com.cooper.lithic.debug-NhqfK3CzvVqE-dHilZhyGw==/base.apk"
+    ],
+    "started": "2026-10-22T06:35:28.423483+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 162,
+    "stdout_sha256": "7fcb82119fef809660fe525a836c3679b4f2d93749f78c7ccc1aea46222d558d",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-uid",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "cmd",
+      "package",
+      "list",
+      "packages",
+      "-U",
+      "com.cooper.lithic.debug"
+    ],
+    "started": "2026-10-22T06:35:28.574991+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 91,
+    "stdout_sha256": "283be3d714f65068d87611283ee8f7cf4eb32d71216aa1a6a09fc40acd7afb43",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-sha",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "sha256sum",
+      "/data/app/~~hV6P-nbCe64hIJlKzNA9Hg==/com.cooper.lithic.debug.test-lBgzCihDC7JDul4gOQo50g==/base.apk"
+    ],
+    "started": "2026-10-22T06:35:28.678363+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 167,
+    "stdout_sha256": "d1f909dfacde3d2dd1d161546a27ff0389e866af05999bf80d0880b48620ce70",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "test-uid",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "cmd",
+      "package",
+      "list",
+      "packages",
+      "-U",
+      "com.cooper.lithic.debug.test"
+    ],
+    "started": "2026-10-22T06:35:28.785989+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 48,
+    "stdout_sha256": "d6fbdd30c2e297981c6cd314ad73bd4cbe9ac26b07c35bb8bc1633ca48606bae",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "console-exit",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "emu",
+      "kill"
+    ],
+    "started": "2026-10-22T06:35:28.918919+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 37,
+    "stdout_sha256": "2f2464ff20db7f0caaf9d7ea8b3e7d1356fb4e22dc58d0e17a15faf96bf41822",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "after-0",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "[ordered]@{processes=@(Get-CimInstance Win32_Process|Where-Object {$_.Name -match '^(emulator|qemu-system.*)\\.exe$'}|ForEach-Object {[ordered]@{pid=$_.ProcessId;parent=$_.ParentProcessId;created=$_.CreationDate.ToString('o');path=$_.ExecutablePath;command=$_.CommandLine}});ports=@(Get-NetTCPConnection -State Listen -LocalPort 5704,5705 -ErrorAction SilentlyContinue|Select-Object LocalPort,OwningProcess);memory=(Get-CimInstance Win32_OperatingSystem|Select-Object FreePhysicalMemory,FreeVirtualMemory)}|ConvertTo-Json -Depth 6"
+    ],
+    "started": "2026-10-22T06:35:29.004009+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 2986,
+    "stdout_sha256": "bf90c9f27039b1cad1d5106b93f240e229e08680760c864a67775fc2f3e39372",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "after-1",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "[ordered]@{processes=@(Get-CimInstance Win32_Process|Where-Object {$_.Name -match '^(emulator|qemu-system.*)\\.exe$'}|ForEach-Object {[ordered]@{pid=$_.ProcessId;parent=$_.ParentProcessId;created=$_.CreationDate.ToString('o');path=$_.ExecutablePath;command=$_.CommandLine}});ports=@(Get-NetTCPConnection -State Listen -LocalPort 5704,5705 -ErrorAction SilentlyContinue|Select-Object LocalPort,OwningProcess);memory=(Get-CimInstance Win32_OperatingSystem|Select-Object FreePhysicalMemory,FreeVirtualMemory)}|ConvertTo-Json -Depth 6"
+    ],
+    "started": "2026-10-22T06:35:34.383357+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 684,
+    "stdout_sha256": "bd80969a02ce4c4d3695afa087af970b9c26de46dce6336aec648a2e419a6553",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "after-2",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "[ordered]@{processes=@(Get-CimInstance Win32_Process|Where-Object {$_.Name -match '^(emulator|qemu-system.*)\\.exe$'}|ForEach-Object {[ordered]@{pid=$_.ProcessId;parent=$_.ParentProcessId;created=$_.CreationDate.ToString('o');path=$_.ExecutablePath;command=$_.CommandLine}});ports=@(Get-NetTCPConnection -State Listen -LocalPort 5704,5705 -ErrorAction SilentlyContinue|Select-Object LocalPort,OwningProcess);memory=(Get-CimInstance Win32_OperatingSystem|Select-Object FreePhysicalMemory,FreeVirtualMemory)}|ConvertTo-Json -Depth 6"
+    ],
+    "started": "2026-10-22T06:35:39.689220+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 684,
+    "stdout_sha256": "98cb6b8ead8977ec207121246f9f215be3a7f2063fbd6f35cc2d3847f9e44a27",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "after-3",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "[ordered]@{processes=@(Get-CimInstance Win32_Process|Where-Object {$_.Name -match '^(emulator|qemu-system.*)\\.exe$'}|ForEach-Object {[ordered]@{pid=$_.ProcessId;parent=$_.ParentProcessId;created=$_.CreationDate.ToString('o');path=$_.ExecutablePath;command=$_.CommandLine}});ports=@(Get-NetTCPConnection -State Listen -LocalPort 5704,5705 -ErrorAction SilentlyContinue|Select-Object LocalPort,OwningProcess);memory=(Get-CimInstance Win32_OperatingSystem|Select-Object FreePhysicalMemory,FreeVirtualMemory)}|ConvertTo-Json -Depth 6"
+    ],
+    "started": "2026-10-22T06:35:44.948183+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 684,
+    "stdout_sha256": "e804a3ba550a6e79cc9da1ef965b6bd9b55402a9d5658180b9b568f766a6d9ee",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "after-4",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "[ordered]@{processes=@(Get-CimInstance Win32_Process|Where-Object {$_.Name -match '^(emulator|qemu-system.*)\\.exe$'}|ForEach-Object {[ordered]@{pid=$_.ProcessId;parent=$_.ParentProcessId;created=$_.CreationDate.ToString('o');path=$_.ExecutablePath;command=$_.CommandLine}});ports=@(Get-NetTCPConnection -State Listen -LocalPort 5704,5705 -ErrorAction SilentlyContinue|Select-Object LocalPort,OwningProcess);memory=(Get-CimInstance Win32_OperatingSystem|Select-Object FreePhysicalMemory,FreeVirtualMemory)}|ConvertTo-Json -Depth 6"
+    ],
+    "started": "2026-10-22T06:35:50.159778+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 227,
+    "stdout_sha256": "270adb5d4cae01ef3a7d98c355aa4ab1cb8eece715fb990b413160355f95b1ed",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "status": "BLOCKED_BEFORE_CLOSURE",
+  "module_state": "READY_FOR_REVIEW — M20 / independent PENDING",
+  "run_id": "eb140516-9807-45be-b01b-781a9b76f6c0",
+  "generation": "f6b88b83-a4cc-4022-977e-80abfe975cd2",
+  "periodic_id": "03c42993-0b37-444c-abd6-b8f67f4d43db",
+  "candidate_id": "dfa1a7b3-836e-4d05-b8c6-1d226f1c215d",
+  "logical_key": "RENEWAL:81babced-da72-4f36-a638-2f2045a74406:2026-10-24",
+  "operations": {
+    "avd_create": 0,
+    "emulator_start": 1,
+    "app_install": 0,
+    "test_install": 0,
+    "app_activity_launch": 0,
+    "instrumentation": 0,
+    "task_cancel": 0,
+    "notification_cancel": 0,
+    "second_ledger_owner_open": 0,
+    "normal_emulator_exit": 1,
+    "old_device_commands": 0
+  },
+  "checks": {
+    "original_avd_image_paths_boot_identity": "PASS",
+    "original_app_test_sha_uid_certificate": "PASS",
+    "no_unexpected_default_owner": "FAIL",
+    "no_new_worker_execution": "UNKNOWN",
+    "periodic_terminated": "UNKNOWN",
+    "candidate_remained_finished_no_new_publish": "UNKNOWN",
+    "os_job_removed": "UNKNOWN",
+    "specified_notification_absent": "UNKNOWN",
+    "old_result_bytes_unchanged": "PASS",
+    "second_ledger_complete_snapshot_unchanged": "NOT_RUN",
+    "old_process_instance_ended": "PASS_BY_NEW_BOOT_IDENTITY",
+    "reopened_owner_explicit_close": "NOT_RUN",
+    "normal_exit_process_and_ports_end": "PASS"
+  },
+  "original_result_sha256": "418c2e6feeb6230566547b43aed056a3a9cde68281d306c26762e87cefb7e9a0",
+  "new_default_process": {
+    "pid": 3115,
+    "uid": 10216,
+    "start_ticks": "10334",
+    "boot_id": "7168f6f3-1f80-41bc-9c02-f6843bb81511"
+  },
+  "original_22_latest_pass": 22,
+  "old_extra_platform_fail": "UNCHANGED",
+  "jvm_238": "NOT_RERUN",
+  "closure_test": "NOT_RUN; stopped before compilation or Test APK update",
+  "draft_test": "Local ignored build/m20-closure-not-run only; not part of source or delivery input",
+  "blocking": "Unexpected production App process and default generation appeared after cold boot; exact queue/no-new-worker admission cannot be proven. No cancellation or owner reopening attempted."
+}

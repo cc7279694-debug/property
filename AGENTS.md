@@ -99,3 +99,7 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 用户另行明确批准一台全新隔离API36/x86_64、2048MB/2核/headless/no-snapshot模拟器及本次结束后正常关闭，覆盖前段候选时的“不新建”限制；仅执行`Lithic_M20_API36_20261022 / emulator-5704`，未操作原5692/5672/5686/H2/C2/M10或私人数据。原22项最终22 PASS（首轮16＋Context修正后Worker6），首轮21 PASS/1 FAIL保留；额外3方法最新2 PASS/1 FAIL，真实平台通知窗口谓词两次FAIL和第二次任务显式Owner/periodic收口UNKNOWN保留。所有测试输入、独立截图、真实系统发布子证据及限制见[补验报告](docs/evidence/M20-Android-verification.md)，不把系统发布或模拟器退出冒充整方法/应用收口PASS。
 
 本次只改测试卫生、测试Context及取证代码/文档，未改产品代码。原238 JVM未重跑，最终Lint0错误25警告、Test构建成功；App原SHA不变。新5704已正常退出，原进程/端口结束，AVD和UNKNOWN现场保留。此后不得自行重启、恢复或清理；原候选报告与所有历史FAIL/UNKNOWN/NOT_RUN/NOTES保持。M20仍READY_FOR_REVIEW/独立PENDING，提交推送当前M20分支后停止；不自行冻结，不关闭Q04/G1/G2，不进入M21。
+
+### M20最后一次定向收口停止点
+
+用户另行授权仅原M20/5704冷启动一次，对固定第二run`eb140516-9807-45be-b01b-781a9b76f6c0`做精确收口，覆盖上一停止点的本次重启限制。实际启动身份及旧APK核对通过，但冷启动出现正常App进程与新默认generation，未能证明无新Worker，已停止；没有安装/运行收口测试或取消任务/通知、重开账本Owner。仅正常关闭本轮原实例，AVD和未知现场保留。收口BLOCKED，原22 PASS、平台FAIL及UNKNOWN不改，详见[报告](docs/evidence/M20-Platform-closure.md)。本次没有产品或测试源码变更；提交推送后停止，任何再次启动、取消、恢复或清理须另行明确授权，不冻结M20或进入M21。

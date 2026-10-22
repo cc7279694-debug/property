@@ -1,0 +1,57 @@
+[
+  {
+    "name": "boot",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "cat /proc/sys/kernel/random/boot_id"
+    ],
+    "started": "2026-10-22T06:33:22.653668+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 38,
+    "stdout_sha256": "0100e9acb41e62897805ed0de7f07697b09ccf911fe01e6739eced8fc9caa833",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "target-processes",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "ps -A -o UID,PID,NAME | awk 'NR==1 || $1==\"10216\" || $1==\"u0_a216\" || index($3,\"com.cooper.lithic.debug\")==1' "
+    ],
+    "started": "2026-10-22T06:33:22.829384+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 78,
+    "stdout_sha256": "fd1da6f6f241e45c346404a122d216f30c076108d94d7087181486cea03b82d9",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "synthetic-top",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "run-as",
+      "com.cooper.lithic.debug",
+      "ls",
+      "-ln",
+      "no_backup"
+    ],
+    "started": "2026-10-22T06:33:23.001947+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 661,
+    "stdout_sha256": "fe154367eeff1f0fc4d9c02f343373b60e5676ef059664553f47d491c3471697",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

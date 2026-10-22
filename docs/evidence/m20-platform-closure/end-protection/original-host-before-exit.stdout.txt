@@ -1,0 +1,40 @@
+{
+    "processes":  [
+                      {
+                          "pid":  11528,
+                          "parent":  15500,
+                          "created":  "2026-10-22T14:30:42.1246360+08:00",
+                          "path":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+                          "command":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe -avd Lithic_M20_API36_20261022 -port 5704 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\runtime-data -cache E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\runtime-data\\cache.img -snapstorage E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\snapshots\\snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2048 -cores 2"
+                      },
+                      {
+                          "pid":  6900,
+                          "parent":  11528,
+                          "created":  "2026-10-22T14:30:42.3156020+08:00",
+                          "path":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+                          "command":  "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M20_API36_20261022 -port 5704 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\runtime-data -cache E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\runtime-data\\cache.img -snapstorage E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\snapshots\\snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2048 -cores 2"
+                      }
+                  ],
+    "ports":  [
+                  {
+                      "LocalPort":  5705,
+                      "OwningProcess":  6900
+                  },
+                  {
+                      "LocalPort":  5704,
+                      "OwningProcess":  6900
+                  },
+                  {
+                      "LocalPort":  5705,
+                      "OwningProcess":  6900
+                  },
+                  {
+                      "LocalPort":  5704,
+                      "OwningProcess":  6900
+                  }
+              ],
+    "memory":  {
+                   "FreePhysicalMemory":  3783944,
+                   "FreeVirtualMemory":  17469384
+               }
+}

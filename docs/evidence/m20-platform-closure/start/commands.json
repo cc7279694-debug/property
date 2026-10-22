@@ -1,0 +1,18 @@
+[
+  {
+    "name": "host-before",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "[ordered]@{processes=@(Get-CimInstance Win32_Process|Where-Object {$_.Name -match '^(emulator|qemu-system.*)\\.exe$'}|ForEach-Object {[ordered]@{pid=$_.ProcessId;parent=$_.ParentProcessId;created=$_.CreationDate.ToString('o');path=$_.ExecutablePath;command=$_.CommandLine}});ports=@(Get-NetTCPConnection -State Listen -LocalPort 5704,5705 -ErrorAction SilentlyContinue|Select-Object LocalPort,OwningProcess);memory=(Get-CimInstance Win32_OperatingSystem|Select-Object FreePhysicalMemory,FreeVirtualMemory)}|ConvertTo-Json -Depth 6"
+    ],
+    "started": "2026-10-22T06:28:56.322189+00:00",
+    "exit_code": 0,
+    "timed_out": false,
+    "stdout_bytes": 227,
+    "stdout_sha256": "f00c9310a85a7ece18e680593ddf99c50f20fac290ff0d1cda4b52f7fd655709",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
