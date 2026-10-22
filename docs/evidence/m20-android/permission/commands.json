@@ -1,0 +1,29 @@
+[
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "pm",
+      "grant",
+      "com.cooper.lithic.debug",
+      "android.permission.POST_NOTIFICATIONS"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "dumpsys package com.cooper.lithic.debug | grep -F 'android.permission.POST_NOTIFICATIONS:'"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "33738b34248c192f6f62e94aeb49a2fff2911f7e3d3cc6e03ba77b4986a41234",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

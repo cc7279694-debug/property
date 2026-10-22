@@ -1,0 +1,14 @@
+{
+  "command": [
+    "gradlew.bat",
+    "-Pm13Isolated=true",
+    ":app:packageDebugAndroidTest",
+    "--rerun",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx768m -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process"
+  ],
+  "exit_code": 0
+}

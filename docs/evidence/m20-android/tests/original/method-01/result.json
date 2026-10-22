@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "reasons": [],
+  "junit_method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#authenticLegacyFormatOneRestoresNoInventedReceiptsAndEstablishesCutoffBeforeActivation",
+  "matched_start_end": 2,
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M20BackupRestoreTest#authenticLegacyFormatOneRestoresNoInventedReceiptsAndEstablishesCutoffBeforeActivation",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 2.2659999999996217,
+  "stdout_bytes": 910,
+  "stdout_sha256": "b9adff170ec7ebf92b77b31578dd9a6ad880ac99792ceb62234b0618aaedbfcd",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

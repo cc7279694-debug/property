@@ -93,3 +93,9 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 ### M20本轮候选交付边界
 
 实际238定向JVM PASS（88新＋150回归）、Lint0错误25警告及Debug App/Test构建成功；Room4九表、format3与旧格式/proof兼容是本轮候选变更，未自行冻结。原5692锁定进程身份未取得，仅只读CIM、0 ADB/设备操作；新增22项Android/全部截图NOT_RUN，后续不可把编译或旧M19设备证据当成本轮迁移/通知/权限通过。M20 READY_FOR_REVIEW后等待ChatGPT独立验收，不自动M21。完整依据见[报告](docs/evidence/M20-verification.md)和[当前状态](docs/CURRENT_STATE.md)。
+
+### M20低资源补验授权及停止点
+
+用户另行明确批准一台全新隔离API36/x86_64、2048MB/2核/headless/no-snapshot模拟器及本次结束后正常关闭，覆盖前段候选时的“不新建”限制；仅执行`Lithic_M20_API36_20261022 / emulator-5704`，未操作原5692/5672/5686/H2/C2/M10或私人数据。原22项最终22 PASS（首轮16＋Context修正后Worker6），首轮21 PASS/1 FAIL保留；额外3方法最新2 PASS/1 FAIL，真实平台通知窗口谓词两次FAIL和第二次任务显式Owner/periodic收口UNKNOWN保留。所有测试输入、独立截图、真实系统发布子证据及限制见[补验报告](docs/evidence/M20-Android-verification.md)，不把系统发布或模拟器退出冒充整方法/应用收口PASS。
+
+本次只改测试卫生、测试Context及取证代码/文档，未改产品代码。原238 JVM未重跑，最终Lint0错误25警告、Test构建成功；App原SHA不变。新5704已正常退出，原进程/端口结束，AVD和UNKNOWN现场保留。此后不得自行重启、恢复或清理；原候选报告与所有历史FAIL/UNKNOWN/NOT_RUN/NOTES保持。M20仍READY_FOR_REVIEW/独立PENDING，提交推送当前M20分支后停止；不自行冻结，不关闭Q04/G1/G2，不进入M21。

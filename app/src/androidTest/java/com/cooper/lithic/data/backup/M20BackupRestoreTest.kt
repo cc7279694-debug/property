@@ -1,6 +1,8 @@
 package com.cooper.lithic.data.backup
 
 import android.content.Context
+import com.cooper.lithic.testutil.M20TestRoots
+import org.junit.After
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -15,7 +17,6 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.ZoneOffset
-import java.util.UUID
 import java.util.zip.ZipEntry
 import java.util.zip.ZipOutputStream
 import android.util.AtomicFile
@@ -30,14 +31,18 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class M20BackupRestoreTest {
     private val context get() = ApplicationProvider.getApplicationContext<Context>()
+    private val roots = M20TestRoots()
+    @After fun cleanClosedRoots() { roots.cleanupClosed() }
 
     @Test fun formatThreePreservesAllFactsReceiptSwitchesMediaBytesAndPrivateCutoffBeforeActivation() = runBlocking {
         val root = newRoot("v3")
         val store = DataGenerationStore(context, root, restoreClock = CLOCK)
         var active: ManagedGeneration? = store.open(ZONE)
+        roots.generation(root, requireNotNull(active).id)
         try {
             val current = requireNotNull(active)
             val media = RestoreSyntheticFixture.insert(current)
+            roots.media(root, media.keys, current.id)
             val subscription = current.database.subscriptionDao().validationSubscriptions(null, 100).single()
             val receipt = NotificationReceiptEntity("RENEWAL:${subscription.id}:2026-03-01", subscription.id,
                 "RENEWAL", "2026-03-01", Instant.parse("2026-02-26T01:00:00Z"))
@@ -50,10 +55,13 @@ class M20BackupRestoreTest {
             val archive = File(root, "roundtrip.lithicbackup")
             assertTrue(BackupExportService(context, current).export(RestoreSyntheticFixture.target(archive)) is BackupExportResult.Success)
             val backup = BackupValidator().validate(archive.toPath(), Files.createDirectory(root.toPath().resolve("payload")))
+            roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath })
             assertEquals(3, backup.manifest.formatVersion)
             assertEquals(4, backup.manifest.sourceDatabaseSchemaVersion)
             assertEquals(before, backup.snapshot)
             val candidate = store.prepareRestore(ZONE) { RestoredGenerationWriter().populate(it, backup) }
+            roots.generation(root, candidate.id)
+            roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath }, candidate.id)
             assertEquals(3, JSONObject(File(candidate.directory, "restore-proof.json").readText()).getInt("dataFormatVersion"))
             val candidateSettings = SettingsStore.open(File(candidate.directory, "settings.preferences_pb"), LocalWriteCoordinator(), requireExisting = true)
             try { assertEquals(LocalDate.parse("2026-10-22"), candidateSettings.reminderPreferences().importCutoff) }
@@ -71,13 +79,14 @@ class M20BackupRestoreTest {
             assertEquals(id, reopened.id)
             assertEquals(expected, reopened.backupSnapshotSource().capture())
             assertEquals(4, reopened.database.openHelper.readableDatabase.version)
-        } finally { active?.close() }
+        } finally { active?.let { it.close(); roots.ownersClosed(root) } }
     }
 
     @Test fun authenticLegacyFormatOneRestoresNoInventedReceiptsAndEstablishesCutoffBeforeActivation() = runBlocking {
         val root = newRoot("v1")
         val store = DataGenerationStore(context, root, restoreClock = CLOCK)
         var active: ManagedGeneration? = store.open(ZONE)
+        roots.generation(root, requireNotNull(active).id)
         try {
             val current = requireNotNull(active)
             val archive = File(root, "legacy-v1.lithicbackup")
@@ -85,7 +94,10 @@ class M20BackupRestoreTest {
                 archive.outputStream().use { input.copyTo(it) }
             }
             val backup = BackupValidator().validate(archive.toPath(), Files.createDirectory(root.toPath().resolve("payload")))
+            roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath })
             val candidate = store.prepareRestore(ZONE) { RestoredGenerationWriter().populate(it, backup) }
+            roots.generation(root, candidate.id)
+            roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath }, candidate.id)
             val restored = store.activateRestore(current.id, candidate)
             active = restored
             assertEquals(backup.snapshot.data, restored.backupSnapshotSource().capture().data)
@@ -96,16 +108,18 @@ class M20BackupRestoreTest {
             active = DataGenerationStore(context, root, restoreClock = CLOCK).open()
             assertEquals(id, requireNotNull(active).id)
             assertEquals(LocalDate.parse("2026-10-22"), requireNotNull(active).settings.reminderPreferences().importCutoff)
-        } finally { active?.close() }
+        } finally { active?.let { it.close(); roots.ownersClosed(root) } }
     }
 
     @Test fun authenticFormatTwoRestoresOldEightTablesAndMediaWithDefaultPreferencesAndNoHistoricalReceipt() = runBlocking {
         val root = newRoot("v2")
         val store = DataGenerationStore(context, root, restoreClock = CLOCK)
         var active: ManagedGeneration? = store.open(ZONE)
+        roots.generation(root, requireNotNull(active).id)
         try {
             val current = requireNotNull(active)
             val media = RestoreSyntheticFixture.insert(current)
+            roots.media(root, media.keys, current.id)
             val before = current.backupSnapshotSource().capture()
             val payload = linkedMapOf("data.json" to BackupJson.encodeData(before.data), "settings.json" to BackupJson.encodeSettings(before.settings))
             payload.putAll(media)
@@ -118,15 +132,18 @@ class M20BackupRestoreTest {
                 }
             }
             val backup = BackupValidator().validate(archive.toPath(), Files.createDirectory(root.toPath().resolve("payload")))
+            roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath })
             assertEquals(2, backup.manifest.formatVersion)
             val candidate = store.prepareRestore(ZONE) { RestoredGenerationWriter().populate(it, backup) }
+            roots.generation(root, candidate.id)
+            roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath }, candidate.id)
             val restored = store.activateRestore(current.id, candidate, before)
             active = restored
             assertEquals(before.data, restored.backupSnapshotSource().capture().data)
             assertEquals(ReminderPreferences(true, true, LocalDate.parse("2026-10-22")), restored.settings.reminderPreferences())
             assertTrue(restored.database.notificationReceiptDao().list().isEmpty())
             media.forEach { (path, bytes) -> assertArrayEquals(bytes, File(restored.directory, path).readBytes()) }
-        } finally { active?.close() }
+        } finally { active?.let { it.close(); roots.ownersClosed(root) } }
     }
 
     @Test fun interruptedLegacyProofOneAndTwoAuthenticateThenPersistCutoffAndProofThreeBeforeStable() = runBlocking {
@@ -134,6 +151,7 @@ class M20BackupRestoreTest {
             val root = newRoot("legacy-proof-$format")
             val store = DataGenerationStore(context, root, restoreClock = CLOCK)
             var active: ManagedGeneration? = store.open(ZONE)
+            roots.generation(root, requireNotNull(active).id)
             try {
                 val old = requireNotNull(active)
                 val archive = File(root, "legacy-v1.lithicbackup")
@@ -141,7 +159,10 @@ class M20BackupRestoreTest {
                     archive.outputStream().use { input.copyTo(it) }
                 }
                 val backup = BackupValidator().validate(archive.toPath(), Files.createDirectory(root.toPath().resolve("payload")))
+                roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath })
                 val candidate = store.prepareRestore(ZONE) { RestoredGenerationWriter().populate(it, backup) }
+                roots.generation(root, candidate.id)
+                roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath }, candidate.id)
                 val gate = LocalWriteCoordinator()
                 val settings = SettingsStore.open(File(candidate.directory, "settings.preferences_pb"), gate, requireExisting = true)
                 try { gate.withWrite { settings.restoreRemindersWithinWrite(gate, ReminderPreferences()) } }
@@ -168,11 +189,14 @@ class M20BackupRestoreTest {
                 assertEquals(3, JSONObject(File(candidate.directory, "restore-proof.json").readText()).getInt("dataFormatVersion"))
                 assertEquals("STABLE", JSONObject(File(root, "active-generation").readText()).getString("stage"))
                 assertNull(resumedStore.lastRecoveryWarning)
-            } finally { active?.close() }
+            } finally { active?.let { it.close(); roots.ownersClosed(root) } }
         }
     }
 
-    private fun newRoot(kind: String) = File(context.noBackupFilesDir, "m20-backup-$kind-${UUID.randomUUID()}").apply { check(mkdir()) }
+    private fun newRoot(kind: String): File = roots.create(context, "backup-$kind").also { root ->
+            roots.files(root, "roundtrip.lithicbackup", "legacy-v1.lithicbackup", "legacy-v2.lithicbackup",
+            "payload/manifest.json", "payload/data.json", "payload/settings.json")
+    }
     private fun sha(bytes: ByteArray) = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it.toInt() and 255) }
     private companion object {
         val ZONE: ZoneId = ZoneId.of("Asia/Shanghai")

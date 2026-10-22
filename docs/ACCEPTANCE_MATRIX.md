@@ -1,6 +1,18 @@
 # 验收登记
 
-当前状态：**M20 — READY_FOR_REVIEW / 独立PENDING**。M19及此前限定冻结保持；本轮只登记真实离线证据，不授予M20、G1/G2或Q04整体通过。
+当前状态：**M20 — READY_FOR_REVIEW / 独立PENDING**。M19及此前限定冻结保持；本轮登记真实Android补验，额外平台FAIL和收口UNKNOWN保留，不授予M20、G1/G2或Q04整体通过。
+
+## M20低资源Android补验执行登记（2026-10-22）
+
+来源候选`4353d71aecc23b169aab0f67aab7d4ccaaa845af`，分支`codex/m20-renewal-notifications`。用户另行授权全新隔离API36/x86_64、2048MB/2核/headless/no-snapshot的`Lithic_M20_API36_20261022 / emulator-5704`；下方初交付22 NOT_RUN及原始报告保持当时语境，不回填。[补验报告](evidence/M20-Android-verification.md)、[唯一方法与执行结果](evidence/m20-android/results.json)、[checkpoint](checkpoints/2026-10-22-M20-Android.md)。
+
+原22个Android方法最终**22 PASS**：Backup4、Migration2、Settings1、Compose7、VM2、Worker6；采用首轮未受影响16项＋Context修正后Worker6复验，不能称同一Test SHA一次执行。首轮21 PASS/1 FAIL不改写；原52个编译类在最终Test中保持相同字节。真实1/2/3→4生产迁移与重开、Receipt唯一键、format1/2恢复与format3九表/设置/媒体/截止水位往返、旧代和事实revision拒绝、权限拒绝不影响业务及LocalDensity大字可达性有本轮限定证据。
+
+额外3方法最新**2 PASS / 1 FAIL**：截图旅程PASS、第一平台任务严格收口PASS；真实平台方法两次均末尾通知窗口谓词10秒超时FAIL。实际生产WorkManager持久队列、带namespace OS Job、通知发布、Receipt及业务事实不变子断言通过，并有真实SystemUI通知图，但不得据此把整方法改成PASS。第二次平台任务的显式Owner关闭及未来周期ENQUEUED收口仍UNKNOWN，保守保留；设备正常退出不替代应用级收口证明。全部25个唯一Android方法最新24 PASS/1 FAIL；实际32次执行29 PASS/3 FAIL，不按重跑增加唯一数量。
+
+此前238 JVM PASS未重跑；监督器12项宿主PASS，最终Test构建/Lint成功、0错误25警告。App原SHA`776c00167dd856d39791fca4c9331fdfaf313dab096b2835df6e40b3a66fda38`不变；最终Test SHA`815608676350947f9e720af5e8c4647a8505a8f4540c86b07f3517b45776f408`、同原Debug证书/隔离Runner，实际安装回读一致。最终5个PNG文件/4个独立画面：设置为隔离ComponentActivity，360dp/200%是LocalDensity，通知为真实SystemUI，不扩大到MainActivity、系统字号或TalkBack。
+
+新AVD创建/启动/正常退出各1，App安装1、Test安装1＋同签更新2；只关闭本轮5704，原进程/端口结束证明PASS，AVD与UNKNOWN现场保留，历史设备操作0。QEMU生命周期PeakWorkingSet约3.74GiB，新研究根NTFS文件物理约4.04GiB；2GiB仅guest配置，同时合并峰值/其他系统开销NOT_CAPTURED。启动helper exit1/90秒超时、原始构建/打包/取证失败及所有RED/FAIL/UNKNOWN/NOT_RUN/NOTES不删除。真机/API26/OEM、真实重启后任务、Release、LMK/断电、系统大字/完整TalkBack继续NOT_RUN；M10延期/三JPEG历史FAIL、M13-T06延期、Q04 PROPOSED、G1/G2及16组完整门禁保持。M20等待ChatGPT独立复验，不自行冻结或进入M21。
 
 ## M20候选执行登记（2026-10-22）
 

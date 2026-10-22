@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "reasons": [],
+  "junit_method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#channel_blocked_and_runtime_granted_remains_explicitly_unavailable",
+  "matched_start_end": 2,
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#channel_blocked_and_runtime_granted_remains_explicitly_unavailable",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 4.95299999999952,
+  "stdout_bytes": 913,
+  "stdout_sha256": "b494954b0400d259ff96bbf7e4b5cbca1623aae550b13244774ff5d2df0f10bc",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

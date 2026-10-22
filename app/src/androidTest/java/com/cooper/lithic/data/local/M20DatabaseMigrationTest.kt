@@ -1,6 +1,8 @@
 package com.cooper.lithic.data.local
 
 import android.content.Context
+import com.cooper.lithic.testutil.M20TestRoots
+import org.junit.After
 import android.database.sqlite.SQLiteDatabase
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -17,10 +19,12 @@ import org.junit.runner.RunWith
 /** Only new synthetic roots, no default ledger or previously retained device directories. */
 @RunWith(AndroidJUnit4::class)
 class M20DatabaseMigrationTest {
+    private val roots = M20TestRoots()
+    @After fun cleanClosedRoots() { roots.cleanupClosed() }
     @Test fun productionOpenMigratesVersionsOneTwoThreeAndReopensVersionFour() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         for (version in 1..3) {
-            val root = File(context.noBackupFilesDir, "m20-migration-${UUID.randomUUID()}").apply { check(mkdir()) }
+            val root = roots.create(context, "migration").also { roots.database(it) }
             val file = File(root, "data.db")
             val json = InstrumentationRegistry.getInstrumentation().context.assets
                 .open("com.cooper.lithic.data.local.LithicDatabase/$version.json")
@@ -62,20 +66,21 @@ class M20DatabaseMigrationTest {
                     assertEquals(98765L, renewal.amountCents)
                     assertEquals(20035L, renewal.reminderDueOn.toEpochDay())
                 }
-            } finally { database.close() }
+            } finally { database.close(); roots.ownersClosed(root) }
+            roots.ownersOpening(root)
             val reopened = LithicDatabase.open(context, file, requireExisting = true)
             try {
                 assertEquals(4, reopened.openHelper.readableDatabase.version)
                 reopened.requireDefaults()
                 assertEquals(2, reopened.categoryDao().list().size)
                 assertEquals(1234567L, reopened.projectDao().listEvents().single().amountCents)
-            } finally { reopened.close() }
+            } finally { reopened.close(); roots.ownersClosed(root) }
         }
     }
 
     @Test fun receiptUniqueKeySurvivesProductionReopen() = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        val root = File(context.noBackupFilesDir, "m20-receipt-${UUID.randomUUID()}").apply { check(mkdir()) }
+        val root = roots.create(context, "receipt").also { roots.database(it) }
         val file = File(root, "data.db")
         val owner = UUID.randomUUID().toString()
         val receipt = NotificationReceiptEntity("RENEWAL:$owner:2026-10-25", owner, "RENEWAL", "2026-10-25", Instant.parse("2026-10-22T02:00:00Z"))
@@ -84,9 +89,10 @@ class M20DatabaseMigrationTest {
             database.notificationReceiptDao().insert(receipt)
             try { database.notificationReceiptDao().insert(receipt); fail("Duplicate receipt inserted") }
             catch (_: android.database.sqlite.SQLiteConstraintException) { }
-        } finally { database.close() }
+        } finally { database.close(); roots.ownersClosed(root) }
+        roots.ownersOpening(root)
         val reopened = LithicDatabase.open(context, file, true)
         try { assertEquals(receipt, reopened.notificationReceiptDao().find(receipt.logicalKey)) }
-        finally { reopened.close() }
+        finally { reopened.close(); roots.ownersClosed(root) }
     }
 }

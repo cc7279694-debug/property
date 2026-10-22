@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "reasons": [],
+  "junit_method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#save_pending_disables_both_switches_without_claiming_saved_success",
+  "matched_start_end": 2,
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#save_pending_disables_both_switches_without_claiming_saved_success",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 5.436999999999898,
+  "stdout_bytes": 913,
+  "stdout_sha256": "b394ec7bdc61265bdb646a63e51e5045a7a111bfe20c7c44a1fb50769809cfe4",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

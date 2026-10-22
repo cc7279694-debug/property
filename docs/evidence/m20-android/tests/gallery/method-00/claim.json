@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.settings.M20NotificationGalleryTest#capture_actual_denial_and_360dp_local200_controls",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.feature.settings.M20NotificationGalleryTest",
+    "method": "capture_actual_denial_and_360dp_local200_controls",
+    "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationGalleryTest.kt",
+    "source_sha256": "d63c2eff4bf03ecb193591f7b710c61316f141e7db6f12113d3dbcd2b6f9e936"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:11:46.143582+00:00"
+}

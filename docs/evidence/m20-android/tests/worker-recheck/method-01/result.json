@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "reasons": [],
+  "junit_method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#actual_worker_publishes_once_and_room_receipt_suppresses_queued_retry",
+  "matched_start_end": 2,
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#actual_worker_publishes_once_and_room_receipt_suppresses_queued_retry",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 1.875,
+  "stdout_bytes": 910,
+  "stdout_sha256": "d96287499998829805777ffb43cd5595975130b12e8a59f852b1f31a38121e7b",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

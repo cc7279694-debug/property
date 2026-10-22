@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "reasons": [],
+  "junit_method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#deleting_project_with_same_uuid_cannot_delete_subscription_receipt",
+  "matched_start_end": 2,
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#deleting_project_with_same_uuid_cannot_delete_subscription_receipt",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 2.2189999999991414,
+  "stdout_bytes": 904,
+  "stdout_sha256": "0bed4ae652e60fb7352a5b65ea73ca27c7c80352ba09f0bdde72b95da49acc51",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

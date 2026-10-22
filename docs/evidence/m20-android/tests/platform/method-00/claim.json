@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.platform.notification.M20RealPlatformTest#real_persistent_queue_publishes_q04_notice_and_saves_one_receipt",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.platform.notification.M20RealPlatformTest",
+    "method": "real_persistent_queue_publishes_q04_notice_and_saves_one_receipt",
+    "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt",
+    "source_sha256": "d58a1d726f164ec16fc7dd6ffbd9e10b7802d06c6590b4061ad7de10d6ee4f26"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:12:52.862517+00:00"
+}

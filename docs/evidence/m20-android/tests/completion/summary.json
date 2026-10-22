@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "status": "PASS",
+      "reasons": [],
+      "junit_method": "com.cooper.lithic.platform.notification.M20PlatformCompletionTest#finish_existing_published_platform_run_without_new_work",
+      "matched_start_end": 2,
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "am",
+        "instrument",
+        "-w",
+        "-r",
+        "-e",
+        "class",
+        "com.cooper.lithic.platform.notification.M20PlatformCompletionTest#finish_existing_published_platform_run_without_new_work",
+        "-e",
+        "m20PlatformRun",
+        "c9dc7cf5-54e3-42b2-b48a-5a63aef04816",
+        "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+      ],
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 3.5310000000008586,
+      "stdout_bytes": 1075,
+      "stdout_sha256": "341b4462c965e60d8584bf89c6e7167336b8111d503685950a7ca8b8e6c2809a",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "planned": 1,
+  "not_run": 0,
+  "original": false
+}

@@ -1,0 +1,15 @@
+{
+  "command": [
+    "gradlew.bat",
+    "-Pm13Isolated=true",
+    ":app:assembleDebugAndroidTest",
+    ":app:lintDebug",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx768m -XX:MaxMetaspaceSize=512m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process"
+  ],
+  "exit_code": 0,
+  "at": "2026-10-22T03:52:58.194035+00:00"
+}

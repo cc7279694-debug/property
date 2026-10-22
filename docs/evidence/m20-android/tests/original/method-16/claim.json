@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#deleting_project_with_same_uuid_cannot_delete_subscription_receipt",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest",
+    "method": "deleting_project_with_same_uuid_cannot_delete_subscription_receipt",
+    "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+    "source_sha256": "23683c92cb3e482f46f65735634fe45ac5d4e8926e86e374eab9f84bc27d42ab"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:01:48.533423+00:00"
+}

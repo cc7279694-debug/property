@@ -1,0 +1,176 @@
+{
+  "status": "READY_FOR_REVIEW_WITH_EXTRA_PLATFORM_FAIL",
+  "original_unique": 22,
+  "original_latest_pass": 22,
+  "original_first_attempt": {
+    "PASS": 21,
+    "FAIL": 1
+  },
+  "android_unique_methods": 25,
+  "android_latest_counts": {
+    "PASS": 24,
+    "FAIL": 1,
+    "UNKNOWN": 0
+  },
+  "actual_method_executions": 32,
+  "execution_counts": {
+    "PASS": 29,
+    "FAIL": 3,
+    "UNKNOWN": 0
+  },
+  "original_methods": [
+    {
+      "method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#formatThreePreservesAllFactsReceiptSwitchesMediaBytesAndPrivateCutoffBeforeActivation",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#authenticLegacyFormatOneRestoresNoInventedReceiptsAndEstablishesCutoffBeforeActivation",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#authenticFormatTwoRestoresOldEightTablesAndMediaWithDefaultPreferencesAndNoHistoricalReceipt",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#interruptedLegacyProofOneAndTwoAuthenticateThenPersistCutoffAndProofThreeBeforeStable",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.data.local.M20DatabaseMigrationTest#productionOpenMigratesVersionsOneTwoThreeAndReopensVersionFour",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.data.local.M20DatabaseMigrationTest#receiptUniqueKeySurvivesProductionReopen",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.data.settings.M20ReminderSettingsTest#defaultsToggleWatermarkAndReopenUseOneSettingsOwner",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#default_switches_are_independent_of_denied_permission_and_request_only_on_click",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#api26_to32_uses_system_availability_without_runtime_permission_request",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#channel_blocked_and_runtime_granted_remains_explicitly_unavailable",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#save_pending_disables_both_switches_without_claiming_saved_success",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#unreadable_preferences_expose_retry_and_no_editable_default_switches",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#settings_entry_preserves_manual_backup_actions_and_uses_explicit_navigation",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#narrow360dp_local200percent_text_keeps_switch_permission_and_back_targets_accessible",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsViewModelTest#both_default_on_switches_persist_independently_and_survive_owner_reopen",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsViewModelTest#stale_closed_generation_cannot_read_default_preferences_write_or_trigger_schedule",
+      "status": "PASS",
+      "group": "original",
+      "evidence": "tests/original/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#deleting_project_with_same_uuid_cannot_delete_subscription_receipt",
+      "status": "PASS",
+      "group": "worker-recheck",
+      "evidence": "tests/worker-recheck/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#actual_worker_publishes_once_and_room_receipt_suppresses_queued_retry",
+      "status": "PASS",
+      "group": "worker-recheck",
+      "evidence": "tests/worker-recheck/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#permission_denial_leaves_no_receipt_and_preserves_complete_existing_business_facts",
+      "status": "PASS",
+      "group": "worker-recheck",
+      "evidence": "tests/worker-recheck/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#old_generation_payload_cannot_publish_or_write_current_generation_receipt",
+      "status": "PASS",
+      "group": "worker-recheck",
+      "evidence": "tests/worker-recheck/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#same_row_date_or_state_correction_rejects_the_saved_worker_revision",
+      "status": "PASS",
+      "group": "worker-recheck",
+      "evidence": "tests/worker-recheck/summary.json"
+    },
+    {
+      "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#actual_publisher_channel_and_permission_status_use_platform_api_without_sending",
+      "status": "PASS",
+      "group": "worker-recheck",
+      "evidence": "tests/worker-recheck/summary.json"
+    }
+  ],
+  "extra_methods": [
+    {
+      "method": "com.cooper.lithic.feature.settings.M20NotificationGalleryTest#capture_actual_denial_and_360dp_local200_controls",
+      "status": "PASS",
+      "group": "gallery"
+    },
+    {
+      "method": "com.cooper.lithic.platform.notification.M20RealPlatformTest#real_persistent_queue_publishes_q04_notice_and_saves_one_receipt",
+      "status": "FAIL",
+      "group": "platform-recheck"
+    },
+    {
+      "method": "com.cooper.lithic.platform.notification.M20PlatformCompletionTest#finish_existing_published_platform_run_without_new_work",
+      "status": "PASS",
+      "group": "completion"
+    }
+  ],
+  "jvm_previous_pass": 238,
+  "jvm_this_turn": "NOT_RERUN",
+  "supervisor_host_tests_pass": 12,
+  "remaining": "Platform notification-window predicate timed out twice; second run explicit owner/periodic cleanup UNKNOWN and retained. Actual system posting/receipt/OS job captured; never label the whole extra test PASS."
+}

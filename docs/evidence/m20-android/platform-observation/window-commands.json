@@ -1,0 +1,30 @@
+[
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "uiautomator",
+      "dump",
+      "--compressed",
+      "/data/local/tmp/m20-c9dc7cf5-notification.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "c929eb409a23906c40c74c7b17e40fa5726070f0eb29f6a0b185d4ef8ed38132",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "emulator-5704",
+      "exec-out",
+      "cat",
+      "/data/local/tmp/m20-c9dc7cf5-notification.xml"
+    ],
+    "exit_code": 0,
+    "stdout_sha256": "c9b872139f6f07064f4f0db6263ef9b05a7340d28f1881d9603273067c498e55",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

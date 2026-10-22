@@ -1,0 +1,86 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.platform.notification.M20ReminderWorkerTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.platform.notification.M20ReminderWorkerTest:
+INSTRUMENTATION_STATUS: test=actual_publisher_channel_and_permission_status_use_platform_api_without_sending
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.platform.notification.M20ReminderWorkerTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.SecurityException: Package com.cooper.lithic.debug.test is not owned by uid 10216
+	at android.os.Parcel.createExceptionOrNull(Parcel.java:3340)
+	at android.os.Parcel.createException(Parcel.java:3324)
+	at android.os.Parcel.readException(Parcel.java:3307)
+	at android.os.Parcel.readException(Parcel.java:3249)
+	at android.app.INotificationManager$Stub$Proxy.createNotificationChannels(INotificationManager.java:3980)
+	at android.app.NotificationManager.createNotificationChannels(NotificationManager.java:1244)
+	at android.app.NotificationManager.createNotificationChannel(NotificationManager.java:1232)
+	at com.cooper.lithic.platform.notification.NotificationPublisher.ensureChannel(NotificationPublisher.kt:20)
+	at com.cooper.lithic.platform.notification.M20ReminderWorkerTest$actual_publisher_channel_and_permission_status_use_platform_api_without_sending$1.invokeSuspend(M20ReminderWorkerTest.kt:176)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.platform.notification.M20ReminderWorkerTest.actual_publisher_channel_and_permission_status_use_platform_api_without_sending(M20ReminderWorkerTest.kt:172)
+
+INSTRUMENTATION_STATUS: stream=
+Error in actual_publisher_channel_and_permission_status_use_platform_api_without_sending(com.cooper.lithic.platform.notification.M20ReminderWorkerTest):
+java.lang.SecurityException: Package com.cooper.lithic.debug.test is not owned by uid 10216
+	at android.os.Parcel.createExceptionOrNull(Parcel.java:3340)
+	at android.os.Parcel.createException(Parcel.java:3324)
+	at android.os.Parcel.readException(Parcel.java:3307)
+	at android.os.Parcel.readException(Parcel.java:3249)
+	at android.app.INotificationManager$Stub$Proxy.createNotificationChannels(INotificationManager.java:3980)
+	at android.app.NotificationManager.createNotificationChannels(NotificationManager.java:1244)
+	at android.app.NotificationManager.createNotificationChannel(NotificationManager.java:1232)
+	at com.cooper.lithic.platform.notification.NotificationPublisher.ensureChannel(NotificationPublisher.kt:20)
+	at com.cooper.lithic.platform.notification.M20ReminderWorkerTest$actual_publisher_channel_and_permission_status_use_platform_api_without_sending$1.invokeSuspend(M20ReminderWorkerTest.kt:176)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.platform.notification.M20ReminderWorkerTest.actual_publisher_channel_and_permission_status_use_platform_api_without_sending(M20ReminderWorkerTest.kt:172)
+
+INSTRUMENTATION_STATUS: test=actual_publisher_channel_and_permission_status_use_platform_api_without_sending
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.235
+There was 1 failure:
+1) actual_publisher_channel_and_permission_status_use_platform_api_without_sending(com.cooper.lithic.platform.notification.M20ReminderWorkerTest)
+java.lang.SecurityException: Package com.cooper.lithic.debug.test is not owned by uid 10216
+	at android.os.Parcel.createExceptionOrNull(Parcel.java:3340)
+	at android.os.Parcel.createException(Parcel.java:3324)
+	at android.os.Parcel.readException(Parcel.java:3307)
+	at android.os.Parcel.readException(Parcel.java:3249)
+	at android.app.INotificationManager$Stub$Proxy.createNotificationChannels(INotificationManager.java:3980)
+	at android.app.NotificationManager.createNotificationChannels(NotificationManager.java:1244)
+	at android.app.NotificationManager.createNotificationChannel(NotificationManager.java:1232)
+	at com.cooper.lithic.platform.notification.NotificationPublisher.ensureChannel(NotificationPublisher.kt:20)
+	at com.cooper.lithic.platform.notification.M20ReminderWorkerTest$actual_publisher_channel_and_permission_status_use_platform_api_without_sending$1.invokeSuspend(M20ReminderWorkerTest.kt:176)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.platform.notification.M20ReminderWorkerTest.actual_publisher_channel_and_permission_status_use_platform_api_without_sending(M20ReminderWorkerTest.kt:172)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

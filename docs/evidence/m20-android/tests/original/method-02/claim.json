@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.backup.M20BackupRestoreTest#authenticFormatTwoRestoresOldEightTablesAndMediaWithDefaultPreferencesAndNoHistoricalReceipt",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.data.backup.M20BackupRestoreTest",
+    "method": "authenticFormatTwoRestoresOldEightTablesAndMediaWithDefaultPreferencesAndNoHistoricalReceipt",
+    "source": "app/src/androidTest/java/com/cooper/lithic/data/backup/M20BackupRestoreTest.kt",
+    "source_sha256": "2715a1d7d00a73de5a1c98606ca4dcc1fbad2dd8c0d170d11a20ee9de225d5ca"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:00:40.986198+00:00"
+}

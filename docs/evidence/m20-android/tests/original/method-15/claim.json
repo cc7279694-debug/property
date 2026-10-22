@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.settings.M20NotificationSettingsViewModelTest#stale_closed_generation_cannot_read_default_preferences_write_or_trigger_schedule",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsViewModelTest",
+    "method": "stale_closed_generation_cannot_read_default_preferences_write_or_trigger_schedule",
+    "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsViewModelTest.kt",
+    "source_sha256": "5233a0e6af2e1e86acf873b1e9cf55662077dffcb9893cc1094c0dcf81756dac"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:01:46.364648+00:00"
+}

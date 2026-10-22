@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#old_generation_payload_cannot_publish_or_write_current_generation_receipt",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest",
+    "method": "old_generation_payload_cannot_publish_or_write_current_generation_receipt",
+    "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+    "source_sha256": "0533fa931c20169ef6d91da99244112323d62dc43c083c2f80ef2eb853b8a712"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:11:32.732289+00:00"
+}

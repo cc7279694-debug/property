@@ -1,0 +1,32 @@
+  JOB androidx.work.systemjobscheduler:u0a216/0: 4456473 @androidx.work.systemjobscheduler@com.cooper.lithic.debug/androidx.work.impl.background.systemjob.SystemJobService
+    u0a216 tag=*job*r/@androidx.work.systemjobscheduler@com.cooper.lithic.debug/androidx.work.impl.background.systemjob.SystemJobService
+    Source: uid=u0a216 user=0 pkg=com.cooper.lithic.debug
+    JobInfo:
+      Service: com.cooper.lithic.debug/androidx.work.impl.background.systemjob.SystemJobService
+      Priority: 300 [DEFAULT]
+      Requires: charging=false batteryNotLow=false deviceIdle=false
+      Extras: mParcelledData.dataSize=248
+      Minimum latency: +23h59m59s965ms
+      Backoff: policy=1 initial=+30s0ms
+      Has early constraint
+      Trace tag: ReminderWorker
+    Required constraints: TIMING_DELAY FLEXIBILITY [0x80200000]
+    Dynamic constraints:
+    Satisfied constraints: FLEXIBILITY DEVICE_NOT_DOZING BACKGROUND_NOT_RESTRICTED WITHIN_QUOTA [0x3600000]
+    Unsatisfied constraints: TIMING_DELAY [0x80000000]
+    Num Required Flexible constraints: 0
+    Num Dropped Flexible constraints: 0
+    Constraint history:
+      -4m41s71ms = FLEXIBILITY [0x200000]
+      -4m41s70ms = FLEXIBILITY BACKGROUND_NOT_RESTRICTED [0x600000]
+      -4m41s70ms = FLEXIBILITY DEVICE_NOT_DOZING BACKGROUND_NOT_RESTRICTED [0x2600000]
+      -4m41s70ms = FLEXIBILITY DEVICE_NOT_DOZING BACKGROUND_NOT_RESTRICTED WITHIN_QUOTA [0x3600000]
+    Tracking: TIME QUOTA
+    Implicit constraints:
+      readyNotDozing: true
+      readyNotRestrictedInBg: true
+      readyComponentEnabled: true
+    Started with foreground flag: false
+    Standby bucket: ACTIVE
+    Enqueue time: -4m41s71ms
+    Run time: earliest=+23h55m18s894ms, latest=none, original latest=none

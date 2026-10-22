@@ -1,0 +1,204 @@
+{
+  "group": "original",
+  "serial": "emulator-5704",
+  "avd": "Lithic_M20_API36_20261022",
+  "runner": "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner",
+  "methods": [
+    {
+      "class_name": "com.cooper.lithic.data.backup.M20BackupRestoreTest",
+      "method": "formatThreePreservesAllFactsReceiptSwitchesMediaBytesAndPrivateCutoffBeforeActivation",
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/backup/M20BackupRestoreTest.kt",
+      "source_sha256": "2715a1d7d00a73de5a1c98606ca4dcc1fbad2dd8c0d170d11a20ee9de225d5ca"
+    },
+    {
+      "class_name": "com.cooper.lithic.data.backup.M20BackupRestoreTest",
+      "method": "authenticLegacyFormatOneRestoresNoInventedReceiptsAndEstablishesCutoffBeforeActivation",
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/backup/M20BackupRestoreTest.kt",
+      "source_sha256": "2715a1d7d00a73de5a1c98606ca4dcc1fbad2dd8c0d170d11a20ee9de225d5ca"
+    },
+    {
+      "class_name": "com.cooper.lithic.data.backup.M20BackupRestoreTest",
+      "method": "authenticFormatTwoRestoresOldEightTablesAndMediaWithDefaultPreferencesAndNoHistoricalReceipt",
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/backup/M20BackupRestoreTest.kt",
+      "source_sha256": "2715a1d7d00a73de5a1c98606ca4dcc1fbad2dd8c0d170d11a20ee9de225d5ca"
+    },
+    {
+      "class_name": "com.cooper.lithic.data.backup.M20BackupRestoreTest",
+      "method": "interruptedLegacyProofOneAndTwoAuthenticateThenPersistCutoffAndProofThreeBeforeStable",
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/backup/M20BackupRestoreTest.kt",
+      "source_sha256": "2715a1d7d00a73de5a1c98606ca4dcc1fbad2dd8c0d170d11a20ee9de225d5ca"
+    },
+    {
+      "class_name": "com.cooper.lithic.data.local.M20DatabaseMigrationTest",
+      "method": "productionOpenMigratesVersionsOneTwoThreeAndReopensVersionFour",
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/M20DatabaseMigrationTest.kt",
+      "source_sha256": "a0bd65991480b3c34813cedccadb3b008c5bb0904cdf1533160aca1018470c1a"
+    },
+    {
+      "class_name": "com.cooper.lithic.data.local.M20DatabaseMigrationTest",
+      "method": "receiptUniqueKeySurvivesProductionReopen",
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/M20DatabaseMigrationTest.kt",
+      "source_sha256": "a0bd65991480b3c34813cedccadb3b008c5bb0904cdf1533160aca1018470c1a"
+    },
+    {
+      "class_name": "com.cooper.lithic.data.settings.M20ReminderSettingsTest",
+      "method": "defaultsToggleWatermarkAndReopenUseOneSettingsOwner",
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/settings/M20ReminderSettingsTest.kt",
+      "source_sha256": "078fa654604b92d7713205dedb87f814f906f5738b19bcb3d8de605bfcbdde04"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest",
+      "method": "default_switches_are_independent_of_denied_permission_and_request_only_on_click",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+      "source_sha256": "095eef374617e9efa76a7fd2ca6ecab47bb6f0a812c8388ad1c2544ff66c5697"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest",
+      "method": "api26_to32_uses_system_availability_without_runtime_permission_request",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+      "source_sha256": "095eef374617e9efa76a7fd2ca6ecab47bb6f0a812c8388ad1c2544ff66c5697"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest",
+      "method": "channel_blocked_and_runtime_granted_remains_explicitly_unavailable",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+      "source_sha256": "095eef374617e9efa76a7fd2ca6ecab47bb6f0a812c8388ad1c2544ff66c5697"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest",
+      "method": "save_pending_disables_both_switches_without_claiming_saved_success",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+      "source_sha256": "095eef374617e9efa76a7fd2ca6ecab47bb6f0a812c8388ad1c2544ff66c5697"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest",
+      "method": "unreadable_preferences_expose_retry_and_no_editable_default_switches",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+      "source_sha256": "095eef374617e9efa76a7fd2ca6ecab47bb6f0a812c8388ad1c2544ff66c5697"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest",
+      "method": "settings_entry_preserves_manual_backup_actions_and_uses_explicit_navigation",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+      "source_sha256": "095eef374617e9efa76a7fd2ca6ecab47bb6f0a812c8388ad1c2544ff66c5697"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest",
+      "method": "narrow360dp_local200percent_text_keeps_switch_permission_and_back_targets_accessible",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+      "source_sha256": "095eef374617e9efa76a7fd2ca6ecab47bb6f0a812c8388ad1c2544ff66c5697"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsViewModelTest",
+      "method": "both_default_on_switches_persist_independently_and_survive_owner_reopen",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsViewModelTest.kt",
+      "source_sha256": "5233a0e6af2e1e86acf873b1e9cf55662077dffcb9893cc1094c0dcf81756dac"
+    },
+    {
+      "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsViewModelTest",
+      "method": "stale_closed_generation_cannot_read_default_preferences_write_or_trigger_schedule",
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsViewModelTest.kt",
+      "source_sha256": "5233a0e6af2e1e86acf873b1e9cf55662077dffcb9893cc1094c0dcf81756dac"
+    },
+    {
+      "class_name": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest",
+      "method": "deleting_project_with_same_uuid_cannot_delete_subscription_receipt",
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+      "source_sha256": "23683c92cb3e482f46f65735634fe45ac5d4e8926e86e374eab9f84bc27d42ab"
+    },
+    {
+      "class_name": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest",
+      "method": "actual_worker_publishes_once_and_room_receipt_suppresses_queued_retry",
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+      "source_sha256": "23683c92cb3e482f46f65735634fe45ac5d4e8926e86e374eab9f84bc27d42ab"
+    },
+    {
+      "class_name": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest",
+      "method": "permission_denial_leaves_no_receipt_and_preserves_complete_existing_business_facts",
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+      "source_sha256": "23683c92cb3e482f46f65735634fe45ac5d4e8926e86e374eab9f84bc27d42ab"
+    },
+    {
+      "class_name": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest",
+      "method": "old_generation_payload_cannot_publish_or_write_current_generation_receipt",
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+      "source_sha256": "23683c92cb3e482f46f65735634fe45ac5d4e8926e86e374eab9f84bc27d42ab"
+    },
+    {
+      "class_name": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest",
+      "method": "same_row_date_or_state_correction_rejects_the_saved_worker_revision",
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+      "source_sha256": "23683c92cb3e482f46f65735634fe45ac5d4e8926e86e374eab9f84bc27d42ab"
+    },
+    {
+      "class_name": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest",
+      "method": "actual_publisher_channel_and_permission_status_use_platform_api_without_sending",
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20ReminderWorkerTest.kt",
+      "source_sha256": "23683c92cb3e482f46f65735634fe45ac5d4e8926e86e374eab9f84bc27d42ab"
+    }
+  ],
+  "proofs": {
+    "device-admission.json": {
+      "value": {
+        "status": "PASS",
+        "serial": "emulator-5704",
+        "avd": "Lithic_M20_API36_20261022",
+        "api": 36,
+        "boot_id": "476456f9-76a7-45d6-b048-51cc1fc2edb5",
+        "host": [
+          {
+            "pid": 2100,
+            "parent": 28052,
+            "created": "2026-10-22T11:55:44.2290320+08:00",
+            "path": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+            "command": "\"C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe\" -avd Lithic_M20_API36_20261022 -port 5704 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\runtime-data -cache E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\runtime-data\\cache.img -snapstorage E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\snapshots\\snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2048 -cores 2 "
+          },
+          {
+            "pid": 9588,
+            "parent": 2100,
+            "created": "2026-10-22T11:55:44.6237920+08:00",
+            "path": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+            "command": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M20_API36_20261022 -port 5704 -datadir E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\runtime-data -cache E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\runtime-data\\cache.img -snapstorage E:\\CODEX\\.codex\\research-env\\lithic-m20-android-20261022\\snapshots\\snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2048 -cores 2"
+          }
+        ]
+      },
+      "sha256": "e036ca90d5fb3aaf12f054190b7098d69a50c5bf19014d7a4568cb8e412a3c7d",
+      "bytes": 1677
+    },
+    "installed-proof.json": {
+      "value": {
+        "status": "PASS",
+        "serial": "emulator-5704",
+        "avd": "Lithic_M20_API36_20261022",
+        "api": 36,
+        "boot_id": "476456f9-76a7-45d6-b048-51cc1fc2edb5",
+        "app": {
+          "package": "com.cooper.lithic.debug",
+          "sha256": "776c00167dd856d39791fca4c9331fdfaf313dab096b2835df6e40b3a66fda38",
+          "bytes": 13691164,
+          "uid": 10216,
+          "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+          "installed_path": "/data/app/~~ZB-RN0yYqFB2mcjHgKCS7w==/com.cooper.lithic.debug-NhqfK3CzvVqE-dHilZhyGw==/base.apk"
+        },
+        "test": {
+          "package": "com.cooper.lithic.debug.test",
+          "sha256": "7b543b3bc7ea364d9ee6ecf6a6d991cd43180f31c092871f44f427816636c008",
+          "bytes": 2947570,
+          "uid": 10217,
+          "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+          "installed_path": "/data/app/~~1KeLDouY-2a3661y-TF9XQ==/com.cooper.lithic.debug.test-Be50eA6ODueC-AYWeVwPXw==/base.apk"
+        },
+        "instrumentation": "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner",
+        "old_device_commands": 0,
+        "default_ledger_opened": false
+      },
+      "sha256": "8d0c722a43efeb57d70d5e7fe3e1dd615286a6bc8ab96d44b8039757e28785e4",
+      "bytes": 1133
+    }
+  },
+  "adb_sha256": "b4a6b455702684652cccf7b46258b29e653538904359a58fd4931cf3ef286b3f",
+  "at": "2026-10-22T04:00:31.000986+00:00",
+  "maximum_attempts_per_method": 1,
+  "timeout_seconds": 180,
+  "extra_methods_counted_in_original": false
+}

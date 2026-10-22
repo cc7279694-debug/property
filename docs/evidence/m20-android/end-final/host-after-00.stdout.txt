@@ -1,0 +1,34 @@
+{
+    "processes":  [
+                      {
+                          "ProcessId":  2100,
+                          "ParentProcessId":  28052
+                      },
+                      {
+                          "ProcessId":  9588,
+                          "ParentProcessId":  2100
+                      }
+                  ],
+    "ports":  [
+                  {
+                      "LocalPort":  5705,
+                      "OwningProcess":  9588
+                  },
+                  {
+                      "LocalPort":  5704,
+                      "OwningProcess":  9588
+                  },
+                  {
+                      "LocalPort":  5705,
+                      "OwningProcess":  9588
+                  },
+                  {
+                      "LocalPort":  5704,
+                      "OwningProcess":  9588
+                  }
+              ],
+    "memory":  {
+                   "FreePhysicalMemory":  6582444,
+                   "FreeVirtualMemory":  12831356
+               }
+}

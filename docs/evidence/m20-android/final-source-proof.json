@@ -1,0 +1,154 @@
+{
+  "groups": [
+    {
+      "group": "original",
+      "methods": [
+        {
+          "method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#formatThreePreservesAllFactsReceiptSwitchesMediaBytesAndPrivateCutoffBeforeActivation",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#authenticLegacyFormatOneRestoresNoInventedReceiptsAndEstablishesCutoffBeforeActivation",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#authenticFormatTwoRestoresOldEightTablesAndMediaWithDefaultPreferencesAndNoHistoricalReceipt",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.data.backup.M20BackupRestoreTest#interruptedLegacyProofOneAndTwoAuthenticateThenPersistCutoffAndProofThreeBeforeStable",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.data.local.M20DatabaseMigrationTest#productionOpenMigratesVersionsOneTwoThreeAndReopensVersionFour",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.data.local.M20DatabaseMigrationTest#receiptUniqueKeySurvivesProductionReopen",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.data.settings.M20ReminderSettingsTest#defaultsToggleWatermarkAndReopenUseOneSettingsOwner",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#default_switches_are_independent_of_denied_permission_and_request_only_on_click",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#api26_to32_uses_system_availability_without_runtime_permission_request",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#channel_blocked_and_runtime_granted_remains_explicitly_unavailable",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#save_pending_disables_both_switches_without_claiming_saved_success",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#unreadable_preferences_expose_retry_and_no_editable_default_switches",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#settings_entry_preserves_manual_backup_actions_and_uses_explicit_navigation",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#narrow360dp_local200percent_text_keeps_switch_permission_and_back_targets_accessible",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsViewModelTest#both_default_on_switches_persist_independently_and_survive_owner_reopen",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationSettingsViewModelTest#stale_closed_generation_cannot_read_default_preferences_write_or_trigger_schedule",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#deleting_project_with_same_uuid_cannot_delete_subscription_receipt",
+          "current_source_matches_claim": false
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#actual_worker_publishes_once_and_room_receipt_suppresses_queued_retry",
+          "current_source_matches_claim": false
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#permission_denial_leaves_no_receipt_and_preserves_complete_existing_business_facts",
+          "current_source_matches_claim": false
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#old_generation_payload_cannot_publish_or_write_current_generation_receipt",
+          "current_source_matches_claim": false
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#same_row_date_or_state_correction_rejects_the_saved_worker_revision",
+          "current_source_matches_claim": false
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#actual_publisher_channel_and_permission_status_use_platform_api_without_sending",
+          "current_source_matches_claim": false
+        }
+      ]
+    },
+    {
+      "group": "worker-recheck",
+      "methods": [
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#deleting_project_with_same_uuid_cannot_delete_subscription_receipt",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#actual_worker_publishes_once_and_room_receipt_suppresses_queued_retry",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#permission_denial_leaves_no_receipt_and_preserves_complete_existing_business_facts",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#old_generation_payload_cannot_publish_or_write_current_generation_receipt",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#same_row_date_or_state_correction_rejects_the_saved_worker_revision",
+          "current_source_matches_claim": true
+        },
+        {
+          "method": "com.cooper.lithic.platform.notification.M20ReminderWorkerTest#actual_publisher_channel_and_permission_status_use_platform_api_without_sending",
+          "current_source_matches_claim": true
+        }
+      ]
+    },
+    {
+      "group": "gallery",
+      "methods": [
+        {
+          "method": "com.cooper.lithic.feature.settings.M20NotificationGalleryTest#capture_actual_denial_and_360dp_local200_controls",
+          "current_source_matches_claim": true
+        }
+      ]
+    },
+    {
+      "group": "completion",
+      "methods": [
+        {
+          "method": "com.cooper.lithic.platform.notification.M20PlatformCompletionTest#finish_existing_published_platform_run_without_new_work",
+          "current_source_matches_claim": true
+        }
+      ]
+    },
+    {
+      "group": "platform-recheck",
+      "methods": [
+        {
+          "method": "com.cooper.lithic.platform.notification.M20RealPlatformTest#real_persistent_queue_publishes_q04_notice_and_saves_one_receipt",
+          "current_source_matches_claim": true
+        }
+      ]
+    }
+  ],
+  "note": "Original six Worker source changed only for the documented context fix; use worker-recheck results. Final 52 original compiled class files match post-context build."
+}

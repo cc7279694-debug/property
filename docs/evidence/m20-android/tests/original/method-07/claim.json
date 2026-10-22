@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest#default_switches_are_independent_of_denied_permission_and_request_only_on_click",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.feature.settings.M20NotificationSettingsUiTest",
+    "method": "default_switches_are_independent_of_denied_permission_and_request_only_on_click",
+    "source": "app/src/androidTest/java/com/cooper/lithic/feature/settings/M20NotificationSettingsUiTest.kt",
+    "source_sha256": "095eef374617e9efa76a7fd2ca6ecab47bb6f0a812c8388ad1c2544ff66c5697"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:00:57.908906+00:00"
+}

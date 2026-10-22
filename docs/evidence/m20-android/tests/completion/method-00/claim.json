@@ -1,0 +1,27 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.platform.notification.M20PlatformCompletionTest#finish_existing_published_platform_run_without_new_work",
+    "-e",
+    "m20PlatformRun",
+    "c9dc7cf5-54e3-42b2-b48a-5a63aef04816",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.platform.notification.M20PlatformCompletionTest",
+    "method": "finish_existing_published_platform_run_without_new_work",
+    "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M20PlatformCompletionTest.kt",
+    "source_sha256": "aa3a9139ff34094e0f2220f920dddd6c6c805808a8bbdfeac88ce8be17f58d9b"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:30:18.462705+00:00"
+}

@@ -1,0 +1,83 @@
+[
+  {
+    "name": "host-before-exit",
+    "command": [
+      "powershell",
+      "-NoProfile",
+      "-Command",
+      "[ordered]@{processes=@(Get-CimInstance Win32_Process -Filter 'ProcessId=2100 OR ProcessId=9588'|ForEach-Object {[ordered]@{pid=$_.ProcessId;parent=$_.ParentProcessId;created=$_.CreationDate.ToString('o');path=$_.ExecutablePath;command=$_.CommandLine}});memory=@(Get-Process -Id 2100,9588|Select-Object Id,WorkingSet64,PeakWorkingSet64,PrivateMemorySize64,CPU);ports=@(Get-NetTCPConnection -State Listen -LocalPort 5704,5705|Select-Object LocalPort,OwningProcess)}|ConvertTo-Json -Depth 5"
+    ],
+    "exit_code": 0,
+    "stdout_bytes": 3008,
+    "stdout_sha256": "3d0b63905e6b24106514b8608f3e0393cc38b69386b7d861d5e22a1c9ef1003d",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "boot",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "cat /proc/sys/kernel/random/boot_id"
+    ],
+    "exit_code": 0,
+    "stdout_bytes": 38,
+    "stdout_sha256": "4b888dae83559ad3fbf4c05beabe5715617fbbc3aa1674528059197c6cdb7020",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "name",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "emu",
+      "avd",
+      "name"
+    ],
+    "exit_code": 0,
+    "stdout_bytes": 33,
+    "stdout_sha256": "66f12bddb770395135c8d3af4bb242475b6467f0eace2c995f65bd6ae6912896",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-sha",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "sha256sum",
+      "/data/app/~~ZB-RN0yYqFB2mcjHgKCS7w==/com.cooper.lithic.debug-NhqfK3CzvVqE-dHilZhyGw==/base.apk"
+    ],
+    "exit_code": 0,
+    "stdout_bytes": 162,
+    "stdout_sha256": "7fcb82119fef809660fe525a836c3679b4f2d93749f78c7ccc1aea46222d558d",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "app-uid",
+    "command": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "-s",
+      "emulator-5704",
+      "shell",
+      "cmd",
+      "package",
+      "list",
+      "packages",
+      "-U",
+      "com.cooper.lithic.debug"
+    ],
+    "exit_code": 0,
+    "stdout_bytes": 91,
+    "stdout_sha256": "283be3d714f65068d87611283ee8f7cf4eb32d71216aa1a6a09fc40acd7afb43",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

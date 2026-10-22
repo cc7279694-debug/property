@@ -1,0 +1,59 @@
+{
+  "serial": "emulator-5704",
+  "avd": "Lithic_M20_API36_20261022",
+  "files": [
+    {
+      "path": "gallery/01-preferences-and-actual-denial.png",
+      "source": "isolated ComponentActivity; actual initially denied platform permission; 360dp canvas; only 03/04 LocalDensity fontScale 2",
+      "bytes": 290608,
+      "sha256": "d2562b9a49faa1cb088a715ee7839ec33daec289f179e281dba74b425c02fb84",
+      "dimensions": [
+        990,
+        2340
+      ]
+    },
+    {
+      "path": "gallery/02-permission-denial-explanation.png",
+      "source": "isolated ComponentActivity; actual initially denied platform permission; 360dp canvas; only 03/04 LocalDensity fontScale 2",
+      "bytes": 290608,
+      "sha256": "d2562b9a49faa1cb088a715ee7839ec33daec289f179e281dba74b425c02fb84",
+      "dimensions": [
+        990,
+        2340
+      ]
+    },
+    {
+      "path": "gallery/03-local360-200-switches.png",
+      "source": "isolated ComponentActivity; actual initially denied platform permission; 360dp canvas; only 03/04 LocalDensity fontScale 2",
+      "bytes": 265098,
+      "sha256": "01215db1a5630f14724652566cd7a6e7bc3dc9db1ca46b7f2f87d1c960ef198b",
+      "dimensions": [
+        990,
+        2340
+      ]
+    },
+    {
+      "path": "gallery/04-local360-200-return.png",
+      "source": "isolated ComponentActivity; actual initially denied platform permission; 360dp canvas; only 03/04 LocalDensity fontScale 2",
+      "bytes": 270875,
+      "sha256": "614ed613e82d566a18380e6246c30375c5037302920eada30eb87fb54864ddfb",
+      "dimensions": [
+        990,
+        2340
+      ]
+    },
+    {
+      "path": "../platform-final-observation/real-notification.png",
+      "source": "Actual SystemUI notification shade; adb -s emulator-5704 exec-out screencap -p after second platform FAIL; not a generated image or fake publisher",
+      "bytes": 178879,
+      "sha256": "51c707998a0c986e50fb4d437db24471b06a669ba013e4562542dbf0ccb384ac",
+      "dimensions": [
+        1080,
+        2340
+      ]
+    }
+  ],
+  "distinct_sha256": 4,
+  "duplicate_note": "01 and 02 identical because the full permission explanation was already in view; do not count two distinct scenes",
+  "system_font_scale": "1.0 unchanged; 200% is LocalDensity only"
+}

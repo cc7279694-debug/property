@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "serial": "emulator-5704",
+  "avd": "Lithic_M20_API36_20261022",
+  "observations": [
+    {
+      "processes": [
+        {
+          "ProcessId": 2100,
+          "ParentProcessId": 28052
+        },
+        {
+          "ProcessId": 9588,
+          "ParentProcessId": 2100
+        }
+      ],
+      "ports": [
+        {
+          "LocalPort": 5705,
+          "OwningProcess": 9588
+        },
+        {
+          "LocalPort": 5704,
+          "OwningProcess": 9588
+        },
+        {
+          "LocalPort": 5705,
+          "OwningProcess": 9588
+        },
+        {
+          "LocalPort": 5704,
+          "OwningProcess": 9588
+        }
+      ],
+      "memory": {
+        "FreePhysicalMemory": 6582444,
+        "FreeVirtualMemory": 12831356
+      }
+    },
+    {
+      "processes": [],
+      "ports": [],
+      "memory": {
+        "FreePhysicalMemory": 6604304,
+        "FreeVirtualMemory": 12862796
+      }
+    }
+  ],
+  "other_device_commands": 0,
+  "avd_retained": true,
+  "retained_platform_run": "eb140516-9807-45be-b01b-781a9b76f6c0",
+  "retained_platform_explicit_owner_close": "UNKNOWN; not inferred from emulator exit"
+}

@@ -1,6 +1,6 @@
 # V1 模块路线与执行闸门
 
-**2026-10-22 M20当前覆盖**：用户已明确授权M20，候选READY_FOR_REVIEW/独立PENDING；238 JVM PASS、Lint0/25、Debug App/Test构建成功，22 Android及截图NOT_RUN（原5692身份门禁未通过，未发送ADB）。Room4/backup3为本候选明确授权变更，M19等冻结、M10/M13-T06延期、G1/G2/Q04/历史NOTES保持。见[M20报告](evidence/M20-verification.md)。M21未授权。下方旧登记文字只表示原时点。
+**2026-10-22 M20当前覆盖**：候选READY_FOR_REVIEW/独立PENDING。此前238 JVM PASS未重跑；另行授权的全新低资源API36补验取得原22项最终22 PASS（首轮16＋Context修正后Worker6），首轮21 PASS/1 FAIL保留。额外3方法最新2 PASS/1 FAIL，平台通知窗口谓词两次超时、第二次平台任务显式收口UNKNOWN保留，真实系统发布子证据不能替代整方法PASS。最终Lint0/25、Test构建成功，App未变；5个截图文件/4个独立画面。仅新5704创建/启动/正常退出各1，AVD及UNKNOWN现场保留，历史设备不操作。见[补验报告](evidence/M20-Android-verification.md)；[原离线报告](evidence/M20-verification.md)的22 NOT_RUN保持历史语境。Room4/backup3仍未冻结，M19等冻结、M10/M13-T06延期、G1/G2/Q04/历史NOTES保持。M21未授权。下方旧登记文字只表示原时点。
 
 **2026-10-22当前覆盖**：M19已由用户正式转交ChatGPT独立源码、JVM/Android原始证据、截图及设备身份验收结论，评审`21d6230543ac9c0c491d8da590d230396952f571`，**ACCEPTED / FROZEN — PASS WITH NOTES**。T01～T06、此前109 JVM PASS、29 Android PASS、Lint0错误23警告及8张真实隔离截图获限定认可，见[正式登记](ACCEPTANCE_MATRIX.md#m19正式冻结登记2026-10-22)。仅冻结类别分析、真实资金年份归属、客观年度回顾及对应只读映射，Room3/backup2/冻结算法不改。本轮仅文档登记，不重跑测试/构建或操作设备。M10延期、M13-T06延期/G1未整体通过、G2未自动通过、Q02完整16组及全部历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES保持。登记后停止，M20未授权。下方旧日期授权为历史。
 

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.local.M20DatabaseMigrationTest#receiptUniqueKeySurvivesProductionReopen",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "method": {
+    "class_name": "com.cooper.lithic.data.local.M20DatabaseMigrationTest",
+    "method": "receiptUniqueKeySurvivesProductionReopen",
+    "source": "app/src/androidTest/java/com/cooper/lithic/data/local/M20DatabaseMigrationTest.kt",
+    "source_sha256": "a0bd65991480b3c34813cedccadb3b008c5bb0904cdf1533160aca1018470c1a"
+  },
+  "attempt": 1,
+  "at": "2026-10-22T04:00:54.543138+00:00"
+}

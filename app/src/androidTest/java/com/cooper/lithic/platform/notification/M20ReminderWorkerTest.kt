@@ -1,6 +1,7 @@
 package com.cooper.lithic.platform.notification
 
 import android.Manifest
+import com.cooper.lithic.testutil.M20TestRoots
 import android.app.Application
 import android.app.NotificationManager
 import android.content.Context
@@ -59,6 +60,8 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class M20ReminderWorkerTest {
     private val context get() = ApplicationProvider.getApplicationContext<Context>()
+    private val roots = M20TestRoots()
+    private lateinit var root: File
     private val at = Instant.parse("2026-10-17T01:00:00Z")
     private val due = LocalDate.parse("2026-10-20")
     private val clock = Clock.fixed(at, ZoneOffset.UTC)
@@ -75,10 +78,10 @@ class M20ReminderWorkerTest {
 
     @Before fun before(): Unit = runBlocking {
         assertEquals(Application::class.java, context.applicationContext.javaClass)
-        val root = File(context.noBackupFilesDir, "m20-worker-${UUID.randomUUID()}").canonicalFile
-        check(root.parentFile == context.noBackupFilesDir.canonicalFile && root.mkdir())
+        root = roots.create(context, "worker")
         owner = AppContainer(DataGenerationStore(context, File(root, "ledger")), CoroutineScope(SupervisorJob() + Dispatchers.IO))
         owner.start(ZoneId.of("Asia/Shanghai")); generation = owner.openStorage()
+        roots.generation(root, generation.id, prefix = "ledger/")
         val subscription = SubscriptionEntity(id(), "合成Worker服务", LithicDatabase.SUBSCRIPTION_FALLBACK_ID,
             createdAt = at, updatedAt = at)
         payment = SubscriptionRenewalEntity(id(), subscription.id, due.minusMonths(1), due.minusMonths(1), due, due,
@@ -93,7 +96,10 @@ class M20ReminderWorkerTest {
             ReminderWorker.RENEWAL to payment.id, ReminderWorker.REVISION to ReminderTaskRevision.of(source))
     }
 
-    @After fun after(): Unit = runBlocking { if (::owner.isInitialized) owner.close() }
+    @After fun after(): Unit = runBlocking {
+        if (::owner.isInitialized) { owner.close(); roots.ownersClosed(root) }
+        roots.cleanupClosed()
+    }
 
     private fun id() = UUID.randomUUID().toString()
     private fun repository() = ReminderRepository(generation, { true }, publisher, clock)
@@ -166,13 +172,15 @@ class M20ReminderWorkerTest {
     @Test fun actual_publisher_channel_and_permission_status_use_platform_api_without_sending(): Unit = runBlocking {
         val testContext = InstrumentationRegistry.getInstrumentation().context
         assertTrue(testContext.packageName.endsWith(".test"))
-        val actual = NotificationPublisher(testContext)
+        assertEquals(InstrumentationRegistry.getInstrumentation().targetContext.packageName, context.packageName)
+        assertEquals(context.packageManager.getApplicationInfo(context.packageName, 0).uid, android.os.Process.myUid())
+        val actual = NotificationPublisher(context)
         actual.ensureChannel()
-        val manager = testContext.getSystemService(NotificationManager::class.java)
+        val manager = context.getSystemService(NotificationManager::class.java)
         val channel = checkNotNull(manager.getNotificationChannel(NotificationPublisher.CHANNEL))
         val access = actual.access()
         assertEquals(Build.VERSION.SDK_INT >= 33, access.requiresRuntimePermission)
-        assertEquals(Build.VERSION.SDK_INT < 33 || testContext.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED, access.runtimeGranted)
+        assertEquals(Build.VERSION.SDK_INT < 33 || context.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED, access.runtimeGranted)
         assertEquals(manager.areNotificationsEnabled(), access.appEnabled)
         assertEquals(channel.importance != NotificationManager.IMPORTANCE_NONE, access.channelEnabled)
         assertEquals(access.allowed, actual.canPublish())

@@ -1,0 +1,421 @@
+{
+  "serial": "emulator-5704",
+  "group": "gallery",
+  "root": "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea",
+  "uid": 10216,
+  "files": [
+    {
+      "name": "01-preferences-and-actual-denial.png",
+      "bytes": 290608,
+      "sha256": "d2562b9a49faa1cb088a715ee7839ec33daec289f179e281dba74b425c02fb84",
+      "source_identity": [
+        "10216",
+        "362184",
+        "290608",
+        "8180",
+        "1",
+        "65079"
+      ],
+      "width": 990,
+      "height": 2340
+    },
+    {
+      "name": "02-permission-denial-explanation.png",
+      "bytes": 290608,
+      "sha256": "d2562b9a49faa1cb088a715ee7839ec33daec289f179e281dba74b425c02fb84",
+      "source_identity": [
+        "10216",
+        "362185",
+        "290608",
+        "8180",
+        "1",
+        "65079"
+      ],
+      "width": 990,
+      "height": 2340
+    },
+    {
+      "name": "03-local360-200-switches.png",
+      "bytes": 265098,
+      "sha256": "01215db1a5630f14724652566cd7a6e7bc3dc9db1ca46b7f2f87d1c960ef198b",
+      "source_identity": [
+        "10216",
+        "362186",
+        "265098",
+        "8180",
+        "1",
+        "65079"
+      ],
+      "width": 990,
+      "height": 2340
+    },
+    {
+      "name": "04-local360-200-return.png",
+      "bytes": 270875,
+      "sha256": "614ed613e82d566a18380e6246c30375c5037302920eada30eb87fb54864ddfb",
+      "source_identity": [
+        "10216",
+        "362217",
+        "270875",
+        "8180",
+        "1",
+        "65079"
+      ],
+      "width": 990,
+      "height": 2340
+    },
+    {
+      "name": "gallery-source.json",
+      "bytes": 559,
+      "sha256": "2546a29eec75bf972e2b3686921e5b570be415b15c7c191ff6cd1ea91e84dd4d",
+      "source_identity": [
+        "10216",
+        "362218",
+        "559",
+        "8180",
+        "1",
+        "65079"
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 32,
+      "stdout_sha256": "1debe96e7d64cdcc80f75ea0d57be85c3827915db8477b019c82f2e4689c6a2e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/01-preferences-and-actual-denial.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 34,
+      "stdout_sha256": "3152fd5abbb72bf155703085e34aea17e8cbb5342b21170ed35ec17dd08ab02b",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/01-preferences-and-actual-denial.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 290608,
+      "stdout_sha256": "d2562b9a49faa1cb088a715ee7839ec33daec289f179e281dba74b425c02fb84",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/01-preferences-and-actual-denial.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 34,
+      "stdout_sha256": "3152fd5abbb72bf155703085e34aea17e8cbb5342b21170ed35ec17dd08ab02b",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/01-preferences-and-actual-denial.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 198,
+      "stdout_sha256": "260a64fc9cd08737a2781a1bb621c187c151db28c6f9ee3e356a1078defcaf59",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/02-permission-denial-explanation.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 34,
+      "stdout_sha256": "ca43217f744baf5460280506c82feafd6ab02073eb8ba1bee76542335e558be0",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/02-permission-denial-explanation.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 290608,
+      "stdout_sha256": "d2562b9a49faa1cb088a715ee7839ec33daec289f179e281dba74b425c02fb84",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/02-permission-denial-explanation.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 34,
+      "stdout_sha256": "ca43217f744baf5460280506c82feafd6ab02073eb8ba1bee76542335e558be0",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/02-permission-denial-explanation.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 198,
+      "stdout_sha256": "0c17fcbe748c47f1d122bfd5fc8436759031a64d19441b86f81a58fd66df70a2",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/03-local360-200-switches.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 34,
+      "stdout_sha256": "76dabd01a6b51aa97a9b888ac1571aaf75ecda670b1c919dd75dda018516521b",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/03-local360-200-switches.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 265098,
+      "stdout_sha256": "01215db1a5630f14724652566cd7a6e7bc3dc9db1ca46b7f2f87d1c960ef198b",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/03-local360-200-switches.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 34,
+      "stdout_sha256": "76dabd01a6b51aa97a9b888ac1571aaf75ecda670b1c919dd75dda018516521b",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/03-local360-200-switches.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 190,
+      "stdout_sha256": "bc53c9124f58343f4fa9d113e65c60d9aa357ebbb27b9c59c5cca52f83307a2f",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/04-local360-200-return.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 34,
+      "stdout_sha256": "602a300ace85ad611e2194851d765a2a32ff1659c7d4e57d84635ef1b53b58d0",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/04-local360-200-return.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 270875,
+      "stdout_sha256": "614ed613e82d566a18380e6246c30375c5037302920eada30eb87fb54864ddfb",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/04-local360-200-return.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 34,
+      "stdout_sha256": "602a300ace85ad611e2194851d765a2a32ff1659c7d4e57d84635ef1b53b58d0",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/04-local360-200-return.png"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 188,
+      "stdout_sha256": "36af1515abfade757e3639f913e40dfe62e78f22d984e346a9ca31eb18c760fc",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/gallery-source.json"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 31,
+      "stdout_sha256": "9719c50655e0ae510d1ba1b478736f9f258006106764ba4e222b5dbb1ea5724e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "exec-out",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "cat",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/gallery-source.json"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 559,
+      "stdout_sha256": "2546a29eec75bf972e2b3686921e5b570be415b15c7c191ff6cd1ea91e84dd4d",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/gallery-source.json"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 31,
+      "stdout_sha256": "9719c50655e0ae510d1ba1b478736f9f258006106764ba4e222b5dbb1ea5724e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as",
+        "com.cooper.lithic.debug",
+        "sha256sum",
+        "/data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea/gallery-source.json"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 181,
+      "stdout_sha256": "fc5d2d16c494b088e701b1c57e15238ddbfc9d27d6c7d7f756f1376d4d45cfb3",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-s",
+        "emulator-5704",
+        "shell",
+        "run-as com.cooper.lithic.debug stat -c '%u %i %s %f %h %d' /data/data/com.cooper.lithic.debug/no_backup/m20-gallery-e3056f03-85e4-4b5a-b68c-5840ce4837ea"
+      ],
+      "exit_code": 0,
+      "stdout_bytes": 32,
+      "stdout_sha256": "1debe96e7d64cdcc80f75ea0d57be85c3827915db8477b019c82f2e4689c6a2e",
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

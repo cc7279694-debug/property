@@ -1,0 +1,61 @@
+{
+  "runId": "eb140516-9807-45be-b01b-781a9b76f6c0",
+  "pid": 6998,
+  "uid": 10216,
+  "startTicks": "209090",
+  "recordZone": "Asia\/Shanghai",
+  "businessDay": "2026-10-22",
+  "logicalKey": "RENEWAL:81babced-da72-4f36-a638-2f2045a74406:2026-10-24",
+  "generation": "f6b88b83-a4cc-4022-977e-80abfe975cd2",
+  "publisher": "REAL_ANDROID_NOTIFICATION_MANAGER",
+  "workManager": "REAL_DEFAULT_SCHEDULERS_NO_TEST_DRIVER",
+  "persistentWorkDatabase": "\/data\/user\/0\/com.cooper.lithic.debug\/no_backup\/androidx.work.workdb",
+  "workRows": [
+    {
+      "id": "37669448-c83f-4b10-9a7e-ab2874ad4298",
+      "state": 2,
+      "workerClass": "com.cooper.lithic.platform.notification.ReminderWorker",
+      "initialDelayMs": 0,
+      "intervalMs": 0
+    },
+    {
+      "id": "03c42993-0b37-444c-abd6-b8f67f4d43db",
+      "state": 0,
+      "workerClass": "com.cooper.lithic.platform.notification.ReminderWorker",
+      "initialDelayMs": 86400000,
+      "intervalMs": 86400000
+    },
+    {
+      "id": "5ef02909-1ae3-424a-be43-33d8c56e561a",
+      "state": 2,
+      "workerClass": "com.cooper.lithic.platform.notification.ReminderWorker",
+      "initialDelayMs": 0,
+      "intervalMs": 0
+    },
+    {
+      "id": "dfa1a7b3-836e-4d05-b8c6-1d226f1c215d",
+      "state": 2,
+      "workerClass": "com.cooper.lithic.platform.notification.ReminderWorker",
+      "initialDelayMs": 0,
+      "intervalMs": 0
+    }
+  ],
+  "factoryTrace": [
+    "{\"mode\":\"reconcile\",\"pid\":6998,\"uid\":10216}",
+    "{\"mode\":\"publish\",\"generation\":\"f6b88b83-a4cc-4022-977e-80abfe975cd2\",\"pid\":6998,\"uid\":10216}"
+  ],
+  "periodicId": "03c42993-0b37-444c-abd6-b8f67f4d43db",
+  "candidateId": "dfa1a7b3-836e-4d05-b8c6-1d226f1c215d",
+  "candidateState": "SUCCEEDED",
+  "ownPendingOsJobIds": [
+    3
+  ],
+  "notificationTitle": "合成平台续费验证 · 续费提醒",
+  "notificationText": "砺石记录中的到期日为2026-10-24，还剩2天。此提醒不表示服务商已经扣款，也不代替你在服务商侧续费或取消。",
+  "notificationPostTime": 1792643452047,
+  "receiptPublishedAt": "2026-10-22T04:30:52.048558Z",
+  "status": "UNKNOWN_OR_FAILED_RETAINED",
+  "errorClass": "kotlinx.coroutines.TimeoutCancellationException",
+  "error": "Timed out waiting for 10000 ms",
+  "ownerClosed": false
+}

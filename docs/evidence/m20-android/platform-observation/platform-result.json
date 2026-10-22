@@ -1,0 +1,52 @@
+{
+  "runId": "c9dc7cf5-54e3-42b2-b48a-5a63aef04816",
+  "pid": 6670,
+  "uid": 10216,
+  "startTicks": "101369",
+  "recordZone": "Asia\/Shanghai",
+  "businessDay": "2026-10-22",
+  "logicalKey": "RENEWAL:f7d4ab28-6e6f-4aa5-9d18-03016d93ec0b:2026-10-24",
+  "generation": "cf335373-68ee-4fe8-a09e-62af296b0d73",
+  "publisher": "REAL_ANDROID_NOTIFICATION_MANAGER",
+  "workManager": "REAL_DEFAULT_SCHEDULERS_NO_TEST_DRIVER",
+  "persistentWorkDatabase": "\/data\/user\/0\/com.cooper.lithic.debug\/no_backup\/androidx.work.workdb",
+  "workRows": [
+    {
+      "id": "2e2e2411-f7d5-4306-a6c4-6d889ef50ee6",
+      "state": 0,
+      "workerClass": "com.cooper.lithic.platform.notification.ReminderWorker",
+      "initialDelayMs": 86400000,
+      "intervalMs": 86400000
+    },
+    {
+      "id": "5ba790a3-1cbf-41c7-899c-4acc0eac759e",
+      "state": 2,
+      "workerClass": "com.cooper.lithic.platform.notification.ReminderWorker",
+      "initialDelayMs": 0,
+      "intervalMs": 0
+    },
+    {
+      "id": "37669448-c83f-4b10-9a7e-ab2874ad4298",
+      "state": 2,
+      "workerClass": "com.cooper.lithic.platform.notification.ReminderWorker",
+      "initialDelayMs": 0,
+      "intervalMs": 0
+    }
+  ],
+  "factoryTrace": [
+    "{\"mode\":\"reconcile\",\"pid\":6670,\"uid\":10216}",
+    "{\"mode\":\"publish\",\"generation\":\"cf335373-68ee-4fe8-a09e-62af296b0d73\",\"pid\":6670,\"uid\":10216}"
+  ],
+  "periodicId": "2e2e2411-f7d5-4306-a6c4-6d889ef50ee6",
+  "candidateId": "37669448-c83f-4b10-9a7e-ab2874ad4298",
+  "candidateState": "SUCCEEDED",
+  "ownPendingOsJobIds": [],
+  "notificationTitle": "合成平台续费验证 · 续费提醒",
+  "notificationText": "砺石记录中的到期日为2026-10-24，还剩2天。此提醒不表示服务商已经扣款，也不代替你在服务商侧续费或取消。",
+  "notificationPostTime": 1792642377416,
+  "receiptPublishedAt": "2026-10-22T04:12:57.417584Z",
+  "status": "UNKNOWN_OR_FAILED_RETAINED",
+  "errorClass": "kotlinx.coroutines.TimeoutCancellationException",
+  "error": "Timed out waiting for 10000 ms",
+  "ownerClosed": false
+}

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "reasons": [],
+  "junit_method": "com.cooper.lithic.data.settings.M20ReminderSettingsTest#defaultsToggleWatermarkAndReopenUseOneSettingsOwner",
+  "matched_start_end": 2,
+  "command": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5704",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.data.settings.M20ReminderSettingsTest#defaultsToggleWatermarkAndReopenUseOneSettingsOwner",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 1.514999999999418,
+  "stdout_bytes": 856,
+  "stdout_sha256": "7ecb5fca9ea4679ee27784cf87e5e01991e3b19b5b2d76230286a1e16ca13dcd",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
