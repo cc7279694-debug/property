@@ -1,6 +1,26 @@
 # 验收登记
 
-当前状态：**M19 — READY_FOR_REVIEW**，T01～T06本轮限定验证PASS，等待ChatGPT独立验收；M18及此前冻结状态不变，未授予M19冻结或G2通过。
+当前状态：**M19 — ACCEPTED / FROZEN — PASS WITH NOTES**。依据用户2026-10-22转交的ChatGPT独立验收，评审`21d6230543ac9c0c491d8da590d230396952f571`。只登记本模块限定认可，不授予G1/G2整体通过，不关闭其他延期或跨模块门禁。
+
+## M19正式冻结登记（2026-10-22）
+
+**M19 — ACCEPTED / FROZEN — PASS WITH NOTES。** 来源为用户本轮正式转交的ChatGPT独立源码、JVM/Android原始证据、截图及设备身份验收结论；评审提交`21d6230543ac9c0c491d8da590d230396952f571`，评审/回写分支`codex/m19-category-annual-review`。回写前本地/远端HEAD一致，工作区干净。下方原执行登记及报告/结果/checkpoint保留当时READY_FOR_REVIEW和历史失败，不回填PASS。
+
+| 获独立认可案例 | 限定冻结范围 |
+|---|---|
+| M19-T01 money_year_is_occurred_year | PASS：按真实occurredOn归年，结束后结算及纠错/删除后重算，不按取得年重分。 |
+| M19-T02 outlay_recovery_net | PASS：投入/收回/净额分别累计；0/负值与无记录区分，Long分溢出明确失败。 |
+| M19-T03 subscription_year_is_paid_year | PASS：真实paidOn归年；跨年预付不按服务覆盖拆分，付款日纠错后重新归年。 |
+| M19-T04 types_not_merged_into_cash | PASS：项目与订阅金额分列；M16三笔原始事实只计一次，含非现金折抵明确标示。 |
+| M19-T05 category_changes_restate_history | PASS：真实Room类别改名/原子合并后按当前类别重分类，资金事实不变；筛选/详情及刷新匹配。 |
+| M19-T06 annual_summary_no_judgement | PASS：只展示客观数值/记录入口；0/负净额/空年份说明准确，无价值评判或建议。 |
+
+独立认可的此前实际证据：**109 JVM PASS（24新＋85相关回归）、29 Android PASS（16新＋13相关回归）、Lint0错误23警告、8张真实隔离截图**。不是全项目回归或本轮重新执行。[原报告](evidence/M19-verification.md)、[原唯一方法/结果](evidence/m19/results.json)、[JVM/构建](evidence/m19/stale-green-build/result.json)、[原Lint XML](evidence/m19/stale-green-build/lint-results-debug.xml)、[Room/VM](evidence/m19/android-final-core/summary.json)、[页面/旅程](evidence/m19/android-final-ui/summary.json)、[相关回归](evidence/m19/android-final-regression/summary.json)、[8图/来源](evidence/m19/screenshots/README.md)、[原checkpoint](checkpoints/2026-10-21-M19.md)。本轮仅文档登记及Git/链接/敏感信息检查，未重跑测试/构建、核验APK或操作设备，不将独立审查写成新一次产品测试PASS。
+
+**冻结范围与NOTES：**仅类别分析、真实资金年份归属、客观年度回顾和对应只读完整事实映射；Room schema v3、backup format v2、冻结业务算法及M16/恢复/媒体保护保持。原导航RED（1 PASS/2 FAIL）、领域RED（19 FAIL）、初次Android测试import编译失败、刷新提示Android RED和全部历史FAIL/UNKNOWN/NOT_RUN/NOTES原样保留。原证据仅5692/API36/x86_64合成环境、plain Application/隔离ComponentActivity；LocalDensity360dp/200%、注入时钟、受控文件恢复不扩大为MainActivity、系统字号/完整IME/TalkBack、真实午夜或新SAF验证。API26/真机/OEM/Release/稳定签名、真实进程终止/LMK/断电、无限历史性能与最坏取消时延、选择意图进程死亡持久恢复、私人字节比对继续NOT_RUN；50仅显示窗口，不是全量聚合成本上限。原设备结束在线不等于本次重新观察，不授权任何现场清理。
+
+M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过保持；**G2不自动通过，Q02完整16组跨模块门禁不关闭**。原130条归档案例、16组完整门禁和其他历史证据不改。登记提交推送后停止，不合并main，不进入M20。
+
 
 ## M19执行登记（2026-10-21，独立验收前）
 

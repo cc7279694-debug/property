@@ -1,5 +1,19 @@
 # 决策记录
 
+## 2026-10-22 — M19独立限定冻结与后续授权边界
+
+### Decision
+
+依据用户正式转交的ChatGPT独立源码、JVM/Android原始证据、截图及设备身份验收，对`codex/m19-category-annual-review`评审提交`21d6230543ac9c0c491d8da590d230396952f571`登记 **M19 — ACCEPTED / FROZEN — PASS WITH NOTES**。M19-T01～T06、此前109 JVM PASS、29 Android PASS、Lint0错误23警告及8张真实隔离截图获限定认可，见[正式登记](ACCEPTANCE_MATRIX.md#m19正式冻结登记2026-10-22)。
+
+### Context / Reason
+
+冻结仅类别分析、真实资金年份归属、客观年度回顾及相应只读完整事实映射；不改变Room schema v3、backup format v2、冻结金额/日期/订阅算法或原数据安全协议。正式来源是用户转交的独立结论，不是实施者自评；旧候选报告/结果/checkpoint保留原状态。本轮仅文档登记，不重新运行测试、构建或操作设备。
+
+### Consequences
+
+原导航/领域RED、初次Android测试编译失败、刷新提示Android RED、历史FAIL/UNKNOWN/NOT_RUN/NOTES及隔离证据边界全部保留。API36/x86_64合成/隔离ComponentActivity、LocalDensity200%、注入时钟及受控文件恢复不扩大至MainActivity、系统字号/TalkBack、真机、真实午夜、SAF或故障覆盖；长期性能、最坏取消时延及选择意图进程死亡恢复等未运行项不升级。M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1未整体通过保持，G2不自动通过，Q02完整16组跨模块门禁不关闭。提交推送必要登记文档后停止，M20未授权，不合并main、不清理现场。
+
 ## 2026-10-21 — M19以类型化原始资金事实生成只读年度与类别报告
 
 - **Decision**：非破坏性扩展M18 LedgerSnapshot，携带PROJECT_OUTLAY/PROJECT_RECOVERY/SUBSCRIPTION_PAYMENT、稳定行/记录/operation/group身份和非现金标记；与Overview及当前类别在同一次generation协调器/Room事务读取。共享原存储校验，事务外聚合，禁止解析中文展示事件或按金额日期合并合法行。
