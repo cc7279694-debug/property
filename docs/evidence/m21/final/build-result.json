@@ -1,0 +1,48 @@
+{
+  "inputsUnchanged": true,
+  "after": {
+    "sha256": "542369301f750e085c6d49723d12f17453b1494fb04e98a17946739f29405643",
+    "fileCount": 367
+  },
+  "endedAt": "2026-10-22T08:42:02.7203487Z",
+  "exitCode": 1,
+  "before": {
+    "sha256": "542369301f750e085c6d49723d12f17453b1494fb04e98a17946739f29405643",
+    "fileCount": 367
+  },
+  "arguments": [
+    "-Pm13Isolated=true",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "*Milestone*",
+    "--tests",
+    "*M21*",
+    "--tests",
+    "com.cooper.lithic.data.backup.*",
+    "--tests",
+    "com.cooper.lithic.data.repository.M20ReminderDispatchTest",
+    "--tests",
+    "com.cooper.lithic.data.repository.TradeInFactsTest",
+    "--tests",
+    "com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest",
+    "--tests",
+    "com.cooper.lithic.domain.project.*",
+    "--tests",
+    "com.cooper.lithic.domain.subscription.*",
+    "--tests",
+    "com.cooper.lithic.app.*NavigationPolicyTest",
+    "--tests",
+    "com.cooper.lithic.feature.settings.Notification*Test",
+    "--tests",
+    "com.cooper.lithic.feature.settings.Backup*Test",
+    ":app:lintDebug",
+    ":app:assembleDebug",
+    ":app:assembleDebugAndroidTest",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1024m -XX:MaxMetaspaceSize=512m",
+    "-Pkotlin.compiler.execution.strategy=in-process"
+  ],
+  "startedAt": "2026-10-22T08:38:27.5889956Z"
+}

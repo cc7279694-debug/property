@@ -36,6 +36,10 @@ object ReminderScheduling {
         WorkManager.getInstance(context).enqueueUniqueWork("lithic-renewal-reconcile-v1", ExistingWorkPolicy.REPLACE,
             OneTimeWorkRequestBuilder<ReminderWorker>().setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.RECONCILE)).build())
     }
+    internal fun requestMilestones(context: Context) {
+        WorkManager.getInstance(context).enqueueUniqueWork("lithic-milestone-reconcile-v1", ExistingWorkPolicy.REPLACE,
+            OneTimeWorkRequestBuilder<ReminderWorker>().setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.MILESTONE_RECONCILE)).build())
+    }
     internal suspend fun reconcile(context: Context, generation: ManagedGeneration, isCurrent: () -> Boolean,
         clock: Clock = Clock.systemUTC()) = reconciliation.withLock {
         val manager = WorkManager.getInstance(context)

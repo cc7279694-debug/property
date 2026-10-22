@@ -178,7 +178,7 @@ internal object RetiredGenerationCleanup {
         val names = value.keys()
         val actual=buildSet { while(names.hasNext()) add(names.next()) }
         require(actual==fields || fields==PROOF_FIELDS && actual==PROOF_FIELDS+"dataFormatVersion")
-        if(fields==PROOF_FIELDS && "dataFormatVersion" in actual) require(value.get("dataFormatVersion") in setOf(2,3))
+        if(fields==PROOF_FIELDS && "dataFormatVersion" in actual) require(value.get("dataFormatVersion") in setOf(2,3,4))
         return value
     }
 

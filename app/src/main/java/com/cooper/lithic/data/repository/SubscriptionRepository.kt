@@ -61,6 +61,10 @@ open class SubscriptionRepository(
             if (sameDay == null) db.subscriptionDao().insertStateChange(target)
             else check(db.subscriptionDao().updateStateChange(target) == 1) { "The checked state disappeared during correction" }
             requireCommitted(candidate)
+            val today = clock.today()
+            if (MilestoneHistoryChanges.state(sameDay?.let(::milestoneState), milestoneState(target), today)) {
+                MilestoneWatermarkStore.subscriptionChangedWithinTransaction(db, target.subscriptionId, today)
+            }
             savedState(target, false)
         }
 
@@ -78,6 +82,10 @@ open class SubscriptionRepository(
             validateLifecycleCandidate(candidate)?.let { return@lifecycleMutation SubscriptionLifecycleResult.ValidationFailure(it) }
             check(db.subscriptionDao().updateStateChange(target) == 1) { "The checked state disappeared during correction" }
             requireCommitted(candidate)
+            val today = clock.today()
+            if (MilestoneHistoryChanges.state(milestoneState(old), milestoneState(target), today)) {
+                MilestoneWatermarkStore.subscriptionChangedWithinTransaction(db, target.subscriptionId, today)
+            }
             savedState(target, false)
         }
 
@@ -116,6 +124,10 @@ open class SubscriptionRepository(
             validateLifecycleCandidate(candidate)?.let { return@lifecycleMutation SubscriptionLifecycleResult.ValidationFailure(it) }
             check(db.subscriptionDao().updateRenewal(target) == 1) { "The checked payment disappeared during correction" }
             requireCommitted(candidate)
+            val today = clock.today()
+            if (MilestoneHistoryChanges.renewal(toRenewal(old), toRenewal(target), today)) {
+                MilestoneWatermarkStore.subscriptionChangedWithinTransaction(db, target.subscriptionId, today)
+            }
             savedRenewal(target, false)
         }
 
@@ -136,6 +148,10 @@ open class SubscriptionRepository(
             validateLifecycleCandidate(candidate)?.let { return@lifecycleMutation SubscriptionLifecycleResult.ValidationFailure(it) }
             check(db.subscriptionDao().deleteRenewal(old.id) == 1) { "The checked payment disappeared during deletion" }
             requireCommitted(candidate)
+            val today = clock.today()
+            if (MilestoneHistoryChanges.renewal(toRenewal(old), null, today)) {
+                MilestoneWatermarkStore.subscriptionChangedWithinTransaction(db, old.subscriptionId, today)
+            }
             SubscriptionLifecycleResult.CurrentAbsence(current.subscription.id, old.id)
         }
 
@@ -176,6 +192,10 @@ open class SubscriptionRepository(
             if (sameDay == null) db.subscriptionDao().insertStateChange(target)
             else check(db.subscriptionDao().updateStateChange(target) == 1) { "The checked state disappeared during reopening" }
             requireCommitted(candidate)
+            if (MilestoneHistoryChanges.renewal(null, toRenewal(payment), today) ||
+                MilestoneHistoryChanges.state(sameDay?.let(::milestoneState), milestoneState(target), today)) {
+                MilestoneWatermarkStore.subscriptionChangedWithinTransaction(db, target.subscriptionId, today)
+            }
             SubscriptionLifecycleResult.Saved(expected.subscription.id, target.id, payment.id, false)
         }
 
@@ -249,6 +269,7 @@ open class SubscriptionRepository(
                 validateCandidate(snapshot)?.let { return@withTransaction SubscriptionMutationResult.ValidationFailure(it) }
                 db.subscriptionDao().insertSubscription(identity)
                 db.subscriptionDao().insertRenewal(renewal)
+                MilestoneWatermarkStore.subscriptionCreatedWithinTransaction(db, identity.id, clock.today())
                 SubscriptionMutationResult.Success(identity.id, renewal.id, false)
             }
         }
@@ -287,6 +308,10 @@ open class SubscriptionRepository(
                 val candidate = existing.copy(renewals = existing.renewals + toRenewal(renewal))
                 validateCandidate(candidate)?.let { return@withTransaction SubscriptionMutationResult.ValidationFailure(it) }
                 db.subscriptionDao().insertRenewal(renewal)
+                val today = clock.today()
+                if (MilestoneHistoryChanges.renewal(null, toRenewal(renewal), today)) {
+                    MilestoneWatermarkStore.subscriptionChangedWithinTransaction(db, identity.id, today)
+                }
                 SubscriptionMutationResult.Success(identity.id, renewal.id, false)
             }
         }
@@ -459,6 +484,8 @@ open class SubscriptionRepository(
     }
 
     private fun toRenewal(row: SubscriptionRenewalEntity) = Renewal(Money(row.amountCents), row.cycle, row.paidOn, row.effectiveFrom, row.paidUntilExclusive, row.reminderDueOn, row.standardDays)
+
+    private fun milestoneState(row: SubscriptionStateChangeEntity) = SubscriptionStateChange(row.effectiveOn, row.state)
 
     private fun validateCommandIdentity(commandId: String, renewal: SubscriptionRenewalEntity, identity: SubscriptionEntity? = null): String? {
         val ids = listOf(commandId, renewal.id, renewal.subscriptionId, renewal.operationId) +

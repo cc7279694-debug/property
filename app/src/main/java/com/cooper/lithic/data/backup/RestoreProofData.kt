@@ -8,7 +8,8 @@ internal object RestoreProofData {
         when(dataFormatVersion) {
             1 -> { requireLegacyReminders(snapshot); BackupJson.writeData(snapshot.data.legacyProjection(),output) }
             2 -> { requireLegacyReminders(snapshot); BackupJson.writeData(snapshot.data,output) }
-            3 -> BackupJson.writeData(snapshot.currentData(),output)
+            3 -> BackupJson.writeData(snapshot.legacyDataV3(),output)
+            4 -> BackupJson.writeData(snapshot.currentData(),output)
             else -> throw IllegalArgumentException("Unknown restoration proof data format")
         }
     }
@@ -16,13 +17,14 @@ internal object RestoreProofData {
     fun writeSettings(snapshot: BackupSnapshot, dataFormatVersion: Int, output: OutputStream) {
         when (dataFormatVersion) {
             1, 2 -> { requireLegacyReminders(snapshot); BackupJson.writeSettings(snapshot.settings, output) }
-            3 -> BackupJson.writeSettings(snapshot.currentSettings(), output)
+            3 -> { snapshot.legacyDataV3(); BackupJson.writeSettings(snapshot.currentSettings(), output) }
+            4 -> BackupJson.writeSettings(snapshot.currentSettings(), output)
             else -> throw IllegalArgumentException("Unknown restoration proof settings format")
         }
     }
 
     private fun requireLegacyReminders(snapshot: BackupSnapshot) {
-        require(snapshot.notificationReceipts.isEmpty() && snapshot.reminderPreferences == com.cooper.lithic.data.settings.ReminderPreferences()) {
+        require(snapshot.milestoneWatermarks.isEmpty() && snapshot.notificationReceipts.isEmpty() && snapshot.reminderPreferences == com.cooper.lithic.data.settings.ReminderPreferences()) {
             "New reminder facts cannot disappear behind a legacy restoration proof"
         }
     }

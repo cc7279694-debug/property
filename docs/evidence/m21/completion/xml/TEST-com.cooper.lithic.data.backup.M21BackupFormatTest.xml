@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.M21BackupFormatTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-10-22T08:56:41.499Z" hostname="WHOCARE" time="0.538">
+  <properties/>
+  <testcase name="legacyThreeRejectsMilestoneKindRatherThanFilteringIt" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.021"/>
+  <testcase name="legacyThreeNormalizesMissingWatermarksWithoutInventingReceipts" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.0"/>
+  <testcase name="oldFormatsNormalizeAllMissingTablesWithoutInventingPublication" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.0"/>
+  <testcase name="typedReceiptBoundaryKeyAndOwnerCannotMix" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.076"/>
+  <testcase name="legacyThreeWireAndProofKeepExactlyTheOriginalShape" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.045"/>
+  <testcase name="formatFourRoundTripsSameUuidTypedWatermarksAndReceipts" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.046"/>
+  <testcase name="restorationSuppressesReachedNodesIncludingTodayWithoutInventingReceipt" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.011"/>
+  <testcase name="absentWatermarkCollectionOrAnyMandatoryWatermarkFieldFailsBeforeExtraction" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.081"/>
+  <testcase name="oldProofsCannotHideNewWatermarksOrMilestoneReceipts" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.001"/>
+  <testcase name="restorationDoesNotRetreatFutureCutoffOrPreviouslySuppressedBits" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.003"/>
+  <testcase name="unknownTypeMaskCanonicalDateOrOrphanWatermarkFails" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.106"/>
+  <testcase name="formatFourDeclaresSchemaFiveAndTenTables" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.0"/>
+  <testcase name="milestonePublicationBeforeRecordedNineIsRejectedWithoutRecomputingHistoricalReachDate" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.017"/>
+  <testcase name="tenTableBudgetIsCountedBeforeMaterialization" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.001"/>
+  <testcase name="duplicateJointIdentityRejectedButSameUuidDifferentTypeAllowed" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.064"/>
+  <testcase name="wrongTypeOwnerReferenceFailsEvenWithExistingOtherTypeOwner" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.017"/>
+  <testcase name="actualCurrentExportDeclaresFourFourFiveAndTenCounts" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.048"/>
+  <testcase name="formatFourProofAuthenticatesWatermarksAndBothPreferences" classname="com.cooper.lithic.data.backup.M21BackupFormatTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

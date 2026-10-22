@@ -1,5 +1,29 @@
 # 决策记录
 
+## 2026-10-22 — M21实际时间节点、抑制水位与有限摘要回执
+
+### Decision
+
+本轮用户明确授权M21，Q03为USER_CONFIRMED：长期开始日为第1天，D100/D1000为startedOn加N-1天，Y1/Y3/Y5/Y10为加日历年；订阅D100/365/1000/1095/1825/3650只取冻结M03的elapsedPaidDays，采用有界二分找到首次达到日。记录时区9点后尽力发送，补发目标日至+6日；初纳、历史时间纠错与恢复时抑制截至基线日（含当天）已达到的节点。
+
+### Context
+
+来源为本轮用户M21完整授权及[契约](planning/M21_CONTRACT.md)。不改原130案例/16组门禁，不用standardPurchasedDays代替真实有效时长，不把用户规则确认等同平台验收。M20产品限定冻结及平台FAIL/UNKNOWN、M10延期、M13-T06延期均保留。
+
+### Alternatives
+
+拒绝伪造成功Receipt抑制旧节点、在原format3 DTO里添加必需字段、每节点单独通知，以及把所有Receipt强制解释为续费日期。
+
+### Reason
+
+以PROJECT/SUBSCRIPTION联合身份保存截止日期和固定六位掩码，和实际发布成功Receipt分开。新建及时间纠错沿用原Room事务；初次初始化在发布前完成；恢复先认证旧proof，再在未公开候选中合并保护并写新proof。保留旧掩码/回执且不回退，不推进纯资料/金额修改或普通当前未来续费的时间水位。
+
+### Consequences
+
+候选Room5仅增加milestone_watermarks，保留原schema1～4和显式迁移；完整备份format4/minReader4/schema5使用独立10表DTO，旧format1/2/3按旧字节与字段认证，内部active-pointer/ready版本仍1。续费和里程碑按已知kind严格分支；共用原通知渠道/两个偏好及WorkManager版本，里程碑任务有独立取消命名空间。同一发布日用一个稳定摘要，成功后本批新回执Room事务全写或全回滚；发布至落盘之间保留有限重试窗口，不能承诺exactly-once。点击只携带generation/发布日/来源摘要SHA/数量，完整来源由真实Receipt和新鲜事实重建并核验，临时列表50条窗口，仍走原导航守卫。
+
+本轮仅离线实现与构建，未获设备许可；真实迁移/恢复/通知/点击/系统重启仍NOT_RUN，M21须等待独立审查，不授予FROZEN或G3通过。实际结果见[M21验证](evidence/M21-verification.md)。
+
 ## 2026-10-22 — M20产品限定冻结与平台收口隔离
 
 ### Decision

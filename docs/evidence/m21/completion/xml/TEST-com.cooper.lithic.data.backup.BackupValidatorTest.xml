@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.BackupValidatorTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-10-22T08:56:38.322Z" hostname="WHOCARE" time="1.412">
+  <properties/>
+  <testcase name="refuses_inconsistent_media_identity_declared_dimensions_and_resource_budget" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.107"/>
+  <testcase name="refuses_new_format_reader_schema_and_missing_defaulted_manifest_fields" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.075"/>
+  <testcase name="rejects_broken_relations_wrong_category_type_and_changed_or_missing_defaults" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.111"/>
+  <testcase name="rejects_symlink_central_attributes_and_local_central_name_disagreement" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.032"/>
+  <testcase name="validates_archive_created_by_existing_m11_writer" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.184"/>
+  <testcase name="rejects_hidden_bytes_after_deflate_end_even_when_zip_headers_and_crc_agree" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.022"/>
+  <testcase name="rejects_invalid_project_lifecycle_or_missing_real_subscription_payment" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.148"/>
+  <testcase name="rejects_money_out_of_range_nonpositive_renewal_overlap_and_wrong_standard_days" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.099"/>
+  <testcase name="propagates_cancellation_during_validation" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.013"/>
+  <testcase name="oversized_central_directory_fails_early_metadata_budget_without_large_fixture_allocation" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.02"/>
+  <testcase name="accepts_arbitrary_table_row_order_and_returns_canonical_facts_for_room_comparison" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.057"/>
+  <testcase name="rejects_truncated_directory_trailing_bytes_crc_and_size_lies" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.047"/>
+  <testcase name="rejects_missing_extra_payload_and_wrong_manifest_hash_length_or_record_counts" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.067"/>
+  <testcase name="rejects_invalid_zone_disagreement_and_malformed_dates_instants_uuid_and_enums" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.079"/>
+  <testcase name="restores_all_facts_shared_media_zero_initial_and_cross_table_operation_ids" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.046"/>
+  <testcase name="refuses_nonempty_extraction_root_without_touching_existing_files" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.012"/>
+  <testcase name="rejects_unsafe_unknown_and_duplicate_zip_paths_before_extraction" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.111"/>
+  <testcase name="rejects_duplicate_ids_operations_category_keys_media_paths_and_state_dates" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.071"/>
+  <testcase name="rejects_duplicate_json_keys_unknown_fields_missing_nullable_fields_and_invalid_utf8" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.073"/>
+  <testcase name="long_deep_and_multibyte_zip_names_fail_early_path_resource_admission" classname="com.cooper.lithic.data.backup.BackupValidatorTest" time="0.036"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

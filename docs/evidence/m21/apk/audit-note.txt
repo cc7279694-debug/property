@@ -1,0 +1,1 @@
+Initial local audit regex rejected the test APK empty versionCode/versionName (AssertionError). Actual aapt2 badging confirms both are undeclared; AGP output metadata reports versionCode=0. Parser interpretation corrected; APK bytes were not changed or rebuilt. Original badging and signatures retained. This is artifact inspection, not Android installation or execution.

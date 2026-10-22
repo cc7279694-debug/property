@@ -94,6 +94,12 @@ import com.cooper.lithic.feature.settings.RestoreUiPhase
 import com.cooper.lithic.feature.report.ItemTimelineViewModel
 import com.cooper.lithic.feature.project.ProjectCostChart
 import com.cooper.lithic.feature.subscription.SubscriptionPriceChart
+import com.cooper.lithic.data.repository.MilestoneNoticeRef
+import com.cooper.lithic.domain.reminder.MilestoneCandidate
+import com.cooper.lithic.domain.reminder.MilestoneOwnerType
+import com.cooper.lithic.feature.reminder.MilestoneSourcesScreen
+import com.cooper.lithic.feature.reminder.InvalidMilestoneNoticeScreen
+import kotlinx.coroutines.flow.merge
 import kotlinx.serialization.Serializable
 
 /** Retained under its original name so previously saved M04 state can be decoded. */
@@ -115,6 +121,8 @@ internal fun LithicNavigation(
     onCancelRestore: () -> Unit = {},
     onConfirmRestore: () -> Unit = {},
     onDiscardRestore: () -> Unit = {},
+    milestoneRequest: MilestoneOpenRequest? = null,
+    resolveMilestone: (suspend (MilestoneNoticeRef) -> List<MilestoneCandidate>)? = null,
 ) {
     val owner = checkNotNull(LocalView.current.findViewTreeViewModelStoreOwner())
     val generationScope = remember(owner) {
@@ -212,16 +220,34 @@ internal fun LithicNavigation(
     DisposableEffect(chartModel) { onDispose { chartModel?.pause() } }
     var pendingLeave by remember(session) { mutableStateOf<List<NavKey>?>(null) }
     var pendingWarning by remember(session) { mutableStateOf(false) }
+    var handledNotice by remember(session) { mutableStateOf<Long?>(null) }
+    var autoOpenNotice by remember(session) { mutableStateOf<MilestoneSources?>(null) }
+    val milestoneChanges = remember(state.repository, state.subscriptionRepository) {
+        merge(state.repository.changes, state.subscriptionRepository.changes)
+    }
     fun navigate(target: List<NavKey>) {
-        if (backStack.toList() != target) { backStack.clear(); backStack.addAll(target) }
+        val next = milestoneAwareBackStack(normalizeBackStack(backStack.toList()), target)
+        if (backStack.toList() != next) { backStack.clear(); backStack.addAll(next) }
     }
     fun requestLeave(target: List<NavKey>) {
-        if (restoreState.phase == RestoreUiPhase.RESTORING) return
+        if (!navigationAvailable(restoreState.phase)) return
         when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW)) {
             LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); navigate(target) }
             LeaveDecision.CONFIRM_DISCARD -> pendingLeave = target
             LeaveDecision.BLOCK_PENDING -> pendingWarning = true
         }
+    }
+    LaunchedEffect(milestoneRequest?.identity, restoreState.phase) {
+        val request = milestoneRequest ?: return@LaunchedEffect
+        if (handledNotice == request.identity || restoreState.phase == RestoreUiPhase.RESTORING) return@LaunchedEffect
+        handledNotice = request.identity
+        val reference = request.reference
+        val target = if (!request.invalid && reference != null) MilestoneSources(reference.generationId,
+            reference.publicationOn.toString(), reference.digest, reference.count) else InvalidMilestoneNotice
+        autoOpenNotice = target as? MilestoneSources
+        // Resolve only after this existing guard has allowed entering the temporary
+        // source page. An intent never discards a draft or bypasses pending writes.
+        requestLeave(canonicalBackStack(target))
     }
     val onBack: () -> Unit = { if (routes.size > 1) requestLeave(routes.dropLast(1)) }
     SideEffect { if (backStack.toList() != routes) navigate(routes) }
@@ -426,6 +452,15 @@ internal fun LithicNavigation(
                     entry<NotificationSettings> {
                         if (notificationModel != null) NotificationSettingsEntry(notificationModel, onBack)
                     }
+                    entry<InvalidMilestoneNotice> { InvalidMilestoneNoticeScreen(onBack) }
+                    entry<MilestoneSources> { route ->
+                        if (resolveMilestone == null) InvalidMilestoneNoticeScreen(onBack)
+                        else MilestoneSourcesScreen(route.reference(), milestoneChanges, resolveMilestone,
+                            openSingle = autoOpenNotice == route, onSingleHandled = { autoOpenNotice = null },
+                            onOpen = { item -> requestLeave(canonicalBackStack(
+                                if (item.ownerType == MilestoneOwnerType.PROJECT) ProjectDetail(item.ownerId)
+                                else SubscriptionDetail(item.ownerId))) }, onBack = onBack)
+                    }
                     entry<CategoryManagement> {
                         if (categoryModel != null && categoryState != null) CategoryManagementScreen(
                             categoryState, onBack, categoryModel::selectType, categoryModel::startCreate,
@@ -457,7 +492,7 @@ internal fun LithicNavigation(
                             onCostHistory = if (state.itemTimelineRepository != null) ({ requestLeave(canonicalBackStack(ProjectCostHistory(route.id, route.origin, route.comparisonId))) }) else null,
                             onReplacement = if (replacementModel != null) ({ requestLeave(canonicalBackStack(ReplacementComparison(route.id, route.origin))) }) else null,
                             onTradeIn = if (replacementModel != null) ({ requestLeave(canonicalBackStack(TradeInProject(route.id, route.origin, route.comparisonId))) }) else null,
-                            backLabel = if (route.comparisonId != null) "返回替换对比" else when (route.origin) {
+                            backLabel = if (route.comparisonId != null) "返回替换对比" else if (routes.getOrNull(1) is MilestoneSources) "返回里程碑来源" else when (route.origin) {
                                 ProjectOrigin.CURRENT -> "返回项目列表"
                                 ProjectOrigin.HISTORY -> "返回历史档案"
                                 ProjectOrigin.REVIEW -> "返回长期复盘"
@@ -552,7 +587,7 @@ internal fun LithicNavigation(
                             onCancelStop = { requestLeave(canonicalBackStack(CancelSubscriptionStop(route.id, it, route.origin))) },
                             onCorrectRenewal = { requestLeave(canonicalBackStack(CorrectSubscriptionRenewal(route.id, it, route.origin))) },
                             onDeleteRenewal = { requestLeave(canonicalBackStack(DeleteSubscriptionRenewal(route.id, it, route.origin))) },
-                            backLabel = when (route.origin) {
+                            backLabel = if (routes.getOrNull(1) is MilestoneSources) "返回里程碑来源" else when (route.origin) {
                                 SubscriptionOrigin.CURRENT -> "返回订阅列表"
                                 SubscriptionOrigin.HISTORY -> "返回已停止订阅"
                                 SubscriptionOrigin.REVIEW -> "返回长期复盘"
@@ -578,11 +613,13 @@ internal fun LithicNavigation(
         AlertDialog(onDismissRequest = { pendingLeave = null }, modifier = Modifier.testTag("discard-dialog"), title = { Text("放弃未保存修改？") },
             text = { Text("输入尚未保存。继续编辑会保留这些内容。") },
             confirmButton = { TextButton(onClick = {
-                pendingLeave = null
-                if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
-                else { model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
-                    model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); navigate(target) }
-            }, modifier = Modifier.testTag("discard-confirm")) { Text("放弃修改") } },
+                if (navigationAvailable(restoreState.phase)) {
+                    pendingLeave = null
+                    if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
+                    else { model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
+                        model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); navigate(target) }
+                }
+            }, enabled = navigationAvailable(restoreState.phase), modifier = Modifier.testTag("discard-confirm")) { Text("放弃修改") } },
             dismissButton = { TextButton(onClick = { pendingLeave = null }, modifier = Modifier.testTag("discard-keep")) { Text("继续编辑") } })
     }
     if (pendingWarning) {
@@ -601,7 +638,9 @@ internal fun LithicNavigation(
                 } else null
                 val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery, categoryRecovery, replacementRecovery).filter { it != routes.last() }
                 Column { recoveryTargets.forEach { recovery ->
-                    TextButton(onClick = { pendingWarning = false; navigate(canonicalBackStack(recovery)) },
+                    TextButton(onClick = { if (navigationAvailable(restoreState.phase)) {
+                        pendingWarning = false; navigate(canonicalBackStack(recovery))
+                    } }, enabled = navigationAvailable(restoreState.phase),
                         modifier = Modifier.testTag(if (recoveryTargets.size == 1) "pending-submit-return-to-form" else if (recovery == subscriptionRecovery) "pending-submit-return-to-subscription" else if (recovery == categoryRecovery) "pending-submit-return-to-category" else if (recovery == replacementRecovery) "pending-submit-return-to-replacement" else "pending-submit-return-to-project")) {
                         Text(if (recovery == subscriptionRecovery) "返回待核对订阅记录" else if (recovery == categoryRecovery) "返回待核对类别" else if (recovery == replacementRecovery) "返回待核对替换交易" else "返回待核对项目")
                     }

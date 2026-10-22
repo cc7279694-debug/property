@@ -14,11 +14,11 @@ import com.cooper.lithic.app.MainActivity
 import com.cooper.lithic.domain.reminder.RenewalReminderCandidate
 
 /** No permission request, network call, foreground service or ledger owner is created here. */
-class NotificationPublisher(private val context: Context) : ReminderPublisher {
+class NotificationPublisher(private val context: Context) : ReminderPublisher, MilestonePublisher {
     private val manager get() = context.getSystemService(NotificationManager::class.java)
     fun ensureChannel() {
-        manager.createNotificationChannel(NotificationChannel(CHANNEL, "续费提醒", NotificationManager.IMPORTANCE_DEFAULT).apply {
-            description = "依据砺石已记录的到期日尽力提醒，不代表服务商扣款。"
+        manager.createNotificationChannel(NotificationChannel(CHANNEL, "续费与里程碑提醒", NotificationManager.IMPORTANCE_DEFAULT).apply {
+            description = "依据砺石保存的日期和实际时间事实尽力提醒，不保证准点。"
         })
     }
     fun access(): NotificationAccess {
@@ -39,6 +39,19 @@ class NotificationPublisher(private val context: Context) : ReminderPublisher {
         try {
             manager.notify(candidate.logicalKey, candidate.notificationId, notification)
         } catch (_: SecurityException) { return false }
+        return true
+    }
+    override fun publish(summary: com.cooper.lithic.data.repository.MilestoneSummary): Boolean {
+        ensureChannel()
+        if (!canPublish()) return false
+        val open = PendingIntent.getActivity(context, 21, MilestoneNoticeIntents.create(context, summary.reference),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        val notification = Notification.Builder(context, CHANNEL).setSmallIcon(R.drawable.ic_launcher_placeholder)
+            .setContentTitle(summary.title).setContentText(summary.text)
+            .setStyle(Notification.BigTextStyle().bigText(summary.text)).setContentIntent(open)
+            .setOnlyAlertOnce(true).setAutoCancel(true).build()
+        try { manager.notify(summary.tag, summary.notificationId, notification) }
+        catch (_: SecurityException) { return false }
         return true
     }
     companion object { const val CHANNEL = "lithic-renewals-v1" }

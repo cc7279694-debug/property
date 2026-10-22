@@ -1,0 +1,171 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:kspDebugUnitTestKotlin UP-TO-DATE
+> Task :app:compileDebugUnitTestKotlin UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugJavaRes
+> Task :app:processDebugUnitTestJavaRes
+
+> Task :app:testDebugUnitTest
+
+M21BackupFormatTest > legacyThreeNormalizesMissingWatermarksWithoutInventingReceipts FAILED
+    java.lang.AssertionError at M21BackupFormatTest.kt:26
+
+M21BackupFormatTest > formatFourDeclaresSchemaFiveAndTenTables FAILED
+    java.lang.IllegalArgumentException at M21BackupFormatTest.kt:15
+
+MilestoneHistoryChangesTest > changed_project_start_is_historical_even_when_moved_forward FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:18
+
+MilestoneHistoryChangesTest > backdated_end_and_past_end_correction_require_suppression FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:27
+
+MilestoneHistoryChangesTest > metadata_and_future_end_changes_are_not_history FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:32
+
+MilestoneHistoryChangesTest > ordinary_end_today_does_not_swallow_an_end_day_milestone FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:23
+
+MilestoneHistoryChangesTest > amount_cycle_and_reminder_only_corrections_preserve_legal_candidate FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:44
+
+MilestoneHistoryChangesTest > current_and_future_coverage_corrections_do_not_rewrite_past_days FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:63
+
+MilestoneHistoryChangesTest > historical_coverage_or_payment_day_correction_is_history FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:51
+
+MilestoneHistoryChangesTest > backfilled_coverage_is_history_but_today_and_future_renewal_are_not FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:37
+
+MilestoneHistoryChangesTest > removing_historical_coverage_is_history_but_removing_future_is_not FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:57
+
+MilestoneHistoryChangesTest > correction_to_existing_effective_state_is_history FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:75
+
+MilestoneHistoryChangesTest > ordinary_today_state_change_does_not_advance_watermark FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:68
+
+MilestoneHistoryChangesTest > future_state_plan_or_unchanged_state_does_not_advance_watermark FAILED
+    java.lang.IllegalStateException at MilestoneHistoryChangesTest.kt:81
+
+MilestonePlannerTest > paused_dates_are_excluded_and_continued_real_coverage_reaches_365_later FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:87
+
+MilestonePlannerTest > switch_and_receipts_suppress_without_mutating_watermark_or_candidate_identity FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:30
+
+MilestonePlannerTest > invalid_subscription_structure_and_duplicate_source_identity_are_not_silently_filtered FAILED
+    java.lang.AssertionError at MilestonePlannerTest.kt:200
+        Caused by: kotlin.NotImplementedError at MilestonePlannerTest.kt:200
+
+MilestonePlannerTest > record_zone_nine_gate_never_consumes_early_morning_eligibility FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:30
+
+MilestonePlannerTest > leap_project_anniversary_uses_calendar_clamping FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:45
+
+MilestonePlannerTest > initial_history_baseline_suppresses_today_and_every_earlier_node_without_receipts FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:128
+
+MilestonePlannerTest > initializing_exact_target_day_suppresses_that_day_but_future_node_still_works FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:135
+
+MilestonePlannerTest > same_uuid_cross_type_has_independent_watermark_and_stable_key FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:173
+
+MilestonePlannerTest > future_payment_cannot_unlock_a_threshold_in_the_past FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:100
+
+MilestonePlannerTest > project_day_nodes_count_the_first_day_and_calendar_years_are_distinct FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:34
+
+MilestonePlannerTest > correction_keeps_suppressed_bits_when_node_moves_into_the_future_and_cutoff_never_regresses FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:141
+
+MilestonePlannerTest > leap_subscription_365_effective_days_precede_project_anniversary FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:81
+
+MilestonePlannerTest > missing_duplicate_and_orphan_watermarks_fail_closed FAILED
+    java.lang.AssertionError at MilestonePlannerTest.kt:180
+        Caused by: kotlin.NotImplementedError at MilestonePlannerTest.kt:180
+
+MilestonePlannerTest > annual_prepaid_first_day_has_one_elapsed_day_and_no_milestone FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:68
+
+MilestonePlannerTest > six_subscription_thresholds_are_fixed_and_ordered_without_standard_duration FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:106
+
+MilestonePlannerTest > node_positions_are_six_strict_bits_and_unknown_codes_are_rejected FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:188
+
+MilestonePlannerTest > continuous_subscription_first_reaches_100_and_365_on_actual_dates FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:72
+
+MilestonePlannerTest > project_end_before_node_excludes_it_and_end_on_node_keeps_honest_past_copy FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:50
+
+MilestonePlannerTest > legal_window_includes_reached_day_and_plus_six_but_not_plus_seven FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:30
+
+MilestonePlannerTest > future_project_has_no_reached_node_and_invalid_end_is_rejected FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:59
+
+MilestonePlannerTest > stopped_free_and_uncovered_gaps_never_add_effective_time FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:94
+
+MilestonePlannerTest > correcting_history_unions_newly_crossed_nodes_and_subscription_watermark_is_typed FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:152
+
+MilestonePlannerTest > very_large_date_range_is_bounded_and_unrepresentable_future_project_nodes_are_skipped FAILED
+    kotlin.NotImplementedError at MilestonePlannerTest.kt:206
+
+37 tests completed, 37 failed
+
+> Task :app:testDebugUnitTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///E:/CODEX/.codex/worktrees/lithic-m13/%E7%A0%BA%E7%9F%B3%E6%96%B0APP/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 48s
+26 actionable tasks: 3 executed, 23 up-to-date

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-10-22T08:45:44.022Z" hostname="WHOCARE" time="0.048">
+  <properties/>
+  <testcase name="summaryUsesAllSourcesBeyondDisplayWindowAndClickIsBoundedReference" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.02"/>
+  <testcase name="publishesOneActualBatchAndRecheckDoesNotNotifyAgain" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.002"/>
+  <testcase name="receiptBatchFailureIsPropagatedAndStableRetryIsFiniteIdempotency" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.004"/>
+  <testcase name="renamingKeepsAccurateIdentityAndUsesFreshName" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.001"/>
+  <testcase name="clickRejectsDeletionHistoricalDateCorrectionAndOldGeneration" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.002"/>
+  <testcase name="permissionFailureAndSwitchOffNeverInventReceipts" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.001"/>
+  <testcase name="newSameDayCandidateUpdatesStableSummaryAndKeepsPreviousSources" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.002"/>
+  <testcase name="beforeNineKeepsEligibilityWithoutPublishing" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.001"/>
+  <testcase name="platformFalseAndOldGenerationNeverRecordSuccess" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.001"/>
+  <testcase name="cancellationAfterSuccessfulApiStillPersistsActualReceipt" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.004"/>
+  <testcase name="concurrentDispatchPublishesOnlyOnceUnderRealGenerationCoordinator" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.006"/>
+  <testcase name="summaryTypedIdentitySeparatesSameUuidAndRejectsDuplicateNodes" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.0"/>
+  <testcase name="crossingBusinessDateDuringPlanningDoesNotPublishAnExpiredCandidate" classname="com.cooper.lithic.data.repository.M21MilestoneDispatchTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -25,8 +25,9 @@ class ReminderRepository(private val generation: ManagedGeneration, private val 
         val sources = ReportRepository(generation.database, generation.coordinator, ZonedBusinessClock(clock.withZone(zone)))
             .loadRenewalReminderSourcesWithinBoundary(generation.coordinator)
         val receipts = generation.database.notificationReceiptDao().list()
-        val ids = sources.map { it.ownerId }.toSet()
-        check(receipts.all { it.kind == "RENEWAL" && it.ownerId in ids }) { "A receipt has an unknown owner" }
-        return ReminderDispatchInput(sources, preferences, receipts.map { it.logicalKey }.toSet(), zone)
+        val projectIds = receipts.filter { it.kind == "PROJECT_MILESTONE" }.map { it.ownerId }.distinct()
+            .chunked(50).flatMap { generation.database.projectDao().projectsForIds(it) }.map { it.id }.toSet()
+        requireReceiptOwners(receipts, projectIds, sources.map { it.ownerId }.toSet())
+        return ReminderDispatchInput(sources, preferences, receipts.filter { it.kind == "RENEWAL" }.map { it.logicalKey }.toSet(), zone)
     }
 }

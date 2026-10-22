@@ -54,13 +54,24 @@ data class BackupSnapshot(
     val settings: BackupSettingsV1,
     val notificationReceipts: List<BackupNotificationReceiptV3> = emptyList(),
     val reminderPreferences: ReminderPreferences = ReminderPreferences(),
+    val milestoneWatermarks: List<BackupMilestoneWatermarkV4> = emptyList(),
 ) {
     constructor(data:BackupDataV1,settings:BackupSettingsV1):this(data.upgrade(),settings)
 
-    fun completeRecordCounts(): Map<String, Long> = data.recordCounts() + ("notification_receipts" to notificationReceipts.size.toLong())
-    internal fun currentData(): BackupDataV3 = BackupDataV3(data.categories, data.projects, data.projectMoneyEvents,
+    fun completeRecordCounts(): Map<String, Long> = data.recordCounts() +
+        ("notification_receipts" to notificationReceipts.size.toLong()) + ("milestone_watermarks" to milestoneWatermarks.size.toLong())
+    /** Exact frozen format-3 shape, solely for original archive/proof authentication. */
+    internal fun legacyDataV3(): BackupDataV3 {
+        require(milestoneWatermarks.isEmpty() && notificationReceipts.all { it.kind == "RENEWAL" }) {
+            "Milestone facts cannot disappear behind a format-3 proof or archive"
+        }
+        return BackupDataV3(data.categories, data.projects, data.projectMoneyEvents,
+            data.mediaAssets, data.subscriptions, data.subscriptionRenewals, data.subscriptionStateChanges, data.replacements,
+            notificationReceipts).ordered()
+    }
+    internal fun currentData(): BackupDataV4 = BackupDataV4(data.categories, data.projects, data.projectMoneyEvents,
         data.mediaAssets, data.subscriptions, data.subscriptionRenewals, data.subscriptionStateChanges, data.replacements,
-        notificationReceipts).ordered()
+        notificationReceipts, milestoneWatermarks).ordered()
     internal fun currentSettings(): BackupSettingsV3 = BackupSettingsV3(settings.recordZoneId,
         reminderPreferences.renewalEnabled, reminderPreferences.milestoneEnabled, reminderPreferences.importCutoff?.toString())
 }
@@ -96,6 +107,37 @@ data class BackupDataV3(
             mediaAssets = old.mediaAssets, subscriptions = old.subscriptions, subscriptionRenewals = old.subscriptionRenewals,
             subscriptionStateChanges = old.subscriptionStateChanges, replacements = old.replacements,
             notificationReceipts = notificationReceipts.sortedBy { it.logicalKey })
+    }
+}
+
+/** Mandatory wire fields; an absent mask/cutoff is never interpreted as a default. */
+@Serializable
+data class BackupMilestoneWatermarkV4(val ownerType: String, val ownerId: String, val cutoffOn: String, val suppressedMask: Int)
+
+@Serializable
+data class BackupDataV4(
+    val categories: List<BackupCategoryV1>,
+    val projects: List<BackupProjectV1>,
+    val projectMoneyEvents: List<BackupProjectMoneyEventV2>,
+    val mediaAssets: List<BackupMediaAssetV1>,
+    val subscriptions: List<BackupSubscriptionV1>,
+    val subscriptionRenewals: List<BackupSubscriptionRenewalV1>,
+    val subscriptionStateChanges: List<BackupSubscriptionStateChangeV1>,
+    val replacements: List<BackupReplacementV2>,
+    val notificationReceipts: List<BackupNotificationReceiptV3>,
+    val milestoneWatermarks: List<BackupMilestoneWatermarkV4>,
+) {
+    internal fun storedData(): BackupDataV2 = BackupDataV2(categories, projects, projectMoneyEvents, mediaAssets,
+        subscriptions, subscriptionRenewals, subscriptionStateChanges, replacements).ordered()
+    fun recordCounts(): Map<String, Long> = storedData().recordCounts() +
+        ("notification_receipts" to notificationReceipts.size.toLong()) + ("milestone_watermarks" to milestoneWatermarks.size.toLong())
+    internal fun ordered(): BackupDataV4 {
+        val old = storedData()
+        return copy(categories = old.categories, projects = old.projects, projectMoneyEvents = old.projectMoneyEvents,
+            mediaAssets = old.mediaAssets, subscriptions = old.subscriptions, subscriptionRenewals = old.subscriptionRenewals,
+            subscriptionStateChanges = old.subscriptionStateChanges, replacements = old.replacements,
+            notificationReceipts = notificationReceipts.sortedBy { it.logicalKey },
+            milestoneWatermarks = milestoneWatermarks.sortedWith(compareBy<BackupMilestoneWatermarkV4> { it.ownerType }.thenBy { it.ownerId }))
     }
 }
 

@@ -30,7 +30,8 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
                     count
                 }
             }
-            requireBackupRecordCounts(counts, expectedTables = 9)
+            requireBackupRecordCounts(counts, expectedTables = 10)
+            check(database.milestoneWatermarkDao().countMalformed() == 0L) { "Malformed stored milestone watermark" }
             com.cooper.lithic.data.repository.ReplacementStoredFacts.requireValid(database)
             val categories = database.categoryDao().list()
             val projects = database.projectDao().listProjects()
@@ -44,8 +45,9 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
             val states = idChunks.flatMap { subscriptionDao.statesForSubscriptions(it) }
             val replacements=database.replacementDao().listReplacements()
             val receipts=database.notificationReceiptDao().list()
+            val watermarks=database.milestoneWatermarkDao().list()
             check(counts == listOf(categories.size, projects.size, events.size, media.size,
-                subscriptions.size, renewals.size, states.size,replacements.size,receipts.size).map { it.toLong() }) {
+                subscriptions.size, renewals.size, states.size,replacements.size,receipts.size,watermarks.size).map { it.toLong() }) {
                 "A backup query omitted persisted rows"
             }
             BackupSnapshot(
@@ -53,6 +55,7 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
                 settings,
                 receipts.map { BackupNotificationReceiptV3(it.logicalKey, it.ownerId, it.kind, it.boundary, it.publishedAt.toString()) },
                 reminders,
+                watermarks.map { BackupMilestoneWatermarkV4(it.ownerType.name, it.ownerId, it.cutoffOn.toString(), it.suppressedMask) },
             )
         }
         return snapshot
@@ -63,7 +66,7 @@ class RoomBackupSnapshotSource internal constructor(private val generation: Mana
     private companion object {
         // Fixed names, never SQL identifiers from external input. Match the count/row order above.
         val TABLES = listOf("categories", "long_term_projects", "project_money_events", "local_media_assets",
-            "subscriptions", "subscription_renewals", "subscription_state_changes","replacements","notification_receipts")
+            "subscriptions", "subscription_renewals", "subscription_state_changes","replacements","notification_receipts","milestone_watermarks")
         const val IDS_PER_QUERY = 400
     }
 }

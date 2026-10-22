@@ -43,6 +43,11 @@ internal object BackupBusinessValidation {
                 "Legacy archives cannot contain unverified reminder facts"
             }
         }
+        if (manifest.formatVersion < 4) {
+            require(snapshot.milestoneWatermarks.isEmpty() && snapshot.notificationReceipts.all { it.kind == "RENEWAL" }) {
+                "Legacy archive cannot carry milestone facts"
+            }
+        }
         require(snapshot.completeRecordCounts() == BackupFormats.normalizedCounts(manifest)) { "Record counts disagree" }
         require(snapshot.completeRecordCounts().values.fold(0L, Math::addExact) < BackupLimits.MAX_RECORDS)
         unique(data.categories.map { it.id }); unique(data.projects.map { it.id })
@@ -89,11 +94,33 @@ internal object BackupBusinessValidation {
             checkpoint()
             val publishedAt = instant(row.publishedAt)
             com.cooper.lithic.data.local.NotificationReceiptEntity(row.logicalKey, row.ownerId, row.kind, row.boundary, publishedAt)
-            require(row.ownerId in subscriptions) { "Orphaned or wrong-kind notification receipt owner" }
+            val ownerType = com.cooper.lithic.data.local.NotificationReceiptIdentity.milestoneOwnerType(row.kind)
+            require(when(ownerType) {
+                null, com.cooper.lithic.domain.reminder.MilestoneOwnerType.SUBSCRIPTION -> row.ownerId in subscriptions
+                com.cooper.lithic.domain.reminder.MilestoneOwnerType.PROJECT -> row.ownerId in projects
+            }) { "Orphaned or wrong-kind notification receipt owner" }
             require(!publishedAt.isAfter(archiveAt)) { "Receipt publication time is after archive creation" }
-            val boundary = date(row.boundary)
-            require(!publishedAt.isBefore(boundary.minusDays(3).atTime(9, 0).atZone(zone).toInstant()) &&
-                publishedAt.isBefore(boundary.atStartOfDay(zone).toInstant())) { "Receipt publication is outside the renewal candidate window" }
+            if (ownerType == null) {
+                val boundary = date(row.boundary)
+                require(!publishedAt.isBefore(boundary.minusDays(3).atTime(9, 0).atZone(zone).toInstant()) &&
+                    publishedAt.isBefore(boundary.atStartOfDay(zone).toInstant())) { "Receipt publication is outside the renewal candidate window" }
+            } else {
+                require(publishedAt.atZone(zone).hour >= 9) { "Milestone publication is before the recorded 09:00 threshold" }
+            }
+            // Milestone boundary is a node code, not a date. Subsequent historical corrections
+            // cannot invalidate an authentic past receipt by moving its old reached-on date.
+        }
+        require(snapshot.milestoneWatermarks.map { it.ownerType to it.ownerId }.toSet().size == snapshot.milestoneWatermarks.size) {
+            "Duplicate milestone watermark owner"
+        }
+        snapshot.milestoneWatermarks.forEach { row ->
+            checkpoint()
+            val type = com.cooper.lithic.domain.reminder.MilestoneOwnerType.valueOf(row.ownerType)
+            val watermark = com.cooper.lithic.data.local.MilestoneWatermarkEntity(type, row.ownerId, date(row.cutoffOn), row.suppressedMask)
+            require(when(watermark.ownerType) {
+                com.cooper.lithic.domain.reminder.MilestoneOwnerType.PROJECT -> row.ownerId in projects
+                com.cooper.lithic.domain.reminder.MilestoneOwnerType.SUBSCRIPTION -> row.ownerId in subscriptions
+            }) { "Orphaned or wrong-kind milestone watermark owner" }
         }
         data.projectMoneyEvents.forEach {
             checkpoint(); uuid(it.projectId)

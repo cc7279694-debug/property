@@ -2,18 +2,20 @@
 
 日期：2026-10-20。M00～M09已独立冻结，M10为PENDING / DEFERRED，历史三JPEG FAIL及UNKNOWN/NOT_RUN/NOTES保持。M11已按用户转交独立结论冻结，M12从635e33a隔离实现；Q05确认语义继承已核对的[M10锁定登记](https://github.com/cc7279694-debug/property/blob/41596820145dc4a3fa6d041728a59540d828108a/docs/SPEC_ISSUES.md)，不合并其代码或改判验收。下文M09及旧阶段执行描述属于历史；Q03/Q04/Q06期限不变，本地审阅不替代独立验收。
 
+当前增量（2026-10-22）：Q03依据本轮用户M21附件更新为USER_CONFIRMED；其余历史来源、Q04及完整跨模块NOT_RUN不改变。
+
 ## Q01～Q06 状态与闸门
 
 | ID / 状态 | 来源与问题 | 影响 / 闸门 | 澄清与测试要求 |
 |---|---|---|---|
 | Q01 / CLOSED：资料补齐 | 实际附件位于 E:/CODEX/LITHIC_V1_AEE6B4BCE591A7E5928C%85.zip；工作单所述项目内路径检查时不存在 | 资料缺口已解除；不等于 M00 已验收/冻结或 M01 获授权 | 原 ZIP 及43份文件完整归档，24模块/130案例/6规格已接入；来源、SHA-256与逐文件CRC/哈希见[来源登记](planning/README.md)和[manifest](planning/SOURCE_MANIFEST.json) |
 | Q02 / USER_CONFIRMED：观察日公式 | 原DOMAIN C03/C04/C13的已结束快照历史分支在M02授权时由用户正式确认；来源见当前决策与M02契约 | M02前规格闸门已满足；M02领域实施/验证、M17/M18集成各按对应模块执行 | 开始前无有效日均/无贡献，结束前按观察日计时，结束日起固定完整天数；事件按occurredOn过滤，结束日末退出，后结算不重新活跃。映射M02-T01～T04、M17-T01/T05、M18-T01/T02；Q02-V01～V03当前补测表仍NOT_RUN，M02实际领域结果仅登记当前验收表，M17本轮相应视图子断言已PASS，M18仍NOT_RUN，原完整跨模块记录不回填 |
-| Q03 / PARTIALLY_RESOLVED_BY_SOURCE：里程碑 | 原M03-T02明确订阅生效首日实际经过1天，消除此前该项未知；长期100/1000日节点仍未区分第N持有日与startedOn+N天 | 不再整体阻塞M03；剩余长期日节点须M21前明确 | 继承首日/有效日期并集/年节点规则，补暂停、闰日和7日窗口；映射M03-T02/T04/T05、M21-T01/T03/T05；Q03-V01～V04均NOT_RUN |
+| Q03 / USER_CONFIRMED：真实时间里程碑 | 本轮用户M21附件明确开始日1天；项目D100/D1000为plusDays(N-1)，周年plusYears(N)，订阅阈值只用冻结elapsedPaidDays | 规格解释已确认；不等于平台或16组完整门禁通过 | 2026-01-01的第100日04-10/第1000日2028-09-26/周年2027-01-01；闰日项目周年2025-02-28、订阅D365为2025-02-27。当前JVM与Android边界见[M21报告](evidence/M21-verification.md)；原Q03-V01～V04完整跨模块NOT_RUN保留 |
 | Q04 / PROPOSED：付费与提醒边界 | 原DOMAIN C08/C10、NOTIFICATION N02允许paidUntilExclusive与reminderDueOn不同，但“有效付费/已过期”筛选可能漏掉赠送间隔提醒 | M20前明确，关联M03/M21 | 建议提醒按真实reminderDueOn及服务状态复核，成本/实际付费经过仍按付费覆盖；不虚构免费期付款。映射M20-T01～T03、M03-T04、M21-T03；Q04-V01～V03均NOT_RUN |
 | Q05 / USER_CONFIRMED：图片往返 | 用户M10指令已确认首次规范化，后续导出/恢复校验后原字节保留；来源见顶部锁定登记 | 产品解释已确认；M12候选已验证登记JPEG/PNG原字节导出→恢复→再导出，M10导入到完整往返总闸门仍NOT_RUN，不整体CLOSED | 不再次编码；核对字节/SHA/尺寸/格式/上限，缺图或损坏拒绝完整成功。映射M10-T03/T04、M11-T03、M12-T01/T02/T06；Q05-V01～V03完整跨模块仍NOT_RUN |
 | Q06 / ENGINEERING_REQUIRED：持久回退 | 原BACKUP B05/B08要求切换后崩溃/首次打开失败回退，需持久身份及阶段记录 | M04设计、M12实现及故障验证 | M04已在实现前记录[初始数据集设计](planning/M04_CONTRACT.md)：activeId/previousId/stage、完整准备后原子激活、异常不创建空库、同代DB/WAL/SHM/media/settings与受控owner。M04-T05实际执行另登记当前验收；M12候选已实施持久SWITCHING/ROLLED_BACK、首次打开回退和已知前代清理，并执行异常检查点/重新打开测试；本轮M12-T04三个指定真实自身终止点（切前/SWITCHING/STABLE）及独立重启完整数据核验已PASS，待ChatGPT独立验收，见[报告](evidence/M12-process-death-verification.md)。Q06仍ENGINEERING_REQUIRED；坏新代后再终止、清理中终止、断电/真实空间耗尽和Q06-V01～V03更广故障仍NOT_RUN，不能整体CLOSED。禁止靠内存/目录时间猜测 |
 
-具体输入和对应模块见[CLARIFICATIONS](planning/CLARIFICATIONS.md)。原130案例不改；16组补测子场景单独登记，不增加原矩阵数量或新产品功能。Q02/Q07的M02结论和Q05的M10结论保持各自来源；Q04及Q03剩余解释仍待确认，不将建议直接写成规则。
+具体输入和对应模块见[CLARIFICATIONS](planning/CLARIFICATIONS.md)。原130案例不改；16组补测子场景单独登记，不增加原矩阵数量或新产品功能。Q02/Q07的M02结论和Q05的M10结论保持各自来源；Q03原未决解释由本轮用户确认，历史过程保留；Q04仍PROPOSED，不将建议直接写成规则。
 
 M02实际领域实现及Q02-V01～V03领域断言已PASS，证据见[当前验收登记](ACCEPTANCE_MATRIX.md#m02-当前执行验收2026-10-11)。Q02仍为USER_CONFIRMED，不整体关闭M17/M18的集成边界；CLARIFICATIONS的16组完整跨模块记录仍NOT_RUN。Q03～Q06四行状态/期限与M01验收回写基线一致，未新增产品规则。
 

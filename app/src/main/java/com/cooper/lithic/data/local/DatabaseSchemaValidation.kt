@@ -18,12 +18,13 @@ internal object DatabaseSchemaValidation {
             2 -> oldTables + subscriptionTables
             3 -> v3Tables
             4 -> v4Tables
+            5 -> v5Tables
             else -> error("Existing database version has no registered migration")
         }
         requireTable(db, masterTable)
         db.rawQuery("SELECT id,identity_hash FROM room_master_table", null).use { cursor ->
             check(cursor.moveToFirst() && cursor.getInt(0) == 42 && !cursor.isNull(1)) { "Existing database has no valid Room identity" }
-            val known = when (version) { 1 -> v1Identities; 2 -> v2Identities; 3 -> v3Identities; else -> v4Identities }
+            val known = when (version) { 1 -> v1Identities; 2 -> v2Identities; 3 -> v3Identities; 4 -> v4Identities; else -> v5Identities }
             check(cursor.getString(1) in known && !cursor.moveToNext()) { "Existing database has an unknown Room identity" }
         }
         val expectedObjects = expected.flatMap { table ->
@@ -160,4 +161,9 @@ internal object DatabaseSchemaValidation {
     private val v4Tables = v3Tables + Table("notification_receipts",
         listOf(Column("logicalKey", "TEXT", primaryKey = 1), text("ownerId"), text("kind"), text("boundary"), text("publishedAt")),
         listOf(Index("index_notification_receipts_ownerId", false, listOf("ownerId"))))
+    // Verified against the actual v5 KSP export and generated RoomOpenDelegate on 2026-10-22.
+    private val v5Identities = setOf("55ed967270ea2a65bb45bb5f0da2490b", "0eefcdf976bff232c70bd5d6c07351b6")
+    private val v5Tables = v4Tables + Table("milestone_watermarks", listOf(
+        Column("ownerType", "TEXT", primaryKey = 1), Column("ownerId", "TEXT", primaryKey = 2),
+        integer("cutoffOn"), integer("suppressedMask")))
 }

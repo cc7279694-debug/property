@@ -24,6 +24,10 @@ import com.cooper.lithic.feature.project.ProjectViewModel
 import com.cooper.lithic.feature.subscription.SubscriptionViewModel
 import com.cooper.lithic.feature.settings.BackupExportUiState
 import com.cooper.lithic.feature.settings.BackupRestoreUiState
+import com.cooper.lithic.data.repository.MilestoneNoticeRef
+import com.cooper.lithic.domain.reminder.MilestoneCandidate
+
+internal data class MilestoneOpenRequest(val identity: Long, val reference: MilestoneNoticeRef?, val invalid: Boolean)
 
 /** Normal navigation only exists after both real storage reads have succeeded. */
 @Composable
@@ -31,13 +35,16 @@ internal fun LithicApp(state: LedgerUiState, onExit: () -> Unit, projectViewMode
     subscriptionViewModel: SubscriptionViewModel? = null, backupState: BackupExportUiState = BackupExportUiState(),
     onExportBackup: (() -> Unit)? = null, onCancelBackup: () -> Unit = {},
     restoreState: BackupRestoreUiState = BackupRestoreUiState(), onRestoreBackup: (() -> Unit)? = null,
-    onCancelRestore: () -> Unit = {}, onConfirmRestore: () -> Unit = {}, onDiscardRestore: () -> Unit = {}) {
+    onCancelRestore: () -> Unit = {}, onConfirmRestore: () -> Unit = {}, onDiscardRestore: () -> Unit = {},
+    milestoneRequest: MilestoneOpenRequest? = null,
+    resolveMilestone: (suspend (MilestoneNoticeRef) -> List<MilestoneCandidate>)? = null) {
     when (state) {
         is LedgerUiState.Ready -> key(state.generationId) {
             LithicNavigation(state, projectViewModel = projectViewModel, onRetryLedger = onRetryLedger, subscriptionViewModel = subscriptionViewModel,
                 backupState = backupState, onExportBackup = onExportBackup, onCancelBackup = onCancelBackup,
                 restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
-                onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore)
+                onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore,
+                milestoneRequest = milestoneRequest, resolveMilestone = resolveMilestone)
         }
         LedgerUiState.Initializing -> StorageGate("storage_loading") {
             Text("正在读取本地记录", style = MaterialTheme.typography.headlineLarge)

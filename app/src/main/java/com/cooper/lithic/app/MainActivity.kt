@@ -1,10 +1,13 @@
 package com.cooper.lithic.app
 
 import android.os.Bundle
+import android.content.Intent
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -23,12 +26,40 @@ import com.cooper.lithic.feature.settings.rememberBackupDocumentPicker
 import com.cooper.lithic.feature.settings.rememberBackupRestoreDocumentPicker
 import com.cooper.lithic.data.backup.BackupExportService
 import com.cooper.lithic.data.backup.RestoreCoordinator
+import com.cooper.lithic.data.repository.MilestoneNoticeRef
+import com.cooper.lithic.data.repository.MilestoneRepository
+import com.cooper.lithic.domain.reminder.MilestoneCandidate
+import com.cooper.lithic.platform.notification.MilestoneNoticeIntents
+import com.cooper.lithic.platform.notification.NotificationPublisher
 
 class MainActivity : ComponentActivity() {
+    private var milestoneRequest by mutableStateOf<MilestoneOpenRequest?>(null)
+    private var noticeSequence = 0L
+
+    private fun receiveNotice(incoming: Intent?) {
+        if (incoming?.action != MilestoneNoticeIntents.ACTION) return
+        val reference = MilestoneNoticeIntents.read(incoming)
+        noticeSequence = Math.addExact(noticeSequence, 1)
+        milestoneRequest = MilestoneOpenRequest(noticeSequence, reference, reference == null)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        receiveNotice(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val container = (application as LithicApplication).appContainer
+        receiveNotice(intent)
+        val resolveMilestone: suspend (MilestoneNoticeRef) -> List<MilestoneCandidate> = { reference ->
+            val generation = container.openStorage()
+            MilestoneRepository(generation, {
+                (container.storageState.value as? StorageInitializationState.Ready)?.generation === generation
+            }, NotificationPublisher(applicationContext)).resolve(reference)
+        }
         val holder = ViewModelProvider(this, viewModelFactory {
             initializer { LedgerUiStateHolder(container.storageState) }
         })[LedgerUiStateHolder::class.java]
@@ -59,7 +90,8 @@ class MainActivity : ComponentActivity() {
                 LithicApp(state = state, onExit = { finish() }, onRetryLedger = holder::retryRead,
                     backupState = backupState, onExportBackup = export, onCancelBackup = backups::cancelExport,
                     restoreState = restoreState, onRestoreBackup = restore, onCancelRestore = restores::cancelValidation,
-                    onConfirmRestore = restores::confirmOverwrite, onDiscardRestore = restores::discardPreview)
+                    onConfirmRestore = restores::confirmOverwrite, onDiscardRestore = restores::discardPreview,
+                    milestoneRequest = milestoneRequest, resolveMilestone = resolveMilestone)
             }
         }
     }

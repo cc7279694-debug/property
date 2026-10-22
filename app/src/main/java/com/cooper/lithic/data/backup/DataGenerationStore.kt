@@ -2,6 +2,7 @@ package com.cooper.lithic.data.backup
 
 import android.content.Context
 import android.util.AtomicFile
+import androidx.room.withTransaction
 import com.cooper.lithic.data.local.LithicDatabase
 import com.cooper.lithic.data.repository.LocalWriteCoordinator
 import com.cooper.lithic.data.settings.SettingsStore
@@ -258,15 +259,16 @@ class DataGenerationStore(
                 populate(fresh)
                 // Clamp before proof/readiness/activation even for custom restore population adapters.
                 gate.withWrite {
-                    val reminders = settings.reminderPreferencesWithinSnapshot(gate)
-                    settings.restoreRemindersWithinWrite(gate, RestoreReminderProtection.preferences(reminders, zone, restoreClock.instant()))
+                    val before = RoomBackupSnapshotSource(fresh).captureWithinOwnedBoundary(gate)
+                    val protected = RestoreReminderProtection.snapshot(before, restoreClock.instant())
+                    persistRestoreProtection(fresh, protected)
                 }
                 val snapshot=RoomBackupSnapshotSource(fresh).capture()
                 RestoredGenerationWriter().verify(fresh,snapshot)
                 val proof=JSONObject().put("formatVersion",FORMAT_VERSION).put("generationId",id).put("nonce",nonce)
-                    .put("dataFormatVersion",3)
-                    .put("dataSha256",restoreDigest { RestoreProofData.write(snapshot,3,it) })
-                    .put("settingsSha256",restoreDigest { RestoreProofData.writeSettings(snapshot,3,it) })
+                    .put("dataFormatVersion",4)
+                    .put("dataSha256",restoreDigest { RestoreProofData.write(snapshot,4,it) })
+                    .put("settingsSha256",restoreDigest { RestoreProofData.writeSettings(snapshot,4,it) })
                 // Checkpoint/close all owners before readiness and activation eligibility.
                 database.openHelper.writableDatabase.query("PRAGMA wal_checkpoint(FULL)").use { cursor ->
                     check(cursor.moveToFirst() && cursor.getInt(0)==0) { "Restore WAL checkpoint did not complete" }
@@ -371,15 +373,13 @@ class DataGenerationStore(
         val oldFormat = if (original.has("dataFormatVersion")) original.getInt("dataFormatVersion") else 1
         generation.coordinator.withWrite {
             val snapshot = RoomBackupSnapshotSource(generation).captureWithinOwnedBoundary(generation.coordinator)
-            val protected = RestoreReminderProtection.preferences(snapshot.reminderPreferences,
-                ZoneId.of(snapshot.settings.recordZoneId), restoreClock.instant())
-            if (oldFormat != 3 || protected != snapshot.reminderPreferences) {
-                generation.settings.restoreRemindersWithinWrite(generation.coordinator, protected)
-                val expected = snapshot.copy(reminderPreferences = protected)
+            val protected = RestoreReminderProtection.snapshot(snapshot, restoreClock.instant())
+            if (oldFormat != 4 || protected != snapshot) {
+                persistRestoreProtection(generation, protected)
                 val upgraded = JSONObject().put("formatVersion", FORMAT_VERSION).put("generationId", generation.id)
-                    .put("nonce", original.getString("nonce")).put("dataFormatVersion", 3)
-                    .put("dataSha256", restoreDigest { RestoreProofData.write(expected, 3, it) })
-                    .put("settingsSha256", restoreDigest { RestoreProofData.writeSettings(expected, 3, it) })
+                    .put("nonce", original.getString("nonce")).put("dataFormatVersion", 4)
+                    .put("dataSha256", restoreDigest { RestoreProofData.write(protected, 4, it) })
+                    .put("settingsSha256", restoreDigest { RestoreProofData.writeSettings(protected, 4, it) })
                 generation.database.openHelper.writableDatabase.query("PRAGMA wal_checkpoint(FULL)").use { cursor ->
                     check(cursor.moveToFirst() && cursor.getInt(0) == 0) { "Protected candidate WAL checkpoint did not complete" }
                 }
@@ -390,6 +390,22 @@ class DataGenerationStore(
             }
         }
         verifyRestoreProof(generation)
+    }
+
+    /** The coordinator is already held. Room changes are atomic; settings/proof remain
+     * sequential and private. Any uncertain persistence keeps the old active dataset. */
+    private suspend fun persistRestoreProtection(generation: ManagedGeneration, expected: BackupSnapshot) {
+        generation.database.withTransaction {
+            expected.milestoneWatermarks.forEach { row ->
+                generation.database.milestoneWatermarkDao().upsert(com.cooper.lithic.data.local.MilestoneWatermarkEntity(
+                    com.cooper.lithic.domain.reminder.MilestoneOwnerType.valueOf(row.ownerType), row.ownerId,
+                    java.time.LocalDate.parse(row.cutoffOn), row.suppressedMask))
+            }
+        }
+        generation.settings.restoreRemindersWithinWrite(generation.coordinator, expected.reminderPreferences)
+        require(RoomBackupSnapshotSource(generation).captureWithinOwnedBoundary(generation.coordinator) == expected) {
+            "Protected restoration facts or settings did not persist completely"
+        }
     }
 
     private fun restoreDigest(write:(java.io.OutputStream)->Unit):String {
@@ -511,7 +527,7 @@ class DataGenerationStore(
 
     private fun readRestoreProof(file:File):JSONObject {
         val proof=readMetadataShapes(file,listOf(PROOF_FIELDS,PROOF_FIELDS+"dataFormatVersion"))
-        if(proof.has("dataFormatVersion")) require(proof.get("dataFormatVersion") in setOf(2,3)) {
+        if(proof.has("dataFormatVersion")) require(proof.get("dataFormatVersion") in setOf(2,3,4)) {
             "Restoration proof data format is unsupported"
         }
         return proof

@@ -1,0 +1,93 @@
+{
+  "status": "PASS_ARTIFACT_ONLY",
+  "appUnchanged": true,
+  "appSha256": "5f7c585e5e117bc7e77d5f2915429ac1eb8f4ac6b9480ad77aa8fa13529b1c62",
+  "testSha256": "5b75a421a6e9c9b42046cbd2eafcb117f284dc2788e08aeb59a3a02ac72a9177",
+  "testBytes": 3069193,
+  "packagedNewTestMethods": 31,
+  "classes": [
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/backup/M21BackupRestoreTest.kt",
+      "class": "Lcom/cooper/lithic/data/backup/M21BackupRestoreTest;",
+      "testMethods": [
+        "currentFormatFourRoundTripPreservesFactsMediaReceiptsAndMergesWatermarksBeforeProofAndActivation",
+        "interruptedAuthenticProofThreeAndSchemaFourAreAuthenticatedBeforeUpgradeAndProtection"
+      ],
+      "packagedMethodsVerified": 2
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/local/M21DatabaseMigrationTest.kt",
+      "class": "Lcom/cooper/lithic/data/local/M21DatabaseMigrationTest;",
+      "testMethods": [
+        "productionFourToFivePreservesEveryOriginalTableRowAndKnownIdentity",
+        "sameUuidTypedPrimaryKeyAndReceiptDeletionStaySeparateAfterReopen",
+        "rawMaskOutsideIntRangeIsRejectedBeforeRoomNarrowingAndRemainsUnchanged"
+      ],
+      "packagedMethodsVerified": 3
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/data/repository/M21MilestoneWatermarkTransactionTest.kt",
+      "class": "Lcom/cooper/lithic/data/repository/M21MilestoneWatermarkTransactionTest;",
+      "testMethods": [
+        "new_project_and_today_inclusive_baseline_commit_together",
+        "watermark_insert_failure_rolls_back_identity_and_initial_money",
+        "historical_time_and_watermark_write_failure_roll_back_as_one_transaction",
+        "rename_and_amount_only_correction_do_not_swallow_today_node",
+        "historical_start_correction_suppresses_newly_crossed_node_and_replay_is_stable",
+        "ordinary_end_on_target_day_keeps_its_legal_baseline",
+        "normal_renewal_preserves_baseline_but_backfilled_coverage_merges_it",
+        "project_delete_preserves_same_uuid_subscription_and_renewal_receipt",
+        "legacy_initialization_is_complete_and_idempotent_without_fake_receipts",
+        "invalid_stored_time_facts_fail_closed_without_partial_initialization"
+      ],
+      "packagedMethodsVerified": 10
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/feature/reminder/M21MilestoneSourcesUiTest.kt",
+      "class": "Lcom/cooper/lithic/feature/reminder/M21MilestoneSourcesUiTest;",
+      "testMethods": [
+        "summary_keeps_more_than_50_sources_and_expands_its_display_window",
+        "same_uuid_cross_type_row_revalidates_and_opens_the_exact_type",
+        "stale_or_deleted_summary_is_an_explicit_error_and_never_an_empty_success",
+        "single_source_opens_once_after_revalidation_and_does_not_repeat_on_recomposition"
+      ],
+      "packagedMethodsVerified": 4
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M21MilestoneSchedulingTest.kt",
+      "class": "Lcom/cooper/lithic/platform/notification/M21MilestoneSchedulingTest;",
+      "testMethods": [
+        "test_driver_enforces_nine_delay_and_switch_cancels_only_owned_milestone_work"
+      ],
+      "packagedMethodsVerified": 1
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M21MilestoneWorkerTest.kt",
+      "class": "Lcom/cooper/lithic/platform/notification/M21MilestoneWorkerTest;",
+      "testMethods": [
+        "room_project_and_subscription_same_day_publish_one_typed_summary_and_complete_batch",
+        "second_worker_without_new_candidates_does_not_republish_summary",
+        "mixed_milestone_receipts_do_not_poison_existing_renewal_worker",
+        "permission_and_both_switches_are_independent_and_never_forge_receipts",
+        "old_generation_payload_cannot_publish_or_write_receipts",
+        "second_receipt_insert_failure_rolls_back_complete_batch_after_publish",
+        "notice_revalidation_rejects_old_generation_changed_history_and_deleted_owner"
+      ],
+      "packagedMethodsVerified": 7
+    },
+    {
+      "source": "app/src/androidTest/java/com/cooper/lithic/platform/notification/M21NoticeIntentTest.kt",
+      "class": "Lcom/cooper/lithic/platform/notification/M21NoticeIntentTest;",
+      "testMethods": [
+        "boundedReferenceRoundTripsWithoutSourceArraysOrAmounts",
+        "mismatchedPathOrMalformedDigestDoesNotCreateAnOpenRequest",
+        "wrongActionAndUnboundedCountAreRejected",
+        "dateIsCanonicalAndCannotBeReplacedByAThresholdCode"
+      ],
+      "packagedMethodsVerified": 4
+    }
+  ],
+  "deviceOperations": 0,
+  "androidExecuted": 0,
+  "method": "Read actual APK ZIP DEX string/type/class_data and encoded method IDs; compare all seven M21 source classes and @Test method names. Not a device class-loading or runtime claim."
+}

@@ -1,0 +1,48 @@
+{
+  "inputsUnchanged": true,
+  "arguments": [
+    "-Pm13Isolated=true",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "*Milestone*",
+    "--tests",
+    "*M21*",
+    "--tests",
+    "com.cooper.lithic.data.backup.*",
+    "--tests",
+    "com.cooper.lithic.data.repository.M20ReminderDispatchTest",
+    "--tests",
+    "com.cooper.lithic.data.repository.TradeInFactsTest",
+    "--tests",
+    "com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest",
+    "--tests",
+    "com.cooper.lithic.domain.project.*",
+    "--tests",
+    "com.cooper.lithic.domain.subscription.*",
+    "--tests",
+    "com.cooper.lithic.app.*NavigationPolicyTest",
+    "--tests",
+    "com.cooper.lithic.feature.settings.Notification*Test",
+    "--tests",
+    "com.cooper.lithic.feature.settings.Backup*Test",
+    ":app:lintDebug",
+    ":app:assembleDebug",
+    ":app:assembleDebugAndroidTest",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1024m -XX:MaxMetaspaceSize=512m",
+    "-Pkotlin.compiler.execution.strategy=in-process"
+  ],
+  "startedAt": "2026-10-22T08:43:42.2453056Z",
+  "after": {
+    "sha256": "bc895af32308a367e5031922a1348aafd4b926f901792391f972b52cec0827c2",
+    "fileCount": 367
+  },
+  "endedAt": "2026-10-22T08:45:49.3873465Z",
+  "before": {
+    "sha256": "bc895af32308a367e5031922a1348aafd4b926f901792391f972b52cec0827c2",
+    "fileCount": 367
+  },
+  "exitCode": 1
+}

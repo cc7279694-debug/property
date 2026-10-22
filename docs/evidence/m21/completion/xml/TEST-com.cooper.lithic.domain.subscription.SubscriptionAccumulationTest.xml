@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-10-22T08:56:42.420Z" hostname="WHOCARE" time="0.003">
+  <properties/>
+  <testcase name="standard_purchased_days_overflow_fails_without_wrapping" classname="com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest" time="0.002"/>
+  <testcase name="confirmed_paid_cents_overflow_fails_without_wrapping" classname="com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest" time="0.0"/>
+  <testcase name="two_real_payments_use_same_accumulation_in_engine" classname="com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest" time="0.001"/>
+  <testcase name="confirmed_paid_cents_reaches_long_max_exactly" classname="com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest" time="0.0"/>
+  <testcase name="largest_cycle_multiple_below_long_max_is_safe_then_next_cycle_fails" classname="com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest" time="0.0"/>
+  <testcase name="standard_purchased_days_reaches_long_max_at_arithmetic_boundary" classname="com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

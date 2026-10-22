@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-22T08:56:36.934Z" hostname="WHOCARE" time="0.046">
+  <properties/>
+  <testcase name="changed_project_start_is_historical_even_when_moved_forward" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.004"/>
+  <testcase name="backdated_end_and_past_end_correction_require_suppression" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="metadata_and_future_end_changes_are_not_history" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.001"/>
+  <testcase name="extending_only_future_end_of_existing_coverage_preserves_today_candidate" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.006"/>
+  <testcase name="ordinary_end_today_does_not_swallow_an_end_day_milestone" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="amount_cycle_and_reminder_only_corrections_preserve_legal_candidate" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="current_and_future_coverage_corrections_do_not_rewrite_past_days" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="historical_coverage_or_payment_day_correction_is_history" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="not_yet_confirmed_future_payment_changes_do_not_rewrite_visible_past_days" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.001"/>
+  <testcase name="backfilled_coverage_is_history_but_today_and_future_renewal_are_not" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="removing_historical_coverage_is_history_but_removing_future_is_not" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="correction_to_existing_effective_state_is_history" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.031"/>
+  <testcase name="ordinary_today_state_change_does_not_advance_watermark" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="future_state_plan_or_unchanged_state_does_not_advance_watermark" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <testcase name="existing_end_today_correction_or_withdrawal_is_history" classname="com.cooper.lithic.data.repository.MilestoneHistoryChangesTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

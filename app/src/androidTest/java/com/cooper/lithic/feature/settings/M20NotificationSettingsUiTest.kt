@@ -48,7 +48,7 @@ class M20NotificationSettingsUiTest {
         } }
         compose.onNodeWithTag("renewal-reminder-switch").performScrollTo().assertIsOn()
         compose.onNodeWithTag("milestone-reminder-switch").performScrollTo().assertIsOn()
-        compose.onNodeWithText("当前仅保存开关偏好，里程碑通知尚未提供。").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("记录项目持有日与日历周年，以及订阅累计付费有效天数；同日合并为一条摘要。").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("应用内已开启，系统通知未授权").performScrollTo().assertIsDisplayed()
         compose.runOnIdle { assertEquals(0, requests); assertEquals(0, renewals); assertEquals(0, milestones) }
         compose.onNodeWithTag("renewal-reminder-switch").performScrollTo().performClick()
@@ -75,7 +75,7 @@ class M20NotificationSettingsUiTest {
             NotificationSettingsContent(ready(), NotificationPermissionState(true, true, true, false), {}, {}, {}, {}, {})
         } }
         compose.onNodeWithTag("request-notification-permission").assertDoesNotExist()
-        compose.onNodeWithText("续费提醒通知渠道已关闭").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("续费与里程碑提醒通知渠道已关闭").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("系统允许发送通知").assertDoesNotExist()
     }
 

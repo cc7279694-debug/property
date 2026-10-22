@@ -1,6 +1,7 @@
 package com.cooper.lithic.data.local
 
 import androidx.room.TypeConverter
+import com.cooper.lithic.domain.reminder.MilestoneOwnerType
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.domain.subscription.BillingCycle
 import com.cooper.lithic.domain.subscription.SubscriptionOperationState
@@ -24,4 +25,6 @@ class DatabaseConverters {
     @TypeConverter fun textToCycle(value: String): BillingCycle = BillingCycle.valueOf(value)
     @TypeConverter fun subscriptionStateToText(value: SubscriptionOperationState): String = value.name
     @TypeConverter fun textToSubscriptionState(value: String): SubscriptionOperationState = SubscriptionOperationState.valueOf(value)
+    @TypeConverter fun milestoneOwnerToText(value: MilestoneOwnerType): String = value.name
+    @TypeConverter fun textToMilestoneOwner(value: String): MilestoneOwnerType = MilestoneOwnerType.valueOf(value)
 }

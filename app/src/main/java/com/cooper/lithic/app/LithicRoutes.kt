@@ -32,6 +32,35 @@ internal data object Settings : NavKey
 internal data object NotificationSettings : NavKey
 
 @Serializable
+internal data class MilestoneSources(val generationId: String, val publicationOn: String,
+    val digest: String, val count: Int) : NavKey {
+    fun reference(): com.cooper.lithic.data.repository.MilestoneNoticeRef {
+        require(validMilestoneReference(this)) { "Invalid milestone notification reference" }
+        return com.cooper.lithic.data.repository.MilestoneNoticeRef(generationId,
+            java.time.LocalDate.parse(publicationOn), digest, count)
+    }
+}
+
+@Serializable
+internal data object InvalidMilestoneNotice : NavKey
+
+/** Shared by direct navigation and the already-open discard/pending dialogs. */
+internal fun navigationAvailable(phase: com.cooper.lithic.feature.settings.RestoreUiPhase): Boolean =
+    phase != com.cooper.lithic.feature.settings.RestoreUiPhase.RESTORING
+
+internal fun milestoneAwareBackStack(current: List<NavKey>, target: List<NavKey>): List<NavKey> {
+    val notice = current.getOrNull(1) as? MilestoneSources ?: return target
+    if (!validMilestoneReference(notice) || target.getOrNull(1) !in listOf(ProjectList, SubscriptionList) ||
+        target.size < 3 || target != canonicalBackStack(target.last())) return target
+    return listOf(Home, notice) + target.drop(2)
+}
+
+private fun validMilestoneReference(route: MilestoneSources): Boolean = runCatching {
+    StoredValueValidation.isUuid(route.generationId) && route.digest.matches(Regex("[0-9a-f]{64}")) &&
+        route.count in 1..1_000_000 && java.time.LocalDate.parse(route.publicationOn).toString() == route.publicationOn
+}.getOrDefault(false)
+
+@Serializable
 internal data object NameSearch : NavKey
 
 @Serializable
@@ -134,6 +163,8 @@ internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (desti
     NameSearch -> listOf(Home, NameSearch)
     CategoryManagement -> listOf(Home, Settings, CategoryManagement)
     NotificationSettings -> listOf(Home, Settings, NotificationSettings)
+    is MilestoneSources -> if (validMilestoneReference(destination)) listOf(Home, destination) else listOf(Home)
+    InvalidMilestoneNotice -> listOf(Home, InvalidMilestoneNotice)
     ProjectHistory -> listOf(Home, Review, ProjectHistory)
     CreateProject -> listOf(Home, CreateProject)
     CreateSubscription -> listOf(Home, CreateSubscription)
@@ -248,6 +279,12 @@ internal fun normalizeBackStack(restored: List<NavKey>): List<NavKey> {
     if (restored == listOf(Home, ProjectList, CreateProject)) return restored.toList()
     if (restored == listOf(Home, SubscriptionList, CreateSubscription)) return restored.toList()
     val destination = restored.lastOrNull() ?: return listOf(Home)
+    val notice = restored.getOrNull(1) as? MilestoneSources
+    if (restored.firstOrNull() == Home && notice != null && validMilestoneReference(notice) && restored.size > 2) {
+        val canonical = canonicalBackStack(destination)
+        if (canonical.getOrNull(1) in listOf(ProjectList, SubscriptionList) && canonical.size > 2 &&
+            restored.drop(2) == canonical.drop(2)) return restored.toList()
+    }
     if (restored == canonicalBackStack(destination)) return restored.toList()
     return listOf(Home)
 }

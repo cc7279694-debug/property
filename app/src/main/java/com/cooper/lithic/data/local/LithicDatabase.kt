@@ -18,8 +18,8 @@ import java.io.File
 @Database(
     entities = [CategoryEntity::class, LongTermProjectEntity::class, ProjectMoneyEventEntity::class,
         LocalMediaAssetEntity::class, SubscriptionEntity::class, SubscriptionRenewalEntity::class,
-        SubscriptionStateChangeEntity::class, ReplacementEntity::class, NotificationReceiptEntity::class],
-    version = 4,
+        SubscriptionStateChangeEntity::class, ReplacementEntity::class, NotificationReceiptEntity::class, MilestoneWatermarkEntity::class],
+    version = 5,
     exportSchema = true,
 )
 @TypeConverters(DatabaseConverters::class)
@@ -31,6 +31,7 @@ abstract class LithicDatabase : RoomDatabase() {
     abstract fun replacementDao(): ReplacementDao
     abstract fun searchDao(): SearchDao
     abstract fun notificationReceiptDao(): NotificationReceiptDao
+    abstract fun milestoneWatermarkDao(): MilestoneWatermarkDao
 
     /** Only fresh generation initialization may add absent defaults. Existing rows must agree. */
     suspend fun initializeDefaults() = withTransaction {

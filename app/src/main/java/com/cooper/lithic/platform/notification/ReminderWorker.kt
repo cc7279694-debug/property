@@ -14,13 +14,24 @@ import java.time.Clock
 
 class ReminderWorker(context: Context, parameters: WorkerParameters, private val container: AppContainer,
     private val publisher: ReminderPublisher = NotificationPublisher(context),
-    private val clock: Clock = Clock.systemUTC()) : CoroutineWorker(context, parameters) {
+    private val clock: Clock = Clock.systemUTC(),
+    private val milestonePublisher: MilestonePublisher = NotificationPublisher(context)) : CoroutineWorker(context, parameters) {
     override suspend fun doWork(): Result {
         return try {
             val generation = container.openStorage()
             fun current() = (container.storageState.value as? StorageInitializationState.Ready)?.generation === generation
             when (inputData.getString(MODE)) {
-                RECONCILE -> ReminderScheduling.reconcile(applicationContext, generation, ::current, clock)
+                RECONCILE -> {
+                    // Separate work/failure domains: milestone initialization must not poison renewals.
+                    ReminderScheduling.requestMilestones(applicationContext)
+                    ReminderScheduling.reconcile(applicationContext, generation, ::current, clock)
+                }
+                MILESTONE_RECONCILE -> MilestoneScheduling.reconcile(applicationContext, generation, ::current, clock)
+                MILESTONE_PUBLISH -> {
+                    if (inputData.getString(GENERATION) != generation.id || !current()) return Result.success()
+                    if (com.cooper.lithic.data.repository.MilestoneRepository(generation, ::current,
+                            milestonePublisher, clock).publish() == ReminderDispatchResult.WAITING_FOR_NINE) return Result.retry()
+                }
                 PUBLISH -> {
                     if (inputData.getString(GENERATION) != generation.id || !current()) return Result.success()
                     val key = inputData.getString(KEY) ?: return Result.failure()
@@ -38,6 +49,7 @@ class ReminderWorker(context: Context, parameters: WorkerParameters, private val
     companion object {
         const val MODE="mode"; const val RECONCILE="reconcile"; const val PUBLISH="publish"
         const val GENERATION="generation"; const val KEY="logical_key"; const val RENEWAL="renewal_id"; const val REVISION="revision"
+        const val MILESTONE_RECONCILE="milestone_reconcile"; const val MILESTONE_PUBLISH="milestone_publish"
     }
 }
 

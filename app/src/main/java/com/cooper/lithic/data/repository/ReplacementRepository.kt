@@ -229,6 +229,11 @@ open class ReplacementRepository(
                 db.projectDao().insertProject(new)
                 facts.forEach { db.projectDao().insertEvent(it) }
                 if (newLink != null) db.replacementDao().insert(newLink)
+                val today = clock.today()
+                if (MilestoneHistoryChanges.project(old.startedOn, old.endedOn, targetOld.startedOn, targetOld.endedOn, today)) {
+                    MilestoneWatermarkStore.projectChangedWithinTransaction(db, old.id, today)
+                }
+                MilestoneWatermarkStore.projectCreatedWithinTransaction(db, new.id, today)
                 ReplacementMutationResult.TradeInRecorded(old.id, new.id, command.commandId, false)
             }
         }

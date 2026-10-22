@@ -20,10 +20,11 @@ import org.junit.Test
 
 class M20BackupV3Test {
     @Test fun currentArchiveDeclaresSchemaFourAndNineTables() {
-        val parent = Files.createTempDirectory("m20-format3")
+        // Preserve the actual frozen format-3 shape even though current export is now 4.
         val snapshot = emptySnapshot()
-        val core = BackupCoreStager().prepare(snapshot, parent)
-        val manifest = BackupManifestV1.complete(core, "m20-synthetic", Instant.parse("2026-10-22T02:00:00Z"))
+        val manifest = BackupManifestV1(3, 3, "m20-synthetic", 4, AT, snapshot.settings.recordZoneId,
+            snapshot.legacyDataV3().recordCounts(), emptyList())
+        BackupFormats.requireSupported(manifest)
         assertEquals(3, manifest.formatVersion)
         assertEquals(3, manifest.minReaderFormat)
         assertEquals(4, manifest.sourceDatabaseSchemaVersion)
@@ -39,16 +40,10 @@ class M20BackupV3Test {
 
     @Test fun nineTableArchiveRoundTripsReceiptPreferencesAndCutoffWithoutChangingStoredFacts() {
         val source = validSnapshot()
-        val parent = Files.createTempDirectory("m20-complete")
-        BackupCoreStager().prepare(source, parent).use { core ->
-            val manifest = BackupManifestV1.complete(core, "m20-synthetic", Instant.parse(AT))
-            val path = parent.resolve("test.lithicbackup")
-            BackupArchiveWriter.write(core, manifest, Files.newOutputStream(path))
-            val result = BackupValidator().validate(path, Files.createDirectory(parent.resolve("payload")))
-            assertEquals(source, result.snapshot)
-            assertEquals(9, result.manifest.recordCounts.size)
-            assertEquals(1L, result.manifest.recordCounts["notification_receipts"])
-        }
+        val result = validate(archive(source))
+        assertEquals(source, result.snapshot)
+        assertEquals(9, result.manifest.recordCounts.size)
+        assertEquals(1L, result.manifest.recordCounts["notification_receipts"])
     }
 
     @Test fun realRetainedFormatOneValidatesBeforeUpgradeAndDoesNotInventReceipts() {
@@ -56,7 +51,7 @@ class M20BackupV3Test {
             Files.createTempDirectory("m20-real-v1"))
         assertEquals(1, result.manifest.formatVersion)
         assertEquals(7, result.manifest.recordCounts.size)
-        assertEquals(9, result.snapshot.completeRecordCounts().size)
+        assertEquals(10, result.snapshot.completeRecordCounts().size)
         assertTrue(result.snapshot.notificationReceipts.isEmpty())
         assertEquals(ReminderPreferences(), result.snapshot.reminderPreferences)
         val media = result.snapshot.data.mediaAssets.single()
@@ -83,7 +78,7 @@ class M20BackupV3Test {
 
     @Test fun formatThreeMissingReceiptsFieldIsNotDefaulted() {
         val source = validSnapshot()
-        val json = Json.parseToJsonElement(BackupJson.encodeData(source.currentData()).decodeToString()).jsonObject
+        val json = Json.parseToJsonElement(BackupJson.encodeData(source.legacyDataV3()).decodeToString()).jsonObject
         rejected(archive(source, dataBytes = JsonObject(json - "notificationReceipts").toString().toByteArray()))
     }
 
@@ -97,7 +92,7 @@ class M20BackupV3Test {
 
     @Test fun formatThreeMissingReceiptFieldFailsDespiteCorrectLengthAndSha() {
         val source = validSnapshot()
-        val json = Json.parseToJsonElement(BackupJson.encodeData(source.currentData()).decodeToString()).jsonObject
+        val json = Json.parseToJsonElement(BackupJson.encodeData(source.legacyDataV3()).decodeToString()).jsonObject
         for (field in listOf("logicalKey", "ownerId", "kind", "boundary", "publishedAt")) {
             val malformed = JsonObject(json + ("notificationReceipts" to JsonArray(json.getValue("notificationReceipts").jsonArray.map {
                 JsonObject(it.jsonObject - field)
@@ -127,8 +122,8 @@ class M20BackupV3Test {
 
     @Test fun exactNineTableCountAndSchemaTupleAreRequired() {
         val source = validSnapshot()
-        rejected(archive(source, counts = source.completeRecordCounts() - "notification_receipts"))
-        rejected(archive(source, counts = source.completeRecordCounts() + ("notification_receipts" to 2L)))
+        rejected(archive(source, counts = source.legacyDataV3().recordCounts() - "notification_receipts"))
+        rejected(archive(source, counts = source.legacyDataV3().recordCounts() + ("notification_receipts" to 2L)))
         rejected(archive(source, tuple = Triple(3, 2, 4)))
         rejected(archive(source, tuple = Triple(3, 3, 3)))
         rejected(archive(source, tuple = Triple(99, 99, 99)))
@@ -194,11 +189,11 @@ class M20BackupV3Test {
 
     private fun archive(snapshot: BackupSnapshot, format: Int = 3, dataBytes: ByteArray? = null, settingsBytes: ByteArray? = null,
         counts: Map<String, Long>? = null, tuple: Triple<Int, Int, Int>? = null): Path {
-        val payload = linkedMapOf("data.json" to (dataBytes ?: if (format == 2) BackupJson.encodeData(snapshot.data) else BackupJson.encodeData(snapshot.currentData())),
+        val payload = linkedMapOf("data.json" to (dataBytes ?: if (format == 2) BackupJson.encodeData(snapshot.data) else BackupJson.encodeData(BackupDataV3(snapshot.data.categories, snapshot.data.projects, snapshot.data.projectMoneyEvents, snapshot.data.mediaAssets, snapshot.data.subscriptions, snapshot.data.subscriptionRenewals, snapshot.data.subscriptionStateChanges, snapshot.data.replacements, snapshot.notificationReceipts))),
             "settings.json" to (settingsBytes ?: if (format == 2) BackupJson.encodeSettings(snapshot.settings) else BackupJson.encodeSettings(snapshot.currentSettings())))
         val versions = tuple ?: if (format == 2) Triple(2, 2, 3) else Triple(3, 3, 4)
         val manifest = BackupManifestV1(versions.first, versions.second, "m20-test", versions.third, AT, snapshot.settings.recordZoneId,
-            counts ?: if (format == 2) snapshot.data.recordCounts() else snapshot.completeRecordCounts(), payload.map { (name, bytes) -> BackupFileEntry.fromBytes(name, bytes) })
+            counts ?: if (format == 2) snapshot.data.recordCounts() else snapshot.data.recordCounts() + ("notification_receipts" to snapshot.notificationReceipts.size.toLong()), payload.map { (name, bytes) -> BackupFileEntry.fromBytes(name, bytes) })
         val path = Files.createTempFile("m20-archive", ".lithicbackup")
         ZipOutputStream(Files.newOutputStream(path)).use { zip ->
             for ((name, bytes) in linkedMapOf("manifest.json" to manifest.encode()) + payload) {

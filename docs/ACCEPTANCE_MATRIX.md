@@ -1,6 +1,25 @@
 # 验收登记
 
-当前状态：**M20 — ACCEPTED / FROZEN — PASS WITH NOTES**，仅已验证产品功能；第二次平台收口仍BLOCKED，额外平台FAIL及全部UNKNOWN保留。G1/G2未整体通过、Q04 PROPOSED、G3未通过，不由模块冻结自动关闭。
+当前状态：**M21 — READY_FOR_REVIEW**，独立验收PENDING；395 JVM PASS，31新增Android方法编译/打包成功但全部NOT_RUN，设备操作0。M20限定冻结及第二次平台收口BLOCKED、额外平台FAIL/UNKNOWN保持；G1/G2未整体通过、Q04 PROPOSED、G3未通过。下方旧阶段记录保留原时点。
+
+## M21候选离线执行登记（2026-10-22）
+
+来源M20冻结`3e8f5fdef9853ada726b037cc8559e2117d24da9`，分支`codex/m21-milestone-reminders`。[契约](planning/M21_CONTRACT.md)、[集中报告](evidence/M21-verification.md)、[实际结果](evidence/m21/completion/results.json)、[最终APK身份/DEX](evidence/m21/packaging/artifacts.json)、[checkpoint](checkpoints/2026-10-22-M21.md)。本轮不授予ACCEPTED/FROZEN，不复用任何旧设备。
+
+| 原M21案例 | 已执行的限定证据 | 未运行边界 |
+|---|---|---|
+| T01 annual_prepaid_not_milestone | JVM PASS：年付首日1天、真实阈值、项目第N日/周年/闰日 | Android发布NOT_RUN |
+| T02 old_import_does_not_spam | JVM PASS：初纳/历史/恢复基线含当天、无假Receipt、未来节点 | 真实Room初始化及恢复NOT_RUN |
+| T03 pause_free_gap_excluded | JVM PASS：冻结elapsedPaidDays、暂停/停止/免费/无覆盖/重开/预付 | Worker实际联动NOT_RUN |
+| T04 same_day_coalesced | JVM PASS：摘要增量/76来源/同UUID/点击引用/导航守卫、并发与批量回滚 | 系统通知/点击/Compose NOT_RUN |
+| T05 backup_watermark_survives | JVM PASS：format4、真实旧1/2/3/proof认证、掩码/身份/坏关联拒绝、恢复前保护与7日边界 | 真实迁移/开库重开/往返/回滚/系统重启NOT_RUN |
+| T06 switch_cancels_future | JVM PASS：偏好/权限/水位保留；独立调度/TestDriver源码已准备 | Android持久队列/独立取消/TestDriver NOT_RUN |
+
+最终**395个唯一JVM全PASS**（77新增＋318相关回归，0失败/错误/跳过）；**31新增Android方法执行0、PASS0、NOT_RUN31**。Lint0错误25警告，Debug App/Test构建成功；最终Test曾需仅重打包以纳入已编译新类，原产物SHA、检查异常和最终31方法DEX证据均保留。Q03规则依据本轮用户确认登记USER_CONFIRMED，仅上述子项验证，不关闭原16组完整跨模块门禁或Q04。
+
+候选Room5仅新水位表，旧schema1～4原件保持；backup4/minReader4/schema5独立十表DTO及旧格式/proof认证，内部指针版本1。水位不是成功Receipt，发布到回执落盘仍有有限重试窗口；不承诺exactly-once或OEM准点。真实平台、长期性能、大字体/完整TalkBack及更广恢复故障仍NOT_RUN。
+
+原RED/FAIL/UNKNOWN/NOT_RUN/NOTES和原130案例不改，M20额外平台25唯一24 PASS/1 FAIL及第二次收口BLOCKED/UNKNOWN、5704保留现场、M10延期/三JPEG历史FAIL、M13-T06延期/G1/G2/G3边界保持。提交推送后等待独立验收，不进入M22。
 
 ## M20正式限定冻结登记（2026-10-22）
 

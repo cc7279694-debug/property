@@ -58,7 +58,7 @@ internal class RestoredGenerationWriter {
             ownedDirectory(destinationMedia)
             require(Files.list(destinationMedia).use { !it.findAny().isPresent }) { "Restore destination media is not empty" }
             val sqlite = generation.database.openHelper.writableDatabase
-            check(sqlite.version == 4) { "Restore requires Room schema 4" }
+            check(sqlite.version == 5) { "Restore requires Room schema 5" }
             for (table in TABLES) sqlite.query("SELECT COUNT(*) FROM $table").use { cursor ->
                 check(cursor.moveToFirst() && cursor.getLong(0) == 0L && !cursor.moveToNext()) {
                     "Restore may populate only an empty database"
@@ -106,6 +106,10 @@ internal class RestoredGenerationWriter {
                 snapshot.notificationReceipts.forEach { value -> database.notificationReceiptDao().insert(
                     com.cooper.lithic.data.local.NotificationReceiptEntity(value.logicalKey, value.ownerId, value.kind,
                         value.boundary, Instant.parse(value.publishedAt))) }
+                snapshot.milestoneWatermarks.forEach { value -> database.milestoneWatermarkDao().upsert(
+                    com.cooper.lithic.data.local.MilestoneWatermarkEntity(
+                        com.cooper.lithic.domain.reminder.MilestoneOwnerType.valueOf(value.ownerType), value.ownerId,
+                        LocalDate.parse(value.cutoffOn), value.suppressedMask)) }
                 checkpoint()
             }
             // Still private and unpublished. A failure here cannot activate an incomplete settings/data pair.
@@ -124,7 +128,7 @@ internal class RestoredGenerationWriter {
             check(actual == expected) { "Restored facts or settings differ from the validated backup" }
             generation.database.requireDefaults()
             val sqlite = generation.database.openHelper.readableDatabase
-            check(sqlite.version == 4) { "Restored database schema changed" }
+            check(sqlite.version == 5) { "Restored database schema changed" }
             sqlite.query("PRAGMA integrity_check").use { cursor ->
                 check(cursor.moveToFirst() && cursor.getString(0) == "ok" && !cursor.moveToNext()) {
                     "Restored SQLite integrity validation failed"
@@ -344,6 +348,6 @@ internal class RestoredGenerationWriter {
         const val CLOSE_ON_EXEC = 0x80000 // Linux Android UAPI O_CLOEXEC; available on API26.
         const val OWNER_READ_WRITE = 0x180 // 0600.
         val TABLES = listOf("categories", "long_term_projects", "project_money_events", "local_media_assets",
-            "subscriptions", "subscription_renewals", "subscription_state_changes","replacements","notification_receipts")
+            "subscriptions", "subscription_renewals", "subscription_state_changes","replacements","notification_receipts","milestone_watermarks")
     }
 }

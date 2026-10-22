@@ -71,12 +71,19 @@ internal class BackupValidator {
                 require(legacy.recordCounts() == manifest.recordCounts) { "Format-2 original record counts disagree" }
                 val settings = decode(zip, byName.getValue("settings.json"), BackupSettingsV1.serializer(), declared.getValue("settings.json"), checkpoint)
                 BackupSnapshot(legacy.ordered(), settings, emptyList(), com.cooper.lithic.data.settings.ReminderPreferences())
-            } else {
+            } else if(manifest.formatVersion==3) {
                 val data = decode(zip,byName.getValue("data.json"),BackupDataV3.serializer(),declared.getValue("data.json"),checkpoint)
                 require(data.recordCounts() == manifest.recordCounts) { "Format-3 record counts disagree" }
                 val settings = decode(zip,byName.getValue("settings.json"),BackupSettingsV3.serializer(),declared.getValue("settings.json"),checkpoint)
                 BackupSnapshot(data.storedData(), BackupSettingsV1(settings.recordZoneId),
                     data.notificationReceipts.sortedBy { it.logicalKey }, settings.preferences())
+            } else {
+                val data = decode(zip,byName.getValue("data.json"),BackupDataV4.serializer(),declared.getValue("data.json"),checkpoint)
+                require(data.recordCounts() == manifest.recordCounts) { "Format-4 record counts disagree" }
+                val settings = decode(zip,byName.getValue("settings.json"),BackupSettingsV3.serializer(),declared.getValue("settings.json"),checkpoint)
+                val ordered = data.ordered()
+                BackupSnapshot(ordered.storedData(), BackupSettingsV1(settings.recordZoneId),
+                    ordered.notificationReceipts, settings.preferences(), ordered.milestoneWatermarks)
             }
             BackupBusinessValidation.validate(snapshot, manifest, checkpoint)
             // Every record, its path, structure, resource budget, format and business relationship

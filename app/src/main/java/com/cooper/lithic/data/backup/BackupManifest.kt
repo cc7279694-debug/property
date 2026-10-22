@@ -19,7 +19,7 @@ internal data class BackupFileEntry(val path: String, val byteLength: Long, val 
     }
 }
 
-/** Strict versioned logical header; v1 defaults remain only for retained legacy fixtures. Current export is v3. */
+/** Strict versioned logical header; v1 defaults remain only for retained legacy fixtures. Current export is v4. */
 @Serializable
 internal data class BackupManifestV1(
     val formatVersion: Int = 1,
@@ -56,7 +56,7 @@ internal data class BackupManifestV1(
                 require(entry.byteLength < limit) { "Payload reached its resource limit" }
             }
             core.entries.forEach { BackupEntryFiles.verify(core.directory, it) }
-            val result = BackupManifestV1(formatVersion=3,minReaderFormat=3,sourceDatabaseSchemaVersion=4,producerAppVersion = producer, createdAt = createdAt.toString(),
+            val result = BackupManifestV1(formatVersion=4,minReaderFormat=4,sourceDatabaseSchemaVersion=5,producerAppVersion = producer, createdAt = createdAt.toString(),
                 recordZoneId = core.recordZoneId, recordCounts = core.recordCounts.toSortedMap(), files = core.entries.sortedBy { it.path })
             require(core.entries.fold(result.encode().size.toLong()) { total, entry -> Math.addExact(total, entry.byteLength) } < BackupLimits.MAX_TOTAL_BYTES)
             return result
@@ -68,22 +68,25 @@ internal object BackupFormats {
     val LEGACY_TABLES=setOf("categories","long_term_projects","project_money_events","local_media_assets",
         "subscriptions","subscription_renewals","subscription_state_changes")
     val V2_TABLES=LEGACY_TABLES+"replacements"
-    val CURRENT_TABLES=V2_TABLES+"notification_receipts"
+    val V3_TABLES=V2_TABLES+"notification_receipts"
+    val CURRENT_TABLES=V3_TABLES+"milestone_watermarks"
     fun requireSupported(manifest:BackupManifestV1) {
         require((manifest.formatVersion==1 && manifest.minReaderFormat==1 && manifest.sourceDatabaseSchemaVersion==2) ||
             (manifest.formatVersion==2 && manifest.minReaderFormat==2 && manifest.sourceDatabaseSchemaVersion==3) ||
-            (manifest.formatVersion==3 && manifest.minReaderFormat==3 && manifest.sourceDatabaseSchemaVersion==4)) {
+            (manifest.formatVersion==3 && manifest.minReaderFormat==3 && manifest.sourceDatabaseSchemaVersion==4) ||
+            (manifest.formatVersion==4 && manifest.minReaderFormat==4 && manifest.sourceDatabaseSchemaVersion==5)) {
             "Unsupported backup format, reader or source schema combination"
         }
-        require(manifest.recordCounts.keys == when(manifest.formatVersion) { 1 -> LEGACY_TABLES; 2 -> V2_TABLES; else -> CURRENT_TABLES }) {
+        require(manifest.recordCounts.keys == when(manifest.formatVersion) { 1 -> LEGACY_TABLES; 2 -> V2_TABLES; 3 -> V3_TABLES; else -> CURRENT_TABLES }) {
             "Backup record count table set differs from its format"
         }
     }
     fun normalizedCounts(manifest:BackupManifestV1):Map<String,Long> {
         requireSupported(manifest)
         return when(manifest.formatVersion) {
-            1 -> manifest.recordCounts + ("replacements" to 0L) + ("notification_receipts" to 0L)
-            2 -> manifest.recordCounts + ("notification_receipts" to 0L)
+            1 -> manifest.recordCounts + ("replacements" to 0L) + ("notification_receipts" to 0L) + ("milestone_watermarks" to 0L)
+            2 -> manifest.recordCounts + ("notification_receipts" to 0L) + ("milestone_watermarks" to 0L)
+            3 -> manifest.recordCounts + ("milestone_watermarks" to 0L)
             else -> manifest.recordCounts
         }
     }

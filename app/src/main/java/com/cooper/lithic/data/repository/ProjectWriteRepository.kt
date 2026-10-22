@@ -217,6 +217,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
                 check(db.projectDao().findProject(expected.id) == null && db.projectDao().eventsForProjects(listOf(expected.id)).isEmpty()) {
                     "The deleted project still has stored facts"
                 }
+                MilestoneWatermarkStore.deleteProjectWithinTransaction(db, expected.id)
                 // Shared and now-unreferenced media metadata/files belong to M10, never this delete.
                 MutationResult.ProjectDeleted(expected.id)
             }
@@ -300,6 +301,7 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
                 // The second ABORT insert can fail; Room rolls both inserts back together.
                 db.projectDao().insertProject(project)
                 db.projectDao().insertEvent(event)
+                MilestoneWatermarkStore.projectCreatedWithinTransaction(db, project.id, clock.today())
                 MutationResult.Success(project.id, event.id, false)
             }
         }
@@ -380,6 +382,10 @@ class ProjectWriteRepository(private val db: LithicDatabase, private val coordin
             expected.endReason, expected.coverAssetId, expected.note, expected.createdAt, expected.updatedAt,
             target.name, target.categoryId, target.startedOn, target.endedOn, target.endReason, target.note, target.updatedAt,
         ))
+        val today = clock.today()
+        if (MilestoneHistoryChanges.project(expected.startedOn, expected.endedOn, target.startedOn, target.endedOn, today)) {
+            MilestoneWatermarkStore.projectChangedWithinTransaction(db, target.id, today)
+        }
     }
 
     private suspend fun applyEvent(expected: ProjectMoneyEventEntity, target: ProjectMoneyEventEntity) {

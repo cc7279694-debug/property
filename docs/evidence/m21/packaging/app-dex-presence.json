@@ -1,0 +1,33 @@
+{
+  "expectedProductionClasses": [
+    {
+      "class": "Lcom/cooper/lithic/domain/reminder/MilestonePlanner;",
+      "present": true
+    },
+    {
+      "class": "Lcom/cooper/lithic/data/repository/MilestoneRepository;",
+      "present": true
+    },
+    {
+      "class": "Lcom/cooper/lithic/data/repository/MilestoneWatermarkStore;",
+      "present": true
+    },
+    {
+      "class": "Lcom/cooper/lithic/data/local/MilestoneWatermarkEntity;",
+      "present": true
+    },
+    {
+      "class": "Lcom/cooper/lithic/data/local/MilestoneWatermarkDao;",
+      "present": true
+    },
+    {
+      "class": "Lcom/cooper/lithic/platform/notification/MilestoneScheduling;",
+      "present": true
+    },
+    {
+      "class": "Lcom/cooper/lithic/platform/notification/MilestoneNoticeIntents;",
+      "present": true
+    }
+  ],
+  "status": "PASS_ARTIFACT_PRESENCE_ONLY"
+}

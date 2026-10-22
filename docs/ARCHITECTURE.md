@@ -1,5 +1,17 @@
 # 当前架构事实
 
+## M21候选：长期里程碑与同日摘要（2026-10-22）
+
+[MilestonePlanner](../app/src/main/java/com/cooper/lithic/domain/reminder/MilestonePlanner.kt)提供固定类型化节点。项目用已确认首日/日历周年；订阅只复用冻结M03.elapsedPaidDays对日期作有界二分，不另写时长交集算法。50条仅是完整事实的读取批次和来源页显示窗口，不是全量计算开销上限。
+
+[MilestoneWatermarkStore](../app/src/main/java/com/cooper/lithic/data/repository/MilestoneWatermarkStore.kt)在原协调器/Room事务下维护联合身份水位；[MilestoneRepository](../app/src/main/java/com/cooper/lithic/data/repository/MilestoneRepository.kt)先完成旧记录初始化，再读取全部事实、水位、偏好与已发布回执。抑制基线不等于成功Receipt；普通资料和纯金额不推进基线。Room5仅新增水位表，生产预检同步已知结构和真实KSP身份；schema1～4原件不改。
+
+[MilestoneDispatch](../app/src/main/java/com/cooper/lithic/data/repository/MilestoneDispatch.kt)在同代租约内复核时间、权限、偏好、事实及Receipt，将同发布日已有来源与本批新候选合并为稳定tag/ID摘要。发布失败不写Receipt，成功后新批次在一个Room事务内登记；崩溃窗口仍可能重试。[MilestoneScheduling](../app/src/main/java/com/cooper/lithic/platform/notification/MilestoneScheduling.kt)复用M20每日协调入口，独立命名空间只取消里程碑候选；初始化失败不阻塞独立续费工作。
+
+[MilestoneNoticeIntents](../app/src/main/java/com/cooper/lithic/platform/notification/MilestoneNoticeIntents.kt)只传有界引用；打开时按发布日真实回执和当前完整事实校验摘要，旧代、删除、时间纠错或来源不全显示明确失败。单条到类型化详情、多条到临时来源页，经原dirty/pending/恢复守卫，保留三个底部入口，不创建通知中心。
+
+备份format4使用独立十表DTO；原1/2/3归档及proof先按原字段/原哈希认证。仅在未公开恢复代内合并恢复日水位，写入回读后生成dataFormatVersion4 proof，再允许激活；Room与DataStore不冒称跨存储原子。金额、M16、媒体原字节、内部指针协议不变。设备操作为0，真实Android语义未由编译替代，结果见[M21验证](evidence/M21-verification.md)。下文M19等旧架构段保留原时点。
+
 ## M19：类型化资金报表与只读页面（2026-10-21）
 
 [ReportRepository](../app/src/main/java/com/cooper/lithic/data/repository/ReportRepository.kt)复用M18同代协调器/Room完整事实读取，额外投影[FinancialFact/ReportRecordIdentity](../app/src/main/java/com/cooper/lithic/domain/report/AnnualReportModels.kt)。raw方向/业务日/续费付款映射三种明确类型，保留operation、折抵组和非现金身份；不从TotalCostEvent中文标题解析金额。不增加持久字段/表，原loadOverview与M18计算/采样不改。

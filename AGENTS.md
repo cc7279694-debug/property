@@ -111,3 +111,9 @@ M11-B只在统一协调器下复制已证明归属的登记媒体；保持原字
 第二次平台收口依旧BLOCKED；25个唯一方法最新24 PASS/1 FAIL、首轮21 PASS/1 FAIL、真实平台JUnit两次FAIL及SystemUI截图全部保持。第二次周期任务、OS Job、指定通知及Owner收口UNKNOWN，冷启动App进程/默认generation出现及其触发来源UNKNOWN的边界不改。`Lithic_M20_API36_20261022 / emulator-5704`为**保留 / 隔离测试现场**，未经重新明确授权不得直接复用、删除或清理；不把模拟器退出或独立冻结当作应用收口证明。
 
 M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、G3未通过及全部历史NOTES/NOT_RUN保持；不保证OEM后台准点或exactly-once。当前只提交推送M20分支必要登记文档，不改源码、不构建、不测试、不核验或操作设备。完成后停止，不合并main，不进入M21。
+
+## M21 当前明确授权覆盖（2026-10-22）
+
+本节依据用户M21完整授权，为当前执行边界；此前M20“未授权M21/仅冻结回写”文字保留原时点。起点M20冻结`3e8f5fdef9853ada726b037cc8559e2117d24da9`，只推`codex/m21-milestone-reminders`。Q03 USER_CONFIRMED：开始日1、日节点N-1、周年日历年；订阅实际累计付费有效日只复用冻结M03。候选Room5仅新增typed水位表，backup4独立10表DTO及旧格式/proof严格升级；内部指针、媒体原字节、M16与冻结引擎不改。水位不冒充成功Receipt；同日稳定摘要、批量Room回执及有限崩溃重试，点击仍经dirty/pending/恢复守卫。
+
+本轮只准产品代码、定向离线测试、Lint、Debug App/Test构建和Android测试源码准备；设备操作必须为0，真实迁移/通知/点击/恢复/系统重启均NOT_RUN。不查询、创建、启动、关闭或清理任何AVD、App、系统任务通知或私人数据，尤其M20/5704、5692、5672、5686、H2、C2、M10。M20限定冻结及额外平台FAIL/收口BLOCKED/UNKNOWN、M10延期三JPEG历史FAIL、M13-T06延期、Q04 PROPOSED、G1/G2/G3与全部NOTES保留。交付只可READY_FOR_REVIEW — M21，等待独立验收，不冻结、不进入M22。见[契约](docs/planning/M21_CONTRACT.md)与[验证](docs/evidence/M21-verification.md)。

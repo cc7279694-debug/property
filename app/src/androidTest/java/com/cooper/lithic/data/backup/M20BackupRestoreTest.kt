@@ -53,7 +53,17 @@ class M20BackupRestoreTest {
             }
             val before = current.backupSnapshotSource().capture()
             val archive = File(root, "roundtrip.lithicbackup")
-            assertTrue(BackupExportService(context, current).export(RestoreSyntheticFixture.target(archive)) is BackupExportResult.Success)
+            // Preserve a genuine frozen format-3 fixture; current production export is v4.
+            val payload = linkedMapOf("data.json" to BackupJson.encodeData(before.legacyDataV3()),
+                "settings.json" to BackupJson.encodeSettings(before.currentSettings()))
+            payload.putAll(media)
+            val legacyManifest = BackupManifestV1(3, 3, "m20-legacy3-synthetic", 4, CLOCK.instant().toString(), ZONE.id,
+                before.legacyDataV3().recordCounts(), payload.map { (path, bytes) -> BackupFileEntry.fromBytes(path, bytes) })
+            ZipOutputStream(archive.outputStream()).use { zip ->
+                for ((path, bytes) in linkedMapOf("manifest.json" to legacyManifest.encode()) + payload) {
+                    zip.putNextEntry(ZipEntry(path)); zip.write(bytes); zip.closeEntry()
+                }
+            }
             val backup = BackupValidator().validate(archive.toPath(), Files.createDirectory(root.toPath().resolve("payload")))
             roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath })
             assertEquals(3, backup.manifest.formatVersion)
@@ -62,11 +72,11 @@ class M20BackupRestoreTest {
             val candidate = store.prepareRestore(ZONE) { RestoredGenerationWriter().populate(it, backup) }
             roots.generation(root, candidate.id)
             roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath }, candidate.id)
-            assertEquals(3, JSONObject(File(candidate.directory, "restore-proof.json").readText()).getInt("dataFormatVersion"))
+            assertEquals(4, JSONObject(File(candidate.directory, "restore-proof.json").readText()).getInt("dataFormatVersion"))
             val candidateSettings = SettingsStore.open(File(candidate.directory, "settings.preferences_pb"), LocalWriteCoordinator(), requireExisting = true)
             try { assertEquals(LocalDate.parse("2026-10-22"), candidateSettings.reminderPreferences().importCutoff) }
             finally { candidateSettings.close() }
-            val expected = before.copy(reminderPreferences = before.reminderPreferences.copy(importCutoff = LocalDate.parse("2026-10-22")))
+            val expected = RestoreReminderProtection.snapshot(before, CLOCK.instant())
             val restored = store.activateRestore(current.id, candidate, before)
             active = restored
             assertEquals(expected, restored.backupSnapshotSource().capture())
@@ -78,7 +88,7 @@ class M20BackupRestoreTest {
             active = reopened
             assertEquals(id, reopened.id)
             assertEquals(expected, reopened.backupSnapshotSource().capture())
-            assertEquals(4, reopened.database.openHelper.readableDatabase.version)
+            assertEquals(5, reopened.database.openHelper.readableDatabase.version)
         } finally { active?.let { it.close(); roots.ownersClosed(root) } }
     }
 
@@ -163,6 +173,13 @@ class M20BackupRestoreTest {
                 val candidate = store.prepareRestore(ZONE) { RestoredGenerationWriter().populate(it, backup) }
                 roots.generation(root, candidate.id)
                 roots.media(root, backup.snapshot.data.mediaAssets.map { it.relativePath }, candidate.id)
+                // Model an authentic pre-M21 candidate: no watermark table facts existed in its proof.
+                val candidateDatabase = com.cooper.lithic.data.local.LithicDatabase.open(context, File(candidate.directory, "data.db"), true)
+                try {
+                    candidateDatabase.milestoneWatermarkDao().list().forEach { row ->
+                        candidateDatabase.milestoneWatermarkDao().delete(row.ownerType, row.ownerId)
+                    }
+                } finally { candidateDatabase.close() }
                 val gate = LocalWriteCoordinator()
                 val settings = SettingsStore.open(File(candidate.directory, "settings.preferences_pb"), gate, requireExisting = true)
                 try { gate.withWrite { settings.restoreRemindersWithinWrite(gate, ReminderPreferences()) } }
@@ -186,7 +203,7 @@ class M20BackupRestoreTest {
                 assertEquals(candidate.id, resumed.id)
                 assertEquals(backup.snapshot.data, resumed.backupSnapshotSource().capture().data)
                 assertEquals(ReminderPreferences(true, true, LocalDate.parse("2026-10-22")), resumed.settings.reminderPreferences())
-                assertEquals(3, JSONObject(File(candidate.directory, "restore-proof.json").readText()).getInt("dataFormatVersion"))
+                assertEquals(4, JSONObject(File(candidate.directory, "restore-proof.json").readText()).getInt("dataFormatVersion"))
                 assertEquals("STABLE", JSONObject(File(root, "active-generation").readText()).getString("stage"))
                 assertNull(resumedStore.lastRecoveryWarning)
             } finally { active?.let { it.close(); roots.ownersClosed(root) } }

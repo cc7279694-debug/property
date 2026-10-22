@@ -52,9 +52,10 @@ class M20DatabaseMigrationTest {
             }
             val database = LithicDatabase.open(context, file, requireExisting = true)
             try {
-                assertEquals(4, database.openHelper.readableDatabase.version)
+                assertEquals(5, database.openHelper.readableDatabase.version)
                 database.requireDefaults()
                 assertTrue(database.notificationReceiptDao().list().isEmpty())
+                assertTrue(database.milestoneWatermarkDao().list().isEmpty())
                 assertEquals("原备注", database.projectDao().listProjects().single().note)
                 assertEquals(1234567L, database.projectDao().listEvents().single().amountCents)
                 assertEquals(MoneyBasis.CASH, database.projectDao().listEvents().single().basis)
@@ -70,7 +71,7 @@ class M20DatabaseMigrationTest {
             roots.ownersOpening(root)
             val reopened = LithicDatabase.open(context, file, requireExisting = true)
             try {
-                assertEquals(4, reopened.openHelper.readableDatabase.version)
+                assertEquals(5, reopened.openHelper.readableDatabase.version)
                 reopened.requireDefaults()
                 assertEquals(2, reopened.categoryDao().list().size)
                 assertEquals(1234567L, reopened.projectDao().listEvents().single().amountCents)

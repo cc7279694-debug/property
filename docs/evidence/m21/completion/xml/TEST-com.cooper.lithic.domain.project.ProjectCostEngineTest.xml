@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.project.ProjectCostEngineTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-10-22T08:56:42.198Z" hostname="WHOCARE" time="0.11">
+  <properties/>
+  <testcase name="dated_event_does_not_rewrite_earlier_days" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="negative_cost_is_not_clamped" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="rejects_gross_outlay_overflow" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.035"/>
+  <testcase name="rejects_end_date_before_start" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.001"/>
+  <testcase name="q02_v01_ended_snapshot_uses_historical_observation_day" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="post_end_installment_does_not_restart_or_extend_project" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="end_day_removes_current_contribution" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="date_span_is_not_narrowed_to_int_or_rounded_to_zero" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="rejects_recovery_overflow" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.07"/>
+  <testcase name="refund_is_separate_from_the_original_outlay" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="leap_day_is_a_real_natural_day" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="same_day_is_one_day" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="empty_event_list_is_valid_zero_cost" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="aggregate_can_exceed_single_event_limit" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="post_end_refund_keeps_duration" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.002"/>
+  <testcase name="q02_v03_same_day_end_and_late_settlement_share_one_evaluation" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="prepaid_money_before_start_has_no_effective_daily_rate" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.001"/>
+  <testcase name="q02_v02_refund_changes_only_its_occurrence_day_and_after" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="zero_cost_is_effective_and_contributes_while_active" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="installments_count_only_after_their_real_payment_day" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <testcase name="unordered_same_day_events_are_all_counted_once" classname="com.cooper.lithic.domain.project.ProjectCostEngineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -84,8 +84,11 @@ internal fun NotificationSettingsContent(
             ReminderSwitch("续费提醒", "在记录中的到期日前提醒，是否送达及具体时间受系统限制。",
                 preferences.renewalEnabled, !state.loading && !state.saving, onRenewalChange, "renewal-reminder-switch")
             HorizontalDivider()
-            ReminderSwitch("里程碑提醒", "当前仅保存开关偏好，里程碑通知尚未提供。",
+            ReminderSwitch("里程碑提醒", "记录项目持有日与日历周年，以及订阅累计付费有效天数；同日合并为一条摘要。",
                 preferences.milestoneEnabled, !state.loading && !state.saving, onMilestoneChange, "milestone-reminder-switch")
+            Text("记录时区9点后尽力提醒；错过节点仅在含当天的7日窗口内补发。首次纳入、历史纠错和恢复不集中补发旧节点，关闭再开启不清除历史记录。",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.testTag("milestone-reminder-explanation"))
         }
         if (state.saving) {
             Text("正在保存提醒偏好", style = MaterialTheme.typography.bodyMedium,
@@ -111,15 +114,15 @@ internal fun NotificationSettingsContent(
             val status = when {
                 runtimeDenied -> "系统通知未授权"
                 !permissionState.notificationsEnabled -> "系统通知已关闭"
-                !permissionState.channelEnabled -> "续费提醒通知渠道已关闭"
+                !permissionState.channelEnabled -> "续费与里程碑提醒通知渠道已关闭"
                 else -> "系统允许发送通知"
             }
             Text(status, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.testTag("notification-permission-status"))
-            if (state.preferences?.renewalEnabled == true && !permissionState.canPublish) {
+            if ((state.preferences?.renewalEnabled == true || state.preferences?.milestoneEnabled == true) && !permissionState.canPublish) {
                 Text(when {
                     runtimeDenied -> "应用内已开启，系统通知未授权"
                     !permissionState.notificationsEnabled -> "应用内已开启，系统通知已关闭"
-                    else -> "应用内已开启，续费提醒通知渠道已关闭"
+                    else -> "应用内已开启，续费与里程碑提醒通知渠道已关闭"
                 }, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("notification-permission-explanation"))
             }
             Text("不授权或关闭通知，仍可新增订阅、录入续费、修改状态、浏览记录以及备份和恢复。",

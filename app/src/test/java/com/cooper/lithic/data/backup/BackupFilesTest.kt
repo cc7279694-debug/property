@@ -56,9 +56,9 @@ class BackupFilesTest {
         val manifest = BackupManifestV1.complete(core, "0.1.0-m09", at)
         val json = Json.parseToJsonElement(manifest.encode().decodeToString()).toString()
         for (field in listOf("formatVersion", "minReaderFormat", "producerAppVersion", "sourceDatabaseSchemaVersion", "createdAt", "recordZoneId", "recordCounts", "files")) assertTrue(json.contains("\"$field\""))
-        // Retain the historical method identity; M20 explicitly advances current export.
-        assertEquals(3, manifest.formatVersion)
-        assertEquals(4, manifest.sourceDatabaseSchemaVersion)
+        // Retain the historical method identity; M21 explicitly advances current export; original legacy shapes have dedicated fixtures.
+        assertEquals(4, manifest.formatVersion)
+        assertEquals(5, manifest.sourceDatabaseSchemaVersion)
         assertEquals(at.toString(), manifest.createdAt)
         assertFalse(manifest.files.any { it.path == "manifest.json" })
     }
