@@ -1,0 +1,114 @@
+{
+  "source": "0f8297998160479d8c4ef4b6f791f4fb2076091f",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "boot": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+  "app": {
+    "package": "com.cooper.lithic.m22verify.debug",
+    "uid": 10420,
+    "installedSha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3",
+    "installAttempts": 1,
+    "installResult": "PASS",
+    "retainedInstalled": true,
+    "providerAuthority": "com.cooper.lithic.m22verify.debug.androidx-startup",
+    "privateFilesObserved": "Earlier zero-file sample superseded by later store observation; do not claim final empty directory"
+  },
+  "test": {
+    "package": "com.cooper.lithic.m22verify.debug.test",
+    "installAttempts": 1,
+    "installResult": "FAIL",
+    "failure": "INSTALL_FAILED_USER_RESTRICTED: Install canceled by user",
+    "exactHumanOrOsCause": "UNKNOWN",
+    "packageAndRetainedRecordAbsentAtEnd": true,
+    "installedUid": "NOT_ASSIGNED_NOT_INSTALLED",
+    "installedSha": "NOT_APPLICABLE_NOT_INSTALLED"
+  },
+  "oldM10": {
+    "package": "com.cooper.lithic.debug",
+    "uid": 10376,
+    "versionCode": 8,
+    "versionName": "0.1.0-m10-debug",
+    "installationIdentityUnchanged": true,
+    "privateDataReadOrWritten": false
+  },
+  "methods": {
+    "T06": "NOT_RUN_USER_PAUSED_STRICT_FAILURE_SCENE",
+    "T03": "NOT_RUN_T06_PRECONDITION_UNMET",
+    "system200Ime": "NOT_RUN_TEST_NOT_INSTALLED_ACTIVITY_WIDTH_NOT_CAPTURED"
+  },
+  "settingsBefore": {
+    "MODEL": "23127PN0CC",
+    "API": "36",
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "FONT": "1.1",
+    "AIRPLANE": "0",
+    "WIFI": "1",
+    "MOBILE_DATA": "0",
+    "NIGHT": "0"
+  },
+  "settingsEnd": {
+    "MODEL": "23127PN0CC",
+    "API": "36",
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "FONT": "1.1",
+    "AIRPLANE": "0",
+    "WIFI": "1",
+    "MOBILE_DATA": "0",
+    "NIGHT": "0"
+  },
+  "settingsWrites": 0,
+  "restoration": "N/A_NO_SETTING_CHANGES_VALUES_MATCH",
+  "owners": "UNKNOWN: later default generation and WorkManager database exist; task never invoked App or Instrumentation; no Owner shutdown proof",
+  "targetAppProcessAtEnd": "UNKNOWN_AFTER_LATER_STORE_OBSERVATION",
+  "targetJobsAtEnd": "UNKNOWN_AFTER_LATER_STORE_OBSERVATION",
+  "cleanupOperations": 0,
+  "appLaunchOrInstrumentation": 0,
+  "otherDeviceOperations": 0,
+  "screenshots": "NOT_CAPTURED_NO_TEST_UI_STARTED",
+  "physicalResourcesMeasured": "ADMISSION_ONLY_NO_PERFORMANCE_TEST",
+  "executionResult": "BLOCKED_DEFAULT_STORE_UNKNOWN_TEST_INSTALL_REJECTED_AND_T06_USER_PAUSED",
+  "displayBeforeAndEnd": [
+    "Physical density: 480",
+    "Physical size: 1200x2670"
+  ],
+  "commandCounts": {
+    "adbServerDiscovery": 1,
+    "targetedAdbCommands": 24,
+    "targetedInstallAttempts": 2,
+    "targetedReadOnlyCommands": 22,
+    "localApkVerificationCommands": 4,
+    "jobCommandsIncludedInReadOnly": 2
+  },
+  "userDecision": {
+    "source": "Direct user reply in this conversation, 2026-10-23",
+    "answer": "暂停T06，先保留严格现场要求",
+    "effect": "No T06 invocation; dependent T03 not permitted; no source or APK change"
+  },
+  "priorEndObservations": {
+    "processAbsentAt": "2026-10-23T10:49:22.555724+00:00",
+    "zeroJobMatchesAt": "2026-10-23T10:49:22.812009+00:00",
+    "zeroFilesThroughDepth4At": "2026-10-23T10:49:22.395251+00:00",
+    "scope": "Earlier observations only; not final proof after subsequent new store discovery"
+  },
+  "laterDefaultStoreObservation": {
+    "capturedStartUtc": "2026-10-23T10:51:55.997672+00:00",
+    "capturedEndUtc": "2026-10-23T10:51:56.539911+00:00",
+    "commandExitCode": 0,
+    "supervisorExpectedAbsenceAssertion": "FAIL",
+    "activeGenerationPointerPresent": true,
+    "workManagerDatabasePresent": true,
+    "filesProfileInstalledPresent": true,
+    "contentRead": false,
+    "origin": "USER_CONFIRMED_MANUAL_APP_OPEN; exact timing, startup chain and specific background task attribution remain UNKNOWN",
+    "rawMetadata": "commands/end-new-app-store-absence/stdout",
+    "action": "STOP_NO_MORE_DEVICE_COMMANDS_NO_CLEANUP_NO_DB_CONTENT_READ",
+    "observedGenerationDirectoryId": "919ab3ee-2a7e-4988-8d65-5641a7ddcf2b"
+  },
+  "settingsRestorationScope": "No writes by task; values matched at recorded end-settings observation, before later store observation. No device commands after later store discovery.",
+  "userManualOpenConfirmation": {
+    "source": "Direct user reply in this conversation, 2026-10-23",
+    "answer": "是，我打开过新M22 App",
+    "confirmed": "User manually opened new M22 App after successful installation",
+    "notProven": "Exact timing, current pointer target, process/Job/FD state and Owner shutdown",
+    "additionalDeviceCommandsAfterReply": 0
+  }
+}

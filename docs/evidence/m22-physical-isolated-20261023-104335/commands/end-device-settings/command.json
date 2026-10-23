@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "printf 'M22_END_BEGIN\\n'; printf 'MODEL='; getprop ro.product.model; printf 'API='; getprop ro.build.version.sdk; printf 'BOOT='; cat /proc/sys/kernel/random/boot_id; printf 'FONT='; settings get system font_scale; printf 'AIRPLANE='; settings get global airplane_mode_on; printf 'WIFI='; settings get global wifi_on; printf 'MOBILE_DATA='; settings get global mobile_data; printf 'NIGHT='; settings get secure ui_night_mode; printf 'DENSITY\\n'; wm density; printf 'DISPLAY\\n'; wm size; printf 'M22_END_END\\n'"
+  ],
+  "startedUtc": "2026-10-23T10:49:20.607099+00:00",
+  "endedUtc": "2026-10-23T10:49:21.359540+00:00",
+  "seconds": 0.75,
+  "exitCode": 0,
+  "serialPolicy": "Exact USB serial retained only in ignored local control record; placeholder is explicit public redaction",
+  "stdoutBytes": 218,
+  "stdoutSha256": "c4b0242ad7449062a6b770d2f6f84d6b27f669eba58b9dcf42d9d282bebc0888",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

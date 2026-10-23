@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "dumpsys jobscheduler"
+  ],
+  "startedUtc": "2026-10-23T10:46:59.194883+00:00",
+  "endedUtc": "2026-10-23T10:46:59.487426+00:00",
+  "exitCode": 0,
+  "rawBytes": 1414226,
+  "rawSha256": "7923ce050ca719a88c046e7dafce4374c59427a1ccf4dd70e1768243ad3322d8",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "targetPackage": "com.cooper.lithic.m22verify.debug",
+  "targetUid": 10420,
+  "matchingTargetLines": [],
+  "targetJobCount": 0,
+  "policy": "Full system dump processed only in memory; archive exact target package lines or actual JOB identity matches, never unrelated app jobs or UID inventories as jobs"
+}

@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **M22真机独立安装：BLOCKED / CHANGES REQUIRED**：来源`0f8297998160479d8c4ef4b6f791f4fb2076091f`，同一小米API36仅新App安装1次成功（UID10420，与旧M10 UID10376不同，安装SHA匹配）；Test唯一安装exit1/USER_RESTRICTED，未重试。用户明确选择暂停T06以保留严格失败现场要求，三方法和Instrumentation均0。更晚结束核对发现新App默认generation目录、active-generation与WorkManager数据库；本轮未发App启动命令，用户随后确认手动打开过新M22 App，但准确时刻、启动链及最终Owner/进程/Job状态未证明，仍UNKNOWN，之前零记录样本不能冒充最终收口。已停止所有设备操作，回复后亦未追加操作，不读账本内容、不取消任务、不清理、不卸载；新App及未知现场保留。原M10安装身份、已核对设置未改，无个人屏幕采集。见[实际执行报告](evidence/M22-Physical-Isolated-Execution.md)。提交后停止等待独立审查，未经新授权不做测试包重建/重装、设备复用或收口；历史门禁不变，不进入M23。
+
 - **M22独立真机测试包桌面准备：READY_FOR_REVIEW — M22 ISOLATED DEVICE BUILD**：来源`99bce1160f608d8b785da2d18614c0e8a342d49f`，显式构建属性仅改变验证Debug包为`com.cooper.lithic.m22verify.debug`及对应`.test`，强制原plain隔离Runner并使用独立产物目录。默认Debug/Release身份及普通旧APK字节不变；Gradle实际exit0，新App/Test SHA为b749…b2d3 / c379…037f，同原Debug证书；完整Manifest、Provider/权限、targetPackage及DEX静态核验通过。外层打印编码exit1原样记录，未重复构建。本轮ADB/安装/设备运行均0，真实独立UID/私有路径及三项补验仍NOT_RUN，M22继续BLOCKED / CHANGES REQUIRED。见[构建与隔离报告](evidence/M22-Isolated-Device-Build.md)。不得据本段自行在个人手机安装、启动或改设置；历史包、现场、FAIL和门禁保持，等待独立审查，不进入M23。
 
 - **M22真机定向补验最新停止点：BLOCKED_EXISTING_TARGET_PACKAGE**：来源`6d5ee63b5a4c59642ef435d644188907f76244b8`，唯一USB目标为Xiaomi `23127PN0CC` / API36 / arm64-v8a；只读发现User0已有`com.cooper.lithic.debug`、code8/`0.1.0-m10-debug`及登记数据目录，按用户硬门禁停止。安装/Instrumentation/App启动/网络字体修改/旧数据读写均0；T06/T03/系统200%IME全部NOT_RUN，无新截图或性能结果。本地M22 App/Test原SHA匹配，但不冒充手机旧包身份；未读取账本、未覆盖卸载或清理。见[真机报告](evidence/M22-Physical-Device-verification.md)。M22继续BLOCKED / CHANGES REQUIRED，全部历史结果、NOTES及受保护现场保持。提交后停止，不自动更改应用身份、操作旧包或进入M23。
@@ -98,6 +100,6 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Next Recommended Task
 
-独立身份M22 App/Test的桌面准备已就绪，先审查[构建与隔离报告](evidence/M22-Isolated-Device-Build.md)，再由用户另行明确批准手机安装/运行。当前许可不允许任何设备操作；不得覆盖手机旧M10包，不改变360dp、系统200%字体、原断言或120秒预算，也不以编译和静态隔离替代真实运行。
+先独立审查[本轮真机独立安装报告](evidence/M22-Physical-Isolated-Execution.md)：新App已安装、Test唯一安装失败、T06按用户要求暂停，三项补验均未运行；用户手动打开新App后默认存储已出现，最终Owner/任务状态UNKNOWN。等待明确的新测试包保留现场整改和设备续接授权，不再执行当前额度已用完的安装/测试或任何收口。不得覆盖手机旧M10包，不改变360dp、系统200%字体、原断言或120秒预算，也不以安装/静态隔离替代真实运行。原[构建与隔离报告](evidence/M22-Isolated-Device-Build.md)保持历史。
 
 本轮提交推送后停止，等待ChatGPT独立复验。**BLOCKED — SYSTEMUI HEALTH GATE**：全新空API36在安装砺石之前同样出现SystemUI ANR，记录的直接超时点是SystemUIService waited20001ms，根因UNKNOWN；不能只认定是旧userdata、内存不足或M22产品问题。T06/正式20年T03/真实IME均未取得新执行结果。新5714额度已用完且正常关闭、AVD保留；旧5712/29锁/截图和所有历史现场不动，未经新授权不再创建/启动、替换环境、修复系统或清理。M10/M13-T06/M20/Q03/Q04/Q02/G1/G2/G3及全部历史边界保持。
