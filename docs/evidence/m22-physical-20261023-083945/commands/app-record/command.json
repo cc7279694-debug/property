@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "dumpsys package com.cooper.lithic.debug"
+  ],
+  "serialRedaction": "Exact USB serial retained only in ignored local control record; no substitute serial used for execution",
+  "startedUtc": "2026-10-23T08:39:46.887019+00:00",
+  "endedUtc": "2026-10-23T08:39:47.399559+00:00",
+  "exitCode": 0,
+  "stdoutBytes": 11043,
+  "stdoutSha256": "4db3f55e71b894f34b6cf5785edfd2536419fcefc250021fe35fc077f3190f61",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdoutArchived": false,
+  "stdoutPolicy": "Original target dumpsys response includes unrelated package-query metadata; raw bytes preserved only in ignored local build/m22-physical-private/raw, not committed",
+  "committedDerivedOutput": "target-package-extract.json"
+}

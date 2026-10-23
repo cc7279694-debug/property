@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **M22真机定向补验最新停止点：BLOCKED_EXISTING_TARGET_PACKAGE**：来源`6d5ee63b5a4c59642ef435d644188907f76244b8`，唯一USB目标为Xiaomi `23127PN0CC` / API36 / arm64-v8a；只读发现User0已有`com.cooper.lithic.debug`、code8/`0.1.0-m10-debug`及登记数据目录，按用户硬门禁停止。安装/Instrumentation/App启动/网络字体修改/旧数据读写均0；T06/T03/系统200%IME全部NOT_RUN，无新截图或性能结果。本地M22 App/Test原SHA匹配，但不冒充手机旧包身份；未读取账本、未覆盖卸载或清理。见[真机报告](evidence/M22-Physical-Device-verification.md)。M22继续BLOCKED / CHANGES REQUIRED，全部历史结果、NOTES及受保护现场保持。提交后停止，不自动更改应用身份、操作旧包或进入M23。
+
 - **M22 SystemUI专项取证最新停止点：RESOURCE_ADMISSION_BLOCKED**：来源`4fa4be13b952914b552326a9eeb21320072d980c`，用户明确要求可用物理内存至少5GiB才可创建/启动。首次只读观察约3.19GiB；随后归档命令观察约3.86GiB、E盘约91.22GiB，内存仍未达门槛。创建/启动/退出/ADB/adb root/安装/Instrumentation均0，无设备或系统修复；`TRACE_NOT_AVAILABLE`仅指未获资源准入、未尝试采集，不是权限拒绝或新ANR结论。既有SystemUI深层根因UNKNOWN，M22仍BLOCKED / CHANGES REQUIRED，原测试及全部历史现场/门禁不变。见[专项取证报告](evidence/M22-SystemUI-ANR-rootcause.md)。提交后停止等待独立审查，不自动在资源变化后启动，不进入M23。
 
 - **M22 — BLOCKED / CHANGES REQUIRED（SYSTEMUI HEALTH GATE）**：来源bf5e8c4后，用户另授权资源足够时新建一台干净API36，仅补T06/T03/真实系统IME。实际准入可用内存5.64GiB/E盘95.48GiB；全新`Lithic_M22_Clean_API36_20261023_1523 / emulator-5714`创建1/启动1/正常退出1。两轮窗口/全屏及独立am_anr均确认SystemUI ANR（SystemUIService等待20001ms），发生于砺石App/Test尚未安装时，根因UNKNOWN。安装0/Instrumentation0，三方法仍NOT_RUN；本轮源码/构建/Lint/JVM变更或执行0。原137 JVM、Android最新36 PASS/1 FAIL/2 NOT_RUN（39计划唯一）及T06三次FAIL保持。原App/Test字节仍328e…f213/ce5…a614，未安装到新设备。新设备未开Owner/未建业务generation、无目标包/进程/注册Job，设置未改；原进程/5714与5715端口已结束，AVD保留。旧5712及历史设备ADB/写入0，不把旧锁或图片未重读当新验证。见[干净环境报告](evidence/M22-Clean-Android-verification.md)、[结果](evidence/m22-clean-20261023-1523/results.json)、[前轮5712补验](evidence/M22-Android-supplement.md)。停止等待独立复验，不继续自动创建/启动/修复系统、不冻结M22或进入M23；Room5/backup4/冻结算法、M10/M13-T06/M20及全部旧门禁不变。

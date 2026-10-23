@@ -1,0 +1,30 @@
+{
+  "result": "BLOCKED_EXISTING_TARGET_PACKAGE",
+  "source": "6d5ee63b5a4c59642ef435d644188907f76244b8",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "serialPolicy": "Exact USB serial only in ignored local control file, public evidence uses SHA256 identity",
+  "existingPackage": "com.cooper.lithic.debug",
+  "existingAppId": 10376,
+  "existingVersionCode": 8,
+  "existingVersionName": "0.1.0-m10-debug",
+  "existingUser0Installed": true,
+  "privateBusinessDataRead": false,
+  "actionCounts": {
+    "adbDiscovery": 1,
+    "targetedReadOnlyAdb": 7,
+    "installs": 0,
+    "instrumentation": 0,
+    "appLaunch": 0,
+    "settingsWrites": 0,
+    "appDataWrites": 0,
+    "uninstallOrClear": 0,
+    "otherDeviceAdb": 0
+  },
+  "T06": "NOT_RUN",
+  "T03": "NOT_RUN",
+  "system200Ime": "NOT_RUN",
+  "screenshots": "NOT_CAPTURED_NO_TEST_STARTED",
+  "settingsRestoration": "N/A_NO_CHANGES",
+  "ownerClosure": "N/A_NO_OWNER_OPENED",
+  "batchBoundary": "Read-only preflight commands were queued in one batch; target package metadata queries completed in that same batch before results were inspected. No further ADB command after the existing-package gate was recognized."
+}
