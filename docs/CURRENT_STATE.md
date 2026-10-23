@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **M22 SystemUI专项取证最新停止点：RESOURCE_ADMISSION_BLOCKED**：来源`4fa4be13b952914b552326a9eeb21320072d980c`，用户明确要求可用物理内存至少5GiB才可创建/启动。首次只读观察约3.19GiB；随后归档命令观察约3.86GiB、E盘约91.22GiB，内存仍未达门槛。创建/启动/退出/ADB/adb root/安装/Instrumentation均0，无设备或系统修复；`TRACE_NOT_AVAILABLE`仅指未获资源准入、未尝试采集，不是权限拒绝或新ANR结论。既有SystemUI深层根因UNKNOWN，M22仍BLOCKED / CHANGES REQUIRED，原测试及全部历史现场/门禁不变。见[专项取证报告](evidence/M22-SystemUI-ANR-rootcause.md)。提交后停止等待独立审查，不自动在资源变化后启动，不进入M23。
+
 - **M22 — BLOCKED / CHANGES REQUIRED（SYSTEMUI HEALTH GATE）**：来源bf5e8c4后，用户另授权资源足够时新建一台干净API36，仅补T06/T03/真实系统IME。实际准入可用内存5.64GiB/E盘95.48GiB；全新`Lithic_M22_Clean_API36_20261023_1523 / emulator-5714`创建1/启动1/正常退出1。两轮窗口/全屏及独立am_anr均确认SystemUI ANR（SystemUIService等待20001ms），发生于砺石App/Test尚未安装时，根因UNKNOWN。安装0/Instrumentation0，三方法仍NOT_RUN；本轮源码/构建/Lint/JVM变更或执行0。原137 JVM、Android最新36 PASS/1 FAIL/2 NOT_RUN（39计划唯一）及T06三次FAIL保持。原App/Test字节仍328e…f213/ce5…a614，未安装到新设备。新设备未开Owner/未建业务generation、无目标包/进程/注册Job，设置未改；原进程/5714与5715端口已结束，AVD保留。旧5712及历史设备ADB/写入0，不把旧锁或图片未重读当新验证。见[干净环境报告](evidence/M22-Clean-Android-verification.md)、[结果](evidence/m22-clean-20261023-1523/results.json)、[前轮5712补验](evidence/M22-Android-supplement.md)。停止等待独立复验，不继续自动创建/启动/修复系统、不冻结M22或进入M23；Room5/backup4/冻结算法、M10/M13-T06/M20及全部旧门禁不变。
 
 - **M21 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户正式转交的ChatGPT独立复验，评审提交`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`，评审及登记分支`codex/m21-milestone-reminders`。M21-T01～T06限定通过，认可原候选395 JVM PASS、Android首轮31 PASS/重跑0、已独立查看的4张隔离Compose截图及Lint0错误25警告。冻结真实里程碑规则、抑制水位、同日摘要、受保护点击接口及Room5/backup4已验证实现；Room4→5迁移/重开、事务回滚、format4往返及旧proof3恢复仅按[补验报告](evidence/M21-Android-verification.md)范围认可，见[正式登记及完整NOTES](ACCEPTANCE_MATRIX.md#m21正式限定冻结登记2026-10-23)。本轮只做文档冻结回写与失效链接修正，未重跑测试、构建、核验APK或操作设备。补验构建/Lint原文件未随原提交归档；本地原件保留，无历史SHA锚点，不补造或用原候选Lint替代新日志。

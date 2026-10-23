@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-Command",
+    "$ErrorActionPreference='Stop'\n$taskOs=Get-CimInstance Win32_OperatingSystem\n$taskDisk=Get-CimInstance Win32_LogicalDisk -Filter \"DeviceID='E:'\"\n[ordered]@{capturedUtc=[DateTime]::UtcNow.ToString('o');freePhysicalMemoryKiB=[uint64]$taskOs.FreePhysicalMemory;freePhysicalMemoryBytes=([uint64]$taskOs.FreePhysicalMemory*1024);totalVisibleMemoryKiB=[uint64]$taskOs.TotalVisibleMemorySize;disk='E:';diskFreeBytes=[uint64]$taskDisk.FreeSpace;diskSizeBytes=[uint64]$taskDisk.Size;requiredFreeMemoryBytes=5368709120;requiredDiskFreeBytes=10737418240} | ConvertTo-Json -Compress\n"
+  ],
+  "startedUtc": "2026-10-23T08:22:20.779184+00:00",
+  "endedUtc": "2026-10-23T08:22:21.710358+00:00",
+  "exitCode": 0,
+  "stdoutBytes": 293,
+  "stdoutSha256": "7e1d9ea93938e58fd28fe9e5b55a367904d75bfd7944a9a6699c91988aa65a8d",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "scope": "Read-only host CIM resource observation; no SDK/ADB/AVD command",
+  "initialObservation": {
+    "freePhysicalMemoryKiB": 3341280,
+    "at": "NOT_CAPTURED",
+    "source": "Earlier tool output in this task, not retroactively timestamped"
+  },
+  "stopDecision": "Initial memory threshold failed; no device stage or retry authorized by a later sample"
+}
