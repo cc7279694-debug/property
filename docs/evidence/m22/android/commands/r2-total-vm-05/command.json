@@ -1,0 +1,26 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+    "-e",
+    "m22CaptureRun",
+    "c0765560-fb1a-48de-a28f-cc480a7e0b2b",
+    "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "started": "2026-10-23T04:02:14.143684+00:00",
+  "seconds": 3.2039999999997235,
+  "exit": 0,
+  "stdoutBytes": 4067,
+  "stdoutSha256": "bed3046a6e42a3872ec2ab5fb75a7160390c8fc9dc535f189c6940a9a0790117",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.report.AnnualReportEngineTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-10-23T03:15:20.671Z" hostname="WHOCARE" time="0.033">
+  <properties/>
+  <testcase name="outlay_recovery_net" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.017"/>
+  <testcase name="types_not_merged_into_cash" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.002"/>
+  <testcase name="actual_accumulator_checks_each_component_count_and_preserves_old_value_on_overflow" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.002"/>
+  <testcase name="post_end_settlement_and_correction_use_business_year_not_lifecycle_or_created_time" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.001"/>
+  <testcase name="as_of_cuts_off_future_facts_and_future_paid_years_without_mutating_input" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.002"/>
+  <testcase name="single_fact_money_limit_and_invalid_year_are_rejected" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.001"/>
+  <testcase name="identical_legal_amount_dates_and_names_are_counted_as_distinct_facts" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.001"/>
+  <testcase name="subscription_year_is_paid_year" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.001"/>
+  <testcase name="unknown_or_incomplete_trade_in_metadata_cannot_become_plain_cash" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.002"/>
+  <testcase name="money_year_is_occurred_year" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.001"/>
+  <testcase name="annual_summary_no_judgement_zero_negative_and_empty_are_distinct" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.001"/>
+  <testcase name="duplicate_missing_or_mismatched_typed_facts_are_rejected_not_inferred_from_display_text" classname="com.cooper.lithic.domain.report.AnnualReportEngineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

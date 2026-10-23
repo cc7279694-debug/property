@@ -1,7 +1,6 @@
 package com.cooper.lithic.feature.review
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -35,25 +34,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.AmountFormatter
 import com.cooper.lithic.core.design.AmountText
 import com.cooper.lithic.core.design.ChartGeometry
 import com.cooper.lithic.core.design.CostChartPoint
+import com.cooper.lithic.core.design.chartDateSelection
 import com.cooper.lithic.domain.report.CostTimelinePoint
 import com.cooper.lithic.domain.report.OverviewKind
 import com.cooper.lithic.domain.report.TotalCostEvent
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.time.format.DateTimeParseException
-import kotlin.math.abs
 
 /** Read-only view: all amounts, status counts and event identities are supplied by the snapshot. */
 @Composable
@@ -133,7 +132,7 @@ internal fun TotalCostTrendScreen(
                 }
             }
             item("chart") {
-                TotalCostChart(timeline.points, selected, state.showBreakdown, onSelectDate)
+                TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate)
                 Text("完整记录历史至截止日；长跨度图表精简显示，事件和重要变化保留。任意日期可查询精确值，全部事件都可继续查看。",
                     style = MaterialTheme.typography.bodySmall)
                 OutlinedButton(onToggleBreakdown, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-breakdown")) {
@@ -142,6 +141,15 @@ internal fun TotalCostTrendScreen(
             }
             item("date") {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    state.selectedDate?.let { date ->
+                        OutlinedButton({ onSelectDate(date.minusDays(1)) },
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-previous-day"),
+                            enabled = timeline.from != null && date > timeline.from && date <= timeline.asOf) { Text("前一天") }
+                        OutlinedButton({ onSelectDate(date.plusDays(1)) },
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-next-day"),
+                            enabled = timeline.from != null && date >= timeline.from && date < timeline.asOf) { Text("后一天") }
+                        Text("前后一天限图表日期范围；其他已过去日期可输入查询。", style = MaterialTheme.typography.bodySmall)
+                    }
                     OutlinedTextField(dateRaw, { dateRaw = it; dateError = null }, Modifier.fillMaxWidth().testTag("total-trend-date-input"),
                         label = { Text("查询日期（年-月-日）") }, placeholder = { Text(state.selectedDate?.toString() ?: timeline.asOf.toString()) },
                         singleLine = true, isError = dateError != null,
@@ -222,16 +230,29 @@ private fun selectionMeaning(point: CostTimelinePoint): String = when {
 
 /** One date axis and numeric scale. Line styles and readable values supplement colour. */
 @Composable
-private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimelinePoint?, breakdown: Boolean,
+private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimelinePoint?, requestedDate: LocalDate?, breakdown: Boolean,
     onSelectDate: (LocalDate) -> Unit) {
     if (points.isEmpty()) { Text("截至本次业务日尚无可绘制的记录历史。", Modifier.testTag("total-trend-no-history")); return }
     val ordered = remember(points) { points.sortedBy { it.date } }
     val inRange = selected?.takeIf { it.date >= ordered.first().date && it.date <= ordered.last().date }
-    val projection = remember(ordered, inRange, breakdown) {
-        ChartGeometry.forPoints((ordered + listOfNotNull(inRange)).flatMap { p ->
+    val baseProjection = remember(ordered, breakdown) {
+        ChartGeometry.forPoints(ordered.flatMap { p ->
             if (breakdown) listOf(CostChartPoint(p.date, p.totalRate), CostChartPoint(p.date, p.projectRate), CostChartPoint(p.date, p.subscriptionRate))
             else listOf(CostChartPoint(p.date, p.totalRate))
         })!!
+    }
+    val projection = remember(baseProjection, inRange, breakdown) {
+        val selectedValues = inRange?.let { if (breakdown) listOf(it.totalRate, it.projectRate, it.subscriptionRate) else listOf(it.totalRate) }.orEmpty()
+        if (selectedValues.all { it >= baseProjection.minimum && it <= baseProjection.maximum }) baseProjection
+        else ChartGeometry.forPoints(listOf(CostChartPoint(baseProjection.start, baseProjection.minimum),
+            CostChartPoint(baseProjection.end, baseProjection.maximum)) + selectedValues.map { CostChartPoint(requireNotNull(inRange).date, it) })!!
+    }
+    val coordinates = remember(ordered, projection, breakdown) {
+        ordered.map { point ->
+            floatArrayOf(projection.x(point.date), projection.y(point.totalRate),
+                if (breakdown) projection.y(point.projectRate) else 0f,
+                if (breakdown) projection.y(point.subscriptionRate) else 0f)
+        }
     }
     val totalColor = MaterialTheme.colorScheme.primary
     val projectColor = MaterialTheme.colorScheme.tertiary
@@ -251,18 +272,20 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
             .semantics {
                 contentDescription = if (breakdown) "总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。"
                     else "总日均成本历史实线，负值保留。可展开两类贡献，或在下方输入日期和查看文字清单。"
-                val focus = inRange?.date ?: ordered.first().date
-                customActions = listOf(CustomAccessibilityAction("上一显示日期") {
-                    currentSelect(ordered.lastOrNull { it.date < focus }?.date ?: ordered.first().date); true
-                }, CustomAccessibilityAction("下一显示日期") {
-                    currentSelect(ordered.firstOrNull { it.date > focus }?.date ?: ordered.last().date); true
+                stateDescription = inRange?.let { "${it.date}，总日均成本 ${AmountFormatter.formatDailyRate(it.totalRate)} 元/天，长期项目 ${AmountFormatter.formatDailyRate(it.projectRate)} 元/天，订阅 ${AmountFormatter.formatDailyRate(it.subscriptionRate)} 元/天" }
+                    ?: requestedDate?.let { "$it，尚未取得所选日期的精确结果" } ?: "尚未取得所选日期的精确结果"
+                val focus = requestedDate ?: inRange?.date ?: ordered.first().date
+                customActions = listOf(CustomAccessibilityAction("前一天") {
+                    if (focus > projection.start && focus <= projection.end) {
+                        currentSelect(projection.adjacentDay(focus, -1)); true
+                    } else false
+                }, CustomAccessibilityAction("后一天") {
+                    if (focus >= projection.start && focus < projection.end) {
+                        currentSelect(projection.adjacentDay(focus, 1)); true
+                    } else false
                 })
             }
-            .pointerInput(ordered, projection) { detectTapGestures { tap ->
-                val inset = 12.dp.toPx()
-                val fraction = ((tap.x - inset) / (size.width - 2f * inset).coerceAtLeast(1f)).coerceIn(0f, 1f)
-                ordered.minByOrNull { abs(projection.x(it.date) - fraction) }?.let { currentSelect(it.date) }
-            } }) {
+            .chartDateSelection(projection) { currentSelect(it) }) {
             val inset = 12.dp.toPx()
             val w = (size.width - 2 * inset).coerceAtLeast(1f)
             val h = (size.height - 2 * inset).coerceAtLeast(1f)
@@ -270,13 +293,14 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
             val zero = inset + projection.zero * h
             drawLine(axisColor, Offset(inset, zero), Offset(inset + w, zero), 1.dp.toPx(),
                 pathEffect = PathEffect.dashPathEffect(floatArrayOf(6.dp.toPx(), 4.dp.toPx())))
-            fun series(color: Color, step: Boolean, dash: FloatArray?, value: (CostTimelinePoint) -> BigDecimal) {
+            fun series(color: Color, step: Boolean, dash: FloatArray?, seriesIndex: Int, value: (CostTimelinePoint) -> BigDecimal) {
                 val path = Path()
                 ordered.forEachIndexed { index, p ->
-                    val coordinate = pos(p.date, value(p))
+                    val normalized = coordinates[index]
+                    val coordinate = Offset(inset + normalized[0] * w, inset + normalized[seriesIndex] * h)
                     if (index == 0) path.moveTo(coordinate.x, coordinate.y)
                     else {
-                        if (step) path.lineTo(coordinate.x, pos(p.date, value(ordered[index - 1])).y)
+                        if (step) path.lineTo(coordinate.x, inset + coordinates[index - 1][seriesIndex] * h)
                         path.lineTo(coordinate.x, coordinate.y)
                     }
                 }
@@ -285,10 +309,10 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
                 inRange?.let { drawCircle(color, 4.dp.toPx(), pos(it.date, value(it))) }
             }
             if (breakdown) {
-                series(projectColor, false, floatArrayOf(10.dp.toPx(), 5.dp.toPx())) { it.projectRate }
-                series(subscriptionColor, true, floatArrayOf(3.dp.toPx(), 4.dp.toPx())) { it.subscriptionRate }
+                series(projectColor, false, floatArrayOf(10.dp.toPx(), 5.dp.toPx()), 2) { it.projectRate }
+                series(subscriptionColor, true, floatArrayOf(3.dp.toPx(), 4.dp.toPx()), 3) { it.subscriptionRate }
             }
-            series(totalColor, false, null) { it.totalRate }
+            series(totalColor, false, null, 1) { it.totalRate }
             inRange?.let { p -> val x = pos(p.date, p.totalRate).x
                 drawLine(selectedColor, Offset(x, inset), Offset(x, inset + h), 1.dp.toPx(),
                     pathEffect = PathEffect.dashPathEffect(floatArrayOf(2.dp.toPx(), 5.dp.toPx()))) }
@@ -297,7 +321,7 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
             Text(projection.start.toString(), style = MaterialTheme.typography.bodySmall)
             if (projection.start != projection.end) Text(projection.end.toString(), style = MaterialTheme.typography.bodySmall)
         }
-        Text("按真实自然日期间距绘制，不做平滑预测；订阅零区间保留阶梯。点击只选择真实显示日期，任意日期精确值请用日期查询。",
+        Text("按真实自然日期间距绘制，不做平滑预测；订阅零区间保留阶梯。横向拖动只选择自然日期，再查询真实金额；纵向滑动仍浏览页面。",
             style = MaterialTheme.typography.bodySmall)
     }
 }

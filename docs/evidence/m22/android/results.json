@@ -1,0 +1,797 @@
+{
+  "plannedUniqueMethods": 38,
+  "executedUniqueMethods": 37,
+  "latestExecutedPass": 36,
+  "latestExecutedFail": 1,
+  "notRun": 1,
+  "totalMethodInvocationsIncludingReruns": 47,
+  "invocationPass": 40,
+  "invocationFail": 7,
+  "scope": "JUnit/Compose execution only; SystemUI ANR prevented actual full UI acceptance; no method count implies global usability PASS",
+  "latestCandidateTestDeviceExecution": "NOT_RUN after final test readiness edit",
+  "methods": [
+    {
+      "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+      "method": "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+          "method": "all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-home-03/stdout",
+          "commandRecord": "commands/r2-home-03/command.json",
+          "at": "2026-10-23T04:01:39.320669+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+      "method": "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+          "method": "empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-home-03/stdout",
+          "commandRecord": "commands/r2-home-03/command.json",
+          "at": "2026-10-23T04:01:39.320669+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+      "method": "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+          "method": "inactive_records_are_explained_without_being_reported_as_an_empty_ledger",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-home-03/stdout",
+          "commandRecord": "commands/r2-home-03/command.json",
+          "at": "2026-10-23T04:01:39.320669+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+      "method": "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+          "method": "recorded_zero_cost_remains_a_real_value_and_an_active_category",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-home-03/stdout",
+          "commandRecord": "commands/r2-home-03/command.json",
+          "at": "2026-10-23T04:01:39.320669+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+      "method": "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+          "method": "signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-home-03/stdout",
+          "commandRecord": "commands/r2-home-03/command.json",
+          "at": "2026-10-23T04:01:39.320669+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+      "method": "unavailable_overview_never_invents_a_zero_cost",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.home.HomeOverviewUiTest",
+          "method": "unavailable_overview_never_invents_a_zero_cost",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-home-03/stdout",
+          "commandRecord": "commands/r2-home-03/command.json",
+          "at": "2026-10-23T04:01:39.320669+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+      "method": "late_old_request_cannot_replace_new_record_or_its_selected_exact_date",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+          "method": "late_old_request_cannot_replace_new_record_or_its_selected_exact_date",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-item-vm-04/stdout",
+          "commandRecord": "commands/r2-item-vm-04/command.json",
+          "at": "2026-10-23T04:02:08.568101+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+      "method": "m22_repeated_completed_date_keeps_exact_result_without_restarting_query",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+          "method": "m22_repeated_completed_date_keeps_exact_result_without_restarting_query",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-item-vm-04/stdout",
+          "commandRecord": "commands/r2-item-vm-04/command.json",
+          "at": "2026-10-23T04:02:08.568101+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+      "method": "real_trade_in_event_mapping_keeps_saved_noncash_identity_and_description_without_inventing_payment",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+          "method": "real_trade_in_event_mapping_keeps_saved_noncash_identity_and_description_without_inventing_payment",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-item-vm-04/stdout",
+          "commandRecord": "commands/r2-item-vm-04/command.json",
+          "at": "2026-10-23T04:02:08.568101+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+      "method": "real_write_invalidation_and_business_day_refresh_recompute_without_losing_chosen_history_date",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+          "method": "real_write_invalidation_and_business_day_refresh_recompute_without_losing_chosen_history_date",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-item-vm-04/stdout",
+          "commandRecord": "commands/r2-item-vm-04/command.json",
+          "at": "2026-10-23T04:02:08.568101+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+      "method": "refresh_error_keeps_last_graph_and_explicit_error_while_confirmed_deletion_is_missing",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.report.M17TimelineViewModelTest",
+          "method": "refresh_error_keeps_last_graph_and_explicit_error_while_confirmed_deletion_is_missing",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-item-vm-04/stdout",
+          "commandRecord": "commands/r2-item-vm-04/command.json",
+          "at": "2026-10-23T04:02:08.568101+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "future_selection_and_paused_late_result_do_not_publish_mismatched_amounts_or_write_facts",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+          "method": "future_selection_and_paused_late_result_do_not_publish_mismatched_amounts_or_write_facts",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-vm-05/stdout",
+          "commandRecord": "commands/r2-total-vm-05/command.json",
+          "at": "2026-10-23T04:02:14.143684+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "m22_repeated_completed_date_keeps_exact_result_without_restarting_query",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+          "method": "m22_repeated_completed_date_keeps_exact_result_without_restarting_query",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-vm-05/stdout",
+          "commandRecord": "commands/r2-total-vm-05/command.json",
+          "at": "2026-10-23T04:02:14.143684+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "read_failure_keeps_old_timestamped_data_and_never_turns_it_into_empty_or_zero",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+          "method": "read_failure_keeps_old_timestamped_data_and_never_turns_it_into_empty_or_zero",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-vm-05/stdout",
+          "commandRecord": "commands/r2-total-vm-05/command.json",
+          "at": "2026-10-23T04:02:14.143684+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "stale_noncancellable_load_cannot_overwrite_new_snapshot_date_or_split_intent",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+          "method": "stale_noncancellable_load_cannot_overwrite_new_snapshot_date_or_split_intent",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-vm-05/stdout",
+          "commandRecord": "commands/r2-total-vm-05/command.json",
+          "at": "2026-10-23T04:02:14.143684+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+      "method": "write_day_and_foreground_refresh_publish_matching_snapshot_point_events_and_preserve_selection",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.feature.review.M18TotalCostTrendViewModelTest",
+          "method": "write_day_and_foreground_refresh_publish_matching_snapshot_point_events_and_preserve_selection",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-vm-05/stdout",
+          "commandRecord": "commands/r2-total-vm-05/command.json",
+          "at": "2026-10-23T04:02:14.143684+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.CompleteJourneyTest",
+      "method": "injected_day_with_real_foreground_observer_and_resume_refresh",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.CompleteJourneyTest",
+          "method": "injected_day_with_real_foreground_observer_and_resume_refresh",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-journey-07/stdout",
+          "commandRecord": "commands/r2-journey-07/command.json",
+          "at": "2026-10-23T04:02:47.174336+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.CompleteJourneyTest",
+      "method": "runtime_offline_journey",
+      "latestExecutedResult": "FAIL",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.CompleteJourneyTest",
+          "method": "runtime_offline_journey",
+          "result": "FAIL",
+          "junitCode": -2,
+          "evidence": "commands/r2-journey-07/stdout",
+          "commandRecord": "commands/r2-journey-07/command.json",
+          "at": "2026-10-23T04:02:47.174336+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        },
+        {
+          "class": "com.cooper.lithic.ui.CompleteJourneyTest",
+          "method": "runtime_offline_journey",
+          "result": "FAIL",
+          "junitCode": -2,
+          "evidence": "commands/r3-journey-07/stdout",
+          "commandRecord": "commands/r3-journey-07/command.json",
+          "at": "2026-10-23T04:11:37.671898+00:00",
+          "outerExit": 0,
+          "testSha256": "1dbe6f45458bc14224872a9d98ff6b2248ae0f5250f28cb8bc61fe3ca39f38ed"
+        },
+        {
+          "class": "com.cooper.lithic.ui.CompleteJourneyTest",
+          "method": "runtime_offline_journey",
+          "result": "FAIL",
+          "junitCode": -2,
+          "evidence": "commands/r4-journey-07/stdout",
+          "commandRecord": "commands/r4-journey-07/command.json",
+          "at": "2026-10-23T04:20:24.988607+00:00",
+          "outerExit": 0,
+          "testSha256": "c9788ced5d20b80397adf04ec1ce87ef72d208716925a76cd072fd74e3e2eef7"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "default_total_can_expand_components_with_one_scale_and_text_values",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+          "method": "default_total_can_expand_components_with_one_scale_and_text_values",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-ui-06/stdout",
+          "commandRecord": "commands/r2-total-ui-06/command.json",
+          "at": "2026-10-23T04:02:17.351093+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+          "method": "empty_ledger_has_no_fake_zero_and_read_failure_has_no_fake_empty",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-ui-06/stdout",
+          "commandRecord": "commands/r2-total-ui-06/command.json",
+          "at": "2026-10-23T04:02:17.351093+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "exact_date_text_entry_avoids_drag_and_future_is_rejected",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+          "method": "exact_date_text_entry_avoids_drag_and_future_is_rejected",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-ui-06/stdout",
+          "commandRecord": "commands/r2-total-ui-06/command.json",
+          "at": "2026-10-23T04:02:17.351093+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "failure_is_visible_and_narrow_double_font_controls_remain_reachable",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+          "method": "failure_is_visible_and_narrow_double_font_controls_remain_reachable",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-ui-06/stdout",
+          "commandRecord": "commands/r2-total-ui-06/command.json",
+          "at": "2026-10-23T04:02:17.351093+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+      "method": "same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M18TotalCostTrendSemanticsTest",
+          "method": "same_day_events_beyond_fifty_keep_record_identity_and_non_cash_note",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-total-ui-06/stdout",
+          "commandRecord": "commands/r2-total-ui-06/command.json",
+          "at": "2026-10-23T04:02:17.351093+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+      "method": "denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions",
+          "result": "FAIL",
+          "junitCode": -2,
+          "evidence": "commands/ui-01/stdout",
+          "commandRecord": "commands/ui-01/command.json",
+          "at": "2026-10-23T03:45:47.009268+00:00",
+          "outerExit": 0,
+          "testSha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251"
+        },
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-ui-01/stdout",
+          "commandRecord": "commands/r2-ui-01/command.json",
+          "at": "2026-10-23T04:00:21.980649+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+      "method": "failed_project_detail_explains_its_retained_result_without_claiming_fresh_data",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "failed_project_detail_explains_its_retained_result_without_claiming_fresh_data",
+          "result": "FAIL",
+          "junitCode": -2,
+          "evidence": "commands/ui-01/stdout",
+          "commandRecord": "commands/ui-01/command.json",
+          "at": "2026-10-23T03:45:47.009268+00:00",
+          "outerExit": 0,
+          "testSha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251"
+        },
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "failed_project_detail_explains_its_retained_result_without_claiming_fresh_data",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-ui-01/stdout",
+          "commandRecord": "commands/r2-ui-01/command.json",
+          "at": "2026-10-23T04:00:21.980649+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+      "method": "failed_project_list_retains_records_with_an_explicit_stale_result_notice",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "failed_project_list_retains_records_with_an_explicit_stale_result_notice",
+          "result": "FAIL",
+          "junitCode": -2,
+          "evidence": "commands/ui-01/stdout",
+          "commandRecord": "commands/ui-01/command.json",
+          "at": "2026-10-23T03:45:47.009268+00:00",
+          "outerExit": 0,
+          "testSha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251"
+        },
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "failed_project_list_retains_records_with_an_explicit_stale_result_notice",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-ui-01/stdout",
+          "commandRecord": "commands/r2-ui-01/command.json",
+          "at": "2026-10-23T04:00:21.980649+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+      "method": "narrow_large_font_project_header_scrolls_with_records_and_keeps_both_touch_dimensions",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "narrow_large_font_project_header_scrolls_with_records_and_keeps_both_touch_dimensions",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/ui-01/stdout",
+          "commandRecord": "commands/ui-01/command.json",
+          "at": "2026-10-23T03:45:47.009268+00:00",
+          "outerExit": 0,
+          "testSha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251"
+        },
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "narrow_large_font_project_header_scrolls_with_records_and_keeps_both_touch_dimensions",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-ui-01/stdout",
+          "commandRecord": "commands/r2-ui-01/command.json",
+          "at": "2026-10-23T04:00:21.980649+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+      "method": "negative_subcent_and_large_amounts_keep_their_complete_value_in_light_and_dark",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "negative_subcent_and_large_amounts_keep_their_complete_value_in_light_and_dark",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/ui-01/stdout",
+          "commandRecord": "commands/ui-01/command.json",
+          "at": "2026-10-23T03:45:47.009268+00:00",
+          "outerExit": 0,
+          "testSha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251"
+        },
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "negative_subcent_and_large_amounts_keep_their_complete_value_in_light_and_dark",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-ui-01/stdout",
+          "commandRecord": "commands/r2-ui-01/command.json",
+          "at": "2026-10-23T04:00:21.980649+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+      "method": "real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200",
+          "result": "FAIL",
+          "junitCode": -2,
+          "evidence": "commands/ui-01/stdout",
+          "commandRecord": "commands/ui-01/command.json",
+          "at": "2026-10-23T03:45:47.009268+00:00",
+          "outerExit": 0,
+          "testSha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251"
+        },
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-ui-01/stdout",
+          "commandRecord": "commands/r2-ui-01/command.json",
+          "at": "2026-10-23T04:00:21.980649+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+      "method": "restore_preview_at_large_font_preserves_explicit_confirmation_and_independent_cancel",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "restore_preview_at_large_font_preserves_explicit_confirmation_and_independent_cancel",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/ui-01/stdout",
+          "commandRecord": "commands/ui-01/command.json",
+          "at": "2026-10-23T03:45:47.009268+00:00",
+          "outerExit": 0,
+          "testSha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251"
+        },
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "restore_preview_at_large_font_preserves_explicit_confirmation_and_independent_cancel",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-ui-01/stdout",
+          "commandRecord": "commands/r2-ui-01/command.json",
+          "at": "2026-10-23T04:00:21.980649+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+      "method": "system200_project_form_uses_the_real_configuration_without_a_font_override",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "system200_project_form_uses_the_real_configuration_without_a_font_override",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/ui-01/stdout",
+          "commandRecord": "commands/ui-01/command.json",
+          "at": "2026-10-23T03:45:47.009268+00:00",
+          "outerExit": 0,
+          "testSha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251"
+        },
+        {
+          "class": "com.cooper.lithic.ui.M22AccessibilityTest",
+          "method": "system200_project_form_uses_the_real_configuration_without_a_font_override",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-ui-01/stdout",
+          "commandRecord": "commands/r2-ui-01/command.json",
+          "at": "2026-10-23T04:00:21.980649+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+      "method": "axis_boundary_actions_and_text_controls_both_refuse_to_cross_first_day",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+          "method": "axis_boundary_actions_and_text_controls_both_refuse_to_cross_first_day",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-chart-02/stdout",
+          "commandRecord": "commands/r2-chart-02/command.json",
+          "at": "2026-10-23T04:01:09.057293+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+      "method": "horizontal_drag_selects_an_unsampled_calendar_day_not_interpolated_money",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+          "method": "horizontal_drag_selects_an_unsampled_calendar_day_not_interpolated_money",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-chart-02/stdout",
+          "commandRecord": "commands/r2-chart-02/command.json",
+          "at": "2026-10-23T04:01:09.057293+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+      "method": "item_semantics_and_text_controls_query_the_same_previous_calendar_day",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+          "method": "item_semantics_and_text_controls_query_the_same_previous_calendar_day",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-chart-02/stdout",
+          "commandRecord": "commands/r2-chart-02/command.json",
+          "at": "2026-10-23T04:01:09.057293+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+      "method": "pending_item_selection_accessibility_uses_requested_date_without_old_amount",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+          "method": "pending_item_selection_accessibility_uses_requested_date_without_old_amount",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-chart-02/stdout",
+          "commandRecord": "commands/r2-chart-02/command.json",
+          "at": "2026-10-23T04:01:09.057293+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+      "method": "total_trend_semantics_and_text_controls_query_same_next_unsampled_day",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+          "method": "total_trend_semantics_and_text_controls_query_same_next_unsampled_day",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-chart-02/stdout",
+          "commandRecord": "commands/r2-chart-02/command.json",
+          "at": "2026-10-23T04:01:09.057293+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+      "method": "vertical_swipe_on_canvas_keeps_outer_page_scrolling_available",
+      "latestExecutedResult": "PASS",
+      "attempts": [
+        {
+          "class": "com.cooper.lithic.ui.M22ChartInteractionTest",
+          "method": "vertical_swipe_on_canvas_keeps_outer_page_scrolling_available",
+          "result": "PASS",
+          "junitCode": 0,
+          "evidence": "commands/r2-chart-02/stdout",
+          "commandRecord": "commands/r2-chart-02/command.json",
+          "at": "2026-10-23T04:01:09.057293+00:00",
+          "outerExit": 0,
+          "testSha256": "b1f11a6035f72d1b5ae218bd855c8a7fd344d5882a006e2899e8da63d5683dc6"
+        }
+      ]
+    },
+    {
+      "class": "com.cooper.lithic.performance.LongHistoryPerformanceTest",
+      "method": "full_twenty_year_dataset_reads_exact_global_facts_and_remains_responsive",
+      "latestExecutedResult": "NOT_RUN",
+      "reason": "SystemUI ANR safety stop before starting long workload",
+      "attempts": []
+    }
+  ]
+}

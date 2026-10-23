@@ -75,7 +75,10 @@ internal class TotalCostTrendViewModel(
                     val requested = state.value.selectedDate
                     val selected = requested?.coerceAtMost(asOf) ?: asOf
                     val selection = pointTicket
-                    val point = withContext(Dispatchers.Default) { CostTimelineEngine.point(input, selected) }
+                    val point = withContext(Dispatchers.Default) {
+                        val context = coroutineContext
+                        CostTimelineEngine.point(input, selected) { context.ensureActive() }
+                    }
                     if (!active || ticket != readTicket) return@launch
                     if (selection != pointTicket) continue
                     mutable.value = TotalCostTrendUiState(input, timeline, selected, point,
@@ -93,6 +96,7 @@ internal class TotalCostTrendViewModel(
     }
 
     fun selectDate(date: LocalDate) {
+        if (!active) return
         val captured = state.value
         val input = captured.snapshot ?: return
         val timeline = captured.timeline ?: return
@@ -100,13 +104,18 @@ internal class TotalCostTrendViewModel(
             mutable.value = captured.copy(notice = "只能观察截至 ${timeline.asOf} 的日期；未来计划不属于历史曲线。")
             return
         }
+        if (captured.selectedDate == date && captured.error == null && captured.notice == null &&
+            (captured.selectedPoint?.date == date || pointJob?.isActive == true)) return
         val ticket = ++pointTicket
         val dataset = readTicket
         pointJob?.cancel()
         mutable.value = captured.copy(selectedDate = date, selectedPoint = null, events = emptyList(), error = null, notice = null)
         pointJob = viewModelScope.launch {
             try {
-                val point = withContext(Dispatchers.Default) { CostTimelineEngine.point(input, date) }
+                val point = withContext(Dispatchers.Default) {
+                    val context = coroutineContext
+                    CostTimelineEngine.point(input, date) { context.ensureActive() }
+                }
                 if (active && ticket == pointTicket && dataset == readTicket && state.value.snapshot === input &&
                     state.value.timeline === timeline) {
                     mutable.value = state.value.copy(selectedPoint = point,

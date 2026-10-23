@@ -1,0 +1,36 @@
+{
+  "finalBuild": {
+    "tasks": [
+      ":app:assembleDebugAndroidTest",
+      ":app:lintDebug"
+    ],
+    "arguments": [
+      "-Pm13Isolated=true",
+      "--offline",
+      "--no-daemon",
+      "--max-workers=1",
+      "-Dorg.gradle.jvmargs=-Xmx640m -XX:MaxMetaspaceSize=384m",
+      "-Pkotlin.compiler.execution.strategy=in-process"
+    ],
+    "toolObservedExit": 0,
+    "gradleResult": "BUILD SUCCESSFUL in 7m",
+    "rawLog": "journey-ready-package.log"
+  },
+  "jvm": {
+    "unique": 137,
+    "pass": 137,
+    "rawLog": "jvm.log",
+    "productInputsUnchangedAfterRun": true
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 17,
+    "report": "lint.xml",
+    "sameReportBytesAfterFinalTask": true
+  },
+  "changedSourceInputHashesStableAfterFinalBuild": true,
+  "androidFinalCandidate": "NOT_RUN SystemUI ANR safety stop",
+  "newDependencies": 0,
+  "schema": 5,
+  "backupFormat": 4
+}

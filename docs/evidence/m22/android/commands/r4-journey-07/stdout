@@ -1,0 +1,96 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.CompleteJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.CompleteJourneyTest:
+INSTRUMENTATION_STATUS: test=runtime_offline_journey
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M22_REGISTERED_SYNTHETIC_PNG=20c68671-1704-4dfe-ba97-523a96796b8d:108:0a85f640e616c7ac22bd10a5928dc8dff97f94b1fb767ffc8b4b4063daaee4e0
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: M22_OWNER_CLOSED=e5c3aedd-7855-44cf-a683-a6108742d2fc
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.CompleteJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: No node found that matches TestTag = 'project-detail-daily' in scrollable container
+Semantics of the node:
+Node #632 at (l=0.0, t=72.0, r=1080.0, b=1608.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@4474316'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=0.0, maxValue=0.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 2 children
+Selector used: (TestTag = 'project-detail-content')
+
+	at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:188)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+INSTRUMENTATION_STATUS: stream=
+Error in runtime_offline_journey(com.cooper.lithic.ui.CompleteJourneyTest):
+java.lang.AssertionError: No node found that matches TestTag = 'project-detail-daily' in scrollable container
+Semantics of the node:
+Node #632 at (l=0.0, t=72.0, r=1080.0, b=1608.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@4474316'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=0.0, maxValue=0.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 2 children
+Selector used: (TestTag = 'project-detail-content')
+
+	at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:188)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+INSTRUMENTATION_STATUS: test=runtime_offline_journey
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 32.57
+There was 1 failure:
+1) runtime_offline_journey(com.cooper.lithic.ui.CompleteJourneyTest)
+java.lang.AssertionError: No node found that matches TestTag = 'project-detail-daily' in scrollable container
+Semantics of the node:
+Node #632 at (l=0.0, t=72.0, r=1080.0, b=1608.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@4474316'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=0.0, maxValue=0.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 2 children
+Selector used: (TestTag = 'project-detail-content')
+
+	at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:188)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

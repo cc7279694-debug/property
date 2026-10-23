@@ -154,6 +154,18 @@ class M18TotalCostTrendViewModelTest {
         assertEquals(before, generation.backupSnapshotSource().capture())
     }
 
+    @Test fun m22_repeated_completed_date_keeps_exact_result_without_restarting_query(): Unit = runBlocking {
+        val model = model(TotalCostTimelineRepository(reports, clock))
+        onMain { model.open() }
+        await(model) { !it.loading && it.selectedPoint != null }
+        onMain {
+            val observed = model.state.value
+            repeat(20) { model.selectDate(checkNotNull(observed.selectedDate)) }
+            assertSame(observed, model.state.value)
+            assertNotNull(model.state.value.selectedPoint)
+        }
+    }
+
     private suspend fun seed() {
         val row = LongTermProjectEntity(id(), "合成趋势", LithicDatabase.PROJECT_FALLBACK_ID,
             day.minusDays(20), createdAt = time, updatedAt = time)

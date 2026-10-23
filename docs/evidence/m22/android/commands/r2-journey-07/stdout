@@ -1,0 +1,94 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.CompleteJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.CompleteJourneyTest:
+INSTRUMENTATION_STATUS: test=injected_day_with_real_foreground_observer_and_resume_refresh
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M22_OWNER_CLOSED=7bb73912-2b84-492b-9965-c96b3f0fc752
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.CompleteJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=injected_day_with_real_foreground_observer_and_resume_refresh
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.CompleteJourneyTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=runtime_offline_journey
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M22_REGISTERED_SYNTHETIC_PNG=1c1991f9-c10b-48dc-80e5-c75ce4a19222:108:0a85f640e616c7ac22bd10a5928dc8dff97f94b1fb767ffc8b4b4063daaee4e0
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: M22_OWNER_CLOSED=0d3a38fc-b6ce-4ba0-acbe-9c0bfe794a23
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.CompleteJourneyTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 15000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.ui.CompleteJourneyTest.waitNode(CompleteJourneyTest.kt:396)
+	at com.cooper.lithic.ui.CompleteJourneyTest.access$waitNode(CompleteJourneyTest.kt:80)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:185)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+INSTRUMENTATION_STATUS: stream=
+Error in runtime_offline_journey(com.cooper.lithic.ui.CompleteJourneyTest):
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 15000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.ui.CompleteJourneyTest.waitNode(CompleteJourneyTest.kt:396)
+	at com.cooper.lithic.ui.CompleteJourneyTest.access$waitNode(CompleteJourneyTest.kt:80)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:185)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+INSTRUMENTATION_STATUS: test=runtime_offline_journey
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 97.937
+There was 1 failure:
+1) runtime_offline_journey(com.cooper.lithic.ui.CompleteJourneyTest)
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 15000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.ui.CompleteJourneyTest.waitNode(CompleteJourneyTest.kt:396)
+	at com.cooper.lithic.ui.CompleteJourneyTest.access$waitNode(CompleteJourneyTest.kt:80)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:185)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

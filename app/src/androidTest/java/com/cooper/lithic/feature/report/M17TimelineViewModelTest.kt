@@ -196,6 +196,19 @@ class M17TimelineViewModelTest {
         assertEquals(before, generation.backupSnapshotSource().capture())
     }
 
+    @Test fun m22_repeated_completed_date_keeps_exact_result_without_restarting_query(): Unit = runBlocking {
+        val project = seed("重复自然日", 100_000)
+        val model = model(ItemTimelineRepository(projects, subscriptions, clock))
+        onMain { model.openProject(project.id) }
+        await(model) { !it.loading && it.selectedProject != null }
+        onMain {
+            val observed = model.state.value
+            repeat(20) { model.selectDate(checkNotNull(observed.selectedDate)) }
+            assertSame(observed, model.state.value)
+            assertNotNull(model.state.value.selectedProject)
+        }
+    }
+
     private suspend fun seed(name: String, cents: Long): LongTermProjectEntity {
         val entity = LongTermProjectEntity(id(), name, LithicDatabase.PROJECT_FALLBACK_ID,
             firstDay.minusDays(20), createdAt = time, updatedAt = time)

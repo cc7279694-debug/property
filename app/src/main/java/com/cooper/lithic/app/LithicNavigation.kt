@@ -506,14 +506,14 @@ internal fun LithicNavigation(
                         if (chartModel != null) ProjectCostChart(chart?.title.orEmpty(),
                             chart?.project?.timeline, chart?.selectedProject, chart?.events.orEmpty(),
                             chart?.loading ?: true, chart?.error, chart?.missing ?: false,
-                            chartModel::selectDate, chartModel::refresh, onBack)
+                            chartModel::selectDate, chartModel::refresh, onBack, requestedDate = chart?.selectedDate)
                     }
                     entry<SubscriptionPriceHistory> { route ->
                         val chart = chartState?.takeIf { it.kind == com.cooper.lithic.feature.report.ItemChartKind.SUBSCRIPTION && it.id == route.id }
                         if (chartModel != null) SubscriptionPriceChart(chart?.title.orEmpty(),
                             chart?.subscription?.timeline, chart?.selectedSubscription, chart?.events.orEmpty(),
                             chart?.loading ?: true, chart?.error, chart?.missing ?: false,
-                            chartModel::selectDate, chartModel::refresh, onBack)
+                            chartModel::selectDate, chartModel::refresh, onBack, requestedDate = chart?.selectedDate)
                     }
                     entry<ReplacementComparison> { route ->
                         if (replacementModel != null && replacements != null) ReplacementComparisonScreen(replacements, onBack,

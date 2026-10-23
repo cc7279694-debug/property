@@ -1,0 +1,22 @@
+{
+  "app": {
+    "sha256": "328e3dc2fbe4c2a503fc81f2750cd68a62e5bf2b2bf624620b21d63b3f9bf213",
+    "bytes": 13822236,
+    "installed": true
+  },
+  "test": {
+    "sha256": "f671f7643ffe289f3f19440d84e03d0735f0d9b5be1f183b2c01ee3ea7658d1f",
+    "bytes": 3764680,
+    "installed": false,
+    "reason": "SystemUI ANR gate discovered; no further Android operations"
+  },
+  "actualInstalledTest": {
+    "sha256": "c9788ced5d20b80397adf04ec1ce87ef72d208716925a76cd072fd74e3e2eef7",
+    "bytes": 3764579,
+    "package": "com.cooper.lithic.debug.test",
+    "uid": 10217
+  },
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "testOnlyPendingFix": "wait for detail data rather than outer container; first-row readiness; no timeout or assertion relaxation",
+  "sourceScope": "all final product source unchanged since JVM137/App build; test readiness edit not device-verified"
+}

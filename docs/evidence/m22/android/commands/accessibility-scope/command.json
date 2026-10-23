@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "echo M22_BEGIN; echo ENABLED=$(settings get secure accessibility_enabled); echo SERVICES=$(settings get secure enabled_accessibility_services); pm list packages com.google.android.marvin.talkback; echo M22_END"
+  ],
+  "started": "2026-10-23T04:07:59.946932+00:00",
+  "seconds": 0.3279999999995198,
+  "exit": 0,
+  "stdoutBytes": 141,
+  "stdoutSha256": "ab65bd465b1231c04f11a7ae58218bd8b1d85af25f75710e3a914fb30c375ac1",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

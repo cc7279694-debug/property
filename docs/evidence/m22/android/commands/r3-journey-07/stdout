@@ -1,0 +1,78 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.CompleteJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.CompleteJourneyTest:
+INSTRUMENTATION_STATUS: test=runtime_offline_journey
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M22_REGISTERED_SYNTHETIC_PNG=8caca629-b2e7-4643-9c53-6de9b9b6a9a8:108:0a85f640e616c7ac22bd10a5928dc8dff97f94b1fb767ffc8b4b4063daaee4e0
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: M22_OWNER_CLOSED=a3f46bea-5d85-45a8-9903-cccfdea5ae8e
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.CompleteJourneyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Semantic Node has no parent layout with a Scroll SemanticsAction
+	at androidx.compose.ui.test.ActionsKt.scrollToNode(Actions.kt:97)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:82)
+	at com.cooper.lithic.ui.CompleteJourneyTest.click(CompleteJourneyTest.kt:395)
+	at com.cooper.lithic.ui.CompleteJourneyTest.access$click(CompleteJourneyTest.kt:80)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:224)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+INSTRUMENTATION_STATUS: stream=
+Error in runtime_offline_journey(com.cooper.lithic.ui.CompleteJourneyTest):
+java.lang.AssertionError: Semantic Node has no parent layout with a Scroll SemanticsAction
+	at androidx.compose.ui.test.ActionsKt.scrollToNode(Actions.kt:97)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:82)
+	at com.cooper.lithic.ui.CompleteJourneyTest.click(CompleteJourneyTest.kt:395)
+	at com.cooper.lithic.ui.CompleteJourneyTest.access$click(CompleteJourneyTest.kt:80)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:224)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+INSTRUMENTATION_STATUS: test=runtime_offline_journey
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 51.257
+There was 1 failure:
+1) runtime_offline_journey(com.cooper.lithic.ui.CompleteJourneyTest)
+java.lang.AssertionError: Semantic Node has no parent layout with a Scroll SemanticsAction
+	at androidx.compose.ui.test.ActionsKt.scrollToNode(Actions.kt:97)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:82)
+	at com.cooper.lithic.ui.CompleteJourneyTest.click(CompleteJourneyTest.kt:395)
+	at com.cooper.lithic.ui.CompleteJourneyTest.access$click(CompleteJourneyTest.kt:80)
+	at com.cooper.lithic.ui.CompleteJourneyTest$runtime_offline_journey$1.invokeSuspend(CompleteJourneyTest.kt:224)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.CompleteJourneyTest.runtime_offline_journey(CompleteJourneyTest.kt:162)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

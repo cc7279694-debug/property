@@ -1,6 +1,23 @@
 # 验收登记
 
-当前状态：**M21 — ACCEPTED / FROZEN — PASS WITH NOTES**，依据用户转交ChatGPT对`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`的独立复验，仅已验证实现限定冻结。M20第二次平台收口BLOCKED/UNKNOWN、额外平台FAIL、M10/M13-T06延期、Q03未执行子项、Q04 PROPOSED及G1/G2/G3状态保持；模块冻结不等于发行门禁通过。下方旧阶段及31 NOT_RUN记录保留原时点。
+当前状态：**M22 — READY_FOR_REVIEW，独立PENDING；Android整体可用性BLOCKED**。M21及此前限定冻结保持，M10/M13-T06延期及M20额外FAIL/UNKNOWN、Q03/Q04/Q02完整跨模块和G1/G2/G3不扩大通过。
+
+## M22候选执行登记（2026-10-23）
+
+来源M21冻结登记`a367b278bb3186cf6a8f5afdcf7f843e688fbce2`，分支`codex/m22-experience-accessibility`。只可READY_FOR_REVIEW，不自授ACCEPTED/FROZEN。[集中报告与全部边界](evidence/M22-verification.md)、[逐方法](evidence/m22/android/results.json)、[UI检查](UI_ACCEPTANCE.md)。
+
+| 案例 | 本轮实际范围 |
+| --- | --- |
+| M22-T01 | 8项组件最终PASS，部分360dp/48dp/实际系统200%断言；SystemUI ANR遮挡使整体可用性NOT_PROVEN，真实IME/读屏未验证。 |
+| M22-T02 | 空/0/亚分/旧结果、错误和迟到隔离限定回归PASS；注入日期+真实前台观察器/重入PASS；真实午夜、完整恢复旅程不改为PASS。 |
+| M22-T03 | 全规模测试源码已编译；实际1000+1000/20000+10000/20年压力**NOT_RUN**，没有性能PASS或实测规模。 |
+| M22-T04 | JVM精确参照/峰谷/随机未显示日期及6新图表/10VM/5总趋势语义PASS；真实读屏/无遮挡手势未证明。 |
+| M22-T05 | 临时图标/Debug身份诚实登记、最终App无INTERNET；不是发行资产/稳定签名通过。 |
+| M22-T06 | 运行时断网已确认，但完整旅程3次FAIL原件保留；最后数据就绪等待修正仅编译未运行，完整导出恢复**未通过**。 |
+
+137 JVM PASS；计划38 Android，实际37唯一、最新36 PASS/1 FAIL、1 NOT_RUN；含重跑47次=40 PASS/7 FAIL，不按重复次数增加覆盖。首轮UI4 PASS/4 FAIL、旅程驱动失败和原JVM RED/构建失败不覆盖。最后Lint0错误17警告、App/Test构建成功，不代替Android。6张控件层图与1张全屏ANR阻塞帧分别登记，前者不包含SystemUI覆盖层。
+
+仅原M21/5712本次启动1/正常结束1，无新建/其他设备操作；旧9文件SHA/15锁身份不变、新14零字节锁保留，未单独确认锁状态，AVD及现场保留。App更新1/Test更新4；最后可构建Test未安装。所有M10/M13-T06/M20/5704/H2/C2及历史NOTES保持，不重跑M21395/31，不合并main、不进入M23。
 
 ## M21正式限定冻结登记（2026-10-23）
 

@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "ps -A -o PID,UID,NAME | awk 'NR==1 || $3 ~ /^com.cooper.lithic.debug(:.*)?$/'"
+  ],
+  "started": "2026-10-23T03:40:03.359563+00:00",
+  "seconds": 0.375,
+  "exit": 0,
+  "stdoutBytes": 41,
+  "stdoutSha256": "874bc7ac27ea65a121bb0f91e1947902ad682aa353c504cb7c6235c31513a34b",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

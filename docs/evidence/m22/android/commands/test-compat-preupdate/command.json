@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "echo M22_BEGIN; cat /proc/sys/kernel/random/boot_id; settings get system font_scale; ps -A -o PID,UID,NAME | grep -E \"com.cooper.lithic.debug(:| |$)\" || true; run-as com.cooper.lithic.debug sh -c 'test ! -e files/lithic && test ! -e no_backup/lithic && echo DEFAULT_LEDGER_ABSENT'; echo M22_END"
+  ],
+  "started": "2026-10-23T03:59:59.404588+00:00",
+  "seconds": 0.21900000000096043,
+  "exit": 0,
+  "stdoutBytes": 86,
+  "stdoutSha256": "b85229a8188139d24459205a82472116def29907813a32a545adad8d30f9ebf0",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

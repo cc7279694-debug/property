@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "echo M22_BEGIN; dumpsys window policy | grep -E \"showing=|inputRestricted|mKeyguard|mAwake|mScreenOn\"; dumpsys power | grep -E \"mWakefulness=|mInteractive=\"; dumpsys window windows | grep -E \"mCurrentFocus|mFocusedApp\"; echo M22_END"
+  ],
+  "started": "2026-10-23T03:50:58.208051+00:00",
+  "seconds": 0.3279999999995198,
+  "exit": 0,
+  "stdoutBytes": 183,
+  "stdoutSha256": "4a78ad5bf71c2a102a6931def046a12ef933559542ca5be16621a291bfa2c8b3",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

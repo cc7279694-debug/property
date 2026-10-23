@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "echo M22_BEGIN; cat /proc/sys/kernel/random/boot_id; run-as com.cooper.lithic.debug sh -c 'find no_backup -mindepth 1 -maxdepth 2 -type f; find databases -maxdepth 1 -type f 2>/dev/null; test ! -e no_backup/active-generation && test ! -e no_backup/generations && echo DEFAULT_ROOT_ABSENT'; ps -A -o PID,UID,NAME | grep -E \"com.cooper.lithic.debug(:| |$)\" || true; echo M22_END"
+  ],
+  "started": "2026-10-23T04:11:05.644612+00:00",
+  "seconds": 0.2039999999997235,
+  "exit": 0,
+  "stdoutBytes": 79,
+  "stdoutSha256": "2193e78b61cbed62d238edcba0268e55a611b3274a2b5aa7435ab7c87a7cce78",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

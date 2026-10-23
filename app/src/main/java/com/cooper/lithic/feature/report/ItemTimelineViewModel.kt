@@ -12,9 +12,11 @@ import com.cooper.lithic.domain.report.ProjectTimelinePoint
 import com.cooper.lithic.domain.report.SubscriptionTimelineEngine
 import com.cooper.lithic.domain.report.SubscriptionTimelinePoint
 import java.time.LocalDate
+import kotlin.coroutines.coroutineContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -88,9 +90,12 @@ internal class ItemTimelineViewModel(
                 val selected = state.value.selectedDate?.coerceAtMost(asOf) ?: asOf
                 val selectionTicket = pointTicket
                 val complete = withContext(Dispatchers.Default) {
-                    loaded.copy(selectedDate = selected,
-                        selectedProject = loaded.project?.let { ProjectTimelineEngine.point(it.snapshot, asOf, selected) },
-                        selectedSubscription = loaded.subscription?.let { SubscriptionTimelineEngine.point(it.snapshot, asOf, selected) })
+                    coroutineContext.ensureActive()
+                    val project = loaded.project?.let { ProjectTimelineEngine.point(it.snapshot, asOf, selected) }
+                    coroutineContext.ensureActive()
+                    val subscription = loaded.subscription?.let { SubscriptionTimelineEngine.point(it.snapshot, asOf, selected) }
+                    coroutineContext.ensureActive()
+                    loaded.copy(selectedDate = selected, selectedProject = project, selectedSubscription = subscription)
                 }
                 if (ticket != readTicket || !active || state.value.kind != kind || state.value.id != id) return@launch
                 if (selectionTicket == pointTicket) {
@@ -114,12 +119,15 @@ internal class ItemTimelineViewModel(
     }
 
     fun selectDate(date: LocalDate) {
+        if (!active) return
         val captured = state.value
         val asOf = captured.project?.timeline?.asOf ?: captured.subscription?.timeline?.asOf ?: return
         if (date.isAfter(asOf)) {
             mutable.value = captured.copy(error = "只能观察截至 $asOf 的日期；未来计划不属于历史曲线。")
             return
         }
+        if (captured.selectedDate == date && captured.error == null &&
+            (captured.selectedProject?.date == date || captured.selectedSubscription?.date == date || pointJob?.isActive == true)) return
         val ticket = ++pointTicket
         val datasetTicket = readTicket
         pointJob?.cancel()
@@ -127,8 +135,12 @@ internal class ItemTimelineViewModel(
         pointJob = viewModelScope.launch {
             try {
                 val point = withContext(Dispatchers.Default) {
-                    captured.project?.let { ProjectTimelineEngine.point(it.snapshot, asOf, date) } to
-                        captured.subscription?.let { SubscriptionTimelineEngine.point(it.snapshot, asOf, date) }
+                    coroutineContext.ensureActive()
+                    val project = captured.project?.let { ProjectTimelineEngine.point(it.snapshot, asOf, date) }
+                    coroutineContext.ensureActive()
+                    val subscription = captured.subscription?.let { SubscriptionTimelineEngine.point(it.snapshot, asOf, date) }
+                    coroutineContext.ensureActive()
+                    project to subscription
                 }
                 if (ticket == pointTicket && datasetTicket == readTicket && active &&
                     state.value.kind == captured.kind && state.value.id == captured.id &&

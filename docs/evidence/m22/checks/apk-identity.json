@@ -1,0 +1,32 @@
+{
+  "artifacts": [
+    {
+      "path": "app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "bytes": 13822236,
+      "sha256": "328e3dc2fbe4c2a503fc81f2750cd68a62e5bf2b2bf624620b21d63b3f9bf213",
+      "dexMarkers": [
+        "project-list-stale",
+        "pending exact-day selection"
+      ]
+    },
+    {
+      "path": "app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "bytes": 3764523,
+      "sha256": "c50f5db0eaad508a5f18afe9d72fd8beb0bcea2fd5f63f6a2eef8d3579a3d251",
+      "dexMarkers": [
+        "CompleteJourneyTest",
+        "runtime_offline_journey",
+        "registerSyntheticCover",
+        "M22_OWNER_CLOSED",
+        "LongHistoryPerformanceTest",
+        "M22ChartInteractionTest",
+        "system200_project_form_uses_the_real_configuration_without_a_font_override"
+      ]
+    }
+  ],
+  "appCode": 17,
+  "appName": "0.1.0-m22-debug",
+  "runner": "com.cooper.lithic.debug.test/com.cooper.lithic.app.M13IsolatedRunner",
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "scope": "local signatures and compiled DEX checks, not Android execution"
+}

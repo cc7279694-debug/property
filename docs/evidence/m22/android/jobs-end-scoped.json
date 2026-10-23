@@ -1,0 +1,26 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "dumpsys",
+    "jobscheduler"
+  ],
+  "exit": 0,
+  "seconds": 0.875,
+  "rawBytes": 734099,
+  "rawSha256": "1a1d55e85ea50069539ff58b8cbfda63d3e0a22e680de6cdd8087c6b1f3ab620",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "targetMatches": [
+    "    TopAppTimer{<0>com.cooper.lithic.debug.test} NOT active",
+    "    TopAppTimer{<0>com.cooper.lithic.debug} NOT active",
+    "      <0>com.cooper.lithic.debug: ShrinkableDebits { debit tally: 0, bucket: 0 }",
+    "      <0>com.cooper.lithic.debug.test: ShrinkableDebits { debit tally: 0, bucket: 0 }",
+    "  u0a216: CEM ",
+    "  10216: {com.cooper.lithic.debug}",
+    "  10217: {com.cooper.lithic.debug.test}"
+  ],
+  "scope": "global raw only in memory; no unrelated jobs archived; absence is observation, not reboot or delivery guarantee"
+}

@@ -1,0 +1,346 @@
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.M22AccessibilityTest:
+INSTRUMENTATION_STATUS: test=system200_project_form_uses_the_real_configuration_without_a_font_override
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M22_SCREENSHOT=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/05-project-form-system200.png
+INSTRUMENTATION_STATUS: M22_SCREENSHOT_SOURCE=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/05-project-form-system200.json
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=system200_project_form_uses_the_real_configuration_without_a_font_override
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=failed_project_list_retains_records_with_an_explicit_stale_result_notice
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '上次读取' (ignoreCase: false))
+Semantics of the node:
+Node #99 at (l=48.0, t=1207.0, r=1032.0, b=1431.0)px, Tag: 'project-list-stale'
+Text = '[暂时无法刷新，以下为上次读取记录。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 8 siblings
+Selector used: (TestTag = 'project-list-stale')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.failed_project_list_retains_records_with_an_explicit_stale_result_notice(M22AccessibilityTest.kt:135)
+
+INSTRUMENTATION_STATUS: stream=
+Error in failed_project_list_retains_records_with_an_explicit_stale_result_notice(com.cooper.lithic.ui.M22AccessibilityTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '上次读取' (ignoreCase: false))
+Semantics of the node:
+Node #99 at (l=48.0, t=1207.0, r=1032.0, b=1431.0)px, Tag: 'project-list-stale'
+Text = '[暂时无法刷新，以下为上次读取记录。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 8 siblings
+Selector used: (TestTag = 'project-list-stale')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.failed_project_list_retains_records_with_an_explicit_stale_result_notice(M22AccessibilityTest.kt:135)
+
+INSTRUMENTATION_STATUS: test=failed_project_list_retains_records_with_an_explicit_stale_result_notice
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=failed_project_detail_explains_its_retained_result_without_claiming_fresh_data
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '上次读取' (ignoreCase: false))
+Semantics of the node:
+Node #128 at (l=48.0, t=338.0, r=1032.0, b=562.0)px, Tag: 'project-detail-stale'
+Text = '[暂时无法刷新，以下为上次读取记录。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 10 siblings
+Selector used: (TestTag = 'project-detail-stale')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.failed_project_detail_explains_its_retained_result_without_claiming_fresh_data(M22AccessibilityTest.kt:145)
+
+INSTRUMENTATION_STATUS: stream=
+Error in failed_project_detail_explains_its_retained_result_without_claiming_fresh_data(com.cooper.lithic.ui.M22AccessibilityTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '上次读取' (ignoreCase: false))
+Semantics of the node:
+Node #128 at (l=48.0, t=338.0, r=1032.0, b=562.0)px, Tag: 'project-detail-stale'
+Text = '[暂时无法刷新，以下为上次读取记录。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 10 siblings
+Selector used: (TestTag = 'project-detail-stale')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.failed_project_detail_explains_its_retained_result_without_claiming_fresh_data(M22AccessibilityTest.kt:145)
+
+INSTRUMENTATION_STATUS: test=failed_project_detail_explains_its_retained_result_without_claiming_fresh_data
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=narrow_large_font_project_header_scrolls_with_records_and_keeps_both_touch_dimensions
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M22_SCREENSHOT=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/01-project-list-local360-200.png
+INSTRUMENTATION_STATUS: M22_SCREENSHOT_SOURCE=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/01-project-list-local360-200.json
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=narrow_large_font_project_header_scrolls_with_records_and_keeps_both_touch_dimensions
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stack=androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W@f0c2aa4, window-token=android.view.ViewRootImpl$W@f0c2aa4, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+  fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+  pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+  bhv=DEFAULT
+  fitSides=
+  frameRateBoostOnTouch=true
+  dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+  fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+  pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+  bhv=DEFAULT
+  fitSides=
+  frameRateBoostOnTouch=true
+  dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+	at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+	at java.lang.Thread.getStackTrace(Thread.java:1960)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+	at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+	at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+	at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+	at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+	at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+	at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+	at com.cooper.lithic.ui.M22AccessibilityTest.real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200(M22AccessibilityTest.kt:182)
+
+INSTRUMENTATION_STATUS: stream=
+Error in real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200(com.cooper.lithic.ui.M22AccessibilityTest):
+androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W@f0c2aa4, window-token=android.view.ViewRootImpl$W@f0c2aa4, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+  fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+  pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+  bhv=DEFAULT
+  fitSides=
+  frameRateBoostOnTouch=true
+  dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+  fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+  pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+  bhv=DEFAULT
+  fitSides=
+  frameRateBoostOnTouch=true
+  dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+	at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+	at java.lang.Thread.getStackTrace(Thread.java:1960)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+	at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+	at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+	at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+	at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+	at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+	at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+	at com.cooper.lithic.ui.M22AccessibilityTest.real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200(M22AccessibilityTest.kt:182)
+
+INSTRUMENTATION_STATUS: test=real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=negative_subcent_and_large_amounts_keep_their_complete_value_in_light_and_dark
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M22_SCREENSHOT=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/02-negative-amount-light-local360-200.png
+INSTRUMENTATION_STATUS: M22_SCREENSHOT_SOURCE=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/02-negative-amount-light-local360-200.json
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: M22_SCREENSHOT=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/03-negative-amount-dark-local360-200.png
+INSTRUMENTATION_STATUS: M22_SCREENSHOT_SOURCE=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/03-negative-amount-dark-local360-200.json
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=negative_subcent_and_large_amounts_keep_their_complete_value_in_light_and_dark
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '未授权' (ignoreCase: false))
+Semantics of the node:
+Node #306 at (l=48.0, t=1799.0, r=636.0, b=1920.0)px, Tag: 'notification-permission-status'
+Text = '[系统通知未授权]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 12 siblings
+Selector used: (TestTag = 'notification-permission-status')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions(M22AccessibilityTest.kt:224)
+
+INSTRUMENTATION_STATUS: stream=
+Error in denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions(com.cooper.lithic.ui.M22AccessibilityTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '未授权' (ignoreCase: false))
+Semantics of the node:
+Node #306 at (l=48.0, t=1799.0, r=636.0, b=1920.0)px, Tag: 'notification-permission-status'
+Text = '[系统通知未授权]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 12 siblings
+Selector used: (TestTag = 'notification-permission-status')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions(M22AccessibilityTest.kt:224)
+
+INSTRUMENTATION_STATUS: test=denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=restore_preview_at_large_font_preserves_explicit_confirmation_and_independent_cancel
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: M22_SCREENSHOT=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/07-restore-preview-local360-200.png
+INSTRUMENTATION_STATUS: M22_SCREENSHOT_SOURCE=/data/data/com.cooper.lithic.debug/cache/m22-ui-captures-1a802c07-7d75-41a4-a555-848d2706ab7e/07-restore-preview-local360-200.json
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.M22AccessibilityTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=8
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=restore_preview_at_large_font_preserves_explicit_confirmation_and_independent_cancel
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 49.3
+There were 4 failures:
+1) failed_project_list_retains_records_with_an_explicit_stale_result_notice(com.cooper.lithic.ui.M22AccessibilityTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '上次读取' (ignoreCase: false))
+Semantics of the node:
+Node #99 at (l=48.0, t=1207.0, r=1032.0, b=1431.0)px, Tag: 'project-list-stale'
+Text = '[暂时无法刷新，以下为上次读取记录。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 8 siblings
+Selector used: (TestTag = 'project-list-stale')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.failed_project_list_retains_records_with_an_explicit_stale_result_notice(M22AccessibilityTest.kt:135)
+2) failed_project_detail_explains_its_retained_result_without_claiming_fresh_data(com.cooper.lithic.ui.M22AccessibilityTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '上次读取' (ignoreCase: false))
+Semantics of the node:
+Node #128 at (l=48.0, t=338.0, r=1032.0, b=562.0)px, Tag: 'project-detail-stale'
+Text = '[暂时无法刷新，以下为上次读取记录。]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 10 siblings
+Selector used: (TestTag = 'project-detail-stale')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.failed_project_detail_explains_its_retained_result_without_claiming_fresh_data(M22AccessibilityTest.kt:145)
+3) real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200(com.cooper.lithic.ui.M22AccessibilityTest)
+androidx.test.espresso.base.RootViewPicker$RootViewWithoutFocusException: Waited for the root of the view hierarchy to have window focus and not request layout for 10 seconds. If you specified a non default root matcher, it may be picking a root that never takes focus. Root:
+Root{application-window-token=android.view.ViewRootImpl$W@f0c2aa4, window-token=android.view.ViewRootImpl$W@f0c2aa4, has-window-focus=false, layout-params-type=1, layout-params-string={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+  fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+  pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+  bhv=DEFAULT
+  fitSides=
+  frameRateBoostOnTouch=true
+  dvrrWindowFrameRateHint=true}, decor-view-string=DecorView{id=-1, visibility=VISIBLE, width=1080, height=1920, has-focus=true, has-focusable=true, has-window-focus=false, is-clickable=false, is-enabled=true, is-focused=false, is-focusable=false, is-layout-requested=false, is-selected=false, layout-params={(0,0)(fillxfill) sim={forwardNavigation} ty=BASE_APPLICATION wanim=0x103030e
+  fl=LAYOUT_IN_SCREEN LAYOUT_INSET_DECOR SPLIT_TOUCH HARDWARE_ACCELERATED DRAWS_SYSTEM_BAR_BACKGROUNDS
+  pfl=NO_MOVE_ANIMATION EDGE_TO_EDGE_ENFORCED FORCE_DRAW_STATUS_BAR_BACKGROUND FIT_INSETS_CONTROLLED
+  bhv=DEFAULT
+  fitSides=
+  frameRateBoostOnTouch=true
+  dvrrWindowFrameRateHint=true}, tag=null, root-is-layout-requested=false, has-input-connection=false, x=0.0, y=0.0, child-count=1}}
+	at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+	at java.lang.Thread.getStackTrace(Thread.java:1960)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:34)
+	at androidx.test.espresso.base.EspressoExceptionHandler.handleSafely(EspressoExceptionHandler.java:26)
+	at androidx.test.espresso.base.DefaultFailureHandler$TypedFailureHandler.handle(DefaultFailureHandler.java:158)
+	at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:120)
+	at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:385)
+	at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:212)
+	at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:140)
+	at androidx.test.espresso.Espresso.closeSoftKeyboard(Espresso.java:206)
+	at com.cooper.lithic.ui.M22AccessibilityTest.real_project_form_keeps_input_errors_keyboard_save_and_back_reachable_at_local200(M22AccessibilityTest.kt:182)
+4) denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions(com.cooper.lithic.ui.M22AccessibilityTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '未授权' (ignoreCase: false))
+Semantics of the node:
+Node #306 at (l=48.0, t=1799.0, r=636.0, b=1920.0)px, Tag: 'notification-permission-status'
+Text = '[系统通知未授权]'
+Actions = [ClearTextSubstitution, GetTextLayoutResult, SetTextSubstitution, ShowTextSubstitution]
+Has 12 siblings
+Selector used: (TestTag = 'notification-permission-status')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.M22AccessibilityTest.denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions(M22AccessibilityTest.kt:224)
+
+FAILURES!!!
+Tests run: 8,  Failures: 4
+
+
+INSTRUMENTATION_CODE: -1

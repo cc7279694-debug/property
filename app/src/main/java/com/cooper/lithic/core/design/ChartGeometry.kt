@@ -3,6 +3,7 @@ package com.cooper.lithic.core.design
 import java.math.BigDecimal
 import java.math.MathContext
 import java.time.LocalDate
+import kotlin.math.roundToLong
 
 /** Numeric values stay exact; this projection is only for rendering coordinates. */
 data class CostChartPoint(val date: LocalDate, val value: BigDecimal)
@@ -23,6 +24,16 @@ internal class ChartGeometry private constructor(
         .divide(maximum.subtract(minimum), MathContext.DECIMAL128).toFloat().coerceIn(0f, 1f)
 
     val zero: Float get() = y(BigDecimal.ZERO)
+
+    /** Pixels choose a calendar date only; the caller must query its frozen engine for money. */
+    fun dateAt(fraction: Float): LocalDate {
+        require(fraction.isFinite()) { "A chart selection needs a finite horizontal coordinate" }
+        val elapsed = end.toEpochDay() - start.toEpochDay()
+        return LocalDate.ofEpochDay(start.toEpochDay() + (elapsed * fraction.coerceIn(0f, 1f).toDouble()).roundToLong())
+    }
+
+    fun adjacentDay(date: LocalDate, offset: Int): LocalDate = LocalDate.ofEpochDay(
+        (date.toEpochDay() + offset.toLong()).coerceIn(start.toEpochDay(), end.toEpochDay()))
 
     companion object {
         fun forPoints(points: List<CostChartPoint>): ChartGeometry? {

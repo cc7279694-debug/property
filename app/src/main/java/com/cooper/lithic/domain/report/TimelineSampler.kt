@@ -20,7 +20,7 @@ object TimelineSampler {
     ): CostTimeline {
         require(basePointBudget in 12..1000) { "Total-history extrema budget must be between 12 and 1000" }
         cancellationCheck()
-        val prepared = CostTimelineEngine.prepare(snapshot)
+        val prepared = CostTimelineEngine.prepare(snapshot, cancellationCheck)
         if (snapshot.overview.projects.isEmpty() && snapshot.overview.subscriptions.isEmpty()) {
             return CostTimeline(asOf, null, emptyList(), emptyList(), basePointBudget, 0L, false)
         }
@@ -59,7 +59,7 @@ object TimelineSampler {
                 keepExtrema()
                 bucket = nextBucket
             }
-            val point = prepared.point(LocalDate.ofEpochDay(epochDay))
+            val point = prepared.point(LocalDate.ofEpochDay(epochDay), cancellationCheck)
             if (epochDay in critical) retained[point.date] = point
             for (series in 0..2) {
                 val low = minimum[series]

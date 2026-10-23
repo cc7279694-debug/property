@@ -378,3 +378,12 @@ LithicApplication提供WorkManager Configuration.Provider及共享AppContainer�
 ReminderDispatch持有同代协调器，复核完整事实、偏好、Receipt、记录时区业务日和平台权限，再同步调用Publisher、成功后持久Receipt。恢复退休须等待同一租约；取消在发布前阻止执行，发布后回执不可被取消抹掉。系统通知使用完整逻辑tag和稳定ID；有限崩溃重试窗口存在。清晨延后至当日09:00，不将早到抑制误作永久耗尽；任务在实际发布前按真实剩余日数生成文案。无网络、精确闹钟或常驻前台服务。
 
 完整导出format3为九表加偏好/截止，旧format1/2严格验证后显式升级。DataGenerationStore只对未发布的恢复候选建立截止与proof3，先验原proof，再写水位、同步、验证，最后沿既有AtomicFile SWITCHING/STABLE切换；内部metadata格式仍1，不能与backup format混同。旧proof1/2保持原字节契约，不能隐藏新提醒事实。恢复重建未来候选，不复制WorkManager数据库；旧代排队任务拒绝。当前实际验证/NOT_RUN以[集中报告](evidence/M20-verification.md)为准，未运行系统通知或迁移不得由编译替代。
+
+
+## M22：一次快照内的图表准备与精确选日
+
+M22候选不改变Room5/backup4、唯一owner/coordinator或冻结金额公式。TimelineSampler仍逐自然日扫描完整范围，并保留事实边界、事件及三条序列峰谷；240只为基础显示点预算。CostTimelineEngine每次prepare建立局部索引：订阅以paidOn、effectiveFrom、paidUntilExclusive和状态生效日划分当前贡献恒定区间，只复用原M03计算所得currentRate/ACTIVE，不缓存elapsedPaidDays或historicalAverage。项目仍逐日调用原M02；汇总使用BigDecimal，正负标记与同次贡献计算共同取得。索引仅存在于这次不可变快照，当前调用串行，不跨写入、日期、generation共享或持久化。
+
+准备和对象循环加入协作取消检查；排序和冻结单对象内部仍有不可中断段，未承诺固定最坏取消时延。总趋势及单项VM保留ticket/generation/日期隔离，并忽略正在处理或已完成的同日重复选择。图表横向拖动、前后日按钮及语义动作只产生自然日，金额由原快照/引擎精确查询；请求中显示该日期等待状态，不从曲线插值、不展示上一日期金额。纵向滚动保留。
+
+列表标题/错误区纳入原LazyColumn，旧结果读取失败时标明尚未刷新；不新增查询接口、缓存表或第二套业务流程。执行结果与未测边界见[M22报告](evidence/M22-verification.md)，候选等待独立验收。

@@ -32,31 +32,36 @@ internal fun ProjectListScreen(
     onRetry: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.fillMaxSize().testTag("project-list-screen"),
-        verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
-            verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("project-list-back")) {
-                Text("返回现在", style = MaterialTheme.typography.bodyLarge)
-            }
-            Text("长期项目", style = MaterialTheme.typography.headlineLarge,
-                modifier = Modifier.semantics { heading() })
-            Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。",
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("project-list-create")) {
-                Text("新增长期项目", style = MaterialTheme.typography.bodyLarge)
-            }
-            state.totalCount?.let { Text("当前列表 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
-            state.error?.let {
-                Text(it, Modifier.testTag("project-list-error"), style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.error)
-                TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-list-retry")) {
-                    Text("重新读取", style = MaterialTheme.typography.bodyLarge)
+    Column(modifier.fillMaxSize().testTag("project-list-screen")) {
+        LazyColumn(Modifier.fillMaxSize().testTag("project-list-content"),
+            verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+            item {
+                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
+                    verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+                    TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("project-list-back")) {
+                        Text("返回现在", style = MaterialTheme.typography.bodyLarge)
+                    }
+                    Text("长期项目", style = MaterialTheme.typography.headlineLarge,
+                        modifier = Modifier.semantics { heading() })
+                    Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。",
+                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("project-list-create")) {
+                        Text("新增长期项目", style = MaterialTheme.typography.bodyLarge)
+                    }
+                    state.totalCount?.let { Text("当前列表 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
+                    state.error?.let {
+                        Text(it, Modifier.testTag("project-list-error"), style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.error)
+                        if (state.items.isNotEmpty()) {
+                            Text("暂时无法刷新，以下为上次读取记录。", Modifier.testTag("project-list-stale"),
+                                style = MaterialTheme.typography.bodyMedium)
+                        }
+                        TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-list-retry")) {
+                            Text("重新读取", style = MaterialTheme.typography.bodyLarge)
+                        }
+                    }
                 }
             }
-        }
-        LazyColumn(Modifier.fillMaxWidth().weight(1f).testTag("project-list-content"),
-            verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
             if (state.loading) item { Text("正在读取长期项目", Modifier.padding(LithicSpacing.medium)) }
             if (!state.loading && state.error == null && state.totalCount == 0L && state.items.isEmpty()) {
                 item { Text("暂无长期项目", Modifier.padding(LithicSpacing.medium), style = MaterialTheme.typography.bodyLarge) }

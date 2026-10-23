@@ -56,4 +56,44 @@ class ChartGeometryTest {
         assertEquals(0f, geometry.y(large), 0f)
         assertEquals(1f, geometry.y(large.negate()), 0f)
     }
+
+    @Test fun date_selection_uses_natural_days_between_display_points() {
+        val geometry = ChartGeometry.forPoints(listOf(point(0, "10"), point(10, "1")))!!
+        assertEquals(day.plusDays(6), geometry.dateAt(.6f))
+        assertEquals(day.plusDays(5), geometry.dateAt(.5f))
+        assertEquals(day, geometry.dateAt(-1f))
+        assertEquals(day.plusDays(10), geometry.dateAt(2f))
+    }
+
+    @Test fun date_mapping_does_not_depend_on_money_or_list_index() {
+        val tiny = ChartGeometry.forPoints(listOf(point(0, "1E-1000"), point(10, "0")))!!
+        val negative = ChartGeometry.forPoints(listOf(point(0, "-1E1000"), point(1, "0"), point(10, "-1")))!!
+        for (fraction in listOf(0f, .13f, .51f, .91f, 1f)) assertEquals(tiny.dateAt(fraction), negative.dateAt(fraction))
+    }
+
+    @Test fun calendar_actions_move_one_day_not_one_retained_point() {
+        val geometry = ChartGeometry.forPoints(listOf(point(0, "10"), point(100, "1")))!!
+        assertEquals(day.plusDays(49), geometry.adjacentDay(day.plusDays(50), -1))
+        assertEquals(day.plusDays(51), geometry.adjacentDay(day.plusDays(50), 1))
+        assertEquals(day, geometry.adjacentDay(day, -1))
+        assertEquals(day.plusDays(100), geometry.adjacentDay(day.plusDays(100), 1))
+    }
+
+    @Test fun date_selection_handles_single_day_and_extreme_supported_dates() {
+        val single = ChartGeometry.forPoints(listOf(point(0, "1")))!!
+        assertEquals(day, single.dateAt(.8f))
+        val extreme = ChartGeometry.forPoints(listOf(CostChartPoint(LocalDate.MIN, BigDecimal.ZERO),
+            CostChartPoint(LocalDate.MAX, BigDecimal.ONE)))!!
+        assertEquals(LocalDate.MIN, extreme.dateAt(0f))
+        assertEquals(LocalDate.MAX, extreme.dateAt(1f))
+        assertEquals(LocalDate.MIN, extreme.adjacentDay(LocalDate.MIN, -1))
+        assertEquals(LocalDate.MAX, extreme.adjacentDay(LocalDate.MAX, 1))
+    }
+
+    @Test fun nonfinite_pointer_positions_are_rejected() {
+        val geometry = ChartGeometry.forPoints(listOf(point(0, "1"), point(3, "0")))!!
+        listOf(Float.NaN, Float.POSITIVE_INFINITY, Float.NEGATIVE_INFINITY).forEach { fraction ->
+            assertThrows(IllegalArgumentException::class.java) { geometry.dateAt(fraction) }
+        }
+    }
 }

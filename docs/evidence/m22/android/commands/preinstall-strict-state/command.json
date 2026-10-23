@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "run-as com.cooper.lithic.debug sh -c 'set -e; echo M22_BEGIN; for d in no_backup files cache; do if test -d \"$d\"; then find \"$d\" -type f; else echo ABSENT:$d; fi; done; echo M22_END'"
+  ],
+  "started": "2026-10-23T03:41:26.554772+00:00",
+  "seconds": 0.9529999999995198,
+  "exit": 0,
+  "stdoutBytes": 3269,
+  "stdoutSha256": "2f6ca09ac885c7b6d9bb05aa8c6f2756883249497992c6b62419b6ef0dd34caa",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

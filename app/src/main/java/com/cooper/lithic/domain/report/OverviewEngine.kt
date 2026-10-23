@@ -43,13 +43,18 @@ data class OverviewResult(
 
 object OverviewEngine {
     /** Frozen engines own cost rules and precision; aggregation adds their values without further rounding. */
-    fun evaluate(input: OverviewSnapshot, asOf: LocalDate): OverviewResult {
-        validate(input)
+    fun evaluate(input: OverviewSnapshot, asOf: LocalDate): OverviewResult = evaluate(input, asOf) {}
+
+    /** Same calculation; internal chart callers can cooperatively stop between records. */
+    internal fun evaluate(input: OverviewSnapshot, asOf: LocalDate, cancellationCheck: () -> Unit): OverviewResult {
+        cancellationCheck()
+        validate(input, cancellationCheck)
         val projectCategories = emptyCategories(input.categories, OverviewKind.PROJECT)
         val subscriptionCategories = emptyCategories(input.categories, OverviewKind.SUBSCRIPTION)
         var activeProjectCount = 0L
         var activeSubscriptionCount = 0L
         for (project in input.projects) {
+            cancellationCheck()
             val result = ProjectCostEngine.evaluate(project.snapshot, asOf)
             if (result.contributesToCurrentTotal) {
                 addContribution(projectCategories, project.categoryId, requireNotNull(result.dailyRate))
@@ -57,6 +62,7 @@ object OverviewEngine {
             }
         }
         for (subscription in input.subscriptions) {
+            cancellationCheck()
             val result = SubscriptionCostEngine.evaluate(subscription.snapshot, asOf)
             if (result.displayStatus == SubscriptionDisplayStatus.ACTIVE) {
                 addContribution(subscriptionCategories, subscription.categoryId, result.currentRate)
@@ -98,30 +104,30 @@ object OverviewEngine {
         )
     }
 
-    private fun validate(input: OverviewSnapshot) {
-        require(input.categories.all { it.id.isNotBlank() && it.name.isNotBlank() }) {
+    private fun validate(input: OverviewSnapshot, cancellationCheck: () -> Unit) {
+        require(input.categories.all { cancellationCheck(); it.id.isNotBlank() && it.name.isNotBlank() }) {
             "Overview categories need a nonblank identity and name"
         }
-        require(input.categories.map { it.id }.toSet().size == input.categories.size) {
+        require(input.categories.map { cancellationCheck(); it.id }.toSet().size == input.categories.size) {
             "Overview category identities must be unique"
         }
-        require(input.projects.all { it.id.isNotBlank() } && input.subscriptions.all { it.id.isNotBlank() }) {
+        require(input.projects.all { cancellationCheck(); it.id.isNotBlank() } && input.subscriptions.all { cancellationCheck(); it.id.isNotBlank() }) {
             "Overview record identities cannot be blank"
         }
-        require(input.projects.map { it.id }.toSet().size == input.projects.size) {
+        require(input.projects.map { cancellationCheck(); it.id }.toSet().size == input.projects.size) {
             "Overview project identities must be unique within the project batch"
         }
-        require(input.subscriptions.map { it.id }.toSet().size == input.subscriptions.size) {
+        require(input.subscriptions.map { cancellationCheck(); it.id }.toSet().size == input.subscriptions.size) {
             "Overview subscription identities must be unique within the subscription batch"
         }
         val categories = input.categories.associateBy { it.id }
-        require(input.projects.all { categories[it.categoryId]?.kind == OverviewKind.PROJECT }) {
+        require(input.projects.all { cancellationCheck(); categories[it.categoryId]?.kind == OverviewKind.PROJECT }) {
             "Each overview project must refer to an existing project category"
         }
-        require(input.subscriptions.all { categories[it.categoryId]?.kind == OverviewKind.SUBSCRIPTION }) {
+        require(input.subscriptions.all { cancellationCheck(); categories[it.categoryId]?.kind == OverviewKind.SUBSCRIPTION }) {
             "Each overview subscription must refer to an existing subscription category"
         }
-        require(input.subscriptions.all { it.id == it.snapshot.subscription.id }) {
+        require(input.subscriptions.all { cancellationCheck(); it.id == it.snapshot.subscription.id }) {
             "Overview subscription identity must match its cost snapshot"
         }
     }

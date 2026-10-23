@@ -1,0 +1,45 @@
+{
+  "ports": [
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5713,
+      "OwningProcess": 11800
+    },
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5712,
+      "OwningProcess": 11800
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5713,
+      "OwningProcess": 11800
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5712,
+      "OwningProcess": 11800
+    }
+  ],
+  "at": "2026-10-23T04:32:12.0019364Z",
+  "qemuWindowsPeakWorkingSetBytes": 3816259584,
+  "scope": "Windows QEMU process lifecycle high water; not guest App or total-host memory hard limit",
+  "settingsRestored": true,
+  "qemu": {
+    "Name": "qemu-system-x86_64-headless.exe",
+    "ProcessId": 11800,
+    "ParentProcessId": 31384,
+    "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+    "CreationDate": "2026-10-23T11:38:08.74069+08:00",
+    "CommandLine": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M21_API36_20261023 -port 5712 -datadir E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data -cache E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data/cache.img -snapstorage E:/CODEX/.codex/research-env/lithic-m21-android-20261023/snapshots/snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2560 -cores 2"
+  },
+  "launcher": {
+    "Name": "emulator.exe",
+    "ProcessId": 31384,
+    "ParentProcessId": 29312,
+    "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+    "CreationDate": "2026-10-23T11:38:08.372958+08:00",
+    "CommandLine": "\"C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe\" -avd Lithic_M21_API36_20261023 -port 5712 -datadir E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data -cache E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data/cache.img -snapstorage E:/CODEX/.codex/research-env/lithic-m21-android-20261023/snapshots/snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2560 -cores 2"
+  },
+  "testGate": "SystemUI ANR; instrumentation stopped"
+}

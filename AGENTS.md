@@ -1,4 +1,4 @@
-<!-- 2026-10-22：M20已按用户转交的独立结论限定冻结；第二次平台收口BLOCKED。当前仅文档登记，末节为最新停止边界。 -->
+<!-- 2026-10-23：当前M22候选READY_FOR_REVIEW，Android整体门禁BLOCKED；末节为最新范围和停止边界。 -->
 # 砺石 LITHIC 协作规范
 
 ## 1. 范围与优先级
@@ -129,3 +129,12 @@ M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未
 用户正式转交ChatGPT对`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`的独立复验结论：**M21 — ACCEPTED / FROZEN — PASS WITH NOTES**。M21-T01～T06限定通过；认可原候选395 JVM PASS、Android首轮31 PASS/重跑0、已独立查看的4张隔离Compose截图及Lint0错误25警告。仅冻结真实里程碑规则、类型化抑制水位、同日摘要、受保护点击接口，以及Room5/backup4的已验证实现；实际Room4→5、事务回滚、format4往返和旧proof3恢复按报告限定范围继承。本次只是文档登记，不重跑测试、构建或操作设备。见[正式登记](docs/ACCEPTANCE_MATRIX.md#m21正式限定冻结登记2026-10-23)。
 
 补验构建/Lint的3个原文件未随原提交归档；本地原件保留但无已提交的历史SHA锚点，本轮只移除失效链接，不补造记录或把原候选Lint XML当补验新日志。原报告结果不变。31项外Android边界、真实系统发布/送达、MainActivity点击、真实重启仍NOT_RUN；360dp/200%仅LocalDensity；15个零字节缓存锁文件保留且锁状态未单独确认。M21/5712及其独立目录为保留现场，未经新授权不得操作、复用或清理。M20额外平台FAIL/第二次收口BLOCKED/UNKNOWN及5704、M10延期/三JPEG历史FAIL、M13-T06延期、Q04 PROPOSED、Q03未执行子项、G1/G2/G3与全部历史NOTES不变。模块限定冻结不等于发行门禁通过；只推当前M21分支登记文档后停止，不合并main、不启动M22。
+
+
+## M22当前授权及停止点（2026-10-23）
+
+用户完整M22指令与5712复用补充覆盖上方M21原时点“未授权M22”。只从M21冻结登记a367b278在`codex/m22-experience-accessibility`实现现有Compose/真实状态/精确图表与快照内部优化，Room5/backup4、冻结引擎、owner/恢复协议、依赖不改；不合并M10/独立UI-C1，不进入M23。[契约](docs/planning/M22_CONTRACT.md)、[实际报告](docs/evidence/M22-verification.md)。
+
+停止点READY_FOR_REVIEW，独立PENDING；137 JVM PASS，37 Android唯一方法最新36 PASS/1 FAIL、长历史1 NOT_RUN。SystemUI ANR实际遮挡，T01整体/T03/T06未完成；原始失败及最后只编译未运行的测试修正保持，不能由控件语义/截图推定实际完整可用。仅原M21/5712创建0/启动1/正常结束1，未操作其他设备；旧9文件SHA和15锁身份不变，新14零字节锁也保留，设置已恢复、AVD与ANR现场保留。不得无新授权再次启动、清理或复用。
+
+只推当前M22候选后停止等待ChatGPT独立审查，不能自行冻结或进入M23。M21及此前冻结、M20平台FAIL/第二次收口BLOCKED/UNKNOWN/5704、M10延期/三JPEG历史FAIL、M13-T06延期、Q03未执行子项/Q04 PROPOSED/Q02完整16组/G1/G2/G3及全部历史NOTES不变。不重跑M21395 JVM/31 Android，不配置正式签名或录入真实个人数据。

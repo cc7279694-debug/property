@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "run-as com.cooper.lithic.debug sh -c 'set -e; echo M22_BEGIN; if test -d no_backup; then find no_backup -type f; fi; if test -d databases; then find databases -type f; fi; echo M22_END'"
+  ],
+  "started": "2026-10-23T03:43:05.932231+00:00",
+  "seconds": 0.26599999999962165,
+  "exit": 0,
+  "stdoutBytes": 20,
+  "stdoutSha256": "f3f6eda0af0539d123942cd5411efc9fef65b7b55e7febe18600916501ec88f1",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

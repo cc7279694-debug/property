@@ -56,6 +56,7 @@ internal fun CostChartPage(
     onRetry: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
+    requestedDate: LocalDate? = selectedDate,
 ) {
     var dateRaw by rememberSaveable(title) { mutableStateOf("") }
     var dateError by rememberSaveable(title) { mutableStateOf<String?>(null) }
@@ -71,6 +72,9 @@ internal fun CostChartPage(
     val visibleEvents = filteredEvents.take(eventLimit)
     val groups = visibleEvents.groupBy { it.date }
     val hasData = asOf != null && !missing
+    val selectionFocus = requestedDate ?: selectedDate
+    val selectionStart = remember(points) { points.minOfOrNull { it.date } }
+    val selectionEnd = remember(points) { points.maxOfOrNull { it.date } }
     fun applyDate() {
         val parsed = try { LocalDate.parse(dateRaw.trim()) } catch (_: DateTimeParseException) { null }
         when {
@@ -108,22 +112,33 @@ internal fun CostChartPage(
                 Card(Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text("结果截至 $asOf", style = MaterialTheme.typography.bodyMedium)
-                        if (selectedDate != null) {
-                            Text("所选日期：$selectedDate", Modifier.testTag("chart-selected-date"), style = MaterialTheme.typography.titleMedium)
-                            AmountText(selectedValue, Modifier.testTag("chart-selected-value"), style = MaterialTheme.typography.headlineLarge)
-                            Text(selectedStatus.orEmpty(), Modifier.testTag("chart-selected-status"))
+                        if (selectionFocus != null) {
+                            Text("所选日期：$selectionFocus", Modifier.testTag("chart-selected-date"), style = MaterialTheme.typography.titleMedium)
+                            if (selectedDate == selectionFocus) {
+                                AmountText(selectedValue, Modifier.testTag("chart-selected-value"), style = MaterialTheme.typography.headlineLarge)
+                                Text(selectedStatus.orEmpty(), Modifier.testTag("chart-selected-status"))
+                            } else Text("正在查询所选日期；不使用旧日期金额或0代替结果。")
                         } else Text("选择一个日期，查看冻结引擎返回的精确历史结果。")
                     }
                 }
             }
             item("canvas") {
                 CostChart(points, if (selectedDate != null && selectedValue != null) CostChartPoint(selectedDate, selectedValue) else null,
-                    onSelectDate, step, events.asSequence().filter { it.date <= cutoff }.map { it.date }.toSet())
+                    onSelectDate, step, events.asSequence().filter { it.date <= cutoff }.map { it.date }.toSet(), requestedDate = selectionFocus)
                 if (sampled) Text("长跨度按显示点采样；事实边界保留。日期查询与事件清单不受显示点数量限制。",
                     style = MaterialTheme.typography.bodySmall)
             }
             item("date") {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    selectionFocus?.let { date ->
+                        OutlinedButton({ onSelectDate(date.minusDays(1)) },
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-previous-day"),
+                            enabled = selectionStart != null && selectionEnd != null && date > selectionStart && date <= selectionEnd) { Text("前一天") }
+                        OutlinedButton({ onSelectDate(date.plusDays(1)) },
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-next-day"),
+                            enabled = selectionStart != null && selectionEnd != null && date >= selectionStart && date < selectionEnd) { Text("后一天") }
+                        Text("前后一天限图表日期范围；其他已过去日期可输入查询。", style = MaterialTheme.typography.bodySmall)
+                    }
                     OutlinedTextField(dateRaw, { dateRaw = it; dateError = null }, Modifier.fillMaxWidth().testTag("chart-date-input"),
                         label = { Text("查询日期（年-月-日）") }, placeholder = { Text(selectedDate?.toString() ?: asOf.toString()) },
                         isError = dateError != null, singleLine = true,

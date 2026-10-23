@@ -1,0 +1,25 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "logcat",
+    "-d",
+    "-b",
+    "events",
+    "-v",
+    "epoch",
+    "-s",
+    "am_anr:I",
+    "*:S"
+  ],
+  "exit": 0,
+  "seconds": 0.39099999999962165,
+  "rawBytes": 0,
+  "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "privacyFilteredLines": [],
+  "scope": "am_anr events for SystemUI or target app only; global raw processed in memory, not archived",
+  "noMatchingEventDoesNotDisproveFrame": true
+}

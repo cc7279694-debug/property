@@ -24,6 +24,7 @@ internal fun SubscriptionPriceChart(
     onRetry: () -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
+    requestedDate: LocalDate? = selected?.date,
 ) {
     val points = remember(timeline) { timeline?.points.orEmpty().map { CostChartPoint(it.date, it.cost.currentRate) } }
     val selectedStatus = selected?.let {
@@ -38,5 +39,5 @@ internal fun SubscriptionPriceChart(
         "展示当日有效套餐的标准日均价，月30天、季90天、年365天。不是历史平均日成本，也不是每天发生扣款；预付未来套餐不提前生效。",
         timeline?.asOf, points, selected?.date, selected?.cost?.currentRate, selectedStatus,
         events, emptyList(), timeline?.sampled == true, true, loading, error, missing,
-        onSelectDate, onRetry, onBack, modifier)
+        onSelectDate, onRetry, onBack, modifier, requestedDate)
 }

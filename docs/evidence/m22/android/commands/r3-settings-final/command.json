@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "echo M22_BEGIN; echo FONT=$(settings get system font_scale); echo PLANE=$(settings get global airplane_mode_on); echo WIFI=$(settings get global wifi_on); echo DATA=$(settings get global mobile_data); wm size; wm density; cmd uimode night; echo M22_END"
+  ],
+  "started": "2026-10-23T04:12:41.219947+00:00",
+  "seconds": 0.7649999999994179,
+  "exit": 0,
+  "stdoutBytes": 120,
+  "stdoutSha256": "b5d06b07b0fd5e1b3ece572d65c2e530432892ea625e0f192564ba9691d578ad",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

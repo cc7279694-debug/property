@@ -4,8 +4,10 @@
 
 ## Current Stage
 
+- **M22 — READY_FOR_REVIEW（Android整体可用性BLOCKED）**：从M21冻结登记`a367b278bb3186cf6a8f5afdcf7f843e688fbce2`在`codex/m22-experience-accessibility`实施最小列表/旧结果提示、精确图表交互与快照局部优化，Room5/backup4及冻结算法不改。137 JVM PASS；Android执行37唯一方法，最新36 PASS/1 FAIL，长历史1项NOT_RUN，原始47次执行/全部失败保留。最后测试同步修正只编译、未安装或复验；Lint0错误17警告。真实全屏和结束窗口确认SystemUI ANR遮挡，停止后续Android，不将控件层截图/语义PASS当作无遮挡完整UI通过。5712本次创建0/启动1/正常结束1，旧9文件SHA与15锁身份不变、新14锁保留，设置已恢复，AVD保留；禁止再次自行启动。完整离线旅程未完成、无正式20年规模性能实测。见[报告](evidence/M22-verification.md)、[UI范围](UI_ACCEPTANCE.md)、[逐方法](evidence/m22/android/results.json)。M22未冻结，M23未授权；M10/M13-T06/M20/Q03/Q04/Q02/G1/G2/G3历史边界保持。
+
 - **M21 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户正式转交的ChatGPT独立复验，评审提交`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`，评审及登记分支`codex/m21-milestone-reminders`。M21-T01～T06限定通过，认可原候选395 JVM PASS、Android首轮31 PASS/重跑0、已独立查看的4张隔离Compose截图及Lint0错误25警告。冻结真实里程碑规则、抑制水位、同日摘要、受保护点击接口及Room5/backup4已验证实现；Room4→5迁移/重开、事务回滚、format4往返及旧proof3恢复仅按[补验报告](evidence/M21-Android-verification.md)范围认可，见[正式登记及完整NOTES](ACCEPTANCE_MATRIX.md#m21正式限定冻结登记2026-10-23)。本轮只做文档冻结回写与失效链接修正，未重跑测试、构建、核验APK或操作设备。补验构建/Lint原文件未随原提交归档；本地原件保留，无历史SHA锚点，不补造或用原候选Lint替代新日志。
-  31项之外的Android日期子边界、proof1/2、API26/OEM/完整TalkBack、真实系统发布/送达、MainActivity点击及真实重启仍NOT_RUN；360dp/200%仅LocalDensity，合成Publisher/TestDriver不冒充系统行为。15个零字节缓存锁文件保留，锁状态未单独确认。`Lithic_M21_API36_20261023 / emulator-5712`及独立目录为保留现场，未经新授权不得操作、清理或复用；此前2048MB请求被工具自动提高到2560MB、退出/资源口径等NOTES保持。Q03 USER_CONFIRMED不等于未执行子项或完整跨模块通过；Q04 PROPOSED、G1/G2/G3历史状态不改。原报告/checkpoint的READY_FOR_REVIEW及31 NOT_RUN/设备0是各自历史；模块限定冻结不代表整体发行通过，不进入M22。
+  31项之外的Android日期子边界、proof1/2、API26/OEM/完整TalkBack、真实系统发布/送达、MainActivity点击及真实重启仍NOT_RUN；360dp/200%仅LocalDensity，合成Publisher/TestDriver不冒充系统行为。15个零字节缓存锁文件保留，锁状态未单独确认。`Lithic_M21_API36_20261023 / emulator-5712`及独立目录为保留现场，未经新授权不得操作、清理或复用；此前2048MB请求被工具自动提高到2560MB、退出/资源口径等NOTES保持。Q03 USER_CONFIRMED不等于未执行子项或完整跨模块通过；Q04 PROPOSED、G1/G2/G3历史状态不改。原报告/checkpoint的READY_FOR_REVIEW及31 NOT_RUN/设备0是各自历史；模块限定冻结不代表整体发行通过；当次未进入M22，本轮另行授权见上。
 
 - **M20 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-22正式转交的ChatGPT独立源码及证据验收，评审`d3776e0b2852428911ad0f09296680046211b32d`，评审及登记分支`codex/m20-renewal-notifications`。M20-T01～T06、此前238 JVM PASS、原22 Android最终PASS及Lint0错误25警告获限定认可；仅冻结续费Planner、权限/偏好、有限幂等回执、WorkManager集成及Room schema v4、backup format v3兼容实现，不扩大为OEM后台准点保证。见[正式登记](ACCEPTANCE_MATRIX.md#m20正式限定冻结登记2026-10-22)。本轮仅文档回写，未重跑测试、构建、核验APK或操作设备。来源M19冻结回写`33ae4f4da61b066d7e2f1ca25cf5f2353208c183`。实现续费Planner、WorkManager2.12.0非精确持久任务、同代完整事实/权限/偏好复核、稳定tag/ID与成功调用后Receipt、通知设置页面；里程碑只保存偏好，实际发送仍未授权。明确升级Room3→4九表及完整迁移链、backup2→3/旧1/2严格升级、旧proof兼容及恢复激活前截止水位，内部generation metadata仍1。冻结金额/日期/订阅算法、旧schema1/2/3不改。
   **最新定向收口BLOCKED**：用户另行授权从`d2be4cb29a03de100e784527f8e99e86e2cf45d6`仅启动原M20/5704一次。真实新Boot身份、原App/Test字节/证书/UID均通过，但未发出App启动命令时出现正常App PID3115及新增默认active-generation/generations；未能证明无新Worker，立即停止收口。新方法编译/安装/执行、任务取消、通知清除及第二次账本Owner重开均0；原第二次结果SHA不变，周期任务/通知/账本与显式Owner收口仍UNKNOWN或NOT_RUN，不能改判。只正常关闭本轮M20原实例，进程和端口结束，AVD和新旧现场保留。见[平台收口报告](evidence/M20-Platform-closure.md)及[逐项状态](evidence/m20-platform-closure/results.json)。没有重新执行下列测试，也不自行再启动、恢复、取消或进入M21。
@@ -85,9 +87,9 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Git
 
-- 当前功能分支`codex/m21-milestone-reminders`；工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`。起点本地/远端均核对为M20冻结`3e8f5fdef9853ada726b037cc8559e2117d24da9`，起点工作区干净；不修改原M10工作目录。
+- 当前功能分支`codex/m22-experience-accessibility`；工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`。起点本地/远端M21冻结登记`a367b278bb3186cf6a8f5afdcf7f843e688fbce2`、工作区干净；不修改原M10目录。
 - 仅提交推送本模块代码/测试/文档，最终远端及工作区状态以Git回执为准；不合并main，不配置正式签名。
 
 ## Next Recommended Task
 
-完成M21限定冻结文档回写后停止，等待用户下一项明确授权；M22未授权，任何后续设备操作须另获许可。5712及15个缓存锁文件保留，不操作或清理。M20产品限定冻结与额外平台FAIL/第二次收口BLOCKED保持，5704保留隔离，任务/通知/Owner和冷启动来源UNKNOWN不变。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、Q03未执行子项、G3未通过、Q02/16组完整跨模块与全部历史NOTES/NOT_RUN保持。
+提交推送M22候选后停止，等待ChatGPT独立审查。SystemUI ANR根因UNKNOWN，T01整体/T03长历史/T06完整离线旅程未完成，不自行冻结M22或进入M23。5712已正常结束；旧15与新14锁、旧截图及本轮失败/ANR现场保留，后续设备或清理须新授权。M10 PENDING/DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN/DEFERRED、M20额外FAIL/第二次收口BLOCKED/UNKNOWN与5704、Q03未执行子项/Q04 PROPOSED/Q02完整16组/G1/G2/G3状态不变。

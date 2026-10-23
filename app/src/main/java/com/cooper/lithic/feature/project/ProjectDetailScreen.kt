@@ -59,6 +59,10 @@ internal fun ProjectDetailScreen(
                 Column(Modifier.padding(horizontal = LithicSpacing.medium)) {
                     Text(message, Modifier.testTag("project-detail-error"), color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.bodyLarge)
+                    if (state.detail != null && !state.missing) {
+                        Text("暂时无法刷新，以下为上次读取记录。", Modifier.testTag("project-detail-stale"),
+                            style = MaterialTheme.typography.bodyMedium)
+                    }
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-detail-retry")) {
                         Text("重新读取", style = MaterialTheme.typography.bodyLarge)
                     }

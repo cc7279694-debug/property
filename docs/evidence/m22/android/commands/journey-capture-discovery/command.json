@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "run-as com.cooper.lithic.debug sh -c 'for d in cache/m22-captures-*; do if [ -d \"$d\" ]; then echo \"$d\"; find \"$d\" -maxdepth 1 -type f -name \"*.png\"; fi; done'"
+  ],
+  "started": "2026-10-23T04:27:33.784189+00:00",
+  "seconds": 0.5470000000004802,
+  "exit": 0,
+  "stdoutBytes": 756,
+  "stdoutSha256": "e9e0569b5f3daeb69d897dc53b5fb35df0f7a1bc9c0b93c3e13688b9122b1f49",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
