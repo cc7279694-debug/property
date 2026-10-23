@@ -1,0 +1,21 @@
+{
+  "kind": "Host read-only Windows USB PnP cross-check of exact authorized serial suffix",
+  "startedUtc": "2026-10-23T15:20:48.625685+00:00",
+  "endedUtc": "2026-10-23T15:21:03.600115+00:00",
+  "exitCode": 0,
+  "stdoutBytes": 239,
+  "stdoutSha256": "f03ec1f51c5bb30bd2dba1218e07d38360cf4051c8e68d2eb54b228711871b60",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "targetOnlyRows": [
+    {
+      "status": "OK",
+      "configManagerErrorCode": 0,
+      "service": "usbccgp",
+      "usbVendorProduct": "VID_2717&PID_FF48",
+      "pnpIdentitySha256": "7805ad46d79c55262b489375e62b6d61f603ac84709ea2a5c0407abaad8e4790",
+      "exactAuthorizedSerialSuffixMatched": true
+    }
+  ],
+  "rawPnpIdentifiersNotArchived": true
+}

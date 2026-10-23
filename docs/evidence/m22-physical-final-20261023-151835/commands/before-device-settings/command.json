@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "printf 'MODEL='; getprop ro.product.model; printf 'API='; getprop ro.build.version.sdk; printf 'ABI='; getprop ro.product.cpu.abi; printf 'BOOT='; cat /proc/sys/kernel/random/boot_id; printf 'MEMORY\\n'; sed -n '/^MemAvailable:/p' /proc/meminfo; printf 'STORAGE\\n'; df -k /data; printf 'BATTERY\\n'; dumpsys battery | grep -E 'level:|scale:|temperature:'; printf 'FONT='; settings get system font_scale; printf 'DENSITY\\n'; wm density; printf 'DISPLAY\\n'; wm size; printf 'AIRPLANE='; settings get global airplane_mode_on; printf 'WIFI='; settings get global wifi_on; printf 'MOBILE_DATA='; settings get global mobile_data; printf 'NIGHT='; settings get secure ui_night_mode; printf 'END_M22_FINAL\\n'"
+  ],
+  "startedUtc": "2026-10-23T15:21:40.293786+00:00",
+  "endedUtc": "2026-10-23T15:21:41.337327+00:00",
+  "seconds": 1.0469999999986612,
+  "exitCode": 0,
+  "serialPolicy": "Exact USB serial retained only in ignored local control record; placeholder is explicit public redaction",
+  "stdoutBytes": 475,
+  "stdoutSha256": "c5802a5e05981329aee07c9c90bce79680612bb0da23471e1106f0ef594bb31a",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

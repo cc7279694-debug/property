@@ -1,0 +1,34 @@
+{
+  "admission": "BLOCKED_DEFAULT_STORE_FDS_HELD_BY_RUNNING_TARGET_PROCESS",
+  "pid": 32313,
+  "uid": 10420,
+  "boot": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+  "startTicks": 84068317,
+  "source": "Explicit UID-selected ps plus same-UID proc stat/status and FD link metadata",
+  "observedDefaultAndWorkManagerFdCount": 10,
+  "defaultDatabaseContentRead": false,
+  "processExplicitOwnerClose": "NOT_PROVEN",
+  "storageClosure": "NOT_CLOSED_AT_OBSERVATION_FDS_STILL_HELD",
+  "targetJobHeadersObserved": [
+    "  JOB androidx.work.systemjobscheduler:u0a420/0: 5584c30 @androidx.work.systemjobscheduler@com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService"
+  ],
+  "jobWholeRecordStatus": "UNKNOWN_INCOMPLETE_EXTRACTION: legacy JOB # matcher did not match namespace-qualified API36 JOB header; empty extracted block list is not zero jobs",
+  "jobRunningStatus": "UNKNOWN; target quota timer reports 0 running bg jobs but no complete independent running-context proof",
+  "phoneDisplayBefore": {
+    "density": "Physical density: 480",
+    "display": "Physical size: 1200x2670"
+  },
+  "phoneDisplayEnd": {
+    "density": "Physical density: 480",
+    "display": "Physical size: 1200x2670"
+  },
+  "phoneDisplayUnchanged": true,
+  "appOrTestUpdateAttempts": 0,
+  "testInvocations": 0,
+  "readOnlyAdbCommandsKnown": 26,
+  "completeAdbReceipts": 24,
+  "observationsMissingOriginalOutputMetadata": 2,
+  "windowsHostUsbReadOnlyChecks": 1,
+  "settingWrites": 0,
+  "noMoreDeviceCommandsAfterEndChecks": true
+}

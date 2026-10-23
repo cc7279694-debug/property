@@ -1,0 +1,48 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "dumpsys jobscheduler com.cooper.lithic.m22verify.debug"
+  ],
+  "startedUtc": "2026-10-23T15:24:29.353404+00:00",
+  "endedUtc": "2026-10-23T15:24:29.574400+00:00",
+  "seconds": 0.21899999999732245,
+  "exitCode": 0,
+  "rawBytes": 486943,
+  "rawSha256": "1b0bff55a24fca61db5a17dd80dda415e01f9d6ed0c0063d3e9e6c1f13c52917",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "packageFilterRequested": "com.cooper.lithic.m22verify.debug",
+  "targetRegisteredBlocks": [],
+  "targetMatchingLines": [
+    "Frozen status uid: 10420 id:0 name:com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService",
+    "    <0>com.cooper.lithic.m22verify.debug::timeout-reg:",
+    "    <0>com.cooper.lithic.m22verify.debug::.schedulePersisted():",
+    "    <0>com.cooper.lithic.m22verify.debug::anr:",
+    "    <0>com.cooper.lithic.m22verify.debug::timeout-total:",
+    "  JOB androidx.work.systemjobscheduler:u0a420/0: 5584c30 @androidx.work.systemjobscheduler@com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService",
+    "    u0a420 tag=*job*r/@androidx.work.systemjobscheduler@com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService",
+    "    Source: uid=u0a420 user=0 pkg=com.cooper.lithic.m22verify.debug",
+    "      Service: com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService",
+    "    JobStatus{5584c30 androidx.work.systemjobscheduler:u0a420/0 @androidx.work.systemjobscheduler@com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService u=0 s=10420 TIME=+19h26m7s855ms:none satisfied:0xb600000 unsatisfied:0x80000000}: 958405525",
+    "    10420:com.cooper.lithic.m22verify.debug=false",
+    "    #androidx.work.systemjobscheduler:u0a420/0 from u0a420 idle: com.cooper.lithic.m22verify.debug [RUN_ANY_IN_BACKGROUND allowed] RUNNABLE",
+    "    #androidx.work.systemjobscheduler:u0a420/0 from u0a420: com.cooper.lithic.m22verify.debug RUNNABLE",
+    "    Timer<REG>{<0>com.cooper.lithic.m22verify.debug} NOT active, 0 running bg jobs",
+    "    TopAppTimer{<0>com.cooper.lithic.m22verify.debug} NOT active",
+    "      <0>com.cooper.lithic.m22verify.debug",
+    "      <0>com.cooper.lithic.m22verify.debug: ShrinkableDebits { debit tally: 0, bucket: 3 }",
+    "  0-ComponentInfo{com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService}: com.cooper.lithic.m22verify.debug",
+    "    0:com.cooper.lithic.m22verify.debug:",
+    "  10420: {com.cooper.lithic.m22verify.debug}"
+  ],
+  "selectedStateHeadings": [
+    "Registered 266 jobs:",
+    "Pending queue:",
+    "Active jobs:"
+  ],
+  "classification": "OBSERVATION_ONLY_NOT_ADMISSION; process/Owner already blocked",
+  "privacy": "No full system dump or unrelated app jobs archived"
+}

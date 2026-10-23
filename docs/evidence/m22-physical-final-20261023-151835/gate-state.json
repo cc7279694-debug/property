@@ -1,0 +1,67 @@
+{
+  "source": "adb9fa791a27cba88fc474e243f337cedc22c081",
+  "evidence": "docs/evidence/m22-physical-final-20261023-151835",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "app": "com.cooper.lithic.m22verify.debug",
+  "test": "com.cooper.lithic.m22verify.debug.test",
+  "oldM10": "com.cooper.lithic.debug",
+  "appUid": 10420,
+  "testUid": 10427,
+  "oldM10Uid": 10376,
+  "newTestSha256": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26",
+  "admission": "BLOCKED_TARGET_PROCESS_OWNER_UNVERIFIED",
+  "discovery": {
+    "argv": [
+      "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+      "-s",
+      "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+      "devices",
+      "-l"
+    ],
+    "startedUtc": "2026-10-23T15:19:37.497991+00:00",
+    "endedUtc": "2026-10-23T15:19:37.609889+00:00",
+    "exitCode": 0,
+    "rawStdoutBytes": 118,
+    "rawStdoutSha256": "b6d52ec16f45087659314a6fc1f3b3212bbe7cb3bf27e0064274ff3af30f7f29",
+    "rawStderrBytes": 0,
+    "rawStderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "targetRows": 1,
+    "targetConnectionState": "device",
+    "nonEmulatorRows": 1,
+    "otherDeviceRowsNotArchived": 0,
+    "targetAttributeNames": [
+      "product",
+      "model",
+      "device",
+      "transport_id"
+    ],
+    "privacy": "Full device inventory processed in memory only; serial and non-target identities not archived"
+  },
+  "windowsUsbProven": true,
+  "processObservation": [
+    {
+      "uid": 10420,
+      "pid": 32313,
+      "ppid": 1716,
+      "name": "com.cooper.lithic.m22verify.debug"
+    }
+  ],
+  "beforePackages": {
+    "oldM10": {
+      "package": "com.cooper.lithic.debug",
+      "uid": 10376,
+      "installedSha256": "939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094"
+    },
+    "app": {
+      "package": "com.cooper.lithic.m22verify.debug",
+      "uid": 10420,
+      "installedSha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3"
+    },
+    "test": {
+      "package": "com.cooper.lithic.m22verify.debug.test",
+      "uid": 10427,
+      "installedSha256": "c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f"
+    }
+  },
+  "boot": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea"
+}
