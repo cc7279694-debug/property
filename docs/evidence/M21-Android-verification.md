@@ -28,7 +28,7 @@
 
 配置与启动参数请求2048MB，但既有官方Emulator37.1.11明确自动提高为 **2560MB**；不冒充2048MB实际运行，没有重启、换工具或扩大下载。[实际hardware](m21-android/device/hardware-qemu.ini)。官方创建exit0，首次本地取证误以为配置位于`-p avd-data`，只读真实注册后采用同一新根内实际生成的AVD路径，没有重复创建；另一次严格RAM断言被工具自动调整触发，均在任何ADB/安装前，见[创建说明](m21-android/device/creation-admission.json)、[RAM原日志](m21-android/device/emulator.stdout)。这些是取证接缝/实际资源偏差，不是JUnit RED或虚构旧PASS。
 
-仅改一个androidTest文件：保留原4方法/断言，增加显式captureRun截图保存、具体ComponentActivity和同UUID场景的360dp/LocalDensity200%包装与准确行滚动。[源码范围核对](m21-android/test-source-scope.json)。App始终未重建/替换；Test一次构建、一次安装，无追加安装。定向Test构建＋Lint exit0 / **6m47s**，Lint **0错误25警告**，不运行JVM。[构建原件](m21-android/build/result.json)、[日志](m21-android/build/gradle.log)、[Lint计数](m21-android/build/lint.json)。
+仅改一个androidTest文件：保留原4方法/断言，增加显式captureRun截图保存、具体ComponentActivity和同UUID场景的360dp/LocalDensity200%包装与准确行滚动。[源码范围核对](m21-android/test-source-scope.json)。App始终未重建/替换；Test一次构建、一次安装，无追加安装。定向Test构建＋Lint exit0 / **6m47s**，Lint **0错误25警告**，不运行JVM。**归档说明（2026-10-23冻结回写时更正）**：这次补验的构建结果JSON、Gradle日志及Lint计数原文件被通用`**/build/`规则忽略，未随原补验提交归档；本地原件仍保留，但缺少已提交的历史SHA锚点，本轮不补交或重新运行。移除原3个失效链接，保留上述既有结果口径。[已归档Lint XML](m21/completion/lint.xml)属于原候选离线执行，**不是这次补验的新执行日志**。
 
 | 实际安装产物 | SHA-256 / 身份 |
 |---|---|

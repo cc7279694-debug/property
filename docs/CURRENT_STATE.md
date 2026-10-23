@@ -4,7 +4,8 @@
 
 ## Current Stage
 
-- **M21 — READY_FOR_REVIEW / 独立验收PENDING**：来源候选`6c937ed7354b77d598bdeb55718a39708f572ee8`，当前`codex/m21-milestone-reminders`。本轮获准新建一台隔离API36/x86_64，原31个唯一Android方法首轮31 PASS、重跑0，取得4张真实隔离截图；此前395 JVM PASS未重跑。Test只增加截图/360dp与LocalDensity200%接缝，原方法/断言与App字节不变；Lint0错误25警告，Test构建成功。实际Room4→5/重开、事务水位、format4/旧proof3恢复、Worker及TestDriver/Intent/隔离Compose证据见[Android报告](evidence/M21-Android-verification.md)。新`Lithic_M21_API36_20261023 / emulator-5712`创建/启动/正常退出各1，App/Test各安装1；请求2048MB但既有工具自动提高实际2560MB，2核/headless/no-snapshot。13个已关闭测试根移除，15个未登记零字节缓存锁文件保留，AVD保留；历史设备操作0。合成Publisher/测试调度不冒充真实系统通知/点击/后台重启；部分日期子边界、proof1/2实际恢复、API26/OEM/完整TalkBack等仍NOT_RUN，不自行冻结或宣称G3通过。[原离线报告](evidence/M21-verification.md)的31 NOT_RUN/设备0保留原时点；Q03 USER_CONFIRMED、Room5/backup4及旧格式/proof兼容候选保持，全部历史限制不变，不进入M22。
+- **M21 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户正式转交的ChatGPT独立复验，评审提交`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`，评审及登记分支`codex/m21-milestone-reminders`。M21-T01～T06限定通过，认可原候选395 JVM PASS、Android首轮31 PASS/重跑0、已独立查看的4张隔离Compose截图及Lint0错误25警告。冻结真实里程碑规则、抑制水位、同日摘要、受保护点击接口及Room5/backup4已验证实现；Room4→5迁移/重开、事务回滚、format4往返及旧proof3恢复仅按[补验报告](evidence/M21-Android-verification.md)范围认可，见[正式登记及完整NOTES](ACCEPTANCE_MATRIX.md#m21正式限定冻结登记2026-10-23)。本轮只做文档冻结回写与失效链接修正，未重跑测试、构建、核验APK或操作设备。补验构建/Lint原文件未随原提交归档；本地原件保留，无历史SHA锚点，不补造或用原候选Lint替代新日志。
+  31项之外的Android日期子边界、proof1/2、API26/OEM/完整TalkBack、真实系统发布/送达、MainActivity点击及真实重启仍NOT_RUN；360dp/200%仅LocalDensity，合成Publisher/TestDriver不冒充系统行为。15个零字节缓存锁文件保留，锁状态未单独确认。`Lithic_M21_API36_20261023 / emulator-5712`及独立目录为保留现场，未经新授权不得操作、清理或复用；此前2048MB请求被工具自动提高到2560MB、退出/资源口径等NOTES保持。Q03 USER_CONFIRMED不等于未执行子项或完整跨模块通过；Q04 PROPOSED、G1/G2/G3历史状态不改。原报告/checkpoint的READY_FOR_REVIEW及31 NOT_RUN/设备0是各自历史；模块限定冻结不代表整体发行通过，不进入M22。
 
 - **M20 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-22正式转交的ChatGPT独立源码及证据验收，评审`d3776e0b2852428911ad0f09296680046211b32d`，评审及登记分支`codex/m20-renewal-notifications`。M20-T01～T06、此前238 JVM PASS、原22 Android最终PASS及Lint0错误25警告获限定认可；仅冻结续费Planner、权限/偏好、有限幂等回执、WorkManager集成及Room schema v4、backup format v3兼容实现，不扩大为OEM后台准点保证。见[正式登记](ACCEPTANCE_MATRIX.md#m20正式限定冻结登记2026-10-22)。本轮仅文档回写，未重跑测试、构建、核验APK或操作设备。来源M19冻结回写`33ae4f4da61b066d7e2f1ca25cf5f2353208c183`。实现续费Planner、WorkManager2.12.0非精确持久任务、同代完整事实/权限/偏好复核、稳定tag/ID与成功调用后Receipt、通知设置页面；里程碑只保存偏好，实际发送仍未授权。明确升级Room3→4九表及完整迁移链、backup2→3/旧1/2严格升级、旧proof兼容及恢复激活前截止水位，内部generation metadata仍1。冻结金额/日期/订阅算法、旧schema1/2/3不改。
   **最新定向收口BLOCKED**：用户另行授权从`d2be4cb29a03de100e784527f8e99e86e2cf45d6`仅启动原M20/5704一次。真实新Boot身份、原App/Test字节/证书/UID均通过，但未发出App启动命令时出现正常App PID3115及新增默认active-generation/generations；未能证明无新Worker，立即停止收口。新方法编译/安装/执行、任务取消、通知清除及第二次账本Owner重开均0；原第二次结果SHA不变，周期任务/通知/账本与显式Owner收口仍UNKNOWN或NOT_RUN，不能改判。只正常关闭本轮M20原实例，进程和端口结束，AVD和新旧现场保留。见[平台收口报告](evidence/M20-Platform-closure.md)及[逐项状态](evidence/m20-platform-closure/results.json)。没有重新执行下列测试，也不自行再启动、恢复、取消或进入M21。
@@ -80,7 +81,7 @@
 
 ## Data / Architecture
 
-M21候选当前为Room5十表（新增typed milestone_watermarks），显式1→2→3→4→5迁移与schema1～4原件保留；backup4/minReader4/schema5，旧1/2/3按原字段/原SHA认证升级。抑制水位与成功Receipt分开；业务创建/时间纠错在原Room事务维护，恢复仅在未公开候选合并截至恢复日节点。内部generation metadata仍1，唯一owner/coordinator、M16成组保护、媒体原字节及冻结金额/订阅引擎保持。Room与DataStore不宣称跨存储原子；平台/恢复中断的实测仍NOT_RUN。见[真实架构](ARCHITECTURE.md)。
+M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks），显式1→2→3→4→5迁移与schema1～4原件保留；backup4/minReader4/schema5，旧1/2/3按原字段/原SHA认证升级。抑制水位与成功Receipt分开；业务创建/时间纠错在原Room事务维护，恢复仅在未公开候选合并截至恢复日节点。内部generation metadata仍1，唯一owner/coordinator、M16成组保护、媒体原字节及冻结金额/订阅引擎保持。Room与DataStore不宣称跨存储原子；Android已验证Room4→5及format4/旧proof3的限定恢复，真实进程中断/断电及更广平台恢复仍NOT_RUN。见[真实架构](ARCHITECTURE.md)。
 
 ## Git
 
@@ -89,4 +90,4 @@ M21候选当前为Room5十表（新增typed milestone_watermarks），显式1→
 
 ## Next Recommended Task
 
-完成本轮M21 Android补验后停止，等待ChatGPT独立复验；新5712已正常退出，任何后续设备操作须另获明确授权，不进入M22。M20产品限定冻结与额外平台FAIL/第二次收口BLOCKED保持，M20 AVD保留隔离，任务/通知/Owner和冷启动来源UNKNOWN不变。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、G3未通过、Q02/16组完整跨模块与全部历史NOTES/NOT_RUN保持。
+完成M21限定冻结文档回写后停止，等待用户下一项明确授权；M22未授权，任何后续设备操作须另获许可。5712及15个缓存锁文件保留，不操作或清理。M20产品限定冻结与额外平台FAIL/第二次收口BLOCKED保持，5704保留隔离，任务/通知/Owner和冷启动来源UNKNOWN不变。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、Q03未执行子项、G3未通过、Q02/16组完整跨模块与全部历史NOTES/NOT_RUN保持。

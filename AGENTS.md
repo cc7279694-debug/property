@@ -123,3 +123,9 @@ M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未
 用户另行明确授权从`6c937ed7354b77d598bdeb55718a39708f572ee8`在当前M21分支新建、启动、结束一台低资源全新隔离API36/x86_64，仅执行既有31方法和必要Compose截图。上段“设备操作0”保持上轮历史；本轮独立根`E:/CODEX/.codex/research-env/lithic-m21-android-20261023`，新AVD`Lithic_M21_API36_20261023`、serial`emulator-5712`，全部ADB显式定向。先独立TestDriver，再逐类；plain Application隔离Runner，不启动MainActivity默认账本/生产周期队列，不操作任何历史设备。现有工具自动将2048MB请求提高为2560MB，实际值必须如实登记。禁止重跑395 JVM或扩充历史测试；失败原件保留，定向处理，不自行冻结/进入M22。结果见[M21 Android报告](docs/evidence/M21-Android-verification.md)。
 
 本次补验停止点：31唯一方法首轮31 PASS、重跑0，4张真实隔离截图，App不变；新5712创建/启动/正常退出各1，进程/端口结束，AVD保留。13个已关闭业务测试根移除，15个未登记零字节缓存`.lck`保留，未声称全部缓存清空。真实系统发布/点击/重启及现有31项未含的日期子边界仍NOT_RUN。提交推送后停止等待独立复验，不能据本段再次启动、清理或复用任何设备，不自行冻结或进入M22。
+
+### M21正式限定冻结登记（2026-10-23）
+
+用户正式转交ChatGPT对`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`的独立复验结论：**M21 — ACCEPTED / FROZEN — PASS WITH NOTES**。M21-T01～T06限定通过；认可原候选395 JVM PASS、Android首轮31 PASS/重跑0、已独立查看的4张隔离Compose截图及Lint0错误25警告。仅冻结真实里程碑规则、类型化抑制水位、同日摘要、受保护点击接口，以及Room5/backup4的已验证实现；实际Room4→5、事务回滚、format4往返和旧proof3恢复按报告限定范围继承。本次只是文档登记，不重跑测试、构建或操作设备。见[正式登记](docs/ACCEPTANCE_MATRIX.md#m21正式限定冻结登记2026-10-23)。
+
+补验构建/Lint的3个原文件未随原提交归档；本地原件保留但无已提交的历史SHA锚点，本轮只移除失效链接，不补造记录或把原候选Lint XML当补验新日志。原报告结果不变。31项外Android边界、真实系统发布/送达、MainActivity点击、真实重启仍NOT_RUN；360dp/200%仅LocalDensity；15个零字节缓存锁文件保留且锁状态未单独确认。M21/5712及其独立目录为保留现场，未经新授权不得操作、复用或清理。M20额外平台FAIL/第二次收口BLOCKED/UNKNOWN及5704、M10延期/三JPEG历史FAIL、M13-T06延期、Q04 PROPOSED、Q03未执行子项、G1/G2/G3与全部历史NOTES不变。模块限定冻结不等于发行门禁通过；只推当前M21分支登记文档后停止，不合并main、不启动M22。

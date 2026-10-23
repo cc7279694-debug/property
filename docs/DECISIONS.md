@@ -1,5 +1,27 @@
 # 决策记录
 
+## 2026-10-23 — M21限定冻结与未归档证据引用修正
+
+### Decision
+
+依据用户正式转交的ChatGPT对`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`独立复验，登记 **M21 — ACCEPTED / FROZEN — PASS WITH NOTES**。M21-T01～T06限定通过；冻结真实里程碑规则、抑制水位、同日摘要、受保护点击接口及Room5/backup4的已验证实现。原395 JVM PASS、Android首轮31 PASS/无重跑、已独立查看的4张隔离Compose截图、Lint0错误25警告保持实际执行口径，本轮不重跑或操作设备。
+
+### Context
+
+[正式登记](ACCEPTANCE_MATRIX.md#m21正式限定冻结登记2026-10-23)区分纯规则、真实Room/受控Worker、TestDriver与平台行为。Room4→5迁移、事务回滚、format4往返和旧proof3恢复有已获认可的限定Android证据，不扩大为真实系统送达、MainActivity点击或重启。
+
+### Alternatives
+
+不把模块冻结扩大为全发行/G3通过；不把LocalDensity截图、合成Publisher或构造中断状态冒充对应真实系统实证。对未归档的3份构建/Lint文件，不凭现在新算的SHA冒充此前已验证的原字节。
+
+### Reason
+
+本地三原件被通用`**/build/`忽略，原提交没有其历史SHA锚点；本轮仅移除[补验报告](evidence/M21-Android-verification.md)失效链接并注明原件未归档，本地实物不动。可引用[原候选Lint XML](evidence/m21/completion/lint.xml)说明原候选历史执行，不能替代补验新日志。认可结果来源与档案完整性边界分别记录。
+
+### Consequences
+
+所有31项外Android未测边界、真实系统发布/送达/点击/重启NOT_RUN、LocalDensity说明、15个零字节锁文件及锁状态未确认均保留。5712及独立目录保留，未经新授权不得操作或清理；M20额外FAIL/第二次收口BLOCKED/UNKNOWN及5704、M10延期/三JPEG历史FAIL、M13-T06延期、Q04 PROPOSED、Q03未执行子项、G1/G2/G3和全部历史NOTES不变。此文档登记不改变产品、测试、数据库、备份或历史原始结果；推送当前分支后停止，不合并main，不进入M22。
+
 ## 2026-10-22 — M21实际时间节点、抑制水位与有限摘要回执
 
 ### Decision

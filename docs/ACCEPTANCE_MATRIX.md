@@ -1,6 +1,29 @@
 # 验收登记
 
-当前状态：**M21 — READY_FOR_REVIEW**，独立验收PENDING；此前395 JVM PASS，本轮31个唯一Android方法首轮31 PASS、重跑0，4张隔离截图，Lint0错误25警告。M20限定冻结及第二次平台收口BLOCKED、额外平台FAIL/UNKNOWN保持；G1/G2未整体通过、Q04 PROPOSED、G3未通过。下方旧阶段及31 NOT_RUN记录保留原时点。
+当前状态：**M21 — ACCEPTED / FROZEN — PASS WITH NOTES**，依据用户转交ChatGPT对`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`的独立复验，仅已验证实现限定冻结。M20第二次平台收口BLOCKED/UNKNOWN、额外平台FAIL、M10/M13-T06延期、Q03未执行子项、Q04 PROPOSED及G1/G2/G3状态保持；模块冻结不等于发行门禁通过。下方旧阶段及31 NOT_RUN记录保留原时点。
+
+## M21正式限定冻结登记（2026-10-23）
+
+评审提交`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`，评审及本次登记分支`codex/m21-milestone-reminders`。用户正式转交ChatGPT独立复验结论：**ACCEPTED / FROZEN — PASS WITH NOTES**，已独立查看4张真实隔离Compose截图。认可原候选**395 JVM PASS**、Android**首轮31 PASS/重跑0**、**Lint0错误25警告**及对应范围；这些是此前实际执行证据，**本轮仅文档登记，未运行测试、构建或设备操作**。[原候选报告](evidence/M21-verification.md)、[候选JUnit原件](evidence/m21/completion/xml/)、[Android补验报告](evidence/M21-Android-verification.md)、[31项逐方法结果](evidence/m21-android/results.json)、[4张截图及来源](evidence/m21-android/screenshots/index.json)。
+
+| 原案例 | 独立认可的限定结论 |
+|---|---|
+| M21-T01 annual_prepaid_not_milestone | PASS：年付首日不冒充已使用365天，订阅复用elapsedPaidDays；项目第N日/日历周年按Q03确认规则。未覆盖的Android日期子项不升级。 |
+| M21-T02 old_import_does_not_spam | PASS：类型化抑制水位与真实成功Receipt分开，初纳/历史纠错/恢复保护含当天，不伪造旧通知回执。 |
+| M21-T03 pause_free_gap_excluded | PASS：冻结M03真实有效日期口径、付费与状态交集及预付/暂停/免费间隔排除的已验证实现；全套Android边界仍按原报告区分。 |
+| M21-T04 same_day_coalesced | PASS：同日摘要、类型/来源身份、整批Receipt事务及受保护点击接口；隔离Compose不扩大为系统送达或MainActivity点击实证。 |
+| M21-T05 backup_watermark_survives | PASS：Room5/backup4、事务水位维护、旧格式/proof严格认证的已验证实现；Room4→5、format4往返及旧proof3恢复获限定Android证据，不扩大为真实进程中断或重启。 |
+| M21-T06 switch_cancels_future | PASS：两偏好/权限决策、独立任务命名空间、旧代拒绝和回执保护；TestDriver/合成Publisher不等于真实系统周期执行。 |
+
+冻结范围：真实里程碑规则、抑制水位、同日摘要、受保护点击接口、Room5/backup4已验证实现；唯一Owner、内部指针版本1、媒体原字节及冻结业务算法保持。以下NOTES不能因冻结自动关闭：
+
+- 31项以外的Android未测边界保留：D1000/所有日历周年/闰日，订阅预付首日及暂停/免费/停止的全部有效日边界，+6/+7/跨午夜/多时区，proof1/2实际恢复等。Q03仍USER_CONFIRMED，未执行子项与16组完整跨模块门禁不关闭；Q04仍PROPOSED，G1/G2/G3历史状态不改。
+- 真实系统通知发布/送达、MainActivity点击、真实系统重启、实际进程中断/断电、API26/OEM/完整TalkBack仍NOT_RUN。360dp/200%是LocalDensity，非系统字体；构造SWITCHING重开不是杀进程。有限发布→回执崩溃重试窗口、全量事实长期性能及全部其他历史NOTES保留，不承诺exactly-once或OEM准点。
+- 15个零字节缓存锁文件保留，锁状态及来源机制未单独确认，不宣称全部缓存已清。`Lithic_M21_API36_20261023 / emulator-5712`及`E:/CODEX/.codex/research-env/lithic-m21-android-20261023`保留，未经新授权不得操作、复用或清理。实际RAM被既有工具从2048MB提高到2560MB、峰值口径及退出尾段NOT_CAPTURED等保留。
+- 补验报告原3个构建/Lint链接指向未跟踪且被`**/build/`忽略的文件。本地原件保留，但已提交记录缺历史SHA锚点，本轮不补交；移除失效链接，明确**补验构建/Lint原始文件未归档**。[候选Lint XML](evidence/m21/completion/lint.xml)仅是原候选历史执行，不是补验新日志。保留已登记的原结果口径，不伪造、重建或重跑补证。
+- M20额外平台25唯一24 PASS/1 FAIL、首轮21 PASS/1 FAIL、两次真实平台JUnit FAIL、第二次收口BLOCKED/UNKNOWN及5704现场不改；M10 PENDING / DEFERRED与三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED及全部历史RED/FAIL/UNKNOWN/NOT_RUN/NOTES保持。
+
+本次仅推送冻结登记文档及必要链接修正后停止；不合并main、不启动M22，不能解释为整体发行准入通过。
 
 ## M21隔离Android补验执行登记（2026-10-23）
 

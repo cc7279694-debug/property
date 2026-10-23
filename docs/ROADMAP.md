@@ -1,5 +1,7 @@
 # V1 模块路线与执行闸门
 
+**2026-10-23 M21正式限定冻结**：用户正式转交ChatGPT对`f2e7ea73924a5671ef0da78b3b1ecc8f38634893`的独立复验，M21 **ACCEPTED / FROZEN — PASS WITH NOTES**。T01～T06、原395 JVM、首轮31 Android/无重跑、独立查看的4张隔离Compose截图及Lint0错误25警告获限定认可；仅真实里程碑规则、水位、同日摘要、受保护点击接口与Room5/backup4已验证实现。见[正式登记及完整NOTES](ACCEPTANCE_MATRIX.md#m21正式限定冻结登记2026-10-23)。本轮仅文档/失效链接回写，不运行测试、构建或设备；补验构建/Lint原件未归档，不以原候选Lint冒充。31项外Android、真实系统发布/送达/MainActivity点击/重启、15个锁文件与5712保留现场、M20/M10/M13-T06及Q03/Q04/G1/G2/G3原边界不变。M22未授权，模块冻结不等于发行门禁通过。下方交付记录保留历史语境。
+
 **2026-10-23 M21 Android补验**：原31个唯一方法首轮31 PASS，4张真实隔离Compose截图，原395 JVM不重跑；新API36/5712已正常退出并保留AVD，历史设备未接触。[补验报告](evidence/M21-Android-verification.md)。只为本次Room/Worker/Intent/恢复/TestDriver/Compose的限定证据，真实系统送达/点击/后台重启及未覆盖子边界仍NOT_RUN；M21保持READY_FOR_REVIEW，G3不通过，不进入M22。下方2026-10-22离线NOT_RUN为历史记录。
 
 **2026-10-22 M21当前授权**：从M20冻结`3e8f5fd`实施真实时间里程碑、抑制水位和同日摘要候选，Room5/backup4，Q03 USER_CONFIRMED。当前READY_FOR_REVIEW，395 JVM PASS、Lint0错误25警告、App/Test构建成功，结果见[M21报告](evidence/M21-verification.md)；没有设备授权，31新增Android方法全部NOT_RUN，独立验收PENDING，不进入M22。M20限定冻结及额外平台失败/收口UNKNOWN、M10/M13-T06延期、Q04/G1/G2/G3原边界不扩大。下方原阶段说明保留历史。
@@ -12,7 +14,7 @@
 
 来源：[原总计划](planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md)、[原module-index](planning/original-v1/lithic_v1_plan/docs/module-index.json)及24份原模块计划。保留M00～M23顺序，不用早期Module 0～8粗路线。
 
-本表保留原M00～M23顺序与精确前置依赖。M00～M09、M11/M12及M14已限定独立冻结PASS WITH NOTES；M10延期，M13-T06延期且整体发行门槛未通过，M15已依据用户转交的独立结论限定冻结PASS WITH NOTES；M16、M17、M18均已限定独立冻结，M19及M20现已限定独立冻结PASS WITH NOTES，M21现依据本轮明确授权实施候选，尚未冻结且不进入M22。M09范围仍见[M09契约](planning/M09_CONTRACT.md)；其原执行报告的READY_FOR_REVIEW为历史，冻结回写57de897为M11-A起点，M11-B从79771fc继续。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；全部历史NOTES保留。
+本表保留原M00～M23顺序与精确前置依赖。M00～M09、M11/M12及M14已限定独立冻结PASS WITH NOTES；M10延期，M13-T06延期且整体发行门槛未通过，M15已依据用户转交的独立结论限定冻结PASS WITH NOTES；M16～M21均已获限定独立冻结PASS WITH NOTES，M22尚未授权。M09范围仍见[M09契约](planning/M09_CONTRACT.md)；其原执行报告的READY_FOR_REVIEW为历史，冻结回写57de897为M11-A起点，M11-B从79771fc继续。实际进度与验证只在[CURRENT_STATE](CURRENT_STATE.md)及验收登记维护；全部历史NOTES保留。
 
 ## 执行顺序与依赖解释
 
@@ -45,7 +47,7 @@
 | M18 | 总成本历史与事件 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m18.md) | M17 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T05及此前174 JVM/17 Android/10图、Lint0/23获限定认可；首次14/3与NOT_CAPTURED保留，Q02完整16组不关闭；见[正式登记](ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21) |
 | M19 ACCEPTED / FROZEN — PASS WITH NOTES | 类别/年度/客观回顾 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m19.md) | M18 | 年度按真实日期、类型分开，不生成建议 |
 | M20 ACCEPTED / FROZEN — PASS WITH NOTES | 续费通知、schema v4/format v3 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m20.md) | M19 | T01～T06限定PASS；238 JVM/原22 Android最终PASS、Lint0/25；额外平台FAIL及第二次收口BLOCKED/UNKNOWN保留，G3未通过 |
-| M21 READY_FOR_REVIEW | 实际时间里程碑/低打扰 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m21.md) | M20 | 此前395 JVM PASS；本次31 Android PASS；平台及其他NOT_RUN保留，不自行冻结/进入M22 |
+| M21 ACCEPTED / FROZEN — PASS WITH NOTES | 实际时间里程碑/低打扰 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m21.md) | M20 | T01～T06限定通过，原395 JVM/首轮31 Android/4隔离截图；平台及其他NOT_RUN保留，G3不整体通过，M22未授权 |
 | M22 | 小屏/字体/无障碍/长历史 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m22.md) | M21 | 360dp/200%字体/48dp触控；不加功能 |
 | M23 | 可靠性/签名升级/正式V1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m23.md) | M22 | 全发行schema/旧备份/断网/故障/签名；独立验收后冻结 |
 
@@ -70,7 +72,7 @@
 | M11/M12 | v2 | v1 | 全业务、图片、设置完整往返 |
 | M16 | v3 | v2 | 替换关系、basis/exchangeGroupId；旧 format 默认 CASH |
 | M20 | v4 | v3 | 通知去重水位；旧备份不补过去提醒 |
-| M21候选 | Room5 | backup4/minReader4/schema5 | 旧1/2/3严格解析、原proof认证后合并水位；内部指针版本1不变 |
+| M21限定冻结 | Room5 | backup4/minReader4/schema5 | 已验证实现限定认可；旧1/2/3严格解析、原proof认证后合并水位；内部指针版本1不变 |
 | M22～M23 | 以实际批准变化为准 | 有变化就显式迁移 | 不通过漏字段或破坏性回退规避迁移 |
 
 进度只在 [CURRENT_STATE.md](CURRENT_STATE.md)维护。所有规格问题在进入受影响模块前处理；变更先登记 [DECISIONS.md](DECISIONS.md)。
