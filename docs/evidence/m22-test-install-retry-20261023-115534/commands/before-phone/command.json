@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "printf 'MODEL='; getprop ro.product.model; printf 'API='; getprop ro.build.version.sdk; printf 'BOOT='; cat /proc/sys/kernel/random/boot_id; printf 'MEMORY\\n'; sed -n '/^MemAvailable:/p' /proc/meminfo; printf 'STORAGE\\n'; df -k /data; printf 'BATTERY\\n'; dumpsys battery | grep -E 'level:|scale:|temperature:'; printf 'END_M22_RETRY\\n'"
+  ],
+  "startedUtc": "2026-10-23T11:55:35.944628+00:00",
+  "endedUtc": "2026-10-23T11:55:36.431240+00:00",
+  "seconds": 0.5,
+  "exitCode": 0,
+  "serialPolicy": "Exact USB serial retained only in ignored local control record; placeholder is explicit public redaction",
+  "stdoutBytes": 339,
+  "stdoutSha256": "83990204d82749f8126436c5e70aa5dc5f0808eb39805c67bcd0a062c605eb25",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
