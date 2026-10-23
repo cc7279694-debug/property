@@ -13,6 +13,8 @@ import androidx.compose.ui.test.assertTextContains
 import android.provider.Settings
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.system.Os
+import android.system.OsConstants
 import androidx.room.withTransaction
 import com.cooper.lithic.data.local.LocalMediaAssetEntity
 import java.io.ByteArrayOutputStream
@@ -36,6 +38,7 @@ import androidx.compose.ui.test.performTextReplacement
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.viewModelScope
 import androidx.test.core.app.ApplicationProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -46,12 +49,17 @@ import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.data.backup.BackupExportService
 import com.cooper.lithic.data.backup.BackupTarget
 import com.cooper.lithic.data.backup.DataGenerationStore
+import com.cooper.lithic.data.backup.ManagedGeneration
 import com.cooper.lithic.data.backup.RestoreCoordinator
 import com.cooper.lithic.feature.settings.BackupExportViewModel
 import com.cooper.lithic.feature.settings.BackupRestoreViewModel
 import com.cooper.lithic.feature.settings.RestoreUiPhase
 import java.io.File
 import java.math.BigDecimal
+import java.nio.file.Files
+import java.nio.file.LinkOption.NOFOLLOW_LINKS
+import java.nio.file.StandardOpenOption.CREATE_NEW
+import java.nio.file.StandardOpenOption.WRITE
 import java.time.Clock
 import java.time.Instant
 import com.cooper.lithic.data.backup.RestoreReminderProtection
@@ -62,6 +70,9 @@ import java.util.concurrent.atomic.AtomicReference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -74,6 +85,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.rules.RuleChain
+import org.junit.rules.TestRule
+import org.junit.runners.model.Statement
 import org.json.JSONObject
 
 /**
@@ -83,7 +97,33 @@ import org.json.JSONObject
  */
 @RunWith(AndroidJUnit4::class)
 class CompleteJourneyTest {
-    @get:Rule val compose = createAndroidComposeRule<ComponentActivity>()
+    private val compose = createAndroidComposeRule<ComponentActivity>()
+    // Outermost: a passing test body alone does not prove @After or Compose/Activity shutdown.
+    @get:Rule val rules: TestRule = RuleChain.outerRule(TestRule { base, description ->
+        object : Statement() {
+            override fun evaluate() {
+                var original: Throwable? = null
+                try { base.evaluate() } catch (failure: Throwable) { original = failure }
+                val failure = original ?: teardownFailures.firstOrNull()
+                if (failure != null) {
+                    teardownFailures.filter { it !== failure }.forEach(failure::addSuppressed)
+                    reportRetained(failure)
+                    throw failure
+                }
+                if (description.methodName != "runtime_offline_journey") {
+                    reportRetained(null) // Only a fully completed T06 can authorize deletion.
+                    return
+                }
+                try {
+                    check(setupCompleted && journeyCompleted && ownerClosed && teardownCompleted)
+                    cleanupSuccessfulJourney()
+                } catch (cleanupFailure: Throwable) {
+                    reportRetained(cleanupFailure)
+                    throw cleanupFailure
+                }
+            }
+        }
+    }).around(compose)
     private val context get() = ApplicationProvider.getApplicationContext<Context>()
     private val zone = ZoneId.of("Asia/Shanghai")
     private val observation = AtomicReference(LocalDate.of(2026, 1, 10))
@@ -97,17 +137,35 @@ class CompleteJourneyTest {
     private lateinit var restores: BackupRestoreViewModel
     private lateinit var archive: File
     private var journeyPhase = "NOT_STARTED"
+    private val runId = UUID.randomUUID().toString()
+    private var rootIdentity: Pair<Long, Long>? = null
+    private var expectedOwnerMarker: String? = null
+    private var setupCompleted = false
+    private var journeyCompleted = false
+    private var ownerClosed = false
+    private var teardownCompleted = false
+    private val teardownFailures = mutableListOf<Throwable>()
+    private val modelJobs = mutableSetOf<Job>()
+    private val observedGenerations = mutableSetOf<ManagedGeneration>()
 
     @Before fun setUp(): Unit = runBlocking {
         assertEquals("M13IsolatedRunner must prevent the normal ledger Application from starting",
             Application::class.java, context.applicationContext.javaClass)
-        root = File(context.noBackupFilesDir, "m22-ui-journey-${UUID.randomUUID()}").canonicalFile
+        val parent = context.noBackupFilesDir.canonicalFile
+        root = File(parent, "m22-ui-journey-$runId")
+        check(root.canonicalFile == root && !Files.exists(root.toPath(), NOFOLLOW_LINKS))
         check(root.mkdir())
-        File(root, "owner.txt").writeText("M22 only $root")
+        val identity = Os.lstat(root.path)
+        check(OsConstants.S_ISDIR(identity.st_mode) && identity.st_uid == android.os.Process.myUid())
+        rootIdentity = identity.st_dev to identity.st_ino
+        expectedOwnerMarker = "M22 T06 $runId\n${root.path}\n"
+        Files.newOutputStream(File(root, "owner.txt").toPath(), CREATE_NEW, WRITE, NOFOLLOW_LINKS).use {
+            it.write(checkNotNull(expectedOwnerMarker).toByteArray(Charsets.UTF_8))
+        }
         val storage = File(root, "owned-generation").apply { check(mkdir()) }
         owner = AppContainer(DataGenerationStore(context, storage, restoreClock = Clock.fixed(Instant.parse("2026-01-11T04:00:00Z"), zone)), CoroutineScope(SupervisorJob() + Dispatchers.IO))
         owner.start(zone)
-        owner.openStorage()
+        observedGenerations += owner.openStorage()
         archive = File(root, "synthetic-selected.lithicbackup")
         withContext(Dispatchers.Main) {
             holder = LedgerUiStateHolder(owner.storageState) { persistedZone -> assertEquals(zone, persistedZone); clock }
@@ -141,27 +199,102 @@ class CompleteJourneyTest {
             }
         }
         waitNode("home-screen")
+        setupCompleted = true
     }
 
     @After fun tearDown(): Unit = runBlocking {
-        compose.runOnIdle {
-            showing.value = false
-            models.clear()
-            compose.activity.viewModelStore.clear()
+        // Each release is attempted even if an earlier UI/close operation failed. Never delete here.
+        withContext(NonCancellable) {
+            suspend fun release(block: suspend () -> Unit) {
+                try { block() } catch (failure: Throwable) { teardownFailures += failure }
+            }
+            release { withContext(Dispatchers.Main) { rememberViewModelJobs() } }
+            release { compose.runOnIdle { showing.value = false } }
+            release { withContext(Dispatchers.Main) { models.clear() } }
+            release { withContext(Dispatchers.Main) { compose.activity.viewModelStore.clear() } }
+            release { compose.waitForIdle() }
+            modelJobs.forEach { job -> release { job.cancelAndJoin(); check(job.isCompleted) } }
+            if (::owner.isInitialized) {
+                release {
+                    (owner.storageState.value as? StorageInitializationState.Ready)?.generation?.let {
+                        observedGenerations += it
+                    }
+                    owner.close()
+                    val closed = checkNotNull((owner.storageState.value as? StorageInitializationState.Ready)?.generation) {
+                        "Owner close returned without a verifiable generation; preserve UNKNOWN state"
+                    }
+                    observedGenerations += closed
+                    check(observedGenerations.all { !it.database.isOpen }) { "Owned database still open" }
+                    ownerClosed = true
+                    androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().sendStatus(0, Bundle().apply {
+                        putString("M22_OWNER_CLOSED", closed.id)
+                    })
+                }
+            }
+            teardownCompleted = teardownFailures.isEmpty()
         }
-        compose.waitForIdle()
-        if (::owner.isInitialized) {
-            val closing = (owner.storageState.value as? StorageInitializationState.Ready)?.generation
-            owner.close()
-            assertTrue(closing == null || !closing.database.isOpen)
+    }
+
+    /** Call on Main before stores clear, including the old navigation store before restore. */
+    private fun rememberViewModelJobs() {
+        fun remember(store: ViewModelStore) {
+            store.keys().forEach { key ->
+                val model = checkNotNull(store[key])
+                modelJobs += checkNotNull(model.viewModelScope.coroutineContext[Job])
+                if (model is GenerationUiScopeViewModel) remember(model.viewModelStore)
+            }
+        }
+        remember(models)
+        remember(compose.activity.viewModelStore)
+    }
+
+    private fun reportRetained(original: Throwable?) {
+        try {
             androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().sendStatus(0, Bundle().apply {
-                putString("M22_OWNER_CLOSED", closing?.id ?: "NO_READY_OWNER")
+                putString("M22_T06_PRESERVATION", "RETAINED:${if (::root.isInitialized) root.name else runId}:$journeyPhase:OWNER_${if (ownerClosed) "CLOSED" else "UNKNOWN"}")
             })
+        } catch (diagnosticFailure: Throwable) {
+            // A reporting failure must not replace the original assertion/setup/shutdown failure.
+            if (original != null && diagnosticFailure !== original) original.addSuppressed(diagnosticFailure)
+            android.util.Log.w("M22_T06", "Retention status delivery UNKNOWN", diagnosticFailure)
         }
-        if (::root.isInitialized) {
-            assertEquals(context.noBackupFilesDir.canonicalFile, root.canonicalFile.parentFile)
-            check(root.deleteRecursively())
+    }
+
+    private fun requireOwnedRoot() {
+        check(UUID.fromString(runId).toString() == runId)
+        check(root.name == "m22-ui-journey-$runId" && root.absoluteFile == root.canonicalFile)
+        check(root.parentFile == context.noBackupFilesDir.canonicalFile)
+        val identity = Os.lstat(root.path)
+        check(OsConstants.S_ISDIR(identity.st_mode) && identity.st_uid == android.os.Process.myUid())
+        check(rootIdentity == (identity.st_dev to identity.st_ino)) { "Synthetic root was replaced" }
+        val marker = File(root, "owner.txt")
+        val stamp = Os.lstat(marker.path)
+        val expected = checkNotNull(expectedOwnerMarker).toByteArray(Charsets.UTF_8)
+        check(OsConstants.S_ISREG(stamp.st_mode) && stamp.st_uid == android.os.Process.myUid() && stamp.st_nlink == 1L)
+        check(stamp.st_size == expected.size.toLong())
+        Files.newInputStream(marker.toPath(), NOFOLLOW_LINKS).use { check(it.readBytes().contentEquals(expected)) }
+    }
+
+    private fun cleanupSuccessfulJourney() {
+        requireOwnedRoot()
+        val entries = Files.walk(root.toPath()).use { it.iterator().asSequence().toList() }
+        val stamps = entries.associateWith { path ->
+            val file = path.toFile()
+            check(path.startsWith(root.toPath()) && file.absoluteFile == file.canonicalFile)
+            val stamp = Os.lstat(file.path)
+            check(stamp.st_uid == android.os.Process.myUid())
+            check(OsConstants.S_ISDIR(stamp.st_mode) || (OsConstants.S_ISREG(stamp.st_mode) && stamp.st_nlink == 1L)) {
+                "Unknown or linked synthetic entry; retain the entire tree"
+            }
+            stamp
         }
+        // All admission checks precede the first unlink; never follow links or scan sibling roots.
+        requireOwnedRoot()
+        stamps.forEach { (path, stamp) ->
+            val now = Os.lstat(path.toString())
+            check(now.st_dev == stamp.st_dev && now.st_ino == stamp.st_ino && now.st_mode == stamp.st_mode && now.st_uid == stamp.st_uid)
+        }
+        entries.sortedByDescending { it.nameCount }.forEach { Files.delete(it) }
     }
 
     @Test fun runtime_offline_journey(): Unit = runBlocking {
@@ -282,6 +415,7 @@ class CompleteJourneyTest {
         assertEquals(previousGeneration, owner.openStorage().id)
         observation.set(LocalDate.of(2026, 1, 11))
         journeyPhase("RESTORE_CONFIRM")
+        compose.runOnIdle { rememberViewModelJobs() }
         click("confirm-backup-restore")
         compose.waitUntil(30_000) {
             (holder.state.value as? LedgerUiState.Ready)?.let { ready ->
@@ -316,6 +450,7 @@ class CompleteJourneyTest {
         compose.onNodeWithTag("home-project-rate").performScrollTo().assert(hasText("¥0.00"))
         compose.onNodeWithTag("home-subscription-rate").performScrollTo().assert(hasText("¥5.00"))
         journeyPhase("COMPLETE")
+        journeyCompleted = true
         } catch (failure: Throwable) {
             // Diagnostics must never replace the original assertion, timeout or product failure.
             runCatching { recordJourneyFailure(failure) }.onFailure { diagnosticFailure ->

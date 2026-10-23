@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **M22-T06失败现场保留：READY_FOR_REVIEW，仅桌面候选**：来源`e90d288f089049abfa702a16c2cae1b1cbcb7cfc`，仅改`CompleteJourneyTest.kt`。完整JUnit/Compose成功＋原终点＋Owner/DB关闭＋UUID/Owner/canonical归属全部满足后才清理；失败逐项尽力释放、不覆盖原异常、保留完整root。静态原业务断言/超时和T03均未改；仅Test构建exit0（205.562秒），新Test SHA `12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26`/3,403,324 bytes，原证书/包/target/Runner保持。原App b749…b2d3及普通产物不变，旧已安装Test c379…037f实物本地保全。首次aapt中文绝对路径失败和外层GBK打印失败保留，同件相对路径静态核验成功；无重建App或设备操作。实现PENDING_ANDROID_VERIFICATION，所有运行分支NOT_RUN，M22仍BLOCKED；成功清理开始后不承诺文件系统事务或清理中断完整保留。见[整改报告](evidence/M22-T06-Failure-Preservation.md)。停止等待独立审查及新设备授权，不能自动安装新Test或运行T06。
+
 - **M22 Test新授权安装：PASS；模块仍BLOCKED**：用户在`a3bebd2bb858711b478f776e7a2661857d29e69a`后说明手机刚才锁屏并明确再试1次。独立claim下普通Test安装1次exit0，固定设备SHA匹配c379…037f，实际UID10427、独立私有目录及仅目标新App的Instrumentation核验通过。旧M10 UID10376/code8及完整安装身份字段、新App UID10420/SHA保持；原始逐字核验因Package头token变化FAIL保留，限定逐字段复核没有产品改动。前两次安装FAIL不改判。没有App启动/测试/设置/清理，T06暂停、T03前置未满足和字体/IME均NOT_RUN，原Owner/任务UNKNOWN保持。见[本次安装与身份核验](evidence/M22-Test-Install-Unlocked-Retry.md)。本次额度已用完；停止等待独立审查，不自动运行测试或整改/重建APK。
 
 - **M22 Test追加单次安装：FAIL / USER_RESTRICTED**：用户在`0c45a43ef1d8e6e0c078bc821fafb52cecb8c4da`后另行明确授权再试1次。仅固定Test安装1次，仍exit1/`INSTALL_FAILED_USER_RESTRICTED: Install canceled by user`，具体触发原因UNKNOWN，未继续重试；Test含保留记录仍不存在，新App及旧M10安装元数据保持，未读取旧M10私有数据。T06暂停、T03前置未满足及字体/IME均NOT_RUN；前轮默认存储/Owner/任务UNKNOWN不改。没有App启动、Instrumentation、设置修改、清理或其他设备操作。见[追加安装记录](evidence/M22-Test-Install-Retry.md)；此次额度已耗用，停止，不自动再次安装或测试。M22仍BLOCKED / CHANGES REQUIRED，历史门禁保持。
@@ -104,6 +106,6 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Next Recommended Task
 
-先独立审查[新授权Test安装成功记录](evidence/M22-Test-Install-Unlocked-Retry.md)：新App/Test均已独立安装，前两次拒绝仍保留[历史失败](evidence/M22-Test-Install-Retry.md)；T06按用户要求暂停，三项补验均未运行。先明确测试包失败现场保留契约的最小整改授权，后续设备测试须再次明确续接，不能因Test安装成功自动运行。用户手动打开新App后的默认存储及最终Owner/任务状态UNKNOWN保持，不做任何收口或清理。不得覆盖手机旧M10包，不改变360dp、系统200%字体、原断言或120秒预算，也不以安装/静态隔离替代真实运行。原[构建与隔离报告](evidence/M22-Isolated-Device-Build.md)保持历史。
+先独立审查[T06失败现场保留桌面整改](evidence/M22-T06-Failure-Preservation.md)：新Test候选12e…ae26仅编译静态核验，手机上次已安装的仍为历史c379…037f记录，本轮未查询或更新。后续需明确的新Test更新与T06设备续接授权，不能自动恢复测试。原[安装成功记录](evidence/M22-Test-Install-Unlocked-Retry.md)及前两次拒绝保留；三项补验均未运行，用户手动打开新App后的默认存储及最终Owner/任务状态UNKNOWN保持，不做任何收口或清理。不得覆盖手机旧M10包，不改变360dp、系统200%字体、原断言或120秒预算，也不以编译/静态隔离替代真实运行。
 
 本轮提交推送后停止，等待ChatGPT独立复验。**BLOCKED — SYSTEMUI HEALTH GATE**：全新空API36在安装砺石之前同样出现SystemUI ANR，记录的直接超时点是SystemUIService waited20001ms，根因UNKNOWN；不能只认定是旧userdata、内存不足或M22产品问题。T06/正式20年T03/真实IME均未取得新执行结果。新5714额度已用完且正常关闭、AVD保留；旧5712/29锁/截图和所有历史现场不动，未经新授权不再创建/启动、替换环境、修复系统或清理。M10/M13-T06/M20/Q03/Q04/Q02/G1/G2/G3及全部历史边界保持。

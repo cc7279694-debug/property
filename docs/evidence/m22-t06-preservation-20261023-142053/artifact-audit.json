@@ -1,0 +1,593 @@
+{
+  "newTest": {
+    "path": "app\\build\\m22-device-verification\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+    "bytes": 3403324,
+    "sha256": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26",
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9"
+  },
+  "oldInstalledTestSha256": "c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f",
+  "oldTestPreservedLocally": true,
+  "appAndOrdinaryApkBytesUnchanged": true,
+  "binaryManifestByteIdenticalToOldTest": true,
+  "testAssetsIdenticalToOldTest": true,
+  "assetCount": 6,
+  "dex": [
+    {
+      "entry": "classes.dex",
+      "bytes": 2038260,
+      "sha256": "faacf6553b5f4032b48d45e1dec5893dd66984add767956361c5c3c1256d6c7f"
+    },
+    {
+      "entry": "classes10.dex",
+      "bytes": 21572,
+      "sha256": "2971d0d4e45475bc4e2b6cf4299567f534892e6017a74b054caebfc7042c1d9a"
+    },
+    {
+      "entry": "classes11.dex",
+      "bytes": 1003212,
+      "sha256": "e27cdfe1bea1b92ea42be9034b0cc830447ba599e52c44b2a55307e07b53aeb3"
+    },
+    {
+      "entry": "classes2.dex",
+      "bytes": 17640,
+      "sha256": "034a93844eccac977bf9d89ff9f98f931c930c5155301cce736d3270245ef5a9"
+    },
+    {
+      "entry": "classes3.dex",
+      "bytes": 85492,
+      "sha256": "0373e679bca53ab23da8da6eb390bb61e874a6de18af63bc3398840be428ab01"
+    },
+    {
+      "entry": "classes4.dex",
+      "bytes": 174448,
+      "sha256": "2be7976d24b00701277f5a44cb2f1a8bc5d027e1f1cbc7ff8101151b4350e4ce"
+    },
+    {
+      "entry": "classes5.dex",
+      "bytes": 887316,
+      "sha256": "b1a5cdf59d1c47b944e06586856fd45669310388d7e0f6dfb0cb79d991da075d"
+    },
+    {
+      "entry": "classes6.dex",
+      "bytes": 1896504,
+      "sha256": "3d0da2ba10e51ce5c4469f100455698cadf385ec9f8a2b15bb1a4aea5d6469b8"
+    },
+    {
+      "entry": "classes8.dex",
+      "bytes": 613468,
+      "sha256": "4a72c828866cf77a1a7045ec54aba48c6ba89ec07bcb80ad1cd33b2387d8d914"
+    },
+    {
+      "entry": "classes9.dex",
+      "bytes": 767400,
+      "sha256": "501dfe0a2e1d3a3c1b59532cbabf1bfcbba90a96b9cea4641c83f69c78f41f48"
+    },
+    {
+      "entry": "classes7.dex",
+      "bytes": 522184,
+      "sha256": "78bc4ff86a83fa1cb70060ded3bf540ee1488455ccac0716a55c45f0bbd39a84"
+    }
+  ],
+  "declaredMethods": {
+    "Lcom/cooper/lithic/app/M13IsolatedRunner;": [
+      {
+        "name": "<clinit>",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "<init>",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "newApplication",
+        "descriptor": "(Ljava/lang/ClassLoader;Ljava/lang/String;Landroid/content/Context;)Landroid/app/Application;",
+        "hasCode": true
+      }
+    ],
+    "Lcom/cooper/lithic/ui/CompleteJourneyTest;": [
+      {
+        "name": "$r8$lambda$11TegV1_Aed1gu_Ad_edQ5vIfjY",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$AETGwHHBOy8nm_nYXmTVC9yfdQY",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Lorg/junit/runners/model/Statement;Lorg/junit/runner/Description;)Lorg/junit/runners/model/Statement;",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$D3uOkipGNvI4Z326D7JYd8Z6hkg",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/time/LocalDate;",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$HWpoln0F2DW46Qneo9FlllLdq0c",
+        "descriptor": "(B)Ljava/lang/CharSequence;",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$L0r5ANbzg5EADQYneHqS3MlZxms",
+        "descriptor": "(Landroid/view/View;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$UTlljcKondfBeSl0KLE1dm4HW-Y",
+        "descriptor": "(B)Ljava/lang/CharSequence;",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$Y_1tCcDV1sb5m1NGq0jQsY6vt_k",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$eb3f0b4n5_WdxDuidwXdKVXZqrs",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$jDLVxLszUgFJWy4TOwZEngG1Jlw",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$ndhhJ0XGmbGBN5kummYBCHB-rXg",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "$r8$lambda$qdXKMx5_dVlweaTyR9WRp1Wosr8",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Landroid/view/View;)Lkotlin/Unit;",
+        "hasCode": true
+      },
+      {
+        "name": "<clinit>",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "<init>",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "access$awaitRate",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+        "hasCode": true
+      },
+      {
+        "name": "access$capture",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$cleanupSuccessfulJourney",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$click",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$createHundredYuanProject",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getArchive$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/io/File;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getClock$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Lcom/cooper/lithic/core/time/BusinessClock;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getCompose$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getContext",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Landroid/content/Context;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getExpectedOwnerMarker$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/lang/String;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getExports$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Lcom/cooper/lithic/feature/settings/BackupExportViewModel;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getHolder$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Lcom/cooper/lithic/app/LedgerUiStateHolder;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getJourneyCompleted$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "access$getJourneyPhase$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/lang/String;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getModelJobs$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/util/Set;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getModels$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Landroidx/lifecycle/ViewModelStore;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getObservation$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/util/concurrent/atomic/AtomicReference;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getObservedGenerations$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/util/Set;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getOwner$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Lcom/cooper/lithic/app/AppContainer;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getOwnerClosed$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "access$getRestores$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getRoot$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/io/File;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getRunId$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/lang/String;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getSetupCompleted$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "access$getShowing$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Landroidx/compose/runtime/MutableState;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getTeardownCompleted$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "access$getTeardownFailures$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/util/List;",
+        "hasCode": true
+      },
+      {
+        "name": "access$getZone$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/time/ZoneId;",
+        "hasCode": true
+      },
+      {
+        "name": "access$homeRate",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$journeyPhase",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$projectDetailClick",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$queryDate",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$recordJourneyFailure",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+        "hasCode": true
+      },
+      {
+        "name": "access$registerSyntheticCover",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+        "hasCode": true
+      },
+      {
+        "name": "access$rememberViewModelJobs",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$replace",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$reportRetained",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/Throwable;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setArchive$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/io/File;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setExpectedOwnerMarker$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setExports$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setHolder$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Lcom/cooper/lithic/app/LedgerUiStateHolder;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setJourneyCompleted$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Z)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setOwner$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Lcom/cooper/lithic/app/AppContainer;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setOwnerClosed$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Z)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setRestores$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setRoot$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/io/File;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setRootIdentity$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Lkotlin/Pair;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setSetupCompleted$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Z)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$setTeardownCompleted$p",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Z)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$subscriptionDetailClick",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "access$waitNode",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "awaitRate",
+        "descriptor": "(Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+        "hasCode": true
+      },
+      {
+        "name": "capture",
+        "descriptor": "(Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "capture$lambda$2",
+        "descriptor": "(B)Ljava/lang/CharSequence;",
+        "hasCode": true
+      },
+      {
+        "name": "cleanupSuccessfulJourney",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "click",
+        "descriptor": "(Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "click$lambda$0",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "clock$lambda$0",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;)Ljava/time/LocalDate;",
+        "hasCode": true
+      },
+      {
+        "name": "createHundredYuanProject",
+        "descriptor": "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+        "hasCode": true
+      },
+      {
+        "name": "getContext",
+        "descriptor": "()Landroid/content/Context;",
+        "hasCode": true
+      },
+      {
+        "name": "hideKeyboardAndVerify",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "hideKeyboardAndVerify$lambda$0",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Landroid/view/View;)Lkotlin/Unit;",
+        "hasCode": true
+      },
+      {
+        "name": "hideKeyboardAndVerify$lambda$1",
+        "descriptor": "(Landroid/view/View;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "homeRate",
+        "descriptor": "(Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "journeyPhase",
+        "descriptor": "(Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "projectDetailClick",
+        "descriptor": "(Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "queryDate",
+        "descriptor": "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "queryDate$lambda$0",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "recordJourneyFailure",
+        "descriptor": "(Ljava/lang/Throwable;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+        "hasCode": true
+      },
+      {
+        "name": "registerSyntheticCover",
+        "descriptor": "(Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;",
+        "hasCode": true
+      },
+      {
+        "name": "registerSyntheticCover$lambda$1",
+        "descriptor": "(B)Ljava/lang/CharSequence;",
+        "hasCode": true
+      },
+      {
+        "name": "rememberViewModelJobs",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "rememberViewModelJobs$remember",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Landroidx/lifecycle/ViewModelStore;)V",
+        "hasCode": true
+      },
+      {
+        "name": "replace",
+        "descriptor": "(Ljava/lang/String;Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "replace$lambda$0",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "reportRetained",
+        "descriptor": "(Ljava/lang/Throwable;)V",
+        "hasCode": true
+      },
+      {
+        "name": "requireOwnedRoot",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "rules$lambda$0",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Lorg/junit/runners/model/Statement;Lorg/junit/runner/Description;)Lorg/junit/runners/model/Statement;",
+        "hasCode": true
+      },
+      {
+        "name": "subscriptionDetailClick",
+        "descriptor": "(Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "waitNode",
+        "descriptor": "(Ljava/lang/String;)V",
+        "hasCode": true
+      },
+      {
+        "name": "waitNode$lambda$0",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "waitNode$lambda$1$0",
+        "descriptor": "(Lcom/cooper/lithic/ui/CompleteJourneyTest;Ljava/lang/String;)Z",
+        "hasCode": true
+      },
+      {
+        "name": "getRules",
+        "descriptor": "()Lorg/junit/rules/TestRule;",
+        "hasCode": true
+      },
+      {
+        "name": "injected_day_with_real_foreground_observer_and_resume_refresh",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "runtime_offline_journey",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "setUp",
+        "descriptor": "()V",
+        "hasCode": true
+      },
+      {
+        "name": "tearDown",
+        "descriptor": "()V",
+        "hasCode": true
+      }
+    ]
+  },
+  "verification": "STATIC_APK_AND_DEX_ONLY; no Android runtime, install or device operations"
+}

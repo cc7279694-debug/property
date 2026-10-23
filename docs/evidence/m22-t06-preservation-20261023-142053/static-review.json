@@ -1,0 +1,60 @@
+{
+  "verificationKind": "STATIC_SOURCE_CONTRACT_CHECKS_ONLY_NOT_ANDROID_RUNTIME",
+  "originalT06BusinessBodyUnchanged": true,
+  "allowedT06BodyAdditions": [
+    "capture existing VM Jobs before restore confirmation",
+    "set journeyCompleted only after original COMPLETE endpoint"
+  ],
+  "otherTestBodyAndDiagnosticHelpersUnchanged": true,
+  "sourceBeforeSha256": "2322051c0d50da2b215aa19a93c166f6eaf3ac637aff6ad6575bb83986634ebe",
+  "sourceAfterSha256": "70f3dec5ace27542ba41b6234e18609c9a8b4235f3b690a7a95b594ce9854853",
+  "cases": [
+    {
+      "case": "complete_success",
+      "staticReview": "Whole base returns; full T06 endpoint; shutdown/DB/UUID/marker/root checks precede deletion",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "case": "business_assertion_failure",
+      "staticReview": "Same base Throwable rethrown; teardown issues suppressed; no deletion",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "case": "ui_lookup_timeout",
+      "staticReview": "Base failure; complete root and existing captures retained",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "case": "before_incomplete",
+      "staticReview": "setupCompleted remains false or base throws; initialized Owner still release-attempted",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "case": "after_partial_failure",
+      "staticReview": "All releases attempted; teardownFailures prevent cleanup after base",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "case": "owner_close_failure_or_unknown",
+      "staticReview": "No confirmed ready DB closure; ownerClosed false and/or teardown failure; retain",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "case": "compose_or_activity_rule_failure",
+      "staticReview": "Outermost rule receives inner failure before cleanup eligibility",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "case": "wrong_uuid_marker_path_or_link",
+      "staticReview": "Full admission and no-follow traversal before first unlink",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "case": "system_process_death",
+      "staticReview": "No unconditional finally deletion; success-only code unreachable if process terminated",
+      "runtime": "NOT_RUN"
+    }
+  ],
+  "runtimeTestsRun": 0,
+  "knownCleanupLimit": "Success-only deletion is not a transactional filesystem operation; IO failure after first unlink can leave partial success residue. No deletion starts for a failed test/setup/shutdown."
+}

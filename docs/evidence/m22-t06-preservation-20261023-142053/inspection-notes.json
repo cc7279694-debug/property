@@ -1,0 +1,22 @@
+{
+  "firstManifestInspection": {
+    "exitCode": 1,
+    "causeEvidence": "aapt stderr: Illegal byte sequence in non-ASCII absolute APK path",
+    "record": "commands/new-test-manifest/command.json"
+  },
+  "sameApkRelativePathInspection": {
+    "exitCode": 0,
+    "record": "commands/new-test-manifest-relative/command.json",
+    "rebuildOrReplacement": false
+  },
+  "intermediatePrintInspection": {
+    "outerExitCode": 1,
+    "error": "UnicodeEncodeError: gbk could not encode replacement character while printing previously captured log",
+    "capturedRawFilesModified": false
+  },
+  "build": {
+    "gradleExitCode": 0,
+    "repeatedBuilds": 0
+  },
+  "deviceCommands": 0
+}

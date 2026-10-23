@@ -1,0 +1,29 @@
+{
+  "source": "e90d288f089049abfa702a16c2cae1b1cbcb7cfc",
+  "evidence": "docs/evidence/m22-t06-preservation-20261023-142053",
+  "t06SourceSha256": "2322051c0d50da2b215aa19a93c166f6eaf3ac637aff6ad6575bb83986634ebe",
+  "oldProblem": "After unconditionally deletes root even when a business assertion, setup or shutdown fails",
+  "verification": "STATIC_SOURCE_BASELINE; not a runtime RED execution",
+  "artifacts": {
+    "isolatedApp": {
+      "path": "app/build/m22-device-verification/outputs/apk/debug/app-debug.apk",
+      "bytes": 13822252,
+      "sha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3"
+    },
+    "installedOldTest": {
+      "path": "app/build/m22-device-verification/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 3209049,
+      "sha256": "c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f"
+    },
+    "ordinaryApp": {
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "bytes": 13822236,
+      "sha256": "328e3dc2fbe4c2a503fc81f2750cd68a62e5bf2b2bf624620b21d63b3f9bf213"
+    },
+    "ordinaryTest": {
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "bytes": 3764680,
+      "sha256": "ce5f5d15abe3c6549f7b23777f2d11ea822a6d4a0417dda165dbfa16e3d6a614"
+    }
+  }
+}
