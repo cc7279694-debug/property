@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "set -e; echo M22_BEGIN; cat /proc/sys/kernel/random/boot_id; echo FONT=$(settings get system font_scale); echo PLANE=$(settings get global airplane_mode_on); echo WIFI=$(settings get global wifi_on); echo DATA=$(settings get global mobile_data); wm density; cmd uimode night; run-as com.cooper.lithic.debug sh -c 'set -e; echo NB_BEGIN; find no_backup -mindepth 1 -maxdepth 3 -type f; echo NB_END; test ! -e no_backup/active-generation && test ! -e no_backup/generations && echo DEFAULT_ROOT_ABSENT; echo DB_BEGIN; if [ -d databases ]; then find databases -type f; else echo NO_DATABASES_DIR; fi; echo DB_END'; echo TARGET_PROCESSES; ps -A -o PID,UID,NAME | grep -E 'com.cooper.lithic.debug(:| |$)|com.cooper.lithic.debug.test(:| |$)' || true; echo M22_END"
+  ],
+  "started": "2026-10-23T05:52:03.038234+00:00",
+  "seconds": 0.2969999999986612,
+  "exit": 0,
+  "stdoutBytes": 207,
+  "stdoutSha256": "d162628b941cee8d1053bc120dd7adbaafab9763788f2e5ae413dc9af875545a",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

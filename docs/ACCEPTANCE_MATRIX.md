@@ -1,6 +1,12 @@
 # 验收登记
 
-当前状态：**M22 — READY_FOR_REVIEW，独立PENDING；Android整体可用性BLOCKED**。M21及此前限定冻结保持，M10/M13-T06延期及M20额外FAIL/UNKNOWN、Q03/Q04/Q02完整跨模块和G1/G2/G3不扩大通过。
+当前状态：**M22 — BLOCKED / CHANGES REQUIRED（SYSTEMUI HEALTH GATE）**。M21及此前限定冻结保持，M10/M13-T06延期及M20额外FAIL/UNKNOWN、Q03/Q04/Q02完整跨模块和G1/G2/G3不扩大通过。
+
+## M22定向补验停止登记（2026-10-23）
+
+用户对评审`1130349e8382aae171aa9259d27bce86dfea4a2a`另行授权原5712一次冷启动，先SystemUI健康再T06/T03/真实IME。第二轮窗口和真实全屏确认SystemUI ANR，**准入BLOCKED**；App/Test安装0、Instrumentation0，三方法本轮均NOT_RUN。新最小测试只编译、DEX/签名核对，Lint0错误17警告；不能据此宣布T01/T03/T06通过。[补验报告](evidence/M22-Android-supplement.md)、[本轮结果](evidence/m22-supplement/results.json)、[健康原证据](evidence/m22-supplement/systemui-health-gate.json)。
+
+原137 JVM/36 Android PASS、原旅程三次FAIL/47次执行和全部失败保持；新增IME方法未执行，当前39计划唯一方法仍为37已执行、最新36 PASS/1 FAIL/2 NOT_RUN。旧表下述数字保留原候选时点，不能把本轮NOT_RUN覆盖成新的FAIL或PASS。设备创建0/启动1/正常退出1，旧29锁/9文件/6M22图及ANR原图保留；本轮未开Owner/未清理，锁状态不推断释放，AVD保留。SystemUI根因UNKNOWN，不自行修复、冻结、合并main或进入M23。
 
 ## M22候选执行登记（2026-10-23）
 

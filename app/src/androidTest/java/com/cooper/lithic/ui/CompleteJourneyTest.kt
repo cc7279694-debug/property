@@ -26,6 +26,8 @@ import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.test.printToString
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToNode
@@ -72,6 +74,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.json.JSONObject
 
 /**
  * Visible production navigation and writes in a plain ComponentActivity, never MainActivity.
@@ -93,6 +96,7 @@ class CompleteJourneyTest {
     private lateinit var exports: BackupExportViewModel
     private lateinit var restores: BackupRestoreViewModel
     private lateinit var archive: File
+    private var journeyPhase = "NOT_STARTED"
 
     @Before fun setUp(): Unit = runBlocking {
         assertEquals("M13IsolatedRunner must prevent the normal ledger Application from starting",
@@ -161,9 +165,13 @@ class CompleteJourneyTest {
     }
 
     @Test fun runtime_offline_journey(): Unit = runBlocking {
+        try {
+        journeyPhase("OFFLINE_GATE")
         // Runtime device evidence is separately captured; fail if the real offline gate is missing.
         assertEquals(1, Settings.Global.getInt(context.contentResolver, Settings.Global.AIRPLANE_MODE_ON, 0))
+        journeyPhase("PROJECT_CREATE")
         createHundredYuanProject()
+        journeyPhase("PROJECT_OUTLAY")
         projectDetailClick("project-add-outlay")
         waitNode("money-editor-screen")
         replace("money-amount", "20")
@@ -175,6 +183,7 @@ class CompleteJourneyTest {
 
         click("open-project-list"); waitNode("project-list-screen")
         val projectId = owner.openStorage().database.projectDao().listProjects().single().id
+        journeyPhase("PROJECT_COVER_AND_RECOVERY")
         registerSyntheticCover(projectId)
         waitNode("project-row-$projectId")
         compose.onNodeWithTag("project-list-content").performScrollToNode(hasTestTag("project-row-$projectId"))
@@ -182,6 +191,7 @@ class CompleteJourneyTest {
         projectDetailClick("project-add-recovery"); waitNode("money-editor-screen")
         replace("money-amount", "10"); replace("money-occurred-on-input", "2026-01-07")
         click("money-save"); waitNode("project-detail-screen"); awaitRate("11")
+        journeyPhase("PROJECT_END")
         projectDetailClick("project-end"); waitNode("end-editor-screen")
         replace("end-ended-on-input", "2026-01-08")
         replace("end-reason", "合成项目已完成使用")
@@ -190,6 +200,7 @@ class CompleteJourneyTest {
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-daily"))
         compose.onNodeWithTag("project-detail-daily").assertTextContains("13.75", substring = true)
         capture("01-ended-project-result")
+        journeyPhase("PROJECT_EXACT_CHART")
         projectDetailClick("project-cost-history"); waitNode("project-cost-chart-screen")
         queryDate("project-cost-chart-screen", "chart-date-input", "chart-date-apply", "2026-01-07")
         compose.onNodeWithTag("project-cost-chart-screen").performScrollToNode(hasTestTag("chart-selected-value"))
@@ -197,6 +208,7 @@ class CompleteJourneyTest {
         capture("02-project-exact-date")
         click("chart-back"); waitNode("project-detail-screen"); homeRate("¥0.00")
 
+        journeyPhase("SUBSCRIPTION_CREATE")
         click("home-create-subscription")
         waitNode("subscription-paid-on-input")
         replace("subscription-name", "M22离线合成订阅")
@@ -216,6 +228,7 @@ class CompleteJourneyTest {
         waitNode("subscription-row-$serviceId")
         compose.onNodeWithTag("subscription-list-content").performScrollToNode(hasTestTag("subscription-row-$serviceId"))
         click("subscription-row-$serviceId"); waitNode("subscription-detail-screen")
+        journeyPhase("SUBSCRIPTION_RENEWAL")
         subscriptionDetailClick("subscription-detail-renewal"); waitNode("renewal-editor-screen")
         replace("renewal-amount", "180"); replace("renewal-paid-on-input", "2026-01-10")
         replace("renewal-effective-from-input", "2026-02-01"); replace("renewal-paid-until-input", "2026-03-01")
@@ -224,6 +237,7 @@ class CompleteJourneyTest {
         subscriptionDetailClick("subscription-price-history"); waitNode("subscription-price-chart-screen")
         queryDate("subscription-price-chart-screen", "chart-date-input", "chart-date-apply", "2026-01-10")
         click("chart-back"); waitNode("subscription-detail-screen")
+        journeyPhase("TOTAL_EXACT_CHART")
         // Bottom navigation is fixed outside the page's scroll container.
         compose.onNodeWithTag("tab-review").assertIsDisplayed().performClick()
         waitNode("review-screen"); click("review-total-cost-trend")
@@ -234,6 +248,7 @@ class CompleteJourneyTest {
         capture("03-total-exact-date")
         val backedUp = owner.openStorage().backupSnapshotSource().capture()
 
+        journeyPhase("COMPLETE_BACKUP_EXPORT")
         compose.onNodeWithTag("tab-settings").performClick()
         click("export-complete-backup")
         compose.waitUntil(20_000) { exports.state.value.exportedBytes?.let { it > 0L } == true }
@@ -241,6 +256,7 @@ class CompleteJourneyTest {
         assertTrue(archive.isFile && archive.length() == exports.state.value.exportedBytes)
         val previousGeneration = owner.openStorage().id
 
+        journeyPhase("POST_BACKUP_STATE_CHANGE")
         compose.onNodeWithTag("tab-now").performClick()
         click("open-subscription-list")
         waitNode("subscription-list-screen")
@@ -256,6 +272,7 @@ class CompleteJourneyTest {
         awaitRate("0")
         homeRate("¥0.00")
 
+        journeyPhase("RESTORE_PREVIEW")
         compose.onNodeWithTag("tab-settings").performClick()
         click("restore-complete-backup")
         compose.waitUntil(20_000) { restores.state.value.phase == RestoreUiPhase.PREVIEW }
@@ -264,12 +281,14 @@ class CompleteJourneyTest {
         assertEquals(0L, restores.state.value.preview!!.backupCounts["subscription_state_changes"])
         assertEquals(previousGeneration, owner.openStorage().id)
         observation.set(LocalDate.of(2026, 1, 11))
+        journeyPhase("RESTORE_CONFIRM")
         click("confirm-backup-restore")
         compose.waitUntil(30_000) {
             (holder.state.value as? LedgerUiState.Ready)?.let { ready ->
                 ready.generationId != previousGeneration && ready.overview?.asOf == observation.get()
             } == true && restores.state.value.message == "恢复成功，已重新读取恢复后的本地记录。"
         }
+        journeyPhase("RESTORED_FACTS")
         val restored = owner.openStorage()
         assertNotEquals(previousGeneration, restored.id)
         assertEquals(3, restored.database.projectDao().listEvents().size)
@@ -296,6 +315,18 @@ class CompleteJourneyTest {
         compose.onNodeWithTag("home-total-rate").performScrollTo().assert(hasText("¥5.00"))
         compose.onNodeWithTag("home-project-rate").performScrollTo().assert(hasText("¥0.00"))
         compose.onNodeWithTag("home-subscription-rate").performScrollTo().assert(hasText("¥5.00"))
+        journeyPhase("COMPLETE")
+        } catch (failure: Throwable) {
+            // Diagnostics must never replace the original assertion, timeout or product failure.
+            runCatching { recordJourneyFailure(failure) }.onFailure { diagnosticFailure ->
+                runCatching {
+                    androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().sendStatus(0, Bundle().apply {
+                        putString("M22_JOURNEY_DIAGNOSTICS", "UNKNOWN:${root.name}:$journeyPhase:${diagnosticFailure.javaClass.name}")
+                    })
+                }
+            }
+            throw failure
+        }
     }
 
     @Test fun injected_day_with_real_foreground_observer_and_resume_refresh(): Unit = runBlocking {
@@ -363,6 +394,62 @@ class CompleteJourneyTest {
         }
         androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().sendStatus(0, Bundle().apply {
             putString("M22_REGISTERED_SYNTHETIC_PNG", "$mediaId:${bytes.size}:$digest")
+        })
+    }
+
+    private fun journeyPhase(phase: String) {
+        journeyPhase = phase
+        androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().sendStatus(0, Bundle().apply {
+            putString("M22_JOURNEY_PHASE", "${root.name}:$phase")
+        })
+    }
+
+    /** Read only this test's live, owned ledger before @After closes it. */
+    private suspend fun recordJourneyFailure(failure: Throwable) {
+        val run = root.name.removePrefix("m22-ui-journey-")
+        val directory = File(context.cacheDir, "m22-captures-$run/failure-diagnostics")
+        check(directory.mkdirs()) // Never overwrite a previous failure or historical screenshot.
+        val unknown = mutableListOf<String>()
+        val report = JSONObject().put("root", root.name).put("phase", journeyPhase)
+            .put("failureType", failure.javaClass.name).put("failureMessage", failure.message?.take(4096))
+            .put("source", "isolated ComponentActivity; production LithicApp; owned synthetic ledger only")
+        runCatching {
+            val image = checkNotNull(androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().uiAutomation.takeScreenshot())
+            try {
+                File(directory, "failure-fullscreen.png").outputStream().use {
+                    check(image.compress(Bitmap.CompressFormat.PNG, 100, it))
+                }
+                report.put("screenshotWidth", image.width).put("screenshotHeight", image.height)
+            } finally { image.recycle() }
+        }.onFailure { unknown += "screenshot:${it.javaClass.name}" }
+        runCatching {
+            val tree = compose.onRoot(useUnmergedTree = true).printToString(maxDepth = 20)
+            File(directory, "semantics.txt").writeText(tree.take(32_768))
+            report.put("semanticsMaxDepth", 20).put("semanticsOriginalCharacters", tree.length)
+            if (tree.length > 32_768) unknown += "semantics:characterLimitReached"
+        }.onFailure { unknown += "semantics:${it.javaClass.name}" }
+        runCatching {
+            withContext(Dispatchers.IO) {
+                val generation = (owner.storageState.value as? StorageInitializationState.Ready)?.generation
+                    ?: error("No verified ready owned generation")
+                check(generation.directory.canonicalFile.toPath().startsWith(root.canonicalFile.toPath()))
+                val tables = listOf("long_term_projects", "project_money_events", "subscriptions",
+                    "subscription_renewals", "subscription_state_changes", "local_media_assets")
+                val counts = JSONObject()
+                // One read statement, no updates, and no access to another test or the default ledger.
+                generation.database.query(tables.joinToString(" UNION ALL ") {
+                    "SELECT '$it', COUNT(*) FROM $it"
+                }, emptyArray()).use { cursor ->
+                    while (cursor.moveToNext()) counts.put(cursor.getString(0), cursor.getLong(1))
+                }
+                report.put("generationId", generation.id).put("ownedBusinessCounts", counts)
+            }
+        }.onFailure { unknown += "ownedCounts:${it.javaClass.name}" }
+        report.put("diagnosticsStatus", if (unknown.isEmpty()) "CAPTURED" else "UNKNOWN")
+            .put("unknown", org.json.JSONArray(unknown))
+        File(directory, "failure.json").writeText(report.toString(2))
+        androidx.test.platform.app.InstrumentationRegistry.getInstrumentation().sendStatus(0, Bundle().apply {
+            putString("M22_JOURNEY_DIAGNOSTICS", "${report.getString("diagnosticsStatus")}:${directory.absolutePath}")
         })
     }
 

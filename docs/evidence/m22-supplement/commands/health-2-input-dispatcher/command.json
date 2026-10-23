@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "dumpsys input | grep -E \"DispatchEnabled:|DispatchFrozen:|Input dispatching timed out|ANR|FocusedApplication|FocusedWindow|PendingEvent|InboundQueue|OutboundQueue|WaitQueue\""
+  ],
+  "started": "2026-10-23T05:51:11.752778+00:00",
+  "seconds": 0.25,
+  "exit": 0,
+  "stdoutBytes": 142,
+  "stdoutSha256": "e0e4a8bdfc4e66c3a00b24fa169ea7c31a670ed478607610dd13549a94aad0dc",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

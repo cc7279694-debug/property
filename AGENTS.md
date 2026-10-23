@@ -138,3 +138,7 @@ M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未
 停止点READY_FOR_REVIEW，独立PENDING；137 JVM PASS，37 Android唯一方法最新36 PASS/1 FAIL、长历史1 NOT_RUN。SystemUI ANR实际遮挡，T01整体/T03/T06未完成；原始失败及最后只编译未运行的测试修正保持，不能由控件语义/截图推定实际完整可用。仅原M21/5712创建0/启动1/正常结束1，未操作其他设备；旧9文件SHA和15锁身份不变，新14零字节锁也保留，设置已恢复、AVD与ANR现场保留。不得无新授权再次启动、清理或复用。
 
 只推当前M22候选后停止等待ChatGPT独立审查，不能自行冻结或进入M23。M21及此前冻结、M20平台FAIL/第二次收口BLOCKED/UNKNOWN/5704、M10延期/三JPEG历史FAIL、M13-T06延期、Q03未执行子项/Q04 PROPOSED/Q02完整16组/G1/G2/G3及全部历史NOTES不变。不重跑M21395 JVM/31 Android，不配置正式签名或录入真实个人数据。
+
+## M22定向补验最新停止边界（2026-10-23）
+
+用户对1130349另行批准原5712最多一次冷启动；本轮实际额度已用完，创建0/启动1/正常退出1。两轮SystemUI健康观察第二轮真实ANR，安装和测试前停止，**BLOCKED — SYSTEMUI HEALTH GATE**。本轮App/Test安装0、Instrumentation0，T06/T03/新增真实系统IME均NOT_RUN。原137 JVM/36 Android PASS及T06三次FAIL保持；仅测试诊断/IME方法编译，最终Test ce5f5d15…3d6a614未安装，App原字节不变。旧29锁、M21原9文件、M22原6图和旧ANR字节保留；未开Owner/未清理/未改设置，不推断旧锁释放。原进程/官方收尾helper及端口已结束，AVD保留。见[补验](docs/evidence/M22-Android-supplement.md)。后续不得自行再次启动、修复SystemUI、换AVD、安装或清理；SystemUI根因UNKNOWN，不称产品缺陷。提交推送当前分支后停止等待独立复验；M10/M13-T06/M20及全部历史门禁保持，不冻结、不合并main、不进M23。

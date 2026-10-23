@@ -6,6 +6,8 @@ import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.os.Process
+import android.os.SystemClock
+import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,6 +34,7 @@ import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsFocused
 import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.assertTextEquals
 import androidx.core.view.ViewCompat
@@ -222,6 +225,59 @@ class M22AccessibilityTest {
         assertEquals("系统大字体合成项目", state.name)
     }
 
+    /** System settings and a real IME are prerequisites; no LocalDensity override or Room writes. */
+    @Test fun system200_real_ime_keeps_production_form_input_and_save_reachable() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val configuration = compose.activity.resources.configuration
+        assertEquals("Requires the authorized actual system font_scale=2.0",
+            2f, Settings.System.getFloat(context.contentResolver, Settings.System.FONT_SCALE), 0.001f)
+        assertEquals(2f, configuration.fontScale, 0.001f)
+        assertTrue("Requires the authorized 360dp system display phase",
+            configuration.screenWidthDp in 359..361)
+        var state by mutableStateOf(editor().copy(initialAmount = "100", errors = emptyMap(), message = null))
+        val saves = AtomicInteger()
+        var saved: ProjectEditorUiState? = null
+        compose.setContent { LithicTheme { Surface(Modifier.fillMaxSize()) {
+            Editor(state, { state = it }, { saved = state; saves.incrementAndGet() }, {})
+        } } }
+        val decor = compose.activity.window.decorView
+        compose.waitUntil(5_000) { decor.hasWindowFocus() && decor.isAttachedToWindow }
+        compose.onNodeWithTag("project-name").performScrollTo().performClick().assertIsFocused()
+            .performTextInput("真实系统字号与键盘合成项目")
+        compose.runOnUiThread {
+            WindowCompat.getInsetsController(compose.activity.window, decor).show(WindowInsetsCompat.Type.ime())
+        }
+        compose.waitUntil(5_000) {
+            ViewCompat.getRootWindowInsets(decor)?.isVisible(WindowInsetsCompat.Type.ime()) == true
+        }
+        compose.onNodeWithTag("project-name").assertIsDisplayed().assertIsFocused()
+            .assertTextContains("真实系统字号与键盘合成项目")
+        captureSystemImeFrame("08-system200-ime-visible-input", expectedVisible = true)
+        compose.onNodeWithTag("project-save").performScrollTo().assertIsDisplayed()
+            .assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp)
+        assertTrue("IME must still be visible when the real save action is reachable",
+            checkNotNull(ViewCompat.getRootWindowInsets(decor)).isVisible(WindowInsetsCompat.Type.ime()))
+        captureSystemImeFrame("09-system200-ime-visible-save", expectedVisible = true)
+        compose.onNodeWithTag("project-save").performClick()
+        compose.runOnIdle {
+            assertEquals(1, saves.get())
+            assertEquals("真实系统字号与键盘合成项目", saved?.name)
+            assertEquals("100", saved?.initialAmount)
+        }
+        compose.runOnUiThread {
+            WindowCompat.getInsetsController(compose.activity.window, decor).hide(WindowInsetsCompat.Type.ime())
+        }
+        compose.waitUntil(5_000) {
+            ViewCompat.getRootWindowInsets(decor)?.isVisible(WindowInsetsCompat.Type.ime()) == false
+        }
+        compose.onNodeWithTag("project-name").performScrollTo().assertIsDisplayed()
+            .assertTextContains("真实系统字号与键盘合成项目")
+        compose.onNodeWithTag("project-initial-amount").performScrollTo().assertTextContains("100")
+        captureSystemImeFrame("10-system200-ime-hidden-input-retained", expectedVisible = false)
+        compose.onNodeWithTag("project-editor-back").performScrollTo().assertIsDisplayed()
+            .assertHeightIsAtLeast(48.dp).assertWidthIsAtLeast(48.dp)
+    }
+
     @Test fun denied_notification_settings_keep_labeled_switches_and_nonoverlapping_full_size_actions() {
         var state by mutableStateOf(NotificationSettingsUiState(false, ReminderPreferences(true, false)))
         compose.setContent { LocalNarrowHost {
@@ -349,6 +405,52 @@ class M22AccessibilityTest {
         FileOutputStream(json).use { it.write(source.toString(2).toByteArray()); it.fd.sync() }
         InstrumentationRegistry.getInstrumentation().sendStatus(0, Bundle().apply {
             putString("M22_SCREENSHOT", png.absolutePath); putString("M22_SCREENSHOT_SOURCE", json.absolutePath)
+        })
+    }
+
+    /** Full display bytes include the real keyboard/SystemUI, unlike captureToImage. */
+    private fun captureSystemImeFrame(name: String, expectedVisible: Boolean) {
+        val instrumentation = InstrumentationRegistry.getInstrumentation()
+        val raw = checkNotNull(InstrumentationRegistry.getArguments().getString("m22CaptureRun"))
+        val run = UUID.fromString(raw).toString()
+        check(raw == run)
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val cache = context.cacheDir.canonicalFile
+        val root = File(cache, "m22-system-ime-captures-$run").absoluteFile
+        check(root.canonicalFile == root && root.parentFile == cache)
+        if (!root.exists()) {
+            check(root.mkdir())
+            val owner = File(root, "owner.txt").apply { check(createNewFile()) }
+            FileOutputStream(owner).use { it.write(run.toByteArray()); it.fd.sync() }
+        }
+        check(File(root, "owner.txt").readText() == run)
+        compose.waitForIdle()
+        val decor = compose.activity.window.decorView
+        val insets = checkNotNull(ViewCompat.getRootWindowInsets(decor))
+        assertEquals(expectedVisible, insets.isVisible(WindowInsetsCompat.Type.ime()))
+        assertTrue("A system modal must not have taken activity window focus", decor.hasWindowFocus())
+        val bitmap = checkNotNull(instrumentation.uiAutomation.takeScreenshot())
+        val width = bitmap.width
+        val height = bitmap.height
+        val png = File(root, "$name.png").apply { check(createNewFile()) }
+        try { FileOutputStream(png).use { check(bitmap.compress(Bitmap.CompressFormat.PNG, 100, it)); it.fd.sync() } }
+        finally { bitmap.recycle() }
+        val sha = MessageDigest.getInstance("SHA-256").digest(png.readBytes())
+            .joinToString("") { "%02x".format(it.toInt() and 255) }
+        val source = JSONObject().put("runId", run).put("host", "ISOLATED_COMPONENT_ACTIVITY")
+            .put("mainActivity", false).put("source", "UIAUTOMATION_FULL_DISPLAY_PRODUCTION_PROJECT_FORM_SYNTHETIC_STATE_NO_LEDGER")
+            .put("savedToRoom", false).put("capturedAtUtc", Instant.now().toString())
+            .put("elapsedRealtimeMs", SystemClock.elapsedRealtime()).put("pid", Process.myPid()).put("uid", Process.myUid())
+            .put("localDensityOverride", false).put("systemFontScale", compose.activity.resources.configuration.fontScale.toDouble())
+            .put("systemScreenWidthDp", compose.activity.resources.configuration.screenWidthDp)
+            .put("imeVisible", expectedVisible).put("imeInsetBottomPx", insets.getInsets(WindowInsetsCompat.Type.ime()).bottom)
+            .put("windowFocus", decor.hasWindowFocus()).put("bytes", png.length()).put("sha256", sha)
+            .put("widthPx", width).put("heightPx", height).put("screenshot", png.name)
+        val json = File(root, "$name.json").apply { check(createNewFile()) }
+        FileOutputStream(json).use { it.write(source.toString(2).toByteArray()); it.fd.sync() }
+        instrumentation.sendStatus(0, Bundle().apply {
+            putString("M22_SYSTEM_IME_EVIDENCE", json.absolutePath)
+            putString("M22_SYSTEM_IME_STATE", "stage=$name;visible=$expectedVisible;sha256=$sha;windowFocus=${decor.hasWindowFocus()}")
         })
     }
 

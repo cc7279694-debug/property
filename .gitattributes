@@ -66,3 +66,6 @@ docs/evidence/m21-android/** -text -whitespace
 
 # M22 raw test/device/screenshot evidence preserves captured bytes and original failures.
 docs/evidence/m22/** -text -whitespace
+
+# M22 single-restart SystemUI gate evidence retains observed bytes, including blocked queries.
+docs/evidence/m22-supplement/** -text -whitespace

@@ -1,0 +1,44 @@
+{
+  "status": "BLOCKED — SYSTEMUI HEALTH GATE",
+  "reviewSource": "1130349e8382aae171aa9259d27bce86dfea4a2a",
+  "systemUi": "BLOCKED",
+  "tests": [
+    {
+      "method": "CompleteJourneyTest#runtime_offline_journey",
+      "result": "NOT_RUN",
+      "reason": "Second health snapshot has actual SystemUI ANR; no install/instrumentation; three historical FAIL retained"
+    },
+    {
+      "method": "LongHistoryPerformanceTest#full_twenty_year_dataset_reads_exact_global_facts_and_remains_responsive",
+      "result": "NOT_RUN",
+      "reason": "SystemUI blocked; T06 prerequisite not executed",
+      "actualRoomCounts": "NOT_CAPTURED",
+      "wallCpuMemoryResponsiveness": "NOT_CAPTURED"
+    },
+    {
+      "method": "M22AccessibilityTest#system200_real_ime_keeps_production_form_input_and_save_reachable",
+      "result": "NOT_RUN",
+      "reason": "New method compiled in new Test but never installed or executed"
+    }
+  ],
+  "prior": {
+    "jvmPass": 137,
+    "androidLatestPass": 36,
+    "androidLatestFail": 1,
+    "androidNotRun": 1,
+    "journeyHistoricalFails": 3,
+    "unchanged": true
+  },
+  "currentUniqueMethods": {
+    "planned": 39,
+    "executed": 37,
+    "latestPass": 36,
+    "latestFail": 1,
+    "notRun": 2,
+    "reason": "Original 38 unchanged plus one new IME method NOT_RUN; current T06 non-execution does not overwrite prior FAIL"
+  },
+  "newAndroidExecutions": 0,
+  "newPass": 0,
+  "testOnlySourceChanges": true,
+  "productChanges": false
+}

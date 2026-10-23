@@ -1,0 +1,18 @@
+{
+  "app": {
+    "sha256": "328e3dc2fbe4c2a503fc81f2750cd68a62e5bf2b2bf624620b21d63b3f9bf213",
+    "bytes": 13822236,
+    "installed": true
+  },
+  "test": {
+    "sha256": "f671f7643ffe289f3f19440d84e03d0735f0d9b5be1f183b2c01ee3ea7658d1f",
+    "bytes": 3764680,
+    "installed": false,
+    "reason": "SystemUI ANR gate discovered; no further Android operations"
+  },
+  "userAppShaShortened": true,
+  "authoritativeFullShaSource": "reviewed docs/evidence/m22/checks/ready-artifacts.json and local original APK",
+  "sourceFiles": {
+    "app/src/androidTest/java/com/cooper/lithic/performance/LongHistoryPerformanceTest.kt": "ad8808cee365ff048f90373b2fe19804db2ee0e4ef796053f3dac4e9ec047904"
+  }
+}

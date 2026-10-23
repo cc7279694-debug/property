@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "set -e; echo M22_BEGIN; for p in com.cooper.lithic.debug com.cooper.lithic.debug.test; do echo PACKAGE=$p; f=$(pm path \"$p\"); echo \"$f\"; test \"$(echo \"$f\" | wc -l)\" -eq 1; sha256sum \"${f#package:}\"; dumpsys package \"$p\" | grep -E 'userId=|appId=|versionCode=|versionName=|User 0:'; done; echo M22_END"
+  ],
+  "started": "2026-10-23T05:52:01.436565+00:00",
+  "seconds": 1.610000000000582,
+  "exit": 0,
+  "stdoutBytes": 1235,
+  "stdoutSha256": "a984d3079e510f454ed871ccc73c25d1d0d4aaf9de283d34aec1a2667ad6c48d",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

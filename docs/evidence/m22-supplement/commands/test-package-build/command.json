@@ -1,0 +1,20 @@
+{
+  "args": [
+    "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\gradlew.bat",
+    "-Pm13Isolated=true",
+    ":app:assembleDebugAndroidTest",
+    ":app:lintDebug",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1024m -XX:MaxMetaspaceSize=512m",
+    "-Pkotlin.compiler.execution.strategy=in-process"
+  ],
+  "started": "2026-10-23T05:43:24.617474+00:00",
+  "seconds": 268.1560000000027,
+  "exit": 0,
+  "stdoutBytes": 14700,
+  "stdoutSha256": "6fb7de57a3d6122a2a08e9fb069f33fa464d89aa162f7920bbe327ef21378e89",
+  "stderrBytes": 251,
+  "stderrSha256": "7947f20a02b8249ee4ac57e08b051987df95393d087248b86ba68192263b665b"
+}

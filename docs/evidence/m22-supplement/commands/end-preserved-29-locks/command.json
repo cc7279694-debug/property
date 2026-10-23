@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "run-as com.cooper.lithic.debug sh -c 'set -e; find cache -type f -name \"*.lck\" -exec stat -c \"%u:%i:%d:%h:%s:%F:%n\" {} \\;' "
+  ],
+  "started": "2026-10-23T05:52:43.672326+00:00",
+  "seconds": 1.0779999999977008,
+  "exit": 0,
+  "stdoutBytes": 6010,
+  "stdoutSha256": "edaa15ddc9809b6fb5668b81bf1feb1d439882992834a1cf9f1878f3e417d0ed",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
