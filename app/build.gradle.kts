@@ -7,6 +7,23 @@ plugins {
     alias(libs.plugins.androidx.room)
 }
 
+// Explicit desktop-only preparation for a separately installed M22 verification app.
+// Leave the ordinary Debug/Release identities and their output files untouched.
+val m22VerificationValue = providers.gradleProperty("m22DeviceVerification").orNull
+require(m22VerificationValue == null || m22VerificationValue in setOf("true", "false")) {
+    "m22DeviceVerification must be true or false"
+}
+val m22DeviceVerification = m22VerificationValue == "true"
+if (m22DeviceVerification) {
+    require(providers.gradleProperty("m13Isolated").orNull == "true") {
+        "M22 device verification requires the plain Application M13IsolatedRunner"
+    }
+    require(!providers.gradleProperty("m12T04ProcessDeath").isPresent) {
+        "M22 device verification cannot enable historical process-death experiments"
+    }
+    layout.buildDirectory.set(layout.projectDirectory.dir("build/m22-device-verification"))
+}
+
 android {
     namespace = "com.cooper.lithic"
     compileSdk = 36
@@ -28,7 +45,7 @@ android {
 
     buildTypes {
         debug {
-            applicationIdSuffix = ".debug"
+            applicationIdSuffix = if (m22DeviceVerification) ".m22verify.debug" else ".debug"
             versionNameSuffix = "-debug"
         }
     }

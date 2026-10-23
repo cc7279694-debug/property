@@ -1,0 +1,20 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+M22_IDENTITY_MODEL={"namespace":"com.cooper.lithic","defaultApplicationId":"com.cooper.lithic","runner":"androidx.test.runner.AndroidJUnitRunner","buildDirectory":"E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build","buildTypes":[{"type":"debug","applicationId":"com.cooper.lithic.debug","versionName":"0.1.0-m22-debug"},{"type":"release","applicationId":"com.cooper.lithic","versionName":"0.1.0-m22"}],"debugSigningKeyAlreadyExists":true}
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:generateReleaseResValues
+> Task :app:extractDeepLinksRelease
+> Task :app:processReleaseMainManifest
+
+BUILD SUCCESSFUL in 45s
+6 actionable tasks: 3 executed, 3 up-to-date

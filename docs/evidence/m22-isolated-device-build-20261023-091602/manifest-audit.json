@@ -1,0 +1,26 @@
+{
+  "appPackage": "com.cooper.lithic.m22verify.debug",
+  "testPackage": "com.cooper.lithic.m22verify.debug.test",
+  "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+  "targetPackage": "com.cooper.lithic.m22verify.debug",
+  "providers": [
+    "com.cooper.lithic.m22verify.debug.androidx-startup"
+  ],
+  "permissions": [
+    "<APP_ID>.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "android.permission.WAKE_LOCK"
+  ],
+  "testPermissions": [
+    "android.permission.REORDER_TASKS"
+  ],
+  "sharedUserId": false,
+  "ordinaryDebug": "com.cooper.lithic.debug",
+  "ordinaryRelease": "com.cooper.lithic",
+  "ordinaryPermissionsUnchangedExceptApplicationId": true,
+  "storageScope": "New application Context private directory; runtime UID and filesystem isolation NOT_RUN",
+  "mainSourceTree": "d8052b488652103963a11ec07f8c9231634b8ccd",
+  "androidTestSourceTree": "15aff25158c2a61673329e9e456dd4994ce1ef1e"
+}

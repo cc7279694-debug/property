@@ -1,0 +1,9 @@
+import groovy.json.JsonOutput
+gradle.projectsEvaluated {
+    def p = gradle.rootProject.project(':app')
+    def a = p.extensions.getByName('android')
+    def rows = a.buildTypes.collect { b -> [type:b.name, applicationId:a.defaultConfig.applicationId + (b.applicationIdSuffix ?: ''), versionName:a.defaultConfig.versionName + (b.versionNameSuffix ?: '')] }
+    def result = [namespace:a.namespace, defaultApplicationId:a.defaultConfig.applicationId, runner:a.defaultConfig.testInstrumentationRunner, buildDirectory:p.layout.buildDirectory.get().asFile.absolutePath, buildTypes:rows, debugSigningKeyAlreadyExists:a.signingConfigs.getByName('debug').storeFile.isFile()]
+    println('M22_IDENTITY_MODEL=' + JsonOutput.toJson(result))
+    if (!result.debugSigningKeyAlreadyExists) throw new GradleException('Existing debug signing key required; do not generate a new key')
+}

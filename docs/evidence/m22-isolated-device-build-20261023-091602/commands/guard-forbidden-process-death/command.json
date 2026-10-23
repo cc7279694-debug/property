@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+    "-Pm22DeviceVerification=true",
+    "-Pm13Isolated=true",
+    "-Pm12T04ProcessDeath=false",
+    "help",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1024m -XX:MaxMetaspaceSize=512m"
+  ],
+  "startedUtc": "2026-10-23T09:29:49.384572+00:00",
+  "endedUtc": "2026-10-23T09:30:20.959188+00:00",
+  "seconds": 31.579000000001543,
+  "exitCode": 1,
+  "expectedNonzeroExit": true,
+  "expectedMessage": "cannot enable historical process-death experiments",
+  "scope": "Gradle configuration guard only; no JVM/Android test execution",
+  "stdoutBytes": 423,
+  "stdoutSha256": "2c6f59cd3e0a2325a718249c23c12baf9c5626692fac8294c45ae6b976c3526e",
+  "stderrBytes": 481,
+  "stderrSha256": "38700b362f19aec6e9d303a4bff0e29dbdaaaa635adb0d566e619e1f2c532fa2",
+  "expectedRejectionObserved": true
+}

@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+    "-Pm22DeviceVerification=true",
+    "help",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1024m -XX:MaxMetaspaceSize=512m"
+  ],
+  "startedUtc": "2026-10-23T09:29:14.461525+00:00",
+  "endedUtc": "2026-10-23T09:29:49.380237+00:00",
+  "seconds": 34.92099999999846,
+  "exitCode": 1,
+  "expectedNonzeroExit": true,
+  "expectedMessage": "requires the plain Application M13IsolatedRunner",
+  "scope": "Gradle configuration guard only; no JVM/Android test execution",
+  "stdoutBytes": 423,
+  "stdoutSha256": "2c6f59cd3e0a2325a718249c23c12baf9c5626692fac8294c45ae6b976c3526e",
+  "stderrBytes": 479,
+  "stderrSha256": "78d777fa34ef7f19594c2c41a9e8d72b5d5f47e338588599bf8046f8ca17f077",
+  "expectedRejectionObserved": true
+}

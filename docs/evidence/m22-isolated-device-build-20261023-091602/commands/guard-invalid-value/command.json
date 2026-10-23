@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+    "-Pm22DeviceVerification=invalid",
+    "help",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1024m -XX:MaxMetaspaceSize=512m"
+  ],
+  "startedUtc": "2026-10-23T09:28:43.812749+00:00",
+  "endedUtc": "2026-10-23T09:29:14.458527+00:00",
+  "seconds": 30.656999999999243,
+  "exitCode": 1,
+  "expectedNonzeroExit": true,
+  "expectedMessage": "m22DeviceVerification must be true or false",
+  "scope": "Gradle configuration guard only; no JVM/Android test execution",
+  "stdoutBytes": 423,
+  "stdoutSha256": "2c6f59cd3e0a2325a718249c23c12baf9c5626692fac8294c45ae6b976c3526e",
+  "stderrBytes": 450,
+  "stderrSha256": "ca9508e515671455f9ce4de90faf07f8f00e070436312e0ac4510e4bd4ff2657",
+  "expectedRejectionObserved": true
+}

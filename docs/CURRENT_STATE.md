@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **M22独立真机测试包桌面准备：READY_FOR_REVIEW — M22 ISOLATED DEVICE BUILD**：来源`99bce1160f608d8b785da2d18614c0e8a342d49f`，显式构建属性仅改变验证Debug包为`com.cooper.lithic.m22verify.debug`及对应`.test`，强制原plain隔离Runner并使用独立产物目录。默认Debug/Release身份及普通旧APK字节不变；Gradle实际exit0，新App/Test SHA为b749…b2d3 / c379…037f，同原Debug证书；完整Manifest、Provider/权限、targetPackage及DEX静态核验通过。外层打印编码exit1原样记录，未重复构建。本轮ADB/安装/设备运行均0，真实独立UID/私有路径及三项补验仍NOT_RUN，M22继续BLOCKED / CHANGES REQUIRED。见[构建与隔离报告](evidence/M22-Isolated-Device-Build.md)。不得据本段自行在个人手机安装、启动或改设置；历史包、现场、FAIL和门禁保持，等待独立审查，不进入M23。
+
 - **M22真机定向补验最新停止点：BLOCKED_EXISTING_TARGET_PACKAGE**：来源`6d5ee63b5a4c59642ef435d644188907f76244b8`，唯一USB目标为Xiaomi `23127PN0CC` / API36 / arm64-v8a；只读发现User0已有`com.cooper.lithic.debug`、code8/`0.1.0-m10-debug`及登记数据目录，按用户硬门禁停止。安装/Instrumentation/App启动/网络字体修改/旧数据读写均0；T06/T03/系统200%IME全部NOT_RUN，无新截图或性能结果。本地M22 App/Test原SHA匹配，但不冒充手机旧包身份；未读取账本、未覆盖卸载或清理。见[真机报告](evidence/M22-Physical-Device-verification.md)。M22继续BLOCKED / CHANGES REQUIRED，全部历史结果、NOTES及受保护现场保持。提交后停止，不自动更改应用身份、操作旧包或进入M23。
 
 - **M22 SystemUI专项取证最新停止点：RESOURCE_ADMISSION_BLOCKED**：来源`4fa4be13b952914b552326a9eeb21320072d980c`，用户明确要求可用物理内存至少5GiB才可创建/启动。首次只读观察约3.19GiB；随后归档命令观察约3.86GiB、E盘约91.22GiB，内存仍未达门槛。创建/启动/退出/ADB/adb root/安装/Instrumentation均0，无设备或系统修复；`TRACE_NOT_AVAILABLE`仅指未获资源准入、未尝试采集，不是权限拒绝或新ANR结论。既有SystemUI深层根因UNKNOWN，M22仍BLOCKED / CHANGES REQUIRED，原测试及全部历史现场/门禁不变。见[专项取证报告](evidence/M22-SystemUI-ANR-rootcause.md)。提交后停止等待独立审查，不自动在资源变化后启动，不进入M23。
@@ -95,5 +97,7 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 - 仅提交推送本模块代码/测试/文档，最终远端及工作区状态以Git回执为准；不合并main，不配置正式签名。
 
 ## Next Recommended Task
+
+独立身份M22 App/Test的桌面准备已就绪，先审查[构建与隔离报告](evidence/M22-Isolated-Device-Build.md)，再由用户另行明确批准手机安装/运行。当前许可不允许任何设备操作；不得覆盖手机旧M10包，不改变360dp、系统200%字体、原断言或120秒预算，也不以编译和静态隔离替代真实运行。
 
 本轮提交推送后停止，等待ChatGPT独立复验。**BLOCKED — SYSTEMUI HEALTH GATE**：全新空API36在安装砺石之前同样出现SystemUI ANR，记录的直接超时点是SystemUIService waited20001ms，根因UNKNOWN；不能只认定是旧userdata、内存不足或M22产品问题。T06/正式20年T03/真实IME均未取得新执行结果。新5714额度已用完且正常关闭、AVD保留；旧5712/29锁/截图和所有历史现场不动，未经新授权不再创建/启动、替换环境、修复系统或清理。M10/M13-T06/M20/Q03/Q04/Q02/G1/G2/G3及全部历史边界保持。

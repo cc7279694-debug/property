@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+    "-Pm22DeviceVerification=true",
+    "-Pm13Isolated=true",
+    ":app:assembleDebug",
+    ":app:assembleDebugAndroidTest",
+    "--init-script",
+    "build/m22-isolated-device-preparation/identity-model.gradle",
+    "--offline",
+    "--no-daemon",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1024m -XX:MaxMetaspaceSize=512m",
+    "-Pkotlin.compiler.execution.strategy=in-process"
+  ],
+  "JAVA_HOME": "C:/Users/CDD/AppData/Local/MirraAndroid/jdk17/jdk-17.0.20.1+1",
+  "startedUtc": "2026-10-23T09:18:19.698074+00:00",
+  "endedUtc": "2026-10-23T09:27:23.274456+00:00",
+  "seconds": 543.5780000000013,
+  "exitCode": 0,
+  "stdoutBytes": 17926,
+  "stdoutSha256": "4487869cf791c3e2652194a59163ddd080fb7787752c10f33b9b23bfa02c8829",
+  "stderrBytes": 251,
+  "stderrSha256": "7947f20a02b8249ee4ac57e08b051987df95393d087248b86ba68192263b665b"
+}
