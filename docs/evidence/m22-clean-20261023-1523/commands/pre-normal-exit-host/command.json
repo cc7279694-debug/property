@@ -1,0 +1,15 @@
+{
+  "args": [
+    "powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "$p=@(Get-CimInstance Win32_Process | Where-Object { $_.Name -match '^(emulator|qemu-system)' } | ForEach-Object { [pscustomobject]@{Name=$_.Name;ProcessId=$_.ProcessId;ParentProcessId=$_.ParentProcessId;ExecutablePath=$_.ExecutablePath;CommandLine=$_.CommandLine;CreationDate=$_.CreationDate.ToUniversalTime().ToString('o')} }); $ports=@(Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object LocalPort -in 5714,5715 | Select-Object LocalAddress,LocalPort,OwningProcess); $m=Get-CimInstance Win32_OperatingSystem; @{processes=$p;ports=$ports;freeBytes=([long]$m.FreePhysicalMemory*1024);at=[DateTime]::UtcNow.ToString('o')} | ConvertTo-Json -Depth 6 -Compress"
+  ],
+  "started": "2026-10-23T07:31:31.350093+00:00",
+  "seconds": 4.953000000001339,
+  "exit": 0,
+  "stdoutBytes": 1857,
+  "stdoutSha256": "21a6bc5dabfdbdc6fcb0f3c8ba8253fc435b1afe4efbe6553029fc5d3b87c624",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

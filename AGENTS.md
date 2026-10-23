@@ -142,3 +142,7 @@ M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未
 ## M22定向补验最新停止边界（2026-10-23）
 
 用户对1130349另行批准原5712最多一次冷启动；本轮实际额度已用完，创建0/启动1/正常退出1。两轮SystemUI健康观察第二轮真实ANR，安装和测试前停止，**BLOCKED — SYSTEMUI HEALTH GATE**。本轮App/Test安装0、Instrumentation0，T06/T03/新增真实系统IME均NOT_RUN。原137 JVM/36 Android PASS及T06三次FAIL保持；仅测试诊断/IME方法编译，最终Test ce5f5d15…3d6a614未安装，App原字节不变。旧29锁、M21原9文件、M22原6图和旧ANR字节保留；未开Owner/未清理/未改设置，不推断旧锁释放。原进程/官方收尾helper及端口已结束，AVD保留。见[补验](docs/evidence/M22-Android-supplement.md)。后续不得自行再次启动、修复SystemUI、换AVD、安装或清理；SystemUI根因UNKNOWN，不称产品缺陷。提交推送当前分支后停止等待独立复验；M10/M13-T06/M20及全部历史门禁保持，不冻结、不合并main、不进M23。
+
+## M22干净设备条件授权及最新停止点
+
+用户在前次bf5e8c4停止后明确批准：内存和磁盘余量足够后创建一台全新隔离API36，执行剩余三项。本次资源准入后仅新建/启动`Lithic_M22_Clean_API36_20261023_1523 / emulator-5714`各1次，原5712及全部历史设备ADB/写入0。干净设备在安装App/Test前两轮真实ANR，SystemUIService waited20001ms，根因UNKNOWN；安装/Instrumentation0，三方法NOT_RUN。源码/构建/旧套件均未再改跑。新设备已正常关闭1次且进程/端口结束，AVD保留。见[干净环境报告](docs/evidence/M22-Clean-Android-verification.md)。本次条件式授权额度已耗用，不构成后续无限创建/启动、系统修复或清理许可；原39方法状态、全部历史FAIL/UNKNOWN/NOT_RUN/NOTES保持，当前SYSTEMUI HEALTH GATE仍BLOCKED。只推当前M22分支后停止，不冻结、合并main或进入M23。

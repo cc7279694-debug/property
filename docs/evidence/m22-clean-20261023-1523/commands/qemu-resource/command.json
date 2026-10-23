@@ -1,0 +1,15 @@
+{
+  "args": [
+    "powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "Get-Process -Id 31856 | Select-Object Id,WorkingSet64,PeakWorkingSet64,CPU | ConvertTo-Json -Compress"
+  ],
+  "started": "2026-10-23T07:31:51.744450+00:00",
+  "seconds": 1.014999999999418,
+  "exit": 0,
+  "stdoutBytes": 87,
+  "stdoutSha256": "fb15d2c69fc11bc0d62ce5aaac6c7ee92efdb190449c4871c1e8c7332426f366",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5714",
+    "shell",
+    "echo M22_WINDOW_BEGIN; cat /proc/sys/kernel/random/boot_id; ps -A -o PID,UID,NAME | grep -E \"com.android.systemui|com.cooper.lithic.debug\" || true; dumpsys window | grep -E \"mCurrentFocus=|mFocusedApp=|Application Not Responding|mGlobalConfiguration=\"; echo M22_WINDOW_END"
+  ],
+  "started": "2026-10-23T07:30:16.568596+00:00",
+  "seconds": 0.5780000000013388,
+  "exit": 0,
+  "stdoutBytes": 1581,
+  "stdoutSha256": "5e7a35c036f0246535ca9debc1ab83a94795d238b0204d3c47f5a4e98433006a",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

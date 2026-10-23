@@ -1,0 +1,45 @@
+{
+  "result": "PASS",
+  "processes": [
+    {
+      "Name": "emulator.exe",
+      "ProcessId": 3760,
+      "ParentProcessId": 20032,
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+      "CommandLine": "\"C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe\" -avd Lithic_M22_Clean_API36_20261023_1523 -port 5714 -datadir E:/CODEX/.codex/research-env/lithic-m22-clean-20261023-1523/runtime-data -cache E:/CODEX/.codex/research-env/lithic-m22-clean-20261023-1523/runtime-data/cache.img -snapstorage E:/CODEX/.codex/research-env/lithic-m22-clean-20261023-1523/snapshots/snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2560 -cores 2",
+      "CreationDate": "2026-10-23T07:26:50.6826780Z"
+    },
+    {
+      "Name": "qemu-system-x86_64-headless.exe",
+      "ProcessId": 31856,
+      "ParentProcessId": 3760,
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "CommandLine": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M22_Clean_API36_20261023_1523 -port 5714 -datadir E:/CODEX/.codex/research-env/lithic-m22-clean-20261023-1523/runtime-data -cache E:/CODEX/.codex/research-env/lithic-m22-clean-20261023-1523/runtime-data/cache.img -snapstorage E:/CODEX/.codex/research-env/lithic-m22-clean-20261023-1523/snapshots/snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2560 -cores 2",
+      "CreationDate": "2026-10-23T07:26:50.9717670Z"
+    }
+  ],
+  "ports": [
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5715,
+      "OwningProcess": 31856
+    },
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5714,
+      "OwningProcess": 31856
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5715,
+      "OwningProcess": 31856
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5714,
+      "OwningProcess": 31856
+    }
+  ],
+  "at": "2026-10-23T07:27:24.0939921Z",
+  "freeBytes": 4096237568
+}

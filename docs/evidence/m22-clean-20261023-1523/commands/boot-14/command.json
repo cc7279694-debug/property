@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5714",
+    "shell",
+    "echo M22_BOOT_BEGIN; cat /proc/sys/kernel/random/boot_id; getprop sys.boot_completed; getprop ro.build.version.sdk; getprop ro.product.cpu.abi; echo M22_BOOT_END"
+  ],
+  "started": "2026-10-23T07:28:38.230118+00:00",
+  "seconds": 0.26599999999962165,
+  "exit": 0,
+  "stdoutBytes": 82,
+  "stdoutSha256": "1a03cccaae4f4f813253f4a332091a60ea342220b9076710d530c4b4cd435bc3",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

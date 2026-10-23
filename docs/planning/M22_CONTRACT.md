@@ -12,3 +12,7 @@
 - Stop：提交推送codex/m22-experience-accessibility，READY_FOR_REVIEW — M22，独立审查前不冻结。M10延期、M13-T06延期、M20额外FAIL/UNKNOWN及所有旧门禁保持。
 
 实际停止点：READY_FOR_REVIEW，Android整体可用性BLOCKED（SystemUI ANR）；正式规模压力与完整UI旅程未通过。设计样本不冒称实测规模，最后测试就绪修正仅编译未运行。见[实际报告](../evidence/M22-verification.md)。
+
+### 后续条件式干净环境授权与停止
+
+用户在bf5e8c4后明确允许先只读核对磁盘/内存，满足保守余量后新建一台干净隔离API36，只执行T06、正式规模T03和真实系统IME，不重跑已通过套件、不动旧设备。实际新5714创建/启动/正常退出各1，安装前SystemUI健康BLOCKED；三方法NOT_RUN，见[报告](../evidence/M22-Clean-Android-verification.md)。本次额度耗用，保留新旧现场，不自行继续创建、启动或系统修复。

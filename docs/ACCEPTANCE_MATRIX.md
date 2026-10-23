@@ -2,6 +2,10 @@
 
 当前状态：**M22 — BLOCKED / CHANGES REQUIRED（SYSTEMUI HEALTH GATE）**。M21及此前限定冻结保持，M10/M13-T06延期及M20额外FAIL/UNKNOWN、Q03/Q04/Q02完整跨模块和G1/G2/G3不扩大通过。
 
+## M22干净环境条件续验（2026-10-23）
+
+用户另行批准资源满足后新建一台隔离API36。入场内存5.64GiB/E盘95.48GiB，实际5714新建1/启动1/正常退出1；**App/Test未安装时两轮SystemUI ANR，健康门禁BLOCKED**。系统事件记录SystemUIService等待20001ms，根因UNKNOWN。三方法本轮全部NOT_RUN，源码/构建/JVM/Android测试执行均0；原137 JVM和Android最新36 PASS/1 FAIL/2 NOT_RUN（39唯一计划/37执行）、三次旅程FAIL与全部历史不改。[报告](evidence/M22-Clean-Android-verification.md)、[独立本轮结果](evidence/m22-clean-20261023-1523/results.json)、[退出](evidence/m22-clean-20261023-1523/exit-proof.json)。旧5712等设备不动，新AVD保留；不再自动尝试，不冻结、不进M23。
+
 ## M22定向补验停止登记（2026-10-23）
 
 用户对评审`1130349e8382aae171aa9259d27bce86dfea4a2a`另行授权原5712一次冷启动，先SystemUI健康再T06/T03/真实IME。第二轮窗口和真实全屏确认SystemUI ANR，**准入BLOCKED**；App/Test安装0、Instrumentation0，三方法本轮均NOT_RUN。新最小测试只编译、DEX/签名核对，Lint0错误17警告；不能据此宣布T01/T03/T06通过。[补验报告](evidence/M22-Android-supplement.md)、[本轮结果](evidence/m22-supplement/results.json)、[健康原证据](evidence/m22-supplement/systemui-health-gate.json)。

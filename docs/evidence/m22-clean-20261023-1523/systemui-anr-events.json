@@ -1,0 +1,27 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5714",
+    "shell",
+    "logcat",
+    "-b",
+    "events",
+    "-d",
+    "-v",
+    "epoch",
+    "-s",
+    "am_anr:I",
+    "*:S"
+  ],
+  "exit": 0,
+  "seconds": 0.1709999999984575,
+  "rawBytes": 883,
+  "rawSha256": "fba412c751615d5a08d4daa1cae0c9f0a787d6652bd0c4e9cf201d4eddd479d7",
+  "stderr": "",
+  "archivedTargetLines": [
+    "         1792740558.970   662  1851 I am_anr  : [0,1073,com.android.systemui,550026765,executing service com.android.systemui/.SystemUIService, waited 20001ms]"
+  ],
+  "policy": "Unrelated event-buffer lines only processed in memory; not archived",
+  "absenceDoesNotDisproveObservedAnr": true
+}

@@ -1,0 +1,16 @@
+{
+  "args": [
+    "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+    "-s",
+    "emulator-5714",
+    "shell",
+    "set -e; echo M22_BEGIN; cmd package list packages -U --user 0 com.cooper.lithic.debug; echo TARGET_PROCESSES; ps -A -o PID,UID,NAME | grep -F com.cooper.lithic.debug || true; echo M22_END"
+  ],
+  "started": "2026-10-23T07:30:03.811290+00:00",
+  "seconds": 0.21900000000096043,
+  "exit": 0,
+  "stdoutBytes": 38,
+  "stdoutSha256": "465f4027b9e927d933fce61996a9a219d96c83505c9b2ada91129bd585d716dd",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

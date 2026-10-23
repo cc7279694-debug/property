@@ -1,0 +1,41 @@
+{
+  "status": "BLOCKED — SYSTEMUI HEALTH GATE",
+  "reason": "Both full-screen and focus observations show SystemUI ANR in fresh empty AVD with no Lithic packages installed",
+  "systemUiPid": 1073,
+  "amAnrDirectObservation": "executing service com.android.systemui/.SystemUIService, waited 20001ms",
+  "rootCause": "UNKNOWN",
+  "newJvm": 0,
+  "newAndroid": 0,
+  "testResults": [
+    {
+      "method": "CompleteJourneyTest#runtime_offline_journey",
+      "result": "NOT_RUN"
+    },
+    {
+      "method": "LongHistoryPerformanceTest#full_twenty_year_dataset_reads_exact_global_facts_and_remains_responsive",
+      "result": "NOT_RUN",
+      "actualCountsAndPerformance": "NOT_CAPTURED"
+    },
+    {
+      "method": "M22AccessibilityTest#system200_real_ime_keeps_production_form_input_and_save_reachable",
+      "result": "NOT_RUN"
+    }
+  ],
+  "prior": {
+    "jvmPass": 137,
+    "androidLatestPass": 36,
+    "androidLatestFail": 1,
+    "androidNotRun": 2,
+    "uniquePlanned": 39,
+    "journeyHistoricalFail": 3,
+    "unchanged": true
+  },
+  "appInstallCount": 0,
+  "testInstallCount": 0,
+  "ownerOpens": 0,
+  "appOrTestSourceChanges": 0,
+  "settingsModified": false,
+  "settingsRestoration": "NOT_NEEDED_UNCHANGED",
+  "oldAvdsAdb": 0,
+  "cleanup": 0
+}
