@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "set -o pipefail; dumpsys package com.cooper.lithic.m22verify.debug | sed -n '/^Packages:/,/^Queries:/p' | grep -E '^Packages:|^  Package |^    appId=|^    versionCode=|^    versionName=|^    User 0:|^      dataDir='"
+  ],
+  "startedUtc": "2026-10-23T12:03:25.018618+00:00",
+  "endedUtc": "2026-10-23T12:03:25.217648+00:00",
+  "seconds": 0.18699999999807915,
+  "exitCode": 0,
+  "serialPolicy": "Exact USB serial retained only in ignored local control record; placeholder is explicit public redaction",
+  "stdoutBytes": 448,
+  "stdoutSha256": "9493f12fb93b648902c5e1532ebf308a8f21dd1e330adde9144c78f165248a17",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

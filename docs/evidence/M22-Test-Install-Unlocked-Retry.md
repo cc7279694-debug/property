@@ -1,0 +1,14 @@
+# M22 手机解锁后的单次Test安装
+
+2026-10-23，来源`a3bebd2bb858711b478f776e7a2661857d29e69a`，分支`codex/m22-experience-accessibility`。用户补充“刚刚锁屏了，现在再来一次”，本轮只追加固定Test安装1次，不授权运行测试。锁屏情况按用户直接陈述登记，不能据此改写前两次失败原因。[前次失败](M22-Test-Install-Retry.md)和[最初执行](M22-Physical-Isolated-Execution.md)及其claim/原始输出保持。
+
+- **准入PASS**：同一明确USB目标Xiaomi `23127PN0CC` / API36，App仍UID10420/原SHA，旧M10仍UID10376/code8，Test含保留记录不存在；两份锁定APK本地SHA、Test验签和Manifest匹配，无重建。原手机serial不公开。[准入](m22-test-unlocked-retry-20261023-120110/admission.json)。
+- **单次安装PASS**：普通`install`，无覆盖/降级/卸载/绕过权限参数，真实exit0及`Success`。本次授权1次，全部已知Test尝试累计3次；前两次FAIL不改判。[独立claim](m22-test-unlocked-retry-20261023-120110/additional-install-claim.json)、[命令/时间/exit/字节SHA](m22-test-unlocked-retry-20261023-120110/commands/install-test-new-authorized-once/command.json)、[原始成功](m22-test-unlocked-retry-20261023-120110/commands/install-test-new-authorized-once/stdout)。
+- **Test身份PASS**：`com.cooper.lithic.m22verify.debug.test`，实际UID **10427**，设备唯一APK SHA **`c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f`**，等同重新验签的本地实物；证书SHA **`29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9`**，未另行从手机提取证书。实际私有目录`/data/user/0/com.cooper.lithic.m22verify.debug.test`，run-as UID10427；真实Instrumentation为`com.cooper.lithic.m22verify.debug.test/com.cooper.lithic.app.M13IsolatedRunner`，target仅新App。[设备Test SHA](m22-test-unlocked-retry-20261023-120110/commands/end-test-sha/stdout)、[UID/版本](m22-test-unlocked-retry-20261023-120110/commands/end-test-identity/stdout)、[私有目录元数据](m22-test-unlocked-retry-20261023-120110/commands/end-test-private-identity/stdout)、[Instrumentation](m22-test-unlocked-retry-20261023-120110/commands/end-test-instrumentation/stdout)、[本地验签](m22-test-unlocked-retry-20261023-120110/commands/local-test-signature/stdout)。
+- **App/旧M10安装保护PASS（限定元数据）**：新App仍UID10420、SHA `b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3`；旧M10仍UID10376/code8/`0.1.0-m10-debug`。UID、版本、User0状态、dataDir及记录的数据inode字段前后相同；没有读取旧M10 APK或任何账本，不声称私人字节完整性已验证。[App SHA](m22-test-unlocked-retry-20261023-120110/commands/end-app-sha/stdout)、[旧M10结束元数据](m22-test-unlocked-retry-20261023-120110/commands/end-old-m10-identity/stdout)。
+
+**首次核验失败保留**：安装后逐字比对整段dumpsys文本的监督器断言曾FAIL，远端查询自身exit0。直接原始差异只有精确`Package [包名]`头之后的括号十六进制token；该字段未作为UID/版本/路径或数据身份依据。随后只对这个头字段做单独审查，完整身份字段仍逐项一致，继续必要只读验证，没有重新安装、修改App或业务数据。[首次断言及限定复核说明](m22-test-unlocked-retry-20261023-120110/verification-notes.json)和原始前后输出保留，不将首次断言冒充PASS，也不修改任何产品/业务测试断言。
+
+本轮20份原始命令回执：18次明确目标ADB（17只读＋1安装）、2次本地验签/Manifest检查。Boot ID前后一致；没有App启动、Instrumentation、设置写入、App安装/更新、卸载/清数据、任务取消、数据库内容读取、其他设备操作或清理。Test仅元数据核验，不打开业务Owner；前轮App默认generation/WorkManager和Owner/任务UNKNOWN未重新证明关闭，保持原状。
+
+**T06、T03、系统字体/IME均NOT_RUN**：T06用户暂停仍有效；T03前置未满足；本次仅安装，不授权新增测试。原137 JVM/36 Android PASS及全部失败/NOTES保持。手机新App/Test均保留；本次安装目标完成，**M22整体仍BLOCKED / CHANGES REQUIRED**，后续须先处理T06失败保留契约，再取得明确测试续接授权；不冻结、不进入M23。[本次逐项结果](m22-test-unlocked-retry-20261023-120110/install-result.json)。
