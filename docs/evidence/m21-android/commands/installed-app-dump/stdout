@@ -1,0 +1,140 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        c4226d9 com.cooper.lithic.debug/com.cooper.lithic.app.MainActivity filter 4d6d89e
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      androidx.profileinstaller.action.SAVE_PROFILE:
+        726a49b com.cooper.lithic.debug/androidx.profileinstaller.ProfileInstallReceiver filter 5e75d76
+          Action: "androidx.profileinstaller.action.SAVE_PROFILE"
+      androidx.profileinstaller.action.INSTALL_PROFILE:
+        726a49b com.cooper.lithic.debug/androidx.profileinstaller.ProfileInstallReceiver filter c7d8038
+          Action: "androidx.profileinstaller.action.INSTALL_PROFILE"
+      androidx.profileinstaller.action.SKIP_FILE:
+        726a49b com.cooper.lithic.debug/androidx.profileinstaller.ProfileInstallReceiver filter 1d0d811
+          Action: "androidx.profileinstaller.action.SKIP_FILE"
+      androidx.profileinstaller.action.BENCHMARK_OPERATION:
+        726a49b com.cooper.lithic.debug/androidx.profileinstaller.ProfileInstallReceiver filter 140ef77
+          Action: "androidx.profileinstaller.action.BENCHMARK_OPERATION"
+      android.intent.action.BOOT_COMPLETED:
+        dae8f7f com.cooper.lithic.debug/androidx.work.impl.background.systemalarm.RescheduleReceiver filter e45fb4c
+          Action: "android.intent.action.BOOT_COMPLETED"
+      androidx.work.diagnostics.REQUEST_DIAGNOSTICS:
+        f255795 com.cooper.lithic.debug/androidx.work.impl.diagnostics.DiagnosticsReceiver filter 5d3e0aa
+          Action: "androidx.work.diagnostics.REQUEST_DIAGNOSTICS"
+
+Domain verification status:
+
+Permissions:
+  Permission [com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION] (10ad3fe):
+    sourcePackage=com.cooper.lithic.debug
+    uid=10216 gids=[] type=0 prot=signature
+    perm=PermissionInfo{2a7d75f com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION}
+    flags=0x0
+
+Registered ContentProviders:
+  com.cooper.lithic.debug/androidx.startup.InitializationProvider:
+    Provider{78fd5ac com.cooper.lithic.debug/androidx.startup.InitializationProvider}
+
+ContentProvider Authorities:
+  [com.cooper.lithic.debug.androidx-startup]:
+    Provider{78fd5ac com.cooper.lithic.debug/androidx.startup.InitializationProvider}
+      applicationInfo=ApplicationInfo{a609275 com.cooper.lithic.debug}
+
+Key Set Manager:
+  [com.cooper.lithic.debug]
+      Signing KeySets: 61
+
+Packages:
+  Package [com.cooper.lithic.debug] (31dde6):
+    appId=10216
+    pkg=Package{33c320a com.cooper.lithic.debug}
+    codePath=/data/app/~~6I6wWScxBADmJ60okOFxnA==/com.cooper.lithic.debug-rhfXTeFwlsFK8xURGS7uIQ==
+    resourcePath=/data/app/~~6I6wWScxBADmJ60okOFxnA==/com.cooper.lithic.debug-rhfXTeFwlsFK8xURGS7uIQ==
+    legacyNativeLibraryDir=/data/app/~~6I6wWScxBADmJ60okOFxnA==/com.cooper.lithic.debug-rhfXTeFwlsFK8xURGS7uIQ==/lib
+    extractNativeLibs=false
+    primaryCpuAbi=x86_64
+    secondaryCpuAbi=null
+    cpuAbiOverride=null
+    versionCode=16 minSdk=26 targetSdk=36
+    minExtensionVersions=[]
+    versionName=0.1.0-m21-debug
+    hiddenApiEnforcementPolicy=2
+    usesNonSdkApi=false
+    splits=[base]
+    apkSigningVersion=2
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    forceQueryable=false
+    pageSizeCompat=0
+    scannedAsStoppedSystemApp=false
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2026-10-23 01:37:53
+    lastUpdateTime=2026-10-23 01:37:53
+    installerPackageName=null
+    installerPackageUid=-1
+    initiatingPackageName=com.android.shell
+    originatingPackageName=null
+    packageSource=1
+    appMetadataFilePath=null
+    appMetadataSource=0
+    signatures=PackageSignatures{59c8a7b version:2, signatures:[5a59588f], past signatures:[]}
+    installPermissionsFixed=false
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ]
+    privatePkgFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION ALLOW_AUDIO_PLAYBACK_CAPTURE PARTIALLY_DIRECT_BOOT_AWARE PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]
+    apexModuleName=null
+    declared permissions:
+      com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: prot=signature
+    requested permissions:
+      android.permission.POST_NOTIFICATIONS
+      android.permission.RECEIVE_BOOT_COMPLETED
+      android.permission.ACCESS_NETWORK_STATE
+      com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+      android.permission.WAKE_LOCK
+    install permissions:
+      android.permission.RECEIVE_BOOT_COMPLETED: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+      com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION: granted=true
+      android.permission.WAKE_LOCK: granted=true
+    User 0: ceDataInode=360707 deDataInode=81964 installed=true hidden=false suspended=false distractionFlags=0 stopped=true notLaunched=true enabled=0 instant=false virtual=false quarantined=false
+      installReason=0
+      dataDir=/data/user/0/com.cooper.lithic.debug
+      firstInstallTime=2026-10-23 01:37:53
+      uninstallReason=0
+      overlay paths:
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+        /data/resource-cache/com.android.systemui-neutral-qbNQ.frro
+        /data/resource-cache/com.android.systemui-accent-QK8d.frro
+        /data/resource-cache/com.android.systemui-dynamic-joKU.frro
+      legacy overlay paths:
+        /product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk
+      runtime permissions:
+        android.permission.POST_NOTIFICATIONS: granted=false, flags=[ USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]
+
+Queries:
+  system apps queryable: false
+  queries via forceQueryable:
+  queries via package name:
+  queries via component:
+    com.google.android.settings.intelligence:
+      com.cooper.lithic.debug
+    com.google.android.as:
+      com.cooper.lithic.debug
+    com.google.android.apps.accessibility.voiceaccess:
+      com.cooper.lithic.debug
+  queryable via interaction:
+    User 0:
+  queryable via uses-library:
+
+Dexopt state:
+  [com.cooper.lithic.debug]
+    path: /data/app/~~6I6wWScxBADmJ60okOFxnA==/com.cooper.lithic.debug-rhfXTeFwlsFK8xURGS7uIQ==/base.apk
+      x86_64: [status=run-from-apk] [reason=unknown] [primary-abi]
+        [location is error]
+
+Compiler stats:
+  [com.cooper.lithic.debug]
+    (No recorded stats)

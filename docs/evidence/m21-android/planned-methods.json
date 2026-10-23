@@ -1,0 +1,79 @@
+{
+  "source": "6c937ed7354b77d598bdeb55718a39708f572ee8",
+  "classesInExecutionOrder": [
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneSchedulingTest",
+      "methods": [
+        "test_driver_enforces_nine_delay_and_switch_cancels_only_owned_milestone_work"
+      ],
+      "sourceSha256": "873d61087a0447b8ca2be806e0f222f8b10cf22dbf904e4aedc67e7854ff70d8"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "methods": [
+        "new_project_and_today_inclusive_baseline_commit_together",
+        "watermark_insert_failure_rolls_back_identity_and_initial_money",
+        "historical_time_and_watermark_write_failure_roll_back_as_one_transaction",
+        "rename_and_amount_only_correction_do_not_swallow_today_node",
+        "historical_start_correction_suppresses_newly_crossed_node_and_replay_is_stable",
+        "ordinary_end_on_target_day_keeps_its_legal_baseline",
+        "normal_renewal_preserves_baseline_but_backfilled_coverage_merges_it",
+        "project_delete_preserves_same_uuid_subscription_and_renewal_receipt",
+        "legacy_initialization_is_complete_and_idempotent_without_fake_receipts",
+        "invalid_stored_time_facts_fail_closed_without_partial_initialization"
+      ],
+      "sourceSha256": "4372e9689616eb1640f9fdaa453207b13b1a5a502c9d3957a3a533e6e49702aa"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "methods": [
+        "room_project_and_subscription_same_day_publish_one_typed_summary_and_complete_batch",
+        "second_worker_without_new_candidates_does_not_republish_summary",
+        "mixed_milestone_receipts_do_not_poison_existing_renewal_worker",
+        "permission_and_both_switches_are_independent_and_never_forge_receipts",
+        "old_generation_payload_cannot_publish_or_write_receipts",
+        "second_receipt_insert_failure_rolls_back_complete_batch_after_publish",
+        "notice_revalidation_rejects_old_generation_changed_history_and_deleted_owner"
+      ],
+      "sourceSha256": "be24f91f36ada9b684903158696ade58531a9ec5e9f5a76b271cc1232e8c0d70"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21NoticeIntentTest",
+      "methods": [
+        "boundedReferenceRoundTripsWithoutSourceArraysOrAmounts",
+        "mismatchedPathOrMalformedDigestDoesNotCreateAnOpenRequest",
+        "wrongActionAndUnboundedCountAreRejected",
+        "dateIsCanonicalAndCannotBeReplacedByAThresholdCode"
+      ],
+      "sourceSha256": "cae2430d4e1a3670110b74891e08a54329513c98e75b349d4856da45bfe5dc45"
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "methods": [
+        "summary_keeps_more_than_50_sources_and_expands_its_display_window",
+        "same_uuid_cross_type_row_revalidates_and_opens_the_exact_type",
+        "stale_or_deleted_summary_is_an_explicit_error_and_never_an_empty_success",
+        "single_source_opens_once_after_revalidation_and_does_not_repeat_on_recomposition"
+      ],
+      "sourceSha256": "0b2bd70ecc4dda784252b77e10f854dd8ff0882de6bac0157ba8d24289693443"
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+      "methods": [
+        "productionFourToFivePreservesEveryOriginalTableRowAndKnownIdentity",
+        "sameUuidTypedPrimaryKeyAndReceiptDeletionStaySeparateAfterReopen",
+        "rawMaskOutsideIntRangeIsRejectedBeforeRoomNarrowingAndRemainsUnchanged"
+      ],
+      "sourceSha256": "afd9a2297a55fabda896c97d7626b5d6ec70844bf1fd66708ad67cc791906689"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M21BackupRestoreTest",
+      "methods": [
+        "currentFormatFourRoundTripPreservesFactsMediaReceiptsAndMergesWatermarksBeforeProofAndActivation",
+        "interruptedAuthenticProofThreeAndSchemaFourAreAuthenticatedBeforeUpgradeAndProtection"
+      ],
+      "sourceSha256": "649c08c736a3891cde154f1af16f3e516b686867c5f42e5aa8cf2d9aa1bec8ad"
+    }
+  ],
+  "uniqueMethods": 31
+}

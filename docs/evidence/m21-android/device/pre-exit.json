@@ -1,0 +1,55 @@
+{
+  "memoryBeforeNormalExit": [
+    {
+      "Id": 7600,
+      "WorkingSet64": 12533760,
+      "PeakWorkingSet64": 14090240,
+      "PrivateMemorySize64": 11214848
+    },
+    {
+      "Id": 12888,
+      "WorkingSet64": 3373891584,
+      "PeakWorkingSet64": 3923120128,
+      "PrivateMemorySize64": 4256292864
+    }
+  ],
+  "processes": [
+    {
+      "ProcessId": 7600,
+      "ParentProcessId": 17760,
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+      "CreationDate": "2026-10-23T09:27:14.779726+08:00",
+      "CommandLine": "\"C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe\" -avd Lithic_M21_API36_20261023 -port 5712 -datadir E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data -cache E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data/cache.img -snapstorage E:/CODEX/.codex/research-env/lithic-m21-android-20261023/snapshots/snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2048 -cores 2"
+    },
+    {
+      "ProcessId": 12888,
+      "ParentProcessId": 7600,
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "CreationDate": "2026-10-23T09:27:15.083658+08:00",
+      "CommandLine": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M21_API36_20261023 -port 5712 -datadir E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data -cache E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data/cache.img -snapstorage E:/CODEX/.codex/research-env/lithic-m21-android-20261023/snapshots/snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2048 -cores 2"
+    }
+  ],
+  "sampledAt": "2026-10-23T01:41:58.6602907Z",
+  "ports": [
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5713,
+      "OwningProcess": 12888
+    },
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5712,
+      "OwningProcess": 12888
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5713,
+      "OwningProcess": 12888
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5712,
+      "OwningProcess": 12888
+    }
+  ]
+}

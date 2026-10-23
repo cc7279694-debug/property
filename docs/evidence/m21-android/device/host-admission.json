@@ -1,0 +1,63 @@
+{
+  "status": "PASS_IDENTITY_WITH_RESOURCE_NOTE",
+  "launcherPid": 7600,
+  "qemuPid": 12888,
+  "processes": [
+    {
+      "ProcessId": 7600,
+      "ParentProcessId": 17760,
+      "Name": "emulator.exe",
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe",
+      "CreationDate": "2026-10-23T09:27:14.779726+08:00",
+      "CommandLine": "\"C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\emulator.exe\" -avd Lithic_M21_API36_20261023 -port 5712 -datadir E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data -cache E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data/cache.img -snapstorage E:/CODEX/.codex/research-env/lithic-m21-android-20261023/snapshots/snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2048 -cores 2"
+    },
+    {
+      "ProcessId": 23732,
+      "ParentProcessId": 7600,
+      "Name": "conhost.exe",
+      "ExecutablePath": "C:\\WINDOWS\\system32\\conhost.exe",
+      "CreationDate": "2026-10-23T09:27:14.909227+08:00",
+      "CommandLine": "\\??\\C:\\WINDOWS\\system32\\conhost.exe 0x4"
+    },
+    {
+      "ProcessId": 12888,
+      "ParentProcessId": 7600,
+      "Name": "qemu-system-x86_64-headless.exe",
+      "ExecutablePath": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+      "CreationDate": "2026-10-23T09:27:15.083658+08:00",
+      "CommandLine": "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe -avd Lithic_M21_API36_20261023 -port 5712 -datadir E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data -cache E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data/cache.img -snapstorage E:/CODEX/.codex/research-env/lithic-m21-android-20261023/snapshots/snapshots.img -no-snapshot -no-window -no-boot-anim -no-audio -gpu swiftshader -memory 2048 -cores 2"
+    }
+  ],
+  "ports": [
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5713,
+      "OwningProcess": 12888
+    },
+    {
+      "LocalAddress": "::1",
+      "LocalPort": 5712,
+      "OwningProcess": 12888
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5713,
+      "OwningProcess": 12888
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5712,
+      "OwningProcess": 12888
+    }
+  ],
+  "hardwareSha256": "02f82bb2318e43118b94839f00ca80aec98d2637f9bddcced1494c40ea19e0d8",
+  "requestedGuestRamMiB": 2048,
+  "actualGuestRamMiB": 2560,
+  "ramNote": "Existing official emulator automatically raised 2048 request to minimum 2560; config and CLI request retained. No tool upgrade or second start. Earlier strict RAM assertion retained as local inspection mismatch, no ADB was sent then.",
+  "writablePaths": {
+    "disk.cachePartition.path": "E:/CODEX/.codex/research-env/lithic-m21-android-20261023/runtime-data/cache.img",
+    "disk.dataPartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m21-android-20261023\\Lithic_M21_API36_20261023.avd\\userdata-qemu.img",
+    "disk.encryptionKeyPartition.path": "E:\\CODEX\\.codex\\research-env\\lithic-m21-android-20261023\\Lithic_M21_API36_20261023.avd\\encryptionkey.img"
+  },
+  "oldDeviceCommands": 0
+}

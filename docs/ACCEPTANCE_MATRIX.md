@@ -1,6 +1,16 @@
 # 验收登记
 
-当前状态：**M21 — READY_FOR_REVIEW**，独立验收PENDING；395 JVM PASS，31新增Android方法编译/打包成功但全部NOT_RUN，设备操作0。M20限定冻结及第二次平台收口BLOCKED、额外平台FAIL/UNKNOWN保持；G1/G2未整体通过、Q04 PROPOSED、G3未通过。下方旧阶段记录保留原时点。
+当前状态：**M21 — READY_FOR_REVIEW**，独立验收PENDING；此前395 JVM PASS，本轮31个唯一Android方法首轮31 PASS、重跑0，4张隔离截图，Lint0错误25警告。M20限定冻结及第二次平台收口BLOCKED、额外平台FAIL/UNKNOWN保持；G1/G2未整体通过、Q04 PROPOSED、G3未通过。下方旧阶段及31 NOT_RUN记录保留原时点。
+
+## M21隔离Android补验执行登记（2026-10-23）
+
+依据本轮明确授权，从候选`6c937ed7354b77d598bdeb55718a39708f572ee8`在当前分支仅创建一台全新低资源API36/x86_64、`Lithic_M21_API36_20261023 / emulator-5712`。31唯一方法**首轮31 PASS / 0 FAIL / 0 UNKNOWN / 0 NOT_RUN**，7个类独立执行，TestDriver首个独立进程，未重跑395 JVM或历史测试。[补验报告](evidence/M21-Android-verification.md)、[逐方法结果](evidence/m21-android/results.json)、[四张截图索引](evidence/m21-android/screenshots/index.json)、[checkpoint](checkpoints/2026-10-23-M21-Android.md)。
+
+实际Room4→5及原九表保持/重开、typed水位与事务回滚、同UUID删除保护、Worker摘要与批量Receipt回滚、format4往返/旧proof3认证/构造中断重开、Intent及隔离Compose、内存WorkManager TestDriver获本次运行证据。仅Test源码截图/LocalDensity接缝变更，原31方法/断言保留，App不变；新Test SHA`feab8f299a1e261731e197e2642f0ffa1f5ba136df9198551e6e655e80f7c5af`，同原Debug证书，安装回读一致。Lint0错误25警告，定向Test构建成功。
+
+执行边界：D1000/日历周年/闰日、订阅全部暂停/免费/停止/预付边界、+6/+7窗口及proof1/2没有这31项内Android专门输入，不把此前JVM扩大为设备PASS。合成Publisher不是系统通知发布/送达；TestDriver不是生产24小时持久周期/系统重启；Compose不是MainActivity/真实通知点击/完整导航；200%为LocalDensity，真实进程中断/断电/API26/OEM/TalkBack均NOT_RUN。
+
+新AVD创建/启动/正常退出各1，App/Test各安装1，所有命令显式定向5712，历史设备操作0。2048MB请求被既有工具自动提高到2560MB，实际口径保留；13个已关闭业务测试根安全移除，15个零字节缓存`.lck`未在清理登记内，保守保留，不宣称全部缓存已清。退出后原进程及端口消失，AVD保留；没有自行清数据/卸载/生产周期或系统通知实验。M21待独立复验，原RED/NOT_RUN/UNKNOWN和M20/M10/M13-T06/Q04/G1/G2/G3边界不变，不进入M22。
 
 ## M21候选离线执行登记（2026-10-22）
 

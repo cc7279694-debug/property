@@ -1,0 +1,34 @@
+{
+  "nonzeroAbsenceObservations": [
+    {
+      "record": "commands/04-app-absent/result.json",
+      "exitCode": 1,
+      "purpose": "Package or process absence observation"
+    },
+    {
+      "record": "commands/05-test-absent/result.json",
+      "exitCode": 1,
+      "purpose": "Package or process absence observation"
+    },
+    {
+      "record": "commands/after-app-process/result.json",
+      "exitCode": 1,
+      "purpose": "Package or process absence observation"
+    },
+    {
+      "record": "commands/after-test-process/result.json",
+      "exitCode": 1,
+      "purpose": "Package or process absence observation"
+    },
+    {
+      "record": "commands/end-app-process/result.json",
+      "exitCode": 1,
+      "purpose": "Package or process absence observation"
+    }
+  ],
+  "rawCommandHashesAllMatch": true,
+  "addedLocalLinksChecked": 46,
+  "missingLinks": [],
+  "historicalJvmResultsUntouched": true,
+  "productMainSchemaGradleUnchanged": true
+}

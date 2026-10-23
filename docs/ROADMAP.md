@@ -1,5 +1,7 @@
 # V1 模块路线与执行闸门
 
+**2026-10-23 M21 Android补验**：原31个唯一方法首轮31 PASS，4张真实隔离Compose截图，原395 JVM不重跑；新API36/5712已正常退出并保留AVD，历史设备未接触。[补验报告](evidence/M21-Android-verification.md)。只为本次Room/Worker/Intent/恢复/TestDriver/Compose的限定证据，真实系统送达/点击/后台重启及未覆盖子边界仍NOT_RUN；M21保持READY_FOR_REVIEW，G3不通过，不进入M22。下方2026-10-22离线NOT_RUN为历史记录。
+
 **2026-10-22 M21当前授权**：从M20冻结`3e8f5fd`实施真实时间里程碑、抑制水位和同日摘要候选，Room5/backup4，Q03 USER_CONFIRMED。当前READY_FOR_REVIEW，395 JVM PASS、Lint0错误25警告、App/Test构建成功，结果见[M21报告](evidence/M21-verification.md)；没有设备授权，31新增Android方法全部NOT_RUN，独立验收PENDING，不进入M22。M20限定冻结及额外平台失败/收口UNKNOWN、M10/M13-T06延期、Q04/G1/G2/G3原边界不扩大。下方原阶段说明保留历史。
 
 **2026-10-22 M20当前覆盖**：依据用户转交的ChatGPT独立结论，评审`d3776e0b2852428911ad0f09296680046211b32d`，M20 **ACCEPTED / FROZEN — PASS WITH NOTES**。T01～T06、此前238 JVM、原22 Android最终PASS及Lint0错误25警告获限定认可；仅冻结续费Planner、权限/偏好、有限幂等回执、WorkManager集成及Room4/backup3兼容实现，不保证OEM后台准点。25唯一方法最新24 PASS/1 FAIL、首轮21 PASS/1 FAIL、真实平台JUnit两次FAIL及SystemUI截图不改；第二次平台收口仍BLOCKED，周期任务/OS Job/指定通知/Owner收口UNKNOWN，新App进程/默认generation事实及来源UNKNOWN保留。M20 AVD为保留/隔离测试现场，未经重新明确授权不复用或清理。本轮仅文档登记，不重跑测试/构建或操作设备。见[正式登记](ACCEPTANCE_MATRIX.md#m20正式限定冻结登记2026-10-22)。M10/M13-T06延期、G1/G2未整体通过、Q04 PROPOSED、G3未通过及全部历史NOTES/NOT_RUN保持，M21未授权。下方旧登记仅表示原时点。
@@ -43,7 +45,7 @@
 | M18 | 总成本历史与事件 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m18.md) | M17 | ACCEPTED / FROZEN — PASS WITH NOTES；T01～T05及此前174 JVM/17 Android/10图、Lint0/23获限定认可；首次14/3与NOT_CAPTURED保留，Q02完整16组不关闭；见[正式登记](ACCEPTANCE_MATRIX.md#m18正式冻结登记2026-10-21) |
 | M19 ACCEPTED / FROZEN — PASS WITH NOTES | 类别/年度/客观回顾 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m19.md) | M18 | 年度按真实日期、类型分开，不生成建议 |
 | M20 ACCEPTED / FROZEN — PASS WITH NOTES | 续费通知、schema v4/format v3 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m20.md) | M19 | T01～T06限定PASS；238 JVM/原22 Android最终PASS、Lint0/25；额外平台FAIL及第二次收口BLOCKED/UNKNOWN保留，G3未通过 |
-| M21 READY_FOR_REVIEW | 实际时间里程碑/低打扰 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m21.md) | M20 | 395 JVM PASS；31 Android NOT_RUN；不自行冻结/进入M22 |
+| M21 READY_FOR_REVIEW | 实际时间里程碑/低打扰 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m21.md) | M20 | 此前395 JVM PASS；本次31 Android PASS；平台及其他NOT_RUN保留，不自行冻结/进入M22 |
 | M22 | 小屏/字体/无障碍/长历史 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m22.md) | M21 | 360dp/200%字体/48dp触控；不加功能 |
 | M23 | 可靠性/签名升级/正式V1 [原计划](planning/original-v1/lithic_v1_plan/docs/superpowers/plans/2026-10-10-m23.md) | M22 | 全发行schema/旧备份/断网/故障/签名；独立验收后冻结 |
 

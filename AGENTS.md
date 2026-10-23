@@ -117,3 +117,9 @@ M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未
 本节依据用户M21完整授权，为当前执行边界；此前M20“未授权M21/仅冻结回写”文字保留原时点。起点M20冻结`3e8f5fdef9853ada726b037cc8559e2117d24da9`，只推`codex/m21-milestone-reminders`。Q03 USER_CONFIRMED：开始日1、日节点N-1、周年日历年；订阅实际累计付费有效日只复用冻结M03。候选Room5仅新增typed水位表，backup4独立10表DTO及旧格式/proof严格升级；内部指针、媒体原字节、M16与冻结引擎不改。水位不冒充成功Receipt；同日稳定摘要、批量Room回执及有限崩溃重试，点击仍经dirty/pending/恢复守卫。
 
 本轮只准产品代码、定向离线测试、Lint、Debug App/Test构建和Android测试源码准备；设备操作必须为0，真实迁移/通知/点击/恢复/系统重启均NOT_RUN。不查询、创建、启动、关闭或清理任何AVD、App、系统任务通知或私人数据，尤其M20/5704、5692、5672、5686、H2、C2、M10。M20限定冻结及额外平台FAIL/收口BLOCKED/UNKNOWN、M10延期三JPEG历史FAIL、M13-T06延期、Q04 PROPOSED、G1/G2/G3与全部NOTES保留。交付只可READY_FOR_REVIEW — M21，等待独立验收，不冻结、不进入M22。见[契约](docs/planning/M21_CONTRACT.md)与[验证](docs/evidence/M21-verification.md)。
+
+### M21 Android补验当前授权（2026-10-23）
+
+用户另行明确授权从`6c937ed7354b77d598bdeb55718a39708f572ee8`在当前M21分支新建、启动、结束一台低资源全新隔离API36/x86_64，仅执行既有31方法和必要Compose截图。上段“设备操作0”保持上轮历史；本轮独立根`E:/CODEX/.codex/research-env/lithic-m21-android-20261023`，新AVD`Lithic_M21_API36_20261023`、serial`emulator-5712`，全部ADB显式定向。先独立TestDriver，再逐类；plain Application隔离Runner，不启动MainActivity默认账本/生产周期队列，不操作任何历史设备。现有工具自动将2048MB请求提高为2560MB，实际值必须如实登记。禁止重跑395 JVM或扩充历史测试；失败原件保留，定向处理，不自行冻结/进入M22。结果见[M21 Android报告](docs/evidence/M21-Android-verification.md)。
+
+本次补验停止点：31唯一方法首轮31 PASS、重跑0，4张真实隔离截图，App不变；新5712创建/启动/正常退出各1，进程/端口结束，AVD保留。13个已关闭业务测试根移除，15个未登记零字节缓存`.lck`保留，未声称全部缓存清空。真实系统发布/点击/重启及现有31项未含的日期子边界仍NOT_RUN。提交推送后停止等待独立复验，不能据本段再次启动、清理或复用任何设备，不自行冻结或进入M22。

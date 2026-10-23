@@ -1,0 +1,26 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "dumpsys",
+    "jobscheduler",
+    "com.cooper.lithic.debug"
+  ],
+  "exitCode": 0,
+  "stdoutBytes": 118597,
+  "stdoutSha256": "b4415c50a071b5bc2bcc3aa8cb9927f9f0ea5f6cfcd96217af359b49fe5042a0",
+  "stderrBytes": 0,
+  "privacy": "Full output handled in memory only; unrelated system job bodies not archived",
+  "targetPackageOrUidLines": [
+    "    10217:com.cooper.lithic.debug.test=false",
+    "    10216:com.cooper.lithic.debug=false",
+    "    TopAppTimer{<0>com.cooper.lithic.debug.test} NOT active",
+    "    TopAppTimer{<0>com.cooper.lithic.debug} NOT active",
+    "      <0>com.cooper.lithic.debug: ShrinkableDebits { debit tally: 0, bucket: 0 }",
+    "      <0>com.cooper.lithic.debug.test: ShrinkableDebits { debit tally: 0, bucket: 0 }",
+    "  10216: {com.cooper.lithic.debug}"
+  ],
+  "interpretation": "REVIEW_TARGET_MATCHES"
+}

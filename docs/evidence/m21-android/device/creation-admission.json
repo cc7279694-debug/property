@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "actualRegistration": "E:\\CODEX\\.codex\\research-env\\lithic-m21-android-20261023\\avd-registration\\Lithic_M21_API36_20261023.ini",
+  "actualConfig": "E:\\CODEX\\.codex\\research-env\\lithic-m21-android-20261023\\Lithic_M21_API36_20261023.avd\\config.ini",
+  "configSha256": "bc84235f9c36eb771f72887757b065781d6cc863fb41897a14a8c0638edc8f39",
+  "configuredOverrides": {
+    "hw.ramSize": "2048",
+    "hw.cpu.ncore": "2",
+    "disk.dataPartition.size": "2048M",
+    "hw.gpu.enabled": "yes",
+    "hw.gpu.mode": "swiftshader",
+    "fastboot.forceColdBoot": "yes",
+    "fastboot.forceFastBoot": "no",
+    "firstboot.bootFromDownloadableSnapshot": "no",
+    "firstboot.bootFromLocalSnapshot": "no",
+    "firstboot.saveToLocalSnapshot": "no"
+  },
+  "createCommandExitCode": 0,
+  "createCount": 1,
+  "startCount": 0,
+  "postcheckNote": "Initial evidence copy expected -p avd-data/config.ini and raised AssertionError. Read actual official registration; it points to newly created <M21-root>/<name>.avd. Adopted only that verified new path; no create retry or history overwrite.",
+  "isolatedRoot": "E:\\CODEX\\.codex\\research-env\\lithic-m21-android-20261023"
+}

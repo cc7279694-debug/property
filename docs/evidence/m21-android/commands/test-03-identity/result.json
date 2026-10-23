@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "emulator-5712",
+    "shell",
+    "sh",
+    "-c",
+    "'printf \"boot=\"; getprop sys.boot_completed; cat /proc/sys/kernel/random/boot_id'"
+  ],
+  "start": "2026-10-23T01:38:34.440381+00:00",
+  "end": "2026-10-23T01:38:34.655353+00:00",
+  "exitCode": 0,
+  "error": null,
+  "stdoutBytes": 46,
+  "stdoutSha256": "9a58ff75d72c006169fb1c32ce92abd4f2a889aa2efefede318b5916207c4867",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

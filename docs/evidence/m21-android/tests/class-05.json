@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "claim": {
+    "index": 5,
+    "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+    "captureRun": "9e741176-2e1c-4de5-a761-48d9b4dc283d",
+    "claimedAt": "2026-10-23T01:39:02.467917+00:00",
+    "source": "6c937ed7354b77d598bdeb55718a39708f572ee8"
+  },
+  "appSha256": "5f7c585e5e117bc7e77d5f2915429ac1eb8f4ac6b9480ad77aa8fa13529b1c62",
+  "testSha256": "feab8f299a1e261731e197e2642f0ffa1f5ba136df9198551e6e655e80f7c5af",
+  "methods": [
+    {
+      "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+      "method": "sameUuidTypedPrimaryKeyAndReceiptDeletionStaySeparateAfterReopen",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+      "method": "rawMaskOutsideIntRangeIsRejectedBeforeRoomNarrowingAndRemainsUnchanged",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+      "method": "productionFourToFivePreservesEveryOriginalTableRowAndKnownIdentity",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    }
+  ],
+  "expected": 3,
+  "actual": 3,
+  "runnerCompletionCodeMinusOne": true,
+  "junitOk": true,
+  "stdoutCommandRecord": "../commands/test-05-instrument/result.json"
+}

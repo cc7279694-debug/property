@@ -1,0 +1,251 @@
+{
+  "status": "READY_FOR_REVIEW_M21",
+  "uniqueAndroidMethods": 31,
+  "executions": 31,
+  "pass": 31,
+  "fail": 0,
+  "unknownMethods": 0,
+  "notRunOriginalMethods": 0,
+  "firstRun": "31 PASS, no FAIL and no rerun",
+  "classes": [
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneSchedulingTest",
+      "pass": 1,
+      "fail": 0,
+      "notRun": 0,
+      "rawRecord": "commands/test-00-instrument/result.json",
+      "methodResults": "tests/class-00.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "pass": 10,
+      "fail": 0,
+      "notRun": 0,
+      "rawRecord": "commands/test-01-instrument/result.json",
+      "methodResults": "tests/class-01.json"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "pass": 7,
+      "fail": 0,
+      "notRun": 0,
+      "rawRecord": "commands/test-02-instrument/result.json",
+      "methodResults": "tests/class-02.json"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21NoticeIntentTest",
+      "pass": 4,
+      "fail": 0,
+      "notRun": 0,
+      "rawRecord": "commands/test-03-instrument/result.json",
+      "methodResults": "tests/class-03.json"
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "pass": 4,
+      "fail": 0,
+      "notRun": 0,
+      "rawRecord": "commands/test-04-instrument/result.json",
+      "methodResults": "tests/class-04.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+      "pass": 3,
+      "fail": 0,
+      "notRun": 0,
+      "rawRecord": "commands/test-05-instrument/result.json",
+      "methodResults": "tests/class-05.json"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M21BackupRestoreTest",
+      "pass": 2,
+      "fail": 0,
+      "notRun": 0,
+      "rawRecord": "commands/test-06-instrument/result.json",
+      "methodResults": "tests/class-06.json"
+    }
+  ],
+  "methods": [
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneSchedulingTest",
+      "method": "test_driver_enforces_nine_delay_and_switch_cancels_only_owned_milestone_work",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "project_delete_preserves_same_uuid_subscription_and_renewal_receipt",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "historical_time_and_watermark_write_failure_roll_back_as_one_transaction",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "normal_renewal_preserves_baseline_but_backfilled_coverage_merges_it",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "watermark_insert_failure_rolls_back_identity_and_initial_money",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "new_project_and_today_inclusive_baseline_commit_together",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "historical_start_correction_suppresses_newly_crossed_node_and_replay_is_stable",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "ordinary_end_on_target_day_keeps_its_legal_baseline",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "rename_and_amount_only_correction_do_not_swallow_today_node",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "invalid_stored_time_facts_fail_closed_without_partial_initialization",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "legacy_initialization_is_complete_and_idempotent_without_fake_receipts",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "method": "mixed_milestone_receipts_do_not_poison_existing_renewal_worker",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "method": "old_generation_payload_cannot_publish_or_write_receipts",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "method": "second_receipt_insert_failure_rolls_back_complete_batch_after_publish",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "method": "notice_revalidation_rejects_old_generation_changed_history_and_deleted_owner",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "method": "permission_and_both_switches_are_independent_and_never_forge_receipts",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "method": "room_project_and_subscription_same_day_publish_one_typed_summary_and_complete_batch",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21MilestoneWorkerTest",
+      "method": "second_worker_without_new_candidates_does_not_republish_summary",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21NoticeIntentTest",
+      "method": "mismatchedPathOrMalformedDigestDoesNotCreateAnOpenRequest",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21NoticeIntentTest",
+      "method": "boundedReferenceRoundTripsWithoutSourceArraysOrAmounts",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21NoticeIntentTest",
+      "method": "dateIsCanonicalAndCannotBeReplacedByAThresholdCode",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.M21NoticeIntentTest",
+      "method": "wrongActionAndUnboundedCountAreRejected",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "method": "stale_or_deleted_summary_is_an_explicit_error_and_never_an_empty_success",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "method": "same_uuid_cross_type_row_revalidates_and_opens_the_exact_type",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "method": "single_source_opens_once_after_revalidation_and_does_not_repeat_on_recomposition",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "method": "summary_keeps_more_than_50_sources_and_expands_its_display_window",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+      "method": "sameUuidTypedPrimaryKeyAndReceiptDeletionStaySeparateAfterReopen",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+      "method": "rawMaskOutsideIntRangeIsRejectedBeforeRoomNarrowingAndRemainsUnchanged",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.local.M21DatabaseMigrationTest",
+      "method": "productionFourToFivePreservesEveryOriginalTableRowAndKnownIdentity",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M21BackupRestoreTest",
+      "method": "currentFormatFourRoundTripPreservesFactsMediaReceiptsAndMergesWatermarksBeforeProofAndActivation",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M21BackupRestoreTest",
+      "method": "interruptedAuthenticProofThreeAndSchemaFourAreAuthenticatedBeforeUpgradeAndProtection",
+      "status": "PASS"
+    }
+  ],
+  "priorJvm": "395 PASS retained, rerun0",
+  "lint": {
+    "Error": 0,
+    "Warning": 25
+  },
+  "operationCounts": {
+    "avdCreate": 1,
+    "avdStart": 1,
+    "appInstall": 1,
+    "testInstall": 1,
+    "instrumentationClassRuns": 7,
+    "instrumentationMethodExecutions": 31,
+    "normalAvdExit": 1,
+    "targetedAdbRecordedCommands": 57,
+    "additionalMemoryOnlyTargetedJobDumpQueries": 2,
+    "protectedDeviceCommands": 0,
+    "sdkDownloadsOrUpgrades": 0
+  },
+  "screenshots": 4,
+  "remainingLimits": [
+    "No real OS notification Publisher, system click/MainActivity, periodic WorkManager, system reboot, API26/OEM/TalkBack",
+    "D1000/calendar-year/leap-day, subscription pause/free/prepaid boundaries and +6/+7 windows retain prior JVM evidence; not separately covered by these 31 Android methods",
+    "Fifteen zero-length Room/Android cache .lck residuals preserved without claiming complete cache cleanup",
+    "Requested2048MiB automatically raised by existing emulator to2560MiB; no second start"
+  ],
+  "formalAcceptance": "PENDING; not FROZEN; G3 unchanged"
+}

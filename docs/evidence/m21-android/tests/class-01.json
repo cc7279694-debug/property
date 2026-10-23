@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "claim": {
+    "index": 1,
+    "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+    "captureRun": "73908806-f0bf-4125-b38b-2c437d7ce47e",
+    "claimedAt": "2026-10-23T01:38:27.843546+00:00",
+    "source": "6c937ed7354b77d598bdeb55718a39708f572ee8"
+  },
+  "appSha256": "5f7c585e5e117bc7e77d5f2915429ac1eb8f4ac6b9480ad77aa8fa13529b1c62",
+  "testSha256": "feab8f299a1e261731e197e2642f0ffa1f5ba136df9198551e6e655e80f7c5af",
+  "methods": [
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "project_delete_preserves_same_uuid_subscription_and_renewal_receipt",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "historical_time_and_watermark_write_failure_roll_back_as_one_transaction",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "normal_renewal_preserves_baseline_but_backfilled_coverage_merges_it",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "watermark_insert_failure_rolls_back_identity_and_initial_money",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "new_project_and_today_inclusive_baseline_commit_together",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "historical_start_correction_suppresses_newly_crossed_node_and_replay_is_stable",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "ordinary_end_on_target_day_keeps_its_legal_baseline",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "rename_and_amount_only_correction_do_not_swallow_today_node",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "invalid_stored_time_facts_fail_closed_without_partial_initialization",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest",
+      "method": "legacy_initialization_is_complete_and_idempotent_without_fake_receipts",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    }
+  ],
+  "expected": 10,
+  "actual": 10,
+  "runnerCompletionCodeMinusOne": true,
+  "junitOk": true,
+  "stdoutCommandRecord": "../commands/test-01-instrument/result.json"
+}

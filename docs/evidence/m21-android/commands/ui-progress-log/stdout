@@ -1,0 +1,77 @@
+--------- beginning of main
+10-23 01:38:06.016  5359  5372 I TestRunner: run started: 1 tests
+10-23 01:38:06.017  5359  5372 I TestRunner: started: test_driver_enforces_nine_delay_and_switch_cancels_only_owned_milestone_work(com.cooper.lithic.platform.notification.M21MilestoneSchedulingTest)
+10-23 01:38:06.938  5359  5372 I TestRunner: finished: test_driver_enforces_nine_delay_and_switch_cancels_only_owned_milestone_work(com.cooper.lithic.platform.notification.M21MilestoneSchedulingTest)
+10-23 01:38:06.942  5359  5372 I TestRunner: run finished: 1 tests, 0 failed, 0 ignored
+10-23 01:38:28.714  5410  5424 I TestRunner: run started: 10 tests
+10-23 01:38:28.715  5410  5424 I TestRunner: started: project_delete_preserves_same_uuid_subscription_and_renewal_receipt(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:28.964  5410  5424 I TestRunner: finished: project_delete_preserves_same_uuid_subscription_and_renewal_receipt(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:28.968  5410  5424 I TestRunner: started: historical_time_and_watermark_write_failure_roll_back_as_one_transaction(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.027  5410  5424 I TestRunner: finished: historical_time_and_watermark_write_failure_roll_back_as_one_transaction(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.030  5410  5424 I TestRunner: started: normal_renewal_preserves_baseline_but_backfilled_coverage_merges_it(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.099  5410  5424 I TestRunner: finished: normal_renewal_preserves_baseline_but_backfilled_coverage_merges_it(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.103  5410  5424 I TestRunner: started: watermark_insert_failure_rolls_back_identity_and_initial_money(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.142  5410  5424 I TestRunner: finished: watermark_insert_failure_rolls_back_identity_and_initial_money(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.148  5410  5424 I TestRunner: started: new_project_and_today_inclusive_baseline_commit_together(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.174  5410  5424 I TestRunner: finished: new_project_and_today_inclusive_baseline_commit_together(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.178  5410  5424 I TestRunner: started: historical_start_correction_suppresses_newly_crossed_node_and_replay_is_stable(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.219  5410  5424 I TestRunner: finished: historical_start_correction_suppresses_newly_crossed_node_and_replay_is_stable(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.224  5410  5424 I TestRunner: started: ordinary_end_on_target_day_keeps_its_legal_baseline(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.278  5410  5424 I TestRunner: finished: ordinary_end_on_target_day_keeps_its_legal_baseline(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.282  5410  5424 I TestRunner: started: rename_and_amount_only_correction_do_not_swallow_today_node(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.591  5410  5424 I TestRunner: finished: rename_and_amount_only_correction_do_not_swallow_today_node(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.598  5410  5424 I TestRunner: started: invalid_stored_time_facts_fail_closed_without_partial_initialization(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.764  5410  5424 I TestRunner: finished: invalid_stored_time_facts_fail_closed_without_partial_initialization(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.773  5410  5424 I TestRunner: started: legacy_initialization_is_complete_and_idempotent_without_fake_receipts(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.928  5410  5424 I TestRunner: finished: legacy_initialization_is_complete_and_idempotent_without_fake_receipts(com.cooper.lithic.data.repository.M21MilestoneWatermarkTransactionTest)
+10-23 01:38:29.933  5410  5424 I TestRunner: run finished: 10 tests, 0 failed, 0 ignored
+10-23 01:38:32.244  5453  5466 I TestRunner: run started: 7 tests
+10-23 01:38:32.246  5453  5466 I TestRunner: started: mixed_milestone_receipts_do_not_poison_existing_renewal_worker(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:32.728  5453  5466 I TestRunner: finished: mixed_milestone_receipts_do_not_poison_existing_renewal_worker(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:32.732  5453  5466 I TestRunner: started: old_generation_payload_cannot_publish_or_write_receipts(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:32.827  5453  5466 I TestRunner: finished: old_generation_payload_cannot_publish_or_write_receipts(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:32.830  5453  5466 I TestRunner: started: second_receipt_insert_failure_rolls_back_complete_batch_after_publish(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:32.962  5453  5466 I TestRunner: finished: second_receipt_insert_failure_rolls_back_complete_batch_after_publish(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:32.965  5453  5466 I TestRunner: started: notice_revalidation_rejects_old_generation_changed_history_and_deleted_owner(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:33.095  5453  5466 I TestRunner: finished: notice_revalidation_rejects_old_generation_changed_history_and_deleted_owner(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:33.097  5453  5466 I TestRunner: started: permission_and_both_switches_are_independent_and_never_forge_receipts(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:33.215  5453  5466 I TestRunner: finished: permission_and_both_switches_are_independent_and_never_forge_receipts(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:33.217  5453  5466 I TestRunner: started: room_project_and_subscription_same_day_publish_one_typed_summary_and_complete_batch(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:33.290  5453  5466 I TestRunner: finished: room_project_and_subscription_same_day_publish_one_typed_summary_and_complete_batch(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:33.293  5453  5466 I TestRunner: started: second_worker_without_new_candidates_does_not_republish_summary(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:33.378  5453  5466 I TestRunner: finished: second_worker_without_new_candidates_does_not_republish_summary(com.cooper.lithic.platform.notification.M21MilestoneWorkerTest)
+10-23 01:38:33.381  5453  5466 I TestRunner: run finished: 7 tests, 0 failed, 0 ignored
+10-23 01:38:35.313  5500  5512 I TestRunner: run started: 4 tests
+10-23 01:38:35.314  5500  5512 I TestRunner: started: mismatchedPathOrMalformedDigestDoesNotCreateAnOpenRequest(com.cooper.lithic.platform.notification.M21NoticeIntentTest)
+10-23 01:38:35.338  5500  5512 I TestRunner: finished: mismatchedPathOrMalformedDigestDoesNotCreateAnOpenRequest(com.cooper.lithic.platform.notification.M21NoticeIntentTest)
+10-23 01:38:35.343  5500  5512 I TestRunner: started: boundedReferenceRoundTripsWithoutSourceArraysOrAmounts(com.cooper.lithic.platform.notification.M21NoticeIntentTest)
+10-23 01:38:35.362  5500  5512 I TestRunner: finished: boundedReferenceRoundTripsWithoutSourceArraysOrAmounts(com.cooper.lithic.platform.notification.M21NoticeIntentTest)
+10-23 01:38:35.365  5500  5512 I TestRunner: started: dateIsCanonicalAndCannotBeReplacedByAThresholdCode(com.cooper.lithic.platform.notification.M21NoticeIntentTest)
+10-23 01:38:35.371  5500  5512 I TestRunner: finished: dateIsCanonicalAndCannotBeReplacedByAThresholdCode(com.cooper.lithic.platform.notification.M21NoticeIntentTest)
+10-23 01:38:35.373  5500  5512 I TestRunner: started: wrongActionAndUnboundedCountAreRejected(com.cooper.lithic.platform.notification.M21NoticeIntentTest)
+10-23 01:38:35.378  5500  5512 I TestRunner: finished: wrongActionAndUnboundedCountAreRejected(com.cooper.lithic.platform.notification.M21NoticeIntentTest)
+10-23 01:38:35.385  5500  5512 I TestRunner: run finished: 4 tests, 0 failed, 0 ignored
+10-23 01:38:37.527  5533  5546 I TestRunner: run started: 4 tests
+10-23 01:38:37.529  5533  5546 I TestRunner: started: stale_or_deleted_summary_is_an_explicit_error_and_never_an_empty_success(com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest)
+10-23 01:38:43.031  5533  5546 I TestRunner: finished: stale_or_deleted_summary_is_an_explicit_error_and_never_an_empty_success(com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest)
+10-23 01:38:43.043  5533  5546 I TestRunner: started: same_uuid_cross_type_row_revalidates_and_opens_the_exact_type(com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest)
+10-23 01:38:48.014  5533  5546 I TestRunner: finished: same_uuid_cross_type_row_revalidates_and_opens_the_exact_type(com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest)
+10-23 01:38:48.053  5533  5546 I TestRunner: started: single_source_opens_once_after_revalidation_and_does_not_repeat_on_recomposition(com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest)
+10-23 01:38:52.597  5533  5546 I TestRunner: finished: single_source_opens_once_after_revalidation_and_does_not_repeat_on_recomposition(com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest)
+10-23 01:38:52.604  5533  5546 I TestRunner: started: summary_keeps_more_than_50_sources_and_expands_its_display_window(com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest)
+10-23 01:39:00.864  5533  5546 I TestRunner: finished: summary_keeps_more_than_50_sources_and_expands_its_display_window(com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest)
+10-23 01:39:00.904  5533  5546 I TestRunner: run finished: 4 tests, 0 failed, 0 ignored
+10-23 01:39:03.807  5669  5683 I TestRunner: run started: 3 tests
+10-23 01:39:03.808  5669  5683 I TestRunner: started: sameUuidTypedPrimaryKeyAndReceiptDeletionStaySeparateAfterReopen(com.cooper.lithic.data.local.M21DatabaseMigrationTest)
+10-23 01:39:04.109  5669  5683 I TestRunner: finished: sameUuidTypedPrimaryKeyAndReceiptDeletionStaySeparateAfterReopen(com.cooper.lithic.data.local.M21DatabaseMigrationTest)
+10-23 01:39:04.113  5669  5683 I TestRunner: started: rawMaskOutsideIntRangeIsRejectedBeforeRoomNarrowingAndRemainsUnchanged(com.cooper.lithic.data.local.M21DatabaseMigrationTest)
+10-23 01:39:04.296  5669  5683 I TestRunner: finished: rawMaskOutsideIntRangeIsRejectedBeforeRoomNarrowingAndRemainsUnchanged(com.cooper.lithic.data.local.M21DatabaseMigrationTest)
+10-23 01:39:04.297  5669  5683 I TestRunner: started: productionFourToFivePreservesEveryOriginalTableRowAndKnownIdentity(com.cooper.lithic.data.local.M21DatabaseMigrationTest)
+10-23 01:39:04.879  5669  5683 I TestRunner: finished: productionFourToFivePreservesEveryOriginalTableRowAndKnownIdentity(com.cooper.lithic.data.local.M21DatabaseMigrationTest)
+10-23 01:39:04.881  5669  5683 I TestRunner: run finished: 3 tests, 0 failed, 0 ignored
+10-23 01:39:06.897  5712  5725 I TestRunner: run started: 2 tests
+10-23 01:39:06.898  5712  5725 I TestRunner: started: currentFormatFourRoundTripPreservesFactsMediaReceiptsAndMergesWatermarksBeforeProofAndActivation(com.cooper.lithic.data.backup.M21BackupRestoreTest)
+10-23 01:39:08.530  5712  5725 I TestRunner: finished: currentFormatFourRoundTripPreservesFactsMediaReceiptsAndMergesWatermarksBeforeProofAndActivation(com.cooper.lithic.data.backup.M21BackupRestoreTest)
+10-23 01:39:08.535  5712  5725 I TestRunner: started: interruptedAuthenticProofThreeAndSchemaFourAreAuthenticatedBeforeUpgradeAndProtection(com.cooper.lithic.data.backup.M21BackupRestoreTest)
+10-23 01:39:09.371  5712  5725 I TestRunner: finished: interruptedAuthenticProofThreeAndSchemaFourAreAuthenticatedBeforeUpgradeAndProtection(com.cooper.lithic.data.backup.M21BackupRestoreTest)
+10-23 01:39:09.373  5712  5725 I TestRunner: run finished: 2 tests, 0 failed, 0 ignored

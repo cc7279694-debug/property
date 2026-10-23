@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "claim": {
+    "index": 4,
+    "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+    "captureRun": "a67cd0b6-4ea9-4b55-bc9e-e548f1fc0dc6",
+    "claimedAt": "2026-10-23T01:38:36.492243+00:00",
+    "source": "6c937ed7354b77d598bdeb55718a39708f572ee8"
+  },
+  "appSha256": "5f7c585e5e117bc7e77d5f2915429ac1eb8f4ac6b9480ad77aa8fa13529b1c62",
+  "testSha256": "feab8f299a1e261731e197e2642f0ffa1f5ba136df9198551e6e655e80f7c5af",
+  "methods": [
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "method": "stale_or_deleted_summary_is_an_explicit_error_and_never_an_empty_success",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "method": "same_uuid_cross_type_row_revalidates_and_opens_the_exact_type",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "method": "single_source_opens_once_after_revalidation_and_does_not_repeat_on_recomposition",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    },
+    {
+      "class": "com.cooper.lithic.feature.reminder.M21MilestoneSourcesUiTest",
+      "method": "summary_keeps_more_than_50_sources_and_expands_its_display_window",
+      "status": "PASS",
+      "statusCode": 0,
+      "stack": null
+    }
+  ],
+  "expected": 4,
+  "actual": 4,
+  "runnerCompletionCodeMinusOne": true,
+  "junitOk": true,
+  "stdoutCommandRecord": "../commands/test-04-instrument/result.json"
+}

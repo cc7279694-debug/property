@@ -1,10 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-10-22（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-23（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
 
-- **M21 — READY_FOR_REVIEW / 独立验收PENDING**：本轮用户明确授权，从M20冻结`3e8f5fdef9853ada726b037cc8559e2117d24da9`建立`codex/m21-milestone-reminders`；Q03规则为USER_CONFIRMED。候选已实现真实时间节点、类型化抑制水位、同日摘要及受守卫保护的通知来源导航，Room5/backup4和旧格式/proof兼容。最终395 JVM PASS（77新增＋318回归），Lint0错误25警告，Debug App/Test构建成功，实际Test DEX的31个新增方法已核对。实际结果见[M21报告](evidence/M21-verification.md)，[契约](planning/M21_CONTRACT.md)。本轮设备操作0，31个Android方法全部NOT_RUN，真实迁移、恢复、通知、点击、TestDriver及系统重启未执行；不得冻结或宣称G3通过。下方M20及更早内容是继承的原阶段记录，其中“未授权M21/仅文档回写”描述原时点，当前授权以本项为准。
+- **M21 — READY_FOR_REVIEW / 独立验收PENDING**：来源候选`6c937ed7354b77d598bdeb55718a39708f572ee8`，当前`codex/m21-milestone-reminders`。本轮获准新建一台隔离API36/x86_64，原31个唯一Android方法首轮31 PASS、重跑0，取得4张真实隔离截图；此前395 JVM PASS未重跑。Test只增加截图/360dp与LocalDensity200%接缝，原方法/断言与App字节不变；Lint0错误25警告，Test构建成功。实际Room4→5/重开、事务水位、format4/旧proof3恢复、Worker及TestDriver/Intent/隔离Compose证据见[Android报告](evidence/M21-Android-verification.md)。新`Lithic_M21_API36_20261023 / emulator-5712`创建/启动/正常退出各1，App/Test各安装1；请求2048MB但既有工具自动提高实际2560MB，2核/headless/no-snapshot。13个已关闭测试根移除，15个未登记零字节缓存锁文件保留，AVD保留；历史设备操作0。合成Publisher/测试调度不冒充真实系统通知/点击/后台重启；部分日期子边界、proof1/2实际恢复、API26/OEM/完整TalkBack等仍NOT_RUN，不自行冻结或宣称G3通过。[原离线报告](evidence/M21-verification.md)的31 NOT_RUN/设备0保留原时点；Q03 USER_CONFIRMED、Room5/backup4及旧格式/proof兼容候选保持，全部历史限制不变，不进入M22。
 
 - **M20 — ACCEPTED / FROZEN — PASS WITH NOTES**：依据用户2026-10-22正式转交的ChatGPT独立源码及证据验收，评审`d3776e0b2852428911ad0f09296680046211b32d`，评审及登记分支`codex/m20-renewal-notifications`。M20-T01～T06、此前238 JVM PASS、原22 Android最终PASS及Lint0错误25警告获限定认可；仅冻结续费Planner、权限/偏好、有限幂等回执、WorkManager集成及Room schema v4、backup format v3兼容实现，不扩大为OEM后台准点保证。见[正式登记](ACCEPTANCE_MATRIX.md#m20正式限定冻结登记2026-10-22)。本轮仅文档回写，未重跑测试、构建、核验APK或操作设备。来源M19冻结回写`33ae4f4da61b066d7e2f1ca25cf5f2353208c183`。实现续费Planner、WorkManager2.12.0非精确持久任务、同代完整事实/权限/偏好复核、稳定tag/ID与成功调用后Receipt、通知设置页面；里程碑只保存偏好，实际发送仍未授权。明确升级Room3→4九表及完整迁移链、backup2→3/旧1/2严格升级、旧proof兼容及恢复激活前截止水位，内部generation metadata仍1。冻结金额/日期/订阅算法、旧schema1/2/3不改。
   **最新定向收口BLOCKED**：用户另行授权从`d2be4cb29a03de100e784527f8e99e86e2cf45d6`仅启动原M20/5704一次。真实新Boot身份、原App/Test字节/证书/UID均通过，但未发出App启动命令时出现正常App PID3115及新增默认active-generation/generations；未能证明无新Worker，立即停止收口。新方法编译/安装/执行、任务取消、通知清除及第二次账本Owner重开均0；原第二次结果SHA不变，周期任务/通知/账本与显式Owner收口仍UNKNOWN或NOT_RUN，不能改判。只正常关闭本轮M20原实例，进程和端口结束，AVD和新旧现场保留。见[平台收口报告](evidence/M20-Platform-closure.md)及[逐项状态](evidence/m20-platform-closure/results.json)。没有重新执行下列测试，也不自行再启动、恢复、取消或进入M21。
@@ -89,4 +89,4 @@ M21候选当前为Room5十表（新增typed milestone_watermarks），显式1→
 
 ## Next Recommended Task
 
-完成M21离线交付后停止，等待ChatGPT独立验收及后续干净设备的明确授权；不进入M22。M20产品限定冻结与额外平台FAIL/第二次收口BLOCKED保持，M20 AVD保留隔离，任务/通知/Owner和冷启动来源UNKNOWN不变。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、G3未通过、Q02/16组完整跨模块与全部历史NOTES/NOT_RUN保持。
+完成本轮M21 Android补验后停止，等待ChatGPT独立复验；新5712已正常退出，任何后续设备操作须另获明确授权，不进入M22。M20产品限定冻结与额外平台FAIL/第二次收口BLOCKED保持，M20 AVD保留隔离，任务/通知/Owner和冷启动来源UNKNOWN不变。M10 PENDING / DEFERRED及三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未整体通过、Q04 PROPOSED、G3未通过、Q02/16组完整跨模块与全部历史NOTES/NOT_RUN保持。
