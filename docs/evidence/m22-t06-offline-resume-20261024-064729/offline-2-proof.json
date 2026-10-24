@@ -1,0 +1,42 @@
+{
+  "observation": 2,
+  "userManuallyConfirmed": true,
+  "system": {
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "AIRPLANE": "1",
+    "WIFI": "0",
+    "MOBILE_DATA": "0"
+  },
+  "ipv4": {
+    "defaultRouteCount": 1,
+    "defaultRouteDescriptors": [
+      {
+        "family": "IPv4",
+        "routeType": "unicast_implicit_syntax",
+        "interface": "dummy0",
+        "tableIdentifier": "1002"
+      }
+    ],
+    "routeLineCount": 5,
+    "allTablesRequested": true,
+    "privacy": "Only default route type/interface/table, no destinations/gateways/source IP addresses archived"
+  },
+  "ipv6": {
+    "defaultRouteCount": 1,
+    "defaultRouteDescriptors": [
+      {
+        "family": "IPv6",
+        "routeType": "unicast_implicit_syntax",
+        "interface": "dummy0",
+        "tableIdentifier": "1002"
+      }
+    ],
+    "routeLineCount": 11,
+    "allTablesRequested": true,
+    "privacy": "Only default route type/interface/table, no destinations/gateways/source IP addresses archived"
+  },
+  "cleanCommandStderr": true,
+  "classification": "BLOCKED_OFFLINE_PRECONDITIONS_NOT_MET",
+  "noInferenceOfReachableInternetFromRoutePresence": true,
+  "testInvocations": 0
+}

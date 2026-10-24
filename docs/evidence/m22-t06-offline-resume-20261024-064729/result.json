@@ -1,0 +1,83 @@
+{
+  "source": "ba8391f608642e70a2f02422ce36e0ad0900a297",
+  "classification": "BLOCKED_DEFAULT_ROUTES_REMAIN_AFTER_AIRPLANE_CONFIRMED",
+  "installAttempts": 0,
+  "testInvocations": 0,
+  "offlineObservations": 2,
+  "manualCorrectionCount": 1,
+  "latestOfflineGate": {
+    "observation": 2,
+    "userManuallyConfirmed": true,
+    "system": {
+      "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+      "AIRPLANE": "1",
+      "WIFI": "0",
+      "MOBILE_DATA": "0"
+    },
+    "ipv4": {
+      "defaultRouteCount": 1,
+      "defaultRouteDescriptors": [
+        {
+          "family": "IPv4",
+          "routeType": "unicast_implicit_syntax",
+          "interface": "dummy0",
+          "tableIdentifier": "1002"
+        }
+      ],
+      "routeLineCount": 5,
+      "allTablesRequested": true,
+      "privacy": "Only default route type/interface/table, no destinations/gateways/source IP addresses archived"
+    },
+    "ipv6": {
+      "defaultRouteCount": 1,
+      "defaultRouteDescriptors": [
+        {
+          "family": "IPv6",
+          "routeType": "unicast_implicit_syntax",
+          "interface": "dummy0",
+          "tableIdentifier": "1002"
+        }
+      ],
+      "routeLineCount": 11,
+      "allTablesRequested": true,
+      "privacy": "Only default route type/interface/table, no destinations/gateways/source IP addresses archived"
+    },
+    "cleanCommandStderr": true,
+    "classification": "BLOCKED_OFFLINE_PRECONDITIONS_NOT_MET",
+    "noInferenceOfReachableInternetFromRoutePresence": true,
+    "testInvocations": 0
+  },
+  "t06": "NOT_RUN_OFFLINE_GATE_BLOCKED",
+  "allThreePackageIdentitiesAndBytesUnchanged": true,
+  "networkFontDensityThemeAndBootReturnedToOriginal": true,
+  "endSettings": {
+    "MODEL": "23127PN0CC",
+    "API": "36",
+    "ABI": "arm64-v8a",
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "FONT": "1.1",
+    "AIRPLANE": "0",
+    "WIFI": "1",
+    "MOBILE_DATA": "0",
+    "NIGHT": "0",
+    "display": [
+      "Physical density: 480",
+      "Physical size: 1200x2670"
+    ]
+  },
+  "defaultStoreNecessaryMetadataUnchanged": true,
+  "targetUidProcessRows": [],
+  "limitedAndroid16ExactNaCandidate": true,
+  "targetServiceCount": 0,
+  "newJourneyRootObserved": false,
+  "historicalDefaultOwnerGracefulClose": "NOT_PROVEN_UNCHANGED",
+  "defaultLedgerIntegrity": "NOT_VERIFIED_UNCHANGED",
+  "workManagerBusinessClosure": "UNKNOWN_UNCHANGED",
+  "newTestPreservationAndCleanupAndroidVerification": "NOT_RUN_NO_METHOD_INVOKED",
+  "noInternetReachabilityConclusionFromDefaultRoutePresence": true,
+  "appNormalLaunches": 0,
+  "forceStops": 0,
+  "settingsWritesBySupervisor": 0,
+  "cleanupActionsBySupervisor": 0,
+  "t03ImeBuildEmulator": "NOT_RUN_NOT_AUTHORIZED"
+}

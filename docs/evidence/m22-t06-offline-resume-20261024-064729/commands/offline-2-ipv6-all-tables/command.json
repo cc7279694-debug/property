@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "ip -6 route show table all"
+  ],
+  "startedUtc": "2026-10-24T06:54:25.291230+00:00",
+  "timeoutSeconds": 30,
+  "privacy": "Exact USB serial retained only in ignored control. Filtered full output processed in memory; raw bytes/SHA refer to complete command output.",
+  "exitCode": 0,
+  "endedUtc": "2026-10-24T06:54:25.427567+00:00",
+  "seconds": 0.14,
+  "stdoutBytes": 880,
+  "stdoutSha256": "5fb1e9640f3ba5f70c4360c1c4f575e47681886b14e6236b0b849ed49e796765",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selected": {
+    "defaultRouteCount": 1,
+    "defaultRouteDescriptors": [
+      {
+        "family": "IPv6",
+        "routeType": "unicast_implicit_syntax",
+        "interface": "dummy0",
+        "tableIdentifier": "1002"
+      }
+    ],
+    "routeLineCount": 11,
+    "allTablesRequested": true,
+    "privacy": "Only default route type/interface/table, no destinations/gateways/source IP addresses archived"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "run-as com.cooper.lithic.m22verify.debug sh -c 'printf '\"'\"'M22_END_JOURNEY_ROOTS_BEGIN\\n'\"'\"'; id -u; for p in no_backup/m22-ui-journey-*; do if [ -e \"$p\" ] || [ -L \"$p\" ]; then stat -c '\"'\"'ROOT=%n|%u|%i|%s|%Y|%f'\"'\"' \"$p\"; fi; done; printf '\"'\"'M22_END_JOURNEY_ROOTS_END\\n'\"'\"''"
+  ],
+  "startedUtc": "2026-10-24T06:55:37.107963+00:00",
+  "timeoutSeconds": 30,
+  "privacy": "Exact USB serial retained only in ignored control. Filtered full output processed in memory; raw bytes/SHA refer to complete command output.",
+  "exitCode": 0,
+  "endedUtc": "2026-10-24T06:55:37.340119+00:00",
+  "seconds": 0.235,
+  "stdoutBytes": 63,
+  "stdoutSha256": "241ada3bc918012c5a8abe71cde953ce5cd49650b341a44b8b65845e0b853d3b",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

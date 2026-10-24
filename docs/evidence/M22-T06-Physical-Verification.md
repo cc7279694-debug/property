@@ -77,3 +77,22 @@
 原始监督器异常也保留：[首次源码选择器错误](m22-t06-execution-20261024-050200/source-audit-initial-error.json)因错误假设方法内只有一个size引用而assert失败（官方查询exit0，外层1，首次响应原始长度/SHA未捕获），之后只重读相同固定官方源核验条件；不是设备重试。[本次控制层错误记录](m22-t06-execution-20261024-050200/control-layer-errors.json)保留离线前提断言失败，设备四命令均exit0、监督器1；未重读离线路由、重置marker或执行T06。两次本地证据读取/汇总工具路径或分类问题仅发生在电脑，未改变手机或原证据，不作为Android FAIL。
 
 本轮归档**54份命令回执均exit0**：51次只读ADB（1次主机发现＋50次明确USB定向查询）、1次Test更新、2次桌面SDK静态核验；另有固定官方源查询两次，首次选择器失败口径如上。Instrumentation、正常App启动、强停、任务取消、监督器设置写入、DB内容读取、清理及模拟器操作均**0**；用户手动网络调整已恢复。原137 JVM/36 Android PASS、T06三次历史FAIL、全部旧UNKNOWN/NOT_RUN与M10/M13-T06/M20/Q03/Q04/G1/G2/G3不改。**当前唯一执行阻塞是实际离线前提未满足；本次停止，不再次安装、不自动继续T06，不冻结M22或进入M23。**
+
+## 2026-10-24 — T06离线门禁限定续接
+
+**READY_FOR_REVIEW — M22 T06 OFFLINE RESUME**；实际 **BLOCKED_DEFAULT_ROUTES_REMAIN_AFTER_AIRPLANE_CONFIRMED**。来源`ba8391f608642e70a2f02422ce36e0ad0900a297`，同分支。本轮**安装0、构建0、T06执行0**；初次观察与获准的一次人工纠正后复核各一次。旧离线失败、Test更新PASS及全部历史原始文件保持，不回填或改判。
+
+新安全准入通过：唯一已核验USB小米23127PN0CC/API36/arm64-v8a、同Boot，三包UID/版本/唯一路径/实际设备APK SHA匹配；无10420/10427进程、目标Service0，Job符合上节已审查的精确Android16 N/A组合。原M10 UID10376/code8/SHA `939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094`，M22 App UID10420/code17/SHA `b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3`，Test UID10427/SHA `12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26`，开始/结束全部相同；本地Test也再次计算SHA匹配。签名及Manifest仍引用[同字节已审实物](m22-t06-execution-20261024-050200/artifact-audit.json)，本轮未重新构建、验签或安装。[本轮独立准入](m22-t06-offline-resume-20261024-064729/admission-proof.json)。
+
+| 实际观察 | 飞行/Wi-Fi/移动数据 | IPv4全部表默认路由 | IPv6全部表默认路由 | 判定 |
+| --- | --- | --- | --- | --- |
+| 用户首次确认后 | 0 / 0 / 0 | 1：`dummy0`，表1002 | 2：`dummy0`，表1002；`rmnet_data1`，表1017 | BLOCKED；保留原观察，并按本轮许可请求至多一次人工纠正，不归责用户 |
+| 用户确认已人工纠正一次后 | **1 / 0 / 0** | **1：`dummy0`，表1002** | **1：`dummy0`，表1002** | **BLOCKED**；飞行开关已满足，但原合同要求零默认路由，停止，不再复核或运行T06 |
+
+路由均为输出中未显式标注类型的unicast语法；每次USB、系统状态、IPv4/IPv6全部表查询均exit0、stderr0、同Boot，结束标记完整。公开仅family/路由类型/接口/表标识、计数、完整输出长度/SHA；完整路由原文只在内存处理，不归档私人源/网关/目的IP。**路由存在不等于实际可联网；dummy0路由的具体系统用途和可达性仍UNKNOWN，本轮不研究或放宽准入。** [首次proof](m22-t06-offline-resume-20261024-064729/offline-1-proof.json)、[纠正后proof](m22-t06-offline-resume-20261024-064729/offline-2-proof.json)、[纠正后系统原值](m22-t06-offline-resume-20261024-064729/commands/offline-2-system-state/stdout)、[IPv4完整性回执](m22-t06-offline-resume-20261024-064729/commands/offline-2-ipv4-all-tables/command.json)、[IPv6完整性回执](m22-t06-offline-resume-20261024-064729/commands/offline-2-ipv6-all-tables/command.json)。
+
+T06未创建attempt marker、未发Instrumentation、未创建本轮UUID账本，无JUnit/堆栈/阶段/截图可登记；完整旅程、失败现场保留、Owner/Room关闭与成功清理的Android验证仍**NOT_RUN**。T03/IME未获本轮授权，也未执行；没有因门禁而启动正常MainActivity、强停、取消任务或清理默认generation/WorkManager。
+
+用户配合恢复后实测airplane0/Wi-Fi1/mobile0、font1.1/density480/1200×2670/主题0、Boot均与本轮原值一致。结束三包身份与字节保持、目标UID进程0/Service0/限定空Job上下文；默认generation及WorkManager必要路径/UID/inode/长度/时间元数据前后完全相同，开始/结束均无journey合成根。未读取默认业务数据库或指针内容，**历史AppContainer正常关闭NOT_PROVEN、默认账本完整性NOT_VERIFIED、WorkManager业务收口UNKNOWN**保持，不能由元数据相同或无进程反推关闭/完整性。[结束汇总](m22-t06-offline-resume-20261024-064729/result.json)、[结束设置](m22-t06-offline-resume-20261024-064729/commands/end-settings/stdout)、[结束元数据](m22-t06-offline-resume-20261024-064729/commands/end-store-metadata/stdout)、[结束Job](m22-t06-offline-resume-20261024-064729/commands/end-target-jobs/command.json)。
+
+本轮**40次只读ADB**（1次主机发现＋39次明确USB定向查询），回执均exit0；命令成功不代表离线门禁PASS。安装、构建、Instrumentation、正常App启动、监督器设置写入、强停、任务取消、DB内容读取、清理及模拟器操作均0。未采集私人屏幕、硬件序列或其他App内容；未改产品/测试源码、算法、Room5或backup4。原137 JVM/36 Android PASS与三次T06历史FAIL、所有UNKNOWN/NOT_RUN/NOTES保持。**M22产品仍BLOCKED；提交本轮有界证据后停止，等待独立审查dummy0默认路由与原离线合同的关系，不自动继续T06、冻结或进入M23。**
