@@ -1,0 +1,8 @@
+Exception in thread "main" java.io.FileNotFoundException: E:\CODEX\.codex\worktrees\lithic-m13\鐮虹煶鏂癆PP\app\build\m22-device-verification\outputs\apk\androidTest\debug\app-debug-androidTest.apk (系统找不到指定的路径。)
+	at java.base/java.io.RandomAccessFile.open0(Native Method)
+	at java.base/java.io.RandomAccessFile.open(RandomAccessFile.java:344)
+	at java.base/java.io.RandomAccessFile.<init>(RandomAccessFile.java:259)
+	at java.base/java.io.RandomAccessFile.<init>(RandomAccessFile.java:213)
+	at com.android.apksig.ApkVerifier.verify(ApkVerifier.java:158)
+	at com.android.apksigner.ApkSignerTool.verify(ApkSignerTool.java:610)
+	at com.android.apksigner.ApkSignerTool.main(ApkSignerTool.java:97)

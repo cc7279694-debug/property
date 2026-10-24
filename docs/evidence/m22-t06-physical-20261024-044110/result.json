@@ -1,0 +1,99 @@
+{
+  "source": "6bc13cdc057d1029ea57d97e12625fd4bacfbcf3",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "admission": "BLOCKED_ACTIVE_JOB_STATE_N_A",
+  "desktopArtifactAudit": "PASS",
+  "installedTestSha256": "c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f",
+  "desktopCandidateTestSha256": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26",
+  "installAttempts": 0,
+  "installClaimCreated": false,
+  "testInvocations": 0,
+  "testClaimCreated": false,
+  "T06": "NOT_RUN_ADMISSION_BLOCKED",
+  "plainApplicationRuntime": "NOT_RUN",
+  "newSyntheticRoot": "NOT_CREATED_BY_TASK",
+  "journeyCompleted": "NOT_RUN",
+  "testOwnerClose": "NOT_RUN_NO_TEST_OWNER_CREATED",
+  "failurePreservationOrSuccessCleanup": "NOT_RUN",
+  "actualOfflineGate": "NOT_RUN_NO_USER_NETWORK_CHANGE_REQUESTED",
+  "networkRestoration": "NOT_REQUIRED_NO_CHANGES_REQUESTED_OR_PERFORMED",
+  "packageProtection": {
+    "oldM10": {
+      "package": "com.cooper.lithic.debug",
+      "uid": 10376,
+      "sha256": "939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094",
+      "identityUnchanged": true,
+      "shaUnchanged": true,
+      "pathUnchanged": true
+    },
+    "app": {
+      "package": "com.cooper.lithic.m22verify.debug",
+      "uid": 10420,
+      "sha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3",
+      "identityUnchanged": true,
+      "shaUnchanged": true,
+      "pathUnchanged": true
+    },
+    "test": {
+      "package": "com.cooper.lithic.m22verify.debug.test",
+      "uid": 10427,
+      "sha256": "c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f",
+      "identityUnchanged": true,
+      "shaUnchanged": true,
+      "pathUnchanged": true
+    }
+  },
+  "settingsBefore": {
+    "MODEL": "23127PN0CC",
+    "API": "36",
+    "ABI": "arm64-v8a",
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "FONT": "1.1",
+    "AIRPLANE": "0",
+    "WIFI": "1",
+    "MOBILE_DATA": "0",
+    "NIGHT": "0",
+    "display": [
+      "Physical density: 480",
+      "Physical size: 1200x2670"
+    ]
+  },
+  "settingsEnd": {
+    "MODEL": "23127PN0CC",
+    "API": "36",
+    "ABI": "arm64-v8a",
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "FONT": "1.1",
+    "AIRPLANE": "0",
+    "WIFI": "1",
+    "MOBILE_DATA": "0",
+    "NIGHT": "0",
+    "display": [
+      "Physical density: 480",
+      "Physical size: 1200x2670"
+    ]
+  },
+  "settingsUnchanged": true,
+  "targetProcessRowsBefore": [],
+  "targetProcessRowsEnd": [],
+  "endTargetServiceCount": 0,
+  "targetRegisteredObserved": 0,
+  "targetPendingObserved": "EXPLICIT_NONE",
+  "targetActive": "UNKNOWN_N_A_IN_FILTERED_AND_UNFILTERED_DUMPS",
+  "historicalOwnerNormalClose": "NOT_PROVEN",
+  "defaultLedgerIntegrity": "NOT_VERIFIED",
+  "defaultFileMetadataBeforeAfterThisTask": "NOT_VERIFIED_NO_CURRENT_BASELINE_BEFORE_BLOCK",
+  "endMetadataMatchesPreviousCommittedClosureSnapshot": true,
+  "forceStops": 0,
+  "settingsWrites": 0,
+  "appNormalLaunches": 0,
+  "taskCancellations": 0,
+  "cleanupActionsBySupervisor": 0,
+  "databaseContentReads": 0,
+  "otherDeviceOperations": 0,
+  "knownAdbCommands": 27,
+  "desktopToolCommands": 3,
+  "initialGateSupervisorExitCode": 1,
+  "desktopInitialPathCommandExitCode": 1,
+  "nextStep": "STOP for independent review of unavailable platform Active state; no new install/test/network/cleanup authorization inferred"
+}

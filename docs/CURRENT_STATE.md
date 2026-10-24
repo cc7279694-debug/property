@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **M22-T06正式补验：BLOCKED_ACTIVE_JOB_STATE_UNKNOWN_N_A，安装/执行均0**：来源`6bc13cdc057d1029ea57d97e12625fd4bacfbcf3`，本轮三包UID/SHA/版本与手机USB/同Boot核对一致、目标进程不存在；独立新Test 12e…ae26实物/签名/Manifest核验通过但未安装。包过滤Registered None./Pending None，Active显示N/A；独立未过滤完整系统任务输出仍N/A，不能当零活动任务或已证明有Worker，按准入停止。手机仍旧c379…037f Test，T06/离线门禁/失败保留与成功清理实证全部NOT_RUN，没有请求用户断网。结束三包与font1.1/density480/网络/主题一致；默认必要元数据与此前快照一致，未读DB、未验证完整性或历史Owner正常关闭。本轮27只读ADB＋3桌面静态命令，安装/Instrumentation/启动/强停/设置/清理0；桌面路径编码失败、安全门禁exit1及本地汇总编码失败保留，不改历史结论。见[T06真机补验报告](evidence/M22-T06-Physical-Verification.md)。M22仍BLOCKED，提交后停止，不自动放宽N/A、更新Test或继续测试。
+
 - **M22默认进程收口续接：ALREADY_STOPPED，强停0次**：用户告知手机已重新连接，从`ed35deceb82cd1cc04abb50b258e210f8d3e4b61`独立续接。USB/同Boot/三包SHA及UID核对一致；完整UID进程表与独立pidof均无M22 App/Test，M22 `stopped=true`已在操作前存在、退出原因UNKNOWN。目标Job最后完整section为Registered None./Pending None/Active空；只证OS观察，不证WorkSpec业务取消。旧PID/FD路径最初ABSENT、中间PRESENT、最终ABSENT均保留，原因UNKNOWN，不把数字PID当原身份；原FD随原进程退出释放，不推断其他资源/锁。默认文件元数据、三包及font1.1/density480/网络/主题前后一致，无修改。AppContainer正常关闭NOT_PROVEN、账本完整性NOT_VERIFIED、任务业务收口UNKNOWN。36次只读ADB、强停/安装/测试/设置/清理0；三次监督器格式/路径断言失败原件保留，原USB失败不改判。见[收口报告续接节](evidence/M22-Physical-Process-Closure.md#2026-10-24-手机重新连接后的限定续接)。仅交付复验，M22产品仍BLOCKED；停止，不自动更新Test或恢复T06。
 
 - **M22默认进程收口：设备准入BLOCKED，强停0次**：来源`fb888d569b65d58babfdcfaefb52f9b771bb4303`，用户另行只授权新M22 App在无重要操作/活动任务时最多一次系统force-stop。唯一主机ADB发现exit0，但未确认此前精确USB目标处于唯一`device`状态，监督器exit1；完整输出长度/SHA和选择失败保留，全设备清单不归档。没有手机shell/应用查询、强停、Test更新、测试或设置/数据操作；原因UNKNOWN，不猜测断线或未授权，不能据此登记ALREADY_STOPPED/PROCESS_STOPPED。当前PID/FD/Job状态UNKNOWN，正常Owner关闭NOT_PROVEN、账本完整性NOT_VERIFIED；旧观察保留原时点。见[收口报告](evidence/M22-Physical-Process-Closure.md)。停止等待设备准入复核，不在连接恢复后自动执行，不进入T06/T03/IME。
@@ -112,6 +114,6 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Next Recommended Task
 
-先独立审查[重新连接后的ALREADY_STOPPED收口观察](evidence/M22-Physical-Process-Closure.md#2026-10-24-手机重新连接后的限定续接)：强停0次，目标进程/当前OS任务已无匹配，三包及已查文件/设置前后一致；正常Owner关闭未证明、账本未读、WorkManager业务终结UNKNOWN，不能把这些升级为已验证。旧USB失败、PID路径中间PRESENT及解析失败原件保留。只有获得新Test更新/测试的独立审查及明确授权后才能再次准入；当前已安装Test仍c379…037f，新12e…ae26未安装，T06/T03/真实IME继续NOT_RUN。不得借安装强停、取消未知任务或删除现场。[桌面整改](evidence/M22-T06-Failure-Preservation.md)、原[安装成功](evidence/M22-Test-Install-Unlocked-Retry.md)及全部历史失败保持；不改变360dp、系统200%字体、原断言或120秒预算。
+先独立审查[本轮T06准入阻塞](evidence/M22-T06-Physical-Verification.md)：过滤和独立全量JobScheduler的Active实际均N/A，当前无法证明活动状态，不能由进程/Registered/Pending为空绕过，也不宣称有活动Worker。新Test桌面身份通过但安装/方法执行均0、未请求断网。需先明确可复核的平台Active证据或独立确认的准入口径，不能自行修改空值规则、扩建工具或自动重试。此前[ALREADY_STOPPED观察](evidence/M22-Physical-Process-Closure.md#2026-10-24-手机重新连接后的限定续接)保留原时点，不回写本轮状态；历史Owner正常关闭未证明、账本未读、WorkManager业务终结UNKNOWN保持。当前已安装Test仍c379…037f，新12e…ae26未安装；T06/T03/真实IME继续NOT_RUN。不改变360dp、系统200%字体、原业务断言或120秒预算。
 
 本轮提交推送后停止，等待ChatGPT独立复验。**BLOCKED — SYSTEMUI HEALTH GATE**：全新空API36在安装砺石之前同样出现SystemUI ANR，记录的直接超时点是SystemUIService waited20001ms，根因UNKNOWN；不能只认定是旧userdata、内存不足或M22产品问题。T06/正式20年T03/真实IME均未取得新执行结果。新5714额度已用完且正常关闭、AVD保留；旧5712/29锁/截图和所有历史现场不动，未经新授权不再创建/启动、替换环境、修复系统或清理。M10/M13-T06/M20/Q03/Q04/Q02/G1/G2/G3及全部历史边界保持。

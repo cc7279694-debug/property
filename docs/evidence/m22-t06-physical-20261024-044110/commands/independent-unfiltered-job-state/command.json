@@ -1,0 +1,49 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "dumpsys jobscheduler"
+  ],
+  "startedUtc": "2026-10-24T04:45:55.649618+00:00",
+  "timeoutSeconds": 30,
+  "privacy": "Exact USB serial retained only in ignored control. Filtered full output processed in memory; raw bytes/SHA refer to complete command output.",
+  "exitCode": 0,
+  "endedUtc": "2026-10-24T04:45:55.976042+00:00",
+  "seconds": 0.328,
+  "stdoutBytes": 1436022,
+  "stdoutSha256": "c33d822bc690986fa8261628b94d7efcfae6c59c9dc64c1098f2f3db08dd122b",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selected": {
+    "fullDumpProcessedOnlyInMemory": true,
+    "lineCount": 18518,
+    "sections": {
+      "Pending queue:": {
+        "startLine": 17532,
+        "endLineExclusive": 17535,
+        "sectionUtf8Bytes": 22,
+        "sectionSha256": "116f272d4c1130528cbb8c28db249f142f4d15b4071d9b989dda204d364fff2d",
+        "bodyUtf8Bytes": 4,
+        "bodySha256": "dc937b59892604f5a86ac96936cd7ff09e25f18ae6b758e8014a24c7fa039e91",
+        "targetMatchingLines": [],
+        "completePrivacySafeSection": "Pending queue:\n  None\n",
+        "classification": "EXPLICIT_EMPTY_OR_NONE"
+      },
+      "Active jobs:": {
+        "startLine": 17535,
+        "endLineExclusive": 17538,
+        "sectionUtf8Bytes": 19,
+        "sectionSha256": "36e78ec59d39c60e58f7e4f53e06964393ed32c064593e8f090c4a601cbae827",
+        "bodyUtf8Bytes": 3,
+        "bodySha256": "e2f79e5b60330bba4c289962231b6ba2957d0b14e7deb3110417003c79dea635",
+        "targetMatchingLines": [],
+        "completePrivacySafeSection": "Active jobs:\n  N/A\n",
+        "classification": "UNAVAILABLE_N_A"
+      }
+    },
+    "unrelatedJobIdentitiesNotArchived": true,
+    "activeState": "UNKNOWN_N_A"
+  }
+}
