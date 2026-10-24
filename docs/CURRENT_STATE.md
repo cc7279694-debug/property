@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-10-23（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-24（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **M22默认进程收口：设备准入BLOCKED，强停0次**：来源`fb888d569b65d58babfdcfaefb52f9b771bb4303`，用户另行只授权新M22 App在无重要操作/活动任务时最多一次系统force-stop。唯一主机ADB发现exit0，但未确认此前精确USB目标处于唯一`device`状态，监督器exit1；完整输出长度/SHA和选择失败保留，全设备清单不归档。没有手机shell/应用查询、强停、Test更新、测试或设置/数据操作；原因UNKNOWN，不猜测断线或未授权，不能据此登记ALREADY_STOPPED/PROCESS_STOPPED。当前PID/FD/Job状态UNKNOWN，正常Owner关闭NOT_PROVEN、账本完整性NOT_VERIFIED；旧观察保留原时点。见[收口报告](evidence/M22-Physical-Process-Closure.md)。停止等待设备准入复核，不在连接恢复后自动执行，不进入T06/T03/IME。
 
 - **M22真机最终补验：准入BLOCKED；仅交付复验**：来源`adb9fa791a27cba88fc474e243f337cedc22c081`，同一小米API36/USB及三包身份/SHA核对一致；发现新M22 UID10420/PID32313/startTicks84068317仍持有默认generation `919ab3ee-2a7e-4988-8d65-5641a7ddcf2b`及WorkManager数据库的10个匹配FD链接。Owner关闭未证明，目标Job至少1条注册头、完整active/pending和归属仍UNKNOWN，按第一门禁停止；Test更新0、三方法全部NOT_RUN，手机仍旧c379…037f Test，新12e…ae26未安装。只读元数据、不打开数据库、不取消/强停/清理；三包前后SHA/UID及网络/font1.1/density/主题均不变。两次发现/ps格式断言失败及其原输出元数据NOT_CAPTURED保留，后续独立USB/明确UID证据不回填旧失败，Job块提取不完整不当作零任务。见[最终真机补验报告](evidence/M22-Physical-Final-Supplement.md)。M22仍BLOCKED，停止等待默认Owner/队列安全处置的独立审查与新授权，不自动继续更新或测试。
 
@@ -108,6 +110,6 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Next Recommended Task
 
-先独立审查[最新真机准入阻塞](evidence/M22-Physical-Final-Supplement.md)：默认存储与WorkManager资源仍被新M22进程持有，未取得Owner/任务安全结束证据，不能通过Test更新或Instrumentation的潜在进程效果收口。须先确定精确、另行授权的默认Owner/队列安全处置；不自动强停、取消、删盘或绕过准入。新Test候选12e…ae26尚未安装，手机仍为c379…037f，T06/T03/真实IME继续NOT_RUN。[桌面整改](evidence/M22-T06-Failure-Preservation.md)、原[安装成功](evidence/M22-Test-Install-Unlocked-Retry.md)及全部历史失败保持。不得覆盖手机旧M10包，不改变360dp、系统200%字体、原断言或120秒预算，也不以编译/静态隔离替代真实运行。
+先独立核对[本轮设备未准入的收口结果](evidence/M22-Physical-Process-Closure.md)：用户已限定授权最多一次新M22系统force-stop，但本轮唯一USB发现未能确认原目标在线，实际强停0次；已确认用户没有重要操作，仍不能替代设备/进程/Job准入。再次接续必须重新取得准确USB、三包及无活动任务证明，不能自动重试、取消任务、删盘或通过Test更新收口。上次[默认Owner/FD观察](evidence/M22-Physical-Final-Supplement.md)保留原时点；本轮未查手机安装字节，不把旧c379…037f记录冒充新观察。新Test候选12e…ae26未由本轮安装，T06/T03/真实IME继续NOT_RUN。[桌面整改](evidence/M22-T06-Failure-Preservation.md)、原[安装成功](evidence/M22-Test-Install-Unlocked-Retry.md)及全部历史失败保持；不改变360dp、系统200%字体、原断言或120秒预算。
 
 本轮提交推送后停止，等待ChatGPT独立复验。**BLOCKED — SYSTEMUI HEALTH GATE**：全新空API36在安装砺石之前同样出现SystemUI ANR，记录的直接超时点是SystemUIService waited20001ms，根因UNKNOWN；不能只认定是旧userdata、内存不足或M22产品问题。T06/正式20年T03/真实IME均未取得新执行结果。新5714额度已用完且正常关闭、AVD保留；旧5712/29锁/截图和所有历史现场不动，未经新授权不再创建/启动、替换环境、修复系统或清理。M10/M13-T06/M20/Q03/Q04/Q02/G1/G2/G3及全部历史边界保持。
