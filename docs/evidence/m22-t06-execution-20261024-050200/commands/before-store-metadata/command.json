@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "run-as com.cooper.lithic.m22verify.debug sh -c 'printf '\"'\"'M22_DEFAULT_METADATA_BEGIN\\n'\"'\"'; id -u; readlink -f no_backup; for p in no_backup/active-generation no_backup/androidx.work.workdb no_backup/androidx.work.workdb-wal no_backup/androidx.work.workdb-shm; do if [ -e \"$p\" ] || [ -L \"$p\" ]; then stat -c '\"'\"'META=%n|%u|%g|%i|%s|%Y|%f'\"'\"' \"$p\"; fi; done; for d in no_backup/generations/*; do if [ -d \"$d\" ]; then stat -c '\"'\"'DIR=%n|%u|%g|%i|%s|%Y|%f'\"'\"' \"$d\"; for n in data.db data.db-wal data.db-shm settings.preferences_pb ready.json; do p=\"$d/$n\"; if [ -e \"$p\" ]; then stat -c '\"'\"'META=%n|%u|%g|%i|%s|%Y|%f'\"'\"' \"$p\"; fi; done; fi; done; printf '\"'\"'M22_DEFAULT_METADATA_END\\n'\"'\"''"
+  ],
+  "startedUtc": "2026-10-24T05:04:22.631451+00:00",
+  "timeoutSeconds": 30,
+  "privacy": "Exact USB serial retained only in ignored control. Filtered full output processed in memory; raw bytes/SHA refer to complete command output.",
+  "exitCode": 0,
+  "endedUtc": "2026-10-24T05:04:23.030146+00:00",
+  "seconds": 0.391,
+  "stdoutBytes": 1141,
+  "stdoutSha256": "dd2b9fff17137f275f688d067c7b4d08e4dfc0f9c712a69733e834d78424e061",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

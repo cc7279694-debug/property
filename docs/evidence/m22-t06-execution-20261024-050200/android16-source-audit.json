@@ -1,0 +1,40 @@
+{
+  "argv": [
+    "gh",
+    "api",
+    "repos/aosp-mirror/platform_frameworks_base/contents/apex/jobscheduler/service/java/com/android/server/job/JobConcurrencyManager.java?ref=android-16.0.0_r1"
+  ],
+  "startedUtc": "2026-10-24T05:03:29.244415+00:00",
+  "endedUtc": "2026-10-24T05:03:30.594250+00:00",
+  "seconds": 1.344,
+  "exitCode": 0,
+  "stdoutBytes": 192728,
+  "stdoutSha256": "a031307e688028741616b77c8901927024f0dd525d140d76690f843066d51429",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "privacy": "Official source response processed in memory; full file/license text not archived.",
+  "sourceUrl": "https://github.com/aosp-mirror/platform_frameworks_base/blob/android-16.0.0_r1/apex/jobscheduler/service/java/com/android/server/job/JobConcurrencyManager.java",
+  "githubBlobSha": "7e421676b3c908e2de5d408e3107b4f6b6ca6f84",
+  "sourceBytes": 138864,
+  "sourceSha256": "d0d3c838bf8230542110b2aea7958c86d521866c63b8b4ecafc02a670baef8a7",
+  "methodStartLine": 2155,
+  "methodEndLine": 2213,
+  "conditionLines": [
+    {
+      "line": 2159,
+      "text": "if (mActiveServices.size() == 0) {"
+    },
+    {
+      "line": 2162,
+      "text": "for (int i = 0; i < mActiveServices.size(); i++) {"
+    }
+  ],
+  "naOutputLines": [
+    {
+      "line": 2160,
+      "text": "pw.println(\"N/A\");"
+    }
+  ],
+  "methodSha256": "19f950df37a6aa95934625445726dbd669d7477829cfba741af12189b5de2fa0",
+  "result": "VERIFIED_SOURCE_METHOD; inspect branch association before applying limited device rule"
+}

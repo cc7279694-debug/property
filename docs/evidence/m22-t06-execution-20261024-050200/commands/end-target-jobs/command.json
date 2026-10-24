@@ -1,0 +1,103 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "dumpsys jobscheduler com.cooper.lithic.m22verify.debug"
+  ],
+  "startedUtc": "2026-10-24T06:22:32.721854+00:00",
+  "timeoutSeconds": 30,
+  "privacy": "Exact USB serial retained only in ignored control. Filtered full output processed in memory; raw bytes/SHA refer to complete command output.",
+  "exitCode": 0,
+  "endedUtc": "2026-10-24T06:22:32.915971+00:00",
+  "seconds": 0.203,
+  "stdoutBytes": 478811,
+  "stdoutSha256": "6a97732d53551bf697092209e1aa5becc636cf59464ef1e9359a2b81f9f6f21d",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selected": {
+    "completeRawOutputProcessedInMemory": true,
+    "lineCount": 3607,
+    "topLevelHeadings": [
+      {
+        "line": 970,
+        "text": "Registered 257 jobs:"
+      },
+      {
+        "line": 3418,
+        "text": "Pending queue:"
+      },
+      {
+        "line": 3421,
+        "text": "Active jobs:"
+      },
+      {
+        "line": 3424,
+        "text": "Idle contexts (16):"
+      }
+    ],
+    "registeredTargetBlocks": [],
+    "targetMatchingLines": [
+      "    <0>com.cooper.lithic.m22verify.debug::timeout-reg:",
+      "    <0>com.cooper.lithic.m22verify.debug::.schedulePersisted():",
+      "    <0>com.cooper.lithic.m22verify.debug::anr:",
+      "    <0>com.cooper.lithic.m22verify.debug::timeout-total:",
+      "    10420:com.cooper.lithic.m22verify.debug=false",
+      "    Timer<REG>{<0>com.cooper.lithic.m22verify.debug} NOT active, 0 running bg jobs",
+      "    TopAppTimer{<0>com.cooper.lithic.m22verify.debug} NOT active",
+      "      <0>com.cooper.lithic.m22verify.debug",
+      "      <0>com.cooper.lithic.m22verify.debug: ShrinkableDebits { debit tally: 0, bucket: 3 }",
+      "  0-ComponentInfo{com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService}: com.cooper.lithic.m22verify.debug",
+      "  10420: {com.cooper.lithic.m22verify.debug}"
+    ],
+    "sections": {
+      "Pending queue:": {
+        "startLine": 3418,
+        "endLineExclusive": 3421,
+        "sectionUtf8Bytes": 22,
+        "sectionSha256": "116f272d4c1130528cbb8c28db249f142f4d15b4071d9b989dda204d364fff2d",
+        "targetMatchingLines": [],
+        "nonemptyBodyLines": 1,
+        "bodyIndentPrefixes": [
+          "  "
+        ],
+        "bodyLines": [
+          "  None"
+        ],
+        "exactSentinel": "None",
+        "completePrivacySafeSection": "Pending queue:\n  None\n"
+      },
+      "Active jobs:": {
+        "startLine": 3421,
+        "endLineExclusive": 3424,
+        "sectionUtf8Bytes": 19,
+        "sectionSha256": "36e78ec59d39c60e58f7e4f53e06964393ed32c064593e8f090c4a601cbae827",
+        "targetMatchingLines": [],
+        "nonemptyBodyLines": 1,
+        "bodyIndentPrefixes": [
+          "  "
+        ],
+        "bodyLines": [
+          "  N/A"
+        ],
+        "exactSentinel": "N/A",
+        "completePrivacySafeSection": "Active jobs:\n  N/A\n"
+      },
+      "Registered target filter": {
+        "startLine": 970,
+        "endLineExclusive": 973,
+        "globalHeadingIsNotTargetCount": true,
+        "bodyLines": [
+          "  None."
+        ],
+        "exactSentinel": "None.",
+        "completePrivacySafeSection": "Registered 257 jobs:\n  None.\n"
+      }
+    },
+    "parseStatus": "ANDROID16_EXACT_NA_REQUIRES_ALL_INDEPENDENT_GATES",
+    "privacy": "Only target blocks and redacted structural metadata retained; unrelated jobs not archived",
+    "android16ExactNaCandidate": true,
+    "scope": "This rule is not a generic N/A-as-empty rule; command exit0 and no UID processes/services plus identity gates are checked separately."
+  }
+}

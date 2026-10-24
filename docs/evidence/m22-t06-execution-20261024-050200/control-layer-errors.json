@@ -1,0 +1,33 @@
+{
+  "officialSourceInitialSelector": "source-audit-initial-error.json",
+  "offlineGate": {
+    "supervisorExitCode": 1,
+    "classification": "BLOCKED_OFFLINE_PRECONDITIONS_NOT_MET",
+    "deviceCommandExitCodes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "exception": "AssertionError: No test; ask user to restore original network",
+    "testInvocations": 0,
+    "rawConsoleBytesSha256": "NOT_CAPTURED",
+    "rawDeviceEvidence": "offline-proof.json and commands/offline-*"
+  },
+  "localEvidenceRead": {
+    "error": "Tried stdout.txt where archived filename is stdout",
+    "deviceOperations": 0,
+    "alteredEvidence": false
+  },
+  "localReceiptCountDisplay": {
+    "error": "Initial desktop classification used argv[0] extension; actual SDK commands begin cmd /c, corrected by exact command folder names",
+    "alteredEvidence": false,
+    "actualCommandCounts": {
+      "readOnlyAdb": 51,
+      "testInstall": 1,
+      "desktopSdk": 2,
+      "allReceipted": 54
+    }
+  },
+  "scope": "Desktop helper errors never relabelled as Android product failures; no retry of install or instrumentation"
+}

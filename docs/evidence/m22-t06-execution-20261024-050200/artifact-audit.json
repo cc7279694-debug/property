@@ -1,0 +1,25 @@
+{
+  "result": "PASS",
+  "scope": "Desktop locked existing APK bytes and official local SDK verification only; no build, ADB, device operation or tests.",
+  "test": {
+    "path": "app/build/m22-device-verification/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+    "bytes": 3403324,
+    "sha256": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26",
+    "package": "com.cooper.lithic.m22verify.debug.test",
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "signerCount": 1,
+    "targetPackage": "com.cooper.lithic.m22verify.debug",
+    "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+    "instrumentationCount": 1
+  },
+  "app": {
+    "path": "app/build/m22-device-verification/outputs/apk/debug/app-debug.apk",
+    "bytes": 13822252,
+    "sha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3",
+    "package": "com.cooper.lithic.m22verify.debug",
+    "bytesUnchanged": true
+  },
+  "lockedBytesUnchangedAfterAudit": true,
+  "signatureEvidence": "commands/desktop-new-test-signature-relative/command.json",
+  "manifestEvidence": "commands/desktop-new-test-manifest-relative/command.json"
+}

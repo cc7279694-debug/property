@@ -42,3 +42,38 @@
 本轮 **27次只读ADB**（1次主机发现＋26次定向手机查询）、3次桌面SDK静态命令；安装、Instrumentation、App正常启动、强停、任务取消、设置写入、数据库内容读取及监督器清理均 **0**。无产品/测试源码修改，无构建、JVM或旧Android套件重跑。原137 JVM/36 Android PASS、T06三次FAIL、历史UNKNOWN/NOT_RUN及M10/M13-T06/M20/Q03/Q04/G1/G2/G3全部保持。T03和真实IME本轮未获授权、未运行。
 
 提交推送后停止，等待独立审查平台Active状态的可验证证据；不自行把N/A加入“安全空值”、更新Test、继续T06、冻结M22、合并main或进入M23。
+
+## 2026-10-24 — Android16语义纠正后的限定续接
+
+**READY_FOR_REVIEW — M22 T06 EXECUTION**（仅交付本次实际执行证据）；实际结论 **BLOCKED_OFFLINE_PRECONDITIONS_NOT_MET**。来源`b5bd4ecb98b8f4dd1dc49d89abf0900389611627`，仍在`codex/m22-experience-accessibility`。**Test更新1次成功，T06执行0次、NOT_RUN**。上文旧N/A阻塞及全部原始字节保持；没有补写旧安装PASS或更改旧结果。
+
+### 独立语义依据与准入
+
+按用户转交的独立审查，核对[Android16固定tag源码](https://github.com/aosp-mirror/platform_frameworks_base/blob/android-16.0.0_r1/apex/jobscheduler/service/java/com/android/server/job/JobConcurrencyManager.java)：`dumpContextInfoLocked()`在`mActiveServices.size() == 0`分支输出`N/A`。本轮仅将**命令exit0、完整Active精确N/A且无Slot、目标Registered精确None.、Pending精确None、完整数字UID表无10420/10427进程、目标Service0及三包/设备身份完整匹配**的组合解释为无活动JobScheduler执行上下文。Registered全局标题的259不是目标任务数；目标过滤正文为None.。不将其他N/A、空响应、超时或未知结构放行，也不证明WorkManager业务已优雅收口。
+
+[源码长度/SHA/固定Blob与条件行](m22-t06-execution-20261024-050200/android16-source-audit.json)、[本次独立准入证明](m22-t06-execution-20261024-050200/admission-proof.json)、[开始Job完整section与命令回执](m22-t06-execution-20261024-050200/commands/before-target-jobs/command.json)。只归档短条件行及来源/校验元数据，不归档完整源码或许可正文。完整系统进程/任务输出在内存处理，归档仅目标事实、完整输出长度/SHA和隐私安全的section。
+
+### 一次Test更新与实际离线阻塞
+
+| 项目 | 本次实际结果 |
+| --- | --- |
+| USB与手机 | 同一已核验小米23127PN0CC / API36 / arm64-v8a、同Boot；公开仅USB序列SHA，未提交硬件序列 |
+| 原M10 | UID10376/code8，SHA `939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094`；开始、更新后、结束身份及唯一路径/SHA一致，未启动/更新/停止或读取其私有账本 |
+| M22 App | UID10420/code17，SHA `b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3`；全程未更新、未启动正常MainActivity，安装身份及字节不变 |
+| Test桌面静态核验 | 3,403,324 bytes；SHA `12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26`，唯一原证书SHA `29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9`；唯一M13IsolatedRunner、target仅独立M22 App，两SDK命令exit0；未重建APK |
+| Test实际更新 | **1次**普通定向`install -r`，exit0、`Success`。旧c379…037f保留历史；设备回读新SHA精确12e…ae26，UID10427及独立目录保持。更新后Instrumentation唯一目标/Runner匹配，原M10/App及默认必要元数据未变 |
+| 实际离线门禁 | 用户回复已开启飞行模式、关闭Wi-Fi/移动数据后，新采样却为**airplane=0、Wi-Fi=0、mobile_data=0**；IPv4全部表默认路由**1**，IPv6全部表默认路由**2**。四条命令exit0，完整路由仅内存处理，保留长度/SHA与计数，不保留私人地址。**未满足离线前提，立即停止**。不将路由存在推断成实际联网成功，不猜测用户操作或路由残留原因 |
+| T06与资源实证 | **NOT_RUN**；未创建t06-attempt、未发Instrumentation、无本轮JUnit/堆栈/阶段/截图/新UUID账本。新版失败保留、成功清理、journeyCompleted、plain Application及合成Owner/Room关闭仍PENDING_ANDROID_VERIFICATION，不因Test更新成功改判 |
+| T03 / 系统字体与IME | **NOT_RUN，本次未授权**；没有执行其他方法或历史套件 |
+
+[桌面实物审计](m22-t06-execution-20261024-050200/artifact-audit.json)、[安装前不可变attempt](m22-t06-execution-20261024-050200/install-attempt.json)、[更新命令/退出码](m22-t06-execution-20261024-050200/commands/single-test-update/command.json)、[更新原文](m22-t06-execution-20261024-050200/commands/single-test-update/stdout)、[更新后隔离证明](m22-t06-execution-20261024-050200/test-update-proof.json)、[实际离线proof](m22-t06-execution-20261024-050200/offline-proof.json)、[IPv4完整性回执](m22-t06-execution-20261024-050200/commands/offline-ipv4-all-tables/command.json)、[IPv6完整性回执](m22-t06-execution-20261024-050200/commands/offline-ipv6-all-tables/command.json)。Test更新成功不证明T06已修复。
+
+### 结束保护、原始错误与停止
+
+用户随后确认恢复原网络；结束只读实测**airplane0、Wi-Fi1、mobile_data0、font1.1、density480、1200×2670、主题值0**及同Boot与原值一致。三包结束SHA/UID/版本/安装路径匹配；未发现目标UID10420/10427进程，目标Service0，Job仍符合本轮限定精确N/A组合。开始/更新后/结束的默认generation及WorkManager必要路径、UID、inode、长度、时间元数据一致，未读取业务DB或指针内容。开始/结束均未发现`m22-ui-journey-*`根；没有监督器清理。历史AppContainer正常关闭**NOT_PROVEN**、默认账本完整性**NOT_VERIFIED**及WorkManager业务收口**UNKNOWN**不变。
+
+[结束汇总](m22-t06-execution-20261024-050200/result.json)、[原网络与资源](m22-t06-execution-20261024-050200/commands/before-settings/stdout)、[结束设置](m22-t06-execution-20261024-050200/commands/end-settings/stdout)、[结束默认元数据](m22-t06-execution-20261024-050200/commands/end-store-metadata/stdout)、[结束进程/完整性回执](m22-t06-execution-20261024-050200/commands/end-target-processes/command.json)、[结束Job](m22-t06-execution-20261024-050200/commands/end-target-jobs/command.json)。元数据相同不是字节完整性或Owner优雅关闭证明。
+
+原始监督器异常也保留：[首次源码选择器错误](m22-t06-execution-20261024-050200/source-audit-initial-error.json)因错误假设方法内只有一个size引用而assert失败（官方查询exit0，外层1，首次响应原始长度/SHA未捕获），之后只重读相同固定官方源核验条件；不是设备重试。[本次控制层错误记录](m22-t06-execution-20261024-050200/control-layer-errors.json)保留离线前提断言失败，设备四命令均exit0、监督器1；未重读离线路由、重置marker或执行T06。两次本地证据读取/汇总工具路径或分类问题仅发生在电脑，未改变手机或原证据，不作为Android FAIL。
+
+本轮归档**54份命令回执均exit0**：51次只读ADB（1次主机发现＋50次明确USB定向查询）、1次Test更新、2次桌面SDK静态核验；另有固定官方源查询两次，首次选择器失败口径如上。Instrumentation、正常App启动、强停、任务取消、监督器设置写入、DB内容读取、清理及模拟器操作均**0**；用户手动网络调整已恢复。原137 JVM/36 Android PASS、T06三次历史FAIL、全部旧UNKNOWN/NOT_RUN与M10/M13-T06/M20/Q03/Q04/G1/G2/G3不改。**当前唯一执行阻塞是实际离线前提未满足；本次停止，不再次安装、不自动继续T06，不冻结M22或进入M23。**

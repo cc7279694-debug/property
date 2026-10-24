@@ -1,0 +1,61 @@
+{
+  "source": "b5bd4ecb98b8f4dd1dc49d89abf0900389611627",
+  "installAttempts": 1,
+  "testInvocations": 0,
+  "actualOfflineGate": {
+    "userConfirmed": true,
+    "system": {
+      "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+      "AIRPLANE": "0",
+      "WIFI": "0",
+      "MOBILE_DATA": "0"
+    },
+    "ipv4": {
+      "defaultRouteCount": 1,
+      "routeLineCount": 6,
+      "allTablesRequested": true,
+      "privateNetworkAddressesNotArchived": true
+    },
+    "ipv6": {
+      "defaultRouteCount": 2,
+      "routeLineCount": 19,
+      "allTablesRequested": true,
+      "privateNetworkAddressesNotArchived": true
+    },
+    "classification": "BLOCKED_OFFLINE_PRECONDITIONS_NOT_MET",
+    "scope": "Actual settings and complete IPv4/IPv6 route tables, not Manifest-only evidence"
+  },
+  "t06": "NOT_RUN_OFFLINE_GATE_BLOCKED",
+  "newTestInstalledSha256": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26",
+  "protectedPackagesAndNewTestUnchangedAfterUpdate": true,
+  "settingsReturnedToOriginal": true,
+  "endSettings": {
+    "MODEL": "23127PN0CC",
+    "API": "36",
+    "ABI": "arm64-v8a",
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "FONT": "1.1",
+    "AIRPLANE": "0",
+    "WIFI": "1",
+    "MOBILE_DATA": "0",
+    "NIGHT": "0",
+    "display": [
+      "Physical density: 480",
+      "Physical size: 1200x2670"
+    ]
+  },
+  "defaultStoreNecessaryMetadataUnchanged": true,
+  "targetUidProcessRows": [],
+  "limitedAndroid16ExactNaCandidate": true,
+  "targetServiceCount": 0,
+  "newJourneyRootObserved": false,
+  "historicalDefaultOwnerGracefulClose": "NOT_PROVEN_UNCHANGED",
+  "defaultLedgerIntegrity": "NOT_VERIFIED_UNCHANGED",
+  "t06OwnerAndFailurePreservationAndSuccessCleanup": "NOT_RUN_NO_METHOD_INVOKED",
+  "t03AndIme": "NOT_RUN_NOT_AUTHORIZED_THIS_TASK",
+  "appNormalLaunches": 0,
+  "settingsWritesBySupervisor": 0,
+  "forceStops": 0,
+  "cleanupActionsBySupervisor": 0,
+  "overall": "BLOCKED_OFFLINE_PRECONDITIONS_NOT_MET"
+}
