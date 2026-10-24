@@ -146,3 +146,9 @@ M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未
 ## M22干净设备条件授权及最新停止点
 
 用户在前次bf5e8c4停止后明确批准：内存和磁盘余量足够后创建一台全新隔离API36，执行剩余三项。本次资源准入后仅新建/启动`Lithic_M22_Clean_API36_20261023_1523 / emulator-5714`各1次，原5712及全部历史设备ADB/写入0。干净设备在安装App/Test前两轮真实ANR，SystemUIService waited20001ms，根因UNKNOWN；安装/Instrumentation0，三方法NOT_RUN。源码/构建/旧套件均未再改跑。新设备已正常关闭1次且进程/端口结束，AVD保留。见[干净环境报告](docs/evidence/M22-Clean-Android-verification.md)。本次条件式授权额度已耗用，不构成后续无限创建/启动、系统修复或清理许可；原39方法状态、全部历史FAIL/UNKNOWN/NOT_RUN/NOTES保持，当前SYSTEMUI HEALTH GATE仍BLOCKED。只推当前M22分支后停止，不冻结、合并main或进入M23。
+
+## 2026-10-24 — 个人体验版当前产品决策
+
+用户明确停止M22重复验收循环，批准 **PRIVATE TRIAL DELIVERY — WITH KNOWN RISKS**。当前只用`lithicPrivateTrial=true`交付独立`com.cooper.lithic.preview.debug` / “砺石·体验版”Debug APK，正常LithicApplication/MainActivity；原Debug/Release默认身份和旧APK保留。复用现有本机Debug签名，缺失原签名文件时拒绝自动生成，后续同ID/同证书并递增版本。只做桌面编译和产物审计，**不授权ADB/手机安装、设备操作或个人账本访问**。见[交付说明](docs/evidence/LITHIC-Private-Trial-Delivery.md)。
+
+M22验收仍 **BLOCKED / CHANGES REQUIRED，剩余验收DEFERRED**；不将风险接受改成模块冻结或发行门禁PASS。T06/T03/IME、M10延期三JPEG FAIL、M13-T06延期、M20平台FAIL/UNKNOWN、Q03/Q04/G1/G2/G3及全部历史证据保持；旧设备/手机M10与M22验证现场不操作。用户自行决定是否安装体验版，本轮不迁移、读取或修改既有账本。后续按具体反馈另立小范围修复，不自动续测、合并main或进入M23。

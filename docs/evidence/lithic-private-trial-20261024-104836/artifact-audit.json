@@ -1,0 +1,91 @@
+{
+  "status": "READY_FOR_DELIVERY_WITH_KNOWN_RISKS",
+  "source": "3c3e293cb04e92295a4442acd451326ed36028e9",
+  "apk": {
+    "path": "app/build/private-trial/outputs/apk/debug/app-debug.apk",
+    "bytes": 13822272,
+    "sha256": "8138bfbebfaf4580cc71bcc1aabe8a0a50505c2262260b99747eea351183a7fa",
+    "applicationId": "com.cooper.lithic.preview.debug",
+    "label": "砺石·体验版",
+    "versionCode": 17,
+    "versionName": "0.1.0-preview.1-debug",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "debuggable": true
+  },
+  "signing": {
+    "type": "Existing local Debug key, not Release",
+    "signerCount": 1,
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "newKeyGenerated": false,
+    "existingKeyRequiredBeforeBuild": true,
+    "futureUpdates": "Same package and certificate, strictly increasing versionCode; preserve existing local signing key"
+  },
+  "manifest": {
+    "application": "com.cooper.lithic.app.LithicApplication",
+    "launcher": [
+      "com.cooper.lithic.app.MainActivity"
+    ],
+    "providerAuthorities": [
+      "com.cooper.lithic.preview.debug.androidx-startup"
+    ],
+    "providerExported": false,
+    "sharedUserId": false,
+    "instrumentation": false,
+    "allowBackup": false,
+    "permissions": [
+      "android.permission.ACCESS_NETWORK_STATE",
+      "android.permission.POST_NOTIFICATIONS",
+      "android.permission.RECEIVE_BOOT_COMPLETED",
+      "android.permission.WAKE_LOCK",
+      "com.cooper.lithic.preview.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "mergedManifestBytes": 5258,
+    "mergedManifestSha256": "93099eb32b1e9e554000ba2678ea0d6dd1cd017ca4d8be108d0e6fc699b349f0"
+  },
+  "dex": {
+    "dexFiles": 13,
+    "definedClassCount": 18767,
+    "requiredDefinedClasses": [
+      "Lcom/cooper/lithic/app/AppContainer;",
+      "Lcom/cooper/lithic/app/LithicApplication;",
+      "Lcom/cooper/lithic/app/MainActivity;"
+    ],
+    "isolatedRunnerJourneyTestOrJUnitClasses": []
+  },
+  "isolation": {
+    "ordinaryDebugReleaseConfigurationUnchanged": true,
+    "previousLocalApkFilesUnchanged": {
+      "app/build/m22-device-verification/outputs/apk/debug/app-debug.apk": {
+        "bytes": 13822252,
+        "sha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3"
+      },
+      "app/build/m22-device-verification/outputs/apk/androidTest/debug/app-debug-androidTest.apk": {
+        "bytes": 3403324,
+        "sha256": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26"
+      },
+      "app/build/outputs/apk/debug/app-debug.apk": {
+        "bytes": 13822236,
+        "sha256": "328e3dc2fbe4c2a503fc81f2750cd68a62e5bf2b2bf624620b21d63b3f9bf213"
+      },
+      "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk": {
+        "bytes": 3764680,
+        "sha256": "ce5f5d15abe3c6549f7b23777f2d11ea822a6d4a0417dda165dbfa16e3d6a614"
+      }
+    },
+    "sourcePackageHardcodingReview": "No old M10/M22 absolute private paths or cross-package Context found in main source",
+    "installedUidAndPrivatePaths": "NOT_RUN_NO_DEVICE_OPERATION"
+  },
+  "verification": {
+    "buildExitCode": 0,
+    "signatureExitCode": 0,
+    "badgingExitCode": 0,
+    "manifestExitCode": 0,
+    "deviceOperations": 0,
+    "androidTests": 0,
+    "jvmTests": 0,
+    "lint": "NOT_RUN_NOT_REQUIRED_FOR_THIS_CONFIG_ONLY_DELIVERY",
+    "runtimeApplicationStartup": "NOT_RUN_MANIFEST_AND_DEX_ONLY"
+  },
+  "productState": "M22 BLOCKED / CHANGES REQUIRED; user approved private trial, remaining acceptance deferred; no M23 or public release"
+}

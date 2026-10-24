@@ -14,6 +14,20 @@ require(m22VerificationValue == null || m22VerificationValue in setOf("true", "f
     "m22DeviceVerification must be true or false"
 }
 val m22DeviceVerification = m22VerificationValue == "true"
+// Opt-in personal trial: a normal production Application under its own package.
+val privateTrialValue = providers.gradleProperty("lithicPrivateTrial").orNull
+require(privateTrialValue == null || privateTrialValue in setOf("true", "false")) {
+    "lithicPrivateTrial must be true or false"
+}
+val lithicPrivateTrial = privateTrialValue == "true"
+if (lithicPrivateTrial) {
+    require(!m22DeviceVerification) { "Private trial and M22 device verification are separate builds" }
+    require(!providers.gradleProperty("m13Isolated").isPresent &&
+        !providers.gradleProperty("m12T04ProcessDeath").isPresent) {
+        "Private trial must not enable isolated or process-death test builds"
+    }
+    layout.buildDirectory.set(layout.projectDirectory.dir("build/private-trial"))
+}
 if (m22DeviceVerification) {
     require(providers.gradleProperty("m13Isolated").orNull == "true") {
         "M22 device verification requires the plain Application M13IsolatedRunner"
@@ -34,7 +48,7 @@ android {
         minSdk = 26
         targetSdk = 36
         versionCode = 17
-        versionName = "0.1.0-m22"
+        versionName = if (lithicPrivateTrial) "0.1.0-preview.1" else "0.1.0-m22"
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
         testInstrumentationRunner = if (providers.gradleProperty("m13Isolated").orNull == "true")
             "com.cooper.lithic.app.M13IsolatedRunner"
@@ -45,7 +59,11 @@ android {
 
     buildTypes {
         debug {
-            applicationIdSuffix = if (m22DeviceVerification) ".m22verify.debug" else ".debug"
+            applicationIdSuffix = when {
+                lithicPrivateTrial -> ".preview.debug"
+                m22DeviceVerification -> ".m22verify.debug"
+                else -> ".debug"
+            }
             versionNameSuffix = "-debug"
         }
     }
@@ -59,6 +77,13 @@ android {
     }
     // Exact exported schema fixtures are test-only assets; never packaged in the app APK.
     sourceSets.getByName("androidTest").assets.srcDir("$projectDir/schemas")
+    if (lithicPrivateTrial) {
+        // Never silently generate a replacement signing identity for trial updates.
+        require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
+            "Private trial requires the existing local Debug signing key; do not generate a replacement"
+        }
+        sourceSets.getByName("debug").manifest.srcFile("src/privateTrial/AndroidManifest.xml")
+    }
 }
 
 kotlin {

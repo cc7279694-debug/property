@@ -1,5 +1,27 @@
 # 决策记录
 
+## 2026-10-24 — 停止M22重复验收循环，交付已知风险个人体验版
+
+### Decision
+
+按用户正式产品决策登记 **PRIVATE TRIAL DELIVERY — WITH KNOWN RISKS**。M22仍BLOCKED / CHANGES REQUIRED，剩余验收DEFERRED；本次产品可试用与模块验收/公开发行结论分开。只在当前M22分支以独立包`com.cooper.lithic.preview.debug`、明确体验标签及正常LithicApplication/MainActivity交付Debug APK，不回退已完成功能，不合并main或进入M23。
+
+### Context
+
+T06仍因离线门禁未完整满足而NOT_RUN；20年正式规模与真实IME等未完成，用户选择优先日常体验。原三次T06失败、137 JVM/36 Android历史PASS、全部UNKNOWN/NOT_RUN、M10延期与三JPEG FAIL、M13-T06正式签名延期及M20等历史限制保留。
+
+### Alternatives
+
+不继续扩建验收/模拟器循环；不覆盖M10或M22验证包，不迁移其数据，不把隔离Runner作为普通产品入口，也不将Debug签名冒充Release。没有新增产品、架构、依赖、schema或备份格式。
+
+### Reason
+
+现有Gradle属性隔离和生产Application可直接复用；小范围增加体验属性与标签覆盖即可形成独立可审计APK。默认Debug/Release配置前后实测一致，旧APK字节保持；当前证书已核对连续，原签名文件缺失时拒绝生成替代文件。后续必须保持同ID/同证书并递增versionCode，用户控制签名和备份保管。
+
+### Consequences
+
+[交付说明](evidence/LITHIC-Private-Trial-Delivery.md)记录单一APK及SHA、静态门禁、真实NOT_RUN和安装说明。正常启动会建立体验包自己的默认Owner与提醒调度，不等于历史验证Owner已关闭。用户自行选择安装和体验，Codex本轮设备/安装/私账操作为0；后续仅按具体问题另行授权小范围修复，不自动恢复验收循环或授予正式冻结。
+
 ## 2026-10-23 — M21限定冻结与未归档证据引用修正
 
 ### Decision
