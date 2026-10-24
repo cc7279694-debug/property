@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "printf 'M22_PID_IDENTITY_BEGIN\\n'; if [ -d /proc/32313 ]; then cat /proc/32313/stat; sed -n '/^Uid:/p' /proc/32313/status; else printf 'OLD_PID_ABSENT\\n'; fi; printf 'M22_PID_IDENTITY_END\\n'"
+  ],
+  "startedUtc": "2026-10-24T04:02:49.864681+00:00",
+  "timeoutSeconds": 30,
+  "privacy": "Exact USB serial retained only in ignored control. Filtered full output processed in memory; raw bytes/SHA refer to complete command output.",
+  "exitCode": 0,
+  "endedUtc": "2026-10-24T04:02:50.059192+00:00",
+  "seconds": 0.203,
+  "stdoutBytes": 62,
+  "stdoutSha256": "800033dae78cb3865f921dfae2c3b78d34594f725eb486b921440247c637415a",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selectionError": ""
+}

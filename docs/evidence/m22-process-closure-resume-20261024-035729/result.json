@@ -1,0 +1,96 @@
+{
+  "source": "ed35deceb82cd1cc04abb50b258e210f8d3e4b61",
+  "originalAuthorizationSource": "fb888d569b65d58babfdcfaefb52f9b771bb4303",
+  "priorBlockedCommit": "ed35deceb82cd1cc04abb50b258e210f8d3e4b61",
+  "evidence": "docs/evidence/m22-process-closure-resume-20261024-035729",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "process": "ALREADY_STOPPED",
+  "exitCause": "UNKNOWN_OBSERVED_STOPPED_TRUE_BEFORE_TASK_MUTATIONS",
+  "forceStopAttempts": 0,
+  "forceStopClaimCreated": false,
+  "originalFdOutcome": "FD_CLOSED_BY_PROCESS_EXIT_ORIGINAL_UID_PROCESS_ABSENT_FINAL_OLD_PID_ABSENT",
+  "normalOwnerClose": "NOT_PROVEN",
+  "workManagerBusinessClosure": "UNKNOWN_NO_WORKSPEC_DB_READ",
+  "defaultLedgerIntegrity": "NOT_VERIFIED",
+  "jobSnapshot": {
+    "registeredTarget": 0,
+    "pendingTarget": 0,
+    "activeTarget": 0,
+    "globalRegisteredHeadingIsNotTargetCount": true,
+    "interpretation": "Only OS scheduler snapshot, not WorkSpec cancellation or graceful business termination"
+  },
+  "readOnlyAdbCommands": 36,
+  "hostDiscoveryCommands": 1,
+  "phoneReadOnlyCommands": 35,
+  "installAttempts": 0,
+  "testInvocations": 0,
+  "appLaunches": 0,
+  "settingsWrites": 0,
+  "taskCancellations": 0,
+  "dataDeletes": 0,
+  "databaseContentReads": 0,
+  "otherDeviceCommands": 0,
+  "packageProtection": {
+    "oldM10": {
+      "package": "com.cooper.lithic.debug",
+      "uid": 10376,
+      "sha256": "939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094",
+      "identityUnchanged": true,
+      "apkShaUnchanged": true,
+      "pathUnchanged": true
+    },
+    "app": {
+      "package": "com.cooper.lithic.m22verify.debug",
+      "uid": 10420,
+      "sha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3",
+      "identityUnchanged": true,
+      "apkShaUnchanged": true,
+      "pathUnchanged": true
+    },
+    "test": {
+      "package": "com.cooper.lithic.m22verify.debug.test",
+      "uid": 10427,
+      "sha256": "c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f",
+      "identityUnchanged": true,
+      "apkShaUnchanged": true,
+      "pathUnchanged": true
+    }
+  },
+  "beforeSettings": {
+    "MODEL": "23127PN0CC",
+    "API": "36",
+    "ABI": "arm64-v8a",
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "FONT": "1.1",
+    "AIRPLANE": "0",
+    "WIFI": "1",
+    "MOBILE_DATA": "0",
+    "NIGHT": "0"
+  },
+  "endSettings": {
+    "MODEL": "23127PN0CC",
+    "API": "36",
+    "ABI": "arm64-v8a",
+    "BOOT": "a9edfd47-8cb5-40a5-92eb-c41925ab00ea",
+    "FONT": "1.1",
+    "AIRPLANE": "0",
+    "WIFI": "1",
+    "MOBILE_DATA": "0",
+    "NIGHT": "0"
+  },
+  "settingsUnchanged": true,
+  "displayUnchanged": true,
+  "fileMetadataUnchanged": true,
+  "initialUidPsCommandExit": 1,
+  "initialSupervisorExit": 1,
+  "endSupervisorExit": 1,
+  "finalSelectorSupervisorExit": 1,
+  "finalObservationSupervisorExit": 0,
+  "preservedLimits": [
+    "No-matching UID ps returned header only and exit1; independent full numeric ps/pidof confirmed absence, not an Android test failure",
+    "Intermediate old numeric PID directory present was not assumed to be original process; final absent-marker length/SHA matched independently with CRLF",
+    "Future/registered OS job absence does not prove WorkManager business cancellation",
+    "No AppContainer.close or DB content validation performed"
+  ],
+  "nextStep": "STOP for independent review; no Test update/T06/T03/IME authorized by this process-closure task"
+}

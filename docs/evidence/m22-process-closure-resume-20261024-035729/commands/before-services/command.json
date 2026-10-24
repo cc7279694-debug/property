@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<USB_TARGET_SHA256:e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92>",
+    "shell",
+    "dumpsys activity services com.cooper.lithic.m22verify.debug"
+  ],
+  "startedUtc": "2026-10-24T03:59:15.687564+00:00",
+  "timeoutSeconds": 30,
+  "privacy": "Exact USB serial retained only in ignored control. Filtered full output processed in memory; raw bytes/SHA refer to complete command output.",
+  "exitCode": 0,
+  "endedUtc": "2026-10-24T03:59:15.899441+00:00",
+  "seconds": 0.219,
+  "stdoutBytes": 68,
+  "stdoutSha256": "44009d1664d1b66d17ec4859a9e03642b0125d242c05eac9c101806e2397fb7c",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "selected": {
+    "targetServiceRecords": [],
+    "targetServiceCount": 0,
+    "rawHasActivityManagerServicesHeader": true,
+    "targetLinesOutsideRecords": []
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "source": "ed35deceb82cd1cc04abb50b258e210f8d3e4b61",
+  "originalAuthorizationSource": "fb888d569b65d58babfdcfaefb52f9b771bb4303",
+  "priorBlockedCommit": "ed35deceb82cd1cc04abb50b258e210f8d3e4b61",
+  "evidence": "docs/evidence/m22-process-closure-resume-20261024-035729",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "forceStopAttempts": 0,
+  "priorForceStopAttempts": 0,
+  "testInvocations": 0,
+  "installAttempts": 0,
+  "userReconnectedPhone": true,
+  "userConfirmedNoImportantOperation": true,
+  "confirmationSource": "Direct user answers in current chat",
+  "initialEmptyUidPsExitCode": 1,
+  "initialSupervisorExitCode": 1,
+  "beforeSettings": "MODEL=23127PN0CC\nAPI=36\nABI=arm64-v8a\nBOOT=a9edfd47-8cb5-40a5-92eb-c41925ab00ea\nMEMORY\nMemAvailable:    5868364 kB\nSTORAGE\nFilesystem       1K-blocks      Used Available Use% Mounted on\n/dev/block/dm-77 503363564 329962624 173269868  66% /data/user/0\nBATTERY\n  level: 85\n  scale: 100\n  temperature: 320\n  Capacity level: -1\nFONT=1.1\nDENSITY\nPhysical density: 480\nDISPLAY\nPhysical size: 1200x2670\nAIRPLANE=0\nWIFI=1\nMOBILE_DATA=0\nNIGHT=0\nM22_CLOSURE_SETTINGS_END\n",
+  "beforePackages": {
+    "oldM10": {
+      "package": "com.cooper.lithic.debug",
+      "uid": 10376,
+      "sha256": "939b3b20d3c6cd02c800f320ccddc300736b75084b609c404f38b096270f7094",
+      "identity": "Packages:\n  Package [com.cooper.lithic.debug] (b434ff6):\n    appId=10376\n    versionCode=8 minSdk=26 targetSdk=36\n    versionName=0.1.0-m10-debug\n    User 0: ceDataInode=5096317 deDataInode=4975728 installed=true hidden=false suspended=false distractionFlags=0 stopped=false notLaunched=false enabled=0 instant=false virtual=false quarantined=false\n      dataDir=/data/user/0/com.cooper.lithic.debug\n      dataDir=null\n",
+      "path": "package:/data/app/~~G-M02B65Y6h8qQ8BJI0SAQ==/com.cooper.lithic.debug-1NnY4TdbqAnxobxw9mfRng==/base.apk"
+    },
+    "app": {
+      "package": "com.cooper.lithic.m22verify.debug",
+      "uid": 10420,
+      "sha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3",
+      "identity": "Packages:\n  Package [com.cooper.lithic.m22verify.debug] (cf9d37e):\n    appId=10420\n    versionCode=17 minSdk=26 targetSdk=36\n    versionName=0.1.0-m22-debug\n    User 0: ceDataInode=5000594 deDataInode=4941009 installed=true hidden=false suspended=false distractionFlags=0 stopped=true notLaunched=false enabled=0 instant=false virtual=false quarantined=false\n      dataDir=/data/user/0/com.cooper.lithic.m22verify.debug\n      dataDir=null\n",
+      "path": "package:/data/app/~~SFQFCbSl0hWZPnuQBZZJlQ==/com.cooper.lithic.m22verify.debug-o8cYKk9cinYwIYURJhQqNQ==/base.apk"
+    },
+    "test": {
+      "package": "com.cooper.lithic.m22verify.debug.test",
+      "uid": 10427,
+      "sha256": "c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f",
+      "identity": "Packages:\n  Package [com.cooper.lithic.m22verify.debug.test] (3af21cc):\n    appId=10427\n    versionCode=0 minSdk=26 targetSdk=36\n    versionName=null\n    User 0: ceDataInode=5210006 deDataInode=5210132 installed=true hidden=false suspended=false distractionFlags=0 stopped=true notLaunched=true enabled=0 instant=false virtual=false quarantined=false\n      dataDir=/data/user/0/com.cooper.lithic.m22verify.debug.test\n      dataDir=null\n",
+      "path": "package:/data/app/~~bTnUXy6S72erUJ4yhS5MMQ==/com.cooper.lithic.m22verify.debug.test-xX0c_sCJ6iVkiaizvDb8ZQ==/base.apk"
+    }
+  },
+  "independentProcesses": {
+    "headerVerified": true,
+    "targetRows": [],
+    "unrelatedNamesNotArchived": true
+  },
+  "pidofProof": "M22_PIDOF_BEGIN\nAPP_PIDOF_EXIT=1\nTEST_PIDOF_EXIT=1\nM22_PIDOF_END\n",
+  "oldPidProof": "M22_OLD_PID_CHECK_BEGIN\n10420\nOLD_PID_DIRECTORY_ABSENT\nOLD_FD_DIRECTORY_ABSENT\nM22_OLD_PID_CHECK_END\n",
+  "beforeStore": "M22_DEFAULT_METADATA_BEGIN\n10420\n/data/user/0/com.cooper.lithic.m22verify.debug/no_backup\nMETA=no_backup/active-generation|10420|10420|5135002|104|1792752637|8180\nMETA=no_backup/androidx.work.workdb|10420|10420|5164660|106496|1792752637|81b0\nMETA=no_backup/androidx.work.workdb-wal|10420|10420|5156508|444992|1792752637|8180\nMETA=no_backup/androidx.work.workdb-shm|10420|10420|5154359|32768|1792752636|8180\nDIR=no_backup/generations/919ab3ee-2a7e-4988-8d65-5641a7ddcf2b|10420|10420|5205140|3452|1792752637|41c0\nMETA=no_backup/generations/919ab3ee-2a7e-4988-8d65-5641a7ddcf2b/data.db|10420|10420|5148231|4096|1792752636|81b0\nMETA=no_backup/generations/919ab3ee-2a7e-4988-8d65-5641a7ddcf2b/data.db-wal|10420|10420|5146392|210152|1792752636|8180\nMETA=no_backup/generations/919ab3ee-2a7e-4988-8d65-5641a7ddcf2b/data.db-shm|10420|10420|5145565|32768|1792752636|8180\nMETA=no_backup/generations/919ab3ee-2a7e-4988-8d65-5641a7ddcf2b/settings.preferences_pb|10420|10420|5142589|35|1792752637|8180\nMETA=no_backup/generations/919ab3ee-2a7e-4988-8d65-5641a7ddcf2b/ready.json|10420|10420|5141669|73|1792752637|8180\nM22_DEFAULT_METADATA_END\n",
+  "foreground": {
+    "recognizedForegroundMarkers": 2,
+    "targetForeground": false,
+    "targetMarkers": [],
+    "unrelatedAppIdentitiesNotArchived": true
+  },
+  "services": {
+    "targetServiceRecords": [],
+    "targetServiceCount": 0,
+    "rawHasActivityManagerServicesHeader": true,
+    "targetLinesOutsideRecords": []
+  },
+  "jobs": {
+    "completeRawOutputProcessedInMemory": true,
+    "lineCount": 3639,
+    "topLevelHeadings": [
+      {
+        "line": 0,
+        "text": "Settings:"
+      },
+      {
+        "line": 124,
+        "text": "Aconfig flags:"
+      },
+      {
+        "line": 134,
+        "text": "Thermal status: 0"
+      },
+      {
+        "line": 136,
+        "text": "CountQuotaTracker:"
+      },
+      {
+        "line": 968,
+        "text": "Power connected: true"
+      },
+      {
+        "line": 969,
+        "text": "Battery charging: false"
+      },
+      {
+        "line": 970,
+        "text": "Considered charging: false"
+      },
+      {
+        "line": 971,
+        "text": "Battery level: 85"
+      },
+      {
+        "line": 972,
+        "text": "Battery not low: true"
+      },
+      {
+        "line": 974,
+        "text": "Started users: [0, 999]"
+      },
+      {
+        "line": 976,
+        "text": "Media Cloud Providers: {}"
+      },
+      {
+        "line": 978,
+        "text": "Registered 261 jobs:"
+      },
+      {
+        "line": 981,
+        "text": "PrefetchController:"
+      },
+      {
+        "line": 988,
+        "text": "FlexibilityController:"
+      },
+      {
+        "line": 1347,
+        "text": "ConnectivityController:"
+      },
+      {
+        "line": 1477,
+        "text": "TimeController:"
+      },
+      {
+        "line": 1484,
+        "text": "IdleController:"
+      },
+      {
+        "line": 1497,
+        "text": "BatteryController:"
+      },
+      {
+        "line": 1501,
+        "text": "StorageController:"
+      },
+      {
+        "line": 1506,
+        "text": "BackgroundJobsController:"
+      },
+      {
+        "line": 3129,
+        "text": "ComponentController:"
+      },
+      {
+        "line": 3347,
+        "text": "SsruController:"
+      },
+      {
+        "line": 3422,
+        "text": "Uid proc states:"
+      },
+      {
+        "line": 3425,
+        "text": "Cached UID->package map:"
+      },
+      {
+        "line": 3428,
+        "text": "Historical stats at 2026-10-24-01-02-47 (-10h56m28s291ms) over +30m28s894ms:"
+      },
+      {
+        "line": 3432,
+        "text": "Historical stats at 2026-10-24-00-32-47 (-11h26m28s541ms) over +30m0s251ms:"
+      },
+      {
+        "line": 3436,
+        "text": "Historical stats at 2026-10-24-00-02-47 (-11h56m28s791ms) over +30m0s250ms:"
+      },
+      {
+        "line": 3440,
+        "text": "Historical stats at 2026-10-23-23-32-46 (-12h26m28s970ms) over +30m0s178ms:"
+      },
+      {
+        "line": 3444,
+        "text": "Current stats at 2026-10-24-04-41-08 (-7h18m7s158ms) over +47m48s926ms:"
+      },
+      {
+        "line": 3450,
+        "text": "Pending queue:"
+      },
+      {
+        "line": 3453,
+        "text": "Active jobs:"
+      },
+      {
+        "line": 3456,
+        "text": "Idle contexts (16):"
+      },
+      {
+        "line": 3474,
+        "text": "Recently completed jobs:"
+      },
+      {
+        "line": 3479,
+        "text": "Concurrency:"
+      },
+      {
+        "line": 3637,
+        "text": "PersistStats: FirstLoad: 147/48/12 LastSave: 15/0/0"
+      }
+    ],
+    "registeredTargetBlocks": [],
+    "targetMatchingLines": [
+      "    <0>com.cooper.lithic.m22verify.debug::timeout-reg:",
+      "    <0>com.cooper.lithic.m22verify.debug::.schedulePersisted():",
+      "    <0>com.cooper.lithic.m22verify.debug::anr:",
+      "    <0>com.cooper.lithic.m22verify.debug::timeout-total:",
+      "    10420:com.cooper.lithic.m22verify.debug=false",
+      "    Timer<REG>{<0>com.cooper.lithic.m22verify.debug} NOT active, 0 running bg jobs",
+      "    TopAppTimer{<0>com.cooper.lithic.m22verify.debug} NOT active",
+      "      <0>com.cooper.lithic.m22verify.debug",
+      "      <0>com.cooper.lithic.m22verify.debug: ShrinkableDebits { debit tally: 0, bucket: 3 }",
+      "  0-ComponentInfo{com.cooper.lithic.m22verify.debug/androidx.work.impl.background.systemjob.SystemJobService}: com.cooper.lithic.m22verify.debug",
+      "  10420: {com.cooper.lithic.m22verify.debug}"
+    ],
+    "sections": {
+      "Pending queue:": {
+        "startLine": 3450,
+        "endLineExclusive": 3453,
+        "sectionUtf8Bytes": 22,
+        "sectionSha256": "116f272d4c1130528cbb8c28db249f142f4d15b4071d9b989dda204d364fff2d",
+        "targetMatchingLines": [],
+        "nonemptyBodyLines": 1,
+        "bodyIndentPrefixes": [
+          "  "
+        ]
+      },
+      "Active jobs:": {
+        "startLine": 3453,
+        "endLineExclusive": 3456,
+        "sectionUtf8Bytes": 19,
+        "sectionSha256": "36e78ec59d39c60e58f7e4f53e06964393ed32c064593e8f090c4a601cbae827",
+        "targetMatchingLines": [],
+        "nonemptyBodyLines": 1,
+        "bodyIndentPrefixes": [
+          "  "
+        ]
+      }
+    },
+    "parseStatus": "OBSERVATION_PENDING_MANUAL_FORMAT_REVIEW",
+    "privacy": "Only target blocks and redacted structural metadata retained; unrelated jobs not archived"
+  },
+  "processClassification": "ALREADY_STOPPED_OBSERVED_BEFORE_ANY_STOP"
+}

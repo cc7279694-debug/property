@@ -1,0 +1,13 @@
+{
+  "sourceCommand": "commands/final-old-pid-identity/command.json",
+  "kind": "OFFLINE_EXACT_PUBLIC_MARKER_LITERAL_MATCH_AGAINST_ORIGINAL_BYTE_LENGTH_AND_SHA",
+  "matchedLiteral": "M22_PID_IDENTITY_BEGIN\r\nOLD_PID_ABSENT\r\nM22_PID_IDENTITY_END\r\n",
+  "bytes": 62,
+  "sha256": "800033dae78cb3865f921dfae2c3b78d34594f725eb486b921440247c637415a",
+  "originalSelectionErrorPreserved": "",
+  "explanation": "Original in-memory selector failed because it expected LF-only markers. Raw output was not archived; this explicit public literal matches the original full-output length and SHA. No new device command or fabricated original stdout file.",
+  "intermediateShellObservation": "OLD_PID_DIRECTORY_PRESENT_AND_OLD_FD_DIRECTORY_PRESENT",
+  "intermediateCause": "UNKNOWN_PID_REUSE_OR_VISIBILITY_OR_SAMPLING_DIFFERENCE_NOT_PROVEN",
+  "finalObservedMarker": "OLD_PID_ABSENT",
+  "doesNotProveNormalOwnerClose": true
+}
