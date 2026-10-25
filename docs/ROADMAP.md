@@ -78,3 +78,7 @@
 | M22～M23 | 以实际批准变化为准 | 有变化就显式迁移 | 不通过漏字段或破坏性回退规避迁移 |
 
 进度只在 [CURRENT_STATE.md](CURRENT_STATE.md)维护。所有规格问题在进入受影响模块前处理；变更先登记 [DECISIONS.md](DECISIONS.md)。
+
+## V1产品完善（2026-10-25用户决策）
+
+独立分支`codex/lithic-v1-product-completion`的P01为 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，见[产品记录](planning/LITHIC-V1-PRODUCT-COMPLETION.md)与[P01验证](evidence/LITHIC-P01-Core-Experience.md)。P02浏览/回看、P03设置、P04集中真实体验仅为建议/未实施；本轮无设备操作。原M22仍BLOCKED / CHANGES REQUIRED、剩余验收DEFERRED，不用产品完善替代原门禁或自动进入M23，历史冻结和延期结论不改。

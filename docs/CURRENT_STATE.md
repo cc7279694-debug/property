@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-10-24（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-25（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **P01 — IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；V1产品完善**：用户授权从M22来源`b9e77b3ff364be4bdade79803d0aca2f607c7bd5`创建`codex/lithic-v1-product-completion`，先持续开发主要产品功能，再集中体验。首页主金额/分类小计与真实状态、项目表单/结果提示、订阅周期/预付/提醒/状态说明已实施；不改Room5/backup4、冻结引擎、写入/Owner或导航协议。最终105唯一JVM PASS、12新增Compose方法仅编译/运行NOT_RUN，Debug构建/AndroidTest源码编译exit0，Lint0错误17警告。默认Debug/Release配置、原Debug证书及Private Trial配置不变；不安装、不交付新体验APK。旧本地体验APK原输出位置NOT_AVAILABLE，未擅自重建，两份原M22隔离APK SHA仍一致；设备/私人数据操作0。见[P01报告](evidence/LITHIC-P01-Core-Experience.md)、[P01～P04记录](planning/LITHIC-V1-PRODUCT-COMPLETION.md)。M22仍BLOCKED / CHANGES REQUIRED、剩余验收DEFERRED，所有历史失败/UNKNOWN/NOT_RUN与受保护现场保持；不等于正式验收或发行通过。
 
 - **PRIVATE TRIAL DELIVERY — WITH KNOWN RISKS；个人体验版可交付，M22验收延期**：用户2026-10-24明确停止重复验收循环，从`3c3e293cb04e92295a4442acd451326ed36028e9`保留当前产品功能，独立`com.cooper.lithic.preview.debug` / “砺石·体验版” / code17、0.1.0-preview.1-debug。仅新增Gradle开关与标签覆盖；App离线构建exit0、385.844秒，实际Manifest/DEX/原Debug签名核验通过，APK SHA `8138bfbebfaf4580cc71bcc1aabe8a0a50505c2262260b99747eea351183a7fa`。正常LithicApplication/MainActivity、独立Provider，无sharedUserId/Instrumentation/INTERNET；默认Debug/Release配置与原4份本地APK字节不变，Room5/backup4/冻结业务源码不改。未构建Test/Release，未运行Lint/JVM/Android或任何ADB/设备/安装/个人数据操作；运行和实际UID仍NOT_RUN。仅复用既有Debug签名，不生成新密钥，后续同包同证书递增版本。详见[个人交付说明、APK本地路径和风险](evidence/LITHIC-Private-Trial-Delivery.md)、[产物审计](evidence/lithic-private-trial-20261024-104836/artifact-audit.json)。**M22仍BLOCKED / CHANGES REQUIRED，T06/T03/系统IME等剩余验收DEFERRED**；下列原失败/UNKNOWN及全部M10/M13-T06/M20/Q03/Q04/G1/G2/G3状态和保留现场不变。只交付READY_FOR_DELIVERY — LITHIC PRIVATE TRIAL，不冻结、不自动续测或进入M23，用户自行选择安装。
 
@@ -115,11 +117,11 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Git
 
-- 当前功能分支`codex/m22-experience-accessibility`；工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`。起点本地/远端M21冻结登记`a367b278bb3186cf6a8f5afdcf7f843e688fbce2`、工作区干净；不修改原M10目录。
+- 当前功能分支`codex/lithic-v1-product-completion`，来源`b9e77b3ff364be4bdade79803d0aca2f607c7bd5`；M22原分支保留。工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`；不修改原M10目录或任何设备。
 - 仅提交推送本模块代码/测试/文档，最终远端及工作区状态以Git回执为准；不合并main，不配置正式签名。
 
 ## Next Recommended Task
 
-先独立审查[本轮T06准入阻塞](evidence/M22-T06-Physical-Verification.md)：过滤和独立全量JobScheduler的Active实际均N/A，当前无法证明活动状态，不能由进程/Registered/Pending为空绕过，也不宣称有活动Worker。新Test桌面身份通过但安装/方法执行均0、未请求断网。需先明确可复核的平台Active证据或独立确认的准入口径，不能自行修改空值规则、扩建工具或自动重试。此前[ALREADY_STOPPED观察](evidence/M22-Physical-Process-Closure.md#2026-10-24-手机重新连接后的限定续接)保留原时点，不回写本轮状态；历史Owner正常关闭未证明、账本未读、WorkManager业务终结UNKNOWN保持。当前已安装Test仍c379…037f，新12e…ae26未安装；T06/T03/真实IME继续NOT_RUN。不改变360dp、系统200%字体、原业务断言或120秒预算。
+建议按[P02代码缺口](evidence/LITHIC-P01-Core-Experience.md#p02实际缺口与建议顺序)处理回看两类型摘要及现有消息/列表/历史/搜索的状态一致性；P03再补原V1设置中的计算说明/关于和数据带走反馈。P02～P04尚未实施，本次只完成P01，用户无需立即安装或验收。后续集中真实验证需要届时明确设备授权，不自动续跑M22-T06/T03/IME、处理旧Owner/Job或进入M23。
 
-本轮提交推送后停止，等待ChatGPT独立复验。**BLOCKED — SYSTEMUI HEALTH GATE**：全新空API36在安装砺石之前同样出现SystemUI ANR，记录的直接超时点是SystemUIService waited20001ms，根因UNKNOWN；不能只认定是旧userdata、内存不足或M22产品问题。T06/正式20年T03/真实IME均未取得新执行结果。新5714额度已用完且正常关闭、AVD保留；旧5712/29锁/截图和所有历史现场不动，未经新授权不再创建/启动、替换环境、修复系统或清理。M10/M13-T06/M20/Q03/Q04/Q02/G1/G2/G3及全部历史边界保持。
+个人体验版安装身份仍独立，同ID/同证书递增版本要求保留；原本地code17交付APK缺失是已记录的产物限制，不能把本轮普通研发Debug当作体验版更新。所有M10/M13-T06/M20/Q03/Q04/G1/G2/G3、发行签名和历史设备边界保持。

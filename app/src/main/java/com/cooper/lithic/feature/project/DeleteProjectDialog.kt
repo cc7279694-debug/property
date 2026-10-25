@@ -39,7 +39,9 @@ internal fun DeleteProjectDialog(
                 if (state.loading) Text("正在核对项目与金额记录", style = MaterialTheme.typography.bodyLarge)
                 if (state.busy) Text("正在删除本地记录", style = MaterialTheme.typography.bodyLarge)
                 state.message?.let {
-                    Text(it, Modifier.testTag("project-delete-message"), color = MaterialTheme.colorScheme.error,
+                    Text(it, Modifier.testTag("project-delete-message"),
+                        color = if (state.phase == SubmissionPhase.COMMITTED) MaterialTheme.colorScheme.onSurfaceVariant
+                            else MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.bodyLarge)
                 }
                 if (state.phase == SubmissionPhase.UNCONFIRMED && !state.conflict) {

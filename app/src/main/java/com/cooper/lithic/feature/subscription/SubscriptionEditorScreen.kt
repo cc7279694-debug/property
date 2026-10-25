@@ -11,6 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -22,6 +23,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.error as semanticsError
 import androidx.compose.ui.semantics.heading
@@ -94,27 +96,38 @@ internal fun SubscriptionPaymentFields(
         error = state.errors["amount"], enabled = state.canEdit)
     Text("仅记录已实际付款，金额必须大于0元。免费期不生成付费记录。",
         style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-    Text("固定付费周期：${billingCycleLabel(state.cycle)}（当前选择）", style = MaterialTheme.typography.bodyLarge)
+    Text("固定付费周期：${billingCycleLabel(state.cycle)}（当前选择）", style = MaterialTheme.typography.bodyLarge,
+        modifier = Modifier.testTag("$prefix-cycle-selection"))
     BillingCycle.entries.forEach { cycle ->
+        val isSelected = state.cycle == cycle
         OutlinedButton(onClick = { onCycleChange(cycle) }, enabled = state.canEdit,
+            colors = ButtonDefaults.outlinedButtonColors(
+                containerColor = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
+                contentColor = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.primary),
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-cycle-${cycle.name}")
-                .semantics { selected = state.cycle == cycle }) {
-            Text("${billingCycleLabel(cycle)}（折算${cycle.standardDays}天）", style = MaterialTheme.typography.bodyLarge)
+                .semantics { selected = isSelected }) {
+            Text("${if (isSelected) "已选 · " else ""}${billingCycleLabel(cycle)}（折算${cycle.standardDays}天）",
+                style = MaterialTheme.typography.bodyLarge)
         }
     }
+    Text("30、90、365天是成本折算口径，不代表已经使用的天数；请按实际服务核对下面的覆盖日期。",
+        Modifier.testTag("$prefix-cycle-explanation"), style = MaterialTheme.typography.bodyMedium,
+        color = MaterialTheme.colorScheme.onSurfaceVariant)
     state.errors["cycle"]?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium) }
     PaymentDate(state.paidOn, onPaidOnChange, state.today, "真实付款日期", "$prefix-paid-on",
         state.errors["paidOn"], state.canEdit)
     Text("实际已完成付款的日期，不能晚于记录时区的今天。", style = MaterialTheme.typography.bodyMedium)
     PaymentDate(state.effectiveFrom, onEffectiveFromChange, state.today, "实际生效日期", "$prefix-effective-from",
         state.errors["effectiveFrom"], state.canEdit)
-    Text("这笔付款对应的真实服务覆盖起点，可以晚于付款日期。", style = MaterialTheme.typography.bodyMedium)
+    Text("这笔付款对应的真实服务覆盖起点，可以晚于付款日期。预付未来周期要到生效日才影响当前套餐。",
+        Modifier.testTag("$prefix-effective-explanation"), style = MaterialTheme.typography.bodyMedium)
     PaymentDate(state.paidUntilExclusive, onPaidUntilChange, state.today, "付费到期边界（当天不包含）", "$prefix-paid-until",
         state.errors["paidUntilExclusive"], state.canEdit)
     Text("付费到期边界当天不包含在前一期。", style = MaterialTheme.typography.bodyMedium)
     PaymentDate(state.reminderDueOn, onReminderDueChange, state.today, "提醒到期日", "$prefix-reminder-due",
         state.errors["reminderDueOn"], state.canEdit)
-    Text("提醒到期日独立记录；当前仅保存日期，不发送提醒。", style = MaterialTheme.typography.bodyMedium,
+    Text("提醒到期日独立于付费覆盖，修改它不会延长服务。在“设置”开启续费提醒并允许系统通知后，应用会依据此日期尽力提醒，不保证准点；这不代表服务商已经扣款。",
+        Modifier.testTag("$prefix-reminder-explanation"), style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurfaceVariant)
 }
 
@@ -143,6 +156,8 @@ internal fun SubscriptionPaymentActions(
                 Modifier.fillMaxWidth().testTag("$prefix-cannot-write"), style = MaterialTheme.typography.bodyLarge)
         }
         state.phase == SubmissionPhase.COMMITTED -> {
+            Text("付款已确认保存。下面只重新读取结果，不会再记录一笔付款。",
+                Modifier.testTag("$prefix-payment-saved"), style = MaterialTheme.typography.bodyLarge)
             if (state.message == null) Text("已保存，暂时无法读取。请重试读取，不必重新付款。", style = MaterialTheme.typography.bodyMedium)
             Button(onRetryRead, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-retry-read"),
                 enabled = !state.loading && !state.busy) { Text(if (state.conflict) "核对当前事实并安全返回" else "重新读取已保存订阅", style = MaterialTheme.typography.bodyLarge) }
@@ -158,7 +173,8 @@ internal fun SubscriptionPaymentActions(
         }
         else -> {
             if (state.phase == SubmissionPhase.UNCONFIRMED) Text(
-                "付款记录是否保存尚未确认；核对并重试会重放同一笔记录。", style = MaterialTheme.typography.bodyLarge)
+                "付款记录是否保存尚未确认；核对并重试会重放同一笔记录。请勿另建订阅或再记一笔付款。",
+                Modifier.testTag("$prefix-payment-unconfirmed"), style = MaterialTheme.typography.bodyLarge)
             Button(onConfirmPayment, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-confirm-payment"),
                 enabled = !state.loading && !state.busy) {
                 Text(if (state.phase == SubmissionPhase.UNCONFIRMED) "核对并重试同一付款" else confirmLabel,

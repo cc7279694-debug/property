@@ -110,7 +110,7 @@ internal fun LifecycleFormActions(
         Text(it, Modifier.fillMaxWidth().testTag("$tag-form-error"),
             color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyLarge)
     }
-    if (phase == SubmissionPhase.IN_FLIGHT) Text("正在保存到本地", style = MaterialTheme.typography.bodyLarge)
+    ProjectSubmissionNotice(phase, tag)
     when {
         phase == SubmissionPhase.COMMITTED -> Button(onRetryRead,
             Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$tag-retry-read"), enabled = !loading) {

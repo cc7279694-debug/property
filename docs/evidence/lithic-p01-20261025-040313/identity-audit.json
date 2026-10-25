@@ -1,0 +1,85 @@
+{
+  "default": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "defaultMatchesCommittedBaseline": true,
+  "privateProfile": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build\\private-trial",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.preview.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-preview.1-debug",
+        "manifest": "src\\privateTrial\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-preview.1",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "existingM22IsolatedArtifactsUnchanged": {
+    "app/build/m22-device-verification/outputs/apk/debug/app-debug.apk": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3",
+    "app/build/m22-device-verification/outputs/apk/androidTest/debug/app-debug-androidTest.apk": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26"
+  },
+  "previousPreviewArtifact": {
+    "status": "NOT_AVAILABLE",
+    "historicalSha256": "8138bfbebfaf4580cc71bcc1aabe8a0a50505c2262260b99747eea351183a7fa",
+    "replacementAttempted": false
+  },
+  "debugDevelopmentApk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 13988383,
+    "sha256": "bf72bdb030db5bf42cfe9c17324b5cd7d97d4b7d48ec75bcf1568a0beb28c84e",
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9"
+  },
+  "normalApplicationManifestVerified": true,
+  "internetPermission": false,
+  "newSigningKeys": 0,
+  "deviceOperations": 0,
+  "installationAndRuntime": "NOT_RUN",
+  "newPrivateTrialApkDelivered": false,
+  "oldLiteralTestTagsRetained": {
+    "app/src/main/java/com/cooper/lithic/feature/home/HomeShell.kt": 13,
+    "app/src/main/java/com/cooper/lithic/feature/project/DeleteProjectDialog.kt": 5,
+    "app/src/main/java/com/cooper/lithic/feature/project/EndProjectDialog.kt": 9,
+    "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventEditor.kt": 6,
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt": 22,
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectEditorScreen.kt": 9,
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectHistoryScreen.kt": 7,
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt": 33,
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionEditorScreen.kt": 13,
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionListScreen.kt": 10,
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionStateDialog.kt": 14
+  }
+}

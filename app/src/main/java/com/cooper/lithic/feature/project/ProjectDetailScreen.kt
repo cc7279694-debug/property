@@ -137,6 +137,9 @@ internal fun ProjectDetailScreen(
                 }
             }
             item {
+                Text("结束保留事实供历史查看；删除会永久移除项目及其金额记录。",
+                    Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-lifecycle-explanation"),
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 if (detail.project.endedOn == null) {
                     OutlinedButton(onEnd, Modifier.padding(horizontal = LithicSpacing.medium)
                         .fillMaxWidth().heightIn(min = 48.dp).testTag("project-end")) {

@@ -50,6 +50,8 @@ internal fun SubscriptionStateDialog(state: SubscriptionStateEditorUiState, onBa
             Modifier.testTag("subscription-state-vendor-explanation"), style = MaterialTheme.typography.bodyLarge)
         if (stop) {
             Text("已确认付费的最后边界：${state.fixedStopOn.orEmpty()}。停止日期确认后固定，后续付款不会自动移动它。")
+            Text(if (state.action == "STOP_EARLY") "当前选择：提前停止" else "当前选择：到期后停止",
+                Modifier.testTag("subscription-stop-selection"), style = MaterialTheme.typography.bodyLarge)
             OutlinedButton({ onEarlyStop(false) }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-stop-at-end")
                 .semantics { selected = state.action == "STOP_AT_END" }, enabled = state.canEdit) { Text("到期后停止") }
             OutlinedButton({ onEarlyStop(true) }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-stop-early")
@@ -84,6 +86,13 @@ internal fun SubscriptionStateDialog(state: SubscriptionStateEditorUiState, onBa
         }
         state.message?.let { Text(it, Modifier.testTag("subscription-state-error"), color = MaterialTheme.colorScheme.error) }
         state.errors["form"]?.let { Text(it, Modifier.testTag("subscription-state-form-error"), color = MaterialTheme.colorScheme.error) }
+        // A confirmed readback can include CurrentAbsence; it is not proof that this operation wrote.
+        if (!state.verifiedCannotWrite && !state.lastPayment) {
+            if (state.phase == SubmissionPhase.UNCONFIRMED) Text("保存结果尚未确认，请核对同一提交，不要重新发起另一笔操作。",
+                Modifier.testTag("subscription-state-unconfirmed"), style = MaterialTheme.typography.bodyLarge)
+            if (state.phase == SubmissionPhase.COMMITTED) Text("原提交已转入只读核对；这里只重新读取当前事实，不会再次修改记录。",
+                Modifier.testTag("subscription-state-readback-status"), style = MaterialTheme.typography.bodyLarge)
+        }
         when {
             state.verifiedCannotWrite || state.lastPayment -> Text("已有记录保持原样，请返回后核对。")
             state.phase == SubmissionPhase.COMMITTED || state.conflict || state.needsInitialRead -> Button(onRetryRead,

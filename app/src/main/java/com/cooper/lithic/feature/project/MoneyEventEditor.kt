@@ -54,6 +54,8 @@ internal fun MoneyEventEditor(
                 Text(label, style = MaterialTheme.typography.bodyLarge)
             }
         }
+        Text("本次记录：${if (state.direction == MoneyDirection.OUTLAY) "投入" else "收回"}",
+            Modifier.testTag("money-selected-direction"), style = MaterialTheme.typography.titleMedium)
         AmountField(state.amount, onAmountChange, Modifier.testTag("money-amount"),
             label = "实际金额（元）", error = state.errors["amount"], enabled = state.canEdit)
         Text("填实际发生的正数或0，收回通过上方方向记录。", style = MaterialTheme.typography.bodyMedium,
@@ -67,7 +69,7 @@ internal fun MoneyEventEditor(
             Text(it, Modifier.fillMaxWidth().testTag("money-form-error"),
                 color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyLarge)
         }
-        if (state.busy) Text("正在保存到本地", style = MaterialTheme.typography.bodyLarge)
+        ProjectSubmissionNotice(state.phase, "money")
         if (state.phase == SubmissionPhase.COMMITTED) {
             Button(onRetryRead, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("money-retry-read")) {
                 Text("重新读取已保存项目", style = MaterialTheme.typography.bodyLarge)

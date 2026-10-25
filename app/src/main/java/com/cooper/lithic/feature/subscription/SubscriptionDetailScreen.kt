@@ -119,6 +119,9 @@ internal fun SubscriptionDetailScreen(
                     val enabled = !state.loading && state.error == null
                     Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                         verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+                        Text("暂停、恢复或停止只改变砺石中的记录；取消服务商自动续费需到服务商处操作。",
+                            Modifier.testTag("subscription-detail-vendor-explanation"),
+                            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         when (detail.cost.displayStatus) {
                             SubscriptionDisplayStatus.PAUSED -> OutlinedButton(onResume, Modifier.fillMaxWidth().heightIn(min = 48.dp)
                                 .testTag("subscription-detail-resume"), enabled) { Text("恢复") }
@@ -218,6 +221,9 @@ private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDat
         Text("${billingCycleLabel(renewal.cycle)} · 折算${renewal.standardDays}天", style = MaterialTheme.typography.bodyLarge)
         if (renewal.effectiveFrom.isAfter(asOf)) Text("尚未生效", Modifier.testTag("subscription-renewal-future-${renewal.id}"),
             style = MaterialTheme.typography.bodyLarge)
+        if (renewal.effectiveFrom.isAfter(asOf)) Text("这笔已确认付款用于未来周期，不代表已经使用该段时间。当前套餐以实际生效日期为准。",
+            Modifier.testTag("subscription-renewal-future-explanation-${renewal.id}"),
+            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         Text("实际生效日期：${renewal.effectiveFrom}", style = MaterialTheme.typography.bodyMedium)
         Text("付费到期边界：${renewal.paidUntilExclusive}（当天不包含）", style = MaterialTheme.typography.bodyMedium)
         Text("提醒到期日：${renewal.reminderDueOn}", style = MaterialTheme.typography.bodyMedium)

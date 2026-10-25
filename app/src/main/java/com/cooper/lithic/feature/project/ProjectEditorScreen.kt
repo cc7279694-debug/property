@@ -52,6 +52,8 @@ internal fun ProjectEditorScreen(
         state.today?.let { today ->
             ProjectDateInput(state.startedOn, onStartedOnChange, today, "开始拥有日期", "project-started-on",
                 error = state.errors["startedOn"], enabled = state.canEdit && !state.tradeInProtected)
+            Text("开始拥有日期用于记录持有时间，不代替真实付款日期。",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         if (state.tradeInProtected) Text("此项目参与以旧换新，取得日期与关联金额日期保持一致，不能单独修改。")
         if (state.mode == ProjectEditorMode.CREATE) {
@@ -85,7 +87,7 @@ internal fun ProjectEditorScreen(
                 Text("重新读取项目资料", style = MaterialTheme.typography.bodyLarge)
             }
         }
-        if (state.busy) Text("正在保存到本地", style = MaterialTheme.typography.bodyLarge)
+        ProjectSubmissionNotice(state.phase, "project")
         if (state.phase == SubmissionPhase.COMMITTED) {
             Button(onRetryRead, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("project-retry-read")) {
                 Text("重新读取已保存项目", style = MaterialTheme.typography.bodyLarge)

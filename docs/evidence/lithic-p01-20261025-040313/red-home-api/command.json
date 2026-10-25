@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=2",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest"
+  ],
+  "startedUtc": "2026-10-25T04:03:13.485997+00:00",
+  "timeoutSeconds": 1200,
+  "exitCode": 1,
+  "endedUtc": "2026-10-25T04:08:48.000528+00:00",
+  "seconds": 334.515,
+  "stdoutBytes": 4279,
+  "stdoutSha256": "0c76402f75b9ac56a227e16f090e83dcada8ba41051786600383675876a35c8b",
+  "stderrBytes": 3109,
+  "stderrSha256": "083ee6cc2ea6941b91077965331226bbb02c25c36b38c75d4489a3cd9449982e"
+}

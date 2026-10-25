@@ -774,3 +774,25 @@ M13内部Debug可合成验证，不等于原T06稳定签名/首次真实记录�
 ### Consequences
 
 仍是随对象数及自然日增长的全量计算，协作取消不保证最坏时延。系统200%与LocalDensity、Compose语义与TalkBack、受控文件与SAF、Debug模拟器与Release/真机均分别登记；未观察到真实IME弹出不能据此宣布键盘遮挡通过。实际首轮失败、后续必要修复、最终执行结果以[M22报告](evidence/M22-verification.md)为准。M10延期/三JPEG历史FAIL、M13-T06延期、M20平台FAIL/收口UNKNOWN和全部历史门禁保持；候选不自行冻结或进入M23。
+
+## 2026-10-25 — V1先集中完善产品，人工体验后置
+
+### Decision
+
+从M22已核对来源b9e77b3建立独立产品完善分支，P01只改善现有核心页面与真实状态反馈；先持续开发主要V1功能，最终集中体验。后续P02～P04先记录源码缺口，不提前实施。
+
+### Context
+
+用户明确停止M22反复验收循环，不要求本轮安装或人工操作；既有生产能力继续复用，原M22验收仍BLOCKED，个人风险试用不等于发行准入。
+
+### Alternatives
+
+不重做架构/算法，不扩展新业务、云服务或新Logo，不以P01恢复旧设备实验或生成重复体验包。
+
+### Reason
+
+优先修正金额层级、保存结果/只读核对、日期及提醒说明等实际可确认的问题，避免把已有CurrentAbsence或未确认写入说成操作成功。
+
+### Consequences
+
+保留Room5/backup4与事务、Owner、导航及冻结规则；定向离线门禁和运行NOT_RUN分别登记。P01是IMPLEMENTED / PENDING FINAL PRODUCT REVIEW，不冻结M22/V1。体验版同ID/同证书、下次递增版本的要求保持；本地旧交付APK缺失另行如实记录，不重建其他字节替代；本轮不安装、不触碰私人数据。历史FAIL/UNKNOWN和M10/M13-T06/M20/G1/G2/G3不变。

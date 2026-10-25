@@ -152,3 +152,9 @@ M10 PENDING / DEFERRED/三JPEG历史FAIL、M13-T06 NOT_RUN / DEFERRED、G1/G2未
 用户明确停止M22重复验收循环，批准 **PRIVATE TRIAL DELIVERY — WITH KNOWN RISKS**。当前只用`lithicPrivateTrial=true`交付独立`com.cooper.lithic.preview.debug` / “砺石·体验版”Debug APK，正常LithicApplication/MainActivity；原Debug/Release默认身份和旧APK保留。复用现有本机Debug签名，缺失原签名文件时拒绝自动生成，后续同ID/同证书并递增版本。只做桌面编译和产物审计，**不授权ADB/手机安装、设备操作或个人账本访问**。见[交付说明](docs/evidence/LITHIC-Private-Trial-Delivery.md)。
 
 M22验收仍 **BLOCKED / CHANGES REQUIRED，剩余验收DEFERRED**；不将风险接受改成模块冻结或发行门禁PASS。T06/T03/IME、M10延期三JPEG FAIL、M13-T06延期、M20平台FAIL/UNKNOWN、Q03/Q04/G1/G2/G3及全部历史证据保持；旧设备/手机M10与M22验证现场不操作。用户自行决定是否安装体验版，本轮不迁移、读取或修改既有账本。后续按具体反馈另立小范围修复，不自动续测、合并main或进入M23。
+
+## 2026-10-25 — V1产品完善P01当前授权与停止点
+
+用户从`b9e77b3ff364be4bdade79803d0aca2f607c7bd5`另行授权独立`codex/lithic-v1-product-completion`：先完成现有V1主要产品功能，再集中体验/最终独立验收；不要求用户现在安装或操作App。P01已实现首页、项目/订阅核心页面的呈现与操作说明，实际结果见[P01报告](docs/evidence/LITHIC-P01-Core-Experience.md)，后续建议见[产品记录](docs/planning/LITHIC-V1-PRODUCT-COMPLETION.md)。仅登记 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，不是ACCEPTED/FROZEN；M22仍BLOCKED、剩余验证延期。
+
+Room5/backup4、冻结金额/日期/M16/通知规则、Owner/写入/恢复/导航保护、依赖/Manifest/默认Debug和Release身份不改。105唯一JVM PASS、12新增Compose仅编译/运行NOT_RUN、Debug构建与Lint通过；设备/安装/个人数据操作0。原体验ID/证书/code17配置保持，本轮不交付新体验APK；旧本地体验产物缺失如实登记，不重建冒充。今后交付同ID/同证书且版本严格递增。M10延期三JPEG FAIL、M13-T06、M20平台FAIL/UNKNOWN、旧现场与全部历史门禁保留。只推产品完善分支，不覆盖M22历史分支，不自动执行P02、M23或合并main。

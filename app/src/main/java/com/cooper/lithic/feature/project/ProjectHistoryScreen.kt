@@ -47,6 +47,10 @@ internal fun ProjectHistoryScreen(
                 state.error?.let {
                     Text(it, Modifier.testTag("project-history-error"), style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error)
+                    if (state.items.isNotEmpty()) {
+                        Text("暂时无法刷新，以下为上次读取记录。", Modifier.testTag("project-history-stale"),
+                            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-history-retry")) {
                         Text("重新读取", style = MaterialTheme.typography.bodyLarge)
                     }

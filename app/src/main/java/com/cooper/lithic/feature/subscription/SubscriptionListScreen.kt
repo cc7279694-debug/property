@@ -42,6 +42,9 @@ internal fun SubscriptionListScreen(
                     Text("订阅服务", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
                     Text("最近实际付款在前；已到期的服务仍保留。", style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("暂停和已到期服务仍在这里管理；已停止服务可从“回看 → 历史档案”查看。",
+                        Modifier.testTag("subscription-list-history-explanation"), style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("subscription-list-create")) { Text("新增订阅") }
                     state.totalCount?.let { Text("已录入 $it 条订阅服务", Modifier.testTag("subscription-list-count"),
                         style = MaterialTheme.typography.bodyMedium) }
