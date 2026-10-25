@@ -1,5 +1,6 @@
 package com.cooper.lithic.feature.project
 
+import com.cooper.lithic.core.design.UiMessageTone
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.data.local.CategoryEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
@@ -45,6 +46,7 @@ data class ProjectEditorUiState(
     val conflict: Boolean = false,
     val needsInitialRead: Boolean = false,
     val tradeInProtected: Boolean = false,
+    val messageTone: UiMessageTone = UiMessageTone.ERROR,
 ) {
     val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
     val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE
@@ -101,6 +103,7 @@ data class EndProjectUiState(
     val needsInitialRead: Boolean = false,
     val tradeInProtected: Boolean = false,
     val tradeInDateProtected: Boolean = false,
+    val messageTone: UiMessageTone = UiMessageTone.ERROR,
 ) {
     val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
     val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE
@@ -124,6 +127,7 @@ data class MoneyCorrectionUiState(
     val conflict: Boolean = false,
     val needsInitialRead: Boolean = false,
     val tradeInProtected: Boolean = false,
+    val messageTone: UiMessageTone = UiMessageTone.ERROR,
 ) {
     val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
     val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE
@@ -137,6 +141,7 @@ data class DeleteProjectUiState(
     val message: String? = null,
     val conflict: Boolean = false,
     val needsInitialRead: Boolean = false,
+    val messageTone: UiMessageTone = UiMessageTone.ERROR,
 ) {
     val busy: Boolean get() = phase == SubmissionPhase.IN_FLIGHT
     val canEdit: Boolean get() = !loading && phase == SubmissionPhase.IDLE

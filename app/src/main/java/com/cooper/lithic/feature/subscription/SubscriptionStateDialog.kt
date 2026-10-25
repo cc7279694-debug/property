@@ -21,6 +21,8 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.UiFeedbackText
+import com.cooper.lithic.core.design.UiMessageTone
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.domain.subscription.SubscriptionOperationState
 import com.cooper.lithic.feature.project.ProjectDateInput
@@ -84,17 +86,18 @@ internal fun SubscriptionStateDialog(state: SubscriptionStateEditorUiState, onBa
                 ProjectNoteInput(state.note, onNote, "备注（可选）", "subscription-state-note", state.canEdit, state.errors["note"])
             }
         }
-        state.message?.let { Text(it, Modifier.testTag("subscription-state-error"), color = MaterialTheme.colorScheme.error) }
+        state.message?.let { UiFeedbackText(it, UiMessageTone.ERROR, "subscription-state-error") }
         state.errors["form"]?.let { Text(it, Modifier.testTag("subscription-state-form-error"), color = MaterialTheme.colorScheme.error) }
         // A confirmed readback can include CurrentAbsence; it is not proof that this operation wrote.
         if (!state.verifiedCannotWrite && !state.lastPayment) {
-            if (state.phase == SubmissionPhase.UNCONFIRMED) Text("保存结果尚未确认，请核对同一提交，不要重新发起另一笔操作。",
-                Modifier.testTag("subscription-state-unconfirmed"), style = MaterialTheme.typography.bodyLarge)
-            if (state.phase == SubmissionPhase.COMMITTED) Text("原提交已转入只读核对；这里只重新读取当前事实，不会再次修改记录。",
-                Modifier.testTag("subscription-state-readback-status"), style = MaterialTheme.typography.bodyLarge)
+            if (state.phase == SubmissionPhase.UNCONFIRMED) UiFeedbackText("保存结果尚未确认，请核对同一提交，不要重新发起另一笔操作。",
+                UiMessageTone.WARNING, "subscription-state-unconfirmed")
+            if (state.phase == SubmissionPhase.COMMITTED) UiFeedbackText("原提交已转入只读核对；这里只重新读取当前事实，不会再次修改记录。",
+                UiMessageTone.INFORMATION, "subscription-state-readback-status")
         }
         when {
-            state.verifiedCannotWrite || state.lastPayment -> Text("已有记录保持原样，请返回后核对。")
+            state.verifiedCannotWrite || state.lastPayment -> UiFeedbackText("已有记录保持原样，请返回后核对。",
+                UiMessageTone.WARNING, "subscription-state-readonly-notice")
             state.phase == SubmissionPhase.COMMITTED || state.conflict || state.needsInitialRead -> Button(onRetryRead,
                 Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-state-retry-read"), enabled = !state.loading && !state.busy) {
                 Text(if (state.phase == SubmissionPhase.COMMITTED && state.conflict) "核对当前事实并安全返回"

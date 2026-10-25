@@ -1,0 +1,52 @@
+{
+  "compiledDeclaredMethods": 17,
+  "classes": [
+    {
+      "class": "com.cooper.lithic.feature.review.P02ReviewShellSemanticsTest",
+      "methods": [
+        "subscription_only_summary_reports_both_real_counts_and_history_scope",
+        "two_verified_zero_counts_have_a_distinct_empty_state",
+        "read_notice_qualifies_zero_snapshot_without_inventing_empty_current_data",
+        "all_existing_review_and_history_entries_keep_their_callbacks"
+      ],
+      "compiledClassSha256": "d8dc385d09dbc8be9bada3605ce30d66b61a78c4fb3968052973d6c4c3cca95e",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.P02BrowseListExperienceTest",
+      "methods": [
+        "project_history_unknown_count_is_not_a_confirmed_empty_archive",
+        "project_list_preserves_old_rows_and_does_not_offer_duplicate_busy_reads",
+        "current_project_unknown_and_confirmed_empty_states_remain_distinct",
+        "current_subscription_unknown_count_and_failed_read_are_not_empty",
+        "stopped_subscription_history_keeps_stable_rows_and_busy_page_feedback"
+      ],
+      "compiledClassSha256": "f34c8adf4fc5539f45f82043e2f703865563474457049b78f73cfde81bf6c2fd",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P02SearchExperienceTest",
+      "methods": [
+        "pending_input_does_not_claim_a_successful_zero_match",
+        "verified_empty_result_and_failed_zero_snapshot_are_distinct",
+        "loading_a_retained_snapshot_labels_it_and_blocks_duplicate_retry"
+      ],
+      "compiledClassSha256": "bfa7073a84fa9883d93f7a1f0da18a308d544f7218864bd1bc4568d28cbc830e",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.P02FeedbackSemanticsTest",
+      "methods": [
+        "typed_read_information_and_identical_untyped_text_have_different_severity",
+        "unconfirmed_warning_does_not_downgrade_original_error_or_unlock_fields",
+        "committed_payment_loading_is_not_reported_as_read_failure_and_real_error_stays_error",
+        "committed_state_readback_keeps_absence_context_without_claiming_this_call_saved",
+        "committed_delete_readback_error_is_not_downgraded_by_the_phase"
+      ],
+      "compiledClassSha256": "faeab9415a8022564e3e3aff55c7d1bf45df6ef51c07dc6842f291d71aa7b343",
+      "runtime": "NOT_RUN"
+    }
+  ],
+  "runtime": "NOT_RUN",
+  "deviceOperations": 0
+}

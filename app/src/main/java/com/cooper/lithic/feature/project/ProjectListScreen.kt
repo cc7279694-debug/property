@@ -49,6 +49,11 @@ internal fun ProjectListScreen(
                         Text("新增长期项目", style = MaterialTheme.typography.bodyLarge)
                     }
                     state.totalCount?.let { Text("当前列表 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
+                    if (state.totalCount != null && state.items.isEmpty() &&
+                        (state.loading || state.loadingMore || state.error != null)) {
+                        Text("数量为上次读取结果，尚不能确认当前列表为空。", Modifier.testTag("project-list-count-snapshot"),
+                            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
                     state.error?.let {
                         Text(it, Modifier.testTag("project-list-error"), style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.error)
@@ -56,15 +61,29 @@ internal fun ProjectListScreen(
                             Text("暂时无法刷新，以下为上次读取记录。", Modifier.testTag("project-list-stale"),
                                 style = MaterialTheme.typography.bodyMedium)
                         }
-                        TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-list-retry")) {
+                        TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-list-retry"),
+                            enabled = !state.loading && !state.loadingMore) {
                             Text("重新读取", style = MaterialTheme.typography.bodyLarge)
                         }
                     }
                 }
             }
             if (state.loading) item { Text("正在读取长期项目", Modifier.padding(LithicSpacing.medium)) }
-            if (!state.loading && state.error == null && state.totalCount == 0L && state.items.isEmpty()) {
-                item { Text("暂无长期项目", Modifier.padding(LithicSpacing.medium), style = MaterialTheme.typography.bodyLarge) }
+            if (!state.loading && state.error == null && state.totalCount == null && state.items.isEmpty()) item {
+                Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium)) {
+                    Text("尚未取得长期项目记录，请重新读取；这不表示没有记录。",
+                        Modifier.testTag("project-list-unavailable"), style = MaterialTheme.typography.bodyLarge)
+                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-list-retry"),
+                        enabled = !state.loadingMore) { Text("重新读取", style = MaterialTheme.typography.bodyLarge) }
+                }
+            }
+            if (state.error == null && (state.loading || state.loadingMore) && state.items.isNotEmpty()) item {
+                Text("正在读取；数量和下方记录仍为上次读取结果。",
+                    Modifier.padding(LithicSpacing.medium).testTag("project-list-refreshing-snapshot"),
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            if (!state.loading && !state.loadingMore && state.error == null && state.totalCount == 0L && state.items.isEmpty()) {
+                item { Text("暂无长期项目", Modifier.padding(LithicSpacing.medium).testTag("project-list-empty"), style = MaterialTheme.typography.bodyLarge) }
             }
             items(state.items, key = { it.project.id }) { detail ->
                 val dates = "开始：${detail.project.startedOn}" +
@@ -73,6 +92,14 @@ internal fun ProjectListScreen(
                 EntryCard(detail.project.name, projectStatusLabel(detail), dates, detail.cost.dailyRate,
                     Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-row-${detail.project.id}"),
                     onClick = { onOpenProject(detail.project.id) })
+            }
+            if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
+                Text(when {
+                    state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
+                    state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
+                    else -> "已显示 ${state.items.size} 条，已到列表末尾"
+                }, Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-list-page-status"),
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             if (state.hasMore) item {
                 Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium)

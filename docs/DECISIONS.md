@@ -796,3 +796,25 @@ M13内部Debug可合成验证，不等于原T06稳定签名/首次真实记录�
 ### Consequences
 
 保留Room5/backup4与事务、Owner、导航及冻结规则；定向离线门禁和运行NOT_RUN分别登记。P01是IMPLEMENTED / PENDING FINAL PRODUCT REVIEW，不冻结M22/V1。体验版同ID/同证书、下次递增版本的要求保持；本地旧交付APK缺失另行如实记录，不重建其他字节替代；本轮不安装、不触碰私人数据。历史FAIL/UNKNOWN和M10/M13-T06/M20/G1/G2/G3不变。
+
+## 2026-10-25 — P02保留浏览上下文，消息级别与写入资格分离
+
+### Decision
+
+复用Ready计数与现有查询、NavKey/规范路由、UI phase；在已验证记录路径外围保留搜索/自定义类别父级，不新增业务origin/数据库字段/搜索引擎。仅扩展订阅已有TREND/CATEGORY/ANNUAL的UI返回值支持。普通/警告/错误以明确源或独立结构化提示呈现，String赋值默认ERROR；不解析中文或把COMMITTED/空消息视为读写成功。
+
+### Context
+
+用户正式授权P02，P01人工验收延期。真实定向RED复现搜索/类别返回与原UI来源不完整；项目成功重读会与错误共用IDLE String，删除确认后也可能发生回读错误。
+
+### Alternatives
+
+不变更冻结Repository/业务状态机、Room5/backup4、事务/Owner/恢复或导航守卫；不引入新缓存、全量排序、自动重试或设备验证。
+
+### Reason
+
+保存用户当前浏览任务，同时保持记录ID、规范tail和旧默认类别锚点兼容。UI提示只能说明已核对的事实，不能替代持久写入/删除证明或降低未知结果的保护。
+
+### Consequences
+
+P02仅IMPLEMENTED / PENDING FINAL PRODUCT REVIEW，纯JVM/编译门禁和Android NOT_RUN分别登记。旧缺失体验包不重造，P04同ID/证书递增版本且独立交付目录；P03仅记录真实设置缺口及M10/M20等风险，不自动实施。历史M22 BLOCKED及其他冻结/延期/NOTES不改。

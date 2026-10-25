@@ -23,12 +23,32 @@ import androidx.compose.ui.unit.dp
 internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onProjectHistory: (() -> Unit)? = null,
     onSubscriptionHistory: (() -> Unit)? = null, onLongTermReview: (() -> Unit)? = null,
     onTotalCostTrend: (() -> Unit)? = null, onCategoryAnalysis: (() -> Unit)? = null,
-    onAnnualReview: (() -> Unit)? = null) {
+    onAnnualReview: (() -> Unit)? = null, subscriptionCount: Long = 0L,
+    hasReadNotice: Boolean = false) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("review-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Text("回看", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
-        Text(if (projectCount == 0L) "暂无长期项目记录" else "已录入 $projectCount 条长期项目（含历史）",
-            style = MaterialTheme.typography.bodyLarge)
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            val summary = reviewRecordSummary(projectCount, subscriptionCount, hasReadNotice)
+            Text(when (summary) {
+                ReviewRecordSummary.EMPTY -> "暂无长期项目或订阅记录"
+                ReviewRecordSummary.RECORDED -> "回看已录入的长期项目和订阅"
+                ReviewRecordSummary.SNAPSHOT_NOTICE -> "以下为已取得的记录快照"
+            }, Modifier.testTag("review-record-summary"), style = MaterialTheme.typography.titleMedium)
+            Text("已录入 $projectCount 条长期项目（含历史）", Modifier.testTag("review-project-count"),
+                style = MaterialTheme.typography.bodyLarge)
+            Text("已录入 $subscriptionCount 条订阅服务（含历史）", Modifier.testTag("review-subscription-count"),
+                style = MaterialTheme.typography.bodyLarge)
+            Text("数量包括当前和历史记录，不等于当前参与日均成本计算的数量。",
+                Modifier.testTag("review-count-scope"), style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (summary == ReviewRecordSummary.SNAPSHOT_NOTICE) Text(
+                "当前有读取或恢复提示，请先查看上方说明；这里仅展示已取得的快照，最新记录需重新核对。",
+                Modifier.testTag("review-record-notice"), style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (summary == ReviewRecordSummary.EMPTY) Text("可先在“现在”添加记录，再回到这里查看。",
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
         HorizontalDivider()
         onCategoryAnalysis?.let { open ->
             OutlinedButton(open, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("review-category-analysis")) {

@@ -47,15 +47,27 @@ internal fun SearchScreen(
                     imeAction = ImeAction.Search, onImeAction = onRetry)
                 Text("同时查找当前与历史记录。仅匹配名称。", style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
-                if (state.loading) Text("正在查找")
+                if (state.loading) Text("正在查找", Modifier.testTag("search-loading"))
                 if (state.query.isBlank()) Text("输入名称开始搜索。", Modifier.testTag("search-empty-query"))
-                else if (!state.loading && state.error == null) {
+                else if (!state.loading && state.error == null && state.hasReadSnapshot) {
                     Text("找到 ${state.totalCount} 条记录", Modifier.testTag("search-result-count"))
+                    if (state.isConfirmedEmptyResult) Text("没有匹配这个名称的项目或订阅，可换个名称再试。",
+                        Modifier.testTag("search-no-results"), style = MaterialTheme.typography.bodyLarge)
+                } else if (!state.loading && state.error == null) {
+                    Text("尚未取得搜索结果，请重新查找。", Modifier.testTag("search-awaiting-read"))
+                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("search-retry")) { Text("查找") }
                 }
+                if (state.hasReadSnapshot && (state.loading || state.error != null)) Text(
+                    if (state.loading) "正在更新；以下为同一搜索条件上次取得的结果，尚未确认是最新结果。"
+                    else "以下为同一搜索条件上次取得的结果，状态可能已变化。",
+                    Modifier.testTag("search-stale"), style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                state.asOf?.let { date -> Text("这批结果的业务日期：$date。状态以该日判断。",
+                    Modifier.testTag("search-as-of"), style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant) }
                 state.error?.let {
                     Text(it, Modifier.testTag("search-error"), color = MaterialTheme.colorScheme.error)
-                    if (state.items.isNotEmpty()) Text("以下为上次读取结果，状态可能已变化。", style = MaterialTheme.typography.bodyMedium)
-                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("search-retry")) { Text("重新查找") }
+                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("search-retry"), enabled = !state.loading) { Text("重新查找") }
                 }
             }
         }
@@ -75,7 +87,11 @@ internal fun SearchScreen(
         }
         if (state.hasMore) item {
             Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium).heightIn(min = 48.dp)
-                .testTag("search-load-more"), enabled = !state.loading) { Text("继续加载") }
+                .testTag("search-load-more"), enabled = !state.loading) { Text(if (state.loading) "正在读取" else "继续加载") }
+        }
+        else if (state.items.isNotEmpty() && !state.loading && state.error == null) item {
+            Text("已到本次结果末尾", Modifier.padding(LithicSpacing.medium).testTag("search-end"),
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }

@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.UiFeedbackText
 import com.cooper.lithic.core.design.LithicSpacing
 
 @Composable
@@ -39,10 +40,8 @@ internal fun DeleteProjectDialog(
                 if (state.loading) Text("正在核对项目与金额记录", style = MaterialTheme.typography.bodyLarge)
                 if (state.busy) Text("正在删除本地记录", style = MaterialTheme.typography.bodyLarge)
                 state.message?.let {
-                    Text(it, Modifier.testTag("project-delete-message"),
-                        color = if (state.phase == SubmissionPhase.COMMITTED) MaterialTheme.colorScheme.onSurfaceVariant
-                            else MaterialTheme.colorScheme.error,
-                        style = MaterialTheme.typography.bodyLarge)
+                    // Readback can fail after a confirmed result; only explicit metadata controls severity.
+                    UiFeedbackText(it, state.messageTone, "project-delete-message")
                 }
                 if (state.phase == SubmissionPhase.UNCONFIRMED && !state.conflict) {
                     Text("删除结果尚未确认。请核对原提交，期间不能改选项目或重复创建删除操作。",

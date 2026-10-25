@@ -158,3 +158,9 @@ M22验收仍 **BLOCKED / CHANGES REQUIRED，剩余验收DEFERRED**；不将风�
 用户从`b9e77b3ff364be4bdade79803d0aca2f607c7bd5`另行授权独立`codex/lithic-v1-product-completion`：先完成现有V1主要产品功能，再集中体验/最终独立验收；不要求用户现在安装或操作App。P01已实现首页、项目/订阅核心页面的呈现与操作说明，实际结果见[P01报告](docs/evidence/LITHIC-P01-Core-Experience.md)，后续建议见[产品记录](docs/planning/LITHIC-V1-PRODUCT-COMPLETION.md)。仅登记 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，不是ACCEPTED/FROZEN；M22仍BLOCKED、剩余验证延期。
 
 Room5/backup4、冻结金额/日期/M16/通知规则、Owner/写入/恢复/导航保护、依赖/Manifest/默认Debug和Release身份不改。105唯一JVM PASS、12新增Compose仅编译/运行NOT_RUN、Debug构建与Lint通过；设备/安装/个人数据操作0。原体验ID/证书/code17配置保持，本轮不交付新体验APK；旧本地体验产物缺失如实登记，不重建冒充。今后交付同ID/同证书且版本严格递增。M10延期三JPEG FAIL、M13-T06、M20平台FAIL/UNKNOWN、旧现场与全部历史门禁保留。只推产品完善分支，不覆盖M22历史分支，不自动执行P02、M23或合并main。
+
+## 2026-10-25 — V1产品完善P02当前授权与停止点
+
+用户正式从P01提交`7bec69e3c82b4a28168e69964df718b1a3e149b7`继续`codex/lithic-v1-product-completion`，覆盖上一时点“不自动P02”。P01桌面实施独立审查PASS WITH NOTES仅限实施证据、人工延期；P02现为 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，见[P02报告](docs/evidence/LITHIC-P02-Browse-Review.md)。实际89唯一JVM PASS，原9方法6断言FAIL已保留并对应GREEN；17新Compose仅编译/NOT_RUN、Debug构建及Lint0错误17警告。无设备/安装/私人账本操作。
+
+只改善两类型回看、列表/搜索状态与返回上下文、来源明确的反馈；Room5/backup4、冻结引擎/查询/业务写入、Owner/恢复、三主入口、默认身份/证书和原断言保持。Project VM仅UI消息元数据，订阅origin仅既有UI返回值，不进入业务命令。旧体验APK仍缺失，不重建冒充；P04才考虑同preview ID/同证书、code至少18、非build目录唯一交付。M22 BLOCKED及M10/M13-T06/M20/Q03/Q04/G1/G2/G3、全部历史现场/FAIL/UNKNOWN保持。仅推当前产品完善分支，不合并main，不自动实施P03或进入M23。

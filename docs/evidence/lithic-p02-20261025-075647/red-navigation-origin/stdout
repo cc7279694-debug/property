@@ -1,0 +1,68 @@
+Starting a Gradle Daemon, 2 busy Daemons could not be reused, use --status for details
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:351:37 Unnecessary safe call on a non-null receiver of type 'ReplacementViewModel'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:530:33 Condition is always 'true'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:727:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:351:37 Unnecessary safe call on a non-null receiver of type 'ReplacementViewModel'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:530:33 Condition is always 'true'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:727:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugJavaRes
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+
+> Task :app:testDebugUnitTest
+
+P02BrowseNavigationTest > selected_subscription_category_retains_its_kind_and_identity FAILED
+    java.lang.AssertionError at P02BrowseNavigationTest.kt:43
+
+P02BrowseNavigationTest > search_project_details_and_editors_keep_the_search_parent FAILED
+    java.lang.AssertionError at P02BrowseNavigationTest.kt:18
+
+P02BrowseNavigationTest > selected_category_survives_a_matching_detail_and_editor_return FAILED
+    java.lang.AssertionError at P02BrowseNavigationTest.kt:37
+
+P02BrowseNavigationTest > search_subscription_details_and_followup_forms_keep_the_search_parent FAILED
+    java.lang.AssertionError at P02BrowseNavigationTest.kt:28
+
+P02SubscriptionBrowseOriginTest > analysis_return_context_survives_a_current_or_stopped_result FAILED
+    org.junit.ComparisonFailure at P02SubscriptionBrowseOriginTest.kt:12
+
+P02SubscriptionBrowseOriginTest > existing_analysis_routes_can_open_the_existing_forms FAILED
+    java.lang.AssertionError at P02SubscriptionBrowseOriginTest.kt:8
+
+> Task :app:testDebugUnitTest FAILED
+26 actionable tasks: 8 executed, 18 up-to-date

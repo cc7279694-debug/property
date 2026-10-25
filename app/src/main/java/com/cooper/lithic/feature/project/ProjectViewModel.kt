@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cooper.lithic.core.design.UiMessageState
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.core.model.MoneyParseError
 import com.cooper.lithic.core.model.MoneyParseResult
@@ -53,7 +54,10 @@ class ProjectViewModel(
     private var form = savedState.get<Bundle>(FORM_KEY)?.let(::Bundle)
     private var categories: List<CategoryEntity> = emptyList()
     private var errors: Map<String, String> = emptyMap()
-    private var message: String? = null
+    private val messageState = UiMessageState()
+    private var message: String?
+        get() = messageState.text
+        set(value) { messageState.text = value }
     private var loadingEditor = false
     private var listRequested = false
     private var historyRequested = false
@@ -430,6 +434,7 @@ class ProjectViewModel(
                         active.remove("verifiedMissing")
                         errors = emptyMap()
                         message = if (kind == "delete") "已读取当前项目及全部金额记录，请重新确认是否删除。" else "已读取当前资料，请重新确认修改后保存。"
+                        messageState.markInformation()
                     }
                 } catch (cancelled: CancellationException) { throw cancelled }
                 catch (_: Exception) { if (sameRequest()) message = "当前记录暂时无法读取，原始提交与输入仍然保留。" }
@@ -537,6 +542,7 @@ class ProjectViewModel(
         form?.putString("phase", SubmissionPhase.COMMITTED.name)
         form?.putBoolean("deleteAbsent", absent)
         message = if (absent) "已核对项目及关联金额记录当前不存在。没有持久删除日志，无法证明是哪次操作删除。" else "项目及其金额记录已删除。"
+        messageState.markInformation()
         if (detailId == projectId) {
             detailVersion += 1
             mutableState.value = state.value.copy(detail = ProjectDetailUiState(loading = false, missing = true))
@@ -615,7 +621,7 @@ class ProjectViewModel(
                 if (active.getString("kind") == "edit") ProjectEditorMode.EDIT else ProjectEditorMode.CREATE,
                 text(active, "projectId"), text(active, "name"), text(active, "startedOn"), text(active, "initialAmount"), text(active, "initialPaidOn"),
                 text(active, "categoryId"), text(active, "note"), categories, clock.today(), phase(), active.getBoolean("dirty"), loadingEditor, errors, message,
-                active.getBoolean("conflict"), needsInitialRead(active), active.getBoolean("tradeInProtected")))
+                active.getBoolean("conflict"), needsInitialRead(active), active.getBoolean("tradeInProtected"), messageTone = messageState.tone))
         } else if (active.getString("kind") in listOf("end", "updateEnd")) {
             next = base.copy(endEditor = EndProjectUiState(
                 projectId = text(active, "projectId"), projectName = text(active, "projectName"), correcting = active.getString("kind") == "updateEnd",
@@ -624,7 +630,7 @@ class ProjectViewModel(
                 hasSettlement = active.getBundle("settlementBaseline") != null, today = clock.today(), phase = phase(), dirty = active.getBoolean("dirty"),
                 loading = loadingEditor, errors = errors, message = message, conflict = active.getBoolean("conflict"), needsInitialRead = needsInitialRead(active),
                 tradeInProtected = active.getBundle("settlementBaseline")?.getString("exchangeGroupId") != null,
-                tradeInDateProtected = active.getString("kind") == "updateEnd" && active.getBoolean("tradeInProtected")))
+                tradeInDateProtected = active.getString("kind") == "updateEnd" && active.getBoolean("tradeInProtected"), messageTone = messageState.tone))
         } else if (active.getString("kind") == "correctMoney") {
             next = base.copy(moneyCorrection = MoneyCorrectionUiState(
                 projectId = text(active, "projectId"), eventId = text(active, "eventId"), projectName = text(active, "projectName"),
@@ -632,11 +638,11 @@ class ProjectViewModel(
                 role = ProjectMoneyEventRole.entries.firstOrNull { it.name == text(active, "role") } ?: ProjectMoneyEventRole.REGULAR,
                 amount = text(active, "amount"), occurredOn = text(active, "occurredOn"), description = text(active, "description"), today = clock.today(),
                 phase = phase(), dirty = active.getBoolean("dirty"), loading = loadingEditor, errors = errors, message = message,
-                conflict = active.getBoolean("conflict"), needsInitialRead = needsInitialRead(active), tradeInProtected = protectedCorrection()))
+                conflict = active.getBoolean("conflict"), needsInitialRead = needsInitialRead(active), tradeInProtected = protectedCorrection(), messageTone = messageState.tone))
         } else if (active.getString("kind") == "delete") {
             val deleteMessage = message ?: if (phase() == SubmissionPhase.COMMITTED && active.getBoolean("deleteAbsent")) "已核对项目及关联金额记录当前不存在。" else null
             next = base.copy(deleteConfirmation = DeleteProjectUiState(
-                text(active, "projectId"), text(active, "projectName"), phase(), loadingEditor, deleteMessage, active.getBoolean("conflict"), needsInitialRead(active)))
+                text(active, "projectId"), text(active, "projectName"), phase(), loadingEditor, deleteMessage, active.getBoolean("conflict"), needsInitialRead(active), messageTone = messageState.tone))
         }
         mutableState.value = next
     }

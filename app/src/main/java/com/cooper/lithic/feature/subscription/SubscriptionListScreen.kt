@@ -45,9 +45,17 @@ internal fun SubscriptionListScreen(
                     Text("暂停和已到期服务仍在这里管理；已停止服务可从“回看 → 历史档案”查看。",
                         Modifier.testTag("subscription-list-history-explanation"), style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("已到期表示当前没有生效套餐，可能包含已预付但尚未开始的周期。",
+                        Modifier.testTag("subscription-list-expired-explanation"), style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("subscription-list-create")) { Text("新增订阅") }
                     state.totalCount?.let { Text("已录入 $it 条订阅服务", Modifier.testTag("subscription-list-count"),
                         style = MaterialTheme.typography.bodyMedium) }
+                    if (state.totalCount != null && state.items.isEmpty() &&
+                        (state.loading || state.loadingMore || state.error != null)) {
+                        Text("数量为上次读取结果，尚不能确认当前列表为空。", Modifier.testTag("subscription-list-count-snapshot"),
+                            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
                 }
             }
             if (state.loading) item { Text("正在读取订阅服务", Modifier.padding(LithicSpacing.medium)) }
@@ -55,12 +63,28 @@ internal fun SubscriptionListScreen(
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)) {
                     Text(message, Modifier.testTag("subscription-list-error"), style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error)
-                    if (state.items.isNotEmpty()) Text("暂时无法刷新，以下为上次读取记录。", style = MaterialTheme.typography.bodyMedium)
-                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-list-retry")) { Text("重新读取") }
+                    if (state.items.isNotEmpty()) Text("暂时无法刷新，以下为上次读取记录。",
+                        Modifier.testTag("subscription-list-stale"), style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-list-retry"),
+                        enabled = !state.loading && !state.loadingMore) { Text("重新读取") }
                 }
             } }
-            if (!state.loading && state.error == null && state.totalCount == 0L && state.items.isEmpty()) item {
-                Text("暂无订阅服务", Modifier.padding(LithicSpacing.medium), style = MaterialTheme.typography.bodyLarge)
+            if (!state.loading && state.error == null && state.totalCount == null && state.items.isEmpty()) item {
+                Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium)) {
+                    Text("尚未取得订阅服务记录，请重新读取；这不表示没有记录。",
+                        Modifier.testTag("subscription-list-unavailable"), style = MaterialTheme.typography.bodyLarge)
+                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-list-retry"),
+                        enabled = !state.loadingMore) { Text("重新读取", style = MaterialTheme.typography.bodyLarge) }
+                }
+            }
+            if (state.error == null && (state.loading || state.loadingMore) && state.items.isNotEmpty()) item {
+                Text("正在读取；数量和下方记录仍为上次读取结果。",
+                    Modifier.padding(LithicSpacing.medium).testTag("subscription-list-refreshing-snapshot"),
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            if (!state.loading && !state.loadingMore && state.error == null && state.totalCount == 0L && state.items.isEmpty()) item {
+                Text("暂无订阅服务", Modifier.padding(LithicSpacing.medium).testTag("subscription-list-empty"), style = MaterialTheme.typography.bodyLarge)
             }
             for (status in listOf(SubscriptionDisplayStatus.ACTIVE, SubscriptionDisplayStatus.PAUSED, SubscriptionDisplayStatus.EXPIRED)) {
                 val group = state.items.filter { it.cost.displayStatus == status }
@@ -78,6 +102,14 @@ internal fun SubscriptionListScreen(
                     Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-row-${detail.subscription.id}"),
                     onClick = { onOpenSubscription(detail.subscription.id) })
                 }
+            }
+            if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
+                Text(when {
+                    state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
+                    state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
+                    else -> "已显示 ${state.items.size} 条，已到列表末尾"
+                }, Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-list-page-status"),
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             if (state.hasMore) item {
                 Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium).heightIn(min = 48.dp)

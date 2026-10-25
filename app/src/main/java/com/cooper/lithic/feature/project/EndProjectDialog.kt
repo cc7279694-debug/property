@@ -24,6 +24,8 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.UiFeedbackText
+import com.cooper.lithic.core.design.UiMessageTone
 import com.cooper.lithic.core.design.AmountField
 import com.cooper.lithic.core.design.LithicSpacing
 
@@ -89,7 +91,7 @@ internal fun EndProjectDialog(
                 "end-recovery-description", state.canEdit, state.errors["recoveryDescription"])
         }
         LifecycleFormActions(state.phase, state.loading, state.conflict, state.needsInitialRead,
-            state.message, "end", if (state.correcting) "保存结束修正" else "保存结束记录", onSave, onRetryRead)
+            state.message, "end", if (state.correcting) "保存结束修正" else "保存结束记录", onSave, onRetryRead, messageTone = state.messageTone)
     }
 }
 
@@ -105,10 +107,10 @@ internal fun LifecycleFormActions(
     saveLabel: String,
     onSave: () -> Unit,
     onRetryRead: () -> Unit,
+    messageTone: UiMessageTone = UiMessageTone.ERROR,
 ) {
     message?.let {
-        Text(it, Modifier.fillMaxWidth().testTag("$tag-form-error"),
-            color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyLarge)
+        UiFeedbackText(it, messageTone, "$tag-form-error")
     }
     ProjectSubmissionNotice(phase, tag)
     when {

@@ -1,0 +1,62 @@
+{
+  "initialExecuted": 9,
+  "initialFailed": 6,
+  "sameNineNowPassed": 9,
+  "methods": [
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "malformed_search_or_cross_identity_stacks_still_fail_closed",
+      "red": "PASS",
+      "green": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "selected_subscription_category_retains_its_kind_and_identity",
+      "red": "FAIL",
+      "green": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "malformed_category_parent_does_not_gain_a_valid_record_stack",
+      "red": "PASS",
+      "green": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "search_project_details_and_editors_keep_the_search_parent",
+      "red": "FAIL",
+      "green": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "selected_category_survives_a_matching_detail_and_editor_return",
+      "red": "FAIL",
+      "green": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "search_subscription_details_and_followup_forms_keep_the_search_parent",
+      "red": "FAIL",
+      "green": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "analysis_return_context_survives_a_current_or_stopped_result",
+      "red": "FAIL",
+      "green": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "unknown_or_malformed_context_never_opens_a_form",
+      "red": "PASS",
+      "green": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "existing_analysis_routes_can_open_the_existing_forms",
+      "red": "FAIL",
+      "green": "PASS"
+    }
+  ],
+  "historicalM22StateUnchanged": true
+}

@@ -30,6 +30,8 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.UiFeedbackText
+import com.cooper.lithic.core.design.UiMessageTone
 import com.cooper.lithic.core.design.AmountField
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.design.NameField
@@ -147,23 +149,25 @@ internal fun SubscriptionPaymentActions(
     state: SubscriptionEditorUiState, prefix: String, confirmLabel: String,
     onConfirmPayment: () -> Unit, onRetryRead: () -> Unit,
 ) {
-    state.message?.let { Text(it, Modifier.fillMaxWidth().testTag("$prefix-form-error"),
-        color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyLarge) }
+    state.message?.let { UiFeedbackText(it, UiMessageTone.ERROR, "$prefix-form-error") }
     if (state.busy) Text("正在保存到本地", style = MaterialTheme.typography.bodyLarge)
     when {
         state.verifiedCannotWrite -> {
-            Text("已核对当前记录，本次输入不能提交。原始输入已保留，请返回后重新开始。",
-                Modifier.fillMaxWidth().testTag("$prefix-cannot-write"), style = MaterialTheme.typography.bodyLarge)
+            UiFeedbackText("已核对当前记录，本次输入不能提交。原始输入已保留，请返回后重新开始。",
+                UiMessageTone.WARNING, "$prefix-cannot-write")
         }
         state.phase == SubmissionPhase.COMMITTED -> {
-            Text("付款已确认保存。下面只重新读取结果，不会再记录一笔付款。",
-                Modifier.testTag("$prefix-payment-saved"), style = MaterialTheme.typography.bodyLarge)
-            if (state.message == null) Text("已保存，暂时无法读取。请重试读取，不必重新付款。", style = MaterialTheme.typography.bodyMedium)
+            UiFeedbackText("付款已确认保存。下面只重新读取结果，不会再记录一笔付款。",
+                UiMessageTone.INFORMATION, "$prefix-payment-saved")
+            if (state.message == null) Text(if (state.loading) "正在读取当前详情；不会重复付款。"
+                else "可重新读取当前详情；不会重复付款。", Modifier.testTag("$prefix-payment-read-status"),
+                style = MaterialTheme.typography.bodyMedium)
             Button(onRetryRead, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-retry-read"),
                 enabled = !state.loading && !state.busy) { Text(if (state.conflict) "核对当前事实并安全返回" else "重新读取已保存订阅", style = MaterialTheme.typography.bodyLarge) }
         }
         state.conflict -> {
-            Text("请先核对已保存的付款事实；当前输入和原付款身份仍保留。", style = MaterialTheme.typography.bodyLarge)
+            UiFeedbackText("请先核对已保存的付款事实；当前输入和原付款身份仍保留。",
+                UiMessageTone.WARNING, "$prefix-conflict-notice")
             Button(onRetryRead, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-resolve-conflict"),
                 enabled = !state.loading && !state.busy) { Text("核对已保存付款", style = MaterialTheme.typography.bodyLarge) }
         }
@@ -172,9 +176,9 @@ internal fun SubscriptionPaymentActions(
                 enabled = !state.loading && !state.busy) { Text("重新读取订阅资料", style = MaterialTheme.typography.bodyLarge) }
         }
         else -> {
-            if (state.phase == SubmissionPhase.UNCONFIRMED) Text(
+            if (state.phase == SubmissionPhase.UNCONFIRMED) UiFeedbackText(
                 "付款记录是否保存尚未确认；核对并重试会重放同一笔记录。请勿另建订阅或再记一笔付款。",
-                Modifier.testTag("$prefix-payment-unconfirmed"), style = MaterialTheme.typography.bodyLarge)
+                UiMessageTone.WARNING, "$prefix-payment-unconfirmed")
             Button(onConfirmPayment, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-confirm-payment"),
                 enabled = !state.loading && !state.busy) {
                 Text(if (state.phase == SubmissionPhase.UNCONFIRMED) "核对并重试同一付款" else confirmLabel,

@@ -44,6 +44,11 @@ internal fun ProjectHistoryScreen(
                 Text("已结束的长期项目。结果包含已记录的真实尾款与退款。",
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 state.totalCount?.let { Text("已结束 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
+                if (state.totalCount != null && state.items.isEmpty() &&
+                    (state.loading || state.loadingMore || state.error != null)) {
+                    Text("数量为上次读取结果，尚不能确认当前列表为空。", Modifier.testTag("project-history-count-snapshot"),
+                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
                 state.error?.let {
                     Text(it, Modifier.testTag("project-history-error"), style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error)
@@ -51,15 +56,29 @@ internal fun ProjectHistoryScreen(
                         Text("暂时无法刷新，以下为上次读取记录。", Modifier.testTag("project-history-stale"),
                             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
-                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-history-retry")) {
+                    TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-history-retry"),
+                        enabled = !state.loading && !state.loadingMore) {
                         Text("重新读取", style = MaterialTheme.typography.bodyLarge)
                     }
                 }
             }
         }
         if (state.loading) item { Text("正在读取历史档案", Modifier.padding(LithicSpacing.medium)) }
-        if (!state.loading && state.error == null && state.items.isEmpty()) {
-            item { Text("暂无已结束项目", Modifier.padding(LithicSpacing.medium), style = MaterialTheme.typography.bodyLarge) }
+        if (!state.loading && state.error == null && state.totalCount == null && state.items.isEmpty()) item {
+            Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium)) {
+                Text("尚未取得历史档案记录，请重新读取；这不表示没有记录。",
+                    Modifier.testTag("project-history-unavailable"), style = MaterialTheme.typography.bodyLarge)
+                TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-history-retry"),
+                    enabled = !state.loadingMore) { Text("重新读取", style = MaterialTheme.typography.bodyLarge) }
+            }
+        }
+        if (state.error == null && (state.loading || state.loadingMore) && state.items.isNotEmpty()) item {
+            Text("正在读取；数量和下方记录仍为上次读取结果。",
+                Modifier.padding(LithicSpacing.medium).testTag("project-history-refreshing-snapshot"),
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        if (!state.loading && !state.loadingMore && state.error == null && state.totalCount == 0L && state.items.isEmpty()) {
+            item { Text("暂无已结束项目", Modifier.padding(LithicSpacing.medium).testTag("project-history-empty"), style = MaterialTheme.typography.bodyLarge) }
         }
         items(state.items, key = { it.project.id }) { detail ->
             val dates = "开始：${detail.project.startedOn}" +
@@ -68,6 +87,14 @@ internal fun ProjectHistoryScreen(
             EntryCard(detail.project.name, "已结束", dates, detail.cost.dailyRate,
                 Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-history-row-${detail.project.id}"),
                 onClick = { onOpenProject(detail.project.id) })
+        }
+        if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
+            Text(when {
+                state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
+                state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
+                else -> "已显示 ${state.items.size} 条，已到列表末尾"
+            }, Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-history-page-status"),
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         if (state.hasMore) item {
             Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium)

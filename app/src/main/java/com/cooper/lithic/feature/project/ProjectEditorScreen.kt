@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.UiFeedbackText
 import com.cooper.lithic.core.design.AmountField
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.design.NameField
@@ -72,8 +73,7 @@ internal fun ProjectEditorScreen(
             error = state.errors["categoryId"], enabled = state.canEdit)
         ProjectNoteInput(state.note, onNoteChange, "备注（可选）", "project-note", state.canEdit, state.errors["note"])
         state.message?.let {
-            Text(it, Modifier.fillMaxWidth().testTag("project-form-error"),
-                color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyLarge)
+            UiFeedbackText(it, state.messageTone, "project-form-error")
         }
         if (resolveEditConflict) {
             Text("重新读取会用当前已提交资料替换此处输入，请重新核对后编辑。",

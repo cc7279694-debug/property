@@ -61,6 +61,6 @@ internal fun MoneyEventCorrectionScreen(
         ProjectNoteInput(state.description, onDescriptionChange, "说明（可选）", "correction-description",
             state.canEdit, state.errors["description"])
         LifecycleFormActions(state.phase, state.loading, state.conflict, state.needsInitialRead,
-            state.message, "correction", "保存原记录修正", onSave, onRetryRead)
+            state.message, "correction", "保存原记录修正", onSave, onRetryRead, messageTone = state.messageTone)
     }
 }

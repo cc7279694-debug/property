@@ -226,7 +226,8 @@ internal fun LithicNavigation(
         merge(state.repository.changes, state.subscriptionRepository.changes)
     }
     fun navigate(target: List<NavKey>) {
-        val next = milestoneAwareBackStack(normalizeBackStack(backStack.toList()), target)
+        val current = normalizeBackStack(backStack.toList())
+        val next = milestoneAwareBackStack(current, browsingAwareBackStack(current, target))
         if (backStack.toList() != next) { backStack.clear(); backStack.addAll(next) }
     }
     fun requestLeave(target: List<NavKey>) {
@@ -317,14 +318,7 @@ internal fun LithicNavigation(
         projects.deletedProjectId?.let {
             val guard = globalLeaveDecision(subscriptionLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
-            val target = canonicalBackStack(when (projectOrigin(routes.last())) {
-                ProjectOrigin.CURRENT -> ProjectList
-                ProjectOrigin.HISTORY -> ProjectHistory
-                ProjectOrigin.REVIEW -> LongTermReview
-                ProjectOrigin.TREND -> TotalCostTrend
-                ProjectOrigin.CATEGORY -> CategoryAnalysis()
-                ProjectOrigin.ANNUAL -> AnnualReview
-            })
+            val target = canonicalBackStack(projectBrowseReturnAfterDelete(routes))
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             model.consumeDeleted()
@@ -415,13 +409,19 @@ internal fun LithicNavigation(
                         onLongTermReview = if (state.rankingRepository != null) ({ requestLeave(canonicalBackStack(LongTermReview)) }) else null,
                         onTotalCostTrend = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(TotalCostTrend)) }) else null,
                         onCategoryAnalysis = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(CategoryAnalysis())) }) else null,
-                        onAnnualReview = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(AnnualReview)) }) else null) }
+                        onAnnualReview = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(AnnualReview)) }) else null,
+                        subscriptionCount = state.subscriptionCount, hasReadNotice = state.readError != null) }
                     entry<CategoryAnalysis> {
                         if (analysisModel != null && analysisState != null) CategoryAnalysisScreen(analysisState,
                             analysisModel::selectCategory, analysisModel::refresh,
-                            onOpenRecord = { kind, id -> requestLeave(canonicalBackStack(
-                                if (kind == OverviewKind.PROJECT) ProjectDetail(id, ProjectOrigin.CATEGORY)
-                                else SubscriptionDetail(id, SubscriptionOrigin.CATEGORY))) }, onBack = onBack)
+                            onOpenRecord = { kind, id ->
+                                val selectedParent = CategoryAnalysis(analysisState.selectedCategoryId,
+                                    analysisState.selectedKind == OverviewKind.SUBSCRIPTION)
+                                val selectedSource = listOf(Home, Review, selectedParent)
+                                requestLeave(browsingAwareBackStack(selectedSource, canonicalBackStack(
+                                    if (kind == OverviewKind.PROJECT) ProjectDetail(id, ProjectOrigin.CATEGORY)
+                                    else SubscriptionDetail(id, SubscriptionOrigin.CATEGORY))))
+                            }, onBack = onBack)
                     }
                     entry<AnnualReview> {
                         if (analysisModel != null && analysisState != null) AnnualReviewScreen(analysisState,
@@ -492,7 +492,7 @@ internal fun LithicNavigation(
                             onCostHistory = if (state.itemTimelineRepository != null) ({ requestLeave(canonicalBackStack(ProjectCostHistory(route.id, route.origin, route.comparisonId))) }) else null,
                             onReplacement = if (replacementModel != null) ({ requestLeave(canonicalBackStack(ReplacementComparison(route.id, route.origin))) }) else null,
                             onTradeIn = if (replacementModel != null) ({ requestLeave(canonicalBackStack(TradeInProject(route.id, route.origin, route.comparisonId))) }) else null,
-                            backLabel = if (route.comparisonId != null) "返回替换对比" else if (routes.getOrNull(1) is MilestoneSources) "返回里程碑来源" else when (route.origin) {
+                            backLabel = if (route.comparisonId != null) "返回替换对比" else if (routes.getOrNull(1) == NameSearch) "返回搜索结果" else if (routes.getOrNull(1) is MilestoneSources) "返回里程碑来源" else when (route.origin) {
                                 ProjectOrigin.CURRENT -> "返回项目列表"
                                 ProjectOrigin.HISTORY -> "返回历史档案"
                                 ProjectOrigin.REVIEW -> "返回长期复盘"
@@ -587,7 +587,7 @@ internal fun LithicNavigation(
                             onCancelStop = { requestLeave(canonicalBackStack(CancelSubscriptionStop(route.id, it, route.origin))) },
                             onCorrectRenewal = { requestLeave(canonicalBackStack(CorrectSubscriptionRenewal(route.id, it, route.origin))) },
                             onDeleteRenewal = { requestLeave(canonicalBackStack(DeleteSubscriptionRenewal(route.id, it, route.origin))) },
-                            backLabel = if (routes.getOrNull(1) is MilestoneSources) "返回里程碑来源" else when (route.origin) {
+                            backLabel = if (routes.getOrNull(1) == NameSearch) "返回搜索结果" else if (routes.getOrNull(1) is MilestoneSources) "返回里程碑来源" else when (route.origin) {
                                 SubscriptionOrigin.CURRENT -> "返回订阅列表"
                                 SubscriptionOrigin.HISTORY -> "返回已停止订阅"
                                 SubscriptionOrigin.REVIEW -> "返回长期复盘"

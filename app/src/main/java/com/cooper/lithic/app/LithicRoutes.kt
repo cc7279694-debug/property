@@ -274,6 +274,52 @@ internal fun projectRecoveryRoute(state: ProjectUiState, origin: ProjectOrigin, 
     else -> null
 }
 
+/** Preserves only browsing context around a canonical, already-validated record path.
+ * No new origin, fact, command or authority is added. Guards still own the actual navigation. */
+internal fun browsingAwareBackStack(current: List<NavKey>, target: List<NavKey>): List<NavKey> {
+    val destination = target.lastOrNull() ?: return target
+    val canonical = canonicalBackStack(destination)
+    if (target != canonical) return target
+    val tail = searchRecordTail(canonical)
+    if (current.take(2) == listOf(Home, NameSearch) && tail != null) return listOf(Home, NameSearch) + tail
+    val category = current.getOrNull(2) as? CategoryAnalysis
+    if (current.take(2) == listOf(Home, Review) && category != null && canonical.size > 3 &&
+        canonical.getOrNull(2) is CategoryAnalysis && categoryMatchesRecord(category, canonical) && canonicalBackStack(category) == listOf(Home, Review, category)) {
+        return canonical.toMutableList().apply { set(2, category) }
+    }
+    return target
+}
+
+private fun categoryMatchesRecord(category: CategoryAnalysis, canonical: List<NavKey>): Boolean {
+    // The original empty/default parent is a neutral anchor, also used by subscription routes.
+    if (category.categoryId == null && !category.subscription) return true
+    return when (canonical.getOrNull(3)) {
+        is ProjectDetail -> !category.subscription
+        is SubscriptionDetail -> category.subscription
+        else -> false
+    }
+}
+
+/** Return context only; the caller has already matched the deletion and passed existing guards. */
+internal fun projectBrowseReturnAfterDelete(current: List<NavKey>): NavKey {
+    if (current.getOrNull(1) == NameSearch) return NameSearch
+    return when (projectOrigin(current.lastOrNull() ?: Home)) {
+        ProjectOrigin.CURRENT -> ProjectList
+        ProjectOrigin.HISTORY -> ProjectHistory
+        ProjectOrigin.REVIEW -> LongTermReview
+        ProjectOrigin.TREND -> TotalCostTrend
+        ProjectOrigin.CATEGORY -> current.getOrNull(2) as? CategoryAnalysis ?: CategoryAnalysis()
+        ProjectOrigin.ANNUAL -> AnnualReview
+    }
+}
+
+private fun searchRecordTail(canonical: List<NavKey>): List<NavKey>? = when {
+    canonical.getOrNull(1) in listOf(ProjectList, SubscriptionList) && canonical.size > 2 -> canonical.drop(2)
+    canonical.take(2) == listOf(Home, Review) &&
+        canonical.getOrNull(2) in listOf(ProjectHistory, SubscriptionHistory) && canonical.size > 3 -> canonical.drop(3)
+    else -> null
+}
+
 /** Only decoded, known routes can be presented; old Skeleton and invalid stacks return home. */
 internal fun normalizeBackStack(restored: List<NavKey>): List<NavKey> {
     if (restored == listOf(Home, ProjectList, CreateProject)) return restored.toList()
@@ -285,6 +331,15 @@ internal fun normalizeBackStack(restored: List<NavKey>): List<NavKey> {
         if (canonical.getOrNull(1) in listOf(ProjectList, SubscriptionList) && canonical.size > 2 &&
             restored.drop(2) == canonical.drop(2)) return restored.toList()
     }
-    if (restored == canonicalBackStack(destination)) return restored.toList()
+    val canonical = canonicalBackStack(destination)
+    if (restored.take(2) == listOf(Home, NameSearch)) {
+        val tail = searchRecordTail(canonical)
+        if (tail != null && restored.drop(2) == tail) return restored.toList()
+    }
+    val category = restored.getOrNull(2) as? CategoryAnalysis
+    if (restored.take(2) == listOf(Home, Review) && category != null && canonical.size > 3 &&
+        canonical.getOrNull(2) is CategoryAnalysis && categoryMatchesRecord(category, canonical) && canonicalBackStack(category) == listOf(Home, Review, category) &&
+        restored.drop(3) == canonical.drop(3)) return restored.toList()
+    if (restored == canonical) return restored.toList()
     return listOf(Home)
 }

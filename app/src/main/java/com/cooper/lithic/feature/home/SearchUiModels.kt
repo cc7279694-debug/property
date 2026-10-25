@@ -23,3 +23,8 @@ internal fun searchStatusLabel(status: SearchStatus): String = when (status) {
     SearchStatus.EXPIRED -> "已到期"
     SearchStatus.STOPPED -> "已停止"
 }
+
+/** Only labels the supplied query snapshot; never starts a read or reclassifies a business record. */
+internal val SearchUiState.hasReadSnapshot: Boolean get() = asOf != null || items.isNotEmpty()
+internal val SearchUiState.isConfirmedEmptyResult: Boolean get() = hasReadSnapshot &&
+    !loading && error == null && items.isEmpty() && totalCount == 0L

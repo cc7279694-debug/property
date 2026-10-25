@@ -21,6 +21,8 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.UiFeedbackText
+import com.cooper.lithic.core.design.UiMessageTone
 import com.cooper.lithic.core.design.AmountField
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.model.MoneyDirection
@@ -66,8 +68,7 @@ internal fun MoneyEventEditor(
         }
         ProjectNoteInput(state.description, onDescriptionChange, "说明（可选）", "money-description", state.canEdit)
         state.message?.let {
-            Text(it, Modifier.fillMaxWidth().testTag("money-form-error"),
-                color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyLarge)
+            UiFeedbackText(it, UiMessageTone.ERROR, "money-form-error")
         }
         ProjectSubmissionNotice(state.phase, "money")
         if (state.phase == SubmissionPhase.COMMITTED) {
