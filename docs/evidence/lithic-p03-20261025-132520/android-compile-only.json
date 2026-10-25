@@ -1,0 +1,41 @@
+{
+  "compiledDeclaredMethods": 13,
+  "classes": [
+    {
+      "class": "com.cooper.lithic.feature.settings.P03SettingsInformationTest",
+      "methods": [
+        "settings_exposes_both_real_information_callbacks",
+        "calculation_page_explains_current_contribution_and_retains_back_action",
+        "about_displays_supplied_actual_label_and_version_without_private_paths",
+        "unknown_package_information_never_falls_back_to_historical_version",
+        "idle_backup_is_not_presented_as_completed",
+        "active_restore_keeps_existing_mutual_exclusion_and_has_no_confirmation_button"
+      ],
+      "compiledClassSha256": "1bfba441819b88491e7703f797225c1919823877f0401ca3320afb574804240e",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03RestorePreviewSemanticsTest",
+      "methods": [
+        "ten_table_preview_shows_both_sides_and_explicit_settings_overwrite_scope",
+        "a_busy_preview_does_not_offer_a_second_confirmation_or_discard",
+        "viewing_a_preview_never_confirms_until_the_explicit_action"
+      ],
+      "compiledClassSha256": "de00d3eca320daf19b5dd2e693172656897373d12325c48b3c5192c6fe6a6d3a",
+      "runtime": "NOT_RUN"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03BackupFeedbackSemanticsTest",
+      "methods": [
+        "verified_success_is_information_without_treating_idle_as_success",
+        "cancellation_with_target_residue_warns_that_file_is_not_restore_input",
+        "preserved_restore_failure_is_error_and_not_success",
+        "unknown_restore_warns_without_pretending_old_data_was_kept"
+      ],
+      "compiledClassSha256": "3c3c6462481a77730109c6cbd490c617b76dba9a38b5a36743874f7aea79cfc1",
+      "runtime": "NOT_RUN"
+    }
+  ],
+  "runtime": "NOT_RUN",
+  "deviceOperations": 0
+}

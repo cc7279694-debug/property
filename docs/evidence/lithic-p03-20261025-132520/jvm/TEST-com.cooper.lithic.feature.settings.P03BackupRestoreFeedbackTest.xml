@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-10-25T13:41:10.572Z" hostname="WHOCARE" time="0.036">
+  <properties/>
+  <testcase name="file_picker_cancellation_and_launch_failure_are_distinct_from_success" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.004"/>
+  <testcase name="a_validated_preview_is_not_a_success_until_explicit_confirmation_returns_success" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.004"/>
+  <testcase name="cancelled_preview_with_unremoved_temporary_files_is_a_warning_not_a_restore" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.003"/>
+  <testcase name="cancelled_validation_remains_preconfirmation_and_does_not_create_success" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.005"/>
+  <testcase name="confirmation_exception_is_unknown_without_promising_the_current_dataset" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.003"/>
+  <testcase name="successfully_discarded_preview_preserves_current_and_revokes_the_confirmation" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.003"/>
+  <testcase name="invalid_backup_has_known_preconfirmation_preservation_and_no_confirmation" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.004"/>
+  <testcase name="idle_or_raw_success_wording_cannot_authenticate_a_successful_restore" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.0"/>
+  <testcase name="confirmation_cancellation_is_unknown_and_duplicate_requests_cannot_consume_a_second_token" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.004"/>
+  <testcase name="failed_confirmation_uses_the_structured_preserved_flag_and_never_a_successful_phase" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.003"/>
+  <testcase name="recreated_interrupted_restore_reports_unknown_without_promising_old_or_new_dataset" classname="com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

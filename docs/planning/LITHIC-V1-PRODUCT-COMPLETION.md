@@ -6,13 +6,13 @@
 
 先持续完善主要产品功能，再集中体验与独立验收；本轮不要求用户安装、截图或操作App。只完善现有V1，不新增业务模块。保留原生Android/Local-first、现在/回看/设置、项目/订阅、Room5、backup4、冻结引擎和M16/通知规则、同代Owner、写协调器、真实事务与导航保护；不新增依赖、网络权限、账户或云服务。
 
-用户已完成P01桌面实施独立审查PASS WITH NOTES（仅实施证据，人工验收延期），并从`7bec69e3c82b4a28168e69964df718b1a3e149b7`正式授权P02。下表P03～P04仍是**建议顺序**，尚未实施，不构成设备验证或发行授权。
+P01、P02已获用户转交的独立桌面实施审查PASS WITH NOTES，均保留IMPLEMENTED / PENDING FINAL PRODUCT REVIEW，人工验收延期。用户从`ba24df68a4ee242912e4b010b8e485b713489e12`正式授权P03；P04仍为建议顺序/未实施，不构成设备或交付授权。
 
 | 阶段 | 范围 | 实际状态 |
 | --- | --- | --- |
 | P01 核心体验 | 首页金额/状态/入口，项目录入/详情，订阅周期/付款/状态，共用视觉与反馈细节 | IMPLEMENTED — PENDING FINAL PRODUCT REVIEW；105唯一JVM PASS、12 Compose仅编译/NOT_RUN；见[P01报告](../evidence/LITHIC-P01-Core-Experience.md) |
 | P02 浏览与回看闭环 | 在既有列表/历史/名称搜索及图表入口上处理信息层级、真实空/错误/旧结果提示和返回路径；不改计算引擎或新增榜单 | IMPLEMENTED — PENDING FINAL PRODUCT REVIEW；89唯一JVM PASS、17新Compose仅编译/运行NOT_RUN，Debug/Lint通过；见[P02报告](../evidence/LITHIC-P02-Browse-Review.md) |
-| P03 设置与数据可带走体验 | 复用现有备份/恢复/提醒，完善状态反馈、覆盖确认和失败保护说明；检查原V1计算说明/关于/版本信息的页面缺口 | PLANNED / 未实施；实际缺计算说明/关于/版本入口，备份恢复反馈分级待核对；M10三JPEG FAIL与M20平台UNKNOWN交付风险单列，不改format4/Owner，不自动做平台收口 |
+| P03 设置与数据可带走体验 | 计算说明、运行时版本/构建状态与关于入口；导出/恢复明确结果分级、十表快照对照与完整覆盖风险 | IMPLEMENTED — PENDING FINAL PRODUCT REVIEW；92唯一JVM PASS、13新Compose仅编译/NOT_RUN；见[P03报告](../evidence/LITHIC-P03-Settings-Data-Safety.md)。Room5/backup4及Owner/原子切换/Token不改 |
 | P04 集中收敛与体验 | 汇总主要功能后的受影响回归、可访问性/长历史/完整离线旅程的真实验证与用户体验反馈；必要时准备同ID/同证书code至少18的唯一体验APK，保存到非build交付目录 | DEFERRED / 需届时确认设备与验证授权；不自动恢复M22旧循环或进入M23 |
 
 ## P01执行合同
@@ -43,4 +43,11 @@ M22仍BLOCKED / CHANGES REQUIRED、剩余验收DEFERRED；M10延期/三JPEG历�
 
 ## P02已验证停止点
 
-来源7bec69e3，P01桌面实施独立审查限定PASS WITH NOTES保持，最终人工验收仍延期。两类型回看、四列表/搜索状态、浏览父级与消息呈现已实施；原路径9方法实际RED（6失败）到同方法全GREEN，最终89唯一JVM PASS，17 Compose仅编译/NOT_RUN，Lint0错误17警告。见[P02报告](../evidence/LITHIC-P02-Browse-Review.md)。Room5/backup4、查询/业务写入/Owner/恢复与构建身份均保持；没有设备或用户安装操作。P03按报告中的真实设置缺口及风险建议继续，但尚未授权实施；本轮不自动启动。
+来源7bec69e3，P01桌面实施独立审查限定PASS WITH NOTES保持，最终人工验收仍延期。两类型回看、四列表/搜索状态、浏览父级与消息呈现已实施；原路径9方法实际RED（6失败）到同方法全GREEN，最终89唯一JVM PASS，17 Compose仅编译/NOT_RUN，Lint0错误17警告。见[P02报告](../evidence/LITHIC-P02-Browse-Review.md)。Room5/backup4、查询/业务写入/Owner/恢复与构建身份均保持；没有设备或用户安装操作。此后用户明确授权P03，见下节；原P02停止点和历史报告保持，不构成自动P04授权。
+
+## P03执行合同与已验证停止点
+
+- **Goal / Scope**：让设置入口可解释现有规则、显示当前安装版本，并让完整导出/覆盖恢复的已知结果与未知结果可区分。只改原设置UI、Controller呈现元数据、必要Nav3设置入口及定向测试。
+- **Locked / Out of scope**：Room5/backup4、冻结引擎、实际导出/恢复服务、事务/Owner/原子指针/Token/导航守卫、依赖与身份/证书不改；不增加持久状态、自动/云备份；无ADB/设备/个人数据操作，不生成新体验包或实施P04。
+- **Verification**：3个真实中断反馈RED到同身份GREEN；最终92唯一JVM PASS（38新/54相关），13新Compose仅编译/NOT_RUN，Debug/AndroidTest编译/Lint exit0，Lint0错误17警告；配置、实际Debug Manifest/DEX/证书及受保护路径审计通过。见[P03报告](../evidence/LITHIC-P03-Settings-Data-Safety.md)。
+- **Safety / Next**：读当前包版本失败显示未知；Debug标志不是签名证明。导出/恢复仅真实Success报成功；恢复未知先核对勿清数据，陈旧预览仍由原快照机制拒绝。M10/M20/M22等历史风险进入P04清单，不自动修复或升级结论。本报告与CURRENT_STATE共同作为交接点，无额外大归档。

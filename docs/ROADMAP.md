@@ -81,4 +81,4 @@
 
 ## V1产品完善（2026-10-25用户决策）
 
-独立分支`codex/lithic-v1-product-completion`的P01为 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，见[产品记录](planning/LITHIC-V1-PRODUCT-COMPLETION.md)与[P01验证](evidence/LITHIC-P01-Core-Experience.md)。P02浏览/回看现为IMPLEMENTED — PENDING FINAL PRODUCT REVIEW（89唯一JVM PASS、17 Compose仅编译/NOT_RUN），见[P02报告](evidence/LITHIC-P02-Browse-Review.md)；P03设置、P04集中真实体验仍为建议/未实施，本轮无设备操作。原M22仍BLOCKED / CHANGES REQUIRED、剩余验收DEFERRED，不用产品完善替代原门禁或自动进入M23，历史冻结和延期结论不改。
+独立分支`codex/lithic-v1-product-completion`的P01为 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，见[产品记录](planning/LITHIC-V1-PRODUCT-COMPLETION.md)与[P01验证](evidence/LITHIC-P01-Core-Experience.md)。P02浏览/回看现为IMPLEMENTED — PENDING FINAL PRODUCT REVIEW（89唯一JVM PASS、17 Compose仅编译/NOT_RUN），见[P02报告](evidence/LITHIC-P02-Browse-Review.md)；P03设置/计算说明/关于版本及备份恢复反馈现为IMPLEMENTED — PENDING FINAL PRODUCT REVIEW（92唯一JVM PASS、13 Compose仅编译/NOT_RUN），见[P03报告](evidence/LITHIC-P03-Settings-Data-Safety.md)；P04集中体验/交付仍未实施，本轮无设备或新体验APK交付。原M22仍BLOCKED / CHANGES REQUIRED、剩余验收DEFERRED，不用产品完善替代原门禁或自动进入M23，历史冻结和延期结论不改。

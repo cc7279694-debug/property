@@ -16,11 +16,10 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.UiFeedbackText
 import java.time.ZoneId
 
 @Composable
@@ -37,6 +36,8 @@ internal fun SettingsShell(
     onDiscardRestore: () -> Unit = {},
     onManageCategories: (() -> Unit)? = null,
     onNotificationClick: (() -> Unit)? = null,
+    onCalculationExplanation: (() -> Unit)? = null,
+    onAboutLithic: (() -> Unit)? = null,
 ) {
     Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("settings-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
@@ -63,7 +64,7 @@ internal fun SettingsShell(
             Text("完整备份", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
             Text("手动保存全部记录、设置和已登记图片。导出不会改变当前记录；无法完整校验时不会提示成功。",
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text("备份文件可直接读取，请妥善保管。保存位置由您选择。",
+            Text("备份文件未加密，可直接读取，请妥善保管。保存位置由您选择。",
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Button(onClick = { onExportBackup?.invoke() }, enabled = onExportBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
                 modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("export-complete-backup")) {
@@ -78,8 +79,11 @@ internal fun SettingsShell(
                     modifier = Modifier.heightIn(min = 48.dp).testTag("cancel-backup-export")) { Text("取消导出") }
             }
             backupState.message?.let { feedback ->
-                Text(feedback, style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.testTag("backup-export-feedback").semantics { liveRegion = LiveRegionMode.Polite })
+                UiFeedbackText(feedback, backupState.messageTone, "backup-export-feedback")
+            }
+            if (backupState.phase == BackupUiPhase.IDLE && backupState.feedback == BackupExportFeedback.NOT_STARTED) {
+                Text("尚未开始导出。选择保存位置后，只有完整写入并校验通过才会提示成功。",
+                    style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("backup-not-started"))
             }
         }
         HorizontalDivider()
@@ -111,8 +115,7 @@ internal fun SettingsShell(
                     style = MaterialTheme.typography.bodyMedium)
             }
             restoreState.message?.let { feedback ->
-                Text(feedback, style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.testTag("backup-restore-feedback").semantics { liveRegion = LiveRegionMode.Polite })
+                UiFeedbackText(feedback, restoreState.messageTone, "backup-restore-feedback")
             }
         }
         HorizontalDivider()
@@ -123,7 +126,15 @@ internal fun SettingsShell(
                     Text("提醒设置", style = MaterialTheme.typography.bodyLarge)
                 }
             }
-            Text("当前为 Debug 工程阶段，暂不建议长期保存无法丢失的重要记录",
+            onCalculationExplanation?.let { open ->
+                TextButton(onClick = open, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                    .testTag("open-calculation-explanation")) { Text("成本计算说明", style = MaterialTheme.typography.bodyLarge) }
+            }
+            onAboutLithic?.let { open ->
+                TextButton(onClick = open, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
+                    .testTag("open-about-lithic")) { Text("关于砺石与使用边界", style = MaterialTheme.typography.bodyLarge) }
+            }
+            Text("卸载可能导致本地记录丢失，请手动备份。续费与里程碑提醒不保证准点送达。",
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }

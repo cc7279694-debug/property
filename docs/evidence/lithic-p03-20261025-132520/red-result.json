@@ -1,0 +1,30 @@
+[
+  {
+    "class": "com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest",
+    "tests": "2",
+    "failures": "2",
+    "errors": "0",
+    "methods": [
+      {
+        "name": "recreated_export_explicitly_keeps_previous_result_unknown",
+        "status": "FAIL"
+      },
+      {
+        "name": "late_recreated_picker_result_never_turns_unknown_into_failure_or_success",
+        "status": "FAIL"
+      }
+    ]
+  },
+  {
+    "class": "com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest",
+    "tests": "1",
+    "failures": "1",
+    "errors": "0",
+    "methods": [
+      {
+        "name": "recreated_interrupted_restore_reports_unknown_without_promising_old_or_new_dataset",
+        "status": "FAIL"
+      }
+    ]
+  }
+]

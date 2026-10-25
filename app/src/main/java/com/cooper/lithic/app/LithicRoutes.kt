@@ -32,6 +32,12 @@ internal data object Settings : NavKey
 internal data object NotificationSettings : NavKey
 
 @Serializable
+internal data object CalculationExplanation : NavKey
+
+@Serializable
+internal data object AboutLithic : NavKey
+
+@Serializable
 internal data class MilestoneSources(val generationId: String, val publicationOn: String,
     val digest: String, val count: Int) : NavKey {
     fun reference(): com.cooper.lithic.data.repository.MilestoneNoticeRef {
@@ -163,6 +169,7 @@ internal fun canonicalBackStack(destination: NavKey): List<NavKey> = when (desti
     NameSearch -> listOf(Home, NameSearch)
     CategoryManagement -> listOf(Home, Settings, CategoryManagement)
     NotificationSettings -> listOf(Home, Settings, NotificationSettings)
+    CalculationExplanation, AboutLithic -> listOf(Home, Settings, destination)
     is MilestoneSources -> if (validMilestoneReference(destination)) listOf(Home, destination) else listOf(Home)
     InvalidMilestoneNotice -> listOf(Home, InvalidMilestoneNotice)
     ProjectHistory -> listOf(Home, Review, ProjectHistory)

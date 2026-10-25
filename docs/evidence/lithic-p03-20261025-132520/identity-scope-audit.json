@@ -1,0 +1,82 @@
+{
+  "default": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "defaultMatchesP01": true,
+  "privateProfile": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build\\private-trial",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.preview.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-preview.1-debug",
+        "manifest": "src\\privateTrial\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-preview.1",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "privateMatchesP01": true,
+  "debugDevelopmentApk": {
+    "path": "app/build/outputs/apk/debug/app-debug.apk",
+    "bytes": 14425645,
+    "sha256": "0c24f6960a754c99a11f7b07d24f5ca149b045ad8227ddc3aa0b9a59b0c02a2b",
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9"
+  },
+  "oldPreviewArtifact": "NOT_AVAILABLE_KNOWN_FROM_P01_NOT_REBUILT",
+  "existingM22IsolatedApksUnchanged": true,
+  "protectedPathsUnchanged": [
+    "app/build.gradle.kts",
+    "gradle",
+    "app/src/main/AndroidManifest.xml",
+    "app/schemas",
+    "app/src/main/java/com/cooper/lithic/data",
+    "app/src/main/java/com/cooper/lithic/domain",
+    "app/src/main/java/com/cooper/lithic/platform",
+    "app/src/main/java/com/cooper/lithic/app/GenerationUiScopeViewModel.kt",
+    "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+    "app/src/main/java/com/cooper/lithic/feature/home/SearchController.kt",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionViewModel.kt",
+    "app/src/main/java/com/cooper/lithic/feature/settings/BackupExportViewModel.kt",
+    "app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreViewModel.kt"
+  ],
+  "historicalTestSourcesUnchanged": true,
+  "applicationManifestVerified": true,
+  "internetPermission": false,
+  "newPrivateTrialApk": false,
+  "releaseOrTestApkBuilt": false,
+  "deviceOperations": 0,
+  "runtimeAndInstalledUid": "NOT_RUN"
+}

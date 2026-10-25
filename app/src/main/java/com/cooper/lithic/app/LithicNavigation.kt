@@ -84,6 +84,9 @@ import com.cooper.lithic.feature.category.CategoryAnalysisScreen
 import com.cooper.lithic.domain.report.OverviewKind
 import com.cooper.lithic.feature.review.TotalCostTrendViewModel
 import com.cooper.lithic.feature.settings.SettingsShell
+import com.cooper.lithic.feature.settings.AboutLithicEntry
+import com.cooper.lithic.feature.settings.CalculationExplanationScreen
+import com.cooper.lithic.core.design.UiFeedbackText
 import com.cooper.lithic.feature.settings.NotificationSettingsEntry
 import com.cooper.lithic.feature.settings.NotificationSettingsViewModel
 import com.cooper.lithic.platform.notification.ReminderScheduling
@@ -392,7 +395,7 @@ internal fun LithicNavigation(
         }) { padding ->
         Column(Modifier.padding(padding).consumeWindowInsets(padding)) {
             if (routes.last() != Settings) restoreState.message?.let { feedback ->
-                Text(feedback, Modifier.padding(16.dp).testTag("backup-restore-global-feedback"))
+                UiFeedbackText(feedback, restoreState.messageTone, "backup-restore-global-feedback", Modifier.padding(16.dp))
             }
             state.readError?.let { error ->
                 Text(error, Modifier.padding(16.dp).testTag("ledger-refresh-error"))
@@ -448,7 +451,11 @@ internal fun LithicNavigation(
                         restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
                         onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore,
                         onManageCategories = if (categoryModel != null) ({ requestLeave(canonicalBackStack(CategoryManagement)) }) else null,
-                        onNotificationClick = if (state.settingsStore != null) ({ requestLeave(canonicalBackStack(NotificationSettings)) }) else null) }
+                        onNotificationClick = if (state.settingsStore != null) ({ requestLeave(canonicalBackStack(NotificationSettings)) }) else null,
+                        onCalculationExplanation = { requestLeave(canonicalBackStack(CalculationExplanation)) },
+                        onAboutLithic = { requestLeave(canonicalBackStack(AboutLithic)) }) }
+                    entry<CalculationExplanation> { CalculationExplanationScreen(onBack) }
+                    entry<AboutLithic> { AboutLithicEntry(onBack) }
                     entry<NotificationSettings> {
                         if (notificationModel != null) NotificationSettingsEntry(notificationModel, onBack)
                     }

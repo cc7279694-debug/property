@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-10-25T13:41:10.538Z" hostname="WHOCARE" time="0.03">
+  <properties/>
+  <testcase name="recreated_export_explicitly_keeps_previous_result_unknown" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.001"/>
+  <testcase name="choosing_and_running_are_explicit_and_do_not_inherit_previous_outcome" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.004"/>
+  <testcase name="explicit_cancelled_results_keep_service_cleanup_outcome_and_do_not_delete_again" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.002"/>
+  <testcase name="late_recreated_picker_result_never_turns_unknown_into_failure_or_success" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.003"/>
+  <testcase name="duplicate_success_callback_does_not_overwrite_outcome_or_delete_verified_file" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.001"/>
+  <testcase name="failed_target_verification_keeps_residue_warning_and_does_not_delete_again" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.001"/>
+  <testcase name="temporary_cleanup_failure_warns_without_invalidating_verified_backup" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.002"/>
+  <testcase name="every_real_failure_keeps_exact_reason_without_claiming_success_or_dropping_source_warning" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.003"/>
+  <testcase name="coroutine_cancellation_preserves_unknown_cleanup_before_returning_to_cancelled_caller" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.004"/>
+  <testcase name="unexpected_io_exception_keeps_failed_cleanup_as_unknown_residue" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.001"/>
+  <testcase name="explicit_new_selection_clears_only_rebuildable_feedback_and_never_deletes_unknown_target" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.0"/>
+  <testcase name="actual_success_is_the_only_result_that_publishes_verified_success_and_bytes" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.001"/>
+  <testcase name="idle_phase_message_and_bytes_cannot_manufacture_verified_success" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.0"/>
+  <testcase name="picker_failure_preserves_its_possible_target_residue_and_error_severity" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.001"/>
+  <testcase name="picker_cancellation_is_information_without_export_or_success" classname="com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -818,3 +818,25 @@ M13内部Debug可合成验证，不等于原T06稳定签名/首次真实记录�
 ### Consequences
 
 P02仅IMPLEMENTED / PENDING FINAL PRODUCT REVIEW，纯JVM/编译门禁和Android NOT_RUN分别登记。旧缺失体验包不重造，P04同ID/证书递增版本且独立交付目录；P03仅记录真实设置缺口及M10/M20等风险，不自动实施。历史M22 BLOCKED及其他冻结/延期/NOTES不改。
+
+## 2026-10-25 — P03将备份结果与操作资格分离，版本仅取当前包元数据
+
+### Decision
+
+设置补齐两个只读说明入口，沿用Nav3与原离开/恢复守卫。版本取当前PackageManager，失败显示未知，不把Debug标志当签名证明。导出/恢复增加仅内存的呈现类别；成功只来自真实Success，保留失败原因、目标/临时残留和currentPreserved差异，不用IDLE/字串/路径反推成功。预览使用现有十表计数，不重复查询，说明为校验时快照。
+
+### Context
+
+用户授权P03，P02独立桌面审查限定通过、人工延期。旧中断文案不足以表达结果未知；旧预览仅展示格式4已有计数的一部分，设置缺少原V1说明/关于。已有底层服务的校验、互斥和切换协议不需要重做。
+
+### Alternatives
+
+不新增设置架构、持久状态、云或自动备份，不修改Coordinator、Token、generation指针、事务、Owner或JPEG字节口径；不通过修改数据/旧现场或重跑设备验证补齐本轮UI工作。
+
+### Reason
+
+让用户分清已验证成功、已取消、旧记录已保留的失败与结果未知，同时保持原控制语义和原业务事实。说明遵循冻结规则，不另写计算公式或许诺后台准点通知。
+
+### Consequences
+
+P03仅IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；92唯一JVM PASS、13新Compose仅编译/NOT_RUN，真实SAF/恢复与版本读取未运行。Room5/backup4及身份/证书保持，P04仍未实施；旧体验APK缺失、M10三FAIL、M20平台FAIL/UNKNOWN、M22未完验收等风险进入后续清单，不因呈现完善关闭。

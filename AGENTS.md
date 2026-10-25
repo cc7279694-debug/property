@@ -164,3 +164,9 @@ Room5/backup4、冻结金额/日期/M16/通知规则、Owner/写入/恢复/导�
 用户正式从P01提交`7bec69e3c82b4a28168e69964df718b1a3e149b7`继续`codex/lithic-v1-product-completion`，覆盖上一时点“不自动P02”。P01桌面实施独立审查PASS WITH NOTES仅限实施证据、人工延期；P02现为 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，见[P02报告](docs/evidence/LITHIC-P02-Browse-Review.md)。实际89唯一JVM PASS，原9方法6断言FAIL已保留并对应GREEN；17新Compose仅编译/NOT_RUN、Debug构建及Lint0错误17警告。无设备/安装/私人账本操作。
 
 只改善两类型回看、列表/搜索状态与返回上下文、来源明确的反馈；Room5/backup4、冻结引擎/查询/业务写入、Owner/恢复、三主入口、默认身份/证书和原断言保持。Project VM仅UI消息元数据，订阅origin仅既有UI返回值，不进入业务命令。旧体验APK仍缺失，不重建冒充；P04才考虑同preview ID/同证书、code至少18、非build目录唯一交付。M22 BLOCKED及M10/M13-T06/M20/Q03/Q04/G1/G2/G3、全部历史现场/FAIL/UNKNOWN保持。仅推当前产品完善分支，不合并main，不自动实施P03或进入M23。
+
+## 2026-10-25 — V1产品完善P03当前授权与停止点
+
+用户从`ba24df68a4ee242912e4b010b8e485b713489e12`正式授权P03，覆盖上方P02时点“不自动P03”。P02独立桌面实施审查PASS WITH NOTES，人工延期。P03现为 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，见[P03报告](docs/evidence/LITHIC-P03-Settings-Data-Safety.md)。新增计算说明/当前包版本/关于，导出与恢复按真实结果分级，中断未知；预览十表对照为校验时快照，完整覆盖、不合并及风险明确。
+
+最终92唯一JVM PASS、13新Compose仅编译/NOT_RUN，Debug/AndroidTest源码编译exit0，Lint0错误17警告；原3真实RED保留并对应GREEN。仅UI/内存呈现元数据，两个ViewModel、数据层/Room5/backup4/冻结算法/Owner/原子切换/Token/原守卫、Gradle/Manifest/依赖/身份和原证书不改。无设备/安装/用户数据操作，不构建新体验APK，旧缺失产物不补造。M22仍BLOCKED、M10三FAIL/M20平台FAIL与UNKNOWN/M13-T06/Q03/Q04/G1/G2/G3及全部历史现场与证据保持。今后P04交付须同preview ID/证书、code至少18及非build目录实际唯一产物；本轮只推当前产品完善分支后停止，不自动P04/M23、不合并main、不自行冻结。
