@@ -1,5 +1,8 @@
 package com.cooper.lithic.feature.reminder
 
+import com.cooper.lithic.core.design.*
+import androidx.compose.foundation.layout.Row
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +13,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -94,8 +98,7 @@ internal fun MilestoneSourcesScreen(
     LazyColumn(Modifier.fillMaxSize().testTag("milestone-sources"), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         item {
             Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("milestone-sources-back")) { Text("返回现在") }
-                Text("本次里程碑来源", style = MaterialTheme.typography.headlineLarge)
+                C2PageHeader("本次里程碑来源", onBack, "milestone-sources-back", backLabel = "返回现在")
                 Text("发布日 ${reference.publicationOn} · ${reference.count}项。仅显示这次摘要；节点日期保留各自真实记录。")
                 if (loading) Text("正在核对当前记录", Modifier.testTag("milestone-sources-loading"))
                 error?.let {
@@ -121,8 +124,11 @@ internal fun MilestoneSourcesScreen(
             }, enabled = !loading,
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp).testTag("milestone-source-${item.logicalKey}")) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(item.title, style = MaterialTheme.typography.titleLarge)
-                    Text(if (item.ownerType == MilestoneOwnerType.PROJECT) "长期项目" else "订阅服务")
+                    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        C2RecordIdentity(item.title, "", if (item.ownerType == MilestoneOwnerType.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
+                        Text(item.title, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
+                    }
+                    C2StatusChip(if (item.ownerType == MilestoneOwnerType.PROJECT) "长期项目" else "订阅服务")
                     Text(item.text, style = MaterialTheme.typography.bodyLarge)
                 }
             }
@@ -138,7 +144,7 @@ internal fun MilestoneSourcesScreen(
 internal fun InvalidMilestoneNoticeScreen(onBack: () -> Unit) {
     Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
         TextButton(onBack, Modifier.heightIn(min = 48.dp)) { Text("返回现在") }
-        Text("无法打开这条里程碑通知", style = MaterialTheme.typography.headlineLarge)
+        Text("无法打开这条里程碑通知", style = MaterialTheme.typography.headlineMedium)
         Text("通知来源无效，未根据这条通知打开或修改记录。请从当前账本查看。", Modifier.testTag("milestone-invalid-notice"))
     }
 }

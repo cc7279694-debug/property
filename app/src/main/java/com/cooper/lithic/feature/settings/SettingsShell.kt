@@ -19,7 +19,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import com.cooper.lithic.core.design.UiFeedbackText
+import com.cooper.lithic.core.design.*
 import java.time.ZoneId
 
 @Composable
@@ -39,41 +39,30 @@ internal fun SettingsShell(
     onCalculationExplanation: (() -> Unit)? = null,
     onAboutLithic: (() -> Unit)? = null,
 ) {
-    Column(modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
+    Column(modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("settings-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
-        Text("设置", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
-        onManageCategories?.let { manage ->
-            TextButton(onClick = manage, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("open-category-management")) {
-                Text("管理类别", style = MaterialTheme.typography.bodyLarge)
+        Text("设置", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.semantics { heading() })
+        C2Section("记录与偏好") {
+            onManageCategories?.let { manage ->
+                C2SettingRow("管理类别", C2Glyph.Project, Modifier.testTag("open-category-management"), onClick = manage)
+                HorizontalDivider()
             }
-            HorizontalDivider()
-        }
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text("记录时区", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.semantics { heading() })
-            Text(recordZone.id, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.testTag("record-zone"))
-            Text("记录时区已保存在当前设备", style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
-        HorizontalDivider()
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text("本地保存", style = MaterialTheme.typography.bodyLarge, modifier = Modifier.semantics { heading() })
-            Text("已有记录保存在当前设备，可离线读取", style = MaterialTheme.typography.bodyMedium)
-        }
-        HorizontalDivider()
-        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text("完整备份", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
-            Text("手动保存全部记录、设置和已登记图片。导出不会改变当前记录；无法完整校验时不会提示成功。",
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text("备份文件未加密，可直接读取，请妥善保管。保存位置由您选择。",
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Button(onClick = { onExportBackup?.invoke() }, enabled = onExportBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
-                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("export-complete-backup")) {
-                Text(when (backupState.phase) {
-                    BackupUiPhase.IDLE -> "导出完整备份"
-                    BackupUiPhase.CHOOSING -> "正在选择保存位置"
-                    BackupUiPhase.EXPORTING -> "正在导出并校验"
-                })
+            C2SettingRow("记录时区", C2Glyph.Now, trailing = recordZone.id, trailingTag = "record-zone")
+            C2SettingRow("本地保存", C2Glyph.Image, subtitle = "已有记录保存在当前设备，可离线读取")
+            onNotificationClick?.let { open ->
+                HorizontalDivider()
+                C2SettingRow("提醒设置", C2Glyph.Info, Modifier.testTag("open-notification-settings"), onClick = open)
             }
+        }
+        C2Section("备份与恢复") {
+            C2SettingRow(when (backupState.phase) {
+                BackupUiPhase.IDLE -> "导出完整备份"
+                BackupUiPhase.CHOOSING -> "正在选择保存位置"
+                BackupUiPhase.EXPORTING -> "正在导出并校验"
+            }, C2Glyph.Project, Modifier.testTag("export-complete-backup"),
+                subtitle = "手动导出记录、设置和已登记图片；文件未加密。",
+                enabled = onExportBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
+                onClick = { onExportBackup?.invoke() })
             if (backupState.phase == BackupUiPhase.EXPORTING) {
                 TextButton(onClick = onCancelBackup,
                     modifier = Modifier.heightIn(min = 48.dp).testTag("cancel-backup-export")) { Text("取消导出") }
@@ -83,26 +72,20 @@ internal fun SettingsShell(
             }
             if (backupState.phase == BackupUiPhase.IDLE && backupState.feedback == BackupExportFeedback.NOT_STARTED) {
                 Text("尚未开始导出。选择保存位置后，只有完整写入并校验通过才会提示成功。",
-                    style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("backup-not-started"))
+                    style = MaterialTheme.typography.bodySmall, modifier = Modifier.testTag("backup-not-started"))
             }
-        }
-        HorizontalDivider()
-        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text("恢复完整备份", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
-            Text("选择备份后先完整校验并展示摘要。只有您再次确认后才覆盖当前内容，不合并记录。",
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Button(onClick = { onRestoreBackup?.invoke() },
+            HorizontalDivider()
+            C2SettingRow(when (restoreState.phase) {
+                RestoreUiPhase.IDLE -> "选择完整备份"
+                RestoreUiPhase.CHOOSING -> "正在选择备份"
+                RestoreUiPhase.VALIDATING -> "正在读取并校验备份"
+                RestoreUiPhase.PREVIEW -> "请核对下方备份摘要"
+                RestoreUiPhase.DISCARDING -> "正在取消恢复"
+                RestoreUiPhase.RESTORING -> "正在安全恢复"
+            }, C2Glyph.Review, Modifier.testTag("restore-complete-backup"),
+                subtitle = "先校验与预览，再明确确认完整覆盖；不合并记录。",
                 enabled = onRestoreBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
-                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("restore-complete-backup")) {
-                Text(when (restoreState.phase) {
-                    RestoreUiPhase.IDLE -> "选择完整备份"
-                    RestoreUiPhase.CHOOSING -> "正在选择备份"
-                    RestoreUiPhase.VALIDATING -> "正在读取并校验备份"
-                    RestoreUiPhase.PREVIEW -> "请核对下方备份摘要"
-                    RestoreUiPhase.DISCARDING -> "正在取消恢复"
-                    RestoreUiPhase.RESTORING -> "正在安全恢复"
-                })
-            }
+                onClick = { onRestoreBackup?.invoke() })
             if (restoreState.phase == RestoreUiPhase.VALIDATING) {
                 TextButton(onClick = onCancelRestore,
                     modifier = Modifier.heightIn(min = 48.dp).testTag("cancel-backup-restore")) { Text("取消校验") }
@@ -118,24 +101,16 @@ internal fun SettingsShell(
                 UiFeedbackText(feedback, restoreState.messageTone, "backup-restore-feedback")
             }
         }
-        HorizontalDivider()
-        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            onNotificationClick?.let { openNotifications ->
-                TextButton(onClick = openNotifications,
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("open-notification-settings")) {
-                    Text("提醒设置", style = MaterialTheme.typography.bodyLarge)
-                }
-            }
+        C2Section("说明与关于") {
             onCalculationExplanation?.let { open ->
-                TextButton(onClick = open, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                    .testTag("open-calculation-explanation")) { Text("成本计算说明", style = MaterialTheme.typography.bodyLarge) }
+                C2SettingRow("成本计算说明", C2Glyph.Info, Modifier.testTag("open-calculation-explanation"), onClick = open)
             }
             onAboutLithic?.let { open ->
-                TextButton(onClick = open, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-                    .testTag("open-about-lithic")) { Text("关于砺石与使用边界", style = MaterialTheme.typography.bodyLarge) }
+                HorizontalDivider()
+                C2SettingRow("关于砺石与使用边界", C2Glyph.Settings, Modifier.testTag("open-about-lithic"), onClick = open)
             }
-            Text("卸载可能导致本地记录丢失，请手动备份。续费与里程碑提醒不保证准点送达。",
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
+        Text("卸载可能导致本地记录丢失，请手动备份。续费与里程碑提醒不保证准点送达。",
+            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }

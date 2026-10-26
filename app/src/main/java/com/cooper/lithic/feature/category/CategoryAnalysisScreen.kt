@@ -1,5 +1,7 @@
 package com.cooper.lithic.feature.category
 
+import com.cooper.lithic.core.design.*
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -31,17 +33,16 @@ internal fun CategoryAnalysisScreen(
     LazyColumn(modifier.fillMaxSize().testTag("category-analysis-screen"), contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item("heading") { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("category-analysis-back")) { Text("返回回看") }
-            Text("类别分析", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
+            C2PageHeader("类别分析", onBack, "category-analysis-back", backLabel = "返回回看")
             Text("按当前分类", Modifier.testTag("category-analysis-basis"), style = MaterialTheme.typography.titleMedium)
             Text("改名、合并和历史纠错后重新计算；不推断过去的类别名称。当前日均成本与历史真实金额是不同指标。")
             state.asOf?.let { Text("结果截至 $it") }
-            OutlinedButton({ onSelectCategory(OverviewKind.PROJECT, null) }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("category-analysis-project")) {
+            androidx.compose.material3.FilterChip(selected = state.selectedKind == OverviewKind.PROJECT, onClick = { onSelectCategory(OverviewKind.PROJECT, null) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("category-analysis-project"), label = {
                 Text(if (state.selectedKind == OverviewKind.PROJECT) "长期项目 · 已选择" else "长期项目")
-            }
-            OutlinedButton({ onSelectCategory(OverviewKind.SUBSCRIPTION, null) }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("category-analysis-subscription")) {
+            })
+            androidx.compose.material3.FilterChip(selected = state.selectedKind == OverviewKind.SUBSCRIPTION, onClick = { onSelectCategory(OverviewKind.SUBSCRIPTION, null) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("category-analysis-subscription"), label = {
                 Text(if (state.selectedKind == OverviewKind.SUBSCRIPTION) "订阅 · 已选择" else "订阅")
-            }
+            })
         } }
         item("read-status") { ReportReadStatus(state, onRetry, "category-analysis") }
         if (state.snapshot != null) {
@@ -56,7 +57,7 @@ internal fun CategoryAnalysisScreen(
             if (selected == null) item("select-category") { Text("请选择类别。当前没有有效贡献但有历史记录的类别也可查看。") }
         }
         selected?.let { report ->
-            item("selected") { Card(Modifier.fillMaxWidth().testTag("category-analysis-selected")) {
+            item("selected") { Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("category-analysis-selected")) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text(report.category.name, Modifier.testTag("category-analysis-name"), style = MaterialTheme.typography.titleLarge)
                     Text("$kindLabel · 当前日均成本贡献")
@@ -75,7 +76,7 @@ internal fun CategoryAnalysisScreen(
             val years = report.annual.sortedByDescending { it.year }
             val scale = reportScale(years.map { it.amounts }, report.category.kind)
             items(years.take(yearLimit), key = { "year-${it.year}" }) { year ->
-                Card(Modifier.fillMaxWidth().testTag("category-analysis-year-${year.year}")) {
+                Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("category-analysis-year-${year.year}")) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         ReportAnnualBars(year.year, year.amounts, scale, report.category.kind)
                     }

@@ -1,5 +1,8 @@
 package com.cooper.lithic.feature.settings
 
+import com.cooper.lithic.core.design.*
+import androidx.compose.material3.Surface
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -70,10 +73,7 @@ internal fun NotificationSettingsContent(
 ) {
     Column(modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("notification-settings-screen"), verticalArrangement = Arrangement.spacedBy(20.dp)) {
-        TextButton(onClick = onBack, modifier = Modifier.heightIn(min = 48.dp).testTag("notification-settings-back")) {
-            Text("返回设置")
-        }
-        Text("提醒设置", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
+        C2PageHeader("提醒设置", onBack, "notification-settings-back", backLabel = "返回设置")
         Text("提醒以砺石中已经保存的记录为依据，不代表服务商已经扣款，也不会替您续费或取消服务。",
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
 
@@ -108,8 +108,7 @@ internal fun NotificationSettingsContent(
         }
 
         HorizontalDivider()
-        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text("系统通知状态", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+        C2Section("系统通知状态") {
             val runtimeDenied = permissionState.requiresRuntimePermission && !permissionState.runtimePermissionGranted
             val status = when {
                 runtimeDenied -> "系统通知未授权"
@@ -152,6 +151,7 @@ private fun ReminderSwitch(
     onChange: (Boolean) -> Unit,
     tag: String,
 ) {
+    Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
     Row(Modifier.fillMaxWidth().heightIn(min = 48.dp)
         .toggleable(value = checked, enabled = enabled, role = Role.Switch, onValueChange = onChange)
         .padding(vertical = 8.dp).testTag(tag), verticalAlignment = Alignment.CenterVertically,
@@ -161,5 +161,6 @@ private fun ReminderSwitch(
             Text(description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         Switch(checked = checked, onCheckedChange = null, enabled = enabled)
+    }
     }
 }

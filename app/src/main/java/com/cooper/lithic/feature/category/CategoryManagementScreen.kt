@@ -1,5 +1,7 @@
 package com.cooper.lithic.feature.category
 
+import com.cooper.lithic.core.design.*
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,6 +17,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -52,8 +55,7 @@ internal fun CategoryManagementScreen(
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("category-back")) { Text("返回设置") }
-                Text("类别管理", Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineLarge)
+                C2PageHeader("类别管理", onBack, "category-back", backLabel = "返回设置")
                 Text("长期项目与订阅分别管理。类别调整后，历史记录也按当前分类展示。",
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -76,7 +78,7 @@ internal fun CategoryManagementScreen(
         }
         items(state.items, key = { it.category.id }) { entry ->
             val category = entry.category
-            Card(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
+            Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
                 .testTag("category-row-${category.id}")) {
                 Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {

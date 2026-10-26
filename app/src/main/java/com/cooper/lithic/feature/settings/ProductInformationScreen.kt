@@ -1,5 +1,7 @@
 package com.cooper.lithic.feature.settings
 
+import com.cooper.lithic.core.design.*
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -51,9 +53,7 @@ internal fun AboutLithicScreen(info: InstalledAppInformation, onBack: () -> Unit
 private fun InformationPage(title: String, tag: String, onBack: () -> Unit, content: @Composable () -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp).testTag(tag),
         verticalArrangement = Arrangement.spacedBy(20.dp)) {
-        TextButton(onClick = onBack, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
-            .testTag("information-back")) { Text("返回设置") }
-        Text(title, style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
+        C2PageHeader(title, onBack, "information-back", backLabel = "返回设置")
         content()
     }
 }
@@ -61,9 +61,7 @@ private fun InformationPage(title: String, tag: String, onBack: () -> Unit, cont
 @Composable
 private fun InformationSections(sections: List<InformationSection>) {
     sections.forEach { section ->
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Text(section.title, style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.semantics { heading() })
+        C2Section(section.title) {
             section.paragraphs.forEach { Text(it, style = MaterialTheme.typography.bodyLarge) }
         }
     }

@@ -50,4 +50,9 @@ class C2BPageLayoutTest {
         compose.setContent { LithicTheme { C2SettingRow("本地保存", C2Glyph.Project, Modifier.testTag("b-read-only"), subtitle = "无自动云同步") } }
         compose.onNodeWithTag("b-read-only").assert(hasClickAction().not())
     }
+    @Test fun status_chip_preserves_tagged_text_for_existing_state_assertions() {
+        compose.setContent { LithicTheme { C2StatusChip("暂停", Modifier.testTag("b-status")) } }
+        compose.onNodeWithTag("b-status").assertTextEquals("暂停")
+    }
+
 }

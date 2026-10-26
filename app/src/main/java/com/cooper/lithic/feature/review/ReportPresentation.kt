@@ -1,5 +1,11 @@
 package com.cooper.lithic.feature.review
 
+import com.cooper.lithic.core.design.*
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.clickable
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.Alignment
+
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -22,7 +28,7 @@ import java.math.MathContext
 internal fun ReportReadStatus(state: ReportAnalysisUiState, retry: () -> Unit, tag: String) {
     if (state.loading) Text(if (state.snapshot == null) "正在读取完整账本。" else "正在刷新；下方为上次截止日和选择的结果。")
     state.error?.let {
-        Card(Modifier.fillMaxWidth().testTag("$tag-error")) {
+        Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("$tag-error")) {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(if (state.snapshot == null) "读取失败，不能把错误作为空账本。" else "读取失败；下方保留上次结果，尚未刷新。")
                 Text(it)
@@ -100,13 +106,17 @@ internal fun ReportRecord.statusLabel(): String = when (status) {
 
 @Composable
 internal fun ReportRecordCard(record: ReportRecord, prefix: String, open: (OverviewKind, String) -> Unit) {
-    Card(Modifier.fillMaxWidth().testTag("$prefix-record-${record.id}")) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(record.name, style = MaterialTheme.typography.titleMedium)
-            Text("${if (record.kind == OverviewKind.PROJECT) "长期项目" else "订阅"} · ${record.statusLabel()}")
-            TextButton({ open(record.kind, record.id) }, Modifier.heightIn(min = 48.dp).testTag("$prefix-open-${record.id}")) {
-                Text("查看记录详情")
+    Card(Modifier.fillMaxWidth().testTag("$prefix-record-${record.id}"), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+        Row(Modifier.fillMaxWidth().clickable(role = Role.Button) { open(record.kind, record.id) }
+            .padding(12.dp).heightIn(min = 64.dp).testTag("$prefix-open-${record.id}"),
+            verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            C2RecordIdentity(record.name, "", if (record.kind == OverviewKind.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(record.name, style = MaterialTheme.typography.titleMedium)
+                C2StatusChip("${if (record.kind == OverviewKind.PROJECT) "长期项目" else "订阅"} · ${record.statusLabel()}")
+                Text("查看记录详情", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
+            C2Icon(C2Glyph.Chevron)
         }
     }
 }

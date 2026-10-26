@@ -1,5 +1,7 @@
 package com.cooper.lithic.feature.review
 
+import com.cooper.lithic.core.design.*
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,6 +15,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -45,9 +48,7 @@ internal fun LongTermReviewScreen(
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("review-ranks-back")) { Text("返回回看") }
-                Text("长期复盘", style = MaterialTheme.typography.headlineLarge,
-                    modifier = Modifier.semantics { heading() })
+                C2PageHeader("长期复盘", onBack, "review-ranks-back", backLabel = "返回回看")
                 Text("当前与历史一起回看，两类记录分别排序。", style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
@@ -114,31 +115,33 @@ internal fun LongTermReviewScreen(
 private fun ReviewRankCard(item: ReviewRankItem, rank: Int?, onClick: () -> Unit) {
     Card(onClick, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium).testTag("review-row-${item.id}")) {
         Column(Modifier.padding(LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-            Text(if (rank == null) "未排名 · ${item.name}" else "$rank. ${item.name}",
-                Modifier.testTag("review-name-${item.id}"), style = MaterialTheme.typography.titleLarge)
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                C2RecordIdentity(item.name, item.categoryName, if (item.type == CategoryType.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
+                Text(if (rank == null) "未排名 · ${item.name}" else "$rank. ${item.name}",
+                    Modifier.weight(1f).testTag("review-name-${item.id}"), style = MaterialTheme.typography.titleMedium)
+            }
             Text(item.categoryName, style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
             item.project?.let { project ->
                 val unavailable = project.cost.unavailableReason != null
-                Text(when { unavailable -> "尚未开始"; project.isHistory -> "已结束"; else -> "持有中" },
-                    Modifier.testTag("review-status-${item.id}"), style = MaterialTheme.typography.bodyLarge)
+                C2StatusChip(when { unavailable -> "尚未开始"; project.isHistory -> "已结束"; else -> "持有中" },
+                    Modifier.testTag("review-status-${item.id}"))
                 Text(if (unavailable) "尚无已过去的持有日期，不参与排名" else "持有 ${project.cost.heldDays} 天",
                     Modifier.testTag("review-time-${item.id}"), style = MaterialTheme.typography.bodyLarge)
                 Text(when { unavailable -> "暂无可计算日均成本"; project.isHistory -> "已结束；结果截至今天"; else -> "当前日均成本" },
                     Modifier.testTag("review-cost-label-${item.id}"), style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
                 AmountText(project.cost.dailyRate, Modifier.testTag("review-rate-${item.id}"),
-                    style = MaterialTheme.typography.headlineLarge)
+                    style = MaterialTheme.typography.headlineMedium)
             }
             item.subscription?.let { subscription ->
-                Text(reviewSubscriptionStatus(subscription.cost.displayStatus), Modifier.testTag("review-status-${item.id}"),
-                    style = MaterialTheme.typography.bodyLarge)
+                C2StatusChip(reviewSubscriptionStatus(subscription.cost.displayStatus), Modifier.testTag("review-status-${item.id}"))
                 Text("折算付费时长：${subscription.cost.standardPurchasedDays} 天", Modifier.testTag("review-time-${item.id}"),
                     style = MaterialTheme.typography.bodyLarge)
                 Text("历史平均日成本", Modifier.testTag("review-cost-label-${item.id}"),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 AmountText(subscription.cost.historicalAverage, Modifier.testTag("review-rate-${item.id}"),
-                    style = MaterialTheme.typography.headlineLarge)
+                    style = MaterialTheme.typography.headlineMedium)
                 if (subscription.cost.historicalAverage == null) Text("尚无已确认付款，暂无有效分母。",
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }

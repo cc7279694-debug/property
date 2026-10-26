@@ -1,5 +1,11 @@
 package com.cooper.lithic.feature.settings
 
+import com.cooper.lithic.core.design.*
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Surface
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,11 +38,12 @@ internal fun RestorePreviewScreen(preview: RestorePreview, onConfirm: () -> Unit
             "subscription_state_changes" to "订阅状态记录", "categories" to "类别",
             "local_media_assets" to "图片", "replacements" to "替换关系",
             "notification_receipts" to "提醒回执", "milestone_watermarks" to "里程碑抑制水位").forEach { (key, label) ->
-            Column(Modifier.testTag("restore-count-$key")) {
-                Text(label, style = MaterialTheme.typography.bodyLarge)
-                Text("当前 ${preview.currentCounts[key] ?: "未知"} · 备份 ${preview.backupCounts[key] ?: "未知"}",
-                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Column(Modifier.fillMaxWidth().padding(vertical = 8.dp).testTag("restore-count-$key")) {
+                    Text(label, style = MaterialTheme.typography.bodyLarge)
+                    Text("当前 ${preview.currentCounts[key] ?: "未知"} · 备份 ${preview.backupCounts[key] ?: "未知"}",
+                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
         }
         Text("完整覆盖当前记录，不合并。当前记录、图片和设置将被备份内容替换。",
             style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.error)

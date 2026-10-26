@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
@@ -22,12 +23,12 @@ internal fun C2PageHeader(title: String, onBack: () -> Unit, backTag: String,
     actions: @Composable RowScope.() -> Unit = {}) {
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         if (LocalDensity.current.fontScale > 1.3f) {
-            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag(backTag)) {
+            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag(backTag).semantics { contentDescription = backLabel }) {
                 C2Icon(C2Glyph.Back); Spacer(Modifier.width(8.dp)); Text(backLabel)
             }
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, content = actions)
         } else Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag(backTag)) {
+            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag(backTag).semantics { contentDescription = backLabel }) {
                 C2Icon(C2Glyph.Back); Spacer(Modifier.width(8.dp)); Text(backLabel)
             }
             Spacer(Modifier.weight(1f))
@@ -40,7 +41,7 @@ internal fun C2PageHeader(title: String, onBack: () -> Unit, backTag: String,
 
 @Composable
 internal fun C2StatusChip(label: String, modifier: Modifier = Modifier) {
-    Surface(modifier, shape = androidx.compose.foundation.shape.RoundedCornerShape(50),
+    Surface(modifier.semantics(mergeDescendants = true) {}, shape = androidx.compose.foundation.shape.RoundedCornerShape(50),
         color = MaterialTheme.colorScheme.primaryContainer, contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
         Text(label, Modifier.padding(horizontal = 8.dp, vertical = 3.dp), style = MaterialTheme.typography.bodySmall)
     }

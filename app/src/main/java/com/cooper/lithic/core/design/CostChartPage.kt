@@ -1,5 +1,7 @@
 package com.cooper.lithic.core.design
 
+import com.cooper.lithic.core.design.*
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -88,16 +91,14 @@ internal fun CostChartPage(
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item("heading") {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("chart-back")
-                    .semantics { contentDescription = "返回详情" }) { Text("返回详情") }
-                Text(title, style = MaterialTheme.typography.headlineLarge)
+                C2PageHeader(title, onBack, "chart-back", backLabel = "返回详情")
                 Text(metricTitle, style = MaterialTheme.typography.titleLarge)
                 Text(explanation, style = MaterialTheme.typography.bodyMedium)
             }
         }
         if (loading) item("loading") { Text(if (hasData) "正在重新读取；下方保留上次结果。" else "正在读取历史数据。") }
         if (error != null) item("error") {
-            Card(Modifier.fillMaxWidth().testTag("chart-error")) {
+            Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("chart-error")) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(if (hasData) "读取失败；下方是上次结果，尚未刷新。" else "读取失败，不能将错误作为空数据。")
                     Text(error)
@@ -109,13 +110,13 @@ internal fun CostChartPage(
         if (hasData) {
             val cutoff = requireNotNull(asOf)
             item("selection") {
-                Card(Modifier.fillMaxWidth()) {
+                Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text("结果截至 $asOf", style = MaterialTheme.typography.bodyMedium)
                         if (selectionFocus != null) {
                             Text("所选日期：$selectionFocus", Modifier.testTag("chart-selected-date"), style = MaterialTheme.typography.titleMedium)
                             if (selectedDate == selectionFocus) {
-                                AmountText(selectedValue, Modifier.testTag("chart-selected-value"), style = MaterialTheme.typography.headlineLarge)
+                                AmountText(selectedValue, Modifier.testTag("chart-selected-value"), style = MaterialTheme.typography.headlineMedium)
                                 Text(selectedStatus.orEmpty(), Modifier.testTag("chart-selected-status"))
                             } else Text("正在查询所选日期；不使用旧日期金额或0代替结果。")
                         } else Text("选择一个日期，查看冻结引擎返回的精确历史结果。")
@@ -194,7 +195,7 @@ internal fun CostChartPage(
                 if (expandedDay == date.toString()) {
                     if (date > cutoff) item("future-$date") { Text("尚未生效的计划，不属于历史曲线。") }
                     items(dayEvents, key = { "event-${it.id}" }) { event ->
-                        Card(Modifier.fillMaxWidth().testTag("chart-event-${event.id}")) {
+                        Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("chart-event-${event.id}")) {
                             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 Text(event.title, style = MaterialTheme.typography.titleMedium)
                                 Text(event.detail)
