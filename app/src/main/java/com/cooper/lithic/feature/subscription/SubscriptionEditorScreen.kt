@@ -1,5 +1,7 @@
 package com.cooper.lithic.feature.subscription
 
+import androidx.compose.foundation.layout.FlowRow
+import com.cooper.lithic.core.design.C2FormScaffold
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -60,25 +62,20 @@ internal fun SubscriptionEditorScreen(
     onRetryRead: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.fillMaxSize().imePadding().verticalScroll(rememberScrollState())
-        .padding(LithicSpacing.medium).testTag("subscription-editor-screen"),
-        verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
-        TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("subscription-editor-back")) { Text("返回") }
-        Text("新增订阅服务", style = MaterialTheme.typography.headlineLarge,
-            modifier = Modifier.semantics { heading() })
+    C2FormScaffold("新增订阅服务", onBack, "subscription-editor-back", modifier.testTag("subscription-editor-screen"),
+        footer = { SubscriptionPaymentActions(state, "subscription", "确认已付款并创建订阅", onConfirmPayment, onRetryRead) }) {
         if (state.loading) Text("正在读取订阅资料", style = MaterialTheme.typography.bodyLarge)
         NameField(state.serviceName, onNameChange, Modifier.testTag("subscription-name"),
-            label = "服务名称", error = state.errors["serviceName"], enabled = state.canEdit)
+            label = "服务名称", error = state.errors["serviceName"], enabled = state.canEdit, labelOutside = true)
         SubscriptionCategoryPicker(state.categories, state.categoryId, onCategoryChange,
             state.errors["categoryId"], state.canEdit)
         Text("首次真实付款", style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.semantics { heading() })
         Text("请核对实际付款及四个日期；预填不代表付款已经确认。",
-            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         SubscriptionPaymentFields(state, "subscription", onAmountChange, onCycleChange, onPaidOnChange,
             onEffectiveFromChange, onPaidUntilChange, onReminderDueChange)
         ProjectNoteInput(state.note, onNoteChange, "备注（可选）", "subscription-note", state.canEdit, state.errors["note"])
-        SubscriptionPaymentActions(state, "subscription", "确认已付款并创建订阅", onConfirmPayment, onRetryRead)
     }
 }
 
@@ -95,21 +92,22 @@ internal fun SubscriptionPaymentFields(
 ) {
     AmountField(state.amount, onAmountChange, Modifier.testTag("$prefix-amount"),
         label = if (state.kind == SubscriptionEditorKind.CREATE) "首次实际付款金额（元）" else "本次实际付款金额（元）",
-        error = state.errors["amount"], enabled = state.canEdit)
+        error = state.errors["amount"], enabled = state.canEdit, labelOutside = true)
     Text("仅记录已实际付款，金额必须大于0元。免费期不生成付费记录。",
-        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
     Text("固定付费周期：${billingCycleLabel(state.cycle)}（当前选择）", style = MaterialTheme.typography.bodyLarge,
         modifier = Modifier.testTag("$prefix-cycle-selection"))
-    BillingCycle.entries.forEach { cycle ->
-        val isSelected = state.cycle == cycle
-        OutlinedButton(onClick = { onCycleChange(cycle) }, enabled = state.canEdit,
-            colors = ButtonDefaults.outlinedButtonColors(
-                containerColor = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
-                contentColor = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.primary),
-            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("$prefix-cycle-${cycle.name}")
-                .semantics { selected = isSelected }) {
-            Text("${if (isSelected) "已选 · " else ""}${billingCycleLabel(cycle)}（折算${cycle.standardDays}天）",
-                style = MaterialTheme.typography.bodyLarge)
+    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        BillingCycle.entries.forEach { cycle ->
+            val isSelected = state.cycle == cycle
+            OutlinedButton(onClick = { onCycleChange(cycle) }, enabled = state.canEdit,
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
+                    contentColor = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.primary),
+                modifier = Modifier.heightIn(min = 48.dp).testTag("$prefix-cycle-${cycle.name}")
+                    .semantics { selected = isSelected }) {
+                Text("${if (isSelected) "已选 · " else ""}${billingCycleLabel(cycle)}", style = MaterialTheme.typography.bodyLarge)
+            }
         }
     }
     Text("30、90、365天是成本折算口径，不代表已经使用的天数；请按实际服务核对下面的覆盖日期。",
@@ -138,7 +136,7 @@ private fun PaymentDate(
     value: String, onChange: (String) -> Unit, today: LocalDate?, label: String, prefix: String,
     error: String?, enabled: Boolean,
 ) {
-    if (today != null) ProjectDateInput(value, onChange, today, label, prefix, error = error, enabled = enabled)
+    if (today != null) ProjectDateInput(value, onChange, today, label, prefix, error = error, enabled = enabled, labelOutside = true)
     else OutlinedTextField(value, onChange, label = { Text(label) }, enabled = false,
         modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag("$prefix-input"),
         textStyle = MaterialTheme.typography.bodyLarge)

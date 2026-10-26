@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "*P01Subscription*",
+    "--tests",
+    "*P02SubscriptionBrowseOriginTest",
+    "--tests",
+    "*P02UiMessageStateTest",
+    "--tests",
+    "*AmountFormatterTest",
+    "--tests",
+    "*C2R2RecordIdentityTest",
+    ":app:compileDebugAndroidTestKotlin"
+  ],
+  "startedUtc": "2026-10-26T07:37:20.465897+00:00",
+  "timeoutSeconds": 1200,
+  "exitCode": 0,
+  "endedUtc": "2026-10-26T07:38:17.335425+00:00",
+  "seconds": 56.875,
+  "stdoutBytes": 2843,
+  "stdoutSha256": "ce06c478320911f09460900e2f4dd4c0ab8d394d65bdf353024b1b7f13ebc3c2",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

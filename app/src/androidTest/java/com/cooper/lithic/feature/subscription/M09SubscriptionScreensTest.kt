@@ -5,6 +5,9 @@ import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performScrollToNode
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -98,7 +101,17 @@ class M09SubscriptionScreensTest {
     }
 
     private fun detailNode(tag: String): androidx.compose.ui.test.SemanticsNodeInteraction {
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
+        val management = tag in setOf("subscription-detail-vendor-explanation", "subscription-detail-pause",
+            "subscription-detail-resume", "subscription-detail-stop", "subscription-detail-reopen",
+            "subscription-detail-scheduled-stop", "subscription-detail-correct-stop", "subscription-detail-cancel-stop", "subscription-price-history")
+        val open = compose.onAllNodesWithTag("subscription-detail-close-management").fetchSemanticsNodes().isNotEmpty()
+        if (management) {
+            if (!open) compose.onNodeWithTag("subscription-detail-open-management").performClick()
+            return compose.onNodeWithTag(tag).performScrollTo()
+        }
+        if (open) compose.onNodeWithTag("subscription-detail-close-management").performClick()
+        if (tag != "subscription-detail-renewal")
+            compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
         return compose.onNodeWithTag(tag)
     }
 

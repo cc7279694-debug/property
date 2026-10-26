@@ -8,9 +8,10 @@ import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextReplacement
 import androidx.lifecycle.SavedStateHandle
@@ -128,7 +129,7 @@ class M09SubscriptionLifecycleFlowTest {
         compose.onNodeWithTag("renewal-amount").performScrollTo().assertTextContains("")
         assertEquals("", model.state.value.editor!!.amount); assertEquals("", model.state.value.editor!!.paidOn)
         fillPayment("180", "2026-02-02", "2026-02-02", "2026-03-02", "2026-02-27")
-        compose.onNodeWithTag("renewal-confirm-payment").performScrollTo().performClick(); waitDetail(facts.subscription.id)
+        compose.onNodeWithTag("renewal-confirm-payment").performClick(); waitDetail(facts.subscription.id)
         val reopened = fixture.repository.loadSubscriptionDetail(facts.subscription.id)!!
         assertEquals(facts.subscription, reopened.subscription)
         assertEquals(SubscriptionDisplayStatus.ACTIVE, reopened.cost.displayStatus)
@@ -154,7 +155,7 @@ class M09SubscriptionLifecycleFlowTest {
         detailNode("subscription-detail-stop").performClick(); waitState()
         compose.onNodeWithTag("subscription-state-vendor-explanation").performScrollTo()
             .assertTextContains("不会替服务商取消自动续费", substring = true)
-        compose.onNodeWithTag("subscription-state-back").performScrollTo().performClick(); waitDetail(facts.subscription.id)
+        compose.onNodeWithTag("subscription-state-back").performClick(); waitDetail(facts.subscription.id)
         assertEquals(emptyList<Any>(), fixture.repository.loadSubscriptionDetail(facts.subscription.id)!!.stateChanges)
         detailNode("subscription-detail-stop").performClick(); waitState()
         compose.onNodeWithTag("subscription-state-reason").performScrollTo().performTextReplacement("用户确认停止记录的原因")
@@ -172,7 +173,7 @@ class M09SubscriptionLifecycleFlowTest {
         compose.waitUntil(10_000) { model.state.value.editor?.canEdit == true }
         compose.onNodeWithTag("renewal-amount").performScrollTo().performTextReplacement("146.83")
         assertEquals(original, fixture.repository.loadSubscriptionDetail(facts.subscription.id)!!.renewals.single { it.id == original.id })
-        Espresso.closeSoftKeyboard(); compose.onNodeWithTag("renewal-confirm-payment").performScrollTo().performClick(); waitDetail(facts.subscription.id)
+        Espresso.closeSoftKeyboard(); compose.onNodeWithTag("renewal-confirm-payment").performClick(); waitDetail(facts.subscription.id)
         assertEquals(original.copy(amountCents = 14683), fixture.repository.loadSubscriptionDetail(facts.subscription.id)!!.renewals.single { it.id == original.id })
         detailNode("subscription-renewal-delete-${future.id}").performClick(); waitState()
         compose.onNodeWithTag("subscription-delete-payment-explanation").performScrollTo().assertTextContains("这不是退款", substring = true)
@@ -209,7 +210,7 @@ class M09SubscriptionLifecycleFlowTest {
     }
     private fun confirmState(id: String) {
         Espresso.closeSoftKeyboard(); compose.waitForIdle()
-        compose.onNodeWithTag("subscription-state-confirm").performScrollTo().assertIsEnabled().performClick(); waitDetail(id)
+        compose.onNodeWithTag("subscription-state-confirm").assertIsEnabled().performClick(); waitDetail(id)
     }
     private fun waitDetail(id: String) {
         compose.waitUntil(10_000) { model.state.value.let { it.editor == null && it.stateEditor == null && !it.detail.loading &&
@@ -217,7 +218,18 @@ class M09SubscriptionLifecycleFlowTest {
         compose.onNodeWithTag("subscription-detail-screen").assertIsDisplayed()
     }
     private fun detailNode(tag: String): androidx.compose.ui.test.SemanticsNodeInteraction {
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag)); return compose.onNodeWithTag(tag)
+        val management = tag in setOf("subscription-detail-vendor-explanation", "subscription-detail-pause",
+            "subscription-detail-resume", "subscription-detail-stop", "subscription-detail-reopen",
+            "subscription-detail-scheduled-stop", "subscription-detail-correct-stop", "subscription-detail-cancel-stop", "subscription-price-history")
+        val open = compose.onAllNodesWithTag("subscription-detail-close-management").fetchSemanticsNodes().isNotEmpty()
+        if (management) {
+            if (!open) compose.onNodeWithTag("subscription-detail-open-management").performClick()
+            return compose.onNodeWithTag(tag).performScrollTo()
+        }
+        if (open) compose.onNodeWithTag("subscription-detail-close-management").performClick()
+        if (tag != "subscription-detail-renewal")
+            compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
+        return compose.onNodeWithTag(tag)
     }
     private fun observe(date: LocalDate) {
         fixture.clock.date = date; fixture.onMain { model.refresh() }

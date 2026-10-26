@@ -53,7 +53,7 @@ class M09SubscriptionNavigationFlowTest {
         compose.onNodeWithTag("subscription-list-content").performScrollToNode(hasTestTag("subscription-row-$id"))
         compose.onNodeWithTag("subscription-row-$id").performClick()
         compose.waitUntil(10_000) { subscription.state.value.detail.detail?.subscription?.id == id }
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag("subscription-detail-pause"))
+        compose.onNodeWithTag("subscription-detail-open-management").performClick()
         compose.onNodeWithTag("subscription-detail-pause").assertIsEnabled().performClick()
         compose.onNodeWithTag("subscription-state-screen").assertIsDisplayed()
         assertEquals(facts.renewals, fixture.repository.loadSubscriptionDetail(id)!!.renewals)
@@ -70,7 +70,7 @@ class M09SubscriptionNavigationFlowTest {
         compose.onNodeWithTag("subscription-history-content").performScrollToNode(hasTestTag("subscription-history-row-$id"))
         compose.onNodeWithTag("subscription-history-row-$id").performClick()
         compose.waitUntil(10_000) { subscription.state.value.detail.detail?.subscription?.id == id }
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag("subscription-detail-reopen"))
+        compose.onNodeWithTag("subscription-detail-open-management").performClick()
         compose.onNodeWithTag("subscription-detail-reopen").assertIsEnabled()
         assertEquals(id, subscription.state.value.detail.detail!!.subscription.id)
         assertEquals(1L, fixture.generation.database.subscriptionDao().countSubscriptions())

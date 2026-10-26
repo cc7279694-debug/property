@@ -21,10 +21,11 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.StateRestorationTester
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextReplacement
 import androidx.compose.ui.unit.Density
@@ -126,11 +127,11 @@ class SubscriptionRenewalFlowTest {
         fill("renewal", "180", BillingCycle.MONTHLY, "2026-01-20", "2026-02-01", "2026-03-01", "2026-02-25")
         assertEquals(original.renewals, repository.loadSubscriptionDetail(id)!!.renewals)
         Espresso.closeSoftKeyboard(); compose.waitForIdle()
-        compose.onNodeWithTag("renewal-editor-back").performScrollTo().performClick()
+        compose.onNodeWithTag("renewal-editor-back").performClick()
         compose.onNodeWithTag("discard-dialog").assertIsDisplayed()
         compose.onNodeWithTag("discard-keep").performClick()
         assertEditorRaw("180", "2026-01-20", "2026-02-01", "2026-03-01", "2026-02-25")
-        compose.onNodeWithTag("renewal-editor-back").performScrollTo().performClick()
+        compose.onNodeWithTag("renewal-editor-back").performClick()
         compose.onNodeWithTag("discard-confirm").performClick()
         waitDetail(id)
         assertEquals(original.renewals, repository.loadSubscriptionDetail(id)!!.renewals)
@@ -164,13 +165,13 @@ class SubscriptionRenewalFlowTest {
         assertEquals(1L, generation.database.subscriptionDao().countRenewals(id))
         generation.database.openHelper.writableDatabase.execSQL("DROP TRIGGER m08_flow_fail_payment")
         compose.onNodeWithTag("renewal-confirm-payment").assertDoesNotExist()
-        compose.onNodeWithTag("renewal-resolve-conflict").performScrollTo().performClick()
+        compose.onNodeWithTag("renewal-resolve-conflict").performClick()
         compose.waitUntil(15_000) { !model.state.value.editor!!.loading && model.leaveDecision() == LeaveDecision.ALLOW }
         assertEditorRaw("180", "2026-02-02", "2026-02-02", "2026-03-02", "2026-02-27")
         val checkedEnvelope = onMainValue { savedState.get<Bundle>(FORM_KEY)!!.getBundle("submitted")!! }
         for (key in originalEnvelope.keySet()) assertEquals(originalEnvelope.get(key), checkedEnvelope.get(key))
         assertNull(generation.database.subscriptionDao().findRenewal(originalCommand.renewal.id))
-        compose.onNodeWithTag("renewal-editor-back").performScrollTo().performClick()
+        compose.onNodeWithTag("renewal-editor-back").performClick()
         waitDetail(id)
         assertEquals(original.renewals, repository.loadSubscriptionDetail(id)!!.renewals)
         openRenewal()
@@ -210,7 +211,7 @@ class SubscriptionRenewalFlowTest {
         waitEditor(SubscriptionEditorKind.RENEWAL)
         assertEquals(SubmissionPhase.UNCONFIRMED, model.state.value.editor!!.phase)
         assertEditorRaw("180", "2026-01-20", "2026-02-01", "2026-03-01", "2026-02-25")
-        compose.onNodeWithTag("renewal-confirm-payment").performScrollTo().assertTextContains("核对并重试同一付款")
+        compose.onNodeWithTag("renewal-confirm-payment").assertTextContains("核对并重试同一付款")
         clickConfirm("renewal"); waitDetail(id)
         assertEquals(listOf(original, original), repository.renewalCommands.toList())
         val replay = repository.renewalResults.last() as SubscriptionMutationResult.Success
@@ -461,7 +462,7 @@ class SubscriptionRenewalFlowTest {
 
     private fun clickConfirm(prefix: String) {
         Espresso.closeSoftKeyboard(); compose.waitForIdle()
-        compose.onNodeWithTag("$prefix-confirm-payment").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
+        compose.onNodeWithTag("$prefix-confirm-payment").assertIsDisplayed().assertIsEnabled().performClick()
     }
 
     private fun openRenewal() {
@@ -482,7 +483,17 @@ class SubscriptionRenewalFlowTest {
     }
 
     private fun detailNode(tag: String): androidx.compose.ui.test.SemanticsNodeInteraction {
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
+        val management = tag in setOf("subscription-detail-vendor-explanation", "subscription-detail-pause",
+            "subscription-detail-resume", "subscription-detail-stop", "subscription-detail-reopen",
+            "subscription-detail-scheduled-stop", "subscription-detail-correct-stop", "subscription-detail-cancel-stop", "subscription-price-history")
+        val open = compose.onAllNodesWithTag("subscription-detail-close-management").fetchSemanticsNodes().isNotEmpty()
+        if (management) {
+            if (!open) compose.onNodeWithTag("subscription-detail-open-management").performClick()
+            return compose.onNodeWithTag(tag).performScrollTo()
+        }
+        if (open) compose.onNodeWithTag("subscription-detail-close-management").performClick()
+        if (tag != "subscription-detail-renewal")
+            compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
         return compose.onNodeWithTag(tag)
     }
 

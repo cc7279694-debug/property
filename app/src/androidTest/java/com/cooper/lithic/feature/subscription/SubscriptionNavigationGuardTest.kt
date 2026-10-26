@@ -103,7 +103,7 @@ class SubscriptionNavigationGuardTest {
             { compose.onNodeWithTag("tab-now").performClick() },
             { compose.onNodeWithTag("tab-review").performClick() },
             { compose.onNodeWithTag("tab-settings").performClick() },
-            { compose.onNodeWithTag("subscription-editor-back").performScrollTo().performClick() },
+            { compose.onNodeWithTag("subscription-editor-back").performClick() },
             { Espresso.pressBack() },
         )
         actions.forEach { leave ->
@@ -142,7 +142,7 @@ class SubscriptionNavigationGuardTest {
         compose.onNodeWithTag("discard-dialog").assertDoesNotExist()
         compose.onNodeWithTag("pending-submit-return-to-form").performClick()
         compose.onNodeWithTag("subscription-editor-screen").assertIsDisplayed()
-        compose.onNodeWithTag("subscription-confirm-payment").performScrollTo().assertTextContains("核对并重试同一付款").performClick()
+        compose.onNodeWithTag("subscription-confirm-payment").assertTextContains("核对并重试同一付款").performClick()
         compose.waitUntil(15_000) { subscription.state.value.editor == null && subscription.state.value.detail.detail != null }
         compose.onNodeWithTag("subscription-detail-screen").assertIsDisplayed()
         val detail = ready.subscriptionRepository.loadSubscriptionPage().items.single()
@@ -286,10 +286,10 @@ class SubscriptionNavigationGuardTest {
         onMain { subscription = SubscriptionViewModel(unreadable, SavedStateHandle(), clock); retain("unreadable-payment", subscription) }
         render(); openCreate(); fillVisibleCreate()
         Espresso.closeSoftKeyboard(); compose.waitForIdle()
-        compose.onNodeWithTag("subscription-confirm-payment").performScrollTo().performClick()
+        compose.onNodeWithTag("subscription-confirm-payment").performClick()
         compose.waitUntil(15_000) { subscription.state.value.editor?.phase == SubmissionPhase.COMMITTED && subscription.state.value.editor?.message?.contains("已保存") == true }
         compose.onNodeWithTag("subscription-confirm-payment").assertDoesNotExist()
-        compose.onNodeWithTag("subscription-retry-read").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("subscription-retry-read").assertIsDisplayed()
         assertEquals(1L, generation.database.subscriptionDao().countSubscriptions())
         failRead = false
         compose.onNodeWithTag("subscription-retry-read").performClick()

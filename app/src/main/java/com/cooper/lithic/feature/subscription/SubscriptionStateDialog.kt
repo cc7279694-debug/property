@@ -23,6 +23,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.UiFeedbackText
 import com.cooper.lithic.core.design.UiMessageTone
+import com.cooper.lithic.core.design.C2FormScaffold
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.domain.subscription.SubscriptionOperationState
 import com.cooper.lithic.feature.project.ProjectDateInput
@@ -42,10 +43,32 @@ internal fun SubscriptionStateDialog(state: SubscriptionStateEditorUiState, onBa
         SubscriptionStateEditorKind.DELETE_RENEWAL -> "删除错误付款"
         SubscriptionStateEditorKind.STATE -> when (state.action) { "PAUSE" -> "暂停"; "RESUME" -> "恢复"; "REOPEN" -> "重新开通"; else -> "停止记录" }
     }
-    Column(modifier.fillMaxSize().imePadding().verticalScroll(rememberScrollState()).padding(LithicSpacing.medium)
-        .testTag("subscription-state-screen"), verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
-        TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("subscription-state-back")) { Text("返回订阅详情") }
-        Text(title, Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineLarge)
+    C2FormScaffold(title, onBack, "subscription-state-back", modifier.testTag("subscription-state-screen"),
+        backLabel = "返回订阅详情", footer = {
+        state.message?.let { UiFeedbackText(it, UiMessageTone.ERROR, "subscription-state-error") }
+        state.errors["form"]?.let { Text(it, Modifier.testTag("subscription-state-form-error"), color = MaterialTheme.colorScheme.error) }
+        // A confirmed readback can include CurrentAbsence; it is not proof that this operation wrote.
+        if (!state.verifiedCannotWrite && !state.lastPayment) {
+            if (state.phase == SubmissionPhase.UNCONFIRMED) UiFeedbackText("保存结果尚未确认，请核对同一提交，不要重新发起另一笔操作。",
+                UiMessageTone.WARNING, "subscription-state-unconfirmed")
+            if (state.phase == SubmissionPhase.COMMITTED) UiFeedbackText("原提交已转入只读核对；这里只重新读取当前事实，不会再次修改记录。",
+                UiMessageTone.INFORMATION, "subscription-state-readback-status")
+        }
+        when {
+            state.verifiedCannotWrite || state.lastPayment -> UiFeedbackText("已有记录保持原样，请返回后核对。",
+                UiMessageTone.WARNING, "subscription-state-readonly-notice")
+            state.phase == SubmissionPhase.COMMITTED || state.conflict || state.needsInitialRead -> Button(onRetryRead,
+                Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-state-retry-read"), enabled = !state.loading && !state.busy) {
+                Text(if (state.phase == SubmissionPhase.COMMITTED && state.conflict) "核对当前事实并安全返回"
+                    else if (state.phase == SubmissionPhase.COMMITTED) "重新读取已保存结果" else "读取并核对原事实")
+            }
+            else -> Button(onConfirm, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-state-confirm"),
+                enabled = !state.loading && !state.busy) {
+                Text(if (state.phase == SubmissionPhase.UNCONFIRMED) "核对并重试同一提交" else "确认$title")
+            }
+        }
+        if (state.busy) Text("正在保存到本地")
+    }) {
         Text(state.serviceName, Modifier.testTag("subscription-state-service"), style = MaterialTheme.typography.titleLarge)
         if (state.loading) Text("正在读取原始事实")
         Text("只改变砺石中的记录和统计，不会替服务商取消自动续费或暂停扣费。真实付款历史保留。",
@@ -72,7 +95,7 @@ internal fun SubscriptionStateDialog(state: SubscriptionStateEditorUiState, onBa
             SubscriptionStateEditorKind.CANCEL_STOP -> Text("取消 ${state.effectiveOn} 尚未生效的停止计划；其他状态和付款不变。")
             else -> {
                 state.today?.let { today -> ProjectDateInput(state.effectiveOn, onEffectiveOn, today, "状态生效日期", "subscription-state-effective",
-                    error = state.errors["effectiveOn"], enabled = state.canEdit && (state.kind == SubscriptionStateEditorKind.CORRECT_STATE || state.action == "STOP_EARLY")) }
+                    error = state.errors["effectiveOn"], enabled = state.canEdit && (state.kind == SubscriptionStateEditorKind.CORRECT_STATE || state.action == "STOP_EARLY"), labelOutside = true) }
                 if (state.kind == SubscriptionStateEditorKind.CORRECT_STATE) {
                     Text("纠正原状态日期或内容会重算历史有效天数；请核对原事实，保留原记录身份。")
                     SubscriptionOperationState.entries.forEach { value ->
@@ -86,28 +109,6 @@ internal fun SubscriptionStateDialog(state: SubscriptionStateEditorUiState, onBa
                 ProjectNoteInput(state.note, onNote, "备注（可选）", "subscription-state-note", state.canEdit, state.errors["note"])
             }
         }
-        state.message?.let { UiFeedbackText(it, UiMessageTone.ERROR, "subscription-state-error") }
-        state.errors["form"]?.let { Text(it, Modifier.testTag("subscription-state-form-error"), color = MaterialTheme.colorScheme.error) }
-        // A confirmed readback can include CurrentAbsence; it is not proof that this operation wrote.
-        if (!state.verifiedCannotWrite && !state.lastPayment) {
-            if (state.phase == SubmissionPhase.UNCONFIRMED) UiFeedbackText("保存结果尚未确认，请核对同一提交，不要重新发起另一笔操作。",
-                UiMessageTone.WARNING, "subscription-state-unconfirmed")
-            if (state.phase == SubmissionPhase.COMMITTED) UiFeedbackText("原提交已转入只读核对；这里只重新读取当前事实，不会再次修改记录。",
-                UiMessageTone.INFORMATION, "subscription-state-readback-status")
-        }
-        when {
-            state.verifiedCannotWrite || state.lastPayment -> UiFeedbackText("已有记录保持原样，请返回后核对。",
-                UiMessageTone.WARNING, "subscription-state-readonly-notice")
-            state.phase == SubmissionPhase.COMMITTED || state.conflict || state.needsInitialRead -> Button(onRetryRead,
-                Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-state-retry-read"), enabled = !state.loading && !state.busy) {
-                Text(if (state.phase == SubmissionPhase.COMMITTED && state.conflict) "核对当前事实并安全返回"
-                    else if (state.phase == SubmissionPhase.COMMITTED) "重新读取已保存结果" else "读取并核对原事实")
-            }
-            else -> Button(onConfirm, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-state-confirm"),
-                enabled = !state.loading && !state.busy) {
-                Text(if (state.phase == SubmissionPhase.UNCONFIRMED) "核对并重试同一提交" else "确认$title")
-            }
-        }
-        if (state.busy) Text("正在保存到本地")
+
     }
 }

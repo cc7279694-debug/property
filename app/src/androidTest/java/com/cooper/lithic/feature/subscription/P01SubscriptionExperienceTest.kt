@@ -10,10 +10,11 @@ import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performScrollToNode
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.core.design.LithicTheme
@@ -61,15 +62,15 @@ class P01SubscriptionExperienceTest {
         } }
 
         compose.onNodeWithTag("subscription-amount").performScrollTo().assertIsNotEnabled()
-        compose.onNodeWithTag("subscription-payment-unconfirmed").performScrollTo()
+        compose.onNodeWithTag("subscription-payment-unconfirmed")
             .assertTextContains("请勿另建订阅", substring = true)
-        compose.onNodeWithTag("subscription-confirm-payment").performScrollTo()
+        compose.onNodeWithTag("subscription-confirm-payment")
             .assertIsEnabled().assertTextContains("核对并重试同一付款")
         compose.runOnIdle { state = state.copy(phase = SubmissionPhase.COMMITTED) }
-        compose.onNodeWithTag("subscription-payment-saved").performScrollTo()
+        compose.onNodeWithTag("subscription-payment-saved")
             .assertTextContains("不会再记录一笔付款", substring = true)
         compose.onNodeWithTag("subscription-confirm-payment").assertDoesNotExist()
-        compose.onNodeWithTag("subscription-retry-read").performScrollTo().performClick()
+        compose.onNodeWithTag("subscription-retry-read").performClick()
         assertEquals(0, confirmations.get())
         assertEquals(1, reads.get())
     }
@@ -111,13 +112,13 @@ class P01SubscriptionExperienceTest {
         compose.onNodeWithTag("subscription-stop-selection").performScrollTo()
             .assertTextContains("提前停止", substring = true)
         compose.runOnIdle { state = state.copy(phase = SubmissionPhase.UNCONFIRMED) }
-        compose.onNodeWithTag("subscription-state-unconfirmed").performScrollTo()
+        compose.onNodeWithTag("subscription-state-unconfirmed")
             .assertTextContains("不要重新发起另一笔", substring = true)
         compose.runOnIdle { state = state.copy(phase = SubmissionPhase.COMMITTED) }
-        compose.onNodeWithTag("subscription-state-readback-status").performScrollTo()
+        compose.onNodeWithTag("subscription-state-readback-status")
             .assertTextContains("不会再次修改记录", substring = true)
         compose.onNodeWithTag("subscription-state-confirm").assertDoesNotExist()
-        compose.onNodeWithTag("subscription-state-retry-read").performScrollTo().performClick()
+        compose.onNodeWithTag("subscription-state-retry-read").performClick()
         assertEquals(0, confirms.get())
         assertEquals(1, reads.get())
     }
@@ -147,7 +148,17 @@ class P01SubscriptionExperienceTest {
     }
 
     private fun detailNode(tag: String): androidx.compose.ui.test.SemanticsNodeInteraction {
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
+        val management = tag in setOf("subscription-detail-vendor-explanation", "subscription-detail-pause",
+            "subscription-detail-resume", "subscription-detail-stop", "subscription-detail-reopen",
+            "subscription-detail-scheduled-stop", "subscription-detail-correct-stop", "subscription-detail-cancel-stop", "subscription-price-history")
+        val open = compose.onAllNodesWithTag("subscription-detail-close-management").fetchSemanticsNodes().isNotEmpty()
+        if (management) {
+            if (!open) compose.onNodeWithTag("subscription-detail-open-management").performClick()
+            return compose.onNodeWithTag(tag).performScrollTo()
+        }
+        if (open) compose.onNodeWithTag("subscription-detail-close-management").performClick()
+        if (tag != "subscription-detail-renewal")
+            compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
         return compose.onNodeWithTag(tag)
     }
 

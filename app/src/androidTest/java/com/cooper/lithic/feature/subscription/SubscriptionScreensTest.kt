@@ -76,7 +76,7 @@ class SubscriptionScreensTest {
         assertEquals(SECOND_CATEGORY, state.categoryId)
         assertEquals("保留的真实备注", state.note)
         assertEquals(0, confirmations.get())
-        compose.onNodeWithTag("subscription-confirm-payment").performScrollTo()
+        compose.onNodeWithTag("subscription-confirm-payment")
             .assertTextContains("确认已付款并创建订阅").performClick()
         assertEquals(1, confirmations.get())
     }
@@ -94,7 +94,7 @@ class SubscriptionScreensTest {
         assertEquals("148.10", state.amount)
         assertEquals(0, confirmations.get())
         Espresso.closeSoftKeyboard(); compose.waitForIdle()
-        compose.onNodeWithTag("renewal-confirm-payment").performScrollTo()
+        compose.onNodeWithTag("renewal-confirm-payment")
             .assertIsDisplayed().assertIsEnabled().assertTextContains("确认这笔真实付款").performClick()
         compose.waitForIdle()
         assertEquals(1, confirmations.get())
@@ -114,7 +114,7 @@ class SubscriptionScreensTest {
         assertDate("subscription-effective-from-input", "2026-02-01")
         assertDate("subscription-paid-until-input", "2027-02-01")
         assertDate("subscription-reminder-due-input", "2027-01-28")
-        compose.onNodeWithTag("subscription-form-error").performScrollTo().assertTextContains("输入已保留", substring = true)
+        compose.onNodeWithTag("subscription-form-error").assertTextContains("输入已保留", substring = true)
     }
 
     @Test fun in_flight_form_locks_inputs_and_duplicate_confirm() {
@@ -125,7 +125,7 @@ class SubscriptionScreensTest {
         compose.onNodeWithTag("subscription-name").assertIsNotEnabled()
         compose.onNodeWithTag("subscription-amount").performScrollTo().assertIsNotEnabled()
         compose.onNodeWithTag("subscription-paid-on-input").performScrollTo().assertIsNotEnabled()
-        compose.onNodeWithTag("subscription-confirm-payment").performScrollTo().assertIsNotEnabled()
+        compose.onNodeWithTag("subscription-confirm-payment").assertIsNotEnabled()
         compose.onNodeWithText("正在保存到本地").performScrollTo().assertIsDisplayed()
         assertEquals(0, confirmations.get())
     }
@@ -138,7 +138,7 @@ class SubscriptionScreensTest {
                 onConfirm = { confirmations.incrementAndGet() })
         } }
         compose.onNodeWithTag("renewal-amount").performScrollTo().assertIsNotEnabled().assertTextContains("150")
-        compose.onNodeWithTag("renewal-confirm-payment").performScrollTo()
+        compose.onNodeWithTag("renewal-confirm-payment")
             .assertTextContains("核对并重试同一付款").performClick()
         assertEquals(1, confirmations.get())
     }
@@ -153,7 +153,7 @@ class SubscriptionScreensTest {
         } }
         compose.onNodeWithTag("subscription-name").assertIsNotEnabled()
         compose.onNodeWithTag("subscription-confirm-payment").assertDoesNotExist()
-        compose.onNodeWithTag("subscription-retry-read").performScrollTo().performClick()
+        compose.onNodeWithTag("subscription-retry-read").performClick()
         assertEquals(0, confirmations.get())
         assertEquals(1, reads.get())
     }
@@ -168,7 +168,7 @@ class SubscriptionScreensTest {
         } }
         compose.onNodeWithTag("renewal-confirm-payment").assertDoesNotExist()
         compose.onNodeWithTag("renewal-amount").performScrollTo().assertIsNotEnabled()
-        compose.onNodeWithTag("renewal-resolve-conflict").performScrollTo().performClick()
+        compose.onNodeWithTag("renewal-resolve-conflict").performClick()
         assertEquals(0, confirmations.get())
         assertEquals(1, reads.get())
     }
@@ -183,9 +183,9 @@ class SubscriptionScreensTest {
         compose.onNodeWithTag("renewal-amount").performScrollTo().assertIsNotEnabled().assertTextContains("150")
         compose.onNodeWithTag("renewal-paid-on-input").performScrollTo().assertIsNotEnabled()
         compose.onNodeWithTag("renewal-confirm-payment").assertDoesNotExist()
-        compose.onNodeWithTag("renewal-cannot-write").performScrollTo()
+        compose.onNodeWithTag("renewal-cannot-write")
             .assertTextContains("本次输入不能提交", substring = true).assertIsDisplayed()
-        compose.onNodeWithTag("renewal-editor-back").performScrollTo().performClick()
+        compose.onNodeWithTag("renewal-editor-back").performClick()
         assertEquals(0, confirmations.get())
         assertEquals(1, backs.get())
     }
@@ -253,8 +253,8 @@ class SubscriptionScreensTest {
         assertDate("subscription-effective-from-input", "2026-01-01")
         assertDate("subscription-paid-until-input", "2026-02-01")
         assertDate("subscription-reminder-due-input", "2026-01-29")
-        compose.onNodeWithTag("subscription-form-error").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithTag("subscription-confirm-payment").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("subscription-form-error").assertIsDisplayed()
+        compose.onNodeWithTag("subscription-confirm-payment").assertIsDisplayed()
             .assertHeightIsAtLeast(48.dp).performClick()
         assertEquals(1, confirmations.get())
     }

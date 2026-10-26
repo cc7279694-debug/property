@@ -17,6 +17,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.C2FormScaffold
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.domain.subscription.BillingCycle
 
@@ -34,14 +35,12 @@ internal fun RenewalEditorScreen(
     onRetryRead: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.fillMaxSize().imePadding().verticalScroll(rememberScrollState())
-        .padding(LithicSpacing.medium).testTag("renewal-editor-screen"),
-        verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
-        TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("renewal-editor-back")) { Text("返回订阅详情") }
-        val correction = state.kind == SubscriptionEditorKind.CORRECT_RENEWAL
-        val reenable = state.kind == SubscriptionEditorKind.REENABLE
-        Text(if (correction) "修正真实付款" else if (reenable) "确认真实付款并启用原订阅" else "记录真实续费", style = MaterialTheme.typography.headlineLarge,
-            modifier = Modifier.semantics { heading() })
+    val correction = state.kind == SubscriptionEditorKind.CORRECT_RENEWAL
+    val reenable = state.kind == SubscriptionEditorKind.REENABLE
+    C2FormScaffold(if (correction) "修正真实付款" else if (reenable) "确认真实付款并启用原订阅" else "记录真实续费",
+        onBack, "renewal-editor-back", modifier.testTag("renewal-editor-screen"), backLabel = "返回订阅详情",
+        footer = { SubscriptionPaymentActions(state, "renewal", if (correction) "确认修正原付款" else if (reenable) "确认真实付款并启用原订阅" else "确认这笔真实付款",
+            onConfirmPayment, onRetryRead) }) {
         Text(state.serviceName, Modifier.testTag("renewal-service-name"), style = MaterialTheme.typography.titleLarge)
         if (state.loading) Text("正在读取订阅资料", style = MaterialTheme.typography.bodyLarge)
         Text(if (correction) "修改原付款事实并重算历史，不新增付款或退款；原记录身份保持。"
@@ -52,7 +51,5 @@ internal fun RenewalEditorScreen(
             Modifier.testTag("renewal-fixed-stop"), style = MaterialTheme.typography.bodyMedium) }
         SubscriptionPaymentFields(state, "renewal", onAmountChange, onCycleChange, onPaidOnChange,
             onEffectiveFromChange, onPaidUntilChange, onReminderDueChange)
-        SubscriptionPaymentActions(state, "renewal", if (correction) "确认修正原付款" else if (reenable) "确认真实付款并启用原订阅" else "确认这笔真实付款",
-            onConfirmPayment, onRetryRead)
     }
 }

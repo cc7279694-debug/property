@@ -1,0 +1,98 @@
+{
+  "jvmPass": 21,
+  "methods": [
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "large_aggregate_is_exact_and_never_uses_scientific_notation"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "exact_one_cent_and_larger_daily_rates_use_normal_rounding"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "real_zero_has_two_decimal_places"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "ordinary_amount_rounds_half_up_with_both_signs"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "missing_amount_is_not_a_zero_amount"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "every_nonzero_daily_rate_below_one_cent_remains_explicitly_nonzero"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "high_precision_value_is_only_formatted_without_changing_numeric_input"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "ordinary_half_cent_is_rounded_and_not_a_daily_rate_boundary"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "method": "custom_categories_are_not_guessed_from_a_product_name"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "method": "known_categories_have_distinct_non_brand_symbols"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "method": "identity_initial_preserves_a_complete_unicode_code_point"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "method": "blank_identity_keeps_an_explicit_icon_fallback"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.P02UiMessageStateTest",
+      "method": "clearing_a_message_also_clears_information_classification"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.P02UiMessageStateTest",
+      "method": "identical_text_reassignment_is_not_inferred_to_be_information"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.P02UiMessageStateTest",
+      "method": "absent_message_cannot_be_marked_as_a_success_or_information"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.P02UiMessageStateTest",
+      "method": "explicitly_verified_read_information_preserves_its_exact_text"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.P02UiMessageStateTest",
+      "method": "later_error_assignment_cannot_inherit_a_prior_information_tone"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.P02UiMessageStateTest",
+      "method": "new_message_state_has_no_text_and_conservative_error_tone"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "analysis_return_context_survives_a_current_or_stopped_result"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "unknown_or_malformed_context_never_opens_a_form"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "existing_analysis_routes_can_open_the_existing_forms"
+    }
+  ],
+  "newAndroidCompiled": 4,
+  "runtime": "NOT_RUN",
+  "firstCompileFailures": [
+    "b2-check",
+    "b2-final-compile"
+  ],
+  "fix": "Replace unsupported compactRow with existing labelOutside visual parameter; no input/VM change",
+  "approved": "b2-approved",
+  "existingTests": "Only More/footer/back locators; original assertions preserved"
+}
