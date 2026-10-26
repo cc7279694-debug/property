@@ -170,3 +170,11 @@ Room5/backup4、冻结金额/日期/M16/通知规则、Owner/写入/恢复/导�
 用户从`ba24df68a4ee242912e4b010b8e485b713489e12`正式授权P03，覆盖上方P02时点“不自动P03”。P02独立桌面实施审查PASS WITH NOTES，人工延期。P03现为 **IMPLEMENTED — PENDING FINAL PRODUCT REVIEW**，见[P03报告](docs/evidence/LITHIC-P03-Settings-Data-Safety.md)。新增计算说明/当前包版本/关于，导出与恢复按真实结果分级，中断未知；预览十表对照为校验时快照，完整覆盖、不合并及风险明确。
 
 最终92唯一JVM PASS、13新Compose仅编译/NOT_RUN，Debug/AndroidTest源码编译exit0，Lint0错误17警告；原3真实RED保留并对应GREEN。仅UI/内存呈现元数据，两个ViewModel、数据层/Room5/backup4/冻结算法/Owner/原子切换/Token/原守卫、Gradle/Manifest/依赖/身份和原证书不改。无设备/安装/用户数据操作，不构建新体验APK，旧缺失产物不补造。M22仍BLOCKED、M10三FAIL/M20平台FAIL与UNKNOWN/M13-T06/Q03/Q04/G1/G2/G3及全部历史现场与证据保持。今后P04交付须同preview ID/证书、code至少18及非build目录实际唯一产物；本轮只推当前产品完善分支后停止，不自动P04/M23、不合并main、不自行冻结。
+
+## 2026-10-26 — P04个人体验候选当前授权与停止点
+
+用户从d35f8a1明确授权P04，覆盖上方“不自动P04”；P01～P03均仅IMPLEMENTED / PENDING FINAL PRODUCT REVIEW，独立桌面审查PASS WITH NOTES。P04现为 **IMPLEMENTATION COMPLETE / READY FOR USER TRIAL**，不等于正式Release、M22冻结或M23通过。只改显式trial的code18/preview.2、排除trial测试宿主、明确可丢弃数据/不要唯一副本说明及定向断言。正常Debug/Release/M22身份与原证书不变，Room5/backup4、业务/Owner/Token/原子切换/查询和导航守卫不改。
+
+116唯一JVM PASS；42原Compose仅编译/NOT_RUN；Debug及体验构建成功，Lint分别0E17W/0E11W。APK从源码`96e4d7c762c2b82e8e245a4d0260bea3744b62e3`构建，已实际核对Manifest/DEX/原证书及SHA并复制到非build独占deliveries目录；仅此APK为当前交付，不把研发Debug或缺失的旧code17实物冒充新版。APK与密钥不入Git、不公开发布。实际路径/大小/SHA与证据见[P04报告](docs/evidence/LITHIC-P04-Integration-Delivery.md)。
+
+本轮所有ADB/设备/安装/账本操作0；[体验清单](docs/evidence/LITHIC-V1-User-Trial-Checklist.md)仅供以后自选，不算已运行PASS。M10三FAIL、M20平台FAIL/UNKNOWN、M22 BLOCKED/T06/T03/IME、M13-T06、Q03/Q04、G1/G2/G3/G4及全部历史NOTES/现场保持。只提交推送当前产品完善分支后停止，不自动安装、冻结、合并main或进入M23；后续Codex设备操作必须另获明确授权。

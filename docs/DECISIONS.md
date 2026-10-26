@@ -840,3 +840,25 @@ P02仅IMPLEMENTED / PENDING FINAL PRODUCT REVIEW，纯JVM/编译门禁和Android
 ### Consequences
 
 P03仅IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；92唯一JVM PASS、13新Compose仅编译/NOT_RUN，真实SAF/恢复与版本读取未运行。Room5/backup4及身份/证书保持，P04仍未实施；旧体验APK缺失、M10三FAIL、M20平台FAIL/UNKNOWN、M22未完验收等风险进入后续清单，不因呈现完善关闭。
+
+## 2026-10-26 — P04只对显式体验构建递增版本并固定实物交付
+
+### Decision
+
+沿用原preview applicationId和Debug证书，仅lithicPrivateTrial=true升code18/preview.2，并排除该模式中的Compose测试宿主。普通Debug/Release/M22配置保持。正常LithicApplication/MainActivity，About明确个人试用、可丢弃数据及不作唯一副本。先通过定向质量门禁并固定源码提交，再构建核验用户APK，复制到独占非build目录并比较实际字节和SHA；最终报告提交不改产品输入。
+
+### Context
+
+用户要求完成P01～P03桌面整合并集中交付，暂不设备验收。历史code17产物缺失不能补造；旧体验Manifest带Debug测试宿主，当前交付要求不包含测试框架或宿主。
+
+### Alternatives
+
+不改正式身份/签名，不生成新密钥；不将研发Debug/Test或M22验证包当作用户体验版；不从M10候选合并资源协议，不新增模块、数据结构、依赖版本或设备实验。
+
+### Reason
+
+确保同包/同证书的版本连续性和可复核的实际交付，避免构建缓存清理后找不到APK或把不同字节冒称原版本；静态产物门禁和未执行的用户体验明确分开。
+
+### Consequences
+
+P04仅个人体验候选，不是V1.0正式发行或M23通过。116唯一JVM PASS、42 Compose仅编译/NOT_RUN，普通Debug和体验Lint均0错误。实际安装/升级/恢复/提醒/OEM及其余历史门禁不升级结论。后续体验由用户自行安排；任何Codex设备操作须另行明确授权。问题按小范围处理并优先保护真实数据。

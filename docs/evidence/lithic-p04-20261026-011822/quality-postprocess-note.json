@@ -1,0 +1,7 @@
+{
+  "firstAuditExitCode": 1,
+  "cause": "P01 compile-only index uses declaredMethods, while P02/P03 use methods",
+  "correction": "Read explicitly identified legacy field; reject unsupported shapes; continue metadata audit without rerunning tests, builds or previous SDK commands",
+  "testOrBuildFailure": false,
+  "runtime": "NOT_RUN"
+}

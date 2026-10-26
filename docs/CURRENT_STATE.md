@@ -1,10 +1,12 @@
 # 当前项目状态
 
-状态日期：2026-10-25（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-26（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
 
-- **P03 — IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；设置、备份恢复与说明完善**：来源`ba24df68a4ee242912e4b010b8e485b713489e12`。新增计算说明与当前安装包版本/关于入口，导出/恢复只按明确事件及真实结果分级；中断和未证明结果保持未知。预览补足十表对照及快照/完整覆盖说明，保留原重复操作与切换保护。3真实断言RED到同身份GREEN；最终92唯一JVM PASS（38新/54相关）、13新Compose仅编译/NOT_RUN，Debug与AndroidTest源码编译exit0，Lint0错误17警告。Room5/backup4、data/domain/Owner/RestoreCoordinator/Token/事务与身份/证书不改；无设备、安装或个人账本操作，未交付新体验APK。见[P03报告](evidence/LITHIC-P03-Settings-Data-Safety.md)及[产品记录](planning/LITHIC-V1-PRODUCT-COMPLETION.md)。P01/P02独立桌面审查仅PASS WITH NOTES、人工延期；M22历史BLOCKED、M10/M20等旧风险不变。不自动P04/M23。
+- **P04 — PRODUCT INTEGRATION / PRIVATE TRIAL CANDIDATE，READY FOR USER TRIAL**：用户从d35f8a1正式授权桌面整合/体验交付；三入口源码检查未发现明确断路或安全绕过，116唯一JVM PASS、42原Compose仅编译/NOT_RUN。普通Debug构建及Lint0E17W、显式体验构建及Lint0E11W成功；源码固定`96e4d7c762c2b82e8e245a4d0260bea3744b62e3`。同preview包/原Debug证书升code18、preview.2；体验APK排除测试宿主/框架，正常LithicApplication/MainActivity及自有Provider，无INTERNET。唯一实际交付APK13,854,809字节，已复制到非build独占deliveries目录、逐字节/SHA核对，未入Git；路径/完整SHA见[P04报告](evidence/LITHIC-P04-Integration-Delivery.md)。[体验清单](evidence/LITHIC-V1-User-Trial-Checklist.md)供以后自选，建议可丢弃数据，不作重要数据唯一副本。设备/安装/升级/人工体验为0或NOT_RUN，P01～P03仍IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；M22 BLOCKED及全部历史风险不变，不等于Release或M23通过。
+
+- **P03 — IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；设置、备份恢复与说明完善**：来源`ba24df68a4ee242912e4b010b8e485b713489e12`。新增计算说明与当前安装包版本/关于入口，导出/恢复只按明确事件及真实结果分级；中断和未证明结果保持未知。预览补足十表对照及快照/完整覆盖说明，保留原重复操作与切换保护。3真实断言RED到同身份GREEN；最终92唯一JVM PASS（38新/54相关）、13新Compose仅编译/NOT_RUN，Debug与AndroidTest源码编译exit0，Lint0错误17警告。Room5/backup4、data/domain/Owner/RestoreCoordinator/Token/事务与身份/证书不改；无设备、安装或个人账本操作，未交付新体验APK。见[P03报告](evidence/LITHIC-P03-Settings-Data-Safety.md)及[产品记录](planning/LITHIC-V1-PRODUCT-COMPLETION.md)。P01～P03独立桌面审查仅PASS WITH NOTES、人工延期；M22历史BLOCKED、M10/M20等旧风险不变。最新P04授权与停止点以上项为准，不自动M23。
 
 - **P02 — IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；V1浏览与回看完善**：从用户锁定P01提交`7bec69e3c82b4a28168e69964df718b1a3e149b7`继续当前产品完善分支。回看透传两类含历史计数，四列表/搜索区分未知/空/忙/错误/旧结果，搜索及类别详情返回保留原上下文；操作反馈只按已明确来源分级，不改写入资格。9方法原6 FAIL/3 PASS到同9方法全PASS；最终89唯一JVM PASS、17新Compose仅编译/运行NOT_RUN，Debug与AndroidTest源码编译exit0，Lint0错误17警告。Room5/backup4、业务/查询/Owner/恢复、默认Debug/Release/Private Trial身份及原证书保持；设备/安装/个人数据操作0，未交付新用户APK。旧体验APK仍NOT_AVAILABLE。见[P02报告](evidence/LITHIC-P02-Browse-Review.md)与[产品记录](planning/LITHIC-V1-PRODUCT-COMPLETION.md)。P01/P02桌面实施独立审查PASS WITH NOTES仅限实施证据，人工验收延期；M22仍BLOCKED、全部历史状态保留，P03最新授权与停止点见上项。
 
@@ -121,11 +123,11 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Git
 
-- 当前功能分支`codex/lithic-v1-product-completion`，P03起点`ba24df68a4ee242912e4b010b8e485b713489e12`，继承M22来源b9e77b3；M22原分支保留。工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`；不修改原M10目录或任何设备。
+- 当前功能分支`codex/lithic-v1-product-completion`，P04起点`d35f8a1a91112c1cf19fb74950c8edbd39be59c0`、构建源码`96e4d7c762c2b82e8e245a4d0260bea3744b62e3`，继承M22来源b9e77b3；M22原分支保留。工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`；不修改原M10目录或任何设备。
 - 仅提交推送本模块代码/测试/文档，最终远端及工作区状态以Git回执为准；不合并main，不配置正式签名。
 
 ## Next Recommended Task
 
-P03设置与数据反馈桌面实施结束，P01～P03均IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；不要求用户现在安装或人工验收。P04仅建议集中核对现有功能与未完成的真实页面/SAF/恢复验证、风险清单和必要定向回归；未自动实施。具体待项见[P03报告](evidence/LITHIC-P03-Settings-Data-Safety.md#p04集中收敛前仍需处理)。
+P04个人体验候选已交付本地，等待用户自行安排集中体验与ChatGPT独立复核；不要求现在安装/截图，也不自动执行手机或旧模拟器测试。按[体验清单](evidence/LITHIC-V1-User-Trial-Checklist.md)只用可丢弃账本，发生未知结果先保留提示，不清数据或重复覆盖。
 
-今后体验交付必须同preview ID/同证书、code至少18，将实际唯一产物复制到非build目录；旧code17 APK缺失不补造。M10三JPEG FAIL、M20平台FAIL/UNKNOWN、M22 T06/T03/IME、M13-T06与G1/G2/G3等历史限制继续保留，不自动恢复旧设备循环、合并main或进入M23。
+P01～P03仍IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；M10三JPEG FAIL、M20平台FAIL/UNKNOWN、M22 BLOCKED及T06/T03/IME、M13-T06和G1/G2/G3/G4均未关闭。若后续明确授权M23，按原计划核对正式签名保管/真实升级、schema与备份兼容、恢复与相关故障/设备可靠性；不能把本次Debug签名候选当成正式发行准入。问题反馈优先小范围修正并保护真实数据，不自动重启旧验收循环、合并main或进入M23。

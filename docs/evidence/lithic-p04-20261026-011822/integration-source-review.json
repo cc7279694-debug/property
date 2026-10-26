@@ -1,0 +1,57 @@
+{
+  "scope": "SOURCE_REVIEW_ONLY_NOT_ANDROID_RUNTIME",
+  "items": [
+    {
+      "area": "three_tabs",
+      "source": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "finding": "Home Review Settings go through requestLeave/onBack; no new tab",
+      "reviewedSourceSha256": "c8ffb75d790f88f0fd1afb8f8e845855eb08a2cc0637a101326bbaf6ddb40fda"
+    },
+    {
+      "area": "production_callbacks",
+      "source": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "finding": "Production backup/restore callbacks route actual service/coordinator via view models; no placeholder callback on normal production path",
+      "reviewedSourceSha256": "5c9fb8c0fbcf9c0eb535bb11940a02de9b71737e7459a4928c1f66bdd77bc6dd"
+    },
+    {
+      "area": "source_context",
+      "source": "app/src/main/java/com/cooper/lithic/app/LithicRoutes.kt",
+      "finding": "Validated search/category detail tails preserve source; ID/type/canonical stack checks retained",
+      "reviewedSourceSha256": "712f60677e174e67f8066dddac8be27fd6bf99a59a7b403e335bb6f15d20e119"
+    },
+    {
+      "area": "report_dependencies",
+      "source": "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+      "finding": "Production Ready provides current-generation repositories; nullable component defaults do not create dead production buttons",
+      "reviewedSourceSha256": "45979f7569368de04d7d463f28ac4fb175b68681417bfb9bd062908ae927f463"
+    },
+    {
+      "area": "explanations",
+      "source": "app/src/main/java/com/cooper/lithic/feature/settings/ProductInformation.kt",
+      "finding": "Frozen rules are explanatory copy only; trial disposable-data/nonsole-copy notice added",
+      "reviewedSourceSha256": "266d51799860bfa52d1d0652947084f79c5a9a04fbf09b7cd29b9e20d720340d"
+    },
+    {
+      "area": "runtime_version",
+      "source": "app/src/main/java/com/cooper/lithic/feature/settings/InstalledAppInformationReader.kt",
+      "finding": "Own PackageManager metadata; API26/27 and28+ version branches; failure unknown",
+      "reviewedSourceSha256": "80f9750656ee92d4a7dd59a4d3e2b996dd155f8f3bd9a892a5c5bb4aa11938ca"
+    },
+    {
+      "area": "export",
+      "source": "app/src/main/java/com/cooper/lithic/feature/settings/BackupExportController.kt",
+      "finding": "Success only from actual result; cancellation/failure/residue/unknown separated; no phase/wording success inference",
+      "reviewedSourceSha256": "afb1827e9594756a434a7254234c68536ec44968ac62816de5545f9051a8373e"
+    },
+    {
+      "area": "restore",
+      "source": "app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreController.kt",
+      "finding": "Only live validated preview token + explicit confirm; original phase/Mutex/snapshot/Owner constraints retained; no bypass found",
+      "reviewedSourceSha256": "bd2ae0c10aa5e782f891385c0634d9091e6e34d5dea6b06a4ea01e06356f1d6a"
+    }
+  ],
+  "knownSafetyBlockerFound": false,
+  "searchActualEntry": "Home / 现在 -> 搜索名称",
+  "runtime": "NOT_RUN",
+  "deviceOperations": 0
+}

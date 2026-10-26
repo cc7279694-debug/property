@@ -1,0 +1,69 @@
+{
+  "source": "d35f8a1a91112c1cf19fb74950c8edbd39be59c0",
+  "default": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "m22Verification": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "com.cooper.lithic.app.M13IsolatedRunner",
+    "buildDirectory": "build\\m22-device-verification",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.m22verify.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "priorLocalApks": {
+    "app/build/outputs/apk/debug/app-debug.apk": {
+      "bytes": 14425645,
+      "sha256": "0c24f6960a754c99a11f7b07d24f5ca149b045ad8227ddc3aa0b9a59b0c02a2b"
+    },
+    "app/build/m22-device-verification/outputs/apk/debug/app-debug.apk": {
+      "bytes": 13822252,
+      "sha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3"
+    },
+    "app/build/m22-device-verification/outputs/apk/androidTest/debug/app-debug-androidTest.apk": {
+      "bytes": 3403324,
+      "sha256": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26"
+    }
+  },
+  "oldPreviewArtifact": "NOT_AVAILABLE_FROM_P01_TO_P03",
+  "signingFileExists": true,
+  "devices": 0,
+  "clientDate": "2026-10-26"
+}

@@ -1,0 +1,8 @@
+{
+  "firstExitCode": 1,
+  "stage": "desktop_status_check_before_any_gradle_or_sdk_command",
+  "cause": "Evidence directory was initialized by imported helper before clean-tree assertion; own untracked evidence was treated as unrelated dirt",
+  "correction": "Require no tracked or staged changes and permit only this run evidence directory as untracked",
+  "productionOrTestFailure": false,
+  "deviceOperations": 0
+}

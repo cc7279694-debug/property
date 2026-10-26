@@ -1,0 +1,112 @@
+{
+  "status": "ARTIFACT_STATIC_GATES_PASS_WITH_KNOWN_RISKS",
+  "sourceBase": "d35f8a1a91112c1cf19fb74950c8edbd39be59c0",
+  "buildSourceCommit": "96e4d7c762c2b82e8e245a4d0260bea3744b62e3",
+  "buildInputGitObjects": {
+    "app": "ed99a333be8ace524323f37e00a1b968bfc80edb",
+    "gradle": "916b31582ac3e327dd1b15c17ba5fc181dd53c1d",
+    "build.gradle.kts": "8e000be9cf653786942a98eba1039102a6ece201",
+    "settings.gradle.kts": "391acffb2c728f7f6952db41333b975130c2f867",
+    "gradle.properties": "a045ee81cf613f357dafcf80449b3197358ec36b"
+  },
+  "apk": {
+    "buildPath": "app/build/private-trial/outputs/apk/debug/app-debug.apk",
+    "bytes": 13854809,
+    "sha256": "d39b6bf764720415d88d0d9f6c149b34dcda2d795f823505786fa4130b906ef4",
+    "applicationId": "com.cooper.lithic.preview.debug",
+    "label": "砺石·体验版",
+    "versionCode": 18,
+    "versionName": "0.1.0-preview.2-debug",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "debuggable": true
+  },
+  "signing": {
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "signerCount": 1,
+    "type": "Existing Debug signing identity, not formal Release",
+    "verificationExitCode": 0,
+    "replacementKeyGenerated": false
+  },
+  "manifest": {
+    "application": "com.cooper.lithic.app.LithicApplication",
+    "launcher": [
+      "com.cooper.lithic.app.MainActivity"
+    ],
+    "activities": [
+      "com.cooper.lithic.app.MainActivity"
+    ],
+    "authorities": [
+      "com.cooper.lithic.preview.debug.androidx-startup"
+    ],
+    "providerExported": false,
+    "instrumentation": false,
+    "sharedUserId": false,
+    "testOnly": false,
+    "permissions": [
+      "android.permission.ACCESS_NETWORK_STATE",
+      "android.permission.POST_NOTIFICATIONS",
+      "android.permission.RECEIVE_BOOT_COMPLETED",
+      "android.permission.WAKE_LOCK",
+      "com.cooper.lithic.preview.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "internet": false,
+    "rawMergedSha256": "081705b54b560ed0954f3197cba1f4290b820830f32b9d23546be5c19df94752"
+  },
+  "dex": {
+    "files": 13,
+    "definedClasses": 18832,
+    "requiredProductionClasses": [
+      "Lcom/cooper/lithic/app/AppContainer;",
+      "Lcom/cooper/lithic/app/LithicApplication;",
+      "Lcom/cooper/lithic/app/LithicNavigationKt;",
+      "Lcom/cooper/lithic/app/MainActivity;",
+      "Lcom/cooper/lithic/feature/home/HomeShellKt;",
+      "Lcom/cooper/lithic/feature/review/ReviewShellKt;",
+      "Lcom/cooper/lithic/feature/settings/BackupExportController;",
+      "Lcom/cooper/lithic/feature/settings/BackupRestoreController;",
+      "Lcom/cooper/lithic/feature/settings/InstalledAppInformationReaderKt;",
+      "Lcom/cooper/lithic/feature/settings/ProductInformationScreenKt;",
+      "Lcom/cooper/lithic/feature/settings/SettingsShellKt;"
+    ],
+    "forbiddenTestFrameworkOrOwnTestClasses": [],
+    "composeTestHostRemovedFromTrialOnly": true,
+    "testAssets": [],
+    "riskCopyPresent": true
+  },
+  "privateProfile": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build\\private-trial",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.preview.debug",
+        "versionCode": 18,
+        "versionName": "0.1.0-preview.2-debug",
+        "manifest": "src\\privateTrial\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 18,
+        "versionName": "0.1.0-preview.2",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "privateLint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 11
+  },
+  "oldM22LocalApksUnchanged": true,
+  "historicalCode17PreviewArtifact": "NOT_AVAILABLE_BEFORE_BUILD_NOT_RECREATED",
+  "deviceOperations": 0,
+  "installationOrRuntime": "NOT_RUN",
+  "actualUidAndUpgrade": "NOT_RUN",
+  "m22State": "BLOCKED / CHANGES REQUIRED"
+}
