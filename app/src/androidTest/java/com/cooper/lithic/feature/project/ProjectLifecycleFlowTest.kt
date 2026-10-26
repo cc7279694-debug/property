@@ -327,7 +327,7 @@ class ProjectLifecycleFlowTest {
         compose.onNodeWithTag("discard-keep").performClick()
         assertNull(repository.loadProjectDetail(id)!!.project.endedOn)
         assertEquals(1, repository.loadProjectDetail(id)!!.events.size)
-        compose.onNodeWithTag("end-back").performScrollTo().performClick()
+        compose.onNodeWithTag("end-back").assertIsDisplayed().performClick()
         compose.onNodeWithTag("discard-confirm").performClick()
         compose.onNodeWithTag("project-detail-screen").assertIsDisplayed()
     }

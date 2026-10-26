@@ -248,7 +248,7 @@ class M13CoreJourneyTest {
     }
     private fun click(tag: String) {
         Espresso.closeSoftKeyboard()
-        if (tag in setOf("money-save", "end-save", "project-save", "subscription-save", "renewal-confirm-payment", "subscription-state-confirm", "subscription-detail-renew", "money-back", "end-back", "subscription-editor-back", "renewal-back", "subscription-state-back")) {
+        if (tag in setOf("money-save", "end-save", "project-save", "subscription-save", "renewal-confirm-payment", "subscription-state-confirm", "subscription-detail-renewal", "money-back", "end-back", "subscription-editor-back", "renewal-back", "subscription-state-back")) {
             compose.onNodeWithTag(tag).assertIsDisplayed().assertIsEnabled().performClick()
         } else {
             compose.onNodeWithTag(tag).performScrollTo().assertIsEnabled().performClick()
@@ -262,8 +262,12 @@ class M13CoreJourneyTest {
         compose.onNodeWithTag(tag).performClick()
     }
     private fun subscriptionDetailClick(tag: String) {
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
-        compose.onNodeWithTag(tag).performClick()
+        if (tag == "subscription-detail-renewal") {
+            compose.onNodeWithTag(tag).assertIsDisplayed().assertIsEnabled().performClick()
+        } else {
+            compose.onNodeWithTag("subscription-detail-open-management").assertIsDisplayed().performClick()
+            compose.onNodeWithTag(tag).performScrollTo().assertIsEnabled().performClick()
+        }
     }
     private suspend fun awaitRate(expected: String) {
         withTimeout(15_000) { holder.state.first { state ->
