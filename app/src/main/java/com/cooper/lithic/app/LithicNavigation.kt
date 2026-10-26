@@ -380,6 +380,11 @@ internal fun LithicNavigation(
         lifecycle.addObserver(observer)
         onDispose { lifecycle.removeObserver(observer) }
     }
+    // Keep a restore outcome that has not been confirmed out of the verified-empty presentation.
+    // This reads the existing controller state; it does not grant navigation or write eligibility.
+    val hasSnapshotNotice = state.readError != null || state.overview == null ||
+        restoreState.feedback == com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN ||
+        restoreState.phase == com.cooper.lithic.feature.settings.RestoreUiPhase.RESTORING
     val currentPrimary = when {
         Review in routes -> Review
         Settings in routes -> Settings
@@ -392,7 +397,7 @@ internal fun LithicNavigation(
                 destinations.forEach { (destination, label) ->
                     NavigationBarItem(selected = currentPrimary == destination, onClick = { requestLeave(canonicalBackStack(destination)) },
                         icon = { C2Icon(when (destination) { Home -> C2Glyph.Now; Review -> C2Glyph.Review; else -> C2Glyph.Settings }) },
-                        label = { Text(label, style = MaterialTheme.typography.labelMedium) },
+                        label = { Text(label, style = MaterialTheme.typography.labelSmall) },
                         modifier = Modifier.heightIn(min = 48.dp).testTag(when (destination) { Home -> "tab-now"; Review -> "tab-review"; else -> "tab-settings" }))
                 }
             }
@@ -415,16 +420,17 @@ internal fun LithicNavigation(
                         onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it, ProjectOrigin.HOME))) },
                         onOpenSubscription = { requestLeave(canonicalBackStack(SubscriptionDetail(it, SubscriptionOrigin.HOME))) },
                         onCalculationExplanation = { requestLeave(listOf(Home, CalculationExplanation)) },
-                        onRetryPreview = { model.retryRead(); subscriptionModel.retryRead() }, hasReadNotice = state.readError != null) }
+                        onRetryPreview = { model.retryRead(); subscriptionModel.retryRead() }, hasReadNotice = hasSnapshotNotice) }
                     entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) },
                         onLongTermReview = if (state.rankingRepository != null) ({ requestLeave(canonicalBackStack(LongTermReview)) }) else null,
                         onTotalCostTrend = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(TotalCostTrend)) }) else null,
                         onCategoryAnalysis = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(CategoryAnalysis())) }) else null,
                         onAnnualReview = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(AnnualReview)) }) else null,
-                        subscriptionCount = state.subscriptionCount, hasReadNotice = state.readError != null,
+                        subscriptionCount = state.subscriptionCount, hasReadNotice = hasSnapshotNotice,
                         trendState = trendState, onSelectTrendDate = { trendModel?.selectDate(it) },
                         onToggleTrendBreakdown = { trendModel?.toggleBreakdown() }, onRetryTrend = { trendModel?.refresh() },
+                        onAddRecord = { requestLeave(canonicalBackStack(Home)) },
                         onOpenTrendRecord = { kind, id -> requestLeave(canonicalBackStack(
                             if (kind == OverviewKind.PROJECT) ProjectDetail(id, ProjectOrigin.REVIEW_HOME)
                             else SubscriptionDetail(id, SubscriptionOrigin.REVIEW_HOME))) }) }

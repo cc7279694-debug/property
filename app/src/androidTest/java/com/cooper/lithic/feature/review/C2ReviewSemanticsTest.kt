@@ -47,7 +47,7 @@ class C2ReviewSemanticsTest {
         val ledger = LedgerSnapshot(OverviewSnapshot(emptyList(), emptyList(), emptyList()))
         show(TotalCostTrendUiState(snapshot = ledger,
             timeline = CostTimeline(day, null, emptyList(), emptyList(), 240, 0, false)))
-        compose.onNodeWithTag("total-trend-empty").assertIsDisplayed()
+        compose.onNodeWithTag("review-empty-state").assertIsDisplayed()
         compose.onNodeWithTag("total-trend-canvas").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-total").assertDoesNotExist()
     }

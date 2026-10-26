@@ -1,0 +1,170 @@
+{
+  "status": "STATIC_DELIVERY_GATES_PASS_WITH_KNOWN_RISKS",
+  "sourceBase": "ed492b7ecf57071608274d849427a48b852046d5",
+  "apk": {
+    "buildPath": "app/build/private-trial/outputs/apk/debug/app-debug.apk",
+    "bytes": 15732019,
+    "sha256": "059fcf44ae09ee2840d7c96f3a567bcf429dd465f4956c3e965c688fd7bf5670",
+    "applicationId": "com.cooper.lithic.preview.debug",
+    "versionCode": 21,
+    "versionName": "0.1.0-preview.5-debug",
+    "label": "砺石·体验版",
+    "minSdk": 26,
+    "targetSdk": 36
+  },
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "signatureVerified": true,
+  "signerCount": 1,
+  "newSigningKeyGenerated": false,
+  "application": "com.cooper.lithic.app.LithicApplication",
+  "activities": [
+    "com.cooper.lithic.app.MainActivity"
+  ],
+  "launchers": [
+    "com.cooper.lithic.app.MainActivity"
+  ],
+  "providerAuthorities": [
+    "com.cooper.lithic.preview.debug.androidx-startup"
+  ],
+  "permissions": [
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "android.permission.WAKE_LOCK",
+    "com.cooper.lithic.preview.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "noInstrumentationTestOnlySharedUID": true,
+  "internet": false,
+  "dex": {
+    "files": 13,
+    "definedClasses": 19029,
+    "requiredProductionClasses": [
+      "Lcom/cooper/lithic/app/AppContainer;",
+      "Lcom/cooper/lithic/app/LithicApplication;",
+      "Lcom/cooper/lithic/app/LithicNavigationKt;",
+      "Lcom/cooper/lithic/app/MainActivity;",
+      "Lcom/cooper/lithic/core/design/AmountTextKt;",
+      "Lcom/cooper/lithic/core/design/C2PageKt;",
+      "Lcom/cooper/lithic/core/design/C2RecordIdentityKt;",
+      "Lcom/cooper/lithic/core/design/LithicThemeKt;",
+      "Lcom/cooper/lithic/feature/category/CategoryAnalysisScreenKt;",
+      "Lcom/cooper/lithic/feature/home/HomeShellKt;",
+      "Lcom/cooper/lithic/feature/home/SearchScreenKt;",
+      "Lcom/cooper/lithic/feature/project/MoneyEventCorrectionScreenKt;",
+      "Lcom/cooper/lithic/feature/project/MoneyEventEditorKt;",
+      "Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;",
+      "Lcom/cooper/lithic/feature/project/ProjectEditorScreenKt;",
+      "Lcom/cooper/lithic/feature/project/ProjectHistoryScreenKt;",
+      "Lcom/cooper/lithic/feature/project/ProjectListScreenKt;",
+      "Lcom/cooper/lithic/feature/project/ReplacementComparisonScreenKt;",
+      "Lcom/cooper/lithic/feature/project/TradeInEditorScreenKt;",
+      "Lcom/cooper/lithic/feature/review/AnnualReviewScreenKt;",
+      "Lcom/cooper/lithic/feature/review/LongTermReviewScreenKt;",
+      "Lcom/cooper/lithic/feature/review/ReviewShellKt;",
+      "Lcom/cooper/lithic/feature/review/TotalCostTrendScreenKt;",
+      "Lcom/cooper/lithic/feature/settings/BackupExportController;",
+      "Lcom/cooper/lithic/feature/settings/BackupRestoreController;",
+      "Lcom/cooper/lithic/feature/settings/InstalledAppInformationReaderKt;",
+      "Lcom/cooper/lithic/feature/settings/ProductInformationScreenKt;",
+      "Lcom/cooper/lithic/feature/settings/RestorePreviewScreenKt;",
+      "Lcom/cooper/lithic/feature/settings/SettingsShellKt;",
+      "Lcom/cooper/lithic/feature/subscription/RenewalEditorScreenKt;",
+      "Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;",
+      "Lcom/cooper/lithic/feature/subscription/SubscriptionEditorScreenKt;",
+      "Lcom/cooper/lithic/feature/subscription/SubscriptionHistoryScreenKt;",
+      "Lcom/cooper/lithic/feature/subscription/SubscriptionListScreenKt;",
+      "Lcom/cooper/lithic/feature/subscription/SubscriptionPriceChartKt;",
+      "Lcom/cooper/lithic/feature/subscription/SubscriptionStateDialogKt;"
+    ],
+    "testFrameworkOrOwnTests": [],
+    "homeCountMethodsPresent": true,
+    "homeFabViewportAndRiskStringsPresent": true,
+    "testAssetsOrHTML": []
+  },
+  "debugLint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 21
+  },
+  "privateLint": "NOT_RUN",
+  "profiles": {
+    "default": {
+      "namespace": "com.cooper.lithic",
+      "applicationId": "com.cooper.lithic",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+      "buildDirectory": "build",
+      "variants": {
+        "debug": {
+          "applicationId": "com.cooper.lithic.debug",
+          "versionCode": 17,
+          "versionName": "0.1.0-m22-debug",
+          "manifest": "src\\debug\\AndroidManifest.xml",
+          "signingStoreExists": true
+        },
+        "release": {
+          "applicationId": "com.cooper.lithic",
+          "versionCode": 17,
+          "versionName": "0.1.0-m22",
+          "manifest": "src\\release\\AndroidManifest.xml",
+          "signingStoreExists": false
+        }
+      }
+    },
+    "m22": {
+      "namespace": "com.cooper.lithic",
+      "applicationId": "com.cooper.lithic",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "testRunner": "com.cooper.lithic.app.M13IsolatedRunner",
+      "buildDirectory": "build\\m22-device-verification",
+      "variants": {
+        "debug": {
+          "applicationId": "com.cooper.lithic.m22verify.debug",
+          "versionCode": 17,
+          "versionName": "0.1.0-m22-debug",
+          "manifest": "src\\debug\\AndroidManifest.xml",
+          "signingStoreExists": true
+        },
+        "release": {
+          "applicationId": "com.cooper.lithic",
+          "versionCode": 17,
+          "versionName": "0.1.0-m22",
+          "manifest": "src\\release\\AndroidManifest.xml",
+          "signingStoreExists": false
+        }
+      }
+    },
+    "privateTrial": {
+      "namespace": "com.cooper.lithic",
+      "applicationId": "com.cooper.lithic",
+      "minSdk": 26,
+      "targetSdk": 36,
+      "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+      "buildDirectory": "build\\private-trial",
+      "variants": {
+        "debug": {
+          "applicationId": "com.cooper.lithic.preview.debug",
+          "versionCode": 21,
+          "versionName": "0.1.0-preview.5-debug",
+          "manifest": "src\\privateTrial\\AndroidManifest.xml",
+          "signingStoreExists": true
+        },
+        "release": {
+          "applicationId": "com.cooper.lithic",
+          "versionCode": 21,
+          "versionName": "0.1.0-preview.5",
+          "manifest": "src\\release\\AndroidManifest.xml",
+          "signingStoreExists": false
+        }
+      }
+    }
+  },
+  "oldLocalArtifactsUnchanged": true,
+  "runtimeInstallationUpgradeVisual": "NOT_RUN",
+  "APP_VISUAL_PENDING": true,
+  "MEDIA_DISPLAY_PENDING": true,
+  "deviceOperations": 0,
+  "c1ProductionTagsPresent": true
+}

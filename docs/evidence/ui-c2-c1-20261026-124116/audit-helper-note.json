@@ -1,0 +1,8 @@
+{
+  "artifactFirstAttempt": "NOT_ACCEPTED_BY_HELPER",
+  "reason": "C0 helper expected Windows backslash path while new SDK command recorded forward slash; same actual file, exact argv check rejected string mismatch. Subsequent copy did not run.",
+  "correction": "Expected command string changed in ignored desktop helper to recorded forward-slash spelling. Original SDK command/result/hash unchanged; APK not rebuilt or changed.",
+  "finalArtifactAudit": "PASS",
+  "productOrJUnitFailure": false,
+  "testsRepeated": 0
+}

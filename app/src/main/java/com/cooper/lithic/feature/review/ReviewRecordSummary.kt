@@ -10,3 +10,10 @@ internal fun reviewRecordSummary(projectCount: Long, subscriptionCount: Long,
     projectCount == 0L && subscriptionCount == 0L -> ReviewRecordSummary.EMPTY
     else -> ReviewRecordSummary.RECORDED
 }
+
+/** A zero Ready count is not a licence to hide a loading, failed, or conflicting trend snapshot. */
+internal fun reviewShowsEmptyLedger(projectCount: Long, subscriptionCount: Long,
+    hasReadNotice: Boolean, trendLoading: Boolean = false, trendHasNotice: Boolean = false,
+    trendHasRecords: Boolean = false): Boolean =
+    reviewRecordSummary(projectCount, subscriptionCount, hasReadNotice) == ReviewRecordSummary.EMPTY &&
+        !trendLoading && !trendHasNotice && !trendHasRecords

@@ -23,6 +23,7 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.cooper.lithic.core.design.*
 import com.cooper.lithic.domain.report.CategoryDailyCost
 import com.cooper.lithic.domain.report.OverviewKind
@@ -47,8 +48,8 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     var explanationOpen by rememberSaveable { mutableStateOf(false) }
     val empty = c2HomeIsEmpty(overview, hasReadNotice)
     val heroSurface = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.inverseSurface
-    val heroText = if (empty) MaterialTheme.colorScheme.onBackground else Color(0xFFF1F3ED)
-    val heroSecondary = if (empty) MaterialTheme.colorScheme.onSurfaceVariant else Color(0xFFC3D9CA)
+    val heroText = Color(0xFFF1F3ED)
+    val heroSecondary = Color(0xFFC3D9CA)
     Box(modifier.fillMaxSize().testTag("home-content-area")) {
     Box(Modifier.fillMaxSize().padding(bottom = if (empty) 0.dp else 72.dp).testTag("home-scroll-viewport")) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
@@ -62,17 +63,13 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             } }
         }
         Surface(Modifier.fillMaxWidth().testTag("home-current-cost-summary"),
-            shape = MaterialTheme.shapes.large, color = if (empty) MaterialTheme.colorScheme.background else heroSurface,
-            contentColor = heroText, shadowElevation = if (empty) 0.dp else 1.dp) {
-            Column(Modifier.padding(horizontal = if (empty) 0.dp else 16.dp, vertical = if (empty) 8.dp else 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            shape = MaterialTheme.shapes.large, color = heroSurface,
+            contentColor = heroText, shadowElevation = 1.dp) {
+            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text("当前日均成本", style = MaterialTheme.typography.bodyLarge)
-                        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                            AmountText(overview?.takeIf { it.hasRecords }?.totalRate, Modifier.weight(1f).testTag("home-total-rate"),
-                                showUnit = false, color = heroText, supportingColor = heroSecondary)
-                            Text("元/天", Modifier.padding(bottom = 4.dp), style = MaterialTheme.typography.bodySmall, color = heroSecondary)
-                        }
+                        HomeHeadlineAmount(overview?.takeIf { it.hasRecords }?.totalRate, heroText, heroSecondary)
                     }
                     IconButton({ explanationOpen = true },
                         Modifier.size(48.dp).testTag("home-cost-information")) { C2Icon(C2Glyph.Info, description = "查看数量与成本口径") }
@@ -87,14 +84,16 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                     HomeOverviewStatus.CURRENT -> Unit
                 }
                 if (hasReadNotice) Text(if (overview == null) "成本与数量尚未取得，请先重试读取。" else "暂保留上次取得的成本与数量，请先重试读取。", style = MaterialTheme.typography.bodyMedium,
-                    color = if (empty) MaterialTheme.colorScheme.error else Color(0xFFF2B6AC), modifier = Modifier.testTag("home-retained-notice"))
+                    color = Color(0xFFF2B6AC), modifier = Modifier.testTag("home-retained-notice"))
             }
         }
-        if (!empty) HomeRecordCounts(overview, hasReadNotice)
+        HomeRecordCounts(overview, hasReadNotice)
         if (empty) {
-            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("把长期拥有的物品和订阅记录在这里。", style = MaterialTheme.typography.bodyLarge)
-                Button({ addOpen = true }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("home-first-record")) {
+            Column(Modifier.fillMaxWidth().padding(top = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text("从一条真实记录开始", style = MaterialTheme.typography.titleSmall)
+                Text("记下物品或订阅，开始看见它们的成本。", style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Button({ addOpen = true }, Modifier.heightIn(min = 48.dp).testTag("home-first-record")) {
                     Text("记下第一条记录")
                 }
             }
@@ -158,7 +157,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
         }
     }
     if (explanationOpen) AlertDialog(onDismissRequest = { explanationOpen = false }, title = { Text("数量与成本口径") },
-        text = { Text("两张数量卡为已录入总数，包含历史记录（已结束的长期项目和已停止的订阅）。当前日均成本仅含已录入且当前有效的记录，不是今天实际扣款，也不代表全部生活消费。两类小计及类别金额可在首页下方展开查看；金额使用原计算引擎，展示时舍入。", Modifier.verticalScroll(rememberScrollState()).testTag("home-count-scope")) },
+        text = { Text("两张数量卡为已录入总数，包含历史记录（已结束的长期项目和已停止的订阅）。当前日均成本仅含已录入且当前有效的记录，不是今天实际扣款，也不代表全部生活消费。有记录时，可在首页下方展开查看两类小计及类别金额；金额使用原计算引擎，展示时舍入。", Modifier.verticalScroll(rememberScrollState()).testTag("home-count-scope")) },
         dismissButton = {
             onCalculationExplanation?.let { explain ->
                 TextButton({ explanationOpen = false; explain() }, Modifier.testTag("home-full-calculation-explanation")) {
@@ -167,6 +166,39 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             }
         },
         confirmButton = { TextButton({ explanationOpen = false }) { Text("知道了") } })
+}
+
+/** Reserve the unit first, then size the number to its measured text, never to a whole weighted row. */
+@Composable
+private fun HomeHeadlineAmount(amount: java.math.BigDecimal?, color: Color, supportingColor: Color) {
+    val density = LocalDensity.current
+    val measurer = rememberTextMeasurer()
+    val headlineStyle = MaterialTheme.typography.displayLarge
+    val unitStyle = MaterialTheme.typography.bodySmall
+    val display = AmountFormatter.formatDailyRate(amount)
+    BoxWithConstraints(Modifier.fillMaxWidth().testTag("home-amount-line")) {
+        val unitWidth = measurer.measure(AnnotatedString("元/天"), unitStyle, softWrap = false).size.width
+        val gap = with(density) { 4.dp.roundToPx() }
+        val available = (constraints.maxWidth - unitWidth - gap).coerceAtLeast(1)
+        val layout = remember(display, headlineStyle, available, density.fontScale, density.density, measurer) {
+            amountLayout(headlineStyle.fontSize.value, available) { fontSp ->
+                measurer.measure(AnnotatedString(display), headlineStyle.copy(fontSize = fontSp.sp),
+                    softWrap = false, maxLines = 1).size.width
+            }
+        }
+        val numberStyle = headlineStyle.copy(fontSize = layout.fontSp.sp,
+            lineHeight = (headlineStyle.lineHeight.value * layout.fontSp / headlineStyle.fontSize.value).sp)
+        val numberWidth = if (layout.horizontalScroll) available else minOf(available,
+            measurer.measure(AnnotatedString(display), numberStyle, softWrap = false, maxLines = 1).size.width)
+        val numberWidthDp = with(density) { numberWidth.toDp() }
+        val unitTop = with(density) { maxOf(0f, numberStyle.lineHeight.value - unitStyle.lineHeight.value).sp.toDp() }
+        Row(verticalAlignment = Alignment.Top, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            AmountText(amount, Modifier.width(numberWidthDp).testTag("home-total-rate"), style = numberStyle,
+                showUnit = false, color = color, supportingColor = supportingColor)
+            Text("元/天", Modifier.padding(top = unitTop).testTag("home-total-unit"), style = unitStyle,
+                color = supportingColor, softWrap = false)
+        }
+    }
 }
 
 @Composable

@@ -5,6 +5,9 @@
 ## Current Stage
 
 
+- **UI-C2 C1 — READY_FOR_DEVICE_VISUAL_REVIEW / APP_VISUAL_PENDING**：用户转交Preview3真机视觉拒绝（VISUAL DELIVERY REJECTED），原C0构建/签名证据保持。本轮从`ed492b7`继承已确认图标，只改Home/Review生产Compose空态与密度：始终绿主卡、空Overview真实0数量卡、紧凑金额单位、回看单引导及守卫返回首页；未知/旧快照不冒充空库，菜单56dp、导航12/16sp，页面24sp及字体缩放保护保持。54定向JVM PASS（6新＋48回归），14新增Compose仅编译/运行NOT_RUN，Debug/AndroidTest源码编译/Debug Lint退出0（0错误21警告）。同包/原证书视觉候选Preview5/code21已生成（code20已用于图标版），最终APK静态身份/生产接线通过，旧Preview2～4及M22实物保持；详见[C1报告](evidence/UI-C2-C1-Real-Visual-Remediation.md)。原浅深设计已实际打开；用户实拍原件本轮不可访问，按明确问题描述实施。没有HTML或Android截图，A～E逐页真实视觉、实际字体/触控/IME/安装/升级均PENDING/NOT_RUN，手机fontScale UNKNOWN。Room5/backup4/写入/Owner/恢复/导航守卫/媒体与提醒规则不改；MEDIA_DISPLAY_PENDING与M10/M20/M22/M13/G1～G4历史状态保持。未操作设备，不登记VISUAL_ACCEPTED、正式交付或M23。
+
+
 - **用户选定启动图标 — Preview 4已交付**：从`342c3c3`仅以用户上传原PNG替换Launcher/adaptive图标，原图与APK图片逐字节一致；通知小图标与业务源码不改。Private Trial仍`com.cooper.lithic.preview.debug`／原证书，仅升code20／`0.1.0-preview.4-debug`，唯一15,715,635字节APK存独立deliveries目录；旧Preview2／3及M22实物不变。普通Debug构建、体验构建／Lint及静态Manifest／签名／DEX核对PASS；Lint0错误13警告，保留不透明图IconLauncherShape。圆形／圆角静态模拟已查看；JVM、AndroidTest、实际Launcher／安装／升级本轮NOT_RUN，无设备操作。见[交付与证据](evidence/LITHIC-Launcher-Icon.md)。Room5／backup4／身份与冻结协议、APP_VISUAL_PENDING／MEDIA_DISPLAY_PENDING及所有历史风险保持；不是正式Release，不进入M23。
 
 

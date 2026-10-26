@@ -103,3 +103,10 @@ LOCKED：B1～B4、Room5/backup4、金额/日期/订阅引擎、数据/Owner/导
 - 记录：首页48dp身份（其他列表64dp保持），名称优先，状态与时间流式同组，右侧短标签“日均”/“历史均价”并保留完整金额/口径语义；订阅“折算付费”不伪称已使用。长中文/金额与大字可自然扩展，不锁死行高。
 
 比较与验证按[UI-C2 B整合报告的B-HOME增量](../evidence/UI-C2-B-Integration.md#b-home首页原设计收口2026-10-26)登记；旧A-R2与B原型/结果保留。新HOME HTML/浅深三列及空态/浏览器大字均PROTOTYPE_ONLY / APP_VISUAL_PENDING。未运行Android，真实字体、IME、触控与生产MainActivity视觉仍NOT_RUN；媒体MEDIA_DISPLAY_PENDING。
+
+
+## C1 真机反馈后的空态与层级修订（2026-10-26）
+
+Preview3静态交付记录保留，视觉由用户转交独立结论VISUAL DELIVERY REJECTED。最新C1覆盖旧空态分支：Home始终保留深绿主卡，确认空Overview为—及两张真实0数量卡；未知仍—/错误旧结果有提示，空库仅原单CTA。金额按实测文本宽紧邻元/天，原Formatter/完整金额入口保留。Review确认空仅短引导及守卫回首页，无菜单墙/虚构图表；加载、错误、恢复未知、残留事实不判空，内嵌趋势不重复声明empty。正常菜单56dp最小、标题16sp，说明按需；主标题24/32、主金额38/46、辅助14/20与系统缩放保持，底部导航独立12/16sp，不通过压缩触控或关闭缩放解决问题。
+
+本轮生产Compose已编译；设计参考、生产源与真实截图是不同证据。没有HTML和真实Android截图，A～E及360/400/系统字号/IME仍待真实运行。APP_VISUAL_PENDING／MEDIA_DISPLAY_PENDING；不能登记VISUAL_ACCEPTED。见[C1报告](../evidence/UI-C2-C1-Real-Visual-Remediation.md)。

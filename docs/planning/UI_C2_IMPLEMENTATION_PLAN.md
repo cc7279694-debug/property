@@ -47,3 +47,10 @@ Verification：各部分定向JVM回归与AndroidTest编译，最终集成Debug/
 ## B段实施停止点
 
 B1～B4已分别形成生产代码提交；每部分执行定向JVM及AndroidTest编译，编译失败和修复原样保存。最终集成、身份审计和NOT_RUN范围统一见[UI-C2-B-Integration](../evidence/UI-C2-B-Integration.md)，不累加重复测试次数为覆盖数。新增21个Compose方法仅编译，未设备执行。四帧订阅/设置浅深样板为合成HTML，未生成新的用户APK。B5只读媒体建议见报告，不实施resolver、解码或M10协议。后续C必须另获设备与交付授权，核对生产MainActivity、新组件、浅深/字体/IME/返回/未知状态；最终体验包需同preview ID/证书且code>18。本轮停止等待独立整合审查。
+
+
+## C1 真实视觉整改停止点（2026-10-26）
+
+Goal：针对Preview3真机拒绝原因修Home/Review生产空态及菜单/导航层级。继承当前`ed492b7`图标，不回退C0或B段；不再生成HTML。Scope仅UI与相关定向断言/版本候选，Locked业务/Room5/backup4/Owner/恢复/媒体/通知/导航资格不变。54 JVM PASS，AndroidTest仅源码编译（14新Compose），Debug构建/Lint0E21W；Private Trial候选同ID/证书升code21（已有code20历史），静态接线与身份核对见[C1报告](../evidence/UI-C2-C1-Real-Visual-Remediation.md)。
+
+Stop：UI-C2 C1 — READY_FOR_DEVICE_VISUAL_REVIEW，APP_VISUAL_PENDING。A～E没有实际Android图，不据编译申请VISUAL_ACCEPTED；后续需用户明确选择安装/核对及数据隔离，不能自动操作设备、旧AVD、用户账本或进入M23。

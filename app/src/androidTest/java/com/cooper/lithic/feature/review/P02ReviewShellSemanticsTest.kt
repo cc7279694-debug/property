@@ -32,7 +32,7 @@ class P02ReviewShellSemanticsTest {
     @Test fun two_verified_zero_counts_have_a_distinct_empty_state() {
         compose.setContent { LithicTheme { ReviewShell(0L, subscriptionCount = 0L) } }
         compose.onNodeWithTag("review-record-summary")
-            .assertTextContains("暂无长期项目或订阅记录").assertIsDisplayed()
+            .assertTextContains("记下一件物品后，在这里看见成本变化").assertIsDisplayed()
         compose.onNodeWithTag("review-record-notice").assertDoesNotExist()
     }
 

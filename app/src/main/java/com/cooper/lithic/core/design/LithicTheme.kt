@@ -80,7 +80,7 @@ private val LithicTypography = Typography(
     titleSmall = Heading.copy(fontSize = 16.sp, lineHeight = 24.sp),
     bodyLarge = Body, bodyMedium = Auxiliary, bodySmall = Auxiliary,
     labelLarge = Body.copy(fontWeight = FontWeight.Medium),
-    labelMedium = Auxiliary, labelSmall = Auxiliary,
+    labelMedium = Auxiliary, labelSmall = Auxiliary.copy(fontSize = 12.sp, lineHeight = 16.sp),
 )
 
 private val LithicShapes = Shapes(

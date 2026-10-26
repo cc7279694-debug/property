@@ -1,6 +1,8 @@
 package com.cooper.lithic.feature.review
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,14 +17,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -39,22 +50,40 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
     onAnnualReview: (() -> Unit)? = null, subscriptionCount: Long = 0L,
     hasReadNotice: Boolean = false, trendState: TotalCostTrendUiState? = null,
     onSelectTrendDate: (LocalDate) -> Unit = {}, onToggleTrendBreakdown: () -> Unit = {},
-    onRetryTrend: () -> Unit = {}, onOpenTrendRecord: (OverviewKind, String) -> Unit = { _, _ -> }) {
+    onRetryTrend: () -> Unit = {}, onOpenTrendRecord: (OverviewKind, String) -> Unit = { _, _ -> },
+    onAddRecord: (() -> Unit)? = null) {
+    var informationOpen by rememberSaveable { mutableStateOf(false) }
+    val trendHasRecords = trendState?.snapshot?.overview?.let {
+        it.projects.isNotEmpty() || it.subscriptions.isNotEmpty()
+    } == true || trendState?.timeline?.from != null
+    val trendHasNotice = trendState?.error != null || trendState?.notice != null
+    val showEmpty = reviewShowsEmptyLedger(projectCount, subscriptionCount, hasReadNotice,
+        trendLoading = trendState?.loading == true, trendHasNotice = trendHasNotice,
+        trendHasRecords = trendHasRecords)
     val header: @Composable () -> Unit = {
-        ReviewHeading(projectCount, subscriptionCount, hasReadNotice)
+        ReviewHeading(projectCount, subscriptionCount,
+            hasReadNotice || trendHasNotice || (projectCount == 0L && subscriptionCount == 0L && trendHasRecords),
+            onInformation = { informationOpen = true })
     }
     val destinations: @Composable () -> Unit = {
         ReviewDestinations(onProjectHistory, onSubscriptionHistory, onLongTermReview,
             onTotalCostTrend, onCategoryAnalysis, onAnnualReview)
     }
     Box(modifier.fillMaxSize().testTag("review-screen")) {
-        if (trendState != null) {
+        if (showEmpty) {
+            // Ready counts establish emptiness; no synthetic chart, zero amount, or menu wall.
+            LazyColumn(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp)) {
+                item("heading") { header() }
+                item("empty") { ReviewEmptyState(onAddRecord) }
+            }
+        } else if (trendState != null) {
             TotalCostTrendScreen(trendState, onSelectTrendDate, onToggleTrendBreakdown,
                 onRetryTrend, onOpenTrendRecord, onBack = {}, reviewHeader = header,
                 reviewFooter = destinations, summaryOnly = true)
         } else {
             // No fabricated chart or numbers when a preview/caller has no real trend snapshot.
-            LazyColumn(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(24.dp),
+            LazyColumn(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp)) {
                 item("heading") { header() }
                 item("unavailable") { Text("成本趋势尚未读取。", Modifier.testTag("review-trend-unavailable"),
@@ -63,16 +92,44 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
             }
         }
     }
+    if (informationOpen) AlertDialog(onDismissRequest = { informationOpen = false },
+        title = { Text("回看的口径") },
+        text = { Text("记录数量包含当前与历史。没有录入不等于没有花钱；趋势按已录入、已纠正的事实重建，不代表全部生活消费。类别分析分开查看项目与订阅；年度回顾按真实资金年份归属；长期复盘保留各自指标。历史档案只包含已结束项目和已停止订阅，暂停或到期但未停止的订阅仍在订阅列表。",
+            Modifier.verticalScroll(rememberScrollState()).testTag("review-information-content")) },
+        confirmButton = { TextButton({ informationOpen = false }) { Text("知道了") } })
+}
+
+@Composable
+private fun ReviewEmptyState(onAddRecord: (() -> Unit)?) {
+    Surface(Modifier.fillMaxWidth().testTag("review-empty-state"),
+        shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surface) {
+        Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            C2Icon(C2Glyph.Review, Modifier.size(28.dp))
+            Text("记下一件物品后，在这里看见成本变化", Modifier.testTag("review-record-summary"),
+                style = MaterialTheme.typography.bodyLarge)
+            onAddRecord?.let { add ->
+                OutlinedButton(add, Modifier.heightIn(min = 48.dp).testTag("review-add-record")) {
+                    Text("去添加记录")
+                }
+            }
+        }
+    }
 }
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNotice: Boolean) {
+private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNotice: Boolean, onInformation: () -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Text("回看", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.semantics { heading() })
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Text("回看", style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.weight(1f).semantics { heading() })
+            IconButton(onInformation, Modifier.size(48.dp).testTag("review-information")) {
+                C2Icon(C2Glyph.Info, description = "查看回看说明")
+            }
+        }
         val summary = reviewRecordSummary(projectCount, subscriptionCount, hasReadNotice)
-        if (summary != ReviewRecordSummary.RECORDED) Text(
-            if (summary == ReviewRecordSummary.EMPTY) "暂无长期项目或订阅记录" else "以下为已取得的记录快照",
+        if (summary == ReviewRecordSummary.SNAPSHOT_NOTICE) Text(
+            "以下为已取得的记录快照",
             Modifier.testTag("review-record-summary"), style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (summary != ReviewRecordSummary.EMPTY) FlowRow(Modifier.fillMaxWidth().testTag("review-counts-compact"),
@@ -95,14 +152,14 @@ private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNo
 private fun ReviewDestinations(onProjectHistory: (() -> Unit)?, onSubscriptionHistory: (() -> Unit)?,
     onLongTermReview: (() -> Unit)?, onTotalCostTrend: (() -> Unit)?, onCategoryAnalysis: (() -> Unit)?,
     onAnnualReview: (() -> Unit)?) {
-    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         onTotalCostTrend?.let {
             ReviewGroup("review-full-history-group") {
                 ReviewLink("全部历史与事件", "完整日期清单和记录来源", C2Glyph.Review, "review-total-cost-trend", it)
             }
         }
         if (onCategoryAnalysis != null || onAnnualReview != null || onLongTermReview != null) {
-            Text("换个角度看", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+            Text("换个角度看", style = MaterialTheme.typography.titleSmall, modifier = Modifier.semantics { heading() })
             ReviewGroup("review-analysis-group") {
                 onCategoryAnalysis?.let { ReviewLink("类别分析", "长期项目与订阅分别查看", C2Glyph.Project,
                     "review-category-analysis", it) }
@@ -113,7 +170,7 @@ private fun ReviewDestinations(onProjectHistory: (() -> Unit)?, onSubscriptionHi
             }
         }
         if (onProjectHistory != null || onSubscriptionHistory != null) {
-            Text("历史档案", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+            Text("历史档案", style = MaterialTheme.typography.titleSmall, modifier = Modifier.semantics { heading() })
             ReviewGroup("review-archive-group") {
                 onProjectHistory?.let { ReviewLink("已结束长期项目", "保留原记录与真实结算", C2Glyph.Project,
                     "review-project-history", it) }
@@ -139,17 +196,15 @@ private fun ReviewRowDivider() {
 
 @Composable
 private fun ReviewLink(title: String, description: String, glyph: C2Glyph, tag: String, onClick: () -> Unit) {
-    Row(Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag(tag)
-        .clickable(role = Role.Button, onClick = onClick).padding(horizontal = 12.dp, vertical = 10.dp),
+    Row(Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag(tag)
+        .semantics(mergeDescendants = true) { contentDescription = "$title，$description" }
+        .clickable(role = Role.Button, onClick = onClick).padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         Surface(Modifier.size(32.dp), shape = RoundedCornerShape(8.dp),
             color = MaterialTheme.colorScheme.primaryContainer, contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
             Box(contentAlignment = Alignment.Center) { C2Icon(glyph) }
         }
-        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            Text(title, style = MaterialTheme.typography.bodyLarge)
-            Text(description, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
+        Text(title, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
         C2Icon(C2Glyph.Chevron)
     }
 }

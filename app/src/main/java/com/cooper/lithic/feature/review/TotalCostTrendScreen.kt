@@ -126,8 +126,9 @@ internal fun TotalCostTrendScreen(
         state.notice?.let { notice -> item("notice") {
             Text(notice, Modifier.testTag("total-trend-notice"), style = MaterialTheme.typography.bodyMedium)
         } }
-        if (timeline != null && !hasRecords) item("empty") {
-            Text("暂无记录。尚未录入相关记录，不能据此推断过去没有花钱。", Modifier.testTag("total-trend-empty"))
+        if (!summaryOnly && timeline != null && !hasRecords && !state.loading && state.error == null && state.notice == null) item("empty") {
+            Text("记下一件物品后，在这里看见成本变化", Modifier.testTag("total-trend-empty"),
+                style = MaterialTheme.typography.bodyLarge)
         }
         if (timeline != null && hasRecords) {
             if (summaryOnly) item("selected") {
