@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Capture-only variant. No system notification, network, wake or boot capability. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" tools:node="remove" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
+    <application
+        android:name="android.app.Application"
+        android:label="砺石·视觉验证"
+        tools:replace="android:name,android:label">
+        <!-- There must be no production launch or notification deep-link path. -->
+        <activity android:name="com.cooper.lithic.app.MainActivity" tools:node="remove" />
+        <!-- Remove initializers before Application.onCreate, rather than relying on @Before. -->
+        <provider android:name="androidx.startup.InitializationProvider" tools:node="remove" />
+        <service android:name="androidx.work.impl.background.systemjob.SystemJobService" tools:node="remove" />
+        <service android:name="androidx.room.MultiInstanceInvalidationService" tools:node="remove" />
+        <receiver android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" tools:node="remove" />
+        <receiver android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver" tools:node="remove" />
+        <receiver android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" tools:node="remove" />
+        <receiver android:name="androidx.profileinstaller.ProfileInstallReceiver" tools:node="remove" />
+        <!-- AndroidX ui-test-manifest supplies only its empty ComponentActivity host. -->
+    </application>
+</manifest>

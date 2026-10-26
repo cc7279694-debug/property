@@ -63,3 +63,12 @@ Goal：针对Preview5真实视觉拒绝收口Home/Review空态；不能用编译
 生产空态已调整，50定向JVM PASS、Debug/AndroidTest编译/Lint0E21W；6截图入口及2布局方法仅编译/运行NOT_RUN。A/B深色400空事实、C/D浅色400合成记录、E1/E2 360与LocalDensity2倍；仅Home/Review，不代表项目详情/录入、IME、MainActivity或真实Room账本。没有实际Android图，原设计与真实Android对照PENDING。详见[C2报告](../evidence/UI-C2-C2-Visual-Fidelity.md)。
 
 Stop：UI-C2 C2 IMPLEMENTED — APP_VISUAL_PENDING。之后先独立审查，取得新的隔离设备授权和启动前Manifest/Runner/target/SHA门禁，才可真实采集；当前不安装、不启动旧ANR环境、不交付新用户APK、不合并main或进入M23。
+
+
+## C3-0 独立原生截图准备（2026-10-26）
+
+Goal：只准备独立包与安全截图入口，不重做视觉。Scope：显式Gradle flag/独立build目录和源Manifest，原Gallery的真实配置F1/F2与身份/元数据，未来限定命令。Locked：生产UI/引擎/Room5/backup4/Owner/恢复/导航/媒体/提醒与原四类构建身份。依赖原M13Runner、AndroidX空宿主与既有事实夹具，零新依赖。
+
+已按源配置落实新App/Test、启动前platform Application、组件移除/强Runner/互斥及仅Debug、A～F八方法、自包UUID及元数据；源检查和命令示例语法核对完成。用户中途明确“先完成源码，构建暂缓”，因此没有Gradle求值、JVM/Android编译、Lint或新APK，不能确认合并Manifest、签名/SHA。独立复核后需先恢复桌面门禁，再单独授权设备安装/八方法/本次三文件提取；不自动恢复构建或开始设备。
+
+Stop：SOURCE_PREPARED — BUILD_DEFERRED / ANDROID_SCREENSHOTS_NOT_RUN；非C3-0 READY_FOR_SAFE_CAPTURE_REVIEW。见[C3预检](../evidence/UI-C2-C3-Native-Visual-Preflight.md)和[未来命令](../evidence/UI-C2-C3-Capture-Runbook.md)。保留C2及全部历史证据与APP_VISUAL_PENDING，不生成Preview6、不合并main、不进入M23。

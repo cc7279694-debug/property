@@ -1,0 +1,63 @@
+{
+  "recordedUtc": "2026-10-26T15:09:51.715255+00:00",
+  "sourceParent": "f037de8a1e138647f2089ddf405017bd02d28f11",
+  "scope": "source/config/document preparation only; user explicitly deferred builds",
+  "files": {
+    ".gitignore": {
+      "sha256": "dd6dd6cc1187f77bf2fd96d5d1b20c769ed0fa89cbbafbdca99449fac996d6a6",
+      "bytes": 557
+    },
+    "app/build.gradle.kts": {
+      "sha256": "bbd2f38f7d3daa198e64f46ded61d1e3fe7d982859aac5a0756098e0859da241",
+      "bytes": 7687
+    },
+    "app/src/c2Visual/AndroidManifest.xml": {
+      "sha256": "56132094f53088bafabb79c624f8a5047c8c49a140c3a27b0b4224daf8d6cdda",
+      "bytes": 1950
+    },
+    "app/src/androidTest/java/com/cooper/lithic/ui/C2ProductionVisualGalleryTest.kt": {
+      "sha256": "50e8d85bf566f2a8bf33c3d1940ae686677889c0082506c6cd2117bf8391f648",
+      "bytes": 15814
+    },
+    "docs/evidence/UI-C2-C3-Native-Visual-Preflight.md": {
+      "sha256": "855b31a76b8aaa5839f521c07a211087077de1d18f305b4f8fe40389d802e670",
+      "bytes": 6645
+    },
+    "docs/evidence/UI-C2-C3-Capture-Runbook.md": {
+      "sha256": "e364b192d5e4a975d10a1bff162703e4a4cfd09714d4a1fd74404ea602c7e246",
+      "bytes": 9355
+    },
+    "docs/CURRENT_STATE.md": {
+      "sha256": "b4d4ac99bf73b465f1b91441cb398e5498791b7d6db9923941109d8d6fbd2599",
+      "bytes": 66039
+    },
+    "docs/planning/UI_C2_IMPLEMENTATION_PLAN.md": {
+      "sha256": "27e21d5693dc267eb40aa00711ed833609560f04de277e9a22b50ecf8c86d6b6",
+      "bytes": 8595
+    }
+  },
+  "runbookPythonAst": "PASS; not executed",
+  "localLinks": "PASS",
+  "originalSourceAuditRetained": "source-audit.json; initial runbook hash is superseded here after Test install -t documentation",
+  "apkIdentityAndSignature": "NOT_BUILT / NOT_VERIFIED",
+  "gradleSdkJvmAdbAndroidExecutionCounts": {
+    "gradle": 0,
+    "sdk": 0,
+    "jvm": 0,
+    "adb": 0,
+    "android": 0,
+    "screenshots": 0
+  },
+  "newBuildDirectoryExists": false,
+  "newUserPreviewApks": 0,
+  "review": {
+    "type": "implementation-assistant read-only source review, not ChatGPT independent acceptance",
+    "deterministicSourceFindings": [],
+    "limitations": [
+      "Gradle DSL evaluation and actual Manifest merge NOT_RUN",
+      "Kotlin/AndroidTest compilation NOT_RUN",
+      "APK/DEX/certificate/SHA NOT_VERIFIED",
+      "Device/runtime/extraction NOT_RUN"
+    ]
+  }
+}

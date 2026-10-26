@@ -1,0 +1,107 @@
+{
+  "recordedUtc": "2026-10-26T15:04:36.906052+00:00",
+  "sourceParent": "f037de8a1e138647f2089ddf405017bd02d28f11",
+  "branch": "codex/lithic-v1-product-completion",
+  "auditKind": "SOURCE-ONLY; no Gradle/Kotlin evaluation, merged Manifest, JVM or device execution",
+  "checks": [
+    "Opt-in flag defaults false and validates its text",
+    "C3 has separate output outside normal build",
+    "C3 refuses PrivateTrial and M22 flags",
+    "C3 rejects process-death and false isolated flags",
+    "C3 Runner selected without an additional flag",
+    "C3 App/Test identity expressions explicit",
+    "C3 Release variant disabled",
+    "Existing Debug key required rather than generated",
+    "Only C3 manifest source selected under flag",
+    "Plain Application declared before host startup",
+    "Production/initializer/background component removals complete in overlay source",
+    "Notification/network-state/wake/boot permissions removed in overlay source",
+    "Exactly eight A-F screenshot methods in source",
+    "F1/F2 actual configuration branch does not override density/size",
+    "Target/Test packages, Runner and plain Application checks present",
+    "Only own two APK source paths used for SHA",
+    "UUID evidence directory only; no removal code",
+    "Actual host/identity/hash metadata recorded",
+    "Future extraction Python example parses but has not executed",
+    "Unchanged: app/src/main",
+    "Unchanged: app/src/androidTest/java/com/cooper/lithic/ui/C2VisualFixtures.kt",
+    "Unchanged: app/src/androidTest/java/com/cooper/lithic/app/M13IsolatedRunner.kt",
+    "Unchanged: app/schemas",
+    "Unchanged: gradle/libs.versions.toml",
+    "Unchanged: gradle.properties",
+    "Unchanged: build.gradle.kts",
+    "Unchanged: settings.gradle.kts"
+  ],
+  "screenshotMethodsInSource": [
+    "A_dark_400_confirmed_empty_now",
+    "B_dark_400_confirmed_empty_review",
+    "C_light_400_synthetic_project_subscription_now",
+    "D_light_400_synthetic_history_review",
+    "E1_dark_360_local_200percent_now",
+    "E2_dark_360_local_200percent_review",
+    "F1_device_configuration_empty_now",
+    "F2_device_configuration_empty_review"
+  ],
+  "files": {
+    "app/build.gradle.kts": {
+      "bytes": 7687,
+      "sha256": "bbd2f38f7d3daa198e64f46ded61d1e3fe7d982859aac5a0756098e0859da241"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/ui/C2ProductionVisualGalleryTest.kt": {
+      "bytes": 15814,
+      "sha256": "50e8d85bf566f2a8bf33c3d1940ae686677889c0082506c6cd2117bf8391f648"
+    },
+    "app/src/c2Visual/AndroidManifest.xml": {
+      "bytes": 1950,
+      "sha256": "56132094f53088bafabb79c624f8a5047c8c49a140c3a27b0b4224daf8d6cdda"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/ui/C2VisualFixtures.kt": {
+      "bytes": 4321,
+      "sha256": "5d98a954d913afbc32b487dbe9f6192f5f0be02415c557d3ca62b9365cc870af"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/app/M13IsolatedRunner.kt": {
+      "bytes": 464,
+      "sha256": "aedf37dc81fcfdd2e6df3678c288928656d9a6493bac5b536ef3b9061ac64248"
+    },
+    "docs/evidence/UI-C2-C3-Capture-Runbook.md": {
+      "bytes": 9272,
+      "sha256": "0cf1dba59983ab2a07ddf1e59ca4edaf46ca9fea8f04f8a0a685b131fd3cd82d"
+    }
+  },
+  "preservedLocalApks": {
+    "deliveries/lithic-preview-0.1.0-preview.2/Lithic-0.1.0-preview.2-debug.apk": {
+      "bytes": 13854809,
+      "sha256": "d39b6bf764720415d88d0d9f6c149b34dcda2d795f823505786fa4130b906ef4"
+    },
+    "deliveries/lithic-preview-0.1.0-preview.3/Lithic-0.1.0-preview.3-debug.apk": {
+      "bytes": 14079087,
+      "sha256": "0d204eae40f2c5304c99b7df4c7aa5add4d786bee648e4befdef7a9c0f652dca"
+    },
+    "deliveries/lithic-preview-0.1.0-preview.4/Lithic-0.1.0-preview.4-debug.apk": {
+      "bytes": 15715635,
+      "sha256": "7971ace1f70c9829a6991ebee482104843061f45987e6223bc4abae99326579a"
+    },
+    "deliveries/lithic-preview-0.1.0-preview.5/Lithic-0.1.0-preview.5-debug.apk": {
+      "bytes": 15732019,
+      "sha256": "059fcf44ae09ee2840d7c96f3a567bcf429dd465f4956c3e965c688fd7bf5670"
+    },
+    "app/build/m22-device-verification/outputs/apk/debug/app-debug.apk": {
+      "bytes": 13822252,
+      "sha256": "b749b771e4f6f9cebcb7355c95834b7ae2eb4ba4f7528536a92bf9e09eefb2d3"
+    },
+    "app/build/m22-device-verification/outputs/apk/androidTest/debug/app-debug-androidTest.apk": {
+      "bytes": 3403324,
+      "sha256": "12e17f01be03677501a753b1992badffdfaece0f4db1742ba27b498afc1dae26"
+    }
+  },
+  "sourceAuditResult": "PASS",
+  "userSteering": "先完成源码，构建暂缓",
+  "buildStatus": "DEFERRED / NOT_RUN",
+  "newAppAndTestArtifacts": "NOT_BUILT; SHA/certificate/merged Manifest NOT_VERIFIED",
+  "gradleInvocations": 0,
+  "sdkToolInvocations": 0,
+  "jvmTests": 0,
+  "adbInvocations": 0,
+  "androidExecution": 0,
+  "screenshots": 0
+}

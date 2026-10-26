@@ -20,6 +20,26 @@ require(privateTrialValue == null || privateTrialValue in setOf("true", "false")
     "lithicPrivateTrial must be true or false"
 }
 val lithicPrivateTrial = privateTrialValue == "true"
+// Explicit capture-only target. Separate outputs and a pre-launch plain Application;
+// no production entry points or background components are registered in this build.
+val c2VisualValue = providers.gradleProperty("c2VisualVerification").orNull
+require(c2VisualValue == null || c2VisualValue in setOf("true", "false")) {
+    "c2VisualVerification must be true or false"
+}
+val c2VisualVerification = c2VisualValue == "true"
+if (c2VisualVerification) {
+    require(!lithicPrivateTrial && !m22DeviceVerification) {
+        "C2 visual capture cannot use private trial or M22 verification identities"
+    }
+    require(!providers.gradleProperty("m12T04ProcessDeath").isPresent) {
+        "C2 visual capture cannot enable historical process-death experiments"
+    }
+    require(providers.gradleProperty("m13Isolated").orNull in setOf(null, "true")) {
+        "C2 visual capture requires the plain Application M13IsolatedRunner"
+    }
+    // Outside ordinary build/: later ordinary clean tasks must not remove capture artifacts.
+    layout.buildDirectory.set(layout.projectDirectory.dir("build-c2-visual"))
+}
 if (lithicPrivateTrial) {
     require(!m22DeviceVerification) { "Private trial and M22 device verification are separate builds" }
     require(!providers.gradleProperty("m13Isolated").isPresent &&
@@ -48,9 +68,14 @@ android {
         minSdk = 26
         targetSdk = 36
         versionCode = if (lithicPrivateTrial) 21 else 17
-        versionName = if (lithicPrivateTrial) "0.1.0-preview.5" else "0.1.0-m22"
+        versionName = when {
+            lithicPrivateTrial -> "0.1.0-preview.5"
+            c2VisualVerification -> "0.1.0-c2visual"
+            else -> "0.1.0-m22"
+        }
+        if (c2VisualVerification) testApplicationId = "com.cooper.lithic.c2visual.debug.test"
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
-        testInstrumentationRunner = if (providers.gradleProperty("m13Isolated").orNull == "true")
+        testInstrumentationRunner = if (c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
             "com.cooper.lithic.app.M13IsolatedRunner"
         else if (providers.gradleProperty("m12T04ProcessDeath").orNull == "true")
             "com.cooper.lithic.data.backup.M12ProcessDeathRunner"
@@ -62,6 +87,7 @@ android {
             applicationIdSuffix = when {
                 lithicPrivateTrial -> ".preview.debug"
                 m22DeviceVerification -> ".m22verify.debug"
+                c2VisualVerification -> ".c2visual.debug"
                 else -> ".debug"
             }
             versionNameSuffix = "-debug"
@@ -83,6 +109,19 @@ android {
             "Private trial requires the existing local Debug signing key; do not generate a replacement"
         }
         sourceSets.getByName("debug").manifest.srcFile("src/privateTrial/AndroidManifest.xml")
+    }
+    if (c2VisualVerification) {
+        require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
+            "C2 visual capture requires the existing Debug key; do not generate a replacement"
+        }
+        sourceSets.getByName("debug").manifest.srcFile("src/c2Visual/AndroidManifest.xml")
+    }
+}
+
+// The opt-in target is never a production Release application.
+androidComponents {
+    beforeVariants(selector().withBuildType("release")) { variant ->
+        if (c2VisualVerification) variant.enable = false
     }
 }
 
