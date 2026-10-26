@@ -19,6 +19,7 @@ class P03ProductInformationTest {
     @Test fun safety_copy_has_manual_unencrypted_backup_and_no_delivery_guarantee() {
         val copy = productSafetyExplanation.flatMap { it.paragraphs }.joinToString()
         listOf("卸载", "未加密", "没有自动云同步", "不保证准点送达", "不会自动取消服务商扣费", "不代表已经完成严格JPEG").forEach { assertTrue(it, copy.contains(it)) }
+        listOf("可丢弃数据", "唯一副本").forEach { assertTrue(it, copy.contains(it)) }
     }
     @Test fun version_label_uses_actual_supplied_version_and_long_code() {
         val info = InstalledAppInformation("砺石", "2.7.1", 8_000_000_042L)
