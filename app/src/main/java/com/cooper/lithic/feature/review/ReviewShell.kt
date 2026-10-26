@@ -4,6 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -60,27 +62,28 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNotice: Boolean) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text("回看", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
         val summary = reviewRecordSummary(projectCount, subscriptionCount, hasReadNotice)
-        Text(when (summary) {
-            ReviewRecordSummary.EMPTY -> "暂无长期项目或订阅记录"
-            ReviewRecordSummary.RECORDED -> "总日均成本与历史记录"
-            ReviewRecordSummary.SNAPSHOT_NOTICE -> "以下为已取得的记录快照"
-        }, Modifier.testTag("review-record-summary"), style = MaterialTheme.typography.bodyLarge)
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-            Text("$projectCount 条长期项目", Modifier.weight(1f).testTag("review-project-count"),
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text("$subscriptionCount 条订阅服务", Modifier.weight(1f).testTag("review-subscription-count"),
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (summary != ReviewRecordSummary.RECORDED) Text(
+            if (summary == ReviewRecordSummary.EMPTY) "暂无长期项目或订阅记录" else "以下为已取得的记录快照",
+            Modifier.testTag("review-record-summary"), style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (summary != ReviewRecordSummary.EMPTY) FlowRow(Modifier.fillMaxWidth().testTag("review-counts-compact"),
+            horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text("$projectCount 条长期项目", Modifier.testTag("review-project-count"),
+                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("$subscriptionCount 条订阅服务", Modifier.testTag("review-subscription-count"),
+                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text("含当前和历史", Modifier.testTag("review-count-scope"),
+                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        Text("数量包含当前和历史记录。", Modifier.testTag("review-count-scope"),
-            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (summary == ReviewRecordSummary.SNAPSHOT_NOTICE) Text(
             "当前有读取或恢复提示；这里只展示已取得的快照，最新记录需重新核对。",
-            Modifier.testTag("review-record-notice"), style = MaterialTheme.typography.bodyMedium,
+            Modifier.testTag("review-record-notice"), style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.error)
     }
 }

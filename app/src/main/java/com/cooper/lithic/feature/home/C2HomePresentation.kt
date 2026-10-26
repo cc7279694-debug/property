@@ -1,6 +1,10 @@
 package com.cooper.lithic.feature.home
 
 import java.time.LocalDate
+import com.cooper.lithic.domain.report.OverviewResult
+
+internal fun c2HomeIsEmpty(overview: OverviewResult?, hasReadNotice: Boolean): Boolean =
+    homeOverviewStatus(overview) == HomeOverviewStatus.EMPTY && !hasReadNotice
 
 internal enum class C2PreviewStatus { LOADING, ERROR, RETAINED, REFRESHING, EMPTY, READY }
 

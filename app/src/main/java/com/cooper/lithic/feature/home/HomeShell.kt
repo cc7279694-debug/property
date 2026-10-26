@@ -40,7 +40,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     var explanationOpen by rememberSaveable { mutableStateOf(false) }
     val recordedProjects = overview?.projectCount ?: projectCount
     val recordedSubscriptions = overview?.subscriptionCount ?: subscriptionCount
-    val empty = homeOverviewStatus(overview) == HomeOverviewStatus.EMPTY && !hasReadNotice
+    val empty = c2HomeIsEmpty(overview, hasReadNotice)
     Column(modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("home-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -53,21 +53,22 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             }
         }
         Surface(Modifier.fillMaxWidth().testTag("home-current-cost-summary"),
-            shape = MaterialTheme.shapes.large, color = MaterialTheme.colorScheme.surface) {
-            Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            shape = MaterialTheme.shapes.large, color = if (empty) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.surface) {
+            Column(Modifier.padding(horizontal = if (empty) 0.dp else 16.dp, vertical = if (empty) 8.dp else 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("当前日均成本", Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
                     IconButton({ onCalculationExplanation?.invoke() ?: run { explanationOpen = true } },
                         Modifier.size(48.dp).testTag("home-cost-information")) { C2Icon(C2Glyph.Info, description = "查看成本计算口径") }
                 }
                 AmountText(overview?.takeIf { it.hasRecords }?.totalRate, Modifier.testTag("home-total-rate"))
-                Text("非今日扣款", color = MaterialTheme.colorScheme.onSurfaceVariant, style = MaterialTheme.typography.bodyMedium)
-                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-                HomeSubtotals(overview)
-                overview?.let { Text("截至 ${it.asOf} · 记录时区日期", style = MaterialTheme.typography.bodySmall,
+                if (!empty) {
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                    HomeSubtotals(overview)
+                }
+                overview?.let { Text("截至 ${it.asOf} · 非今日扣款", style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant) }
                 when (homeOverviewStatus(overview)) {
-                    HomeOverviewStatus.EMPTY -> Text(if (hasReadNotice) "当前记录状态尚未确认" else "还没有记录", style = MaterialTheme.typography.bodyMedium)
+                    HomeOverviewStatus.EMPTY -> if (hasReadNotice) Text("当前记录状态尚未确认", style = MaterialTheme.typography.bodyMedium)
                     HomeOverviewStatus.UNAVAILABLE -> Text("当前日均成本尚未取得", style = MaterialTheme.typography.bodyMedium)
                     HomeOverviewStatus.NO_CURRENT -> Text("暂无当前有效记录；历史记录仍在。", Modifier.testTag("home-no-active-records"),
                         style = MaterialTheme.typography.bodyMedium)
@@ -79,12 +80,13 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
         }
         if (empty) {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("从一件长期拥有的物品，或一项订阅开始。", style = MaterialTheme.typography.bodyLarge)
+                Text("把长期拥有的物品和订阅记录在这里。", style = MaterialTheme.typography.bodyLarge)
                 Button({ addOpen = true }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("home-first-record")) {
                     Text("记下第一条记录")
                 }
             }
         }
+        if (!empty) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             PreviewHeading("长期项目", onProjectList, "open-project-list")
             if (recordedProjects > 0L) Text("已录入 $recordedProjects 条长期项目（含历史）",
@@ -111,6 +113,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                     "历史平均日成本", row.cost.historicalAverage, "home-subscription-preview-${row.subscription.id}",
                     onOpenSubscription?.let { { it(row.subscription.id) } })
             }
+        }
         }
         if (overview?.hasRecords == true) {
             TextButton({ categoriesOpen = !categoriesOpen }, Modifier.heightIn(min = 48.dp).testTag("home-category-disclosure")) {
@@ -161,8 +164,8 @@ private fun HomeSubtotals(overview: OverviewResult?) {
 @Composable
 private fun Subtotal(label: String, amount: java.math.BigDecimal?, tag: String) {
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        AmountText(amount, Modifier.testTag(tag), style = MaterialTheme.typography.titleMedium)
+        Text("$label · 元/天", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        AmountText(amount, Modifier.testTag(tag), style = MaterialTheme.typography.titleMedium, showUnit = false)
     }
 }
 
@@ -200,8 +203,8 @@ private fun PreviewRow(name: String, icon: C2Glyph, status: String, metric: Stri
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.Medium)
             Text(status, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text(metric, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            AmountText(amount, style = MaterialTheme.typography.titleMedium)
+            Text("$metric · 元/天", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            AmountText(amount, style = MaterialTheme.typography.titleMedium, showUnit = false)
         }
     }
     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)

@@ -1,6 +1,6 @@
 # UI-C2 — A段视觉与交互契约
 
-状态：VISUAL_SAMPLE_READY / 待集中视觉确认；PROTOTYPE_ONLY / APP_VISUAL_PENDING。产品基线 `9de00d3889180cb1d3c078ade543c75100a4196d`；直接在 `codex/lithic-v1-product-completion` 实施。只做四页样板，不冻结、不扩展到B/C段，不产生用户安装包。
+状态：A段视觉独立审查CHANGES REQUIRED；A-R1精修候选待集中确认，PROTOTYPE_ONLY / APP_VISUAL_PENDING。产品基线 `9de00d3889180cb1d3c078ade543c75100a4196d`；直接在 `codex/lithic-v1-product-completion` 实施。只做四页样板，不冻结、不扩展到B/C段，不产生用户安装包。
 
 ## 来源及继承
 
@@ -20,7 +20,7 @@
 | 主色 / 主色上文字 | #365F4A / #FFFFFF | #9EBCAA / #17221D |
 | 浅强调 / 分隔 | #E6EFE7 / #DFE4DE | #2D4135 / #32433A |
 
-跟随系统、固定色板，无动态取色或新增持久主题开关。主金额38sp、页面24sp、区块18sp、正文16sp、辅助14sp；4/8/12/16/24/32dp节奏，左右16dp、区块24dp。卡片16dp、摘要20dp、图像12dp；图标24dp，触控至少48dp，预览身份区64dp。金额完整软换行、保留负号及小于分值；大字时小计纵向重排。不使用装饰渐变/玻璃/石纹/假曲线/品牌图片/emoji。
+跟随系统、固定色板，无动态取色或新增持久主题开关。主金额38sp、页面24sp、区块18sp、正文16sp、辅助14sp；4/8/12/16/24/32dp节奏，左右16dp、区块24dp。卡片16dp、摘要20dp、图像12dp；图标24dp，触控至少48dp，预览身份区64dp。金额整体单行、保留完整符号和小数；按实际字形宽度从首选字号适配到min(原字号,18sp)，仍不足时提供明确横向查看提示及完整内容描述；系统fontScale照常作用。大字时小计纵向重排。不使用装饰渐变/玻璃/石纹/假曲线/品牌图片/emoji。
 
 ## 四页生产实现
 
@@ -46,3 +46,20 @@
 当前Gradle没有Compose Desktop/Layoutlib截图、Paparazzi或Roborazzi渲染配置；不新增依赖或大型截图工具。采用[单文件离线样板](ui-c2/UI_C2_A_Prototype.html)，包含四页浅深设计及代表状态，**PROTOTYPE_ONLY / APP_VISUAL_PENDING**。HTML为合成设计原型，不是生产Compose渲染或APK截图。生产屏幕另由AndroidTest合成夹具直接调用，仅编译、设备运行NOT_RUN；不存在生产假数据。
 
 Room5/backup4、领域引擎、Repository写入、Owner/coordinator、恢复Token/原子指针、媒体协议及提醒调度锁定。设备、安装、用户数据操作为0。历史M10/M20/M22/M13及G1～G4全部保持。
+
+
+## A-R1精修授权（2026-10-26）
+
+固定来源`49ca1fcd01758f3aab0d1bdf84bf4943b246cc9b`；A段源码/原报告和两张旧图保留在该提交，视觉结论CHANGES REQUIRED，不进入B段。
+
+Locked：暖白/岩绿/深墨语言、四页职责和唯一主要操作、全部业务回调/守卫、Room5/backup4及金额/日期/Owner/恢复/媒体协议；没有封面读取接口的待办继续PENDING。
+
+Adjustable：金额完整单行与有下限的测量适配、空态和首屏密度、标题/返回独立布局、标签间距、记录线层次、真实图表与摘要的相邻顺序。
+
+R1-01：只改AmountText呈现，AmountFormatter原源码不变；实际TextMeasurer使用当前density/fontScale，maxLines1/softWrapfalse，横向不足明确提示；HTML独立按浏览器字形测量，不冒充同像素Android结果。
+R1-02：返回48dp独立行，24sp标题在完整宽度滚动正文；S03才启用外置字段标签+8dp，底部保存按实际高度独立测量并保留IME安全区。隐藏错误展开/定位与原输入/operationId不变。
+R1-03：确认空库才使用紧凑空态和唯一CTA，不再显示两类空列表/空小计；已有历史、0/负值、读取失败不进入此空态。有记录首屏压缩摘要，保留真实预览与口径。
+R1-04：身份→主要成本/时间→累计金额→完整事件时间线→资料/历史。时间、类型、金额与现金口径分层；历史在更多菜单亦可直达；原删除确认不变。
+R1-05：回看压缩真实计数与日期，单一32sp首选总额后紧邻原图表；分项和截止口径在图后，精确查询和完整趋势入口保留，不动图表采样/查询/分页。
+
+原型为8个基本状态+4个代表状态（空、长负金额、长金额浏览器×2、大字表单）。仅更新原两张汇总图；浏览器×2与真实Android系统字体/IME分别登记。实际结果见[集中报告A-R1段](../evidence/UI-C2-Sample-Review.md#a-r1精修记录2026-10-26)。

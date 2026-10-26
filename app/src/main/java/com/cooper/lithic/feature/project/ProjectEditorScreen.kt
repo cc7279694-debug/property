@@ -3,9 +3,12 @@ package com.cooper.lithic.feature.project
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -14,6 +17,7 @@ import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -84,27 +88,30 @@ internal fun ProjectEditorScreen(
         Row(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
-            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("project-editor-back")) {
-                C2Icon(C2Glyph.Back)
-                Text("返回", style = MaterialTheme.typography.bodyLarge)
+            IconButton(onBack, Modifier.size(48.dp).testTag("project-editor-back")) {
+                C2Icon(C2Glyph.Back, description = "返回")
             }
-            Text(if (state.mode == ProjectEditorMode.CREATE) "新增长期项目" else "编辑项目资料",
-                style = MaterialTheme.typography.headlineMedium, modifier = Modifier.semantics { heading() })
         }
+        // Back keeps its own measured row. The complete title width belongs to the scroll body,
+        // so system font scaling cannot squeeze it against the return target or trap fields below it.
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())
             .padding(LithicSpacing.medium).testTag("project-editor-content"),
             verticalArrangement = Arrangement.spacedBy(LithicSpacing.large)) {
+            Text(if (state.mode == ProjectEditorMode.CREATE) "新增长期项目" else "编辑项目资料",
+                style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.fillMaxWidth().testTag("project-editor-title").semantics { heading() })
             if (state.loading) Text("正在读取项目资料", style = MaterialTheme.typography.bodyLarge)
             NameField(state.name, onNameChange,
                 Modifier.bringIntoViewRequester(errorTargets.getValue(ProjectEditorField.NAME)).testTag("project-name"),
-                error = state.errors["name"], enabled = state.canEdit)
+                error = state.errors["name"], enabled = state.canEdit, labelOutside = true)
 
             if (state.mode == ProjectEditorMode.CREATE) {
                 Column(Modifier.bringIntoViewRequester(errorTargets.getValue(ProjectEditorField.INITIAL_AMOUNT)),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     AmountField(state.initialAmount, onInitialAmountChange, Modifier.testTag("project-initial-amount"),
-                        label = "初始实际投入（元）", error = state.errors["initialAmount"], enabled = state.canEdit)
-                    Text("只记录实际已投入金额，0元也可以保存。", style = MaterialTheme.typography.bodyMedium,
+                        label = "初始实际投入（元）", error = state.errors["initialAmount"], enabled = state.canEdit,
+                        labelOutside = true)
+                    Text("实际已投入，0元也可保存。", style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
@@ -114,12 +121,13 @@ internal fun ProjectEditorScreen(
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     if (disclosure.startedOn) {
                         ProjectDateInput(state.startedOn, onStartedOnChange, today, "开始拥有日期", "project-started-on",
-                            error = state.errors["startedOn"], enabled = state.canEdit && !state.tradeInProtected)
+                            error = state.errors["startedOn"], enabled = state.canEdit && !state.tradeInProtected,
+                            labelOutside = true)
                     } else {
                         EditorSummary("开始拥有日期", state.startedOn, "project-started-on-summary",
                             enabled = state.canEdit && !state.tradeInProtected, onClick = { startExpanded = true })
                     }
-                    Text("开始日计入持有时间；真实付款日可以不同。",
+                    Text("开始日计入持有天数。",
                         style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
@@ -135,12 +143,12 @@ internal fun ProjectEditorScreen(
                         verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                         if (disclosure.initialPaidOn) {
                             ProjectDateInput(state.initialPaidOn, onInitialPaidOnChange, today, "初始实际付款日期", "project-initial-paid-on",
-                                error = state.errors["initialPaidOn"], enabled = state.canEdit)
+                                error = state.errors["initialPaidOn"], enabled = state.canEdit, labelOutside = true)
                         } else {
                             EditorSummary("初始实际付款日期", "与开始日期相同 · ${state.initialPaidOn}",
                                 "project-payment-summary", state.canEdit, onClick = { paymentExpanded = true })
                         }
-                        Text("先付款后收到时，请改为真实付款日。", style = MaterialTheme.typography.bodyMedium,
+                        Text("先付款后收到时，改为真实付款日。", style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
@@ -157,7 +165,8 @@ internal fun ProjectEditorScreen(
                 }, "project-extra-toggle", enabled = "note" !in state.errors,
                     onClick = { notesExpanded = !disclosure.note })
                 if (disclosure.note) {
-                    ProjectNoteInput(state.note, onNoteChange, "备注（可选）", "project-note", state.canEdit, state.errors["note"])
+                    ProjectNoteInput(state.note, onNoteChange, "备注（可选）", "project-note", state.canEdit, state.errors["note"],
+                        labelOutside = true)
                 }
             }
 
@@ -175,8 +184,11 @@ internal fun ProjectEditorScreen(
                 }
             }
             ProjectSubmissionNotice(state.phase, "project")
+            Spacer(Modifier.fillMaxWidth().height(16.dp).testTag("project-editor-content-end"))
         }
-        Surface(color = MaterialTheme.colorScheme.background) {
+        // A measured sibling, never an overlay: the weighted body ends above this actual height,
+        // including when its button grows with system fonts. Outer imePadding handles keyboard space.
+        Surface(Modifier.fillMaxWidth().testTag("project-editor-save-bar"), color = MaterialTheme.colorScheme.background) {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium, vertical = LithicSpacing.small)) {
                 if (state.phase == SubmissionPhase.COMMITTED) {
                     Button(onRetryRead, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("project-retry-read")) {

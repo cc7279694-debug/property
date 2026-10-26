@@ -1,5 +1,7 @@
 # UI-C2 A段集中样板
 
+> 当前视觉结论：原A段经独立审查为 **CHANGES REQUIRED**。本次仅提交A-R1精修候选，见末节；仍为PROTOTYPE_ONLY / APP_VISUAL_PENDING，未获得用户视觉认可。以下原A段记录保留，原版图/报告可按锁定提交读取。
+
 **VISUAL_SAMPLE_READY — UI-C2**
 
 **PROTOTYPE_ONLY / APP_VISUAL_PENDING**
@@ -44,3 +46,38 @@
 - M10三JPEG历史FAIL、M20平台FAIL/UNKNOWN、M22 BLOCKED、M13-T06与G1～G4及全部历史NOTES/NOT_RUN保持。没有ADB、AVD、手机、个人账本或受保护现场操作；不合并main、不冻结、不进入M23。
 
 下一步只等待一次集中视觉反馈。确认前不自动推广订阅、列表、搜索、设置或备份恢复深页。
+
+
+## A-R1精修记录（2026-10-26）
+
+**VISUAL_REFINEMENT_READY — UI-C2 A-R1**；**PROTOTYPE_ONLY / APP_VISUAL_PENDING**。来源`49ca1fcd01758f3aab0d1bdf84bf4943b246cc9b`，原A视觉CHANGES REQUIRED不改判。仍只在产品完善分支实施四页精修，不进入B段或M23。
+
+### 前后对照与实现边界
+
+[修改前浅深图](https://github.com/cc7279694-debug/property/blob/49ca1fcd01758f3aab0d1bdf84bf4943b246cc9b/docs/design/ui-c2/PROTOTYPE_ONLY-overview.png) · [修改前代表状态](https://github.com/cc7279694-debug/property/blob/49ca1fcd01758f3aab0d1bdf84bf4943b246cc9b/docs/design/ui-c2/PROTOTYPE_ONLY-states.png) · [原A报告](https://github.com/cc7279694-debug/property/blob/49ca1fcd01758f3aab0d1bdf84bf4943b246cc9b/docs/evidence/UI-C2-Sample-Review.md)。原字节和所有历史结果留在原提交，不复制大包。
+
+[修改后浅深8页](../design/ui-c2/PROTOTYPE_ONLY-overview.png) · [修改后4个代表状态](../design/ui-c2/PROTOTYPE_ONLY-states.png) · [离线交互HTML](../design/ui-c2/UI_C2_A_Prototype.html)。两张图均已实际打开查看；来源是本机已有Chrome的独立无界面浏览器，非Android/Compose截图。
+
+| 整改 | 原问题 → HTML处理 | 生产Compose对应实现 | 仍未实际运行 |
+|---|---|---|---|
+| R1-01 金额 | 零碎断行→真实字形宽度适配，数字整体单行；宽度仍不足则单独横向视口/明确提示，全量ARIA单位；网格用minmax(0,1fr)防小计撑宽 | AmountText使用当前density/fontScale的TextMeasurer，首选字号降至min(原字号,18sp)，比例行高；maxLines1/softWrapfalse；必要时至少48dp高的横向查看，完整内容描述。AmountFormatter原对象不变 | Android字形/滑动/读屏；360dp及LocalDensity2断言仅编译 |
+| R1-02 表单 | 返回/标题竞争、浮动标签拥挤→返回48独立行、全宽标题/外置8px标签；正文真实滚动、底部保存占独立空间 | 标题在完整宽度正文；仅S03启用labelOutside可选参数，外置标签8dp；原滚动正文与按实际高度测量的保存区/IME padding，末尾空间；隐藏错误仍展开定位 | 真Android大字/触控/实际IME；没有关闭字体缩放 |
+| R1-03 首页 | 重复空列表/大摘要→确认空库只保留紧凑“—”和唯一新增；已有数据压缩小计/日期，真实预览前移 | c2HomeIsEmpty仅在已验证空快照且无读取提示时成立；不把历史0贡献、真实0/负值或错误当空库；沿用原VM窗口、总数和顺序 | 真机首屏与动态刷新布局 |
+| R1-04 详情 | 长说明抢占首屏→身份/主指标/累计摘要/真实时间线/资料历史分层；类型与金额、日期及现金口径不同层级 | 所有事件原顺序完整保留；记一笔唯一主动作；更多保留原管理、危险删除原确认；成本历史增加更多快捷入口，不埋在长时间线下 | Android菜单/时间线及二次确认点击；原保护协议源码不改 |
+| R1-05 回看 | 计数和重复摘要压低曲线→精简计数、唯一主总额后紧邻曲线，分项/截止信息移到图后 | 原实际趋势VM/TotalCostChart，保留准确选日/分项/完整入口；原图表实现尾部逐字节（规范化换行）一致，不改采样/事件分页/查询 | 实际APK绘图、选日触控及性能 |
+
+[浏览器原始几何/完整金额](ui-c2-r1-20261026-050536/browser-signoff/metrics.json)、[基本页检查](ui-c2-r1-20261026-050536/browser-signoff/overview-qa.json)、[代表状态检查](ui-c2-r1-20261026-050536/browser-signoff/states-qa.json)：普通360×800框内，浅/深回看绘图区顶部约192.3px、高约208.4px；浏览器×2展开备注并滚至末尾后，最后字段仍在保存区上方，间隔约56.5px。长负数常规字号完整一行；更长金额在×2下保留缩放、通过自身横向视口查看，不撑宽页面。这些数值**仅属于浏览器原型**，不是Android fontScale2/IME证据。原型曲线/金额均合成，不冒称引擎或真实账本结果。
+
+阶段内发现并修复了原型网格的真实min-content溢出；初始浏览器读数保留在本机工作记录（非Android结果），最终归档检查按实际可见金额及真实viewport滚动容器核验。未放宽金额完整性、返回48dp或字段不被保存区遮挡的要求。两张图的尺寸/SHA和实际取证脚本见[视觉证据](ui-c2-r1-20261026-050536/visual-evidence.json)。
+
+### 实际技术验证
+
+- 最终 **60唯一JVM PASS**（13新增、47相关回归，不累计重复执行）：[逐方法](ui-c2-r1-20261026-050536/jvm-signoff-summary.json)。原A的75 JVM及18个编译未运行方法原样保留。
+- Debug构建、AndroidTest源码编译、Lint最终exit0；**Lint0错误17警告**：[完整命令/退出](ui-c2-r1-20261026-050536/quality-signoff/command.json)、[stdout](ui-c2-r1-20261026-050536/quality-signoff/stdout)、[Lint XML](ui-c2-r1-20261026-050536/lint-signoff.xml)。
+- **12新增Android/Compose方法仅编译，全部NOT_RUN**：[范围](ui-c2-r1-20261026-050536/android-compile-only.json)。未运行ADB、真机、AVD、T06/T03/IME或历史大套件。
+- [冻结边界](ui-c2-r1-20261026-050536/frozen-boundaries.json)、[源码输入绑定](ui-c2-r1-20261026-050536/input-binding.json)：Room5/backup4、data/domain/VM/导航/写入/Owner/恢复/调度与原图表不变；原AmountFormatter保持完整一致。
+- [构建身份/原证书](ui-c2-r1-20261026-050536/artifact-signoff.json)：仅普通Debug检查产物；默认Debug/Release/验证包配置未改，旧preview code18原APK字节保持，不构建/交付新版体验包，不安装或迁移。
+
+### 剩余边界与停止
+
+没有真实Android截图，APP_VISUAL_PENDING。媒体受校验读取入口仍PENDING，不合并M10、不读裸路径，不声称真实封面已显示。全部旧FAIL/UNKNOWN/NOT_RUN/NOTES及M10/M20/M22/M13/G1～G4状态不变。A-R1仅为待视觉确认候选；不自行ACCEPTED/FROZEN，不推广B段、不合并main、不进入M23。

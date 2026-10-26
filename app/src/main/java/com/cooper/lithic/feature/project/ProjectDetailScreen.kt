@@ -93,9 +93,17 @@ internal fun ProjectDetailScreen(
                 DropdownMenu(expanded = menuOpen, onDismissRequest = { menuOpen = false },
                     modifier = Modifier.testTag("project-detail-menu")) {
                     projectDetailMenuEntries(detail.project.endedOn != null,
-                        detail.events.any { it.exchangeGroupId != null }, onReplacement != null, onTradeIn != null)
+                        detail.events.any { it.exchangeGroupId != null }, onReplacement != null, onTradeIn != null,
+                        onCostHistory != null)
                         .forEach { entry ->
-                            if (entry.action == ProjectDetailAction.DELETE) HorizontalDivider()
+                            if (entry.action == ProjectDetailAction.DELETE) {
+                                HorizontalDivider()
+                                Text("危险操作", Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                                Text("结束保留事实供历史查看；删除会永久移除项目及其金额记录。",
+                                    Modifier.padding(horizontal = 12.dp).testTag("project-lifecycle-explanation"),
+                                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
                             DropdownMenuItem(text = { Text(entry.action.label,
                                 color = when {
                                     !entry.enabled -> MaterialTheme.colorScheme.onSurfaceVariant
@@ -111,6 +119,7 @@ internal fun ProjectDetailScreen(
                                         ProjectDetailAction.CORRECT_END -> onUpdateEnd()
                                         ProjectDetailAction.REPLACEMENT -> onReplacement?.invoke()
                                         ProjectDetailAction.TRADE_IN -> onTradeIn?.invoke()
+                                        ProjectDetailAction.COST_HISTORY -> onCostHistory?.invoke()
                                         ProjectDetailAction.DELETE -> onDelete()
                                     }
                                 })
@@ -137,7 +146,19 @@ internal fun ProjectDetailScreen(
                 item { ProjectCostSummary(detail) }
                 item { ProjectSecondaryTotals(detail) }
                 item {
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    HorizontalDivider()
+                    Text("真实金额记录", Modifier.padding(top = 24.dp).semantics { heading() },
+                        style = MaterialTheme.typography.titleLarge)
+                }
+                if (detail.events.isEmpty()) item { Text("没有金额记录", style = MaterialTheme.typography.bodyLarge) }
+                // Repository order and the complete fact collection are retained; no new query or truncation.
+                itemsIndexed(detail.events, key = { _, event -> event.id }) { _, event ->
+                    ProjectMoneyRecord(event, onCorrectMoney, onUpdateEnd)
+                }
+                item {
+                    Column(Modifier.testTag("project-secondary-management"), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        HorizontalDivider()
+                        Text("资料与历史", Modifier.padding(top = 12.dp).semantics { heading() }, style = MaterialTheme.typography.titleLarge)
                         Text("开始拥有：${detail.project.startedOn}", style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                         detail.project.endedOn?.let { Text("已记录结束日期：$it", style = MaterialTheme.typography.bodyMedium) }
@@ -147,9 +168,6 @@ internal fun ProjectDetailScreen(
                         detail.project.note?.takeIf { it.isNotBlank() }?.let {
                             Text(it, Modifier.testTag("project-detail-note"), style = MaterialTheme.typography.bodyLarge)
                         }
-                        Text("结束保留事实供历史查看；删除会永久移除项目及其金额记录。",
-                            Modifier.testTag("project-lifecycle-explanation"), style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant)
                         if (detail.events.any { it.exchangeGroupId != null }) Text(
                             "此项目参与以旧换新，暂不支持单独删除或修改交易日期与金额；可继续管理名称、类别、备注及后续真实金额。",
                             Modifier.testTag("project-trade-in-protection"), style = MaterialTheme.typography.bodyMedium)
@@ -159,22 +177,6 @@ internal fun ProjectDetailScreen(
                                 C2Icon(C2Glyph.Chevron)
                             }
                         }
-                    }
-                }
-                item {
-                    HorizontalDivider()
-                    Text("真实金额记录", Modifier.padding(top = 24.dp).semantics { heading() },
-                        style = MaterialTheme.typography.titleLarge)
-                }
-                if (detail.events.isEmpty()) item { Text("没有金额记录", style = MaterialTheme.typography.bodyLarge) }
-                // Repository order and the complete fact collection are retained; no new query or truncation.
-                itemsIndexed(detail.events, key = { _, event -> event.id }) { index, event ->
-                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        if (index == 0 || detail.events[index - 1].occurredOn != event.occurredOn) {
-                            Text(event.occurredOn.toString(), style = MaterialTheme.typography.labelLarge,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                        ProjectMoneyRecord(event, onCorrectMoney, onUpdateEnd)
                     }
                 }
             }
@@ -239,43 +241,41 @@ private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable ()
 
 @Composable
 private fun ProjectCostSummary(detail: ProjectDetail) {
-    Surface(shape = RoundedCornerShape(20.dp), color = MaterialTheme.colorScheme.surface) {
-        Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-            BoxWithConstraints(Modifier.fillMaxWidth()) {
-                val stack = maxWidth < 280.dp || LocalDensity.current.fontScale > 1.3f ||
-                    AmountFormatter.formatDailyRate(detail.cost.dailyRate).length > 9
-                val daily: @Composable () -> Unit = {
-                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text(projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal),
-                            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        AmountText(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"),
-                            style = MaterialTheme.typography.displayLarge.copy(fontSize = 38.sp))
-                    }
-                }
-                val held: @Composable () -> Unit = {
-                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("累计持有", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Text(if (detail.cost.unavailableReason == null) "${detail.cost.heldDays} 天" else "尚未开始",
-                            Modifier.testTag("project-detail-held-days"), style = MaterialTheme.typography.headlineSmall)
-                    }
-                }
-                if (stack) Column(verticalArrangement = Arrangement.spacedBy(16.dp)) { daily(); held() }
-                else Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Box(Modifier.weight(1.4f)) { daily() }
-                    Box(Modifier.weight(1f)) { held() }
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val stack = maxWidth < 280.dp || LocalDensity.current.fontScale > 1.3f ||
+                AmountFormatter.formatDailyRate(detail.cost.dailyRate).length > 9
+            val daily: @Composable () -> Unit = {
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal),
+                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    AmountText(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"),
+                        style = MaterialTheme.typography.displayLarge.copy(fontSize = 38.sp))
                 }
             }
-            Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodyMedium,
+            val held: @Composable () -> Unit = {
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text("累计持有", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(if (detail.cost.unavailableReason == null) "${detail.cost.heldDays} 天" else "尚未开始",
+                        Modifier.testTag("project-detail-held-days"), style = MaterialTheme.typography.headlineSmall)
+                }
+            }
+            if (stack) Column(verticalArrangement = Arrangement.spacedBy(16.dp)) { daily(); held() }
+            else Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                Box(Modifier.weight(1.4f)) { daily() }
+                Box(Modifier.weight(1f)) { held() }
+            }
+        }
+        Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (detail.cost.unavailableReason != null) Text("尚未开始，没有有效日均成本。", style = MaterialTheme.typography.bodyMedium)
+        if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal && detail.cost.unavailableReason == null) {
+            val hasObservedLateMoney = detail.events.any { event ->
+                event.occurredOn.isAfter(detail.project.endedOn) && !event.occurredOn.isAfter(detail.asOf)
+            }
+            Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。"
+                else "结束后仍可补录真实尾款或退款；持有天数不再增加。", style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
-            if (detail.cost.unavailableReason != null) Text("尚未开始，没有有效日均成本。", style = MaterialTheme.typography.bodyMedium)
-            if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal && detail.cost.unavailableReason == null) {
-                val hasObservedLateMoney = detail.events.any { event ->
-                    event.occurredOn.isAfter(detail.project.endedOn) && !event.occurredOn.isAfter(detail.asOf)
-                }
-                Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。"
-                    else "结束后仍可补录真实尾款或退款；持有天数不再增加。", style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
         }
     }
 }
@@ -307,33 +307,43 @@ private fun ProjectTotal(label: String, cents: Long, tag: String) {
 
 @Composable
 private fun ProjectMoneyRecord(event: ProjectMoneyEventEntity, onCorrectMoney: (String) -> Unit, onUpdateEnd: () -> Unit) {
-    Column(Modifier.fillMaxWidth().testTag("project-event-${event.id}").semantics(mergeDescendants = true) {},
-        verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.Top) {
+    Row(Modifier.fillMaxWidth().testTag("project-event-${event.id}"),
+        horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.Top) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Box(Modifier.padding(top = 8.dp).size(6.dp).background(MaterialTheme.colorScheme.primary, CircleShape))
-            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                val direction = if (event.direction == MoneyDirection.OUTLAY) "投入" else "收回"
-                Text(when (event.role) {
-                    ProjectMoneyEventRole.INITIAL -> "初始$direction"
-                    ProjectMoneyEventRole.END_SETTLEMENT -> "结束关联$direction"
-                    ProjectMoneyEventRole.REGULAR -> direction
-                }, style = MaterialTheme.typography.titleMedium)
-                Text(event.occurredOn.toString(), style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Text(if (event.basis == MoneyBasis.TRADE_IN_CREDIT) "非现金折抵" else "现金",
-                    Modifier.testTag("project-event-basis-${event.id}"), style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
-                AmountText(BigDecimal.valueOf(event.amountCents, 2), unit = AmountUnit.YUAN,
-                    style = MaterialTheme.typography.titleLarge)
-                event.description?.takeIf { it.isNotBlank() }?.let { Text(it, style = MaterialTheme.typography.bodyLarge) }
-                if (event.exchangeGroupId != null) Text("以旧换新关联事实；金额及日期不能单独修改。", style = MaterialTheme.typography.bodyMedium)
-                TextButton({ if (event.role == ProjectMoneyEventRole.END_SETTLEMENT) onUpdateEnd() else onCorrectMoney(event.id) },
-                    Modifier.heightIn(min = 48.dp).testTag("project-correct-event-${event.id}")) {
-                    Text(if (event.exchangeGroupId != null) "修改关联说明" else if (event.role == ProjectMoneyEventRole.END_SETTLEMENT)
-                        "修正结束及关联收回" else "纠正这条记录", style = MaterialTheme.typography.bodyMedium)
+        }
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            BoxWithConstraints(Modifier.fillMaxWidth()) {
+                val type: @Composable () -> Unit = {
+                    Text(projectMoneyEventTypeLabel(event.direction, event.role),
+                        Modifier.testTag("project-event-type-${event.id}"), style = MaterialTheme.typography.titleMedium)
+                }
+                val amount: @Composable () -> Unit = {
+                    AmountText(BigDecimal.valueOf(event.amountCents, 2), Modifier.testTag("project-event-amount-${event.id}"),
+                        unit = AmountUnit.YUAN, style = MaterialTheme.typography.titleLarge, showUnit = false)
+                }
+                if (maxWidth < 260.dp || LocalDensity.current.fontScale > 1.3f) {
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) { type(); amount() }
+                } else Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Box(Modifier.weight(1f)) { type() }
+                    Box(Modifier.weight(1.2f)) { amount() }
                 }
             }
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(event.occurredOn.toString(), Modifier.testTag("project-event-date-${event.id}"),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(projectMoneyEventBasisLabel(event.basis), Modifier.testTag("project-event-basis-${event.id}"),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            event.description?.takeIf { it.isNotBlank() }?.let { Text(it, style = MaterialTheme.typography.bodyLarge) }
+            if (event.exchangeGroupId != null) Text("以旧换新关联事实；金额及日期不能单独修改。",
+                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            TextButton({ if (event.role == ProjectMoneyEventRole.END_SETTLEMENT) onUpdateEnd() else onCorrectMoney(event.id) },
+                Modifier.heightIn(min = 48.dp).testTag("project-correct-event-${event.id}")) {
+                Text(if (event.exchangeGroupId != null) "修改关联说明" else if (event.role == ProjectMoneyEventRole.END_SETTLEMENT)
+                    "修正结束及关联收回" else "纠正这条记录", style = MaterialTheme.typography.bodyMedium)
+            }
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
         }
-        HorizontalDivider()
     }
 }

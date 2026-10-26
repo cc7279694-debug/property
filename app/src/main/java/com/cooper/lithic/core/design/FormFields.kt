@@ -1,6 +1,7 @@
 package com.cooper.lithic.core.design
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -13,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.error as semanticsError
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -30,9 +32,10 @@ fun NameField(
     enabled: Boolean = true,
     imeAction: ImeAction = ImeAction.Next,
     onImeAction: (() -> Unit)? = null,
+    labelOutside: Boolean = false,
 ) {
     ControlledTextField(value, onValueChange, modifier, label, error, enabled,
-        KeyboardOptions(capitalization = KeyboardCapitalization.Words, keyboardType = KeyboardType.Text, imeAction = imeAction), onImeAction)
+        KeyboardOptions(capitalization = KeyboardCapitalization.Words, keyboardType = KeyboardType.Text, imeAction = imeAction), onImeAction, labelOutside)
 }
 
 @Composable
@@ -45,9 +48,10 @@ fun AmountField(
     enabled: Boolean = true,
     imeAction: ImeAction = ImeAction.Next,
     onImeAction: (() -> Unit)? = null,
+    labelOutside: Boolean = false,
 ) {
     ControlledTextField(value, onValueChange, modifier, label, error, enabled,
-        KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = imeAction), onImeAction)
+        KeyboardOptions(keyboardType = KeyboardType.Decimal, imeAction = imeAction), onImeAction, labelOutside)
 }
 
 @Composable
@@ -86,14 +90,22 @@ private fun ControlledTextField(
     enabled: Boolean,
     keyboardOptions: KeyboardOptions,
     onImeAction: (() -> Unit)?,
+    labelOutside: Boolean,
 ) {
-    OutlinedTextField(value = value, onValueChange = onValueChange,
-        modifier = modifier.fillMaxWidth().heightIn(min = 56.dp).semantics {
-            error?.let { semanticsError(it) }
-        }, label = { Text(label) }, enabled = enabled, isError = error != null,
-        supportingText = if (error == null) null else ({ Text(error, style = MaterialTheme.typography.bodyMedium) }),
-        textStyle = MaterialTheme.typography.bodyLarge, singleLine = true,
-        keyboardOptions = keyboardOptions, keyboardActions = keyboardActions(onImeAction))
+    val field: @Composable () -> Unit = {
+        OutlinedTextField(value = value, onValueChange = onValueChange,
+            modifier = modifier.fillMaxWidth().heightIn(min = 56.dp).semantics {
+                if (labelOutside) contentDescription = label
+                error?.let { semanticsError(it) }
+            }, label = if (labelOutside) null else ({ Text(label) }), enabled = enabled, isError = error != null,
+            supportingText = if (error == null) null else ({ Text(error, style = MaterialTheme.typography.bodyMedium) }),
+            textStyle = MaterialTheme.typography.bodyLarge, singleLine = true,
+            keyboardOptions = keyboardOptions, keyboardActions = keyboardActions(onImeAction))
+    }
+    if (labelOutside) Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(label, style = MaterialTheme.typography.bodyLarge)
+        field()
+    } else field()
 }
 
 private fun keyboardActions(onImeAction: (() -> Unit)?): KeyboardActions =

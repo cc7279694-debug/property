@@ -25,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.error as semanticsError
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.foundation.text.KeyboardOptions
@@ -52,16 +53,18 @@ internal fun ProjectDateInput(
     modifier: Modifier = Modifier,
     error: String? = null,
     enabled: Boolean = true,
+    labelOutside: Boolean = false,
 ) {
     var showCalendar by rememberSaveable { mutableStateOf(false) }
     var calendarMessage by rememberSaveable { mutableStateOf<String?>(null) }
     val parsed = try { LocalDate.parse(value) } catch (_: DateTimeParseException) { null }
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+        if (labelOutside) Text(label, style = MaterialTheme.typography.bodyLarge)
         OutlinedTextField(
             value = value, onValueChange = { calendarMessage = null; onValueChange(it) },
             modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag("$tagPrefix-input")
-                .semantics { error?.let { semanticsError(it) } },
-            label = { Text(label) }, enabled = enabled, singleLine = true,
+                .semantics { if (labelOutside) contentDescription = label; error?.let { semanticsError(it) } },
+            label = if (labelOutside) null else ({ Text(label) }), enabled = enabled, singleLine = true,
             isError = error != null,
             supportingText = { Text(error ?: "年-月-日，例如2026-01-01", style = MaterialTheme.typography.bodyMedium) },
             textStyle = MaterialTheme.typography.bodyLarge,
@@ -170,12 +173,19 @@ internal fun ProjectNoteInput(
     tag: String,
     enabled: Boolean,
     error: String? = null,
+    labelOutside: Boolean = false,
 ) {
-    OutlinedTextField(value, onValueChange,
-        modifier = Modifier.fillMaxWidth().heightIn(min = 72.dp).testTag(tag)
-            .semantics { error?.let { semanticsError(it) } },
-        label = { Text(label) }, enabled = enabled, minLines = 2, isError = error != null,
-        supportingText = if (error == null) null else ({ Text(error, style = MaterialTheme.typography.bodyMedium) }),
-        textStyle = MaterialTheme.typography.bodyLarge,
-        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Default))
+    val field: @Composable () -> Unit = {
+        OutlinedTextField(value, onValueChange,
+            modifier = Modifier.fillMaxWidth().heightIn(min = 72.dp).testTag(tag)
+                .semantics { if (labelOutside) contentDescription = label; error?.let { semanticsError(it) } },
+            label = if (labelOutside) null else ({ Text(label) }), enabled = enabled, minLines = 2, isError = error != null,
+            supportingText = if (error == null) null else ({ Text(error, style = MaterialTheme.typography.bodyMedium) }),
+            textStyle = MaterialTheme.typography.bodyLarge,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Default))
+    }
+    if (labelOutside) Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(label, style = MaterialTheme.typography.bodyLarge)
+        field()
+    } else field()
 }

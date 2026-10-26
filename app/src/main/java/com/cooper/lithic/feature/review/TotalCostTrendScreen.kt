@@ -4,6 +4,9 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -37,6 +40,7 @@ import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.CustomAccessibilityAction
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.customActions
@@ -58,6 +62,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeParseException
 
 /** Read-only view: all amounts, status counts and event identities are supplied by the snapshot. */
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun TotalCostTrendScreen(
     state: TotalCostTrendUiState,
@@ -124,37 +129,49 @@ internal fun TotalCostTrendScreen(
             Text("暂无记录。尚未录入相关记录，不能据此推断过去没有花钱。", Modifier.testTag("total-trend-empty"))
         }
         if (timeline != null && hasRecords) {
-            item("selected") {
+            if (summaryOnly) item("selected") {
+                Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text("总日均成本 · 元/天", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        state.selectedDate?.let { Text(it.toString(), Modifier.testTag("total-trend-selected-date"),
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                    }
+                    if (selected == null) Text("正在计算所选日期；不会用旧日期金额或0代替结果。")
+                    else AmountText(selected.totalRate, Modifier.testTag("total-trend-total"),
+                        style = MaterialTheme.typography.headlineLarge.copy(fontSize = 32.sp), showUnit = false)
+                }
+            }
+            if (!summaryOnly) item("selected") {
                 Card(Modifier.fillMaxWidth(), shape = RoundedCornerShape(20.dp),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(if (summaryOnly) "总日均成本" else "结果截至 ${timeline.asOf}",
+                        Text("结果截至 ${timeline.asOf}",
                             style = MaterialTheme.typography.bodyMedium)
                         state.selectedDate?.let { Text("所选日期：$it", Modifier.testTag("total-trend-selected-date"),
                             style = MaterialTheme.typography.titleMedium) }
                         if (selected == null) Text("正在计算所选日期；不会用旧日期金额或0代替结果。")
                         else {
-                            if (summaryOnly) {
-                                AmountText(selected.totalRate, Modifier.testTag("total-trend-total"),
-                                    style = MaterialTheme.typography.displaySmall.copy(fontSize = 38.sp))
-                                HorizontalDailyContributions(selected)
-                                Text("截至 ${timeline.asOf} · 非当日扣款", style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant)
-                                Text(reviewSelectionLabel(selected), Modifier.testTag("total-trend-selected-status"),
-                                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                            } else {
-                                DailyValue("总日均成本", selected.totalRate, "total-trend-total")
-                                DailyValue("长期项目贡献", selected.projectRate, "total-trend-project")
-                                DailyValue("订阅贡献", selected.subscriptionRate, "total-trend-subscription")
-                                Text(selectionMeaning(selected), Modifier.testTag("total-trend-selected-status"),
-                                    style = MaterialTheme.typography.bodyMedium)
-                            }
+                            DailyValue("总日均成本", selected.totalRate, "total-trend-total")
+                            DailyValue("长期项目贡献", selected.projectRate, "total-trend-project")
+                            DailyValue("订阅贡献", selected.subscriptionRate, "total-trend-subscription")
+                            Text(selectionMeaning(selected), Modifier.testTag("total-trend-selected-status"),
+                                style = MaterialTheme.typography.bodyMedium)
                         }
                     }
                 }
             }
             item("chart") {
                 TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate, concise = summaryOnly)
+                if (summaryOnly) {
+                    selected?.let { point ->
+                        HorizontalDailyContributions(point)
+                        Text(reviewSelectionLabel(point), Modifier.testTag("total-trend-selected-status"),
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                    Text("截至 ${timeline.asOf} · 非当日扣款", style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
                 Text(if (summaryOnly) "按已录入事实重建，不代表全部生活消费。"
                     else "完整记录历史至截止日；长跨度图表精简显示，事件和重要变化保留。任意日期可查询精确值，全部事件都可继续查看。",
                     style = MaterialTheme.typography.bodySmall)
@@ -250,14 +267,25 @@ internal fun TotalCostTrendScreen(
 
 @Composable
 private fun HorizontalDailyContributions(point: CostTimelinePoint) {
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text("长期项目", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            AmountText(point.projectRate, Modifier.testTag("total-trend-project"), style = MaterialTheme.typography.titleMedium)
+    val scale = LocalDensity.current.fontScale
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val project: @Composable () -> Unit = {
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text("长期项目贡献", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                AmountText(point.projectRate, Modifier.testTag("total-trend-project"), style = MaterialTheme.typography.titleMedium)
+            }
         }
-        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text("订阅", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            AmountText(point.subscriptionRate, Modifier.testTag("total-trend-subscription"), style = MaterialTheme.typography.titleMedium)
+        val subscription: @Composable () -> Unit = {
+            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text("订阅贡献", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                AmountText(point.subscriptionRate, Modifier.testTag("total-trend-subscription"), style = MaterialTheme.typography.titleMedium)
+            }
+        }
+        if (maxWidth < 260.dp || scale > 1.3f) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            project(); subscription()
+        } else Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            Column(Modifier.weight(1f)) { project() }
+            Column(Modifier.weight(1f)) { subscription() }
         }
     }
 }

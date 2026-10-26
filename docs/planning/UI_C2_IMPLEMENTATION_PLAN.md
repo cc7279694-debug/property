@@ -21,3 +21,12 @@
 - Android运行、大字体/IME/无障碍/性能和真实截图未授权，维持NOT_RUN。
 - 全局主题随A段改变，其他页面只受主题传递，不进行B段结构重构。
 - 预览复用原50条窗口，趋势保持原完整计算成本，不谎称固定2条或50条计算。
+
+
+## 本轮A-R1（视觉CHANGES REQUIRED后的限定精修）
+
+Goal：解决长金额破碎、大字表单拥挤、空态重复、详情层次与回看首屏曲线位置五项问题，交付可再次集中查看的样板。
+Scope：四页生产Composable、AmountText与必要输入标签可选呈现参数、同一离线HTML及两张图、定向断言和本报告。
+Out of scope：B段推广、设备/ADB/AVD、用户安装包、媒体入口补建、数据/计算/写入/Owner/导航或恢复协议。
+Verification：定向JVM；Debug/AndroidTest编译/Lint；浏览器实际查看四页浅深与四个代表状态，核对单行完整金额、可发现横向查看、正文/保存区边界和可见绘图区。Android真实布局/字体/IME保持NOT_RUN。
+Stop：VISUAL_REFINEMENT_READY — UI-C2 A-R1，附PROTOTYPE_ONLY / APP_VISUAL_PENDING；等待ChatGPT与用户一次集中视觉确认。
