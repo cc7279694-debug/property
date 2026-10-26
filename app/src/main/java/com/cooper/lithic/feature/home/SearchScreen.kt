@@ -1,6 +1,7 @@
 package com.cooper.lithic.feature.home
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,6 +10,10 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Surface
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -16,11 +21,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.C2Glyph
+import com.cooper.lithic.core.design.C2PageHeader
+import com.cooper.lithic.core.design.C2RecordIdentity
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.design.NameField
 import com.cooper.lithic.data.local.CategoryType
@@ -41,10 +50,9 @@ internal fun SearchScreen(
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("search-back")) { Text("返回现在") }
-                Text("搜索名称", Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineLarge)
+                C2PageHeader("搜索名称", onBack, "search-back", backLabel = "返回现在")
                 NameField(state.query, onQueryChange, Modifier.testTag("search-query"), label = "项目或订阅名称",
-                    imeAction = ImeAction.Search, onImeAction = onRetry)
+                    imeAction = ImeAction.Search, onImeAction = onRetry, labelOutside = true)
                 Text("同时查找当前与历史记录。仅匹配名称。", style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
                 if (state.loading) Text("正在查找", Modifier.testTag("search-loading"))
@@ -72,21 +80,28 @@ internal fun SearchScreen(
             }
         }
         items(state.items, key = { "${it.type.name}:${it.id}" }) { item ->
-            Card(onClick = { onOpen(item) }, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
-                .testTag("search-row-${item.id}")) {
-                Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium),
-                    verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                    Text(item.name, style = MaterialTheme.typography.titleLarge)
-                    Text((if (item.type == CategoryType.PROJECT) "长期项目" else "订阅服务") + " · ${item.categoryName}",
-                        style = MaterialTheme.typography.bodyMedium)
-                    Text(searchStatusLabel(item.status) + if (item.isHistory) " · 历史记录" else " · 当前管理",
-                        Modifier.testTag("search-status-${item.id}"), style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Card(onClick = { onOpen(item) }, modifier = Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
+                .testTag("search-row-${item.id}"), shape = MaterialTheme.shapes.medium,
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+                Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically) {
+                    C2RecordIdentity(item.name, item.categoryName,
+                        if (item.type == CategoryType.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
+                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(item.name, style = MaterialTheme.typography.bodyLarge)
+                        Text((if (item.type == CategoryType.PROJECT) "长期项目" else "订阅服务") + " · ${item.categoryName}",
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Surface(shape = RoundedCornerShape(50), color = MaterialTheme.colorScheme.primaryContainer) {
+                            Text(searchStatusLabel(item.status) + if (item.isHistory) " · 历史记录" else " · 当前管理",
+                                Modifier.padding(horizontal = 8.dp, vertical = 2.dp).testTag("search-status-${item.id}"),
+                                style = MaterialTheme.typography.bodySmall)
+                        }
+                    }
                 }
             }
         }
         if (state.hasMore) item {
-            Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium).heightIn(min = 48.dp)
+            OutlinedButton(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium).heightIn(min = 48.dp)
                 .testTag("search-load-more"), enabled = !state.loading) { Text(if (state.loading) "正在读取" else "继续加载") }
         }
         else if (state.items.isNotEmpty() && !state.loading && state.error == null) item {

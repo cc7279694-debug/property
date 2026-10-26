@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -18,6 +19,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.C2PageHeader
+import com.cooper.lithic.core.design.C2Glyph
+import com.cooper.lithic.core.design.C2Icon
 import com.cooper.lithic.core.design.EntryCard
 import com.cooper.lithic.core.design.LithicSpacing
 
@@ -36,11 +40,7 @@ internal fun ProjectHistoryScreen(
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("project-history-back")) {
-                    Text("返回回看", style = MaterialTheme.typography.bodyLarge)
-                }
-                Text("历史档案", style = MaterialTheme.typography.headlineLarge,
-                    modifier = Modifier.semantics { heading() })
+                C2PageHeader("历史档案", onBack, "project-history-back", backLabel = "返回回看")
                 Text("已结束的长期项目。结果包含已记录的真实尾款与退款。",
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 state.totalCount?.let { Text("已结束 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
@@ -86,7 +86,8 @@ internal fun ProjectHistoryScreen(
                 "\n已持有${detail.cost.heldDays}天\n结果截至 ${detail.asOf}"
             EntryCard(detail.project.name, "已结束", dates, detail.cost.dailyRate,
                 Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-history-row-${detail.project.id}"),
-                onClick = { onOpenProject(detail.project.id) })
+                onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
+                hasCoverReference = detail.project.coverAssetId != null, metricLabel = "截至目前日均成本")
         }
         if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
             Text(when {
@@ -97,7 +98,7 @@ internal fun ProjectHistoryScreen(
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         if (state.hasMore) item {
-            Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium)
+            OutlinedButton(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium)
                 .heightIn(min = 48.dp).testTag("project-history-load-more"), enabled = !state.loading && !state.loadingMore) {
                 Text(if (state.loadingMore) "正在读取下一页" else "继续加载", style = MaterialTheme.typography.bodyLarge)
             }

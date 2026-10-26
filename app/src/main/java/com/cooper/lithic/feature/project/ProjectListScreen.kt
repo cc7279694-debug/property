@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -18,6 +19,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.C2PageHeader
+import com.cooper.lithic.core.design.C2Glyph
+import com.cooper.lithic.core.design.C2Icon
 import com.cooper.lithic.core.design.EntryCard
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.data.repository.ProjectDetail
@@ -38,14 +42,11 @@ internal fun ProjectListScreen(
             item {
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                    TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("project-list-back")) {
-                        Text("返回现在", style = MaterialTheme.typography.bodyLarge)
-                    }
-                    Text("长期项目", style = MaterialTheme.typography.headlineLarge,
-                        modifier = Modifier.semantics { heading() })
+                    C2PageHeader("长期项目", onBack, "project-list-back", backLabel = "返回现在")
                     Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。",
                         style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("project-list-create")) {
+                        C2Icon(C2Glyph.Add)
                         Text("新增长期项目", style = MaterialTheme.typography.bodyLarge)
                     }
                     state.totalCount?.let { Text("当前列表 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
@@ -91,7 +92,8 @@ internal fun ProjectListScreen(
                     if (detail.cost.unavailableReason == null) "\n已持有${detail.cost.heldDays}天" else ""
                 EntryCard(detail.project.name, projectStatusLabel(detail), dates, detail.cost.dailyRate,
                     Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-row-${detail.project.id}"),
-                    onClick = { onOpenProject(detail.project.id) })
+                    onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
+                    hasCoverReference = detail.project.coverAssetId != null, metricLabel = "当前日均成本")
             }
             if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
                 Text(when {
@@ -102,7 +104,7 @@ internal fun ProjectListScreen(
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             if (state.hasMore) item {
-                Button(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium)
+                OutlinedButton(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium)
                     .heightIn(min = 48.dp).testTag("project-list-load-more"), enabled = !state.loadingMore && !state.loading) {
                     Text(if (state.loadingMore) "正在读取下一页" else "继续加载", style = MaterialTheme.typography.bodyLarge)
                 }

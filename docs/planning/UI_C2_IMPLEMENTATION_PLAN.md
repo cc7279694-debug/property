@@ -35,3 +35,10 @@ Stop：VISUAL_REFINEMENT_READY — UI-C2 A-R1，附PROTOTYPE_ONLY / APP_VISUAL_P
 ## A-R2定稿候选续接
 
 Goal：恢复UI-C1原图的主卡/小摘要/身份指标/分组层次，保留A-R1已经解决的布局问题。Scope：四页生产Compose、极长金额完整查看、纯UI图标与离线视觉对照。Out of scope：所有业务/媒体实现、B段、设备和用户安装包。Verification：受影响JVM、Android源码编译、Debug/Lint、离线浅深四页+代表状态+原图并排，不把HTML当Android视觉PASS。媒体仅只读核对并单列MEDIA_DISPLAY_PENDING。完成后VISUAL_CANDIDATE_READY — UI-C2 A-R2；集中确认前停止。
+
+
+## B段授权与实施合同（2026-10-26）
+
+起点e24703b，A-R2独立结论仅PASS WITH NOTES — PROTOTYPE VISUAL DIRECTION ONLY。Goal：沿用其浅深语言统一其余真实产品页面。Scope：B1列表/历史/搜索与共享呈现组件，B2订阅档案/操作，B3项目深层表单/交易，B4回看/设置/数据管理，分别提交生产代码；B5只读媒体建议。Locked：Room5/backup4、冻结规则、DAO/Repository/VM写入/Owner/恢复/导航/提醒、版本签名及A主要结构。Adjustable：信息层级、身份/状态/金额、间距分组、表单/主次操作外观。无需新增数据设施或依赖。
+
+Verification：各部分定向JVM回归与AndroidTest编译，最终集成Debug/Lint与身份审计；不运行ADB/设备/真实Android，不重跑M22历史套件，不生成新体验包。仅少量PROTOTYPE_ONLY对照，生产视觉/字体/IME/封面不判PASS。B1～B4按顺序集成与提交，其他部分先存当前任务scratch副本，避免把未经编译的并行修改混入前一部分。完成后UI-C2 B IMPLEMENTATION COMPLETE — READY FOR INTEGRATION REVIEW，停止；C段、设备与高于code18新版体验包须后续授权。
