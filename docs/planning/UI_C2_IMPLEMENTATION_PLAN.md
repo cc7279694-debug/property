@@ -1,6 +1,6 @@
 # UI-C2 实施计划
 
-## 当前唯一授权：A段
+## A段历史计划（本轮B段授权见文末）
 
 目标：当前产品分支上的四页生产Compose实现，加同来源视觉样板，集中展示后停止。基线、规格、限制见[UI_C2_SPEC](../design/UI_C2_SPEC.md)。不建立长期UI支线，不merge/cherry-pick旧UI。
 
@@ -11,7 +11,7 @@
 5. 无现成Compose桌面渲染时，交付单文件离线HTML并标PROTOTYPE_ONLY / APP_VISUAL_PENDING。生产Composable与测试夹具同时编译；不把HTML或编译当真实App视觉。
 6. 写[简短样板报告](../evidence/UI-C2-Sample-Review.md)，提交推送当前产品分支，停在VISUAL_SAMPLE_READY — UI-C2，等待一次集中视觉反馈。
 
-## 未授权后续
+## 原A段停止边界（历史；B段现已另行授权）
 
 订阅、列表、搜索、设置、备份恢复及其他深页推广需等用户看A段。最终用户APK须来自本产品分支新UI，preview同ID/原证书、code高于18；核对生产MainActivity使用新组件及APK实际显示。A段不做新用户安装包、不操作设备、不开始M23。
 
@@ -42,3 +42,8 @@ Goal：恢复UI-C1原图的主卡/小摘要/身份指标/分组层次，保留A-
 起点e24703b，A-R2独立结论仅PASS WITH NOTES — PROTOTYPE VISUAL DIRECTION ONLY。Goal：沿用其浅深语言统一其余真实产品页面。Scope：B1列表/历史/搜索与共享呈现组件，B2订阅档案/操作，B3项目深层表单/交易，B4回看/设置/数据管理，分别提交生产代码；B5只读媒体建议。Locked：Room5/backup4、冻结规则、DAO/Repository/VM写入/Owner/恢复/导航/提醒、版本签名及A主要结构。Adjustable：信息层级、身份/状态/金额、间距分组、表单/主次操作外观。无需新增数据设施或依赖。
 
 Verification：各部分定向JVM回归与AndroidTest编译，最终集成Debug/Lint与身份审计；不运行ADB/设备/真实Android，不重跑M22历史套件，不生成新体验包。仅少量PROTOTYPE_ONLY对照，生产视觉/字体/IME/封面不判PASS。B1～B4按顺序集成与提交，其他部分先存当前任务scratch副本，避免把未经编译的并行修改混入前一部分。完成后UI-C2 B IMPLEMENTATION COMPLETE — READY FOR INTEGRATION REVIEW，停止；C段、设备与高于code18新版体验包须后续授权。
+
+
+## B段实施停止点
+
+B1～B4已分别形成生产代码提交；每部分执行定向JVM及AndroidTest编译，编译失败和修复原样保存。最终集成、身份审计和NOT_RUN范围统一见[UI-C2-B-Integration](../evidence/UI-C2-B-Integration.md)，不累加重复测试次数为覆盖数。新增21个Compose方法仅编译，未设备执行。四帧订阅/设置浅深样板为合成HTML，未生成新的用户APK。B5只读媒体建议见报告，不实施resolver、解码或M10协议。后续C必须另获设备与交付授权，核对生产MainActivity、新组件、浅深/字体/IME/返回/未知状态；最终体验包需同preview ID/证书且code>18。本轮停止等待独立整合审查。

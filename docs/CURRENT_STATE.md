@@ -4,7 +4,10 @@
 
 ## Current Stage
 
-- **UI-C2 A-R2 — VISUAL_CANDIDATE_READY / 待集中视觉确认**：从`4d6671f`保留后续实现继续；A-R1排版部分有效、视觉保真仍CHANGES REQUIRED。已实际打开UI-C1浅深原图，四页同步精修生产Compose/HTML：深绿主卡、卡外真实active小计、类别图标/名称身份、详情指标组/时间线、轻表单与图标分组；保留R1测量/大字与所有原业务保护，长金额增加完整查看。64唯一JVM PASS、9新增Android/Compose仅编译NOT_RUN，Debug/Lint exit0、0E17W；8基本+5代表及三列视觉对照已查看，仍PROTOTYPE_ONLY / APP_VISUAL_PENDING。真实封面MEDIA_DISPLAY_PENDING，旧读取链不能直接适配，未实施媒体。Room5/backup4/证书/preview18字节及历史状态保持，无设备/新用户APK。见[本轮记录](evidence/UI-C2-Sample-Review.md#a-r2原设计视觉候选2026-10-26)。等待确认，不自动B段/冻结/M23。
+
+- **UI-C2 B — UI-C2 B IMPLEMENTATION COMPLETE / READY FOR INTEGRATION REVIEW**：用户单独授权从`e24703b`沿用A-R2推广；A-R2独立结论仅 **PASS WITH NOTES — PROTOTYPE VISUAL DIRECTION ONLY**。B1列表/历史/搜索、B2订阅档案/表单、B3项目深层操作/以旧换新、B4回看/设置/数据管理已落实生产Compose并分别提交。真实排序/分页、原金额/日期/资格、导航与未知提交/恢复保护不变；媒体只读审查，**MEDIA_DISPLAY_PENDING**。阶段检查与最终169唯一JVM PASS、21新增Compose仅编译/运行NOT_RUN、Debug/Lint退出0（0错误17警告）、四帧浅深HTML原型及真实执行边界见[集中报告](evidence/UI-C2-B-Integration.md)。Android运行/真实生产视觉/字体/IME仍NOT_RUN；原型PROTOTYPE_ONLY / APP_VISUAL_PENDING。Room5/backup4、原签名/preview18、M10/M20/M22/M13及G1～G4历史状态保持；无设备、新用户APK、main合并或M23。停止等待独立整合审查；C段与新版体验交付未执行。
+
+- **UI-C2 A-R2 — 原型方向限定认可（历史实施记录）**：从`4d6671f`保留后续实现继续；A-R1排版部分有效、视觉保真仍CHANGES REQUIRED。已实际打开UI-C1浅深原图，四页同步精修生产Compose/HTML：深绿主卡、卡外真实active小计、类别图标/名称身份、详情指标组/时间线、轻表单与图标分组；保留R1测量/大字与所有原业务保护，长金额增加完整查看。64唯一JVM PASS、9新增Android/Compose仅编译NOT_RUN，Debug/Lint exit0、0E17W；8基本+5代表及三列视觉对照已查看，仍PROTOTYPE_ONLY / APP_VISUAL_PENDING。真实封面MEDIA_DISPLAY_PENDING，旧读取链不能直接适配，未实施媒体。Room5/backup4/证书/preview18字节及历史状态保持，无设备/新用户APK。见[本轮记录](evidence/UI-C2-Sample-Review.md#a-r2原设计视觉候选2026-10-26)。其后用户已单独授权本轮B段；不据此授予Android视觉/正式冻结或M23。
 
 
 - **UI-C2 A-R1 — 排版部分有效 / 视觉保真CHANGES REQUIRED（后续独立审查）**：来源`49ca1fc`的原A视觉审查CHANGES REQUIRED保持；本轮五项精修已落入生产Compose和同一离线样板，金额测量单行/横向查看、大字独立返回/外置标签、紧凑空态、详情时间线及回看曲线前移。60唯一JVM PASS、12新增Android/Compose仅编译/运行NOT_RUN，Debug/Lint exit0、0错误17警告；8基本+4代表原型已实际查看，浏览器几何不冒充Android。Room5/backup4/Formatter/业务/Owner/导航/恢复不改；旧preview18字节保持，无设备/新用户APK。见[集中报告A-R1](evidence/UI-C2-Sample-Review.md#a-r1精修记录2026-10-26)。仅待一次集中视觉反馈，不进入B段/M23，不冻结；原A及全部历史状态保留。
@@ -132,11 +135,11 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Git
 
-- 当前功能分支`codex/lithic-v1-product-completion`，P04起点`d35f8a1a91112c1cf19fb74950c8edbd39be59c0`、构建源码`96e4d7c762c2b82e8e245a4d0260bea3744b62e3`，继承M22来源b9e77b3；M22原分支保留。工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`；不修改原M10目录或任何设备。
+- 当前功能分支`codex/lithic-v1-product-completion`，本轮UI-C2 B来源`e24703b556660683bb25f5b14e059c1838e7b3f9`，B1～B4及定位器分别提交。历史P04起点`d35f8a1a91112c1cf19fb74950c8edbd39be59c0`、构建源码`96e4d7c762c2b82e8e245a4d0260bea3744b62e3`，继承M22来源b9e77b3；M22原分支保留。工作区`E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP`；不修改原M10目录或任何设备。
 - 仅提交推送本模块代码/测试/文档，最终远端及工作区状态以Git回执为准；不合并main，不配置正式签名。
 
 ## Next Recommended Task
 
-P04个人体验候选已交付本地，等待用户自行安排集中体验与ChatGPT独立复核；不要求现在安装/截图，也不自动执行手机或旧模拟器测试。按[体验清单](evidence/LITHIC-V1-User-Trial-Checklist.md)只用可丢弃账本，发生未知结果先保留提示，不清数据或重复覆盖。
+UI-C2 B已完成桌面实施，等待ChatGPT独立整合审查。下一C段须另行明确授权后核对生产MainActivity真实视觉与关键交互；本轮不自动操作设备、不生成新用户APK。新版体验包需要同preview包名/原证书且code>18，不能把旧code18当新UI交付。真实媒体仍MEDIA_DISPLAY_PENDING，需独立只读resolver与安全专项授权；不合并旧M10实现。此前P04交付及[体验清单](evidence/LITHIC-V1-User-Trial-Checklist.md)作为历史保留。
 
 P01～P03仍IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；M10三JPEG FAIL、M20平台FAIL/UNKNOWN、M22 BLOCKED及T06/T03/IME、M13-T06和G1/G2/G3/G4均未关闭。若后续明确授权M23，按原计划核对正式签名保管/真实升级、schema与备份兼容、恢复与相关故障/设备可靠性；不能把本次Debug签名候选当成正式发行准入。问题反馈优先小范围修正并保护真实数据，不自动重启旧验收循环、合并main或进入M23。
