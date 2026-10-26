@@ -48,7 +48,7 @@ class HomeOverviewUiTest {
     fun empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero() {
         show(result())
         compose.onNodeWithTag("home-total-rate").assertTextContains("—")
-        compose.onNodeWithTag("home-first-record").assertIsDisplayed()
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed()
         compose.onNodeWithText("¥0.00").assertDoesNotExist()
     }
 

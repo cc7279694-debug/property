@@ -110,3 +110,15 @@ LOCKED：B1～B4、Room5/backup4、金额/日期/订阅引擎、数据/Owner/导
 Preview3静态交付记录保留，视觉由用户转交独立结论VISUAL DELIVERY REJECTED。最新C1覆盖旧空态分支：Home始终保留深绿主卡，确认空Overview为—及两张真实0数量卡；未知仍—/错误旧结果有提示，空库仅原单CTA。金额按实测文本宽紧邻元/天，原Formatter/完整金额入口保留。Review确认空仅短引导及守卫回首页，无菜单墙/虚构图表；加载、错误、恢复未知、残留事实不判空，内嵌趋势不重复声明empty。正常菜单56dp最小、标题16sp，说明按需；主标题24/32、主金额38/46、辅助14/20与系统缩放保持，底部导航独立12/16sp，不通过压缩触控或关闭缩放解决问题。
 
 本轮生产Compose已编译；设计参考、生产源与真实截图是不同证据。没有HTML和真实Android截图，A～E及360/400/系统字号/IME仍待真实运行。APP_VISUAL_PENDING／MEDIA_DISPLAY_PENDING；不能登记VISUAL_ACCEPTED。见[C1报告](../evidence/UI-C2-C1-Real-Visual-Remediation.md)。
+
+
+## C2 Preview 5拒绝后的空态收口（2026-10-26）
+
+本节覆盖C1与B-HOME的空库新增结构，历史记录不改。Preview5视觉仍VISUAL REJECTED；当前仅UI-C2 C2 IMPLEMENTED / APP_VISUAL_PENDING。
+
+- Home无论空/有记录均保留56dp圆形＋、原两项选择面板、72dp底部独立操作带；删除第二全宽空库新增按钮。绿主卡纵向12dp、组间4dp、标签14sp，主金额38sp及完整金额/单位适配保持。确认空Overview为—与两个真实0；未知/旧快照不冒充0，只有一句引导。
+- Review确认空库采用透明自然高度内容组：112×88dp现有Review/Project/Subscription矢量组合、单句引导及唯一“去首页记录”，原requestLeave路径；不是单色铺满大卡。非空、历史贡献0、加载、错误、旧结果判断不变，真实趋势与入口保留。
+- 不改变Theme、全局字体缩放、金额公式和媒体边界；真实手机fontScale/density UNKNOWN。旧HTML不再作为本阶段验收证据。
+- A～E原生夹具仅调用生产HomeShell/ReviewShell及共享底栏，测试源集不可变合成事实经原引擎计算，无Room/Owner；400/360dp和2倍字为LocalDensity，隔离ComponentActivity不冒充MainActivity或真实系统字体/IME。仅编译，实际截图NOT_CAPTURED，视觉对照仍PENDING，不能申请VISUAL_ACCEPTED。
+
+范围及真实证据见[C2报告](../evidence/UI-C2-C2-Visual-Fidelity.md)。没有Preview6或设备操作；封面MEDIA_DISPLAY_PENDING，业务/Owner/恢复/导航守卫及所有历史风险不变。

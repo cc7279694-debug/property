@@ -13,8 +13,10 @@ class C2R1HomeLayoutTest {
     @get:Rule val compose = createComposeRule()
     @Test fun verified_empty_home_has_one_add_action_and_no_duplicate_collection_sections() {
         compose.setContent { LithicTheme { HomeShell(0, {}, {}, 0, {}, {}, overview = snapshot()) } }
-        compose.onNodeWithTag("home-first-record").assertIsDisplayed()
-        compose.onNodeWithTag("home-open-add").assertDoesNotExist()
+        compose.onNodeWithTag("home-first-record").assertDoesNotExist()
+        compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed()
+        compose.onAllNodesWithTag("home-empty-guidance").assertCountEquals(1)
         compose.onNodeWithTag("open-project-list").assertDoesNotExist()
         compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
         compose.onNodeWithTag("home-project-rate").assertDoesNotExist()

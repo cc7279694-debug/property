@@ -1,0 +1,25 @@
+{
+  "methods": [
+    "A_dark_400_confirmed_empty_now",
+    "B_dark_400_confirmed_empty_review",
+    "C_light_400_synthetic_project_subscription_now",
+    "D_light_400_synthetic_history_review",
+    "E1_dark_360_local_200percent_now",
+    "E2_dark_360_local_200percent_review"
+  ],
+  "actualRuns": 0,
+  "actualAndroidPngs": 0,
+  "status": "NOT_RUN / APP_VISUAL_PENDING",
+  "source": "app/src/androidTest/java/com/cooper/lithic/ui/C2ProductionVisualGalleryTest.kt",
+  "factsSource": "app/src/androidTest/java/com/cooper/lithic/ui/C2VisualFixtures.kt",
+  "host": "isolated ComponentActivity, not MainActivity",
+  "chrome": "production C2PrimaryNavigationBar and matching Scaffold/safeDrawing parameters",
+  "casesABCD": "controlled 400dp and fontScale1 through LocalDensity; not proof of phone system configuration",
+  "casesE": "controlled 360dp and LocalDensity2; not actual system200percent or IME",
+  "factsConfirmation": "frozen engine outputs over known immutable synthetic test inputs; not a real Room ledger or UI journey",
+  "futureCapture": "captureToImage of synthetic app canvas only, exclusive UUID dir, PNG+length+SHA+runtime metadata; no system-wide/private screenshots",
+  "prelaunchRequirement": "New explicit device permission, package/Manifest/runner byte gate; @Before plain-Application assertion alone cannot undo wrong Application startup",
+  "runnerRequired": "com.cooper.lithic.app.M13IsolatedRunner",
+  "outputBoundPerPngBytes": 20971520,
+  "cleanup": "no automatic deletion; only new owned evidence retained"
+}

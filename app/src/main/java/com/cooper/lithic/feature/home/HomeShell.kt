@@ -51,7 +51,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     val heroText = Color(0xFFF1F3ED)
     val heroSecondary = Color(0xFFC3D9CA)
     Box(modifier.fillMaxSize().testTag("home-content-area")) {
-    Box(Modifier.fillMaxSize().padding(bottom = if (empty) 0.dp else 72.dp).testTag("home-scroll-viewport")) {
+    Box(Modifier.fillMaxSize().padding(bottom = 72.dp).testTag("home-scroll-viewport")) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
         .padding(16.dp)
         .testTag("home-screen"),
@@ -65,10 +65,10 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
         Surface(Modifier.fillMaxWidth().testTag("home-current-cost-summary"),
             shape = MaterialTheme.shapes.large, color = heroSurface,
             contentColor = heroText, shadowElevation = 1.dp) {
-            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
-                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("当前日均成本", style = MaterialTheme.typography.bodyLarge)
+                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        Text("当前日均成本", style = MaterialTheme.typography.bodyMedium)
                         HomeHeadlineAmount(overview?.takeIf { it.hasRecords }?.totalRate, heroText, heroSecondary)
                     }
                     IconButton({ explanationOpen = true },
@@ -88,16 +88,9 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             }
         }
         HomeRecordCounts(overview, hasReadNotice)
-        if (empty) {
-            Column(Modifier.fillMaxWidth().padding(top = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("从一条真实记录开始", style = MaterialTheme.typography.titleSmall)
-                Text("记下物品或订阅，开始看见它们的成本。", style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Button({ addOpen = true }, Modifier.heightIn(min = 48.dp).testTag("home-first-record")) {
-                    Text("记下第一条记录")
-                }
-            }
-        }
+        if (empty) Text("从右下角＋开始，记下一件物品或订阅。",
+            Modifier.fillMaxWidth().padding(top = 4.dp).testTag("home-empty-guidance"),
+            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (!empty) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             PreviewHeading("长期项目", onProjectList, "open-project-list")
@@ -138,7 +131,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
         }
     }
     }
-    if (!empty) FloatingActionButton(onClick = { addOpen = true },
+    FloatingActionButton(onClick = { addOpen = true },
         modifier = Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = 16.dp)
             .size(56.dp).testTag("home-open-add"), shape = CircleShape,
         containerColor = MaterialTheme.colorScheme.primary, contentColor = MaterialTheme.colorScheme.onPrimary,

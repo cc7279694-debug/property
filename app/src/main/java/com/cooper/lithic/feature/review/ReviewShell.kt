@@ -3,6 +3,7 @@ package com.cooper.lithic.feature.review
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -15,11 +16,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Button
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,6 +41,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextAlign
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
 import com.cooper.lithic.domain.report.OverviewKind
@@ -101,17 +106,43 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
 
 @Composable
 private fun ReviewEmptyState(onAddRecord: (() -> Unit)?) {
-    Surface(Modifier.fillMaxWidth().testTag("review-empty-state"),
-        shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surface) {
-        Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            C2Icon(C2Glyph.Review, Modifier.size(28.dp))
-            Text("记下一件物品后，在这里看见成本变化", Modifier.testTag("review-record-summary"),
-                style = MaterialTheme.typography.bodyLarge)
-            onAddRecord?.let { add ->
-                OutlinedButton(add, Modifier.heightIn(min = 48.dp).testTag("review-add-record")) {
-                    Text("去添加记录")
-                }
+    // An empty archive has an identity, not a blank data card or a fabricated chart.
+    Column(Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 20.dp)
+        .testTag("review-empty-state"), horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(20.dp)) {
+        ReviewEmptyIdentity()
+        Text("记下一件物品后，在这里看见成本变化",
+            Modifier.widthIn(max = 280.dp).testTag("review-record-summary"),
+            style = MaterialTheme.typography.bodyLarge, textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.onSurfaceVariant)
+        onAddRecord?.let { add ->
+            Button(add, Modifier.heightIn(min = 48.dp).testTag("review-add-record")) {
+                Text("去首页记录")
+                Spacer(Modifier.width(8.dp))
+                C2Icon(C2Glyph.Chevron)
             }
+        }
+    }
+}
+
+/** Existing local vectors identify the two record types; these shapes contain no record facts. */
+@Composable
+private fun ReviewEmptyIdentity() {
+    Box(Modifier.size(width = 112.dp, height = 88.dp).testTag("review-empty-identity")) {
+        Surface(Modifier.align(Alignment.TopCenter).size(64.dp),
+            shape = RoundedCornerShape(20.dp), color = MaterialTheme.colorScheme.surfaceContainerHigh,
+            contentColor = MaterialTheme.colorScheme.onSurfaceVariant, shadowElevation = 1.dp) {
+            Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.Review, Modifier.size(32.dp)) }
+        }
+        Surface(Modifier.align(Alignment.BottomStart).size(40.dp), shape = CircleShape,
+            color = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
+            Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.Project, Modifier.size(20.dp)) }
+        }
+        Surface(Modifier.align(Alignment.BottomEnd).size(40.dp), shape = CircleShape,
+            color = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
+            Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.Subscription, Modifier.size(20.dp)) }
         }
     }
 }

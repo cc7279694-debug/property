@@ -54,3 +54,12 @@ B1～B4已分别形成生产代码提交；每部分执行定向JVM及AndroidTes
 Goal：针对Preview3真机拒绝原因修Home/Review生产空态及菜单/导航层级。继承当前`ed492b7`图标，不回退C0或B段；不再生成HTML。Scope仅UI与相关定向断言/版本候选，Locked业务/Room5/backup4/Owner/恢复/媒体/通知/导航资格不变。54 JVM PASS，AndroidTest仅源码编译（14新Compose），Debug构建/Lint0E21W；Private Trial候选同ID/证书升code21（已有code20历史），静态接线与身份核对见[C1报告](../evidence/UI-C2-C1-Real-Visual-Remediation.md)。
 
 Stop：UI-C2 C1 — READY_FOR_DEVICE_VISUAL_REVIEW，APP_VISUAL_PENDING。A～E没有实际Android图，不据编译申请VISUAL_ACCEPTED；后续需用户明确选择安装/核对及数据隔离，不能自动操作设备、旧AVD、用户账本或进入M23。
+
+
+## C2 原生空态整改及截图入口停止点（2026-10-26）
+
+Goal：针对Preview5真实视觉拒绝收口Home/Review空态；不能用编译或HTML证明视觉通过。Scope仅生产UI结构、共享原底栏、相关布局断言及androidTest不可变事实截图入口。Locked：Room5/backup4、引擎/数据/Owner/恢复/媒体/提醒/导航资格/Theme/版本证书；不操作设备、不生成Preview6。
+
+生产空态已调整，50定向JVM PASS、Debug/AndroidTest编译/Lint0E21W；6截图入口及2布局方法仅编译/运行NOT_RUN。A/B深色400空事实、C/D浅色400合成记录、E1/E2 360与LocalDensity2倍；仅Home/Review，不代表项目详情/录入、IME、MainActivity或真实Room账本。没有实际Android图，原设计与真实Android对照PENDING。详见[C2报告](../evidence/UI-C2-C2-Visual-Fidelity.md)。
+
+Stop：UI-C2 C2 IMPLEMENTED — APP_VISUAL_PENDING。之后先独立审查，取得新的隔离设备授权和启动前Manifest/Runner/target/SHA门禁，才可真实采集；当前不安装、不启动旧ANR环境、不交付新用户APK、不合并main或进入M23。

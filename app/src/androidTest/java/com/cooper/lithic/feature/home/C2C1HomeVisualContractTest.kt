@@ -25,7 +25,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
-/** Production Compose with synthetic snapshots. LocalDensity is not a system-font or device result. */
+/** Production Compose: C1 integrity assertions retained under the C2 sole-FAB layout. LocalDensity is not a system-font or device result. */
 class C2C1HomeVisualContractTest {
     @get:Rule val compose = createComposeRule()
     private var pixelsPerDp = 1f
@@ -42,12 +42,12 @@ class C2C1HomeVisualContractTest {
 
     @Test fun local_large_font_360_keeps_empty_structure_and_single_reachable_add() {
         show(widthDp = 360, fontScale = 2f)
-        assertVerifiedEmpty()
+        assertVerifiedEmpty(checkCompactHero = false)
     }
 
     @Test fun local_large_font_400_keeps_empty_structure_and_single_reachable_add() {
         show(widthDp = 400, fontScale = 2f)
-        assertVerifiedEmpty()
+        assertVerifiedEmpty(checkCompactHero = false)
     }
 
     @Test fun unknown_overview_does_not_borrow_compatibility_counts_or_show_verified_empty_action() {
@@ -88,13 +88,23 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("amount-full-unit").assertTextEquals("元/天")
     }
 
-    private fun assertVerifiedEmpty() {
+    private fun assertVerifiedEmpty(checkCompactHero: Boolean = true) {
         compose.onNodeWithTag("home-total-rate").assertTextContains("—")
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("0")
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("0")
-        compose.onAllNodesWithTag("home-first-record").assertCountEquals(1)
-        compose.onNodeWithTag("home-first-record").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp)
-        compose.onNodeWithTag("home-open-add").assertDoesNotExist()
+        compose.onNodeWithTag("home-first-record").assertDoesNotExist()
+        compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().assertWidthIsEqualTo(56.dp).assertHeightIsEqualTo(56.dp)
+        compose.onAllNodesWithTag("home-empty-guidance").assertCountEquals(1)
+        compose.onNodeWithTag("home-empty-guidance").performScrollTo().assertIsDisplayed()
+        val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
+        val fab = compose.onNodeWithTag("home-open-add").fetchSemanticsNode().boundsInRoot
+        assertTrue("The fixed FAB band is separate from scroll content", viewport.bottom <= fab.top + 1f)
+        if (checkCompactHero) {
+            compose.onNodeWithTag("home-current-cost-summary").performScrollTo()
+            val hero = compose.onNodeWithTag("home-current-cost-summary").fetchSemanticsNode().boundsInRoot
+            assertTrue("Ordinary empty hero remains a compact cost summary", hero.height <= 132f * pixelsPerDp)
+        }
         compose.onNodeWithTag("open-project-list").assertDoesNotExist()
         compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
         compose.onNodeWithText("¥0.00", useUnmergedTree = true).assertDoesNotExist()

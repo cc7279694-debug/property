@@ -5,6 +5,9 @@
 ## Current Stage
 
 
+- **UI-C2 C2 IMPLEMENTED — APP_VISUAL_PENDING**：Preview 5获用户转交独立结论 **VISUAL REJECTED**；不撤销旧构建/签名，也不登记视觉通过。从`c35bcb3`仅收口Home/Review生产空态：紧凑绿主卡、真实0数量卡、始终56dp圆形＋及独立底部空间，空库一句引导/无第二按钮；回看改为透明自然高度的现有矢量身份、单句与守卫返回首页，不铺全宽大卡、不造曲线。字体/Theme及真实数据口径不改，手机fontScale/density仍UNKNOWN。50定向JVM PASS、Debug/AndroidTest源码编译/Lint exit0（0错误21警告）；2布局＋6原生截图入口仅编译，Android运行/实际截图均0，A～E为隔离ComponentActivity与LocalDensity准备，不是MainActivity、真实系统字体/IME或Room账本运行证据。见[C2报告](evidence/UI-C2-C2-Visual-Fidelity.md)。无HTML替代、设备操作或Preview6；非build旧交付及M22实物SHA保持，旧PrivateTrial临时build副本缺失如实登记。Room5/backup4/Owner/Repository/恢复/导航守卫/媒体/提醒/版本签名配置不变。MEDIA_DISPLAY_PENDING及M10/M20/M22/M13/G1～G4所有历史FAIL/UNKNOWN/NOT_RUN/NOTES保持。等待真实Android逐页对照和独立审查，不合并main、不进入M23。
+
+
 - **UI-C2 C1 — READY_FOR_DEVICE_VISUAL_REVIEW / APP_VISUAL_PENDING**：用户转交Preview3真机视觉拒绝（VISUAL DELIVERY REJECTED），原C0构建/签名证据保持。本轮从`ed492b7`继承已确认图标，只改Home/Review生产Compose空态与密度：始终绿主卡、空Overview真实0数量卡、紧凑金额单位、回看单引导及守卫返回首页；未知/旧快照不冒充空库，菜单56dp、导航12/16sp，页面24sp及字体缩放保护保持。54定向JVM PASS（6新＋48回归），14新增Compose仅编译/运行NOT_RUN，Debug/AndroidTest源码编译/Debug Lint退出0（0错误21警告）。同包/原证书视觉候选Preview5/code21已生成（code20已用于图标版），最终APK静态身份/生产接线通过，旧Preview2～4及M22实物保持；详见[C1报告](evidence/UI-C2-C1-Real-Visual-Remediation.md)。原浅深设计已实际打开；用户实拍原件本轮不可访问，按明确问题描述实施。没有HTML或Android截图，A～E逐页真实视觉、实际字体/触控/IME/安装/升级均PENDING/NOT_RUN，手机fontScale UNKNOWN。Room5/backup4/写入/Owner/恢复/导航守卫/媒体与提醒规则不改；MEDIA_DISPLAY_PENDING与M10/M20/M22/M13/G1～G4历史状态保持。未操作设备，不登记VISUAL_ACCEPTED、正式交付或M23。
 
 

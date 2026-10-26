@@ -21,8 +21,9 @@ class C2HomeSemanticsTest {
         val actions = mutableListOf<String>()
         compose.setContent { LithicTheme { HomeShell(0, {}, { actions += "project" }, 0, {},
             { actions += "subscription" }, overview = overview()) } }
-        compose.onNodeWithTag("home-open-add").assertDoesNotExist()
-        compose.onNodeWithTag("home-first-record").performClick()
+        compose.onNodeWithTag("home-first-record").assertDoesNotExist()
+        compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
+        compose.onNodeWithTag("home-open-add").performClick()
         compose.onNodeWithTag("home-create-project").assertExists()
         compose.onNodeWithTag("home-create-subscription").assertExists()
         pressBack()
@@ -34,7 +35,7 @@ class C2HomeSemanticsTest {
         val actions = mutableListOf<String>()
         compose.setContent { LithicTheme { HomeShell(0, {}, { actions += "project" }, 0, {},
             { actions += "subscription" }, overview = overview()) } }
-        compose.onNodeWithTag("home-first-record").performClick()
+        compose.onNodeWithTag("home-open-add").performClick()
         compose.onNodeWithTag("home-create-subscription").performClick()
         compose.waitForIdle()
         assertEquals(listOf("subscription"), actions)

@@ -392,14 +392,8 @@ internal fun LithicNavigation(
     }
     Scaffold(modifier = modifier.fillMaxSize().testTag("primary_navigation"), contentWindowInsets = WindowInsets.safeDrawing,
         bottomBar = {
-            if (c2ShowPrimaryNavigation(routes.last())) NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
-                val destinations: List<Pair<NavKey, String>> = listOf(Home to "现在", Review to "回看", Settings to "设置")
-                destinations.forEach { (destination, label) ->
-                    NavigationBarItem(selected = currentPrimary == destination, onClick = { requestLeave(canonicalBackStack(destination)) },
-                        icon = { C2Icon(when (destination) { Home -> C2Glyph.Now; Review -> C2Glyph.Review; else -> C2Glyph.Settings }) },
-                        label = { Text(label, style = MaterialTheme.typography.labelSmall) },
-                        modifier = Modifier.heightIn(min = 48.dp).testTag(when (destination) { Home -> "tab-now"; Review -> "tab-review"; else -> "tab-settings" }))
-                }
+            if (c2ShowPrimaryNavigation(routes.last())) C2PrimaryNavigationBar(currentPrimary) { destination ->
+                requestLeave(canonicalBackStack(destination))
             }
         }) { padding ->
         Column(Modifier.padding(padding).consumeWindowInsets(padding)) {
@@ -712,6 +706,21 @@ private fun subscriptionRecoveryRoute(state: SubscriptionUiState): NavKey? {
             SubscriptionEditorKind.CORRECT_RENEWAL -> CorrectSubscriptionRenewal(editor.subscriptionId, editor.renewalId, origin)
             SubscriptionEditorKind.REENABLE -> ChangeSubscriptionState(editor.subscriptionId,
                 if (editor.reenableAction == "RESUME") SubscriptionAction.RESUME else SubscriptionAction.REOPEN, origin)
+        }
+    }
+}
+
+
+/** Pure navigation chrome. The caller retains all route, dirty and pending-operation guards. */
+@Composable
+internal fun C2PrimaryNavigationBar(currentPrimary: NavKey, onSelect: (NavKey) -> Unit) {
+    NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
+        val destinations: List<Pair<NavKey, String>> = listOf(Home to "现在", Review to "回看", Settings to "设置")
+        destinations.forEach { (destination, label) ->
+            NavigationBarItem(selected = currentPrimary == destination, onClick = { onSelect(destination) },
+                icon = { C2Icon(when (destination) { Home -> C2Glyph.Now; Review -> C2Glyph.Review; else -> C2Glyph.Settings }) },
+                label = { Text(label, style = MaterialTheme.typography.labelSmall) },
+                modifier = Modifier.heightIn(min = 48.dp).testTag(when (destination) { Home -> "tab-now"; Review -> "tab-review"; else -> "tab-settings" }))
         }
     }
 }

@@ -40,6 +40,7 @@ class C1ReviewVisualContractTest {
                 onProjectHistory = {}, onSubscriptionHistory = {}, onTotalCostTrend = {})
         } }
         compose.onNodeWithTag("review-empty-state").assertIsDisplayed()
+        compose.onNodeWithTag("review-empty-identity").assertIsDisplayed()
         compose.onNodeWithTag("review-record-summary").assertTextEquals("记下一件物品后，在这里看见成本变化")
         compose.onAllNodesWithTag("review-add-record").assertCountEquals(1)
         compose.onNodeWithTag("review-add-record").assertHeightIsAtLeast(48.dp).performClick()
@@ -66,6 +67,7 @@ class C1ReviewVisualContractTest {
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-error").assertIsDisplayed()
+        compose.onNodeWithTag("review-empty-identity").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-retry").performClick()
         assertEquals(1, retries)
     }
@@ -77,6 +79,7 @@ class C1ReviewVisualContractTest {
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
         compose.onNodeWithTag("review-add-record").assertDoesNotExist()
+        compose.onNodeWithTag("review-empty-identity").assertDoesNotExist()
         compose.onNodeWithTag("review-record-notice").assertTextContains("读取或恢复提示", substring = true).assertIsDisplayed()
         compose.onNodeWithTag("review-record-summary").assertTextContains("已取得的记录快照", substring = true)
     }
@@ -96,6 +99,8 @@ class C1ReviewVisualContractTest {
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-total").assertTextContains("¥0.00", substring = true)
         compose.onNodeWithTag("total-trend-canvas").assertIsDisplayed()
+        compose.onNodeWithTag("review-empty-identity").assertDoesNotExist()
+        compose.onNodeWithTag("review-add-record").assertDoesNotExist()
     }
 
     @Test fun normal_400dp_destinations_are_compact_and_keep_all_callbacks() {
