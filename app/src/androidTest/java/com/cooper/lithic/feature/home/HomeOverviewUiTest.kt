@@ -10,6 +10,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -47,7 +48,7 @@ class HomeOverviewUiTest {
     fun empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero() {
         show(result())
         compose.onNodeWithTag("home-total-rate").assertTextContains("—")
-        compose.onNodeWithText("暂无记录").assertIsDisplayed()
+        compose.onNodeWithTag("home-first-record").assertIsDisplayed()
         compose.onNodeWithText("¥0.00").assertDoesNotExist()
     }
 
@@ -57,6 +58,7 @@ class HomeOverviewUiTest {
             projectCategories = listOf(CategoryDailyCost("zero", "零元项目", BigDecimal.ZERO, 1L))))
         compose.onNodeWithTag("home-total-rate").assertTextContains("¥0.00")
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
+        compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
         compose.onNodeWithTag("home-project-category-zero").performScrollTo().assertTextContains("¥0.00")
         compose.onNodeWithTag("home-no-active-records").assertDoesNotExist()
     }
@@ -70,7 +72,8 @@ class HomeOverviewUiTest {
                 CategoryDailyCost("negative", "净收回", BigDecimal("-0.005"), 1L)),
             subscriptionCategories = listOf(CategoryDailyCost("s", "其他", BigDecimal("0.125"), 1L))))
         compose.onNodeWithTag("home-total-rate").assertTextContains("¥0.25")
-        compose.onNodeWithText("已录入 2 条长期项目").assertIsDisplayed()
+        compose.onNodeWithTag("home-project-record-count").assertTextEquals("2")
+        compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
         compose.onNodeWithTag("home-project-rate").performScrollTo().assertTextContains("¥0.12")
         compose.onNodeWithTag("home-project-category-p").performScrollTo().assertTextContains("¥0.13")
         compose.onNodeWithTag("home-project-category-negative").performScrollTo().assertTextContains("−<¥0.01")
@@ -102,7 +105,8 @@ class HomeOverviewUiTest {
                     LithicTheme(darkTheme = true) {
                         Box(Modifier.requiredSize(width = 360.dp, height = canvasHeight).testTag("home-test-canvas")) {
                             HomeShell(0L, { clicks += "projects" }, { clicks += "new-project" },
-                                0L, { clicks += "subscriptions" }, { clicks += "new-subscription" }, overview = result())
+                                0L, { clicks += "subscriptions" }, { clicks += "new-subscription" },
+                                overview = result(projectCount = 1L, activeProjectCount = 1L))
                         }
                     }
                 }
@@ -110,8 +114,10 @@ class HomeOverviewUiTest {
         }
         assertHomeFitsVisibleWidth()
         compose.onNodeWithTag("open-project-list").performScrollTo().assertIsDisplayed().performClick()
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-create-project").performScrollTo().assertIsDisplayed().performClick()
         compose.onNodeWithTag("open-subscription-list").performScrollTo().assertIsDisplayed().performClick()
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-create-subscription").performScrollTo().assertIsDisplayed().performClick()
         assertEquals(listOf("projects", "new-project", "subscriptions", "new-subscription"), clicks)
     }

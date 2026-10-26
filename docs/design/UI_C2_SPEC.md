@@ -1,5 +1,6 @@
 # UI-C2 — A段视觉与交互契约
 
+当前首页规范以文末 **B-HOME** 为准：已录入总数量小卡＋独立底部区域的圆形新增。A/A-R1/A-R2保留为历史设计与对照；B1～B4其余成果不回退。生产Android视觉仍APP_VISUAL_PENDING。
 状态：A段视觉独立审查CHANGES REQUIRED；A-R1精修候选待集中确认，PROTOTYPE_ONLY / APP_VISUAL_PENDING。产品基线 `9de00d3889180cb1d3c078ade543c75100a4196d`；直接在 `codex/lithic-v1-product-completion` 实施。只做四页样板，不冻结、不扩展到B/C段，不产生用户安装包。
 
 ## 来源及继承
@@ -87,3 +88,18 @@ A-R2获独立限定认可：**PASS WITH NOTES — PROTOTYPE VISUAL DIRECTION ONL
 B段少量代表样板：[订阅与设置浅深HTML](ui-c2/UI_C2_B_Prototype.html)及[四帧图](ui-c2/PROTOTYPE_ONLY-B-overview.png)，均 **PROTOTYPE_ONLY / APP_VISUAL_PENDING**。不是Compose渲染、APK截图或系统字体/IME证据。详细检查见[集中报告](../evidence/UI-C2-B-Integration.md)。
 
 媒体仍 **MEDIA_DISPLAY_PENDING**：没有现成同代页面resolver；不得UI拼路径、直查DAO、搬旧M10写入/JNI或把BitmapFactory成功当严格JPEG安全证明。后续需另行批准同代只读身份/归属/完整性核验、后台有界缩略解码、换代缓存隔离及分级失败状态。无封面与无法读取明确区分，本轮不实现媒体。
+
+
+## B-HOME 首页数量卡与悬浮新增（2026-10-26）
+
+本轮Goal：在B1～B4桌面实施获限定PASS WITH NOTES后，仅收口用户指定的首页原设计。基线`b5a7e3112e2cd63463103697da90f07d065fa335`；不进入C段。参考实际从旧UI冻结`0dce7dd0725a54be4f0280870ef6ca47c48ea7ed`打开的浅/深原图，不merge旧代码。
+
+LOCKED：B1～B4、Room5/backup4、金额/日期/订阅引擎、数据/Owner/导航守卫/恢复/媒体协议、默认构建身份、原证书与preview18。Scope仅HomeShell生产呈现、相关测试路径、HOME离线样板与本轮证据；不做真实图片、主题持久化、设备、安装或新版用户包。
+
+- 数量卡：同一OverviewResult的projectCount/subscriptionCount，含历史；不使用active字段冒充总数，也不回退不明来源兼容参数。未知显示—，旧快照有持续警示及数量可访问描述。72dp最小高度、等宽两列、36dp轻图标底块、24sp数量/14sp短标签；大字>1.4或窄容器纵排，随内容增长，不加金额第三行。
+- 口径：主卡原信息入口显示本地数量/成本说明，明确含已结束/停止记录；查看/关闭不导航，明确“完整计算说明”才沿用原导航回调。首页重复含历史/总数长句不默认铺出。
+- 成本：原两类未舍入结果、active计数、类别贡献与原金额testTag留在“查看成本与类别构成”下；0、负值、小于分位、无数据/未知不混淆。没有复制计算公式或删除查询能力。
+- 新增：顶栏仅搜索。非确定空库时56dp圆形FAB，原home-open-add；内容区右/下16dp、2dp轻层次，底部导航仍在父NavDisplay内容之外。非空账本将滚动视口底部提前72dp，保留独立透明FAB操作带；正文再留16dp，记录/操作不在FAB下绘制，最后内容可完整滚出。真正空库仅“记下第一条记录”；面板仍原两项，关闭零写入，选择沿用原回调/守卫。
+- 记录：首页48dp身份（其他列表64dp保持），名称优先，状态与时间流式同组，右侧短标签“日均”/“历史均价”并保留完整金额/口径语义；订阅“折算付费”不伪称已使用。长中文/金额与大字可自然扩展，不锁死行高。
+
+比较与验证按[UI-C2 B整合报告的B-HOME增量](../evidence/UI-C2-B-Integration.md#b-home首页原设计收口2026-10-26)登记；旧A-R2与B原型/结果保留。新HOME HTML/浅深三列及空态/浏览器大字均PROTOTYPE_ONLY / APP_VISUAL_PENDING。未运行Android，真实字体、IME、触控与生产MainActivity视觉仍NOT_RUN；媒体MEDIA_DISPLAY_PENDING。

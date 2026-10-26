@@ -202,6 +202,7 @@ class M13CoreJourneyTest {
         assertEquals(zone, restored.settings.recordZone())
         waitNode("home-screen")
         compose.onNodeWithTag("home-total-rate").performScrollTo().assert(hasText("¥15.91"))
+        compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
         compose.onNodeWithTag("home-project-rate").performScrollTo().assert(hasText("¥10.91"))
         compose.onNodeWithTag("home-subscription-rate").performScrollTo().assert(hasText("¥5.00"))
     }

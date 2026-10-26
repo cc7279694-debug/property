@@ -447,6 +447,7 @@ class CompleteJourneyTest {
         capture("04-restored-offline-home")
         waitNode("home-screen")
         compose.onNodeWithTag("home-total-rate").performScrollTo().assert(hasText("¥5.00"))
+        compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
         compose.onNodeWithTag("home-project-rate").performScrollTo().assert(hasText("¥0.00"))
         compose.onNodeWithTag("home-subscription-rate").performScrollTo().assert(hasText("¥5.00"))
         journeyPhase("COMPLETE")

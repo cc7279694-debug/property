@@ -16,13 +16,20 @@ class C2R2HomeSummaryTest {
         val snapshot = OverviewResult(LocalDate.of(2026, 10, 26), BigDecimal("6.48"),
             BigDecimal("4.31"), BigDecimal("2.17"), 8, 5, 2, 1, emptyList(), emptyList())
         compose.setContent { LithicTheme { HomeShell(8, {}, {}, 5, {}, {}, overview = snapshot) } }
-        compose.onNodeWithTag("home-active-project-count").assertTextEquals("当前有效 2")
-        compose.onNodeWithTag("home-active-subscription-count").assertTextEquals("当前有效 1")
-        compose.onNodeWithTag("home-project-record-count").assertTextEquals("已录入 8 条长期项目（含历史）")
+        compose.onNodeWithTag("home-project-record-count").assertTextEquals("8")
+        compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("5")
+        compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
+        compose.onNodeWithTag("home-active-project-count").performScrollTo().assertTextEquals("当前有效 2")
+        compose.onNodeWithTag("home-active-subscription-count").performScrollTo().assertTextEquals("当前有效 1")
+        compose.onNodeWithTag("home-cost-information").performScrollTo().performClick()
+        compose.onNodeWithTag("home-count-scope").assertTextContains("历史", substring = true)
     }
     @Test fun unknown_snapshot_does_not_invent_zero_active_counts() {
         compose.setContent { LithicTheme { HomeShell(8, {}, {}, 5, {}, {}) } }
-        compose.onNodeWithTag("home-active-project-count").assertTextEquals("当前有效数量未取得")
-        compose.onNodeWithTag("home-active-subscription-count").assertTextEquals("当前有效数量未取得")
+        compose.onNodeWithTag("home-project-record-count").assertTextEquals("—")
+        compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("—")
+        compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
+        compose.onNodeWithTag("home-active-project-count").performScrollTo().assertTextEquals("当前有效数量未取得")
+        compose.onNodeWithTag("home-active-subscription-count").performScrollTo().assertTextEquals("当前有效数量未取得")
     }
 }
