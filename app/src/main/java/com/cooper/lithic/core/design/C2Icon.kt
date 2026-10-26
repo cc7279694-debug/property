@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import com.cooper.lithic.R
 
 /** UI-C1 vectors selectively reused; Search/Info use conventional, locally authored symbols. */
-enum class C2Glyph { Now, Review, Settings, Project, Subscription, Back, Add, More, Close, Chevron, Image, ImageError, Search, Info }
+enum class C2Glyph { Now, Review, Settings, Project, Subscription, Back, Add, More, Close, Chevron, Image, ImageError, Search, Info, Computer, Book, Audio, Wellness }
 
 @Composable
 fun C2Icon(kind: C2Glyph, modifier: Modifier = Modifier, description: String? = null) {
@@ -28,6 +28,10 @@ fun C2Icon(kind: C2Glyph, modifier: Modifier = Modifier, description: String? = 
         C2Glyph.ImageError -> R.drawable.ic_ui_image_error
         C2Glyph.Search -> R.drawable.ic_ui_search
         C2Glyph.Info -> R.drawable.ic_ui_info
+        C2Glyph.Computer -> R.drawable.ic_ui_computer
+        C2Glyph.Book -> R.drawable.ic_ui_book
+        C2Glyph.Audio -> R.drawable.ic_ui_audio
+        C2Glyph.Wellness -> R.drawable.ic_ui_wellness
     }
     Icon(painterResource(resource), description, modifier.size(24.dp))
 }

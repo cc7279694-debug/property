@@ -4,7 +4,10 @@
 
 ## Current Stage
 
-- **UI-C2 A-R1 — VISUAL_REFINEMENT_READY / 待集中视觉确认**：来源`49ca1fc`的原A视觉审查CHANGES REQUIRED保持；本轮五项精修已落入生产Compose和同一离线样板，金额测量单行/横向查看、大字独立返回/外置标签、紧凑空态、详情时间线及回看曲线前移。60唯一JVM PASS、12新增Android/Compose仅编译/运行NOT_RUN，Debug/Lint exit0、0错误17警告；8基本+4代表原型已实际查看，浏览器几何不冒充Android。Room5/backup4/Formatter/业务/Owner/导航/恢复不改；旧preview18字节保持，无设备/新用户APK。见[集中报告A-R1](evidence/UI-C2-Sample-Review.md#a-r1精修记录2026-10-26)。仅待一次集中视觉反馈，不进入B段/M23，不冻结；原A及全部历史状态保留。
+- **UI-C2 A-R2 — VISUAL_CANDIDATE_READY / 待集中视觉确认**：从`4d6671f`保留后续实现继续；A-R1排版部分有效、视觉保真仍CHANGES REQUIRED。已实际打开UI-C1浅深原图，四页同步精修生产Compose/HTML：深绿主卡、卡外真实active小计、类别图标/名称身份、详情指标组/时间线、轻表单与图标分组；保留R1测量/大字与所有原业务保护，长金额增加完整查看。64唯一JVM PASS、9新增Android/Compose仅编译NOT_RUN，Debug/Lint exit0、0E17W；8基本+5代表及三列视觉对照已查看，仍PROTOTYPE_ONLY / APP_VISUAL_PENDING。真实封面MEDIA_DISPLAY_PENDING，旧读取链不能直接适配，未实施媒体。Room5/backup4/证书/preview18字节及历史状态保持，无设备/新用户APK。见[本轮记录](evidence/UI-C2-Sample-Review.md#a-r2原设计视觉候选2026-10-26)。等待确认，不自动B段/冻结/M23。
+
+
+- **UI-C2 A-R1 — 排版部分有效 / 视觉保真CHANGES REQUIRED（后续独立审查）**：来源`49ca1fc`的原A视觉审查CHANGES REQUIRED保持；本轮五项精修已落入生产Compose和同一离线样板，金额测量单行/横向查看、大字独立返回/外置标签、紧凑空态、详情时间线及回看曲线前移。60唯一JVM PASS、12新增Android/Compose仅编译/运行NOT_RUN，Debug/Lint exit0、0错误17警告；8基本+4代表原型已实际查看，浏览器几何不冒充Android。Room5/backup4/Formatter/业务/Owner/导航/恢复不改；旧preview18字节保持，无设备/新用户APK。见[集中报告A-R1](evidence/UI-C2-Sample-Review.md#a-r1精修记录2026-10-26)。仅待一次集中视觉反馈，不进入B段/M23，不冻结；原A及全部历史状态保留。
 
 
 - **UI-C2 A段 — VISUAL_SAMPLE_READY，待集中视觉审查**：从`9de00d3`直接在当前产品完善分支实施暖白/岩绿/深墨主题、真实图标、现在/项目详情/新增项目/回看四页重组。原列表VM与趋势VM只读复用，原业务动作/导航守卫保留，不合并旧UI/M10数据代码。75唯一JVM PASS、18新Android/Compose仅编译/运行NOT_RUN，Debug与Lint最终exit0、0错误17警告。无现成Compose桌面渲染，提供[离线HTML原型](design/ui-c2/UI_C2_A_Prototype.html)，**PROTOTYPE_ONLY / APP_VISUAL_PENDING**；生产Compose代码单独编译验证，非实机截图。当前基线没有受校验的页面封面读取/管理接口，已登记图片显示缺口，不伪造接入。结果及边界见[样板报告](evidence/UI-C2-Sample-Review.md)。无设备/安装、新preview交付；P04旧APK原字节保留，P01～P04工程记录不等于用户视觉认可。A段完成后停止，订阅/列表/搜索/设置等推广等待一次集中反馈；不冻结、不合并main、不进M23。历史M10/M20/M22/M13、G1～G4等状态保持。

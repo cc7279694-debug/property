@@ -1,6 +1,7 @@
 package com.cooper.lithic.feature.review
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -11,10 +12,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -66,7 +69,7 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
 @Composable
 private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNotice: Boolean) {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Text("回看", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
+        Text("回看", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.semantics { heading() })
         val summary = reviewRecordSummary(projectCount, subscriptionCount, hasReadNotice)
         if (summary != ReviewRecordSummary.RECORDED) Text(
             if (summary == ReviewRecordSummary.EMPTY) "暂无长期项目或订阅记录" else "以下为已取得的记录快照",
@@ -92,31 +95,58 @@ private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNo
 private fun ReviewDestinations(onProjectHistory: (() -> Unit)?, onSubscriptionHistory: (() -> Unit)?,
     onLongTermReview: (() -> Unit)?, onTotalCostTrend: (() -> Unit)?, onCategoryAnalysis: (() -> Unit)?,
     onAnnualReview: (() -> Unit)?) {
-    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        onTotalCostTrend?.let { ReviewLink("全部历史与事件", "完整日期清单和记录来源", C2Glyph.Review,
-            "review-total-cost-trend", it) }
-        HorizontalDivider(Modifier.padding(vertical = 12.dp))
-        Text("换个角度看", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
-        onCategoryAnalysis?.let { ReviewLink("类别分析", "长期项目与订阅分别查看", C2Glyph.Project,
-            "review-category-analysis", it) }
-        onAnnualReview?.let { ReviewLink("年度回顾", "按真实资金年份回看", C2Glyph.Review, "review-annual", it) }
-        onLongTermReview?.let { ReviewLink("长期复盘", "陪伴时间与折算付费时长", C2Glyph.Review, "review-long-term", it) }
-        HorizontalDivider(Modifier.padding(vertical = 12.dp))
-        Text("历史档案", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
-        onProjectHistory?.let { ReviewLink("已结束长期项目", "保留原记录与真实结算", C2Glyph.Project,
-            "review-project-history", it) }
-        onSubscriptionHistory?.let { ReviewLink("已停止订阅", "暂停、到期未停止的仍在订阅列表", C2Glyph.Subscription,
-            "review-subscription-history", it) }
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        onTotalCostTrend?.let {
+            ReviewGroup("review-full-history-group") {
+                ReviewLink("全部历史与事件", "完整日期清单和记录来源", C2Glyph.Review, "review-total-cost-trend", it)
+            }
+        }
+        if (onCategoryAnalysis != null || onAnnualReview != null || onLongTermReview != null) {
+            Text("换个角度看", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+            ReviewGroup("review-analysis-group") {
+                onCategoryAnalysis?.let { ReviewLink("类别分析", "长期项目与订阅分别查看", C2Glyph.Project,
+                    "review-category-analysis", it) }
+                if (onCategoryAnalysis != null && (onAnnualReview != null || onLongTermReview != null)) ReviewRowDivider()
+                onAnnualReview?.let { ReviewLink("年度回顾", "按真实资金年份回看", C2Glyph.Review, "review-annual", it) }
+                if (onAnnualReview != null && onLongTermReview != null) ReviewRowDivider()
+                onLongTermReview?.let { ReviewLink("长期复盘", "陪伴时间与折算付费时长", C2Glyph.Subscription, "review-long-term", it) }
+            }
+        }
+        if (onProjectHistory != null || onSubscriptionHistory != null) {
+            Text("历史档案", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+            ReviewGroup("review-archive-group") {
+                onProjectHistory?.let { ReviewLink("已结束长期项目", "保留原记录与真实结算", C2Glyph.Project,
+                    "review-project-history", it) }
+                if (onProjectHistory != null && onSubscriptionHistory != null) ReviewRowDivider()
+                onSubscriptionHistory?.let { ReviewLink("已停止订阅", "暂停、到期未停止仍在订阅列表", C2Glyph.Subscription,
+                    "review-subscription-history", it) }
+            }
+        }
     }
+}
+
+@Composable
+private fun ReviewGroup(tag: String, content: @Composable () -> Unit) {
+    Surface(Modifier.fillMaxWidth().testTag(tag), shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surface) {
+        Column { content() }
+    }
+}
+
+@Composable
+private fun ReviewRowDivider() {
+    HorizontalDivider(Modifier.padding(start = 56.dp, end = 12.dp), color = MaterialTheme.colorScheme.outlineVariant)
 }
 
 @Composable
 private fun ReviewLink(title: String, description: String, glyph: C2Glyph, tag: String, onClick: () -> Unit) {
     Row(Modifier.fillMaxWidth().heightIn(min = 64.dp).testTag(tag)
-        .clickable(role = Role.Button, onClick = onClick).padding(vertical = 12.dp),
+        .clickable(role = Role.Button, onClick = onClick).padding(horizontal = 12.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        C2Icon(glyph)
-        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Surface(Modifier.size(32.dp), shape = RoundedCornerShape(8.dp),
+            color = MaterialTheme.colorScheme.primaryContainer, contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
+            Box(contentAlignment = Alignment.Center) { C2Icon(glyph) }
+        }
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
             Text(title, style = MaterialTheme.typography.bodyLarge)
             Text(description, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }

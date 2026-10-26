@@ -1,10 +1,13 @@
 package com.cooper.lithic.feature.project
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -48,6 +51,7 @@ import com.cooper.lithic.core.design.AmountText
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
+import com.cooper.lithic.core.design.C2RecordIdentity
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.data.local.MoneyBasis
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
@@ -129,7 +133,7 @@ internal fun ProjectDetailScreen(
         }
         LazyColumn(Modifier.weight(1f).fillMaxWidth().testTag("project-detail-content"),
             contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 24.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp)) {
+            verticalArrangement = Arrangement.spacedBy(20.dp)) {
             if (state.loading) item { Text("正在读取项目", style = MaterialTheme.typography.bodyLarge) }
             state.error?.let { message -> item {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -221,18 +225,30 @@ private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable ()
             Box(Modifier.fillMaxWidth().heightIn(max = 160.dp).clip(RoundedCornerShape(12.dp))
                 .testTag("project-detail-cover")) { coverContent() }
         }
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.size(48.dp).clip(RoundedCornerShape(12.dp))
-                .background(MaterialTheme.colorScheme.primaryContainer), contentAlignment = Alignment.Center) {
-                C2Icon(if (detail.project.coverAssetId != null && coverContent == null) C2Glyph.ImageError else C2Glyph.Project)
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box(Modifier.testTag("project-identity-symbol")) {
+                if (detail.project.coverAssetId != null && coverContent == null) {
+                    Box(Modifier.size(64.dp).clip(RoundedCornerShape(16.dp))
+                        .background(MaterialTheme.colorScheme.primaryContainer), contentAlignment = Alignment.Center) {
+                        C2Icon(C2Glyph.ImageError)
+                    }
+                } else C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project)
             }
-            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Text(detail.project.name, Modifier.testTag("project-detail-name").semantics { heading() },
                     style = MaterialTheme.typography.headlineMedium)
-                Text("${detail.category.name} · ${projectStatusLabel(detail)}", style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(detail.category.name, Modifier.testTag("project-detail-category"),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Surface(shape = RoundedCornerShape(50),
+                    color = if (detail.cost.contributesToCurrentTotal) MaterialTheme.colorScheme.primaryContainer
+                        else MaterialTheme.colorScheme.surfaceVariant,
+                    contentColor = if (detail.cost.contributesToCurrentTotal) MaterialTheme.colorScheme.onPrimaryContainer
+                        else MaterialTheme.colorScheme.onSurfaceVariant) {
+                    Text(projectStatusLabel(detail), Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
+                        .testTag("project-detail-status"), style = MaterialTheme.typography.labelLarge)
+                }
                 if (detail.project.coverAssetId != null && coverContent == null) Text("封面暂不可用",
-                    Modifier.testTag("project-detail-cover-unavailable"), style = MaterialTheme.typography.bodyMedium,
+                    Modifier.testTag("project-detail-cover-unavailable"), style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
@@ -241,41 +257,46 @@ private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable ()
 
 @Composable
 private fun ProjectCostSummary(detail: ProjectDetail) {
-    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        BoxWithConstraints(Modifier.fillMaxWidth()) {
-            val stack = maxWidth < 280.dp || LocalDensity.current.fontScale > 1.3f ||
-                AmountFormatter.formatDailyRate(detail.cost.dailyRate).length > 9
-            val daily: @Composable () -> Unit = {
-                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    Text(projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal),
-                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    AmountText(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"),
-                        style = MaterialTheme.typography.displayLarge.copy(fontSize = 38.sp))
+    Surface(Modifier.fillMaxWidth().testTag("project-core-metrics"), shape = RoundedCornerShape(20.dp),
+        color = MaterialTheme.colorScheme.surface, shadowElevation = 1.dp,
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.65f))) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            BoxWithConstraints(Modifier.fillMaxWidth()) {
+                val stack = maxWidth < 280.dp || LocalDensity.current.fontScale > 1.3f ||
+                    AmountFormatter.formatDailyRate(detail.cost.dailyRate).length > 9
+                val daily: @Composable () -> Unit = {
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text("${projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal)} · 元/天",
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        AmountText(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"),
+                            style = MaterialTheme.typography.displayLarge.copy(fontSize = 38.sp), showUnit = false,
+                            color = MaterialTheme.colorScheme.primary)
+                    }
+                }
+                val held: @Composable () -> Unit = {
+                    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text("累计持有", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text(if (detail.cost.unavailableReason == null) "${detail.cost.heldDays} 天" else "尚未开始",
+                            Modifier.testTag("project-detail-held-days"), style = MaterialTheme.typography.headlineSmall.copy(fontSize = 24.sp))
+                    }
+                }
+                if (stack) Column(verticalArrangement = Arrangement.spacedBy(16.dp)) { daily(); held() }
+                else Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Box(Modifier.weight(1.4f)) { daily() }
+                    Box(Modifier.weight(1f)) { held() }
                 }
             }
-            val held: @Composable () -> Unit = {
-                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    Text("累计持有", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text(if (detail.cost.unavailableReason == null) "${detail.cost.heldDays} 天" else "尚未开始",
-                        Modifier.testTag("project-detail-held-days"), style = MaterialTheme.typography.headlineSmall)
-                }
-            }
-            if (stack) Column(verticalArrangement = Arrangement.spacedBy(16.dp)) { daily(); held() }
-            else Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                Box(Modifier.weight(1.4f)) { daily() }
-                Box(Modifier.weight(1f)) { held() }
-            }
-        }
-        Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant)
-        if (detail.cost.unavailableReason != null) Text("尚未开始，没有有效日均成本。", style = MaterialTheme.typography.bodyMedium)
-        if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal && detail.cost.unavailableReason == null) {
-            val hasObservedLateMoney = detail.events.any { event ->
-                event.occurredOn.isAfter(detail.project.endedOn) && !event.occurredOn.isAfter(detail.asOf)
-            }
-            Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。"
-                else "结束后仍可补录真实尾款或退款；持有天数不再增加。", style = MaterialTheme.typography.bodyMedium,
+            Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (detail.cost.unavailableReason != null) Text("尚未开始，没有有效日均成本。", style = MaterialTheme.typography.bodySmall)
+            if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal && detail.cost.unavailableReason == null) {
+                val hasObservedLateMoney = detail.events.any { event ->
+                    event.occurredOn.isAfter(detail.project.endedOn) && !event.occurredOn.isAfter(detail.asOf)
+                }
+                Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。"
+                    else "结束后仍可补录真实尾款或退款；持有天数不再增加。", style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
         }
     }
 }
@@ -288,23 +309,30 @@ private fun ProjectSecondaryTotals(detail: ProjectDetail) {
         Triple(if (includesCredit) "累计收回（含非现金折抵）" else "累计实际收回", detail.cost.recoveryCents, "project-detail-recovery"),
         Triple("净投入", detail.cost.netCents, "project-detail-net"),
     )
-    val stack = LocalDensity.current.fontScale > 1.3f || totals.any { AmountFormatter.formatCny(BigDecimal.valueOf(it.second, 2)).length > 10 }
-    if (stack) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        totals.forEach { ProjectTotal(it.first, it.second, it.third) }
-    } else Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        totals.forEach { (label, cents, tag) -> Box(Modifier.weight(1f)) { ProjectTotal(label, cents, tag) } }
+    val stack = includesCredit || LocalDensity.current.fontScale > 1.3f || totals.any { AmountFormatter.formatCny(BigDecimal.valueOf(it.second, 2)).length > 10 }
+    Surface(Modifier.fillMaxWidth().testTag("project-financial-totals"), shape = RoundedCornerShape(16.dp),
+        color = MaterialTheme.colorScheme.surface) {
+        if (stack) Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            totals.forEachIndexed { index, total ->
+                if (index > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                ProjectTotal(total.first, total.second, total.third)
+            }
+        } else Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            totals.forEach { (label, cents, tag) -> Box(Modifier.weight(1f)) { ProjectTotal(label, cents, tag) } }
+        }
     }
 }
 
 @Composable
 private fun ProjectTotal(label: String, cents: Long, tag: String) {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         AmountText(BigDecimal.valueOf(cents, 2), Modifier.testTag(tag), AmountUnit.YUAN,
             style = MaterialTheme.typography.titleLarge.copy(fontSize = 18.sp))
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ProjectMoneyRecord(event: ProjectMoneyEventEntity, onCorrectMoney: (String) -> Unit, onUpdateEnd: () -> Unit) {
     Row(Modifier.fillMaxWidth().testTag("project-event-${event.id}"),
@@ -329,7 +357,7 @@ private fun ProjectMoneyRecord(event: ProjectMoneyEventEntity, onCorrectMoney: (
                     Box(Modifier.weight(1.2f)) { amount() }
                 }
             }
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 Text(event.occurredOn.toString(), Modifier.testTag("project-event-date-${event.id}"),
                     style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Text(projectMoneyEventBasisLabel(event.basis), Modifier.testTag("project-event-basis-${event.id}"),

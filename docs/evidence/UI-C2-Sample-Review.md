@@ -81,3 +81,58 @@
 ### 剩余边界与停止
 
 没有真实Android截图，APP_VISUAL_PENDING。媒体受校验读取入口仍PENDING，不合并M10、不读裸路径，不声称真实封面已显示。全部旧FAIL/UNKNOWN/NOT_RUN/NOTES及M10/M20/M22/M13/G1～G4状态不变。A-R1仅为待视觉确认候选；不自行ACCEPTED/FROZEN，不推广B段、不合并main、不进入M23。
+
+
+## A-R2原设计视觉候选（2026-10-26）
+
+**VISUAL_CANDIDATE_READY — UI-C2 A-R2** · **PROTOTYPE_ONLY / APP_VISUAL_PENDING**。
+
+从`4d6671fb4a012950bc4b00307572277671059a8f`继续，工作区起始干净、本地与远端一致。用户与ChatGPT判定A-R1排版部分有效、视觉保真度仍CHANGES REQUIRED；上述A/A-R1报告、60/75 JVM与NOT_RUN不是本轮重新验收结果。本轮只精修A段，不自动开展B段。
+
+### 直接看对照
+
+- [原设计—A-R1—A-R2首页/详情并排](../design/ui-c2/PROTOTYPE_ONLY-A-R2-comparison.png)。原图来自旧UI冻结`0dce7dd`的[浅色原件](https://github.com/cc7279694-debug/property/blob/0dce7dd0725a54be4f0280870ef6ca47c48ea7ed/docs/design/ui-c1/source-v1/ui-reference-light.png)、[深色原件](https://github.com/cc7279694-debug/property/blob/0dce7dd0725a54be4f0280870ef6ca47c48ea7ed/docs/design/ui-c1/source-v1/ui-reference-dark.png)，均实际打开；对照仅等比裁切显示，不改原图字节，示例照片/商标只在设计引用列中。A-R1列由锁定`4d6671f`原HTML渲染，不覆盖旧图。
+- [本轮浅色四页](../design/ui-c2/PROTOTYPE_ONLY-A-R2-light.png) · [深色四页](../design/ui-c2/PROTOTYPE_ONLY-A-R2-dark.png) · [无记录/长负金额/浏览器×2/合成封面](../design/ui-c2/PROTOTYPE_ONLY-A-R2-states.png) · [离线交互HTML](../design/ui-c2/UI_C2_A_Prototype.html)。四张均实际打开查看，8基本+5代表框。来源为离线Chrome，**不是生产Compose渲染、MainActivity或APK截图**；浏览器×2不是Android系统200%字体、真实IME或TalkBack证据。
+- [原字节SHA、尺寸与来源](ui-c2-r2-20261026-061804/visual-evidence.json) · [真实浏览器几何/检查](ui-c2-r2-20261026-061804/browser-final/metrics.json) · [实际取证脚本](ui-c2-r2-20261026-061804/browser-final/capture.cjs)。原A/R1截图仍保留原路径与Git历史。
+
+### 原设计、旧样板与本轮处理
+
+| 原设计元素 | A-R1差距 | A-R2生产Compose与HTML | 当前真实数据口径 |
+|---|---|---|---|
+| 暖白/深墨背景与深绿核心卡 | 摘要与背景层次偏弱 | 浅色深墨绿`#26362C`、深色`#2D4135`主卡；浅色大金额/轻辅助字；小计移至卡外 | OverviewResult.totalRate，非今日扣款；未知为—，0/负数、历史无贡献与读取失败分开 |
+| 两类小摘要 | 同一大卡内堆文字 | 紧凑两列，窄宽/大字纵排；“当前有效”直接取active字段 | activeProjectCount/activeSubscriptionCount；列表含历史总数另列，不用预览数或总数冒充active |
+| 有身份的图文行 | 通用图标与连续段落 | 明确类别映射的自绘电脑/书籍/音频/运动图标，其他类别用真实名称首Unicode字符；状态胶囊/时间/金额分层；按实际宽度将金额放侧边或下方 | 原VM窗口/顺序与每类前2条；不称最近活动。订阅预览historicalAverage/折算付费时长，卡外小计是当前贡献，不是月费 |
+| 详情封面、指标与分组操作 | 身份/指标层次弱 | 生产64dp身份区、主成本+持有组、精确投入/收回/净投入、完整时间线与管理菜单；有引用不能显示时明确提示 | ProjectCostEngine与原事件/现金口径不改；无封面与有引用但暂不可用分开。真实媒体展示PENDING；有封面图仅自绘合成阅读器示意 |
+| 轻输入页与底部操作 | 大字已修，普通间隔仍大 | 保留独立48dp返回/全宽24sp标题；16dp正文节奏、56dp日期/类别轻行、外置标签；滚动正文+实际保存区/IME边界 | 原VM输入、日期、operationId、错误展开与未确认提交保护不变，不新增媒体写入 |
+| 简洁图标分组回看 | 图表提前后仍需分组层次 | 保留唯一主金额/选日/真实趋势，图表轻表面、分析/历史分组与细分隔 | 原TotalCostChart及后续实现不变；不照搬旧图“即将开放”，现在图表/分析/提醒仍可达 |
+| 完整金额 | A-R1已修单行/自适应/横滑 | 保留TextMeasurer/Formatter；超出最小视觉字号再提供“查看完整金额”弹窗、可选择/复制的完整格式化金额及单位；复制失败持续提示 | 不改精度/算法，不缩成K/W或省略尾数；普通6.48首选38sp的Compose断言仅编译 |
+
+日期/类别摘要的展开收起不重建VM；所有写入/删除/结束/替换及原requestLeave导航守卫不改。关闭金额查看是纯呈现操作，没有业务写入；当前首页只读事实仍受原generation/asOf和迟到发布保护。HTML只演示设计交互，不能证明真实业务执行。
+
+### UI-C2-V01～V08检查
+
+| 门禁 | 本轮证据与状态 |
+|---|---|
+| V01 原浅色设计还原 | 已提供实际并排原型，视觉确认PENDING，不自行判PASS |
+| V02 原深色设计还原 | 同上；原色板与层次继承，最终App像素未测 |
+| V03 首页密度/物品预览 | 浏览器普通360框可见主金额和合成物品行，生产只读接原VM预览，未实机运行；active/含历史总数分别接线；Android NOT_RUN |
+| V04 详情封面/指标 | 无图备用、指标与完整事件实现并编译；合成封面布局示意；MEDIA_DISPLAY_PENDING，不计真实图片显示PASS |
+| V05 表单/大字 | 浏览器真实滚动几何检查：返回48、标题独立、展开最后字段滚至保存区上方；Android系统字体/IME NOT_RUN |
+| V06 回看图表/分组 | 浏览器普通首屏有有效绘图区；精确选日/分项/全部历史仍接原回调；Android绘图/触控 NOT_RUN |
+| V07 金额完整 | 格式器/布局相关JVM PASS；浏览器单行/横滑/完整值弹窗检查PASS；Android滑动/复制/读屏 NOT_RUN |
+| V08 真实数据/原动作保护 | 静态无假数据进入main、无新写协议/导航绕过；原相关回归PASS；Android菜单/旧代/确认保护只编译，运行NOT_RUN |
+
+### 媒体可行性：MEDIA_DISPLAY_PENDING
+
+当前`data/backup/DataGenerationStore.kt`的ManagedGeneration只有directory/database/settings/coordinator；没有旧UI-C1的images/mediaResolver。旧`feature/media/CoverPreviewLoader`依赖旧`MediaRepository.openAsset → LocalImageStore`及AndroidImageCodec验证链，无法只搬组件工作。当前BackupMediaSnapshot是完整备份中的受控原字节复制，不是页面图片loader，也不能把其中的容器/字节校验称为严格JPEG深度解码。
+
+下一阶段建议仅在另外授权后定义同代只读媒体resolver：在现有协调器/媒体元数据身份下验证归属、无链接路径、长度/SHA/格式/尺寸与前后身份，后台有界缩略解码；请求/缓存必须绑定generation、asset身份和尺寸，换代取消旧结果，失败区分不存在与不可读。不迁入M10写入、Worker、JNI、GC或未知Stage。需独立覆盖坏图、换代、资源上限与释放；本轮不实施。M10三JPEG历史FAIL仍为FAIL，本次不能证明图片安全风险已解决。示例品牌照片没有进入main资源或生产账本。
+
+### 实际定向验证与停止
+
+- **64唯一JVM PASS（4新增身份呈现、60相关回归）**：[逐方法](ui-c2-r2-20261026-061804/jvm-summary.json)。未重跑历史大套件，不累计重复执行；没有捏造视觉或业务RED→GREEN。
+- **9新增Android/Compose方法仅编译，运行全部NOT_RUN**：[方法范围](ui-c2-r2-20261026-061804/android-compile-only.json)。已有A/R1未运行边界保持。
+- Debug构建、AndroidTest编译与Lint最终exit0；**0错误17警告**：[命令/退出](ui-c2-r2-20261026-061804/quality-signoff/command.json)、[stdout](ui-c2-r2-20261026-061804/quality-signoff/stdout)、[Lint XML](ui-c2-r2-20261026-061804/lint.xml)。必要迭代均保留各自记录，不扩算覆盖数。
+- [边界核对](ui-c2-r2-20261026-061804/boundaries.json)、[实际构建/原证书](ui-c2-r2-20261026-061804/artifact-audit.json)、[最终源码绑定](ui-c2-r2-20261026-061804/input-binding.json)：Room5/backup4/data/domain/VM/导航/写入/Owner/恢复/调度不改；Formatter原对象与TotalCostChart尾部规范化文本一致。无INTERNET，默认包/版本/证书配置不改，旧preview code18原APK SHA仍为`d39b6bf764720415d88d0d9f6c149b34dcda2d795f823505786fa4130b906ef4`。仅普通Debug检查，未构建/交付新用户APK。
+
+原图结构借鉴不是照搬历史功能限制；无设备、ADB、安装、私人账本或受保护现场操作。M10/M20/M22/M13与G1～G4、全部历史FAIL/UNKNOWN/NOT_RUN/NOTES保持。本轮仅为视觉定稿候选，待ChatGPT和用户一次集中确认；**不推广B段、不合并main、不冻结、不进入M23**。

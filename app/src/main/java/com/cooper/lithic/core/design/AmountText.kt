@@ -6,12 +6,21 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -62,12 +71,17 @@ fun AmountText(
     unit: AmountUnit = AmountUnit.YUAN_PER_DAY,
     style: TextStyle = MaterialTheme.typography.displayLarge,
     showUnit: Boolean = true,
+    color: Color = MaterialTheme.colorScheme.onSurface,
+    supportingColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
 ) {
     val display = when (unit) {
         AmountUnit.YUAN -> AmountFormatter.formatCny(amount)
         AmountUnit.YUAN_PER_DAY -> AmountFormatter.formatDailyRate(amount)
     }
     val density = LocalDensity.current
+    var fullOpen by remember(display, unit) { mutableStateOf(false) }
+    var copyFailed by remember(display, unit) { mutableStateOf(false) }
+    val clipboard = LocalClipboardManager.current
     val measurer = rememberTextMeasurer()
     BoxWithConstraints(modifier.semantics(mergeDescendants = true) {
         contentDescription = AmountFormatter.description(amount, unit)
@@ -84,11 +98,27 @@ fun AmountText(
         Column {
             Text(display, modifier = if (layout.horizontalScroll) Modifier.fillMaxWidth().heightIn(min = 48.dp).horizontalScroll(rememberScrollState()).testTag("amount-horizontal-view") else Modifier,
                 style = style.copy(fontSize = layout.fontSp.sp, lineHeight = lineHeight),
-                color = MaterialTheme.colorScheme.onSurface, softWrap = false, maxLines = 1)
+                color = color, softWrap = false, maxLines = 1)
             if (showUnit) Text(unit.label, style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant, softWrap = true)
+                color = supportingColor, softWrap = true)
             if (layout.horizontalScroll) Text("左右滑动查看完整金额", Modifier.testTag("amount-horizontal-hint"),
-                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                style = MaterialTheme.typography.bodySmall, color = supportingColor)
+            if (layout.horizontalScroll) TextButton({ fullOpen = true }, Modifier.heightIn(min = 48.dp).testTag("amount-open-full")) {
+                Text("查看完整金额", color = supportingColor)
+            }
         }
     }
+    if (fullOpen) AlertDialog(onDismissRequest = { fullOpen = false }, title = { Text("完整金额") },
+        text = { Column(Modifier.verticalScroll(rememberScrollState())) {
+            SelectionContainer {
+                Text(display, Modifier.fillMaxWidth().heightIn(min = 48.dp).horizontalScroll(rememberScrollState())
+                    .testTag("amount-full-value"), style = MaterialTheme.typography.titleLarge, softWrap = false, maxLines = 1)
+            }
+            Text(unit.label, Modifier.testTag("amount-full-unit"))
+            Text("可左右滑动，或长按选择完整金额。", style = MaterialTheme.typography.bodyMedium)
+            if (copyFailed) Text("暂时无法复制，可长按金额选择文字。", color = MaterialTheme.colorScheme.error)
+        } }, confirmButton = { TextButton({ fullOpen = false }, Modifier.testTag("amount-close-full")) { Text("关闭") } },
+        dismissButton = { TextButton({
+            copyFailed = runCatching { clipboard.setText(AnnotatedString("$display ${unit.label}")) }.isFailure
+        }, Modifier.testTag("amount-copy-full")) { Text("复制金额") } })
 }

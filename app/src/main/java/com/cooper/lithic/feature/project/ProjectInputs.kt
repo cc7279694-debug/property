@@ -1,7 +1,12 @@
 package com.cooper.lithic.feature.project
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
@@ -22,7 +27,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.error as semanticsError
 import androidx.compose.ui.semantics.contentDescription
@@ -32,6 +39,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.LithicSpacing
+import com.cooper.lithic.core.design.C2Glyph
+import com.cooper.lithic.core.design.C2Icon
 import com.cooper.lithic.data.local.CategoryEntity
 import com.cooper.lithic.data.local.CategoryType
 import java.time.Instant
@@ -129,11 +138,15 @@ internal fun ProjectCategoryPicker(
     modifier: Modifier = Modifier,
     error: String? = null,
     enabled: Boolean = true,
+    compactRow: Boolean = false,
 ) {
     var showCategories by rememberSaveable { mutableStateOf(false) }
     val options = categories.filter { it.type == CategoryType.PROJECT }
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-        OutlinedButton(onClick = { showCategories = true }, enabled = enabled && options.isNotEmpty(),
+        if (compactRow) ProjectFormSummaryRow("类别",
+            options.firstOrNull { it.id == selectedId }?.name ?: "请选择类别", "project-category",
+            enabled = enabled && options.isNotEmpty(), onClick = { showCategories = true }, error = error)
+        else OutlinedButton(onClick = { showCategories = true }, enabled = enabled && options.isNotEmpty(),
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("project-category")
                 .semantics { error?.let { semanticsError(it) } }) {
             Column(Modifier.fillMaxWidth()) {
@@ -188,4 +201,33 @@ internal fun ProjectNoteInput(
         Text(label, style = MaterialTheme.typography.bodyLarge)
         field()
     } else field()
+}
+
+/** Compact, growing settings-like rows used only by the progressive project editor. */
+@Composable
+internal fun ProjectFormSummaryRow(label: String, value: String, tag: String, enabled: Boolean,
+    onClick: () -> Unit, error: String? = null) {
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val stacked = maxWidth < 280.dp || LocalDensity.current.fontScale > 1.3f
+        val primary = if (enabled) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+        val secondary = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.38f)
+        TextButton(onClick, Modifier.fillMaxWidth().heightIn(min = 56.dp)
+            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
+            .testTag(tag).semantics { error?.let { semanticsError(it) } }, enabled = enabled,
+            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                if (stacked) Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(label, style = MaterialTheme.typography.bodySmall, color = secondary)
+                    Text(value, style = MaterialTheme.typography.bodyLarge, color = primary)
+                } else {
+                    Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodySmall,
+                        color = secondary)
+                    Text(value, Modifier.weight(1.65f), style = MaterialTheme.typography.bodyLarge,
+                        color = primary)
+                }
+                C2Icon(C2Glyph.Chevron)
+            }
+        }
+    }
 }

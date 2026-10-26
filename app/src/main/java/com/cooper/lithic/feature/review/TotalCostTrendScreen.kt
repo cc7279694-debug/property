@@ -24,6 +24,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.Surface
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -139,7 +140,8 @@ internal fun TotalCostTrendScreen(
                     }
                     if (selected == null) Text("正在计算所选日期；不会用旧日期金额或0代替结果。")
                     else AmountText(selected.totalRate, Modifier.testTag("total-trend-total"),
-                        style = MaterialTheme.typography.headlineLarge.copy(fontSize = 32.sp), showUnit = false)
+                        style = MaterialTheme.typography.headlineLarge.copy(fontSize = 32.sp), showUnit = false,
+                        color = MaterialTheme.colorScheme.primary)
                 }
             }
             if (!summaryOnly) item("selected") {
@@ -162,7 +164,12 @@ internal fun TotalCostTrendScreen(
                 }
             }
             item("chart") {
-                TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate, concise = summaryOnly)
+                if (summaryOnly) Surface(Modifier.fillMaxWidth().testTag("review-trend-plot-surface"),
+                    shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surface) {
+                    Column(Modifier.padding(horizontal = 12.dp, vertical = 8.dp)) {
+                        TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate, concise = true)
+                    }
+                } else TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate)
                 if (summaryOnly) {
                     selected?.let { point ->
                         HorizontalDailyContributions(point)

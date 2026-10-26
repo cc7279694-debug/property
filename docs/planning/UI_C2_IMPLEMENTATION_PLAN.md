@@ -30,3 +30,8 @@ Scope：四页生产Composable、AmountText与必要输入标签可选呈现参�
 Out of scope：B段推广、设备/ADB/AVD、用户安装包、媒体入口补建、数据/计算/写入/Owner/导航或恢复协议。
 Verification：定向JVM；Debug/AndroidTest编译/Lint；浏览器实际查看四页浅深与四个代表状态，核对单行完整金额、可发现横向查看、正文/保存区边界和可见绘图区。Android真实布局/字体/IME保持NOT_RUN。
 Stop：VISUAL_REFINEMENT_READY — UI-C2 A-R1，附PROTOTYPE_ONLY / APP_VISUAL_PENDING；等待ChatGPT与用户一次集中视觉确认。
+
+
+## A-R2定稿候选续接
+
+Goal：恢复UI-C1原图的主卡/小摘要/身份指标/分组层次，保留A-R1已经解决的布局问题。Scope：四页生产Compose、极长金额完整查看、纯UI图标与离线视觉对照。Out of scope：所有业务/媒体实现、B段、设备和用户安装包。Verification：受影响JVM、Android源码编译、Debug/Lint、离线浅深四页+代表状态+原图并排，不把HTML当Android视觉PASS。媒体仅只读核对并单列MEDIA_DISPLAY_PENDING。完成后VISUAL_CANDIDATE_READY — UI-C2 A-R2；集中确认前停止。

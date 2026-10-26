@@ -1,0 +1,18 @@
+{
+  "scope": "desktop evidence helper only; no Android operations",
+  "initialBrowserSourceRead": {
+    "result": "FAIL",
+    "exitCode": 1,
+    "reason": "Node execFileSync default maxBuffer smaller than original reference PNG; ENOBUFS",
+    "rawConsoleNotArchived": true,
+    "screenshotProduced": false,
+    "resolution": "Read locked Git image blobs with bounded16MiB buffer; compare source SHA; no image bytes modified"
+  },
+  "initialBrowserCleanupProbe": {
+    "result": "ENDPOINT_ABSENT",
+    "reason": "DevToolsActivePort not present; read-only CIM filtered for that exact dedicated profile returned no rows",
+    "noKillCommands": true
+  },
+  "finalBrowser": "separate new desktop profile, exact identity checked, Browser.close requested",
+  "initialDeviceOrProductTestResultsChanged": false
+}

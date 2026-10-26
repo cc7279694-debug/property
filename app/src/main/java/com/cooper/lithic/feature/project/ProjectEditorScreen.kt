@@ -21,7 +21,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -96,7 +95,7 @@ internal fun ProjectEditorScreen(
         // so system font scaling cannot squeeze it against the return target or trap fields below it.
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())
             .padding(LithicSpacing.medium).testTag("project-editor-content"),
-            verticalArrangement = Arrangement.spacedBy(LithicSpacing.large)) {
+            verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
             Text(if (state.mode == ProjectEditorMode.CREATE) "新增长期项目" else "编辑项目资料",
                 style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.fillMaxWidth().testTag("project-editor-title").semantics { heading() })
@@ -135,7 +134,7 @@ internal fun ProjectEditorScreen(
 
             ProjectCategoryPicker(state.categories, state.categoryId, onCategoryChange,
                 Modifier.bringIntoViewRequester(errorTargets.getValue(ProjectEditorField.CATEGORY)),
-                error = state.errors["categoryId"], enabled = state.canEdit)
+                error = state.errors["categoryId"], enabled = state.canEdit, compactRow = true)
 
             if (state.mode == ProjectEditorMode.CREATE) {
                 state.today?.let { today ->
@@ -148,8 +147,8 @@ internal fun ProjectEditorScreen(
                             EditorSummary("初始实际付款日期", "与开始日期相同 · ${state.initialPaidOn}",
                                 "project-payment-summary", state.canEdit, onClick = { paymentExpanded = true })
                         }
-                        Text("先付款后收到时，改为真实付款日。", style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        if (disclosure.initialPaidOn) Text("先付款后收到时，改为真实付款日。",
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
             }
@@ -209,14 +208,5 @@ internal fun ProjectEditorScreen(
 
 @Composable
 private fun EditorSummary(label: String, value: String, tag: String, enabled: Boolean, onClick: () -> Unit) {
-    TextButton(onClick, Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag(tag), enabled = enabled) {
-        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
-            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Text(value, style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onSurface)
-            }
-            C2Icon(C2Glyph.Chevron)
-        }
-    }
+    ProjectFormSummaryRow(label, value, tag, enabled, onClick)
 }
