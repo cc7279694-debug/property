@@ -5,6 +5,9 @@
 ## Current Stage
 
 
+- **用户选定启动图标 — Preview 4已交付**：从`342c3c3`仅以用户上传原PNG替换Launcher/adaptive图标，原图与APK图片逐字节一致；通知小图标与业务源码不改。Private Trial仍`com.cooper.lithic.preview.debug`／原证书，仅升code20／`0.1.0-preview.4-debug`，唯一15,715,635字节APK存独立deliveries目录；旧Preview2／3及M22实物不变。普通Debug构建、体验构建／Lint及静态Manifest／签名／DEX核对PASS；Lint0错误13警告，保留不透明图IconLauncherShape。圆形／圆角静态模拟已查看；JVM、AndroidTest、实际Launcher／安装／升级本轮NOT_RUN，无设备操作。见[交付与证据](evidence/LITHIC-Launcher-Icon.md)。Room5／backup4／身份与冻结协议、APP_VISUAL_PENDING／MEDIA_DISPLAY_PENDING及所有历史风险保持；不是正式Release，不进入M23。
+
+
 - **UI-C2 C0 — UI-C2 C0 READY_FOR_USER_TRIAL**：从`fef1f8e`继承完整UI-C2生产Compose，B1～B4及B-HOME获用户转交的独立桌面PASS WITH NOTES；真实Android视觉和最终认可仍PENDING。仅PrivateTrial两行升`com.cooper.lithic.preview.debug` / code19 / `0.1.0-preview.3-debug`，原Debug证书连续，正常LithicApplication/MainActivity、数量卡/FAB及全业务页面已做源码＋DEX静态接线核对；不是HTML壳。106唯一JVM PASS、Debug/AndroidTest源码编译/Lint exit0（0E17W）、体验构建/Lint exit0（0E11W）；实际Android/安装/升级/视觉均NOT_RUN。唯一14,079,087字节APK已在非build独占deliveries目录，原Preview2与M22实物未变；完整路径/SHA见[C0报告](evidence/UI-C2-C0-Private-Trial-Delivery.md)。APP_VISUAL_PENDING / MEDIA_DISPLAY_PENDING，未安装、操作设备/数据或进入M23。普通Debug/Release/M22身份、Room5/backup4及全部业务/Owner/恢复/导航/提醒协议不变；M10/M20/M22/M13/G1～G4历史状态保留。等待用户自行集中体验和独立审查，不把私人Debug候选当正式V1.0。
 
 
