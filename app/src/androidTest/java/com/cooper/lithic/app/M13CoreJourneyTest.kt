@@ -248,7 +248,11 @@ class M13CoreJourneyTest {
     }
     private fun click(tag: String) {
         Espresso.closeSoftKeyboard()
-        compose.onNodeWithTag(tag).performScrollTo().assertIsEnabled().performClick()
+        if (tag in setOf("money-save", "end-save", "project-save", "subscription-save", "renewal-confirm-payment", "subscription-state-confirm", "subscription-detail-renew", "money-back", "end-back", "subscription-editor-back", "renewal-back", "subscription-state-back")) {
+            compose.onNodeWithTag(tag).assertIsDisplayed().assertIsEnabled().performClick()
+        } else {
+            compose.onNodeWithTag(tag).performScrollTo().assertIsEnabled().performClick()
+        }
     }
     private fun waitNode(tag: String) {
         compose.waitUntil(15_000) { compose.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty() }

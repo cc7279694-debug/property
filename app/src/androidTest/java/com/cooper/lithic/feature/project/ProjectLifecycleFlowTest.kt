@@ -123,13 +123,13 @@ class ProjectLifecycleFlowTest {
         val failed = repository.loadProjectDetail(id)!!
         assertEquals(before.project, failed.project)
         assertEquals(before.events, failed.events)
-        compose.onNodeWithTag("end-form-error").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("end-form-error").assertIsDisplayed()
         compose.onNodeWithTag("end-ended-on-input").performScrollTo().assertTextContains("2026-01-08")
         compose.onNodeWithTag("end-reason").performScrollTo().assertTextContains("不再使用")
         compose.onNodeWithTag("end-recovery-amount").performScrollTo().assertTextContains("200")
         assertTrue(model.state.value.endEditor!!.conflict)
         generation.database.openHelper.writableDatabase.execSQL("DROP TRIGGER m07_flow_fail_end")
-        compose.onNodeWithTag("end-resolve-conflict").performScrollTo().performClick()
+        compose.onNodeWithTag("end-resolve-conflict").assertIsDisplayed().performClick()
         compose.waitUntil(10_000) { model.state.value.endEditor?.let { !it.loading && !it.conflict && it.phase == SubmissionPhase.IDLE } == true }
         assertNull(repository.loadProjectDetail(id)!!.project.endedOn)
         fillEnd("2026-01-08", "不再使用", "200")
@@ -270,7 +270,7 @@ class ProjectLifecycleFlowTest {
         compose.onNodeWithTag("correction-amount").performScrollTo().performTextReplacement("100")
         compose.onNodeWithTag("correction-occurred-on-input").performScrollTo().performTextReplacement("2026-01-02")
         compose.onNodeWithTag("correction-description").performScrollTo().performTextReplacement("纠正录入金额及日期")
-        compose.onNodeWithTag("correction-save").performScrollTo().performClick()
+        compose.onNodeWithTag("correction-save").assertIsDisplayed().performClick()
         waitForDetail()
         val corrected = repository.loadProjectDetail(id)!!.events.single { it.id == original.id }
         assertEquals(original.id, corrected.id)
@@ -430,7 +430,7 @@ class ProjectLifecycleFlowTest {
     private fun clickEndSave() {
         Espresso.closeSoftKeyboard()
         compose.waitForIdle()
-        compose.onNodeWithTag("end-save").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
+        compose.onNodeWithTag("end-save").assertIsDisplayed().assertIsEnabled().performClick()
     }
     private fun addMoney(action: String, amount: String, date: String, description: String) {
         detailAction(action)
@@ -438,7 +438,7 @@ class ProjectLifecycleFlowTest {
         compose.onNodeWithTag("money-amount").performScrollTo().performTextReplacement(amount)
         compose.onNodeWithTag("money-occurred-on-input").performScrollTo().performTextReplacement(date)
         compose.onNodeWithTag("money-description").performScrollTo().performTextReplacement(description)
-        compose.onNodeWithTag("money-save").performScrollTo().performClick()
+        compose.onNodeWithTag("money-save").assertIsDisplayed().performClick()
         waitForDetail()
     }
     private fun detailAction(tag: String) {

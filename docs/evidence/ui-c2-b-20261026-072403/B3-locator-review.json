@@ -1,0 +1,195 @@
+{
+  "scope": "only known fixed-footer lookup; body still scrolls",
+  "directLocatorReplacements": 21,
+  "helperBranches": 2,
+  "timeoutOrBusinessExpectationsChanged": false,
+  "runtime": "NOT_RUN",
+  "changes": [
+    {
+      "file": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleScreensTest.kt",
+      "replacements": 9,
+      "details": [
+        {
+          "line": 85,
+          "tag": "end-form-error",
+          "old": "compose.onNodeWithTag(\"end-form-error\").performScrollTo().assertTextContains(\"请核对输入，记录尚未保存\")",
+          "new": "compose.onNodeWithTag(\"end-form-error\").assertIsDisplayed().assertTextContains(\"请核对输入，记录尚未保存\")"
+        },
+        {
+          "line": 115,
+          "tag": "end-save",
+          "old": "compose.onNodeWithTag(\"end-save\").performScrollTo().assertIsNotEnabled()",
+          "new": "compose.onNodeWithTag(\"end-save\").assertIsDisplayed().assertIsNotEnabled()"
+        },
+        {
+          "line": 117,
+          "tag": "end-save",
+          "old": "compose.onNodeWithTag(\"end-save\").performScrollTo().assertTextContains(\"核对并重试\").performClick()",
+          "new": "compose.onNodeWithTag(\"end-save\").assertIsDisplayed().assertTextContains(\"核对并重试\").performClick()"
+        },
+        {
+          "line": 121,
+          "tag": "end-retry-read",
+          "old": "compose.onNodeWithTag(\"end-retry-read\").performScrollTo().performClick()",
+          "new": "compose.onNodeWithTag(\"end-retry-read\").assertIsDisplayed().performClick()"
+        },
+        {
+          "line": 148,
+          "tag": "correction-save",
+          "old": "compose.onNodeWithTag(\"correction-save\").performScrollTo().assertIsNotEnabled()",
+          "new": "compose.onNodeWithTag(\"correction-save\").assertIsDisplayed().assertIsNotEnabled()"
+        },
+        {
+          "line": 149,
+          "tag": "correction-initial-read-retry",
+          "old": "compose.onNodeWithTag(\"correction-initial-read-retry\").performScrollTo().performClick()",
+          "new": "compose.onNodeWithTag(\"correction-initial-read-retry\").assertIsDisplayed().performClick()"
+        },
+        {
+          "line": 152,
+          "tag": "correction-resolve-conflict",
+          "old": "compose.onNodeWithTag(\"correction-resolve-conflict\").performScrollTo().performClick()",
+          "new": "compose.onNodeWithTag(\"correction-resolve-conflict\").assertIsDisplayed().performClick()"
+        },
+        {
+          "line": 291,
+          "tag": "end-save",
+          "old": "compose.onNodeWithTag(\"end-save\").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()",
+          "new": "compose.onNodeWithTag(\"end-save\").assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()"
+        },
+        {
+          "line": 295,
+          "tag": "correction-save",
+          "old": "compose.onNodeWithTag(\"correction-save\").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()",
+          "new": "compose.onNodeWithTag(\"correction-save\").assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()"
+        }
+      ],
+      "businessAssertionsChanged": false,
+      "originalSha256": "28ad022d22491e43bea215702b4940ca082d27158b84bc00531a4add6aaee51e"
+    },
+    {
+      "file": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleFlowTest.kt",
+      "replacements": 5,
+      "details": [
+        {
+          "line": 126,
+          "tag": "end-form-error",
+          "old": "compose.onNodeWithTag(\"end-form-error\").performScrollTo().assertIsDisplayed()",
+          "new": "compose.onNodeWithTag(\"end-form-error\").assertIsDisplayed()"
+        },
+        {
+          "line": 132,
+          "tag": "end-resolve-conflict",
+          "old": "compose.onNodeWithTag(\"end-resolve-conflict\").performScrollTo().performClick()",
+          "new": "compose.onNodeWithTag(\"end-resolve-conflict\").assertIsDisplayed().performClick()"
+        },
+        {
+          "line": 273,
+          "tag": "correction-save",
+          "old": "compose.onNodeWithTag(\"correction-save\").performScrollTo().performClick()",
+          "new": "compose.onNodeWithTag(\"correction-save\").assertIsDisplayed().performClick()"
+        },
+        {
+          "line": 433,
+          "tag": "end-save",
+          "old": "compose.onNodeWithTag(\"end-save\").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()",
+          "new": "compose.onNodeWithTag(\"end-save\").assertIsDisplayed().assertIsEnabled().performClick()"
+        },
+        {
+          "line": 441,
+          "tag": "money-save",
+          "old": "compose.onNodeWithTag(\"money-save\").performScrollTo().performClick()",
+          "new": "compose.onNodeWithTag(\"money-save\").assertIsDisplayed().performClick()"
+        }
+      ],
+      "businessAssertionsChanged": false,
+      "originalSha256": "22d99ec9e9675c128d66f2a2aa9556295a152acd24311c32bacee7ef02c271bd"
+    },
+    {
+      "file": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectEntryFlowTest.kt",
+      "replacements": 3,
+      "details": [
+        {
+          "line": 153,
+          "tag": "money-save",
+          "old": "compose.onNodeWithTag(\"money-save\").performScrollTo().performTouchInput { doubleClick() }",
+          "new": "compose.onNodeWithTag(\"money-save\").assertIsDisplayed().performTouchInput { doubleClick() }"
+        },
+        {
+          "line": 191,
+          "tag": "money-save",
+          "old": "compose.onNodeWithTag(\"money-save\").performScrollTo().performClick()",
+          "new": "compose.onNodeWithTag(\"money-save\").assertIsDisplayed().performClick()"
+        },
+        {
+          "line": 206,
+          "tag": "money-save",
+          "old": "compose.onNodeWithTag(\"money-save\").performScrollTo().performClick()",
+          "new": "compose.onNodeWithTag(\"money-save\").assertIsDisplayed().performClick()"
+        }
+      ],
+      "businessAssertionsChanged": false,
+      "originalSha256": "261ac1fe723f5ad185618ce14767fcb062d6d0ab5914f00c2d59dde252f54577"
+    },
+    {
+      "file": "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectScreensTest.kt",
+      "replacements": 1,
+      "details": [
+        {
+          "line": 211,
+          "tag": "money-form-error",
+          "old": "compose.onNodeWithTag(\"money-form-error\").performScrollTo().assertTextContains(\"本地保存失败，输入已保留\")",
+          "new": "compose.onNodeWithTag(\"money-form-error\").assertIsDisplayed().assertTextContains(\"本地保存失败，输入已保留\")"
+        }
+      ],
+      "businessAssertionsChanged": false,
+      "originalSha256": "854578422b5b52d41b75ca59a4e1e889899a958a16a887bc7624a766cbfc2f0b"
+    },
+    {
+      "file": "app/src/androidTest/java/com/cooper/lithic/app/M16ScreenshotsJourneyTest.kt",
+      "replacements": 3,
+      "details": [
+        {
+          "line": 177,
+          "tag": "trade-in-preview",
+          "old": "compose.onNodeWithTag(\"trade-in-preview\").performScrollTo(); click(\"trade-in-preview\")",
+          "new": "compose.onNodeWithTag(\"trade-in-preview\").assertIsDisplayed(); click(\"trade-in-preview\")"
+        },
+        {
+          "line": 181,
+          "tag": "trade-in-save",
+          "old": "compose.onNodeWithTag(\"trade-in-save\").performScrollTo().assertIsDisplayed().assertIsEnabled()",
+          "new": "compose.onNodeWithTag(\"trade-in-save\").assertIsDisplayed().assertIsEnabled()"
+        },
+        {
+          "line": 184,
+          "tag": "trade-in-save",
+          "old": "compose.onNodeWithTag(\"trade-in-save\").performScrollTo(); click(\"trade-in-save\")",
+          "new": "compose.onNodeWithTag(\"trade-in-save\").assertIsDisplayed(); click(\"trade-in-save\")"
+        }
+      ],
+      "businessAssertionsChanged": false,
+      "originalSha256": "fee83594ea552f94093e5528968d345cb7f9883e1b895cb85118b58e92d2678e"
+    },
+    {
+      "file": "app/src/androidTest/java/com/cooper/lithic/app/M13CoreJourneyTest.kt",
+      "helperBranches": 1,
+      "fixedFooterTags": [
+        "money-save",
+        "end-save"
+      ],
+      "businessAssertionsChanged": false,
+      "originalSha256": "f986e92d5a5b6a2180c706eaec55ba94829704177ea4750fd8bf742894e8b632"
+    },
+    {
+      "file": "app/src/androidTest/java/com/cooper/lithic/ui/CompleteJourneyTest.kt",
+      "helperBranches": 1,
+      "fixedFooterTags": [
+        "money-save",
+        "end-save"
+      ],
+      "businessAssertionsChanged": false,
+      "originalSha256": "70f3dec5ace27542ba41b6234e18609c9a8b4235f3b690a7a95b594ce9854853"
+    }
+  ]
+}

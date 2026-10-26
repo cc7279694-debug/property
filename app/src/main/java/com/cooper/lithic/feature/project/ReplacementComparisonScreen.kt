@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -20,10 +21,14 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.AmountText
+import com.cooper.lithic.core.design.C2PageHeader
+import com.cooper.lithic.core.design.C2Section
+import com.cooper.lithic.core.design.C2StatusChip
+import com.cooper.lithic.core.design.C2RecordIdentity
+import com.cooper.lithic.core.design.C2Glyph
+import com.cooper.lithic.core.design.C2Icon
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.data.local.ReplacementEntity
 
@@ -47,15 +52,14 @@ internal fun ReplacementComparisonScreen(
         verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
         item {
             Column(Modifier.padding(LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("replacement-back")) { Text("返回项目详情") }
-                Text("替换链与纵向对比", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
+                C2PageHeader("替换链与纵向对比", onBack, "replacement-back", backLabel = "返回项目详情")
                 Text("只记录你明确建立的关系；不会自动结束项目或生成金额。", style = MaterialTheme.typography.bodyLarge)
                 if (state.loading) Text("正在读取替换链")
                 state.error?.let {
                     Text(it, Modifier.testTag("replacement-read-error"), color = MaterialTheme.colorScheme.error)
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp)) { Text("重新读取") }
                 }
-                OutlinedButton(onLink, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("replacement-link"),
+                Button(onLink, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("replacement-link"),
                     enabled = !state.loading && state.chain != null && state.form == null) { Text("明确建立替换关系") }
             }
         }
@@ -63,15 +67,24 @@ internal fun ReplacementComparisonScreen(
         if (chain != null) {
             item { Text("结果截至 ${chain.asOf}；各项使用同一观察日。", Modifier.padding(horizontal = LithicSpacing.medium)) }
             items(chain.items, key = { it.project.id }) { detail ->
-                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
-                    .testTag("replacement-item-${detail.project.id}"), verticalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
-                    Text(if (detail.project.id == state.anchorId) "当前查看" else if (chain.items.indexOf(detail) < chain.items.indexOfFirst { it.project.id == state.anchorId }) "前任" else "后任",
-                        style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text(detail.project.name, style = MaterialTheme.typography.titleLarge)
-                    Text(projectStatusLabel(detail), style = MaterialTheme.typography.bodyLarge)
+                C2Section(
+                    if (detail.project.id == state.anchorId) "当前查看" else if (chain.items.indexOf(detail) < chain.items.indexOfFirst { it.project.id == state.anchorId }) "前任" else "后任",
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium).testTag("replacement-item-${detail.project.id}")) {
+                    androidx.compose.foundation.layout.Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        if (detail.project.coverAssetId == null) C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project)
+                        else androidx.compose.material3.Surface(Modifier.size(64.dp), shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
+                            androidx.compose.foundation.layout.Box(contentAlignment = androidx.compose.ui.Alignment.Center) { C2Icon(C2Glyph.ImageError, description = "封面暂不可用") }
+                        }
+                        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text(detail.project.name, style = MaterialTheme.typography.titleLarge)
+                            Text(detail.category.name, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            C2StatusChip(projectStatusLabel(detail))
+                        }
+                    }
+                    if (detail.project.coverAssetId != null) Text("封面暂不可用", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Text(if (detail.cost.unavailableReason == null) "持有 ${detail.cost.heldDays} 天" else "尚未开始，持有时长不可计算")
                     Text(if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal) "已结束；结果截至今天" else "当前日均成本")
-                    AmountText(detail.cost.dailyRate, Modifier.testTag("replacement-daily-${detail.project.id}"))
+                    AmountText(detail.cost.dailyRate, Modifier.testTag("replacement-daily-${detail.project.id}"), style = MaterialTheme.typography.headlineMedium)
                     if (detail.events.any { it.exchangeGroupId != null }) Text("成本包含已记录的非现金折抵。")
                     TextButton({ onOpenProject(detail.project.id) }, Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("replacement-open-${detail.project.id}")) { Text("查看此项目详情") }

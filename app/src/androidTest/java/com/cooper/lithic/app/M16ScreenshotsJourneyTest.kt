@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.unit.Density
@@ -174,14 +175,14 @@ class M16ScreenshotsJourneyTest {
         compose.onNodeWithTag("trade-in-name").performTextReplacement("合成新手机")
         compose.onNodeWithTag("trade-in-cash").performScrollTo().performTextReplacement("5000")
         compose.onNodeWithTag("trade-in-credit").performScrollTo().performTextReplacement("3000")
-        compose.onNodeWithTag("trade-in-preview").performScrollTo(); click("trade-in-preview")
+        compose.onNodeWithTag("trade-in-preview").assertIsDisplayed(); click("trade-in-preview")
         compose.onNodeWithTag("trade-in-confirm-acquisition").performScrollTo().assertIsDisplayed()
         capture("03-trade-in-confirmation")
         compose.runOnIdle { fontScale.value = 2f }
-        compose.onNodeWithTag("trade-in-save").performScrollTo().assertIsDisplayed().assertIsEnabled()
+        compose.onNodeWithTag("trade-in-save").assertIsDisplayed().assertIsEnabled()
         capture("04-trade-in-confirmation-360dp-font200")
         compose.runOnIdle { fontScale.value = 1f }
-        compose.onNodeWithTag("trade-in-save").performScrollTo(); click("trade-in-save")
+        compose.onNodeWithTag("trade-in-save").assertIsDisplayed(); click("trade-in-save")
         waitNode("project-detail-name")
         compose.waitUntil(15_000) { compose.onNodeWithTag("project-detail-name").fetchSemanticsNode().config[androidx.compose.ui.semantics.SemanticsProperties.Text].any { it.text == "合成新手机" } }
         val new = generation.database.projectDao().listProjects().single { it.name == "合成新手机" }

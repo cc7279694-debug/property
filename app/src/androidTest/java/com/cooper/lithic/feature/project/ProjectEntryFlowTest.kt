@@ -150,7 +150,7 @@ class ProjectEntryFlowTest {
         detailAction("project-add-outlay")
         waitForMoneyEditor()
         fillMoney("200", "2026-01-05", "真实历史投入")
-        compose.onNodeWithTag("money-save").performScrollTo().performTouchInput { doubleClick() }
+        compose.onNodeWithTag("money-save").assertIsDisplayed().performTouchInput { doubleClick() }
         waitForDetail()
         val persisted = repository.loadProjectDetail(id)!!
         assertEquals(2, persisted.events.size)
@@ -188,7 +188,7 @@ class ProjectEntryFlowTest {
         detailAction("project-add-outlay")
         waitForMoneyEditor()
         fillMoney("200", "2026-01-05", "补录真实投入")
-        compose.onNodeWithTag("money-save").performScrollTo().performClick()
+        compose.onNodeWithTag("money-save").assertIsDisplayed().performClick()
         waitForDetail()
         compose.onNodeWithTag("project-detail-daily").assert(hasText("¥120.00"))
         detailAction("project-detail-back")
@@ -203,7 +203,7 @@ class ProjectEntryFlowTest {
         detailAction("project-add-recovery")
         waitForMoneyEditor()
         fillMoney("1400", "2026-01-08", "真实收回")
-        compose.onNodeWithTag("money-save").performScrollTo().performClick()
+        compose.onNodeWithTag("money-save").assertIsDisplayed().performClick()
         waitForDetail()
         compose.onNodeWithTag("project-detail-daily").assert(hasText("−¥20.00"))
         assertEquals(100000L, repository.loadProjectDetail(id, LocalDate.of(2026, 1, 4))!!.cost.netCents)

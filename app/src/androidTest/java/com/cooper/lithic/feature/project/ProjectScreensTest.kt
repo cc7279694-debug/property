@@ -208,7 +208,7 @@ class ProjectScreensTest {
         compose.onNodeWithTag("money-occurred-on-input").performScrollTo().assertTextContains("2026-01-20")
             .assert(SemanticsMatcher.expectValue(SemanticsProperties.Error, "不能记录未来付款"))
         compose.onNodeWithTag("money-description").performScrollTo().assertTextContains("真实维修款")
-        compose.onNodeWithTag("money-form-error").performScrollTo().assertTextContains("本地保存失败，输入已保留")
+        compose.onNodeWithTag("money-form-error").assertIsDisplayed().assertTextContains("本地保存失败，输入已保留")
     }
 
     @Test fun project_list_opens_stable_identity_and_exposes_database_page_continuation() {

@@ -15,6 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.UiFeedbackText
+import com.cooper.lithic.core.design.C2Icon
+import com.cooper.lithic.core.design.C2Glyph
+import com.cooper.lithic.core.design.C2Section
 import com.cooper.lithic.core.design.LithicSpacing
 
 @Composable
@@ -30,13 +33,17 @@ internal fun DeleteProjectDialog(
     val needsRead = state.needsInitialRead || state.conflict || state.phase == SubmissionPhase.COMMITTED
     AlertDialog(onDismissRequest = { if (canCancel) onCancel() },
         modifier = modifier.testTag("project-delete-dialog"),
+        shape = MaterialTheme.shapes.large,
+        icon = { C2Icon(C2Glyph.Info) },
         title = { Text("永久删除项目？", style = MaterialTheme.typography.titleLarge) },
         text = {
             Column(Modifier.verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
-                Text(state.projectName, style = MaterialTheme.typography.bodyLarge)
-                Text("将删除项目及金额记录，历史统计也会重算；无法在App内撤回。",
-                    style = MaterialTheme.typography.bodyLarge)
+                C2Section("确认永久移除") {
+                    Text(state.projectName, style = MaterialTheme.typography.titleLarge)
+                    Text("将删除项目及金额记录，历史统计也会重算；无法在App内撤回。",
+                        style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.error)
+                }
                 if (state.loading) Text("正在核对项目与金额记录", style = MaterialTheme.typography.bodyLarge)
                 if (state.busy) Text("正在删除本地记录", style = MaterialTheme.typography.bodyLarge)
                 state.message?.let {

@@ -82,7 +82,7 @@ class ProjectLifecycleScreensTest {
         compose.onNodeWithTag("end-recovery-on-input").performScrollTo().assertTextContains("2026-01-20")
             .assert(SemanticsMatcher.expectValue(SemanticsProperties.Error, "不能记录未来收回"))
         compose.onNodeWithTag("end-recovery-description").performScrollTo().assertTextContains("真实收回说明")
-        compose.onNodeWithTag("end-form-error").performScrollTo().assertTextContains("请核对输入，记录尚未保存")
+        compose.onNodeWithTag("end-form-error").assertIsDisplayed().assertTextContains("请核对输入，记录尚未保存")
     }
 
     @Test fun correcting_end_without_settlement_never_offers_creating_recovery() {
@@ -112,13 +112,13 @@ class ProjectLifecycleScreensTest {
         var state by mutableStateOf(end().copy(phase = SubmissionPhase.IN_FLIGHT))
         compose.setContent { LithicTheme { EndHost(state, onSave = { saves.incrementAndGet() }, onRetry = { reads.incrementAndGet() }) } }
         compose.onNodeWithTag("end-ended-on-input").assertIsNotEnabled()
-        compose.onNodeWithTag("end-save").performScrollTo().assertIsNotEnabled()
+        compose.onNodeWithTag("end-save").assertIsDisplayed().assertIsNotEnabled()
         compose.runOnIdle { state = state.copy(phase = SubmissionPhase.UNCONFIRMED, message = "核对原结束提交") }
-        compose.onNodeWithTag("end-save").performScrollTo().assertTextContains("核对并重试").performClick()
+        compose.onNodeWithTag("end-save").assertIsDisplayed().assertTextContains("核对并重试").performClick()
         assertEquals(1, saves.get())
         compose.runOnIdle { state = state.copy(phase = SubmissionPhase.COMMITTED, message = "已保存，暂时无法读取") }
         compose.onNodeWithTag("end-save").assertDoesNotExist()
-        compose.onNodeWithTag("end-retry-read").performScrollTo().performClick()
+        compose.onNodeWithTag("end-retry-read").assertIsDisplayed().performClick()
         assertEquals(1, saves.get())
         assertEquals(1, reads.get())
     }
@@ -145,11 +145,11 @@ class ProjectLifecycleScreensTest {
         var state by mutableStateOf(correction().copy(needsInitialRead = true, amount = "1.234",
             message = "原记录暂时无法读取，输入已保留"))
         compose.setContent { LithicTheme { CorrectionHost(state, onSave = { saves.incrementAndGet() }, onRetry = { reads.incrementAndGet() }) } }
-        compose.onNodeWithTag("correction-save").performScrollTo().assertIsNotEnabled()
-        compose.onNodeWithTag("correction-initial-read-retry").performScrollTo().performClick()
+        compose.onNodeWithTag("correction-save").assertIsDisplayed().assertIsNotEnabled()
+        compose.onNodeWithTag("correction-initial-read-retry").assertIsDisplayed().performClick()
         compose.runOnIdle { state = state.copy(needsInitialRead = false, conflict = true, phase = SubmissionPhase.UNCONFIRMED) }
         compose.onNodeWithTag("correction-save").assertDoesNotExist()
-        compose.onNodeWithTag("correction-resolve-conflict").performScrollTo().performClick()
+        compose.onNodeWithTag("correction-resolve-conflict").assertIsDisplayed().performClick()
         assertEquals(0, saves.get())
         assertEquals(2, reads.get())
     }
@@ -288,11 +288,11 @@ class ProjectLifecycleScreensTest {
         } }
         compose.onNodeWithTag("end-ended-on-input").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("end-recovery-description").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithTag("end-save").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()
+        compose.onNodeWithTag("end-save").assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()
         compose.runOnIdle { showEnd = false }
         compose.onNodeWithTag("correction-amount").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("correction-description").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithTag("correction-save").performScrollTo().assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()
+        compose.onNodeWithTag("correction-save").assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()
         assertEquals(2, saves.get())
     }
 
