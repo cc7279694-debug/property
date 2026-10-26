@@ -5,6 +5,9 @@
 ## Current Stage
 
 
+- **UI-C2 C0 — UI-C2 C0 READY_FOR_USER_TRIAL**：从`fef1f8e`继承完整UI-C2生产Compose，B1～B4及B-HOME获用户转交的独立桌面PASS WITH NOTES；真实Android视觉和最终认可仍PENDING。仅PrivateTrial两行升`com.cooper.lithic.preview.debug` / code19 / `0.1.0-preview.3-debug`，原Debug证书连续，正常LithicApplication/MainActivity、数量卡/FAB及全业务页面已做源码＋DEX静态接线核对；不是HTML壳。106唯一JVM PASS、Debug/AndroidTest源码编译/Lint exit0（0E17W）、体验构建/Lint exit0（0E11W）；实际Android/安装/升级/视觉均NOT_RUN。唯一14,079,087字节APK已在非build独占deliveries目录，原Preview2与M22实物未变；完整路径/SHA见[C0报告](evidence/UI-C2-C0-Private-Trial-Delivery.md)。APP_VISUAL_PENDING / MEDIA_DISPLAY_PENDING，未安装、操作设备/数据或进入M23。普通Debug/Release/M22身份、Room5/backup4及全部业务/Owner/恢复/导航/提醒协议不变；M10/M20/M22/M13/G1～G4历史状态保留。等待用户自行集中体验和独立审查，不把私人Debug候选当正式V1.0。
+
+
 - **UI-C2 B-HOME — UI-C2 HOME CLOSURE / READY FOR VISUAL REVIEW**：来源`b5a7e31`，用户转交B1～B4桌面实施PASS WITH NOTES，Android整体仍APP_VISUAL_PENDING。仅HomeShell恢复同一Overview总数量小卡（含历史；未知—/旧结果警示）、右下56dp圆形新增、简洁记录行与按需成本构成；真正空库单CTA。原图浅深已实际打开，原UI-C1→A-R2→B-HOME浅深对比及空态/浏览器×2图已查看，全部PROTOTYPE_ONLY。为避免悬浮＋遮挡，最终保留72dp独立操作带＋正文16dp，原回调/守卫/金额精度不变。56唯一首页相关JVM PASS、7新增Compose仅编译/运行NOT_RUN，Debug/AndroidTest/Lint exit0、0错误17警告；首次编译错误及中间记录保留。见[本轮增量](evidence/UI-C2-B-Integration.md#b-home首页原设计收口2026-10-26)。B1～B4其余生产代码、Room5/backup4、媒体/Owner/恢复/数据/导航/包名/签名与preview18保持；无设备或新用户APK。MEDIA_DISPLAY_PENDING，所有M10/M20/M22/M13/G1～G4历史状态保持；等待集中视觉审查，不自动C或M23。
 
 
@@ -143,6 +146,6 @@ M21限定冻结实现当前为Room5十表（新增typed milestone_watermarks）�
 
 ## Next Recommended Task
 
-B1～B4桌面实施已获用户转交的独立PASS WITH NOTES；B-HOME首页候选已完成，等待集中视觉审查，Android整体仍APP_VISUAL_PENDING。下一C段须另行明确授权后核对生产MainActivity真实视觉与关键交互；本轮不自动操作设备、不生成新用户APK。新版体验包需要同preview包名/原证书且code>18，不能把旧code18当新UI交付。真实媒体仍MEDIA_DISPLAY_PENDING，需独立只读resolver与安全专项授权；不合并旧M10实现。此前P04交付及[体验清单](evidence/LITHIC-V1-User-Trial-Checklist.md)作为历史保留。
+C0新版私人体验APK已实际交付本地（同preview ID/原证书、code19），用户自行安排集中体验；当前说明与清单见[C0报告](evidence/UI-C2-C0-Private-Trial-Delivery.md)。Codex没有设备/安装授权，不自动执行后续Android视觉、升级或其他C段。APP_VISUAL_PENDING、MEDIA_DISPLAY_PENDING；真实媒体需独立只读resolver与安全专项授权，不合并旧M10实现。P04/code18旧交付及[原体验清单](evidence/LITHIC-V1-User-Trial-Checklist.md)保留为历史，不能把它当code19或已通过的手机流程。
 
 P01～P03仍IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；M10三JPEG FAIL、M20平台FAIL/UNKNOWN、M22 BLOCKED及T06/T03/IME、M13-T06和G1/G2/G3/G4均未关闭。若后续明确授权M23，按原计划核对正式签名保管/真实升级、schema与备份兼容、恢复与相关故障/设备可靠性；不能把本次Debug签名候选当成正式发行准入。问题反馈优先小范围修正并保护真实数据，不自动重启旧验收循环、合并main或进入M23。

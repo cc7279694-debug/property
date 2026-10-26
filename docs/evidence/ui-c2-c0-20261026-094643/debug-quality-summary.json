@@ -1,0 +1,36 @@
+{
+  "uniqueJvmPass": 106,
+  "androidTestSourceCompilationExit": 0,
+  "actualAndroidMethodsRun": 0,
+  "actualInstallationOrVisual": "NOT_RUN",
+  "lint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 17
+  },
+  "defaultDebugAndReleaseIdentityUnchanged": true,
+  "profile": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  }
+}

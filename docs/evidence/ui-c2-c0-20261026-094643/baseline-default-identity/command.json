@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "-I",
+    "build/private-trial-delivery/identity.init.gradle",
+    ":app:lithicIdentityAudit"
+  ],
+  "startedUtc": "2026-10-26T09:46:45.001574+00:00",
+  "timeoutSeconds": 240,
+  "exitCode": 0,
+  "endedUtc": "2026-10-26T09:46:59.695184+00:00",
+  "seconds": 14.703,
+  "stdoutBytes": 781,
+  "stdoutSha256": "1ab5ac1b9a95d8a2acf7bbef5127ee246b2789afb509baa05330600ad40a477b",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

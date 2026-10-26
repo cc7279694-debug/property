@@ -1,0 +1,8 @@
+{
+  "initialAudit": "AssertionError at combined label/minSdk/targetSdk assertion",
+  "cause": "Reused P04 AAPT expectation sdkVersion; this task AAPT2 emits minSdkVersion",
+  "actualPackageVersionLabelSignature": "Matched locked values in existing raw SDK records",
+  "correction": "Use exact minSdkVersion:26 field and independently verify merged uses-sdk; read existing exit0 SDK stdout with length/SHA validation",
+  "apkChangedOrRebuilt": false,
+  "notAProductOrBuildFailure": true
+}

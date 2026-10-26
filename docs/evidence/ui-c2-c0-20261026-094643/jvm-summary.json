@@ -1,0 +1,431 @@
+{
+  "uniquePass": 106,
+  "methods": [
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "embedded_review_events_keep_review_return_context"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "invalid_preview_identity_still_returns_home"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "home_cost_explanation_keeps_home_as_its_return_path"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "home_preview_detail_and_money_form_keep_home_return_context"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "bottom_navigation_only_appears_at_the_three_main_destinations"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "malformed_search_or_cross_identity_stacks_still_fail_closed"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "selected_subscription_category_retains_its_kind_and_identity"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "malformed_category_parent_does_not_gain_a_valid_record_stack"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "adapter_does_not_capture_explicit_primary_switch_or_different_analysis_context"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "project_delete_returns_to_the_existing_browse_source_only"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "custom_category_parent_rejects_the_wrong_record_type_but_keeps_old_neutral_parent"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "adapter_does_not_rewrite_an_already_contextual_or_invalid_target"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "search_project_details_and_editors_keep_the_search_parent"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "adapter_keeps_a_selected_category_without_changing_record_identity"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "adapter_keeps_search_for_known_current_and_history_record_targets"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "selected_category_survives_a_matching_detail_and_editor_return"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "search_subscription_details_and_followup_forms_keep_the_search_parent"
+    },
+    {
+      "class": "com.cooper.lithic.app.P03SettingsNavigationTest",
+      "method": "settings_links_do_not_change_pending_or_unsaved_leave_decisions"
+    },
+    {
+      "class": "com.cooper.lithic.app.P03SettingsNavigationTest",
+      "method": "information_pages_do_not_accept_review_or_search_as_fake_parent"
+    },
+    {
+      "class": "com.cooper.lithic.app.P03SettingsNavigationTest",
+      "method": "switching_still_blocks_navigation_from_information_links"
+    },
+    {
+      "class": "com.cooper.lithic.app.P03SettingsNavigationTest",
+      "method": "both_information_pages_return_to_settings"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "large_aggregate_is_exact_and_never_uses_scientific_notation"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "exact_one_cent_and_larger_daily_rates_use_normal_rounding"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "real_zero_has_two_decimal_places"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "ordinary_amount_rounds_half_up_with_both_signs"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "missing_amount_is_not_a_zero_amount"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "every_nonzero_daily_rate_below_one_cent_remains_explicitly_nonzero"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "high_precision_value_is_only_formatted_without_changing_numeric_input"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "ordinary_half_cent_is_rounded_and_not_a_daily_rate_boundary"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "method": "custom_categories_are_not_guessed_from_a_product_name"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "method": "known_categories_have_distinct_non_brand_symbols"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "method": "identity_initial_preserves_a_complete_unicode_code_point"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "method": "blank_identity_keeps_an_explicit_icon_fallback"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.R1AmountLayoutTest",
+      "method": "insufficient_width_uses_readable_floor_and_whole_amount_scroll"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.R1AmountLayoutTest",
+      "method": "smaller_requested_text_is_never_enlarged_or_reduced_below_itself"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.R1AmountLayoutTest",
+      "method": "sufficient_width_preserves_the_preferred_visual_size"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.R1AmountLayoutTest",
+      "method": "long_negative_amount_selects_a_fitting_whole_line_before_scroll"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.R1AmountLayoutTest",
+      "method": "font_scale_two_is_in_the_measurement_and_not_removed_by_the_policy"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.R1AmountLayoutTest",
+      "method": "actual_measurements_are_used_instead_of_amount_character_count"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "retained_rows_are_explicit_when_reading_failed"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "old_date_rows_cannot_be_presented_as_current"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "loading_without_facts_does_not_claim_no_records"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "failed_empty_preview_is_an_error_and_never_an_empty_ledger"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "known_zero_rows_and_known_rows_are_distinct"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "known_empty_ledger_has_its_own_state"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "negative_cost_is_preserved_without_changing_state_or_value"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "subscription_only_ledger_is_current_without_a_project"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "existing_history_with_no_current_contribution_is_not_empty"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "unavailable_cost_snapshot_never_invents_a_value"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "active_zero_cost_is_still_current"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.R1HomeEmptyStateTest",
+      "method": "only_verified_empty_snapshot_uses_the_single_onboarding_section"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.R1HomeEmptyStateTest",
+      "method": "historical_records_without_current_contribution_do_not_turn_into_empty_state"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.R1HomeEmptyStateTest",
+      "method": "active_zero_and_negative_records_preserve_their_numeric_values"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "trade_in_group_keeps_original_delete_protection"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "active_menu_retains_every_existing_management_action"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "missing_optional_routes_do_not_create_dead_menu_actions"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "future_end_does_not_mislabel_an_effective_current_result_as_final"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "ended_menu_preserves_end_correction_without_authorizing_a_new_trade_in"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "same_day_payment_and_empty_optional_note_start_as_summaries"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "edit_does_not_acquire_a_creation_payment_field_or_amount_error_target"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "existing_note_and_edit_fields_are_visible_before_any_disclosure_click"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "explicit_disclosure_only_changes_visibility_and_does_not_rewrite_input"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "distinct_or_empty_payment_date_cannot_be_hidden_behind_same_day_summary"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "start_date_error_is_directly_editable_and_first_error_follows_visual_order"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "hidden_field_errors_force_disclosure_even_after_user_collapsed_it"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2R1ProjectEventLabelsTest",
+      "method": "long_timelines_keep_a_quick_history_route_only_when_the_real_callback_exists"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2R1ProjectEventLabelsTest",
+      "method": "initial_and_end_settlement_are_not_flattened_into_regular_events"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2R1ProjectEventLabelsTest",
+      "method": "regular_outlay_and_recovery_stay_explicit"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2R1ProjectEventLabelsTest",
+      "method": "trade_in_credit_is_never_labeled_as_a_cash_receipt"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "method": "offsetting_contributions_stay_distinct_from_a_zero_cost_record"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "method": "actual_zero_with_an_active_record_is_not_empty_or_inactive"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "method": "negative_value_is_not_reclassified_or_changed_by_presentation"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "method": "records_not_yet_effective_and_historical_records_without_current_contribution_are_distinct"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "one_selection_blocks_repeated_clicks_until_cancelled"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "explicit_cancelled_result_preserves_service_cleanup_outcome"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "uncertified_registered_media_blocks_complete_export_with_preserved_source_feedback"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "success_is_only_shown_after_complete_export_result"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "rejected_picker_uri_reports_possible_residual_without_starting_export"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "unexpected_exception_deletes_only_selected_target_and_reports_failure"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "incomplete_target_failure_is_not_success_and_reports_residual"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "coroutine_cancellation_closes_selected_target_without_success"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "interrupted_delivery_does_not_delete_unproven_target"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "duplicate_callback_after_verified_success_does_not_delete_completed_backup"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "process_recreation_never_restarts_export_on_late_picker_delivery"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "launch_failure_releases_chooser_state_and_remains_retryable"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "corrupt_source_has_explicit_failure_without_claiming_partial_backup"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "verified_target_remains_success_when_owned_temporary_files_cannot_be_cleaned"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "method": "active_export_blocks_second_chooser_and_duplicate_result"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "failed_confirmation_distinguishes_preserved_current_data_from_unknown_outcome"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "duplicate_picker_callback_and_double_confirmation_cannot_start_a_second_restore"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "selecting_and_validating_a_backup_only_opens_preview_until_explicit_confirmation"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "launch_failure_is_retryable_without_preparing_any_backup"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "cancelling_selection_and_preview_never_applies_or_reuses_the_prepared_backup"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "unexpected_confirmation_failure_does_not_promise_old_data_preservation_or_expose_paths"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "validation_failure_keeps_current_data_and_requires_a_new_selection"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "confirm_without_a_live_validated_preview_never_reaches_storage"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "recreated_process_rejects_late_picker_result_and_never_restores_automatically"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "method": "cancellation_during_validation_returns_to_safe_manual_selection_without_a_preview"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "method": "private_trial_is_only_identified_by_exact_own_profile_and_debug_flag"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "method": "version_label_uses_actual_supplied_version_and_long_code"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "method": "home_explanation_does_not_promise_daily_cash_or_all_living_expenses"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "method": "subscription_copy_distinguishes_paid_normalized_time_and_effective_coverage"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "method": "debug_release_and_unknown_builds_cannot_claim_formal_acceptance"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "method": "safety_copy_has_manual_unencrypted_backup_and_no_delivery_guarantee"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "method": "unavailable_or_incomplete_version_does_not_invent_code17"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "method": "project_explanation_preserves_true_cash_and_inclusive_frozen_days"
+    }
+  ],
+  "newMethods": 0,
+  "scope": "UI state/navigation/formatting/backup-controller related only; no M22 device suite"
+}
