@@ -1,5 +1,10 @@
 # 砺石 V1 产品完善
 
+## UI-C2 A段视觉整合（2026-10-26）
+
+用户对P04视觉/交互不满意，现授权在本产品分支选择性继承UI-C1，集中实现四页生产Compose样板后等待一次视觉反馈。工程通过不等于视觉确认；P01～P04历史原结果保留。契约与停止点见[规格](../design/UI_C2_SPEC.md)、[A段计划](UI_C2_IMPLEMENTATION_PLAN.md)、[样板报告](../evidence/UI-C2-Sample-Review.md)。A段不交付新版体验APK、不操作设备、不全面铺开其余页面。HTML样板仅PROTOTYPE_ONLY，实际App视觉PENDING；当前基线封面读取接口缺口明确保留。后续仅在视觉确认后扩展，并最终核对当前生产MainActivity实际使用新组件及新preview APK呈现，同ID/同原证书/code高于18。
+
+
 来源：用户2026-10-25的P01正式任务；基线`b9e77b3ff364be4bdade79803d0aca2f607c7bd5`，独立分支`codex/lithic-v1-product-completion`。原M22分支及证据保留，不将开发推进改写成历史验收通过。
 
 ## 当前策略与固定边界

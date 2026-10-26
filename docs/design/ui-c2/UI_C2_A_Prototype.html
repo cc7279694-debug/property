@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="砺石 UI-C2 A段四页离线设计原型。合成设计数据，不是Compose渲染或设备截图。">
+<title>砺石 UI-C2 · A段四页设计样板</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eeede7;color:#17221d;font:16px/1.5 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.55}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #719480;outline-offset:3px}button svg{pointer-events:none}.symbols{position:absolute;width:0;height:0;overflow:hidden}.ico{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.document-head{max-width:1560px;margin:auto;padding:40px 24px 24px}.document-head .eyebrow{font-size:13px;letter-spacing:.09em;color:#596a61;font-weight:600}.document-head h1{font-size:30px;font-weight:550;letter-spacing:-.03em;margin:10px 0 8px}.document-head p{max-width:850px;margin:0;color:#596a61;font-size:14px}.status{display:inline-block;border:1px solid #b8c5bb;background:#f5f7f1;border-radius:6px;padding:5px 8px;font-size:12px;letter-spacing:.02em;margin-top:16px}
+.toolbar{position:sticky;top:0;z-index:20;border-top:1px solid #d5dbd2;border-bottom:1px solid #d5dbd2;background:#eeede7}.toolbar-inner{max-width:1560px;padding:12px 24px;margin:auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}.segmented{display:inline-flex;border:1px solid #b8c5bb;padding:3px;border-radius:24px;gap:2px}.segmented button{border:0;border-radius:20px;background:transparent;min-height:40px;padding:0 16px;color:#365f4a;font-size:14px}.segmented button[aria-pressed=true]{background:#365f4a;color:white}.jump{display:flex;align-items:center;gap:8px;font-size:14px;color:#596a61}.jump select{border:1px solid #b8c5bb;border-radius:8px;background:#f6f5f1;min-height:40px;padding:0 10px;color:#17221d}.toolbar-hint{margin-left:auto;color:#596a61;font-size:13px}
+main{max-width:1560px;margin:auto;padding:24px}.section-label{font-size:18px;font-weight:550;margin:8px 0 20px;display:flex;align-items:center;gap:12px}.section-label:after{content:"";height:1px;flex:1;background:#d5dbd2}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:32px 24px;margin-bottom:44px}.panel{min-width:0;max-width:360px;scroll-margin-top:90px}.panel-head{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}.panel-head strong{font-size:16px;font-weight:550}.panel-head span{margin-left:auto;font-size:12px;color:#596a61}.panel-caption{margin-top:12px;font-size:12px;line-height:1.7;color:#596a61}.panel-caption b{font-weight:550;color:#365f4a}
+.device{--bg:#f6f5f1;--surface:#fff;--ink:#17221d;--secondary:#596a61;--primary:#365f4a;--on-primary:#fff;--accent:#e6efe7;--line:#dfe4de;--outline:#647c6d;--error:#9a3d34;--scale:1;width:360px;max-width:100%;height:800px;border-radius:16px;outline:1px solid #ccd3c8;overflow:hidden;position:relative;background:var(--bg);color:var(--ink);box-shadow:0 8px 24px #1a2d2010;isolation:isolate}
+.device[data-theme=dark]{--bg:#111815;--surface:#1b2520;--ink:#f1f3ed;--secondary:#b4bfb7;--primary:#9ebcaa;--on-primary:#17221d;--accent:#2d4135;--line:#32433a;--outline:#667d70;--error:#f2b6ac;outline-color:#32433a}
+.device.large-type{--scale:2}.app{height:100%;display:flex;flex-direction:column;font-size:calc(16px * var(--scale));line-height:1.5}.viewport{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--line) transparent}.screen-body{padding:16px}.flow{display:flex;flex-direction:column;gap:24px}.block{display:flex;flex-direction:column;gap:8px}.block-tight{display:flex;flex-direction:column;gap:4px}.summary{padding:20px;background:var(--surface);border-radius:20px;display:flex;flex-direction:column;gap:12px}.summary.compact{padding:16px}.row{display:flex;align-items:center;gap:12px}.row>.grow{flex:1;min-width:0}.between{justify-content:space-between}.wrap{flex-wrap:wrap}.app h1,.app h2,.app h3,.app p{margin:0}.app h1{font-size:calc(24px * var(--scale));line-height:1.333;font-weight:550}.app h2{font-size:calc(18px * var(--scale));line-height:1.45;font-weight:550}.app h3{font-size:calc(16px * var(--scale));line-height:1.5;font-weight:550}.muted,.small{font-size:calc(14px * var(--scale));line-height:1.45;color:var(--secondary)}.medium{font-size:calc(18px * var(--scale));line-height:1.45;font-weight:500}.money{font-size:calc(38px * var(--scale));line-height:1.21;font-weight:550;letter-spacing:-.025em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;word-break:break-all}.money.small-money{font-size:calc(18px * var(--scale));line-height:1.45;letter-spacing:0}.money .unit{display:block;font-size:calc(14px * var(--scale));line-height:1.45;font-weight:400;letter-spacing:0;color:var(--secondary);margin-top:4px}.divider{height:1px;background:var(--line);border:0;margin:0;flex:none}.icon-button{display:flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;border:0;background:transparent;color:var(--primary);border-radius:24px;padding:12px}.text-button{min-height:48px;border:0;background:transparent;color:var(--primary);padding:8px;font-size:calc(16px * var(--scale));display:inline-flex;align-items:center;justify-content:center;gap:4px;text-align:left}.text-button.full{width:100%;justify-content:space-between}.primary,.outlined{width:100%;min-height:48px;padding:12px 20px;border-radius:24px;border:0;font-size:calc(16px * var(--scale));line-height:1.5;display:flex;align-items:center;justify-content:center;gap:8px}.primary{background:var(--primary);color:var(--on-primary)}.outlined{background:transparent;border:1px solid var(--outline);color:var(--primary)}.app-header{display:flex;align-items:center;gap:8px;padding:0 8px;min-height:48px;flex:none}.app-header .text-button{justify-content:flex-start}.app-header h1{padding:8px 0}.app-header .text-button:first-child{gap:8px}.app-header .grow{flex:1;min-width:0}.dock{flex:none;padding:8px 16px;background:var(--bg)}.detail-dock{padding:16px}.app-nav{height:80px;flex:none;background:var(--surface);display:flex;align-items:stretch;border-top:1px solid var(--line)}.app-nav button{flex:1;min-width:0;border:0;background:transparent;color:var(--secondary);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;padding:8px 0;font-size:calc(14px * var(--scale));line-height:1.4}.nav-symbol{min-width:64px;height:32px;border-radius:18px;display:flex;align-items:center;justify-content:center}.app-nav button[aria-current=page]{color:var(--primary)}.app-nav button[aria-current=page] .nav-symbol{background:var(--accent)}.subtotals{display:grid;grid-template-columns:1fr 1fr;gap:16px}.preview-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.entry{display:flex;align-items:flex-start;gap:12px;padding:12px 0;background:transparent;color:var(--ink);border:0;border-bottom:1px solid var(--line);text-align:left;width:100%;font-size:calc(16px * var(--scale));line-height:1.5}.entry-identity{width:64px;height:64px;flex:none;border-radius:12px;background:var(--accent);color:var(--primary);display:grid;place-items:center}.entry .block-tight{flex:1;min-width:0}.entry-title{font-weight:550}.label-row{min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px}.record-count{margin-top:-4px}.identity{display:flex;align-items:center;gap:12px}.identity .entry-identity{width:48px;height:48px}.identity-title{font-size:calc(22px * var(--scale));line-height:1.36;font-weight:550}.detail-metrics{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}.held{font-size:calc(22px * var(--scale));line-height:1.36;font-weight:550}.secondary-totals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.record{display:flex;gap:12px;padding-bottom:8px}.record-dot{height:6px;width:6px;flex:none;border-radius:100%;margin-top:9px;background:var(--primary)}.record-content{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}.record-content .text-button{align-self:flex-start}.event-value{font-size:calc(18px * var(--scale));line-height:1.45;font-weight:550}.event-value .unit{font-size:calc(14px * var(--scale));display:block;color:var(--secondary);font-weight:400}
+.field{display:block;position:relative;border:1px solid var(--outline);border-radius:12px;min-height:60px;padding:18px 14px 12px}.field>span{position:absolute;top:-11px;left:10px;padding:0 4px;background:var(--bg);font-size:calc(14px * var(--scale));line-height:1.4;color:var(--secondary)}.field input,.field textarea{color:var(--ink);display:block;border:0;background:transparent;outline:none;width:100%;min-width:0;padding:0;font-size:calc(16px * var(--scale));line-height:1.5}.field textarea{resize:vertical;min-height:72px}.field:focus-within{border:2px solid var(--primary);padding:17px 13px 11px}.field input:focus-visible,.field textarea:focus-visible{outline:none}.edit-summary{width:100%;min-height:56px;border:0;background:transparent;display:flex;align-items:center;gap:8px;text-align:left;padding:8px;color:var(--primary)}.edit-summary .block-tight{flex:1;min-width:0}.edit-summary .value{font-size:calc(16px * var(--scale));line-height:1.5;color:var(--ink)}.category-summary{border:1px solid var(--outline);border-radius:24px}.field-group{display:flex;flex-direction:column;gap:4px}.field-group .outlined{margin-top:4px}.reveal[hidden]{display:none}.reveal{display:flex;flex-direction:column;gap:8px}.optional{display:flex;flex-direction:column;gap:8px}.large-type .subtotals,.large-type .detail-metrics,.large-type .secondary-totals{grid-template-columns:1fr}.large-type .field{padding-top:28px}.large-type .field>span{top:-21px}.large-type .app-header{align-items:flex-start}.large-type .app-header .text-button{font-size:32px;max-width:none;flex-shrink:0}.large-type .app-header h1{font-size:48px;min-width:0;overflow-wrap:anywhere}
+.chart{width:100%;height:auto;display:block;color:var(--primary);overflow:visible}.chart .gridline{stroke:var(--line);stroke-width:1}.chart text{fill:var(--secondary);font-family:inherit;font-size:12px;stroke:none}.chart .total-line{stroke:var(--primary);stroke-width:2.6;fill:none;stroke-linejoin:round}.chart .project-line{stroke:var(--secondary);stroke-width:1.8;stroke-dasharray:7 5;fill:none}.chart .subscription-line{stroke:var(--primary);stroke-width:1.4;stroke-dasharray:2 4;fill:none}.chart .selection{stroke:var(--secondary);stroke-width:1;stroke-dasharray:3 4}.chart .selected-dot{fill:var(--primary);stroke:var(--bg);stroke-width:3}.legend{font-size:calc(14px * var(--scale));color:var(--primary)}.breakdown-lines{display:none}.show-breakdown .breakdown-lines{display:initial}.date-row{display:flex;gap:12px}.date-row>*{flex:1}.review-link{display:flex;align-items:center;gap:12px;min-height:64px;width:100%;border:0;background:transparent;text-align:left;color:var(--ink);padding:12px 0}.review-link>.block-tight{flex:1;min-width:0}.review-link>.ico:first-child{color:var(--primary)}.review-links{display:flex;flex-direction:column;gap:4px}.review-links .divider{margin:12px 0}
+.sheet[hidden],.popover[hidden],.notice[hidden],[hidden]{display:none!important}.sheet{position:absolute;inset:0;z-index:5;display:flex;align-items:flex-end}.scrim{position:absolute;inset:0;border:0;background:#0007;cursor:default}.sheet-card{position:relative;background:var(--surface);color:var(--ink);width:100%;border-radius:24px 24px 0 0;padding:12px 16px 24px;box-shadow:0 -4px 24px #0001;display:flex;flex-direction:column;gap:4px}.handle{width:32px;height:4px;border-radius:4px;background:var(--secondary);opacity:.45;margin:0 auto 12px}.sheet-option{display:flex;gap:16px;align-items:center;border:0;background:transparent;color:var(--ink);min-height:72px;text-align:left;padding:12px;width:100%}.sheet-option>.block-tight{flex:1}.sheet-option>.ico:first-child{color:var(--primary)}.sheet-option.money-option{min-height:56px;color:var(--primary);justify-content:space-between}.popover{position:absolute;top:46px;right:8px;z-index:6;width:268px;padding:8px;border-radius:12px;background:var(--surface);box-shadow:0 4px 20px #0003;border:1px solid var(--line)}.popover button{width:100%;min-height:48px;padding:8px 12px;border:0;text-align:left;background:transparent;color:var(--ink);font-size:16px}.popover .danger{color:var(--error);border-top:1px solid var(--line)}.notice{position:absolute;z-index:8;left:16px;right:16px;bottom:96px;padding:12px 16px;background:var(--ink);color:var(--bg);border-radius:12px;font-size:14px;line-height:1.5}.artifact-note{max-width:1000px;margin:16px 0 40px;padding-top:16px;border-top:1px solid #d5dbd2;font-size:14px;color:#596a61}.artifact-note strong{font-weight:550;color:#17221d}.extra-head{font-size:24px;font-weight:550;margin:56px 0 8px}.extra-lead{margin:0 0 24px;color:#596a61;font-size:14px}
+@media(max-width:600px){.document-head{padding:24px 16px 20px}.document-head h1{font-size:26px}.toolbar-inner{padding:10px 16px;gap:8px}.toolbar-hint{display:none}.jump label{display:none}main{padding:20px 12px}.gallery{justify-items:center}.panel{width:360px;max-width:100%}.section-label{width:100%}.segmented button{padding:0 12px}.panel-head{padding:0 2px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-project" viewBox="0 0 24 24"><path d="M4 7 12 3 20 7V18L12 22 4 18Z M4 7 12 11 20 7 M12 11V22"/></symbol>
+<symbol id="i-now" viewBox="0 0 24 24"><path d="M12 3A9 9 0 1 1 12 21A9 9 0 1 1 12 3 M12 7V12L15.5 14"/></symbol>
+<symbol id="i-review" viewBox="0 0 24 24"><path d="M5 4H19V21H5Z M8 2V6 M16 2V6 M8 10H16 M8 14H13"/></symbol>
+<symbol id="i-subscription" viewBox="0 0 24 24"><path d="M4 6H20V20H4Z M4 10H20 M8 3V7 M16 3V7 M8 14H12 M8 17H15"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="M5 4V20 M12 4V20 M19 4V20 M2.5 8H7.5 M9.5 15H14.5 M16.5 10H21.5"/></symbol>
+<symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5 M12 5 5 12 12 19"/></symbol>
+<symbol id="i-chevron" viewBox="0 0 24 24"><path d="M9 5 16 12 9 19"/></symbol>
+<symbol id="i-add" viewBox="0 0 24 24"><path d="M12 5V19 M5 12H19"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6 18 18 M18 6 6 18"/></symbol>
+<symbol id="i-more" viewBox="0 0 24 24"><path d="M5 11.5V12.5 M12 11.5V12.5 M19 11.5V12.5"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4 21 21"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10V17 M12 7V7.1"/></symbol>
+</defs></svg>
+<header class="document-head">
+<div class="eyebrow">砺石 LITHIC / UI-C2 / A段</div>
+<h1>四页视觉与交互样板</h1>
+<p>继承暖白、岩绿和深墨绿，重新排列金额、内容与主要操作。下方是可离线打开的HTML设计原型；所有记录、金额及曲线均为合成设计数据，不是Compose渲染，不是APK或真实设备截图。</p>
+<div class="status">PROTOTYPE_ONLY / APP_VISUAL_PENDING</div>
+</header>
+<div class="toolbar"><div class="toolbar-inner">
+<div class="segmented" aria-label="主题筛选">
+<button type="button" data-theme-filter="all" aria-pressed="true">浅色 + 深色</button>
+<button type="button" data-theme-filter="light" aria-pressed="false">浅色</button>
+<button type="button" data-theme-filter="dark" aria-pressed="false">深色</button>
+</div>
+<div class="jump"><label for="page-jump">跳至</label><select id="page-jump"><option value="">选择样板</option><option value="home">01 现在</option><option value="detail">02 长期项目详情</option><option value="editor">03 新增长期项目</option><option value="review">04 回看</option><option value="extras">补充状态</option></select></div>
+<span class="toolbar-hint">每框360 × 800 · 框内可滚动 · 可试新增、更多与展开</span>
+</div></div>
+<main>
+<section class="theme-section" data-gallery-theme="light"><h2 class="section-label">浅色 · 暖白与岩绿</h2><div class="gallery" id="light-gallery"></div></section>
+<section class="theme-section" data-gallery-theme="dark"><h2 class="section-label">深色 · 深墨绿</h2><div class="gallery" id="dark-gallery"></div></section>
+<section id="extras"><h2 class="extra-head">补充状态</h2><p class="extra-lead">无记录、长负金额和大字体分别查看。大字为浏览器排版模拟，不证明Android系统200%字体、IME或TalkBack通过。</p><div class="gallery" id="extra-gallery"></div></section>
+<div class="artifact-note"><strong>此样板的边界：</strong>生产Compose四页实现由当前产品分支承载，此文件仅辅助集中视觉确认。未执行设备测试、真实业务写入、SAF、图片读取或领域计算；没有封面读取能力的样板使用身份图标。面板关闭不写入任何数据，保存和深层入口只说明现有流程。没有账号、网络请求、浏览器存储或外部图片。主页面中的信息、金额单位、返回来源及低频操作仍以生产源码与原业务守卫为准。</div>
+</main>
+
+<template id="nav-template">
+<nav class="app-nav" aria-label="主入口">
+<button type="button" data-action="jump-home"><span class="nav-symbol"><svg class="ico"><use href="#i-now"/></svg></span><span>现在</span></button>
+<button type="button" data-action="jump-review"><span class="nav-symbol"><svg class="ico"><use href="#i-review"/></svg></span><span>回看</span></button>
+<button type="button" data-action="explain" data-message="设置沿用现有类别、提醒、计算说明、关于与完整备份恢复入口；本轮不全面重做设置页。"><span class="nav-symbol"><svg class="ico"><use href="#i-settings"/></svg></span><span>设置</span></button>
+</nav>
+</template>
+
+<template id="home-template">
+<div class="app">
+<div class="viewport"><div class="screen-body flow">
+<div class="row between"><h1 class="grow">现在</h1><button type="button" class="icon-button" data-action="explain" data-message="进入现有名称搜索；查询及返回来源规则保持。" aria-label="搜索项目与订阅名称"><svg class="ico"><use href="#i-search"/></svg></button><button type="button" class="icon-button" data-action="add-sheet" data-add-button aria-label="新增记录"><svg class="ico"><use href="#i-add"/></svg></button></div>
+<section class="summary">
+<div class="row"><h2 class="grow">当前日均成本</h2><button type="button" class="icon-button" data-action="explain" data-message="只统计已录入且当前有效的记录，非今天实际扣款，也不代表全部生活消费。详细说明复用设置里的计算说明。" aria-label="查看成本计算口径"><svg class="ico"><use href="#i-info"/></svg></button></div>
+<div class="money"><span data-slot="total">¥21.44</span><span class="unit">元/天</span></div>
+<p class="muted">非今日扣款</p><hr class="divider">
+<div class="subtotals">
+<div class="block-tight"><p class="muted">长期项目</p><div class="money small-money"><span data-slot="project-total">¥18.59</span><span class="unit">元/天</span></div></div>
+<div class="block-tight"><p class="muted">订阅服务</p><div class="money small-money"><span data-slot="subscription-total">¥2.85</span><span class="unit">元/天</span></div></div>
+</div>
+<p class="small">截至 2026-10-26 · 记录时区日期</p><p class="muted" data-empty hidden>还没有记录</p>
+</section>
+<div class="block" data-empty hidden><p>从一件长期拥有的物品，或一项订阅开始。</p><button type="button" class="primary" data-action="add-sheet">记下第一条记录</button></div>
+<section class="block">
+<div class="preview-head"><h2>长期项目</h2><button type="button" class="text-button" data-action="explain" data-message="进入原长期项目列表，沿用持有时间最长优先及稳定分页。">全部<svg class="ico"><use href="#i-chevron"/></svg></button></div>
+<p class="muted record-count" data-filled>已录入 18 条长期项目（含历史）</p>
+<p class="muted" data-empty hidden>还没有当前长期项目</p>
+<div data-filled>
+<button type="button" class="entry" data-action="explain" data-message="进入这条轻薄笔记本的原详情；当前设计样板展示的是降噪耳机，不替换记录身份。"><span class="entry-identity"><svg class="ico"><use href="#i-project"/></svg></span><span class="block-tight"><span class="entry-title">轻薄笔记本</span><span class="muted">持有中 · 持有 482 天</span><span class="small">当前日均成本</span><span class="money small-money">¥13.07<span class="unit">元/天</span></span></span></button>
+<button type="button" class="entry" data-action="jump-detail"><span class="entry-identity"><svg class="ico"><use href="#i-project"/></svg></span><span class="block-tight"><span class="entry-title">降噪耳机</span><span class="muted">持有中 · 持有 299 天</span><span class="small">当前日均成本</span><span class="money small-money">¥5.02<span class="unit">元/天</span></span></span></button>
+</div>
+</section>
+<section class="block">
+<div class="preview-head"><h2>订阅服务</h2><button type="button" class="text-button" data-action="explain" data-message="进入原订阅列表，保留真实付款日期排序、当前与历史边界。">全部<svg class="ico"><use href="#i-chevron"/></svg></button></div>
+<p class="muted record-count" data-filled>已录入 7 条订阅服务（含历史）</p><p class="muted" data-empty hidden>还没有当前订阅</p>
+<div data-filled>
+<button type="button" class="entry" data-action="explain" data-message="进入这条订阅的原详情，不将折算付费时长称为已经使用的天数。"><span class="entry-identity"><svg class="ico"><use href="#i-subscription"/></svg></span><span class="block-tight"><span class="entry-title">音乐订阅</span><span class="muted">订阅中 · 折算付费时长 365 天</span><span class="small">历史平均日成本</span><span class="money small-money">¥0.60<span class="unit">元/天</span></span></span></button>
+<button type="button" class="entry" data-action="explain" data-message="进入这条订阅的原详情及真实付款记录。"><span class="entry-identity"><svg class="ico"><use href="#i-subscription"/></svg></span><span class="block-tight"><span class="entry-title">云存储</span><span class="muted">订阅中 · 折算付费时长 365 天</span><span class="small">历史平均日成本</span><span class="money small-money">¥0.25<span class="unit">元/天</span></span></span></button>
+</div>
+</section>
+<div data-filled><button type="button" class="text-button" data-action="toggle-categories">查看类别构成<svg class="ico"><use href="#i-chevron"/></svg></button><div class="reveal block" data-categories hidden><h2>长期项目</h2><p class="small">按当前日均成本归类，不是年度支出占比。</p><div class="block-tight"><p>数码</p><div class="money small-money">¥18.59<span class="unit">元/天</span></div></div><h2>订阅服务</h2><div class="block-tight"><p>服务</p><div class="money small-money">¥2.85<span class="unit">元/天</span></div></div><p class="small">分项四舍五入，显示金额相加可能有分位差；汇总使用未舍入结果。</p></div></div>
+</div></div>
+<div data-nav-slot></div>
+</div>
+</template>
+
+<template id="detail-template">
+<div class="app">
+<header class="app-header"><button type="button" class="text-button grow" data-action="explain" data-message="返回原项目列表及原浏览位置；此原型不展开完整列表，也不替换返回来源。"><svg class="ico"><use href="#i-back"/></svg>返回项目列表</button><button type="button" class="icon-button" data-action="more" aria-label="更多项目操作"><svg class="ico"><use href="#i-more"/></svg></button></header>
+<div class="viewport"><div class="screen-body flow">
+<div class="identity"><div class="entry-identity"><svg class="ico"><use href="#i-project"/></svg></div><div class="block-tight"><h1 class="identity-title">降噪耳机</h1><p class="muted">数码 · 持有中</p></div></div>
+<section class="summary compact">
+<div class="detail-metrics"><div class="block-tight"><p class="muted">当前日均成本</p><div class="money">¥5.02<span class="unit">元/天</span></div></div><div class="block-tight"><p class="muted">累计持有</p><p class="held">299 天</p></div></div><p class="muted">结果截至 2026-10-26</p>
+</section>
+<section class="secondary-totals"><div class="block-tight"><p class="muted">累计实际投入</p><div class="money small-money">¥2198.00<span class="unit">元</span></div></div><div class="block-tight"><p class="muted">累计实际收回</p><div class="money small-money">¥698.00<span class="unit">元</span></div></div><div class="block-tight"><p class="muted">净投入</p><div class="money small-money">¥1500.00<span class="unit">元</span></div></div></section>
+<section class="block"><p class="muted">开始拥有：2026-01-01</p><p>工作和通勤时使用。</p><p class="muted">结束保留事实供历史查看；删除会永久移除项目及其金额记录。</p><button type="button" class="text-button full" data-action="explain" data-message="进入原项目成本历史图，保留精确日期和负值。">查看成本历史<svg class="ico"><use href="#i-chevron"/></svg></button></section>
+<hr class="divider">
+<h2>真实金额记录</h2>
+<div class="block"><p>2026-01-01</p><div class="record"><span class="record-dot"></span><div class="record-content"><h2>初始投入</h2><p class="muted">2026-01-01</p><p class="muted">现金</p><p class="event-value">¥1899.00<span class="unit">元</span></p><p>购买耳机</p><button type="button" class="text-button" data-action="explain" data-message="进入原纠错表单与写入守卫；本样板不修改金额。">纠正这条记录</button></div></div><hr class="divider"></div>
+<div class="block"><p>2026-08-03</p><div class="record"><span class="record-dot"></span><div class="record-content"><h2>投入</h2><p class="muted">2026-08-03</p><p class="muted">现金</p><p class="event-value">¥299.00<span class="unit">元</span></p><p>更换配件</p><button type="button" class="text-button" data-action="explain" data-message="进入原纠错表单；不会在样板中写入。">纠正这条记录</button></div></div><hr class="divider"></div>
+<div class="block"><p>2026-10-16</p><div class="record"><span class="record-dot"></span><div class="record-content"><h2>收回</h2><p class="muted">2026-10-16</p><p class="muted">现金</p><p class="event-value">¥698.00<span class="unit">元</span></p><p>收回部分款项</p><button type="button" class="text-button" data-action="explain" data-message="进入原纠错表单；不会在样板中写入。">纠正这条记录</button></div></div><hr class="divider"></div>
+</div></div>
+<div class="dock detail-dock"><button type="button" class="primary" data-action="money-sheet"><svg class="ico"><use href="#i-add"/></svg>记一笔</button></div>
+<div class="popover" data-more-menu hidden role="menu" aria-label="更多项目操作"><button type="button" data-action="explain" data-message="进入原编辑项目页，保持日期保护及编辑范围；新增样板不替代编辑流程。" role="menuitem">编辑项目资料</button><button type="button" data-action="explain" data-message="进入原结束表单；结束保留历史事实，删除仍是另一项操作。" role="menuitem">结束项目</button><button type="button" data-action="explain" data-message="进入已有替换链与纵向对比流程，不新增业务。" role="menuitem">替换链与纵向对比</button><button type="button" data-action="explain" data-message="进入原以旧换新流程，金额及交易保护不变。" role="menuitem">记录以旧换新</button><button type="button" class="danger" data-action="explain" data-message="生产页面仍需原永久删除二次确认；此原型不删除任何数据。" role="menuitem">永久删除项目</button></div>
+</div>
+</template>
+
+<template id="editor-template">
+<div class="app">
+<header class="app-header"><button type="button" class="text-button" data-action="jump-home"><svg class="ico"><use href="#i-back"/></svg>返回</button><h1>新增长期项目</h1></header>
+<div class="viewport"><div class="screen-body flow">
+<label class="field"><span>名称</span><input type="text" value="降噪耳机" autocomplete="off"></label>
+<div class="field-group"><label class="field"><span>初始实际投入（元）</span><input type="text" inputmode="decimal" value="1899.00" autocomplete="off"></label><p class="muted">只记录实际已投入金额，0元也可以保存。</p></div>
+<div class="field-group"><button type="button" class="edit-summary" data-action="toggle-start-date"><span class="block-tight"><span class="muted">开始拥有日期</span><span class="value">2026-10-26</span></span><svg class="ico"><use href="#i-chevron"/></svg></button><div class="reveal" data-start-date hidden><label class="field"><span>开始拥有日期</span><input type="text" value="2026-10-26" autocomplete="off"></label><p class="muted">年-月-日，例如2026-01-01</p><button type="button" class="outlined" data-action="explain" data-message="生产页面使用原日期选择器；本样板仅展示字段。">选择开始拥有日期</button></div><p class="muted">开始日计入持有时间；真实付款日可以不同。</p></div>
+<button type="button" class="edit-summary category-summary" data-action="explain" data-message="沿用原长期项目类别选择器与默认值；不新建类别或写入数据。"><span class="block-tight"><span class="muted">类别</span><span class="value">数码</span></span><svg class="ico"><use href="#i-chevron"/></svg></button>
+<div class="field-group"><button type="button" class="edit-summary" data-action="toggle-payment-date"><span class="block-tight"><span class="muted">初始实际付款日期</span><span class="value">与开始日期相同 · 2026-10-26</span></span><svg class="ico"><use href="#i-chevron"/></svg></button><div class="reveal" data-payment-date hidden><label class="field"><span>初始实际付款日期</span><input type="text" value="2026-10-26" autocomplete="off"></label><p class="muted">年-月-日，例如2026-01-01</p><button type="button" class="outlined" data-action="explain" data-message="生产页面复用原真实付款日期选择器，不重置输入。">选择初始实际付款日期</button></div><p class="muted">先付款后收到时，请改为真实付款日。</p></div>
+<div class="optional"><hr class="divider"><button type="button" class="edit-summary" data-action="toggle-note" aria-expanded="false"><span class="block-tight"><span class="muted">补充信息</span><span class="value" data-note-label>备注（可选）</span></span><svg class="ico"><use href="#i-chevron"/></svg></button><div class="reveal" data-note hidden><label class="field"><span>备注（可选）</span><textarea rows="2" autocomplete="off"></textarea></label></div></div>
+</div></div>
+<div class="dock"><button type="button" class="primary" data-action="explain" data-message="设计样板不会保存。生产页面只调用现有保存回调，结果未知时保留原核对与重试机制。">保存项目</button></div>
+</div>
+</template>
+
+<template id="review-template">
+<div class="app">
+<div class="viewport"><div class="screen-body flow">
+<header class="block"><h1>回看</h1><p>总日均成本与历史记录</p><div class="row"><p class="muted grow">18 条长期项目</p><p class="muted grow">7 条订阅服务</p></div><p class="small">数量包含当前和历史记录。</p></header>
+<section class="summary compact"><p class="muted">总日均成本</p><h2>所选日期：2026-10-26</h2><div class="money">¥21.44<span class="unit">元/天</span></div><div class="subtotals"><div class="block-tight"><p class="muted">长期项目</p><div class="money small-money">¥18.59<span class="unit">元/天</span></div></div><div class="block-tight"><p class="muted">订阅</p><div class="money small-money">¥2.85<span class="unit">元/天</span></div></div></div><p class="small">截至 2026-10-26 · 非当日扣款</p><p class="small">该日当前有效记录的日均成本。</p></section>
+<section class="block chart-section">
+<p class="legend">总日均成本 — 实线</p>
+<svg class="chart" viewBox="0 0 328 215" role="img" aria-label="合成设计曲线，不是实际领域引擎计算结果；包含负值与变化。">
+<path class="gridline" d="M42 24H312 M42 84H312 M42 144H312 M42 174H312"/><text x="0" y="28">32.00</text><text x="0" y="88">20.00</text><text x="0" y="148">8.00</text><text x="0" y="178">−2.00</text>
+<path class="project-line breakdown-lines" d="M42 141 80 152 100 160 126 166 146 180 165 122 189 134 214 140 236 146 258 113 287 117 312 113"/>
+<path class="subscription-line breakdown-lines" d="M42 166H110V158H182V166H237V158H312"/>
+<path class="total-line" d="M42 126 80 140 100 148 110 140 126 151 146 168 165 102 182 114 189 120 214 126 236 132 237 123 258 95 287 102 312 96"/>
+<path class="selection" d="M312 12V185"/><circle class="selected-dot" cx="312" cy="96" r="5"/><text x="42" y="208">2026-01-01</text><text x="240" y="208">2026-10-26</text>
+</svg>
+<p class="small">按自然日绘制；拖动查询真实金额，保留负值与重要变化。</p><p class="small">按已录入事实重建，不代表全部生活消费。</p>
+<button type="button" class="outlined" data-action="toggle-breakdown" aria-expanded="false">展开长期项目与订阅贡献</button>
+<button type="button" class="text-button" data-action="toggle-query" aria-expanded="false">指定日期 · 精确查询</button>
+<div class="reveal" data-date-query hidden><div class="date-row"><button type="button" class="outlined" data-action="explain" data-message="生产页面向原趋势VM请求前一天的精确数据；本原型不执行计算。">前一天</button><button type="button" class="outlined" disabled>后一天</button></div><p class="small">前后一天限图表日期范围；其他已过去日期可输入查询。</p><label class="field"><span>查询日期（年-月-日）</span><input type="text" value="2026-10-26" autocomplete="off"></label><p class="small">可查询任意已过去的日期，不必拖动图表。</p><button type="button" class="primary" data-action="explain" data-message="这是精确选日入口的设计演示，数据由生产趋势VM计算；此样板不生成读数。">查看该日</button></div>
+</section>
+<section class="review-links">
+<button type="button" class="review-link" data-action="explain" data-message="进入现有完整趋势页，显示日期清单与全部真实事件，保留50条继续查看。"><svg class="ico"><use href="#i-review"/></svg><span class="block-tight"><span>全部历史与事件</span><span class="small">完整日期清单和记录来源</span></span><svg class="ico"><use href="#i-chevron"/></svg></button>
+<hr class="divider"><h2>换个角度看</h2>
+<button type="button" class="review-link" data-action="explain" data-message="进入现有类别分析，保留真实记录和返回来源。"><svg class="ico"><use href="#i-project"/></svg><span class="block-tight"><span>类别分析</span><span class="small">长期项目与订阅分别查看</span></span><svg class="ico"><use href="#i-chevron"/></svg></button>
+<button type="button" class="review-link" data-action="explain" data-message="进入现有客观年度回顾，不增加价值评分。"><svg class="ico"><use href="#i-review"/></svg><span class="block-tight"><span>年度回顾</span><span class="small">按真实资金年份回看</span></span><svg class="ico"><use href="#i-chevron"/></svg></button>
+<button type="button" class="review-link" data-action="explain" data-message="进入现有长期复盘，两类记录分别排名。"><svg class="ico"><use href="#i-review"/></svg><span class="block-tight"><span>长期复盘</span><span class="small">陪伴时间与折算付费时长</span></span><svg class="ico"><use href="#i-chevron"/></svg></button>
+<hr class="divider"><h2>历史档案</h2>
+<button type="button" class="review-link" data-action="explain" data-message="进入原已结束长期项目历史；不提前归档当前记录。"><svg class="ico"><use href="#i-project"/></svg><span class="block-tight"><span>已结束长期项目</span><span class="small">保留原记录与真实结算</span></span><svg class="ico"><use href="#i-chevron"/></svg></button>
+<button type="button" class="review-link" data-action="explain" data-message="进入原已停止订阅历史；暂停和到期未停止仍属当前管理。"><svg class="ico"><use href="#i-subscription"/></svg><span class="block-tight"><span>已停止订阅</span><span class="small">暂停、到期未停止的仍在订阅列表</span></span><svg class="ico"><use href="#i-chevron"/></svg></button>
+</section>
+</div></div><div data-nav-slot></div>
+</div>
+</template>
+
+<template id="add-sheet-template"><div class="sheet" role="dialog" aria-modal="true" aria-label="新增记录类型选择"><button type="button" class="scrim" data-action="close-sheet" aria-label="关闭新增选择"></button><div class="sheet-card"><div class="handle"></div><button type="button" class="sheet-option" data-action="jump-editor"><svg class="ico"><use href="#i-project"/></svg><span class="block-tight"><span class="medium">长期项目</span><span class="small">记录物品的投入、收回与持有时间</span></span><svg class="ico"><use href="#i-chevron"/></svg></button><button type="button" class="sheet-option" data-action="explain" data-message="进入原新增订阅页面；本轮A段不重新设计订阅表单。"><svg class="ico"><use href="#i-subscription"/></svg><span class="block-tight"><span class="medium">订阅服务</span><span class="small">记录真实付款与生效周期</span></span><svg class="ico"><use href="#i-chevron"/></svg></button></div></div></template>
+<template id="money-sheet-template"><div class="sheet" role="dialog" aria-modal="true" aria-label="记一笔类型选择"><button type="button" class="scrim" data-action="close-sheet" aria-label="关闭金额类型选择"></button><div class="sheet-card"><div class="handle"></div><div class="row"><h2 class="grow">记一笔</h2><button type="button" class="icon-button" data-action="close-sheet" aria-label="关闭金额类型选择"><svg class="ico"><use href="#i-close"/></svg></button></div><button type="button" class="sheet-option money-option" data-action="explain" data-message="进入原投入表单，保持真实金额、付款日期及未保存守卫。">记录投入<svg class="ico"><use href="#i-chevron"/></svg></button><hr class="divider"><button type="button" class="sheet-option money-option" data-action="explain" data-message="进入原收回表单；此选择本身不写入金额。">记录收回<svg class="ico"><use href="#i-chevron"/></svg></button></div></div></template>
+<script>
+(function(){
+  "use strict";
+  var pageNames={home:"现在",detail:"长期项目详情",editor:"新增长期项目",review:"回看"};
+  var pageCaptions={
+    home:"主摘要与两类小计同区，预览保留原排序；每类最多展示2条，含历史总数不是预览数量。",
+    detail:"无封面使用身份图标。日均与持有时间优先；记一笔固定在底部，低频操作在更多菜单。",
+    editor:"一页渐进表单。同日付款可展开，备注可收起；唯一底部保存。原型不提供真实保存或IME证明。",
+    review:"先看总趋势与所选日期，再进入分析和档案。曲线及数字均为合成设计数据，未调用领域引擎。"
+  };
+  var activeTheme="all", lastTrigger=null;
+  function clone(id){return document.getElementById(id).content.cloneNode(true);}
+  function makePanel(theme,page,label,variant){
+    var panel=document.createElement("article");panel.className="panel";panel.id=theme+"-"+page+(variant?"-"+variant:"");panel.dataset.page=page;panel.dataset.theme=theme;panel.dataset.variant=variant||"";
+    var head=document.createElement("div");head.className="panel-head";
+    var title=document.createElement("strong");title.textContent=label;
+    var size=document.createElement("span");size.textContent="360 × 800 · "+(theme==="light"?"浅色":"深色");head.append(title,size);panel.append(head);
+    var device=document.createElement("div");device.className="device";device.dataset.theme=theme;device.append(clone(page+"-template"));
+    var slot=device.querySelector("[data-nav-slot]");
+    if(slot){slot.replaceWith(clone("nav-template"));var nav=device.querySelector('[data-action="jump-'+(page==="review"?"review":"home")+'"]');if(nav)nav.setAttribute("aria-current","page");}
+    var notice=document.createElement("div");notice.className="notice";notice.hidden=true;notice.setAttribute("role","status");device.append(notice);
+    if(variant==="empty"){
+      device.querySelectorAll("[data-filled],[data-add-button]").forEach(function(e){e.hidden=true;});
+      device.querySelectorAll("[data-empty]").forEach(function(e){e.hidden=false;});
+      device.querySelectorAll("[data-slot]").forEach(function(e){e.textContent="—";});
+    }
+    if(variant==="negative"){
+      device.querySelector('[data-slot="total"]').textContent="−¥123456789.01";
+      device.querySelector('[data-slot="project-total"]').textContent="−¥123456789.01";
+      device.querySelector('[data-slot="subscription-total"]').textContent="¥0.00";
+    }
+    if(variant==="large"){device.classList.add("large-type");}
+    panel.append(device);
+    var caption=document.createElement("p");caption.className="panel-caption";
+    var badge=document.createElement("b");badge.textContent="PROTOTYPE_ONLY · 合成设计数据";caption.append(badge,document.createElement("br"));
+    var text=variant==="empty"?"无记录以“—”和首条记录入口呈现，不以¥0.00假装已取得真实结果。":variant==="negative"?"长负金额保留负号与精确数字，可换行；不使用K/W。此数值不代表引擎输出。":variant==="large"?"浏览器字体×2排版模拟；不等于Android系统200%、真实IME、无障碍或MainActivity验证。":pageCaptions[page];
+    caption.append(document.createTextNode(text));panel.append(caption);return panel;
+  }
+  ["light","dark"].forEach(function(theme){
+    ["home","detail","editor","review"].forEach(function(page,index){document.getElementById(theme+"-gallery").append(makePanel(theme,page,"0"+(index+1)+" / "+pageNames[page]));});
+  });
+  var extras=document.getElementById("extra-gallery");
+  extras.append(makePanel("light","home","无记录","empty"),makePanel("dark","home","负值与长金额","negative"),makePanel("light","editor","大字表单 · 浏览器×2","large"));
+  function closeSheet(device){
+    var sheets=device.querySelectorAll(".sheet");var hadSheet=sheets.length>0;
+    sheets.forEach(function(e){e.remove();});
+    if(hadSheet&&lastTrigger&&lastTrigger.isConnected&&lastTrigger.closest(".device")===device)lastTrigger.focus({preventScroll:true});
+  }
+  function tell(device,text){
+    var note=device.querySelector(".notice");note.textContent=text;note.hidden=false;
+    window.clearTimeout(note._timeout);note._timeout=window.setTimeout(function(){note.hidden=true;},6500);
+  }
+  function jump(page,theme){
+    var target=document.getElementById(theme+"-"+page);
+    if(!target||target.closest(".theme-section").hidden)target=document.querySelector('.theme-section:not([hidden]) .panel[data-page="'+page+'"]');
+    if(target)target.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"start"});
+  }
+  function toggleField(device,selector,button){
+    var field=device.querySelector(selector);field.hidden=!field.hidden;button.setAttribute("aria-expanded",String(!field.hidden));
+    return !field.hidden;
+  }
+  document.addEventListener("click",function(event){
+    var button=event.target.closest("button");if(!button)return;
+    if(button.dataset.themeFilter){
+      activeTheme=button.dataset.themeFilter;
+      document.querySelectorAll("[data-theme-filter]").forEach(function(e){e.setAttribute("aria-pressed",String(e===button));});
+      document.querySelectorAll(".theme-section").forEach(function(e){e.hidden=activeTheme!=="all"&&e.dataset.galleryTheme!==activeTheme;});
+      return;
+    }
+    var device=button.closest(".device");if(!device)return;
+    var action=button.dataset.action;if(!action)return;
+    var theme=device.dataset.theme;
+    if(action==="add-sheet"||action==="money-sheet"){
+      closeSheet(device);lastTrigger=button;device.append(clone(action+"-template"));var first=device.querySelector(".sheet-card button");if(first)first.focus();return;
+    }
+    if(action==="close-sheet"){closeSheet(device);return;}
+    if(action.indexOf("jump-")===0){closeSheet(device);device.querySelectorAll(".popover").forEach(function(e){e.hidden=true;});jump(action.slice(5),theme);return;}
+    if(action==="more"){var menu=device.querySelector("[data-more-menu]");menu.hidden=!menu.hidden;button.setAttribute("aria-expanded",String(!menu.hidden));return;}
+    if(action==="toggle-start-date"){toggleField(device,"[data-start-date]",button);button.hidden=true;return;}
+    if(action==="toggle-payment-date"){toggleField(device,"[data-payment-date]",button);button.hidden=true;return;}
+    if(action==="toggle-note"){var opened=toggleField(device,"[data-note]",button);button.querySelector("[data-note-label]").textContent=opened?"收起备注":"备注（可选）";return;}
+    if(action==="toggle-categories"){var categories=device.querySelector("[data-categories]");categories.hidden=!categories.hidden;button.firstChild.textContent=categories.hidden?"查看类别构成":"收起类别构成";return;}
+    if(action==="toggle-breakdown"){var shown=device.querySelector(".chart-section").classList.toggle("show-breakdown");button.setAttribute("aria-expanded",String(shown));button.textContent=shown?"收起两类贡献":"展开长期项目与订阅贡献";return;}
+    if(action==="toggle-query"){var openedQuery=toggleField(device,"[data-date-query]",button);button.textContent=openedQuery?"收起日期查询":"指定日期 · 精确查询";return;}
+    if(action==="explain"){closeSheet(device);device.querySelectorAll(".popover").forEach(function(e){e.hidden=true;});tell(device,button.dataset.message||"这是离线设计原型，不执行数据操作。");}
+  });
+  document.addEventListener("keydown",function(event){
+    var device=event.target.closest(".device");if(!device)return;
+    if(event.key==="Escape"){closeSheet(device);device.querySelectorAll(".popover,.notice").forEach(function(e){e.hidden=true;});}
+    if(event.key==="Tab"){
+      var sheet=device.querySelector(".sheet");if(!sheet)return;
+      var focusable=Array.from(sheet.querySelectorAll("button:not(:disabled)")).filter(function(e){return !e.classList.contains("scrim");});
+      var first=focusable[0],last=focusable[focusable.length-1];
+      if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
+      else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
+    }
+  });
+  document.getElementById("page-jump").addEventListener("change",function(event){if(event.target.value==="extras")document.getElementById("extras").scrollIntoView({block:"start"});else if(event.target.value)jump(event.target.value,activeTheme==="dark"?"dark":"light");});
+  // Presentation-only focused view for the optional supplementary design board.
+  if(new URLSearchParams(location.search).get("focus")==="extras"){
+    document.querySelectorAll(".document-head,.toolbar,.theme-section").forEach(function(e){e.hidden=true;});
+    window.scrollTo(0,0);
+  }
+})();
+</script>
+</body>
+</html>

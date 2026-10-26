@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **UI-C2 A段 — VISUAL_SAMPLE_READY，待集中视觉审查**：从`9de00d3`直接在当前产品完善分支实施暖白/岩绿/深墨主题、真实图标、现在/项目详情/新增项目/回看四页重组。原列表VM与趋势VM只读复用，原业务动作/导航守卫保留，不合并旧UI/M10数据代码。75唯一JVM PASS、18新Android/Compose仅编译/运行NOT_RUN，Debug与Lint最终exit0、0错误17警告。无现成Compose桌面渲染，提供[离线HTML原型](design/ui-c2/UI_C2_A_Prototype.html)，**PROTOTYPE_ONLY / APP_VISUAL_PENDING**；生产Compose代码单独编译验证，非实机截图。当前基线没有受校验的页面封面读取/管理接口，已登记图片显示缺口，不伪造接入。结果及边界见[样板报告](evidence/UI-C2-Sample-Review.md)。无设备/安装、新preview交付；P04旧APK原字节保留，P01～P04工程记录不等于用户视觉认可。A段完成后停止，订阅/列表/搜索/设置等推广等待一次集中反馈；不冻结、不合并main、不进M23。历史M10/M20/M22/M13、G1～G4等状态保持。
+
+
 - **P04 — PRODUCT INTEGRATION / PRIVATE TRIAL CANDIDATE，READY FOR USER TRIAL**：用户从d35f8a1正式授权桌面整合/体验交付；三入口源码检查未发现明确断路或安全绕过，116唯一JVM PASS、42原Compose仅编译/NOT_RUN。普通Debug构建及Lint0E17W、显式体验构建及Lint0E11W成功；源码固定`96e4d7c762c2b82e8e245a4d0260bea3744b62e3`。同preview包/原Debug证书升code18、preview.2；体验APK排除测试宿主/框架，正常LithicApplication/MainActivity及自有Provider，无INTERNET。唯一实际交付APK13,854,809字节，已复制到非build独占deliveries目录、逐字节/SHA核对，未入Git；路径/完整SHA见[P04报告](evidence/LITHIC-P04-Integration-Delivery.md)。[体验清单](evidence/LITHIC-V1-User-Trial-Checklist.md)供以后自选，建议可丢弃数据，不作重要数据唯一副本。设备/安装/升级/人工体验为0或NOT_RUN，P01～P03仍IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；M22 BLOCKED及全部历史风险不变，不等于Release或M23通过。
 
 - **P03 — IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；设置、备份恢复与说明完善**：来源`ba24df68a4ee242912e4b010b8e485b713489e12`。新增计算说明与当前安装包版本/关于入口，导出/恢复只按明确事件及真实结果分级；中断和未证明结果保持未知。预览补足十表对照及快照/完整覆盖说明，保留原重复操作与切换保护。3真实断言RED到同身份GREEN；最终92唯一JVM PASS（38新/54相关）、13新Compose仅编译/NOT_RUN，Debug与AndroidTest源码编译exit0，Lint0错误17警告。Room5/backup4、data/domain/Owner/RestoreCoordinator/Token/事务与身份/证书不改；无设备、安装或个人账本操作，未交付新体验APK。见[P03报告](evidence/LITHIC-P03-Settings-Data-Safety.md)及[产品记录](planning/LITHIC-V1-PRODUCT-COMPLETION.md)。P01～P03独立桌面审查仅PASS WITH NOTES、人工延期；M22历史BLOCKED、M10/M20等旧风险不变。最新P04授权与停止点以上项为准，不自动M23。

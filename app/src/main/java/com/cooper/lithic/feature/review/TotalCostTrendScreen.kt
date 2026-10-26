@@ -1,6 +1,7 @@
 package com.cooper.lithic.feature.review
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,6 +16,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -42,6 +44,7 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.cooper.lithic.core.design.AmountFormatter
 import com.cooper.lithic.core.design.AmountText
 import com.cooper.lithic.core.design.ChartGeometry
@@ -64,6 +67,9 @@ internal fun TotalCostTrendScreen(
     onOpenRecord: (OverviewKind, String) -> Unit,
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
+    reviewHeader: (@Composable () -> Unit)? = null,
+    reviewFooter: (@Composable () -> Unit)? = null,
+    summaryOnly: Boolean = false,
 ) {
     var dateRaw by rememberSaveable { mutableStateOf("") }
     var dateError by rememberSaveable { mutableStateOf<String?>(null) }
@@ -71,6 +77,7 @@ internal fun TotalCostTrendScreen(
     var pointLimit by rememberSaveable { mutableIntStateOf(50) }
     var allEvents by rememberSaveable { mutableStateOf(false) }
     var eventLimit by rememberSaveable { mutableIntStateOf(50) }
+    var reviewDateExpanded by rememberSaveable { mutableStateOf(false) }
     val timeline = state.timeline
     val snapshot = state.snapshot
     val hasRecords = snapshot?.overview?.let { it.projects.isNotEmpty() || it.subscriptions.isNotEmpty() } == true
@@ -89,12 +96,15 @@ internal fun TotalCostTrendScreen(
     LazyColumn(modifier.fillMaxSize().imePadding().testTag("total-cost-trend-screen"),
         contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item("heading") {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("total-trend-back")) { Text("返回回看") }
-                Text("成本趋势", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
-                Text("总日均成本", style = MaterialTheme.typography.titleLarge)
-                Text("按现有已录入、已纠正事实重建的历史参考指标；不是当天实际扣款，也不代表完整生活支出或永远不变的历史账本快照。",
-                    style = MaterialTheme.typography.bodyMedium)
+            if (reviewHeader != null) reviewHeader()
+            else {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("total-trend-back")) { Text("返回回看") }
+                    Text("成本趋势", style = MaterialTheme.typography.headlineLarge, modifier = Modifier.semantics { heading() })
+                    Text("总日均成本", style = MaterialTheme.typography.titleLarge)
+                    Text("按现有已录入、已纠正事实重建的历史参考指标；不是当天实际扣款，也不代表完整生活支出或永远不变的历史账本快照。",
+                        style = MaterialTheme.typography.bodyMedium)
+                }
             }
         }
         if (state.loading) item("loading") { Text(if (timeline == null) "正在读取完整历史。" else "正在刷新；下方为上次结果，尚未刷新。") }
@@ -115,99 +125,139 @@ internal fun TotalCostTrendScreen(
         }
         if (timeline != null && hasRecords) {
             item("selected") {
-                Card(Modifier.fillMaxWidth()) {
+                Card(Modifier.fillMaxWidth(), shape = RoundedCornerShape(20.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text("结果截至 ${timeline.asOf}", style = MaterialTheme.typography.bodyMedium)
+                        Text(if (summaryOnly) "总日均成本" else "结果截至 ${timeline.asOf}",
+                            style = MaterialTheme.typography.bodyMedium)
                         state.selectedDate?.let { Text("所选日期：$it", Modifier.testTag("total-trend-selected-date"),
                             style = MaterialTheme.typography.titleMedium) }
                         if (selected == null) Text("正在计算所选日期；不会用旧日期金额或0代替结果。")
                         else {
-                            DailyValue("总日均成本", selected.totalRate, "total-trend-total")
-                            DailyValue("长期项目贡献", selected.projectRate, "total-trend-project")
-                            DailyValue("订阅贡献", selected.subscriptionRate, "total-trend-subscription")
-                            Text(selectionMeaning(selected), Modifier.testTag("total-trend-selected-status"),
-                                style = MaterialTheme.typography.bodyMedium)
+                            if (summaryOnly) {
+                                AmountText(selected.totalRate, Modifier.testTag("total-trend-total"),
+                                    style = MaterialTheme.typography.displaySmall.copy(fontSize = 38.sp))
+                                HorizontalDailyContributions(selected)
+                                Text("截至 ${timeline.asOf} · 非当日扣款", style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                Text(reviewSelectionLabel(selected), Modifier.testTag("total-trend-selected-status"),
+                                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            } else {
+                                DailyValue("总日均成本", selected.totalRate, "total-trend-total")
+                                DailyValue("长期项目贡献", selected.projectRate, "total-trend-project")
+                                DailyValue("订阅贡献", selected.subscriptionRate, "total-trend-subscription")
+                                Text(selectionMeaning(selected), Modifier.testTag("total-trend-selected-status"),
+                                    style = MaterialTheme.typography.bodyMedium)
+                            }
                         }
                     }
                 }
             }
             item("chart") {
-                TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate)
-                Text("完整记录历史至截止日；长跨度图表精简显示，事件和重要变化保留。任意日期可查询精确值，全部事件都可继续查看。",
+                TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate, concise = summaryOnly)
+                Text(if (summaryOnly) "按已录入事实重建，不代表全部生活消费。"
+                    else "完整记录历史至截止日；长跨度图表精简显示，事件和重要变化保留。任意日期可查询精确值，全部事件都可继续查看。",
                     style = MaterialTheme.typography.bodySmall)
                 OutlinedButton(onToggleBreakdown, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-breakdown")) {
                     Text(if (state.showBreakdown) "收起两类贡献" else "展开长期项目与订阅贡献")
                 }
             }
-            item("date") {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    state.selectedDate?.let { date ->
-                        OutlinedButton({ onSelectDate(date.minusDays(1)) },
-                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-previous-day"),
-                            enabled = timeline.from != null && date > timeline.from && date <= timeline.asOf) { Text("前一天") }
-                        OutlinedButton({ onSelectDate(date.plusDays(1)) },
-                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-next-day"),
-                            enabled = timeline.from != null && date >= timeline.from && date < timeline.asOf) { Text("后一天") }
-                        Text("前后一天限图表日期范围；其他已过去日期可输入查询。", style = MaterialTheme.typography.bodySmall)
+            if (summaryOnly) item("review-date-toggle") {
+                TextButton({ reviewDateExpanded = !reviewDateExpanded }, Modifier.heightIn(min = 48.dp)
+                    .testTag("review-trend-date-toggle")) {
+                    Text(if (reviewDateExpanded) "收起日期查询" else "指定日期 · 精确查询")
+                }
+            }
+            if (!summaryOnly || reviewDateExpanded) {
+                item("date") {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        state.selectedDate?.let { date ->
+                            OutlinedButton({ onSelectDate(date.minusDays(1)) },
+                                Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-previous-day"),
+                                enabled = timeline.from != null && date > timeline.from && date <= timeline.asOf) { Text("前一天") }
+                            OutlinedButton({ onSelectDate(date.plusDays(1)) },
+                                Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-next-day"),
+                                enabled = timeline.from != null && date >= timeline.from && date < timeline.asOf) { Text("后一天") }
+                            Text("前后一天限图表日期范围；其他已过去日期可输入查询。", style = MaterialTheme.typography.bodySmall)
+                        }
+                        OutlinedTextField(dateRaw, { dateRaw = it; dateError = null }, Modifier.fillMaxWidth().testTag("total-trend-date-input"),
+                            label = { Text("查询日期（年-月-日）") }, placeholder = { Text(state.selectedDate?.toString() ?: timeline.asOf.toString()) },
+                            singleLine = true, isError = dateError != null,
+                            supportingText = { Text(dateError ?: "可查询任意已过去的日期，不必拖动图表。") })
+                        Button(::applyDate, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-date-apply")) { Text("查看该日") }
                     }
-                    OutlinedTextField(dateRaw, { dateRaw = it; dateError = null }, Modifier.fillMaxWidth().testTag("total-trend-date-input"),
-                        label = { Text("查询日期（年-月-日）") }, placeholder = { Text(state.selectedDate?.toString() ?: timeline.asOf.toString()) },
-                        singleLine = true, isError = dateError != null,
-                        supportingText = { Text(dateError ?: "可查询任意已过去的日期，不必拖动图表。") })
-                    Button(::applyDate, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-date-apply")) { Text("查看该日") }
                 }
             }
-            item("point-heading") {
-                OutlinedButton({ pointsExpanded = !pointsExpanded }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-points-toggle")) {
-                    Text(if (pointsExpanded) "收起显示点文字清单" else "查看显示点文字清单（${timeline.points.size}个）")
+            // Full point/event pages remain on the original dedicated route, reached
+            // through Review's guarded callback; no second event implementation is added.
+            if (!summaryOnly) {
+                item("point-heading") {
+                    OutlinedButton({ pointsExpanded = !pointsExpanded }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-points-toggle")) {
+                        Text(if (pointsExpanded) "收起显示点文字清单" else "查看显示点文字清单（${timeline.points.size}个）")
+                    }
                 }
-            }
-            if (pointsExpanded) {
-                items(timeline.points.take(pointLimit), key = { "point-${it.date}" }) { point ->
-                    OutlinedButton({ allEvents = false; eventLimit = 50; onSelectDate(point.date) },
-                        Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-point-${point.date}")) {
-                        Column {
-                            Text(point.date.toString())
-                            Text("总额 ${AmountFormatter.formatDailyRate(point.totalRate)} 元/天")
-                            Text("项目 ${AmountFormatter.formatDailyRate(point.projectRate)}；订阅 ${AmountFormatter.formatDailyRate(point.subscriptionRate)} 元/天")
+                if (pointsExpanded) {
+                    items(timeline.points.take(pointLimit), key = { "point-${it.date}" }) { point ->
+                        OutlinedButton({ allEvents = false; eventLimit = 50; onSelectDate(point.date) },
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-point-${point.date}")) {
+                            Column {
+                                Text(point.date.toString())
+                                Text("总额 ${AmountFormatter.formatDailyRate(point.totalRate)} 元/天")
+                                Text("项目 ${AmountFormatter.formatDailyRate(point.projectRate)}；订阅 ${AmountFormatter.formatDailyRate(point.subscriptionRate)} 元/天")
+                            }
+                        }
+                    }
+                    if (timeline.points.size > pointLimit) item("more-points") {
+                        TextButton({ pointLimit += 50 }, Modifier.heightIn(min = 48.dp).testTag("total-trend-points-more")) { Text("再显示50个日期") }
+                    }
+                }
+                item("event-heading") {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text("该日相关事件", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
+                        Text("同日事件共同列出，不把某一笔说成全部跳变的唯一原因。付款、覆盖边界和状态变化是不同事实；有事件也可能没有总额变化。")
+                        OutlinedButton({ allEvents = !allEvents; eventLimit = 50 },
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-events-scope")) {
+                            Text(if (allEvents) "只看所选日期事件" else "查看全部日期事件")
+                        }
+                        Text(if (allEvents) "全部已记录历史事件：${orderedEvents.size}条" else "所选日期相关事件：${orderedEvents.size}条",
+                            Modifier.testTag("total-trend-event-count"))
+                        if (orderedEvents.isEmpty()) Text("该日没有相关事件；历史成本仍按已录入事实计算，不推断未录入的支出。")
+                    }
+                }
+                items(orderedEvents.take(eventLimit), key = { "event-${it.id}" }) { event ->
+                    Card(Modifier.fillMaxWidth().testTag("total-trend-event-${event.id}")) {
+                        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text("${event.date} · ${event.title}", style = MaterialTheme.typography.titleMedium)
+                            Text("${if (event.kind == OverviewKind.PROJECT) "长期项目" else "订阅"}：${event.recordName}")
+                            Text(event.description)
+                            event.amountCents?.let { Text(AmountFormatter.formatCny(BigDecimal.valueOf(it, 2))) }
+                            if (event.nonCash) Text("非现金折抵（不是现金扣款）")
+                            TextButton({ onOpenRecord(event.kind, event.recordId) },
+                                Modifier.heightIn(min = 48.dp).testTag("total-trend-open-${event.id}")) { Text("查看所属记录") }
                         }
                     }
                 }
-                if (timeline.points.size > pointLimit) item("more-points") {
-                    TextButton({ pointLimit += 50 }, Modifier.heightIn(min = 48.dp).testTag("total-trend-points-more")) { Text("再显示50个日期") }
-                }
-            }
-            item("event-heading") {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text("该日相关事件", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
-                    Text("同日事件共同列出，不把某一笔说成全部跳变的唯一原因。付款、覆盖边界和状态变化是不同事实；有事件也可能没有总额变化。")
-                    OutlinedButton({ allEvents = !allEvents; eventLimit = 50 },
-                        Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-events-scope")) {
-                        Text(if (allEvents) "只看所选日期事件" else "查看全部日期事件")
-                    }
-                    Text(if (allEvents) "全部已记录历史事件：${orderedEvents.size}条" else "所选日期相关事件：${orderedEvents.size}条",
-                        Modifier.testTag("total-trend-event-count"))
-                    if (orderedEvents.isEmpty()) Text("该日没有相关事件；历史成本仍按已录入事实计算，不推断未录入的支出。")
-                }
-            }
-            items(orderedEvents.take(eventLimit), key = { "event-${it.id}" }) { event ->
-                Card(Modifier.fillMaxWidth().testTag("total-trend-event-${event.id}")) {
-                    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text("${event.date} · ${event.title}", style = MaterialTheme.typography.titleMedium)
-                        Text("${if (event.kind == OverviewKind.PROJECT) "长期项目" else "订阅"}：${event.recordName}")
-                        Text(event.description)
-                        event.amountCents?.let { Text(AmountFormatter.formatCny(BigDecimal.valueOf(it, 2))) }
-                        if (event.nonCash) Text("非现金折抵（不是现金扣款）")
-                        TextButton({ onOpenRecord(event.kind, event.recordId) },
-                            Modifier.heightIn(min = 48.dp).testTag("total-trend-open-${event.id}")) { Text("查看所属记录") }
+                if (orderedEvents.size > eventLimit) item("more-events") {
+                    OutlinedButton({ eventLimit += 50 }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-events-more")) {
+                        Text("再显示50条事件（已显示${minOf(eventLimit, orderedEvents.size)}/${orderedEvents.size}）")
                     }
                 }
             }
-            if (orderedEvents.size > eventLimit) item("more-events") {
-                OutlinedButton({ eventLimit += 50 }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-events-more")) {
-                    Text("再显示50条事件（已显示${minOf(eventLimit, orderedEvents.size)}/${orderedEvents.size}）")
-                }
-            }
+        }
+        reviewFooter?.let { footer -> item("review-destinations") { footer() } }
+    }
+}
+
+@Composable
+private fun HorizontalDailyContributions(point: CostTimelinePoint) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text("长期项目", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            AmountText(point.projectRate, Modifier.testTag("total-trend-project"), style = MaterialTheme.typography.titleMedium)
+        }
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text("订阅", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            AmountText(point.subscriptionRate, Modifier.testTag("total-trend-subscription"), style = MaterialTheme.typography.titleMedium)
         }
     }
 }
@@ -231,7 +281,7 @@ private fun selectionMeaning(point: CostTimelinePoint): String = when {
 /** One date axis and numeric scale. Line styles and readable values supplement colour. */
 @Composable
 private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimelinePoint?, requestedDate: LocalDate?, breakdown: Boolean,
-    onSelectDate: (LocalDate) -> Unit) {
+    onSelectDate: (LocalDate) -> Unit, concise: Boolean = false) {
     if (points.isEmpty()) { Text("截至本次业务日尚无可绘制的记录历史。", Modifier.testTag("total-trend-no-history")); return }
     val ordered = remember(points) { points.sortedBy { it.date } }
     val inRange = selected?.takeIf { it.date >= ordered.first().date && it.date <= ordered.last().date }
@@ -321,7 +371,8 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
             Text(projection.start.toString(), style = MaterialTheme.typography.bodySmall)
             if (projection.start != projection.end) Text(projection.end.toString(), style = MaterialTheme.typography.bodySmall)
         }
-        Text("按真实自然日期间距绘制，不做平滑预测；订阅零区间保留阶梯。横向拖动只选择自然日期，再查询真实金额；纵向滑动仍浏览页面。",
+        Text(if (concise) "按自然日绘制；拖动查询真实金额，保留负值与重要变化。"
+            else "按真实自然日期间距绘制，不做平滑预测；订阅零区间保留阶梯。横向拖动只选择自然日期，再查询真实金额；纵向滑动仍浏览页面。",
             style = MaterialTheme.typography.bodySmall)
     }
 }

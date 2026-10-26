@@ -1,0 +1,458 @@
+{
+  "uniqueMethods": 75,
+  "PASS": 75,
+  "newMethods": 26,
+  "relatedRegressions": 49,
+  "methods": [
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "embedded_review_events_keep_review_return_context",
+      "seconds": "0.062",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "invalid_preview_identity_still_returns_home",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "home_cost_explanation_keeps_home_as_its_return_path",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "home_preview_detail_and_money_form_keep_home_return_context",
+      "seconds": "0.007",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "bottom_navigation_only_appears_at_the_three_main_destinations",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M16NavigationPolicyTest",
+      "method": "comparison_keeps_detail_and_original_review_parent",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M16NavigationPolicyTest",
+      "method": "comparison_target_detail_and_editor_keep_the_comparison_return_path",
+      "seconds": "0.002",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M16NavigationPolicyTest",
+      "method": "trade_in_is_a_project_editor_without_a_new_bottom_tab",
+      "seconds": "0.002",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M16NavigationPolicyTest",
+      "method": "replacement_pending_participates_in_the_existing_global_guard",
+      "seconds": "0.006",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M16NavigationPolicyTest",
+      "method": "invalid_or_self_comparison_identity_is_rejected",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M16NavigationPolicyTest",
+      "method": "pending_editor_recovery_keeps_the_real_comparison_return_stack",
+      "seconds": "0.016",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M18NavigationPolicyTest",
+      "method": "total_trend_has_review_parent_without_new_bottom_tab",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M18NavigationPolicyTest",
+      "method": "malformed_total_trend_stack_returns_home",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M18NavigationPolicyTest",
+      "method": "invalid_event_identity_cannot_create_detail_route",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M18NavigationPolicyTest",
+      "method": "saved_total_trend_stack_keeps_read_only_return_path",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M18NavigationPolicyTest",
+      "method": "event_subscription_detail_and_renewal_keep_trend_return_path",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M18NavigationPolicyTest",
+      "method": "event_project_detail_and_editor_keep_trend_origin_and_guard_stack",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "method": "changing_bottom_destination_does_not_preserve_a_notice_or_add_a_tab",
+      "seconds": "0.019",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "method": "restore_guard_also_applies_to_already_open_navigation_dialogs",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "method": "bounded_summary_reference_has_its_own_temporary_source_route",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "method": "exact_subscription_detail_and_editor_keep_the_typed_summary_parent",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "method": "exact_project_detail_and_editor_keep_a_return_path_to_this_summary",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "method": "unknown_reference_identity_or_fields_cannot_be_restored_as_a_source_page",
+      "seconds": "0.002",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "method": "source_stack_rejects_wrong_parent_invalid_id_and_unrelated_nested_destinations",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "method": "notice_click_keeps_existing_pending_and_dirty_priorities",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "malformed_search_or_cross_identity_stacks_still_fail_closed",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "selected_subscription_category_retains_its_kind_and_identity",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "malformed_category_parent_does_not_gain_a_valid_record_stack",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "adapter_does_not_capture_explicit_primary_switch_or_different_analysis_context",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "project_delete_returns_to_the_existing_browse_source_only",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "custom_category_parent_rejects_the_wrong_record_type_but_keeps_old_neutral_parent",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "adapter_does_not_rewrite_an_already_contextual_or_invalid_target",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "search_project_details_and_editors_keep_the_search_parent",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "adapter_keeps_a_selected_category_without_changing_record_identity",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "adapter_keeps_search_for_known_current_and_history_record_targets",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "selected_category_survives_a_matching_detail_and_editor_return",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "method": "search_subscription_details_and_followup_forms_keep_the_search_parent",
+      "seconds": "0.002",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "large_aggregate_is_exact_and_never_uses_scientific_notation",
+      "seconds": "0.008",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "exact_one_cent_and_larger_daily_rates_use_normal_rounding",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "real_zero_has_two_decimal_places",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "ordinary_amount_rounds_half_up_with_both_signs",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "missing_amount_is_not_a_zero_amount",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "every_nonzero_daily_rate_below_one_cent_remains_explicitly_nonzero",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "high_precision_value_is_only_formatted_without_changing_numeric_input",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "method": "ordinary_half_cent_is_rounded_and_not_a_daily_rate_boundary",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "retained_rows_are_explicit_when_reading_failed",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "old_date_rows_cannot_be_presented_as_current",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "loading_without_facts_does_not_claim_no_records",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "failed_empty_preview_is_an_error_and_never_an_empty_ledger",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "method": "known_zero_rows_and_known_rows_are_distinct",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "known_empty_ledger_has_its_own_state",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "negative_cost_is_preserved_without_changing_state_or_value",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "subscription_only_ledger_is_current_without_a_project",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "existing_history_with_no_current_contribution_is_not_empty",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "unavailable_cost_snapshot_never_invents_a_value",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "method": "active_zero_cost_is_still_current",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "trade_in_group_keeps_original_delete_protection",
+      "seconds": "0.005",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "active_menu_retains_every_existing_management_action",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "missing_optional_routes_do_not_create_dead_menu_actions",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "future_end_does_not_mislabel_an_effective_current_result_as_final",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "method": "ended_menu_preserves_end_correction_without_authorizing_a_new_trade_in",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "same_day_payment_and_empty_optional_note_start_as_summaries",
+      "seconds": "0.003",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "edit_does_not_acquire_a_creation_payment_field_or_amount_error_target",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "existing_note_and_edit_fields_are_visible_before_any_disclosure_click",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "explicit_disclosure_only_changes_visibility_and_does_not_rewrite_input",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "distinct_or_empty_payment_date_cannot_be_hidden_behind_same_day_summary",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "start_date_error_is_directly_editable_and_first_error_follows_visual_order",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "method": "hidden_field_errors_force_disclosure_even_after_user_collapsed_it",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "method": "offsetting_contributions_stay_distinct_from_a_zero_cost_record",
+      "seconds": "0.001",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "method": "actual_zero_with_an_active_record_is_not_empty_or_inactive",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "method": "negative_value_is_not_reclassified_or_changed_by_presentation",
+      "seconds": "0.004",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "method": "records_not_yet_effective_and_historical_records_without_current_contribution_are_distinct",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "analysis_return_context_survives_a_current_or_stopped_result",
+      "seconds": "0.002",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "unknown_or_malformed_context_never_opens_a_form",
+      "seconds": "0.0",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "method": "existing_analysis_routes_can_open_the_existing_forms",
+      "seconds": "0.0",
+      "status": "PASS"
+    }
+  ]
+}

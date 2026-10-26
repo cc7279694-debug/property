@@ -79,7 +79,7 @@ internal data object ProjectList : NavKey
 internal data object ProjectHistory : NavKey
 
 @Serializable
-internal enum class ProjectOrigin { CURRENT, HISTORY, REVIEW, TREND, CATEGORY, ANNUAL }
+internal enum class ProjectOrigin { CURRENT, HISTORY, REVIEW, TREND, CATEGORY, ANNUAL, HOME, REVIEW_HOME }
 
 @Serializable
 internal data object CreateProject : NavKey
@@ -124,7 +124,7 @@ internal data object SubscriptionList : NavKey
 internal data object CreateSubscription : NavKey
 
 @Serializable
-internal enum class SubscriptionOrigin { CURRENT, HISTORY, REVIEW, TREND, CATEGORY, ANNUAL }
+internal enum class SubscriptionOrigin { CURRENT, HISTORY, REVIEW, TREND, CATEGORY, ANNUAL, HOME, REVIEW_HOME }
 
 @Serializable
 internal enum class SubscriptionAction { PAUSE, RESUME, REOPEN, STOP }
@@ -211,6 +211,8 @@ internal fun subscriptionOrigin(destination: NavKey): SubscriptionOrigin = when 
 }
 
 private fun subscriptionParent(origin: SubscriptionOrigin): List<NavKey> = when (origin) {
+    SubscriptionOrigin.HOME -> listOf(Home)
+    SubscriptionOrigin.REVIEW_HOME -> listOf(Home, Review)
     SubscriptionOrigin.CURRENT -> listOf(Home, SubscriptionList)
     SubscriptionOrigin.HISTORY -> listOf(Home, Review, SubscriptionHistory)
     SubscriptionOrigin.REVIEW -> listOf(Home, Review, LongTermReview)
@@ -238,6 +240,8 @@ internal fun projectOrigin(destination: NavKey): ProjectOrigin = when (destinati
 }
 
 private fun projectParent(origin: ProjectOrigin): List<NavKey> = when (origin) {
+    ProjectOrigin.HOME -> listOf(Home)
+    ProjectOrigin.REVIEW_HOME -> listOf(Home, Review)
     ProjectOrigin.CURRENT -> listOf(Home, ProjectList)
     ProjectOrigin.HISTORY -> listOf(Home, Review, ProjectHistory)
     ProjectOrigin.REVIEW -> listOf(Home, Review, LongTermReview)
@@ -311,6 +315,8 @@ private fun categoryMatchesRecord(category: CategoryAnalysis, canonical: List<Na
 internal fun projectBrowseReturnAfterDelete(current: List<NavKey>): NavKey {
     if (current.getOrNull(1) == NameSearch) return NameSearch
     return when (projectOrigin(current.lastOrNull() ?: Home)) {
+        ProjectOrigin.HOME -> Home
+        ProjectOrigin.REVIEW_HOME -> Review
         ProjectOrigin.CURRENT -> ProjectList
         ProjectOrigin.HISTORY -> ProjectHistory
         ProjectOrigin.REVIEW -> LongTermReview
@@ -329,6 +335,7 @@ private fun searchRecordTail(canonical: List<NavKey>): List<NavKey>? = when {
 
 /** Only decoded, known routes can be presented; old Skeleton and invalid stacks return home. */
 internal fun normalizeBackStack(restored: List<NavKey>): List<NavKey> {
+    if (restored == listOf(Home, CalculationExplanation)) return restored.toList()
     if (restored == listOf(Home, ProjectList, CreateProject)) return restored.toList()
     if (restored == listOf(Home, SubscriptionList, CreateSubscription)) return restored.toList()
     val destination = restored.lastOrNull() ?: return listOf(Home)
@@ -350,3 +357,6 @@ internal fun normalizeBackStack(restored: List<NavKey>): List<NavKey> {
     if (restored == canonical) return restored.toList()
     return listOf(Home)
 }
+
+/** Detail and editing layers keep a single explicit return path. */
+internal fun c2ShowPrimaryNavigation(route: NavKey): Boolean = route == Home || route == Review || route == Settings

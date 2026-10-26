@@ -862,3 +862,11 @@ P03仅IMPLEMENTED / PENDING FINAL PRODUCT REVIEW；92唯一JVM PASS、13新Compo
 ### Consequences
 
 P04仅个人体验候选，不是V1.0正式发行或M23通过。116唯一JVM PASS、42 Compose仅编译/NOT_RUN，普通Debug和体验Lint均0错误。实际安装/升级/恢复/提醒/OEM及其余历史门禁不升级结论。后续体验由用户自行安排；任何Codex设备操作须另行明确授权。问题按小范围处理并优先保护真实数据。
+
+
+## 2026-10-26 — UI-C2在产品主功能分支整合，A段先集中看样板
+
+- Decision：UI-C1只选择性继承视觉资产与纯UI组件思路，不整分支merge/cherry-pick。UI-C2直接实施在`codex/lithic-v1-product-completion`当前Room5/backup4产品之上。
+- Context：P04工程交付未体现用户认可的旧UI，用户明确要求重新组织层级与操作；历史工程验证不充当视觉认可。
+- Reason：防止视觉分支和实际安装包再次脱节，同时保留当前业务功能、数据/Owner/恢复与写入安全契约。
+- Consequences：本轮仅四页生产Compose+离线设计样板；无现成Compose桌面渲染时标PROTOTYPE_ONLY / APP_VISUAL_PENDING。无设备权限，封面受校验读取接口缺失如实保留。集中视觉反馈前不推广其他页面，不交付新用户APK。旧P04及M10/M20/M22/M13/G1～G4状态不改。
