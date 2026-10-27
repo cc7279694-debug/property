@@ -52,7 +52,8 @@ class C1ReviewVisualContractTest {
         compose.onNodeWithText("暂无长期项目或订阅记录").assertDoesNotExist()
         compose.onNodeWithTag("review-information-content").assertDoesNotExist()
         compose.onNodeWithTag("review-information").performClick()
-        compose.onNodeWithTag("review-information-content").assertTextContains("没有录入不等于没有花钱", substring = true)
+        compose.onNodeWithTag("review-information-content").assertExists()
+        compose.onNodeWithText("没有录入不等于没有花钱", substring = true).assertExists()
     }
 
     @Test fun loading_and_failed_zero_snapshots_are_not_replaced_with_welcoming_empty() {

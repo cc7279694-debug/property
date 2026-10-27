@@ -74,14 +74,13 @@ internal fun CostChart(
         ordered.map { Offset(projection.x(it.date), projection.y(it.value)) }
     }
     Column(modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text(if (ordered.all { it.value.signum() == 0 }) "全部显示点为¥0.00元/天；零线位于图中间。"
-            else "纵轴：${AmountFormatter.formatDailyRate(projection.minimum)} 至 ${AmountFormatter.formatDailyRate(projection.maximum)} 元/天",
-            style = MaterialTheme.typography.bodySmall)
         Canvas(Modifier.fillMaxWidth().height(220.dp).testTag("cost-chart-canvas")
             .semantics {
-                contentDescription = if (step) "订阅标准日均价格阶梯图。暂停、到期和停止的零值保留。可在下方输入日期或查看显示点。"
-                    else "项目日均成本历史图。负值位于零线下方。可在下方输入日期或查看显示点。"
-                stateDescription = selectedInRange?.takeIf { it.date == focusDate }?.let { "${it.date}，${AmountFormatter.formatDailyRate(it.value)} 元/天" }
+                contentDescription = (if (step) "订阅标准日均价格阶梯图。暂停、到期和停止的零值保留。可在下方输入日期或查看显示点。"
+                    else "项目日均成本历史图。负值位于零线下方。可在下方输入日期或查看显示点。") +
+                    "纵轴：${moneyMetricDescription(projection.minimum)} 至 ${moneyMetricDescription(projection.maximum)}；零线位于正负之间，按真实自然日排列。"
+                stateDescription = selectedInRange?.takeIf { it.date == focusDate }?.let {
+                    "${it.date}，${moneyMetricDescription(it.value, label = if (step) "订阅标准日均价格" else "项目日均成本")}" }
                     ?: requestedDate?.let { "$it，尚未取得该日期的图中精确结果" } ?: "尚未选择日期"
                 customActions = listOf(
                     CustomAccessibilityAction("前一天") {
@@ -125,9 +124,13 @@ internal fun CostChart(
             Text(projection.start.toString(), style = MaterialTheme.typography.bodySmall)
             if (projection.start != projection.end) Text(projection.end.toString(), style = MaterialTheme.typography.bodySmall)
         }
-        Text(if (step) "按真实自然日期排列；价格在边界处阶梯变化，不平滑连接零值区间。横向拖动选日，纵向滑动仍可浏览页面。"
-            else "按真实自然日期排列；横向拖动、前后日期和输入查询均读取真实日期结果，不从连线估算金额。",
-            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        C5InformationButton("图表坐标与选日", Modifier.testTag("chart-axis-toggle"), "图表说明") {
+            Text(if (ordered.all { it.value.signum() == 0 }) "全部显示点为${moneyMetricDisplay(BigDecimal.ZERO)}；零线位于图中间。"
+                else "纵轴：${moneyMetricDisplay(projection.minimum)} 至 ${moneyMetricDisplay(projection.maximum)}",
+                Modifier.testTag("chart-axis"))
+            Text(if (step) "按真实自然日期排列；价格在边界处阶梯变化，不平滑连接零值区间。横向拖动选日，纵向滑动仍可浏览页面。"
+                else "按真实自然日期排列；负值位于零线下方。横向拖动、前后日期和输入查询均读取真实日期结果，不从连线估算金额。")
+        }
     }
 }
 

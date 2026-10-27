@@ -1,9 +1,9 @@
 package com.cooper.lithic.core.design
 
-import com.cooper.lithic.core.design.*
-
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,8 +29,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -38,6 +36,7 @@ import java.time.format.DateTimeParseException
 
 /** Pure read-only page shared by the two item types. All monetary results come from the caller. */
 @Composable
+@OptIn(ExperimentalLayoutApi::class)
 internal fun CostChartPage(
     title: String,
     screenTag: String,
@@ -68,6 +67,8 @@ internal fun CostChartPage(
     var eventLimit by rememberSaveable(title) { mutableIntStateOf(50) }
     var eventFilter by rememberSaveable(title) { mutableStateOf<String?>(null) }
     var expandedDay by rememberSaveable(title) { mutableStateOf<String?>(null) }
+    var dateExpanded by rememberSaveable(title) { mutableStateOf(false) }
+    var eventsExpanded by rememberSaveable(title) { mutableStateOf(false) }
     val orderedEvents = remember(events) { events.sortedWith(compareByDescending<ChartEvent> { it.date }.thenBy { it.id }) }
     val filteredEvents = remember(orderedEvents, eventFilter) {
         orderedEvents.filter { eventFilter == null || it.date.toString() == eventFilter }
@@ -93,7 +94,6 @@ internal fun CostChartPage(
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 C2PageHeader(title, onBack, "chart-back", backLabel = "返回详情")
                 Text(metricTitle, style = MaterialTheme.typography.titleLarge)
-                Text(explanation, style = MaterialTheme.typography.bodyMedium)
             }
         }
         if (loading) item("loading") { Text(if (hasData) "正在重新读取；下方保留上次结果。" else "正在读取历史数据。") }
@@ -109,6 +109,11 @@ internal fun CostChartPage(
         if (missing) item("missing") { Text("该记录当前不存在，不能继续显示其历史。", Modifier.testTag("chart-missing")) }
         if (hasData) {
             val cutoff = requireNotNull(asOf)
+            item("canvas") {
+                CostChart(points, if (selectedDate != null && selectedDate == selectionFocus && selectedValue != null)
+                    CostChartPoint(selectedDate, selectedValue) else null,
+                    onSelectDate, step, events.asSequence().filter { it.date <= cutoff }.map { it.date }.toSet(), requestedDate = selectionFocus)
+            }
             item("selection") {
                 Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -116,30 +121,37 @@ internal fun CostChartPage(
                         if (selectionFocus != null) {
                             Text("所选日期：$selectionFocus", Modifier.testTag("chart-selected-date"), style = MaterialTheme.typography.titleMedium)
                             if (selectedDate == selectionFocus) {
-                                AmountText(selectedValue, Modifier.testTag("chart-selected-value"), style = MaterialTheme.typography.headlineMedium)
+                                MoneyMetric(selectedValue, Modifier.fillMaxWidth().testTag("chart-selected-value"),
+                                    level = MoneyMetricLevel.DETAIL, label = metricTitle)
                                 Text(selectedStatus.orEmpty(), Modifier.testTag("chart-selected-status"))
                             } else Text("正在查询所选日期；不使用旧日期金额或0代替结果。")
-                        } else Text("选择一个日期，查看冻结引擎返回的精确历史结果。")
+                        } else Text("选择一个日期，查看精确历史结果。")
                     }
                 }
             }
-            item("canvas") {
-                CostChart(points, if (selectedDate != null && selectedValue != null) CostChartPoint(selectedDate, selectedValue) else null,
-                    onSelectDate, step, events.asSequence().filter { it.date <= cutoff }.map { it.date }.toSet(), requestedDate = selectionFocus)
-                if (sampled) Text("长跨度按显示点采样；事实边界保留。日期查询与事件清单不受显示点数量限制。",
-                    style = MaterialTheme.typography.bodySmall)
-            }
-            item("date") {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            item("date-actions") {
+                FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                     selectionFocus?.let { date ->
-                        OutlinedButton({ onSelectDate(date.minusDays(1)) },
-                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-previous-day"),
+                        TextButton({ onSelectDate(date.minusDays(1)) },
+                            Modifier.heightIn(min = 48.dp).testTag("chart-previous-day"),
                             enabled = selectionStart != null && selectionEnd != null && date > selectionStart && date <= selectionEnd) { Text("前一天") }
-                        OutlinedButton({ onSelectDate(date.plusDays(1)) },
-                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-next-day"),
+                        TextButton({ onSelectDate(date.plusDays(1)) },
+                            Modifier.heightIn(min = 48.dp).testTag("chart-next-day"),
                             enabled = selectionStart != null && selectionEnd != null && date >= selectionStart && date < selectionEnd) { Text("后一天") }
-                        Text("前后一天限图表日期范围；其他已过去日期可输入查询。", style = MaterialTheme.typography.bodySmall)
                     }
+                    TextButton({ dateExpanded = !dateExpanded }, Modifier.heightIn(min = 48.dp).testTag("chart-date-toggle")) {
+                        Text(if (dateExpanded) "收起日期查询" else "指定日期")
+                    }
+                    C5InformationButton("$metricTitle · 指标说明", Modifier.testTag("chart-information"), "指标说明") {
+                        Text(explanation)
+                        if (sampled) Text("长跨度按显示点采样；事实边界保留。日期查询与事件清单不受显示点数量限制。")
+                        Text("前后一天限图表日期范围；其他已过去日期可输入查询。显示点只用于图形，查询返回所选日期的精确结果。")
+                        Text("同日事件共同列出，不推断小时先后，也不把单一事件当作全部变化的唯一原因。付款、覆盖边界和状态变化是不同事实；有事件也可能没有日均变化。")
+                    }
+                }
+            }
+            if (dateExpanded) item("date") {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedTextField(dateRaw, { dateRaw = it; dateError = null }, Modifier.fillMaxWidth().testTag("chart-date-input"),
                         label = { Text("查询日期（年-月-日）") }, placeholder = { Text(selectedDate?.toString() ?: asOf.toString()) },
                         isError = dateError != null, singleLine = true,
@@ -155,7 +167,10 @@ internal fun CostChartPage(
             if (pointsExpanded) {
                 items(points.take(pointLimit), key = { "point-${it.date}" }) { point ->
                     OutlinedButton({ onSelectDate(point.date) }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-point-${point.date}")) {
-                        Text("${point.date}　${AmountFormatter.formatDailyRate(point.value)} 元/天")
+                        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text(point.date.toString())
+                            MoneyMetric(point.value, level = MoneyMetricLevel.ROW, label = metricTitle)
+                        }
                     }
                 }
                 if (points.size > pointLimit) item("more-points") {
@@ -165,50 +180,61 @@ internal fun CostChartPage(
             if (adjustments.isNotEmpty()) {
                 item("adjustment-heading") {
                     Text("结束后结果调整", style = MaterialTheme.typography.titleLarge)
-                    Text("仅列实际结算或纠错日期，不与持有期曲线连接；持有天数不再增长。")
+                    Text("持有期已结束，调整单独列出，不延长曲线。", style = MaterialTheme.typography.bodyMedium)
                 }
                 items(adjustments, key = { "adjustment-${it.date}" }) { point ->
                     OutlinedButton({ onSelectDate(point.date) }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-adjustment-${point.date}")) {
-                        Text("${point.date}　${AmountFormatter.formatDailyRate(point.value)} 元/天；持有${point.heldDays}天")
-                    }
-                }
-            }
-            item("events-heading") {
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text("该日相关事件", style = MaterialTheme.typography.titleLarge)
-                    Text("同日记录完整列出；没有小时事实时，不推断同日先后顺序。")
-                    if (selectedDate != null) OutlinedButton({ eventFilter = selectedDate.toString(); eventLimit = 50; expandedDay = selectedDate.toString() },
-                        Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-show-selected-events")) { Text("查看所选日期的全部事件") }
-                    if (eventFilter != null) TextButton({ eventFilter = null; eventLimit = 50 },
-                        Modifier.heightIn(min = 48.dp).testTag("chart-show-all-events")) { Text("返回全部日期事件") }
-                    if (filteredEvents.isEmpty()) Text(if (eventFilter != null) "所选日期没有事件；历史金额仍按领域引擎计算。" else "没有已登记的事件。")
-                }
-            }
-            groups.forEach { (date, dayEvents) ->
-                item("event-day-$date") {
-                    val total = filteredEvents.count { it.date == date }
-                    OutlinedButton({ expandedDay = if (expandedDay == date.toString()) null else date.toString() },
-                        Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-event-day-$date")) {
-                        Text("$date　${total}条事件${if (expandedDay == date.toString()) "，收起" else "，展开"}")
-                    }
-                }
-                if (expandedDay == date.toString()) {
-                    if (date > cutoff) item("future-$date") { Text("尚未生效的计划，不属于历史曲线。") }
-                    items(dayEvents, key = { "event-${it.id}" }) { event ->
-                        Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("chart-event-${event.id}")) {
-                            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                                Text(event.title, style = MaterialTheme.typography.titleMedium)
-                                Text(event.detail)
-                                event.amountCents?.let { Text(AmountFormatter.formatCny(BigDecimal.valueOf(it, 2))) }
-                                if (event.nonCash) Text("非现金折抵（不是现金扣款）")
-                                if (date <= cutoff) TextButton({ onSelectDate(date) }, Modifier.heightIn(min = 48.dp)) { Text("查看该日结果") }
-                            }
+                        Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text("${point.date} · 持有${point.heldDays}天")
+                            MoneyMetric(point.value, level = MoneyMetricLevel.ROW, label = "$metricTitle · 结束后结果调整")
                         }
                     }
                 }
             }
-            if (filteredEvents.size > eventLimit) item("more-events") {
-                OutlinedButton({ eventLimit += 50 }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-events-more")) { Text("再显示50条事件（已显示${visibleEvents.size}/${filteredEvents.size}）") }
+            item("events-heading") {
+                TextButton({ eventsExpanded = !eventsExpanded }, Modifier.heightIn(min = 48.dp).testTag("chart-events-toggle")) {
+                    Text(if (eventsExpanded) "收起相关事件" else "查看相关事件（${events.size}条）")
+                }
+            }
+            if (eventsExpanded) {
+                item("events-scope") {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Text("该日相关事件", style = MaterialTheme.typography.titleLarge)
+                        if (selectedDate != null) OutlinedButton({ eventFilter = selectedDate.toString(); eventLimit = 50; expandedDay = selectedDate.toString() },
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-show-selected-events"),
+                            enabled = selectedDate == selectionFocus) { Text("查看所选日期的全部事件") }
+                        if (eventFilter != null) TextButton({ eventFilter = null; eventLimit = 50 },
+                            Modifier.heightIn(min = 48.dp).testTag("chart-show-all-events")) { Text("返回全部日期事件") }
+                        if (filteredEvents.isEmpty()) Text(if (eventFilter != null) "所选日期没有事件；历史金额仍按领域引擎计算。" else "没有已登记的事件。")
+                    }
+                }
+                groups.forEach { (date, dayEvents) ->
+                    item("event-day-$date") {
+                        val total = filteredEvents.count { it.date == date }
+                        OutlinedButton({ expandedDay = if (expandedDay == date.toString()) null else date.toString() },
+                            Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-event-day-$date")) {
+                            Text("$date　${total}条事件${if (expandedDay == date.toString()) "，收起" else "，展开"}")
+                        }
+                    }
+                    if (expandedDay == date.toString()) {
+                        if (date > cutoff) item("future-$date") { Text("尚未生效的计划，不属于历史曲线。") }
+                        items(dayEvents, key = { "event-${it.id}" }) { event ->
+                            Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("chart-event-${event.id}")) {
+                                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                                    Text(event.title, style = MaterialTheme.typography.titleMedium)
+                                    Text(event.detail)
+                                    event.amountCents?.let { MoneyMetric(BigDecimal.valueOf(it, 2), unit = AmountUnit.YUAN,
+                                        level = MoneyMetricLevel.ROW, label = event.title) }
+                                    if (event.nonCash) Text("非现金折抵（不是现金扣款）")
+                                    if (date <= cutoff) TextButton({ onSelectDate(date) }, Modifier.heightIn(min = 48.dp)) { Text("查看该日结果") }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (filteredEvents.size > eventLimit) item("more-events") {
+                    OutlinedButton({ eventLimit += 50 }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-events-more")) { Text("再显示50条事件（已显示${visibleEvents.size}/${filteredEvents.size}）") }
+                }
             }
         }
     }

@@ -111,7 +111,7 @@ class HistoryReviewTest {
         assertEquals("annual", opened)
         row("paused")
         compose.onNodeWithTag("review-status-paused", true).assertTextEquals("已暂停")
-        compose.onNodeWithTag("review-rate-paused", true).assertContentDescriptionEquals("10.00元/天")
+        compose.onNodeWithTag("review-rate-paused", true).assertContentDescriptionEquals("历史平均日成本，10.00元/天")
     }
 
     @Test fun unread_failure_empty_and_unavailable_are_distinct_without_fake_zero() {

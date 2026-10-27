@@ -1,15 +1,11 @@
 package com.cooper.lithic.feature.review
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,18 +17,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Button
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -44,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.style.TextAlign
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
+import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.domain.report.OverviewKind
 import java.time.LocalDate
 
@@ -57,7 +47,6 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
     onSelectTrendDate: (LocalDate) -> Unit = {}, onToggleTrendBreakdown: () -> Unit = {},
     onRetryTrend: () -> Unit = {}, onOpenTrendRecord: (OverviewKind, String) -> Unit = { _, _ -> },
     onAddRecord: (() -> Unit)? = null) {
-    var informationOpen by rememberSaveable { mutableStateOf(false) }
     val trendHasRecords = trendState?.snapshot?.overview?.let {
         it.projects.isNotEmpty() || it.subscriptions.isNotEmpty()
     } == true || trendState?.timeline?.from != null
@@ -67,8 +56,14 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
         trendHasRecords = trendHasRecords)
     val header: @Composable () -> Unit = {
         ReviewHeading(projectCount, subscriptionCount,
-            hasReadNotice || trendHasNotice || (projectCount == 0L && subscriptionCount == 0L && trendHasRecords),
-            onInformation = { informationOpen = true })
+            hasReadNotice || trendHasNotice || (projectCount == 0L && subscriptionCount == 0L && trendHasRecords)) {
+            C5InformationButton("回看的口径", Modifier.testTag("review-information")) {
+                Column(Modifier.testTag("review-information-content"), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    ReviewCounts(projectCount, subscriptionCount)
+                    Text("没有录入不等于没有花钱；趋势按已录入、已纠正的事实重建，不代表全部生活消费，也不是当日扣款。类别分析分开查看项目与订阅；年度回顾按真实资金年份归属；长期复盘保留各自指标。历史档案只包含已结束项目和已停止订阅，暂停或到期但未停止的订阅仍在订阅列表。")
+                }
+            }
+        }
     }
     val destinations: @Composable () -> Unit = {
         ReviewDestinations(onProjectHistory, onSubscriptionHistory, onLongTermReview,
@@ -97,14 +92,6 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
             }
         }
     }
-    if (informationOpen) AlertDialog(onDismissRequest = { informationOpen = false },
-        title = { Text("回看的口径") },
-        text = { Column(Modifier.verticalScroll(rememberScrollState()).testTag("review-information-content"),
-            verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            ReviewCounts(projectCount, subscriptionCount)
-            Text("没有录入不等于没有花钱；趋势按已录入、已纠正的事实重建，不代表全部生活消费，也不是当日扣款。类别分析分开查看项目与订阅；年度回顾按真实资金年份归属；长期复盘保留各自指标。历史档案只包含已结束项目和已停止订阅，暂停或到期但未停止的订阅仍在订阅列表。")
-        } },
-        confirmButton = { TextButton({ informationOpen = false }) { Text("知道了") } })
 }
 
 @Composable
@@ -150,16 +137,13 @@ private fun ReviewEmptyIdentity() {
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNotice: Boolean, onInformation: () -> Unit) {
+private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNotice: Boolean, information: @Composable () -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text("回看", style = MaterialTheme.typography.headlineMedium,
                 modifier = Modifier.weight(1f).semantics { heading() })
-            IconButton(onInformation, Modifier.size(48.dp).testTag("review-information")) {
-                C2Icon(C2Glyph.Info, description = "查看回看说明")
-            }
+            information()
         }
         val summary = reviewRecordSummary(projectCount, subscriptionCount, hasReadNotice)
         if (summary == ReviewRecordSummary.SNAPSHOT_NOTICE) Text(

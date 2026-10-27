@@ -14,12 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import com.cooper.lithic.core.design.AmountFormatter
-import com.cooper.lithic.core.design.AmountText
-import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.domain.report.*
 import java.math.BigDecimal
 import java.math.MathContext
@@ -52,9 +50,25 @@ internal fun ReportMoneyValues(amounts: ReportAmounts, prefix: String, kind: Ove
 
 @Composable
 private fun ReportMoney(label: String, cents: Long, tag: String) {
-    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Text(label, style = MaterialTheme.typography.labelLarge)
-        AmountText(BigDecimal.valueOf(cents, 2), Modifier.testTag(tag), AmountUnit.YUAN, MaterialTheme.typography.titleLarge)
+    ReportMoneyLine(label, cents, MoneyMetricLevel.CARD, Modifier.testTag(tag))
+}
+
+@Composable
+private fun ReportMoneyLine(label: String, cents: Long, level: MoneyMetricLevel, modifier: Modifier = Modifier) {
+    val fontScale = LocalDensity.current.fontScale
+    val amount = BigDecimal.valueOf(cents, 2)
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val rowAmountWidth = ((maxWidth - 12.dp).coerceAtLeast(0.dp) * 1.2f) / 2.2f
+        val amountFitsRow = moneyMetricFitsAtPreferredSize(amount, rowAmountWidth, AmountUnit.YUAN, level)
+        if (maxWidth < 320.dp || fontScale > 1.3f || !amountFitsRow) {
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                Text(label, style = MaterialTheme.typography.bodyMedium)
+                MoneyMetric(amount, modifier.fillMaxWidth(), unit = AmountUnit.YUAN, level = level, label = label)
+            }
+        } else Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(label, Modifier.weight(1f), style = MaterialTheme.typography.bodyMedium)
+            MoneyMetric(amount, modifier.weight(1.2f), unit = AmountUnit.YUAN, level = level, label = label)
+        }
     }
 }
 
@@ -79,10 +93,10 @@ internal fun ReportAnnualBars(year: Int, amounts: ReportAmounts, scale: BigDecim
     val axis = MaterialTheme.colorScheme.outlineVariant
     Text("$year 年", style = MaterialTheme.typography.titleMedium)
     reportValues(amounts, kind).forEach { (label, cents) ->
-        Text("$label：${AmountFormatter.formatCny(BigDecimal.valueOf(cents, 2))}", style = MaterialTheme.typography.bodyMedium)
+        ReportMoneyLine(label, cents, MoneyMetricLevel.ROW)
         val ratio = BigDecimal.valueOf(cents).abs().divide(scale, MathContext.DECIMAL128).coerceIn(BigDecimal.ZERO, BigDecimal.ONE).toFloat()
         Canvas(Modifier.fillMaxWidth().height(20.dp).semantics {
-            contentDescription = "$year 年，$label，${AmountFormatter.formatCny(BigDecimal.valueOf(cents, 2))}。左负右正，所有年份共用金额尺度。"
+            contentDescription = "$year 年，${moneyMetricDescription(BigDecimal.valueOf(cents, 2), AmountUnit.YUAN, label)}。左负右正，所有年份共用金额尺度。"
         }) {
             val centre = size.width / 2f
             drawLine(axis, Offset(centre, 0f), Offset(centre, size.height), 1.dp.toPx())

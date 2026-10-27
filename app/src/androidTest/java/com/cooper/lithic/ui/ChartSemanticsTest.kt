@@ -58,6 +58,7 @@ class ChartSemanticsTest {
     @Test fun date_input_selects_exact_date_without_drag_and_rejects_future() {
         var requested: LocalDate? = null
         project(onSelect = { requested = it })
+        scroll("chart-date-toggle"); compose.onNodeWithTag("chart-date-toggle").performClick()
         scroll("chart-date-input")
         compose.onNodeWithTag("chart-date-input").performTextReplacement("2026-01-07")
         scroll("chart-date-apply")
@@ -74,6 +75,7 @@ class ChartSemanticsTest {
     @Test fun same_day_complete_events_are_reachable_beyond_fifty_and_non_cash_is_explicit() {
         val events = (0..50).map { ChartEvent("event-$it", today, "同日事实$it", "完整说明$it", 100, nonCash = it == 50) }
         project(events = events)
+        scroll("chart-events-toggle"); compose.onNodeWithTag("chart-events-toggle").performClick()
         scroll("chart-show-selected-events")
         compose.onNodeWithTag("chart-show-selected-events").performClick()
         scroll("chart-events-more")
@@ -87,7 +89,7 @@ class ChartSemanticsTest {
         val input = ProjectSnapshot(LongTermProject(start), listOf(ProjectMoneyEvent(MoneyDirection.RECOVERY, Money(1), start)))
         val timeline = ProjectTimelineEngine.build(input, today)
         project(timeline = timeline, selected = ProjectTimelineEngine.point(input, today, today))
-        compose.onNodeWithTag("chart-selected-value").assertContentDescriptionEquals("负值，绝对值小于0.01元/天")
+        compose.onNodeWithTag("chart-selected-value").assertContentDescriptionEquals("项目日均成本历史，负值，绝对值小于0.01元/天")
         compose.onNodeWithTag("chart-selected-value").assertTextContains("−<¥0.01")
         compose.onNodeWithTag("cost-chart-canvas").assertExists()
     }
@@ -105,8 +107,9 @@ class ChartSemanticsTest {
                     { selections.incrementAndGet() }, {}, {})
             }
         }
-        compose.onNodeWithTag("chart-selected-value").assertContentDescriptionEquals("0.00元/天")
+        compose.onNodeWithTag("chart-selected-value").assertContentDescriptionEquals("标准日均价格历史，0.00元/天")
         compose.onNodeWithTag("chart-selected-status").assertTextContains("暂停", substring = true)
+        scroll("chart-events-toggle", subscription = true); compose.onNodeWithTag("chart-events-toggle").performClick()
         scroll("chart-event-day-$future", subscription = true)
         compose.onNodeWithTag("chart-event-day-$future").performClick()
         scroll("chart-event-future", subscription = true)
@@ -138,8 +141,10 @@ class ChartSemanticsTest {
                 } } }
             }
         }
+        scroll("chart-date-toggle"); compose.onNodeWithTag("chart-date-toggle").performClick()
         scroll("chart-date-apply")
         compose.onNodeWithTag("chart-date-apply").assertIsDisplayed().assertHeightIsAtLeast(48.dp)
+        scroll("chart-events-toggle"); compose.onNodeWithTag("chart-events-toggle").performClick()
         scroll("chart-event-day-$today")
         compose.onNodeWithTag("chart-event-day-$today").assertIsDisplayed().assertHasClickAction().performClick()
         scroll("chart-event-narrow")

@@ -30,11 +30,14 @@ class C4ReviewDensityTest {
         compose.onNodeWithTag("total-trend-selected-date").assertTextEquals(day.toString())
         compose.onNodeWithTag("total-trend-canvas").assertIsDisplayed().assertHeightIsEqualTo(172.dp)
         compose.onNodeWithTag("total-trend-axis").assertDoesNotExist()
-        compose.onNodeWithTag("total-trend-selected-status").assertDoesNotExist()
+        compose.onNodeWithTag("total-trend-selected-status").assertTextContains("有效贡献")
         compose.onNodeWithTag("review-counts-compact").assertDoesNotExist()
+        scroll("total-trend-axis-toggle").performClick()
+        compose.onNodeWithTag("total-trend-axis").assertExists()
+        compose.onNodeWithText("知道了").performClick()
         scroll("review-trend-details-toggle").performClick()
-        scroll("total-trend-axis").assertExists()
-        scroll("total-trend-selected-status").assertTextContains("有效贡献")
+        compose.onNodeWithTag("total-trend-selection-meaning").assertTextContains("有效贡献")
+        compose.onNodeWithText("知道了").performClick()
         scroll("review-information").performClick()
         compose.onNodeWithTag("review-project-count").assertTextContains("1 条长期项目")
         compose.onNodeWithTag("review-count-scope").assertTextContains("当前和历史")
@@ -77,13 +80,12 @@ class C4ReviewDensityTest {
         scroll("total-trend-date-apply").assertIsDisplayed().assertHeightIsAtLeast(48.dp)
     }
 
-    @Test fun expanded_status_distinguishes_real_zero_from_history_without_current_contribution() {
+    @Test fun visible_status_distinguishes_real_zero_from_history_without_current_contribution() {
         val initial = state()
         val realZero = requireNotNull(initial.selectedPoint).copy(totalRate = BigDecimal.ZERO, projectRate = BigDecimal.ZERO,
             hasPositiveContribution = false, hasNegativeContribution = false)
         val ui = mutableStateOf(initial.copy(selectedPoint = realZero))
         compose.setContent { LithicTheme { ReviewShell(1, trendState = ui.value) } }
-        scroll("review-trend-details-toggle").performClick()
         scroll("total-trend-selected-status").assertTextContains("真实日均成本为0")
         compose.runOnIdle { ui.value = initial.copy(selectedPoint = realZero.copy(activeProjectCount = 0)) }
         scroll("total-trend-selected-status").assertTextContains("历史记录仍保留")

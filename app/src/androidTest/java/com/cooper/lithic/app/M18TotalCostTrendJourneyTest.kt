@@ -26,6 +26,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.cooper.lithic.core.design.AmountFormatter
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.core.design.ChartGeometry
+import com.cooper.lithic.core.design.CostChartPoint
+import com.cooper.lithic.core.design.moneyMetricDescription
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.data.backup.DataGenerationStore
@@ -33,6 +36,7 @@ import com.cooper.lithic.data.local.*
 import com.cooper.lithic.data.repository.*
 import com.cooper.lithic.domain.report.CostTimelineEngine
 import com.cooper.lithic.domain.report.OverviewEngine
+import com.cooper.lithic.domain.report.TimelineSampler
 import com.cooper.lithic.domain.subscription.BillingCycle
 import java.io.File
 import java.io.FileOutputStream
@@ -148,10 +152,16 @@ class M18TotalCostTrendJourneyTest {
         capture("01b-total-plot-context")
         scrollClick(SCREEN, "total-trend-breakdown")
         scrollTo(SCREEN, "total-trend-canvas")
+        val sampled = TimelineSampler.sample(snapshot, today)
+        val projection = requireNotNull(ChartGeometry.forPoints(sampled.points.flatMap {
+            listOf(CostChartPoint(it.date, it.totalRate), CostChartPoint(it.date, it.projectRate), CostChartPoint(it.date, it.subscriptionRate))
+        }))
         compose.onNodeWithTag("total-trend-canvas").assertContentDescriptionEquals(
-            "总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。")
+            "总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。" +
+                "纵轴：${moneyMetricDescription(projection.minimum)} 至 ${moneyMetricDescription(projection.maximum)}；按自然日绘制。")
         capture("02-component-same-scale-plot", "total-trend-canvas")
         capture("02b-component-plot-context")
+        scrollClick(SCREEN, "total-trend-date-toggle")
         for ((date, name) in listOf(valleyDay to "07-negative-valley-exact-values", peakDay to "08-positive-peak-exact-values")) {
             scrollTo(SCREEN, "total-trend-date-input")
             compose.onNodeWithTag("total-trend-date-input").performTextReplacement(date.toString())
@@ -170,6 +180,7 @@ class M18TotalCostTrendJourneyTest {
         scrollTo(SCREEN, "total-trend-total")
         waitText("total-trend-total", AmountFormatter.formatDailyRate(point.totalRate))
         capture("03-exact-three-amounts")
+        scrollClick(SCREEN, "total-trend-events-toggle")
         scrollTo(SCREEN, "total-trend-events-more"); click("total-trend-events-more")
         val event = snapshot.events.first { it.description.contains("同日说明50") }
         scrollTo(SCREEN, "total-trend-event-${event.id}")
@@ -187,7 +198,7 @@ class M18TotalCostTrendJourneyTest {
         waitText("project-detail-name", old.name); click("project-detail-back")
         waitNode(SCREEN)
         scrollTo(SCREEN, "total-trend-breakdown")
-        compose.onNodeWithTag("total-trend-breakdown").assertTextContains("收起两类贡献", substring = true)
+        compose.onNodeWithTag("total-trend-breakdown").assertTextContains("收起分项曲线", substring = true)
         assertEquals(before, generation.backupSnapshotSource().capture())
 
         compose.runOnIdle { fontScale.value = 2f }
@@ -195,7 +206,8 @@ class M18TotalCostTrendJourneyTest {
         compose.onNodeWithTag("total-trend-date-input").assertIsDisplayed()
         capture("05-360dp-font200-date-entry")
         scrollTo(SCREEN, "total-trend-back")
-        compose.onNodeWithTag("total-trend-back").assertIsDisplayed().assertHeightIsAtLeast(48.dp)
+        compose.onNodeWithTag("total-trend-back").assertIsDisplayed().assertContentDescriptionEquals("返回回看")
+            .assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp)
         capture("06-360dp-font200-back")
         compose.runOnIdle { fontScale.value = 1f }
 

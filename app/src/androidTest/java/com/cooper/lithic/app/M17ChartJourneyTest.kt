@@ -133,6 +133,7 @@ class M17ChartJourneyTest {
         val expected = com.cooper.lithic.domain.report.ProjectTimelineEngine.point(exactBeforeRepair.snapshot, today, repair.occurredOn.minusDays(1))
         waitText("chart-selected-value", AmountFormatter.formatDailyRate(expected.cost.dailyRate))
         selectDate(PROJECT, refundA.occurredOn)
+        scrollClick(PROJECT, "chart-events-toggle")
         scrollClick(PROJECT, "chart-show-selected-events")
         scrollTo(PROJECT, "chart-event-${refundA.id}")
         waitText("chart-event-${refundA.id}", "同日收回甲")
@@ -297,6 +298,10 @@ class M17ChartJourneyTest {
         scrollClick("subscription-list-content", "subscription-row-$id"); waitNode("subscription-detail-name")
     }
     private fun selectDate(container: String, date: LocalDate) {
+        scrollTo(container, "chart-date-toggle")
+        if (textOf(compose.onNodeWithTag("chart-date-toggle").fetchSemanticsNode()).contains("指定日期")) {
+            click("chart-date-toggle")
+        }
         scrollTo(container, "chart-date-input")
         compose.onNodeWithTag("chart-date-input").performTextReplacement(date.toString())
         Espresso.closeSoftKeyboard(); scrollClick(container, "chart-date-apply")

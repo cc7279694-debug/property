@@ -9,14 +9,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import com.cooper.lithic.core.design.AmountText
 import com.cooper.lithic.domain.report.*
 import com.cooper.lithic.feature.review.*
 
 @Composable
+@OptIn(ExperimentalLayoutApi::class)
 internal fun CategoryAnalysisScreen(
     state: ReportAnalysisUiState,
     onSelectCategory: (OverviewKind, String?) -> Unit,
@@ -35,14 +33,19 @@ internal fun CategoryAnalysisScreen(
         item("heading") { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             C2PageHeader("类别分析", onBack, "category-analysis-back", backLabel = "返回回看")
             Text("按当前分类", Modifier.testTag("category-analysis-basis"), style = MaterialTheme.typography.titleMedium)
-            Text("改名、合并和历史纠错后重新计算；不推断过去的类别名称。当前日均成本与历史真实金额是不同指标。")
+            C5InformationButton("类别分析口径", Modifier.testTag("category-analysis-information")) {
+                Text("改名、合并和历史纠错后按当前分类重新计算；不推断过去的类别名称。当前日均成本与历史真实金额是不同指标；两类体系分别查看。")
+                Text("仅列已录入资金事实的年份，缺年不代表没有花钱。按实际发生年或付款年归属；左负右正，所有年份共用金额尺度。")
+            }
             state.asOf?.let { Text("结果截至 $it") }
-            androidx.compose.material3.FilterChip(selected = state.selectedKind == OverviewKind.PROJECT, onClick = { onSelectCategory(OverviewKind.PROJECT, null) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("category-analysis-project"), label = {
-                Text(if (state.selectedKind == OverviewKind.PROJECT) "长期项目 · 已选择" else "长期项目")
-            })
-            androidx.compose.material3.FilterChip(selected = state.selectedKind == OverviewKind.SUBSCRIPTION, onClick = { onSelectCategory(OverviewKind.SUBSCRIPTION, null) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("category-analysis-subscription"), label = {
-                Text(if (state.selectedKind == OverviewKind.SUBSCRIPTION) "订阅 · 已选择" else "订阅")
-            })
+            FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                FilterChip(selected = state.selectedKind == OverviewKind.PROJECT, onClick = { onSelectCategory(OverviewKind.PROJECT, null) }, modifier = Modifier.heightIn(min = 48.dp).testTag("category-analysis-project"), label = {
+                    Text(if (state.selectedKind == OverviewKind.PROJECT) "长期项目 · 已选择" else "长期项目")
+                })
+                FilterChip(selected = state.selectedKind == OverviewKind.SUBSCRIPTION, onClick = { onSelectCategory(OverviewKind.SUBSCRIPTION, null) }, modifier = Modifier.heightIn(min = 48.dp).testTag("category-analysis-subscription"), label = {
+                    Text(if (state.selectedKind == OverviewKind.SUBSCRIPTION) "订阅 · 已选择" else "订阅")
+                })
+            }
         } }
         item("read-status") { ReportReadStatus(state, onRetry, "category-analysis") }
         if (state.snapshot != null) {
@@ -61,7 +64,12 @@ internal fun CategoryAnalysisScreen(
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text(report.category.name, Modifier.testTag("category-analysis-name"), style = MaterialTheme.typography.titleLarge)
                     Text("$kindLabel · 当前日均成本贡献")
-                    AmountText(report.currentRate, Modifier.testTag("category-analysis-rate"), style = MaterialTheme.typography.headlineMedium)
+                    MoneyMetric(report.currentRate, Modifier.fillMaxWidth().testTag("category-analysis-rate"),
+                        level = MoneyMetricLevel.DETAIL, color = MaterialTheme.colorScheme.primary, label = "$kindLabel · 当前日均成本贡献")
+                }
+            } }
+            item("historical") { Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text("历史累计真实金额 · 按当前分类")
                     ReportMoneyValues(report.historical, "category-analysis", report.category.kind)
                     if (!report.historical.hasRecords) Text("未录入相关资金记录。", Modifier.testTag("category-analysis-no-facts"))
@@ -70,7 +78,6 @@ internal fun CategoryAnalysisScreen(
             item("year-heading") {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text("各年度真实金额", Modifier.testTag("category-analysis-years"), style = MaterialTheme.typography.titleLarge)
-                    Text("仅列已录入资金事实的年份，缺年不代表没有花钱。按实际发生年或付款年归属；左负右正，所有年份共用金额尺度。")
                 }
             }
             val years = report.annual.sortedByDescending { it.year }
