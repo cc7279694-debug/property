@@ -99,8 +99,11 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
     }
     if (informationOpen) AlertDialog(onDismissRequest = { informationOpen = false },
         title = { Text("回看的口径") },
-        text = { Text("记录数量包含当前与历史。没有录入不等于没有花钱；趋势按已录入、已纠正的事实重建，不代表全部生活消费。类别分析分开查看项目与订阅；年度回顾按真实资金年份归属；长期复盘保留各自指标。历史档案只包含已结束项目和已停止订阅，暂停或到期但未停止的订阅仍在订阅列表。",
-            Modifier.verticalScroll(rememberScrollState()).testTag("review-information-content")) },
+        text = { Column(Modifier.verticalScroll(rememberScrollState()).testTag("review-information-content"),
+            verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            ReviewCounts(projectCount, subscriptionCount)
+            Text("没有录入不等于没有花钱；趋势按已录入、已纠正的事实重建，不代表全部生活消费，也不是当日扣款。类别分析分开查看项目与订阅；年度回顾按真实资金年份归属；长期复盘保留各自指标。历史档案只包含已结束项目和已停止订阅，暂停或到期但未停止的订阅仍在订阅列表。")
+        } },
         confirmButton = { TextButton({ informationOpen = false }) { Text("知道了") } })
 }
 
@@ -163,19 +166,20 @@ private fun ReviewHeading(projectCount: Long, subscriptionCount: Long, hasReadNo
             "以下为已取得的记录快照",
             Modifier.testTag("review-record-summary"), style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
-        if (summary != ReviewRecordSummary.EMPTY) FlowRow(Modifier.fillMaxWidth().testTag("review-counts-compact"),
-            horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text("$projectCount 条长期项目", Modifier.testTag("review-project-count"),
-                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text("$subscriptionCount 条订阅服务", Modifier.testTag("review-subscription-count"),
-                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text("含当前和历史", Modifier.testTag("review-count-scope"),
-                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        }
         if (summary == ReviewRecordSummary.SNAPSHOT_NOTICE) Text(
             "当前有读取或恢复提示；这里只展示已取得的快照，最新记录需重新核对。",
             Modifier.testTag("review-record-notice"), style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.error)
+    }
+}
+
+@Composable
+private fun ReviewCounts(projectCount: Long, subscriptionCount: Long) {
+    Column(Modifier.testTag("review-counts-compact"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        Text("$projectCount 条长期项目", Modifier.testTag("review-project-count"))
+        Text("$subscriptionCount 条订阅服务", Modifier.testTag("review-subscription-count"))
+        Text("含当前和历史；有读取提示时为已取得的快照数量。", Modifier.testTag("review-count-scope"),
+            style = MaterialTheme.typography.bodySmall)
     }
 }
 

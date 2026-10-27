@@ -1,0 +1,19 @@
+EXCERPT: cached Navigation3 1.0.1 NavDisplay implementation javap, lines 327-344
+     712: iload         15
+     714: ldc           #141                // int -57345
+     716: iand
+     717: istore        15
+     719: iload         14
+     721: bipush        32
+     723: iand
+     724: ifeq          746
+     727: new           #143                // class androidx/navigation3/scene/SinglePaneSceneStrategy
+     730: dup
+     731: invokespecial #146                // Method androidx/navigation3/scene/SinglePaneSceneStrategy."<init>":()V
+     734: checkcast     #148                // class androidx/navigation3/scene/SceneStrategy
+     737: astore        5
+     739: iload         15
+     741: ldc           #149                // int -458753
+     743: iand
+     744: istore        15
+     746: iload         14

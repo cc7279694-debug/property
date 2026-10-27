@@ -2,18 +2,25 @@ package com.cooper.lithic.feature.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
@@ -39,16 +46,22 @@ internal fun SettingsShell(
     onCalculationExplanation: (() -> Unit)? = null,
     onAboutLithic: (() -> Unit)? = null,
 ) {
+    var informationOpen by rememberSaveable { mutableStateOf(false) }
     Column(modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
         .testTag("settings-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
-        Text("设置", style = MaterialTheme.typography.headlineMedium, modifier = Modifier.semantics { heading() })
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+            Text("设置", style = MaterialTheme.typography.headlineMedium,
+                modifier = Modifier.weight(1f).semantics { heading() })
+            IconButton({ informationOpen = true }, Modifier.testTag("settings-information")) {
+                C2Icon(C2Glyph.Info, description = "查看本地保存与备份说明")
+            }
+        }
         C2Section("记录与偏好") {
             onManageCategories?.let { manage ->
                 C2SettingRow("管理类别", C2Glyph.Project, Modifier.testTag("open-category-management"), onClick = manage)
                 HorizontalDivider()
             }
             C2SettingRow("记录时区", C2Glyph.Now, trailing = recordZone.id, trailingTag = "record-zone")
-            C2SettingRow("本地保存", C2Glyph.Image, subtitle = "已有记录保存在当前设备，可离线读取")
             onNotificationClick?.let { open ->
                 HorizontalDivider()
                 C2SettingRow("提醒设置", C2Glyph.Info, Modifier.testTag("open-notification-settings"), onClick = open)
@@ -60,7 +73,7 @@ internal fun SettingsShell(
                 BackupUiPhase.CHOOSING -> "正在选择保存位置"
                 BackupUiPhase.EXPORTING -> "正在导出并校验"
             }, C2Glyph.Project, Modifier.testTag("export-complete-backup"),
-                subtitle = "手动导出记录、设置和已登记图片；文件未加密。",
+                subtitle = "文件未加密，请妥善保管",
                 enabled = onExportBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
                 onClick = { onExportBackup?.invoke() })
             if (backupState.phase == BackupUiPhase.EXPORTING) {
@@ -69,10 +82,6 @@ internal fun SettingsShell(
             }
             backupState.message?.let { feedback ->
                 UiFeedbackText(feedback, backupState.messageTone, "backup-export-feedback")
-            }
-            if (backupState.phase == BackupUiPhase.IDLE && backupState.feedback == BackupExportFeedback.NOT_STARTED) {
-                Text("尚未开始导出。选择保存位置后，只有完整写入并校验通过才会提示成功。",
-                    style = MaterialTheme.typography.bodySmall, modifier = Modifier.testTag("backup-not-started"))
             }
             HorizontalDivider()
             C2SettingRow(when (restoreState.phase) {
@@ -83,7 +92,7 @@ internal fun SettingsShell(
                 RestoreUiPhase.DISCARDING -> "正在取消恢复"
                 RestoreUiPhase.RESTORING -> "正在安全恢复"
             }, C2Glyph.Review, Modifier.testTag("restore-complete-backup"),
-                subtitle = "先校验与预览，再明确确认完整覆盖；不合并记录。",
+                subtitle = "完整覆盖，不合并；先预览再确认",
                 enabled = onRestoreBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
                 onClick = { onRestoreBackup?.invoke() })
             if (restoreState.phase == RestoreUiPhase.VALIDATING) {
@@ -110,7 +119,20 @@ internal fun SettingsShell(
                 C2SettingRow("关于砺石与使用边界", C2Glyph.Settings, Modifier.testTag("open-about-lithic"), onClick = open)
             }
         }
-        Text("卸载可能导致本地记录丢失，请手动备份。续费与里程碑提醒不保证准点送达。",
-            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
+    if (informationOpen) AlertDialog(onDismissRequest = { informationOpen = false },
+        title = { Text("本地保存与备份") },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState()).testTag("settings-information-content"),
+                verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                Text("记录主要保存在当前设备，可离线使用。卸载可能导致本地记录丢失，请手动备份。")
+                Text("完整备份包含记录、设置和已登记图片；文件未加密，请妥善保管。没有自动云同步。")
+                if (backupState.phase == BackupUiPhase.IDLE && backupState.feedback == BackupExportFeedback.NOT_STARTED) {
+                    Text("尚未开始导出。选择保存位置后，只有完整写入并校验通过才会提示成功。",
+                        modifier = Modifier.testTag("backup-not-started"))
+                }
+                Text("恢复先校验与预览，再明确确认完整覆盖当前记录、图片和设置，不合并。请先核对预览中的当前与备份内容。")
+                Text("续费与里程碑提醒不保证准点送达。停止App中的订阅记录不会取消服务商扣费。")
+            }
+        }, confirmButton = { TextButton({ informationOpen = false }, Modifier.testTag("settings-information-close")) { Text("知道了") } })
 }

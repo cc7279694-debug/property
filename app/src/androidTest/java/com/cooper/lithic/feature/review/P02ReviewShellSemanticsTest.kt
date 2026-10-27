@@ -22,6 +22,8 @@ class P02ReviewShellSemanticsTest {
 
     @Test fun subscription_only_summary_reports_both_real_counts_and_history_scope() {
         compose.setContent { LithicTheme { ReviewShell(0L, subscriptionCount = 2L) } }
+        // Count scope is still available, now behind the existing information action.
+        compose.onNodeWithTag("review-information").performClick()
         compose.onNodeWithTag("review-subscription-count")
             .assertTextContains("2 条订阅服务", substring = true).assertIsDisplayed()
         compose.onNodeWithTag("review-project-count").assertTextContains("0 条长期项目", substring = true)

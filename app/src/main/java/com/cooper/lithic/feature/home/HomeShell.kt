@@ -98,14 +98,15 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             PreviewNotice(status, projectPreview?.error, "还没有当前长期项目", onRetryPreview)
             if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) projectPreview?.items?.take(2)?.forEach { row ->
                 PreviewRow(row.project.name, row.category.name, C2Glyph.Project,
-                    projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "当前日均成本", "日均",
+                    projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "当前日均成本", null,
                     row.cost.dailyRate, row.project.coverAssetId != null, "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } })
             }
         }
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            PreviewHeading("订阅服务", onSubscriptionList, "open-subscription-list")
             val status = subscriptionPreview?.let { c2PreviewStatus(it.loading, it.error, it.items.map { d -> d.asOf }, overview?.asOf) }
-            PreviewNotice(status, subscriptionPreview?.error, "还没有当前订阅", onRetryPreview)
+            PreviewHeading("订阅服务", onSubscriptionList, "open-subscription-list",
+                emptyLabel = if (status == C2PreviewStatus.EMPTY) "暂无当前订阅" else null)
+            if (status != C2PreviewStatus.EMPTY) PreviewNotice(status, subscriptionPreview?.error, "还没有当前订阅", onRetryPreview)
             if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) subscriptionPreview?.items?.take(2)?.forEach { row ->
                 PreviewRow(row.subscription.name, row.category.name, C2Glyph.Subscription,
                     subscriptionStatusLabel(row.cost.displayStatus), "折算付费${row.cost.standardPurchasedDays}天",
@@ -268,9 +269,14 @@ private fun Subtotal(label: String, amount: java.math.BigDecimal?, activeCount: 
 }
 
 @Composable
-private fun PreviewHeading(label: String, onAll: () -> Unit, tag: String) {
+private fun PreviewHeading(label: String, onAll: () -> Unit, tag: String, emptyLabel: String? = null) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-        Text(label, Modifier.weight(1f).semantics { heading() }, style = MaterialTheme.typography.titleMedium)
+        FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Text(label, Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium)
+            emptyLabel?.let { Text(it, style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.testTag("home-subscription-empty-compact")) }
+        }
         TextButton(onAll, Modifier.heightIn(min = 48.dp).testTag(tag)) { Text("全部"); C2Icon(C2Glyph.Chevron) }
     }
 }
@@ -292,15 +298,16 @@ private fun PreviewNotice(status: C2PreviewStatus?, error: String?, empty: Strin
 }
 
 @Composable
-private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: String, time: String, metric: String, compactMetric: String,
+private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: String, time: String, metric: String, compactMetric: String?,
     amount: java.math.BigDecimal?, hasCoverReference: Boolean, tag: String, onOpen: (() -> Unit)?) {
     val density = LocalDensity.current
     val measurer = rememberTextMeasurer()
     val amountStyle = MaterialTheme.typography.titleMedium
     val metricStyle = MaterialTheme.typography.bodySmall
     val amountWidth = with(density) {
-        maxOf(measurer.measure(AnnotatedString(AmountFormatter.formatDailyRate(amount)), amountStyle, softWrap = false).size.width,
-            measurer.measure(AnnotatedString("$compactMetric · 元/天"), metricStyle, softWrap = false).size.width).toDp()
+        maxOf(measurer.measure(AnnotatedString(AmountFormatter.formatDailyRate(amount)), amountStyle, softWrap = false).size.width +
+            measurer.measure(AnnotatedString("/天"), metricStyle, softWrap = false).size.width + 4.dp.roundToPx(),
+            compactMetric?.let { measurer.measure(AnnotatedString(it), metricStyle, softWrap = false).size.width } ?: 0).toDp()
     }
     Surface(Modifier.fillMaxWidth().testTag(tag), shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surface) {
@@ -309,7 +316,7 @@ private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: St
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
                 if (hasCoverReference) Surface(Modifier.size(48.dp), shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
                     Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.ImageError, description = "封面暂不可用") }
-                } else C2RecordIdentity(name, category, icon, Modifier.size(48.dp))
+                } else C2RecordIdentity(name, category, icon, Modifier.size(48.dp), allowInitial = false)
                 Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                     Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -328,12 +335,15 @@ private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: St
 }
 
 @Composable
-private fun PreviewAmount(metric: String, compactMetric: String, amount: java.math.BigDecimal?) {
+private fun PreviewAmount(metric: String, compactMetric: String?, amount: java.math.BigDecimal?) {
     Column(Modifier.semantics(mergeDescendants = true) {
         contentDescription = "$metric，${AmountFormatter.formatDailyRate(amount)}，元/天"
     }, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        AmountText(amount, style = MaterialTheme.typography.titleMedium, showUnit = false)
-        Text("$compactMetric · 元/天", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+            AmountText(amount, Modifier.weight(1f, fill = false), style = MaterialTheme.typography.titleMedium, showUnit = false)
+            Text("/天", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, softWrap = false)
+        }
+        compactMetric?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
     }
 }
 

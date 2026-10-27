@@ -1,0 +1,55 @@
+{
+  "evidence": "STATIC_ONLY; not Android visual or runtime proof",
+  "callChain": [
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+      "sha256": "5c9fb8c0fbcf9c0eb535bb11940a02de9b71737e7459a4928c1f66bdd77bc6dd",
+      "references": {
+        "setContent {": [
+          77
+        ],
+        "LithicApp(state = state": [
+          90
+        ]
+      }
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicApp.kt",
+      "sha256": "88fa6b5b43500e47bbf31cb0bd123180e1fcdecdd9d2fabaa011c02b1899b0f5",
+      "references": {
+        "LithicNavigation(state": [
+          43
+        ]
+      }
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "sha256": "a4f818b8048d30367494ecca034cd61acf40358017c2bbcb98fc4aec805c4353",
+      "references": {
+        "entry<Home>": [
+          428
+        ],
+        "HomeShell(": [
+          428
+        ],
+        "entry<Review>": [
+          437
+        ],
+        "ReviewShell(": [
+          437
+        ],
+        "entry<Settings>": [
+          482
+        ],
+        "SettingsShell(": [
+          482
+        ]
+      }
+    }
+  ],
+  "unchangedFromBaseline": {
+    "app/src/main/java/com/cooper/lithic/data/local/LithicDatabase.kt": "b7f0fb690539592cd5d480c7ed100caef93445cc",
+    "app/src/main/java/com/cooper/lithic/data/backup/BackupManifest.kt": "a5b91cf60d4436f282271ffdd1df9b4eba3f4091"
+  },
+  "deviceOperations": 0
+}

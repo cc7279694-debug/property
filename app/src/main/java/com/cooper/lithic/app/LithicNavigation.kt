@@ -1,6 +1,12 @@
 package com.cooper.lithic.app
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -405,8 +411,21 @@ internal fun LithicNavigation(
                 TextButton(onClick = onRetryLedger, modifier = Modifier.heightIn(min = 48.dp).testTag("ledger-retry-read")) { Text("重试读取") }
             }
             NavDisplay(backStack = routes, modifier = Modifier.weight(1f), onBack = onBack,
+                transitionSpec = {
+                    if (c4UseInstantPrimaryTransition(initialState.metadata[C4_PRIMARY_DESTINATION],
+                            targetState.metadata[C4_PRIMARY_DESTINATION])) {
+                        EnterTransition.None togetherWith ExitTransition.None
+                    } else fadeIn(tween(180)) togetherWith fadeOut(tween(180))
+                },
+                popTransitionSpec = {
+                    if (c4UseInstantPrimaryTransition(initialState.metadata[C4_PRIMARY_DESTINATION],
+                            targetState.metadata[C4_PRIMARY_DESTINATION])) {
+                        EnterTransition.None togetherWith ExitTransition.None
+                    } else fadeIn(tween(180)) togetherWith fadeOut(tween(180))
+                },
+                // Keep Navigation3's gesture-driven predictive-back contract unchanged.
                 entryProvider = entryProvider<NavKey> {
-                    entry<Home> { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
+                    entry<Home>(metadata = mapOf(C4_PRIMARY_DESTINATION to Home)) { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
                         subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }, overview = state.overview,
                         onSearch = if (searchModel != null) ({ requestLeave(canonicalBackStack(NameSearch)) }) else null,
                         onCategoryAnalysis = if (state.totalCostTimelineRepository != null) ({ kind, id -> requestLeave(canonicalBackStack(CategoryAnalysis(id, kind == OverviewKind.SUBSCRIPTION))) }) else null,
@@ -415,7 +434,7 @@ internal fun LithicNavigation(
                         onOpenSubscription = { requestLeave(canonicalBackStack(SubscriptionDetail(it, SubscriptionOrigin.HOME))) },
                         onCalculationExplanation = { requestLeave(listOf(Home, CalculationExplanation)) },
                         onRetryPreview = { model.retryRead(); subscriptionModel.retryRead() }, hasReadNotice = hasSnapshotNotice) }
-                    entry<Review> { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
+                    entry<Review>(metadata = mapOf(C4_PRIMARY_DESTINATION to Review)) { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) },
                         onLongTermReview = if (state.rankingRepository != null) ({ requestLeave(canonicalBackStack(LongTermReview)) }) else null,
                         onTotalCostTrend = if (state.totalCostTimelineRepository != null) ({ requestLeave(canonicalBackStack(TotalCostTrend)) }) else null,
@@ -460,7 +479,7 @@ internal fun LithicNavigation(
                             onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it, ProjectOrigin.REVIEW))) },
                             onOpenSubscription = { requestLeave(canonicalBackStack(SubscriptionDetail(it, SubscriptionOrigin.REVIEW))) })
                     }
-                    entry<Settings> { SettingsShell(state.recordZone, backupState = backupState,
+                    entry<Settings>(metadata = mapOf(C4_PRIMARY_DESTINATION to Settings)) { SettingsShell(state.recordZone, backupState = backupState,
                         onExportBackup = onExportBackup, onCancelBackup = onCancelBackup,
                         restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
                         onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore,

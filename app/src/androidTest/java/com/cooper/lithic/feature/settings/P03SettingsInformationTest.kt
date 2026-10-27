@@ -44,6 +44,8 @@ class P03SettingsInformationTest {
     }
     @Test fun idle_backup_is_not_presented_as_completed() {
         compose.setContent { LithicTheme { SettingsShell(ZoneId.of("Asia/Shanghai"), onExportBackup = {}) } }
+        compose.onNodeWithTag("backup-not-started").assertDoesNotExist()
+        compose.onNodeWithTag("settings-information").performClick()
         compose.onNodeWithTag("backup-not-started").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("backup-export-feedback").assertDoesNotExist()
     }

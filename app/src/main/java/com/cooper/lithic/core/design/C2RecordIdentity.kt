@@ -20,14 +20,15 @@ internal fun c2IdentityGlyph(category: String): C2Glyph? = when (category.trim()
     else -> null
 }
 
-internal fun c2IdentityInitial(name: String): String? = name.trim().takeIf { it.isNotEmpty() }
+internal fun c2IdentityInitial(name: String, allowInitial: Boolean = true): String? = name.trim().takeIf { allowInitial && it.isNotEmpty() }
     ?.let { it.substring(0, it.offsetByCodePoints(0, 1)) }
 
 /** No files, media loader, storage owner or cache: the enclosing row supplies its full accessible name. */
 @Composable
-internal fun C2RecordIdentity(name: String, category: String, kind: C2Glyph, modifier: Modifier = Modifier) {
+internal fun C2RecordIdentity(name: String, category: String, kind: C2Glyph, modifier: Modifier = Modifier,
+    allowInitial: Boolean = true) {
     val glyph = c2IdentityGlyph(category)
-    val initial = c2IdentityInitial(name)
+    val initial = c2IdentityInitial(name, allowInitial)
     Surface(modifier.size(64.dp).clearAndSetSemantics {}, shape = MaterialTheme.shapes.small,
         color = if (kind == C2Glyph.Subscription) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.primaryContainer) {
         Box(contentAlignment = Alignment.Center) {
