@@ -28,7 +28,7 @@ class C4HomePreviewSemanticsTest {
         compose.onNodeWithTag("home-project-preview-${row.project.id}").performScrollTo()
         compose.onNodeWithText("手机", useUnmergedTree = true).assertExists()
         compose.onNodeWithText("手", useUnmergedTree = true).assertDoesNotExist()
-        compose.onNodeWithContentDescription("当前日均成本，−¥1.25，元/天", useUnmergedTree = true).assertExists()
+        compose.onNodeWithContentDescription("当前日均成本，负1.25元/天", useUnmergedTree = true).assertExists()
         compose.onNodeWithText("日均 · 元/天", useUnmergedTree = true).assertDoesNotExist()
         compose.onNodeWithTag("home-project-preview-${row.project.id}").performClick()
         assertEquals(row.project.id, opened)

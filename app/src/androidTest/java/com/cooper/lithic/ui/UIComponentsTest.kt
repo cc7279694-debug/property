@@ -92,7 +92,7 @@ class UIComponentsTest {
             }
         }
         compose.onNodeWithTag("missing").assertContentDescriptionEquals("暂无数据").assert(hasText("—"))
-        compose.onNodeWithTag("zero").assertContentDescriptionEquals("0.00元/天").assert(hasText("¥0.00"))
+        compose.onNodeWithTag("zero").assertContentDescriptionEquals("0.00元/天").assert(hasText("¥0.00/天"))
     }
 
     @Test fun amount_units_keep_ordinary_rounding_separate_from_daily_subcent_values() {
@@ -106,10 +106,10 @@ class UIComponentsTest {
             }
         }
         compose.onNodeWithTag("ordinary").assert(hasText("¥0.01")).assertContentDescriptionEquals("0.01元")
-        compose.onNodeWithTag("daily").assert(hasText("<¥0.01")).assertContentDescriptionEquals("小于0.01元/天")
-        compose.onNodeWithTag("negative").assert(hasText("−<¥0.01"))
+        compose.onNodeWithTag("daily").assert(hasText("<¥0.01/天")).assertContentDescriptionEquals("小于0.01元/天")
+        compose.onNodeWithTag("negative").assert(hasText("−<¥0.01/天"))
             .assertContentDescriptionEquals("负值，绝对值小于0.01元/天")
-        compose.onNodeWithText("元", useUnmergedTree = true).assertIsDisplayed()
+        compose.onNodeWithText("元", useUnmergedTree = true).assertDoesNotExist()
     }
 
     @Test fun theme_has_the_frozen_type_hierarchy_and_readable_light_and_dark_surfaces() {

@@ -693,7 +693,7 @@ internal fun LithicNavigation(
  * NavEntry's copy constructor preserves the original key, contentKey and metadata. */
 internal fun <T : Any> c5SceneEntryProvider(provider: (T) -> NavEntry<T>): (T) -> NavEntry<T> = { route ->
     val original = provider(route)
-    NavEntry(original) {
+    NavEntry<T>(original) {
         Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background.copy(alpha = 1f))
             .testTag("navigation-scene")) {
             original.Content()

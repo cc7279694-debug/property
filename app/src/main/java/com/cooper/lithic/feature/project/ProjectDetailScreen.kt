@@ -38,6 +38,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalDensity
@@ -46,12 +49,15 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.cooper.lithic.core.design.AmountFormatter
-import com.cooper.lithic.core.design.AmountText
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
 import com.cooper.lithic.core.design.C2RecordIdentity
+import com.cooper.lithic.core.design.C5InformationButton
+import com.cooper.lithic.core.design.MoneyMetric
+import com.cooper.lithic.core.design.MoneyMetricLevel
+import com.cooper.lithic.core.design.moneyMetricAnnotatedText
+import com.cooper.lithic.core.design.moneyMetricFitsAtPreferredSize
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.data.local.MoneyBasis
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
@@ -85,11 +91,10 @@ internal fun ProjectDetailScreen(
     var moneySheetOpen by rememberSaveable(detail?.project?.id) { mutableStateOf(false) }
     Column(modifier.fillMaxSize().testTag("project-detail-screen")) {
         Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-            TextButton(onBack, Modifier.weight(1f).heightIn(min = 48.dp).testTag("project-detail-back")) {
+            IconButton(onBack, Modifier.size(48.dp).testTag("project-detail-back").semantics { contentDescription = backLabel }) {
                 C2Icon(C2Glyph.Back)
-                Spacer(Modifier.width(8.dp))
-                Text(backLabel, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
             }
+            Spacer(Modifier.weight(1f))
             if (detail != null) Box {
                 IconButton({ menuOpen = true }, Modifier.size(48.dp).testTag("project-detail-more")) {
                     C2Icon(C2Glyph.More, description = "更多项目操作")
@@ -257,45 +262,54 @@ private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable ()
 
 @Composable
 private fun ProjectCostSummary(detail: ProjectDetail) {
-    Surface(Modifier.fillMaxWidth().testTag("project-core-metrics"), shape = RoundedCornerShape(20.dp),
-        color = MaterialTheme.colorScheme.surface, shadowElevation = 1.dp,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.65f))) {
+    val density = LocalDensity.current
+    val measurer = rememberTextMeasurer()
+    val moneyStyle = MaterialTheme.typography.displayLarge.copy(fontSize = 28.sp, lineHeight = 36.sp)
+    val metricLabel = projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal)
+    Surface(Modifier.fillMaxWidth().testTag("project-core-metrics"), shape = MaterialTheme.shapes.large,
+        color = MaterialTheme.colorScheme.surface) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             BoxWithConstraints(Modifier.fillMaxWidth()) {
-                val stack = maxWidth < 280.dp || LocalDensity.current.fontScale > 1.3f ||
-                    AmountFormatter.formatDailyRate(detail.cost.dailyRate).length > 9
+                val dailyWidth = measurer.measure(moneyMetricAnnotatedText(detail.cost.dailyRate,
+                    AmountUnit.YUAN_PER_DAY, MaterialTheme.colorScheme.onSurfaceVariant), moneyStyle,
+                    softWrap = false).size.width
+                val besideWidth = with(density) { ((maxWidth - 16.dp) * (1.4f / 2.4f)).roundToPx() }
+                val stack = maxWidth < 280.dp || density.fontScale > 1.3f || dailyWidth > besideWidth
                 val daily: @Composable () -> Unit = {
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("${projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal)} · 元/天",
+                        Text(metricLabel,
                             style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        AmountText(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"),
-                            style = MaterialTheme.typography.displayLarge.copy(fontSize = 38.sp), showUnit = false,
-                            color = MaterialTheme.colorScheme.primary)
+                        MoneyMetric(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"),
+                            level = MoneyMetricLevel.DETAIL, color = MaterialTheme.colorScheme.primary, label = metricLabel)
                     }
                 }
                 val held: @Composable () -> Unit = {
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text("累计持有", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Text(if (detail.cost.unavailableReason == null) "${detail.cost.heldDays} 天" else "尚未开始",
-                            Modifier.testTag("project-detail-held-days"), style = MaterialTheme.typography.headlineSmall.copy(fontSize = 24.sp))
+                        Text(if (detail.cost.unavailableReason == null) "${detail.cost.heldDays}天" else "尚未开始",
+                            Modifier.testTag("project-detail-held-days"), style = MaterialTheme.typography.headlineSmall)
                     }
                 }
-                if (stack) Column(verticalArrangement = Arrangement.spacedBy(16.dp)) { daily(); held() }
+                if (stack) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) { daily(); held() }
                 else Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    Box(Modifier.weight(1.4f)) { daily() }
-                    Box(Modifier.weight(1f)) { held() }
+                    Box(Modifier.weight(1.4f)) { daily() }; Box(Modifier.weight(1f)) { held() }
                 }
             }
-            Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Text("结果截至 ${detail.asOf}", Modifier.weight(1f), style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                C5InformationButton("项目成本口径", Modifier.testTag("project-detail-metric-information")) {
+                    Text("日均成本来自真实投入和收回，开始日计入持有自然日。展示舍入不改变原计算结果。")
+                    Text("结束后仍可补录真实尾款或退款；持有天数不再增加。")
+                }
+            }
             if (detail.cost.unavailableReason != null) Text("尚未开始，没有有效日均成本。", style = MaterialTheme.typography.bodySmall)
             if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal && detail.cost.unavailableReason == null) {
                 val hasObservedLateMoney = detail.events.any { event ->
                     event.occurredOn.isAfter(detail.project.endedOn) && !event.occurredOn.isAfter(detail.asOf)
                 }
-                Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。"
-                    else "结束后仍可补录真实尾款或退款；持有天数不再增加。", style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。" else "持有天数已冻结。",
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
     }
@@ -309,16 +323,25 @@ private fun ProjectSecondaryTotals(detail: ProjectDetail) {
         Triple(if (includesCredit) "累计收回（含非现金折抵）" else "累计实际收回", detail.cost.recoveryCents, "project-detail-recovery"),
         Triple("净投入", detail.cost.netCents, "project-detail-net"),
     )
-    val stack = includesCredit || LocalDensity.current.fontScale > 1.3f || totals.any { AmountFormatter.formatCny(BigDecimal.valueOf(it.second, 2)).length > 10 }
-    Surface(Modifier.fillMaxWidth().testTag("project-financial-totals"), shape = RoundedCornerShape(16.dp),
-        color = MaterialTheme.colorScheme.surface) {
-        if (stack) Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            totals.forEachIndexed { index, total ->
-                if (index > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-                ProjectTotal(total.first, total.second, total.third)
+    val density = LocalDensity.current
+    val measurer = rememberTextMeasurer()
+    val style = MaterialTheme.typography.displayLarge.copy(fontSize = 24.sp, lineHeight = 32.sp)
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val columnWidth = with(density) { ((maxWidth - 48.dp) / 3).roundToPx() }
+        val stack = includesCredit || density.fontScale > 1.3f || totals.any {
+            measurer.measure(moneyMetricAnnotatedText(BigDecimal.valueOf(it.second, 2), AmountUnit.YUAN,
+                MaterialTheme.colorScheme.onSurfaceVariant), style, softWrap = false).size.width > columnWidth
+        }
+        Surface(Modifier.fillMaxWidth().testTag("project-financial-totals"), shape = MaterialTheme.shapes.medium,
+            color = MaterialTheme.colorScheme.surface) {
+            if (stack) Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                totals.forEachIndexed { index, total ->
+                    if (index > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                    ProjectTotal(total.first, total.second, total.third)
+                }
+            } else Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                totals.forEach { (label, cents, tag) -> Box(Modifier.weight(1f)) { ProjectTotal(label, cents, tag) } }
             }
-        } else Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            totals.forEach { (label, cents, tag) -> Box(Modifier.weight(1f)) { ProjectTotal(label, cents, tag) } }
         }
     }
 }
@@ -327,14 +350,16 @@ private fun ProjectSecondaryTotals(detail: ProjectDetail) {
 private fun ProjectTotal(label: String, cents: Long, tag: String) {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        AmountText(BigDecimal.valueOf(cents, 2), Modifier.testTag(tag), AmountUnit.YUAN,
-            style = MaterialTheme.typography.titleLarge.copy(fontSize = 18.sp))
+        MoneyMetric(BigDecimal.valueOf(cents, 2), Modifier.testTag(tag), AmountUnit.YUAN,
+            level = MoneyMetricLevel.CARD, label = label)
     }
 }
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun ProjectMoneyRecord(event: ProjectMoneyEventEntity, onCorrectMoney: (String) -> Unit, onUpdateEnd: () -> Unit) {
+    val eventAmount = BigDecimal.valueOf(event.amountCents, 2)
+    val eventTypeLabel = projectMoneyEventTypeLabel(event.direction, event.role)
     Row(Modifier.fillMaxWidth().testTag("project-event-${event.id}"),
         horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.Top) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -342,15 +367,18 @@ private fun ProjectMoneyRecord(event: ProjectMoneyEventEntity, onCorrectMoney: (
         }
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             BoxWithConstraints(Modifier.fillMaxWidth()) {
+                val amountWidth = ((maxWidth - 12.dp) * (1.2f / 2.2f)).coerceAtLeast(0.dp)
+                val amountFits = moneyMetricFitsAtPreferredSize(eventAmount, amountWidth, AmountUnit.YUAN)
                 val type: @Composable () -> Unit = {
-                    Text(projectMoneyEventTypeLabel(event.direction, event.role),
+                    Text(eventTypeLabel,
                         Modifier.testTag("project-event-type-${event.id}"), style = MaterialTheme.typography.titleMedium)
                 }
                 val amount: @Composable () -> Unit = {
-                    AmountText(BigDecimal.valueOf(event.amountCents, 2), Modifier.testTag("project-event-amount-${event.id}"),
-                        unit = AmountUnit.YUAN, style = MaterialTheme.typography.titleLarge, showUnit = false)
+                    MoneyMetric(eventAmount, Modifier.testTag("project-event-amount-${event.id}"),
+                        unit = AmountUnit.YUAN, level = MoneyMetricLevel.ROW,
+                        label = "$eventTypeLabel（${projectMoneyEventBasisLabel(event.basis)}）")
                 }
-                if (maxWidth < 260.dp || LocalDensity.current.fontScale > 1.3f) {
+                if (maxWidth < 260.dp || LocalDensity.current.fontScale > 1.3f || !amountFits) {
                     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) { type(); amount() }
                 } else Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     Box(Modifier.weight(1f)) { type() }

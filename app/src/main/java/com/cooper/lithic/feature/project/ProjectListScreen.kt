@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
@@ -42,9 +43,8 @@ internal fun ProjectListScreen(
             item {
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                    C2PageHeader("长期项目", onBack, "project-list-back", backLabel = "返回现在")
-                    Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。",
-                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    C2PageHeader("长期项目", onBack, "project-list-back", backLabel = "返回现在",
+                    actions = { C5InformationButton("长期项目说明") { Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。") } })
                     Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("project-list-create")) {
                         C2Icon(C2Glyph.Add)
                         Text("新增长期项目", style = MaterialTheme.typography.bodyLarge)
@@ -87,9 +87,8 @@ internal fun ProjectListScreen(
                 item { Text("暂无长期项目", Modifier.padding(LithicSpacing.medium).testTag("project-list-empty"), style = MaterialTheme.typography.bodyLarge) }
             }
             items(state.items, key = { it.project.id }) { detail ->
-                val dates = "开始：${detail.project.startedOn}" +
-                    (detail.project.endedOn?.let { "\n结束：$it" } ?: "") +
-                    if (detail.cost.unavailableReason == null) "\n已持有${detail.cost.heldDays}天" else ""
+                val dates = if (detail.cost.unavailableReason != null) "开始于 ${detail.project.startedOn}"
+                    else "持有 ${detail.cost.heldDays}天" + (detail.project.endedOn?.let { " · 结束日期 $it" } ?: "")
                 EntryCard(detail.project.name, projectStatusLabel(detail), dates, detail.cost.dailyRate,
                     Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-row-${detail.project.id}"),
                     onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,

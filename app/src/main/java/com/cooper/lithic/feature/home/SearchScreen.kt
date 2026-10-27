@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.C2RecordIdentity
@@ -50,11 +51,11 @@ internal fun SearchScreen(
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                C2PageHeader("搜索名称", onBack, "search-back", backLabel = "返回现在")
+                C2PageHeader("搜索名称", onBack, "search-back", backLabel = "返回现在", actions = {
+                    C5InformationButton("名称搜索范围") { Text("同时查找当前与历史记录。仅匹配名称；状态按这批结果的业务日期判断。") }
+                })
                 NameField(state.query, onQueryChange, Modifier.testTag("search-query"), label = "项目或订阅名称",
                     imeAction = ImeAction.Search, onImeAction = onRetry, labelOutside = true)
-                Text("同时查找当前与历史记录。仅匹配名称。", style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
                 if (state.loading) Text("正在查找", Modifier.testTag("search-loading"))
                 if (state.query.isBlank()) Text("输入名称开始搜索。", Modifier.testTag("search-empty-query"))
                 else if (!state.loading && state.error == null && state.hasReadSnapshot) {
@@ -70,7 +71,7 @@ internal fun SearchScreen(
                     else "以下为同一搜索条件上次取得的结果，状态可能已变化。",
                     Modifier.testTag("search-stale"), style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant)
-                state.asOf?.let { date -> Text("这批结果的业务日期：$date。状态以该日判断。",
+                state.asOf?.let { date -> Text("状态日期 $date",
                     Modifier.testTag("search-as-of"), style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant) }
                 state.error?.let {

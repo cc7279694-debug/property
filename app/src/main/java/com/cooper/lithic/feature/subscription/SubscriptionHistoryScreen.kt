@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
@@ -33,8 +34,8 @@ internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: (
         verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                C2PageHeader("已停止订阅", onBack, "subscription-history-back", backLabel = "返回回看")
-                Text("保留原服务的真实付款和状态历史。暂停及已到期服务仍在当前管理。", style = MaterialTheme.typography.bodyMedium)
+                C2PageHeader("已停止订阅", onBack, "subscription-history-back", backLabel = "返回回看",
+                    actions = { C5InformationButton("已停止订阅说明") { Text("保留原服务的真实付款和状态历史。暂停及已到期服务仍在当前管理。") } })
                 state.totalCount?.let { Text("已停止 $it 条订阅", Modifier.testTag("subscription-history-count")) }
                 if (state.totalCount != null && state.items.isEmpty() &&
                     (state.loading || state.loadingMore || state.error != null)) {

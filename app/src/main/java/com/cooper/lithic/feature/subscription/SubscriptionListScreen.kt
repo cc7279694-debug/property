@@ -53,8 +53,6 @@ internal fun SubscriptionListScreen(
                         actions = { IconButton({ informationOpen = true }, Modifier.size(48.dp).testTag("subscription-list-information")) {
                             C2Icon(C2Glyph.Info, description = "订阅列表说明")
                         } })
-                    Text("最近实际付款在前；暂停和到期仍在当前管理。", style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("subscription-list-create")) { C2Icon(C2Glyph.Add); Text("新增订阅") }
                     state.totalCount?.let { Text("已录入 $it 条订阅服务", Modifier.testTag("subscription-list-count"),
                         style = MaterialTheme.typography.bodyMedium) }
@@ -129,6 +127,7 @@ internal fun SubscriptionListScreen(
     }
     if (informationOpen) AlertDialog(onDismissRequest = { informationOpen = false }, title = { Text("订阅列表口径") },
         text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("最近真实付款在前。", style = MaterialTheme.typography.bodyMedium)
             Text("暂停和已到期服务仍在这里管理；已停止服务可从“回看 → 历史档案”查看。",
                 Modifier.testTag("subscription-list-history-explanation"), style = MaterialTheme.typography.bodyMedium)
             Text("已到期表示当前没有生效套餐，可能包含已预付但尚未开始的周期。",

@@ -1,5 +1,8 @@
 package com.cooper.lithic.feature.home
 
+import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.text.TextLayoutResult
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -81,11 +84,11 @@ class C2C1HomeVisualContractTest {
         val amount = BigDecimal("-12345678901234567890.01")
         show(widthDp = 360, fontScale = 2f, overview = snapshot().copy(
             projectCount = 1, activeProjectCount = 1, totalRate = amount, projectRate = amount))
-        compose.onNodeWithTag("home-total-rate").assertContentDescriptionEquals("负12345678901234567890.01元/天")
+        compose.onNodeWithTag("home-total-rate").assertContentDescriptionEquals("当前日均成本，负12345678901234567890.01元/天")
         assertCompactAmount()
         compose.onNodeWithTag("amount-open-full", useUnmergedTree = true).performScrollTo().performClick()
-        compose.onNodeWithTag("amount-full-value").assertTextEquals("−¥12345678901234567890.01")
-        compose.onNodeWithTag("amount-full-unit").assertTextEquals("元/天")
+        compose.onNodeWithTag("amount-full-value").assertTextEquals("−¥12345678901234567890.01/天")
+        compose.onNodeWithTag("amount-full-unit").assertDoesNotExist()
     }
 
     private fun assertVerifiedEmpty(checkCompactHero: Boolean = true) {
@@ -115,12 +118,16 @@ class C2C1HomeVisualContractTest {
     private fun assertCompactAmount() {
         compose.onNodeWithTag("home-current-cost-summary").performScrollTo()
         val amount = compose.onNodeWithTag("home-total-rate").fetchSemanticsNode().boundsInRoot
-        val unit = compose.onNodeWithTag("home-total-unit").fetchSemanticsNode().boundsInRoot
         val hero = compose.onNodeWithTag("home-current-cost-summary").fetchSemanticsNode().boundsInRoot
-        assertEquals("Unit follows the measured number, not the far edge of a weighted row",
-            4f * pixelsPerDp, unit.left - amount.right, 1.5f)
-        assertTrue(unit.right <= hero.right - 15f * pixelsPerDp)
+        val layouts = mutableListOf<TextLayoutResult>()
+        compose.onNodeWithTag("home-total-rate").performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        val layout = layouts.single()
+        val display = layout.layoutInput.text.text.replace("\u2009", "")
+        assertEquals("Amount and its unit form one unbreakable baseline", 1, layout.lineCount)
+        assertTrue(display == "—" || display.endsWith("/天"))
         assertTrue(amount.left >= hero.left + 15f * pixelsPerDp)
+        assertTrue(amount.right <= hero.right - 15f * pixelsPerDp + 1f)
+        compose.onNodeWithTag("home-total-unit").assertDoesNotExist()
         val canvas = compose.onNodeWithTag("c1-home-canvas").fetchSemanticsNode().boundsInRoot
         assertTrue(hero.left >= canvas.left && hero.right <= canvas.right + 1f)
     }

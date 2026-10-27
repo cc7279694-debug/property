@@ -25,16 +25,12 @@ internal fun c2IdentityInitial(name: String, allowInitial: Boolean = true): Stri
 
 /** No files, media loader, storage owner or cache: the enclosing row supplies its full accessible name. */
 @Composable
-internal fun C2RecordIdentity(name: String, category: String, kind: C2Glyph, modifier: Modifier = Modifier,
-    allowInitial: Boolean = true) {
-    val glyph = c2IdentityGlyph(category)
-    val initial = c2IdentityInitial(name, allowInitial)
+internal fun C2RecordIdentity(name: String, category: String, kind: C2Glyph, modifier: Modifier = Modifier) {
+    val glyph = c2IdentityGlyph(category) ?: kind
     Surface(modifier.size(64.dp).clearAndSetSemantics {}, shape = MaterialTheme.shapes.small,
         color = if (kind == C2Glyph.Subscription) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.primaryContainer) {
         Box(contentAlignment = Alignment.Center) {
-            if (glyph != null) C2Icon(glyph)
-            else if (initial != null) Text(initial, style = MaterialTheme.typography.headlineMedium)
-            else C2Icon(kind)
+            C2Icon(glyph)
         }
     }
 }

@@ -34,6 +34,7 @@ import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.math.BigDecimal
@@ -67,6 +68,24 @@ internal fun moneyMetricAnnotatedText(amount: BigDecimal?, unit: AmountUnit, sup
             append("\u2009/天")
         }
     }
+}
+
+/** Parent groups stack before the individual metric reduces its preferred role size. */
+@Composable
+internal fun moneyMetricFitsAtPreferredSize(
+    amount: BigDecimal?,
+    availableWidth: Dp,
+    unit: AmountUnit = AmountUnit.YUAN_PER_DAY,
+    level: MoneyMetricLevel = MoneyMetricLevel.ROW,
+): Boolean {
+    val density = LocalDensity.current
+    val measurer = rememberTextMeasurer()
+    val run = moneyMetricAnnotatedText(amount, unit, MaterialTheme.colorScheme.onSurfaceVariant)
+    val preferredSp = moneyMetricFontCandidates(level).first()
+    val measured = measurer.measure(run, style = MaterialTheme.typography.displayLarge.copy(
+        fontSize = preferredSp.sp, lineHeight = (preferredSp + 8).sp,
+    ), softWrap = false, maxLines = 1)
+    return measured.size.width <= with(density) { availableWidth.toPx() }
 }
 
 /**

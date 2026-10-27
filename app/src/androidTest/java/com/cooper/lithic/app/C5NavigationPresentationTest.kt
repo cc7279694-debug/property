@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.test.assertDoesNotExist
 import androidx.compose.ui.test.assertHeightIsEqualTo
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertWidthIsEqualTo
@@ -86,7 +85,7 @@ class C5NavigationPresentationTest {
             LithicTheme(darkTheme = dark) {
                 expected = MaterialTheme.colorScheme.background.copy(alpha = 1f)
                 Box(Modifier.size(240.dp).background(Color.Magenta)) {
-                    c5SceneEntryProvider { route: NavKey -> NavEntry(route) { Text("合成页面") } }(Home).Content()
+                    c5SceneEntryProvider { route: NavKey -> NavEntry<NavKey>(route) { Text("合成页面") } }(Home).Content()
                 }
             }
         }

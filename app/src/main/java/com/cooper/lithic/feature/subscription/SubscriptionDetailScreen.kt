@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -49,8 +50,8 @@ internal fun SubscriptionDetailScreen(
     var managementOpen by rememberSaveable { mutableStateOf(false) }
     Column(modifier.fillMaxSize().testTag("subscription-detail-screen")) {
         Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag("subscription-detail-back")) {
-                C2Icon(C2Glyph.Back); Text(backLabel)
+            IconButton(onBack, Modifier.size(48.dp).testTag("subscription-detail-back").semantics { contentDescription = backLabel }) {
+                C2Icon(C2Glyph.Back)
             }
             Spacer(Modifier.weight(1f))
             if (state.detail != null && !state.missing) IconButton({ managementOpen = true },
@@ -88,7 +89,6 @@ internal fun SubscriptionDetailScreen(
                                     color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
                         }
-                        SubscriptionArchiveMetrics(detail)
                         if (detail.cost.displayStatus == SubscriptionDisplayStatus.PAUSED && detail.renewals.none {
                             !it.paidOn.isAfter(detail.asOf) && !it.effectiveFrom.isAfter(detail.asOf) && detail.asOf.isBefore(it.paidUntilExclusive)
                         }) Text("暂停状态保留；真实付费覆盖已到期，恢复时请核对已付款的未来覆盖或真实续费。",
@@ -100,22 +100,25 @@ internal fun SubscriptionDetailScreen(
                         val current = detail.currentRenewal
                         if (current != null && detail.cost.currentPrice != null) {
                             Text(billingCycleLabel(current.cycle), style = MaterialTheme.typography.bodyLarge)
-                            AmountText(BigDecimal.valueOf(detail.cost.currentPrice.cents, 2), unit = AmountUnit.YUAN,
-                                style = MaterialTheme.typography.titleLarge)
+                            MoneyMetric(BigDecimal.valueOf(detail.cost.currentPrice.cents, 2), unit = AmountUnit.YUAN,
+                                level = MoneyMetricLevel.DETAIL, label = "当前套餐价格（${billingCycleLabel(current.cycle)}）")
                             Text("当前标准日均价", style = MaterialTheme.typography.bodyMedium)
-                            AmountText(detail.cost.currentRate, Modifier.testTag("subscription-detail-current-rate"),
-                                style = MaterialTheme.typography.titleLarge)
+                            MoneyMetric(detail.cost.currentRate, Modifier.testTag("subscription-detail-current-rate"),
+                                level = MoneyMetricLevel.ROW, label = "当前标准日均价")
                             Text("实际生效日期：${current.effectiveFrom}", style = MaterialTheme.typography.bodyMedium)
                             Text("付费到期边界：${current.paidUntilExclusive}（当天不包含）", style = MaterialTheme.typography.bodyMedium)
                         } else {
                             Text("当前无有效套餐", Modifier.testTag("subscription-detail-no-current-plan"),
                                 style = MaterialTheme.typography.bodyLarge)
-                            Text("当前成本贡献为0元/天", style = MaterialTheme.typography.bodyMedium)
-                            if (detail.renewals.any { !it.paidOn.isAfter(detail.asOf) && it.effectiveFrom.isAfter(detail.asOf) })
-                                Text("已付下一期尚未生效。", style = MaterialTheme.typography.bodyMedium)
+                            Text("当前日均贡献", style = MaterialTheme.typography.bodyMedium)
+                            MoneyMetric(detail.cost.currentRate, Modifier.testTag("subscription-detail-no-plan-rate"),
+                                level = MoneyMetricLevel.ROW, label = "当前日均贡献")
                         }
+                        if (detail.renewals.any { !it.paidOn.isAfter(detail.asOf) && it.effectiveFrom.isAfter(detail.asOf) })
+                            Text("已付下一期尚未生效。", style = MaterialTheme.typography.bodyMedium)
                     }
                 }
+                item { Column(Modifier.padding(horizontal = 16.dp)) { SubscriptionArchiveMetrics(detail) } }
                 if (detail.stateChanges.isNotEmpty()) item {
                     Column(Modifier.padding(horizontal = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text("状态事实", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
@@ -132,9 +135,9 @@ internal fun SubscriptionDetailScreen(
                 item {
                     C2Section("付款与备注", Modifier.padding(horizontal = 16.dp)) {
                         Text("累计已确认实际付款", style = MaterialTheme.typography.bodyMedium)
-                        AmountText(BigDecimal.valueOf(detail.cost.confirmedPaidCents, 2),
+                        MoneyMetric(BigDecimal.valueOf(detail.cost.confirmedPaidCents, 2),
                             Modifier.testTag("subscription-detail-total-paid"), AmountUnit.YUAN,
-                            style = MaterialTheme.typography.titleLarge)
+                            level = MoneyMetricLevel.CARD, label = "累计已确认实际付款")
                         Text("类别：${detail.category.name}", style = MaterialTheme.typography.bodyLarge)
                         detail.subscription.note?.takeIf { it.isNotBlank() }?.let {
                             Text("备注", style = MaterialTheme.typography.bodyMedium)
@@ -148,7 +151,7 @@ internal fun SubscriptionDetailScreen(
                     Column(Modifier.padding(horizontal = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                         HorizontalDivider()
                         Text("真实付款历史", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
-                        Text("按真实付款日期排序；付费到期边界当天不包含在前一期。", style = MaterialTheme.typography.bodyMedium)
+                        C5InformationButton("付款历史说明") { Text("按真实付款日期排序；付费到期边界当天不包含在前一期。") }
                     }
                 }
                 if (state.history.loading) item { Text("正在读取付款历史", Modifier.padding(LithicSpacing.medium)) }
@@ -234,11 +237,14 @@ private fun SubscriptionArchiveMetrics(detail: SubscriptionDetail) {
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), shadowElevation = 1.dp) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             BoxWithConstraints(Modifier.fillMaxWidth()) {
+                val amountWidth = ((maxWidth - 12.dp) / 2).coerceAtLeast(0.dp)
+                val amountFits = moneyMetricFitsAtPreferredSize(detail.cost.historicalAverage, amountWidth,
+                    level = MoneyMetricLevel.CARD)
                 val metrics: @Composable (Modifier) -> Unit = { column ->
                     Column(column, verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text("历史平均日成本", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        AmountText(detail.cost.historicalAverage, Modifier.testTag("subscription-detail-historical-average"),
-                            color = MaterialTheme.colorScheme.primary)
+                        MoneyMetric(detail.cost.historicalAverage, Modifier.testTag("subscription-detail-historical-average"),
+                            level = MoneyMetricLevel.CARD, color = MaterialTheme.colorScheme.primary, label = "历史平均日成本")
                     }
                 }
                 val days: @Composable (Modifier) -> Unit = { column ->
@@ -251,15 +257,17 @@ private fun SubscriptionArchiveMetrics(detail: SubscriptionDetail) {
                         }, Modifier.testTag("subscription-detail-purchased-days"))
                     }
                 }
-                if (LocalDensity.current.fontScale > 1.3f || maxWidth < 280.dp) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                if (LocalDensity.current.fontScale > 1.3f || maxWidth < 280.dp || !amountFits) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     metrics(Modifier.fillMaxWidth()); days(Modifier.fillMaxWidth())
                 } else Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     metrics(Modifier.weight(1f)); days(Modifier.weight(1f))
                 }
             }
             Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            Text("按月30天、季90天、年365天折算；包含已确认付款的未来周期，不代表实际已使用时长。",
-                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            C5InformationButton("订阅历史指标", Modifier.testTag("subscription-history-metric-information")) {
+                Text("按月30天、季90天、年365天折算；包含已确认付款的未来周期，不代表实际已使用时长。")
+                Text("历史平均日成本与当前套餐价格不同；实际已过去的付费有效天数按真实覆盖和状态计算。")
+            }
             if (detail.cost.historicalAverage == null) Text("暂无已确认付款，历史平均日成本暂无数据。", style = MaterialTheme.typography.bodyMedium)
         }
     }
@@ -272,20 +280,31 @@ private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDat
         color = MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.medium) {
     Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text("真实付款日期：${renewal.paidOn}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        AmountText(BigDecimal.valueOf(renewal.amountCents, 2), unit = AmountUnit.YUAN, style = MaterialTheme.typography.titleLarge)
+        MoneyMetric(BigDecimal.valueOf(renewal.amountCents, 2), unit = AmountUnit.YUAN,
+            level = MoneyMetricLevel.ROW, label = "真实付款金额")
         Text("${billingCycleLabel(renewal.cycle)} · 折算${renewal.standardDays}天", style = MaterialTheme.typography.bodyLarge)
         if (renewal.effectiveFrom.isAfter(asOf)) C2StatusChip("尚未生效", Modifier.testTag("subscription-renewal-future-${renewal.id}"))
-        if (renewal.effectiveFrom.isAfter(asOf)) Text("这笔已确认付款用于未来周期，不代表已经使用该段时间。当前套餐以实际生效日期为准。",
-            Modifier.testTag("subscription-renewal-future-explanation-${renewal.id}"),
-            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text("实际生效日期：${renewal.effectiveFrom}", style = MaterialTheme.typography.bodyMedium)
-        Text("付费到期边界：${renewal.paidUntilExclusive}（当天不包含）", style = MaterialTheme.typography.bodyMedium)
-        Text("提醒到期日：${renewal.reminderDueOn}", style = MaterialTheme.typography.bodyMedium)
-        TextButton(onCorrect, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-renewal-correct-${renewal.id}"), enabled) {
-            Text("修正这笔付款")
+        Text("生效 ${renewal.effectiveFrom} · 到期 ${renewal.paidUntilExclusive}（不含当日）",
+            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        C5InformationButton("付款及覆盖日期", Modifier.testTag("subscription-renewal-date-information-${renewal.id}")) {
+            if (renewal.effectiveFrom.isAfter(asOf)) Text("这笔已确认付款用于未来周期，不代表已经使用该段时间。当前套餐以实际生效日期为准。",
+                Modifier.testTag("subscription-renewal-future-explanation-${renewal.id}"))
+            Text("实际生效日期：${renewal.effectiveFrom}")
+            Text("付费到期边界：${renewal.paidUntilExclusive}（当天不包含）")
+            Text("提醒到期日：${renewal.reminderDueOn}")
         }
-        TextButton(onDelete, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("subscription-renewal-delete-${renewal.id}"), enabled) {
-            Text("删除错误付款", color = MaterialTheme.colorScheme.error)
+        var paymentActionsOpen by rememberSaveable(renewal.id) { mutableStateOf(false) }
+        Box {
+            TextButton({ paymentActionsOpen = true }, Modifier.heightIn(min = 48.dp).testTag("subscription-renewal-actions-${renewal.id}"), enabled) {
+                C2Icon(C2Glyph.More); Text("付款操作")
+            }
+            DropdownMenu(paymentActionsOpen, { paymentActionsOpen = false }) {
+                DropdownMenuItem(text = { Text("修正这笔付款") }, onClick = { paymentActionsOpen = false; onCorrect() },
+                    modifier = Modifier.testTag("subscription-renewal-correct-${renewal.id}"), enabled = enabled)
+                DropdownMenuItem(text = { Text("删除错误付款", color = MaterialTheme.colorScheme.error) },
+                    onClick = { paymentActionsOpen = false; onDelete() },
+                    modifier = Modifier.testTag("subscription-renewal-delete-${renewal.id}"), enabled = enabled)
+            }
         }
         HorizontalDivider()
     }

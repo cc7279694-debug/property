@@ -164,14 +164,14 @@ class M22AccessibilityTest {
         } }
         compose.onNodeWithText(PROJECT_NAME, useUnmergedTree = true).performScrollTo().assertIsDisplayed()
         assertTextFits(PROJECT_NAME)
-        compose.onNodeWithText("−<¥0.01", useUnmergedTree = true).performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("−<¥0.01/天", useUnmergedTree = true).performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("m22-large-amount").performScrollTo()
             .assertContentDescriptionEquals("负92233720368547758.07元/天")
-        assertTextFits("−¥92233720368547758.07")
+        assertTextFits("−¥92233720368547758.07/天")
         capture("02-negative-amount-light-local360-200", local200 = true)
         compose.runOnIdle { dark = true }
         compose.onNodeWithTag("m22-large-amount").assertIsDisplayed()
-        assertTextFits("−¥92233720368547758.07")
+        assertTextFits("−¥92233720368547758.07/天")
         capture("03-negative-amount-dark-local360-200", local200 = true)
     }
 

@@ -162,36 +162,12 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
         confirmButton = { TextButton({ explanationOpen = false }) { Text("知道了") } })
 }
 
-/** Reserve the unit first, then size the number to its measured text, never to a whole weighted row. */
+/** One shared numeric/unit run, including unknown and overflow states. */
 @Composable
 private fun HomeHeadlineAmount(amount: java.math.BigDecimal?, color: Color, supportingColor: Color) {
-    val density = LocalDensity.current
-    val measurer = rememberTextMeasurer()
-    val headlineStyle = MaterialTheme.typography.displayLarge
-    val unitStyle = MaterialTheme.typography.bodySmall
-    val display = AmountFormatter.formatDailyRate(amount)
-    BoxWithConstraints(Modifier.fillMaxWidth().testTag("home-amount-line")) {
-        val unitWidth = measurer.measure(AnnotatedString("元/天"), unitStyle, softWrap = false).size.width
-        val gap = with(density) { 4.dp.roundToPx() }
-        val available = (constraints.maxWidth - unitWidth - gap).coerceAtLeast(1)
-        val layout = remember(display, headlineStyle, available, density.fontScale, density.density, measurer) {
-            amountLayout(headlineStyle.fontSize.value, available) { fontSp ->
-                measurer.measure(AnnotatedString(display), headlineStyle.copy(fontSize = fontSp.sp),
-                    softWrap = false, maxLines = 1).size.width
-            }
-        }
-        val numberStyle = headlineStyle.copy(fontSize = layout.fontSp.sp,
-            lineHeight = (headlineStyle.lineHeight.value * layout.fontSp / headlineStyle.fontSize.value).sp)
-        val numberWidth = if (layout.horizontalScroll) available else minOf(available,
-            measurer.measure(AnnotatedString(display), numberStyle, softWrap = false, maxLines = 1).size.width)
-        val numberWidthDp = with(density) { numberWidth.toDp() }
-        val unitTop = with(density) { maxOf(0f, numberStyle.lineHeight.value - unitStyle.lineHeight.value).sp.toDp() }
-        Row(verticalAlignment = Alignment.Top, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-            AmountText(amount, Modifier.width(numberWidthDp).testTag("home-total-rate"), style = numberStyle,
-                showUnit = false, color = color, supportingColor = supportingColor)
-            Text("元/天", Modifier.padding(top = unitTop).testTag("home-total-unit"), style = unitStyle,
-                color = supportingColor, softWrap = false)
-        }
+    Box(Modifier.fillMaxWidth().testTag("home-amount-line")) {
+        MoneyMetric(amount, Modifier.testTag("home-total-rate"), level = MoneyMetricLevel.HERO,
+            color = color, supportingColor = supportingColor, label = "当前日均成本")
     }
 }
 
@@ -237,15 +213,20 @@ private fun RecordCount(label: String, count: Long?, icon: C2Glyph, kind: String
 
 @Composable
 private fun HomeSubtotals(overview: OverviewResult?) {
+    val projectAmount = overview?.takeIf { it.hasRecords }?.projectRate
+    val subscriptionAmount = overview?.takeIf { it.hasRecords }?.subscriptionRate
     BoxWithConstraints(Modifier.fillMaxWidth()) {
-        if (maxWidth < 260.dp || LocalDensity.current.fontScale > 1.4f) {
+        val amountWidth = ((maxWidth - 12.dp) / 2 - 24.dp).coerceAtLeast(0.dp)
+        val projectFits = moneyMetricFitsAtPreferredSize(projectAmount, amountWidth, level = MoneyMetricLevel.CARD)
+        val subscriptionFits = moneyMetricFitsAtPreferredSize(subscriptionAmount, amountWidth, level = MoneyMetricLevel.CARD)
+        if (maxWidth < 260.dp || LocalDensity.current.fontScale > 1.4f || !projectFits || !subscriptionFits) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Subtotal("长期项目", overview?.takeIf { it.hasRecords }?.projectRate, overview?.activeProjectCount, C2Glyph.Project, "home-project-rate", "home-active-project-count")
-                Subtotal("订阅服务", overview?.takeIf { it.hasRecords }?.subscriptionRate, overview?.activeSubscriptionCount, C2Glyph.Subscription, "home-subscription-rate", "home-active-subscription-count")
+                Subtotal("长期项目", projectAmount, overview?.activeProjectCount, C2Glyph.Project, "home-project-rate", "home-active-project-count")
+                Subtotal("订阅服务", subscriptionAmount, overview?.activeSubscriptionCount, C2Glyph.Subscription, "home-subscription-rate", "home-active-subscription-count")
             }
         } else Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            Column(Modifier.weight(1f)) { Subtotal("长期项目", overview?.takeIf { it.hasRecords }?.projectRate, overview?.activeProjectCount, C2Glyph.Project, "home-project-rate", "home-active-project-count") }
-            Column(Modifier.weight(1f)) { Subtotal("订阅服务", overview?.takeIf { it.hasRecords }?.subscriptionRate, overview?.activeSubscriptionCount, C2Glyph.Subscription, "home-subscription-rate", "home-active-subscription-count") }
+            Column(Modifier.weight(1f)) { Subtotal("长期项目", projectAmount, overview?.activeProjectCount, C2Glyph.Project, "home-project-rate", "home-active-project-count") }
+            Column(Modifier.weight(1f)) { Subtotal("订阅服务", subscriptionAmount, overview?.activeSubscriptionCount, C2Glyph.Subscription, "home-subscription-rate", "home-active-subscription-count") }
         }
     }
 }
@@ -258,10 +239,8 @@ private fun Subtotal(label: String, amount: java.math.BigDecimal?, activeCount: 
                 C2Icon(icon)
                 Text(label, style = MaterialTheme.typography.bodyMedium)
             }
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                AmountText(amount, Modifier.weight(1f).testTag(tag), style = MaterialTheme.typography.titleMedium, showUnit = false)
-                Text("元/天", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
+            MoneyMetric(amount, Modifier.fillMaxWidth().testTag(tag), level = MoneyMetricLevel.CARD,
+                label = "$label · 当前日均成本")
             Text(if (activeCount == null) "当前有效数量未取得" else "当前有效 $activeCount", Modifier.testTag(countTag),
                 style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
@@ -305,30 +284,32 @@ private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: St
     val amountStyle = MaterialTheme.typography.titleMedium
     val metricStyle = MaterialTheme.typography.bodySmall
     val amountWidth = with(density) {
-        maxOf(measurer.measure(AnnotatedString(AmountFormatter.formatDailyRate(amount)), amountStyle, softWrap = false).size.width +
-            measurer.measure(AnnotatedString("/天"), metricStyle, softWrap = false).size.width + 4.dp.roundToPx(),
+        maxOf(measurer.measure(moneyMetricAnnotatedText(amount, AmountUnit.YUAN_PER_DAY,
+                MaterialTheme.colorScheme.onSurfaceVariant), amountStyle, softWrap = false).size.width,
             compactMetric?.let { measurer.measure(AnnotatedString(it), metricStyle, softWrap = false).size.width } ?: 0).toDp()
     }
     Surface(Modifier.fillMaxWidth().testTag(tag), shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surface) {
         BoxWithConstraints(Modifier.fillMaxWidth().then(if (onOpen != null) Modifier.clickable(role = Role.Button, onClick = onOpen) else Modifier).padding(12.dp)) {
             val beside = density.fontScale <= 1.3f && maxWidth >= 48.dp + 12.dp + 112.dp + 12.dp + amountWidth
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                if (hasCoverReference) Surface(Modifier.size(48.dp), shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
-                    Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.ImageError, description = "封面暂不可用") }
-                } else C2RecordIdentity(name, category, icon, Modifier.size(48.dp), allowInitial = false)
-                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
-                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Surface(shape = androidx.compose.foundation.shape.RoundedCornerShape(50), color = MaterialTheme.colorScheme.primaryContainer) {
-                            Text(status, Modifier.padding(horizontal = 8.dp, vertical = 2.dp), style = MaterialTheme.typography.bodySmall)
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    if (hasCoverReference) Surface(Modifier.size(48.dp), shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
+                        Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.ImageError, description = "封面暂不可用") }
+                    } else C2RecordIdentity(name, category, icon, Modifier.size(48.dp))
+                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Surface(shape = androidx.compose.foundation.shape.RoundedCornerShape(50), color = MaterialTheme.colorScheme.primaryContainer) {
+                                Text(status, Modifier.padding(horizontal = 8.dp, vertical = 2.dp), style = MaterialTheme.typography.bodySmall)
+                            }
+                            Text(time, style = metricStyle, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
-                        Text(time, style = metricStyle, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        if (hasCoverReference) Text("封面暂不可用", style = metricStyle, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
-                    if (hasCoverReference) Text("封面暂不可用", style = metricStyle, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    if (!beside) PreviewAmount(metric, compactMetric, amount)
+                    if (beside) Column(Modifier.width(amountWidth)) { PreviewAmount(metric, compactMetric, amount) }
                 }
-                if (beside) Column(Modifier.width(amountWidth)) { PreviewAmount(metric, compactMetric, amount) }
+                if (!beside) PreviewAmount(metric, compactMetric, amount)
             }
         }
     }
@@ -336,14 +317,9 @@ private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: St
 
 @Composable
 private fun PreviewAmount(metric: String, compactMetric: String?, amount: java.math.BigDecimal?) {
-    Column(Modifier.semantics(mergeDescendants = true) {
-        contentDescription = "$metric，${AmountFormatter.formatDailyRate(amount)}，元/天"
-    }, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-            AmountText(amount, Modifier.weight(1f, fill = false), style = MaterialTheme.typography.titleMedium, showUnit = false)
-            Text("/天", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant, softWrap = false)
-        }
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         compactMetric?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+        MoneyMetric(amount, level = MoneyMetricLevel.ROW, label = metric)
     }
 }
 
@@ -373,8 +349,8 @@ private fun CategoryCosts(categories: List<CategoryDailyCost>, tagPrefix: String
             .then(if (onOpen != null) Modifier.clickable(role = Role.Button) { onOpen(category.categoryId) } else Modifier)
             .testTag("$tagPrefix-open-${category.categoryId}"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(category.name, style = MaterialTheme.typography.bodyLarge)
-            AmountText(category.dailyRate, modifier = Modifier.testTag("$tagPrefix-${category.categoryId}"),
-                style = MaterialTheme.typography.bodyLarge)
+            MoneyMetric(category.dailyRate, modifier = Modifier.testTag("$tagPrefix-${category.categoryId}"),
+                level = MoneyMetricLevel.ROW, label = "${category.name} · 当前日均成本贡献")
         }
     }
 }

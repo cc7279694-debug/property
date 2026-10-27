@@ -19,6 +19,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
@@ -40,9 +41,8 @@ internal fun ProjectHistoryScreen(
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                C2PageHeader("历史档案", onBack, "project-history-back", backLabel = "返回回看")
-                Text("已结束的长期项目。结果包含已记录的真实尾款与退款。",
-                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                C2PageHeader("历史档案", onBack, "project-history-back", backLabel = "返回回看",
+                    actions = { C5InformationButton("历史档案说明") { Text("已结束的长期项目。结果包含已记录的真实尾款与退款。") } })
                 state.totalCount?.let { Text("已结束 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
                 if (state.totalCount != null && state.items.isEmpty() &&
                     (state.loading || state.loadingMore || state.error != null)) {
@@ -81,13 +81,11 @@ internal fun ProjectHistoryScreen(
             item { Text("暂无已结束项目", Modifier.padding(LithicSpacing.medium).testTag("project-history-empty"), style = MaterialTheme.typography.bodyLarge) }
         }
         items(state.items, key = { it.project.id }) { detail ->
-            val dates = "开始：${detail.project.startedOn}" +
-                (detail.project.endedOn?.let { "\n结束：$it" } ?: "") +
-                "\n已持有${detail.cost.heldDays}天\n结果截至 ${detail.asOf}"
+            val dates = "持有 ${detail.cost.heldDays}天 · ${detail.project.startedOn}—${detail.project.endedOn}"
             EntryCard(detail.project.name, "已结束", dates, detail.cost.dailyRate,
                 Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-history-row-${detail.project.id}"),
                 onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
-                hasCoverReference = detail.project.coverAssetId != null, metricLabel = "截至目前日均成本")
+                hasCoverReference = detail.project.coverAssetId != null, metricLabel = "结果截至 ${detail.asOf}")
         }
         if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
             Text(when {
