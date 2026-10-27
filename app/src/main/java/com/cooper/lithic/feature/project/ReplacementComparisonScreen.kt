@@ -22,13 +22,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import com.cooper.lithic.core.design.AmountText
+import com.cooper.lithic.core.design.MoneyMetric
+import com.cooper.lithic.core.design.MoneyMetricLevel
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.C2Section
 import com.cooper.lithic.core.design.C2StatusChip
 import com.cooper.lithic.core.design.C2RecordIdentity
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
+import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.data.local.ReplacementEntity
 
@@ -53,13 +55,16 @@ internal fun ReplacementComparisonScreen(
         item {
             Column(Modifier.padding(LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
                 C2PageHeader("替换链与纵向对比", onBack, "replacement-back", backLabel = "返回项目详情")
-                Text("只记录你明确建立的关系；不会自动结束项目或生成金额。", style = MaterialTheme.typography.bodyLarge)
+                C5InformationButton("替换关系说明", Modifier.testTag("replacement-information"), buttonLabel = "替换关系说明") {
+                    Text("只记录你明确建立的关系；不会自动结束项目或生成金额。每个项目最多一位前任和一位后任。")
+                    Text("解除关系不撤销现金付款、折抵或结束事实，也不自动连接两边项目。")
+                }
                 if (state.loading) Text("正在读取替换链")
                 state.error?.let {
                     Text(it, Modifier.testTag("replacement-read-error"), color = MaterialTheme.colorScheme.error)
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp)) { Text("重新读取") }
                 }
-                Button(onLink, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("replacement-link"),
+                OutlinedButton(onLink, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("replacement-link"),
                     enabled = !state.loading && state.chain != null && state.form == null) { Text("明确建立替换关系") }
             }
         }
@@ -83,8 +88,10 @@ internal fun ReplacementComparisonScreen(
                     }
                     if (detail.project.coverAssetId != null) Text("封面暂不可用", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Text(if (detail.cost.unavailableReason == null) "持有 ${detail.cost.heldDays} 天" else "尚未开始，持有时长不可计算")
-                    Text(if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal) "已结束；结果截至今天" else "当前日均成本")
-                    AmountText(detail.cost.dailyRate, Modifier.testTag("replacement-daily-${detail.project.id}"), style = MaterialTheme.typography.headlineMedium)
+                    val metricLabel = if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal) "已结束；结果截至今天" else "当前日均成本"
+                    Text(metricLabel)
+                    MoneyMetric(detail.cost.dailyRate, Modifier.fillMaxWidth().testTag("replacement-daily-${detail.project.id}"),
+                        level = MoneyMetricLevel.ROW, label = metricLabel)
                     if (detail.events.any { it.exchangeGroupId != null }) Text("成本包含已记录的非现金折抵。")
                     TextButton({ onOpenProject(detail.project.id) }, Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("replacement-open-${detail.project.id}")) { Text("查看此项目详情") }

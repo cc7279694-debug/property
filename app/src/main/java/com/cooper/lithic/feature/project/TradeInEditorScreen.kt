@@ -19,10 +19,12 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.AmountField
-import com.cooper.lithic.core.design.AmountText
+import com.cooper.lithic.core.design.MoneyMetric
+import com.cooper.lithic.core.design.MoneyMetricLevel
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.C2FormScaffold
 import com.cooper.lithic.core.design.C2Section
+import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.design.NameField
 import com.cooper.lithic.core.model.MoneyParseResult
@@ -68,9 +70,9 @@ internal fun TradeInEditorScreen(
         if (!confirming) {
             NameField(state.name, onName, Modifier.testTag("trade-in-name"), label = "新项目名称", enabled = state.canEdit, error = state.errors["name"], labelOutside = true)
             ProjectDateInput(state.date, onDate, state.today, "真实交易日期", "trade-in-date", enabled = state.canEdit, error = state.errors["date"], labelOutside = true)
-            Text("旧项目在这一天结束，新项目在这一天开始拥有。")
             AmountField(state.cash, onCash, Modifier.testTag("trade-in-cash"), label = "实际现金补款（元）", enabled = state.canEdit, error = state.errors["cash"], labelOutside = true)
-            Text("只记录实际已付款；0元现金补款可以保存，不推算未付分期。")
+            Text("只记实际已付款，0元现金补款也可保存。", style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
             AmountField(state.credit, onCredit, Modifier.testTag("trade-in-credit"), label = "非现金折抵金额（元）", enabled = state.canEdit, error = state.errors["credit"], labelOutside = true)
             ProjectCategoryPicker(state.categories, state.categoryId, onCategory, error = state.errors["categoryId"], enabled = state.canEdit, compactRow = true)
             ProjectNoteInput(state.note, onNote, "新项目备注（可选）", "trade-in-note", state.canEdit, state.errors["note"], labelOutside = true)
@@ -79,6 +81,10 @@ internal fun TradeInEditorScreen(
                 verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(state.linkReplacement, onCheckedChange = null, enabled = state.canEdit)
                 Text("同时建立旧 → 新替换关系", Modifier.weight(1f))
+            }
+            C5InformationButton("交易日期与金额说明", Modifier.testTag("trade-in-information"), buttonLabel = "交易日期与金额说明") {
+                Text("旧项目在真实交易日期结束，新项目在这一天开始拥有。")
+                Text("只记录实际已付款；0元现金补款可以保存，不推算未付分期。折抵是非现金事实，不是现金支出。")
             }
         } else {
             Text("新项目：${state.name}", Modifier.testTag("trade-in-confirm-new-name"), style = MaterialTheme.typography.titleLarge)
@@ -106,6 +112,7 @@ private fun cents(value: String) = (MoneyParser.parseCny(value) as? MoneyParseRe
 @Composable private fun TradeAmount(label: String, cents: Long?, tag: String) {
     Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
         Text(label, style = MaterialTheme.typography.bodyLarge)
-        AmountText(cents?.let { BigDecimal.valueOf(it, 2) }, Modifier.testTag(tag), AmountUnit.YUAN, style = MaterialTheme.typography.titleLarge)
+        MoneyMetric(cents?.let { BigDecimal.valueOf(it, 2) }, Modifier.fillMaxWidth().testTag(tag),
+            unit = AmountUnit.YUAN, level = MoneyMetricLevel.DETAIL, label = label)
     }
 }

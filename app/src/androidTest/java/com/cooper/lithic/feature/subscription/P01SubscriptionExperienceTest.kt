@@ -42,6 +42,7 @@ class P01SubscriptionExperienceTest {
             .assertIsSelected().assertTextContains("已选", substring = true)
         compose.onNodeWithTag("subscription-cycle-selection").performScrollTo()
             .assertTextContains("年付", substring = true)
+        compose.onNodeWithTag("subscription-payment-information").performScrollTo().performClick()
         compose.onNodeWithTag("subscription-cycle-explanation").performScrollTo()
             .assertTextContains("不代表已经使用", substring = true)
         compose.onNodeWithTag("subscription-effective-explanation").performScrollTo()
@@ -50,6 +51,7 @@ class P01SubscriptionExperienceTest {
             .assertTextContains("允许系统通知", substring = true)
             .assertTextContains("不保证准点", substring = true)
         compose.onNodeWithText("提醒到期日独立记录；当前仅保存日期，不发送提醒。").assertDoesNotExist()
+        compose.onNodeWithText("知道了").performClick()
         assertEquals(BillingCycle.YEARLY, state.cycle)
     }
 

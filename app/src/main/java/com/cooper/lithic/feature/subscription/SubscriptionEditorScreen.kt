@@ -35,6 +35,8 @@ import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.UiFeedbackText
 import com.cooper.lithic.core.design.UiMessageTone
 import com.cooper.lithic.core.design.AmountField
+import com.cooper.lithic.core.design.C2Section
+import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.design.NameField
 import com.cooper.lithic.data.local.CategoryEntity
@@ -67,15 +69,16 @@ internal fun SubscriptionEditorScreen(
         if (state.loading) Text("正在读取订阅资料", style = MaterialTheme.typography.bodyLarge)
         NameField(state.serviceName, onNameChange, Modifier.testTag("subscription-name"),
             label = "服务名称", error = state.errors["serviceName"], enabled = state.canEdit, labelOutside = true)
-        SubscriptionCategoryPicker(state.categories, state.categoryId, onCategoryChange,
-            state.errors["categoryId"], state.canEdit)
-        Text("首次真实付款", style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.semantics { heading() })
         Text("请核对实际付款及四个日期；预填不代表付款已经确认。",
-            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         SubscriptionPaymentFields(state, "subscription", onAmountChange, onCycleChange, onPaidOnChange,
             onEffectiveFromChange, onPaidUntilChange, onReminderDueChange)
-        ProjectNoteInput(state.note, onNoteChange, "备注（可选）", "subscription-note", state.canEdit, state.errors["note"])
+        C2Section("补充信息") {
+            SubscriptionCategoryPicker(state.categories, state.categoryId, onCategoryChange,
+                state.errors["categoryId"], state.canEdit)
+            ProjectNoteInput(state.note, onNoteChange, "备注（可选）", "subscription-note", state.canEdit,
+                state.errors["note"], labelOutside = true)
+        }
     }
 }
 
@@ -90,45 +93,50 @@ internal fun SubscriptionPaymentFields(
     onPaidUntilChange: (String) -> Unit,
     onReminderDueChange: (String) -> Unit,
 ) {
-    AmountField(state.amount, onAmountChange, Modifier.testTag("$prefix-amount"),
-        label = if (state.kind == SubscriptionEditorKind.CREATE) "首次实际付款金额（元）" else "本次实际付款金额（元）",
-        error = state.errors["amount"], enabled = state.canEdit, labelOutside = true)
-    Text("仅记录已实际付款，金额必须大于0元。免费期不生成付费记录。",
-        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-    Text("固定付费周期：${billingCycleLabel(state.cycle)}（当前选择）", style = MaterialTheme.typography.bodyLarge,
-        modifier = Modifier.testTag("$prefix-cycle-selection"))
-    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        BillingCycle.entries.forEach { cycle ->
-            val isSelected = state.cycle == cycle
-            OutlinedButton(onClick = { onCycleChange(cycle) }, enabled = state.canEdit,
-                colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
-                    contentColor = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.primary),
-                modifier = Modifier.heightIn(min = 48.dp).testTag("$prefix-cycle-${cycle.name}")
-                    .semantics { selected = isSelected }) {
-                Text("${if (isSelected) "已选 · " else ""}${billingCycleLabel(cycle)}", style = MaterialTheme.typography.bodyLarge)
+    C2Section(if (state.kind == SubscriptionEditorKind.CREATE) "首次真实付款" else "真实付款") {
+        AmountField(state.amount, onAmountChange, Modifier.testTag("$prefix-amount"),
+            label = if (state.kind == SubscriptionEditorKind.CREATE) "首次实际付款金额（元）" else "本次实际付款金额（元）",
+            error = state.errors["amount"], enabled = state.canEdit, labelOutside = true)
+        Text("实付金额须大于0元。免费期不生成付款。",
+            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text("固定付费周期：${billingCycleLabel(state.cycle)}（当前选择）", style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.testTag("$prefix-cycle-selection"))
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            BillingCycle.entries.forEach { cycle ->
+                val isSelected = state.cycle == cycle
+                OutlinedButton(onClick = { onCycleChange(cycle) }, enabled = state.canEdit,
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        containerColor = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
+                        contentColor = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.primary),
+                    modifier = Modifier.heightIn(min = 48.dp).testTag("$prefix-cycle-${cycle.name}")
+                        .semantics { selected = isSelected }) {
+                    Text("${if (isSelected) "已选 · " else ""}${billingCycleLabel(cycle)}", style = MaterialTheme.typography.bodyLarge)
+                }
             }
         }
+        state.errors["cycle"]?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium) }
     }
-    Text("30、90、365天是成本折算口径，不代表已经使用的天数；请按实际服务核对下面的覆盖日期。",
-        Modifier.testTag("$prefix-cycle-explanation"), style = MaterialTheme.typography.bodyMedium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant)
-    state.errors["cycle"]?.let { Text(it, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium) }
-    PaymentDate(state.paidOn, onPaidOnChange, state.today, "真实付款日期", "$prefix-paid-on",
-        state.errors["paidOn"], state.canEdit)
-    Text("实际已完成付款的日期，不能晚于记录时区的今天。", style = MaterialTheme.typography.bodyMedium)
-    PaymentDate(state.effectiveFrom, onEffectiveFromChange, state.today, "实际生效日期", "$prefix-effective-from",
-        state.errors["effectiveFrom"], state.canEdit)
-    Text("这笔付款对应的真实服务覆盖起点，可以晚于付款日期。预付未来周期要到生效日才影响当前套餐。",
-        Modifier.testTag("$prefix-effective-explanation"), style = MaterialTheme.typography.bodyMedium)
-    PaymentDate(state.paidUntilExclusive, onPaidUntilChange, state.today, "付费到期边界（当天不包含）", "$prefix-paid-until",
-        state.errors["paidUntilExclusive"], state.canEdit)
-    Text("付费到期边界当天不包含在前一期。", style = MaterialTheme.typography.bodyMedium)
-    PaymentDate(state.reminderDueOn, onReminderDueChange, state.today, "提醒到期日", "$prefix-reminder-due",
-        state.errors["reminderDueOn"], state.canEdit)
-    Text("提醒到期日独立于付费覆盖，修改它不会延长服务。在“设置”开启续费提醒并允许系统通知后，应用会依据此日期尽力提醒，不保证准点；这不代表服务商已经扣款。",
-        Modifier.testTag("$prefix-reminder-explanation"), style = MaterialTheme.typography.bodyMedium,
-        color = MaterialTheme.colorScheme.onSurfaceVariant)
+    C2Section("付款与覆盖日期") {
+        PaymentDate(state.paidOn, onPaidOnChange, state.today, "真实付款日期", "$prefix-paid-on",
+            state.errors["paidOn"], state.canEdit)
+        PaymentDate(state.effectiveFrom, onEffectiveFromChange, state.today, "实际生效日期", "$prefix-effective-from",
+            state.errors["effectiveFrom"], state.canEdit)
+        PaymentDate(state.paidUntilExclusive, onPaidUntilChange, state.today, "付费到期边界（当天不包含）", "$prefix-paid-until",
+            state.errors["paidUntilExclusive"], state.canEdit)
+        PaymentDate(state.reminderDueOn, onReminderDueChange, state.today, "提醒到期日", "$prefix-reminder-due",
+            state.errors["reminderDueOn"], state.canEdit)
+        C5InformationButton("付款、周期与日期说明", Modifier.testTag("$prefix-payment-information"), buttonLabel = "付款与日期说明") {
+            Text("仅记录已实际付款，金额必须大于0元。免费期不生成付费记录。")
+            Text("30、90、365天是成本折算口径，不代表已经使用的天数；请按实际服务核对下面的覆盖日期。",
+                Modifier.testTag("$prefix-cycle-explanation"), style = MaterialTheme.typography.bodyMedium)
+            Text("真实付款日期是实际已完成付款的日期，不能晚于记录时区的今天。")
+            Text("这笔付款对应的真实服务覆盖起点，可以晚于付款日期。预付未来周期要到生效日才影响当前套餐。",
+                Modifier.testTag("$prefix-effective-explanation"), style = MaterialTheme.typography.bodyMedium)
+            Text("付费到期边界当天不包含在前一期。")
+            Text("提醒到期日独立于付费覆盖，修改它不会延长服务。在“设置”开启续费提醒并允许系统通知后，应用会依据此日期尽力提醒，不保证准点；这不代表服务商已经扣款。",
+                Modifier.testTag("$prefix-reminder-explanation"), style = MaterialTheme.typography.bodyMedium)
+        }
+    }
 }
 
 @Composable

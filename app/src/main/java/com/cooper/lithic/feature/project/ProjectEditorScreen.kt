@@ -42,6 +42,7 @@ import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.design.NameField
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
+import com.cooper.lithic.core.design.C5InformationButton
 
 @Composable
 internal fun ProjectEditorScreen(
@@ -110,7 +111,7 @@ internal fun ProjectEditorScreen(
                     AmountField(state.initialAmount, onInitialAmountChange, Modifier.testTag("project-initial-amount"),
                         label = "初始实际投入（元）", error = state.errors["initialAmount"], enabled = state.canEdit,
                         labelOutside = true)
-                    Text("实际已投入，0元也可保存。", style = MaterialTheme.typography.bodyMedium,
+                    Text("0元也可保存，空白不代表0。", style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
@@ -126,8 +127,6 @@ internal fun ProjectEditorScreen(
                         EditorSummary("开始拥有日期", state.startedOn, "project-started-on-summary",
                             enabled = state.canEdit && !state.tradeInProtected, onClick = { startExpanded = true })
                     }
-                    Text("开始日计入持有天数。",
-                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
             if (state.tradeInProtected) Text("此项目参与以旧换新，取得日期与关联金额日期保持一致，不能单独修改。")
@@ -147,10 +146,13 @@ internal fun ProjectEditorScreen(
                             EditorSummary("初始实际付款日期", "与开始日期相同 · ${state.initialPaidOn}",
                                 "project-payment-summary", state.canEdit, onClick = { paymentExpanded = true })
                         }
-                        if (disclosure.initialPaidOn) Text("先付款后收到时，改为真实付款日。",
-                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
+            }
+
+            C5InformationButton("金额与日期说明", Modifier.testTag("project-editor-information"), buttonLabel = "金额与日期说明") {
+                Text("初始投入只记录已经实际投入的金额，0元也可保存。")
+                Text("开始日计入持有天数。先付款后收到时，请将初始实际付款日期改为真实付款日；付款日期不会改变开始拥有日期。")
             }
 
             Column(Modifier.bringIntoViewRequester(errorTargets.getValue(ProjectEditorField.NOTE)),

@@ -24,6 +24,10 @@ import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.UiFeedbackText
 import com.cooper.lithic.core.design.UiMessageTone
 import com.cooper.lithic.core.design.C2FormScaffold
+import com.cooper.lithic.core.design.C2Section
+import com.cooper.lithic.core.design.MoneyMetric
+import com.cooper.lithic.core.design.MoneyMetricLevel
+import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.domain.subscription.SubscriptionOperationState
 import com.cooper.lithic.feature.project.ProjectDateInput
@@ -86,7 +90,14 @@ internal fun SubscriptionStateDialog(state: SubscriptionStateEditorUiState, onBa
         }
         when (state.kind) {
             SubscriptionStateEditorKind.DELETE_RENEWAL -> {
-                Text("真实付款日：${state.renewalPaidOn} · 金额：${state.renewalAmount}元", Modifier.testTag("subscription-delete-payment-fact"))
+                C2Section("原付款事实", Modifier.testTag("subscription-delete-payment-fact")) {
+                    Text("真实付款日：${state.renewalPaidOn}")
+                    val amount = state.renewalAmount.toBigDecimalOrNull()
+                    if (amount != null) MoneyMetric(amount, Modifier.fillMaxWidth().testTag("subscription-delete-payment-amount"),
+                        unit = AmountUnit.YUAN, level = MoneyMetricLevel.CARD, label = "原付款金额")
+                    else Text("原付款金额：${state.renewalAmount.ifBlank { "尚未读取" }}",
+                        Modifier.testTag("subscription-delete-payment-unavailable"))
+                }
                 Text("仅用于错误录入的付款。确认后只删除这一笔，无法在App撤回，并重新计算历史金额、标准时长和成本；这不是退款。",
                     Modifier.testTag("subscription-delete-payment-explanation"))
                 if (state.lastPayment) Text("最后一笔真实付款不能单独删除。服务身份和原始付款会保留。",

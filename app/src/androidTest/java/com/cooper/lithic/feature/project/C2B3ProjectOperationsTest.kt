@@ -46,10 +46,11 @@ class C2B3ProjectOperationsTest {
         compose.setContent { LithicTheme {
             TradeInEditorScreen(state, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {})
         } }
-        compose.onNodeWithTag("trade-in-confirm-old-credit").performScrollTo().assertContentDescriptionEquals("30.00元")
-        compose.onNodeWithTag("trade-in-confirm-cash").performScrollTo().assertContentDescriptionEquals("100.00元")
-        compose.onNodeWithTag("trade-in-confirm-new-credit").performScrollTo().assertContentDescriptionEquals("30.00元")
-        compose.onNodeWithTag("trade-in-confirm-acquisition").performScrollTo().assertContentDescriptionEquals("130.00元")
+        compose.onNodeWithTag("trade-in-confirm-old-credit").performScrollTo().assertContentDescriptionContains("30.00元", substring = true)
+        compose.onNodeWithTag("trade-in-confirm-cash").performScrollTo().assertContentDescriptionContains("100.00元", substring = true)
+        compose.onNodeWithTag("trade-in-confirm-new-credit").performScrollTo().assertContentDescriptionContains("30.00元", substring = true)
+        compose.onNodeWithTag("trade-in-confirm-acquisition").performScrollTo().assertContentDescriptionContains("130.00元", substring = true)
+        compose.onNodeWithTag("trade-in-confirm-net-change").performScrollTo().assertContentDescriptionContains("100.00元", substring = true)
         compose.onNodeWithTag("trade-in-save").assertIsDisplayed().assertTextContains("确认并保存整组交易")
     }
 
