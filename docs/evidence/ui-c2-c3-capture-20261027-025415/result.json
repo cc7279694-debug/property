@@ -1,0 +1,111 @@
+{
+  "source": "40ee800662a4571cd8670437e48c4b31152336f4",
+  "branch": "codex/lithic-v1-product-completion",
+  "result": "C3-1 BLOCKED — CAPTURE_INCOMPLETE",
+  "installationAttempts": {
+    "app": 1,
+    "test": 1
+  },
+  "installedApp": {
+    "package": "com.cooper.lithic.c2visual.debug",
+    "uid": 10435,
+    "identity": "package:com.cooper.lithic.c2visual.debug versionCode:17 uid:10435",
+    "deviceApk": "/data/app/~~hL9xC50eiZIqIKSIxSd--g==/com.cooper.lithic.c2visual.debug-EB615n5vpD4NTVTp1AgS3g==/base.apk",
+    "sha256": "14b1d55e30f8db3bf70d693034b4d4ab5989b64d8c7a1cf7d36b1e21cc9a79a6",
+    "bytes": 15732081,
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "certificateEvidence": "device APK SHA equals freshly signature-verified local APK",
+    "privateDataDirectory": "/data/user/0/com.cooper.lithic.c2visual.debug",
+    "otherAppPrivateDataAccessed": false,
+    "postNotificationsGranted": false,
+    "normalApplication": "not launched",
+    "manifestApplication": "android.app.Application"
+  },
+  "installedTest": {
+    "package": "com.cooper.lithic.c2visual.debug.test",
+    "uid": 10437,
+    "identity": "package:com.cooper.lithic.c2visual.debug.test versionCode:0 uid:10437",
+    "deviceApk": "/data/app/~~hiTGUznRyikiJmGGCKdgRw==/com.cooper.lithic.c2visual.debug.test-HwneCCm-XWf-onXZRtcpog==/base.apk",
+    "sha256": "18a10d5472aa5bff624ed02da763a4efd873811a2ac2b738497693b3b0b51c76",
+    "bytes": 3475349,
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "certificateEvidence": "device APK SHA equals freshly signature-verified local APK",
+    "privateDataDirectory": "/data/user/0/com.cooper.lithic.c2visual.debug.test",
+    "otherAppPrivateDataAccessed": false,
+    "instrumentation": "com.cooper.lithic.c2visual.debug.test/com.cooper.lithic.app.M13IsolatedRunner",
+    "targetPackage": "com.cooper.lithic.c2visual.debug"
+  },
+  "methodAttempts": 1,
+  "methodResults": [
+    {
+      "method": "A_dark_400_confirmed_empty_now",
+      "attempts": 1,
+      "status": "UNKNOWN_TIMEOUT",
+      "junit": "STARTED, NO COMPLETION"
+    },
+    {
+      "method": "B_dark_400_confirmed_empty_review",
+      "attempts": 0,
+      "status": "NOT_RUN",
+      "junit": "NOT_RUN"
+    },
+    {
+      "method": "C_light_400_synthetic_project_subscription_now",
+      "attempts": 0,
+      "status": "NOT_RUN",
+      "junit": "NOT_RUN"
+    },
+    {
+      "method": "D_light_400_synthetic_history_review",
+      "attempts": 0,
+      "status": "NOT_RUN",
+      "junit": "NOT_RUN"
+    },
+    {
+      "method": "E1_dark_360_local_200percent_now",
+      "attempts": 0,
+      "status": "NOT_RUN",
+      "junit": "NOT_RUN"
+    },
+    {
+      "method": "E2_dark_360_local_200percent_review",
+      "attempts": 0,
+      "status": "NOT_RUN",
+      "junit": "NOT_RUN"
+    },
+    {
+      "method": "F1_device_configuration_empty_now",
+      "attempts": 0,
+      "status": "NOT_RUN",
+      "junit": "NOT_RUN"
+    },
+    {
+      "method": "F2_device_configuration_empty_review",
+      "attempts": 0,
+      "status": "NOT_RUN",
+      "junit": "NOT_RUN"
+    }
+  ],
+  "A": {
+    "commandBudgetSeconds": 120,
+    "elapsedSeconds": 120.063,
+    "outerExitCode": null,
+    "exitCodeMeaning": "NOT_CAPTURED: desktop client timed out",
+    "lastRunnerStatusCode": 1,
+    "captureHandshakes": 0,
+    "failureStack": "NOT_RECEIVED",
+    "completion": "UNKNOWN",
+    "phoneProcessAtEnd": 6206,
+    "phoneInstrumentationEnded": "UNKNOWN"
+  },
+  "screenshotsExtracted": 0,
+  "rawDeviceCaptureFiles": "UNKNOWN; no returned UUID; no directory enumeration permitted/performed",
+  "androidComposeCaptured": "NOT_OBTAINED",
+  "mainActivity": "NOT_TESTED",
+  "phoneSettingsChanged": false,
+  "phoneForceStopOrKill": 0,
+  "buildOrGradle": 0,
+  "otherTestMethods": 0,
+  "rawLocalEvidence": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\build\\c3-capture-local-20261027-025415",
+  "historicalStatesChanged": false
+}

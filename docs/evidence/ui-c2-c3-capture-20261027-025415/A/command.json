@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "C:/Users/CDD/AppData/Local/MirraAndroid/sdk/platform-tools/adb.exe",
+    "-s",
+    "<AUTHORIZED_USB>",
+    "shell",
+    "am",
+    "instrument",
+    "-w",
+    "-r",
+    "-e",
+    "class",
+    "com.cooper.lithic.ui.C2ProductionVisualGalleryTest#A_dark_400_confirmed_empty_now",
+    "com.cooper.lithic.c2visual.debug.test/com.cooper.lithic.app.M13IsolatedRunner"
+  ],
+  "startedUtc": "2026-10-27T03:06:13.010466+00:00",
+  "seconds": 120.063,
+  "exitCode": null,
+  "timeoutSeconds": 120,
+  "stdoutBytes": 379,
+  "stdoutSha256": "78837da668498fd22402c590a64387809081b2bd5fcb91cfafb98ae40b831844",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

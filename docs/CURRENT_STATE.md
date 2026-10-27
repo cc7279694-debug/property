@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **C3-1 BLOCKED — CAPTURE_INCOMPLETE / APP_VISUAL_PENDING（2026-10-27）**：用户转交C3-0独立PASS WITH NOTES并明确授权原小米14一次限定采集；从`40ee800`，新C3 App/Test首次安装各1次exit0，设备SHA精确匹配锁定实物、UID10435/10437，platform Application/单一M13Runner目标/未授予POST核对通过。仅A方法启动1次，120秒桌面客户端等待超时，只有JUnit开始、无完成或UUID握手；A UNKNOWN_TIMEOUT，B～F2全部NOT_RUN，提取PNG0。结束同Boot、原四包安装元数据、新两包SHA与原font1.1/density480/主题保持；新App PID6206仍存在，Instrumentation结束及Owner/FD状态UNKNOWN，不强停、不猜测目录、不清理。没有设备截图可供视觉验收，MAINACTIVITY_NOT_TESTED；源码/构建/历史套件/系统设置写入/其他设备操作均0。原M10/M20/M22/M13/G1～G4历史风险及MEDIA_DISPLAY_PENDING不变。见[本次原生采集记录](evidence/UI-C2-C3-Native-Capture-Execution.md)。停止等待独立审查与新的设备授权，不重试、生成Preview6、冻结、合并main或进入M23。
+
 
 - **C3-0 READY_FOR_SAFE_CAPTURE_REVIEW / ANDROID_SCREENSHOTS_NOT_RUN（2026-10-27）**：用户表示内存已足够（只读6.143GiB，E盘65.437GiB），只恢复桌面预检，无设备授权。独立C3 App/Test已编译签名；最终APK源码`2dbd9a1`，App code17/c2visual-debug、platform Application、仅空宿主，无正常Main/Provider/Service/Receiver；M13Runner实际DEX传platform Application，A～F八方法仅编译。首轮Lint3错13警告保留；只改C3专属Manifest为Application白名单并继承POST声明，不改业务/断言、不禁Lint。最终14定向JVM PASS、Lint0错15警告、App/Test重打包退出0；两包原Debug证书一致，真实SHA/路径见[C3预检](evidence/UI-C2-C3-Native-Visual-Preflight.md)。Test的标准AndroidX辅助Activity/REORDER_TASKS/queries如实列明；POST仅声明，未来API36仍须核对未授予、不请求/发布。旧四类身份配置求值保持，五类冲突参数预期拒绝，旧本地APK SHA保持。生产UI/Room5/backup4/Owner/恢复/Nav3/媒体/提醒代码未变。ADB/安装/实际启动/UID/截图/提取均NOT_RUN，APP_VISUAL_PENDING / MEDIA_DISPLAY_PENDING及全部历史风险不变，不生成Preview6、不合并main或进入M23；先独立核对，再另获设备授权。
 
