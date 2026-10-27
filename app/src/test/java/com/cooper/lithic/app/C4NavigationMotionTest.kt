@@ -1,32 +1,39 @@
 package com.cooper.lithic.app
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.runtime.NavKey
 import com.cooper.lithic.feature.project.LeaveDecision
 import com.cooper.lithic.feature.settings.RestoreUiPhase
 import org.junit.Assert.*
 import org.junit.Test
 
 class C4NavigationMotionTest {
-    @Test fun every_distinct_primary_pair_uses_an_instant_transition() {
-        val primary = listOf(Home, Review, Settings)
-        primary.forEach { from -> primary.filterNot { it == from }.forEach { to ->
-            assertTrue("$from -> $to", c4UseInstantPrimaryTransition(from, to))
-        } }
+    @Test fun the_shared_page_transition_has_no_alpha_or_scale_animation() {
+        val transition = c5PageTransition()
+        assertEquals(EnterTransition.None, transition.targetContentEnter)
+        assertEquals(ExitTransition.None, transition.initialContentExit)
     }
 
-    @Test fun entering_or_leaving_a_detail_does_not_inherit_tab_motion() {
+    @Test fun the_scene_wrapper_preserves_detail_and_primary_entry_identity_and_metadata() {
         val detail = ProjectDetail("82000000-0000-0000-0000-000000000001", ProjectOrigin.HOME)
-        listOf(Home, Review, Settings).forEach { primary ->
-            assertFalse(c4UseInstantPrimaryTransition(primary, detail))
-            assertFalse(c4UseInstantPrimaryTransition(detail, primary))
+        listOf(Home, Review, Settings, TotalCostTrend, detail, CreateProject).forEach { route ->
+            val contentKey = "saved-content-$route"
+            val metadata = mapOf("synthetic-source" to route)
+            val original = NavEntry<NavKey>(route, contentKey, metadata) { }
+            val wrapped = c5SceneEntryProvider { _: NavKey -> original }(route)
+            assertEquals(contentKey, wrapped.contentKey)
+            assertSame(metadata, wrapped.metadata)
         }
-        assertFalse(c4UseInstantPrimaryTransition(detail, CreateProject))
     }
 
-    @Test fun missing_or_unrecognized_scene_metadata_never_matches_a_primary_route() {
-        assertFalse(c4UseInstantPrimaryTransition(null, Review))
-        assertFalse(c4UseInstantPrimaryTransition(Home, null))
-        assertFalse(c4UseInstantPrimaryTransition("Home", "Review"))
-        assertFalse(c4UseInstantPrimaryTransition(Home, Home))
+    @Test fun default_content_key_and_empty_scene_metadata_survive_wrapping() {
+        val original = NavEntry<NavKey>(TotalCostTrend) { }
+        val wrapped = c5SceneEntryProvider { _: NavKey -> original }(TotalCostTrend)
+        assertSame(original.contentKey, wrapped.contentKey)
+        assertSame(original.metadata, wrapped.metadata)
+        assertTrue(wrapped.metadata.isEmpty())
     }
 
     @Test fun switching_tabs_does_not_change_canonical_stacks_or_leave_protection() {

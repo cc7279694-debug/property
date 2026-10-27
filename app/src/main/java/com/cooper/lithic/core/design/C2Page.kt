@@ -22,19 +22,16 @@ internal fun C2PageHeader(title: String, onBack: () -> Unit, backTag: String,
     modifier: Modifier = Modifier, backLabel: String = "返回", subtitle: String? = null,
     actions: @Composable RowScope.() -> Unit = {}) {
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        if (LocalDensity.current.fontScale > 1.3f) {
-            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag(backTag).semantics { contentDescription = backLabel }) {
-                C2Icon(C2Glyph.Back); Spacer(Modifier.width(8.dp)); Text(backLabel)
+        val largeType = LocalDensity.current.fontScale > 1.3f
+        Row(Modifier.fillMaxWidth().heightIn(min = 56.dp), verticalAlignment = Alignment.CenterVertically) {
+            IconButton(onBack, Modifier.size(48.dp).testTag(backTag).semantics { contentDescription = backLabel }) {
+                C2Icon(C2Glyph.Back)
             }
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End, content = actions)
-        } else Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            TextButton(onBack, Modifier.heightIn(min = 48.dp).testTag(backTag).semantics { contentDescription = backLabel }) {
-                C2Icon(C2Glyph.Back); Spacer(Modifier.width(8.dp)); Text(backLabel)
-            }
-            Spacer(Modifier.weight(1f))
+            if (largeType) Spacer(Modifier.weight(1f))
+            else Text(title, Modifier.weight(1f).semantics { heading() }, style = MaterialTheme.typography.headlineMedium)
             actions()
         }
-        Text(title, Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineMedium)
+        if (largeType) Text(title, Modifier.semantics { heading() }, style = MaterialTheme.typography.headlineMedium)
         subtitle?.let { Text(it, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
     }
 }

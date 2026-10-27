@@ -1,12 +1,8 @@
 package com.cooper.lithic.app
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.togetherWith
-import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -47,6 +43,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
@@ -200,13 +197,20 @@ internal fun LithicNavigation(
         }
     } else null
     val reviewState = reviewModel?.state?.collectAsStateWithLifecycle()?.value
-    val trendModel = if (Review in routes || TotalCostTrend in routes) state.totalCostTimelineRepository?.let { repository ->
+    // Only an actual first visit creates the model. Keep that existing generation-owned
+    // reference after leaving: an outgoing Scene must not receive a temporary null input.
+    val trendReference = state.totalCostTimelineRepository?.let { repository ->
         remember(generationScope, session, repository) {
-            ViewModelProvider(generationScope, viewModelFactory {
-                initializer { TotalCostTrendViewModel(repository, state.businessClock) }
-            })[TotalCostTrendViewModel::class.java]
+            lazy(LazyThreadSafetyMode.NONE) {
+                ViewModelProvider(generationScope, viewModelFactory {
+                    initializer { TotalCostTrendViewModel(repository, state.businessClock) }
+                })[TotalCostTrendViewModel::class.java]
+            }
         }
-    } else null
+    }
+    val trendModel = trendReference?.let { reference ->
+        if (Review in routes || TotalCostTrend in routes || reference.isInitialized()) reference.value else null
+    }
     val trendState = trendModel?.state?.collectAsStateWithLifecycle()?.value
     DisposableEffect(trendModel) { onDispose { trendModel?.pause() } }
     val analysisModel = if (routes.any { it == AnnualReview || it is CategoryAnalysis }) state.totalCostTimelineRepository?.let { repository ->
@@ -411,20 +415,12 @@ internal fun LithicNavigation(
                 TextButton(onClick = onRetryLedger, modifier = Modifier.heightIn(min = 48.dp).testTag("ledger-retry-read")) { Text("重试读取") }
             }
             NavDisplay(backStack = routes, modifier = Modifier.weight(1f), onBack = onBack,
-                transitionSpec = {
-                    if (c4UseInstantPrimaryTransition(initialState.metadata[C4_PRIMARY_DESTINATION],
-                            targetState.metadata[C4_PRIMARY_DESTINATION])) {
-                        EnterTransition.None togetherWith ExitTransition.None
-                    } else fadeIn(tween(180)) togetherWith fadeOut(tween(180))
-                },
-                popTransitionSpec = {
-                    if (c4UseInstantPrimaryTransition(initialState.metadata[C4_PRIMARY_DESTINATION],
-                            targetState.metadata[C4_PRIMARY_DESTINATION])) {
-                        EnterTransition.None togetherWith ExitTransition.None
-                    } else fadeIn(tween(180)) togetherWith fadeOut(tween(180))
-                },
-                // Keep Navigation3's gesture-driven predictive-back contract unchanged.
-                entryProvider = entryProvider<NavKey> {
+                transitionSpec = { c5PageTransition() },
+                popTransitionSpec = { c5PageTransition() },
+                // Navigation3 1.0.1 has a separate gesture-progress transition path.
+                // Only its visual transform changes; its original onBack/guards remain.
+                predictivePopTransitionSpec = { _ -> c5PageTransition() },
+                entryProvider = c5SceneEntryProvider(entryProvider<NavKey> {
                     entry<Home>(metadata = mapOf(C4_PRIMARY_DESTINATION to Home)) { HomeShell(state.projectCount, onProjectList = { requestLeave(canonicalBackStack(ProjectList)) }, onCreateProject = { requestLeave(listOf(Home, CreateProject)) },
                         subscriptionCount = state.subscriptionCount, onSubscriptionList = { requestLeave(canonicalBackStack(SubscriptionList)) }, onCreateSubscription = { requestLeave(listOf(Home, CreateSubscription)) }, overview = state.overview,
                         onSearch = if (searchModel != null) ({ requestLeave(canonicalBackStack(NameSearch)) }) else null,
@@ -650,7 +646,7 @@ internal fun LithicNavigation(
                     entry<CancelSubscriptionStop> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
                     entry<CorrectSubscriptionRenewal> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
                     entry<DeleteSubscriptionRenewal> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
-                })
+                }))
         }
     }
     pendingLeave?.let { target ->
@@ -690,6 +686,18 @@ internal fun LithicNavigation(
                     }
                 } }
             })
+    }
+}
+
+/** Wrap each entry inside its Scene without replacing NavDisplay's saved-state decorators.
+ * NavEntry's copy constructor preserves the original key, contentKey and metadata. */
+internal fun <T : Any> c5SceneEntryProvider(provider: (T) -> NavEntry<T>): (T) -> NavEntry<T> = { route ->
+    val original = provider(route)
+    NavEntry(original) {
+        Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background.copy(alpha = 1f))
+            .testTag("navigation-scene")) {
+            original.Content()
+        }
     }
 }
 

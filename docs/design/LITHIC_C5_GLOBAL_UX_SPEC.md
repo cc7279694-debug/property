@@ -1,5 +1,16 @@
 # LITHIC C5 — 全产品UI与交互统一规范（独立审查候选）
 
+## 2026-10-27 — 正式独立审查登记与实施NOTE
+
+用户转交ChatGPT对设计提交`5838e863ededec3ecd569c5332b04ab621a918c4`的结论：**C5 GLOBAL DESIGN — ACCEPTED / FROZEN — PASS WITH NOTES**，批准在当前产品分支完成六单元生产Compose统一实施。这是设计冻结，不是产品视觉或发行冻结。
+
+- §2页面责任表实际为**32组**，下文审计结论中的“30组”为原编制计数笔误；实施及验收统一按32组，不删原有页面。
+- M01～M24、全部手写金额/单位及7处AmountField输入均纳入迁移。
+- 将`app/src/main/java/com/cooper/lithic/core/design/C2RecordIdentity.kt`补入全局迁移清单；未知类别使用通用项目/订阅矢量图标，不用名称首字作默认封面、不推断品牌。
+- 以下“只读/本轮未实施/待授权”等文字保留设计编制时的历史证据口径；当前实施权限以用户本次正式任务书为准，仍不授权设备操作、C3续查或M23。
+
+---
+
 状态：**C5 GLOBAL DESIGN — READY_FOR_INDEPENDENT_REVIEW**。日期：2026-10-27。
 
 本文件是本轮唯一交付。它规定下一阶段的统一实现，**本轮没有实施这些规则**，也未取得新的Android画面或性能证据。未经ChatGPT独立审查及后续实施授权，不进入全量Compose迁移。
