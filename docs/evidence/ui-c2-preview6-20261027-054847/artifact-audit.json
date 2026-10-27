@@ -1,0 +1,98 @@
+{
+  "status": "PREVIEW 6 READY_FOR_OPTIONAL_USER_VISUAL_TRIAL",
+  "sourceBase": "61d85862a21e94311c3bb04bbf8180f075bd4cb5",
+  "buildInputAppTree": "017f8ef19620190f5b63d905bb102807e0144005",
+  "apk": {
+    "absolutePath": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\deliveries\\lithic-preview-0.1.0-preview.6\\Lithic-0.1.0-preview.6-debug.apk",
+    "buildPath": "app/build/private-trial/outputs/apk/debug/app-debug.apk",
+    "bytes": 15732019,
+    "sha256": "154867aebd19372c78ae75879b9d6ce9fc2600fe2d5f7569b5cf7bbb684c13d9",
+    "applicationId": "com.cooper.lithic.preview.debug",
+    "versionCode": 22,
+    "versionName": "0.1.0-preview.6-debug",
+    "label": "砺石·体验版",
+    "minSdk": 26,
+    "targetSdk": 36
+  },
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "signing": "Existing Debug certificate; not formal Release",
+  "manifest": {
+    "application": "com.cooper.lithic.app.LithicApplication",
+    "launcher": [
+      "com.cooper.lithic.app.MainActivity"
+    ],
+    "activities": [
+      "com.cooper.lithic.app.MainActivity"
+    ],
+    "providerAuthority": "com.cooper.lithic.preview.debug.androidx-startup",
+    "providerExported": false,
+    "permissions": [
+      "android.permission.ACCESS_NETWORK_STATE",
+      "android.permission.POST_NOTIFICATIONS",
+      "android.permission.RECEIVE_BOOT_COMPLETED",
+      "android.permission.WAKE_LOCK",
+      "com.cooper.lithic.preview.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "internet": false,
+    "instrumentation": false,
+    "testOnly": false,
+    "sharedUserId": false
+  },
+  "dex": {
+    "files": 13,
+    "requiredProductionClasses": [
+      "Lcom/cooper/lithic/app/AppContainer;",
+      "Lcom/cooper/lithic/app/LithicAppKt;",
+      "Lcom/cooper/lithic/app/LithicApplication;",
+      "Lcom/cooper/lithic/app/LithicNavigationKt;",
+      "Lcom/cooper/lithic/app/MainActivity;",
+      "Lcom/cooper/lithic/feature/home/HomeShellKt;",
+      "Lcom/cooper/lithic/feature/review/ReviewShellKt;",
+      "Lcom/cooper/lithic/feature/settings/SettingsShellKt;"
+    ],
+    "forbiddenTestOrRunnerClasses": [],
+    "testAssets": [],
+    "C2TagStringsPresent": true,
+    "evidenceBoundary": "Packaging/static call-chain only, not visual acceptance"
+  },
+  "lint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 13
+  },
+  "privateTrialIdentityProfile": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build\\private-trial",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.preview.debug",
+        "versionCode": 22,
+        "versionName": "0.1.0-preview.6-debug",
+        "manifest": "src\\privateTrial\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 22,
+        "versionName": "0.1.0-preview.6",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "protectedPriorArtifacts": {
+    "deliveries/lithic-preview-0.1.0-preview.5/Lithic-0.1.0-preview.5-debug.apk": "UNCHANGED",
+    "app/build-c2-visual/outputs/apk/debug/app-debug.apk": "UNCHANGED",
+    "app/build-c2-visual/outputs/apk/androidTest/debug/app-debug-androidTest.apk": "UNCHANGED"
+  },
+  "newUserCandidates": 1,
+  "deviceOperations": 0,
+  "installUpgradeRuntime": "NOT_RUN",
+  "appVisual": "PENDING",
+  "mediaDisplay": "PENDING",
+  "c3Investigation": "CLOSED; root cause UNKNOWN; installed C3 packages not accessed"
+}

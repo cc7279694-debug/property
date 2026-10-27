@@ -1,5 +1,19 @@
 # 决策记录
 
+## 2026-10-27 — 关闭C3截图调查，恢复普通体验版交付
+
+### Decision
+
+用户正式决定 **C3 NATIVE CAPTURE INVESTIGATION CLOSED**，从`61d85862a21e94311c3bb04bbf8180f075bd4cb5`恢复普通Preview交付。关闭的是调查路线；Instrumentation超时根因仍UNKNOWN，不把A改判PASS/FAIL，不重跑A～F、修补USB读取器后重试或处理已安装C3现场。
+
+### Context / Reason
+
+用户选择通过正常LithicApplication/MainActivity自愿体验已完成的C2生产UI，停止独立截图测试路线。C3-2独立结论PASS WITH NOTES只认可执行记录，不代表取得截图或定位超时。
+
+### Consequences
+
+本次仅桌面核对生产接线、必要定向检查和Private Trial打包，原`com.cooper.lithic.preview.debug`及Debug证书保持，仅该显式配置升code22／`0.1.0-preview.6-debug`。不修改视觉/业务/Room5/backup4/Owner/恢复/Nav3协议，不操作手机、ADB或任何现有安装。新APK不是ANDROID_VISUAL_PASS或正式Release；APP_VISUAL_PENDING、MEDIA_DISPLAY_PENDING及M10/M20/M22/M13/G1～G4全部历史状态不变。C3 App/Test保留，当前进程/Instrumentation状态仍UNKNOWN；后续不自动续查、清理或终止，不合并main或进入M23。
+
 ## 2026-10-24 — 停止M22重复验收循环，交付已知风险个人体验版
 
 ### Decision
