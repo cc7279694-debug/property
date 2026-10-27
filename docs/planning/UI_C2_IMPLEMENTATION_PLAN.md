@@ -72,3 +72,10 @@ Goal：只准备独立包与安全截图入口，不重做视觉。Scope：显�
 已按源配置落实新App/Test、启动前platform Application、组件移除/强Runner/互斥及仅Debug、A～F八方法、自包UUID及元数据；源检查和命令示例语法核对完成。用户中途明确“先完成源码，构建暂缓”，因此没有Gradle求值、JVM/Android编译、Lint或新APK，不能确认合并Manifest、签名/SHA。独立复核后需先恢复桌面门禁，再单独授权设备安装/八方法/本次三文件提取；不自动恢复构建或开始设备。
 
 Stop：SOURCE_PREPARED — BUILD_DEFERRED / ANDROID_SCREENSHOTS_NOT_RUN；非C3-0 READY_FOR_SAFE_CAPTURE_REVIEW。见[C3预检](../evidence/UI-C2-C3-Native-Visual-Preflight.md)和[未来命令](../evidence/UI-C2-C3-Capture-Runbook.md)。保留C2及全部历史证据与APP_VISUAL_PENDING，不生成Preview6、不合并main、不进入M23。
+
+
+## C3-0 桌面预检恢复完成（2026-10-27）
+
+用户表示资源足够，核对6.143GiB内存/65.437GiB磁盘后只恢复桌面构建。App/Test与八方法编译完成；首轮Lint3错误保留，仅C3 Manifest改为Application白名单、继承原POST声明，未改业务/禁Lint。14定向JVM PASS、最终Lint0E15W、重打包/签名/实际Manifest/Runner DEX/四配置身份/五种冲突门禁核对完成；源码提交2dbd9a1，APK路径、真实SHA和证据见[C3报告](../evidence/UI-C2-C3-Native-Visual-Preflight.md)。原源码暂缓段和所有失败保持历史。
+
+Stop：C3-0 READY_FOR_SAFE_CAPTURE_REVIEW / ANDROID_SCREENSHOTS_NOT_RUN。不是Android视觉通过，App仍无业务启动入口；POST声明不等于授权或送达，Test辅助组件明确保留。实际设备/安装/截图/提取须另行独立审查及用户授权；不使用旧ANR设备，不生成Preview6、不合并main、不进入M23。

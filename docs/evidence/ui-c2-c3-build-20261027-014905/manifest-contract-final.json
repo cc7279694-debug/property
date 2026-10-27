@@ -1,0 +1,61 @@
+{
+  "app": {
+    "package": "com.cooper.lithic.c2visual.debug",
+    "applicationName": "android.app.Application",
+    "components": {
+      "activity": [
+        "androidx.activity.ComponentActivity"
+      ],
+      "activity-alias": [],
+      "provider": [],
+      "service": [],
+      "receiver": []
+    },
+    "usesPermissions": [
+      "android.permission.POST_NOTIFICATIONS",
+      "com.cooper.lithic.c2visual.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+    ],
+    "sharedUserId": null,
+    "instrumentation": [],
+    "queries": [],
+    "normalProductionEntry": false,
+    "actualDeviceStartup": "NOT_RUN",
+    "originalGeneratedManifest": "app/build-c2-visual/intermediates/merged_manifests/debug/processDebugManifest/AndroidManifest.xml"
+  },
+  "test": {
+    "package": "com.cooper.lithic.c2visual.debug.test",
+    "applicationName": "android.app.Application (platform default)",
+    "components": {
+      "activity": [
+        "androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity",
+        "androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity",
+        "androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+      ],
+      "activity-alias": [],
+      "provider": [],
+      "service": [],
+      "receiver": []
+    },
+    "usesPermissions": [
+      "android.permission.REORDER_TASKS"
+    ],
+    "sharedUserId": null,
+    "instrumentation": [
+      {
+        "{http://schemas.android.com/apk/res/android}name": "com.cooper.lithic.app.M13IsolatedRunner",
+        "{http://schemas.android.com/apk/res/android}functionalTest": "false",
+        "{http://schemas.android.com/apk/res/android}handleProfiling": "false",
+        "{http://schemas.android.com/apk/res/android}label": "Tests for com.cooper.lithic.c2visual.debug",
+        "{http://schemas.android.com/apk/res/android}targetPackage": "com.cooper.lithic.c2visual.debug"
+      }
+    ],
+    "queries": [
+      "androidx.test.orchestrator",
+      "androidx.test.services",
+      "com.google.android.apps.common.testing.services"
+    ],
+    "normalProductionEntry": false,
+    "actualDeviceStartup": "NOT_RUN",
+    "originalGeneratedManifest": "app/build-c2-visual/intermediates/packaged_manifests/debugAndroidTest/processDebugAndroidTestManifest/AndroidManifest.xml"
+  }
+}

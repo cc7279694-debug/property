@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--project-cache-dir",
+    ".gradle/c2-visual",
+    "-Pc2VisualVerification=true",
+    ":app:lintDebug",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.app.C2NavigationTest",
+    "--tests",
+    "com.cooper.lithic.feature.review.C1ReviewEmptyPresentationTest",
+    "--tests",
+    "com.cooper.lithic.feature.home.R1HomeEmptyStateTest"
+  ],
+  "startedUtc": "2026-10-27T02:04:28.005414+00:00",
+  "timeoutSeconds": 1200,
+  "exitCode": 0,
+  "endedUtc": "2026-10-27T02:07:19.386322+00:00",
+  "seconds": 171.375,
+  "stdoutBytes": 2309,
+  "stdoutSha256": "616ee531e8adbba10f20e24a01d129ae310da53099efdcf7a9f9ba92af339b68",
+  "stderrBytes": 0,
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,88 @@
+{
+  "jvmUniqueMethods": 14,
+  "pass": 14,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "embedded_review_events_keep_review_return_context",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "invalid_preview_identity_still_returns_home",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "home_cost_explanation_keeps_home_as_its_return_path",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "home_preview_detail_and_money_form_keep_home_return_context",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "method": "bottom_navigation_only_appears_at_the_three_main_destinations",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.R1HomeEmptyStateTest",
+      "method": "only_verified_empty_snapshot_uses_the_single_onboarding_section",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.R1HomeEmptyStateTest",
+      "method": "historical_records_without_current_contribution_do_not_turn_into_empty_state",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.R1HomeEmptyStateTest",
+      "method": "active_zero_and_negative_records_preserve_their_numeric_values",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C1ReviewEmptyPresentationTest",
+      "method": "loading_must_not_turn_into_an_empty_result",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C1ReviewEmptyPresentationTest",
+      "method": "history_in_either_type_prevents_an_empty_ledger_even_when_current_cost_is_zero",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C1ReviewEmptyPresentationTest",
+      "method": "read_or_restore_notice_keeps_zero_snapshot_qualified",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C1ReviewEmptyPresentationTest",
+      "method": "verified_zero_counts_allow_one_welcoming_empty_region",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C1ReviewEmptyPresentationTest",
+      "method": "failed_or_notice_bearing_trend_must_not_be_hidden_by_zero_ready_counts",
+      "status": "PASS"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C1ReviewEmptyPresentationTest",
+      "method": "retained_or_conflicting_facts_are_preserved_instead_of_replaced_by_empty",
+      "status": "PASS"
+    }
+  ],
+  "lint": {
+    "Warning": 15
+  },
+  "firstLint": {
+    "Error": 3,
+    "Warning": 13
+  },
+  "newAndroidMethodsCompiled": 8,
+  "actualAndroidMethodsRun": 0,
+  "sourceFix": "C3-only application whitelist and inherited POST declaration; no disabled lint checks or production changes"
+}

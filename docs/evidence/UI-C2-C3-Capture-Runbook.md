@@ -1,10 +1,10 @@
-# C3 后续构建与原生截图命令（未执行）
+# C3 构建记录与后续原生截图命令（设备未执行）
 
-**当前仅 SOURCE_PREPARED / BUILD_DEFERRED。用户已要求构建暂缓。以下构建命令须待用户恢复桌面构建；所有设备命令还须 ChatGPT 独立核对和用户新的明确设备授权。不得在本轮执行。**
+**2026-10-27更新：用户已恢复桌面构建，独立App/Test编译与静态预检完成，C3-0 READY_FOR_SAFE_CAPTURE_REVIEW。原2026-10-26构建暂缓记录见预检报告；以下所有设备命令仍未执行，仍须ChatGPT独立核对及用户新的明确设备授权。本轮不得执行设备部分。**
 
 ## 1. 桌面产物门禁
 
-在本项目根、既有 JDK17/SDK36 环境中，待内存允许且获准恢复构建后：
+在本项目根、既有 JDK17/SDK36 环境中，本次实际恢复的构建入口如下；不要为后续设备执行再次重建已锁定候选：
 
 ```powershell
 .\gradlew.bat --offline --console=plain --max-workers=1 `
@@ -13,15 +13,15 @@
   :app:assembleDebug :app:assembleDebugAndroidTest :app:lintDebug
 ```
 
-App 预定输出 `app/build-c2-visual/outputs/apk/debug/app-debug.apk`，Test 预定输出 `app/build-c2-visual/outputs/apk/androidTest/debug/app-debug-androidTest.apk`，**本轮均未生成**。显式 flag 已自动选择 M13Runner，不需要再混用其他实验 flag。使用独立项目缓存与独立输出目录；不执行 clean，也不重建 Preview/M22 包。
+App 预定输出 `app/build-c2-visual/outputs/apk/debug/app-debug.apk`，Test 预定输出 `app/build-c2-visual/outputs/apk/androidTest/debug/app-debug-androidTest.apk`，**现已真实生成，最终大小/SHA/证书及首轮失败见[预检报告](UI-C2-C3-Native-Visual-Preflight.md)**。显式 flag 已自动选择 M13Runner，不需要再混用其他实验 flag。使用独立项目缓存与独立输出目录；不执行 clean，也不重建 Preview/M22 包。
 
-构建之后必须真实读取两份合并 Manifest 及 APK 内 Manifest，使用已锁定 SDK 的 `aapt.exe dump badging` / `aapt.exe dump xmltree <APK> AndroidManifest.xml`、`apksigner.bat verify --verbose --print-certs` 和 `Get-FileHash -Algorithm SHA256`，记录命令/退出码/原始输出：
+构建之后必须真实读取两份合并 Manifest 及 APK 内 Manifest，使用已锁定 SDK；从本项目根传入ASCII相对APK参数，避免Windows中文绝对路径的aapt失败。使用 `aapt.exe dump badging` / `aapt.exe dump xmltree <APK> AndroidManifest.xml`、`apksigner.bat verify --verbose --print-certs` 和 `Get-FileHash -Algorithm SHA256`，记录命令/退出码/原始输出：
 
 - App：`com.cooper.lithic.c2visual.debug`、code17 / `0.1.0-c2visual-debug`；Test：`com.cooper.lithic.c2visual.debug.test`。
-- App Application 为 `android.app.Application`，只注册 AndroidX 空 `ComponentActivity`；无 MainActivity/Launcher、Provider、Service、Receiver、sharedUserId。无 INTERNET/通知/唤醒锁/网络状态/开机权限；若出现新组件或未知 authority，停止，不能仅相信源 XML 的移除声明。
+- App Application 为 `android.app.Application`，只注册 AndroidX 空 `ComponentActivity`；无 MainActivity/Launcher、Provider、Service、Receiver、sharedUserId。无 INTERNET/唤醒锁/网络状态/开机权限；保留共享源码需要的POST_NOTIFICATIONS声明，未来API36须确认未授予、不请求或发布；若出现新组件或未知 authority，停止，不能仅相信源 XML 的移除声明。
 - Test：唯一 Instrumentation 为 `com.cooper.lithic.app.M13IsolatedRunner`，targetPackage 仅为新 App，无 shared UID 或未知启动组件。检查真实 Test DEX 中 Runner 实现和新 Gallery，不能仅依据源码或包名。
-- 两 APK 证书须为既有 Debug 公钥指纹 `29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9`；此为预期值，**不是本轮新产物签名结果**。不生成新密钥。
-- 实际配置核对普通 Debug、Release、PrivateTrial、M22 的原身份；测试互斥 flag 和仅 Debug 变体规则。未通过不得设备安装。
+- 两 APK 证书须为既有 Debug 公钥指纹 `29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9`；此值已由本次两份最终APK签名实物核对；实际SHA与首轮工具路径失败见预检报告。不生成新密钥。
+- 实际配置核对普通 Debug、Release、PrivateTrial、M22 的原身份；测试互斥 flag 和仅 Debug 变体规则。本次矩阵已核对并通过；设备安装仍须独立审查和新的明确授权。
 
 ## 2. 未来设备准入与一次性执行
 
@@ -30,7 +30,9 @@ App 预定输出 `app/build-c2-visual/outputs/apk/debug/app-debug.apk`，Test �
 以下仅是后续命令模板；`$Serial` 必须由新的授权与实时核验提供，不能写入公共报告。`$App` / `$Test` 指向上节真正通过门禁的文件，安装前/后 SHA 必须与独立审查值一致，不得替换或重建后冒充同一候选：
 
 ```powershell
-# 后续获准后各安装一次；不使用 -r/-d/-g，不卸载或清数据。
+# 后续获准后各安装一次；仅用上节目录中已核对真实SHA的实物。
+# $App/$Test建议使用ASCII相对路径，并保持本项目根为当前目录。
+# 不使用 -r/-d/-g，不卸载或清数据。
 # -t 仅允许安装AndroidTest包，不自动授予权限，不覆盖旧包。
 adb -s $Serial install $App
 adb -s $Serial install -t $Test

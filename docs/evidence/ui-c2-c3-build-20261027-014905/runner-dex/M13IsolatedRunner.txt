@@ -1,0 +1,82 @@
+  Class descriptor  : 'Lcom/cooper/lithic/app/M13IsolatedRunner;'
+  Access flags      : 0x0011 (PUBLIC FINAL)
+  Superclass        : 'Landroidx/test/runner/AndroidJUnitRunner;'
+  Interfaces        -
+  Static fields     -
+    #0              : (in Lcom/cooper/lithic/app/M13IsolatedRunner;)
+      name          : '$stable'
+      type          : 'I'
+      access        : 0x0019 (PUBLIC STATIC FINAL)
+  Instance fields   -
+  Direct methods    -
+    #0              : (in Lcom/cooper/lithic/app/M13IsolatedRunner;)
+      name          : '<clinit>'
+      type          : '()V'
+      access        : 0x10008 (STATIC CONSTRUCTOR)
+      code          -
+      registers     : 1
+      ins           : 0
+      outs          : 0
+      insns size    : 5 16-bit code units
+038e94:                                        |[038e94] com.cooper.lithic.app.M13IsolatedRunner.<clinit>:()V
+038ea4: 1300 0800                              |0000: const/16 v0, #int 8 // #8
+038ea8: 6700 7701                              |0002: sput v0, Lcom/cooper/lithic/app/M13IsolatedRunner;.$stable:I // field@0177
+038eac: 0e00                                   |0004: return-void
+      catches       : (none)
+      positions     :
+      locals        :
+
+    #1              : (in Lcom/cooper/lithic/app/M13IsolatedRunner;)
+      name          : '<init>'
+      type          : '()V'
+      access        : 0x10001 (PUBLIC CONSTRUCTOR)
+      code          -
+      registers     : 1
+      ins           : 1
+      outs          : 1
+      insns size    : 4 16-bit code units
+038eb0:                                        |[038eb0] com.cooper.lithic.app.M13IsolatedRunner.<init>:()V
+038ec0: 7010 a900 0000                         |0000: invoke-direct {v0}, Landroidx/test/runner/AndroidJUnitRunner;.<init>:()V // method@00a9
+038ec6: 0e00                                   |0003: return-void
+      catches       : (none)
+      positions     :
+        0x0000 line=8
+      locals        :
+        0x0000 - 0x0004 reg=0 this Lcom/cooper/lithic/app/M13IsolatedRunner;
+
+  Virtual methods   -
+    #0              : (in Lcom/cooper/lithic/app/M13IsolatedRunner;)
+      name          : 'newApplication'
+      type          : '(Ljava/lang/ClassLoader;Ljava/lang/String;Landroid/content/Context;)Landroid/app/Application;'
+      access        : 0x0001 (PUBLIC)
+      code          -
+      registers     : 6
+      ins           : 4
+      outs          : 4
+      insns size    : 31 16-bit code units
+038e44:                                        |[038e44] com.cooper.lithic.app.M13IsolatedRunner.newApplication:(Ljava/lang/ClassLoader;Ljava/lang/String;Landroid/content/Context;)Landroid/app/Application;
+038e54: 1a00 3313                              |0000: const-string v0, "cl" // string@1333
+038e58: 7120 2519 0300                         |0002: invoke-static {v3, v0}, Lkotlin/jvm/internal/Intrinsics;.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V // method@1925
+038e5e: 1a00 3413                              |0005: const-string v0, "className" // string@1334
+038e62: 7120 2519 0400                         |0007: invoke-static {v4, v0}, Lkotlin/jvm/internal/Intrinsics;.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V // method@1925
+038e68: 1a00 3616                              |000a: const-string v0, "context" // string@1636
+038e6c: 7120 2519 0500                         |000c: invoke-static {v5, v0}, Lkotlin/jvm/internal/Intrinsics;.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V // method@1925
+038e72: 1c00 0400                              |000f: const-class v0, Landroid/app/Application; // type@0004
+038e76: 6e10 7318 0000                         |0011: invoke-virtual {v0}, Ljava/lang/Class;.getName:()Ljava/lang/String; // method@1873
+038e7c: 0c00                                   |0014: move-result-object v0
+038e7e: 6f40 aa00 3250                         |0015: invoke-super {v2, v3, v0, v5}, Landroidx/test/runner/AndroidJUnitRunner;.newApplication:(Ljava/lang/ClassLoader;Ljava/lang/String;Landroid/content/Context;)Landroid/app/Application; // method@00aa
+038e84: 0c00                                   |0018: move-result-object v0
+038e86: 1a01 8c1a                              |0019: const-string v1, "newApplication(...)" // string@1a8c
+038e8a: 7120 2419 1000                         |001b: invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V // method@1924
+038e90: 1100                                   |001e: return-object v0
+      catches       : (none)
+      positions     :
+        0x000f line=10
+      locals        :
+        0x0000 - 0x001f reg=2 this Lcom/cooper/lithic/app/M13IsolatedRunner;
+        0x0000 - 0x001f reg=3 cl Ljava/lang/ClassLoader;
+        0x0000 - 0x001f reg=4 className Ljava/lang/String;
+        0x0000 - 0x001f reg=5 context Landroid/content/Context;
+
+  source_file_idx   : 4009 (M13IsolatedRunner.kt)
+

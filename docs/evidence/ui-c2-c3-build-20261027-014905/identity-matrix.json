@@ -1,0 +1,137 @@
+{
+  "default": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build",
+    "testApplicationId": null,
+    "actualVariantNames": [
+      "debug",
+      "release"
+    ],
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "private-trial": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build\\private-trial",
+    "testApplicationId": null,
+    "actualVariantNames": [
+      "debug",
+      "release"
+    ],
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.preview.debug",
+        "versionCode": 21,
+        "versionName": "0.1.0-preview.5-debug",
+        "manifest": "src\\privateTrial\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 21,
+        "versionName": "0.1.0-preview.5",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "m22": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "com.cooper.lithic.app.M13IsolatedRunner",
+    "buildDirectory": "build\\m22-device-verification",
+    "testApplicationId": null,
+    "actualVariantNames": [
+      "debug",
+      "release"
+    ],
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.m22verify.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "c3": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "com.cooper.lithic.app.M13IsolatedRunner",
+    "buildDirectory": "build-c2-visual",
+    "testApplicationId": "com.cooper.lithic.c2visual.debug.test",
+    "actualVariantNames": [
+      "debug"
+    ],
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.c2visual.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-c2visual-debug",
+        "manifest": "src\\c2Visual\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-c2visual",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "reject-invalid-value": {
+    "status": "EXPECTED_REJECTION_PASS",
+    "expectedError": "c2VisualVerification must be true or false"
+  },
+  "reject-private-conflict": {
+    "status": "EXPECTED_REJECTION_PASS",
+    "expectedError": "cannot use private trial or M22"
+  },
+  "reject-m22-conflict": {
+    "status": "EXPECTED_REJECTION_PASS",
+    "expectedError": "cannot use private trial or M22"
+  },
+  "reject-death-conflict": {
+    "status": "EXPECTED_REJECTION_PASS",
+    "expectedError": "cannot enable historical process-death"
+  },
+  "reject-runner-conflict": {
+    "status": "EXPECTED_REJECTION_PASS",
+    "expectedError": "requires the plain Application"
+  }
+}

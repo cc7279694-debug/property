@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--project-cache-dir",
+    ".gradle/c2-visual",
+    "-Pc2VisualVerification=invalid",
+    ":app:help"
+  ],
+  "startedUtc": "2026-10-27T02:12:42.425894+00:00",
+  "timeoutSeconds": 180,
+  "exitCode": 1,
+  "endedUtc": "2026-10-27T02:12:49.153186+00:00",
+  "seconds": 6.719,
+  "stdoutBytes": 139,
+  "stdoutSha256": "37ee58c484be94de265de700479585098fc0b9519e1be33d0c865c6d13e42fc9",
+  "stderrBytes": 448,
+  "stderrSha256": "7d319b511247a330f36217e17bc794c0bc09f313464a4179fbb22b243001acfd"
+}

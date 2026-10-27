@@ -1,0 +1,10 @@
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:lithicIdentityAudit
+LITHIC_IDENTITY_JSON={"namespace":"com.cooper.lithic","applicationId":"com.cooper.lithic","minSdk":26,"targetSdk":36,"testRunner":"androidx.test.runner.AndroidJUnitRunner","buildDirectory":"build\\private-trial","testApplicationId":null,"actualVariantNames":["debug","release"],"variants":{"debug":{"applicationId":"com.cooper.lithic.preview.debug","versionCode":21,"versionName":"0.1.0-preview.5-debug","manifest":"src\\privateTrial\\AndroidManifest.xml","signingStoreExists":true},"release":{"applicationId":"com.cooper.lithic","versionCode":21,"versionName":"0.1.0-preview.5","manifest":"src\\release\\AndroidManifest.xml","signingStoreExists":false}}}
+
+BUILD SUCCESSFUL in 6s
+1 actionable task: 1 executed

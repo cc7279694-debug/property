@@ -1,0 +1,118 @@
+{
+  "sourceCommit": "2dbd9a121683b051cf05931a9858fcc05551bfcf",
+  "onlySourceDifferenceFromBed9": "app/src/c2Visual/AndroidManifest.xml",
+  "productionUiDataDomainSchemaDependenciesToolchainAndGalleryUnchanged": true,
+  "noLintSuppressionsOrBaseline": true,
+  "oldApksUnchanged": true,
+  "newApksMatchFinalSha": true,
+  "dataSchema": 5,
+  "backupFormat": 4,
+  "newUserPreviewApks": 0,
+  "adbDeviceInstallScreenshotExtractionCounts": 0,
+  "actualAndroidLifecycleAndUid": "NOT_RUN",
+  "nativeImagePipeline": "MEDIA_DISPLAY_PENDING",
+  "status": "C3-0 READY_FOR_SAFE_CAPTURE_REVIEW / ANDROID_SCREENSHOTS_NOT_RUN",
+  "actualCommandReceipts": [
+    {
+      "record": "app-apk-manifest-relative/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "app-badging/command.json",
+      "exitCode": 1
+    },
+    {
+      "record": "app-badging-relative/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "app-signature/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "c3-build-first/command.json",
+      "exitCode": 1
+    },
+    {
+      "record": "c3-final-assemble/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "c3-lint-fix-and-jvm/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "final-app-apk-manifest-relative/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "final-app-badging-relative/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "final-app-signature/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "final-test-apk-manifest-relative/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "final-test-badging-relative/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "final-test-signature/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "identity-default/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "identity-m22/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "identity-private-trial/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "reject-death-conflict/command.json",
+      "exitCode": 1
+    },
+    {
+      "record": "reject-invalid-value/command.json",
+      "exitCode": 1
+    },
+    {
+      "record": "reject-m22-conflict/command.json",
+      "exitCode": 1
+    },
+    {
+      "record": "reject-private-conflict/command.json",
+      "exitCode": 1
+    },
+    {
+      "record": "reject-runner-conflict/command.json",
+      "exitCode": 1
+    },
+    {
+      "record": "runner-dex-final/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "test-apk-manifest-relative/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "test-badging-relative/command.json",
+      "exitCode": 0
+    },
+    {
+      "record": "test-signature/command.json",
+      "exitCode": 0
+    }
+  ],
+  "notes": "Five expected configuration rejections are exit1; initial Lint and native aapt path failures retained."
+}

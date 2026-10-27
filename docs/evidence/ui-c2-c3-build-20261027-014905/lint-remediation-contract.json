@@ -1,0 +1,9 @@
+{
+  "initialResult": "3 errors: MissingClass removal marker and 2 NotificationPermission errors; original lint-first.xml and build log retained",
+  "sourceChange": "C3-only Manifest application whitelist via tools:node=replace; platform Application and empty ComponentActivity; preserve allowBackup=false/rules/theme/icons",
+  "notificationPermission": "retain shared production POST_NOTIFICATIONS declaration, never request/grant it; no notification Application/receiver/service/initializer; Gallery has no publishing calls",
+  "sourceSha256": "0044ae4a1bd70563fc53f711b9ae84db4c6a96c6f29b165147beec9e260fc3ab",
+  "productionSourceChanges": 0,
+  "lintDisableOrBaselineChanges": 0,
+  "deviceOperations": 0
+}
