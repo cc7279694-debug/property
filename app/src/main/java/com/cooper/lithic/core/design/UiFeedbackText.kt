@@ -25,9 +25,9 @@ internal fun UiFeedbackText(text: String, tone: UiMessageTone, tag: String, modi
         UiMessageTone.WARNING -> MaterialTheme.colorScheme.onSurface
         UiMessageTone.ERROR -> MaterialTheme.colorScheme.error
     }
-    Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LithicSpacing.small)) {
-        Text(label, Modifier.testTag("$tag-kind"), style = MaterialTheme.typography.labelLarge, color = color)
+    Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xxSmall)) {
+        Text(label, Modifier.testTag("$tag-kind"), style = MaterialTheme.typography.labelMedium, color = color)
         Text(text, Modifier.testTag(tag).semantics { liveRegion = LiveRegionMode.Polite },
-            style = MaterialTheme.typography.bodyLarge, color = color)
+            style = MaterialTheme.typography.bodyMedium, color = color)
     }
 }

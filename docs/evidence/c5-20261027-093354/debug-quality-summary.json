@@ -1,0 +1,41 @@
+{
+  "lint": {
+    "Error": 0,
+    "Fatal": 0,
+    "Warning": 21
+  },
+  "ordinaryIdentityProfile": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "debugCertificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "jvmActual": {
+    "classes": 27,
+    "pass": 188,
+    "fail": 0
+  },
+  "debugBuild": "PASS - debug-quality-final before AndroidTest import failure",
+  "androidTestCompile": "PASS - debug-quality-completion",
+  "deviceExecution": "NOT_RUN",
+  "history": "initial NavEntry ambiguity and second AndroidTest import failure preserved"
+}

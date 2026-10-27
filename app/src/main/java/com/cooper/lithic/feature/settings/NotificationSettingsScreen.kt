@@ -72,23 +72,28 @@ internal fun NotificationSettingsContent(
     modifier: Modifier = Modifier,
 ) {
     Column(modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
-        .testTag("notification-settings-screen"), verticalArrangement = Arrangement.spacedBy(20.dp)) {
-        C2PageHeader("提醒设置", onBack, "notification-settings-back", backLabel = "返回设置")
-        Text("提醒以砺石中已经保存的记录为依据，不代表服务商已经扣款，也不会替您续费或取消服务。",
-            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        .testTag("notification-settings-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
+        C2PageHeader("提醒设置", onBack, "notification-settings-back", backLabel = "返回设置", actions = {
+            C5InformationButton("提醒说明", Modifier.testTag("notification-information"), buttonLabel = "提醒说明") {
+                Text("提醒以砺石中已经保存的记录为依据，不代表服务商已经扣款，也不会替您续费或取消服务。")
+                Text("记录项目持有日与日历周年，以及订阅累计付费有效天数；同日合并为一条摘要。")
+                Text("记录时区9点后尽力提醒；错过节点仅在含当天的7日窗口内补发。首次纳入、历史纠错和恢复不集中补发旧节点，关闭再开启不清除历史记录。",
+                    modifier = Modifier.testTag("milestone-reminder-explanation"))
+                Text("关闭里程碑提醒不影响续费提醒。")
+            }
+        })
 
         if (state.loading) {
             Text("正在读取提醒偏好", style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("notification-preferences-loading"))
         }
         state.preferences?.let { preferences ->
-            ReminderSwitch("续费提醒", "在记录中的到期日前提醒，是否送达及具体时间受系统限制。",
-                preferences.renewalEnabled, !state.loading && !state.saving, onRenewalChange, "renewal-reminder-switch")
-            HorizontalDivider()
-            ReminderSwitch("里程碑提醒", "记录项目持有日与日历周年，以及订阅累计付费有效天数；同日合并为一条摘要。",
-                preferences.milestoneEnabled, !state.loading && !state.saving, onMilestoneChange, "milestone-reminder-switch")
-            Text("记录时区9点后尽力提醒；错过节点仅在含当天的7日窗口内补发。首次纳入、历史纠错和恢复不集中补发旧节点，关闭再开启不清除历史记录。",
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.testTag("milestone-reminder-explanation"))
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                ReminderSwitch("续费提醒", "在记录中的到期日前提醒",
+                    preferences.renewalEnabled, !state.loading && !state.saving, onRenewalChange, "renewal-reminder-switch")
+                HorizontalDivider()
+                ReminderSwitch("里程碑提醒", "项目持有日、日历周年与订阅累计付费有效天数",
+                    preferences.milestoneEnabled, !state.loading && !state.saving, onMilestoneChange, "milestone-reminder-switch")
+            }
         }
         if (state.saving) {
             Text("正在保存提醒偏好", style = MaterialTheme.typography.bodyMedium,
@@ -116,7 +121,9 @@ internal fun NotificationSettingsContent(
                 !permissionState.channelEnabled -> "续费与里程碑提醒通知渠道已关闭"
                 else -> "系统允许发送通知"
             }
-            Text(status, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.testTag("notification-permission-status"))
+            Text(status, style = MaterialTheme.typography.bodyLarge,
+                color = if (permissionState.canPublish) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.error,
+                modifier = Modifier.testTag("notification-permission-status"))
             if ((state.preferences?.renewalEnabled == true || state.preferences?.milestoneEnabled == true) && !permissionState.canPublish) {
                 Text(when {
                     runtimeDenied -> "应用内已开启，系统通知未授权"
@@ -137,7 +144,8 @@ internal fun NotificationSettingsContent(
                 Text("打开系统通知设置")
             }
             Text("系统可能延后或限制后台执行。提醒不保证准点送达，请以实际服务和您保存的记录为准。",
-                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.testTag("notification-delivery-limit"))
         }
     }
 }
@@ -156,7 +164,7 @@ private fun ReminderSwitch(
         .toggleable(value = checked, enabled = enabled, role = Role.Switch, onValueChange = onChange)
         .padding(vertical = 8.dp).testTag(tag), verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(title, style = MaterialTheme.typography.bodyLarge)
             Text(description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }

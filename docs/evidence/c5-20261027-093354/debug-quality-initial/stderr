@@ -1,0 +1,21 @@
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:696:5 Overload resolution ambiguity between candidates:
+constructor<T : Any>(key: T, contentKey: Any = ..., metadata: Map<String, Any> = ..., content: ComposableFunction1<T, Unit>): NavEntry<T>
+constructor<T : Any>(navEntry: NavEntry<T>, content: ComposableFunction1<T, Unit>): NavEntry<T>
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:697:9 @Composable invocations can only happen from the context of a @Composable function
+e: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:697:61 @Composable invocations can only happen from the context of a @Composable function
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 2m 18s

@@ -116,7 +116,7 @@ internal fun SettingsShell(
             }
             onAboutLithic?.let { open ->
                 HorizontalDivider()
-                C2SettingRow("关于砺石与使用边界", C2Glyph.Settings, Modifier.testTag("open-about-lithic"), onClick = open)
+                C2SettingRow("关于砺石", C2Glyph.Settings, Modifier.testTag("open-about-lithic"), onClick = open)
             }
         }
     }

@@ -29,6 +29,9 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -99,11 +102,15 @@ internal fun MilestoneSourcesScreen(
         item {
             Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 C2PageHeader("本次里程碑来源", onBack, "milestone-sources-back", backLabel = "返回现在")
-                Text("发布日 ${reference.publicationOn} · ${reference.count}项。仅显示这次摘要；节点日期保留各自真实记录。")
-                if (loading) Text("正在核对当前记录", Modifier.testTag("milestone-sources-loading"))
+                Text("发布日 ${reference.publicationOn} · ${reference.count}项", style = MaterialTheme.typography.bodyLarge)
+                Text("仅显示这次摘要；节点日期保留各自真实记录。打开前会重新核对当前记录。",
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.testTag("milestone-source-reference-check"))
+                if (loading) Text("正在核对当前记录", Modifier.testTag("milestone-sources-loading")
+                    .semantics { liveRegion = LiveRegionMode.Polite }, style = MaterialTheme.typography.bodyMedium)
                 error?.let {
-                    Text(it, color = MaterialTheme.colorScheme.error, modifier = Modifier.testTag("milestone-sources-error"))
-                    TextButton({ revision++ }, Modifier.heightIn(min = 48.dp), enabled = !loading) { Text("重新核对") }
+                    UiFeedbackText(it, UiMessageTone.ERROR, "milestone-sources-error")
+                    TextButton({ revision++ }, Modifier.heightIn(min = 48.dp).testTag("milestone-sources-retry"), enabled = !loading) { Text("重新核对") }
                 }
             }
         }
@@ -126,7 +133,7 @@ internal fun MilestoneSourcesScreen(
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                         C2RecordIdentity(item.title, "", if (item.ownerType == MilestoneOwnerType.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
-                        Text(item.title, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
+                        Text(item.title, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
                     }
                     C2StatusChip(if (item.ownerType == MilestoneOwnerType.PROJECT) "长期项目" else "订阅服务")
                     Text(item.text, style = MaterialTheme.typography.bodyLarge)
@@ -142,9 +149,9 @@ internal fun MilestoneSourcesScreen(
 
 @Composable
 internal fun InvalidMilestoneNoticeScreen(onBack: () -> Unit) {
-    Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        TextButton(onBack, Modifier.heightIn(min = 48.dp)) { Text("返回现在") }
-        Text("无法打开这条里程碑通知", style = MaterialTheme.typography.headlineMedium)
-        Text("通知来源无效，未根据这条通知打开或修改记录。请从当前账本查看。", Modifier.testTag("milestone-invalid-notice"))
+    Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(24.dp)) {
+        C2PageHeader("无法打开这条里程碑通知", onBack, "milestone-invalid-back", backLabel = "返回现在")
+        UiFeedbackText("通知来源无效，未根据这条通知打开或修改记录。请从当前账本查看。",
+            UiMessageTone.ERROR, "milestone-invalid-notice")
     }
 }

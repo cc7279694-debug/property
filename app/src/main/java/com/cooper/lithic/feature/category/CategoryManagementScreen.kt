@@ -26,6 +26,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.LithicSpacing
@@ -55,9 +57,12 @@ internal fun CategoryManagementScreen(
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                C2PageHeader("类别管理", onBack, "category-back", backLabel = "返回设置")
-                Text("长期项目与订阅分别管理。类别调整后，历史记录也按当前分类展示。",
-                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                C2PageHeader("类别管理", onBack, "category-back", backLabel = "返回设置", actions = {
+                    C5InformationButton("类别说明", Modifier.testTag("category-information")) {
+                        Text("长期项目与订阅分别管理。类别调整后，历史记录也按当前分类展示。")
+                        Text("默认“其他”类别保留供未分类记录使用，不提供重命名或作为合并源。")
+                    }
+                })
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     for (type in CategoryType.entries) {
                         OutlinedButton({ onTypeChange(type) }, Modifier.weight(1f).heightIn(min = 48.dp)
@@ -68,9 +73,9 @@ internal fun CategoryManagementScreen(
                 }
                 Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("category-create"),
                     enabled = !state.loading && state.error == null && state.editor == null) { Text("新建类别") }
-                state.message?.let { Text(it, Modifier.testTag("category-feedback"), color = MaterialTheme.colorScheme.primary) }
+                state.message?.let { UiFeedbackText(it, UiMessageTone.INFORMATION, "category-feedback") }
                 state.error?.let {
-                    Text(it, Modifier.testTag("category-error"), color = MaterialTheme.colorScheme.error)
+                    UiFeedbackText(it, UiMessageTone.ERROR, "category-error")
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("category-retry")) { Text("重新读取") }
                 }
                 if (state.loading) Text("正在读取类别")
@@ -82,8 +87,9 @@ internal fun CategoryManagementScreen(
                 .testTag("category-row-${category.id}")) {
                 Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                    Text(category.name, style = MaterialTheme.typography.titleLarge)
-                    Text("${entry.recordCount} 条记录（含历史）", style = MaterialTheme.typography.bodyMedium)
+                    Text(category.name, style = MaterialTheme.typography.bodyLarge)
+                    Text("${entry.recordCount} 条记录（含历史）", style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (category.isFallback) {
                         Text("默认类别，保留供未分类记录使用。", style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -123,12 +129,19 @@ internal fun CategoryManagementScreen(
                         }
                     } else {
                         val preview = editor.preview
-                        Text("“${preview.source.name}”的 ${preview.affectedCount} 条记录（含历史）将移至“${preview.target.name}”。")
-                        Text("全部关联更新后删除源类别。金额、付款和状态保持原样；历史分类随之调整。")
+                        Text("“${preview.source.name}”的 ${preview.affectedCount} 条记录（含历史）将移至“${preview.target.name}”。",
+                            style = MaterialTheme.typography.bodyLarge, modifier = Modifier.testTag("category-merge-scope"))
+                        Text("全部关联更新后删除源类别。金额、付款和状态保持原样；历史分类随之调整。",
+                            style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("category-merge-impact"))
                     }
-                    if (editor.busy) Text("正在处理，请稍候。")
-                    editor.message?.let { Text(it, Modifier.testTag("category-editor-feedback"), color = MaterialTheme.colorScheme.error) }
-                    if (editor.uncertain) Text("提交结果尚未确认。请保留本次内容，重新确认同一次提交。")
+                    if (editor.busy) Text("正在处理，请稍候。", style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.testTag("category-editor-busy").semantics { liveRegion = LiveRegionMode.Polite })
+                    editor.message?.let { UiFeedbackText(it,
+                        if (editor.uncertain || editor.conflict) UiMessageTone.WARNING else UiMessageTone.ERROR,
+                        "category-editor-feedback") }
+                    if (editor.uncertain) Text("提交结果尚未确认。请保留本次内容，重新确认同一次提交。",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.testTag("category-editor-uncertain").semantics { liveRegion = LiveRegionMode.Polite })
                 }
             },
             confirmButton = {

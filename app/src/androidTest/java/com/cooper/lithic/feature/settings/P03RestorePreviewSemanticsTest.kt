@@ -1,9 +1,13 @@
 package com.cooper.lithic.feature.settings
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -11,6 +15,8 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.data.backup.RestorePreview
@@ -60,6 +66,32 @@ class P03RestorePreviewSemanticsTest {
         compose.onNodeWithTag("confirm-backup-restore").performScrollTo().performClick()
         assertEquals(1, confirmations)
         assertEquals(0, discards)
+    }
+
+    @Test fun local360dp_large_text_retains_all_ten_pairs_unknown_counts_and_overwrite_scope() {
+        val original = preview()
+        val keys = original.backupCounts.keys.toList()
+        val current = keys.mapIndexed { index, key -> key to index.toLong() }.toMap() - "local_media_assets"
+        val backup = keys.mapIndexed { index, key -> key to (index + 20L) }.toMap() +
+            ("long_term_projects" to Long.MAX_VALUE)
+        val candidate = original.copy(currentCounts = current, backupCounts = backup)
+        compose.setContent { LithicTheme {
+            val density = LocalDensity.current.density
+            CompositionLocalProvider(LocalDensity provides Density(density, 2f)) {
+                Box(Modifier.width(360.dp)) { Column(Modifier.verticalScroll(rememberScrollState())) {
+                    RestorePreviewScreen(candidate, onConfirm = {}, onDiscard = {})
+                } }
+            }
+        } }
+        keys.forEach { key ->
+            compose.onNodeWithTag("restore-count-$key").performScrollTo().assertIsDisplayed()
+            compose.onNodeWithText("当前 ${current[key] ?: "未知"} · 备份 ${backup[key] ?: "未知"}").assertIsDisplayed()
+        }
+        compose.onNodeWithTag("restore-count-snapshot-note").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("restore-overwrite-scope").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("confirm-backup-restore").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("discard-backup-restore").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText(candidate.token).assertDoesNotExist()
     }
 
     private fun preview(): RestorePreview {

@@ -1,0 +1,103 @@
+{
+  "baseline": "5838e863ededec3ecd569c5332b04ab621a918c4",
+  "boundaryType": "Desktop source comparison only; not migration/device evidence",
+  "frozenPathsUnchanged": [
+    "app/src/main/java/com/cooper/lithic/data",
+    "app/src/main/java/com/cooper/lithic/domain",
+    "app/schemas",
+    "app/src/main/java/com/cooper/lithic/core/model",
+    "app/src/main/java/com/cooper/lithic/app/AppContainer.kt",
+    "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+    "app/src/main/AndroidManifest.xml",
+    "gradle/libs.versions.toml",
+    "app/src/main/java/com/cooper/lithic/core/design/FormFields.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt"
+  ],
+  "amountFormatterObjectSha256": "f764e1a8f3833d27e0fcb86cc1d24e5aa2413ca4cded9541c1a576dd14f21b19",
+  "formatterExactlyUnchanged": true,
+  "inputCount": 7,
+  "controlledInputsExactlyRetained": [
+    {
+      "source": "app/src/main/java/com/cooper/lithic/feature/project/EndProjectDialog.kt",
+      "value": "state.recoveryAmount",
+      "callback": "onRecoveryAmountChange"
+    },
+    {
+      "source": "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventCorrectionScreen.kt",
+      "value": "state.amount",
+      "callback": "onAmountChange"
+    },
+    {
+      "source": "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventEditor.kt",
+      "value": "state.amount",
+      "callback": "onAmountChange"
+    },
+    {
+      "source": "app/src/main/java/com/cooper/lithic/feature/project/ProjectEditorScreen.kt",
+      "value": "state.initialAmount",
+      "callback": "onInitialAmountChange"
+    },
+    {
+      "source": "app/src/main/java/com/cooper/lithic/feature/project/TradeInEditorScreen.kt",
+      "value": "state.cash",
+      "callback": "onCash"
+    },
+    {
+      "source": "app/src/main/java/com/cooper/lithic/feature/project/TradeInEditorScreen.kt",
+      "value": "state.credit",
+      "callback": "onCredit"
+    },
+    {
+      "source": "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionEditorScreen.kt",
+      "value": "state.amount",
+      "callback": "onAmountChange"
+    }
+  ],
+  "changedProductionPaths": [
+    "app/src/main/java/com/cooper/lithic/app/C4NavigationMotion.kt",
+    "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/AmountLayout.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/AmountText.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/C2Page.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/C2RecordIdentity.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/C5Information.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/CostChart.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/CostChartPage.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/EntryCard.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/MoneyMetric.kt",
+    "app/src/main/java/com/cooper/lithic/core/design/UiFeedbackText.kt",
+    "app/src/main/java/com/cooper/lithic/feature/category/CategoryAnalysisScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/category/CategoryManagementScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/home/HomeShell.kt",
+    "app/src/main/java/com/cooper/lithic/feature/home/SearchScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/EndProjectDialog.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventCorrectionScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/MoneyEventEditor.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectEditorScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectHistoryScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectListScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/ReplacementComparisonScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/TradeInEditorScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/reminder/MilestoneSourcesScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/review/AnnualReviewScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/review/LongTermReviewScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/review/ReportPresentation.kt",
+    "app/src/main/java/com/cooper/lithic/feature/review/ReviewShell.kt",
+    "app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/settings/NotificationSettingsScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/settings/ProductInformationScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/settings/RestorePreviewScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/RenewalEditorScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionEditorScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionHistoryScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionListScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionStateDialog.kt"
+  ],
+  "daoRepositoryControllerViewModelChanges": 0,
+  "deviceOperations": 0,
+  "roomSchema": 5,
+  "backupFormat": 4
+}

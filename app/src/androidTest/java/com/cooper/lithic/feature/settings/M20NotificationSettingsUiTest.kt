@@ -48,13 +48,30 @@ class M20NotificationSettingsUiTest {
         } }
         compose.onNodeWithTag("renewal-reminder-switch").performScrollTo().assertIsOn()
         compose.onNodeWithTag("milestone-reminder-switch").performScrollTo().assertIsOn()
-        compose.onNodeWithText("记录项目持有日与日历周年，以及订阅累计付费有效天数；同日合并为一条摘要。").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("项目持有日、日历周年与订阅累计付费有效天数").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("应用内已开启，系统通知未授权").performScrollTo().assertIsDisplayed()
         compose.runOnIdle { assertEquals(0, requests); assertEquals(0, renewals); assertEquals(0, milestones) }
         compose.onNodeWithTag("renewal-reminder-switch").performScrollTo().performClick()
         compose.runOnIdle { assertEquals(1, renewals); assertEquals(0, requests) }
         compose.onNodeWithTag("request-notification-permission").performScrollTo().performClick()
         compose.runOnIdle { assertEquals(1, requests) }
+    }
+
+    @Test fun ordinary_reminder_rules_are_on_demand_while_denial_and_delivery_limits_stay_inline() {
+        var requests = 0; var writes = 0
+        compose.setContent { LithicTheme {
+            NotificationSettingsContent(ready(), denied(), { writes++ }, { writes++ }, { requests++ }, {}, {})
+        } }
+        compose.onNodeWithTag("milestone-reminder-explanation").assertDoesNotExist()
+        compose.onNodeWithTag("notification-permission-status").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("应用内已开启，系统通知未授权").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("notification-delivery-limit").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("notification-information").performScrollTo().performClick()
+        compose.onNodeWithText("记录项目持有日与日历周年，以及订阅累计付费有效天数；同日合并为一条摘要。")
+            .performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("milestone-reminder-explanation").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("关闭里程碑提醒不影响续费提醒。").performScrollTo().assertIsDisplayed()
+        compose.runOnIdle { assertEquals(0, requests); assertEquals(0, writes) }
     }
 
     @Test fun api26_to32_uses_system_availability_without_runtime_permission_request() {

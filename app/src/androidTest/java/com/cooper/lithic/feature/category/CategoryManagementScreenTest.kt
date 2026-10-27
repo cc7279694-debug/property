@@ -46,6 +46,10 @@ class CategoryManagementScreenTest {
         } }
         compose.onNodeWithText("“设备”的 7 条记录（含历史）将移至“数码”。")
             .assertIsDisplayed().assertTextEquals("“设备”的 7 条记录（含历史）将移至“数码”。")
+        compose.onNodeWithTag("category-merge-impact")
+            .assertTextEquals("全部关联更新后删除源类别。金额、付款和状态保持原样；历史分类随之调整。")
+            .assertIsDisplayed()
+        assertEquals(0, confirmed)
         compose.onNodeWithTag("category-merge-confirm").performClick()
         assertEquals(1, confirmed)
     }
@@ -58,8 +62,24 @@ class CategoryManagementScreenTest {
         } }
         compose.onNodeWithTag("category-name").assertIsNotEnabled()
         compose.onNodeWithTag("category-cancel").assertIsNotEnabled()
+        compose.onNodeWithTag("category-editor-uncertain")
+            .assertTextEquals("提交结果尚未确认。请保留本次内容，重新确认同一次提交。")
+            .assertIsDisplayed()
         compose.onNodeWithTag("category-save").performClick()
         assertEquals(1, retries)
+    }
+
+    @Test fun classification_help_does_not_hide_merge_or_default_category_identity() {
+        val fallback = category("其他", true)
+        val source = category("设备")
+        compose.setContent { LithicTheme {
+            Render(CategoryManagementUiState(items = listOf(CategoryEntry(fallback, 2), CategoryEntry(source, 7)), loading = false))
+        } }
+        compose.onNodeWithText("长期项目与订阅分别管理。类别调整后，历史记录也按当前分类展示。").assertDoesNotExist()
+        compose.onNodeWithText("默认类别，保留供未分类记录使用。").assertIsDisplayed()
+        compose.onNodeWithTag("category-merge-${source.id}").assertIsDisplayed()
+        compose.onNodeWithTag("category-information").performClick()
+        compose.onNodeWithText("长期项目与订阅分别管理。类别调整后，历史记录也按当前分类展示。").assertIsDisplayed()
     }
 
     @androidx.compose.runtime.Composable

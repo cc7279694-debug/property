@@ -43,6 +43,7 @@ import java.time.LocalDate
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.AtomicReference
+import java.util.concurrent.atomic.AtomicBoolean
 import kotlinx.coroutines.flow.emptyFlow
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
@@ -112,7 +113,37 @@ class M21MilestoneSourcesUiTest {
         } }
         compose.waitUntil { compose.onAllNodes(hasTestTag("milestone-sources-error")).fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithTag("milestone-sources-error").assertIsDisplayed()
+        compose.onNodeWithTag("milestone-source-reference-check").assertIsDisplayed()
+        compose.onNodeWithTag("milestone-sources-retry").assertIsDisplayed()
         capture("03-stale-source")
+    }
+
+    @Test fun a_source_invalidated_before_click_is_rechecked_and_never_opens_stale_details() {
+        val source = row(1)
+        val invalidated = AtomicBoolean(false)
+        val opens = AtomicInteger()
+        compose.setContent { LithicTheme {
+            MilestoneSourcesScreen(ref(1), emptyFlow(), {
+                check(!invalidated.get()) { "Source was corrected" }
+                listOf(source)
+            }, false, {}, { opens.incrementAndGet() }, {})
+        } }
+        compose.waitUntil { compose.onAllNodes(hasTestTag("milestone-sources-loading")).fetchSemanticsNodes().isEmpty() }
+        compose.onNodeWithTag("milestone-source-reference-check").assertIsDisplayed()
+        compose.runOnIdle { invalidated.set(true) }
+        compose.onNodeWithTag("milestone-source-${source.logicalKey}").performClick()
+        compose.waitUntil { compose.onAllNodes(hasTestTag("milestone-sources-error")).fetchSemanticsNodes().isNotEmpty() }
+        compose.onNodeWithTag("milestone-sources-error").assertIsDisplayed()
+        compose.onNodeWithTag("milestone-source-${source.logicalKey}").assertDoesNotExist()
+        assertEquals(0, opens.get())
+    }
+
+    @Test fun invalid_notice_keeps_the_reason_and_original_safe_back_action() {
+        val backs = AtomicInteger()
+        compose.setContent { LithicTheme { InvalidMilestoneNoticeScreen { backs.incrementAndGet() } } }
+        compose.onNodeWithTag("milestone-invalid-notice").assertIsDisplayed()
+        compose.onNodeWithTag("milestone-invalid-back").performClick()
+        assertEquals(1, backs.get())
     }
 
     @Test fun single_source_opens_once_after_revalidation_and_does_not_repeat_on_recomposition() {

@@ -42,6 +42,20 @@ class P03SettingsInformationTest {
         compose.onNodeWithTag("installed-app-version").assertTextEquals("版本信息暂无法读取")
         compose.onNodeWithTag("installed-app-build").assertTextEquals("构建身份暂无法确认")
     }
+    @Test fun calculation_remains_a_complete_reading_page_without_disclosure_controls() {
+        compose.setContent { LithicTheme { CalculationExplanationScreen {} } }
+        calculationExplanation.flatMap { it.paragraphs }.forEach { paragraph ->
+            compose.onNodeWithText(paragraph).performScrollTo().assertIsDisplayed()
+        }
+    }
+    @Test fun about_keeps_all_local_data_backup_and_reminder_boundaries_in_the_reading_page() {
+        compose.setContent { LithicTheme { AboutLithicScreen(InstalledAppInformation("砺石·体验版", "c5-fixture", 42,
+            "com.cooper.lithic.preview.debug", true), {}) } }
+        productSafetyExplanation.flatMap { it.paragraphs }.forEach { paragraph ->
+            compose.onNodeWithText(paragraph).performScrollTo().assertIsDisplayed()
+        }
+        compose.onNodeWithTag("installed-app-version").performScrollTo().assertTextEquals("c5-fixture（版本Code 42）")
+    }
     @Test fun idle_backup_is_not_presented_as_completed() {
         compose.setContent { LithicTheme { SettingsShell(ZoneId.of("Asia/Shanghai"), onExportBackup = {}) } }
         compose.onNodeWithTag("backup-not-started").assertDoesNotExist()

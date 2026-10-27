@@ -42,8 +42,10 @@ internal fun AboutLithicScreen(info: InstalledAppInformation, onBack: () -> Unit
     InformationPage("关于砺石", "about-lithic-screen", onBack) {
         Text(info.applicationName ?: "应用名称暂无法读取", style = MaterialTheme.typography.titleLarge,
             modifier = Modifier.testTag("installed-app-name"))
-        Text(info.versionLabel, modifier = Modifier.testTag("installed-app-version"))
-        Text(info.buildLabel, modifier = Modifier.testTag("installed-app-build"))
+        Text(info.versionLabel, style = MaterialTheme.typography.bodyLarge,
+            modifier = Modifier.testTag("installed-app-version"))
+        Text(info.buildLabel, style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.testTag("installed-app-build"))
         HorizontalDivider()
         InformationSections(productSafetyExplanation)
     }
@@ -52,7 +54,7 @@ internal fun AboutLithicScreen(info: InstalledAppInformation, onBack: () -> Unit
 @Composable
 private fun InformationPage(title: String, tag: String, onBack: () -> Unit, content: @Composable () -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp).testTag(tag),
-        verticalArrangement = Arrangement.spacedBy(20.dp)) {
+        verticalArrangement = Arrangement.spacedBy(24.dp)) {
         C2PageHeader(title, onBack, "information-back", backLabel = "返回设置")
         content()
     }
