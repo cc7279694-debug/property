@@ -3,6 +3,7 @@ package com.cooper.lithic.core.design
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.width
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.text.TextLayoutResult
@@ -20,16 +21,18 @@ class C2R2AmountDialogTest {
     @Test fun extreme_amount_can_be_expanded_in_full_and_dismissed_without_writes() {
         compose.setContent { LithicTheme { Box(Modifier.width(100.dp)) { AmountText(BigDecimal("-92233720368547758.07")) } } }
         compose.onNodeWithTag("amount-open-full", useUnmergedTree = true).performClick()
-        compose.onNodeWithTag("amount-full-value", useUnmergedTree = true)
-            .assertTextEquals("−¥92233720368547758.07")
-        compose.onNodeWithTag("amount-full-unit", useUnmergedTree = true).assertTextEquals("元/天")
+        compose.onNodeWithTag("amount-full-value")
+            .assertContentDescriptionEquals("负92233720368547758.07元/天")
+        val layouts = mutableListOf<TextLayoutResult>()
+        compose.onNodeWithTag("amount-full-value").performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        assertEquals("−¥92233720368547758.07/天", layouts.single().layoutInput.text.text.replace("\u2009", ""))
         compose.onNodeWithTag("amount-close-full").performClick()
         compose.onNodeWithTag("amount-full-value", useUnmergedTree = true).assertDoesNotExist()
     }
     @Test fun ordinary_amount_keeps_the_primary_visual_without_an_unneeded_expand_action() {
-        compose.setContent { LithicTheme { Box(Modifier.width(328.dp)) { AmountText(BigDecimal("6.48")) } } }
+        compose.setContent { LithicTheme { Box(Modifier.width(328.dp)) { AmountText(BigDecimal("6.48"), Modifier.testTag("ordinary-amount")) } } }
         val layouts = mutableListOf<TextLayoutResult>()
-        compose.onNodeWithText("¥6.48", useUnmergedTree = true).performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        compose.onNodeWithTag("ordinary-amount").performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
         assertEquals(38.sp, layouts.single().layoutInput.style.fontSize)
         compose.onNodeWithTag("amount-open-full", useUnmergedTree = true).assertDoesNotExist()
     }

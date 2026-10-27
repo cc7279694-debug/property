@@ -1,15 +1,19 @@
 package com.cooper.lithic.core.design
 
+enum class MoneyMetricLevel { HERO, DETAIL, CARD, ROW }
+
 internal data class AmountLayout(val fontSp: Float, val horizontalScroll: Boolean)
 
-/** Widths come from TextMeasurer with the actual density/font scale, never digit estimates. */
-internal fun amountLayout(preferredSp: Float, availableWidthPx: Int, measuredWidth: (Float) -> Int): AmountLayout {
-    require(preferredSp.isFinite() && preferredSp > 0f)
-    val floor = minOf(preferredSp, 18f)
-    var size = preferredSp
-    while (size > floor) {
-        if (measuredWidth(size) <= availableWidthPx) return AmountLayout(size, false)
-        size = maxOf(floor, size - 2f)
+/** Every candidate measures the complete readout with the caller's actual font scale. */
+internal fun amountLayout(level: MoneyMetricLevel, availableWidthPx: Int, measuredWidth: (Float) -> Int): AmountLayout {
+    val candidates = when (level) {
+        MoneyMetricLevel.HERO -> listOf(38f, 32f, 28f)
+        MoneyMetricLevel.DETAIL -> listOf(28f, 24f)
+        MoneyMetricLevel.CARD -> listOf(24f, 20f)
+        MoneyMetricLevel.ROW -> listOf(18f)
     }
-    return AmountLayout(floor, measuredWidth(floor) > availableWidthPx)
+    for (size in candidates) {
+        if (measuredWidth(size) <= availableWidthPx) return AmountLayout(size, false)
+    }
+    return AmountLayout(candidates.last(), true)
 }

@@ -46,9 +46,9 @@ class C2R1AmountLayoutTest {
     private fun verify(text: String, description: String) {
         compose.onNodeWithTag("r1-amount").assertContentDescriptionEquals(description)
         val layouts = mutableListOf<TextLayoutResult>()
-        compose.onNodeWithText(text, useUnmergedTree = true).performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        compose.onNodeWithTag("r1-amount").performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
         assertEquals(1, layouts.single().lineCount)
-        assertEquals(text, layouts.single().layoutInput.text.text)
+        assertEquals("$text/天", layouts.single().layoutInput.text.text.replace("\u2009", ""))
         assertFalse(layouts.single().didOverflowWidth)
     }
 }

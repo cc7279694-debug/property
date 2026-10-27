@@ -1,34 +1,10 @@
 package com.cooper.lithic.core.design
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.rememberTextMeasurer
-import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.dp
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -65,6 +41,7 @@ object AmountFormatter {
 }
 
 @Composable
+@Suppress("UNUSED_PARAMETER")
 fun AmountText(
     amount: BigDecimal?,
     modifier: Modifier = Modifier,
@@ -74,51 +51,14 @@ fun AmountText(
     color: Color = MaterialTheme.colorScheme.onSurface,
     supportingColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
 ) {
-    val display = when (unit) {
-        AmountUnit.YUAN -> AmountFormatter.formatCny(amount)
-        AmountUnit.YUAN_PER_DAY -> AmountFormatter.formatDailyRate(amount)
+    // Compatibility only: the former showUnit flag no longer creates a separate unit path.
+    // Production callers select a MoneyMetric role directly; all rendering lives there.
+    val level = when {
+        !style.fontSize.isSp || !style.fontSize.value.isFinite() -> MoneyMetricLevel.HERO
+        style.fontSize.value >= 38f -> MoneyMetricLevel.HERO
+        style.fontSize.value >= 28f -> MoneyMetricLevel.DETAIL
+        style.fontSize.value >= 24f -> MoneyMetricLevel.CARD
+        else -> MoneyMetricLevel.ROW
     }
-    val density = LocalDensity.current
-    var fullOpen by remember(display, unit) { mutableStateOf(false) }
-    var copyFailed by remember(display, unit) { mutableStateOf(false) }
-    val clipboard = LocalClipboardManager.current
-    val measurer = rememberTextMeasurer()
-    BoxWithConstraints(modifier.semantics(mergeDescendants = true) {
-        contentDescription = AmountFormatter.description(amount, unit)
-    }) {
-        val preferred = style.fontSize.takeIf { it.isSp && it.value.isFinite() && it.value > 0 }?.value ?: 38f
-        val available = constraints.maxWidth
-        val layout = remember(display, style, available, density.fontScale, density.density, measurer) {
-            amountLayout(preferred, available) { size ->
-                measurer.measure(AnnotatedString(display), style.copy(fontSize = size.sp),
-                    softWrap = false, maxLines = 1).size.width
-            }
-        }
-        val lineHeight = if (style.lineHeight.isSp) (style.lineHeight.value * layout.fontSp / preferred).sp else style.lineHeight
-        Column {
-            Text(display, modifier = if (layout.horizontalScroll) Modifier.fillMaxWidth().heightIn(min = 48.dp).horizontalScroll(rememberScrollState()).testTag("amount-horizontal-view") else Modifier,
-                style = style.copy(fontSize = layout.fontSp.sp, lineHeight = lineHeight),
-                color = color, softWrap = false, maxLines = 1)
-            if (showUnit) Text(unit.label, style = MaterialTheme.typography.bodyMedium,
-                color = supportingColor, softWrap = true)
-            if (layout.horizontalScroll) Text("左右滑动查看完整金额", Modifier.testTag("amount-horizontal-hint"),
-                style = MaterialTheme.typography.bodySmall, color = supportingColor)
-            if (layout.horizontalScroll) TextButton({ fullOpen = true }, Modifier.heightIn(min = 48.dp).testTag("amount-open-full")) {
-                Text("查看完整金额", color = supportingColor)
-            }
-        }
-    }
-    if (fullOpen) AlertDialog(onDismissRequest = { fullOpen = false }, title = { Text("完整金额") },
-        text = { Column(Modifier.verticalScroll(rememberScrollState())) {
-            SelectionContainer {
-                Text(display, Modifier.fillMaxWidth().heightIn(min = 48.dp).horizontalScroll(rememberScrollState())
-                    .testTag("amount-full-value"), style = MaterialTheme.typography.titleLarge, softWrap = false, maxLines = 1)
-            }
-            Text(unit.label, Modifier.testTag("amount-full-unit"))
-            Text("可左右滑动，或长按选择完整金额。", style = MaterialTheme.typography.bodyMedium)
-            if (copyFailed) Text("暂时无法复制，可长按金额选择文字。", color = MaterialTheme.colorScheme.error)
-        } }, confirmButton = { TextButton({ fullOpen = false }, Modifier.testTag("amount-close-full")) { Text("关闭") } },
-        dismissButton = { TextButton({
-            copyFailed = runCatching { clipboard.setText(AnnotatedString("$display ${unit.label}")) }.isFailure
-        }, Modifier.testTag("amount-copy-full")) { Text("复制金额") } })
+    MoneyMetric(amount, modifier, unit, level, color, supportingColor)
 }
