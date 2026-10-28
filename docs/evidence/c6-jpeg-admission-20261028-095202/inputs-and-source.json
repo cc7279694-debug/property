@@ -1,0 +1,54 @@
+{
+  "fixtures": {
+    "complete.jpg": {
+      "source": "732333b7a2803ec1f4487e437a581979a270e3ee:app/src/androidTest/assets/m10_jpeg_integrity/complete.jpg",
+      "bytes": 59334,
+      "sha256": "2ac334a075ff0928c4c08821b82ee804fae44d2282d594e9ebcbfdc5076f6907"
+    },
+    "entropy_cut_eoi_retained.jpg": {
+      "source": "732333b7a2803ec1f4487e437a581979a270e3ee:app/src/androidTest/assets/m10_jpeg_integrity/entropy_cut_eoi_retained.jpg",
+      "bytes": 20194,
+      "sha256": "f611d6b0537a66b5f78bd5a51886b70edf1ea9910a6905257ce8faead285452a"
+    },
+    "existing_small_progressive.jpg": {
+      "source": "88e7edb201991f386b91b078f574a79f07ecde7b:app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt",
+      "bytes": 554,
+      "sha256": "fde98cbb8845e8863645fdbf31e7713760c9a8af4605a078f500866569f97a55",
+      "scope": "existing small synthetic fixture; NOT the unavailable historical R1 progressive bytes"
+    },
+    "existing_small_baseline.jpg": {
+      "source": "88e7edb201991f386b91b078f574a79f07ecde7b:app/src/test/java/com/cooper/lithic/data/backup/BackupJpegInspectionTest.kt",
+      "bytes": 654,
+      "sha256": "da170836bb2630908e946fc80da3352e071d8e88410cb588f7ac173635ea05f4",
+      "scope": "existing small synthetic fixture; NOT the unavailable historical R1 progressive bytes"
+    }
+  },
+  "strictCore": {
+    "strict_probe.c": {
+      "sha256": "1d3dac94a168bd7d7eafe5ff9bcefc6275f039d8ece4fd3154f07263b1a32928",
+      "bytes": 24537,
+      "sameAsSuccessfulCiSource": true
+    },
+    "strict_core.h": {
+      "sha256": "2c5d112d81336b2f3f55b378f3db874ba7db90a5cec2c96a84a0164614944ecc",
+      "bytes": 2763,
+      "sameAsSuccessfulCiSource": true
+    },
+    "budget.c": {
+      "sha256": "47d6bd2e797cdde855cca1da1c76d26a91c617e7f8d813da65171ff493470e0f",
+      "bytes": 3727,
+      "sameAsSuccessfulCiSource": true
+    },
+    "budget.h": {
+      "sha256": "dee95f6ba05bd932f778e136a1501e035e7e50dead3058fbdab274ec7b31cb89",
+      "bytes": 824,
+      "sameAsSuccessfulCiSource": true
+    },
+    "jmem_budget.c": {
+      "sha256": "1922704c0d8c1b8b27c61cec30a313fe2834cbc291ad966dd4679f141de49080",
+      "bytes": 1861,
+      "sameAsSuccessfulCiSource": true
+    }
+  },
+  "removedBytes": 39140
+}
