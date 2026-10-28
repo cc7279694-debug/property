@@ -30,12 +30,12 @@ class C4ReviewDensityTest {
         compose.onNodeWithTag("total-trend-selected-date").assertTextEquals(day.toString())
         compose.onNodeWithTag("total-trend-canvas").assertIsDisplayed().assertHeightIsEqualTo(172.dp)
         compose.onNodeWithTag("total-trend-axis").assertDoesNotExist()
-        compose.onNodeWithTag("total-trend-selected-status").assertTextContains("有效贡献")
+        compose.onNodeWithTag("total-trend-selected-status").assertDoesNotExist()
         compose.onNodeWithTag("review-counts-compact").assertDoesNotExist()
-        scroll("total-trend-axis-toggle").performClick()
-        compose.onNodeWithTag("total-trend-axis").assertExists()
-        compose.onNodeWithText("知道了").performClick()
+        openTools()
         scroll("review-trend-details-toggle").performClick()
+        compose.onNodeWithTag("total-trend-axis").assertExists()
+        compose.onNodeWithTag("total-trend-selected-status").assertTextContains("有效贡献")
         compose.onNodeWithTag("total-trend-selection-meaning").assertTextContains("有效贡献")
         compose.onNodeWithText("知道了").performClick()
         scroll("review-information").performClick()
@@ -50,6 +50,7 @@ class C4ReviewDensityTest {
             ReviewShell(1, trendState = state(), onToggleTrendBreakdown = { toggles++ },
                 onSelectTrendDate = { selected = it })
         } }
+        openTools()
         scroll("total-trend-breakdown").assertTextContains("显示分项曲线").performClick()
         assertEquals(1, toggles)
         scroll("review-trend-date-toggle").performClick()
@@ -75,6 +76,7 @@ class C4ReviewDensityTest {
             } }
         } }
         scroll("total-trend-total").assertTextContains("¥10.00")
+        openTools()
         scroll("review-trend-date-toggle").assertHeightIsAtLeast(48.dp).performClick()
         scroll("total-trend-date-input").assertIsDisplayed()
         scroll("total-trend-date-apply").assertIsDisplayed().assertHeightIsAtLeast(48.dp)
@@ -86,9 +88,11 @@ class C4ReviewDensityTest {
             hasPositiveContribution = false, hasNegativeContribution = false)
         val ui = mutableStateOf(initial.copy(selectedPoint = realZero))
         compose.setContent { LithicTheme { ReviewShell(1, trendState = ui.value) } }
-        scroll("total-trend-selected-status").assertTextContains("真实日均成本为0")
+        openTools()
+        scroll("review-trend-details-toggle").performClick()
+        compose.onNodeWithTag("total-trend-selected-status").assertTextContains("真实日均成本为0")
         compose.runOnIdle { ui.value = initial.copy(selectedPoint = realZero.copy(activeProjectCount = 0)) }
-        scroll("total-trend-selected-status").assertTextContains("历史记录仍保留")
+        compose.onNodeWithTag("total-trend-selected-status").assertTextContains("历史记录仍保留")
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
     }
 
@@ -109,6 +113,8 @@ class C4ReviewDensityTest {
         return TotalCostTrendUiState(snapshot = ledger, selectedDate = day, selectedPoint = point,
             timeline = CostTimeline(day, start, listOf(CostTimelineEngine.point(ledger, start), point), emptyList(), 240, 10, false))
     }
+
+    private fun openTools() { scroll("total-trend-tools-toggle").performClick() }
 
     private fun scroll(tag: String): SemanticsNodeInteraction {
         compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag(tag))

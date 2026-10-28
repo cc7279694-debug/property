@@ -1,0 +1,41 @@
+{
+  "debugBuild": "PASS",
+  "androidTestSourceCompile": "PASS",
+  "androidRuntime": "NOT_RUN",
+  "lint": {
+    "Fatal": 0,
+    "Error": 0,
+    "Warning": 21,
+    "Information": 0
+  },
+  "lintXmlBytes": 24326,
+  "lintXmlSha256": "37696ef023f3247d2c1cdf1e4ac999075118229099392847c68338a69fc563da",
+  "identity": {
+    "namespace": "com.cooper.lithic",
+    "applicationId": "com.cooper.lithic",
+    "minSdk": 26,
+    "targetSdk": 36,
+    "testRunner": "androidx.test.runner.AndroidJUnitRunner",
+    "buildDirectory": "build",
+    "variants": {
+      "debug": {
+        "applicationId": "com.cooper.lithic.debug",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22-debug",
+        "manifest": "src\\debug\\AndroidManifest.xml",
+        "signingStoreExists": true
+      },
+      "release": {
+        "applicationId": "com.cooper.lithic",
+        "versionCode": 17,
+        "versionName": "0.1.0-m22",
+        "manifest": "src\\release\\AndroidManifest.xml",
+        "signingStoreExists": false
+      }
+    }
+  },
+  "existingCompilerWarnings": 2,
+  "existingSdkXmlWarningRetained": true,
+  "deviceOperations": 0,
+  "newUserApk": false
+}

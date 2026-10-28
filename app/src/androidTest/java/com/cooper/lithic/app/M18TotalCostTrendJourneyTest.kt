@@ -150,6 +150,7 @@ class M18TotalCostTrendJourneyTest {
         compose.onNodeWithTag("total-trend-canvas").assertIsDisplayed()
         capture("01-total-twenty-year-plot", "total-trend-canvas")
         capture("01b-total-plot-context")
+        scrollClick(SCREEN, "total-trend-tools-toggle")
         scrollClick(SCREEN, "total-trend-breakdown")
         scrollTo(SCREEN, "total-trend-canvas")
         val sampled = TimelineSampler.sample(snapshot, today)
@@ -221,7 +222,8 @@ class M18TotalCostTrendJourneyTest {
         day.set(today.plusDays(1))
         compose.activityRule.scenario.moveToState(Lifecycle.State.CREATED)
         compose.activityRule.scenario.moveToState(Lifecycle.State.RESUMED)
-        compose.waitUntil(15_000) { compose.onAllNodesWithText("结果截至 ${today.plusDays(1)}").fetchSemanticsNodes().isNotEmpty() }
+        scrollTo(SCREEN, "total-trend-cutoff")
+        waitText("total-trend-cutoff", "截至 ${today.plusDays(1)}")
         assertEquals(53, repo.loadProjectDetail(old.id)!!.events.size)
     }
 

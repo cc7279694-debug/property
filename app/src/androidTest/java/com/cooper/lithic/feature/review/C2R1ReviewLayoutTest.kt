@@ -48,6 +48,8 @@ class C2R1ReviewLayoutTest {
         } } }
         compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-project"))
         compose.onNodeWithTag("total-trend-project").assertTextContains("¥10.00")
+        compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-tools-toggle"))
+        compose.onNodeWithTag("total-trend-tools-toggle").performClick()
         compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-breakdown"))
         compose.onNodeWithTag("total-trend-breakdown").performClick()
         assertEquals(1, breakdowns)

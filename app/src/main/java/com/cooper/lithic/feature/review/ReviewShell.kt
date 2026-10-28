@@ -56,7 +56,7 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
         trendHasRecords = trendHasRecords)
     val header: @Composable () -> Unit = {
         ReviewHeading(projectCount, subscriptionCount,
-            hasReadNotice || trendHasNotice || (projectCount == 0L && subscriptionCount == 0L && trendHasRecords)) {
+            hasReadNotice || (projectCount == 0L && subscriptionCount == 0L && trendHasRecords)) {
             C5InformationButton("回看的口径", Modifier.testTag("review-information")) {
                 Column(Modifier.testTag("review-information-content"), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     ReviewCounts(projectCount, subscriptionCount)
@@ -77,19 +77,11 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
                 item("heading") { header() }
                 item("empty") { ReviewEmptyState(onAddRecord) }
             }
-        } else if (trendState != null) {
-            TotalCostTrendScreen(trendState, onSelectTrendDate, onToggleTrendBreakdown,
-                onRetryTrend, onOpenTrendRecord, onBack = {}, reviewHeader = header,
-                reviewFooter = destinations, summaryOnly = true)
         } else {
-            // No fabricated chart or numbers when a preview/caller has no real trend snapshot.
-            LazyColumn(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(12.dp),
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp)) {
-                item("heading") { header() }
-                item("unavailable") { Text("成本趋势尚未读取。", Modifier.testTag("review-trend-unavailable"),
-                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
-                item("destinations") { destinations() }
-            }
+            // Reserve the same production trend frame even before the lazy model's first read.
+            TotalCostTrendScreen(trendState ?: TotalCostTrendUiState(), onSelectTrendDate, onToggleTrendBreakdown,
+                onRetryTrend, onOpenTrendRecord, onBack = {}, reviewHeader = header,
+                reviewFooter = destinations, summaryOnly = true, hasExternalReadNotice = hasReadNotice)
         }
     }
 }

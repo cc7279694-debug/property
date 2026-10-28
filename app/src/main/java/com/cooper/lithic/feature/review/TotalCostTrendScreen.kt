@@ -1,6 +1,16 @@
 package com.cooper.lithic.feature.review
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -49,7 +59,6 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.C2PageHeader
-import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.MoneyMetric
 import com.cooper.lithic.core.design.MoneyMetricLevel
 import com.cooper.lithic.core.design.moneyMetricDisplay
@@ -79,6 +88,7 @@ internal fun TotalCostTrendScreen(
     reviewHeader: (@Composable () -> Unit)? = null,
     reviewFooter: (@Composable () -> Unit)? = null,
     summaryOnly: Boolean = false,
+    hasExternalReadNotice: Boolean = false,
 ) {
     var dateRaw by rememberSaveable { mutableStateOf("") }
     var dateError by rememberSaveable { mutableStateOf<String?>(null) }
@@ -88,10 +98,12 @@ internal fun TotalCostTrendScreen(
     var eventLimit by rememberSaveable { mutableIntStateOf(50) }
     var reviewDateExpanded by rememberSaveable { mutableStateOf(false) }
     var eventsExpanded by rememberSaveable { mutableStateOf(false) }
-    val timeline = state.timeline
-    val snapshot = state.snapshot
-    val hasRecords = snapshot?.overview?.let { it.projects.isNotEmpty() || it.subscriptions.isNotEmpty() } == true
-    val selected = state.selectedPoint?.takeIf { it.date == state.selectedDate }
+    var toolsExpanded by rememberSaveable { mutableStateOf(false) }
+    var informationOpen by rememberSaveable { mutableStateOf(false) }
+    val presentation = totalTrendPresentation(state)
+    val timeline = state.timeline?.takeIf { presentation.hasCompleteSnapshot }
+    val hasRecords = presentation.hasRecords
+    val selected = presentation.selected
     val events = if (allEvents) timeline?.events.orEmpty() else state.events
     val orderedEvents = remember(events) { events.sortedWith(compareByDescending<TotalCostEvent> { it.date }.thenBy { it.id }) }
     fun applyDate() {
@@ -103,17 +115,91 @@ internal fun TotalCostTrendScreen(
             else -> { dateError = null; allEvents = false; eventLimit = 50; onSelectDate(parsed) }
         }
     }
+    val metricInformation: @Composable ColumnScope.() -> Unit = {
+        selected?.let { point ->
+            Text(reviewSelectionLabel(point), Modifier.testTag("total-trend-selected-status"))
+            Text(selectionMeaning(point), Modifier.testTag("total-trend-selection-meaning"))
+        }
+        timeline?.let {
+            Text("结果截至 ${it.asOf}。按已录入、已纠正事实重建，不代表全部生活消费，也不是当天扣款。真实0、正负相抵与没有有效贡献不同；金额只在展示时舍入。")
+        }
+        Text("图表按真实自然日间距绘制，保留负值和重要变化，不做平滑预测。横向拖动选择日期后查询精确金额；纵向滑动浏览页面。")
+        Text("长跨度精简显示；显示点清单与所有事件仍可继续查看。项目结束日退出总额，后续结算单独作为事件；订阅零区间保留阶梯。")
+        Text("同日事件共同列出，不把某一笔当作全部跳变的唯一原因。付款、覆盖边界和状态变化是不同事实；有事件也可能没有总额变化。")
+        Text("前后一天限图表日期范围；其他已过去日期可输入查询。")
+    }
     LazyColumn(modifier.fillMaxSize().imePadding().testTag("total-cost-trend-screen"),
         contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item("heading") {
             if (reviewHeader != null) reviewHeader()
             else C2PageHeader("成本趋势", onBack, "total-trend-back", backLabel = "返回回看")
         }
-        if (state.loading) item("loading") { Text(if (timeline == null) "正在读取完整历史。" else "正在刷新；下方为上次结果，尚未刷新。") }
+        if (presentation.showEmpty && !hasExternalReadNotice) item("empty") {
+            Text("记下一件物品后，在这里看见成本变化", Modifier.testTag("total-trend-empty"),
+                style = MaterialTheme.typography.bodyLarge)
+        } else {
+            item("overview") {
+                Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                        Text("总日均成本", style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Text(state.selectedDate?.toString() ?: "日期待读取",
+                            Modifier.testTag(if (state.selectedDate == null) "total-trend-date-pending" else "total-trend-selected-date"),
+                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        MoneyMetric(selected?.totalRate, Modifier.fillMaxWidth()
+                            .testTag(if (selected == null) "total-trend-total-pending" else "total-trend-total")
+                            .semantics { if (presentation.hasRecords && selected == null) stateDescription = "所选日期的精确结果尚未取得" },
+                            level = if (summaryOnly) MoneyMetricLevel.HERO else MoneyMetricLevel.DETAIL,
+                            color = MaterialTheme.colorScheme.primary, label = "总日均成本")
+                    }
+                    val plot: @Composable () -> Unit = {
+                        if (timeline != null && hasRecords) {
+                            TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate,
+                                concise = summaryOnly, cutoff = timeline.asOf,
+                                heading = { TrendPlotHeading(presentation, onRetry) },
+                                informationOpen = informationOpen, onCloseInformation = { informationOpen = false },
+                                information = metricInformation)
+                        } else TrendPlotPlaceholder(presentation, summaryOnly, onRetry, hasExternalReadNotice)
+                    }
+                    if (summaryOnly) Surface(Modifier.fillMaxWidth().testTag("review-trend-plot-surface"),
+                        shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surface) {
+                        Column(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp)
+                            .testTag("total-trend-plot-frame")) { plot() }
+                    } else Column(Modifier.fillMaxWidth().testTag("total-trend-plot-frame")) { plot() }
+                    DailyContributions(selected)
+                    FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        val date = state.selectedDate
+                        TextButton({ date?.let { onSelectDate(it.minusDays(1)) } }, Modifier.heightIn(min = 48.dp)
+                            .testTag("total-trend-previous-day"),
+                            enabled = hasRecords && timeline?.from != null && date != null && date > timeline.from && date <= timeline.asOf) { Text("前一天") }
+                        TextButton({ date?.let { onSelectDate(it.plusDays(1)) } }, Modifier.heightIn(min = 48.dp)
+                            .testTag("total-trend-next-day"),
+                            enabled = hasRecords && timeline?.from != null && date != null && date >= timeline.from && date < timeline.asOf) { Text("后一天") }
+                        TextButton({ toolsExpanded = !toolsExpanded }, Modifier.heightIn(min = 48.dp).testTag("total-trend-tools-toggle"),
+                            enabled = timeline != null && hasRecords) { Text(if (toolsExpanded) "收起工具" else "更多工具") }
+                    }
+                    if (toolsExpanded && timeline != null && hasRecords) {
+                        FlowRow(Modifier.fillMaxWidth().testTag("total-trend-tools"), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            TextButton({ reviewDateExpanded = !reviewDateExpanded }, Modifier.heightIn(min = 48.dp)
+                                .testTag(if (summaryOnly) "review-trend-date-toggle" else "total-trend-date-toggle")) {
+                                Text(if (reviewDateExpanded) "收起日期查询" else "指定日期")
+                            }
+                            TextButton(onToggleBreakdown, Modifier.heightIn(min = 48.dp).testTag("total-trend-breakdown")) {
+                                Text(if (state.showBreakdown) "收起分项曲线" else "显示分项曲线")
+                            }
+                            TextButton({ informationOpen = true }, Modifier.heightIn(min = 48.dp)
+                                .testTag(if (summaryOnly) "review-trend-details-toggle" else "total-trend-details-toggle")) { Text("趋势说明") }
+                        }
+                    }
+                }
+            }
+        }
+        // Safety notices are persistent, outside the collapsible tools. No loading row is inserted above the plot.
         state.error?.let { error -> item("error") {
             Card(Modifier.fillMaxWidth().testTag("total-trend-error")) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(if (timeline == null) "读取失败，不能将错误作为空账本。" else "读取失败；下方保留上次结果，尚未刷新。")
+                    Text(if (!presentation.hasCompleteSnapshot) "读取失败，不能将错误作为空账本。" else "读取失败；仍保留上次结果，尚未刷新。")
+                    presentation.cutoff?.let { Text("上次结果截至 $it") }
                     Text(error)
                     OutlinedButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("total-trend-retry")) { Text("重试") }
                 }
@@ -122,73 +208,8 @@ internal fun TotalCostTrendScreen(
         state.notice?.let { notice -> item("notice") {
             Text(notice, Modifier.testTag("total-trend-notice"), style = MaterialTheme.typography.bodyMedium)
         } }
-        if (!summaryOnly && timeline != null && !hasRecords && !state.loading && state.error == null && state.notice == null) item("empty") {
-            Text("记下一件物品后，在这里看见成本变化", Modifier.testTag("total-trend-empty"),
-                style = MaterialTheme.typography.bodyLarge)
-        }
         if (timeline != null && hasRecords) {
-            item("selected") {
-                Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp),
-                        verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("总日均成本", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        state.selectedDate?.let { Text(it.toString(), Modifier.testTag("total-trend-selected-date"),
-                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
-                    }
-                    if (selected == null) Text("正在计算所选日期；不会用旧日期金额或0代替结果。")
-                    else MoneyMetric(selected.totalRate, Modifier.fillMaxWidth().testTag("total-trend-total"),
-                        level = if (summaryOnly) MoneyMetricLevel.HERO else MoneyMetricLevel.DETAIL,
-                        color = MaterialTheme.colorScheme.primary, label = "总日均成本")
-                    selected?.let { Text(reviewSelectionLabel(it), Modifier.testTag("total-trend-selected-status"),
-                        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
-                    FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Text("结果截至 ${timeline.asOf}", style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Text("非当日扣款", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    }
-                }
-            }
-            item("chart") {
-                if (summaryOnly) Surface(Modifier.fillMaxWidth().testTag("review-trend-plot-surface"),
-                    shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surface) {
-                    Column(Modifier.padding(horizontal = 12.dp, vertical = 8.dp)) {
-                        TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate,
-                            concise = true)
-                    }
-                } else TotalCostChart(timeline.points, selected, state.selectedDate, state.showBreakdown, onSelectDate)
-            }
-            selected?.let { point -> item("contributions") { DailyContributions(point) } }
-            item("review-chart-actions") {
-                FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                    state.selectedDate?.let { date ->
-                        TextButton({ onSelectDate(date.minusDays(1)) }, Modifier.heightIn(min = 48.dp)
-                            .testTag("total-trend-previous-day"),
-                            enabled = timeline.from != null && date > timeline.from && date <= timeline.asOf) { Text("前一天") }
-                        TextButton({ onSelectDate(date.plusDays(1)) }, Modifier.heightIn(min = 48.dp)
-                            .testTag("total-trend-next-day"),
-                            enabled = timeline.from != null && date >= timeline.from && date < timeline.asOf) { Text("后一天") }
-                    }
-                    TextButton(onToggleBreakdown, Modifier.heightIn(min = 48.dp).testTag("total-trend-breakdown")) {
-                        Text(if (state.showBreakdown) "收起分项曲线" else "显示分项曲线")
-                    }
-                    TextButton({ reviewDateExpanded = !reviewDateExpanded }, Modifier.heightIn(min = 48.dp)
-                        .testTag(if (summaryOnly) "review-trend-date-toggle" else "total-trend-date-toggle")) {
-                        Text(if (reviewDateExpanded) "收起日期查询" else "指定日期")
-                    }
-                    C5InformationButton("趋势指标说明", Modifier
-                        .testTag(if (summaryOnly) "review-trend-details-toggle" else "total-trend-details-toggle"), "指标说明") {
-                        selected?.let { point ->
-                            Text(selectionMeaning(point), Modifier.testTag("total-trend-selection-meaning"))
-                        }
-                        Text("按已录入、已纠正事实重建，不代表全部生活消费，也不是当天扣款。真实0、正负相抵与没有有效贡献不同；金额只在展示时舍入。")
-                        Text("完整记录历史至 ${timeline.asOf}。图表按真实自然日间距绘制，保留负值和重要变化，不做平滑预测。横向拖动选择日期后查询精确金额；纵向滑动浏览页面。")
-                        Text("长跨度精简显示；显示点清单与所有事件仍可继续查看。项目结束日退出总额，后续结算单独作为事件；订阅零区间保留阶梯。")
-                        Text("同日事件共同列出，不把某一笔当作全部跳变的唯一原因。付款、覆盖边界和状态变化是不同事实；有事件也可能没有总额变化。")
-                        Text("前后一天限图表日期范围；其他已过去日期可输入查询。")
-                    }
-                }
-            }
-            if (reviewDateExpanded) {
+            if (toolsExpanded && reviewDateExpanded) {
                 item("date") {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         OutlinedTextField(dateRaw, { dateRaw = it; dateError = null }, Modifier.fillMaxWidth().testTag("total-trend-date-input"),
@@ -201,7 +222,7 @@ internal fun TotalCostTrendScreen(
             }
             // Full point/event pages remain on the original dedicated route, reached
             // through Review's guarded callback; no second event implementation is added.
-            if (!summaryOnly) {
+            if (!summaryOnly && toolsExpanded) {
                 item("point-heading") {
                     OutlinedButton({ pointsExpanded = !pointsExpanded }, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-points-toggle")) {
                         Text(if (pointsExpanded) "收起显示点文字清单" else "查看显示点文字清单（${timeline.points.size}个）")
@@ -230,7 +251,9 @@ internal fun TotalCostTrendScreen(
                         }
                     }
                 }
-                if (eventsExpanded) {
+                if (eventsExpanded && !allEvents && selected == null) {
+                    item("event-pending") { Text("所选日期的事件尚未取得。", Modifier.testTag("total-trend-event-pending")) }
+                } else if (eventsExpanded) {
                     item("event-scope") {
                         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             OutlinedButton({ allEvents = !allEvents; eventLimit = 50 },
@@ -269,15 +292,15 @@ internal fun TotalCostTrendScreen(
 }
 
 @Composable
-private fun DailyContributions(point: CostTimelinePoint) {
+private fun DailyContributions(point: CostTimelinePoint?) {
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        DailyValue("长期项目贡献", point.projectRate, "total-trend-project")
-        DailyValue("订阅贡献", point.subscriptionRate, "total-trend-subscription")
+        DailyValue("长期项目贡献", point?.projectRate, if (point == null) "total-trend-project-pending" else "total-trend-project")
+        DailyValue("订阅贡献", point?.subscriptionRate, if (point == null) "total-trend-subscription-pending" else "total-trend-subscription")
     }
 }
 
 @Composable
-private fun DailyValue(label: String, value: BigDecimal, tag: String) {
+private fun DailyValue(label: String, value: BigDecimal?, tag: String) {
     val fontScale = LocalDensity.current.fontScale
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val rowAmountWidth = (maxWidth - 8.dp).coerceAtLeast(0.dp) / 2f
@@ -304,8 +327,23 @@ private fun selectionMeaning(point: CostTimelinePoint): String = when {
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimelinePoint?, requestedDate: LocalDate?, breakdown: Boolean,
-    onSelectDate: (LocalDate) -> Unit, concise: Boolean = false) {
-    if (points.isEmpty()) { Text("截至本次业务日尚无可绘制的记录历史。", Modifier.testTag("total-trend-no-history")); return }
+    onSelectDate: (LocalDate) -> Unit, concise: Boolean = false, cutoff: LocalDate,
+    heading: @Composable () -> Unit, informationOpen: Boolean, onCloseInformation: () -> Unit,
+    information: @Composable ColumnScope.() -> Unit) {
+    if (points.isEmpty()) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            heading()
+            Box(Modifier.fillMaxWidth().height(if (concise) 172.dp else 240.dp), contentAlignment = Alignment.Center) {
+                Text("截至本次业务日尚无可绘制的记录历史。", Modifier.testTag("total-trend-no-history"))
+            }
+            TrendAxisRow("尚无历史范围", "截至 $cutoff")
+        }
+        if (informationOpen) TrendInformationDialog(onCloseInformation) {
+            Text("尚无可绘制的坐标范围。", Modifier.testTag("total-trend-axis"))
+            information()
+        }
+        return
+    }
     val ordered = remember(points) { points.sortedBy { it.date } }
     val inRange = selected?.takeIf { it.date >= ordered.first().date && it.date <= ordered.last().date }
     val baseProjection = remember(ordered, breakdown) {
@@ -334,7 +372,7 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
     val selectedColor = MaterialTheme.colorScheme.onSurface
     val currentSelect by rememberUpdatedState(onSelectDate)
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text(if (concise) "成本趋势" else "总日均成本 — 实线", style = MaterialTheme.typography.labelLarge, color = totalColor)
+        heading()
         if (breakdown) {
             Text("长期项目 ━ ━ 长虚线；订阅 ··· 短虚线阶梯", style = MaterialTheme.typography.bodySmall)
         }
@@ -388,15 +426,78 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
                 drawLine(selectedColor, Offset(x, inset), Offset(x, inset + h), 1.dp.toPx(),
                     pathEffect = PathEffect.dashPathEffect(floatArrayOf(2.dp.toPx(), 5.dp.toPx()))) }
         }
-        FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(projection.start.toString(), style = MaterialTheme.typography.bodySmall)
-            if (projection.start != projection.end) Text(projection.end.toString(), style = MaterialTheme.typography.bodySmall)
-        }
-        C5InformationButton("图表坐标与选日", Modifier.testTag("total-trend-axis-toggle"), "图表说明") {
-            Text("纵轴：${moneyMetricDisplay(projection.minimum)} 至 ${moneyMetricDisplay(projection.maximum)}",
-                Modifier.testTag("total-trend-axis"))
-            Text("三条序列共用日期轴与金额尺度，零线区分正负，不使用百分比堆叠。真实自然日间距、单点、负值和订阅零区间均保留。")
-            Text("总日均为实线；长期项目为长虚线；订阅为短虚线阶梯。横向拖动只选择日期，再查询真实结果，不从连线估算金额。")
+        TrendAxisRow(if (projection.start == projection.end) "单日记录" else projection.start.toString(), "截至 $cutoff")
+    }
+    if (informationOpen) TrendInformationDialog(onCloseInformation) {
+        Text("纵轴：${moneyMetricDisplay(projection.minimum)} 至 ${moneyMetricDisplay(projection.maximum)}",
+            Modifier.testTag("total-trend-axis"))
+        Text("图表日期：${projection.start} 至 ${projection.end}。")
+        Text("三条序列共用日期轴与金额尺度，零线区分正负，不使用百分比堆叠。真实自然日间距、单点、负值和订阅零区间均保留。")
+        Text("总日均为实线；长期项目为长虚线；订阅为短虚线阶梯。横向拖动只选择日期，再查询真实结果，不从连线估算金额。")
+        information()
+    }
+}
+
+@Composable
+private fun TrendPlotHeading(presentation: TotalTrendPresentation, onRetry: () -> Unit) {
+    Row(Modifier.fillMaxWidth().heightIn(min = 48.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text("成本趋势", Modifier.weight(1f), style = MaterialTheme.typography.labelLarge,
+            color = MaterialTheme.colorScheme.primary)
+        Box(Modifier.width(128.dp).heightIn(min = 48.dp), contentAlignment = Alignment.CenterEnd) {
+            if (presentation.phase == TrendReadPhase.FAILED) {
+                TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("total-trend-compact-retry")) {
+                    Text("失败 · 重试", color = MaterialTheme.colorScheme.error)
+                }
+            } else if (presentation.phase != TrendReadPhase.READY || (presentation.hasRecords && presentation.selected == null)) {
+                val label = when (presentation.phase) {
+                    TrendReadPhase.REFRESHING -> "刷新中"
+                    TrendReadPhase.READING -> "读取中"
+                    TrendReadPhase.READY -> "计算中"
+                    else -> "待载入"
+                }
+                Text(label, Modifier.testTag("total-trend-refresh-status").semantics {
+                    liveRegion = LiveRegionMode.Polite
+                    contentDescription = if (presentation.phase == TrendReadPhase.READY) {
+                        "所选日期计算中，尚未取得精确金额；图表截至 ${presentation.cutoff}"
+                    } else label + (presentation.cutoff?.let { "，保留截至 $it 的上次结果" } ?: "，尚未取得可信历史")
+                }, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
         }
     }
+}
+
+@Composable
+private fun TrendPlotPlaceholder(presentation: TotalTrendPresentation, summaryOnly: Boolean, onRetry: () -> Unit, hasExternalReadNotice: Boolean) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        TrendPlotHeading(presentation, onRetry)
+        Box(Modifier.fillMaxWidth().height(if (summaryOnly) 172.dp else 240.dp)
+            .testTag("total-trend-loading-placeholder"), contentAlignment = Alignment.Center) {
+            Text(if (hasExternalReadNotice && !presentation.hasRecords) "当前记录快照需要核对" else when (presentation.phase) {
+                TrendReadPhase.FAILED -> "历史未能读取，请重试"
+                TrendReadPhase.WAITING -> "成本趋势尚未读取"
+                TrendReadPhase.READY -> "尚无可绘制的记录历史"
+                else -> "正在读取完整历史"
+            }, Modifier.testTag(if (presentation.phase == TrendReadPhase.WAITING && summaryOnly) "review-trend-unavailable" else "total-trend-pending-message"),
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        TrendAxisRow("起始日期待读取", presentation.cutoff?.let { "截至 $it" } ?: "截止日期待读取")
+    }
+}
+
+@Composable
+private fun TrendAxisRow(start: String, end: String) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text(start, Modifier.weight(1f), style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text(end, Modifier.weight(1f).testTag("total-trend-cutoff"), textAlign = TextAlign.End,
+            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+}
+
+@Composable
+private fun TrendInformationDialog(onClose: () -> Unit, information: @Composable ColumnScope.() -> Unit) {
+    AlertDialog(onDismissRequest = onClose, title = { Text("趋势说明") }, text = {
+        Column(Modifier.verticalScroll(rememberScrollState()).testTag("total-trend-information"),
+            verticalArrangement = Arrangement.spacedBy(12.dp), content = information)
+    }, confirmButton = { TextButton(onClose, Modifier.heightIn(min = 48.dp)) { Text("知道了") } })
 }

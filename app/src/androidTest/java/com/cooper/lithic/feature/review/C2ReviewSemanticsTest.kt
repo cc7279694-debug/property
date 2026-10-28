@@ -37,7 +37,7 @@ class C2ReviewSemanticsTest {
 
     @Test fun initial_loading_does_not_invent_a_chart_or_zero_value() {
         show(TotalCostTrendUiState(loading = true))
-        compose.onNodeWithText("正在读取完整历史。").assertIsDisplayed()
+        compose.onNodeWithTag("total-trend-pending-message").assertTextContains("读取完整历史", substring = true).assertIsDisplayed()
         compose.onNodeWithTag("total-trend-canvas").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-total").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
@@ -58,6 +58,8 @@ class C2ReviewSemanticsTest {
             ReviewShell(0, trendState = TotalCostTrendUiState(error = "合成读取失败"), hasReadNotice = true,
                 onRetryTrend = { retries++ })
         } }
+        compose.onNodeWithTag("total-trend-compact-retry").assertIsDisplayed()
+        scroll("total-trend-error")
         compose.onNodeWithTag("total-trend-error").assertIsDisplayed()
         compose.onNodeWithTag("total-trend-retry").performClick()
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
@@ -67,7 +69,8 @@ class C2ReviewSemanticsTest {
 
     @Test fun retained_negative_result_is_qualified_after_refresh_failure() {
         show(recordState(recoveryCents = 100).copy(error = "合成刷新失败"))
-        compose.onNodeWithText("读取失败；下方保留上次结果，尚未刷新。").assertIsDisplayed()
+        scroll("total-trend-error")
+        compose.onNodeWithText("读取失败；仍保留上次结果，尚未刷新。").assertIsDisplayed()
         scroll("total-trend-total")
         compose.onNodeWithTag("total-trend-total").assertTextContains("−", substring = true)
         scroll("total-trend-canvas")
@@ -82,6 +85,8 @@ class C2ReviewSemanticsTest {
         scroll("total-trend-total")
         compose.onNodeWithTag("total-trend-total").assertTextContains("¥0.00", substring = true)
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
+        scroll("total-trend-tools-toggle")
+        compose.onNodeWithTag("total-trend-tools-toggle").performClick()
         scroll("review-trend-date-toggle")
         compose.onNodeWithTag("review-trend-date-toggle").performClick()
         scroll("total-trend-date-input")

@@ -63,10 +63,12 @@ class C1ReviewVisualContractTest {
             ReviewShell(0, trendState = trend.value, onRetryTrend = { retries++ }, onAddRecord = {})
         } }
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
-        compose.onNodeWithText("正在读取完整历史。").assertIsDisplayed()
+        compose.onNodeWithTag("total-trend-pending-message").assertTextContains("读取完整历史", substring = true).assertIsDisplayed()
         compose.runOnIdle { trend.value = emptyState().copy(error = "合成读取失败") }
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
+        compose.onNodeWithTag("total-trend-compact-retry").assertIsDisplayed()
+        compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-error"))
         compose.onNodeWithTag("total-trend-error").assertIsDisplayed()
         compose.onNodeWithTag("review-empty-identity").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-retry").performClick()
@@ -106,7 +108,7 @@ class C1ReviewVisualContractTest {
 
     @Test fun normal_400dp_destinations_are_compact_and_keep_all_callbacks() {
         showDestinations(400f, 1f)
-        val row = compose.onNodeWithTag("review-category-analysis").assertIsDisplayed().fetchSemanticsNode()
+        val row = compose.onNodeWithTag("review-category-analysis").performScrollTo().assertIsDisplayed().fetchSemanticsNode()
         assertTrue("Normal row should keep the 56dp compact layout", row.size.height <= 64f * pixelsPerDp)
         compose.onNodeWithText("长期项目与订阅分别查看", useUnmergedTree = true).assertDoesNotExist()
         checkDestinations()

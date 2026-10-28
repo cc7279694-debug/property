@@ -40,6 +40,7 @@ class C5AnalyticsPresentationTest {
         compose.onNodeWithTag("total-trend-subscription").assertContentDescriptionEquals("订阅贡献，0.00元/天")
         compose.onNodeWithTag("total-trend-date-input").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-axis").assertDoesNotExist()
+        scroll("total-trend-tools-toggle").assertHeightIsAtLeast(48.dp).performClick()
         scroll("total-trend-date-toggle").performClick()
         scroll("total-trend-date-input").performTextReplacement(day.minusDays(3).toString())
         scroll("total-trend-date-apply").performClick()

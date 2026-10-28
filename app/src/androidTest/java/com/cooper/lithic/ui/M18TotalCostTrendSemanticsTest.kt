@@ -40,6 +40,7 @@ class M18TotalCostTrendSemanticsTest {
         scroll("total-trend-canvas")
         compose.onNodeWithTag("total-trend-canvas").assertContentDescriptionEquals(
             "总日均成本历史实线，负值保留。可展开两类贡献，或在下方输入日期和查看文字清单。纵轴：负1.00元/天 至 1.00元/天；按自然日绘制。")
+        openTools()
         scroll("total-trend-breakdown")
         compose.onNodeWithTag("total-trend-breakdown").performClick()
         compose.runOnIdle { assertEquals(1, toggles) }
@@ -47,13 +48,14 @@ class M18TotalCostTrendSemanticsTest {
         compose.onNodeWithTag("total-trend-project").assertTextContains("−", substring = true)
         scroll("total-trend-subscription")
         compose.onNodeWithTag("total-trend-subscription").assertTextContains(AmountFormatter.formatDailyRate(BigDecimal.TEN))
-        scroll("total-trend-selected-status")
+        scroll("total-trend-details-toggle"); compose.onNodeWithTag("total-trend-details-toggle").performClick()
         compose.onNodeWithTag("total-trend-selected-status").assertTextContains("正负贡献相抵为0", substring = true)
     }
 
     @Test fun exact_date_text_entry_avoids_drag_and_future_is_rejected() {
         var requested: LocalDate? = null
         show(state(), select = { requested = it })
+        openTools()
         scroll("total-trend-date-toggle"); compose.onNodeWithTag("total-trend-date-toggle").performClick()
         scroll("total-trend-date-input")
         compose.onNodeWithTag("total-trend-date-input").performTextReplacement("2020-04-03")
@@ -71,6 +73,7 @@ class M18TotalCostTrendSemanticsTest {
             "record-$it", "合成项目$it", "同日资金事件", "完整说明$it", 100, nonCash = it == 50) }
         var opened: Pair<OverviewKind, String>? = null
         show(state(events), open = { kind, id -> opened = kind to id })
+        openTools()
         scroll("total-trend-events-toggle"); compose.onNodeWithTag("total-trend-events-toggle").performClick()
         scroll("total-trend-events-more"); compose.onNodeWithTag("total-trend-events-more").performClick()
         scroll("total-trend-event-event-50")
@@ -96,7 +99,8 @@ class M18TotalCostTrendSemanticsTest {
             } }
         } }
         scroll("total-trend-error")
-        compose.onNodeWithText("读取失败；下方保留上次结果，尚未刷新。", useUnmergedTree = true).assertExists()
+        compose.onNodeWithText("读取失败；仍保留上次结果，尚未刷新。", useUnmergedTree = true).assertExists()
+        openTools()
         scroll("total-trend-date-toggle"); compose.onNodeWithTag("total-trend-date-toggle").performClick()
         scroll("total-trend-date-apply")
         compose.onNodeWithTag("total-trend-date-apply").assertIsDisplayed().assertHeightIsAtLeast(48.dp)
@@ -120,5 +124,6 @@ class M18TotalCostTrendSemanticsTest {
         open: (OverviewKind, String) -> Unit = { _, _ -> }) {
         compose.setContent { LithicTheme { TotalCostTrendScreen(state, select, toggle, {}, open, {}) } }
     }
+    private fun openTools() { scroll("total-trend-tools-toggle"); compose.onNodeWithTag("total-trend-tools-toggle").performClick() }
     private fun scroll(tag: String) = compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag(tag))
 }
