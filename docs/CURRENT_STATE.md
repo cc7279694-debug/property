@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **C5-R1 FIX READY_FOR_INDEPENDENT_REVIEW / ANDROID_VISUAL_AND_MOTION_PENDING（2026-10-28）**：`69f5704`独立审查为CHANGES REQUIRED，本轮仅补两处呈现缺口。Ready计数传入趋势一致性判断，旧空快照不再作为新记录引导；选日未知时事件范围开关仍可用，全历史复用timeline.events。35定向JVM PASS（6新＋29回归），Debug/AndroidTest源码编译exit0，Lint分析执行后报告内容不变复用0错21警告；新增3个Compose仅编译NOT_RUN，保留编译警告。见[局部补修回执](evidence/LITHIC-C5-R1-Fix-Receipt.md)。只3个生产UI和2个测试文件，原断言/图表绘制/事件行保留；VM/数据/Owner/MoneyMetric/导航/Room5/backup4/身份无改，无设备或新体验APK，原Preview8/code24保持。全部历史状态和真实视觉待验保持；提交后停止等待独立审查，不合并main或进入M23。
+
 - **C5-R1 IMPLEMENTED — READY_FOR_INDEPENDENT_REVIEW / ANDROID_VISUAL_AND_MOTION_PENDING（2026-10-28）**：从`82431c7`仅收口真实录屏转交的回看读取跳变及趋势工具密度。统一首次占位与图表结构，同代刷新/选日计算用固定状态槽，旧截止日、错误/notice/重试保留；次级工具归组，轴/指标说明合一。53定向JVM PASS（12新＋41回归）、Debug/AndroidTest源码编译exit0、Lint0错21警告；6新Compose与7文件定位适配仅编译，Android运行NOT_RUN。见[C5-R1简报](evidence/LITHIC-C5-R1-Review-Stability.md)。只3个生产UI文件，VM/数据/Owner/Room5/backup4/业务/导航保护无改；无设备、C3续查或新体验APK，原Preview8/code24字节保持。真实视觉/动态仍待独立手机核对，M10/M20/M22/M13/G1～G4及MEDIA_DISPLAY_PENDING等历史状态不变；提交后停止，不冻结或进入M23。
 
 - **C5 IMPLEMENTED — READY_FOR_INDEPENDENT_PRODUCT_REVIEW / ANDROID_VISUAL_AND_MOTION_PENDING（2026-10-27）**：依据独立冻结设计`5838e8`完成六单元整合，32组桌面清单（30实施＋2保留正确安全结构）、M01～M24唯一MoneyMetric及七输入；三类Nav3路径None、Scene背景和趋势引用连续性。188定向JVM PASS；Debug/AndroidTest源码编译/Lint通过，普通0错21警告、体验0错13警告，首两次编译失败保留。唯一Preview8/code24同包原证书，实际Manifest/DEX/字节与Git app树绑定见[C5总报告](evidence/LITHIC-C5-Implementation.md)。0设备操作，真实Android视觉/动态/大字/IME/安装升级NOT_RUN；没有HTML替代、C3重启或M22重测。Room5/backup4/业务/Owner/恢复/导航守卫不改；MEDIA_DISPLAY_PENDING、M10/M20/M22/M13/G1～G4及C3 CLOSED/UNKNOWN全部保持。不是产品冻结或正式发行；提交推送后停止等待独立审查。

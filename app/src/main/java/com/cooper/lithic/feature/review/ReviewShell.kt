@@ -47,6 +47,7 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
     onSelectTrendDate: (LocalDate) -> Unit = {}, onToggleTrendBreakdown: () -> Unit = {},
     onRetryTrend: () -> Unit = {}, onOpenTrendRecord: (OverviewKind, String) -> Unit = { _, _ -> },
     onAddRecord: (() -> Unit)? = null) {
+    val readyCounts = TrendRecordCounts(projectCount, subscriptionCount)
     val trendHasRecords = trendState?.snapshot?.overview?.let {
         it.projects.isNotEmpty() || it.subscriptions.isNotEmpty()
     } == true || trendState?.timeline?.from != null
@@ -81,7 +82,7 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
             // Reserve the same production trend frame even before the lazy model's first read.
             TotalCostTrendScreen(trendState ?: TotalCostTrendUiState(), onSelectTrendDate, onToggleTrendBreakdown,
                 onRetryTrend, onOpenTrendRecord, onBack = {}, reviewHeader = header,
-                reviewFooter = destinations, summaryOnly = true, hasExternalReadNotice = hasReadNotice)
+                reviewFooter = destinations, summaryOnly = true, hasExternalReadNotice = hasReadNotice, expectedCounts = readyCounts)
         }
     }
 }

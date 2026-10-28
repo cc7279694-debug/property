@@ -12,6 +12,7 @@ import com.cooper.lithic.domain.report.OverviewKind
 import com.cooper.lithic.domain.report.OverviewProject
 import com.cooper.lithic.domain.report.OverviewSnapshot
 import com.cooper.lithic.domain.report.TimelineSampler
+import com.cooper.lithic.domain.report.TotalCostEvent
 import java.math.BigDecimal
 import java.time.LocalDate
 import org.junit.Assert.assertEquals
@@ -155,6 +156,92 @@ class C5R1TrendPresentationTest {
             assertSame(state.selectedPoint, shown.selected)
             assertEquals(0, expected.compareTo(requireNotNull(shown.selected).totalRate))
         }
+    }
+
+    @Test fun ready_project_or_subscription_records_do_not_turn_an_old_empty_snapshot_into_a_welcome() {
+        val oldEmpty = empty()
+        listOf(TrendRecordCounts(1, 0), TrendRecordCounts(0, 1), TrendRecordCounts(1, 1)).forEach { expected ->
+            val shown = totalTrendPresentation(oldEmpty, expectedCounts = expected)
+            assertTrue(shown.hasCompleteSnapshot)
+            assertFalse(shown.hasRecords)
+            assertTrue(shown.recordCountsMismatch)
+            assertFalse(shown.showEmpty)
+            assertNull(shown.selected)
+            assertEquals(oldEmpty.timeline!!.asOf, shown.cutoff)
+        }
+    }
+
+    @Test fun matching_ready_and_trend_empty_counts_still_allow_the_real_empty_state() {
+        val shown = totalTrendPresentation(empty(), expectedCounts = TrendRecordCounts(0, 0))
+        assertFalse(shown.recordCountsMismatch)
+        assertTrue(shown.showEmpty)
+        assertFalse(shown.hasRecords)
+        assertNull(shown.selected)
+    }
+
+    @Test fun mismatched_nonempty_counts_keep_only_the_old_snapshots_amount_and_cutoff() {
+        val prior = ready(asOf = day.minusDays(2))
+        listOf(TrendRecordCounts(2, 0), TrendRecordCounts(0, 1), TrendRecordCounts(0, 0)).forEach { expected ->
+            val shown = totalTrendPresentation(prior, expectedCounts = expected)
+            assertTrue(shown.recordCountsMismatch)
+            assertTrue(shown.hasRecords)
+            assertFalse(shown.showEmpty)
+            assertSame(prior.selectedPoint, shown.selected)
+            assertEquals(day.minusDays(2), shown.cutoff)
+            assertEquals(0, BigDecimal.TEN.compareTo(requireNotNull(shown.selected).totalRate))
+            assertEquals(1L, requireNotNull(shown.selected).projectCount)
+            assertEquals(0L, requireNotNull(shown.selected).subscriptionCount)
+        }
+        assertFalse(totalTrendPresentation(prior, expectedCounts = TrendRecordCounts(1, 0)).recordCountsMismatch)
+    }
+
+    @Test fun known_ready_counts_cannot_supply_facts_to_an_unread_or_partial_trend_state() {
+        val prior = ready()
+        listOf(TotalCostTrendUiState(), prior.copy(snapshot = null), prior.copy(timeline = null)).forEach { state ->
+            val shown = totalTrendPresentation(state, expectedCounts = TrendRecordCounts(1, 0))
+            assertFalse(shown.hasCompleteSnapshot)
+            assertFalse(shown.recordCountsMismatch)
+            assertFalse(shown.hasRecords)
+            assertFalse(shown.showEmpty)
+            assertNull(shown.cutoff)
+            assertNull(shown.selected)
+            assertNull(trendEventsForDisplay(state, allDates = true))
+        }
+    }
+
+    @Test fun failed_selected_day_keeps_all_51_original_history_events_available() {
+        val allHistory = (0 until 51).map { index ->
+            TotalCostEvent("r1-event-$index", day.minusDays((index % 4).toLong()), OverviewKind.PROJECT,
+                "r1-project", "合成项目", "合成事件", "合成事实$index", 100L + index, nonCash = index == 50)
+        }
+        val prior = ready()
+        val failed = prior.copy(timeline = prior.timeline!!.copy(events = allHistory),
+            selectedDate = day.minusDays(1), selectedPoint = null, events = emptyList(), error = "合成选日失败")
+        assertNull(totalTrendPresentation(failed).selected)
+        assertNull(trendEventsForDisplay(failed, allDates = false))
+        val displayed = requireNotNull(trendEventsForDisplay(failed, allDates = true))
+        assertSame(allHistory, displayed)
+        assertEquals(51, displayed.size)
+        displayed.forEachIndexed { index, event ->
+            assertSame(allHistory[index], event)
+            assertEquals("r1-event-$index", event.id)
+            assertEquals("r1-project", event.recordId)
+            assertEquals(OverviewKind.PROJECT, event.kind)
+            assertEquals(100L + index, event.amountCents)
+            assertEquals(index == 50, event.nonCash)
+        }
+    }
+
+    @Test fun selected_events_require_the_matching_point_and_do_not_borrow_another_days_facts() {
+        val event = TotalCostEvent("r1-selected-event", day, OverviewKind.PROJECT,
+            "r1-project", "合成项目", "投入", "真实选择范围", 100)
+        val selectedEvents = listOf(event)
+        val prior = ready().copy(events = selectedEvents)
+        assertSame(selectedEvents, trendEventsForDisplay(prior, allDates = false))
+        assertEquals(emptyList<TotalCostEvent>(), trendEventsForDisplay(prior.copy(events = emptyList()), allDates = false))
+        val pending = prior.copy(selectedDate = day.minusDays(1))
+        assertNull(trendEventsForDisplay(pending, allDates = false))
+        assertSame(pending.timeline!!.events, trendEventsForDisplay(pending, allDates = true))
     }
 
     private fun ready(asOf: LocalDate = day, outlayCents: Long = 10_000, recoveryCents: Long = 0): TotalCostTrendUiState {

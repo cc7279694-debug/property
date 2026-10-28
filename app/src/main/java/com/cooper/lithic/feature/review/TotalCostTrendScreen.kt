@@ -89,6 +89,7 @@ internal fun TotalCostTrendScreen(
     reviewFooter: (@Composable () -> Unit)? = null,
     summaryOnly: Boolean = false,
     hasExternalReadNotice: Boolean = false,
+    expectedCounts: TrendRecordCounts? = null,
 ) {
     var dateRaw by rememberSaveable { mutableStateOf("") }
     var dateError by rememberSaveable { mutableStateOf<String?>(null) }
@@ -100,12 +101,12 @@ internal fun TotalCostTrendScreen(
     var eventsExpanded by rememberSaveable { mutableStateOf(false) }
     var toolsExpanded by rememberSaveable { mutableStateOf(false) }
     var informationOpen by rememberSaveable { mutableStateOf(false) }
-    val presentation = totalTrendPresentation(state)
+    val presentation = totalTrendPresentation(state, expectedCounts)
     val timeline = state.timeline?.takeIf { presentation.hasCompleteSnapshot }
     val hasRecords = presentation.hasRecords
     val selected = presentation.selected
-    val events = if (allEvents) timeline?.events.orEmpty() else state.events
-    val orderedEvents = remember(events) { events.sortedWith(compareByDescending<TotalCostEvent> { it.date }.thenBy { it.id }) }
+    val events = trendEventsForDisplay(state, allEvents)
+    val orderedEvents = remember(events) { events.orEmpty().sortedWith(compareByDescending<TotalCostEvent> { it.date }.thenBy { it.id }) }
     fun applyDate() {
         val parsed = try { LocalDate.parse(dateRaw.trim()) } catch (_: DateTimeParseException) { null }
         when {
@@ -194,6 +195,12 @@ internal fun TotalCostTrendScreen(
                 }
             }
         }
+        if (presentation.recordCountsMismatch) item("record-count-notice") {
+            Text("趋势事实尚需核对：当前记录数量与趋势快照不一致。" +
+                (presentation.cutoff?.let { "现有趋势仍截至 $it，请刷新核对。" } ?: "请刷新核对。"),
+                Modifier.testTag("total-trend-record-count-notice"), style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.error)
+        }
         // Safety notices are persistent, outside the collapsible tools. No loading row is inserted above the plot.
         state.error?.let { error -> item("error") {
             Card(Modifier.fillMaxWidth().testTag("total-trend-error")) {
@@ -251,18 +258,20 @@ internal fun TotalCostTrendScreen(
                         }
                     }
                 }
-                if (eventsExpanded && !allEvents && selected == null) {
-                    item("event-pending") { Text("所选日期的事件尚未取得。", Modifier.testTag("total-trend-event-pending")) }
-                } else if (eventsExpanded) {
+                if (eventsExpanded) {
                     item("event-scope") {
                         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             OutlinedButton({ allEvents = !allEvents; eventLimit = 50 },
                                 Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-events-scope")) {
                                 Text(if (allEvents) "只看所选日期事件" else "查看全部日期事件")
                             }
-                            Text(if (allEvents) "全部已记录历史事件：${orderedEvents.size}条" else "所选日期相关事件：${orderedEvents.size}条",
-                                Modifier.testTag("total-trend-event-count"))
-                            if (orderedEvents.isEmpty()) Text("该日没有相关事件；历史成本仍按已录入事实计算，不推断未录入的支出。")
+                            if (events == null) Text("所选日期的事件尚未取得。", Modifier.testTag("total-trend-event-pending"))
+                            else {
+                                Text(if (allEvents) "全部已记录历史事件：${orderedEvents.size}条" else "所选日期相关事件：${orderedEvents.size}条",
+                                    Modifier.testTag("total-trend-event-count"))
+                                if (orderedEvents.isEmpty()) Text(if (allEvents) "已读取的历史中没有相关事件。" else
+                                    "该日没有相关事件；历史成本仍按已录入事实计算，不推断未录入的支出。")
+                            }
                         }
                     }
                     items(orderedEvents.take(eventLimit), key = { "event-${it.id}" }) { event ->
@@ -448,8 +457,8 @@ private fun TrendPlotHeading(presentation: TotalTrendPresentation, onRetry: () -
                 TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("total-trend-compact-retry")) {
                     Text("失败 · 重试", color = MaterialTheme.colorScheme.error)
                 }
-            } else if (presentation.phase != TrendReadPhase.READY || (presentation.hasRecords && presentation.selected == null)) {
-                val label = when (presentation.phase) {
+            } else if (presentation.recordCountsMismatch || presentation.phase != TrendReadPhase.READY || (presentation.hasRecords && presentation.selected == null)) {
+                val label = if (presentation.recordCountsMismatch) "待核对" else when (presentation.phase) {
                     TrendReadPhase.REFRESHING -> "刷新中"
                     TrendReadPhase.READING -> "读取中"
                     TrendReadPhase.READY -> "计算中"
@@ -457,7 +466,9 @@ private fun TrendPlotHeading(presentation: TotalTrendPresentation, onRetry: () -
                 }
                 Text(label, Modifier.testTag("total-trend-refresh-status").semantics {
                     liveRegion = LiveRegionMode.Polite
-                    contentDescription = if (presentation.phase == TrendReadPhase.READY) {
+                    contentDescription = if (presentation.recordCountsMismatch) {
+                        "趋势事实尚需核对；保留截至 ${presentation.cutoff} 的趋势快照"
+                    } else if (presentation.phase == TrendReadPhase.READY) {
                         "所选日期计算中，尚未取得精确金额；图表截至 ${presentation.cutoff}"
                     } else label + (presentation.cutoff?.let { "，保留截至 $it 的上次结果" } ?: "，尚未取得可信历史")
                 }, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -472,7 +483,8 @@ private fun TrendPlotPlaceholder(presentation: TotalTrendPresentation, summaryOn
         TrendPlotHeading(presentation, onRetry)
         Box(Modifier.fillMaxWidth().height(if (summaryOnly) 172.dp else 240.dp)
             .testTag("total-trend-loading-placeholder"), contentAlignment = Alignment.Center) {
-            Text(if (hasExternalReadNotice && !presentation.hasRecords) "当前记录快照需要核对" else when (presentation.phase) {
+            Text(if (presentation.recordCountsMismatch) "记录已变化，趋势尚待核对" else
+                if (hasExternalReadNotice && !presentation.hasRecords) "当前记录快照需要核对" else when (presentation.phase) {
                 TrendReadPhase.FAILED -> "历史未能读取，请重试"
                 TrendReadPhase.WAITING -> "成本趋势尚未读取"
                 TrendReadPhase.READY -> "尚无可绘制的记录历史"

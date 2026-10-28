@@ -14,6 +14,9 @@ import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.core.design.moneyMetricDisplay
 import com.cooper.lithic.domain.report.CostTimelineEngine
+import com.cooper.lithic.domain.report.OverviewKind
+import com.cooper.lithic.domain.report.TimelineSampler
+import com.cooper.lithic.domain.report.TotalCostEvent
 import com.cooper.lithic.ui.C2VisualFixtures
 import java.time.LocalDate
 import org.junit.Assert.assertEquals
@@ -161,6 +164,95 @@ class C5R1ReviewStabilityTest {
         compose.onAllNodesWithTag("total-trend-selection-meaning").assertCountEquals(1)
         compose.onAllNodesWithTag("total-trend-selected-status").assertCountEquals(1)
         compose.onNodeWithText("知道了").assertHeightIsAtLeast(48.dp).performClick()
+    }
+
+    @Test fun ready_records_and_old_empty_trend_do_not_show_first_record_guidance() {
+        val emptyLedger = C2VisualFixtures(false).ledger
+        val oldDay = facts.day.minusDays(1)
+        val oldEmpty = TotalCostTrendUiState(snapshot = emptyLedger,
+            timeline = TimelineSampler.sample(emptyLedger, oldDay), selectedDate = oldDay,
+            selectedPoint = CostTimelineEngine.point(emptyLedger, oldDay))
+        val projects = mutableStateOf(1L)
+        val subscriptions = mutableStateOf(0L)
+        val ui = mutableStateOf(oldEmpty)
+        compose.setContent { LithicTheme { Box(Modifier.requiredSize(400.dp, 1200.dp)) {
+            ReviewShell(projects.value, subscriptionCount = subscriptions.value, trendState = ui.value,
+                onAddRecord = {}, onCategoryAnalysis = {})
+        } } }
+
+        fun checkRecheck() {
+            compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
+            compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
+            compose.onNodeWithText("记下一件物品后，在这里看见成本变化").assertDoesNotExist()
+            scroll("total-trend-loading-placeholder").assertIsDisplayed()
+            scroll("total-trend-record-count-notice").assertTextContains("趋势事实尚需核对")
+            scroll("total-trend-cutoff").assertTextEquals("截至 $oldDay")
+            compose.onNodeWithTag("total-trend-total").assertDoesNotExist()
+            compose.onNodeWithTag("total-trend-total-pending").assertTextEquals("—")
+            compose.onNodeWithTag("total-trend-canvas").assertDoesNotExist()
+        }
+        checkRecheck()
+        compose.runOnIdle { projects.value = 0L; subscriptions.value = 1L }
+        checkRecheck()
+        compose.runOnIdle { projects.value = 1L; ui.value = facts.trend }
+        scroll("total-trend-total").assertTextEquals(moneyMetricDisplay(requireNotNull(facts.trend.selectedPoint).totalRate))
+        compose.onNodeWithTag("total-trend-record-count-notice").assertDoesNotExist()
+        compose.runOnIdle { projects.value = 0L; subscriptions.value = 0L; ui.value = oldEmpty }
+        compose.onNodeWithTag("review-empty-state").assertExists()
+        compose.onNodeWithTag("total-trend-loading-placeholder").assertDoesNotExist()
+        compose.onNodeWithTag("total-trend-canvas").assertDoesNotExist()
+    }
+
+    @Test fun mismatched_nonempty_counts_keep_only_the_trends_own_amount_and_cutoff() {
+        compose.setContent { LithicTheme { Box(Modifier.requiredSize(400.dp, 1200.dp)) {
+            ReviewShell(2, subscriptionCount = 1, trendState = facts.trend)
+        } } }
+        compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
+        scroll("total-trend-total").assertTextEquals(moneyMetricDisplay(requireNotNull(facts.trend.selectedPoint).totalRate))
+        scroll("total-trend-cutoff").assertTextEquals("截至 ${facts.day}")
+        scroll("total-trend-record-count-notice").assertTextContains("趋势事实尚需核对")
+        compose.onNodeWithTag("total-trend-canvas").assertExists()
+        compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
+    }
+
+    @Test fun missing_selected_point_still_allows_all_history_paging_identity_and_non_cash() {
+        val recordId = facts.ledger.overview.projects.single().id
+        val events = (0..50).map { index -> TotalCostEvent("fix-event-${index.toString().padStart(2, '0')}",
+            facts.day.minusDays(5), OverviewKind.PROJECT, recordId, "合成项目", "资金事件", "完整说明$index",
+            amountCents = 100, nonCash = index == 50) }
+        val failed = facts.trend.copy(snapshot = facts.ledger.copy(events = events),
+            timeline = requireNotNull(facts.trend.timeline).copy(events = events),
+            selectedDate = facts.day.minusDays(1), selectedPoint = null, events = emptyList(),
+            error = "合成所选日期计算失败")
+        var opened: Pair<OverviewKind, String>? = null
+        var selections = 0
+        compose.setContent { LithicTheme { Box(Modifier.requiredSize(400.dp, 1200.dp)) {
+            TotalCostTrendScreen(failed, onSelectDate = { selections++ }, onToggleBreakdown = {},
+                onRetry = {}, onOpenRecord = { kind, id -> opened = kind to id }, onBack = {})
+        } } }
+        scroll("total-trend-tools-toggle").performClick()
+        scroll("total-trend-events-toggle").performClick()
+        scroll("total-trend-event-pending").assertTextEquals("所选日期的事件尚未取得。")
+        compose.onNodeWithTag("total-trend-event-count").assertDoesNotExist()
+        compose.onNodeWithTag("total-trend-total").assertDoesNotExist()
+        scroll("total-trend-events-scope").assertTextContains("查看全部日期事件")
+            .assertHeightIsAtLeast(48.dp).performClick()
+        scroll("total-trend-event-count").assertTextEquals("全部已记录历史事件：51条")
+        compose.onNodeWithTag("total-trend-event-pending").assertDoesNotExist()
+        scroll("total-trend-events-more").assertHeightIsAtLeast(48.dp).performClick()
+        scroll("total-trend-event-fix-event-50").assert(hasAnyDescendant(hasText("完整说明50")))
+        compose.onNodeWithText("非现金折抵（不是现金扣款）", useUnmergedTree = true).assertExists()
+        scroll("total-trend-open-fix-event-50").performClick()
+        compose.runOnIdle {
+            assertEquals(OverviewKind.PROJECT to recordId, opened)
+            assertEquals(0, selections)
+        }
+        scroll("total-trend-events-scope").assertTextContains("只看所选日期事件").performClick()
+        scroll("total-trend-event-pending").assertTextEquals("所选日期的事件尚未取得。")
+        compose.onNodeWithTag("total-trend-event-count").assertDoesNotExist()
+        compose.onNodeWithTag("total-trend-event-fix-event-50").assertDoesNotExist()
+        compose.onNodeWithTag("total-trend-total").assertDoesNotExist()
+        scroll("total-trend-total-pending").assertTextEquals("—")
     }
 
     private fun showReview(value: () -> TotalCostTrendUiState, onRetry: () -> Unit = {}) {
