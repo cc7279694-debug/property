@@ -1,0 +1,128 @@
+{
+  "sourceBaseline": "1c97ff61d575dbb335bfc0390a0fcefb70db2fe5",
+  "verifiedAtUtc": "2026-10-28T14:32:48.445495+00:00",
+  "oldPreview9": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.9\\Lithic-0.1.0-preview.9-debug.apk",
+    "bytes": 15813947,
+    "sha256": "f82148a2b6f1775235fd32717a7ced7f855c3e612441aee06a64644878cdf803",
+    "versionCode": 25,
+    "versionName": "0.1.0-preview.9-debug",
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9"
+  },
+  "apk": {
+    "absolutePath": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.10\\Lithic-0.1.0-preview.10-debug.apk",
+    "buildPath": "app/build/private-trial/outputs/apk/debug/app-debug.apk",
+    "bytes": 15912394,
+    "sha256": "55a3646e62661760c78797d14d9912a74a89b852c065037056d8d0fad840bc70",
+    "applicationId": "com.cooper.lithic.preview.debug",
+    "versionCode": 26,
+    "versionName": "0.1.0-preview.10-debug",
+    "label": "\u783a\u77f3\u00b7\u4f53\u9a8c\u7248",
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "signing": "Existing Debug certificate; not formal Release",
+    "copyVerifiedByteIdentical": true
+  },
+  "jvmPass": 49,
+  "lint": {
+    "Warning": 13
+  },
+  "application": {
+    "theme": "@0x7f0b0009",
+    "label": "\u783a\u77f3\u00b7\u4f53\u9a8c\u7248",
+    "icon": "@0x7f090000",
+    "name": "com.cooper.lithic.app.LithicApplication",
+    "debuggable": "true",
+    "allowBackup": "false",
+    "supportsRtl": "true",
+    "extractNativeLibs": "false",
+    "fullBackupContent": "@0x7f0d0000",
+    "roundIcon": "@0x7f090001",
+    "appComponentFactory": "androidx.core.app.CoreComponentFactory",
+    "dataExtractionRules": "@0x7f0d0001"
+  },
+  "providers": [
+    {
+      "name": "androidx.startup.InitializationProvider",
+      "exported": "false",
+      "process": "com.cooper.lithic.preview.debug",
+      "authorities": "com.cooper.lithic.preview.debug.androidx-startup"
+    }
+  ],
+  "permissions": [
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.WAKE_LOCK",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "com.cooper.lithic.preview.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "nativeEntriesUnchanged": true,
+  "productionDexSymbols": {
+    "HomeShell": [
+      "classes7.dex",
+      "classes8.dex"
+    ],
+    "ProjectListScreen": [
+      "classes7.dex",
+      "classes8.dex"
+    ],
+    "ProjectDetailScreen": [
+      "classes7.dex",
+      "classes8.dex"
+    ],
+    "SubscriptionListScreen": [
+      "classes10.dex",
+      "classes7.dex",
+      "classes8.dex"
+    ],
+    "SubscriptionDetailScreen": [
+      "classes10.dex",
+      "classes8.dex"
+    ],
+    "ReviewShell": [
+      "classes6.dex",
+      "classes8.dex"
+    ],
+    "SettingsShell": [
+      "classes8.dex"
+    ],
+    "MoneyMetric": [
+      "classes10.dex",
+      "classes11.dex",
+      "classes5.dex",
+      "classes6.dex",
+      "classes7.dex"
+    ],
+    "projectCommittedDetail": [
+      "classes8.dex"
+    ],
+    "subscriptionCommittedDetail": [
+      "classes8.dex"
+    ],
+    "GenerationCoverReader": [
+      "classes7.dex",
+      "classes8.dex"
+    ],
+    "ProvideCoverPreviews": [
+      "classes3.dex",
+      "classes8.dex"
+    ],
+    "RecordCover": [
+      "classes10.dex",
+      "classes3.dex",
+      "classes7.dex",
+      "classes8.dex"
+    ]
+  },
+  "forbiddenTestSymbolsFound": [],
+  "androidRuntime": "NOT_RUN / ANDROID_VISUAL_PENDING",
+  "mediaImport": "BLOCKED",
+  "userApkDeliveryCount": 1,
+  "originalAaptAndApksignerExitCodes": {
+    "preview9-badging": 0,
+    "preview9-signature": 0,
+    "preview10-badging": 0,
+    "preview10-manifest": 0,
+    "preview10-signature": 0
+  },
+  "toolTimestamps": "NOT_CAPTURED before first verifier assertion; original stdout/stderr retained"
+}
