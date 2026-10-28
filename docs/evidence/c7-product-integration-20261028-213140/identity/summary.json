@@ -1,0 +1,75 @@
+{
+  "artifact": "ordinary Debug compile verification only; not a user delivery",
+  "apk": "app/build/outputs/apk/debug/app-debug.apk",
+  "bytes": 17072398,
+  "sha256": "edf839cf55b963869a1760addc66bded3266c8917c7b978a9a013d5b02a3b80c",
+  "package": "com.cooper.lithic.debug",
+  "versionCode": 17,
+  "versionName": "0.1.0-m22-debug",
+  "application": "com.cooper.lithic.app.LithicApplication",
+  "launcher": "com.cooper.lithic.app.MainActivity",
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "permissionsUnchangedFromBaseline": true,
+  "permissions": [
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.WAKE_LOCK",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "nativeLibrariesUnchanged": true,
+  "nativeEntries": [
+    "lib/arm64-v8a/libandroidx.graphics.path.so",
+    "lib/arm64-v8a/libdatastore_shared_counter.so",
+    "lib/armeabi-v7a/libandroidx.graphics.path.so",
+    "lib/armeabi-v7a/libdatastore_shared_counter.so",
+    "lib/x86/libandroidx.graphics.path.so",
+    "lib/x86/libdatastore_shared_counter.so",
+    "lib/x86_64/libandroidx.graphics.path.so",
+    "lib/x86_64/libdatastore_shared_counter.so"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\outputs\\apk\\debug\\app-debug.apk"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "dexStaticSymbols": {
+    "projectCommittedDetail": [
+      "classes7.dex"
+    ],
+    "subscriptionCommittedDetail": [
+      "classes7.dex"
+    ],
+    "Lcom/cooper/lithic/app/C7JourneyNavigationTest;": []
+  }
+}

@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **C7 PRODUCT INTEGRATION — READY_FOR_INDEPENDENT_REVIEW / MEDIA_IMPORT_BLOCKED / ANDROID_VISUAL_PENDING（2026-10-28）**：沿真实生产源码集中核对物品与订阅两条旅程；原创建、真实金额/续费、状态、以旧换新、历史和写后刷新已有接线，不重复开发。仅修复首页创建项目/订阅后保存详情的返回来源，以及重新启用订阅跨日校验的表单级错误缺失；原列表/搜索/类别来源、已确认 HISTORY、comparisonId、提交及离开守卫保持。最终56唯一JVM PASS（含10新项），保留首轮来源回归5 PASS/2 FAIL；Debug/AndroidTest源码编译/Lint exit0，0错15警告；1新Compose实际NOT_RUN，完整手机旅程/视觉/动态/升级仍PENDING。普通Debug实际Manifest/原证书/DEX核对通过；Room5、backup4、Repository/Owner/恢复、C5布局、构建身份和Preview9/code25不变，无设备或新用户APK。见[集中报告](evidence/LITHIC-C7-Product-Integration.md)。C6-1桌面冻结及14项Android NOT_RUN、C6-2C原静态实现及8项Android NOT_RUN、媒体资源UNKNOWN、M10/M20/M22/C3/M13-T06/Q03/Q04/G1～G4和全部历史NOTES/FAIL/UNKNOWN/NOT_RUN保持；提交后停止等待独立审查，不自动进入媒体写入或后续阶段。
+
 - **C6-2C ISOLATION — READY_FOR_INDEPENDENT_REVIEW / ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED（2026-10-28）**：用户转交C6-2B PASS WITH NOTES / CONDITIONAL GO，仅实施第一阶段。新增无UI/业务写入的固定合成字节隔离Service、MAIN/SANDBOX/UNKNOWN预启动门禁、跨UID/FD/guard与单次会话/未知封锁；25唯一JVM最终PASS，保留首次夹具编译FAIL及18 FAIL/7 PASS真实RED，最终Debug/AndroidTest编译/Lint exit0、0错15警告，8项Android实际NOT_RUN。原始Lint3 API兼容错误及修复证据保留。3.2.1官方修复审查建议后续改审新版，未下载/引入native库；未改Room5/backup4/C6-1/Owner/恢复/业务/默认身份/版本，无设备或用户APK。见[简短报告](evidence/LITHIC-C6-2C-Isolation.md)。真实启动/SELinux FD/锁/退出与不重建仍待另授隔离验证，全部旧FAIL/UNKNOWN/NOT_RUN保留；提交后停止，不进入native或媒体写入。
 
 - **C6-2A JPEG ADMISSION — READY_FOR_INDEPENDENT_REVIEW / MEDIA_IMPORT_BLOCKED（2026-10-28）**：只核对旧严格JPEG研究成果；五个核心源码与成功CI同一，锁定坏图及历史API36三项JUnit字节复核通过。新离线审计exit0，4次既有容器检查符合预期（缺损JPEG仍可通过容器层）；新native执行因既有环境未准入NOT_RUN，Android执行0。旧严格候选API26/36各9项限定证据与host40MP结果保留，不能替代最新Android取消/异常恢复及全链峰值门禁；生产三个JPEG历史FAIL不改。见[简短报告](evidence/LITHIC-C6-2A-JPEG-Admission.md)。没有生产修改、新依赖/native合入、设备或新APK，提交后停止等待独立审查。

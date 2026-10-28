@@ -329,7 +329,7 @@ internal fun LithicNavigation(
         projects.committedProjectId?.let { id ->
             val guard = globalLeaveDecision(subscriptionLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
-            val target = canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last()), projectComparisonId(routes.last())))
+            val target = canonicalBackStack(projectCommittedDetail(routes, id))
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             model.consumeCommitted()
@@ -349,8 +349,7 @@ internal fun LithicNavigation(
         subscriptions.committedSubscriptionId?.let { id ->
             val guard = globalLeaveDecision(projectLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
-            val origin = SubscriptionOrigin.entries.firstOrNull { it.name == subscriptions.committedOrigin } ?: SubscriptionOrigin.CURRENT
-            val target = canonicalBackStack(SubscriptionDetail(id, origin))
+            val target = canonicalBackStack(subscriptionCommittedDetail(routes, id, subscriptions.committedOrigin))
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
             navigate(target)
             subscriptionModel.consumeCommitted()

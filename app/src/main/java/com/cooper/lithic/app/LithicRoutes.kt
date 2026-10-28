@@ -239,6 +239,19 @@ internal fun projectOrigin(destination: NavKey): ProjectOrigin = when (destinati
     else -> ProjectOrigin.CURRENT
 }
 
+/** Saved-record destination only; the caller still applies the existing leave guards. */
+internal fun projectCommittedDetail(current: List<NavKey>, id: String): ProjectDetail {
+    val source = current.lastOrNull() ?: Home
+    val origin = if (current == listOf(Home, CreateProject)) ProjectOrigin.HOME else projectOrigin(source)
+    return ProjectDetail(id, origin, projectComparisonId(source))
+}
+
+internal fun subscriptionCommittedDetail(current: List<NavKey>, id: String, committedOrigin: String?): SubscriptionDetail {
+    val origin = if (current == listOf(Home, CreateSubscription)) SubscriptionOrigin.HOME
+        else SubscriptionOrigin.entries.firstOrNull { it.name == committedOrigin } ?: SubscriptionOrigin.CURRENT
+    return SubscriptionDetail(id, origin)
+}
+
 private fun projectParent(origin: ProjectOrigin): List<NavKey> = when (origin) {
     ProjectOrigin.HOME -> listOf(Home)
     ProjectOrigin.REVIEW_HOME -> listOf(Home, Review)

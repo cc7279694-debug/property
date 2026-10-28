@@ -100,6 +100,26 @@ class SubscriptionScreensTest {
         assertEquals(1, confirmations.get())
     }
 
+    @Test fun reenable_form_validation_is_visible_without_losing_return_or_confirmation() {
+        val error = "记录时区的日期已变化，请返回后重新核对；原提交日期不会自动替换。"
+        val confirmations = AtomicInteger()
+        val returns = AtomicInteger()
+        compose.setContent { LithicTheme {
+            RenewalHost(editor().copy(kind = SubscriptionEditorKind.REENABLE,
+                errors = mapOf("form" to error)),
+                onConfirm = { confirmations.incrementAndGet() }, onBack = { returns.incrementAndGet() })
+        } }
+        compose.onNodeWithTag("renewal-validation-error").assertIsDisplayed().assertTextContains(error)
+        compose.onNodeWithTag("renewal-validation-error-kind").assertTextContains("遇到问题")
+        compose.onNodeWithTag("renewal-editor-back").assertIsDisplayed().assertIsEnabled().performClick()
+        assertEquals(1, returns.get())
+        assertEquals(0, confirmations.get())
+        compose.onNodeWithTag("renewal-confirm-payment").assertIsDisplayed().assertIsEnabled()
+            .assertTextContains("确认真实付款并启用原订阅").performClick()
+        assertEquals(1, confirmations.get())
+        compose.onNodeWithTag("renewal-validation-error").assertIsDisplayed().assertTextContains(error)
+    }
+
     @Test fun failed_form_retains_invalid_raw_and_all_four_dates() {
         val amountError = "金额最多保留两位小数"
         val state = editor().copy(amount = "1.234", cycle = BillingCycle.YEARLY,

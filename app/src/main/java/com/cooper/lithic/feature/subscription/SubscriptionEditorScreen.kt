@@ -156,6 +156,7 @@ internal fun SubscriptionPaymentActions(
     onConfirmPayment: () -> Unit, onRetryRead: () -> Unit,
 ) {
     state.message?.let { UiFeedbackText(it, UiMessageTone.ERROR, "$prefix-form-error") }
+    state.errors["form"]?.let { UiFeedbackText(it, UiMessageTone.ERROR, "$prefix-validation-error") }
     if (state.busy) Text("正在保存到本地", style = MaterialTheme.typography.bodyLarge)
     when {
         state.verifiedCannotWrite -> {
