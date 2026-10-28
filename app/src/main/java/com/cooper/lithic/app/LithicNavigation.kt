@@ -1,5 +1,10 @@
 package com.cooper.lithic.app
 
+import com.cooper.lithic.data.media.CoverOwnerType
+import com.cooper.lithic.data.media.CoverReference
+import com.cooper.lithic.feature.media.RecordCover
+import com.cooper.lithic.feature.media.ProvideCoverPreviews
+import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -400,6 +405,7 @@ internal fun LithicNavigation(
         Settings in routes -> Settings
         else -> Home
     }
+    ProvideCoverPreviews(state.coverReader) {
     Scaffold(modifier = modifier.fillMaxSize().testTag("primary_navigation"), contentWindowInsets = WindowInsets.safeDrawing,
         bottomBar = {
             if (c2ShowPrimaryNavigation(routes.last())) C2PrimaryNavigationBar(currentPrimary) { destination ->
@@ -525,6 +531,10 @@ internal fun LithicNavigation(
                             onUpdateEnd = { requestLeave(canonicalBackStack(ProjectUpdateEnd(route.id, route.origin, route.comparisonId))) },
                             onCorrectMoney = { requestLeave(canonicalBackStack(ProjectMoneyCorrection(route.id, it, route.origin, route.comparisonId))) },
                             onDelete = { requestLeave(canonicalBackStack(ProjectDelete(route.id, route.origin, route.comparisonId))) },
+                            coverContent = { projects.detail.detail?.let { detail ->
+                                RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
+                                    Modifier.fillMaxSize()) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) }
+                            } },
                             onCostHistory = if (state.itemTimelineRepository != null) ({ requestLeave(canonicalBackStack(ProjectCostHistory(route.id, route.origin, route.comparisonId))) }) else null,
                             onReplacement = if (replacementModel != null) ({ requestLeave(canonicalBackStack(ReplacementComparison(route.id, route.origin))) }) else null,
                             onTradeIn = if (replacementModel != null) ({ requestLeave(canonicalBackStack(TradeInProject(route.id, route.origin, route.comparisonId))) }) else null,
@@ -618,6 +628,10 @@ internal fun LithicNavigation(
                         fun stateAction(action: SubscriptionAction) = requestLeave(canonicalBackStack(ChangeSubscriptionState(route.id, action, route.origin)))
                         SubscriptionDetailScreen(subscriptions.detail, onBack, { requestLeave(canonicalBackStack(ConfirmSubscriptionRenewal(route.id, route.origin))) },
                             subscriptionModel::loadMoreHistory, subscriptionModel::retryRead,
+                            coverContent = { subscriptions.detail.detail?.let { detail ->
+                                RecordCover(CoverReference(CoverOwnerType.SUBSCRIPTION, detail.subscription.id, detail.subscription.coverAssetId),
+                                    Modifier.fillMaxSize()) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) }
+                            } },
                             onCostHistory = if (state.itemTimelineRepository != null) ({ requestLeave(canonicalBackStack(SubscriptionPriceHistory(route.id, route.origin))) }) else null,
                             onPause = { stateAction(SubscriptionAction.PAUSE) }, onResume = { stateAction(SubscriptionAction.RESUME) },
                             onStop = { stateAction(SubscriptionAction.STOP) }, onReopen = { stateAction(SubscriptionAction.REOPEN) },
@@ -648,6 +662,7 @@ internal fun LithicNavigation(
                     entry<DeleteSubscriptionRenewal> { SubscriptionOperationContent(subscriptions, subscriptionModel, onBack) }
                 }))
         }
+    }
     }
     pendingLeave?.let { target ->
         AlertDialog(onDismissRequest = { pendingLeave = null }, modifier = Modifier.testTag("discard-dialog"), title = { Text("放弃未保存修改？") },

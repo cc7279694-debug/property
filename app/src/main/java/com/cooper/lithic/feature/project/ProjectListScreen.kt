@@ -1,5 +1,10 @@
 package com.cooper.lithic.feature.project
 
+import androidx.compose.foundation.layout.size
+import com.cooper.lithic.data.media.CoverOwnerType
+import com.cooper.lithic.data.media.CoverReference
+import com.cooper.lithic.feature.media.RecordCover
+import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -97,6 +102,8 @@ internal fun ProjectListScreen(
                 EntryCard(detail.project.name, projectStatusLabel(detail), dates, detail.cost.dailyRate,
                     Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-row-${detail.project.id}"),
                     onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
+                    cover = { RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
+                        Modifier.size(64.dp)) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) } },
                     hasCoverReference = detail.project.coverAssetId != null, metricLabel = "当前日均成本")
             }
             pageStatus?.let { status -> item {

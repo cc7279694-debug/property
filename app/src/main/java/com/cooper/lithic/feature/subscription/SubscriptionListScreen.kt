@@ -1,5 +1,9 @@
 package com.cooper.lithic.feature.subscription
 
+import com.cooper.lithic.data.media.CoverOwnerType
+import com.cooper.lithic.data.media.CoverReference
+import com.cooper.lithic.feature.media.RecordCover
+import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -106,6 +110,8 @@ internal fun SubscriptionListScreen(
                     detail.cost.historicalAverage,
                     Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-row-${detail.subscription.id}"),
                     onClick = { onOpenSubscription(detail.subscription.id) }, category = detail.category.name, kind = C2Glyph.Subscription,
+                    cover = { RecordCover(CoverReference(CoverOwnerType.SUBSCRIPTION, detail.subscription.id, detail.subscription.coverAssetId),
+                        Modifier.size(64.dp)) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) } },
                     hasCoverReference = detail.subscription.coverAssetId != null, metricLabel = "历史平均日成本")
                 }
             }

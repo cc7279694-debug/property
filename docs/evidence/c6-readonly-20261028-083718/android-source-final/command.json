@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    ":app:compileDebugAndroidTestKotlin",
+    ":app:lintDebug"
+  ],
+  "startedUtc": "2026-10-28T09:03:39.123382+00:00",
+  "timeoutSeconds": 1800,
+  "exitCode": 0,
+  "endedUtc": "2026-10-28T09:07:39.671242+00:00",
+  "seconds": 240.547,
+  "stdoutBytes": 2744,
+  "stdoutSha256": "680769602e8d441682e3b8cbc2e6bb58abfd830c77a8dfb740a4b4901808e779",
+  "stderrBytes": 251,
+  "stderrSha256": "7947f20a02b8249ee4ac57e08b051987df95393d087248b86ba68192263b665b"
+}

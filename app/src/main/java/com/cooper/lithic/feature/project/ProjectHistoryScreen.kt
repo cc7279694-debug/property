@@ -1,5 +1,10 @@
 package com.cooper.lithic.feature.project
 
+import androidx.compose.foundation.layout.size
+import com.cooper.lithic.data.media.CoverOwnerType
+import com.cooper.lithic.data.media.CoverReference
+import com.cooper.lithic.feature.media.RecordCover
+import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -85,7 +90,9 @@ internal fun ProjectHistoryScreen(
             EntryCard(detail.project.name, "已结束", dates, detail.cost.dailyRate,
                 Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-history-row-${detail.project.id}"),
                 onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
-                hasCoverReference = detail.project.coverAssetId != null, metricLabel = "结果截至 ${detail.asOf}")
+                cover = { RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
+                        Modifier.size(64.dp)) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) } },
+                    hasCoverReference = detail.project.coverAssetId != null, metricLabel = "结果截至 ${detail.asOf}")
         }
         if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
             Text(when {

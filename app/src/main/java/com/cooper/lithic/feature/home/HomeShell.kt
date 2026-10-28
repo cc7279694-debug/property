@@ -1,5 +1,8 @@
 package com.cooper.lithic.feature.home
 
+import com.cooper.lithic.data.media.CoverOwnerType
+import com.cooper.lithic.data.media.CoverReference
+import com.cooper.lithic.feature.media.RecordCover
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.shape.CircleShape
@@ -99,7 +102,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) projectPreview?.items?.take(2)?.forEach { row ->
                 PreviewRow(row.project.name, row.category.name, C2Glyph.Project,
                     projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "当前日均成本", null,
-                    row.cost.dailyRate, row.project.coverAssetId != null, "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } })
+                    row.cost.dailyRate, CoverReference(CoverOwnerType.PROJECT, row.project.id, row.project.coverAssetId), "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } })
             }
         }
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -110,7 +113,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) subscriptionPreview?.items?.take(2)?.forEach { row ->
                 PreviewRow(row.subscription.name, row.category.name, C2Glyph.Subscription,
                     subscriptionStatusLabel(row.cost.displayStatus), "折算付费${row.cost.standardPurchasedDays}天",
-                    "历史平均日成本", "历史均价", row.cost.historicalAverage, row.subscription.coverAssetId != null, "home-subscription-preview-${row.subscription.id}",
+                    "历史平均日成本", "历史均价", row.cost.historicalAverage, CoverReference(CoverOwnerType.SUBSCRIPTION, row.subscription.id, row.subscription.coverAssetId), "home-subscription-preview-${row.subscription.id}",
                     onOpenSubscription?.let { { it(row.subscription.id) } })
             }
         }
@@ -278,7 +281,7 @@ private fun PreviewNotice(status: C2PreviewStatus?, error: String?, empty: Strin
 
 @Composable
 private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: String, time: String, metric: String, compactMetric: String?,
-    amount: java.math.BigDecimal?, hasCoverReference: Boolean, tag: String, onOpen: (() -> Unit)?) {
+    amount: java.math.BigDecimal?, coverReference: CoverReference, tag: String, onOpen: (() -> Unit)?) {
     val density = LocalDensity.current
     val measurer = rememberTextMeasurer()
     val amountStyle = MaterialTheme.typography.titleMedium
@@ -294,9 +297,9 @@ private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: St
             val beside = density.fontScale <= 1.3f && maxWidth >= 48.dp + 12.dp + 112.dp + 12.dp + amountWidth
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                    if (hasCoverReference) Surface(Modifier.size(48.dp), shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
-                        Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.ImageError, description = "封面暂不可用") }
-                    } else C2RecordIdentity(name, category, icon, Modifier.size(48.dp))
+                    RecordCover(coverReference, Modifier.size(48.dp)) {
+                        C2RecordIdentity(name, category, icon, Modifier.size(48.dp))
+                    }
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
                         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -305,7 +308,6 @@ private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: St
                             }
                             Text(time, style = metricStyle, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }
-                        if (hasCoverReference) Text("封面暂不可用", style = metricStyle, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                     if (beside) Column(Modifier.width(amountWidth)) { PreviewAmount(metric, compactMetric, amount) }
                 }

@@ -12,6 +12,12 @@ internal object BackupJpegInspection {
         if (file.length() !in 4 until BackupLimits.MAX_MEDIA_BYTES) invalid()
         val bytes = file.readBytes()
         if (bytes.size.toLong() != file.length()) invalid()
+        return inspect(bytes, checkpoint)
+    }
+
+    /** Same container-only contract for captured registered bytes; never strict import admission. */
+    fun inspect(bytes: ByteArray, checkpoint: () -> Unit = {}): Pair<Int, Int> {
+        if (bytes.size.toLong() !in 4 until BackupLimits.MAX_MEDIA_BYTES) invalid()
         var position = 0
         fun byte(): Int {
             if (position >= bytes.size) invalid()

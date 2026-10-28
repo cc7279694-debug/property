@@ -61,7 +61,10 @@ internal class LedgerUiStateHolder(
                                     replacementRepository = ReplacementRepository(generation.database, generation.coordinator, clock),
                                     itemTimelineRepository = com.cooper.lithic.data.repository.ItemTimelineRepository(repository, subscriptions, clock),
                                     totalCostTimelineRepository = com.cooper.lithic.data.repository.TotalCostTimelineRepository(reports, clock),
-                                    settingsStore = generation.settings)
+                                    settingsStore = generation.settings,
+                                    coverReader = com.cooper.lithic.data.media.GenerationCoverReader(generation) {
+                                        (storageStates.value as? StorageInitializationState.Ready)?.generation === generation
+                                    })
                             }
                             mutableState.value = ready
                             checkNotNull(ready.reportRepository).changes.collectLatest { refresh(ready) }

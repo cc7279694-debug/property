@@ -46,6 +46,7 @@ internal fun SubscriptionDetailScreen(
     onDeleteRenewal: (String) -> Unit = {},
     backLabel: String = "返回订阅列表",
     onCostHistory: (() -> Unit)? = null,
+    coverContent: (@Composable () -> Unit)? = null,
 ) {
     var managementOpen by rememberSaveable { mutableStateOf(false) }
     Column(modifier.fillMaxSize().testTag("subscription-detail-screen")) {
@@ -76,7 +77,9 @@ internal fun SubscriptionDetailScreen(
                 item {
                     Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                         Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                            if (detail.subscription.coverAssetId == null) C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription)
+                            if (detail.subscription.coverAssetId != null && coverContent != null) {
+                                Box(Modifier.size(64.dp)) { coverContent() }
+                            } else if (detail.subscription.coverAssetId == null) C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription)
                             else Surface(Modifier.size(64.dp), shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surfaceContainerHigh) {
                                 Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.ImageError, description = "封面暂不可用") }
                             }
@@ -85,7 +88,7 @@ internal fun SubscriptionDetailScreen(
                                     style = MaterialTheme.typography.headlineMedium)
                                 Text(detail.category.name, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                 C2StatusChip(subscriptionStatusLabel(detail.cost.displayStatus), Modifier.testTag("subscription-detail-status"))
-                                if (detail.subscription.coverAssetId != null) Text("封面暂不可用", style = MaterialTheme.typography.bodySmall,
+                                if (detail.subscription.coverAssetId != null && coverContent == null) Text("封面暂不可用", style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant)
                             }
                         }

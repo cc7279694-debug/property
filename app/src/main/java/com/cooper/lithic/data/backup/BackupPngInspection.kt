@@ -1,6 +1,8 @@
 package com.cooper.lithic.data.backup
 
+import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
+import java.io.DataInputStream
 import java.io.File
 import java.io.IOException
 import java.io.RandomAccessFile
@@ -17,7 +19,17 @@ internal class BackupMediaException(message: String, val notCertified: Boolean =
 internal object BackupPngInspection {
     fun inspect(file: File, checkpoint: () -> Unit = {}): Pair<Int, Int> {
         if (file.length() !in 8 until BackupLimits.MAX_MEDIA_BYTES) invalid()
-        return RandomAccessFile(file, "r").use { input ->
+        return RandomAccessFile(file, "r").use { inspect(FileInput(it), checkpoint) }
+    }
+
+    /** Captured, already registered bytes; the parsing and resource rules are identical to File. */
+    fun inspect(bytes: ByteArray, checkpoint: () -> Unit = {}): Pair<Int, Int> {
+        if (bytes.size.toLong() !in 8 until BackupLimits.MAX_MEDIA_BYTES) invalid()
+        return inspect(BytesInput(bytes), checkpoint)
+    }
+
+    private fun inspect(input: PngInput, checkpoint: () -> Unit): Pair<Int, Int> {
+        return run {
             val signature = ByteArray(8).also { input.readFully(it) }
             if (!signature.contentEquals(byteArrayOf(137.toByte(),80,78,71,13,10,26,10))) invalid()
             var header: Header? = null
@@ -82,7 +94,7 @@ internal object BackupPngInspection {
                         val image = header ?: invalid()
                         if (bytes.isNotEmpty() || !dataStarted || input.filePointer != input.length()) invalid()
                         verifyZlib(compressed.toByteArray(), image, checkpoint)
-                        return@use image.width to image.height
+                        return@run image.width to image.height
                     }
                     "acTL", "fcTL", "fdAT" -> throw BackupMediaException("Animated PNG is not a supported static stored cover", true)
                     else -> if (type[0].toInt() in 65..90) invalid() // Unknown critical chunk.
@@ -90,6 +102,27 @@ internal object BackupPngInspection {
             }
             invalid()
         }
+    }
+
+    private interface PngInput {
+        val filePointer: Long
+        fun length(): Long
+        fun readFully(bytes: ByteArray)
+        fun readInt(): Int
+    }
+    private class FileInput(private val input: RandomAccessFile) : PngInput {
+        override val filePointer: Long get() = input.filePointer
+        override fun length(): Long = input.length()
+        override fun readFully(bytes: ByteArray) = input.readFully(bytes)
+        override fun readInt(): Int = input.readInt()
+    }
+    private class BytesInput(bytes: ByteArray) : PngInput {
+        private val size = bytes.size.toLong()
+        private val input = DataInputStream(ByteArrayInputStream(bytes))
+        override val filePointer: Long get() = size - input.available()
+        override fun length(): Long = size
+        override fun readFully(bytes: ByteArray) = input.readFully(bytes)
+        override fun readInt(): Int = input.readInt()
     }
 
     private data class Header(val width:Int,val height:Int,val depth:Int,val color:Int,val channels:Int,val interlace:Int)

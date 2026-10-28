@@ -1,5 +1,10 @@
 package com.cooper.lithic.feature.subscription
 
+import androidx.compose.foundation.layout.size
+import com.cooper.lithic.data.media.CoverOwnerType
+import com.cooper.lithic.data.media.CoverReference
+import com.cooper.lithic.feature.media.RecordCover
+import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -74,6 +79,8 @@ internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: (
             EntryCard(detail.subscription.name, "已停止", "折算付费时长：${detail.cost.standardPurchasedDays}天",
                 detail.cost.historicalAverage, Modifier.padding(horizontal = LithicSpacing.medium)
                     .testTag("subscription-history-row-${detail.subscription.id}"), onClick = { onOpenSubscription(detail.subscription.id) }, category = detail.category.name, kind = C2Glyph.Subscription,
+                    cover = { RecordCover(CoverReference(CoverOwnerType.SUBSCRIPTION, detail.subscription.id, detail.subscription.coverAssetId),
+                        Modifier.size(64.dp)) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) } },
                     hasCoverReference = detail.subscription.coverAssetId != null, metricLabel = "历史平均日成本")
         }
         if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
