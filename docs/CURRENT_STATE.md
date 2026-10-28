@@ -4,6 +4,10 @@
 
 ## Current Stage
 
+- **PREVIEW 9 READY_FOR_OPTIONAL_USER_VISUAL_TRIAL / ANDROID_VISUAL_AND_MOTION_PENDING（2026-10-28）**：从`ec5ed9e`仅递增显式Private Trial为`com.cooper.lithic.preview.debug`／code25／`0.1.0-preview.9-debug`，原Debug证书保持，默认Debug/Release仍code17。24定向JVM实际PASS、AndroidTest编译检查exit0（缓存复用）、体验构建/Lint exit0、0错13警告，实际Manifest/签名/DEX及Git app树绑定通过。唯一非build目录APK15,813,947字节，SHA和绝对路径见[简短交付回执](evidence/LITHIC-Preview9-Delivery.md)；原Preview8字节保持。生产/测试源码、Room5/backup4/Owner/恢复/金额/导航无改，无设备或安装；真实视觉/动态/性能/升级及完整体验仍PENDING，MEDIA_DISPLAY_PENDING和全部历史风险保持。不是正式Release；提交后停止，不合并main或进入M23。
+
+- **C5-R1 ACCEPTED / FROZEN — PASS WITH NOTES（仅桌面实施范围，2026-10-28）**：用户正式转交ChatGPT对`ec5ed9e8328cfaaf0522751f1ac04bc04f633fea`的独立验收决定，两处指定的跨来源假空态/选日失败历史入口问题已补修。原C5-R1及补修报告、35项JVM与编译/Lint证据、冗余非空断言等NOTE和此前CHANGES REQUIRED历史均保留。只冻结该轮桌面实施，不将Android视觉、导航动态、性能、真实升级及完整产品体验改判PASS；仍PENDING。当前仅授权独立Preview9/code25构建交付，无页面或业务修改、设备操作；M10/M20/M22/M13、G1～G4及MEDIA_DISPLAY_PENDING等历史状态保持。
+
 - **C5-R1 FIX READY_FOR_INDEPENDENT_REVIEW / ANDROID_VISUAL_AND_MOTION_PENDING（2026-10-28）**：`69f5704`独立审查为CHANGES REQUIRED，本轮仅补两处呈现缺口。Ready计数传入趋势一致性判断，旧空快照不再作为新记录引导；选日未知时事件范围开关仍可用，全历史复用timeline.events。35定向JVM PASS（6新＋29回归），Debug/AndroidTest源码编译exit0，Lint分析执行后报告内容不变复用0错21警告；新增3个Compose仅编译NOT_RUN，保留编译警告。见[局部补修回执](evidence/LITHIC-C5-R1-Fix-Receipt.md)。只3个生产UI和2个测试文件，原断言/图表绘制/事件行保留；VM/数据/Owner/MoneyMetric/导航/Room5/backup4/身份无改，无设备或新体验APK，原Preview8/code24保持。全部历史状态和真实视觉待验保持；提交后停止等待独立审查，不合并main或进入M23。
 
 - **C5-R1 IMPLEMENTED — READY_FOR_INDEPENDENT_REVIEW / ANDROID_VISUAL_AND_MOTION_PENDING（2026-10-28）**：从`82431c7`仅收口真实录屏转交的回看读取跳变及趋势工具密度。统一首次占位与图表结构，同代刷新/选日计算用固定状态槽，旧截止日、错误/notice/重试保留；次级工具归组，轴/指标说明合一。53定向JVM PASS（12新＋41回归）、Debug/AndroidTest源码编译exit0、Lint0错21警告；6新Compose与7文件定位适配仅编译，Android运行NOT_RUN。见[C5-R1简报](evidence/LITHIC-C5-R1-Review-Stability.md)。只3个生产UI文件，VM/数据/Owner/Room5/backup4/业务/导航保护无改；无设备、C3续查或新体验APK，原Preview8/code24字节保持。真实视觉/动态仍待独立手机核对，M10/M20/M22/M13/G1～G4及MEDIA_DISPLAY_PENDING等历史状态不变；提交后停止，不冻结或进入M23。
