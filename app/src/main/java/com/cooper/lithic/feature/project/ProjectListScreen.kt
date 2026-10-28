@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.C2PageHeader
@@ -37,19 +38,23 @@ internal fun ProjectListScreen(
     onRetry: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val countDescription = projectListCountDescription(state)
+    val pageStatus = projectListPageStatus(state)
     Column(modifier.fillMaxSize().testTag("project-list-screen")) {
-        LazyColumn(Modifier.fillMaxSize().testTag("project-list-content"),
+        LazyColumn(Modifier.fillMaxSize().testTag("project-list-content").semantics { stateDescription = countDescription },
             verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
             item {
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     C2PageHeader("长期项目", onBack, "project-list-back", backLabel = "返回现在",
-                    actions = { C5InformationButton("长期项目说明") { Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。") } })
+                    actions = { C5InformationButton("长期项目说明", Modifier.testTag("project-list-information")) {
+                        Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。")
+                        Text(countDescription, Modifier.testTag("project-list-total-count"))
+                    } })
                     Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("project-list-create")) {
                         C2Icon(C2Glyph.Add)
                         Text("新增长期项目", style = MaterialTheme.typography.bodyLarge)
                     }
-                    state.totalCount?.let { Text("当前列表 $it 条长期项目", style = MaterialTheme.typography.bodyMedium) }
                     if (state.totalCount != null && state.items.isEmpty() &&
                         (state.loading || state.loadingMore || state.error != null)) {
                         Text("数量为上次读取结果，尚不能确认当前列表为空。", Modifier.testTag("project-list-count-snapshot"),
@@ -94,14 +99,10 @@ internal fun ProjectListScreen(
                     onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
                     hasCoverReference = detail.project.coverAssetId != null, metricLabel = "当前日均成本")
             }
-            if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
-                Text(when {
-                    state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
-                    state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
-                    else -> "已显示 ${state.items.size} 条，已到列表末尾"
-                }, Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-list-page-status"),
+            pageStatus?.let { status -> item {
+                Text(status, Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-list-page-status"),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
+            } }
             if (state.hasMore) item {
                 OutlinedButton(onLoadMore, Modifier.fillMaxWidth().padding(LithicSpacing.medium)
                     .heightIn(min = 48.dp).testTag("project-list-load-more"), enabled = !state.loadingMore && !state.loading) {
@@ -117,4 +118,27 @@ internal fun projectStatusLabel(detail: ProjectDetail): String = when {
     detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal -> "已结束"
     detail.project.endedOn != null -> "已记录结束日期"
     else -> "持有中"
+}
+
+/** Current read-state facts, available without putting an ordinary count paragraph above the records. */
+internal fun projectListCountDescription(state: ProjectListUiState): String {
+    val total = state.totalCount
+    val count = if (total == null) "长期项目总数量尚未取得；已显示 ${state.items.size} 条记录。"
+        else "长期项目共 $total 条，已显示 ${state.items.size} 条。"
+    return if (total != null && (state.loading || state.loadingMore || state.error != null))
+        "$count 数量为上次读取结果。" else count
+}
+
+/** Only a complete single page can omit its end marker. No cursor or continuation rule changes. */
+internal fun projectListPageStatus(state: ProjectListUiState): String? {
+    val total = state.totalCount ?: return null
+    if (state.loading || state.error != null || state.items.isEmpty()) return null
+    val visible = state.items.size
+    return when {
+        state.loadingMore -> "正在读取下一页；已显示 $visible / $total 条"
+        state.hasMore -> "已显示 $visible / $total 条，可继续加载"
+        visible.toLong() != total -> "已显示 $visible / $total 条，数量尚待核对"
+        visible <= 50 -> null
+        else -> "已显示 $visible 条，已到列表末尾"
+    }
 }

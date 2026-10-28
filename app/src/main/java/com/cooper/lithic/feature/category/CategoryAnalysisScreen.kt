@@ -23,9 +23,9 @@ internal fun CategoryAnalysisScreen(
     onBack: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val selected = state.selectedCategory
-    var recordLimit by remember(state.snapshot, state.selectedCategoryId) { mutableIntStateOf(50) }
-    var yearLimit by remember(state.snapshot, state.selectedCategoryId) { mutableIntStateOf(50) }
+    val selected = categoryAnalysisSelection(state)
+    var recordLimit by remember(state.snapshot, state.selectedKind, selected?.category?.id) { mutableIntStateOf(50) }
+    var yearLimit by remember(state.snapshot, state.selectedKind, selected?.category?.id) { mutableIntStateOf(50) }
     val categories = state.categories.filter { it.category.kind == state.selectedKind }
     val kindLabel = if (state.selectedKind == OverviewKind.PROJECT) "长期项目" else "订阅"
     LazyColumn(modifier.fillMaxSize().testTag("category-analysis-screen"), contentPadding = PaddingValues(16.dp),
@@ -57,7 +57,7 @@ internal fun CategoryAnalysisScreen(
                 }
             }
             if (categories.isEmpty()) item("no-categories") { Text("未读取到该类型类别。", Modifier.testTag("category-analysis-empty")) }
-            if (selected == null) item("select-category") { Text("请选择类别。当前没有有效贡献但有历史记录的类别也可查看。") }
+            if (selected == null && categories.isNotEmpty()) item("select-category") { Text("请选择类别。当前没有有效贡献但有历史记录的类别也可查看。") }
         }
         selected?.let { report ->
             item("selected") { Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("category-analysis-selected")) {
@@ -103,4 +103,12 @@ internal fun CategoryAnalysisScreen(
             }
         }
     }
+}
+
+/** A complete captured report can be retained during refresh/error; ReportReadStatus qualifies it. */
+internal fun categoryAnalysisSelection(state: ReportAnalysisUiState): CategoryReport? {
+    state.selectedCategory?.let { return it }
+    if (state.selectedCategoryId != null || state.snapshot == null || state.asOf == null ||
+        state.notice != null) return null
+    return state.categories.filter { it.category.kind == state.selectedKind }.singleOrNull()
 }

@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **真实录屏定向精修 — IMPLEMENTED / READY_FOR_INDEPENDENT_REVIEW / APP_VISUAL_PENDING（2026-10-28）**：从`d0538c3`仅精简项目单页文案、通过已有完整报告默认展示唯一类别，保留总数语义、分页、明确选择、旧截止日及失败提示；Home/Review/Nav未改。最终37个唯一JVM方法PASS；首轮32 PASS/5夹具初始化FAIL保留，只修规范UUID后定向重跑列表6项，断言不变，不累计43项覆盖。普通Debug、AndroidTest源码编译及Lint exit0，0错误21警告；4新Compose实际运行NOT_RUN，视觉/动态PENDING。初始约2.919GiB资源阻塞历史保留，释放至约4.34GiB后恢复验证，未停止其他项目服务。见[短报告](evidence/LITHIC-Recording-Feedback-Refinement.md)。仅两个生产屏幕/四个测试及必要证据；Room5/backup4/数据/Owner/恢复/导航/金额/身份不改，Preview8/9原字节保持，无设备或新体验APK。保留全部历史风险及MEDIA_DISPLAY_PENDING；提交推送后停止，不冻结、不合并main、不进入M23。
+
 - **PREVIEW 9 READY_FOR_OPTIONAL_USER_VISUAL_TRIAL / ANDROID_VISUAL_AND_MOTION_PENDING（2026-10-28）**：从`ec5ed9e`仅递增显式Private Trial为`com.cooper.lithic.preview.debug`／code25／`0.1.0-preview.9-debug`，原Debug证书保持，默认Debug/Release仍code17。24定向JVM实际PASS、AndroidTest编译检查exit0（缓存复用）、体验构建/Lint exit0、0错13警告，实际Manifest/签名/DEX及Git app树绑定通过。唯一非build目录APK15,813,947字节，SHA和绝对路径见[简短交付回执](evidence/LITHIC-Preview9-Delivery.md)；原Preview8字节保持。生产/测试源码、Room5/backup4/Owner/恢复/金额/导航无改，无设备或安装；真实视觉/动态/性能/升级及完整体验仍PENDING，MEDIA_DISPLAY_PENDING和全部历史风险保持。不是正式Release；提交后停止，不合并main或进入M23。
 
 - **C5-R1 ACCEPTED / FROZEN — PASS WITH NOTES（仅桌面实施范围，2026-10-28）**：用户正式转交ChatGPT对`ec5ed9e8328cfaaf0522751f1ac04bc04f633fea`的独立验收决定，两处指定的跨来源假空态/选日失败历史入口问题已补修。原C5-R1及补修报告、35项JVM与编译/Lint证据、冗余非空断言等NOTE和此前CHANGES REQUIRED历史均保留。只冻结该轮桌面实施，不将Android视觉、导航动态、性能、真实升级及完整产品体验改判PASS；仍PENDING。当前仅授权独立Preview9/code25构建交付，无页面或业务修改、设备操作；M10/M20/M22/M13、G1～G4及MEDIA_DISPLAY_PENDING等历史状态保持。

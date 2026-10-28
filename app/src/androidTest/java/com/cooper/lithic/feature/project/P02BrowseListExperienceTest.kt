@@ -3,6 +3,7 @@ package com.cooper.lithic.feature.project
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTextContains
@@ -87,7 +88,9 @@ class P02BrowseListExperienceTest {
         compose.runOnIdle { state = state.copy(totalCount = 0) }
         node("project-list-content", "project-list-empty").assertTextContains("暂无长期项目")
         compose.runOnIdle { state = ProjectListUiState(listOf(project()), 1, loading = false) }
-        node("project-list-content", "project-list-page-status").assertTextContains("已到列表末尾", substring = true)
+        compose.onNodeWithTag("project-list-page-status").assertDoesNotExist()
+        assertEquals("长期项目共 1 条，已显示 1 条。", compose.onNodeWithTag("project-list-content")
+            .fetchSemanticsNode().config[SemanticsProperties.StateDescription])
     }
 
     @Test fun current_subscription_unknown_count_and_failed_read_are_not_empty() {
@@ -131,6 +134,44 @@ class P02BrowseListExperienceTest {
         node("subscription-history-content", "subscription-history-retry").assertDoesNotExist()
         node("subscription-history-content", "subscription-history-page-status")
             .assertTextContains("正在读取下一页", substring = true)
+    }
+
+    @Test fun complete_single_page_keeps_counts_in_information_and_accessibility_without_extra_paragraphs() {
+        val detail = project()
+        var opened: String? = null
+        compose.setContent { LithicTheme {
+            ProjectListScreen(ProjectListUiState(listOf(detail), 1, loading = false), {}, {}, { opened = it }, {}, {})
+        } }
+        compose.onNodeWithText("当前列表 1 条长期项目").assertDoesNotExist()
+        compose.onNodeWithTag("project-list-page-status").assertDoesNotExist()
+        assertEquals("长期项目共 1 条，已显示 1 条。", compose.onNodeWithTag("project-list-content")
+            .fetchSemanticsNode().config[SemanticsProperties.StateDescription])
+        compose.onNodeWithTag("project-list-information").performClick()
+        compose.onNodeWithTag("project-list-total-count").assertTextContains("长期项目共 1 条，已显示 1 条。")
+        compose.onNodeWithText("知道了").performClick()
+        compose.onNodeWithTag("project-list-total-count").assertDoesNotExist()
+        node("project-list-content", "project-row-${detail.project.id}").performClick()
+        assertEquals(detail.project.id, opened)
+    }
+
+    @Test fun real_multiple_page_progress_and_completion_remain_visible() {
+        val detail = project()
+        var state by mutableStateOf(ProjectListUiState(listOf(detail), 51, loading = false, hasMore = true))
+        var loads = 0
+        compose.setContent { LithicTheme { ProjectListScreen(state, {}, {}, {}, { loads++ }, {}) } }
+        node("project-list-content", "project-list-page-status").assertTextContains("已显示 1 / 51 条，可继续加载")
+        node("project-list-content", "project-list-load-more").assertIsEnabled().performClick()
+        assertEquals(1, loads)
+        compose.runOnIdle { state = state.copy(loadingMore = true) }
+        node("project-list-content", "project-list-page-status").assertTextContains("正在读取下一页；已显示 1 / 51 条")
+        node("project-list-content", "project-list-load-more").assertIsNotEnabled()
+        compose.runOnIdle { state = ProjectListUiState((1..51).map { index ->
+            detail.copy(project = detail.project.copy(id = "73000000-0000-0000-0000-${index.toString().padStart(12, '0')}"))
+        }, 51, loading = false) }
+        node("project-list-content", "project-list-page-status").assertTextContains("已显示 51 条，已到列表末尾")
+        compose.onNodeWithTag("project-list-load-more").assertDoesNotExist()
+        assertEquals("长期项目共 51 条，已显示 51 条。", compose.onNodeWithTag("project-list-content")
+            .fetchSemanticsNode().config[SemanticsProperties.StateDescription])
     }
 
     private fun node(content: String, tag: String): androidx.compose.ui.test.SemanticsNodeInteraction {
