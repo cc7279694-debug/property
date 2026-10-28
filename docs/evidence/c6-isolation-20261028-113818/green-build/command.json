@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.app.AppProcessRoleTest",
+    "--tests",
+    "com.cooper.lithic.data.media.isolation.IsolationSessionStateTest",
+    ":app:assembleDebug",
+    ":app:compileDebugAndroidTestKotlin",
+    ":app:lintDebug"
+  ],
+  "startedUtc": "2026-10-28T11:50:50.376375+00:00",
+  "exitCode": 1,
+  "endedUtc": "2026-10-28T11:57:16.551822+00:00",
+  "stdoutBytes": 5372,
+  "stdoutSha256": "1470f66fa418b961454d55ac34f4ed1b69003d9c264177c4d5ccbbc18ddb6f31",
+  "stderrBytes": 1794,
+  "stderrSha256": "5515da02eb05f3f6fd5a83a7d2c9d2dec4691b55e2c16682ecaf3601ce63c64c"
+}

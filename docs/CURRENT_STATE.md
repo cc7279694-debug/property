@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **C6-2C ISOLATION — READY_FOR_INDEPENDENT_REVIEW / ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED（2026-10-28）**：用户转交C6-2B PASS WITH NOTES / CONDITIONAL GO，仅实施第一阶段。新增无UI/业务写入的固定合成字节隔离Service、MAIN/SANDBOX/UNKNOWN预启动门禁、跨UID/FD/guard与单次会话/未知封锁；25唯一JVM最终PASS，保留首次夹具编译FAIL及18 FAIL/7 PASS真实RED，最终Debug/AndroidTest编译/Lint exit0、0错15警告，8项Android实际NOT_RUN。原始Lint3 API兼容错误及修复证据保留。3.2.1官方修复审查建议后续改审新版，未下载/引入native库；未改Room5/backup4/C6-1/Owner/恢复/业务/默认身份/版本，无设备或用户APK。见[简短报告](evidence/LITHIC-C6-2C-Isolation.md)。真实启动/SELinux FD/锁/退出与不重建仍待另授隔离验证，全部旧FAIL/UNKNOWN/NOT_RUN保留；提交后停止，不进入native或媒体写入。
+
 - **C6-2A JPEG ADMISSION — READY_FOR_INDEPENDENT_REVIEW / MEDIA_IMPORT_BLOCKED（2026-10-28）**：只核对旧严格JPEG研究成果；五个核心源码与成功CI同一，锁定坏图及历史API36三项JUnit字节复核通过。新离线审计exit0，4次既有容器检查符合预期（缺损JPEG仍可通过容器层）；新native执行因既有环境未准入NOT_RUN，Android执行0。旧严格候选API26/36各9项限定证据与host40MP结果保留，不能替代最新Android取消/异常恢复及全链峰值门禁；生产三个JPEG历史FAIL不改。见[简短报告](evidence/LITHIC-C6-2A-JPEG-Admission.md)。没有生产修改、新依赖/native合入、设备或新APK，提交后停止等待独立审查。
 
 - **C6-1 ACCEPTED / FROZEN — PASS WITH NOTES（仅桌面实施，2026-10-28）**：用户转交ChatGPT对`88e7edb201991f386b91b078f574a79f07ecde7b`的独立验收结论；限定冻结已登记封面同代只读facade、有界缩略图及8处生产接线。原44定向JVM PASS、Debug/AndroidTest编译、Lint0错21警告为原候选证据，本轮不重跑；14项Android实际NOT_RUN，native取消最坏时延、GC/GPU驻留及媒体进程峰值UNKNOWN。见[原实施报告](evidence/LITHIC-C6-1-ReadOnly-Media.md)。不扩大为完整媒体安全/真实显示/性能通过；MEDIA_IMPORT_BLOCKED、M10延期/三个JPEG历史FAIL、M20/M22/C3/M13-T06/G1～G4及全部旧NOTES/UNKNOWN/NOT_RUN保持。当前仅授权C6-2A独立预研，不修改生产App、不操作设备、不生成体验APK或进入媒体写入实现。

@@ -1,0 +1,27 @@
+{
+  "scope": "OFFICIAL_TEXT_AND_METADATA_REVIEW_ONLY_NO_NATIVE_DOWNLOAD_OR_INTEGRATION",
+  "recommendation": "Review 3.2.1 as next native candidate; not approved or introduced here",
+  "release": "https://github.com/libjpeg-turbo/libjpeg-turbo/releases/tag/3.2.1",
+  "publishedUtc": "2026-10-27T20:58:25Z",
+  "tagCommit": "7b4993786d856cbccabfc0ed2f923ba000e326cc",
+  "officialAsset": {
+    "name": "libjpeg-turbo-3.2.1.tar.gz",
+    "bytes": 2549854,
+    "publishedApiDigest": "c27ad72a68da151177929aa969ae773a2da5ac2af9ce946079314fdac8cece7f",
+    "downloaded": false,
+    "locallyComputedArchiveSha256": null,
+    "gpgVerifiedThisRun": false
+  },
+  "licenseSha256Unchanged": {
+    "LICENSE.md": "ba6bceebcba0fdd35488477c2cca8c4632ce82c74dbfbc87d886ce6fc4433579",
+    "README.ijg": "75815e3bf6484201a3c3d17a1bbf10f2e8e3237f84df10a2357ea896db2a81d6"
+  },
+  "relevantFixes": {
+    "simdDisabledCrop": "https://github.com/libjpeg-turbo/libjpeg-turbo/commit/2646fa33f8d67373c27b558b47e77b2d8d517e31",
+    "skipScanlines": "https://github.com/libjpeg-turbo/libjpeg-turbo/commit/7b5fee3f7a83b5c2bdbb52d5dd6ce6bfc53b6b58",
+    "rgb565": "https://github.com/libjpeg-turbo/libjpeg-turbo/commit/44137c7e3b510ac12c5382c512e7416389e8f9e1"
+  },
+  "compare": "https://github.com/libjpeg-turbo/libjpeg-turbo/compare/3.2.0...3.2.1",
+  "oldStrictCoreDirectAffectedPath": "NOT_PROVEN; no crop/skip/RGB565/TurboJPEG calls",
+  "newNativeTests": "NOT_RUN"
+}

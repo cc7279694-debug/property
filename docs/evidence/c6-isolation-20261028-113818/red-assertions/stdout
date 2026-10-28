@@ -1,0 +1,98 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugJavaRes
+> Task :app:processDebugUnitTestJavaRes
+
+> Task :app:testDebugUnitTest
+
+AppProcessRoleTest > proc_name_reader_uses_only_the_first_nul_terminated_argument FAILED
+    java.lang.AssertionError at AppProcessRoleTest.kt:36
+
+AppProcessRoleTest > exact_main_identity_is_the_only_business_role FAILED
+    java.lang.AssertionError at AppProcessRoleTest.kt:11
+
+AppProcessRoleTest > exact_media_process_suffix_selects_sandbox_for_each_install_identity FAILED
+    java.lang.AssertionError at AppProcessRoleTest.kt:17
+
+AppProcessRoleTest > valid_maximum_bounded_first_argument_is_not_silently_truncated FAILED
+    java.lang.AssertionError at AppProcessRoleTest.kt:54
+
+IsolationSessionStateTest > recovery_does_not_turn_recorded_or_lost_host_state_into_fresh_runtime_evidence FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:188
+
+IsolationSessionStateTest > timeout_after_a_candidate_irrevocably_revokes_the_candidate FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > guard_and_compute_require_order_and_the_authenticated_worker FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:53
+
+IsolationSessionStateTest > wrong_uid_nonce_or_protocol_result_never_creates_a_candidate FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > concurrent_close_observations_are_idempotent_and_cannot_close_a_revoked_success FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > cancellation_cannot_be_upgraded_by_a_late_success FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > a_closed_outcome_is_immutable_to_late_messages_and_repeat_observations FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > authentic_hello_binds_kernel_uid_once_and_preserves_expected_identity FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:29
+
+IsolationSessionStateTest > complete_kernel_evidence_does_not_replace_missing_worker_output_close_report FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > retirement_without_a_result_is_never_a_success FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > result_is_not_success_until_retirement_and_every_independent_close_fact FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > complete_kernel_evidence_does_not_replace_missing_worker_input_close_report FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > duplicate_authenticated_result_is_rejected_and_cannot_claim_unique_success FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+IsolationSessionStateTest > normal_retirement_preserves_candidate_while_each_missing_fact_remains_unknown FAILED
+    java.lang.AssertionError at IsolationSessionStateTest.kt:13
+
+> Task :app:testDebugUnitTest FAILED
+26 actionable tasks: 5 executed, 21 up-to-date

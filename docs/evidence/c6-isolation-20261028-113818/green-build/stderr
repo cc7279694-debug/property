@@ -1,0 +1,35 @@
+Warning: SDK processing. This version only understands SDK XML versions up to 3 but an SDK XML file of version 4 was encountered. This can happen if you use versions of Android Studio and the command-line tools that were released at different times.
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:lintDebug'.
+> Lint found errors in the project; aborting build.
+  
+  Fix the issues identified by lint, or create a baseline to see only new errors.
+  To create a baseline, run `gradlew updateLintBaseline` after adding the following to the module's build.gradle file:
+  ```
+  android {
+      lint {
+          baseline = file("lint-baseline.xml")
+      }
+  }
+  ```
+  For more details, see https://developer.android.com/studio/write/lint#snapshot
+  
+  Lint found 3 errors, 15 warnings. First failure:
+  
+  E:\CODEX\.codex\worktrees\lithic-m13\砺石新APP\app\src\main\java\com\cooper\lithic\data\media\isolation\IsolationProbeFiles.kt:67: Error: Field requires API level 27 (current min is 26): android.system.OsConstants#O_CLOEXEC [NewApi]
+                  throw IOException("Recorded isolation session requires fresh explicit fixture authorization")
+                                                                                                                                         ~~~~~~~~~~~~~~~~~~~~~
+  
+  The full lint text report is located at:
+    E:\CODEX\.codex\worktrees\lithic-m13\砺石新APP\app\build\intermediates\lint_intermediate_text_report\debug\lintReportDebug\lint-results-debug.txt
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 6m 25s

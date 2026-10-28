@@ -18,6 +18,7 @@
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
+            android:process="${applicationId}"
             android:exported="false"
             tools:node="merge">
             <meta-data android:name="androidx.work.WorkManagerInitializer" tools:node="remove" />
@@ -26,6 +27,12 @@
                 tools:node="remove" />
         </provider>
         <service android:name="androidx.work.impl.foreground.SystemForegroundService" tools:node="remove" />
+        <!-- Explicit synthetic-probe channel; never started by user-facing production UI. -->
+        <service
+            android:name=".data.media.isolation.MediaSandboxService"
+            android:process=":media_sandbox"
+            android:isolatedProcess="true"
+            android:exported="false" />
         <activity
             android:name=".app.MainActivity"
             android:exported="true">

@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.app.AppProcessRoleTest",
+    "--tests",
+    "com.cooper.lithic.data.media.isolation.IsolationSessionStateTest"
+  ],
+  "startedUtc": "2026-10-28T11:41:17.216995+00:00",
+  "exitCode": 1,
+  "endedUtc": "2026-10-28T11:42:08.321142+00:00",
+  "stdoutBytes": 5045,
+  "stdoutSha256": "fe688d5483d3938eb7b020ffece7653def978e4fd22bf7ab2585c98e7a969188",
+  "stderrBytes": 654,
+  "stderrSha256": "b1506c54e01f3e2a3c16f1206af14603c36cbfb2c07837a74e1beb8d44a3f1d4"
+}

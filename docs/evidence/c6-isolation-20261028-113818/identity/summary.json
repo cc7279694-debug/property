@@ -1,0 +1,58 @@
+{
+  "apk": "app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "bytes": 17072398,
+  "sha256": "a859d7564e382efdbbc7b2f04ac83ab10a269985c6ef5a1679f5e21857f8eb16",
+  "application": "com.cooper.lithic.app.LithicApplication",
+  "service": {
+    "name": "com.cooper.lithic.data.media.isolation.MediaSandboxService",
+    "exported": "false",
+    "isolatedProcess": "true",
+    "process": ":media_sandbox"
+  },
+  "startup": {
+    "name": "androidx.startup.InitializationProvider",
+    "authorities": "com.cooper.lithic.debug.androidx-startup",
+    "exported": "false",
+    "process": "com.cooper.lithic.debug"
+  },
+  "startupMetadata": [
+    "androidx.lifecycle.ProcessLifecycleInitializer",
+    "androidx.profileinstaller.ProfileInstallerInitializer"
+  ],
+  "permissions": [
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.WAKE_LOCK",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "nativeEntries": [
+    "lib/arm64-v8a/libandroidx.graphics.path.so",
+    "lib/arm64-v8a/libdatastore_shared_counter.so",
+    "lib/armeabi-v7a/libandroidx.graphics.path.so",
+    "lib/armeabi-v7a/libdatastore_shared_counter.so",
+    "lib/x86/libandroidx.graphics.path.so",
+    "lib/x86/libdatastore_shared_counter.so",
+    "lib/x86_64/libandroidx.graphics.path.so",
+    "lib/x86_64/libdatastore_shared_counter.so"
+  ],
+  "dexEntries": [
+    "classes.dex",
+    "classes10.dex",
+    "classes11.dex",
+    "classes13.dex",
+    "classes2.dex",
+    "classes3.dex",
+    "classes4.dex",
+    "classes8.dex",
+    "classes12.dex",
+    "classes14.dex",
+    "classes6.dex",
+    "classes9.dex",
+    "classes7.dex",
+    "classes5.dex"
+  ],
+  "newNativeLibrary": false,
+  "mergedManifestSha256": "712c4402aa3b4cab1896df72bcd34d21152d57afd7243b44ddd76f5dd024c282",
+  "artifactRole": "ordinary Debug desktop verification only; NOT a user delivery or an authorized device identity"
+}
