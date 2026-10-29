@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-10-29T09:30:00.120Z" hostname="WHOCARE" time="0.014">
+  <properties/>
+  <testcase name="recovery_does_not_turn_recorded_or_lost_host_state_into_fresh_runtime_evidence" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.001"/>
+  <testcase name="guard_return_cannot_be_inferred_without_a_previously_held_guard" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.002"/>
+  <testcase name="timeout_after_a_candidate_irrevocably_revokes_the_candidate" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.003"/>
+  <testcase name="guard_and_compute_require_order_and_the_authenticated_worker" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="self_uid_wrong_protocol_and_wrong_nonce_do_not_admit_a_worker" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="wrong_uid_nonce_or_protocol_result_never_creates_a_candidate" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="concurrent_close_observations_are_idempotent_and_cannot_close_a_revoked_success" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.003"/>
+  <testcase name="cancellation_cannot_be_upgraded_by_a_late_success" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="a_closed_outcome_is_immutable_to_late_messages_and_repeat_observations" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="authentic_hello_binds_kernel_uid_once_and_preserves_expected_identity" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="complete_kernel_evidence_does_not_replace_missing_worker_output_close_report" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="cancellation_before_hello_is_conservative_and_blocks_all_late_admission" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.001"/>
+  <testcase name="retirement_without_a_result_is_never_a_success" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="result_is_not_success_until_retirement_and_every_independent_close_fact" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="complete_kernel_evidence_does_not_replace_missing_worker_input_close_report" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <testcase name="duplicate_authenticated_result_is_rejected_and_cannot_claim_unique_success" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.001"/>
+  <testcase name="normal_retirement_preserves_candidate_while_each_missing_fact_remains_unknown" classname="com.cooper.lithic.data.media.isolation.IsolationSessionStateTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

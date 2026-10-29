@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **C6-2D SAFE EXECUTION CANDIDATE — READY_FOR_INDEPENDENT_REVIEW（2026-10-29）**：从`af76a34250c36237388e1f4e2a9a8428ee4e82db`，继承C6-2C隔离通道桌面已接受/运行待验。仅新增显式`c6IsolationVerification`独立App/Test身份`com.cooper.lithic.c6isolation.debug(.test)`及build-c6-isolation目录、无业务组件白名单；Host由原M13 Runner运行plain Application，sandbox保留真实LithicApplication及原角色拒绝门禁。原8方法/断言保持，仅加准确新包护栏和UUID内≤16KiB独立状态回执。25定向JVM PASS，App/Test构建及AndroidTest源码编译/Lint exit0（0E16W），5身份求值/6预期拒绝通过，实物Manifest/签名/DEX核对完成；8项Android均NOT_RUN。见[集中报告](evidence/LITHIC-C6-2D-Isolation-Verification.md)。无ADB/手机/AVD/安装/清理，11个旧交付APK及Preview12原字节、C9-R1/245个main源码/Room5/backup4/Owner/恢复/C6-1/业务协议不改。实际UID/SELinux/FD/Guard/Binder/无重建及完整资源门禁仍PENDING/UNKNOWN，JUnit撤销方法PASS不能替代关闭证明，UNKNOWN即停依赖。3.2.1仅本地研究复核，未下载/接入native；ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED及全部历史门禁保持。只到候选独立审查点，设备执行另获明确授权；不自动严格JPEG适配/main/M23。
+
+
 - **C9-R1 PREVIEW 12 — READY_FOR_INDEPENDENT_REVIEW（2026-10-29）**：用户已转交ChatGPT独立接受C9-R1 `3aa4f30f038843f91064529b147ccfc2e9bdc39e` **PASS WITH NOTES，仅桌面实施**。本轮仅递增显式Private Trial为`com.cooper.lithic.preview.debug`/code28/`0.1.0-preview.12-debug`，沿用原Debug证书；69唯一JVM PASS，体验构建/AndroidTest源码编译/Lint exit0（0E14W）。24个生产DEX类及R1新增3字段/7tag核对，原Manifest/权限/native和冻结源码边界保持；唯一非build用户APK15,977,934字节，SHA `4b6b3ed03674fc971b67a124171fedbb89fce155d2c6fd181ed597cde6250a1b`，旧Preview11原字节不变。见[交付与体验清单](evidence/LITHIC-C9-R1-Preview12-Delivery.md)。无手机/ADB/AVD/账本或安装操作，真实视觉/动态/字体/IME/升级/性能均NOT_RUN/PENDING；ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED及历史门禁不改。提交后停止独立交付审查，不生成其他候选、不合并main/M23/正式发行。
 
 

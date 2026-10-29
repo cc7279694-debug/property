@@ -1,0 +1,261 @@
+[
+  {
+    "case": "ordinary",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 0,
+    "seconds": 25.628,
+    "deviceOperations": 0,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.debug",
+      "testPackage": "com.cooper.lithic.debug.test",
+      "versionCode": 17,
+      "debugVersion": "0.1.0-m22-debug",
+      "releasePackage": "com.cooper.lithic",
+      "releaseVersion": "0.1.0-m22",
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build",
+      "releaseEnabled": true
+    },
+    "result": "PASS"
+  },
+  {
+    "case": "trial",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-PlithicPrivateTrial=true",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 0,
+    "seconds": 25.706,
+    "deviceOperations": 0,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.preview.debug",
+      "testPackage": "com.cooper.lithic.preview.debug.test",
+      "versionCode": 28,
+      "debugVersion": "0.1.0-preview.12-debug",
+      "releasePackage": "com.cooper.lithic",
+      "releaseVersion": "0.1.0-preview.12",
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial",
+      "releaseEnabled": true
+    },
+    "result": "PASS"
+  },
+  {
+    "case": "m22",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pm22DeviceVerification=true",
+      "-Pm13Isolated=true",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 0,
+    "seconds": 38.135,
+    "deviceOperations": 0,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.m22verify.debug",
+      "testPackage": "com.cooper.lithic.m22verify.debug.test",
+      "versionCode": 17,
+      "debugVersion": "0.1.0-m22-debug",
+      "releasePackage": "com.cooper.lithic",
+      "releaseVersion": "0.1.0-m22",
+      "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\m22-device-verification",
+      "releaseEnabled": true
+    },
+    "result": "PASS"
+  },
+  {
+    "case": "c3",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pc2VisualVerification=true",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 0,
+    "seconds": 30.758,
+    "deviceOperations": 0,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.c2visual.debug",
+      "testPackage": "com.cooper.lithic.c2visual.debug.test",
+      "versionCode": 17,
+      "debugVersion": "0.1.0-c2visual-debug",
+      "releasePackage": "com.cooper.lithic",
+      "releaseVersion": "0.1.0-c2visual",
+      "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-c2-visual",
+      "releaseEnabled": false
+    },
+    "result": "PASS"
+  },
+  {
+    "case": "c6",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pc6IsolationVerification=true",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 0,
+    "seconds": 30.861,
+    "deviceOperations": 0,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.c6isolation.debug",
+      "testPackage": "com.cooper.lithic.c6isolation.debug.test",
+      "versionCode": 17,
+      "debugVersion": "0.1.0-c6isolation-debug",
+      "releasePackage": "com.cooper.lithic",
+      "releaseVersion": "0.1.0-c6isolation",
+      "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-c6-isolation",
+      "releaseEnabled": false
+    },
+    "result": "PASS"
+  },
+  {
+    "case": "reject-invalid",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pc6IsolationVerification=invalid",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 1,
+    "seconds": 22.133,
+    "deviceOperations": 0,
+    "result": "EXPECTED_REJECTION"
+  },
+  {
+    "case": "reject-trial",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pc6IsolationVerification=true",
+      "-PlithicPrivateTrial=true",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 1,
+    "seconds": 20.562,
+    "deviceOperations": 0,
+    "result": "EXPECTED_REJECTION"
+  },
+  {
+    "case": "reject-m22",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pc6IsolationVerification=true",
+      "-Pm22DeviceVerification=true",
+      "-Pm13Isolated=true",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 1,
+    "seconds": 21.406,
+    "deviceOperations": 0,
+    "result": "EXPECTED_REJECTION"
+  },
+  {
+    "case": "reject-c3",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pc6IsolationVerification=true",
+      "-Pc2VisualVerification=true",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 1,
+    "seconds": 20.887,
+    "deviceOperations": 0,
+    "result": "EXPECTED_REJECTION"
+  },
+  {
+    "case": "reject-runner",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pc6IsolationVerification=true",
+      "-Pm13Isolated=false",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 1,
+    "seconds": 20.694,
+    "deviceOperations": 0,
+    "result": "EXPECTED_REJECTION"
+  },
+  {
+    "case": "reject-process-death",
+    "args": [
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\gradlew.bat",
+      "--offline",
+      "--console=plain",
+      "--no-daemon",
+      "--max-workers=1",
+      "-I",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\docs\\evidence\\c6-2d-preflight-20261029-172534\\identity-check.init.gradle",
+      "-Pc6IsolationVerification=true",
+      "-Pm12T04ProcessDeath=true",
+      ":app:c6IdentitySnapshot"
+    ],
+    "exitCode": 1,
+    "seconds": 20.973,
+    "deviceOperations": 0,
+    "result": "EXPECTED_REJECTION"
+  }
+]

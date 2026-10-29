@@ -1,0 +1,26 @@
+import groovy.json.JsonOutput
+allprojects { p ->
+    p.afterEvaluate {
+        if (p.path == ':app') {
+            p.tasks.register('c6IdentitySnapshot') {
+                doLast {
+                    def a = p.extensions.getByName('android')
+                    def d = a.defaultConfig
+                    def debug = a.buildTypes.getByName('debug')
+                    def debugId = d.applicationId + (debug.applicationIdSuffix ?: '')
+                    println('C6_IDENTITY_JSON=' + JsonOutput.toJson([
+                        debugPackage: debugId,
+                        testPackage: d.testApplicationId ?: debugId + '.test',
+                        versionCode: d.versionCode,
+                        debugVersion: d.versionName + (debug.versionNameSuffix ?: ''),
+                        releasePackage: d.applicationId,
+                        releaseVersion: d.versionName,
+                        runner: d.testInstrumentationRunner,
+                        buildDirectory: p.layout.buildDirectory.get().asFile.absolutePath,
+                        releaseEnabled: p.tasks.names.contains('assembleRelease')
+                    ]))
+                }
+            }
+        }
+    }
+}

@@ -27,6 +27,24 @@ require(c2VisualValue == null || c2VisualValue in setOf("true", "false")) {
     "c2VisualVerification must be true or false"
 }
 val c2VisualVerification = c2VisualValue == "true"
+// Opt-in synthetic isolation probes only. Never reuse a user or historical test identity.
+val c6IsolationValue = providers.gradleProperty("c6IsolationVerification").orNull
+require(c6IsolationValue == null || c6IsolationValue in setOf("true", "false")) {
+    "c6IsolationVerification must be true or false"
+}
+val c6IsolationVerification = c6IsolationValue == "true"
+if (c6IsolationVerification) {
+    require(!lithicPrivateTrial && !m22DeviceVerification && !c2VisualVerification) {
+        "C6 isolation cannot use private trial, M22 or C3 visual identities"
+    }
+    require(!providers.gradleProperty("m12T04ProcessDeath").isPresent) {
+        "C6 isolation cannot enable historical process-death experiments"
+    }
+    require(providers.gradleProperty("m13Isolated").orNull in setOf(null, "true")) {
+        "C6 isolation requires the plain Application M13IsolatedRunner"
+    }
+    layout.buildDirectory.set(layout.projectDirectory.dir("build-c6-isolation"))
+}
 if (c2VisualVerification) {
     require(!lithicPrivateTrial && !m22DeviceVerification) {
         "C2 visual capture cannot use private trial or M22 verification identities"
@@ -70,12 +88,14 @@ android {
         versionCode = if (lithicPrivateTrial) 28 else 17
         versionName = when {
             lithicPrivateTrial -> "0.1.0-preview.12"
+            c6IsolationVerification -> "0.1.0-c6isolation"
             c2VisualVerification -> "0.1.0-c2visual"
             else -> "0.1.0-m22"
         }
         if (c2VisualVerification) testApplicationId = "com.cooper.lithic.c2visual.debug.test"
+        if (c6IsolationVerification) testApplicationId = "com.cooper.lithic.c6isolation.debug.test"
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
-        testInstrumentationRunner = if (c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
+        testInstrumentationRunner = if (c6IsolationVerification || c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
             "com.cooper.lithic.app.M13IsolatedRunner"
         else if (providers.gradleProperty("m12T04ProcessDeath").orNull == "true")
             "com.cooper.lithic.data.backup.M12ProcessDeathRunner"
@@ -88,6 +108,7 @@ android {
                 lithicPrivateTrial -> ".preview.debug"
                 m22DeviceVerification -> ".m22verify.debug"
                 c2VisualVerification -> ".c2visual.debug"
+                c6IsolationVerification -> ".c6isolation.debug"
                 else -> ".debug"
             }
             versionNameSuffix = "-debug"
@@ -116,12 +137,18 @@ android {
         }
         sourceSets.getByName("debug").manifest.srcFile("src/c2Visual/AndroidManifest.xml")
     }
+    if (c6IsolationVerification) {
+        require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
+            "C6 isolation requires the existing Debug key; do not generate a replacement"
+        }
+        sourceSets.getByName("debug").manifest.srcFile("src/c6Isolation/AndroidManifest.xml")
+    }
 }
 
 // The opt-in target is never a production Release application.
 androidComponents {
     beforeVariants(selector().withBuildType("release")) { variant ->
-        if (c2VisualVerification) variant.enable = false
+        if (c2VisualVerification || c6IsolationVerification) variant.enable = false
     }
 }
 
@@ -163,5 +190,5 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.espresso.core)
     // Only the Debug test-host activity; no test framework enters release runtime.
-    if (!lithicPrivateTrial) debugImplementation(libs.androidx.compose.ui.test.manifest)
+    if (!lithicPrivateTrial && !c6IsolationVerification) debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

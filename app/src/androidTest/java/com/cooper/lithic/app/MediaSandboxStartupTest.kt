@@ -4,13 +4,30 @@ import android.app.Application
 import android.content.ComponentName
 import android.content.pm.PackageManager
 import android.content.pm.ServiceInfo
+import android.os.Bundle
+import android.os.Process
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 
 /** Future isolated-runner checks only; no normal MainActivity, ledger, or device operation. */
 class MediaSandboxStartupTest {
     private val context get() = InstrumentationRegistry.getInstrumentation().targetContext
+
+    @Before fun requireDedicatedPlainHostBeforeAnyProbe() {
+        val instrumentation = InstrumentationRegistry.getInstrumentation()
+        check(context.packageName == "com.cooper.lithic.c6isolation.debug")
+        check(instrumentation.context.packageName == "com.cooper.lithic.c6isolation.debug.test")
+        check(instrumentation.javaClass == M13IsolatedRunner::class.java)
+        check(context.applicationContext.javaClass == Application::class.java)
+        check(context.applicationInfo.uid == Process.myUid())
+        instrumentation.sendStatus(2, Bundle().apply {
+            putString("c6.phase", "PLAIN_HOST_ADMITTED_NOT_TEST_COMPLETION")
+            putInt("c6.hostUid", Process.myUid())
+            putInt("c6.hostPid", Process.myPid())
+        })
+    }
 
     @Test fun manifest_declares_private_isolated_service_in_only_the_media_process() {
         val component = ComponentName(context.packageName, "com.cooper.lithic.data.media.isolation.MediaSandboxService")

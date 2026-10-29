@@ -1,0 +1,24 @@
+{
+  "startedUtc": "2026-10-29T09:26:15.8168352Z",
+  "availableMemoryGiB": 4.978755950927734,
+  "command": "gradlew.bat",
+  "arguments": [
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    "-Pc6IsolationVerification=true",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.app.AppProcessRoleTest",
+    "--tests",
+    "com.cooper.lithic.data.media.isolation.IsolationSessionStateTest",
+    ":app:assembleDebug",
+    ":app:assembleDebugAndroidTest",
+    ":app:lintDebug"
+  ],
+  "gradleSourceSha256": "885e2f7fdb574af1ea7572557a53953eb5f5d77708d765343aefd8bbc2e50e4e",
+  "deviceOperations": 0,
+  "exitCode": 0,
+  "finishedUtc": "2026-10-29T09:35:48.4605841Z"
+}

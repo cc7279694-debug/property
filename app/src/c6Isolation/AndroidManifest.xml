@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Shared notification code remains compiled, but this target has no notification entry point.
+         POST_NOTIFICATIONS is declared only; future probes must not request or grant it. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" tools:node="remove" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" tools:node="remove" />
+    <!-- Host uses M13IsolatedRunner's plain Application. The separately launched sandbox must
+         retain the real LithicApplication so its production role gate is actually exercised. -->
+    <application
+        android:name="com.cooper.lithic.app.LithicApplication"
+        android:label="砺石·隔离验证"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Lithic"
+        tools:node="replace">
+        <!-- Retained for the existing Startup contract, with NO initializer metadata. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:process="${applicationId}"
+            android:exported="false" />
+        <service
+            android:name="com.cooper.lithic.data.media.isolation.MediaSandboxService"
+            android:process=":media_sandbox"
+            android:isolatedProcess="true"
+            android:exported="false" />
+    </application>
+</manifest>
