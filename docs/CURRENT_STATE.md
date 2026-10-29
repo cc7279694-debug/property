@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **C9-R1 PREVIEW 12 — READY_FOR_INDEPENDENT_REVIEW（2026-10-29）**：用户已转交ChatGPT独立接受C9-R1 `3aa4f30f038843f91064529b147ccfc2e9bdc39e` **PASS WITH NOTES，仅桌面实施**。本轮仅递增显式Private Trial为`com.cooper.lithic.preview.debug`/code28/`0.1.0-preview.12-debug`，沿用原Debug证书；69唯一JVM PASS，体验构建/AndroidTest源码编译/Lint exit0（0E14W）。24个生产DEX类及R1新增3字段/7tag核对，原Manifest/权限/native和冻结源码边界保持；唯一非build用户APK15,977,934字节，SHA `4b6b3ed03674fc971b67a124171fedbb89fce155d2c6fd181ed597cde6250a1b`，旧Preview11原字节不变。见[交付与体验清单](evidence/LITHIC-C9-R1-Preview12-Delivery.md)。无手机/ADB/AVD/账本或安装操作，真实视觉/动态/字体/IME/升级/性能均NOT_RUN/PENDING；ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED及历史门禁不改。提交后停止独立交付审查，不生成其他候选、不合并main/M23/正式发行。
+
+
 - **C9-R1 FINAL VISUAL REFINEMENT — READY_FOR_INDEPENDENT_REVIEW（2026-10-29，仅桌面实施）**：从`c4c39ba40bde561d1f583c76bacc87bf35d0e5b7`集中精修三主题局部辨识、首页真实记录优先、两类详情指标/时间线及图表选日/单位；8生产文件仅呈现，版本/数据/Owner/恢复/导航/主题存储/C6不改。首次因RAM门禁和用户要求暂缓构建，后由用户恢复；本轮95唯一JVM PASS（3新＋92回归）、AndroidTest源码编译/Debug/Lint退出0，0错误16警告；原NOT_RUN历史保留。新增8 Android与原15位矩阵均仅编译/运行NOT_RUN，实际截图0，不宣称视觉/动态/字体/IME通过。见[集中报告](evidence/LITHIC-C9-R1-Final-Visual-Refinement.md)。修正原越界长金额测试夹具为合法最大值，不改金额上限；Preview11/code27原APK SHA不变，无新用户APK或设备操作。提交后停止等待独立审查；ANDROID_VISUAL_PENDING / ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED及全部历史门禁保持。
 
 

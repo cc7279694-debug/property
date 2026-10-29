@@ -67,9 +67,9 @@ android {
         applicationId = "com.cooper.lithic"
         minSdk = 26
         targetSdk = 36
-        versionCode = if (lithicPrivateTrial) 27 else 17
+        versionCode = if (lithicPrivateTrial) 28 else 17
         versionName = when {
-            lithicPrivateTrial -> "0.1.0-preview.11"
+            lithicPrivateTrial -> "0.1.0-preview.12"
             c2VisualVerification -> "0.1.0-c2visual"
             else -> "0.1.0-m22"
         }
