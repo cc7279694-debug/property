@@ -27,8 +27,9 @@ internal fun c2IdentityInitial(name: String, allowInitial: Boolean = true): Stri
 @Composable
 internal fun C2RecordIdentity(name: String, category: String, kind: C2Glyph, modifier: Modifier = Modifier) {
     val glyph = c2IdentityGlyph(category) ?: kind
+    val visuals = LocalLithicVisuals.current
     Surface(modifier.size(64.dp).clearAndSetSemantics {}, shape = MaterialTheme.shapes.small,
-        color = if (kind == C2Glyph.Subscription) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.primaryContainer) {
+        color = visuals.identitySurface, contentColor = visuals.identityForeground) {
         Box(contentAlignment = Alignment.Center) {
             C2Icon(glyph)
         }

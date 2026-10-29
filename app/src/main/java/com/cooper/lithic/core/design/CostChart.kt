@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +16,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathEffect
@@ -26,6 +28,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.customActions
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.stateDescription
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -75,6 +78,25 @@ internal fun CostChart(
         ordered.map { Offset(projection.x(it.date), projection.y(it.value)) }
     }
     Column(modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(Modifier.fillMaxWidth().testTag("cost-chart-legend"), verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Canvas(Modifier.size(width = 24.dp, height = 12.dp)) {
+                if (step) {
+                    val path = Path().apply {
+                        moveTo(0f, size.height * .75f)
+                        lineTo(size.width / 2f, size.height * .75f)
+                        lineTo(size.width / 2f, size.height * .25f)
+                        lineTo(size.width, size.height * .25f)
+                    }
+                    drawPath(path, lineColor, style = Stroke(2.dp.toPx()))
+                } else drawLine(lineColor, Offset(0f, size.height / 2f), Offset(size.width, size.height / 2f),
+                    strokeWidth = 2.dp.toPx())
+            }
+            Text(if (step) "标准日均价格 · 阶梯实线" else "项目日均成本 · 实线",
+                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+        Text("纵轴 · 元/天", Modifier.fillMaxWidth().testTag("cost-chart-axis-unit"),
+            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         Canvas(Modifier.fillMaxWidth().height(220.dp).testTag("cost-chart-canvas")
             .semantics {
                 contentDescription = (if (step) "订阅标准日均价格阶梯图。暂停、到期和停止的零值保留。可在下方输入日期或查看显示点。"
@@ -119,11 +141,20 @@ internal fun CostChart(
             ordered.forEachIndexed { index, point ->
                 if (ordered.size == 1 || point.date in eventDates) drawCircle(lineColor, 3.dp.toPx(), position(index))
             }
-            selectedInRange?.let { drawCircle(selectedColor, 5.dp.toPx(), position(it)) }
+            selectedInRange?.let {
+                val point = position(it)
+                drawLine(selectedColor, Offset(point.x, inset), Offset(point.x, inset + height),
+                    strokeWidth = 1.5.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(2.dp.toPx(), 5.dp.toPx())))
+                drawCircle(selectedColor, 7.dp.toPx(), point, style = Stroke(1.5.dp.toPx()))
+                drawCircle(lineColor, 4.dp.toPx(), point)
+            }
         }
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(projection.start.toString(), style = MaterialTheme.typography.bodySmall)
-            if (projection.start != projection.end) Text(projection.end.toString(), style = MaterialTheme.typography.bodySmall)
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Text(projection.start.toString(), Modifier.weight(1f), style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
+            if (projection.start != projection.end) Text(projection.end.toString(), Modifier.weight(1f),
+                textAlign = TextAlign.End, style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         C5InformationButton("图表坐标与选日", Modifier.testTag("chart-axis-toggle"), "图表说明") {
             Text(if (ordered.all { it.value.signum() == 0 }) "全部显示点为${moneyMetricDisplay(BigDecimal.ZERO)}；零线位于图中间。"

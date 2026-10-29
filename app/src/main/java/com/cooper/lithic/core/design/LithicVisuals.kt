@@ -40,11 +40,21 @@ internal fun lithicPalette(appearance: LithicAppearance): LithicPalette = when (
 internal data class LithicVisuals(
     val warning: Color, val warningSurface: Color, val success: Color, val successSurface: Color,
     val chartTotal: Color, val chartProject: Color, val chartSubscription: Color, val chartGrid: Color,
+    // Home's sole focal surface; keep neutral/white analysis and detail surfaces separate.
+    val brandSurface: Color,
+    // Generic record identity only, never a replacement for authenticated media.
+    val identitySurface: Color, val identityForeground: Color,
 )
 
 internal fun lithicVisuals(appearance: LithicAppearance): LithicVisuals = lithicPalette(appearance).let {
     LithicVisuals(Color(it.warning), Color(it.warningSurface), Color(it.success), Color(it.successSurface),
-        Color(it.chartTotal), Color(it.chartProject), Color(it.chartSubscription), Color(it.chartGrid))
+        Color(it.chartTotal), Color(it.chartProject), Color(it.chartSubscription), Color(it.chartGrid),
+        brandSurface = Color(when (appearance) {
+            LithicAppearance.CHARCOAL -> it.surface
+            LithicAppearance.PURE_WHITE -> it.background
+            LithicAppearance.STONE_MIST -> it.group
+        }),
+        identitySurface = Color(it.group), identityForeground = Color(it.primary))
 }
 
 internal val LocalLithicVisuals = staticCompositionLocalOf { lithicVisuals(LithicAppearance.STONE_MIST) }

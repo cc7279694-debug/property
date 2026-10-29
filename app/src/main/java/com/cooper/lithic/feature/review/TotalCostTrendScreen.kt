@@ -149,9 +149,18 @@ internal fun TotalCostTrendScreen(
                     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text("总日均成本", style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Text(state.selectedDate?.toString() ?: "日期待读取",
-                            Modifier.testTag(if (state.selectedDate == null) "total-trend-date-pending" else "total-trend-selected-date"),
-                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Surface(shape = RoundedCornerShape(8.dp), color = MaterialTheme.colorScheme.primaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
+                                Text("所选日期", Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                                    .testTag("total-trend-selection-label"), style = MaterialTheme.typography.labelSmall)
+                            }
+                            Text(state.selectedDate?.toString() ?: "日期待读取",
+                                Modifier.padding(vertical = 4.dp)
+                                    .testTag(if (state.selectedDate == null) "total-trend-date-pending" else "total-trend-selected-date"),
+                                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface)
+                        }
                         MoneyMetric(selected?.totalRate, Modifier.fillMaxWidth()
                             .testTag(if (selected == null) "total-trend-total-pending" else "total-trend-total")
                             .semantics { if (presentation.hasRecords && selected == null) stateDescription = "所选日期的精确结果尚未取得" },
@@ -308,7 +317,10 @@ internal fun TotalCostTrendScreen(
 
 @Composable
 private fun DailyContributions(point: CostTimelinePoint?) {
-    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+    Column(Modifier.fillMaxWidth().testTag("total-trend-contributions").padding(vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text("所选日期贡献", style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant)
         DailyValue("长期项目贡献", point?.projectRate, if (point == null) "total-trend-project-pending" else "total-trend-project")
         DailyValue("订阅贡献", point?.subscriptionRate, if (point == null) "total-trend-subscription-pending" else "total-trend-subscription")
     }
@@ -349,6 +361,7 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             heading()
             TrendLegend(breakdown)
+            TrendAxisUnit()
             Box(Modifier.fillMaxWidth().height(if (concise) 172.dp else 240.dp), contentAlignment = Alignment.Center) {
                 Text("截至本次业务日尚无可绘制的记录历史。", Modifier.testTag("total-trend-no-history"))
             }
@@ -391,6 +404,7 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         heading()
         TrendLegend(breakdown)
+        TrendAxisUnit()
         Canvas(Modifier.fillMaxWidth().height(if (concise) 172.dp else 240.dp).testTag("total-trend-canvas")
             .semantics {
                 contentDescription = (if (breakdown) "总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。"
@@ -438,8 +452,10 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
             }
             series(totalColor, false, null, 1) { it.totalRate }
             inRange?.let { p -> val x = pos(p.date, p.totalRate).x
-                drawLine(selectedColor, Offset(x, inset), Offset(x, inset + h), 1.dp.toPx(),
-                    pathEffect = PathEffect.dashPathEffect(floatArrayOf(2.dp.toPx(), 5.dp.toPx()))) }
+                drawLine(selectedColor, Offset(x, inset), Offset(x, inset + h), 1.5.dp.toPx(),
+                    pathEffect = PathEffect.dashPathEffect(floatArrayOf(2.dp.toPx(), 5.dp.toPx())))
+                drawCircle(selectedColor, 7.dp.toPx(), pos(p.date, p.totalRate), style = Stroke(1.5.dp.toPx()))
+            }
         }
         TrendAxisRow(if (projection.start == projection.end) "单日记录" else projection.start.toString(), "截至 $cutoff")
     }
@@ -529,6 +545,7 @@ private fun TrendPlotPlaceholder(presentation: TotalTrendPresentation, summaryOn
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         TrendPlotHeading(presentation, onRetry)
         TrendLegend(breakdown)
+        TrendAxisUnit()
         Box(Modifier.fillMaxWidth().height(if (summaryOnly) 172.dp else 240.dp)
             .testTag("total-trend-loading-placeholder"), contentAlignment = Alignment.Center) {
             Text(if (presentation.recordCountsMismatch) "记录已变化，趋势尚待核对" else
@@ -542,6 +559,13 @@ private fun TrendPlotPlaceholder(presentation: TotalTrendPresentation, summaryOn
         }
         TrendAxisRow("起始日期待读取", presentation.cutoff?.let { "截至 $it" } ?: "截止日期待读取")
     }
+}
+
+/** Identical in waiting and real plot frames; ranges remain fully readable in the existing explanation. */
+@Composable
+private fun TrendAxisUnit() {
+    Text("纵轴 · 元/天", Modifier.fillMaxWidth().testTag("total-trend-axis-unit"),
+        style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
 }
 
 @Composable

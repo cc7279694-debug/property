@@ -51,6 +51,8 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     var categoriesOpen by rememberSaveable { mutableStateOf(false) }
     var explanationOpen by rememberSaveable { mutableStateOf(false) }
     val empty = c2HomeIsEmpty(overview, hasReadNotice)
+    val visuals = LocalLithicVisuals.current
+    val heroInset = if (visuals.brandSurface == MaterialTheme.colorScheme.background) 0.dp else 16.dp
     val heroText = MaterialTheme.colorScheme.onBackground
     val heroSecondary = MaterialTheme.colorScheme.onSurfaceVariant
     Box(modifier.fillMaxSize().testTag("home-content-area")) {
@@ -66,8 +68,8 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             } }
         }
         Surface(Modifier.fillMaxWidth().testTag("home-current-cost-summary"),
-            color = MaterialTheme.colorScheme.background, contentColor = heroText) {
-            Column(Modifier.padding(vertical = 4.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            shape = MaterialTheme.shapes.medium, color = visuals.brandSurface, contentColor = heroText) {
+            Column(Modifier.padding(horizontal = heroInset, vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                         Text("当前日均成本", style = MaterialTheme.typography.bodyMedium)
@@ -89,7 +91,6 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                     color = MaterialTheme.colorScheme.error, modifier = Modifier.testTag("home-retained-notice"))
             }
         }
-        HomeRecordCounts(overview, hasReadNotice)
         if (empty) Text("从右下角＋开始，记下一件物品或订阅。",
             Modifier.fillMaxWidth().padding(top = 4.dp).testTag("home-empty-guidance"),
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -117,6 +118,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             }
         }
         }
+        HomeRecordCounts(overview, hasReadNotice)
         if (!empty) {
             TextButton({ categoriesOpen = !categoriesOpen }, Modifier.heightIn(min = 48.dp).testTag("home-category-disclosure")) {
                 Text(if (categoriesOpen) "收起成本与类别构成" else "查看成本与类别构成")

@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **C9-R1 FINAL VISUAL REFINEMENT — READY_FOR_INDEPENDENT_REVIEW（2026-10-29，仅桌面实施）**：从`c4c39ba40bde561d1f583c76bacc87bf35d0e5b7`集中精修三主题局部辨识、首页真实记录优先、两类详情指标/时间线及图表选日/单位；8生产文件仅呈现，版本/数据/Owner/恢复/导航/主题存储/C6不改。首次因RAM门禁和用户要求暂缓构建，后由用户恢复；本轮95唯一JVM PASS（3新＋92回归）、AndroidTest源码编译/Debug/Lint退出0，0错误16警告；原NOT_RUN历史保留。新增8 Android与原15位矩阵均仅编译/运行NOT_RUN，实际截图0，不宣称视觉/动态/字体/IME通过。见[集中报告](evidence/LITHIC-C9-R1-Final-Visual-Refinement.md)。修正原越界长金额测试夹具为合法最大值，不改金额上限；Preview11/code27原APK SHA不变，无新用户APK或设备操作。提交后停止等待独立审查；ANDROID_VISUAL_PENDING / ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED及全部历史门禁保持。
+
+
 - **C9 PREVIEW 11 — READY_FOR_INDEPENDENT_REVIEW（2026-10-29）**：在C9桌面限定冻结基线上仅递增显式Private Trial为`com.cooper.lithic.preview.debug`/code27/`0.1.0-preview.11-debug`，原Debug证书不变。66唯一JVM PASS，普通Debug/体验构建和两套AndroidTest源码编译/Lint均exit0，分别0E16W/0E14W；20个生产DEX类及实际入口、原签名/Manifest/权限/源码绑定通过静态核对。唯一非build体验APK15,961,550字节，SHA `5bbf3c1f946fc2da4ab259ab377f8134e222255784fe81e20c7a73337e63cf90`，见[交付与简短体验说明](evidence/LITHIC-C9-Preview11-Delivery.md)。Preview10原字节保持，业务/测试/Room5/backup4/Owner/恢复/媒体源码未改；未操作设备或账本，Android运行/视觉/升级均NOT_RUN/PENDING，ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED和全部历史门禁保持。提交后停止，等待ChatGPT独立交付审查；不安装、不合并main、不进入M23。
 
 

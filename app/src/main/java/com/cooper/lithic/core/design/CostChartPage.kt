@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -20,6 +21,7 @@ import androidx.compose.material3.HorizontalDivider
 import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.Surface
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -113,15 +115,21 @@ internal fun CostChartPage(
             item("selection") {
                 Column(Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text("结果截至 $asOf", style = MaterialTheme.typography.bodyMedium)
                         if (selectionFocus != null) {
-                            Text("所选日期：$selectionFocus", Modifier.testTag("chart-selected-date"), style = MaterialTheme.typography.titleMedium)
+                            Surface(shape = RoundedCornerShape(8.dp), color = MaterialTheme.colorScheme.primaryContainer,
+                                contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
+                                Text("所选日期：$selectionFocus", Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                                    .testTag("chart-selected-date"), style = MaterialTheme.typography.bodyMedium)
+                            }
                             if (selectedDate == selectionFocus) {
                                 MoneyMetric(selectedValue, Modifier.fillMaxWidth().testTag("chart-selected-value"),
                                     level = MoneyMetricLevel.DETAIL, label = metricTitle)
-                                Text(selectedStatus.orEmpty(), Modifier.testTag("chart-selected-status"))
+                                Text(selectedStatus.orEmpty(), Modifier.testTag("chart-selected-status"),
+                                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                             } else Text("正在查询所选日期；不使用旧日期金额或0代替结果。")
                         } else Text("选择一个日期，查看精确历史结果。")
+                        Text("结果截至 $asOf", Modifier.testTag("chart-cutoff"), style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
             }

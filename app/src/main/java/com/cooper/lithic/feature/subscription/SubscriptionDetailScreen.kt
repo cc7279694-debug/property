@@ -1,7 +1,9 @@
 package com.cooper.lithic.feature.subscription
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,8 +22,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
 import com.cooper.lithic.core.design.*
 import com.cooper.lithic.data.repository.SubscriptionDetail
 import com.cooper.lithic.data.local.SubscriptionRenewalEntity
@@ -79,6 +79,8 @@ internal fun SubscriptionDetailScreen(
             state.detail?.takeUnless { state.missing }?.let { detail ->
                 item {
                     Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                        Text(detail.subscription.name, Modifier.testTag("subscription-detail-name").semantics { heading() },
+                            style = MaterialTheme.typography.headlineMedium)
                         Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
                             if (detail.subscription.coverAssetId != null && coverContent != null) {
                                 Box(Modifier.size(64.dp)) { coverContent() }
@@ -87,8 +89,6 @@ internal fun SubscriptionDetailScreen(
                                 Box(contentAlignment = Alignment.Center) { C2Icon(C2Glyph.ImageError, description = "封面暂不可用") }
                             }
                             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                Text(detail.subscription.name, Modifier.testTag("subscription-detail-name").semantics { heading() },
-                                    style = MaterialTheme.typography.headlineMedium)
                                 Text(detail.category.name, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                                 C2StatusChip(subscriptionStatusLabel(detail.cost.displayStatus), Modifier.testTag("subscription-detail-status"))
                                 if (detail.subscription.coverAssetId != null && coverContent == null) Text("封面暂不可用", style = MaterialTheme.typography.bodySmall,
@@ -108,7 +108,7 @@ internal fun SubscriptionDetailScreen(
                         if (current != null && detail.cost.currentPrice != null) {
                             Text(billingCycleLabel(current.cycle), style = MaterialTheme.typography.bodyLarge)
                             MoneyMetric(BigDecimal.valueOf(detail.cost.currentPrice.cents, 2), unit = AmountUnit.YUAN,
-                                level = MoneyMetricLevel.DETAIL, label = "当前套餐价格（${billingCycleLabel(current.cycle)}）")
+                                level = MoneyMetricLevel.CARD, label = "当前套餐价格（${billingCycleLabel(current.cycle)}）")
                             Text("当前标准日均价", style = MaterialTheme.typography.bodyMedium)
                             MoneyMetric(detail.cost.currentRate, Modifier.testTag("subscription-detail-current-rate"),
                                 level = MoneyMetricLevel.ROW, label = "当前标准日均价")
@@ -143,7 +143,7 @@ internal fun SubscriptionDetailScreen(
                         Text("累计已确认实际付款", style = MaterialTheme.typography.bodyMedium)
                         MoneyMetric(BigDecimal.valueOf(detail.cost.confirmedPaidCents, 2),
                             Modifier.testTag("subscription-detail-total-paid"), AmountUnit.YUAN,
-                            level = MoneyMetricLevel.CARD, label = "累计已确认实际付款")
+                            level = MoneyMetricLevel.ROW, label = "累计已确认实际付款")
                         Text("类别：${detail.category.name}", style = MaterialTheme.typography.bodyLarge)
                         detail.subscription.note?.takeIf { it.isNotBlank() }?.let {
                             Text("备注", style = MaterialTheme.typography.bodyMedium)
@@ -239,36 +239,16 @@ internal fun SubscriptionDetailScreen(
 
 @Composable
 private fun SubscriptionArchiveMetrics(detail: SubscriptionDetail) {
-    Surface(Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.background) {
-        Column(Modifier.padding(vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            BoxWithConstraints(Modifier.fillMaxWidth()) {
-                val amountWidth = ((maxWidth - 12.dp) / 2).coerceAtLeast(0.dp)
-                val amountFits = moneyMetricFitsAtPreferredSize(detail.cost.historicalAverage, amountWidth,
-                    level = MoneyMetricLevel.DETAIL)
-                val metrics: @Composable (Modifier) -> Unit = { column ->
-                    Column(column, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text("历史平均日成本", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        MoneyMetric(detail.cost.historicalAverage, Modifier.testTag("subscription-detail-historical-average"),
-                            level = MoneyMetricLevel.DETAIL, color = MaterialTheme.colorScheme.onBackground, label = "历史平均日成本")
-                    }
-                }
-                val days: @Composable (Modifier) -> Unit = { column ->
-                    Column(column, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        val labelStyle = MaterialTheme.typography.bodyMedium.toSpanStyle()
-                        val valueStyle = MaterialTheme.typography.headlineMedium.toSpanStyle()
-                        Text(buildAnnotatedString {
-                            withStyle(labelStyle) { append("折算付费时长：") }
-                            withStyle(valueStyle) { append("${detail.cost.standardPurchasedDays}天") }
-                        }, Modifier.testTag("subscription-detail-purchased-days"))
-                    }
-                }
-                if (LocalDensity.current.fontScale > 1.3f || maxWidth < 280.dp || !amountFits) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    metrics(Modifier.fillMaxWidth()); days(Modifier.fillMaxWidth())
-                } else Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    metrics(Modifier.weight(1f)); days(Modifier.weight(1f))
-                }
-            }
+    Surface(Modifier.fillMaxWidth().testTag("subscription-core-metrics"), shape = MaterialTheme.shapes.medium,
+        color = MaterialTheme.colorScheme.surface) {
+        Column(Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text("历史平均日成本", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            MoneyMetric(detail.cost.historicalAverage, Modifier.fillMaxWidth().testTag("subscription-detail-historical-average"),
+                level = MoneyMetricLevel.HERO, color = MaterialTheme.colorScheme.onSurface, label = "历史平均日成本")
             Text("结果截至 ${detail.asOf}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+            Text("折算付费时长：${detail.cost.standardPurchasedDays}天", Modifier.testTag("subscription-detail-purchased-days"),
+                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             C5InformationButton("订阅历史指标", Modifier.testTag("subscription-history-metric-information")) {
                 Text("按月30天、季90天、年365天折算；包含已确认付款的未来周期，不代表实际已使用时长。")
                 Text("历史平均日成本与当前套餐价格不同；实际已过去的付费有效天数按真实覆盖和状态计算。")
@@ -283,35 +263,55 @@ private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDat
     onCorrect: () -> Unit, onDelete: () -> Unit) {
     Surface(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page).testTag("subscription-renewal-${renewal.id}"),
         color = MaterialTheme.colorScheme.background) {
-    Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text("真实付款日期：${renewal.paidOn}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        MoneyMetric(BigDecimal.valueOf(renewal.amountCents, 2), unit = AmountUnit.YUAN,
-            level = MoneyMetricLevel.ROW, label = "真实付款金额")
-        Text("${billingCycleLabel(renewal.cycle)} · 折算${renewal.standardDays}天", style = MaterialTheme.typography.bodyLarge)
-        if (renewal.effectiveFrom.isAfter(asOf)) C2StatusChip("尚未生效", Modifier.testTag("subscription-renewal-future-${renewal.id}"))
-        Text("生效 ${renewal.effectiveFrom} · 到期 ${renewal.paidUntilExclusive}（不含当日）",
-            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        C5InformationButton("付款及覆盖日期", Modifier.testTag("subscription-renewal-date-information-${renewal.id}")) {
-            if (renewal.effectiveFrom.isAfter(asOf)) Text("这笔已确认付款用于未来周期，不代表已经使用该段时间。当前套餐以实际生效日期为准。",
-                Modifier.testTag("subscription-renewal-future-explanation-${renewal.id}"))
-            Text("实际生效日期：${renewal.effectiveFrom}")
-            Text("付费到期边界：${renewal.paidUntilExclusive}（当天不包含）")
-            Text("提醒到期日：${renewal.reminderDueOn}")
-        }
-        var paymentActionsOpen by rememberSaveable(renewal.id) { mutableStateOf(false) }
-        Box {
-            TextButton({ paymentActionsOpen = true }, Modifier.heightIn(min = 48.dp).testTag("subscription-renewal-actions-${renewal.id}"), enabled) {
-                C2Icon(C2Glyph.More); Text("付款操作")
+        Row(Modifier.padding(vertical = 12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Box(Modifier.padding(top = 8.dp).size(6.dp).background(MaterialTheme.colorScheme.primary, CircleShape))
+            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text("真实付款日期：${renewal.paidOn}", Modifier.testTag("subscription-renewal-paid-on-${renewal.id}"),
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                BoxWithConstraints(Modifier.fillMaxWidth()) {
+                    val amount = BigDecimal.valueOf(renewal.amountCents, 2)
+                    val amountWidth = ((maxWidth - 12.dp) / 2).coerceAtLeast(0.dp)
+                    val amountFits = moneyMetricFitsAtPreferredSize(amount, amountWidth, AmountUnit.YUAN)
+                    val cycle: @Composable () -> Unit = {
+                        Text("${billingCycleLabel(renewal.cycle)} · 折算${renewal.standardDays}天",
+                            style = MaterialTheme.typography.titleMedium)
+                    }
+                    val paid: @Composable () -> Unit = {
+                        MoneyMetric(amount, Modifier.testTag("subscription-renewal-amount-${renewal.id}"), unit = AmountUnit.YUAN,
+                            level = MoneyMetricLevel.ROW, label = "真实付款金额")
+                    }
+                    if (LocalDensity.current.fontScale > 1.3f || maxWidth < 260.dp || !amountFits) {
+                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) { cycle(); paid() }
+                    } else Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Box(Modifier.weight(1f)) { cycle() }
+                        Box(Modifier.weight(1f), contentAlignment = Alignment.CenterEnd) { paid() }
+                    }
+                }
+                if (renewal.effectiveFrom.isAfter(asOf)) C2StatusChip("尚未生效", Modifier.testTag("subscription-renewal-future-${renewal.id}"))
+                Text("生效 ${renewal.effectiveFrom} · 到期 ${renewal.paidUntilExclusive}（不含当日）",
+                    style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                C5InformationButton("付款及覆盖日期", Modifier.testTag("subscription-renewal-date-information-${renewal.id}")) {
+                    if (renewal.effectiveFrom.isAfter(asOf)) Text("这笔已确认付款用于未来周期，不代表已经使用该段时间。当前套餐以实际生效日期为准。",
+                        Modifier.testTag("subscription-renewal-future-explanation-${renewal.id}"))
+                    Text("实际生效日期：${renewal.effectiveFrom}")
+                    Text("付费到期边界：${renewal.paidUntilExclusive}（当天不包含）")
+                    Text("提醒到期日：${renewal.reminderDueOn}")
+                }
+                var paymentActionsOpen by rememberSaveable(renewal.id) { mutableStateOf(false) }
+                Box {
+                    TextButton({ paymentActionsOpen = true }, Modifier.heightIn(min = 48.dp).testTag("subscription-renewal-actions-${renewal.id}"), enabled) {
+                        C2Icon(C2Glyph.More); Text("付款操作")
+                    }
+                    DropdownMenu(paymentActionsOpen, { paymentActionsOpen = false }) {
+                        DropdownMenuItem(text = { Text("修正这笔付款", color = if (enabled) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant) }, onClick = { paymentActionsOpen = false; onCorrect() },
+                            modifier = Modifier.testTag("subscription-renewal-correct-${renewal.id}"), enabled = enabled)
+                        DropdownMenuItem(text = { Text("删除错误付款", color = MaterialTheme.colorScheme.error) },
+                            onClick = { paymentActionsOpen = false; onDelete() },
+                            modifier = Modifier.testTag("subscription-renewal-delete-${renewal.id}"), enabled = enabled)
+                    }
+                }
+                HorizontalDivider()
             }
-            DropdownMenu(paymentActionsOpen, { paymentActionsOpen = false }) {
-                DropdownMenuItem(text = { Text("修正这笔付款", color = if (enabled) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant) }, onClick = { paymentActionsOpen = false; onCorrect() },
-                    modifier = Modifier.testTag("subscription-renewal-correct-${renewal.id}"), enabled = enabled)
-                DropdownMenuItem(text = { Text("删除错误付款", color = MaterialTheme.colorScheme.error) },
-                    onClick = { paymentActionsOpen = false; onDelete() },
-                    modifier = Modifier.testTag("subscription-renewal-delete-${renewal.id}"), enabled = enabled)
-            }
         }
-        HorizontalDivider()
-    }
     }
 }

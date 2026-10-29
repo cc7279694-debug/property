@@ -76,7 +76,7 @@ class C9RecordThemeTest {
     @Test fun long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes() {
         val seed = C2VisualFixtures(populated = true).projects.items.single()
         val events = seed.events.mapIndexed { index, event ->
-            event.copy(amountCents = if (index == 0) 128_800 else 9_000_000_000_000_000L)
+            event.copy(amountCents = if (index == 0) 128_800 else Money.MAX_CENTS)
         }
         val snapshot = ProjectSnapshot(LongTermProject(seed.project.startedOn), events.map {
             ProjectMoneyEvent(it.direction, Money(it.amountCents), it.occurredOn)
@@ -101,7 +101,7 @@ class C9RecordThemeTest {
             compose.onNodeWithTag("project-record-money").assertIsDisplayed()
             compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-amount-${events.last().id}"))
             compose.waitForIdle()
-            compose.onNodeWithTag("project-event-amount-${events.last().id}").assertTextContains("¥90000000000000.00")
+            compose.onNodeWithTag("project-event-amount-${events.last().id}").assertTextContains("¥9999999999.99")
             compose.onNodeWithTag("project-detail-content").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, -100_000f) }
             compose.waitForIdle()
         }
