@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-29T12:50:09.017Z" hostname="WHOCARE" time="0.048">
+  <properties/>
+  <testcase name="failed_confirmation_distinguishes_preserved_current_data_from_unknown_outcome" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.005"/>
+  <testcase name="duplicate_picker_callback_and_double_confirmation_cannot_start_a_second_restore" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.006"/>
+  <testcase name="selecting_and_validating_a_backup_only_opens_preview_until_explicit_confirmation" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.004"/>
+  <testcase name="launch_failure_is_retryable_without_preparing_any_backup" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.003"/>
+  <testcase name="cancelling_selection_and_preview_never_applies_or_reuses_the_prepared_backup" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.005"/>
+  <testcase name="unexpected_confirmation_failure_does_not_promise_old_data_preservation_or_expose_paths" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.004"/>
+  <testcase name="validation_failure_keeps_current_data_and_requires_a_new_selection" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.005"/>
+  <testcase name="confirm_without_a_live_validated_preview_never_reaches_storage" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.004"/>
+  <testcase name="recreated_process_rejects_late_picker_result_and_never_restores_automatically" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.004"/>
+  <testcase name="cancellation_during_validation_returns_to_safe_manual_selection_without_a_preview" classname="com.cooper.lithic.feature.settings.BackupRestoreControllerTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.domain.report.ItemTimelineTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-10-29T12:50:08.263Z" hostname="WHOCARE" time="0.031">
+  <properties/>
+  <testcase name="before_start_prepayment_is_an_event_but_not_a_fabricated_zero_curve" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="past_event_boundary" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="subscription_only_future_coverage_shows_zero_not_an_active_future_price" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.0"/>
+  <testcase name="negative_values_visible" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.0"/>
+  <testcase name="subscription_late_payment_respects_paid_on_in_addition_to_coverage" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="subscription_same_identity_reopen_and_fixed_standard_days_remain_frozen_engine_results" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="local_date_extremes_use_bounded_sampling_without_date_overflow" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.0"/>
+  <testcase name="subscription_is_step_not_smooth" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.005"/>
+  <testcase name="subscription_pause_resume_expiry_and_stopping_are_zero_with_their_real_status" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="no_forecast" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.002"/>
+  <testcase name="long_span_preserves_all_event_neighbors_without_enumerating_all_dates" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="empty_future_only_and_invalid_display_limits_fail_or_remain_explicit" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="same_day_multiple_money_events_are_all_counted_and_the_day_is_not_duplicated" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.0"/>
+  <testcase name="subscription_long_span_keeps_every_state_and_coverage_neighbor" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="noncash_trade_in_money_is_not_counted_again_as_an_extra_initial_total" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.0"/>
+  <testcase name="a_future_end_does_not_truncate_today_or_plot_the_future" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="q02_ended_snapshot_observes_each_historical_day_then_freezes_duration" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="all_fact_boundaries_are_retained_even_when_more_than_the_base_point_limit" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.006"/>
+  <testcase name="subscription_gap_is_retained_instead_of_connecting_positive_periods" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.001"/>
+  <testcase name="subscription_prepaid_future_period_and_future_stop_are_not_forecast" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.002"/>
+  <testcase name="all_zero_all_negative_tiny_nonzero_and_single_day_keep_exact_rates" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.002"/>
+  <testcase name="subscription_current_paused_or_stopped_state_does_not_overwrite_past_active_days" classname="com.cooper.lithic.domain.report.ItemTimelineTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

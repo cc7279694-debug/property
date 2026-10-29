@@ -31,7 +31,23 @@ data class TotalCostTrendUiState(
     val loading: Boolean = false,
     val error: String? = null,
     val notice: String? = null,
-)
+    /** Recalculating a date from retained facts cannot resolve a failed complete read. */
+    val readError: String? = null,
+) {
+    internal fun onReadFailed(): TotalCostTrendUiState {
+        val failure = "尚未刷新：读取或计算失败。已有图表仍为上次截止日的结果，请重试。"
+        return copy(loading = false, error = failure, readError = failure)
+    }
+
+    internal fun onSelectingDate(date: LocalDate) = copy(selectedDate = date, selectedPoint = null,
+        events = emptyList(), error = readError, notice = null)
+
+    internal fun onPointFailed() = copy(error = listOfNotNull(readError, "该日计算失败，请重新读取。").joinToString(" "))
+
+    internal fun onReadSucceeded(input: LedgerSnapshot, timeline: CostTimeline, selected: LocalDate,
+        point: CostTimelinePoint, notice: String?) = TotalCostTrendUiState(input, timeline, selected, point,
+        timeline.events.filter { it.date == selected }, showBreakdown, notice = notice, readError = null)
+}
 
 /** One existing generation owns this model. Read and selection tickets fence stale IO/CPU
  * completions; cancellation is cooperative and is never treated as proof of stopped work. */
@@ -81,16 +97,14 @@ internal class TotalCostTrendViewModel(
                     }
                     if (!active || ticket != readTicket) return@launch
                     if (selection != pointTicket) continue
-                    mutable.value = TotalCostTrendUiState(input, timeline, selected, point,
-                        timeline.events.filter { it.date == selected }, state.value.showBreakdown,
+                    mutable.value = state.value.onReadSucceeded(input, timeline, selected, point,
                         notice = if (requested != null && requested.isAfter(asOf))
                             "所选日期晚于当前截止日，已调整为 $asOf，并重新计算。" else null)
                     return@launch
                 }
             } catch (cancelled: CancellationException) { throw cancelled }
             catch (_: Exception) {
-                if (active && ticket == readTicket) mutable.value = state.value.copy(loading = false,
-                    error = "尚未刷新：读取或计算失败。已有图表仍为上次截止日的结果，请重试。")
+                if (active && ticket == readTicket) mutable.value = state.value.onReadFailed()
             }
         }
     }
@@ -109,7 +123,7 @@ internal class TotalCostTrendViewModel(
         val ticket = ++pointTicket
         val dataset = readTicket
         pointJob?.cancel()
-        mutable.value = captured.copy(selectedDate = date, selectedPoint = null, events = emptyList(), error = null, notice = null)
+        mutable.value = captured.onSelectingDate(date)
         pointJob = viewModelScope.launch {
             try {
                 val point = withContext(Dispatchers.Default) {
@@ -124,7 +138,7 @@ internal class TotalCostTrendViewModel(
             } catch (cancelled: CancellationException) { throw cancelled }
             catch (_: Exception) {
                 if (active && ticket == pointTicket && dataset == readTicket && state.value.snapshot === input &&
-                    state.value.timeline === timeline) mutable.value = state.value.copy(error = "该日计算失败，请重新读取。")
+                    state.value.timeline === timeline) mutable.value = state.value.onPointFailed()
             }
         }
     }

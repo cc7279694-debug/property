@@ -119,7 +119,17 @@ class M17TimelineViewModelTest {
         await(model) { !it.loading && it.error != null }
         assertEquals(original, model.state.value.project)
         assertFalse(model.state.value.missing)
+        val readFailure = model.state.value.error
+        val selected = firstDay.minusDays(2)
+        onMain { model.selectDate(selected) }
+        await(model) { it.selectedProject?.date == selected }
+        assertSame(original, model.state.value.project)
+        assertEquals(readFailure, model.state.value.error)
+        assertEquals(readFailure, model.state.value.readError)
         shouldFail.set(false)
+        onMain { model.refresh() }
+        await(model) { !it.loading && it.error == null && it.selectedProject?.date == selected }
+        assertNull(model.state.value.readError)
         generation.coordinator.withWrite {
             generation.database.withTransaction {
                 generation.database.openHelper.writableDatabase.execSQL("DELETE FROM project_money_events WHERE projectId=?", arrayOf(project.id))

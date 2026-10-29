@@ -1,0 +1,42 @@
+[
+  {
+    "class": "com.cooper.lithic.feature.review.M22TimelineReadStateTest",
+    "tests": 12,
+    "failures": 6,
+    "errors": 0,
+    "skipped": 0,
+    "failedMethods": [
+      "subscription_failed_refresh_keeps_read_warning_when_selecting_another_history_day",
+      "subscription_failed_refresh_keeps_read_warning_when_reselecting_the_same_day",
+      "total_failed_refresh_keeps_read_warning_when_reselecting_the_same_day",
+      "total_failed_refresh_keeps_read_warning_when_selecting_another_history_day",
+      "project_failed_refresh_keeps_read_warning_when_reselecting_the_same_day",
+      "project_failed_refresh_keeps_read_warning_when_selecting_another_history_day"
+    ]
+  },
+  {
+    "class": "com.cooper.lithic.feature.settings.BackupRecreationWarningTest",
+    "tests": 10,
+    "failures": 5,
+    "errors": 0,
+    "skipped": 0,
+    "failedMethods": [
+      "late_restore_picker_callbacks_do_not_clear_a_recreated_unknown_result",
+      "cancelled_confirmation_keeps_its_unknown_result_rebuildable",
+      "unknown_restore_result_remains_rebuildable_after_its_operation_returns_to_idle",
+      "late_export_picker_callbacks_do_not_clear_unknown_or_delete_an_unproven_target",
+      "confirmation_exception_keeps_a_recreation_warning_without_exposing_the_failure"
+    ]
+  },
+  {
+    "class": "com.cooper.lithic.platform.notification.ReminderRequestObservationTest",
+    "tests": 5,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "failedMethods": [
+      "initial_request_failure_does_not_end_observation",
+      "change_request_failure_keeps_observing_later_changes"
+    ]
+  }
+]

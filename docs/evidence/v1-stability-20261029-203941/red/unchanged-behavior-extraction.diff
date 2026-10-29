@@ -1,0 +1,220 @@
+diff --git a/app/src/main/java/com/cooper/lithic/feature/report/ItemTimelineViewModel.kt b/app/src/main/java/com/cooper/lithic/feature/report/ItemTimelineViewModel.kt
+index 2ba25ab..99d56f2 100644
+--- a/app/src/main/java/com/cooper/lithic/feature/report/ItemTimelineViewModel.kt
++++ b/app/src/main/java/com/cooper/lithic/feature/report/ItemTimelineViewModel.kt
+@@ -32,7 +32,18 @@ data class ItemTimelineUiState(
+     val selectedSubscription: SubscriptionTimelinePoint? = null,
+     val events: List<ChartEvent> = emptyList(),
+     val loading: Boolean = false, val error: String? = null, val missing: Boolean = false,
+-)
++) {
++    internal fun onReadFailed() = copy(loading = false,
++        error = "读取失败。已有图表为上次读取结果，请重试。")
++
++    internal fun onSelectingDate(date: LocalDate) = copy(selectedDate = date, selectedProject = null,
++        selectedSubscription = null, error = null)
++
++    internal fun onPointFailed() = copy(error = "该日计算失败，请重新读取。")
++
++    /** A completed read replaces the retained dataset and its already calculated selection. */
++    internal fun onReadSucceeded(fresh: ItemTimelineUiState) = fresh
++}
+ 
+ /** Owned by the existing generation UI scope. Tickets reject late CPU/IO results even if a
+  * cooperative cancellation cannot interrupt them; no database read is made per display point. */
+@@ -102,18 +113,17 @@ internal class ItemTimelineViewModel(
+                     pointTicket++; pointJob?.cancel()
+                     // Dataset, date and exact result publish together; a completed refresh must
+                     // never transiently forget the selection or label an old amount with a new day.
+-                    mutable.value = complete
++                    mutable.value = state.value.onReadSucceeded(complete)
+                 } else {
+                     // A user chose another date during computation. Keep that newer intent,
+                     // clear the previous dataset's point and calculate against the fresh snapshot.
+                     val latest = state.value.selectedDate?.coerceAtMost(asOf) ?: asOf
+-                    mutable.value = loaded.copy(selectedDate = latest)
++                    mutable.value = state.value.onReadSucceeded(loaded.copy(selectedDate = latest))
+                     selectDate(latest)
+                 }
+             } catch (cancelled: CancellationException) { throw cancelled }
+             catch (_: Exception) {
+-                if (ticket == readTicket && active) mutable.value = state.value.copy(loading = false,
+-                    error = "读取失败。已有图表为上次读取结果，请重试。")
++                if (ticket == readTicket && active) mutable.value = state.value.onReadFailed()
+             }
+         }
+     }
+@@ -131,7 +141,7 @@ internal class ItemTimelineViewModel(
+         val ticket = ++pointTicket
+         val datasetTicket = readTicket
+         pointJob?.cancel()
+-        mutable.value = captured.copy(selectedDate = date, selectedProject = null, selectedSubscription = null, error = null)
++        mutable.value = captured.onSelectingDate(date)
+         pointJob = viewModelScope.launch {
+             try {
+                 val point = withContext(Dispatchers.Default) {
+@@ -150,7 +160,7 @@ internal class ItemTimelineViewModel(
+             } catch (cancelled: CancellationException) { throw cancelled }
+             catch (_: Exception) {
+                 if (ticket == pointTicket && datasetTicket == readTicket && active && !state.value.missing &&
+-                    state.value.project === captured.project && state.value.subscription === captured.subscription) mutable.value = state.value.copy(error = "该日计算失败，请重新读取。")
++                    state.value.project === captured.project && state.value.subscription === captured.subscription) mutable.value = state.value.onPointFailed()
+             }
+         }
+     }
+diff --git a/app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendViewModel.kt b/app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendViewModel.kt
+index cdaf663..d90123a 100644
+--- a/app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendViewModel.kt
++++ b/app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendViewModel.kt
+@@ -31,7 +31,19 @@ data class TotalCostTrendUiState(
+     val loading: Boolean = false,
+     val error: String? = null,
+     val notice: String? = null,
+-)
++) {
++    internal fun onReadFailed() = copy(loading = false,
++        error = "尚未刷新：读取或计算失败。已有图表仍为上次截止日的结果，请重试。")
++
++    internal fun onSelectingDate(date: LocalDate) = copy(selectedDate = date, selectedPoint = null,
++        events = emptyList(), error = null, notice = null)
++
++    internal fun onPointFailed() = copy(error = "该日计算失败，请重新读取。")
++
++    internal fun onReadSucceeded(input: LedgerSnapshot, timeline: CostTimeline, selected: LocalDate,
++        point: CostTimelinePoint, notice: String?) = TotalCostTrendUiState(input, timeline, selected, point,
++        timeline.events.filter { it.date == selected }, showBreakdown, notice = notice)
++}
+ 
+ /** One existing generation owns this model. Read and selection tickets fence stale IO/CPU
+  * completions; cancellation is cooperative and is never treated as proof of stopped work. */
+@@ -81,16 +93,14 @@ internal class TotalCostTrendViewModel(
+                     }
+                     if (!active || ticket != readTicket) return@launch
+                     if (selection != pointTicket) continue
+-                    mutable.value = TotalCostTrendUiState(input, timeline, selected, point,
+-                        timeline.events.filter { it.date == selected }, state.value.showBreakdown,
++                    mutable.value = state.value.onReadSucceeded(input, timeline, selected, point,
+                         notice = if (requested != null && requested.isAfter(asOf))
+                             "所选日期晚于当前截止日，已调整为 $asOf，并重新计算。" else null)
+                     return@launch
+                 }
+             } catch (cancelled: CancellationException) { throw cancelled }
+             catch (_: Exception) {
+-                if (active && ticket == readTicket) mutable.value = state.value.copy(loading = false,
+-                    error = "尚未刷新：读取或计算失败。已有图表仍为上次截止日的结果，请重试。")
++                if (active && ticket == readTicket) mutable.value = state.value.onReadFailed()
+             }
+         }
+     }
+@@ -109,7 +119,7 @@ internal class TotalCostTrendViewModel(
+         val ticket = ++pointTicket
+         val dataset = readTicket
+         pointJob?.cancel()
+-        mutable.value = captured.copy(selectedDate = date, selectedPoint = null, events = emptyList(), error = null, notice = null)
++        mutable.value = captured.onSelectingDate(date)
+         pointJob = viewModelScope.launch {
+             try {
+                 val point = withContext(Dispatchers.Default) {
+@@ -124,7 +134,7 @@ internal class TotalCostTrendViewModel(
+             } catch (cancelled: CancellationException) { throw cancelled }
+             catch (_: Exception) {
+                 if (active && ticket == pointTicket && dataset == readTicket && state.value.snapshot === input &&
+-                    state.value.timeline === timeline) mutable.value = state.value.copy(error = "该日计算失败，请重新读取。")
++                    state.value.timeline === timeline) mutable.value = state.value.onPointFailed()
+             }
+         }
+     }
+diff --git a/app/src/main/java/com/cooper/lithic/feature/settings/BackupExportController.kt b/app/src/main/java/com/cooper/lithic/feature/settings/BackupExportController.kt
+index 712dfc1..1dcecb9 100644
+--- a/app/src/main/java/com/cooper/lithic/feature/settings/BackupExportController.kt
++++ b/app/src/main/java/com/cooper/lithic/feature/settings/BackupExportController.kt
+@@ -37,6 +37,9 @@ internal data class BackupExportUiState(
+     }
+ }
+ 
++/** Rebuild presentation after recreation; this marker never authorizes export IO. */
++internal fun BackupExportUiState.requiresRecreationWarning(): Boolean = phase != BackupUiPhase.IDLE
++
+ /** State lives above the settings composition; only a live, accepted picker result can start IO. */
+ internal class BackupExportController(
+     private var interruptedOnRecreation: Boolean = false,
+diff --git a/app/src/main/java/com/cooper/lithic/feature/settings/BackupExportViewModel.kt b/app/src/main/java/com/cooper/lithic/feature/settings/BackupExportViewModel.kt
+index 8da54ee..97f2dc6 100644
+--- a/app/src/main/java/com/cooper/lithic/feature/settings/BackupExportViewModel.kt
++++ b/app/src/main/java/com/cooper/lithic/feature/settings/BackupExportViewModel.kt
+@@ -25,23 +25,25 @@ internal class BackupExportViewModel(
+ 
+     fun selectionCancelled() {
+         controller.selectionCancelled()
+-        if (state.value.phase == BackupUiPhase.IDLE) saved[ACTIVE_KEY] = false
++        updateSavedMarker()
+     }
+ 
+     fun selectionLaunchFailed(possibleResidual: Boolean = false) {
+         controller.selectionLaunchFailed(possibleResidual)
+-        if (state.value.phase == BackupUiPhase.IDLE) saved[ACTIVE_KEY] = false
++        updateSavedMarker()
+     }
+ 
+     fun selected(target: BackupTarget) {
+         if (exportJob?.isActive == true) return
+         exportJob = viewModelScope.launch {
+             try { controller.selected(target) }
+-            finally { if (state.value.phase == BackupUiPhase.IDLE) saved[ACTIVE_KEY] = false }
++            finally { updateSavedMarker() }
+         }
+     }
+ 
+     fun cancelExport() { exportJob?.cancel() }
+ 
++    private fun updateSavedMarker() { saved[ACTIVE_KEY] = state.value.requiresRecreationWarning() }
++
+     companion object { private const val ACTIVE_KEY = "lithic.backup.incomplete" }
+ }
+diff --git a/app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreController.kt b/app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreController.kt
+index f10fa28..6abe35e 100644
+--- a/app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreController.kt
++++ b/app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreController.kt
+@@ -32,6 +32,9 @@ internal data class BackupRestoreUiState(
+     val messageTone: UiMessageTone get() = feedback.messageTone
+ }
+ 
++/** Rebuild presentation after recreation; this marker never authorizes a restore. */
++internal fun BackupRestoreUiState.requiresRecreationWarning(): Boolean = phase != RestoreUiPhase.IDLE
++
+ /** Only an explicit confirmation of this live preview can pass its private capability to storage. */
+ internal class BackupRestoreController(
+     interruptedOnRecreation: Boolean = false,
+diff --git a/app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreViewModel.kt b/app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreViewModel.kt
+index 22bda55..d587254 100644
+--- a/app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreViewModel.kt
++++ b/app/src/main/java/com/cooper/lithic/feature/settings/BackupRestoreViewModel.kt
+@@ -50,7 +50,7 @@ internal class BackupRestoreViewModel(
+         }
+     }
+ 
+-    private fun updateSavedMarker() { saved[ACTIVE_KEY] = state.value.phase != RestoreUiPhase.IDLE }
++    private fun updateSavedMarker() { saved[ACTIVE_KEY] = state.value.requiresRecreationWarning() }
+ 
+     companion object { private const val ACTIVE_KEY = "lithic.restore.incomplete" }
+ }
+diff --git a/app/src/main/java/com/cooper/lithic/platform/notification/ReminderRuntime.kt b/app/src/main/java/com/cooper/lithic/platform/notification/ReminderRuntime.kt
+index e22d7f2..9c91a36 100644
+--- a/app/src/main/java/com/cooper/lithic/platform/notification/ReminderRuntime.kt
++++ b/app/src/main/java/com/cooper/lithic/platform/notification/ReminderRuntime.kt
+@@ -23,10 +23,11 @@ class ReminderRuntime(private val context: Context, private val container: AppCo
+             container.storageState.collectLatest { ready ->
+                 if (ready is StorageInitializationState.Ready) {
+                     try {
+-                        ReminderScheduling.request(context)
+-                        merge(ready.generation.settings.reminderChanges,
+-                            ready.generation.database.invalidationTracker.createFlow("long_term_projects","subscriptions","subscription_renewals","subscription_state_changes",emitInitialState=false).map { Unit })
+-                            .collect { ReminderScheduling.request(context) }
++                        observeReminderRequests(
++                            merge(ready.generation.settings.reminderChanges,
++                                ready.generation.database.invalidationTracker.createFlow("long_term_projects","subscriptions","subscription_renewals","subscription_state_changes",emitInitialState=false).map { Unit }),
++                            request = { ReminderScheduling.request(context) },
++                        )
+                     } catch (cancelled:CancellationException) { throw cancelled }
+                     catch (_:Exception) { Log.e("LITHIC_REMINDER","Reminder coordination unavailable; business storage unchanged") }
+                 }

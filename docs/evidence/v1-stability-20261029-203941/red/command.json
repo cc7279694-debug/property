@@ -1,0 +1,22 @@
+{
+  "startedUtc": "2026-10-29T12:40:59.0153998Z",
+  "memoryGiB": 4.704837799072266,
+  "command": "gradlew.bat",
+  "arguments": [
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.platform.notification.ReminderRequestObservationTest",
+    "--tests",
+    "com.cooper.lithic.feature.settings.BackupRecreationWarningTest",
+    "--tests",
+    "com.cooper.lithic.feature.review.M22TimelineReadStateTest"
+  ],
+  "purpose": "Behavioral RED against extracted unchanged baseline semantics; no Android",
+  "deviceOperations": 0,
+  "exitCode": 1,
+  "finishedUtc": "2026-10-29T12:44:29.7216448Z"
+}

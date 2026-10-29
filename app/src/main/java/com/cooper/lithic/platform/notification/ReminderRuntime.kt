@@ -23,10 +23,12 @@ class ReminderRuntime(private val context: Context, private val container: AppCo
             container.storageState.collectLatest { ready ->
                 if (ready is StorageInitializationState.Ready) {
                     try {
-                        ReminderScheduling.request(context)
-                        merge(ready.generation.settings.reminderChanges,
-                            ready.generation.database.invalidationTracker.createFlow("long_term_projects","subscriptions","subscription_renewals","subscription_state_changes",emitInitialState=false).map { Unit })
-                            .collect { ReminderScheduling.request(context) }
+                        observeReminderRequests(
+                            merge(ready.generation.settings.reminderChanges,
+                                ready.generation.database.invalidationTracker.createFlow("long_term_projects","subscriptions","subscription_renewals","subscription_state_changes",emitInitialState=false).map { Unit }),
+                            request = { ReminderScheduling.request(context) },
+                            onRequestFailed = { Log.e("LITHIC_REMINDER", "Reminder request unavailable; observing storage changes") },
+                        )
                     } catch (cancelled:CancellationException) { throw cancelled }
                     catch (_:Exception) { Log.e("LITHIC_REMINDER","Reminder coordination unavailable; business storage unchanged") }
                 }

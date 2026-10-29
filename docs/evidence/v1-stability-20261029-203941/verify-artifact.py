@@ -1,0 +1,56 @@
+from pathlib import Path
+import subprocess,os,json,hashlib,zipfile,struct,re
+root=Path.cwd();ev=root/'docs/evidence/v1-stability-20261029-203941';out=ev/'artifact-final';out.mkdir();sdk=Path('C:/Users/CDD/AppData/Local/MirraAndroid/sdk/build-tools/36.0.0');env=dict(os.environ);env['JAVA_HOME']='C:/Users/CDD/AppData/Local/MirraAndroid/jdk17/jdk-17.0.20.1+1';env['PATH']=env['JAVA_HOME']+'/bin;'+env['PATH'];sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+assert json.loads((ev/'green/command.json').read_text(encoding='utf-8-sig'))['exitCode']==0
+apk=root/'app/build/outputs/apk/debug/app-debug.apk';cert='29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9';commands=[]
+def capture(label,args):
+ p=subprocess.run(args,env=env,capture_output=True,timeout=60);(out/(label+'.stdout')).write_bytes(p.stdout);(out/(label+'.stderr')).write_bytes(p.stderr);commands.append({'argv':args,'exitCode':p.returncode});(out/'commands.json').write_text(json.dumps(commands,indent=2)+'\n',encoding='utf-8');assert p.returncode==0;return p.stdout.decode('utf-8',errors='replace')
+b=capture('badging',[str(sdk/'aapt2.exe'),'dump','badging',str(apk)]);m=capture('manifest',[str(sdk/'aapt2.exe'),'dump','xmltree',str(apk),'--file','AndroidManifest.xml']);c=capture('certificate',[str(sdk/'apksigner.bat'),'verify','--verbose','--print-certs',str(apk)])
+assert "name='com.cooper.lithic.debug'" in b and "versionCode='17'" in b and "versionName='0.1.0-m22-debug'" in b and cert in c.lower();assert "launchable-activity: name='com.cooper.lithic.app.MainActivity'" in b and 'com.cooper.lithic.app.LithicApplication' in m and 'E: instrumentation' not in m and 'android.permission.INTERNET' not in m
+def dex_metadata(data):
+ u32=lambda p:struct.unpack_from("<I",data,p)[0]
+ def uleb(pos):
+  value=shift=0
+  while True:
+   v=data[pos];pos+=1;value|=(v&127)<<shift
+   if not v&128:return value,pos
+   shift+=7
+ strings=[]
+ for i in range(u32(0x38)):
+  pos=u32(u32(0x3c)+i*4);_,pos=uleb(pos);strings.append(data[pos:data.index(b"\0",pos)].decode("utf-8",errors="replace"))
+ types=[strings[u32(u32(0x44)+i*4)] for i in range(u32(0x40))]
+ classes=set();roles=set()
+ for i in range(u32(0x60)):
+  base=u32(0x64)+i*32;name=types[u32(base)];classes.add(name)
+  if name not in {"Lcom/cooper/lithic/feature/review/TotalCostTrendUiState;","Lcom/cooper/lithic/feature/report/ItemTimelineUiState;"}:continue
+  pos=u32(base+24);counts=[]
+  for _ in range(4):value,pos=uleb(pos);counts.append(value)
+  for count in counts[:2]:
+   index=0
+   for _ in range(count):
+    diff,pos=uleb(pos);index+=diff;_,pos=uleb(pos)
+    roles.add(name+"."+strings[u32(u32(0x54)+index*8+4)])
+ return classes,roles,set(strings)
+
+def apk_metadata(path):
+ with zipfile.ZipFile(path) as z:
+  classes=set();roles=set();strings=set()
+  for n in z.namelist():
+   if re.fullmatch(r"classes\d*\.dex",n):
+    a,b,c=dex_metadata(z.read(n));classes|=a;roles|=b;strings|=c
+  libs={n:hashlib.sha256(z.read(n)).hexdigest() for n in z.namelist() if n.startswith("lib/") and n.endswith(".so")}
+ return classes,roles,strings,libs
+classes,fields,strings,libs=apk_metadata(apk);required=['platform/notification/ReminderRuntime','platform/notification/ReminderRequestObservationKt','feature/settings/BackupRestoreControllerKt','feature/settings/BackupExportControllerKt','feature/review/TotalCostTrendUiState','feature/report/ItemTimelineUiState'];assert all('Lcom/cooper/lithic/'+n+';' in classes for n in required);readFields=['Lcom/cooper/lithic/feature/review/TotalCostTrendUiState;.readError','Lcom/cooper/lithic/feature/report/ItemTimelineUiState;.readError'];assert set(readFields)<=fields
+assert not [x for x in classes if any(n in x for n in ['M13IsolatedRunner','BackupRecreationWarningTest','ReminderRequestObservationTest','M22TimelineReadStateTest'])]
+pre=json.loads((ev/'preflight.json').read_text(encoding='utf-8'))
+for path,expected in pre['protectedSources'].items():assert sha(root/path)==expected,path
+missing=[];preserved=[]
+for a in pre['existingApks']:
+ p=root/a['path']
+ if not p.is_file():
+  assert a['path'].startswith('app/build-c6-isolation/');missing.append(a);continue
+ assert p.stat().st_size==a['bytes'] and sha(p)==a['sha256'],a['path'];preserved.append(a)
+assert len([a for a in preserved if a['path'].startswith('deliveries/')])==11
+_,_,_,priorlibs=apk_metadata(root/'deliveries/lithic-preview-0.1.0-preview.12/Lithic-0.1.0-preview.12-debug.apk');assert libs==priorlibs
+for path,expected in json.loads((ev/'green/source-fingerprints.json').read_text(encoding='utf-8')).items():assert sha(root/path)==expected,path
+result={'developerDebugOnlyNotAUserDelivery':True,'path':str(apk),'package':'com.cooper.lithic.debug','versionCode':17,'versionName':'0.1.0-m22-debug','bytes':apk.stat().st_size,'sha256':sha(apk),'certificateSha256':cert,'actualChangedProductionClasses':required,'actualReadErrorFields':readFields,'nativeEntriesUnchangedFromPreview12':libs,'protectedSourceFileCount':len(pre['protectedSources']),'verifiedExistingApksUnchanged':len(preserved),'userDeliveryApksPreserved':11,'missingNonDeliveryBuildCandidates':missing,'artifactRetentionGate':'NOTE_C6_APP_MISSING_NOT_REBUILT','frozenContractsUnchanged':True,'newUserApkDeliveryCopies':0,'androidExecution':'NOT_RUN','deviceOperations':0};(out/'identity.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print('DEVELOPER_IDENTITY_FROZEN_SOURCE_AND_11_DELIVERIES_PASS; C6_APP_MISSING_NOTE',result['sha256'])

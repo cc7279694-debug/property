@@ -37,6 +37,10 @@ internal data class BackupExportUiState(
     }
 }
 
+/** Rebuild presentation after recreation; this marker never authorizes export IO. */
+internal fun BackupExportUiState.requiresRecreationWarning(): Boolean =
+    phase != BackupUiPhase.IDLE || feedback == BackupExportFeedback.INTERRUPTED_UNKNOWN
+
 /** State lives above the settings composition; only a live, accepted picker result can start IO. */
 internal class BackupExportController(
     private var interruptedOnRecreation: Boolean = false,

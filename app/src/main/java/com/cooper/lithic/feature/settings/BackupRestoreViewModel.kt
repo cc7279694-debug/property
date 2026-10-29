@@ -50,7 +50,7 @@ internal class BackupRestoreViewModel(
         }
     }
 
-    private fun updateSavedMarker() { saved[ACTIVE_KEY] = state.value.phase != RestoreUiPhase.IDLE }
+    private fun updateSavedMarker() { saved[ACTIVE_KEY] = state.value.requiresRecreationWarning() }
 
     companion object { private const val ACTIVE_KEY = "lithic.restore.incomplete" }
 }

@@ -113,6 +113,18 @@ class M18TotalCostTrendViewModelTest {
         assertEquals(old.timeline, model.state.value.timeline)
         assertEquals(old.selectedPoint, model.state.value.selectedPoint)
         assertTrue(checkNotNull(model.state.value.error).contains("尚未刷新"))
+        val readFailure = model.state.value.error
+        val selected = day.minusDays(2)
+        onMain { model.selectDate(selected) }
+        await(model) { it.selectedPoint?.date == selected }
+        assertSame(old.snapshot, model.state.value.snapshot)
+        assertEquals(readFailure, model.state.value.error)
+        assertEquals(readFailure, model.state.value.readError)
+        fail.set(false)
+        onMain { model.refresh() }
+        await(model) { !it.loading && it.timeline?.asOf == day.plusDays(1) && it.selectedPoint?.date == selected }
+        assertNull(model.state.value.error)
+        assertNull(model.state.value.readError)
     }
 
     @Test fun write_day_and_foreground_refresh_publish_matching_snapshot_point_events_and_preserve_selection(): Unit = runBlocking {

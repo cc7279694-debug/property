@@ -1,0 +1,13 @@
+package com.cooper.lithic.platform.notification
+
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+
+/** Observes one generation; the caller owns the observation's failure boundary. */
+internal suspend fun observeReminderRequests(
+    changes: Flow<Unit>,
+    request: () -> Unit,
+) {
+    request()
+    changes.collect { request() }
+}

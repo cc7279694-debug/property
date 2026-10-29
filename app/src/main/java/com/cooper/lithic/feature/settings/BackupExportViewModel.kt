@@ -25,23 +25,25 @@ internal class BackupExportViewModel(
 
     fun selectionCancelled() {
         controller.selectionCancelled()
-        if (state.value.phase == BackupUiPhase.IDLE) saved[ACTIVE_KEY] = false
+        updateSavedMarker()
     }
 
     fun selectionLaunchFailed(possibleResidual: Boolean = false) {
         controller.selectionLaunchFailed(possibleResidual)
-        if (state.value.phase == BackupUiPhase.IDLE) saved[ACTIVE_KEY] = false
+        updateSavedMarker()
     }
 
     fun selected(target: BackupTarget) {
         if (exportJob?.isActive == true) return
         exportJob = viewModelScope.launch {
             try { controller.selected(target) }
-            finally { if (state.value.phase == BackupUiPhase.IDLE) saved[ACTIVE_KEY] = false }
+            finally { updateSavedMarker() }
         }
     }
 
     fun cancelExport() { exportJob?.cancel() }
+
+    private fun updateSavedMarker() { saved[ACTIVE_KEY] = state.value.requiresRecreationWarning() }
 
     companion object { private const val ACTIVE_KEY = "lithic.backup.incomplete" }
 }

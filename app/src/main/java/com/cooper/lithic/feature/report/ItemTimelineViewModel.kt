@@ -32,7 +32,22 @@ data class ItemTimelineUiState(
     val selectedSubscription: SubscriptionTimelinePoint? = null,
     val events: List<ChartEvent> = emptyList(),
     val loading: Boolean = false, val error: String? = null, val missing: Boolean = false,
-)
+    /** A selected-day calculation uses retained facts, rather than completing a new read. */
+    val readError: String? = null,
+) {
+    internal fun onReadFailed(): ItemTimelineUiState {
+        val failure = "读取失败。已有图表为上次读取结果，请重试。"
+        return copy(loading = false, error = failure, readError = failure)
+    }
+
+    internal fun onSelectingDate(date: LocalDate) = copy(selectedDate = date, selectedProject = null,
+        selectedSubscription = null, error = readError)
+
+    internal fun onPointFailed() = copy(error = listOfNotNull(readError, "该日计算失败，请重新读取。").joinToString(" "))
+
+    /** A completed read replaces the retained dataset and its already calculated selection. */
+    internal fun onReadSucceeded(fresh: ItemTimelineUiState) = fresh.copy(error = null, readError = null)
+}
 
 /** Owned by the existing generation UI scope. Tickets reject late CPU/IO results even if a
  * cooperative cancellation cannot interrupt them; no database read is made per display point. */
@@ -102,18 +117,17 @@ internal class ItemTimelineViewModel(
                     pointTicket++; pointJob?.cancel()
                     // Dataset, date and exact result publish together; a completed refresh must
                     // never transiently forget the selection or label an old amount with a new day.
-                    mutable.value = complete
+                    mutable.value = state.value.onReadSucceeded(complete)
                 } else {
                     // A user chose another date during computation. Keep that newer intent,
                     // clear the previous dataset's point and calculate against the fresh snapshot.
                     val latest = state.value.selectedDate?.coerceAtMost(asOf) ?: asOf
-                    mutable.value = loaded.copy(selectedDate = latest)
+                    mutable.value = state.value.onReadSucceeded(loaded.copy(selectedDate = latest))
                     selectDate(latest)
                 }
             } catch (cancelled: CancellationException) { throw cancelled }
             catch (_: Exception) {
-                if (ticket == readTicket && active) mutable.value = state.value.copy(loading = false,
-                    error = "读取失败。已有图表为上次读取结果，请重试。")
+                if (ticket == readTicket && active) mutable.value = state.value.onReadFailed()
             }
         }
     }
@@ -131,7 +145,7 @@ internal class ItemTimelineViewModel(
         val ticket = ++pointTicket
         val datasetTicket = readTicket
         pointJob?.cancel()
-        mutable.value = captured.copy(selectedDate = date, selectedProject = null, selectedSubscription = null, error = null)
+        mutable.value = captured.onSelectingDate(date)
         pointJob = viewModelScope.launch {
             try {
                 val point = withContext(Dispatchers.Default) {
@@ -150,7 +164,7 @@ internal class ItemTimelineViewModel(
             } catch (cancelled: CancellationException) { throw cancelled }
             catch (_: Exception) {
                 if (ticket == pointTicket && datasetTicket == readTicket && active && !state.value.missing &&
-                    state.value.project === captured.project && state.value.subscription === captured.subscription) mutable.value = state.value.copy(error = "该日计算失败，请重新读取。")
+                    state.value.project === captured.project && state.value.subscription === captured.subscription) mutable.value = state.value.onPointFailed()
             }
         }
     }

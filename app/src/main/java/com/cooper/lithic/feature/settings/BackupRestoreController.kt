@@ -32,6 +32,10 @@ internal data class BackupRestoreUiState(
     val messageTone: UiMessageTone get() = feedback.messageTone
 }
 
+/** Rebuild presentation after recreation; this marker never authorizes a restore. */
+internal fun BackupRestoreUiState.requiresRecreationWarning(): Boolean =
+    phase != RestoreUiPhase.IDLE || feedback == RestoreFeedbackKind.OUTCOME_UNKNOWN
+
 /** Only an explicit confirmation of this live preview can pass its private capability to storage. */
 internal class BackupRestoreController(
     interruptedOnRecreation: Boolean = false,

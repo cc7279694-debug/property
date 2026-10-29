@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **V1 STABILITY CLOSURE — READY_FOR_INDEPENDENT_REVIEW（2026-10-29，桌面范围）**：从`76ae1daf8e56f0205d94a10e3d6d6791dd830439`仅修复三类可桌面证明的缺口：通知同步request异常不再拆掉同代changes监听（取消/上游异常仍传播、无新调度）；导出/恢复IDLE未知反馈继续保留原SavedState布尔重建标记（不重放URI/Token）；总/项目/订阅图表选日保留读取失败来源，fresh事实才清除。行为等价提炼后27新方法真实RED14PASS/13FAIL，最终180唯一JVM PASS（30新＋150相关回归）；Debug/AndroidTest源码编译/Lint exit0（0E16W），原M17/M18仅追加断言、实际NOT_RUN。151份冻结边界源文件指纹及11个用户交付APK/Preview12原字节保持，无新体验版、版本/签名/数据协议/UI重建或设备操作。见[集中报告](evidence/LITHIC-V1-Stability-Closure.md)。新增NOTE：前检存在的C6独立App build目录APK在普通构建后发现缺失，C6 Test仍在；确切删除步骤UNKNOWN，首轮审计FileNotFound已保留，不在本轮重建或把旧SHA冒充现存候选；未来须新授权重建复验并稳定归档后才申请隔离执行。M20系统任务/Owner收口UNKNOWN、真实备份恢复/升级、M22 T06三FAIL/T03/IME、C6 ENVIRONMENT_BLOCKED与历史门禁仍保持；本轮不构成V1综合验收/发行通过。ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED，提交后停止独立审查，不自动C6/JPEG/main/M23。
+
+
 - **C6-2D RUNTIME — ENVIRONMENT_BLOCKED（2026-10-29）**：用户从`d2779276164f33df816949721be3b7fe74fa59cf`明确授权检查既有独立健康可丢弃模拟器，门禁通过才执行8方法；禁止小米14/任何真机及真实账本。实际主机可用RAM6.302GiB、4核8线程/CPU采样23%，QEMU/emulator进程0；仅向已有默认ADB服务读取host版本/设备列表，0连接设备。默认AVD注册名仅历史/其他项目，不能证明可丢弃，未打开旧userdata/配置/日志或启动任何AVD，未新建/修复/下载/清场。按门禁停止：安装0、Instrumentation0、8项全部NOT_RUN，实际API/ABI/UID/FD/Guard/Binder/关闭/重建证据均未取得；候选两APK及Preview12 SHA保持。见[本轮集中结果](evidence/LITHIC-C6-2D-Runtime-Verification.md)。无重建/JVM/Lint重跑/产品测试源码或版本修改，原25 JVM/0E16W仅继承历史，不冒充本次运行。ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED及全部旧门禁保持，停止等待独立审查；建议转V1其他稳定性但不自动开始，不进入严格JPEG/main/M23。
 
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-29T12:50:06.992Z" hostname="WHOCARE" time="0.129">
+  <properties/>
+  <testcase name="known_export_results_clear_only_the_active_marker_and_keep_their_feedback" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.065"/>
+  <testcase name="every_busy_phase_keeps_the_existing_recreation_marker" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.003"/>
+  <testcase name="explicit_new_restore_selection_and_cancellation_keep_the_existing_retry_contract" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.002"/>
+  <testcase name="late_restore_picker_callbacks_do_not_clear_a_recreated_unknown_result" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.002"/>
+  <testcase name="cancelled_confirmation_keeps_its_unknown_result_rebuildable" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.042"/>
+  <testcase name="unknown_restore_result_remains_rebuildable_after_its_operation_returns_to_idle" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.004"/>
+  <testcase name="known_restore_outcomes_do_not_turn_into_unknown_on_recreation" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.004"/>
+  <testcase name="late_export_picker_callbacks_do_not_clear_unknown_or_delete_an_unproven_target" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.003"/>
+  <testcase name="confirmation_exception_keeps_a_recreation_warning_without_exposing_the_failure" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.002"/>
+  <testcase name="explicit_new_export_selection_and_cancellation_keep_the_existing_retry_contract" classname="com.cooper.lithic.feature.settings.BackupRecreationWarningTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
