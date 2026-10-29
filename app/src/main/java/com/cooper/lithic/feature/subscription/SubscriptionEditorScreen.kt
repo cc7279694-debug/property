@@ -1,5 +1,6 @@
 package com.cooper.lithic.feature.subscription
 
+import com.cooper.lithic.core.design.lithicInputColors
 import androidx.compose.foundation.layout.FlowRow
 import com.cooper.lithic.core.design.C2FormScaffold
 import androidx.compose.foundation.layout.Arrangement
@@ -12,13 +13,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -106,6 +107,8 @@ internal fun SubscriptionPaymentFields(
                 val isSelected = state.cycle == cycle
                 OutlinedButton(onClick = { onCycleChange(cycle) }, enabled = state.canEdit,
                     colors = ButtonDefaults.outlinedButtonColors(
+                        disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                        disabledContainerColor = MaterialTheme.colorScheme.surfaceContainer,
                         containerColor = if (isSelected) MaterialTheme.colorScheme.secondaryContainer else Color.Transparent,
                         contentColor = if (isSelected) MaterialTheme.colorScheme.onSecondaryContainer else MaterialTheme.colorScheme.primary),
                     modifier = Modifier.heightIn(min = 48.dp).testTag("$prefix-cycle-${cycle.name}")
@@ -145,7 +148,7 @@ private fun PaymentDate(
     error: String?, enabled: Boolean,
 ) {
     if (today != null) ProjectDateInput(value, onChange, today, label, prefix, error = error, enabled = enabled, labelOutside = true)
-    else OutlinedTextField(value, onChange, label = { Text(label) }, enabled = false,
+    else OutlinedTextField(value, onChange, colors = lithicInputColors(), label = { Text(label) }, enabled = false,
         modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag("$prefix-input"),
         textStyle = MaterialTheme.typography.bodyLarge)
 }

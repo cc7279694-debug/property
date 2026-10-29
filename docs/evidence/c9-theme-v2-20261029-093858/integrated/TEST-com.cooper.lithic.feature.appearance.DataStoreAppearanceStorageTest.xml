@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.appearance.DataStoreAppearanceStorageTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2026-10-29T02:01:58.994Z" hostname="WHOCARE" time="0.278">
+  <properties/>
+  <testcase name="actual_preferences_file_can_be_saved_closed_and_reopened" classname="com.cooper.lithic.feature.appearance.DataStoreAppearanceStorageTest" time="0.245">
+    <failure message="java.io.IOException: Unable to rename C:\Users\CDD\AppData\Local\Temp\junit736241409903548678\appearance\appearance.preferences_pb.tmp to C:\Users\CDD\AppData\Local\Temp\junit736241409903548678\appearance\appearance.preferences_pb. This likely means that there are multiple instances of DataStore for this file. Ensure that you are only creating a single instance of datastore for this file." type="java.io.IOException">java.io.IOException: Unable to rename C:\Users\CDD\AppData\Local\Temp\junit736241409903548678\appearance\appearance.preferences_pb.tmp to C:\Users\CDD\AppData\Local\Temp\junit736241409903548678\appearance\appearance.preferences_pb. This likely means that there are multiple instances of DataStore for this file. Ensure that you are only creating a single instance of datastore for this file.
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:114)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core(DataStoreImpl.kt:368)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:357)
+	at _COROUTINE._BOUNDARY._(CoroutineDebugging.kt:42)
+	at androidx.datastore.core.DataStoreImpl.handleUpdate(DataStoreImpl.kt:251)
+	at androidx.datastore.core.DataStoreImpl$writeActor$3.invokeSuspend(DataStoreImpl.kt:221)
+	at androidx.datastore.core.SimpleActor$offer$2.invokeSuspend(SimpleActor.kt:114)
+	at androidx.datastore.core.DataStoreImpl$updateData$2.invokeSuspend(DataStoreImpl.kt:185)
+	at com.cooper.lithic.feature.appearance.DataStoreAppearanceStorageTest$actual_preferences_file_can_be_saved_closed_and_reopened$1.invokeSuspend(DataStoreAppearanceStorageTest.kt:42)
+Caused by: java.io.IOException: Unable to rename C:\Users\CDD\AppData\Local\Temp\junit736241409903548678\appearance\appearance.preferences_pb.tmp to C:\Users\CDD\AppData\Local\Temp\junit736241409903548678\appearance\appearance.preferences_pb. This likely means that there are multiple instances of DataStore for this file. Ensure that you are only creating a single instance of datastore for this file.
+	at androidx.datastore.core.FileStorageConnection.writeScope(FileStorage.kt:114)
+	at androidx.datastore.core.DataStoreImpl.writeData$datastore_core(DataStoreImpl.kt:368)
+	at androidx.datastore.core.DataStoreImpl$transformAndWrite$2.invokeSuspend(DataStoreImpl.kt:357)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:820)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+</failure>
+  </testcase>
+  <testcase name="one_preferences_file_cannot_have_competing_active_instances" classname="com.cooper.lithic.feature.appearance.DataStoreAppearanceStorageTest" time="0.033"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

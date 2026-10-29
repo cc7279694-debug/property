@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -28,7 +29,7 @@ internal fun CategoryAnalysisScreen(
     var yearLimit by remember(state.snapshot, state.selectedKind, selected?.category?.id) { mutableIntStateOf(50) }
     val categories = state.categories.filter { it.category.kind == state.selectedKind }
     val kindLabel = if (state.selectedKind == OverviewKind.PROJECT) "长期项目" else "订阅"
-    LazyColumn(modifier.fillMaxSize().testTag("category-analysis-screen"), contentPadding = PaddingValues(16.dp),
+    LazyColumn(modifier.fillMaxSize().testTag("category-analysis-screen"), contentPadding = PaddingValues(horizontal = LithicSpacing.page, vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item("heading") { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             C2PageHeader("类别分析", onBack, "category-analysis-back", backLabel = "返回回看")
@@ -60,16 +61,16 @@ internal fun CategoryAnalysisScreen(
             if (selected == null && categories.isNotEmpty()) item("select-category") { Text("请选择类别。当前没有有效贡献但有历史记录的类别也可查看。") }
         }
         selected?.let { report ->
-            item("selected") { Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("category-analysis-selected")) {
-                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            item("selected") { Column(Modifier.fillMaxWidth().testTag("category-analysis-selected")) {
+                Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text(report.category.name, Modifier.testTag("category-analysis-name"), style = MaterialTheme.typography.titleLarge)
                     Text("$kindLabel · 当前日均成本贡献")
                     MoneyMetric(report.currentRate, Modifier.fillMaxWidth().testTag("category-analysis-rate"),
-                        level = MoneyMetricLevel.DETAIL, color = MaterialTheme.colorScheme.primary, label = "$kindLabel · 当前日均成本贡献")
+                        level = MoneyMetricLevel.DETAIL, color = MaterialTheme.colorScheme.onSurface, label = "$kindLabel · 当前日均成本贡献")
                 }
             } }
-            item("historical") { Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth()) {
-                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            item("historical") { Column(Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text("历史累计真实金额 · 按当前分类")
                     ReportMoneyValues(report.historical, "category-analysis", report.category.kind)
                     if (!report.historical.hasRecords) Text("未录入相关资金记录。", Modifier.testTag("category-analysis-no-facts"))
@@ -83,8 +84,8 @@ internal fun CategoryAnalysisScreen(
             val years = report.annual.sortedByDescending { it.year }
             val scale = reportScale(years.map { it.amounts }, report.category.kind)
             items(years.take(yearLimit), key = { "year-${it.year}" }) { year ->
-                Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("category-analysis-year-${year.year}")) {
-                    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Column(Modifier.fillMaxWidth().testTag("category-analysis-year-${year.year}")) {
+                    Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         ReportAnnualBars(year.year, year.amounts, scale, report.category.kind)
                     }
                 }

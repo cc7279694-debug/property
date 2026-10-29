@@ -1,11 +1,14 @@
 package com.cooper.lithic.feature.review
 
+import com.cooper.lithic.core.design.lithicInputColors
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.AlertDialog
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -27,14 +30,14 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -60,6 +63,8 @@ import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.MoneyMetric
+import com.cooper.lithic.core.design.LocalLithicVisuals
+import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.design.MoneyMetricLevel
 import com.cooper.lithic.core.design.moneyMetricDisplay
 import com.cooper.lithic.core.design.moneyMetricDescription
@@ -130,7 +135,7 @@ internal fun TotalCostTrendScreen(
         Text("前后一天限图表日期范围；其他已过去日期可输入查询。")
     }
     LazyColumn(modifier.fillMaxSize().imePadding().testTag("total-cost-trend-screen"),
-        contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        contentPadding = PaddingValues(horizontal = LithicSpacing.page, vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item("heading") {
             if (reviewHeader != null) reviewHeader()
             else C2PageHeader("成本趋势", onBack, "total-trend-back", backLabel = "返回回看")
@@ -151,7 +156,7 @@ internal fun TotalCostTrendScreen(
                             .testTag(if (selected == null) "total-trend-total-pending" else "total-trend-total")
                             .semantics { if (presentation.hasRecords && selected == null) stateDescription = "所选日期的精确结果尚未取得" },
                             level = if (summaryOnly) MoneyMetricLevel.HERO else MoneyMetricLevel.DETAIL,
-                            color = MaterialTheme.colorScheme.primary, label = "总日均成本")
+                            color = MaterialTheme.colorScheme.onSurface, label = "总日均成本")
                     }
                     val plot: @Composable () -> Unit = {
                         if (timeline != null && hasRecords) {
@@ -160,11 +165,11 @@ internal fun TotalCostTrendScreen(
                                 heading = { TrendPlotHeading(presentation, onRetry) },
                                 informationOpen = informationOpen, onCloseInformation = { informationOpen = false },
                                 information = metricInformation)
-                        } else TrendPlotPlaceholder(presentation, summaryOnly, onRetry, hasExternalReadNotice)
+                        } else TrendPlotPlaceholder(presentation, summaryOnly, onRetry, hasExternalReadNotice, state.showBreakdown)
                     }
                     if (summaryOnly) Surface(Modifier.fillMaxWidth().testTag("review-trend-plot-surface"),
-                        shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surface) {
-                        Column(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp)
+                        shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.background) {
+                        Column(Modifier.fillMaxWidth().padding(vertical = 8.dp)
                             .testTag("total-trend-plot-frame")) { plot() }
                     } else Column(Modifier.fillMaxWidth().testTag("total-trend-plot-frame")) { plot() }
                     DailyContributions(selected)
@@ -221,7 +226,7 @@ internal fun TotalCostTrendScreen(
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         OutlinedTextField(dateRaw, { dateRaw = it; dateError = null }, Modifier.fillMaxWidth().testTag("total-trend-date-input"),
                             label = { Text("查询日期（年-月-日）") }, placeholder = { Text(state.selectedDate?.toString() ?: timeline.asOf.toString()) },
-                            singleLine = true, isError = dateError != null,
+                            colors = lithicInputColors(), singleLine = true, isError = dateError != null,
                             supportingText = { Text(dateError ?: "可查询任意已过去的日期，不必拖动图表。") })
                         Button(::applyDate, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("total-trend-date-apply")) { Text("查看该日") }
                     }
@@ -275,8 +280,8 @@ internal fun TotalCostTrendScreen(
                         }
                     }
                     items(orderedEvents.take(eventLimit), key = { "event-${it.id}" }) { event ->
-                        Card(Modifier.fillMaxWidth().testTag("total-trend-event-${event.id}")) {
-                            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Column(Modifier.fillMaxWidth().testTag("total-trend-event-${event.id}")) {
+                            Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                 Text("${event.date} · ${event.title}", style = MaterialTheme.typography.titleMedium)
                                 Text("${if (event.kind == OverviewKind.PROJECT) "长期项目" else "订阅"}：${event.recordName}")
                                 Text(event.description)
@@ -285,6 +290,7 @@ internal fun TotalCostTrendScreen(
                                 if (event.nonCash) Text("非现金折抵（不是现金扣款）")
                                 TextButton({ onOpenRecord(event.kind, event.recordId) },
                                     Modifier.heightIn(min = 48.dp).testTag("total-trend-open-${event.id}")) { Text("查看所属记录") }
+                                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                             }
                         }
                     }
@@ -342,6 +348,7 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
     if (points.isEmpty()) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             heading()
+            TrendLegend(breakdown)
             Box(Modifier.fillMaxWidth().height(if (concise) 172.dp else 240.dp), contentAlignment = Alignment.Center) {
                 Text("截至本次业务日尚无可绘制的记录历史。", Modifier.testTag("total-trend-no-history"))
             }
@@ -374,17 +381,16 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
                 if (breakdown) projection.y(point.subscriptionRate) else 0f)
         }
     }
-    val totalColor = MaterialTheme.colorScheme.primary
-    val projectColor = MaterialTheme.colorScheme.tertiary
-    val subscriptionColor = MaterialTheme.colorScheme.secondary
-    val axisColor = MaterialTheme.colorScheme.outlineVariant
+    val visuals = LocalLithicVisuals.current
+    val totalColor = visuals.chartTotal
+    val projectColor = visuals.chartProject
+    val subscriptionColor = visuals.chartSubscription
+    val axisColor = visuals.chartGrid
     val selectedColor = MaterialTheme.colorScheme.onSurface
     val currentSelect by rememberUpdatedState(onSelectDate)
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         heading()
-        if (breakdown) {
-            Text("长期项目 ━ ━ 长虚线；订阅 ··· 短虚线阶梯", style = MaterialTheme.typography.bodySmall)
-        }
+        TrendLegend(breakdown)
         Canvas(Modifier.fillMaxWidth().height(if (concise) 172.dp else 240.dp).testTag("total-trend-canvas")
             .semantics {
                 contentDescription = (if (breakdown) "总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。"
@@ -447,11 +453,52 @@ private fun TotalCostChart(points: List<CostTimelinePoint>, selected: CostTimeli
     }
 }
 
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun TrendLegend(breakdown: Boolean) {
+    val visuals = LocalLithicVisuals.current
+    FlowRow(Modifier.fillMaxWidth().testTag("total-trend-legend"),
+        horizontalArrangement = Arrangement.spacedBy(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        TrendLegendItem("总日均成本 · 实线", visuals.chartTotal, 0, "total-trend-legend-total")
+        if (breakdown) {
+            TrendLegendItem("长期项目 · 长虚线", visuals.chartProject, 1, "total-trend-legend-project")
+            TrendLegendItem("订阅 · 短虚线阶梯", visuals.chartSubscription, 2, "total-trend-legend-subscription")
+        }
+    }
+}
+
+/** Labels and distinct stroke patterns remain readable without colour discrimination. */
+@Composable
+private fun TrendLegendItem(label: String, color: Color, pattern: Int, tag: String) {
+    Row(Modifier.testTag(tag), verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        Canvas(Modifier.size(width = 24.dp, height = 12.dp)) {
+            val dash = when (pattern) {
+                1 -> floatArrayOf(8.dp.toPx(), 4.dp.toPx())
+                2 -> floatArrayOf(2.dp.toPx(), 3.dp.toPx())
+                else -> null
+            }
+            if (pattern == 2) {
+                val path = Path().apply {
+                    moveTo(0f, size.height * .75f)
+                    lineTo(size.width / 2, size.height * .75f)
+                    lineTo(size.width / 2, size.height * .25f)
+                    lineTo(size.width, size.height * .25f)
+                }
+                drawPath(path, color, style = Stroke(2.dp.toPx(), pathEffect = PathEffect.dashPathEffect(requireNotNull(dash))))
+            } else drawLine(color, Offset(0f, size.height / 2), Offset(size.width, size.height / 2),
+                2.dp.toPx(), pathEffect = dash?.let { PathEffect.dashPathEffect(it) })
+        }
+        Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+}
+
 @Composable
 private fun TrendPlotHeading(presentation: TotalTrendPresentation, onRetry: () -> Unit) {
     Row(Modifier.fillMaxWidth().heightIn(min = 48.dp), verticalAlignment = Alignment.CenterVertically) {
-        Text("成本趋势", Modifier.weight(1f), style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.primary)
+        Text("成本趋势", Modifier.weight(1f), style = MaterialTheme.typography.titleSmall,
+            color = MaterialTheme.colorScheme.onSurface)
         Box(Modifier.width(128.dp).heightIn(min = 48.dp), contentAlignment = Alignment.CenterEnd) {
             if (presentation.phase == TrendReadPhase.FAILED) {
                 TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("total-trend-compact-retry")) {
@@ -478,9 +525,10 @@ private fun TrendPlotHeading(presentation: TotalTrendPresentation, onRetry: () -
 }
 
 @Composable
-private fun TrendPlotPlaceholder(presentation: TotalTrendPresentation, summaryOnly: Boolean, onRetry: () -> Unit, hasExternalReadNotice: Boolean) {
+private fun TrendPlotPlaceholder(presentation: TotalTrendPresentation, summaryOnly: Boolean, onRetry: () -> Unit, hasExternalReadNotice: Boolean, breakdown: Boolean) {
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         TrendPlotHeading(presentation, onRetry)
+        TrendLegend(breakdown)
         Box(Modifier.fillMaxWidth().height(if (summaryOnly) 172.dp else 240.dp)
             .testTag("total-trend-loading-placeholder"), contentAlignment = Alignment.Center) {
             Text(if (presentation.recordCountsMismatch) "记录已变化，趋势尚待核对" else

@@ -5,9 +5,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -63,6 +63,8 @@ internal fun MoneyEventEditor(
                     val tag = if (direction == MoneyDirection.OUTLAY) "money-direction-outlay" else "money-direction-recovery"
                     OutlinedButton(onClick = { onDirectionChange(direction) }, enabled = state.canEdit,
                         colors = androidx.compose.material3.ButtonDefaults.outlinedButtonColors(
+                            disabledContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                            disabledContainerColor = MaterialTheme.colorScheme.surfaceContainer,
                             containerColor = if (state.direction == direction) MaterialTheme.colorScheme.primaryContainer else androidx.compose.ui.graphics.Color.Transparent,
                             contentColor = if (state.direction == direction) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.primary),
                         modifier = Modifier.heightIn(min = 48.dp).testTag(tag)

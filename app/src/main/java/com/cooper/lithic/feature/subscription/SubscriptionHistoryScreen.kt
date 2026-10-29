@@ -14,10 +14,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -36,9 +36,9 @@ internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: (
     onOpenSubscription: (String) -> Unit, onLoadMore: () -> Unit, onRetry: () -> Unit, modifier: Modifier = Modifier) {
     Column(modifier.fillMaxSize().testTag("subscription-history-screen")) {
     LazyColumn(Modifier.fillMaxSize().testTag("subscription-history-content"),
-        verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+        verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
         item {
-            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 C2PageHeader("已停止订阅", onBack, "subscription-history-back", backLabel = "返回回看",
                     actions = { C5InformationButton("已停止订阅说明") { Text("保留原服务的真实付款和状态历史。暂停及已到期服务仍在当前管理。") } })
                 state.totalCount?.let { Text("已停止 $it 条订阅", Modifier.testTag("subscription-history-count")) }
@@ -77,7 +77,7 @@ internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: (
         }
         items(state.items, key = { it.subscription.id }) { detail ->
             EntryCard(detail.subscription.name, "已停止", "折算付费时长：${detail.cost.standardPurchasedDays}天",
-                detail.cost.historicalAverage, Modifier.padding(horizontal = LithicSpacing.medium)
+                detail.cost.historicalAverage, Modifier.padding(horizontal = LithicSpacing.page)
                     .testTag("subscription-history-row-${detail.subscription.id}"), onClick = { onOpenSubscription(detail.subscription.id) }, category = detail.category.name, kind = C2Glyph.Subscription,
                     cover = { RecordCover(CoverReference(CoverOwnerType.SUBSCRIPTION, detail.subscription.id, detail.subscription.coverAssetId),
                         Modifier.size(64.dp)) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) } },
@@ -88,7 +88,7 @@ internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: (
                 state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
                 state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
                 else -> "已显示 ${state.items.size} 条，已到列表末尾"
-            }, Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-history-page-status"),
+            }, Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-history-page-status"),
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         if (state.hasMore) item {

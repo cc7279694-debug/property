@@ -8,8 +8,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -94,6 +95,7 @@ private fun ControlledTextField(
 ) {
     val field: @Composable () -> Unit = {
         OutlinedTextField(value = value, onValueChange = onValueChange,
+            colors = lithicInputColors(),
             modifier = modifier.fillMaxWidth().heightIn(min = 56.dp).semantics {
                 if (labelOutside) contentDescription = label
                 error?.let { semanticsError(it) }
@@ -107,6 +109,22 @@ private fun ControlledTextField(
         field()
     } else field()
 }
+
+@Composable
+internal fun lithicInputColors() = OutlinedTextFieldDefaults.colors(
+    focusedTextColor = MaterialTheme.colorScheme.onSurface,
+    unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+    disabledTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    disabledBorderColor = MaterialTheme.colorScheme.outline,
+    disabledLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    disabledPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    disabledSupportingTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    focusedContainerColor = MaterialTheme.colorScheme.surface,
+    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+    disabledContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+    focusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+    unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+)
 
 private fun keyboardActions(onImeAction: (() -> Unit)?): KeyboardActions =
     if (onImeAction == null) KeyboardActions.Default else KeyboardActions(

@@ -10,12 +10,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
+import com.cooper.lithic.core.design.LithicIconButton as IconButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -50,15 +51,14 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     var categoriesOpen by rememberSaveable { mutableStateOf(false) }
     var explanationOpen by rememberSaveable { mutableStateOf(false) }
     val empty = c2HomeIsEmpty(overview, hasReadNotice)
-    val heroSurface = if (MaterialTheme.colorScheme.background.luminance() < 0.5f) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.inverseSurface
-    val heroText = Color(0xFFF1F3ED)
-    val heroSecondary = Color(0xFFC3D9CA)
+    val heroText = MaterialTheme.colorScheme.onBackground
+    val heroSecondary = MaterialTheme.colorScheme.onSurfaceVariant
     Box(modifier.fillMaxSize().testTag("home-content-area")) {
-    Box(Modifier.fillMaxSize().padding(bottom = 72.dp).testTag("home-scroll-viewport")) {
+    Box(Modifier.fillMaxSize().testTag("home-scroll-viewport")) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
-        .padding(16.dp)
+        .padding(start = LithicSpacing.page, end = LithicSpacing.page, top = 16.dp, bottom = 88.dp)
         .testTag("home-screen"),
-        verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text("现在", Modifier.weight(1f).semantics { heading() }, style = MaterialTheme.typography.headlineMedium)
             onSearch?.let { search -> IconButton(search, Modifier.size(48.dp).testTag("open-name-search")) {
@@ -66,9 +66,8 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             } }
         }
         Surface(Modifier.fillMaxWidth().testTag("home-current-cost-summary"),
-            shape = MaterialTheme.shapes.large, color = heroSurface,
-            contentColor = heroText, shadowElevation = 1.dp) {
-            Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            color = MaterialTheme.colorScheme.background, contentColor = heroText) {
+            Column(Modifier.padding(vertical = 4.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                         Text("当前日均成本", style = MaterialTheme.typography.bodyMedium)
@@ -87,7 +86,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                     HomeOverviewStatus.CURRENT -> Unit
                 }
                 if (hasReadNotice) Text(if (overview == null) "成本与数量尚未取得，请先重试读取。" else "暂保留上次取得的成本与数量，请先重试读取。", style = MaterialTheme.typography.bodyMedium,
-                    color = Color(0xFFF2B6AC), modifier = Modifier.testTag("home-retained-notice"))
+                    color = MaterialTheme.colorScheme.error, modifier = Modifier.testTag("home-retained-notice"))
             }
         }
         HomeRecordCounts(overview, hasReadNotice)
@@ -192,10 +191,10 @@ private fun HomeRecordCounts(overview: OverviewResult?, retained: Boolean) {
 @Composable
 private fun RecordCount(label: String, count: Long?, icon: C2Glyph, kind: String, retained: Boolean) {
     Surface(Modifier.fillMaxWidth().testTag("home-$kind-count-card"), shape = MaterialTheme.shapes.medium,
-        color = MaterialTheme.colorScheme.surface, tonalElevation = 1.dp) {
-        Row(Modifier.heightIn(min = 72.dp).padding(12.dp), verticalAlignment = Alignment.CenterVertically,
+        color = MaterialTheme.colorScheme.surfaceContainerLow) {
+        Row(Modifier.heightIn(min = 68.dp).padding(12.dp), verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            Surface(Modifier.size(36.dp), shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.primaryContainer) {
+            Surface(Modifier.size(36.dp), shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surfaceContainerHighest) {
                 Box(contentAlignment = Alignment.Center) { C2Icon(icon) }
             }
             Column(Modifier.weight(1f)) {
@@ -206,7 +205,7 @@ private fun RecordCount(label: String, count: Long?, icon: C2Glyph, kind: String
                             retained -> "$label，上次已录入数量$count，包含历史，尚未更新"
                             else -> "$label，已录入数量$count，包含历史"
                         }
-                    }, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.SemiBold,
+                    }, style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.SemiBold,
                     softWrap = false)
                 Text(label, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
@@ -236,8 +235,8 @@ private fun HomeSubtotals(overview: OverviewResult?) {
 
 @Composable
 private fun Subtotal(label: String, amount: java.math.BigDecimal?, activeCount: Long?, icon: C2Glyph, tag: String, countTag: String) {
-    Surface(Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
-        Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+    Surface(Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.background) {
+        Column(Modifier.padding(vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 C2Icon(icon)
                 Text(label, style = MaterialTheme.typography.bodyMedium)
@@ -291,9 +290,8 @@ private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: St
                 MaterialTheme.colorScheme.onSurfaceVariant), amountStyle, softWrap = false).size.width,
             compactMetric?.let { measurer.measure(AnnotatedString(it), metricStyle, softWrap = false).size.width } ?: 0).toDp()
     }
-    Surface(Modifier.fillMaxWidth().testTag(tag), shape = MaterialTheme.shapes.medium,
-        color = MaterialTheme.colorScheme.surface) {
-        BoxWithConstraints(Modifier.fillMaxWidth().then(if (onOpen != null) Modifier.clickable(role = Role.Button, onClick = onOpen) else Modifier).padding(12.dp)) {
+    Surface(Modifier.fillMaxWidth().testTag(tag), color = MaterialTheme.colorScheme.background) {
+        BoxWithConstraints(Modifier.fillMaxWidth().then(if (onOpen != null) Modifier.clickable(role = Role.Button, onClick = onOpen) else Modifier).padding(vertical = 12.dp)) {
             val beside = density.fontScale <= 1.3f && maxWidth >= 48.dp + 12.dp + 112.dp + 12.dp + amountWidth
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -312,6 +310,7 @@ private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: St
                     if (beside) Column(Modifier.width(amountWidth)) { PreviewAmount(metric, compactMetric, amount) }
                 }
                 if (!beside) PreviewAmount(metric, compactMetric, amount)
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
             }
         }
     }

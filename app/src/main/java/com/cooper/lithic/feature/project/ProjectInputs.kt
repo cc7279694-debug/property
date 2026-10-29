@@ -1,5 +1,6 @@
 package com.cooper.lithic.feature.project
 
+import com.cooper.lithic.core.design.lithicInputColors
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -17,10 +18,10 @@ import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -70,6 +71,7 @@ internal fun ProjectDateInput(
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
         if (labelOutside) Text(label, style = MaterialTheme.typography.bodyLarge)
         OutlinedTextField(
+            colors = lithicInputColors(),
             value = value, onValueChange = { calendarMessage = null; onValueChange(it) },
             modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag("$tagPrefix-input")
                 .semantics { if (labelOutside) contentDescription = label; error?.let { semanticsError(it) } },
@@ -189,7 +191,7 @@ internal fun ProjectNoteInput(
     labelOutside: Boolean = false,
 ) {
     val field: @Composable () -> Unit = {
-        OutlinedTextField(value, onValueChange,
+        OutlinedTextField(value, onValueChange, colors = lithicInputColors(),
             modifier = Modifier.fillMaxWidth().heightIn(min = 72.dp).testTag(tag)
                 .semantics { if (labelOutside) contentDescription = label; error?.let { semanticsError(it) } },
             label = if (labelOutside) null else ({ Text(label) }), enabled = enabled, minLines = 2, isError = error != null,
@@ -209,8 +211,8 @@ internal fun ProjectFormSummaryRow(label: String, value: String, tag: String, en
     onClick: () -> Unit, error: String? = null) {
     BoxWithConstraints(Modifier.fillMaxWidth()) {
         val stacked = maxWidth < 280.dp || LocalDensity.current.fontScale > 1.3f
-        val primary = if (enabled) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-        val secondary = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.38f)
+        val primary = if (enabled) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant
+        val secondary = if (enabled) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurfaceVariant
         TextButton(onClick, Modifier.fillMaxWidth().heightIn(min = 56.dp)
             .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
             .testTag(tag).semantics { error?.let { semanticsError(it) } }, enabled = enabled,

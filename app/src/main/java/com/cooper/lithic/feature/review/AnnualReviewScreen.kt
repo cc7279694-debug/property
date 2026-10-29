@@ -6,6 +6,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
@@ -29,7 +32,7 @@ internal fun AnnualReviewScreen(
     var yearLimit by remember(state.snapshot) { mutableIntStateOf(50) }
     val annual = state.annual
     LazyColumn(modifier.fillMaxSize().imePadding().testTag("annual-review-screen"),
-        contentPadding = PaddingValues(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        contentPadding = PaddingValues(horizontal = LithicSpacing.page, vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item("heading") { Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             C2PageHeader("年度回顾", onBack, "annual-review-back", backLabel = "返回回看")
             state.asOf?.let { Text("结果截至 $it") }
@@ -40,7 +43,7 @@ internal fun AnnualReviewScreen(
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
                     OutlinedTextField(rawYear, { rawYear = it; inputError = null },
                         Modifier.weight(1f).testTag("annual-year-input"), label = { Text("查看年度") }, singleLine = true,
-                        isError = inputError != null)
+                        colors = lithicInputColors(), isError = inputError != null)
                     Button({
                         val year = rawYear.trim().toIntOrNull()
                         val ceiling = state.asOf?.year
@@ -64,8 +67,8 @@ internal fun AnnualReviewScreen(
             }
         }
         annual?.let { report ->
-            item("summary") { Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth()) {
-                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            item("summary") { Column(Modifier.fillMaxWidth()) {
+                Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text("${report.year} 年", Modifier.testTag("annual-selected-year"), style = MaterialTheme.typography.titleLarge)
                     if (!report.amounts.hasRecords) Text("未录入相关记录，不能据此断言该年没有花钱。", Modifier.testTag("annual-empty-year"))
                     Text("长期项目", style = MaterialTheme.typography.titleMedium)
@@ -79,8 +82,8 @@ internal fun AnnualReviewScreen(
             for (kind in OverviewKind.entries) {
                 item("kind-$kind") { Text(if (kind == OverviewKind.PROJECT) "长期项目" else "订阅实际付款", style = MaterialTheme.typography.titleMedium) }
                 items(report.categories.filter { it.category.kind == kind && it.amounts.hasRecords }, key = { "category-${it.category.id}" }) { category ->
-                    Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("annual-category-${category.category.id}")) {
-                        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Column(Modifier.fillMaxWidth().testTag("annual-category-${category.category.id}")) {
+                        Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                             Text(category.category.name, style = MaterialTheme.typography.titleMedium)
                             ReportMoneyValues(category.amounts, "annual-category-${category.category.id}", category.category.kind)
                         }
@@ -93,8 +96,8 @@ internal fun AnnualReviewScreen(
             val reports = state.annualTrend
             val scale = reportScale(reports.map { it.amounts })
             items(reports.take(yearLimit), key = { "trend-${it.year}" }) { report ->
-                Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("annual-trend-${report.year}")) {
-                    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Column(Modifier.fillMaxWidth().testTag("annual-trend-${report.year}")) {
+                    Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         ReportAnnualBars(report.year, report.amounts, scale)
                         TextButton({ onSelectYear(report.year) }, Modifier.heightIn(min = 48.dp).testTag("annual-trend-select-${report.year}")) { Text("查看该年明细") }
                     }

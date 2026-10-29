@@ -15,13 +15,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicButton as Button
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.IconButton
+import com.cooper.lithic.core.design.LithicIconButton as IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -49,9 +49,9 @@ internal fun SubscriptionListScreen(
     var informationOpen by rememberSaveable { mutableStateOf(false) }
     Column(modifier.fillMaxSize().testTag("subscription-list-screen")) {
         LazyColumn(Modifier.fillMaxSize().testTag("subscription-list-content"),
-            verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+            verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
             item {
-                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
+                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     C2PageHeader("订阅服务", onBack, "subscription-list-back", backLabel = "返回现在",
                         actions = { IconButton({ informationOpen = true }, Modifier.size(48.dp).testTag("subscription-list-information")) {
@@ -69,7 +69,7 @@ internal fun SubscriptionListScreen(
             }
             if (state.loading) item { Text("正在读取订阅服务", Modifier.padding(LithicSpacing.medium)) }
             state.error?.let { message -> item {
-                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)) {
+                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page)) {
                     Text(message, Modifier.testTag("subscription-list-error"), style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error)
                     if (state.items.isNotEmpty()) Text("暂时无法刷新，以下为上次读取记录。",
@@ -99,7 +99,7 @@ internal fun SubscriptionListScreen(
                 val group = state.items.filter { it.cost.displayStatus == status }
                 if (group.isNotEmpty()) item {
                     Text(if (status == SubscriptionDisplayStatus.PAUSED) "暂停中" else subscriptionStatusLabel(status),
-                        Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-group-${status.name}").semantics { heading() },
+                        Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-group-${status.name}").semantics { heading() },
                         style = MaterialTheme.typography.titleLarge)
                 }
                 items(group, key = { it.subscription.id }) { detail ->
@@ -108,7 +108,7 @@ internal fun SubscriptionListScreen(
                     "折算付费时长：${detail.cost.standardPurchasedDays}天"
                 EntryCard(detail.subscription.name, subscriptionStatusLabel(detail.cost.displayStatus), timeLabel,
                     detail.cost.historicalAverage,
-                    Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-row-${detail.subscription.id}"),
+                    Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-row-${detail.subscription.id}"),
                     onClick = { onOpenSubscription(detail.subscription.id) }, category = detail.category.name, kind = C2Glyph.Subscription,
                     cover = { RecordCover(CoverReference(CoverOwnerType.SUBSCRIPTION, detail.subscription.id, detail.subscription.coverAssetId),
                         Modifier.size(64.dp)) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) } },
@@ -120,7 +120,7 @@ internal fun SubscriptionListScreen(
                     state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
                     state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
                     else -> "已显示 ${state.items.size} 条，已到列表末尾"
-                }, Modifier.padding(horizontal = LithicSpacing.medium).testTag("subscription-list-page-status"),
+                }, Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-list-page-status"),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             if (state.hasMore) item {

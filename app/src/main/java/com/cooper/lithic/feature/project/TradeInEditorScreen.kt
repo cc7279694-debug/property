@@ -1,17 +1,18 @@
 package com.cooper.lithic.feature.project
 
+import com.cooper.lithic.core.design.lithicCheckboxColors
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -79,7 +80,7 @@ internal fun TradeInEditorScreen(
             Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("trade-in-link")
                 .toggleable(state.linkReplacement, enabled = state.canEdit, role = Role.Checkbox, onValueChange = onLink),
                 verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(state.linkReplacement, onCheckedChange = null, enabled = state.canEdit)
+                Checkbox(state.linkReplacement, onCheckedChange = null, enabled = state.canEdit, colors = lithicCheckboxColors())
                 Text("同时建立旧 → 新替换关系", Modifier.weight(1f))
             }
             C5InformationButton("交易日期与金额说明", Modifier.testTag("trade-in-information"), buttonLabel = "交易日期与金额说明") {

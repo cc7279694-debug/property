@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.appearance.AppearanceControllerTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-10-29T02:17:33.147Z" hostname="WHOCARE" time="0.034">
+  <properties/>
+  <testcase name="reread_failure_keeps_a_known_theme_without_claiming_fresh_installation" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.003"/>
+  <testcase name="explicit_successful_choice_can_replace_an_unknown_theme_without_an_automatic_reset" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.003"/>
+  <testcase name="failed_initial_read_is_visible_and_does_not_write_a_default" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.001"/>
+  <testcase name="retry_after_read_failure_uses_the_saved_value" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.001"/>
+  <testcase name="later_failed_choice_keeps_a_completed_earlier_save" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.011"/>
+  <testcase name="successful_selection_updates_only_after_storage_completion" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.004"/>
+  <testcase name="failed_save_preserves_previous_confirmed_theme_and_exposes_error" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.001"/>
+  <testcase name="only_three_stable_theme_identities_are_supported" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.0"/>
+  <testcase name="missing_preference_defaults_to_stone_without_inventing_a_migration_or_write" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.001"/>
+  <testcase name="each_saved_theme_is_read_back_without_replacing_it" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.002"/>
+  <testcase name="sandbox_and_unknown_roles_do_not_call_the_storage_factory" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.001"/>
+  <testcase name="main_role_can_create_the_one_requested_preference_instance" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.001"/>
+  <testcase name="unknown_persisted_value_is_an_error_not_a_fresh_install" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.001"/>
+  <testcase name="rapid_choices_are_serial_and_the_last_intent_matches_persisted_value" classname="com.cooper.lithic.feature.appearance.AppearanceControllerTest" time="0.004"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

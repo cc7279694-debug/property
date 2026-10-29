@@ -1,12 +1,15 @@
 package com.cooper.lithic.feature.subscription
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
+import com.cooper.lithic.core.design.LithicIconButton as IconButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -64,7 +67,7 @@ internal fun SubscriptionDetailScreen(
             verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
             if (state.loading) item { Text("正在读取订阅", Modifier.padding(LithicSpacing.medium)) }
             state.error?.let { message -> item {
-                Column(Modifier.padding(horizontal = LithicSpacing.medium)) {
+                Column(Modifier.padding(horizontal = LithicSpacing.page)) {
                     Text(message, Modifier.testTag("subscription-detail-error"), color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.bodyLarge)
                     if (state.detail != null) Text("以下为上次读取记录。", style = MaterialTheme.typography.bodyMedium)
@@ -75,7 +78,7 @@ internal fun SubscriptionDetailScreen(
                 .testTag("subscription-detail-missing"), style = MaterialTheme.typography.bodyLarge) }
             state.detail?.takeUnless { state.missing }?.let { detail ->
                 item {
-                    Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                         Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
                             if (detail.subscription.coverAssetId != null && coverContent != null) {
                                 Box(Modifier.size(64.dp)) { coverContent() }
@@ -98,8 +101,9 @@ internal fun SubscriptionDetailScreen(
                             Modifier.testTag("subscription-detail-paused-expired"), style = MaterialTheme.typography.bodyMedium)
                     }
                 }
+                item { Column(Modifier.padding(horizontal = LithicSpacing.page)) { SubscriptionArchiveMetrics(detail) } }
                 item {
-                    C2Section("当前套餐", Modifier.padding(horizontal = 16.dp).testTag("subscription-detail-current-plan")) {
+                    C2Section("当前套餐", Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-detail-current-plan")) {
                         val current = detail.currentRenewal
                         if (current != null && detail.cost.currentPrice != null) {
                             Text(billingCycleLabel(current.cycle), style = MaterialTheme.typography.bodyLarge)
@@ -121,9 +125,8 @@ internal fun SubscriptionDetailScreen(
                             Text("已付下一期尚未生效。", style = MaterialTheme.typography.bodyMedium)
                     }
                 }
-                item { Column(Modifier.padding(horizontal = 16.dp)) { SubscriptionArchiveMetrics(detail) } }
                 if (detail.stateChanges.isNotEmpty()) item {
-                    Column(Modifier.padding(horizontal = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Column(Modifier.padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text("状态事实", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
                         detail.stateChanges.forEach { row ->
                             Text("${row.effectiveOn} · ${when (row.state) { SubscriptionOperationState.ENABLED -> "已启用"; SubscriptionOperationState.PAUSED -> "已暂停"; SubscriptionOperationState.STOPPED -> "已停止" }}",
@@ -136,7 +139,7 @@ internal fun SubscriptionDetailScreen(
                     }
                 }
                 item {
-                    C2Section("付款与备注", Modifier.padding(horizontal = 16.dp)) {
+                    C2Section("付款与备注", Modifier.padding(horizontal = LithicSpacing.page)) {
                         Text("累计已确认实际付款", style = MaterialTheme.typography.bodyMedium)
                         MoneyMetric(BigDecimal.valueOf(detail.cost.confirmedPaidCents, 2),
                             Modifier.testTag("subscription-detail-total-paid"), AmountUnit.YUAN,
@@ -151,7 +154,7 @@ internal fun SubscriptionDetailScreen(
                     }
                 }
                 item {
-                    Column(Modifier.padding(horizontal = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+                    Column(Modifier.padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                         HorizontalDivider()
                         Text("真实付款历史", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
                         C5InformationButton("付款历史说明") { Text("按真实付款日期排序；付费到期边界当天不包含在前一期。") }
@@ -159,7 +162,7 @@ internal fun SubscriptionDetailScreen(
                 }
                 if (state.history.loading) item { Text("正在读取付款历史", Modifier.padding(LithicSpacing.medium)) }
                 state.history.error?.let { message -> item {
-                    Column(Modifier.padding(horizontal = LithicSpacing.medium)) {
+                    Column(Modifier.padding(horizontal = LithicSpacing.page)) {
                         Text(message, Modifier.testTag("subscription-detail-history-error"), color = MaterialTheme.colorScheme.error)
                         if (state.history.items.isNotEmpty()) Text("以下为上次读取的付款历史。", style = MaterialTheme.typography.bodyMedium)
                         TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-detail-history-retry")) { Text("重新读取付款历史") }
@@ -180,8 +183,8 @@ internal fun SubscriptionDetailScreen(
             }
         }
         state.detail?.takeUnless { state.missing }?.let { detail ->
-            if (detail.cost.displayStatus != SubscriptionDisplayStatus.STOPPED) Surface(shadowElevation = 1.dp) {
-                Button(onRenewal, Modifier.fillMaxWidth().padding(16.dp).heightIn(min = 48.dp)
+            if (detail.cost.displayStatus != SubscriptionDisplayStatus.STOPPED) Surface(color = MaterialTheme.colorScheme.background) {
+                Button(onRenewal, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page, vertical = 12.dp).heightIn(min = 48.dp)
                     .testTag("subscription-detail-renewal"), enabled = !state.loading && state.error == null) {
                     Text("记录真实续费", style = MaterialTheme.typography.bodyLarge)
                 }
@@ -192,18 +195,18 @@ internal fun SubscriptionDetailScreen(
         ModalBottomSheet(onDismissRequest = { managementOpen = false }) {
             Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = 24.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page), verticalAlignment = Alignment.CenterVertically) {
                     Text("订阅管理", Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
                     IconButton({ managementOpen = false }, Modifier.size(48.dp).testTag("subscription-detail-close-management")) {
                         C2Icon(C2Glyph.Close, description = "关闭订阅管理")
                     }
                 }
                 onCostHistory?.let { action ->
-                    TextButton({ managementOpen = false; action() }, Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                    TextButton({ managementOpen = false; action() }, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page)
                         .heightIn(min = 48.dp).testTag("subscription-price-history")) { Text("查看价格历史") }
                 }
                     val enabled = !state.loading && state.error == null
-                    Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
+                    Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
                         verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                         Text("暂停、恢复或停止只改变砺石中的记录；取消服务商自动续费需到服务商处操作。",
                             Modifier.testTag("subscription-detail-vendor-explanation"),
@@ -236,18 +239,17 @@ internal fun SubscriptionDetailScreen(
 
 @Composable
 private fun SubscriptionArchiveMetrics(detail: SubscriptionDetail) {
-    Surface(Modifier.fillMaxWidth(), shape = MaterialTheme.shapes.large, color = MaterialTheme.colorScheme.surface,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant), shadowElevation = 1.dp) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Surface(Modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.background) {
+        Column(Modifier.padding(vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             BoxWithConstraints(Modifier.fillMaxWidth()) {
                 val amountWidth = ((maxWidth - 12.dp) / 2).coerceAtLeast(0.dp)
                 val amountFits = moneyMetricFitsAtPreferredSize(detail.cost.historicalAverage, amountWidth,
-                    level = MoneyMetricLevel.CARD)
+                    level = MoneyMetricLevel.DETAIL)
                 val metrics: @Composable (Modifier) -> Unit = { column ->
                     Column(column, verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text("历史平均日成本", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         MoneyMetric(detail.cost.historicalAverage, Modifier.testTag("subscription-detail-historical-average"),
-                            level = MoneyMetricLevel.CARD, color = MaterialTheme.colorScheme.primary, label = "历史平均日成本")
+                            level = MoneyMetricLevel.DETAIL, color = MaterialTheme.colorScheme.onBackground, label = "历史平均日成本")
                     }
                 }
                 val days: @Composable (Modifier) -> Unit = { column ->
@@ -279,9 +281,9 @@ private fun SubscriptionArchiveMetrics(detail: SubscriptionDetail) {
 @Composable
 private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDate, enabled: Boolean,
     onCorrect: () -> Unit, onDelete: () -> Unit) {
-    Surface(Modifier.fillMaxWidth().padding(horizontal = 16.dp).testTag("subscription-renewal-${renewal.id}"),
-        color = MaterialTheme.colorScheme.surface, shape = MaterialTheme.shapes.medium) {
-    Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    Surface(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page).testTag("subscription-renewal-${renewal.id}"),
+        color = MaterialTheme.colorScheme.background) {
+    Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text("真实付款日期：${renewal.paidOn}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         MoneyMetric(BigDecimal.valueOf(renewal.amountCents, 2), unit = AmountUnit.YUAN,
             level = MoneyMetricLevel.ROW, label = "真实付款金额")
@@ -302,7 +304,7 @@ private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDat
                 C2Icon(C2Glyph.More); Text("付款操作")
             }
             DropdownMenu(paymentActionsOpen, { paymentActionsOpen = false }) {
-                DropdownMenuItem(text = { Text("修正这笔付款") }, onClick = { paymentActionsOpen = false; onCorrect() },
+                DropdownMenuItem(text = { Text("修正这笔付款", color = if (enabled) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant) }, onClick = { paymentActionsOpen = false; onCorrect() },
                     modifier = Modifier.testTag("subscription-renewal-correct-${renewal.id}"), enabled = enabled)
                 DropdownMenuItem(text = { Text("删除错误付款", color = MaterialTheme.colorScheme.error) },
                     onClick = { paymentActionsOpen = false; onDelete() },

@@ -1,0 +1,126 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata
+> Task :app:processDebugNavigationResources
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources
+> Task :app:packageDebugResources
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:processDebugManifestForPackage
+> Task :app:processDebugResources
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:365:37 Unnecessary safe call on a non-null receiver of type 'ReplacementViewModel'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:576:33 Condition is always 'true'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/core/design/MoneyMetric.kt:109:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/data/backup/BackupExportService.kt:118:13 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/data/backup/RestoreContracts.kt:9:40 Non-public primary constructor is exposed via the generated 'copy()' method of the 'data' class.
+
+The generated 'copy()' will change its visibility in future releases.
+
+To suppress the warning do one of the following:
+- Annotate the data class with the '@ConsistentCopyVisibility' annotation.
+- Use the '-Xconsistent-data-class-copy-visibility' compiler flag.
+- Annotate the data class with the '@ExposedCopyVisibility' annotation 
+  (Discouraged, but can be used to keep binary compatibility).
+
+To learn more, see the documentation of the '@ConsistentCopyVisibility' and '@ExposedCopyVisibility' annotations.
+
+This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KT-11914.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:728:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/project/ReplacementSavedFacts.kt:46:15 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/project/ReplacementSavedFacts.kt:48:15 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/review/TotalTrendPresentation.kt:24:48 Unnecessary non-null assertion (!!) on a non-null receiver of type 'LedgerSnapshot'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/review/TotalTrendPresentation.kt:27:78 Unnecessary non-null assertion (!!) on a non-null receiver of type 'LedgerSnapshot'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac NO-SOURCE
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:kspDebugUnitTestKotlin
+
+> Task :app:compileDebugUnitTestKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/test/java/com/cooper/lithic/domain/report/AnnualReportEngineTest.kt:83:86 Unnecessary non-null assertion (!!) on a non-null receiver of type 'List<FinancialFact>'.
+
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugJavaRes
+> Task :app:processDebugUnitTestJavaRes
+
+> Task :app:testDebugUnitTest
+
+C9ThemePaletteTest > three_fixed_backgrounds_and_primary_actions_match_the_approved_specification FAILED
+    java.lang.AssertionError at C9ThemePaletteTest.kt:15
+
+C9ThemePaletteTest > interactive_outlines_and_all_real_chart_roles_meet_non_text_contrast FAILED
+    java.lang.AssertionError at C9ThemePaletteTest.kt:47
+
+C9ThemePaletteTest > charcoal_and_white_primary_surfaces_are_neutral_not_green_or_blue FAILED
+    java.lang.AssertionError at C9ThemePaletteTest.kt:24
+
+AppearanceControllerTest > reread_failure_keeps_a_known_theme_without_claiming_fresh_installation FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:155
+
+AppearanceControllerTest > explicit_successful_choice_can_replace_an_unknown_theme_without_an_automatic_reset FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:97
+
+AppearanceControllerTest > failed_initial_read_is_visible_and_does_not_write_a_default FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:46
+
+AppearanceControllerTest > retry_after_read_failure_uses_the_saved_value FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:56
+
+AppearanceControllerTest > later_failed_choice_keeps_a_completed_earlier_save FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:131
+
+AppearanceControllerTest > successful_selection_updates_only_after_storage_completion FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:61
+
+AppearanceControllerTest > failed_save_preserves_previous_confirmed_theme_and_exposes_error FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:85
+
+AppearanceControllerTest > only_three_stable_theme_identities_are_supported FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:12
+
+AppearanceControllerTest > missing_preference_defaults_to_stone_without_inventing_a_migration_or_write FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:20
+
+AppearanceControllerTest > each_saved_theme_is_read_back_without_replacing_it FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:28
+
+AppearanceControllerTest > main_role_can_create_the_one_requested_preference_instance FAILED
+    java.lang.IllegalStateException at AppearanceControllerTest.kt:177
+
+AppearanceControllerTest > unknown_persisted_value_is_an_error_not_a_fresh_install FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:36
+
+AppearanceControllerTest > rapid_choices_are_serial_and_the_last_intent_matches_persisted_value FAILED
+    java.lang.AssertionError at AppearanceControllerTest.kt:103
+
+DataStoreAppearanceStorageTest > actual_preferences_file_can_be_saved_closed_and_reopened FAILED
+    java.lang.IllegalStateException at DataStoreAppearanceStorageTest.kt:28
+
+DataStoreAppearanceStorageTest > one_preferences_file_cannot_have_competing_active_instances FAILED
+    java.lang.IllegalStateException at DataStoreAppearanceStorageTest.kt:13
+
+> Task :app:testDebugUnitTest FAILED
+26 actionable tasks: 20 executed, 6 up-to-date

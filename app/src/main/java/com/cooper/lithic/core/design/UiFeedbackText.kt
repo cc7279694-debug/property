@@ -22,7 +22,7 @@ internal fun UiFeedbackText(text: String, tone: UiMessageTone, tag: String, modi
     }
     val color = when (tone) {
         UiMessageTone.INFORMATION -> MaterialTheme.colorScheme.onSurfaceVariant
-        UiMessageTone.WARNING -> MaterialTheme.colorScheme.onSurface
+        UiMessageTone.WARNING -> LocalLithicVisuals.current.warning
         UiMessageTone.ERROR -> MaterialTheme.colorScheme.error
     }
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xxSmall)) {

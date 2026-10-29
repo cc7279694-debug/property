@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.app.AppProcessRoleTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-29T02:26:30.211Z" hostname="WHOCARE" time="0.05">
+  <properties/>
+  <testcase name="proc_name_reader_uses_only_the_first_nul_terminated_argument" classname="com.cooper.lithic.app.AppProcessRoleTest" time="0.027"/>
+  <testcase name="other_secondary_processes_and_prefix_collisions_are_unknown" classname="com.cooper.lithic.app.AppProcessRoleTest" time="0.01"/>
+  <testcase name="whitespace_and_non_ascii_proc_names_are_rejected" classname="com.cooper.lithic.app.AppProcessRoleTest" time="0.0"/>
+  <testcase name="exact_main_identity_is_the_only_business_role" classname="com.cooper.lithic.app.AppProcessRoleTest" time="0.0"/>
+  <testcase name="unavailable_empty_or_malformed_identities_fail_closed" classname="com.cooper.lithic.app.AppProcessRoleTest" time="0.0"/>
+  <testcase name="absent_terminator_truncation_and_empty_first_argument_are_rejected" classname="com.cooper.lithic.app.AppProcessRoleTest" time="0.0"/>
+  <testcase name="exact_media_process_suffix_selects_sandbox_for_each_install_identity" classname="com.cooper.lithic.app.AppProcessRoleTest" time="0.0"/>
+  <testcase name="valid_maximum_bounded_first_argument_is_not_silently_truncated" classname="com.cooper.lithic.app.AppProcessRoleTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

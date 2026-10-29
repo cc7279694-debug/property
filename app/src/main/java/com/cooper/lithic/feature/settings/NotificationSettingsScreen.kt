@@ -13,12 +13,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -168,7 +168,14 @@ private fun ReminderSwitch(
             Text(title, style = MaterialTheme.typography.bodyLarge)
             Text(description, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
-        Switch(checked = checked, onCheckedChange = null, enabled = enabled)
+        Switch(checked = checked, onCheckedChange = null, enabled = enabled,
+            colors = androidx.compose.material3.SwitchDefaults.colors(
+                disabledCheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                disabledUncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                disabledCheckedTrackColor = MaterialTheme.colorScheme.surfaceContainer,
+                disabledUncheckedTrackColor = MaterialTheme.colorScheme.surfaceContainer,
+                disabledCheckedBorderColor = MaterialTheme.colorScheme.outline,
+                disabledUncheckedBorderColor = MaterialTheme.colorScheme.outline))
     }
     }
 }

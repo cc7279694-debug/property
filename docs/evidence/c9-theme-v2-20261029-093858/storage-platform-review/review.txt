@@ -1,0 +1,222 @@
+Storage platform review - C9 appearance preferences only
+
+Scope: cached dependency bytecode and Kotlin Metadata; no Gradle/device run, production/test changes, dependency installation, or copied binaries.
+
+Interpretation: Android local JVM tests use the mock android.os.Build.VERSION.SDK_INT=0. FileStorage therefore uses its legacy File.renameTo branch on this Windows host. This does NOT establish a production defect on supported Android API26+. Root separately archived the synthetic rename/replace probe and original failed JUnit output.
+
+The proposed change is limited to unpublished independent appearance preferences; frozen business SettingsStore/Room/backup implementations remain unchanged.
+
+1. SDK branch
+
+public static final boolean atomicMoveTo(java.io.File, java.io.File);
+    Code:
+       0: aload_0
+       1: ldc           #9                  // String <this>
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_1
+       7: ldc           #17                 // String toFile
+       9: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: getstatic     #23                 // Field android/os/Build$VERSION.SDK_INT:I
+      15: bipush        26
+      17: if_icmplt     31
+      20: getstatic     #29                 // Field androidx/datastore/core/Api26Impl.INSTANCE:Landroidx/datastore/core/Api26Impl;
+      23: aload_0
+      24: aload_1
+      25: invokevirtual #32                 // Method androidx/datastore/core/Api26Impl.move:(Ljava/io/File;Ljava/io/File;)Z
+      28: goto          36
+      31: aload_0
+      32: aload_1
+      33: invokevirtual #38                 // Method java/io/File.renameTo:(Ljava/io/File;)Z
+      36: ireturn
+}
+
+2. API26+ branch uses NIO replacement
+
+public final boolean move(java.io.File, java.io.File);
+    Code:
+       0: aload_1
+       1: ldc           #17                 // String srcFile
+       3: invokestatic  #23                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_2
+       7: ldc           #25                 // String dstFile
+       9: invokestatic  #23                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: nop
+      13: aload_1
+      14: invokevirtual #31                 // Method java/io/File.toPath:()Ljava/nio/file/Path;
+      17: aload_2
+      18: invokevirtual #31                 // Method java/io/File.toPath:()Ljava/nio/file/Path;
+      21: iconst_1
+      22: anewarray     #33                 // class java/nio/file/CopyOption
+      25: astore_3
+      26: aload_3
+      27: iconst_0
+      28: getstatic     #39                 // Field java/nio/file/StandardCopyOption.REPLACE_EXISTING:Ljava/nio/file/StandardCopyOption;
+      31: aastore
+      32: aload_3
+      33: invokestatic  #44                 // Method java/nio/file/Files.move:(Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
+      36: pop
+      37: iconst_1
+      38: ireturn
+      39: astore        4
+      41: iconst_0
+      42: ireturn
+    Exception table:
+       from    to  target type
+          12    39    39   Class java/io/IOException
+
+3. createWithPath still delegates to FileStorage (not an OkioStorage remedy)
+
+public final androidx.datastore.core.DataStore<androidx.datastore.preferences.core.Preferences> create(androidx.datastore.core.handlers.ReplaceFileCorruptionHandler<androidx.datastore.preferences.core.Preferences>, java.util.List<? extends androidx.datastore.core.DataMigration<androidx.datastore.preferences.core.Preferences>>, kotlinx.coroutines.CoroutineScope, kotlin.jvm.functions.Function0<? extends java.io.File>);
+    Code:
+       0: aload_2
+       1: ldc           #18                 // String migrations
+       3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_3
+       7: ldc           #26                 // String scope
+       9: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: aload         4
+      14: ldc           #28                 // String produceFile
+      16: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      19: aload_0
+      20: new           #30                 // class androidx/datastore/core/FileStorage
+      23: dup
+      24: getstatic     #36                 // Field androidx/datastore/preferences/core/PreferencesFileSerializer.INSTANCE:Landroidx/datastore/preferences/core/PreferencesFileSerializer;
+      27: checkcast     #38                 // class androidx/datastore/core/Serializer
+      30: aconst_null
+      31: aload         4
+      33: invokedynamic #58,  0             // InvokeDynamic #0:invoke:(Lkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
+      38: iconst_2
+      39: aconst_null
+      40: invokespecial #61                 // Method androidx/datastore/core/FileStorage."<init>":(Landroidx/datastore/core/Serializer;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+      43: checkcast     #63                 // class androidx/datastore/core/Storage
+      46: aload_1
+      47: aload_2
+      48: aload_3
+      49: invokevirtual #66                 // Method create:(Landroidx/datastore/core/Storage;Landroidx/datastore/core/handlers/ReplaceFileCorruptionHandler;Ljava/util/List;Lkotlinx/coroutines/CoroutineScope;)Landroidx/datastore/core/DataStore;
+      52: astore        5
+      54: new           #68                 // class androidx/datastore/preferences/core/PreferenceDataStore
+      57: dup
+      58: aload         5
+      60: invokespecial #71                 // Method androidx/datastore/preferences/core/PreferenceDataStore."<init>":(Landroidx/datastore/core/DataStore;)V
+      63: checkcast     #73                 // class androidx/datastore/core/DataStore
+      66: areturn
+
+public final androidx.datastore.core.DataStore<androidx.datastore.preferences.core.Preferences> createWithPath(androidx.datastore.core.handlers.ReplaceFileCorruptionHandler<androidx.datastore.preferences.core.Preferences>, java.util.List<? extends androidx.datastore.core.DataMigration<androidx.datastore.preferences.core.Preferences>>, kotlinx.coroutines.CoroutineScope, kotlin.jvm.functions.Function0<okio.Path>);
+    Code:
+       0: aload_2
+       1: ldc           #18                 // String migrations
+       3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_3
+       7: ldc           #26                 // String scope
+       9: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: aload         4
+      14: ldc           #28                 // String produceFile
+      16: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      19: aload_0
+      20: aload_1
+      21: aload_2
+      22: aload_3
+      23: aload         4
+      25: invokedynamic #139,  0            // InvokeDynamic #1:invoke:(Lkotlin/jvm/functions/Function0;)Lkotlin/jvm/functions/Function0;
+      30: invokevirtual #116                // Method create:(Landroidx/datastore/core/handlers/ReplaceFileCorruptionHandler;Ljava/util/List;Lkotlinx/coroutines/CoroutineScope;Lkotlin/jvm/functions/Function0;)Landroidx/datastore/core/DataStore;
+      33: areturn
+
+private static final java.io.File createWithPath$lambda$0(kotlin.jvm.functions.Function0);
+    Code:
+       0: aload_0
+       1: invokeinterface #167,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+       6: checkcast     #220                // class okio/Path
+       9: invokevirtual #223                // Method okio/Path.toFile:()Ljava/io/File;
+      12: areturn
+
+4. Public storage overload retains the Preferences wrapper
+
+public final androidx.datastore.core.DataStore<androidx.datastore.preferences.core.Preferences> create(androidx.datastore.core.Storage<androidx.datastore.preferences.core.Preferences>, androidx.datastore.core.handlers.ReplaceFileCorruptionHandler<androidx.datastore.preferences.core.Preferences>, java.util.List<? extends androidx.datastore.core.DataMigration<androidx.datastore.preferences.core.Preferences>>, kotlinx.coroutines.CoroutineScope);
+    Code:
+       0: aload_1
+       1: ldc           #119                // String storage
+       3: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_3
+       7: ldc           #18                 // String migrations
+       9: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: aload         4
+      14: ldc           #26                 // String scope
+      16: invokestatic  #24                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      19: new           #68                 // class androidx/datastore/preferences/core/PreferenceDataStore
+      22: dup
+      23: getstatic     #124                // Field androidx/datastore/core/DataStoreFactory.INSTANCE:Landroidx/datastore/core/DataStoreFactory;
+      26: aload_1
+      27: aload_2
+      28: aload_3
+      29: aload         4
+      31: invokevirtual #125                // Method androidx/datastore/core/DataStoreFactory.create:(Landroidx/datastore/core/Storage;Landroidx/datastore/core/handlers/ReplaceFileCorruptionHandler;Ljava/util/List;Lkotlinx/coroutines/CoroutineScope;)Landroidx/datastore/core/DataStore;
+      34: invokespecial #71                 // Method androidx/datastore/preferences/core/PreferenceDataStore."<init>":(Landroidx/datastore/core/DataStore;)V
+      37: checkcast     #73                 // class androidx/datastore/core/DataStore
+      40: areturn
+
+5. Cached Okio 3.9.1 NIO atomicMove; also inspected the same operation in cached 3.6.0 and 3.18.1. This review does not select or upgrade the app dependency version.
+
+public void atomicMove(okio.Path, okio.Path);
+    Code:
+       0: aload_1
+       1: ldc           #136                // String source
+       3: invokestatic  #22                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_2
+       7: ldc           #138                // String target
+       9: invokestatic  #22                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: nop
+      13: aload_1
+      14: invokevirtual #28                 // Method okio/Path.toNioPath:()Ljava/nio/file/Path;
+      17: aload_2
+      18: invokevirtual #28                 // Method okio/Path.toNioPath:()Ljava/nio/file/Path;
+      21: iconst_2
+      22: anewarray     #140                // class java/nio/file/CopyOption
+      25: astore_3
+      26: aload_3
+      27: iconst_0
+      28: getstatic     #146                // Field java/nio/file/StandardCopyOption.ATOMIC_MOVE:Ljava/nio/file/StandardCopyOption;
+      31: aastore
+      32: aload_3
+      33: iconst_1
+      34: getstatic     #149                // Field java/nio/file/StandardCopyOption.REPLACE_EXISTING:Ljava/nio/file/StandardCopyOption;
+      37: aastore
+      38: aload_3
+      39: invokestatic  #153                // Method java/nio/file/Files.move:(Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
+      42: pop
+      43: goto          70
+      46: astore_3
+      47: new           #155                // class java/io/FileNotFoundException
+      50: dup
+      51: aload_3
+      52: invokevirtual #159                // Method java/nio/file/NoSuchFileException.getMessage:()Ljava/lang/String;
+      55: invokespecial #162                // Method java/io/FileNotFoundException."<init>":(Ljava/lang/String;)V
+      58: athrow
+      59: astore_3
+      60: new           #164                // class java/io/IOException
+      63: dup
+      64: ldc           #166                // String atomic move not supported
+      66: invokespecial #167                // Method java/io/IOException."<init>":(Ljava/lang/String;)V
+      69: athrow
+      70: return
+    Exception table:
+       from    to  target type
+          12    43    46   Class java/nio/file/NoSuchFileException
+          12    43    59   Class java/lang/UnsupportedOperationException
+
+6. Kotlin Metadata visibility (not merely JVM public flags)
+
+androidx.datastore.preferences.core.PreferencesSerializer Kotlin visibility=PUBLIC
+
+androidx.datastore.core.okio.OkioStorage Kotlin visibility=PUBLIC
+
+androidx.datastore.core.okio.OkioSerializer Kotlin visibility=PUBLIC
+
+androidx.datastore.core.DataStoreFactory Kotlin visibility=PUBLIC
+
+javap verbose inspection found no androidx.annotation.RestrictTo on PreferencesSerializer.
+
+7. Recommendation and limits
+
+Use public PreferenceDataStoreFactory.create(storage=OkioStorage(FileSystem.SYSTEM, PreferencesSerializer, producePath=...), scope=...). Keep the same Preferences protobuf bytes, extension, key, controller, MAIN process gate, no-backup path, single-instance guard, and corruption failures. Do not use the misleading createWithPath shortcut or move frozen business stores. Do not delete an existing target before replacement. The unchanged second-write/reopen assertion must pass using real files, and final build/Lint must confirm app classpath/API legality. Android filesystem/latency/process verification remains NOT_RUN.
+
+API availability was inspected from cached binaries; presence in cache alone is not a Gradle compile/runtime dependency-resolution proof. Final target compilation is the required confirmation.

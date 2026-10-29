@@ -12,14 +12,15 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.HorizontalDivider
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -88,7 +89,7 @@ internal fun CostChartPage(
             else -> { dateError = null; onSelectDate(parsed) }
         }
     }
-    LazyColumn(modifier.fillMaxSize().imePadding().testTag(screenTag), contentPadding = PaddingValues(16.dp),
+    LazyColumn(modifier.fillMaxSize().imePadding().testTag(screenTag), contentPadding = PaddingValues(horizontal = LithicSpacing.page, vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item("heading") {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -109,14 +110,9 @@ internal fun CostChartPage(
         if (missing) item("missing") { Text("该记录当前不存在，不能继续显示其历史。", Modifier.testTag("chart-missing")) }
         if (hasData) {
             val cutoff = requireNotNull(asOf)
-            item("canvas") {
-                CostChart(points, if (selectedDate != null && selectedDate == selectionFocus && selectedValue != null)
-                    CostChartPoint(selectedDate, selectedValue) else null,
-                    onSelectDate, step, events.asSequence().filter { it.date <= cutoff }.map { it.date }.toSet(), requestedDate = selectionFocus)
-            }
             item("selection") {
-                Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth()) {
-                    Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                Column(Modifier.fillMaxWidth()) {
+                    Column(Modifier.padding(vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text("结果截至 $asOf", style = MaterialTheme.typography.bodyMedium)
                         if (selectionFocus != null) {
                             Text("所选日期：$selectionFocus", Modifier.testTag("chart-selected-date"), style = MaterialTheme.typography.titleMedium)
@@ -128,6 +124,11 @@ internal fun CostChartPage(
                         } else Text("选择一个日期，查看精确历史结果。")
                     }
                 }
+            }
+            item("canvas") {
+                CostChart(points, if (selectedDate != null && selectedDate == selectionFocus && selectedValue != null)
+                    CostChartPoint(selectedDate, selectedValue) else null,
+                    onSelectDate, step, events.asSequence().filter { it.date <= cutoff }.map { it.date }.toSet(), requestedDate = selectionFocus)
             }
             item("date-actions") {
                 FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -154,7 +155,7 @@ internal fun CostChartPage(
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedTextField(dateRaw, { dateRaw = it; dateError = null }, Modifier.fillMaxWidth().testTag("chart-date-input"),
                         label = { Text("查询日期（年-月-日）") }, placeholder = { Text(selectedDate?.toString() ?: asOf.toString()) },
-                        isError = dateError != null, singleLine = true,
+                        colors = lithicInputColors(), isError = dateError != null, singleLine = true,
                         supportingText = { Text(dateError ?: "可输入任意已过去的日期，不必拖动图表。") })
                     Button(::applyDate, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("chart-date-apply")) { Text("查看该日") }
                 }
@@ -219,8 +220,8 @@ internal fun CostChartPage(
                     if (expandedDay == date.toString()) {
                         if (date > cutoff) item("future-$date") { Text("尚未生效的计划，不属于历史曲线。") }
                         items(dayEvents, key = { "event-${it.id}" }) { event ->
-                            Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface), modifier = Modifier.fillMaxWidth().testTag("chart-event-${event.id}")) {
-                                Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Column(Modifier.fillMaxWidth().testTag("chart-event-${event.id}")) {
+                                Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                                     Text(event.title, style = MaterialTheme.typography.titleMedium)
                                     Text(event.detail)
                                     event.amountCents?.let { MoneyMetric(BigDecimal.valueOf(it, 2), unit = AmountUnit.YUAN,
@@ -228,6 +229,7 @@ internal fun CostChartPage(
                                     if (event.nonCash) Text("非现金折抵（不是现金扣款）")
                                     if (date <= cutoff) TextButton({ onSelectDate(date) }, Modifier.heightIn(min = 48.dp)) { Text("查看该日结果") }
                                 }
+                                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                             }
                         }
                     }

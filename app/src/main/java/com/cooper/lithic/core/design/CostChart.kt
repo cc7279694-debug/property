@@ -65,8 +65,9 @@ internal fun CostChart(
         Text("没有可绘制的历史日期；不会以0代替未开始或缺失数据。", modifier)
         return
     }
-    val lineColor = MaterialTheme.colorScheme.primary
-    val axisColor = MaterialTheme.colorScheme.outlineVariant
+    val visuals = LocalLithicVisuals.current
+    val lineColor = if (step) visuals.chartSubscription else visuals.chartProject
+    val axisColor = visuals.chartGrid
     val selectedColor = MaterialTheme.colorScheme.onSurface
     val currentSelect by rememberUpdatedState(onSelectDate)
     val focusDate = requestedDate ?: selectedInRange?.date ?: ordered.first().date

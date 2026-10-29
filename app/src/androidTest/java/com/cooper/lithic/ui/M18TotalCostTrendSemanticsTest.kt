@@ -52,6 +52,24 @@ class M18TotalCostTrendSemanticsTest {
         compose.onNodeWithTag("total-trend-selected-status").assertTextContains("正负贡献相抵为0", substring = true)
     }
 
+    @Test fun c9_breakdown_legend_names_the_real_series_and_their_distinct_strokes() {
+        show(state().copy(showBreakdown = true))
+        scroll("total-trend-legend-total")
+        compose.onNodeWithTag("total-trend-legend-total")
+            .assert(hasAnyDescendant(hasText("总日均成本 · 实线")))
+        scroll("total-trend-legend-project")
+        compose.onNodeWithTag("total-trend-legend-project")
+            .assert(hasAnyDescendant(hasText("长期项目 · 长虚线")))
+        scroll("total-trend-legend-subscription")
+        compose.onNodeWithTag("total-trend-legend-subscription")
+            .assert(hasAnyDescendant(hasText("订阅 · 短虚线阶梯")))
+        scroll("total-trend-canvas")
+        compose.onNodeWithTag("total-trend-canvas").assertContentDescriptionEquals(
+            "总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。纵轴：负10.00元/天 至 10.00元/天；按自然日绘制。")
+        scroll("total-trend-total")
+        compose.onNodeWithTag("total-trend-total").assertTextContains(AmountFormatter.formatDailyRate(BigDecimal.ZERO))
+    }
+
     @Test fun exact_date_text_entry_avoids_drag_and_future_is_rejected() {
         var requested: LocalDate? = null
         show(state(), select = { requested = it })

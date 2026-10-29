@@ -1,10 +1,11 @@
 package com.cooper.lithic.feature.project
 
+import com.cooper.lithic.core.design.lithicCheckboxColors
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.selection.toggleable
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -58,7 +59,7 @@ internal fun EndProjectDialog(
             Row(Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("end-record-recovery")
                 .toggleable(state.recordRecovery, enabled = state.canEdit, role = Role.Checkbox,
                     onValueChange = onRecordRecoveryChange), verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(state.recordRecovery, onCheckedChange = null, enabled = state.canEdit)
+                Checkbox(state.recordRecovery, onCheckedChange = null, enabled = state.canEdit, colors = lithicCheckboxColors())
                 Text("同时记录实际收回", Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
             }
             Text("只有实际收到款项时才勾选；0元也可记录，不预填估价。",

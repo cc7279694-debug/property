@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
+import com.cooper.lithic.core.design.LithicIconButton as IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -48,9 +49,7 @@ internal fun C2StatusChip(label: String, modifier: Modifier = Modifier) {
 internal fun C2Section(title: String, modifier: Modifier = Modifier, content: @Composable ColumnScope.() -> Unit) {
     Column(modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text(title, Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium)
-        Surface(shape = MaterialTheme.shapes.medium, color = MaterialTheme.colorScheme.surface) {
-            Column(Modifier.fillMaxWidth().padding(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp), content = content)
-        }
+        Column(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalArrangement = Arrangement.spacedBy(12.dp), content = content)
     }
 }
 
@@ -61,7 +60,7 @@ internal fun C2SettingRow(title: String, icon: C2Glyph, modifier: Modifier = Mod
     Row(modifier.fillMaxWidth().then(if (onClick == null) Modifier else Modifier.clickable(enabled = enabled, role = Role.Button, onClick = onClick))
         .heightIn(min = 56.dp).padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        Surface(shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.primaryContainer) {
+        Surface(shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.surfaceContainer) {
             Box(Modifier.size(32.dp), contentAlignment = Alignment.Center) { C2Icon(icon) }
         }
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -80,10 +79,12 @@ internal fun C2FormScaffold(title: String, onBack: () -> Unit, backTag: String,
     footer: @Composable ColumnScope.() -> Unit,
     content: @Composable ColumnScope.() -> Unit) {
     Column(modifier.fillMaxSize().imePadding()) {
-        C2PageHeader(title, onBack, backTag, Modifier.padding(horizontal = 16.dp), backLabel)
-        Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()).padding(16.dp),
+        C2PageHeader(title, onBack, backTag, Modifier.padding(horizontal = LithicSpacing.page), backLabel)
+        Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())
+            .padding(horizontal = LithicSpacing.page, vertical = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp), content = content)
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-        Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), content = footer)
+        Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page, vertical = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp), content = footer)
     }
 }

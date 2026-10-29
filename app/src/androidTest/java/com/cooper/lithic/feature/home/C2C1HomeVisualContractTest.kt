@@ -28,17 +28,19 @@ import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
-/** Production Compose: C1 integrity assertions retained under the C2 sole-FAB layout. LocalDensity is not a system-font or device result. */
+/** C9 explicitly replaces C1's green card and fixed FAB band; all fact/amount assertions remain.
+ * LocalDensity and these compiled assertions are not a system-font or device result. */
 class C2C1HomeVisualContractTest {
     @get:Rule val compose = createComposeRule()
     private var pixelsPerDp = 1f
+    private var summaryBackground = Color.Unspecified
 
-    @Test fun dark_verified_empty_360_keeps_green_card_compact_dash_and_real_zero_counts() {
+    @Test fun dark_verified_empty_360_keeps_neutral_summary_compact_dash_and_real_zero_counts() {
         show(widthDp = 360, fontScale = 1f)
         assertVerifiedEmpty()
     }
 
-    @Test fun dark_verified_empty_400_keeps_green_card_compact_dash_and_real_zero_counts() {
+    @Test fun dark_verified_empty_400_keeps_neutral_summary_compact_dash_and_real_zero_counts() {
         show(widthDp = 400, fontScale = 1f)
         assertVerifiedEmpty()
     }
@@ -60,7 +62,7 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("home-total-rate").assertTextContains("—")
         compose.onNodeWithTag("home-first-record").assertDoesNotExist()
         assertCompactAmount()
-        assertGreenHero(Color(0xFF26362C))
+        assertNeutralSummary()
     }
 
     @Test fun stale_empty_snapshot_is_labeled_and_does_not_claim_fresh_onboarding() {
@@ -100,9 +102,11 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("home-open-add").assertIsDisplayed().assertWidthIsEqualTo(56.dp).assertHeightIsEqualTo(56.dp)
         compose.onAllNodesWithTag("home-empty-guidance").assertCountEquals(1)
         compose.onNodeWithTag("home-empty-guidance").performScrollTo().assertIsDisplayed()
-        val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
+        compose.onNodeWithTag("home-screen").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, 100_000f) }
+        compose.waitForIdle()
+        val guidance = compose.onNodeWithTag("home-empty-guidance").assertIsDisplayed().fetchSemanticsNode().boundsInRoot
         val fab = compose.onNodeWithTag("home-open-add").fetchSemanticsNode().boundsInRoot
-        assertTrue("The fixed FAB band is separate from scroll content", viewport.bottom <= fab.top + 1f)
+        assertTrue("The final empty guidance scrolls above the FAB with one content inset", guidance.bottom <= fab.top + 1f)
         if (checkCompactHero) {
             compose.onNodeWithTag("home-current-cost-summary").performScrollTo()
             val hero = compose.onNodeWithTag("home-current-cost-summary").fetchSemanticsNode().boundsInRoot
@@ -112,7 +116,7 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
         compose.onNodeWithText("¥0.00", useUnmergedTree = true).assertDoesNotExist()
         assertCompactAmount()
-        assertGreenHero(Color(0xFF2D4135))
+        assertNeutralSummary()
     }
 
     private fun assertCompactAmount() {
@@ -125,20 +129,20 @@ class C2C1HomeVisualContractTest {
         val display = layout.layoutInput.text.text.replace("\u2009", "")
         assertEquals("Amount and its unit form one unbreakable baseline", 1, layout.lineCount)
         assertTrue(display == "—" || display.endsWith("/天"))
-        assertTrue(amount.left >= hero.left + 15f * pixelsPerDp)
-        assertTrue(amount.right <= hero.right - 15f * pixelsPerDp + 1f)
+        assertTrue("C9 amount aligns to the page instead of an extra card inset", amount.left >= hero.left)
+        assertTrue("Full amount viewport stays inside the summary", amount.right <= hero.right + 1f)
         compose.onNodeWithTag("home-total-unit").assertDoesNotExist()
         val canvas = compose.onNodeWithTag("c1-home-canvas").fetchSemanticsNode().boundsInRoot
         assertTrue(hero.left >= canvas.left && hero.right <= canvas.right + 1f)
     }
 
-    private fun assertGreenHero(expected: Color) {
+    private fun assertNeutralSummary() {
         compose.onNodeWithTag("home-current-cost-summary").performScrollTo()
         val image = compose.onNodeWithTag("home-current-cost-summary").captureToImage().toPixelMap()
         val sample = image[image.width / 2, minOf(image.height - 1, 2)]
-        assertEquals(expected.red, sample.red, 0.02f)
-        assertEquals(expected.green, sample.green, 0.02f)
-        assertEquals(expected.blue, sample.blue, 0.02f)
+        assertEquals(summaryBackground.red, sample.red, 0.02f)
+        assertEquals(summaryBackground.green, sample.green, 0.02f)
+        assertEquals(summaryBackground.blue, sample.blue, 0.02f)
     }
 
     private fun show(widthDp: Int, fontScale: Float, overview: OverviewResult? = snapshot(),
@@ -150,6 +154,7 @@ class C2C1HomeVisualContractTest {
                 pixelsPerDp = density
                 CompositionLocalProvider(LocalDensity provides Density(density, fontScale)) {
                     LithicTheme(darkTheme = dark) {
+                        summaryBackground = MaterialTheme.colorScheme.background
                         Box(Modifier.requiredSize(widthDp.dp, height).background(MaterialTheme.colorScheme.background)
                             .testTag("c1-home-canvas")) {
                             HomeShell(99, {}, {}, 99, {}, {}, overview = overview, hasReadNotice = retained)

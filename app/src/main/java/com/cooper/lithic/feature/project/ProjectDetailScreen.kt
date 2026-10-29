@@ -1,6 +1,5 @@
 package com.cooper.lithic.feature.project
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,17 +20,17 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.IconButton
+import com.cooper.lithic.core.design.LithicIconButton as IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -56,6 +55,7 @@ import com.cooper.lithic.core.design.C2RecordIdentity
 import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.MoneyMetric
 import com.cooper.lithic.core.design.MoneyMetricLevel
+import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.core.design.moneyMetricAnnotatedText
 import com.cooper.lithic.core.design.moneyMetricFitsAtPreferredSize
 import com.cooper.lithic.core.model.MoneyDirection
@@ -82,8 +82,7 @@ internal fun ProjectDetailScreen(
     onReplacement: (() -> Unit)? = null,
     onTradeIn: (() -> Unit)? = null,
     onCostHistory: (() -> Unit)? = null,
-    // Presentation slot only. The product baseline has no validated media read facade;
-    // callers must never synthesize a path or bypass verification to fill this slot.
+    // Presentation slot only: callers supply the current owner's validated reader, never a path.
     coverContent: (@Composable () -> Unit)? = null,
 ) {
     val detail = state.detail?.takeUnless { state.missing }
@@ -137,8 +136,8 @@ internal fun ProjectDetailScreen(
             }
         }
         LazyColumn(Modifier.weight(1f).fillMaxWidth().testTag("project-detail-content"),
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 24.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp)) {
+            contentPadding = PaddingValues(start = LithicSpacing.page, end = LithicSpacing.page, top = 8.dp, bottom = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp)) {
             if (state.loading) item { Text("正在读取项目", style = MaterialTheme.typography.bodyLarge) }
             state.error?.let { message -> item {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -191,7 +190,7 @@ internal fun ProjectDetailScreen(
             }
         }
         if (detail != null) Surface(color = MaterialTheme.colorScheme.background) {
-            Button({ moneySheetOpen = true }, Modifier.fillMaxWidth().padding(16.dp)
+            Button({ moneySheetOpen = true }, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page, vertical = 12.dp)
                 .heightIn(min = 48.dp).testTag("project-record-money")) {
                 C2Icon(C2Glyph.Add)
                 Spacer(Modifier.width(8.dp))
@@ -201,7 +200,7 @@ internal fun ProjectDetailScreen(
     }
     if (moneySheetOpen && detail != null) ModalBottomSheet(onDismissRequest = { moneySheetOpen = false },
         modifier = Modifier.testTag("project-money-sheet")) {
-        Column(Modifier.fillMaxWidth().padding(start = 16.dp, end = 16.dp, bottom = 24.dp)) {
+        Column(Modifier.fillMaxWidth().padding(start = LithicSpacing.page, end = LithicSpacing.page, bottom = 24.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Text("记一笔", Modifier.weight(1f).semantics { heading() }, style = MaterialTheme.typography.titleLarge)
                 IconButton({ moneySheetOpen = false }, Modifier.size(48.dp).testTag("project-money-sheet-close")) {
@@ -226,13 +225,12 @@ internal fun ProjectDetailScreen(
 @Composable
 private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable () -> Unit)?) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        if (detail.project.coverAssetId != null && coverContent != null) {
-            Box(Modifier.fillMaxWidth().heightIn(max = 160.dp).clip(RoundedCornerShape(12.dp))
-                .testTag("project-detail-cover")) { coverContent() }
-        }
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.testTag("project-identity-symbol")) {
-                if (detail.project.coverAssetId != null && coverContent == null) {
+            Box(Modifier.size(64.dp).testTag("project-identity-symbol")) {
+                if (detail.project.coverAssetId != null && coverContent != null) {
+                    Box(Modifier.size(64.dp).clip(RoundedCornerShape(12.dp))
+                        .testTag("project-detail-cover")) { coverContent() }
+                } else if (detail.project.coverAssetId != null) {
                     Box(Modifier.size(64.dp).clip(RoundedCornerShape(16.dp))
                         .background(MaterialTheme.colorScheme.primaryContainer), contentAlignment = Alignment.Center) {
                         C2Icon(C2Glyph.ImageError)
@@ -266,9 +264,8 @@ private fun ProjectCostSummary(detail: ProjectDetail) {
     val measurer = rememberTextMeasurer()
     val moneyStyle = MaterialTheme.typography.displayLarge.copy(fontSize = 28.sp, lineHeight = 36.sp)
     val metricLabel = projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal)
-    Surface(Modifier.fillMaxWidth().testTag("project-core-metrics"), shape = MaterialTheme.shapes.large,
-        color = MaterialTheme.colorScheme.surface) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Surface(Modifier.fillMaxWidth().testTag("project-core-metrics"), color = MaterialTheme.colorScheme.background) {
+        Column(Modifier.padding(vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             BoxWithConstraints(Modifier.fillMaxWidth()) {
                 val dailyWidth = measurer.measure(moneyMetricAnnotatedText(detail.cost.dailyRate,
                     AmountUnit.YUAN_PER_DAY, MaterialTheme.colorScheme.onSurfaceVariant), moneyStyle,
@@ -280,7 +277,7 @@ private fun ProjectCostSummary(detail: ProjectDetail) {
                         Text(metricLabel,
                             style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         MoneyMetric(detail.cost.dailyRate, Modifier.testTag("project-detail-daily"),
-                            level = MoneyMetricLevel.DETAIL, color = MaterialTheme.colorScheme.primary, label = metricLabel)
+                            level = MoneyMetricLevel.DETAIL, color = MaterialTheme.colorScheme.onBackground, label = metricLabel)
                     }
                 }
                 val held: @Composable () -> Unit = {
@@ -327,19 +324,18 @@ private fun ProjectSecondaryTotals(detail: ProjectDetail) {
     val measurer = rememberTextMeasurer()
     val style = MaterialTheme.typography.displayLarge.copy(fontSize = 24.sp, lineHeight = 32.sp)
     BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val columnWidth = with(density) { ((maxWidth - 48.dp) / 3).roundToPx() }
+        val columnWidth = with(density) { ((maxWidth - 24.dp) / 3).roundToPx() }
         val stack = includesCredit || density.fontScale > 1.3f || totals.any {
             measurer.measure(moneyMetricAnnotatedText(BigDecimal.valueOf(it.second, 2), AmountUnit.YUAN,
                 MaterialTheme.colorScheme.onSurfaceVariant), style, softWrap = false).size.width > columnWidth
         }
-        Surface(Modifier.fillMaxWidth().testTag("project-financial-totals"), shape = MaterialTheme.shapes.medium,
-            color = MaterialTheme.colorScheme.surface) {
-            if (stack) Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        Surface(Modifier.fillMaxWidth().testTag("project-financial-totals"), color = MaterialTheme.colorScheme.background) {
+            if (stack) Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 totals.forEachIndexed { index, total ->
                     if (index > 0) HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                     ProjectTotal(total.first, total.second, total.third)
                 }
-            } else Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            } else Row(Modifier.fillMaxWidth().padding(vertical = 12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 totals.forEach { (label, cents, tag) -> Box(Modifier.weight(1f)) { ProjectTotal(label, cents, tag) } }
             }
         }

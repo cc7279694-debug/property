@@ -17,7 +17,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Button
+import com.cooper.lithic.core.design.LithicButton as Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
@@ -34,6 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
 import com.cooper.lithic.core.design.C5InformationButton
+import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.domain.report.OverviewKind
 import java.time.LocalDate
 
@@ -74,7 +75,7 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
         if (showEmpty) {
             // Ready counts establish emptiness; no synthetic chart, zero amount, or menu wall.
             LazyColumn(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(16.dp),
-                contentPadding = androidx.compose.foundation.layout.PaddingValues(16.dp)) {
+                contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = LithicSpacing.page, vertical = 16.dp)) {
                 item("heading") { header() }
                 item("empty") { ReviewEmptyState(onAddRecord) }
             }
@@ -196,7 +197,7 @@ private fun ReviewDestinations(onProjectHistory: (() -> Unit)?, onSubscriptionHi
 
 @Composable
 private fun ReviewGroup(tag: String, content: @Composable () -> Unit) {
-    Surface(Modifier.fillMaxWidth().testTag(tag), shape = RoundedCornerShape(16.dp), color = MaterialTheme.colorScheme.surface) {
+    Surface(Modifier.fillMaxWidth().testTag(tag), shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.background) {
         Column { content() }
     }
 }
@@ -213,7 +214,7 @@ private fun ReviewLink(title: String, description: String, glyph: C2Glyph, tag: 
         .clickable(role = Role.Button, onClick = onClick).padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         Surface(Modifier.size(32.dp), shape = RoundedCornerShape(8.dp),
-            color = MaterialTheme.colorScheme.primaryContainer, contentColor = MaterialTheme.colorScheme.onPrimaryContainer) {
+            color = MaterialTheme.colorScheme.surfaceContainer, contentColor = MaterialTheme.colorScheme.onSurfaceVariant) {
             Box(contentAlignment = Alignment.Center) { C2Icon(glyph) }
         }
         Text(title, Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)

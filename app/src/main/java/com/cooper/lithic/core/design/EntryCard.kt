@@ -32,13 +32,12 @@ fun EntryCard(
     hasCoverReference: Boolean = false,
     metricLabel: String = "日均成本",
 ) {
-    val colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     if (onClick == null) {
-        Card(modifier = modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium, colors = colors) {
+        Surface(modifier = modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.background) {
             EntryContent(name, statusLabel, timeLabel, dailyCost, cover, category, kind, hasCoverReference, metricLabel)
         }
     } else {
-        Card(onClick = onClick, modifier = modifier.fillMaxWidth(), shape = MaterialTheme.shapes.medium, colors = colors) {
+        Surface(onClick = onClick, modifier = modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.background) {
             EntryContent(name, statusLabel, timeLabel, dailyCost, cover, category, kind, hasCoverReference, metricLabel)
         }
     }
@@ -56,7 +55,7 @@ private fun EntryContent(name: String, status: String, time: String, cost: BigDe
                 MaterialTheme.colorScheme.onSurfaceVariant), amountStyle, softWrap = false).size.width,
             measurer.measure(AnnotatedString(metricLabel), captionStyle, softWrap = false).size.width).toDp()
     }
-    BoxWithConstraints(Modifier.fillMaxWidth().padding(12.dp)) {
+    BoxWithConstraints(Modifier.fillMaxWidth().padding(vertical = 12.dp)) {
         val beside = density.fontScale <= 1.3f && maxWidth >= 64.dp + 12.dp + 112.dp + 12.dp + amountWidth
         Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {

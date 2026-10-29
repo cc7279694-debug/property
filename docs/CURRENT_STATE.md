@@ -1,8 +1,11 @@
 # 当前项目状态
 
-状态日期：2026-10-28（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-29（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **C9 VISUAL & THEME V2 — READY_FOR_INDEPENDENT_REVIEW（2026-10-29，仅桌面实施）**：从`d1c752938792f0a88d19713f06d32c183696d34f`落实固定深色黑灰/纯白/岩白雾蓝（缺省）及设置选择面板，MAIN专属、独立noBackup偏好、持久成功才确认及失败/未知值保护；主要页面/列表/表单/完整趋势经共享Token和轻分组统一，原精确金额、C5-R1/C7来源与写入保护不变。135唯一JVM PASS，AndroidTest源码编译/Debug/Lint退出0（0错误16警告）；首轮RED、一次编译失败与宿主文件替换FAIL保留。15位视觉矩阵及10个新增Android方法仅编译，截图/Compose桌面渲染0；ANDROID_VISUAL_PENDING / ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED。见[集中报告](evidence/LITHIC-C9-Visual-Theme-V2.md)及[设计/实施计划](design/LITHIC-C9-Visual-Theme-V2.md)。Room5/backup4、业务Owner/恢复/导航行为/C6安全路径、构建身份版本签名保持；Preview10/code26实物SHA复核不变，不生成新用户包。未操作设备/账本，不授予C9视觉或图片/升级/发行通过；M10/M20/M22/C3/M13-T06/Q03/Q04/G1～G4历史状态不改。提交后停止等待独立审查，不进入下一阶段。
+
 
 - **C8 PRIVATE TRIAL — READY_FOR_INDEPENDENT_REVIEW / ANDROID_VISUAL_PENDING / MEDIA_IMPORT_BLOCKED（2026-10-28）**：以C7独立桌面冻结提交`1c97ff61d575dbb335bfc0390a0fcefb70db2fe5`仅递增Private Trial为`com.cooper.lithic.preview.debug`／code26／`0.1.0-preview.10-debug`，原证书不变。49唯一JVM PASS、体验构建/AndroidTest源码编译/Lint exit0，0错13警告；真实Manifest/生产入口/C5/C6-1/C7的DEX接线核对及非build目录复制校验通过，唯一APK15,912,394字节。见[交付报告](evidence/LITHIC-C8-Private-Trial-Delivery.md)和[体验说明](evidence/LITHIC-C8-User-Trial-Checklist.md)。Preview9实物身份/原字节保留；生产与测试源码、Room5/backup4/冻结业务/Owner/恢复/媒体协议、普通Debug/Release/M22/C3配置不改。未操作设备或安装，C7/C6全部Android NOT_RUN、媒体资源UNKNOWN及M10/M20/M22/C3/M13-T06/Q03/Q04/G1～G4历史状态保持；用户个人体验不代替自动化安全测试，非正式V1.0，提交后停止等待独立审查。
 

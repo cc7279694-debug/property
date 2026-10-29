@@ -9,6 +9,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -89,8 +90,8 @@ private fun reportValues(value: ReportAmounts, kind: OverviewKind?): List<Pair<S
  * All years in a section use the same absolute range; zero is the centre of each bar. */
 @Composable
 internal fun ReportAnnualBars(year: Int, amounts: ReportAmounts, scale: BigDecimal, kind: OverviewKind? = null) {
-    val colour = MaterialTheme.colorScheme.primary
-    val axis = MaterialTheme.colorScheme.outlineVariant
+    val colour = LocalLithicVisuals.current.chartTotal
+    val axis = LocalLithicVisuals.current.chartGrid
     Text("$year 年", style = MaterialTheme.typography.titleMedium)
     reportValues(amounts, kind).forEach { (label, cents) ->
         ReportMoneyLine(label, cents, MoneyMetricLevel.ROW)
@@ -120,9 +121,9 @@ internal fun ReportRecord.statusLabel(): String = when (status) {
 
 @Composable
 internal fun ReportRecordCard(record: ReportRecord, prefix: String, open: (OverviewKind, String) -> Unit) {
-    Card(Modifier.fillMaxWidth().testTag("$prefix-record-${record.id}"), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
+    Column(Modifier.fillMaxWidth().testTag("$prefix-record-${record.id}")) {
         Row(Modifier.fillMaxWidth().clickable(role = Role.Button) { open(record.kind, record.id) }
-            .padding(12.dp).heightIn(min = 64.dp).testTag("$prefix-open-${record.id}"),
+            .padding(vertical = 12.dp).heightIn(min = 64.dp).testTag("$prefix-open-${record.id}"),
             verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             C2RecordIdentity(record.name, "", if (record.kind == OverviewKind.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -132,5 +133,6 @@ internal fun ReportRecordCard(record: ReportRecord, prefix: String, open: (Overv
             }
             C2Icon(C2Glyph.Chevron)
         }
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
     }
 }

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.feature.appearance.AppearanceControllerTest",
+    "--tests",
+    "com.cooper.lithic.feature.appearance.DataStoreAppearanceStorageTest",
+    "--tests",
+    "com.cooper.lithic.core.design.C9ThemePaletteTest"
+  ],
+  "startUtc": "2026-10-29T01:52:24.324877+00:00",
+  "endUtc": "2026-10-29T01:53:36.214397+00:00",
+  "exitCode": 1
+}

@@ -5,9 +5,19 @@ import android.content.Intent
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.SystemBarStyle
+import androidx.compose.ui.graphics.toArgb
+import com.cooper.lithic.core.design.lithicColorScheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.SideEffect
+import androidx.core.view.WindowCompat
+import com.cooper.lithic.feature.appearance.AppearanceProvider
+import com.cooper.lithic.feature.appearance.AppearanceActions
+import com.cooper.lithic.feature.appearance.LocalAppearanceActions
+import com.cooper.lithic.feature.appearance.LithicAppearance
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -53,6 +63,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val container = (application as LithicApplication).appContainer
+        val appearance = AppearanceProvider.get(application as LithicApplication)
         receiveNotice(intent)
         val resolveMilestone: suspend (MilestoneNoticeRef) -> List<MilestoneCandidate> = { reference ->
             val generation = container.openStorage()
@@ -75,7 +86,21 @@ class MainActivity : ComponentActivity() {
             initializer { BackupRestoreViewModel(createSavedStateHandle(), RestoreCoordinator(applicationContext, container)) }
         })[BackupRestoreViewModel::class.java]
         setContent {
-            LithicTheme {
+            val appearanceState by appearance.state.collectAsStateWithLifecycle()
+            SideEffect {
+                val lightBars = appearanceState.selected != LithicAppearance.CHARCOAL
+                val barBackground = lithicColorScheme(appearanceState.selected).background.toArgb()
+                val style = if (lightBars) SystemBarStyle.light(barBackground, barBackground)
+                    else SystemBarStyle.dark(barBackground)
+                enableEdgeToEdge(statusBarStyle = style, navigationBarStyle = style)
+                WindowCompat.getInsetsController(window, window.decorView).apply {
+                    isAppearanceLightStatusBars = lightBars
+                    isAppearanceLightNavigationBars = lightBars
+                }
+            }
+            CompositionLocalProvider(LocalAppearanceActions provides AppearanceActions(
+                appearanceState, appearance::select, appearance::retryRead)) {
+            LithicTheme(appearance = appearanceState.selected) {
                 val state by holder.state.collectAsStateWithLifecycle()
                 val backupState by backups.state.collectAsStateWithLifecycle()
                 val restoreState by restores.state.collectAsStateWithLifecycle()
@@ -92,6 +117,7 @@ class MainActivity : ComponentActivity() {
                     restoreState = restoreState, onRestoreBackup = restore, onCancelRestore = restores::cancelValidation,
                     onConfirmRestore = restores::confirmOverwrite, onDiscardRestore = restores::discardPreview,
                     milestoneRequest = milestoneRequest, resolveMilestone = resolveMilestone)
+            }
             }
         }
     }

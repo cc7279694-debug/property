@@ -13,12 +13,14 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
+import com.cooper.lithic.core.design.LithicButton as Button
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.clickable
+import androidx.compose.ui.semantics.Role
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -44,7 +46,7 @@ internal fun LongTermReviewScreen(
     LazyColumn(modifier.fillMaxSize().testTag("review-ranks-screen"),
         verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
         item {
-            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
+            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                 C2PageHeader("长期复盘", onBack, "review-ranks-back", backLabel = "返回回看")
                 C5InformationButton("长期复盘口径", Modifier.testTag("review-ranks-information")) {
@@ -103,7 +105,7 @@ internal fun LongTermReviewScreen(
             })
         }
         if (state.hasMore) item {
-            Button(onLoadMore, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
+            Button(onLoadMore, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page)
                 .heightIn(min = 48.dp).testTag("review-ranks-load-more"), enabled = !state.loading) { Text("继续加载") }
         }
         item { Spacer(Modifier.height(LithicSpacing.medium)) }
@@ -112,8 +114,9 @@ internal fun LongTermReviewScreen(
 
 @Composable
 private fun ReviewRankCard(item: ReviewRankItem, rank: Int?, ranking: ReviewRanking, onClick: () -> Unit) {
-    Card(onClick, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium).testTag("review-row-${item.id}")) {
-        Column(Modifier.padding(LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+    Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page)
+        .clickable(role = Role.Button, onClick = onClick).testTag("review-row-${item.id}")) {
+        Column(Modifier.padding(vertical = LithicSpacing.medium), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 C2RecordIdentity(item.name, item.categoryName, if (item.type == CategoryType.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
                 Text(if (rank == null) "未排名 · ${item.name}" else "$rank. ${item.name}",
@@ -151,5 +154,6 @@ private fun ReviewRankCard(item: ReviewRankItem, rank: Int?, ranking: ReviewRank
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         }
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
     }
 }

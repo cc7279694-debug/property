@@ -8,6 +8,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.Density
@@ -120,8 +121,12 @@ class C2HomeClosureTest {
     private fun assertFabInContent() {
         val home = compose.onNodeWithTag("closure-home-canvas").fetchSemanticsNode()
         val fab = compose.onNodeWithTag("home-open-add").assertIsDisplayed().fetchSemanticsNode()
-        val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode()
-        assertTrue("Scrolling records must end above the floating action", viewport.positionInRoot.y + viewport.size.height <= fab.positionInRoot.y + 1f)
+        // C9 uses one trailing content inset, rather than shrinking the entire scroll viewport.
+        compose.onNodeWithTag("home-screen").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, 100_000f) }
+        compose.waitForIdle()
+        val lastAction = compose.onNodeWithTag("home-category-disclosure").assertIsDisplayed().fetchSemanticsNode()
+        assertTrue("The final content action must scroll above the floating action",
+            lastAction.boundsInRoot.bottom <= fab.boundsInRoot.top + 1f)
         val right = home.positionInRoot.x + home.size.width
         val bottom = home.positionInRoot.y + home.size.height
         assertEquals(56f * pixelsPerDp, fab.size.width.toFloat(), 1f)

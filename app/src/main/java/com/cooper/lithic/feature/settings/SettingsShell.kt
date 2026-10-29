@@ -10,11 +10,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.IconButton
+import com.cooper.lithic.core.design.LithicIconButton as IconButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,6 +28,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.*
 import java.time.ZoneId
+import com.cooper.lithic.feature.appearance.AppearanceThemePicker
 
 @Composable
 internal fun SettingsShell(
@@ -47,7 +48,7 @@ internal fun SettingsShell(
     onAboutLithic: (() -> Unit)? = null,
 ) {
     var informationOpen by rememberSaveable { mutableStateOf(false) }
-    Column(modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp)
+    Column(modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = LithicSpacing.page, vertical = 16.dp)
         .testTag("settings-screen"), verticalArrangement = Arrangement.spacedBy(24.dp)) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Text("设置", style = MaterialTheme.typography.headlineMedium,
@@ -56,14 +57,16 @@ internal fun SettingsShell(
                 C2Icon(C2Glyph.Info, description = "查看本地保存与备份说明")
             }
         }
-        C2Section("记录与偏好") {
+        C2Section("外观") { AppearanceThemePicker() }
+        C2Section("记录管理") {
             onManageCategories?.let { manage ->
                 C2SettingRow("管理类别", C2Glyph.Project, Modifier.testTag("open-category-management"), onClick = manage)
                 HorizontalDivider()
             }
             C2SettingRow("记录时区", C2Glyph.Now, trailing = recordZone.id, trailingTag = "record-zone")
-            onNotificationClick?.let { open ->
-                HorizontalDivider()
+        }
+        onNotificationClick?.let { open ->
+            C2Section("提醒") {
                 C2SettingRow("提醒设置", C2Glyph.Info, Modifier.testTag("open-notification-settings"), onClick = open)
             }
         }
@@ -127,6 +130,7 @@ internal fun SettingsShell(
                 verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Text("记录主要保存在当前设备，可离线使用。卸载可能导致本地记录丢失，请手动备份。")
                 Text("完整备份包含记录、设置和已登记图片；文件未加密，请妥善保管。没有自动云同步。")
+                Text("外观选择仅属于本机显示偏好，不包含在完整备份的业务设置中。")
                 if (backupState.phase == BackupUiPhase.IDLE && backupState.feedback == BackupExportFeedback.NOT_STARTED) {
                     Text("尚未开始导出。选择保存位置后，只有完整写入并校验通过才会提示成功。",
                         modifier = Modifier.testTag("backup-not-started"))

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.core.design.AmountFormatterTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-10-29T02:26:30.357Z" hostname="WHOCARE" time="0.015">
+  <properties/>
+  <testcase name="large_aggregate_is_exact_and_never_uses_scientific_notation" classname="com.cooper.lithic.core.design.AmountFormatterTest" time="0.013"/>
+  <testcase name="exact_one_cent_and_larger_daily_rates_use_normal_rounding" classname="com.cooper.lithic.core.design.AmountFormatterTest" time="0.0"/>
+  <testcase name="real_zero_has_two_decimal_places" classname="com.cooper.lithic.core.design.AmountFormatterTest" time="0.0"/>
+  <testcase name="ordinary_amount_rounds_half_up_with_both_signs" classname="com.cooper.lithic.core.design.AmountFormatterTest" time="0.001"/>
+  <testcase name="missing_amount_is_not_a_zero_amount" classname="com.cooper.lithic.core.design.AmountFormatterTest" time="0.0"/>
+  <testcase name="every_nonzero_daily_rate_below_one_cent_remains_explicitly_nonzero" classname="com.cooper.lithic.core.design.AmountFormatterTest" time="0.0"/>
+  <testcase name="high_precision_value_is_only_formatted_without_changing_numeric_input" classname="com.cooper.lithic.core.design.AmountFormatterTest" time="0.0"/>
+  <testcase name="ordinary_half_cent_is_rounded_and_not_a_daily_rate_boundary" classname="com.cooper.lithic.core.design.AmountFormatterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

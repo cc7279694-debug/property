@@ -11,14 +11,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
@@ -47,9 +45,9 @@ internal fun SearchScreen(
     modifier: Modifier = Modifier,
 ) {
     LazyColumn(modifier.fillMaxSize().imePadding().testTag("global-search-screen"),
-        verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+        verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
         item {
-            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
+            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                 C2PageHeader("搜索名称", onBack, "search-back", backLabel = "返回现在", actions = {
                     C5InformationButton("名称搜索范围") { Text("同时查找当前与历史记录。仅匹配名称；状态按这批结果的业务日期判断。") }
@@ -81,23 +79,26 @@ internal fun SearchScreen(
             }
         }
         items(state.items, key = { "${it.type.name}:${it.id}" }) { item ->
-            Card(onClick = { onOpen(item) }, modifier = Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium)
-                .testTag("search-row-${item.id}"), shape = MaterialTheme.shapes.medium,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-                Row(Modifier.fillMaxWidth().padding(12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp),
-                    verticalAlignment = Alignment.CenterVertically) {
-                    C2RecordIdentity(item.name, item.categoryName,
-                        if (item.type == CategoryType.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
-                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text(item.name, style = MaterialTheme.typography.bodyLarge)
-                        Text((if (item.type == CategoryType.PROJECT) "长期项目" else "订阅服务") + " · ${item.categoryName}",
-                            style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Surface(shape = RoundedCornerShape(50), color = MaterialTheme.colorScheme.primaryContainer) {
-                            Text(searchStatusLabel(item.status) + if (item.isHistory) " · 历史记录" else " · 当前管理",
-                                Modifier.padding(horizontal = 8.dp, vertical = 2.dp).testTag("search-status-${item.id}"),
-                                style = MaterialTheme.typography.bodySmall)
+            Surface(onClick = { onOpen(item) }, modifier = Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page)
+                .heightIn(min = 48.dp).testTag("search-row-${item.id}"), color = MaterialTheme.colorScheme.background) {
+                Column {
+                    Row(Modifier.fillMaxWidth().padding(vertical = 12.dp), horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically) {
+                        C2RecordIdentity(item.name, item.categoryName,
+                            if (item.type == CategoryType.PROJECT) C2Glyph.Project else C2Glyph.Subscription)
+                        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                            Text(item.name, style = MaterialTheme.typography.bodyLarge)
+                            Text((if (item.type == CategoryType.PROJECT) "长期项目" else "订阅服务") + " · ${item.categoryName}",
+                                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            Surface(shape = RoundedCornerShape(50), color = MaterialTheme.colorScheme.surfaceContainerHighest,
+                                contentColor = MaterialTheme.colorScheme.onSurfaceVariant) {
+                                Text(searchStatusLabel(item.status) + if (item.isHistory) " · 历史记录" else " · 当前管理",
+                                    Modifier.padding(horizontal = 8.dp, vertical = 2.dp).testTag("search-status-${item.id}"),
+                                    style = MaterialTheme.typography.bodySmall)
+                            }
                         }
                     }
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                 }
             }
         }

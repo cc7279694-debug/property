@@ -1,0 +1,51 @@
+{
+  "verifiedUtc": "2026-10-29T02:34:10.616312+00:00",
+  "kind": "NORMAL_DEBUG_ONLY_NOT_USER_DELIVERY",
+  "apkRelativePath": "app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "bytes": 16399890,
+  "sha256": "47ce1379d162e9bcf80895e1d991ff458ac06062990e95772bd2ffa899357147",
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "versionCode": 17,
+  "applicationId": "com.cooper.lithic.debug",
+  "providerAuthoritiesFromSource": [
+    "com.cooper.lithic.debug.androidx-startup"
+  ],
+  "baselineCommit": "d1c752938792f0a88d19713f06d32c183696d34f",
+  "compiledSourceHashes": "../complete/compiled-source-sha256.json",
+  "sourceHashesStillMatch": true,
+  "productionDexPresence": {
+    "app/MainActivity": true,
+    "feature/appearance/AppearanceProvider": true,
+    "feature/appearance/LithicAppearance": true,
+    "feature/home/HomeShellKt": true,
+    "feature/review/ReviewShellKt": true,
+    "feature/settings/SettingsShellKt": true,
+    "feature/project/ProjectDetailScreenKt": true,
+    "feature/subscription/SubscriptionDetailScreenKt": true
+  },
+  "androidTestFixturesAbsent": {
+    "C9ThemeMatrixTest": true,
+    "C9RecordThemeTest": true,
+    "C2VisualFixtures": true
+  },
+  "nativeEntriesSameBytesAsProtectedPreview10": true,
+  "nativeEntries": {
+    "lib/arm64-v8a/libandroidx.graphics.path.so": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6",
+    "lib/arm64-v8a/libdatastore_shared_counter.so": "deed4546c8dafad0e68ea2c25e4c0a62ca97343614ae386b7ed2af6abb7fa999",
+    "lib/armeabi-v7a/libandroidx.graphics.path.so": "41399eba6fc2a60f6f14642375c1824f3cf25eb8fec7397d753730a3ceda3e2b",
+    "lib/armeabi-v7a/libdatastore_shared_counter.so": "f51d0b6801896a20be66bd389a024f30be3284b757ac02377833d20e70b9c628",
+    "lib/x86/libandroidx.graphics.path.so": "eb0570b41fd3bff25d8204a967c03bd7550719e768b791f680cc40cbe35f29af",
+    "lib/x86/libdatastore_shared_counter.so": "c38104bd173ef2e405d32e90ef753725c54aaeca08f2e9a57820df8782f4d790",
+    "lib/x86_64/libandroidx.graphics.path.so": "4e56c996f13670e70082658de7880c4020eabf4f25e43387f88ed78a713fc9f0",
+    "lib/x86_64/libdatastore_shared_counter.so": "c3973140a0e6144a83e7dd7ee3c4e161f42181591feda254e12c8395d3bbacd0"
+  },
+  "protectedPreview10": {
+    "bytes": 15912394,
+    "sha256": "55a3646e62661760c78797d14d9912a74a89b852c065037056d8d0fad840bc70",
+    "untouched": true
+  },
+  "deviceOperations": 0,
+  "auditProbeNote": "Initial desktop assertion incorrectly expected a .files FileProvider. Unchanged source declares only the androidx-startup authority; corrected audit uses source authorities. No product or Manifest change.",
+  "compiledAppGitTree": "917e487bffece0298a0cccee67c076048dd07e5f",
+  "sourceTreeMeaning": "Canonical Git app subtree after all compiled source changes, excluding evidence documents; compare with final commit:app. Working-file hashes are separately recorded."
+}

@@ -14,10 +14,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -42,9 +42,9 @@ internal fun ProjectHistoryScreen(
 ) {
     Column(modifier.fillMaxSize().testTag("project-history-screen")) {
     LazyColumn(Modifier.fillMaxSize().testTag("project-history-content"),
-        verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+        verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
         item {
-            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
+            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                 C2PageHeader("历史档案", onBack, "project-history-back", backLabel = "返回回看",
                     actions = { C5InformationButton("历史档案说明") { Text("已结束的长期项目。结果包含已记录的真实尾款与退款。") } })
@@ -88,7 +88,7 @@ internal fun ProjectHistoryScreen(
         items(state.items, key = { it.project.id }) { detail ->
             val dates = "持有 ${detail.cost.heldDays}天 · ${detail.project.startedOn}—${detail.project.endedOn}"
             EntryCard(detail.project.name, "已结束", dates, detail.cost.dailyRate,
-                Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-history-row-${detail.project.id}"),
+                Modifier.padding(horizontal = LithicSpacing.page).testTag("project-history-row-${detail.project.id}"),
                 onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
                 cover = { RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
                         Modifier.size(64.dp)) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) } },
@@ -99,7 +99,7 @@ internal fun ProjectHistoryScreen(
                 state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
                 state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
                 else -> "已显示 ${state.items.size} 条，已到列表末尾"
-            }, Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-history-page-status"),
+            }, Modifier.padding(horizontal = LithicSpacing.page).testTag("project-history-page-status"),
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         if (state.hasMore) item {

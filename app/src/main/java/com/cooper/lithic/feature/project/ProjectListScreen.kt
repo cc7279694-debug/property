@@ -13,11 +13,11 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
-import androidx.compose.material3.OutlinedButton
+import com.cooper.lithic.core.design.LithicButton as Button
+import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -47,9 +47,9 @@ internal fun ProjectListScreen(
     val pageStatus = projectListPageStatus(state)
     Column(modifier.fillMaxSize().testTag("project-list-screen")) {
         LazyColumn(Modifier.fillMaxSize().testTag("project-list-content").semantics { stateDescription = countDescription },
-            verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+            verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
             item {
-                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.medium),
+                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     C2PageHeader("长期项目", onBack, "project-list-back", backLabel = "返回现在",
                     actions = { C5InformationButton("长期项目说明", Modifier.testTag("project-list-information")) {
@@ -100,14 +100,14 @@ internal fun ProjectListScreen(
                 val dates = if (detail.cost.unavailableReason != null) "开始于 ${detail.project.startedOn}"
                     else "持有 ${detail.cost.heldDays}天" + (detail.project.endedOn?.let { " · 结束日期 $it" } ?: "")
                 EntryCard(detail.project.name, projectStatusLabel(detail), dates, detail.cost.dailyRate,
-                    Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-row-${detail.project.id}"),
+                    Modifier.padding(horizontal = LithicSpacing.page).testTag("project-row-${detail.project.id}"),
                     onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
                     cover = { RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
                         Modifier.size(64.dp)) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) } },
                     hasCoverReference = detail.project.coverAssetId != null, metricLabel = "当前日均成本")
             }
             pageStatus?.let { status -> item {
-                Text(status, Modifier.padding(horizontal = LithicSpacing.medium).testTag("project-list-page-status"),
+                Text(status, Modifier.padding(horizontal = LithicSpacing.page).testTag("project-list-page-status"),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             } }
             if (state.hasMore) item {

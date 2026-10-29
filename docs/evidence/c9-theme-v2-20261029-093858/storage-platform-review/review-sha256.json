@@ -1,0 +1,89 @@
+{
+  "observedAtUtc": "2026-10-29T02:17:38.000059+00:00",
+  "source": "local existing cache artifacts; no download",
+  "reviewFile": "review.txt",
+  "reviewSha256": "fdcc005dee325ce9ba7a6c115451e4f8d19435d38fac9c2380a5804efd233b15",
+  "reviewBytes": 14479,
+  "artifacts": [
+    {
+      "coordinate": "androidx.datastore:datastore-core-android:1.2.1",
+      "archiveSha256": "435edad7bcb1fbb1a2a46de7be4d6daf299479b3328ebf757ebdfe02810cbdd8",
+      "classes": [
+        {
+          "class": "androidx/datastore/core/FileMoves_androidKt.class",
+          "sha256": "1ca3d7ab351a5845bf306c534483cd66ad4eb1ca117df2c27cf653373edad7f9",
+          "inspectedTransformedClassMatchesArchive": true
+        },
+        {
+          "class": "androidx/datastore/core/Api26Impl.class",
+          "sha256": "85d97293d6925be09f279977d1e9cb77e4a2c9e399572f37a8be3cbc7b17a4a0",
+          "inspectedTransformedClassMatchesArchive": true
+        }
+      ]
+    },
+    {
+      "coordinate": "androidx.datastore:datastore-preferences-core-android:1.2.1",
+      "archiveSha256": "48c2235e576fb015f861726e79ee9474948e37da31d2c887c16ebeb46817059f",
+      "classes": [
+        {
+          "class": "androidx/datastore/preferences/core/PreferenceDataStoreFactory.class",
+          "sha256": "b94075e996f11f9abd9600ddd912bceb2cdef50131b494862932fe5c4a2e8e3a",
+          "inspectedTransformedClassMatchesArchive": true
+        },
+        {
+          "class": "androidx/datastore/preferences/core/PreferencesSerializer.class",
+          "sha256": "58f3086f7a926c569656e689a82c362175e907e2532919dac6dbcbb69fca512e",
+          "inspectedTransformedClassMatchesArchive": true
+        }
+      ]
+    },
+    {
+      "coordinate": "androidx.datastore:datastore-core-okio-jvm:1.2.1",
+      "jarSha256": "7ade6239a67674834f5724428e772c4176229ed30be253ac7e52082a2907ee05"
+    },
+    {
+      "coordinate": "com.squareup.okio:okio-jvm:3.9.1",
+      "jarSha256": "fe6fe91378f9bfa7b08c3864828ce418005cf28acca12e8847eb65c565c37500",
+      "role": "cached API/bytecode inspection sample; not dependency selection"
+    }
+  ],
+  "commands": [
+    {
+      "tool": "javap",
+      "class": "androidx.datastore.core.FileMoves_androidKt",
+      "mode": "private bytecode",
+      "exitCode": 0
+    },
+    {
+      "tool": "javap",
+      "class": "androidx.datastore.core.Api26Impl",
+      "mode": "private bytecode",
+      "exitCode": 0
+    },
+    {
+      "tool": "javap",
+      "class": "androidx.datastore.preferences.core.PreferenceDataStoreFactory",
+      "mode": "private bytecode",
+      "exitCode": 0
+    },
+    {
+      "tool": "javap",
+      "class": "okio.NioSystemFileSystem",
+      "mode": "private bytecode",
+      "exitCode": 0
+    },
+    {
+      "tool": "javap",
+      "class": "androidx.datastore.preferences.core.PreferencesSerializer",
+      "mode": "verbose annotations",
+      "exitCode": 0
+    },
+    {
+      "tool": "jshell Kotlin Metadata reflection",
+      "exitCode": 0,
+      "inspectionOnlyKotlinReflect": "2.4.0 cached tool; not added to app"
+    }
+  ],
+  "androidExecution": "NOT_RUN",
+  "productOrTestSourceChanges": 0
+}
