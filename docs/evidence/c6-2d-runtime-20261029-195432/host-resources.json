@@ -1,0 +1,34 @@
+{
+  "observedUtc": "2026-10-29T11:56:31.8648986Z",
+  "commands": [
+    "Get-CimInstance Win32_OperatingSystem",
+    "Get-CimInstance Win32_Processor",
+    "Get-CimInstance Win32_Process (only qemu-system/emulator/adb names)",
+    "Get-PSDrive E"
+  ],
+  "freePhysicalGiB": 6.302,
+  "totalPhysicalGiB": 15.877,
+  "cpu": [
+    {
+      "Name": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+      "NumberOfCores": 4,
+      "NumberOfLogicalProcessors": 8,
+      "LoadPercentage": 23
+    }
+  ],
+  "androidHostProcesses": [
+    {
+      "Name": "adb.exe",
+      "ProcessId": 19984,
+      "CreationDate": "2026-10-29T09:06:25.86699+08:00",
+      "ExecutablePath": null,
+      "CommandLine": null
+    }
+  ],
+  "qemuOrEmulatorProcessCount": 0,
+  "freeDiskGiB": 49.054,
+  "targetDeviceCommands": 0,
+  "avdStarts": 0,
+  "installs": 0,
+  "instrumentationCalls": 0
+}

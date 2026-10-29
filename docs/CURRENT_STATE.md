@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **C6-2D RUNTIME — ENVIRONMENT_BLOCKED（2026-10-29）**：用户从`d2779276164f33df816949721be3b7fe74fa59cf`明确授权检查既有独立健康可丢弃模拟器，门禁通过才执行8方法；禁止小米14/任何真机及真实账本。实际主机可用RAM6.302GiB、4核8线程/CPU采样23%，QEMU/emulator进程0；仅向已有默认ADB服务读取host版本/设备列表，0连接设备。默认AVD注册名仅历史/其他项目，不能证明可丢弃，未打开旧userdata/配置/日志或启动任何AVD，未新建/修复/下载/清场。按门禁停止：安装0、Instrumentation0、8项全部NOT_RUN，实际API/ABI/UID/FD/Guard/Binder/关闭/重建证据均未取得；候选两APK及Preview12 SHA保持。见[本轮集中结果](evidence/LITHIC-C6-2D-Runtime-Verification.md)。无重建/JVM/Lint重跑/产品测试源码或版本修改，原25 JVM/0E16W仅继承历史，不冒充本次运行。ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED及全部旧门禁保持，停止等待独立审查；建议转V1其他稳定性但不自动开始，不进入严格JPEG/main/M23。
+
+
 - **C6-2D SAFE EXECUTION CANDIDATE — READY_FOR_INDEPENDENT_REVIEW（2026-10-29）**：从`af76a34250c36237388e1f4e2a9a8428ee4e82db`，继承C6-2C隔离通道桌面已接受/运行待验。仅新增显式`c6IsolationVerification`独立App/Test身份`com.cooper.lithic.c6isolation.debug(.test)`及build-c6-isolation目录、无业务组件白名单；Host由原M13 Runner运行plain Application，sandbox保留真实LithicApplication及原角色拒绝门禁。原8方法/断言保持，仅加准确新包护栏和UUID内≤16KiB独立状态回执。25定向JVM PASS，App/Test构建及AndroidTest源码编译/Lint exit0（0E16W），5身份求值/6预期拒绝通过，实物Manifest/签名/DEX核对完成；8项Android均NOT_RUN。见[集中报告](evidence/LITHIC-C6-2D-Isolation-Verification.md)。无ADB/手机/AVD/安装/清理，11个旧交付APK及Preview12原字节、C9-R1/245个main源码/Room5/backup4/Owner/恢复/C6-1/业务协议不改。实际UID/SELinux/FD/Guard/Binder/无重建及完整资源门禁仍PENDING/UNKNOWN，JUnit撤销方法PASS不能替代关闭证明，UNKNOWN即停依赖。3.2.1仅本地研究复核，未下载/接入native；ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED及全部历史门禁保持。只到候选独立审查点，设备执行另获明确授权；不自动严格JPEG适配/main/M23。
 
 

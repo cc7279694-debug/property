@@ -1,0 +1,35 @@
+{
+  "observedUtc": "2026-10-29T11:54:32.351767+00:00",
+  "transport": "existing localhost ADB host protocol, no daemon control",
+  "hostQueries": [
+    {
+      "request": "host:version",
+      "result": "OKAY",
+      "response": "0029"
+    },
+    {
+      "request": "host:devices-l",
+      "result": "OKAY",
+      "rawBytes": 0,
+      "rawSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rawSerialsPublished": false,
+      "rawOutputArchived": "devices-l.stdout"
+    }
+  ],
+  "targetDeviceCommands": 0,
+  "devices": [],
+  "emulatorTransportCount": 0,
+  "defaultRegistrationNames": [
+    "Lithic_M01_API_36",
+    "Mirra_API_37",
+    "Mirra_API_37_Final",
+    "Mirra_API_37_Phase4B_Final",
+    "Mirra_API_37_Phase4E_Final",
+    "Recipio_Acceptance_36",
+    "Recipio_Acceptance_36_V6",
+    "Recipio_Acceptance_37",
+    "Recipio_Backup_36",
+    "Vectra_MAIN14_generated_20261024"
+  ],
+  "registrationScope": "default/environment-declared registration names only; no historical userdata or logs opened; research directories not scanned"
+}
