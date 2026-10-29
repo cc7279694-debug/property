@@ -1,0 +1,47 @@
+{
+  "baselineCommit": "9c0956f85dcdc53d2cae2e0260f3dcaf23653078",
+  "branch": "codex/lithic-v1-product-completion",
+  "preview10": {
+    "path": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.10\\Lithic-0.1.0-preview.10-debug.apk",
+    "bytes": 15912394,
+    "sha256": "55a3646e62661760c78797d14d9912a74a89b852c065037056d8d0fad840bc70",
+    "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "versionCode": 26,
+    "versionName": "0.1.0-preview.10-debug"
+  },
+  "commands": [
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.10\\Lithic-0.1.0-preview.10-debug.apk"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.10\\Lithic-0.1.0-preview.10-debug.apk"
+      ],
+      "exitCode": 0
+    },
+    {
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.10\\Lithic-0.1.0-preview.10-debug.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "deviceOperations": 0,
+  "deliveryDirectoryAbsentBeforeTrialBuild": true,
+  "baselineAppGitTree": "917e487bffece0298a0cccee67c076048dd07e5f"
+}

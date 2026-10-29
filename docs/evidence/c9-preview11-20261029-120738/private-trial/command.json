@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "cmd.exe",
+    "/d",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    "-PlithicPrivateTrial=true",
+    ":app:assembleDebug",
+    ":app:compileDebugAndroidTestKotlin",
+    ":app:lintDebug"
+  ],
+  "startUtc": "2026-10-29T04:16:05.541482+00:00",
+  "availableMemoryGiB": 6.53474426269531,
+  "gradleSourceSha256": "674096b92c9132cda10d482eec75b5992db12749c868e311017bc944b6364f83",
+  "androidRuntime": "NOT_RUN",
+  "deviceOperations": 0,
+  "exitCode": 0,
+  "endUtc": "2026-10-29T04:25:11.447339+00:00"
+}

@@ -1,0 +1,57 @@
+{
+  "deliveryPath": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.11\\Lithic-0.1.0-preview.11-debug.apk",
+  "bytes": 15961550,
+  "sha256": "5bbf3c1f946fc2da4ab259ab377f8134e222255784fe81e20c7a73337e63cf90",
+  "package": "com.cooper.lithic.preview.debug",
+  "versionCode": 27,
+  "versionName": "0.1.0-preview.11-debug",
+  "certificateSha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "permissions": [
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "android.permission.WAKE_LOCK",
+    "com.cooper.lithic.preview.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "authorities": [
+    "com.cooper.lithic.preview.debug.androidx-startup"
+  ],
+  "productionClassDefinitions": {
+    "app/LithicApplication": true,
+    "app/MainActivity": true,
+    "app/LithicAppKt": true,
+    "app/LithicNavigationKt": true,
+    "feature/appearance/AppearanceProvider": true,
+    "feature/appearance/AppearanceController": true,
+    "feature/appearance/DataStoreAppearanceStorage": true,
+    "feature/appearance/LithicAppearance": true,
+    "feature/appearance/AppearanceThemePickerKt": true,
+    "core/design/LithicThemeKt": true,
+    "core/design/LithicVisualsKt": true,
+    "feature/home/HomeShellKt": true,
+    "feature/review/ReviewShellKt": true,
+    "feature/project/ProjectDetailScreenKt": true,
+    "feature/subscription/SubscriptionDetailScreenKt": true,
+    "feature/project/ProjectEditorScreenKt": true,
+    "feature/subscription/SubscriptionEditorScreenKt": true,
+    "feature/settings/SettingsShellKt": true,
+    "feature/media/CoverPreviewsKt": true,
+    "data/media/isolation/MediaSandboxService": true
+  },
+  "testClassDefinitionsAbsent": true,
+  "nativeEntriesUnchanged": {
+    "lib/arm64-v8a/libandroidx.graphics.path.so": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6",
+    "lib/arm64-v8a/libdatastore_shared_counter.so": "deed4546c8dafad0e68ea2c25e4c0a62ca97343614ae386b7ed2af6abb7fa999",
+    "lib/armeabi-v7a/libandroidx.graphics.path.so": "41399eba6fc2a60f6f14642375c1824f3cf25eb8fec7397d753730a3ceda3e2b",
+    "lib/armeabi-v7a/libdatastore_shared_counter.so": "f51d0b6801896a20be66bd389a024f30be3284b757ac02377833d20e70b9c628",
+    "lib/x86/libandroidx.graphics.path.so": "eb0570b41fd3bff25d8204a967c03bd7550719e768b791f680cc40cbe35f29af",
+    "lib/x86/libdatastore_shared_counter.so": "c38104bd173ef2e405d32e90ef753725c54aaeca08f2e9a57820df8782f4d790",
+    "lib/x86_64/libandroidx.graphics.path.so": "4e56c996f13670e70082658de7880c4020eabf4f25e43387f88ed78a713fc9f0",
+    "lib/x86_64/libdatastore_shared_counter.so": "c3973140a0e6144a83e7dd7ee3c4e161f42181591feda254e12c8395d3bbacd0"
+  },
+  "sourceBaseline": "9c0956f85dcdc53d2cae2e0260f3dcaf23653078",
+  "sourceDiff": "Private Trial version lines only; production/schema/dependency files unchanged",
+  "preview10Sha256StillMatches": "55a3646e62661760c78797d14d9912a74a89b852c065037056d8d0fad840bc70",
+  "sourceAndDeliveryByteIdentical": true,
+  "deviceOperations": 0
+}
