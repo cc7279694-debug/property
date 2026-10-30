@@ -1,0 +1,172 @@
+[
+  {
+    "case": "v1-on",
+    "status": "EXPECTED_IDENTITY",
+    "debugPackage": "com.cooper.lithic.v1acceptance.debug",
+    "debugVersionCode": 1,
+    "debugVersionName": "0.1.0-v1-a1-debug",
+    "releasePackage": "com.cooper.lithic",
+    "releaseVersionCode": 1,
+    "releaseVersionName": "0.1.0-v1-a1",
+    "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+    "testPackage": "com.cooper.lithic.v1acceptance.debug.test",
+    "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build-v1-acceptance",
+    "debugManifest": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\src\\v1Acceptance\\AndroidManifest.xml",
+    "variants": [
+      "debug"
+    ],
+    "hasAssembleRelease": false
+  },
+  {
+    "case": "v1-off",
+    "status": "EXPECTED_IDENTITY",
+    "debugPackage": "com.cooper.lithic.debug",
+    "debugVersionCode": 17,
+    "debugVersionName": "0.1.0-m22-debug",
+    "releasePackage": "com.cooper.lithic",
+    "releaseVersionCode": 17,
+    "releaseVersionName": "0.1.0-m22",
+    "runner": "androidx.test.runner.AndroidJUnitRunner",
+    "testPackage": null,
+    "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build",
+    "debugManifest": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\src\\debug\\AndroidManifest.xml",
+    "variants": [
+      "debug",
+      "release"
+    ],
+    "hasAssembleRelease": true
+  },
+  {
+    "case": "ordinary",
+    "status": "EXPECTED_IDENTITY",
+    "debugPackage": "com.cooper.lithic.debug",
+    "debugVersionCode": 17,
+    "debugVersionName": "0.1.0-m22-debug",
+    "releasePackage": "com.cooper.lithic",
+    "releaseVersionCode": 17,
+    "releaseVersionName": "0.1.0-m22",
+    "runner": "androidx.test.runner.AndroidJUnitRunner",
+    "testPackage": null,
+    "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build",
+    "debugManifest": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\src\\debug\\AndroidManifest.xml",
+    "variants": [
+      "debug",
+      "release"
+    ],
+    "hasAssembleRelease": true
+  },
+  {
+    "case": "private",
+    "status": "EXPECTED_IDENTITY",
+    "debugPackage": "com.cooper.lithic.preview.debug",
+    "debugVersionCode": 28,
+    "debugVersionName": "0.1.0-preview.12-debug",
+    "releasePackage": "com.cooper.lithic",
+    "releaseVersionCode": 28,
+    "releaseVersionName": "0.1.0-preview.12",
+    "runner": "androidx.test.runner.AndroidJUnitRunner",
+    "testPackage": null,
+    "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\private-trial",
+    "debugManifest": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\src\\privateTrial\\AndroidManifest.xml",
+    "variants": [
+      "debug",
+      "release"
+    ],
+    "hasAssembleRelease": true
+  },
+  {
+    "case": "m22",
+    "status": "EXPECTED_IDENTITY",
+    "debugPackage": "com.cooper.lithic.m22verify.debug",
+    "debugVersionCode": 17,
+    "debugVersionName": "0.1.0-m22-debug",
+    "releasePackage": "com.cooper.lithic",
+    "releaseVersionCode": 17,
+    "releaseVersionName": "0.1.0-m22",
+    "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+    "testPackage": null,
+    "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build\\m22-device-verification",
+    "debugManifest": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\src\\debug\\AndroidManifest.xml",
+    "variants": [
+      "debug",
+      "release"
+    ],
+    "hasAssembleRelease": true
+  },
+  {
+    "case": "c3",
+    "status": "EXPECTED_IDENTITY",
+    "debugPackage": "com.cooper.lithic.c2visual.debug",
+    "debugVersionCode": 17,
+    "debugVersionName": "0.1.0-c2visual-debug",
+    "releasePackage": "com.cooper.lithic",
+    "releaseVersionCode": 17,
+    "releaseVersionName": "0.1.0-c2visual",
+    "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+    "testPackage": "com.cooper.lithic.c2visual.debug.test",
+    "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build-c2-visual",
+    "debugManifest": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\src\\c2Visual\\AndroidManifest.xml",
+    "variants": [
+      "debug"
+    ],
+    "hasAssembleRelease": false
+  },
+  {
+    "case": "c6",
+    "status": "EXPECTED_IDENTITY",
+    "debugPackage": "com.cooper.lithic.c6isolation.debug",
+    "debugVersionCode": 17,
+    "debugVersionName": "0.1.0-c6isolation-debug",
+    "releasePackage": "com.cooper.lithic",
+    "releaseVersionCode": 17,
+    "releaseVersionName": "0.1.0-c6isolation",
+    "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+    "testPackage": "com.cooper.lithic.c6isolation.debug.test",
+    "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\build-c6-isolation",
+    "debugManifest": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\砺石新APP\\app\\src\\c6Isolation\\AndroidManifest.xml",
+    "variants": [
+      "debug"
+    ],
+    "hasAssembleRelease": false
+  },
+  {
+    "case": "invalid-value",
+    "status": "EXPECTED_REJECTION",
+    "exitCode": 1
+  },
+  {
+    "case": "conflict-private",
+    "status": "EXPECTED_REJECTION",
+    "exitCode": 1
+  },
+  {
+    "case": "conflict-m22",
+    "status": "EXPECTED_REJECTION",
+    "exitCode": 1
+  },
+  {
+    "case": "conflict-c3",
+    "status": "EXPECTED_REJECTION",
+    "exitCode": 1
+  },
+  {
+    "case": "conflict-c6",
+    "status": "EXPECTED_REJECTION",
+    "exitCode": 1
+  },
+  {
+    "case": "conflict-death-true",
+    "status": "EXPECTED_REJECTION",
+    "exitCode": 1
+  },
+  {
+    "case": "conflict-death-false",
+    "status": "EXPECTED_REJECTION",
+    "exitCode": 1
+  },
+  {
+    "case": "conflict-plain-false",
+    "status": "EXPECTED_REJECTION",
+    "exitCode": 1
+  }
+]

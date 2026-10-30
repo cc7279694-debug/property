@@ -1,0 +1,12 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:v1IdentityAudit
+V1_IDENTITY_JSON={"debugPackage":"com.cooper.lithic.preview.debug","debugVersionCode":28,"debugVersionName":"0.1.0-preview.12-debug","releasePackage":"com.cooper.lithic","releaseVersionCode":28,"releaseVersionName":"0.1.0-preview.12","runner":"androidx.test.runner.AndroidJUnitRunner","testPackage":null,"buildDirectory":"E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial","debugManifest":"E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\src\\privateTrial\\AndroidManifest.xml","variants":["debug","release"],"hasAssembleRelease":true}
+
+BUILD SUCCESSFUL in 23s
+1 actionable task: 1 executed

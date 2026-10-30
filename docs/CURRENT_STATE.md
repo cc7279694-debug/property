@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-10-29（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-30（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **V1-A1 CANDIDATE — READY_FOR_INDEPENDENT_REVIEW（2026-10-30，仅桌面静态）**：从已审Readiness基线`bc75c8c91a54d7715311829c6b475d24d620b3bd`仅新增V1验收opt-in构建身份、最小非导出空Activity宿主及只读配置探针；源码提交`b9697b4afb0b1302bae2b403f6878e9c4af0d156`。独立`.v1acceptance.debug`/`.test`、正常LithicApplication/MainActivity与Test M13 plain机制分别核对；App/Test构建/AndroidTest编译/Lint exit0（0E14W），15配置用例符合预期，实物Manifest/DEX/原Debug签名通过静态核验。两APK已各复制一份到非Gradle稳定目录并重新核对SHA，见[集中报告](evidence/LITHIC-V1-A1-Candidate-Preparation.md)。426份既有边界源文件、11个用户APK/Preview12及C6 Test原字节保持；C6 App临时APK缺失NOTE不重建。全部Android仍NOT_RUN，未调用ADB/操作设备/安装/运行/升级；V1_RELEASE_NO_GO、ANDROID_ISOLATION_RUNTIME_PENDING、MEDIA_IMPORT_BLOCKED及全部历史门禁保持。提交后停止，等待独立候选审查与新的设备授权，不自动执行验收、生成Preview13、合并main或进入M23。
 
 - **V1 STABILITY CLOSURE — READY_FOR_INDEPENDENT_REVIEW（2026-10-29，桌面范围）**：从`76ae1daf8e56f0205d94a10e3d6d6791dd830439`仅修复三类可桌面证明的缺口：通知同步request异常不再拆掉同代changes监听（取消/上游异常仍传播、无新调度）；导出/恢复IDLE未知反馈继续保留原SavedState布尔重建标记（不重放URI/Token）；总/项目/订阅图表选日保留读取失败来源，fresh事实才清除。行为等价提炼后27新方法真实RED14PASS/13FAIL，最终180唯一JVM PASS（30新＋150相关回归）；Debug/AndroidTest源码编译/Lint exit0（0E16W），原M17/M18仅追加断言、实际NOT_RUN。151份冻结边界源文件指纹及11个用户交付APK/Preview12原字节保持，无新体验版、版本/签名/数据协议/UI重建或设备操作。见[集中报告](evidence/LITHIC-V1-Stability-Closure.md)。新增NOTE：前检存在的C6独立App build目录APK在普通构建后发现缺失，C6 Test仍在；确切删除步骤UNKNOWN，首轮审计FileNotFound已保留，不在本轮重建或把旧SHA冒充现存候选；未来须新授权重建复验并稳定归档后才申请隔离执行。M20系统任务/Owner收口UNKNOWN、真实备份恢复/升级、M22 T06三FAIL/T03/IME、C6 ENVIRONMENT_BLOCKED与历史门禁仍保持；本轮不构成V1综合验收/发行通过。ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED，提交后停止独立审查，不自动C6/JPEG/main/M23。
 

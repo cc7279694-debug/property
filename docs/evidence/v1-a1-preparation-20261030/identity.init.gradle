@@ -1,0 +1,26 @@
+// One-off configuration observation; no Android/device tasks are executed.
+gradle.projectsEvaluated {
+    def p = gradle.rootProject.project(':app')
+    p.tasks.register('v1IdentityAudit') {
+        doLast {
+            def android = p.extensions.getByName('android')
+            def defaults = android.defaultConfig
+            def debug = android.buildTypes.getByName('debug')
+            def release = android.buildTypes.getByName('release')
+            println('V1_IDENTITY_JSON=' + groovy.json.JsonOutput.toJson([
+                debugPackage: defaults.applicationId + (debug.applicationIdSuffix ?: ''),
+                debugVersionCode: defaults.versionCode,
+                debugVersionName: defaults.versionName + (debug.versionNameSuffix ?: ''),
+                releasePackage: defaults.applicationId + (release.applicationIdSuffix ?: ''),
+                releaseVersionCode: defaults.versionCode,
+                releaseVersionName: defaults.versionName + (release.versionNameSuffix ?: ''),
+                runner: defaults.testInstrumentationRunner,
+                testPackage: defaults.testApplicationId,
+                buildDirectory: p.layout.buildDirectory.get().asFile.absolutePath,
+                debugManifest: android.sourceSets.getByName('debug').manifest.srcFile.absolutePath,
+                variants: android.applicationVariants.collect { it.name }.sort(),
+                hasAssembleRelease: p.tasks.names.contains('assembleRelease')
+            ]))
+        }
+    }
+}

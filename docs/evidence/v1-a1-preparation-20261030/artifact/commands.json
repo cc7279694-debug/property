@@ -1,0 +1,154 @@
+[
+  {
+    "label": "app-badging",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "badging",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:33.713743+00:00",
+    "finishedUtc": "2026-10-30T01:49:33.809213+00:00",
+    "stdoutBytes": 6447,
+    "stdoutSha256": "149ab47efe561c837a1090ae16acdf1f3de66c2f42769c4cb2ee693820fee441",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "app-manifest",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "manifest",
+      "print",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:33.809795+00:00",
+    "finishedUtc": "2026-10-30T01:49:35.298561+00:00",
+    "stdoutBytes": 5592,
+    "stdoutSha256": "35194d76d47f6fd2aa9ddd47afd14141d0e2a1ed8e1c13ce08e93e91521eeedb",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "app-certificate",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:35.299560+00:00",
+    "finishedUtc": "2026-10-30T01:49:35.882082+00:00",
+    "stdoutBytes": 972,
+    "stdoutSha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "test-badging",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "badging",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:36.389175+00:00",
+    "finishedUtc": "2026-10-30T01:49:36.449709+00:00",
+    "stdoutBytes": 1183,
+    "stdoutSha256": "17221bb2d0c19a4fc978fd7b9e293251a4b7def247c42f46b3fba5bb33e82bf9",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "test-manifest",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "manifest",
+      "print",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:36.450705+00:00",
+    "finishedUtc": "2026-10-30T01:49:37.841181+00:00",
+    "stdoutBytes": 2510,
+    "stdoutSha256": "48bbaa60786253fff06be23e089ac51bf11a444ebd89bb5d78ed946b5d86a5ea",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "test-certificate",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:37.842182+00:00",
+    "finishedUtc": "2026-10-30T01:49:38.352505+00:00",
+    "stdoutBytes": 972,
+    "stdoutSha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "runner-code",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "dex",
+      "code",
+      "--class",
+      "com.cooper.lithic.app.M13IsolatedRunner",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:38.496573+00:00",
+    "finishedUtc": "2026-10-30T01:49:40.043622+00:00",
+    "stdoutBytes": 2926,
+    "stdoutSha256": "58dec37c604755ff5a6dc8542d271945105448e6bdd221c10b6e19c547a68500",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "application-code",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "dex",
+      "code",
+      "--class",
+      "com.cooper.lithic.app.LithicApplication",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:40.044622+00:00",
+    "finishedUtc": "2026-10-30T01:49:41.889324+00:00",
+    "stdoutBytes": 18777,
+    "stdoutSha256": "a1c5c3bbd8c1eb3be1cfedf721aa11ba028fa1664862f2eb2289a65b02e93fae",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "main-activity-code",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "dex",
+      "code",
+      "--class",
+      "com.cooper.lithic.app.MainActivity",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-v1-acceptance\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "exitCode": 0,
+    "startedUtc": "2026-10-30T01:49:41.890322+00:00",
+    "finishedUtc": "2026-10-30T01:49:43.651536+00:00",
+    "stdoutBytes": 92789,
+    "stdoutSha256": "3cf3c908597890eadf88b59e2f936c7de67c63387c58f304c199fb2fdadb98d1",
+    "stderrBytes": 0,
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

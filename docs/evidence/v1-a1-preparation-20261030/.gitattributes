@@ -1,0 +1,7 @@
+# Preserve the exact captured command bytes and their SHA-256 across Git checkout.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Captured streams are byte evidence, not hand-edited source text.
+*.stdout binary
+*.stderr binary
+stdout.txt binary
+stderr.txt binary
