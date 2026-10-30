@@ -33,6 +33,24 @@ require(c6IsolationValue == null || c6IsolationValue in setOf("true", "false")) 
     "c6IsolationVerification must be true or false"
 }
 val c6IsolationVerification = c6IsolationValue == "true"
+// Explicit desktop-prepared acceptance pair: normal production App plus an isolated Test host.
+val v1AcceptanceValue = providers.gradleProperty("v1AcceptanceVerification").orNull
+require(v1AcceptanceValue == null || v1AcceptanceValue in setOf("true", "false")) {
+    "v1AcceptanceVerification must be true or false"
+}
+val v1AcceptanceVerification = v1AcceptanceValue == "true"
+if (v1AcceptanceVerification) {
+    require(!lithicPrivateTrial && !m22DeviceVerification && !c2VisualVerification && !c6IsolationVerification) {
+        "V1 acceptance cannot use private trial, M22, C3 visual or C6 isolation identities"
+    }
+    require(!providers.gradleProperty("m12T04ProcessDeath").isPresent) {
+        "V1 acceptance cannot enable historical process-death experiments"
+    }
+    require(providers.gradleProperty("m13Isolated").orNull in setOf(null, "true")) {
+        "V1 acceptance requires the plain Application M13IsolatedRunner"
+    }
+    layout.buildDirectory.set(layout.projectDirectory.dir("build-v1-acceptance"))
+}
 if (c6IsolationVerification) {
     require(!lithicPrivateTrial && !m22DeviceVerification && !c2VisualVerification) {
         "C6 isolation cannot use private trial, M22 or C3 visual identities"
@@ -85,17 +103,23 @@ android {
         applicationId = "com.cooper.lithic"
         minSdk = 26
         targetSdk = 36
-        versionCode = if (lithicPrivateTrial) 28 else 17
+        versionCode = when {
+            lithicPrivateTrial -> 28
+            v1AcceptanceVerification -> 1
+            else -> 17
+        }
         versionName = when {
             lithicPrivateTrial -> "0.1.0-preview.12"
+            v1AcceptanceVerification -> "0.1.0-v1-a1"
             c6IsolationVerification -> "0.1.0-c6isolation"
             c2VisualVerification -> "0.1.0-c2visual"
             else -> "0.1.0-m22"
         }
         if (c2VisualVerification) testApplicationId = "com.cooper.lithic.c2visual.debug.test"
         if (c6IsolationVerification) testApplicationId = "com.cooper.lithic.c6isolation.debug.test"
+        if (v1AcceptanceVerification) testApplicationId = "com.cooper.lithic.v1acceptance.debug.test"
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
-        testInstrumentationRunner = if (c6IsolationVerification || c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
+        testInstrumentationRunner = if (v1AcceptanceVerification || c6IsolationVerification || c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
             "com.cooper.lithic.app.M13IsolatedRunner"
         else if (providers.gradleProperty("m12T04ProcessDeath").orNull == "true")
             "com.cooper.lithic.data.backup.M12ProcessDeathRunner"
@@ -109,6 +133,7 @@ android {
                 m22DeviceVerification -> ".m22verify.debug"
                 c2VisualVerification -> ".c2visual.debug"
                 c6IsolationVerification -> ".c6isolation.debug"
+                v1AcceptanceVerification -> ".v1acceptance.debug"
                 else -> ".debug"
             }
             versionNameSuffix = "-debug"
@@ -143,12 +168,20 @@ android {
         }
         sourceSets.getByName("debug").manifest.srcFile("src/c6Isolation/AndroidManifest.xml")
     }
+    if (v1AcceptanceVerification) {
+        require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
+            "V1 acceptance requires the existing Debug key; do not generate a replacement"
+        }
+        // Merge only an identifying label and a non-exported ComponentActivity host.
+        // Production Application, launcher, providers and services remain in the main Manifest.
+        sourceSets.getByName("debug").manifest.srcFile("src/v1Acceptance/AndroidManifest.xml")
+    }
 }
 
 // The opt-in target is never a production Release application.
 androidComponents {
     beforeVariants(selector().withBuildType("release")) { variant ->
-        if (c2VisualVerification || c6IsolationVerification) variant.enable = false
+        if (v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
     }
 }
 
@@ -190,5 +223,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.espresso.core)
     // Only the Debug test-host activity; no test framework enters release runtime.
-    if (!lithicPrivateTrial && !c6IsolationVerification) debugImplementation(libs.androidx.compose.ui.test.manifest)
+    if (!lithicPrivateTrial && !c6IsolationVerification && !v1AcceptanceVerification)
+        debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

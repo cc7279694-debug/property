@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Minimal Debug-only overlay; all real production components still merge from main. -->
+    <application android:label="砺石·独立验收 V1-A1" tools:replace="android:label">
+        <!-- Original isolated Compose methods target this empty host, never MainActivity.
+             No ui-test-manifest/JUnit/Runner implementation is added to the App runtime. -->
+        <activity android:name="androidx.activity.ComponentActivity" android:exported="false" />
+    </application>
+</manifest>
