@@ -1,0 +1,25 @@
+{
+  "outcome": "BLOCKED_UNKNOWN",
+  "reasons": [
+    "SYSTEMUI_ANR_SAFETY_FACT_UNKNOWN",
+    "PREVIEW_USER0_INSTALLED_FLAG_NOT_CAPTURED"
+  ],
+  "systemUiFinding": "Stable process IDs/Boot only; no conclusion on ANR/touch responsiveness",
+  "previewFinding": "Package record/code28/versionName/UID confirmed; -u includes retained records, so User0 installed=true is not proved",
+  "readerPreparationOmission": "Preview metadata filter did not request User0 installed field; no follow-up query or retry was added",
+  "readerSha256AfterObservation": "8e843bbef26201dc8745e4899fd71750e7f0a65ada7b8fe3c61d65fc76121021",
+  "memAvailableGiB": 4.574741363525391,
+  "dataAvailableGiB": 165.05134963989258,
+  "systemUiInitialPids": [
+    "7427"
+  ],
+  "systemUiFollowupPids": [
+    "7427"
+  ],
+  "bootIdSha256": "280486436bfc94c1339b86be2f074a18b9fc1fb079cf8454b189dc60b6854c9a",
+  "finiteFollowupStable": true,
+  "targetShellExit0": 18,
+  "hostProtocolOkay": 2,
+  "nextInstallAuthorized": false,
+  "furtherDeviceQueriesThisTurn": 0
+}
