@@ -1,0 +1,126 @@
+{
+  "action": "preflight",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "startedUtc": "2026-10-31T03:21:59.267515+00:00",
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "phone-identity",
+      "transportSelector": "host:transport:<USB_SERIAL_REDACTED>",
+      "service": "shell,v2,raw:printf 'manufacturer='; getprop ro.product.manufacturer; printf 'model='; getprop ro.product.model; printf 'api='; getprop ro.build.version.sdk",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "timeoutSeconds": 15,
+      "stdinBytes": 0,
+      "exitPacketReceived": true,
+      "stdoutBytes": 44,
+      "stdoutSha256": "004f68693d0b97351b27ee28594d1f7b6e4d81885011a34c7c68550408f1cf14",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "manufacturer=Xiaomi\nmodel=23127PN0CC\napi=36\n",
+      "stderr": ""
+    },
+    {
+      "label": "package-record-com.cooper.lithic.v1acceptance.debug",
+      "transportSelector": "host:transport:<USB_SERIAL_REDACTED>",
+      "service": "shell,v2,raw:rows=$(cmd package list packages -u -U --show-versioncode --user 0 com.cooper.lithic.v1acceptance.debug 2>&1); rc=$?; printf 'PM_EXIT=%s\\n' \"$rc\"; printf '%s\\n' \"$rows\" | grep -E '^package:com\\.cooper\\.lithic\\.v1acceptance\\.debug([[:space:]]|$)'; match=$?; [ \"$match\" -le 1 ] || exit \"$match\"; exit \"$rc\"",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "timeoutSeconds": 15,
+      "stdinBytes": 0,
+      "exitPacketReceived": true,
+      "stdoutBytes": 10,
+      "stdoutSha256": "0470c91accd939c5a65c69a18e15da49f143037bdca047842af9316420dde3c3",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "PM_EXIT=0\n",
+      "stderr": ""
+    },
+    {
+      "label": "package-record-com.cooper.lithic.v1acceptance.debug.test",
+      "transportSelector": "host:transport:<USB_SERIAL_REDACTED>",
+      "service": "shell,v2,raw:rows=$(cmd package list packages -u -U --show-versioncode --user 0 com.cooper.lithic.v1acceptance.debug.test 2>&1); rc=$?; printf 'PM_EXIT=%s\\n' \"$rc\"; printf '%s\\n' \"$rows\" | grep -E '^package:com\\.cooper\\.lithic\\.v1acceptance\\.debug\\.test([[:space:]]|$)'; match=$?; [ \"$match\" -le 1 ] || exit \"$match\"; exit \"$rc\"",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "timeoutSeconds": 15,
+      "stdinBytes": 0,
+      "exitPacketReceived": true,
+      "stdoutBytes": 10,
+      "stdoutSha256": "0470c91accd939c5a65c69a18e15da49f143037bdca047842af9316420dde3c3",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "PM_EXIT=0\n",
+      "stderr": ""
+    },
+    {
+      "label": "package-record-com.cooper.lithic.preview.debug",
+      "transportSelector": "host:transport:<USB_SERIAL_REDACTED>",
+      "service": "shell,v2,raw:rows=$(cmd package list packages -u -U --show-versioncode --user 0 com.cooper.lithic.preview.debug 2>&1); rc=$?; printf 'PM_EXIT=%s\\n' \"$rc\"; printf '%s\\n' \"$rows\" | grep -E '^package:com\\.cooper\\.lithic\\.preview\\.debug([[:space:]]|$)'; match=$?; [ \"$match\" -le 1 ] || exit \"$match\"; exit \"$rc\"",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "timeoutSeconds": 15,
+      "stdinBytes": 0,
+      "exitPacketReceived": true,
+      "stdoutBytes": 75,
+      "stdoutSha256": "7700f86db8116f7e1b620a3d9e0cec60b9c5b2c084d32b00e320e33f1485d8e6",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "PM_EXIT=0\npackage:com.cooper.lithic.preview.debug versionCode:28 uid:10429\n",
+      "stderr": ""
+    },
+    {
+      "label": "user0-com.cooper.lithic.preview.debug",
+      "transportSelector": "host:transport:<USB_SERIAL_REDACTED>",
+      "service": "shell,v2,raw:dump=$(dumpsys package com.cooper.lithic.preview.debug 2>&1); source_rc=$?; printf '%s\\n' \"$dump\" | awk 'BEGIN {inside=0;t=0;p=0;u=0;f=0;bad=0;v=\"\";name=\"\"}\n/DUMP TIMEOUT|Error dumping|Permission Denial/ {bad++;next}\n$0==\"Packages:\" {inside=1;t=0;next}\ninside && /^[^[:space:]]/ {inside=0;t=0}\ninside && /^[[:space:]]*Package \\[/ {t=0;if($0 ~ /^  Package \\[com\\.cooper\\.lithic\\.preview\\.debug\\] \\([^)]*\\):[[:space:]]*$/){p++;t=1};next}\ninside && t && /^    versionName=/ {name=substr($0,index($0,\"=\")+1)}\ninside && t && /^    User 0:/ {u++;for(i=1;i<=NF;i++){if($i ~ /^installed=/){f++;if($i==\"installed=true\")v=\"true\";else if($i==\"installed=false\")v=\"false\";else bad++}}}\nEND {printf \"PACKAGE_MATCHES=%d\\nUSER0_MATCHES=%d\\nINSTALLED_FIELDS=%d\\nINVALID_FIELDS=%d\\n\",p,u,f,bad;if(p==1&&u==1&&f==1&&bad==0&&v!=\"\"){print \"PACKAGE=com.cooper.lithic.preview.debug\";print \"USER=0\";print \"INSTALLED=\"v;print \"VERSION_NAME=\"name}else exit 65}'; filter_rc=$?; printf 'SOURCE_EXIT=%s\\nFILTER_EXIT=%s\\n' \"$source_rc\" \"$filter_rc\"; if [ \"$source_rc\" -ne 0 ]; then exit \"$source_rc\"; fi; exit \"$filter_rc\"",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "timeoutSeconds": 15,
+      "stdinBytes": 0,
+      "exitPacketReceived": true,
+      "stdoutBytes": 196,
+      "stdoutSha256": "42ab186ef681a9264a408453b9371dbfbf566214229b7438c576df4cae4cb217",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "PACKAGE_MATCHES=1\nUSER0_MATCHES=1\nINSTALLED_FIELDS=1\nINVALID_FIELDS=0\nPACKAGE=com.cooper.lithic.preview.debug\nUSER=0\nINSTALLED=true\nVERSION_NAME=0.1.0-preview.12-debug\nSOURCE_EXIT=0\nFILTER_EXIT=0\n",
+      "stderr": ""
+    }
+  ],
+  "automaticRetries": 0,
+  "otherDeviceQueries": 0,
+  "user": 0,
+  "hostEnumeration": {
+    "service": "host:devices-l",
+    "protocolStatus": "OKAY",
+    "rawBytes": 89,
+    "rawSha256": "5065e8e6ebce484dff22fef14c1b35c66355032f005e343caf9691b8a074e6a6",
+    "rawListSaved": false,
+    "entryCount": 1,
+    "authorizedMatches": 1
+  },
+  "deviceIdentity": {
+    "manufacturer": "Xiaomi",
+    "model": "23127PN0CC",
+    "api": "36"
+  },
+  "packages": {
+    "com.cooper.lithic.v1acceptance.debug": {
+      "record": "ABSENT_IN_USER0_INCLUDING_RETAINED",
+      "package": "com.cooper.lithic.v1acceptance.debug"
+    },
+    "com.cooper.lithic.v1acceptance.debug.test": {
+      "record": "ABSENT_IN_USER0_INCLUDING_RETAINED",
+      "package": "com.cooper.lithic.v1acceptance.debug.test"
+    },
+    "com.cooper.lithic.preview.debug": {
+      "record": "PRESENT",
+      "package": "com.cooper.lithic.preview.debug",
+      "uid": 10429,
+      "versionCode": 28,
+      "versionName": "0.1.0-preview.12-debug",
+      "user": 0,
+      "installed": true
+    }
+  },
+  "manualHealth": "USER_CONFIRMED_DESKTOP_NOTIFICATION_TOUCH_NORMAL_NO_ANR_DIALOG",
+  "finishedUtc": "2026-10-31T03:22:00.344563+00:00"
+}
