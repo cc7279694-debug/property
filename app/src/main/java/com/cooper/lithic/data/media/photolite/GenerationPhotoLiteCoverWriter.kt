@@ -203,10 +203,13 @@ class GenerationPhotoLiteCoverWriter(
             }
         }
         // Persist the directory entry before allowing a database reference to this file.
-        val directoryFd = Os.open(media.path, OsConstants.O_RDONLY or OsConstants.O_DIRECTORY or
+        val directoryFd = Os.open(media.path, OsConstants.O_RDONLY or OsConstants.O_NONBLOCK or
             OsConstants.O_NOFOLLOW or CLOSE_ON_EXEC, 0)
         withOwnedFd(directoryFd) {
-            require(sameNode(mediaIdentity, Os.fstat(directoryFd)))
+            // O_DIRECTORY is not an Android SDK constant. Check the actual opened descriptor
+            // before syncing, as the existing restore writer does; NONBLOCK also rejects a swapped FIFO safely.
+            val opened = Os.fstat(directoryFd)
+            require(OsConstants.S_ISDIR(opened.st_mode) && sameNode(mediaIdentity, opened))
             Os.fsync(directoryFd)
         }
         checkpoint()
