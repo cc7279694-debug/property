@@ -1,0 +1,65 @@
+{
+  "checkedUtc": "2026-10-31T03:01:33.999597+00:00",
+  "command": ".\\gradlew.bat --offline --console=plain --max-workers=1 --no-daemon :app:processDebugResources :app:lintDebug",
+  "jdk": "17.0.20.1+1",
+  "sdkApi": 36,
+  "gradleExitCode": 0,
+  "gradleResult": "BUILD SUCCESSFUL in 13m 6s",
+  "tasks": {
+    "actionable": 29,
+    "executed": 24,
+    "upToDate": 5
+  },
+  "availableRamAtStartGiB": 5.441,
+  "lintCounts": {
+    "Warning": 16
+  },
+  "lintReportSha256": "79299aca502b142990300481a0ab8d9ee9e7c7c2a4cf71171d6b93f458026bc5",
+  "iconRelatedLintIssues": [
+    {
+      "id": "IconLauncherShape",
+      "severity": "Warning",
+      "message": "Launcher icons should not fill every pixel of their square region; see the design guide for details"
+    },
+    {
+      "id": "MonochromeLauncherIcon",
+      "severity": "Warning",
+      "message": "The application adaptive icon is missing a monochrome tag"
+    },
+    {
+      "id": "MonochromeLauncherIcon",
+      "severity": "Warning",
+      "message": "The application adaptive roundIcon is missing a monochrome tag"
+    }
+  ],
+  "protectedApksUnchangedAfterChecks": 13,
+  "onlyProductionChanges": [
+    "app/src/main/res/drawable-nodpi/ic_launcher_art.png",
+    "app/src/main/res/drawable/ic_launcher_foreground.xml"
+  ],
+  "newUserApk": false,
+  "versionChanged": false,
+  "gradleConfigurationChanged": false,
+  "deviceOperations": 0,
+  "androidRuntime": "NOT_RUN",
+  "jvmTests": "NOT_RUN_RESOURCE_ONLY_CHANGE",
+  "desktopPreviewInspected": {
+    "sizesPx": [
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "masks": [
+      "rounded",
+      "circle"
+    ],
+    "backgrounds": [
+      "light",
+      "dark"
+    ],
+    "runtimeEvidence": false
+  },
+  "scopeReview": "Local review of original bytes, masks and resource references; not independent product acceptance"
+}

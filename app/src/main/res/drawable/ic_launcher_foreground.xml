@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Preserve the supplied artwork; the launcher applies its system icon mask. -->
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-    android:src="@drawable/ic_launcher_art"
-    android:gravity="fill"
-    android:filter="true" />
+<!-- Keep the supplied composition at 72/108 of the adaptive canvas.
+     The default static launcher viewport must not enlarge/crop the artwork. -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:inset="16.666667%">
+    <bitmap
+        android:src="@drawable/ic_launcher_art"
+        android:gravity="fill"
+        android:filter="true" />
+</inset>

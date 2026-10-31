@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-10-30（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-10-31（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **用户选定启动图标更新（2026-10-31，仅资源）**：按本轮明确要求使用新上传的无字黑石／金色侧光原图，1254×1254 原字节不放大、不裁切；adaptive 前景增加每边16.666667%留白，避免默认静态视口放大。仅改PNG和前景XML，通知小图标、Manifest及业务规则不改；资源处理/Lint exit0（0错误16警告），已查看32～128px圆角／圆形桌面模拟，真实Launcher仍NOT_RUN。验证及边界见[更新记录](evidence/LITHIC-Launcher-Icon-Refresh.md)。11个旧用户APK及V1-A1归档两包保持原大小/SHA，新图标未进入这些旧实物；未生成体验包、递增版本或操作手机。V1-A1安装未授权，SystemUI手动检查仍等用户反馈；V1_RELEASE_NO_GO、ANDROID_RUNTIME_ACCEPTANCE_NOT_RUN、ANDROID_ISOLATION_RUNTIME_PENDING、MEDIA_IMPORT_BLOCKED及全部历史门禁保持。
 
 - **V1-A1 CANDIDATE — READY_FOR_INDEPENDENT_REVIEW（2026-10-30，仅桌面静态）**：从已审Readiness基线`bc75c8c91a54d7715311829c6b475d24d620b3bd`仅新增V1验收opt-in构建身份、最小非导出空Activity宿主及只读配置探针；源码提交`b9697b4afb0b1302bae2b403f6878e9c4af0d156`。独立`.v1acceptance.debug`/`.test`、正常LithicApplication/MainActivity与Test M13 plain机制分别核对；App/Test构建/AndroidTest编译/Lint exit0（0E14W），15配置用例符合预期，实物Manifest/DEX/原Debug签名通过静态核验。两APK已各复制一份到非Gradle稳定目录并重新核对SHA，见[集中报告](evidence/LITHIC-V1-A1-Candidate-Preparation.md)。426份既有边界源文件、11个用户APK/Preview12及C6 Test原字节保持；C6 App临时APK缺失NOTE不重建。全部Android仍NOT_RUN，未调用ADB/操作设备/安装/运行/升级；V1_RELEASE_NO_GO、ANDROID_ISOLATION_RUNTIME_PENDING、MEDIA_IMPORT_BLOCKED及全部历史门禁保持。提交后停止，等待独立候选审查与新的设备授权，不自动执行验收、生成Preview13、合并main或进入M23。
 
