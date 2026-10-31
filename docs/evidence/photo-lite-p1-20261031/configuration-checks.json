@@ -1,0 +1,71 @@
+[
+  {
+    "label": "config-experiment",
+    "exitCode": 0,
+    "expectedRejection": null,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.photolite.debug",
+      "debugVersionCode": 1,
+      "debugVersionName": "0.1.0-photo-lite.p1-debug",
+      "releasePackage": "com.cooper.lithic",
+      "releaseVersionCode": 1,
+      "testPackage": "com.cooper.lithic.photolite.debug.test",
+      "runner": "com.cooper.lithic.app.M13IsolatedRunner",
+      "photoLiteEnabled": "true",
+      "releaseTaskPresent": false,
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-photo-lite",
+      "debugKeyPresent": true
+    }
+  },
+  {
+    "label": "config-default",
+    "exitCode": 0,
+    "expectedRejection": null,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.debug",
+      "debugVersionCode": 17,
+      "debugVersionName": "0.1.0-m22-debug",
+      "releasePackage": "com.cooper.lithic",
+      "releaseVersionCode": 17,
+      "testPackage": null,
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "photoLiteEnabled": "false",
+      "releaseTaskPresent": true,
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build",
+      "debugKeyPresent": true
+    }
+  },
+  {
+    "label": "config-trial",
+    "exitCode": 0,
+    "expectedRejection": null,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.preview.debug",
+      "debugVersionCode": 28,
+      "debugVersionName": "0.1.0-preview.12-debug",
+      "releasePackage": "com.cooper.lithic",
+      "releaseVersionCode": 28,
+      "testPackage": null,
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "photoLiteEnabled": "false",
+      "releaseTaskPresent": true,
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial",
+      "debugKeyPresent": true
+    }
+  },
+  {
+    "label": "config-conflict",
+    "exitCode": 1,
+    "expectedRejection": "PHOTO-LITE cannot share"
+  },
+  {
+    "label": "config-invalid",
+    "exitCode": 1,
+    "expectedRejection": "photoLiteExperiment must be true or false"
+  },
+  {
+    "label": "config-runner",
+    "exitCode": 1,
+    "expectedRejection": "PHOTO-LITE tests require"
+  }
+]

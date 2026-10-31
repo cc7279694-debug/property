@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-10-31T08:30:11.959Z" hostname="WHOCARE" time="0.029">
+  <properties/>
+  <testcase name="only_fresh_eight_bit_rgb_or_rgba_is_accepted_as_new_product_output" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.003"/>
+  <testcase name="crc_correct_but_malformed_standard_metadata_is_not_a_normalized_cover" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.003"/>
+  <testcase name="callers_cannot_mutate_prepared_bytes_after_verification" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.003"/>
+  <testcase name="output_at_the_frozen_two_mib_limit_or_over_the_experiment_edge_is_rejected" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.004"/>
+  <testcase name="empty_corrupt_truncated_and_trailing_bytes_are_rejected" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.001"/>
+  <testcase name="standard_color_precision_does_not_get_confused_with_personal_metadata" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.004"/>
+  <testcase name="repeated_or_after_idat_metadata_is_rejected_without_weakening_base_png_checks" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.005"/>
+  <testcase name="exif_and_text_are_not_normalized_product_output_even_with_valid_chunk_crcs" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.001"/>
+  <testcase name="checked_png_matches_the_unchanged_backup_inspector_and_actual_bytes" classname="com.cooper.lithic.data.media.photolite.PhotoLitePngTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,161 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:processDebugAndroidTestManifest
+> Task :app:generateDebugAndroidTestBuildConfig
+> Task :app:checkDebugAndroidTestAarMetadata
+> Task :app:processDebugAndroidTestNavigationResources
+> Task :app:compileDebugAndroidTestNavigationResources
+> Task :app:generateDebugAndroidTestResValues
+> Task :app:mapDebugAndroidTestSourceSetPaths
+> Task :app:generateDebugAndroidTestResources
+> Task :app:mergeDebugAndroidTestResources
+> Task :app:processDebugAndroidTestResources
+> Task :app:kspDebugAndroidTestKotlin
+> Task :app:compileDebugAndroidTestKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/data/backup/M20BackupRestoreTest.kt:156:27 Unnecessary safe call on a non-null receiver of type 'ManagedGeneration'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/data/media/photolite/GenerationPhotoLiteCoverWriterTest.kt:124:32 Redundant call of conversion method.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/data/media/photolite/GenerationPhotoLiteCoverWriterTest.kt:124:79 Redundant call of conversion method.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/data/repository/M19ReportRepositoryTest.kt:77:50 Unnecessary non-null assertion (!!) on a non-null receiver of type 'List<FinancialFact>'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/data/repository/M19ReportRepositoryTest.kt:178:46 Unnecessary non-null assertion (!!) on a non-null receiver of type 'List<FinancialFact>'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectLifecycleRepositoryTest.kt:398:30 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Deferred<MutationResult>'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/data/repository/ProjectRepositoryTest.kt:525:34 Unnecessary non-null assertion (!!) on a non-null receiver of type 'Deferred<MutationResult>'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/M16ReplacementViewModelTest.kt:155:107 Unnecessary non-null assertion (!!) on a non-null receiver of type 'MoneyCorrectionUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/M16ReplacementViewModelTest.kt:155:149 Unnecessary non-null assertion (!!) on a non-null receiver of type 'MoneyCorrectionUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/M16ReplacementViewModelTest.kt:179:60 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ReplacementFormUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:320:48 Unnecessary non-null assertion (!!) on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:320:58 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:321:49 Unnecessary non-null assertion (!!) on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:321:59 Unnecessary non-null assertion (!!) on a non-null receiver of type 'String'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:341:101 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:362:95 Unnecessary safe call on a non-null receiver of type 'MoneyCorrectionUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:393:73 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:494:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:502:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:664:72 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:698:70 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:704:70 Unnecessary safe call on a non-null receiver of type 'EndProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:710:82 Unnecessary safe call on a non-null receiver of type 'MoneyCorrectionUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleViewModelTest.kt:716:88 Unnecessary safe call on a non-null receiver of type 'DeleteProjectUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:339:65 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:350:78 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:479:67 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:493:65 Unnecessary non-null assertion (!!) on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectViewModelTest.kt:497:70 Unnecessary safe call on a non-null receiver of type 'ProjectEditorUiState'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/review/C9R1ReviewSemanticsTest.kt:57:104 Unnecessary non-null assertion (!!) on a non-null receiver of type 'CostTimelinePoint'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/review/C9R1ReviewSemanticsTest.kt:58:109 Unnecessary non-null assertion (!!) on a non-null receiver of type 'CostTimelinePoint'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt:172:78 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt:172:104 'fun get(p0: String!): Any?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20PlatformCompletionTest.kt:96:39 The corresponding parameter in the supertype 'WorkerFactory' is named 'appContext'. This may cause problems when calling this function with named arguments.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20PlatformCompletionTest.kt:96:51 The corresponding parameter in the supertype 'WorkerFactory' is named 'workerClassName'. This may cause problems when calling this function with named arguments.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20PlatformCompletionTest.kt:96:65 The corresponding parameter in the supertype 'WorkerFactory' is named 'workerParameters'. This may cause problems when calling this function with named arguments.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:109:85 The corresponding parameter in the supertype 'WorkerFactory' is named 'workerParameters'. This may cause problems when calling this function with named arguments.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:143:59 Unnecessary non-null assertion (!!) on a non-null receiver of type 'WorkInfo'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:154:104 Unnecessary non-null assertion (!!) on a non-null receiver of type 'WorkInfo'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:177:80 Unnecessary non-null assertion (!!) on a non-null receiver of type 'WorkInfo'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:180:92 Unnecessary non-null assertion (!!) on a non-null receiver of type 'WorkInfo'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:200:44 Unnecessary non-null assertion (!!) on a non-null receiver of type 'WorkInfo'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:201:97 Unnecessary non-null assertion (!!) on a non-null receiver of type 'WorkInfo'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:229:49 'fun recycle(): Unit' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M20RealPlatformTest.kt:230:30 'fun recycle(): Unit' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M21MilestoneSchedulingTest.kt:149:46 Unnecessary non-null assertion (!!) on a non-null receiver of type 'WorkManager'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/androidTest/java/com/cooper/lithic/platform/notification/M21MilestoneSchedulingTest.kt:151:48 Unnecessary non-null assertion (!!) on a non-null receiver of type 'WorkManager'.
+
+> Task :app:javaPreCompileDebugAndroidTest
+> Task :app:compileDebugAndroidTestJavaWithJavac
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:desugarDebugFileDependencies
+> Task :app:dexBuilderDebug
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:mergeDebugJavaResource
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeExtDexDebug
+> Task :app:mergeLibDexDebug
+> Task :app:mergeProjectDexDebug
+> Task :app:mergeDebugJniLibFolders
+> Task :app:mergeDebugNativeLibs
+
+> Task :app:stripDebugDebugSymbols
+Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libdatastore_shared_counter.so. Run with --info option to learn more.
+
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:packageDebug
+> Task :app:createDebugApkListingFileRedirect
+> Task :app:assembleDebug
+> Task :app:mergeDebugAndroidTestShaders
+> Task :app:compileDebugAndroidTestShaders NO-SOURCE
+> Task :app:copyRoomSchemasToAndroidTestAssetsDebugAndroidTest
+> Task :app:generateDebugAndroidTestAssets UP-TO-DATE
+> Task :app:mergeDebugAndroidTestAssets
+> Task :app:compressDebugAndroidTestAssets
+> Task :app:desugarDebugAndroidTestFileDependencies
+> Task :app:dexBuilderDebugAndroidTest
+> Task :app:mergeDebugAndroidTestGlobalSynthetics
+> Task :app:processDebugAndroidTestJavaRes
+> Task :app:mergeDebugAndroidTestJavaResource
+> Task :app:checkDebugAndroidTestDuplicateClasses
+> Task :app:mergeExtDexDebugAndroidTest
+> Task :app:mergeLibDexDebugAndroidTest
+> Task :app:mergeProjectDexDebugAndroidTest
+> Task :app:mergeDebugAndroidTestJniLibFolders
+> Task :app:mergeDebugAndroidTestNativeLibs NO-SOURCE
+> Task :app:stripDebugAndroidTestDebugSymbols NO-SOURCE
+> Task :app:validateSigningDebugAndroidTest
+> Task :app:writeDebugAndroidTestSigningConfigVersions
+> Task :app:packageDebugAndroidTest
+> Task :app:createDebugAndroidTestApkListingFileRedirect
+> Task :app:assembleDebugAndroidTest
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:extractProguardFiles
+> Task :app:generateDebugLintReportModel
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:generateDebugUnitTestLintModel
+> Task :app:lintAnalyzeDebug
+> Task :app:lintAnalyzeDebugAndroidTest
+> Task :app:lintAnalyzeDebugUnitTest
+
+> Task :app:lintReportDebug
+Wrote HTML report to file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/build-photo-lite/reports/lint-results-debug.html
+
+> Task :app:lintDebug
+
+BUILD SUCCESSFUL in 9m 15s
+82 actionable tasks: 60 executed, 22 up-to-date

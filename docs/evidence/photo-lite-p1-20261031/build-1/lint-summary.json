@@ -1,0 +1,81 @@
+{
+  "errors": 0,
+  "warnings": 15,
+  "issues": [
+    {
+      "id": "InlinedApi",
+      "severity": "Warning",
+      "message": "Field requires API level 33 (current min is 26): `android.Manifest.permission#POST_NOTIFICATIONS`"
+    },
+    {
+      "id": "OldTargetApi",
+      "severity": "Warning",
+      "message": "Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details."
+    },
+    {
+      "id": "GradleDependency",
+      "severity": "Warning",
+      "message": "A newer version of androidx.activity:activity-compose than 1.12.4 is available: 1.13.0"
+    },
+    {
+      "id": "GradleDependency",
+      "severity": "Warning",
+      "message": "A newer version of org.jetbrains.kotlinx:kotlinx-coroutines-android than 1.10.2 is available: 1.11.0"
+    },
+    {
+      "id": "GradleDependency",
+      "severity": "Warning",
+      "message": "A newer version of androidx.compose.ui:ui-test-manifest than 1.9.5 is available: 1.12.1"
+    },
+    {
+      "id": "VisibleForTests",
+      "severity": "Warning",
+      "message": "This method should only be accessed from tests or within private scope"
+    },
+    {
+      "id": "VisibleForTests",
+      "severity": "Warning",
+      "message": "This method should only be accessed from tests or within private scope"
+    },
+    {
+      "id": "ConfigurationScreenWidthHeight",
+      "severity": "Warning",
+      "message": "Using Configuration.screenWidthDp instead of LocalWindowInfo.current.containerSize"
+    },
+    {
+      "id": "ModifierParameter",
+      "severity": "Warning",
+      "message": "Modifier parameter should be the first optional parameter"
+    },
+    {
+      "id": "ObsoleteSdkInt",
+      "severity": "Warning",
+      "message": "This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`."
+    },
+    {
+      "id": "UnusedResources",
+      "severity": "Warning",
+      "message": "The resource `R.string.skeleton_title` appears to be unused"
+    },
+    {
+      "id": "UnusedResources",
+      "severity": "Warning",
+      "message": "The resource `R.string.skeleton_version` appears to be unused"
+    },
+    {
+      "id": "UnusedResources",
+      "severity": "Warning",
+      "message": "The resource `R.string.skeleton_notice` appears to be unused"
+    },
+    {
+      "id": "IconLauncherShape",
+      "severity": "Warning",
+      "message": "Launcher icons should not fill every pixel of their square region; see the design guide for details"
+    },
+    {
+      "id": "UseKtx",
+      "severity": "Warning",
+      "message": "Use the KTX function `createBitmap` instead?"
+    }
+  ]
+}

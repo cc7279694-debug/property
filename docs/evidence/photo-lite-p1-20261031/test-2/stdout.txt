@@ -1,0 +1,73 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:kspDebugKotlin
+> Task :app:compileDebugKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:379:37 Unnecessary safe call on a non-null receiver of type 'ReplacementViewModel'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt:606:33 Condition is always 'true'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/core/design/MoneyMetric.kt:109:21 'val LocalClipboardManager: ProvidableCompositionLocal<ClipboardManager>' is deprecated. Use LocalClipboard instead which supports suspend functions.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/data/backup/BackupExportService.kt:118:13 Only safe (?.) or non-null asserted (!!.) calls are allowed on a nullable receiver of type 'File?'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/data/backup/RestoreContracts.kt:9:40 Non-public primary constructor is exposed via the generated 'copy()' method of the 'data' class.
+
+The generated 'copy()' will change its visibility in future releases.
+
+To suppress the warning do one of the following:
+- Annotate the data class with the '@ConsistentCopyVisibility' annotation.
+- Use the '-Xconsistent-data-class-copy-visibility' compiler flag.
+- Annotate the data class with the '@ExposedCopyVisibility' annotation 
+  (Discouraged, but can be used to keep binary compatibility).
+
+To learn more, see the documentation of the '@ConsistentCopyVisibility' and '@ExposedCopyVisibility' annotations.
+
+This will become an error in language version 2.5. See https://youtrack.jetbrains.com/issue/KT-11914.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/data/media/photolite/GenerationPhotoLiteCoverWriter.kt:107:84 Redundant call of conversion method.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/data/media/photolite/GenerationPhotoLiteCoverWriter.kt:107:104 Redundant call of conversion method.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/project/ProjectViewModel.kt:728:86 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/project/ReplacementSavedFacts.kt:46:15 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/project/ReplacementSavedFacts.kt:48:15 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/review/TotalTrendPresentation.kt:24:48 Unnecessary non-null assertion (!!) on a non-null receiver of type 'LedgerSnapshot'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/review/TotalTrendPresentation.kt:27:78 Unnecessary non-null assertion (!!) on a non-null receiver of type 'LedgerSnapshot'.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:32:46 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionFactsCodec.kt:33:44 'fun <T : Parcelable!> getParcelableArrayList(p0: String?): ArrayList<T!>?' is deprecated. Deprecated in Java.
+
+> Task :app:javaPreCompileDebug
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:kspDebugUnitTestKotlin
+> Task :app:compileDebugUnitTestKotlin
+w: file:///E:/CODEX/.codex/worktrees/lithic-m13/砺石新APP/app/src/test/java/com/cooper/lithic/domain/report/AnnualReportEngineTest.kt:83:86 Unnecessary non-null assertion (!!) on a non-null receiver of type 'List<FinancialFact>'.
+
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:copyRoomSchemas NO-SOURCE
+> Task :app:processDebugJavaRes
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:testDebugUnitTest
+
+BUILD SUCCESSFUL in 3m 43s
+28 actionable tasks: 12 executed, 16 up-to-date

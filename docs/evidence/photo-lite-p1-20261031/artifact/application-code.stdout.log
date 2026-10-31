@@ -1,0 +1,644 @@
+.class public final Lcom/cooper/lithic/app/LithicApplication;
+.super Landroid/app/Application;
+.source "LithicApplication.kt"
+
+# interfaces
+.implements Landroidx/work/Configuration$Provider;
+
+
+# annotations
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nLithicApplication.kt\nKotlin\n*S Kotlin\n*F\n+ 1 LithicApplication.kt\ncom/cooper/lithic/app/LithicApplication\n+ 2 fake.kt\nkotlin/jvm/internal/FakeKt\n+ 3 _Collections.kt\nkotlin/collections/CollectionsKt___CollectionsKt\n*L\n1#1,57:1\n1#2:58\n1807#3,3:59\n*S KotlinDebug\n*F\n+ 1 LithicApplication.kt\ncom/cooper/lithic/app/LithicApplication\n*L\n52#1:59,3\n*E\n"
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000H\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0002\u0008\u0005\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0004\n\u0002\u0010\u000b\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\u0008\u0002\n\u0002\u0010\u000e\n\u0000\u0008\u0007\u0018\u00002\u00020\u00012\u00020\u0002B\u0007\u00a2\u0006\u0004\u0008\u0003\u0010\u0004J\u0008\u0010\u001b\u001a\u00020\u001cH\u0016J\u0008\u0010\u001d\u001a\u00020\u0006H\u0002J\n\u0010\u001e\u001a\u0004\u0018\u00010\u001fH\u0002R\u001b\u0010\u0005\u001a\u00020\u00068FX\u0086\u0084\u0002\u00a2\u0006\u000c\n\u0004\u0008\t\u0010\n\u001a\u0004\u0008\u0007\u0010\u0008R\u0014\u0010\u000b\u001a\u0008\u0012\u0004\u0012\u00020\r0\u000cX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0011\u0010\u000e\u001a\u00020\r8F\u00a2\u0006\u0006\u001a\u0004\u0008\u000f\u0010\u0010R\u0014\u0010\u0011\u001a\u00020\u00128@X\u0080\u0004\u00a2\u0006\u0006\u001a\u0004\u0008\u0013\u0010\u0014R\u0014\u0010\u0015\u001a\u00020\u00168VX\u0096\u0004\u00a2\u0006\u0006\u001a\u0004\u0008\u0017\u0010\u0018R\u000e\u0010\u0019\u001a\u00020\u001aX\u0082.\u00a2\u0006\u0002\n\u0000\u00a8\u0006 "
+    }
+    d2 = {
+        "Lcom/cooper/lithic/app/LithicApplication;",
+        "Landroid/app/Application;",
+        "Landroidx/work/Configuration$Provider;",
+        "<init>",
+        "()V",
+        "processRole",
+        "Lcom/cooper/lithic/app/AppProcessRole;",
+        "getProcessRole",
+        "()Lcom/cooper/lithic/app/AppProcessRole;",
+        "processRole$delegate",
+        "Lkotlin/Lazy;",
+        "appContainerDelegate",
+        "Lkotlin/Lazy;",
+        "Lcom/cooper/lithic/app/AppContainer;",
+        "appContainer",
+        "getAppContainer",
+        "()Lcom/cooper/lithic/app/AppContainer;",
+        "businessOwnerInitialized",
+        "",
+        "getBusinessOwnerInitialized$app_debug",
+        "()Z",
+        "workManagerConfiguration",
+        "Landroidx/work/Configuration;",
+        "getWorkManagerConfiguration",
+        "()Landroidx/work/Configuration;",
+        "reminders",
+        "Lcom/cooper/lithic/platform/notification/ReminderRuntime;",
+        "onCreate",
+        "",
+        "resolveCurrentProcessRole",
+        "ownProcName",
+        "",
+        "app_debug"
+    }
+    k = 0x1
+    mv = {
+        0x2,
+        0x3,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+# static fields
+.field public static final $stable:I
+
+
+# instance fields
+.field private final appContainerDelegate:Lkotlin/Lazy;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lkotlin/Lazy<",
+            "Lcom/cooper/lithic/app/AppContainer;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private final processRole$delegate:Lkotlin/Lazy;
+
+.field private reminders:Lcom/cooper/lithic/platform/notification/ReminderRuntime;
+
+
+# direct methods
+.method public static synthetic $r8$lambda$yEQJdBTikY50RJMLe-dUsySDSrw(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/app/AppProcessRole;
+    .registers 1
+
+    invoke-static {p0}, Lcom/cooper/lithic/app/LithicApplication;->processRole_delegate$lambda$0(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/app/AppProcessRole;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$zwMyNo-Rsr2M2sqjihElfqcnIII(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/app/AppContainer;
+    .registers 1
+
+    invoke-static {p0}, Lcom/cooper/lithic/app/LithicApplication;->appContainerDelegate$lambda$0(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/app/AppContainer;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method static constructor <clinit>()V
+    .registers 1
+
+    const/16 v0, 0x8
+
+    sput v0, Lcom/cooper/lithic/app/LithicApplication;->$stable:I
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 2
+
+    .line 11
+    invoke-direct {p0}, Landroid/app/Application;-><init>()V
+
+    .line 13
+    new-instance v0, Lcom/cooper/lithic/app/LithicApplication$$ExternalSyntheticLambda0;
+
+    invoke-direct {v0, p0}, Lcom/cooper/lithic/app/LithicApplication$$ExternalSyntheticLambda0;-><init>(Lcom/cooper/lithic/app/LithicApplication;)V
+
+    invoke-static {v0}, Lkotlin/LazyKt;->lazy(Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/cooper/lithic/app/LithicApplication;->processRole$delegate:Lkotlin/Lazy;
+
+    .line 14
+    new-instance v0, Lcom/cooper/lithic/app/LithicApplication$$ExternalSyntheticLambda1;
+
+    invoke-direct {v0, p0}, Lcom/cooper/lithic/app/LithicApplication$$ExternalSyntheticLambda1;-><init>(Lcom/cooper/lithic/app/LithicApplication;)V
+
+    invoke-static {v0}, Lkotlin/LazyKt;->lazy(Lkotlin/jvm/functions/Function0;)Lkotlin/Lazy;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/cooper/lithic/app/LithicApplication;->appContainerDelegate:Lkotlin/Lazy;
+
+    .line 11
+    return-void
+.end method
+
+.method private static final appContainerDelegate$lambda$0(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/app/AppContainer;
+    .registers 3
+    .param p0, "this$0"    # Lcom/cooper/lithic/app/LithicApplication;
+
+    .line 14
+    new-instance v0, Lcom/cooper/lithic/app/AppContainer;
+
+    move-object v1, p0
+
+    check-cast v1, Landroid/content/Context;
+
+    invoke-direct {v0, v1}, Lcom/cooper/lithic/app/AppContainer;-><init>(Landroid/content/Context;)V
+
+    return-object v0
+.end method
+
+.method private final ownProcName()Ljava/lang/String;
+    .registers 15
+
+    .line 45
+    new-instance v0, Ljava/io/FileInputStream;
+
+    const-string v1, "/proc/self/cmdline"
+
+    invoke-direct {v0, v1}, Ljava/io/FileInputStream;-><init>(Ljava/lang/String;)V
+
+    check-cast v0, Ljava/io/Closeable;
+
+    :try_start_9
+    move-object v1, v0
+
+    check-cast v1, Ljava/io/FileInputStream;
+
+    .local v1, "input\\1":Ljava/io/FileInputStream;
+    const/4 v2, 0x0
+
+    .line 46
+    .local v2, "$i$a$-use-LithicApplication$ownProcName$1\\1\\45\\0":I
+    const/16 v3, 0x100
+
+    new-array v3, v3, [B
+
+    .line 47
+    .local v3, "bytes\\1":[B
+    const/4 v4, 0x0
+
+    .line 48
+    .local v4, "count\\1":I
+    :cond_12
+    array-length v5, v3
+
+    if-ge v4, v5, :cond_57
+
+    .line 49
+    array-length v5, v3
+
+    sub-int/2addr v5, v4
+
+    invoke-virtual {v1, v3, v4, v5}, Ljava/io/FileInputStream;->read([BII)I
+
+    move-result v5
+
+    .line 50
+    .local v5, "read\\1":I
+    if-lez v5, :cond_57
+
+    .line 51
+    add-int/2addr v4, v5
+
+    .line 52
+    invoke-static {v3, v4}, Lkotlin/collections/ArraysKt;->take([BI)Ljava/util/List;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/lang/Iterable;
+
+    .local v6, "$this$any\\2":Ljava/lang/Iterable;
+    const/4 v7, 0x0
+
+    .line 59
+    .local v7, "$i$f$any\\2\\52":I
+    instance-of v8, v6, Ljava/util/Collection;
+
+    const/4 v9, 0x0
+
+    if-eqz v8, :cond_34
+
+    move-object v8, v6
+
+    check-cast v8, Ljava/util/Collection;
+
+    invoke-interface {v8}, Ljava/util/Collection;->isEmpty()Z
+
+    move-result v8
+
+    if-eqz v8, :cond_34
+
+    goto :goto_55
+
+    .line 60
+    :cond_34
+    invoke-interface {v6}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v8
+
+    :cond_38
+    invoke-interface {v8}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v10
+
+    if-eqz v10, :cond_54
+
+    invoke-interface {v8}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v10
+
+    .local v10, "element\\2":Ljava/lang/Object;
+    move-object v11, v10
+
+    check-cast v11, Ljava/lang/Number;
+
+    invoke-virtual {v11}, Ljava/lang/Number;->byteValue()B
+
+    move-result v11
+
+    .local v11, "it\\3":B
+    const/4 v12, 0x0
+
+    .line 52
+    .local v12, "$i$a$-any-LithicApplication$ownProcName$1$1\\3\\60\\1":I
+    const/4 v13, 0x1
+
+    if-nez v11, :cond_4f
+
+    move v11, v13
+
+    goto :goto_50
+
+    :cond_4f
+    move v11, v9
+
+    .line 60
+    .end local v11    # "it\\3":B
+    .end local v12    # "$i$a$-any-LithicApplication$ownProcName$1$1\\3\\60\\1":I
+    :goto_50
+    if-eqz v11, :cond_38
+
+    move v9, v13
+
+    goto :goto_55
+
+    .line 61
+    .end local v10    # "element\\2":Ljava/lang/Object;
+    :cond_54
+    nop
+
+    .line 52
+    .end local v6    # "$this$any\\2":Ljava/lang/Iterable;
+    .end local v7    # "$i$f$any\\2\\52":I
+    :goto_55
+    if-eqz v9, :cond_12
+
+    .line 54
+    .end local v5    # "read\\1":I
+    :cond_57
+    sget-object v5, Lcom/cooper/lithic/app/AppProcessRoles;->INSTANCE:Lcom/cooper/lithic/app/AppProcessRoles;
+
+    invoke-static {v3, v4}, Ljava/util/Arrays;->copyOf([BI)[B
+
+    move-result-object v6
+
+    const-string v7, "copyOf(...)"
+
+    invoke-static {v6, v7}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-virtual {v5, v6}, Lcom/cooper/lithic/app/AppProcessRoles;->decodeOwnProcessName([B)Ljava/lang/String;
+
+    move-result-object v5
+    :try_end_66
+    .catchall {:try_start_9 .. :try_end_66} :catchall_6b
+
+    .line 45
+    .end local v1    # "input\\1":Ljava/io/FileInputStream;
+    .end local v2    # "$i$a$-use-LithicApplication$ownProcName$1\\1\\45\\0":I
+    .end local v3    # "bytes\\1":[B
+    .end local v4    # "count\\1":I
+    const/4 v1, 0x0
+
+    invoke-static {v0, v1}, Lkotlin/io/CloseableKt;->closeFinally(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+
+    .line 55
+    return-object v5
+
+    .line 45
+    :catchall_6b
+    move-exception v1
+
+    :try_start_6c
+    throw v1
+    :try_end_6d
+    .catchall {:try_start_6c .. :try_end_6d} :catchall_6d
+
+    :catchall_6d
+    move-exception v2
+
+    invoke-static {v0, v1}, Lkotlin/io/CloseableKt;->closeFinally(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+
+    throw v2
+.end method
+
+.method private static final processRole_delegate$lambda$0(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/app/AppProcessRole;
+    .registers 2
+    .param p0, "this$0"    # Lcom/cooper/lithic/app/LithicApplication;
+
+    .line 13
+    invoke-direct {p0}, Lcom/cooper/lithic/app/LithicApplication;->resolveCurrentProcessRole()Lcom/cooper/lithic/app/AppProcessRole;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method private final resolveCurrentProcessRole()Lcom/cooper/lithic/app/AppProcessRole;
+    .registers 4
+
+    .line 37
+    nop
+
+    .line 38
+    :try_start_1
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v1, 0x1c
+
+    if-lt v0, v1, :cond_c
+
+    invoke-static {}, Landroid/app/Application;->getProcessName()Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_10
+
+    :cond_c
+    invoke-direct {p0}, Lcom/cooper/lithic/app/LithicApplication;->ownProcName()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 39
+    .local v0, "actual":Ljava/lang/String;
+    :goto_10
+    sget-object v1, Lcom/cooper/lithic/app/AppProcessRoles;->INSTANCE:Lcom/cooper/lithic/app/AppProcessRoles;
+
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/LithicApplication;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+
+    move-result-object v2
+
+    iget-object v2, v2, Landroid/content/pm/ApplicationInfo;->processName:Ljava/lang/String;
+
+    invoke-virtual {v1, v2, v0}, Lcom/cooper/lithic/app/AppProcessRoles;->resolve(Ljava/lang/String;Ljava/lang/String;)Lcom/cooper/lithic/app/AppProcessRole;
+
+    move-result-object v1
+    :try_end_1c
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1c} :catch_1d
+
+    .end local v0    # "actual":Ljava/lang/String;
+    goto :goto_20
+
+    .line 40
+    :catch_1d
+    move-exception v0
+
+    .line 42
+    .local v0, "<unused var>":Ljava/lang/Exception;
+    sget-object v1, Lcom/cooper/lithic/app/AppProcessRole;->UNKNOWN:Lcom/cooper/lithic/app/AppProcessRole;
+
+    .line 43
+    .end local v0    # "<unused var>":Ljava/lang/Exception;
+    :goto_20
+    return-object v1
+.end method
+
+
+# virtual methods
+.method public final getAppContainer()Lcom/cooper/lithic/app/AppContainer;
+    .registers 3
+
+    .line 17
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/LithicApplication;->getProcessRole()Lcom/cooper/lithic/app/AppProcessRole;
+
+    move-result-object v0
+
+    sget-object v1, Lcom/cooper/lithic/app/AppProcessRole;->MAIN:Lcom/cooper/lithic/app/AppProcessRole;
+
+    if-ne v0, v1, :cond_a
+
+    const/4 v0, 0x1
+
+    goto :goto_b
+
+    :cond_a
+    const/4 v0, 0x0
+
+    :goto_b
+    if-eqz v0, :cond_16
+
+    .line 18
+    iget-object v0, p0, Lcom/cooper/lithic/app/LithicApplication;->appContainerDelegate:Lkotlin/Lazy;
+
+    invoke-interface {v0}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/cooper/lithic/app/AppContainer;
+
+    return-object v0
+
+    .line 58
+    :cond_16
+    const/4 v0, 0x0
+
+    .line 17
+    .local v0, "$i$a$-check-LithicApplication$appContainer$1\\1\\17\\0":I
+    nop
+
+    .end local v0    # "$i$a$-check-LithicApplication$appContainer$1\\1\\17\\0":I
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "Business storage is unavailable in this process"
+
+    invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method public final getBusinessOwnerInitialized$app_debug()Z
+    .registers 2
+
+    .line 20
+    iget-object v0, p0, Lcom/cooper/lithic/app/LithicApplication;->appContainerDelegate:Lkotlin/Lazy;
+
+    invoke-interface {v0}, Lkotlin/Lazy;->isInitialized()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public final getProcessRole()Lcom/cooper/lithic/app/AppProcessRole;
+    .registers 2
+
+    .line 13
+    iget-object v0, p0, Lcom/cooper/lithic/app/LithicApplication;->processRole$delegate:Lkotlin/Lazy;
+
+    invoke-interface {v0}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/cooper/lithic/app/AppProcessRole;
+
+    return-object v0
+.end method
+
+.method public getWorkManagerConfiguration()Landroidx/work/Configuration;
+    .registers 4
+
+    .line 24
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/LithicApplication;->getProcessRole()Lcom/cooper/lithic/app/AppProcessRole;
+
+    move-result-object v0
+
+    sget-object v1, Lcom/cooper/lithic/app/AppProcessRole;->MAIN:Lcom/cooper/lithic/app/AppProcessRole;
+
+    if-ne v0, v1, :cond_a
+
+    const/4 v0, 0x1
+
+    goto :goto_b
+
+    :cond_a
+    const/4 v0, 0x0
+
+    :goto_b
+    if-eqz v0, :cond_26
+
+    .line 25
+    new-instance v0, Landroidx/work/Configuration$Builder;
+
+    invoke-direct {v0}, Landroidx/work/Configuration$Builder;-><init>()V
+
+    new-instance v1, Lcom/cooper/lithic/platform/notification/ReminderWorkerFactory;
+
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/LithicApplication;->getAppContainer()Lcom/cooper/lithic/app/AppContainer;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Lcom/cooper/lithic/platform/notification/ReminderWorkerFactory;-><init>(Lcom/cooper/lithic/app/AppContainer;)V
+
+    check-cast v1, Landroidx/work/WorkerFactory;
+
+    invoke-virtual {v0, v1}, Landroidx/work/Configuration$Builder;->setWorkerFactory(Landroidx/work/WorkerFactory;)Landroidx/work/Configuration$Builder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroidx/work/Configuration$Builder;->build()Landroidx/work/Configuration;
+
+    move-result-object v0
+
+    return-object v0
+
+    .line 58
+    :cond_26
+    const/4 v0, 0x0
+
+    .line 24
+    .local v0, "$i$a$-check-LithicApplication$workManagerConfiguration$1\\1\\24\\0":I
+    nop
+
+    .end local v0    # "$i$a$-check-LithicApplication$workManagerConfiguration$1\\1\\24\\0":I
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "Business scheduling is unavailable in this process"
+
+    invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method public onCreate()V
+    .registers 5
+
+    .line 30
+    invoke-super {p0}, Landroid/app/Application;->onCreate()V
+
+    .line 31
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/LithicApplication;->getProcessRole()Lcom/cooper/lithic/app/AppProcessRole;
+
+    move-result-object v0
+
+    sget-object v1, Lcom/cooper/lithic/app/AppProcessRole;->MAIN:Lcom/cooper/lithic/app/AppProcessRole;
+
+    if-eq v0, v1, :cond_c
+
+    return-void
+
+    .line 32
+    :cond_c
+    invoke-static {}, Ljava/time/ZoneId;->systemDefault()Ljava/time/ZoneId;
+
+    move-result-object v0
+
+    .line 33
+    .local v0, "recordZone":Ljava/time/ZoneId;
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/LithicApplication;->getAppContainer()Lcom/cooper/lithic/app/AppContainer;
+
+    move-result-object v1
+
+    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
+
+    invoke-virtual {v1, v0}, Lcom/cooper/lithic/app/AppContainer;->start(Ljava/time/ZoneId;)V
+
+    .line 34
+    new-instance v1, Lcom/cooper/lithic/platform/notification/ReminderRuntime;
+
+    move-object v2, p0
+
+    check-cast v2, Landroid/content/Context;
+
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/LithicApplication;->getAppContainer()Lcom/cooper/lithic/app/AppContainer;
+
+    move-result-object v3
+
+    invoke-direct {v1, v2, v3}, Lcom/cooper/lithic/platform/notification/ReminderRuntime;-><init>(Landroid/content/Context;Lcom/cooper/lithic/app/AppContainer;)V
+
+    .line 58
+    move-object v2, v1
+
+    .local v2, "it\\1":Lcom/cooper/lithic/platform/notification/ReminderRuntime;
+    const/4 v3, 0x0
+
+    .line 34
+    .local v3, "$i$a$-also-LithicApplication$onCreate$1\\1\\34\\0":I
+    invoke-virtual {v2}, Lcom/cooper/lithic/platform/notification/ReminderRuntime;->start()V
+
+    .end local v2    # "it\\1":Lcom/cooper/lithic/platform/notification/ReminderRuntime;
+    .end local v3    # "$i$a$-also-LithicApplication$onCreate$1\\1\\34\\0":I
+    iput-object v1, p0, Lcom/cooper/lithic/app/LithicApplication;->reminders:Lcom/cooper/lithic/platform/notification/ReminderRuntime;
+
+    .line 35
+    return-void
+.end method
+

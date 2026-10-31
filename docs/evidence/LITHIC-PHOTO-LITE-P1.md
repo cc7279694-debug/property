@@ -24,7 +24,7 @@
 - [x] 独立opt-in构建身份、最小源Manifest、历史APK与冻结边界静态核对（不是Gradle求值或合并Manifest核验）。
 - [ ] 资源允许且用户恢复构建后，定向JVM、AndroidTest编译、构建/Lint、实物Manifest/签名/SHA与唯一归档；Android实际执行另授权。
 
-## 本轮验证约束
+## 源码准备阶段约束（历史）
 
 开始时可用RAM约2.1GiB，低于既定4GiB构建门槛；用户明确回复“先完成源码，构建暂缓”。因此当前只做源码和静态准备，**没有运行Gradle/JVM/编译/Lint，没有生成或声称存在内部试验APK**。测试源码不记为RED/GREEN或Android PASS。
 
@@ -45,7 +45,7 @@
 
 SavedState仅为未确认布尔标记及nonce，无URI/Bitmap/PNG/外部路径。重建时保守UNKNOWN，但系统突然终止前是否已保存该标记**无法保证**；不自动重放提交。已发布Bitmap不能在Compose仍引用时强制recycle；16MiB只是活跃/在途像素记账，不含GC/GPU/codec/RSS保证。未知状态保留现场并阻止继续提交，不能冒称已全部释放。
 
-## 真实验证结果
+## 源码准备阶段静态结果（历史）
 
 | 项目 | 本次结果 |
 | --- | --- |
@@ -61,8 +61,39 @@ SavedState仅为未确认布尔标记及nonce，无URI/Bitmap/PNG/外部路径�
 
 静态核验还包含`git check-ignore app/build-photo-lite/probe.apk verification-candidates/photo-lite-p1/probe.apk` exit0（只是路径规则查询，没有创建文件）。候选ID预设为`com.cooper.lithic.photolite.debug` / `.test`、code1、`0.1.0-photo-lite.p1-debug`，正常LithicApplication/MainActivity；Test配置M13 plain Application，不能把@Before拒绝误用当预启动隔离证明。原Debug证书预期仍为`29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9`，**新候选签名尚未实际生成/验证**。
 
-## 下一次恢复构建与停止点
+## 源码阶段原定恢复条件与停止点（历史）
 
 仅在用户恢复桌面构建、实测至少4GiB可用RAM后，以现有离线JDK/SDK执行定向测试/AndroidTest编译/构建/Lint，命令采用 `-PphotoLiteExperiment=true`（已强制M13测试Runner；不执行connected任务）。实际核对App/Test身份、权限、正常主入口、测试代码边界、证书和SHA后，才将**唯一内部App候选**归档到独立非build目录`verification-candidates/photo-lite-p1/`，不得覆盖未知同名文件。新APK和密钥均不入Git，设备运行仍须另行授权。
 
-当前可供独立**源码**审查，尚不具备候选交付/生产安全验收条件。源代码准备阶段停止于 **SOURCE_PREPARED / BUILD_DEFERRED / APK_NOT_BUILT**；不解除旧M10三个JPEG FAIL、C6运行/资源UNKNOWN、正式MEDIA_IMPORT_BLOCKED或V1_RELEASE_NO_GO。此PNG实验不自动完成严格原JPEG认证、媒体替换/移除或下一阶段。
+源码准备提交`3aec752`时仅可供独立**源码**审查，停止于 **SOURCE_PREPARED / BUILD_DEFERRED / APK_NOT_BUILT**；不解除旧M10三个JPEG FAIL、C6运行/资源UNKNOWN、正式MEDIA_IMPORT_BLOCKED或V1_RELEASE_NO_GO。此PNG实验不自动完成严格原JPEG认证、媒体替换/移除或下一阶段。
+
+## 2026-10-31 恢复桌面验证与唯一内部候选
+
+用户明确恢复定向测试、构建、静态APK核验，继续禁止手机操作。开始实测可用RAM **4.730GiB**；两个JVM命令及最终构建分别在4.760/4.774/4.814GiB准入后串行运行，全部离线、单worker、单次Gradle进程，未停止其他项目进程、未下载/升级依赖或SDK。
+
+**PHOTO-LITE P1 — READY_FOR_INDEPENDENT_REVIEW（桌面实施与内部实物范围）**
+
+| 门禁 | 真实结果与证据 |
+| --- | --- |
+| 首轮编译 | `test-1` exit1，尚未执行JVM：当前SDK未公开`OsConstants.O_DIRECTORY`。保留[原始失败](photo-lite-p1-20261031/test-1/stderr.txt)，不冒称业务测试失败 |
+| 最小修正 | `9228016486c1269d8fce4bd612ae9f07427c7dfd`仅将目录打开改为公开`O_RDONLY/O_NONBLOCK/O_NOFOLLOW`，对真实FD显式`S_ISDIR`与同节点检查后才sync；不硬编码跨ABI常量、不弱化认证，不修改冻结恢复实现 |
+| JVM定向回归 | `test-2` exit0，**43/43 PASS，0失败/错误/跳过**：新PhotoLite14，原封面预算/串行8，PNG/备份11，C7来源导航10。见[计数及9份原始JUnit](photo-lite-p1-20261031/test-2/result.json)；未重跑整仓历史套件 |
+| App/Test构建、AndroidTest Kotlin编译、Lint | `build-1` exit0；`assembleDebug`、`assembleDebugAndroidTest`、`compileDebugAndroidTestKotlin`、`lintDebug`通过。Lint **0错误15警告**（含新的createBitmap KTX风格建议；保留旧平台/依赖/未用资源等警告，未为此改冻结模块/升级依赖）。见[真实命令](photo-lite-p1-20261031/build-1/command.json)与[Lint原件](photo-lite-p1-20261031/build-1/lint-results-debug.xml) |
+| Android执行 | 新38方法均**仅编译、实际NOT_RUN**；真实Picker、API36系统缩略/PNG往返、Room文件事务/重开/备份恢复、刷新、取消、资源峰值及视觉仍NOT_RUN/UNKNOWN |
+| 构建参数 | [6个配置用例](photo-lite-p1-20261031/configuration-checks.json)符合预期：独立实验/普通默认/显式false+Preview12三配置exit0；冲突、非法布尔值、错误Runner开关三配置exit1并匹配准确拒绝原因，不是未解决的构建失败。普通Debug仍code17/`.debug`，普通Release仍`com.cooper.lithic`/code17；Preview12仍code28/原版本，均PHOTO=false；实验无Release任务 |
+| 实物Manifest/签名/DEX | [离线核验](photo-lite-p1-20261031/artifact/identity.json)PASS，12条SDK命令全部exit0。正常`LithicApplication→MainActivity`、Writer/Controller/受校验封面组件、实际DEX `PHOTO_LITE_EXPERIMENT=true`存在；唯一Test M13 target正确，plain Application替换反汇编可见；JUnit/Instrumentation测试类未进入App APK |
+| 权限/组件/native | App与Preview12按独立包名归一后权限/原主组件一致，只增加非导出空ComponentActivity测试宿主；无sharedUserId、INTERNET、广泛照片/存储权限或新JPEG native。原AndroidX Path/DataStore native字节逐项相同。继承的ACCESS_NETWORK_STATE等不等于新增联网能力 |
+| 保护与归档 | 13份旧APK逐一大小/SHA不变；Room5/backup4/领域引擎/Owner/恢复/C6冻结源码无差异。新App只复制到下述唯一非build目录，复制后重算SHA与构建物逐字节一致；未覆盖未知文件，无ZIP/APK入Git。见[归档回执](photo-lite-p1-20261031/archive.json) |
+
+**唯一交付App（内部实验，不是Preview或正式版本）**
+
+- 绝对路径：`E:\CODEX\.codex\worktrees\lithic-m13\砺石新APP\verification-candidates\photo-lite-p1\Lithic-PhotoLite-P1-debug.apk`
+- 包名：`com.cooper.lithic.photolite.debug`；版本：`0.1.0-photo-lite.p1-debug` / code1；显示名称“砺石·照片试验 P1”。
+- 大小：**16,494,089字节**；SHA-256：`167b45b3295ff2ea3c9bceeb5ac1facd52023efb5ad7815e2913aea250decf89`。
+- 实际Debug证书SHA-256：`29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9`；正常生产Application，非M13普通用户入口。
+- 构建源码提交：`9228016486c1269d8fce4bd612ae9f07427c7dfd`；`app` Git树：`9162d938c69f221b95d794203b836bc9722b07ed`。后续交付提交仅证据/状态文档，App树保持相同。
+- Test仅为编译实物，不作为第二个用户候选归档：`app/build-photo-lite/outputs/apk/androidTest/debug/app-debug-androidTest.apk`，3,815,555字节，SHA-256 `52f313d1164612cb3e09843bfc61afbc72c977edbb882edcf11357060693846b`；`.photolite.debug.test`、Manifest未显式版本、同证书；未执行。
+
+未来获设备授权后才可用可丢弃图片验证“新建实验物品→添加照片→取消选择/预览无写入→确认后详情/列表显示→重开读取→backup4验证”。本轮不要求用户操作手机，不向旧Preview12/V1-A1注入照片或记录；独立包名/无sharedUserId是静态隔离证据，安装UID和真实私有目录隔离尚NOT_RUN。
+
+**已具备提交独立桌面候选审查的条件，未取得Android媒体安全验收。**原三项JPEG FAIL、严格原图完整性、API26～35未支持、系统codec/RSS及取消最坏时延、C6隔离运行、M20/M22/C3及全部旧门禁保持。`PHOTO_LITE_EXPERIMENT_ONLY / STRICT_JPEG_IMPORT_BLOCKED / V1_RELEASE_NO_GO`，正式`MEDIA_IMPORT_BLOCKED / ANDROID_ISOLATION_RUNTIME_PENDING`不解除；无ADB、设备、安装、真实照片/账本操作，不合并产品分支/main或进入下一阶段。

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:compileSdkVersion="36"
+    android:compileSdkVersionCodename="16"
+    package="com.cooper.lithic.photolite.debug.test"
+    platformBuildVersionCode="36"
+    platformBuildVersionName="16">
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="36" />
+
+    <instrumentation
+        android:label="Tests for com.cooper.lithic.photolite.debug"
+        android:name="com.cooper.lithic.app.M13IsolatedRunner"
+        android:targetPackage="com.cooper.lithic.photolite.debug"
+        android:handleProfiling="false"
+        android:functionalTest="false" />
+
+    <queries>
+
+        <package
+            android:name="androidx.test.orchestrator" />
+
+        <package
+            android:name="androidx.test.services" />
+
+        <package
+            android:name="com.google.android.apps.common.testing.services" />
+    </queries>
+
+    <uses-permission
+        android:name="android.permission.REORDER_TASKS" />
+
+    <application
+        android:debuggable="true"
+        android:extractNativeLibs="false">
+
+        <uses-library
+            android:name="android.test.runner" />
+
+        <activity
+            android:theme="@ref/0x7f0a0008"
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity"
+            android:exported="true">
+
+            <intent-filter
+                android:priority="-100">
+
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:theme="@ref/0x7f0a0008"
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity"
+            android:exported="true">
+
+            <intent-filter
+                android:priority="-100">
+
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:theme="@ref/0x7f0a0007"
+            android:name="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity"
+            android:exported="true">
+
+            <intent-filter
+                android:priority="-100">
+
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
