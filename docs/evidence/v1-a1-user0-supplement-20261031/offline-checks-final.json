@@ -1,0 +1,133 @@
+{
+  "checks": 25,
+  "passed": 25,
+  "deviceQueries": 0,
+  "readerSha256": "5d60edc6788dc7db789d41e66b4dbb73919311fa1349eb13c1d880f0d27fb5d9",
+  "results": [
+    {
+      "case": "exact-user0-true",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "exact-user0-false",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "other-user-does-not-overwrite",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "only-other-user-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "package-record-without-user-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "other-package-cannot-supply-user",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "suffix-package-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "hidden-section-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "left-packages-section-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "duplicate-package-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "duplicate-user0-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "duplicate-installed-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "invalid-installed-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "missing-installed-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "multiple-packages-sections-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "empty-response-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "trailing-dumpsys-timeout-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "service-error-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "source-failure-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "shell-failure-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "stderr-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "truncated-receipt-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "extra-key-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "wrong-receipt-package-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    },
+    {
+      "case": "wrong-receipt-user-rejected",
+      "passed": true,
+      "scope": "SYNTHETIC_HOST_ONLY"
+    }
+  ]
+}

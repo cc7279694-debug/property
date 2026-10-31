@@ -1,0 +1,48 @@
+{
+  "baseline": "64badfe3f211b988138dab5b057c52413e005880",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "startedUtc": "2026-10-31T02:17:24.518790+00:00",
+  "outcome": "PREVIEW12_USER0_INSTALLED — CONFIRMED",
+  "installed": true,
+  "systemUiManualHealth": "PENDING_USER_CONFIRMATION",
+  "installationAuthorized": false,
+  "deviceWrites": 0,
+  "hostEnumerations": 1,
+  "targetShellRequests": 1,
+  "otherDeviceQueries": 0,
+  "automaticRetries": 0,
+  "commands": [
+    {
+      "request": "host:devices-l",
+      "status": "COMPLETED",
+      "hostEndpoint": "127.0.0.1:5037",
+      "processExitCode": "NOT_APPLICABLE_SMART_SOCKET",
+      "protocolStatus": "OKAY",
+      "rawBytes": 89,
+      "rawSha256": "5065e8e6ebce484dff22fef14c1b35c66355032f005e343caf9691b8a074e6a6",
+      "rawDeviceListSaved": false
+    },
+    {
+      "transportSelector": "host:transport:<USB_SERIAL_REDACTED>",
+      "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+      "service": "shell,v2,raw:dump=$(dumpsys package com.cooper.lithic.preview.debug 2>&1); source_rc=$?; printf '%s\\n' \"$dump\" | awk 'BEGIN { sections=0; inside=0; target=0; packages=0; users=0; fields=0; bad=0; value=\"\" }\n/DUMP TIMEOUT|DUMP OF SERVICE .* FAILED|Error dumping service|Error dumping package|Can.t find service|Can.t find package|Permission Denial|Unknown package|No packages found/ { bad++; next }\n$0 == \"Packages:\" { sections++; inside=1; target=0; next }\ninside && /^[^[:space:]]/ { inside=0; target=0 }\ninside && /^[[:space:]]*Package \\[/ {\n    target=0\n    if ($0 ~ /^  Package \\[com\\.cooper\\.lithic\\.preview\\.debug\\] \\([^)]*\\):[[:space:]]*$/) {\n        packages++; target=1\n    }\n    next\n}\ninside && target && /^    User 0:/ {\n    users++\n    for (i=1; i<=NF; i++) {\n        if ($i ~ /^installed=/) {\n            fields++\n            if ($i == \"installed=true\") value=\"true\"\n            else if ($i == \"installed=false\") value=\"false\"\n            else bad++\n        }\n    }\n}\nEND {\n    printf \"PACKAGES_SECTIONS=%d\\nPACKAGE_MATCHES=%d\\nUSER0_MATCHES=%d\\nINSTALLED_FIELDS=%d\\nINVALID_FIELDS=%d\\n\", sections, packages, users, fields, bad\n    if (sections == 1 && packages == 1 && users == 1 && fields == 1 && bad == 0 && value != \"\") {\n        print \"PACKAGE=com.cooper.lithic.preview.debug\"\n        print \"USER=0\"\n        print \"INSTALLED=\" value\n    } else exit 65\n}'; filter_rc=$?; printf 'SOURCE_EXIT=%s\\nFILTER_EXIT=%s\\n' \"$source_rc\" \"$filter_rc\"; if [ \"$source_rc\" -ne 0 ]; then exit \"$source_rc\"; fi; exit \"$filter_rc\"",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "exitPacketReceived": true,
+      "transportProtocolStatus": "OKAY",
+      "shellProtocolStatus": "OKAY",
+      "stdoutBytes": 180,
+      "stdoutSha256": "44155109895eb5226b0051c29d94e66223c992dfa132fd933f1879de7bb8c530",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "minimalStdout": "PACKAGES_SECTIONS=1\nPACKAGE_MATCHES=1\nUSER0_MATCHES=1\nINSTALLED_FIELDS=1\nINVALID_FIELDS=0\nPACKAGE=com.cooper.lithic.preview.debug\nUSER=0\nINSTALLED=true\nSOURCE_EXIT=0\nFILTER_EXIT=0\n",
+      "stderrSaved": false
+    }
+  ],
+  "enumeratedDeviceCount": 1,
+  "authorizedTargetMatches": 1,
+  "targetConnectionState": "device",
+  "reason": "UNIQUE_EXACT_PACKAGE_USER0_BOOLEAN_CONFIRMED",
+  "finishedUtc": "2026-10-31T02:17:24.933274+00:00",
+  "elapsedSeconds": 0.422
+}
