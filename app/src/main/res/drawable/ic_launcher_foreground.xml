@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Keep the supplied composition at 72/108 of the adaptive canvas.
-     The default static launcher viewport must not enlarge/crop the artwork. -->
+<!-- Transparent stone only. 23% inset compensates the adaptive 108/72 viewport
+     and keeps the stone at about 64.5% width / 68.1% height of the visible icon. -->
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:inset="16.666667%">
+    android:inset="23%">
     <bitmap
-        android:src="@drawable/ic_launcher_art"
+        android:src="@drawable/ic_launcher_stone"
         android:gravity="fill"
         android:filter="true" />
 </inset>

@@ -1,5 +1,7 @@
 # PHOTO-LITE P2 — 主体验版集成
 
+> **后续图标专项授权（2026-10-31）**：下文“原图标和inset保持”是源码准备提交`e67fc6b`时的历史检查，原始回执不改。用户随后要求去黑边和清晰适配，现仅启动图标资源更新为透明前景／全铺满背景，原始上传图和旧APK保持；见[图标适配报告](LITHIC-Launcher-Icon-Adaptation.md)。P2照片／Gradle／版本源码未追加变更，构建仍暂缓，Preview13未构建。
+
 2026-10-31；P1来源`64c9337f7b05d82d8b7ea78d71ffb1c07cfa88fb`；产品分支来源`b23d0f2aa968cb2c5eda6359b499da1b7fad5a74`。两条分支本地/实时远端各自一致，产品提交为P1祖先（0左/3右）；从产品基线建立`codex/photo-lite-p2`并fast-forward承接P1，无reset、cherry-pick或分叉覆盖。P1和产品原分支均未修改，不合并main。
 
 ## 本轮契约
