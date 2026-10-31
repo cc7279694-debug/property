@@ -3,6 +3,7 @@ package com.cooper.lithic.data.media.photolite
 import android.app.Application
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Process
 import android.system.Os
 import androidx.test.core.app.ApplicationProvider
@@ -16,21 +17,27 @@ import com.cooper.lithic.data.backup.BackupTarget
 import com.cooper.lithic.data.backup.BackupValidator
 import com.cooper.lithic.data.backup.DataGenerationStore
 import com.cooper.lithic.data.backup.ManagedGeneration
+import com.cooper.lithic.data.backup.RestoredGenerationWriter
+import com.cooper.lithic.data.backup.RestoreReminderProtection
 import com.cooper.lithic.data.local.CategoryEntity
 import com.cooper.lithic.data.local.CategoryType
 import com.cooper.lithic.data.local.LongTermProjectEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.media.CoverOwnerType
+import com.cooper.lithic.data.media.CoverReadFailure
 import com.cooper.lithic.data.media.CoverReadResult
 import com.cooper.lithic.data.media.CoverReference
 import com.cooper.lithic.data.media.GenerationCoverReader
 import com.cooper.lithic.testutil.M20TestRoots
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.security.MessageDigest
+import java.time.Clock
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
+import java.time.ZoneOffset
 import java.util.UUID
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
@@ -55,29 +62,45 @@ class GenerationPhotoLiteCoverWriterTest {
     private val context get() = ApplicationProvider.getApplicationContext<Context>()
     private val roots = M20TestRoots()
     private lateinit var root: File
+    private lateinit var store: DataGenerationStore
     private lateinit var generation: ManagedGeneration
     private lateinit var project: LongTermProjectEntity
     private lateinit var writer: GenerationPhotoLiteCoverWriter
     private val opened = mutableListOf<ManagedGeneration>()
     private var current: ManagedGeneration? = null
     private var setupComplete = false
+    private val restoreClock = Clock.fixed(Instant.parse("2026-10-31T12:00:00Z"), ZoneOffset.UTC)
 
     @get:Rule val closeOwnedResources = TestRule { base, _ -> object : Statement() {
         override fun evaluate() {
             var failure: Throwable? = null
+            fun retainFailure(caught: Throwable) {
+                val original = failure
+                if (original == null) failure = caught
+                else if (original !== caught) original.addSuppressed(caught)
+            }
             try { base.evaluate() } catch (caught: Throwable) { failure = caught }
             try {
                 runBlocking { withContext(NonCancellable) {
-                    for (owner in opened.asReversed()) { owner.close(); check(!owner.database.isOpen) }
+                    for (owner in opened.asReversed()) {
+                        try {
+                            owner.close()
+                            check(!owner.database.isOpen)
+                        } catch (closing: Throwable) {
+                            retainFailure(closing)
+                        }
+                    }
                 } }
-                if (setupComplete) {
+                if (failure == null && setupComplete) {
+                    check(opened.all { !it.database.isOpen })
                     roots.ownersClosed(root)
                     // Unknown/partial new files were never granted cleanup capabilities. The
-                    // existing helper preserves any such root, and every failed test is retained.
-                    if (failure == null) roots.cleanupClosed()
+                    // helper preserves those roots. Failed restore may also own an unreturned
+                    // rollback generation: never mark owners closed or clean after any failure.
+                    roots.cleanupClosed()
                 }
             } catch (closing: Throwable) {
-                if (failure == null) failure = closing else failure.addSuppressed(closing)
+                retainFailure(closing)
             }
             failure?.let { throw it }
         }
@@ -88,7 +111,8 @@ class GenerationPhotoLiteCoverWriterTest {
         check(context.applicationContext.javaClass == Application::class.java)
         check(InstrumentationRegistry.getInstrumentation().javaClass.name == "com.cooper.lithic.app.M13IsolatedRunner")
         root = roots.create(context, "photo-lite-writer")
-        generation = DataGenerationStore(context, root).open(ZoneId.of("Asia/Shanghai"))
+        store = DataGenerationStore(context, root, restoreClock = restoreClock)
+        generation = store.open(ZoneId.of("Asia/Shanghai"))
         current = generation; opened += generation; roots.generation(root, generation.id)
         val category = CategoryEntity(uuid(), CategoryType.PROJECT, "合成物品", "合成物品", false)
         val at = Instant.parse("2026-10-01T01:02:03.123456789Z")
@@ -280,6 +304,99 @@ class GenerationPhotoLiteCoverWriterTest {
         assertEquals(result.assetId, generation.database.projectDao().findProject(project.id)!!.coverAssetId)
     }
 
+    @Test fun confirmed_photo_restores_original_bytes_metadata_cover_and_money_then_reopens_in_new_owner() = runBlocking {
+        val png = picture()
+        val result = writer.commit(capture(), png) as PhotoLiteCommitResult.Success
+        val asset = generation.database.mediaDao().find(result.assetId)!!
+        roots.media(root, listOf(asset.relativePath), generation.id)
+        val beforeBackup = generation.backupSnapshotSource().capture()
+        val backedUpProject = generation.database.projectDao().findProject(project.id)!!
+        val originalMoney = generation.database.projectDao().eventsForProjects(listOf(project.id))
+        val reference = CoverReference(CoverOwnerType.PROJECT, project.id, result.assetId)
+        val oldReader = GenerationCoverReader(generation) { current === generation }
+        assertTrue(oldReader.read(reference) is CoverReadResult.Ready)
+
+        val archive = File(root, "photo-lite-restore.lithicbackup")
+        roots.files(root, archive.name)
+        val exported = BackupExportService(context, generation).export(target(archive))
+        assertTrue(exported is BackupExportResult.Success)
+        assertFalse((exported as BackupExportResult.Success).temporaryFilesRemaining)
+        val extraction = File(root, "photo-lite-restore-payload"); check(extraction.mkdir())
+        val validated = BackupValidator().validate(archive.toPath(), extraction.toPath())
+        roots.files(root, "photo-lite-restore-payload/manifest.json",
+            *validated.manifest.files.map { "photo-lite-restore-payload/${it.path}" }.toTypedArray())
+        assertEquals(4, validated.manifest.formatVersion)
+        assertEquals(4, validated.manifest.minReaderFormat)
+        assertEquals(5, validated.manifest.sourceDatabaseSchemaVersion)
+        assertEquals(beforeBackup, validated.snapshot)
+        assertArrayEquals(png.copyBytes(), File(extraction, asset.relativePath).readBytes())
+
+        // Synthetic edit after the export proves that activation restores the archived facts;
+        // expectedSnapshot is the actual current set, never the pre-edit backup snapshot.
+        generation.coordinator.withWrite {
+            assertEquals(1, generation.database.projectDao().updateProjectMetadata(
+                backedUpProject.id, backedUpProject.updatedAt, "备份后修改的合成名称",
+                backedUpProject.startedOn, backedUpProject.categoryId, "备份后修改的合成备注",
+                backedUpProject.updatedAt.plusSeconds(1),
+            ))
+        }
+        val beforeRestore = generation.backupSnapshotSource().capture()
+        assertNotEquals(beforeBackup.data.projects, beforeRestore.data.projects)
+        val candidate = store.prepareRestore(ZoneId.of(beforeBackup.settings.recordZoneId)) {
+            RestoredGenerationWriter().populate(it, validated)
+        }
+        roots.generation(root, candidate.id)
+        roots.media(root, listOf(asset.relativePath), candidate.id)
+        val restored = store.activateRestore(generation.id, candidate, beforeRestore)
+        current = restored; opened += restored
+        assertNotEquals(generation.id, restored.id)
+        assertFalse(generation.database.isOpen)
+        val expected = RestoreReminderProtection.snapshot(beforeBackup, restoreClock.instant())
+        assertEquals(expected, restored.backupSnapshotSource().capture())
+        RestoredGenerationWriter().verify(restored, expected)
+        assertEquals(backedUpProject, restored.database.projectDao().findProject(project.id))
+        assertEquals(originalMoney, restored.database.projectDao().eventsForProjects(listOf(project.id)))
+        assertEquals(asset, restored.database.mediaDao().find(result.assetId))
+        val restoredFile = File(restored.directory, asset.relativePath)
+        val restoredBytes = restoredFile.readBytes()
+        assertEquals(png.byteLength, restoredFile.length())
+        assertEquals(png.byteLength, restoredBytes.size.toLong())
+        assertArrayEquals(png.copyBytes(), restoredBytes)
+        assertEquals(png.sha256, sha(restoredBytes))
+        val inspected = PhotoLitePng.checked(restoredBytes)
+        assertEquals(png.width, inspected.width); assertEquals(png.height, inspected.height)
+        val bitmap = checkNotNull(BitmapFactory.decodeByteArray(restoredBytes, 0, restoredBytes.size,
+            BitmapFactory.Options().apply { inScaled = false; inPreferredConfig = Bitmap.Config.ARGB_8888 }))
+        try {
+            assertEquals(png.width, bitmap.width); assertEquals(png.height, bitmap.height)
+            assertEquals(0xff839bb0.toInt(), bitmap.getPixel(0, 0))
+            assertEquals(0xff839bb0.toInt(), bitmap.getPixel(bitmap.width - 1, bitmap.height - 1))
+        } finally { bitmap.recycle() }
+        val reader = GenerationCoverReader(restored) { current === restored }
+        assertNotSame(oldReader.ownerKey, reader.ownerKey)
+        val image = (reader.read(reference) as CoverReadResult.Ready).image
+        assertArrayEquals(restoredBytes, image.bytes)
+        assertEquals(png.width, image.width); assertEquals(png.height, image.height)
+        assertEquals(CoverReadResult.Unavailable(CoverReadFailure.OWNER_UNAVAILABLE), oldReader.read(reference))
+        assertEquals(PhotoLiteCaptureResult.Rejected(PhotoLiteFailure.OWNER_UNAVAILABLE), writer.capture(project.id))
+        assertFalse(generation.database.isOpen)
+
+        val restoredId = restored.id
+        restored.close(); assertFalse(restored.database.isOpen)
+        val reopened = DataGenerationStore(context, root, restoreClock = restoreClock).open()
+        current = reopened; opened += reopened; roots.generation(root, reopened.id)
+        assertEquals(restoredId, reopened.id); assertNotSame(restored, reopened)
+        assertEquals(expected, reopened.backupSnapshotSource().capture())
+        assertEquals(asset, reopened.database.mediaDao().find(result.assetId))
+        assertEquals(originalMoney, reopened.database.projectDao().eventsForProjects(listOf(project.id)))
+        val reopenedImage = (GenerationCoverReader(reopened) { current === reopened }
+            .read(reference) as CoverReadResult.Ready).image
+        assertArrayEquals(png.copyBytes(), reopenedImage.bytes)
+        assertEquals(png.byteLength, reopenedImage.bytes.size.toLong())
+        assertEquals(png.sha256, sha(reopenedImage.bytes))
+        assertEquals(png.width, reopenedImage.width); assertEquals(png.height, reopenedImage.height)
+    }
+
     private suspend fun capture(): PhotoLiteTarget = (writer.capture(project.id) as PhotoLiteCaptureResult.Ready).target
     private fun picture(): PhotoLitePng {
         val bitmap = Bitmap.createBitmap(3, 2, Bitmap.Config.ARGB_8888)
@@ -297,4 +414,6 @@ class GenerationPhotoLiteCoverWriterTest {
         override fun deletePartial(): Boolean = !file.exists() || file.delete()
     }
     private fun uuid(): String = UUID.randomUUID().toString()
+    private fun sha(bytes: ByteArray): String = MessageDigest.getInstance("SHA-256").digest(bytes)
+        .joinToString("") { "%02x".format(it.toInt() and 255) }
 }

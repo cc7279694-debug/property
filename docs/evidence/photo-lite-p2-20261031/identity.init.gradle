@@ -1,0 +1,26 @@
+import groovy.json.JsonOutput
+
+// Desktop configuration receipt only; this task does not assemble any variant.
+gradle.projectsEvaluated {
+    def target = gradle.rootProject.project(':app')
+    target.tasks.register('photoLiteP2IdentityReceipt') {
+        doLast {
+            def android = target.extensions.getByName('android')
+            def config = android.defaultConfig
+            def debug = android.buildTypes.getByName('debug')
+            def release = android.buildTypes.getByName('release')
+            def photoFlag = { build -> (build.buildConfigFields['PHOTO_LITE_EXPERIMENT'] ?: config.buildConfigFields['PHOTO_LITE_EXPERIMENT']).value }
+            println('PHOTO_LITE_P2_IDENTITY=' + JsonOutput.toJson([
+                debugPackage: config.applicationId + (debug.applicationIdSuffix ?: ''),
+                debugVersionCode: config.versionCode,
+                debugVersionName: config.versionName + (debug.versionNameSuffix ?: ''),
+                debugPhotoLiteEnabled: photoFlag(debug),
+                releasePackage: config.applicationId,
+                releasePhotoLiteEnabled: photoFlag(release),
+                runner: config.testInstrumentationRunner,
+                buildDirectory: target.layout.buildDirectory.get().asFile.absolutePath,
+                debugKeyPresent: android.signingConfigs.getByName('debug').storeFile.isFile(),
+            ]))
+        }
+    }
+}
