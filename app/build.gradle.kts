@@ -39,6 +39,25 @@ require(v1AcceptanceValue == null || v1AcceptanceValue in setOf("true", "false")
     "v1AcceptanceVerification must be true or false"
 }
 val v1AcceptanceVerification = v1AcceptanceValue == "true"
+// Disposable PHOTO-LITE experiment only. Never opens media writing in ordinary apps.
+val photoLiteValue = providers.gradleProperty("photoLiteExperiment").orNull
+require(photoLiteValue == null || photoLiteValue in setOf("true", "false")) {
+    "photoLiteExperiment must be true or false"
+}
+val photoLiteExperiment = photoLiteValue == "true"
+if (photoLiteExperiment) {
+    require(!lithicPrivateTrial && !m22DeviceVerification && !c2VisualVerification &&
+        !c6IsolationVerification && !v1AcceptanceVerification) {
+        "PHOTO-LITE cannot share private trial or historical verification identities"
+    }
+    require(!providers.gradleProperty("m12T04ProcessDeath").isPresent) {
+        "PHOTO-LITE cannot enable historical process-death experiments"
+    }
+    require(providers.gradleProperty("m13Isolated").orNull in setOf(null, "true")) {
+        "PHOTO-LITE tests require the plain Application M13IsolatedRunner"
+    }
+    layout.buildDirectory.set(layout.projectDirectory.dir("build-photo-lite"))
+}
 if (v1AcceptanceVerification) {
     require(!lithicPrivateTrial && !m22DeviceVerification && !c2VisualVerification && !c6IsolationVerification) {
         "V1 acceptance cannot use private trial, M22, C3 visual or C6 isolation identities"
@@ -106,11 +125,13 @@ android {
         versionCode = when {
             lithicPrivateTrial -> 28
             v1AcceptanceVerification -> 1
+            photoLiteExperiment -> 1
             else -> 17
         }
         versionName = when {
             lithicPrivateTrial -> "0.1.0-preview.12"
             v1AcceptanceVerification -> "0.1.0-v1-a1"
+            photoLiteExperiment -> "0.1.0-photo-lite.p1"
             c6IsolationVerification -> "0.1.0-c6isolation"
             c2VisualVerification -> "0.1.0-c2visual"
             else -> "0.1.0-m22"
@@ -118,8 +139,10 @@ android {
         if (c2VisualVerification) testApplicationId = "com.cooper.lithic.c2visual.debug.test"
         if (c6IsolationVerification) testApplicationId = "com.cooper.lithic.c6isolation.debug.test"
         if (v1AcceptanceVerification) testApplicationId = "com.cooper.lithic.v1acceptance.debug.test"
+        if (photoLiteExperiment) testApplicationId = "com.cooper.lithic.photolite.debug.test"
+        buildConfigField("boolean", "PHOTO_LITE_EXPERIMENT", photoLiteExperiment.toString())
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
-        testInstrumentationRunner = if (v1AcceptanceVerification || c6IsolationVerification || c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
+        testInstrumentationRunner = if (photoLiteExperiment || v1AcceptanceVerification || c6IsolationVerification || c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
             "com.cooper.lithic.app.M13IsolatedRunner"
         else if (providers.gradleProperty("m12T04ProcessDeath").orNull == "true")
             "com.cooper.lithic.data.backup.M12ProcessDeathRunner"
@@ -134,6 +157,7 @@ android {
                 c2VisualVerification -> ".c2visual.debug"
                 c6IsolationVerification -> ".c6isolation.debug"
                 v1AcceptanceVerification -> ".v1acceptance.debug"
+                photoLiteExperiment -> ".photolite.debug"
                 else -> ".debug"
             }
             versionNameSuffix = "-debug"
@@ -146,6 +170,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     // Exact exported schema fixtures are test-only assets; never packaged in the app APK.
     sourceSets.getByName("androidTest").assets.srcDir("$projectDir/schemas")
@@ -176,12 +201,18 @@ android {
         // Production Application, launcher, providers and services remain in the main Manifest.
         sourceSets.getByName("debug").manifest.srcFile("src/v1Acceptance/AndroidManifest.xml")
     }
+    if (photoLiteExperiment) {
+        require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
+            "PHOTO-LITE requires the existing Debug key; do not generate a replacement"
+        }
+        sourceSets.getByName("debug").manifest.srcFile("src/photoLite/AndroidManifest.xml")
+    }
 }
 
 // The opt-in target is never a production Release application.
 androidComponents {
     beforeVariants(selector().withBuildType("release")) { variant ->
-        if (v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
+        if (photoLiteExperiment || v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
     }
 }
 
@@ -223,6 +254,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.espresso.core)
     // Only the Debug test-host activity; no test framework enters release runtime.
-    if (!lithicPrivateTrial && !c6IsolationVerification && !v1AcceptanceVerification)
+    if (!photoLiteExperiment && !lithicPrivateTrial && !c6IsolationVerification && !v1AcceptanceVerification)
         debugImplementation(libs.androidx.compose.ui.test.manifest)
 }

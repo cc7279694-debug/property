@@ -2,6 +2,7 @@ package com.cooper.lithic.app
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cooper.lithic.BuildConfig
 import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.core.time.ZonedBusinessClock
 import com.cooper.lithic.data.repository.ProjectRepository
@@ -64,7 +65,11 @@ internal class LedgerUiStateHolder(
                                     settingsStore = generation.settings,
                                     coverReader = com.cooper.lithic.data.media.GenerationCoverReader(generation) {
                                         (storageStates.value as? StorageInitializationState.Ready)?.generation === generation
-                                    })
+                                    },
+                                    photoLiteCoverWriter = if (BuildConfig.PHOTO_LITE_EXPERIMENT)
+                                        com.cooper.lithic.data.media.photolite.GenerationPhotoLiteCoverWriter(generation) {
+                                            (storageStates.value as? StorageInitializationState.Ready)?.generation === generation
+                                        } else null)
                             }
                             mutableState.value = ready
                             checkNotNull(ready.reportRepository).changes.collectLatest { refresh(ready) }

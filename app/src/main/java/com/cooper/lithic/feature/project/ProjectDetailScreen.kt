@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -80,6 +81,10 @@ internal fun ProjectDetailScreen(
     onCostHistory: (() -> Unit)? = null,
     // Presentation slot only: callers supply the current owner's validated reader, never a path.
     coverContent: (@Composable () -> Unit)? = null,
+    onAddPhoto: (() -> Unit)? = null,
+    photoActionEnabled: Boolean = true,
+    photoUnavailableMessage: String? = null,
+    expandPhotoCover: Boolean = false,
 ) {
     val detail = state.detail?.takeUnless { state.missing }
     var menuOpen by rememberSaveable(detail?.project?.id) { mutableStateOf(false) }
@@ -146,7 +151,21 @@ internal fun ProjectDetailScreen(
             } }
             if (state.missing) item { Text("项目不存在，返回列表查看当前记录。", style = MaterialTheme.typography.bodyLarge) }
             if (detail != null) {
-                item { ProjectIdentity(detail, coverContent) }
+                item {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        ProjectIdentity(detail, coverContent, expandPhotoCover)
+                        if (detail.project.coverAssetId == null && onAddPhoto != null) {
+                            TextButton(onAddPhoto, Modifier.heightIn(min = 48.dp).testTag("project-add-photo"),
+                                enabled = photoActionEnabled && !state.loading && state.error == null) {
+                                C2Icon(C2Glyph.Image)
+                                Spacer(Modifier.width(8.dp))
+                                Text("添加照片")
+                            }
+                            photoUnavailableMessage?.let { Text(it, Modifier.testTag("project-photo-unavailable"),
+                                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+                        }
+                    }
+                }
                 item { ProjectCostSummary(detail) }
                 item { ProjectSecondaryTotals(detail) }
                 item {
@@ -219,12 +238,16 @@ internal fun ProjectDetailScreen(
 }
 
 @Composable
-private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable () -> Unit)?) {
+private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable () -> Unit)?, expandPhotoCover: Boolean = false) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text(detail.project.name, Modifier.testTag("project-detail-name").semantics { heading() },
             style = MaterialTheme.typography.headlineMedium)
+        if (expandPhotoCover && detail.project.coverAssetId != null && coverContent != null) {
+            Box(Modifier.fillMaxWidth().height(196.dp).clip(RoundedCornerShape(16.dp))
+                .testTag("project-detail-cover-expanded")) { coverContent() }
+        }
         Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.size(64.dp).testTag("project-identity-symbol")) {
+            if (!expandPhotoCover || detail.project.coverAssetId == null || coverContent == null) Box(Modifier.size(64.dp).testTag("project-identity-symbol")) {
                 if (detail.project.coverAssetId != null && coverContent != null) {
                     Box(Modifier.size(64.dp).clip(RoundedCornerShape(12.dp))
                         .testTag("project-detail-cover")) { coverContent() }

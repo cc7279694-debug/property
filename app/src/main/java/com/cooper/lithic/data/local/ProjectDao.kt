@@ -138,4 +138,20 @@ interface ProjectDao {
         id: String, name: String, categoryId: String, startedOn: LocalDate, endedOn: LocalDate?,
         endReason: String?, coverAssetId: String?, note: String?, createdAt: Instant, updatedAt: Instant,
     ): Int
+
+    /** PHOTO-LITE only: add one cover while preserving every loaded business field. */
+    @Query("""
+        UPDATE long_term_projects SET coverAssetId = :coverAssetId, updatedAt = :updatedAt
+        WHERE id = :id AND name = :expectedName AND categoryId = :expectedCategoryId
+            AND startedOn = :expectedStartedOn AND endedOn IS :expectedEndedOn
+            AND endReason IS :expectedEndReason AND coverAssetId IS :expectedCoverAssetId
+            AND note IS :expectedNote AND createdAt = :expectedCreatedAt
+            AND updatedAt = :expectedUpdatedAt
+    """)
+    suspend fun addPhotoLiteCoverIfUnchanged(
+        id: String, expectedName: String, expectedCategoryId: String, expectedStartedOn: LocalDate,
+        expectedEndedOn: LocalDate?, expectedEndReason: String?, expectedCoverAssetId: String?,
+        expectedNote: String?, expectedCreatedAt: Instant, expectedUpdatedAt: Instant,
+        coverAssetId: String, updatedAt: Instant,
+    ): Int
 }

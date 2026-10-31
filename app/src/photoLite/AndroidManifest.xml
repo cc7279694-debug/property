@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Normal production Application/MainActivity remain merged from main. -->
+    <application android:label="砺石·照片试验 P1" tools:replace="android:label">
+        <!-- Empty non-exported host for future explicitly authorized plain tests. -->
+        <activity android:name="androidx.activity.ComponentActivity" android:exported="false" />
+    </application>
+</manifest>

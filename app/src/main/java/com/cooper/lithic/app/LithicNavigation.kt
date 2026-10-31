@@ -4,6 +4,9 @@ import com.cooper.lithic.data.media.CoverOwnerType
 import com.cooper.lithic.data.media.CoverReference
 import com.cooper.lithic.feature.media.RecordCover
 import com.cooper.lithic.feature.media.ProvideCoverPreviews
+import com.cooper.lithic.feature.media.PhotoLiteCoverController
+import com.cooper.lithic.feature.media.PhotoLiteCoverPanel
+import com.cooper.lithic.feature.media.PhotoLiteThumbnailPipeline
 import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -183,6 +186,17 @@ internal fun LithicNavigation(
     val backStack = key(session) { rememberNavBackStack(Home) }
     val routes = normalizeBackStack(backStack.toList())
     val context = LocalContext.current
+    val photoModel = state.photoLiteCoverWriter?.let { writer ->
+        remember(generationScope, session, writer) {
+            ViewModelProvider(generationScope, viewModelFactory {
+                initializer { PhotoLiteCoverController(writer, PhotoLiteThumbnailPipeline(context.applicationContext), generationScope.savedState) }
+            })[PhotoLiteCoverController::class.java]
+        }
+    }
+    val photoState = photoModel?.state?.collectAsStateWithLifecycle()?.value
+    LaunchedEffect(routes.last(), photoModel) { photoModel?.bindProject((routes.last() as? ProjectDetail)?.id) }
+    fun guardedLeaveDecision(vararg decisions: LeaveDecision): LeaveDecision =
+        globalLeaveDecision(*decisions, photoModel?.leaveDecision() ?: LeaveDecision.ALLOW)
     val notificationModel = if (NotificationSettings in routes) state.settingsStore?.let { store ->
         remember(generationScope, session, store) {
             ViewModelProvider(generationScope, viewModelFactory {
@@ -252,8 +266,8 @@ internal fun LithicNavigation(
     }
     fun requestLeave(target: List<NavKey>) {
         if (!navigationAvailable(restoreState.phase)) return
-        when (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW)) {
-            LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); navigate(target) }
+        when (guardedLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW)) {
+            LeaveDecision.ALLOW -> { model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); photoModel?.discard(); navigate(target) }
             LeaveDecision.CONFIRM_DISCARD -> pendingLeave = target
             LeaveDecision.BLOCK_PENDING -> pendingWarning = true
         }
@@ -322,12 +336,12 @@ internal fun LithicNavigation(
     val subscriptionLeave = subscriptionModel.leaveDecision()
     val categoryLeave = categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW
     val replacementLeave = replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW
-    BackHandler(enabled = routes == listOf(Home) && globalLeaveDecision(projectLeave, subscriptionLeave, categoryLeave, replacementLeave) != LeaveDecision.ALLOW) {
+    BackHandler(enabled = routes == listOf(Home) && guardedLeaveDecision(projectLeave, subscriptionLeave, categoryLeave, replacementLeave) != LeaveDecision.ALLOW) {
         requestLeave(routes)
     }
     LaunchedEffect(projects.committedProjectId, subscriptionLeave, categoryLeave, replacementLeave) {
         projects.committedProjectId?.let { id ->
-            val guard = globalLeaveDecision(subscriptionLeave, categoryLeave, replacementLeave)
+            val guard = guardedLeaveDecision(subscriptionLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val target = canonicalBackStack(projectCommittedDetail(routes, id))
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
@@ -337,7 +351,7 @@ internal fun LithicNavigation(
     }
     LaunchedEffect(projects.deletedProjectId, subscriptionLeave, categoryLeave, replacementLeave) {
         projects.deletedProjectId?.let {
-            val guard = globalLeaveDecision(subscriptionLeave, categoryLeave, replacementLeave)
+            val guard = guardedLeaveDecision(subscriptionLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val target = canonicalBackStack(projectBrowseReturnAfterDelete(routes))
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
@@ -347,7 +361,7 @@ internal fun LithicNavigation(
     }
     LaunchedEffect(subscriptions.committedSubscriptionId, projectLeave, categoryLeave, replacementLeave) {
         subscriptions.committedSubscriptionId?.let { id ->
-            val guard = globalLeaveDecision(projectLeave, categoryLeave, replacementLeave)
+            val guard = guardedLeaveDecision(projectLeave, categoryLeave, replacementLeave)
             if (guard == LeaveDecision.BLOCK_PENDING) { pendingWarning = true; return@let }
             val target = canonicalBackStack(subscriptionCommittedDetail(routes, id, subscriptions.committedOrigin))
             if (guard == LeaveDecision.CONFIRM_DISCARD) { pendingLeave = target; return@let }
@@ -357,7 +371,7 @@ internal fun LithicNavigation(
     }
     LaunchedEffect(replacements?.committedProjectId, projectLeave, subscriptionLeave, categoryLeave) {
         replacements?.committedProjectId?.let { id ->
-            when (globalLeaveDecision(projectLeave, subscriptionLeave, categoryLeave)) {
+            when (guardedLeaveDecision(projectLeave, subscriptionLeave, categoryLeave)) {
                 LeaveDecision.BLOCK_PENDING -> pendingWarning = true
                 LeaveDecision.CONFIRM_DISCARD -> pendingLeave = canonicalBackStack(ProjectDetail(id, projectOrigin(routes.last()), projectComparisonId(routes.last())))
                 LeaveDecision.ALLOW -> {
@@ -481,9 +495,9 @@ internal fun LithicNavigation(
                             onOpenSubscription = { requestLeave(canonicalBackStack(SubscriptionDetail(it, SubscriptionOrigin.REVIEW))) })
                     }
                     entry<Settings>(metadata = mapOf(C4_PRIMARY_DESTINATION to Settings)) { SettingsShell(state.recordZone, backupState = backupState,
-                        onExportBackup = onExportBackup, onCancelBackup = onCancelBackup,
-                        restoreState = restoreState, onRestoreBackup = onRestoreBackup, onCancelRestore = onCancelRestore,
-                        onConfirmRestore = onConfirmRestore, onDiscardRestore = onDiscardRestore,
+                        onExportBackup = onExportBackup?.let { action -> { if (photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else action() } }, onCancelBackup = onCancelBackup,
+                        restoreState = restoreState, onRestoreBackup = onRestoreBackup?.let { action -> { if (photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else action() } }, onCancelRestore = onCancelRestore,
+                        onConfirmRestore = { if (photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else onConfirmRestore() }, onDiscardRestore = onDiscardRestore,
                         onManageCategories = if (categoryModel != null) ({ requestLeave(canonicalBackStack(CategoryManagement)) }) else null,
                         onNotificationClick = if (state.settingsStore != null) ({ requestLeave(canonicalBackStack(NotificationSettings)) }) else null,
                         onCalculationExplanation = { requestLeave(canonicalBackStack(CalculationExplanation)) },
@@ -534,6 +548,22 @@ internal fun LithicNavigation(
                                 RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
                                     Modifier.fillMaxSize()) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) }
                             } },
+                            onAddPhoto = photoModel?.let { controller -> {
+                                if (restoreState.phase == RestoreUiPhase.IDLE &&
+                                    restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
+                                    backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&
+                                    guardedLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(),
+                                        categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.ALLOW)
+                                    controller.begin(route.id)
+                                else pendingWarning = true
+                            } },
+                            photoActionEnabled = photoModel?.isAvailable() == true && restoreState.phase == RestoreUiPhase.IDLE &&
+                                restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
+                                backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&
+                                guardedLeaveDecision(projectLeave, subscriptionLeave, categoryLeave, replacementLeave) == LeaveDecision.ALLOW,
+                            photoUnavailableMessage = if (photoModel != null && !photoModel.isAvailable())
+                                "照片试验仅支持 Android 16 且可使用系统照片选择器的设备。此设备暂不支持，物品记录不受影响。" else null,
+                            expandPhotoCover = photoModel != null,
                             onCostHistory = if (state.itemTimelineRepository != null) ({ requestLeave(canonicalBackStack(ProjectCostHistory(route.id, route.origin, route.comparisonId))) }) else null,
                             onReplacement = if (replacementModel != null) ({ requestLeave(canonicalBackStack(ReplacementComparison(route.id, route.origin))) }) else null,
                             onTradeIn = if (replacementModel != null) ({ requestLeave(canonicalBackStack(TradeInProject(route.id, route.origin, route.comparisonId))) }) else null,
@@ -663,22 +693,26 @@ internal fun LithicNavigation(
         }
     }
     }
+    if (photoModel != null && photoState != null) PhotoLiteCoverPanel(photoModel, photoState)
     pendingLeave?.let { target ->
         AlertDialog(onDismissRequest = { pendingLeave = null }, modifier = Modifier.testTag("discard-dialog"), title = { Text("放弃未保存修改？") },
             text = { Text("输入尚未保存。继续编辑会保留这些内容。") },
             confirmButton = { TextButton(onClick = {
                 if (navigationAvailable(restoreState.phase)) {
                     pendingLeave = null
-                    if (globalLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
+                    if (guardedLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(), categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.BLOCK_PENDING) pendingWarning = true
                     else { model.consumeCommitted(); subscriptionModel.consumeCommitted(); model.consumeDeleted()
-                        model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); navigate(target) }
+                        model.discardForm(); subscriptionModel.discardForm(); categoryModel?.discardForm(); replacementModel?.discardForm(); photoModel?.discard(); navigate(target) }
                 }
             }, enabled = navigationAvailable(restoreState.phase), modifier = Modifier.testTag("discard-confirm")) { Text("放弃修改") } },
             dismissButton = { TextButton(onClick = { pendingLeave = null }, modifier = Modifier.testTag("discard-keep")) { Text("继续编辑") } })
     }
     if (pendingWarning) {
         AlertDialog(onDismissRequest = { pendingWarning = false }, modifier = Modifier.testTag("pending-submit-dialog"), title = { Text("请先核对保存结果") },
-            text = { Text("提交正在进行或结果尚未确认。原始输入已保留，请返回表单核对并重试同一提交。") },
+            text = { Text(if (photoModel?.leaveDecision() == LeaveDecision.BLOCK_PENDING)
+                PhotoLiteCoverController.UNKNOWN_MESSAGE else if (photoModel?.leaveDecision() == LeaveDecision.CONFIRM_DISCARD)
+                "请先完成或取消当前照片选择，再进行其他操作。" else
+                "提交正在进行或结果尚未确认。原始输入已保留，请返回表单核对并重试同一提交。") },
             confirmButton = { TextButton(onClick = { pendingWarning = false }, modifier = Modifier.testTag("pending-submit-keep")) { Text("继续核对") } },
             dismissButton = {
                 val origin = projectOrigin(routes.last())
@@ -690,7 +724,8 @@ internal fun LithicNavigation(
                     if (it.kind == ReplacementFormKind.TRADE_IN) TradeInProject(it.projectId, origin, projectComparisonId(routes.last()))
                     else ReplacementComparison(it.projectId, origin)
                 } else null
-                val recoveryTargets = listOfNotNull(projectRecovery, subscriptionRecovery, categoryRecovery, replacementRecovery).filter { it != routes.last() }
+                val recoveryTargets = if (photoModel?.leaveDecision() == LeaveDecision.BLOCK_PENDING) emptyList() else
+                    listOfNotNull(projectRecovery, subscriptionRecovery, categoryRecovery, replacementRecovery).filter { it != routes.last() }
                 Column { recoveryTargets.forEach { recovery ->
                     TextButton(onClick = { if (navigationAvailable(restoreState.phase)) {
                         pendingWarning = false; navigate(canonicalBackStack(recovery))
