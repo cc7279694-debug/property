@@ -1,0 +1,45 @@
+{
+  "action": "install-test-retry",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "startedUtc": "2026-10-31T03:37:20.749937+00:00",
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "test-install-newly-authorized-once",
+      "transportSelector": "host:transport:<USB_SERIAL_REDACTED>",
+      "service": "shell,v2,raw:cmd package install --user 0 -t -S 3741308",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "timeoutSeconds": 90,
+      "stdinBytes": 3741308,
+      "stdinSha256": "1fdfc6ae8b784b8041d8182089bd1bf7af00ccc0e5d1f047de9ad9358f7e1154",
+      "stdinCompletelySent": true,
+      "exitPacketReceived": true,
+      "stdoutBytes": 8,
+      "stdoutSha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "Success\n",
+      "stderr": ""
+    }
+  ],
+  "automaticRetries": 0,
+  "otherDeviceQueries": 0,
+  "user": 0,
+  "hostEnumeration": {
+    "service": "host:devices-l",
+    "protocolStatus": "OKAY",
+    "rawBytes": 89,
+    "rawSha256": "5065e8e6ebce484dff22fef14c1b35c66355032f005e343caf9691b8a074e6a6",
+    "rawListSaved": false,
+    "entryCount": 1,
+    "authorizedMatches": 1
+  },
+  "candidate": {
+    "file": "Lithic-V1-A1-AndroidTest.apk",
+    "bytes": 3741308,
+    "sha256": "1fdfc6ae8b784b8041d8182089bd1bf7af00ccc0e5d1f047de9ad9358f7e1154"
+  },
+  "installResult": "Success",
+  "finishedUtc": "2026-10-31T03:37:23.043820+00:00"
+}

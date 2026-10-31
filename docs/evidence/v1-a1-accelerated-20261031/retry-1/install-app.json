@@ -1,0 +1,45 @@
+{
+  "action": "install-app",
+  "serialSha256": "e4f0e1d2361b0ef560ff8ac99a067fb8f540594c827d28b6cd21a720e724af92",
+  "startedUtc": "2026-10-31T03:32:56.996779+00:00",
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "install-app-once",
+      "transportSelector": "host:transport:<USB_SERIAL_REDACTED>",
+      "service": "shell,v2,raw:cmd package install --user 0 -S 15977970",
+      "status": "COMPLETED",
+      "exitCode": 0,
+      "timeoutSeconds": 90,
+      "stdinBytes": 15977970,
+      "stdinSha256": "626c9809b7566d56583d49e4dbb43abe90d44e151a5e9357d2ca90c62f35a97a",
+      "stdinCompletelySent": true,
+      "exitPacketReceived": true,
+      "stdoutBytes": 8,
+      "stdoutSha256": "7fc0023a6402c7bd7abd98bb3e580968de4833eed07d88d1cc8d70819d69c7a0",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "Success\n",
+      "stderr": ""
+    }
+  ],
+  "automaticRetries": 0,
+  "otherDeviceQueries": 0,
+  "user": 0,
+  "hostEnumeration": {
+    "service": "host:devices-l",
+    "protocolStatus": "OKAY",
+    "rawBytes": 89,
+    "rawSha256": "5065e8e6ebce484dff22fef14c1b35c66355032f005e343caf9691b8a074e6a6",
+    "rawListSaved": false,
+    "entryCount": 1,
+    "authorizedMatches": 1
+  },
+  "candidate": {
+    "file": "Lithic-V1-A1-App-debug.apk",
+    "bytes": 15977970,
+    "sha256": "626c9809b7566d56583d49e4dbb43abe90d44e151a5e9357d2ca90c62f35a97a"
+  },
+  "installResult": "Success",
+  "finishedUtc": "2026-10-31T03:33:00.467663+00:00"
+}

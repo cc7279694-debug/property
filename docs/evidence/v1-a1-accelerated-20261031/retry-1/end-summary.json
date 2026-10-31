@@ -1,0 +1,114 @@
+{
+  "closedUtc": "2026-10-31T03:52:10.133233+00:00",
+  "status": "V1-A1 ACCELERATED CORE — PARTIAL / READY_FOR_REVIEW",
+  "userDecision": "Stop remaining tests; unverified work is deferred rather than technical PASS",
+  "hostEnumerations": 10,
+  "targetShellCommands": 35,
+  "otherDeviceQueries": 0,
+  "appInstallAttemptsTotal": 2,
+  "appInstallSuccesses": 1,
+  "testInstallAttemptsTotal": 2,
+  "testInstallSuccesses": 1,
+  "eachRetrySeparatelyAuthorized": true,
+  "automaticRetries": 0,
+  "normalMainStarts": 1,
+  "instrumentationRuns": 0,
+  "safOperations": 0,
+  "settingsChangesByCodex": 0,
+  "stopFollowupDeviceQueries": 0,
+  "finalInstalledIdentitiesReference": "verify-test-retry.json (before normal Main launch)",
+  "actualDeviceApkByteOrCertificateReadback": "NOT_RUN",
+  "resourceClosure": "NOT_PROVEN_NOT_FORCE_STOPPED",
+  "uidScopedSubprocessAndJobClosure": "UNKNOWN_NOT_DUMPED",
+  "userManualEvidence": "manual-results.json",
+  "specificBusinessRowAndGenerationIds": "NOT_CAPTURED",
+  "actualSafBackupFileCreated": false,
+  "productGradleAndTestSourcesUnchanged": true,
+  "reviewedOriginalDeviceHelperUnchanged": true,
+  "protectedLocalApks": [
+    {
+      "path": "verification-candidates/v1-a1/Lithic-V1-A1-App-debug.apk",
+      "bytes": 15977970,
+      "sha256": "626c9809b7566d56583d49e4dbb43abe90d44e151a5e9357d2ca90c62f35a97a",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/v1-a1/Lithic-V1-A1-AndroidTest.apk",
+      "bytes": 3741308,
+      "sha256": "1fdfc6ae8b784b8041d8182089bd1bf7af00ccc0e5d1f047de9ad9358f7e1154",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.10/Lithic-0.1.0-preview.10-debug.apk",
+      "bytes": 15912394,
+      "sha256": "55a3646e62661760c78797d14d9912a74a89b852c065037056d8d0fad840bc70",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.11/Lithic-0.1.0-preview.11-debug.apk",
+      "bytes": 15961550,
+      "sha256": "5bbf3c1f946fc2da4ab259ab377f8134e222255784fe81e20c7a73337e63cf90",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.12/Lithic-0.1.0-preview.12-debug.apk",
+      "bytes": 15977934,
+      "sha256": "4b6b3ed03674fc971b67a124171fedbb89fce155d2c6fd181ed597cde6250a1b",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.2/Lithic-0.1.0-preview.2-debug.apk",
+      "bytes": 13854809,
+      "sha256": "d39b6bf764720415d88d0d9f6c149b34dcda2d795f823505786fa4130b906ef4",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.3/Lithic-0.1.0-preview.3-debug.apk",
+      "bytes": 14079087,
+      "sha256": "0d204eae40f2c5304c99b7df4c7aa5add4d786bee648e4befdef7a9c0f652dca",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.4/Lithic-0.1.0-preview.4-debug.apk",
+      "bytes": 15715635,
+      "sha256": "7971ace1f70c9829a6991ebee482104843061f45987e6223bc4abae99326579a",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.5/Lithic-0.1.0-preview.5-debug.apk",
+      "bytes": 15732019,
+      "sha256": "059fcf44ae09ee2840d7c96f3a567bcf429dd465f4956c3e965c688fd7bf5670",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.6/Lithic-0.1.0-preview.6-debug.apk",
+      "bytes": 15732019,
+      "sha256": "154867aebd19372c78ae75879b9d6ce9fc2600fe2d5f7569b5cf7bbb684c13d9",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.7/Lithic-0.1.0-preview.7-debug.apk",
+      "bytes": 15748403,
+      "sha256": "c6ec3b0e43fa90f05220754ef581242bea6981c7c41aac4226eadb7f37dae26e",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.8/Lithic-0.1.0-preview.8-debug.apk",
+      "bytes": 15797555,
+      "sha256": "09ffc3c0a39d055e6fb89b4a738fe1a4ba579687c86c880f864fb428cd056bbd",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.9/Lithic-0.1.0-preview.9-debug.apk",
+      "bytes": 15813947,
+      "sha256": "f82148a2b6f1775235fd32717a7ced7f855c3e612441aee06a64644878cdf803",
+      "unchanged": true
+    }
+  ],
+  "apkRebuilds": 0,
+  "remainingAndroidTests": "NOT_RUN_DEFERRED_OR_INELIGIBLE",
+  "formalRelease": "NO_GO",
+  "mediaImport": "BLOCKED",
+  "androidIsolationRuntime": "PENDING",
+  "noCleanupOrUninstall": true
+}

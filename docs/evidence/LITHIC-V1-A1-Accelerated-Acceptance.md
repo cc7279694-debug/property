@@ -1,5 +1,38 @@
 # LITHIC V1-A1 — 小米14加速集中验收
 
+## 最新结果：用户选择结束剩余测试
+
+**V1-A1 ACCELERATED CORE — PARTIAL / READY_FOR_REVIEW**（2026-10-31）
+
+首次阻断提交 `aaf9df4b006f6b7650d39d6975b817337287288d` 后，用户先明确回复“重新来一次”，另授权一次App安装；Test首次被拒后又明确回复“再授权Test安装一次，我会留意手机确认提示”。原失败回执不覆盖；这些是**新的明确授权，不是自动重试**。
+
+| 后续阶段 | 实际结果 |
+| --- | --- |
+| App重试前准入 | 唯一指纹/小米14/API36匹配；V1两包仍无User0含保留记录，Preview12身份符合原值。[回执](v1-a1-accelerated-20261031/retry-1/preflight.json) |
+| App新授权安装 | 锁定15,977,970字节/SHA，User0安装完整exit0 / `Success`。[回执](v1-a1-accelerated-20261031/retry-1/install-app.json) |
+| App安装后核对 | `com.cooper.lithic.v1acceptance.debug` / code1 / `0.1.0-v1-a1-debug` / installed=true / **UID10455**；Preview12仍installed=true / code28 / UID10429。[回执](v1-a1-accelerated-20261031/retry-1/verify-app.json) |
+| Test首次安装 | 原剩余额度1次，真实exit1 / `INSTALL_FAILED_USER_RESTRICTED`，不判业务FAIL，不自行重试。[失败原件](v1-a1-accelerated-20261031/retry-1/install-test.json) |
+| Test另授权安装 | 先重新确认无同名记录，App及Preview身份符合；再仅用`--user 0 -t -S`传输锁定Test，完整exit0 / `Success`。[准入](v1-a1-accelerated-20261031/retry-1/test-retry-preflight.json)、[成功回执](v1-a1-accelerated-20261031/retry-1/install-test-retry.json) |
+| 两包及Runner | Test installed=true / **UID10458**，系统元数据code0/versionName字符串`null`（Manifest本未声明版本）；三UID各异。唯一注册为独立Test/M13IsolatedRunner，仅target独立App；**注册不等于执行**。Preview12身份保持前述值。[回执](v1-a1-accelerated-20261031/retry-1/verify-test-retry.json) |
+| 正常Main启动 | 唯一一次`am start --user 0 -W -n ...MainActivity`，真实exit0 / `Status: ok`；正常生产入口，不是plain测试宿主。[回执](v1-a1-accelerated-20261031/retry-1/launch-normal.json)。AM用时不是视觉/性能PASS |
+| 人工空首页 | 用户实际回复“正常空首页，没有旧记录”。仅登记用户人工观察通过，不宣称所有跨包访问均已验证 |
+| 人工物品创建 | 用户报告“已完成”；随后明确确认页面**初始投入100元、持有10天、日均10元/天**三项一致。这是用户读数，不是JUnit；开始日/付款日只回复“没问题”，具体日期字符串仍 **NOT_CAPTURED** |
+| 其余核心与SAF | 在后续20元投入/30元收回、备注及取消核对批次，用户回复“**不测试那么多了，都算通过**”。按用户决定停止；该批实际完成状态未确认，不能把计划90元/9元每天冒充事实。订阅、列表/搜索/图表、真实SAF导出/覆盖恢复/重开均 **NOT_RUN / DEFERRED_BY_USER** |
+
+人工原话、已确认数值和缺口见[manual-results.json](v1-a1-accelerated-20261031/retry-1/manual-results.json)。其中UUID只是本轮逻辑测试标识，不是读取到的Room/generation/记录ID；SAF未开始，该UUID没有对应已创建备份文件。用户选择延期不等于技术PASS，也不要求用户现在继续补测。
+
+**截至停止：App总2次安装尝试/1次成功，Test总2次尝试/1次成功，正常Main启动1次，Instrumentation0次，自动重试0次。** 精确配置探针/T06不执行：正常Main已进入业务Owner环境，未证明可安全切换plain宿主，且用户已停止后续测试；没有为T06改变或查询网络。T03、200%/IME、M20、旧SAF、C6及C3均未执行。
+
+安装成功证明层级为：本地已审SHA/证书、发送流SHA、系统Success与User0元数据；**未回读设备APK字节或签名，不宣称端侧全字节核验**。末次三包身份核对在Main启动之前；用户结束后未补发设备查询。Owner、全UID子进程、Job及最终资源关闭仍 **NOT_PROVEN / UNKNOWN**，精确pidof空值也只属于启动前时点。正常App及Test留在手机上，当前合成现场保留，没有强停、清理或卸载。
+
+本轮未改系统设置，无本轮设置更改需要恢复；Preview12仅做指定安装元数据查询，未被启动或写入私人数据。两归档及11个历史本地交付APK原字节、产品/Gradle/测试源码保持，见[后续结束记录](v1-a1-accelerated-20261031/retry-1/end-summary.json)。新源码图标仍不在锁定旧候选中。
+
+**V1_RELEASE_NO_GO / ANDROID_RUNTIME_ACCEPTANCE_INCOMPLETE / AUTOMATED_ANDROID_TESTS_NOT_RUN / ANDROID_ISOLATION_RUNTIME_PENDING / MEDIA_IMPORT_BLOCKED**。本轮确有正常Main及人工局部观察，不再称全部运行均未开始；但不扩大为完整Android或正式发行通过。全部原M10/M20/M22/C3/G1～G4风险保持。提交本次增量后停止，不自动安排补测、升级、发行或下一阶段。
+
+---
+
+## 以下保留首次执行时的阻断记录
+
 2026-10-31（Asia/Shanghai）；分支 `codex/lithic-v1-product-completion`；实际基线 **`ec6ddfae14a8a64273ede160302d09d681e047b5`**，开始时远端一致、工作区干净。任务书参考 `a973d98` 后仅有用户授权的新图标资源/文档提交；本轮继续使用已审归档，不重建、不把新图标冒充已进入候选。
 
 **V1-A1 ACCELERATED CORE — BLOCKED / INSTALLATION_REJECTED**

@@ -1,0 +1,79 @@
+{
+  "sessionDataLabelUuid": "62bb54ab-8e5f-4813-b7c9-0b13893e8bc4",
+  "uuidMeaning": "Logical test/backup label only; actual Room/generation UUID has not been read",
+  "updatedUtc": "2026-10-31T03:48:43.681979+00:00",
+  "normalMainLaunchEvidence": "launch-normal.json",
+  "userObservations": [
+    {
+      "stage": "A-empty-home",
+      "source": "USER_MANUAL_RESPONSE",
+      "statement": "正常空首页，没有旧记录",
+      "result": "USER_OBSERVED_PASS_NOT_JUNIT"
+    },
+    {
+      "stage": "B-project-create",
+      "source": "USER_MANUAL_RESPONSE",
+      "statement": "已完成",
+      "result": "ACTION_REPORTED_COMPLETE_NUMERIC_AND_DATE_READOUT_PENDING"
+    },
+    {
+      "stage": "B-project-initial-cost",
+      "source": "USER_MANUAL_RESPONSE",
+      "statement": "三项都与页面一致",
+      "confirmedValues": {
+        "initialOutlayYuan": "100",
+        "holdingDays": 10,
+        "dailyCostYuan": "10"
+      },
+      "result": "USER_OBSERVED_PASS_NOT_JUNIT"
+    },
+    {
+      "stage": "B-project-dates",
+      "source": "USER_MANUAL_RESPONSE",
+      "statement": "没问题",
+      "result": "GENERIC_CONFIRMATION_ONLY",
+      "exactStartedOn": "NOT_CAPTURED",
+      "exactInitialPaidOn": "NOT_CAPTURED",
+      "note": "Do not substitute the prompt example date for an actual copied date"
+    },
+    {
+      "stage": "B-followup-batch-and-remaining-acceptance",
+      "source": "USER_MANUAL_RESPONSE",
+      "statement": "不测试那么多了，都算通过",
+      "decision": "USER_DEFERRED_REMAINING_TESTS",
+      "technicalResult": "NOT_RUN_OR_NOT_VERIFIED_NOT_PASS",
+      "batchScope": [
+        "outlay20",
+        "receipt30",
+        "editNote",
+        "discard7"
+      ],
+      "note": "No actual values/actions were confirmed for this batch; do not substitute the planned 90/9 facts"
+    }
+  ],
+  "actualRowIds": "NOT_CAPTURED",
+  "businessFilesReadByCodex": false,
+  "screenshotsCaptured": 0,
+  "instrumentationExecuted": 0,
+  "safBackupFile": null,
+  "ongoingDeviceWork": "STOPPED_AT_USER_REQUEST",
+  "lastConfirmedProjectFacts": {
+    "initialOutlayYuan": "100",
+    "holdingDays": 10,
+    "dailyCostYuan": "10",
+    "source": "User specifically confirmed these three UI values"
+  },
+  "currentProjectFactsAfterDeclinedBatch": "NOT_REQUERIED_OR_CONFIRMED",
+  "remainingStages": {
+    "subscription": "DEFERRED_NOT_RUN",
+    "browseAndCharts": "DEFERRED_NOT_RUN",
+    "realSafExportRestoreReopen": "DEFERRED_NOT_RUN",
+    "plainConfigurationProbe": "NOT_RUN_MAIN_OWNER_CLOSURE_NOT_PROVEN_AND_USER_STOPPED",
+    "T06": "NOT_RUN_MAIN_OWNER_CLOSURE_NOT_PROVEN_AND_USER_STOPPED",
+    "T03": "NOT_AUTHORIZED_THIS_ROUND",
+    "IME200": "NOT_AUTHORIZED_THIS_ROUND",
+    "M20": "NOT_AUTHORIZED_THIS_ROUND",
+    "C6": "NOT_AUTHORIZED_THIS_ROUND"
+  },
+  "settingsChangesByCodex": 0
+}
