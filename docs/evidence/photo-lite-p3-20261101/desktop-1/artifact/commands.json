@@ -1,0 +1,318 @@
+[
+  {
+    "label": "app-badging",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "badging",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:46.815149+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:46.898684+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/app-badging.stdout.log",
+      "bytes": 5642,
+      "sha256": "137bb439189eff2cca3590c724dda2721df9d2383d27f09f7c88721db38260f6"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/app-badging.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "app-manifest",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "manifest",
+      "print",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:46.901684+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:51.027356+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/app-manifest.stdout.log",
+      "bytes": 5442,
+      "sha256": "dbad6714d72b3da7ddc1a23d8897ecbd598c3f79b3f0db8adc3c705e1f6afaab"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/app-manifest.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "app-certificate",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:51.032318+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:51.832611+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/app-certificate.stdout.log",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/app-certificate.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "test-badging",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "badging",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:52.728837+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:52.800269+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/test-badging.stdout.log",
+      "bytes": 1178,
+      "sha256": "71053f9cf78ce95ec32ee8d298ab4d9d3fa7b7d8eb8cac417f062efbb6188873"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/test-badging.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "test-manifest",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "manifest",
+      "print",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:52.929263+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:54.910883+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/test-manifest.stdout.log",
+      "bytes": 2495,
+      "sha256": "014e3be940c39ec63942c9eea936733237a3ea05d25a2ec8eb590a2515d54fac"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/test-manifest.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "test-certificate",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:54.916885+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:55.558954+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/test-certificate.stdout.log",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/test-certificate.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "preview12-badging",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "badging",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.12\\Lithic-0.1.0-preview.12-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:56.020198+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:56.126055+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview12-badging.stdout.log",
+      "bytes": 5642,
+      "sha256": "1c8288ca3b5084342c22484b144f3416a9f35142a721f2da5927610cd0f02e60"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview12-badging.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "preview12-manifest",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "manifest",
+      "print",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.12\\Lithic-0.1.0-preview.12-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:56.130509+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:57.886778+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview12-manifest.stdout.log",
+      "bytes": 5442,
+      "sha256": "74dee7ec3a3fe74da35c26f58df648258c825bdd6dc04d3d691d4026d05be27d"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview12-manifest.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "preview12-certificate",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.12\\Lithic-0.1.0-preview.12-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:57.891783+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:58.585005+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview12-certificate.stdout.log",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview12-certificate.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "preview13-badging",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\aapt2.exe",
+      "dump",
+      "badging",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.13\\Lithic-0.1.0-preview.13-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:59.733410+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:26:59.850402+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview13-badging.stdout.log",
+      "bytes": 5642,
+      "sha256": "38075e7a00bf357ec65705b944b55cd603f7055029b0cb1067206b305e17ec94"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview13-badging.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "preview13-manifest",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "manifest",
+      "print",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.13\\Lithic-0.1.0-preview.13-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:26:59.855400+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:27:02.121373+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview13-manifest.stdout.log",
+      "bytes": 5442,
+      "sha256": "db260e4cd03520fd0d524ec1bb3132629fe9ae9a9cbab9c41b0a029f2ec8cd9d"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview13-manifest.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "preview13-certificate",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\build-tools\\36.0.0\\apksigner.bat",
+      "verify",
+      "--verbose",
+      "--print-certs",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-preview-0.1.0-preview.13\\Lithic-0.1.0-preview.13-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:27:02.127371+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:27:02.872809+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview13-certificate.stdout.log",
+      "bytes": 972,
+      "sha256": "78a60679f16dde5fb71e076cdec4deffa9e7cc73acb2b9f353ac27e01dc1827a"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/preview13-certificate.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "application-code",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "dex",
+      "code",
+      "--class",
+      "com.cooper.lithic.app.LithicApplication",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:27:03.950619+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:27:06.796791+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/application-code.stdout.log",
+      "bytes": 18777,
+      "sha256": "a1c5c3bbd8c1eb3be1cfedf721aa11ba028fa1664862f2eb2289a65b02e93fae"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/application-code.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "main-activity-code",
+    "argv": [
+      "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "dex",
+      "code",
+      "--class",
+      "com.cooper.lithic.app.MainActivity",
+      "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial\\outputs\\apk\\debug\\app-debug.apk"
+    ],
+    "startedUtc": "2026-11-01T06:27:06.801599+00:00",
+    "exitCode": 0,
+    "finishedUtc": "2026-11-01T06:27:09.653414+00:00",
+    "stdout": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/main-activity-code.stdout.log",
+      "bytes": 92789,
+      "sha256": "3cf3c908597890eadf88b59e2f936c7de67c63387c58f304c199fb2fdadb98d1"
+    },
+    "stderr": {
+      "path": "docs/evidence/photo-lite-p3-20261101/desktop-1/artifact/main-activity-code.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]

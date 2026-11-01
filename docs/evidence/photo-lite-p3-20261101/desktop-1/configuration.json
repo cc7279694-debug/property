@@ -1,0 +1,46 @@
+{
+  "status": "PASS_CONFIGURATION_ONLY",
+  "configurations": {
+    "build-1": {
+      "debugPackage": "com.cooper.lithic.preview.debug",
+      "debugVersionCode": 30,
+      "debugVersionName": "0.1.0-preview.14-debug",
+      "debugPhotoLiteEnabled": "true",
+      "releasePackage": "com.cooper.lithic",
+      "releasePhotoLiteEnabled": "false",
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial",
+      "debugKeyPresent": true
+    },
+    "config-default": {
+      "debugPackage": "com.cooper.lithic.debug",
+      "debugVersionCode": 17,
+      "debugVersionName": "0.1.0-m22-debug",
+      "debugPhotoLiteEnabled": "false",
+      "releasePackage": "com.cooper.lithic",
+      "releasePhotoLiteEnabled": "false",
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build",
+      "debugKeyPresent": true
+    }
+  },
+  "rawOutputFingerprints": {
+    "build-1": {
+      "bytes": 17204,
+      "sha256": "7e833b3876f1ac57c34e53fd63d37c12bb0b489a5ec23962f037129cd2dd3f26"
+    },
+    "config-default": {
+      "bytes": 921,
+      "sha256": "c95db981fc7a2690b83874f5f68f65b951ef17f35e76dd1fd4ae863067a1e64a"
+    }
+  },
+  "releaseVersionCodeUnchanged": 17,
+  "releaseVersionNameWithoutDebugSuffix": "0.1.0-m22",
+  "noApkRebuildInDefaultProbe": true,
+  "deviceOperations": 0,
+  "firstParserAttempt": {
+    "exitCode": 1,
+    "failure": "UnicodeDecodeError while decoding the complete mixed-encoding Gradle console as UTF-8",
+    "resolution": "Parse the unique anchored ASCII JSON receipt directly from original bytes; raw logs unchanged; no Gradle rerun"
+  }
+}

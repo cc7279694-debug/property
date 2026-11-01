@@ -1,0 +1,2590 @@
+.class public final Lcom/cooper/lithic/app/MainActivity;
+.super Landroidx/activity/ComponentActivity;
+.source "MainActivity.kt"
+
+
+# annotations
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nMainActivity.kt\nKotlin\n*S Kotlin\n*F\n+ 1 MainActivity.kt\ncom/cooper/lithic/app/MainActivity\n+ 2 SnapshotState.kt\nandroidx/compose/runtime/SnapshotStateKt__SnapshotStateKt\n+ 3 InitializerViewModelFactory.kt\nandroidx/lifecycle/viewmodel/InitializerViewModelFactoryKt\n+ 4 Composer.kt\nandroidx/compose/runtime/ComposerKt\n*L\n1#1,189:1\n85#2:190\n117#2,2:191\n85#2:202\n85#2:203\n85#2:204\n85#2:241\n32#3:193\n69#3,2:194\n32#3:196\n69#3,2:197\n32#3:199\n69#3,2:200\n1277#4,6:205\n1277#4,6:211\n1277#4,6:217\n1277#4,6:223\n1277#4,6:229\n1277#4,6:235\n1277#4,6:242\n1277#4,6:248\n*S KotlinDebug\n*F\n+ 1 MainActivity.kt\ncom/cooper/lithic/app/MainActivity\n*L\n46#1:190\n46#1:191,2\n104#1:202\n105#1:203\n106#1:204\n89#1:241\n74#1:193\n75#1:194,2\n77#1:196\n78#1:197,2\n85#1:199\n86#1:200,2\n109#1:205,6\n112#1:211,6\n115#1:217,6\n116#1:223,6\n117#1:229,6\n118#1:235,6\n90#1:242,6\n102#1:248,6\n*E\n"
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000F\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0002\u0008\u0008\n\u0002\u0010\t\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0004\n\u0002\u0018\u0002\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\u0008\u0007\u0018\u00002\u00020\u0001B\u0007\u00a2\u0006\u0004\u0008\u0002\u0010\u0003J\u0012\u0010\u000f\u001a\u00020\u00102\u0008\u0010\u0011\u001a\u0004\u0018\u00010\u0012H\u0002J\u0010\u0010\u0013\u001a\u00020\u00102\u0006\u0010\u0014\u001a\u00020\u0012H\u0014J\u0012\u0010\u0015\u001a\u00020\u00102\u0008\u0010\u0016\u001a\u0004\u0018\u00010\u0017H\u0014R/\u0010\u0006\u001a\u0004\u0018\u00010\u00052\u0008\u0010\u0004\u001a\u0004\u0018\u00010\u00058B@BX\u0082\u008e\u0002\u00a2\u0006\u0012\n\u0004\u0008\u000b\u0010\u000c\u001a\u0004\u0008\u0007\u0010\u0008\"\u0004\u0008\t\u0010\nR\u000e\u0010\r\u001a\u00020\u000eX\u0082\u000e\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u0018\u00b2\u0006\n\u0010\u0019\u001a\u00020\u001aX\u008a\u0084\u0002\u00b2\u0006\n\u0010\u001b\u001a\u00020\u001cX\u008a\u0084\u0002\u00b2\u0006\n\u0010\u001d\u001a\u00020\u001eX\u008a\u0084\u0002\u00b2\u0006\n\u0010\u001f\u001a\u00020 X\u008a\u0084\u0002"
+    }
+    d2 = {
+        "Lcom/cooper/lithic/app/MainActivity;",
+        "Landroidx/activity/ComponentActivity;",
+        "<init>",
+        "()V",
+        "<set-?>",
+        "Lcom/cooper/lithic/app/MilestoneOpenRequest;",
+        "milestoneRequest",
+        "getMilestoneRequest",
+        "()Lcom/cooper/lithic/app/MilestoneOpenRequest;",
+        "setMilestoneRequest",
+        "(Lcom/cooper/lithic/app/MilestoneOpenRequest;)V",
+        "milestoneRequest$delegate",
+        "Landroidx/compose/runtime/MutableState;",
+        "noticeSequence",
+        "",
+        "receiveNotice",
+        "",
+        "incoming",
+        "Landroid/content/Intent;",
+        "onNewIntent",
+        "intent",
+        "onCreate",
+        "savedInstanceState",
+        "Landroid/os/Bundle;",
+        "app_debug",
+        "appearanceState",
+        "Lcom/cooper/lithic/feature/appearance/AppearanceUiState;",
+        "state",
+        "Lcom/cooper/lithic/app/LedgerUiState;",
+        "backupState",
+        "Lcom/cooper/lithic/feature/settings/BackupExportUiState;",
+        "restoreState",
+        "Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;"
+    }
+    k = 0x1
+    mv = {
+        0x2,
+        0x3,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+# static fields
+.field public static final $stable:I
+
+
+# instance fields
+.field private final milestoneRequest$delegate:Landroidx/compose/runtime/MutableState;
+
+.field private noticeSequence:J
+
+
+# direct methods
+.method public static synthetic $r8$lambda$-IguqqwqcuLjcIXQU62-KxZ2iyw(Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lkotlin/jvm/functions/Function0;)Lkotlin/Unit;
+    .registers 2
+
+    invoke-static {p0, p1}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$4$0$3$0(Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lkotlin/jvm/functions/Function0;)Lkotlin/Unit;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$6DR7EpQ2LxceycvDDX71k4HGl24(Landroidx/compose/runtime/State;Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lcom/cooper/lithic/app/MainActivity;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    .registers 8
+
+    invoke-static/range {p0 .. p7}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$4(Landroidx/compose/runtime/State;Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lcom/cooper/lithic/app/MainActivity;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$RC2FYjvSC-Uq7MWaEwu2O7jG1ck(Lcom/cooper/lithic/app/MainActivity;)Lkotlin/Unit;
+    .registers 1
+
+    invoke-static {p0}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$4$0$5$0(Lcom/cooper/lithic/app/MainActivity;)Lkotlin/Unit;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$dkaaUpu3wb_nWSIux41GT2F03uE(Lcom/cooper/lithic/app/MainActivity;Lcom/cooper/lithic/app/AppContainer;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+    .registers 3
+
+    invoke-static {p0, p1, p2}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$2$0(Lcom/cooper/lithic/app/MainActivity;Lcom/cooper/lithic/app/AppContainer;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$fn6I7NZn9bmyoJYX5V87TloNESg(Lcom/cooper/lithic/app/AppContainer;Lcom/cooper/lithic/app/MainActivity;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+    .registers 3
+
+    invoke-static {p0, p1, p2}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$1$0(Lcom/cooper/lithic/app/AppContainer;Lcom/cooper/lithic/app/MainActivity;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$g6uQG6ACRH2tmX6Ry4XiAlErTxI(Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lcom/cooper/lithic/app/MainActivity;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    .registers 7
+
+    invoke-static/range {p0 .. p6}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$4$0(Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lcom/cooper/lithic/app/MainActivity;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$gjZIxFqiJMKCiCXXLSunc7a1cf8(Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lkotlin/jvm/functions/Function0;)Lkotlin/Unit;
+    .registers 2
+
+    invoke-static {p0, p1}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$4$0$4$0(Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lkotlin/jvm/functions/Function0;)Lkotlin/Unit;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$hex8h7fkftP_JEubB-Wy9J8xqDU(Lcom/cooper/lithic/app/AppContainer;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/app/LedgerUiStateHolder;
+    .registers 2
+
+    invoke-static {p0, p1}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$0$0(Lcom/cooper/lithic/app/AppContainer;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/app/LedgerUiStateHolder;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$xbpENr9Ood04Vgc992dk8o2K2bE(Lcom/cooper/lithic/feature/appearance/AppearanceController;Lcom/cooper/lithic/app/MainActivity;Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    .registers 8
+
+    invoke-static/range {p0 .. p7}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3(Lcom/cooper/lithic/feature/appearance/AppearanceController;Lcom/cooper/lithic/app/MainActivity;Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic $r8$lambda$yESJx-3wVthgxQS-nawVzZKAzro(Lcom/cooper/lithic/app/MainActivity;Landroidx/compose/runtime/State;)Lkotlin/Unit;
+    .registers 2
+
+    invoke-static {p0, p1}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$1$0(Lcom/cooper/lithic/app/MainActivity;Landroidx/compose/runtime/State;)Lkotlin/Unit;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method static constructor <clinit>()V
+    .registers 1
+
+    const/16 v0, 0x8
+
+    sput v0, Lcom/cooper/lithic/app/MainActivity;->$stable:I
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 3
+
+    .line 45
+    invoke-direct {p0}, Landroidx/activity/ComponentActivity;-><init>()V
+
+    .line 46
+    const/4 v0, 0x0
+
+    const/4 v1, 0x2
+
+    invoke-static {v0, v0, v1, v0}, Landroidx/compose/runtime/SnapshotStateKt;->mutableStateOf$default(Ljava/lang/Object;Landroidx/compose/runtime/SnapshotMutationPolicy;ILjava/lang/Object;)Landroidx/compose/runtime/MutableState;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/cooper/lithic/app/MainActivity;->milestoneRequest$delegate:Landroidx/compose/runtime/MutableState;
+
+    .line 45
+    return-void
+.end method
+
+.method private final getMilestoneRequest()Lcom/cooper/lithic/app/MilestoneOpenRequest;
+    .registers 5
+
+    .line 46
+    iget-object v0, p0, Lcom/cooper/lithic/app/MainActivity;->milestoneRequest$delegate:Landroidx/compose/runtime/MutableState;
+
+    check-cast v0, Landroidx/compose/runtime/State;
+
+    .local v0, "$this$getValue\\1":Landroidx/compose/runtime/State;
+    const/4 v1, 0x0
+
+    .local v1, "property\\1":Lkotlin/reflect/KProperty;
+    move-object v2, p0
+
+    .local v2, "this_\\1":Ljava/lang/Object;
+    const/4 v3, 0x0
+
+    .line 190
+    .local v3, "$i$f$getValue\\1\\46":I
+    invoke-interface {v0}, Landroidx/compose/runtime/State;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    .end local v0    # "$this$getValue\\1":Landroidx/compose/runtime/State;
+    .end local v1    # "property\\1":Lkotlin/reflect/KProperty;
+    .end local v2    # "this_\\1":Ljava/lang/Object;
+    .end local v3    # "$i$f$getValue\\1\\46":I
+    check-cast v0, Lcom/cooper/lithic/app/MilestoneOpenRequest;
+
+    .line 46
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$0$0(Lcom/cooper/lithic/app/AppContainer;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/app/LedgerUiStateHolder;
+    .registers 6
+    .param p0, "$container"    # Lcom/cooper/lithic/app/AppContainer;
+    .param p1, "$this$initializer"    # Landroidx/lifecycle/viewmodel/CreationExtras;
+
+    const-string v0, "$this$initializer"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 75
+    new-instance v0, Lcom/cooper/lithic/app/LedgerUiStateHolder;
+
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/AppContainer;->getStorageState()Lkotlinx/coroutines/flow/StateFlow;
+
+    move-result-object v1
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x2
+
+    invoke-direct {v0, v1, v2, v3, v2}, Lcom/cooper/lithic/app/LedgerUiStateHolder;-><init>(Lkotlinx/coroutines/flow/StateFlow;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$1$0(Lcom/cooper/lithic/app/AppContainer;Lcom/cooper/lithic/app/MainActivity;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+    .registers 7
+    .param p0, "$container"    # Lcom/cooper/lithic/app/AppContainer;
+    .param p1, "this$0"    # Lcom/cooper/lithic/app/MainActivity;
+    .param p2, "$this$initializer"    # Landroidx/lifecycle/viewmodel/CreationExtras;
+
+    const-string v0, "$this$initializer"
+
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 79
+    new-instance v0, Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+
+    invoke-static {p2}, Landroidx/lifecycle/SavedStateHandleSupport;->createSavedStateHandle(Landroidx/lifecycle/viewmodel/CreationExtras;)Landroidx/lifecycle/SavedStateHandle;
+
+    move-result-object v1
+
+    new-instance v2, Lcom/cooper/lithic/app/MainActivity$onCreate$backups$1$1$1;
+
+    const/4 v3, 0x0
+
+    invoke-direct {v2, p0, p1, v3}, Lcom/cooper/lithic/app/MainActivity$onCreate$backups$1$1$1;-><init>(Lcom/cooper/lithic/app/AppContainer;Lcom/cooper/lithic/app/MainActivity;Lkotlin/coroutines/Continuation;)V
+
+    check-cast v2, Lkotlin/jvm/functions/Function2;
+
+    invoke-direct {v0, v1, v2}, Lcom/cooper/lithic/feature/settings/BackupExportViewModel;-><init>(Landroidx/lifecycle/SavedStateHandle;Lkotlin/jvm/functions/Function2;)V
+
+    .line 82
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$2$0(Lcom/cooper/lithic/app/MainActivity;Lcom/cooper/lithic/app/AppContainer;Landroidx/lifecycle/viewmodel/CreationExtras;)Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+    .registers 8
+    .param p0, "this$0"    # Lcom/cooper/lithic/app/MainActivity;
+    .param p1, "$container"    # Lcom/cooper/lithic/app/AppContainer;
+    .param p2, "$this$initializer"    # Landroidx/lifecycle/viewmodel/CreationExtras;
+
+    const-string v0, "$this$initializer"
+
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 86
+    new-instance v0, Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+
+    invoke-static {p2}, Landroidx/lifecycle/SavedStateHandleSupport;->createSavedStateHandle(Landroidx/lifecycle/viewmodel/CreationExtras;)Landroidx/lifecycle/SavedStateHandle;
+
+    move-result-object v1
+
+    new-instance v2, Lcom/cooper/lithic/data/backup/RestoreCoordinator;
+
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/MainActivity;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    const-string v4, "getApplicationContext(...)"
+
+    invoke-static {v3, v4}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {v2, v3, p1}, Lcom/cooper/lithic/data/backup/RestoreCoordinator;-><init>(Landroid/content/Context;Lcom/cooper/lithic/app/AppContainer;)V
+
+    invoke-direct {v0, v1, v2}, Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;-><init>(Landroidx/lifecycle/SavedStateHandle;Lcom/cooper/lithic/data/backup/RestoreCoordinator;)V
+
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$3(Lcom/cooper/lithic/feature/appearance/AppearanceController;Lcom/cooper/lithic/app/MainActivity;Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    .registers 24
+    .param p0, "$appearance"    # Lcom/cooper/lithic/feature/appearance/AppearanceController;
+    .param p1, "this$0"    # Lcom/cooper/lithic/app/MainActivity;
+    .param p2, "$holder"    # Lcom/cooper/lithic/app/LedgerUiStateHolder;
+    .param p3, "$backups"    # Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+    .param p4, "$restores"    # Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+    .param p5, "$resolveMilestone"    # Lkotlin/jvm/functions/Function2;
+    .param p6, "$composer"    # Landroidx/compose/runtime/Composer;
+    .param p7, "$changed"    # I
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v6, p1
+
+    move-object/from16 v11, p6
+
+    move/from16 v14, p7
+
+    const-string v1, "C88@4415L29,89@4468L665,89@4457L676,101@5255L18,101@5275L21,101@5299L1346,100@5146L1499:MainActivity.kt#syydad"
+
+    invoke-static {v11, v1}, Landroidx/compose/runtime/ComposerKt;->sourceInformation(Landroidx/compose/runtime/Composer;Ljava/lang/String;)V
+
+    and-int/lit8 v1, v14, 0x3
+
+    const/4 v2, 0x2
+
+    const/4 v3, 0x0
+
+    const/4 v15, 0x1
+
+    if-eq v1, v2, :cond_16
+
+    move v1, v15
+
+    goto :goto_17
+
+    :cond_16
+    move v1, v3
+
+    :goto_17
+    and-int/lit8 v2, v14, 0x1
+
+    invoke-interface {v11, v1, v2}, Landroidx/compose/runtime/Composer;->shouldExecute(ZI)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_114
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2e
+
+    const/4 v1, -0x1
+
+    const-string v2, "com.cooper.lithic.app.MainActivity.onCreate.<anonymous> (MainActivity.kt:88)"
+
+    const v4, 0x2074b073
+
+    invoke-static {v4, v14, v1, v2}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 89
+    :cond_2e
+    invoke-virtual {v0}, Lcom/cooper/lithic/feature/appearance/AppearanceController;->getState()Lkotlinx/coroutines/flow/StateFlow;
+
+    move-result-object v7
+
+    const/4 v12, 0x0
+
+    const/4 v13, 0x7
+
+    const/4 v8, 0x0
+
+    const/4 v9, 0x0
+
+    const/4 v10, 0x0
+
+    invoke-static/range {v7 .. v13}, Landroidx/lifecycle/compose/FlowExtKt;->collectAsStateWithLifecycle(Lkotlinx/coroutines/flow/StateFlow;Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Lifecycle$State;Lkotlin/coroutines/CoroutineContext;Landroidx/compose/runtime/Composer;II)Landroidx/compose/runtime/State;
+
+    move-result-object v2
+
+    .line 90
+    .local v2, "appearanceState$delegate":Landroidx/compose/runtime/State;
+    const v1, -0x29f59054
+
+    const-string v4, "CC(remember):MainActivity.kt#9igjgp"
+
+    invoke-static {v11, v1, v4}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v11, v2}, Landroidx/compose/runtime/Composer;->changed(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    invoke-interface {v11, v6}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    or-int/2addr v1, v5
+
+    .local v1, "invalid\\1":Z
+    move-object/from16 v5, p6
+
+    .local v5, "$this$cache\\1":Landroidx/compose/runtime/Composer;
+    const/4 v7, 0x0
+
+    .line 242
+    .local v7, "$i$f$cache\\1\\90":I
+    invoke-interface {v5}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v8
+
+    .local v8, "it\\1":Ljava/lang/Object;
+    const/4 v9, 0x0
+
+    .line 243
+    .local v9, "$i$a$-let-ComposerKt$cache$1\\2\\242\\1":I
+    if-nez v1, :cond_60
+
+    sget-object v10, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    invoke-virtual {v10}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v10
+
+    if-ne v8, v10, :cond_5f
+
+    goto :goto_60
+
+    .line 247
+    :cond_5f
+    goto :goto_6b
+
+    .line 244
+    :cond_60
+    :goto_60
+    const/4 v10, 0x0
+
+    .line 90
+    .local v10, "$i$a$-cache-MainActivity$onCreate$1$1\\3\\244\\0":I
+    new-instance v12, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda1;
+
+    invoke-direct {v12, v6, v2}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda1;-><init>(Lcom/cooper/lithic/app/MainActivity;Landroidx/compose/runtime/State;)V
+
+    .line 244
+    .end local v10    # "$i$a$-cache-MainActivity$onCreate$1$1\\3\\244\\0":I
+    nop
+
+    .line 245
+    .local v12, "value\\2":Ljava/lang/Object;
+    invoke-interface {v5, v12}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 246
+    move-object v8, v12
+
+    .line 242
+    .end local v8    # "it\\1":Ljava/lang/Object;
+    .end local v9    # "$i$a$-let-ComposerKt$cache$1\\2\\242\\1":I
+    .end local v12    # "value\\2":Ljava/lang/Object;
+    :goto_6b
+    nop
+
+    .line 90
+    .end local v1    # "invalid\\1":Z
+    .end local v5    # "$this$cache\\1":Landroidx/compose/runtime/Composer;
+    .end local v7    # "$i$f$cache\\1\\90":I
+    check-cast v8, Lkotlin/jvm/functions/Function0;
+
+    invoke-static {v11}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    invoke-static {v8, v11, v3}, Landroidx/compose/runtime/EffectsKt;->SideEffect(Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
+
+    .line 101
+    invoke-static {}, Lcom/cooper/lithic/feature/appearance/AppearanceThemePickerKt;->getLocalAppearanceActions()Landroidx/compose/runtime/ProvidableCompositionLocal;
+
+    move-result-object v1
+
+    .line 102
+    invoke-static {v2}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$0(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/appearance/AppearanceUiState;
+
+    move-result-object v3
+
+    const v5, -0x29f5307b
+
+    invoke-static {v11, v5, v4}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v11, v0}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    .local v5, "invalid\\4":Z
+    move-object/from16 v7, p6
+
+    .local v7, "$this$cache\\4":Landroidx/compose/runtime/Composer;
+    const/4 v8, 0x0
+
+    .line 248
+    .local v8, "$i$f$cache\\4\\102":I
+    invoke-interface {v7}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v9
+
+    .local v9, "it\\4":Ljava/lang/Object;
+    const/4 v10, 0x0
+
+    .line 249
+    .local v10, "$i$a$-let-ComposerKt$cache$1\\5\\248\\4":I
+    if-nez v5, :cond_9a
+
+    sget-object v12, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    invoke-virtual {v12}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v12
+
+    if-ne v9, v12, :cond_99
+
+    goto :goto_9a
+
+    .line 253
+    :cond_99
+    goto :goto_a7
+
+    .line 250
+    :cond_9a
+    :goto_9a
+    const/4 v12, 0x0
+
+    .line 102
+    .local v12, "$i$a$-cache-MainActivity$onCreate$1$2\\6\\250\\0":I
+    new-instance v13, Lcom/cooper/lithic/app/MainActivity$onCreate$1$2$1;
+
+    invoke-direct {v13, v0}, Lcom/cooper/lithic/app/MainActivity$onCreate$1$2$1;-><init>(Ljava/lang/Object;)V
+
+    check-cast v13, Lkotlin/reflect/KFunction;
+
+    .line 250
+    .end local v12    # "$i$a$-cache-MainActivity$onCreate$1$2\\6\\250\\0":I
+    nop
+
+    .line 251
+    .local v13, "value\\5":Ljava/lang/Object;
+    invoke-interface {v7, v13}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 252
+    move-object v9, v13
+
+    .line 248
+    .end local v9    # "it\\4":Ljava/lang/Object;
+    .end local v10    # "$i$a$-let-ComposerKt$cache$1\\5\\248\\4":I
+    .end local v13    # "value\\5":Ljava/lang/Object;
+    :goto_a7
+    nop
+
+    .line 102
+    .end local v5    # "invalid\\4":Z
+    .end local v7    # "$this$cache\\4":Landroidx/compose/runtime/Composer;
+    .end local v8    # "$i$f$cache\\4\\102":I
+    check-cast v9, Lkotlin/reflect/KFunction;
+
+    invoke-static {v11}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    check-cast v9, Lkotlin/jvm/functions/Function1;
+
+    const v5, -0x29f52df8
+
+    invoke-static {v11, v5, v4}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v11, v0}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    .local v4, "invalid\\7":Z
+    move-object/from16 v5, p6
+
+    .local v5, "$this$cache\\7":Landroidx/compose/runtime/Composer;
+    const/4 v7, 0x0
+
+    .line 248
+    .local v7, "$i$f$cache\\7\\102":I
+    invoke-interface {v5}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v8
+
+    .local v8, "it\\7":Ljava/lang/Object;
+    const/4 v10, 0x0
+
+    .line 249
+    .local v10, "$i$a$-let-ComposerKt$cache$1\\8\\248\\7":I
+    if-nez v4, :cond_cd
+
+    sget-object v12, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    invoke-virtual {v12}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v12
+
+    if-ne v8, v12, :cond_cc
+
+    goto :goto_cd
+
+    .line 253
+    :cond_cc
+    goto :goto_da
+
+    .line 250
+    :cond_cd
+    :goto_cd
+    const/4 v12, 0x0
+
+    .line 102
+    .local v12, "$i$a$-cache-MainActivity$onCreate$1$3\\9\\250\\0":I
+    new-instance v13, Lcom/cooper/lithic/app/MainActivity$onCreate$1$3$1;
+
+    invoke-direct {v13, v0}, Lcom/cooper/lithic/app/MainActivity$onCreate$1$3$1;-><init>(Ljava/lang/Object;)V
+
+    check-cast v13, Lkotlin/reflect/KFunction;
+
+    .line 250
+    .end local v12    # "$i$a$-cache-MainActivity$onCreate$1$3\\9\\250\\0":I
+    nop
+
+    .line 251
+    .local v13, "value\\8":Ljava/lang/Object;
+    invoke-interface {v5, v13}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 252
+    move-object v8, v13
+
+    .line 248
+    .end local v8    # "it\\7":Ljava/lang/Object;
+    .end local v10    # "$i$a$-let-ComposerKt$cache$1\\8\\248\\7":I
+    .end local v13    # "value\\8":Ljava/lang/Object;
+    :goto_da
+    nop
+
+    .line 102
+    .end local v4    # "invalid\\7":Z
+    .end local v5    # "$this$cache\\7":Landroidx/compose/runtime/Composer;
+    .end local v7    # "$i$f$cache\\7\\102":I
+    check-cast v8, Lkotlin/reflect/KFunction;
+
+    invoke-static {v11}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    check-cast v8, Lkotlin/jvm/functions/Function0;
+
+    .line 101
+    new-instance v4, Lcom/cooper/lithic/feature/appearance/AppearanceActions;
+
+    invoke-direct {v4, v3, v9, v8}, Lcom/cooper/lithic/feature/appearance/AppearanceActions;-><init>(Lcom/cooper/lithic/feature/appearance/AppearanceUiState;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function0;)V
+
+    invoke-virtual {v1, v4}, Landroidx/compose/runtime/ProvidableCompositionLocal;->provides(Ljava/lang/Object;)Landroidx/compose/runtime/ProvidedValue;
+
+    move-result-object v8
+
+    .line 102
+    new-instance v1, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda2;
+
+    move-object/from16 v3, p2
+
+    move-object/from16 v4, p3
+
+    move-object/from16 v5, p4
+
+    move-object/from16 v7, p5
+
+    invoke-direct/range {v1 .. v7}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda2;-><init>(Landroidx/compose/runtime/State;Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lcom/cooper/lithic/app/MainActivity;Lkotlin/jvm/functions/Function2;)V
+
+    const/16 v3, 0x36
+
+    const v4, -0x44388c4d
+
+    invoke-static {v4, v15, v1, v11, v3}, Landroidx/compose/runtime/internal/ComposableLambdaKt;->rememberComposableLambda(IZLjava/lang/Object;Landroidx/compose/runtime/Composer;I)Landroidx/compose/runtime/internal/ComposableLambda;
+
+    move-result-object v1
+
+    check-cast v1, Lkotlin/jvm/functions/Function2;
+
+    sget v3, Landroidx/compose/runtime/ProvidedValue;->$stable:I
+
+    or-int/lit8 v3, v3, 0x30
+
+    .line 101
+    invoke-static {v8, v1, v11, v3}, Landroidx/compose/runtime/CompositionLocalKt;->CompositionLocalProvider(Landroidx/compose/runtime/ProvidedValue;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)V
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_117
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    .end local v2    # "appearanceState$delegate":Landroidx/compose/runtime/State;
+    goto :goto_117
+
+    .line 88
+    :cond_114
+    invoke-interface {v11}, Landroidx/compose/runtime/Composer;->skipToGroupEnd()V
+
+    .line 122
+    :cond_117
+    :goto_117
+    sget-object v1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v1
+.end method
+
+.method private static final onCreate$lambda$3$0(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/appearance/AppearanceUiState;
+    .registers 5
+    .param p0, "$appearanceState$delegate"    # Landroidx/compose/runtime/State;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroidx/compose/runtime/State<",
+            "Lcom/cooper/lithic/feature/appearance/AppearanceUiState;",
+            ">;)",
+            "Lcom/cooper/lithic/feature/appearance/AppearanceUiState;"
+        }
+    .end annotation
+
+    .line 89
+    const/4 v0, 0x0
+
+    .local v0, "this_\\1":Ljava/lang/Object;
+    const/4 v1, 0x0
+
+    .local v1, "property\\1":Lkotlin/reflect/KProperty;
+    move-object v2, p0
+
+    .local v2, "$this$getValue\\1":Landroidx/compose/runtime/State;
+    const/4 v3, 0x0
+
+    .line 241
+    .local v3, "$i$f$getValue\\1\\89":I
+    invoke-interface {v2}, Landroidx/compose/runtime/State;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    .end local v0    # "this_\\1":Ljava/lang/Object;
+    .end local v1    # "property\\1":Lkotlin/reflect/KProperty;
+    .end local v2    # "$this$getValue\\1":Landroidx/compose/runtime/State;
+    .end local v3    # "$i$f$getValue\\1\\89":I
+    check-cast v0, Lcom/cooper/lithic/feature/appearance/AppearanceUiState;
+
+    .line 89
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$3$1$0(Lcom/cooper/lithic/app/MainActivity;Landroidx/compose/runtime/State;)Lkotlin/Unit;
+    .registers 7
+    .param p0, "this$0"    # Lcom/cooper/lithic/app/MainActivity;
+    .param p1, "$appearanceState$delegate"    # Landroidx/compose/runtime/State;
+
+    .line 91
+    invoke-static {p1}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$0(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/appearance/AppearanceUiState;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/cooper/lithic/feature/appearance/AppearanceUiState;->getSelected()Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+
+    move-result-object v0
+
+    sget-object v1, Lcom/cooper/lithic/feature/appearance/LithicAppearance;->CHARCOAL:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+
+    if-eq v0, v1, :cond_e
+
+    const/4 v0, 0x1
+
+    goto :goto_f
+
+    :cond_e
+    const/4 v0, 0x0
+
+    .line 92
+    .local v0, "lightBars":Z
+    :goto_f
+    invoke-static {p1}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$0(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/appearance/AppearanceUiState;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/cooper/lithic/feature/appearance/AppearanceUiState;->getSelected()Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+
+    move-result-object v1
+
+    invoke-static {v1}, Lcom/cooper/lithic/core/design/LithicThemeKt;->lithicColorScheme(Lcom/cooper/lithic/feature/appearance/LithicAppearance;)Landroidx/compose/material3/ColorScheme;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroidx/compose/material3/ColorScheme;->getBackground-0d7_KjU()J
+
+    move-result-wide v1
+
+    invoke-static {v1, v2}, Landroidx/compose/ui/graphics/ColorKt;->toArgb-8_81llA(J)I
+
+    move-result v1
+
+    .line 93
+    .local v1, "barBackground":I
+    if-eqz v0, :cond_2c
+
+    sget-object v2, Landroidx/activity/SystemBarStyle;->Companion:Landroidx/activity/SystemBarStyle$Companion;
+
+    invoke-virtual {v2, v1, v1}, Landroidx/activity/SystemBarStyle$Companion;->light(II)Landroidx/activity/SystemBarStyle;
+
+    move-result-object v2
+
+    goto :goto_32
+
+    .line 94
+    :cond_2c
+    sget-object v2, Landroidx/activity/SystemBarStyle;->Companion:Landroidx/activity/SystemBarStyle$Companion;
+
+    invoke-virtual {v2, v1}, Landroidx/activity/SystemBarStyle$Companion;->dark(I)Landroidx/activity/SystemBarStyle;
+
+    move-result-object v2
+
+    .line 93
+    :goto_32
+    nop
+
+    .line 95
+    .local v2, "style":Landroidx/activity/SystemBarStyle;
+    move-object v3, p0
+
+    check-cast v3, Landroidx/activity/ComponentActivity;
+
+    invoke-static {v3, v2, v2}, Landroidx/activity/EdgeToEdge;->enable(Landroidx/activity/ComponentActivity;Landroidx/activity/SystemBarStyle;Landroidx/activity/SystemBarStyle;)V
+
+    .line 96
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/MainActivity;->getWindow()Landroid/view/Window;
+
+    move-result-object v3
+
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/MainActivity;->getWindow()Landroid/view/Window;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroidx/core/view/WindowCompat;->getInsetsController(Landroid/view/Window;Landroid/view/View;)Landroidx/core/view/WindowInsetsControllerCompat;
+
+    move-result-object v3
+
+    .local v3, "$this$onCreate_u24lambda_u243_u241_u240_u240\\1":Landroidx/core/view/WindowInsetsControllerCompat;
+    const/4 v4, 0x0
+
+    .line 97
+    .local v4, "$i$a$-apply-MainActivity$onCreate$1$1$1$1\\1\\96\\0":I
+    invoke-virtual {v3, v0}, Landroidx/core/view/WindowInsetsControllerCompat;->setAppearanceLightStatusBars(Z)V
+
+    .line 98
+    invoke-virtual {v3, v0}, Landroidx/core/view/WindowInsetsControllerCompat;->setAppearanceLightNavigationBars(Z)V
+
+    .line 99
+    nop
+
+    .line 96
+    .end local v3    # "$this$onCreate_u24lambda_u243_u241_u240_u240\\1":Landroidx/core/view/WindowInsetsControllerCompat;
+    .end local v4    # "$i$a$-apply-MainActivity$onCreate$1$1$1$1\\1\\96\\0":I
+    nop
+
+    .line 100
+    sget-object v3, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v3
+.end method
+
+.method private static final onCreate$lambda$3$4(Landroidx/compose/runtime/State;Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lcom/cooper/lithic/app/MainActivity;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    .registers 20
+    .param p0, "$appearanceState$delegate"    # Landroidx/compose/runtime/State;
+    .param p1, "$holder"    # Lcom/cooper/lithic/app/LedgerUiStateHolder;
+    .param p2, "$backups"    # Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+    .param p3, "$restores"    # Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+    .param p4, "this$0"    # Lcom/cooper/lithic/app/MainActivity;
+    .param p5, "$resolveMilestone"    # Lkotlin/jvm/functions/Function2;
+    .param p6, "$composer"    # Landroidx/compose/runtime/Composer;
+    .param p7, "$changed"    # I
+
+    move-object/from16 v0, p6
+
+    move/from16 v1, p7
+
+    const-string v2, "C102@5364L1267,102@5313L1318:MainActivity.kt#syydad"
+
+    invoke-static {v0, v2}, Landroidx/compose/runtime/ComposerKt;->sourceInformation(Landroidx/compose/runtime/Composer;Ljava/lang/String;)V
+
+    and-int/lit8 v2, v1, 0x3
+
+    const/4 v3, 0x2
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x1
+
+    if-eq v2, v3, :cond_12
+
+    move v2, v5
+
+    goto :goto_13
+
+    :cond_12
+    move v2, v4
+
+    :goto_13
+    and-int/lit8 v3, v1, 0x1
+
+    invoke-interface {v0, v2, v3}, Landroidx/compose/runtime/Composer;->shouldExecute(ZI)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_58
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2a
+
+    const/4 v2, -0x1
+
+    const-string v3, "com.cooper.lithic.app.MainActivity.onCreate.<anonymous>.<anonymous> (MainActivity.kt:102)"
+
+    const v6, -0x44388c4d
+
+    invoke-static {v6, v1, v2, v3}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 103
+    :cond_2a
+    invoke-static {p0}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$0(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/appearance/AppearanceUiState;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Lcom/cooper/lithic/feature/appearance/AppearanceUiState;->getSelected()Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+
+    move-result-object v2
+
+    new-instance v6, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda0;
+
+    move-object v7, p1
+
+    move-object v8, p2
+
+    move-object v9, p3
+
+    move-object/from16 v10, p4
+
+    move-object/from16 v11, p5
+
+    invoke-direct/range {v6 .. v11}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda0;-><init>(Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lcom/cooper/lithic/app/MainActivity;Lkotlin/jvm/functions/Function2;)V
+
+    const/16 v3, 0x36
+
+    const v7, -0x54879ff
+
+    invoke-static {v7, v5, v6, v0, v3}, Landroidx/compose/runtime/internal/ComposableLambdaKt;->rememberComposableLambda(IZLjava/lang/Object;Landroidx/compose/runtime/Composer;I)Landroidx/compose/runtime/internal/ComposableLambda;
+
+    move-result-object v3
+
+    check-cast v3, Lkotlin/jvm/functions/Function2;
+
+    const/16 v5, 0x30
+
+    invoke-static {v2, v3, v0, v5, v4}, Lcom/cooper/lithic/core/design/LithicThemeKt;->LithicTheme(Lcom/cooper/lithic/feature/appearance/LithicAppearance;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_5b
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    goto :goto_5b
+
+    .line 102
+    :cond_58
+    invoke-interface {v0}, Landroidx/compose/runtime/Composer;->skipToGroupEnd()V
+
+    .line 121
+    :cond_5b
+    :goto_5b
+    sget-object v2, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v2
+.end method
+
+.method private static final onCreate$lambda$3$4$0(Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lcom/cooper/lithic/app/MainActivity;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    .registers 33
+    .param p0, "$holder"    # Lcom/cooper/lithic/app/LedgerUiStateHolder;
+    .param p1, "$backups"    # Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+    .param p2, "$restores"    # Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+    .param p3, "this$0"    # Lcom/cooper/lithic/app/MainActivity;
+    .param p4, "$resolveMilestone"    # Lkotlin/jvm/functions/Function2;
+    .param p5, "$composer"    # Landroidx/compose/runtime/Composer;
+    .param p6, "$changed"    # I
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move-object/from16 v2, p2
+
+    move-object/from16 v3, p3
+
+    move-object/from16 v8, p5
+
+    move/from16 v11, p6
+
+    const-string v4, "C103@5408L29,104@5487L29,105@5568L29,106@5639L37,107@5719L45,108@5806L115,111@5964L114,114@6129L12,114@6159L17,115@6267L21,116@6384L26,117@6451L26,117@6498L24,114@6095L522:MainActivity.kt#syydad"
+
+    invoke-static {v8, v4}, Landroidx/compose/runtime/ComposerKt;->sourceInformation(Landroidx/compose/runtime/Composer;Ljava/lang/String;)V
+
+    and-int/lit8 v4, v11, 0x3
+
+    const/4 v5, 0x2
+
+    const/4 v12, 0x0
+
+    if-eq v4, v5, :cond_19
+
+    const/4 v4, 0x1
+
+    goto :goto_1a
+
+    :cond_19
+    move v4, v12
+
+    :goto_1a
+    and-int/lit8 v5, v11, 0x1
+
+    invoke-interface {v8, v4, v5}, Landroidx/compose/runtime/Composer;->shouldExecute(ZI)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_249
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_31
+
+    const/4 v4, -0x1
+
+    const-string v5, "com.cooper.lithic.app.MainActivity.onCreate.<anonymous>.<anonymous>.<anonymous> (MainActivity.kt:103)"
+
+    const v6, -0x54879ff
+
+    invoke-static {v6, v11, v4, v5}, Landroidx/compose/runtime/ComposerKt;->traceEventStart(IIILjava/lang/String;)V
+
+    .line 104
+    :cond_31
+    invoke-virtual {v0}, Lcom/cooper/lithic/app/LedgerUiStateHolder;->getState()Lkotlinx/coroutines/flow/StateFlow;
+
+    move-result-object v4
+
+    const/4 v9, 0x0
+
+    const/4 v10, 0x7
+
+    const/4 v5, 0x0
+
+    const/4 v6, 0x0
+
+    const/4 v7, 0x0
+
+    invoke-static/range {v4 .. v10}, Landroidx/lifecycle/compose/FlowExtKt;->collectAsStateWithLifecycle(Lkotlinx/coroutines/flow/StateFlow;Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Lifecycle$State;Lkotlin/coroutines/CoroutineContext;Landroidx/compose/runtime/Composer;II)Landroidx/compose/runtime/State;
+
+    move-result-object v23
+
+    .line 105
+    .local v23, "state$delegate":Landroidx/compose/runtime/State;
+    invoke-virtual {v1}, Lcom/cooper/lithic/feature/settings/BackupExportViewModel;->getState()Lkotlinx/coroutines/flow/StateFlow;
+
+    move-result-object v4
+
+    move-object/from16 v8, p5
+
+    invoke-static/range {v4 .. v10}, Landroidx/lifecycle/compose/FlowExtKt;->collectAsStateWithLifecycle(Lkotlinx/coroutines/flow/StateFlow;Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Lifecycle$State;Lkotlin/coroutines/CoroutineContext;Landroidx/compose/runtime/Composer;II)Landroidx/compose/runtime/State;
+
+    move-result-object v24
+
+    .line 106
+    .local v24, "backupState$delegate":Landroidx/compose/runtime/State;
+    invoke-virtual {v2}, Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;->getState()Lkotlinx/coroutines/flow/StateFlow;
+
+    move-result-object v4
+
+    invoke-static/range {v4 .. v10}, Landroidx/lifecycle/compose/FlowExtKt;->collectAsStateWithLifecycle(Lkotlinx/coroutines/flow/StateFlow;Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Lifecycle$State;Lkotlin/coroutines/CoroutineContext;Landroidx/compose/runtime/Composer;II)Landroidx/compose/runtime/State;
+
+    move-result-object v25
+
+    .line 107
+    .local v25, "restoreState$delegate":Landroidx/compose/runtime/State;
+    invoke-static {v1, v8, v12}, Lcom/cooper/lithic/feature/settings/BackupDocumentPickerKt;->rememberBackupDocumentPicker(Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Landroidx/compose/runtime/Composer;I)Lkotlin/jvm/functions/Function0;
+
+    move-result-object v4
+
+    .line 108
+    .local v4, "chooseBackupTarget":Lkotlin/jvm/functions/Function0;
+    invoke-static {v2, v8, v12}, Lcom/cooper/lithic/feature/settings/BackupRestoreDocumentPickerKt;->rememberBackupRestoreDocumentPicker(Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Landroidx/compose/runtime/Composer;I)Lkotlin/jvm/functions/Function0;
+
+    move-result-object v5
+
+    .line 109
+    .local v5, "chooseRestoreSource":Lkotlin/jvm/functions/Function0;
+    const v6, 0x2aee4174
+
+    const-string v7, "CC(remember):MainActivity.kt#9igjgp"
+
+    invoke-static {v8, v6, v7}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v8, v2}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v6
+
+    invoke-interface {v8, v4}, Landroidx/compose/runtime/Composer;->changed(Ljava/lang/Object;)Z
+
+    move-result v9
+
+    or-int/2addr v6, v9
+
+    .local v6, "invalid\\1":Z
+    move-object/from16 v9, p5
+
+    .local v9, "$this$cache\\1":Landroidx/compose/runtime/Composer;
+    const/4 v10, 0x0
+
+    .line 205
+    .local v10, "$i$f$cache\\1\\109":I
+    invoke-interface {v9}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v12
+
+    .local v12, "it\\1":Ljava/lang/Object;
+    const/4 v13, 0x0
+
+    .line 206
+    .local v13, "$i$a$-let-ComposerKt$cache$1\\2\\205\\1":I
+    if-nez v6, :cond_7d
+
+    sget-object v14, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    invoke-virtual {v14}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v14
+
+    if-ne v12, v14, :cond_7c
+
+    goto :goto_7d
+
+    .line 210
+    :cond_7c
+    goto :goto_88
+
+    .line 207
+    :cond_7d
+    :goto_7d
+    const/4 v14, 0x0
+
+    .line 109
+    .local v14, "$i$a$-cache-MainActivity$onCreate$1$4$1$export$1\\3\\207\\0":I
+    new-instance v15, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda3;
+
+    invoke-direct {v15, v2, v4}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda3;-><init>(Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lkotlin/jvm/functions/Function0;)V
+
+    .line 207
+    .end local v14    # "$i$a$-cache-MainActivity$onCreate$1$4$1$export$1\\3\\207\\0":I
+    nop
+
+    .line 208
+    .local v15, "value\\2":Ljava/lang/Object;
+    invoke-interface {v9, v15}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 209
+    move-object v12, v15
+
+    .line 205
+    .end local v12    # "it\\1":Ljava/lang/Object;
+    .end local v13    # "$i$a$-let-ComposerKt$cache$1\\2\\205\\1":I
+    .end local v15    # "value\\2":Ljava/lang/Object;
+    :goto_88
+    nop
+
+    .line 109
+    .end local v6    # "invalid\\1":Z
+    .end local v9    # "$this$cache\\1":Landroidx/compose/runtime/Composer;
+    .end local v10    # "$i$f$cache\\1\\109":I
+    move-object v10, v12
+
+    check-cast v10, Lkotlin/jvm/functions/Function0;
+
+    .local v10, "export":Lkotlin/jvm/functions/Function0;
+    invoke-static {v8}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    .line 112
+    const v6, 0x2aee5533
+
+    invoke-static {v8, v6, v7}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v8, v1}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v6
+
+    invoke-interface {v8, v5}, Landroidx/compose/runtime/Composer;->changed(Ljava/lang/Object;)Z
+
+    move-result v9
+
+    or-int/2addr v6, v9
+
+    .local v6, "invalid\\4":Z
+    move-object/from16 v9, p5
+
+    .local v9, "$this$cache\\4":Landroidx/compose/runtime/Composer;
+    const/4 v12, 0x0
+
+    .line 211
+    .local v12, "$i$f$cache\\4\\112":I
+    invoke-interface {v9}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v13
+
+    .local v13, "it\\4":Ljava/lang/Object;
+    const/4 v14, 0x0
+
+    .line 212
+    .local v14, "$i$a$-let-ComposerKt$cache$1\\5\\211\\4":I
+    if-nez v6, :cond_b4
+
+    sget-object v15, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    invoke-virtual {v15}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v15
+
+    if-ne v13, v15, :cond_b1
+
+    goto :goto_b4
+
+    .line 216
+    :cond_b1
+    move-object/from16 v16, v4
+
+    goto :goto_c1
+
+    .line 213
+    :cond_b4
+    :goto_b4
+    const/4 v15, 0x0
+
+    .line 112
+    .local v15, "$i$a$-cache-MainActivity$onCreate$1$4$1$restore$1\\6\\213\\0":I
+    move-object/from16 v16, v4
+
+    .end local v4    # "chooseBackupTarget":Lkotlin/jvm/functions/Function0;
+    .local v16, "chooseBackupTarget":Lkotlin/jvm/functions/Function0;
+    new-instance v4, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda4;
+
+    invoke-direct {v4, v1, v5}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda4;-><init>(Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lkotlin/jvm/functions/Function0;)V
+
+    .line 213
+    .end local v15    # "$i$a$-cache-MainActivity$onCreate$1$4$1$restore$1\\6\\213\\0":I
+    nop
+
+    .line 214
+    .local v4, "value\\5":Ljava/lang/Object;
+    invoke-interface {v9, v4}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 215
+    move-object v13, v4
+
+    .line 211
+    .end local v4    # "value\\5":Ljava/lang/Object;
+    .end local v13    # "it\\4":Ljava/lang/Object;
+    .end local v14    # "$i$a$-let-ComposerKt$cache$1\\5\\211\\4":I
+    :goto_c1
+    nop
+
+    .line 112
+    .end local v6    # "invalid\\4":Z
+    .end local v9    # "$this$cache\\4":Landroidx/compose/runtime/Composer;
+    .end local v12    # "$i$f$cache\\4\\112":I
+    check-cast v13, Lkotlin/jvm/functions/Function0;
+
+    .local v13, "restore":Lkotlin/jvm/functions/Function0;
+    invoke-static {v8}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    .line 115
+    invoke-static/range {v23 .. v23}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$4$0$0(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/app/LedgerUiState;
+
+    move-result-object v4
+
+    const v6, 0x2aee696d
+
+    invoke-static {v8, v6, v7}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v8, v3}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v6
+
+    .local v6, "invalid\\7":Z
+    move-object/from16 v9, p5
+
+    .local v9, "$this$cache\\7":Landroidx/compose/runtime/Composer;
+    const/4 v12, 0x0
+
+    .line 217
+    .local v12, "$i$f$cache\\7\\115":I
+    invoke-interface {v9}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v14
+
+    .local v14, "it\\7":Ljava/lang/Object;
+    const/4 v15, 0x0
+
+    .line 218
+    .local v15, "$i$a$-let-ComposerKt$cache$1\\8\\217\\7":I
+    if-nez v6, :cond_eb
+
+    sget-object v17, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    move-object/from16 v18, v4
+
+    invoke-virtual/range {v17 .. v17}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v4
+
+    if-ne v14, v4, :cond_ea
+
+    goto :goto_ed
+
+    .line 222
+    :cond_ea
+    goto :goto_fa
+
+    .line 218
+    :cond_eb
+    move-object/from16 v18, v4
+
+    .line 219
+    :goto_ed
+    const/4 v4, 0x0
+
+    .line 115
+    .local v4, "$i$a$-cache-MainActivity$onCreate$1$4$1$1\\9\\219\\0":I
+    move/from16 v17, v4
+
+    .end local v4    # "$i$a$-cache-MainActivity$onCreate$1$4$1$1\\9\\219\\0":I
+    .local v17, "$i$a$-cache-MainActivity$onCreate$1$4$1$1\\9\\219\\0":I
+    new-instance v4, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda5;
+
+    invoke-direct {v4, v3}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda5;-><init>(Lcom/cooper/lithic/app/MainActivity;)V
+
+    .line 219
+    .end local v17    # "$i$a$-cache-MainActivity$onCreate$1$4$1$1\\9\\219\\0":I
+    nop
+
+    .line 220
+    .local v4, "value\\8":Ljava/lang/Object;
+    invoke-interface {v9, v4}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 221
+    move-object v14, v4
+
+    .line 217
+    .end local v4    # "value\\8":Ljava/lang/Object;
+    .end local v14    # "it\\7":Ljava/lang/Object;
+    .end local v15    # "$i$a$-let-ComposerKt$cache$1\\8\\217\\7":I
+    :goto_fa
+    nop
+
+    .line 115
+    .end local v6    # "invalid\\7":Z
+    .end local v9    # "$this$cache\\7":Landroidx/compose/runtime/Composer;
+    .end local v12    # "$i$f$cache\\7\\115":I
+    check-cast v14, Lkotlin/jvm/functions/Function0;
+
+    invoke-static {v8}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    const v4, 0x2aee6d32
+
+    invoke-static {v8, v4, v7}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v8, v0}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    .local v4, "invalid\\10":Z
+    move-object/from16 v6, p5
+
+    .local v6, "$this$cache\\10":Landroidx/compose/runtime/Composer;
+    const/4 v9, 0x0
+
+    .line 217
+    .local v9, "$i$f$cache\\10\\115":I
+    invoke-interface {v6}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v12
+
+    .local v12, "it\\10":Ljava/lang/Object;
+    const/4 v15, 0x0
+
+    .line 218
+    .local v15, "$i$a$-let-ComposerKt$cache$1\\11\\217\\10":I
+    if-nez v4, :cond_11e
+
+    sget-object v17, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    invoke-virtual/range {v17 .. v17}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v3
+
+    if-ne v12, v3, :cond_11d
+
+    goto :goto_11e
+
+    .line 222
+    :cond_11d
+    goto :goto_12d
+
+    .line 219
+    :cond_11e
+    :goto_11e
+    const/4 v3, 0x0
+
+    .line 115
+    .local v3, "$i$a$-cache-MainActivity$onCreate$1$4$1$2\\12\\219\\0":I
+    move/from16 v17, v3
+
+    .end local v3    # "$i$a$-cache-MainActivity$onCreate$1$4$1$2\\12\\219\\0":I
+    .local v17, "$i$a$-cache-MainActivity$onCreate$1$4$1$2\\12\\219\\0":I
+    new-instance v3, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$2$1;
+
+    invoke-direct {v3, v0}, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$2$1;-><init>(Ljava/lang/Object;)V
+
+    check-cast v3, Lkotlin/jvm/functions/Function0;
+
+    .line 219
+    .end local v17    # "$i$a$-cache-MainActivity$onCreate$1$4$1$2\\12\\219\\0":I
+    nop
+
+    .line 220
+    .local v3, "value\\11":Ljava/lang/Object;
+    invoke-interface {v6, v3}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 221
+    move-object v12, v3
+
+    .line 217
+    .end local v3    # "value\\11":Ljava/lang/Object;
+    .end local v12    # "it\\10":Ljava/lang/Object;
+    .end local v15    # "$i$a$-let-ComposerKt$cache$1\\11\\217\\10":I
+    :goto_12d
+    nop
+
+    .line 115
+    .end local v4    # "invalid\\10":Z
+    .end local v6    # "$this$cache\\10":Landroidx/compose/runtime/Composer;
+    .end local v9    # "$i$f$cache\\10\\115":I
+    check-cast v12, Lkotlin/jvm/functions/Function0;
+
+    invoke-static {v8}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    .line 116
+    invoke-static/range {v24 .. v24}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$4$0$1(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/settings/BackupExportUiState;
+
+    move-result-object v9
+
+    const v3, 0x2aee7ab6
+
+    invoke-static {v8, v3, v7}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v8, v1}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    .local v3, "invalid\\13":Z
+    move-object/from16 v4, p5
+
+    .local v4, "$this$cache\\13":Landroidx/compose/runtime/Composer;
+    const/4 v6, 0x0
+
+    .line 223
+    .local v6, "$i$f$cache\\13\\116":I
+    invoke-interface {v4}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v15
+
+    .local v15, "it\\13":Ljava/lang/Object;
+    const/16 v17, 0x0
+
+    .line 224
+    .local v17, "$i$a$-let-ComposerKt$cache$1\\14\\223\\13":I
+    if-nez v3, :cond_156
+
+    sget-object v19, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    invoke-virtual/range {v19 .. v19}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v0
+
+    if-ne v15, v0, :cond_155
+
+    goto :goto_156
+
+    .line 228
+    :cond_155
+    goto :goto_165
+
+    .line 225
+    :cond_156
+    :goto_156
+    const/4 v0, 0x0
+
+    .line 116
+    .local v0, "$i$a$-cache-MainActivity$onCreate$1$4$1$3\\15\\225\\0":I
+    move/from16 v19, v0
+
+    .end local v0    # "$i$a$-cache-MainActivity$onCreate$1$4$1$3\\15\\225\\0":I
+    .local v19, "$i$a$-cache-MainActivity$onCreate$1$4$1$3\\15\\225\\0":I
+    new-instance v0, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$3$1;
+
+    invoke-direct {v0, v1}, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$3$1;-><init>(Ljava/lang/Object;)V
+
+    check-cast v0, Lkotlin/reflect/KFunction;
+
+    .line 225
+    .end local v19    # "$i$a$-cache-MainActivity$onCreate$1$4$1$3\\15\\225\\0":I
+    nop
+
+    .line 226
+    .local v0, "value\\14":Ljava/lang/Object;
+    invoke-interface {v4, v0}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 227
+    move-object v15, v0
+
+    .line 223
+    .end local v0    # "value\\14":Ljava/lang/Object;
+    .end local v15    # "it\\13":Ljava/lang/Object;
+    .end local v17    # "$i$a$-let-ComposerKt$cache$1\\14\\223\\13":I
+    :goto_165
+    nop
+
+    .line 116
+    .end local v3    # "invalid\\13":Z
+    .end local v4    # "$this$cache\\13":Landroidx/compose/runtime/Composer;
+    .end local v6    # "$i$f$cache\\13\\116":I
+    check-cast v15, Lkotlin/reflect/KFunction;
+
+    invoke-static {v8}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    check-cast v15, Lkotlin/jvm/functions/Function0;
+
+    .line 117
+    move-object v0, v12
+
+    invoke-static/range {v25 .. v25}, Lcom/cooper/lithic/app/MainActivity;->onCreate$lambda$3$4$0$2(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;
+
+    move-result-object v12
+
+    const v3, 0x2aee895b
+
+    invoke-static {v8, v3, v7}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v8, v2}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    .local v3, "invalid\\16":Z
+    move-object/from16 v4, p5
+
+    .local v4, "$this$cache\\16":Landroidx/compose/runtime/Composer;
+    const/4 v6, 0x0
+
+    .line 229
+    .local v6, "$i$f$cache\\16\\117":I
+    move-object/from16 v17, v0
+
+    invoke-interface {v4}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    .local v0, "it\\16":Ljava/lang/Object;
+    const/16 v19, 0x0
+
+    .line 230
+    .local v19, "$i$a$-let-ComposerKt$cache$1\\17\\229\\16":I
+    if-nez v3, :cond_193
+
+    sget-object v20, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    invoke-virtual/range {v20 .. v20}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v1
+
+    if-ne v0, v1, :cond_192
+
+    goto :goto_193
+
+    .line 234
+    :cond_192
+    goto :goto_1a2
+
+    .line 231
+    :cond_193
+    :goto_193
+    const/4 v1, 0x0
+
+    .line 117
+    .local v1, "$i$a$-cache-MainActivity$onCreate$1$4$1$4\\18\\231\\0":I
+    move-object/from16 v20, v0
+
+    .end local v0    # "it\\16":Ljava/lang/Object;
+    .local v20, "it\\16":Ljava/lang/Object;
+    new-instance v0, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$4$1;
+
+    invoke-direct {v0, v2}, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$4$1;-><init>(Ljava/lang/Object;)V
+
+    check-cast v0, Lkotlin/reflect/KFunction;
+
+    .line 231
+    .end local v1    # "$i$a$-cache-MainActivity$onCreate$1$4$1$4\\18\\231\\0":I
+    nop
+
+    .line 232
+    .local v0, "value\\17":Ljava/lang/Object;
+    invoke-interface {v4, v0}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 233
+    nop
+
+    .line 229
+    .end local v0    # "value\\17":Ljava/lang/Object;
+    .end local v19    # "$i$a$-let-ComposerKt$cache$1\\17\\229\\16":I
+    .end local v20    # "it\\16":Ljava/lang/Object;
+    :goto_1a2
+    nop
+
+    .line 117
+    .end local v3    # "invalid\\16":Z
+    .end local v4    # "$this$cache\\16":Landroidx/compose/runtime/Composer;
+    .end local v6    # "$i$f$cache\\16\\117":I
+    check-cast v0, Lkotlin/reflect/KFunction;
+
+    invoke-static {v8}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    check-cast v0, Lkotlin/jvm/functions/Function0;
+
+    .line 118
+    const v1, 0x2aee91bb
+
+    invoke-static {v8, v1, v7}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v8, v2}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    .local v1, "invalid\\19":Z
+    move-object/from16 v3, p5
+
+    .local v3, "$this$cache\\19":Landroidx/compose/runtime/Composer;
+    const/4 v4, 0x0
+
+    .line 235
+    .local v4, "$i$f$cache\\19\\118":I
+    invoke-interface {v3}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v6
+
+    .local v6, "it\\19":Ljava/lang/Object;
+    const/16 v19, 0x0
+
+    .line 236
+    .local v19, "$i$a$-let-ComposerKt$cache$1\\20\\235\\19":I
+    if-nez v1, :cond_1cb
+
+    sget-object v20, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    move-object/from16 v21, v0
+
+    invoke-virtual/range {v20 .. v20}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v0
+
+    if-ne v6, v0, :cond_1ca
+
+    goto :goto_1cd
+
+    .line 240
+    :cond_1ca
+    goto :goto_1dc
+
+    .line 236
+    :cond_1cb
+    move-object/from16 v21, v0
+
+    .line 237
+    :goto_1cd
+    const/4 v0, 0x0
+
+    .line 118
+    .local v0, "$i$a$-cache-MainActivity$onCreate$1$4$1$5\\21\\237\\0":I
+    move/from16 v20, v0
+
+    .end local v0    # "$i$a$-cache-MainActivity$onCreate$1$4$1$5\\21\\237\\0":I
+    .local v20, "$i$a$-cache-MainActivity$onCreate$1$4$1$5\\21\\237\\0":I
+    new-instance v0, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$5$1;
+
+    invoke-direct {v0, v2}, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$5$1;-><init>(Ljava/lang/Object;)V
+
+    check-cast v0, Lkotlin/reflect/KFunction;
+
+    .line 237
+    .end local v20    # "$i$a$-cache-MainActivity$onCreate$1$4$1$5\\21\\237\\0":I
+    nop
+
+    .line 238
+    .local v0, "value\\20":Ljava/lang/Object;
+    invoke-interface {v3, v0}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 239
+    move-object v6, v0
+
+    .line 235
+    .end local v0    # "value\\20":Ljava/lang/Object;
+    .end local v6    # "it\\19":Ljava/lang/Object;
+    .end local v19    # "$i$a$-let-ComposerKt$cache$1\\20\\235\\19":I
+    :goto_1dc
+    nop
+
+    .line 118
+    .end local v1    # "invalid\\19":Z
+    .end local v3    # "$this$cache\\19":Landroidx/compose/runtime/Composer;
+    .end local v4    # "$i$f$cache\\19\\118":I
+    check-cast v6, Lkotlin/reflect/KFunction;
+
+    invoke-static {v8}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    check-cast v6, Lkotlin/jvm/functions/Function0;
+
+    const v0, 0x2aee9799
+
+    invoke-static {v8, v0, v7}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerStart(Landroidx/compose/runtime/Composer;ILjava/lang/String;)V
+
+    invoke-interface {v8, v2}, Landroidx/compose/runtime/Composer;->changedInstance(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    .local v0, "invalid\\22":Z
+    move-object/from16 v1, p5
+
+    .local v1, "$this$cache\\22":Landroidx/compose/runtime/Composer;
+    const/4 v3, 0x0
+
+    .line 235
+    .local v3, "$i$f$cache\\22\\118":I
+    invoke-interface {v1}, Landroidx/compose/runtime/Composer;->rememberedValue()Ljava/lang/Object;
+
+    move-result-object v4
+
+    .local v4, "it\\22":Ljava/lang/Object;
+    const/4 v7, 0x0
+
+    .line 236
+    .local v7, "$i$a$-let-ComposerKt$cache$1\\23\\235\\22":I
+    if-nez v0, :cond_204
+
+    sget-object v19, Landroidx/compose/runtime/Composer;->Companion:Landroidx/compose/runtime/Composer$Companion;
+
+    move/from16 v20, v0
+
+    .end local v0    # "invalid\\22":Z
+    .local v20, "invalid\\22":Z
+    invoke-virtual/range {v19 .. v19}, Landroidx/compose/runtime/Composer$Companion;->getEmpty()Ljava/lang/Object;
+
+    move-result-object v0
+
+    if-ne v4, v0, :cond_203
+
+    goto :goto_206
+
+    .line 240
+    :cond_203
+    goto :goto_215
+
+    .line 236
+    .end local v20    # "invalid\\22":Z
+    .restart local v0    # "invalid\\22":Z
+    :cond_204
+    move/from16 v20, v0
+
+    .line 237
+    .end local v0    # "invalid\\22":Z
+    .restart local v20    # "invalid\\22":Z
+    :goto_206
+    const/4 v0, 0x0
+
+    .line 118
+    .local v0, "$i$a$-cache-MainActivity$onCreate$1$4$1$6\\24\\237\\0":I
+    move/from16 v19, v0
+
+    .end local v0    # "$i$a$-cache-MainActivity$onCreate$1$4$1$6\\24\\237\\0":I
+    .local v19, "$i$a$-cache-MainActivity$onCreate$1$4$1$6\\24\\237\\0":I
+    new-instance v0, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$6$1;
+
+    invoke-direct {v0, v2}, Lcom/cooper/lithic/app/MainActivity$onCreate$1$4$1$6$1;-><init>(Ljava/lang/Object;)V
+
+    check-cast v0, Lkotlin/reflect/KFunction;
+
+    .line 237
+    .end local v19    # "$i$a$-cache-MainActivity$onCreate$1$4$1$6\\24\\237\\0":I
+    nop
+
+    .line 238
+    .local v0, "value\\23":Ljava/lang/Object;
+    invoke-interface {v1, v0}, Landroidx/compose/runtime/Composer;->updateRememberedValue(Ljava/lang/Object;)V
+
+    .line 239
+    move-object v4, v0
+
+    .line 235
+    .end local v0    # "value\\23":Ljava/lang/Object;
+    .end local v4    # "it\\22":Ljava/lang/Object;
+    .end local v7    # "$i$a$-let-ComposerKt$cache$1\\23\\235\\22":I
+    :goto_215
+    nop
+
+    .line 118
+    .end local v1    # "$this$cache\\22":Landroidx/compose/runtime/Composer;
+    .end local v3    # "$i$f$cache\\22\\118":I
+    .end local v20    # "invalid\\22":Z
+    check-cast v4, Lkotlin/reflect/KFunction;
+
+    invoke-static {v8}, Landroidx/compose/runtime/ComposerKt;->sourceInformationMarkerEnd(Landroidx/compose/runtime/Composer;)V
+
+    check-cast v4, Lkotlin/jvm/functions/Function0;
+
+    .line 119
+    move-object/from16 v0, v17
+
+    invoke-direct/range {p3 .. p3}, Lcom/cooper/lithic/app/MainActivity;->getMilestoneRequest()Lcom/cooper/lithic/app/MilestoneOpenRequest;
+
+    move-result-object v17
+
+    .line 115
+    move-object v11, v15
+
+    move-object v15, v6
+
+    const/4 v6, 0x0
+
+    const/4 v8, 0x0
+
+    const/16 v20, 0x0
+
+    move-object v1, v5
+
+    move-object v5, v14
+
+    move-object/from16 v14, v21
+
+    .end local v5    # "chooseRestoreSource":Lkotlin/jvm/functions/Function0;
+    .local v1, "chooseRestoreSource":Lkotlin/jvm/functions/Function0;
+    const/16 v21, 0x0
+
+    const/16 v22, 0x14
+
+    move-object/from16 v19, p5
+
+    move-object v7, v0
+
+    move-object/from16 v0, v16
+
+    move-object/from16 v16, v4
+
+    move-object/from16 v4, v18
+
+    move-object/from16 v18, p4
+
+    .end local v16    # "chooseBackupTarget":Lkotlin/jvm/functions/Function0;
+    .local v0, "chooseBackupTarget":Lkotlin/jvm/functions/Function0;
+    invoke-static/range {v4 .. v22}, Lcom/cooper/lithic/app/LithicAppKt;->LithicApp(Lcom/cooper/lithic/app/LedgerUiState;Lkotlin/jvm/functions/Function0;Lcom/cooper/lithic/feature/project/ProjectViewModel;Lkotlin/jvm/functions/Function0;Lcom/cooper/lithic/feature/subscription/SubscriptionViewModel;Lcom/cooper/lithic/feature/settings/BackupExportUiState;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lcom/cooper/lithic/app/MilestoneOpenRequest;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;III)V
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->isTraceInProgress()Z
+
+    move-result v3
+
+    if-eqz v3, :cond_24c
+
+    invoke-static {}, Landroidx/compose/runtime/ComposerKt;->traceEventEnd()V
+
+    .end local v0    # "chooseBackupTarget":Lkotlin/jvm/functions/Function0;
+    .end local v1    # "chooseRestoreSource":Lkotlin/jvm/functions/Function0;
+    .end local v10    # "export":Lkotlin/jvm/functions/Function0;
+    .end local v13    # "restore":Lkotlin/jvm/functions/Function0;
+    .end local v23    # "state$delegate":Landroidx/compose/runtime/State;
+    .end local v24    # "backupState$delegate":Landroidx/compose/runtime/State;
+    .end local v25    # "restoreState$delegate":Landroidx/compose/runtime/State;
+    goto :goto_24c
+
+    .line 103
+    :cond_249
+    invoke-interface/range {p5 .. p5}, Landroidx/compose/runtime/Composer;->skipToGroupEnd()V
+
+    .line 120
+    :cond_24c
+    :goto_24c
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$3$4$0$0(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/app/LedgerUiState;
+    .registers 5
+    .param p0, "$state$delegate"    # Landroidx/compose/runtime/State;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroidx/compose/runtime/State<",
+            "+",
+            "Lcom/cooper/lithic/app/LedgerUiState;",
+            ">;)",
+            "Lcom/cooper/lithic/app/LedgerUiState;"
+        }
+    .end annotation
+
+    .line 104
+    const/4 v0, 0x0
+
+    .local v0, "this_\\1":Ljava/lang/Object;
+    const/4 v1, 0x0
+
+    .local v1, "property\\1":Lkotlin/reflect/KProperty;
+    move-object v2, p0
+
+    .local v2, "$this$getValue\\1":Landroidx/compose/runtime/State;
+    const/4 v3, 0x0
+
+    .line 202
+    .local v3, "$i$f$getValue\\1\\104":I
+    invoke-interface {v2}, Landroidx/compose/runtime/State;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    .end local v0    # "this_\\1":Ljava/lang/Object;
+    .end local v1    # "property\\1":Lkotlin/reflect/KProperty;
+    .end local v2    # "$this$getValue\\1":Landroidx/compose/runtime/State;
+    .end local v3    # "$i$f$getValue\\1\\104":I
+    check-cast v0, Lcom/cooper/lithic/app/LedgerUiState;
+
+    .line 104
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$3$4$0$1(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/settings/BackupExportUiState;
+    .registers 5
+    .param p0, "$backupState$delegate"    # Landroidx/compose/runtime/State;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroidx/compose/runtime/State<",
+            "Lcom/cooper/lithic/feature/settings/BackupExportUiState;",
+            ">;)",
+            "Lcom/cooper/lithic/feature/settings/BackupExportUiState;"
+        }
+    .end annotation
+
+    .line 105
+    const/4 v0, 0x0
+
+    .local v0, "this_\\1":Ljava/lang/Object;
+    const/4 v1, 0x0
+
+    .local v1, "property\\1":Lkotlin/reflect/KProperty;
+    move-object v2, p0
+
+    .local v2, "$this$getValue\\1":Landroidx/compose/runtime/State;
+    const/4 v3, 0x0
+
+    .line 203
+    .local v3, "$i$f$getValue\\1\\105":I
+    invoke-interface {v2}, Landroidx/compose/runtime/State;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    .end local v0    # "this_\\1":Ljava/lang/Object;
+    .end local v1    # "property\\1":Lkotlin/reflect/KProperty;
+    .end local v2    # "$this$getValue\\1":Landroidx/compose/runtime/State;
+    .end local v3    # "$i$f$getValue\\1\\105":I
+    check-cast v0, Lcom/cooper/lithic/feature/settings/BackupExportUiState;
+
+    .line 105
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$3$4$0$2(Landroidx/compose/runtime/State;)Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;
+    .registers 5
+    .param p0, "$restoreState$delegate"    # Landroidx/compose/runtime/State;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroidx/compose/runtime/State<",
+            "Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;",
+            ">;)",
+            "Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;"
+        }
+    .end annotation
+
+    .line 106
+    const/4 v0, 0x0
+
+    .local v0, "this_\\1":Ljava/lang/Object;
+    const/4 v1, 0x0
+
+    .local v1, "property\\1":Lkotlin/reflect/KProperty;
+    move-object v2, p0
+
+    .local v2, "$this$getValue\\1":Landroidx/compose/runtime/State;
+    const/4 v3, 0x0
+
+    .line 204
+    .local v3, "$i$f$getValue\\1\\106":I
+    invoke-interface {v2}, Landroidx/compose/runtime/State;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    .end local v0    # "this_\\1":Ljava/lang/Object;
+    .end local v1    # "property\\1":Lkotlin/reflect/KProperty;
+    .end local v2    # "$this$getValue\\1":Landroidx/compose/runtime/State;
+    .end local v3    # "$i$f$getValue\\1\\106":I
+    check-cast v0, Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;
+
+    .line 106
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$3$4$0$3$0(Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lkotlin/jvm/functions/Function0;)Lkotlin/Unit;
+    .registers 4
+    .param p0, "$restores"    # Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+    .param p1, "$chooseBackupTarget"    # Lkotlin/jvm/functions/Function0;
+
+    .line 110
+    invoke-virtual {p0}, Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;->getState()Lkotlinx/coroutines/flow/StateFlow;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Lkotlinx/coroutines/flow/StateFlow;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;
+
+    invoke-virtual {v0}, Lcom/cooper/lithic/feature/settings/BackupRestoreUiState;->getPhase()Lcom/cooper/lithic/feature/settings/RestoreUiPhase;
+
+    move-result-object v0
+
+    sget-object v1, Lcom/cooper/lithic/feature/settings/RestoreUiPhase;->IDLE:Lcom/cooper/lithic/feature/settings/RestoreUiPhase;
+
+    if-ne v0, v1, :cond_15
+
+    invoke-interface {p1}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 111
+    :cond_15
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$3$4$0$4$0(Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lkotlin/jvm/functions/Function0;)Lkotlin/Unit;
+    .registers 4
+    .param p0, "$backups"    # Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+    .param p1, "$chooseRestoreSource"    # Lkotlin/jvm/functions/Function0;
+
+    .line 113
+    invoke-virtual {p0}, Lcom/cooper/lithic/feature/settings/BackupExportViewModel;->getState()Lkotlinx/coroutines/flow/StateFlow;
+
+    move-result-object v0
+
+    invoke-interface {v0}, Lkotlinx/coroutines/flow/StateFlow;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/cooper/lithic/feature/settings/BackupExportUiState;
+
+    invoke-virtual {v0}, Lcom/cooper/lithic/feature/settings/BackupExportUiState;->getPhase()Lcom/cooper/lithic/feature/settings/BackupUiPhase;
+
+    move-result-object v0
+
+    sget-object v1, Lcom/cooper/lithic/feature/settings/BackupUiPhase;->IDLE:Lcom/cooper/lithic/feature/settings/BackupUiPhase;
+
+    if-ne v0, v1, :cond_15
+
+    invoke-interface {p1}, Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;
+
+    .line 114
+    :cond_15
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v0
+.end method
+
+.method private static final onCreate$lambda$3$4$0$5$0(Lcom/cooper/lithic/app/MainActivity;)Lkotlin/Unit;
+    .registers 2
+    .param p0, "this$0"    # Lcom/cooper/lithic/app/MainActivity;
+
+    .line 115
+    invoke-virtual {p0}, Lcom/cooper/lithic/app/MainActivity;->finish()V
+
+    sget-object v0, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object v0
+.end method
+
+.method private final receiveNotice(Landroid/content/Intent;)V
+    .registers 7
+    .param p1, "incoming"    # Landroid/content/Intent;
+
+    .line 50
+    if-eqz p1, :cond_7
+
+    invoke-virtual {p1}, Landroid/content/Intent;->getAction()Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_8
+
+    :cond_7
+    const/4 v0, 0x0
+
+    :goto_8
+    const-string v1, "com.cooper.lithic.MILESTONE_SUMMARY"
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_11
+
+    return-void
+
+    .line 51
+    :cond_11
+    sget-object v0, Lcom/cooper/lithic/platform/notification/MilestoneNoticeIntents;->INSTANCE:Lcom/cooper/lithic/platform/notification/MilestoneNoticeIntents;
+
+    invoke-virtual {v0, p1}, Lcom/cooper/lithic/platform/notification/MilestoneNoticeIntents;->read(Landroid/content/Intent;)Lcom/cooper/lithic/data/repository/MilestoneNoticeRef;
+
+    move-result-object v0
+
+    .line 52
+    .local v0, "reference":Lcom/cooper/lithic/data/repository/MilestoneNoticeRef;
+    iget-wide v1, p0, Lcom/cooper/lithic/app/MainActivity;->noticeSequence:J
+
+    const-wide/16 v3, 0x1
+
+    invoke-static {v1, v2, v3, v4}, Ljava/lang/Math;->addExact(JJ)J
+
+    move-result-wide v1
+
+    iput-wide v1, p0, Lcom/cooper/lithic/app/MainActivity;->noticeSequence:J
+
+    .line 53
+    new-instance v1, Lcom/cooper/lithic/app/MilestoneOpenRequest;
+
+    iget-wide v2, p0, Lcom/cooper/lithic/app/MainActivity;->noticeSequence:J
+
+    if-nez v0, :cond_29
+
+    const/4 v4, 0x1
+
+    goto :goto_2a
+
+    :cond_29
+    const/4 v4, 0x0
+
+    :goto_2a
+    invoke-direct {v1, v2, v3, v0, v4}, Lcom/cooper/lithic/app/MilestoneOpenRequest;-><init>(JLcom/cooper/lithic/data/repository/MilestoneNoticeRef;Z)V
+
+    invoke-direct {p0, v1}, Lcom/cooper/lithic/app/MainActivity;->setMilestoneRequest(Lcom/cooper/lithic/app/MilestoneOpenRequest;)V
+
+    .line 54
+    return-void
+.end method
+
+.method private final setMilestoneRequest(Lcom/cooper/lithic/app/MilestoneOpenRequest;)V
+    .registers 7
+    .param p1, "<set-?>"    # Lcom/cooper/lithic/app/MilestoneOpenRequest;
+
+    .line 46
+    iget-object v0, p0, Lcom/cooper/lithic/app/MainActivity;->milestoneRequest$delegate:Landroidx/compose/runtime/MutableState;
+
+    .local v0, "$this$setValue\\1":Landroidx/compose/runtime/MutableState;
+    const/4 v1, 0x0
+
+    .local v1, "property\\1":Lkotlin/reflect/KProperty;
+    move-object v2, p1
+
+    .local v2, "value\\1":Ljava/lang/Object;
+    move-object v3, p0
+
+    .local v3, "this_\\1":Ljava/lang/Object;
+    const/4 v4, 0x0
+
+    .line 191
+    .local v4, "$i$f$setValue\\1\\46":I
+    invoke-interface {v0, v2}, Landroidx/compose/runtime/MutableState;->setValue(Ljava/lang/Object;)V
+
+    .line 192
+    nop
+
+    .line 46
+    .end local v0    # "$this$setValue\\1":Landroidx/compose/runtime/MutableState;
+    .end local v1    # "property\\1":Lkotlin/reflect/KProperty;
+    .end local v2    # "value\\1":Ljava/lang/Object;
+    .end local v3    # "this_\\1":Ljava/lang/Object;
+    .end local v4    # "$i$f$setValue\\1\\46":I
+    return-void
+.end method
+
+
+# virtual methods
+.method protected onCreate(Landroid/os/Bundle;)V
+    .registers 18
+    .param p1, "savedInstanceState"    # Landroid/os/Bundle;
+
+    .line 63
+    move-object/from16 v2, p0
+
+    invoke-super/range {p0 .. p1}, Landroidx/activity/ComponentActivity;->onCreate(Landroid/os/Bundle;)V
+
+    .line 64
+    move-object v0, v2
+
+    check-cast v0, Landroidx/activity/ComponentActivity;
+
+    const/4 v1, 0x3
+
+    const/4 v7, 0x0
+
+    invoke-static {v0, v7, v7, v1, v7}, Landroidx/activity/EdgeToEdge;->enable$default(Landroidx/activity/ComponentActivity;Landroidx/activity/SystemBarStyle;Landroidx/activity/SystemBarStyle;ILjava/lang/Object;)V
+
+    .line 65
+    invoke-virtual {v2}, Lcom/cooper/lithic/app/MainActivity;->getApplication()Landroid/app/Application;
+
+    move-result-object v0
+
+    const-string v1, "null cannot be cast to non-null type com.cooper.lithic.app.LithicApplication"
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    check-cast v0, Lcom/cooper/lithic/app/LithicApplication;
+
+    invoke-virtual {v0}, Lcom/cooper/lithic/app/LithicApplication;->getAppContainer()Lcom/cooper/lithic/app/AppContainer;
+
+    move-result-object v8
+
+    .line 66
+    .local v8, "container":Lcom/cooper/lithic/app/AppContainer;
+    sget-object v0, Lcom/cooper/lithic/feature/appearance/AppearanceProvider;->INSTANCE:Lcom/cooper/lithic/feature/appearance/AppearanceProvider;
+
+    invoke-virtual {v2}, Lcom/cooper/lithic/app/MainActivity;->getApplication()Landroid/app/Application;
+
+    move-result-object v3
+
+    invoke-static {v3, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+
+    check-cast v3, Lcom/cooper/lithic/app/LithicApplication;
+
+    invoke-virtual {v0, v3}, Lcom/cooper/lithic/feature/appearance/AppearanceProvider;->get(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/feature/appearance/AppearanceController;
+
+    move-result-object v1
+
+    .line 67
+    .local v1, "appearance":Lcom/cooper/lithic/feature/appearance/AppearanceController;
+    invoke-virtual {v2}, Lcom/cooper/lithic/app/MainActivity;->getIntent()Landroid/content/Intent;
+
+    move-result-object v0
+
+    invoke-direct {v2, v0}, Lcom/cooper/lithic/app/MainActivity;->receiveNotice(Landroid/content/Intent;)V
+
+    .line 68
+    new-instance v0, Lcom/cooper/lithic/app/MainActivity$onCreate$resolveMilestone$1;
+
+    invoke-direct {v0, v8, v2, v7}, Lcom/cooper/lithic/app/MainActivity$onCreate$resolveMilestone$1;-><init>(Lcom/cooper/lithic/app/AppContainer;Lcom/cooper/lithic/app/MainActivity;Lkotlin/coroutines/Continuation;)V
+
+    move-object v6, v0
+
+    check-cast v6, Lkotlin/jvm/functions/Function2;
+
+    .line 74
+    .local v6, "resolveMilestone":Lkotlin/jvm/functions/Function2;
+    move-object v0, v2
+
+    check-cast v0, Landroidx/lifecycle/ViewModelStoreOwner;
+
+    const/4 v3, 0x0
+
+    .line 193
+    .local v3, "$i$f$viewModelFactory\\1\\74":I
+    new-instance v4, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+
+    invoke-direct {v4}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;-><init>()V
+
+    move-object v5, v4
+
+    .local v5, "$this$onCreate_u24lambda_u240\\2":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    const/4 v9, 0x0
+
+    .line 75
+    .local v9, "$i$a$-viewModelFactory-MainActivity$onCreate$holder$1\\2\\193\\0":I
+    new-instance v10, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda6;
+
+    invoke-direct {v10, v8}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda6;-><init>(Lcom/cooper/lithic/app/AppContainer;)V
+
+    .local v10, "initializer\\3":Lkotlin/jvm/functions/Function1;
+    move-object v11, v5
+
+    .local v11, "$this$initializer\\3":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    const/4 v12, 0x0
+
+    .line 194
+    .local v12, "$i$f$initializer\\3\\75":I
+    const-class v13, Lcom/cooper/lithic/app/LedgerUiStateHolder;
+
+    invoke-static {v13}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    move-result-object v13
+
+    invoke-virtual {v11, v13, v10}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;->addInitializer(Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)V
+
+    .line 195
+    nop
+
+    .line 76
+    .end local v10    # "initializer\\3":Lkotlin/jvm/functions/Function1;
+    .end local v11    # "$this$initializer\\3":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    .end local v12    # "$i$f$initializer\\3\\75":I
+    nop
+
+    .line 193
+    .end local v5    # "$this$onCreate_u24lambda_u240\\2":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    .end local v9    # "$i$a$-viewModelFactory-MainActivity$onCreate$holder$1\\2\\193\\0":I
+    invoke-virtual {v4}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;->build()Landroidx/lifecycle/ViewModelProvider$Factory;
+
+    move-result-object v3
+
+    .line 74
+    .end local v3    # "$i$f$viewModelFactory\\1\\74":I
+    new-instance v4, Landroidx/lifecycle/ViewModelProvider;
+
+    invoke-direct {v4, v0, v3}, Landroidx/lifecycle/ViewModelProvider;-><init>(Landroidx/lifecycle/ViewModelStoreOwner;Landroidx/lifecycle/ViewModelProvider$Factory;)V
+
+    .line 76
+    const-class v0, Lcom/cooper/lithic/app/LedgerUiStateHolder;
+
+    .line 74
+    invoke-virtual {v4, v0}, Landroidx/lifecycle/ViewModelProvider;->get(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;
+
+    move-result-object v0
+
+    move-object v3, v0
+
+    check-cast v3, Lcom/cooper/lithic/app/LedgerUiStateHolder;
+
+    .line 77
+    .local v3, "holder":Lcom/cooper/lithic/app/LedgerUiStateHolder;
+    move-object v0, v2
+
+    check-cast v0, Landroidx/lifecycle/ViewModelStoreOwner;
+
+    const/4 v4, 0x0
+
+    .line 196
+    .local v4, "$i$f$viewModelFactory\\4\\77":I
+    new-instance v5, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+
+    invoke-direct {v5}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;-><init>()V
+
+    move-object v9, v5
+
+    .local v9, "$this$onCreate_u24lambda_u241\\5":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    const/4 v10, 0x0
+
+    .line 78
+    .local v10, "$i$a$-viewModelFactory-MainActivity$onCreate$backups$1\\5\\196\\0":I
+    new-instance v11, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda7;
+
+    invoke-direct {v11, v8, v2}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda7;-><init>(Lcom/cooper/lithic/app/AppContainer;Lcom/cooper/lithic/app/MainActivity;)V
+
+    .local v11, "initializer\\6":Lkotlin/jvm/functions/Function1;
+    move-object v12, v9
+
+    .local v12, "$this$initializer\\6":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    const/4 v13, 0x0
+
+    .line 197
+    .local v13, "$i$f$initializer\\6\\78":I
+    const-class v14, Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+
+    invoke-static {v14}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    move-result-object v14
+
+    invoke-virtual {v12, v14, v11}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;->addInitializer(Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)V
+
+    .line 198
+    nop
+
+    .line 84
+    .end local v11    # "initializer\\6":Lkotlin/jvm/functions/Function1;
+    .end local v12    # "$this$initializer\\6":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    .end local v13    # "$i$f$initializer\\6\\78":I
+    nop
+
+    .line 196
+    .end local v9    # "$this$onCreate_u24lambda_u241\\5":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    .end local v10    # "$i$a$-viewModelFactory-MainActivity$onCreate$backups$1\\5\\196\\0":I
+    invoke-virtual {v5}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;->build()Landroidx/lifecycle/ViewModelProvider$Factory;
+
+    move-result-object v4
+
+    .line 77
+    .end local v4    # "$i$f$viewModelFactory\\4\\77":I
+    new-instance v5, Landroidx/lifecycle/ViewModelProvider;
+
+    invoke-direct {v5, v0, v4}, Landroidx/lifecycle/ViewModelProvider;-><init>(Landroidx/lifecycle/ViewModelStoreOwner;Landroidx/lifecycle/ViewModelProvider$Factory;)V
+
+    .line 84
+    const-class v0, Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+
+    .line 77
+    invoke-virtual {v5, v0}, Landroidx/lifecycle/ViewModelProvider;->get(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;
+
+    move-result-object v0
+
+    move-object v4, v0
+
+    check-cast v4, Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+
+    .line 85
+    .local v4, "backups":Lcom/cooper/lithic/feature/settings/BackupExportViewModel;
+    move-object v0, v2
+
+    check-cast v0, Landroidx/lifecycle/ViewModelStoreOwner;
+
+    const/4 v5, 0x0
+
+    .line 199
+    .local v5, "$i$f$viewModelFactory\\7\\85":I
+    new-instance v9, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+
+    invoke-direct {v9}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;-><init>()V
+
+    move-object v10, v9
+
+    .local v10, "$this$onCreate_u24lambda_u242\\8":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    const/4 v11, 0x0
+
+    .line 86
+    .local v11, "$i$a$-viewModelFactory-MainActivity$onCreate$restores$1\\8\\199\\0":I
+    new-instance v12, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda8;
+
+    invoke-direct {v12, v2, v8}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda8;-><init>(Lcom/cooper/lithic/app/MainActivity;Lcom/cooper/lithic/app/AppContainer;)V
+
+    .local v12, "initializer\\9":Lkotlin/jvm/functions/Function1;
+    move-object v13, v10
+
+    .local v13, "$this$initializer\\9":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    const/4 v14, 0x0
+
+    .line 200
+    .local v14, "$i$f$initializer\\9\\86":I
+    const-class v15, Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+
+    invoke-static {v15}, Lkotlin/jvm/internal/Reflection;->getOrCreateKotlinClass(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    move-result-object v15
+
+    invoke-virtual {v13, v15, v12}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;->addInitializer(Lkotlin/reflect/KClass;Lkotlin/jvm/functions/Function1;)V
+
+    .line 201
+    nop
+
+    .line 87
+    .end local v12    # "initializer\\9":Lkotlin/jvm/functions/Function1;
+    .end local v13    # "$this$initializer\\9":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    .end local v14    # "$i$f$initializer\\9\\86":I
+    nop
+
+    .line 199
+    .end local v10    # "$this$onCreate_u24lambda_u242\\8":Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;
+    .end local v11    # "$i$a$-viewModelFactory-MainActivity$onCreate$restores$1\\8\\199\\0":I
+    invoke-virtual {v9}, Landroidx/lifecycle/viewmodel/InitializerViewModelFactoryBuilder;->build()Landroidx/lifecycle/ViewModelProvider$Factory;
+
+    move-result-object v5
+
+    .line 85
+    .end local v5    # "$i$f$viewModelFactory\\7\\85":I
+    new-instance v9, Landroidx/lifecycle/ViewModelProvider;
+
+    invoke-direct {v9, v0, v5}, Landroidx/lifecycle/ViewModelProvider;-><init>(Landroidx/lifecycle/ViewModelStoreOwner;Landroidx/lifecycle/ViewModelProvider$Factory;)V
+
+    .line 87
+    const-class v0, Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+
+    .line 85
+    invoke-virtual {v9, v0}, Landroidx/lifecycle/ViewModelProvider;->get(Ljava/lang/Class;)Landroidx/lifecycle/ViewModel;
+
+    move-result-object v0
+
+    move-object v5, v0
+
+    check-cast v5, Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+
+    .line 88
+    .local v5, "restores":Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;
+    move-object v9, v2
+
+    check-cast v9, Landroidx/activity/ComponentActivity;
+
+    new-instance v0, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda9;
+
+    invoke-direct/range {v0 .. v6}, Lcom/cooper/lithic/app/MainActivity$$ExternalSyntheticLambda9;-><init>(Lcom/cooper/lithic/feature/appearance/AppearanceController;Lcom/cooper/lithic/app/MainActivity;Lcom/cooper/lithic/app/LedgerUiStateHolder;Lcom/cooper/lithic/feature/settings/BackupExportViewModel;Lcom/cooper/lithic/feature/settings/BackupRestoreViewModel;Lkotlin/jvm/functions/Function2;)V
+
+    const v2, 0x2074b073
+
+    const/4 v10, 0x1
+
+    invoke-static {v2, v10, v0}, Landroidx/compose/runtime/internal/ComposableLambdaKt;->composableLambdaInstance(IZLjava/lang/Object;)Landroidx/compose/runtime/internal/ComposableLambda;
+
+    move-result-object v0
+
+    check-cast v0, Lkotlin/jvm/functions/Function2;
+
+    invoke-static {v9, v7, v0, v10, v7}, Landroidx/activity/compose/ComponentActivityKt;->setContent$default(Landroidx/activity/ComponentActivity;Landroidx/compose/runtime/CompositionContext;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)V
+
+    .line 123
+    return-void
+.end method
+
+.method protected onNewIntent(Landroid/content/Intent;)V
+    .registers 3
+    .param p1, "intent"    # Landroid/content/Intent;
+
+    const-string v0, "intent"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 57
+    invoke-super {p0, p1}, Landroidx/activity/ComponentActivity;->onNewIntent(Landroid/content/Intent;)V
+
+    .line 58
+    invoke-virtual {p0, p1}, Lcom/cooper/lithic/app/MainActivity;->setIntent(Landroid/content/Intent;)V
+
+    .line 59
+    invoke-direct {p0, p1}, Lcom/cooper/lithic/app/MainActivity;->receiveNotice(Landroid/content/Intent;)V
+
+    .line 60
+    return-void
+.end method
+
