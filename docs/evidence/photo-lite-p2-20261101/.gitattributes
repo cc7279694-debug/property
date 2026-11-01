@@ -1,0 +1,5 @@
+# Match existing V1-A1 evidence conventions: preserve bytes and accept captured CRLF.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.log binary
+stdout.txt binary
+stderr.txt binary

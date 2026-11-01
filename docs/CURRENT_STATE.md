@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-10-31（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-11-01（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **PHOTO-LITE P2 — READY_FOR_INDEPENDENT_REVIEW / PREVIEW13（2026-11-01，桌面实施与个人候选）**：用户恢复桌面构建并要求新图标随包；RAM6.720GiB准入。继承`d75db9d`产品源码不再修改，46定向JVM全PASS，Private Trial App/Test构建、AndroidTest Kotlin编译及Lint exit0（0错16警告）。实际`.preview.debug`/code29/`0.1.0-preview.13-debug`、原证书、正常Application/Main、照片DEX开关及接线/权限/native通过离线审计；透明新图标与源码字节/像素相同，前景约23%、满铺背景实际进入APK。唯一候选存非build目录，18,079,815字节、SHA及路径见[P2报告](evidence/LITHIC-PHOTO-LITE-P2-Integration.md)；14旧APK保持。前两次桌面图标核验器失败原样保留，修正表示读取后通过，App未改。普通Debug/Release默认身份与PHOTO=false保持，只Trial Debug开放既有API恰好36/真实Picker、PNG<2MiB/640px的首次单物品封面；无替换/移除/GC。照片39 Android方法只编译NOT_RUN，真实SAF备份恢复/升级/资源峰值/视觉仍未验证；不能在普通Trial测试宿主执行独立合成存储方法。无手机/ADB/模拟器/安装或私人数据操作；V1_RELEASE_NO_GO、严格JPEG/正式媒体导入BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及全部历史门禁保持。只推P2工作分支后停止等待ChatGPT审查，不自动P3、设备执行或合并。
 
 - **LAUNCHER ICON — SOURCE_PREPARED / BUILD_DEFERRED（2026-10-31）**：用户补充要求原黑石金光LOGO去黑边、清晰且不放大。沿用P2工作分支，只将内置黑底圆角图改为透明编辑衍生前景／全铺满炭灰背景；原图保留，23% inset补偿主体比例。已实际查看浅深桌面、圆形／圆角及32～128px分层模拟，真实Android Launcher视觉仍NOT_RUN；不是手机截图或视觉验收。见[图标适配报告](evidence/LITHIC-Launcher-Icon-Adaptation.md)。用户构建暂缓仍有效，本轮Gradle/JVM/Lint/APK均0；P2照片及原构建版本配置不改，PREVIEW13_NOT_BUILT。14旧APK保持，无设备／ADB／私人数据操作。原图标历史编译结果不扩为当前结果；独立审查、资源编译和实际Android显示待后续。
 

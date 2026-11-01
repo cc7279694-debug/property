@@ -1,0 +1,38 @@
+[
+  {
+    "label": "build-1",
+    "exitCode": 0,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.preview.debug",
+      "debugVersionCode": 29,
+      "debugVersionName": "0.1.0-preview.13-debug",
+      "debugPhotoLiteEnabled": "true",
+      "releasePackage": "com.cooper.lithic",
+      "releasePhotoLiteEnabled": "false",
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial",
+      "debugKeyPresent": true
+    }
+  },
+  {
+    "label": "config-default",
+    "exitCode": 0,
+    "identity": {
+      "debugPackage": "com.cooper.lithic.debug",
+      "debugVersionCode": 17,
+      "debugVersionName": "0.1.0-m22-debug",
+      "debugPhotoLiteEnabled": "false",
+      "releasePackage": "com.cooper.lithic",
+      "releasePhotoLiteEnabled": "false",
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build",
+      "debugKeyPresent": true
+    }
+  },
+  {
+    "label": "config-conflict",
+    "exitCode": 1,
+    "expectedRejection": "PHOTO-LITE cannot share private trial or historical verification identities",
+    "status": "PASS_EXPECTED_REJECTION"
+  }
+]
