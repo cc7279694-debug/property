@@ -48,10 +48,13 @@ class PhotoLiteCoverChangePolicyTest {
         val target = PhotoLiteTarget("generation", Any(), row, change = PhotoLiteCoverChange.REPLACE)
         val changed = listOf(row.copy(name = "changed"), row.copy(note = "changed"),
             row.copy(startedOn = row.startedOn.plusDays(1)), row.copy(endedOn = row.startedOn),
-            row.copy(categoryId = NEW), row.copy(updatedAt = row.updatedAt.plusNanos(1)),
+            row.copy(categoryId = OTHER_CATEGORY), row.copy(updatedAt = row.updatedAt.plusNanos(1)),
             row.copy(createdAt = row.createdAt.plusNanos(1)), row.copy(id = NEW),
             row.copy(endReason = "changed"))
-        changed.forEach { assertFalse(target.matchesProject(it)) }
+        changed.forEach {
+            assertFalse("Every stale-row fixture must actually change the captured row", row == it)
+            assertFalse(target.matchesProject(it))
+        }
         assertFalse(target.matchesProject(null))
     }
 
@@ -80,5 +83,6 @@ class PhotoLiteCoverChangePolicyTest {
     private companion object {
         const val OLD = "00000000-0000-4000-8000-000000000302"
         const val NEW = "00000000-0000-4000-8000-000000000303"
+        const val OTHER_CATEGORY = "00000000-0000-4000-8000-000000000304"
     }
 }
