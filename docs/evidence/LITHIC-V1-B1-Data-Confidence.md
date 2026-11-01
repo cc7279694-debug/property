@@ -40,3 +40,13 @@
 3. 真机SAF检查与完整备份/恢复、覆盖升级、异常中断仍需独立授权和隔离数据；VERIFIED不能替代这些门禁。后续旧照片清理必须另审所有项目/订阅共享引用、当前Owner、备份快照占用、未确认写入与物理文件身份/独占资格、故障恢复及backup4完整性；本阶段只统计留存，不授予删除资格。
 
 **V1-B1 SOURCE_PREPARED / BUILD_DEFERRED / PREVIEW15_NOT_BUILT。** 不登记正式实施或产品验收PASS。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及旧M10/M20/M22/C3/NOT_RUN/UNKNOWN保持。无ADB、手机、AVD、安装、真实账本访问或恢复覆盖；只提交推送B1分支，停止等待继续验证授权，不合并main、不进入V1-B2。
+
+## 2026-11-01 重新准入与阻塞（本次最新）
+
+用户明确恢复B1定向测试/编译/Lint/Preview15核验。本次B1本地与远端均为`af5528b689cf8c034947ba259b1693bea396e6c8`且干净；重新核对16份历史APK大小/SHA未变，未修改产品或Private Trial版本。
+
+- 初读RAM3.992GiB；独立采样曾到4.053368GiB，但正式命令启动前门禁实测**3.935GiB**，Python包装器exit1、**Gradle没有启动**。静态准备结束前复核降至**2.478428GiB**，继续保持资源阻塞，不以较早的瞬时样本作为启动依据。[本次门禁](v1-b1-20261101/desktop-1/test-1/resource-blocked.json)与[结束资源回执](v1-b1-20261101/desktop-1/final-resource-check.json)保留；不是JVM测试FAIL。
+- 只准备本轮离线command receipt、Preview15/code31实物审计及P3原图标审计脚本；Python AST与PowerShell AST静态语法检查通过，**没有执行SDK或构建**。正式构建脚本额外记录启动时App树及App clean状态；将来产物审计必须实际核版本/Manifest/DEX/原证书、Preview14升级身份及16份旧APK，不能把这些脚本当作已核验结果。
+- 用户已被告知需额外释放内存，尚未取得足够资源。本轮55新JVM、12新Android及相关回归仍NOT_RUN；编译/构建/Lint/真实SAF及设备运行全部NOT_RUN。没有Preview15目录/产物/SHA，原版本配置仍Preview14/code30，不生成替代包或签名。
+
+当前：**V1-B1 DESKTOP VERIFICATION — RESOURCE_BLOCKED / PREVIEW15_NOT_BUILT**。原恢复授权继续限定桌面；只有再次实测≥4GiB且用户没有新的暂停要求时，才继续原定B1验证与唯一候选交付。不降低门槛、不操作手机、无main/V1-B2，V1_RELEASE_NO_GO与STRICT_JPEG_IMPORT_BLOCKED保持。

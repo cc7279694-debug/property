@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **V1-B1桌面验证恢复 — RESOURCE_BLOCKED（2026-11-01，最新）**：用户重新授权满足RAM门槛后继续测试/编译/Lint与Preview15/code31。源码`af5528b`远端一致干净、16份旧APK/Preview14大小SHA保持；初读3.992GiB、瞬时4.053368GiB，正式命令前实测3.935GiB被4GiB门禁拦住，结束复核2.478428GiB。Python包装器exit1，Gradle0、SDK审计0、JVM/Android编译/Lint全部NOT_RUN；只准备并做审计脚本静态语法检查，无新App源码或版本改动。Preview15未生成，实际仍Preview14/code30源配置；见[集中报告最新段](evidence/LITHIC-V1-B1-Data-Confidence.md)。恢复授权未扩大设备范围，后续只在资源实测满足且无新暂停要求时继续原B1工作；不操作手机/ADB/AVD、不合并main或V1-B2。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及历史门禁保持。
+
+
 - **V1-B1 Data Confidence — SOURCE_PREPARED / BUILD_DEFERRED（2026-11-01）**：从用户锁定P3`dd31ce4`远端一致干净状态建立`codex/v1-b1-data-confidence`。已落备份文件检查Service/SAF/typed四结果/取消与旧选择排空、settings照片元数据聚合与generation作用域，沿用原格式/Owner/导航保护；只允许本次完整认证UUID检查暂存的精确清理，不删除业务照片/metadata、不GC。主机首次命令前RAM3.604GiB低于4GiB，Gradle未启动；用户明确“先完成源码，构建暂缓”，新55 JVM/12 Android断言以及Kotlin编译/构建/Lint均NOT_RUN，未观察RED。16份历史APK/Preview14、253份范围外main/schema及全部旧测试保持。Private Trial仍原code30配置，Preview15/code31待恢复验证后才递增与构建，没有新APK可用。见[集中源码及边界报告](evidence/LITHIC-V1-B1-Data-Confidence.md)。照片字节仅登记估算（含两类历史引用去重），旧照片仍入完整备份；VERIFIED不代表恢复激活/Android可读性或严格JPEG安全。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及全部旧门禁不改。当前下一步仅在用户恢复且RAM≥4GiB后继续B1定向测试/编译/Lint及唯一Preview15审计；无手机/ADB/AVD/账本操作，不合并main或自动V1-B2。
 
 
