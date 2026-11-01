@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Transparent stone only. 23% inset compensates the adaptive 108/72 viewport
-     and keeps the stone at about 64.5% width / 68.1% height of the visible icon. -->
+<!-- Full-bleed scene restored from the selected original, without a baked tile/frame.
+     72/108 preserves the original composition in the static adaptive viewport. -->
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:inset="23%">
+    android:inset="16.666667%">
     <bitmap
-        android:src="@drawable/ic_launcher_stone"
+        android:src="@drawable/ic_launcher_scene_p3"
         android:gravity="fill"
         android:filter="true" />
 </inset>

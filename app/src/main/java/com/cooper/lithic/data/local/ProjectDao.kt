@@ -154,4 +154,20 @@ interface ProjectDao {
         expectedNote: String?, expectedCreatedAt: Instant, expectedUpdatedAt: Instant,
         coverAssetId: String, updatedAt: Instant,
     ): Int
+
+    /** PHOTO-LITE only: replace or clear the reference, retaining every other loaded field. */
+    @Query("""
+        UPDATE long_term_projects SET coverAssetId = :coverAssetId, updatedAt = :updatedAt
+        WHERE id = :id AND name = :expectedName AND categoryId = :expectedCategoryId
+            AND startedOn = :expectedStartedOn AND endedOn IS :expectedEndedOn
+            AND endReason IS :expectedEndReason AND coverAssetId IS :expectedCoverAssetId
+            AND note IS :expectedNote AND createdAt = :expectedCreatedAt
+            AND updatedAt = :expectedUpdatedAt
+    """)
+    suspend fun changePhotoLiteCoverIfUnchanged(
+        id: String, expectedName: String, expectedCategoryId: String, expectedStartedOn: LocalDate,
+        expectedEndedOn: LocalDate?, expectedEndReason: String?, expectedCoverAssetId: String?,
+        expectedNote: String?, expectedCreatedAt: Instant, expectedUpdatedAt: Instant,
+        coverAssetId: String?, updatedAt: Instant,
+    ): Int
 }

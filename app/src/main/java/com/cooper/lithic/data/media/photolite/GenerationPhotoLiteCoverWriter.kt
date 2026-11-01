@@ -24,7 +24,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 
-/** Experimental add-only writer. No picker, decoding, replacement, deletion, or owner creation. */
+/** Experimental reference writer. No picker, decoding, media reclamation, or owner creation. */
 class GenerationPhotoLiteCoverWriter(
     private val generation: ManagedGeneration,
     private val isCurrentOwner: () -> Boolean,
@@ -35,7 +35,7 @@ class GenerationPhotoLiteCoverWriter(
     override fun isCurrent(): Boolean = isCurrentOwner() &&
         !generation.coordinator.isRetired && generation.database.isOpen
 
-    override suspend fun capture(projectId: String): PhotoLiteCaptureResult = withContext(Dispatchers.IO) {
+    override suspend fun capture(projectId: String, change: PhotoLiteCoverChange): PhotoLiteCaptureResult = withContext(Dispatchers.IO) {
         if (!StoredValueValidation.isUuid(projectId)) {
             return@withContext PhotoLiteCaptureResult.Rejected(PhotoLiteFailure.STALE_PROJECT)
         }
@@ -48,10 +48,11 @@ class GenerationPhotoLiteCoverWriter(
                 checkOwner()
                 val project = generation.database.projectDao().findProject(projectId)
                     ?: reject(PhotoLiteFailure.STALE_PROJECT)
-                if (project.coverAssetId != null) reject(PhotoLiteFailure.ALREADY_HAS_COVER)
+                val admissionFailure = change.admissionFailure(project.coverAssetId)
+                if (admissionFailure != null) reject(admissionFailure)
                 currentCoroutineContext().ensureActive()
                 checkOwner()
-                PhotoLiteCaptureResult.Ready(PhotoLiteTarget(generationId, ownerKey, project))
+                PhotoLiteCaptureResult.Ready(PhotoLiteTarget(generationId, ownerKey, project, change = change))
             }
         } catch (cancelled: CancellationException) {
             throw cancelled
@@ -67,6 +68,9 @@ class GenerationPhotoLiteCoverWriter(
     override suspend fun commit(target: PhotoLiteTarget, png: PhotoLitePng): PhotoLiteCommitResult {
         if (target.ownerKey !== ownerKey || target.generationId != generationId) {
             return PhotoLiteCommitResult.Rejected(PhotoLiteFailure.OWNER_UNAVAILABLE)
+        }
+        if (target.change == PhotoLiteCoverChange.REMOVE) {
+            return PhotoLiteCommitResult.Rejected(PhotoLiteFailure.INVALID_OPERATION)
         }
         if (!target.claim()) return PhotoLiteCommitResult.Rejected(PhotoLiteFailure.DUPLICATE)
         val caller = currentCoroutineContext()
@@ -88,9 +92,8 @@ class GenerationPhotoLiteCoverWriter(
                         checkpoint()
                         generation.settings.backupRecordZoneWithinSnapshot(generation.coordinator)
                         checkpoint()
-                        if (target.expected.coverAssetId != null) reject(PhotoLiteFailure.ALREADY_HAS_COVER)
                         val dao = generation.database.projectDao()
-                        if (dao.findProject(target.projectId) != target.expected) reject(PhotoLiteFailure.STALE_PROJECT)
+                        if (!target.matchesProject(dao.findProject(target.projectId))) reject(PhotoLiteFailure.STALE_PROJECT)
                         if (!StoredValueValidation.isUuid(target.nonce)) reject(PhotoLiteFailure.INVALID_IMAGE)
                         val relative = "media/${target.nonce}.png"
                         fileStarted = true
@@ -108,7 +111,7 @@ class GenerationPhotoLiteCoverWriter(
                                     png.byteLength, png.sha256,
                                 ),
                             )
-                            if (addCover(dao = dao, expected = target.expected, assetId = target.nonce) != 1) {
+                            if (setCover(dao = dao, expected = target.expected, assetId = target.nonce) != 1) {
                                 throw CompareAndSetConflict()
                             }
                             // Cancellation/owner change before transaction completion rolls back
@@ -138,11 +141,59 @@ class GenerationPhotoLiteCoverWriter(
         }
     }
 
-    private suspend fun addCover(
+    /** Clear only the current record's reference. Old metadata/files remain valid backup payloads. */
+    override suspend fun remove(target: PhotoLiteTarget): PhotoLiteCommitResult {
+        if (target.ownerKey !== ownerKey || target.generationId != generationId) {
+            return PhotoLiteCommitResult.Rejected(PhotoLiteFailure.OWNER_UNAVAILABLE)
+        }
+        if (target.change != PhotoLiteCoverChange.REMOVE) {
+            return PhotoLiteCommitResult.Rejected(PhotoLiteFailure.INVALID_OPERATION)
+        }
+        if (!target.claim()) return PhotoLiteCommitResult.Rejected(PhotoLiteFailure.DUPLICATE)
+        val caller = currentCoroutineContext()
+        return withContext(NonCancellable) {
+            withContext(Dispatchers.IO) {
+                var transactionEntered = false
+                try {
+                    val checkpoint = { caller.ensureActive(); checkOwner() }
+                    checkpoint()
+                    generation.coordinator.withWrite {
+                        checkpoint()
+                        generation.settings.backupRecordZoneWithinSnapshot(generation.coordinator)
+                        checkpoint()
+                        val dao = generation.database.projectDao()
+                        if (!target.matchesProject(dao.findProject(target.projectId))) reject(PhotoLiteFailure.STALE_PROJECT)
+                        transactionEntered = true
+                        generation.database.withTransaction {
+                            checkpoint()
+                            if (setCover(dao, target.expected, null) != 1) throw CompareAndSetConflict()
+                            checkpoint()
+                        }
+                        // Neither this transaction nor a known/unknown failure removes any media.
+                        if (isCurrent()) PhotoLiteCommitResult.Cleared else PhotoLiteCommitResult.Unknown
+                    }
+                } catch (_: CompareAndSetConflict) {
+                    PhotoLiteCommitResult.Rejected(PhotoLiteFailure.STALE_PROJECT)
+                } catch (cancelled: CancellationException) {
+                    if (transactionEntered) PhotoLiteCommitResult.Unknown else throw cancelled
+                } catch (known: Rejected) {
+                    if (transactionEntered) PhotoLiteCommitResult.Unknown else PhotoLiteCommitResult.Rejected(known.reason)
+                } catch (_: Exception) {
+                    when {
+                        transactionEntered -> PhotoLiteCommitResult.Unknown
+                        !isCurrent() -> PhotoLiteCommitResult.Rejected(PhotoLiteFailure.OWNER_UNAVAILABLE)
+                        else -> PhotoLiteCommitResult.Rejected(PhotoLiteFailure.STORAGE_FAILED)
+                    }
+                }
+            }
+        }
+    }
+
+    private suspend fun setCover(
         dao: com.cooper.lithic.data.local.ProjectDao,
         expected: LongTermProjectEntity,
-        assetId: String,
-    ): Int = dao.addPhotoLiteCoverIfUnchanged(
+        assetId: String?,
+    ): Int = dao.changePhotoLiteCoverIfUnchanged(
         expected.id, expected.name, expected.categoryId, expected.startedOn, expected.endedOn,
         expected.endReason, expected.coverAssetId, expected.note, expected.createdAt, expected.updatedAt,
         assetId, maxOf(Instant.now(), expected.updatedAt.plusNanos(1)),

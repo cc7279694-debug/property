@@ -397,11 +397,242 @@ class GenerationPhotoLiteCoverWriterTest {
         assertEquals(png.width, reopenedImage.width); assertEquals(png.height, reopenedImage.height)
     }
 
-    private suspend fun capture(): PhotoLiteTarget = (writer.capture(project.id) as PhotoLiteCaptureResult.Ready).target
-    private fun picture(): PhotoLitePng {
+    @Test fun replacement_and_clear_preserve_old_registered_media_business_facts_and_reopen_without_a_cover() = runBlocking {
+        val before = generation.backupSnapshotSource().capture()
+        val first = picture(); val second = picture(0xff426b56.toInt())
+        val firstId = install(first)
+        val beforeReplace = generation.database.projectDao().findProject(project.id)!!
+        val replace = capture(PhotoLiteCoverChange.REPLACE)
+        assertEquals(firstId, replace.originalCoverAssetId)
+        val secondId = install(second, target = replace)
+        val afterReplace = generation.database.projectDao().findProject(project.id)!!
+        assertEquals(beforeReplace.copy(coverAssetId = secondId, updatedAt = afterReplace.updatedAt), afterReplace)
+        assertTrue(afterReplace.updatedAt > beforeReplace.updatedAt)
+        assertAsset(firstId, first); assertAsset(secondId, second)
+        val remove = capture(PhotoLiteCoverChange.REMOVE)
+        assertEquals(secondId, remove.originalCoverAssetId)
+        assertEquals(PhotoLiteCommitResult.Cleared, writer.remove(remove))
+        val afterClear = generation.database.projectDao().findProject(project.id)!!
+        assertEquals(afterReplace.copy(coverAssetId = null, updatedAt = afterClear.updatedAt), afterClear)
+        assertTrue(afterClear.updatedAt > afterReplace.updatedAt)
+        assertEquals(before.data.projectMoneyEvents, generation.backupSnapshotSource().capture().data.projectMoneyEvents)
+        assertEquals(2, generation.database.mediaDao().list().size)
+        assertAsset(firstId, first); assertAsset(secondId, second)
+        val reader = GenerationCoverReader(generation) { current === generation }
+        assertEquals(CoverReadResult.NoCover, reader.read(CoverReference(CoverOwnerType.PROJECT, project.id, null)))
+        assertEquals(CoverReadResult.Unavailable(CoverReadFailure.RECORD_MISMATCH),
+            reader.read(CoverReference(CoverOwnerType.PROJECT, project.id, secondId)))
+        val reopened = reopen()
+        assertNull(reopened.database.projectDao().findProject(project.id)!!.coverAssetId)
+        assertEquals(2, reopened.database.mediaDao().list().size)
+        assertArrayEquals(first.copyBytes(), File(reopened.directory, "media/$firstId.png").readBytes())
+        assertArrayEquals(second.copyBytes(), File(reopened.directory, "media/$secondId.png").readBytes())
+        assertEquals(CoverReadResult.NoCover, GenerationCoverReader(reopened) { current === reopened }
+            .read(CoverReference(CoverOwnerType.PROJECT, project.id, null)))
+    }
+
+    @Test fun two_replacements_and_clear_do_not_delete_a_shared_original_cover() = runBlocking {
+        val first = picture(); val firstId = install(first)
+        val shared = project.copy(id = uuid(), name = "共享同一封面的合成物品", coverAssetId = firstId)
+        generation.coordinator.withWrite {
+            generation.database.projectDao().insertProject(shared)
+            generation.database.projectDao().insertEvent(ProjectMoneyEventEntity(uuid(), shared.id,
+                MoneyDirection.OUTLAY, 4321, shared.startedOn, role = ProjectMoneyEventRole.INITIAL, operationId = uuid()))
+        }
+        val second = picture(0xff426b56.toInt()); val secondId = install(second, PhotoLiteCoverChange.REPLACE)
+        val third = picture(0xff936f42.toInt()); val thirdId = install(third, PhotoLiteCoverChange.REPLACE)
+        assertEquals(thirdId, generation.database.projectDao().findProject(project.id)!!.coverAssetId)
+        assertEquals(PhotoLiteCommitResult.Cleared, writer.remove(capture(PhotoLiteCoverChange.REMOVE)))
+        assertEquals(firstId, generation.database.projectDao().findProject(shared.id)!!.coverAssetId)
+        assertAsset(firstId, first); assertAsset(secondId, second); assertAsset(thirdId, third)
+        assertEquals(3, generation.database.mediaDao().list().size)
+        val reader = GenerationCoverReader(generation) { current === generation }
+        assertArrayEquals(first.copyBytes(), (reader.read(CoverReference(CoverOwnerType.PROJECT,
+            shared.id, firstId)) as CoverReadResult.Ready).image.bytes)
+    }
+
+    @Test fun replacement_and_clear_capture_cancel_are_read_only_and_require_an_existing_cover() = runBlocking {
+        assertEquals(PhotoLiteCaptureResult.Rejected(PhotoLiteFailure.NO_COVER), writer.capture(project.id, PhotoLiteCoverChange.REPLACE))
+        assertEquals(PhotoLiteCaptureResult.Rejected(PhotoLiteFailure.NO_COVER), writer.capture(project.id, PhotoLiteCoverChange.REMOVE))
+        val png = picture(); val id = install(png)
+        val before = generation.backupSnapshotSource().capture()
+        capture(PhotoLiteCoverChange.REPLACE); capture(PhotoLiteCoverChange.REMOVE)
+        assertEquals(before, generation.backupSnapshotSource().capture())
+        assertEquals(1, File(generation.directory, "media").listFiles()!!.size)
+        assertAsset(id, png)
+    }
+
+    @Test fun stale_original_reference_and_other_changed_fields_refuse_replacement_or_clear() = runBlocking {
+        val first = picture(); val firstId = install(first)
+        val staleReplace = capture(PhotoLiteCoverChange.REPLACE)
+        val staleRemove = capture(PhotoLiteCoverChange.REMOVE)
+        val second = picture(0xff426b56.toInt()); val secondId = install(second, PhotoLiteCoverChange.REPLACE)
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.STALE_PROJECT), writer.commit(staleReplace, picture()))
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.STALE_PROJECT), writer.remove(staleRemove))
+        val sameTimestampEdit = capture(PhotoLiteCoverChange.REMOVE)
+        generation.coordinator.withWrite {
+            generation.database.openHelper.writableDatabase.execSQL("UPDATE long_term_projects SET note=? WHERE id=?",
+                arrayOf("编辑备注但保留时间戳", project.id))
+        }
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.STALE_PROJECT), writer.remove(sameTimestampEdit))
+        assertEquals(secondId, generation.database.projectDao().findProject(project.id)!!.coverAssetId)
+        assertEquals("编辑备注但保留时间戳", generation.database.projectDao().findProject(project.id)!!.note)
+        assertEquals(2, generation.database.mediaDao().list().size)
+        assertEquals(2, File(generation.directory, "media").listFiles()!!.size)
+        assertAsset(firstId, first); assertAsset(secondId, second)
+    }
+
+    @Test fun operation_intent_and_single_claim_prevent_cross_operation_and_duplicate_writes() = runBlocking {
+        val add = capture()
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.INVALID_OPERATION), writer.remove(add))
+        val firstId = install(picture(), target = add)
+        val replace = capture(PhotoLiteCoverChange.REPLACE)
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.INVALID_OPERATION), writer.remove(replace))
+        val secondId = install(picture(0xff426b56.toInt()), target = replace)
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.DUPLICATE), writer.commit(replace, picture()))
+        val remove = capture(PhotoLiteCoverChange.REMOVE)
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.INVALID_OPERATION), writer.commit(remove, picture()))
+        assertEquals(PhotoLiteCommitResult.Cleared, writer.remove(remove))
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.DUPLICATE), writer.remove(remove))
+        assertNull(generation.database.projectDao().findProject(project.id)!!.coverAssetId)
+        assertNotEquals(firstId, secondId)
+        assertEquals(2, generation.database.mediaDao().list().size)
+    }
+
+    @Test fun replacement_and_clear_are_revoked_by_owner_change_without_reopening_the_old_database() = runBlocking {
+        val png = picture(); val id = install(png)
+        val replace = capture(PhotoLiteCoverChange.REPLACE); val remove = capture(PhotoLiteCoverChange.REMOVE)
+        val anotherWriter = GenerationPhotoLiteCoverWriter(generation) { current === generation }
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.OWNER_UNAVAILABLE), anotherWriter.remove(remove))
+        val reopened = reopen()
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.OWNER_UNAVAILABLE), writer.commit(replace, png))
+        assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.OWNER_UNAVAILABLE), writer.remove(remove))
+        assertFalse(generation.database.isOpen)
+        assertEquals(id, reopened.database.projectDao().findProject(project.id)!!.coverAssetId)
+        assertEquals(1, reopened.database.mediaDao().list().size)
+        assertArrayEquals(png.copyBytes(), File(reopened.directory, "media/$id.png").readBytes())
+    }
+
+    @Test fun cancelled_replacement_and_clear_while_waiting_for_write_gate_do_not_publish_late_changes() = runBlocking {
+        val png = picture(); val id = install(png)
+        for (change in listOf(PhotoLiteCoverChange.REPLACE, PhotoLiteCoverChange.REMOVE)) {
+            val target = capture(change); val before = generation.backupSnapshotSource().capture()
+            val entered = CompletableDeferred<Unit>(); val release = CompletableDeferred<Unit>()
+            val blocker = launch(Dispatchers.IO) { generation.coordinator.withWrite { entered.complete(Unit); release.await() } }
+            entered.await()
+            val operation = async(start = CoroutineStart.UNDISPATCHED) {
+                if (change == PhotoLiteCoverChange.REPLACE) writer.commit(target, picture()) else writer.remove(target)
+            }
+            operation.cancel(); release.complete(Unit); blocker.join()
+            try { operation.await(); fail("Cancelled change unexpectedly completed") } catch (_: CancellationException) { }
+            assertEquals(before, generation.backupSnapshotSource().capture())
+            assertEquals(1, File(generation.directory, "media").listFiles()!!.size)
+            assertAsset(id, png)
+        }
+    }
+
+    @Test fun failed_clear_is_unknown_preserves_original_cover_and_cannot_be_retried() = runBlocking {
+        val png = picture(); val id = install(png)
+        val before = generation.backupSnapshotSource().capture(); val remove = capture(PhotoLiteCoverChange.REMOVE)
+        generation.coordinator.withWrite {
+            generation.database.openHelper.writableDatabase.execSQL("""
+                CREATE TRIGGER photo_lite_fixture_clear_abort BEFORE UPDATE OF coverAssetId ON long_term_projects
+                BEGIN SELECT RAISE(ABORT, 'photo-lite synthetic clear abort'); END
+            """.trimIndent())
+        }
+        try {
+            assertEquals(PhotoLiteCommitResult.Unknown, writer.remove(remove))
+            assertEquals(before, generation.backupSnapshotSource().capture())
+            assertEquals(PhotoLiteCommitResult.Rejected(PhotoLiteFailure.DUPLICATE), writer.remove(remove))
+            assertAsset(id, png)
+        } finally {
+            generation.coordinator.withWrite { generation.database.openHelper.writableDatabase.execSQL("DROP TRIGGER photo_lite_fixture_clear_abort") }
+        }
+    }
+
+    @Test fun backup_after_clear_retains_unreferenced_media_and_rejects_missing_or_damaged_old_bytes() = runBlocking {
+        val first = picture(); val firstId = install(first)
+        val second = picture(0xff426b56.toInt()); val secondId = install(second, PhotoLiteCoverChange.REPLACE)
+        assertEquals(PhotoLiteCommitResult.Cleared, writer.remove(capture(PhotoLiteCoverChange.REMOVE)))
+        val archived = File(root, "cleared-retained.lithicbackup"); roots.files(root, archived.name)
+        assertTrue(BackupExportService(context, generation).export(target(archived)) is BackupExportResult.Success)
+        val extraction = File(root, "cleared-retained-payload"); check(extraction.mkdir())
+        val validated = BackupValidator().validate(archived.toPath(), extraction.toPath())
+        roots.files(root, "cleared-retained-payload/manifest.json",
+            *validated.manifest.files.map { "cleared-retained-payload/${it.path}" }.toTypedArray())
+        assertEquals(setOf(firstId, secondId), validated.snapshot.data.mediaAssets.map { it.id }.toSet())
+        assertNull(validated.snapshot.data.projects.single().coverAssetId)
+        assertArrayEquals(first.copyBytes(), File(extraction, "media/$firstId.png").readBytes())
+        assertArrayEquals(second.copyBytes(), File(extraction, "media/$secondId.png").readBytes())
+        val oldFile = File(generation.directory, "media/$firstId.png")
+        check(oldFile.delete()) // This method's known synthetic file only; production has no deletion.
+        roots.files(root, "cleared-missing.lithicbackup", "cleared-damaged.lithicbackup")
+        val missing = BackupExportService(context, generation).export(target(File(root, "cleared-missing.lithicbackup")))
+        assertEquals(BackupFailureReason.INVALID_MEDIA, (missing as BackupExportResult.Failed).reason)
+        check(oldFile.createNewFile()); oldFile.writeBytes(first.copyBytes().also { it[0] = 0 })
+        val damaged = BackupExportService(context, generation).export(target(File(root, "cleared-damaged.lithicbackup")))
+        assertEquals(BackupFailureReason.INVALID_MEDIA, (damaged as BackupExportResult.Failed).reason)
+        assertNull(generation.database.projectDao().findProject(project.id)!!.coverAssetId)
+        assertEquals(setOf(firstId, secondId), generation.database.mediaDao().list().map { it.id }.toSet())
+    }
+
+    @Test fun backup_restores_cleared_reference_and_all_retained_media_then_reopens() = runBlocking {
+        val first = picture(); val firstId = install(first)
+        val second = picture(0xff426b56.toInt()); val secondId = install(second, PhotoLiteCoverChange.REPLACE)
+        assertEquals(PhotoLiteCommitResult.Cleared, writer.remove(capture(PhotoLiteCoverChange.REMOVE)))
+        val snapshot = generation.backupSnapshotSource().capture()
+        val archived = File(root, "retained-restore.lithicbackup"); roots.files(root, archived.name)
+        assertTrue(BackupExportService(context, generation).export(target(archived)) is BackupExportResult.Success)
+        val extraction = File(root, "retained-restore-payload"); check(extraction.mkdir())
+        val validated = BackupValidator().validate(archived.toPath(), extraction.toPath())
+        roots.files(root, "retained-restore-payload/manifest.json",
+            *validated.manifest.files.map { "retained-restore-payload/${it.path}" }.toTypedArray())
+        val candidate = store.prepareRestore(ZoneId.of(snapshot.settings.recordZoneId)) { RestoredGenerationWriter().populate(it, validated) }
+        roots.generation(root, candidate.id)
+        roots.media(root, listOf("media/$firstId.png", "media/$secondId.png"), candidate.id)
+        val restored = store.activateRestore(generation.id, candidate, snapshot)
+        current = restored; opened += restored
+        val expected = RestoreReminderProtection.snapshot(snapshot, restoreClock.instant())
+        assertEquals(expected, restored.backupSnapshotSource().capture())
+        assertNull(restored.database.projectDao().findProject(project.id)!!.coverAssetId)
+        assertEquals(setOf(firstId, secondId), restored.database.mediaDao().list().map { it.id }.toSet())
+        assertArrayEquals(first.copyBytes(), File(restored.directory, "media/$firstId.png").readBytes())
+        assertArrayEquals(second.copyBytes(), File(restored.directory, "media/$secondId.png").readBytes())
+        assertEquals(CoverReadResult.NoCover, GenerationCoverReader(restored) { current === restored }
+            .read(CoverReference(CoverOwnerType.PROJECT, project.id, null)))
+        restored.close(); assertFalse(restored.database.isOpen)
+        val reopened = DataGenerationStore(context, root, restoreClock = restoreClock).open()
+        current = reopened; opened += reopened; roots.generation(root, reopened.id)
+        assertEquals(expected, reopened.backupSnapshotSource().capture())
+        assertNull(reopened.database.projectDao().findProject(project.id)!!.coverAssetId)
+        assertArrayEquals(first.copyBytes(), File(reopened.directory, "media/$firstId.png").readBytes())
+        assertArrayEquals(second.copyBytes(), File(reopened.directory, "media/$secondId.png").readBytes())
+    }
+
+    private suspend fun capture(change: PhotoLiteCoverChange = PhotoLiteCoverChange.ADD): PhotoLiteTarget =
+        (writer.capture(project.id, change) as PhotoLiteCaptureResult.Ready).target
+    private suspend fun install(png: PhotoLitePng, change: PhotoLiteCoverChange = PhotoLiteCoverChange.ADD,
+        target: PhotoLiteTarget? = null): String {
+        val success = writer.commit(target ?: capture(change), png) as PhotoLiteCommitResult.Success
+        roots.media(root, listOf("media/${success.assetId}.png"), generation.id)
+        return success.assetId
+    }
+    private suspend fun assertAsset(id: String, png: PhotoLitePng) {
+        val asset = checkNotNull(generation.database.mediaDao().find(id))
+        assertEquals(png.sha256, asset.sha256); assertEquals(png.byteLength, asset.byteLength)
+        assertEquals(png.width, asset.width); assertEquals(png.height, asset.height)
+        assertArrayEquals(png.copyBytes(), File(generation.directory, asset.relativePath).readBytes())
+    }
+    private suspend fun reopen(): ManagedGeneration {
+        generation.close(); assertFalse(generation.database.isOpen)
+        return DataGenerationStore(context, root, restoreClock = restoreClock).open().also {
+            current = it; opened += it; roots.generation(root, it.id)
+        }
+    }
+    private fun picture(color: Int = 0xff839bb0.toInt()): PhotoLitePng {
         val bitmap = Bitmap.createBitmap(3, 2, Bitmap.Config.ARGB_8888)
         return try {
-            bitmap.eraseColor(0xff839bb0.toInt())
+            bitmap.eraseColor(color)
             ByteArrayOutputStream().use { output ->
                 check(bitmap.compress(Bitmap.CompressFormat.PNG, 100, output))
                 PhotoLitePng.checked(output.toByteArray())

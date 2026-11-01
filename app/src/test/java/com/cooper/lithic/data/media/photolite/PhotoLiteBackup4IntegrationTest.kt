@@ -87,37 +87,93 @@ class PhotoLiteBackup4IntegrationTest {
         assertEquals(fixture.photo.sha256, fixture.snapshot.data.mediaAssets.single().sha256)
     }
 
+    @Test fun replacement_archive_preserves_old_and_current_media_and_the_new_reference() =
+        ownedFixture(PhotoLiteCoverChange.REPLACE) { fixture ->
+            val admitted = admitComplete(fixture, "replaced")
+            assertEquals(REPLACEMENT_ID, admitted.snapshot.data.projects.single().coverAssetId)
+            assertRetainedMedia(fixture, admitted)
+        }
+
+    @Test fun cleared_cover_archive_still_preserves_all_registered_media_without_a_cover_reference() =
+        ownedFixture(PhotoLiteCoverChange.REMOVE) { fixture ->
+            val admitted = admitComplete(fixture, "cleared")
+            assertEquals(null, admitted.snapshot.data.projects.single().coverAssetId)
+            assertRetainedMedia(fixture, admitted)
+        }
+
+    @Test fun missing_or_corrupt_unreferenced_old_media_cannot_be_silently_omitted_from_a_complete_backup() {
+        for (change in listOf(PhotoLiteCoverChange.REPLACE, PhotoLiteCoverChange.REMOVE)) ownedFixture(change) { fixture ->
+            val missing = fixture.repack("missing-retained-old", omitMedia = true)
+            expectRejected { BackupArchiveFiles.verify(fixture.core, fixture.manifest, missing) }
+            expectRejected { BackupValidator().validate(missing, fixture.extraction("missing-retained-admission")) }
+            val damaged = fixture.photo.copyBytes().also { it[44] = (it[44].toInt() xor 1).toByte() }
+            val archive = fixture.repack("corrupt-retained-old", mediaBytes = damaged)
+            expectRejected { BackupArchiveFiles.verify(fixture.core, fixture.manifest, archive) }
+            expectRejected { BackupValidator().validate(archive, fixture.extraction("corrupt-retained-admission", damaged)) }
+            fixture.mediaPayloads.forEach { (path, bytes) ->
+                assertArrayEquals(bytes, Files.readAllBytes(fixture.core.directory.resolve(path)))
+            }
+        }
+    }
+
+    private fun admitComplete(fixture: Fixture, name: String): com.cooper.lithic.data.backup.ValidatedBackup {
+        val archive = BackupArchiveFiles.create(fixture.core, fixture.manifest, fixture.archivePath(name))
+        fixture.rememberArchive(archive.path)
+        assertEquals(archive, BackupArchiveFiles.verify(fixture.core, fixture.manifest, archive.path))
+        return BackupValidator().validate(archive.path, fixture.extraction("$name-admitted"))
+    }
+
+    private fun assertRetainedMedia(fixture: Fixture, admitted: com.cooper.lithic.data.backup.ValidatedBackup) {
+        assertEquals(fixture.snapshot, admitted.snapshot)
+        assertEquals(setOf(MEDIA_ID, REPLACEMENT_ID), admitted.snapshot.data.mediaAssets.map { it.id }.toSet())
+        assertEquals(2L, admitted.manifest.recordCounts.getValue("local_media_assets"))
+        for (asset in admitted.snapshot.data.mediaAssets) {
+            val bytes = Files.readAllBytes(admitted.directory.resolve(asset.relativePath))
+            assertArrayEquals(fixture.mediaPayloads.getValue(asset.relativePath), bytes)
+            val png = PhotoLitePng.checked(bytes)
+            assertEquals(png.byteLength, asset.byteLength)
+            assertEquals(png.sha256, asset.sha256)
+            assertEquals(png.width, asset.width)
+            assertEquals(png.height, asset.height)
+        }
+        assertEquals(listOf(12_345L, 23_456L), admitted.snapshot.data.projectMoneyEvents.map { it.amountCents })
+    }
+
     /** No finally-cleanup: an unexpected assertion, IO or validation failure preserves the full fixture. */
-    private fun ownedFixture(block: (Fixture) -> Unit) {
+    private fun ownedFixture(change: PhotoLiteCoverChange? = null, block: (Fixture) -> Unit) {
         val token = UUID.randomUUID().toString()
         val root = Files.createTempDirectory("photo-lite-backup4-$token-").toRealPath()
         Files.write(root.resolve(OWNER), token.toByteArray(Charsets.UTF_8), CREATE_NEW, WRITE)
-        val fixture = Fixture(root, token)
+        val fixture = Fixture(root, token, change)
         block(fixture)
         fixture.closeAfterSuccess()
     }
 
-    private class Fixture(val root: Path, private val token: String) {
+    private class Fixture(val root: Path, private val token: String, change: PhotoLiteCoverChange?) {
         private val rootIdentity = Files.readAttributes(root, BasicFileAttributes::class.java, NOFOLLOW_LINKS).fileKey()
         private val allowedDirectories = mutableSetOf(root)
         private val allowedFiles = linkedMapOf(root.resolve(OWNER) to token.toByteArray(Charsets.UTF_8))
         val photo = PhotoLitePng.checked(syntheticPng())
-        val snapshot = syntheticSnapshot(photo)
+        private val replacement = if (change == null) null else PhotoLitePng.checked(syntheticPng(96))
+        val snapshot = syntheticSnapshot(photo, replacement, change)
+        val mediaPayloads = linkedMapOf(MEDIA_PATH to photo.copyBytes()).apply {
+            replacement?.let { put(REPLACEMENT_PATH, it.copyBytes()) }
+        }
         private val base = BackupCoreStager().prepare(snapshot, root)
         private val mediaDirectory = Files.createDirectory(base.directory.resolve("media"))
-        private val mediaEntry = BackupFileEntry.fromBytes(MEDIA_PATH, photo.copyBytes())
-        val core = base.copy(entries = base.entries + mediaEntry)
+        private val mediaEntries = mediaPayloads.map { (path, bytes) -> BackupFileEntry.fromBytes(path, bytes) }
+        val core = base.copy(entries = base.entries + mediaEntries)
         val manifest: BackupManifestV1
 
         init {
-            Files.write(core.directory.resolve(MEDIA_PATH), photo.copyBytes(), CREATE_NEW, WRITE)
+            mediaPayloads.forEach { (path, bytes) -> Files.write(core.directory.resolve(path), bytes, CREATE_NEW, WRITE) }
             manifest = BackupManifestV1.complete(core, "photo-lite-backup4-synthetic", Instant.parse(ARCHIVED_AT))
             allowedDirectories.add(core.directory)
             allowedDirectories.add(mediaDirectory)
             allowedFiles[core.directory.resolve(".backup-core-owner")] = Files.readAllBytes(core.directory.resolve(".backup-core-owner"))
             allowedFiles[core.directory.resolve("data.json")] = BackupJson.encodeData(snapshot.currentData())
             allowedFiles[core.directory.resolve("settings.json")] = BackupJson.encodeSettings(snapshot.currentSettings())
-            allowedFiles[core.directory.resolve(MEDIA_PATH)] = photo.copyBytes()
+            mediaPayloads.forEach { (path, bytes) -> allowedFiles[core.directory.resolve(path)] = bytes }
         }
 
         fun archivePath(name: String): Path = root.resolve("$name.lithicbackup")
@@ -155,8 +211,7 @@ class PhotoLiteBackup4IntegrationTest {
             "manifest.json" to manifest.encode(),
             "data.json" to BackupJson.encodeData(snapshot.currentData()),
             "settings.json" to BackupJson.encodeSettings(snapshot.currentSettings()),
-            MEDIA_PATH to mediaBytes,
-        )
+        ) + mediaPayloads + (MEDIA_PATH to mediaBytes)
 
         fun closeAfterSuccess() {
             check(root.fileName.toString().startsWith("photo-lite-backup4-$token-") && root.toRealPath() == root)
@@ -190,16 +245,23 @@ class PhotoLiteBackup4IntegrationTest {
         const val RECOVERY_ID = "00000000-0000-4000-8000-000000000205"
         const val RECOVERY_OPERATION = "00000000-0000-4000-8000-000000000206"
         const val MEDIA_PATH = "media/$MEDIA_ID.png"
+        const val REPLACEMENT_ID = "00000000-0000-4000-8000-000000000207"
+        const val REPLACEMENT_PATH = "media/$REPLACEMENT_ID.png"
         const val CREATED_AT = "2026-10-01T00:00:00Z"
         const val ARCHIVED_AT = "2026-10-31T00:00:00Z"
 
-        fun syntheticSnapshot(photo: PhotoLitePng): BackupSnapshot {
+        fun syntheticSnapshot(photo: PhotoLitePng, replacement: PhotoLitePng? = null, change: PhotoLiteCoverChange? = null): BackupSnapshot {
             val categories = listOf(
                 BackupCategoryV1(LithicDatabase.PROJECT_FALLBACK_ID, "PROJECT", "其他", "其他", true),
                 BackupCategoryV1(LithicDatabase.SUBSCRIPTION_FALLBACK_ID, "SUBSCRIPTION", "其他", "其他", true),
             )
+            val cover = when (change) {
+                PhotoLiteCoverChange.REPLACE -> REPLACEMENT_ID
+                PhotoLiteCoverChange.REMOVE -> null
+                else -> MEDIA_ID
+            }
             val project = BackupProjectV1(PROJECT_ID, "PHOTO-LITE合成归档物品", LithicDatabase.PROJECT_FALLBACK_ID,
-                "2026-10-01", null, null, MEDIA_ID, "归档测试，不是Room写入证据", CREATED_AT, CREATED_AT)
+                "2026-10-01", null, null, cover, "归档测试，不是Room写入证据", CREATED_AT, CREATED_AT)
             val events = listOf(
                 BackupProjectMoneyEventV2(INITIAL_ID, PROJECT_ID, "OUTLAY", 12_345, "2026-10-01", null,
                     "INITIAL", INITIAL_OPERATION, "CASH", null),
@@ -207,7 +269,10 @@ class PhotoLiteBackup4IntegrationTest {
                     "REGULAR", RECOVERY_OPERATION, "CASH", null),
             )
             val media = BackupMediaAssetV1(MEDIA_ID, MEDIA_PATH, "image/png", photo.width, photo.height, photo.byteLength, photo.sha256)
-            return BackupSnapshot(BackupDataV2(categories, listOf(project), events, listOf(media), emptyList(),
+            val allMedia = listOf(media) + listOfNotNull(replacement?.let { png ->
+                BackupMediaAssetV1(REPLACEMENT_ID, REPLACEMENT_PATH, "image/png", png.width, png.height, png.byteLength, png.sha256)
+            })
+            return BackupSnapshot(BackupDataV2(categories, listOf(project), events, allMedia, emptyList(),
                 emptyList(), emptyList(), emptyList()), BackupSettingsV1("Asia/Shanghai"))
         }
 
@@ -217,7 +282,7 @@ class PhotoLiteBackup4IntegrationTest {
             catch (_: IOException) { /* Explicit missing/changed archive rejection. */ }
         }
 
-        fun syntheticPng(): ByteArray {
+        fun syntheticPng(red: Int = 24): ByteArray {
             val output = ByteArrayOutputStream()
             output.write(byteArrayOf(137.toByte(), 80, 78, 71, 13, 10, 26, 10))
             fun chunk(name: String, bytes: ByteArray) {
@@ -235,7 +300,7 @@ class PhotoLiteBackup4IntegrationTest {
                 DeflaterOutputStream(bytes).use { compressed ->
                     repeat(3) {
                         compressed.write(0)
-                        repeat(2) { compressed.write(byteArrayOf(24, 76, 53, 255.toByte())) }
+                        repeat(2) { compressed.write(byteArrayOf(red.toByte(), 76, 53, 255.toByte())) }
                     }
                 }
             }.toByteArray()

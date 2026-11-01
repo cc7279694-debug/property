@@ -62,7 +62,7 @@ import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.repository.ProjectDetail
 import java.math.BigDecimal
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 internal fun ProjectDetailScreen(
     state: ProjectDetailUiState,
@@ -85,6 +85,8 @@ internal fun ProjectDetailScreen(
     photoActionEnabled: Boolean = true,
     photoUnavailableMessage: String? = null,
     expandPhotoCover: Boolean = false,
+    onReplacePhoto: (() -> Unit)? = null,
+    onRemovePhoto: (() -> Unit)? = null,
 ) {
     val detail = state.detail?.takeUnless { state.missing }
     var menuOpen by rememberSaveable(detail?.project?.id) { mutableStateOf(false) }
@@ -161,6 +163,20 @@ internal fun ProjectDetailScreen(
                                 Spacer(Modifier.width(8.dp))
                                 Text("添加照片")
                             }
+                        }
+                        if (detail.project.coverAssetId != null && (onReplacePhoto != null || onRemovePhoto != null)) {
+                            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                onReplacePhoto?.let { action ->
+                                    TextButton(action, Modifier.heightIn(min = 48.dp).testTag("project-replace-photo"),
+                                        enabled = photoActionEnabled && !state.loading && state.error == null) { Text("更换照片") }
+                                }
+                                onRemovePhoto?.let { action ->
+                                    TextButton(action, Modifier.heightIn(min = 48.dp).testTag("project-remove-photo"),
+                                        enabled = photoActionEnabled && !state.loading && state.error == null) { Text("取消封面显示") }
+                                }
+                            }
+                        }
+                        if (onAddPhoto != null || onReplacePhoto != null || onRemovePhoto != null) {
                             photoUnavailableMessage?.let { Text(it, Modifier.testTag("project-photo-unavailable"),
                                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
                         }

@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.cooper.lithic.data.media.photolite.PhotoLiteCaptureResult
 import com.cooper.lithic.data.media.photolite.PhotoLiteCommitResult
 import com.cooper.lithic.data.media.photolite.PhotoLiteCoverWriter
+import com.cooper.lithic.data.media.photolite.PhotoLiteCoverChange
 import com.cooper.lithic.data.media.photolite.PhotoLiteFailure
 import com.cooper.lithic.data.media.photolite.PhotoLitePng
 import com.cooper.lithic.data.media.photolite.PhotoLiteTarget
@@ -23,7 +24,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-internal enum class PhotoLiteCoverPhase { IDLE, PREPARING, CHOOSING, LOADING, PREVIEW, SAVING, SUCCESS, REJECTED, UNKNOWN }
+internal enum class PhotoLiteCoverPhase { IDLE, PREPARING, CHOOSING, LOADING, PREVIEW, REMOVE_CONFIRM, SAVING, SUCCESS, REJECTED, UNKNOWN }
 
 /** Presentation only. External URI, image bytes and bitmaps are never written into saved state. */
 internal data class PhotoLiteCoverUiState(
@@ -32,6 +33,7 @@ internal data class PhotoLiteCoverUiState(
     val pickerTicket: String? = null,
     val preview: PhotoLitePreview? = null,
     val message: String? = null,
+    val change: PhotoLiteCoverChange = PhotoLiteCoverChange.ADD,
 ) {
     val blocksLeaving: Boolean get() = phase == PhotoLiteCoverPhase.SAVING || phase == PhotoLiteCoverPhase.UNKNOWN
 }
@@ -73,29 +75,41 @@ internal class PhotoLiteCoverController(
         if (state.value.phase != PhotoLiteCoverPhase.IDLE) discard()
     }
 
-    fun begin(projectId: String) {
+    fun begin(projectId: String, change: PhotoLiteCoverChange = PhotoLiteCoverChange.ADD) {
         if (retired || state.value.phase != PhotoLiteCoverPhase.IDLE || currentRouteProject != projectId) return
         if (!isAvailable()) { reject("当前系统暂不支持这项照片试验。尚未更改物品。", projectId); return }
         if (!ownerCurrent()) { reject("当前账本已变化，已停止选择照片。", projectId); return }
         val ticket = UUID.randomUUID().toString()
         activeTicket = ticket
-        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.PREPARING, projectId)
+        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.PREPARING, projectId, change = change)
         work = viewModelScope.launch {
             try {
-                val captured = withContext(Dispatchers.IO) { writer.capture(projectId) }
+                val captured = withContext(Dispatchers.IO) { writer.capture(projectId, change) }
                 if (!sameRequest(ticket, projectId) || state.value.phase != PhotoLiteCoverPhase.PREPARING) return@launch
                 if (!ownerCurrent()) { reject("当前账本已变化，已停止选择照片。", projectId); return@launch }
                 when (captured) {
                     is PhotoLiteCaptureResult.Ready -> {
                         val candidate = captured.target
                         if (candidate.projectId != projectId || candidate.generationId != writer.generationId ||
-                            candidate.ownerKey !== writer.ownerKey || !ownerCurrent()) {
+                            candidate.ownerKey !== writer.ownerKey || candidate.change != change || !ownerCurrent()) {
                             reject("物品或账本已变化，已停止选择照片。", projectId)
                             return@launch
                         }
+                        val admissionFailure = change.admissionFailure(candidate.originalCoverAssetId)
+                        if (admissionFailure != null) {
+                            reject(failureMessage(admissionFailure), projectId)
+                            return@launch
+                        }
                         target = candidate
-                        pendingChooser = ticket
-                        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.CHOOSING, projectId, pickerTicket = ticket)
+                        if (change == PhotoLiteCoverChange.REMOVE) {
+                            // No URI, decoder or image certification is needed to stop displaying a cover.
+                            pendingChooser = null
+                            mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.REMOVE_CONFIRM, projectId, change = change)
+                        } else {
+                            pendingChooser = ticket
+                            mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.CHOOSING, projectId,
+                                pickerTicket = ticket, change = change)
+                        }
                     }
                     is PhotoLiteCaptureResult.Rejected -> reject(failureMessage(captured.reason), projectId)
                 }
@@ -120,13 +134,14 @@ internal class PhotoLiteCoverController(
 
     fun pickerResult(ticket: String?, uri: Uri?) {
         val projectId = state.value.projectId
+        val change = state.value.change
         if (ticket == null || pendingChooser != ticket || state.value.phase != PhotoLiteCoverPhase.CHOOSING ||
             !sameRequest(ticket, projectId)) return
         if (!ownerCurrent()) { reject("当前账本已变化，照片选择已作废。", projectId); return }
         pendingChooser = null
         if (uri == null) { discard(); return }
         if (uri.scheme != "content") { reject("照片来源不可用，尚未保存照片。", projectId); return }
-        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.LOADING, projectId)
+        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.LOADING, projectId, change = change)
         val watchdog = viewModelScope.launch {
             delay(loadTimeoutMillis)
             if (sameRequest(ticket, projectId) && state.value.phase == PhotoLiteCoverPhase.LOADING) {
@@ -148,7 +163,7 @@ internal class PhotoLiteCoverController(
                 }
                 val preview = requireNotNull(loaded)
                 heldPreview = preview
-                mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.PREVIEW, projectId, preview = preview)
+                mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.PREVIEW, projectId, preview = preview, change = change)
                 loaded = null
             } catch (cancelled: CancellationException) { throw cancelled }
             catch (failure: PhotoLiteImageException) {
@@ -168,9 +183,12 @@ internal class PhotoLiteCoverController(
     fun confirm() {
         val before = state.value
         val request = target ?: return
-        val preview = heldPreview ?: return
+        val removing = request.change == PhotoLiteCoverChange.REMOVE
+        val preview = heldPreview
         val ticket = activeTicket ?: return
-        if (before.phase != PhotoLiteCoverPhase.PREVIEW || !sameRequest(ticket, request.projectId)) return
+        val expectedPhase = if (removing) PhotoLiteCoverPhase.REMOVE_CONFIRM else PhotoLiteCoverPhase.PREVIEW
+        if (before.phase != expectedPhase || before.change != request.change ||
+            (!removing && preview == null) || !sameRequest(ticket, request.projectId)) return
         if (!ownerCurrent()) { reject("当前账本已变化，照片预览已作废。", request.projectId); return }
         // Synchronous state transition rejects a second tap before the first coroutine starts.
         mutableState.value = before.copy(phase = PhotoLiteCoverPhase.SAVING, pickerTicket = null)
@@ -185,7 +203,7 @@ internal class PhotoLiteCoverController(
         work = viewModelScope.launch {
             var commitStarted = false
             try {
-                val png = withContext(Dispatchers.IO) { encodePreview(preview) }
+                val png = if (removing) null else withContext(Dispatchers.IO) { encodePreview(requireNotNull(preview)) }
                 if (!sameRequest(ticket, request.projectId) || state.value.phase != PhotoLiteCoverPhase.SAVING) return@launch
                 if (!ownerCurrent()) {
                     reject("当前物品或账本已变化，本次没有提交封面。", request.projectId)
@@ -193,15 +211,19 @@ internal class PhotoLiteCoverController(
                 }
                 markIncomplete(request.nonce)
                 commitStarted = true
-                val result = withContext(Dispatchers.IO) { writer.commit(request, png) }
+                val result = withContext(Dispatchers.IO) {
+                    if (removing) writer.remove(request) else writer.commit(request, requireNotNull(png))
+                }
                 when (result) {
                     is PhotoLiteCommitResult.Success -> {
-                        if (acceptCommitReply(ticket, request.projectId)) {
-                            clearIncomplete()
-                            mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.SUCCESS, request.projectId,
-                                message = "封面已保存。")
-                            releasePreview(request.projectId)
-                        } else if (!retired && state.value.phase == PhotoLiteCoverPhase.SAVING) unknown(request.projectId)
+                        if (!removing && result.assetId == request.nonce) finishSuccess(ticket, request, if (request.change == PhotoLiteCoverChange.REPLACE)
+                            "封面已更换。旧照片未清理，仍会随完整备份保留。" else "封面已保存。")
+                        else if (sameRequest(ticket, request.projectId) && state.value.phase == PhotoLiteCoverPhase.SAVING) unknown(request.projectId)
+                    }
+                    PhotoLiteCommitResult.Cleared -> {
+                        if (removing) finishSuccess(ticket, request,
+                            "已取消封面显示。旧照片未清理，已有文件可能继续占用空间，并会随完整备份保留。")
+                        else if (sameRequest(ticket, request.projectId) && state.value.phase == PhotoLiteCoverPhase.SAVING) unknown(request.projectId)
                     }
                     is PhotoLiteCommitResult.Rejected -> {
                         if (acceptCommitReply(ticket, request.projectId)) {
@@ -236,7 +258,8 @@ internal class PhotoLiteCoverController(
 
     fun leaveDecision(): LeaveDecision = when (state.value.phase) {
         PhotoLiteCoverPhase.SAVING, PhotoLiteCoverPhase.UNKNOWN -> LeaveDecision.BLOCK_PENDING
-        PhotoLiteCoverPhase.PREPARING, PhotoLiteCoverPhase.CHOOSING, PhotoLiteCoverPhase.LOADING, PhotoLiteCoverPhase.PREVIEW -> LeaveDecision.CONFIRM_DISCARD
+        PhotoLiteCoverPhase.PREPARING, PhotoLiteCoverPhase.CHOOSING, PhotoLiteCoverPhase.LOADING,
+        PhotoLiteCoverPhase.PREVIEW, PhotoLiteCoverPhase.REMOVE_CONFIRM -> LeaveDecision.CONFIRM_DISCARD
         else -> LeaveDecision.ALLOW
     }
 
@@ -262,13 +285,22 @@ internal class PhotoLiteCoverController(
     private fun acceptCommitReply(ticket: String, projectId: String): Boolean =
         state.value.phase == PhotoLiteCoverPhase.SAVING && matches(ticket, projectId)
 
+    private fun finishSuccess(ticket: String, request: PhotoLiteTarget, message: String) {
+        if (acceptCommitReply(ticket, request.projectId)) {
+            clearIncomplete()
+            mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.SUCCESS, request.projectId,
+                message = message, change = request.change)
+            releasePreview(request.projectId)
+        } else if (!retired && state.value.phase == PhotoLiteCoverPhase.SAVING) unknown(request.projectId)
+    }
+
     private fun ownerCurrent(): Boolean = try { writer.isCurrent() } catch (_: Exception) { false }
 
     private fun reject(message: String, projectId: String?) {
         activeTicket = null
         pendingChooser = null
         target = null
-        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.REJECTED, projectId, message = message)
+        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.REJECTED, projectId, message = message, change = state.value.change)
         releasePreview(projectId)
     }
 
@@ -277,7 +309,7 @@ internal class PhotoLiteCoverController(
         activeTicket = null
         pendingChooser = null
         target = null
-        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.UNKNOWN, projectId, message = UNKNOWN_MESSAGE)
+        mutableState.value = PhotoLiteCoverUiState(PhotoLiteCoverPhase.UNKNOWN, projectId, message = UNKNOWN_MESSAGE, change = state.value.change)
         releasePreview(projectId)
     }
 
@@ -317,11 +349,13 @@ internal class PhotoLiteCoverController(
         internal const val SAVED_KEY = "lithic.photoLite.incomplete"
         internal const val INCOMPLETE = "unfinishedCommit"
         internal const val NONCE = "nonce"
-        internal const val UNKNOWN_MESSAGE = "照片处理或保存结果尚未确认，本轮已停止。请保留当前现场，不要重复选择、保存或清理文件。"
+        internal const val UNKNOWN_MESSAGE = "封面操作或资源状态尚未确认，本轮已停止。请保留当前现场，不要重复选择、保存、取消显示或清理文件。"
         internal fun failureMessage(reason: PhotoLiteFailure): String = when (reason) {
             PhotoLiteFailure.OWNER_UNAVAILABLE -> "当前账本已变化，已停止保存封面。"
             PhotoLiteFailure.STALE_PROJECT -> "物品已变化，本次没有更改封面。请查看物品的当前状态。"
-            PhotoLiteFailure.ALREADY_HAS_COVER -> "物品已有封面，本试验不提供替换或移除。"
+            PhotoLiteFailure.ALREADY_HAS_COVER -> "物品已有封面，请核对当前状态后使用更换照片或取消封面显示。"
+            PhotoLiteFailure.NO_COVER -> "物品当前没有封面，本次没有更改任何记录。"
+            PhotoLiteFailure.INVALID_OPERATION -> "封面操作与当前物品状态不符，本次没有提交更改。"
             PhotoLiteFailure.INVALID_IMAGE -> "图片未通过检查，本次没有更改封面。"
             PhotoLiteFailure.FILE_FAILED, PhotoLiteFailure.STORAGE_FAILED -> "封面未能保存，请保留现有记录；不会自动再次提交。"
             PhotoLiteFailure.DUPLICATE -> "本次照片提交已处理，不会重复登记。"

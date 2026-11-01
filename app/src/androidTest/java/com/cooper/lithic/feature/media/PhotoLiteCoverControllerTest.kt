@@ -213,8 +213,189 @@ class PhotoLiteCoverControllerTest {
         } finally { writer.commitGate!!.complete(Unit) }
     }
 
-    private suspend fun choose(model: PhotoLiteCoverController): String {
-        onMain { model.bindProject(project.id); model.begin(project.id) }
+    @Test fun replacement_preview_cancel_keeps_original_reference_without_writing() = runBlocking {
+        val writer = Writer().apply { hasCover = true }
+        val model = model(writer, load = { preview() })
+        val ticket = choose(model, PhotoLiteCoverChange.REPLACE)
+        onMain { model.pickerResult(ticket, uri) }
+        await(model, PhotoLiteCoverPhase.PREVIEW)
+        assertEquals(PhotoLiteCoverChange.REPLACE, model.state.value.change)
+        assertEquals(ORIGINAL_COVER, writer.capturedTarget?.originalCoverAssetId)
+        onMain { model.discard() }
+        assertEquals(PhotoLiteCoverPhase.IDLE, model.state.value.phase)
+        assertEquals(0, writer.commits.get())
+        assertEquals(0, writer.removals.get())
+    }
+
+    @Test fun replacement_confirmation_keeps_captured_old_reference_and_commits_once() = runBlocking {
+        val writer = Writer().apply { hasCover = true; commitGate = CompletableDeferred() }
+        val model = model(writer, load = { preview() }, encode = { png() })
+        val ticket = choose(model, PhotoLiteCoverChange.REPLACE)
+        onMain { model.pickerResult(ticket, uri) }
+        await(model, PhotoLiteCoverPhase.PREVIEW)
+        onMain { model.confirm(); model.confirm() }
+        await(model, PhotoLiteCoverPhase.SAVING)
+        withTimeout(3_000) { while (writer.commits.get() == 0) delay(10) }
+        assertEquals(PhotoLiteCoverChange.REPLACE, writer.capturedTarget?.change)
+        assertEquals(ORIGINAL_COVER, writer.capturedTarget?.originalCoverAssetId)
+        assertEquals(1, writer.commits.get())
+        assertEquals(0, writer.removals.get())
+        writer.commitGate!!.complete(Unit)
+        await(model, PhotoLiteCoverPhase.SUCCESS)
+        assertEquals(PhotoLiteCoverChange.REPLACE, model.state.value.change)
+        assertTrue(model.state.value.message!!.contains("封面已更换"))
+    }
+
+    @Test fun remove_confirmation_cancel_never_loads_encodes_or_writes() = runBlocking {
+        val writer = Writer().apply { hasCover = true }
+        val model = model(writer)
+        onMain { model.bindProject(project.id); model.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+        await(model, PhotoLiteCoverPhase.REMOVE_CONFIRM)
+        assertNull(model.state.value.pickerTicket)
+        assertNull(model.state.value.preview)
+        assertEquals(LeaveDecision.CONFIRM_DISCARD, model.leaveDecision())
+        assertEquals(0, writer.removals.get())
+        onMain { model.discard() }
+        assertEquals(PhotoLiteCoverPhase.IDLE, model.state.value.phase)
+        assertEquals(0, writer.commits.get())
+        assertEquals(0, writer.removals.get())
+    }
+
+    @Test fun remove_double_confirmation_writes_once_and_only_cleared_is_success() = runBlocking {
+        val writer = Writer().apply { hasCover = true; commitGate = CompletableDeferred() }
+        val saved = SavedStateHandle()
+        val model = model(writer, saved)
+        onMain { model.bindProject(project.id); model.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+        await(model, PhotoLiteCoverPhase.REMOVE_CONFIRM)
+        onMain { model.confirm(); model.confirm(); model.discard() }
+        await(model, PhotoLiteCoverPhase.SAVING)
+        withTimeout(3_000) { while (writer.removals.get() == 0) delay(10) }
+        assertEquals(1, writer.removals.get())
+        assertEquals(0, writer.commits.get())
+        assertTrue(saved.get<Bundle>(PhotoLiteCoverController.SAVED_KEY)!!.getBoolean(PhotoLiteCoverController.INCOMPLETE))
+        writer.commitGate!!.complete(Unit)
+        await(model, PhotoLiteCoverPhase.SUCCESS)
+        assertEquals(PhotoLiteCoverChange.REMOVE, model.state.value.change)
+        assertTrue(model.state.value.message!!.contains("取消封面显示"))
+        assertTrue(model.state.value.message!!.contains("旧照片未清理"))
+        assertTrue(model.state.value.message!!.contains("随完整备份保留"))
+        assertFalse(saved.contains(PhotoLiteCoverController.SAVED_KEY))
+    }
+
+    @Test fun mismatched_save_and_clear_results_are_unknown_not_false_success() = runBlocking {
+        val removalWriter = Writer().apply { hasCover = true; result = PhotoLiteCommitResult.Success("wrong-kind") }
+        val removalSaved = SavedStateHandle()
+        val removal = model(removalWriter, removalSaved)
+        onMain { removal.bindProject(project.id); removal.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+        await(removal, PhotoLiteCoverPhase.REMOVE_CONFIRM)
+        onMain { removal.confirm() }
+        await(removal, PhotoLiteCoverPhase.UNKNOWN)
+        assertTrue(removalSaved.contains(PhotoLiteCoverController.SAVED_KEY))
+        assertEquals(1, removalWriter.removals.get())
+
+        val saveWriter = Writer().apply { result = PhotoLiteCommitResult.Cleared }
+        val saveSaved = SavedStateHandle()
+        val saving = model(saveWriter, saveSaved, load = { preview() }, encode = { png() })
+        val ticket = choose(saving)
+        onMain { saving.pickerResult(ticket, uri) }
+        await(saving, PhotoLiteCoverPhase.PREVIEW)
+        onMain { saving.confirm() }
+        await(saving, PhotoLiteCoverPhase.UNKNOWN)
+        assertTrue(saveSaved.contains(PhotoLiteCoverController.SAVED_KEY))
+        assertEquals(1, saveWriter.commits.get())
+
+        val otherWriter = Writer().apply { result = PhotoLiteCommitResult.Success("another-target") }
+        val otherSaved = SavedStateHandle()
+        val other = model(otherWriter, otherSaved, load = { preview() }, encode = { png() })
+        val otherTicket = choose(other)
+        onMain { other.pickerResult(otherTicket, uri) }
+        await(other, PhotoLiteCoverPhase.PREVIEW)
+        onMain { other.confirm() }
+        await(other, PhotoLiteCoverPhase.UNKNOWN)
+        assertTrue(otherSaved.contains(PhotoLiteCoverController.SAVED_KEY))
+    }
+
+    @Test fun removal_rejection_preserves_current_record_and_does_not_retry() = runBlocking {
+        val writer = Writer().apply { hasCover = true; result = PhotoLiteCommitResult.Rejected(PhotoLiteFailure.STALE_PROJECT) }
+        val saved = SavedStateHandle()
+        val model = model(writer, saved)
+        onMain { model.bindProject(project.id); model.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+        await(model, PhotoLiteCoverPhase.REMOVE_CONFIRM)
+        onMain { model.confirm() }
+        await(model, PhotoLiteCoverPhase.REJECTED)
+        assertEquals(1, writer.removals.get())
+        assertFalse(saved.contains(PhotoLiteCoverController.SAVED_KEY))
+        assertEquals(ORIGINAL_COVER, writer.capturedTarget?.originalCoverAssetId)
+        assertTrue(model.state.value.message!!.contains("没有更改封面"))
+    }
+
+    @Test fun removal_unknown_result_blocks_every_change_entrypoint_without_retry() = runBlocking {
+        val writer = Writer().apply { hasCover = true; result = PhotoLiteCommitResult.Unknown }
+        val saved = SavedStateHandle()
+        val model = model(writer, saved)
+        onMain { model.bindProject(project.id); model.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+        await(model, PhotoLiteCoverPhase.REMOVE_CONFIRM)
+        onMain { model.confirm() }
+        await(model, PhotoLiteCoverPhase.UNKNOWN)
+        onMain {
+            PhotoLiteCoverChange.entries.forEach { model.begin(project.id, it) }
+            model.confirm(); model.discard()
+        }
+        assertEquals(1, writer.captures.get())
+        assertEquals(1, writer.removals.get())
+        assertEquals(0, writer.commits.get())
+        assertEquals(PhotoLiteCoverPhase.UNKNOWN, model.state.value.phase)
+        assertTrue(saved.contains(PhotoLiteCoverController.SAVED_KEY))
+    }
+
+    @Test fun removal_late_success_after_deadline_cannot_clear_unknown_marker_or_repeat() = runBlocking {
+        val writer = Writer().apply { hasCover = true; commitGate = CompletableDeferred(); ignoreCommitCancellation = true }
+        val saved = SavedStateHandle()
+        val model = model(writer, saved, saveTimeoutMillis = 1_000)
+        try {
+            onMain { model.bindProject(project.id); model.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+            await(model, PhotoLiteCoverPhase.REMOVE_CONFIRM)
+            onMain { model.confirm() }
+            withTimeout(3_000) { while (writer.removals.get() == 0) delay(10) }
+            await(model, PhotoLiteCoverPhase.UNKNOWN)
+            val nonce = saved.get<Bundle>(PhotoLiteCoverController.SAVED_KEY)!!.getString(PhotoLiteCoverController.NONCE)
+            writer.commitGate!!.complete(Unit)
+            withTimeout(3_000) { writer.commitReturned.await() }
+            onMain { model.confirm(); model.discard(); model.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+            assertEquals(PhotoLiteCoverPhase.UNKNOWN, model.state.value.phase)
+            assertEquals(nonce, saved.get<Bundle>(PhotoLiteCoverController.SAVED_KEY)!!.getString(PhotoLiteCoverController.NONCE))
+            assertEquals(1, writer.removals.get())
+            assertEquals(1, writer.captures.get())
+            assertEquals(LeaveDecision.BLOCK_PENDING, model.leaveDecision())
+        } finally { writer.commitGate!!.complete(Unit) }
+    }
+
+    @Test fun changed_owner_before_or_during_removal_never_accepts_clear_as_success() = runBlocking {
+        val before = Writer().apply { hasCover = true }
+        val previewing = model(before)
+        onMain { previewing.bindProject(project.id); previewing.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+        await(previewing, PhotoLiteCoverPhase.REMOVE_CONFIRM)
+        onMain { before.current = false; previewing.confirm() }
+        assertEquals(PhotoLiteCoverPhase.REJECTED, previewing.state.value.phase)
+        assertEquals(0, before.removals.get())
+
+        val during = Writer().apply { hasCover = true; commitGate = CompletableDeferred() }
+        val saved = SavedStateHandle()
+        val saving = model(during, saved)
+        try {
+            onMain { saving.bindProject(project.id); saving.begin(project.id, PhotoLiteCoverChange.REMOVE) }
+            await(saving, PhotoLiteCoverPhase.REMOVE_CONFIRM)
+            onMain { saving.confirm() }
+            withTimeout(3_000) { while (during.removals.get() == 0) delay(10) }
+            onMain { during.current = false }
+            during.commitGate!!.complete(Unit)
+            await(saving, PhotoLiteCoverPhase.UNKNOWN)
+            assertTrue(saved.contains(PhotoLiteCoverController.SAVED_KEY))
+        } finally { during.commitGate!!.complete(Unit) }
+    }
+
+    private suspend fun choose(model: PhotoLiteCoverController, change: PhotoLiteCoverChange = PhotoLiteCoverChange.ADD): String {
+        onMain { model.bindProject(project.id); model.begin(project.id, change) }
         await(model, PhotoLiteCoverPhase.CHOOSING)
         return requireNotNull(model.state.value.pickerTicket).also { ticket -> onMain { assertTrue(model.pickerWillLaunch(ticket)) } }
     }
@@ -253,17 +434,21 @@ class PhotoLiteCoverControllerTest {
         override val ownerKey = Any()
         @Volatile var current = true
         var rejectCapture = false
+        var hasCover = false
+        var capturedTarget: PhotoLiteTarget? = null
         var result: PhotoLiteCommitResult? = null
         var commitGate: CompletableDeferred<Unit>? = null
         var ignoreCommitCancellation = false
         val commitReturned = CompletableDeferred<Unit>()
         val captures = AtomicInteger()
         val commits = AtomicInteger()
+        val removals = AtomicInteger()
         override fun isCurrent() = current
-        override suspend fun capture(projectId: String): PhotoLiteCaptureResult {
+        override suspend fun capture(projectId: String, change: PhotoLiteCoverChange): PhotoLiteCaptureResult {
             captures.incrementAndGet()
             return if (rejectCapture) PhotoLiteCaptureResult.Rejected(PhotoLiteFailure.STALE_PROJECT)
-                else PhotoLiteCaptureResult.Ready(PhotoLiteTarget(generationId, ownerKey, project))
+                else PhotoLiteCaptureResult.Ready(PhotoLiteTarget(generationId, ownerKey,
+                    project.copy(coverAssetId = if (hasCover) ORIGINAL_COVER else null), change = change).also { capturedTarget = it })
         }
         override suspend fun commit(target: PhotoLiteTarget, png: PhotoLitePng): PhotoLiteCommitResult {
             commits.incrementAndGet()
@@ -271,7 +456,15 @@ class PhotoLiteCoverControllerTest {
             commitReturned.complete(Unit)
             return result ?: PhotoLiteCommitResult.Success(target.nonce)
         }
+        override suspend fun remove(target: PhotoLiteTarget): PhotoLiteCommitResult {
+            removals.incrementAndGet()
+            if (ignoreCommitCancellation) withContext(NonCancellable) { commitGate?.await() } else commitGate?.await()
+            commitReturned.complete(Unit)
+            return result ?: PhotoLiteCommitResult.Cleared
+        }
     }
+
+    private companion object { const val ORIGINAL_COVER = "95000000-0000-0000-0000-000000000002" }
 }
 
 /** Runtime refusal only: Gradle must already select this runner before any Application starts. */

@@ -1,0 +1,219 @@
+{
+  "observedUtc": "2026-11-01T04:31:45.743666+00:00",
+  "baseline": "3f04f181472d1db53c93a9a4b38e7c989198c39b",
+  "branch": "codex/photo-lite-p3",
+  "status": "STATIC_SOURCE_CHECK_ONLY",
+  "resourceGateGiB": [
+    3.919,
+    3.282
+  ],
+  "userDecision": "Source complete first; builds deferred",
+  "oldDaoPreserved": true,
+  "newDaoFullRowCasSqlEqualsExisting": true,
+  "frozenSchemaBackupOwnerReaderBoundaries": "UNCHANGED_SOURCE",
+  "scene": {
+    "path": "app/src/main/res/drawable-nodpi/ic_launcher_scene_p3.png",
+    "bytes": 2377296,
+    "sha256": "cf98e02ead3e72cdbf4902e0aeff991e28a74583921140029a3f9ac85254ba14",
+    "width": 1254,
+    "height": 1254,
+    "pngColorType": 2,
+    "foregroundInset": "16.666667%",
+    "background": "#23241F"
+  },
+  "testSourceMethodCounts": {
+    "app/src/test/java/com/cooper/lithic/data/media/photolite/PhotoLiteCoverChangePolicyTest.kt": 7,
+    "app/src/test/java/com/cooper/lithic/data/media/photolite/PhotoLiteBackup4IntegrationTest.kt": 6,
+    "app/src/androidTest/java/com/cooper/lithic/data/media/photolite/GenerationPhotoLiteCoverWriterTest.kt": 21,
+    "app/src/androidTest/java/com/cooper/lithic/feature/media/PhotoLiteCoverControllerTest.kt": 21,
+    "app/src/androidTest/java/com/cooper/lithic/feature/media/PhotoLiteCoverPresentationTest.kt": 11,
+    "app/src/androidTest/java/com/cooper/lithic/feature/media/PhotoLiteThumbnailPipelineTest.kt": 8
+  },
+  "testExecution": "NOT_RUN",
+  "redGreenObservation": "NOT_RUN_RESOURCE_DEFERRED",
+  "compilation": "NOT_RUN",
+  "lint": "NOT_RUN",
+  "gradleRuns": 0,
+  "deviceOperations": 0,
+  "preview14": "NOT_BUILT",
+  "protectedApks": [
+    {
+      "path": "verification-candidates/v1-a1/Lithic-V1-A1-App-debug.apk",
+      "bytes": 15977970,
+      "sha256": "626c9809b7566d56583d49e4dbb43abe90d44e151a5e9357d2ca90c62f35a97a",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/v1-a1/Lithic-V1-A1-AndroidTest.apk",
+      "bytes": 3741308,
+      "sha256": "1fdfc6ae8b784b8041d8182089bd1bf7af00ccc0e5d1f047de9ad9358f7e1154",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.10/Lithic-0.1.0-preview.10-debug.apk",
+      "bytes": 15912394,
+      "sha256": "55a3646e62661760c78797d14d9912a74a89b852c065037056d8d0fad840bc70",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.11/Lithic-0.1.0-preview.11-debug.apk",
+      "bytes": 15961550,
+      "sha256": "5bbf3c1f946fc2da4ab259ab377f8134e222255784fe81e20c7a73337e63cf90",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.12/Lithic-0.1.0-preview.12-debug.apk",
+      "bytes": 15977934,
+      "sha256": "4b6b3ed03674fc971b67a124171fedbb89fce155d2c6fd181ed597cde6250a1b",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.2/Lithic-0.1.0-preview.2-debug.apk",
+      "bytes": 13854809,
+      "sha256": "d39b6bf764720415d88d0d9f6c149b34dcda2d795f823505786fa4130b906ef4",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.3/Lithic-0.1.0-preview.3-debug.apk",
+      "bytes": 14079087,
+      "sha256": "0d204eae40f2c5304c99b7df4c7aa5add4d786bee648e4befdef7a9c0f652dca",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.4/Lithic-0.1.0-preview.4-debug.apk",
+      "bytes": 15715635,
+      "sha256": "7971ace1f70c9829a6991ebee482104843061f45987e6223bc4abae99326579a",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.5/Lithic-0.1.0-preview.5-debug.apk",
+      "bytes": 15732019,
+      "sha256": "059fcf44ae09ee2840d7c96f3a567bcf429dd465f4956c3e965c688fd7bf5670",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.6/Lithic-0.1.0-preview.6-debug.apk",
+      "bytes": 15732019,
+      "sha256": "154867aebd19372c78ae75879b9d6ce9fc2600fe2d5f7569b5cf7bbb684c13d9",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.7/Lithic-0.1.0-preview.7-debug.apk",
+      "bytes": 15748403,
+      "sha256": "c6ec3b0e43fa90f05220754ef581242bea6981c7c41aac4226eadb7f37dae26e",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.8/Lithic-0.1.0-preview.8-debug.apk",
+      "bytes": 15797555,
+      "sha256": "09ffc3c0a39d055e6fb89b4a738fe1a4ba579687c86c880f864fb428cd056bbd",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.9/Lithic-0.1.0-preview.9-debug.apk",
+      "bytes": 15813947,
+      "sha256": "f82148a2b6f1775235fd32717a7ced7f855c3e612441aee06a64644878cdf803",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/photo-lite-p1/Lithic-PhotoLite-P1-debug.apk",
+      "bytes": 16494089,
+      "sha256": "167b45b3295ff2ea3c9bceeb5ac1facd52023efb5ad7815e2913aea250decf89",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.13/Lithic-0.1.0-preview.13-debug.apk",
+      "bytes": 18079815,
+      "sha256": "2e49f72e9ae53b7e9b8b2200afc3880b1b291bdbd986c521aa3d5ddca6c7b6ba",
+      "unchanged": true
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "app/build.gradle.kts",
+      "workingTreeSha256": "62ff81f1526e8c8a3bf3df50f44becfdbd49b8854d9cdbf291f79b7299e8e90f",
+      "gitBlobAfterCleanFilters": "647783b628934b21e01a7b3b4a82f0feab02e8db"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/photolite/GenerationPhotoLiteCoverWriterTest.kt",
+      "workingTreeSha256": "7eebb5dcf13bbf53e5191e6a86cbcacc8000ac8bc4a6e51949d0b7ee4646cfc6",
+      "gitBlobAfterCleanFilters": "ffc21f5d228e070779d64a1a2b6674d807605820"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/PhotoLiteCoverControllerTest.kt",
+      "workingTreeSha256": "c31cbe86e67ec6cc5be6faf59c5b264b31ef8d9052192cc93d41c9ea3ee4343d",
+      "gitBlobAfterCleanFilters": "ab00adfadbda9c2a1ffce1017ae56f5aec940373"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/media/PhotoLiteCoverPresentationTest.kt",
+      "workingTreeSha256": "a6dfbf10b76956ceb107591be0008eb1ea883a96a7fac3ef7179c36889833050",
+      "gitBlobAfterCleanFilters": "a875c0fe0a0ad30b992ff085b3bc6d962bea0d2f"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+      "workingTreeSha256": "f92aa91d3f6c0328e234dbe7f62f67d7df15ceba48a50e582f4df130fe5d89b7",
+      "gitBlobAfterCleanFilters": "ac78acc13eab8237f607d2323e588b4909604b95"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/local/ProjectDao.kt",
+      "workingTreeSha256": "dcb994550ce97f6c54bf9e6cd9ab16154ba7826606addd5c09a07a85f10f4cc6",
+      "gitBlobAfterCleanFilters": "996e9290b57265a15249468138854c4fb978fb31"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/photolite/GenerationPhotoLiteCoverWriter.kt",
+      "workingTreeSha256": "f0502ecbae7fe778eac371b7e23c79873c8eb468656c27e2515895400626e5f3",
+      "gitBlobAfterCleanFilters": "3908ce6f80610e2ccbae57d3b697eb7b546dc202"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/photolite/PhotoLiteCoverWriter.kt",
+      "workingTreeSha256": "ecb5e7290c5fd704afce260595001b78caa530a85d0eec6678d4403ebc77a383",
+      "gitBlobAfterCleanFilters": "cbd9ca3b9318836e41cb22ce40424287a0cfb119"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/PhotoLiteCoverController.kt",
+      "workingTreeSha256": "5ad79a317bef4eb57023ad6eae292a30910db53f5e20e81c59867cf779b1298f",
+      "gitBlobAfterCleanFilters": "846959380a04f2eb93630b42cadcbedc2cc7beba"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/media/PhotoLiteCoverPanel.kt",
+      "workingTreeSha256": "df045a6d837f3f611f8ae0429bcc3af82aaa8391bee6936dcbab41d5cd0674fa",
+      "gitBlobAfterCleanFilters": "07fed4c0eb55800af077338c17909ca106ae7af9"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt",
+      "workingTreeSha256": "163a638d143c5ca42d094b278e1946e39f4e645f6348a77af813b95bd113f000",
+      "gitBlobAfterCleanFilters": "2782d2c9cdf26409418ba2c987fba249c481a6a2"
+    },
+    {
+      "path": "app/src/main/res/drawable-nodpi/ic_launcher_scene_p3.png",
+      "workingTreeSha256": "cf98e02ead3e72cdbf4902e0aeff991e28a74583921140029a3f9ac85254ba14",
+      "gitBlobAfterCleanFilters": "89846b6593901d13aa367219b9a0d8dc99df73d2"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_background.xml",
+      "workingTreeSha256": "910cb1a82069622dd715cbdc38518d6c80ba2fbf74daa81a9f9a046c4d6fe571",
+      "gitBlobAfterCleanFilters": "0db90cafca6c2b83471af852ee489bf53346081e"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_foreground.xml",
+      "workingTreeSha256": "600479ea3c4e38c0e31f273cd429d85c50b09938b2f6ed66fd02082250203285",
+      "gitBlobAfterCleanFilters": "2173a35d429a26dda7b51dfa8655bd1cbf3ebc30"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/media/photolite/PhotoLiteBackup4IntegrationTest.kt",
+      "workingTreeSha256": "587e5b95b83e3cdaa49ecd5267484718e118a6e80acce35e97cb65488b9efad4",
+      "gitBlobAfterCleanFilters": "b0705fba7f85ac29fd7f8cc4dbcfa65dcb96ae83"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/media/photolite/PhotoLiteCoverChangePolicyTest.kt",
+      "workingTreeSha256": "db3dda678f044d9f168939859e2ec529da3db1ff745cbb2a933a556406d58b07",
+      "gitBlobAfterCleanFilters": "b046a5ca68d862103d73b43315d676a8004833bb"
+    }
+  ],
+  "oldCoreTestMethodsPreserved": true,
+  "futureRelatedJvmMethodsExpected": 56,
+  "androidMethodsSourceOnly": 61,
+  "sourceHashPolicy": "Working tree SHA is raw bytes; Git blob uses repository clean/EOL filters for cross-checkout identity.",
+  "stagedFormattingFirstCheck": "FAILED_NEW_RAW_JSON_CRLF",
+  "stagedFormattingResolution": "Normalize only this new JSON to LF; rerun staged check"
+}

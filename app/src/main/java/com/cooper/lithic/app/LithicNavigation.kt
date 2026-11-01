@@ -2,6 +2,7 @@ package com.cooper.lithic.app
 
 import com.cooper.lithic.data.media.CoverOwnerType
 import com.cooper.lithic.data.media.CoverReference
+import com.cooper.lithic.data.media.photolite.PhotoLiteCoverChange
 import com.cooper.lithic.feature.media.RecordCover
 import com.cooper.lithic.feature.media.ProvideCoverPreviews
 import com.cooper.lithic.feature.media.PhotoLiteCoverController
@@ -538,6 +539,15 @@ internal fun LithicNavigation(
                             onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)
                     }
                     entry<ProjectDetail> { route ->
+                        val startPhotoChange = photoModel?.let { controller -> { change: PhotoLiteCoverChange ->
+                            if (restoreState.phase == RestoreUiPhase.IDLE &&
+                                restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
+                                backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&
+                                guardedLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(),
+                                    categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.ALLOW)
+                                controller.begin(route.id, change)
+                            else pendingWarning = true
+                        } }
                         ProjectDetailScreen(projects.detail, onBack, onEdit = { requestLeave(canonicalBackStack(ProjectEdit(route.id, route.origin, route.comparisonId))) },
                             onAddMoney = { requestLeave(canonicalBackStack(ProjectMoneyEntry(route.id, it, route.origin, route.comparisonId))) }, onRetry = model::retryRead,
                             onEnd = { requestLeave(canonicalBackStack(ProjectEnd(route.id, route.origin, route.comparisonId))) },
@@ -548,15 +558,9 @@ internal fun LithicNavigation(
                                 RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
                                     Modifier.fillMaxSize()) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) }
                             } },
-                            onAddPhoto = photoModel?.let { controller -> {
-                                if (restoreState.phase == RestoreUiPhase.IDLE &&
-                                    restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
-                                    backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&
-                                    guardedLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(),
-                                        categoryModel?.leaveDecision() ?: LeaveDecision.ALLOW, replacementModel?.leaveDecision() ?: LeaveDecision.ALLOW) == LeaveDecision.ALLOW)
-                                    controller.begin(route.id)
-                                else pendingWarning = true
-                            } },
+                            onAddPhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.ADD) } },
+                            onReplacePhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.REPLACE) } },
+                            onRemovePhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.REMOVE) } },
                             photoActionEnabled = photoModel?.isAvailable() == true && restoreState.phase == RestoreUiPhase.IDLE &&
                                 restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
                                 backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&

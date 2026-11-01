@@ -14,6 +14,7 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.data.media.photolite.PhotoLiteCoverChange
 import com.cooper.lithic.data.repository.ProjectDetail
 import com.cooper.lithic.feature.project.ProjectDetailScreen
 import com.cooper.lithic.feature.project.ProjectDetailUiState
@@ -51,12 +52,57 @@ class PhotoLiteCoverPresentationTest {
         compose.onNodeWithTag("project-photo-unavailable").assertTextContains("不支持")
     }
 
-    @Test fun existing_cover_uses_expanded_slot_and_has_no_replace_or_remove_action() {
+    @Test fun existing_cover_uses_expanded_slot_and_exposes_explicit_replace_and_cancel_display() {
         val covered = detail.copy(project = detail.project.copy(coverAssetId = "95000000-0000-0000-0000-000000000001"))
-        show(covered, onAdd = { error("Existing cover must not be replaced") }, expand = true)
+        var replaced = 0
+        var removed = 0
+        show(covered, onAdd = { error("Adding over an existing cover must remain unavailable") }, expand = true,
+            onReplace = { replaced++ }, onRemove = { removed++ })
         compose.onNodeWithTag("project-detail-cover-expanded").assertIsDisplayed()
         compose.onNodeWithTag("project-add-photo").assertDoesNotExist()
+        compose.onNodeWithTag("project-replace-photo").performClick()
+        compose.onNodeWithTag("project-remove-photo").performClick()
+        assertEquals(1, replaced)
+        assertEquals(1, removed)
         compose.onNodeWithTag("project-detail-name").assertTextContains(detail.project.name)
+        compose.onNodeWithTag("project-record-money").assertIsDisplayed()
+    }
+
+    @Test fun existing_cover_on_unsupported_device_keeps_management_actions_disabled() {
+        val covered = detail.copy(project = detail.project.copy(coverAssetId = "95000000-0000-0000-0000-000000000001"))
+        show(covered, enabled = false, onReplace = { error("Disabled may not replace") },
+            onRemove = { error("Disabled may not clear") }, unavailable = "此设备暂不支持照片试验。")
+        compose.onNodeWithTag("project-replace-photo").assertIsNotEnabled()
+        compose.onNodeWithTag("project-remove-photo").assertIsNotEnabled()
+        compose.onNodeWithTag("project-photo-unavailable").assertTextContains("不支持")
+    }
+
+    @Test fun cancel_display_requires_confirmation_and_cancel_keeps_the_cover() {
+        val state = mutableStateOf(PhotoLiteCoverUiState(PhotoLiteCoverPhase.REMOVE_CONFIRM, change = PhotoLiteCoverChange.REMOVE))
+        var confirmed = 0
+        var cancelled = 0
+        compose.setContent { LithicTheme { PhotoLiteCoverDialog(state.value, { confirmed++ },
+            { cancelled++; state.value = PhotoLiteCoverUiState() }) } }
+        compose.onNodeWithTag("photo-lite-removal-warning").assertTextContains("不会彻底删除旧照片")
+        compose.onNodeWithTag("photo-lite-removal-warning").assertTextContains("完整备份仍会包含并校验旧照片")
+        compose.onNodeWithTag("photo-lite-remove-confirm").assertIsDisplayed()
+        compose.onNodeWithTag("photo-lite-preview").assertDoesNotExist()
+        compose.onNodeWithTag("photo-lite-cancel").performClick()
+        assertEquals(0, confirmed)
+        assertEquals(1, cancelled)
+        compose.onNodeWithTag("photo-lite-dialog").assertDoesNotExist()
+    }
+
+    @Test fun cancelled_display_success_does_not_claim_the_file_was_deleted() {
+        compose.setContent { LithicTheme { PhotoLiteCoverDialog(
+            PhotoLiteCoverUiState(PhotoLiteCoverPhase.SUCCESS,
+                message = "已取消封面显示。旧照片未清理，已有文件可能继续占用空间，并会随完整备份保留。",
+                change = PhotoLiteCoverChange.REMOVE), { error("Success may not submit") }, {}) } }
+        compose.onNodeWithTag("photo-lite-feedback").assertTextContains("旧照片未清理")
+        compose.onNodeWithTag("photo-lite-feedback").assertTextContains("随完整备份保留")
+        compose.onNodeWithTag("photo-lite-confirm").assertDoesNotExist()
+        compose.onNodeWithTag("photo-lite-remove-confirm").assertDoesNotExist()
+        compose.onNodeWithTag("photo-lite-dismiss").assertIsDisplayed()
     }
 
     @Test fun unknown_result_is_persistent_without_confirm_cancel_or_retry() {
@@ -107,11 +153,13 @@ class PhotoLiteCoverPresentationTest {
     }
 
     private fun show(value: ProjectDetail = detail, onAdd: (() -> Unit)? = null, enabled: Boolean = true,
-        unavailable: String? = null, expand: Boolean = false) {
+        unavailable: String? = null, expand: Boolean = false, onReplace: (() -> Unit)? = null,
+        onRemove: (() -> Unit)? = null) {
         compose.setContent { LithicTheme { Box(Modifier.requiredSize(400.dp, 840.dp)) {
             ProjectDetailScreen(ProjectDetailUiState(value, loading = false), {}, {}, {}, {},
                 onAddPhoto = onAdd, photoActionEnabled = enabled, photoUnavailableMessage = unavailable,
-                expandPhotoCover = expand, coverContent = { Box(Modifier.testTag("synthetic-cover-slot")) })
+                expandPhotoCover = expand, coverContent = { Box(Modifier.testTag("synthetic-cover-slot")) },
+                onReplacePhoto = onReplace, onRemovePhoto = onRemove)
         } } }
     }
 }
