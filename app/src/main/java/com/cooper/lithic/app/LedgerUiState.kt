@@ -34,6 +34,7 @@ sealed interface LedgerUiState {
         val settingsStore: com.cooper.lithic.data.settings.SettingsStore? = null,
         val coverReader: com.cooper.lithic.data.media.CoverReader? = null,
         val photoLiteCoverWriter: com.cooper.lithic.data.media.photolite.PhotoLiteCoverWriter? = null,
+        val photoStorageReader: com.cooper.lithic.data.media.PhotoStorageReader? = null,
     ) : LedgerUiState
     data object Failed : LedgerUiState
 }

@@ -30,10 +30,16 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.feature.settings.BackupExportViewModel
 import com.cooper.lithic.feature.settings.BackupRestoreViewModel
+import com.cooper.lithic.feature.settings.BackupInspectionViewModel
 import com.cooper.lithic.feature.settings.BackupUiPhase
 import com.cooper.lithic.feature.settings.RestoreUiPhase
 import com.cooper.lithic.feature.settings.rememberBackupDocumentPicker
 import com.cooper.lithic.feature.settings.rememberBackupRestoreDocumentPicker
+import com.cooper.lithic.feature.settings.rememberBackupInspectionDocumentPicker
+import com.cooper.lithic.data.backup.BackupInspectionService
+import com.cooper.lithic.data.backup.ownedBackupCacheDirectory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import com.cooper.lithic.data.backup.BackupExportService
 import com.cooper.lithic.data.backup.RestoreCoordinator
 import com.cooper.lithic.data.repository.MilestoneNoticeRef
@@ -85,6 +91,22 @@ class MainActivity : ComponentActivity() {
         val restores = ViewModelProvider(this, viewModelFactory {
             initializer { BackupRestoreViewModel(createSavedStateHandle(), RestoreCoordinator(applicationContext, container)) }
         })[BackupRestoreViewModel::class.java]
+        val inspections = ViewModelProvider(this, viewModelFactory {
+            initializer {
+                // Trusted cache validation happens on IO only after an explicit inspection request.
+                // An unavailable inspection root must not prevent the normal App from opening.
+                val inspector by lazy {
+                    BackupInspectionService(ownedBackupCacheDirectory(applicationContext).resolve("backup-inspections"))
+                }
+                BackupInspectionViewModel(createSavedStateHandle(), currentOwner = {
+                    (container.storageState.value as? StorageInitializationState.Ready)?.generation?.takeIf {
+                        !it.coordinator.isRetired && it.database.isOpen
+                    }
+                }, ownerChanges = container.storageState, inspect = { input, current ->
+                    withContext(Dispatchers.IO) { inspector.inspect(input, current) }
+                })
+            }
+        })[BackupInspectionViewModel::class.java]
         setContent {
             val appearanceState by appearance.state.collectAsStateWithLifecycle()
             SideEffect {
@@ -104,18 +126,25 @@ class MainActivity : ComponentActivity() {
                 val state by holder.state.collectAsStateWithLifecycle()
                 val backupState by backups.state.collectAsStateWithLifecycle()
                 val restoreState by restores.state.collectAsStateWithLifecycle()
+                val inspectionState by inspections.state.collectAsStateWithLifecycle()
                 val chooseBackupTarget = rememberBackupDocumentPicker(backups)
                 val chooseRestoreSource = rememberBackupRestoreDocumentPicker(restores)
+                val chooseInspectionSource = rememberBackupInspectionDocumentPicker(inspections)
                 val export: () -> Unit = {
-                    if (restores.state.value.phase == RestoreUiPhase.IDLE) chooseBackupTarget()
+                    if (restores.state.value.phase == RestoreUiPhase.IDLE && !inspections.state.value.busy) chooseBackupTarget()
                 }
                 val restore: () -> Unit = {
-                    if (backups.state.value.phase == BackupUiPhase.IDLE) chooseRestoreSource()
+                    if (backups.state.value.phase == BackupUiPhase.IDLE && !inspections.state.value.busy) chooseRestoreSource()
+                }
+                val inspect: () -> Unit = {
+                    if (backups.state.value.phase == BackupUiPhase.IDLE && restores.state.value.phase == RestoreUiPhase.IDLE)
+                        chooseInspectionSource()
                 }
                 LithicApp(state = state, onExit = { finish() }, onRetryLedger = holder::retryRead,
                     backupState = backupState, onExportBackup = export, onCancelBackup = backups::cancelExport,
                     restoreState = restoreState, onRestoreBackup = restore, onCancelRestore = restores::cancelValidation,
                     onConfirmRestore = restores::confirmOverwrite, onDiscardRestore = restores::discardPreview,
+                    inspectionState = inspectionState, onInspectBackup = inspect, onCancelInspection = inspections::cancelCheck,
                     milestoneRequest = milestoneRequest, resolveMilestone = resolveMilestone)
             }
             }

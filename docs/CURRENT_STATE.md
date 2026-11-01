@@ -4,6 +4,9 @@
 
 ## Current Stage
 
+- **V1-B1 Data Confidence — SOURCE_PREPARED / BUILD_DEFERRED（2026-11-01）**：从用户锁定P3`dd31ce4`远端一致干净状态建立`codex/v1-b1-data-confidence`。已落备份文件检查Service/SAF/typed四结果/取消与旧选择排空、settings照片元数据聚合与generation作用域，沿用原格式/Owner/导航保护；只允许本次完整认证UUID检查暂存的精确清理，不删除业务照片/metadata、不GC。主机首次命令前RAM3.604GiB低于4GiB，Gradle未启动；用户明确“先完成源码，构建暂缓”，新55 JVM/12 Android断言以及Kotlin编译/构建/Lint均NOT_RUN，未观察RED。16份历史APK/Preview14、253份范围外main/schema及全部旧测试保持。Private Trial仍原code30配置，Preview15/code31待恢复验证后才递增与构建，没有新APK可用。见[集中源码及边界报告](evidence/LITHIC-V1-B1-Data-Confidence.md)。照片字节仅登记估算（含两类历史引用去重），旧照片仍入完整备份；VERIFIED不代表恢复激活/Android可读性或严格JPEG安全。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及全部旧门禁不改。当前下一步仅在用户恢复且RAM≥4GiB后继续B1定向测试/编译/Lint及唯一Preview15审计；无手机/ADB/AVD/账本操作，不合并main或自动V1-B2。
+
+
 - **PHOTO-LITE P3 — READY_FOR_INDEPENDENT_REVIEW（2026-11-01，桌面交付）**：用户恢复构建后RAM实测6.848GiB，56项定向JVM全部PASS；首轮1项失败为新增类别变体与原行相同，保留原始输出，仅修夹具并增强自检（源码`179ac675`），生产实现不迁就测试。Private Trial App/Test构建、61相关Android方法源码编译及Lint退出0（0E18W），Android实际仍全部NOT_RUN。Preview14/code30同`.preview.debug`、原Debug证书，唯一非build归档20,457,403字节，SHA`0994fa279ccbdc92c44e1ee963f7d404b113a4334f4194c1afd5def73ce764bf`；原图黑石暖金背景场景及adaptive资源已进入实际APK，真实Launcher未验证。正常Debug/Release身份与开关不改，15份历史APK原字节保护，250份范围外main/schema源码保持。旧封面metadata/文件全部保留并参加backup4，更换/取消无GC或永久删除；旧图损坏/体积NOTE保持。见[唯一集中报告](evidence/LITHIC-PHOTO-LITE-P3-Integration.md)及归档回执。APK绑定App树`a1b509f567434e59c2b3fd18bea1ac0ac0199379`。无手机/ADB/AVD/安装/账本操作，SAF恢复/升级/峰值仍NOT_RUN或UNKNOWN；PHOTO_LITE_EXPERIMENT_ONLY、V1_RELEASE_NO_GO、正式MEDIA_IMPORT_BLOCKED、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及历史门禁保持。只推P3，停止等待独立审查，不自动合并产品分支/main或P4/M23。
 
 

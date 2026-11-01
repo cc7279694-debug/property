@@ -46,6 +46,11 @@ internal fun SettingsShell(
     onNotificationClick: (() -> Unit)? = null,
     onCalculationExplanation: (() -> Unit)? = null,
     onAboutLithic: (() -> Unit)? = null,
+    inspectionState: BackupInspectionUiState = BackupInspectionUiState(),
+    onInspectBackup: (() -> Unit)? = null,
+    onCancelInspection: () -> Unit = {},
+    photoStorageState: PhotoStorageUiState = PhotoStorageUiState.Idle,
+    onRefreshPhotoStorage: (() -> Unit)? = null,
 ) {
     var informationOpen by rememberSaveable { mutableStateOf(false) }
     Column(modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = LithicSpacing.page, vertical = 16.dp)
@@ -77,7 +82,7 @@ internal fun SettingsShell(
                 BackupUiPhase.EXPORTING -> "正在导出并校验"
             }, C2Glyph.Project, Modifier.testTag("export-complete-backup"),
                 subtitle = "文件未加密，请妥善保管",
-                enabled = onExportBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
+                enabled = onExportBackup != null && !inspectionState.busy && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
                 onClick = { onExportBackup?.invoke() })
             if (backupState.phase == BackupUiPhase.EXPORTING) {
                 TextButton(onClick = onCancelBackup,
@@ -86,6 +91,15 @@ internal fun SettingsShell(
             backupState.message?.let { feedback ->
                 UiFeedbackText(feedback, backupState.messageTone, "backup-export-feedback")
             }
+            HorizontalDivider()
+            C2SettingRow(when (inspectionState.phase) {
+                BackupInspectionPhase.IDLE -> "检查备份文件"
+                BackupInspectionPhase.CHOOSING -> if (inspectionState.cancelling) "等待上次文件选择结束" else "正在选择待检查文件"
+                BackupInspectionPhase.CHECKING -> if (inspectionState.cancelling) "正在结束检查" else "正在检查备份文件"
+            }, C2Glyph.Info, Modifier.testTag("inspect-backup-file"), subtitle = "只检查完整性，不恢复或覆盖记录",
+                enabled = onInspectBackup != null && !inspectionState.busy && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
+                onClick = { onInspectBackup?.invoke() })
+            BackupInspectionFeedback(inspectionState, onCancelInspection)
             HorizontalDivider()
             C2SettingRow(when (restoreState.phase) {
                 RestoreUiPhase.IDLE -> "选择完整备份"
@@ -96,7 +110,7 @@ internal fun SettingsShell(
                 RestoreUiPhase.RESTORING -> "正在安全恢复"
             }, C2Glyph.Review, Modifier.testTag("restore-complete-backup"),
                 subtitle = "完整覆盖，不合并；先预览再确认",
-                enabled = onRestoreBackup != null && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
+                enabled = onRestoreBackup != null && !inspectionState.busy && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
                 onClick = { onRestoreBackup?.invoke() })
             if (restoreState.phase == RestoreUiPhase.VALIDATING) {
                 TextButton(onClick = onCancelRestore,
@@ -113,6 +127,7 @@ internal fun SettingsShell(
                 UiFeedbackText(feedback, restoreState.messageTone, "backup-restore-feedback")
             }
         }
+        PhotoStorageSection(photoStorageState, onRefreshPhotoStorage)
         C2Section("说明与关于") {
             onCalculationExplanation?.let { open ->
                 C2SettingRow("成本计算说明", C2Glyph.Info, Modifier.testTag("open-calculation-explanation"), onClick = open)

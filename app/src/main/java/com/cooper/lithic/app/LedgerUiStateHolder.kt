@@ -63,6 +63,9 @@ internal class LedgerUiStateHolder(
                                     itemTimelineRepository = com.cooper.lithic.data.repository.ItemTimelineRepository(repository, subscriptions, clock),
                                     totalCostTimelineRepository = com.cooper.lithic.data.repository.TotalCostTimelineRepository(reports, clock),
                                     settingsStore = generation.settings,
+                                    photoStorageReader = com.cooper.lithic.data.media.GenerationPhotoStorageReader(generation) {
+                                        (storageStates.value as? StorageInitializationState.Ready)?.generation === generation
+                                    },
                                     coverReader = com.cooper.lithic.data.media.GenerationCoverReader(generation) {
                                         (storageStates.value as? StorageInitializationState.Ready)?.generation === generation
                                     },

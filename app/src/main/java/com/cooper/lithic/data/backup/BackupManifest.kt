@@ -71,12 +71,11 @@ internal object BackupFormats {
     val V3_TABLES=V2_TABLES+"notification_receipts"
     val CURRENT_TABLES=V3_TABLES+"milestone_watermarks"
     fun requireSupported(manifest:BackupManifestV1) {
-        require((manifest.formatVersion==1 && manifest.minReaderFormat==1 && manifest.sourceDatabaseSchemaVersion==2) ||
+        if (!((manifest.formatVersion==1 && manifest.minReaderFormat==1 && manifest.sourceDatabaseSchemaVersion==2) ||
             (manifest.formatVersion==2 && manifest.minReaderFormat==2 && manifest.sourceDatabaseSchemaVersion==3) ||
             (manifest.formatVersion==3 && manifest.minReaderFormat==3 && manifest.sourceDatabaseSchemaVersion==4) ||
-            (manifest.formatVersion==4 && manifest.minReaderFormat==4 && manifest.sourceDatabaseSchemaVersion==5)) {
-            "Unsupported backup format, reader or source schema combination"
-        }
+            (manifest.formatVersion==4 && manifest.minReaderFormat==4 && manifest.sourceDatabaseSchemaVersion==5)))
+            throw UnsupportedBackupFormatException()
         require(manifest.recordCounts.keys == when(manifest.formatVersion) { 1 -> LEGACY_TABLES; 2 -> V2_TABLES; 3 -> V3_TABLES; else -> CURRENT_TABLES }) {
             "Backup record count table set differs from its format"
         }
@@ -91,3 +90,6 @@ internal object BackupFormats {
         }
     }
 }
+
+/** Classification only. The accepted format/reader/schema combinations remain unchanged. */
+internal class UnsupportedBackupFormatException : IllegalArgumentException("Unsupported backup format, reader or source schema combination")

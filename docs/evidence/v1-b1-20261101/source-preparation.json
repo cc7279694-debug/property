@@ -1,0 +1,251 @@
+{
+  "observedUtc": "2026-11-01T12:39:58.454610+00:00",
+  "status": "STATIC_SOURCE_ONLY",
+  "baseline": "dd31ce4b0613d0ed53e2a8280375739d75550032",
+  "existingMainFilesChanged": [
+    "app/src/main/java/com/cooper/lithic/app/LedgerUiState.kt",
+    "app/src/main/java/com/cooper/lithic/app/LedgerUiStateHolder.kt",
+    "app/src/main/java/com/cooper/lithic/app/LithicApp.kt",
+    "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt",
+    "app/src/main/java/com/cooper/lithic/app/MainActivity.kt",
+    "app/src/main/java/com/cooper/lithic/data/backup/BackupManifest.kt",
+    "app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt"
+  ],
+  "allOtherFrozenMainSchemaFilesUnchanged": 253,
+  "backupSupportedTuplesUnchanged": [
+    [
+      "1",
+      "1",
+      "2"
+    ],
+    [
+      "2",
+      "2",
+      "3"
+    ],
+    [
+      "3",
+      "3",
+      "4"
+    ],
+    [
+      "4",
+      "4",
+      "5"
+    ]
+  ],
+  "schemaBuildIdentityManifestDependenciesUnchanged": true,
+  "allOldJvmAndAndroidAssertionsUnchanged": true,
+  "newSources": [
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/data/media/GenerationPhotoStorageReaderTest.kt",
+      "bytes": 9988,
+      "workingSha256": "df7c294c10f61a15256bcdabe4ae0d87c05a21ed819ccdda28ce8c175bea0fd6",
+      "gitCleanBlob": "a2f20efb5c2c28ae87deb629f7d269fdb97b29d0"
+    },
+    {
+      "path": "app/src/androidTest/java/com/cooper/lithic/feature/settings/DataConfidencePresentationTest.kt",
+      "bytes": 4359,
+      "workingSha256": "573450ee1d5ddccb255c67e79d2b2ed677e6ffca03907d51f8c265ee5f405a1c",
+      "gitCleanBlob": "b890b9fdcf77bb4ac253b7c8470a54ca3f1bf9df"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/backup/BackupInspectionService.kt",
+      "bytes": 15604,
+      "workingSha256": "7d3e58e8e83b516c6e0eca374c8be0c99ac3076073c23bd11e547dae1f9f98c0",
+      "gitCleanBlob": "e4dc20e2a50502cfa126d2b848cd4b79be5e03f8"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/GenerationPhotoStorageReader.kt",
+      "bytes": 5468,
+      "workingSha256": "25a79414d5d353168c337831bfc2b1843cfd44fce6c03164b932448b2d33fc8b",
+      "gitCleanBlob": "e54267705caff55fb4f8bb0901caaa0e081bafdb"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/data/media/PhotoStorageReader.kt",
+      "bytes": 1691,
+      "workingSha256": "48194e6da266c0dec970950882fa2109ef583d3d89897a55799917500de01973",
+      "gitCleanBlob": "e3f791f55101e5e680b7231702d22c1e49d4b6f9"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/BackupInspectionController.kt",
+      "bytes": 8723,
+      "workingSha256": "98cf77d29bcd7042fc10226a04631d264194405149a593082bcaef9d12a80736",
+      "gitCleanBlob": "2c5b6c1a22e8ccff9aa714c85c3d7369e7eb60c4"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/BackupInspectionDocumentPicker.kt",
+      "bytes": 1847,
+      "workingSha256": "7baaa092d9e54a297a71294e10477a3e88656f7a9be1f65db3e30a48ee88ec17",
+      "gitCleanBlob": "e33841678dc5a386354a92938e5ef93555b66066"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/BackupInspectionViewModel.kt",
+      "bytes": 2701,
+      "workingSha256": "db278c01db560717895babe9a84697da58efc8fe740a27b951698c14a30a9079",
+      "gitCleanBlob": "5242d8a1dff94908f67b57ef0678ccc2e82aa635"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/DataConfidenceSections.kt",
+      "bytes": 5185,
+      "workingSha256": "8d42c70a491d2ba40c369ec1411877d93a5dad150f0361fdec7356ff0ad19f6d",
+      "gitCleanBlob": "575c3ad612eef34f78702b6afb87f9e8965b2bdd"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/PhotoStorageController.kt",
+      "bytes": 3955,
+      "workingSha256": "a77c50788cd6c34a605b5e201b49c178d81a6eec1b967b5487a462315071365d",
+      "gitCleanBlob": "8e949aec96a8ebcd264c3d5ab0590a15c9868813"
+    },
+    {
+      "path": "app/src/main/java/com/cooper/lithic/feature/settings/PhotoStorageViewModel.kt",
+      "bytes": 813,
+      "workingSha256": "dea4bc5f2ba5953659d8e4406bec2304b02800a7adef5376e8150b24d8a38fa8",
+      "gitCleanBlob": "b5e28598d12c259cfcbf02cafb261b261317a2c1"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/backup/BackupInspectionServiceTest.kt",
+      "bytes": 15806,
+      "workingSha256": "0cf9aee7ce019978c20ba41de4facb99389b45f3711f8e22b2128c706103e305",
+      "gitCleanBlob": "8d1d5d3056f453b468de0014a15fa5e14cab579e"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/data/media/PhotoStorageSummaryTest.kt",
+      "bytes": 2644,
+      "workingSha256": "e1a94588f0c19df5fe216d659f7ddc9cde0d391ae0c6f3e416ce2be3c096b747",
+      "gitCleanBlob": "913bac7ffc6cc1ff12ec1e410ee16803a5dcdbf5"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/feature/settings/BackupInspectionControllerTest.kt",
+      "bytes": 8230,
+      "workingSha256": "97ef1c84e43e62a7bdc6d46ee2bc5958a690c207397ad19fa8c82b7e423a0dac",
+      "gitCleanBlob": "bd4d1abc6535590a4cc58d31fa42d29bd5ad2a52"
+    },
+    {
+      "path": "app/src/test/java/com/cooper/lithic/feature/settings/PhotoStorageControllerTest.kt",
+      "bytes": 7299,
+      "workingSha256": "08433e6befacb2f75f09ae23e80f288270dd15748ad739bf849b67211c4de288",
+      "gitCleanBlob": "5620a3e8f75b24c64805cb7feecf866f98081b68"
+    }
+  ],
+  "newTestSourceMethodCounts": {
+    "app/src/androidTest/java/com/cooper/lithic/data/media/GenerationPhotoStorageReaderTest.kt": 8,
+    "app/src/androidTest/java/com/cooper/lithic/feature/settings/DataConfidencePresentationTest.kt": 4,
+    "app/src/test/java/com/cooper/lithic/data/backup/BackupInspectionServiceTest.kt": 22,
+    "app/src/test/java/com/cooper/lithic/data/media/PhotoStorageSummaryTest.kt": 10,
+    "app/src/test/java/com/cooper/lithic/feature/settings/BackupInspectionControllerTest.kt": 12,
+    "app/src/test/java/com/cooper/lithic/feature/settings/PhotoStorageControllerTest.kt": 11
+  },
+  "newJvmMethods": 55,
+  "newAndroidMethods": 12,
+  "jvmExecution": "NOT_RUN",
+  "androidTestCompilation": "NOT_RUN",
+  "androidExecution": "NOT_RUN",
+  "lint": "NOT_RUN",
+  "build": "NOT_RUN_USER_DEFERRED",
+  "preview15": "NOT_BUILT",
+  "protectedApks": [
+    {
+      "path": "verification-candidates/v1-a1/Lithic-V1-A1-App-debug.apk",
+      "bytes": 15977970,
+      "sha256": "626c9809b7566d56583d49e4dbb43abe90d44e151a5e9357d2ca90c62f35a97a",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/v1-a1/Lithic-V1-A1-AndroidTest.apk",
+      "bytes": 3741308,
+      "sha256": "1fdfc6ae8b784b8041d8182089bd1bf7af00ccc0e5d1f047de9ad9358f7e1154",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.10/Lithic-0.1.0-preview.10-debug.apk",
+      "bytes": 15912394,
+      "sha256": "55a3646e62661760c78797d14d9912a74a89b852c065037056d8d0fad840bc70",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.11/Lithic-0.1.0-preview.11-debug.apk",
+      "bytes": 15961550,
+      "sha256": "5bbf3c1f946fc2da4ab259ab377f8134e222255784fe81e20c7a73337e63cf90",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.12/Lithic-0.1.0-preview.12-debug.apk",
+      "bytes": 15977934,
+      "sha256": "4b6b3ed03674fc971b67a124171fedbb89fce155d2c6fd181ed597cde6250a1b",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.2/Lithic-0.1.0-preview.2-debug.apk",
+      "bytes": 13854809,
+      "sha256": "d39b6bf764720415d88d0d9f6c149b34dcda2d795f823505786fa4130b906ef4",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.3/Lithic-0.1.0-preview.3-debug.apk",
+      "bytes": 14079087,
+      "sha256": "0d204eae40f2c5304c99b7df4c7aa5add4d786bee648e4befdef7a9c0f652dca",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.4/Lithic-0.1.0-preview.4-debug.apk",
+      "bytes": 15715635,
+      "sha256": "7971ace1f70c9829a6991ebee482104843061f45987e6223bc4abae99326579a",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.5/Lithic-0.1.0-preview.5-debug.apk",
+      "bytes": 15732019,
+      "sha256": "059fcf44ae09ee2840d7c96f3a567bcf429dd465f4956c3e965c688fd7bf5670",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.6/Lithic-0.1.0-preview.6-debug.apk",
+      "bytes": 15732019,
+      "sha256": "154867aebd19372c78ae75879b9d6ce9fc2600fe2d5f7569b5cf7bbb684c13d9",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.7/Lithic-0.1.0-preview.7-debug.apk",
+      "bytes": 15748403,
+      "sha256": "c6ec3b0e43fa90f05220754ef581242bea6981c7c41aac4226eadb7f37dae26e",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.8/Lithic-0.1.0-preview.8-debug.apk",
+      "bytes": 15797555,
+      "sha256": "09ffc3c0a39d055e6fb89b4a738fe1a4ba579687c86c880f864fb428cd056bbd",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.9/Lithic-0.1.0-preview.9-debug.apk",
+      "bytes": 15813947,
+      "sha256": "f82148a2b6f1775235fd32717a7ced7f855c3e612441aee06a64644878cdf803",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/photo-lite-p1/Lithic-PhotoLite-P1-debug.apk",
+      "bytes": 16494089,
+      "sha256": "167b45b3295ff2ea3c9bceeb5ac1facd52023efb5ad7815e2913aea250decf89",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.13/Lithic-0.1.0-preview.13-debug.apk",
+      "bytes": 18079815,
+      "sha256": "2e49f72e9ae53b7e9b8b2200afc3880b1b291bdbd986c521aa3d5ddca6c7b6ba",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.14/Lithic-0.1.0-preview.14-debug.apk",
+      "bytes": 20457403,
+      "sha256": "0994fa279ccbdc92c44e1ee963f7d404b113a4334f4194c1afd5def73ce764bf",
+      "unchanged": true
+    }
+  ],
+  "deviceOperations": 0,
+  "sourceSnapshotStage": "FINAL_SOURCE_PREPARED_NOT_COMPILED",
+  "temporaryCleanupScope": "Only fully authenticated current UUID preparation; no media or unknown file cleanup",
+  "testFirstObservation": "NOT_RUN_RESOURCE_GATE_BEFORE_GRADLE",
+  "preview15VersionChange": "DEFERRED_UNTIL_DESKTOP_VERIFICATION_RESUMES; current build config retained at Preview14/code30",
+  "pickerCorrelation": "UUID per request; unreturned old chooser stays busy and is drained without URI open; real SAF NOT_RUN"
+}

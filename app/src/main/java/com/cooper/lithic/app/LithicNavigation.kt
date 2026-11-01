@@ -107,6 +107,9 @@ import com.cooper.lithic.platform.notification.ReminderScheduling
 import androidx.compose.ui.platform.LocalContext
 import com.cooper.lithic.feature.settings.BackupExportUiState
 import com.cooper.lithic.feature.settings.BackupRestoreUiState
+import com.cooper.lithic.feature.settings.BackupInspectionUiState
+import com.cooper.lithic.feature.settings.PhotoStorageViewModel
+import com.cooper.lithic.feature.settings.PhotoStorageUiState
 import com.cooper.lithic.feature.settings.RestoreUiPhase
 import com.cooper.lithic.feature.report.ItemTimelineViewModel
 import com.cooper.lithic.feature.project.ProjectCostChart
@@ -140,6 +143,9 @@ internal fun LithicNavigation(
     onDiscardRestore: () -> Unit = {},
     milestoneRequest: MilestoneOpenRequest? = null,
     resolveMilestone: (suspend (MilestoneNoticeRef) -> List<MilestoneCandidate>)? = null,
+    inspectionState: BackupInspectionUiState = BackupInspectionUiState(),
+    onInspectBackup: (() -> Unit)? = null,
+    onCancelInspection: () -> Unit = {},
 ) {
     val owner = checkNotNull(LocalView.current.findViewTreeViewModelStoreOwner())
     val generationScope = remember(owner) {
@@ -168,6 +174,14 @@ internal fun LithicNavigation(
         }
     }
     val categoryState = categoryModel?.state?.collectAsStateWithLifecycle()?.value
+    val photoStorageModel = state.photoStorageReader?.let { reader ->
+        remember(generationScope, session, reader) {
+            ViewModelProvider(generationScope, viewModelFactory {
+                initializer { PhotoStorageViewModel(reader) }
+            })[PhotoStorageViewModel::class.java]
+        }
+    }
+    val photoStorageState = photoStorageModel?.state?.collectAsStateWithLifecycle()?.value ?: PhotoStorageUiState.Idle
     val searchModel = state.searchRepository?.let { repository ->
         remember(generationScope, session, repository) {
             ViewModelProvider(generationScope, viewModelFactory {
@@ -287,10 +301,11 @@ internal fun LithicNavigation(
     }
     val onBack: () -> Unit = { if (routes.size > 1) requestLeave(routes.dropLast(1)) }
     SideEffect { if (backStack.toList() != routes) navigate(routes) }
-    LaunchedEffect(routes.last(), chartModel, trendModel, analysisModel) {
+    LaunchedEffect(routes.last(), chartModel, trendModel, analysisModel, photoStorageModel) {
         if (routes.last() != Review && routes.last() != TotalCostTrend) trendModel?.pause()
         if (routes.last() != AnnualReview && routes.last() !is CategoryAnalysis) analysisModel?.pause()
         when (val route = routes.last()) {
+            Settings -> photoStorageModel?.refresh()
             CategoryManagement -> categoryModel?.refresh()
             NameSearch -> searchModel?.refresh()
             LongTermReview -> reviewModel?.refresh()
@@ -498,11 +513,16 @@ internal fun LithicNavigation(
                     entry<Settings>(metadata = mapOf(C4_PRIMARY_DESTINATION to Settings)) { SettingsShell(state.recordZone, backupState = backupState,
                         onExportBackup = onExportBackup?.let { action -> { if (photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else action() } }, onCancelBackup = onCancelBackup,
                         restoreState = restoreState, onRestoreBackup = onRestoreBackup?.let { action -> { if (photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else action() } }, onCancelRestore = onCancelRestore,
-                        onConfirmRestore = { if (photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else onConfirmRestore() }, onDiscardRestore = onDiscardRestore,
+                        onConfirmRestore = { if (inspectionState.busy || photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else onConfirmRestore() }, onDiscardRestore = onDiscardRestore,
                         onManageCategories = if (categoryModel != null) ({ requestLeave(canonicalBackStack(CategoryManagement)) }) else null,
                         onNotificationClick = if (state.settingsStore != null) ({ requestLeave(canonicalBackStack(NotificationSettings)) }) else null,
                         onCalculationExplanation = { requestLeave(canonicalBackStack(CalculationExplanation)) },
-                        onAboutLithic = { requestLeave(canonicalBackStack(AboutLithic)) }) }
+                        onAboutLithic = { requestLeave(canonicalBackStack(AboutLithic)) },
+                        inspectionState = inspectionState,
+                        onInspectBackup = onInspectBackup?.let { action -> {
+                            if (photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else action()
+                        } }, onCancelInspection = onCancelInspection,
+                        photoStorageState = photoStorageState, onRefreshPhotoStorage = photoStorageModel?.let { it::refresh }) }
                     entry<CalculationExplanation> { CalculationExplanationScreen(onBack) }
                     entry<AboutLithic> { AboutLithicEntry(onBack) }
                     entry<NotificationSettings> {
@@ -540,7 +560,7 @@ internal fun LithicNavigation(
                     }
                     entry<ProjectDetail> { route ->
                         val startPhotoChange = photoModel?.let { controller -> { change: PhotoLiteCoverChange ->
-                            if (restoreState.phase == RestoreUiPhase.IDLE &&
+                            if (!inspectionState.busy && restoreState.phase == RestoreUiPhase.IDLE &&
                                 restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
                                 backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&
                                 guardedLeaveDecision(model.leaveDecision(), subscriptionModel.leaveDecision(),
@@ -561,7 +581,7 @@ internal fun LithicNavigation(
                             onAddPhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.ADD) } },
                             onReplacePhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.REPLACE) } },
                             onRemovePhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.REMOVE) } },
-                            photoActionEnabled = photoModel?.isAvailable() == true && restoreState.phase == RestoreUiPhase.IDLE &&
+                            photoActionEnabled = photoModel?.isAvailable() == true && !inspectionState.busy && restoreState.phase == RestoreUiPhase.IDLE &&
                                 restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
                                 backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&
                                 guardedLeaveDecision(projectLeave, subscriptionLeave, categoryLeave, replacementLeave) == LeaveDecision.ALLOW,
