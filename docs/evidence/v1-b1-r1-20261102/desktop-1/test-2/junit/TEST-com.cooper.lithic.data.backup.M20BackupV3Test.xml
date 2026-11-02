@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.M20BackupV3Test" tests="17" skipped="0" failures="0" errors="0" timestamp="2026-11-02T05:06:21.711Z" hostname="WHOCARE" time="0.864">
+  <properties/>
+  <testcase name="legacyProofsKeepTheirOriginalBytesAndCannotHideReminderFacts" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.004"/>
+  <testcase name="formatThreeMissingEachPreferenceOrNullableCutoffFails" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.084"/>
+  <testcase name="newReadinessProofUsesExplicitFormatThree" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.001"/>
+  <testcase name="currentProofSettingsIncludeBothPreferencesAndExplicitCutoff" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.0"/>
+  <testcase name="nineTableArchiveRoundTripsReceiptPreferencesAndCutoffWithoutChangingStoredFacts" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.079"/>
+  <testcase name="formatTwoAuthenticatesOriginalEightTablesThenAddsOnlyExplicitReminderDefaults" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.076"/>
+  <testcase name="currentArchiveDeclaresSchemaFourAndNineTables" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.0"/>
+  <testcase name="formatTwoMissingOriginalNullableFieldFailsBeforeUpgrade" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.024"/>
+  <testcase name="invalidBoundaryKeyAndPublicationTimesFailBeforeExtraction" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.129"/>
+  <testcase name="formatThreeMissingReceiptsFieldIsNotDefaulted" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.027"/>
+  <testcase name="currentRecordBudgetRequiresAllNineTablesBeforeRowsAreRead" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.0"/>
+  <testcase name="duplicateLogicalKeyUnknownKindAndMissingOwnerFailBeforeExtraction" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.08"/>
+  <testcase name="invalidCutoffAndUnexpectedSettingsFieldAreRejected" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.051"/>
+  <testcase name="realRetainedFormatOneValidatesBeforeUpgradeAndDoesNotInventReceipts" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.087"/>
+  <testcase name="exactNineTableCountAndSchemaTupleAreRequired" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.108"/>
+  <testcase name="formatThreeMissingReceiptFieldFailsDespiteCorrectLengthAndSha" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.111"/>
+  <testcase name="restorationWatermarkUsesRecordedZoneAndNeverMovesBackwards" classname="com.cooper.lithic.data.backup.M20BackupV3Test" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
