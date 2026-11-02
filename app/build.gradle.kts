@@ -123,13 +123,13 @@ android {
         minSdk = 26
         targetSdk = 36
         versionCode = when {
-            lithicPrivateTrial -> 31
+            lithicPrivateTrial -> 32
             v1AcceptanceVerification -> 1
             photoLiteExperiment -> 1
             else -> 17
         }
         versionName = when {
-            lithicPrivateTrial -> "0.1.0-preview.15"
+            lithicPrivateTrial -> "0.1.0-preview.16"
             v1AcceptanceVerification -> "0.1.0-v1-a1"
             photoLiteExperiment -> "0.1.0-photo-lite.p1"
             c6IsolationVerification -> "0.1.0-c6isolation"
