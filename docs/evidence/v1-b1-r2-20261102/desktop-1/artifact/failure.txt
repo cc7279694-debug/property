@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "E:\CODEX\.codex\worktrees\lithic-m13\砺石新APP\docs\evidence\v1-b1-r2-20261102\desktop-1\verify-apk.py", line 462, in <module>
+    main()
+  File "E:\CODEX\.codex\worktrees\lithic-m13\砺石新APP\docs\evidence\v1-b1-r2-20261102\desktop-1\verify-apk.py", line 439, in main
+    r1 = r1_disassembly(paths, dex)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\.codex\worktrees\lithic-m13\砺石新APP\docs\evidence\v1-b1-r2-20261102\desktop-1\verify-apk.py", line 288, in r1_disassembly
+    assert any("throw " in row["handlerBody"] and "new-instance" not in row["handlerBody"] for row in cancel), "Missing cancellation rethrow candidate"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Missing cancellation rethrow candidate

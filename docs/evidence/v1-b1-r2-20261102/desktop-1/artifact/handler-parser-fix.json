@@ -1,0 +1,39 @@
+{
+  "observedUtc": "2026-11-02T09:17:41.790884+00:00",
+  "scope": "STATIC_HANDLER_PARSER_FIX_ONLY",
+  "reason": "Old parser cut handler bodies at shared fallthrough labels; actual D8 handler control flow was truncated",
+  "originalFailurePreserved": true,
+  "originalFailureSha256": "d2878fd8c1b1155eade9d78ba0c9a41ca917e99338f383ec798d411ab380621f",
+  "beforeScript": {
+    "path": "docs/evidence/v1-b1-r2-20261102/desktop-1/artifact/audit-script-before-handler-fix.py.txt",
+    "bytes": 28362,
+    "sha256": "c22534e0a52c46fb8bd221bd686b0c07d2fbe9af920eabaa8406e3e363a6cd75"
+  },
+  "afterScript": {
+    "path": "docs/evidence/v1-b1-r2-20261102/desktop-1/verify-apk.py",
+    "bytes": 30343,
+    "sha256": "50b58f12b3a92a54bb05600dcd6fdddd8af7341ceae2884346c918330af71554"
+  },
+  "appCopySelectedSha256": "6030705d3817615e623b326f869af4bbeeac413f8c10f8701be46c27acb5a066",
+  "preview15CopySelectedSha256": "06a3a1a0d38bb779a9c95308a60ac55a873153b6aee5869c51dfe0dd66458f0c",
+  "oldParserReproducedMissingThrow": true,
+  "actualNewTypedCatchCount": 6,
+  "actualCancellationHandlers": 3,
+  "actualGeneralExceptionHandlers": 3,
+  "straightLineAndGotoStaticChecks": "PASS",
+  "negativeFixturesRejected": [
+    "loop",
+    "if_branch",
+    "switch_branch",
+    "unknown_goto",
+    "instruction_budget"
+  ],
+  "originalR1AssertionsUnchanged": true,
+  "allOtherHelpersUnchanged": true,
+  "ast": "PASS",
+  "sdkRuns": 0,
+  "gradleRuns": 0,
+  "appChanges": 0,
+  "apkChanges": 0,
+  "fullExceptionRangeReview": "STILL_REQUIRES_ROOT_REVIEW"
+}

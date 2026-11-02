@@ -1,0 +1,138 @@
+{
+  "status": "R1_REVIEW_REQUIRED",
+  "structuralChecks": "PASS",
+  "fullExceptionRangeAndNestedRethrowReview": "REQUIRES_SUPERVISOR_REVIEW",
+  "evidence": {
+    "app": {
+      "apk": {
+        "path": "app/build/private-trial/outputs/apk/debug/app-debug.apk",
+        "bytes": 20506555,
+        "sha256": "e8b2e2fe7b2db3af986bc9818f1a02a9da583ba160b723e63befc7f4a1eb9e94"
+      },
+      "copySelectedEvidence": {
+        "path": "docs/evidence/v1-b1-r2-20261102/desktop-1/artifact-2/app-copySelected.smali",
+        "bytes": 10983,
+        "sha256": "6030705d3817615e623b326f869af4bbeeac413f8c10f8701be46c27acb5a066"
+      },
+      "typedCatches": [
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_1",
+          "endLabel": ":try_end_b",
+          "targetLabel": ":catch_95",
+          "handlerBody": "move-exception v0\nmove-object/from16 v4, p2\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_95",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_1",
+          "endLabel": ":try_end_b",
+          "targetLabel": ":catch_8c",
+          "handlerBody": "move-exception v0\nmove-object/from16 v4, p2\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_8c",
+            ":goto_8f"
+          ]
+        },
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_6d",
+          "endLabel": ":try_end_73",
+          "targetLabel": ":catch_8a",
+          "handlerBody": "move-exception v0\ngoto :goto_98\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_8a",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_6d",
+          "endLabel": ":try_end_73",
+          "targetLabel": ":catch_88",
+          "handlerBody": "move-exception v0\ngoto :goto_8f\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_88",
+            ":goto_8f"
+          ]
+        },
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_84",
+          "endLabel": ":try_end_88",
+          "targetLabel": ":catch_8a",
+          "handlerBody": "move-exception v0\ngoto :goto_98\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_8a",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_84",
+          "endLabel": ":try_end_88",
+          "targetLabel": ":catch_88",
+          "handlerBody": "move-exception v0\ngoto :goto_8f\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_88",
+            ":goto_8f"
+          ]
+        }
+      ],
+      "criticalOperationCounts": {
+        "providerInvoke": 4,
+        "inputRead": 1,
+        "outputFlush": 1,
+        "closeFinally": 4
+      },
+      "validationFlow": {
+        "class": "com.cooper.lithic.data.backup.BackupInspectionService$inspect$3",
+        "copyCallTextOffset": 6655,
+        "validatorCallTextOffset": 9135,
+        "methodEvidence": {
+          "path": "docs/evidence/v1-b1-r2-20261102/desktop-1/artifact-2/app-inspection-flow.smali",
+          "bytes": 34764,
+          "sha256": "9ca9bbbe3a8899ed19c7f8971b38818d56f4e010ca2d0580b6d788b13bab300c"
+        }
+      }
+    },
+    "preview15": {
+      "apk": {
+        "path": "deliveries/lithic-preview-0.1.0-preview.15/Lithic-0.1.0-preview.15-debug.apk",
+        "bytes": 20506555,
+        "sha256": "ad9ac772a7df9d27ba8ad5c1cb801a29ca89fcf3d62849c07531536c0f7ca6a9"
+      },
+      "copySelectedEvidence": {
+        "path": "docs/evidence/v1-b1-r2-20261102/desktop-1/artifact-2/preview15-copySelected.smali",
+        "bytes": 9175,
+        "sha256": "06a3a1a0d38bb779a9c95308a60ac55a873153b6aee5869c51dfe0dd66458f0c"
+      },
+      "typedCatches": [],
+      "criticalOperationCounts": {
+        "providerInvoke": 4,
+        "inputRead": 1,
+        "outputFlush": 1,
+        "closeFinally": 4
+      },
+      "validationFlow": {
+        "class": "com.cooper.lithic.data.backup.BackupInspectionService$inspect$3",
+        "copyCallTextOffset": 6655,
+        "validatorCallTextOffset": 9135,
+        "methodEvidence": {
+          "path": "docs/evidence/v1-b1-r2-20261102/desktop-1/artifact-2/preview15-inspection-flow.smali",
+          "bytes": 34763,
+          "sha256": "881a9ad88fbd17fed07bc1ec91f8e14d843f1a1ecee6a635300b174af23bc0ae"
+        }
+      }
+    }
+  },
+  "reviewInstructions": [
+    "Confirm every provider open/read/flush/close exception reaches the outer Exception handler, following nested catchall rethrows.",
+    "Confirm CancellationException remains a rethrow and the outer handler creates InspectionUnavailable.",
+    "Confirm actual withBackupIo lambda calls copySelected before BackupValidator.validate and preserves original content classification.",
+    "Bind the independent review to these APK and smali SHA-256 values; do not infer runtime Android safety."
+  ]
+}
