@@ -1,0 +1,23 @@
+{
+  "status": "ORIGINAL_FAILURES_PRESERVED",
+  "failures": [
+    {
+      "attempt": "build-1",
+      "exitCode": 1,
+      "candidateAssemblyStarted": false,
+      "productSourceChanged": false,
+      "reason": "Checker assumed AGP aggregate task absence; actual variant was disabled.",
+      "originalCheckerSha256": "45a544dfb6493326f7283f817ade9c11645d180825eee2e9ce6083313c30f6be"
+    },
+    {
+      "attempt": "build-2",
+      "exitCode": 1,
+      "candidateAssemblyStarted": false,
+      "productSourceChanged": false,
+      "reason": "Checker compared a Groovy Set to a List with equal elements; real testVariants and all aggregate dependencies were empty.",
+      "originalCheckerSha256": "722db44b563b6f87680b1994f0cdd1d348a4ed1346386363eff51a1afff65442"
+    }
+  ],
+  "correction": "Retain exact task names, verify no AndroidTest variants and no aggregate dependencies, compare lists using the same type.",
+  "deviceOperations": 0
+}

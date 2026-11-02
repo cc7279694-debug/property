@@ -1,0 +1,678 @@
+{
+  "status": "DESKTOP_CONFIGURATION_PASS",
+  "qa": {
+    "debugPackage": "com.cooper.lithic.b1qa.debug",
+    "debugVersionCode": 1,
+    "debugVersionName": "0.1.0-b1qa.1-debug",
+    "debugPhotoLiteEnabled": "true",
+    "releasePackage": "com.cooper.lithic",
+    "releasePhotoLiteEnabled": "false",
+    "runnerConfiguration": "androidx.test.runner.AndroidJUnitRunner",
+    "enabledVariants": [
+      "debug"
+    ],
+    "androidTestVariants": [],
+    "androidTestTasks": [
+      "assembleAndroidTest",
+      "connectedAndroidTest",
+      "deviceAndroidTest"
+    ],
+    "androidTestDependencies": {
+      "assembleAndroidTest": [],
+      "connectedAndroidTest": [],
+      "deviceAndroidTest": []
+    },
+    "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build-b1-qa",
+    "debugKeyPresent": true,
+    "androidExecution": "NOT_RUN",
+    "deviceOperations": 0
+  },
+  "probes": [
+    {
+      "label": "default-config",
+      "exitCode": 0,
+      "expectedOutcomeMatched": true,
+      "configuration": {
+        "debugPackage": "com.cooper.lithic.debug",
+        "debugVersionCode": 17,
+        "debugVersionName": "0.1.0-m22-debug",
+        "debugPhotoLiteEnabled": "false",
+        "releasePackage": "com.cooper.lithic",
+        "releasePhotoLiteEnabled": "false",
+        "runnerConfiguration": "androidx.test.runner.AndroidJUnitRunner",
+        "enabledVariants": [
+          "debug",
+          "release"
+        ],
+        "androidTestVariants": [
+          "debugAndroidTest"
+        ],
+        "androidTestTasks": [
+          "analyzeDebugAndroidTestDependencies",
+          "assembleAndroidTest",
+          "assembleDebugAndroidTest",
+          "checkDebugAndroidTestAarMetadata",
+          "checkDebugAndroidTestDuplicateClasses",
+          "compileDebugAndroidTestJavaWithJavac",
+          "compileDebugAndroidTestKotlin",
+          "compileDebugAndroidTestNavigationResources",
+          "compileDebugAndroidTestShaders",
+          "compileDebugAndroidTestSources",
+          "compressDebugAndroidTestAssets",
+          "connectedAndroidTest",
+          "connectedDebugAndroidTest",
+          "copyRoomSchemasToAndroidTestAssetsDebugAndroidTest",
+          "createDebugAndroidTestApkListingFileRedirect",
+          "desugarDebugAndroidTestFileDependencies",
+          "deviceAndroidTest",
+          "dexBuilderDebugAndroidTest",
+          "generateDebugAndroidTestAssets",
+          "generateDebugAndroidTestBuildConfig",
+          "generateDebugAndroidTestLintModel",
+          "generateDebugAndroidTestResValues",
+          "generateDebugAndroidTestResources",
+          "generateDebugAndroidTestSources",
+          "installDebugAndroidTest",
+          "javaPreCompileDebugAndroidTest",
+          "kspDebugAndroidTestKotlin",
+          "lintAnalyzeDebugAndroidTest",
+          "mapDebugAndroidTestSourceSetPaths",
+          "mergeDebugAndroidTestAssets",
+          "mergeDebugAndroidTestGeneratedProguardFiles",
+          "mergeDebugAndroidTestGlobalSynthetics",
+          "mergeDebugAndroidTestJavaResource",
+          "mergeDebugAndroidTestJniLibFolders",
+          "mergeDebugAndroidTestNativeLibs",
+          "mergeDebugAndroidTestResources",
+          "mergeDebugAndroidTestShaders",
+          "mergeExtDexDebugAndroidTest",
+          "mergeLibDexDebugAndroidTest",
+          "mergeProjectDexDebugAndroidTest",
+          "packageDebugAndroidTest",
+          "preDebugAndroidTestBuild",
+          "processDebugAndroidTestJavaRes",
+          "processDebugAndroidTestManifest",
+          "processDebugAndroidTestNavigationResources",
+          "processDebugAndroidTestResources",
+          "signingConfigWriterDebugAndroidTest",
+          "stripDebugAndroidTestDebugSymbols",
+          "uninstallDebugAndroidTest",
+          "validateSigningDebugAndroidTest",
+          "writeDebugAndroidTestSigningConfigVersions"
+        ],
+        "androidTestDependencies": {
+          "analyzeDebugAndroidTestDependencies": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:generateDebugAndroidTestResValues",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "assembleAndroidTest": [
+            ":app:assembleDebugAndroidTest"
+          ],
+          "assembleDebugAndroidTest": [
+            ":app:packageDebugAndroidTest"
+          ],
+          "checkDebugAndroidTestAarMetadata": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "checkDebugAndroidTestDuplicateClasses": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "compileDebugAndroidTestJavaWithJavac": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:generateDebugAndroidTestBuildConfig",
+            ":app:javaPreCompileDebugAndroidTest",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "compileDebugAndroidTestKotlin": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:checkKotlinGradlePluginConfigurationErrors",
+            ":app:compileDebugJavaWithJavac",
+            ":app:compileDebugKotlin",
+            ":app:generateDebugAndroidTestBuildConfig",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "compileDebugAndroidTestNavigationResources": [
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestNavigationResources"
+          ],
+          "compileDebugAndroidTestShaders": [
+            ":app:mergeDebugAndroidTestShaders",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "compileDebugAndroidTestSources": [
+            ":app:compileDebugAndroidTestJavaWithJavac"
+          ],
+          "compressDebugAndroidTestAssets": [
+            ":app:mergeDebugAndroidTestAssets",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "connectedAndroidTest": [
+            ":app:connectedDebugAndroidTest"
+          ],
+          "connectedDebugAndroidTest": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:packageDebug",
+            ":app:packageDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "copyRoomSchemasToAndroidTestAssetsDebugAndroidTest": [],
+          "createDebugAndroidTestApkListingFileRedirect": [
+            ":app:packageDebugAndroidTest"
+          ],
+          "desugarDebugAndroidTestFileDependencies": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "deviceAndroidTest": [],
+          "dexBuilderDebugAndroidTest": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "generateDebugAndroidTestAssets": [
+            ":app:compileDebugAndroidTestShaders"
+          ],
+          "generateDebugAndroidTestBuildConfig": [
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestManifest"
+          ],
+          "generateDebugAndroidTestLintModel": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:generateDebugAndroidTestResValues",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugMainManifest"
+          ],
+          "generateDebugAndroidTestResValues": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "generateDebugAndroidTestResources": [
+            ":app:generateDebugAndroidTestResValues",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "generateDebugAndroidTestSources": [
+            ":app:compileLintChecks",
+            ":app:generateDebugAndroidTestBuildConfig",
+            ":app:kspDebugAndroidTestKotlin"
+          ],
+          "installDebugAndroidTest": [
+            ":app:packageDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "javaPreCompileDebugAndroidTest": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "kspDebugAndroidTestKotlin": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:generateDebugAndroidTestBuildConfig",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "lintAnalyzeDebugAndroidTest": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:generateDebugAndroidTestResValues",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugMainManifest"
+          ],
+          "mapDebugAndroidTestSourceSetPaths": [
+            ":app:generateDebugAndroidTestResValues",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestAssets": [
+            ":app:compileDebugAndroidTestShaders",
+            ":app:copyRoomSchemasToAndroidTestAssetsDebugAndroidTest",
+            ":app:generateDebugAndroidTestAssets",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestGeneratedProguardFiles": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "mergeDebugAndroidTestGlobalSynthetics": [
+            ":app:desugarDebugAndroidTestFileDependencies",
+            ":app:dexBuilderDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestJavaResource": [
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestJavaRes"
+          ],
+          "mergeDebugAndroidTestJniLibFolders": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestNativeLibs": [
+            ":app:mergeDebugAndroidTestJniLibFolders",
+            ":app:mergeDebugNativeLibs",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestResources": [
+            ":app:generateDebugAndroidTestResValues",
+            ":app:generateDebugAndroidTestResources",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestShaders": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeExtDexDebugAndroidTest": [
+            ":app:checkDebugAndroidTestDuplicateClasses",
+            ":app:desugarDebugAndroidTestFileDependencies",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeLibDexDebugAndroidTest": [
+            ":app:checkDebugAndroidTestDuplicateClasses",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeProjectDexDebugAndroidTest": [
+            ":app:checkDebugAndroidTestDuplicateClasses",
+            ":app:dexBuilderDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "packageDebugAndroidTest": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compressDebugAndroidTestAssets",
+            ":app:mergeDebugAndroidTestAssets",
+            ":app:mergeDebugAndroidTestGlobalSynthetics",
+            ":app:mergeDebugAndroidTestJavaResource",
+            ":app:mergeExtDexDebugAndroidTest",
+            ":app:mergeLibDexDebugAndroidTest",
+            ":app:mergeProjectDexDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestManifest",
+            ":app:processDebugAndroidTestResources",
+            ":app:stripDebugAndroidTestDebugSymbols",
+            ":app:validateSigningDebugAndroidTest",
+            ":app:writeDebugAndroidTestSigningConfigVersions"
+          ],
+          "preDebugAndroidTestBuild": [
+            ":app:preBuild"
+          ],
+          "processDebugAndroidTestJavaRes": [
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "processDebugAndroidTestManifest": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "processDebugAndroidTestNavigationResources": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "processDebugAndroidTestResources": [
+            ":app:checkDebugAndroidTestAarMetadata",
+            ":app:compileDebugAndroidTestNavigationResources",
+            ":app:mapDebugAndroidTestSourceSetPaths",
+            ":app:mergeDebugAndroidTestResources",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestManifest"
+          ],
+          "signingConfigWriterDebugAndroidTest": [
+            ":app:preDebugAndroidTestBuild",
+            ":app:validateSigningDebugAndroidTest"
+          ],
+          "stripDebugAndroidTestDebugSymbols": [
+            ":app:mergeDebugAndroidTestNativeLibs",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "uninstallDebugAndroidTest": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "validateSigningDebugAndroidTest": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "writeDebugAndroidTestSigningConfigVersions": [
+            ":app:preDebugAndroidTestBuild"
+          ]
+        },
+        "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build",
+        "debugKeyPresent": true,
+        "androidExecution": "NOT_RUN",
+        "deviceOperations": 0
+      }
+    },
+    {
+      "label": "trial-config",
+      "exitCode": 0,
+      "expectedOutcomeMatched": true,
+      "configuration": {
+        "debugPackage": "com.cooper.lithic.preview.debug",
+        "debugVersionCode": 32,
+        "debugVersionName": "0.1.0-preview.16-debug",
+        "debugPhotoLiteEnabled": "true",
+        "releasePackage": "com.cooper.lithic",
+        "releasePhotoLiteEnabled": "false",
+        "runnerConfiguration": "androidx.test.runner.AndroidJUnitRunner",
+        "enabledVariants": [
+          "debug",
+          "release"
+        ],
+        "androidTestVariants": [
+          "debugAndroidTest"
+        ],
+        "androidTestTasks": [
+          "analyzeDebugAndroidTestDependencies",
+          "assembleAndroidTest",
+          "assembleDebugAndroidTest",
+          "checkDebugAndroidTestAarMetadata",
+          "checkDebugAndroidTestDuplicateClasses",
+          "compileDebugAndroidTestJavaWithJavac",
+          "compileDebugAndroidTestKotlin",
+          "compileDebugAndroidTestNavigationResources",
+          "compileDebugAndroidTestShaders",
+          "compileDebugAndroidTestSources",
+          "compressDebugAndroidTestAssets",
+          "connectedAndroidTest",
+          "connectedDebugAndroidTest",
+          "copyRoomSchemasToAndroidTestAssetsDebugAndroidTest",
+          "createDebugAndroidTestApkListingFileRedirect",
+          "desugarDebugAndroidTestFileDependencies",
+          "deviceAndroidTest",
+          "dexBuilderDebugAndroidTest",
+          "generateDebugAndroidTestAssets",
+          "generateDebugAndroidTestBuildConfig",
+          "generateDebugAndroidTestLintModel",
+          "generateDebugAndroidTestResValues",
+          "generateDebugAndroidTestResources",
+          "generateDebugAndroidTestSources",
+          "installDebugAndroidTest",
+          "javaPreCompileDebugAndroidTest",
+          "kspDebugAndroidTestKotlin",
+          "lintAnalyzeDebugAndroidTest",
+          "mapDebugAndroidTestSourceSetPaths",
+          "mergeDebugAndroidTestAssets",
+          "mergeDebugAndroidTestGeneratedProguardFiles",
+          "mergeDebugAndroidTestGlobalSynthetics",
+          "mergeDebugAndroidTestJavaResource",
+          "mergeDebugAndroidTestJniLibFolders",
+          "mergeDebugAndroidTestNativeLibs",
+          "mergeDebugAndroidTestResources",
+          "mergeDebugAndroidTestShaders",
+          "mergeExtDexDebugAndroidTest",
+          "mergeLibDexDebugAndroidTest",
+          "mergeProjectDexDebugAndroidTest",
+          "packageDebugAndroidTest",
+          "preDebugAndroidTestBuild",
+          "processDebugAndroidTestJavaRes",
+          "processDebugAndroidTestManifest",
+          "processDebugAndroidTestNavigationResources",
+          "processDebugAndroidTestResources",
+          "signingConfigWriterDebugAndroidTest",
+          "stripDebugAndroidTestDebugSymbols",
+          "uninstallDebugAndroidTest",
+          "validateSigningDebugAndroidTest",
+          "writeDebugAndroidTestSigningConfigVersions"
+        ],
+        "androidTestDependencies": {
+          "analyzeDebugAndroidTestDependencies": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:generateDebugAndroidTestResValues",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "assembleAndroidTest": [
+            ":app:assembleDebugAndroidTest"
+          ],
+          "assembleDebugAndroidTest": [
+            ":app:packageDebugAndroidTest"
+          ],
+          "checkDebugAndroidTestAarMetadata": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "checkDebugAndroidTestDuplicateClasses": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "compileDebugAndroidTestJavaWithJavac": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:generateDebugAndroidTestBuildConfig",
+            ":app:javaPreCompileDebugAndroidTest",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "compileDebugAndroidTestKotlin": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:checkKotlinGradlePluginConfigurationErrors",
+            ":app:compileDebugJavaWithJavac",
+            ":app:compileDebugKotlin",
+            ":app:generateDebugAndroidTestBuildConfig",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "compileDebugAndroidTestNavigationResources": [
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestNavigationResources"
+          ],
+          "compileDebugAndroidTestShaders": [
+            ":app:mergeDebugAndroidTestShaders",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "compileDebugAndroidTestSources": [
+            ":app:compileDebugAndroidTestJavaWithJavac"
+          ],
+          "compressDebugAndroidTestAssets": [
+            ":app:mergeDebugAndroidTestAssets",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "connectedAndroidTest": [
+            ":app:connectedDebugAndroidTest"
+          ],
+          "connectedDebugAndroidTest": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:packageDebug",
+            ":app:packageDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "copyRoomSchemasToAndroidTestAssetsDebugAndroidTest": [],
+          "createDebugAndroidTestApkListingFileRedirect": [
+            ":app:packageDebugAndroidTest"
+          ],
+          "desugarDebugAndroidTestFileDependencies": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "deviceAndroidTest": [],
+          "dexBuilderDebugAndroidTest": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "generateDebugAndroidTestAssets": [
+            ":app:compileDebugAndroidTestShaders"
+          ],
+          "generateDebugAndroidTestBuildConfig": [
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestManifest"
+          ],
+          "generateDebugAndroidTestLintModel": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:generateDebugAndroidTestResValues",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugMainManifest"
+          ],
+          "generateDebugAndroidTestResValues": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "generateDebugAndroidTestResources": [
+            ":app:generateDebugAndroidTestResValues",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "generateDebugAndroidTestSources": [
+            ":app:compileLintChecks",
+            ":app:generateDebugAndroidTestBuildConfig",
+            ":app:kspDebugAndroidTestKotlin"
+          ],
+          "installDebugAndroidTest": [
+            ":app:packageDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "javaPreCompileDebugAndroidTest": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "kspDebugAndroidTestKotlin": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:generateDebugAndroidTestBuildConfig",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "lintAnalyzeDebugAndroidTest": [
+            ":app:bundleDebugClassesToCompileJar",
+            ":app:generateDebugAndroidTestResValues",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugMainManifest"
+          ],
+          "mapDebugAndroidTestSourceSetPaths": [
+            ":app:generateDebugAndroidTestResValues",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestAssets": [
+            ":app:compileDebugAndroidTestShaders",
+            ":app:copyRoomSchemasToAndroidTestAssetsDebugAndroidTest",
+            ":app:generateDebugAndroidTestAssets",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestGeneratedProguardFiles": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestResources"
+          ],
+          "mergeDebugAndroidTestGlobalSynthetics": [
+            ":app:desugarDebugAndroidTestFileDependencies",
+            ":app:dexBuilderDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestJavaResource": [
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestJavaRes"
+          ],
+          "mergeDebugAndroidTestJniLibFolders": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestNativeLibs": [
+            ":app:mergeDebugAndroidTestJniLibFolders",
+            ":app:mergeDebugNativeLibs",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestResources": [
+            ":app:generateDebugAndroidTestResValues",
+            ":app:generateDebugAndroidTestResources",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeDebugAndroidTestShaders": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeExtDexDebugAndroidTest": [
+            ":app:checkDebugAndroidTestDuplicateClasses",
+            ":app:desugarDebugAndroidTestFileDependencies",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeLibDexDebugAndroidTest": [
+            ":app:checkDebugAndroidTestDuplicateClasses",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "mergeProjectDexDebugAndroidTest": [
+            ":app:checkDebugAndroidTestDuplicateClasses",
+            ":app:dexBuilderDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "packageDebugAndroidTest": [
+            ":app:compileDebugAndroidTestJavaWithJavac",
+            ":app:compressDebugAndroidTestAssets",
+            ":app:mergeDebugAndroidTestAssets",
+            ":app:mergeDebugAndroidTestGlobalSynthetics",
+            ":app:mergeDebugAndroidTestJavaResource",
+            ":app:mergeExtDexDebugAndroidTest",
+            ":app:mergeLibDexDebugAndroidTest",
+            ":app:mergeProjectDexDebugAndroidTest",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestManifest",
+            ":app:processDebugAndroidTestResources",
+            ":app:stripDebugAndroidTestDebugSymbols",
+            ":app:validateSigningDebugAndroidTest",
+            ":app:writeDebugAndroidTestSigningConfigVersions"
+          ],
+          "preDebugAndroidTestBuild": [
+            ":app:preBuild"
+          ],
+          "processDebugAndroidTestJavaRes": [
+            ":app:compileDebugAndroidTestKotlin",
+            ":app:kspDebugAndroidTestKotlin",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "processDebugAndroidTestManifest": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "processDebugAndroidTestNavigationResources": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "processDebugAndroidTestResources": [
+            ":app:checkDebugAndroidTestAarMetadata",
+            ":app:compileDebugAndroidTestNavigationResources",
+            ":app:mapDebugAndroidTestSourceSetPaths",
+            ":app:mergeDebugAndroidTestResources",
+            ":app:preDebugAndroidTestBuild",
+            ":app:processDebugAndroidTestManifest"
+          ],
+          "signingConfigWriterDebugAndroidTest": [
+            ":app:preDebugAndroidTestBuild",
+            ":app:validateSigningDebugAndroidTest"
+          ],
+          "stripDebugAndroidTestDebugSymbols": [
+            ":app:mergeDebugAndroidTestNativeLibs",
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "uninstallDebugAndroidTest": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "validateSigningDebugAndroidTest": [
+            ":app:preDebugAndroidTestBuild"
+          ],
+          "writeDebugAndroidTestSigningConfigVersions": [
+            ":app:preDebugAndroidTestBuild"
+          ]
+        },
+        "buildDirectory": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\private-trial",
+        "debugKeyPresent": true,
+        "androidExecution": "NOT_RUN",
+        "deviceOperations": 0
+      }
+    },
+    {
+      "label": "invalid-config",
+      "exitCode": 1,
+      "expectedOutcomeMatched": true,
+      "configuration": {
+        "expectedConfigurationRejection": "b1QaVerification must be true or false"
+      }
+    },
+    {
+      "label": "collision-config",
+      "exitCode": 1,
+      "expectedOutcomeMatched": true,
+      "configuration": {
+        "expectedConfigurationRejection": "B1 QA cannot share private trial or historical verification identities"
+      }
+    }
+  ],
+  "androidExecution": "NOT_RUN",
+  "deviceOperations": 0
+}

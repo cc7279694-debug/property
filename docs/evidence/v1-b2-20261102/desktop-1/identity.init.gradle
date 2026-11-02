@@ -1,0 +1,53 @@
+import groovy.json.JsonOutput
+
+// Desktop configuration receipt only. This task never starts an Android process.
+gradle.projectsEvaluated {
+    def target = gradle.rootProject.project(':app')
+    target.tasks.register('b2IdentityReceipt') {
+        doLast {
+            def android = target.extensions.getByName('android')
+            def config = android.defaultConfig
+            def debug = android.buildTypes.getByName('debug')
+            def release = android.buildTypes.getByName('release')
+            def photoFlag = { build -> (build.buildConfigFields['PHOTO_LITE_EXPERIMENT'] ?: config.buildConfigFields['PHOTO_LITE_EXPERIMENT']).value }
+            def qa = target.providers.gradleProperty('b1QaVerification').orNull == 'true'
+            def trial = target.providers.gradleProperty('lithicPrivateTrial').orNull == 'true'
+            def variants = android.applicationVariants.collect { it.name }.sort()
+            def testVariants = android.testVariants.collect { it.name }.sort()
+            def androidTestTasks = target.tasks.names.findAll { it.toLowerCase().contains('androidtest') }.toList().sort()
+            def testTaskDependencies = androidTestTasks.collectEntries { name ->
+                def task = target.tasks.getByName(name)
+                [(name): task.taskDependencies.getDependencies(task).collect { it.path }.sort()]
+            }
+            def packageName = config.applicationId + (debug.applicationIdSuffix ?: '')
+            assert packageName == (qa ? 'com.cooper.lithic.b1qa.debug' : trial ? 'com.cooper.lithic.preview.debug' : 'com.cooper.lithic.debug')
+            assert config.versionCode == (qa ? 1 : trial ? 32 : 17)
+            assert config.versionName + debug.versionNameSuffix == (qa ? '0.1.0-b1qa.1-debug' : trial ? '0.1.0-preview.16-debug' : '0.1.0-m22-debug')
+            assert photoFlag(debug) == ((qa || trial) ? 'true' : 'false')
+            assert photoFlag(release) == 'false'
+            assert config.applicationId == 'com.cooper.lithic'
+            assert config.testInstrumentationRunner == 'androidx.test.runner.AndroidJUnitRunner'
+            assert android.signingConfigs.getByName('debug').storeFile.isFile()
+            if (qa) {
+                assert variants == ['debug']
+                // AGP retains empty aggregate tasks even with every AndroidTest variant disabled.
+                println('B2_TEST_CONFIGURATION_OBSERVATION=' + JsonOutput.toJson([
+                    testVariants: testVariants, tasks: androidTestTasks, dependencies: testTaskDependencies]))
+                assert testVariants.isEmpty()
+                assert androidTestTasks == ['assembleAndroidTest', 'connectedAndroidTest', 'deviceAndroidTest']
+                assert testTaskDependencies.values().every { it.isEmpty() }
+                assert target.layout.buildDirectory.get().asFile.name == 'build-b1-qa'
+            }
+            println('B2_IDENTITY=' + JsonOutput.toJson([
+                debugPackage: packageName, debugVersionCode: config.versionCode,
+                debugVersionName: config.versionName + debug.versionNameSuffix,
+                debugPhotoLiteEnabled: photoFlag(debug), releasePackage: config.applicationId,
+                releasePhotoLiteEnabled: photoFlag(release), runnerConfiguration: config.testInstrumentationRunner,
+                enabledVariants: variants, androidTestVariants: testVariants,
+                androidTestTasks: androidTestTasks, androidTestDependencies: testTaskDependencies,
+                buildDirectory: target.layout.buildDirectory.get().asFile.absolutePath,
+                debugKeyPresent: true, androidExecution: 'NOT_RUN', deviceOperations: 0,
+            ]))
+        }
+    }
+}
