@@ -45,6 +45,27 @@ require(photoLiteValue == null || photoLiteValue in setOf("true", "false")) {
     "photoLiteExperiment must be true or false"
 }
 val photoLiteExperiment = photoLiteValue == "true"
+// Normal production entry points under a disposable, explicitly selected SAF acceptance identity.
+val b1QaValue = providers.gradleProperty("b1QaVerification").orNull
+require(b1QaValue == null || b1QaValue in setOf("true", "false")) {
+    "b1QaVerification must be true or false"
+}
+val b1QaVerification = b1QaValue == "true"
+if (b1QaVerification) {
+    require(!lithicPrivateTrial && !m22DeviceVerification && !c2VisualVerification &&
+        !c6IsolationVerification && !v1AcceptanceVerification && !photoLiteExperiment) {
+        "B1 QA cannot share private trial or historical verification identities"
+    }
+    require(!providers.gradleProperty("m13Isolated").isPresent &&
+        !providers.gradleProperty("m12T04ProcessDeath").isPresent) {
+        "B1 QA is a normal Application, not an isolated or process-death test host"
+    }
+    require(gradle.startParameter.taskNames.none {
+        val task = it.substringAfterLast(':').lowercase()
+        task.contains("androidtest") || task.startsWith("connected") || task.contains("manageddevice")
+    }) { "B1 QA only prepares a normal user App; Android test tasks are not supported" }
+    layout.buildDirectory.set(layout.projectDirectory.dir("build-b1-qa"))
+}
 if (photoLiteExperiment) {
     require(!lithicPrivateTrial && !m22DeviceVerification && !c2VisualVerification &&
         !c6IsolationVerification && !v1AcceptanceVerification) {
@@ -124,12 +145,14 @@ android {
         targetSdk = 36
         versionCode = when {
             lithicPrivateTrial -> 32
+            b1QaVerification -> 1
             v1AcceptanceVerification -> 1
             photoLiteExperiment -> 1
             else -> 17
         }
         versionName = when {
             lithicPrivateTrial -> "0.1.0-preview.16"
+            b1QaVerification -> "0.1.0-b1qa.1"
             v1AcceptanceVerification -> "0.1.0-v1-a1"
             photoLiteExperiment -> "0.1.0-photo-lite.p1"
             c6IsolationVerification -> "0.1.0-c6isolation"
@@ -153,9 +176,10 @@ android {
         debug {
             // Reuse PHOTO-LITE only in explicitly selected Debug candidates. The default
             // and Release value stays off, including a Release queried with the trial flag.
-            buildConfigField("boolean", "PHOTO_LITE_EXPERIMENT", (photoLiteExperiment || lithicPrivateTrial).toString())
+            buildConfigField("boolean", "PHOTO_LITE_EXPERIMENT", (photoLiteExperiment || lithicPrivateTrial || b1QaVerification).toString())
             applicationIdSuffix = when {
                 lithicPrivateTrial -> ".preview.debug"
+                b1QaVerification -> ".b1qa.debug"
                 m22DeviceVerification -> ".m22verify.debug"
                 c2VisualVerification -> ".c2visual.debug"
                 c6IsolationVerification -> ".c6isolation.debug"
@@ -177,6 +201,12 @@ android {
     }
     // Exact exported schema fixtures are test-only assets; never packaged in the app APK.
     sourceSets.getByName("androidTest").assets.srcDir("$projectDir/schemas")
+    if (b1QaVerification) {
+        require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
+            "B1 QA requires the existing Debug key; do not generate a replacement"
+        }
+        sourceSets.getByName("debug").manifest.srcFile("src/b1Qa/AndroidManifest.xml")
+    }
     if (lithicPrivateTrial) {
         // Never silently generate a replacement signing identity for trial updates.
         require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
@@ -214,8 +244,11 @@ android {
 
 // The opt-in target is never a production Release application.
 androidComponents {
+    beforeVariants(selector().withBuildType("debug")) { variant ->
+        if (b1QaVerification) variant.enableAndroidTest = false
+    }
     beforeVariants(selector().withBuildType("release")) { variant ->
-        if (photoLiteExperiment || v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
+        if (b1QaVerification || photoLiteExperiment || v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
     }
 }
 
@@ -257,6 +290,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.espresso.core)
     // Only the Debug test-host activity; no test framework enters release runtime.
-    if (!photoLiteExperiment && !lithicPrivateTrial && !c6IsolationVerification && !v1AcceptanceVerification)
+    if (!b1QaVerification && !photoLiteExperiment && !lithicPrivateTrial && !c6IsolationVerification && !v1AcceptanceVerification)
         debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
