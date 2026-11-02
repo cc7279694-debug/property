@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.PhotoStorageSummaryTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-02T01:32:03.851Z" hostname="WHOCARE" time="0.004">
+  <properties/>
+  <testcase name="empty_metadata_is_an_exact_empty_summary" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.001"/>
+  <testcase name="cancelling_display_retains_all_registered_bytes_as_history" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.0"/>
+  <testcase name="missing_reference_cannot_be_presented_as_a_successful_count" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.0"/>
+  <testcase name="referenced_count_is_already_distinct_across_both_business_types" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.0"/>
+  <testcase name="replacing_adds_registered_history_without_claiming_a_disk_saving" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.0"/>
+  <testcase name="malformed_length_or_negative_diagnostic_counts_are_rejected" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.001"/>
+  <testcase name="zero_byte_length_estimate_is_permitted_by_stored_metadata_contract" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.0"/>
+  <testcase name="negative_or_wrapped_byte_estimates_are_rejected_without_clamping_to_zero" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.001"/>
+  <testcase name="negative_counts_and_more_references_than_media_are_rejected" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.001"/>
+  <testcase name="integer_boundary_remains_exact_and_is_never_rounded_through_double" classname="com.cooper.lithic.data.media.PhotoStorageSummaryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

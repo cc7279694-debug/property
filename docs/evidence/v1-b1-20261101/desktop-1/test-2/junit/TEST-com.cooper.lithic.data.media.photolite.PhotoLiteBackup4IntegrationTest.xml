@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.media.photolite.PhotoLiteBackup4IntegrationTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-02T01:32:03.860Z" hostname="WHOCARE" time="1.763">
+  <properties/>
+  <testcase name="cleared_cover_archive_still_preserves_all_registered_media_without_a_cover_reference" classname="com.cooper.lithic.data.media.photolite.PhotoLiteBackup4IntegrationTest" time="0.282"/>
+  <testcase name="replacement_archive_preserves_old_and_current_media_and_the_new_reference" classname="com.cooper.lithic.data.media.photolite.PhotoLiteBackup4IntegrationTest" time="0.282"/>
+  <testcase name="normalized_cover_and_money_facts_survive_real_format4_archive_and_restore_admission" classname="com.cooper.lithic.data.media.photolite.PhotoLiteBackup4IntegrationTest" time="0.235"/>
+  <testcase name="damaged_cover_with_unchanged_registered_sha_cannot_pass_archive_or_restore_admission" classname="com.cooper.lithic.data.media.photolite.PhotoLiteBackup4IntegrationTest" time="0.376"/>
+  <testcase name="missing_or_corrupt_unreferenced_old_media_cannot_be_silently_omitted_from_a_complete_backup" classname="com.cooper.lithic.data.media.photolite.PhotoLiteBackup4IntegrationTest" time="0.453"/>
+  <testcase name="missing_registered_cover_payload_cannot_pass_closed_archive_or_restore_admission" classname="com.cooper.lithic.data.media.photolite.PhotoLiteBackup4IntegrationTest" time="0.135"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

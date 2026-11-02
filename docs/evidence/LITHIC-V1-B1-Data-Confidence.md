@@ -1,6 +1,6 @@
 # LITHIC V1-B1 — Data Confidence
 
-2026-11-01；基线`dd31ce4b0613d0ed53e2a8280375739d75550032`，来源P3远端/本地一致且干净后建立`codex/v1-b1-data-confidence`。当前为SOURCE_PREPARED / BUILD_DEFERRED，验证及候选尚未完成；不是功能验收PASS。
+2026-11-02；P3基线`dd31ce4b0613d0ed53e2a8280375739d75550032`，工作分支`codex/v1-b1-data-confidence`。当前为 **IMPLEMENTED / READY_FOR_INDEPENDENT_REVIEW**：桌面门禁及唯一Preview15候选已完成，Android实际仍NOT_RUN；不是独立功能/安全验收PASS。原源码准备及资源阻塞过程保留在下文，最新证据见末节。
 
 ## 执行合同与最小计划
 
@@ -26,14 +26,14 @@
 
 主接线修改：`MainActivity.kt`、`LithicApp.kt`、`LithicNavigation.kt`、`LedgerUiState.kt`、`LedgerUiStateHolder.kt`、`SettingsShell.kt`；数据层仅最小typed分类及两个新只读facade。C9三主题、图标、P3照片Writer/Controller/DAO/PNG管线及所有旧测试原字节不改。
 
-## 本轮验证的真实边界
+## 源码准备阶段的历史验证边界
 
 - 开始主机RAM只读采样约4.416GiB；首次实际命令前降为**3.604GiB**，4GiB门禁在启动Gradle之前拦截。Python包装器exit1，**Gradle未启动、没有JUnit结果**。随后用户明确“先完成源码，构建暂缓”；不再尝试构建。见[资源阻塞回执](v1-b1-20261101/red-1/resource-blocked.json)。这不是业务测试FAIL，更不是观察到RED。
 - 新增**55项JVM**断言源码：备份服务22、照片汇总10、备份Controller12、照片Controller11。新增**12项Android**断言源码：真实Room统计8、生产Compose呈现4。全部**未编译/NOT_RUN**；没有修改原P3断言或删除历史失败。真实SAF、Android Room/Owner换代、取消/重建/异常中断、资源峰值和视觉均未验证。
 - 新host夹具静态发现并纠正了PNG CRC、固定fallback UUID及合法uppercase媒体SHA兼容问题；旧夹具及业务断言不改。这只是源码/样本检查，不能当作执行通过。所谓host“原账本不变”样本为可丢弃合成字节文件，不能替代真实Room与SAF证明。
 - 已执行`git diff --check`、源blob及SHA/字节检查；**253份范围外main/schema原文件、全部旧JVM/Android测试、16份历史APK（含Preview14）保持**。Room5、backup4、Owner/generation、恢复Token/原子切换、金额/订阅/提醒、Manifest/权限、SDK/依赖、原签名及版本配置未改。[最终源码/保护回执](v1-b1-20261101/source-preparation.json)。当前Private Trial源配置仍Preview14/code30，**没有Preview15 APK、大小、SHA或新证书实物结果可交付**。
 
-## 继续点与未关闭门禁
+## 源码阶段历史继续点与未关闭门禁
 
 1. 用户明确恢复且新测RAM≥4GiB后，先跑上述55新JVM及受影响的原BackupValidator/Archive/Export/Restore Controller、P3备份与照片策略回归；不重跑无关历史套件。再编译AndroidTest源码、构建与Lint，保留一切真实失败。
 2. 桌面门禁满足后，仅显式Trial递增Preview15/code31，构建并核对实物Manifest/DEX/原证书/源码绑定/16旧APK及新文件SHA，唯一复制到非build稳定交付目录；未获设备授权不安装。
@@ -41,7 +41,7 @@
 
 **V1-B1 SOURCE_PREPARED / BUILD_DEFERRED / PREVIEW15_NOT_BUILT。** 不登记正式实施或产品验收PASS。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及旧M10/M20/M22/C3/NOT_RUN/UNKNOWN保持。无ADB、手机、AVD、安装、真实账本访问或恢复覆盖；只提交推送B1分支，停止等待继续验证授权，不合并main、不进入V1-B2。
 
-## 2026-11-01 重新准入与阻塞（本次最新）
+## 2026-11-01 重新准入与阻塞（历史）
 
 用户明确恢复B1定向测试/编译/Lint/Preview15核验。本次B1本地与远端均为`af5528b689cf8c034947ba259b1693bea396e6c8`且干净；重新核对16份历史APK大小/SHA未变，未修改产品或Private Trial版本。
 
@@ -50,3 +50,30 @@
 - 用户已被告知需额外释放内存，尚未取得足够资源。本轮55新JVM、12新Android及相关回归仍NOT_RUN；编译/构建/Lint/真实SAF及设备运行全部NOT_RUN。没有Preview15目录/产物/SHA，原版本配置仍Preview14/code30，不生成替代包或签名。
 
 当前：**V1-B1 DESKTOP VERIFICATION — RESOURCE_BLOCKED / PREVIEW15_NOT_BUILT**。原恢复授权继续限定桌面；只有再次实测≥4GiB且用户没有新的暂停要求时，才继续原定B1验证与唯一候选交付。不降低门槛、不操作手机、无main/V1-B2，V1_RELEASE_NO_GO与STRICT_JPEG_IMPORT_BLOCKED保持。
+
+## 2026-11-02 桌面验证与Preview15交付（最新）
+
+- 本次恢复点`d0e2d84b90f4577744fbb282dacee14b34f694cb`，本地/远端一致、工作区干净；初读RAM **5.870625GiB**，JVM正式门禁5.728096GiB、构建门禁5.497299GiB，均≥4。前两次资源阻塞不改判。
+- **272唯一JVM方法全部PASS，0失败/0错误/0跳过**：55项B1新增＋217相关备份/格式兼容/取消/Owner退役、导出恢复Controller、P3照片备份/引用策略及导航回归；不是整仓历史测试。命令exit0，[JUnit原件与逐类计数](v1-b1-20261101/desktop-1/test-2/result.json)及同目录stdout/stderr保留。测试源码为d0e2d84；之后仅Trial版本两行变更，功能源码未再改变。
+- Private Trial Debug App/Test构建、AndroidTest Kotlin源码编译、Lint命令 **exit0**；Lint **0错误18警告**，与P3相同的警告数量；原SDK XML版本提示、废弃API/冗余断言等编译警告未抹除。[构建真实回执](v1-b1-20261101/desktop-1/build-1/command.json)、[Lint XML及计数](v1-b1-20261101/desktop-1/lint/result.json)。12项新Android方法仅编译，真实Room SQL/SAF/换代/视觉/字体/取消时延/峰值/恢复与升级 **NOT_RUN或UNKNOWN**，不扩大为PASS。
+- 唯一生产差异续接为显式Trial **30→31、preview.14→preview.15**。默认配置另取exit0回执：Debug仍`com.cooper.lithic.debug`/code17/`0.1.0-m22-debug`/PHOTO=false，Release仍`com.cooper.lithic`、原默认版本及PHOTO=false；未构建或交付Release。原M22/C3/C6/V1-A1身份配置未改。见[配置回执](v1-b1-20261101/desktop-1/configuration-default.json)和[冻结边界](v1-b1-20261101/desktop-1/frozen-boundaries.json)：253份范围外main/schema及281份原JVM/Android测试不变，Room5、backup4/旧兼容、Owner/恢复Token/原子切换、金额/订阅/提醒、C6读取和P3写入、主题/Manifest/权限/依赖均保持。
+- 实际APK核对通过：正常`LithicApplication`/`MainActivity`、原Provider/Service及权限；无INTERNET/新增权限/native JPEG。B1检查Service、VM/Picker/设置及统计Reader/VM、原P3封面接线类和方法存在于DEX；测试类/框架不进入用户App。原图标scene1254×1254及像素/编码SHA、16.666667% adaptive前景和背景`#23241F`实际进入APK；Launcher真实观感仍NOT_RUN。[完整实物审计](v1-b1-20261101/desktop-1/artifact/identity.json)及[图标静态审计](v1-b1-20261101/desktop-1/icon/result.json)。
+- 编译所得Test为`.preview.debug.test`，注册`AndroidJUnitRunner`；M13仅编入、**未注册plain Application替换**。本次绝无测试执行。未来合成Room方法须另备获授权的独立plain宿主，不能在用户Trial正常业务宿主直接执行。
+
+| 唯一用户候选 | 实物结果 |
+| --- | --- |
+| 绝对路径 | `E:\CODEX\.codex\worktrees\lithic-m13\砺石新APP\deliveries\lithic-preview-0.1.0-preview.15\Lithic-0.1.0-preview.15-debug.apk` |
+| 身份 | `com.cooper.lithic.preview.debug` / code31 / `0.1.0-preview.15-debug` |
+| 大小 | **20,506,555字节** |
+| SHA-256 | `ad9ac772a7df9d27ba8ad5c1cb801a29ca89fcf3d62849c07531536c0f7ca6a9` |
+| Debug证书SHA-256 | `29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9` |
+| 构建绑定 | 源提交`6697cecec0287fc32c1f885bb994c7ca5320cdc2`；App树`d69e8458f9eed83dd98f49defcf151c2cfa604ef`；构建开始App输入已提交且clean，归档时再次一致 |
+
+[独占创建/复制/重新哈希与历史保护回执](v1-b1-20261101/desktop-1/archive.json)：仅一个非build候选，复制逐字节一致；APK不入Git、无ZIP。**16份历史APK均保持**，其中Preview14仍20,457,403字节、SHA`0994fa279ccbdc92c44e1ee963f7d404b113a4334f4194c1afd5def73ce764bf`；未覆盖或删除任何旧包。后续文档收尾提交不改变上述App树。
+
+### 未关闭门禁与交接
+
+- 可后续自愿检查：设置→检查备份文件（选择可丢弃备份、核结果和取消，不点恢复）；照片存储4项元数据及历史留存说明。**本轮不要求用户执行，也未安装或覆盖Preview14**。真实SAF、完整备份恢复、异常中断/重开、覆盖升级及资源峰值仍需独立授权和证据，VERIFIED不能替代它们。
+- 已知限制：现有检查规则保留JPEG容器证据，不认证JPEG熵或Android可解码；三次未认证残留会话可使后续检查保守拒绝，临时文件身份/收口未知不自动清理。照片数量/登记长度不是实际磁盘占用或逐文件认证。
+- 旧照片删除仍须专项证明所有物品/订阅引用、备份快照占用、Owner资格、文件身份、未确认写入及异常恢复；本阶段不提供永久删除或GC。全部M10 JPEG FAIL、M20/M22/C3及既有NOT_RUN/UNKNOWN保持。
+- 当前 **V1-B1 DATA CONFIDENCE — READY_FOR_INDEPENDENT_REVIEW**，仅桌面实现与候选交付；**V1_RELEASE_NO_GO / STRICT_JPEG_IMPORT_BLOCKED / ANDROID_ISOLATION_RUNTIME_PENDING**保持。设备/ADB/AVD/真实账本/恢复覆盖操作0；停止等ChatGPT独立审查，不自动V1-B2、合并main或发行。

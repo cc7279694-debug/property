@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.data.backup.BackupInspectionServiceTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2026-11-02T01:31:54.049Z" hostname="WHOCARE" time="4.057">
+  <properties/>
+  <testcase name="legal_uppercase_media_metadata_sha_keeps_the_existing_case_insensitive_contract" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.286"/>
+  <testcase name="corrupt_zip_bytes_cannot_be_reported_as_verified" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.088"/>
+  <testcase name="a_self_consistent_sha_does_not_certify_corrupt_png_content" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.168"/>
+  <testcase name="unknown_extra_preparation_children_are_preserved_without_recursive_cleanup" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.243"/>
+  <testcase name="a_duplicate_request_is_not_opened_or_queued_behind_an_active_document_read" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.224"/>
+  <testcase name="an_input_close_failure_keeps_outcome_unknown" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.091"/>
+  <testcase name="three_unknown_residual_sessions_block_a_new_read_without_deleting_residue" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.298"/>
+  <testcase name="checked_old_unreferenced_photos_are_included_in_the_complete_backup_summary" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.259"/>
+  <testcase name="the_first_check_creates_only_its_missing_single_private_cache_child" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.208"/>
+  <testcase name="an_old_owner_is_rejected_before_the_document_is_opened" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.059"/>
+  <testcase name="cancellation_preserves_preparation_and_returns_unknown_without_retry" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.076"/>
+  <testcase name="an_input_provider_read_failure_is_unknown_and_is_not_retried" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.076"/>
+  <testcase name="inspection_does_not_change_existing_business_fixture_or_cover_bytes" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.234"/>
+  <testcase name="missing_registered_media_is_invalid_and_retains_the_failed_preparation" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.096"/>
+  <testcase name="a_valid_complete_backup_returns_only_verified_facts_and_cleans_its_own_preparation" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.232"/>
+  <testcase name="successful_checks_do_not_accumulate_a_permanent_attempt_limit" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.664"/>
+  <testcase name="inconsistent_min_reader_or_source_schema_is_unsupported" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.182"/>
+  <testcase name="owner_change_during_input_cannot_publish_a_verified_old_generation_result" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.069"/>
+  <testcase name="unknown_format_is_unsupported_rather_than_a_success_or_generic_integrity_pass" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.095"/>
+  <testcase name="a_wrong_declared_sha_is_invalid_without_changing_the_selected_archive" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.099"/>
+  <testcase name="a_self_consistent_archive_with_broken_record_relationships_is_invalid" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.095"/>
+  <testcase name="self_consistent_declared_dimensions_must_match_the_actual_media_container" classname="com.cooper.lithic.data.backup.BackupInspectionServiceTest" time="0.214"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
