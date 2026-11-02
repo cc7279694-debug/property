@@ -3,6 +3,7 @@ package com.cooper.lithic.data.backup
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.io.InputStream
+import java.nio.charset.CharacterCodingException
 import java.nio.file.Files
 import java.nio.file.Path
 import java.util.concurrent.CancellationException
@@ -126,6 +127,42 @@ class BackupInspectionServiceTest {
         assertArrayEquals(source, Files.readAllBytes(f.archive))
     }
 
+    @Test fun provider_open_illegal_argument_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.OPEN, IllegalArgumentException("synthetic provider open"))
+    }
+
+    @Test fun provider_open_zip_exception_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.OPEN, ZipException("synthetic provider open"))
+    }
+
+    @Test fun provider_open_character_coding_exception_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.OPEN, CharacterCodingException())
+    }
+
+    @Test fun provider_read_illegal_argument_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.READ, IllegalArgumentException("synthetic provider read"))
+    }
+
+    @Test fun provider_read_zip_exception_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.READ, ZipException("synthetic provider read"))
+    }
+
+    @Test fun provider_read_character_coding_exception_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.READ, CharacterCodingException())
+    }
+
+    @Test fun provider_close_illegal_argument_after_valid_zip_copy_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.CLOSE, IllegalArgumentException("synthetic provider close"))
+    }
+
+    @Test fun provider_close_zip_exception_after_valid_zip_copy_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.CLOSE, ZipException("synthetic provider close"))
+    }
+
+    @Test fun provider_close_character_coding_exception_after_valid_zip_copy_is_unknown_not_invalid() = runBlocking {
+        assertProviderFailure(ProviderStage.CLOSE, CharacterCodingException())
+    }
+
     @Test fun an_input_provider_read_failure_is_unknown_and_is_not_retried() = runBlocking {
         val f = fixture(); var attempts = 0
         val result = f.service.inspect({ attempts++; throw IOException("private/path/must/not/escape") })
@@ -224,6 +261,53 @@ class BackupInspectionServiceTest {
         assertNotNull(unknown)
         assertArrayEquals(byteArrayOf(8, 6, 7), Files.readAllBytes(unknown!!))
         assertTrue(Files.exists(unknown!!.parent.parent.resolve("source.lithicbackup")))
+    }
+
+    private enum class ProviderStage { OPEN, READ, CLOSE }
+
+    private suspend fun assertProviderFailure(stage: ProviderStage, failure: Exception) {
+        // A fresh fixture avoids reaching the original three-residual-session admission limit.
+        val f = fixture()
+        val ledger = Files.write(f.parent.resolve("synthetic-existing-ledger"), byteArrayOf(1, 8, 3, 9))
+        val cover = Files.write(f.parent.resolve("synthetic-existing-cover.png"), PNG)
+        val archiveBefore = Files.readAllBytes(f.archive)
+        var opened = 0
+        var reads = 0
+        var closed = 0
+        val result = f.service.inspect({
+            opened++
+            if (stage == ProviderStage.OPEN) throw failure
+            object : java.io.ByteArrayInputStream(archiveBefore) {
+                override fun read(bytes: ByteArray, off: Int, len: Int): Int {
+                    reads++
+                    if (stage == ProviderStage.READ) throw failure
+                    return super.read(bytes, off, len)
+                }
+                override fun close() {
+                    closed++
+                    if (stage == ProviderStage.CLOSE) throw failure
+                    super.close()
+                }
+            }
+        })
+        assertEquals(BackupInspectionStatus.UNKNOWN, result.status)
+        assertNull(result.summary)
+        assertTrue(result.temporaryFilesRetained)
+        assertEquals(1, opened)
+        assertEquals(if (stage == ProviderStage.OPEN) 0 else 1, closed)
+        if (stage == ProviderStage.OPEN) assertEquals(0, reads)
+        if (stage == ProviderStage.READ) assertEquals(1, reads)
+        val operation = Files.list(f.cache).use { it.toList().single() }
+        assertTrue(Files.isRegularFile(operation.resolve(".inspection-owner")))
+        assertFalse(Files.exists(operation.resolve("payload")))
+        if (stage == ProviderStage.CLOSE) {
+            assertTrue(reads >= 2) // Full valid bytes and EOF were read before close failed.
+            assertArrayEquals(archiveBefore, Files.readAllBytes(operation.resolve("source.lithicbackup")))
+        }
+        // Synthetic byte fixtures only: this is not Android Room/SAF execution evidence.
+        assertArrayEquals(byteArrayOf(1, 8, 3, 9), Files.readAllBytes(ledger))
+        assertArrayEquals(PNG, Files.readAllBytes(cover))
+        assertArrayEquals(archiveBefore, Files.readAllBytes(f.archive))
     }
 
     private class Fixture(val parent: Path, val cache: Path, val archive: Path, val manifest: BackupManifestV1) {

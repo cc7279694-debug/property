@@ -62,6 +62,7 @@ internal class BackupInspectionService(private val stagingRoot: Path) {
                     // A partial marker or copy is retained on every failure.
                     Files.write(directory.resolve(MARKER), record.credential.toByteArray(), CREATE_NEW, WRITE, NOFOLLOW_LINKS)
                     val source = directory.resolve(SOURCE)
+                    // Acquire and close the provider first; its exceptions are not content evidence.
                     copySelected(openInput, source, ::checkpoint)
                     val sourceIdentity = BackupArchiveFiles.regularArchive(source)
                     val payload = Files.createDirectory(directory.resolve(PAYLOAD))
@@ -126,7 +127,7 @@ internal class BackupInspectionService(private val stagingRoot: Path) {
         } catch (_: Exception) { throw InspectionUnavailable() }
     }
 
-    private fun copySelected(openInput: () -> InputStream, source: Path, checkpoint: () -> Unit) {
+    private fun copySelected(openInput: () -> InputStream, source: Path, checkpoint: () -> Unit): Unit = try {
         checkpoint()
         openInput().use { input ->
             Files.newOutputStream(source, CREATE_NEW, WRITE, NOFOLLOW_LINKS).use { output ->
@@ -145,6 +146,12 @@ internal class BackupInspectionService(private val stagingRoot: Path) {
             }
         }
         checkpoint()
+    } catch (cancelled: CancellationException) {
+        throw cancelled
+    } catch (_: Exception) {
+        // Opening, reading, writing the private copy, and provider close must all finish before
+        // the validator can classify bytes. Preserve partial preparation on acquisition failure.
+        throw InspectionUnavailable()
     }
 
     private fun inspectMedia(checked: ValidatedBackup, checkpoint: () -> Unit) {
