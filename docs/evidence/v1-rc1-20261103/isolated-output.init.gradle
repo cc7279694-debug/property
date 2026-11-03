@@ -1,0 +1,1 @@
+gradle.beforeProject { p -> if (p.path == ':app') { p.afterEvaluate { p.layout.buildDirectory.set(p.layout.projectDirectory.dir('build/rc1-reminder-reliability')) } } }

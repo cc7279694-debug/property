@@ -22,9 +22,10 @@ class ReminderWorker(context: Context, parameters: WorkerParameters, private val
             fun current() = (container.storageState.value as? StorageInitializationState.Ready)?.generation === generation
             when (inputData.getString(MODE)) {
                 RECONCILE -> {
-                    // Separate work/failure domains: milestone initialization must not poison renewals.
-                    ReminderScheduling.requestMilestones(applicationContext)
-                    ReminderScheduling.reconcile(applicationContext, generation, ::current, clock)
+                    reconcileReminderDomains(
+                        requestMilestones = { ReminderScheduling.requestMilestones(applicationContext) },
+                        reconcileRenewals = { ReminderScheduling.reconcile(applicationContext, generation, ::current, clock) },
+                    )
                 }
                 MILESTONE_RECONCILE -> MilestoneScheduling.reconcile(applicationContext, generation, ::current, clock)
                 MILESTONE_PUBLISH -> {
