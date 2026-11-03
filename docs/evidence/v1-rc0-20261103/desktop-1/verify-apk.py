@@ -346,7 +346,7 @@ def main():
     assert receipt["sourceAppGitTree"] == source_tree == git_text("rev-parse", "HEAD:app")
     assert receipt["appInputStatusAtStart"] == ""
     assert not git_text("status", "--porcelain=v1", "--untracked-files=all", "--", "app")
-    assert git_text("branch", "--show-current") == "codex/v1-b3-photo-storage"
+    assert git_text("branch", "--show-current") == "codex/v1-rc0-product-integration"
     changed = set(git_text("diff", "--name-only", BASELINE, source_commit, "--", "app").splitlines())
     assert changed == {"app/build.gradle.kts"}, changed
     before = subprocess.check_output(["git", "show", BASELINE + ":app/build.gradle.kts"], cwd=ROOT)

@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **V1-RC0-R1 PREVIEW17 — READY_FOR_INDEPENDENT_REVIEW（2026-11-03，仅桌面）**：用户授权从`6791acb`修正审计器旧分支预期及归档器两处成功证据路径；原`artifact-1`失败与堆栈逐字节保留，所有其他校验不降低。新`artifact-2`对既有中间APK实际审计exit0：包名`com.cooper.lithic.preview.debug`、code33/`0.1.0-preview.17-debug`、原Debug证书、正常入口、权限/native、P3/B1/R1/B3 DEX与原图标核对通过；32旧APK原字节保持。独占归档20,506,555字节、SHA`312b760be041519e0a8f0a76fa6579e19b9e6504a2a82fa8f18c6da160d0467d`，与中间APK逐字节一致，归档回执引用artifact-2；构建源`071fa08`/App树`1fce8ed5a71936bd5981e464cfd81e386a38dbe3`。见[集中报告](evidence/LITHIC-V1-RC0-Product-Integration.md)。本轮无Gradle/重建/重签/设备操作，B3 62 JVM/8宿主SQLite与原Lint仅继承；Android/SAF/升级及资源门禁仍NOT_RUN/UNKNOWN，用户报告B2人工A～H不扩为自动PASS；永久删除及逐张历史照片仍BLOCKED。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING与历史FAIL保持，提交推送后停止等待独立审查。
+
 - **V1-RC0 — BLOCKED / STATIC AUDIT BRANCH ASSERTION（2026-11-03）**：继承用户转交B3桌面验收，版本源码`071fa08`仅将Private Trial升为33/preview.17；隔离输出配置、离线构建和体验版Lint实际exit0，Lint0E18W，32旧APK原字节保持。独立APK审计在读取新包之前因脚本错误要求旧B3分支而exit1；本轮实际分支为`codex/v1-rc0-product-integration`。这是检查器预期错误，尚不能判定APK缺陷或通过，Manifest/证书/DEX/新APK SHA均NOT_RUN；遵照门禁失败停止，没有重试或归档Preview17候选，独立build中的未审计中间APK保留。见[阻断与发行差距报告](evidence/LITHIC-V1-RC0-Product-Integration.md)。B3的62 JVM/8宿主SQLite为继承证据，用户报告B2人工A～H不扩为自动测试；无ADB/设备/真实数据操作。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及历史门禁保持，推送后等待独立审查。
 
 - **V1-B3 ACCEPTED / FROZEN — PASS WITH NOTES（2026-11-03，仅桌面）**：用户转交对`0e9b3610ad306ffd9b266022a672c580945fbc1c`的独立审查，接受只读照片空间统计及其桌面证据。真实Android/SAF、实际回收空间和历史照片逐张查看仍NOT_RUN/UNKNOWN；永久删除继续BLOCKED。原报告和用户报告的B2人工结果不改写。当前用户授权V1-RC0仅整合Private Trial Preview17和发行差距审查，不操作手机，不合并main或发行。

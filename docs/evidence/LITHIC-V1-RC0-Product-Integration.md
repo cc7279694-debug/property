@@ -2,7 +2,26 @@
 
 2026-11-03；用户转交对 `0e9b3610ad306ffd9b266022a672c580945fbc1c` 的 **V1-B3 ACCEPTED / FROZEN — PASS WITH NOTES（仅桌面）**。原报告、历史失败和用户自述不改写；正式V1维持 **NO-GO**。本轮只递增显式Private Trial两处版本，生产功能/测试/Room5/backup4/Owner/恢复/冻结算法/媒体协议未改，不提供永久照片删除或GC。
 
-## Preview17 交付阻断
+## RC0-R1 审计修复与交付（2026-11-03）
+
+**PREVIEW17 — READY_FOR_INDEPENDENT_REVIEW（桌面范围）**。用户明确授权以当前RC0提交 `6791acb60d0bab712225ef4b891e7dac905007c5` 修复审计器，复用已构建的中间APK；本轮没有改产品源码、重跑Gradle、重签或生成其他版本。原失败状态见下节，原文件按SHA逐字节保留。
+
+| 项目 | 唯一交付实物 |
+| --- | --- |
+| 绝对路径 | `E:\CODEX\.codex\worktrees\lithic-m13\砺石新APP\deliveries\lithic-preview-0.1.0-preview.17\Lithic-0.1.0-preview.17-debug.apk` |
+| 包名 / 版本 | `com.cooper.lithic.preview.debug` / code33 / `0.1.0-preview.17-debug` |
+| 大小 | 20,506,555字节 |
+| SHA-256 | `312b760be041519e0a8f0a76fa6579e19b9e6504a2a82fa8f18c6da160d0467d` |
+| Debug证书SHA-256 | `29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9` |
+| 构建源 / App树 | `071fa082cb5e28cf21abaa64db4bda99109596fa` / `1fce8ed5a71936bd5981e464cfd81e386a38dbe3` |
+
+- 审计器只把分支预期改为`codex/v1-rc0-product-integration`；归档器只把两处成功证据路径从`artifact-1/identity.json`改为`artifact-2/identity.json`。[逐字节比对回执](v1-rc0-20261103/desktop-1/r1-fix-checks.json)确认没有其他脚本差异，HEAD、祖先、App树、版本差异、文件哈希及工作区等门禁均保留。原[首次失败回执](v1-rc0-20261103/desktop-1/artifact-1/result.json)和[堆栈](v1-rc0-20261103/desktop-1/artifact-1/failure.txt)保持原字节。
+- 第二次对已存在中间APK的静态审计真实exit0，见[artifact-2](v1-rc0-20261103/desktop-1/artifact-2/identity.json)。实际核对Manifest、正常Application/MainActivity与组件、原证书、权限及native边界；R1异常分类方法与Preview16 DEX等价；B3历史字节查询、页面及设置入口、P3/B1、三主题、图标资源均有实物检查。未发现测试宿主或JUnit/Instrumentation进入用户APK；32份历史APK大小/SHA保持。
+- 所有门禁通过后独占创建非Gradle交付目录，重新计算SHA并与中间APK逐字节比较一致；[归档回执](v1-rc0-20261103/desktop-1/archive.json)明确引用`artifact-2/identity.json`。归档APK和密钥不提交Git。
+- 归档后提交前的附加核对脚本因变量名拼写出现 `NameError`，没有修改APK；[原错误](v1-rc0-20261103/desktop-1/postarchive-check-1.json)已保留，[更正后的只读核对](v1-rc0-20261103/desktop-1/postarchive-check-2.json)通过。
+- B3的62 JVM、8项宿主SQLite及已记录Lint是**继承证据**，本轮均未重跑。Android实际行为、真实SAF/恢复、升级、资源峰值、图标视觉及C6隔离仍NOT_RUN/UNKNOWN；B2人工A～H仍仅为用户报告。照片逐张查看与永久删除继续BLOCKED。没有ADB、手机、模拟器、个人数据或真实恢复操作。
+
+## Preview17 首次交付阻断（历史记录）
 
 **BLOCKED — STATIC AUDIT BRANCH ASSERTION；没有可交付候选。** 本轮审计脚本在读取新APK之前错误地要求旧分支`codex/v1-b3-photo-storage`，但本轮按独立模块建立并使用`codex/v1-rc0-product-integration`；实际为审计脚本的错误预期，不能据此判定APK有缺陷，也不能判定其通过。原始脚本、exit1和[失败堆栈](v1-rc0-20261103/desktop-1/artifact-1/failure.txt)与[回执](v1-rc0-20261103/desktop-1/artifact-1/result.json)保留。按用户“门禁失败不生成候选”的要求停止；没有修改断言、重试审计或归档交付。Manifest、证书、权限、DEX及新APK实际SHA均 **NOT_RUN**，不提供可安装验收结论。
 
@@ -28,4 +47,4 @@
 | G1～G4未关闭 | G1核心闭环、G2浏览分析、G3提醒、G4升级发行；相关模块局部历史证据保留。[原门禁定义](../planning/original-v1/lithic_v1_plan/docs/MASTER_PLAN.md) | 局部PASS不等于总门禁PASS；不得自动进入M23或发布。 |
 | 建议专项延期，待产品确认 | 历史照片逐张查看、永久删除/GC、严格JPEG写入和更广API/OEM覆盖。P3单项目照片添加/更换/取消已存在，限定API36系统Picker。 | 建议不是自行批准的正式版本降级；先完成删除崩溃恢复、备份一致性、设备资源及安全验证。[B3](LITHIC-V1-B3-Photo-Space-Management.md) |
 
-本轮不操作ADB、手机、模拟器、用户账本或真实SAF，不自动安装、不合并main、不生成正式Release或Preview17交付候选。**V1_RELEASE_NO_GO / STRICT_JPEG_IMPORT_BLOCKED / ANDROID_ISOLATION_RUNTIME_PENDING**保持，停止等待独立审查。
+RC0首次审计时没有生成Preview17交付候选；随后R1复审和唯一归档结果见上方。本轮不操作ADB、手机、模拟器、用户账本或真实SAF，不自动安装、不合并main、不生成正式Release。**V1_RELEASE_NO_GO / STRICT_JPEG_IMPORT_BLOCKED / ANDROID_ISOLATION_RUNTIME_PENDING**保持，停止等待独立审查。

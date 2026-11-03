@@ -6,7 +6,7 @@ root = Path.cwd()
 e = root / 'docs/evidence/v1-rc0-20261103/desktop-1'
 def load(path): return json.loads((e / path).read_text(encoding='utf-8'))
 def sha(path): return hashlib.sha256(path.read_bytes()).hexdigest()
-audit = load('artifact-1/identity.json')
+audit = load('artifact-2/identity.json')
 build = load('build-1/command.json')
 config = load('config-1/command.json')
 lint = load('lint/result.json')
@@ -36,7 +36,7 @@ receipt = dict(status='PREVIEW17_DESKTOP_DELIVERY_READY',absolutePath=str(dst.re
     certificateSha256=app['certificateSha256'],sourceCommit=source['sourceCommit'],appGitTree=source['appGitTree'],
     baseline=source['baseline'],copiedUtc=datetime.datetime.now(datetime.timezone.utc).isoformat(),
     copyByteIdentical=True,protectedApks=prep['protectedApks'],
-    evidence={p:sha(e/p) for p in ('artifact-1/identity.json','config-1/command.json','build-1/command.json','lint/result.json','source-checks.json')},
+    evidence={p:sha(e/p) for p in ('artifact-2/identity.json','config-1/command.json','build-1/command.json','lint/result.json','source-checks.json')},
     userManual='USER_REPORTED_MANUAL_PASS_WITH_NOTES',androidExecution='NOT_RUN',deviceOperations=0)
 with (e/'archive.json').open('x',encoding='utf-8') as out: out.write(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps({k:receipt[k] for k in ('status','absolutePath','bytes','sha256')}))

@@ -1,0 +1,9 @@
+{
+  "status": "CHECKER_ERROR",
+  "stage": "after_archive_before_final_local_verification",
+  "exitCode": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 9, in <module>\nNameError: name 'r' is not defined. Did you mean: 're'?\n",
+  "cause": "Local helper assigned root=Path.cwd() but used r; no APK mutation.",
+  "androidExecution": "NOT_RUN",
+  "deviceOperations": 0
+}

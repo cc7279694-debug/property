@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "auditExitCode": 0,
+  "command": [
+    "python",
+    "docs/evidence/v1-rc0-20261103/desktop-1/verify-apk.py",
+    "--build-receipt",
+    "docs/evidence/v1-rc0-20261103/desktop-1/build-1/command.json",
+    "--evidence-name",
+    "artifact-2"
+  ],
+  "auditScriptShaBefore": "e01de7f1a37bda1fd87cc39e532e8fe49f7e94a6a588da9d98f699cbe2679c57",
+  "auditScriptShaAfter": "c749d290df2a53f2c1dc3f5b7518a6dd0164fef367ddba0c60c29fddb5f46687",
+  "archiveScriptShaBefore": "3fba3b55966374313a1ef84d3f4dcfdab3972102cafda9047abdc2a00659f229",
+  "archiveScriptShaAfter": "259db8a194f8f117d28ba352879adfb66b7a4a4b031b01ed20a07024b0305e88",
+  "onlySpecifiedReplacement": true,
+  "artifact1ByteIdenticalToGit": true,
+  "artifact2IdentitySha256": "80a602401f53367eacf30654efe0d0b90faf9f87cb2526053f8a97b3503fe0fa",
+  "archivedApkSha256": "312b760be041519e0a8f0a76fa6579e19b9e6504a2a82fa8f18c6da160d0467d",
+  "protectedApks": 32,
+  "gradle": "NOT_RUN",
+  "deviceOperations": 0,
+  "androidExecution": "NOT_RUN",
+  "observedUtc": "2026-11-03T02:17:24.927373+00:00"
+}
