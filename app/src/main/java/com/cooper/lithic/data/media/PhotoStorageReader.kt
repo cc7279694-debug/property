@@ -6,6 +6,7 @@ data class PhotoStorageSummary(
     val referencedCount: Long,
     val historicalCount: Long,
     val estimatedRegisteredBytes: Long,
+    val estimatedHistoricalBytes: Long,
 )
 
 enum class PhotoStorageReadFailure { OWNER_UNAVAILABLE, INCONSISTENT_METADATA, READ_FAILED }
@@ -30,13 +31,21 @@ internal fun photoStorageSummary(
     estimatedRegisteredBytes: Long,
     missingReferences: Long = 0,
     invalidLengths: Long = 0,
+    estimatedHistoricalBytes: Long,
 ): PhotoStorageSummary {
-    require(registeredCount >= 0 && referencedCount >= 0 && estimatedRegisteredBytes >= 0) {
+    require(registeredCount >= 0 && referencedCount >= 0 && estimatedRegisteredBytes >= 0 &&
+        estimatedHistoricalBytes >= 0) {
         "Photo metadata aggregates must be nonnegative integers"
     }
-    require(referencedCount <= registeredCount && missingReferences == 0L && invalidLengths == 0L) {
+    require(referencedCount <= registeredCount && missingReferences == 0L && invalidLengths == 0L &&
+        estimatedHistoricalBytes <= estimatedRegisteredBytes) {
         "Photo metadata references or lengths are inconsistent"
     }
-    return PhotoStorageSummary(registeredCount, referencedCount,
-        Math.subtractExact(registeredCount, referencedCount), estimatedRegisteredBytes)
+    val historicalCount = Math.subtractExact(registeredCount, referencedCount)
+    require((historicalCount != 0L || estimatedHistoricalBytes == 0L) &&
+        (referencedCount != 0L || estimatedHistoricalBytes == estimatedRegisteredBytes)) {
+        "Photo metadata historical length is inconsistent with reference counts"
+    }
+    return PhotoStorageSummary(registeredCount, referencedCount, historicalCount,
+        estimatedRegisteredBytes, estimatedHistoricalBytes)
 }

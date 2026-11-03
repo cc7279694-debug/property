@@ -17,7 +17,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Test
 
 class PhotoStorageControllerTest {
-    private val facts = PhotoStorageSummary(3, 1, 2, 600)
+    private val facts = PhotoStorageSummary(3, 1, 2, 600, 350)
 
     @Test fun idle_does_not_read_or_invent_a_zero_count() {
         val reader = Reader { PhotoStorageReadResult.Ready(facts) }

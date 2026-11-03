@@ -77,6 +77,8 @@ class GenerationPhotoStorageReaderTest {
         assertEquals(2L, summary.referencedCount)
         assertEquals(1L, summary.historicalCount)
         assertEquals(before.data.mediaAssets.sumOf { it.byteLength }, summary.estimatedRegisteredBytes)
+        assertEquals(before.data.mediaAssets.single { it.relativePath == "media/unreferenced.png" }.byteLength,
+            summary.estimatedHistoricalBytes)
         assertEquals(before, generation.backupSnapshotSource().capture())
         assertSame(reader.ownerKey, reader.ownerKey)
         assertFalse(reader.ownerKey is ManagedGeneration)
@@ -92,7 +94,8 @@ class GenerationPhotoStorageReaderTest {
             generation.database.openHelper.writableDatabase.execSQL("UPDATE subscriptions SET coverAssetId=?", arrayOf(asset))
             generation.database.openHelper.writableDatabase.execSQL("UPDATE long_term_projects SET coverAssetId=?", arrayOf(asset))
         }
-        assertEquals(PhotoStorageSummary(3, 1, 2, facts.data.mediaAssets.sumOf { it.byteLength }), ready())
+        assertEquals(PhotoStorageSummary(3, 1, 2, facts.data.mediaAssets.sumOf { it.byteLength },
+            facts.data.mediaAssets.filter { it.id != asset }.sumOf { it.byteLength }), ready())
     }
 
     @Test fun replacement_and_display_cancellation_facts_leave_old_media_registered_for_full_backup() = runBlocking {
@@ -103,14 +106,38 @@ class GenerationPhotoStorageReaderTest {
         generation.coordinator.withWrite {
             generation.database.openHelper.writableDatabase.execSQL("UPDATE long_term_projects SET coverAssetId=? WHERE id=?", arrayOf(replacement, project.id))
         }
-        assertEquals(PhotoStorageSummary(3, 2, 1, before.data.mediaAssets.sumOf { it.byteLength }), ready())
+        assertEquals(PhotoStorageSummary(3, 2, 1, before.data.mediaAssets.sumOf { it.byteLength },
+            before.data.mediaAssets.single { it.id == project.coverAssetId }.byteLength), ready())
         generation.coordinator.withWrite {
             generation.database.openHelper.writableDatabase.execSQL("UPDATE long_term_projects SET coverAssetId=NULL WHERE id=?", arrayOf(project.id))
         }
-        assertEquals(PhotoStorageSummary(3, 1, 2, before.data.mediaAssets.sumOf { it.byteLength }), ready())
+        assertEquals(PhotoStorageSummary(3, 1, 2, before.data.mediaAssets.sumOf { it.byteLength },
+            before.data.mediaAssets.filter { it.id == project.coverAssetId || it.id == replacement }.sumOf { it.byteLength }), ready())
         val after = generation.backupSnapshotSource().capture()
         assertEquals(before.data.mediaAssets, after.data.mediaAssets)
         assertEquals(before.data.projectMoneyEvents, after.data.projectMoneyEvents)
+    }
+
+    @Test fun all_referenced_and_all_unreferenced_photos_report_exact_historical_bytes_without_changing_media() = runBlocking {
+        val before = generation.backupSnapshotSource().capture()
+        val used = (before.data.projects.mapNotNull { it.coverAssetId } + before.data.subscriptions.mapNotNull { it.coverAssetId }).toSet()
+        val unreferenced = before.data.mediaAssets.single { it.id !in used }.id
+        val otherProject = before.data.projects.single { it.coverAssetId == null }.id
+        generation.coordinator.withWrite {
+            generation.database.openHelper.writableDatabase.execSQL(
+                "UPDATE long_term_projects SET coverAssetId=? WHERE id=?", arrayOf(unreferenced, otherProject))
+        }
+        assertEquals(0L, ready().historicalCount)
+        assertEquals(0L, ready().estimatedHistoricalBytes)
+        generation.coordinator.withWrite {
+            val db = generation.database.openHelper.writableDatabase
+            db.execSQL("UPDATE long_term_projects SET coverAssetId=NULL")
+            db.execSQL("UPDATE subscriptions SET coverAssetId=NULL")
+        }
+        val allHistory = ready()
+        assertEquals(3L, allHistory.historicalCount)
+        assertEquals(before.data.mediaAssets.sumOf { it.byteLength }, allHistory.estimatedHistoricalBytes)
+        assertEquals(before.data.mediaAssets, generation.backupSnapshotSource().capture().data.mediaAssets)
     }
 
     @Test fun same_generation_id_does_not_reauthorize_a_closed_owner_or_reopen_its_database() = runBlocking {

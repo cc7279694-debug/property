@@ -53,8 +53,11 @@ internal class GenerationPhotoStorageReader(
                     checkpoint()
                     val missing = database.query(MISSING_REFERENCE_COUNT).use { cursor -> cursor.singleInteger() }
                     checkpoint()
+                    val historicalBytes = database.query(HISTORICAL_BYTES).use { cursor -> cursor.singleInteger() }
+                    checkpoint()
                     photoStorageSummary(metadata.first, references, metadata.second,
-                        missingReferences = missing, invalidLengths = metadata.third)
+                        missingReferences = missing, invalidLengths = metadata.third,
+                        estimatedHistoricalBytes = historicalBytes)
                 }
             }
             checkpoint()
@@ -106,6 +109,13 @@ internal class GenerationPhotoStorageReader(
             SELECT COUNT(*) FROM ($COVER_REFERENCES) AS covers
             LEFT JOIN local_media_assets AS media ON covers.coverAssetId = media.id
             WHERE media.id IS NULL
+        """
+        // Counts registered lengths only, including neither physical allocation nor a deletion guarantee.
+        const val HISTORICAL_BYTES = """
+            SELECT COALESCE(SUM(media.byteLength), 0) FROM local_media_assets AS media
+            WHERE NOT EXISTS (
+                SELECT 1 FROM ($COVER_REFERENCES) AS covers WHERE covers.coverAssetId = media.id
+            )
         """
     }
 }

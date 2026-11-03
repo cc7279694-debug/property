@@ -41,11 +41,15 @@ class DataConfidencePresentationTest {
 
     @Test fun photo_counts_are_metadata_estimates_with_retention_disclosure() {
         compose.setContent { LithicTheme { SettingsShell(ZoneId.of("Asia/Shanghai"),
-            photoStorageState = PhotoStorageUiState.Ready(PhotoStorageSummary(5, 2, 3, 1234))) } }
+            photoStorageState = PhotoStorageUiState.Ready(PhotoStorageSummary(5, 2, 3, 1234, 345))) } }
         compose.onNodeWithTag("photo-storage-registered").performScrollTo().assertTextEquals("5 张")
         compose.onNodeWithTag("photo-storage-referenced").performScrollTo().assertTextEquals("2 张")
         compose.onNodeWithTag("photo-storage-historical").performScrollTo().assertTextEquals("3 张")
         compose.onNodeWithTag("photo-storage-bytes").performScrollTo().assertTextEquals("1234 字节")
+        compose.onNodeWithTag("photo-storage-historical-bytes").performScrollTo().assertTextEquals("345 字节")
+        compose.onNodeWithTag("photo-storage-cleanup").assertDoesNotExist()
+        compose.onNodeWithTag("photo-storage-cleanup-unavailable").performScrollTo()
+            .assertTextContains("手动清理暂不可用", substring = true)
         compose.onNodeWithTag("photo-storage-estimate-note").performScrollTo().assertTextContains("不等于实际磁盘占用", substring = true)
         compose.onNodeWithTag("photo-storage-retention-note").performScrollTo().assertTextContains("参加完整备份", substring = true)
     }
@@ -58,6 +62,8 @@ class DataConfidencePresentationTest {
         compose.onNodeWithTag("photo-storage-unavailable").performScrollTo().assertExists()
         compose.onNodeWithTag("photo-storage-registered").assertDoesNotExist()
         compose.onNodeWithTag("photo-storage-bytes").assertDoesNotExist()
+        compose.onNodeWithTag("photo-storage-historical-bytes").assertDoesNotExist()
+        compose.onNodeWithTag("photo-storage-cleanup").assertDoesNotExist()
         compose.onAllNodes(hasText("/data/user/", substring = true)).assertCountEquals(0)
         compose.onAllNodes(hasText("content://", substring = true)).assertCountEquals(0)
         compose.onNodeWithTag("backup-inspection-summary").assertDoesNotExist()
