@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-11-03T01:38:26.113Z" hostname="WHOCARE" time="0.07">
+  <properties/>
+  <testcase name="cancellation_is_unknown_without_a_success_or_automatic_retry" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.038"/>
+  <testcase name="only_a_current_success_publishes_the_metadata_summary" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.002"/>
+  <testcase name="late_result_after_owner_retirement_cannot_publish_numbers" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.003"/>
+  <testcase name="unavailable_owner_is_rejected_before_any_source_read" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.001"/>
+  <testcase name="clearing_the_model_fences_late_results_and_future_refreshes" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.003"/>
+  <testcase name="unavailable_is_not_rendered_as_zero_or_as_old_success" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.003"/>
+  <testcase name="cancellation_does_not_release_busy_until_an_uncancellable_read_finishes" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.006"/>
+  <testcase name="idle_does_not_read_or_invent_a_zero_count" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.001"/>
+  <testcase name="same_generation_id_does_not_allow_a_replaced_owner_identity" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.003"/>
+  <testcase name="busy_refresh_rejects_repeated_requests_and_has_stable_loading_state" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.005"/>
+  <testcase name="source_exception_has_no_private_path_or_exception_text_in_presentation" classname="com.cooper.lithic.feature.settings.PhotoStorageControllerTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

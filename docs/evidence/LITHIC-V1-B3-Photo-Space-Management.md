@@ -2,7 +2,16 @@
 
 基线 `a782b23c2f4b352953660b523ed74bc6e53202da`。用户反馈已亲自完成独立 B1-QA 的 A～H 人工旅程，结果正常，登记为 **USER_REPORTED_MANUAL_PASS_WITH_NOTES**。该登记来源是用户反馈；本阶段未取得逐步原始日志或独立复验，不能扩大为 Android 自动测试、异常中断、完整资源释放或正式发行通过。
 
-## 本阶段结果
+## 本次恢复验证（2026-11-03）
+
+**READ-ONLY PHOTO SPACE — READY_FOR_INDEPENDENT_REVIEW；永久删除 BLOCKED**。用户要求重新检查内存后恢复定向测试、编译和Lint，不操作手机、不生成Preview17。实际源码为 `451401eec14a22c896bb0a2de896c68e76957195`，App树 `a99de377ccc81beb3a8c581b999a8873588f5967`，生产源码与已提交候选一致。
+
+- [定向JVM](v1-b3-20261103/desktop-1/test-1/result.json)：照片汇总14项、Controller11项、PHOTO-LITE/backup4集成6项、备份检查31项，共 **62 PASS，0失败/错误/跳过**。离线、单worker；命令前实测5.232 GiB，真实退出码0，保留[命令和原始日志](v1-b3-20261103/desktop-1/test-1/command.json)。这不是完整历史套件或Android设备证据。
+- [桌面SQLite补充](v1-b3-20261103/desktop-1/sqlite-smoke.json)：从当前Kotlin源码提取实际查询，以内存合成数据库执行8个场景，覆盖空账本、项目和订阅共享引用、取消最后一个引用、缺失引用以及整数SUM溢出；8项符合预期。测试没有打开任何用户账本，桌面SQLite不替代Android Room/设备运行。
+- [编译及Lint](v1-b3-20261103/desktop-1/compile-lint-1/command.json)：普通Debug生产Kotlin和AndroidTest Kotlin源码编译、Lint均exit0；命令前实测6.043 GiB。Lint为 **0错误、20警告**，详见[原始XML](v1-b3-20261103/desktop-1/lint/lint-results-debug.xml)。与先前R1体验版的18警告相比，多出两条普通Debug启动图标缺少单色层的提示；同样两条已出现在更早的普通Debug记录中，涉及图标源码本轮未改。具体为何本次产生差异仍 **UNKNOWN**，见[对照](v1-b3-20261103/desktop-1/lint/comparison.json)。
+- Android测试方法、真实手机、真实SAF、照片资源峰值及异常中断均 **NOT_RUN/UNKNOWN**；用户报告的B2人工A～H仍只登记为USER_REPORTED_MANUAL_PASS_WITH_NOTES。无ADB/设备操作、无AndroidTest执行、无APK打包或Preview17。19个既有归档及2个现有Debug构建APK大小/SHA前后保持；没有修改Room5、backup4、Owner、恢复或冻结业务规则。
+
+## 源码准备时的历史状态
 
 **SOURCE_PREPARED / BUILD_DEFERRED；永久删除 BLOCKED**。源码在设置原有照片存储区加入只读空间管理汇总，不提供单张历史图片浏览、删除入口、后台清理或 GC。历史照片仍可能占用空间，并继续参加完整备份。展示未引用媒体的登记字节数，作为潜在空间的参考；不是已验证的物理占用，也不承诺能够回收。
 

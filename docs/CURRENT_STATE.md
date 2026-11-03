@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **V1-B3 READ-ONLY PHOTO SPACE — READY_FOR_INDEPENDENT_REVIEW（2026-11-03，桌面范围）**：用户恢复验证；源`451401e`/App树`a99de377ccc81beb3a8c581b999a8873588f5967`不变。实测资源5.232/6.043 GiB后，相关4个JVM类62项PASS，直接提取生产SQL的合成内存SQLite 8场景PASS；普通Debug Kotlin及AndroidTest源码编译/Lint退出0，Lint0错误20警告，其中两条与先前R1体验版18条的差异为普通Debug图标单色层提示，早期普通Debug已有且本轮图标未改，产生差异的具体原因UNKNOWN。19历史归档和2现有Debug APK原字节保持；未打包Preview17或其他APK，未操作ADB/手机/真实账本。真实Android/SAF/异常中断/实际空间回收仍NOT_RUN/UNKNOWN；B2 A～H仅用户报告通过。设置页仅只读汇总，历史照片逐张查看与永久删除继续BLOCKED；见[集中报告](evidence/LITHIC-V1-B3-Photo-Space-Management.md)。Room5/backup4/Owner/恢复及冻结算法不变；V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED与所有历史门禁保持，提交推送后停止独立审查。
+
 - **V1-B3 PHOTO SPACE — SOURCE_PREPARED / BUILD_DEFERRED（2026-11-03）**：从`a782b23`创建`codex/v1-b3-photo-storage`；只扩充同Owner/快照/事务下项目及订阅去重引用反集合的历史照片登记字节，并在设置区显示只读统计及清理不可用说明。现有媒体文件/引用、Room5/backup4、Owner/恢复及冻结算法不改；历史照片未逐张显示，登记字节不等于实际可释放空间。由于文件与数据库之间缺少已验证的崩溃恢复删除协议及全程备份/恢复并发门禁，永久删除保持BLOCKED，不生成Preview17。用户选择先完成源码、构建暂缓；4项新增JVM、1项新增Android及既有相关断言均未执行/编译，Gradle/构建/Lint为NOT_RUN，不能宣称已验证。仅静态diff/冻结边界及19历史APK指纹核对；详见[报告与后续删除安全门禁](evidence/LITHIC-V1-B3-Photo-Space-Management.md)。不操作设备或真实数据；V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED和历史NOTES保持。用户恢复后先确认资源门槛，再执行定向验证，不自行进入下一阶段。
 
 - **V1-B2 USER_REPORTED_MANUAL_PASS_WITH_NOTES（2026-11-03）**：用户报告已亲自在独立B1-QA完成A～H人工旅程，反馈全部正常；这是用户报告，本次没有独立读取设备结果、截图或逐项原始记录，不能登记为Android自动测试PASS，也不能据此证明异常中断、Owner关闭或逐图字节一致。原B2准备报告中的NOT_RUN是当时的历史观察，保留原样。当前用户授权V1-B3照片空间管理；V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED及既有历史门禁保持。
