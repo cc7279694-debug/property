@@ -1,0 +1,1 @@
+gradle.beforeProject { p -> if (p.path == ':app') { p.afterEvaluate { if (p.providers.gradleProperty('lithicPrivateTrial').orNull == 'true') p.layout.buildDirectory.set(p.layout.projectDirectory.dir('build/rc2-preview18')) } } }

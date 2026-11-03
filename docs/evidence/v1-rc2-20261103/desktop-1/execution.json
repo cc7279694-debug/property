@@ -1,0 +1,27 @@
+{
+  "auditCommand": [
+    "python",
+    "docs/evidence/v1-rc2-20261103/desktop-1/verify-apk.py",
+    "--build-receipt",
+    "docs/evidence/v1-rc2-20261103/build/command.json",
+    "--evidence-name",
+    "artifact-1"
+  ],
+  "auditExitCode": 0,
+  "auditIdentitySha256": "1eb86245173b86a1e6211c3c73723e50ac8b39ceb2cd5a822cdb8d13bbc53bf9",
+  "archiveCommand": [
+    "python",
+    "docs/evidence/v1-rc2-20261103/desktop-1/archive-candidate.py",
+    "--audit",
+    "docs/evidence/v1-rc2-20261103/desktop-1/artifact-1/identity.json",
+    "--build-receipt",
+    "docs/evidence/v1-rc2-20261103/build/command.json",
+    "--lint-xml",
+    "app/build/rc2-preview18/reports/lint-results-debug.xml"
+  ],
+  "archiveExitCode": 0,
+  "archiveSha256": "0a370f87ef5cfb1ddbefd10fe20f1751a29d27c69af2906dd3e83f0f9f895998",
+  "deviceOperations": 0,
+  "androidRuntime": "NOT_RUN",
+  "recordedUtc": "2026-11-03T04:00:08.145007+00:00"
+}
