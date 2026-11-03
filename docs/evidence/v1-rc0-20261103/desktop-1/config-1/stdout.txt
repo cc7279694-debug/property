@@ -1,0 +1,12 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+
+> Task :app:rc0IdentityReceipt
+RC0_IDENTITY={"packageName":"com.cooper.lithic.preview.debug","versionCode":33,"versionName":"0.1.0-preview.17-debug","buildDirectory":"E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\rc0-preview17","outputApk":"E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\app\\build\\rc0-preview17\\outputs\\apk\\debug\\app-debug.apk","photoLiteEnabled":true,"debugKeyPresent":true,"androidExecution":"NOT_RUN"}
+
+BUILD SUCCESSFUL in 45s
+1 actionable task: 1 executed

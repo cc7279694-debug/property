@@ -1,0 +1,19 @@
+{
+  "status": "READ_ONLY_EXPLORATION",
+  "first": {
+    "target": "app/build/outputs/apk/debug/app-debug.apk",
+    "operation": "apkanalyzer dex code for GenerationPhotoStorageReader$read$2$summary$1$1",
+    "exitCode": 1,
+    "error": "The given class was not found",
+    "interpretation": "Existing ordinary Debug APK does not contain this class; it is not the Preview17 candidate."
+  },
+  "followup": {
+    "target": "verification-candidates/v1-b2-b1qa/Lithic-B1-QA-0.1.0-b1qa.1-debug.apk",
+    "sameOperation": true,
+    "exitCode": 0,
+    "result": "Existing B2 QA class present; SQL appears as a single escaped smali line and query invocation is visible."
+  },
+  "deviceOperations": 0,
+  "candidateAudited": false,
+  "androidExecution": "NOT_RUN"
+}

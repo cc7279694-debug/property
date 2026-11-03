@@ -1,0 +1,37 @@
+import groovy.json.JsonOutput
+
+// Only this explicitly selected Preview17 build uses a new output tree; never clean old output.
+gradle.beforeProject { project ->
+    if (project.path == ':app') {
+        project.afterEvaluate {
+            if (project.providers.gradleProperty('lithicPrivateTrial').orNull == 'true') {
+                project.layout.buildDirectory.set(project.layout.projectDirectory.dir('build/rc0-preview17'))
+            }
+        }
+    }
+}
+gradle.projectsEvaluated {
+    def project = gradle.rootProject.project(':app')
+    project.tasks.register('rc0IdentityReceipt') {
+        doLast {
+            def android = project.extensions.getByName('android')
+            def cfg = android.defaultConfig
+            def debug = android.buildTypes.getByName('debug')
+            def expectedDir = project.layout.projectDirectory.dir('build/rc0-preview17').asFile.canonicalFile
+            def buildDir = project.layout.buildDirectory.get().asFile.canonicalFile
+            def variant = android.applicationVariants.find { it.name == 'debug' }
+            def outputs = variant.outputs.collect { it.outputFile.canonicalFile }
+            def expectedApk = new File(expectedDir, 'outputs/apk/debug/app-debug.apk').canonicalFile
+            def pkg = cfg.applicationId + debug.applicationIdSuffix
+            def version = cfg.versionName + debug.versionNameSuffix
+            assert project.providers.gradleProperty('lithicPrivateTrial').orNull == 'true'
+            assert pkg == 'com.cooper.lithic.preview.debug' && cfg.versionCode == 33 && version == '0.1.0-preview.17-debug'
+            assert buildDir == expectedDir && outputs == [expectedApk]
+            assert android.signingConfigs.getByName('debug').storeFile.isFile()
+            assert debug.buildConfigFields['PHOTO_LITE_EXPERIMENT'].value == 'true'
+            println('RC0_IDENTITY=' + JsonOutput.toJson([packageName: pkg, versionCode: cfg.versionCode,
+                versionName: version, buildDirectory: buildDir.path, outputApk: expectedApk.path,
+                photoLiteEnabled: true, debugKeyPresent: true, androidExecution: 'NOT_RUN']))
+        }
+    }
+}
