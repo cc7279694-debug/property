@@ -1,0 +1,185 @@
+{
+  "argv": [
+    "cmd",
+    "/c",
+    "gradlew.bat",
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    "-PlithicPrivateTrial=true",
+    "-I",
+    "docs/evidence/v1-rc2-20261103/isolated-output.init.gradle",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "com.cooper.lithic.platform.notification.ReminderRequestObservationTest",
+    "--tests",
+    "com.cooper.lithic.platform.notification.ReminderReconciliationTest",
+    "--tests",
+    "com.cooper.lithic.data.repository.M20ReminderDispatchTest",
+    "--tests",
+    "com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest",
+    "--tests",
+    "com.cooper.lithic.feature.settings.NotificationSettingsControllerTest",
+    ":app:compileDebugKotlin",
+    ":app:compileDebugAndroidTestKotlin",
+    ":app:assembleDebug",
+    ":app:lintDebug"
+  ],
+  "freeMemoryGiB": 4.508,
+  "sourceCommit": "04cf20c5f600d0474f223c6d927e20d59b400211",
+  "sourceAppGitTree": "fa84443f0569427390767fbc5df0d7f43b3a899a",
+  "appInputStatusAtStart": "",
+  "startedUtc": "2026-11-03T03:37:10.471739+00:00",
+  "deviceOperations": 0,
+  "androidExecution": "NOT_RUN",
+  "protectedApksBefore": 35,
+  "exitCode": 0,
+  "finishedUtc": "2026-11-03T03:58:39.699579+00:00",
+  "sourceUnchanged": true,
+  "protectedApksAfter": [
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.16/Lithic-0.1.0-preview.16-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.15/Lithic-0.1.0-preview.15-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/v1-a1/Lithic-V1-A1-App-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/v1-a1/Lithic-V1-A1-AndroidTest.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.10/Lithic-0.1.0-preview.10-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.11/Lithic-0.1.0-preview.11-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.12/Lithic-0.1.0-preview.12-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.2/Lithic-0.1.0-preview.2-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.3/Lithic-0.1.0-preview.3-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.4/Lithic-0.1.0-preview.4-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.5/Lithic-0.1.0-preview.5-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.6/Lithic-0.1.0-preview.6-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.7/Lithic-0.1.0-preview.7-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.8/Lithic-0.1.0-preview.8-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.9/Lithic-0.1.0-preview.9-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/photo-lite-p1/Lithic-PhotoLite-P1-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.13/Lithic-0.1.0-preview.13-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.14/Lithic-0.1.0-preview.14-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "verification-candidates/v1-b2-b1qa/Lithic-B1-QA-0.1.0-b1qa.1-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build-b1-qa/outputs/apk/debug/app-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build-c2-visual/outputs/apk/debug/app-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build-c2-visual/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build-c6-isolation/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build-photo-lite/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build-v1-acceptance/outputs/apk/debug/app-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build-v1-acceptance/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build/m22-device-verification/outputs/apk/debug/app-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build/m22-device-verification/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build/private-trial/outputs/apk/debug/app-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build/private-trial/outputs/apk/androidTest/debug/app-debug-androidTest.apk",
+      "unchanged": true
+    },
+    {
+      "path": "deliveries/lithic-preview-0.1.0-preview.17/Lithic-0.1.0-preview.17-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "app/build/rc0-preview17/outputs/apk/debug/app-debug.apk",
+      "unchanged": true
+    },
+    {
+      "path": "build/m22-t06-failure-preservation/historical-test-c3791305aed28899f8df98dc7c89f27c986c022b84a0e528c68c59ebf9f2037f.apk",
+      "unchanged": true
+    }
+  ],
+  "stdout.logSha256": "eec4ea1dfac9910adcb5e3c09261bdf48e563dbed4bda3605e056a7901583bb3",
+  "stderr.logSha256": "7947f20a02b8249ee4ac57e08b051987df95393d087248b86ba68192263b665b"
+}
