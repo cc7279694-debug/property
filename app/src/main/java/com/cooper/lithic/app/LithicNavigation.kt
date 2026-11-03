@@ -103,7 +103,6 @@ import com.cooper.lithic.feature.settings.CalculationExplanationScreen
 import com.cooper.lithic.core.design.UiFeedbackText
 import com.cooper.lithic.feature.settings.NotificationSettingsEntry
 import com.cooper.lithic.feature.settings.NotificationSettingsViewModel
-import com.cooper.lithic.platform.notification.ReminderScheduling
 import androidx.compose.ui.platform.LocalContext
 import com.cooper.lithic.feature.settings.BackupExportUiState
 import com.cooper.lithic.feature.settings.BackupRestoreUiState
@@ -212,15 +211,31 @@ internal fun LithicNavigation(
     LaunchedEffect(routes.last(), photoModel) { photoModel?.bindProject((routes.last() as? ProjectDetail)?.id) }
     fun guardedLeaveDecision(vararg decisions: LeaveDecision): LeaveDecision =
         globalLeaveDecision(*decisions, photoModel?.leaveDecision() ?: LeaveDecision.ALLOW)
+    val reminderApp = context.applicationContext as? LithicApplication
+    val reminderLease = if (reminderApp != null)
+        reminderApp.appContainer.reminderOwnerLease.collectAsStateWithLifecycle().value else null
     val notificationModel = if (NotificationSettings in routes) state.settingsStore?.let { store ->
-        remember(generationScope, session, store) {
+        val lease = reminderLease?.takeIf { it.owner.settings === store && it.isActive() }
+        if (reminderApp != null && lease == null) null else remember(generationScope, session, store, lease) {
             ViewModelProvider(generationScope, viewModelFactory {
-                initializer { NotificationSettingsViewModel(store) {
-                    if (context.applicationContext is LithicApplication) ReminderScheduling.request(context)
-                } }
+                initializer {
+                    if (reminderApp != null && lease != null) NotificationSettingsViewModel(
+                        store, schedulePort = { reminderApp.requestReminder(lease) },
+                        isOwnerActive = { lease.isActive() }, bindingIdentity = lease)
+                    else NotificationSettingsViewModel(store)
+                }
             })[NotificationSettingsViewModel::class.java]
         }
     } else null
+    LaunchedEffect(notificationModel, reminderLease) {
+        val app = reminderApp
+        val lease = reminderLease
+        if (notificationModel != null && app != null && lease != null &&
+            lease.isActive() && lease.owner.settings === state.settingsStore) {
+            val rebound = notificationModel.rebindSchedule(lease, { app.requestReminder(lease) }, { lease.isActive() })
+            if (rebound && routes.lastOrNull() == NotificationSettings) notificationModel.requestScheduleOnResume()
+        }
+    }
     // Avoid full-ledger ranking until the user first opens review. The generation scope owns
     // the model; owner replacement clears it before any old result can be presented.
     val reviewModel = if (LongTermReview in routes) state.rankingRepository?.let { repository ->
@@ -527,6 +542,7 @@ internal fun LithicNavigation(
                     entry<AboutLithic> { AboutLithicEntry(onBack) }
                     entry<NotificationSettings> {
                         if (notificationModel != null) NotificationSettingsEntry(notificationModel, onBack)
+                        else Text("提醒设置正在准备，请稍候。")
                     }
                     entry<InvalidMilestoneNotice> { InvalidMilestoneNoticeScreen(onBack) }
                     entry<MilestoneSources> { route ->

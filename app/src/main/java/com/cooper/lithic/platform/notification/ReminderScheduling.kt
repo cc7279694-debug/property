@@ -25,17 +25,38 @@ object ReminderScheduling {
     const val CANDIDATE_TAG="lithic-renewal-candidate-v1"
     private const val NAME_TAG="lithic-task:"
     private val reconciliation = Mutex()
-    fun start(context: Context) {
-        WorkManager.getInstance(context).enqueueUniquePeriodicWork("lithic-renewal-daily-v1", ExistingPeriodicWorkPolicy.KEEP,
-            PeriodicWorkRequestBuilder<ReminderWorker>(24,TimeUnit.HOURS)
-                .setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.RECONCILE))
-                .setInitialDelay(24,TimeUnit.HOURS).build())
-        request(context)
+    /** Raw platform submission. Normal application paths use the shared coordinator.
+     * The legacy wrappers remain for the existing isolated platform test contract only. */
+    internal fun enqueue(context: Context, kind: EnqueueKind): androidx.work.Operation = when (kind) {
+        EnqueueKind.PERIODIC -> prepareAndSubmitEnqueue(
+            prepare = {
+                val manager = WorkManager.getInstance(context)
+                val request = PeriodicWorkRequestBuilder<ReminderWorker>(24,TimeUnit.HOURS)
+                    .setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.RECONCILE))
+                    .setInitialDelay(24,TimeUnit.HOURS).build()
+                manager to request
+            },
+            submit = { (manager, request) ->
+                manager.enqueueUniquePeriodicWork("lithic-renewal-daily-v1", ExistingPeriodicWorkPolicy.KEEP, request)
+            },
+        )
+        EnqueueKind.RECONCILE -> prepareAndSubmitEnqueue(
+            prepare = {
+                val manager = WorkManager.getInstance(context)
+                val request = OneTimeWorkRequestBuilder<ReminderWorker>()
+                    .setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.RECONCILE)).build()
+                manager to request
+            },
+            submit = { (manager, request) ->
+                manager.enqueueUniqueWork("lithic-renewal-reconcile-v1", ExistingWorkPolicy.REPLACE, request)
+            },
+        )
     }
-    fun request(context: Context) {
-        WorkManager.getInstance(context).enqueueUniqueWork("lithic-renewal-reconcile-v1", ExistingWorkPolicy.REPLACE,
-            OneTimeWorkRequestBuilder<ReminderWorker>().setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.RECONCILE)).build())
+    internal fun start(context: Context) {
+        enqueue(context, EnqueueKind.PERIODIC)
+        enqueue(context, EnqueueKind.RECONCILE)
     }
+    internal fun request(context: Context) { enqueue(context, EnqueueKind.RECONCILE) }
     internal suspend fun requestMilestones(context: Context) {
         WorkManager.getInstance(context).enqueueUniqueWork("lithic-milestone-reconcile-v1", ExistingWorkPolicy.REPLACE,
             OneTimeWorkRequestBuilder<ReminderWorker>().setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.MILESTONE_RECONCILE)).build()).await()

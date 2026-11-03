@@ -26,6 +26,9 @@ class LithicApplication : Application(), Configuration.Provider {
         }
     private lateinit var reminders: ReminderRuntime
 
+    internal fun requestReminder(lease: ReminderOwnerLease<com.cooper.lithic.data.backup.ManagedGeneration>) =
+        if (::reminders.isInitialized) reminders.request(lease) else null
+
     override fun onCreate() {
         super.onCreate()
         if (processRole != AppProcessRole.MAIN) return

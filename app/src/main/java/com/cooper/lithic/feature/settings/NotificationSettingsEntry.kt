@@ -15,9 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import com.cooper.lithic.app.LithicApplication
 import com.cooper.lithic.platform.notification.NotificationPublisher
-import com.cooper.lithic.platform.notification.ReminderScheduling
 
 /** Permission prompts happen only after an explicit button press. Isolated hosts never
  * implicitly initialize a production AppContainer or persistent WorkManager. */
@@ -32,14 +30,14 @@ internal fun NotificationSettingsEntry(viewModel: NotificationSettingsViewModel,
     fun refresh() {
         permission = access()
         viewModel.refresh()
-        if (context.applicationContext is LithicApplication) ReminderScheduling.request(context)
+        viewModel.requestScheduleOnResume()
     }
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { refresh() }
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     DisposableEffect(lifecycle, viewModel, context) {
         val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) refresh() }
         lifecycle.addObserver(observer)
-        onDispose { lifecycle.removeObserver(observer) }
+        onDispose { lifecycle.removeObserver(observer); viewModel.stopScheduleObservation() }
     }
     NotificationSettingsScreen(viewModel, permission,
         onRequestPermission = {

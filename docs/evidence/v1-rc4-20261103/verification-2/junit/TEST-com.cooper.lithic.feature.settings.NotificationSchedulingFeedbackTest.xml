@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-11-03T06:15:51.006Z" hostname="WHOCARE" time="0.142">
+  <properties/>
+  <testcase name="refresh_invalidates_previous_ui_ticket" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.024"/>
+  <testcase name="saved_preference_is_kept_when_pending_enqueue_fails" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.011"/>
+  <testcase name="missing_ticket_and_unclassified_adapter_failure_are_unknown" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.008"/>
+  <testcase name="unknown_and_cancelled_are_not_enqueued_and_do_not_trigger_retry" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.011"/>
+  <testcase name="new_ui_ticket_blocks_older_result_after_repeated_triggers" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.009"/>
+  <testcase name="later_saved_setting_cannot_be_overwritten_by_earlier_enqueue_result" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.011"/>
+  <testcase name="rebind_same_lease_is_noop_and_does_not_request_or_invalidate_existing_ticket" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.007"/>
+  <testcase name="rebind_during_cancelled_save_keeps_outcome_unknown_without_retry" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.008"/>
+  <testcase name="retired_owner_ignores_late_status_and_reopened_owner_is_independent" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.009"/>
+  <testcase name="synchronous_cancellation_is_propagated_without_fake_success" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.004"/>
+  <testcase name="save_completing_after_page_exit_still_requests_but_does_not_publish_old_page_status" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.006"/>
+  <testcase name="leaving_page_invalidates_ticket_and_reentering_uses_a_new_ticket" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.01"/>
+  <testcase name="rebind_during_save_blocks_duplicate_write_until_old_save_terminates_and_rereads" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.009"/>
+  <testcase name="retained_controller_rebind_rejects_old_lease_results_even_for_same_store" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.009"/>
+  <testcase name="resume_request_is_not_erased_when_slow_preference_refresh_finishes" classname="com.cooper.lithic.feature.settings.NotificationSchedulingFeedbackTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

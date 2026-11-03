@@ -45,6 +45,8 @@ class AppContainer private constructor(
     private val lifecycle = Any()
     private var initialization: Deferred<ManagedGeneration>? = null
     private var closed = false
+    private val reminderOwnerBarrier = ReminderOwnerBarrier<ManagedGeneration>()
+    internal val reminderOwnerLease: StateFlow<ReminderOwnerLease<ManagedGeneration>?> = reminderOwnerBarrier.current
     private val mutableState = MutableStateFlow<StorageInitializationState>(StorageInitializationState.Initializing)
     val storageState: StateFlow<StorageInitializationState> = mutableState.asStateFlow()
 
@@ -77,6 +79,7 @@ class AppContainer private constructor(
             acquired = generation
             currentCoroutineContext().ensureActive()
             mutableState.value = StorageInitializationState.Ready(generation,generations.lastRecoveryWarning)
+            reminderOwnerBarrier.activate(generation)
             return generation
         } catch (cancelled: CancellationException) {
             withContext(NonCancellable + Dispatchers.IO) {
@@ -104,16 +107,19 @@ class AppContainer private constructor(
         restoreLifecycle.lock()
         try {
             check(openStorage().id==expectedId) { "Current generation changed" }
+            reminderOwnerBarrier.revokeForSwitch()
             mutableState.value=StorageInitializationState.Initializing
             return withContext(NonCancellable+Dispatchers.IO) {
                 try {
                     val restored=generations.activateRestore(expectedId,candidate,expectedSnapshot)
                     mutableState.value=StorageInitializationState.Ready(restored)
+                    reminderOwnerBarrier.activate(restored)
                     restored
                 } catch(failure:Throwable) {
                     try {
                         val fallback=generations.open()
                         mutableState.value=StorageInitializationState.Ready(fallback,generations.lastRecoveryWarning)
+                        reminderOwnerBarrier.activate(fallback)
                     } catch(reopenFailure:Throwable) {
                         failure.addSuppressed(reopenFailure)
                         mutableState.value=StorageInitializationState.Failed(failure)
@@ -124,14 +130,23 @@ class AppContainer private constructor(
         } finally { restoreLifecycle.unlock() }
     }
 
-    suspend fun close() = withContext(NonCancellable + Dispatchers.IO) {
-        synchronized(lifecycle) { closed = true }
-        scope.cancel()
-        ownerJob.join()
-        // An activation already in progress must finish (or restore its old owner) before
-        // shutdown chooses which resources to close. Initializing is not proof of no owner.
-        restoreLifecycle.withLock {
-            (mutableState.value as? StorageInitializationState.Ready)?.generation?.close()
+    suspend fun close() {
+        // Admission is revoked before switching dispatchers or waiting for storage shutdown.
+        reminderOwnerBarrier.beginClose()
+        withContext(NonCancellable + Dispatchers.IO) {
+            try {
+                synchronized(lifecycle) { closed = true }
+                scope.cancel()
+                ownerJob.join()
+                // An activation already in progress must finish (or restore its old owner) before
+                // shutdown chooses which resources to close. Initializing is not proof of no owner.
+                restoreLifecycle.withLock {
+                    (mutableState.value as? StorageInitializationState.Ready)?.generation?.close()
+                }
+            } finally {
+                // Do not delay the original storage shutdown on an unknown enqueue submission.
+                reminderOwnerBarrier.finishClose()
+            }
         }
     }
 }

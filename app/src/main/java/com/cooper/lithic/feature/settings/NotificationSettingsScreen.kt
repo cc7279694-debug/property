@@ -1,6 +1,7 @@
 package com.cooper.lithic.feature.settings
 
 import com.cooper.lithic.core.design.*
+import com.cooper.lithic.platform.notification.EnqueueStatus
 import androidx.compose.material3.Surface
 
 import androidx.compose.foundation.layout.Arrangement
@@ -102,7 +103,7 @@ internal fun NotificationSettingsContent(
         state.error?.let { message ->
             Text(message, color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.testTag("notification-preferences-error").semantics { liveRegion = LiveRegionMode.Polite })
-            if (state.preferences == null) {
+            if (state.preferences == null && !state.saveOutcomeUnknown) {
                 TextButton(onClick = onRetry, enabled = !state.loading,
                     modifier = Modifier.heightIn(min = 48.dp).testTag("retry-notification-preferences")) { Text("重新读取") }
             }
@@ -110,6 +111,13 @@ internal fun NotificationSettingsContent(
         state.notice?.let { message ->
             Text(message, style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.testTag("notification-preferences-notice").semantics { liveRegion = LiveRegionMode.Polite })
+        }
+
+        state.scheduleStatus?.let { status ->
+            val message = notificationScheduleMessage(status, state.saveOutcomeUnknown)
+            Text(message, style = MaterialTheme.typography.bodyMedium,
+                color = if (status == EnqueueStatus.FAILED) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.testTag("notification-schedule-status").semantics { liveRegion = LiveRegionMode.Polite })
         }
 
         HorizontalDivider()
