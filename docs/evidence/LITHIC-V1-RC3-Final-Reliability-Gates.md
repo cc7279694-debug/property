@@ -23,7 +23,7 @@
 
 ## 验证事实
 
-本轮 **SOURCE_AUDIT_ONLY / REMINDER_ENTRY_BLOCKED**：实际读取代码、RC1/RC2/RC0及既有发行证据；没有新增或修改生产/测试源码。当前可用 RAM 实测约 2.966 GiB，低于项目此前约定的 4 GiB 构建门槛；也没有可供验证的新修复，因此本轮 Gradle、JVM、生产/AndroidTest 编译及 Lint 均 **NOT_RUN**。RC1 的 118 项及 RC2 的 80 项 JVM 和既有编译/Lint 仅为各自已记录历史，不作本轮重跑。未操作 ADB、手机、模拟器、历史 APK 或用户数据；未生成新 Preview/Release。
+本轮 **SOURCE_AUDIT_ONLY / REMINDER_ENTRY_BLOCKED**：实际读取代码、RC1/RC2/RC0及既有发行证据；没有新增或修改生产/测试源码。审查期间可用 RAM 曾为 2.966 GiB，低于项目此前约定的 4 GiB 构建门槛；用户释放内存后复测为 4.451 GiB，已超过门槛。架构方案仍待独立审查且没有可供验证的新修复，因此本轮 Gradle、JVM、生产/AndroidTest 编译及 Lint 均 **NOT_RUN**；内存现已不是本次停止的原因。RC1 的 118 项及 RC2 的 80 项 JVM 和既有编译/Lint 仅为各自已记录历史，不作本轮重跑。未操作 ADB、手机、模拟器、历史 APK 或用户数据；未生成新 Preview/Release。
 
 后续获准实施后需一次性覆盖：同步/异步失败、持续挂起、取消及 UNKNOWN、不丢 Room/设置变更、并发入口/真实任务去重、旧 owner 关闭/同 generation 复用、过期结果、设置持久化与提示、渠道与调度独立失败；桌面 fake Operation 仅证明实现合同，真实 WorkManager/OEM 行为仍需独立 Android 验证。M20 两次平台窗口可见性 FAIL 及第二次任务/Owner 收口 UNKNOWN 不变。
 
