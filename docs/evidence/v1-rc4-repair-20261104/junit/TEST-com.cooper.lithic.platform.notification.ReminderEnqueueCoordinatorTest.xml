@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2026-11-04T02:07:04.796Z" hostname="WHOCARE" time="0.535">
+  <properties/>
+  <testcase name="synchronous_cancellation_leaves_enqueue_outcome_unknown_and_does_not_release_lane" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.071"/>
+  <testcase name="rapid_requests_merge_to_one_latest_pending_without_automatic_loop" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.009"/>
+  <testcase name="new_coordinator_does_not_inherit_old_unknown_process_death_remains_blocked" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.034"/>
+  <testcase name="superseded_in_flight_timeout_marks_latest_unknown_until_late_real_completion" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.031"/>
+  <testcase name="successful_operation_is_confirmed_only_on_terminal_callback" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.003"/>
+  <testcase name="cancellation_of_the_future_is_unknown_not_proof_that_os_work_ended" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.003"/>
+  <testcase name="synchronous_exception_after_side_effect_cannot_trigger_automatic_replacement" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.054"/>
+  <testcase name="duplicate_old_callback_cannot_finish_a_new_operation" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.003"/>
+  <testcase name="synchronous_and_asynchronous_failures_are_not_success_or_automatic_retry" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.004"/>
+  <testcase name="diagnostics_failure_does_not_change_or_block_scheduling" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.005"/>
+  <testcase name="listener_registration_failure_remains_unknown_and_blocks_followup" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.07"/>
+  <testcase name="timeout_is_unknown_does_not_retry_and_waits_for_actual_terminal" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.077"/>
+  <testcase name="cancelled_scope_and_retired_lease_do_not_enqueue" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.005"/>
+  <testcase name="periodic_and_reconcile_are_independent_single_flight_lanes" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.005"/>
+  <testcase name="blocking_synchronous_submission_times_out_without_submitting_latest" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.047"/>
+  <testcase name="retired_owner_and_reopened_instance_cannot_share_old_results" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.004"/>
+  <testcase name="blocking_listener_registration_times_out_and_retains_the_lane" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.052"/>
+  <testcase name="retired_owner_hanging_operation_makes_new_owner_waiting_status_unknown" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.038"/>
+  <testcase name="owner_retirement_callback_does_not_deadlock_against_enqueue_admission" classname="com.cooper.lithic.platform.notification.ReminderEnqueueCoordinatorTest" time="0.012"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

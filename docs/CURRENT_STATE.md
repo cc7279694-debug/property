@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **V1-RC4 续修 — BLOCKED / PREVIEW19_NOT_BUILT（2026-11-04）**：屏障 `finishClose()` 已不再直接等待入队锁，修复前目标测试真实失败、修复后150项定向JVM通过，生产Kotlin与AndroidTest增量编译、Lint exit0（0E20W）。跨进程 UNKNOWN 与恢复切换等待仍未解决；并发恢复可能继续拖住整个close，源码仍仅供审查，不得合并或用于真实数据。36份历史APK SHA保持；无设备操作或新APK。详见[续修报告](evidence/LITHIC-V1-RC4-Repair.md)。
+
 - **V1-RC4 — BLOCKED / PREVIEW19_NOT_BUILT（2026-11-03）**：用户转交RC3架构条件批准；实现进程内双槽共享入队协调、实例lease、设置结果反馈及定向测试。最终149 JVM PASS、生产/AndroidTest源码编译及Lint exit0（0E20W），首次新增测试编译失败、136项中间版本及最终结果均保留。安全审查发现进程重建无法继承UNKNOWN而可能再次REPLACE；同步enqueue若卡住会让恢复切换/close等待，移锁外又有退役后首次提交竞态，均未解决。当前源码**仅供独立审查，不得合并/安装/用于真实数据**；无Preview19、设备/ADB/模拟器/数据操作。详见[集中报告](evidence/LITHIC-V1-RC4-Reminder-Coordinator.md)。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING及M20历史FAIL/UNKNOWN保持。
 
 - **V1-RC3 — REMINDER_ENTRY_BLOCKED / SOURCE_AUDIT_ONLY（2026-11-03）**：用户转交Preview18桌面候选 ACCEPTED/FROZEN PASS WITH NOTES。多入口异步入队结果、Room订阅空窗、实际Owner关闭、重复REPLACE/UNKNOWN及设置反馈须共享有界协调与真实退役信号；属于须独立审查的调度架构变更，按本轮授权例外未强行实施。渠道异常阻断启动调度亦保留；没有修改生产/测试源码。RAM先为2.966 GiB，用户释放后复测4.451 GiB已达门槛；因方案待审且无生产修复，本轮测试/编译/Lint均NOT_RUN；不生成APK、不操作设备或历史APK。发行A/B/C建议及拟议设计见[集中报告](evidence/LITHIC-V1-RC3-Final-Reliability-Gates.md)。原M20 FAIL/UNKNOWN及V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING保持；等待独立审查。

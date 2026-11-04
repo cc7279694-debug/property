@@ -112,4 +112,35 @@ class ReminderOwnerBarrierTest {
             executor.shutdownNow()
         }
     }
+
+    @Test fun close_must_finish_even_when_synchronous_submission_does_not_return() {
+        val gate = ReminderOwnerBarrier<Any>()
+        val lease = requireNotNull(gate.activate(Any()))
+        val entered = CountDownLatch(1)
+        val release = CountDownLatch(1)
+        val closeStarted = CountDownLatch(1)
+        val closeReturned = CountDownLatch(1)
+        val executor = Executors.newFixedThreadPool(2)
+        try {
+            executor.submit {
+                lease.withActive {
+                    entered.countDown()
+                    check(release.await(5, TimeUnit.SECONDS))
+                    Unit
+                }
+            }
+            assertTrue(entered.await(5, TimeUnit.SECONDS))
+            gate.beginClose()
+            executor.submit {
+                closeStarted.countDown()
+                gate.finishClose()
+                closeReturned.countDown()
+            }
+            assertTrue(closeStarted.await(5, TimeUnit.SECONDS))
+            assertTrue("Close must not depend on a stuck enqueue", closeReturned.await(500, TimeUnit.MILLISECONDS))
+        } finally {
+            release.countDown()
+            executor.shutdownNow()
+        }
+    }
 }

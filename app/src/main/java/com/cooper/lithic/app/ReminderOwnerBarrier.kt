@@ -28,7 +28,14 @@ internal class ReminderOwnerBarrier<O : Any> {
 
     fun activate(owner: O): ReminderOwnerLease<O>? = synchronized(lock) {
         if (closed || switchesInProgress.get() != 0) return@synchronized null
-        ReminderOwnerLease(owner, this).also { mutableCurrent.value = it }
+        val lease = ReminderOwnerLease(owner, this)
+        mutableCurrent.value = lease
+        // close can revoke without acquiring this lock. Never leave a publication
+        // behind when it raced the check above; closed owners are never reopened.
+        if (closed) {
+            mutableCurrent.compareAndSet(lease, null)
+            null
+        } else lease
     }
 
     /** Fence old admissions before waiting for any already-admitted submission. */
@@ -43,9 +50,11 @@ internal class ReminderOwnerBarrier<O : Any> {
         closed = true
     }
 
-    /** Await any already-admitted synchronous submission on a background dispatcher. */
+    /** Closing is terminal. An already-admitted submission may still be in the platform;
+     * closing the owner cannot wait for that call or claim that it was cancelled. */
     fun finishClose() {
-        synchronized(lock) { mutableCurrent.value = null }
+        check(closed) { "Close must begin before its publication is cleared" }
+        mutableCurrent.value = null
     }
 
     // Advisory observation only. Admission must still use withActive under the lock.
