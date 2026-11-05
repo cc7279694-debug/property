@@ -12,7 +12,6 @@ import android.os.Build
 import android.os.CancellationSignal
 import android.util.Size
 import androidx.activity.result.contract.ActivityResultContracts
-import com.cooper.lithic.BuildConfig
 import com.cooper.lithic.data.media.photolite.PhotoLiteLimits
 import com.cooper.lithic.data.media.photolite.PhotoLitePng
 import com.cooper.lithic.data.media.photolite.PhotoLitePngOutput
@@ -76,7 +75,7 @@ internal class PhotoLiteEncodingLease(val bitmap: Bitmap, private val release: (
 }
 
 /**
- * PHOTO-LITE is an explicit API36 experiment. loadThumbnail decodes in this host process; a requested
+ * PHOTO-LITE uses the admitted API36 path. loadThumbnail decodes in this host process. A requested
  * size, cancellation signal and post-return allocation checks are not a hard native/RSS bound, an
  * isolated JPEG validator or proof that a selected JPEG's original entropy stream is complete.
  */
@@ -92,8 +91,9 @@ open class PhotoLiteThumbnailPipeline internal constructor(
         },
         mimeType = { uri -> context.applicationContext.contentResolver.getType(uri) },
         available = {
-            BuildConfig.PHOTO_LITE_EXPERIMENT && Build.VERSION.SDK_INT == 36 &&
+            PhotoLiteCapability.canPick {
                 ActivityResultContracts.PickVisualMedia.isPhotoPickerAvailable(context.applicationContext)
+            }
         },
     )
 

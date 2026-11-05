@@ -16,8 +16,11 @@ object PhotoLiteLimits {
     const val MAX_PNG_BYTES_EXCLUSIVE = 2 * 1024 * 1024
 
     // Android 29's platform implementation differs in its sampling of extreme aspect ratios.
-    // This first disposable experiment admits only the specifically reviewed API36 path.
-    fun supports(api: Int, realPhotoPickerAvailable: Boolean): Boolean = api == 36 && realPhotoPickerAvailable
+    // Admit only the specifically reviewed API36 path.
+    internal fun supportsApi(api: Int): Boolean = api == 36
+
+    fun supports(api: Int, realPhotoPickerAvailable: Boolean): Boolean =
+        supportsApi(api) && realPhotoPickerAvailable
 
     fun acceptsThumbnail(width: Int, height: Int, allocationBytes: Long, software: Boolean): Boolean =
         software && width in 1..MAX_THUMBNAIL_EDGE && height in 1..MAX_THUMBNAIL_EDGE &&

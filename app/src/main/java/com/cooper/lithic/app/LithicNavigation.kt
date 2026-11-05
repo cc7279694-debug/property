@@ -6,6 +6,7 @@ import com.cooper.lithic.data.media.photolite.PhotoLiteCoverChange
 import com.cooper.lithic.feature.media.RecordCover
 import com.cooper.lithic.feature.media.ProvideCoverPreviews
 import com.cooper.lithic.feature.media.PhotoLiteCoverController
+import com.cooper.lithic.feature.media.PhotoLiteCapability
 import com.cooper.lithic.feature.media.PhotoLiteCoverPanel
 import com.cooper.lithic.feature.media.PhotoLiteThumbnailPipeline
 import com.cooper.lithic.core.design.C2RecordIdentity
@@ -551,7 +552,8 @@ internal fun LithicNavigation(
                             onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)
                     }
                     entry<ProjectDetail> { route ->
-                        val startPhotoChange = photoModel?.let { controller -> { change: PhotoLiteCoverChange ->
+                        val availablePhotoModel = photoModel?.takeIf { it.isAvailable() }
+                        val startPhotoChange = availablePhotoModel?.let { controller -> { change: PhotoLiteCoverChange ->
                             if (!inspectionState.busy && restoreState.phase == RestoreUiPhase.IDLE &&
                                 restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
                                 backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&
@@ -573,12 +575,12 @@ internal fun LithicNavigation(
                             onAddPhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.ADD) } },
                             onReplacePhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.REPLACE) } },
                             onRemovePhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.REMOVE) } },
-                            photoActionEnabled = photoModel?.isAvailable() == true && !inspectionState.busy && restoreState.phase == RestoreUiPhase.IDLE &&
+                            photoActionEnabled = availablePhotoModel != null && !inspectionState.busy && restoreState.phase == RestoreUiPhase.IDLE &&
                                 restoreState.feedback != com.cooper.lithic.feature.settings.RestoreFeedbackKind.OUTCOME_UNKNOWN &&
                                 backupState.phase == com.cooper.lithic.feature.settings.BackupUiPhase.IDLE &&
                                 guardedLeaveDecision(projectLeave, subscriptionLeave, categoryLeave, replacementLeave) == LeaveDecision.ALLOW,
-                            photoUnavailableMessage = if (photoModel != null && !photoModel.isAvailable())
-                                "照片试验仅支持 Android 16 且可使用系统照片选择器的设备。此设备暂不支持，物品记录不受影响。" else null,
+                            photoUnavailableMessage = if (PhotoLiteCapability.enabledInBuild && availablePhotoModel == null)
+                                "物品照片操作目前仅支持配有系统照片选择器的 Android 16（API 36）设备。" else null,
                             expandPhotoCover = photoModel != null,
                             onCostHistory = if (state.itemTimelineRepository != null) ({ requestLeave(canonicalBackStack(ProjectCostHistory(route.id, route.origin, route.comparisonId))) }) else null,
                             onReplacement = if (replacementModel != null) ({ requestLeave(canonicalBackStack(ReplacementComparison(route.id, route.origin))) }) else null,

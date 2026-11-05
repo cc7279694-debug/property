@@ -163,7 +163,8 @@ android {
         if (c6IsolationVerification) testApplicationId = "com.cooper.lithic.c6isolation.debug.test"
         if (v1AcceptanceVerification) testApplicationId = "com.cooper.lithic.v1acceptance.debug.test"
         if (photoLiteExperiment) testApplicationId = "com.cooper.lithic.photolite.debug.test"
-        buildConfigField("boolean", "PHOTO_LITE_EXPERIMENT", photoLiteExperiment.toString())
+        buildConfigField("boolean", "PHOTO_LITE_EXPERIMENT", "false")
+        buildConfigField("boolean", "PHOTO_LITE_PRODUCTION", "false")
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
         testInstrumentationRunner = if (photoLiteExperiment || v1AcceptanceVerification || c6IsolationVerification || c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
             "com.cooper.lithic.app.M13IsolatedRunner"
@@ -174,8 +175,7 @@ android {
 
     buildTypes {
         debug {
-            // Reuse PHOTO-LITE only in explicitly selected Debug candidates. The default
-            // and Release value stays off, including a Release queried with the trial flag.
+            // Keep the trial and disposable verification identities separate from production.
             buildConfigField("boolean", "PHOTO_LITE_EXPERIMENT", (photoLiteExperiment || lithicPrivateTrial || b1QaVerification).toString())
             applicationIdSuffix = when {
                 lithicPrivateTrial -> ".preview.debug"
@@ -188,6 +188,9 @@ android {
                 else -> ".debug"
             }
             versionNameSuffix = "-debug"
+        }
+        release {
+            buildConfigField("boolean", "PHOTO_LITE_PRODUCTION", "true")
         }
     }
 
@@ -248,7 +251,8 @@ androidComponents {
         if (b1QaVerification) variant.enableAndroidTest = false
     }
     beforeVariants(selector().withBuildType("release")) { variant ->
-        if (b1QaVerification || photoLiteExperiment || v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
+        if (lithicPrivateTrial || m22DeviceVerification || b1QaVerification || photoLiteExperiment ||
+            v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
     }
 }
 

@@ -7,6 +7,7 @@ import android.os.CancellationSignal
 import android.util.Size
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.data.media.photolite.PhotoLiteLimits
+import java.io.IOException
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
@@ -85,6 +86,28 @@ class PhotoLiteThumbnailPipelineTest {
         val pipeline = pipeline { _, _, _ -> bitmap(1601, 2).also { source.set(it) } }
         expectRejected { pipeline.load(URI) }
         assertTrue(source.get().isRecycled)
+    }
+
+    @Test fun revoked_grant_and_provider_decode_failure_reject_without_blocking_a_later_request() = runBlocking {
+        val failures = listOf(SecurityException("synthetic revoked URI grant"), IOException("synthetic bad thumbnail"))
+        for (providerFailure in failures) {
+            val attempts = AtomicInteger()
+            val pipeline = pipeline { _, _, _ ->
+                if (attempts.incrementAndGet() == 1) throw providerFailure
+                bitmap(2, 2)
+            }
+            val rejected = expectRejected { pipeline.load(URI) }
+            assertEquals("THUMBNAIL_UNAVAILABLE", rejected.reason)
+            assertFalse(rejected.unknown)
+            assertEquals(1, attempts.get())
+
+            val preview = pipeline.load(URI)
+            try {
+                assertEquals(2, preview.bitmap.width)
+                assertEquals(2, preview.bitmap.height)
+                assertEquals(2, attempts.get())
+            } finally { preview.close() }
+        }
     }
 
     @Test fun cancellation_keeps_native_admission_until_fake_provider_actually_returns() = runBlocking {

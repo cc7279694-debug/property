@@ -94,6 +94,21 @@ class PhotoLiteBackup4IntegrationTest {
             assertRetainedMedia(fixture, admitted)
         }
 
+    @Test fun preview_and_release_producer_versions_admit_the_same_format4_media_facts() {
+        // Export records versionName only. These are synthetic producer strings, not installed apps.
+        for (producer in listOf("0.1.0-preview.19-debug", "1.0.0")) {
+            ownedFixture(PhotoLiteCoverChange.REPLACE, producer) { fixture ->
+                val admitted = admitComplete(fixture, "producer-version")
+                assertEquals(producer, admitted.manifest.producerAppVersion)
+                assertEquals(4, admitted.manifest.formatVersion)
+                assertEquals(4, admitted.manifest.minReaderFormat)
+                assertEquals(5, admitted.manifest.sourceDatabaseSchemaVersion)
+                assertEquals(REPLACEMENT_ID, admitted.snapshot.data.projects.single().coverAssetId)
+                assertRetainedMedia(fixture, admitted)
+            }
+        }
+    }
+
     @Test fun cleared_cover_archive_still_preserves_all_registered_media_without_a_cover_reference() =
         ownedFixture(PhotoLiteCoverChange.REMOVE) { fixture ->
             val admitted = admitComplete(fixture, "cleared")
@@ -140,16 +155,20 @@ class PhotoLiteBackup4IntegrationTest {
     }
 
     /** No finally-cleanup: an unexpected assertion, IO or validation failure preserves the full fixture. */
-    private fun ownedFixture(change: PhotoLiteCoverChange? = null, block: (Fixture) -> Unit) {
+    private fun ownedFixture(
+        change: PhotoLiteCoverChange? = null,
+        producer: String = "photo-lite-backup4-synthetic",
+        block: (Fixture) -> Unit,
+    ) {
         val token = UUID.randomUUID().toString()
         val root = Files.createTempDirectory("photo-lite-backup4-$token-").toRealPath()
         Files.write(root.resolve(OWNER), token.toByteArray(Charsets.UTF_8), CREATE_NEW, WRITE)
-        val fixture = Fixture(root, token, change)
+        val fixture = Fixture(root, token, change, producer)
         block(fixture)
         fixture.closeAfterSuccess()
     }
 
-    private class Fixture(val root: Path, private val token: String, change: PhotoLiteCoverChange?) {
+    private class Fixture(val root: Path, private val token: String, change: PhotoLiteCoverChange?, producer: String) {
         private val rootIdentity = Files.readAttributes(root, BasicFileAttributes::class.java, NOFOLLOW_LINKS).fileKey()
         private val allowedDirectories = mutableSetOf(root)
         private val allowedFiles = linkedMapOf(root.resolve(OWNER) to token.toByteArray(Charsets.UTF_8))
@@ -167,7 +186,7 @@ class PhotoLiteBackup4IntegrationTest {
 
         init {
             mediaPayloads.forEach { (path, bytes) -> Files.write(core.directory.resolve(path), bytes, CREATE_NEW, WRITE) }
-            manifest = BackupManifestV1.complete(core, "photo-lite-backup4-synthetic", Instant.parse(ARCHIVED_AT))
+            manifest = BackupManifestV1.complete(core, producer, Instant.parse(ARCHIVED_AT))
             allowedDirectories.add(core.directory)
             allowedDirectories.add(mediaDirectory)
             allowedFiles[core.directory.resolve(".backup-core-owner")] = Files.readAllBytes(core.directory.resolve(".backup-core-owner"))

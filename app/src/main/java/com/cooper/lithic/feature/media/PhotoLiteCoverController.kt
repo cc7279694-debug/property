@@ -77,7 +77,7 @@ internal class PhotoLiteCoverController(
 
     fun begin(projectId: String, change: PhotoLiteCoverChange = PhotoLiteCoverChange.ADD) {
         if (retired || state.value.phase != PhotoLiteCoverPhase.IDLE || currentRouteProject != projectId) return
-        if (!isAvailable()) { reject("当前系统暂不支持这项照片试验。尚未更改物品。", projectId); return }
+        if (!isAvailable()) { reject("当前设备无法进行物品照片操作。尚未更改物品。", projectId); return }
         if (!ownerCurrent()) { reject("当前账本已变化，已停止选择照片。", projectId); return }
         val ticket = UUID.randomUUID().toString()
         activeTicket = ticket

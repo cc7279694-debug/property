@@ -52,6 +52,15 @@ class PhotoLiteCoverPresentationTest {
         compose.onNodeWithTag("project-photo-unavailable").assertTextContains("不支持")
     }
 
+    @Test fun unavailable_note_is_visible_without_photo_actions() {
+        val covered = detail.copy(project = detail.project.copy(coverAssetId = "95000000-0000-0000-0000-000000000001"))
+        show(covered, unavailable = "物品照片操作需要 Android 16 和可用的系统照片选择器。")
+        compose.onNodeWithTag("project-add-photo").assertDoesNotExist()
+        compose.onNodeWithTag("project-replace-photo").assertDoesNotExist()
+        compose.onNodeWithTag("project-remove-photo").assertDoesNotExist()
+        compose.onNodeWithTag("project-photo-unavailable").assertIsDisplayed()
+    }
+
     @Test fun existing_cover_uses_expanded_slot_and_exposes_explicit_replace_and_cancel_display() {
         val covered = detail.copy(project = detail.project.copy(coverAssetId = "95000000-0000-0000-0000-000000000001"))
         var replaced = 0

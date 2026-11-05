@@ -176,10 +176,8 @@ internal fun ProjectDetailScreen(
                                 }
                             }
                         }
-                        if (onAddPhoto != null || onReplacePhoto != null || onRemovePhoto != null) {
-                            photoUnavailableMessage?.let { Text(it, Modifier.testTag("project-photo-unavailable"),
-                                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
-                        }
+                        photoUnavailableMessage?.let { Text(it, Modifier.testTag("project-photo-unavailable"),
+                            style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant) }
                     }
                 }
                 item { ProjectCostSummary(detail) }
