@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.platform.notification.LegacyReminderCancellationRunnerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-05T01:33:04.741Z" hostname="WHOCARE" time="0.009">
+  <properties/>
+  <testcase name="only_five_explicit_reminder_targets_are_submitted_once" classname="com.cooper.lithic.platform.notification.LegacyReminderCancellationRunnerTest" time="0.004"/>
+  <testcase name="delayed_and_duplicate_results_cannot_reopen_or_overwrite_terminal_result" classname="com.cooper.lithic.platform.notification.LegacyReminderCancellationRunnerTest" time="0.002"/>
+  <testcase name="missing_callback_synchronous_exception_and_failed_operation_do_not_claim_success" classname="com.cooper.lithic.platform.notification.LegacyReminderCancellationRunnerTest" time="0.002"/>
+  <testcase name="rejected_dispatch_does_not_skip_other_targets_or_retry" classname="com.cooper.lithic.platform.notification.LegacyReminderCancellationRunnerTest" time="0.001"/>
+  <testcase name="core_capability_cannot_be_enabled_by_stored_preferences" classname="com.cooper.lithic.platform.notification.LegacyReminderCancellationRunnerTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

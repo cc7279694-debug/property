@@ -4,7 +4,7 @@
 
 ## Current Stage
 
-- **V1 核心版加速 — SOURCE_PREPARED / BUILD_DEFERRED / PREVIEW19_BLOCKED（2026-11-05）**：以 Preview18 `b828d2d` 为基线建立 `codex/v1-core-fasttrack-no-reminders`，未引入 RC4。用户决定自动通知延期；门禁、旧 Worker 自身早退、精确旧任务取消及中性设置文案已准备，尚未编译或运行。旧任务冷启动先执行正常 Application/Owner 初始化，尚不能证明整个唤起过程在账本操作前退出；须独立审查，不能生成候选。用户要求等待内存充足后再构建；当前无设备操作。历史APK保护和风险见[报告](evidence/LITHIC-V1-CORE-FASTTRACK.md)。
+- **V1 核心版加速 — TARGETED_CHECKS_PASS / PREVIEW19_BLOCKED（2026-11-05）**：以 Preview18 `b828d2d` 为基线建立 `codex/v1-core-fasttrack-no-reminders`，未引入 RC4。用户决定自动通知延期；门禁、旧 Worker 自身早退、精确旧任务取消及中性设置文案已准备。用户确认释放内存后，定向 JVM 158 项通过、生产及AndroidTest源码编译通过、Lint 0错误20警告；Android运行 NOT_RUN。旧任务冷启动先执行正常 Application/Owner 初始化，尚不能证明整个唤起过程在账本操作前退出；须独立审查，不能生成候选。36份历史APK SHA不变；无设备操作。详见[报告](evidence/LITHIC-V1-CORE-FASTTRACK.md)。
 
 - **V1-RC2 PREVIEW18 — READY_FOR_INDEPENDENT_REVIEW（2026-11-03，桌面范围）**：用户转交 RC1 桌面验收通过；启动/账本变化/设置入口丢弃 WorkManager 异步 Operation 的风险确认，因等待导致监听空窗及取消/迟到 REPLACE 安全性未充分证明，本轮未修改提醒生产源码，问题保留 NOTE。仅将Private Trial升级为34/preview.18；80项定向JVM、生产/AndroidTest源码编译、体验构建与Lint exit0（0E18W）。实际Manifest/签名/DEX/原图标通过静态审计，35份旧APK不变；唯一候选20,506,559字节、SHA `afa9b49da1952342a56403eaa5150261d641f3ef2f6cba68d43501e1555d8e4a`，源码`04cf20c`。未操作手机/ADB/模拟器/数据，所有真实Android仍NOT_RUN；见[集中报告](evidence/LITHIC-V1-RC2-Integration.md)。M20历史FAIL/UNKNOWN、M22、C6及JPEG门禁不改；V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING。提交推送后等待独立审查。
 
