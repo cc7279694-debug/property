@@ -18,7 +18,7 @@ internal fun NotificationDeferredScreen(onBack: () -> Unit) {
     Column(Modifier.fillMaxSize().padding(horizontal = LithicSpacing.page, vertical = 16.dp)
         .testTag("notification-deferred-screen")) {
         C2PageHeader("提醒", onBack, "notification-deferred-back", backLabel = "返回设置")
-        Text("自动提醒将在后续版本提供。", style = MaterialTheme.typography.bodyMedium,
+        Text("自动提醒将在 V1.1 提供。", style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }

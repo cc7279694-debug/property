@@ -71,7 +71,7 @@ internal fun SettingsShell(
             C2SettingRow("记录时区", C2Glyph.Now, trailing = recordZone.id, trailingTag = "record-zone")
         }
         C2Section("提醒") {
-            Text("自动提醒将在后续版本提供。", modifier = Modifier.testTag("reminders-deferred"),
+            Text("自动提醒将在 V1.1 提供。", modifier = Modifier.testTag("reminders-deferred"),
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         C2Section("备份与恢复") {
@@ -150,7 +150,7 @@ internal fun SettingsShell(
                         modifier = Modifier.testTag("backup-not-started"))
                 }
                 Text("恢复先校验与预览，再明确确认完整覆盖当前记录、图片和设置，不合并。请先核对预览中的当前与备份内容。")
-                Text("自动提醒将在后续版本提供。停止App中的订阅记录不会取消服务商扣费。")
+                Text("自动提醒将在 V1.1 提供。停止App中的订阅记录不会取消服务商扣费。")
             }
         }, confirmButton = { TextButton({ informationOpen = false }, Modifier.testTag("settings-information-close")) { Text("知道了") } })
 }

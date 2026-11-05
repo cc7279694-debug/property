@@ -1,7 +1,6 @@
 package com.cooper.lithic.app
 
 import android.os.Bundle
-import android.content.Intent
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -9,8 +8,6 @@ import androidx.activity.SystemBarStyle
 import androidx.compose.ui.graphics.toArgb
 import com.cooper.lithic.core.design.lithicColorScheme
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.core.view.WindowCompat
@@ -42,30 +39,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import com.cooper.lithic.data.backup.BackupExportService
 import com.cooper.lithic.data.backup.RestoreCoordinator
-import com.cooper.lithic.data.repository.MilestoneNoticeRef
-import com.cooper.lithic.data.repository.MilestoneRepository
-import com.cooper.lithic.domain.reminder.MilestoneCandidate
-import com.cooper.lithic.platform.notification.MilestoneNoticeIntents
-import com.cooper.lithic.platform.notification.NotificationPublisher
 import java.time.ZoneId
 
 class MainActivity : ComponentActivity() {
-    private var milestoneRequest by mutableStateOf<MilestoneOpenRequest?>(null)
-    private var noticeSequence = 0L
-
-    private fun receiveNotice(incoming: Intent?) {
-        if (incoming?.action != MilestoneNoticeIntents.ACTION) return
-        val reference = MilestoneNoticeIntents.read(incoming)
-        noticeSequence = Math.addExact(noticeSequence, 1)
-        milestoneRequest = MilestoneOpenRequest(noticeSequence, reference, reference == null)
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        setIntent(intent)
-        receiveNotice(intent)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -73,13 +49,6 @@ class MainActivity : ComponentActivity() {
         // while retaining its original initialization and failure semantics.
         val container = (application as LithicApplication).startOwnerForUi(ZoneId.systemDefault())
         val appearance = AppearanceProvider.get(application as LithicApplication)
-        receiveNotice(intent)
-        val resolveMilestone: suspend (MilestoneNoticeRef) -> List<MilestoneCandidate> = { reference ->
-            val generation = container.openStorage()
-            MilestoneRepository(generation, {
-                (container.storageState.value as? StorageInitializationState.Ready)?.generation === generation
-            }, NotificationPublisher(applicationContext)).resolve(reference)
-        }
         val holder = ViewModelProvider(this, viewModelFactory {
             initializer { LedgerUiStateHolder(container.storageState) }
         })[LedgerUiStateHolder::class.java]
@@ -147,8 +116,7 @@ class MainActivity : ComponentActivity() {
                     backupState = backupState, onExportBackup = export, onCancelBackup = backups::cancelExport,
                     restoreState = restoreState, onRestoreBackup = restore, onCancelRestore = restores::cancelValidation,
                     onConfirmRestore = restores::confirmOverwrite, onDiscardRestore = restores::discardPreview,
-                    inspectionState = inspectionState, onInspectBackup = inspect, onCancelInspection = inspections::cancelCheck,
-                    milestoneRequest = milestoneRequest, resolveMilestone = resolveMilestone)
+                    inspectionState = inspectionState, onInspectBackup = inspect, onCancelInspection = inspections::cancelCheck)
             }
             }
         }

@@ -117,6 +117,7 @@ import com.cooper.lithic.domain.reminder.MilestoneCandidate
 import com.cooper.lithic.domain.reminder.MilestoneOwnerType
 import com.cooper.lithic.feature.reminder.MilestoneSourcesScreen
 import com.cooper.lithic.feature.reminder.InvalidMilestoneNoticeScreen
+import com.cooper.lithic.platform.notification.ReminderCapability
 import kotlinx.coroutines.flow.merge
 import kotlinx.serialization.Serializable
 
@@ -277,6 +278,7 @@ internal fun LithicNavigation(
         }
     }
     LaunchedEffect(milestoneRequest?.identity, restoreState.phase) {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return@LaunchedEffect
         val request = milestoneRequest ?: return@LaunchedEffect
         if (handledNotice == request.identity || restoreState.phase == RestoreUiPhase.RESTORING) return@LaunchedEffect
         handledNotice = request.identity
@@ -514,9 +516,13 @@ internal fun LithicNavigation(
                     entry<CalculationExplanation> { CalculationExplanationScreen(onBack) }
                     entry<AboutLithic> { AboutLithicEntry(onBack) }
                     entry<NotificationSettings> { NotificationDeferredScreen(onBack) }
-                    entry<InvalidMilestoneNotice> { InvalidMilestoneNoticeScreen(onBack) }
+                    entry<InvalidMilestoneNotice> {
+                        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) NotificationDeferredScreen(onBack)
+                        else InvalidMilestoneNoticeScreen(onBack)
+                    }
                     entry<MilestoneSources> { route ->
-                        if (resolveMilestone == null) InvalidMilestoneNoticeScreen(onBack)
+                        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) NotificationDeferredScreen(onBack)
+                        else if (resolveMilestone == null) InvalidMilestoneNoticeScreen(onBack)
                         else MilestoneSourcesScreen(route.reference(), milestoneChanges, resolveMilestone,
                             openSingle = autoOpenNotice == route, onSingleHandled = { autoOpenNotice = null },
                             onOpen = { item -> requestLeave(canonicalBackStack(

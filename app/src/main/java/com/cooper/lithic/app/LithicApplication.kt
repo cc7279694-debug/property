@@ -2,9 +2,7 @@ package com.cooper.lithic.app
 
 import android.app.Application
 import android.os.Build
-import android.util.Log
 import androidx.work.Configuration
-import com.cooper.lithic.platform.notification.ReminderLegacyCancellation
 import com.cooper.lithic.platform.notification.ReminderWorkerFactory
 import java.io.FileInputStream
 import java.time.ZoneId
@@ -15,8 +13,7 @@ class LithicApplication : Application(), Configuration.Provider {
     private val ownerBootstrap = CoreOwnerBootstrap(
         createOwner = { AppContainer(this) },
         startOwner = { owner, zone -> owner.start(zone) },
-        uiStartAction = { ReminderLegacyCancellation.start(this) },
-        onUiActionFailure = { Log.e("LITHIC_REMINDER", "Legacy cancellation outcome unknown") },
+        uiStartAction = {},
     )
     val appContainer: AppContainer
         get() {
@@ -38,8 +35,8 @@ class LithicApplication : Application(), Configuration.Provider {
     override fun onCreate() {
         super.onCreate()
         if (processRole != AppProcessRole.MAIN) return
-        // Background-only cold starts neither create the owner nor reissue cancellation.
-        // The normal activity starts the owner and requests bounded legacy cleanup.
+        // Background-only cold starts do not create the owner or mutate WorkManager work.
+        // The normal activity starts the owner explicitly.
         ownerBootstrap.coldStart()
     }
 

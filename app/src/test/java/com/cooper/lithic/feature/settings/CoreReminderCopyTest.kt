@@ -10,4 +10,9 @@ class CoreReminderCopyTest {
         assertTrue(copy.contains("当前不会发送通知"))
         assertTrue(copy.contains("不会自动取消服务商扣费"))
     }
+
+    @Test fun deferred_reminder_information_identifies_v1_1() {
+        val copy = productSafetyExplanation.flatMap { it.paragraphs }.joinToString()
+        assertTrue(copy.contains("V1.1"))
+    }
 }
