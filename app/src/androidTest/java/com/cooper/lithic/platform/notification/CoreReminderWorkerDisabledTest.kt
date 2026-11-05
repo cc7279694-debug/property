@@ -77,4 +77,21 @@ class CoreReminderWorkerDisabledTest {
     @Test fun old_milestone_reconcile_exits_before_opening_owner() = assertDisabled(ReminderWorker.MILESTONE_RECONCILE)
     @Test fun old_publish_exits_before_opening_owner() = assertDisabled(ReminderWorker.PUBLISH)
     @Test fun old_milestone_publish_exits_before_opening_owner() = assertDisabled(ReminderWorker.MILESTONE_PUBLISH)
+
+    @Test fun real_factory_and_each_disabled_mode_never_resolve_the_owner_provider() = runBlocking {
+        var ownerRequests = 0
+        val factory = ReminderWorkerFactory {
+            ownerRequests++
+            error("Disabled Worker must not resolve its owner provider")
+        }
+        for (mode in listOf(ReminderWorker.RECONCILE, ReminderWorker.MILESTONE_RECONCILE,
+            ReminderWorker.PUBLISH, ReminderWorker.MILESTONE_PUBLISH)) {
+            val disabled = TestListenableWorkerBuilder<ReminderWorker>(context)
+                .setInputData(workDataOf(ReminderWorker.MODE to mode))
+                .setWorkerFactory(factory)
+                .build()
+            assertEquals(ListenableWorker.Result.success(), disabled.doWork())
+            assertEquals(0, ownerRequests)
+        }
+    }
 }

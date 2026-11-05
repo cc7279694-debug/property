@@ -1,0 +1,50 @@
+Compiled from "DependencyDao.kt"
+public final class androidx.work.impl.model.DependencyDaoKt {
+  public static final java.util.List<java.lang.String> getAllDependentWork(androidx.work.impl.model.DependencyDao, java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc           #10                 // String <this>
+       3: invokestatic  #16                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_1
+       7: ldc           #18                 // String id
+       9: invokestatic  #16                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: new           #20                 // class java/util/LinkedHashSet
+      15: dup
+      16: invokespecial #24                 // Method java/util/LinkedHashSet."<init>":()V
+      19: checkcast     #26                 // class java/util/Set
+      22: astore_2
+      23: aload_0
+      24: aload_1
+      25: invokeinterface #32,  2           // InterfaceMethod androidx/work/impl/model/DependencyDao.getDependentWorkIds:(Ljava/lang/String;)Ljava/util/List;
+      30: checkcast     #34                 // class java/util/Collection
+      33: invokestatic  #40                 // Method kotlin/collections/CollectionsKt.toMutableList:(Ljava/util/Collection;)Ljava/util/List;
+      36: astore_3
+      37: aload_3
+      38: checkcast     #34                 // class java/util/Collection
+      41: invokeinterface #44,  1           // InterfaceMethod java/util/Collection.isEmpty:()Z
+      46: ifne          53
+      49: iconst_1
+      50: goto          54
+      53: iconst_0
+      54: ifeq          96
+      57: aload_3
+      58: invokestatic  #48                 // Method kotlin/collections/CollectionsKt.removeLast:(Ljava/util/List;)Ljava/lang/Object;
+      61: checkcast     #50                 // class java/lang/String
+      64: astore        4
+      66: aload_2
+      67: aload         4
+      69: invokeinterface #54,  2           // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+      74: pop
+      75: aload_3
+      76: aload_0
+      77: aload         4
+      79: invokeinterface #32,  2           // InterfaceMethod androidx/work/impl/model/DependencyDao.getDependentWorkIds:(Ljava/lang/String;)Ljava/util/List;
+      84: checkcast     #34                 // class java/util/Collection
+      87: invokeinterface #60,  2           // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+      92: pop
+      93: goto          37
+      96: aload_2
+      97: checkcast     #62                 // class java/lang/Iterable
+     100: invokestatic  #66                 // Method kotlin/collections/CollectionsKt.toList:(Ljava/lang/Iterable;)Ljava/util/List;
+     103: areturn
+}

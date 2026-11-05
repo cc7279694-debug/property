@@ -12,15 +12,23 @@ import com.cooper.lithic.data.repository.ReminderDispatchResult
 import kotlinx.coroutines.CancellationException
 import java.time.Clock
 
-class ReminderWorker(context: Context, parameters: WorkerParameters, private val container: AppContainer,
+class ReminderWorker(context: Context, parameters: WorkerParameters, private val containerProvider: () -> AppContainer,
     private val publisher: ReminderPublisher = NotificationPublisher(context),
     private val clock: Clock = Clock.systemUTC(),
     private val milestonePublisher: MilestonePublisher = NotificationPublisher(context)) : CoroutineWorker(context, parameters) {
+    // Compatibility for existing isolated worker tests. Supplying an owner directly must
+    // never cause the production WorkManager factory to evaluate its owner provider.
+    constructor(context: Context, parameters: WorkerParameters, container: AppContainer,
+        publisher: ReminderPublisher = NotificationPublisher(context), clock: Clock = Clock.systemUTC(),
+        milestonePublisher: MilestonePublisher = NotificationPublisher(context)) :
+        this(context, parameters, { container }, publisher, clock, milestonePublisher)
+
     override suspend fun doWork(): Result {
         // Persistent WorkManager requests from older versions can still be delivered after
         // upgrading. The core edition must exit before reading any ledger or receipt.
         if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return Result.success()
         return try {
+            val container = containerProvider()
             val generation = container.openStorage()
             fun current() = (container.storageState.value as? StorageInitializationState.Ready)?.generation === generation
             when (inputData.getString(MODE)) {
@@ -57,7 +65,9 @@ class ReminderWorker(context: Context, parameters: WorkerParameters, private val
     }
 }
 
-class ReminderWorkerFactory(private val container: AppContainer) : WorkerFactory() {
+class ReminderWorkerFactory(private val containerProvider: () -> AppContainer) : WorkerFactory() {
+    constructor(container: AppContainer) : this({ container })
+
     override fun createWorker(appContext: Context, workerClassName: String, workerParameters: WorkerParameters): ListenableWorker? =
-        if (workerClassName == ReminderWorker::class.java.name) ReminderWorker(appContext, workerParameters, container) else null
+        if (workerClassName == ReminderWorker::class.java.name) ReminderWorker(appContext, workerParameters, containerProvider) else null
 }

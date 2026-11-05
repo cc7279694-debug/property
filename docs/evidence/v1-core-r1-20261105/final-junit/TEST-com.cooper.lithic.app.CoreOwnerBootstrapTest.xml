@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.cooper.lithic.app.CoreOwnerBootstrapTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-05T07:26:49.804Z" hostname="WHOCARE" time="0.046">
+  <properties/>
+  <testcase name="ui_start_failure_is_propagated_without_creating_another_owner" classname="com.cooper.lithic.app.CoreOwnerBootstrapTest" time="0.011"/>
+  <testcase name="cold_start_neither_cancels_work_nor_constructs_or_starts_an_owner" classname="com.cooper.lithic.app.CoreOwnerBootstrapTest" time="0.004"/>
+  <testcase name="cancellation_start_failure_is_reported_without_blocking_the_owner" classname="com.cooper.lithic.app.CoreOwnerBootstrapTest" time="0.003"/>
+  <testcase name="repeated_ui_entry_starts_production_cancellation_runner_only_once" classname="com.cooper.lithic.app.CoreOwnerBootstrapTest" time="0.014"/>
+  <testcase name="obtaining_a_worker_provider_does_not_resolve_the_owner" classname="com.cooper.lithic.app.CoreOwnerBootstrapTest" time="0.002"/>
+  <testcase name="concurrent_ui_entry_does_not_create_multiple_owners" classname="com.cooper.lithic.app.CoreOwnerBootstrapTest" time="0.007"/>
+  <testcase name="cancellation_start_failure_is_not_retried_on_later_ui_entry" classname="com.cooper.lithic.app.CoreOwnerBootstrapTest" time="0.001"/>
+  <testcase name="repeated_ui_entry_starts_the_same_owner_with_the_requested_zone" classname="com.cooper.lithic.app.CoreOwnerBootstrapTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

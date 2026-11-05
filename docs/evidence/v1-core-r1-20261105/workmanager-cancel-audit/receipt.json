@@ -1,0 +1,62 @@
+{
+  "timestampUtc": "2026-11-05T07:10:36.501885+00:00",
+  "jar": "C:\\Users\\CDD\\.gradle\\caches\\8.14.3\\transforms\\41b6199c8f61701d75218454511da8af\\transformed\\work-runtime-2.12.0-runtime.jar",
+  "jarSha256": "5b65eb025a2b5d0db6afda00085113224bdc869019be622e1dc624ae8422cf91",
+  "aar": "C:\\Users\\CDD\\.gradle\\caches\\modules-2\\files-2.1\\androidx.work\\work-runtime\\2.12.0\\fb02bd5a882c33bc4fb3e73db7db776c1fbe8b5a\\work-runtime-2.12.0.aar",
+  "aarSha256": "a967c776d2c2ff9a7a541679d2fb51cefdc78d4010fcf68f3fdd4c57c29e89dc",
+  "commands": [
+    {
+      "name": "cancel-work-runnable",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-c",
+        "-p",
+        "-classpath",
+        "C:\\Users\\CDD\\.gradle\\caches\\8.14.3\\transforms\\41b6199c8f61701d75218454511da8af\\transformed\\work-runtime-2.12.0-runtime.jar",
+        "androidx.work.impl.utils.CancelWorkRunnable"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 28084,
+      "stdoutSha256": "24e7a0d9e5bcefa7aee0c7b104820a6399e2a311f606dc8dbb6dc8170c48873d",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "dependency-dao-kt",
+      "argv": [
+        "C:\\Users\\CDD\\AppData\\Local\\MirraAndroid\\jdk17\\jdk-17.0.20.1+1\\bin\\javap.exe",
+        "-c",
+        "-p",
+        "-classpath",
+        "C:\\Users\\CDD\\.gradle\\caches\\8.14.3\\transforms\\41b6199c8f61701d75218454511da8af\\transformed\\work-runtime-2.12.0-runtime.jar",
+        "androidx.work.impl.model.DependencyDaoKt"
+      ],
+      "exitCode": 0,
+      "stdoutBytes": 2842,
+      "stdoutSha256": "1958f48b00016cb89412d3584f5e7caed771e8169a77152100a6f451601f1365",
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "checks": {
+    "cancel_gets_all_dependents": true,
+    "cancel_sets_cancelled": true,
+    "name_selects_unfinished": true,
+    "tag_selects_unfinished": true,
+    "walks_dependents": true
+  },
+  "runtimeAndroid": "NOT_RUN",
+  "deviceOperations": 0,
+  "classesComparedToAar": [
+    {
+      "class": "androidx/work/impl/utils/CancelWorkRunnable.class",
+      "aarEqualsTransformed": true,
+      "sha256": "f05c3b8308b357fc27439889ae2e16de46f249b5b048fa87a958085f04891f56"
+    },
+    {
+      "class": "androidx/work/impl/model/DependencyDaoKt.class",
+      "aarEqualsTransformed": true,
+      "sha256": "d8b7d60bd3f348735ee566d4164f7c590598b1093d6757f70105e04e0a8c484c"
+    }
+  ]
+}

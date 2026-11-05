@@ -2,6 +2,7 @@ package com.cooper.lithic.app
 
 import android.app.Application
 import android.os.Build
+import android.util.Log
 import androidx.work.Configuration
 import com.cooper.lithic.platform.notification.ReminderLegacyCancellation
 import com.cooper.lithic.platform.notification.ReminderWorkerFactory
@@ -11,26 +12,35 @@ import java.time.ZoneId
 class LithicApplication : Application(), Configuration.Provider {
     /** Resolved before any owner/configuration access, including access before onCreate. */
     val processRole: AppProcessRole by lazy { resolveCurrentProcessRole() }
-    private val appContainerDelegate = lazy { AppContainer(this) }
+    private val ownerBootstrap = CoreOwnerBootstrap(
+        createOwner = { AppContainer(this) },
+        startOwner = { owner, zone -> owner.start(zone) },
+        uiStartAction = { ReminderLegacyCancellation.start(this) },
+        onUiActionFailure = { Log.e("LITHIC_REMINDER", "Legacy cancellation outcome unknown") },
+    )
     val appContainer: AppContainer
         get() {
             check(processRole == AppProcessRole.MAIN) { "Business storage is unavailable in this process" }
-            return appContainerDelegate.value
+            return ownerBootstrap.owner()
         }
-    internal val businessOwnerInitialized: Boolean get() = appContainerDelegate.isInitialized()
+    internal val businessOwnerInitialized: Boolean get() = ownerBootstrap.ownerInitialized
+
+    internal fun startOwnerForUi(zone: ZoneId): AppContainer {
+        check(processRole == AppProcessRole.MAIN) { "Business storage is unavailable in this process" }
+        return ownerBootstrap.startForUi(zone)
+    }
 
     override val workManagerConfiguration: Configuration
         get() {
             check(processRole == AppProcessRole.MAIN) { "Business scheduling is unavailable in this process" }
-            return Configuration.Builder().setWorkerFactory(ReminderWorkerFactory(appContainer)).build()
+            return Configuration.Builder().setWorkerFactory(ReminderWorkerFactory(ownerBootstrap.ownerProvider())).build()
         }
     override fun onCreate() {
         super.onCreate()
         if (processRole != AppProcessRole.MAIN) return
-        val recordZone = ZoneId.systemDefault()
-        appContainer.start(recordZone)
-        // Legacy jobs are cancelled independently; ledger startup never waits for them.
-        ReminderLegacyCancellation.start(this)
+        // Background-only cold starts neither create the owner nor reissue cancellation.
+        // The normal activity starts the owner and requests bounded legacy cleanup.
+        ownerBootstrap.coldStart()
     }
 
     private fun resolveCurrentProcessRole(): AppProcessRole = try {

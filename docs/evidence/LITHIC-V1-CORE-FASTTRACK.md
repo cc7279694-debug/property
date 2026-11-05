@@ -1,5 +1,17 @@
 # LITHIC V1 核心版 — 提醒延期与体验候选
 
+## V1-CORE-R1 冷启动修复（2026-11-05）
+
+**状态：CORE_PREVIEW19_BLOCKED。** 从 `a5e40f27fea3649b2e0e92bbee8bb9ec5d390151` 继续，未合并 RC4。`LithicApplication` 的后台冷启动不创建 Owner；WorkManager Configuration 只取得惰性 provider；禁用 Worker 在求值 provider 前退出。`MainActivity` 调用 `startOwnerForUi`，使用同一个原 `AppContainer` 和它原有的幂等 `start`。Owner/generation、Room5、backup4 与恢复实现未修改。系统冷进程不发起旧任务清理；UI 路径才在后台尝试本进程一次，普通同步异常记录 UNKNOWN，不阻断账本启动。系统重建新进程后仍可能再次尝试，无法宣称跨进程结果已收口。
+
+桌面定向验证最终 **167 项 JVM PASS，0 失败/错误/跳过**，包含生产 `CoreOwnerBootstrap` 的模拟冷启动、惰性 provider、重复/并发 UI 入口、取消入口失败及真实 `AppContainer` 合成失败与重复启动；生产 Kotlin、AndroidTest Kotlin 编译及 Lint exit 0，Lint **0 错误、20 警告**。首次源码阶段 166 项 PASS，随后审查发现同进程同步异常后的重试及主线程准备问题，保留[首轮日志](v1-core-r1-20261105/verification.log)、[首轮测试](v1-core-r1-20261105/first-junit/)和[首轮 Lint](v1-core-r1-20261105/first-lint.xml)，补修后[最终日志](v1-core-r1-20261105/verification-final.log)、[最终测试](v1-core-r1-20261105/final-junit/)和[最终 Lint](v1-core-r1-20261105/final-lint.xml)另存。最终[源码输入 SHA](v1-core-r1-20261105/source-inputs.json)经复核未变。JVM 注入模拟与实际 Android Application/Worker/Activity 启动不同；后者、真实恢复、系统任务取消与通知均 **NOT_RUN / UNKNOWN**。原 `AppContainerTest.actual_application_onCreate_starts_its_private_default_storage` 和直接依赖旧 Application 启动的历史测试未改，其原启动时序与本轮新授权不一致，实际运行 NOT_RUN。
+
+**未通过的安全门禁：**已保留的三个唯一名称和两个专属 tag 取消使用 WorkManager 2.12.0；[本地库原始字节码与 AAR 类核验](v1-core-r1-20261105/workmanager-cancel-audit/receipt.json)证明其按名称/tag取消会级联取消未完成的依赖后继。产品源码历史未发现非提醒依赖链，但实际设备历史 WorkManager 数据拓扑 UNKNOWN；若非提醒任务依赖旧提醒任务，现实现会取消该后继。因此不能满足本轮“不误伤其他 WorkManager 任务”的无条件门禁，也不能把五个目标的 JVM fake 测试当系统隔离证明。准备了隔离 AndroidTest 源码，但既定测试身份尚未配置、实际未运行。此项为平台行为与现有取消合同的冲突，不代表已观察到用户任务损失。
+
+因此未将 Private Trial 改为 code35，未构建或归档 Preview19，也未执行 APK Manifest/DEX/证书新包审计。等待独立审查安全取消策略后再决定后续；不得在未解决该门禁时以编译或测试数量宣布候选可用。测试后[36份历史 APK 的大小及 SHA](v1-core-r1-20261105/protected-apks.json)均与原记录一致；本轮未操作 ADB、手机、模拟器或用户数据。V1_RELEASE_NO_GO、STRICT_JPEG_IMPORT_BLOCKED、ANDROID_ISOLATION_RUNTIME_PENDING 保持。
+
+---
+
 2026-11-05。状态：**TARGETED_CHECKS_PASS / CORE_PREVIEW19_BLOCKED**。依据用户提交的加速任务，从 Preview18 基线 `b828d2ddd1d4fccec47885fa35c8fb6d2236aa0d` 建立 `codex/v1-core-fasttrack-no-reminders`；基线 App 树 `fa84443f0569427390767fbc5df0d7f43b3a899a` 与 Preview18 构建记录一致。RC4 `354b99d` 不是基线祖先，未合并、挑拣或复制 RC4 协调器/Owner Barrier。
 
 ## 已准备的源码

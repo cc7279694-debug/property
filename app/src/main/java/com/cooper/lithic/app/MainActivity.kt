@@ -47,6 +47,7 @@ import com.cooper.lithic.data.repository.MilestoneRepository
 import com.cooper.lithic.domain.reminder.MilestoneCandidate
 import com.cooper.lithic.platform.notification.MilestoneNoticeIntents
 import com.cooper.lithic.platform.notification.NotificationPublisher
+import java.time.ZoneId
 
 class MainActivity : ComponentActivity() {
     private var milestoneRequest by mutableStateOf<MilestoneOpenRequest?>(null)
@@ -68,7 +69,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val container = (application as LithicApplication).appContainer
+        // AppContainer.start is idempotent: activity recreation reuses the same owner
+        // while retaining its original initialization and failure semantics.
+        val container = (application as LithicApplication).startOwnerForUi(ZoneId.systemDefault())
         val appearance = AppearanceProvider.get(application as LithicApplication)
         receiveNotice(intent)
         val resolveMilestone: suspend (MilestoneNoticeRef) -> List<MilestoneCandidate> = { reference ->
