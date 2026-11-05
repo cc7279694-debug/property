@@ -17,6 +17,7 @@ import kotlinx.coroutines.launch
 class ReminderRuntime(private val context: Context, private val container: AppContainer) {
     private val scope=CoroutineScope(SupervisorJob()+Dispatchers.IO)
     fun start() {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return
         try { NotificationPublisher(context).ensureChannel(); ReminderScheduling.start(context) }
         catch (_: Exception) { Log.e("LITHIC_REMINDER","Reminder scheduling not initialized") }
         scope.launch {

@@ -17,6 +17,9 @@ class ReminderWorker(context: Context, parameters: WorkerParameters, private val
     private val clock: Clock = Clock.systemUTC(),
     private val milestonePublisher: MilestonePublisher = NotificationPublisher(context)) : CoroutineWorker(context, parameters) {
     override suspend fun doWork(): Result {
+        // Persistent WorkManager requests from older versions can still be delivered after
+        // upgrading. The core edition must exit before reading any ledger or receipt.
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return Result.success()
         return try {
             val generation = container.openStorage()
             fun current() = (container.storageState.value as? StorageInitializationState.Ready)?.generation === generation

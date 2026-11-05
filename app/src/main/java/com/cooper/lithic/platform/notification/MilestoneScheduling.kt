@@ -19,15 +19,17 @@ object MilestoneScheduling {
     private val mutex = Mutex()
     internal suspend fun reconcile(context: Context, generation: ManagedGeneration, isCurrent: () -> Boolean,
         clock: Clock = Clock.systemUTC(),
-        publisher: MilestonePublisher = NotificationPublisher(context).also { it.ensureChannel() }) = mutex.withLock {
+        publisher: MilestonePublisher? = null) = mutex.withLock {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return@withLock
         val manager = WorkManager.getInstance(context)
-        val input = MilestoneRepository(generation, isCurrent, publisher, clock).schedulingSnapshot()
+        val activePublisher = publisher ?: NotificationPublisher(context).also { it.ensureChannel() }
+        val input = MilestoneRepository(generation, isCurrent, activePublisher, clock).schedulingSnapshot()
         val observed = clock.instant().atZone(input.recordZone)
         val eligibleAt = if (observed.hour < 9) observed.toLocalDate().atTime(9, 0).atZone(input.recordZone) else observed
         val candidates = MilestonePlanner.evaluate(input.projects, input.subscriptions, eligibleAt,
             input.watermarks, input.receipts.map { it.logicalKey }.toSet(), input.preferences.milestoneEnabled)
         val name = "lithic-milestone-${generation.id}-${observed.toLocalDate()}"
-        val desired = if (candidates.isNotEmpty() && publisher.canPublish()) name else null
+        val desired = if (candidates.isNotEmpty() && activePublisher.canPublish()) name else null
         if (!isCurrent()) return@withLock
         for (work in manager.getWorkInfosByTagFlow(CANDIDATE_TAG).first()) {
             val oldName = work.tags.singleOrNull { it.startsWith(NAME_TAG) }?.removePrefix(NAME_TAG)

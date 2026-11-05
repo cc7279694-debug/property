@@ -101,9 +101,7 @@ import com.cooper.lithic.feature.settings.SettingsShell
 import com.cooper.lithic.feature.settings.AboutLithicEntry
 import com.cooper.lithic.feature.settings.CalculationExplanationScreen
 import com.cooper.lithic.core.design.UiFeedbackText
-import com.cooper.lithic.feature.settings.NotificationSettingsEntry
-import com.cooper.lithic.feature.settings.NotificationSettingsViewModel
-import com.cooper.lithic.platform.notification.ReminderScheduling
+import com.cooper.lithic.feature.settings.NotificationDeferredScreen
 import androidx.compose.ui.platform.LocalContext
 import com.cooper.lithic.feature.settings.BackupExportUiState
 import com.cooper.lithic.feature.settings.BackupRestoreUiState
@@ -212,15 +210,6 @@ internal fun LithicNavigation(
     LaunchedEffect(routes.last(), photoModel) { photoModel?.bindProject((routes.last() as? ProjectDetail)?.id) }
     fun guardedLeaveDecision(vararg decisions: LeaveDecision): LeaveDecision =
         globalLeaveDecision(*decisions, photoModel?.leaveDecision() ?: LeaveDecision.ALLOW)
-    val notificationModel = if (NotificationSettings in routes) state.settingsStore?.let { store ->
-        remember(generationScope, session, store) {
-            ViewModelProvider(generationScope, viewModelFactory {
-                initializer { NotificationSettingsViewModel(store) {
-                    if (context.applicationContext is LithicApplication) ReminderScheduling.request(context)
-                } }
-            })[NotificationSettingsViewModel::class.java]
-        }
-    } else null
     // Avoid full-ledger ranking until the user first opens review. The generation scope owns
     // the model; owner replacement clears it before any old result can be presented.
     val reviewModel = if (LongTermReview in routes) state.rankingRepository?.let { repository ->
@@ -515,7 +504,6 @@ internal fun LithicNavigation(
                         restoreState = restoreState, onRestoreBackup = onRestoreBackup?.let { action -> { if (photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else action() } }, onCancelRestore = onCancelRestore,
                         onConfirmRestore = { if (inspectionState.busy || photoModel?.leaveDecision()?.let { it != LeaveDecision.ALLOW } == true) pendingWarning = true else onConfirmRestore() }, onDiscardRestore = onDiscardRestore,
                         onManageCategories = if (categoryModel != null) ({ requestLeave(canonicalBackStack(CategoryManagement)) }) else null,
-                        onNotificationClick = if (state.settingsStore != null) ({ requestLeave(canonicalBackStack(NotificationSettings)) }) else null,
                         onCalculationExplanation = { requestLeave(canonicalBackStack(CalculationExplanation)) },
                         onAboutLithic = { requestLeave(canonicalBackStack(AboutLithic)) },
                         inspectionState = inspectionState,
@@ -525,9 +513,7 @@ internal fun LithicNavigation(
                         photoStorageState = photoStorageState, onRefreshPhotoStorage = photoStorageModel?.let { it::refresh }) }
                     entry<CalculationExplanation> { CalculationExplanationScreen(onBack) }
                     entry<AboutLithic> { AboutLithicEntry(onBack) }
-                    entry<NotificationSettings> {
-                        if (notificationModel != null) NotificationSettingsEntry(notificationModel, onBack)
-                    }
+                    entry<NotificationSettings> { NotificationDeferredScreen(onBack) }
                     entry<InvalidMilestoneNotice> { InvalidMilestoneNoticeScreen(onBack) }
                     entry<MilestoneSources> { route ->
                         if (resolveMilestone == null) InvalidMilestoneNoticeScreen(onBack)

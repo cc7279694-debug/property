@@ -26,6 +26,7 @@ object ReminderScheduling {
     private const val NAME_TAG="lithic-task:"
     private val reconciliation = Mutex()
     fun start(context: Context) {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return
         WorkManager.getInstance(context).enqueueUniquePeriodicWork("lithic-renewal-daily-v1", ExistingPeriodicWorkPolicy.KEEP,
             PeriodicWorkRequestBuilder<ReminderWorker>(24,TimeUnit.HOURS)
                 .setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.RECONCILE))
@@ -33,15 +34,18 @@ object ReminderScheduling {
         request(context)
     }
     fun request(context: Context) {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return
         WorkManager.getInstance(context).enqueueUniqueWork("lithic-renewal-reconcile-v1", ExistingWorkPolicy.REPLACE,
             OneTimeWorkRequestBuilder<ReminderWorker>().setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.RECONCILE)).build())
     }
     internal suspend fun requestMilestones(context: Context) {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return
         WorkManager.getInstance(context).enqueueUniqueWork("lithic-milestone-reconcile-v1", ExistingWorkPolicy.REPLACE,
             OneTimeWorkRequestBuilder<ReminderWorker>().setInputData(workDataOf(ReminderWorker.MODE to ReminderWorker.MILESTONE_RECONCILE)).build()).await()
     }
     internal suspend fun reconcile(context: Context, generation: ManagedGeneration, isCurrent: () -> Boolean,
         clock: Clock = Clock.systemUTC()) = reconciliation.withLock {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return@withLock
         val manager = WorkManager.getInstance(context)
         val publisher = NotificationPublisher(context).also { it.ensureChannel() }
         val input = ReminderRepository(generation,isCurrent,publisher,clock).schedulingSnapshot()

@@ -3,7 +3,7 @@ package com.cooper.lithic.app
 import android.app.Application
 import android.os.Build
 import androidx.work.Configuration
-import com.cooper.lithic.platform.notification.ReminderRuntime
+import com.cooper.lithic.platform.notification.ReminderLegacyCancellation
 import com.cooper.lithic.platform.notification.ReminderWorkerFactory
 import java.io.FileInputStream
 import java.time.ZoneId
@@ -24,14 +24,13 @@ class LithicApplication : Application(), Configuration.Provider {
             check(processRole == AppProcessRole.MAIN) { "Business scheduling is unavailable in this process" }
             return Configuration.Builder().setWorkerFactory(ReminderWorkerFactory(appContainer)).build()
         }
-    private lateinit var reminders: ReminderRuntime
-
     override fun onCreate() {
         super.onCreate()
         if (processRole != AppProcessRole.MAIN) return
         val recordZone = ZoneId.systemDefault()
         appContainer.start(recordZone)
-        reminders = ReminderRuntime(this, appContainer).also { it.start() }
+        // Legacy jobs are cancelled independently; ledger startup never waits for them.
+        ReminderLegacyCancellation.start(this)
     }
 
     private fun resolveCurrentProcessRole(): AppProcessRole = try {

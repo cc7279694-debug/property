@@ -17,6 +17,7 @@ import com.cooper.lithic.domain.reminder.RenewalReminderCandidate
 class NotificationPublisher(private val context: Context) : ReminderPublisher, MilestonePublisher {
     private val manager get() = context.getSystemService(NotificationManager::class.java)
     fun ensureChannel() {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return
         manager.createNotificationChannel(NotificationChannel(CHANNEL, "续费与里程碑提醒", NotificationManager.IMPORTANCE_DEFAULT).apply {
             description = "依据砺石保存的日期和实际时间事实尽力提醒，不保证准点。"
         })
@@ -26,8 +27,9 @@ class NotificationPublisher(private val context: Context) : ReminderPublisher, M
         return NotificationAccess(Build.VERSION.SDK_INT >= 33, runtime, manager.areNotificationsEnabled(),
             manager.getNotificationChannel(CHANNEL)?.importance != NotificationManager.IMPORTANCE_NONE)
     }
-    override fun canPublish(): Boolean = access().allowed
+    override fun canPublish(): Boolean = ReminderCapability.AUTOMATIC_NOTIFICATIONS && access().allowed
     override fun publish(candidate: RenewalReminderCandidate): Boolean {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return false
         ensureChannel()
         if (!canPublish()) return false
         val open = PendingIntent.getActivity(context, 0, Intent(context, MainActivity::class.java),
@@ -42,6 +44,7 @@ class NotificationPublisher(private val context: Context) : ReminderPublisher, M
         return true
     }
     override fun publish(summary: com.cooper.lithic.data.repository.MilestoneSummary): Boolean {
+        if (!ReminderCapability.AUTOMATIC_NOTIFICATIONS) return false
         ensureChannel()
         if (!canPublish()) return false
         val open = PendingIntent.getActivity(context, 21, MilestoneNoticeIntents.create(context, summary.reference),

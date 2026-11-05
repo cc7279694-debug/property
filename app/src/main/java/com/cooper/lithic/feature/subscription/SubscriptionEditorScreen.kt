@@ -136,7 +136,7 @@ internal fun SubscriptionPaymentFields(
             Text("这笔付款对应的真实服务覆盖起点，可以晚于付款日期。预付未来周期要到生效日才影响当前套餐。",
                 Modifier.testTag("$prefix-effective-explanation"), style = MaterialTheme.typography.bodyMedium)
             Text("付费到期边界当天不包含在前一期。")
-            Text("提醒到期日独立于付费覆盖，修改它不会延长服务。在“设置”开启续费提醒并允许系统通知后，应用会依据此日期尽力提醒，不保证准点；这不代表服务商已经扣款。",
+            Text("提醒到期日独立于付费覆盖，修改它不会延长服务。当前即使允许系统通知也不会发送自动提醒，自动提醒将在后续版本提供；未来提醒不保证准点，这不代表服务商已经扣款。",
                 Modifier.testTag("$prefix-reminder-explanation"), style = MaterialTheme.typography.bodyMedium)
         }
     }
