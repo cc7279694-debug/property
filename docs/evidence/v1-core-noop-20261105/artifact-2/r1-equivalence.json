@@ -1,0 +1,168 @@
+{
+  "status": "UNCHANGED_FROM_ACCEPTED_PREVIEW16",
+  "copySelectedAndInspectionFlowInstructionsLabelsAndCatchesIdentical": true,
+  "ignoredOnlySourceLineLocalAndBlankCommentMetadata": true,
+  "evidence": {
+    "app": {
+      "copyEvidence": {
+        "path": "docs/evidence/v1-core-noop-20261105/artifact-2/app-copySelected.smali",
+        "bytes": 10983,
+        "sha256": "6030705d3817615e623b326f869af4bbeeac413f8c10f8701be46c27acb5a066"
+      },
+      "catches": [
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_1",
+          "endLabel": ":try_end_b",
+          "targetLabel": ":catch_95",
+          "handlerBody": "move-exception v0\nmove-object/from16 v4, p2\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_95",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_1",
+          "endLabel": ":try_end_b",
+          "targetLabel": ":catch_8c",
+          "handlerBody": "move-exception v0\nmove-object/from16 v4, p2\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_8c",
+            ":goto_8f"
+          ]
+        },
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_6d",
+          "endLabel": ":try_end_73",
+          "targetLabel": ":catch_8a",
+          "handlerBody": "move-exception v0\ngoto :goto_98\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_8a",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_6d",
+          "endLabel": ":try_end_73",
+          "targetLabel": ":catch_88",
+          "handlerBody": "move-exception v0\ngoto :goto_8f\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_88",
+            ":goto_8f"
+          ]
+        },
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_84",
+          "endLabel": ":try_end_88",
+          "targetLabel": ":catch_8a",
+          "handlerBody": "move-exception v0\ngoto :goto_98\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_8a",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_84",
+          "endLabel": ":try_end_88",
+          "targetLabel": ":catch_88",
+          "handlerBody": "move-exception v0\ngoto :goto_8f\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_88",
+            ":goto_8f"
+          ]
+        }
+      ],
+      "flowEvidence": {
+        "path": "docs/evidence/v1-core-noop-20261105/artifact-2/app-inspection-flow.smali",
+        "bytes": 34764,
+        "sha256": "9ca9bbbe3a8899ed19c7f8971b38818d56f4e010ca2d0580b6d788b13bab300c"
+      }
+    },
+    "preview16": {
+      "copyEvidence": {
+        "path": "docs/evidence/v1-core-noop-20261105/artifact-2/preview16-copySelected.smali",
+        "bytes": 10983,
+        "sha256": "6030705d3817615e623b326f869af4bbeeac413f8c10f8701be46c27acb5a066"
+      },
+      "catches": [
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_1",
+          "endLabel": ":try_end_b",
+          "targetLabel": ":catch_95",
+          "handlerBody": "move-exception v0\nmove-object/from16 v4, p2\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_95",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_1",
+          "endLabel": ":try_end_b",
+          "targetLabel": ":catch_8c",
+          "handlerBody": "move-exception v0\nmove-object/from16 v4, p2\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_8c",
+            ":goto_8f"
+          ]
+        },
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_6d",
+          "endLabel": ":try_end_73",
+          "targetLabel": ":catch_8a",
+          "handlerBody": "move-exception v0\ngoto :goto_98\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_8a",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_6d",
+          "endLabel": ":try_end_73",
+          "targetLabel": ":catch_88",
+          "handlerBody": "move-exception v0\ngoto :goto_8f\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_88",
+            ":goto_8f"
+          ]
+        },
+        {
+          "type": "Ljava/util/concurrent/CancellationException;",
+          "startLabel": ":try_start_84",
+          "endLabel": ":try_end_88",
+          "targetLabel": ":catch_8a",
+          "handlerBody": "move-exception v0\ngoto :goto_98\nthrow v0\n",
+          "handlerTraceLabels": [
+            ":catch_8a",
+            ":goto_98"
+          ]
+        },
+        {
+          "type": "Ljava/lang/Exception;",
+          "startLabel": ":try_start_84",
+          "endLabel": ":try_end_88",
+          "targetLabel": ":catch_88",
+          "handlerBody": "move-exception v0\ngoto :goto_8f\nnew-instance v1, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;\ninvoke-direct {v1}, Lcom/cooper/lithic/data/backup/BackupInspectionService$InspectionUnavailable;-><init>()V\nthrow v1\n",
+          "handlerTraceLabels": [
+            ":catch_88",
+            ":goto_8f"
+          ]
+        }
+      ],
+      "flowEvidence": {
+        "path": "docs/evidence/v1-core-noop-20261105/artifact-2/preview16-inspection-flow.smali",
+        "bytes": 34764,
+        "sha256": "9ca9bbbe3a8899ed19c7f8971b38818d56f4e010ca2d0580b6d788b13bab300c"
+      }
+    }
+  },
+  "androidRuntimeClassification": "NOT_RUN"
+}

@@ -1,0 +1,22 @@
+{
+  "sourceCommit": "782f80ea5313742ae018da48a6eb534f0dc3bd7e",
+  "sourceAppGitTree": "54e3ee06daf9cfec8b7c2e49ff121618f21b6946",
+  "appInputStatusAtStart": "",
+  "argv": [
+    "--offline",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-daemon",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    "-I",
+    "docs/evidence/v1-core-noop-20261105/isolated-output.init.gradle",
+    "-PlithicPrivateTrial=true",
+    ":app:assembleDebug"
+  ],
+  "startedUtc": "2026-11-05T08:29:03.3352236Z",
+  "finishedUtc": "2026-11-05T08:33:00.0705696Z",
+  "freeKiBAtStart": 4835720,
+  "exitCode": 0,
+  "deviceOperations": 0,
+  "androidExecution": "NOT_RUN"
+}

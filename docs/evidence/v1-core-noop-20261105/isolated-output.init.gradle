@@ -1,0 +1,9 @@
+gradle.beforeProject { p ->
+    if (p.path == ':app') {
+        p.afterEvaluate {
+            def isTrial = p.providers.gradleProperty('lithicPrivateTrial').orNull == 'true'
+            p.layout.buildDirectory.set(p.layout.projectDirectory.dir(
+                isTrial ? 'build/v1-core-preview19' : 'build/v1-core-noop-check'))
+        }
+    }
+}

@@ -1,5 +1,26 @@
 # LITHIC V1 核心版 — 提醒延期与体验候选
 
+## V1 核心版 no-op 收口与 Preview19（2026-11-05）
+
+**CORE_PREVIEW19_READY_FOR_INDEPENDENT_REVIEW；正式发行仍为 NO-GO。** 基线 `02126a9513a1a397cae32868f38ca909d16d0796`，未合并 RC4。用户明确将自动提醒延期至 V1.1，并要求不再主动取消任何旧 WorkManager 任务：旧任务可能继续被系统唤醒，存在额外后台唤醒和电量开销；设备上的任务及其终结状态仍为 UNKNOWN。下方保留的 R1 取消方案和阻断是历史记录，不表示本次仍会调用它。
+
+- `LithicApplication` 冷启动与 WorkManager 配置只持有惰性 Owner provider；`MainActivity` 正常打开时启动原有同一 Owner。旧 `ReminderWorker` 保留并在取得 Owner 之前成功退出，四种旧 mode 均经同一入口。源码删除提醒入队和 WorkManager 取消调用；通知渠道与发布方法固定关闭。历史偏好、Receipt 和业务账本不主动删除或改写。
+- 用户确认旧提醒点击可按普通首页打开，首页因此仍会正常读取账本；不再解析旧提醒详情或跳转其记录。旧里程碑路由显示延期说明。真实 Android 启动、四种 mode、旧通知点击和系统通知行为均 **NOT_RUN**。
+- 171 项受影响 JVM 测试实际运行，0 失败、0 错误、0 跳过；首次 AndroidTest 编译因新增测试的两个导入错误失败，保留[首次日志](v1-core-noop-20261105/verification.log)，修正导入后[生产及 AndroidTest 源码编译和 Lint](v1-core-noop-20261105/verification-rerun.log)通过，Lint 0 错误、20 警告。[逐类测试结果](v1-core-noop-20261105/junit-summary.json)。AndroidTest 是编译而非运行。原提醒 Android 测试断言和历史 FAIL 保留；与现停用决策冲突的旧断言未运行。
+- 本次仅调整 Private Trial 至 code35 / `0.1.0-preview.19-debug`，构建输入提交 `782f80ea5313742ae018da48a6eb534f0dc3bd7e`、App 树 `54e3ee06daf9cfec8b7c2e49ff121618f21b6946`。[构建及源码绑定凭证](v1-core-noop-20261105/preview19-build-receipt.json) exit 0。Room5、backup4、金额/订阅规则、Owner/generation、恢复、照片数据层及图标/主题资源未改。
+- APK 静态检查确认正常 Application/MainActivity、WorkerFactory、Worker、无业务类直接 WorkManager 取消/入队调用、关闭的通知发布方法、签名、Manifest/权限及照片/备份/主题接线；[审计详情](v1-core-noop-20261105/artifact-2/identity.json)、[发布方法 DEX 检查](v1-core-noop-20261105/publisher-audit.json)。首次审计因脚本根目录错误未进入 APK 检查，已保留[原始失败](v1-core-noop-20261105/audit-console.log)，修正目录定位后重新审计通过。静态扫描不证明真实系统运行或不存在反射调用。
+- 唯一候选：`deliveries/lithic-preview-0.1.0-preview.19/Lithic-0.1.0-preview.19-debug.apk`，包名 `com.cooper.lithic.preview.debug`，20,506,559 字节，SHA-256 `34ef14ac074fe5afafdf9a554518671e576ea8c0d4144537e39195f0947cf2f6`，证书 SHA-256 `29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9`。[归档核验](v1-core-noop-20261105/archive-receipt.json)逐字节与构建产物一致；36 份历史 APK 在[构建前](v1-core-noop-20261105/protected-apks-before-build.json)和[归档后](v1-core-noop-20261105/protected-apks-after-archive.json)均与记录一致。
+
+| 发行决策 | 当前证据与范围 |
+| --- | --- |
+| 发行前必须验证 | Preview18→19 同包升级及数据保留；核心物品、订阅和照片；真实 SAF 备份与覆盖恢复、重开和异常中断；M22 适用离线、长历史、IME 和设备兼容；正式签名及 G1～G4；已开放照片功能相关的 Android 安全边界。 |
+| 延期，不等于通过 | 自动提醒及 RC4 协调器延期 V1.1；M20 历史系统通知 FAIL 和收口 UNKNOWN 保留。严格 JPEG 原图导入、历史照片永久删除/GC 与未完成的 C6 Android 隔离验证继续阻断或延期。 |
+| 继承已有证据 | 已接受的领域计算与 B1/B3 桌面验证不重复扩大；B1-QA A～H 以及 Preview17/18 用户反馈为 USER_REPORTED_MANUAL_PASS_WITH_NOTES，并非 Android 自动化或异常恢复通过。 |
+
+本轮未运行 ADB、手机、模拟器、真实 SAF、真实账本或 Android instrumentation；未安装 APK。`V1_RELEASE_NO_GO / STRICT_JPEG_IMPORT_BLOCKED / ANDROID_ISOLATION_RUNTIME_PENDING` 保持。
+
+---
+
 ## V1-CORE-R1 冷启动修复（2026-11-05）
 
 **状态：CORE_PREVIEW19_BLOCKED。** 从 `a5e40f27fea3649b2e0e92bbee8bb9ec5d390151` 继续，未合并 RC4。`LithicApplication` 的后台冷启动不创建 Owner；WorkManager Configuration 只取得惰性 provider；禁用 Worker 在求值 provider 前退出。`MainActivity` 调用 `startOwnerForUi`，使用同一个原 `AppContainer` 和它原有的幂等 `start`。Owner/generation、Room5、backup4 与恢复实现未修改。系统冷进程不发起旧任务清理；UI 路径才在后台尝试本进程一次，普通同步异常记录 UNKNOWN，不阻断账本启动。系统重建新进程后仍可能再次尝试，无法宣称跨进程结果已收口。

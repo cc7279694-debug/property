@@ -1,0 +1,257 @@
+.class public final Lcom/cooper/lithic/platform/notification/NotificationPublisher;
+.super Ljava/lang/Object;
+.source "NotificationPublisher.kt"
+
+# interfaces
+.implements Lcom/cooper/lithic/platform/notification/ReminderPublisher;
+.implements Lcom/cooper/lithic/platform/notification/MilestonePublisher;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/cooper/lithic/platform/notification/NotificationPublisher$Companion;
+    }
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000@\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0003\n\u0002\u0018\u0002\n\u0002\u0008\u0004\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\u0008\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0008\u0002\u0008\u0007\u0018\u0000 \u00172\u00020\u00012\u00020\u0002:\u0001\u0017B\u000f\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u00a2\u0006\u0004\u0008\u0005\u0010\u0006J\u0006\u0010\u000c\u001a\u00020\rJ\u0006\u0010\u000e\u001a\u00020\u000fJ\u0008\u0010\u0010\u001a\u00020\u0011H\u0016J\u0010\u0010\u0012\u001a\u00020\u00112\u0006\u0010\u0013\u001a\u00020\u0014H\u0016J\u0010\u0010\u0012\u001a\u00020\u00112\u0006\u0010\u0015\u001a\u00020\u0016H\u0016R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001c\u0010\u0007\u001a\n \t*\u0004\u0018\u00010\u00080\u00088BX\u0082\u0004\u00a2\u0006\u0006\u001a\u0004\u0008\n\u0010\u000b\u00a8\u0006\u0018"
+    }
+    d2 = {
+        "Lcom/cooper/lithic/platform/notification/NotificationPublisher;",
+        "Lcom/cooper/lithic/platform/notification/ReminderPublisher;",
+        "Lcom/cooper/lithic/platform/notification/MilestonePublisher;",
+        "context",
+        "Landroid/content/Context;",
+        "<init>",
+        "(Landroid/content/Context;)V",
+        "manager",
+        "Landroid/app/NotificationManager;",
+        "kotlin.jvm.PlatformType",
+        "getManager",
+        "()Landroid/app/NotificationManager;",
+        "ensureChannel",
+        "",
+        "access",
+        "Lcom/cooper/lithic/platform/notification/NotificationAccess;",
+        "canPublish",
+        "",
+        "publish",
+        "candidate",
+        "Lcom/cooper/lithic/domain/reminder/RenewalReminderCandidate;",
+        "summary",
+        "Lcom/cooper/lithic/data/repository/MilestoneSummary;",
+        "Companion",
+        "app_debug"
+    }
+    k = 0x1
+    mv = {
+        0x2,
+        0x3,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+
+# static fields
+.field public static final $stable:I
+
+.field public static final CHANNEL:Ljava/lang/String; = "lithic-renewals-v1"
+
+.field public static final Companion:Lcom/cooper/lithic/platform/notification/NotificationPublisher$Companion;
+
+
+# instance fields
+.field private final context:Landroid/content/Context;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 2
+
+    new-instance v0, Lcom/cooper/lithic/platform/notification/NotificationPublisher$Companion;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, v1}, Lcom/cooper/lithic/platform/notification/NotificationPublisher$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    sput-object v0, Lcom/cooper/lithic/platform/notification/NotificationPublisher;->Companion:Lcom/cooper/lithic/platform/notification/NotificationPublisher$Companion;
+
+    const/16 v0, 0x8
+
+    sput v0, Lcom/cooper/lithic/platform/notification/NotificationPublisher;->$stable:I
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;)V
+    .registers 3
+    .param p1, "context"    # Landroid/content/Context;
+
+    const-string v0, "context"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 17
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/cooper/lithic/platform/notification/NotificationPublisher;->context:Landroid/content/Context;
+
+    return-void
+.end method
+
+.method private final getManager()Landroid/app/NotificationManager;
+    .registers 3
+
+    .line 18
+    iget-object v0, p0, Lcom/cooper/lithic/platform/notification/NotificationPublisher;->context:Landroid/content/Context;
+
+    const-class v1, Landroid/app/NotificationManager;
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/app/NotificationManager;
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public final access()Lcom/cooper/lithic/platform/notification/NotificationAccess;
+    .registers 9
+
+    .line 26
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/4 v1, 0x0
+
+    const/4 v2, 0x1
+
+    const/16 v3, 0x21
+
+    if-lt v0, v3, :cond_15
+
+    iget-object v0, p0, Lcom/cooper/lithic/platform/notification/NotificationPublisher;->context:Landroid/content/Context;
+
+    const-string v4, "android.permission.POST_NOTIFICATIONS"
+
+    invoke-virtual {v0, v4}, Landroid/content/Context;->checkSelfPermission(Ljava/lang/String;)I
+
+    move-result v0
+
+    if-nez v0, :cond_13
+
+    goto :goto_15
+
+    :cond_13
+    move v0, v1
+
+    goto :goto_16
+
+    :cond_15
+    :goto_15
+    move v0, v2
+
+    .line 27
+    .local v0, "runtime":Z
+    :goto_16
+    new-instance v4, Lcom/cooper/lithic/platform/notification/NotificationAccess;
+
+    sget v5, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    if-lt v5, v3, :cond_1e
+
+    move v3, v2
+
+    goto :goto_1f
+
+    :cond_1e
+    move v3, v1
+
+    :goto_1f
+    invoke-direct {p0}, Lcom/cooper/lithic/platform/notification/NotificationPublisher;->getManager()Landroid/app/NotificationManager;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Landroid/app/NotificationManager;->areNotificationsEnabled()Z
+
+    move-result v5
+
+    .line 28
+    invoke-direct {p0}, Lcom/cooper/lithic/platform/notification/NotificationPublisher;->getManager()Landroid/app/NotificationManager;
+
+    move-result-object v6
+
+    const-string v7, "lithic-renewals-v1"
+
+    invoke-virtual {v6, v7}, Landroid/app/NotificationManager;->getNotificationChannel(Ljava/lang/String;)Landroid/app/NotificationChannel;
+
+    move-result-object v6
+
+    if-eqz v6, :cond_3a
+
+    invoke-virtual {v6}, Landroid/app/NotificationChannel;->getImportance()I
+
+    move-result v6
+
+    if-nez v6, :cond_3a
+
+    move v1, v2
+
+    .line 27
+    :cond_3a
+    xor-int/2addr v1, v2
+
+    invoke-direct {v4, v3, v0, v5, v1}, Lcom/cooper/lithic/platform/notification/NotificationAccess;-><init>(ZZZZ)V
+
+    return-object v4
+.end method
+
+.method public canPublish()Z
+    .registers 2
+
+    .line 30
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public final ensureChannel()V
+    .registers 1
+
+    .line 20
+    return-void
+.end method
+
+.method public publish(Lcom/cooper/lithic/data/repository/MilestoneSummary;)Z
+    .registers 3
+    .param p1, "summary"    # Lcom/cooper/lithic/data/repository/MilestoneSummary;
+
+    const-string v0, "summary"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 47
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public publish(Lcom/cooper/lithic/domain/reminder/RenewalReminderCandidate;)Z
+    .registers 3
+    .param p1, "candidate"    # Lcom/cooper/lithic/domain/reminder/RenewalReminderCandidate;
+
+    const-string v0, "candidate"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 32
+    const/4 v0, 0x0
+
+    return v0
+.end method
+

@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-11-02（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-11-05（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **V1 CORE PREVIEW19 — READY_FOR_INDEPENDENT_REVIEW（2026-11-05，仅桌面）**：用户授权以 no-op 停用旧提醒，不主动取消 WorkManager 任务；旧提醒点击可按普通首页打开。171 项定向 JVM 通过，生产及 AndroidTest 源码编译通过，Lint 0 错误、20 警告；首次测试源码编译导入错误与复验保留。唯一 Preview19/code35 的实际包名、原证书、Manifest、DEX、关闭的提醒入口及 36 份历史 APK 已核对；归档 SHA `34ef14ac074fe5afafdf9a554518671e576ea8c0d4144537e39195f0947cf2f6`，与构建产物逐字节一致。Android 实际运行、升级和 SAF 恢复仍 NOT_RUN；旧系统任务终结状态 UNKNOWN。详见[集中报告](evidence/LITHIC-V1-CORE-FASTTRACK.md)。`V1_RELEASE_NO_GO / STRICT_JPEG_IMPORT_BLOCKED / ANDROID_ISOLATION_RUNTIME_PENDING` 保持；等待独立审查。
 
 - **V1-CORE-R1 — TARGETED_CHECKS_PASS / PREVIEW19_BLOCKED（2026-11-05）**：用户授权将 Owner 初始化移至正常界面并为 WorkerFactory 使用惰性 provider；源码已实施，最终167项JVM通过，生产/AndroidTest源码编译与Lint exit0（0错误20警告），Android运行NOT_RUN。WorkManager 2.12.0 按名称/tag取消会级联依赖后继；历史源码未见非提醒链，但设备旧任务拓扑UNKNOWN，无法证明不误伤其他任务，故未构建Preview19，待独立审查。源代码、两次验证和本机字节码证据见[报告](evidence/LITHIC-V1-CORE-FASTTRACK.md)。
 
