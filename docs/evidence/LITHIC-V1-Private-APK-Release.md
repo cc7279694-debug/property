@@ -1,6 +1,11 @@
 # 砺石 V1.0 私人 APK 发行准备
 
-2026-11-06。**V1_PRIVATE_APK_BLOCKED / V1_RELEASE_NO_GO**。渠道为个人或少数人直接分发 APK。正式包首发历史按用户确认登记。完整 Release Lint 已通过（0 错误、20 警告）；剩余门禁为所有者创建密钥、核验并登记公开证书、验证两处独立加密备份及在本机明确授权签署。正式 APK 和 AAB 均未构建。
+2026-11-06。**V1_PRIVATE_APK_READY_FOR_INDEPENDENT_REVIEW**。已归档唯一正式签名 APK，渠道为个人或少数人直接分发。真机验收与独立审查待执行，保持 **V1_RELEASE_NO_GO**。
+
+- 交付文件为 [Lithic-1.0.0-release.apk](../../deliveries/lithic-v1.0.0/Lithic-1.0.0-release.apk)，15,747,081 字节。
+- 实物身份为 **com.cooper.lithic / 1.0.0 / code36**，minSdk 26，targetSdk 36。
+- APK SHA-256 为 ff909ca1eb21e04756d91d067082ca12df1ac17c263d793843fbbf4c67e40c2b。
+- 正式证书 SHA-256 为 3a10918a24ab4c66fd2f5e2725b0b8a65164d4da43f71a40d6e6d74afc4b1f19。
 
 ## 基线与版本
 
@@ -12,29 +17,11 @@ Preview19 归档复核 20,506,559 字节、SHA-256 `34ef14ac074fe5afafdf9a554518
 
 ## 签名、备份与签署授权
 
-所有者已批准创建一个永久正式密钥，并选择本机原件加两处独立加密云备份。已准备 `%LOCALAPPDATA%\LithicSigning`，它不在仓库、临时目录或同步目录下；核对时目标 `lithic-release.p12` 不存在。目录 ACL 只列所有者、本机管理员与 SYSTEM。未打开任何 keystore、读取秘密、生成密钥或执行签名。签名输入环境变量未设置；公开证书、两处可恢复备份及一次正式签署授权均待所有者确认。**`SIGNING_BACKUP_PENDING`**。
+所有者创建的既有 PKCS12 原件保存在本机受控目录，固定 alias 为 lithic-release。所有者在独立 PowerShell 输入密码后，keytool 导出 DER 公开证书。复核主体 CN=Lithic Release、RSA 3072、证书 SHA-256 与上文一致，有效期为 2026-11-06 16:19:15 至 2053-11-06 16:19:15（Asia/Shanghai）。证书与 Preview19 的 Debug 证书不同。
 
-Gradle 预留显式本机签署入口。正常测试、编译、Lint 无需签名输入。正式打包前必须核对 Git 外的密钥和独立受控输出目录、alias、有效公开证书及预期 SHA-256，再验证私钥与证书对应。拒绝已知 Preview Debug 证书、Android Debug 证书和 Android 注入签名覆盖。APK 打包任务直接依赖签名门禁，AAB 包装任务拒绝执行。当前未启用 R8/minify 或资源压缩，避免在首发引入未经实物验证的反射、序列化和资源差异。实际正式 DEX、签名和 R8 状态的产物审计为 **NOT_RUN**。 [构建定义](../../app/build.gradle.kts)
+2026-11-06 17:08:29（Asia/Shanghai），所有者在证书显示后输入 SIGN，一次确认两处独立加密备份均已验证可恢复，并授权本次正式签署。备份恢复结果按所有者确认记录。Codex 审计范围为公开证书、无密回执和 APK。密码仅通过本机隐藏提示输入，由签署进程临时提供给 Gradle。可能含凭据的 AGP 中间文件保留在所有者控制的 Git 外构建目录。
 
-请在自己打开的 PowerShell 中运行以下命令。`keytool` 会交互提示输入、确认密钥库密码；密码留在本机，不加到命令里。脚本发现同名文件时会停止，避免重新生成或覆盖。证书不包含个人资料，固定别名 `lithic-release`，有效期 9,862 天（约 27 年）。
-
-```powershell
-$lithicKeytool = 'E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\keytool.exe'
-$lithicKeystore = Join-Path $env:LOCALAPPDATA 'LithicSigning\lithic-release.p12'
-if (Test-Path -LiteralPath $lithicKeystore) { throw '签名文件已存在，停止。' }
-& $lithicKeytool -genkeypair -keystore $lithicKeystore -storetype PKCS12 `
-  -alias lithic-release -keyalg RSA -keysize 3072 -validity 9862 -dname 'CN=Lithic Release'
-if ($LASTEXITCODE -ne 0) { throw '密钥创建未成功，请保留现场。' }
-& $lithicKeytool -list -v -keystore $lithicKeystore -storetype PKCS12 -alias lithic-release
-if ($LASTEXITCODE -ne 0) { throw '公开证书核对未完成。' }
-```
-
-1. 记下 `keytool` 显示的 **证书 SHA-256** 和有效期。证书指纹不是 `.p12` 文件哈希，且必须不同于上文的 Preview19 Debug 证书。
-2. 在 7-Zip 文件管理器中仅选择 `.p12`，添加到压缩包。选 **7z**、**AES-256**、勾选**加密文件名**。设置不同于密钥库密码的强密码，用密码管理器或妥善保存的纸质记录分别保管两种密码。只将加密的 `.7z` 上传到两个独立的云服务或受控存储；原始 `.p12` 留在本机。上传及账号操作由所有者亲自完成。
-3. 分别从两个位置取回加密包，使用 7-Zip 的“测试”，再各自解压到本机新建、受控且不参与同步的目录。用 `Get-FileHash -Algorithm SHA256 -LiteralPath <文件>` 在本机比较原件与各自恢复的 `.p12`；两份都须与原件一致。用上述 `keytool -list -v` 指向每份恢复文件核对同一公开证书。验证完由所有者处理临时解压副本，原始密钥和加密备份保留。只需回报两处是否都通过恢复核验，不提供云凭据、压缩密码或密钥文件。
-4. 完整 Release Lint 通过后，回报公开证书 SHA-256、有效期、两份备份已验证可恢复，并在本机安全终端明确授权一次正式签署。以后正式更新沿用同一正式证书。
-
-获准签署时，仅在用户控制的独立本地进程向 Gradle 注入 `LITHIC_PRIVATE_APK_SIGNING`、`LITHIC_RELEASE_KEYSTORE`、`LITHIC_RELEASE_BUILD_DIR`、`LITHIC_RELEASE_KEY_ALIAS`、`LITHIC_RELEASE_CERT_SHA256` 、`LITHIC_RELEASE_STORE_PASSWORD` 和 `LITHIC_RELEASE_KEY_PASSWORD`。签署仅用 `:app:assembleRelease`，离线、单 worker，关闭 daemon 常驻、配置缓存、构建缓存和构建扫描。AGP 可能写出含凭据的受限中间文件，留在所有者的 Git 外工作区。最终只归档经验签和 Manifest、DEX、权限、版本、R8、大小及 SHA 审计通过的 `deliveries/lithic-v1.0.0/Lithic-1.0.0-release.apk`，并逐字节核对。
+既有签名门禁在配置时检查证书有效期、公开指纹、别名、私钥与证书对应性及输出目录。执行入口为离线 :app:assembleRelease，单 worker，关闭常驻 daemon、配置缓存、构建缓存及扫描。
 
 ## 照片、权限与备份
 
@@ -55,11 +42,19 @@ Release 照片写入仍为 API36 + Picker 准入，仅追加、更换、取消�
 
 M20 两项历史系统通知可见性 **FAIL**，旧任务/Owner 收口 **UNKNOWN**。旧 Worker no-op 保留，自动提醒及 RC4 延期至 V1.1。M22 历史离线旅程 FAIL/INCOMPLETE，当前正式包的离线、长历史、系统大字/IME 及兼容验证 **NOT_RUN**。严格 JPEG 三项历史 **FAIL**，`STRICT_JPEG_IMPORT_BLOCKED`、`ANDROID_ISOLATION_RUNTIME_PENDING` 保留，永久照片删除/GC 延期。没有操作设备、ADB、模拟器或真实用户数据。 [完整门禁](LITHIC-V1-Final-Release-Closeout.md)
 
-## 正式候选通过实物审计后的用户验收
+## 正式签名构建与实物审计
 
-1. 保留 Preview19。独立安装正式包，确认包名和空账本。创建一条测试物品和订阅，重开读回，单独打开 Preview19 核对原状态。
+- 正式构建来源为 a5b58158d98507d80eb619dec1beeeb1e3de2fee，App 树为 39295c800ceefdeee19aefce39b26755d3b8d63a。沿用同树完整 Release Lint（0 错误、20 警告）及 80 项定向 JVM PASS。核对既有 XML，保留签名打包自带的 Release 检查。AndroidTest 实际运行仍 NOT_RUN。
+- 首次构建在 :app:kspReleaseKotlin 退出 1。C 盘外部构建目录与 E 盘源码不在同一文件系统根，KSP 无法计算 BuildConfig.java 相对路径，未到 APK 生成阶段。将唯一重试的构建输出改为 E 盘 NTFS 上的独立受控目录，沿用同一源码、正式证书与授权。所有者在安全终端重新输入原密码。重试于 17:14:04 至 17:26:46（Asia/Shanghai）完成，Gradle 退出 0。
+- AAPT2、apkanalyzer、apksigner 严格模式与 zipalign 均退出 0。实际为单一 v2 签名者，正式公开证书 SHA 与授权记录匹配。二进制 Manifest 的包名、版本、入口、组件可见性及权限与正式合并基线一致。无 INTERNET、广泛媒体权限、调试、测试或共享 UID 声明。由实际资源表解析备份 XML，核对自动备份禁用及云备份和设备传输排除规则。
+- APK 有三个 DEX，均可读取。核对正式照片开关开启、实验开关关闭、API 恰为 36 且需要真实 Picker 的入口、封面写入实现、主界面 Owner 启动、旧提醒 Worker 直接成功返回，以及完整备份检查和恢复实现。PNG、Room5、backup4 和恢复门禁沿用原 App 树。APK 仅含既有 AndroidX Graphics Path 与 DataStore native 库，无严格 JPEG 库。APK ZIP 校验及 16 KiB 页对齐检查通过。
+- 首轮与第二轮静态脚本分别修正本机 AAPT2 的 minSdkVersion 输出名称及正式包压缩后的 XML 文件路径解析，保留两轮原始输出。第三轮从同一个 APK 解析 Manifest 及资源表，完成签名、权限、代码及历史包核对。另核对 Kotlin 编译后的实际方法体。36 份旧 APK 的大小和 SHA-256 均匹配。通过门禁后独占归档，原产物与交付文件逐字节一致。公开签名、构建及审计回执留在本机签署会话的公开证据区。
+
+## 小米 14 首次安装与验收
+
+1. 保留 Preview19。将本报告归档的 APK 复制到小米 14，从文件管理器点开安装。若系统要求，允许该文件管理器安装应用。首次打开正式版，确认版本 1.0.0 和空账本。创建一条测试物品和订阅，重开读回，单独打开 Preview19 核对原状态。
 2. 在 API36 使用可丢弃照片添加、预览保存、更换、取消封面，核对历史登记媒体仍保留。检查 Picker 取消、不可用和坏图反馈。
 3. 只用正式包合成账本导出并检查 backup4，明确确认后覆盖恢复。重开核对物品、订阅、金额、照片及媒体。失败或 UNKNOWN 时保留源文件和现场。
 4. 检查首页、物品/订阅详情、成本和历史，三主题切换及重启持久化，提醒保持关闭。遇到无响应或数据异常时停止依赖操作。
 
-正式签署和实际 APK 静态审计完成后才可申请独立候选审查。用户真机验收和独立审查通过前，保持 **V1_RELEASE_NO_GO**。
+桌面构建及实物静态审计已完成，等待 ChatGPT 独立审查。用户真机验收和独立审查通过前，保持 **V1_RELEASE_NO_GO**。
