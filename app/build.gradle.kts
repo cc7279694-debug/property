@@ -1,3 +1,13 @@
+import java.nio.file.Files
+import java.nio.file.Path
+import java.security.KeyStore
+import java.security.MessageDigest
+import java.security.PrivateKey
+import java.security.Signature
+import java.security.cert.X509Certificate
+import java.util.HexFormat
+import javax.naming.ldap.LdapName
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -134,6 +144,10 @@ if (m22DeviceVerification) {
     layout.buildDirectory.set(layout.projectDirectory.dir("build/m22-device-verification"))
 }
 
+// Release compilation and lint do not need signing material. Only an owner-authorized
+// local signing session should set this environment flag.
+val privateApkSigning = providers.environmentVariable("LITHIC_PRIVATE_APK_SIGNING").orNull == "true"
+
 android {
     namespace = "com.cooper.lithic"
     compileSdk = 36
@@ -173,6 +187,102 @@ android {
         else "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    val privateReleaseSigning = if (privateApkSigning) {
+        val request = gradle.startParameter
+        check(request.taskNames == listOf(":app:assembleRelease") &&
+            request.excludedTaskNames.isEmpty() && request.isOffline && !request.isDryRun) {
+            "Private Release signing requires exactly the offline :app:assembleRelease task"
+        }
+        check(!lithicPrivateTrial && !m22DeviceVerification && !b1QaVerification &&
+            !photoLiteExperiment && !v1AcceptanceVerification && !c2VisualVerification &&
+            !c6IsolationVerification && !providers.gradleProperty("m13Isolated").isPresent &&
+            !providers.gradleProperty("m12T04ProcessDeath").isPresent) {
+            "Private Release signing cannot be combined with a trial or test identity"
+        }
+        check(!gradle.startParameter.isConfigurationCacheRequested && !gradle.startParameter.isBuildCacheEnabled) {
+            "Private Release signing requires disabled configuration and build caches"
+        }
+        val injectedSigningFields = listOf(
+            "store.file", "store.type", "store.password", "key.alias", "key.password",
+            "v1-enabled", "v2-enabled", "v3-enabled", "v4-enabled",
+        )
+        check(injectedSigningFields.none { providers.gradleProperty("android.injected.signing.$it").isPresent }) {
+            "Private Release signing forbids Android signing overrides"
+        }
+
+        fun requiredSigningEnv(name: String): String =
+            providers.environmentVariable(name).orNull?.takeIf { it.isNotBlank() }
+                ?: error("Private Release signing input is missing: $name")
+
+        val repositoryPath = rootProject.projectDir.toPath().toRealPath()
+
+        fun externalSigningPath(name: String): Path {
+            val supplied = requiredSigningEnv(name)
+            val path = runCatching {
+                Path.of(supplied).takeIf { it.isAbsolute }?.toRealPath()
+            }.getOrNull() ?: error("Private Release signing input requires an existing absolute path: $name")
+            check(!path.startsWith(repositoryPath)) {
+                "Private Release signing files and output must be outside the repository"
+            }
+            return path
+        }
+
+        val keyStorePath = externalSigningPath("LITHIC_RELEASE_KEYSTORE")
+        val releaseBuildPath = externalSigningPath("LITHIC_RELEASE_BUILD_DIR")
+        val emptyBuildDirectory = runCatching {
+            Files.newDirectoryStream(releaseBuildPath).use { !it.iterator().hasNext() }
+        }.getOrDefault(false)
+        check(emptyBuildDirectory && !repositoryPath.startsWith(releaseBuildPath) &&
+            !keyStorePath.startsWith(releaseBuildPath)) {
+            "Private Release signing requires a separate, empty owner-controlled build directory"
+        }
+        val expectedSha = requiredSigningEnv("LITHIC_RELEASE_CERT_SHA256").lowercase()
+        check(expectedSha.matches(Regex("[0-9a-f]{64}")) &&
+            expectedSha != "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9") {
+            "Private Release requires an approved certificate fingerprint distinct from the trial Debug certificate"
+        }
+        val alias = requiredSigningEnv("LITHIC_RELEASE_KEY_ALIAS")
+        val storeSecret = requiredSigningEnv("LITHIC_RELEASE_STORE_PASSWORD")
+        val keySecret = requiredSigningEnv("LITHIC_RELEASE_KEY_PASSWORD")
+        val verifiedStoreType = runCatching {
+            val keyStore = KeyStore.getInstance(keyStorePath.toFile(), storeSecret.toCharArray())
+            val certificate = keyStore.getCertificate(alias) as X509Certificate
+            certificate.checkValidity()
+            check(LdapName(certificate.subjectX500Principal.name).rdns.none {
+                it.type.equals("CN", ignoreCase = true) &&
+                    it.value.toString().equals("Android Debug", ignoreCase = true)
+            })
+            val certSha = HexFormat.of().formatHex(
+                MessageDigest.getInstance("SHA-256").digest(certificate.encoded),
+            )
+            check(certSha == expectedSha)
+            val key = keyStore.getKey(alias, keySecret.toCharArray()) as PrivateKey
+            val algorithm = when (key.algorithm) {
+                "RSA" -> "SHA256withRSA"
+                "EC" -> "SHA256withECDSA"
+                else -> error("Unsupported private signing key algorithm")
+            }
+            val challenge = "Lithic private Release signing preflight".encodeToByteArray()
+            val proof = Signature.getInstance(algorithm)
+            proof.initSign(key)
+            proof.update(challenge)
+            val signature = proof.sign()
+            proof.initVerify(certificate)
+            proof.update(challenge)
+            check(proof.verify(signature))
+            keyStore.type
+        }.getOrNull() ?: error("Private Release signing preflight failed: check credentials, alias and certificate")
+
+        layout.buildDirectory.set(releaseBuildPath.toFile())
+        signingConfigs.create("privateApkRelease") {
+            storeFile = keyStorePath.toFile()
+            storeType = verifiedStoreType
+            keyAlias = alias
+            storePassword = storeSecret
+            keyPassword = keySecret
+        }
+    } else null
+
     buildTypes {
         debug {
             // Keep the trial and disposable verification identities separate from production.
@@ -191,6 +301,7 @@ android {
         }
         release {
             buildConfigField("boolean", "PHOTO_LITE_PRODUCTION", "true")
+            privateReleaseSigning?.let { signingConfig = it }
         }
     }
 
@@ -253,6 +364,37 @@ androidComponents {
     beforeVariants(selector().withBuildType("release")) { variant ->
         if (lithicPrivateTrial || m22DeviceVerification || b1QaVerification || photoLiteExperiment ||
             v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
+    }
+    onVariants(selector().withBuildType("release")) { variant ->
+        variant.outputs.forEach { output ->
+            output.versionName.set("1.0.0")
+            output.versionCode.set(36)
+        }
+    }
+}
+
+// Guard the actual packaging tasks, including indirect invocations.
+val verifyPrivateApkSigning by tasks.registering {
+    doLast {
+        check(privateApkSigning) { "Formal APK packaging requires an approved private Release signer" }
+    }
+}
+val rejectReleaseBundle by tasks.registering {
+    doLast { error("Lithic private Release supports direct APK delivery only") }
+}
+tasks.configureEach {
+    when (name) {
+        "packageRelease" -> {
+            dependsOn(verifyPrivateApkSigning)
+            doFirst {
+                check(privateApkSigning) { "Formal APK packaging requires an approved private Release signer" }
+            }
+        }
+        "bundleRelease", "packageReleaseBundle", "signReleaseBundle",
+        "makeApkFromBundleForRelease", "packageReleaseUniversalApk" -> {
+            dependsOn(rejectReleaseBundle)
+            doFirst { error("Lithic private Release supports direct APK delivery only") }
+        }
     }
 }
 
