@@ -59,7 +59,10 @@ MainActivity 启动主进程 Owner，AppContainer 在当前 Application 的 `noB
 ## 验证结果与下一次验收
 
 - **R2 实际 PASS（只读静态）**。本地与远端基线比对，Preview19 本地归档重算尺寸与 SHA，重新解析五份同基线 BuildConfig 和合并 Manifest，核对源码、应用 ID、启动组件、权限及 Git 差异。正式包实物验签、并存安装和启动行为未执行。
-- **R2 Gradle NOT_RUN（资源）**。执行前测得 4,053,016 KiB（约 3.87 GiB），低于 4 GiB 门槛，预检退出 3，Gradle 未启动。JVM、Kotlin 编译与 Lint 本轮均无新执行结果。
+- **2026-11-05 首次 Gradle 预检 NOT_RUN（资源）**。执行前测得 4,053,016 KiB（约 3.87 GiB），低于 4 GiB 门槛，预检退出 3，Gradle 未启动。
+- **2026-11-06 补验 PASS**。输入为提交 `87d89d261ce02fd65b5e0d596c14e07628a34ce5`、App 树 `35293bb9d73726f60106849f396b07c29e203e21`。任务图预检通过，执行前可用内存 6,122,816 KiB（约 5.84 GiB）。Gradle 离线单 worker，退出 0，耗时 1m14s。新执行 `:app:testDebugUnitTest` 共 57 项通过，0 失败、0 错误、0 跳过。其中照片能力 2、Owner 启动 8、首页空态等呈现 6、合成备份检查 31、恢复反馈 10。补验范围为桌面，实际设备门禁保持原状态。
+- Release BuildConfig、主 Manifest、Debug/Release/AndroidTest Kotlin 编译和 Release Lint 报告均经 Gradle 判定 `UP-TO-DATE`，沿用原生成或编译输出。Lint 命令退出 0，现有 XML 仍为 0 错误、20 警告。重新核对 Release 清单 SHA、照片开关及 Preview19 归档 SHA，本次隔离输出中 APK 为 0。
+- 本机原始日志、回执和五份新 JUnit XML 在 `%TEMP%/lithic-v1-r2-resume-20261106-092228/`。本次复用 Alignment 编译目录时，AGP 将新 JUnit XML 写回原临时测试结果目录，覆盖了该目录中的旧 XML 集合。新 XML 已逐份复制到 R2 临时证据目录，既有 Alignment 提交中的验证记录仍保留。
 - **继承 PASS**。Alignment 同一 App 树的 71 项定向 JVM、Debug/Release/AndroidTest Kotlin 编译、Release Lint 0 错误和 20 条警告。沿用其中照片能力、备份检查及恢复反馈的证据。本轮未增加或执行 Preview 迁移测试。 [原验证记录](LITHIC-V1-Release-Alignment.md)
 - **仍待独立验收**。正式发行记录最高 code 和外部签名状态 UNKNOWN，正式签发实物 NOT_FOUND，签名与升级 NOT_RUN。真实空账本、并存、API 36 Picker 失效、照片资源峰值、正式包自身 SAF/异常恢复，以及 M22 离线、长历史和真实 IME/大字仍待验证。M20 历史可见性两次 FAIL、任务/Owner 收口 UNKNOWN 与 M22 历史 FAIL 保留。 [M20 平台](M20-Android-verification.md) · [M20 收口](M20-Platform-closure.md) · [M22](M22-verification.md)
 
