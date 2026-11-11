@@ -1,0 +1,1987 @@
+=== runtime-startup.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.P2A1StartupTest#plainApplicationStartsUnderDedicatedIdentity com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1StartupTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.P2A1StartupTest:
+INSTRUMENTATION_STATUS: test=plainApplicationStartsUnderDedicatedIdentity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1StartupTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=plainApplicationStartsUnderDedicatedIdentity
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 0.007
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== home-stoneMist.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.P2A1HomeGalleryTest#stoneMist com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1HomeGalleryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.P2A1HomeGalleryTest:
+INSTRUMENTATION_STATUS: test=stoneMist
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: p2a1_config=360dp, 320dpi, fontScale=1.0
+INSTRUMENTATION_STATUS: p2a1_dimensions=720x1648
+INSTRUMENTATION_STATUS: p2a1_directory=p2a1-capture-f6e6037b-a6e0-4473-9127-968c9646bbe3
+INSTRUMENTATION_STATUS: p2a1_theme=STONE_MIST
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1HomeGalleryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=stoneMist
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.886
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== home-pureWhite.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.P2A1HomeGalleryTest#pureWhite com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1HomeGalleryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.P2A1HomeGalleryTest:
+INSTRUMENTATION_STATUS: test=pureWhite
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: p2a1_config=360dp, 320dpi, fontScale=1.0
+INSTRUMENTATION_STATUS: p2a1_dimensions=720x1648
+INSTRUMENTATION_STATUS: p2a1_directory=p2a1-capture-2f938106-c9c0-475b-b48c-853c30e82a29
+INSTRUMENTATION_STATUS: p2a1_theme=PURE_WHITE
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1HomeGalleryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=pureWhite
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.358
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== home-charcoal.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.P2A1HomeGalleryTest#charcoal com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1HomeGalleryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.P2A1HomeGalleryTest:
+INSTRUMENTATION_STATUS: test=charcoal
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: p2a1_config=360dp, 320dpi, fontScale=1.0
+INSTRUMENTATION_STATUS: p2a1_dimensions=720x1648
+INSTRUMENTATION_STATUS: p2a1_directory=p2a1-capture-0cb9654d-8e07-4683-80df-88491e9ecb8b
+INSTRUMENTATION_STATUS: p2a1_theme=CHARCOAL
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1HomeGalleryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=charcoal
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.58
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-home-archive.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.feature.home.P2HomeArchiveContractTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.home.P2HomeArchiveContractTest:
+INSTRUMENTATION_STATUS: test=widths_fonts_and_themes_keep_one_amount_readout_and_reachable_controls
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=widths_fonts_and_themes_keep_one_amount_readout_and_reachable_controls
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=a_wide_parent_centers_a_single_capped_reading_column_and_its_fab
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=a_wide_parent_centers_a_single_capped_reading_column_and_its_fab
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=archive_limits_each_type_and_only_the_associated_unavailable_cover_is_read
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=archive_limits_each_type_and_only_the_associated_unavailable_cover_is_read
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=home_controls_dispatch_exact_targets_and_tab_bar_keeps_three_targets
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=home_controls_dispatch_exact_targets_and_tab_bar_keeps_three_targets
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=current_history_empty_and_both_failures_keep_their_own_snapshot_contract
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=current_history_empty_and_both_failures_keep_their_own_snapshot_contract
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=a_wrong_date_waits_and_the_other_preview_error_does_not_replace_the_ledger_summary
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeArchiveContractTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=a_wrong_date_waits_and_the_other_preview_error_does_not_replace_the_ledger_summary
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 47.429
+
+OK (6 tests)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-home-semantics.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.feature.home.P01HomeShellSemanticsTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P01HomeShellSemanticsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.home.P01HomeShellSemanticsTest:
+INSTRUMENTATION_STATUS: test=subscription_history_summary_keeps_one_record_and_verified_zero
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P01HomeShellSemanticsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=subscription_history_summary_keeps_one_record_and_verified_zero
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P01HomeShellSemanticsTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=missing_overview_keeps_amount_and_both_counts_unknown
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P01HomeShellSemanticsTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=missing_overview_keeps_amount_and_both_counts_unknown
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 5.113
+
+OK (2 tests)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-cover.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.feature.media.CoverPreviewsTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.media.CoverPreviewsTest:
+INSTRUMENTATION_STATUS: test=replacing_the_asset_reference_resets_the_previous_bitmap_before_the_new_read
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=replacing_the_asset_reference_resets_the_previous_bitmap_before_the_new_read
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=a_late_retired_owner_cannot_replace_the_current_owners_real_bitmap
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=a_late_retired_owner_cannot_replace_the_current_owners_real_bitmap
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=no_reference_keeps_the_type_fallback_without_reading
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=no_reference_keeps_the_type_fallback_without_reading
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=portrait_fit_retains_all_edges_while_default_crop_trims_top_and_bottom
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=portrait_fit_retains_all_edges_while_default_crop_trims_top_and_bottom
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=a_reference_without_a_reader_has_a_visible_readonly_error_explanation
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=a_reference_without_a_reader_has_a_visible_readonly_error_explanation
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=landscape_fit_retains_all_edges_while_default_crop_trims_the_sides
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=landscape_fit_retains_all_edges_while_default_crop_trims_the_sides
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=unreadable_or_metadata_mismatched_bytes_cannot_be_shown_as_a_cover
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.media.CoverPreviewsTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=unreadable_or_metadata_mismatched_bytes_cannot_be_shown_as_a_cover
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 12.755
+
+OK (7 tests)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-home-read.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.feature.home.P2HomeReadPresentationTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeReadPresentationTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.home.P2HomeReadPresentationTest:
+INSTRUMENTATION_STATUS: test=retained_summary_keeps_amount_date_and_recorded_counts_from_one_snapshot
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeReadPresentationTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=retained_summary_keeps_amount_date_and_recorded_counts_from_one_snapshot
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeReadPresentationTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=historical_zero_and_confirmed_empty_are_separate
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeReadPresentationTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=historical_zero_and_confirmed_empty_are_separate
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeReadPresentationTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=preview_retries_are_independent_and_only_the_failed_scope_is_marked_retained
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeReadPresentationTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=preview_retries_are_independent_and_only_the_failed_scope_is_marked_retained
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeReadPresentationTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=recovery_notice_guards_an_empty_snapshot_without_implying_refresh_failure
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.P2HomeReadPresentationTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=recovery_notice_guards_an_empty_snapshot_without_implying_refresh_failure
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 9.086
+
+OK (4 tests)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-theme-home.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.C9R1HomeHierarchyTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9R1HomeHierarchyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.C9R1HomeHierarchyTest:
+INSTRUMENTATION_STATUS: test=real_records_precede_auxiliary_counts_in_three_themes_at_small_large_type
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9R1HomeHierarchyTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥' (ignoreCase: false))
+Semantics of the node:
+Node #128 at (l=32.0, t=1515.0, r=688.0, b=1600.0)px, Tag: 'home-project-rate'
+ContentDescription = '[长期项目 · 当前日均成本，9.92元/天]'
+Text = '[¥9.92/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 2 siblings
+Selector used: (TestTag = 'home-project-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9R1HomeHierarchyTest.real_records_precede_auxiliary_counts_in_three_themes_at_small_large_type(C9R1HomeHierarchyTest.kt:56)
+
+INSTRUMENTATION_STATUS: stream=
+Error in real_records_precede_auxiliary_counts_in_three_themes_at_small_large_type(com.cooper.lithic.ui.C9R1HomeHierarchyTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥' (ignoreCase: false))
+Semantics of the node:
+Node #128 at (l=32.0, t=1515.0, r=688.0, b=1600.0)px, Tag: 'home-project-rate'
+ContentDescription = '[长期项目 · 当前日均成本，9.92元/天]'
+Text = '[¥9.92/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 2 siblings
+Selector used: (TestTag = 'home-project-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9R1HomeHierarchyTest.real_records_precede_auxiliary_counts_in_three_themes_at_small_large_type(C9R1HomeHierarchyTest.kt:56)
+
+INSTRUMENTATION_STATUS: test=real_records_precede_auxiliary_counts_in_three_themes_at_small_large_type
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.847
+There was 1 failure:
+1) real_records_precede_auxiliary_counts_in_three_themes_at_small_large_type(com.cooper.lithic.ui.C9R1HomeHierarchyTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥' (ignoreCase: false))
+Semantics of the node:
+Node #128 at (l=32.0, t=1515.0, r=688.0, b=1600.0)px, Tag: 'home-project-rate'
+ContentDescription = '[长期项目 · 当前日均成本，9.92元/天]'
+Text = '[¥9.92/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 2 siblings
+Selector used: (TestTag = 'home-project-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9R1HomeHierarchyTest.real_records_precede_auxiliary_counts_in_three_themes_at_small_large_type(C9R1HomeHierarchyTest.kt:56)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-theme-matrix.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.C9ThemeMatrixTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.C9ThemeMatrixTest:
+INSTRUMENTATION_STATUS: test=project_detail_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=project_detail_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=settings_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=settings_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=review_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=review_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=home_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=home_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=subscription_detail_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=subscription_detail_has_three_fixed_theme_positions
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=settings_offers_exactly_three_named_choices_and_keeps_the_panel_open_on_switch
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9ThemeMatrixTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=settings_offers_exactly_three_named_choices_and_keeps_the_panel_open_on_switch
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 14.681
+
+OK (6 tests)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-theme-record.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.C9RecordThemeTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9RecordThemeTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.C9RecordThemeTest:
+INSTRUMENTATION_STATUS: test=local_large_font_theme_switch_preserves_unconfirmed_input_and_does_not_submit
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9RecordThemeTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=local_large_font_theme_switch_preserves_unconfirmed_input_and_does_not_submit
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9RecordThemeTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9RecordThemeTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '−¥' (ignoreCase: false))
+Semantics of the node:
+Node #158 at (l=32.0, t=735.0, r=523.0, b=806.0)px, Tag: 'project-detail-net'
+ContentDescription = '[净投入，负9999998711.99元]'
+Text = '[−¥9999998711.99]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 5 siblings
+Selector used: (TestTag = 'project-detail-net')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9RecordThemeTest.long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes(C9RecordThemeTest.kt:100)
+
+INSTRUMENTATION_STATUS: stream=
+Error in long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes(com.cooper.lithic.ui.C9RecordThemeTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '−¥' (ignoreCase: false))
+Semantics of the node:
+Node #158 at (l=32.0, t=735.0, r=523.0, b=806.0)px, Tag: 'project-detail-net'
+ContentDescription = '[净投入，负9999998711.99元]'
+Text = '[−¥9999998711.99]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 5 siblings
+Selector used: (TestTag = 'project-detail-net')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9RecordThemeTest.long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes(C9RecordThemeTest.kt:100)
+
+INSTRUMENTATION_STATUS: test=long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9RecordThemeTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=changing_all_three_themes_keeps_home_disclosure_and_add_choices_without_writing
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.C9RecordThemeTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥' (ignoreCase: false))
+Semantics of the node:
+Node #339 at (l=32.0, t=1356.0, r=348.0, b=1413.0)px, Tag: 'home-project-rate'
+ContentDescription = '[长期项目 · 当前日均成本，9.92元/天]'
+Text = '[¥9.92/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 2 siblings
+Selector used: (TestTag = 'home-project-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9RecordThemeTest.changing_all_three_themes_keeps_home_disclosure_and_add_choices_without_writing(C9RecordThemeTest.kt:63)
+
+INSTRUMENTATION_STATUS: stream=
+Error in changing_all_three_themes_keeps_home_disclosure_and_add_choices_without_writing(com.cooper.lithic.ui.C9RecordThemeTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥' (ignoreCase: false))
+Semantics of the node:
+Node #339 at (l=32.0, t=1356.0, r=348.0, b=1413.0)px, Tag: 'home-project-rate'
+ContentDescription = '[长期项目 · 当前日均成本，9.92元/天]'
+Text = '[¥9.92/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 2 siblings
+Selector used: (TestTag = 'home-project-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9RecordThemeTest.changing_all_three_themes_keeps_home_disclosure_and_add_choices_without_writing(C9RecordThemeTest.kt:63)
+
+INSTRUMENTATION_STATUS: test=changing_all_three_themes_keeps_home_disclosure_and_add_choices_without_writing
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 8.224
+There were 2 failures:
+1) long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes(com.cooper.lithic.ui.C9RecordThemeTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '−¥' (ignoreCase: false))
+Semantics of the node:
+Node #158 at (l=32.0, t=735.0, r=523.0, b=806.0)px, Tag: 'project-detail-net'
+ContentDescription = '[净投入，负9999998711.99元]'
+Text = '[−¥9999998711.99]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 5 siblings
+Selector used: (TestTag = 'project-detail-net')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9RecordThemeTest.long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes(C9RecordThemeTest.kt:100)
+2) changing_all_three_themes_keeps_home_disclosure_and_add_choices_without_writing(com.cooper.lithic.ui.C9RecordThemeTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥' (ignoreCase: false))
+Semantics of the node:
+Node #339 at (l=32.0, t=1356.0, r=348.0, b=1413.0)px, Tag: 'home-project-rate'
+ContentDescription = '[长期项目 · 当前日均成本，9.92元/天]'
+Text = '[¥9.92/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Has 2 siblings
+Selector used: (TestTag = 'home-project-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.ui.C9RecordThemeTest.changing_all_three_themes_keeps_home_disclosure_and_add_choices_without_writing(C9RecordThemeTest.kt:63)
+
+FAILURES!!!
+Tests run: 3,  Failures: 2
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-h-synthetic.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.StorageUiStateTest#synthetic_ready_read_failure_has_unknown_summary_and_only_the_global_ledger_retry com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.StorageUiStateTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.StorageUiStateTest:
+INSTRUMENTATION_STATUS: test=synthetic_ready_read_failure_has_unknown_summary_and_only_the_global_ledger_retry
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.StorageUiStateTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=synthetic_ready_read_failure_has_unknown_summary_and_only_the_global_ledger_retry
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.788
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-navigation.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.NavigationShellTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.NavigationShellTest:
+INSTRUMENTATION_STATUS: test=legacy_saved_skeleton_restores_to_the_home_route
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=legacy_saved_skeleton_restores_to_the_home_route
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=empty_screen_has_no_fake_metrics
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '暂无记录' (ignoreCase: false) is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$empty_screen_has_no_fake_metrics$1.invokeSuspend(NavigationShellTest.kt:177)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.empty_screen_has_no_fake_metrics(NavigationShellTest.kt:169)
+
+INSTRUMENTATION_STATUS: stream=
+Error in empty_screen_has_no_fake_metrics(com.cooper.lithic.ui.NavigationShellTest):
+java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '暂无记录' (ignoreCase: false) is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$empty_screen_has_no_fake_metrics$1.invokeSuspend(NavigationShellTest.kt:177)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.empty_screen_has_no_fake_metrics(NavigationShellTest.kt:169)
+
+INSTRUMENTATION_STATUS: test=empty_screen_has_no_fake_metrics
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=secondary_toolbar_back_returns_home
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Selected = 'true')
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'tab-now')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertIsSelected(Assertions.kt:88)
+	at com.cooper.lithic.ui.NavigationShellTest.secondary_toolbar_back_returns_home(NavigationShellTest.kt:154)
+
+INSTRUMENTATION_STATUS: stream=
+Error in secondary_toolbar_back_returns_home(com.cooper.lithic.ui.NavigationShellTest):
+java.lang.AssertionError: Failed to assert the following: (Selected = 'true')
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'tab-now')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertIsSelected(Assertions.kt:88)
+	at com.cooper.lithic.ui.NavigationShellTest.secondary_toolbar_back_returns_home(NavigationShellTest.kt:154)
+
+INSTRUMENTATION_STATUS: test=secondary_toolbar_back_returns_home
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=future_recorded_end_date_does_not_pretend_the_project_has_already_ended
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '结束：2026-10-20' (ignoreCase: false) as substring is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$future_recorded_end_date_does_not_pretend_the_project_has_already_ended$1.invokeSuspend(NavigationShellTest.kt:220)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.future_recorded_end_date_does_not_pretend_the_project_has_already_ended(NavigationShellTest.kt:209)
+
+INSTRUMENTATION_STATUS: stream=
+Error in future_recorded_end_date_does_not_pretend_the_project_has_already_ended(com.cooper.lithic.ui.NavigationShellTest):
+java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '结束：2026-10-20' (ignoreCase: false) as substring is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$future_recorded_end_date_does_not_pretend_the_project_has_already_ended$1.invokeSuspend(NavigationShellTest.kt:220)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.future_recorded_end_date_does_not_pretend_the_project_has_already_ended(NavigationShellTest.kt:209)
+
+INSTRUMENTATION_STATUS: test=future_recorded_end_date_does_not_pretend_the_project_has_already_ended
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=secondary_system_back_returns_home
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=secondary_system_back_returns_home
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=large_text_has_no_blocked_action
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=large_text_has_no_blocked_action
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=invalid_restored_stacks_and_primary_routes_have_safe_parents
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=invalid_restored_stacks_and_primary_routes_have_safe_parents
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=settings_reads_the_persisted_zone_without_fake_controls
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=8
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (Text + InputText + EditableText contains '恢复功能尚未开放' (ignoreCase: false))
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.ui.NavigationShellTest.settings_reads_the_persisted_zone_without_fake_controls(NavigationShellTest.kt:230)
+
+INSTRUMENTATION_STATUS: stream=
+Error in settings_reads_the_persisted_zone_without_fake_controls(com.cooper.lithic.ui.NavigationShellTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (Text + InputText + EditableText contains '恢复功能尚未开放' (ignoreCase: false))
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.ui.NavigationShellTest.settings_reads_the_persisted_zone_without_fake_controls(NavigationShellTest.kt:230)
+
+INSTRUMENTATION_STATUS: test=settings_reads_the_persisted_zone_without_fake_controls
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=only_three_primary_destinations
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=9
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=only_three_primary_destinations
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=primary_selection_matches_its_visible_page
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=10
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=primary_selection_matches_its_visible_page
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=back_stack_restores
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=11
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=back_stack_restores
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=primary_system_back_returns_home
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=12
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=primary_system_back_returns_home
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=real_project_is_not_misrepresented_as_an_empty_ledger
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=13
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '已录入 1 条长期项目' (ignoreCase: false) is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$real_project_is_not_misrepresented_as_an_empty_ledger$1.invokeSuspend(NavigationShellTest.kt:196)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.real_project_is_not_misrepresented_as_an_empty_ledger(NavigationShellTest.kt:188)
+
+INSTRUMENTATION_STATUS: stream=
+Error in real_project_is_not_misrepresented_as_an_empty_ledger(com.cooper.lithic.ui.NavigationShellTest):
+java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '已录入 1 条长期项目' (ignoreCase: false) is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$real_project_is_not_misrepresented_as_an_empty_ledger$1.invokeSuspend(NavigationShellTest.kt:196)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.real_project_is_not_misrepresented_as_an_empty_ledger(NavigationShellTest.kt:188)
+
+INSTRUMENTATION_STATUS: test=real_project_is_not_misrepresented_as_an_empty_ledger
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=repeated_primary_selection_does_not_build_history
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=14
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=repeated_primary_selection_does_not_build_history
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=first_launch_starts_at_home
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.NavigationShellTest
+INSTRUMENTATION_STATUS: current=15
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=15
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=first_launch_starts_at_home
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 38.136
+There were 5 failures:
+1) empty_screen_has_no_fake_metrics(com.cooper.lithic.ui.NavigationShellTest)
+java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '暂无记录' (ignoreCase: false) is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$empty_screen_has_no_fake_metrics$1.invokeSuspend(NavigationShellTest.kt:177)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.empty_screen_has_no_fake_metrics(NavigationShellTest.kt:169)
+2) secondary_toolbar_back_returns_home(com.cooper.lithic.ui.NavigationShellTest)
+java.lang.AssertionError: Failed to assert the following: (Selected = 'true')
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'tab-now')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:262)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertIsSelected(Assertions.kt:88)
+	at com.cooper.lithic.ui.NavigationShellTest.secondary_toolbar_back_returns_home(NavigationShellTest.kt:154)
+3) future_recorded_end_date_does_not_pretend_the_project_has_already_ended(com.cooper.lithic.ui.NavigationShellTest)
+java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '结束：2026-10-20' (ignoreCase: false) as substring is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$future_recorded_end_date_does_not_pretend_the_project_has_already_ended$1.invokeSuspend(NavigationShellTest.kt:220)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.future_recorded_end_date_does_not_pretend_the_project_has_already_ended(NavigationShellTest.kt:209)
+4) settings_reads_the_persisted_zone_without_fake_controls(com.cooper.lithic.ui.NavigationShellTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (Text + InputText + EditableText contains '恢复功能尚未开放' (ignoreCase: false))
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.ui.NavigationShellTest.settings_reads_the_persisted_zone_without_fake_controls(NavigationShellTest.kt:230)
+5) real_project_is_not_misrepresented_as_an_empty_ledger(com.cooper.lithic.ui.NavigationShellTest)
+java.lang.AssertionError: Assert failed: The component with Text + InputText + EditableText contains '已录入 1 条长期项目' (ignoreCase: false) is not displayed!
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:34)
+	at com.cooper.lithic.ui.NavigationShellTest$real_project_is_not_misrepresented_as_an_empty_ledger$1.invokeSuspend(NavigationShellTest.kt:196)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.ui.NavigationShellTest.real_project_is_not_misrepresented_as_an_empty_ledger(NavigationShellTest.kt:188)
+
+FAILURES!!!
+Tests run: 15,  Failures: 5
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-project-guard.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.feature.project.ProjectNavigationGuardTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectNavigationGuardTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.ProjectNavigationGuardTest:
+INSTRUMENTATION_STATUS: test=dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectNavigationGuardTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: No node found that matches TestTag = 'project-add-outlay' in scrollable container
+Semantics of the node:
+Node #183 at (l=0.0, t=144.0, r=720.0, b=1408.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@59ad7c2'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=586.0, maxValue=586.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 5 children, 3 siblings
+Selector used: (TestTag = 'project-detail-content')
+
+	at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.detailAction(ProjectNavigationGuardTest.kt:219)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$detailAction(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event$1.invokeSuspend(ProjectNavigationGuardTest.kt:127)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event(ProjectNavigationGuardTest.kt:120)
+
+INSTRUMENTATION_STATUS: stream=
+Error in dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event(com.cooper.lithic.feature.project.ProjectNavigationGuardTest):
+java.lang.AssertionError: No node found that matches TestTag = 'project-add-outlay' in scrollable container
+Semantics of the node:
+Node #183 at (l=0.0, t=144.0, r=720.0, b=1408.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@59ad7c2'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=586.0, maxValue=586.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 5 children, 3 siblings
+Selector used: (TestTag = 'project-detail-content')
+
+	at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.detailAction(ProjectNavigationGuardTest.kt:219)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$detailAction(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event$1.invokeSuspend(ProjectNavigationGuardTest.kt:127)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event(ProjectNavigationGuardTest.kt:120)
+
+INSTRUMENTATION_STATUS: test=dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectNavigationGuardTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectNavigationGuardTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back$1.invokeSuspend(ProjectNavigationGuardTest.kt:93)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back(ProjectNavigationGuardTest.kt:91)
+
+INSTRUMENTATION_STATUS: stream=
+Error in dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back(com.cooper.lithic.feature.project.ProjectNavigationGuardTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back$1.invokeSuspend(ProjectNavigationGuardTest.kt:93)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back(ProjectNavigationGuardTest.kt:91)
+
+INSTRUMENTATION_STATUS: test=dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectNavigationGuardTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=untouched_form_leaves_without_a_discard_prompt_or_a_business_record
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectNavigationGuardTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$untouched_form_leaves_without_a_discard_prompt_or_a_business_record$1.invokeSuspend(ProjectNavigationGuardTest.kt:155)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.untouched_form_leaves_without_a_discard_prompt_or_a_business_record(ProjectNavigationGuardTest.kt:153)
+
+INSTRUMENTATION_STATUS: stream=
+Error in untouched_form_leaves_without_a_discard_prompt_or_a_business_record(com.cooper.lithic.feature.project.ProjectNavigationGuardTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$untouched_form_leaves_without_a_discard_prompt_or_a_business_record$1.invokeSuspend(ProjectNavigationGuardTest.kt:155)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.untouched_form_leaves_without_a_discard_prompt_or_a_business_record(ProjectNavigationGuardTest.kt:153)
+
+INSTRUMENTATION_STATUS: test=untouched_form_leaves_without_a_discard_prompt_or_a_business_record
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectNavigationGuardTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectNavigationGuardTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project$1.invokeSuspend(ProjectNavigationGuardTest.kt:173)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project(ProjectNavigationGuardTest.kt:163)
+
+INSTRUMENTATION_STATUS: stream=
+Error in unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project(com.cooper.lithic.feature.project.ProjectNavigationGuardTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project$1.invokeSuspend(ProjectNavigationGuardTest.kt:173)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project(ProjectNavigationGuardTest.kt:163)
+
+INSTRUMENTATION_STATUS: test=unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 10.167
+There were 4 failures:
+1) dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event(com.cooper.lithic.feature.project.ProjectNavigationGuardTest)
+java.lang.AssertionError: No node found that matches TestTag = 'project-add-outlay' in scrollable container
+Semantics of the node:
+Node #183 at (l=0.0, t=144.0, r=720.0, b=1408.0)px, Tag: 'project-detail-content'
+CollectionInfo = 'androidx.compose.ui.semantics.CollectionInfo@59ad7c2'
+IsTraversalGroup = 'true'
+VerticalScrollAxisRange = 'ScrollAxisRange(value=586.0, maxValue=586.0, reverseScrolling=false)'
+Actions = [GetScrollViewportLength, IndexForKey, ScrollBy, ScrollByOffset, ScrollToIndex]
+Has 5 children, 3 siblings
+Selector used: (TestTag = 'project-detail-content')
+
+	at androidx.compose.ui.test.ActionsKt.performScrollToNode(Actions.kt:257)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.detailAction(ProjectNavigationGuardTest.kt:219)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$detailAction(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event$1.invokeSuspend(ProjectNavigationGuardTest.kt:127)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event(ProjectNavigationGuardTest.kt:120)
+2) dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back(com.cooper.lithic.feature.project.ProjectNavigationGuardTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back$1.invokeSuspend(ProjectNavigationGuardTest.kt:93)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back(ProjectNavigationGuardTest.kt:91)
+3) untouched_form_leaves_without_a_discard_prompt_or_a_business_record(com.cooper.lithic.feature.project.ProjectNavigationGuardTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$untouched_form_leaves_without_a_discard_prompt_or_a_business_record$1.invokeSuspend(ProjectNavigationGuardTest.kt:155)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.untouched_form_leaves_without_a_discard_prompt_or_a_business_record(ProjectNavigationGuardTest.kt:153)
+4) unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project(com.cooper.lithic.feature.project.ProjectNavigationGuardTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.openCreate(ProjectNavigationGuardTest.kt:213)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.access$openCreate(ProjectNavigationGuardTest.kt:58)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest$unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project$1.invokeSuspend(ProjectNavigationGuardTest.kt:173)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectNavigationGuardTest.unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project(ProjectNavigationGuardTest.kt:163)
+
+FAILURES!!!
+Tests run: 4,  Failures: 4
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-subscription-guard.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest:
+INSTRUMENTATION_STATUS: test=root_home_without_active_forms_still_allows_real_system_back_to_finish
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=root_home_without_active_forms_still_allows_real_system_back_to_finish
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:140)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form(SubscriptionNavigationGuardTest.kt:122)
+
+INSTRUMENTATION_STATUS: stream=
+Error in hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form(com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:140)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form(SubscriptionNavigationGuardTest.kt:122)
+
+INSTRUMENTATION_STATUS: test=hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=root_home_system_back_keeps_restored_dirty_form_until_explicit_discard
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=root_home_system_back_keeps_restored_dirty_form_until_explicit_discard
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.openCreate(SubscriptionNavigationGuardTest.kt:309)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.access$openCreate(SubscriptionNavigationGuardTest.kt:63)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:287)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation(SubscriptionNavigationGuardTest.kt:278)
+
+INSTRUMENTATION_STATUS: stream=
+Error in formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation(com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.openCreate(SubscriptionNavigationGuardTest.kt:309)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.access$openCreate(SubscriptionNavigationGuardTest.kt:63)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:287)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation(SubscriptionNavigationGuardTest.kt:278)
+
+INSTRUMENTATION_STATUS: test=formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=root_home_system_back_keeps_restored_pending_envelope_and_reachable_payment_form
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=root_home_system_back_keeps_restored_pending_envelope_and_reachable_payment_form
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.openCreate(SubscriptionNavigationGuardTest.kt:309)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.access$openCreate(SubscriptionNavigationGuardTest.kt:63)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:99)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back(SubscriptionNavigationGuardTest.kt:97)
+
+INSTRUMENTATION_STATUS: stream=
+Error in dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back(com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.openCreate(SubscriptionNavigationGuardTest.kt:309)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.access$openCreate(SubscriptionNavigationGuardTest.kt:63)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:99)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back(SubscriptionNavigationGuardTest.kt:97)
+
+INSTRUMENTATION_STATUS: test=dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:268)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm(SubscriptionNavigationGuardTest.kt:251)
+
+INSTRUMENTATION_STATUS: stream=
+Error in hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm(com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:268)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm(SubscriptionNavigationGuardTest.kt:251)
+
+INSTRUMENTATION_STATUS: test=hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 16.589
+There were 4 failures:
+1) hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form(com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:140)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.hidden_restored_pending_payment_blocks_project_entry_and_has_reachable_original_form(SubscriptionNavigationGuardTest.kt:122)
+2) formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation(com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.openCreate(SubscriptionNavigationGuardTest.kt:309)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.access$openCreate(SubscriptionNavigationGuardTest.kt:63)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:287)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation(SubscriptionNavigationGuardTest.kt:278)
+3) dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back(com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.openCreate(SubscriptionNavigationGuardTest.kt:309)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.access$openCreate(SubscriptionNavigationGuardTest.kt:63)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:99)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.dirty_subscription_form_guards_all_tabs_toolbar_and_real_system_back(SubscriptionNavigationGuardTest.kt:97)
+4) hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm(com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-subscription')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest$hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm$1.invokeSuspend(SubscriptionNavigationGuardTest.kt:268)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.internal.ScopeCoroutine.afterResume(Scopes.kt:35)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:101)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:47)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.subscription.SubscriptionNavigationGuardTest.hidden_restored_project_submission_blocks_subscription_entry_without_changing_project_vm(SubscriptionNavigationGuardTest.kt:251)
+
+FAILURES!!!
+Tests run: 7,  Failures: 4
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== runtime-restore-guard.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.feature.settings.P03SettingsInformationTest#active_restore_keeps_existing_mutual_exclusion_and_has_no_confirmation_button com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.settings.P03SettingsInformationTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.settings.P03SettingsInformationTest:
+INSTRUMENTATION_STATUS: test=active_restore_keeps_existing_mutual_exclusion_and_has_no_confirmation_button
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.settings.P03SettingsInformationTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=active_restore_keeps_existing_mutual_exclusion_and_has_no_confirmation_button
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 2.387
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
+
+=== home-stoneMist-system200.log ===
+adb -s emulator-5588 shell am instrument -w -r -e class com.cooper.lithic.ui.P2A1HomeGalleryTest#stoneMist com.cooper.lithic.p2a1.debug.test/com.cooper.lithic.app.M13IsolatedRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1HomeGalleryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.P2A1HomeGalleryTest:
+INSTRUMENTATION_STATUS: test=stoneMist
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: p2a1_config=360dp, 320dpi, fontScale=2.0
+INSTRUMENTATION_STATUS: p2a1_dimensions=720x1648
+INSTRUMENTATION_STATUS: p2a1_directory=p2a1-capture-a10393c0-a118-4d71-8162-95bd9c650f4c
+INSTRUMENTATION_STATUS: p2a1_theme=STONE_MIST
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.P2A1HomeGalleryTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=stoneMist
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.175
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

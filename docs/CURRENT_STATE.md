@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC UI P2-A1 — P2_A1_DEVICE_EVIDENCE_READY_FOR_REVIEW（2026-11-11）**。P2 桌面已独立接受（PASS WITH NOTES）。全新 API 36 隔离模拟器取得三主题和系统 200% 截图，62 次方法执行为 46 PASS / 16 FAIL。200% 时新增按钮局部遮住订阅「全部」，部分返回及表单守卫未闭环。等待独立审查。见 [P2-A1 运行证据](evidence/LITHIC-UI-P2-A1-Isolated-Android.md)。
+
 - **LITHIC UI P2-4 — P2_READY_FOR_FINAL_INDEPENDENT_REVIEW（2026-11-11）**。分支 `codex/lithic-ui-p2-home`。P2-3 已接受桌面实施（PASS WITH NOTES）。P2-4 补齐集中回归、首页宽度和操作语义，Android 实际运行保持 NOT_RUN。详见 [P2-4 最终回归与累计审计](evidence/LITHIC-UI-P2-4-Final-Regression.md)。等待 P2 最终独立验收。
 
 - **V1 CORE PREVIEW19 — READY_FOR_INDEPENDENT_REVIEW（2026-11-05，仅桌面）**：用户授权以 no-op 停用旧提醒，不主动取消 WorkManager 任务；旧提醒点击可按普通首页打开。171 项定向 JVM 通过，生产及 AndroidTest 源码编译通过，Lint 0 错误、20 警告；首次测试源码编译导入错误与复验保留。唯一 Preview19/code35 的实际包名、原证书、Manifest、DEX、关闭的提醒入口及 36 份历史 APK 已核对；归档 SHA `34ef14ac074fe5afafdf9a554518671e576ea8c0d4144537e39195f0947cf2f6`，与构建产物逐字节一致。Android 实际运行、升级和 SAF 恢复仍 NOT_RUN；旧系统任务终结状态 UNKNOWN。详见[集中报告](evidence/LITHIC-V1-CORE-FASTTRACK.md)。`V1_RELEASE_NO_GO / STRICT_JPEG_IMPORT_BLOCKED / ANDROID_ISOLATION_RUNTIME_PENDING` 保持；等待独立审查。
