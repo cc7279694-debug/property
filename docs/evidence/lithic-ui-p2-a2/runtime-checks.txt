@@ -1,0 +1,137 @@
+=== preinstall-package.log ===
+adb -s emulator-5588 shell pm list packages -u --user 0 com.cooper.lithic.p2a2.debug
+exit=0
+
+---stderr---
+
+=== install-once.log ===
+adb -s emulator-5588 install --user 0 E:\CODEX\lithic-ui-p2-a2-evidence\candidate\P2-A2-App.apk
+exit=0
+Performing Streamed Install
+Success
+
+---stderr---
+
+=== installed-apk-sha.log ===
+adb -s emulator-5588 shell sha256sum /data/app/~~Hfduw_a6mywqK82S_BOV8g==/com.cooper.lithic.p2a2.debug-5gGedsGluN9RFeg1KIOHQA==/base.apk
+exit=0
+1527bf615ced440c85fae7ce139d61a5a712686d23bde0cd4f7603f64117cf9b  /data/app/~~Hfduw_a6mywqK82S_BOV8g==/com.cooper.lithic.p2a2.debug-5gGedsGluN9RFeg1KIOHQA==/base.apk
+
+---stderr---
+
+=== launcher-resolver.log ===
+adb -s emulator-5588 shell cmd package resolve-activity --brief --user 0 -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -p com.cooper.lithic.p2a2.debug
+exit=0
+priority=0 preferredOrder=0 match=0x108000 specificIndex=-1 isDefault=false
+com.cooper.lithic.p2a2.debug/com.cooper.lithic.p2a2.P2A2ExperienceActivity
+
+---stderr---
+
+=== cold-pid-before.log ===
+adb -s emulator-5588 shell pidof com.cooper.lithic.p2a2.debug
+exit=1
+
+---stderr---
+
+=== cold-launcher-icon.log ===
+adb -s emulator-5588 shell input tap 360 774
+exit=0
+
+---stderr---
+
+=== cold-resumed.log ===
+adb -s emulator-5588 shell dumpsys activity activities com.cooper.lithic.p2a2.debug | grep -F topResumedActivity
+exit=1
+
+---stderr---
+
+=== cold-top-scoped.log ===
+adb -s emulator-5588 shell dumpsys activity activities | grep -F com.cooper.lithic.p2a2.debug | grep -E 'topResumedActivity|mResumedActivity|Hist' | head -n 8
+exit=0
+    topResumedActivity=ActivityRecord{242251536 u0 com.cooper.lithic.p2a2.debug/com.cooper.lithic.p2a2.P2A2ExperienceActivity t252}
+    * Hist  #0: ActivityRecord{242251536 u0 com.cooper.lithic.p2a2.debug/com.cooper.lithic.p2a2.P2A2ExperienceActivity t252}
+
+---stderr---
+
+=== runtime-passed.txt ===
+themes
+lists
+search
+menu_and_tabs
+large_font
+reopen
+
+=== font-before.log ===
+adb -s emulator-5588 shell settings --user 0 get system font_scale
+exit=0
+1.0
+
+---stderr---
+
+=== font-readback-200.log ===
+adb -s emulator-5588 shell settings --user 0 get system font_scale
+exit=0
+2.0
+
+---stderr---
+
+=== font-restore-readback.log ===
+adb -s emulator-5588 shell settings --user 0 get system font_scale
+exit=0
+1.0
+
+---stderr---
+
+=== comparison-font-confirm.log ===
+adb -s emulator-5588 shell settings --user 0 get system font_scale
+exit=0
+2.0
+
+---stderr---
+
+=== comparison-font-restored.log ===
+adb -s emulator-5588 shell settings --user 0 get system font_scale
+exit=0
+1.0
+
+---stderr---
+
+=== reopen-launcher-icon.log ===
+adb -s emulator-5588 shell input tap 360 774
+exit=0
+
+---stderr---
+
+=== reopen-resumed.log ===
+adb -s emulator-5588 shell dumpsys activity activities | grep -F com.cooper.lithic.p2a2.debug | grep -F topResumedActivity
+exit=0
+    topResumedActivity=ActivityRecord{242251536 u0 com.cooper.lithic.p2a2.debug/com.cooper.lithic.p2a2.P2A2ExperienceActivity t252}
+
+---stderr---
+
+=== own-storage-check.log ===
+adb -s emulator-5588 shell run-as com.cooper.lithic.p2a2.debug sh -c 'test ! -d databases && test ! -d no_backup && test ! -d shared_prefs && echo NO_LEDGER_STORAGE'
+exit=0
+NO_LEDGER_STORAGE
+
+---stderr---
+
+=== runtime-end-pid.log ===
+adb -s emulator-5588 shell pidof com.android.systemui
+exit=0
+1027
+
+---stderr---
+
+=== runtime-end-anr.log ===
+adb -s emulator-5588 shell logcat -b events -d -s am_anr:I | head -n 21
+exit=0
+
+---stderr---
+
+=== phone-presence.json ===
+{
+  "expectedUsbFingerprintMatched": 0,
+  "authorizedDeviceOnline": false,
+  "emulatorOnline": true
+}
