@@ -61,6 +61,25 @@ require(b1QaValue == null || b1QaValue in setOf("true", "false")) {
     "b1QaVerification must be true or false"
 }
 val b1QaVerification = b1QaValue == "true"
+val p2A1Value = providers.gradleProperty("p2A1Verification").orNull
+require(p2A1Value == null || p2A1Value in setOf("true", "false")) {
+    "p2A1Verification must be true or false"
+}
+val p2A1Verification = p2A1Value == "true"
+if (p2A1Verification) {
+    require(!(lithicPrivateTrial || m22DeviceVerification || c2VisualVerification ||
+        c6IsolationVerification || v1AcceptanceVerification || photoLiteExperiment || b1QaVerification)) {
+        "P2-A1 requires its own verification identity"
+    }
+    require(!providers.gradleProperty("m12T04ProcessDeath").isPresent &&
+        providers.gradleProperty("m13Isolated").orNull in setOf(null, "true")) {
+        "P2-A1 requires M13IsolatedRunner and disallows historical process-death tests"
+    }
+    require(providers.environmentVariable("LITHIC_PRIVATE_APK_SIGNING").orNull != "true") {
+        "P2-A1 does not support private Release signing"
+    }
+    layout.buildDirectory.set(layout.projectDirectory.dir("build-p2-a1"))
+}
 if (b1QaVerification) {
     require(!lithicPrivateTrial && !m22DeviceVerification && !c2VisualVerification &&
         !c6IsolationVerification && !v1AcceptanceVerification && !photoLiteExperiment) {
@@ -160,7 +179,7 @@ android {
         versionCode = when {
             lithicPrivateTrial -> 35
             b1QaVerification -> 1
-            v1AcceptanceVerification -> 1
+            v1AcceptanceVerification || p2A1Verification -> 1
             photoLiteExperiment -> 1
             else -> 17
         }
@@ -171,8 +190,10 @@ android {
             photoLiteExperiment -> "0.1.0-photo-lite.p1"
             c6IsolationVerification -> "0.1.0-c6isolation"
             c2VisualVerification -> "0.1.0-c2visual"
+            p2A1Verification -> "0.1.0-p2a1"
             else -> "0.1.0-m22"
         }
+        if (p2A1Verification) testApplicationId = "com.cooper.lithic.p2a1.debug.test"
         if (c2VisualVerification) testApplicationId = "com.cooper.lithic.c2visual.debug.test"
         if (c6IsolationVerification) testApplicationId = "com.cooper.lithic.c6isolation.debug.test"
         if (v1AcceptanceVerification) testApplicationId = "com.cooper.lithic.v1acceptance.debug.test"
@@ -180,7 +201,7 @@ android {
         buildConfigField("boolean", "PHOTO_LITE_EXPERIMENT", "false")
         buildConfigField("boolean", "PHOTO_LITE_PRODUCTION", "false")
         // T04 is an explicit test-only build; never start the default ledger for self-kill tests.
-        testInstrumentationRunner = if (photoLiteExperiment || v1AcceptanceVerification || c6IsolationVerification || c2VisualVerification || providers.gradleProperty("m13Isolated").orNull == "true")
+        testInstrumentationRunner = if (photoLiteExperiment || v1AcceptanceVerification || c6IsolationVerification || c2VisualVerification || p2A1Verification || providers.gradleProperty("m13Isolated").orNull == "true")
             "com.cooper.lithic.app.M13IsolatedRunner"
         else if (providers.gradleProperty("m12T04ProcessDeath").orNull == "true")
             "com.cooper.lithic.data.backup.M12ProcessDeathRunner"
@@ -292,6 +313,7 @@ android {
                 b1QaVerification -> ".b1qa.debug"
                 m22DeviceVerification -> ".m22verify.debug"
                 c2VisualVerification -> ".c2visual.debug"
+                p2A1Verification -> ".p2a1.debug"
                 c6IsolationVerification -> ".c6isolation.debug"
                 v1AcceptanceVerification -> ".v1acceptance.debug"
                 photoLiteExperiment -> ".photolite.debug"
@@ -328,6 +350,13 @@ android {
         }
         sourceSets.getByName("debug").manifest.srcFile("src/privateTrial/AndroidManifest.xml")
     }
+    if (p2A1Verification) {
+        require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
+            "P2-A1 requires the existing Debug key"
+        }
+        sourceSets.getByName("debug").manifest.srcFile("src/p2A1/AndroidManifest.xml")
+        sourceSets.getByName("androidTest").java.srcDir("src/p2A1/androidTest/java")
+    }
     if (c2VisualVerification) {
         require(signingConfigs.getByName("debug").storeFile?.isFile == true) {
             "C2 visual capture requires the existing Debug key; do not generate a replacement"
@@ -363,7 +392,7 @@ androidComponents {
     }
     beforeVariants(selector().withBuildType("release")) { variant ->
         if (lithicPrivateTrial || m22DeviceVerification || b1QaVerification || photoLiteExperiment ||
-            v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification) variant.enable = false
+            v1AcceptanceVerification || c2VisualVerification || c6IsolationVerification || p2A1Verification) variant.enable = false
     }
     onVariants(selector().withBuildType("release")) { variant ->
         variant.outputs.forEach { output ->
@@ -436,6 +465,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.test.espresso.core)
     // Only the Debug test-host activity; no test framework enters release runtime.
-    if (!b1QaVerification && !photoLiteExperiment && !lithicPrivateTrial && !c6IsolationVerification && !v1AcceptanceVerification)
+    if (!b1QaVerification && !photoLiteExperiment && !lithicPrivateTrial && !c6IsolationVerification && !v1AcceptanceVerification && !p2A1Verification)
         debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
