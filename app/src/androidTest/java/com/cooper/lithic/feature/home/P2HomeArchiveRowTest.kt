@@ -61,7 +61,7 @@ class P2HomeArchiveRowTest {
         }
         compose.onAllNodesWithText("数码", useUnmergedTree = true)
             .filterToOne(hasAnyAncestor(hasTestTag("home-project-preview-project-1"))).assertExists()
-        compose.onAllNodesWithContentDescription("当前日均成本，9.92元/天", useUnmergedTree = true)
+        compose.onAllNodesWithContentDescription("项目日均成本，9.92元/天", useUnmergedTree = true)
             .filterToOne(hasAnyAncestor(hasTestTag("home-project-preview-project-1"))).assertExists()
         compose.onAllNodesWithContentDescription("历史平均日成本，0.60元/天", useUnmergedTree = true)
             .filterToOne(hasAnyAncestor(hasTestTag("home-subscription-preview-subscription-1"))).assertExists()
@@ -125,7 +125,7 @@ class P2HomeArchiveRowTest {
         assertTrue(layout.single().lineCount > 1)
         assertFalse(layout.single().hasVisualOverflow)
         val time = compose.onNodeWithText("持有 ${row.cost.heldDays} 天", useUnmergedTree = true).fetchSemanticsNode()
-        val amount = compose.onNodeWithContentDescription("当前日均成本，负9876543210987654.32元/天", useUnmergedTree = true)
+        val amount = compose.onNodeWithContentDescription("项目日均成本，负9876543210987654.32元/天", useUnmergedTree = true)
         assertTrue(amount.fetchSemanticsNode().positionInRoot.y >= time.positionInRoot.y + time.size.height - 1f)
         compose.onNodeWithTag("amount-open-full").performScrollTo().performClick()
         compose.onNodeWithTag("amount-full-value").assertTextEquals("−¥9876543210987654.32/天")

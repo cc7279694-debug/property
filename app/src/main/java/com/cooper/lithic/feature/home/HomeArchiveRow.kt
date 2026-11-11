@@ -54,7 +54,6 @@ internal fun HomeArchiveRow(
     coverReference: CoverReference,
     tag: String,
     onOpen: (() -> Unit)?,
-    spokenMetric: String = metric,
 ) {
     val density = LocalDensity.current
     val measurer = rememberTextMeasurer()
@@ -102,11 +101,11 @@ internal fun HomeArchiveRow(
                     if (beside) {
                         Row(horizontalArrangement = Arrangement.spacedBy(gap), verticalAlignment = Alignment.CenterVertically) {
                             ArchiveFacts(name, category, status, time, Modifier.weight(1f))
-                            ArchiveCost(amount, metric, spokenMetric, Modifier.width(amountWidth), Alignment.End)
+                            ArchiveCost(amount, metric, Modifier.width(amountWidth), Alignment.End)
                         }
                     } else {
                         ArchiveFacts(name, category, status, time)
-                        ArchiveCost(amount, metric, spokenMetric)
+                        ArchiveCost(amount, metric)
                     }
                 }
             }
@@ -133,12 +132,11 @@ private fun ArchiveFacts(name: String, category: String, status: String, time: S
 private fun ArchiveCost(
     amount: BigDecimal?,
     metric: String,
-    spokenMetric: String,
     modifier: Modifier = Modifier,
     alignment: Alignment.Horizontal = Alignment.Start,
 ) {
     Column(modifier, horizontalAlignment = alignment) {
-        MoneyMetric(amount, level = MoneyMetricLevel.ROW, label = spokenMetric)
+        MoneyMetric(amount, level = MoneyMetricLevel.ROW, label = metric)
         // The money component supplies the combined spoken metric and value.
         Text(metric, Modifier.clearAndSetSemantics {},
             style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)

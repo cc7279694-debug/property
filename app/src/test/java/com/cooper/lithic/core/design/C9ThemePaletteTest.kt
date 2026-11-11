@@ -72,6 +72,28 @@ class C9ThemePaletteTest {
         }
     }
 
+    @Test fun actual_home_brand_text_actions_and_fab_meet_contrast_in_each_theme() {
+        for (theme in LithicAppearance.entries) {
+            val colors = lithicColorScheme(theme)
+            val brand = lithicVisuals(theme).brandSurface
+            val pairs = mapOf(
+                "brand text" to (colors.onBackground to brand),
+                "brand secondary text" to (colors.onSurfaceVariant to brand),
+                "brand error" to (colors.error to brand),
+                "archive text" to (colors.onSurface to colors.background),
+                "archive secondary text" to (colors.onSurfaceVariant to colors.background),
+                "archive error" to (colors.error to colors.background),
+                "archive actions" to (colors.primary to colors.background),
+                "FAB glyph" to (colors.onPrimary to colors.primary),
+            )
+            for ((role, pair) in pairs) {
+                val ratio = contrast(pair.first, pair.second)
+                println("P2_HOME_CONTRAST ${theme.storageId} $role $ratio")
+                assertTrue("${theme.storageId}/$role=$ratio", ratio >= 4.5)
+            }
+        }
+    }
+
     private fun contrast(a: Color, b: Color): Double {
         fun luminance(c: Color): Double {
             fun linear(v: Float) = if (v <= 0.04045f) v / 12.92 else ((v + 0.055) / 1.055).pow(2.4)

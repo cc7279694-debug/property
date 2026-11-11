@@ -20,6 +20,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.core.design.LocalLithicVisuals
 import com.cooper.lithic.domain.report.OverviewResult
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -154,7 +155,7 @@ class C2C1HomeVisualContractTest {
                 pixelsPerDp = density
                 CompositionLocalProvider(LocalDensity provides Density(density, fontScale)) {
                     LithicTheme(darkTheme = dark) {
-                        summaryBackground = MaterialTheme.colorScheme.background
+                        summaryBackground = LocalLithicVisuals.current.brandSurface
                         Box(Modifier.requiredSize(widthDp.dp, height).background(MaterialTheme.colorScheme.background)
                             .testTag("c1-home-canvas")) {
                             HomeShell(99, {}, {}, 99, {}, {}, overview = overview, hasReadNotice = retained,

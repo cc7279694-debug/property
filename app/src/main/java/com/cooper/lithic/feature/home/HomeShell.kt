@@ -25,6 +25,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.R
 import com.cooper.lithic.core.design.*
@@ -53,12 +54,15 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     val hasSnapshotNotice = hasReadNotice || readError != null
     val empty = c2HomeIsEmpty(overview, hasSnapshotNotice)
     val readStatus = homeOverviewReadStatus(overview, hasSnapshotNotice, readError)
-    Box(modifier.fillMaxSize().testTag("home-content-area")) {
-        Box(Modifier.fillMaxSize().testTag("home-scroll-viewport")) {
+    BoxWithConstraints(modifier.fillMaxSize().testTag("home-content-area")) {
+        val columnMaxWidth = 560.dp
+        val sideGutter = (maxWidth - columnMaxWidth).coerceAtLeast(0.dp) / 2
+        val pageInset = if (maxWidth <= 360.dp) 16.dp else 24.dp
+        Box(Modifier.align(Alignment.TopCenter).widthIn(max = columnMaxWidth).fillMaxSize().testTag("home-scroll-viewport")) {
             Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
                 .padding(bottom = 88.dp).testTag("home-screen")) {
-                HomeCostHeader(overview, readStatus, onSearch, onExplain = { explanationOpen = true })
-                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page, vertical = LithicSpacing.small),
+                HomeCostHeader(overview, readStatus, pageInset, onSearch, onExplain = { explanationOpen = true })
+                Column(Modifier.fillMaxWidth().padding(horizontal = pageInset, vertical = LithicSpacing.small),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
                     if (empty) Text("从右下角＋开始，记下一件物品或订阅。",
                         Modifier.fillMaxWidth().testTag("home-empty-guidance"),
@@ -73,8 +77,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                                 HomeArchiveRow(row.project.name, row.category.name, C2Glyph.Project,
                                     projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "项目日均成本",
                                     row.cost.dailyRate, CoverReference(CoverOwnerType.PROJECT, row.project.id, row.project.coverAssetId),
-                                    "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } },
-                                    spokenMetric = "当前日均成本")
+                                    "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } })
                             }
                         }
                         Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
@@ -114,7 +117,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
             }
         }
         FloatingActionButton(onClick = { addOpen = true },
-            modifier = Modifier.align(Alignment.BottomEnd).padding(end = 16.dp, bottom = 16.dp)
+            modifier = Modifier.align(Alignment.BottomEnd).padding(end = sideGutter + 16.dp, bottom = 16.dp)
                 .size(56.dp).testTag("home-open-add"), shape = CircleShape,
             containerColor = MaterialTheme.colorScheme.primary, contentColor = MaterialTheme.colorScheme.onPrimary,
             elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 2.dp, pressedElevation = 3.dp)) {
@@ -144,11 +147,11 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
 }
 
 @Composable
-private fun HomeCostHeader(overview: OverviewResult?, readStatus: HomeOverviewReadStatus, onSearch: (() -> Unit)?, onExplain: () -> Unit) {
+private fun HomeCostHeader(overview: OverviewResult?, readStatus: HomeOverviewReadStatus, pageInset: Dp,
+    onSearch: (() -> Unit)?, onExplain: () -> Unit) {
     val colors = MaterialTheme.colorScheme
     val typography = MaterialTheme.typography
     val headerColor = LocalLithicVisuals.current.brandSurface
-    val pageInset = LithicSpacing.page
     val plainHeader = headerColor == colors.background
     Surface(Modifier.fillMaxWidth(), color = headerColor, contentColor = colors.onBackground) {
         Column {
@@ -292,7 +295,10 @@ private fun PreviewHeading(label: String, onAll: () -> Unit, tag: String, emptyL
             emptyLabel?.let { Text(it, style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.testTag("home-subscription-empty-compact")) }
         }
-        TextButton(onAll, Modifier.heightIn(min = 48.dp).testTag(tag)) { Text("全部"); C2Icon(C2Glyph.Chevron) }
+        TextButton(onAll, Modifier.heightIn(min = 48.dp).testTag(tag).semantics { contentDescription = "查看全部$label" }) {
+            Text("全部")
+            C2Icon(C2Glyph.Chevron)
+        }
     }
 }
 
