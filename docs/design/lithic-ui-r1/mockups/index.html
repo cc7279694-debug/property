@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>砺石 LITHIC · 界面设计审查</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e9eeef;color:#1e2e36;font:15px/1.5 "Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}
+button{font:inherit;color:inherit;background:none;border:0;padding:0}
+h1,h2,h3,p{margin:0}
+svg{display:block;flex:none}
+a{color:inherit}
+.board{width:max-content;max-width:100%;margin:auto;padding:30px 30px 24px}
+.board+.board{margin-top:28px}
+.board h1{font-size:30px;letter-spacing:-.04em;line-height:1.25}
+.board header p{margin-top:6px;color:#465961}
+.board header{margin-bottom:22px}
+.grid{display:flex;flex-wrap:wrap;gap:22px;align-items:start}
+.caption{display:block;margin-top:9px;font-size:14px;font-weight:650}
+.phone{--bg:#f7f6f2;--paper:#fff;--hero:#e1ebf2;--on-hero:#243c4b;--ink:#232927;--muted:#505c5e;--line:#d9dddc;--accent:#355b72;--on-accent:#fff;--thumb:#e5edf2;--pill:#e1ede6;--on-pill:#2c5640;--fab:#365b71;--nav:#fffdf9;width:360px;height:788px;display:flex;flex-direction:column;border:1px solid #a9b4b8;border-radius:28px;overflow:hidden;background:var(--bg);color:var(--ink);box-shadow:0 5px 12px #1f323019;position:relative;font-size:14px}
+.white{--bg:#fff;--hero:#f2f2f2;--on-hero:#222;--ink:#202020;--muted:#575757;--line:#ddd;--accent:#333;--thumb:#eee;--pill:#ebebeb;--on-pill:#383838;--fab:#262626;--nav:#fff}
+.dark{--bg:#141414;--paper:#1e1e1e;--hero:#282828;--on-hero:#f4f4f4;--ink:#f1f1f1;--muted:#c1c1c1;--line:#404040;--accent:#dcdcdc;--on-accent:#202020;--thumb:#313131;--pill:#343434;--on-pill:#efefef;--fab:#e2e2e2;--nav:#181818}
+.status{height:33px;flex:none;padding:10px 21px 0;display:flex;justify-content:space-between;font:600 12px/1.1 system-ui}
+.status span+span{display:flex;align-items:center;gap:4px}
+.top{min-height:54px;flex:none;padding:0 12px 0 16px;display:flex;align-items:center;gap:8px}
+.logo{width:30px;height:30px;border-radius:8px}
+.top h2{flex:1;font-size:21px;line-height:1.25;overflow-wrap:anywhere}
+.top .icon{width:48px;height:48px;display:grid;place-items:center;flex:none}
+.top.subpage{padding-left:6px}
+.top.subpage h2{font-size:17px}
+.content{padding:8px 16px 16px;overflow:auto;flex:1;scrollbar-width:none;min-height:0}
+.content::-webkit-scrollbar{display:none}
+.hero{background:var(--hero);color:var(--on-hero);border-radius:18px;padding:8px 16px 15px}
+.hero-head{display:flex;justify-content:space-between;align-items:center;min-height:44px;font-weight:650}
+.hero-head .icon{width:48px;height:48px;display:grid;place-items:center;margin-right:-12px}
+.amount{font-family:"Segoe UI",system-ui,sans-serif;font-variant-numeric:tabular-nums;font-weight:650;line-height:1.12;letter-spacing:-.034em;white-space:nowrap}
+.hero .amount{font-size:42px}
+.amount small{font-size:.46em;letter-spacing:0;margin-left:.23em;font-weight:600}
+.hero-foot{font-size:12px;margin-top:9px;display:flex;flex-wrap:wrap;column-gap:6px}
+.count-caption{margin:14px 0 5px;color:var(--muted);font-size:12px}
+.counts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.count{display:flex;text-align:left;align-items:center;gap:8px;min-height:56px;padding:6px 9px;border-radius:12px;border:1px solid var(--line);background:var(--paper)}
+.count b{font:650 23px/1 "Segoe UI",system-ui}
+.count span:last-child{font-size:12px}
+.glyph{display:grid;place-items:center;color:var(--accent);background:var(--thumb);width:30px;height:30px;border-radius:8px;flex:none}
+.glyph.lg{width:44px;height:44px;border-radius:10px}
+.glyph.detail-icon{width:54px;height:54px;border-radius:12px}
+.section-head{min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.section-head h3,.detail-heading{font-size:16px;font-weight:700}
+.text-action{color:var(--accent);min-width:48px;min-height:48px;text-align:right;font-weight:650;font-size:13px}
+.entry{display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:9px;min-height:68px;padding:8px 0;border-bottom:1px solid var(--line);width:100%;text-align:left}
+.entry strong{font-size:15px;line-height:1.3;display:block;overflow-wrap:anywhere}
+.entry-meta{font-size:12px;display:block;color:var(--muted);margin-top:4px}
+.entry-cost{text-align:right}
+.entry-cost .amount{font-size:20px}
+.entry-cost .amount small{font-size:11px}
+.entry-cost .entry-meta{font-size:11px}
+.entry-list{padding:4px 12px;background:var(--paper);border-radius:14px}
+.entry-list .entry{border-bottom:0}
+.quiet-action{display:flex;align-items:center;gap:9px;min-height:48px;width:100%;color:var(--accent);font-weight:650;text-align:left}
+.quiet-action .chevron{margin-left:auto}
+.fab-bar{display:flex;justify-content:flex-end;padding:0 16px 9px;flex:none}
+.fab{width:56px;height:56px;border-radius:50%;background:var(--fab);color:var(--on-accent);display:grid;place-items:center}
+.nav{display:grid;grid-template-columns:repeat(3,1fr);height:61px;flex:none;background:var(--nav);border-top:1px solid var(--line);padding-top:3px}
+.nav button{display:grid;justify-items:center;align-content:center;min-height:48px;gap:2px;color:var(--muted);font-size:12px}
+.nav button span{width:48px;height:25px;display:grid;place-items:center}
+.nav [aria-current] span{background:var(--thumb);color:var(--accent);border-radius:14px}
+.nav [aria-current]{color:var(--ink);font-weight:700}
+.gesture{height:16px;flex:none;display:grid;place-items:center;background:var(--nav)}
+.gesture::after{content:"";width:89px;height:4px;border-radius:3px;background:var(--ink);opacity:.7}
+.empty{text-align:center;margin:50px 0 0;color:var(--muted)}
+.empty .glyph{margin:0 auto 10px}
+.empty h3{color:var(--ink);font-size:16px}
+.empty p{margin-top:5px;font-size:13px}
+.identity{display:flex;align-items:center;gap:12px;margin:3px 0 14px}
+.identity h3{font-size:23px;line-height:1.28;overflow-wrap:anywhere}
+.identity p,.pill{font-size:12px;margin-top:4px}
+.identity p{color:var(--muted)}
+.pill{display:inline-block;background:var(--pill);color:var(--on-pill);border-radius:16px;padding:1px 8px;margin-right:5px}
+.detail-hero{padding:12px 14px;display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;justify-content:space-between}
+.metric-label{font-weight:650;font-size:13px}
+.detail-hero .amount{font-size:34px;margin-top:6px}
+.duration{text-align:right;font-size:12px;color:var(--on-hero)}
+.duration b{font-size:22px;margin-right:3px}
+.facts{margin-top:12px;border-block:1px solid var(--line);padding:9px 0;display:grid;grid-template-columns:1.16fr 1fr 1fr;gap:4px}
+.facts span{display:block;color:var(--muted);font-size:12px}
+.facts b{display:block;font-size:15px;margin-top:3px}
+.timeline{list-style:none;padding:0;margin:0}
+.timeline li{display:flex;align-items:center;gap:9px;min-height:49px;border-bottom:1px solid var(--line)}
+.timeline li .glyph{width:28px;height:28px}
+.timeline time{display:block;color:var(--muted);font-size:11px}
+.timeline .amount{margin-left:auto;font-size:16px}
+.detail-footer{padding:7px 16px 8px;border-top:1px solid var(--line)}
+.primary{background:var(--accent);color:var(--on-accent);width:100%;border-radius:14px;min-height:48px;font-weight:650}
+.stress{width:320px}
+.stress .top h2{font-size:25px}
+.stress .content{font-size:24px}
+.stress .identity{align-items:flex-start}
+.stress .identity h3{font-size:28px}
+.stress .identity p{font-size:18px}
+.stress .detail-heading{font-size:24px;margin:16px 0 6px}
+.stress .timeline li{display:grid;grid-template-columns:30px 1fr;gap:4px 10px;padding:12px 0}
+.stress .timeline time{font-size:17px}
+.stress .timeline .amount{grid-column:2;margin:4px 0 0;white-space:normal;word-spacing:0;font-size:30px;line-height:1.12}
+.stress .quiet-action,.stress .primary{font-size:21px}
+.list-create{display:inline-flex;align-items:center;gap:7px;width:auto;padding:0 14px;margin:0 0 12px}
+.photo-action{min-height:48px;min-width:48px;margin-left:auto;flex:none;color:var(--accent);font-size:13px;font-weight:650;padding:0 4px}
+@media(max-width:700px){.board{width:100%;padding:18px 12px}
+.grid{justify-content:center}
+.phone{max-width:100%}
+.board h1{font-size:24px}}
+</style>
+<div id="root"></div>
+<script>
+const paths={
+ now:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 15l3-4 2 2 3-5"/>',
+ history:'<path d="M4 12a8 8 0 1 1 2.4 5.7M4 7v5h5m3-4v5l3 1"/>',
+ settings:'<circle cx="12" cy="12" r="3"/><path d="m9 3-.8 2.3-2.2 1-2.5-.5-1.6 2.8 1.7 1.9v3l-1.7 1.9 1.6 2.8 2.5-.5 2.2 1L9 21h6l.8-2.3 2.2-1 2.5.5 1.6-2.8-1.7-1.9v-3l1.7-1.9-1.6-2.8-2.5.5-2.2-1L15 3z"/>',
+ search:'<circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4.5 4.5"/>',
+ info:'<circle cx="12" cy="12" r="8"/><path d="M12 11v5m0-8h.01"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ box:'<rect x="4" y="5" width="16" height="14" rx="2"/><path d="M4 9h16m-10 4h4"/>',
+ repeat:'<path d="M18 8a7 7 0 0 0-12-2L4 8m0-4v4h4m-2 8a7 7 0 0 0 12 2l2-2m0 4v-4h-4"/>',
+ book:'<rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 8h6m-6 3h6m-4 6h2"/>',
+ chart:'<path d="M5 5v14h14M8 15l4-5 3 2 4-5"/>',
+ right:'<path d="m9 6 6 6-6 6"/>',
+ back:'<path d="m11 6-6 6 6 6m-5-6h13"/>',
+ more:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
+ down:'<path d="M12 5v14m-5-5 5 5 5-5"/>',
+ up:'<path d="M12 19V5m-5 5 5-5 5 5"/>',
+ signal:'<path d="M4 18v-2m5 2v-5m5 5V9m5 9V5"/>',
+ battery:'<rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 10v4m-16-2h9"/>'
+};
+const icon=(id,size=22)=>`<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${paths[id]}</svg>`;
+const button=(label,id)=>`<button class="icon" aria-label="${label}">${icon(id)}</button>`;
+const glyph=(id,style='')=>`<span class="glyph ${style}">${icon(id)}</span>`;
+const amount=(value,day=false)=>`<span class="amount">${value}${day?'<small>/天</small>':''}</span>`;
+const pageHeader=(title,opts={})=>opts.home?`<div class="top"><img class="logo" alt="" src="../../../../app/src/main/res/drawable-nodpi/ic_launcher_scene_p3.png"><h2>${title}</h2>${button('搜索','search')}</div>`:`<div class="top subpage">${button('返回','back')}<h2>${title}</h2>${opts.menu?button('更多操作','more'):''}${opts.info?button(opts.info,'info'):''}</div>`;
+const entry=(project)=>`<button class="entry">${glyph(project?'book':'repeat','lg')}<span><strong>${project?'合成阅读器':'合成阅读服务'}</strong><span class="entry-meta">${project?'数码 · 持有中 · 121 天':'订阅中 · 折算付费 30 天'}</span></span><span class="entry-cost">${amount(project?'¥9.92':'¥0.60',true)}<span class="entry-meta">${project?'当前日均':'历史平均日成本'}</span></span></button>`;
+const nav=`<nav class="nav" aria-label="主导航">${[['现在','now'],['回看','history'],['设置','settings']].map(([name,id],i)=>`<button${i===0?' aria-current="page"':''}><span>${icon(id,20)}</span>${name}</button>`).join('')}</nav>`;
+const phone=(theme,header,body,footer='')=>`<div class="phone ${theme}"><div class="status"><span>9:41</span><span>${icon('signal',13)}${icon('battery',16)}</span></div>${header}<div class="content">${body}</div>${footer}<div class="gesture" aria-hidden="true"></div></div>`;
+const home=(theme,empty=false)=>phone(theme,pageHeader('砺石',{home:true}),`
+  <section class="hero"><div class="hero-head">当前日均成本${button('当前日均成本说明','info')}</div>
+  ${empty?'<span class="amount" aria-label="暂无日均成本">—</span>':amount('¥10.52',true)}
+  <p class="hero-foot"><span>非今日扣款</span><span aria-hidden="true">·</span><span>截至 2026-10-26</span></p></section>
+  <p class="count-caption">已录入 · 含历史</p><div class="counts">${[['box','长期项目'],['repeat','订阅服务']].map(([id,label])=>`<div class="count">${glyph(id)}<b>${empty?0:1}</b><span>${label}</span></div>`).join('')}</div>
+  ${empty?`<section class="empty">${glyph('box','lg')}<h3>还没有记录</h3><p>从一个物品或一项订阅开始。</p></section>`:`<section><div class="section-head"><h3>当前长期项目</h3><button class="text-action" aria-label="全部长期项目">全部</button></div>${entry(true)}</section>
+  <section><div class="section-head"><h3>当前订阅</h3><button class="text-action" aria-label="全部订阅">全部</button></div>${entry(false)}</section>
+  <button class="quiet-action">${icon('chart',19)}成本构成<span class="chevron">${icon('right',16)}</span></button>`}`,
+  `<div class="fab-bar"><button class="fab" aria-label="新增记录">${icon('plus',25)}</button></div>${nav}`);
+const list=()=>phone('mist',pageHeader('长期项目',{info:'长期项目说明'}),`
+  <button class="primary list-create">${icon('plus',18)}新增长期项目</button>
+  <div class="entry-list">${entry(true)}</div>`);
+const identity=(name,stress=false)=>`<div class="identity">
+  ${glyph('book','detail-icon')}
+  <div><h3>${name}</h3><p><span class="pill">持有中</span>${stress?'':'数码'}</p>${stress?'':'<p>2026-06-28 开始持有</p>'}</div>
+  ${stress?'':'<button class="photo-action">添加照片</button>'}
+</div>`;
+const timeline=(label,date,value,id)=>`<li>${glyph(id)}<span>${label}<time>${date}</time></span>${amount(value)}</li>`;
+const footer=`<div class="detail-footer"><button class="primary">记一笔</button></div>`;
+const detail=()=>phone('mist',pageHeader('项目详情',{menu:true}),`
+  ${identity('合成阅读器')}
+  <section class="hero detail-hero"><div><p class="metric-label">当前日均成本</p>${amount('¥9.92',true)}</div><div class="duration">已持有<br><b>121</b>天</div></section>
+  <div class="facts"><div><span>净投入</span><b class="amount">¥1,200.00</b></div><div><span>累计投入</span><b class="amount">¥1,288.00</b></div><div><span>累计收回</span><b class="amount">¥88.00</b></div></div>
+  <div class="section-head"><h3>金额记录</h3></div><ul class="timeline">${timeline('收回','2026-10-06','¥88.00','down')}${timeline('初始投入','2026-06-28','¥1,288.00','up')}</ul>
+  <button class="quiet-action">${icon('chart',19)}查看成本历史<span class="chevron">${icon('right',16)}</span></button>`,footer);
+const stress=()=>phone('mist stress',pageHeader('项目详情',{menu:true}),`
+  ${identity('长名称的个人物品档案与维修收回事实记录',true)}
+  <h3 class="detail-heading">金额记录</h3><ul class="timeline"><li>${glyph('down')}<span>收回<time>2026-10-06</time></span><span class="amount" aria-label="收回人民币 9,999,999,999.99 元">¥9,999,<wbr>999,999.99</span></li></ul>
+  <button class="quiet-action">${icon('chart',22)}查看成本历史<span class="chevron">${icon('right',16)}</span></button>`,footer);
+const board=(id,title,subtitle,views)=>`<section class="board" id="${id}"><header><h1>${title}</h1><p>设计示例 · ${subtitle}</p></header><div class="grid">${views.map(([caption,view])=>`<div>${view}<span class="caption">${caption}</span></div>`).join('')}</div></section>`;
+const homeBoard=board('home','砺石 LITHIC · 三主题首页','合成记录 · 同一布局与内容 · 360dp 概念宽度',[
+ ['01 岩白雾蓝',home('mist')],['02 纯白',home('white')],['03 黑灰',home('dark')]
+]);
+const statesBoard=board('states','砺石 LITHIC · 记录与边界状态','合成记录 · 360dp 概念宽度 · 末张为 320dp、约 180% 视觉模拟',[
+ ['04 长期项目列表',list()],['05 长期项目详情',detail()],['06 首页空态',home('mist',true)],['07 长名称、大金额与大字',stress()]
+]);
+const mode=new URLSearchParams(location.search).get('board');
+document.getElementById('root').innerHTML=mode==='home'?homeBoard:mode==='states'?statesBoard:homeBoard+statesBoard;
+if(new URLSearchParams(location.search).has('inspect')) window.addEventListener('load',()=>{
+ document.body.dataset.qc=JSON.stringify([...document.querySelectorAll('.phone')].map(p=>{
+  const c=p.querySelector('.content'), logo=p.querySelector('.logo'), amount=p.querySelector('.timeline .amount');
+  const targets=[...p.querySelectorAll('button')].map(b=>Math.min(b.offsetWidth,b.offsetHeight));
+  return {width:p.offsetWidth,x:c.scrollWidth-c.clientWidth,y:c.scrollHeight-c.clientHeight,minTarget:Math.min(...targets),logo:logo?logo.naturalWidth:null,amount:amount?.textContent??null};
+ }));
+});
+</script>
+</html>
