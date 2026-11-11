@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>砺石 LITHIC · 私人物档 R2.1</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #242924; background: #eaece6; font: 15px/1.5 "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif; }
+  h1, h2, h3, p, figure, dl, dd { margin: 0; }
+  button { border: 0; padding: 0; color: inherit; background: none; font: inherit; }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  svg { display: block; flex: none; }
+
+  .board { width: max-content; max-width: 100%; margin: auto; padding: 25px 26px 20px; }
+  .board + .board { border-top: 1px solid #c8ccc1; }
+  .board-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
+  .board-id { font-size: 12px; color: #515b51; font-weight: 650; letter-spacing: .08em; }
+  .board-head h1 { font-size: 34px; line-height: 1.2; letter-spacing: -.04em; margin-top: 4px; }
+  .board-head p:last-child { color: #515b51; margin-top: 5px; }
+  .board-scope { text-align: right; white-space: nowrap; font-size: 12px; color: #515b51; }
+  .board-grid { display: flex; flex-wrap: wrap; gap: 22px; }
+  .board-grid > figure { max-width: 100%; }
+  figcaption { font-size: 13px; margin-top: 7px; font-weight: 700; }
+  figcaption span { color: #515b51; font-weight: 400; margin-left: 7px; }
+  .board-credit { color: #515b51; font-size: 11px; margin-top: 8px; }
+  .board-credit a { color: inherit; }
+
+  .phone {
+    --base: #f7f5ef; --intro: #eaf0f2; --ink: #202d35; --muted: #4c5a60;
+    --accent: #31556a; --on-accent: #ffffff; --nav-active: #e4edf0;
+    --line: #d3dad9; --intro-line: #ccd9de; --matte: #e4e9e8;
+    --notice: #753c2e; --nav-bg: #f8f7f2;
+    width: 360px; max-width: 100%; height: 826px; border: 1px solid #a6aba2;
+    border-radius: 24px; overflow: hidden; background: var(--base); color: var(--ink);
+    display: grid; grid-template-rows: 30px 55px minmax(0, 1fr) 62px 61px 14px;
+    box-shadow: 0 5px 14px #202a1c14; font-size: 14px;
+  }
+  .white {
+    --base: #ffffff; --intro: #ffffff; --ink: #1c1c1c; --muted: #555555;
+    --accent: #252525; --on-accent: #ffffff; --nav-active: #eeeeee;
+    --line: #e0e0e0; --intro-line: #d9d9d9; --matte: #f1f1f1;
+    --notice: #79392e; --nav-bg: #ffffff;
+  }
+  .dark {
+    --base: #141414; --intro: #222222; --ink: #f1f1f1; --muted: #bcbcbc;
+    --accent: #e3e3e3; --on-accent: #181818; --nav-active: #313131;
+    --line: #3d3d3d; --intro-line: #414141; --matte: #303030;
+    --notice: #ffc0aa; --nav-bg: #191919;
+  }
+  .status, .brand { background: var(--intro); }
+  .status { display: flex; align-items: center; justify-content: space-between; padding: 2px 20px 0; font: 650 11px/1 "Segoe UI", system-ui, sans-serif; }
+  .status-icons { display: flex; align-items: center; gap: 5px; }
+  .brand { display: flex; align-items: center; gap: 8px; padding: 0 10px 0 21px; }
+  .brand-logo { width: 28px; height: 28px; object-fit: cover; border-radius: 6px; }
+  .brand h2 { font-size: 22px; line-height: 1.1; flex: 1; font-weight: 700; letter-spacing: -.035em; }
+  .icon-button { width: 48px; min-height: 48px; display: grid; place-items: center; flex: none; }
+  .scroll { overflow: auto; scrollbar-width: none; }
+  .scroll::-webkit-scrollbar { display: none; }
+  .cost { padding: 3px 21px 17px; background: var(--intro); border-bottom: 1px solid var(--intro-line); }
+  .white .cost { position: relative; border-bottom-color: transparent; }
+  .white .cost::after { position: absolute; right: 21px; bottom: -1px; left: 21px; height: 1px; background: var(--intro-line); content: ""; }
+  .cost-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 14px; font-weight: 650; }
+  .cost-title .icon-button { color: var(--accent); margin-right: -11px; }
+  .money { color: var(--ink); font: 650 21px/1.08 "Segoe UI", system-ui, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.035em; white-space: nowrap; }
+  .money span { font: 550 .52em/1.08 "Microsoft YaHei", sans-serif; letter-spacing: 0; padding-left: 3px; }
+  .cost-value { display: block; margin: -1px 0 8px; font-size: 43px; font-weight: 630; }
+  .white .cost-value { font-weight: 680; }
+  .fact { color: var(--muted); font-size: 12px; line-height: 1.45; }
+  .cost-date { display: flex; flex-wrap: wrap; gap: 0 7px; }
+  .archive { padding: 6px 21px 0; }
+  .section-title { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+  .section-title h3 { font-size: 17px; line-height: 1.3; font-weight: 700; }
+  .link { color: var(--accent); min-width: 48px; min-height: 48px; font-size: 13px; font-weight: 650; }
+  .section-title .link { text-align: right; }
+  .record { min-height: 72px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; width: 100%; text-align: left; border-bottom: 1px solid var(--line); padding: 5px 0 10px; }
+  .record + .record { padding-top: 10px; }
+  .photo-frame { display: block; width: 80px; height: 60px; border-radius: 5px; background: var(--matte); overflow: hidden; }
+  .photo-frame img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  .type-glyph { width: 44px; height: 48px; display: grid; place-items: center; color: var(--accent); }
+  .record-title { display: block; font-size: 16px; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+  .record-meta { display: flex; flex-wrap: wrap; column-gap: 8px; margin-top: 4px; }
+  .record-meta span { white-space: nowrap; }
+  .record-metric { text-align: right; }
+  .metric-label { display: block; margin-top: 4px; font-size: 11px; }
+  .archive section + section { margin-top: 5px; }
+  .counts { margin-top: 16px; padding: 0 0 12px; border-bottom: 1px solid var(--line); }
+  .counts > p { color: var(--muted); font-size: 12px; }
+  .counts dl { display: flex; flex-wrap: wrap; gap: 3px 18px; margin-top: 3px; font-size: 13px; }
+  .counts dl > div { display: flex; align-items: baseline; gap: 5px; }
+  .counts dd { order: -1; font: 700 18px/1.12 "Segoe UI", system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+  .breakdown { width: 100%; display: flex; justify-content: space-between; align-items: center; min-height: 48px; color: var(--accent); font-size: 13px; font-weight: 650; text-align: left; }
+  .message { color: var(--muted); min-height: 41px; padding: 0 0 12px; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .cost-status { margin-top: 9px; color: var(--muted); font-size: 13px; }
+  .read-warning { color: var(--notice); font-size: 13px; line-height: 1.4; }
+  .empty-guide { margin: 13px 0 7px; font-size: 15px; }
+  .retained { color: var(--notice); font-size: 11px; font-weight: 550; }
+  .read-strip { border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 8px; min-height: 48px; }
+  .read-strip > p { flex: 1; }
+  .read-strip .link { flex: none; padding-inline: 3px; }
+
+  .fab-row { display: flex; align-items: center; justify-content: flex-end; padding: 0 17px 4px; }
+  .fab { width: 56px; height: 56px; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); border-radius: 50%; }
+  .nav { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--nav-bg); border-top: 1px solid var(--line); padding: 3px 8px 0; }
+  .nav button { min-height: 48px; display: grid; justify-items: center; align-content: center; gap: 2px; color: var(--muted); font-size: 12px; }
+  .nav button span { width: 52px; height: 25px; display: grid; place-items: center; }
+  .nav [aria-current] { color: var(--ink); font-weight: 700; }
+  .nav [aria-current] span { border-radius: 15px; background: var(--nav-active); color: var(--accent); }
+  .gesture { display: grid; place-items: center; background: var(--nav-bg); }
+  .gesture::after { content: ""; width: 86px; height: 4px; border-radius: 4px; background: var(--ink); opacity: .63; }
+
+  .narrow .phone, .phone.big { width: 320px; }
+  .narrow .archive, .narrow .cost, .big .archive, .big .cost { padding-inline: 16px; }
+  .narrow .record, .big .record { column-gap: 8px; }
+  .narrow .photo-frame { width: 72px; height: 54px; }
+  .big .brand h2 { font-size: 29px; }
+  .big .cost-title, .big .section-title h3 { font-size: 21px; }
+  .big .cost-value { font-size: 49px; }
+  .big .fact, .big .link, .big .nav button, .big .counts > p, .big .breakdown { font-size: 17px; }
+  .big .record { grid-template-columns: 42px minmax(0, 1fr); row-gap: 6px; }
+  .big .type-glyph { align-self: start; }
+  .big .record-title { font-size: 24px; }
+  .big .record-metric { grid-column: 2; text-align: left; }
+  .big .record-metric .money { font-size: 28px; }
+  .big .record-meta span { white-space: normal; }
+
+  @media (max-width: 790px) {
+    .board { width: 100%; padding: 17px 12px; }
+    .board-head { flex-direction: column; align-items: start; gap: 5px; }
+    .board-head h1 { font-size: 27px; }
+    .board-scope { text-align: left; }
+    .board-grid { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<main id="boards"></main>
+<script>
+  // Paths for the controls are reproduced from the existing app drawable resources.
+  const paths = {
+    now: 'M12,3 A9,9 0,1 1,12,21 A9,9 0,1 1,12,3 M12,7 L12,12 L15.5,14',
+    review: 'M5,4 L19,4 L19,21 L5,21 Z M8,2 L8,6 M16,2 L16,6 M8,10 L16,10 M8,14 L13,14',
+    settings: 'M5,4 L5,20 M12,4 L12,20 M19,4 L19,20 M2.5,8 L7.5,8 M9.5,15 L14.5,15 M16.5,10 L21.5,10',
+    search: 'M10.5,3.5a7,7 0,1 0,0 14a7,7 0,1 0,0 -14M16,16L21,21',
+    add: 'M12,5 L12,19 M5,12 L19,12',
+    info: 'M12,3a9,9 0,1 0,0 18a9,9 0,1 0,0 -18M12,10.5L12,16M12,7.5L12,7.6',
+    project: 'M4,7 L12,3 L20,7 L20,18 L12,22 L4,18 Z M4,7 L12,11 L20,7 M12,11 L12,22',
+    subscription: 'M4,6 L20,6 L20,20 L4,20 Z M4,10 L20,10 M8,3 L8,7 M16,3 L16,7 M8,14 L12,14 M8,17 L15,17',
+    chevron: 'M9,5 L16,12 L9,19',
+    signal: 'M4,18v-2m5,2v-5m5,5V9m5,9V5',
+    battery: 'M4,7h14v10H4z M21,10v4 M7,12h8'
+  };
+  const project = {name: '合成阅读器', kind: 'project', category: '数码', status: '持有中', time: '持有 121 天', value: '9.92', photo: true};
+  const secondProject = {name: '通勤帆布包', kind: 'project', category: '日用', status: '持有中', time: '持有 100 天', value: '2.00', photo: false};
+  const subscription = {name: '合成阅读服务', kind: 'subscription', category: '阅读', status: '订阅中', time: '折算付费 30 天', value: '0.60'};
+  const ready = {total: '10.52', date: '2026-10-26', projectCount: 1, subscriptionCount: 1, projects: [project], subscriptions: [subscription]};
+  const noCover = {...ready, projects: [{...project, photo: false}]};
+  const multiple = {...ready, total: '12.52', projectCount: 2, projects: [project, secondProject]};
+  const large = {...noCover, projects: [{...noCover.projects[0], name: '每天通勤用来读长篇小说与整理批注的便携阅读器'}]};
+  const history = {total: '0.00', date: ready.date, projectCount: 1, subscriptionCount: 1, projects: [], subscriptions: [], mode: 'history'};
+  const empty = {total: null, date: ready.date, projectCount: 0, subscriptionCount: 0, projects: [], subscriptions: [], mode: 'empty'};
+  const retained = {...ready, mode: 'retained'};
+  const unavailable = {total: null, date: null, projectCount: null, subscriptionCount: null, projects: [], subscriptions: [], mode: 'unavailable'};
+
+  function glyph(name, size = 22) {
+    const stroke = ['search', 'info'].includes(name) ? '1.8' : '1.7';
+    return `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round"><path d="${paths[name]}"/></svg>`;
+  }
+  function iconButton(name, icon, size) {
+    return `<button class="icon-button" aria-label="${name}">${glyph(icon, size)}</button>`;
+  }
+  function money(value, big = false) {
+    const classes = big ? 'money cost-value' : 'money';
+    return value === null
+      ? `<span class="${classes}" aria-label="暂无金额">—</span>`
+      : `<span class="${classes}">¥${value}<span>/天</span></span>`;
+  }
+  function summary(model) {
+    const retainedMark = model.mode === 'retained' ? '<span class="retained">上次结果</span>' : '';
+    const date = model.date ? `<span>截至 ${model.date}</span><span aria-hidden="true">·</span>` : '';
+    const status = model.mode === 'history' ? '<p class="cost-status">暂无当前有效记录，历史仍保留。</p>' : '';
+    return `<section class="cost">
+      <div class="cost-title"><span>当前日均成本 ${retainedMark}</span>${iconButton('查看数量与成本口径', 'info', 18)}</div>
+      ${money(model.total, true)}
+      <p class="fact cost-date">${date}<span>非今日扣款</span></p>
+      ${status}
+    </section>`;
+  }
+  function recordRow(record) {
+    const visual = record.photo
+      ? '<span class="photo-frame"><img src="reader-photo.jpg" alt=""></span>'
+      : `<span class="type-glyph">${glyph(record.kind, 24)}</span>`;
+    const label = record.kind === 'project' ? '项目日均成本' : '历史平均日成本';
+    return `<button class="record">
+      ${visual}
+      <span><strong class="record-title">${record.name}</strong>
+        <span class="fact record-meta"><span>${record.category} · ${record.status}</span><span>${record.time}</span></span>
+      </span>
+      <span class="record-metric">${money(record.value)}<span class="fact metric-label">${label}</span></span>
+    </button>`;
+  }
+  function section(name, records, blankMessage) {
+    return `<section class="record-section">
+      <div class="section-title"><h3>${name}</h3><button class="link" aria-label="查看全部${name}">全部</button></div>
+      ${records.length ? records.map(recordRow).join('') : `<p class="message">${blankMessage}</p>`}
+    </section>`;
+  }
+  function readNotice(mode) {
+    if (mode !== 'retained' && mode !== 'unavailable') return '';
+    const text = mode === 'retained' ? '读取失败，暂保留上次成本、数量与预览。' : '读取失败，成本、数量与预览尚未取得。';
+    return `<div class="read-strip"><p class="read-warning">${text}</p><button class="link" aria-label="重试读取账本">重试读取</button></div>`;
+  }
+  function countGroup(model) {
+    const unknown = value => value === null ? '—' : value;
+    const retainedNote = model.mode === 'retained' ? ' · 上次结果' : '';
+    return `<div class="counts"><p>已录入 · 含历史${retainedNote}</p>
+      <dl><div><dt>长期项目</dt><dd>${unknown(model.projectCount)}</dd></div><div><dt>订阅服务</dt><dd>${unknown(model.subscriptionCount)}</dd></div></dl>
+    </div>`;
+  }
+  function archive(model) {
+    if (model.mode === 'empty') {
+      return `<div class="archive"><p class="empty-guide">从右下角开始，记下一件物品或订阅。</p>${countGroup(model)}</div>`;
+    }
+    const projectMessage = model.mode === 'unavailable' ? '项目预览尚未取得' : '暂无当前长期项目';
+    const subscriptionMessage = model.mode === 'unavailable' ? '订阅预览尚未取得' : '暂无当前订阅';
+    return `<div class="archive">
+      ${readNotice(model.mode)}
+      ${section('长期项目', model.projects, projectMessage)}
+      ${section('订阅服务', model.subscriptions, subscriptionMessage)}
+      ${countGroup(model)}
+      <button class="breakdown">成本与类别构成${glyph('chevron', 16)}</button>
+    </div>`;
+  }
+  const nav = `<nav class="nav" aria-label="主导航">
+    <button aria-current="page"><span>${glyph('now', 20)}</span>现在</button>
+    <button><span>${glyph('review', 20)}</span>回看</button>
+    <button><span>${glyph('settings', 20)}</span>设置</button>
+  </nav>`;
+  function phone({model, theme, label, detail, big = false}) {
+    return `<figure>
+      <div class="phone ${theme}${big ? ' big' : ''}" data-view="${label}">
+        <div class="status" aria-hidden="true"><span>9:41</span><span class="status-icons">${glyph('signal', 12)}${glyph('battery', 15)}</span></div>
+        <header class="brand"><img class="brand-logo" alt="" src="../../../../app/src/main/res/drawable-nodpi/ic_launcher_scene_p3.png"><h2>砺石</h2>${iconButton('搜索项目与订阅名称', 'search', 23)}</header>
+        <div class="scroll">${summary(model)}${archive(model)}</div>
+        <div class="fab-row"><button class="fab" aria-label="新增记录">${glyph('add', 25)}</button></div>
+        ${nav}<div class="gesture" aria-hidden="true"></div>
+      </div>
+      <figcaption>${label}<span>${detail}</span></figcaption>
+    </figure>`;
+  }
+  const boards = [
+    {id: 'themes', number: '01', title: '私人物档 · 三主题', subtitle: '先看账本日均，再看每一件物品。', views: [
+      {model: ready, theme: 'mist', label: '岩白雾蓝', detail: '雾蓝页首与暖白档案'},
+      {model: ready, theme: 'white', label: '纯白', detail: '留白、细线与黑色字重'},
+      {model: ready, theme: 'dark', label: '深色黑灰', detail: '页首与条目的明度分层'}
+    ]},
+    {id: 'records', number: '02', title: '封面、记录与大字', subtitle: '照片作为档案线索，条目也能独立阅读。', views: [
+      {model: noCover, theme: 'mist', label: '无封面', detail: '类型图标补位'},
+      {model: multiple, theme: 'mist', label: '多条项目', detail: '两条项目与一条订阅'},
+      {model: large, theme: 'mist', label: '长名称 · 大字', detail: '320dp 首屏，下方可滚动', big: true}
+    ]},
+    {id: 'states', number: '03', title: '账本的边界状态', subtitle: '历史、空账本与读取失败各有明确反馈。', views: [
+      {model: history, theme: 'mist', label: '仅有历史记录', detail: '当前日均为真实零'},
+      {model: empty, theme: 'white', label: '已确认空账本', detail: '数量为零，金额用 —'},
+      {model: retained, theme: 'dark', label: '读取失败 · 有快照', detail: '保留上次日期和数值'},
+      {model: unavailable, theme: 'mist', label: '读取失败 · 无快照', detail: '数值和数量尚未知'}
+    ]}
+  ];
+  function board(item) {
+    return `<section class="board" data-board="${item.id}">
+      <header class="board-head">
+        <div><p class="board-id">LITHIC / HOME R2.1 / ${item.number}</p><h1>${item.title}</h1><p>${item.subtitle}</p></div>
+        <p class="board-scope">概念样稿 · 合成账本<br>360dp 逻辑宽度示意</p>
+      </header>
+      <div class="board-grid">${item.views.map(phone).join('')}</div>
+      <p class="board-credit">封面示例：Hexafluoride · <a href="https://commons.wikimedia.org/wiki/File:Kindle_4th_Generation.jpg">Kindle 4th Generation</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> · 等比缩小</p>
+    </section>`;
+  }
+  const options = new URLSearchParams(location.search);
+  const targetBoard = options.get('board');
+  if (options.get('width') === '320') document.body.classList.add('narrow');
+  document.getElementById('boards').innerHTML = boards.filter(item => !targetBoard || item.id === targetBoard).map(board).join('');
+
+  if (options.has('inspect')) window.addEventListener('load', () => {
+    document.body.dataset.check = JSON.stringify([...document.querySelectorAll('.phone')].map(phone => {
+      const scroll = phone.querySelector('.scroll');
+      const controls = [...phone.querySelectorAll('button')];
+      const clipX = scroll.scrollWidth - scroll.clientWidth;
+      const longLine = phone.querySelector('.record-title')?.getBoundingClientRect();
+      const bottom = scroll.querySelector('.breakdown');
+      const originalTop = scroll.scrollTop;
+      scroll.scrollTop = scroll.scrollHeight;
+      const bottomReachable = !bottom || bottom.getBoundingClientRect().bottom <= scroll.getBoundingClientRect().bottom + 1;
+      scroll.scrollTop = originalTop;
+      return {
+        label: phone.dataset.view,
+        width: phone.offsetWidth,
+        overflowX: clipX,
+        scrollY: scroll.scrollHeight - scroll.clientHeight,
+        minTarget: Math.min(...controls.map(control => Math.min(control.offsetWidth, control.offsetHeight))),
+        photo: phone.querySelector('.photo-frame img')?.naturalWidth ?? null,
+        titleHeight: Math.round(longLine?.height ?? 0),
+        value: phone.querySelector('.cost-value')?.textContent,
+        records: phone.querySelectorAll('.record').length,
+        bottomReachable,
+        counts: [...phone.querySelectorAll('dd')].map(item => item.textContent),
+        breakdown: Boolean(phone.querySelector('.breakdown'))
+      };
+    }));
+  });
+</script>
+</body>
+</html>
