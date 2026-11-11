@@ -96,3 +96,37 @@ Gradle、Manifest、签名接线、包与版本配置、Room schema、数据库�
 本轮更新的旧画面和朗读断言也保持 NOT_RUN。仍需确认真实 Android 三主题画面、320/360/400dp 布局与宽窗口、封面像素、极长金额访问、系统 200% 字体、TalkBack 朗读与焦点、IME/Insets、旋转、实际触控、底栏避让，以及 Nav3 返回与安全守卫。已编译的局部 `LocalDensity` 和回调测试提供待运行用例。
 
 停在 `P2_READY_FOR_FINAL_INDEPENDENT_REVIEW`，等待 ChatGPT 最终独立验收。
+
+## 最终独立复核补修 · BLOCKING-01
+
+ChatGPT 对固定提交 `5b5a110f423c3768fc9bd71b41bfb6c11b15c373` 的结论为 DESKTOP IMPLEMENTATION PASS WITH NOTES，P2 FINAL FREEZE PENDING。本节补修上文记录的两项早期测试冲突，其余 P2-4 原证据按原提交解释。
+
+App 内唯一修改为 [P01HomeShellSemanticsTest.kt](../../app/src/androidTest/java/com/cooper/lithic/feature/home/P01HomeShellSemanticsTest.kt)。两条测试以新名称延续各自场景。主金额取 `overview` 提供的真实日均，数量从同一快照读取，金额语义来自原金额组件。生产 `app/src/main` 树仍为 `6f1553b0ae5b2137cfb327263e30fb41769e4845`，构建、发布、签名、Manifest 和 schema 相关文件保持原字节。[首页金额与读取状态](../../app/src/main/java/com/cooper/lithic/feature/home/HomeShell.kt#L183) · [首页数量语义](../../app/src/main/java/com/cooper/lithic/feature/home/HomeShell.kt#L236) · [金额可访问描述](../../app/src/main/java/com/cooper/lithic/core/design/AmountText.kt#L30)
+
+| 原方法与断言 | 新方法与断言 |
+| --- | --- |
+| `unavailable_cost_preserves_the_verified_record_count_without_inventing_zero`。金额包含「—」，显示等待文案，要求显示兼容参数拼成的「已录入 2 条长期项目」，仅按整字串检查 `¥0.00` 缺失。 | `missing_overview_keeps_amount_and_both_counts_unknown`。仍以兼容参数项目 2、订阅 0 作为反例。金额及两类计数按各自测试标签精确为「—」，无障碍描述分别为「当前日均成本，暂无数据」「长期项目，数量尚未取得」「订阅服务，数量尚未取得」。保留等待文案，断言旧兼容句和包含 `¥0.00` 的值均不存在，也无确认空账本引导。 |
+| `subscription_only_summary_does_not_lead_with_zero_projects`。手工拼装单订阅快照，要求订阅计数标签含整句「已录入 1 条订阅服务」，禁止旧的「已录入 0 条长期项目」，金额按 `¥0.00` 校验。 | `subscription_history_summary_keeps_one_record_and_verified_zero`。以一条已在付费周期末停止的合成订阅、零项目，通过原 `OverviewEngine` 生成真实结构的快照。兼容参数项目 2、订阅 7 与快照刻意不同。订阅及项目计数精确为 `1` 和 `0`，对应描述分别为「订阅服务，已录入数量1，包含历史」「长期项目，已录入数量0，包含历史」。可见「已录入 · 含历史」，口径弹窗明确提到已停止的订阅。保留旧项目整句缺失断言，金额精确为 `¥0.00/天`，朗读描述为「当前日均成本，0.00元/天」，保留无当前有效记录提示。 |
+
+两项都保留显示或语义断言，并增加列表及新增回调计数为零的检查。已知快照用例点开本地口径弹窗后仍检查零回调。夹具只用合成事实。
+
+### 实际验证
+
+- 定向 JVM 共 **88 PASS / 0 FAIL / 0 跳过**。分别为 `C2HomePresentationTest` 5、`P01HomeOverviewPresentationTest` 11、`R1HomeEmptyStateTest` 3、`P2HomeReadSourceContractTest` 1、`C5MoneyMetricPresentationTest` 8、`OverviewEngineTest` 23、`SubscriptionCostEngineTest` 37。
+- 离线普通 Debug 验证退出 0，耗时 3m 59s。生产 Kotlin 编译任务复用同源码的有效结果（UP-TO-DATE），AndroidTest Kotlin 编译实际执行并通过。Debug Lint 0 错误、20 条既有警告，Lint XML 与原 P2-4 字节相同。
+- 原命令、退出码、JUnit XML、Lint XML 和源码边界核对保存在 `E:/CODEX/lithic-ui-p2-4-blocking-01-evidence/`。
+
+| 原始证据 | 字节 | SHA-256 |
+| --- | ---: | --- |
+| `blocking-01-verify.log` | 14820 | `ab63b83072beb9c47b745df5acfcc4f75d59258437f4240c88c608461edddc0e` |
+| `lint-results-debug.xml` | 22662 | `feb6a44d197a338ed32b62e4325f766f0fe199bbbcaad7e677c12d352c7df396` |
+| `source-audit.txt` | 635 | `047092220ea0852dae7de5127860967e1308ab6a1e833e3afda89a41c991769a` |
+
+### 单独登记的端侧测试
+
+| `P01HomeShellSemanticsTest` 方法 | 实际状态 |
+| --- | --- |
+| `missing_overview_keeps_amount_and_both_counts_unknown` | NOT_RUN |
+| `subscription_history_summary_keeps_one_record_and_verified_zero` | NOT_RUN |
+
+这两项实际执行 **0/2**，独立于原 P2-4 的 35 项。未启动模拟器、操作手机、运行 Instrumentation 或生成 APK。停在 BLOCKING-01 补修回执，等待 ChatGPT 最终复核。P2 FINAL FREEZE PENDING。
