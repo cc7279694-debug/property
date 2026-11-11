@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>砺石 LITHIC · 首页概念 R2</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ecece7; color: #232622; font: 15px/1.5 "Microsoft YaHei", "Noto Sans CJK SC", system-ui, sans-serif; }
+  h1, h2, h3, p, dl, dd, figure { margin: 0; }
+  button { border: 0; padding: 0; background: none; color: inherit; font: inherit; }
+  button:focus-visible { outline: 2px solid var(--action); outline-offset: -2px; }
+  svg { display: block; flex: none; }
+
+  .board { width: max-content; max-width: 100%; margin: auto; padding: 30px 28px 24px; }
+  .board + .board { border-top: 1px solid #d0d1c8; }
+  .board-header { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin: 0 0 22px; }
+  .board-kicker { color: #535b50; font-size: 12px; font-weight: 650; letter-spacing: .08em; margin-bottom: 4px; }
+  .board-title { font-size: 37px; font-weight: 690; letter-spacing: -.035em; line-height: 1.18; }
+  .board-title span { margin-left: 12px; font-size: 23px; font-weight: 550; letter-spacing: 0; }
+  .board-header p { color: #505950; margin-top: 6px; }
+  .board-meta { text-align: right; font-size: 12px; color: #505950; white-space: nowrap; }
+  .board-grid { display: flex; flex-wrap: wrap; gap: 22px; }
+  .theme-label { margin-top: 8px; font-size: 13px; font-weight: 650; }
+  .theme-label span { color: #525950; font-weight: 400; margin-left: 7px; }
+
+  .phone {
+    --base: #f7f6f2; --surface: #fffefa; --group: #e8eef2; --ink: #23303a;
+    --muted: #4c5a64; --action: #345a71; --on-action: #ffffff;
+    --line: #d5dddf; --nav: #f9f8f4;
+    width: 360px; max-width: 100%; height: 818px; border: 1px solid #a8aca5;
+    border-radius: 24px; overflow: hidden; background: var(--base); color: var(--ink);
+    display: grid; grid-template-rows: 28px 58px minmax(0, 1fr) 62px 62px 14px;
+    box-shadow: 0 4px 12px #1b261913; font-size: 14px; container-type: inline-size;
+  }
+  .white {
+    --base: #ffffff; --surface: #f8f8f8; --group: #f2f2f2; --ink: #191919;
+    --muted: #555555; --action: #262626; --on-action: #ffffff;
+    --line: #d9d9d9; --nav: #ffffff;
+  }
+  .dark {
+    --base: #141414; --surface: #1e1e1e; --group: #272727; --ink: #f3f3f3;
+    --muted: #bcbcbc; --action: #e6e6e6; --on-action: #171717;
+    --line: #454545; --nav: #191919;
+  }
+  .status { display: flex; align-items: center; justify-content: space-between; padding: 2px 19px 0; font: 650 11px/1 "Segoe UI", system-ui, sans-serif; }
+  .status-icons { display: flex; align-items: center; gap: 5px; }
+  .topbar { display: flex; align-items: center; gap: 8px; padding: 0 12px 0 20px; }
+  .brand-mark { width: 25px; height: 25px; object-fit: cover; border-radius: 6px; }
+  .topbar h2 { flex: 1; font-size: 22px; line-height: 1.2; letter-spacing: -.035em; }
+  .icon-button { display: grid; place-items: center; width: 48px; min-height: 48px; flex: none; }
+  .content { overflow: auto; scrollbar-width: none; padding: 0 20px; }
+  .content::-webkit-scrollbar { display: none; }
+  .fab-space { display: flex; align-items: center; justify-content: flex-end; padding: 0 17px 4px; }
+  .fab { width: 56px; height: 56px; display: grid; place-items: center; background: var(--action); color: var(--on-action); border-radius: 50%; }
+  .nav { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--nav); border-top: 1px solid var(--line); padding: 3px 8px 0; }
+  .nav button { min-height: 48px; display: grid; justify-items: center; align-content: center; gap: 2px; font-size: 12px; color: var(--muted); }
+  .nav button span { width: 52px; height: 25px; display: grid; place-items: center; }
+  .nav [aria-current] { color: var(--ink); font-weight: 700; }
+  .nav [aria-current] span { border-radius: 16px; background: var(--group); color: var(--action); }
+  .gesture { display: grid; place-items: center; background: var(--nav); }
+  .gesture::after { content: ""; width: 86px; height: 4px; border-radius: 4px; background: var(--ink); opacity: .65; }
+
+  .amount { font-family: "Segoe UI", system-ui, sans-serif; font-variant-numeric: tabular-nums; font-weight: 670; line-height: 1.06; letter-spacing: -.04em; white-space: nowrap; }
+  .unit { font-family: "Microsoft YaHei", system-ui, sans-serif; font-size: .50em; letter-spacing: 0; font-weight: 550; padding-left: 3px; }
+  .factline { color: var(--muted); font-size: 12px; line-height: 1.5; }
+  .record-section h3 { font-size: 16px; font-weight: 680; }
+  .section-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .link { min-height: 48px; min-width: 48px; color: var(--action); font-weight: 650; font-size: 13px; text-align: right; }
+  .record { width: 100%; min-height: 64px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 9px; text-align: left; }
+  .record-name { display: block; overflow-wrap: anywhere; font-size: 15px; font-weight: 700; }
+  .record-cost { text-align: right; }
+  .record-cost .amount { font-size: 21px; }
+  .record-cost .factline { display: block; margin-top: 2px; font-size: 11px; }
+  .record-id .factline { display: block; margin-top: 3px; }
+  .record-cover { display: block; width: 38px; height: 46px; object-fit: cover; object-position: center; border-radius: 4px; }
+  .record-icon { width: 38px; height: 46px; display: grid; place-items: center; color: var(--action); }
+  .breakdown { display: flex; align-items: center; justify-content: space-between; min-height: 48px; width: 100%; text-align: left; font-weight: 650; font-size: 13px; color: var(--action); }
+  .cost-heading { display: flex; align-items: center; justify-content: space-between; gap: 6px; font-weight: 650; }
+  .cost-heading .icon-button { color: var(--action); margin-right: -12px; }
+
+  /* 01 · text is the focal surface; dividers carry the rhythm. */
+  .quiet .content { padding: 8px 24px 0; }
+  .quiet .topbar { padding-left: 24px; }
+  .quiet-cost { padding: 3px 0 22px; }
+  .quiet-cost .amount { display: block; font-size: 62px; margin: 0 0 9px; font-weight: 620; }
+  .quiet-index { border-block: 1px solid var(--line); padding: 13px 0; margin-bottom: 14px; color: var(--muted); font-size: 12px; }
+  .quiet-index strong { font-weight: 650; color: var(--ink); }
+  .quiet .record { border-bottom: 1px solid var(--line); min-height: 67px; }
+  .quiet .record-section + .record-section { margin-top: 6px; }
+  .quiet .breakdown { margin-top: 10px; }
+  .quiet .record-cover { width: 32px; height: 38px; }
+  .quiet .record-icon { width: 32px; height: 38px; }
+
+  /* 02 · an existing cover leads; cost is typeset as a colophon. */
+  .archive .content { padding: 0 20px; }
+  .archive .record-section h3 { font-size: 17px; }
+  .archive .feature { display: block; width: 100%; text-align: left; }
+  .archive-photo { width: 100%; height: 128px; border-radius: 8px; display: block; object-fit: cover; object-position: center 50%; }
+  .feature-caption { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 8px; padding: 11px 0 13px; }
+  .feature-caption .record-name { font-size: 20px; }
+  .archive-cost { border-block: 1px solid var(--line); padding: 0 0 10px; }
+  .archive-cost .cost-heading { min-height: 48px; }
+  .archive-cost .cost-heading > div { display: flex; gap: 1px; align-items: center; }
+  .archive-cost .cost-heading .icon-button { margin-right: 0; width: 48px; }
+  .archive-cost .amount { font-size: 30px; }
+  .archive .archive-sub { margin-top: 1px; }
+  .archive-sub .record { border-bottom: 1px solid var(--line); min-height: 61px; }
+  .archive-sub .record-icon { height: 43px; width: 38px; border: 1px solid var(--line); border-radius: 5px; }
+  .archive-index { color: var(--muted); margin-top: 7px; }
+  .archive-index p { font-size: 11px; margin: 0 0 2px; }
+  .archive-index dl { display: grid; grid-template-columns: 1fr auto; row-gap: 1px; font-size: 12px; }
+  .archive-index dd { color: var(--ink); font-weight: 650; }
+  .archive .breakdown { margin-top: 1px; }
+
+  /* 03 · a compact cost/action band, paired register, one scan plane. */
+  .daily .content { padding: 6px 16px 0; }
+  .daily .topbar { padding-left: 16px; }
+  .daily-cost { padding: 0 14px; border-radius: 14px; background: var(--group); }
+  .daily-cost .cost-heading { min-height: 48px; }
+  .daily-cost .amount { display: block; font-size: 40px; margin: 0 0 5px; }
+  .daily-cost .breakdown { border-top: 1px solid var(--line); margin-top: 10px; }
+  .daily-index { margin: 12px 0 12px; }
+  .daily-index > p { color: var(--muted); font-size: 12px; }
+  .daily-index dl { display: grid; grid-template-columns: 1fr 1fr; margin-top: 4px; }
+  .daily-index dl > div { display: flex; align-items: baseline; gap: 8px; padding: 3px 0; }
+  .daily-index dl > div + div { border-left: 1px solid var(--line); padding-left: 14px; }
+  .daily-index dt { font-size: 12px; }
+  .daily-index dd { order: -1; font: 680 23px/1.1 "Segoe UI", system-ui, sans-serif; }
+  .daily .record-plane { background: var(--surface); border-radius: 12px; padding: 0 12px; border: 1px solid var(--line); }
+  .daily .record-section + .record-section { border-top: 1px solid var(--line); }
+  .daily .record { min-height: 66px; padding-bottom: 6px; }
+  .daily .record-cover { width: 44px; height: 47px; }
+  .daily .record-icon { width: 44px; height: 47px; }
+
+  .narrow .phone { width: 320px; }
+  @container (max-width: 335px) {
+    .quiet .content, .archive .content { padding-inline: 15px; }
+    .quiet-cost .amount { font-size: 55px; }
+    .archive-photo { height: 108px; }
+    .record .factline { overflow-wrap: anywhere; }
+    .record { column-gap: 6px; }
+  }
+  @media (max-width: 780px) {
+    .board { width: 100%; padding: 20px 12px; }
+    .board-header { align-items: start; flex-direction: column; gap: 5px; }
+    .board-title { font-size: 29px; }
+    .board-title span { display: block; margin: 2px 0 0; font-size: 18px; }
+    .board-meta { text-align: left; }
+    .board-grid { justify-content: center; }
+    .board-grid > figure { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<main id="boards"></main>
+<script>
+  // Paths reproduced from the app's ic_ui_* drawable resources.
+  const icons = {
+    now: 'M12,3 A9,9 0,1 1,12,21 A9,9 0,1 1,12,3 M12,7 L12,12 L15.5,14',
+    review: 'M5,4 L19,4 L19,21 L5,21 Z M8,2 L8,6 M16,2 L16,6 M8,10 L16,10 M8,14 L13,14',
+    settings: 'M5,4 L5,20 M12,4 L12,20 M19,4 L19,20 M2.5,8 L7.5,8 M9.5,15 L14.5,15 M16.5,10 L21.5,10',
+    search: 'M10.5,3.5a7,7 0,1 0,0 14a7,7 0,1 0,0 -14M16,16L21,21',
+    add: 'M12,5 L12,19 M5,12 L19,12',
+    info: 'M12,3a9,9 0,1 0,0 18a9,9 0,1 0,0 -18M12,10.5L12,16M12,7.5L12,7.6',
+    subscription: 'M4,6 L20,6 L20,20 L4,20 Z M4,10 L20,10 M8,3 L8,7 M16,3 L16,7 M8,14 L12,14 M8,17 L15,17',
+    chevron: 'M9,5 L16,12 L9,19',
+    signal: 'M4,18v-2m5,2v-5m5,5V9m5,9V5',
+    battery: 'M4,7h14v10H4z M21,10v4 M7,12h8'
+  };
+  const themes = [
+    { className: 'mist', name: '岩白雾蓝', detail: '暖白底、雾蓝层次' },
+    { className: 'white', name: '纯白', detail: '中性黑白灰' },
+    { className: 'dark', name: '深色黑灰', detail: '低彩度明暗层次' }
+  ];
+  const fixture = {
+    total: '10.52',
+    asOf: '2026-10-26',
+    project: { name: '合成阅读器', kind: '长期项目', facts: '持有中 · 121 天', metric: '当前日均成本', amount: '9.92', count: 1 },
+    subscription: { name: '合成阅读服务', kind: '订阅服务', facts: '订阅中 · 折算付费 30 天', metric: '历史平均日成本', amount: '0.60', count: 1 }
+  };
+
+  function icon(name, size = 22) {
+    const stroke = ['search', 'info'].includes(name) ? '1.8' : '1.7';
+    return `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${stroke}" stroke-linecap="round" stroke-linejoin="round"><path d="${icons[name]}"/></svg>`;
+  }
+  function action(name, glyph, size) {
+    return `<button class="icon-button" aria-label="${name}">${icon(glyph, size)}</button>`;
+  }
+  function money(value) {
+    return `<span class="amount">¥${value}<span class="unit">/天</span></span>`;
+  }
+  function cover(className) {
+    return `<img class="${className}" alt="" src="reader-cover.jpg">`;
+  }
+  function recordIdentity(record) {
+    return `<span class="record-id"><strong class="record-name">${record.name}</strong><span class="factline">${record.facts}</span></span>`;
+  }
+  function recordCost(record) {
+    return `<span class="record-cost">${money(record.amount)}<span class="factline">${record.metric}</span></span>`;
+  }
+  function recordRow(record) {
+    const art = record === fixture.project
+      ? cover('record-cover')
+      : `<span class="record-icon">${icon('subscription', 23)}</span>`;
+    return `<button class="record">${art}${recordIdentity(record)}${recordCost(record)}</button>`;
+  }
+  function recordSection(record, content = recordRow(record), className = '') {
+    return `<section class="record-section ${className}">
+      <div class="section-title"><h3>当前${record.kind}</h3><button class="link" aria-label="查看全部${record.kind}">全部</button></div>
+      ${content}
+    </section>`;
+  }
+  const dateAndScope = `<p class="factline cost-date">截至 ${fixture.asOf} · 非今日扣款</p>`;
+  const costInfo = action('当前日均成本与数量口径说明', 'info', 18);
+  const breakdown = `<button class="breakdown">成本与类别构成${icon('chevron', 16)}</button>`;
+  const navigation = `<nav class="nav" aria-label="主导航">
+    <button aria-current="page"><span>${icon('now', 20)}</span>现在</button>
+    <button><span>${icon('review', 20)}</span>回看</button>
+    <button><span>${icon('settings', 20)}</span>设置</button>
+  </nav>`;
+
+  function quietLedger() {
+    return `
+      <section class="quiet-cost">
+        <div class="cost-heading">当前日均成本${costInfo}</div>
+        ${money(fixture.total)}${dateAndScope}
+      </section>
+      <p class="quiet-index">已录入（含历史）· <strong>${fixture.project.count}</strong> 个长期项目 · <strong>${fixture.subscription.count}</strong> 项订阅服务</p>
+      ${recordSection(fixture.project)}
+      ${recordSection(fixture.subscription)}
+      ${breakdown}`;
+  }
+  function personalArchive() {
+    const project = `<button class="feature">${cover('archive-photo')}
+      <span class="feature-caption">${recordIdentity(fixture.project)}${recordCost(fixture.project)}</span>
+    </button>`;
+    return `
+      ${recordSection(fixture.project, project)}
+      <section class="archive-cost">
+        <div class="cost-heading"><div>当前日均成本${costInfo}</div>${money(fixture.total)}</div>
+        ${dateAndScope}
+      </section>
+      ${recordSection(fixture.subscription, recordRow(fixture.subscription), 'archive-sub')}
+      <section class="archive-index" aria-label="已录入数量，含历史">
+        <p>已录入 · 含历史</p>
+        <dl><dt>长期项目</dt><dd>${fixture.project.count}</dd><dt>订阅服务</dt><dd>${fixture.subscription.count}</dd></dl>
+      </section>
+      ${breakdown}`;
+  }
+  function dailyCompanion() {
+    return `
+      <section class="daily-cost">
+        <div class="cost-heading">当前日均成本${costInfo}</div>
+        ${money(fixture.total)}${dateAndScope}${breakdown}
+      </section>
+      <section class="daily-index" aria-label="已录入数量，含历史">
+        <p>已录入 · 含历史</p>
+        <dl><div><dt>长期项目</dt><dd>${fixture.project.count}</dd></div><div><dt>订阅服务</dt><dd>${fixture.subscription.count}</dd></div></dl>
+      </section>
+      <div class="record-plane">${recordSection(fixture.project)}${recordSection(fixture.subscription)}</div>`;
+  }
+  const concepts = [
+    { id: 'quiet', number: '01', english: 'Quiet Ledger', chinese: '静默账本', note: '从一个主数字读起，沿同一阅读轴看到两类记录。', render: quietLedger },
+    { id: 'archive', number: '02', english: 'Personal Archive', chinese: '私人物档', note: '先看到正在持有的物品，再读到它所在账本的成本。', render: personalArchive },
+    { id: 'daily', number: '03', english: 'Daily Companion', chinese: '日常陪伴', note: '上方集中成本及构成入口，下方对齐两类当前记录。', render: dailyCompanion }
+  ];
+
+  function phone(concept, theme) {
+    return `<figure>
+      <div class="phone ${concept.id} ${theme.className}">
+        <div class="status" aria-hidden="true"><span>9:41</span><span class="status-icons">${icon('signal', 12)}${icon('battery', 15)}</span></div>
+        <header class="topbar"><img class="brand-mark" alt="" src="../../../../app/src/main/res/drawable-nodpi/ic_launcher_scene_p3.png"><h2>现在</h2>${action('搜索', 'search', 23)}</header>
+        <div class="content">${concept.render()}</div>
+        <div class="fab-space"><button class="fab" aria-label="新增记录">${icon('add', 25)}</button></div>
+        ${navigation}<div class="gesture" aria-hidden="true"></div>
+      </div>
+      <figcaption class="theme-label">${theme.name}<span>${theme.detail}</span></figcaption>
+    </figure>`;
+  }
+  function board(concept) {
+    return `<section class="board" data-concept="${concept.id}">
+      <header class="board-header">
+        <div><p class="board-kicker">砺石 LITHIC / 首页概念 ${concept.number}</p>
+        <h1 class="board-title">${concept.english}<span>${concept.chinese}</span></h1>
+        <p>${concept.note}</p></div>
+        <div class="board-meta">概念样稿 · 合成账本与封面<br>360dp 逻辑宽度示意</div>
+      </header>
+      <div class="board-grid">${themes.map(theme => phone(concept, theme)).join('')}</div>
+    </section>`;
+  }
+  const options = new URLSearchParams(location.search);
+  const requestedBoard = options.get('board');
+  if (options.get('width') === '320') document.body.classList.add('narrow');
+  document.getElementById('boards').innerHTML = concepts
+    .filter(concept => !requestedBoard || concept.id === requestedBoard)
+    .map(board).join('');
+
+  if (options.has('inspect')) window.addEventListener('load', () => {
+    document.body.dataset.check = JSON.stringify([...document.querySelectorAll('.phone')].map(phone => {
+      const content = phone.querySelector('.content');
+      const controls = [...phone.querySelectorAll('button')];
+      return {
+        width: phone.offsetWidth,
+        overflowX: content.scrollWidth - content.clientWidth,
+        overflowY: content.scrollHeight - content.clientHeight,
+        target: Math.min(...controls.map(control => Math.min(control.offsetWidth, control.offsetHeight))),
+        imageWidths: [...phone.querySelectorAll('img')].map(image => image.naturalWidth),
+        order: [...content.children].map(child => child.className)
+      };
+    }));
+  });
+</script>
+</body>
+</html>
