@@ -157,7 +157,8 @@ class C2C1HomeVisualContractTest {
                         summaryBackground = MaterialTheme.colorScheme.background
                         Box(Modifier.requiredSize(widthDp.dp, height).background(MaterialTheme.colorScheme.background)
                             .testTag("c1-home-canvas")) {
-                            HomeShell(99, {}, {}, 99, {}, {}, overview = overview, hasReadNotice = retained)
+                            HomeShell(99, {}, {}, 99, {}, {}, overview = overview, hasReadNotice = retained,
+                                readError = if (retained) "本地记录暂时无法刷新，当前显示上次读取结果。" else null)
                         }
                     }
                 }

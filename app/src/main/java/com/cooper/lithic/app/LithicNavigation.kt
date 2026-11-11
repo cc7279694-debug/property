@@ -456,7 +456,8 @@ internal fun LithicNavigation(
                         onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it, ProjectOrigin.HOME))) },
                         onOpenSubscription = { requestLeave(canonicalBackStack(SubscriptionDetail(it, SubscriptionOrigin.HOME))) },
                         onCalculationExplanation = { requestLeave(listOf(Home, CalculationExplanation)) },
-                        onRetryPreview = { model.retryRead(); subscriptionModel.retryRead() }, hasReadNotice = hasSnapshotNotice) }
+                        onRetryProjectPreview = model::loadList, onRetrySubscriptionPreview = subscriptionModel::loadList,
+                        hasReadNotice = hasSnapshotNotice, readError = state.readError) }
                     entry<Review>(metadata = mapOf(C4_PRIMARY_DESTINATION to Review)) { ReviewShell(state.projectCount, onProjectHistory = { requestLeave(canonicalBackStack(ProjectHistory)) },
                         onSubscriptionHistory = { requestLeave(canonicalBackStack(SubscriptionHistory)) },
                         onLongTermReview = if (state.rankingRepository != null) ({ requestLeave(canonicalBackStack(LongTermReview)) }) else null,

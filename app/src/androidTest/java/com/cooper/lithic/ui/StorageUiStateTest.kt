@@ -3,7 +3,9 @@ package com.cooper.lithic.ui
 import android.content.Context
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
@@ -103,6 +105,38 @@ class StorageUiStateTest {
         compose.onNodeWithTag("storage_exit").performClick()
         assertEquals(1, exits)
         assertFalse(File(directory, "active-generation").exists())
+    }
+
+    @Test fun synthetic_ready_read_failure_has_unknown_summary_and_only_the_global_ledger_retry() = runBlocking {
+        start()
+        val ready = settled(holder()) as LedgerUiState.Ready
+        val synthetic = ready.copy(
+            overview = null, projectCount = 99, subscriptionCount = 98,
+            readError = "本地记录暂时无法刷新。",
+        )
+        var ledgerRetries = 0
+        compose.setContent {
+            LithicTheme {
+                LithicApp(synthetic, onExit = {}, onRetryLedger = { ledgerRetries++ })
+            }
+        }
+        compose.onNodeWithTag("primary_navigation").assertIsDisplayed()
+        compose.onNodeWithTag("storage_error").assertDoesNotExist()
+        compose.onNodeWithTag("home-overview-read-error").assertTextEquals("暂时无法取得成本数据")
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("—")
+        compose.onNodeWithTag("home-project-record-count").assertTextEquals("—")
+        compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("—")
+        compose.onNodeWithText("截至", substring = true).assertDoesNotExist()
+        compose.onNodeWithText("非今日扣款", substring = true).assertDoesNotExist()
+        compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
+        compose.onNodeWithTag("home-retained-notice").assertDoesNotExist()
+        compose.onNodeWithTag("home-retry-project-preview").assertDoesNotExist()
+        compose.onNodeWithTag("home-retry-subscription-preview").assertDoesNotExist()
+        compose.onNodeWithTag("ledger-refresh-error").assertTextEquals("本地记录暂时无法刷新。")
+        compose.onAllNodesWithTag("ledger-retry-read").assertCountEquals(1)
+        val beforeClick = compose.runOnIdle { ledgerRetries }
+        compose.onNodeWithTag("ledger-retry-read").performClick()
+        compose.runOnIdle { assertEquals(beforeClick + 1, ledgerRetries) }
     }
 
     @Test fun actual_empty_snapshot_is_ready_only_after_repository_and_zone_read() = runBlocking {

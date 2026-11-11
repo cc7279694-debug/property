@@ -154,7 +154,8 @@ class C2HomeClosureTest {
 
     private fun show(overview: OverviewResult?, retained: Boolean = false) {
         compose.setContent { LithicTheme {
-            HomeShell(99, {}, {}, 99, {}, {}, overview = overview, hasReadNotice = retained)
+            HomeShell(99, {}, {}, 99, {}, {}, overview = overview, hasReadNotice = retained,
+                readError = if (retained) "本地记录暂时无法刷新，当前显示上次读取结果。" else null)
         } }
     }
 

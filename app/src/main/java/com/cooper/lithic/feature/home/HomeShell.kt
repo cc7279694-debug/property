@@ -44,17 +44,20 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     onCategoryAnalysis: ((OverviewKind, String) -> Unit)? = null,
     projectPreview: ProjectListUiState? = null, subscriptionPreview: SubscriptionListUiState? = null,
     onOpenProject: ((String) -> Unit)? = null, onOpenSubscription: ((String) -> Unit)? = null,
-    onCalculationExplanation: (() -> Unit)? = null, onRetryPreview: () -> Unit = {},
-    hasReadNotice: Boolean = false) {
+    onCalculationExplanation: (() -> Unit)? = null,
+    onRetryProjectPreview: () -> Unit = {}, onRetrySubscriptionPreview: () -> Unit = {},
+    hasReadNotice: Boolean = false, readError: String? = null) {
     var addOpen by rememberSaveable { mutableStateOf(false) }
     var categoriesOpen by rememberSaveable { mutableStateOf(false) }
     var explanationOpen by rememberSaveable { mutableStateOf(false) }
-    val empty = c2HomeIsEmpty(overview, hasReadNotice)
+    val hasSnapshotNotice = hasReadNotice || readError != null
+    val empty = c2HomeIsEmpty(overview, hasSnapshotNotice)
+    val readStatus = homeOverviewReadStatus(overview, hasSnapshotNotice, readError)
     Box(modifier.fillMaxSize().testTag("home-content-area")) {
         Box(Modifier.fillMaxSize().testTag("home-scroll-viewport")) {
             Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
                 .padding(bottom = 88.dp).testTag("home-screen")) {
-                HomeCostHeader(overview, hasReadNotice, onSearch, onExplain = { explanationOpen = true })
+                HomeCostHeader(overview, readStatus, onSearch, onExplain = { explanationOpen = true })
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page, vertical = LithicSpacing.small),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
                     if (empty) Text("从右下角＋开始，记下一件物品或订阅。",
@@ -64,7 +67,8 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                         Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                             PreviewHeading("长期项目", onProjectList, "open-project-list")
                             val status = projectPreview?.let { c2PreviewStatus(it.loading, it.error, it.items.map { d -> d.asOf }, overview?.asOf) }
-                            PreviewNotice(status, projectPreview?.error, "还没有当前长期项目", onRetryPreview)
+                            PreviewNotice(status, projectPreview?.error, "还没有当前长期项目",
+                                "重试读取项目预览", "home-retry-project-preview", onRetryProjectPreview)
                             if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) projectPreview?.items?.take(2)?.forEach { row ->
                                 HomeArchiveRow(row.project.name, row.category.name, C2Glyph.Project,
                                     projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "项目日均成本",
@@ -77,7 +81,10 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                             val status = subscriptionPreview?.let { c2PreviewStatus(it.loading, it.error, it.items.map { d -> d.asOf }, overview?.asOf) }
                             PreviewHeading("订阅服务", onSubscriptionList, "open-subscription-list",
                                 emptyLabel = if (status == C2PreviewStatus.EMPTY) "暂无当前订阅" else null)
-                            if (status != C2PreviewStatus.EMPTY) PreviewNotice(status, subscriptionPreview?.error, "还没有当前订阅", onRetryPreview)
+                            if (status != C2PreviewStatus.EMPTY) {
+                                PreviewNotice(status, subscriptionPreview?.error, "还没有当前订阅",
+                                    "重试读取订阅预览", "home-retry-subscription-preview", onRetrySubscriptionPreview)
+                            }
                             if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) subscriptionPreview?.items?.take(2)?.forEach { row ->
                                 HomeArchiveRow(row.subscription.name, row.category.name, C2Glyph.Subscription,
                                     subscriptionStatusLabel(row.cost.displayStatus), "折算付费${row.cost.standardPurchasedDays}天",
@@ -87,7 +94,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                             }
                         }
                     }
-                    HomeRecordCounts(overview, hasReadNotice)
+                    HomeRecordCounts(overview, retained = readStatus == HomeOverviewReadStatus.RETAINED)
                     if (!empty) {
                         TextButton({ categoriesOpen = !categoriesOpen }, Modifier.heightIn(min = 48.dp).testTag("home-category-disclosure")) {
                             Text(if (categoriesOpen) "收起成本与类别构成" else "查看成本与类别构成")
@@ -137,7 +144,7 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
 }
 
 @Composable
-private fun HomeCostHeader(overview: OverviewResult?, hasReadNotice: Boolean, onSearch: (() -> Unit)?, onExplain: () -> Unit) {
+private fun HomeCostHeader(overview: OverviewResult?, readStatus: HomeOverviewReadStatus, onSearch: (() -> Unit)?, onExplain: () -> Unit) {
     val colors = MaterialTheme.colorScheme
     val typography = MaterialTheme.typography
     val headerColor = LocalLithicVisuals.current.brandSurface
@@ -178,15 +185,22 @@ private fun HomeCostHeader(overview: OverviewResult?, hasReadNotice: Boolean, on
                     }
                 }
                 overview?.let { Text("截至 ${it.asOf} · 非今日扣款", style = typography.bodySmall, color = colors.onSurfaceVariant) }
-                when (homeOverviewStatus(overview)) {
-                    HomeOverviewStatus.EMPTY -> if (hasReadNotice) Text("当前记录状态尚未确认", style = typography.bodyMedium)
-                    HomeOverviewStatus.UNAVAILABLE -> Text("当前日均成本尚未取得", style = typography.bodyMedium)
-                    HomeOverviewStatus.NO_CURRENT -> Text("暂无当前有效记录；历史记录仍在。", Modifier.testTag("home-no-active-records"),
-                        style = typography.bodyMedium)
-                    HomeOverviewStatus.CURRENT -> Unit
+                when (readStatus) {
+                    HomeOverviewReadStatus.WAITING -> Text("当前日均成本尚未取得", style = typography.bodyMedium)
+                    HomeOverviewReadStatus.FAILED -> Text("暂时无法取得成本数据",
+                        Modifier.testTag("home-overview-read-error"), style = typography.bodyMedium, color = colors.error)
+                    HomeOverviewReadStatus.RETAINED -> Text("上次取得的结果",
+                        Modifier.testTag("home-retained-notice"), style = typography.bodyMedium, color = colors.error)
+                    HomeOverviewReadStatus.UNCONFIRMED -> Text("当前记录状态尚未确认",
+                        Modifier.testTag("home-retained-notice"), style = typography.bodyMedium)
+                    HomeOverviewReadStatus.CURRENT -> if (homeOverviewStatus(overview) == HomeOverviewStatus.NO_CURRENT) {
+                        Text("暂无当前有效记录；历史记录仍在。", Modifier.testTag("home-no-active-records"),
+                            style = typography.bodyMedium)
+                    }
                 }
-                if (hasReadNotice) Text(if (overview == null) "成本与数量尚未取得，请先重试读取。" else "暂保留上次取得的成本与数量，请先重试读取。",
-                    style = typography.bodyMedium, color = colors.error, modifier = Modifier.testTag("home-retained-notice"))
+                if (readStatus == HomeOverviewReadStatus.RETAINED && homeOverviewStatus(overview) == HomeOverviewStatus.EMPTY) {
+                    Text("当前记录状态尚未确认", style = typography.bodyMedium)
+                }
             }
             HorizontalDivider(Modifier.padding(horizontal = if (plainHeader) pageInset else 0.dp), color = colors.outlineVariant)
         }
@@ -283,12 +297,13 @@ private fun PreviewHeading(label: String, onAll: () -> Unit, tag: String, emptyL
 }
 
 @Composable
-private fun PreviewNotice(status: C2PreviewStatus?, error: String?, empty: String, onRetry: () -> Unit) {
+private fun PreviewNotice(status: C2PreviewStatus?, error: String?, empty: String,
+    retryLabel: String, retryTag: String, onRetry: () -> Unit) {
     when (status) {
         C2PreviewStatus.ERROR, C2PreviewStatus.RETAINED -> {
             Text(error ?: "预览暂时无法读取", color = MaterialTheme.colorScheme.error, style = MaterialTheme.typography.bodyMedium)
             if (status == C2PreviewStatus.RETAINED) Text("以下保留上次读取结果", style = MaterialTheme.typography.bodySmall)
-            TextButton(onRetry, Modifier.heightIn(min = 48.dp)) { Text("重试读取") }
+            TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag(retryTag)) { Text(retryLabel) }
         }
         C2PreviewStatus.LOADING -> Text("正在读取预览", style = MaterialTheme.typography.bodyMedium)
         C2PreviewStatus.REFRESHING -> Text("预览日期正在更新", style = MaterialTheme.typography.bodyMedium)
