@@ -1,16 +1,18 @@
 package com.cooper.lithic.feature.project
 
 import android.content.Context
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertTextContains
-import androidx.compose.ui.test.hasTestTag
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
-import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performTextReplacement
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModelStore
@@ -57,9 +59,10 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class ProjectNavigationGuardTest {
-    @get:Rule val compose = createComposeRule()
+    @get:Rule val compose = createAndroidComposeRule<ComponentActivity>()
     private val clock = FixedBusinessClock(LocalDate.of(2026, 1, 10))
     private val viewModels = ViewModelStore()
+    private val freshHomeNavigation = mutableStateOf(false)
     private lateinit var root: File
     private lateinit var generation: ManagedGeneration
     private lateinit var holder: LedgerUiStateHolder
@@ -95,20 +98,23 @@ class ProjectNavigationGuardTest {
         compose.onNodeWithTag("project-initial-amount").performScrollTo().performTextReplacement("12.34")
         Espresso.closeSoftKeyboard()
         compose.waitForIdle()
-        val actions: List<() -> Unit> = listOf(
-            { compose.onNodeWithTag("tab-now").performClick() },
-            { compose.onNodeWithTag("tab-review").performClick() },
-            { compose.onNodeWithTag("tab-settings").performClick() },
-            { compose.onNodeWithTag("project-editor-back").performScrollTo().performClick() },
-            { Espresso.pressBack() },
-        )
-        actions.forEach { leave ->
-            leave()
-            compose.onNodeWithTag("discard-dialog").assertIsDisplayed()
-            compose.onNodeWithTag("discard-keep").performClick()
-            compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
+        fun assertDraft() {
             assertEquals("未提交名称", model.state.value.editor!!.name)
             assertEquals("12.34", model.state.value.editor!!.initialAmount)
+        }
+        assertPrimaryTabsHidden()
+        keepDraftAfter { compose.onNodeWithTag("project-editor-back").assertIsDisplayed().performClick() }
+        compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
+        assertDraft()
+        keepDraftAfter { Espresso.pressBack() }
+        compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
+        assertDraft()
+
+        showHomeWithRetainedForm()
+        for (tag in listOf("tab-now", "tab-review", "tab-settings")) {
+            keepDraftAfter { compose.onNodeWithTag(tag).assertIsDisplayed().performClick() }
+            assertHomeSelected()
+            assertDraft()
         }
         assertEquals(0L, repository.loadSummary().projectCount)
         compose.onNodeWithTag("tab-review").performClick()
@@ -119,35 +125,51 @@ class ProjectNavigationGuardTest {
 
     @Test fun dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event() = runBlocking {
         val id = seedProject()
+        val originalEvents = requireNotNull(repository.loadProjectDetail(id)).events
         render()
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
         compose.waitUntil(10_000) { !model.state.value.list.loading }
         compose.onNodeWithTag("project-row-$id").performClick()
         compose.waitUntil(10_000) { model.state.value.detail.detail != null }
-        detailAction("project-add-outlay")
-        compose.waitUntil(10_000) { model.state.value.moneyEditor != null }
+        compose.onNodeWithTag("project-record-money").assertIsDisplayed().performClick()
+        compose.onNodeWithTag("project-money-sheet").assertIsDisplayed()
+        compose.onNodeWithTag("project-add-outlay").assertIsDisplayed().performClick()
+        compose.waitUntil(10_000) { model.state.value.moneyEditor?.today != null }
+        compose.onNodeWithTag("money-editor-screen").assertIsDisplayed()
+        assertEquals(MoneyDirection.OUTLAY, model.state.value.moneyEditor!!.direction)
         compose.onNodeWithTag("money-amount").performScrollTo().performTextReplacement("200")
         compose.onNodeWithTag("money-description").performScrollTo().performTextReplacement("未提交说明")
         Espresso.closeSoftKeyboard()
         compose.waitForIdle()
-        val actions: List<() -> Unit> = listOf(
-            { compose.onNodeWithTag("tab-now").performClick() },
-            { compose.onNodeWithTag("tab-settings").performClick() },
-            { compose.onNodeWithTag("money-editor-back").performScrollTo().performClick() },
-            { Espresso.pressBack() },
-        )
-        actions.forEach { leave ->
-            leave()
-            compose.onNodeWithTag("discard-dialog").assertIsDisplayed()
-            compose.onNodeWithTag("discard-keep").performClick()
-            compose.onNodeWithTag("money-editor-screen").assertIsDisplayed()
+        suspend fun assertDraft() {
             assertEquals("200", model.state.value.moneyEditor!!.amount)
             assertEquals("未提交说明", model.state.value.moneyEditor!!.description)
+            assertEquals(originalEvents, requireNotNull(repository.loadProjectDetail(id)).events)
         }
-        compose.onNodeWithTag("money-editor-back").performScrollTo().performClick()
+        assertPrimaryTabsHidden()
+        keepDraftAfter { compose.onNodeWithTag("money-editor-back").assertIsDisplayed().performClick() }
+        compose.onNodeWithTag("money-editor-screen").assertIsDisplayed()
+        assertDraft()
+        keepDraftAfter { Espresso.pressBack() }
+        compose.onNodeWithTag("money-editor-screen").assertIsDisplayed()
+        assertDraft()
+
+        showHomeWithRetainedForm()
+        for (tag in listOf("tab-now", "tab-settings")) {
+            keepDraftAfter { compose.onNodeWithTag(tag).assertIsDisplayed().performClick() }
+            assertHomeSelected()
+            assertDraft()
+        }
+
+        compose.runOnIdle { freshHomeNavigation.value = false }
+        compose.onNodeWithTag("money-editor-screen").assertIsDisplayed()
+        assertDraft()
+        compose.onNodeWithTag("money-editor-back").assertIsDisplayed().performClick()
         compose.onNodeWithTag("discard-confirm").performClick()
         compose.onNodeWithTag("project-detail-screen").assertIsDisplayed()
-        assertEquals(1, repository.loadProjectDetail(id)!!.events.size)
+        val events = requireNotNull(repository.loadProjectDetail(id)).events
+        assertEquals(1, events.size)
+        assertEquals(originalEvents, events)
     }
 
     @Test fun untouched_form_leaves_without_a_discard_prompt_or_a_business_record() = runBlocking {
@@ -173,20 +195,33 @@ class ProjectNavigationGuardTest {
         openCreate()
         compose.onNodeWithTag("project-name").performScrollTo().performTextReplacement("真实已写但结果丢失")
         compose.onNodeWithTag("project-initial-amount").performScrollTo().performTextReplacement("1000")
-        compose.onNodeWithTag("project-save").performScrollTo().performClick()
+        compose.onNodeWithTag("project-save").assertIsDisplayed().performClick()
         compose.waitUntil(15_000) { model.state.value.editor?.phase == SubmissionPhase.UNCONFIRMED }
         val before = repository.loadProjectPage().items.single()
         assertEquals(1, before.events.size)
         assertEquals(100000L, before.cost.netCents)
         Espresso.closeSoftKeyboard()
-        compose.onNodeWithTag("tab-review").performClick()
-        compose.onNodeWithTag("pending-submit-dialog").assertIsDisplayed()
-        compose.onNodeWithTag("discard-dialog").assertDoesNotExist()
-        compose.onNodeWithTag("pending-submit-keep").performClick()
+        compose.waitForIdle()
+        assertPrimaryTabsHidden()
         Espresso.pressBack()
         compose.onNodeWithTag("pending-submit-dialog").assertIsDisplayed()
         compose.onNodeWithTag("pending-submit-keep").performClick()
-        compose.onNodeWithTag("project-save").performScrollTo().assertTextContains("核对并重试").performClick()
+        compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
+
+        showHomeWithRetainedForm()
+        compose.onNodeWithTag("tab-review").assertIsDisplayed().performClick()
+        compose.onNodeWithTag("pending-submit-dialog").assertIsDisplayed()
+        compose.onNodeWithTag("discard-dialog").assertDoesNotExist()
+        compose.onNodeWithTag("pending-submit-keep").performClick()
+        assertHomeSelected()
+        assertEquals(SubmissionPhase.UNCONFIRMED, model.state.value.editor!!.phase)
+        val blocked = repository.loadProjectPage().items.single()
+        assertEquals(before.project.id, blocked.project.id)
+        assertEquals(before.events, blocked.events)
+
+        compose.runOnIdle { freshHomeNavigation.value = false }
+        compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
+        compose.onNodeWithTag("project-save").assertIsDisplayed().assertTextEquals("核对并重试").performClick()
         compose.waitUntil(15_000) { model.state.value.editor == null && model.state.value.detail.detail != null }
         compose.onNodeWithTag("project-detail-screen").assertIsDisplayed()
         val after = repository.loadProjectPage().items.single()
@@ -203,21 +238,44 @@ class ProjectNavigationGuardTest {
         compose.setContent {
             LithicTheme {
                 val ledger by holder.state.collectAsState()
-                LithicApp(ledger, {}, model)
+                val navigationState = rememberSaveableStateHolder()
+                navigationState.SaveableStateProvider(freshHomeNavigation.value) {
+                    LithicApp(ledger, {}, model)
+                }
             }
         }
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
     }
 
-    private fun openCreate() {
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
-        compose.waitUntil(10_000) { model.state.value.editor?.today != null }
-        compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
+    private fun assertPrimaryTabsHidden() {
+        for (tag in listOf("tab-now", "tab-review", "tab-settings")) {
+            compose.onNodeWithTag(tag).assertDoesNotExist()
+        }
     }
 
-    private fun detailAction(tag: String) {
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag(tag))
-        compose.onNodeWithTag(tag).performClick()
+    private fun keepDraftAfter(leave: () -> Unit) {
+        leave()
+        compose.onNodeWithTag("discard-dialog").assertIsDisplayed()
+        compose.onNodeWithTag("discard-keep").performClick()
+    }
+
+    private fun showHomeWithRetainedForm() {
+        // Primary tabs exist only at the root. A new navigation stack models Home
+        // being recreated while the same ViewModel still owns the in-flight draft.
+        compose.runOnIdle { freshHomeNavigation.value = true }
+        assertHomeSelected()
+    }
+
+    private fun assertHomeSelected() {
+        compose.onNodeWithTag("home-screen").assertIsDisplayed()
+        compose.onNodeWithTag("tab-now").assertIsSelected()
+    }
+
+    private fun openCreate() {
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
+        compose.onNodeWithTag("home-create-project").assertIsDisplayed().performClick()
+        compose.waitUntil(10_000) { model.state.value.editor?.today != null }
+        compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
     }
 
     private suspend fun seedProject(): String {

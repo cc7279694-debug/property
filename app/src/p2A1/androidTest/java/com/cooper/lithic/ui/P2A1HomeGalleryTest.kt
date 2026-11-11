@@ -23,6 +23,7 @@ import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.cooper.lithic.app.C2PrimaryNavigationBar
@@ -84,7 +85,9 @@ class P2A1HomeGalleryTest {
     @Test fun pureWhite() = capture(LithicAppearance.PURE_WHITE)
     @Test fun charcoal() = capture(LithicAppearance.CHARCOAL)
 
-    private fun capture(theme: LithicAppearance) {
+    @Test fun stoneMistLargeFontSubscription() = capture(LithicAppearance.STONE_MIST, focusSubscription = true)
+
+    private fun capture(theme: LithicAppearance, focusSubscription: Boolean = false) {
         val facts = C2VisualFixtures(populated = true)
         val project = facts.projects.items.single()
         val subscription = facts.subscriptions.items.single()
@@ -144,7 +147,12 @@ class P2A1HomeGalleryTest {
         }
         compose.onNodeWithTag("home-current-cost-summary").assertIsDisplayed()
         compose.onNodeWithTag("tab-now").assertIsSelected()
-        compose.onNodeWithTag("home-open-add").assertIsDisplayed()
+        val add = compose.onNodeWithTag("home-open-add").assertIsDisplayed()
+        if (focusSubscription) {
+            check(compose.activity.resources.configuration.fontScale >= 2f)
+            val subscriptionList = compose.onNodeWithTag("open-subscription-list").performScrollTo().assertIsDisplayed()
+            check(subscriptionList.fetchSemanticsNode().boundsInRoot.bottom <= add.fetchSemanticsNode().boundsInRoot.top)
+        }
 
         val image = compose.onNodeWithTag(CANVAS).captureToImage().asAndroidBitmap()
         check(image.width.toLong() * image.height in 1..5_000_000)

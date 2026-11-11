@@ -14,6 +14,7 @@ import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.onNodeWithTag
@@ -60,8 +61,8 @@ class C9RecordThemeTest {
         compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
         LithicAppearance.entries.forEach { theme ->
             compose.runOnIdle { appearance.value = theme }
-            compose.onNodeWithTag("home-project-rate").performScrollTo().assertTextContains("¥")
-            compose.onNodeWithTag("home-subscription-rate").performScrollTo().assertTextContains("¥")
+            compose.onNodeWithTag("home-project-rate").performScrollTo().assertTextEquals("¥9.92/天")
+            compose.onNodeWithTag("home-subscription-rate").performScrollTo().assertTextEquals("¥0.60/天")
             compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
             compose.onNodeWithTag("home-create-project").assertIsDisplayed()
             compose.onNodeWithTag("home-create-subscription").assertIsDisplayed()
@@ -97,11 +98,11 @@ class C9RecordThemeTest {
             compose.onNodeWithTag("project-detail-daily").assertContentDescriptionEquals(
                 moneyMetricDescription(detail.cost.dailyRate, label = "当前日均成本"))
             compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-net"))
-            compose.onNodeWithTag("project-detail-net").assertTextContains("−¥")
+            compose.onNodeWithTag("project-detail-net").assertTextEquals("−¥9999998711.99")
             compose.onNodeWithTag("project-record-money").assertIsDisplayed()
             compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-amount-${events.last().id}"))
             compose.waitForIdle()
-            compose.onNodeWithTag("project-event-amount-${events.last().id}").assertTextContains("¥9999999999.99")
+            compose.onNodeWithTag("project-event-amount-${events.last().id}").assertTextEquals("¥9999999999.99")
             compose.onNodeWithTag("project-detail-content").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, -100_000f) }
             compose.waitForIdle()
         }

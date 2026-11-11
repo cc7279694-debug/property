@@ -54,74 +54,98 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
     val hasSnapshotNotice = hasReadNotice || readError != null
     val empty = c2HomeIsEmpty(overview, hasSnapshotNotice)
     val readStatus = homeOverviewReadStatus(overview, hasSnapshotNotice, readError)
+    val useAddBar = LocalDensity.current.fontScale >= 1.5f
     BoxWithConstraints(modifier.fillMaxSize().testTag("home-content-area")) {
         val columnMaxWidth = 560.dp
         val sideGutter = (maxWidth - columnMaxWidth).coerceAtLeast(0.dp) / 2
         val pageInset = if (maxWidth <= 360.dp) 16.dp else 24.dp
-        Box(Modifier.align(Alignment.TopCenter).widthIn(max = columnMaxWidth).fillMaxSize().testTag("home-scroll-viewport")) {
-            Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
-                .padding(bottom = 88.dp).testTag("home-screen")) {
-                HomeCostHeader(overview, readStatus, pageInset, onSearch, onExplain = { explanationOpen = true })
-                Column(Modifier.fillMaxWidth().padding(horizontal = pageInset, vertical = LithicSpacing.small),
-                    verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
-                    if (empty) Text("从右下角＋开始，记下一件物品或订阅。",
-                        Modifier.fillMaxWidth().testTag("home-empty-guidance"),
-                        style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    if (!empty) {
-                        Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                            PreviewHeading("长期项目", onProjectList, "open-project-list")
-                            val status = projectPreview?.let { c2PreviewStatus(it.loading, it.error, it.items.map { d -> d.asOf }, overview?.asOf) }
-                            PreviewNotice(status, projectPreview?.error, "还没有当前长期项目",
-                                "重试读取项目预览", "home-retry-project-preview", onRetryProjectPreview)
-                            if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) projectPreview?.items?.take(2)?.forEach { row ->
-                                HomeArchiveRow(row.project.name, row.category.name, C2Glyph.Project,
-                                    projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "项目日均成本",
-                                    row.cost.dailyRate, CoverReference(CoverOwnerType.PROJECT, row.project.id, row.project.coverAssetId),
-                                    "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } })
+        Column(Modifier.fillMaxSize()) {
+            Box(Modifier.weight(1f).fillMaxWidth()) {
+                Box(Modifier.align(Alignment.TopCenter).widthIn(max = columnMaxWidth).fillMaxSize().testTag("home-scroll-viewport")) {
+                    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
+                        .padding(bottom = if (useAddBar) 16.dp else 88.dp).testTag("home-screen")) {
+                        HomeCostHeader(overview, readStatus, pageInset, onSearch, onExplain = { explanationOpen = true })
+                        Column(Modifier.fillMaxWidth().padding(horizontal = pageInset, vertical = LithicSpacing.small),
+                            verticalArrangement = Arrangement.spacedBy(LithicSpacing.medium)) {
+                            if (empty) Text(
+                                if (useAddBar) "选择新增记录，记下一件物品或订阅。" else "从右下角＋开始，记下一件物品或订阅。",
+                                Modifier.fillMaxWidth().testTag("home-empty-guidance"),
+                                style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            if (!empty) {
+                                Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+                                    PreviewHeading("长期项目", onProjectList, "open-project-list")
+                                    val status = projectPreview?.let { c2PreviewStatus(it.loading, it.error, it.items.map { d -> d.asOf }, overview?.asOf) }
+                                    PreviewNotice(status, projectPreview?.error, "还没有当前长期项目",
+                                        "重试读取项目预览", "home-retry-project-preview", onRetryProjectPreview)
+                                    if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) projectPreview?.items?.take(2)?.forEach { row ->
+                                        HomeArchiveRow(row.project.name, row.category.name, C2Glyph.Project,
+                                            projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "项目日均成本",
+                                            row.cost.dailyRate, CoverReference(CoverOwnerType.PROJECT, row.project.id, row.project.coverAssetId),
+                                            "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } })
+                                    }
+                                }
+                                Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
+                                    val status = subscriptionPreview?.let { c2PreviewStatus(it.loading, it.error, it.items.map { d -> d.asOf }, overview?.asOf) }
+                                    PreviewHeading("订阅服务", onSubscriptionList, "open-subscription-list",
+                                        emptyLabel = if (status == C2PreviewStatus.EMPTY) "暂无当前订阅" else null)
+                                    if (status != C2PreviewStatus.EMPTY) {
+                                        PreviewNotice(status, subscriptionPreview?.error, "还没有当前订阅",
+                                            "重试读取订阅预览", "home-retry-subscription-preview", onRetrySubscriptionPreview)
+                                    }
+                                    if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) subscriptionPreview?.items?.take(2)?.forEach { row ->
+                                        HomeArchiveRow(row.subscription.name, row.category.name, C2Glyph.Subscription,
+                                            subscriptionStatusLabel(row.cost.displayStatus), "折算付费${row.cost.standardPurchasedDays}天",
+                                            "历史平均日成本", row.cost.historicalAverage,
+                                            CoverReference(CoverOwnerType.SUBSCRIPTION, row.subscription.id, row.subscription.coverAssetId),
+                                            "home-subscription-preview-${row.subscription.id}", onOpenSubscription?.let { { it(row.subscription.id) } })
+                                    }
+                                }
                             }
-                        }
-                        Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
-                            val status = subscriptionPreview?.let { c2PreviewStatus(it.loading, it.error, it.items.map { d -> d.asOf }, overview?.asOf) }
-                            PreviewHeading("订阅服务", onSubscriptionList, "open-subscription-list",
-                                emptyLabel = if (status == C2PreviewStatus.EMPTY) "暂无当前订阅" else null)
-                            if (status != C2PreviewStatus.EMPTY) {
-                                PreviewNotice(status, subscriptionPreview?.error, "还没有当前订阅",
-                                    "重试读取订阅预览", "home-retry-subscription-preview", onRetrySubscriptionPreview)
-                            }
-                            if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) subscriptionPreview?.items?.take(2)?.forEach { row ->
-                                HomeArchiveRow(row.subscription.name, row.category.name, C2Glyph.Subscription,
-                                    subscriptionStatusLabel(row.cost.displayStatus), "折算付费${row.cost.standardPurchasedDays}天",
-                                    "历史平均日成本", row.cost.historicalAverage,
-                                    CoverReference(CoverOwnerType.SUBSCRIPTION, row.subscription.id, row.subscription.coverAssetId),
-                                    "home-subscription-preview-${row.subscription.id}", onOpenSubscription?.let { { it(row.subscription.id) } })
+                            HomeRecordCounts(overview, retained = readStatus == HomeOverviewReadStatus.RETAINED)
+                            if (!empty) {
+                                TextButton({ categoriesOpen = !categoriesOpen }, Modifier.heightIn(min = 48.dp).testTag("home-category-disclosure")) {
+                                    Text(if (categoriesOpen) "收起成本与类别构成" else "查看成本与类别构成")
+                                    C2Icon(C2Glyph.Chevron)
+                                }
+                                if (categoriesOpen) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                                    HomeSubtotals(overview)
+                                    Text("长期项目", style = MaterialTheme.typography.titleMedium)
+                                    CategoryCosts(overview?.projectCategories.orEmpty(), "home-project-category", onCategoryAnalysis?.let { open -> { id -> open(OverviewKind.PROJECT, id) } })
+                                    Text("订阅服务", style = MaterialTheme.typography.titleMedium)
+                                    CategoryCosts(overview?.subscriptionCategories.orEmpty(), "home-subscription-category", onCategoryAnalysis?.let { open -> { id -> open(OverviewKind.SUBSCRIPTION, id) } })
+                                    Text("分项四舍五入，显示金额相加可能有分位差；汇总使用未舍入结果。",
+                                        Modifier.testTag("home-rounding-note"), style = MaterialTheme.typography.bodySmall)
+                                }
                             }
                         }
                     }
-                    HomeRecordCounts(overview, retained = readStatus == HomeOverviewReadStatus.RETAINED)
-                    if (!empty) {
-                        TextButton({ categoriesOpen = !categoriesOpen }, Modifier.heightIn(min = 48.dp).testTag("home-category-disclosure")) {
-                            Text(if (categoriesOpen) "收起成本与类别构成" else "查看成本与类别构成")
-                            C2Icon(C2Glyph.Chevron)
-                        }
-                        if (categoriesOpen) Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                            HomeSubtotals(overview)
-                            Text("长期项目", style = MaterialTheme.typography.titleMedium)
-                            CategoryCosts(overview?.projectCategories.orEmpty(), "home-project-category", onCategoryAnalysis?.let { open -> { id -> open(OverviewKind.PROJECT, id) } })
-                            Text("订阅服务", style = MaterialTheme.typography.titleMedium)
-                            CategoryCosts(overview?.subscriptionCategories.orEmpty(), "home-subscription-category", onCategoryAnalysis?.let { open -> { id -> open(OverviewKind.SUBSCRIPTION, id) } })
-                            Text("分项四舍五入，显示金额相加可能有分位差；汇总使用未舍入结果。",
-                                Modifier.testTag("home-rounding-note"), style = MaterialTheme.typography.bodySmall)
+                }
+                if (!useAddBar) {
+                    FloatingActionButton(onClick = { addOpen = true },
+                        modifier = Modifier.align(Alignment.BottomEnd).padding(end = sideGutter + 16.dp, bottom = 16.dp)
+                            .size(56.dp).testTag("home-open-add"), shape = CircleShape,
+                        containerColor = MaterialTheme.colorScheme.primary, contentColor = MaterialTheme.colorScheme.onPrimary,
+                        elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 2.dp, pressedElevation = 3.dp)) {
+                        C2Icon(C2Glyph.Add, description = "新增记录")
+                    }
+                }
+            }
+            if (useAddBar) {
+                Surface(color = MaterialTheme.colorScheme.surface) {
+                    Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                        Button(
+                            onClick = { addOpen = true },
+                            modifier = Modifier.widthIn(max = columnMaxWidth).fillMaxWidth()
+                                .padding(horizontal = pageInset, vertical = 8.dp)
+                                .heightIn(min = 48.dp).testTag("home-open-add"),
+                        ) {
+                            C2Icon(C2Glyph.Add)
+                            Spacer(Modifier.width(8.dp))
+                            Text("新增记录")
                         }
                     }
                 }
             }
-        }
-        FloatingActionButton(onClick = { addOpen = true },
-            modifier = Modifier.align(Alignment.BottomEnd).padding(end = sideGutter + 16.dp, bottom = 16.dp)
-                .size(56.dp).testTag("home-open-add"), shape = CircleShape,
-            containerColor = MaterialTheme.colorScheme.primary, contentColor = MaterialTheme.colorScheme.onPrimary,
-            elevation = FloatingActionButtonDefaults.elevation(defaultElevation = 2.dp, pressedElevation = 3.dp)) {
-            C2Icon(C2Glyph.Add, description = "新增记录")
         }
     }
     if (addOpen) ModalBottomSheet(onDismissRequest = { addOpen = false }) {

@@ -12,10 +12,13 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.StateRestorationTester
@@ -54,6 +57,7 @@ import com.cooper.lithic.data.repository.LedgerReadRepository
 import com.cooper.lithic.data.repository.MutationResult
 import com.cooper.lithic.data.repository.ProjectWriteRepository
 import com.cooper.lithic.data.repository.ProjectRepository
+import com.cooper.lithic.data.repository.ReportRepository
 import com.cooper.lithic.data.repository.SubscriptionRepository
 import java.io.File
 import java.time.Instant
@@ -151,9 +155,10 @@ class NavigationShellTest {
         render()
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
         compose.onNodeWithTag("project-list-screen").assertIsDisplayed()
-        compose.onNodeWithTag("tab-now").assertIsSelected()
-        compose.onNodeWithTag("project-list-back").performClick()
+        compose.onNodeWithTag("tab-now").assertDoesNotExist()
+        compose.onNodeWithTag("project-list-back").assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
+        compose.onNodeWithTag("tab-now").assertIsSelected()
     }
 
     @Test
@@ -172,14 +177,21 @@ class NavigationShellTest {
         assertTrue(snapshot.projects.isEmpty())
         assertEquals(2, snapshot.categories.size)
         assertTrue(snapshot.moneyEvents.isEmpty())
+        state = readReady(withOverview = true)
         render()
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
-        compose.onNodeWithText("暂无记录").assertIsDisplayed()
+        compose.onNodeWithTag("home-empty-guidance").assertIsDisplayed()
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("—")
+        compose.onNodeWithTag("home-project-record-count").assertTextEquals("0")
+        compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("0")
         compose.onAllNodes(hasText("¥0.00", substring = true)).assertCountEquals(0)
-        compose.onNodeWithText("还没有订阅服务").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithTag("open-subscription-list").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithTag("open-project-list").assertDoesNotExist()
+        compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
+        compose.onAllNodes(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Tab)).assertCountEquals(3)
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed()
         compose.onNodeWithTag("tab-review").performClick()
         compose.onNodeWithTag("review-screen").assertIsDisplayed()
+        compose.onNodeWithTag("review-empty-state").assertIsDisplayed()
         compose.onNodeWithTag("trend-chart").assertDoesNotExist()
         compose.onAllNodes(hasText("¥", substring = true)).assertCountEquals(0)
     }
@@ -187,15 +199,18 @@ class NavigationShellTest {
     @Test
     fun real_project_is_not_misrepresented_as_an_empty_ledger(): Unit = runBlocking {
         addSyntheticZeroProject()
-        state = readReady()
+        state = readReady(withOverview = true)
         val snapshot = LedgerReadRepository(generation.database, generation.coordinator).snapshot()
         assertEquals(1L, state.projectCount)
         assertEquals(1, snapshot.projects.size)
         assertEquals(0L, snapshot.moneyEvents.single().amountCents)
         render()
-        compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
-        compose.onNodeWithText("暂无记录").assertDoesNotExist()
-        compose.onAllNodes(hasText("¥0.00", substring = true)).assertCountEquals(0)
+        compose.onNodeWithTag("home-project-record-count").performScrollTo().assertIsDisplayed().assertTextEquals("1")
+            .assertContentDescriptionEquals("长期项目，已录入数量1，包含历史")
+        compose.onNodeWithTag("home-subscription-record-count").performScrollTo().assertTextEquals("0")
+        compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
+        compose.onNodeWithTag("home-total-rate").performScrollTo().assertTextEquals("¥0.00/天")
+            .assertContentDescriptionEquals("当前日均成本，0.00元/天")
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
         compose.waitUntil(10_000) { compose.onAllNodes(hasText("合成零元项目")).fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("合成零元项目").assertIsDisplayed()
@@ -210,24 +225,48 @@ class NavigationShellTest {
         val futureEnd = LocalDate.of(2026, 10, 20)
         addSyntheticZeroProject(endedOn = futureEnd)
         state = readReady()
-        assertEquals(futureEnd, state.repository.loadProjectPage().items.single().project.endedOn)
+        val project = state.repository.loadProjectPage().items.single().project
+        assertEquals(futureEnd, project.endedOn)
         render()
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
         compose.waitUntil(10_000) { compose.onAllNodes(hasText("合成零元项目")).fetchSemanticsNodes().isNotEmpty() }
         compose.onNodeWithText("合成零元项目").assertIsDisplayed()
         compose.onNodeWithText("已结束").assertDoesNotExist()
         compose.onNodeWithText("已记录结束日期").assertIsDisplayed()
-        compose.onNodeWithText("结束：2026-10-20", substring = true).assertIsDisplayed()
+        compose.onNodeWithTag("project-row-${project.id}").assertIsDisplayed()
+            .assertTextContains("结束日期 $futureEnd", substring = true)
     }
 
     @Test
     fun settings_reads_the_persisted_zone_without_fake_controls() {
-        render()
+        var exportRequests = 0
+        var restoreSelectionRequests = 0
+        var overwriteRequests = 0
+        compose.setContent {
+            LithicTheme {
+                LithicNavigation(state, onExportBackup = { exportRequests++ },
+                    onRestoreBackup = { restoreSelectionRequests++ }, onConfirmRestore = { overwriteRequests++ })
+            }
+        }
         compose.onNodeWithTag("tab-settings").performClick()
         compose.onNodeWithText("Asia/Shanghai").assertIsDisplayed()
         compose.onAllNodes(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Switch)).assertCountEquals(0)
-        compose.onNodeWithTag("export-complete-backup").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithText("恢复功能尚未开放").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("恢复功能尚未开放").assertDoesNotExist()
+        compose.runOnIdle {
+            assertEquals(0, exportRequests)
+            assertEquals(0, restoreSelectionRequests)
+            assertEquals(0, overwriteRequests)
+        }
+        compose.onNodeWithTag("export-complete-backup").performScrollTo().assertIsDisplayed().assertIsEnabled()
+            .assertTextContains("导出完整备份").performClick()
+        compose.onNodeWithTag("restore-complete-backup").performScrollTo().assertIsDisplayed().assertIsEnabled()
+            .assertTextContains("选择完整备份").assertTextContains("完整覆盖，不合并；先预览再确认").performClick()
+        compose.onNodeWithTag("confirm-backup-restore").assertDoesNotExist()
+        compose.runOnIdle {
+            assertEquals(1, exportRequests)
+            assertEquals(1, restoreSelectionRequests)
+            assertEquals(0, overwriteRequests)
+        }
     }
 
     @Test
@@ -305,12 +344,13 @@ class NavigationShellTest {
         compose.waitForIdle()
     }
 
-    private suspend fun readReady(): LedgerUiState.Ready {
+    private suspend fun readReady(withOverview: Boolean = false): LedgerUiState.Ready {
         val clock = FixedBusinessClock(LocalDate.of(2026, 10, 12))
         val repository = ProjectRepository(generation.database, generation.coordinator, clock)
         val subscriptions = SubscriptionRepository(generation.database, generation.coordinator, clock)
+        val reports = if (withOverview) ReportRepository(generation.database, generation.coordinator, clock) else null
         return LedgerUiState.Ready(repository.loadSummary().projectCount, generation.settings.recordZone(), repository, clock,
-            subscriptions, subscriptions.loadSubscriptionCount())
+            subscriptions, subscriptions.loadSubscriptionCount(), overview = reports?.loadOverview(), reportRepository = reports)
     }
 
     private suspend fun addSyntheticZeroProject(endedOn: LocalDate? = null) {

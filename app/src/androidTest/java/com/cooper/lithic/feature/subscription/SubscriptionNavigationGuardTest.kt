@@ -6,8 +6,11 @@ import android.os.SystemClock
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
@@ -43,6 +46,7 @@ import java.io.IOException
 import java.time.LocalDate
 import java.time.ZoneId
 import java.util.UUID
+import java.util.concurrent.atomic.AtomicBoolean
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterIsInstance
@@ -66,6 +70,7 @@ class SubscriptionNavigationGuardTest {
     private val context = ApplicationProvider.getApplicationContext<Context>()
     private val clock = FixedBusinessClock(LocalDate.of(2026, 1, 20))
     private val store = ViewModelStore()
+    private val freshHomeNavigation = mutableStateOf(false)
     private val jobs = mutableListOf<Job>()
     private lateinit var root: File
     private lateinit var generation: ManagedGeneration
@@ -99,20 +104,30 @@ class SubscriptionNavigationGuardTest {
         openCreate()
         fillVisibleCreate()
         Espresso.closeSoftKeyboard(); compose.waitForIdle()
-        val actions: List<() -> Unit> = listOf(
-            { compose.onNodeWithTag("tab-now").performClick() },
-            { compose.onNodeWithTag("tab-review").performClick() },
-            { compose.onNodeWithTag("tab-settings").performClick() },
-            { compose.onNodeWithTag("subscription-editor-back").performClick() },
-            { Espresso.pressBack() },
-        )
-        actions.forEach { leave ->
-            leave()
-            compose.onNodeWithTag("discard-dialog").assertIsDisplayed()
-            compose.onNodeWithTag("discard-keep").performClick()
+        fun assertDraft() {
             assertEquals("150.00", subscription.state.value.editor!!.amount)
             assertEquals("2026-01-02", subscription.state.value.editor!!.paidOn)
         }
+        val tabs = listOf("tab-now", "tab-review", "tab-settings")
+        tabs.forEach { compose.onNodeWithTag(it).assertDoesNotExist() }
+        keepDraftAfter { compose.onNodeWithTag("subscription-editor-back").assertIsDisplayed().performClick() }
+        compose.onNodeWithTag("subscription-editor-screen").assertIsDisplayed()
+        assertDraft()
+        keepDraftAfter { Espresso.pressBack() }
+        compose.onNodeWithTag("subscription-editor-screen").assertIsDisplayed()
+        assertDraft()
+
+        // Recreate Home's navigation while retaining the subscription draft to
+        // exercise the primary tabs, which are deliberately absent on the form.
+        compose.runOnIdle { freshHomeNavigation.value = true }
+        compose.onNodeWithTag("home-screen").assertIsDisplayed()
+        for (tag in tabs) {
+            keepDraftAfter { compose.onNodeWithTag(tag).assertIsDisplayed().performClick() }
+            compose.onNodeWithTag("home-screen").assertIsDisplayed()
+            compose.onNodeWithTag("tab-now").assertIsSelected()
+            assertDraft()
+        }
+        assertEquals(0L, generation.database.subscriptionDao().countSubscriptions())
         compose.onNodeWithTag("tab-review").performClick()
         compose.onNodeWithTag("discard-confirm").performClick()
         compose.onNodeWithTag("review-screen").assertIsDisplayed()
@@ -136,16 +151,21 @@ class SubscriptionNavigationGuardTest {
         }
         withTimeout(15_000) { first.state.first { it.editor?.phase == SubmissionPhase.UNCONFIRMED } }
         onMain { subscription = SubscriptionViewModel(ready.subscriptionRepository, restoredHandle(handle), clock); retain("restored-payment", subscription) }
+        val before = ready.subscriptionRepository.loadSubscriptionPage().items.single()
         render()
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
+        selectCreateOption("home-create-project")
         compose.onNodeWithTag("pending-submit-dialog").assertIsDisplayed()
+        assertEquals(null, project.state.value.editor)
         compose.onNodeWithTag("discard-dialog").assertDoesNotExist()
         compose.onNodeWithTag("pending-submit-return-to-form").performClick()
         compose.onNodeWithTag("subscription-editor-screen").assertIsDisplayed()
-        compose.onNodeWithTag("subscription-confirm-payment").assertTextContains("核对并重试同一付款").performClick()
+        compose.onNodeWithTag("subscription-confirm-payment").assertIsDisplayed()
+            .assertTextEquals("核对并重试同一付款").performClick()
         compose.waitUntil(15_000) { subscription.state.value.editor == null && subscription.state.value.detail.detail != null }
         compose.onNodeWithTag("subscription-detail-screen").assertIsDisplayed()
         val detail = ready.subscriptionRepository.loadSubscriptionPage().items.single()
+        assertEquals(before.subscription.id, detail.subscription.id)
+        assertEquals(before.renewals, detail.renewals)
         assertEquals(1L, generation.database.subscriptionDao().countRenewals(detail.subscription.id))
         assertEquals(0L, generation.database.projectDao().countProjects())
     }
@@ -264,34 +284,39 @@ class SubscriptionNavigationGuardTest {
         }
         withTimeout(15_000) { first.state.first { it.editor?.phase == SubmissionPhase.UNCONFIRMED } }
         onMain { project = ProjectViewModel(ready.repository, restoredHandle(handle), clock); retain("restored-project", project) }
+        val before = ready.repository.loadProjectPage().items.single()
         render()
-        compose.onNodeWithTag("home-create-subscription").performScrollTo().performClick()
+        selectCreateOption("home-create-subscription")
         compose.onNodeWithTag("pending-submit-dialog").assertIsDisplayed()
+        assertEquals(null, subscription.state.value.editor)
         compose.onNodeWithTag("pending-submit-return-to-form").performClick()
         compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
-        compose.onNodeWithTag("project-save").performScrollTo().performClick()
+        compose.onNodeWithTag("project-save").assertIsDisplayed().assertTextEquals("核对并重试").performClick()
         compose.waitUntil(15_000) { project.state.value.editor == null && project.state.value.detail.detail != null }
+        val after = ready.repository.loadProjectPage().items.single()
+        assertEquals(before.project.id, after.project.id)
+        assertEquals(before.events, after.events)
         assertEquals(1L, generation.database.projectDao().countProjects())
         assertEquals(0L, generation.database.subscriptionDao().countSubscriptions())
     }
 
     @Test fun formal_committed_read_failure_exposes_only_reread_not_another_payment_confirmation() = runBlocking {
-        var failRead = true
+        val failRead = AtomicBoolean(true)
         val unreadable = object : SubscriptionRepository(generation.database, generation.coordinator, clock) {
             override suspend fun loadSubscriptionDetail(id: String, asOf: LocalDate): SubscriptionDetail? {
-                if (failRead) throw IOException("Test read failed after real saved payment")
+                if (failRead.get()) throw IOException("Test read failed after real saved payment")
                 return super.loadSubscriptionDetail(id, asOf)
             }
         }
         onMain { subscription = SubscriptionViewModel(unreadable, SavedStateHandle(), clock); retain("unreadable-payment", subscription) }
         render(); openCreate(); fillVisibleCreate()
         Espresso.closeSoftKeyboard(); compose.waitForIdle()
-        compose.onNodeWithTag("subscription-confirm-payment").performClick()
+        compose.onNodeWithTag("subscription-confirm-payment").assertIsDisplayed().performClick()
         compose.waitUntil(15_000) { subscription.state.value.editor?.phase == SubmissionPhase.COMMITTED && subscription.state.value.editor?.message?.contains("已保存") == true }
         compose.onNodeWithTag("subscription-confirm-payment").assertDoesNotExist()
         compose.onNodeWithTag("subscription-retry-read").assertIsDisplayed()
         assertEquals(1L, generation.database.subscriptionDao().countSubscriptions())
-        failRead = false
+        failRead.set(false)
         compose.onNodeWithTag("subscription-retry-read").performClick()
         compose.waitUntil(15_000) { subscription.state.value.editor == null && subscription.state.value.detail.detail != null }
         val detail = ready.subscriptionRepository.loadSubscriptionPage().items.single()
@@ -301,13 +326,27 @@ class SubscriptionNavigationGuardTest {
     private fun render() {
         compose.setContent { LithicTheme {
             val ledger by holder.state.collectAsState()
-            LithicApp(ledger, {}, project, subscriptionViewModel = subscription)
+            key(freshHomeNavigation.value) {
+                LithicApp(ledger, {}, project, subscriptionViewModel = subscription)
+            }
         } }
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
     }
+    private fun keepDraftAfter(leave: () -> Unit) {
+        leave()
+        compose.onNodeWithTag("discard-dialog").assertIsDisplayed()
+        compose.onNodeWithTag("discard-keep").performClick()
+    }
+
     private fun openCreate() {
-        compose.onNodeWithTag("home-create-subscription").performScrollTo().performClick()
+        selectCreateOption("home-create-subscription")
         compose.waitUntil(10_000) { subscription.state.value.editor?.today != null }
+        compose.onNodeWithTag("subscription-editor-screen").assertIsDisplayed()
+    }
+
+    private fun selectCreateOption(tag: String) {
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
+        compose.onNodeWithTag(tag).assertIsDisplayed().performClick()
     }
     private fun fillVisibleCreate() {
         compose.onNodeWithTag("subscription-name").performScrollTo().performTextReplacement("正式付款表单")

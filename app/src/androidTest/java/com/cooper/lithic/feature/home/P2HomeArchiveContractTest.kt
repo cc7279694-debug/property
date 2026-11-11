@@ -226,12 +226,24 @@ class P2HomeArchiveContractTest {
                     compose.onNodeWithTag("home-screen")
                         .performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, 100_000f) }
                     val last = compose.onNodeWithTag("home-category-disclosure").assertIsDisplayed().fetchSemanticsNode()
-                    val fab = compose.onNodeWithTag("home-open-add").assertWidthIsEqualTo(56.dp).assertHeightIsEqualTo(56.dp)
-                        .fetchSemanticsNode()
+                    val add = compose.onNodeWithTag("home-open-add").assertIsDisplayed()
                     val nav = compose.onNodeWithTag("p2-bottom-navigation").fetchSemanticsNode()
-                    assertTrue(last.boundsInRoot.bottom <= fab.boundsInRoot.top + 1f)
-                    assertTrue(fab.boundsInRoot.bottom <= nav.boundsInRoot.top + 1f)
+                    val addBounds = add.fetchSemanticsNode().boundsInRoot
+                    assertTrue(last.boundsInRoot.bottom <= addBounds.top + 1f)
+                    assertTrue(addBounds.bottom <= nav.boundsInRoot.top + 1f)
                     compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
+                    if (font == 2f) {
+                        add.assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).assertTextEquals("新增记录")
+                        val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
+                        assertTrue("The entire scrolling viewport must end above the add button", viewport.bottom <= addBounds.top + 1f)
+                        for (tag in listOf("open-project-list", projectTag(), "open-subscription-list",
+                            subscriptionTag(), "home-category-disclosure")) {
+                            val target = compose.onNodeWithTag(tag).performScrollTo().assertIsDisplayed().fetchSemanticsNode()
+                            assertTrue("$tag must not enter the reserved add area", target.boundsInRoot.bottom <= addBounds.top + 1f)
+                        }
+                    } else {
+                        add.assertWidthIsEqualTo(56.dp).assertHeightIsEqualTo(56.dp)
+                    }
                 }
             }
         }

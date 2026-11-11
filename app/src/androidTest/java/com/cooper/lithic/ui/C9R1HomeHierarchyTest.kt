@@ -53,8 +53,8 @@ class C9R1HomeHierarchyTest {
             compose.onNodeWithTag("home-project-record-count").assertTextEquals("1")
             compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("1")
             compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
-            compose.onNodeWithTag("home-project-rate").performScrollTo().assertTextContains("¥")
-            compose.onNodeWithTag("home-subscription-rate").performScrollTo().assertTextContains("¥")
+            compose.onNodeWithTag("home-project-rate").performScrollTo().assertTextEquals("¥9.92/天")
+            compose.onNodeWithTag("home-subscription-rate").performScrollTo().assertTextEquals("¥0.60/天")
             compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
             compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
             compose.runOnIdle { assertEquals(0, writes) }
