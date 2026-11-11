@@ -2,7 +2,6 @@ package com.cooper.lithic.feature.home
 
 import com.cooper.lithic.data.media.CoverOwnerType
 import com.cooper.lithic.data.media.CoverReference
-import com.cooper.lithic.feature.media.RecordCover
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -15,8 +14,6 @@ import com.cooper.lithic.core.design.LithicIconButton as IconButton
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -69,10 +66,11 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                             val status = projectPreview?.let { c2PreviewStatus(it.loading, it.error, it.items.map { d -> d.asOf }, overview?.asOf) }
                             PreviewNotice(status, projectPreview?.error, "还没有当前长期项目", onRetryPreview)
                             if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) projectPreview?.items?.take(2)?.forEach { row ->
-                                PreviewRow(row.project.name, row.category.name, C2Glyph.Project,
-                                    projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "当前日均成本", null,
+                                HomeArchiveRow(row.project.name, row.category.name, C2Glyph.Project,
+                                    projectStatusLabel(row), "持有 ${row.cost.heldDays} 天", "项目日均成本",
                                     row.cost.dailyRate, CoverReference(CoverOwnerType.PROJECT, row.project.id, row.project.coverAssetId),
-                                    "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } })
+                                    "home-project-preview-${row.project.id}", onOpenProject?.let { { it(row.project.id) } },
+                                    spokenMetric = "当前日均成本")
                             }
                         }
                         Column(verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
@@ -81,9 +79,9 @@ internal fun HomeShell(projectCount: Long, onProjectList: () -> Unit, onCreatePr
                                 emptyLabel = if (status == C2PreviewStatus.EMPTY) "暂无当前订阅" else null)
                             if (status != C2PreviewStatus.EMPTY) PreviewNotice(status, subscriptionPreview?.error, "还没有当前订阅", onRetryPreview)
                             if (status in setOf(C2PreviewStatus.READY, C2PreviewStatus.RETAINED)) subscriptionPreview?.items?.take(2)?.forEach { row ->
-                                PreviewRow(row.subscription.name, row.category.name, C2Glyph.Subscription,
+                                HomeArchiveRow(row.subscription.name, row.category.name, C2Glyph.Subscription,
                                     subscriptionStatusLabel(row.cost.displayStatus), "折算付费${row.cost.standardPurchasedDays}天",
-                                    "历史平均日成本", "历史均价", row.cost.historicalAverage,
+                                    "历史平均日成本", row.cost.historicalAverage,
                                     CoverReference(CoverOwnerType.SUBSCRIPTION, row.subscription.id, row.subscription.coverAssetId),
                                     "home-subscription-preview-${row.subscription.id}", onOpenSubscription?.let { { it(row.subscription.id) } })
                             }
@@ -297,52 +295,6 @@ private fun PreviewNotice(status: C2PreviewStatus?, error: String?, empty: Strin
         C2PreviewStatus.EMPTY -> Text(empty, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         null -> Text("预览尚未取得", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         C2PreviewStatus.READY -> Unit
-    }
-}
-
-@Composable
-private fun PreviewRow(name: String, category: String, icon: C2Glyph, status: String, time: String, metric: String, compactMetric: String?,
-    amount: java.math.BigDecimal?, coverReference: CoverReference, tag: String, onOpen: (() -> Unit)?) {
-    val density = LocalDensity.current
-    val measurer = rememberTextMeasurer()
-    val amountStyle = MaterialTheme.typography.titleMedium
-    val metricStyle = MaterialTheme.typography.bodySmall
-    val amountWidth = with(density) {
-        maxOf(measurer.measure(moneyMetricAnnotatedText(amount, AmountUnit.YUAN_PER_DAY,
-                MaterialTheme.colorScheme.onSurfaceVariant), amountStyle, softWrap = false).size.width,
-            compactMetric?.let { measurer.measure(AnnotatedString(it), metricStyle, softWrap = false).size.width } ?: 0).toDp()
-    }
-    Surface(Modifier.fillMaxWidth().testTag(tag), color = MaterialTheme.colorScheme.background) {
-        BoxWithConstraints(Modifier.fillMaxWidth().then(if (onOpen != null) Modifier.clickable(role = Role.Button, onClick = onOpen) else Modifier).padding(vertical = 12.dp)) {
-            val beside = density.fontScale <= 1.3f && maxWidth >= 48.dp + 12.dp + 112.dp + 12.dp + amountWidth
-            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
-                    RecordCover(coverReference, Modifier.size(48.dp)) {
-                        C2RecordIdentity(name, category, icon, Modifier.size(48.dp))
-                    }
-                    Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                        Text(name, style = MaterialTheme.typography.bodyLarge, fontWeight = FontWeight.SemiBold)
-                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                            Surface(shape = androidx.compose.foundation.shape.RoundedCornerShape(50), color = MaterialTheme.colorScheme.primaryContainer) {
-                                Text(status, Modifier.padding(horizontal = 8.dp, vertical = 2.dp), style = MaterialTheme.typography.bodySmall)
-                            }
-                            Text(time, style = metricStyle, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        }
-                    }
-                    if (beside) Column(Modifier.width(amountWidth)) { PreviewAmount(metric, compactMetric, amount) }
-                }
-                if (!beside) PreviewAmount(metric, compactMetric, amount)
-                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-            }
-        }
-    }
-}
-
-@Composable
-private fun PreviewAmount(metric: String, compactMetric: String?, amount: java.math.BigDecimal?) {
-    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        compactMetric?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant) }
-        MoneyMetric(amount, level = MoneyMetricLevel.ROW, label = metric)
     }
 }
 

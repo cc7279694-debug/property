@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-11-05（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-11-11（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **LITHIC UI P2-2 — 档案行与首页封面，待独立验收（2026-11-11）**：工作分支 `codex/lithic-ui-p2-home`。P2-1 已独立接受（PASS WITH NOTES），Android 补验保持 NOT_RUN。P2-2 接入 R2.1 档案行和首页封面 Fit，其他页面继续使用默认 Crop。实测及端侧缺口见 [P2-2 证据](evidence/LITHIC-UI-P2-2-Home-Archive.md)。等待本包独立验收。
 
 - **V1 CORE PREVIEW19 — READY_FOR_INDEPENDENT_REVIEW（2026-11-05，仅桌面）**：用户授权以 no-op 停用旧提醒，不主动取消 WorkManager 任务；旧提醒点击可按普通首页打开。171 项定向 JVM 通过，生产及 AndroidTest 源码编译通过，Lint 0 错误、20 警告；首次测试源码编译导入错误与复验保留。唯一 Preview19/code35 的实际包名、原证书、Manifest、DEX、关闭的提醒入口及 36 份历史 APK 已核对；归档 SHA `34ef14ac074fe5afafdf9a554518671e576ea8c0d4144537e39195f0947cf2f6`，与构建产物逐字节一致。Android 实际运行、升级和 SAF 恢复仍 NOT_RUN；旧系统任务终结状态 UNKNOWN。详见[集中报告](evidence/LITHIC-V1-CORE-FASTTRACK.md)。`V1_RELEASE_NO_GO / STRICT_JPEG_IMPORT_BLOCKED / ANDROID_ISOLATION_RUNTIME_PENDING` 保持；等待独立审查。
 

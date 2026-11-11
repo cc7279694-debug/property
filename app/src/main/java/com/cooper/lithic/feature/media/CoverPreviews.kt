@@ -49,7 +49,12 @@ private sealed interface PreviewImage {
 }
 
 @Composable
-internal fun RecordCover(reference: CoverReference, modifier: Modifier = Modifier, fallback: @Composable () -> Unit) {
+internal fun RecordCover(
+    reference: CoverReference,
+    modifier: Modifier = Modifier,
+    contentScale: ContentScale = ContentScale.Crop,
+    fallback: @Composable () -> Unit,
+) {
     val reader = LocalCoverReader.current
     var measured by remember { mutableStateOf(IntSize.Zero) }
     val target = coverPreviewTarget(measured.width, measured.height)
@@ -129,7 +134,7 @@ internal fun RecordCover(reference: CoverReference, modifier: Modifier = Modifie
             }
             image is PreviewImage.Ready -> Image((image as PreviewImage.Ready).bitmap,
                 if (reference.type == CoverOwnerType.PROJECT) "长期项目封面" else "订阅封面",
-                Modifier.fillMaxSize().testTag("record-cover-image"), contentScale = ContentScale.Crop)
+                Modifier.fillMaxSize().testTag("record-cover-image"), contentScale = contentScale)
             else -> C2Icon(C2Glyph.Image, Modifier.testTag("record-cover-loading"), "正在读取封面")
         }
     }
