@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_HOME_ANDROID_ADB_ISOLATION_03 — ADB_ISOLATION_READY（2026-11-12）**。独立 SDK ADB 37.0.1 在 5038 启动、空设备查询和关闭均通过。原 5037 服务 PID 及身份一致。准入默认 5038 并拒绝 5037，17 项离线测试通过。真实 Android 准入 NOT_RUN。后续运行以[独立 ADB 报告及接线](evidence/LITHIC-Home-Android-ADB-Isolation-03.md)为准。
+
 - **LITHIC_HOME_ANDROID_ACCEPTANCE_PREP_02 — READY_FOR_NEXT_ANDROID_ATTEMPT（2026-11-12）**。只读确认 SDK ADB 37.0.1 与本机 5037 服务 36.0.1、标准端口排除范围及空传输列表。新版 180 秒准入模块 13 项离线测试通过，三个 AndroidTest 按方法独立准备合成账本，Kotlin 源码编译通过。AVD、Android 运行、200% 字体及截图 NOT_RUN。见[准备报告与运行手册](evidence/LITHIC-Home-Android-Acceptance-Prep-02.md)。
 
 - **LITHIC_HOME_ANDROID_ACCEPTANCE_01 — ENVIRONMENT_BLOCKED（2026-11-12）**。正常 Debug 和 AndroidTest 构建及身份审计通过。全新 API 36 AVD 单次启动后，专属回环端点的 ADB 注册命令超时，准入脚本提前结束。安装、JUnit、原生截图均为 0，Android 验收项 NOT_RUN。见[验收报告](evidence/LITHIC-Home-Android-Acceptance-01.md)。
