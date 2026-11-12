@@ -1,0 +1,500 @@
+.record-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 12px;
+}
+
+.record-content .record-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 52px;
+  gap: 8px;
+  margin: 0 0 2px -8px;
+}
+
+.record-top h2,
+.record-group-title,
+.record-background-detail h3,
+.record-dialog h3,
+.record-state-panel h3 {
+  margin: 0;
+  line-height: 1.3;
+  font-weight: 650;
+  letter-spacing: -.025em;
+}
+
+.record-top h2,
+.record-dialog h3 {
+  font-size: 22px;
+}
+
+.record-content .record-top .record-back {
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  min-width: 48px;
+  min-height: 48px;
+  margin-inline-start: 0;
+  color: inherit;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 23px;
+}
+
+.record-context {
+  display: grid;
+  gap: 4px;
+  padding: 8px 0 16px;
+  border-bottom: 1px solid var(--line, var(--divider, currentColor));
+}
+
+.record-context span,
+.record-field-label,
+.record-fact > span:first-child,
+.record-note,
+.record-item-copy span,
+.record-column-label,
+.record-heading span {
+  color: var(--muted, var(--subtle, currentColor));
+  font-size: 13px;
+}
+
+.record-context strong {
+  font-size: 19px;
+  line-height: 1.3;
+  font-weight: 620;
+}
+
+.record-field {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  min-width: 0;
+}
+
+.record-field-label {
+  display: block;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.record-optional {
+  opacity: .86;
+}
+
+.record-field-value {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 11px;
+  min-height: 48px;
+  min-width: 0;
+  border: 1px solid var(--line, var(--divider, currentColor));
+  border-radius: 8px;
+  background: var(--surface, transparent);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.record-field-value > span:first-of-type,
+.record-item-copy strong,
+.record-dialog-subject {
+  overflow-wrap: anywhere;
+}
+
+.record-field-value.is-placeholder {
+  color: var(--muted, var(--subtle, currentColor));
+}
+
+.record-field-value .record-chevron,
+.record-field-value .icon-calendar {
+  margin-left: auto;
+}
+
+.record-amount-field .record-field-value {
+  font-size: 26px;
+  font-weight: 560;
+  min-height: 58px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.025em;
+}
+
+.record-currency {
+  font-size: 18px;
+  color: var(--muted, var(--subtle, currentColor));
+}
+
+.record-date-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.record-note {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.record-group-title {
+  font-size: 16px;
+}
+
+.record-options {
+  display: flex;
+  align-items: stretch;
+  min-height: 48px;
+  border: 1px solid var(--line, var(--divider, currentColor));
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.record-options button {
+  flex: 1 1 0;
+  min-height: 48px;
+  padding: 6px 8px;
+  border: 0;
+  border-right: 1px solid var(--line, var(--divider, currentColor));
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+}
+
+.record-options button:last-child {
+  border-right: 0;
+}
+
+.record-options button[aria-pressed=true] {
+  background: var(--soft, var(--tint, var(--surface, transparent)));
+  color: var(--accent, inherit);
+  font-weight: 680;
+  box-shadow: inset 0 -2px currentColor;
+}
+
+.record-footer {
+  display: flex;
+  justify-content: stretch;
+}
+
+.record-footer .record-action {
+  flex: 1;
+  width: 100%;
+}
+
+.record-action,
+.record-text-action {
+  min-height: 48px;
+  min-width: 48px;
+  padding: 8px 16px;
+  line-height: 1.25;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.record-action.record-outline {
+  border: 1px solid var(--line, var(--divider, currentColor));
+  background: transparent;
+  color: var(--accent, inherit);
+}
+
+.record-text-action {
+  border: 0;
+  background: none;
+  text-align: left;
+  color: var(--accent, inherit);
+  padding-left: 0;
+}
+
+.record-callout {
+  margin: 0;
+  padding: 10px 12px;
+  border-inline-start: 2px solid var(--accent, currentColor);
+  color: var(--ink, inherit);
+  background: var(--soft, var(--tint, var(--surface, transparent)));
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.record-original {
+  display: grid;
+  gap: 0;
+  padding: 5px 0 8px;
+  border-block: 1px solid var(--line, var(--divider, currentColor));
+}
+
+.record-original > .record-note {
+  padding-top: 5px;
+}
+
+.record-fact {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.record-fact > strong {
+  font-size: 15px;
+  font-weight: 650;
+  text-align: right;
+}
+
+.record-check {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 48px;
+  font-size: 14px;
+}
+
+.record-check input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--accent, auto);
+}
+
+.record-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0 4px;
+}
+
+.record-list-page {
+  gap: 8px;
+}
+
+.record-column-label {
+  margin: 0;
+  text-align: right;
+}
+
+.record-list {
+  border-top: 1px solid var(--line, var(--divider, currentColor));
+}
+
+.record-item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) max-content;
+  align-items: center;
+  gap: 12px;
+  min-height: 86px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line, var(--divider, currentColor));
+}
+
+.record-thumb {
+  width: 64px;
+  height: 48px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 6px;
+  background: var(--soft, var(--tint, var(--surface, transparent)));
+  display: grid;
+  place-items: center;
+}
+
+.record-item-copy {
+  display: grid;
+  gap: 3px;
+  line-height: 1.35;
+  min-width: 0;
+}
+
+.record-item-copy strong {
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.record-item-copy span {
+  font-size: 12px;
+}
+
+.record-number {
+  font-size: 17px;
+  font-weight: 620;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+}
+
+.record-unit {
+  margin-left: 2px;
+  font-size: 11px;
+  font-weight: 450;
+  letter-spacing: 0;
+}
+
+.record-icon {
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+  width: 17px;
+  height: 16px;
+  color: var(--muted, var(--subtle, currentColor));
+}
+
+.icon-archive,
+.icon-book,
+.icon-calendar {
+  border: 1.5px solid currentColor;
+  border-radius: 2px;
+}
+
+.icon-archive::before {
+  position: absolute;
+  content: "";
+  top: 4px;
+  left: 0;
+  right: 0;
+  border-top: 1px solid currentColor;
+}
+
+.icon-archive::after {
+  position: absolute;
+  content: "";
+  top: 8px;
+  left: 4px;
+  right: 4px;
+  border-top: 1px solid currentColor;
+}
+
+.icon-book::before {
+  position: absolute;
+  content: "";
+  inset: 0 47% 0 auto;
+  border-right: 1px solid currentColor;
+}
+
+.icon-calendar {
+  width: 14px;
+  height: 13px;
+}
+
+.icon-calendar::before {
+  position: absolute;
+  content: "";
+  top: 3px;
+  left: 0;
+  right: 0;
+  border-top: 1px solid currentColor;
+}
+
+.icon-music::before {
+  content: "♫";
+  font-size: 19px;
+  line-height: 1;
+}
+
+.record-payment {
+  gap: 8px;
+  padding-bottom: 6px;
+}
+
+.record-payment .record-context {
+  padding: 1px 0 9px;
+}
+
+.record-payment .record-text-action {
+  align-self: start;
+}
+
+.record-background-detail .record-thumb {
+  width: 100%;
+  height: 156px;
+}
+
+.record-background-detail h3 {
+  margin-top: 15px;
+  font-size: 25px;
+}
+
+.record-background-detail p {
+  color: var(--muted, var(--subtle, currentColor));
+  margin: 6px 0;
+}
+
+.record-divider {
+  height: 1px;
+  background: var(--line, var(--divider, currentColor));
+  margin: 16px 0 3px;
+}
+
+.app-content:has(.record-with-modal) {
+  position: relative;
+}
+
+.record-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(10, 17, 21, .39);
+}
+
+.record-dialog {
+  position: static;
+  width: min(100%, 320px);
+  padding: 20px;
+  border: 1px solid var(--line, var(--divider, transparent));
+  border-radius: 22px;
+  background: var(--surface, var(--bg, Canvas));
+  box-shadow: 0 18px 32px rgba(15, 18, 21, .16);
+}
+
+.record-dialog p {
+  margin: 10px 0 0;
+  line-height: 1.55;
+  font-size: 14px;
+}
+
+.record-dialog .record-dialog-subject {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.record-dialog-actions {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.record-dialog .record-action.record-danger {
+  background: var(--error-surface, #f9e8e5);
+  color: var(--error, #9a3030);
+  border: none;
+  min-height: 48px;
+}
+
+.record-state-panel {
+  padding: 18px 0 18px 15px;
+  border-left: 2px solid var(--warning, var(--accent, currentColor));
+}
+
+.record-state-panel h3 {
+  font-size: 21px;
+}
+
+.record-state-panel p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted, var(--subtle, currentColor));
+}
+
+.record-state-plain {
+  border-left-color: var(--accent, currentColor);
+}
