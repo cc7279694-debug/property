@@ -1,0 +1,362 @@
+{
+  "started_utc": "2026-11-12T14:37:26.671+00:00",
+  "commands": [
+    {
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "\n$ErrorActionPreference='Stop'\n$ls=@(Get-NetTCPConnection -State Listen | Where-Object LocalPort -In 5037,5038 |\n  Select-Object LocalAddress,LocalPort,OwningProcess)\n$ps=@(Get-CimInstance Win32_Process -Filter \"Name='adb.exe'\" | ForEach-Object {\n  [pscustomobject]@{Pid=$_.ProcessId; Path=$_.ExecutablePath;\n    CreatedUtc=$_.CreationDate.ToUniversalTime().ToString('o');\n    OwnedSentinel=($_.CommandLine -match 'LITHIC-ACCEPTANCE-02-NO-USB-e2ad042fe31c4eb99a9d19f9c55617dd')}\n})\n[pscustomobject]@{listeners=$ls; processes=$ps} | ConvertTo-Json -Compress -Depth 4\n"
+      ],
+      "start_utc": "2026-11-12T14:37:26.673+00:00",
+      "timeout_seconds": 15,
+      "exit": 0,
+      "stdout": "{\"listeners\":[{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":5037,\"OwningProcess\":13756}],\"processes\":[{\"Pid\":13756,\"Path\":null,\"CreatedUtc\":\"2026-11-12T01:04:39.1522980Z\",\"OwnedSentinel\":false}]}\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:37:29.658+00:00",
+      "elapsed_seconds": 2.984
+    },
+    {
+      "command": [
+        "netsh.exe",
+        "interface",
+        "ipv4",
+        "show",
+        "excludedportrange",
+        "protocol=tcp"
+      ],
+      "start_utc": "2026-11-12T14:37:29.658+00:00",
+      "timeout_seconds": 15,
+      "exit": 0,
+      "stdout": "\r\nProtocol tcp Port Exclusion Ranges\r\n\r\nStart Port    End Port      \r\n----------    --------      \r\n      4709        4808      \r\n      4809        4908      \r\n      4909        5008      \r\n      5041        5140      \r\n      5141        5240      \r\n      5241        5340      \r\n      5357        5357      \r\n      5358        5457      \r\n      5458        5557      \r\n      5558        5657      \r\n      5658        5757      \r\n     50000       50059     *\r\n\r\n* - Administered port exclusions.\r\n\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:37:29.736+00:00",
+      "elapsed_seconds": 0.078
+    },
+    {
+      "command": [
+        "netsh.exe",
+        "interface",
+        "ipv6",
+        "show",
+        "excludedportrange",
+        "protocol=tcp"
+      ],
+      "start_utc": "2026-11-12T14:37:29.736+00:00",
+      "timeout_seconds": 15,
+      "exit": 0,
+      "stdout": "\r\nProtocol tcp Port Exclusion Ranges\r\n\r\nStart Port    End Port      \r\n----------    --------      \r\n      4709        4808      \r\n      4809        4908      \r\n      4909        5008      \r\n      5041        5140      \r\n      5141        5240      \r\n      5241        5340      \r\n      5357        5357      \r\n      5358        5457      \r\n      5458        5557      \r\n      5558        5657      \r\n      5658        5757      \r\n     50000       50059     *\r\n\r\n* - Administered port exclusions.\r\n\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:37:29.810+00:00",
+      "elapsed_seconds": 0.078
+    },
+    {
+      "command": "host:version",
+      "endpoint": "127.0.0.1:5037",
+      "start_utc": "2026-11-12T14:37:29.815+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "response": "0029",
+      "end_utc": "2026-11-12T14:37:29.823+00:00",
+      "elapsed_seconds": 0.016
+    },
+    {
+      "command": "host:server-status",
+      "endpoint": "127.0.0.1:5037",
+      "start_utc": "2026-11-12T14:37:29.823+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "identity": {
+        "version": "36.0.1",
+        "build": "13811061",
+        "executable_path": "E:\\向日葵\\Oppo Connect\\daemon\\bin\\adb.exe"
+      },
+      "executable_path_exists": true,
+      "end_utc": "2026-11-12T14:37:29.828+00:00",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "command": [
+        "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "version"
+      ],
+      "start_utc": "2026-11-12T14:37:29.828+00:00",
+      "timeout_seconds": 15,
+      "exit": 0,
+      "stdout": "Android Debug Bridge version 1.0.41\r\nVersion 37.0.1-15733141\r\nInstalled as E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe\r\nRunning on Windows 10.0.26200\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:37:30.120+00:00",
+      "elapsed_seconds": 0.297
+    },
+    {
+      "command": [
+        "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-P",
+        "5038",
+        "--one-device",
+        "LITHIC-ACCEPTANCE-02-NO-USB-e2ad042fe31c4eb99a9d19f9c55617dd",
+        "start-server"
+      ],
+      "start_utc": "2026-11-12T14:37:30.121+00:00",
+      "timeout_seconds": 25,
+      "exit": 0,
+      "stdout": "",
+      "stderr": "* daemon not running; starting now at tcp:5038\r\n* daemon started successfully\r\n",
+      "end_utc": "2026-11-12T14:37:32.357+00:00",
+      "elapsed_seconds": 2.234
+    },
+    {
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "\n$ErrorActionPreference='Stop'\n$ls=@(Get-NetTCPConnection -State Listen | Where-Object LocalPort -In 5037,5038 |\n  Select-Object LocalAddress,LocalPort,OwningProcess)\n$ps=@(Get-CimInstance Win32_Process -Filter \"Name='adb.exe'\" | ForEach-Object {\n  [pscustomobject]@{Pid=$_.ProcessId; Path=$_.ExecutablePath;\n    CreatedUtc=$_.CreationDate.ToUniversalTime().ToString('o');\n    OwnedSentinel=($_.CommandLine -match 'LITHIC-ACCEPTANCE-02-NO-USB-e2ad042fe31c4eb99a9d19f9c55617dd')}\n})\n[pscustomobject]@{listeners=$ls; processes=$ps} | ConvertTo-Json -Compress -Depth 4\n"
+      ],
+      "start_utc": "2026-11-12T14:37:32.357+00:00",
+      "timeout_seconds": 15,
+      "exit": 0,
+      "stdout": "{\"listeners\":[{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":5038,\"OwningProcess\":34300},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":5037,\"OwningProcess\":13756}],\"processes\":[{\"Pid\":13756,\"Path\":null,\"CreatedUtc\":\"2026-11-12T01:04:39.1522980Z\",\"OwnedSentinel\":false},{\"Pid\":34300,\"Path\":\"E:\\\\CODEX\\\\MirraAndroid\\\\sdk\\\\platform-tools\\\\adb.exe\",\"CreatedUtc\":\"2026-11-12T14:37:32.2716990Z\",\"OwnedSentinel\":true}]}\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:37:34.281+00:00",
+      "elapsed_seconds": 1.922
+    },
+    {
+      "command": "host:version",
+      "endpoint": "127.0.0.1:5038",
+      "start_utc": "2026-11-12T14:37:34.281+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "response": "0029",
+      "end_utc": "2026-11-12T14:37:34.282+00:00",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "command": "host:server-status",
+      "endpoint": "127.0.0.1:5038",
+      "start_utc": "2026-11-12T14:37:34.282+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "identity": {
+        "version": "37.0.1",
+        "build": "15733141",
+        "executable_path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe"
+      },
+      "executable_path_exists": true,
+      "end_utc": "2026-11-12T14:37:34.284+00:00",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "command": [
+        "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-P",
+        "5038",
+        "devices",
+        "-l"
+      ],
+      "start_utc": "2026-11-12T14:37:34.286+00:00",
+      "timeout_seconds": 8,
+      "exit": 0,
+      "stdout": "List of devices attached\r\n\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:37:34.385+00:00",
+      "elapsed_seconds": 0.094
+    },
+    {
+      "command": "host:devices-l",
+      "endpoint": "127.0.0.1:5038",
+      "start_utc": "2026-11-12T14:37:34.385+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "devices": [],
+      "end_utc": "2026-11-12T14:37:34.404+00:00",
+      "elapsed_seconds": 0.015
+    },
+    {
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "\n$ErrorActionPreference='Stop'\n$ls=@(Get-NetTCPConnection -State Listen | Where-Object LocalPort -In 5037,5038 |\n  Select-Object LocalAddress,LocalPort,OwningProcess)\n$ps=@(Get-CimInstance Win32_Process -Filter \"Name='adb.exe'\" | ForEach-Object {\n  [pscustomobject]@{Pid=$_.ProcessId; Path=$_.ExecutablePath;\n    CreatedUtc=$_.CreationDate.ToUniversalTime().ToString('o');\n    OwnedSentinel=($_.CommandLine -match 'LITHIC-ACCEPTANCE-02-NO-USB-e2ad042fe31c4eb99a9d19f9c55617dd')}\n})\n[pscustomobject]@{listeners=$ls; processes=$ps} | ConvertTo-Json -Compress -Depth 4\n"
+      ],
+      "start_utc": "2026-11-12T14:38:46.810+00:00",
+      "timeout_seconds": 15,
+      "exit": 0,
+      "stdout": "{\"listeners\":[{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":5038,\"OwningProcess\":34300},{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":5037,\"OwningProcess\":13756}],\"processes\":[{\"Pid\":13756,\"Path\":null,\"CreatedUtc\":\"2026-11-12T01:04:39.1522980Z\",\"OwnedSentinel\":false},{\"Pid\":34300,\"Path\":\"E:\\\\CODEX\\\\MirraAndroid\\\\sdk\\\\platform-tools\\\\adb.exe\",\"CreatedUtc\":\"2026-11-12T14:37:32.2716990Z\",\"OwnedSentinel\":true}]}\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:38:48.986+00:00",
+      "elapsed_seconds": 2.172
+    },
+    {
+      "command": "host:version",
+      "endpoint": "127.0.0.1:5038",
+      "start_utc": "2026-11-12T14:38:48.986+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "response": "0029",
+      "end_utc": "2026-11-12T14:38:48.989+00:00",
+      "elapsed_seconds": 0.016
+    },
+    {
+      "command": "host:server-status",
+      "endpoint": "127.0.0.1:5038",
+      "start_utc": "2026-11-12T14:38:48.989+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "identity": {
+        "version": "37.0.1",
+        "build": "15733141",
+        "executable_path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe"
+      },
+      "executable_path_exists": true,
+      "end_utc": "2026-11-12T14:38:48.990+00:00",
+      "elapsed_seconds": 0.0
+    },
+    {
+      "command": [
+        "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-P",
+        "5038",
+        "kill-server"
+      ],
+      "start_utc": "2026-11-12T14:38:48.992+00:00",
+      "timeout_seconds": 10,
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:38:49.173+00:00",
+      "elapsed_seconds": 0.172
+    },
+    {
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "\n$ErrorActionPreference='Stop'\n$ls=@(Get-NetTCPConnection -State Listen | Where-Object LocalPort -In 5037,5038 |\n  Select-Object LocalAddress,LocalPort,OwningProcess)\n$ps=@(Get-CimInstance Win32_Process -Filter \"Name='adb.exe'\" | ForEach-Object {\n  [pscustomobject]@{Pid=$_.ProcessId; Path=$_.ExecutablePath;\n    CreatedUtc=$_.CreationDate.ToUniversalTime().ToString('o');\n    OwnedSentinel=($_.CommandLine -match 'LITHIC-ACCEPTANCE-02-NO-USB-e2ad042fe31c4eb99a9d19f9c55617dd')}\n})\n[pscustomobject]@{listeners=$ls; processes=$ps} | ConvertTo-Json -Compress -Depth 4\n"
+      ],
+      "start_utc": "2026-11-12T14:38:49.173+00:00",
+      "timeout_seconds": 15,
+      "exit": 0,
+      "stdout": "{\"listeners\":[{\"LocalAddress\":\"127.0.0.1\",\"LocalPort\":5037,\"OwningProcess\":13756}],\"processes\":[{\"Pid\":13756,\"Path\":null,\"CreatedUtc\":\"2026-11-12T01:04:39.1522980Z\",\"OwnedSentinel\":false}]}\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-12T14:38:51.330+00:00",
+      "elapsed_seconds": 2.156
+    },
+    {
+      "command": "host:version",
+      "endpoint": "127.0.0.1:5037",
+      "start_utc": "2026-11-12T14:38:51.330+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "response": "0029",
+      "end_utc": "2026-11-12T14:38:51.332+00:00",
+      "elapsed_seconds": 0.016
+    },
+    {
+      "command": "host:server-status",
+      "endpoint": "127.0.0.1:5037",
+      "start_utc": "2026-11-12T14:38:51.332+00:00",
+      "timeout_seconds": 3,
+      "status": "OKAY",
+      "exit": null,
+      "identity": {
+        "version": "36.0.1",
+        "build": "13811061",
+        "executable_path": "E:\\向日葵\\Oppo Connect\\daemon\\bin\\adb.exe"
+      },
+      "executable_path_exists": true,
+      "end_utc": "2026-11-12T14:38:51.335+00:00",
+      "elapsed_seconds": 0.0
+    }
+  ],
+  "startup_options": {
+    "usb": "one-device nonmatching sentinel",
+    "mdns_auto_connect": false,
+    "automatic_emulator_discovery": false,
+    "keys": "dedicated local directory"
+  },
+  "before": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 13756
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 13756,
+        "Path": null,
+        "CreatedUtc": "2026-11-12T01:04:39.1522980Z",
+        "OwnedSentinel": false
+      }
+    ]
+  },
+  "bind_probe": {
+    "ipv4": true,
+    "ipv6": true
+  },
+  "original_identity": {
+    "protocol": "0029",
+    "identity": {
+      "version": "36.0.1",
+      "build": "13811061",
+      "executable_path": "E:\\向日葵\\Oppo Connect\\daemon\\bin\\adb.exe"
+    }
+  },
+  "isolated_identity": {
+    "process": {
+      "Pid": 34300,
+      "Path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "CreatedUtc": "2026-11-12T14:37:32.2716990Z",
+      "OwnedSentinel": true
+    },
+    "protocol": "0029",
+    "identity": {
+      "version": "37.0.1",
+      "build": "15733141",
+      "executable_path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe"
+    }
+  },
+  "build_exit": 0,
+  "audit_exit": 1,
+  "after": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 13756
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 13756,
+        "Path": null,
+        "CreatedUtc": "2026-11-12T01:04:39.1522980Z",
+        "OwnedSentinel": false
+      }
+    ]
+  },
+  "original_identity_after": {
+    "protocol": "0029",
+    "identity": {
+      "version": "36.0.1",
+      "build": "13811061",
+      "executable_path": "E:\\向日葵\\Oppo Connect\\daemon\\bin\\adb.exe"
+    }
+  },
+  "status": "BLOCKED",
+  "error": "Debug APK audit did not complete successfully",
+  "ended_utc": "2026-11-12T14:38:51.335+00:00"
+}

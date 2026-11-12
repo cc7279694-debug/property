@@ -1,0 +1,13 @@
+Command: gradlew.bat --offline --no-daemon --console=plain --max-workers=1 "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8" "-Pandroid.overridePathCheck=true" "-Pkotlin.compiler.execution.strategy=in-process" :app:assembleDebug :app:assembleDebugAndroidTest
+First desktop build, with isolated ADB environment inherited:
+> Task :app:assembleDebug
+> Task :app:assembleDebugAndroidTest
+BUILD SUCCESSFUL in 1m 6s
+73 actionable tasks: 5 executed, 68 up-to-date
+First build exit 0; audit exit 1: app-debug.apk Debug certificate mismatch.
+Desktop-only retry with ANDROID_USER_HOME and ADB overrides removed:
+> Task :app:assembleDebug
+> Task :app:assembleDebugAndroidTest
+BUILD SUCCESSFUL in 34s
+73 actionable tasks: 2 executed, 71 up-to-date
+Retry build exit 0; final audit exit 0.
