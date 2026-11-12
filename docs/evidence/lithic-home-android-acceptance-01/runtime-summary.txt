@@ -1,0 +1,8 @@
+Windows preflight: binding 127.0.0.1:5558 returned WinError 10013; this preflight did not launch an emulator.
+IPv4 and IPv6 TCP exclusions include 5458-5557 and 5558-5657, covering every standard emulator console/ADB pair from 5554 to 5585.
+The emulator help documents -ports <consoleport>,<adbport>. A single launch used 17640,17641.
+The existing ADB server listened on 127.0.0.1:5037 with PID 13756 before and after the attempt.
+The runtime client timed out at the loopback ADB registration step; the 180-second boot deadline was not reached.
+Post-run checks found no emulator/qemu process and no 17640/17641 listeners.
+APK installs=0; Instrumentation calls=0; PNGs=0.
+The owned 127.0.0.1:17641 transport appeared offline after shutdown. One exact host disconnect returned 0; the next delayed read-only inventory was empty.

@@ -1,0 +1,24 @@
+Launched one fresh AVD, owned wrapper PID=31232
+Traceback (most recent call last):
+  File "<evidence-root>\run.py", line 335, in <module>
+    main()
+  File "<evidence-root>\run.py", line 326, in main
+    system_ui,initial_font=admit(proc,deadline)
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "<evidence-root>\run.py", line 138, in admit
+    stage('local-transport-connect','connect',TCP_SERIAL,needs_target=False,timeout=min(6,max(1,deadline-time.monotonic())))
+  File "<evidence-root>\run.py", line 80, in stage
+    result = client(*args, timeout=timeout, needs_target=needs_target)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<evidence-root>\run.py", line 74, in client
+    return sp.run([*command, *args], timeout=timeout, capture_output=True, env=ENV, creationflags=FLAGS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<python-runtime>\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<python-runtime>\Lib\subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<python-runtime>\Lib\subprocess.py", line 1630, in _communicate
+    raise TimeoutExpired(self.args, orig_timeout)
+subprocess.TimeoutExpired: Command '['E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe', '-H', '127.0.0.1', '-P', '5037', 'connect', '127.0.0.1:17641']' timed out after 6 seconds
