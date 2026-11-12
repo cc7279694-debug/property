@@ -9,20 +9,25 @@ Controller hand-off for a future authorized attempt::
     proc = subprocess.Popen(launch_command, ...)
     try:
         result = admit_owned_emulator(proc, launched_at, avd, console_port,
-                                      transport_port, new_evidence_dir)
+                                      transport_port, new_evidence_dir,
+                                      adb_host="127.0.0.1", adb_port=5038)
         if result.status == "ADMITTED":
             check_guest_health_before_any_install(result.serial)
     finally:
         stop_only_the_owned_emulator(proc)
 
-The launch command must specify the exact AVD and explicit port pair. The
-controller still checks host service identity and empty inventory before launch,
+The launch command must specify the exact AVD and explicit port pair. Its
+environment must direct the emulator to the same independent ADB server
+(ANDROID_ADB_SERVER_PORT=5038 for the default endpoint). The controller
+still checks host service identity and empty inventory before launch,
 and guest health and package absence after admission. Do not call the old
 acceptance-01 admission function before or after this hand-off.
 """
 
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
+from functools import partial
+from ipaddress import ip_address
 import json
 import os
 from pathlib import Path
@@ -35,7 +40,9 @@ import time
 
 WINDOW_SECONDS = 180.0
 POLL_SECONDS = 3.0
-SERVER = ("127.0.0.1", 5037)
+ADB_HOST = "127.0.0.1"
+ADB_PORT = 5038
+SHARED_ADB_PORT = 5037
 BOOT_PROPERTY = "getprop sys.boot_completed"
 SHELL_PROBE = "printf 'LITHIC_SHELL_OK\\n'"
 IDENTITY_PROPERTIES = (
@@ -61,6 +68,24 @@ class AdmissionResult:
 
 class ProtocolError(Exception):
     pass
+
+
+def validate_server_address(adb_host, adb_port):
+    if type(adb_port) is not int or not 1 <= adb_port <= 65535:
+        raise ValueError("ADB port must be an integer in 1..65535")
+    if adb_port == SHARED_ADB_PORT:
+        raise ValueError("ADB port 5037 is reserved for the shared service")
+    if adb_host == "localhost":
+        adb_host = ADB_HOST
+    if not isinstance(adb_host, str) or "%" in adb_host:
+        raise ValueError("ADB host must be a loopback address")
+    try:
+        address = ip_address(adb_host)
+    except ValueError as error:
+        raise ValueError("ADB host must be a loopback address") from error
+    if not address.is_loopback:
+        raise ValueError("ADB host must be a loopback address")
+    return str(address), adb_port
 
 
 def _remaining(deadline):
@@ -102,16 +127,24 @@ def _request(sock, service, deadline):
         raise ProtocolError(f"Unexpected ADB protocol status {status!r}")
 
 
-def _host(service, deadline):
-    with socket.create_connection(SERVER, timeout=_remaining(deadline)) as sock:
+def _host(service, deadline, *, adb_host=ADB_HOST, adb_port=ADB_PORT):
+    server = validate_server_address(adb_host, adb_port)
+    if service != "host:devices-l":
+        endpoint = re.fullmatch(r"host:connect:127\.0\.0\.1:([0-9]{1,5})", service)
+        if not endpoint or not 1 <= int(endpoint[1]) <= 65535:
+            raise ValueError("Admission only permits host inventory and an exact loopback transport")
+        if int(endpoint[1]) == SHARED_ADB_PORT:
+            raise ValueError("Emulator transport must not use shared ADB port 5037")
+    with socket.create_connection(server, timeout=_remaining(deadline)) as sock:
         _request(sock, service, deadline)
         return Reply(_body(sock, deadline).decode("utf-8", errors="replace"))
 
 
-def _shell(serial, command, deadline):
+def _shell(serial, command, deadline, *, adb_host=ADB_HOST, adb_port=ADB_PORT):
+    server = validate_server_address(adb_host, adb_port)
     if command not in (BOOT_PROPERTY, SHELL_PROBE, IDENTITY_PROPERTIES):
         raise ValueError("Only fixed read-only admission probes are permitted")
-    with socket.create_connection(SERVER, timeout=_remaining(deadline)) as sock:
+    with socket.create_connection(server, timeout=_remaining(deadline)) as sock:
         _request(sock, f"host:transport:{serial}", deadline)
         _request(sock, f"shell,v2,raw:{command}", deadline)
         streams = {1: bytearray(), 2: bytearray()}
@@ -161,7 +194,7 @@ def _inventory_rows(output):
 
 
 def _observe(*, launched_at, avd, console_port, transport_port, alive, host, shell, listener,
-             record, clock=time.monotonic, sleep=time.sleep):
+             record, clock=time.monotonic, sleep=time.sleep, server=(ADB_HOST, ADB_PORT)):
     deadline = launched_at + WINDOW_SECONDS
     endpoint = f"127.0.0.1:{transport_port}"
     allowed_serials = {f"emulator-{console_port}", endpoint}
@@ -174,7 +207,8 @@ def _observe(*, launched_at, avd, console_port, transport_port, alive, host, she
             return None
         event = {"command": command, "startedUtc": datetime.now(timezone.utc).isoformat(),
                  "elapsedFromLaunchSeconds": round(start - launched_at, 3),
-                 "timeoutSeconds": round(limit - start, 3), "exitCode": None}
+                 "timeoutSeconds": round(limit - start, 3), "exitCode": None,
+                 "adbHost": server[0], "adbPort": server[1]}
         try:
             reply = action(*args, limit)
             event.update(exitCode=reply.exit_code, stderr=reply.stderr,
@@ -245,18 +279,21 @@ def _observe(*, launched_at, avd, console_port, transport_port, alive, host, she
     return blocked("180-second window expired before admission was established")
 
 
-def admit_owned_emulator(proc, launched_at, avd, console_port, transport_port, evidence_dir):
+def admit_owned_emulator(proc, launched_at, avd, console_port, transport_port, evidence_dir,
+                         *, adb_host=ADB_HOST, adb_port=ADB_PORT):
     """Observe once using the 180-second deadline measured before the caller's Popen.
 
     `evidence_dir` is a new, caller-owned directory. The caller must have verified
     an empty inventory before launching one fresh AVD with explicit `-ports`.
+    ADB requests use the selected independent loopback server only.
     No command in this module runs before that separately authorized launch.
     """
+    server = validate_server_address(adb_host, adb_port)
     if os.name != "nt" or not isinstance(proc, subprocess.Popen):
         raise ValueError("An owned Windows emulator Popen is required")
     if not re.fullmatch(r"[A-Za-z0-9_]+", avd) or not (
         1024 <= console_port < 65535 and transport_port == console_port + 1
-    ) or SERVER[1] in (console_port, transport_port):
+    ) or {server[1], SHARED_ADB_PORT}.intersection((console_port, transport_port)):
         raise ValueError("Invalid AVD name or explicit emulator port pair")
     arguments = proc.args
     ports = f"{console_port},{transport_port}"
@@ -274,7 +311,8 @@ def admit_owned_emulator(proc, launched_at, avd, console_port, transport_port, e
     directory.mkdir(parents=True, exist_ok=True)
     with (directory / "admission-claim.json").open("x", encoding="utf-8") as claim:
         json.dump({"pid": proc.pid, "avd": avd, "ports": [console_port, transport_port],
-                   "windowSeconds": WINDOW_SECONDS, "maxConnectRequests": 1}, claim)
+                   "windowSeconds": WINDOW_SECONDS, "maxConnectRequests": 1,
+                   "adbHost": server[0], "adbPort": server[1]}, claim)
     with (directory / "admission-commands.jsonl").open("x", encoding="utf-8") as log:
         def record(event):
             log.write(json.dumps(event, ensure_ascii=False) + "\n")
@@ -282,11 +320,12 @@ def admit_owned_emulator(proc, launched_at, avd, console_port, transport_port, e
 
         result = _observe(launched_at=launched_at, avd=avd, console_port=console_port,
                           transport_port=transport_port, alive=lambda: proc.poll() is None,
-                          host=_host, shell=_shell,
+                          host=partial(_host, adb_host=server[0], adb_port=server[1]),
+                          shell=partial(_shell, adb_host=server[0], adb_port=server[1]),
                           listener=lambda limit: _windows_listener(proc, avd, console_port, transport_port, limit),
-                          record=record)
+                          record=record, server=server)
     with (directory / "admission-result.json").open("x", encoding="utf-8") as output:
-        json.dump(asdict(result), output, indent=2)
+        json.dump({**asdict(result), "adbHost": server[0], "adbPort": server[1]}, output, indent=2)
         output.write("\n")
     return result
 

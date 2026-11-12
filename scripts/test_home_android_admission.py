@@ -1,9 +1,13 @@
 """Offline behavior and ADB protocol checks. No actual socket or emulator is used."""
 
+import json
+from pathlib import Path
 import struct
 import subprocess
+import tempfile
+from types import SimpleNamespace
 import unittest
-from unittest.mock import patch
+from unittest.mock import call, patch
 
 import home_android_admission as admission
 
@@ -204,7 +208,7 @@ class SocketProtocolTests(unittest.TestCase):
             result = admission._host(service, 6)
         self.assertEqual(result.stdout, "pending")
         self.assertIsNone(result.exit_code)
-        connect.assert_called_once_with(("127.0.0.1", 5037), timeout=6)
+        connect.assert_called_once_with(("127.0.0.1", 5038), timeout=6)
         self.assertEqual(stream.sent, [f"{len(service):04x}".encode("ascii") + service.encode("ascii")])
         self.assertTrue(stream.closed)
 
@@ -213,10 +217,11 @@ class SocketProtocolTests(unittest.TestCase):
             return struct.pack("<BI", channel, len(data)) + data
 
         stream = FakeSocket(b"OKAYOKAY" + packet(1, b"1\n") + packet(2, b"error") + packet(3, b"\x07"))
-        with patch.object(admission.socket, "create_connection", return_value=stream), \
+        with patch.object(admission.socket, "create_connection", return_value=stream) as connect, \
                 patch.object(admission.time, "monotonic", return_value=0):
             result = admission._shell(ENDPOINT, admission.BOOT_PROPERTY, 4)
         self.assertEqual(result, admission.Reply("1\n", "error", 7))
+        connect.assert_called_once_with(("127.0.0.1", 5038), timeout=4)
         self.assertIn(f"host:transport:{ENDPOINT}".encode(), stream.sent[0])
         self.assertIn(b"shell,v2,raw:getprop sys.boot_completed", stream.sent[1])
         self.assertTrue(stream.closed)
@@ -228,6 +233,81 @@ class SocketProtocolTests(unittest.TestCase):
             with self.assertRaisesRegex(admission.ProtocolError, "^error$"):
                 admission._host("host:devices-l", 3)
         self.assertTrue(stream.closed)
+
+    def test_shared_port_is_rejected_before_any_admission_request(self):
+        with patch.object(admission.socket, "create_connection") as connect, \
+                patch.object(admission.subprocess, "run") as run:
+            with self.assertRaisesRegex(ValueError, "5037"):
+                admission._host("host:devices-l", 3, adb_port=5037)
+            with self.assertRaisesRegex(ValueError, "5037"):
+                admission._host("host:connect:127.0.0.1:5037", 3)
+            with self.assertRaisesRegex(ValueError, "5037"):
+                admission._host("host:connect:127.0.0.1:05037", 3)
+            with self.assertRaises(ValueError):
+                admission._host("host:kill", 3)
+            with self.assertRaisesRegex(ValueError, "5037"):
+                admission._shell(ENDPOINT, admission.BOOT_PROPERTY, 4, adb_port=5037)
+            with self.assertRaisesRegex(ValueError, "5037"):
+                admission.admit_owned_emulator(object(), 0, AVD, CONSOLE_PORT, TRANSPORT_PORT,
+                                               None, adb_port=5037)
+        connect.assert_not_called()
+        run.assert_not_called()
+
+    def test_invalid_adb_ports_are_rejected_before_networking(self):
+        with patch.object(admission.socket, "create_connection") as connect:
+            for port in (0, -1, 65536, True, "5038", None):
+                with self.subTest(port=port), self.assertRaisesRegex(ValueError, "ADB port"):
+                    admission._host("host:devices-l", 3, adb_port=port)
+        connect.assert_not_called()
+
+    def test_non_loopback_hosts_are_rejected_before_networking(self):
+        with patch.object(admission.socket, "create_connection") as connect:
+            for host in ("", "0.0.0.0", "192.0.2.1", "not-loopback.example", None):
+                with self.subTest(host=host), self.assertRaisesRegex(ValueError, "ADB host"):
+                    admission._shell(ENDPOINT, admission.BOOT_PROPERTY, 4, adb_host=host)
+        connect.assert_not_called()
+
+    def test_admission_uses_configured_service_for_inventory_and_guest_probes(self):
+        class OwnedEmulator:
+            pid = 123
+            args = ["emulator.exe", "-avd", AVD, "-ports", f"{CONSOLE_PORT},{TRANSPORT_PORT}"]
+
+            def poll(self):
+                return None
+
+        def shell_response(output):
+            return FakeSocket(b"OKAYOKAY" + struct.pack("<BI", 1, len(output)) + output +
+                              struct.pack("<BI", 3, 1) + b"\0")
+
+        inventory = f"{ENDPOINT}\tdevice product:sdk\n".encode("ascii")
+        streams = [FakeSocket(b"OKAY" + f"{len(inventory):04x}".encode("ascii") + inventory),
+                   shell_response(b"1\n"), shell_response(b"LITHIC_SHELL_OK\n"),
+                   shell_response(f"{AVD}\n1\n36\nx86_64\n".encode("ascii"))]
+        observe = admission._observe
+
+        def observe_now(**kwargs):
+            return observe(**kwargs, clock=lambda: 0, sleep=lambda _: self.fail("Unexpected additional poll"))
+
+        with tempfile.TemporaryDirectory() as temporary, \
+                patch.object(admission, "os", SimpleNamespace(name="nt")), \
+                patch.object(admission.subprocess, "Popen", OwnedEmulator), \
+                patch.object(admission.time, "monotonic", return_value=0), \
+                patch.object(admission, "_windows_listener", return_value=admission.Reply("OWNED_LOOPBACK")), \
+                patch.object(admission, "_observe", side_effect=observe_now), \
+                patch.object(admission.socket, "create_connection", side_effect=streams) as connect:
+            result = admission.admit_owned_emulator(OwnedEmulator(), 0, AVD, CONSOLE_PORT,
+                                                   TRANSPORT_PORT, temporary, adb_host="::1", adb_port=5040)
+            evidence = Path(temporary)
+            events = [json.loads(line) for line in (evidence / "admission-commands.jsonl").read_text(
+                encoding="utf-8").splitlines()]
+            claim = json.loads((evidence / "admission-claim.json").read_text(encoding="utf-8"))
+            outcome = json.loads((evidence / "admission-result.json").read_text(encoding="utf-8"))
+        self.assertEqual((result.status, result.serial), ("ADMITTED", ENDPOINT))
+        self.assertEqual(connect.call_args_list, [call(("::1", 5040), timeout=seconds) for seconds in (3, 4, 4, 5)])
+        self.assertTrue(all(stream.closed for stream in streams))
+        self.assertEqual(len(events), 5)
+        for entry in [claim, *events, outcome]:
+            self.assertEqual((entry["adbHost"], entry["adbPort"]), ("::1", 5040))
 
 
 if __name__ == "__main__":

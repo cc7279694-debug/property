@@ -2,6 +2,7 @@
 
 import argparse
 from datetime import datetime, timezone
+import ipaddress
 import json
 import locale
 import os
@@ -96,13 +97,26 @@ def status_fields(payload):
     return identity
 
 
-def host_request(service):
+def diagnostic_address(host, port):
+    if host == "localhost":
+        host = "127.0.0.1"
+    if (not isinstance(host, str) or not ipaddress.ip_address(host).is_loopback or
+            type(port) is not int or not 1 <= port <= 65535):
+        raise ValueError("Diagnostics require a loopback ADB host and a valid TCP port")
+    return host, port
+
+
+def host_request(service, *, adb_host="127.0.0.1", adb_port=5038):
+    if service not in ("host:version", "host:server-status", "host:devices-l"):
+        raise ValueError("Only fixed read-only ADB host queries are permitted")
+    host, port = diagnostic_address(adb_host, adb_port)
     timeout = 3
-    entry = {"command": service, "endpoint": "127.0.0.1:5037", "start_utc": utc_now(), "timeout_seconds": timeout}
+    endpoint = f"[{host}]:{port}" if ":" in host else f"{host}:{port}"
+    entry = {"command": service, "endpoint": endpoint, "start_utc": utc_now(), "timeout_seconds": timeout}
     start = time.monotonic()
     deadline = start + timeout
     try:
-        with socket.create_connection(("127.0.0.1", 5037), timeout) as stream:
+        with socket.create_connection((host, port), timeout) as stream:
             request = service.encode("ascii")
             stream.settimeout(max(0.001, deadline - time.monotonic()))
             stream.sendall(f"{len(request):04x}".encode("ascii") + request)
@@ -137,20 +151,26 @@ def host_request(service):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sdk", type=Path, required=True)
+    parser.add_argument("--adb-host", default="127.0.0.1")
+    parser.add_argument("--adb-port", type=int, default=5038)
     args = parser.parse_args()
+    try:
+        adb_host, adb_port = diagnostic_address(args.adb_host, args.adb_port)
+    except ValueError as error:
+        parser.error(str(error))
     sdk = args.sdk.resolve()
     adb = sdk / "platform-tools" / "adb.exe"
     emulator = sdk / "emulator" / "emulator.exe"
     powershell = ["powershell.exe", "-NoProfile", "-NonInteractive", "-Command"]
     listener_command = """
-        $ports=@(5037,17640,17641)+(5554..5585)
+        $ports=@(5037,5038,17640,17641,ADB_PORT)+(5554..5585)
         $listeners=@(Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue |
             Where-Object LocalPort -In $ports |
             Select-Object LocalAddress,LocalPort,OwningProcess)
         $adbProcesses=@(Get-CimInstance Win32_Process -Filter "Name='adb.exe'" |
             Select-Object Name,ProcessId,ExecutablePath)
         [pscustomobject]@{listeners=$listeners; adbProcesses=$adbProcesses} | ConvertTo-Json -Compress -Depth 4
-    """
+    """.replace("ADB_PORT", str(adb_port))
     resources_command = """
         $os=Get-CimInstance Win32_OperatingSystem
         $disk=@(Get-PSDrive -Name C,E | Select-Object Name,Free)
@@ -164,7 +184,8 @@ def main():
               command([*powershell, resources_command])]
     checks += [command(["netsh.exe", "interface", version, "show", "excludedportrange", "protocol=tcp"])
                for version in ("ipv4", "ipv6")]
-    host = [host_request(service) for service in ("host:version", "host:server-status", "host:devices-l")]
+    host = [host_request(service, adb_host=adb_host, adb_port=adb_port)
+            for service in ("host:version", "host:server-status", "host:devices-l")]
     candidates = {adb.resolve()}
     for name in ("ANDROID_HOME", "ANDROID_SDK_ROOT", "LOCALAPPDATA"):
         if os.environ.get(name):
@@ -180,7 +201,8 @@ def main():
     server = host[1].get("identity", {}).get("executable_path")
     if server:
         candidates.add(Path(server).resolve())
-    print(json.dumps({"sdk": str(sdk), "commands": checks, "existing_server": host,
+    print(json.dumps({"sdk": str(sdk), "adb_host": adb_host, "adb_port": adb_port,
+                      "commands": checks, "existing_server": host,
                       "observed_adb_paths": sorted(str(path) for path in candidates)}, indent=2))
 
 
