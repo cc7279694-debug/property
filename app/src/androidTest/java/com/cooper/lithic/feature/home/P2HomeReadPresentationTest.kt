@@ -23,7 +23,7 @@ class P2HomeReadPresentationTest {
             }
         }
         compose.onNodeWithTag("home-total-rate").assertTextEquals("¥10.52/天")
-        compose.onNodeWithText("截至 ${overview.asOf} · 非今日扣款").assertExists()
+        compose.onNodeWithTag("home-cutoff-date").assertTextEquals(overview.asOf.toString())
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("8")
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("5")
         compose.onNodeWithTag("home-retained-notice").assertTextEquals("上次取得的结果")
@@ -62,6 +62,7 @@ class P2HomeReadPresentationTest {
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("4")
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("3")
         compose.onNodeWithTag("open-project-list").assertExists()
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.onNodeWithTag("open-subscription-list").assertExists()
         compose.onNodeWithTag("home-category-disclosure").assertExists()
         compose.runOnIdle { overview.value = empty.overview }
@@ -74,6 +75,7 @@ class P2HomeReadPresentationTest {
         compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
         compose.onNodeWithTag("home-category-disclosure").assertDoesNotExist()
         compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
+        compose.onAllNodesWithTag("home-open-add-top").assertCountEquals(1)
     }
 
     @Test fun preview_retries_are_independent_and_only_the_failed_scope_is_marked_retained() {
@@ -94,15 +96,17 @@ class P2HomeReadPresentationTest {
         val projectId = facts.projects.items.single().project.id
         val subscriptionId = facts.subscriptions.items.single().subscription.id
         compose.onNodeWithTag("home-project-preview-$projectId").assertExists()
-        compose.onNodeWithTag("home-subscription-preview-$subscriptionId").assertExists()
         compose.onAllNodesWithText("以下保留上次读取结果").assertCountEquals(1)
         compose.onNodeWithTag("home-retry-subscription-preview").assertDoesNotExist()
         compose.onNodeWithTag("home-retry-project-preview").performScrollTo().performClick()
         compose.runOnIdle {
             assertEquals(1, projectRetries)
             assertEquals(0, subscriptionRetries)
-            subscriptionError.value = "合成订阅预览失败"
         }
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
+        compose.onNodeWithTag("home-subscription-preview-$subscriptionId").assertExists()
+        compose.onNodeWithTag("home-project-preview-$projectId").assertDoesNotExist()
+        compose.runOnIdle { subscriptionError.value = "合成订阅预览失败" }
         compose.onNodeWithTag("home-subscription-preview-$subscriptionId").assertDoesNotExist()
         compose.onNodeWithTag("home-retry-subscription-preview").performScrollTo().performClick()
         compose.runOnIdle {

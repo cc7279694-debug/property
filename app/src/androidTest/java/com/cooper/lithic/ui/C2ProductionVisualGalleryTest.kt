@@ -140,8 +140,10 @@ class C2ProductionVisualGalleryTest {
         compose.waitForIdle()
         compose.onNodeWithTag(if (initial == Home) "tab-now" else "tab-review").assertIsSelected()
         if (initial == Home) {
-            val fab = compose.onNodeWithTag("home-open-add").assertIsDisplayed().fetchSemanticsNode().boundsInRoot
-            assertEquals(56f * canvasDensity, fab.width, 1.5f)
+            val add = compose.onNodeWithTag("home-open-add").assertIsDisplayed()
+                .assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).fetchSemanticsNode().boundsInRoot
+            val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
+            assertTrue(viewport.bottom <= add.top + 1f)
             compose.onNodeWithTag("home-first-record").assertDoesNotExist()
             compose.onNodeWithTag("home-total-rate").assertTextContains(if (populated) "¥" else "—", substring = true)
             compose.onNodeWithTag("home-project-record-count").assertTextEquals(if (populated) "1" else "0")
@@ -161,6 +163,7 @@ class C2ProductionVisualGalleryTest {
         capture(name, initial == Home, populated, localOverride, facts, scrollToRequested = initial == Review && !populated)
         if (initial == Home && populated) {
             compose.onNodeWithTag("home-project-preview-${facts.projects.items.single().project.id}").performScrollTo().assertIsDisplayed()
+            compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
             compose.onNodeWithTag("home-subscription-preview-${facts.subscriptions.items.single().subscription.id}").performScrollTo().assertIsDisplayed()
             capture("$name-records-scrolled", true, populated, localOverride, facts, scrollToRequested = true)
         }

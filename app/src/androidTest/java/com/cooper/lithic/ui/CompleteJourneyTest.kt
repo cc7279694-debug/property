@@ -356,6 +356,7 @@ class CompleteJourneyTest {
         awaitRate("5")
         homeRate("¥5.00")
 
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         click("open-subscription-list"); waitNode("subscription-list-screen")
         val serviceId = owner.openStorage().database.subscriptionDao().validationSubscriptions(null, 2).single().id
         waitNode("subscription-row-$serviceId")
@@ -391,6 +392,7 @@ class CompleteJourneyTest {
 
         journeyPhase("POST_BACKUP_STATE_CHANGE")
         compose.onNodeWithTag("tab-now").performClick()
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         click("open-subscription-list")
         waitNode("subscription-list-screen")
         val subscriptionId = owner.openStorage().database.subscriptionDao().validationSubscriptions(null, 2).single().id

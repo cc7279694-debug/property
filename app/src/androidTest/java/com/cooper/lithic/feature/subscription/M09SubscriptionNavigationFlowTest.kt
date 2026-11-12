@@ -48,6 +48,7 @@ class M09SubscriptionNavigationFlowTest {
         val facts = M09SubscriptionFixtures.facts()
         val id = fixture.seed(facts)
         attachAndRender()
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.onNodeWithTag("open-subscription-list").performScrollTo().performClick()
         compose.waitUntil(10_000) { !subscription.state.value.list.loading }
         compose.onNodeWithTag("subscription-list-content").performScrollToNode(hasTestTag("subscription-row-$id"))

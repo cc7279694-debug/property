@@ -294,6 +294,7 @@ class M17ChartJourneyTest {
     }
     private fun openSubscription(id: String) {
         click("tab-now"); waitNode("home-screen")
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.onNodeWithTag("open-subscription-list").performScrollTo(); click("open-subscription-list"); waitNode("subscription-list-content")
         scrollClick("subscription-list-content", "subscription-row-$id"); waitNode("subscription-detail-name")
     }

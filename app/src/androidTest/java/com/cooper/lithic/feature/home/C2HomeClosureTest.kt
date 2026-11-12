@@ -8,7 +8,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.Density
@@ -26,7 +25,6 @@ import org.junit.Test
 /** Synthetic production-Compose assertions, compiled only; Android execution remains NOT_RUN. */
 class C2HomeClosureTest {
     @get:Rule val compose = createComposeRule()
-    private var pixelsPerDp = 1f
 
     @Test fun count_cards_use_total_snapshot_counts_and_keep_costs_behind_disclosure() {
         show(snapshot())
@@ -40,6 +38,8 @@ class C2HomeClosureTest {
         compose.onNodeWithTag("home-subscription-rate").performScrollTo().assertTextContains("¥2.17")
         compose.onNodeWithTag("home-active-project-count").performScrollTo().assertTextEquals("当前有效 2")
         compose.onNodeWithTag("home-active-subscription-count").performScrollTo().assertTextEquals("当前有效 1")
+        pressBack()
+        compose.waitForIdle()
         compose.onNodeWithTag("home-cost-information").performScrollTo().performClick()
         compose.onNodeWithTag("home-count-scope").assertTextContains("历史", substring = true)
     }
@@ -60,14 +60,14 @@ class C2HomeClosureTest {
         compose.onNodeWithTag("home-first-record").assertDoesNotExist()
     }
 
-    @Test fun sole_fab_opens_original_choices_and_dismissal_has_no_create_side_effect() {
+    @Test fun both_add_controls_open_original_choices_and_dismissal_has_no_create_side_effect() {
         val actions = mutableListOf<String>()
         compose.setContent { LithicTheme {
             HomeShell(99, {}, { actions += "project" }, 99, {}, { actions += "subscription" }, overview = snapshot())
         } }
         compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
         compose.onNodeWithTag("home-first-record").assertDoesNotExist()
-        compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
+        compose.onNodeWithTag("home-open-add-top").performScrollTo().assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-create-project").assertExists()
         compose.onNodeWithTag("home-create-subscription").assertExists()
         pressBack()
@@ -96,43 +96,40 @@ class C2HomeClosureTest {
         compose.runOnIdle { assertEquals(1, navigationRequests) }
     }
 
-    @Test fun normal_font_360dp_count_cards_share_a_row_and_fab_is_in_home_bounds() {
+    @Test fun normal_font_360dp_counts_share_a_row_and_add_has_reserved_space() {
         showAt360dp(fontScale = 1f)
         compose.onNodeWithTag("home-record-counts").performScrollTo()
         val project = compose.onNodeWithTag("home-project-count-card").fetchSemanticsNode()
         val subscription = compose.onNodeWithTag("home-subscription-count-card").fetchSemanticsNode()
         assertEquals(project.positionInRoot.y, subscription.positionInRoot.y, 1f)
         assertTrue(subscription.positionInRoot.x >= project.positionInRoot.x + project.size.width)
-        assertFabInContent()
+        assertAddInContent()
     }
 
-    @Test fun local_200_percent_font_stacks_counts_without_moving_fab_outside_content() {
+    @Test fun local_200_percent_font_keeps_counts_nonoverlapping_and_add_reachable() {
         showAt360dp(fontScale = 2f)
         compose.onNodeWithTag("home-subscription-count-card").performScrollTo()
         val project = compose.onNodeWithTag("home-project-count-card").fetchSemanticsNode()
         val subscription = compose.onNodeWithTag("home-subscription-count-card").fetchSemanticsNode()
-        assertTrue(subscription.positionInRoot.y >= project.positionInRoot.y + project.size.height)
-        assertEquals(project.positionInRoot.x, subscription.positionInRoot.x, 1f)
+        assertTrue(subscription.positionInRoot.y >= project.positionInRoot.y + project.size.height - 1f ||
+            subscription.positionInRoot.x >= project.positionInRoot.x + project.size.width - 1f)
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("8")
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("5")
-        assertFabInContent()
+        assertAddInContent()
     }
 
-    private fun assertFabInContent() {
+    private fun assertAddInContent() {
         val home = compose.onNodeWithTag("closure-home-canvas").fetchSemanticsNode()
-        val fab = compose.onNodeWithTag("home-open-add").assertIsDisplayed().fetchSemanticsNode()
-        // C9 uses one trailing content inset, rather than shrinking the entire scroll viewport.
-        compose.onNodeWithTag("home-screen").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, 100_000f) }
-        compose.waitForIdle()
-        val lastAction = compose.onNodeWithTag("home-category-disclosure").assertIsDisplayed().fetchSemanticsNode()
-        assertTrue("The final content action must scroll above the floating action",
-            lastAction.boundsInRoot.bottom <= fab.boundsInRoot.top + 1f)
-        val right = home.positionInRoot.x + home.size.width
-        val bottom = home.positionInRoot.y + home.size.height
-        assertEquals(56f * pixelsPerDp, fab.size.width.toFloat(), 1f)
-        assertEquals(56f * pixelsPerDp, fab.size.height.toFloat(), 1f)
-        assertEquals(16f * pixelsPerDp, right - fab.positionInRoot.x - fab.size.width, 1f)
-        assertEquals(16f * pixelsPerDp, bottom - fab.positionInRoot.y - fab.size.height, 1f)
+        val add = compose.onNodeWithTag("home-open-add").assertIsDisplayed()
+            .assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).fetchSemanticsNode().boundsInRoot
+        val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
+        assertTrue(viewport.bottom <= add.top + 1f)
+        assertTrue(add.left >= home.boundsInRoot.left && add.right <= home.boundsInRoot.right)
+        assertTrue(add.bottom <= home.boundsInRoot.bottom + 1f)
+        assertEquals(home.boundsInRoot.center.x, add.center.x, 1f)
+        val composition = compose.onNodeWithTag("home-category-disclosure").performScrollTo()
+            .assertIsDisplayed().fetchSemanticsNode().boundsInRoot
+        assertTrue(composition.bottom <= add.top + 1f)
     }
 
     private fun showAt360dp(fontScale: Float) {
@@ -140,7 +137,6 @@ class C2HomeClosureTest {
             BoxWithConstraints(Modifier.fillMaxSize()) {
                 val density = constraints.maxWidth / 360f
                 val canvasHeight = minOf(800f, constraints.maxHeight / density).dp
-                pixelsPerDp = density
                 CompositionLocalProvider(LocalDensity provides Density(density, fontScale)) {
                     LithicTheme {
                         Box(Modifier.requiredSize(360.dp, canvasHeight).testTag("closure-home-canvas")) {

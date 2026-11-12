@@ -20,7 +20,6 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.LithicTheme
-import com.cooper.lithic.core.design.LocalLithicVisuals
 import com.cooper.lithic.domain.report.OverviewResult
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -46,12 +45,12 @@ class C2C1HomeVisualContractTest {
         assertVerifiedEmpty()
     }
 
-    @Test fun local_large_font_360_keeps_empty_structure_and_single_reachable_add() {
+    @Test fun local_large_font_360_keeps_empty_structure_and_reachable_add() {
         show(widthDp = 360, fontScale = 2f)
         assertVerifiedEmpty(checkCompactHero = false)
     }
 
-    @Test fun local_large_font_400_keeps_empty_structure_and_single_reachable_add() {
+    @Test fun local_large_font_400_keeps_empty_structure_and_reachable_add() {
         show(widthDp = 400, fontScale = 2f)
         assertVerifiedEmpty(checkCompactHero = false)
     }
@@ -100,18 +99,19 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("0")
         compose.onNodeWithTag("home-first-record").assertDoesNotExist()
         compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
-        compose.onNodeWithTag("home-open-add").assertIsDisplayed().assertWidthIsEqualTo(56.dp).assertHeightIsEqualTo(56.dp)
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp)
+        compose.onNodeWithTag("home-open-add-top").assertIsDisplayed().assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp)
         compose.onAllNodesWithTag("home-empty-guidance").assertCountEquals(1)
         compose.onNodeWithTag("home-empty-guidance").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("home-screen").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, 100_000f) }
         compose.waitForIdle()
         val guidance = compose.onNodeWithTag("home-empty-guidance").assertIsDisplayed().fetchSemanticsNode().boundsInRoot
         val fab = compose.onNodeWithTag("home-open-add").fetchSemanticsNode().boundsInRoot
-        assertTrue("The final empty guidance scrolls above the FAB with one content inset", guidance.bottom <= fab.top + 1f)
+        assertTrue("The final empty guidance scrolls above the reserved add area", guidance.bottom <= fab.top + 1f)
         if (checkCompactHero) {
             compose.onNodeWithTag("home-current-cost-summary").performScrollTo()
             val hero = compose.onNodeWithTag("home-current-cost-summary").fetchSemanticsNode().boundsInRoot
-            assertTrue("Ordinary empty hero remains a compact cost summary", hero.height <= 132f * pixelsPerDp)
+            assertTrue("Ordinary empty hero remains a compact cost summary", hero.height <= 200f * pixelsPerDp)
         }
         compose.onNodeWithTag("open-project-list").assertDoesNotExist()
         compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
@@ -130,7 +130,7 @@ class C2C1HomeVisualContractTest {
         val display = layout.layoutInput.text.text.replace("\u2009", "")
         assertEquals("Amount and its unit form one unbreakable baseline", 1, layout.lineCount)
         assertTrue(display == "—" || display.endsWith("/天"))
-        assertTrue("C9 amount aligns to the page instead of an extra card inset", amount.left >= hero.left)
+        assertTrue("The daily amount stays inside the summary card", amount.left >= hero.left)
         assertTrue("Full amount viewport stays inside the summary", amount.right <= hero.right + 1f)
         compose.onNodeWithTag("home-total-unit").assertDoesNotExist()
         val canvas = compose.onNodeWithTag("c1-home-canvas").fetchSemanticsNode().boundsInRoot
@@ -155,7 +155,7 @@ class C2C1HomeVisualContractTest {
                 pixelsPerDp = density
                 CompositionLocalProvider(LocalDensity provides Density(density, fontScale)) {
                     LithicTheme(darkTheme = dark) {
-                        summaryBackground = LocalLithicVisuals.current.brandSurface
+                        summaryBackground = MaterialTheme.colorScheme.surface
                         Box(Modifier.requiredSize(widthDp.dp, height).background(MaterialTheme.colorScheme.background)
                             .testTag("c1-home-canvas")) {
                             HomeShell(99, {}, {}, 99, {}, {}, overview = overview, hasReadNotice = retained,

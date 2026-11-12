@@ -23,6 +23,7 @@ import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -35,6 +36,7 @@ import com.cooper.lithic.data.media.CoverReadResult
 import com.cooper.lithic.data.media.CoverReader
 import com.cooper.lithic.data.media.CoverReference
 import com.cooper.lithic.data.media.VerifiedCoverImage
+import com.cooper.lithic.domain.report.OverviewEngine
 import com.cooper.lithic.feature.appearance.LithicAppearance
 import com.cooper.lithic.feature.home.HomeShell
 import com.cooper.lithic.feature.media.ProvideCoverPreviews
@@ -83,14 +85,26 @@ class P2A1HomeGalleryTest {
 
     @Test fun stoneMist() = capture(LithicAppearance.STONE_MIST)
     @Test fun pureWhite() = capture(LithicAppearance.PURE_WHITE)
+    @Test fun pureWhiteSubscription() = capture(LithicAppearance.PURE_WHITE, subscriptionSelected = true)
     @Test fun charcoal() = capture(LithicAppearance.CHARCOAL)
 
-    @Test fun stoneMistLargeFontSubscription() = capture(LithicAppearance.STONE_MIST, focusSubscription = true)
+    @Test fun stoneMistLargeFontSubscription() = capture(LithicAppearance.STONE_MIST, subscriptionSelected = true,
+        systemLargeFont = true)
 
-    private fun capture(theme: LithicAppearance, focusSubscription: Boolean = false) {
+    private fun capture(theme: LithicAppearance, subscriptionSelected: Boolean = false, systemLargeFont: Boolean = false) {
         val facts = C2VisualFixtures(populated = true)
         val project = facts.projects.items.single()
         val subscription = facts.subscriptions.items.single()
+        val extraProjectId = "94000000-0000-0000-0000-000000000021"
+        val extraSubscriptionId = "94000000-0000-0000-0000-000000000022"
+        val projectFacts = facts.ledger.overview.projects.single()
+        val subscriptionFacts = facts.ledger.overview.subscriptions.single()
+        val overview = OverviewEngine.evaluate(facts.ledger.overview.copy(
+            projects = listOf(projectFacts, projectFacts.copy(id = extraProjectId)),
+            subscriptions = listOf(subscriptionFacts, subscriptionFacts.copy(id = extraSubscriptionId,
+                snapshot = subscriptionFacts.snapshot.copy(
+                    subscription = subscriptionFacts.snapshot.subscription.copy(id = extraSubscriptionId)))),
+        ), facts.day)
         val projectAsset = "b1111111-0000-0000-0000-000000000001"
         val subscriptionAsset = "b1111111-0000-0000-0000-000000000002"
         val covers = mapOf(
@@ -107,10 +121,17 @@ class P2A1HomeGalleryTest {
                 CoverReadResult.Ready(checkNotNull(covers[reference]))
         }
         val projects = facts.projects.copy(
-            items = listOf(project.copy(project = project.project.copy(coverAssetId = projectAsset))),
+            items = listOf(project.copy(project = project.project.copy(coverAssetId = projectAsset)),
+                project.copy(project = project.project.copy(id = extraProjectId, name = "合成通勤包"),
+                    events = project.events.map { it.copy(projectId = extraProjectId) })),
+            totalCount = overview.projectCount,
         )
+        val extraRenewals = subscription.renewals.map { it.copy(subscriptionId = extraSubscriptionId) }
         val subscriptions = facts.subscriptions.copy(
-            items = listOf(subscription.copy(subscription = subscription.subscription.copy(coverAssetId = subscriptionAsset))),
+            items = listOf(subscription.copy(subscription = subscription.subscription.copy(coverAssetId = subscriptionAsset)),
+                subscription.copy(subscription = subscription.subscription.copy(id = extraSubscriptionId, name = "合成云盘服务"),
+                    renewals = extraRenewals, currentRenewal = extraRenewals.single())),
+            totalCount = overview.subscriptionCount,
         )
 
         compose.setContent {
@@ -123,13 +144,13 @@ class P2A1HomeGalleryTest {
                     Box(Modifier.padding(padding).consumeWindowInsets(padding)) {
                         ProvideCoverPreviews(reader) {
                             HomeShell(
-                                projectCount = facts.overview.projectCount,
+                                projectCount = overview.projectCount,
                                 onProjectList = {},
                                 onCreateProject = {},
-                                subscriptionCount = facts.overview.subscriptionCount,
+                                subscriptionCount = overview.subscriptionCount,
                                 onSubscriptionList = {},
                                 onCreateSubscription = {},
-                                overview = facts.overview,
+                                overview = overview,
                                 onSearch = {},
                                 projectPreview = projects,
                                 subscriptionPreview = subscriptions,
@@ -141,14 +162,17 @@ class P2A1HomeGalleryTest {
                 }
             }
         }
+        if (subscriptionSelected) compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.waitUntil(10_000) {
             compose.onAllNodesWithTag("record-cover-image", useUnmergedTree = true)
-                .fetchSemanticsNodes().size == 2
+                .fetchSemanticsNodes().size == 1
         }
-        compose.onNodeWithTag("home-current-cost-summary").assertIsDisplayed()
+        if (!systemLargeFont) compose.onNodeWithTag("home-current-cost-summary").assertIsDisplayed()
+        val selectedType = if (subscriptionSelected) "subscription" else "project"
+        compose.onNodeWithTag("home-$selectedType-tab").assertIsSelected()
         compose.onNodeWithTag("tab-now").assertIsSelected()
         val add = compose.onNodeWithTag("home-open-add").assertIsDisplayed()
-        if (focusSubscription) {
+        if (systemLargeFont) {
             check(compose.activity.resources.configuration.fontScale >= 2f)
             val subscriptionList = compose.onNodeWithTag("open-subscription-list").performScrollTo().assertIsDisplayed()
             check(subscriptionList.fetchSemanticsNode().boundsInRoot.bottom <= add.fetchSemanticsNode().boundsInRoot.top)
@@ -169,6 +193,7 @@ class P2A1HomeGalleryTest {
         InstrumentationRegistry.getInstrumentation().sendStatus(2, Bundle().apply {
             putString("p2a1_directory", directory.name)
             putString("p2a1_theme", theme.name)
+            putString("p2a1_selected", selectedType)
             putString("p2a1_dimensions", "${image.width}x${image.height}")
             putString("p2a1_config", "${config.screenWidthDp}dp, ${config.densityDpi}dpi, fontScale=${config.fontScale}")
         })

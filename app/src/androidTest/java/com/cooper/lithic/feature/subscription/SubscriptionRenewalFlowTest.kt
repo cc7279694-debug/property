@@ -339,6 +339,7 @@ class SubscriptionRenewalFlowTest {
             }
         }
         render()
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.onNodeWithTag("open-subscription-list").performScrollTo().performClick()
         compose.waitUntil(15_000) { model.state.value.list.let { !it.loading && it.items.size == 2 } }
         assertEquals(listOf(id, newerCoverageId), model.state.value.list.items.map { it.subscription.id })
@@ -527,6 +528,7 @@ class SubscriptionRenewalFlowTest {
     }
 
     private fun openFromList(id: String) {
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.onNodeWithTag("open-subscription-list").performScrollTo().performClick()
         compose.waitUntil(15_000) { !model.state.value.list.loading && model.state.value.list.items.any { it.subscription.id == id } }
         compose.onNodeWithTag("subscription-list-content").performScrollToNode(hasTestTag("subscription-row-$id"))

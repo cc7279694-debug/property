@@ -58,11 +58,13 @@ class C9RecordThemeTest {
                     overview = facts.overview, projectPreview = facts.projects, subscriptionPreview = facts.subscriptions)
             }
         }
-        compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
         LithicAppearance.entries.forEach { theme ->
             compose.runOnIdle { appearance.value = theme }
+            compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
             compose.onNodeWithTag("home-project-rate").performScrollTo().assertTextEquals("¥9.92/天")
             compose.onNodeWithTag("home-subscription-rate").performScrollTo().assertTextEquals("¥0.60/天")
+            pressBack()
+            compose.waitForIdle()
             compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
             compose.onNodeWithTag("home-create-project").assertIsDisplayed()
             compose.onNodeWithTag("home-create-subscription").assertIsDisplayed()

@@ -53,18 +53,23 @@ class P2HomeArchiveRowTest {
             }
         }
         for (type in listOf("project", "subscription")) {
+            compose.onNodeWithTag("home-$type-tab").performScrollTo().performClick().assertIsSelected()
             val first = compose.onNodeWithTag("home-$type-preview-$type-1").assert(hasClickAction().not())
             val second = compose.onNodeWithTag("home-$type-preview-$type-2")
             first.performScrollTo()
-            assertTrue(first.fetchSemanticsNode().positionInRoot.y < second.fetchSemanticsNode().positionInRoot.y)
+            val left = first.fetchSemanticsNode()
+            val right = second.fetchSemanticsNode()
+            assertEquals(left.positionInRoot.y, right.positionInRoot.y, 1f)
+            assertTrue(left.positionInRoot.x + left.size.width <= right.positionInRoot.x + 1f)
             compose.onNodeWithTag("home-$type-preview-$type-3").assertDoesNotExist()
         }
+        compose.onAllNodesWithContentDescription("历史平均日成本，0.60元/天", useUnmergedTree = true)
+            .filterToOne(hasAnyAncestor(hasTestTag("home-subscription-preview-subscription-1"))).assertExists()
+        compose.onNodeWithTag("home-project-tab").performScrollTo().performClick()
         compose.onAllNodesWithText("数码", useUnmergedTree = true)
             .filterToOne(hasAnyAncestor(hasTestTag("home-project-preview-project-1"))).assertExists()
         compose.onAllNodesWithContentDescription("项目日均成本，9.92元/天", useUnmergedTree = true)
             .filterToOne(hasAnyAncestor(hasTestTag("home-project-preview-project-1"))).assertExists()
-        compose.onAllNodesWithContentDescription("历史平均日成本，0.60元/天", useUnmergedTree = true)
-            .filterToOne(hasAnyAncestor(hasTestTag("home-subscription-preview-subscription-1"))).assertExists()
         compose.onAllNodesWithTag("record-cover-unavailable", useUnmergedTree = true).assertCountEquals(0)
         compose.runOnIdle { assertEquals(0, reader.reads.get()) }
     }
@@ -89,7 +94,8 @@ class P2HomeArchiveRowTest {
         compose.waitUntil(5_000) { compose.onAllNodesWithTag("record-cover-unavailable").fetchSemanticsNodes().size == 1 }
         val error = compose.onNodeWithTag("record-cover-unavailable").assertContentDescriptionEquals("封面暂不可用")
         error.assertWidthIsAtLeast(80.dp).assertHeightIsAtLeast(60.dp)
-        error.assert(hasAnyAncestor(hasTestTag("home-project-preview-${project.project.id}")).not())
+        error.assertHasClickAction()
+        row.assertHasClickAction()
         error.performClick()
         compose.onNodeWithText("封面暂不可用").assertIsDisplayed()
         compose.onNodeWithText("知道了").performClick()
@@ -124,7 +130,7 @@ class P2HomeArchiveRowTest {
         nameNode.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layout) }
         assertTrue(layout.single().lineCount > 1)
         assertFalse(layout.single().hasVisualOverflow)
-        val time = compose.onNodeWithText("持有 ${row.cost.heldDays} 天", useUnmergedTree = true).fetchSemanticsNode()
+        val time = compose.onNodeWithText("${row.cost.heldDays} 天", useUnmergedTree = true).fetchSemanticsNode()
         val amount = compose.onNodeWithContentDescription("项目日均成本，负9876543210987654.32元/天", useUnmergedTree = true)
         assertTrue(amount.fetchSemanticsNode().positionInRoot.y >= time.positionInRoot.y + time.size.height - 1f)
         compose.onNodeWithTag("amount-open-full").performScrollTo().performClick()

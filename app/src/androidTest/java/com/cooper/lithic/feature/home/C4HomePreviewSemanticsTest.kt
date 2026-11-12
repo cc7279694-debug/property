@@ -44,6 +44,7 @@ class C4HomePreviewSemanticsTest {
                 projectPreview = facts.projects,
                 subscriptionPreview = facts.subscriptions.copy(items = emptyList(), totalCount = 0))
         } }
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.onNodeWithTag("home-subscription-empty-compact").performScrollTo().assertTextEquals("暂无当前订阅")
         compose.onNodeWithText("还没有当前订阅").assertDoesNotExist()
         compose.onNodeWithTag("open-subscription-list").performClick()

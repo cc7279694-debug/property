@@ -40,7 +40,7 @@ class HomeOverviewUiTest {
             HomeShell(0L, {}, {}, 0L, {}, {})
         } }
         compose.onNodeWithTag("home-total-rate").assertTextContains("—")
-        compose.onNodeWithText("当前日均成本尚未取得").assertIsDisplayed()
+        compose.onNodeWithTag("home-cutoff-date").assertDoesNotExist()
         compose.onNodeWithText("¥0.00").assertDoesNotExist()
     }
 
@@ -116,6 +116,7 @@ class HomeOverviewUiTest {
         compose.onNodeWithTag("open-project-list").performScrollTo().assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-create-project").performScrollTo().assertIsDisplayed().performClick()
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.onNodeWithTag("open-subscription-list").performScrollTo().assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-create-subscription").performScrollTo().assertIsDisplayed().performClick()

@@ -167,6 +167,7 @@ class M13CoreJourneyTest {
         val previousGeneration = owner.openStorage().id
 
         compose.onNodeWithTag("tab-now").performClick()
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         click("open-subscription-list")
         waitNode("subscription-list-screen")
         val subscriptionId = owner.openStorage().database.subscriptionDao().validationSubscriptions(null, 2).single().id

@@ -12,18 +12,26 @@ import com.cooper.lithic.feature.media.PhotoLiteThumbnailPipeline
 import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
@@ -38,9 +46,15 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -57,6 +71,7 @@ import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import com.cooper.lithic.R
 import com.cooper.lithic.feature.home.HomeShell
 import com.cooper.lithic.feature.home.SearchScreen
 import com.cooper.lithic.feature.home.SearchViewModel
@@ -809,13 +824,45 @@ private fun subscriptionRecoveryRoute(state: SubscriptionUiState): NavKey? {
 /** Pure navigation chrome. The caller retains all route, dirty and pending-operation guards. */
 @Composable
 internal fun C2PrimaryNavigationBar(currentPrimary: NavKey, onSelect: (NavKey) -> Unit) {
-    NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
-        val destinations: List<Pair<NavKey, String>> = listOf(Home to "现在", Review to "回看", Settings to "设置")
-        destinations.forEach { (destination, label) ->
-            NavigationBarItem(selected = currentPrimary == destination, onClick = { onSelect(destination) },
-                icon = { C2Icon(when (destination) { Home -> C2Glyph.Now; Review -> C2Glyph.Review; else -> C2Glyph.Settings }) },
-                label = { Text(label, style = MaterialTheme.typography.labelSmall) },
-                modifier = Modifier.heightIn(min = 48.dp).testTag(when (destination) { Home -> "tab-now"; Review -> "tab-review"; else -> "tab-settings" }))
+    val colors = MaterialTheme.colorScheme
+    val selectedColor = if (colors.surface.luminance() > 0.5f) Color(0xFF223246) else colors.onSurface
+    Column(
+        Modifier.fillMaxWidth()
+            .background(colors.surface)
+            .windowInsetsPadding(NavigationBarDefaults.windowInsets),
+    ) {
+        HorizontalDivider(color = colors.outlineVariant)
+        Row(Modifier.fillMaxWidth().selectableGroup()) {
+            val destinations = listOf(
+                Triple(Home, "现在", R.drawable.ic_primary_nav_home),
+                Triple(Review, "回看", R.drawable.ic_primary_nav_review),
+                Triple(Settings, "设置", R.drawable.ic_primary_nav_settings),
+            )
+            destinations.forEach { (destination, label, icon) ->
+                val selected = currentPrimary == destination
+                val color = if (selected) selectedColor else colors.onSurfaceVariant
+                Column(
+                    modifier = Modifier.weight(1f)
+                        .heightIn(min = 56.dp)
+                        .selectable(selected = selected, role = Role.Tab, onClick = { onSelect(destination) })
+                        .testTag(when (destination) {
+                            Home -> "tab-now"
+                            Review -> "tab-review"
+                            else -> "tab-settings"
+                        })
+                        .padding(vertical = 6.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(2.dp, Alignment.CenterVertically),
+                ) {
+                    Icon(painterResource(icon), contentDescription = null, tint = color, modifier = Modifier.size(24.dp))
+                    Text(
+                        label,
+                        style = MaterialTheme.typography.labelSmall,
+                        fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
+                        color = color,
+                    )
+                }
+            }
         }
     }
 }

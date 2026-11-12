@@ -12,6 +12,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.test.espresso.Espresso.pressBack
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.feature.appearance.LithicAppearance
 import com.cooper.lithic.feature.home.HomeShell
@@ -24,7 +25,7 @@ import org.junit.Test
 class C9R1HomeHierarchyTest {
     @get:Rule val compose = createComposeRule()
 
-    @Test fun real_records_precede_auxiliary_counts_in_three_themes_at_small_large_type() {
+    @Test fun summary_precedes_records_in_three_themes_at_small_large_type() {
         val facts = C2VisualFixtures(true)
         val appearance = mutableStateOf(LithicAppearance.STONE_MIST)
         var writes = 0
@@ -48,14 +49,15 @@ class C9R1HomeHierarchyTest {
             record.performScrollTo().assertIsDisplayed()
             val row = record.fetchSemanticsNode()
             val counts = compose.onNodeWithTag("home-record-counts").fetchSemanticsNode()
-            assertTrue("Auxiliary counts must follow real record content",
-                counts.positionInRoot.y >= row.positionInRoot.y + row.size.height)
+            assertTrue("Snapshot counts must stay inside the summary above record content",
+                counts.positionInRoot.y + counts.size.height <= row.positionInRoot.y + 1f)
             compose.onNodeWithTag("home-project-record-count").assertTextEquals("1")
             compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("1")
             compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
             compose.onNodeWithTag("home-project-rate").performScrollTo().assertTextEquals("¥9.92/天")
             compose.onNodeWithTag("home-subscription-rate").performScrollTo().assertTextEquals("¥0.60/天")
-            compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
+            pressBack()
+            compose.waitForIdle()
             compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
             compose.runOnIdle { assertEquals(0, writes) }
         }

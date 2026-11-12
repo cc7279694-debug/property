@@ -17,9 +17,11 @@ import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.cooper.lithic.core.design.LithicTheme
@@ -69,7 +71,7 @@ class M13HomeScreenshotsTest {
         show(OverviewEngine.evaluate(OverviewSnapshot(emptyList(), emptyList(), emptyList()), asOf), dark = true)
         compose.onNodeWithTag("home-total-rate").assertTextContains("—")
         capture("empty-dark")
-        assertActionsReachable()
+        assertActionsReachable(hasRecords = false)
     }
 
     @Test
@@ -100,9 +102,20 @@ class M13HomeScreenshotsTest {
         assertHomeFitsVisibleWidth()
     }
 
-    private fun assertActionsReachable() {
-        listOf("open-project-list", "home-create-project", "open-subscription-list", "home-create-subscription")
-            .forEach { tag -> compose.onNodeWithTag(tag).performScrollTo().assertIsDisplayed() }
+    private fun assertActionsReachable(hasRecords: Boolean = true) {
+        if (hasRecords) {
+            compose.onNodeWithTag("open-project-list").performScrollTo().assertIsDisplayed()
+            compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
+            compose.onNodeWithTag("open-subscription-list").performScrollTo().assertIsDisplayed()
+        } else {
+            compose.onNodeWithTag("open-project-list").assertDoesNotExist()
+            compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
+        }
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
+        compose.onNodeWithTag("home-create-project").assertIsDisplayed()
+        compose.onNodeWithTag("home-create-subscription").assertIsDisplayed()
+        pressBack()
+        compose.waitForIdle()
     }
 
     private fun capture(name: String) {

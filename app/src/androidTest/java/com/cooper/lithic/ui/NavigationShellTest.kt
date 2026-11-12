@@ -20,6 +20,7 @@ import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.StateRestorationTester
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -104,7 +105,7 @@ class NavigationShellTest {
     @Test
     fun only_three_primary_destinations() {
         render()
-        compose.onAllNodes(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Tab)).assertCountEquals(3)
+        assertThreePrimaryTabs()
         compose.onNodeWithTag("tab-now").assertTextEquals("现在")
         compose.onNodeWithTag("tab-review").assertTextEquals("回看")
         compose.onNodeWithTag("tab-settings").assertTextEquals("设置")
@@ -187,7 +188,7 @@ class NavigationShellTest {
         compose.onAllNodes(hasText("¥0.00", substring = true)).assertCountEquals(0)
         compose.onNodeWithTag("open-project-list").assertDoesNotExist()
         compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
-        compose.onAllNodes(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Tab)).assertCountEquals(3)
+        assertThreePrimaryTabs()
         compose.onNodeWithTag("home-open-add").assertIsDisplayed()
         compose.onNodeWithTag("tab-review").performClick()
         compose.onNodeWithTag("review-screen").assertIsDisplayed()
@@ -329,6 +330,12 @@ class NavigationShellTest {
 
     private fun render() {
         compose.setContent { LithicTheme { LithicNavigation(state) } }
+    }
+
+    private fun assertThreePrimaryTabs() {
+        val tabs = SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Tab)
+        val homeSegment = hasTestTag("home-project-tab") or hasTestTag("home-subscription-tab")
+        compose.onAllNodes(tabs and homeSegment.not()).assertCountEquals(3)
     }
 
     private fun systemBack() {

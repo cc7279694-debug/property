@@ -199,6 +199,7 @@ class M09SubscriptionLifecycleFlowTest {
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
     }
     private fun openCurrent(id: String) {
+        compose.onNodeWithTag("home-subscription-tab").performScrollTo().performClick()
         compose.onNodeWithTag("open-subscription-list").performScrollTo().performClick()
         compose.waitUntil(10_000) { !model.state.value.list.loading && model.state.value.list.items.any { it.subscription.id == id } }
         compose.onNodeWithTag("subscription-list-content").performScrollToNode(hasTestTag("subscription-row-$id"))

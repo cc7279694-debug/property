@@ -70,31 +70,32 @@ class P2HomeArchiveContractTest {
                     })
             }
         }
-        assertSummary("¥10.52/天", "1", "1", "截至 ${facts.day} · 非今日扣款")
+        assertSummary("¥10.52/天", "1", "1", facts.day.toString())
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
 
         compose.runOnIdle { scenario.value = Scenario.HISTORY }
-        assertSummary("¥0.00/天", "4", "3", "截至 ${facts.day} · 非今日扣款")
+        assertSummary("¥0.00/天", "4", "3", facts.day.toString())
         compose.onNodeWithTag("home-no-active-records").assertExists()
         compose.onNodeWithTag("open-project-list").assertExists()
+        click("home-subscription-tab")
         compose.onNodeWithTag("open-subscription-list").assertExists()
 
         compose.runOnIdle { scenario.value = Scenario.EMPTY }
-        assertSummary("—", "0", "0", "截至 ${facts.day} · 非今日扣款")
+        assertSummary("—", "0", "0", facts.day.toString())
         compose.onNodeWithTag("home-empty-guidance").assertExists()
         compose.onNodeWithTag("home-category-disclosure").assertDoesNotExist()
         compose.onNodeWithTag("open-project-list").assertDoesNotExist()
         compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
 
         compose.runOnIdle { scenario.value = Scenario.RESTORE_UNKNOWN }
-        assertSummary("—", "0", "0", "截至 ${facts.day} · 非今日扣款")
+        assertSummary("—", "0", "0", facts.day.toString())
         compose.onNodeWithTag("home-retained-notice").assertTextEquals("当前记录状态尚未确认")
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
         compose.onNodeWithTag("home-overview-read-error").assertDoesNotExist()
 
         compose.runOnIdle { scenario.value = Scenario.RETAINED }
-        assertSummary("¥10.52/天", "8", "5", "截至 ${older.asOf} · 非今日扣款")
-        compose.onNodeWithText("截至 ${facts.day} · 非今日扣款").assertDoesNotExist()
+        assertSummary("¥10.52/天", "8", "5", older.asOf.toString())
+        compose.onNodeWithText(facts.day.toString()).assertDoesNotExist()
         compose.onNodeWithTag("home-retained-notice").assertTextEquals("上次取得的结果")
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
 
@@ -103,6 +104,7 @@ class P2HomeArchiveContractTest {
         compose.onNodeWithTag("home-overview-read-error").assertTextEquals("暂时无法取得成本数据")
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
         compose.onNodeWithTag("home-retained-notice").assertDoesNotExist()
+        compose.onAllNodesWithTag("home-open-add-top").assertCountEquals(1)
         compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
     }
 
@@ -135,17 +137,24 @@ class P2HomeArchiveContractTest {
                 }
             }
         }
-        for (type in listOf("project", "subscription")) {
+        fun assertColumns(type: String) {
             val first = compose.onNodeWithTag("home-$type-preview-$type-1").performScrollTo().fetchSemanticsNode()
             val second = compose.onNodeWithTag("home-$type-preview-$type-2").fetchSemanticsNode()
-            assertTrue(first.positionInRoot.y < second.positionInRoot.y)
+            assertEquals(first.positionInRoot.y, second.positionInRoot.y, 1f)
+            assertTrue(first.positionInRoot.x + first.size.width <= second.positionInRoot.x + 1f)
             compose.onNodeWithTag("home-$type-preview-$type-3").assertDoesNotExist()
         }
+        assertColumns("project")
         compose.waitUntil(5_000) { compose.onAllNodesWithTag("record-cover-unavailable").fetchSemanticsNodes().size == 1 }
         assertTouch("record-cover-unavailable")
         compose.onNodeWithTag("record-cover-unavailable").assertContentDescriptionEquals("封面暂不可用")
-        assertEquals(listOf(CoverReference(CoverOwnerType.PROJECT, "project-2", cover)), reads.toList())
-        assertSummary("¥10.52/天", "4", "5", "截至 ${facts.day} · 非今日扣款")
+        val expectedReads = listOf(CoverReference(CoverOwnerType.PROJECT, "project-2", cover))
+        assertEquals(expectedReads, reads.toList())
+        click("home-subscription-tab")
+        assertColumns("subscription")
+        compose.onAllNodesWithTag("record-cover-unavailable").assertCountEquals(0)
+        compose.runOnIdle { assertEquals(expectedReads, reads.toList()) }
+        assertSummary("¥10.52/天", "4", "5", facts.day.toString())
     }
 
     @Test fun a_wrong_date_waits_and_the_other_preview_error_does_not_replace_the_ledger_summary() {
@@ -162,6 +171,7 @@ class P2HomeArchiveContractTest {
         }
         compose.onNodeWithTag(projectTag()).assertDoesNotExist()
         compose.onNodeWithText("预览日期正在更新").assertExists()
+        click("home-subscription-tab")
         compose.onNodeWithTag(subscriptionTag()).assertExists()
         compose.runOnIdle { failed.value = true }
         compose.onNodeWithTag(subscriptionTag()).assertExists()
@@ -170,7 +180,7 @@ class P2HomeArchiveContractTest {
         compose.onNodeWithTag("home-retry-subscription-preview").performScrollTo().performClick()
         compose.runOnIdle { assertEquals(0, projectRetries); assertEquals(1, subscriptionRetries) }
         compose.onNodeWithTag("ledger-retry-read").assertDoesNotExist()
-        assertSummary("¥10.52/天", "1", "1", "截至 ${facts.day} · 非今日扣款")
+        assertSummary("¥10.52/天", "1", "1", facts.day.toString())
     }
 
     @Test fun widths_fonts_and_themes_keep_one_amount_readout_and_reachable_controls() {
@@ -196,7 +206,9 @@ class P2HomeArchiveContractTest {
                     compose.runOnIdle { configuration.value = Canvas(width, font, appearance) }
                     compose.onNodeWithTag("home-screen")
                         .performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, -100_000f) }
+                    click("home-project-tab")
                     assertTouch("open-name-search")
+                    assertTouch("home-open-add-top")
                     assertTouch("home-cost-information")
                     val search = compose.onNodeWithTag("open-name-search").fetchSemanticsNode()
                     val hero = compose.onNodeWithTag("home-total-rate").fetchSemanticsNode()
@@ -223,33 +235,29 @@ class P2HomeArchiveContractTest {
                     compose.onNodeWithTag("amount-full-value").assertTextEquals("−¥${amount.abs().toPlainString()}/天")
                     compose.onNodeWithTag("amount-close-full").performClick()
 
-                    compose.onNodeWithTag("home-screen")
-                        .performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, 100_000f) }
-                    val last = compose.onNodeWithTag("home-category-disclosure").assertIsDisplayed().fetchSemanticsNode()
                     val add = compose.onNodeWithTag("home-open-add").assertIsDisplayed()
                     val nav = compose.onNodeWithTag("p2-bottom-navigation").fetchSemanticsNode()
                     val addBounds = add.fetchSemanticsNode().boundsInRoot
-                    assertTrue(last.boundsInRoot.bottom <= addBounds.top + 1f)
                     assertTrue(addBounds.bottom <= nav.boundsInRoot.top + 1f)
+                    compose.onAllNodesWithTag("home-open-add-top").assertCountEquals(1)
                     compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
-                    if (font == 2f) {
-                        add.assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).assertTextEquals("新增记录")
-                        val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
-                        assertTrue("The entire scrolling viewport must end above the add button", viewport.bottom <= addBounds.top + 1f)
-                        for (tag in listOf("open-project-list", projectTag(), "open-subscription-list",
-                            subscriptionTag(), "home-category-disclosure")) {
+                    add.assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).assertTextEquals("添加")
+                    val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
+                    assertTrue("The scrolling viewport must end above the add button", viewport.bottom <= addBounds.top + 1f)
+                    for (type in listOf("project", "subscription")) {
+                        click("home-$type-tab")
+                        val card = if (type == "project") projectTag() else subscriptionTag()
+                        for (tag in listOf("open-$type-list", card, "home-category-disclosure")) {
                             val target = compose.onNodeWithTag(tag).performScrollTo().assertIsDisplayed().fetchSemanticsNode()
                             assertTrue("$tag must not enter the reserved add area", target.boundsInRoot.bottom <= addBounds.top + 1f)
                         }
-                    } else {
-                        add.assertWidthIsEqualTo(56.dp).assertHeightIsEqualTo(56.dp)
                     }
                 }
             }
         }
     }
 
-    @Test fun a_wide_parent_centers_a_single_capped_reading_column_and_its_fab() {
+    @Test fun a_wide_parent_centers_a_single_capped_reading_column_and_its_add_button() {
         compose.setContent {
             TestCanvas(Canvas(width = 760)) {
                 HomeShell(0, {}, {}, 0, {}, {}, overview = empty.overview)
@@ -258,10 +266,11 @@ class P2HomeArchiveContractTest {
         val canvas = compose.onNodeWithTag("p2-home-canvas").fetchSemanticsNode().boundsInRoot
         val viewport = compose.onNodeWithTag("home-scroll-viewport").assertWidthIsEqualTo(560.dp)
             .fetchSemanticsNode().boundsInRoot
-        val fab = compose.onNodeWithTag("home-open-add").fetchSemanticsNode().boundsInRoot
+        val add = compose.onNodeWithTag("home-open-add").fetchSemanticsNode().boundsInRoot
         assertTrue(canvas.width > viewport.width)
         assertEquals(canvas.center.x, viewport.center.x, 1f)
-        assertTrue(fab.right <= viewport.right + 1f && fab.left >= viewport.left)
+        assertTrue(add.right <= viewport.right + 1f && add.left >= viewport.left)
+        assertEquals(viewport.center.x, add.center.x, 1f)
     }
 
     @Test fun home_controls_dispatch_exact_targets_and_tab_bar_keeps_three_targets() {
@@ -286,13 +295,18 @@ class P2HomeArchiveContractTest {
             }
         }
         click("open-name-search")
+        compose.onNodeWithTag("home-project-tab").assertIsSelected()
         compose.onNodeWithTag("open-project-list").assertContentDescriptionEquals("查看全部长期项目")
         click("open-project-list")
+        click(projectTag())
+        compose.onNodeWithTag(subscriptionTag()).assertDoesNotExist()
+        click("home-subscription-tab")
+        compose.onNodeWithTag("home-subscription-tab").assertIsSelected()
+        compose.onNodeWithTag(projectTag()).assertDoesNotExist()
         compose.onNodeWithTag("open-subscription-list").assertContentDescriptionEquals("查看全部订阅服务")
         click("open-subscription-list")
-        click(projectTag())
         click(subscriptionTag())
-        val browse = listOf("search", "project-list", "subscription-list", "project:${project.project.id}",
+        val browse = listOf("search", "project-list", "project:${project.project.id}", "subscription-list",
             "subscription:${subscription.subscription.id}")
         compose.runOnIdle { assertEquals(browse, opened) }
 
@@ -300,11 +314,11 @@ class P2HomeArchiveContractTest {
         val projectCategory = facts.overview.projectCategories.single().categoryId
         val subscriptionCategory = facts.overview.subscriptionCategories.single().categoryId
         click("home-project-category-open-$projectCategory")
+        click("home-category-disclosure")
         click("home-subscription-category-open-$subscriptionCategory")
         compose.runOnIdle {
             assertEquals(listOf(OverviewKind.PROJECT to projectCategory, OverviewKind.SUBSCRIPTION to subscriptionCategory), categories)
         }
-        click("home-category-disclosure")
         click("home-cost-information")
         compose.onNodeWithTag("home-count-scope").assertExists()
         pressBack()
@@ -312,14 +326,14 @@ class P2HomeArchiveContractTest {
         click("home-cost-information")
         click("home-full-calculation-explanation", scroll = false)
 
-        click("home-open-add", scroll = false)
+        click("home-open-add-top")
         assertTouch("home-create-project", scroll = false)
         assertTouch("home-create-subscription", scroll = false)
         pressBack()
         compose.runOnIdle { assertEquals(browse + "calculation", opened) }
         click("home-open-add", scroll = false)
         click("home-create-project", scroll = false)
-        click("home-open-add", scroll = false)
+        click("home-open-add-top")
         click("home-create-subscription", scroll = false)
         compose.runOnIdle { assertEquals(browse + listOf("calculation", "create-project", "create-subscription"), opened) }
 
@@ -335,12 +349,13 @@ class P2HomeArchiveContractTest {
 
     private fun assertSummary(amount: String, projects: String, subscriptions: String, cutoff: String?) {
         compose.onNodeWithTag("home-total-rate").assertTextEquals(amount)
+        compose.onNodeWithTag("home-total-investment").assertTextEquals("—")
         for ((kind, count) in listOf("project" to projects, "subscription" to subscriptions)) {
             compose.onNodeWithTag("home-$kind-record-count").assertTextEquals(count).assert(hasClickAction().not())
         }
-        if (cutoff != null) compose.onNodeWithText(cutoff).assertExists()
+        if (cutoff != null) compose.onNodeWithTag("home-cutoff-date").assertTextEquals(cutoff)
         else {
-            compose.onNodeWithText("截至", substring = true).assertDoesNotExist()
+            compose.onNodeWithTag("home-cutoff-date").assertDoesNotExist()
             compose.onNodeWithText("非今日扣款", substring = true).assertDoesNotExist()
         }
     }

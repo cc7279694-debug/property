@@ -32,7 +32,7 @@ class P01HomeShellSemanticsTest {
         } }
         compose.onNodeWithTag("home-total-rate").assertTextEquals("—")
             .assertContentDescriptionEquals("当前日均成本，暂无数据").assertIsDisplayed()
-        compose.onNodeWithText("当前日均成本尚未取得").assertIsDisplayed()
+        compose.onNodeWithTag("home-cutoff-date").assertDoesNotExist()
         compose.onNodeWithTag("home-project-record-count").performScrollTo()
             .assertTextEquals("—").assertContentDescriptionEquals("长期项目，数量尚未取得").assertIsDisplayed()
         compose.onNodeWithTag("home-subscription-record-count").performScrollTo()
@@ -60,7 +60,6 @@ class P01HomeShellSemanticsTest {
         compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00/天")
             .assertContentDescriptionEquals("当前日均成本，0.00元/天").assertIsDisplayed()
         compose.onNodeWithTag("home-no-active-records").assertIsDisplayed()
-        compose.onNodeWithText("已录入 · 含历史").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("home-subscription-record-count").performScrollTo()
             .assertTextEquals("1").assertContentDescriptionEquals("订阅服务，已录入数量1，包含历史").assertIsDisplayed()
         compose.onNodeWithTag("home-project-record-count").performScrollTo()
@@ -68,6 +67,7 @@ class P01HomeShellSemanticsTest {
         compose.onNodeWithText("已录入 0 条长期项目").assertDoesNotExist()
         compose.onNodeWithTag("home-cost-information").performScrollTo().performClick()
         compose.onNodeWithTag("home-count-scope").assertTextContains("已停止的订阅", substring = true)
+            .assertTextContains("不是今天实际扣款", substring = true)
         compose.runOnIdle { assertEquals(0, recordActions) }
     }
 }

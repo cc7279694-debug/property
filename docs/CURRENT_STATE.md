@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC 首页卡片 UI — DESKTOP_PASS / ANDROID_SCREENSHOTS_BLOCKED（2026-11-12）**。按用户最终确认样图实现纯白首页布局、项目/订阅双列、顶部「＋」与底部「添加」共用面板、轻量底栏。首页现有快照无全账本总投入，显示「—」。订阅使用真实状态。58 项定向 JVM 通过，生产和 AndroidTest 编译及既有 P2-A1 隔离构建通过。原隔离 AVD 只读启动一次，150 秒未完成，安装、Instrumentation 和两张原生运行图均 NOT_RUN。范围和证据见[实施报告](evidence/LITHIC-Home-Card-UI.md)。
+
 - **LITHIC UI P2-A1-R1 — READY_FOR_INDEPENDENT_REVIEW（2026-11-11）**。系统 200% 新增操作区与滚动视口分离。原隔离 API 36 模拟器 63 次方法执行全通过，原 16 项失败均复验通过。正式 APK 指纹一致。见 [R1 修复前后截图与复验](evidence/LITHIC-UI-P2-A1-R1.md)。
 
 - **LITHIC UI P2-A1 — P2_A1_DEVICE_EVIDENCE_READY_FOR_REVIEW（2026-11-11）**。P2 桌面已独立接受（PASS WITH NOTES）。全新 API 36 隔离模拟器取得三主题和系统 200% 截图，62 次方法执行为 46 PASS / 16 FAIL。200% 时新增按钮局部遮住订阅「全部」，部分返回及表单守卫未闭环。等待独立审查。见 [P2-A1 运行证据](evidence/LITHIC-UI-P2-A1-Isolated-Android.md)。
