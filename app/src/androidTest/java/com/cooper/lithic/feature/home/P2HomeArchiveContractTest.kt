@@ -51,13 +51,15 @@ class P2HomeArchiveContractTest {
 
     @Test fun current_history_empty_and_both_failures_keep_their_own_snapshot_contract() {
         val scenario = mutableStateOf(Scenario.CURRENT)
-        val older = facts.overview.copy(asOf = facts.day.minusDays(1), projectCount = 8, subscriptionCount = 5)
+        val older = facts.overview.copy(asOf = facts.day.minusDays(1), projectCount = 8, subscriptionCount = 5,
+            totalInvestmentCents = 15_123L)
         compose.setContent {
             TestCanvas {
                 val overview = when (scenario.value) {
-                    Scenario.CURRENT -> facts.overview
-                    Scenario.HISTORY -> empty.overview.copy(projectCount = 4, subscriptionCount = 3)
-                    Scenario.EMPTY, Scenario.RESTORE_UNKNOWN -> empty.overview
+                    Scenario.CURRENT -> facts.overview.copy(totalInvestmentCents = 24_045L)
+                    Scenario.HISTORY -> empty.overview.copy(projectCount = 4, subscriptionCount = 3, totalInvestmentCents = 0L)
+                    Scenario.EMPTY, Scenario.RESTORE_UNKNOWN -> empty.overview.copy(totalInvestmentCents = 0L)
+                    Scenario.NO_INVESTMENT -> facts.overview
                     Scenario.RETAINED -> older
                     Scenario.FAILED -> null
                 }
@@ -70,11 +72,15 @@ class P2HomeArchiveContractTest {
                     })
             }
         }
+        assertSummary("¥10.52/天", "1", "1", facts.day.toString(), investment = "¥240.45")
+        compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
+
+        compose.runOnIdle { scenario.value = Scenario.NO_INVESTMENT }
         assertSummary("¥10.52/天", "1", "1", facts.day.toString())
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
 
         compose.runOnIdle { scenario.value = Scenario.HISTORY }
-        assertSummary("¥0.00/天", "4", "3", facts.day.toString())
+        assertSummary("¥0.00/天", "4", "3", facts.day.toString(), investment = "¥0.00")
         compose.onNodeWithTag("home-no-active-records").assertExists()
         compose.onNodeWithTag("open-project-list").assertExists()
         click("home-subscription-tab")
@@ -94,7 +100,7 @@ class P2HomeArchiveContractTest {
         compose.onNodeWithTag("home-overview-read-error").assertDoesNotExist()
 
         compose.runOnIdle { scenario.value = Scenario.RETAINED }
-        assertSummary("¥10.52/天", "8", "5", older.asOf.toString())
+        assertSummary("¥10.52/天", "8", "5", older.asOf.toString(), investment = "¥151.23")
         compose.onNodeWithText(facts.day.toString()).assertDoesNotExist()
         compose.onNodeWithTag("home-retained-notice").assertTextEquals("上次取得的结果")
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
@@ -320,7 +326,10 @@ class P2HomeArchiveContractTest {
             assertEquals(listOf(OverviewKind.PROJECT to projectCategory, OverviewKind.SUBSCRIPTION to subscriptionCategory), categories)
         }
         click("home-cost-information")
-        compose.onNodeWithTag("home-count-scope").assertExists()
+        compose.onNodeWithTag("home-count-scope")
+            .assertTextContains("含以旧换新非现金折抵", substring = true)
+            .assertTextContains("订阅实际付款（按实付日）", substring = true)
+            .assertTextContains("不扣除收回", substring = true)
         pressBack()
         compose.runOnIdle { assertEquals(browse, opened) }
         click("home-cost-information")
@@ -347,9 +356,11 @@ class P2HomeArchiveContractTest {
     private fun projectTag() = "home-project-preview-${project.project.id}"
     private fun subscriptionTag() = "home-subscription-preview-${subscription.subscription.id}"
 
-    private fun assertSummary(amount: String, projects: String, subscriptions: String, cutoff: String?) {
+    private fun assertSummary(amount: String, projects: String, subscriptions: String, cutoff: String?,
+        investment: String = "—",
+    ) {
         compose.onNodeWithTag("home-total-rate").assertTextEquals(amount)
-        compose.onNodeWithTag("home-total-investment").assertTextEquals("—")
+        compose.onNodeWithTag("home-total-investment").assertTextEquals(investment)
         for ((kind, count) in listOf("project" to projects, "subscription" to subscriptions)) {
             compose.onNodeWithTag("home-$kind-record-count").assertTextEquals(count).assert(hasClickAction().not())
         }
@@ -384,5 +395,5 @@ class P2HomeArchiveContractTest {
     private data class Canvas(val width: Int = 360, val fontScale: Float = 1f,
         val appearance: LithicAppearance = LithicAppearance.STONE_MIST)
 
-    private enum class Scenario { CURRENT, HISTORY, EMPTY, RESTORE_UNKNOWN, RETAINED, FAILED }
+    private enum class Scenario { CURRENT, HISTORY, EMPTY, RESTORE_UNKNOWN, RETAINED, FAILED, NO_INVESTMENT }
 }

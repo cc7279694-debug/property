@@ -8,6 +8,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
@@ -106,13 +107,20 @@ class HomeOverviewUiTest {
                         Box(Modifier.requiredSize(width = 360.dp, height = canvasHeight).testTag("home-test-canvas")) {
                             HomeShell(0L, { clicks += "projects" }, { clicks += "new-project" },
                                 0L, { clicks += "subscriptions" }, { clicks += "new-subscription" },
-                                overview = result(projectCount = 1L, activeProjectCount = 1L))
+                                overview = result(projectCount = 1L, activeProjectCount = 1L)
+                                    .copy(totalInvestmentCents = Long.MAX_VALUE))
                         }
                     }
                 }
             }
         }
         assertHomeFitsVisibleWidth()
+        compose.onNodeWithTag("home-total-investment").performScrollTo()
+            .assertTextEquals("¥92233720368547758.07")
+            .assertContentDescriptionEquals("总投入，92233720368547758.07元")
+        compose.onNodeWithTag("amount-open-full", useUnmergedTree = true).performScrollTo().performClick()
+        compose.onNodeWithTag("amount-full-value").assertTextEquals("¥92233720368547758.07")
+        compose.onNodeWithTag("amount-close-full").performClick()
         compose.onNodeWithTag("open-project-list").performScrollTo().assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
         compose.onNodeWithTag("home-create-project").performScrollTo().assertIsDisplayed().performClick()

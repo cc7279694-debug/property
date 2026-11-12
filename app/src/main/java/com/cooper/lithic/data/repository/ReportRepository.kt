@@ -47,7 +47,7 @@ class ReportRepository(
     private val coordinator: LocalWriteCoordinator,
     private val clock: BusinessClock,
 ) {
-    /** One observation day and one database snapshot for totals, counts and both category lists. */
+    /** One observation day and one database snapshot for rates, investment, counts and categories. */
     suspend fun loadOverview(asOf: LocalDate? = null): OverviewResult = coordinator.withSnapshot {
         val observedOn = asOf ?: clock.today()
         db.withTransaction {
@@ -64,6 +64,7 @@ class ReportRepository(
                 })
             }
             var result = OverviewEngine.evaluate(OverviewSnapshot(categories, emptyList(), emptyList()), observedOn)
+            var investmentCents: Long? = 0L
             val verifiedMedia = mutableSetOf<String>()
             val projectIds = mutableSetOf<String>()
             var projectCursor: ProjectCursor? = null
@@ -81,8 +82,9 @@ class ReportRepository(
                     }
                     OverviewProject(row.id, row.categoryId, input)
                 }
-                result = OverviewEngine.combine(result,
-                    OverviewEngine.evaluate(OverviewSnapshot(categories, inputs, emptyList()), observedOn))
+                val batch = OverviewSnapshot(categories, inputs, emptyList())
+                result = OverviewEngine.combine(result, OverviewEngine.evaluate(batch, observedOn))
+                investmentCents = accumulateOverviewInvestmentCents(investmentCents, batch, observedOn)
                 projectCursor = rows.last().let { ProjectCursor(it.startedOn, it.id) }
                 if (rows.size < BATCH_SIZE) break
             }
@@ -106,13 +108,14 @@ class ReportRepository(
                     }
                     OverviewSubscription(row.id, row.categoryId, input)
                 }
-                result = OverviewEngine.combine(result,
-                    OverviewEngine.evaluate(OverviewSnapshot(categories, emptyList(), inputs), observedOn))
+                val batch = OverviewSnapshot(categories, emptyList(), inputs)
+                result = OverviewEngine.combine(result, OverviewEngine.evaluate(batch, observedOn))
+                investmentCents = accumulateOverviewInvestmentCents(investmentCents, batch, observedOn)
                 afterSubscriptionId = rows.last().id
                 if (rows.size < BATCH_SIZE) break
             }
             check(subscriptionIds.size.toLong() == db.subscriptionDao().countSubscriptions()) { "The overview omitted subscription identities" }
-            result
+            result.copy(totalInvestmentCents = investmentCents)
         }
     }
 
@@ -340,4 +343,32 @@ class ReportRepository(
     }
 
     private companion object { const val BATCH_SIZE = 50 }
+}
+
+/** Add a validated batch. An unrepresentable total leaves only the investment metric unavailable. */
+internal fun accumulateOverviewInvestmentCents(
+    previousCents: Long?,
+    batch: OverviewSnapshot,
+    asOf: LocalDate,
+): Long? {
+    var cents = previousCents ?: return null
+    try {
+        for (project in batch.projects) {
+            for (event in project.snapshot.moneyEvents) {
+                if (event.direction == MoneyDirection.OUTLAY && !event.occurredOn.isAfter(asOf)) {
+                    cents = Math.addExact(cents, event.amount.cents)
+                }
+            }
+        }
+        for (subscription in batch.subscriptions) {
+            for (payment in subscription.snapshot.renewals) {
+                if (!payment.paidOn.isAfter(asOf)) {
+                    cents = Math.addExact(cents, payment.amount.cents)
+                }
+            }
+        }
+    } catch (_: ArithmeticException) {
+        return null
+    }
+    return cents
 }

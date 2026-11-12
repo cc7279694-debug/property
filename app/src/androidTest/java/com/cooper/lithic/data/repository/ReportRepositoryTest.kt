@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.withTransaction
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.cooper.lithic.core.model.Money
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.core.time.BusinessClock
 import com.cooper.lithic.core.time.FixedBusinessClock
@@ -89,6 +90,7 @@ class ReportRepositoryTest {
         rate("103", result.projectRate)
         rate("103", result.subscriptionRate)
         rate("206", result.totalRate)
+        assertEquals(412_000L, result.totalInvestmentCents)
         assertEquals(LithicDatabase.PROJECT_FALLBACK_ID, result.projectCategories.single().categoryId)
         assertEquals(LithicDatabase.SUBSCRIPTION_FALLBACK_ID, result.subscriptionCategories.single().categoryId)
         assertEquals("其他", result.projectCategories.single().name)
@@ -128,7 +130,10 @@ class ReportRepositoryTest {
         assertEquals(101L, beforeWrite.projectCount)
         assertEquals(101L, beforeWrite.subscriptionCount)
         rate("202", beforeWrite.totalRate)
-        rate("204", repository.loadOverview().totalRate)
+        assertEquals(404_000L, beforeWrite.totalInvestmentCents)
+        val afterWrite = repository.loadOverview()
+        rate("204", afterWrite.totalRate)
+        assertEquals(408_000L, afterWrite.totalInvestmentCents)
     }
 
     @Test fun clock_is_read_once_only_after_acquiring_the_generation_snapshot() = runBlocking {
@@ -168,13 +173,21 @@ class ReportRepositoryTest {
                 ))
             }
         }
-        rate("5", repository.loadOverview(LocalDate.of(2026, 1, 10)).subscriptionRate)
+        val beforePayment = repository.loadOverview(LocalDate.of(2026, 1, 10))
+        rate("5", beforePayment.subscriptionRate)
+        assertEquals(15_000L, beforePayment.totalInvestmentCents)
+        val prepaid = repository.loadOverview(LocalDate.of(2026, 1, 20))
+        rate("5", prepaid.subscriptionRate)
+        assertEquals(33_000L, prepaid.totalInvestmentCents)
         rate("5", repository.loadOverview(LocalDate.of(2026, 1, 31)).subscriptionRate)
-        rate("6", repository.loadOverview(LocalDate.of(2026, 2, 1)).subscriptionRate)
+        val effective = repository.loadOverview(LocalDate.of(2026, 2, 1))
+        rate("6", effective.subscriptionRate)
+        assertEquals(33_000L, effective.totalInvestmentCents)
         val stopped = repository.loadOverview(LocalDate.of(2026, 2, 5))
         rate("0", stopped.subscriptionRate)
         assertEquals(1L, stopped.subscriptionCount)
         assertEquals(0L, stopped.activeSubscriptionCount)
+        assertEquals(33_000L, stopped.totalInvestmentCents)
     }
 
     @Test fun explicit_historical_day_does_not_sample_or_replace_the_record_clock() = runBlocking {
@@ -213,11 +226,49 @@ class ReportRepositoryTest {
         assertEquals(0L, empty.projectCount)
         assertEquals(0L, empty.subscriptionCount)
         rate("0", empty.totalRate)
+        assertEquals(0L, empty.totalInvestmentCents)
         coordinator.withWrite { db.withTransaction { project(1, amount = 0) } }
         val zero = repository.loadOverview()
         assertEquals(1L, zero.projectCount)
         assertEquals(1L, zero.activeProjectCount)
         rate("0", zero.totalRate)
+        assertEquals(0L, zero.totalInvestmentCents)
+    }
+
+    @Test fun investment_keeps_ended_outlays_and_counts_trade_in_credit_only_as_outlay() = runBlocking {
+        val yesterday = today.minusDays(1)
+        val oldId = id(1)
+        coordinator.withWrite { db.withTransaction {
+            project(1, amount = 12_000)
+            db.projectDao().insertEvent(ProjectMoneyEventEntity(id(50_001), oldId, MoneyDirection.OUTLAY,
+                3_000, yesterday, role = ProjectMoneyEventRole.REGULAR, operationId = id(60_001)))
+            db.projectDao().insertEvent(ProjectMoneyEventEntity(id(50_002), oldId, MoneyDirection.RECOVERY,
+                2_000, yesterday, role = ProjectMoneyEventRole.REGULAR, operationId = id(60_002)))
+        } }
+        val clock = FixedBusinessClock(today)
+        val old = checkNotNull(ProjectRepository(db, coordinator, clock).loadProjectDetail(oldId))
+        val operation = id(70_001)
+        val revision = instant.plusSeconds(1)
+        val replacement = LongTermProjectEntity(TradeInIdentities.newProjectId(operation), "合成换新物品",
+            LithicDatabase.PROJECT_FALLBACK_ID, today, createdAt = revision, updatedAt = revision)
+        val tradeIn = ReplacementRepository(db, coordinator, clock).recordTradeIn(TradeInCommand(
+            operation, old.project, old.events, emptyList(), replacement, today,
+            cashCents = 12_000, creditCents = 5_000, linkReplacement = true, updatedAt = revision,
+        ))
+        assertTrue("The complete trade-in must commit: $tradeIn", tradeIn is ReplacementMutationResult.TradeInRecorded)
+        assertEquals(15_000L, repository.loadOverview(yesterday).totalInvestmentCents)
+        val result = repository.loadOverview()
+        assertEquals(2L, result.projectCount)
+        assertEquals(1L, result.activeProjectCount)
+        assertEquals(32_000L, result.totalInvestmentCents)
+    }
+
+    @Test fun investment_can_exceed_the_single_event_money_limit() = runBlocking {
+        coordinator.withWrite { db.withTransaction {
+            project(1, amount = Money.MAX_CENTS)
+            subscription(1, amount = Money.MAX_CENTS)
+        } }
+        assertEquals(1_999_999_999_998L, repository.loadOverview().totalInvestmentCents)
     }
 
     @Test fun subscription_without_any_confirmed_payment_is_a_read_failure() = runBlocking {
@@ -273,13 +324,17 @@ class ReportRepositoryTest {
                 db.openHelper.writableDatabase.execSQL("UPDATE project_money_events SET amountCents=2000 WHERE projectId='${id(1)}'")
             } }
             withTimeout(5_000) { emissions.receive() }
-            rate("3", repository.loadOverview().totalRate)
+            val beforePause = repository.loadOverview()
+            rate("3", beforePause.totalRate)
+            assertEquals(5_000L, beforePause.totalInvestmentCents)
             coordinator.withWrite { db.withTransaction {
                 db.subscriptionDao().insertStateChange(SubscriptionStateChangeEntity(id(70_001), id(1), today,
                     SubscriptionOperationState.PAUSED, operationId = id(80_001)))
             } }
             withTimeout(5_000) { emissions.receive() }
-            rate("2", repository.loadOverview().totalRate)
+            val paused = repository.loadOverview()
+            rate("2", paused.totalRate)
+            assertEquals(5_000L, paused.totalInvestmentCents)
         } finally { observing.cancel(); observing.join() }
     }
 

@@ -193,7 +193,7 @@ internal fun HomeShell(
             title = { Text("数量与成本口径") },
             text = {
                 Text(
-                    "已录入数量包含历史记录（已结束的长期项目和已停止的订阅）。当前日均成本仅含已录入且当前有效的记录，不是今天实际扣款，也不代表全部生活消费。总投入尚未取得。",
+                    "已录入数量包含历史记录（已结束的长期项目和已停止的订阅）。当前日均成本仅含已录入且当前有效的记录，不是今天实际扣款，也不代表全部生活消费。总投入包含截至观察日的全部项目投入（含以旧换新非现金折抵）和订阅实际付款（按实付日），不扣除收回。",
                     Modifier.verticalScroll(rememberScrollState()).testTag("home-count-scope"),
                 )
             },
@@ -258,6 +258,7 @@ private fun HomeOverviewCard(
     val colors = MaterialTheme.colorScheme
     val typography = MaterialTheme.typography
     val largeType = LocalDensity.current.fontScale > 1.35f
+    val investment = overview?.takeIf { it.hasRecords }?.totalInvestmentCents?.let { BigDecimal.valueOf(it, 2) }
     Surface(
         Modifier.fillMaxWidth().testTag("home-current-cost-summary"), shape = RoundedCornerShape(13.dp),
         color = colors.surface, shadowElevation = 3.dp,
@@ -266,13 +267,13 @@ private fun HomeOverviewCard(
             MaterialTheme(typography = typography.copy(displayLarge = typography.displayLarge.copy(fontWeight = FontWeight.Bold))) {
                 if (largeType) {
                     Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                        HomeInvestment()
+                        HomeInvestment(investment)
                         HomeDailyRate(overview, onExplain)
                     }
                 } else {
                     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        Box(Modifier.weight(1f)) { HomeInvestment() }
+                        Box(Modifier.weight(1f)) { HomeInvestment(investment) }
                         VerticalDivider(Modifier.height(56.dp), color = colors.outlineVariant)
                         Box(Modifier.weight(1.30f)) { HomeDailyRate(overview, onExplain) }
                     }
@@ -317,11 +318,10 @@ private fun HomeOverviewCard(
 }
 
 @Composable
-private fun HomeInvestment() {
-    // The overview supplies rates and counts only. A preview subtotal would mislabel a partial sum.
+private fun HomeInvestment(amount: BigDecimal?) {
     Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
         Text("总投入", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.SemiBold)
-        MoneyMetric(null, Modifier.testTag("home-total-investment"), unit = AmountUnit.YUAN,
+        MoneyMetric(amount, Modifier.testTag("home-total-investment"), unit = AmountUnit.YUAN,
             level = MoneyMetricLevel.CARD, label = "总投入")
     }
 }
