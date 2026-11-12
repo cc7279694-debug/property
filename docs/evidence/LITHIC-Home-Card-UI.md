@@ -54,3 +54,17 @@ Android 真实系统大字、TalkBack、实际导航/返回以及视觉还原程
 | 运行与收口 | App/Test 安装 0，Instrumentation 0，原生截图 0。只关闭本次启动的隔离进程，已核对进程与端口均退出。未操作真实手机。 |
 
 截图、视觉还原和端侧交互继续为 `NOT_RUN`。当前状态 `DESKTOP_PASS / ANDROID_SCREENSHOTS_BLOCKED`。
+
+## 独立 ADB 补验（2026-11-12）
+
+仍使用源码提交 154ff0fe3a6e0e60f6cee193daf6062b644d7bfd 的同一对 P2-A1 测试 APK。复核 Manifest、原 Debug 证书和 SHA-256，未重建。启动前可用内存 5.008 GiB，C/E 盘可用空间约 16.89/31.08 GiB。
+
+| 检查 | 本轮实测 |
+| --- | --- |
+| 独立连接服务 | Windows 上首次使用显式监听地址的命令返回 3221226505，报告不支持指定主机名监听。修正命令及本地脚本缩进后，专用 ADB 在 127.0.0.1:15038 启动，排除 USB 与 mDNS 自动发现，启动前设备列表为空。默认 5037 服务保持同一 PID。 |
+| 模拟器启动 | 原 Lithic_P2A1_API36 使用只读覆盖层冷启动一次，不加载或保存快照。guest 日志报告 Boot completed in 106370 ms。 |
+| 连接准入 | 225 秒内对 emulator-5558 的 32 次定向观察始终未取得设备传输。从 92 秒开始检查 5559，始终未观察到监听，因此未尝试直接连接。未取得 guest 身份及健康检查，根因仍为 UNKNOWN。[本次连接观察](lithic-home-card-ui/runtime-dedicated-adb-transport.txt) |
+| 退出核对 | 准入脚本退出码 1。自动收口未能结束模拟器，随后按本次进程的父子关系、AVD 名称、端口和只读参数核对并停止。模拟器与专用 ADB 均已退出，5558、5559、15038 无监听。 |
+| Android 运行 | App/Test 安装 0、Instrumentation 0、运行截图 0。项目、订阅截图和交互验证仍为 NOT_RUN。没有操作手机、个人账本或正式 APK。 |
+
+当前状态 DESKTOP_PASS / ANDROID_SCREENSHOTS_BLOCKED。本轮仅补录运行证据，生产及测试源码未变。

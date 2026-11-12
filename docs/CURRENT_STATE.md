@@ -4,7 +4,7 @@
 
 ## Current Stage
 
-- **LITHIC 首页卡片 UI — DESKTOP_PASS / ANDROID_SCREENSHOTS_BLOCKED（2026-11-12）**。按用户最终确认样图实现纯白首页布局、项目/订阅双列、顶部「＋」与底部「添加」共用面板、轻量底栏。首页现有快照无全账本总投入，显示「—」。订阅使用真实状态。58 项定向 JVM 通过，生产和 AndroidTest 编译及既有 P2-A1 隔离构建通过。原隔离 AVD 复测内存 4.653 GiB，改用受支持的 5558/5559 后仍未通过 ADB 准入。guest 日志已报启动，传输根因 UNKNOWN。安装、Instrumentation 和两张原生运行图均 NOT_RUN。范围和证据见[实施报告](evidence/LITHIC-Home-Card-UI.md)。
+- **LITHIC 首页卡片 UI — DESKTOP_PASS / ANDROID_SCREENSHOTS_BLOCKED（2026-11-12）**。按用户最终确认样图实现纯白首页布局、项目/订阅双列、顶部「＋」与底部「添加」共用面板、轻量底栏。首页现有快照无全账本总投入，显示「—」。订阅使用真实状态。58 项定向 JVM 通过，生产和 AndroidTest 编译及既有 P2-A1 隔离构建通过。原隔离 AVD 改用受支持端口后未通过 ADB 准入。本次以 5.008 GiB 可用内存改用独立 ADB 服务复查，guest 日志报启动完成，但 225 秒内仍未取得设备传输。根因 UNKNOWN。安装、Instrumentation 和两张原生运行图均 NOT_RUN。范围和证据见[实施报告](evidence/LITHIC-Home-Card-UI.md)。
 
 - **LITHIC UI P2-A1-R1 — READY_FOR_INDEPENDENT_REVIEW（2026-11-11）**。系统 200% 新增操作区与滚动视口分离。原隔离 API 36 模拟器 63 次方法执行全通过，原 16 项失败均复验通过。正式 APK 指纹一致。见 [R1 修复前后截图与复验](evidence/LITHIC-UI-P2-A1-R1.md)。
 
