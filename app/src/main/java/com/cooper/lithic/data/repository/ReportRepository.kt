@@ -110,7 +110,6 @@ class ReportRepository(
                 }
                 val batch = OverviewSnapshot(categories, emptyList(), inputs)
                 result = OverviewEngine.combine(result, OverviewEngine.evaluate(batch, observedOn))
-                investmentCents = accumulateOverviewInvestmentCents(investmentCents, batch, observedOn)
                 afterSubscriptionId = rows.last().id
                 if (rows.size < BATCH_SIZE) break
             }
@@ -345,7 +344,7 @@ class ReportRepository(
     private companion object { const val BATCH_SIZE = 50 }
 }
 
-/** Add a validated batch. An unrepresentable total leaves only the investment metric unavailable. */
+/** Add project outlays from a validated batch. Overflow makes only the investment metric unavailable. */
 internal fun accumulateOverviewInvestmentCents(
     previousCents: Long?,
     batch: OverviewSnapshot,
@@ -357,13 +356,6 @@ internal fun accumulateOverviewInvestmentCents(
             for (event in project.snapshot.moneyEvents) {
                 if (event.direction == MoneyDirection.OUTLAY && !event.occurredOn.isAfter(asOf)) {
                     cents = Math.addExact(cents, event.amount.cents)
-                }
-            }
-        }
-        for (subscription in batch.subscriptions) {
-            for (payment in subscription.snapshot.renewals) {
-                if (!payment.paidOn.isAfter(asOf)) {
-                    cents = Math.addExact(cents, payment.amount.cents)
                 }
             }
         }

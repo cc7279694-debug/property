@@ -327,8 +327,9 @@ class P2HomeArchiveContractTest {
         }
         click("home-cost-information")
         compose.onNodeWithTag("home-count-scope")
-            .assertTextContains("含以旧换新非现金折抵", substring = true)
-            .assertTextContains("订阅实际付款（按实付日）", substring = true)
+            .assertTextContains("总投入只累计截至观察日的长期项目投入", substring = true)
+            .assertTextContains("含已结束项目投入和以旧换新非现金折抵", substring = true)
+            .assertTextContains("不计入订阅付款", substring = true)
             .assertTextContains("不扣除收回", substring = true)
         pressBack()
         compose.runOnIdle { assertEquals(browse, opened) }

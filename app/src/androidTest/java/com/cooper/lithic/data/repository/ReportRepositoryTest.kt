@@ -90,7 +90,7 @@ class ReportRepositoryTest {
         rate("103", result.projectRate)
         rate("103", result.subscriptionRate)
         rate("206", result.totalRate)
-        assertEquals(412_000L, result.totalInvestmentCents)
+        assertEquals(103_000L, result.totalInvestmentCents)
         assertEquals(LithicDatabase.PROJECT_FALLBACK_ID, result.projectCategories.single().categoryId)
         assertEquals(LithicDatabase.SUBSCRIPTION_FALLBACK_ID, result.subscriptionCategories.single().categoryId)
         assertEquals("其他", result.projectCategories.single().name)
@@ -130,10 +130,10 @@ class ReportRepositoryTest {
         assertEquals(101L, beforeWrite.projectCount)
         assertEquals(101L, beforeWrite.subscriptionCount)
         rate("202", beforeWrite.totalRate)
-        assertEquals(404_000L, beforeWrite.totalInvestmentCents)
+        assertEquals(101_000L, beforeWrite.totalInvestmentCents)
         val afterWrite = repository.loadOverview()
         rate("204", afterWrite.totalRate)
-        assertEquals(408_000L, afterWrite.totalInvestmentCents)
+        assertEquals(102_000L, afterWrite.totalInvestmentCents)
     }
 
     @Test fun clock_is_read_once_only_after_acquiring_the_generation_snapshot() = runBlocking {
@@ -175,19 +175,42 @@ class ReportRepositoryTest {
         }
         val beforePayment = repository.loadOverview(LocalDate.of(2026, 1, 10))
         rate("5", beforePayment.subscriptionRate)
-        assertEquals(15_000L, beforePayment.totalInvestmentCents)
+        assertEquals(0L, beforePayment.totalInvestmentCents)
         val prepaid = repository.loadOverview(LocalDate.of(2026, 1, 20))
         rate("5", prepaid.subscriptionRate)
-        assertEquals(33_000L, prepaid.totalInvestmentCents)
+        assertEquals(0L, prepaid.totalInvestmentCents)
         rate("5", repository.loadOverview(LocalDate.of(2026, 1, 31)).subscriptionRate)
         val effective = repository.loadOverview(LocalDate.of(2026, 2, 1))
         rate("6", effective.subscriptionRate)
-        assertEquals(33_000L, effective.totalInvestmentCents)
+        assertEquals(0L, effective.totalInvestmentCents)
         val stopped = repository.loadOverview(LocalDate.of(2026, 2, 5))
         rate("0", stopped.subscriptionRate)
         assertEquals(1L, stopped.subscriptionCount)
         assertEquals(0L, stopped.activeSubscriptionCount)
-        assertEquals(33_000L, stopped.totalInvestmentCents)
+        assertEquals(0L, stopped.totalInvestmentCents)
+    }
+
+    @Test fun changing_only_a_subscription_payment_does_not_change_project_investment() = runBlocking {
+        coordinator.withWrite { db.withTransaction { project(1); subscription(1) } }
+        val before = repository.loadOverview(today)
+        val updatedPayment = renewal(1, id(1), LocalDate.of(2026, 1, 1), 6_000)
+        coordinator.withWrite { db.withTransaction {
+            assertEquals(1, db.subscriptionDao().updateRenewal(updatedPayment))
+        } }
+        val after = repository.loadOverview(today)
+
+        assertEquals(today, before.asOf)
+        assertEquals(before.asOf, after.asOf)
+        assertEquals(before.projectCount, after.projectCount)
+        assertEquals(before.subscriptionCount, after.subscriptionCount)
+        rate("1", before.projectRate)
+        rate("1", after.projectRate)
+        rate("1", before.subscriptionRate)
+        rate("2", after.subscriptionRate)
+        rate("2", before.totalRate)
+        rate("3", after.totalRate)
+        assertEquals(1_000L, before.totalInvestmentCents)
+        assertEquals(before.totalInvestmentCents, after.totalInvestmentCents)
     }
 
     @Test fun explicit_historical_day_does_not_sample_or_replace_the_record_clock() = runBlocking {
@@ -266,7 +289,7 @@ class ReportRepositoryTest {
     @Test fun investment_can_exceed_the_single_event_money_limit() = runBlocking {
         coordinator.withWrite { db.withTransaction {
             project(1, amount = Money.MAX_CENTS)
-            subscription(1, amount = Money.MAX_CENTS)
+            project(2, amount = Money.MAX_CENTS)
         } }
         assertEquals(1_999_999_999_998L, repository.loadOverview().totalInvestmentCents)
     }
@@ -326,7 +349,7 @@ class ReportRepositoryTest {
             withTimeout(5_000) { emissions.receive() }
             val beforePause = repository.loadOverview()
             rate("3", beforePause.totalRate)
-            assertEquals(5_000L, beforePause.totalInvestmentCents)
+            assertEquals(2_000L, beforePause.totalInvestmentCents)
             coordinator.withWrite { db.withTransaction {
                 db.subscriptionDao().insertStateChange(SubscriptionStateChangeEntity(id(70_001), id(1), today,
                     SubscriptionOperationState.PAUSED, operationId = id(80_001)))
@@ -334,7 +357,7 @@ class ReportRepositoryTest {
             withTimeout(5_000) { emissions.receive() }
             val paused = repository.loadOverview()
             rate("2", paused.totalRate)
-            assertEquals(5_000L, paused.totalInvestmentCents)
+            assertEquals(2_000L, paused.totalInvestmentCents)
         } finally { observing.cancel(); observing.join() }
     }
 

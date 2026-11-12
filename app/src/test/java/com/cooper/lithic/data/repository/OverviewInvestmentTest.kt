@@ -22,13 +22,23 @@ import org.junit.Test
 class OverviewInvestmentTest {
     private val asOf = LocalDate.of(2026, 5, 20)
 
-    @Test fun sums_project_outlay_and_actual_payment_dates_across_batches() {
+    @Test fun sums_historical_project_outlays_through_the_observation_date() {
         val project = project("ended", listOf(
             event(MoneyDirection.OUTLAY, 10_000, asOf.minusDays(4)),
             event(MoneyDirection.OUTLAY, 2_500, asOf),
             event(MoneyDirection.RECOVERY, 4_000, asOf),
             event(MoneyDirection.OUTLAY, 9_000, asOf.plusDays(1)),
         ))
+        val firstBatch = OverviewSnapshot(emptyList(), listOf(project), emptyList())
+        val nextProject = project("next", listOf(event(MoneyDirection.OUTLAY, 1_100, asOf)))
+        val nextBatch = firstBatch.copy(projects = listOf(nextProject))
+        val first = accumulateOverviewInvestmentCents(0L, firstBatch, asOf)
+        assertEquals(12_500L, first)
+        assertEquals(13_600L, accumulateOverviewInvestmentCents(first, nextBatch, asOf))
+    }
+
+    @Test fun subscription_payment_changes_do_not_change_total_investment() {
+        val project = project("ended", listOf(event(MoneyDirection.OUTLAY, 12_500, asOf)))
         val stopped = subscription("stopped", SubscriptionOperationState.STOPPED, listOf(
             payment(1_000, asOf.minusDays(50), asOf.minusDays(50)),
             payment(2_000, asOf.minusDays(35), asOf.minusDays(20)),
@@ -38,11 +48,14 @@ class OverviewInvestmentTest {
             payment(800, asOf.plusDays(1), asOf.plusDays(34)),
         ))
 
-        val projectBatch = OverviewSnapshot(emptyList(), listOf(project), emptyList())
-        val subscriptionBatch = OverviewSnapshot(emptyList(), emptyList(), listOf(stopped, paused))
-        val first = accumulateOverviewInvestmentCents(0L, projectBatch, asOf)
-        assertEquals(12_500L, first)
-        assertEquals(16_100L, accumulateOverviewInvestmentCents(first, subscriptionBatch, asOf))
+        val active = subscription("active", SubscriptionOperationState.ENABLED,
+            listOf(payment(900, asOf, asOf)))
+        val changedActive = active.copy(snapshot = active.snapshot.copy(renewals = listOf(payment(1_800, asOf, asOf))))
+        val before = OverviewSnapshot(emptyList(), listOf(project), listOf(stopped, paused, active))
+        val after = before.copy(subscriptions = listOf(stopped, paused, changedActive))
+
+        assertEquals(12_500L, accumulateOverviewInvestmentCents(0L, before, asOf))
+        assertEquals(12_500L, accumulateOverviewInvestmentCents(0L, after, asOf))
     }
 
     @Test fun verified_empty_and_zero_remain_distinct_from_unknown_accumulation() {

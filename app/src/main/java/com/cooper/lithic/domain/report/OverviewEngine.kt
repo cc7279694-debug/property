@@ -37,7 +37,7 @@ data class OverviewResult(
     val activeSubscriptionCount: Long,
     val projectCategories: List<CategoryDailyCost>,
     val subscriptionCategories: List<CategoryDailyCost>,
-    /** Gross recorded project outlays plus actual subscription payments through asOf. */
+    /** Gross recorded project outlays through asOf, including ended projects. */
     val totalInvestmentCents: Long? = null,
 ) {
     val hasRecords: Boolean get() = projectCount > 0L || subscriptionCount > 0L
