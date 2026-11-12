@@ -1,0 +1,20 @@
+python -B -m unittest discover -s scripts -p test_home_android_admission.py -v
+exit=0
+test_ambiguous_matching_transports_are_rejected (test_home_android_admission.AdmissionTests.test_ambiguous_matching_transports_are_rejected) ... ok
+test_command_timeout_is_clipped_to_existing_launch_deadline (test_home_android_admission.AdmissionTests.test_command_timeout_is_clipped_to_existing_launch_deadline) ... ok
+test_connect_and_later_read_only_timeouts_continue_to_valid_identity (test_home_android_admission.AdmissionTests.test_connect_and_later_read_only_timeouts_continue_to_valid_identity) ... ok
+test_foreign_listener_blocks_without_connect (test_home_android_admission.AdmissionTests.test_foreign_listener_blocks_without_connect) ... ok
+test_foreign_transport_is_redacted_and_stops_before_device_queries (test_home_android_admission.AdmissionTests.test_foreign_transport_is_redacted_and_stops_before_device_queries) ... ok
+test_guest_identity_mismatch_never_admits (test_home_android_admission.AdmissionTests.test_guest_identity_mismatch_never_admits) ... ok
+test_host_ownership_subprocess_timeout_is_caught_and_recorded (test_home_android_admission.AdmissionTests.test_host_ownership_subprocess_timeout_is_caught_and_recorded) ... ok
+test_process_exit_stops_before_any_command (test_home_android_admission.AdmissionTests.test_process_exit_stops_before_any_command) ... ok
+test_timeout_without_device_waits_full_window_and_never_connects_twice (test_home_android_admission.AdmissionTests.test_timeout_without_device_waits_full_window_and_never_connects_twice) ... ok
+test_unresponsive_server_has_bounded_observations_and_no_connect (test_home_android_admission.AdmissionTests.test_unresponsive_server_has_bounded_observations_and_no_connect) ... ok
+test_adb_fail_response_preserves_error_and_closes_socket (test_home_android_admission.SocketProtocolTests.test_adb_fail_response_preserves_error_and_closes_socket) ... ok
+test_direct_existing_server_connect_request_never_spawns_adb (test_home_android_admission.SocketProtocolTests.test_direct_existing_server_connect_request_never_spawns_adb) ... ok
+test_shell_v2_keeps_exit_code_and_stderr (test_home_android_admission.SocketProtocolTests.test_shell_v2_keeps_exit_code_and_stderr) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.005s
+
+OK

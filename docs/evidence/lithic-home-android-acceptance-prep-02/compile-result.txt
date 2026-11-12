@@ -1,0 +1,6 @@
+gradlew.bat --offline --no-daemon --console=plain --max-workers=1 "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8" "-Pandroid.overridePathCheck=true" "-Pkotlin.compiler.execution.strategy=in-process" :app:compileDebugKotlin :app:compileDebugAndroidTestKotlin
+exit=0
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:compileDebugAndroidTestKotlin
+BUILD SUCCESSFUL in 2m 23s
+33 actionable tasks: 2 executed, 31 up-to-date
