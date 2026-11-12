@@ -6,7 +6,12 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.os.Build
 import android.os.ParcelFileDescriptor
+import android.os.Process
+import android.system.Os
+import android.system.OsConstants
+import android.system.StructStat
 import androidx.room.withTransaction
+import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.test.platform.app.InstrumentationRegistry
 import com.cooper.lithic.BuildConfig
 import com.cooper.lithic.app.LithicApplication
@@ -23,13 +28,17 @@ import com.cooper.lithic.data.local.SubscriptionRenewalEntity
 import com.cooper.lithic.data.repository.ReportRepository
 import com.cooper.lithic.domain.subscription.BillingCycle
 import java.io.ByteArrayOutputStream
+import java.io.DataInputStream
 import java.io.File
+import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.math.BigDecimal
 import java.security.MessageDigest
 import java.time.Instant
 import java.time.LocalDate
+import java.util.UUID
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.withContext
 
 /** Synthetic records for the actual MainActivity owner of the disposable acceptance AVD only. */
@@ -37,10 +46,10 @@ internal object HomeAndroidAcceptanceFixture {
     const val INVESTMENT_CENTS = 6_248_000L
     private const val AVD = "Lithic_Home_Acceptance_01_API36"
     private const val PACKAGE = "com.cooper.lithic.debug"
+    private const val TEST_PACKAGE = "$PACKAGE.test"
+    private const val RUNNER = "androidx.test.runner.AndroidJUnitRunner"
 
     data class Seeded(val projectIds: List<String>, val subscriptionIds: List<String>, val investmentCents: Long)
-
-    val seeded = Seeded(listOf(id(1), id(2)), listOf(id(3), id(4)), INVESTMENT_CENTS)
 
     fun requireDisposableEmulator() {
         val arguments = InstrumentationRegistry.getArguments()
@@ -48,6 +57,7 @@ internal object HomeAndroidAcceptanceFixture {
         check(arguments.getString("lithicHomeAcceptance") == "fresh-api36-emulator")
         check(arguments.getString("lithicHomeAcceptanceAvd") == AVD)
         check(BuildConfig.DEBUG && instrumentation.targetContext.packageName == PACKAGE)
+        check(instrumentation.context.packageName == TEST_PACKAGE && instrumentation.javaClass.name == RUNNER)
         check(Build.VERSION.SDK_INT == 36 && Build.SUPPORTED_ABIS.firstOrNull() == "x86_64")
         fun property(name: String): String = ParcelFileDescriptor.AutoCloseInputStream(
             instrumentation.uiAutomation.executeShellCommand("getprop $name"),
@@ -57,75 +67,222 @@ internal object HomeAndroidAcceptanceFixture {
         }
     }
 
-    suspend fun seed(application: LithicApplication): Seeded = withContext(Dispatchers.IO) {
+    suspend fun prepare(application: LithicApplication, methodRunId: String): Session = withContext(Dispatchers.IO) {
         requireDisposableEmulator()
+        require(UUID.fromString(methodRunId).toString() == methodRunId)
         val generation = application.appContainer.openStorage()
-        val db = generation.database
-        val day = LocalDate.now(generation.settings.recordZone())
-        val now = Instant.now()
+        generation.coordinator.withSnapshot {
+            generation.database.withTransaction { requireOwnedLedger(generation, Rows()) }
+        }
+        Session(application, generation, methodRunId)
+    }
 
-        generation.coordinator.withWrite {
-            db.withTransaction {
-                check(db.projectDao().countProjects() == 0L && db.subscriptionDao().countSubscriptions() == 0L)
-                check(db.mediaDao().list().isEmpty())
-                val landscape = registerCover(generation, id(10), 600, 360, landscape = true)
-                val portrait = registerCover(generation, id(11), 360, 600, landscape = false)
-                val missing = LocalMediaAssetEntity(id(12), "media/${id(12)}.png", "image/png", 16, 16, 64,
-                    "0".repeat(64))
-                check(!File(generation.directory, missing.relativePath).exists())
-                listOf(landscape, portrait, missing).forEach { db.mediaDao().insert(it) }
+    /** Each method holds its own seed receipt. An abandoned or modified fixture requires inspection. */
+    class Session internal constructor(
+        private val application: LithicApplication,
+        private val generation: ManagedGeneration,
+        private val methodRunId: String,
+    ) {
+        private var rows: Rows? = null
 
-                val cameraStart = day.minusDays(120)
-                val bagStart = day.minusDays(59)
-                db.projectDao().insertProject(LongTermProjectEntity(seeded.projectIds[0], "合成横向相机",
-                    LithicDatabase.PROJECT_FALLBACK_ID, cameraStart, coverAssetId = landscape.id,
-                    createdAt = now, updatedAt = now))
-                db.projectDao().insertProject(LongTermProjectEntity(seeded.projectIds[1], "合成纵向背包",
-                    LithicDatabase.PROJECT_FALLBACK_ID, bagStart, coverAssetId = portrait.id,
-                    createdAt = now, updatedAt = now))
-                listOf(
-                    projectEvent(20, seeded.projectIds[0], MoneyDirection.OUTLAY, 5_000_000, cameraStart,
+        suspend fun seed(): Seeded = withContext(Dispatchers.IO) {
+            requireCurrentOwner()
+            check(rows == null) { "This acceptance method has already seeded its ledger" }
+            val db = generation.database
+            val day = LocalDate.now(generation.settings.recordZone())
+            val now = Instant.now()
+            val cameraStart = day.minusDays(120)
+            val bagStart = day.minusDays(59)
+            val projectIds = listOf(id(1), id(2))
+            val subscriptionIds = listOf(id(3), id(4))
+            val landscape = buildCover(id(10), 600, 360, landscape = true)
+            val portrait = buildCover(id(11), 360, 600, landscape = false)
+            val missing = LocalMediaAssetEntity(id(12), "media/${id(12)}.png", "image/png", 16, 16, 64,
+                "0".repeat(64))
+            val owned = Rows(
+                projects = listOf(
+                    LongTermProjectEntity(projectIds[0], "合成横向相机", LithicDatabase.PROJECT_FALLBACK_ID,
+                        cameraStart, coverAssetId = landscape.asset.id, createdAt = now, updatedAt = now),
+                    LongTermProjectEntity(projectIds[1], "合成纵向背包", LithicDatabase.PROJECT_FALLBACK_ID,
+                        bagStart, coverAssetId = portrait.asset.id, createdAt = now, updatedAt = now),
+                ),
+                events = listOf(
+                    projectEvent(20, projectIds[0], MoneyDirection.OUTLAY, 5_000_000, cameraStart,
                         ProjectMoneyEventRole.INITIAL),
-                    projectEvent(21, seeded.projectIds[0], MoneyDirection.RECOVERY, 4_879_968, day,
+                    projectEvent(21, projectIds[0], MoneyDirection.RECOVERY, 4_879_968, day,
                         ProjectMoneyEventRole.REGULAR),
-                    projectEvent(22, seeded.projectIds[1], MoneyDirection.OUTLAY, 1_248_000, bagStart,
+                    projectEvent(22, projectIds[1], MoneyDirection.OUTLAY, 1_248_000, bagStart,
                         ProjectMoneyEventRole.INITIAL),
-                    projectEvent(23, seeded.projectIds[1], MoneyDirection.RECOVERY, 1_228_080, day,
+                    projectEvent(23, projectIds[1], MoneyDirection.RECOVERY, 1_228_080, day,
                         ProjectMoneyEventRole.REGULAR),
-                ).forEach { db.projectDao().insertEvent(it) }
+                ),
+                subscriptions = listOf(
+                    SubscriptionEntity(subscriptionIds[0], "合成阅读服务", LithicDatabase.SUBSCRIPTION_FALLBACK_ID,
+                        createdAt = now, updatedAt = now),
+                    SubscriptionEntity(subscriptionIds[1], "合成云盘服务", LithicDatabase.SUBSCRIPTION_FALLBACK_ID,
+                        coverAssetId = missing.id, createdAt = now, updatedAt = now),
+                ),
+                renewals = listOf(renewal(30, subscriptionIds[0], day, 7_440), renewal(31, subscriptionIds[1], day, 2_520)),
+                media = listOf(landscape.asset, portrait.asset, missing),
+            )
+            generation.coordinator.withWrite {
+                rows = db.withTransaction {
+                    requireOwnedLedger(generation, Rows())
+                    val coverFiles = listOf(landscape, portrait).map { cover ->
+                        val file = coverFile(generation, cover.asset)
+                        check(file.createNewFile()) { "Refusing to overwrite an existing cover" }
+                        FileOutputStream(file).use { output -> output.write(cover.bytes); output.fd.sync() }
+                        val stat = Os.lstat(file.path)
+                        OwnedCover(cover.asset, stat.st_dev, stat.st_ino)
+                    }
+                    owned.media.forEach { db.mediaDao().insert(it) }
+                    owned.projects.forEach { db.projectDao().insertProject(it) }
+                    owned.events.forEach { db.projectDao().insertEvent(it) }
+                    owned.subscriptions.forEach { db.subscriptionDao().insertSubscription(it) }
+                    owned.renewals.forEach { db.subscriptionDao().insertRenewal(it) }
+                    owned.copy(coverFiles = coverFiles)
+                }
+            }
 
-                db.subscriptionDao().insertSubscription(SubscriptionEntity(seeded.subscriptionIds[0], "合成阅读服务",
-                    LithicDatabase.SUBSCRIPTION_FALLBACK_ID, createdAt = now, updatedAt = now))
-                db.subscriptionDao().insertSubscription(SubscriptionEntity(seeded.subscriptionIds[1], "合成云盘服务",
-                    LithicDatabase.SUBSCRIPTION_FALLBACK_ID, coverAssetId = missing.id,
-                    createdAt = now, updatedAt = now))
-                db.subscriptionDao().insertRenewal(renewal(30, seeded.subscriptionIds[0], day, 7_440))
-                db.subscriptionDao().insertRenewal(renewal(31, seeded.subscriptionIds[1], day, 2_520))
+            val overview = ReportRepository(db, generation.coordinator, FixedBusinessClock(day)).loadOverview()
+            check(overview.projectCount == 2L && overview.subscriptionCount == 2L)
+            check(overview.totalInvestmentCents == INVESTMENT_CENTS)
+            check(overview.totalRate.compareTo(BigDecimal("16.56")) == 0)
+            Seeded(projectIds, subscriptionIds, INVESTMENT_CENTS)
+        }
+
+        suspend fun close() = withContext(Dispatchers.IO + NonCancellable) {
+            requireCurrentOwner()
+            val db = generation.database
+            generation.coordinator.withWrite {
+                val owned = rows ?: Rows()
+                db.withTransaction {
+                    requireOwnedLedger(generation, owned)
+                    val sqlite = db.openHelper.writableDatabase
+                    owned.events.forEach { sqlite.deleteOwnedRow("project_money_events", it.id) }
+                    owned.renewals.forEach { sqlite.deleteOwnedRow("subscription_renewals", it.id) }
+                    owned.projects.forEach { sqlite.deleteOwnedRow("long_term_projects", it.id) }
+                    owned.subscriptions.forEach { sqlite.deleteOwnedRow("subscriptions", it.id) }
+                    owned.media.forEach { sqlite.deleteOwnedRow("local_media_assets", it.id) }
+                }
+                owned.coverFiles.forEach { cover ->
+                    val file = verifiedCoverFile(generation, cover)
+                    check(file.delete()) { "Unable to remove this acceptance method's cover" }
+                }
+                db.withTransaction { requireOwnedLedger(generation, Rows()) }
+                rows = null
             }
         }
 
-        val overview = ReportRepository(db, generation.coordinator, FixedBusinessClock(day)).loadOverview()
-        check(overview.projectCount == 2L && overview.subscriptionCount == 2L)
-        check(overview.totalInvestmentCents == INVESTMENT_CENTS)
-        check(overview.totalRate.compareTo(BigDecimal("16.56")) == 0)
-        seeded
+        private suspend fun requireCurrentOwner() {
+            requireDisposableEmulator()
+            check(application.appContainer.openStorage() === generation) { "The acceptance generation changed" }
+        }
+
+        private fun id(number: Int) = UUID.nameUUIDFromBytes("$methodRunId:$number".toByteArray(Charsets.UTF_8)).toString()
+
+        private fun projectEvent(number: Int, project: String, direction: MoneyDirection, cents: Long, day: LocalDate,
+            role: ProjectMoneyEventRole) = ProjectMoneyEventEntity(id(number), project, direction, cents, day,
+            role = role, operationId = id(number + 100))
+
+        private fun renewal(number: Int, subscription: String, day: LocalDate, cents: Long): SubscriptionRenewalEntity {
+            val end = day.plusMonths(1)
+            return SubscriptionRenewalEntity(id(number), subscription, day, day, end, end, cents,
+                BillingCycle.MONTHLY, BillingCycle.MONTHLY.standardDays, id(number + 100))
+        }
     }
 
-    private fun projectEvent(number: Int, project: String, direction: MoneyDirection, cents: Long, day: LocalDate,
-        role: ProjectMoneyEventRole) = ProjectMoneyEventEntity(id(number), project, direction, cents, day,
-        role = role, operationId = id(number + 100))
+    private data class Rows(
+        val projects: List<LongTermProjectEntity> = emptyList(),
+        val events: List<ProjectMoneyEventEntity> = emptyList(),
+        val subscriptions: List<SubscriptionEntity> = emptyList(),
+        val renewals: List<SubscriptionRenewalEntity> = emptyList(),
+        val media: List<LocalMediaAssetEntity> = emptyList(),
+        val coverFiles: List<OwnedCover> = emptyList(),
+    )
 
-    private fun renewal(number: Int, subscription: String, day: LocalDate, cents: Long): SubscriptionRenewalEntity {
-        val end = day.plusMonths(1)
-        return SubscriptionRenewalEntity(id(number), subscription, day, day, end, end, cents,
-            BillingCycle.MONTHLY, BillingCycle.MONTHLY.standardDays, id(number + 100))
+    private suspend fun requireOwnedLedger(generation: ManagedGeneration, expected: Rows) {
+        val db = generation.database
+        val sqlite = db.openHelper.writableDatabase
+        val counts = mapOf(
+            "categories" to 2,
+            "long_term_projects" to expected.projects.size,
+            "project_money_events" to expected.events.size,
+            "subscriptions" to expected.subscriptions.size,
+            "subscription_renewals" to expected.renewals.size,
+            "local_media_assets" to expected.media.size,
+            "subscription_state_changes" to 0,
+            "replacements" to 0,
+            "notification_receipts" to 0,
+            "milestone_watermarks" to 0,
+        )
+        counts.forEach { (table, count) ->
+            sqlite.query("SELECT COUNT(*) FROM $table").use { cursor ->
+                check(cursor.moveToFirst() && cursor.getLong(0) == count.toLong()) { "Unexpected rows in $table" }
+            }
+        }
+        db.requireDefaults()
+        check(expected.projects.all { db.projectDao().findProject(it.id) == it }) { "Unexpected project rows" }
+        check(expected.events.all { db.projectDao().findEvent(it.id) == it }) { "Unexpected project amount rows" }
+        check(expected.subscriptions.all { db.subscriptionDao().findSubscription(it.id) == it }) { "Unexpected subscription rows" }
+        check(expected.renewals.all { db.subscriptionDao().findRenewal(it.id) == it }) { "Unexpected payment rows" }
+        check(expected.media.all { db.mediaDao().find(it.id) == it }) { "Unexpected media rows" }
+
+        val files = checkNotNull(mediaDirectory(generation).list()) { "Cannot enumerate acceptance media" }
+        check(files.toSet() == expected.coverFiles.map { "${it.asset.id}.png" }.toSet()) { "Unexpected media files" }
+        expected.coverFiles.forEach { verifiedCoverFile(generation, it) }
     }
 
-    private fun registerCover(generation: ManagedGeneration, assetId: String, width: Int, height: Int,
-        landscape: Boolean): LocalMediaAssetEntity {
+    private fun SupportSQLiteDatabase.deleteOwnedRow(table: String, id: String) {
+        compileStatement("DELETE FROM $table WHERE id = ?").use { statement ->
+            statement.bindString(1, id)
+            check(statement.executeUpdateDelete() == 1) { "Ownership changed during fixture cleanup in $table" }
+        }
+    }
+
+    private fun mediaDirectory(generation: ManagedGeneration): File = File(generation.directory, "media").also { directory ->
+        val stat = Os.lstat(directory.path)
+        check(directory.absoluteFile == directory.canonicalFile && OsConstants.S_ISDIR(stat.st_mode) &&
+            stat.st_uid == Process.myUid()) { "Acceptance media directory is not private and canonical" }
+    }
+
+    private fun coverFile(generation: ManagedGeneration, asset: LocalMediaAssetEntity): File {
+        check(asset.relativePath == "media/${asset.id}.png") { "Unexpected acceptance media path" }
+        return File(mediaDirectory(generation), "${asset.id}.png")
+    }
+
+    private data class OwnedCover(val asset: LocalMediaAssetEntity, val device: Long, val inode: Long)
+
+    private fun verifiedCoverFile(generation: ManagedGeneration, cover: OwnedCover): File {
+        val file = coverFile(generation, cover.asset)
+        check(file.absoluteFile == file.canonicalFile) { "Acceptance cover path changed" }
+        fun requireSameFile(stat: StructStat) {
+            check(OsConstants.S_ISREG(stat.st_mode) && stat.st_uid == Process.myUid() && stat.st_nlink == 1L &&
+                stat.st_dev == cover.device && stat.st_ino == cover.inode && stat.st_size == cover.asset.byteLength) {
+                "Acceptance cover identity changed"
+            }
+        }
+        requireSameFile(Os.lstat(file.path))
+        val descriptor = Os.open(file.path, OsConstants.O_RDONLY or OsConstants.O_NOFOLLOW or OsConstants.O_NONBLOCK, 0)
+        try {
+            DataInputStream(FileInputStream(descriptor)).use { input ->
+                requireSameFile(Os.fstat(descriptor))
+                val bytes = ByteArray(cover.asset.byteLength.toInt())
+                input.readFully(bytes)
+                check(input.read() == -1 && sha256(bytes) == cover.asset.sha256) { "Acceptance cover content changed" }
+                requireSameFile(Os.fstat(descriptor))
+            }
+        } finally {
+            if (descriptor.valid()) Os.close(descriptor)
+        }
+        requireSameFile(Os.lstat(file.path))
+        return file
+    }
+
+    private data class Cover(val asset: LocalMediaAssetEntity, val bytes: ByteArray)
+
+    private fun buildCover(assetId: String, width: Int, height: Int, landscape: Boolean): Cover {
         val relativePath = "media/$assetId.png"
-        val file = File(generation.directory, relativePath)
-        check(file.absoluteFile == file.canonicalFile && file.parentFile == File(generation.directory, "media"))
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         val bytes = try {
             drawCover(Canvas(bitmap), landscape)
@@ -134,11 +291,12 @@ internal object HomeAndroidAcceptanceFixture {
                 output.toByteArray()
             }
         } finally { bitmap.recycle() }
-        check(file.createNewFile())
-        FileOutputStream(file).use { output -> output.write(bytes); output.fd.sync() }
-        val sha = MessageDigest.getInstance("SHA-256").digest(bytes).joinToString("") { "%02x".format(it.toInt() and 255) }
-        return LocalMediaAssetEntity(assetId, relativePath, "image/png", width, height, bytes.size.toLong(), sha)
+        return Cover(LocalMediaAssetEntity(assetId, relativePath, "image/png", width, height,
+            bytes.size.toLong(), sha256(bytes)), bytes)
     }
+
+    private fun sha256(bytes: ByteArray): String = MessageDigest.getInstance("SHA-256").digest(bytes)
+        .joinToString("") { "%02x".format(it.toInt() and 255) }
 
     private fun drawCover(canvas: Canvas, landscape: Boolean) {
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -165,6 +323,4 @@ internal object HomeAndroidAcceptanceFixture {
             shape(140f, 326f, 220f, 333f, 3f, Color.rgb(204, 181, 147))
         }
     }
-
-    private fun id(number: Int) = "484f4d45-0000-4000-8000-${number.toString().padStart(12, '0')}"
 }

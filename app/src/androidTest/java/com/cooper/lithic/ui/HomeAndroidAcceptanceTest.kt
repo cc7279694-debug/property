@@ -2,12 +2,15 @@ package com.cooper.lithic.ui
 
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.Settings
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assertCountEquals
+import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.assertWidthIsAtLeast
 import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
@@ -18,6 +21,7 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performSemanticsAction
 import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.unit.dp
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -32,9 +36,11 @@ import java.math.BigDecimal
 import java.util.UUID
 import kotlin.math.abs
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.RuleChain
@@ -46,28 +52,46 @@ import org.junit.runners.model.Statement
 @RunWith(AndroidJUnit4::class)
 class HomeAndroidAcceptanceTest {
     private val compose = createAndroidComposeRule<MainActivity>()
+    private lateinit var attemptId: String
     private lateinit var runId: String
+    private lateinit var method: String
+    private var fixture: HomeAndroidAcceptanceFixture.Session? = null
 
-    @get:Rule val rules: TestRule = RuleChain.outerRule(TestRule { base, _ ->
+    @get:Rule val rules: TestRule = RuleChain.outerRule(TestRule { base, description ->
         object : Statement() {
             override fun evaluate() {
                 HomeAndroidAcceptanceFixture.requireDisposableEmulator()
-                runId = requireNotNull(InstrumentationRegistry.getArguments().getString("homeAcceptanceRunId"))
-                require(UUID.fromString(runId).toString() == runId) { "Invalid acceptance run ID" }
+                attemptId = requireNotNull(InstrumentationRegistry.getArguments().getString("homeAcceptanceRunId"))
+                require(UUID.fromString(attemptId).toString() == attemptId) { "Invalid acceptance attempt ID" }
+                runId = UUID.randomUUID().toString()
+                method = requireNotNull(description.methodName)
+                report("start")
                 base.evaluate()
             }
         }
     }).around(compose)
 
+    @Before fun prepareEmptyLedger() {
+        fixture = runBlocking { HomeAndroidAcceptanceFixture.prepare(application(), runId) }
+        waitForTag("home-empty-guidance")
+    }
+
+    @After fun releaseSyntheticLedger() {
+        val ownedFixture = fixture ?: return
+        runBlocking { ownedFixture.close() }
+        report("fixture-cleaned")
+    }
+
     @Test fun projects_subscriptions_and_theme_gallery() {
         requireConfiguration(1f)
+        selectTheme(LithicAppearance.PURE_WHITE)
         waitForTag("home-empty-guidance")
         compose.onNodeWithTag("home-total-investment").assertTextEquals("—")
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("0")
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("0")
         capture("empty")
 
-        val seeded = runBlocking { HomeAndroidAcceptanceFixture.seed(application()) }
+        val seeded = runBlocking { checkNotNull(fixture).seed() }
         waitForInvestment(seeded.investmentCents)
         waitFor(hasTestTag("home-total-rate") and hasText("¥16.56/天"))
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("2")
@@ -102,7 +126,7 @@ class HomeAndroidAcceptanceTest {
 
     @Test fun home_routes_open_and_back() {
         requireConfiguration(1f)
-        val seeded = HomeAndroidAcceptanceFixture.seeded
+        val seeded = runBlocking { checkNotNull(fixture).seed() }
         waitForInvestment(seeded.investmentCents)
         selectSection("project")
         openAndBack("open-project-list", "project-list-screen", scroll = true)
@@ -149,38 +173,61 @@ class HomeAndroidAcceptanceTest {
 
     @Test fun large_font_uses_android_configuration() {
         requireConfiguration(2f)
-        val seeded = HomeAndroidAcceptanceFixture.seeded
+        val seeded = runBlocking { checkNotNull(fixture).seed() }
         waitForInvestment(seeded.investmentCents)
         selectTheme(LithicAppearance.PURE_WHITE)
         selectSection("project")
         scrollHomeToTop()
         assertAddBelowViewport()
+        assertAmount(hasTestTag("home-total-investment"), AmountFormatter.formatCny(BigDecimal.valueOf(seeded.investmentCents, 2)))
+        assertAmount(hasTestTag("home-total-rate"), "¥16.56/天")
+        scrollHomeToTop()
         capture("projects-font-200-summary")
-        checkLargeFontCard(project(seeded.projectIds.first()))
+        checkLargeFontCard(project(seeded.projectIds[0]), "合成横向相机", "持有中", "¥9.92/天")
+        checkLargeFontCard(project(seeded.projectIds[1]), "合成纵向背包", "持有中", "¥3.32/天")
         capture("projects-font-200-cards")
 
         selectSection("subscription")
-        checkLargeFontCard(subscription(seeded.subscriptionIds.first()))
+        checkLargeFontCard(subscription(seeded.subscriptionIds[0]), "合成阅读服务", "订阅中", "¥2.48/天")
+        checkLargeFontCard(subscription(seeded.subscriptionIds[1]), "合成云盘服务", "订阅中", "¥0.84/天")
         capture("subscriptions-font-200-cards")
     }
 
-    private fun checkLargeFontCard(tag: String) {
+    private fun checkLargeFontCard(tag: String, name: String, status: String, amount: String) {
         waitForTag(tag)
         compose.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
-        val name = hasAnyAncestor(hasTestTag(tag)) and hasText("合成", substring = true)
-        compose.onAllNodes(name, useUnmergedTree = true).assertCountEquals(1)
-        val layout = mutableListOf<TextLayoutResult>()
-        compose.onNode(name, useUnmergedTree = true)
-            .performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layout) }
-        assertFalse("The name must not overflow its text layout", layout.single().hasVisualOverflow)
+        val insideCard = hasAnyAncestor(hasTestTag(tag))
+        assertUnclippedText(insideCard and hasText(name), name)
+        assertUnclippedText(insideCard and hasText(status), status)
+        assertAmount(insideCard and hasText(amount), amount)
         assertAddBelowViewport()
         val card = compose.onNodeWithTag(tag).fetchSemanticsNode().boundsInRoot
         val add = compose.onNodeWithTag("home-open-add").fetchSemanticsNode().boundsInRoot
         assertTrue("The visible card cannot overlap the add control", card.bottom <= add.top + 1f)
     }
 
+    private fun assertAmount(matcher: SemanticsMatcher, expected: String) {
+        waitFor(matcher)
+        compose.onNode(matcher, useUnmergedTree = true).assertTextEquals(expected)
+        assertUnclippedText(hasAnyAncestor(matcher) and SemanticsMatcher.keyIsDefined(SemanticsActions.GetTextLayoutResult), expected)
+    }
+
+    private fun assertUnclippedText(matcher: SemanticsMatcher, expected: String) {
+        val node = compose.onNode(matcher, useUnmergedTree = true).performScrollTo().assertIsDisplayed()
+        val layouts = mutableListOf<TextLayoutResult>()
+        node.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        val layout = layouts.single()
+        assertEquals(expected, layout.layoutInput.text.text.replace("\u2009", ""))
+        assertFalse("$expected must not overflow its text layout", layout.hasVisualOverflow)
+        val semantics = node.fetchSemanticsNode()
+        assertTrue("$expected must not be clipped by its viewport",
+            semantics.boundsInRoot.width >= semantics.size.width - 1f &&
+                semantics.boundsInRoot.height >= semantics.size.height - 1f)
+    }
+
     private fun assertAddBelowViewport() {
-        val add = compose.onNodeWithTag("home-open-add").assertIsDisplayed().fetchSemanticsNode().boundsInRoot
+        val add = compose.onNodeWithTag("home-open-add").assertIsDisplayed().assertTextEquals("添加")
+            .assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).fetchSemanticsNode().boundsInRoot
         val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
         val tab = compose.onNodeWithTag("tab-now").assertIsDisplayed().fetchSemanticsNode().boundsInRoot
         assertTrue("Add control must be below scrolling content", viewport.bottom <= add.top + 1f)
@@ -258,6 +305,14 @@ class HomeAndroidAcceptanceTest {
     private fun requireConfiguration(fontScale: Float) {
         compose.activityRule.scenario.onActivity { activity ->
             val configuration = activity.resources.configuration
+            val setting = Settings.System.getString(activity.contentResolver, Settings.System.FONT_SCALE)
+            report("configuration") {
+                putString("homeAcceptanceSystemFontScale", setting ?: "null")
+                putInt("homeAcceptanceScreenWidthDp", configuration.screenWidthDp)
+                putFloat("homeAcceptanceFontScale", configuration.fontScale)
+            }
+            assertEquals("Android system font_scale must be explicitly set for this group", fontScale,
+                setting?.toFloatOrNull() ?: Float.NaN, 0.01f)
             assertEquals("Actual Android screen width in dp", 360, configuration.screenWidthDp)
             assertEquals("Actual Android font scale", fontScale, configuration.fontScale, 0.01f)
         }
@@ -267,7 +322,8 @@ class HomeAndroidAcceptanceTest {
         compose.waitForIdle()
         compose.onNodeWithTag("home-screen").assertIsDisplayed()
         val instrumentation = InstrumentationRegistry.getInstrumentation()
-        val directory = File(instrumentation.targetContext.filesDir, "home-android-acceptance/$runId")
+        val relativeDirectory = "home-android-acceptance/$attemptId/$runId"
+        val directory = File(instrumentation.targetContext.filesDir, relativeDirectory)
         check(directory.isDirectory || directory.mkdirs()) { "Cannot create the evidence directory" }
         val file = File(directory, "$name.png")
         check(file.createNewFile()) { "Refusing to replace a screenshot" }
@@ -278,16 +334,26 @@ class HomeAndroidAcceptanceTest {
                 stream.fd.sync()
             }
             check(file.length() > 0L)
-            instrumentation.sendStatus(2, Bundle().apply {
-                putString("homeAcceptancePng", "files/home-android-acceptance/$runId/${file.name}")
+            report("screenshot") {
+                putString("homeAcceptancePng", "files/$relativeDirectory/${file.name}")
                 putInt("homeAcceptanceWidthPx", bitmap.width)
                 putInt("homeAcceptanceHeightPx", bitmap.height)
                 putInt("homeAcceptanceScreenWidthDp", compose.activity.resources.configuration.screenWidthDp)
                 putFloat("homeAcceptanceFontScale", compose.activity.resources.configuration.fontScale)
-            })
+            }
         } finally {
             bitmap.recycle()
         }
+    }
+
+    private fun report(phase: String, details: Bundle.() -> Unit = {}) {
+        InstrumentationRegistry.getInstrumentation().sendStatus(2, Bundle().apply {
+            putString("homeAcceptanceAttemptId", attemptId)
+            putString("homeAcceptanceRunId", runId)
+            putString("homeAcceptanceMethod", method)
+            putString("homeAcceptancePhase", phase)
+            details()
+        })
     }
 
     private fun application() = compose.activity.application as LithicApplication
