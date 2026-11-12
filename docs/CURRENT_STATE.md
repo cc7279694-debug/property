@@ -4,7 +4,7 @@
 
 ## Current Stage
 
-- **LITHIC HOME-INVESTMENT-01 — READY_FOR_INDEPENDENT_REVIEW（2026-11-12）**。首页同一账本快照新增总投入，按观察日期累计项目投入（含非现金折抵）和订阅实付。卡片布局与原指标口径保留。224 项定向 JVM 通过，生产及 AndroidTest 编译通过，Debug Lint 0 错误、20 警告。Android 分页并发及大字实测 NOT_RUN。见[实施与验证报告](evidence/LITHIC-Home-Investment-01.md)。
+- **LITHIC HOME INVESTMENT — SCOPE CORRECTION（2026-11-12）**。首页总投入仅累计截至观察日的长期项目投入，含已结束项目及换新非现金折抵。收回、订阅付款和未来投入不计。225 项定向 JVM 通过，生产及 AndroidTest 编译通过，Android 运行 NOT_RUN。见[口径修正报告](evidence/LITHIC-Home-Investment-Scope-Correction.md)。
 
 - **LITHIC 首页卡片 UI — DESKTOP_PASS / ANDROID_SCREENSHOTS_BLOCKED（2026-11-12）**。按用户最终确认样图实现纯白首页布局、项目/订阅双列、顶部「＋」与底部「添加」共用面板、轻量底栏。该阶段尚未接入全账本总投入，显示「—」。订阅使用真实状态。58 项定向 JVM 通过，生产和 AndroidTest 编译及既有 P2-A1 隔离构建通过。原隔离 AVD 改用受支持端口后未通过 ADB 准入。本次以 5.008 GiB 可用内存改用独立 ADB 服务复查，guest 日志报启动完成，但 225 秒内仍未取得设备传输。根因 UNKNOWN。安装、Instrumentation 和两张原生运行图均 NOT_RUN。范围和证据见[实施报告](evidence/LITHIC-Home-Card-UI.md)。
 
