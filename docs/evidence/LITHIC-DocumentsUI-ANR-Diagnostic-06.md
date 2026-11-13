@@ -44,7 +44,7 @@
 | 范围 | 实际接线和风险 |
 | --- | --- |
 | 首页基础视觉 | `LithicNavigation.kt:466` 接入 `HomeShell`，`HomeShell.kt:445` 的封面走本地 CoverReader。`HomeAndroidAcceptanceTest.kt:85,127,174` 和 `HomeAndroidAcceptanceFixture.kt:98–100,133–134` 使用合成记录和本地 PNG，覆盖三主题、导航、200% 字体，无文件选择器调用。未见直接依赖 DocumentsUI。系统异常可能影响测试可靠性，修复版仍 NOT_RUN。 |
-| 照片新增／替换 | `PhotoLiteCoverPanel.kt:44,59` 使用 `PickVisualMedia(ImageOnly)`。本地 AndroidX Activity 1.12.4 在 API 36 选择系统 `ACTION_PICK_IMAGES`，通用的 `ACTION_OPEN_DOCUMENT` 是缺少系统及系统回退选择器时的另一分支。该 API 36 路线没有直接依赖 DocumentsUI 的证据。缩略图从返回的 URI 读取，系统实际处理组件和运行稳定性均待验。普通验收 Debug 的 Photo-Lite 标志关闭。[AndroidX Photo Picker 合同](https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts.PickVisualMedia) |
+| 照片新增／替换 | `PhotoLiteCoverPanel.kt:44,59` 使用 `PickVisualMedia(ImageOnly)`。本地 AndroidX Activity 1.12.4 在 API 36 选择系统 `ACTION_PICK_IMAGES`，通用的 `ACTION_OPEN_DOCUMENT` 是缺少系统及系统回退选择器时的另一分支。默认镜像的 MediaProvider APEX 内另有 `com.android.photopicker`，Manifest 声明处理 `ACTION_PICK_IMAGES`，APK SHA-256 `ad5ce4fa6ec09ecc5de3a8099d0432d27ff09d38e7a67502b52623c761d7980f`。这条路线没有直接依赖 DocumentsUI 的证据。实际 Intent 解析、打开选择器及返回 URI 后的读取均待验。普通验收 Debug 的 Photo-Lite 标志关闭。[AndroidX Photo Picker 合同](https://developer.android.com/reference/androidx/activity/result/contract/ActivityResultContracts.PickVisualMedia) |
 | 备份文件选择 | `BackupDocumentPicker.kt:14` 使用 SAF `CreateDocument`，`BackupRestoreDocumentPicker.kt:13`、`BackupInspectionDocumentPicker.kt:21` 使用 `OpenDocument`。对应实际镜像的 DocumentsUI `PickActivity`。文件选择因此有直接风险，是否可正常打开、读写仍 NOT_RUN。[Android SAF 合同](https://developer.android.com/guide/topics/providers/document-provider) |
 | 整体稳定性 | 启动完成、两次 PID 样本及单项 ANR 证明的是这段时间的具体观察。进程是否自行恢复、是否复发、其他服务是否受影响均 UNKNOWN。 |
 
