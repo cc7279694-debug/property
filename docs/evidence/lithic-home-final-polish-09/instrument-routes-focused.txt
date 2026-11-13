@@ -1,0 +1,89 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.ui.HomeAndroidAcceptanceTest#home_routes_open_and_back -e lithicHomeAcceptance fresh-api36-emulator -e lithicHomeAcceptanceAvd Lithic_Home_Acceptance_Repair05_API36 -e homeAcceptanceRunId fcb140af-8670-46f6-84dc-b28577f04b74 com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.HomeAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.HomeAndroidAcceptanceTest:
+INSTRUMENTATION_STATUS: test=home_routes_open_and_back
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=fcb140af-8670-46f6-84dc-b28577f04b74
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=home_routes_open_and_back
+INSTRUMENTATION_STATUS: homeAcceptancePhase=start
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=885f170f-2c15-4d1b-8832-363ccfb8911c
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=fcb140af-8670-46f6-84dc-b28577f04b74
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=1.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=home_routes_open_and_back
+INSTRUMENTATION_STATUS: homeAcceptancePhase=configuration
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=885f170f-2c15-4d1b-8832-363ccfb8911c
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceSystemFontScale=1.0
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=fcb140af-8670-46f6-84dc-b28577f04b74
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=1.0
+INSTRUMENTATION_STATUS: homeAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=home_routes_open_and_back
+INSTRUMENTATION_STATUS: homeAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: homeAcceptancePng=files/home-android-acceptance/fcb140af-8670-46f6-84dc-b28577f04b74/885f170f-2c15-4d1b-8832-363ccfb8911c/cost-composition-before-gesture.png
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=885f170f-2c15-4d1b-8832-363ccfb8911c
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=fcb140af-8670-46f6-84dc-b28577f04b74
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=1.0
+INSTRUMENTATION_STATUS: homeAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=home_routes_open_and_back
+INSTRUMENTATION_STATUS: homeAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: homeAcceptancePng=files/home-android-acceptance/fcb140af-8670-46f6-84dc-b28577f04b74/885f170f-2c15-4d1b-8832-363ccfb8911c/cost-composition-rounding-note.png
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=885f170f-2c15-4d1b-8832-363ccfb8911c
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=fcb140af-8670-46f6-84dc-b28577f04b74
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=home_routes_open_and_back
+INSTRUMENTATION_STATUS: homeAcceptancePhase=fixture-cleaned
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=885f170f-2c15-4d1b-8832-363ccfb8911c
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.HomeAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 12000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.waitForAbsent(HomeAndroidAcceptanceTest.kt:373)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.backToHome(HomeAndroidAcceptanceTest.kt:355)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.home_routes_open_and_back(HomeAndroidAcceptanceTest.kt:172)
+
+INSTRUMENTATION_STATUS: stream=
+Error in home_routes_open_and_back(com.cooper.lithic.ui.HomeAndroidAcceptanceTest):
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 12000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.waitForAbsent(HomeAndroidAcceptanceTest.kt:373)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.backToHome(HomeAndroidAcceptanceTest.kt:355)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.home_routes_open_and_back(HomeAndroidAcceptanceTest.kt:172)
+
+INSTRUMENTATION_STATUS: test=home_routes_open_and_back
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 51.115
+There was 1 failure:
+1) home_routes_open_and_back(com.cooper.lithic.ui.HomeAndroidAcceptanceTest)
+androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 12000 ms
+	at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:755)
+	at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:362)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.waitForAbsent(HomeAndroidAcceptanceTest.kt:373)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.backToHome(HomeAndroidAcceptanceTest.kt:355)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.home_routes_open_and_back(HomeAndroidAcceptanceTest.kt:172)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

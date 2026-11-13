@@ -219,11 +219,11 @@ internal fun verifyRoundingNote(
             reopen()
             recordRoundingViewport(compose, "before-semantic-scroll", includeTree = true)
             note.performScrollTo()
-            recordRoundingViewport(compose, "after-semantic-scroll")
+            recordRoundingViewport(compose, "after-semantic-scroll", includeTree = true)
             capture("cost-composition-before-gesture")
             reopen()
         }
-        recordRoundingViewport(compose, "before-user-gesture", includeTree = reopen == null)
+        recordRoundingViewport(compose, "before-user-gesture", includeTree = true)
         val expandable = expand.fetchSemanticsNodes()
         if (expandable.isNotEmpty()) {
             check(expandable.size == 1) { "Expected one expandable sheet handle" }
@@ -235,7 +235,7 @@ internal fun verifyRoundingNote(
                 swipe(center, center - Offset(0f, distance), durationMillis = 500)
             }
             compose.waitForIdle()
-            recordRoundingViewport(compose, "after-sheet-drag")
+            recordRoundingViewport(compose, "after-sheet-drag", includeTree = true)
         }
         for (attempt in 1..4) {
             val window = activeWindowBounds()
@@ -253,7 +253,7 @@ internal fun verifyRoundingNote(
             compose.waitForIdle()
             if (note.isDisplayed() && roundingNoteFitsWindow(compose)) break
         }
-        recordRoundingViewport(compose, "after-content-swipe")
+        recordRoundingViewport(compose, "after-content-swipe", includeTree = true)
         note.assertIsDisplayed().assertTextEquals(
             "分项四舍五入，显示金额相加可能有分位差；汇总使用未舍入结果。",
         )

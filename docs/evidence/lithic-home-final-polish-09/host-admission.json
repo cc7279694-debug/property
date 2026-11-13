@@ -1,0 +1,93 @@
+{
+  "start_utc": "2026-11-13T11:07:18.924538+00:00",
+  "end_utc": "2026-11-13T11:08:18.925308+00:00",
+  "elapsed_seconds": 60.0,
+  "cpu_counters_100ns": {
+    "first_idle_kernel_user": [
+      2135226406250,
+      2478232812500,
+      381879218750
+    ],
+    "last_idle_kernel_user": [
+      2139422656250,
+      2482806562500,
+      382105468750
+    ]
+  },
+  "cpu_average_percent": 12.578124999999996,
+  "before": {
+    "Logical": 8,
+    "CPU": {
+      "Name": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+      "NumberOfCores": 4,
+      "NumberOfLogicalProcessors": 8
+    },
+    "AvailableKiB": 5933668,
+    "Disks": [
+      {
+        "Name": "C",
+        "Free": 18678538240
+      },
+      {
+        "Name": "E",
+        "Free": 27741233152
+      }
+    ],
+    "Emulator": [],
+    "Ports": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5038,
+        "OwningProcess": 33424
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 16276
+      }
+    ],
+    "SharedAdb": {
+      "ProcessId": 16276,
+      "Name": "adb.exe",
+      "CreationDate": "/Date(1794532331016)/"
+    }
+  },
+  "after": {
+    "Logical": 8,
+    "CPU": {
+      "Name": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+      "NumberOfCores": 4,
+      "NumberOfLogicalProcessors": 8
+    },
+    "AvailableKiB": 5944304,
+    "Disks": [
+      {
+        "Name": "C",
+        "Free": 18678472704
+      },
+      {
+        "Name": "E",
+        "Free": 27741229056
+      }
+    ],
+    "Emulator": [],
+    "Ports": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5038,
+        "OwningProcess": 33424
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 16276
+      }
+    ],
+    "SharedAdb": {
+      "ProcessId": 16276,
+      "Name": "adb.exe",
+      "CreationDate": "/Date(1794532331016)/"
+    }
+  },
+  "status": "PASS"
+}

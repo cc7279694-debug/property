@@ -160,7 +160,19 @@ class HomeAndroidAcceptanceTest {
         scrollHomeToTop()
         click("home-category-disclosure", scroll = true)
         waitForTag("home-cost-composition")
-        verifyRoundingNote(compose, capture = ::capture)
+        verifyRoundingNote(
+            compose,
+            reopen = {
+                backToHome("home-cost-composition")
+                click("home-category-disclosure", scroll = true)
+                waitForTag("home-cost-composition")
+            },
+            capture = ::capture,
+        )
+        // Material3 Back from Expanded first returns to its partial anchor.
+        pressBack()
+        waitForTag("home-cost-composition")
+        waitFor(SemanticsMatcher.keyIsDefined(SemanticsActions.Expand))
         backToHome("home-cost-composition")
         click("tab-review")
         waitForTag("review-screen")
