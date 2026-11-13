@@ -1,0 +1,253 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.home.HomeOverviewUiTest com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.home.HomeOverviewUiTest:
+INSTRUMENTATION_STATUS: test=recorded_zero_cost_remains_a_real_value_and_an_active_category
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.00' (ignoreCase: false))
+Semantics of the node:
+Node #68 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.00元/天]'
+Text = '[¥0.00/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.recorded_zero_cost_remains_a_real_value_and_an_active_category(HomeOverviewUiTest.kt:60)
+
+INSTRUMENTATION_STATUS: stream=
+Error in recorded_zero_cost_remains_a_real_value_and_an_active_category(com.cooper.lithic.feature.home.HomeOverviewUiTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.00' (ignoreCase: false))
+Semantics of the node:
+Node #68 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.00元/天]'
+Text = '[¥0.00/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.recorded_zero_cost_remains_a_real_value_and_an_active_category(HomeOverviewUiTest.kt:60)
+
+INSTRUMENTATION_STATUS: test=recorded_zero_cost_remains_a_real_value_and_an_active_category
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Semantic Node has no parent layout with a Scroll SemanticsAction
+	at androidx.compose.ui.test.ActionsKt.scrollToNode(Actions.kt:97)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:82)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text(HomeOverviewUiTest.kt:126)
+
+INSTRUMENTATION_STATUS: stream=
+Error in all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text(com.cooper.lithic.feature.home.HomeOverviewUiTest):
+java.lang.AssertionError: Semantic Node has no parent layout with a Scroll SemanticsAction
+	at androidx.compose.ui.test.ActionsKt.scrollToNode(Actions.kt:97)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:82)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text(HomeOverviewUiTest.kt:126)
+
+INSTRUMENTATION_STATUS: test=all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=inactive_records_are_explained_without_being_reported_as_an_empty_ledger
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.00' (ignoreCase: false))
+Semantics of the node:
+Node #268 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.00元/天]'
+Text = '[¥0.00/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.inactive_records_are_explained_without_being_reported_as_an_empty_ledger(HomeOverviewUiTest.kt:91)
+
+INSTRUMENTATION_STATUS: stream=
+Error in inactive_records_are_explained_without_being_reported_as_an_empty_ledger(com.cooper.lithic.feature.home.HomeOverviewUiTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.00' (ignoreCase: false))
+Semantics of the node:
+Node #268 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.00元/天]'
+Text = '[¥0.00/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.inactive_records_are_explained_without_being_reported_as_an_empty_ledger(HomeOverviewUiTest.kt:91)
+
+INSTRUMENTATION_STATUS: test=inactive_records_are_explained_without_being_reported_as_an_empty_ledger
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=unavailable_overview_never_invents_a_zero_cost
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=unavailable_overview_never_invents_a_zero_cost
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.home.HomeOverviewUiTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=6
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.25' (ignoreCase: false))
+Semantics of the node:
+Node #481 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.25元/天]'
+Text = '[¥0.25/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results(HomeOverviewUiTest.kt:75)
+
+INSTRUMENTATION_STATUS: stream=
+Error in signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results(com.cooper.lithic.feature.home.HomeOverviewUiTest):
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.25' (ignoreCase: false))
+Semantics of the node:
+Node #481 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.25元/天]'
+Text = '[¥0.25/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results(HomeOverviewUiTest.kt:75)
+
+INSTRUMENTATION_STATUS: test=signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 14.966
+There were 4 failures:
+1) recorded_zero_cost_remains_a_real_value_and_an_active_category(com.cooper.lithic.feature.home.HomeOverviewUiTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.00' (ignoreCase: false))
+Semantics of the node:
+Node #68 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.00元/天]'
+Text = '[¥0.00/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.recorded_zero_cost_remains_a_real_value_and_an_active_category(HomeOverviewUiTest.kt:60)
+2) all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text(com.cooper.lithic.feature.home.HomeOverviewUiTest)
+java.lang.AssertionError: Semantic Node has no parent layout with a Scroll SemanticsAction
+	at androidx.compose.ui.test.ActionsKt.scrollToNode(Actions.kt:97)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:82)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text(HomeOverviewUiTest.kt:126)
+3) inactive_records_are_explained_without_being_reported_as_an_empty_ledger(com.cooper.lithic.feature.home.HomeOverviewUiTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.00' (ignoreCase: false))
+Semantics of the node:
+Node #268 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.00元/天]'
+Text = '[¥0.00/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.inactive_records_are_explained_without_being_reported_as_an_empty_ledger(HomeOverviewUiTest.kt:91)
+4) signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results(com.cooper.lithic.feature.home.HomeOverviewUiTest)
+java.lang.AssertionError: Failed to assert the following: (Text + InputText + EditableText contains '¥0.25' (ignoreCase: false))
+Semantics of the node:
+Node #481 at (l=344.0, t=245.0, r=512.0, b=302.0)px, Tag: 'home-total-rate'
+ContentDescription = '[当前日均成本，0.25元/天]'
+Text = '[¥0.25/天]'
+Actions = [GetTextLayoutResult]
+MergeDescendants = 'true'
+Selector used: (TestTag = 'home-total-rate')
+
+	at androidx.compose.ui.test.AssertionsKt.assert(Assertions.kt:264)
+	at androidx.compose.ui.test.AssertionsKt.assert$default(Assertions.kt:254)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains(Assertions.kt:208)
+	at androidx.compose.ui.test.AssertionsKt.assertTextContains$default(Assertions.kt:204)
+	at com.cooper.lithic.feature.home.HomeOverviewUiTest.signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results(HomeOverviewUiTest.kt:75)
+
+FAILURES!!!
+Tests run: 6,  Failures: 4
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

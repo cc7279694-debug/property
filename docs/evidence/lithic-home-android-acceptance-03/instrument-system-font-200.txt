@@ -1,0 +1,82 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.ui.HomeAndroidAcceptanceTest#large_font_uses_android_configuration -e lithicHomeAcceptance fresh-api36-emulator -e lithicHomeAcceptanceAvd Lithic_Home_Acceptance_01_API36 -e homeAcceptanceRunId f0f53918-495e-4b06-8e2a-39afbfb64c64 com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.HomeAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.HomeAndroidAcceptanceTest:
+INSTRUMENTATION_STATUS: test=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=f0f53918-495e-4b06-8e2a-39afbfb64c64
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=start
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=85fe4eff-4785-42a5-8995-ea191c28cb3b
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=f0f53918-495e-4b06-8e2a-39afbfb64c64
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=configuration
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=85fe4eff-4785-42a5-8995-ea191c28cb3b
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceSystemFontScale=2.0
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=f0f53918-495e-4b06-8e2a-39afbfb64c64
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: homeAcceptancePng=files/home-android-acceptance/f0f53918-495e-4b06-8e2a-39afbfb64c64/85fe4eff-4785-42a5-8995-ea191c28cb3b/projects-font-200-summary.png
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=85fe4eff-4785-42a5-8995-ea191c28cb3b
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=f0f53918-495e-4b06-8e2a-39afbfb64c64
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=fixture-cleaned
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=85fe4eff-4785-42a5-8995-ea191c28cb3b
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.HomeAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: 持有中 must not overflow its text layout
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.assertUnclippedText(HomeAndroidAcceptanceTest.kt:221)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.checkLargeFontCard(HomeAndroidAcceptanceTest.kt:201)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.large_font_uses_android_configuration(HomeAndroidAcceptanceTest.kt:186)
+
+INSTRUMENTATION_STATUS: stream=
+Error in large_font_uses_android_configuration(com.cooper.lithic.ui.HomeAndroidAcceptanceTest):
+java.lang.AssertionError: 持有中 must not overflow its text layout
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.assertUnclippedText(HomeAndroidAcceptanceTest.kt:221)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.checkLargeFontCard(HomeAndroidAcceptanceTest.kt:201)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.large_font_uses_android_configuration(HomeAndroidAcceptanceTest.kt:186)
+
+INSTRUMENTATION_STATUS: test=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 13.5
+There was 1 failure:
+1) large_font_uses_android_configuration(com.cooper.lithic.ui.HomeAndroidAcceptanceTest)
+java.lang.AssertionError: 持有中 must not overflow its text layout
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.assertUnclippedText(HomeAndroidAcceptanceTest.kt:221)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.checkLargeFontCard(HomeAndroidAcceptanceTest.kt:201)
+	at com.cooper.lithic.ui.HomeAndroidAcceptanceTest.large_font_uses_android_configuration(HomeAndroidAcceptanceTest.kt:186)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-11-11（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-11-13（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **LITHIC_HOME_ANDROID_ACCEPTANCE_03 — READY_FOR_REVIEW_WITH_FAILURES（2026-11-13）**。指定 AOSP API36 模拟器只启动一次，实际 1536 MiB／2 核，独立 SDK 5038 单连接通过，约 165 秒完成准入。两个已验签 Debug APK 安装后字节一致。Android JUnit 43 项，38 PASS、5 FAIL。正常字号三主题、主要导航及 Room 总投入回归通过，共取得 8 张原生截图。真实系统 200%／360dp 的项目状态「持有中」触发溢出，后续两张大字体卡片截图 NOT_RUN。另有四项既有组件测试断言或操作不匹配。原字体恢复 1.0，本次模拟器和 5038 均已退出，原 5037 身份不变。见[验收报告](evidence/LITHIC-Home-Android-Acceptance-03.md)，等待独立审查。
 
 - **LITHIC_ANDROID_SINGLE_TRANSPORT_FIX_03 — READY_FOR_SINGLE_TRANSPORT_ATTEMPT（2026-11-13）**。5038 只等指定模拟器自动注册，移除手动回环注册。保留 180 秒、唯一设备、监听归属和身份检查。原套件 17 项及修正后 22 项离线测试通过。实际 Android 自动注册与设备运行 NOT_RUN。见[修正报告](evidence/LITHIC-Android-Single-Transport-Fix-03.md)。
 

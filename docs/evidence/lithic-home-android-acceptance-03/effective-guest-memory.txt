@@ -1,0 +1,7 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell head -n 3 /proc/meminfo
+exit=0
+MemTotal:        1503188 kB
+MemFree:           94176 kB
+MemAvailable:     614924 kB
+
+---stderr---

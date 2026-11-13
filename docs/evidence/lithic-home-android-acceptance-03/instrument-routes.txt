@@ -1,0 +1,45 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.ui.HomeAndroidAcceptanceTest#home_routes_open_and_back -e lithicHomeAcceptance fresh-api36-emulator -e lithicHomeAcceptanceAvd Lithic_Home_Acceptance_01_API36 -e homeAcceptanceRunId f0f53918-495e-4b06-8e2a-39afbfb64c64 com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.HomeAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.HomeAndroidAcceptanceTest:
+INSTRUMENTATION_STATUS: test=home_routes_open_and_back
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=f0f53918-495e-4b06-8e2a-39afbfb64c64
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=home_routes_open_and_back
+INSTRUMENTATION_STATUS: homeAcceptancePhase=start
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=464d2324-c673-4617-b454-6a4123fd9f57
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=f0f53918-495e-4b06-8e2a-39afbfb64c64
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=1.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=home_routes_open_and_back
+INSTRUMENTATION_STATUS: homeAcceptancePhase=configuration
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=464d2324-c673-4617-b454-6a4123fd9f57
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceSystemFontScale=1.0
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=f0f53918-495e-4b06-8e2a-39afbfb64c64
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=home_routes_open_and_back
+INSTRUMENTATION_STATUS: homeAcceptancePhase=fixture-cleaned
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=464d2324-c673-4617-b454-6a4123fd9f57
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.HomeAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=home_routes_open_and_back
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 19.895
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

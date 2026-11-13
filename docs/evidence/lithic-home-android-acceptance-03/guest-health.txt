@@ -1,0 +1,9 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell head -n 3 /proc/meminfo && df -k /data
+exit=0
+MemTotal:        1503188 kB
+MemFree:           97628 kB
+MemAvailable:     467156 kB
+Filesystem       1K-blocks   Used Available Use% Mounted on
+/dev/block/dm-53   6082144 335824   5604108   6% /data/user/0
+
+---stderr---
