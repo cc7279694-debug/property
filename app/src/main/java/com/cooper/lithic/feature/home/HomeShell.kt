@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -434,6 +435,7 @@ private fun HomeGridCard(
 ) {
     val colors = MaterialTheme.colorScheme
     val typography = MaterialTheme.typography
+    val stackLabels = LocalDensity.current.fontScale > 1.35f
     Surface(
         modifier.then(if (onOpen == null) Modifier else Modifier.clickable(role = Role.Button, onClick = onOpen))
             .testTag(tag),
@@ -449,9 +451,10 @@ private fun HomeGridCard(
             Column(Modifier.fillMaxWidth().padding(horizontal = 5.dp).padding(top = 5.dp, bottom = 6.dp)) {
                 Text(name, Modifier.heightIn(min = 22.dp), style = typography.bodyLarge, fontWeight = FontWeight.Bold)
                 FlowRow(
-                    Modifier.padding(top = 4.dp).heightIn(min = 22.dp),
+                    Modifier.testTag("home-card-labels").padding(top = 4.dp).heightIn(min = 22.dp),
                     horizontalArrangement = Arrangement.spacedBy(4.dp),
                     verticalArrangement = Arrangement.spacedBy(3.dp),
+                    maxItemsInEachRow = if (stackLabels) 1 else Int.MAX_VALUE,
                 ) {
                     HomeCardLabel(category)
                     HomeCardLabel(status)
@@ -481,8 +484,9 @@ private fun HomeGridCard(
 
 @Composable
 private fun HomeCardLabel(text: String) {
+    // Keep the measured paragraph available to the accessibility layout action.
     Text(
-        text, Modifier.background(MaterialTheme.colorScheme.surfaceContainer, CircleShape)
+        AnnotatedString(text), Modifier.background(MaterialTheme.colorScheme.surfaceContainer, CircleShape)
             .padding(horizontal = 6.dp, vertical = 2.dp),
         style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface,
     )

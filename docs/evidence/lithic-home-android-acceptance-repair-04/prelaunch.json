@@ -1,0 +1,44 @@
+{
+  "avd": {
+    "registry": "E:\\CODEX\\lithic-home-android-acceptance-01-local\\avd\\Lithic_Home_Acceptance_01_API36.ini",
+    "avd_dir": "E:\\CODEX\\lithic-home-android-acceptance-01-local\\avd\\Lithic_Home_Acceptance_01_API36.avd",
+    "config_sha256": "38b167fb8d1aed0b9dd057449e6b0d628af6fb0a9feba249fb24c4de8f18a573",
+    "requested_ram_mib": 1536,
+    "requested_cores": 2,
+    "geometry": [
+      720,
+      1648,
+      320
+    ],
+    "previous_closure": "wrapper=31232 exit=1; verified owned children stopped=['4972']",
+    "lowram_previous_closure": {
+      "wrapper_pid": 26512,
+      "wrapper_exit": 1,
+      "graceful": null,
+      "owned_children_stopped": [
+        "25724"
+      ],
+      "remaining_listeners": [],
+      "remaining_children": []
+    },
+    "acceptance_03_closure": {
+      "wrapper_pid": 28844,
+      "wrapper_exit": 0,
+      "graceful": true,
+      "owned_children_stopped": [],
+      "remaining_listeners": [],
+      "remaining_children": []
+    }
+  },
+  "host_available_gib": 3.6967735290527344,
+  "disks_available_gib": {
+    "C:/": 17.741436004638672,
+    "E:/": 29.109832763671875
+  },
+  "adb_pid": 32084,
+  "adb_port": 5038,
+  "ports": [
+    17640,
+    17641
+  ]
+}

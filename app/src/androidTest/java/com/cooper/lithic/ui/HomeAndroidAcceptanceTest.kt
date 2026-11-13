@@ -173,6 +173,8 @@ class HomeAndroidAcceptanceTest {
 
     @Test fun large_font_uses_android_configuration() {
         requireConfiguration(2f)
+        val baselineMeasurement = InstrumentationRegistry.getArguments()
+            .getString("homeAcceptanceBaselineMeasurement") == "true"
         val seeded = runBlocking { checkNotNull(fixture).seed() }
         waitForInvestment(seeded.investmentCents)
         selectTheme(LithicAppearance.PURE_WHITE)
@@ -183,27 +185,89 @@ class HomeAndroidAcceptanceTest {
         assertAmount(hasTestTag("home-total-rate"), "¥16.56/天")
         scrollHomeToTop()
         capture("projects-font-200-summary")
-        checkLargeFontCard(project(seeded.projectIds[0]), "合成横向相机", "持有中", "¥9.92/天")
-        checkLargeFontCard(project(seeded.projectIds[1]), "合成纵向背包", "持有中", "¥3.32/天")
-        capture("projects-font-200-cards")
+        val projects = seeded.projectIds.map(::project)
+        checkLargeFontCard(projects[0], "合成横向相机", "持有中", "¥9.92/天", baselineMeasurement)
+        checkLargeFontCard(projects[1], "合成纵向背包", "持有中", "¥3.32/天")
+        captureLargeFontCards(projects, "projects-font-200-cards")
 
         selectSection("subscription")
-        checkLargeFontCard(subscription(seeded.subscriptionIds[0]), "合成阅读服务", "订阅中", "¥2.48/天")
-        checkLargeFontCard(subscription(seeded.subscriptionIds[1]), "合成云盘服务", "订阅中", "¥0.84/天")
-        capture("subscriptions-font-200-cards")
+        val subscriptions = seeded.subscriptionIds.map(::subscription)
+        checkLargeFontCard(subscriptions[0], "合成阅读服务", "订阅中", "¥2.48/天")
+        checkLargeFontCard(subscriptions[1], "合成云盘服务", "订阅中", "¥0.84/天")
+        captureLargeFontCards(subscriptions, "subscriptions-font-200-cards")
     }
 
-    private fun checkLargeFontCard(tag: String, name: String, status: String, amount: String) {
+    private fun checkLargeFontCard(tag: String, name: String, status: String, amount: String, baselineMeasurement: Boolean = false) {
         waitForTag(tag)
         compose.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
         val insideCard = hasAnyAncestor(hasTestTag(tag))
+        val category = "其他"
+        val categoryLabel = insideCard and hasText(category)
+        val statusLabel = insideCard and hasText(status)
+        reportLabelLayout(tag, name, "category", categoryLabel)
+        reportLabelLayout(tag, name, "status", statusLabel)
+        if (baselineMeasurement) capture("projects-font-200-baseline-cards")
         assertUnclippedText(insideCard and hasText(name), name)
-        assertUnclippedText(insideCard and hasText(status), status)
+        assertUnclippedText(statusLabel, status)
+        assertUnclippedText(categoryLabel, category)
         assertAmount(insideCard and hasText(amount), amount)
         assertAddBelowViewport()
         val card = compose.onNodeWithTag(tag).fetchSemanticsNode().boundsInRoot
         val add = compose.onNodeWithTag("home-open-add").fetchSemanticsNode().boundsInRoot
         assertTrue("The visible card cannot overlap the add control", card.bottom <= add.top + 1f)
+    }
+
+    private fun reportLabelLayout(cardTag: String, cardName: String, role: String, label: SemanticsMatcher) {
+        val card = compose.onNodeWithTag(cardTag, useUnmergedTree = true).fetchSemanticsNode()
+        val group = compose.onNode(coverIn(cardTag, "home-card-labels"), useUnmergedTree = true).fetchSemanticsNode()
+        val node = compose.onNode(label, useUnmergedTree = true)
+        val layouts = mutableListOf<TextLayoutResult>()
+        node.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        val result = layouts.single()
+        val input = result.layoutInput
+        report("label-layout") {
+            putString("homeAcceptanceCard", cardName)
+            putString("homeAcceptanceLabelRole", role)
+            putString("homeAcceptanceLabelText", input.text.text)
+            putString("homeAcceptanceCardSizePx", card.size.toString())
+            putString("homeAcceptanceGroupSizePx", group.size.toString())
+            putString("homeAcceptanceLabelSizePx", node.fetchSemanticsNode().size.toString())
+            putString("homeAcceptanceTextSizePx", result.size.toString())
+            putString("homeAcceptanceTextConstraintsPx", input.constraints.toString())
+            putFloat("homeAcceptanceDensity", input.density.density)
+            putFloat("homeAcceptanceFontScale", input.density.fontScale)
+            putString("homeAcceptanceFontSize", input.style.fontSize.toString())
+            putString("homeAcceptanceLineHeight", input.style.lineHeight.toString())
+            with(input.density) {
+                putFloat("homeAcceptanceFontSizePx", input.style.fontSize.toPx())
+                putFloat("homeAcceptanceLineHeightPx", input.style.lineHeight.toPx())
+            }
+            putInt("homeAcceptanceLineCount", result.lineCount)
+            putString("homeAcceptanceLineWidthsPx", (0 until result.lineCount).joinToString(",") {
+                result.multiParagraph.getLineWidth(it).toString()
+            })
+            putFloat("homeAcceptanceParagraphWidthPx", result.multiParagraph.width)
+            putFloat("homeAcceptanceIntrinsicWidthPx", result.multiParagraph.maxIntrinsicWidth)
+            putBoolean("homeAcceptanceExceededMaxLines", result.multiParagraph.didExceedMaxLines)
+            putBoolean("homeAcceptanceOverflowWidth", result.didOverflowWidth)
+            putBoolean("homeAcceptanceOverflowHeight", result.didOverflowHeight)
+            putBoolean("homeAcceptanceVisualOverflow", result.hasVisualOverflow)
+        }
+    }
+
+    private fun captureLargeFontCards(cards: List<String>, screenshot: String) {
+        val nodes = cards.map { compose.onNodeWithTag(it) }
+        nodes.maxBy { it.fetchSemanticsNode().size.height }.performScrollTo()
+        val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
+        for ((tag, node) in cards.zip(nodes)) {
+            val card = node.assertIsDisplayed().fetchSemanticsNode()
+            val bounds = card.boundsInRoot
+            assertTrue("$tag must fit wholly in the viewport for $screenshot",
+                bounds.width >= card.size.width - 1f && bounds.height >= card.size.height - 1f &&
+                    bounds.top >= viewport.top - 1f && bounds.bottom <= viewport.bottom + 1f)
+        }
+        assertAddBelowViewport()
+        capture(screenshot)
     }
 
     private fun assertAmount(matcher: SemanticsMatcher, expected: String) {
@@ -230,6 +294,8 @@ class HomeAndroidAcceptanceTest {
             .assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).fetchSemanticsNode().boundsInRoot
         val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
         val tab = compose.onNodeWithTag("tab-now").assertIsDisplayed().fetchSemanticsNode().boundsInRoot
+        compose.onNodeWithTag("tab-review").assertIsDisplayed()
+        compose.onNodeWithTag("tab-settings").assertIsDisplayed()
         assertTrue("Add control must be below scrolling content", viewport.bottom <= add.top + 1f)
         assertTrue("Navigation must remain below the add control", add.bottom <= tab.top + 1f)
     }

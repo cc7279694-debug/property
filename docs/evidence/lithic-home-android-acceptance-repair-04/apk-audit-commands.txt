@@ -1,0 +1,35 @@
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\java.exe -jar E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\lib\apksigner.jar verify --verbose --print-certs E:\CODEX\lithic-home-android-acceptance-repair-04-local\baseline-measure-app.apk
+exit=0
+Verified using v2 scheme (APK Signature Scheme v2): true
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump badging E:\CODEX\lithic-home-android-acceptance-repair-04-local\baseline-measure-app.apk
+exit=0
+package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+launchable-activity: name='com.cooper.lithic.app.MainActivity'  label='' icon=''
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump xmltree E:\CODEX\lithic-home-android-acceptance-repair-04-local\baseline-measure-app.apk --file AndroidManifest.xml
+exit=0
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.LithicApplication" (Raw: "com.cooper.lithic.app.LithicApplication")
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.MainActivity" (Raw: "com.cooper.lithic.app.MainActivity")
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\java.exe -jar E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\lib\apksigner.jar verify --verbose --print-certs E:\CODEX\lithic-home-android-acceptance-repair-04-local\app-debug.apk
+exit=0
+Verified using v2 scheme (APK Signature Scheme v2): true
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump badging E:\CODEX\lithic-home-android-acceptance-repair-04-local\app-debug.apk
+exit=0
+package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+launchable-activity: name='com.cooper.lithic.app.MainActivity'  label='' icon=''
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump xmltree E:\CODEX\lithic-home-android-acceptance-repair-04-local\app-debug.apk --file AndroidManifest.xml
+exit=0
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.LithicApplication" (Raw: "com.cooper.lithic.app.LithicApplication")
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.MainActivity" (Raw: "com.cooper.lithic.app.MainActivity")
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\java.exe -jar E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\lib\apksigner.jar verify --verbose --print-certs E:\CODEX\lithic-home-android-acceptance-repair-04-local\app-debug-androidTest.apk
+exit=0
+Verified using v2 scheme (APK Signature Scheme v2): true
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump badging E:\CODEX\lithic-home-android-acceptance-repair-04-local\app-debug-androidTest.apk
+exit=0
+package: name='com.cooper.lithic.debug.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump xmltree E:\CODEX\lithic-home-android-acceptance-repair-04-local\app-debug-androidTest.apk --file AndroidManifest.xml
+exit=0
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.runner.AndroidJUnitRunner" (Raw: "androidx.test.runner.AndroidJUnitRunner")
+        A: http://schemas.android.com/apk/res/android:targetPackage(0x01010021)="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
