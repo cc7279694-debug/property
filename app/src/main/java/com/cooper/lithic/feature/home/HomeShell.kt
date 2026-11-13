@@ -331,31 +331,20 @@ private fun HomeInvestment(amount: BigDecimal?) {
 private fun HomeDailyRate(overview: OverviewResult?, onExplain: () -> Unit) {
     val typography = MaterialTheme.typography
     val colors = MaterialTheme.colorScheme
-    BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val showBars = maxWidth >= 145.dp && LocalDensity.current.fontScale <= 1.2f
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-            Column(Modifier.weight(1f)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("日均成本", style = typography.bodySmall, fontWeight = FontWeight.SemiBold)
-                    IconButton(onExplain, Modifier.size(48.dp).testTag("home-cost-information")) {
-                        C2Icon(C2Glyph.Info, Modifier.size(14.dp), "查看数量与成本口径")
-                    }
-                }
-                Box(Modifier.fillMaxWidth().testTag("home-amount-line")) {
-                    MoneyMetric(overview?.takeIf { it.hasRecords }?.totalRate, Modifier.testTag("home-total-rate"),
-                        level = MoneyMetricLevel.CARD, label = "当前日均成本")
-                }
-                overview?.let {
-                    Text(it.asOf.toString(), Modifier.testTag("home-cutoff-date"),
-                        style = typography.bodySmall, color = colors.onSurfaceVariant)
-                }
+    Column(Modifier.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text("日均成本", style = typography.bodySmall, fontWeight = FontWeight.SemiBold)
+            IconButton(onExplain, Modifier.size(48.dp).testTag("home-cost-information")) {
+                C2Icon(C2Glyph.Info, Modifier.size(14.dp), "查看数量与成本口径")
             }
-            if (showBars) Row(horizontalArrangement = Arrangement.spacedBy(3.dp), verticalAlignment = Alignment.Bottom) {
-                listOf(7, 13, 21).forEachIndexed { index, height ->
-                    Box(Modifier.size(5.dp, height.dp)
-                        .background(colors.primary.copy(alpha = 0.25f + index * 0.10f), RoundedCornerShape(1.dp)))
-                }
-            }
+        }
+        Box(Modifier.fillMaxWidth().testTag("home-amount-line")) {
+            MoneyMetric(overview?.takeIf { it.hasRecords }?.totalRate, Modifier.testTag("home-total-rate"),
+                level = MoneyMetricLevel.CARD, label = "当前日均成本")
+        }
+        overview?.let {
+            Text(it.asOf.toString(), Modifier.testTag("home-cutoff-date"),
+                style = typography.bodySmall, color = colors.onSurfaceVariant)
         }
     }
 }
