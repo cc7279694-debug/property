@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_UI_V3_DETAIL_DESIGN_01 — READY_FOR_DESIGN_REVIEW（2026-11-13）**。以已冻结首页复验证据 `434127f3` 为起点，交付项目与订阅详情配对方案、三主题及状态画板、12 组浏览器布局检查。详情 Android 实测 NOT_RUN，等待 ChatGPT 独立设计审查和用户确认。见[配对设计](design/lithic-ui-v3-03-details/DESIGN_BRIEF.md)。
+
 - **LITHIC_HOME_FINAL_POLISH_09 — READY_FOR_INDEPENDENT_REVIEW（单次复验，2026-11-13）**。原 Repair05 AVD 实测 4 核／1536 MiB，未捕获新 ANR。MainActivity 舍入说明及两段返回专项 1 PASS，完整 Android 回归 43 PASS／0 FAIL，三主题与 360dp 系统 200% 字体截图已存证。原字体、合成账本、媒体、模拟器及独立 5038 已收口。上次失败回执保留，个人真机与真实 SAF／Photo Picker 仍 NOT_RUN。见[本轮报告](evidence/LITHIC-Home-Final-Polish-09-Retry.md)。
 
 - **LITHIC_HOME_FINAL_POLISH_09 — READY_FOR_REVIEW_WITH_FAILURES（2026-11-13）**。原 AVD 单次临时 4 核／1536 MiB，原内存门槛及额外健康观察通过，未捕获 SystemUI 或 Phone ANR。MainActivity 实测确认舍入说明在半展开时位于窗口下方，语义滚动无效，真实展开后完整可见，已取得前后两图。专项随后因一次 Back 等待整张面板关闭而失败，测试按 Material3 两段返回修正，仅桌面编译通过。完整 43 项、三主题截图与 200% 复验均 NOT_RUN。字体、夹具、模拟器及 5038 安全收口，原 5037 不变。见[报告](evidence/LITHIC-Home-Final-Polish-09.md)。
