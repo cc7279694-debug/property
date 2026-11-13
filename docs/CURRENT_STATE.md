@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_HOME_FINAL_POLISH_09 — READY_FOR_INDEPENDENT_REVIEW（单次复验，2026-11-13）**。原 Repair05 AVD 实测 4 核／1536 MiB，未捕获新 ANR。MainActivity 舍入说明及两段返回专项 1 PASS，完整 Android 回归 43 PASS／0 FAIL，三主题与 360dp 系统 200% 字体截图已存证。原字体、合成账本、媒体、模拟器及独立 5038 已收口。上次失败回执保留，个人真机与真实 SAF／Photo Picker 仍 NOT_RUN。见[本轮报告](evidence/LITHIC-Home-Final-Polish-09-Retry.md)。
+
 - **LITHIC_HOME_FINAL_POLISH_09 — READY_FOR_REVIEW_WITH_FAILURES（2026-11-13）**。原 AVD 单次临时 4 核／1536 MiB，原内存门槛及额外健康观察通过，未捕获 SystemUI 或 Phone ANR。MainActivity 实测确认舍入说明在半展开时位于窗口下方，语义滚动无效，真实展开后完整可见，已取得前后两图。专项随后因一次 Back 等待整张面板关闭而失败，测试按 Material3 两段返回修正，仅桌面编译通过。完整 43 项、三主题截图与 200% 复验均 NOT_RUN。字体、夹具、模拟器及 5038 安全收口，原 5037 不变。见[报告](evidence/LITHIC-Home-Final-Polish-09.md)。
 
 - **LITHIC_HOME_FINAL_POLISH_08 — ENVIRONMENT_BLOCKED（2026-11-13）**。舍入说明测试分离语义滚动和真实手势，已有 MainActivity 方法接入完整说明截图。30 项离线测试、Debug／AndroidTest 构建和签名核对通过。原 AVD 仅启动一次，设备准入通过，guest 探针 482,760 kB 达到原门槛，但安装前捕获 SystemUI 与 Phone 启动 ANR。专项、43 项回归、截图与大字验证均 NOT_RUN，舍入说明根因仍 UNKNOWN。模拟器与 5038 正常退出，5037 不变。见[集中报告](evidence/LITHIC-Home-Final-Polish-08.md)。

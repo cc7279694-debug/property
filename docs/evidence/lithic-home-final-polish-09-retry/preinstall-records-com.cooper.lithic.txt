@@ -1,0 +1,6 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell pm list packages -u --user 0 com.cooper.lithic
+exit=0
+package:com.cooper.lithic.debug.test
+package:com.cooper.lithic.debug
+
+---stderr---

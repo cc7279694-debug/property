@@ -1,0 +1,9 @@
+2026-11-13T11:54:01.289920+00:00 shell cat /sys/devices/system/cpu/online && grep -E "^processor[[:space:]]*:" /proc/cpuinfo
+exit=0
+0-3
+processor	: 0
+processor	: 1
+processor	: 2
+processor	: 3
+
+---stderr---

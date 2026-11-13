@@ -1,0 +1,61 @@
+{
+  "commit": "f9d5029e916fff9fb605ef7c0f25a3c99308579c",
+  "tree": "384d87cc0bb3bd089d3b928ac4b09e7e262a6a39",
+  "app_tree": "560dedb63f049856be581f6610b27d08097ff105",
+  "files": [
+    {
+      "path": "app/src\\androidTest\\java\\com\\cooper\\lithic\\ui\\HomeAndroidAcceptanceTest.kt",
+      "sha256": "a1ac796f9ad0fe210f7749730e8f2542a5e96a1c37219be49332f6c29bd6c4f4"
+    },
+    {
+      "path": "app/src\\androidTest\\java\\com\\cooper\\lithic\\feature\\home\\HomeOverviewUiTest.kt",
+      "sha256": "5ed0a015f7ffc9ea88888bec86c500edabdcd27ee8c01853db3fc7132fae7805"
+    },
+    {
+      "path": "app/src\\main\\java\\com\\cooper\\lithic\\feature\\home\\HomeShell.kt",
+      "sha256": "0e1997ea4df24ec006522218f2a45ad34a849182d1e9c721867dac8e6fb5abd0"
+    }
+  ],
+  "controllers": [
+    {
+      "path": "run.py",
+      "sha256": "e48685ac133990b11d4d95a94f0497e1fca851a3891e6b061b08a70014295a19"
+    },
+    {
+      "path": "workflow.py",
+      "sha256": "135aee298b88ecefcc301c44a448a65e59f58455500b177995f46f95bbaa9c2c"
+    },
+    {
+      "path": "collect.py",
+      "sha256": "9adfedc2aa5c9a2d073d251f34cf0caed4ca7da64611ffc13824fa9f9980fe0b"
+    },
+    {
+      "path": "audit.py",
+      "sha256": "e8cdfd904ca69dd11c4ba6dfdeee56cfee65bab3c4cad99162c85ea5d6d2e9d2"
+    },
+    {
+      "path": "host-admission.py",
+      "sha256": "67d7965c6e19a3360626e8fcbd484c324584766289751e812e6cb8312045a646"
+    },
+    {
+      "path": "publish-evidence.py",
+      "sha256": "3eba1e13d1f1d47e52a0fb082a538f129fb0594fadb3a2ddc21898dc97cc5e98"
+    }
+  ],
+  "apks": {
+    "app-debug.apk": {
+      "bytes": 20541670,
+      "sha256": "9eb4c102129bc16a4dcc9726950efc2d9086f06a7042189cfb54d5bb9ab7cc75",
+      "certificate": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "package": "com.cooper.lithic.debug",
+      "badging": "package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'"
+    },
+    "app-debug-androidTest.apk": {
+      "bytes": 4574119,
+      "sha256": "e93dc9cdb752ed2cc2df281ef0030b6432fe6982c677d39c7e7fa64eb9a9f769",
+      "certificate": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "package": "com.cooper.lithic.debug.test",
+      "badging": "package: name='com.cooper.lithic.debug.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'"
+    }
+  }
+}

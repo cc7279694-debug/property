@@ -1,0 +1,291 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.ui.HomeAndroidAcceptanceTest#large_font_uses_android_configuration -e lithicHomeAcceptance fresh-api36-emulator -e lithicHomeAcceptanceAvd Lithic_Home_Acceptance_Repair05_API36 -e homeAcceptanceRunId 723c9549-d0c8-493a-90d9-6a74a98e82d6 com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.HomeAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.ui.HomeAndroidAcceptanceTest:
+INSTRUMENTATION_STATUS: test=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=start
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=configuration
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceSystemFontScale=2.0
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: homeAcceptancePng=files/home-android-acceptance/723c9549-d0c8-493a-90d9-6a74a98e82d6/da10e626-45cd-47b8-9b25-c9c984e2d18a/projects-font-200-summary.png
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceCard=合成横向相机
+INSTRUMENTATION_STATUS: homeAcceptanceCardSizePx=326 x 770
+INSTRUMENTATION_STATUS: homeAcceptanceDensity=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceExceededMaxLines=false
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceFontSize=12.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceFontSizePx=48.0
+INSTRUMENTATION_STATUS: homeAcceptanceGroupSizePx=168 x 170
+INSTRUMENTATION_STATUS: homeAcceptanceIntrinsicWidthPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptanceLabelRole=category
+INSTRUMENTATION_STATUS: homeAcceptanceLabelSizePx=96 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceLabelText=其他
+INSTRUMENTATION_STATUS: homeAcceptanceLineCount=1
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeight=16.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeightPx=56.0
+INSTRUMENTATION_STATUS: homeAcceptanceLineWidthsPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowHeight=false
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowWidth=false
+INSTRUMENTATION_STATUS: homeAcceptanceParagraphWidthPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptancePhase=label-layout
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceTextConstraintsPx=Constraints(minWidth = 0, maxWidth = 262, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: homeAcceptanceTextSizePx=96 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceVisualOverflow=false
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceCard=合成横向相机
+INSTRUMENTATION_STATUS: homeAcceptanceCardSizePx=326 x 770
+INSTRUMENTATION_STATUS: homeAcceptanceDensity=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceExceededMaxLines=false
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceFontSize=12.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceFontSizePx=48.0
+INSTRUMENTATION_STATUS: homeAcceptanceGroupSizePx=168 x 170
+INSTRUMENTATION_STATUS: homeAcceptanceIntrinsicWidthPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptanceLabelRole=status
+INSTRUMENTATION_STATUS: homeAcceptanceLabelSizePx=144 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceLabelText=持有中
+INSTRUMENTATION_STATUS: homeAcceptanceLineCount=1
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeight=16.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeightPx=56.0
+INSTRUMENTATION_STATUS: homeAcceptanceLineWidthsPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowHeight=false
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowWidth=false
+INSTRUMENTATION_STATUS: homeAcceptanceParagraphWidthPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptancePhase=label-layout
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceTextConstraintsPx=Constraints(minWidth = 0, maxWidth = 262, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: homeAcceptanceTextSizePx=144 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceVisualOverflow=false
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceCard=合成纵向背包
+INSTRUMENTATION_STATUS: homeAcceptanceCardSizePx=326 x 770
+INSTRUMENTATION_STATUS: homeAcceptanceDensity=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceExceededMaxLines=false
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceFontSize=12.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceFontSizePx=48.0
+INSTRUMENTATION_STATUS: homeAcceptanceGroupSizePx=168 x 170
+INSTRUMENTATION_STATUS: homeAcceptanceIntrinsicWidthPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptanceLabelRole=category
+INSTRUMENTATION_STATUS: homeAcceptanceLabelSizePx=96 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceLabelText=其他
+INSTRUMENTATION_STATUS: homeAcceptanceLineCount=1
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeight=16.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeightPx=56.0
+INSTRUMENTATION_STATUS: homeAcceptanceLineWidthsPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowHeight=false
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowWidth=false
+INSTRUMENTATION_STATUS: homeAcceptanceParagraphWidthPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptancePhase=label-layout
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceTextConstraintsPx=Constraints(minWidth = 0, maxWidth = 262, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: homeAcceptanceTextSizePx=96 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceVisualOverflow=false
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceCard=合成纵向背包
+INSTRUMENTATION_STATUS: homeAcceptanceCardSizePx=326 x 770
+INSTRUMENTATION_STATUS: homeAcceptanceDensity=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceExceededMaxLines=false
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceFontSize=12.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceFontSizePx=48.0
+INSTRUMENTATION_STATUS: homeAcceptanceGroupSizePx=168 x 170
+INSTRUMENTATION_STATUS: homeAcceptanceIntrinsicWidthPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptanceLabelRole=status
+INSTRUMENTATION_STATUS: homeAcceptanceLabelSizePx=144 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceLabelText=持有中
+INSTRUMENTATION_STATUS: homeAcceptanceLineCount=1
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeight=16.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeightPx=56.0
+INSTRUMENTATION_STATUS: homeAcceptanceLineWidthsPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowHeight=false
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowWidth=false
+INSTRUMENTATION_STATUS: homeAcceptanceParagraphWidthPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptancePhase=label-layout
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceTextConstraintsPx=Constraints(minWidth = 0, maxWidth = 262, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: homeAcceptanceTextSizePx=144 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceVisualOverflow=false
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: homeAcceptancePng=files/home-android-acceptance/723c9549-d0c8-493a-90d9-6a74a98e82d6/da10e626-45cd-47b8-9b25-c9c984e2d18a/projects-font-200-cards.png
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceCard=合成阅读服务
+INSTRUMENTATION_STATUS: homeAcceptanceCardSizePx=326 x 700
+INSTRUMENTATION_STATUS: homeAcceptanceDensity=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceExceededMaxLines=false
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceFontSize=12.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceFontSizePx=48.0
+INSTRUMENTATION_STATUS: homeAcceptanceGroupSizePx=168 x 170
+INSTRUMENTATION_STATUS: homeAcceptanceIntrinsicWidthPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptanceLabelRole=category
+INSTRUMENTATION_STATUS: homeAcceptanceLabelSizePx=96 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceLabelText=其他
+INSTRUMENTATION_STATUS: homeAcceptanceLineCount=1
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeight=16.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeightPx=56.0
+INSTRUMENTATION_STATUS: homeAcceptanceLineWidthsPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowHeight=false
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowWidth=false
+INSTRUMENTATION_STATUS: homeAcceptanceParagraphWidthPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptancePhase=label-layout
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceTextConstraintsPx=Constraints(minWidth = 0, maxWidth = 262, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: homeAcceptanceTextSizePx=96 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceVisualOverflow=false
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceCard=合成阅读服务
+INSTRUMENTATION_STATUS: homeAcceptanceCardSizePx=326 x 700
+INSTRUMENTATION_STATUS: homeAcceptanceDensity=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceExceededMaxLines=false
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceFontSize=12.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceFontSizePx=48.0
+INSTRUMENTATION_STATUS: homeAcceptanceGroupSizePx=168 x 170
+INSTRUMENTATION_STATUS: homeAcceptanceIntrinsicWidthPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptanceLabelRole=status
+INSTRUMENTATION_STATUS: homeAcceptanceLabelSizePx=144 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceLabelText=订阅中
+INSTRUMENTATION_STATUS: homeAcceptanceLineCount=1
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeight=16.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeightPx=56.0
+INSTRUMENTATION_STATUS: homeAcceptanceLineWidthsPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowHeight=false
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowWidth=false
+INSTRUMENTATION_STATUS: homeAcceptanceParagraphWidthPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptancePhase=label-layout
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceTextConstraintsPx=Constraints(minWidth = 0, maxWidth = 262, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: homeAcceptanceTextSizePx=144 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceVisualOverflow=false
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceCard=合成云盘服务
+INSTRUMENTATION_STATUS: homeAcceptanceCardSizePx=326 x 700
+INSTRUMENTATION_STATUS: homeAcceptanceDensity=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceExceededMaxLines=false
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceFontSize=12.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceFontSizePx=48.0
+INSTRUMENTATION_STATUS: homeAcceptanceGroupSizePx=168 x 170
+INSTRUMENTATION_STATUS: homeAcceptanceIntrinsicWidthPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptanceLabelRole=category
+INSTRUMENTATION_STATUS: homeAcceptanceLabelSizePx=96 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceLabelText=其他
+INSTRUMENTATION_STATUS: homeAcceptanceLineCount=1
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeight=16.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeightPx=56.0
+INSTRUMENTATION_STATUS: homeAcceptanceLineWidthsPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowHeight=false
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowWidth=false
+INSTRUMENTATION_STATUS: homeAcceptanceParagraphWidthPx=96.0
+INSTRUMENTATION_STATUS: homeAcceptancePhase=label-layout
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceTextConstraintsPx=Constraints(minWidth = 0, maxWidth = 262, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: homeAcceptanceTextSizePx=96 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceVisualOverflow=false
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceCard=合成云盘服务
+INSTRUMENTATION_STATUS: homeAcceptanceCardSizePx=326 x 700
+INSTRUMENTATION_STATUS: homeAcceptanceDensity=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceExceededMaxLines=false
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceFontSize=12.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceFontSizePx=48.0
+INSTRUMENTATION_STATUS: homeAcceptanceGroupSizePx=168 x 170
+INSTRUMENTATION_STATUS: homeAcceptanceIntrinsicWidthPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptanceLabelRole=status
+INSTRUMENTATION_STATUS: homeAcceptanceLabelSizePx=144 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceLabelText=订阅中
+INSTRUMENTATION_STATUS: homeAcceptanceLineCount=1
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeight=16.0.sp
+INSTRUMENTATION_STATUS: homeAcceptanceLineHeightPx=56.0
+INSTRUMENTATION_STATUS: homeAcceptanceLineWidthsPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowHeight=false
+INSTRUMENTATION_STATUS: homeAcceptanceOverflowWidth=false
+INSTRUMENTATION_STATUS: homeAcceptanceParagraphWidthPx=144.0
+INSTRUMENTATION_STATUS: homeAcceptancePhase=label-layout
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceTextConstraintsPx=Constraints(minWidth = 0, maxWidth = 262, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: homeAcceptanceTextSizePx=144 x 70
+INSTRUMENTATION_STATUS: homeAcceptanceVisualOverflow=false
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: homeAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: homeAcceptancePng=files/home-android-acceptance/723c9549-d0c8-493a-90d9-6a74a98e82d6/da10e626-45cd-47b8-9b25-c9c984e2d18a/subscriptions-font-200-cards.png
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS: homeAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: homeAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: homeAcceptanceAttemptId=723c9549-d0c8-493a-90d9-6a74a98e82d6
+INSTRUMENTATION_STATUS: homeAcceptanceMethod=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS: homeAcceptancePhase=fixture-cleaned
+INSTRUMENTATION_STATUS: homeAcceptanceRunId=da10e626-45cd-47b8-9b25-c9c984e2d18a
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.ui.HomeAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=large_font_uses_android_configuration
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 17.559
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
