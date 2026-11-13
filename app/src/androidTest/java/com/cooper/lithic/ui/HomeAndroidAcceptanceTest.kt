@@ -30,6 +30,7 @@ import com.cooper.lithic.app.MainActivity
 import com.cooper.lithic.core.design.AmountFormatter
 import com.cooper.lithic.feature.appearance.AppearanceProvider
 import com.cooper.lithic.feature.appearance.LithicAppearance
+import com.cooper.lithic.feature.home.verifyRoundingNote
 import java.io.File
 import java.io.FileOutputStream
 import java.math.BigDecimal
@@ -159,6 +160,7 @@ class HomeAndroidAcceptanceTest {
         scrollHomeToTop()
         click("home-category-disclosure", scroll = true)
         waitForTag("home-cost-composition")
+        verifyRoundingNote(compose, capture = ::capture)
         backToHome("home-cost-composition")
         click("tab-review")
         waitForTag("review-screen")
@@ -386,7 +388,9 @@ class HomeAndroidAcceptanceTest {
 
     private fun capture(name: String) {
         compose.waitForIdle()
-        compose.onNodeWithTag("home-screen").assertIsDisplayed()
+        if (!name.startsWith("cost-composition-")) {
+            compose.onNodeWithTag("home-screen").assertIsDisplayed()
+        }
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val relativeDirectory = "home-android-acceptance/$attemptId/$runId"
         val directory = File(instrumentation.targetContext.filesDir, relativeDirectory)

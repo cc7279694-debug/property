@@ -1,0 +1,10 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell set -o pipefail; { ls -la /data/anr; } | head -c 2097153
+exit=0
+total 132
+drwxrwxr-x  2 system system  4096 2026-11-13 10:17 .
+drwxrwx--x 51 system system  4096 2026-11-13 09:39 ..
+-rw-------  1 system system 39164 2026-11-13 04:41 anr_2026-11-13-04-41-22-092
+-rw-------  1 system system 35239 2026-11-13 10:17 anr_2026-11-13-10-17-23-918
+-rw-------  1 system system 26037 2026-11-13 10:17 anr_2026-11-13-10-17-38-104
+
+---stderr---

@@ -1,0 +1,6 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell set -o pipefail; { dumpsys -t 7 activity lastanr; } | head -c 2097153
+exit=0
+ACTIVITY MANAGER LAST ANR (dumpsys activity lastanr)
+  <no ANR has occurred since boot>
+
+---stderr---

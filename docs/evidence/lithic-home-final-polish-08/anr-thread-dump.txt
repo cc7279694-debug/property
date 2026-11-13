@@ -1,0 +1,57 @@
+CONFIRMED package=com.android.systemui pid=1004 event_epoch=1794565043.91 source=anr-dropbox-system
+
+----- pid 1004 at 2026-11-13 10:17:25.243293636+0000 -----
+Cmd line: com.android.systemui
+Build fingerprint: 'Android/sdk_phone64_x86_64/emu64x:16/BE2A.250530.026.D1/13818094:userdebug/test-keys'
+ABI: 'x86_64'
+Build type: optimized
+Debug Store: 3,1,66705::ID:1,C:S,T:49811,N:BindApp;;
+suspend all histogram:	Sum: 9.190ms 99% C.I. 1.396us-8678.400us Avg: 765.833us Max: 9136us
+DALVIK THREADS (17):
+"main" prio=5 tid=1 Runnable
+  | group="main" sCount=0 ucsCount=0 flags=0 obj=0x72420b18 self=0x7538b7af5380
+  | sysTid=1004 nice=0 cgrp=foreground sched=0/0 handle=0x7539cdb28088
+  | state=R schedstat=( 164076113 250512099 314 ) utm=2 stm=14 core=0 HZ=100
+  | stack=0x7ffd3fd58000-0x7ffd3fd5a000 stackSize=8188KB
+  | held mutexes= "mutator lock"(shared held)
+  at com.android.wm.shell.draganddrop.GlobalDragListener.<init>(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:8)
+  at com.android.wm.shell.dagger.WMShellModule_ProvideGlobalDragListenerFactory.provideGlobalDragListener(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:3)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get0(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:3609)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:31)
+  at dagger.internal.DoubleCheck.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:14)
+  - locked <@addr=0x207ae80> (a dagger.internal.DoubleCheck)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get0(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:3726)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:31)
+  at dagger.internal.DoubleCheck.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:14)
+  - locked <@addr=0x207b098> (a dagger.internal.DoubleCheck)
+  at dagger.internal.DelegateFactory.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:5)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get0(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:3466)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:31)
+  at dagger.internal.DoubleCheck.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:14)
+  - locked <@addr=0x207b070> (a dagger.internal.DoubleCheck)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get0(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:5656)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:31)
+  at dagger.internal.DoubleCheck.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:14)
+  - locked <@addr=0x207c500> (a dagger.internal.DoubleCheck)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get0(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:5863)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl$SwitchingProvider.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:31)
+  at dagger.internal.DoubleCheck.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:14)
+  - locked <@addr=0x207c528> (a dagger.internal.DoubleCheck)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$WMComponentImpl.getShell(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:3)
+  at com.android.systemui.SystemUIInitializer.init(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:144)
+  at com.android.systemui.SystemUIAppComponentFactoryBase.access$createSystemUIInitializerInternal(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:20)
+  at com.android.systemui.SystemUIAppComponentFactoryBase$instantiateProviderCompat$1.onContextAvailable(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:7)
+  at com.android.systemui.keyguard.CustomizationProvider.attachInfo(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:8)
+  at android.app.ActivityThread.installProvider(ActivityThread.java:8642)
+  at android.app.ActivityThread.installContentProviders(ActivityThread.java:8157)
+  at android.app.ActivityThread.handleBindApplication(ActivityThread.java:7814)
+  at android.app.ActivityThread.-$$Nest$mhandleBindApplication(unavailable:0)
+  at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2546)
+  at android.os.Handler.dispatchMessage(Handler.java:110)
+  at android.os.Looper.loopOnce(Looper.java:248)
+  at android.os.Looper.loop(Looper.java:338)
+  at android.app.ActivityThread.main(ActivityThread.java:9067)
+  at java.lang.reflect.Method.invoke(Native method)
+  at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:593)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:932)
+DumpLatencyMs: 580.734

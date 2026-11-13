@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_HOME_FINAL_POLISH_08 — ENVIRONMENT_BLOCKED（2026-11-13）**。舍入说明测试分离语义滚动和真实手势，已有 MainActivity 方法接入完整说明截图。30 项离线测试、Debug／AndroidTest 构建和签名核对通过。原 AVD 仅启动一次，设备准入通过，guest 探针 482,760 kB 达到原门槛，但安装前捕获 SystemUI 与 Phone 启动 ANR。专项、43 项回归、截图与大字验证均 NOT_RUN，舍入说明根因仍 UNKNOWN。模拟器与 5038 正常退出，5037 不变。见[集中报告](evidence/LITHIC-Home-Final-Polish-08.md)。
+
 - **LITHIC_HOME_FINAL_POLISH_07 — ENVIRONMENT_BLOCKED（2026-11-13）**。移除首页日均成本三根装饰柱，保留成本构成面板布局与原金额断言，新增舍入说明真实手势、可见范围和截图诊断。31 项 JVM、30 项离线测试、Debug 与 AndroidTest 构建通过。原 Repair05 AVD 单次通过设备准入，guest 可用内存 446,216 kB 低于原 450,000 kB 安装前门槛，43 项 Android、新截图及 200% 回归均 NOT_RUN，舍入说明根因 UNKNOWN。模拟器与 5038 正常退出，原 5037 不变。见[集中报告](evidence/LITHIC-Home-Final-Polish-07.md)。
 
 - **LITHIC_HOME_ANDROID_ACCEPTANCE_REPAIR_06 — READY_FOR_REVIEW_WITH_FAILURES（2026-11-13）**。采集器支持 CRLF/LF，30 项离线测试与 Run07 原始 29/29 份样本回放通过。单次复用 Repair05 AVD，5038 准入和额外健康观察通过，未捕获新 ANR。Android 43 项实跑 42 PASS／1 FAIL，失败为成本构成舍入说明滚动后不可见。三主题和 360dp 系统 200% 字体原生验收通过，取得 10 张截图，两类卡片均完整，字体恢复 1.0。夹具清理有回执，模拟器与 5038 正常退出。SAF 与 Photo Picker NOT_RUN。见[报告](evidence/LITHIC-Home-Android-Acceptance-Repair-06.md)。

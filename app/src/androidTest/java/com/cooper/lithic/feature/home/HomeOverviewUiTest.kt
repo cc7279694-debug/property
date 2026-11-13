@@ -21,6 +21,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.isDisplayed
 import androidx.compose.ui.test.isRoot
+import androidx.compose.ui.test.junit4.ComposeContentTestRule
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -31,14 +32,17 @@ import androidx.compose.ui.test.printToString
 import androidx.compose.ui.test.swipe
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
+import androidx.test.espresso.Espresso.pressBack
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.domain.report.CategoryDailyCost
 import com.cooper.lithic.domain.report.OverviewResult
+import com.cooper.lithic.ui.HomeAndroidAcceptanceFixture
 import java.io.File
 import java.math.BigDecimal
 import java.time.LocalDate
+import java.util.UUID
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -94,56 +98,15 @@ class HomeOverviewUiTest {
         compose.onNodeWithTag("home-project-category-negative").performScrollTo().assertTextEquals("−<¥0.01/天")
         compose.onNodeWithTag("home-subscription-rate").performScrollTo().assertTextEquals("¥0.13/天")
         compose.onNodeWithTag("home-subscription-category-s").performScrollTo().assertTextEquals("¥0.13/天")
-        val note = compose.onNodeWithTag("home-rounding-note")
-        val panel = compose.onNodeWithTag("home-cost-composition", useUnmergedTree = true)
-        val expand = compose.onAllNodes(
-            SemanticsMatcher.keyIsDefined(SemanticsActions.Expand), useUnmergedTree = true,
+        verifyRoundingNote(
+            compose,
+            reopen = {
+                pressBack()
+                compose.onNodeWithTag("home-cost-composition").assertDoesNotExist()
+                compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
+            },
+            capture = ::captureRoundingDiagnostic,
         )
-        try {
-            // Compare the previous semantic-only action with a real drag on this same sheet.
-            recordRoundingViewport("before-semantic-scroll")
-            note.performScrollTo()
-            recordRoundingViewport("after-semantic-scroll")
-            if (!note.isDisplayed()) captureRoundingPanel("cost-composition-before-gesture")
-            if (expand.fetchSemanticsNodes().isNotEmpty()) {
-                val handle = expand[0]
-                val screenTop = handle.fetchSemanticsNode().positionOnScreen.y
-                handle.performTouchInput {
-                    val distance = minOf(400.dp.toPx(), screenTop + center.y - 32.dp.toPx())
-                    swipe(center, center - Offset(0f, distance), durationMillis = 500)
-                }
-                compose.waitForIdle()
-                recordRoundingViewport("after-sheet-drag")
-            }
-            val screenHeight = InstrumentationRegistry.getInstrumentation().uiAutomation
-                .rootInActiveWindow?.let { root ->
-                    Rect().also { root.getBoundsInScreen(it) }.bottom
-                } ?: InstrumentationRegistry.getInstrumentation().targetContext.resources.displayMetrics.heightPixels
-            for (attempt in 1..4) {
-                val panelTop = panel.fetchSemanticsNode().positionOnScreen.y
-                panel.performTouchInput {
-                    val bottom = minOf(height.toFloat(), screenHeight - panelTop)
-                    val top = maxOf(0f, -panelTop)
-                    swipe(Offset(center.x, top + (bottom - top) * 0.85f),
-                        Offset(center.x, top + (bottom - top) * 0.15f), durationMillis = 400)
-                }
-                compose.waitForIdle()
-                if (note.isDisplayed() && roundingNoteFitsWindow()) break
-            }
-            recordRoundingViewport("after-content-swipe")
-            note.assertIsDisplayed().assertTextEquals(
-                "分项四舍五入，显示金额相加可能有分位差；汇总使用未舍入结果。",
-            )
-            assertTrue("Rounding note must fit in the visible window", roundingNoteFitsWindow())
-            captureRoundingPanel("cost-composition-rounding-note")
-        } catch (failure: Throwable) {
-            if (failure !is Exception && failure !is AssertionError) throw failure
-            runCatching { recordRoundingViewport("assertion-failed", includeTree = true) }
-                .onFailure { failure.addSuppressed(it) }
-            runCatching { captureRoundingPanel("cost-composition-failure") }
-                .onFailure { failure.addSuppressed(it) }
-            throw failure
-        }
     }
 
     @Test
@@ -194,45 +157,10 @@ class HomeOverviewUiTest {
         assertEquals(listOf("projects", "new-project", "subscriptions", "new-subscription"), clicks)
     }
 
-    private fun roundingNoteFitsWindow(): Boolean {
-        val note = compose.onNodeWithTag("home-rounding-note").fetchSemanticsNode()
-        val visible = note.boundsInWindow
-        return visible.width >= note.size.width - 1f && visible.height >= note.size.height - 1f
-    }
-
-    private fun recordRoundingViewport(phase: String, includeTree: Boolean = false) {
-        val note = compose.onNodeWithTag("home-rounding-note", useUnmergedTree = true).fetchSemanticsNode()
-        val panel = compose.onNodeWithTag("home-cost-composition", useUnmergedTree = true).fetchSemanticsNode()
-        val ancestors = generateSequence(note.parent) { it.parent }.toList()
-        val scroll = ancestors.firstOrNull { it.config.getOrNull(SemanticsProperties.VerticalScrollAxisRange) != null }
-        val range = scroll?.config?.getOrNull(SemanticsProperties.VerticalScrollAxisRange)
-        val expand = compose.onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsActions.Expand), useUnmergedTree = true)
-            .fetchSemanticsNodes()
-        val collapse = compose.onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsActions.Collapse), useUnmergedTree = true)
-            .fetchSemanticsNodes()
-        val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
-        val window = Rect().also { automation.rootInActiveWindow?.getBoundsInScreen(it) }
-        val display = InstrumentationRegistry.getInstrumentation().targetContext.resources.displayMetrics
-        Log.i("LithicRoundingNote", "$phase note[id=${note.id}, size=${note.size}, root=${note.boundsInRoot}, " +
-            "window=${note.boundsInWindow}, screenOrigin=${note.positionOnScreen}] " +
-            "panel[id=${panel.id}, size=${panel.size}, root=${panel.boundsInRoot}, window=${panel.boundsInWindow}] " +
-            "scroll[id=${scroll?.id}, root=${scroll?.boundsInRoot}, window=${scroll?.boundsInWindow}, " +
-            "value=${range?.value?.invoke()}, max=${range?.maxValue?.invoke()}] " +
-            "expand=${expand.map { it.boundsInWindow }} collapse=${collapse.map { it.boundsInWindow }} " +
-            "display=${display.widthPixels}x${display.heightPixels} activeWindow=$window ancestors=${ancestors.map { it.id }}")
-        if (includeTree) {
-            val roots = compose.onAllNodes(isRoot(), useUnmergedTree = true)
-            repeat(roots.fetchSemanticsNodes().size) { index ->
-                roots[index].printToString(maxDepth = Int.MAX_VALUE).lineSequence().forEach { line ->
-                    Log.i("LithicRoundingNote", line)
-                }
-            }
-        }
-    }
-
-    private fun captureRoundingPanel(name: String) {
+    private fun captureRoundingDiagnostic(name: String) {
         val attempt = InstrumentationRegistry.getArguments().getString("homeAcceptanceRunId") ?: return
-        require(attempt.matches(Regex("[0-9a-f-]{36}")))
+        require(UUID.fromString(attempt).toString() == attempt)
+        HomeAndroidAcceptanceFixture.requireDisposableEmulator()
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val directory = File(instrumentation.targetContext.filesDir, "home-android-acceptance/$attempt/rounding-note")
         check(directory.isDirectory || directory.mkdirs())
@@ -274,4 +202,117 @@ class HomeOverviewUiTest {
     ) = OverviewResult(LocalDate.of(2026, 1, 20), BigDecimal(total), BigDecimal(project), BigDecimal(subscription),
         projectCount, subscriptionCount, activeProjectCount, activeSubscriptionCount,
         projectCategories, subscriptionCategories)
+}
+
+internal fun verifyRoundingNote(
+    compose: ComposeContentTestRule,
+    reopen: (() -> Unit)? = null,
+    capture: (String) -> Unit,
+) {
+    val note = compose.onNodeWithTag("home-rounding-note")
+    val panel = compose.onNodeWithTag("home-cost-composition", useUnmergedTree = true)
+    val expand = compose.onAllNodes(
+        SemanticsMatcher.keyIsDefined(SemanticsActions.Expand), useUnmergedTree = true,
+    )
+    try {
+        if (reopen != null) {
+            reopen()
+            recordRoundingViewport(compose, "before-semantic-scroll", includeTree = true)
+            note.performScrollTo()
+            recordRoundingViewport(compose, "after-semantic-scroll")
+            capture("cost-composition-before-gesture")
+            reopen()
+        }
+        recordRoundingViewport(compose, "before-user-gesture", includeTree = reopen == null)
+        val expandable = expand.fetchSemanticsNodes()
+        if (expandable.isNotEmpty()) {
+            check(expandable.size == 1) { "Expected one expandable sheet handle" }
+            val handle = expand[0]
+            val screenTop = handle.fetchSemanticsNode().positionOnScreen.y
+            handle.performTouchInput {
+                val distance = minOf(400.dp.toPx(), screenTop + center.y - 32.dp.toPx())
+                check(distance > 0) { "Sheet handle is outside the visible screen" }
+                swipe(center, center - Offset(0f, distance), durationMillis = 500)
+            }
+            compose.waitForIdle()
+            recordRoundingViewport(compose, "after-sheet-drag")
+        }
+        for (attempt in 1..4) {
+            val window = activeWindowBounds()
+            check(!window.isEmpty) { "Active sheet window is unavailable" }
+            val node = panel.fetchSemanticsNode()
+            val rootOrigin = node.positionOnScreen.y - node.positionInRoot.y
+            val panelTop = rootOrigin + node.boundsInRoot.top
+            panel.performTouchInput {
+                val bottom = minOf(height.toFloat(), window.bottom - panelTop)
+                val top = maxOf(0f, window.top - panelTop)
+                check(bottom > top) { "No visible area for the sheet content gesture" }
+                swipe(Offset(center.x, top + (bottom - top) * 0.85f),
+                    Offset(center.x, top + (bottom - top) * 0.15f), durationMillis = 400)
+            }
+            compose.waitForIdle()
+            if (note.isDisplayed() && roundingNoteFitsWindow(compose)) break
+        }
+        recordRoundingViewport(compose, "after-content-swipe")
+        note.assertIsDisplayed().assertTextEquals(
+            "分项四舍五入，显示金额相加可能有分位差；汇总使用未舍入结果。",
+        )
+        assertTrue("Rounding note must fit in the visible window", roundingNoteFitsWindow(compose))
+        capture("cost-composition-rounding-note")
+    } catch (failure: Throwable) {
+        if (failure !is Exception && failure !is AssertionError) throw failure
+        runCatching { recordRoundingViewport(compose, "assertion-failed", includeTree = true) }
+            .onFailure { failure.addSuppressed(it) }
+        runCatching { capture("cost-composition-failure") }
+            .onFailure { failure.addSuppressed(it) }
+        throw failure
+    }
+}
+
+private fun roundingNoteFitsWindow(compose: ComposeContentTestRule): Boolean {
+    val note = compose.onNodeWithTag("home-rounding-note").fetchSemanticsNode()
+    val visible = note.boundsInWindow
+    val origin = note.positionOnScreen
+    val window = activeWindowBounds()
+    return note.size.width > 0 && note.size.height > 0 &&
+        visible.width >= note.size.width - 1f && visible.height >= note.size.height - 1f &&
+        !window.isEmpty && origin.x >= window.left - 1f && origin.y >= window.top - 1f &&
+        origin.x + note.size.width <= window.right + 1f &&
+        origin.y + note.size.height <= window.bottom + 1f
+}
+
+private fun recordRoundingViewport(compose: ComposeContentTestRule, phase: String, includeTree: Boolean = false) {
+    val note = compose.onNodeWithTag("home-rounding-note", useUnmergedTree = true).fetchSemanticsNode()
+    val panel = compose.onNodeWithTag("home-cost-composition", useUnmergedTree = true).fetchSemanticsNode()
+    val ancestors = generateSequence(note.parent) { it.parent }.toList()
+    val scroll = ancestors.firstOrNull { it.config.getOrNull(SemanticsProperties.VerticalScrollAxisRange) != null }
+    val range = scroll?.config?.getOrNull(SemanticsProperties.VerticalScrollAxisRange)
+    val (position, maximum) = compose.runOnIdle { range?.value?.invoke() to range?.maxValue?.invoke() }
+    val expand = compose.onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsActions.Expand), useUnmergedTree = true)
+        .fetchSemanticsNodes()
+    val collapse = compose.onAllNodes(SemanticsMatcher.keyIsDefined(SemanticsActions.Collapse), useUnmergedTree = true)
+        .fetchSemanticsNodes()
+    val window = activeWindowBounds()
+    val display = InstrumentationRegistry.getInstrumentation().targetContext.resources.displayMetrics
+    val visible = compose.onNodeWithTag("home-rounding-note").isDisplayed()
+    Log.i("LithicRoundingNote", "$phase note[id=${note.id}, size=${note.size}, root=${note.boundsInRoot}, " +
+        "window=${note.boundsInWindow}, screenOrigin=${note.positionOnScreen}, displayed=$visible] " +
+        "panel[id=${panel.id}, size=${panel.size}, root=${panel.boundsInRoot}, window=${panel.boundsInWindow}] " +
+        "scroll[id=${scroll?.id}, root=${scroll?.boundsInRoot}, window=${scroll?.boundsInWindow}, " +
+        "value=$position, max=$maximum] " +
+        "expand=${expand.map { it.boundsInWindow }} collapse=${collapse.map { it.boundsInWindow }} " +
+        "display=${display.widthPixels}x${display.heightPixels} activeWindow=$window ancestors=${ancestors.map { it.id }}")
+    if (includeTree) {
+        val roots = compose.onAllNodes(isRoot(), useUnmergedTree = true)
+        repeat(roots.fetchSemanticsNodes().size) { index ->
+            roots[index].printToString(maxDepth = Int.MAX_VALUE).lineSequence().forEach { line ->
+                Log.i("LithicRoundingNote", line)
+            }
+        }
+    }
+}
+
+private fun activeWindowBounds(): Rect {
+    val automation = InstrumentationRegistry.getInstrumentation().uiAutomation
+    return Rect().also { automation.rootInActiveWindow?.getBoundsInScreen(it) }
 }
