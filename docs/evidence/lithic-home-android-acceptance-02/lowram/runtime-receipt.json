@@ -1,0 +1,151 @@
+{
+  "host": {
+    "avd": {
+      "registry": "E:\\CODEX\\lithic-home-android-acceptance-01-local\\avd\\Lithic_Home_Acceptance_01_API36.ini",
+      "avd_dir": "E:\\CODEX\\lithic-home-android-acceptance-01-local\\avd\\Lithic_Home_Acceptance_01_API36.avd",
+      "config_sha256": "38b167fb8d1aed0b9dd057449e6b0d628af6fb0a9feba249fb24c4de8f18a573",
+      "requested_ram_mib": 1536,
+      "requested_cores": 2,
+      "geometry": [
+        720,
+        1648,
+        320
+      ],
+      "previous_closure": "wrapper=31232 exit=1; verified owned children stopped=['4972']"
+    },
+    "host_available_gib": 4.902885437011719,
+    "disks_available_gib": {
+      "C:/": 17.753173828125,
+      "E:/": 29.026142120361328
+    },
+    "adb_pid": 22412,
+    "adb_port": 5038,
+    "ports": [
+      17640,
+      17641
+    ]
+  },
+  "new_hardware_write_utc": "2026-11-13T01:25:13.6603620Z",
+  "new_hardware_sha256": "b1863a8555e2669001a49571354775ce2b7686fd410d84b3a387bd2298aac10b",
+  "new_hardware_fields": [
+    "hw.cpu.ncore = 2",
+    "hw.ramSize = 1536"
+  ],
+  "isolated_server": {
+    "process": {
+      "Pid": 22412,
+      "Path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "CreatedUtc": "2026-11-13T01:24:54.870524Z",
+      "OwnedSentinel": true
+    },
+    "protocol": "0029",
+    "identity": {
+      "version": "37.0.1",
+      "build": "15733141",
+      "executable_path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe"
+    }
+  },
+  "before": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 16276
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 16276,
+        "Path": null,
+        "CreatedUtc": "2026-11-13T01:12:11.01606Z",
+        "OwnedSentinel": false
+      }
+    ]
+  },
+  "after": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 16276
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 16276,
+        "Path": null,
+        "CreatedUtc": "2026-11-13T01:12:11.01606Z",
+        "OwnedSentinel": false
+      }
+    ]
+  },
+  "original_service_before": {
+    "protocol": "0029",
+    "identity": {
+      "version": "36.0.1",
+      "build": "13811061",
+      "executable_path": "E:\\向日葵\\Oppo Connect\\daemon\\bin\\adb.exe"
+    }
+  },
+  "original_service_after": {
+    "protocol": "0029",
+    "identity": {
+      "version": "36.0.1",
+      "build": "13811061",
+      "executable_path": "E:\\向日葵\\Oppo Connect\\daemon\\bin\\adb.exe"
+    }
+  },
+  "adb_service_commands": [
+    {
+      "command": [
+        "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-P",
+        "5038",
+        "--one-device",
+        "LITHIC-ACCEPTANCE-02-LOWRAM-NO-USB-a214dca8c2634af79e5115db91467ab7",
+        "start-server"
+      ],
+      "start_utc": "2026-11-13T09:24:52.711+08:00",
+      "timeout_seconds": 25,
+      "exit": 0,
+      "stdout": "",
+      "stderr": "* daemon not running; starting now at tcp:5038\r\n* daemon started successfully\r\n",
+      "end_utc": "2026-11-13T09:24:54.955+08:00",
+      "elapsed_seconds": 2.25
+    },
+    {
+      "command": [
+        "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-P",
+        "5038",
+        "devices",
+        "-l"
+      ],
+      "start_utc": "2026-11-13T09:24:57.55+08:00",
+      "timeout_seconds": 8,
+      "exit": 0,
+      "stdout": "List of devices attached\r\n\r\n",
+      "stderr": "",
+      "end_utc": "2026-11-13T09:24:57.731+08:00",
+      "elapsed_seconds": 0.172
+    },
+    {
+      "command": [
+        "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+        "-P",
+        "5038",
+        "kill-server"
+      ],
+      "start_utc": "2026-11-13T09:25:33.488+08:00",
+      "timeout_seconds": 10,
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "end_utc": "2026-11-13T09:25:37.545+08:00",
+      "elapsed_seconds": 4.046
+    }
+  ],
+  "app_installs": 0,
+  "instrumentation": 0,
+  "screenshots": 0
+}

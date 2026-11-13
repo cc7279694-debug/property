@@ -44,3 +44,13 @@ App/Test 安装 **0**，Instrumentation 执行 **0**，原生截图 **0**。因�
 本机完整构建、APK 审计及服务日志保存在 `E:/CODEX/lithic-home-android-acceptance-02-local/`。该目录中的本次运行控制器草稿没有执行，不属于已验证产物。仅提交报告及必要证据，未操作个人设备、真实账本、`main` 或正式发行。
 
 **LITHIC_HOME_ANDROID_ACCEPTANCE_02 — ENVIRONMENT_BLOCKED**。等待 ChatGPT 独立审查。
+
+## 2026-11-13 低内存模式单次复验
+
+用户明确授权 `-lowram` 单次启动，保留实际 1536 MiB 及设备健康的安装门槛。主机复测可用 5.643 GiB，实际启动前 4.903 GiB，C/E 盘可用约 17.75／29.03 GiB。复用已通过原 Debug 证书核验的两个 APK，重新校验其 SHA-256，未重新构建。
+
+- **硬件配置 PASS，guest 内存和健康 NOT_RUN。** 本机 Emulator 帮助列出 `-lowram`。AOSP 源码显示该选项可撤销最低 RAM 限制。本次以原 `-ports 17640,17641`、`-lowram -memory 1536 -cores 2` 启动一次。新生成的 `hardware-qemu.ini` 显示 `hw.ramSize = 1536`、`hw.cpu.ncore = 2`。ADB 未准入，未取得 guest `/proc/meminfo` 或 SystemUI 证据。[AOSP Emulator 源码](https://android.googlesource.com/platform/external/qemu/+/emu-master-dev/android/android-emu/android/main-common.c#1295)
+- **ADB 准入 BLOCKED。** 仅使用 SDK 37.0.1 的独立 5038，PID 22412。核对 17641 属于本次 QEMU 后，发出一次定向回环连接，6 秒超时后继续只读观察。约第 22 秒同时出现 `127.0.0.1:17641` 和 `emulator-17640`，均为 `offline`。现有歧义守卫立即停止，未走满 180 秒，未选中 serial，未发出设备 Shell。现有证据不足以确认两个 transport 的对应关系或离线根因。[准入日志](lithic-home-android-acceptance-02/lowram/admission-commands.jsonl)
+- **收口 PASS。** 仅关闭本次拥有的模拟器 wrapper 和已核对的 QEMU 子进程，17640／17641 无监听。核对并关闭本次 5038 服务，PID 22412 及监听均消失。原 5037 在本次尝试前后均为 PID 16276，服务身份一致。该 PID 与昨日记录的 PID 属于不同观察时段。[收口及实际配置回执](lithic-home-android-acceptance-02/lowram/runtime-receipt.json)
+
+本次 App/Test 安装 **0**、Instrumentation **0**、截图 **0**。字体、合成数据、首页视觉与交互仍为 `NOT_RUN`。未重试启动、换端口、修改生产或验收源码。若后续另获授权，需先明确如何在保持目标唯一性校验的前提下处理自动注册与手动回环注册的并存。
