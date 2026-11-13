@@ -18,10 +18,12 @@ Controller hand-off for a future authorized attempt::
 
 The launch command must specify the exact AVD and explicit port pair. Its
 environment must direct the emulator to the same independent ADB server
-(ANDROID_ADB_SERVER_PORT=5038 for the default endpoint). The controller
-still checks host service identity and empty inventory before launch,
-and guest health and package absence after admission. Do not call the old
-acceptance-01 admission function before or after this hand-off.
+(ANDROID_ADB_SERVER_PORT=5038 for the default endpoint) after clearing inherited
+ADB_SERVER_SOCKET, ANDROID_ADB_SERVER_ADDRESS, ANDROID_ADB_SERVER_PORT and
+ADB_SERVER_PORT overrides. Let the emulator register itself as emulator-<console_port>.
+The controller checks host service identity and empty inventory before launch,
+and guest health and package absence after admission. Use this hand-off as the
+only admission path.
 """
 
 from dataclasses import asdict, dataclass
@@ -130,11 +132,7 @@ def _request(sock, service, deadline):
 def _host(service, deadline, *, adb_host=ADB_HOST, adb_port=ADB_PORT):
     server = validate_server_address(adb_host, adb_port)
     if service != "host:devices-l":
-        endpoint = re.fullmatch(r"host:connect:127\.0\.0\.1:([0-9]{1,5})", service)
-        if not endpoint or not 1 <= int(endpoint[1]) <= 65535:
-            raise ValueError("Admission only permits host inventory and an exact loopback transport")
-        if int(endpoint[1]) == SHARED_ADB_PORT:
-            raise ValueError("Emulator transport must not use shared ADB port 5037")
+        raise ValueError("Admission only permits read-only host inventory")
     with socket.create_connection(server, timeout=_remaining(deadline)) as sock:
         _request(sock, service, deadline)
         return Reply(_body(sock, deadline).decode("utf-8", errors="replace"))
@@ -142,6 +140,8 @@ def _host(service, deadline, *, adb_host=ADB_HOST, adb_port=ADB_PORT):
 
 def _shell(serial, command, deadline, *, adb_host=ADB_HOST, adb_port=ADB_PORT):
     server = validate_server_address(adb_host, adb_port)
+    if not re.fullmatch(r"emulator-[0-9]+", serial):
+        raise ValueError("Shell probes require an automatically registered emulator serial")
     if command not in (BOOT_PROPERTY, SHELL_PROBE, IDENTITY_PROPERTIES):
         raise ValueError("Only fixed read-only admission probes are permitted")
     with socket.create_connection(server, timeout=_remaining(deadline)) as sock:
@@ -196,9 +196,8 @@ def _inventory_rows(output):
 def _observe(*, launched_at, avd, console_port, transport_port, alive, host, shell, listener,
              record, clock=time.monotonic, sleep=time.sleep, server=(ADB_HOST, ADB_PORT)):
     deadline = launched_at + WINDOW_SECONDS
-    endpoint = f"127.0.0.1:{transport_port}"
-    allowed_serials = {f"emulator-{console_port}", endpoint}
-    connect_attempted = False
+    serial = f"emulator-{console_port}"
+    unexpected_loopback = f"127.0.0.1:{transport_port}"
 
     def attempt(command, maximum_seconds, action, *args):
         start = clock()
@@ -215,7 +214,7 @@ def _observe(*, launched_at, avd, console_port, transport_port, alive, host, she
                          status="COMPLETED" if reply.exit_code in (None, 0) and not reply.stderr else "FAILED")
             if command == "host:devices-l":
                 # Host enumeration can contain a physical device. Keep its serial out of evidence.
-                event["devices"] = [[row[0], row[1]] if len(row) >= 2 and row[0] in allowed_serials
+                event["devices"] = [[row[0], row[1]] if len(row) >= 2 and row[0] in (serial, unexpected_loopback)
                                     else ["<unexpected transport>"] for row in _inventory_rows(reply.stdout)]
             else:
                 event["stdout"] = reply.stdout
@@ -241,38 +240,41 @@ def _observe(*, launched_at, avd, console_port, transport_port, alive, host, she
     def blocked(reason):
         return AdmissionResult("ENVIRONMENT_BLOCKED", reason)
 
+    def inventory():
+        output = attempt("host:devices-l", 3, host, "host:devices-l")
+        devices = _inventory_rows(output) if output is not None else []
+        if any(row[0] == unexpected_loopback for row in devices):
+            return False, blocked("Unexpected second ADB connection (TCP loopback transport)")
+        if len(devices) > 1 or any(len(row) < 2 or row[0] != serial for row in devices):
+            return False, blocked("Unexpected or ambiguous ADB transport inventory")
+        return bool(devices and devices[0][1] == "device"), None
+
     while clock() < deadline:
         if not alive():
             return blocked("Owned emulator process exited during admission")
-        output = attempt("host:devices-l", 3, host, "host:devices-l")
-        if output is not None:
-            devices = _inventory_rows(output)
-            if len(devices) > 1 or any(len(row) < 2 or row[0] not in allowed_serials for row in devices):
-                return blocked("Unexpected or ambiguous ADB transport inventory")
-
-            if (not devices and not connect_attempted) or (devices and devices[0][1] == "device"):
-                owner = attempt("Windows listener ownership", 8, listener)
-                if owner == "FOREIGN_OR_NON_LOOPBACK":
-                    return blocked("ADB transport listener is not owned loopback")
-                if owner == "OWNED_LOOPBACK" and alive():
-                    if not devices and clock() < deadline:
-                        connect_attempted = True
-                        service = "host:connect:" + endpoint
-                        attempt(service, 6, host, service)
-                    elif devices:
-                        serial = devices[0][0]
-                        boot = attempt(f"{serial} shell {BOOT_PROPERTY}", 4, shell, serial, BOOT_PROPERTY)
-                        if boot == "1":
-                            probe = attempt(f"{serial} shell {SHELL_PROBE}", 4, shell, serial, SHELL_PROBE)
-                            if probe == "LITHIC_SHELL_OK":
-                                identity = attempt(f"{serial} shell {IDENTITY_PROPERTIES}", 5, shell, serial, IDENTITY_PROPERTIES)
-                                if identity is not None:
-                                    if identity.splitlines() != [avd, "1", "36", "x86_64"]:
-                                        return blocked("Guest AVD, QEMU, API or ABI identity mismatch")
-                                    if clock() < deadline and alive():
-                                        return AdmissionResult("ADMITTED", "Validated ADB device and guest identity",
-                                                               serial, {"avd": avd, "qemu": "1", "api": "36",
-                                                                        "abi": "x86_64", "bootCompleted": "1"})
+        ready, failure = inventory()
+        if failure:
+            return failure
+        if ready:
+            owner = attempt("Windows listener ownership", 8, listener)
+            if owner == "FOREIGN_OR_NON_LOOPBACK":
+                return blocked("ADB transport listener is not owned loopback")
+            if owner == "OWNED_LOOPBACK" and alive():
+                boot = attempt(f"{serial} shell {BOOT_PROPERTY}", 4, shell, serial, BOOT_PROPERTY)
+                if boot == "1":
+                    probe = attempt(f"{serial} shell {SHELL_PROBE}", 4, shell, serial, SHELL_PROBE)
+                    if probe == "LITHIC_SHELL_OK":
+                        identity = attempt(f"{serial} shell {IDENTITY_PROPERTIES}", 5, shell, serial, IDENTITY_PROPERTIES)
+                        if identity is not None:
+                            if identity.splitlines() != [avd, "1", "36", "x86_64"]:
+                                return blocked("Guest AVD, QEMU, API or ABI identity mismatch")
+                            ready, failure = inventory()
+                            if failure:
+                                return failure
+                            if ready and clock() < deadline and alive():
+                                return AdmissionResult("ADMITTED", "Validated ADB device and guest identity",
+                                                       serial, {"avd": avd, "qemu": "1", "api": "36",
+                                                                "abi": "x86_64", "bootCompleted": "1"})
         remaining = deadline - clock()
         if remaining > 0:
             sleep(min(POLL_SECONDS, remaining))
@@ -311,7 +313,8 @@ def admit_owned_emulator(proc, launched_at, avd, console_port, transport_port, e
     directory.mkdir(parents=True, exist_ok=True)
     with (directory / "admission-claim.json").open("x", encoding="utf-8") as claim:
         json.dump({"pid": proc.pid, "avd": avd, "ports": [console_port, transport_port],
-                   "windowSeconds": WINDOW_SECONDS, "maxConnectRequests": 1,
+                   "windowSeconds": WINDOW_SECONDS, "maxConnectRequests": 0,
+                   "registration": "emulator-auto", "expectedSerial": f"emulator-{console_port}",
                    "adbHost": server[0], "adbPort": server[1]}, claim)
     with (directory / "admission-commands.jsonl").open("x", encoding="utf-8") as log:
         def record(event):

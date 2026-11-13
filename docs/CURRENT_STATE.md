@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_ANDROID_SINGLE_TRANSPORT_FIX_03 — READY_FOR_SINGLE_TRANSPORT_ATTEMPT（2026-11-13）**。5038 只等指定模拟器自动注册，移除手动回环注册。保留 180 秒、唯一设备、监听归属和身份检查。原套件 17 项及修正后 22 项离线测试通过。实际 Android 自动注册与设备运行 NOT_RUN。见[修正报告](evidence/LITHIC-Android-Single-Transport-Fix-03.md)。
+
 - **LITHIC_HOME_ANDROID_ACCEPTANCE_02 — ENVIRONMENT_BLOCKED（2026-11-12）**。独立 5038 SDK 服务空列表与关闭通过，原 5037 不变。Debug APK/Test 使用原证书复验通过。11-13 用户授权低内存模式复验一次，新生成硬件配置为 1536 MiB／2 核。5038 同时出现两个离线传输，歧义守卫停止。guest 健康 NOT_RUN，安装、Instrumentation 和截图均为 0。见[验收报告](evidence/LITHIC-Home-Android-Acceptance-02.md)。
 
 - **LITHIC_HOME_ANDROID_ADB_ISOLATION_03 — ADB_ISOLATION_READY（2026-11-12）**。独立 SDK ADB 37.0.1 在 5038 启动、空设备查询和关闭均通过。原 5037 服务 PID 及身份一致。准入默认 5038 并拒绝 5037，17 项离线测试通过。真实 Android 准入 NOT_RUN。后续运行以[独立 ADB 报告及接线](evidence/LITHIC-Home-Android-ADB-Isolation-03.md)为准。
