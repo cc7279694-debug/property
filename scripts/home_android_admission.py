@@ -194,10 +194,11 @@ def _inventory_rows(output):
 
 
 def _observe(*, launched_at, avd, console_port, transport_port, alive, host, shell, listener,
-             record, clock=time.monotonic, sleep=time.sleep, server=(ADB_HOST, ADB_PORT)):
+             record, clock=time.monotonic, sleep=time.sleep, server=(ADB_HOST, ADB_PORT), on_owned_device=None):
     deadline = launched_at + WINDOW_SECONDS
     serial = f"emulator-{console_port}"
     unexpected_loopback = f"127.0.0.1:{transport_port}"
+    notified = False
 
     def attempt(command, maximum_seconds, action, *args):
         start = clock()
@@ -259,7 +260,10 @@ def _observe(*, launched_at, avd, console_port, transport_port, alive, host, she
             owner = attempt("Windows listener ownership", 8, listener)
             if owner == "FOREIGN_OR_NON_LOOPBACK":
                 return blocked("ADB transport listener is not owned loopback")
-            if owner == "OWNED_LOOPBACK" and alive():
+            if owner == "OWNED_LOOPBACK" and alive() and clock() < deadline:
+                if on_owned_device is not None and not notified:
+                    on_owned_device(serial)
+                    notified = True
                 boot = attempt(f"{serial} shell {BOOT_PROPERTY}", 4, shell, serial, BOOT_PROPERTY)
                 if boot == "1":
                     probe = attempt(f"{serial} shell {SHELL_PROBE}", 4, shell, serial, SHELL_PROBE)
@@ -282,12 +286,14 @@ def _observe(*, launched_at, avd, console_port, transport_port, alive, host, she
 
 
 def admit_owned_emulator(proc, launched_at, avd, console_port, transport_port, evidence_dir,
-                         *, adb_host=ADB_HOST, adb_port=ADB_PORT):
+                         *, adb_host=ADB_HOST, adb_port=ADB_PORT, on_owned_device=None):
     """Observe once using the 180-second deadline measured before the caller's Popen.
 
     `evidence_dir` is a new, caller-owned directory. The caller must have verified
     an empty inventory before launching one fresh AVD with explicit `-ports`.
     ADB requests use the selected independent loopback server only.
+    An optional nonblocking callback observes the first owned ready transport before boot validation.
+    The callback does not admit the guest and must not perform writes to it.
     No command in this module runs before that separately authorized launch.
     """
     server = validate_server_address(adb_host, adb_port)
@@ -326,7 +332,7 @@ def admit_owned_emulator(proc, launched_at, avd, console_port, transport_port, e
                           host=partial(_host, adb_host=server[0], adb_port=server[1]),
                           shell=partial(_shell, adb_host=server[0], adb_port=server[1]),
                           listener=lambda limit: _windows_listener(proc, avd, console_port, transport_port, limit),
-                          record=record, server=server)
+                          record=record, server=server, on_owned_device=on_owned_device)
     with (directory / "admission-result.json").open("x", encoding="utf-8") as output:
         json.dump({**asdict(result), "adbHost": server[0], "adbPort": server[1]}, output, indent=2)
         output.write("\n")

@@ -1,0 +1,12 @@
+{
+  "executed_collector_sha256": "a8edfe7e8480f4930564d3fb0c5283957127fea5d78eef52273ce29c4869bee2",
+  "post_run_local_fix_sha256": "935edd13bb7abed73cc73381bbc8fb0aa3dad9fe03a26901689e364e6012f027",
+  "change": "Match the exact uptime line with splitlines() instead of requiring a literal LF.",
+  "offline_replay": {
+    "original_crlf_responses": "29/29 accepted",
+    "normalized_lf_response": "1/1 accepted",
+    "nonzero_exit_and_missing_marker": "2/2 rejected"
+  },
+  "device_commands_executed": 0,
+  "original_runtime_result_unchanged": true
+}

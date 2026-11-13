@@ -36,7 +36,7 @@ class AdmissionTests(unittest.TestCase):
         self.records = []
         self.actions = []
 
-    def observe(self, host, shell=None, listener=None, alive=lambda: True):
+    def observe(self, host, shell=None, listener=None, alive=lambda: True, on_owned_device=None):
         def unexpected_shell(*args):
             self.fail("Unexpected guest command")
 
@@ -45,11 +45,35 @@ class AdmissionTests(unittest.TestCase):
             alive=alive, host=host, shell=shell or unexpected_shell,
             listener=listener or (lambda _: admission.Reply("OWNED_LOOPBACK", exit_code=0)),
             record=self.records.append, clock=self.clock.read, sleep=self.clock.advance,
+            on_owned_device=on_owned_device,
         )
 
     def consume_timeout(self, deadline, error):
         self.clock.now = deadline
         raise error
+
+    def test_owned_notification_once_before_boot_and_never_for_foreign_listener(self):
+        def host(service, deadline):
+            return admission.Reply(f"{SERIAL}\tdevice")
+
+        def shell(serial, command, deadline):
+            self.actions.append(command)
+            if command == admission.BOOT_PROPERTY:
+                return admission.Reply("" if self.actions.count(command) == 1 else "1", exit_code=0)
+            if command == admission.SHELL_PROBE:
+                return admission.Reply("LITHIC_SHELL_OK", exit_code=0)
+            return admission.Reply(f"{AVD}\n1\n36\nx86_64", exit_code=0)
+
+        notify = lambda serial: self.actions.append(serial)
+        result = self.observe(host, shell, on_owned_device=notify)
+        self.assertEqual(result.status, "ADMITTED")
+        self.assertEqual(self.actions[:3], [SERIAL, admission.BOOT_PROPERTY, admission.BOOT_PROPERTY])
+        self.assertEqual(self.actions.count(SERIAL), 1)
+        self.actions.clear()
+        result = self.observe(host, listener=lambda _: admission.Reply("FOREIGN_OR_NON_LOOPBACK", exit_code=0),
+                              on_owned_device=notify)
+        self.assertEqual(result.status, "ENVIRONMENT_BLOCKED")
+        self.assertEqual(self.actions, [])
 
     def test_read_only_timeouts_continue_to_valid_identity(self):
         poll_count = 0
