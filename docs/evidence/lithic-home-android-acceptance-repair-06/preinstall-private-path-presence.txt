@@ -1,0 +1,8 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell su 0 /system/bin/sh -c 'set -e; test "$(id -u)" = 0; for parent in /data/user/0 /data/user_de/0; do test -r "$parent" && test -x "$parent" || exit 4; done; for path in /data/user/0/com.cooper.lithic.debug /data/user/0/com.cooper.lithic.debug.test /data/user_de/0/com.cooper.lithic.debug /data/user_de/0/com.cooper.lithic.debug.test; do if test -e "$path" || test -L "$path"; then echo "PRESENT $path"; exit 3; fi; echo "ABSENT $path"; done'
+exit=0
+ABSENT /data/user/0/com.cooper.lithic.debug
+ABSENT /data/user/0/com.cooper.lithic.debug.test
+ABSENT /data/user_de/0/com.cooper.lithic.debug
+ABSENT /data/user_de/0/com.cooper.lithic.debug.test
+
+---stderr---

@@ -1,0 +1,4 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell pm path --user 0 com.cooper.lithic.debug.test
+exit=1
+
+---stderr---

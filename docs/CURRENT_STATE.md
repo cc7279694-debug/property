@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_HOME_ANDROID_ACCEPTANCE_REPAIR_06 — READY_FOR_REVIEW_WITH_FAILURES（2026-11-13）**。采集器支持 CRLF/LF，30 项离线测试与 Run07 原始 29/29 份样本回放通过。单次复用 Repair05 AVD，5038 准入和额外健康观察通过，未捕获新 ANR。Android 43 项实跑 42 PASS／1 FAIL，失败为成本构成舍入说明滚动后不可见。三主题和 360dp 系统 200% 字体原生验收通过，取得 10 张截图，两类卡片均完整，字体恢复 1.0。夹具清理有回执，模拟器与 5038 正常退出。SAF 与 Photo Picker NOT_RUN。见[报告](evidence/LITHIC-Home-Android-Acceptance-Repair-06.md)。
+
 - **LITHIC_DOCUMENTSUI_DIAGNOSTIC_RUN_07 — ENVIRONMENT_BLOCKED（2026-11-13）**。复用 Repair05 AVD 和原 userdata，仅冷启动一次。5038 唯一设备约 74.6 秒准入，60 秒额外观察中未见新 ANR，未取得 DocumentsUI PID。采集器误判 Windows ADB 的 CRLF，综合安装门禁停止。原始 29 份资源样本可离线复核，换行修正通过离线回放。包预检、43 项 Android 回归和两张 200% 截图均 NOT_RUN。模拟器与 5038 正常退出，原 5037 保持。见[诊断报告](evidence/LITHIC-DocumentsUI-Diagnostic-Run-07.md)。
 
 - **LITHIC_HOME_ANDROID_ACCEPTANCE_REPAIR_05 — ENVIRONMENT_BLOCKED（2026-11-13）**。全新独立 API 36 AVD 与 userdata 生成及哈希核验通过，旧 AVD 保留。只更新 AndroidTest 夹具的固定 AVD 名称，两份 App 复用原字节。22 项离线测试、Test 编译和签名通过。唯一 5038 自动连接约 149.5 秒通过准入，实际 1536 MiB／2 核。安装前系统 DocumentsUI 启动 ANR，设备健康门禁停止。包预检、基线测量、修复版 43 项 Android 和新截图均 NOT_RUN，字体未改。新 AVD 和独立 5038 已退出，原 5037 身份不变。见[复验报告](evidence/LITHIC-Home-Android-Acceptance-Repair-05.md)。
