@@ -44,7 +44,7 @@ import kotlinx.coroutines.withContext
 /** Synthetic records for the actual MainActivity owner of the disposable acceptance AVD only. */
 internal object HomeAndroidAcceptanceFixture {
     const val INVESTMENT_CENTS = 6_248_000L
-    private const val AVD = "Lithic_Home_Acceptance_01_API36"
+    private const val AVD = "Lithic_Home_Acceptance_Repair05_API36"
     private const val PACKAGE = "com.cooper.lithic.debug"
     private const val TEST_PACKAGE = "$PACKAGE.test"
     private const val RUNNER = "androidx.test.runner.AndroidJUnitRunner"

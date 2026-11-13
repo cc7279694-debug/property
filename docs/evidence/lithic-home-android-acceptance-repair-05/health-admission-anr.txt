@@ -1,0 +1,6 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell logcat -b events -d -t 150 -s am_anr
+exit=0
+--------- beginning of events
+11-13 04:41:22.080   696  1998 I am_anr  : [0,1769,com.android.documentsui,818527813,Process ProcessRecord{143968d 1769:com.android.documentsui/u0a78} failed to complete startup]
+
+---stderr---

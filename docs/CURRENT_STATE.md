@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_HOME_ANDROID_ACCEPTANCE_REPAIR_05 — ENVIRONMENT_BLOCKED（2026-11-13）**。全新独立 API 36 AVD 与 userdata 生成及哈希核验通过，旧 AVD 保留。只更新 AndroidTest 夹具的固定 AVD 名称，两份 App 复用原字节。22 项离线测试、Test 编译和签名通过。唯一 5038 自动连接约 149.5 秒通过准入，实际 1536 MiB／2 核。安装前系统 DocumentsUI 启动 ANR，设备健康门禁停止。包预检、基线测量、修复版 43 项 Android 和新截图均 NOT_RUN，字体未改。新 AVD 和独立 5038 已退出，原 5037 身份不变。见[复验报告](evidence/LITHIC-Home-Android-Acceptance-Repair-05.md)。
+
 - **LITHIC_HOME_ANDROID_ACCEPTANCE_REPAIR_04 — ENVIRONMENT_BLOCKED（2026-11-13）**。首页卡片大字体标签及两份定向测试已修改。生产及 AndroidTest 编译、Debug 构建、47 项 JVM 和 22 项离线准入通过。唯一 AVD 启动通过 SDK 5038 单连接、1536 MiB／2 核和健康检查，安装前发现已有 App/Test 包记录并停止。基线布局测量、修复版 43 项 Android 和新截图均 NOT_RUN。未写入字体或账本，模拟器和 5038 正常退出，5037 Windows 身份前后一致。见[补修报告](evidence/LITHIC-Home-Android-Acceptance-Repair-04.md)。
 
 - **LITHIC_HOME_ANDROID_ACCEPTANCE_03 — READY_FOR_REVIEW_WITH_FAILURES（2026-11-13）**。指定 AOSP API36 模拟器只启动一次，实际 1536 MiB／2 核，独立 SDK 5038 单连接通过，约 165 秒完成准入。两个已验签 Debug APK 安装后字节一致。Android JUnit 43 项，38 PASS、5 FAIL。正常字号三主题、主要导航及 Room 总投入回归通过，共取得 8 张原生截图。真实系统 200%／360dp 的项目状态「持有中」触发溢出，后续两张大字体卡片截图 NOT_RUN。另有四项既有组件测试断言或操作不匹配。原字体恢复 1.0，本次模拟器和 5038 均已退出，原 5037 身份不变。见[验收报告](evidence/LITHIC-Home-Android-Acceptance-03.md)，等待独立审查。
