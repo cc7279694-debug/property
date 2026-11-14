@@ -2,7 +2,9 @@ package com.cooper.lithic.feature.project
 
 import android.os.Bundle
 import android.provider.Settings
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.semantics.SemanticsNode
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
@@ -16,6 +18,8 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToIndex
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performSemanticsAction
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipe
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -117,7 +121,7 @@ class V3ProjectDetailAndroidAcceptanceTest {
                 assertCover()
                 compose.onNodeWithTag("project-detail-content").performScrollToIndex(0)
                 capture(screenshot)
-                checkTitle(theme, galleryFailures)
+                keepAssertionFailure(galleryFailures) { assertTitleFits(CAMERA_NAME, theme) }
                 keepAssertionFailure(galleryFailures, ::assertFinancialFacts)
                 if (theme == LithicAppearance.PURE_WHITE) checkFullCoverAndClose()
                 backToHome()
@@ -132,7 +136,7 @@ class V3ProjectDetailAndroidAcceptanceTest {
             assertCover()
             compose.onNodeWithTag("project-detail-content").performScrollToIndex(0)
             capture("project-detail-font-200")
-            checkTitle(LithicAppearance.PURE_WHITE, galleryFailures)
+            keepAssertionFailure(galleryFailures) { assertTitleFits(CAMERA_NAME, LithicAppearance.PURE_WHITE) }
             keepAssertionFailure(galleryFailures, ::assertFinancialFacts)
             scrollTo("project-detail-net")
             capture("project-detail-font-200-money")
@@ -143,6 +147,74 @@ class V3ProjectDetailAndroidAcceptanceTest {
                 galleryFailures.forEach(::addSuppressed)
             }
         }
+    }
+
+    @Test fun long_project_title_wraps_without_clipping_at_system_font_scale() {
+        val seeded = runBlocking { checkNotNull(fixture).seed(cameraName = LONG_PROJECT_NAME) }
+        selectTheme(LithicAppearance.PURE_WHITE)
+        openDetail(seeded.projectIds.first())
+        assertCover()
+        val content = compose.onNodeWithTag("project-detail-content")
+        content.performScrollToIndex(0)
+        scrollTo("project-detail-name").assertIsDisplayed()
+        capture(if (expectedFontScale == 1f) "project-detail-long-title-100" else "project-detail-long-title-200")
+        val title = assertTitleFits(LONG_PROJECT_NAME, LithicAppearance.PURE_WHITE, minimumLines = 2)
+        val viewport = content.fetchSemanticsNode().boundsInRoot
+        val actionBefore = compose.onNodeWithTag("project-record-money").assertIsDisplayed()
+            .assertHeightIsAtLeast(48.dp).fetchSemanticsNode().boundsInRoot
+        val category = assertMetadataFits("project-detail-category", "其他", viewport)
+        val status = assertMetadataFits("project-detail-status", "持有中", viewport)
+        val held = assertMetadataFits("project-detail-held-days", "121天", viewport)
+        val metadata = listOf(category, status, held)
+        assertTrue("The title overlaps project metadata", metadata.all { title.bottom <= it.top + PIXEL_TOLERANCE })
+        assertTrue("Category overlaps status", !category.overlaps(status))
+        assertTrue("Held duration overlaps category or status", !held.overlaps(category) && !held.overlaps(status))
+        assertTrue("Record action overlaps the content viewport", viewport.bottom <= actionBefore.top + PIXEL_TOLERANCE)
+
+        // Physically scroll the production list, then verify the cost card and end of the list are reachable.
+        content.performTouchInput {
+            swipe(start = center, end = center.copy(y = center.y - height * .21f), durationMillis = 350)
+        }
+        val shiftedTitle = compose.onAllNodes(hasTestTag("project-detail-name"), useUnmergedTree = true)
+            .fetchSemanticsNodes().singleOrNull()
+        assertTrue("Long-title page did not respond to a vertical swipe",
+            shiftedTitle == null || shiftedTitle.positionInRoot.y < title.top - PIXEL_TOLERANCE)
+
+        val costNode = scrollTo("project-core-metrics").assertIsDisplayed().fetchSemanticsNode()
+        compose.onNodeWithTag("project-detail-daily").assertIsDisplayed().assertTextEquals("¥9.92/天")
+        val costBounds = costNode.actualBoundsInRoot()
+        val headerBounds = listOf("project-detail-name", "project-detail-category", "project-detail-status", "project-detail-held-days")
+            .flatMap { compose.onAllNodes(hasTestTag(it), useUnmergedTree = true).fetchSemanticsNodes() }
+        assertTrue("Cost card overlaps visible identity information", headerBounds.none { it.boundsInRoot.overlaps(costBounds) })
+        assertTrue("The cost card has no usable bounds", costBounds.height > 0 && costBounds.width > 0)
+        assertInside("Unclipped cost card", costBounds, costNode.boundsInRoot)
+        assertInside("Cost card fits the viewport", costBounds, viewport)
+        assertFinancialFacts()
+        scrollTo("project-cost-history").assertIsDisplayed()
+        val actionAfter = compose.onNodeWithTag("project-record-money").assertIsDisplayed()
+            .fetchSemanticsNode().boundsInRoot
+        assertEquals("Record action moved with scrolling", actionBefore, actionAfter)
+        report("long-title-neighbors") {
+            putString("projectDetailAcceptanceLongTitleCategoryBoundsPx", category.toString())
+            putString("projectDetailAcceptanceLongTitleStatusBoundsPx", status.toString())
+            putString("projectDetailAcceptanceLongTitleHeldBoundsPx", held.toString())
+            putString("projectDetailAcceptanceLongTitleCostBoundsAfterScrollPx", costBounds.toString())
+            putString("projectDetailAcceptanceLongTitleActionBoundsPx", actionAfter.toString())
+        }
+        backToHome()
+    }
+
+    private fun assertMetadataFits(tag: String, text: String, viewport: Rect): Rect {
+        val interaction = compose.onNodeWithTag(tag, useUnmergedTree = true).assertIsDisplayed().assertTextEquals(text)
+        val layouts = mutableListOf<TextLayoutResult>()
+        interaction.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        val node = interaction.fetchSemanticsNode()
+        val layout = layouts.single()
+        assertTextInsideNode(tag, text, layout, node)
+        val actualBounds = node.actualBoundsInRoot()
+        assertInside(tag, actualBounds, node.boundsInRoot)
+        assertInside(tag, actualBounds, viewport)
+        return actualBounds
     }
 
     private fun openDetail(id: String) {
@@ -171,9 +243,8 @@ class V3ProjectDetailAndroidAcceptanceTest {
         compose.onNodeWithTag("project-detail-screen").assertIsDisplayed()
     }
 
-    private fun checkTitle(theme: LithicAppearance, failures: MutableList<Throwable>) {
-        val name = "合成横向相机"
-        val title = scrollTo("project-detail-name").assertTextEquals(name)
+    private fun assertTitleFits(name: String, theme: LithicAppearance, minimumLines: Int = 1): Rect {
+        val title = scrollTo("project-detail-name").assertIsDisplayed().assertTextEquals(name)
         val layouts = mutableListOf<TextLayoutResult>()
         title.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
         val layout = layouts.single()
@@ -189,6 +260,7 @@ class V3ProjectDetailAndroidAcceptanceTest {
         val ellipsized = lines.any(layout::isLineEllipsized)
         val lastVisibleEnd = if (layout.lineCount > 0) layout.getLineEnd(layout.lineCount - 1, visibleEnd = true) else 0
         val bounds = titleNode.boundsInRoot
+        val actualBounds = titleNode.actualBoundsInRoot()
         val clipsTitleNode = bounds.height + 1f < titleNode.size.height || bounds.width + 1f < titleNode.size.width
         report("title-layout") {
             putString("projectDetailAcceptanceTitleTheme", theme.name)
@@ -212,6 +284,7 @@ class V3ProjectDetailAndroidAcceptanceTest {
             putString("projectDetailAcceptanceTitleOverflowPolicy", input.overflow.toString())
             putInt("projectDetailAcceptanceTitleMaxLines", input.maxLines)
             putString("projectDetailAcceptanceTitleBoundsInRootPx", bounds.toString())
+            putString("projectDetailAcceptanceTitleUnclippedBoundsInRootPx", actualBounds.toString())
             putString("projectDetailAcceptanceTitleNodeSizePx", titleNode.size.toString())
             putString("projectDetailAcceptanceTitleParentBoundsInRootPx", parentBounds.toString())
             putString("projectDetailAcceptanceTitleViewportBoundsInRootPx", viewport.boundsInRoot.toString())
@@ -226,19 +299,61 @@ class V3ProjectDetailAndroidAcceptanceTest {
                 putFloat("projectDetailAcceptanceTitleLineHeightPx", input.style.lineHeight.toPx())
             }
         }
-        // Defer JUnit's failure until all independent theme screenshots have been captured.
-        // Both the original overflow assertion and independent clipping checks remain mandatory.
-        val location = "${theme.name} at ${expectedFontScale}x"
-        for (check in listOf<() -> Unit>(
-            { assertEquals(name, input.text.text) },
-            { assertFalse("The project title overflows at $location", layout.hasVisualOverflow) },
-            { assertTrue("The project title is clipped at $location", !clipsTitleNode) },
-            { assertTrue("The project title is truncated at $location",
-                !ellipsized && !layout.multiParagraph.didExceedMaxLines && lastVisibleEnd == name.length &&
-                    input.overflow != TextOverflow.Ellipsis) },
-        )) {
-            keepAssertionFailure(failures, check)
+        val location = "${theme.name} at ${expectedFontScale}x ($name)"
+        assertTextInsideNode(location, name, layout, titleNode)
+        assertEquals("Text layout font scale at $location", expectedFontScale, input.density.fontScale, .01f)
+        assertTrue("Unexplained Compose overflow at $location",
+            !layout.hasVisualOverflow ||
+                (layout.didOverflowWidth && !layout.didOverflowHeight &&
+                    layout.multiParagraph.width == input.constraints.maxWidth.toFloat() &&
+                    layout.multiParagraph.width > layout.size.width))
+        assertTrue("Title needs at least $minimumLines lines at $location", layout.lineCount >= minimumLines)
+        assertInside("Unclipped title at $location", actualBounds, bounds)
+        assertInside("Parent at $location", actualBounds, checkNotNull(parentBounds))
+        assertInside("Scroll viewport at $location", actualBounds, viewport.boundsInRoot)
+        return actualBounds
+    }
+
+    // Layout semantics can rebuild a paragraph at the full constraint width. Only the real
+    // node, line and character extents are compared against the available space.
+    private fun assertTextInsideNode(label: String, expected: String, layout: TextLayoutResult, node: SemanticsNode) {
+        val text = layout.layoutInput.text.text
+        assertEquals(label, expected, text)
+        assertTrue("$label has no usable text bounds", node.size.width > 0 && node.size.height > 0 &&
+            layout.size.width > 0 && layout.size.height > 0 && layout.lineCount > 0)
+        val space = Rect(0f, 0f, minOf(node.size.width, layout.size.width).toFloat(),
+            minOf(node.size.height, layout.size.height).toFloat())
+        assertFalse("$label overflows vertically", layout.didOverflowHeight)
+        assertFalse("$label exceeds the maximum line count", layout.multiParagraph.didExceedMaxLines)
+        assertFalse("$label uses an ellipsis policy", layout.layoutInput.overflow == TextOverflow.Ellipsis)
+        var nextOffset = 0
+        for (line in 0 until layout.lineCount) {
+            assertEquals("$label line $line skips text", nextOffset, layout.getLineStart(line))
+            nextOffset = layout.getLineEnd(line)
+            assertFalse("$label line $line has an ellipsis", layout.isLineEllipsized(line))
+            assertTrue("$label line $line is too wide", layout.multiParagraph.getLineWidth(line) <= space.width + PIXEL_TOLERANCE)
+            assertInside("$label line $line",
+                Rect(layout.getLineLeft(line), layout.getLineTop(line), layout.getLineRight(line), layout.getLineBottom(line)),
+                space)
         }
+        assertEquals("$label is missing input characters", expected.length, nextOffset)
+        assertEquals("$label is missing visible characters", expected.length,
+            layout.getLineEnd(layout.lineCount - 1, visibleEnd = true))
+        expected.indices.forEach { offset ->
+            val box = layout.getBoundingBox(offset)
+            assertTrue("$label character $offset has no bounds", box.width > 0f && box.height > 0f)
+            assertInside("$label character $offset", box, space)
+        }
+    }
+
+    private fun SemanticsNode.actualBoundsInRoot(): Rect = Rect(
+        positionInRoot.x, positionInRoot.y, positionInRoot.x + size.width, positionInRoot.y + size.height,
+    )
+
+    private fun assertInside(label: String, inner: Rect, outer: Rect) {
+        assertTrue("$label: $inner is outside $outer",
+            inner.left >= outer.left - PIXEL_TOLERANCE && inner.top >= outer.top - PIXEL_TOLERANCE &&
+                inner.right <= outer.right + PIXEL_TOLERANCE && inner.bottom <= outer.bottom + PIXEL_TOLERANCE)
     }
 
     private fun keepAssertionFailure(failures: MutableList<Throwable>, check: () -> Unit) {
@@ -322,4 +437,10 @@ class V3ProjectDetailAndroidAcceptanceTest {
     }
 
     private fun application() = compose.activity.application as LithicApplication
+
+    private companion object {
+        const val CAMERA_NAME = "合成横向相机"
+        const val LONG_PROJECT_NAME = "合成旅行摄影设备与备用镜头套装"
+        const val PIXEL_TOLERANCE = 1f
+    }
 }

@@ -85,7 +85,7 @@ internal object HomeAndroidAcceptanceFixture {
     ) {
         private var rows: Rows? = null
 
-        suspend fun seed(): Seeded = withContext(Dispatchers.IO) {
+        suspend fun seed(cameraName: String = "合成横向相机"): Seeded = withContext(Dispatchers.IO) {
             requireCurrentOwner()
             check(rows == null) { "This acceptance method has already seeded its ledger" }
             val db = generation.database
@@ -101,7 +101,7 @@ internal object HomeAndroidAcceptanceFixture {
                 "0".repeat(64))
             val owned = Rows(
                 projects = listOf(
-                    LongTermProjectEntity(projectIds[0], "合成横向相机", LithicDatabase.PROJECT_FALLBACK_ID,
+                    LongTermProjectEntity(projectIds[0], cameraName, LithicDatabase.PROJECT_FALLBACK_ID,
                         cameraStart, coverAssetId = landscape.asset.id, createdAt = now, updatedAt = now),
                     LongTermProjectEntity(projectIds[1], "合成纵向背包", LithicDatabase.PROJECT_FALLBACK_ID,
                         bagStart, coverAssetId = portrait.asset.id, createdAt = now, updatedAt = now),
