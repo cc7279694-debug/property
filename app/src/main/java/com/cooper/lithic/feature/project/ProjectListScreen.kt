@@ -53,7 +53,7 @@ internal fun ProjectListScreen(
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     C2PageHeader("长期项目", onBack, "project-list-back", backLabel = "返回现在",
                     actions = { C5InformationButton("长期项目说明", Modifier.testTag("project-list-information")) {
-                        Text("尚未结束的项目；已结束记录可在回看中的历史档案查看。")
+                        Text("已结束项目可在回看的历史档案查看。")
                         Text(countDescription, Modifier.testTag("project-list-total-count"))
                     } })
                     Button(onCreate, Modifier.heightIn(min = 48.dp).testTag("project-list-create")) {
@@ -62,14 +62,14 @@ internal fun ProjectListScreen(
                     }
                     if (state.totalCount != null && state.items.isEmpty() &&
                         (state.loading || state.loadingMore || state.error != null)) {
-                        Text("数量为上次读取结果，尚不能确认当前列表为空。", Modifier.testTag("project-list-count-snapshot"),
+                        Text("数量来自上次读取，当前是否为空尚未确认。", Modifier.testTag("project-list-count-snapshot"),
                             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                     state.error?.let {
                         Text(it, Modifier.testTag("project-list-error"), style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.error)
                         if (state.items.isNotEmpty()) {
-                            Text("暂时无法刷新，以下为上次读取记录。", Modifier.testTag("project-list-stale"),
+                            Text("显示上次读取的记录。", Modifier.testTag("project-list-stale"),
                                 style = MaterialTheme.typography.bodyMedium)
                         }
                         TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-list-retry"),
@@ -82,14 +82,14 @@ internal fun ProjectListScreen(
             if (state.loading) item { Text("正在读取长期项目", Modifier.padding(LithicSpacing.medium)) }
             if (!state.loading && state.error == null && state.totalCount == null && state.items.isEmpty()) item {
                 Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium)) {
-                    Text("尚未取得长期项目记录，请重新读取；这不表示没有记录。",
+                    Text("暂未读取到长期项目数据。",
                         Modifier.testTag("project-list-unavailable"), style = MaterialTheme.typography.bodyLarge)
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-list-retry"),
                         enabled = !state.loadingMore) { Text("重新读取", style = MaterialTheme.typography.bodyLarge) }
                 }
             }
             if (state.error == null && (state.loading || state.loadingMore) && state.items.isNotEmpty()) item {
-                Text("正在读取；数量和下方记录仍为上次读取结果。",
+                Text("正在刷新，显示上次读取的数量和记录。",
                     Modifier.padding(LithicSpacing.medium).testTag("project-list-refreshing-snapshot"),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }

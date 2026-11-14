@@ -1,8 +1,7 @@
 package com.cooper.lithic.core.design
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -32,12 +31,16 @@ fun EntryCard(
     hasCoverReference: Boolean = false,
     metricLabel: String = "日均成本",
 ) {
+    val colors = MaterialTheme.colorScheme
+    val cardBorder = BorderStroke(1.dp, colors.outlineVariant)
     if (onClick == null) {
-        Surface(modifier = modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.background) {
+        Surface(modifier = modifier.fillMaxWidth(), shape = MaterialTheme.shapes.small,
+            color = colors.surface, border = cardBorder) {
             EntryContent(name, statusLabel, timeLabel, dailyCost, cover, category, kind, hasCoverReference, metricLabel)
         }
     } else {
-        Surface(onClick = onClick, modifier = modifier.fillMaxWidth(), color = MaterialTheme.colorScheme.background) {
+        Surface(onClick = onClick, modifier = modifier.fillMaxWidth(), shape = MaterialTheme.shapes.small,
+            color = colors.surface, border = cardBorder) {
             EntryContent(name, statusLabel, timeLabel, dailyCost, cover, category, kind, hasCoverReference, metricLabel)
         }
     }
@@ -55,7 +58,7 @@ private fun EntryContent(name: String, status: String, time: String, cost: BigDe
                 MaterialTheme.colorScheme.onSurfaceVariant), amountStyle, softWrap = false).size.width,
             measurer.measure(AnnotatedString(metricLabel), captionStyle, softWrap = false).size.width).toDp()
     }
-    BoxWithConstraints(Modifier.fillMaxWidth().padding(vertical = 12.dp)) {
+    BoxWithConstraints(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 12.dp)) {
         val beside = density.fontScale <= 1.3f && maxWidth >= 64.dp + 12.dp + 112.dp + 12.dp + amountWidth
         Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {

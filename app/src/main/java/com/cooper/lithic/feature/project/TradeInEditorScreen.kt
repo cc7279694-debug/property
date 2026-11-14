@@ -84,7 +84,7 @@ internal fun TradeInEditorScreen(
                 Text("同时建立旧 → 新替换关系", Modifier.weight(1f))
             }
             C5InformationButton("交易日期与金额说明", Modifier.testTag("trade-in-information"), buttonLabel = "交易日期与金额说明") {
-                Text("旧项目在真实交易日期结束，新项目在这一天开始拥有。")
+                Text("交易日结束旧项目，同日开始持有新项目。")
                 Text("只记录实际已付款；0元现金补款可以保存，不推算未付分期。折抵是非现金事实，不是现金支出。")
             }
         } else {

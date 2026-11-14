@@ -67,7 +67,7 @@ internal fun LithicApp(state: LedgerUiState, onExit: () -> Unit, projectViewMode
 
 @Composable
 private fun StorageGate(tag: String, content: @Composable () -> Unit) {
-    Surface(Modifier.fillMaxSize()) {
+    Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
         Column(
             modifier = Modifier.fillMaxSize().testTag(tag)
                 .windowInsetsPadding(WindowInsets.safeDrawing)

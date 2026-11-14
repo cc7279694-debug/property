@@ -38,7 +38,7 @@ internal fun MoneyEventCorrectionScreen(
                 ProjectMoneyEventRole.END_SETTLEMENT -> "结束关联收回"
             }}", Modifier.testTag("correction-role"), style = MaterialTheme.typography.bodyMedium)
         }
-        Text(if (state.tradeInProtected) "以旧换新关联记录只修改说明，不单独修改金额或真实日期。" else "真实退款请新增收回记录。",
+        Text(if (state.tradeInProtected) "以旧换新关联记录仅可修改说明。" else "真实退款请新增收回记录。",
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (state.loading) Text("正在读取原金额记录", style = MaterialTheme.typography.bodyLarge)
         C2Section("纠正原事实") {
@@ -52,7 +52,7 @@ internal fun MoneyEventCorrectionScreen(
         ProjectNoteInput(state.description, onDescriptionChange, "说明（可选）", "correction-description",
             state.canEdit, state.errors["description"], labelOutside = true)
         C5InformationButton("纠错说明", Modifier.testTag("correction-information"), buttonLabel = "纠错说明") {
-            Text("纠正原记录的金额、真实日期或说明，会重新计算历史结果，并保留原记录身份。真实发生的新退款请新增收回记录。")
+            Text("可修正金额、发生日期或说明，保留原记录身份并重算历史。新退款请另外记录收回。")
         }
     }
 }

@@ -151,8 +151,8 @@ internal fun ProjectEditorScreen(
             }
 
             C5InformationButton("金额与日期说明", Modifier.testTag("project-editor-information"), buttonLabel = "金额与日期说明") {
-                Text("初始投入只记录已经实际投入的金额，0元也可保存。")
-                Text("开始日计入持有天数。先付款后收到时，请将初始实际付款日期改为真实付款日；付款日期不会改变开始拥有日期。")
+                Text("初始投入仅填实际金额，允许 0 元。")
+                Text("开始日计入持有天数。先付款后收到时，付款日和开始持有日分别据实填写。")
             }
 
             Column(Modifier.bringIntoViewRequester(errorTargets.getValue(ProjectEditorField.NOTE)),

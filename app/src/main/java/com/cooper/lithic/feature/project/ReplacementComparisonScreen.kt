@@ -70,7 +70,7 @@ internal fun ReplacementComparisonScreen(
         }
         val chain = state.chain
         if (chain != null) {
-            item { Text("结果截至 ${chain.asOf}；各项使用同一观察日。", Modifier.padding(horizontal = LithicSpacing.medium)) }
+            item { Text("结果统一截至 ${chain.asOf}", Modifier.padding(horizontal = LithicSpacing.medium)) }
             items(chain.items, key = { it.project.id }) { detail ->
                 C2Section(
                     if (detail.project.id == state.anchorId) "当前查看" else if (chain.items.indexOf(detail) < chain.items.indexOfFirst { it.project.id == state.anchorId }) "前任" else "后任",

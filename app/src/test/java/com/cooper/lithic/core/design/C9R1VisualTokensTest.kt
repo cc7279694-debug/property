@@ -7,18 +7,23 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class C9R1VisualTokensTest {
-    @Test fun home_focal_surface_has_a_scoped_layer_without_tinting_white_theme() {
-        val expected = mapOf(LithicAppearance.CHARCOAL to 0xFF1E1E1E,
-            LithicAppearance.PURE_WHITE to 0xFFFFFFFF, LithicAppearance.STONE_MIST to 0xFFE8EEF2)
-        val mismatches = expected.filter { (theme, value) -> lithicVisuals(theme).brandSurface != Color(value) }
-        assertTrue("Wrong home focal surfaces: ${mismatches.keys}", mismatches.isEmpty())
+    @Test fun cost_focal_surface_is_scoped_without_tinting_the_rest_of_the_page() {
+        val expected = mapOf(LithicAppearance.CHARCOAL to 0xFF202C39,
+            LithicAppearance.PURE_WHITE to 0xFFEFF4FA, LithicAppearance.STONE_MIST to 0xFFE8EFF6)
+        expected.forEach { (theme, value) ->
+            val costSurface = lithicVisuals(theme).costSurface
+            val scheme = lithicColorScheme(theme)
+            assertEquals(theme.storageId, Color(value), costSurface)
+            assertNotEquals(scheme.surface, costSurface)
+            assertNotEquals(scheme.background, costSurface)
+        }
     }
 
     @Test fun real_hero_text_and_identity_icon_pairs_keep_required_contrast() {
         LithicAppearance.entries.forEach { theme ->
             val c = lithicColorScheme(theme); val v = lithicVisuals(theme)
             listOf(c.onSurface, c.onSurfaceVariant, c.error).forEach { text ->
-                val ratio = contrast(text, v.brandSurface)
+                val ratio = contrast(text, v.costSurface)
                 println("C9R1_CONTRAST ${theme.storageId} hero-text $ratio")
                 assertTrue("${theme.storageId} hero text=$ratio", ratio >= 4.5)
             }
@@ -32,12 +37,13 @@ class C9R1VisualTokensTest {
         }
     }
 
-    @Test fun icon_identity_is_uniform_within_each_theme_and_neutral_in_mono_themes() {
+    @Test fun icon_identity_uses_the_same_surface_and_accent_roles_across_themes() {
         LithicAppearance.entries.forEach { theme ->
             val c = lithicColorScheme(theme); val v = lithicVisuals(theme)
             assertEquals(c.surfaceContainer, v.identitySurface)
-            if (theme != LithicAppearance.STONE_MIST) {
-                listOf(v.brandSurface, v.identitySurface, v.identityForeground).forEach { color ->
+            assertEquals(c.primary, v.identityForeground)
+            if (theme == LithicAppearance.CHARCOAL) {
+                listOf(v.identitySurface, v.identityForeground).forEach { color ->
                     assertEquals(color.red, color.green, .0001f)
                     assertEquals(color.green, color.blue, .0001f)
                 }

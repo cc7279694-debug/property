@@ -35,8 +35,8 @@ internal fun CategoryAnalysisScreen(
             C2PageHeader("类别分析", onBack, "category-analysis-back", backLabel = "返回回看")
             Text("按当前分类", Modifier.testTag("category-analysis-basis"), style = MaterialTheme.typography.titleMedium)
             C5InformationButton("类别分析口径", Modifier.testTag("category-analysis-information")) {
-                Text("改名、合并和历史纠错后按当前分类重新计算；不推断过去的类别名称。当前日均成本与历史真实金额是不同指标；两类体系分别查看。")
-                Text("仅列已录入资金事实的年份，缺年不代表没有花钱。按实际发生年或付款年归属；左负右正，所有年份共用金额尺度。")
+                Text("改名、合并或纠错后按当前分类计算。项目、订阅分列，区分当前日均与历史实际金额。")
+                Text("按实际发生年或付款年统计。无记录的年份不显示。图表左负右正，共用金额尺度。")
             }
             state.asOf?.let { Text("结果截至 $it") }
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -58,7 +58,7 @@ internal fun CategoryAnalysisScreen(
                 }
             }
             if (categories.isEmpty()) item("no-categories") { Text("未读取到该类型类别。", Modifier.testTag("category-analysis-empty")) }
-            if (selected == null && categories.isNotEmpty()) item("select-category") { Text("请选择类别。当前没有有效贡献但有历史记录的类别也可查看。") }
+            if (selected == null && categories.isNotEmpty()) item("select-category") { Text("请选择类别，可查看仅有历史记录的类别。") }
         }
         selected?.let { report ->
             item("selected") { Column(Modifier.fillMaxWidth().testTag("category-analysis-selected")) {

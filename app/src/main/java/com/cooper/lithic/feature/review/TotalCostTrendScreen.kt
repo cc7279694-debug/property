@@ -127,12 +127,12 @@ internal fun TotalCostTrendScreen(
             Text(selectionMeaning(point), Modifier.testTag("total-trend-selection-meaning"))
         }
         timeline?.let {
-            Text("结果截至 ${it.asOf}。按已录入、已纠正事实重建，不代表全部生活消费，也不是当天扣款。真实0、正负相抵与没有有效贡献不同；金额只在展示时舍入。")
+            Text("截至 ${it.asOf}。趋势按已录入及更正的记录重建，非当天扣款或全部生活消费。区分真实零值、相抵和无有效贡献，仅展示时舍入。")
         }
-        Text("图表按真实自然日间距绘制，保留负值和重要变化，不做平滑预测。横向拖动选择日期后查询精确金额；纵向滑动浏览页面。")
-        Text("长跨度精简显示；显示点清单与所有事件仍可继续查看。项目结束日退出总额，后续结算单独作为事件；订阅零区间保留阶梯。")
-        Text("同日事件共同列出，不把某一笔当作全部跳变的唯一原因。付款、覆盖边界和状态变化是不同事实；有事件也可能没有总额变化。")
-        Text("前后一天限图表日期范围；其他已过去日期可输入查询。")
+        Text("按自然日绘制，保留负值和重要变化，不预测。横拖选日，纵滑浏览。")
+        Text("长跨度会精简显示，日期和事件仍可查看。项目结束日退出总额，后续结算另列，订阅保留零值台阶。")
+        Text("同日事件合并展示，区分付款、覆盖边界与状态变化。事件可能不改变总额。")
+        Text("前后切换限图表范围。其他已过去日期可输入查询。")
     }
     LazyColumn(modifier.fillMaxSize().imePadding().testTag("total-cost-trend-screen"),
         contentPadding = PaddingValues(horizontal = LithicSpacing.page, vertical = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {

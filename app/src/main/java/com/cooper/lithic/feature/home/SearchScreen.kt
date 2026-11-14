@@ -50,18 +50,18 @@ internal fun SearchScreen(
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                 C2PageHeader("搜索名称", onBack, "search-back", backLabel = "返回现在", actions = {
-                    C5InformationButton("名称搜索范围") { Text("同时查找当前与历史记录。仅匹配名称；状态按这批结果的业务日期判断。") }
+                    C5InformationButton("名称搜索范围") { Text("按名称搜索当前与历史记录。状态以结果所示日期为准。") }
                 })
                 NameField(state.query, onQueryChange, Modifier.testTag("search-query"), label = "项目或订阅名称",
                     imeAction = ImeAction.Search, onImeAction = onRetry, labelOutside = true)
                 if (state.loading) Text("正在查找", Modifier.testTag("search-loading"))
-                if (state.query.isBlank()) Text("输入名称开始搜索。", Modifier.testTag("search-empty-query"))
+                if (state.query.isBlank()) Text("输入名称", Modifier.testTag("search-empty-query"))
                 else if (!state.loading && state.error == null && state.hasReadSnapshot) {
                     Text("找到 ${state.totalCount} 条记录", Modifier.testTag("search-result-count"))
-                    if (state.isConfirmedEmptyResult) Text("没有匹配这个名称的项目或订阅，可换个名称再试。",
+                    if (state.isConfirmedEmptyResult) Text("没有匹配的项目或订阅",
                         Modifier.testTag("search-no-results"), style = MaterialTheme.typography.bodyLarge)
                 } else if (!state.loading && state.error == null) {
-                    Text("尚未取得搜索结果，请重新查找。", Modifier.testTag("search-awaiting-read"))
+                    Text("尚未取得搜索结果", Modifier.testTag("search-awaiting-read"))
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("search-retry")) { Text("查找") }
                 }
                 if (state.hasReadSnapshot && (state.loading || state.error != null)) Text(
@@ -107,7 +107,7 @@ internal fun SearchScreen(
                 .testTag("search-load-more"), enabled = !state.loading) { Text(if (state.loading) "正在读取" else "继续加载") }
         }
         else if (state.items.isNotEmpty() && !state.loading && state.error == null) item {
-            Text("已到本次结果末尾", Modifier.padding(LithicSpacing.medium).testTag("search-end"),
+            Text("已显示全部结果", Modifier.padding(LithicSpacing.medium).testTag("search-end"),
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }

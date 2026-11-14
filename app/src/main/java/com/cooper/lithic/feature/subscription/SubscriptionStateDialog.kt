@@ -71,10 +71,10 @@ internal fun SubscriptionStateDialog(state: SubscriptionStateEditorUiState, onBa
                 Text(if (state.phase == SubmissionPhase.UNCONFIRMED) "核对并重试同一提交" else "确认$title")
             }
         }
-        if (state.busy) Text("正在保存到本地")
+        if (state.busy) Text("正在保存")
     }) {
         Text(state.serviceName, Modifier.testTag("subscription-state-service"), style = MaterialTheme.typography.titleLarge)
-        if (state.loading) Text("正在读取原始事实")
+        if (state.loading) Text("正在读取原记录")
         Text("只改变砺石中的记录和统计，不会替服务商取消自动续费或暂停扣费。真实付款历史保留。",
             Modifier.testTag("subscription-state-vendor-explanation"), style = MaterialTheme.typography.bodyLarge)
         if (stop) {

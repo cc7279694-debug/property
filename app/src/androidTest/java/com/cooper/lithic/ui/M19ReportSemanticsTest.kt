@@ -48,7 +48,7 @@ class M19ReportSemanticsTest {
         val empty = state().copy(annual = AnnualReport(2026, ReportAmounts(), emptyList(), emptyList()))
         compose.setContent { LithicTheme { AnnualReviewScreen(empty, { chosen = it }, {}, { _, _ -> }, {}) } }
         scrollAnnual("annual-empty-year")
-        compose.onNodeWithTag("annual-empty-year").assertTextContains("未录入相关记录，不能据此断言该年没有花钱。")
+        compose.onNodeWithTag("annual-empty-year").assertTextContains("该年暂无记录，支出未知。")
         scrollAnnual("annual-year-input"); compose.onNodeWithTag("annual-year-input").performTextReplacement("2023")
         scrollAnnual("annual-year-apply"); compose.onNodeWithTag("annual-year-apply").performClick()
         compose.runOnIdle { assertEquals(2023, chosen); chosen = null }

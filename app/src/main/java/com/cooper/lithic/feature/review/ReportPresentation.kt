@@ -105,7 +105,7 @@ internal fun ReportAnnualBars(year: Int, amounts: ReportAmounts, scale: BigDecim
             if (cents != 0L) drawRect(colour, Offset(if (cents < 0) centre - width else centre, 4.dp.toPx()), Size(width, size.height - 8.dp.toPx()))
         }
     }
-    if (!amounts.hasRecords) Text("未录入相关记录；不能据此断言该年没有花钱。")
+    if (!amounts.hasRecords) Text("该年暂无记录，支出未知。")
     if (amounts.containsNonCash) Text("含非现金折抵")
 }
 
@@ -129,7 +129,7 @@ internal fun ReportRecordCard(record: ReportRecord, prefix: String, open: (Overv
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(record.name, style = MaterialTheme.typography.titleMedium)
                 C2StatusChip("${if (record.kind == OverviewKind.PROJECT) "长期项目" else "订阅"} · ${record.statusLabel()}")
-                Text("查看记录详情", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text("查看详情", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             C2Icon(C2Glyph.Chevron)
         }

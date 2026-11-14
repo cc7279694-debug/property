@@ -39,7 +39,7 @@ class SingleCategoryPresentationSemanticsTest {
         scroll("category-analysis-name").assertTextEquals(pc.name)
         val report = ui.value.categories.single { it.category == pc }
         scroll("category-analysis-rate").assertTextEquals(moneyMetricDisplay(report.currentRate))
-        compose.onNodeWithText("请选择类别。当前没有有效贡献但有历史记录的类别也可查看。").assertDoesNotExist()
+        compose.onNodeWithText("请选择类别，可查看仅有历史记录的类别。").assertDoesNotExist()
         compose.runOnIdle { assertEquals(0, selections) }
         scroll("category-analysis-open-single-project").performClick()
         compose.runOnIdle { assertEquals(OverviewKind.PROJECT to "single-project", opened) }

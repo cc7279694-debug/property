@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsSelected
@@ -39,9 +40,9 @@ class P01SubscriptionExperienceTest {
         compose.setContent { LithicTheme { CreateHost(state, onCycle = { state = state.copy(cycle = it) }) } }
 
         compose.onNodeWithTag("subscription-cycle-YEARLY").performScrollTo().performClick()
-            .assertIsSelected().assertTextContains("已选", substring = true)
+            .assertIsSelected().assertTextContains("已选 · 年付")
         compose.onNodeWithTag("subscription-cycle-selection").performScrollTo()
-            .assertTextContains("年付", substring = true)
+            .assertTextContains("付费周期")
         compose.onNodeWithTag("subscription-payment-information").performScrollTo().performClick()
         compose.onNodeWithTag("subscription-cycle-explanation").performScrollTo()
             .assertTextContains("不代表已经使用", substring = true)
@@ -91,8 +92,9 @@ class P01SubscriptionExperienceTest {
             .assertTextContains("取消服务商自动续费需到服务商处操作", substring = true)
         detailNode("subscription-detail-stop").assertIsEnabled()
         detailNode("subscription-renewal-future-${future.id}").assertTextContains("尚未生效")
-        detailNode("subscription-renewal-future-explanation-${future.id}")
-            .assertTextContains("不代表已经使用", substring = true)
+        detailNode("subscription-renewal-date-information-${future.id}").performClick()
+        compose.onNodeWithTag("subscription-renewal-future-explanation-${future.id}")
+            .assertIsDisplayed().assertTextContains("预付周期尚未生效，不代表已经使用。")
         assertEquals(facts.renewals.first().id, detail.currentRenewal?.id)
     }
 

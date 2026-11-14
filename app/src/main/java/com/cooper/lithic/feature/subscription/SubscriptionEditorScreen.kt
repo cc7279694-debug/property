@@ -70,7 +70,7 @@ internal fun SubscriptionEditorScreen(
         if (state.loading) Text("正在读取订阅资料", style = MaterialTheme.typography.bodyLarge)
         NameField(state.serviceName, onNameChange, Modifier.testTag("subscription-name"),
             label = "服务名称", error = state.errors["serviceName"], enabled = state.canEdit, labelOutside = true)
-        Text("请核对实际付款及四个日期；预填不代表付款已经确认。",
+        Text("请核对实付金额和四个日期。预填不代表已确认。",
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         SubscriptionPaymentFields(state, "subscription", onAmountChange, onCycleChange, onPaidOnChange,
             onEffectiveFromChange, onPaidUntilChange, onReminderDueChange)
@@ -98,9 +98,9 @@ internal fun SubscriptionPaymentFields(
         AmountField(state.amount, onAmountChange, Modifier.testTag("$prefix-amount"),
             label = if (state.kind == SubscriptionEditorKind.CREATE) "首次实际付款金额（元）" else "本次实际付款金额（元）",
             error = state.errors["amount"], enabled = state.canEdit, labelOutside = true)
-        Text("实付金额须大于0元。免费期不生成付款。",
+        Text("实付须大于 0 元，免费期不产生付款记录。",
             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text("固定付费周期：${billingCycleLabel(state.cycle)}（当前选择）", style = MaterialTheme.typography.bodyLarge,
+        Text("付费周期", style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.testTag("$prefix-cycle-selection"))
         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             BillingCycle.entries.forEach { cycle ->
@@ -129,11 +129,10 @@ internal fun SubscriptionPaymentFields(
         PaymentDate(state.reminderDueOn, onReminderDueChange, state.today, "提醒到期日", "$prefix-reminder-due",
             state.errors["reminderDueOn"], state.canEdit)
         C5InformationButton("付款、周期与日期说明", Modifier.testTag("$prefix-payment-information"), buttonLabel = "付款与日期说明") {
-            Text("仅记录已实际付款，金额必须大于0元。免费期不生成付费记录。")
-            Text("30、90、365天是成本折算口径，不代表已经使用的天数；请按实际服务核对下面的覆盖日期。",
+            Text("成本按 30、90、365 天折算，不代表已经使用的天数。覆盖日期按实际服务填写。",
                 Modifier.testTag("$prefix-cycle-explanation"), style = MaterialTheme.typography.bodyMedium)
-            Text("真实付款日期是实际已完成付款的日期，不能晚于记录时区的今天。")
-            Text("这笔付款对应的真实服务覆盖起点，可以晚于付款日期。预付未来周期要到生效日才影响当前套餐。",
+            Text("付款日填实际付款日期，最晚为记录时区的今天。")
+            Text("生效日可以晚于付款日。预付未来周期到生效日才计入当前套餐。",
                 Modifier.testTag("$prefix-effective-explanation"), style = MaterialTheme.typography.bodyMedium)
             Text("付费到期边界当天不包含在前一期。")
             Text("提醒到期日独立于付费覆盖，修改它不会延长服务。当前即使允许系统通知也不会发送自动提醒，自动提醒将在 V1.1 提供；未来提醒不保证准点，这不代表服务商已经扣款。",

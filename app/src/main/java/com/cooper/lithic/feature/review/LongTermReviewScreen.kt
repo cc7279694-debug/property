@@ -50,10 +50,10 @@ internal fun LongTermReviewScreen(
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                 C2PageHeader("长期复盘", onBack, "review-ranks-back", backLabel = "返回回看")
                 C5InformationButton("长期复盘口径", Modifier.testTag("review-ranks-information")) {
-                    Text("当前与历史一起回看，两类记录分别排序。陪伴榜按持有天数；低成本榜按未舍入的日均；订阅时间榜按折算付费时长。")
+                    Text("当前与历史一起排序，项目与订阅分列。日均成本按未舍入值排名。")
                     Text("月30天、季90天、年365天；折算付费时长不等于实际陪伴时间。",
                         Modifier.testTag("review-standard-days-explanation"))
-                    Text("尚未开始或没有有效分母的记录不参与排名；真实0和负值保留。已结束项目的持有天数冻结，后续真实结算仍影响截至观察日的结果。")
+                    Text("未开始或无有效分母的记录不排名，保留零和负值。结束后持有天数固定，后续结算仍影响结果。")
                 }
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     FilterChip(selected = state.ranking != ReviewRanking.SUBSCRIPTION_TIME,
@@ -84,7 +84,7 @@ internal fun LongTermReviewScreen(
                 }
                 state.error?.let { error ->
                     Text(error, Modifier.testTag("review-ranks-error"), color = MaterialTheme.colorScheme.error)
-                    if (state.items.isNotEmpty()) Text("保留上次读取的结果，尚未确认最新状态。",
+                    if (state.items.isNotEmpty()) Text("保留上次结果，最新状态未确认。",
                         Modifier.testTag("review-ranks-stale"), style = MaterialTheme.typography.bodyMedium)
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("review-ranks-retry")) { Text("重新读取") }
                 }

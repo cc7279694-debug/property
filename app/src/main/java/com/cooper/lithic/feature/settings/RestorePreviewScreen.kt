@@ -30,11 +30,11 @@ internal fun RestorePreviewScreen(preview: RestorePreview, onConfirm: () -> Unit
     busy: Boolean = false) {
     Column(Modifier.fillMaxWidth().testTag("restore-preview"), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Text("核对备份", style = MaterialTheme.typography.titleLarge, modifier = Modifier.semantics { heading() })
-        Text("备份创建时间：${preview.createdAt}", style = MaterialTheme.typography.bodyMedium)
-        Text("备份记录时区：${preview.recordZoneId}", style = MaterialTheme.typography.bodyMedium)
+        Text("创建时间：${preview.createdAt}", style = MaterialTheme.typography.bodyMedium)
+        Text("记录时区：${preview.recordZoneId}", style = MaterialTheme.typography.bodyMedium)
         Text("记录数量对照：当前账本 → 备份内容", style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.semantics { heading() })
-        Text("当前数量为校验时快照；当前记录若改变，请重新选择备份并核对。",
+        Text("当前数量为校验时快照。记录有变化时，请重新选择备份核对。",
             style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("restore-count-snapshot-note"))
         Column(Modifier.fillMaxWidth()) {
             listOf("long_term_projects" to "长期项目", "project_money_events" to "项目金额记录",
@@ -50,9 +50,9 @@ internal fun RestorePreviewScreen(preview: RestorePreview, onConfirm: () -> Unit
             modifier = Modifier.semantics { heading() })
         Text("完整覆盖当前记录，不合并。当前记录、图片和设置将被备份内容替换。",
             style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.error)
-        Text("项目与订阅均以备份内容为准，备份中没有的当前记录也不会合并保留。记录时区和提醒偏好等设置会一起替换，系统通知权限不会从备份取得。",
+        Text("备份中没有的当前记录不会保留。记录时区与提醒偏好一并替换，系统通知权限不恢复。",
             style = MaterialTheme.typography.bodyMedium, modifier = Modifier.testTag("restore-overwrite-scope"))
-        Text("确认前可取消；如需保留当前内容，请先取消并导出当前完整备份。恢复后按今天重新计算天数和状态。",
+        Text("如需保留当前内容，请先取消并导出完整备份。恢复后按当天重算天数和状态。",
             style = MaterialTheme.typography.bodyMedium)
         Button(onClick = onConfirm, enabled = !busy,
             modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("confirm-backup-restore")) { Text("确认覆盖恢复") }

@@ -40,11 +40,11 @@ internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: (
         item {
             Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 C2PageHeader("已停止订阅", onBack, "subscription-history-back", backLabel = "返回回看",
-                    actions = { C5InformationButton("已停止订阅说明") { Text("保留原服务的真实付款和状态历史。暂停及已到期服务仍在当前管理。") } })
+                    actions = { C5InformationButton("已停止订阅说明") { Text("保留真实付款和状态历史。暂停或到期服务在当前列表管理。") } })
                 state.totalCount?.let { Text("已停止 $it 条订阅", Modifier.testTag("subscription-history-count")) }
                 if (state.totalCount != null && state.items.isEmpty() &&
                     (state.loading || state.loadingMore || state.error != null)) {
-                    Text("数量为上次读取结果，尚不能确认当前列表为空。", Modifier.testTag("subscription-history-count-snapshot"),
+                    Text("数量来自上次读取，当前是否为空尚未确认。", Modifier.testTag("subscription-history-count-snapshot"),
                         style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
@@ -61,14 +61,14 @@ internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: (
         } }
         if (!state.loading && state.error == null && state.totalCount == null && state.items.isEmpty()) item {
             Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium)) {
-                Text("尚未取得已停止订阅记录，请重新读取；这不表示没有记录。",
+                Text("暂未读取到已停止订阅数据。",
                     Modifier.testTag("subscription-history-unavailable"), style = MaterialTheme.typography.bodyLarge)
                 TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-history-retry"),
                     enabled = !state.loadingMore) { Text("重新读取", style = MaterialTheme.typography.bodyLarge) }
             }
         }
         if (state.error == null && (state.loading || state.loadingMore) && state.items.isNotEmpty()) item {
-            Text("正在读取；数量和下方记录仍为上次读取结果。",
+            Text("正在刷新，显示上次读取的数量和记录。",
                 Modifier.padding(LithicSpacing.medium).testTag("subscription-history-refreshing-snapshot"),
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }

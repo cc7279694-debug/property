@@ -62,7 +62,7 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
             C5InformationButton("回看的口径", Modifier.testTag("review-information")) {
                 Column(Modifier.testTag("review-information-content"), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     ReviewCounts(projectCount, subscriptionCount)
-                    Text("没有录入不等于没有花钱；趋势按已录入、已纠正的事实重建，不代表全部生活消费，也不是当日扣款。类别分析分开查看项目与订阅；年度回顾按真实资金年份归属；长期复盘保留各自指标。历史档案只包含已结束项目和已停止订阅，暂停或到期但未停止的订阅仍在订阅列表。")
+                    Text("没有录入不等于没有花钱。趋势按已录入并更正的记录重建，非当天扣款。年度回顾按资金实际发生年归属。历史档案仅含已结束项目和已停止订阅。")
                 }
             }
         }
@@ -156,7 +156,7 @@ private fun ReviewCounts(projectCount: Long, subscriptionCount: Long) {
     Column(Modifier.testTag("review-counts-compact"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text("$projectCount 条长期项目", Modifier.testTag("review-project-count"))
         Text("$subscriptionCount 条订阅服务", Modifier.testTag("review-subscription-count"))
-        Text("含当前和历史；有读取提示时为已取得的快照数量。", Modifier.testTag("review-count-scope"),
+        Text("含历史。读取异常时显示已取得的数量。", Modifier.testTag("review-count-scope"),
             style = MaterialTheme.typography.bodySmall)
     }
 }
@@ -168,16 +168,16 @@ private fun ReviewDestinations(onProjectHistory: (() -> Unit)?, onSubscriptionHi
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         onTotalCostTrend?.let {
             ReviewGroup("review-full-history-group") {
-                ReviewLink("全部历史与事件", "完整日期清单和记录来源", C2Glyph.Review, "review-total-cost-trend", it)
+                ReviewLink("全部历史与事件", "日期与记录来源", C2Glyph.Review, "review-total-cost-trend", it)
             }
         }
         if (onCategoryAnalysis != null || onAnnualReview != null || onLongTermReview != null) {
-            Text("换个角度看", style = MaterialTheme.typography.titleSmall, modifier = Modifier.semantics { heading() })
+            Text("分析", style = MaterialTheme.typography.titleSmall, modifier = Modifier.semantics { heading() })
             ReviewGroup("review-analysis-group") {
-                onCategoryAnalysis?.let { ReviewLink("类别分析", "长期项目与订阅分别查看", C2Glyph.Project,
+                onCategoryAnalysis?.let { ReviewLink("类别分析", "项目与订阅分列", C2Glyph.Project,
                     "review-category-analysis", it) }
                 if (onCategoryAnalysis != null && (onAnnualReview != null || onLongTermReview != null)) ReviewRowDivider()
-                onAnnualReview?.let { ReviewLink("年度回顾", "按真实资金年份回看", C2Glyph.Review, "review-annual", it) }
+                onAnnualReview?.let { ReviewLink("年度回顾", "按资金发生年份", C2Glyph.Review, "review-annual", it) }
                 if (onAnnualReview != null && onLongTermReview != null) ReviewRowDivider()
                 onLongTermReview?.let { ReviewLink("长期复盘", "陪伴时间与折算付费时长", C2Glyph.Subscription, "review-long-term", it) }
             }
@@ -185,10 +185,10 @@ private fun ReviewDestinations(onProjectHistory: (() -> Unit)?, onSubscriptionHi
         if (onProjectHistory != null || onSubscriptionHistory != null) {
             Text("历史档案", style = MaterialTheme.typography.titleSmall, modifier = Modifier.semantics { heading() })
             ReviewGroup("review-archive-group") {
-                onProjectHistory?.let { ReviewLink("已结束长期项目", "保留原记录与真实结算", C2Glyph.Project,
+                onProjectHistory?.let { ReviewLink("已结束长期项目", "含后续结算", C2Glyph.Project,
                     "review-project-history", it) }
                 if (onProjectHistory != null && onSubscriptionHistory != null) ReviewRowDivider()
-                onSubscriptionHistory?.let { ReviewLink("已停止订阅", "暂停、到期未停止仍在订阅列表", C2Glyph.Subscription,
+                onSubscriptionHistory?.let { ReviewLink("已停止订阅", "暂停及到期未停止的订阅仍在当前列表", C2Glyph.Subscription,
                     "review-subscription-history", it) }
             }
         }
@@ -197,7 +197,7 @@ private fun ReviewDestinations(onProjectHistory: (() -> Unit)?, onSubscriptionHi
 
 @Composable
 private fun ReviewGroup(tag: String, content: @Composable () -> Unit) {
-    Surface(Modifier.fillMaxWidth().testTag(tag), shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.background) {
+    Surface(Modifier.fillMaxWidth().testTag(tag), shape = RoundedCornerShape(12.dp), color = MaterialTheme.colorScheme.surface) {
         Column { content() }
     }
 }

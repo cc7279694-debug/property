@@ -58,9 +58,9 @@ internal fun AnnualReviewScreen(
                         TextButton({ onSelectYear(year + 1) }, Modifier.heightIn(min = 48.dp).testTag("annual-year-next"), enabled = year < (state.asOf?.year ?: year)) { Text("下一年度") }
                     }
                     C5InformationButton("年度回顾口径", Modifier.testTag("annual-information")) {
-                        Text("按当前分类与现存已修正事实生成；年度真实金额不是总日均成本，也不是完整生活支出。")
-                        Text("按真实资金发生日或订阅付款日归年；可以选择没有记录的过去年度。真实0元记录保留，没有录入不代表没有花钱。")
-                        Text("长期项目投入、收回、净投入与订阅实际付款分别呈现，不合并为年度总支出。含非现金折抵的项目金额不是纯现金流水。")
+                        Text("按当前分类汇总已录入和更正的年度实际金额，与日均成本分开。")
+                        Text("按实际发生日或订阅付款日归年。可查无记录年份，保留真实 0 元。")
+                        Text("项目投入、收回、净投入与订阅付款分列，无年度总支出。含非现金折抵的金额并非纯现金流水。")
                         Text("条形图左负右正，所有年份共用金额尺度；缺失年份不填0。")
                     }
                 }
@@ -70,7 +70,7 @@ internal fun AnnualReviewScreen(
             item("summary") { Column(Modifier.fillMaxWidth()) {
                 Column(Modifier.padding(vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     Text("${report.year} 年", Modifier.testTag("annual-selected-year"), style = MaterialTheme.typography.titleLarge)
-                    if (!report.amounts.hasRecords) Text("未录入相关记录，不能据此断言该年没有花钱。", Modifier.testTag("annual-empty-year"))
+                    if (!report.amounts.hasRecords) Text("该年暂无记录，支出未知。", Modifier.testTag("annual-empty-year"))
                     Text("长期项目", style = MaterialTheme.typography.titleMedium)
                     ReportMoneyValues(report.amounts, "annual", OverviewKind.PROJECT)
                     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
@@ -78,7 +78,7 @@ internal fun AnnualReviewScreen(
                     ReportMoneyValues(report.amounts, "annual", OverviewKind.SUBSCRIPTION)
                 }
             } }
-            item("category-heading") { Text("年度类别构成 · 按当前分类", style = MaterialTheme.typography.titleLarge) }
+            item("category-heading") { Text("年度类别构成（当前分类）", style = MaterialTheme.typography.titleLarge) }
             for (kind in OverviewKind.entries) {
                 item("kind-$kind") { Text(if (kind == OverviewKind.PROJECT) "长期项目" else "订阅实际付款", style = MaterialTheme.typography.titleMedium) }
                 items(report.categories.filter { it.category.kind == kind && it.amounts.hasRecords }, key = { "category-${it.category.id}" }) { category ->

@@ -44,7 +44,7 @@ class P02BrowseListExperienceTest {
         val reads = AtomicInteger()
         compose.setContent { LithicTheme { ProjectHistoryScreen(state, {}, {}, {}, { reads.incrementAndGet() }) } }
         node("project-history-content", "project-history-unavailable")
-            .assertTextContains("尚未取得", substring = true)
+            .assertTextContains("暂未读取到历史档案数据。")
         compose.onNodeWithText("暂无已结束项目").assertDoesNotExist()
         node("project-history-content", "project-history-retry").performClick()
         assertEquals(1, reads.get())
@@ -83,7 +83,7 @@ class P02BrowseListExperienceTest {
     @Test fun current_project_unknown_and_confirmed_empty_states_remain_distinct() {
         var state by mutableStateOf(ProjectListUiState(loading = false))
         compose.setContent { LithicTheme { ProjectListScreen(state, {}, {}, {}, {}, {}) } }
-        node("project-list-content", "project-list-unavailable").assertTextContains("尚未取得", substring = true)
+        node("project-list-content", "project-list-unavailable").assertTextContains("暂未读取到长期项目数据。")
         compose.onNodeWithText("暂无长期项目").assertDoesNotExist()
         compose.runOnIdle { state = state.copy(totalCount = 0) }
         node("project-list-content", "project-list-empty").assertTextContains("暂无长期项目")
@@ -97,7 +97,7 @@ class P02BrowseListExperienceTest {
         var state by mutableStateOf(SubscriptionListUiState(loading = false))
         val reads = AtomicInteger()
         compose.setContent { LithicTheme { SubscriptionListScreen(state, {}, {}, {}, {}, { reads.incrementAndGet() }) } }
-        node("subscription-list-content", "subscription-list-unavailable").assertTextContains("尚未取得", substring = true)
+        node("subscription-list-content", "subscription-list-unavailable").assertTextContains("暂未读取到订阅服务数据。")
         compose.onNodeWithText("暂无订阅服务").assertDoesNotExist()
         node("subscription-list-content", "subscription-list-retry").performClick()
         assertEquals(1, reads.get())
@@ -119,7 +119,7 @@ class P02BrowseListExperienceTest {
             SubscriptionHistoryScreen(state, {}, { opened = it }, { pages.incrementAndGet() }, {})
         } }
         node("subscription-history-content", "subscription-history-unavailable")
-            .assertTextContains("尚未取得", substring = true)
+            .assertTextContains("暂未读取到已停止订阅数据。")
         compose.onNodeWithTag("subscription-history-empty").assertDoesNotExist()
         compose.runOnIdle { state = SubscriptionListUiState(listOf(detail), 51, loading = false,
             hasMore = true, error = "合成历史刷新失败") }

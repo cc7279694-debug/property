@@ -136,7 +136,7 @@ class ProjectLifecycleScreensTest {
         compose.onNodeWithText("真实退款请新增收回记录。")
             .performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("correction-information").performScrollTo().performClick()
-        compose.onNodeWithText("纠正原记录的金额、真实日期或说明，会重新计算历史结果，并保留原记录身份。真实发生的新退款请新增收回记录。")
+        compose.onNodeWithText("可修正金额、发生日期或说明，保留原记录身份并重算历史。新退款请另外记录收回。")
             .assertIsDisplayed()
         compose.onNodeWithText("知道了").performClick()
         compose.onNodeWithText("删除金额记录").assertDoesNotExist()

@@ -62,7 +62,7 @@ internal fun SettingsShell(
                 C2Icon(C2Glyph.Info, description = "查看本地保存与备份说明")
             }
         }
-        C2Section("外观") { AppearanceThemePicker() }
+        AppearanceThemePicker()
         C2Section("记录管理") {
             onManageCategories?.let { manage ->
                 C2SettingRow("管理类别", C2Glyph.Project, Modifier.testTag("open-category-management"), onClick = manage)
@@ -95,7 +95,7 @@ internal fun SettingsShell(
                 BackupInspectionPhase.IDLE -> "检查备份文件"
                 BackupInspectionPhase.CHOOSING -> if (inspectionState.cancelling) "等待上次文件选择结束" else "正在选择待检查文件"
                 BackupInspectionPhase.CHECKING -> if (inspectionState.cancelling) "正在结束检查" else "正在检查备份文件"
-            }, C2Glyph.Info, Modifier.testTag("inspect-backup-file"), subtitle = "只检查完整性，不恢复或覆盖记录",
+            }, C2Glyph.Info, Modifier.testTag("inspect-backup-file"), subtitle = "仅检查完整性，不覆盖",
                 enabled = onInspectBackup != null && !inspectionState.busy && backupState.phase == BackupUiPhase.IDLE && restoreState.phase == RestoreUiPhase.IDLE,
                 onClick = { onInspectBackup?.invoke() })
             BackupInspectionFeedback(inspectionState, onCancelInspection)
@@ -119,7 +119,7 @@ internal fun SettingsShell(
                 restoreState.preview?.let { RestorePreviewScreen(it, onConfirmRestore, onDiscardRestore) }
             }
             if (restoreState.phase == RestoreUiPhase.RESTORING) {
-                Text("正在切换完整本地记录，请稍候。完成前不会开始另一项备份或恢复。",
+                Text("正在替换本地记录。完成前不可备份或恢复。",
                     style = MaterialTheme.typography.bodyMedium)
             }
             restoreState.message?.let { feedback ->
@@ -142,15 +142,15 @@ internal fun SettingsShell(
         text = {
             Column(Modifier.verticalScroll(rememberScrollState()).testTag("settings-information-content"),
                 verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                Text("记录主要保存在当前设备，可离线使用。卸载可能导致本地记录丢失，请手动备份。")
-                Text("完整备份包含记录、设置和已登记图片；文件未加密，请妥善保管。没有自动云同步。")
-                Text("外观选择仅属于本机显示偏好，不包含在完整备份的业务设置中。")
+                Text("记录保存在本机，可离线使用。卸载前请备份，以免丢失。")
+                Text("完整备份包含记录、设置和已登记图片。文件未加密，无自动云同步。")
+                Text("外观仅在本机保留，不随备份迁移。")
                 if (backupState.phase == BackupUiPhase.IDLE && backupState.feedback == BackupExportFeedback.NOT_STARTED) {
-                    Text("尚未开始导出。选择保存位置后，只有完整写入并校验通过才会提示成功。",
+                    Text("尚未开始导出。完整写入并校验通过后才算成功。",
                         modifier = Modifier.testTag("backup-not-started"))
                 }
-                Text("恢复先校验与预览，再明确确认完整覆盖当前记录、图片和设置，不合并。请先核对预览中的当前与备份内容。")
-                Text("自动提醒将在 V1.1 提供。停止App中的订阅记录不会取消服务商扣费。")
+                Text("恢复前先校验和核对预览。确认后完整覆盖记录、图片和设置，不合并。")
+                Text("停止订阅记录不会取消服务商扣费。")
             }
         }, confirmButton = { TextButton({ informationOpen = false }, Modifier.testTag("settings-information-close")) { Text("知道了") } })
 }

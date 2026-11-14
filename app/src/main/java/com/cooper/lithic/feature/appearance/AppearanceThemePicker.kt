@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -38,7 +39,7 @@ internal fun AppearanceThemePicker() {
         onClick = { expanded = true })
     state.error?.let { UiFeedbackText(it, UiMessageTone.ERROR, "appearance-error") }
     if (expanded) ModalBottomSheet(onDismissRequest = { expanded = false },
-        containerColor = MaterialTheme.colorScheme.surface, modifier = Modifier.testTag("appearance-sheet")) {
+        containerColor = LocalLithicVisuals.current.sheetSurface, modifier = Modifier.testTag("appearance-sheet")) {
         Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState())
             .padding(horizontal = LithicSpacing.page).padding(bottom = 24.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -59,8 +60,8 @@ internal fun AppearanceThemePicker() {
             }
             state.error?.let { UiFeedbackText(it, UiMessageTone.ERROR, "appearance-sheet-error") }
             if (!state.readable && !state.loading) TextButton(actions.retryRead, Modifier.heightIn(min = 48.dp)
-                .testTag("appearance-retry")) { Text("重新读取外观") }
-            Text("仅保存在本机，不随完整备份导出或恢复。", style = MaterialTheme.typography.bodyMedium,
+                .testTag("appearance-retry")) { Text("重新读取") }
+            Text("仅保存在本机，不随备份迁移。", style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
@@ -71,13 +72,19 @@ internal fun AppearanceThemePicker() {
 private fun AppearanceSwatch(theme: LithicAppearance) {
     val colors = lithicColorScheme(theme)
     Canvas(Modifier.size(96.dp, 62.dp).clearAndSetSemantics {}) {
+        val edge = 1.dp.toPx()
+        val cardOffset = Offset(size.width * .12f, size.height * .56f)
+        val cardSize = Size(size.width * .5f, size.height * .24f)
+        val cardCorners = CornerRadius(4.dp.toPx())
         drawRoundRect(colors.background, cornerRadius = CornerRadius(8.dp.toPx()))
+        drawRoundRect(colors.outlineVariant, Offset(edge / 2, edge / 2),
+            Size(size.width - edge, size.height - edge), CornerRadius(8.dp.toPx()), style = Stroke(edge))
         drawRoundRect(colors.onSurface, Offset(size.width * .12f, size.height * .18f),
             Size(size.width * .5f, size.height * .08f), CornerRadius(2.dp.toPx()))
         drawRoundRect(colors.onSurfaceVariant, Offset(size.width * .12f, size.height * .38f),
             Size(size.width * .7f, size.height * .04f), CornerRadius(2.dp.toPx()))
-        drawRoundRect(colors.surfaceContainer, Offset(size.width * .12f, size.height * .56f),
-            Size(size.width * .5f, size.height * .24f), CornerRadius(4.dp.toPx()))
+        drawRoundRect(colors.surface, cardOffset, cardSize, cardCorners)
+        drawRoundRect(colors.outlineVariant, cardOffset, cardSize, cardCorners, style = Stroke(edge))
         drawCircle(colors.primary, size.height * .10f, Offset(size.width * .8f, size.height * .70f))
     }
 }

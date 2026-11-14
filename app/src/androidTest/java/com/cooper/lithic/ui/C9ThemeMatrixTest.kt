@@ -4,8 +4,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
+import com.cooper.lithic.app.C2PrimaryNavigationBar
+import com.cooper.lithic.app.Home
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.feature.appearance.*
 import com.cooper.lithic.feature.home.HomeShell
@@ -60,8 +64,45 @@ class C9ThemeMatrixTest {
         LithicAppearance.entries.forEach { selected ->
             compose.runOnIdle { theme.value = selected }
             compose.onNodeWithTag(tag).assertExists()
+            if (page == Page.HOME || page == Page.PROJECT) {
+                val canvas = if (page == Page.HOME) "home-content-area" else tag
+                val expectedCanvas = when (selected) {
+                    LithicAppearance.CHARCOAL -> Color(0xFF121212)
+                    LithicAppearance.PURE_WHITE -> Color.White
+                    LithicAppearance.STONE_MIST -> Color(0xFFEDF2F7)
+                }
+                assertSurfaceColor(canvas, expectedCanvas)
+                if (page == Page.HOME) {
+                    assertSurfaceColor("home-current-cost-summary",
+                        if (selected == LithicAppearance.CHARCOAL) Color(0xFF1E1E1E) else Color.White)
+                }
+            }
             compose.runOnIdle { assertEquals(0, actions) }
         }
+    }
+
+    @Test fun primary_navigation_uses_a_theme_surface_beneath_the_selected_tab() {
+        val theme = mutableStateOf(LithicAppearance.STONE_MIST)
+        compose.setContent { LithicTheme(appearance = theme.value) { C2PrimaryNavigationBar(Home) {} } }
+        val expected = mapOf(
+            LithicAppearance.CHARCOAL to Color(0xFF1E1E1E),
+            LithicAppearance.PURE_WHITE to Color(0xFFF7F8FA),
+            LithicAppearance.STONE_MIST to Color(0xFFE8EFF6),
+        )
+        expected.forEach { (appearance, color) ->
+            compose.runOnIdle { theme.value = appearance }
+            compose.onNodeWithTag("tab-now").assertIsSelected()
+            assertSurfaceColor("tab-now", color)
+        }
+    }
+
+    private fun assertSurfaceColor(tag: String, expected: Color) {
+        val pixels = compose.onNodeWithTag(tag).captureToImage().toPixelMap()
+        // Left of centrally aligned content and well below rounded card corners or the navigation divider.
+        val sample = pixels[minOf(3, pixels.width - 1), pixels.height / 2]
+        assertEquals("$tag, red", expected.red, sample.red, 0.02f)
+        assertEquals("$tag, green", expected.green, sample.green, 0.02f)
+        assertEquals("$tag, blue", expected.blue, sample.blue, 0.02f)
     }
 
     @Test fun settings_offers_exactly_three_named_choices_and_keeps_the_panel_open_on_switch() {

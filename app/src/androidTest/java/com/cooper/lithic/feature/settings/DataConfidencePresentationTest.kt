@@ -25,7 +25,7 @@ class DataConfidencePresentationTest {
                 BackupInspectionSummary(4, "2026-11-01T00:00:00Z", mapOf("long_term_projects" to 1L, "subscriptions" to 1L), 2, 256)),
                 message = "VERIFIED · 文件符合当前完整性规则。")) } }
         compose.onNodeWithTag("backup-inspection-summary").performScrollTo().assertExists()
-        compose.onNodeWithTag("backup-inspection-limits").performScrollTo().assertTextContains("不等于已经恢复成功", substring = true)
+        compose.onNodeWithTag("backup-inspection-limits").performScrollTo().assertTextContains("实际恢复尚未验证", substring = true)
         compose.onNodeWithTag("backup-restore-feedback").assertDoesNotExist()
     }
 
@@ -49,9 +49,10 @@ class DataConfidencePresentationTest {
         compose.onNodeWithTag("photo-storage-historical-bytes").performScrollTo().assertTextEquals("345 字节")
         compose.onNodeWithTag("photo-storage-cleanup").assertDoesNotExist()
         compose.onNodeWithTag("photo-storage-cleanup-unavailable").performScrollTo()
-            .assertTextContains("手动清理暂不可用", substring = true)
-        compose.onNodeWithTag("photo-storage-estimate-note").performScrollTo().assertTextContains("不等于实际磁盘占用", substring = true)
-        compose.onNodeWithTag("photo-storage-retention-note").performScrollTo().assertTextContains("参加完整备份", substring = true)
+            .assertTextContains("实际磁盘占用、可释放空间有差异", substring = true)
+            .assertTextContains("暂不支持逐张查看或清理", substring = true)
+        compose.onNodeWithTag("photo-storage-estimate-note").performScrollTo().assertTextContains("按登记长度估算", substring = true)
+        compose.onNodeWithTag("photo-storage-retention-note").performScrollTo().assertTextContains("纳入完整备份", substring = true)
     }
 
     @Test fun unavailable_statistics_never_render_zero_counts_or_private_paths() {

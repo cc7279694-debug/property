@@ -185,7 +185,7 @@ class M19ReportJourneyTest {
         scrollTo(ANNUAL, "annual-paid"); waitText("annual-paid", "365.00")
         capture("05-negative-net-and-real-payment-year")
         selectYear(2023)
-        compose.onNodeWithTag("annual-empty-year").assertTextContains("未录入相关记录", substring = true)
+        compose.onNodeWithTag("annual-empty-year").assertTextContains("该年暂无记录，支出未知", substring = true)
         capture("06-empty-year-is-not-zero-spend")
 
         compose.runOnIdle { fontScale.value = 2f }

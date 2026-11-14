@@ -62,7 +62,7 @@ internal fun SubscriptionListScreen(
                         style = MaterialTheme.typography.bodyMedium) }
                     if (state.totalCount != null && state.items.isEmpty() &&
                         (state.loading || state.loadingMore || state.error != null)) {
-                        Text("数量为上次读取结果，尚不能确认当前列表为空。", Modifier.testTag("subscription-list-count-snapshot"),
+                        Text("数量来自上次读取，当前是否为空尚未确认。", Modifier.testTag("subscription-list-count-snapshot"),
                             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
@@ -72,7 +72,7 @@ internal fun SubscriptionListScreen(
                 Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page)) {
                     Text(message, Modifier.testTag("subscription-list-error"), style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error)
-                    if (state.items.isNotEmpty()) Text("暂时无法刷新，以下为上次读取记录。",
+                    if (state.items.isNotEmpty()) Text("显示上次读取的记录。",
                         Modifier.testTag("subscription-list-stale"), style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-list-retry"),
@@ -81,14 +81,14 @@ internal fun SubscriptionListScreen(
             } }
             if (!state.loading && state.error == null && state.totalCount == null && state.items.isEmpty()) item {
                 Column(Modifier.fillMaxWidth().padding(LithicSpacing.medium)) {
-                    Text("尚未取得订阅服务记录，请重新读取；这不表示没有记录。",
+                    Text("暂未读取到订阅服务数据。",
                         Modifier.testTag("subscription-list-unavailable"), style = MaterialTheme.typography.bodyLarge)
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-list-retry"),
                         enabled = !state.loadingMore) { Text("重新读取", style = MaterialTheme.typography.bodyLarge) }
                 }
             }
             if (state.error == null && (state.loading || state.loadingMore) && state.items.isNotEmpty()) item {
-                Text("正在读取；数量和下方记录仍为上次读取结果。",
+                Text("正在刷新，显示上次读取的数量和记录。",
                     Modifier.padding(LithicSpacing.medium).testTag("subscription-list-refreshing-snapshot"),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
@@ -134,7 +134,7 @@ internal fun SubscriptionListScreen(
     if (informationOpen) AlertDialog(onDismissRequest = { informationOpen = false }, title = { Text("订阅列表口径") },
         text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text("最近真实付款在前。", style = MaterialTheme.typography.bodyMedium)
-            Text("暂停和已到期服务仍在这里管理；已停止服务可从“回看 → 历史档案”查看。",
+            Text("暂停、到期服务在此管理。已停止服务见“回看 → 历史档案”。",
                 Modifier.testTag("subscription-list-history-explanation"), style = MaterialTheme.typography.bodyMedium)
             Text("已到期表示当前没有生效套餐，可能包含已预付但尚未开始的周期。",
                 Modifier.testTag("subscription-list-expired-explanation"), style = MaterialTheme.typography.bodyMedium)

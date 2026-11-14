@@ -74,7 +74,7 @@ internal fun SubscriptionDetailScreen(
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("subscription-detail-retry")) { Text("重新读取") }
                 }
             } }
-            if (state.missing) item { Text("订阅不存在，返回列表查看当前记录。", Modifier.padding(LithicSpacing.medium)
+            if (state.missing) item { Text("订阅不存在，请返回列表。", Modifier.padding(LithicSpacing.medium)
                 .testTag("subscription-detail-missing"), style = MaterialTheme.typography.bodyLarge) }
             state.detail?.takeUnless { state.missing }?.let { detail ->
                 item {
@@ -122,41 +122,40 @@ internal fun SubscriptionDetailScreen(
                                 level = MoneyMetricLevel.ROW, label = "当前日均贡献")
                         }
                         if (detail.renewals.any { !it.paidOn.isAfter(detail.asOf) && it.effectiveFrom.isAfter(detail.asOf) })
-                            Text("已付下一期尚未生效。", style = MaterialTheme.typography.bodyMedium)
+                            Text("下一期已付款，尚未生效。", style = MaterialTheme.typography.bodyMedium)
                     }
                 }
                 if (detail.stateChanges.isNotEmpty()) item {
                     Column(Modifier.padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text("状态事实", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
+                        Text("状态记录", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
                         detail.stateChanges.forEach { row ->
                             Text("${row.effectiveOn} · ${when (row.state) { SubscriptionOperationState.ENABLED -> "已启用"; SubscriptionOperationState.PAUSED -> "已暂停"; SubscriptionOperationState.STOPPED -> "已停止" }}",
                                 Modifier.testTag("subscription-state-row-${row.id}"))
                             row.reason?.let { Text("原因：$it", style = MaterialTheme.typography.bodyMedium) }
                             row.note?.let { Text(it, style = MaterialTheme.typography.bodyMedium) }
                             TextButton({ onCorrectState(row.id) }, Modifier.heightIn(min = 48.dp).testTag("subscription-state-correct-${row.id}"),
-                                enabled = !state.loading && state.error == null) { Text("修正这条状态事实") }
+                                enabled = !state.loading && state.error == null) { Text("修正状态记录") }
                         }
                     }
                 }
                 item {
                     C2Section("付款与备注", Modifier.padding(horizontal = LithicSpacing.page)) {
-                        Text("累计已确认实际付款", style = MaterialTheme.typography.bodyMedium)
+                        Text("累计实际付款", style = MaterialTheme.typography.bodyMedium)
                         MoneyMetric(BigDecimal.valueOf(detail.cost.confirmedPaidCents, 2),
                             Modifier.testTag("subscription-detail-total-paid"), AmountUnit.YUAN,
                             level = MoneyMetricLevel.ROW, label = "累计已确认实际付款")
-                        Text("类别：${detail.category.name}", style = MaterialTheme.typography.bodyLarge)
                         detail.subscription.note?.takeIf { it.isNotBlank() }?.let {
                             Text("备注", style = MaterialTheme.typography.bodyMedium)
                             Text(it, style = MaterialTheme.typography.bodyLarge)
                         }
-                        Text("实际已过去的付费有效天数：${detail.cost.elapsedPaidDays}天",
+                        Text("已过去的付费有效天数：${detail.cost.elapsedPaidDays}天",
                             style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
                 }
                 item {
                     Column(Modifier.padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                         HorizontalDivider()
-                        Text("真实付款历史", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
+                        Text("付款历史", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
                         C5InformationButton("付款历史说明") { Text("按真实付款日期排序；付费到期边界当天不包含在前一期。") }
                     }
                 }
@@ -192,7 +191,8 @@ internal fun SubscriptionDetailScreen(
         }
     }
     if (managementOpen) state.detail?.takeUnless { state.missing }?.let { detail ->
-        ModalBottomSheet(onDismissRequest = { managementOpen = false }) {
+        ModalBottomSheet(onDismissRequest = { managementOpen = false },
+            containerColor = LocalLithicVisuals.current.sheetSurface) {
             Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(bottom = 24.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page), verticalAlignment = Alignment.CenterVertically) {
@@ -253,7 +253,7 @@ private fun SubscriptionArchiveMetrics(detail: SubscriptionDetail) {
                 Text("按月30天、季90天、年365天折算；包含已确认付款的未来周期，不代表实际已使用时长。")
                 Text("历史平均日成本与当前套餐价格不同；实际已过去的付费有效天数按真实覆盖和状态计算。")
             }
-            if (detail.cost.historicalAverage == null) Text("暂无已确认付款，历史平均日成本暂无数据。", style = MaterialTheme.typography.bodyMedium)
+            if (detail.cost.historicalAverage == null) Text("暂无已确认付款。", style = MaterialTheme.typography.bodyMedium)
         }
     }
 }
@@ -291,7 +291,7 @@ private fun RenewalHistoryRow(renewal: SubscriptionRenewalEntity, asOf: LocalDat
                 Text("生效 ${renewal.effectiveFrom} · 到期 ${renewal.paidUntilExclusive}（不含当日）",
                     style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 C5InformationButton("付款及覆盖日期", Modifier.testTag("subscription-renewal-date-information-${renewal.id}")) {
-                    if (renewal.effectiveFrom.isAfter(asOf)) Text("这笔已确认付款用于未来周期，不代表已经使用该段时间。当前套餐以实际生效日期为准。",
+                    if (renewal.effectiveFrom.isAfter(asOf)) Text("预付周期尚未生效，不代表已经使用。",
                         Modifier.testTag("subscription-renewal-future-explanation-${renewal.id}"))
                     Text("实际生效日期：${renewal.effectiveFrom}")
                     Text("付费到期边界：${renewal.paidUntilExclusive}（当天不包含）")

@@ -9,27 +9,54 @@ import org.junit.Test
 class C9ThemePaletteTest {
     @Test fun three_fixed_backgrounds_and_primary_actions_match_the_approved_specification() {
         val expected = listOf(Triple(LithicAppearance.CHARCOAL, 0xFF121212, 0xFFE9E9E9),
-            Triple(LithicAppearance.PURE_WHITE, 0xFFFFFFFF, 0xFF232323),
-            Triple(LithicAppearance.STONE_MIST, 0xFFF7F6F2, 0xFF536F86))
+            Triple(LithicAppearance.PURE_WHITE, 0xFFFFFFFF, 0xFF223246),
+            Triple(LithicAppearance.STONE_MIST, 0xFFEDF2F7, 0xFF223246))
         expected.forEach { (theme, background, primary) ->
             assertEquals(theme.storageId, Color(background), lithicColorScheme(theme).background)
             assertEquals(theme.storageId, Color(primary), lithicColorScheme(theme).primary)
         }
     }
 
-    @Test fun charcoal_and_white_primary_surfaces_are_neutral_not_green_or_blue() {
-        listOf(LithicAppearance.CHARCOAL, LithicAppearance.PURE_WHITE).forEach { theme ->
-            val c = lithicColorScheme(theme)
-            listOf(c.background, c.surface, c.surfaceContainer, c.primary, c.onPrimary).forEach {
-                assertEquals(it.red, it.green, 0.0001f); assertEquals(it.green, it.blue, 0.0001f)
-            }
+    @Test fun dark_theme_keeps_its_neutral_surfaces_and_action() {
+        val c = lithicColorScheme(LithicAppearance.CHARCOAL)
+        val expected = listOf(c.surface to 0xFF1E1E1E, c.surfaceContainer to 0xFF292929, c.outline to 0xFF939393,
+            c.outlineVariant to 0xFF343434, c.onSurface to 0xFFF3F3F3, c.onSurfaceVariant to 0xFFB2B2B2,
+            c.onPrimary to 0xFF161616)
+        expected.forEach { (actual, value) -> assertEquals(Color(value), actual) }
+    }
+
+    @Test fun light_themes_distinguish_page_secondary_surfaces_and_dividers_while_keeping_white_cards() {
+        val white = lithicColorScheme(LithicAppearance.PURE_WHITE)
+        val mist = lithicColorScheme(LithicAppearance.STONE_MIST)
+        listOf(
+            LithicAppearance.PURE_WHITE to Triple(0xFFFFFFFF, 0xFFF7F8FA, 0xFFE4E7EB),
+            LithicAppearance.STONE_MIST to Triple(0xFFEDF2F7, 0xFFE8EFF6, 0xFFD3DEE9),
+        ).forEach { (theme, roles) ->
+            val colors = lithicColorScheme(theme)
+            assertEquals(Color(roles.first), colors.background)
+            assertEquals(Color(roles.second), colors.surfaceContainer)
+            assertEquals(Color(roles.third), colors.outlineVariant)
+            assertEquals(Color.White, colors.surface)
+            assertEquals(colors.surface, colors.surfaceContainerLow)
+            assertEquals(colors.background, colors.surfaceContainerLowest)
+            assertEquals(colors.surfaceContainer, colors.surfaceContainerHigh)
+            assertEquals(colors.surfaceContainer, colors.surfaceContainerHighest)
+            assertEquals(colors.surfaceContainer, colors.surfaceVariant)
+            assertEquals(Color.Transparent, colors.surfaceTint)
+            assertEquals(colors.surfaceContainer, lithicVisuals(theme).sheetSurface)
         }
+        assertTrue("White cards should separate from the mist canvas", contrast(mist.surface, mist.background) > 1.1)
+        assertNotEquals(white.surfaceContainer, mist.surfaceContainer)
+        assertNotEquals(white.outlineVariant, mist.outlineVariant)
     }
 
     @Test fun actual_text_action_dialog_and_status_pairs_meet_text_contrast() {
         LithicAppearance.entries.forEach { theme ->
             val c = lithicColorScheme(theme); val v = lithicVisuals(theme)
-            listOf(c.onBackground to c.background, c.onSurface to c.surface,
+            listOf(c.onBackground to c.background, c.onSurface to c.surface, c.onSurface to c.surfaceContainerHigh,
+                c.onSurface to c.surfaceContainerHighest, c.onSurface to v.costSurface,
+                c.onSurfaceVariant to c.surface, c.onSurfaceVariant to v.costSurface,
+                c.onSurface to v.sheetSurface, c.onSurfaceVariant to v.sheetSurface,
                 c.onSurfaceVariant to c.background, c.onSurfaceVariant to c.surfaceContainer,
                 c.onPrimary to c.primary, c.onPrimaryContainer to c.primaryContainer,
                 c.onErrorContainer to c.errorContainer, c.error to c.surface,
@@ -47,6 +74,7 @@ class C9ThemePaletteTest {
                     assertTrue("${theme.storageId}: $line on $bg", contrast(line, bg) >= 3.0)
                 }
             }
+            assertTrue("${theme.storageId}: control outline against subdued surface", contrast(c.outline, c.surfaceContainer) >= 3.0)
         }
     }
 
@@ -75,11 +103,11 @@ class C9ThemePaletteTest {
     @Test fun actual_home_brand_text_actions_and_fab_meet_contrast_in_each_theme() {
         for (theme in LithicAppearance.entries) {
             val colors = lithicColorScheme(theme)
-            val brand = lithicVisuals(theme).brandSurface
+            val card = colors.surface
             val pairs = mapOf(
-                "brand text" to (colors.onBackground to brand),
-                "brand secondary text" to (colors.onSurfaceVariant to brand),
-                "brand error" to (colors.error to brand),
+                "overview text" to (colors.onSurface to card),
+                "overview secondary text" to (colors.onSurfaceVariant to card),
+                "overview error" to (colors.error to card),
                 "archive text" to (colors.onSurface to colors.background),
                 "archive secondary text" to (colors.onSurfaceVariant to colors.background),
                 "archive error" to (colors.error to colors.background),

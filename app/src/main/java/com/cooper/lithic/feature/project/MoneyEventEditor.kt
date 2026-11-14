@@ -84,7 +84,7 @@ internal fun MoneyEventEditor(
         }
         ProjectNoteInput(state.description, onDescriptionChange, "说明（可选）", "money-description", state.canEdit, labelOutside = true)
         C5InformationButton("金额记录说明", Modifier.testTag("money-editor-information"), buttonLabel = "金额记录说明") {
-            Text("填实际发生的正数或0，收回通过上方方向记录。真实发生日期按实际付款或到账日填写。")
+            Text("金额填正数或 0，收回请选上方方向。日期填实际付款或到账日。")
         }
     }
 }

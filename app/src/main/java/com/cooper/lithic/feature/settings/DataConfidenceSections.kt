@@ -29,11 +29,11 @@ internal fun BackupInspectionFeedback(state: BackupInspectionUiState, onCancel: 
     val result = state.result
     if (result?.status == BackupInspectionStatus.VERIFIED) result.summary?.let { summary ->
         Column(Modifier.fillMaxWidth().testTag("backup-inspection-summary"), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text("备份格式 ${summary.formatVersion} · 创建于 ${summary.createdAt}", style = MaterialTheme.typography.bodyMedium)
+            Text("格式 ${summary.formatVersion} · ${summary.createdAt}", style = MaterialTheme.typography.bodyMedium)
             Text("物品 ${summary.recordCounts["long_term_projects"] ?: 0L} · 订阅 ${summary.recordCounts["subscriptions"] ?: 0L} · 照片 ${summary.mediaCount}",
                 style = MaterialTheme.typography.bodyMedium)
             Text("照片登记长度合计 ${summary.mediaBytes} 字节", style = MaterialTheme.typography.bodyMedium)
-            Text("通过当前文件结构、关联、长度、校验和及媒体容器规则，不等于已经恢复成功，也不保证未来所有环境都能恢复。",
+            Text("结构、记录关联、长度、校验和及媒体规则均通过。实际恢复尚未验证。",
                 Modifier.testTag("backup-inspection-limits"), style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
@@ -55,7 +55,7 @@ internal fun PhotoStorageSection(state: PhotoStorageUiState, onRefresh: (() -> U
             is PhotoStorageUiState.Ready -> {
                 val s = state.summary
                 C2SettingRow("已登记照片", C2Glyph.Project, trailing = "${s.registeredCount} 张", trailingTag = "photo-storage-registered")
-                C2SettingRow("当前记录引用", C2Glyph.Project, subtitle = "物品与订阅，包含历史记录；相同照片只计一次",
+                C2SettingRow("当前记录引用", C2Glyph.Project, subtitle = "含历史项目与订阅，照片去重",
                     trailing = "${s.referencedCount} 张", trailingTag = "photo-storage-referenced")
                 C2SettingRow("历史未引用照片", C2Glyph.Review, trailing = "${s.historicalCount} 张", trailingTag = "photo-storage-historical")
                 C2SettingRow("历史照片登记体积", C2Glyph.Info, trailing = "${s.estimatedHistoricalBytes} 字节",
@@ -63,13 +63,13 @@ internal fun PhotoStorageSection(state: PhotoStorageUiState, onRefresh: (() -> U
                 C2SettingRow("预计登记体积", C2Glyph.Info, trailing = "${s.estimatedRegisteredBytes} 字节", trailingTag = "photo-storage-bytes")
             }
         }
-        Text("按已登记媒体长度估算，不等于实际磁盘占用；不含内部检查临时副本或外部备份，也不代表照片文件已逐一验证。",
+        Text("按登记长度估算。未逐张验证，未计临时副本和外部备份。",
             Modifier.testTag("photo-storage-estimate-note"), style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text("取消封面显示不会立即删除旧照片。历史照片仍可能占用空间，并参加完整备份。",
+        Text("取消显示只解除封面引用。历史照片可能仍占空间，并纳入完整备份。",
             Modifier.testTag("photo-storage-retention-note"), style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text("历史照片的登记体积仅供估算，不代表实际可释放空间。暂不支持逐张查看；为保护备份，手动清理暂不可用。",
+        Text("登记体积与实际磁盘占用、可释放空间有差异。暂不支持逐张查看或清理。",
             Modifier.testTag("photo-storage-cleanup-unavailable"), style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
         if (onRefresh != null) LithicTextButton(onRefresh, Modifier.heightIn(min = 48.dp).testTag("refresh-photo-storage"),

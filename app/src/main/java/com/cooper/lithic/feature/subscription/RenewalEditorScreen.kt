@@ -45,8 +45,8 @@ internal fun RenewalEditorScreen(
         Text(state.serviceName, Modifier.testTag("renewal-service-name"), style = MaterialTheme.typography.titleLarge)
         if (state.loading) Text("正在读取订阅资料", style = MaterialTheme.typography.bodyLarge)
         if (correction || reenable) {
-            Text(if (correction) "修改原付款事实并重算历史，不新增付款或退款；原记录身份保持。"
-                else "当前和未来均无已确认覆盖，请主动填写实际付款金额和付款日期。只有明确确认后，真实付款和启用状态才会一起保存。",
+            Text(if (correction) "修正保留原付款身份并重算历史，不新增付款或退款。"
+                else "当前及未来无已确认覆盖。填写实付金额和日期，确认后同时保存付款和启用状态。",
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         state.fixedStopOn?.let { Text("已固定的计划停止日：$it。付款纠错不会自动移动它；扩张停止日后的覆盖前，请明确修正或取消计划。",
@@ -54,7 +54,7 @@ internal fun RenewalEditorScreen(
         SubscriptionPaymentFields(state, "renewal", onAmountChange, onCycleChange, onPaidOnChange,
             onEffectiveFromChange, onPaidUntilChange, onReminderDueChange)
         if (!correction && !reenable) C5InformationButton("续费录入说明", Modifier.testTag("renewal-reference-information"), buttonLabel = "续费录入说明") {
-            Text("前次金额和周期仅供参考，请核对本次实际付款及四个日期。确认只保存这一笔真实付款。")
+            Text("前次金额和周期仅供参考。核对本次实付与四个日期，确认只保存这一笔。")
         }
     }
 }

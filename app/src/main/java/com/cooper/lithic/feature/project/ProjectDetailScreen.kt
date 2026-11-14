@@ -28,7 +28,6 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -55,9 +54,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
@@ -74,6 +71,7 @@ import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.MoneyMetric
 import com.cooper.lithic.core.design.MoneyMetricLevel
 import com.cooper.lithic.core.design.LithicSpacing
+import com.cooper.lithic.core.design.LocalLithicVisuals
 import com.cooper.lithic.core.design.moneyMetricFitsAtPreferredSize
 import com.cooper.lithic.core.model.MoneyDirection
 import com.cooper.lithic.data.local.MoneyBasis
@@ -84,7 +82,6 @@ import java.math.BigDecimal
 import com.cooper.lithic.core.design.LithicButton as Button
 
 private const val INITIAL_MONEY_RECORD_COUNT = 3
-private val ProjectDetailNavy = Color(0xFF223246)
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -120,7 +117,6 @@ internal fun ProjectDetailScreen(
     var showAllMoney by remember(projectId, presentationIdentity) { mutableStateOf(false) }
     var selectedMoneyId by remember(projectId, presentationIdentity) { mutableStateOf<String?>(null) }
     val colors = MaterialTheme.colorScheme
-    val light = colors.background.luminance() > 0.5f
     Column(modifier.fillMaxSize().background(colors.background).testTag("project-detail-screen")) {
         Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onBack, Modifier.size(48.dp).testTag("project-detail-back").semantics { contentDescription = backLabel }) {
@@ -175,7 +171,7 @@ internal fun ProjectDetailScreen(
                 Column(Modifier.padding(bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(message, Modifier.testTag("project-detail-error"), color = MaterialTheme.colorScheme.error,
                         style = MaterialTheme.typography.bodyLarge)
-                    if (detail != null) Text("暂时无法刷新，以下为上次读取记录。",
+                    if (detail != null) Text("显示上次读取的记录。",
                         Modifier.testTag("project-detail-stale"), style = MaterialTheme.typography.bodyMedium)
                     TextButton(onRetry, Modifier.heightIn(min = 48.dp).testTag("project-detail-retry")) { Text("重新读取") }
                 }
@@ -261,9 +257,7 @@ internal fun ProjectDetailScreen(
             Column {
                 HorizontalDivider(color = colors.outlineVariant)
                 Button({ moneySheetOpen = true }, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page, vertical = 9.dp)
-                    .testTag("project-record-money"), shape = CircleShape,
-                    colors = ButtonDefaults.buttonColors(containerColor = if (light) ProjectDetailNavy else colors.primary,
-                        contentColor = if (light) Color.White else colors.onPrimary)) {
+                    .testTag("project-record-money"), shape = CircleShape) {
                     C2Icon(C2Glyph.Add)
                     Spacer(Modifier.width(8.dp))
                     Text("记一笔", style = MaterialTheme.typography.labelLarge)
@@ -284,7 +278,7 @@ internal fun ProjectDetailScreen(
         })
     }
     if (moneySheetOpen && detail != null) ModalBottomSheet(onDismissRequest = { moneySheetOpen = false },
-        modifier = Modifier.testTag("project-money-sheet")) {
+        modifier = Modifier.testTag("project-money-sheet"), containerColor = LocalLithicVisuals.current.sheetSurface) {
         Column(Modifier.fillMaxWidth().padding(start = LithicSpacing.page, end = LithicSpacing.page, bottom = 24.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Text("记一笔", Modifier.weight(1f).semantics { heading() }, style = MaterialTheme.typography.titleLarge)
@@ -355,13 +349,8 @@ private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable ()
 private fun ProjectCostSummary(detail: ProjectDetail) {
     val metricLabel = projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal)
     val colors = MaterialTheme.colorScheme
-    val cardColor = when {
-        colors.background.luminance() < 0.5f -> Color(0xFF202C39)
-        colors.background == Color.White -> Color(0xFFEFF4FA)
-        else -> colors.primaryContainer
-    }
     Surface(Modifier.fillMaxWidth().testTag("project-core-metrics"), shape = RoundedCornerShape(14.dp),
-        color = cardColor, border = BorderStroke(1.dp, colors.outlineVariant)) {
+        color = LocalLithicVisuals.current.costSurface, border = BorderStroke(1.dp, colors.outlineVariant)) {
         BoxWithConstraints(Modifier.padding(start = 14.dp, end = 6.dp, top = 10.dp, bottom = 10.dp)) {
             val wide = maxWidth >= 274.dp && LocalDensity.current.fontScale <= 1.3f &&
                 moneyMetricFitsAtPreferredSize(detail.cost.dailyRate, maxWidth - 134.dp, level = MoneyMetricLevel.HERO)
@@ -376,8 +365,8 @@ private fun ProjectCostSummary(detail: ProjectDetail) {
             }
             val information: @Composable () -> Unit = {
                 C5InformationButton("项目成本口径", Modifier.testTag("project-detail-metric-information"), iconOnly = true) {
-                    Text("日均成本来自真实投入和收回，开始日计入持有自然日。展示舍入不改变原计算结果。")
-                    Text("结束后仍可补录真实尾款或退款；持有天数不再增加。")
+                    Text("日均成本按实际投入和收回计算，开始日计入持有天数。展示舍入不影响计算。")
+                    Text("结束后可补录真实尾款或退款，持有天数冻结。")
                 }
             }
             Column {

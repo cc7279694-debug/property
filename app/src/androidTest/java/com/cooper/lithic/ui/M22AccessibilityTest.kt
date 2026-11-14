@@ -138,7 +138,7 @@ class M22AccessibilityTest {
             ProjectListScreen(ProjectListUiState(listOf(detail()), 1, false, error = "读取失败"), {}, {}, {}, {}, {})
         } }
         compose.onNodeWithTag("project-list-error").assertTextContains("读取失败")
-        compose.onNodeWithTag("project-list-stale").assertTextEquals("暂时无法刷新，以下为上次读取记录。")
+        compose.onNodeWithTag("project-list-stale").assertTextEquals("显示上次读取的记录。")
         compose.onNodeWithText("暂无长期项目").assertDoesNotExist()
         compose.onNodeWithTag("project-list-content").performScrollToNode(hasTestTag("project-row-$PROJECT_ID"))
         compose.onNodeWithTag("project-row-$PROJECT_ID").assertIsDisplayed()
@@ -148,7 +148,7 @@ class M22AccessibilityTest {
         compose.setContent { LithicTheme {
             ProjectDetailScreen(ProjectDetailUiState(detail(), false, error = "读取失败"), {}, {}, {}, {})
         } }
-        compose.onNodeWithTag("project-detail-stale").assertTextEquals("暂时无法刷新，以下为上次读取记录。")
+        compose.onNodeWithTag("project-detail-stale").assertTextEquals("显示上次读取的记录。")
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-name"))
         compose.onNodeWithTag("project-detail-name").assertTextContains(PROJECT_NAME)
         compose.onNodeWithText("项目不存在，返回列表查看当前记录。").assertDoesNotExist()

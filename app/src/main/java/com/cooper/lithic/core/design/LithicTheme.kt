@@ -40,6 +40,7 @@ internal fun lithicColorScheme(appearance: LithicAppearance): androidx.compose.m
         background = Color(p.background), onBackground = Color(p.text),
         surface = Color(p.surface), onSurface = Color(p.text),
         surfaceVariant = Color(p.group), onSurfaceVariant = Color(p.muted),
+        surfaceBright = Color(p.surface), surfaceDim = Color(p.background),
         surfaceContainerLowest = Color(p.background), surfaceContainerLow = Color(p.surface),
         surfaceContainer = Color(p.group), surfaceContainerHigh = Color(p.group),
         surfaceContainerHighest = Color(p.group), surfaceTint = Color.Transparent,

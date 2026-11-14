@@ -59,7 +59,7 @@ internal fun CategoryManagementScreen(
                 verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                 C2PageHeader("类别管理", onBack, "category-back", backLabel = "返回设置", actions = {
                     C5InformationButton("类别说明", Modifier.testTag("category-information")) {
-                        Text("长期项目与订阅分别管理。类别调整后，历史记录也按当前分类展示。")
+                        Text("项目、订阅分开管理。历史记录也按当前分类显示。")
                         Text("默认“其他”类别保留供未分类记录使用，不提供重命名或作为合并源。")
                     }
                 })
@@ -91,7 +91,7 @@ internal fun CategoryManagementScreen(
                     Text("${entry.recordCount} 条记录（含历史）", style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                     if (category.isFallback) {
-                        Text("默认类别，保留供未分类记录使用。", style = MaterialTheme.typography.bodyMedium,
+                        Text("默认类别，供未分类记录使用。", style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant)
                     } else {
                         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {

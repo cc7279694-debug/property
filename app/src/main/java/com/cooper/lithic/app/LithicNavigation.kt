@@ -48,9 +48,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
@@ -445,6 +444,7 @@ internal fun LithicNavigation(
     }
     ProvideCoverPreviews(state.coverReader) {
     Scaffold(modifier = modifier.fillMaxSize().testTag("primary_navigation"), contentWindowInsets = WindowInsets.safeDrawing,
+        containerColor = MaterialTheme.colorScheme.background, contentColor = MaterialTheme.colorScheme.onBackground,
         bottomBar = {
             if (c2ShowPrimaryNavigation(routes.last())) C2PrimaryNavigationBar(currentPrimary) { destination ->
                 requestLeave(canonicalBackStack(destination))
@@ -833,10 +833,11 @@ private fun subscriptionRecoveryRoute(state: SubscriptionUiState): NavKey? {
 @Composable
 internal fun C2PrimaryNavigationBar(currentPrimary: NavKey, onSelect: (NavKey) -> Unit) {
     val colors = MaterialTheme.colorScheme
-    val selectedColor = if (colors.surface.luminance() > 0.5f) Color(0xFF223246) else colors.onSurface
+    val light = colors.surface.luminance() > 0.5f
+    val selectedColor = if (light) colors.primary else colors.onSurface
     Column(
         Modifier.fillMaxWidth()
-            .background(colors.surface)
+            .background(if (light) colors.surfaceContainer else colors.surface)
             .windowInsetsPadding(NavigationBarDefaults.windowInsets),
     ) {
         HorizontalDivider(color = colors.outlineVariant)
