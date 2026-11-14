@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_UI_V3_DETAIL_VISUAL_REFINEMENT_02 — READY_FOR_DESIGN_REVIEW（2026-11-14）**。按双屏参考精修项目与订阅详情，交付纯白配对、三主题、模拟 200% 和状态画板。仅静态设计，详情 Android 实测 NOT_RUN，等待独立审查及用户确认。见[精修稿](design/lithic-ui-v3-detail-visual-refinement-02/REVIEW.md)。
+
 - **LITHIC_UI_V3_DETAIL_DESIGN_01 — READY_FOR_DESIGN_REVIEW（2026-11-13）**。以已冻结首页复验证据 `434127f3` 为起点，交付项目与订阅详情配对方案、三主题及状态画板、12 组浏览器布局检查。详情 Android 实测 NOT_RUN，等待 ChatGPT 独立设计审查和用户确认。见[配对设计](design/lithic-ui-v3-03-details/DESIGN_BRIEF.md)。
 
 - **LITHIC_HOME_FINAL_POLISH_09 — READY_FOR_INDEPENDENT_REVIEW（单次复验，2026-11-13）**。原 Repair05 AVD 实测 4 核／1536 MiB，未捕获新 ANR。MainActivity 舍入说明及两段返回专项 1 PASS，完整 Android 回归 43 PASS／0 FAIL，三主题与 360dp 系统 200% 字体截图已存证。原字体、合成账本、媒体、模拟器及独立 5038 已收口。上次失败回执保留，个人真机与真实 SAF／Photo Picker 仍 NOT_RUN。见[本轮报告](evidence/LITHIC-Home-Final-Polish-09-Retry.md)。
