@@ -88,7 +88,7 @@ class SubscriptionScreensTest {
         compose.onNodeWithTag("renewal-service-name").assertTextContains("测试服务")
         compose.onNodeWithTag("subscription-name").assertDoesNotExist()
         compose.onNodeWithTag("subscription-category").assertDoesNotExist()
-        compose.onNodeWithText("前次金额和周期仅供参考，请核对本次实际付款及四个日期。")
+        compose.onNodeWithText("前次金额和周期仅供参考。核对本次实付与四个日期，确认只保存这一笔。")
             .performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("renewal-amount").performScrollTo().performTextReplacement("148.10")
         assertEquals("148.10", state.amount)

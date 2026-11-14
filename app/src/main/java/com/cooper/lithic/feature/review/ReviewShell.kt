@@ -156,7 +156,7 @@ private fun ReviewCounts(projectCount: Long, subscriptionCount: Long) {
     Column(Modifier.testTag("review-counts-compact"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text("$projectCount 条长期项目", Modifier.testTag("review-project-count"))
         Text("$subscriptionCount 条订阅服务", Modifier.testTag("review-subscription-count"))
-        Text("含历史。读取异常时显示已取得的数量。", Modifier.testTag("review-count-scope"),
+        Text("含当前和历史。读取异常时显示已取得的数量。", Modifier.testTag("review-count-scope"),
             style = MaterialTheme.typography.bodySmall)
     }
 }
