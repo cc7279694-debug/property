@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_UI_V3_PROJECT_DETAIL_IMPLEMENT_01 — PARTIAL（2026-11-14）**。项目详情已实现 4:3 Fit 封面与只读全图、财务三卡及同列表展开。51 项 JVM、生产和 AndroidTest Kotlin、Debug 构建与 Lint（0 错误、20 警告）通过。隔离模拟器最后启动前内存 4.932 GiB，低于 5.000 GiB 环境门槛，Android 和截图均 NOT_RUN。等待独立审查。见[实施报告](evidence/LITHIC-UI-V3-Project-Detail-Implement-01.md)。
+
 - **LITHIC_UI_V3_DETAIL_DESIGN_FREEZE_03 — READY_FOR_FINAL_APPROVAL（2026-11-14）**。收口项目封面、单笔金额明细及同列表「全部／收起」。已导出两张纯白主图，Chrome 的 360／400 和模拟 200% 布局与只读交互通过，Android NOT_RUN。等待用户视觉确认及 ChatGPT 独立审查，生产实施未授权。见[最终设计候选](design/lithic-ui-v3-detail-visual-refinement-02/DESIGN_FREEZE_03.md)。
 
 - **LITHIC_UI_V3_DETAIL_VISUAL_REFINEMENT_02 — READY_FOR_DESIGN_REVIEW（2026-11-14）**。按双屏参考精修项目与订阅详情，交付纯白配对、三主题、模拟 200% 和状态画板。仅静态设计，详情 Android 实测 NOT_RUN，等待独立审查及用户确认。见[精修稿](design/lithic-ui-v3-detail-visual-refinement-02/REVIEW.md)。

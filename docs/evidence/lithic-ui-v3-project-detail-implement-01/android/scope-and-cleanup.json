@@ -1,0 +1,173 @@
+{
+  "status": "BLOCKED",
+  "workflow_exit": 1,
+  "runtime_exit": 2,
+  "startup_options": {
+    "usb": "one-device nonmatching sentinel",
+    "mdns_auto_connect": false,
+    "automatic_emulator_discovery": false,
+    "keys": "dedicated local directory"
+  },
+  "before": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 15576
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 15576,
+        "Path": null,
+        "CreatedUtc": "2026-11-14T01:23:14.723181Z",
+        "OwnedSentinel": false
+      }
+    ]
+  },
+  "isolated_identity": {
+    "process": {
+      "Pid": 26236,
+      "Path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "CreatedUtc": "2026-11-14T03:10:06.625987Z",
+      "OwnedSentinel": true
+    },
+    "protocol": "0029",
+    "identity": {
+      "version": "37.0.1",
+      "build": "15733141",
+      "executable_path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe"
+    }
+  },
+  "after": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 15576
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 15576,
+        "Path": null,
+        "CreatedUtc": "2026-11-14T01:23:14.723181Z",
+        "OwnedSentinel": false
+      }
+    ]
+  },
+  "raw_receipt_sha256": "08a1ce15fc601f23f59a3a0dde8086fd4449b1c563fa99753ac9687a02af4249",
+  "emulator_launch_file": false,
+  "android_test_methods": 0,
+  "screenshots": 0,
+  "commands": [
+    {
+      "operation": "listeners and owners before",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:10:01.1850000Z",
+      "end_utc": "2026-11-14T03:10:03.4890000Z"
+    },
+    {
+      "operation": "IPv4 excluded port ranges",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:10:03.4890000Z",
+      "end_utc": "2026-11-14T03:10:03.9400000Z"
+    },
+    {
+      "operation": "IPv6 excluded port ranges",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:10:03.9400000Z",
+      "end_utc": "2026-11-14T03:10:04.0210000Z"
+    },
+    {
+      "operation": "SDK ADB version",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:10:04.0240000Z",
+      "end_utc": "2026-11-14T03:10:04.4670000Z"
+    },
+    {
+      "operation": "start server 5038 with isolated USB sentinel",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:10:04.4890000Z",
+      "end_utc": "2026-11-14T03:10:06.7240000Z"
+    },
+    {
+      "operation": "listeners and owners after start",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:10:06.7240000Z",
+      "end_utc": "2026-11-14T03:10:09.1000000Z"
+    },
+    {
+      "operation": "5038 host:version",
+      "exit": null,
+      "start_utc": "2026-11-14T03:10:09.1000000Z",
+      "end_utc": "2026-11-14T03:10:09.1250000Z"
+    },
+    {
+      "operation": "5038 host:server-status",
+      "exit": null,
+      "start_utc": "2026-11-14T03:10:09.1250000Z",
+      "end_utc": "2026-11-14T03:10:09.1500000Z"
+    },
+    {
+      "operation": "5038 devices -l",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:10:09.1520000Z",
+      "end_utc": "2026-11-14T03:10:09.2740000Z"
+    },
+    {
+      "operation": "5038 host:devices-l",
+      "exit": null,
+      "start_utc": "2026-11-14T03:10:09.2740000Z",
+      "end_utc": "2026-11-14T03:10:09.2750000Z"
+    },
+    {
+      "operation": "listeners and owners before controller",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:10:09.2750000Z",
+      "end_utc": "2026-11-14T03:10:11.5660000Z"
+    },
+    {
+      "operation": "5037 host:version",
+      "exit": null,
+      "start_utc": "2026-11-14T03:10:11.5660000Z",
+      "end_utc": "2026-11-14T03:10:11.5820000Z"
+    },
+    {
+      "operation": "5037 host:server-status",
+      "exit": null,
+      "start_utc": "2026-11-14T03:10:11.5820000Z",
+      "end_utc": "2026-11-14T03:10:11.5970000Z"
+    },
+    {
+      "operation": "listeners and owners after controller",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:11:39.8760000Z",
+      "end_utc": "2026-11-14T03:11:41.9580000Z"
+    },
+    {
+      "operation": "5038 host:version before shutdown",
+      "exit": null,
+      "start_utc": "2026-11-14T03:11:41.9580000Z",
+      "end_utc": "2026-11-14T03:11:41.9600000Z"
+    },
+    {
+      "operation": "5038 host:server-status before shutdown",
+      "exit": null,
+      "start_utc": "2026-11-14T03:11:41.9600000Z",
+      "end_utc": "2026-11-14T03:11:41.9620000Z"
+    },
+    {
+      "operation": "5038 kill-server",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:11:41.9630000Z",
+      "end_utc": "2026-11-14T03:11:42.0950000Z"
+    },
+    {
+      "operation": "listeners and owners after shutdown",
+      "exit": 0,
+      "start_utc": "2026-11-14T03:11:42.0960000Z",
+      "end_utc": "2026-11-14T03:11:44.3220000Z"
+    }
+  ]
+}
