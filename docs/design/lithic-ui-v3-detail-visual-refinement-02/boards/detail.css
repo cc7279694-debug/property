@@ -107,6 +107,7 @@ button:disabled { color: var(--secondary); }
   --mist: #eff4fa; --mist-line: #e6edf7; --card: #fff; --card-line: #e5e7eb;
   --shadow: 0 2px 5px #18253708; --hero-ink: #192435;
   --action: #203042; --secondary: #545e6c; --radius: 14px;
+  --cover-height: clamp(216px, calc(var(--width) * .6), 232px);
 }
 .screen.stone {
   --mist: #e7eef5; --mist-line: #dce6ef; --card: #fdfdfc; --card-line: #dce2e6;
@@ -132,11 +133,13 @@ button:disabled { color: var(--secondary); }
 .service .tile { width: 52px; height: 52px; }
 .service .tile svg { width: 22px; height: 22px; }
 .cover:not(.compact) {
-  width: 100%; max-height: 172px; aspect-ratio: 2 / 1;
-  border-radius: var(--radius); background: #eae6e1; margin: 0;
+  width: min(100%, calc(var(--cover-height) * 4 / 3));
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius); background: var(--tint); margin-inline: auto;
 }
-.dark .cover:not(.compact) { background: #282726; }
-.cover:not(.compact) img { display: block; min-width: 0; height: 100%; max-height: 172px; object-fit: contain; }
+.cover.cover-ready { padding: 0; cursor: pointer; }
+.cover.cover-ready img { display: block; min-width: 0; height: 100%; object-fit: contain; }
+.big .cover:not(.compact) { --cover-height: 180px; }
 .hero {
   margin: 14px 0 12px; padding: 10px 6px 10px 14px; min-height: 83px;
   border-radius: var(--radius); background: var(--mist); border: 1px solid var(--mist-line);
@@ -208,7 +211,13 @@ button:disabled { color: var(--secondary); }
   padding: 18px; font-size: calc(14px * var(--scale));
 }
 .preview-dialog .small, .preview-dialog .date { font-size: calc(12px * var(--scale)); }
-.all-record-list .record-title { display: flex; align-items: baseline; }
+.photo-view { width: min(calc(100vw - 32px), 860px); }
+.photo-view img { display: block; width: 100%; max-height: 68dvh; object-fit: contain; }
+.project-record { padding-block: 0; }
+.record-group:has(.project-record):not(:has(.record-all)) .record-heading { min-height: 0; margin-bottom: 8px; }
+.project-record [data-event-details], .record-all { cursor: pointer; }
+.record-all[aria-expanded="true"] svg { transform: rotate(-90deg); }
+.group-card .record:has(+ [hidden]) { border-bottom: 0; }
 .preview-dialog::backdrop { background: #0006; }
 .preview-dialog h2, .preview-dialog p { margin: 0 0 6px; }
 .preview-dialog form { text-align: end; }

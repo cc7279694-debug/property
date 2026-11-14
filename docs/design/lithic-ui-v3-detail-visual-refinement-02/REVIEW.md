@@ -2,6 +2,8 @@
 
 **DESIGN_REVIEW_ONLY — NOT_PRODUCTION_UI**
 
+本页记录精修 02。原版画板见[固定提交](https://github.com/cc7279694-debug/property/tree/6289d9400a19ac28e6a099a460d08b461aa6e274/docs/design/lithic-ui-v3-detail-visual-refinement-02/boards)。本分支的更新画板与规格见[最终设计候选](DESIGN_FREEZE_03.md)。
+
 设计基线 `492d472a9b241b8b4238d34a60a0d7c45d087c45`。本轮用户直接附上的双屏图为首要视觉参考，原图已归档。此前对话中的精修样图仅供对照。已冻结首页作为按钮及主题参照，V3-03 提供业务事实和操作保护。[用户选中的双屏原图](boards/reference/user-selected-pair.png) · [链接对话](chatgpt-conversation://6af58492-72fc-83ee-bfd5-1097afc56c90) · [V3-03 业务事实与保护](../lithic-ui-v3-03-details/BUSINESS_FACTS_AND_GUARDS.md)
 
 ## 配对布局

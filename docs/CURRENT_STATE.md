@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-11-13（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-11-14（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **LITHIC_UI_V3_DETAIL_DESIGN_FREEZE_03 — READY_FOR_FINAL_APPROVAL（2026-11-14）**。收口项目封面、单笔金额明细及同列表「全部／收起」。已导出两张纯白主图，Chrome 的 360／400 和模拟 200% 布局与只读交互通过，Android NOT_RUN。等待用户视觉确认及 ChatGPT 独立审查，生产实施未授权。见[最终设计候选](design/lithic-ui-v3-detail-visual-refinement-02/DESIGN_FREEZE_03.md)。
 
 - **LITHIC_UI_V3_DETAIL_VISUAL_REFINEMENT_02 — READY_FOR_DESIGN_REVIEW（2026-11-14）**。按双屏参考精修项目与订阅详情，交付纯白配对、三主题、模拟 200% 和状态画板。仅静态设计，详情 Android 实测 NOT_RUN，等待独立审查及用户确认。见[精修稿](design/lithic-ui-v3-detail-visual-refinement-02/REVIEW.md)。
 

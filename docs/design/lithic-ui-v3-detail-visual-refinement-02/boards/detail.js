@@ -10,7 +10,6 @@ const glyphs = {
   broken: 'M14 20H3V4h18v6M3 15l5-5 4 4m6-3 5 9H13zm0 4v2m0 2h.01',
   add: 'M12 5v14M5 12h14',
   chevron: 'M9 6l6 6-6 6',
-  edit: 'M13.5 5.5l5 5M4 20l4.5-1 11-11a2 2 0 0 0-5-5l-11 11L4 20Z',
 };
 const icon = name => '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="' + glyphs[name] + '"/></svg>';
 const iconButton = (name, label) => '<button class="icon-button" aria-label="' + label + '">' + icon(name) + '</button>';
@@ -36,7 +35,7 @@ const photoCopy = {
   broken: ['broken', '封面暂不可用'],
 };
 function cover(status) {
-  if (status === 'normal') return '<div class="cover">' + camera + '</div>';
+  if (status === 'normal') return '<button class="cover cover-ready" data-cover-preview aria-label="查看完整封面">' + camera + '</button>';
   const [shape, label] = photoCopy[status];
   return '<div class="cover' + (status === 'empty' ? ' compact' : '') + '"><span class="placeholder">' +
     icon(shape) + (label ? '<span class="small">' + label + '</span>' : '') + '</span></div>';
@@ -56,14 +55,20 @@ function fact(label, value) {
   return '<div class="fact"><span class="muted">' + label + '</span>' + cash(value) + '</div>';
 }
 function event(when, label, value, detail, action) {
-  return '<article class="record"><div class="record-title"><div><span class="date">' + date(when) +
-    '</span><b>' + label + '</b><p class="muted small">' + detail + '</p></div>' +
-    cash(value) + (action ? '<button class="icon-button row-control" aria-label="' + action + ' · ' + when + '">' +
-      icon('edit') + '</button>' : '') + '</div></article>';
+  const basis = detail.startsWith('非现金折抵') ? '非现金折抵' : '现金';
+  const note = detail === basis ? '' : detail.slice(basis.length + 3);
+  const content = '<p>发生日期 ' + date(when) + '</p><p>' + label + '</p>' +
+    cash(value) + '<p>' + basis + '</p>' + (note ? '<p>' + note + '</p>' : '') +
+    '<div class="preview-actions"><span>' + action + '</span></div>';
+  return '<article class="record project-record"><div class="record-title"><div><span class="date">' + date(when) +
+    '</span><b>' + label + '</b>' + (basis === '非现金折抵' ? '<p class="muted small">' + basis + '</p>' : '') +
+    '</div>' + cash(value) + '<button class="icon-button row-control" data-event-details aria-label="查看金额记录与操作 · ' +
+    when + ' · ' + label + '">' + icon('chevron') + '</button><template>' + content + '</template></div></article>';
 }
-function recordsCard(title, records, showAll = false) {
-  const all = showAll ? '<button class="record-all" data-all-records aria-label="查看全部金额记录">全部' +
-    icon('chevron') + '</button>' : '';
+function recordsCard(title, records, {expandable = false, expanded = false} = {}) {
+  const all = expandable ? '<button class="record-all" data-all-records aria-expanded="' + expanded +
+    '" aria-label="' + (expanded ? '收起金额记录' : '查看全部金额记录') + '">' +
+    (expanded ? '收起' : '全部') + icon('chevron') + '</button>' : '';
   return '<section class="record-group"><div class="record-heading"><h3>' + title + '</h3>' +
     all + '</div><div class="group-card">' + records + '</div></section>';
 }
@@ -78,15 +83,20 @@ function project(options) {
     state(ended ? '已结束' : '持有中') + '<span>累计持有 ' + days + '</span></p>' +
     (photo === 'empty' && !read ? '<div class="media-actions">' + btn('添加照片') + '</div>' :
       mediaActions ? '<div class="media-actions">' + btn('更换照片') + btn('取消封面显示') + '</div>' : '') + '</section>';
-  let records = '';
-  if (empty) records = '<p class="muted">没有金额记录</p>';
-  else if (zero) records = event('2026-07-16', '初始投入', '0.00', '现金', '纠正这条记录');
-  else if (long) records = event('2026-11-13', '初始投入', '9,999,999,999.99', '现金', '纠正这条记录');
-  else records = event('2026-07-16', '初始投入', linked ? '700.00' : '1,000.00', '现金', linked ? '修改关联说明' : '纠正这条记录') +
-    (linked ? event('2026-07-16', '投入', '300.00', '非现金折抵 · 以旧换新关联事实，金额和日期不能单独修改。', '修改关联说明') : '') +
-    event('2026-08-01', '投入', '400.00', '现金 · 镜头维修', '纠正这条记录') +
-    event('2026-10-26', '收回', negative ? '1,800.00' : '200.00', '现金 · 配件收回', '纠正这条记录') +
-    (ended ? event('2026-11-10', '收回', '250.00', '现金 · 结束后实际结算', '纠正这条记录') : '');
+  const rows = [];
+  if (zero) rows.push(event('2026-07-16', '初始投入', '0.00', '现金', '纠正这条记录'));
+  else if (long) rows.push(event('2026-11-13', '初始投入', '9,999,999,999.99', '现金', '纠正这条记录'));
+  else if (!empty) {
+    rows.push(event('2026-07-16', '初始投入', linked ? '700.00' : '1,000.00', '现金', linked ? '修改关联说明' : '纠正这条记录'));
+    if (linked) rows.push(event('2026-07-16', '投入', '300.00', '非现金折抵 · 以旧换新关联事实，金额和日期不能单独修改。', '修改关联说明'));
+    rows.push(event('2026-08-01', '投入', '400.00', '现金 · 镜头维修', '纠正这条记录'),
+      event('2026-10-26', '收回', negative ? '1,800.00' : '200.00', '现金 · 配件收回', '纠正这条记录'));
+    if (ended) rows.push(event('2026-11-10', '收回', '250.00', '现金 · 结束后实际结算', '纠正这条记录'));
+  }
+  const limit = 3;
+  const expanded = options.expanded === true;
+  const records = rows.map((row, index) => index < limit ? row : row.replace('<article ', '<article data-extra-record ' +
+    (expanded ? '' : 'hidden '))).join('') || '<p class="muted">没有金额记录</p>';
   return (read === 'stale' ? notice('暂时无法刷新', '以下为上次读取记录。', true) : '') + identity +
     hero(ended ? '截至观察日的日均成本' : '当前日均成本', shownRate,
       empty ? '' : '结果截至 ' + visibleDate, options) +
@@ -95,7 +105,7 @@ function project(options) {
       fact(linked ? '累计投入（含非现金折抵）' : '累计实际投入', long ? '9,999,999,999.99' : zero ? '0.00' : '1,400.00') +
       fact(linked ? '累计收回（含非现金折抵）' : '累计实际收回', long ? '0.00' : ended ? '450.00' : negative ? '1,800.00' : zero ? '0.00' : '200.00') +
       fact('净投入', long ? '9,999,999,999.99' : ended ? '950.00' : negative ? '−400.00' : zero ? '0.00' : '1,200.00') + '</div>')) +
-    recordsCard('金额记录', records, !empty) +
+    recordsCard('金额记录', records, {expandable: rows.length > limit, expanded}) +
     sec('资料与历史', line('开始拥有', date(long ? '2026-11-13' : '2026-07-16')) +
       (ended ? line('已记录结束日期', date('2026-11-02')) + line('结束原因', '转交闲置设备') : '') +
       (linked ? '<p class="muted">有关联换新，金额与日期不能单独修改。</p>' : '') + btn('查看成本历史'));
@@ -158,13 +168,13 @@ const s = (label, props = {}) => ({label, entity: 'subscription', ...props});
 const pair = (width, scale) => [p('项目 · ' + width + 'dp · ' + scale * 100 + '%', {width, scale}), s('订阅 · ' + width + 'dp · ' + scale * 100 + '%', {width, scale})];
 const themes = [['纯白', 'white'], ['岩白雾蓝', 'stone'], ['深色黑灰', 'dark']];
 const boards = {
-  pair: ['项目与订阅 · 纯白详情', 2, pair(360, 1)],
+  pair: ['项目与订阅 · 最终纯白候选', 2, pair(360, 1)],
   'project-themes': ['项目详情 · 三主题', 3, themes.map(([label, theme]) => p(label, {theme}))],
   'subscription-themes': ['订阅详情 · 三主题', 3, themes.map(([label, theme]) => s(label, {theme}))],
   'width-400': ['400dp · 常规字号', 2, pair(400, 1)],
   'font-200': ['200% 字体 · 360 与 400', 4, [...pair(360, 2), ...pair(400, 2)]],
-  'history': ['记录与付款事实 · 向下滚动', 2, [p('项目 · 折抵与纠错', {linked: true, pos: 480}),
-    s('订阅 · 付款与实付汇总', {pos: 430})]],
+  'history': ['同一金额列表 · 展开前后', 2, [p('超过三笔 · 默认预览', {linked: true, pos: 560}),
+    p('点「全部」 · 就地展开', {linked: true, expanded: true, pos: 560})]],
   'states': ['关键状态', 3, [p('项目 · 封面不可用', {photo: 'broken'}), p('项目 · 旧快照', {read: 'stale', photo: 'empty'}),
     s('订阅 · 已停止', {ended: true}), p('项目 · 长名称与大金额', {long: true, scale: 2, photo: 'empty', pos: 60}),
     s('订阅 · 付款历史旧页', {historyStale: true, pos: 400}), s('订阅 · 长名称与大金额', {long: true, scale: 2, pos: 20}), s('订阅 · 无快照', {read: 'failed'})]],
@@ -189,20 +199,24 @@ modal.className = 'preview-dialog';
 modal.setAttribute('aria-labelledby', 'preview-title');
 root.append(modal);
 root.addEventListener('click', event => {
-  const trigger = event.target.closest('button[data-payment-details], button[data-all-records]');
+  const trigger = event.target.closest('button[data-payment-details], button[data-all-records], button[data-event-details], button[data-cover-preview]');
   if (!trigger) return;
-  const all = trigger.hasAttribute('data-all-records');
-  const source = all ? trigger.closest('.record-group').querySelector('.group-card') : trigger.nextElementSibling;
-  const content = all ? source.cloneNode(true) : source.content.cloneNode(true);
-  if (all) {
-    content.className = 'all-record-list';
-    content.querySelectorAll('button').forEach(button => button.remove());
+  if (trigger.hasAttribute('data-all-records')) {
+    const expanded = trigger.getAttribute('aria-expanded') !== 'true';
+    trigger.closest('.record-group').querySelectorAll('[data-extra-record]').forEach(row => { row.hidden = !expanded; });
+    trigger.setAttribute('aria-expanded', String(expanded));
+    trigger.setAttribute('aria-label', expanded ? '收起金额记录' : '查看全部金额记录');
+    trigger.firstChild.nodeValue = expanded ? '收起' : '全部';
+    return;
   }
+  const photo = trigger.hasAttribute('data-cover-preview');
+  const content = photo ? trigger.querySelector('img').cloneNode(true) : trigger.nextElementSibling.content.cloneNode(true);
+  modal.classList.toggle('photo-view', photo);
   const frameStyle = getComputedStyle(trigger.closest('.screen'));
   for (const property of ['--bg', '--ink', '--secondary', '--card-line', '--danger', '--scale']) {
     modal.style.setProperty(property, frameStyle.getPropertyValue(property));
   }
-  modal.innerHTML = '<h2 id="preview-title">' + (all ? '全部金额记录' : '付款详情') +
+  modal.innerHTML = '<h2 id="preview-title">' + (photo ? '完整封面' : trigger.hasAttribute('data-event-details') ? '金额记录' : '付款详情') +
     '</h2><div class="preview-data"></div><form method="dialog"><button>关闭</button></form>';
   modal.querySelector('.preview-data').append(content);
   modal.showModal();
