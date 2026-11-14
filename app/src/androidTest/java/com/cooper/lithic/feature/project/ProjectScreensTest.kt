@@ -21,6 +21,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
@@ -227,10 +228,11 @@ class ProjectScreensTest {
 
     @Test fun detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating() {
         compose.setContent { LithicTheme { ProjectDetailScreen(ProjectDetailUiState(detail(), false), {}, {}, {}, {}) } }
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("¥100.00"))
-        compose.onNodeWithText("已持有10天").assertIsDisplayed()
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥100.00/天")
+        compose.onNodeWithTag("project-ownership-period").assertIsDisplayed()
+        compose.onNodeWithTag("project-detail-held-days").assert(hasText("10天"))
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-$EVENT_ID"))
-        compose.onNodeWithTag("project-event-$EVENT_ID").assert(hasText("2026-01-01", substring = true))
+        compose.onNodeWithTag("project-event-date-$EVENT_ID", useUnmergedTree = true).assertTextEquals("2026-01-01")
         compose.onNode(hasText("¥1000.00") and hasAnyAncestor(hasTestTag("project-event-$EVENT_ID")),
             useUnmergedTree = true).assertIsDisplayed()
     }
@@ -245,7 +247,7 @@ class ProjectScreensTest {
             state = ProjectDetailUiState(detail(cost = ProjectCostResult(10, 100000, 120000,
                 -20000, BigDecimal("-20"), true, null)), false)
         }
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("−¥20.00"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥20.00/天")
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-net"))
         compose.onNodeWithTag("project-detail-net").assert(hasText("−¥200.00"))
     }

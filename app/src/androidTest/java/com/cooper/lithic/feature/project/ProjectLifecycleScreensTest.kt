@@ -13,10 +13,12 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -213,17 +215,23 @@ class ProjectLifecycleScreensTest {
                 onCorrectMoney = { corrected = it }, onUpdateEnd = { updateEnd.incrementAndGet() },
                 onDelete = { deletion.incrementAndGet() }, backLabel = "返回历史档案")
         } }
-        compose.onNodeWithTag("project-detail-back").assertTextContains("返回历史档案")
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-correct-event-$EVENT_ID"))
+        compose.onNodeWithTag("project-detail-back").assertContentDescriptionEquals("返回历史档案")
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-details-$EVENT_ID"))
+        compose.onNodeWithTag("project-event-details-$EVENT_ID").performClick()
+        assertEquals(null, corrected)
         compose.onNodeWithTag("project-correct-event-$EVENT_ID").performClick()
         assertEquals(EVENT_ID, corrected)
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-correct-event-$SETTLEMENT_ID"))
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-details-$SETTLEMENT_ID"))
+        compose.onNodeWithTag("project-event-details-$SETTLEMENT_ID").performClick()
+        assertEquals(0, updateEnd.get())
         compose.onNodeWithTag("project-correct-event-$SETTLEMENT_ID").performClick()
         assertEquals(1, updateEnd.get())
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-delete"))
+        assertEquals(EVENT_ID, corrected)
+        compose.onNodeWithTag("project-detail-more").performClick()
+        compose.onNodeWithTag("project-update-end").assertIsDisplayed()
+        compose.onNodeWithTag("project-end").assertDoesNotExist()
         compose.onNodeWithTag("project-delete").performClick()
         assertEquals(1, deletion.get())
-        compose.onNodeWithTag("project-end").assertDoesNotExist()
         assertHoldingDaysFrozen()
         compose.onNodeWithText("包含结束后的实际结算；持有天数不再增加。").assertDoesNotExist()
         compose.onNodeWithText("删除金额记录").assertDoesNotExist()
@@ -267,9 +275,12 @@ class ProjectLifecycleScreensTest {
     }
 
     private fun assertHoldingDaysFrozen() {
-        compose.onNodeWithTag("project-detail-content")
-            .performScrollToNode(hasText("持有天数不再增加", substring = true))
-        compose.onNode(hasText("持有天数不再增加", substring = true)).assertIsDisplayed()
+        val content = compose.onNodeWithTag("project-detail-content")
+        content.performScrollToNode(hasTestTag("project-detail-held-days"))
+        compose.onNodeWithTag("project-detail-held-days").assertTextEquals("8天")
+        val frozenNote = hasText("持有天数已冻结。") or hasText("持有天数不再增加", substring = true)
+        content.performScrollToNode(frozenNote)
+        compose.onNode(frozenNote).assertIsDisplayed()
     }
 
     private fun lateMoney(date: LocalDate) = ProjectMoneyEventEntity(

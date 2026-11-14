@@ -14,11 +14,13 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
 import androidx.compose.ui.test.assertIsSelected
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.StateRestorationTester
@@ -140,7 +142,7 @@ class ProjectLifecycleFlowTest {
         assertEquals(1, after.events.count { it.role == ProjectMoneyEventRole.END_SETTLEMENT })
         assertEquals(MoneyDirection.RECOVERY, after.events.single { it.role == ProjectMoneyEventRole.END_SETTLEMENT }.direction)
         assertEquals(80000L, after.cost.netCents)
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("¥100.00"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥100.00/天")
     }
 
     @Test fun edit_end_recovery_not_duplicated(): Unit = runBlocking {
@@ -186,14 +188,14 @@ class ProjectLifecycleFlowTest {
         assertEquals(5L, detail.cost.heldDays)
         assertEquals(90000L, detail.cost.netCents)
         assertFalse(detail.cost.contributesToCurrentTotal)
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("¥180.00"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥180.00/天")
         detailAction("project-detail-back")
         waitForCurrent()
         assertFalse(model.state.value.list.items.any { it.project.id == id })
         openHistory()
         compose.onNodeWithTag("project-history-row-$id").performClick()
         waitForDetail()
-        compose.onNodeWithTag("project-detail-back").assertTextContains("返回历史档案")
+        compose.onNodeWithTag("project-detail-back").assertContentDescriptionEquals("返回历史档案")
         compose.onNodeWithTag("tab-review").assertIsSelected()
         assertEquals(5L, model.state.value.detail.detail!!.cost.heldDays)
     }
@@ -218,7 +220,7 @@ class ProjectLifecycleFlowTest {
         assertEquals(8L, after.cost.heldDays)
         assertEquals(0, BigDecimal("125").compareTo(after.cost.dailyRate))
         assertEquals(1, after.events.size)
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("¥125.00"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥125.00/天")
     }
 
     @Test fun delete_requires_confirmation(): Unit = runBlocking {
@@ -264,7 +266,8 @@ class ProjectLifecycleFlowTest {
         compose.onNodeWithTag("project-history-row-$id").performClick()
         waitForDetail()
         val original = repository.loadProjectDetail(id)!!.events.single { it.role == ProjectMoneyEventRole.REGULAR }
-        detailAction("project-correct-event-${original.id}")
+        detailAction("project-event-details-${original.id}")
+        compose.onNodeWithTag("project-correct-event-${original.id}").performClick()
         waitForCorrection()
         compose.onNodeWithTag("correction-direction").assertTextContains("方向：投入")
         compose.onNodeWithTag("correction-amount").performScrollTo().performTextReplacement("100")
@@ -442,7 +445,14 @@ class ProjectLifecycleFlowTest {
         waitForDetail()
     }
     private fun detailAction(tag: String) {
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag(tag))
+        when (tag) {
+            "project-end", "project-update-end", "project-delete" ->
+                compose.onNodeWithTag("project-detail-more").performClick()
+            "project-add-outlay", "project-add-recovery" ->
+                compose.onNodeWithTag("project-record-money").performClick()
+            "project-detail-back" -> Unit
+            else -> compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag(tag))
+        }
         compose.onNodeWithTag(tag).performClick()
     }
     private fun openHistory() {

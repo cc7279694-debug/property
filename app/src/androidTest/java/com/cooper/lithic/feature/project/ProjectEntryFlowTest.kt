@@ -9,6 +9,7 @@ import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.doubleClick
 import androidx.compose.ui.test.hasAnyAncestor
 import androidx.compose.ui.test.hasTestTag
@@ -122,7 +123,7 @@ class ProjectEntryFlowTest {
         render()
         createFromHome("一次初始投入", "1000")
         val id = projectViewModel.state.value.detail.detail!!.project.id
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("¥100.00"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥100.00/天")
         val detail = repository.loadProjectDetail(id)!!
         assertEquals(1, detail.events.size)
         assertEquals(ProjectMoneyEventRole.INITIAL, detail.events.single().role)
@@ -190,7 +191,7 @@ class ProjectEntryFlowTest {
         fillMoney("200", "2026-01-05", "补录真实投入")
         compose.onNodeWithTag("money-save").assertIsDisplayed().performClick()
         waitForDetail()
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("¥120.00"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥120.00/天")
         detailAction("project-detail-back")
         waitForList()
         assertRowAmount(id, "¥120.00")
@@ -205,7 +206,7 @@ class ProjectEntryFlowTest {
         fillMoney("1400", "2026-01-08", "真实收回")
         compose.onNodeWithTag("money-save").assertIsDisplayed().performClick()
         waitForDetail()
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("−¥20.00"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥20.00/天")
         assertEquals(100000L, repository.loadProjectDetail(id, LocalDate.of(2026, 1, 4))!!.cost.netCents)
         assertEquals(120000L, repository.loadProjectDetail(id, LocalDate.of(2026, 1, 5))!!.cost.netCents)
         assertEquals(-20000L, repository.loadProjectDetail(id)!!.cost.netCents)
@@ -228,8 +229,8 @@ class ProjectEntryFlowTest {
         compose.onNodeWithTag("project-initial-amount").assertDoesNotExist()
         saveProjectAndWaitForDetail()
         compose.onNodeWithTag("project-detail-name").assertTextContains("修订后的项目")
-        compose.onNodeWithText("已持有5天").assertIsDisplayed()
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("¥200.00"))
+        compose.onNodeWithTag("project-detail-held-days").assertTextContains("5天").assertIsDisplayed()
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥200.00/天")
         val after = repository.loadProjectDetail(id)!!
         assertEquals(before.project.id, after.project.id)
         assertEquals(before.project.createdAt, after.project.createdAt)
@@ -279,7 +280,13 @@ class ProjectEntryFlowTest {
     }
 
     private fun detailAction(tag: String) {
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag(tag))
+        when (tag) {
+            "project-edit" -> compose.onNodeWithTag("project-detail-more").performClick()
+            "project-add-outlay", "project-add-recovery" ->
+                compose.onNodeWithTag("project-record-money").performClick()
+            "project-detail-back" -> Unit
+            else -> compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag(tag))
+        }
         compose.onNodeWithTag(tag).performClick()
     }
 

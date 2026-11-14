@@ -6,9 +6,19 @@ import android.graphics.ColorSpace
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.*
@@ -24,6 +34,8 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
 import com.cooper.lithic.data.media.*
@@ -53,6 +65,7 @@ internal fun RecordCover(
     reference: CoverReference,
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop,
+    allowFullView: Boolean = false,
     fallback: @Composable () -> Unit,
 ) {
     val reader = LocalCoverReader.current
@@ -122,6 +135,7 @@ internal fun RecordCover(
         catch (_: OutOfMemoryError) { image = PreviewImage.Unavailable }
         catch (_: Exception) { image = PreviewImage.Unavailable }
     }
+    val ready = image as? PreviewImage.Ready
     Box(modifier.fillMaxSize().onSizeChanged { measured = it }, contentAlignment = Alignment.Center) {
         when {
             reference.assetId == null -> fallback()
@@ -132,15 +146,51 @@ internal fun RecordCover(
                     C2Icon(C2Glyph.ImageError)
                 }
             }
-            image is PreviewImage.Ready -> Image((image as PreviewImage.Ready).bitmap,
-                if (reference.type == CoverOwnerType.PROJECT) "长期项目封面" else "订阅封面",
-                Modifier.fillMaxSize().testTag("record-cover-image"), contentScale = contentScale)
+            ready != null -> {
+                val fullViewOpen = if (allowFullView && reference.type == CoverOwnerType.PROJECT) {
+                    remember(ticket) { mutableStateOf(false) }
+                } else null
+                val openAction = if (fullViewOpen != null) {
+                    Modifier.clickable(onClickLabel = "查看完整封面", role = Role.Button) {
+                        if (ticket.matches(reader.generationId, reader.ownerKey, reference, target, reader.currentSafely())) {
+                            fullViewOpen.value = true
+                        }
+                    }
+                } else Modifier
+                Image(ready.bitmap, if (reference.type == CoverOwnerType.PROJECT) "长期项目封面" else "订阅封面",
+                    Modifier.fillMaxSize().testTag("record-cover-image").then(openAction), contentScale = contentScale)
+                // Keep the dialog under the same ticket. It shares the original raster and reservation.
+                if (fullViewOpen?.value == true) ProjectCoverFullView(ready.bitmap) { fullViewOpen.value = false }
+            }
             else -> C2Icon(C2Glyph.Image, Modifier.testTag("record-cover-loading"), "正在读取封面")
         }
     }
     if (explainFailure) AlertDialog(onDismissRequest = { explainFailure = false },
         title = { Text("封面暂不可用") }, text = { Text("暂时无法读取这张封面。查看封面不会修改记录。") },
         confirmButton = { TextButton(onClick = { explainFailure = false }) { Text("知道了") } })
+}
+
+@Composable
+private fun ProjectCoverFullView(bitmap: ImageBitmap, onClose: () -> Unit) {
+    Dialog(onDismissRequest = onClose, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+        Surface(
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp)
+                .widthIn(max = 680.dp).fillMaxWidth().heightIn(max = 560.dp)
+                .testTag("project-cover-full-view"),
+            shape = MaterialTheme.shapes.large,
+        ) {
+            Column(Modifier.padding(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 16.dp)) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text("完整封面", Modifier.weight(1f), style = MaterialTheme.typography.titleLarge)
+                    IconButton(onClose, Modifier.size(48.dp).testTag("project-cover-close-full-view")) {
+                        C2Icon(C2Glyph.Close, description = "关闭封面查看")
+                    }
+                }
+                Image(bitmap, "长期项目完整封面", Modifier.fillMaxWidth().weight(1f)
+                    .testTag("project-cover-full-image"), contentScale = ContentScale.Fit)
+            }
+        }
+    }
 }
 
 private fun CoverReader.currentSafely() = try { isCurrent() } catch (_: Exception) { false }

@@ -2,9 +2,12 @@ package com.cooper.lithic.feature.project
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollToNode
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.core.model.MoneyDirection
@@ -73,7 +76,8 @@ class C2ProjectDetailSemanticsTest {
         } }
         compose.onNodeWithTag("project-detail-error").assertTextContains("读取失败")
         compose.onNodeWithTag("project-detail-stale").assertTextContains("上次读取记录", substring = true)
-        compose.onNodeWithTag("project-detail-daily").assertTextContains("−¥12.50")
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-daily"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥12.50/天")
     }
 
     @Test fun registered_unread_cover_is_not_presented_as_a_valid_image_or_no_cover() {

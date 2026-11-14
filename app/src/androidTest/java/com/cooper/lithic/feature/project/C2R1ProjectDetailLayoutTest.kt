@@ -39,10 +39,13 @@ class C2R1ProjectDetailLayoutTest {
                 onCorrectMoney = { corrected = it }, onCostHistory = {})
         } } }
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-$eventId"))
-        compose.onNodeWithTag("project-event-type-$eventId").assertTextContains("初始投入")
-        compose.onNodeWithTag("project-event-date-$eventId").assertTextContains("2026-01-01")
-        compose.onNodeWithTag("project-event-amount-$eventId").assertTextContains("¥100.00")
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-correct-event-$eventId"))
+        compose.onNodeWithTag("project-event-type-$eventId", useUnmergedTree = true).assertTextContains("初始投入")
+        compose.onNodeWithTag("project-event-date-$eventId", useUnmergedTree = true).assertTextContains("2026-01-01")
+        compose.onNodeWithTag("project-event-amount-$eventId", useUnmergedTree = true).assertTextContains("¥100.00")
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-details-$eventId"))
+        compose.onNodeWithTag("project-event-details-$eventId").performClick()
+        compose.onNodeWithTag("project-event-basis-$eventId").assertTextContains("现金")
+        assertEquals(null, corrected)
         compose.onNodeWithTag("project-correct-event-$eventId").performClick()
         assertEquals(eventId, corrected)
     }

@@ -15,10 +15,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.PixelMap
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.graphics.toPixelMap
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
+import androidx.test.espresso.Espresso
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.LithicTheme
 import com.cooper.lithic.data.media.*
@@ -45,14 +47,16 @@ class CoverPreviewsTest {
     @Test fun no_reference_keeps_the_type_fallback_without_reading() {
         val calls = AtomicInteger(0)
         val reader = fake { calls.incrementAndGet(); error("No-reference preview must not read") }
-        show(reader, reference.copy(assetId = null))
+        showWithFullView(reader, reference.copy(assetId = null))
         compose.onNodeWithTag("cover-fallback").assertIsDisplayed()
         compose.onNodeWithTag("record-cover-unavailable").assertDoesNotExist()
+        fullViewAction().assertDoesNotExist()
         compose.runOnIdle { assertEquals(0, calls.get()) }
     }
 
     @Test fun a_reference_without_a_reader_has_a_visible_readonly_error_explanation() {
-        show(null, reference)
+        showWithFullView(null, reference)
+        fullViewAction().assertDoesNotExist()
         compose.onNodeWithContentDescription("封面暂不可用").assertIsDisplayed().performClick()
         compose.onNodeWithText("封面暂不可用").assertIsDisplayed()
         compose.onNodeWithText("暂时无法读取这张封面。查看封面不会修改记录。").assertIsDisplayed()
@@ -93,6 +97,8 @@ class CoverPreviewsTest {
         compose.waitUntil(5_000) {
             compose.onAllNodesWithTag("record-cover-image", useUnmergedTree = true).fetchSemanticsNodes().size == 2
         }
+        compose.onAllNodes(hasTestTag("record-cover-image") and hasClickAction())
+            .assertCountEquals(0)
         val fit = coverPixels("fit-frame", description)
         val crop = coverPixels("crop-frame", description)
         compose.onNodeWithTag("record-cover-unavailable").assertDoesNotExist()
@@ -177,6 +183,49 @@ class CoverPreviewsTest {
         compose.onNodeWithTag("record-cover-image").assertDoesNotExist()
     }
 
+    @Test fun full_view_reuses_the_verified_preview_and_android_back_closes_it() {
+        val calls = AtomicInteger(0)
+        val image = VerifiedCoverImage(assetId, "image/png", 48, 24, edgedPng(48, 24))
+        val reader = fake { calls.incrementAndGet(); CoverReadResult.Ready(image) }
+        showWithFullView(reader, reference)
+        waitForFullViewAction()
+        fullViewAction().performClick()
+        compose.onNodeWithTag("project-cover-full-view").assertIsDisplayed()
+        val fullImage = compose.onNodeWithTag("project-cover-full-image").assertIsDisplayed()
+            .captureToImage().toPixelMap()
+        val scale = minOf(fullImage.width / 48f, fullImage.height / 24f)
+        val left = (fullImage.width - 48 * scale) / 2f
+        val top = (fullImage.height - 24 * scale) / 2f
+        val edge = EDGE_PX * scale / 2f
+        assertPixel(fullImage, left + edge, fullImage.height / 2f, Color.RED)
+        assertPixel(fullImage, left + 48 * scale - edge, fullImage.height / 2f, Color.BLUE)
+        assertPixel(fullImage, fullImage.width / 2f, top + edge, Color.GREEN)
+        assertPixel(fullImage, fullImage.width / 2f, top + 24 * scale - edge, Color.CYAN)
+        Espresso.pressBack()
+        compose.onNodeWithTag("project-cover-full-view").assertDoesNotExist()
+        fullViewAction().assertIsDisplayed().performClick()
+        compose.onNodeWithTag("project-cover-close-full-view").performClick()
+        compose.onNodeWithTag("project-cover-full-view").assertDoesNotExist()
+        compose.runOnIdle { assertEquals(1, calls.get()) }
+    }
+
+    @Test fun full_view_is_revoked_when_the_same_generation_gets_a_new_reader() {
+        val first = fake { CoverReadResult.Ready(VerifiedCoverImage(assetId, "image/png", 2, 2, png(Color.RED))) }
+        val next = fake { CoverReadResult.Unavailable(CoverReadFailure.INTEGRITY) }
+        val reader = mutableStateOf<CoverReader>(first)
+        compose.setContent { LithicTheme { ProvideCoverPreviews(reader.value) {
+            Box(Modifier.size(64.dp)) { RecordCover(reference, Modifier.fillMaxSize(), ContentScale.Fit,
+                allowFullView = true) { Text("类型图标") } }
+        } } }
+        waitForFullViewAction()
+        fullViewAction().performClick()
+        compose.onNodeWithTag("project-cover-full-image").assertIsDisplayed()
+        compose.runOnIdle { first.current = false; reader.value = next }
+        compose.onNodeWithTag("project-cover-full-view").assertDoesNotExist()
+        compose.waitUntil(5_000) { compose.onAllNodesWithTag("record-cover-unavailable").fetchSemanticsNodes().size == 1 }
+        fullViewAction().assertDoesNotExist()
+    }
+
     @Test fun a_late_retired_owner_cannot_replace_the_current_owners_real_bitmap() {
         val release = CompletableDeferred<Unit>()
         val oldCalls = AtomicInteger(0)
@@ -219,22 +268,35 @@ class CoverPreviewsTest {
         val ref = mutableStateOf(reference)
         try {
             compose.setContent { LithicTheme { ProvideCoverPreviews(reader) {
-                Box(Modifier.size(64.dp)) { RecordCover(ref.value, Modifier.size(64.dp)) { Text("类型图标") } }
+                Box(Modifier.size(64.dp)) { RecordCover(ref.value, Modifier.size(64.dp), ContentScale.Fit,
+                    allowFullView = true) { Text("类型图标") } }
             } } }
-            compose.waitUntil(5_000) { compose.onAllNodesWithTag("record-cover-image").fetchSemanticsNodes().size == 1 }
+            waitForFullViewAction()
+            fullViewAction().performClick()
+            compose.onNodeWithTag("project-cover-full-image").assertIsDisplayed()
             compose.runOnIdle { ref.value = reference.copy(assetId = otherAssetId) }
-            compose.onNodeWithTag("record-cover-image").assertDoesNotExist()
+            compose.onNodeWithTag("record-cover-image", useUnmergedTree = true).assertDoesNotExist()
+            compose.onNodeWithTag("project-cover-full-view").assertDoesNotExist()
             release.complete(Unit)
-            compose.waitUntil(5_000) { compose.onAllNodesWithTag("record-cover-image").fetchSemanticsNodes().size == 1 }
-            val pixels = compose.onNodeWithTag("record-cover-image").captureToImage().toPixelMap()
+            waitForFullViewAction()
+            compose.onNodeWithTag("project-cover-full-view").assertDoesNotExist()
+            val pixels = compose.onNodeWithTag("record-cover-image", useUnmergedTree = true).captureToImage().toPixelMap()
             assertEquals(android.graphics.Color.BLUE, pixels[pixels.width / 2, pixels.height / 2].toArgb())
             compose.runOnIdle { assertEquals(2, calls.get()) }
         } finally { release.complete(Unit) }
     }
 
-    private fun show(reader: CoverReader?, ref: CoverReference) {
+    private fun fullViewAction() = compose.onNode(hasTestTag("record-cover-image") and hasClickAction())
+
+    private fun waitForFullViewAction() = compose.waitUntil(5_000) {
+        compose.onAllNodes(hasTestTag("record-cover-image") and hasClickAction()).fetchSemanticsNodes().size == 1
+    }
+
+    private fun showWithFullView(reader: CoverReader?, ref: CoverReference) {
         compose.setContent { LithicTheme { ProvideCoverPreviews(reader) {
-            Box(Modifier.size(64.dp)) { RecordCover(ref, Modifier.size(64.dp)) { Text("类型图标", Modifier.testTag("cover-fallback")) } }
+            Box(Modifier.size(64.dp)) { RecordCover(ref, Modifier.size(64.dp), ContentScale.Fit, allowFullView = true) {
+                Text("类型图标", Modifier.testTag("cover-fallback"))
+            } }
         } } }
     }
     private fun fake(generation: String = "synthetic", read: suspend (CoverReference) -> CoverReadResult) = FakeReader(generation, read)

@@ -48,6 +48,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.platform.testTag
@@ -81,6 +82,7 @@ import com.cooper.lithic.data.local.CategoryType
 import com.cooper.lithic.feature.project.LeaveDecision
 import com.cooper.lithic.feature.project.MoneyEventEditor
 import com.cooper.lithic.feature.project.ProjectDetailScreen
+import com.cooper.lithic.feature.project.ProjectDetailUiState
 import com.cooper.lithic.feature.project.ProjectEditorScreen
 import com.cooper.lithic.feature.project.ProjectListScreen
 import com.cooper.lithic.feature.project.ProjectViewModel
@@ -568,6 +570,9 @@ internal fun LithicNavigation(
                             onOpenProject = { requestLeave(canonicalBackStack(ProjectDetail(it))) }, onLoadMore = model::loadMore, onRetry = model::retryRead)
                     }
                     entry<ProjectDetail> { route ->
+                        val detailState = projects.detail.takeUnless { details ->
+                            details.detail?.project?.id?.let { it != route.id } == true
+                        } ?: ProjectDetailUiState()
                         val availablePhotoModel = photoModel?.takeIf { it.isAvailable() }
                         val startPhotoChange = availablePhotoModel?.let { controller -> { change: PhotoLiteCoverChange ->
                             if (!inspectionState.busy && restoreState.phase == RestoreUiPhase.IDLE &&
@@ -578,16 +583,19 @@ internal fun LithicNavigation(
                                 controller.begin(route.id, change)
                             else pendingWarning = true
                         } }
-                        ProjectDetailScreen(projects.detail, onBack, onEdit = { requestLeave(canonicalBackStack(ProjectEdit(route.id, route.origin, route.comparisonId))) },
+                        ProjectDetailScreen(detailState, onBack, onEdit = { requestLeave(canonicalBackStack(ProjectEdit(route.id, route.origin, route.comparisonId))) },
                             onAddMoney = { requestLeave(canonicalBackStack(ProjectMoneyEntry(route.id, it, route.origin, route.comparisonId))) }, onRetry = model::retryRead,
                             onEnd = { requestLeave(canonicalBackStack(ProjectEnd(route.id, route.origin, route.comparisonId))) },
                             onUpdateEnd = { requestLeave(canonicalBackStack(ProjectUpdateEnd(route.id, route.origin, route.comparisonId))) },
                             onCorrectMoney = { requestLeave(canonicalBackStack(ProjectMoneyCorrection(route.id, it, route.origin, route.comparisonId))) },
                             onDelete = { requestLeave(canonicalBackStack(ProjectDelete(route.id, route.origin, route.comparisonId))) },
-                            coverContent = { projects.detail.detail?.let { detail ->
+                            coverContent = { detailState.detail?.let { detail ->
                                 RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
-                                    Modifier.fillMaxSize()) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) }
+                                    Modifier.fillMaxSize(), contentScale = ContentScale.Fit, allowFullView = true) {
+                                    C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project)
+                                }
                             } },
+                            presentationIdentity = session,
                             onAddPhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.ADD) } },
                             onReplacePhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.REPLACE) } },
                             onRemovePhoto = startPhotoChange?.let { start -> { start(PhotoLiteCoverChange.REMOVE) } },

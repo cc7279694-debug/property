@@ -102,9 +102,9 @@ class C9RecordThemeTest {
             compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-net"))
             compose.onNodeWithTag("project-detail-net").assertTextEquals("−¥9999998711.99")
             compose.onNodeWithTag("project-record-money").assertIsDisplayed()
-            compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-amount-${events.last().id}"))
+            compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-details-${events.last().id}"))
             compose.waitForIdle()
-            compose.onNodeWithTag("project-event-amount-${events.last().id}").assertTextEquals("¥9999999999.99")
+            compose.onNodeWithTag("project-event-amount-${events.last().id}", useUnmergedTree = true).assertTextEquals("¥9999999999.99")
             compose.onNodeWithTag("project-detail-content").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, -100_000f) }
             compose.waitForIdle()
         }

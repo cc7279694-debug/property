@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -38,8 +39,8 @@ class C2R2ProjectHierarchyTest {
         compose.onNodeWithTag("project-detail-category").assertTextContains("数码")
         compose.onNodeWithTag("project-detail-status").assertTextContains("持有中")
         compose.onNodeWithTag("project-core-metrics").assertIsDisplayed()
-        compose.onNodeWithTag("project-detail-daily").assertTextContains("¥10.00")
-        compose.onNodeWithTag("project-detail-held-days").assertTextContains("10 天")
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥10.00/天")
+        compose.onNodeWithTag("project-detail-held-days").assertTextContains("10天")
         val identity = compose.onNodeWithTag("project-identity-symbol").fetchSemanticsNode().boundsInRoot
         assertTrue("No photo must not create an empty hero frame", identity.height <= with(compose.density) { 65.dp.toPx() })
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-financial-totals"))
@@ -49,7 +50,9 @@ class C2R2ProjectHierarchyTest {
     @Test fun dark_hierarchy_keeps_the_original_fact_correction_and_primary_action() {
         var corrected: String? = null
         show(dark = true, onCorrect = { corrected = it })
-        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-correct-event-$eventId"))
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-details-$eventId"))
+        compose.onNodeWithTag("project-event-details-$eventId").performClick()
+        assertEquals(null, corrected)
         compose.onNodeWithTag("project-correct-event-$eventId").performClick()
         assertEquals(eventId, corrected)
         compose.onNodeWithTag("project-record-money").assertIsDisplayed()

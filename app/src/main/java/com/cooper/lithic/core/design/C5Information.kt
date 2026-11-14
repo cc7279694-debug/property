@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,6 +13,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
+import com.cooper.lithic.core.design.LithicIconButton as IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,13 +30,20 @@ internal fun C5InformationButton(
     title: String,
     modifier: Modifier = Modifier,
     buttonLabel: String = "说明",
+    iconOnly: Boolean = false,
     content: @Composable ColumnScope.() -> Unit,
 ) {
     var open by rememberSaveable(title) { mutableStateOf(false) }
-    TextButton({ open = true }, modifier.heightIn(min = 48.dp).semantics { contentDescription = title }) {
-        C2Icon(C2Glyph.Info)
-        Spacer(Modifier.width(4.dp))
-        Text(buttonLabel, style = MaterialTheme.typography.bodyMedium)
+    if (iconOnly) {
+        IconButton({ open = true }, modifier.size(48.dp)) {
+            C2Icon(C2Glyph.Info, Modifier.size(16.dp), description = title)
+        }
+    } else {
+        TextButton({ open = true }, modifier.heightIn(min = 48.dp).semantics { contentDescription = title }) {
+            C2Icon(C2Glyph.Info)
+            Spacer(Modifier.width(4.dp))
+            Text(buttonLabel, style = MaterialTheme.typography.bodyMedium)
+        }
     }
     if (open) AlertDialog(onDismissRequest = { open = false }, title = { Text(title) },
         text = {
