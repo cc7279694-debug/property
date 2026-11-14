@@ -1,0 +1,30 @@
+app-debug.apk
+package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+Verified using v2 scheme (APK Signature Scheme v2): true
+Number of signers: 1
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+Signer #1 public key SHA-256 digest: d80e066186fcba43ae0594293263e832336f625ecd185877919a805ef17ac110
+package: com.cooper.lithic.debug
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.WAKE_LOCK'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+permission: com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+uses-permission: name='com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+    A: http://schemas.android.com/apk/res/android:versionCode(0x0101021b)=17
+    A: http://schemas.android.com/apk/res/android:versionName(0x0101021c)="0.1.0-m22-debug" (Raw: "0.1.0-m22-debug")
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.LithicApplication" (Raw: "com.cooper.lithic.app.LithicApplication")
+        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.MainActivity" (Raw: "com.cooper.lithic.app.MainActivity")
+
+app-debug-androidTest.apk
+package: name='com.cooper.lithic.debug.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+Verified using v2 scheme (APK Signature Scheme v2): true
+Number of signers: 1
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+Signer #1 public key SHA-256 digest: d80e066186fcba43ae0594293263e832336f625ecd185877919a805ef17ac110
+package: com.cooper.lithic.debug.test
+uses-permission: name='android.permission.REORDER_TASKS'
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.runner.AndroidJUnitRunner" (Raw: "androidx.test.runner.AndroidJUnitRunner")
+        A: http://schemas.android.com/apk/res/android:targetPackage(0x01010021)="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true

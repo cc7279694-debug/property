@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC UI-V3 GLOBAL POLISH 01 — READY_FOR_INDEPENDENT_REVIEW（2026-11-14）**。核对 38 个 Nav3 入口和局部弹层，生产三主题共享色角色统一，120 处界面文案调整。116 类、984 项 JVM PASS，生产和 AndroidTest 编译及 Debug 双包签名核验通过，Lint 0 错误／20 警告。未操作 Android、ADB 或真实账本，主题实测、200% 字体与 TalkBack 仍 NOT_RUN。见[独立验收报告](evidence/LITHIC-UI-V3-GLOBAL-POLISH-01.md)。
+
 - **LITHIC_PROJECT_DETAIL_DEVICE_HANDOFF_04 — READY_FOR_USER_REVIEW（2026-11-14）**。复核本机原 Debug App/Test 签名、包身份、版本、SHA 和构建绑定，静态确认 79 个指定 AndroidTest 方法。小米14合成账本手工清单已备齐，当前 Debug 关闭照片写入，正向封面项目缺独立夹具。未操作设备或 ADB，真机与自动化仍 NOT_RUN，等待独立审查。见[真机交接](evidence/LITHIC-Project-Detail-Device-Handoff-04.md)。
 
 - **LITHIC_UI_V3_PROJECT_DETAIL_FINAL_ACCEPTANCE_03 — ENVIRONMENT_BLOCKED（2026-11-14）**。测试判据改为逐行、逐字和真实布局裁切校验，另增真实系统 100%／200% 长标题方法。生产源码未改，定向 JVM 51 PASS，生产／AndroidTest 编译和测试包审计通过，Lint 0 错误／20 警告。旧 AVD 单次启动在安装前捕获 Phone 和 Traceur 启动 ANR。原 11 次、新长标题、指定首页 43 项、项目详情专属回归和新截图均 NOT_RUN。模拟器与 5038 已收口，5037 身份相同。见[最终验收报告](evidence/LITHIC-UI-V3-Project-Detail-Final-Acceptance-03.md)。

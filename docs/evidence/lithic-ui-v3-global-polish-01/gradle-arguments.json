@@ -1,0 +1,14 @@
+[
+  "--offline",
+  "--no-daemon",
+  "--console=plain",
+  "--max-workers=1",
+  "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8",
+  "-Pkotlin.compiler.execution.strategy=in-process",
+  ":app:testDebugUnitTest",
+  ":app:compileDebugKotlin",
+  ":app:assembleDebug",
+  ":app:compileDebugAndroidTestKotlin",
+  ":app:assembleDebugAndroidTest",
+  ":app:lintDebug"
+]
