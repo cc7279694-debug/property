@@ -1,0 +1,5 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell set -o pipefail; { cat /data/anr/anr_2026-11-14-05-54-15-406; } | head -c 4194305
+exit=1
+
+---stderr---
+cat: /data/anr/anr_2026-11-14-05-54-15-406: Permission denied

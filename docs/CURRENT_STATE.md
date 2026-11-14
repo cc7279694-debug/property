@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_UI_V3_PROJECT_DETAIL_FINAL_ACCEPTANCE_03 — ENVIRONMENT_BLOCKED（2026-11-14）**。测试判据改为逐行、逐字和真实布局裁切校验，另增真实系统 100%／200% 长标题方法。生产源码未改，定向 JVM 51 PASS，生产／AndroidTest 编译和测试包审计通过，Lint 0 错误／20 警告。旧 AVD 单次启动在安装前捕获 Phone 和 Traceur 启动 ANR。原 11 次、新长标题、指定首页 43 项、项目详情专属回归和新截图均 NOT_RUN。模拟器与 5038 已收口，5037 身份相同。见[最终验收报告](evidence/LITHIC-UI-V3-Project-Detail-Final-Acceptance-03.md)。
+
 - **LITHIC_UI_V3_PROJECT_DETAIL_REPAIR_02 — READY_FOR_REVIEW_WITH_FAILURES（2026-11-14）**。51 项 JVM、生产和 AndroidTest 编译、Lint（0 错误、20 警告）通过。隔离 API 36 单次启动健康，定向 11 项 **9 PASS／2 FAIL**。两次画廊仍命中 Compose 溢出标志，实际标题字形、节点和截图均完整。已取得三主题及真实 200% 原生截图。完整 43 项回归本轮 NOT_RUN，生产源码未改。等待独立审查。见[复验报告](evidence/LITHIC-UI-V3-Project-Detail-Repair-02.md)。
 
 - **LITHIC_UI_V3_PROJECT_DETAIL_IMPLEMENT_01 — PARTIAL（I/O 对照复验，2026-11-14）**。只读预热后原隔离 AVD 单次启动通过健康观察，未见新 ANR。既有 Debug App/Test 实跑 43 项，32 PASS／11 FAIL，取得纯白真实系统 200% 截图一张。画廊标题溢出断言、无效 UUID 夹具和旧选择器仍待处理，三主题截图未生成。已恢复字体，模拟器和 5038 正常退出，代码及 APK 未改。见[排查与复验](evidence/LITHIC-UI-V3-Project-Detail-Implement-01.md#2026-11-14-systemui-anr-排查与-io-对照复验)。

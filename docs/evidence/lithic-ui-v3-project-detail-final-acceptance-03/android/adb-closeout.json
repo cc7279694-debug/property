@@ -1,0 +1,81 @@
+{
+  "started_utc": "2026-11-14T05:51:06.814+00:00",
+  "ended_utc": "2026-11-14T05:55:56.248+00:00",
+  "status": "BLOCKED",
+  "runtime_exit": 2,
+  "original_identity": {
+    "listener": {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5037,
+      "OwningProcess": 15576
+    },
+    "process": {
+      "Pid": 15576,
+      "Path": null,
+      "CreatedUtc": "2026-11-14T01:23:14.7231810Z",
+      "OwnedSentinel": false
+    }
+  },
+  "isolated_identity": {
+    "process": {
+      "Pid": 19256,
+      "Path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "CreatedUtc": "2026-11-14T05:51:12.2659860Z",
+      "OwnedSentinel": true
+    },
+    "protocol": "0029",
+    "identity": {
+      "version": "37.0.1",
+      "build": "15733141",
+      "executable_path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe"
+    }
+  },
+  "original_identity_after": {
+    "listener": {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5037,
+      "OwningProcess": 15576
+    },
+    "process": {
+      "Pid": 15576,
+      "Path": null,
+      "CreatedUtc": "2026-11-14T01:23:14.7231810Z",
+      "OwnedSentinel": false
+    }
+  },
+  "before": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 15576
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 15576,
+        "Path": null,
+        "CreatedUtc": "2026-11-14T01:23:14.7231810Z",
+        "OwnedSentinel": false
+      }
+    ]
+  },
+  "after": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 15576
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 15576,
+        "Path": null,
+        "CreatedUtc": "2026-11-14T01:23:14.7231810Z",
+        "OwnedSentinel": false
+      }
+    ]
+  },
+  "error": "Android runtime controller stopped with a nonzero result"
+}
