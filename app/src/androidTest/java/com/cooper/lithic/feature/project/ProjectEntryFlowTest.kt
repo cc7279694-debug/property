@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
@@ -16,7 +17,6 @@ import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performScrollToNode
@@ -101,7 +101,9 @@ class ProjectEntryFlowTest {
         createFromHome("真实零元项目", "0")
         val zeroId = projectViewModel.state.value.detail.detail!!.project.id
         detailAction("project-detail-back")
+        openCurrentProjects()
         compose.onNodeWithTag("project-list-create").performClick()
+        waitForEditor()
         fillCreate("真实普通项目", "123.45")
         saveProjectAndWaitForDetail()
         val normalId = projectViewModel.state.value.detail.detail!!.project.id
@@ -111,7 +113,7 @@ class ProjectEntryFlowTest {
         assertEquals(2, snapshot.moneyEvents.size)
         assertEquals(setOf(0L, 12345L), snapshot.moneyEvents.map { it.amountCents }.toSet())
         returnHome()
-        compose.onNodeWithText("已录入 2 条长期项目").assertIsDisplayed()
+        assertHomeProjectCount(2)
         reopenFixture()
         assertEquals(2L, repository.loadSummary().projectCount)
         assertEquals(0L, repository.loadProjectDetail(zeroId)!!.cost.netCents)
@@ -140,10 +142,9 @@ class ProjectEntryFlowTest {
 
     @Test fun rapid_double_tap_creates_only_one_real_project_and_one_appended_event() = runBlocking {
         render()
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
-        waitForEditor()
+        openCreateFromHome()
         fillCreate("连点只记一笔", "1000")
-        compose.onNodeWithTag("project-save").performScrollTo().performTouchInput { doubleClick() }
+        compose.onNodeWithTag("project-save").assertIsDisplayed().performTouchInput { doubleClick() }
         waitForDetail()
         val id = projectViewModel.state.value.detail.detail!!.project.id
         assertEquals(1L, repository.loadSummary().projectCount)
@@ -161,16 +162,16 @@ class ProjectEntryFlowTest {
 
     @Test fun failed_save_preserves_form_and_canceling_discard_keeps_the_real_unsubmitted_input() = runBlocking {
         render()
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
-        waitForEditor()
+        openCreateFromHome()
         fillCreate("保留失败输入", "1.234")
+        compose.onNodeWithTag("project-extra-toggle").performScrollTo().performClick()
         compose.onNodeWithTag("project-note").performScrollTo().performTextReplacement("失败后保留备注")
-        compose.onNodeWithTag("project-save").performScrollTo().performClick()
+        compose.onNodeWithTag("project-save").assertIsDisplayed().performClick()
         compose.waitUntil(10_000) { projectViewModel.state.value.editor?.errors?.isNotEmpty() == true }
         compose.onNodeWithTag("project-initial-amount").performScrollTo().assertTextContains("1.234")
             .assert(SemanticsMatcher.keyIsDefined(SemanticsProperties.Error))
         assertEquals(0L, repository.loadSummary().projectCount)
-        compose.onNodeWithTag("project-editor-back").performScrollTo().performClick()
+        compose.onNodeWithTag("project-editor-back").assertIsDisplayed().performClick()
         compose.onNodeWithTag("discard-dialog").assertIsDisplayed()
         compose.onNodeWithTag("discard-keep").performClick()
         compose.onNodeWithTag("project-initial-amount").performScrollTo().assertTextContains("1.234")
@@ -193,12 +194,12 @@ class ProjectEntryFlowTest {
         waitForDetail()
         compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥120.00/天")
         detailAction("project-detail-back")
-        waitForList()
-        assertRowAmount(id, "¥120.00")
+        assertHomeProjectCount(1)
+        openCurrentProjects()
+        assertRowAmount(id, "¥120.00/天")
         compose.onNodeWithTag("project-list-back").performClick()
-        compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
-        compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
-        waitForList()
+        assertHomeProjectCount(1)
+        openCurrentProjects()
         compose.onNodeWithTag("project-row-$id").performClick()
         waitForDetail()
         detailAction("project-add-recovery")
@@ -212,7 +213,7 @@ class ProjectEntryFlowTest {
         assertEquals(-20000L, repository.loadProjectDetail(id)!!.cost.netCents)
         detailAction("project-detail-back")
         waitForList()
-        assertRowAmount(id, "−¥20.00")
+        assertRowAmount(id, "−¥20.00/天")
         reopenFixture()
         assertEquals(-20000L, repository.loadProjectDetail(id)!!.cost.netCents)
     }
@@ -237,11 +238,12 @@ class ProjectEntryFlowTest {
         assertEquals(before.events, after.events)
         assertTrue(after.project.updatedAt.isAfter(before.project.updatedAt))
         detailAction("project-detail-back")
-        waitForList()
+        assertHomeProjectCount(1)
+        openCurrentProjects()
         compose.onNodeWithTag("project-row-$id").assert(hasText("修订后的项目"))
-        assertRowAmount(id, "¥200.00")
+        assertRowAmount(id, "¥200.00/天")
         compose.onNodeWithTag("project-list-back").performClick()
-        compose.onNodeWithText("已录入 1 条长期项目").assertIsDisplayed()
+        assertHomeProjectCount(1)
     }
 
     private fun render() {
@@ -255,14 +257,31 @@ class ProjectEntryFlowTest {
     }
 
     private fun createFromHome(name: String, amount: String) {
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
-        waitForEditor()
+        openCreateFromHome()
         fillCreate(name, amount)
         saveProjectAndWaitForDetail()
     }
 
+    private fun openCreateFromHome() {
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
+        compose.onNodeWithTag("home-create-project").assertIsDisplayed().performClick()
+        waitForEditor()
+    }
+
+    private fun openCurrentProjects() {
+        compose.onNodeWithTag("open-project-list").performScrollTo().assertIsDisplayed().performClick()
+        waitForList()
+    }
+
+    private fun assertHomeProjectCount(count: Int) {
+        compose.waitUntil(10_000) { (holder.state.value as? LedgerUiState.Ready)?.overview?.projectCount == count.toLong() }
+        compose.onNodeWithTag("home-project-record-count").performScrollTo().assertIsDisplayed()
+            .assertTextEquals(count.toString()).assertContentDescriptionEquals("长期项目，已录入数量$count，包含历史")
+    }
+
     private fun fillCreate(name: String, amount: String) {
         compose.onNodeWithTag("project-name").performScrollTo().performTextReplacement(name)
+        compose.onNodeWithTag("project-started-on-summary").performScrollTo().performClick()
         compose.onNodeWithTag("project-started-on-input").performScrollTo().performTextReplacement("2026-01-01")
         compose.onNodeWithTag("project-initial-amount").performScrollTo().performTextReplacement(amount)
     }
@@ -275,7 +294,7 @@ class ProjectEntryFlowTest {
 
     private fun saveProjectAndWaitForDetail() {
         val expectedId = requireNotNull(projectViewModel.state.value.editor).projectId
-        compose.onNodeWithTag("project-save").performScrollTo().performClick()
+        compose.onNodeWithTag("project-save").assertIsDisplayed().performClick()
         waitForDetail(expectedId)
     }
 

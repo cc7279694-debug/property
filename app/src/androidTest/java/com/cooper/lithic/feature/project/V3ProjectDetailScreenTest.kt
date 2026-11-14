@@ -12,6 +12,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -41,6 +42,7 @@ import com.cooper.lithic.feature.appearance.LithicAppearance
 import java.math.BigDecimal
 import java.time.Instant
 import java.time.LocalDate
+import java.util.UUID
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -52,16 +54,17 @@ class V3ProjectDetailScreenTest {
     @get:Rule val compose = createComposeRule()
 
     @Test fun exactly_three_shows_every_event_without_an_expand_control() {
-        val value = detail(3)
+        val value = detail(3, fixture = "three-records")
         compose.setContent { LithicTheme { ProjectDetailScreen(ready(value), {}, {}, {}, {}) } }
 
-        value.events.forEach { event -> scrollTo("project-event-${event.id}").assertIsDisplayed() }
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasText("金额记录"))
         compose.onNodeWithTag("project-money-all").assertDoesNotExist()
+        value.events.forEach { event -> scrollTo("project-event-${event.id}").assertIsDisplayed() }
         compose.onNodeWithTag("project-event-dialog").assertDoesNotExist()
     }
 
     @Test fun four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project() {
-        val initial = detail(4)
+        val initial = detail(4, fixture = "expand-original")
         val active = mutableStateOf(initial)
         val generation = mutableStateOf(Any())
         val mutations = mutableListOf<String>()
@@ -91,14 +94,14 @@ class V3ProjectDetailScreenTest {
         compose.onNodeWithTag(lastTag).assertDoesNotExist()
 
         scrollTo("project-money-all").performClick().assertTextContains("收起")
-        compose.runOnIdle { active.value = detail(4, projectId = "other") }
+        compose.runOnIdle { active.value = detail(4, fixture = "expand-other") }
         scrollTo("project-money-all").assertTextContains("全部")
         compose.onNodeWithTag("project-event-${active.value.events.last().id}").assertDoesNotExist()
         compose.runOnIdle { assertEquals(emptyList<String>(), mutations) }
     }
 
     @Test fun linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view() {
-        val value = detail(4)
+        val value = detail(4, fixture = "linked-credit")
         val event = value.events[1]
         val corrections = mutableListOf<String>()
         var backCount = 0
@@ -126,7 +129,7 @@ class V3ProjectDetailScreenTest {
     }
 
     @Test fun regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area() {
-        val value = detail(4, credit = false)
+        val value = detail(4, fixture = "adaptive-amounts", credit = false)
         val appearance = mutableStateOf(LithicAppearance.PURE_WHITE)
         val fontScale = mutableStateOf(1f)
         compose.setContent {
@@ -165,24 +168,27 @@ class V3ProjectDetailScreenTest {
 
     private fun display(cents: Long) = moneyMetricDisplay(BigDecimal.valueOf(cents, 2), AmountUnit.YUAN)
 
-    private fun detail(count: Int, projectId: String = "camera", credit: Boolean = true): ProjectDetail {
+    private fun detail(count: Int, fixture: String, credit: Boolean = true): ProjectDetail {
+        fun id(role: String): String = UUID.nameUUIDFromBytes("lithic:v3-project-detail:$fixture:$role".toByteArray(Charsets.UTF_8)).toString()
+
         val firstDay = LocalDate.of(2026, 7, 16)
         val observed = LocalDate.of(2026, 11, 13)
         val timestamp = Instant.parse("2026-07-16T00:00:00Z")
-        val category = CategoryEntity("project-category", CategoryType.PROJECT, "数码", "数码", false)
+        val category = CategoryEntity(id("category"), CategoryType.PROJECT, "数码", "数码", false)
+        val projectId = id("project")
         val project = LongTermProjectEntity(projectId, "合成横向相机与旅行备用镜头套装", category.id, firstDay,
             createdAt = timestamp, updatedAt = timestamp)
         val events = listOf(
-            ProjectMoneyEventEntity("$projectId-1", projectId, MoneyDirection.OUTLAY, 70_000, firstDay,
-                role = ProjectMoneyEventRole.INITIAL, operationId = "$projectId-init"),
-            ProjectMoneyEventEntity("$projectId-2", projectId, MoneyDirection.OUTLAY, 30_000, firstDay,
+            ProjectMoneyEventEntity(id("event-initial"), projectId, MoneyDirection.OUTLAY, 70_000, firstDay,
+                role = ProjectMoneyEventRole.INITIAL, operationId = id("operation-initial")),
+            ProjectMoneyEventEntity(id("event-exchange"), projectId, MoneyDirection.OUTLAY, 30_000, firstDay,
                 description = "旧机身折抵三百元", role = ProjectMoneyEventRole.REGULAR,
-                operationId = "$projectId-exchange", basis = if (credit) MoneyBasis.TRADE_IN_CREDIT else MoneyBasis.CASH,
-                exchangeGroupId = if (credit) "exchange-group" else null),
-            ProjectMoneyEventEntity("$projectId-3", projectId, MoneyDirection.OUTLAY, 40_000, LocalDate.of(2026, 8, 1),
-                description = "镜头维修", role = ProjectMoneyEventRole.REGULAR, operationId = "$projectId-outlay"),
-            ProjectMoneyEventEntity("$projectId-4", projectId, MoneyDirection.RECOVERY, 20_000, LocalDate.of(2026, 10, 26),
-                description = "配件收回", role = ProjectMoneyEventRole.REGULAR, operationId = "$projectId-recovery"),
+                operationId = id("operation-exchange"), basis = if (credit) MoneyBasis.TRADE_IN_CREDIT else MoneyBasis.CASH,
+                exchangeGroupId = if (credit) id("exchange-group") else null),
+            ProjectMoneyEventEntity(id("event-outlay"), projectId, MoneyDirection.OUTLAY, 40_000, LocalDate.of(2026, 8, 1),
+                description = "镜头维修", role = ProjectMoneyEventRole.REGULAR, operationId = id("operation-outlay")),
+            ProjectMoneyEventEntity(id("event-recovery"), projectId, MoneyDirection.RECOVERY, 20_000, LocalDate.of(2026, 10, 26),
+                description = "配件收回", role = ProjectMoneyEventRole.REGULAR, operationId = id("operation-recovery")),
         ).take(count)
         val cost = ProjectCostEngine.evaluate(ProjectSnapshot(LongTermProject(firstDay), events.map {
             ProjectMoneyEvent(it.direction, Money(it.amountCents), it.occurredOn)

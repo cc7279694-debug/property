@@ -190,14 +190,17 @@ class ProjectLifecycleFlowTest {
         assertFalse(detail.cost.contributesToCurrentTotal)
         compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥180.00/天")
         detailAction("project-detail-back")
+        compose.onNodeWithTag("open-project-list").performScrollTo().assertIsDisplayed().performClick()
         waitForCurrent()
         assertFalse(model.state.value.list.items.any { it.project.id == id })
+        compose.onNodeWithTag("project-list-back").assertIsDisplayed().performClick()
         openHistory()
         compose.onNodeWithTag("project-history-row-$id").performClick()
         waitForDetail()
         compose.onNodeWithTag("project-detail-back").assertContentDescriptionEquals("返回历史档案")
-        compose.onNodeWithTag("tab-review").assertIsSelected()
         assertEquals(5L, model.state.value.detail.detail!!.cost.heldDays)
+        detailAction("project-detail-back")
+        assertReturnsToReviewFromHistory()
     }
 
     @Test fun correct_end_date_updates_result(): Unit = runBlocking {
@@ -228,7 +231,7 @@ class ProjectLifecycleFlowTest {
         val id = createProject("删除需要明确二次确认", "1000")
         endProject("2026-01-05", "200")
         detailAction("project-detail-back")
-        waitForCurrent()
+        compose.onNodeWithTag("home-screen").assertIsDisplayed()
         openHistory()
         compose.onNodeWithTag("project-history-row-$id").performClick()
         waitForDetail()
@@ -244,12 +247,12 @@ class ProjectLifecycleFlowTest {
         compose.onNodeWithTag("project-delete-confirm").performClick()
         compose.waitUntil(15_000) { model.state.value.deleteConfirmation == null && model.state.value.history.totalCount == 0L }
         compose.onNodeWithTag("project-history-screen").assertIsDisplayed()
-        compose.onNodeWithTag("tab-review").assertIsSelected()
         assertNull(repository.loadProjectDetail(id))
         val snapshot = LedgerReadRepository(generation.database, generation.coordinator).snapshot()
         assertTrue(snapshot.projects.isEmpty())
         assertTrue(snapshot.moneyEvents.isEmpty())
         compose.onNodeWithText("暂无已结束项目").assertIsDisplayed()
+        assertReturnsToReviewFromHistory()
         reopenFixture()
         assertEquals(0L, repository.loadSummary().projectCount)
         assertNull(repository.loadProjectDetail(id))
@@ -261,7 +264,7 @@ class ProjectLifecycleFlowTest {
         addMoney("project-add-outlay", "200", "2026-01-03", "原录入投入")
         endProject("2026-01-05")
         detailAction("project-detail-back")
-        waitForCurrent()
+        compose.onNodeWithTag("home-screen").assertIsDisplayed()
         openHistory()
         compose.onNodeWithTag("project-history-row-$id").performClick()
         waitForDetail()
@@ -295,8 +298,7 @@ class ProjectLifecycleFlowTest {
         assertEquals(5L, after.cost.heldDays)
         assertFalse(after.cost.contributesToCurrentTotal)
         detailAction("project-detail-back")
-        compose.onNodeWithTag("project-history-screen").assertIsDisplayed()
-        compose.onNodeWithTag("tab-review").assertIsSelected()
+        assertReturnsToReviewFromHistory()
     }
 
     @Test fun saved_instance_route_and_vm_bundle_restore_end_input_without_business_write(): Unit = runBlocking {
@@ -400,12 +402,15 @@ class ProjectLifecycleFlowTest {
     }
 
     private fun createProject(name: String, amount: String): String {
-        compose.onNodeWithTag("home-create-project").performScrollTo().performClick()
+        compose.onNodeWithTag("home-open-add").assertIsDisplayed().performClick()
+        compose.onNodeWithTag("home-create-project").assertIsDisplayed().performClick()
         compose.waitUntil(10_000) { model.state.value.editor?.today != null }
+        compose.onNodeWithTag("project-editor-screen").assertIsDisplayed()
         compose.onNodeWithTag("project-name").performScrollTo().performTextReplacement(name)
+        compose.onNodeWithTag("project-started-on-summary").performScrollTo().performClick()
         compose.onNodeWithTag("project-started-on-input").performScrollTo().performTextReplacement("2026-01-01")
         compose.onNodeWithTag("project-initial-amount").performScrollTo().performTextReplacement(amount)
-        compose.onNodeWithTag("project-save").performScrollTo().performClick()
+        compose.onNodeWithTag("project-save").assertIsDisplayed().performClick()
         waitForDetail()
         return model.state.value.detail.detail!!.project.id
     }
@@ -460,6 +465,12 @@ class ProjectLifecycleFlowTest {
         compose.onNodeWithTag("review-project-history").performScrollTo().performClick()
         compose.waitUntil(10_000) { !model.state.value.history.loading }
         compose.onNodeWithTag("project-history-screen").assertIsDisplayed()
+    }
+    private fun assertReturnsToReviewFromHistory() {
+        compose.onNodeWithTag("project-history-screen").assertIsDisplayed()
+        compose.onNodeWithTag("project-history-back").assertIsDisplayed().performClick()
+        compose.onNodeWithTag("review-screen").assertIsDisplayed()
+        compose.onNodeWithTag("tab-review").assertIsSelected()
     }
     private fun waitForDetail() {
         compose.waitUntil(15_000) {

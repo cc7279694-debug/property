@@ -2,6 +2,7 @@ package com.cooper.lithic.feature.project
 
 import android.os.Bundle
 import android.provider.Settings
+import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertHeightIsAtLeast
@@ -16,6 +17,7 @@ import androidx.compose.ui.test.performScrollToIndex
 import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.test.performSemanticsAction
 import androidx.compose.ui.text.TextLayoutResult
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -101,6 +103,7 @@ class V3ProjectDetailAndroidAcceptanceTest {
         val seeded = runBlocking { checkNotNull(fixture).seed() }
         val camera = seeded.projectIds.first()
         val portrait = seeded.projectIds.last()
+        val galleryFailures = mutableListOf<Throwable>()
         selectTheme(LithicAppearance.PURE_WHITE)
         if (expectedFontScale == 1f) {
             val gallery = listOf(
@@ -112,9 +115,10 @@ class V3ProjectDetailAndroidAcceptanceTest {
                 selectTheme(theme)
                 openDetail(camera)
                 assertCover()
-                assertFinancialFacts()
                 compose.onNodeWithTag("project-detail-content").performScrollToIndex(0)
                 capture(screenshot)
+                checkTitle(theme, galleryFailures)
+                keepAssertionFailure(galleryFailures, ::assertFinancialFacts)
                 if (theme == LithicAppearance.PURE_WHITE) checkFullCoverAndClose()
                 backToHome()
             }
@@ -128,11 +132,17 @@ class V3ProjectDetailAndroidAcceptanceTest {
             assertCover()
             compose.onNodeWithTag("project-detail-content").performScrollToIndex(0)
             capture("project-detail-font-200")
-            assertFinancialFacts()
-            scrollTo("project-detail-daily")
+            checkTitle(LithicAppearance.PURE_WHITE, galleryFailures)
+            keepAssertionFailure(galleryFailures, ::assertFinancialFacts)
+            scrollTo("project-detail-net")
             capture("project-detail-font-200-money")
         }
         backToHome()
+        if (galleryFailures.isNotEmpty()) {
+            throw AssertionError(galleryFailures.joinToString("\n") { it.message.orEmpty() }).apply {
+                galleryFailures.forEach(::addSuppressed)
+            }
+        }
     }
 
     private fun openDetail(id: String) {
@@ -161,16 +171,85 @@ class V3ProjectDetailAndroidAcceptanceTest {
         compose.onNodeWithTag("project-detail-screen").assertIsDisplayed()
     }
 
-    private fun assertFinancialFacts() {
+    private fun checkTitle(theme: LithicAppearance, failures: MutableList<Throwable>) {
         val name = "合成横向相机"
         val title = scrollTo("project-detail-name").assertTextEquals(name)
         val layouts = mutableListOf<TextLayoutResult>()
         title.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
         val layout = layouts.single()
-        assertEquals(name, layout.layoutInput.text.text)
-        assertFalse("The project title overflows at ${expectedFontScale}x", layout.hasVisualOverflow)
+        val input = layout.layoutInput
         val titleNode = title.fetchSemanticsNode()
-        assertTrue("The project title is clipped", titleNode.boundsInRoot.height >= titleNode.size.height - 1f)
+        val parentBounds = compose.runOnIdle {
+            titleNode.layoutInfo.parentInfo?.coordinates?.takeIf { it.isAttached }?.boundsInRoot()
+        }
+        val viewport = compose.onNodeWithTag("project-detail-content").fetchSemanticsNode()
+        val activityFontScale = compose.activity.resources.configuration.fontScale
+        val realScale = Settings.System.getString(compose.activity.contentResolver, Settings.System.FONT_SCALE)
+        val lines = 0 until layout.lineCount
+        val ellipsized = lines.any(layout::isLineEllipsized)
+        val lastVisibleEnd = if (layout.lineCount > 0) layout.getLineEnd(layout.lineCount - 1, visibleEnd = true) else 0
+        val bounds = titleNode.boundsInRoot
+        val clipsTitleNode = bounds.height + 1f < titleNode.size.height || bounds.width + 1f < titleNode.size.width
+        report("title-layout") {
+            putString("projectDetailAcceptanceTitleTheme", theme.name)
+            putString("projectDetailAcceptanceTitleText", input.text.text)
+            putString("projectDetailAcceptanceTitleSizePx", layout.size.toString())
+            putString("projectDetailAcceptanceTitleConstraintsPx", input.constraints.toString())
+            putFloat("projectDetailAcceptanceTitleParagraphWidthPx", layout.multiParagraph.width)
+            putFloat("projectDetailAcceptanceTitleParagraphHeightPx", layout.multiParagraph.height)
+            putBoolean("projectDetailAcceptanceTitleOverflowWidth", layout.didOverflowWidth)
+            putBoolean("projectDetailAcceptanceTitleOverflowHeight", layout.didOverflowHeight)
+            putBoolean("projectDetailAcceptanceTitleVisualOverflow", layout.hasVisualOverflow)
+            putBoolean("projectDetailAcceptanceTitleExceededMaxLines", layout.multiParagraph.didExceedMaxLines)
+            putInt("projectDetailAcceptanceTitleLineCount", layout.lineCount)
+            putString("projectDetailAcceptanceTitleLineWidthsPx", lines.joinToString(",") { layout.multiParagraph.getLineWidth(it).toString() })
+            putString("projectDetailAcceptanceTitleLineBottomsPx", lines.joinToString(",") { layout.getLineBottom(it).toString() })
+            putString("projectDetailAcceptanceTitleGlyphBoundsPx", input.text.indices.joinToString(";") {
+                layout.getBoundingBox(it).toString()
+            })
+            putInt("projectDetailAcceptanceTitleVisibleEnd", lastVisibleEnd)
+            putBoolean("projectDetailAcceptanceTitleEllipsized", ellipsized)
+            putString("projectDetailAcceptanceTitleOverflowPolicy", input.overflow.toString())
+            putInt("projectDetailAcceptanceTitleMaxLines", input.maxLines)
+            putString("projectDetailAcceptanceTitleBoundsInRootPx", bounds.toString())
+            putString("projectDetailAcceptanceTitleNodeSizePx", titleNode.size.toString())
+            putString("projectDetailAcceptanceTitleParentBoundsInRootPx", parentBounds.toString())
+            putString("projectDetailAcceptanceTitleViewportBoundsInRootPx", viewport.boundsInRoot.toString())
+            putBoolean("projectDetailAcceptanceTitleNodeClips", clipsTitleNode)
+            putFloat("projectDetailAcceptanceTitleDensityFontScale", input.density.fontScale)
+            putFloat("projectDetailAcceptanceTitleFontScale", activityFontScale)
+            putString("projectDetailAcceptanceTitleSystemFontScale", realScale)
+            putString("projectDetailAcceptanceTitleFontSize", input.style.fontSize.toString())
+            putString("projectDetailAcceptanceTitleLineHeight", input.style.lineHeight.toString())
+            with(input.density) {
+                putFloat("projectDetailAcceptanceTitleFontSizePx", input.style.fontSize.toPx())
+                putFloat("projectDetailAcceptanceTitleLineHeightPx", input.style.lineHeight.toPx())
+            }
+        }
+        // Defer JUnit's failure until all independent theme screenshots have been captured.
+        // Both the original overflow assertion and independent clipping checks remain mandatory.
+        val location = "${theme.name} at ${expectedFontScale}x"
+        for (check in listOf<() -> Unit>(
+            { assertEquals(name, input.text.text) },
+            { assertFalse("The project title overflows at $location", layout.hasVisualOverflow) },
+            { assertTrue("The project title is clipped at $location", !clipsTitleNode) },
+            { assertTrue("The project title is truncated at $location",
+                !ellipsized && !layout.multiParagraph.didExceedMaxLines && lastVisibleEnd == name.length &&
+                    input.overflow != TextOverflow.Ellipsis) },
+        )) {
+            keepAssertionFailure(failures, check)
+        }
+    }
+
+    private fun keepAssertionFailure(failures: MutableList<Throwable>, check: () -> Unit) {
+        try {
+            check()
+        } catch (failure: AssertionError) {
+            failures += failure
+        }
+    }
+
+    private fun assertFinancialFacts() {
         scrollTo("project-detail-daily").assertTextEquals("¥9.92/天")
         scrollTo("project-detail-outlay").assertTextEquals("¥50000.00")
         scrollTo("project-detail-recovery").assertTextEquals("¥48799.68")

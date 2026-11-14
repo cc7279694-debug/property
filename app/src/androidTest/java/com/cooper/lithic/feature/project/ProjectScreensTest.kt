@@ -241,15 +241,17 @@ class ProjectScreensTest {
         var state by mutableStateOf(ProjectDetailUiState(detail(cost = ProjectCostResult(
             0, 100000, 0, 100000, null, false, CostUnavailableReason.PROJECT_NOT_STARTED)), false))
         compose.setContent { LithicTheme { ProjectDetailScreen(state, {}, {}, {}, {}) } }
-        compose.onNodeWithText("尚未开始").assertIsDisplayed()
-        compose.onNodeWithTag("project-detail-daily").assert(hasText("—"))
+        compose.onNodeWithTag("project-detail-held-days").assertIsDisplayed().assertTextEquals("尚未开始")
+        compose.onNode(hasText("尚未开始，没有有效日均成本。") and hasAnyAncestor(hasTestTag("project-core-metrics")),
+            useUnmergedTree = true).assertIsDisplayed()
+        compose.onNodeWithTag("project-detail-daily").assertIsDisplayed().assertTextEquals("—")
         compose.runOnIdle {
             state = ProjectDetailUiState(detail(cost = ProjectCostResult(10, 100000, 120000,
                 -20000, BigDecimal("-20"), true, null)), false)
         }
         compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥20.00/天")
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-net"))
-        compose.onNodeWithTag("project-detail-net").assert(hasText("−¥200.00"))
+        compose.onNodeWithTag("project-detail-net").assertTextEquals("−¥200.00")
     }
 
     @Test fun failed_list_read_is_visible_and_keeps_prior_records_instead_of_a_fake_empty_state() {
