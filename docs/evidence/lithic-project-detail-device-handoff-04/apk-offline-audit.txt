@@ -1,0 +1,76 @@
+APK: app-debug.apk (21224212 bytes)
+SHA-256: 8f638588cb738f8eec949bfb758b72285f29056fa2747a6601ad077530fcc9c5
+apksigner verify --verbose --print-certs
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+Signer #1 certificate SHA-1 digest: 6d7f39598b658d167a3a374e1beaf4290b2050c7
+Signer #1 certificate MD5 digest: 6bd1480a11cbe2a43e19112fe3855ced
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: d80e066186fcba43ae0594293263e832336f625ecd185877919a805ef17ac110
+Signer #1 public key SHA-1 digest: d45ee8249c87ee449e5a66989aa7004263f354e9
+Signer #1 public key MD5 digest: 60668adad78d8db45e707eb46f072f16
+aapt2 dump badging
+package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+targetSdkVersion:'36'
+application-label:'砺石 LITHIC Debug'
+launchable-activity: name='com.cooper.lithic.app.MainActivity'  label='' icon=''
+apkanalyzer manifest version-code / version-name
+17
+0.1.0-m22-debug
+aapt2 dump xmltree --file AndroidManifest.xml
+  E: manifest (line=2)
+    A: http://schemas.android.com/apk/res/android:versionCode(0x0101021b)=17
+    A: http://schemas.android.com/apk/res/android:versionName(0x0101021c)="0.1.0-m22-debug" (Raw: "0.1.0-m22-debug")
+    A: package="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.LithicApplication" (Raw: "com.cooper.lithic.app.LithicApplication")
+        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true
+
+APK: app-debug-androidTest.apk (4089367 bytes)
+SHA-256: 558caf5afbda28cd28ebf578be726f4ad6cd9e616917f19424f077c3e1b63b81
+apksigner verify --verbose --print-certs
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+Signer #1 certificate SHA-1 digest: 6d7f39598b658d167a3a374e1beaf4290b2050c7
+Signer #1 certificate MD5 digest: 6bd1480a11cbe2a43e19112fe3855ced
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: d80e066186fcba43ae0594293263e832336f625ecd185877919a805ef17ac110
+Signer #1 public key SHA-1 digest: d45ee8249c87ee449e5a66989aa7004263f354e9
+Signer #1 public key MD5 digest: 60668adad78d8db45e707eb46f072f16
+aapt2 dump badging
+package: name='com.cooper.lithic.debug.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+targetSdkVersion:'36'
+apkanalyzer manifest version-code / version-name
+UNKNOWN
+UNKNOWN
+aapt2 dump xmltree --file AndroidManifest.xml
+  E: manifest (line=2)
+    A: package="com.cooper.lithic.debug.test" (Raw: "com.cooper.lithic.debug.test")
+      E: instrumentation (line=9)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.runner.AndroidJUnitRunner" (Raw: "androidx.test.runner.AndroidJUnitRunner")
+        A: http://schemas.android.com/apk/res/android:targetPackage(0x01010021)="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true
+
+apkanalyzer dex code --class com.cooper.lithic.BuildConfig (Debug App, selected fields)
+.field public static final APPLICATION_ID:Ljava/lang/String; = "com.cooper.lithic.debug"
+.field public static final PHOTO_LITE_EXPERIMENT:Z = false
+.field public static final PHOTO_LITE_PRODUCTION:Z = false
+.field public static final VERSION_CODE:I = 0x11
+.field public static final VERSION_NAME:Ljava/lang/String; = "0.1.0-m22-debug"

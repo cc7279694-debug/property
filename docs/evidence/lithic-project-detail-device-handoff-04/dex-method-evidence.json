@@ -1,0 +1,999 @@
+{
+  "scope": "Local static audit of manifest, APK signatures, and DEX definitions (class, body and method annotation). Android runtime was not run.",
+  "apk_identities": {
+    "app-debug.apk": {
+      "package": "com.cooper.lithic.debug",
+      "sha256": "8f638588cb738f8eec949bfb758b72285f29056fa2747a6601ad077530fcc9c5",
+      "bytes": 21224212,
+      "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "runner": null,
+      "target_package": null
+    },
+    "app-debug-androidTest.apk": {
+      "package": "com.cooper.lithic.debug.test",
+      "sha256": "558caf5afbda28cd28ebf578be726f4ad6cd9e616917f19424f077c3e1b63b81",
+      "bytes": 4089367,
+      "certificate_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "runner": "androidx.test.runner.AndroidJUnitRunner",
+      "target_package": "com.cooper.lithic.debug"
+    }
+  },
+  "regression_manifest_sha256": "5ad5a60670790524b77db6d68e7808e9deab0d55ef2fe68d66d2c904d3c6f741",
+  "suite_counts": {
+    "project-original": {
+      "executions": 43,
+      "unique": 42
+    },
+    "project-focused": {
+      "executions": 11,
+      "unique": 10
+    },
+    "project-remaining": {
+      "executions": 32,
+      "unique": 32
+    },
+    "home": {
+      "executions": 43,
+      "unique": 43
+    },
+    "long-title": {
+      "executions": 2,
+      "unique": 1
+    }
+  },
+  "all_suite_unique_test_definitions": 79,
+  "home_project_overlap": [
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#a_late_retired_owner_cannot_replace_the_current_owners_real_bitmap",
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#a_reference_without_a_reader_has_a_visible_readonly_error_explanation",
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#landscape_fit_retains_all_edges_while_default_crop_trims_the_sides",
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#no_reference_keeps_the_type_fallback_without_reading",
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#portrait_fit_retains_all_edges_while_default_crop_trims_top_and_bottom",
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#replacing_the_asset_reference_resets_the_previous_bitmap_before_the_new_read",
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#unreadable_or_metadata_mismatched_bytes_cannot_be_shown_as_a_cover"
+  ],
+  "method_defs_found": 79,
+  "missing_definitions": [],
+  "invalid_defs": {},
+  "annotation_selection_clues": [],
+  "dex_counts": {
+    "classes3.dex": 9,
+    "classes6.dex": 43,
+    "classes7.dex": 19,
+    "classes8.dex": 8
+  },
+  "test_method_definitions": {
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#changes_include_amount_and_state_mutations_with_unchanged_identity_counts": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#changing_only_a_subscription_payment_does_not_change_project_investment": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#clock_is_read_once_only_after_acquiring_the_generation_snapshot": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#complete_batches_do_not_omit_or_duplicate_more_than_one_hundred_identities": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#explicit_historical_day_does_not_sample_or_replace_the_record_clock": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#historical_observation_keeps_future_payments_and_state_boundaries_distinct": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#invalid_money_does_not_become_a_successful_partial_sum": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#investment_can_exceed_the_single_event_money_limit": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#investment_keeps_ended_outlays_and_counts_trade_in_credit_only_as_outlay": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#missing_cover_metadata_is_a_read_failure_without_reading_media_files": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#negative_zero_and_distinct_category_amounts_preserve_unrounded_sums": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#noncanonical_uuid_is_a_read_failure_instead_of_a_partial_total": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#one_snapshot_and_room_transaction_block_a_write_between_identity_batches": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#orphan_project_event_is_a_read_failure_even_without_any_identity": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#orphan_subscription_renewal_is_a_read_failure_even_without_any_identity": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#orphan_subscription_state_is_a_read_failure_even_without_any_identity": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#subscription_without_any_confirmed_payment_is_a_read_failure": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#valid_empty_overview_is_distinct_from_a_zero_cost_project": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.data.repository.ReportRepositoryTest#wrong_category_type_is_a_read_failure_instead_of_zero": {
+      "dex": "classes7.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.HomeOverviewUiTest#all_existing_actions_remain_reachable_in_a_narrow_viewport_with_large_text": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.HomeOverviewUiTest#empty_ledger_has_no_cost_even_when_the_aggregate_number_is_zero": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.HomeOverviewUiTest#inactive_records_are_explained_without_being_reported_as_an_empty_ledger": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.HomeOverviewUiTest#recorded_zero_cost_remains_a_real_value_and_an_active_category": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.HomeOverviewUiTest#signed_category_values_and_type_subtotals_use_the_supplied_unrounded_results": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.HomeOverviewUiTest#unavailable_overview_never_invents_a_zero_cost": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.P2HomeArchiveContractTest#a_wide_parent_centers_a_single_capped_reading_column_and_its_add_button": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.P2HomeArchiveContractTest#a_wrong_date_waits_and_the_other_preview_error_does_not_replace_the_ledger_summary": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.P2HomeArchiveContractTest#archive_limits_each_type_and_only_the_associated_unavailable_cover_is_read": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.P2HomeArchiveContractTest#current_history_empty_and_both_failures_keep_their_own_snapshot_contract": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.P2HomeArchiveContractTest#home_controls_dispatch_exact_targets_and_tab_bar_keeps_three_targets": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.home.P2HomeArchiveContractTest#widths_fonts_and_themes_keep_one_amount_readout_and_reachable_controls": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#a_late_retired_owner_cannot_replace_the_current_owners_real_bitmap": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#a_reference_without_a_reader_has_a_visible_readonly_error_explanation": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#full_view_is_revoked_when_the_same_generation_gets_a_new_reader": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#full_view_reuses_the_verified_preview_and_android_back_closes_it": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#landscape_fit_retains_all_edges_while_default_crop_trims_the_sides": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#no_reference_keeps_the_type_fallback_without_reading": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#portrait_fit_retains_all_edges_while_default_crop_trims_top_and_bottom": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#replacing_the_asset_reference_resets_the_previous_bitmap_before_the_new_read": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.media.CoverPreviewsTest#unreadable_or_metadata_mismatched_bytes_cannot_be_shown_as_a_cover": {
+      "dex": "classes3.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2ProjectDetailSemanticsTest#closing_record_choice_does_not_invoke_a_business_route": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2ProjectDetailSemanticsTest#more_menu_keeps_original_routes_and_does_not_delete_while_opening": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2ProjectDetailSemanticsTest#record_choice_invokes_only_the_original_selected_route": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2ProjectDetailSemanticsTest#registered_unread_cover_is_not_presented_as_a_valid_image_or_no_cover": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2ProjectDetailSemanticsTest#stale_read_error_and_real_negative_rate_stay_visible": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2R1ProjectDetailLayoutTest#secondary_facts_and_history_remain_reachable_after_the_timeline": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2R1ProjectDetailLayoutTest#timeline_keeps_separate_type_amount_and_date_and_original_correction_callback": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2R2ProjectHierarchyTest#an_unreadable_referenced_cover_stays_explicit_and_is_never_a_fake_photo": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2R2ProjectHierarchyTest#dark_hierarchy_keeps_the_original_fact_correction_and_primary_action": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.C2R2ProjectHierarchyTest#no_cover_identity_is_compact_and_metrics_keep_the_exact_fact_values": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectEntryFlowTest#backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectEntryFlowTest#editing_name_and_start_date_updates_visible_results_without_changing_money_history": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectEntryFlowTest#rapid_double_tap_creates_only_one_real_project_and_one_appended_event": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectLifecycleFlowTest#history_correction_and_real_refund_are_distinct_and_preserve_original_identity": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest#detail_routes_regular_and_initial_corrections_separately_from_end_settlement": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest#ended_detail_with_only_future_late_money_does_not_claim_an_observed_settlement": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest#ended_detail_with_real_observed_late_money_explains_its_included_settlement": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest#ended_detail_without_late_money_does_not_claim_post_end_settlement": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectLifecycleScreensTest#missing_detail_never_presents_stale_costs_or_mutation_actions": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectNavigationGuardTest#dirty_create_form_guards_same_tab_other_tabs_toolbar_and_system_back": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectNavigationGuardTest#dirty_money_form_uses_the_same_guard_and_discard_does_not_write_an_event": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectNavigationGuardTest#unconfirmed_real_commit_blocks_leaving_and_replays_the_same_written_project": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectNavigationGuardTest#untouched_form_leaves_without_a_discard_prompt_or_a_business_record": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectScreensTest#detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.ProjectScreensTest#not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest#long_project_title_wraps_without_clipping_at_system_font_scale": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest#production_composable_gallery_uses_system_configuration": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.V3ProjectDetailScreenTest#exactly_three_shows_every_event_without_an_expand_control": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.V3ProjectDetailScreenTest#four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.V3ProjectDetailScreenTest#linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.feature.project.V3ProjectDetailScreenTest#regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area": {
+      "dex": "classes6.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.ui.ActivityNavigationTest#activity_recreation_preserves_a_legal_selected_route_and_same_storage_owner": {
+      "dex": "classes8.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.ui.ActivityNavigationTest#system_back_returns_to_home_then_finishes_the_actual_activity": {
+      "dex": "classes8.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.ui.C9R1DetailSemanticsTest#long_project_name_and_full_negative_metrics_keep_their_identity_at_large_type": {
+      "dex": "classes8.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.ui.C9R1DetailSemanticsTest#theme_switch_keeps_true_zero_and_the_selected_record_identity_without_business_actions": {
+      "dex": "classes8.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.ui.C9RecordThemeTest#long_name_negative_cost_and_full_original_facts_survive_local_large_font_theme_changes": {
+      "dex": "classes8.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;"
+      ]
+    },
+    "com.cooper.lithic.ui.HomeAndroidAcceptanceTest#home_routes_open_and_back": {
+      "dex": "classes8.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.ui.HomeAndroidAcceptanceTest#large_font_uses_android_configuration": {
+      "dex": "classes8.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    },
+    "com.cooper.lithic.ui.HomeAndroidAcceptanceTest#projects_subscriptions_and_theme_gallery": {
+      "dex": "classes8.dex",
+      "defined_with_code": true,
+      "method_annotations": [
+        "Lorg/junit/Test;"
+      ],
+      "class_annotations": [
+        "Ldalvik/annotation/MemberClasses;",
+        "Ldalvik/annotation/SourceDebugExtension;",
+        "Lkotlin/Metadata;",
+        "Lorg/junit/runner/RunWith;"
+      ]
+    }
+  }
+}
