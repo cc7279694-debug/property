@@ -94,6 +94,9 @@ class C9RecordThemeTest {
                 }
             }
         }
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-financial-expand"))
+        compose.onNodeWithTag("project-financial-expand").performClick()
+        compose.onNodeWithTag("project-detail-content").performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, -100_000f) }
         LithicAppearance.entries.forEach { theme ->
             compose.runOnIdle { appearance.value = theme }
             compose.onNodeWithTag("project-detail-name").assertTextContains(detail.project.name)

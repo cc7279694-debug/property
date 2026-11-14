@@ -13,6 +13,9 @@ import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
+import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.semantics.SemanticsProperties
+import androidx.compose.ui.test.assert
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -63,6 +66,28 @@ class V3ProjectDetailScreenTest {
         compose.onNodeWithTag("project-event-dialog").assertDoesNotExist()
     }
 
+    @Test fun one_event_without_an_expand_control_and_true_zero_financial_values() {
+        val fixture = detail(1, fixture = "single-zero", credit = false)
+        val value = fixture.copy(events = fixture.events.map { it.copy(amountCents = 0L) },
+            cost = fixture.cost.copy(grossOutlayCents = 0L, recoveryCents = 0L, netCents = 0L, dailyRate = BigDecimal.ZERO))
+        compose.setContent { LithicTheme { ProjectDetailScreen(ready(value), {}, {}, {}, {}) } }
+
+        scrollTo("project-detail-daily").assertTextEquals("¥0.00/天")
+        scrollTo("project-detail-outlay").assertTextEquals("¥0.00")
+        scrollTo("project-detail-recovery").assertTextEquals("¥0.00")
+        compose.onNodeWithTag("project-financial-details").assertDoesNotExist()
+        scrollTo("project-financial-expand").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "已收起"))
+            .assertHeightIsAtLeast(48.dp).performClick()
+        scrollTo("project-detail-net").assertTextEquals("¥0.00")
+        scrollTo("project-financial-expand").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "已展开"))
+            .performClick()
+        scrollTo("project-financial-summary").assertIsDisplayed()
+        compose.onNodeWithTag("project-detail-net").assertDoesNotExist()
+
+        scrollTo("project-event-${value.events.single().id}").assertIsDisplayed()
+        compose.onNodeWithTag("project-money-all").assertDoesNotExist()
+    }
+
     @Test fun four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project() {
         val initial = detail(4, fixture = "expand-original")
         val active = mutableStateOf(initial)
@@ -74,41 +99,56 @@ class V3ProjectDetailScreenTest {
                 onDelete = { mutations += "delete" }, presentationIdentity = generation.value)
         } }
 
-        val last = initial.events.last()
-        val lastTag = "project-event-${last.id}"
+        val oldest = initial.events.first()
+        val oldestTag = "project-event-${oldest.id}"
         scrollTo("project-money-all").assertTextContains("全部")
-        compose.onNodeWithTag(lastTag).assertDoesNotExist()
-        compose.onNodeWithTag("project-money-all").performClick().assertTextContains("收起")
-        scrollTo(lastTag).assertIsDisplayed()
-        assertEquals(1, compose.onAllNodes(hasTestTag(lastTag)).fetchSemanticsNodes().size)
+        compose.onNodeWithTag(oldestTag).assertDoesNotExist()
+        assertEquals(-1, compose.onNodeWithTag("project-detail-content").fetchSemanticsNode()
+            .config[SemanticsProperties.IndexForKey](oldest.id))
+        assertEventOrder(initial.events.takeLast(3))
+        scrollTo("project-money-all").performClick().assertTextContains("收起")
+        assertEventOrder(initial.events)
+        scrollTo(oldestTag).assertIsDisplayed()
+        assertEquals(1, compose.onAllNodes(hasTestTag(oldestTag)).fetchSemanticsNodes().size)
         compose.onNodeWithTag("project-event-dialog").assertDoesNotExist()
         scrollTo("project-money-all").performClick().assertTextContains("全部")
-        compose.onNodeWithTag(lastTag).assertDoesNotExist()
+        compose.onNodeWithTag(oldestTag).assertDoesNotExist()
+        assertEventOrder(initial.events.takeLast(3))
 
+        scrollTo("project-financial-expand").performClick()
+        scrollTo("project-more-details-expand").performClick()
+        scrollTo("project-more-details").assertIsDisplayed()
         scrollTo("project-money-all").performClick().assertTextContains("收起")
-        scrollTo("project-event-details-${last.id}").performClick()
+        scrollTo("project-event-details-${oldest.id}").performClick()
         compose.onNodeWithTag("project-event-dialog").assertIsDisplayed()
         compose.runOnIdle { generation.value = Any() }
         compose.onNodeWithTag("project-event-dialog").assertDoesNotExist()
         scrollTo("project-money-all").assertTextContains("全部")
-        compose.onNodeWithTag(lastTag).assertDoesNotExist()
+        compose.onNodeWithTag(oldestTag).assertDoesNotExist()
+        scrollTo("project-financial-summary").assertIsDisplayed()
+        scrollTo("project-more-details-expand").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "已收起"))
 
+        scrollTo("project-financial-expand").performClick()
+        scrollTo("project-more-details-expand").performClick()
         scrollTo("project-money-all").performClick().assertTextContains("收起")
         compose.runOnIdle { active.value = detail(4, fixture = "expand-other") }
         scrollTo("project-money-all").assertTextContains("全部")
-        compose.onNodeWithTag("project-event-${active.value.events.last().id}").assertDoesNotExist()
+        compose.onNodeWithTag("project-event-${active.value.events.first().id}").assertDoesNotExist()
+        scrollTo("project-financial-summary").assertIsDisplayed()
+        scrollTo("project-more-details-expand").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "已收起"))
         compose.runOnIdle { assertEquals(emptyList<String>(), mutations) }
     }
 
     @Test fun linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view() {
         val value = detail(4, fixture = "linked-credit")
-        val event = value.events[1]
+        val event = value.events.single { it.basis == MoneyBasis.TRADE_IN_CREDIT }
         val corrections = mutableListOf<String>()
         var backCount = 0
         compose.setContent { LithicTheme {
             ProjectDetailScreen(ready(value), { backCount++ }, {}, {}, {}, onCorrectMoney = { corrections += it })
         } }
 
+        scrollTo("project-money-all").performClick()
         scrollTo("project-event-details-${event.id}").assertHeightIsAtLeast(48.dp)
         compose.onNodeWithTag("project-event-basis-${event.id}", useUnmergedTree = true).assertTextEquals("非现金折抵")
         compose.onNodeWithTag("project-event-date-${event.id}", useUnmergedTree = true).assertTextEquals(event.occurredOn.toString())
@@ -132,11 +172,12 @@ class V3ProjectDetailScreenTest {
         val value = detail(4, fixture = "adaptive-amounts", credit = false)
         val appearance = mutableStateOf(LithicAppearance.PURE_WHITE)
         val fontScale = mutableStateOf(1f)
+        val width = mutableStateOf(360.dp)
         compose.setContent {
             val density = LocalDensity.current
             CompositionLocalProvider(LocalDensity provides Density(density.density, fontScale.value)) {
                 LithicTheme(appearance = appearance.value) {
-                    Box(Modifier.width(360.dp).fillMaxHeight()) {
+                    Box(Modifier.width(width.value).fillMaxHeight()) {
                         ProjectDetailScreen(ready(value), {}, {}, {}, {})
                     }
                 }
@@ -144,8 +185,10 @@ class V3ProjectDetailScreenTest {
         }
 
         val outlay = scrollTo("project-detail-outlay").fetchSemanticsNode().positionInRoot
-        val net = scrollTo("project-detail-net").fetchSemanticsNode().positionInRoot
-        assertTrue("Regular-font amounts occupy separate columns", net.x > outlay.x)
+        val recovery = scrollTo("project-detail-recovery").fetchSemanticsNode().positionInRoot
+        assertTrue("Regular-font summary amounts occupy separate columns", recovery.x > outlay.x)
+        compose.onNodeWithTag("project-detail-net").assertDoesNotExist()
+        scrollTo("project-financial-expand").performClick()
         compose.runOnIdle { fontScale.value = 2f }
         LithicAppearance.entries.forEach { selected ->
             compose.runOnIdle { appearance.value = selected }
@@ -158,6 +201,21 @@ class V3ProjectDetailScreenTest {
             val primary = compose.onNodeWithTag("project-record-money").assertIsDisplayed().assertHeightIsAtLeast(48.dp)
                 .fetchSemanticsNode().boundsInRoot
             assertTrue("The fixed action cannot hide scrolled content", content.bottom <= primary.top)
+        }
+        compose.runOnIdle { width.value = 400.dp }
+        scrollTo("project-detail-name").assertIsDisplayed().assertTextEquals(value.project.name)
+        scrollTo("project-detail-net").assertIsDisplayed().assertTextEquals(display(value.cost.netCents))
+        compose.onNodeWithTag("project-record-money").assertIsDisplayed()
+    }
+
+    private fun assertEventOrder(events: List<ProjectMoneyEventEntity>) {
+        val content = compose.onNodeWithTag("project-detail-content").fetchSemanticsNode()
+        val indexForKey = content.config[SemanticsProperties.IndexForKey]
+        val start = indexForKey(events.first().id)
+        assertTrue("First record key must be present", start >= 0)
+        events.forEachIndexed { offset, event ->
+            assertEquals("Index of ${event.id} must preserve repository order", start + offset, indexForKey(event.id))
+            scrollTo("project-event-${event.id}").assertIsDisplayed()
         }
     }
 
@@ -189,7 +247,7 @@ class V3ProjectDetailScreenTest {
                 description = "镜头维修", role = ProjectMoneyEventRole.REGULAR, operationId = id("operation-outlay")),
             ProjectMoneyEventEntity(id("event-recovery"), projectId, MoneyDirection.RECOVERY, 20_000, LocalDate.of(2026, 10, 26),
                 description = "配件收回", role = ProjectMoneyEventRole.REGULAR, operationId = id("operation-recovery")),
-        ).take(count)
+        ).take(count).sortedWith(compareBy({ it.occurredOn }, { it.id }))
         val cost = ProjectCostEngine.evaluate(ProjectSnapshot(LongTermProject(firstDay), events.map {
             ProjectMoneyEvent(it.direction, Money(it.amountCents), it.occurredOn)
         }), observed)

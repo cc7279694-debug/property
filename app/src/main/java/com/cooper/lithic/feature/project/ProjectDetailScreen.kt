@@ -51,6 +51,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -114,7 +115,9 @@ internal fun ProjectDetailScreen(
     val projectId = detail?.project?.id
     var menuOpen by rememberSaveable(projectId, presentationIdentity) { mutableStateOf(false) }
     var moneySheetOpen by rememberSaveable(projectId, presentationIdentity) { mutableStateOf(false) }
+    var showFinancialDetails by remember(projectId, presentationIdentity) { mutableStateOf(false) }
     var showAllMoney by remember(projectId, presentationIdentity) { mutableStateOf(false) }
+    var showMoreDetails by remember(projectId, presentationIdentity) { mutableStateOf(false) }
     var selectedMoneyId by remember(projectId, presentationIdentity) { mutableStateOf<String?>(null) }
     val colors = MaterialTheme.colorScheme
     Column(modifier.fillMaxSize().background(colors.background).testTag("project-detail-screen")) {
@@ -206,9 +209,12 @@ internal fun ProjectDetailScreen(
                     }
                 }
                 item { ProjectCostSummary(detail) }
-                item { ProjectSecondaryTotals(detail) }
+                item {
+                    ProjectFinancialDetails(detail, showFinancialDetails, { showFinancialDetails = !showFinancialDetails })
+                }
                 val hasMoreMoney = detail.events.size > INITIAL_MONEY_RECORD_COUNT
-                val visibleEvents = if (showAllMoney) detail.events else detail.events.take(INITIAL_MONEY_RECORD_COUNT)
+                // The repository supplies ascending occurrence date and ID. Keep that order at either disclosure size.
+                val visibleEvents = if (showAllMoney) detail.events else detail.events.takeLast(INITIAL_MONEY_RECORD_COUNT)
                 item {
                     Row(Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 6.dp),
                         verticalAlignment = Alignment.CenterVertically) {
@@ -230,25 +236,10 @@ internal fun ProjectDetailScreen(
                     Column(Modifier.padding(top = 20.dp).testTag("project-secondary-management"),
                         verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         HorizontalDivider()
-                        Text("资料与历史", Modifier.padding(top = 12.dp).semantics { heading() }, style = MaterialTheme.typography.titleLarge)
-                        Text("开始拥有：${detail.project.startedOn}", style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        detail.project.endedOn?.let { Text("已记录结束日期：$it", style = MaterialTheme.typography.bodyMedium) }
-                        detail.project.endReason?.takeIf { it.isNotBlank() }?.let {
-                            Text("结束原因：$it", style = MaterialTheme.typography.bodyMedium)
+                        ProjectDetailDisclosure("更多资料", showMoreDetails, "project-more-details-expand") {
+                            showMoreDetails = !showMoreDetails
                         }
-                        detail.project.note?.takeIf { it.isNotBlank() }?.let {
-                            Text(it, Modifier.testTag("project-detail-note"), style = MaterialTheme.typography.bodyLarge)
-                        }
-                        if (detail.events.any { it.exchangeGroupId != null }) Text(
-                            "此项目参与以旧换新，暂不支持单独删除或修改交易日期与金额；可继续管理名称、类别、备注及后续真实金额。",
-                            Modifier.testTag("project-trade-in-protection"), style = MaterialTheme.typography.bodyMedium)
-                        onCostHistory?.let { action ->
-                            TextButton(action, Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("project-cost-history")) {
-                                Text("查看成本历史", Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
-                                C2Icon(C2Glyph.Chevron)
-                            }
-                        }
+                        if (showMoreDetails) ProjectAdditionalDetails(detail, onCostHistory)
                     }
                 }
             }
@@ -334,7 +325,7 @@ private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable ()
                     .testTag("project-detail-status"), style = MaterialTheme.typography.bodyMedium)
             }
             FlowRow(Modifier.testTag("project-ownership-period"), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                Text("累计持有", style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
+                Text("持有", style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
                 Text(if (detail.cost.unavailableReason == null) "${detail.cost.heldDays}天" else "尚未开始",
                     Modifier.testTag("project-detail-held-days"), style = MaterialTheme.typography.bodyMedium,
                     color = colors.onSurfaceVariant)
@@ -396,40 +387,96 @@ private fun ProjectCostSummary(detail: ProjectDetail) {
 }
 
 @Composable
-private fun ProjectSecondaryTotals(detail: ProjectDetail) {
+private fun ProjectDetailDisclosure(label: String, expanded: Boolean, tag: String, onToggle: () -> Unit) {
+    TextButton(onToggle, Modifier.fillMaxWidth().testTag(tag).semantics {
+        stateDescription = if (expanded) "已展开" else "已收起"
+    }) {
+        Text(label, Modifier.weight(1f).semantics { heading() },
+            style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+        C2Icon(C2Glyph.Chevron, Modifier.rotate(if (expanded) -90f else 90f))
+    }
+}
+
+@Composable
+private fun ProjectFinancialDetails(detail: ProjectDetail, expanded: Boolean, onToggle: () -> Unit) {
+    val colors = MaterialTheme.colorScheme
     val includesCredit = detail.events.any { it.basis == MoneyBasis.TRADE_IN_CREDIT }
-    val totals = listOf(
-        Triple(if (includesCredit) "累计投入（含非现金折抵）" else "累计实际投入", detail.cost.grossOutlayCents, "project-detail-outlay"),
-        Triple(if (includesCredit) "累计收回（含非现金折抵）" else "累计实际收回", detail.cost.recoveryCents, "project-detail-recovery"),
-        Triple("净投入", detail.cost.netCents, "project-detail-net"),
-    )
-    BoxWithConstraints(Modifier.fillMaxWidth()) {
-        val columnWidth = ((maxWidth - 16.dp) / 3 - 16.dp).coerceAtLeast(0.dp)
-        val stack = includesCredit || LocalDensity.current.fontScale > 1.3f || totals.any {
-            !moneyMetricFitsAtPreferredSize(BigDecimal.valueOf(it.second, 2), columnWidth,
-                AmountUnit.YUAN, level = MoneyMetricLevel.ROW)
-        }
-        val group = Modifier.fillMaxWidth().padding(top = 12.dp).testTag("project-financial-totals")
-        if (stack) Column(group, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            totals.forEach { (label, cents, tag) -> ProjectTotal(label, cents, tag, Modifier.fillMaxWidth()) }
-        } else Row(group, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            totals.forEach { (label, cents, tag) ->
-                ProjectTotal(label, cents, tag, Modifier.weight(1f), centered = true)
+    val basis = if (includesCredit) "（含非现金折抵）" else ""
+    val outlay = detail.cost.grossOutlayCents
+    val recovery = detail.cost.recoveryCents
+    Surface(Modifier.fillMaxWidth().padding(top = 12.dp)
+        .testTag("project-financial-totals"),
+        shape = RoundedCornerShape(14.dp), border = BorderStroke(1.dp, colors.outlineVariant),
+        color = colors.surface) {
+        Column(Modifier.padding(horizontal = 12.dp).padding(bottom = 12.dp)) {
+            ProjectDetailDisclosure("财务明细", expanded, "project-financial-expand", onToggle)
+            if (expanded) {
+                Column(Modifier.fillMaxWidth().testTag("project-financial-details"),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    ProjectFinancialAmount("累计投入$basis", outlay, "project-detail-outlay", "project-financial-outlay")
+                    HorizontalDivider(color = colors.outlineVariant)
+                    ProjectFinancialAmount("累计收回$basis", recovery, "project-detail-recovery", "project-financial-recovery")
+                    HorizontalDivider(color = colors.outlineVariant)
+                    ProjectFinancialAmount("净投入", detail.cost.netCents, "project-detail-net", "project-financial-net")
+                }
+            } else {
+                BoxWithConstraints(Modifier.fillMaxWidth().testTag("project-financial-summary")) {
+                    val columnWidth = ((maxWidth - 12.dp) / 2).coerceAtLeast(0.dp)
+                    val stack = includesCredit || LocalDensity.current.fontScale > 1.3f ||
+                        listOf(outlay, recovery).any {
+                            !moneyMetricFitsAtPreferredSize(
+                                BigDecimal.valueOf(it, 2), columnWidth, AmountUnit.YUAN, MoneyMetricLevel.ROW,
+                            )
+                        }
+                    if (stack) Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        ProjectFinancialAmount("投入$basis", outlay, "project-detail-outlay", "project-financial-outlay")
+                        ProjectFinancialAmount("收回$basis", recovery, "project-detail-recovery", "project-financial-recovery")
+                    } else Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        ProjectFinancialAmount("投入", outlay, "project-detail-outlay", "project-financial-outlay", Modifier.weight(1f))
+                        ProjectFinancialAmount("收回", recovery, "project-detail-recovery", "project-financial-recovery", Modifier.weight(1f))
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-private fun ProjectTotal(label: String, cents: Long, tag: String, modifier: Modifier, centered: Boolean = false) {
-    val colors = MaterialTheme.colorScheme
-    Surface(modifier, shape = RoundedCornerShape(14.dp), border = BorderStroke(1.dp, colors.outlineVariant),
-        color = colors.surface, shadowElevation = 1.dp) {
-        Column(Modifier.padding(horizontal = 8.dp, vertical = 8.dp), verticalArrangement = Arrangement.spacedBy(2.dp),
-            horizontalAlignment = if (centered) Alignment.CenterHorizontally else Alignment.Start) {
-            Text(label, style = MaterialTheme.typography.labelSmall, color = colors.onSurfaceVariant)
-            MoneyMetric(BigDecimal.valueOf(cents, 2), Modifier.testTag(tag), AmountUnit.YUAN,
-                level = MoneyMetricLevel.ROW, label = label)
+private fun ProjectFinancialAmount(
+    label: String,
+    cents: Long,
+    amountTag: String,
+    factTag: String,
+    modifier: Modifier = Modifier,
+) {
+    Column(modifier.testTag(factTag), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        MoneyMetric(BigDecimal.valueOf(cents, 2), Modifier.testTag(amountTag), AmountUnit.YUAN,
+            level = MoneyMetricLevel.ROW, label = label)
+    }
+}
+
+@Composable
+private fun ProjectAdditionalDetails(detail: ProjectDetail, onCostHistory: (() -> Unit)?) {
+    Column(Modifier.fillMaxWidth().testTag("project-more-details"),
+        verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Text("开始拥有：${detail.project.startedOn}", style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant)
+        detail.project.endedOn?.let { Text("已记录结束日期：$it", style = MaterialTheme.typography.bodyMedium) }
+        detail.project.endReason?.takeIf { it.isNotBlank() }?.let {
+            Text("结束原因：$it", style = MaterialTheme.typography.bodyMedium)
+        }
+        detail.project.note?.takeIf { it.isNotBlank() }?.let {
+            Text(it, Modifier.testTag("project-detail-note"), style = MaterialTheme.typography.bodyLarge)
+        }
+        if (detail.events.any { it.exchangeGroupId != null }) Text(
+            "此项目参与以旧换新，暂不支持单独删除或修改交易日期与金额；可继续管理名称、类别、备注及后续真实金额。",
+            Modifier.testTag("project-trade-in-protection"), style = MaterialTheme.typography.bodyMedium)
+        onCostHistory?.let { action ->
+            TextButton(action, Modifier.fillMaxWidth().testTag("project-cost-history")) {
+                Text("查看成本历史", Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
+                C2Icon(C2Glyph.Chevron)
+            }
         }
     }
 }

@@ -121,6 +121,7 @@ class M17ChartJourneyTest {
         val before = generation.backupSnapshotSource().capture()
         openProject(project.id)
         val origin = textOf(compose.onNodeWithTag("project-detail-back").fetchSemanticsNode())
+        scrollClick("project-detail-content", "project-more-details-expand")
         scrollClick("project-detail-content", "project-cost-history")
         waitNode(PROJECT); waitNode("chart-selected-date")
         scrollTo(PROJECT, "chart-selected-value")
@@ -159,7 +160,7 @@ class M17ChartJourneyTest {
         click("project-editor-back"); waitNode("discard-dialog"); click("discard-confirm")
         waitText("project-detail-name", project.name)
         assertEquals(before, generation.backupSnapshotSource().capture())
-        scrollClick("project-detail-content", "project-cost-history")
+        openProjectCostHistory()
         waitNode(PROJECT); waitNode("chart-selected-date")
         // An actual committed correction signal refreshes an already open graph, with no route rebuild.
         val followup = money(project.id, MoneyDirection.OUTLAY, 10_000, today, "合成后续真实投入")
@@ -238,6 +239,7 @@ class M17ChartJourneyTest {
         scrollClick("project-history-content", "project-history-row-${ended.id}")
         waitText("project-detail-name", ended.name)
         val back = textOf(compose.onNodeWithTag("project-detail-back").fetchSemanticsNode())
+        scrollClick("project-detail-content", "project-more-details-expand")
         scrollClick("project-detail-content", "project-cost-history"); waitNode(PROJECT); waitNode("chart-selected-date")
         selectDate(PROJECT, LocalDate.of(2026, 1, 20))
         scrollTo(PROJECT, "chart-selected-value"); waitText("chart-selected-value", "80.00")
@@ -313,6 +315,15 @@ class M17ChartJourneyTest {
     }
     private fun scrollTo(container: String, tag: String) = compose.onNodeWithTag(container).performScrollToNode(hasTestTag(tag))
     private fun scrollClick(container: String, tag: String) { scrollTo(container, tag); click(tag) }
+
+    private fun openProjectCostHistory() {
+        scrollTo("project-detail-content", "project-more-details-expand")
+        val disclosure = compose.onNodeWithTag("project-more-details-expand")
+        if (disclosure.fetchSemanticsNode().config[SemanticsProperties.StateDescription] == "已收起") {
+            disclosure.performClick()
+        }
+        scrollClick("project-detail-content", "project-cost-history")
+    }
     private fun waitNode(tag: String) = compose.waitUntil(15_000) { compose.onAllNodesWithTag(tag).fetchSemanticsNodes().isNotEmpty() }
     private fun waitText(tag: String, value: String) = compose.waitUntil(15_000) {
         compose.onAllNodesWithTag(tag, useUnmergedTree = true).fetchSemanticsNodes().any { textOf(it).contains(value) }

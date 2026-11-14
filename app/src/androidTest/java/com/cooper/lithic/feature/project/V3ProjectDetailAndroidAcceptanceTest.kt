@@ -190,6 +190,7 @@ class V3ProjectDetailAndroidAcceptanceTest {
         assertInside("Unclipped cost card", costBounds, costNode.boundsInRoot)
         assertInside("Cost card fits the viewport", costBounds, viewport)
         assertFinancialFacts()
+        scrollTo("project-more-details-expand").performClick()
         scrollTo("project-cost-history").assertIsDisplayed()
         val actionAfter = compose.onNodeWithTag("project-record-money").assertIsDisplayed()
             .fetchSemanticsNode().boundsInRoot
@@ -366,6 +367,10 @@ class V3ProjectDetailAndroidAcceptanceTest {
 
     private fun assertFinancialFacts() {
         scrollTo("project-detail-daily").assertTextEquals("¥9.92/天")
+        scrollTo("project-detail-outlay").assertTextEquals("¥50000.00")
+        scrollTo("project-detail-recovery").assertTextEquals("¥48799.68")
+        compose.onNodeWithTag("project-detail-net").assertDoesNotExist()
+        scrollTo("project-financial-expand").assertIsDisplayed().performClick()
         scrollTo("project-detail-outlay").assertTextEquals("¥50000.00")
         scrollTo("project-detail-recovery").assertTextEquals("¥48799.68")
         scrollTo("project-detail-net").assertTextEquals("¥1200.32")

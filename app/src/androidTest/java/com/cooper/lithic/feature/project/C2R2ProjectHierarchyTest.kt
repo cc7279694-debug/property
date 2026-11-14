@@ -44,6 +44,10 @@ class C2R2ProjectHierarchyTest {
         val identity = compose.onNodeWithTag("project-identity-symbol").fetchSemanticsNode().boundsInRoot
         assertTrue("No photo must not create an empty hero frame", identity.height <= with(compose.density) { 65.dp.toPx() })
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-financial-totals"))
+        compose.onNodeWithTag("project-detail-net").assertDoesNotExist()
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-financial-expand"))
+        compose.onNodeWithTag("project-financial-expand").performClick()
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-net"))
         compose.onNodeWithTag("project-detail-net").assertTextContains("¥100.00")
     }
 

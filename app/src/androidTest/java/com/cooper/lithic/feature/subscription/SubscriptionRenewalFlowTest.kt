@@ -229,7 +229,8 @@ class SubscriptionRenewalFlowTest {
         assertEquals(15000L, beforePrepaid.cost.confirmedPaidCents)
         assertEquals(30L, beforePrepaid.cost.standardPurchasedDays)
         assertEquals(0, beforePrepaid.cost.currentRate.compareTo(java.math.BigDecimal("5")))
-        detailNode("subscription-detail-current-rate").assert(hasText("¥5.00"))
+        assertCurrentRate("¥5.00/天")
+        openOtherDetails()
         detailNode("subscription-detail-total-paid").assert(hasText("¥150.00"))
         observe(LocalDate.of(2026, 1, 20))
         openRenewal()
@@ -240,15 +241,16 @@ class SubscriptionRenewalFlowTest {
         assertEquals(60L, prepaid.cost.standardPurchasedDays)
         assertEquals(0, prepaid.cost.currentRate.compareTo(java.math.BigDecimal("5")))
         assertEquals(0, prepaid.cost.historicalAverage!!.compareTo(java.math.BigDecimal("5.5")))
-        detailNode("subscription-detail-historical-average").assert(hasText("¥5.50"))
+        detailNode("subscription-detail-historical-average").assert(hasText("¥5.50/天"))
+        openOtherDetails()
         detailNode("subscription-detail-purchased-days").assertTextContains("折算付费时长：60天")
-        detailNode("subscription-detail-current-rate").assert(hasText("¥5.00"))
+        assertCurrentRate("¥5.00/天")
         detailNode("subscription-detail-total-paid").assert(hasText("¥330.00"))
         val next = prepaid.renewals.single { it.amountCents == 18000L }
         detailNode("subscription-renewal-future-${next.id}").assertTextContains("尚未生效")
         compose.onNodeWithText("已使用60天").assertDoesNotExist()
         observe(LocalDate.of(2026, 2, 1))
-        detailNode("subscription-detail-current-rate").assert(hasText("¥6.00"))
+        assertCurrentRate("¥6.00/天")
         assertEquals(33000L, repository.loadSubscriptionDetail(id)!!.cost.confirmedPaidCents)
         observe(LocalDate.of(2026, 2, 20))
         openRenewal()
@@ -265,7 +267,8 @@ class SubscriptionRenewalFlowTest {
         assertEquals(before.renewals, repository.loadSubscriptionDetail(id)!!.renewals)
         assertEquals(ZoneId.of("Asia/Shanghai"), generation.settings.recordZone())
         openFromList(id)
-        detailNode("subscription-detail-current-rate").assert(hasText("¥6.00"))
+        assertCurrentRate("¥6.00/天")
+        openOtherDetails()
         detailNode("subscription-detail-purchased-days").assertTextContains("折算付费时长：425天")
     }
 
@@ -278,7 +281,7 @@ class SubscriptionRenewalFlowTest {
         assertEquals(0, before.cost.currentRate.signum())
         detailNode("subscription-detail-no-current-plan").assertTextContains("当前无有效套餐")
         compose.onNodeWithTag("subscription-detail-current-rate").assertDoesNotExist()
-        detailNode("subscription-detail-historical-average").assert(hasText("¥4.00"))
+        detailNode("subscription-detail-historical-average").assert(hasText("¥4.00/天"))
         val payment = before.renewals.single()
         detailNode("subscription-renewal-future-${payment.id}").assertTextContains("尚未生效")
         reopenFixture()
@@ -289,10 +292,12 @@ class SubscriptionRenewalFlowTest {
         assertEquals(LocalDate.of(2026, 3, 1), persisted.paidUntilExclusive)
         assertEquals(LocalDate.of(2026, 2, 26), persisted.reminderDueOn)
         openFromList(id)
+        openPaymentFacts(payment.id)
         detailText("真实付款日期：2026-01-05")
         detailText("实际生效日期：2026-02-01")
         detailText("付费到期边界：2026-03-01（当天不包含）")
         detailText("提醒到期日：2026-02-26")
+        closePaymentFacts()
     }
 
     @Test fun currency_change_is_allowed() = runBlocking<Unit> {
@@ -305,13 +310,17 @@ class SubscriptionRenewalFlowTest {
         assertEquals(listOf(14810L, 14683L), before.renewals.map { it.amountCents })
         assertTrue(before.renewals.all { it.cycle == BillingCycle.MONTHLY && it.standardDays == 30 })
         assertEquals(29493L, before.cost.confirmedPaidCents)
-        detailNode("subscription-detail-current-rate").assert(hasText("¥4.94"))
-        detailNode("subscription-detail-historical-average").assert(hasText("¥4.92"))
+        assertCurrentRate("¥4.94/天")
+        detailNode("subscription-detail-historical-average").assert(hasText("¥4.92/天"))
         reopenFixture()
         assertEquals(before.renewals, repository.loadSubscriptionDetail(id)!!.renewals)
         openFromList(id)
+        openPaymentFacts(before.renewals[0].id)
         detailText("真实付款日期：2026-01-15")
+        closePaymentFacts()
+        openPaymentFacts(before.renewals[1].id)
         detailText("真实付款日期：2025-12-01")
+        closePaymentFacts()
     }
 
     @Test fun paid_on_history_and_list_order_with_real_paging() = runBlocking<Unit> {
@@ -349,14 +358,22 @@ class SubscriptionRenewalFlowTest {
         assertEquals(50, model.state.value.detail.history.items.size)
         assertEquals(rows.take(50).map { it.id }, model.state.value.detail.history.items.map { it.id })
         assertTrue(model.state.value.detail.history.hasMore)
+        openPaymentFacts(rows[0].id)
         detailText("真实付款日期：2026-01-20")
         detailText("实际生效日期：2020-01-01")
+        closePaymentFacts()
+        detailNode("subscription-detail-show-payments").assertTextContains("全部").performClick().assertTextContains("收起")
+        detailNode("subscription-renewal-${rows[49].id}").assertIsDisplayed()
+        assertEquals(rows.take(50).map { it.id }, model.state.value.detail.history.items.map { it.id })
+        assertTrue(model.state.value.detail.history.hasMore)
         detailNode("subscription-detail-load-more-history").assertIsEnabled().performClick()
         compose.waitUntil(15_000) { model.state.value.detail.history.let { !it.loading && !it.loadingMore && it.items.size == 52 } }
         assertEquals(rows.map { it.id }, model.state.value.detail.history.items.map { it.id })
         assertFalse(model.state.value.detail.history.hasMore)
         assertEquals(52, model.state.value.detail.history.items.map { it.id }.distinct().size)
         detailNode("subscription-renewal-${rows.last().id}").assertIsDisplayed()
+        detailNode("subscription-detail-show-payments").performClick().assertTextContains("全部")
+        compose.onNodeWithTag("subscription-renewal-${rows.last().id}").assertDoesNotExist()
         observe(LocalDate.of(2026, 1, 21))
         assertEquals(rows.map { it.id }, model.state.value.detail.history.items.map { it.id })
         assertEquals(52L, generation.database.subscriptionDao().countRenewals(id))
@@ -494,14 +511,28 @@ class SubscriptionRenewalFlowTest {
         }
         if (open) compose.onNodeWithTag("subscription-detail-close-management").performClick()
         if (tag != "subscription-detail-renewal")
-            compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
-        return compose.onNodeWithTag(tag)
+            compose.onNodeWithTag("subscription-detail-content", useUnmergedTree = true).performScrollToNode(hasTestTag(tag))
+        return compose.onNodeWithTag(tag, useUnmergedTree = tag.startsWith("subscription-renewal-future-"))
     }
 
     private fun detailText(text: String) {
-        compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasText(text))
-        compose.onNodeWithText(text).assertIsDisplayed()
+        compose.onNodeWithText(text).performScrollTo().assertIsDisplayed()
     }
+
+    private fun assertCurrentRate(value: String) {
+        detailNode("subscription-detail-current-plan").performClick()
+        compose.onNodeWithTag("subscription-detail-current-rate").performScrollTo().assert(hasText(value))
+        compose.onNodeWithTag("subscription-detail-plan-close").performClick()
+    }
+
+    private fun openOtherDetails() {
+        val button = detailNode("subscription-detail-more")
+        if (button.fetchSemanticsNode().config[androidx.compose.ui.semantics.SemanticsProperties.StateDescription] == "已收起")
+            button.performClick()
+    }
+
+    private fun openPaymentFacts(id: String) = detailNode("subscription-renewal-actions-$id").performClick()
+    private fun closePaymentFacts() = compose.onNodeWithTag("subscription-renewal-facts-close").performClick()
 
     private fun assertEditorRaw(amount: String, paid: String, from: String, until: String, reminder: String) {
         assertRaw("renewal", amount, paid, from, until, reminder)

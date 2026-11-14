@@ -334,6 +334,7 @@ class CompleteJourneyTest {
         compose.onNodeWithTag("project-detail-daily").assertTextContains("13.75", substring = true)
         capture("01-ended-project-result")
         journeyPhase("PROJECT_EXACT_CHART")
+        projectDetailClick("project-more-details-expand")
         projectDetailClick("project-cost-history"); waitNode("project-cost-chart-screen")
         queryDate("project-cost-chart-screen", "chart-date-input", "chart-date-apply", "2026-01-07")
         compose.onNodeWithTag("project-cost-chart-screen").performScrollToNode(hasTestTag("chart-selected-value"))

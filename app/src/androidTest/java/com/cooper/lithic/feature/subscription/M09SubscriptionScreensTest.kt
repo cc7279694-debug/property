@@ -56,6 +56,7 @@ class M09SubscriptionScreensTest {
         renderDetail(detail)
         detailNode("subscription-detail-reopen").assertIsDisplayed().assertIsEnabled()
         compose.onNodeWithTag("subscription-detail-renewal").assertDoesNotExist()
+        detailNode("subscription-detail-more").performClick()
         detailNode("subscription-detail-purchased-days").assertTextContains("30天", substring = true)
     }
 
@@ -73,8 +74,10 @@ class M09SubscriptionScreensTest {
         val detail = M09SubscriptionFixtures.detail(M09SubscriptionFixtures.facts(futurePayment = true))
         renderDetail(detail)
         detail.renewals.forEach { renewal ->
-            detailNode("subscription-renewal-correct-${renewal.id}").assertIsDisplayed().assertIsEnabled()
-            detailNode("subscription-renewal-delete-${renewal.id}").assertIsDisplayed().assertIsEnabled()
+            detailNode("subscription-renewal-actions-${renewal.id}").performClick()
+            compose.onNodeWithTag("subscription-renewal-correct-${renewal.id}").performScrollTo().assertIsDisplayed().assertIsEnabled()
+            compose.onNodeWithTag("subscription-renewal-delete-${renewal.id}").performScrollTo().assertIsDisplayed().assertIsEnabled()
+            compose.onNodeWithTag("subscription-renewal-facts-close").performClick()
         }
     }
 

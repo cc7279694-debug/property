@@ -250,6 +250,8 @@ class ProjectScreensTest {
                 -20000, BigDecimal("-20"), true, null)), false)
         }
         compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥20.00/天")
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-financial-expand"))
+        compose.onNodeWithTag("project-financial-expand").performClick()
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-net"))
         compose.onNodeWithTag("project-detail-net").assertTextEquals("−¥200.00")
     }

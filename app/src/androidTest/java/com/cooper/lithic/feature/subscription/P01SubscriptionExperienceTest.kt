@@ -92,7 +92,7 @@ class P01SubscriptionExperienceTest {
             .assertTextContains("取消服务商自动续费需到服务商处操作", substring = true)
         detailNode("subscription-detail-stop").assertIsEnabled()
         detailNode("subscription-renewal-future-${future.id}").assertTextContains("尚未生效")
-        detailNode("subscription-renewal-date-information-${future.id}").performClick()
+        detailNode("subscription-renewal-actions-${future.id}").performClick()
         compose.onNodeWithTag("subscription-renewal-future-explanation-${future.id}")
             .assertIsDisplayed().assertTextContains("预付周期尚未生效，不代表已经使用。")
         assertEquals(facts.renewals.first().id, detail.currentRenewal?.id)
@@ -162,8 +162,8 @@ class P01SubscriptionExperienceTest {
         }
         if (open) compose.onNodeWithTag("subscription-detail-close-management").performClick()
         if (tag != "subscription-detail-renewal")
-            compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
-        return compose.onNodeWithTag(tag)
+            compose.onNodeWithTag("subscription-detail-content", useUnmergedTree = true).performScrollToNode(hasTestTag(tag))
+        return compose.onNodeWithTag(tag, useUnmergedTree = tag.startsWith("subscription-renewal-future-"))
     }
 
     @Composable

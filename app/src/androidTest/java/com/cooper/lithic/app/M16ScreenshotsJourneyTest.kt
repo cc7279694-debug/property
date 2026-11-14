@@ -192,6 +192,7 @@ class M16ScreenshotsJourneyTest {
         assertEquals(2, detail.events.size)
         assertEquals(300_000L, oldDetail.events.single { it.basis == MoneyBasis.TRADE_IN_CREDIT }.amountCents)
         assertEquals(500_000L, detail.cost.netCents + oldDetail.cost.netCents - 900_000L)
+        scrollClick("project-detail-content", "project-financial-expand")
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-outlay"))
         capture("05-trade-in-saved-cost-facts")
         val credit = detail.events.single { it.basis == MoneyBasis.TRADE_IN_CREDIT }

@@ -54,7 +54,9 @@ class M09SubscriptionLifecycleFlowTest {
     @Test fun expiry_needs_no_worker() = runBlocking<Unit> {
         val facts = seed()
         render(); openCurrent(facts.subscription.id)
-        detailNode("subscription-detail-current-rate").assertIsDisplayed()
+        detailNode("subscription-detail-current-plan").performClick()
+        compose.onNodeWithTag("subscription-detail-current-rate").assertIsDisplayed()
+        compose.onNodeWithTag("subscription-detail-plan-close").performClick()
         observe(LocalDate.of(2026, 2, 1))
         detailNode("subscription-detail-status").assertTextContains("已到期")
         detailNode("subscription-detail-no-current-plan").assertIsDisplayed()
@@ -169,20 +171,23 @@ class M09SubscriptionLifecycleFlowTest {
         val original = facts.renewals.first()
         val future = facts.renewals.last()
         render(); openCurrent(facts.subscription.id)
-        detailNode("subscription-renewal-correct-${original.id}").performClick()
+        detailNode("subscription-renewal-actions-${original.id}").performClick()
+        compose.onNodeWithTag("subscription-renewal-correct-${original.id}").performScrollTo().performClick()
         compose.waitUntil(10_000) { model.state.value.editor?.canEdit == true }
         compose.onNodeWithTag("renewal-amount").performScrollTo().performTextReplacement("146.83")
         assertEquals(original, fixture.repository.loadSubscriptionDetail(facts.subscription.id)!!.renewals.single { it.id == original.id })
         Espresso.closeSoftKeyboard(); compose.onNodeWithTag("renewal-confirm-payment").performClick(); waitDetail(facts.subscription.id)
         assertEquals(original.copy(amountCents = 14683), fixture.repository.loadSubscriptionDetail(facts.subscription.id)!!.renewals.single { it.id == original.id })
-        detailNode("subscription-renewal-delete-${future.id}").performClick(); waitState()
+        detailNode("subscription-renewal-actions-${future.id}").performClick()
+        compose.onNodeWithTag("subscription-renewal-delete-${future.id}").performScrollTo().performClick(); waitState()
         compose.onNodeWithTag("subscription-delete-payment-explanation").performScrollTo().assertTextContains("这不是退款", substring = true)
         assertEquals(2, fixture.repository.loadSubscriptionDetail(facts.subscription.id)!!.renewals.size)
         confirmState(facts.subscription.id)
         val after = fixture.repository.loadSubscriptionDetail(facts.subscription.id)!!
         assertEquals(listOf(original.copy(amountCents = 14683)), after.renewals)
         assertEquals(14683L, after.cost.confirmedPaidCents); assertEquals(30L, after.cost.standardPurchasedDays)
-        detailNode("subscription-renewal-delete-${original.id}").performClick(); waitState()
+        detailNode("subscription-renewal-actions-${original.id}").performClick()
+        compose.onNodeWithTag("subscription-renewal-delete-${original.id}").performScrollTo().performClick(); waitState()
         compose.onNodeWithTag("subscription-delete-last-payment").performScrollTo().assertIsDisplayed()
         compose.onNodeWithTag("subscription-state-confirm").assertDoesNotExist()
         assertEquals(1L, fixture.generation.database.subscriptionDao().countSubscriptions())
@@ -228,9 +233,9 @@ class M09SubscriptionLifecycleFlowTest {
             return compose.onNodeWithTag(tag).performScrollTo()
         }
         if (open) compose.onNodeWithTag("subscription-detail-close-management").performClick()
-        if (tag != "subscription-detail-renewal")
-            compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag(tag))
-        return compose.onNodeWithTag(tag)
+        if (tag !in setOf("subscription-detail-renewal", "subscription-detail-back"))
+            compose.onNodeWithTag("subscription-detail-content", useUnmergedTree = true).performScrollToNode(hasTestTag(tag))
+        return compose.onNodeWithTag(tag, useUnmergedTree = tag.startsWith("subscription-renewal-future-"))
     }
     private fun observe(date: LocalDate) {
         fixture.clock.date = date; fixture.onMain { model.refresh() }

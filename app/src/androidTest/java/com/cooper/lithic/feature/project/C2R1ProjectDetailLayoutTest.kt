@@ -57,6 +57,11 @@ class C2R1ProjectDetailLayoutTest {
         } } }
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-secondary-management"))
         compose.onNodeWithTag("project-secondary-management").assertIsDisplayed()
+        compose.onNodeWithTag("project-cost-history").assertDoesNotExist()
+        compose.onNodeWithTag("project-more-details-expand").performClick()
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-note"))
+        compose.onNodeWithTag("project-detail-note").assertTextContains("工作与通勤")
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-cost-history"))
         compose.onNodeWithTag("project-cost-history").performClick()
         assertEquals(1, history)
         compose.onNodeWithTag("project-record-money").assertIsDisplayed()
