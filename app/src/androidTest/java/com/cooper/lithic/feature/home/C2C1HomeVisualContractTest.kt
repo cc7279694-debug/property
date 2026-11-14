@@ -140,7 +140,8 @@ class C2C1HomeVisualContractTest {
     private fun assertNeutralSummary() {
         compose.onNodeWithTag("home-current-cost-summary").performScrollTo()
         val image = compose.onNodeWithTag("home-current-cost-summary").captureToImage().toPixelMap()
-        val sample = image[image.width / 2, minOf(image.height - 1, 2)]
+        // Probe inside the fill and below the new 1dp outline at every tested density.
+        val sample = image[image.width / 2, minOf(image.height - 1, (4 * pixelsPerDp).toInt().coerceAtLeast(2))]
         assertEquals(summaryBackground.red, sample.red, 0.02f)
         assertEquals(summaryBackground.green, sample.green, 0.02f)
         assertEquals(summaryBackground.blue, sample.blue, 0.02f)
