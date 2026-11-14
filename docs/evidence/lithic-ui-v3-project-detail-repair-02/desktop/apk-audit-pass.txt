@@ -1,0 +1,2347 @@
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\java.exe -jar E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\lib\apksigner.jar verify --verbose --print-certs E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug.apk
+exit=0
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+Signer #1 certificate SHA-1 digest: 6d7f39598b658d167a3a374e1beaf4290b2050c7
+Signer #1 certificate MD5 digest: 6bd1480a11cbe2a43e19112fe3855ced
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: d80e066186fcba43ae0594293263e832336f625ecd185877919a805ef17ac110
+Signer #1 public key SHA-1 digest: d45ee8249c87ee449e5a66989aa7004263f354e9
+Signer #1 public key MD5 digest: 60668adad78d8db45e707eb46f072f16
+
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump badging E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug.apk
+exit=0
+package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.WAKE_LOCK'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+uses-permission: name='com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+application-label:'砺石 LITHIC Debug'
+application-label-af:'砺石 LITHIC Debug'
+application-label-am:'砺石 LITHIC Debug'
+application-label-ar:'砺石 LITHIC Debug'
+application-label-as:'砺石 LITHIC Debug'
+application-label-az:'砺石 LITHIC Debug'
+application-label-be:'砺石 LITHIC Debug'
+application-label-bg:'砺石 LITHIC Debug'
+application-label-bn:'砺石 LITHIC Debug'
+application-label-bs:'砺石 LITHIC Debug'
+application-label-ca:'砺石 LITHIC Debug'
+application-label-cs:'砺石 LITHIC Debug'
+application-label-da:'砺石 LITHIC Debug'
+application-label-de:'砺石 LITHIC Debug'
+application-label-el:'砺石 LITHIC Debug'
+application-label-en-AU:'砺石 LITHIC Debug'
+application-label-en-CA:'砺石 LITHIC Debug'
+application-label-en-GB:'砺石 LITHIC Debug'
+application-label-en-IN:'砺石 LITHIC Debug'
+application-label-en-XC:'砺石 LITHIC Debug'
+application-label-es:'砺石 LITHIC Debug'
+application-label-es-US:'砺石 LITHIC Debug'
+application-label-et:'砺石 LITHIC Debug'
+application-label-eu:'砺石 LITHIC Debug'
+application-label-fa:'砺石 LITHIC Debug'
+application-label-fi:'砺石 LITHIC Debug'
+application-label-fr:'砺石 LITHIC Debug'
+application-label-fr-CA:'砺石 LITHIC Debug'
+application-label-gl:'砺石 LITHIC Debug'
+application-label-gu:'砺石 LITHIC Debug'
+application-label-hi:'砺石 LITHIC Debug'
+application-label-hr:'砺石 LITHIC Debug'
+application-label-hu:'砺石 LITHIC Debug'
+application-label-hy:'砺石 LITHIC Debug'
+application-label-in:'砺石 LITHIC Debug'
+application-label-is:'砺石 LITHIC Debug'
+application-label-it:'砺石 LITHIC Debug'
+application-label-iw:'砺石 LITHIC Debug'
+application-label-ja:'砺石 LITHIC Debug'
+application-label-ka:'砺石 LITHIC Debug'
+application-label-kk:'砺石 LITHIC Debug'
+application-label-km:'砺石 LITHIC Debug'
+application-label-kn:'砺石 LITHIC Debug'
+application-label-ko:'砺石 LITHIC Debug'
+application-label-ky:'砺石 LITHIC Debug'
+application-label-lo:'砺石 LITHIC Debug'
+application-label-lt:'砺石 LITHIC Debug'
+application-label-lv:'砺石 LITHIC Debug'
+application-label-mk:'砺石 LITHIC Debug'
+application-label-ml:'砺石 LITHIC Debug'
+application-label-mn:'砺石 LITHIC Debug'
+application-label-mr:'砺石 LITHIC Debug'
+application-label-ms:'砺石 LITHIC Debug'
+application-label-my:'砺石 LITHIC Debug'
+application-label-nb:'砺石 LITHIC Debug'
+application-label-ne:'砺石 LITHIC Debug'
+application-label-nl:'砺石 LITHIC Debug'
+application-label-or:'砺石 LITHIC Debug'
+application-label-pa:'砺石 LITHIC Debug'
+application-label-pl:'砺石 LITHIC Debug'
+application-label-pt:'砺石 LITHIC Debug'
+application-label-pt-BR:'砺石 LITHIC Debug'
+application-label-pt-PT:'砺石 LITHIC Debug'
+application-label-ro:'砺石 LITHIC Debug'
+application-label-ru:'砺石 LITHIC Debug'
+application-label-si:'砺石 LITHIC Debug'
+application-label-sk:'砺石 LITHIC Debug'
+application-label-sl:'砺石 LITHIC Debug'
+application-label-sq:'砺石 LITHIC Debug'
+application-label-sr:'砺石 LITHIC Debug'
+application-label-sr-Latn:'砺石 LITHIC Debug'
+application-label-sv:'砺石 LITHIC Debug'
+application-label-sw:'砺石 LITHIC Debug'
+application-label-ta:'砺石 LITHIC Debug'
+application-label-te:'砺石 LITHIC Debug'
+application-label-th:'砺石 LITHIC Debug'
+application-label-tl:'砺石 LITHIC Debug'
+application-label-tr:'砺石 LITHIC Debug'
+application-label-uk:'砺石 LITHIC Debug'
+application-label-ur:'砺石 LITHIC Debug'
+application-label-uz:'砺石 LITHIC Debug'
+application-label-vi:'砺石 LITHIC Debug'
+application-label-zh-CN:'砺石 LITHIC Debug'
+application-label-zh-HK:'砺石 LITHIC Debug'
+application-label-zh-TW:'砺石 LITHIC Debug'
+application-label-zu:'砺石 LITHIC Debug'
+application-icon-160:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-240:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-320:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-65534:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-65535:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application: label='砺石 LITHIC Debug' icon='res/mipmap-anydpi-v26/ic_launcher.xml'
+application-debuggable
+launchable-activity: name='com.cooper.lithic.app.MainActivity'  label='' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+other-activities
+other-receivers
+other-services
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320' '65534' '65535'
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump xmltree E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug.apk --file AndroidManifest.xml
+exit=0
+N: android=http://schemas.android.com/apk/res/android (line=2)
+  E: manifest (line=2)
+    A: http://schemas.android.com/apk/res/android:versionCode(0x0101021b)=17
+    A: http://schemas.android.com/apk/res/android:versionName(0x0101021c)="0.1.0-m22-debug" (Raw: "0.1.0-m22-debug")
+    A: http://schemas.android.com/apk/res/android:compileSdkVersion(0x01010572)=36
+    A: http://schemas.android.com/apk/res/android:compileSdkVersionCodename(0x01010573)="16" (Raw: "16")
+    A: package="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+    A: platformBuildVersionCode=36
+    A: platformBuildVersionName=16
+      E: uses-sdk (line=7)
+        A: http://schemas.android.com/apk/res/android:minSdkVersion(0x0101020c)=26
+        A: http://schemas.android.com/apk/res/android:targetSdkVersion(0x01010270)=36
+      E: uses-permission (line=11)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.POST_NOTIFICATIONS" (Raw: "android.permission.POST_NOTIFICATIONS")
+      E: uses-permission (line=12)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.WAKE_LOCK" (Raw: "android.permission.WAKE_LOCK")
+      E: uses-permission (line=13)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.ACCESS_NETWORK_STATE" (Raw: "android.permission.ACCESS_NETWORK_STATE")
+      E: uses-permission (line=14)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.RECEIVE_BOOT_COMPLETED" (Raw: "android.permission.RECEIVE_BOOT_COMPLETED")
+      E: permission (line=16)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" (Raw: "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
+        A: http://schemas.android.com/apk/res/android:protectionLevel(0x01010009)=0x00000002
+      E: uses-permission (line=20)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" (Raw: "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
+      E: application (line=22)
+        A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0b0009
+        A: http://schemas.android.com/apk/res/android:label(0x01010001)=@0x7f0a0001
+        A: http://schemas.android.com/apk/res/android:icon(0x01010002)=@0x7f090000
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.LithicApplication" (Raw: "com.cooper.lithic.app.LithicApplication")
+        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true
+        A: http://schemas.android.com/apk/res/android:allowBackup(0x01010280)=false
+        A: http://schemas.android.com/apk/res/android:supportsRtl(0x010103af)=true
+        A: http://schemas.android.com/apk/res/android:extractNativeLibs(0x010104ea)=false
+        A: http://schemas.android.com/apk/res/android:fullBackupContent(0x010104eb)=@0x7f0d0000
+        A: http://schemas.android.com/apk/res/android:roundIcon(0x0101052c)=@0x7f090001
+        A: http://schemas.android.com/apk/res/android:appComponentFactory(0x0101057a)="androidx.core.app.CoreComponentFactory" (Raw: "androidx.core.app.CoreComponentFactory")
+        A: http://schemas.android.com/apk/res/android:dataExtractionRules(0x0101063e)=@0x7f0d0001
+          E: provider (line=37)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.startup.InitializationProvider" (Raw: "androidx.startup.InitializationProvider")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:process(0x01010011)="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+            A: http://schemas.android.com/apk/res/android:authorities(0x01010018)="com.cooper.lithic.debug.androidx-startup" (Raw: "com.cooper.lithic.debug.androidx-startup")
+              E: meta-data (line=42)
+                A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.lifecycle.ProcessLifecycleInitializer" (Raw: "androidx.lifecycle.ProcessLifecycleInitializer")
+                A: http://schemas.android.com/apk/res/android:value(0x01010024)="androidx.startup" (Raw: "androidx.startup")
+              E: meta-data (line=45)
+                A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.ProfileInstallerInitializer" (Raw: "androidx.profileinstaller.ProfileInstallerInitializer")
+                A: http://schemas.android.com/apk/res/android:value(0x01010024)="androidx.startup" (Raw: "androidx.startup")
+          E: service (line=50)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.data.media.isolation.MediaSandboxService" (Raw: "com.cooper.lithic.data.media.isolation.MediaSandboxService")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:process(0x01010011)=":media_sandbox" (Raw: ":media_sandbox")
+            A: http://schemas.android.com/apk/res/android:isolatedProcess(0x010103a9)=true
+          E: activity (line=56)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.MainActivity" (Raw: "com.cooper.lithic.app.MainActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=59)
+                  E: action (line=60)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.action.MAIN" (Raw: "android.intent.action.MAIN")
+                  E: category (line=62)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+          E: service (line=66)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.background.systemjob.SystemJobService" (Raw: "androidx.work.impl.background.systemjob.SystemJobService")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.BIND_JOB_SERVICE" (Raw: "android.permission.BIND_JOB_SERVICE")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=@0x7f020002
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+          E: receiver (line=73)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" (Raw: "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+          E: receiver (line=78)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.background.systemalarm.RescheduleReceiver" (Raw: "androidx.work.impl.background.systemalarm.RescheduleReceiver")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=false
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=83)
+                  E: action (line=84)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.action.BOOT_COMPLETED" (Raw: "android.intent.action.BOOT_COMPLETED")
+          E: receiver (line=87)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.diagnostics.DiagnosticsReceiver" (Raw: "androidx.work.impl.diagnostics.DiagnosticsReceiver")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.DUMP" (Raw: "android.permission.DUMP")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=93)
+                  E: action (line=94)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" (Raw: "androidx.work.diagnostics.REQUEST_DIAGNOSTICS")
+          E: activity (line=98)
+            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x01030241
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.activity.ComponentActivity" (Raw: "androidx.activity.ComponentActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+          E: service (line=103)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.room.MultiInstanceInvalidationService" (Raw: "androidx.room.MultiInstanceInvalidationService")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=true
+          E: receiver (line=108)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.ProfileInstallReceiver" (Raw: "androidx.profileinstaller.ProfileInstallReceiver")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.DUMP" (Raw: "android.permission.DUMP")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=114)
+                  E: action (line=115)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.INSTALL_PROFILE" (Raw: "androidx.profileinstaller.action.INSTALL_PROFILE")
+              E: intent-filter (line=117)
+                  E: action (line=118)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.SKIP_FILE" (Raw: "androidx.profileinstaller.action.SKIP_FILE")
+              E: intent-filter (line=120)
+                  E: action (line=121)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.SAVE_PROFILE" (Raw: "androidx.profileinstaller.action.SAVE_PROFILE")
+              E: intent-filter (line=123)
+                  E: action (line=124)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.BENCHMARK_OPERATION" (Raw: "androidx.profileinstaller.action.BENCHMARK_OPERATION")
+
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\java.exe -jar E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\lib\apksigner.jar verify --verbose --print-certs E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug-androidTest.apk
+exit=0
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+Signer #1 certificate SHA-1 digest: 6d7f39598b658d167a3a374e1beaf4290b2050c7
+Signer #1 certificate MD5 digest: 6bd1480a11cbe2a43e19112fe3855ced
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: d80e066186fcba43ae0594293263e832336f625ecd185877919a805ef17ac110
+Signer #1 public key SHA-1 digest: d45ee8249c87ee449e5a66989aa7004263f354e9
+Signer #1 public key MD5 digest: 60668adad78d8db45e707eb46f072f16
+
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump badging E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug-androidTest.apk
+exit=0
+package: name='com.cooper.lithic.debug.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.REORDER_TASKS'
+application: label='' icon=''
+application-debuggable
+uses-library:'android.test.runner'
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+other-activities
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320'
+
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump xmltree E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug-androidTest.apk --file AndroidManifest.xml
+exit=0
+N: android=http://schemas.android.com/apk/res/android (line=2)
+  E: manifest (line=2)
+    A: http://schemas.android.com/apk/res/android:compileSdkVersion(0x01010572)=36
+    A: http://schemas.android.com/apk/res/android:compileSdkVersionCodename(0x01010573)="16" (Raw: "16")
+    A: package="com.cooper.lithic.debug.test" (Raw: "com.cooper.lithic.debug.test")
+    A: platformBuildVersionCode=36
+    A: platformBuildVersionName=16
+      E: uses-sdk (line=5)
+        A: http://schemas.android.com/apk/res/android:minSdkVersion(0x0101020c)=26
+        A: http://schemas.android.com/apk/res/android:targetSdkVersion(0x01010270)=36
+      E: instrumentation (line=9)
+        A: http://schemas.android.com/apk/res/android:label(0x01010001)="Tests for com.cooper.lithic.debug" (Raw: "Tests for com.cooper.lithic.debug")
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.runner.AndroidJUnitRunner" (Raw: "androidx.test.runner.AndroidJUnitRunner")
+        A: http://schemas.android.com/apk/res/android:targetPackage(0x01010021)="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+        A: http://schemas.android.com/apk/res/android:handleProfiling(0x01010022)=false
+        A: http://schemas.android.com/apk/res/android:functionalTest(0x01010023)=false
+      E: queries (line=16)
+          E: package (line=17)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.orchestrator" (Raw: "androidx.test.orchestrator")
+          E: package (line=18)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.services" (Raw: "androidx.test.services")
+          E: package (line=19)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.google.android.apps.common.testing.services" (Raw: "com.google.android.apps.common.testing.services")
+      E: uses-permission (line=22)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.REORDER_TASKS" (Raw: "android.permission.REORDER_TASKS")
+      E: application (line=24)
+        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true
+        A: http://schemas.android.com/apk/res/android:extractNativeLibs(0x010104ea)=false
+          E: uses-library (line=27)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.test.runner" (Raw: "android.test.runner")
+          E: activity (line=29)
+            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0a0008
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=33)
+                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100
+                  E: category (line=34)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+          E: activity (line=37)
+            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0a0008
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=41)
+                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100
+                  E: category (line=42)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+          E: activity (line=45)
+            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0a0007
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=49)
+                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100
+                  E: category (line=50)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+
+Packaged gallery evidence
+0ac088: 7110 3c1b 0000                         |0000: invoke-static {v0}, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;.production_composable_gallery_uses_system_configuration$lambda$1:(Ljava/lang/Throwable;)Ljava/lang/CharSequence; // method@1b3c
+0ac45a: 1a02 1b26                              |0053: const-string v2, "projectDetailAcceptanceTitleOverflowWidth" // string@261b
+0ac46c: 1a02 1926                              |005c: const-string v2, "projectDetailAcceptanceTitleOverflowHeight" // string@2619
+0ac482: 6e10 ea00 0000                         |0067: invoke-virtual {v0}, Landroidx/compose/ui/text/TextLayoutResult;.getHasVisualOverflow:()Z // method@00ea
+0ac75e: 6e10 ea00 0300                         |0013: invoke-virtual {v3}, Landroidx/compose/ui/text/TextLayoutResult;.getHasVisualOverflow:()Z // method@00ea
+Ljava/lang/AssertionError; -> 0x0005
+0x0006 - 0x000c reg=0 failure Ljava/lang/AssertionError;
+name          : 'production_composable_gallery_uses_system_configuration$lambda$1'
+0ac114:                                        |[0ac114] com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration$lambda$1:(Ljava/lang/Throwable;)Ljava/lang/CharSequence;
+name          : 'production_composable_gallery_uses_system_configuration'
+0ad558:                                        |[0ad558] com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration:()V
+0ad56c: 2201 b806                              |0002: new-instance v1, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$seeded$1; // type@06b8
+0ad572: 7030 f81a 0102                         |0005: invoke-direct {v1, v0, v2}, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$seeded$1;.<init>:(Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;Lkotlin/coroutines/Continuation;)V // method@1af8
+0ad6c0: 2201 b606                              |00ac: new-instance v1, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$1$1; // type@06b6
+0ad6c4: 7020 f21a 0100                         |00ae: invoke-direct {v1, v0}, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$1$1;.<init>:(Ljava/lang/Object;)V // method@1af2
+0ad762: 2201 b706                              |00fd: new-instance v1, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$2; // type@06b7
+0ad766: 7020 f51a 0100                         |00ff: invoke-direct {v1, v0}, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$2;.<init>:(Ljava/lang/Object;)V // method@1af5
+0ad7a2: 2201 fb06                              |011d: new-instance v1, Ljava/lang/AssertionError; // type@06fb
+0ad7d6: 7020 0f1c 2100                         |0137: invoke-direct {v1, v2}, Ljava/lang/AssertionError;.<init>:(Ljava/lang/Object;)V // method@1c0f
+0ad80c: 6e20 101c b200                         |0152: invoke-virtual {v2, v11}, Ljava/lang/AssertionError;.addSuppressed:(Ljava/lang/Throwable;)V // method@1c10
+0x007f - 0x00c1 reg=15 $i$a$-forEach-V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$1\2\329\0 I
+0x0152 - 0x0155 reg=12 $i$a$-forEach-V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$4$1\5\331\3 I
+0x013b - 0x0159 reg=2 $this$production_composable_gallery_uses_system_configuration_u24lambda_u242\3 Ljava/lang/AssertionError;
+0x013c - 0x0159 reg=3 $i$a$-apply-V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$4\3\142\0 I
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\javap.exe -p -c -classpath E:\CODEX\lithic-ui-v3-project-detail-repair-02\app\build\tmp\kotlin-classes\debugAndroidTest com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest
+exit=0
+Compiled from "V3ProjectDetailAndroidAcceptanceTest.kt"
+public final class com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest {
+  private final androidx.compose.ui.test.junit4.AndroidComposeTestRule<androidx.test.ext.junit.rules.ActivityScenarioRule<com.cooper.lithic.app.MainActivity>, com.cooper.lithic.app.MainActivity> compose;
+
+  private java.lang.String attemptId;
+
+  private float expectedFontScale;
+
+  private com.cooper.lithic.ui.HomeAndroidAcceptanceFixture$Session fixture;
+
+  private com.cooper.lithic.feature.appearance.LithicAppearance priorAppearance;
+
+  private final org.junit.rules.TestRule rules;
+
+  public static final int $stable;
+
+  public com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest();
+    Code:
+       0: aload_0
+       1: invokespecial #8                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_0
+       6: istore_1
+       7: ldc           #10                 // class com/cooper/lithic/app/MainActivity
+       9: invokestatic  #16                 // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule_androidKt.createAndroidComposeRule:(Ljava/lang/Class;)Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      12: putfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      15: aload_0
+      16: aload_0
+      17: invokedynamic #38,  0             // InvokeDynamic #0:apply:(Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;)Lorg/junit/rules/TestRule;
+      22: invokestatic  #44                 // Method org/junit/rules/RuleChain.outerRule:(Lorg/junit/rules/TestRule;)Lorg/junit/rules/RuleChain;
+      25: aload_0
+      26: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      29: checkcast     #46                 // class org/junit/rules/TestRule
+      32: invokevirtual #49                 // Method org/junit/rules/RuleChain.around:(Lorg/junit/rules/TestRule;)Lorg/junit/rules/RuleChain;
+      35: dup
+      36: ldc           #51                 // String around(...)
+      38: invokestatic  #57                 // Method kotlin/jvm/internal/Intrinsics.checkNotNullExpressionValue:(Ljava/lang/Object;Ljava/lang/String;)V
+      41: checkcast     #46                 // class org/junit/rules/TestRule
+      44: putfield      #61                 // Field rules:Lorg/junit/rules/TestRule;
+      47: return
+
+  public final org.junit.rules.TestRule getRules();
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field rules:Lorg/junit/rules/TestRule;
+       4: areturn
+
+  public final void prepareFixture();
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+       4: invokevirtual #76                 // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.getActivityRule:()Lorg/junit/rules/TestRule;
+       7: checkcast     #78                 // class androidx/test/ext/junit/rules/ActivityScenarioRule
+      10: invokevirtual #82                 // Method androidx/test/ext/junit/rules/ActivityScenarioRule.getScenario:()Landroidx/test/core/app/ActivityScenario;
+      13: aload_0
+      14: invokedynamic #95,  0             // InvokeDynamic #1:perform:(Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;)Landroidx/test/core/app/ActivityScenario$ActivityAction;
+      19: invokevirtual #101                // Method androidx/test/core/app/ActivityScenario.onActivity:(Landroidx/test/core/app/ActivityScenario$ActivityAction;)Landroidx/test/core/app/ActivityScenario;
+      22: pop
+      23: aload_0
+      24: aconst_null
+      25: new           #103                // class com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$prepareFixture$2
+      28: dup
+      29: aload_0
+      30: aconst_null
+      31: invokespecial #106                // Method com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$prepareFixture$2."<init>":(Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;Lkotlin/coroutines/Continuation;)V
+      34: checkcast     #108                // class kotlin/jvm/functions/Function2
+      37: iconst_1
+      38: aconst_null
+      39: invokestatic  #114                // Method kotlinx/coroutines/BuildersKt.runBlocking$default:(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Ljava/lang/Object;
+      42: checkcast     #116                // class com/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Session
+      45: putfield      #120                // Field fixture:Lcom/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Session;
+      48: getstatic     #126                // Field com/cooper/lithic/feature/appearance/AppearanceProvider.INSTANCE:Lcom/cooper/lithic/feature/appearance/AppearanceProvider;
+      51: aload_0
+      52: invokespecial #130                // Method application:()Lcom/cooper/lithic/app/LithicApplication;
+      55: invokevirtual #134                // Method com/cooper/lithic/feature/appearance/AppearanceProvider.get:(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/feature/appearance/AppearanceController;
+      58: astore_1
+      59: aload_0
+      60: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      63: ldc2_w        #135                // long 12000l
+      66: aload_1
+      67: invokedynamic #149,  0            // InvokeDynamic #2:invoke:(Lcom/cooper/lithic/feature/appearance/AppearanceController;)Lkotlin/jvm/functions/Function0;
+      72: invokevirtual #153                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.waitUntil:(JLkotlin/jvm/functions/Function0;)V
+      75: aload_0
+      76: aload_1
+      77: invokevirtual #159                // Method com/cooper/lithic/feature/appearance/AppearanceController.getState:()Lkotlinx/coroutines/flow/StateFlow;
+      80: invokeinterface #164,  1          // InterfaceMethod kotlinx/coroutines/flow/StateFlow.getValue:()Ljava/lang/Object;
+      85: checkcast     #166                // class com/cooper/lithic/feature/appearance/AppearanceUiState
+      88: invokevirtual #170                // Method com/cooper/lithic/feature/appearance/AppearanceUiState.getSelected:()Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+      91: putfield      #174                // Field priorAppearance:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+      94: aload_0
+      95: ldc           #176                // String home-empty-guidance
+      97: invokespecial #180                // Method waitFor:(Ljava/lang/String;)V
+     100: return
+
+  public final void releaseFixture();
+    Code:
+       0: aload_0
+       1: getfield      #120                // Field fixture:Lcom/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Session;
+       4: dup
+       5: ifnonnull     10
+       8: pop
+       9: return
+      10: astore_1
+      11: nop
+      12: aload_0
+      13: getfield      #174                // Field priorAppearance:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+      16: dup
+      17: ifnull        32
+      20: astore_3
+      21: iconst_0
+      22: istore        4
+      24: aload_0
+      25: aload_3
+      26: invokespecial #188                // Method selectTheme:(Lcom/cooper/lithic/feature/appearance/LithicAppearance;)V
+      29: goto          34
+      32: pop
+      33: nop
+      34: aconst_null
+      35: new           #190                // class com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$releaseFixture$2
+      38: dup
+      39: aload_1
+      40: aconst_null
+      41: invokespecial #193                // Method com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$releaseFixture$2."<init>":(Lcom/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Session;Lkotlin/coroutines/Continuation;)V
+      44: checkcast     #108                // class kotlin/jvm/functions/Function2
+      47: iconst_1
+      48: aconst_null
+      49: invokestatic  #114                // Method kotlinx/coroutines/BuildersKt.runBlocking$default:(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Ljava/lang/Object;
+      52: pop
+      53: aload_0
+      54: ldc           #195                // String fixture-cleanup
+      56: invokedynamic #206,  0            // InvokeDynamic #3:invoke:()Lkotlin/jvm/functions/Function1;
+      61: invokespecial #210                // Method report:(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+      64: goto          100
+      67: astore_2
+      68: aconst_null
+      69: new           #190                // class com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$releaseFixture$2
+      72: dup
+      73: aload_1
+      74: aconst_null
+      75: invokespecial #193                // Method com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$releaseFixture$2."<init>":(Lcom/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Session;Lkotlin/coroutines/Continuation;)V
+      78: checkcast     #108                // class kotlin/jvm/functions/Function2
+      81: iconst_1
+      82: aconst_null
+      83: invokestatic  #114                // Method kotlinx/coroutines/BuildersKt.runBlocking$default:(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Ljava/lang/Object;
+      86: pop
+      87: aload_0
+      88: ldc           #195                // String fixture-cleanup
+      90: invokedynamic #206,  0            // InvokeDynamic #3:invoke:()Lkotlin/jvm/functions/Function1;
+      95: invokespecial #210                // Method report:(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+      98: aload_2
+      99: athrow
+     100: return
+    Exception table:
+       from    to  target type
+          11    34    67   any
+          67    68    67   any
+
+  public final void production_composable_gallery_uses_system_configuration();
+    Code:
+       0: aconst_null
+       1: new           #221                // class com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$seeded$1
+       4: dup
+       5: aload_0
+       6: aconst_null
+       7: invokespecial #222                // Method com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$seeded$1."<init>":(Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;Lkotlin/coroutines/Continuation;)V
+      10: checkcast     #108                // class kotlin/jvm/functions/Function2
+      13: iconst_1
+      14: aconst_null
+      15: invokestatic  #114                // Method kotlinx/coroutines/BuildersKt.runBlocking$default:(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;ILjava/lang/Object;)Ljava/lang/Object;
+      18: checkcast     #224                // class com/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Seeded
+      21: astore_1
+      22: aload_1
+      23: invokevirtual #228                // Method com/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Seeded.getProjectIds:()Ljava/util/List;
+      26: invokestatic  #234                // Method kotlin/collections/CollectionsKt.first:(Ljava/util/List;)Ljava/lang/Object;
+      29: checkcast     #236                // class java/lang/String
+      32: astore_2
+      33: aload_1
+      34: invokevirtual #228                // Method com/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Seeded.getProjectIds:()Ljava/util/List;
+      37: invokestatic  #239                // Method kotlin/collections/CollectionsKt.last:(Ljava/util/List;)Ljava/lang/Object;
+      40: checkcast     #236                // class java/lang/String
+      43: astore_3
+      44: new           #241                // class java/util/ArrayList
+      47: dup
+      48: invokespecial #242                // Method java/util/ArrayList."<init>":()V
+      51: checkcast     #244                // class java/util/List
+      54: astore        4
+      56: aload_0
+      57: getstatic     #247                // Field com/cooper/lithic/feature/appearance/LithicAppearance.PURE_WHITE:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+      60: invokespecial #188                // Method selectTheme:(Lcom/cooper/lithic/feature/appearance/LithicAppearance;)V
+      63: aload_0
+      64: getfield      #251                // Field expectedFontScale:F
+      67: fconst_1
+      68: fcmpg
+      69: ifne          76
+      72: iconst_1
+      73: goto          77
+      76: iconst_0
+      77: ifeq          318
+      80: iconst_3
+      81: anewarray     #253                // class kotlin/Pair
+      84: astore        6
+      86: aload         6
+      88: iconst_0
+      89: getstatic     #247                // Field com/cooper/lithic/feature/appearance/LithicAppearance.PURE_WHITE:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+      92: ldc           #255                // String project-detail-pure-white
+      94: invokestatic  #261                // Method kotlin/TuplesKt.to:(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+      97: aastore
+      98: aload         6
+     100: iconst_1
+     101: getstatic     #264                // Field com/cooper/lithic/feature/appearance/LithicAppearance.STONE_MIST:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+     104: ldc_w         #266                // String project-detail-stone-mist
+     107: invokestatic  #261                // Method kotlin/TuplesKt.to:(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+     110: aastore
+     111: aload         6
+     113: iconst_2
+     114: getstatic     #269                // Field com/cooper/lithic/feature/appearance/LithicAppearance.CHARCOAL:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+     117: ldc_w         #271                // String project-detail-charcoal
+     120: invokestatic  #261                // Method kotlin/TuplesKt.to:(Ljava/lang/Object;Ljava/lang/Object;)Lkotlin/Pair;
+     123: aastore
+     124: aload         6
+     126: invokestatic  #275                // Method kotlin/collections/CollectionsKt.listOf:([Ljava/lang/Object;)Ljava/util/List;
+     129: astore        5
+     131: aload         5
+     133: checkcast     #277                // class java/lang/Iterable
+     136: astore        6
+     138: iconst_0
+     139: istore        7
+     141: aload         6
+     143: invokeinterface #281,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+     148: astore        8
+     150: aload         8
+     152: invokeinterface #287,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     157: ifeq          287
+     160: aload         8
+     162: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     167: astore        9
+     169: aload         9
+     171: checkcast     #253                // class kotlin/Pair
+     174: astore        10
+     176: iconst_0
+     177: istore        11
+     179: aload         10
+     181: invokevirtual #293                // Method kotlin/Pair.component1:()Ljava/lang/Object;
+     184: checkcast     #215                // class com/cooper/lithic/feature/appearance/LithicAppearance
+     187: astore        12
+     189: aload         10
+     191: invokevirtual #296                // Method kotlin/Pair.component2:()Ljava/lang/Object;
+     194: checkcast     #236                // class java/lang/String
+     197: astore        13
+     199: aload_0
+     200: aload         12
+     202: invokespecial #188                // Method selectTheme:(Lcom/cooper/lithic/feature/appearance/LithicAppearance;)V
+     205: aload_0
+     206: aload_2
+     207: invokespecial #299                // Method openDetail:(Ljava/lang/String;)V
+     210: aload_0
+     211: invokespecial #302                // Method assertCover:()V
+     214: aload_0
+     215: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     218: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+     221: ldc_w         #306                // String project-detail-content
+     224: iconst_0
+     225: iconst_2
+     226: aconst_null
+     227: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     230: iconst_0
+     231: invokestatic  #318                // Method androidx/compose/ui/test/ActionsKt.performScrollToIndex:(Landroidx/compose/ui/test/SemanticsNodeInteraction;I)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     234: pop
+     235: aload_0
+     236: aload         13
+     238: invokespecial #321                // Method capture:(Ljava/lang/String;)V
+     241: aload_0
+     242: aload         12
+     244: aload         4
+     246: invokespecial #325                // Method checkTitle:(Lcom/cooper/lithic/feature/appearance/LithicAppearance;Ljava/util/List;)V
+     249: aload_0
+     250: aload         4
+     252: new           #327                // class com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$1$1
+     255: dup
+     256: aload_0
+     257: invokespecial #330                // Method com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$1$1."<init>":(Ljava/lang/Object;)V
+     260: checkcast     #332                // class kotlin/jvm/functions/Function0
+     263: invokespecial #336                // Method keepAssertionFailure:(Ljava/util/List;Lkotlin/jvm/functions/Function0;)V
+     266: aload         12
+     268: getstatic     #247                // Field com/cooper/lithic/feature/appearance/LithicAppearance.PURE_WHITE:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+     271: if_acmpne     278
+     274: aload_0
+     275: invokespecial #339                // Method checkFullCoverAndClose:()V
+     278: aload_0
+     279: invokespecial #342                // Method backToHome:()V
+     282: nop
+     283: nop
+     284: goto          150
+     287: nop
+     288: aload_0
+     289: getstatic     #247                // Field com/cooper/lithic/feature/appearance/LithicAppearance.PURE_WHITE:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+     292: invokespecial #188                // Method selectTheme:(Lcom/cooper/lithic/feature/appearance/LithicAppearance;)V
+     295: aload_0
+     296: aload_3
+     297: invokespecial #299                // Method openDetail:(Ljava/lang/String;)V
+     300: aload_0
+     301: invokespecial #302                // Method assertCover:()V
+     304: aload_0
+     305: ldc_w         #344                // String project-detail-portrait
+     308: invokespecial #321                // Method capture:(Ljava/lang/String;)V
+     311: aload_0
+     312: invokespecial #339                // Method checkFullCoverAndClose:()V
+     315: goto          396
+     318: aload_0
+     319: aload_2
+     320: invokespecial #299                // Method openDetail:(Ljava/lang/String;)V
+     323: aload_0
+     324: invokespecial #302                // Method assertCover:()V
+     327: aload_0
+     328: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     331: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+     334: ldc_w         #306                // String project-detail-content
+     337: iconst_0
+     338: iconst_2
+     339: aconst_null
+     340: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     343: iconst_0
+     344: invokestatic  #318                // Method androidx/compose/ui/test/ActionsKt.performScrollToIndex:(Landroidx/compose/ui/test/SemanticsNodeInteraction;I)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     347: pop
+     348: aload_0
+     349: ldc_w         #346                // String project-detail-font-200
+     352: invokespecial #321                // Method capture:(Ljava/lang/String;)V
+     355: aload_0
+     356: getstatic     #247                // Field com/cooper/lithic/feature/appearance/LithicAppearance.PURE_WHITE:Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+     359: aload         4
+     361: invokespecial #325                // Method checkTitle:(Lcom/cooper/lithic/feature/appearance/LithicAppearance;Ljava/util/List;)V
+     364: aload_0
+     365: aload         4
+     367: new           #348                // class com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$2
+     370: dup
+     371: aload_0
+     372: invokespecial #349                // Method com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$2."<init>":(Ljava/lang/Object;)V
+     375: checkcast     #332                // class kotlin/jvm/functions/Function0
+     378: invokespecial #336                // Method keepAssertionFailure:(Ljava/util/List;Lkotlin/jvm/functions/Function0;)V
+     381: aload_0
+     382: ldc_w         #351                // String project-detail-net
+     385: invokespecial #355                // Method scrollTo:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     388: pop
+     389: aload_0
+     390: ldc_w         #357                // String project-detail-font-200-money
+     393: invokespecial #321                // Method capture:(Ljava/lang/String;)V
+     396: aload_0
+     397: invokespecial #342                // Method backToHome:()V
+     400: aload         4
+     402: checkcast     #359                // class java/util/Collection
+     405: invokeinterface #362,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+     410: ifne          417
+     413: iconst_1
+     414: goto          418
+     417: iconst_0
+     418: ifeq          530
+     421: new           #364                // class java/lang/AssertionError
+     424: dup
+     425: aload         4
+     427: checkcast     #277                // class java/lang/Iterable
+     430: ldc_w         #366                // String \n
+     433: checkcast     #368                // class java/lang/CharSequence
+     436: aconst_null
+     437: aconst_null
+     438: iconst_0
+     439: aconst_null
+     440: invokedynamic #375,  0            // InvokeDynamic #4:invoke:()Lkotlin/jvm/functions/Function1;
+     445: bipush        30
+     447: aconst_null
+     448: invokestatic  #379                // Method kotlin/collections/CollectionsKt.joinToString$default:(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+     451: invokespecial #380                // Method java/lang/AssertionError."<init>":(Ljava/lang/Object;)V
+     454: astore        5
+     456: aload         5
+     458: astore        6
+     460: iconst_0
+     461: istore        7
+     463: aload         4
+     465: checkcast     #277                // class java/lang/Iterable
+     468: astore        8
+     470: iconst_0
+     471: istore        9
+     473: aload         8
+     475: invokeinterface #281,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+     480: astore        10
+     482: aload         10
+     484: invokeinterface #287,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     489: ifeq          522
+     492: aload         10
+     494: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     499: astore        11
+     501: aload         11
+     503: checkcast     #217                // class java/lang/Throwable
+     506: astore        12
+     508: iconst_0
+     509: istore        13
+     511: aload         6
+     513: aload         12
+     515: invokevirtual #384                // Method java/lang/AssertionError.addSuppressed:(Ljava/lang/Throwable;)V
+     518: nop
+     519: goto          482
+     522: nop
+     523: nop
+     524: aload         5
+     526: checkcast     #217                // class java/lang/Throwable
+     529: athrow
+     530: return
+
+  private final void openDetail(java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc_w         #411                // String home-project-tab
+       4: invokespecial #180                // Method waitFor:(Ljava/lang/String;)V
+       7: aload_0
+       8: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      11: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+      14: ldc_w         #411                // String home-project-tab
+      17: iconst_0
+      18: iconst_2
+      19: aconst_null
+      20: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      23: invokestatic  #415                // Method androidx/compose/ui/test/ActionsKt.performScrollTo:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      26: invokestatic  #418                // Method androidx/compose/ui/test/ActionsKt.performClick:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      29: pop
+      30: aload_1
+      31: invokedynamic #430,  0            // InvokeDynamic #5:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      36: astore_2
+      37: aload_0
+      38: aload_2
+      39: invokespecial #180                // Method waitFor:(Ljava/lang/String;)V
+      42: aload_0
+      43: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      46: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+      49: aload_2
+      50: iconst_0
+      51: iconst_2
+      52: aconst_null
+      53: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      56: invokestatic  #415                // Method androidx/compose/ui/test/ActionsKt.performScrollTo:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      59: invokestatic  #418                // Method androidx/compose/ui/test/ActionsKt.performClick:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      62: pop
+      63: aload_0
+      64: ldc_w         #432                // String project-detail-name
+      67: invokespecial #180                // Method waitFor:(Ljava/lang/String;)V
+      70: aload_0
+      71: ldc_w         #434                // String record-cover-image
+      74: invokespecial #180                // Method waitFor:(Ljava/lang/String;)V
+      77: return
+
+  private final void assertCover();
+    Code:
+       0: aload_0
+       1: ldc_w         #434                // String record-cover-image
+       4: invokespecial #355                // Method scrollTo:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+       7: invokestatic  #441                // Method androidx/compose/ui/test/AssertionsKt.assertIsDisplayed:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      10: invokestatic  #444                // Method androidx/compose/ui/test/AssertionsKt.assertHasClickAction:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      13: aconst_null
+      14: iconst_1
+      15: aconst_null
+      16: invokestatic  #450                // Method androidx/compose/ui/test/SemanticsNodeInteraction.fetchSemanticsNode$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;Ljava/lang/String;ILjava/lang/Object;)Landroidx/compose/ui/semantics/SemanticsNode;
+      19: astore_1
+      20: aload_1
+      21: invokevirtual #456                // Method androidx/compose/ui/semantics/SemanticsNode."getSize-YbymL2g":()J
+      24: invokestatic  #462                // Method androidx/compose/ui/unit/IntSize."toString-impl":(J)Ljava/lang/String;
+      27: invokedynamic #465,  0            // InvokeDynamic #6:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      32: aload_1
+      33: invokevirtual #456                // Method androidx/compose/ui/semantics/SemanticsNode."getSize-YbymL2g":()J
+      36: lstore_2
+      37: iconst_0
+      38: istore        4
+      40: lload_2
+      41: lstore        5
+      43: iconst_0
+      44: istore        7
+      46: lload         5
+      48: bipush        32
+      50: lshr
+      51: l2i
+      52: nop
+      53: ifle          118
+      56: aload_1
+      57: invokevirtual #456                // Method androidx/compose/ui/semantics/SemanticsNode."getSize-YbymL2g":()J
+      60: lstore_2
+      61: iconst_0
+      62: istore        4
+      64: lload_2
+      65: lstore        5
+      67: iconst_0
+      68: istore        7
+      70: lload         5
+      72: bipush        32
+      74: lshr
+      75: l2i
+      76: nop
+      77: i2f
+      78: ldc_w         #466                // float 0.75f
+      81: fmul
+      82: aload_1
+      83: invokevirtual #456                // Method androidx/compose/ui/semantics/SemanticsNode."getSize-YbymL2g":()J
+      86: lstore_2
+      87: iconst_0
+      88: istore        4
+      90: lload_2
+      91: lstore        5
+      93: iconst_0
+      94: istore        7
+      96: lload         5
+      98: ldc2_w        #467                // long 4294967295l
+     101: land
+     102: l2i
+     103: nop
+     104: i2f
+     105: fsub
+     106: invokestatic  #474                // Method java/lang/Math.abs:(F)F
+     109: fconst_2
+     110: fcmpg
+     111: ifge          118
+     114: iconst_1
+     115: goto          119
+     118: iconst_0
+     119: invokestatic  #480                // Method org/junit/Assert.assertTrue:(Ljava/lang/String;Z)V
+     122: aload_0
+     123: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     126: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+     129: ldc_w         #482                // String record-cover-unavailable
+     132: iconst_0
+     133: iconst_2
+     134: aconst_null
+     135: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     138: invokevirtual #485                // Method androidx/compose/ui/test/SemanticsNodeInteraction.assertDoesNotExist:()V
+     141: aload_0
+     142: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     145: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+     148: ldc_w         #487                // String record-cover-loading
+     151: iconst_0
+     152: iconst_2
+     153: aconst_null
+     154: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     157: invokevirtual #485                // Method androidx/compose/ui/test/SemanticsNodeInteraction.assertDoesNotExist:()V
+     160: return
+
+  private final void checkFullCoverAndClose();
+    Code:
+       0: aload_0
+       1: ldc_w         #434                // String record-cover-image
+       4: invokespecial #355                // Method scrollTo:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+       7: invokestatic  #418                // Method androidx/compose/ui/test/ActionsKt.performClick:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      10: pop
+      11: aload_0
+      12: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      15: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+      18: ldc_w         #504                // String project-cover-full-image
+      21: iconst_0
+      22: iconst_2
+      23: aconst_null
+      24: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      27: invokestatic  #441                // Method androidx/compose/ui/test/AssertionsKt.assertIsDisplayed:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      30: pop
+      31: invokestatic  #509                // Method androidx/test/espresso/Espresso.pressBack:()V
+      34: aload_0
+      35: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      38: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+      41: ldc_w         #511                // String project-cover-full-view
+      44: iconst_0
+      45: iconst_2
+      46: aconst_null
+      47: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      50: invokevirtual #485                // Method androidx/compose/ui/test/SemanticsNodeInteraction.assertDoesNotExist:()V
+      53: aload_0
+      54: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      57: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+      60: ldc_w         #513                // String project-detail-screen
+      63: iconst_0
+      64: iconst_2
+      65: aconst_null
+      66: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      69: invokestatic  #441                // Method androidx/compose/ui/test/AssertionsKt.assertIsDisplayed:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      72: pop
+      73: return
+
+  private final void checkTitle(com.cooper.lithic.feature.appearance.LithicAppearance, java.util.List<java.lang.Throwable>);
+    Code:
+       0: ldc_w         #516                // String �ϳɺ������
+       3: astore_3
+       4: aload_0
+       5: ldc_w         #432                // String project-detail-name
+       8: invokespecial #355                // Method scrollTo:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      11: iconst_1
+      12: anewarray     #236                // class java/lang/String
+      15: astore        5
+      17: aload         5
+      19: iconst_0
+      20: aload_3
+      21: aastore
+      22: aload         5
+      24: iconst_0
+      25: iconst_2
+      26: aconst_null
+      27: invokestatic  #520                // Method androidx/compose/ui/test/AssertionsKt.assertTextEquals$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;[Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      30: astore        4
+      32: new           #241                // class java/util/ArrayList
+      35: dup
+      36: invokespecial #242                // Method java/util/ArrayList."<init>":()V
+      39: checkcast     #244                // class java/util/List
+      42: astore        5
+      44: aload         4
+      46: getstatic     #525                // Field androidx/compose/ui/semantics/SemanticsActions.INSTANCE:Landroidx/compose/ui/semantics/SemanticsActions;
+      49: invokevirtual #529                // Method androidx/compose/ui/semantics/SemanticsActions.getGetTextLayoutResult:()Landroidx/compose/ui/semantics/SemanticsPropertyKey;
+      52: aload         5
+      54: invokedynamic #539,  0            // InvokeDynamic #7:invoke:(Ljava/util/List;)Lkotlin/jvm/functions/Function1;
+      59: invokestatic  #543                // Method androidx/compose/ui/test/ActionsKt.performSemanticsAction:(Landroidx/compose/ui/test/SemanticsNodeInteraction;Landroidx/compose/ui/semantics/SemanticsPropertyKey;Lkotlin/jvm/functions/Function1;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      62: pop
+      63: aload         5
+      65: invokestatic  #546                // Method kotlin/collections/CollectionsKt.single:(Ljava/util/List;)Ljava/lang/Object;
+      68: checkcast     #548                // class androidx/compose/ui/text/TextLayoutResult
+      71: astore        6
+      73: aload         6
+      75: invokevirtual #552                // Method androidx/compose/ui/text/TextLayoutResult.getLayoutInput:()Landroidx/compose/ui/text/TextLayoutInput;
+      78: astore        7
+      80: aload         4
+      82: aconst_null
+      83: iconst_1
+      84: aconst_null
+      85: invokestatic  #450                // Method androidx/compose/ui/test/SemanticsNodeInteraction.fetchSemanticsNode$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;Ljava/lang/String;ILjava/lang/Object;)Landroidx/compose/ui/semantics/SemanticsNode;
+      88: astore        8
+      90: aload_0
+      91: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      94: aload         8
+      96: invokedynamic #562,  0            // InvokeDynamic #8:invoke:(Landroidx/compose/ui/semantics/SemanticsNode;)Lkotlin/jvm/functions/Function0;
+     101: invokevirtual #566                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.runOnIdle:(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+     104: checkcast     #568                // class androidx/compose/ui/geometry/Rect
+     107: astore        9
+     109: aload_0
+     110: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     113: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+     116: ldc_w         #306                // String project-detail-content
+     119: iconst_0
+     120: iconst_2
+     121: aconst_null
+     122: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     125: aconst_null
+     126: iconst_1
+     127: aconst_null
+     128: invokestatic  #450                // Method androidx/compose/ui/test/SemanticsNodeInteraction.fetchSemanticsNode$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;Ljava/lang/String;ILjava/lang/Object;)Landroidx/compose/ui/semantics/SemanticsNode;
+     131: astore        10
+     133: aload_0
+     134: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     137: invokevirtual #572                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.getActivity:()Landroidx/activity/ComponentActivity;
+     140: checkcast     #10                 // class com/cooper/lithic/app/MainActivity
+     143: invokevirtual #576                // Method com/cooper/lithic/app/MainActivity.getResources:()Landroid/content/res/Resources;
+     146: invokevirtual #582                // Method android/content/res/Resources.getConfiguration:()Landroid/content/res/Configuration;
+     149: getfield      #587                // Field android/content/res/Configuration.fontScale:F
+     152: fstore        11
+     154: aload_0
+     155: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     158: invokevirtual #572                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.getActivity:()Landroidx/activity/ComponentActivity;
+     161: checkcast     #10                 // class com/cooper/lithic/app/MainActivity
+     164: invokevirtual #591                // Method com/cooper/lithic/app/MainActivity.getContentResolver:()Landroid/content/ContentResolver;
+     167: ldc_w         #593                // String font_scale
+     170: invokestatic  #599                // Method android/provider/Settings$System.getString:(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+     173: astore        12
+     175: iconst_0
+     176: aload         6
+     178: invokevirtual #603                // Method androidx/compose/ui/text/TextLayoutResult.getLineCount:()I
+     181: invokestatic  #609                // Method kotlin/ranges/RangesKt.until:(II)Lkotlin/ranges/IntRange;
+     184: astore        13
+     186: aload         13
+     188: checkcast     #277                // class java/lang/Iterable
+     191: astore        15
+     193: iconst_0
+     194: istore        16
+     196: aload         15
+     198: instanceof    #359                // class java/util/Collection
+     201: ifeq          221
+     204: aload         15
+     206: checkcast     #359                // class java/util/Collection
+     209: invokeinterface #362,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+     214: ifeq          221
+     217: iconst_0
+     218: goto          272
+     221: aload         15
+     223: invokeinterface #281,  1          // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+     228: astore        17
+     230: aload         17
+     232: invokeinterface #287,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     237: ifeq          271
+     240: aload         17
+     242: checkcast     #611                // class kotlin/collections/IntIterator
+     245: invokevirtual #614                // Method kotlin/collections/IntIterator.nextInt:()I
+     248: istore        18
+     250: iload         18
+     252: istore        19
+     254: iconst_0
+     255: istore        20
+     257: aload         6
+     259: iload         19
+     261: invokevirtual #618                // Method androidx/compose/ui/text/TextLayoutResult.isLineEllipsized:(I)Z
+     264: ifeq          230
+     267: iconst_1
+     268: goto          272
+     271: iconst_0
+     272: istore        14
+     274: aload         6
+     276: invokevirtual #603                // Method androidx/compose/ui/text/TextLayoutResult.getLineCount:()I
+     279: ifle          298
+     282: aload         6
+     284: aload         6
+     286: invokevirtual #603                // Method androidx/compose/ui/text/TextLayoutResult.getLineCount:()I
+     289: iconst_1
+     290: isub
+     291: iconst_1
+     292: invokevirtual #622                // Method androidx/compose/ui/text/TextLayoutResult.getLineEnd:(IZ)I
+     295: goto          299
+     298: iconst_0
+     299: istore        15
+     301: aload         8
+     303: invokevirtual #625                // Method androidx/compose/ui/semantics/SemanticsNode.getBoundsInRoot:()Landroidx/compose/ui/geometry/Rect;
+     306: astore        16
+     308: aload         16
+     310: astore        18
+     312: iconst_0
+     313: istore        19
+     315: aload         18
+     317: invokevirtual #629                // Method androidx/compose/ui/geometry/Rect.getBottom:()F
+     320: aload         18
+     322: invokevirtual #632                // Method androidx/compose/ui/geometry/Rect.getTop:()F
+     325: fsub
+     326: fconst_1
+     327: fadd
+     328: aload         8
+     330: invokevirtual #456                // Method androidx/compose/ui/semantics/SemanticsNode."getSize-YbymL2g":()J
+     333: lstore        18
+     335: iconst_0
+     336: istore        20
+     338: lload         18
+     340: lstore        21
+     342: iconst_0
+     343: istore        23
+     345: lload         21
+     347: ldc2_w        #467                // long 4294967295l
+     350: land
+     351: l2i
+     352: nop
+     353: i2f
+     354: fcmpg
+     355: iflt          407
+     358: aload         16
+     360: astore        18
+     362: iconst_0
+     363: istore        19
+     365: aload         18
+     367: invokevirtual #635                // Method androidx/compose/ui/geometry/Rect.getRight:()F
+     370: aload         18
+     372: invokevirtual #638                // Method androidx/compose/ui/geometry/Rect.getLeft:()F
+     375: fsub
+     376: fconst_1
+     377: fadd
+     378: aload         8
+     380: invokevirtual #456                // Method androidx/compose/ui/semantics/SemanticsNode."getSize-YbymL2g":()J
+     383: lstore        18
+     385: iconst_0
+     386: istore        20
+     388: lload         18
+     390: lstore        21
+     392: iconst_0
+     393: istore        23
+     395: lload         21
+     397: bipush        32
+     399: lshr
+     400: l2i
+     401: nop
+     402: i2f
+     403: fcmpg
+     404: ifge          411
+     407: iconst_1
+     408: goto          412
+     411: iconst_0
+     412: istore        17
+     414: aload_0
+     415: ldc_w         #640                // String title-layout
+     418: aload_1
+     419: aload         7
+     421: aload         6
+     423: aload         13
+     425: iload         15
+     427: iload         14
+     429: aload         16
+     431: aload         8
+     433: aload         9
+     435: aload         10
+     437: iload         17
+     439: fload         11
+     441: aload         12
+     443: invokedynamic #648,  0            // InvokeDynamic #9:invoke:(Lcom/cooper/lithic/feature/appearance/LithicAppearance;Landroidx/compose/ui/text/TextLayoutInput;Landroidx/compose/ui/text/TextLayoutResult;Lkotlin/ranges/IntRange;IZLandroidx/compose/ui/geometry/Rect;Landroidx/compose/ui/semantics/SemanticsNode;Landroidx/compose/ui/geometry/Rect;Landroidx/compose/ui/semantics/SemanticsNode;ZFLjava/lang/String;)Lkotlin/jvm/functions/Function1;
+     448: invokespecial #210                // Method report:(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+     451: aload_1
+     452: invokevirtual #652                // Method com/cooper/lithic/feature/appearance/LithicAppearance.name:()Ljava/lang/String;
+     455: aload_0
+     456: getfield      #251                // Field expectedFontScale:F
+     459: invokedynamic #657,  0            // InvokeDynamic #10:makeConcatWithConstants:(Ljava/lang/String;F)Ljava/lang/String;
+     464: astore        18
+     466: iconst_4
+     467: anewarray     #332                // class kotlin/jvm/functions/Function0
+     470: astore        20
+     472: aload         20
+     474: iconst_0
+     475: aload_3
+     476: aload         7
+     478: invokedynamic #667,  0            // InvokeDynamic #11:invoke:(Ljava/lang/String;Landroidx/compose/ui/text/TextLayoutInput;)Lkotlin/jvm/functions/Function0;
+     483: aastore
+     484: aload         20
+     486: iconst_1
+     487: aload         18
+     489: aload         6
+     491: invokedynamic #675,  0            // InvokeDynamic #12:invoke:(Ljava/lang/String;Landroidx/compose/ui/text/TextLayoutResult;)Lkotlin/jvm/functions/Function0;
+     496: aastore
+     497: aload         20
+     499: iconst_2
+     500: aload         18
+     502: iload         17
+     504: invokedynamic #683,  0            // InvokeDynamic #13:invoke:(Ljava/lang/String;Z)Lkotlin/jvm/functions/Function0;
+     509: aastore
+     510: aload         20
+     512: iconst_3
+     513: aload         18
+     515: iload         14
+     517: aload         6
+     519: iload         15
+     521: aload_3
+     522: aload         7
+     524: invokedynamic #691,  0            // InvokeDynamic #14:invoke:(Ljava/lang/String;ZLandroidx/compose/ui/text/TextLayoutResult;ILjava/lang/String;Landroidx/compose/ui/text/TextLayoutInput;)Lkotlin/jvm/functions/Function0;
+     529: aastore
+     530: aload         20
+     532: invokestatic  #275                // Method kotlin/collections/CollectionsKt.listOf:([Ljava/lang/Object;)Ljava/util/List;
+     535: invokeinterface #692,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     540: astore        19
+     542: aload         19
+     544: invokeinterface #287,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     549: ifeq          574
+     552: aload         19
+     554: invokeinterface #290,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     559: checkcast     #332                // class kotlin/jvm/functions/Function0
+     562: astore        20
+     564: aload_0
+     565: aload_2
+     566: aload         20
+     568: invokespecial #336                // Method keepAssertionFailure:(Ljava/util/List;Lkotlin/jvm/functions/Function0;)V
+     571: goto          542
+     574: return
+
+  private final void keepAssertionFailure(java.util.List<java.lang.Throwable>, kotlin.jvm.functions.Function0<kotlin.Unit>);
+    Code:
+       0: nop
+       1: aload_2
+       2: invokeinterface #740,  1          // InterfaceMethod kotlin/jvm/functions/Function0.invoke:()Ljava/lang/Object;
+       7: pop
+       8: goto          23
+      11: astore_3
+      12: aload_1
+      13: checkcast     #359                // class java/util/Collection
+      16: aload_3
+      17: invokeinterface #744,  2          // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+      22: pop
+      23: return
+    Exception table:
+       from    to  target type
+           0     8    11   Class java/lang/AssertionError
+
+  private final void assertFinancialFacts();
+    Code:
+       0: aload_0
+       1: ldc_w         #748                // String project-detail-daily
+       4: invokespecial #355                // Method scrollTo:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+       7: iconst_1
+       8: anewarray     #236                // class java/lang/String
+      11: astore_1
+      12: aload_1
+      13: iconst_0
+      14: ldc_w         #750                // String ?9.92/��
+      17: aastore
+      18: aload_1
+      19: iconst_0
+      20: iconst_2
+      21: aconst_null
+      22: invokestatic  #520                // Method androidx/compose/ui/test/AssertionsKt.assertTextEquals$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;[Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      25: pop
+      26: aload_0
+      27: ldc_w         #752                // String project-detail-outlay
+      30: invokespecial #355                // Method scrollTo:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      33: iconst_1
+      34: anewarray     #236                // class java/lang/String
+      37: astore_1
+      38: aload_1
+      39: iconst_0
+      40: ldc_w         #754                // String ?50000.00
+      43: aastore
+      44: aload_1
+      45: iconst_0
+      46: iconst_2
+      47: aconst_null
+      48: invokestatic  #520                // Method androidx/compose/ui/test/AssertionsKt.assertTextEquals$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;[Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      51: pop
+      52: aload_0
+      53: ldc_w         #756                // String project-detail-recovery
+      56: invokespecial #355                // Method scrollTo:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      59: iconst_1
+      60: anewarray     #236                // class java/lang/String
+      63: astore_1
+      64: aload_1
+      65: iconst_0
+      66: ldc_w         #758                // String ?48799.68
+      69: aastore
+      70: aload_1
+      71: iconst_0
+      72: iconst_2
+      73: aconst_null
+      74: invokestatic  #520                // Method androidx/compose/ui/test/AssertionsKt.assertTextEquals$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;[Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      77: pop
+      78: aload_0
+      79: ldc_w         #351                // String project-detail-net
+      82: invokespecial #355                // Method scrollTo:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      85: iconst_1
+      86: anewarray     #236                // class java/lang/String
+      89: astore_1
+      90: aload_1
+      91: iconst_0
+      92: ldc_w         #760                // String ?1200.32
+      95: aastore
+      96: aload_1
+      97: iconst_0
+      98: iconst_2
+      99: aconst_null
+     100: invokestatic  #520                // Method androidx/compose/ui/test/AssertionsKt.assertTextEquals$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;[Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     103: pop
+     104: aload_0
+     105: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     108: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+     111: ldc_w         #306                // String project-detail-content
+     114: iconst_0
+     115: iconst_2
+     116: aconst_null
+     117: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     120: aconst_null
+     121: iconst_1
+     122: aconst_null
+     123: invokestatic  #450                // Method androidx/compose/ui/test/SemanticsNodeInteraction.fetchSemanticsNode$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;Ljava/lang/String;ILjava/lang/Object;)Landroidx/compose/ui/semantics/SemanticsNode;
+     126: invokevirtual #625                // Method androidx/compose/ui/semantics/SemanticsNode.getBoundsInRoot:()Landroidx/compose/ui/geometry/Rect;
+     129: astore_1
+     130: aload_0
+     131: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+     134: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+     137: ldc_w         #762                // String project-record-money
+     140: iconst_0
+     141: iconst_2
+     142: aconst_null
+     143: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     146: invokestatic  #441                // Method androidx/compose/ui/test/AssertionsKt.assertIsDisplayed:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     149: bipush        48
+     151: istore_3
+     152: iconst_0
+     153: istore        4
+     155: iload_3
+     156: i2f
+     157: invokestatic  #767                // Method androidx/compose/ui/unit/Dp."constructor-impl":(F)F
+     160: invokestatic  #773                // Method androidx/compose/ui/test/BoundsAssertionsKt."assertHeightIsAtLeast-3ABfNKs":(Landroidx/compose/ui/test/SemanticsNodeInteraction;F)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+     163: aconst_null
+     164: iconst_1
+     165: aconst_null
+     166: invokestatic  #450                // Method androidx/compose/ui/test/SemanticsNodeInteraction.fetchSemanticsNode$default:(Landroidx/compose/ui/test/SemanticsNodeInteraction;Ljava/lang/String;ILjava/lang/Object;)Landroidx/compose/ui/semantics/SemanticsNode;
+     169: invokevirtual #625                // Method androidx/compose/ui/semantics/SemanticsNode.getBoundsInRoot:()Landroidx/compose/ui/geometry/Rect;
+     172: astore_2
+     173: ldc_w         #775                // String Record action overlaps scrolling content
+     176: aload_1
+     177: invokevirtual #629                // Method androidx/compose/ui/geometry/Rect.getBottom:()F
+     180: aload_2
+     181: invokevirtual #632                // Method androidx/compose/ui/geometry/Rect.getTop:()F
+     184: fconst_1
+     185: fadd
+     186: fcmpg
+     187: ifgt          194
+     190: iconst_1
+     191: goto          195
+     194: iconst_0
+     195: invokestatic  #480                // Method org/junit/Assert.assertTrue:(Ljava/lang/String;Z)V
+     198: return
+
+  private final androidx.compose.ui.test.SemanticsNodeInteraction scrollTo(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+       4: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+       7: ldc_w         #306                // String project-detail-content
+      10: iconst_0
+      11: iconst_2
+      12: aconst_null
+      13: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      16: aload_1
+      17: invokestatic  #784                // Method androidx/compose/ui/test/FiltersKt.hasTestTag:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsMatcher;
+      20: invokestatic  #788                // Method androidx/compose/ui/test/ActionsKt.performScrollToNode:(Landroidx/compose/ui/test/SemanticsNodeInteraction;Landroidx/compose/ui/test/SemanticsMatcher;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      23: astore_2
+      24: iconst_0
+      25: istore_3
+      26: aload_0
+      27: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      30: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+      33: aload_1
+      34: iconst_0
+      35: iconst_2
+      36: aconst_null
+      37: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      40: nop
+      41: areturn
+
+  private final void backToHome();
+    Code:
+       0: invokestatic  #509                // Method androidx/test/espresso/Espresso.pressBack:()V
+       3: aload_0
+       4: ldc_w         #792                // String home-screen
+       7: invokespecial #180                // Method waitFor:(Ljava/lang/String;)V
+      10: aload_0
+      11: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      14: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+      17: ldc_w         #513                // String project-detail-screen
+      20: iconst_0
+      21: iconst_2
+      22: aconst_null
+      23: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      26: invokevirtual #485                // Method androidx/compose/ui/test/SemanticsNodeInteraction.assertDoesNotExist:()V
+      29: return
+
+  private final void waitFor(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+       4: ldc2_w        #135                // long 12000l
+       7: aload_0
+       8: aload_1
+       9: invokedynamic #800,  0            // InvokeDynamic #15:invoke:(Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;Ljava/lang/String;)Lkotlin/jvm/functions/Function0;
+      14: invokevirtual #153                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.waitUntil:(JLkotlin/jvm/functions/Function0;)V
+      17: return
+
+  private final void selectTheme(com.cooper.lithic.feature.appearance.LithicAppearance);
+    Code:
+       0: getstatic     #126                // Field com/cooper/lithic/feature/appearance/AppearanceProvider.INSTANCE:Lcom/cooper/lithic/feature/appearance/AppearanceProvider;
+       3: aload_0
+       4: invokespecial #130                // Method application:()Lcom/cooper/lithic/app/LithicApplication;
+       7: invokevirtual #134                // Method com/cooper/lithic/feature/appearance/AppearanceProvider.get:(Lcom/cooper/lithic/app/LithicApplication;)Lcom/cooper/lithic/feature/appearance/AppearanceController;
+      10: astore_2
+      11: aload_2
+      12: invokevirtual #159                // Method com/cooper/lithic/feature/appearance/AppearanceController.getState:()Lkotlinx/coroutines/flow/StateFlow;
+      15: invokeinterface #164,  1          // InterfaceMethod kotlinx/coroutines/flow/StateFlow.getValue:()Ljava/lang/Object;
+      20: checkcast     #166                // class com/cooper/lithic/feature/appearance/AppearanceUiState
+      23: invokevirtual #170                // Method com/cooper/lithic/feature/appearance/AppearanceUiState.getSelected:()Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+      26: aload_1
+      27: if_acmpeq     62
+      30: aload_0
+      31: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      34: aload_2
+      35: aload_1
+      36: invokedynamic #808,  0            // InvokeDynamic #16:invoke:(Lcom/cooper/lithic/feature/appearance/AppearanceController;Lcom/cooper/lithic/feature/appearance/LithicAppearance;)Lkotlin/jvm/functions/Function0;
+      41: invokevirtual #566                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.runOnIdle:(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+      44: pop
+      45: aload_0
+      46: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      49: ldc2_w        #135                // long 12000l
+      52: aload_2
+      53: aload_1
+      54: invokedynamic #814,  0            // InvokeDynamic #17:invoke:(Lcom/cooper/lithic/feature/appearance/AppearanceController;Lcom/cooper/lithic/feature/appearance/LithicAppearance;)Lkotlin/jvm/functions/Function0;
+      59: invokevirtual #153                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.waitUntil:(JLkotlin/jvm/functions/Function0;)V
+      62: return
+
+  private final void capture(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+       4: invokevirtual #818                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.waitForIdle:()V
+       7: aload_0
+       8: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      11: checkcast     #304                // class androidx/compose/ui/test/SemanticsNodeInteractionsProvider
+      14: ldc_w         #513                // String project-detail-screen
+      17: iconst_0
+      18: iconst_2
+      19: aconst_null
+      20: invokestatic  #312                // Method androidx/compose/ui/test/FindersKt.onNodeWithTag$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionsProvider;Ljava/lang/String;ZILjava/lang/Object;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      23: invokestatic  #441                // Method androidx/compose/ui/test/AssertionsKt.assertIsDisplayed:(Landroidx/compose/ui/test/SemanticsNodeInteraction;)Landroidx/compose/ui/test/SemanticsNodeInteraction;
+      26: pop
+      27: invokestatic  #824                // Method androidx/test/platform/app/InstrumentationRegistry.getInstrumentation:()Landroid/app/Instrumentation;
+      30: astore_2
+      31: aload_0
+      32: getfield      #827                // Field attemptId:Ljava/lang/String;
+      35: dup
+      36: ifnonnull     47
+      39: pop
+      40: ldc_w         #828                // String attemptId
+      43: invokestatic  #831                // Method kotlin/jvm/internal/Intrinsics.throwUninitializedPropertyAccessException:(Ljava/lang/String;)V
+      46: aconst_null
+      47: invokedynamic #834,  0            // InvokeDynamic #18:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      52: astore_3
+      53: new           #836                // class java/io/File
+      56: dup
+      57: aload_2
+      58: invokevirtual #842                // Method android/app/Instrumentation.getTargetContext:()Landroid/content/Context;
+      61: invokevirtual #848                // Method android/content/Context.getFilesDir:()Ljava/io/File;
+      64: aload_3
+      65: invokespecial #851                // Method java/io/File."<init>":(Ljava/io/File;Ljava/lang/String;)V
+      68: astore        4
+      70: aload         4
+      72: invokevirtual #854                // Method java/io/File.isDirectory:()Z
+      75: ifne          86
+      78: aload         4
+      80: invokevirtual #857                // Method java/io/File.mkdirs:()Z
+      83: ifeq          90
+      86: iconst_1
+      87: goto          91
+      90: iconst_0
+      91: ifne          105
+      94: new           #859                // class java/lang/IllegalStateException
+      97: dup
+      98: ldc_w         #861                // String Check failed.
+     101: invokespecial #863                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     104: athrow
+     105: new           #836                // class java/io/File
+     108: dup
+     109: aload         4
+     111: aload_1
+     112: invokedynamic #866,  0            // InvokeDynamic #19:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     117: invokespecial #851                // Method java/io/File."<init>":(Ljava/io/File;Ljava/lang/String;)V
+     120: astore        5
+     122: aload_2
+     123: invokevirtual #870                // Method android/app/Instrumentation.getUiAutomation:()Landroid/app/UiAutomation;
+     126: invokevirtual #876                // Method android/app/UiAutomation.takeScreenshot:()Landroid/graphics/Bitmap;
+     129: dup
+     130: ifnonnull     152
+     133: pop
+     134: ldc_w         #878                // String Required value was null.
+     137: astore        8
+     139: new           #880                // class java/lang/IllegalArgumentException
+     142: dup
+     143: aload         8
+     145: invokevirtual #883                // Method java/lang/Object.toString:()Ljava/lang/String;
+     148: invokespecial #884                // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+     151: athrow
+     152: astore        6
+     154: nop
+     155: aload         5
+     157: invokevirtual #887                // Method java/io/File.createNewFile:()Z
+     160: ifne          184
+     163: iconst_0
+     164: istore        8
+     166: ldc_w         #889                // String Refusing to overwrite the screenshot
+     169: astore        8
+     171: new           #859                // class java/lang/IllegalStateException
+     174: dup
+     175: aload         8
+     177: invokevirtual #883                // Method java/lang/Object.toString:()Ljava/lang/String;
+     180: invokespecial #863                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     183: athrow
+     184: new           #891                // class java/io/FileOutputStream
+     187: dup
+     188: aload         5
+     190: invokespecial #894                // Method java/io/FileOutputStream."<init>":(Ljava/io/File;)V
+     193: checkcast     #896                // class java/io/Closeable
+     196: astore        7
+     198: aconst_null
+     199: astore        8
+     201: nop
+     202: aload         7
+     204: checkcast     #891                // class java/io/FileOutputStream
+     207: astore        9
+     209: iconst_0
+     210: istore        10
+     212: aload         6
+     214: getstatic     #902                // Field android/graphics/Bitmap$CompressFormat.PNG:Landroid/graphics/Bitmap$CompressFormat;
+     217: bipush        100
+     219: aload         9
+     221: checkcast     #904                // class java/io/OutputStream
+     224: invokevirtual #910                // Method android/graphics/Bitmap.compress:(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+     227: ifne          241
+     230: new           #859                // class java/lang/IllegalStateException
+     233: dup
+     234: ldc_w         #861                // String Check failed.
+     237: invokespecial #863                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     240: athrow
+     241: aload         9
+     243: invokevirtual #914                // Method java/io/FileOutputStream.getFD:()Ljava/io/FileDescriptor;
+     246: invokevirtual #919                // Method java/io/FileDescriptor.sync:()V
+     249: nop
+     250: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+     253: astore        9
+     255: aload         7
+     257: aload         8
+     259: invokestatic  #930                // Method kotlin/io/CloseableKt.closeFinally:(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+     262: goto          286
+     265: astore        10
+     267: aload         10
+     269: astore        8
+     271: aload         10
+     273: athrow
+     274: astore        10
+     276: aload         7
+     278: aload         8
+     280: invokestatic  #930                // Method kotlin/io/CloseableKt.closeFinally:(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+     283: aload         10
+     285: athrow
+     286: aload         5
+     288: invokevirtual #933                // Method java/io/File.length:()J
+     291: lconst_0
+     292: lcmp
+     293: ifle          300
+     296: iconst_1
+     297: goto          301
+     300: iconst_0
+     301: ifne          315
+     304: new           #859                // class java/lang/IllegalStateException
+     307: dup
+     308: ldc_w         #861                // String Check failed.
+     311: invokespecial #863                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     314: athrow
+     315: aload_0
+     316: ldc_w         #935                // String screenshot
+     319: aload_3
+     320: aload         5
+     322: aload         6
+     324: aload_0
+     325: invokedynamic #943,  0            // InvokeDynamic #20:invoke:(Ljava/lang/String;Ljava/io/File;Landroid/graphics/Bitmap;Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;)Lkotlin/jvm/functions/Function1;
+     330: invokespecial #210                // Method report:(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+     333: aload         6
+     335: invokevirtual #946                // Method android/graphics/Bitmap.recycle:()V
+     338: goto          351
+     341: astore        7
+     343: aload         6
+     345: invokevirtual #946                // Method android/graphics/Bitmap.recycle:()V
+     348: aload         7
+     350: athrow
+     351: return
+    Exception table:
+       from    to  target type
+         201   255   265   Class java/lang/Throwable
+         201   255   274   any
+         265   274   274   any
+         274   276   274   any
+         154   333   341   any
+         341   343   341   any
+
+  private final void report(java.lang.String, kotlin.jvm.functions.Function1<? super android.os.Bundle, kotlin.Unit>);
+    Code:
+       0: invokestatic  #824                // Method androidx/test/platform/app/InstrumentationRegistry.getInstrumentation:()Landroid/app/Instrumentation;
+       3: iconst_2
+       4: new           #960                // class android/os/Bundle
+       7: dup
+       8: invokespecial #961                // Method android/os/Bundle."<init>":()V
+      11: astore_3
+      12: aload_3
+      13: astore        4
+      15: istore        7
+      17: astore        6
+      19: iconst_0
+      20: istore        5
+      22: aload         4
+      24: ldc_w         #963                // String projectDetailAcceptanceAttemptId
+      27: aload_0
+      28: getfield      #827                // Field attemptId:Ljava/lang/String;
+      31: dup
+      32: ifnonnull     43
+      35: pop
+      36: ldc_w         #828                // String attemptId
+      39: invokestatic  #831                // Method kotlin/jvm/internal/Intrinsics.throwUninitializedPropertyAccessException:(Ljava/lang/String;)V
+      42: aconst_null
+      43: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      46: aload         4
+      48: ldc_w         #969                // String projectDetailAcceptancePhase
+      51: aload_1
+      52: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      55: aload_2
+      56: aload         4
+      58: invokeinterface #973,  2          // InterfaceMethod kotlin/jvm/functions/Function1.invoke:(Ljava/lang/Object;)Ljava/lang/Object;
+      63: pop
+      64: nop
+      65: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      68: astore        8
+      70: aload         6
+      72: iload         7
+      74: aload_3
+      75: invokevirtual #977                // Method android/app/Instrumentation.sendStatus:(ILandroid/os/Bundle;)V
+      78: return
+
+  static void report$default(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest, java.lang.String, kotlin.jvm.functions.Function1, int, java.lang.Object);
+    Code:
+       0: iload_3
+       1: iconst_2
+       2: iand
+       3: ifeq          12
+       6: invokedynamic #990,  0            // InvokeDynamic #21:invoke:()Lkotlin/jvm/functions/Function1;
+      11: astore_2
+      12: aload_0
+      13: aload_1
+      14: aload_2
+      15: invokespecial #210                // Method report:(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+      18: return
+
+  private final com.cooper.lithic.app.LithicApplication application();
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+       4: invokevirtual #572                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.getActivity:()Landroidx/activity/ComponentActivity;
+       7: checkcast     #10                 // class com/cooper/lithic/app/MainActivity
+      10: invokevirtual #994                // Method com/cooper/lithic/app/MainActivity.getApplication:()Landroid/app/Application;
+      13: dup
+      14: ldc_w         #996                // String null cannot be cast to non-null type com.cooper.lithic.app.LithicApplication
+      17: invokestatic  #999                // Method kotlin/jvm/internal/Intrinsics.checkNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+      20: checkcast     #1001               // class com/cooper/lithic/app/LithicApplication
+      23: areturn
+
+  private static final org.junit.runners.model.Statement rules$lambda$0(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest, org.junit.runners.model.Statement, org.junit.runner.Description);
+    Code:
+       0: new           #1003               // class com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$rules$1$1
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: invokespecial #1006               // Method com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$rules$1$1."<init>":(Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;Lorg/junit/runners/model/Statement;)V
+       9: checkcast     #1008               // class org/junit/runners/model/Statement
+      12: areturn
+
+  private static final kotlin.Unit prepareFixture$lambda$0$0(java.lang.String, android.content.res.Configuration, android.os.Bundle);
+    Code:
+       0: aload_2
+       1: ldc_w         #1015               // String $this$report
+       4: invokestatic  #1018               // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       7: aload_2
+       8: ldc_w         #1020               // String projectDetailAcceptanceSystemFontScale
+      11: aload_0
+      12: dup
+      13: ifnonnull     20
+      16: pop
+      17: ldc_w         #1022               // String missing
+      20: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      23: aload_2
+      24: ldc_w         #1024               // String projectDetailAcceptanceScreenWidthDp
+      27: aload_1
+      28: getfield      #1027               // Field android/content/res/Configuration.screenWidthDp:I
+      31: invokevirtual #1031               // Method android/os/Bundle.putInt:(Ljava/lang/String;I)V
+      34: aload_2
+      35: ldc_w         #1033               // String projectDetailAcceptanceFontScale
+      38: aload_1
+      39: getfield      #587                // Field android/content/res/Configuration.fontScale:F
+      42: invokevirtual #1037               // Method android/os/Bundle.putFloat:(Ljava/lang/String;F)V
+      45: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      48: areturn
+
+  private static final void prepareFixture$lambda$0(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest, com.cooper.lithic.app.MainActivity);
+    Code:
+       0: aload_1
+       1: invokevirtual #576                // Method com/cooper/lithic/app/MainActivity.getResources:()Landroid/content/res/Resources;
+       4: invokevirtual #582                // Method android/content/res/Resources.getConfiguration:()Landroid/content/res/Configuration;
+       7: astore_2
+       8: aload_1
+       9: invokevirtual #591                // Method com/cooper/lithic/app/MainActivity.getContentResolver:()Landroid/content/ContentResolver;
+      12: ldc_w         #593                // String font_scale
+      15: invokestatic  #599                // Method android/provider/Settings$System.getString:(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
+      18: astore_3
+      19: aload_0
+      20: ldc_w         #1042               // String configuration
+      23: aload_3
+      24: aload_2
+      25: invokedynamic #1048,  0           // InvokeDynamic #22:invoke:(Ljava/lang/String;Landroid/content/res/Configuration;)Lkotlin/jvm/functions/Function1;
+      30: invokespecial #210                // Method report:(Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+      33: ldc_w         #1050               // String Actual Android screen width in dp
+      36: sipush        360
+      39: invokestatic  #1056               // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      42: aload_2
+      43: getfield      #1027               // Field android/content/res/Configuration.screenWidthDp:I
+      46: invokestatic  #1056               // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      49: invokestatic  #1060               // Method org/junit/Assert.assertEquals:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+      52: ldc_w         #1062               // String Actual Android font scale
+      55: aload_0
+      56: getfield      #251                // Field expectedFontScale:F
+      59: aload_2
+      60: getfield      #587                // Field android/content/res/Configuration.fontScale:F
+      63: ldc_w         #1063               // float 0.01f
+      66: invokestatic  #1066               // Method org/junit/Assert.assertEquals:(Ljava/lang/String;FFF)V
+      69: ldc_w         #1068               // String System font_scale must be set for this run
+      72: aload_0
+      73: getfield      #251                // Field expectedFontScale:F
+      76: aload_3
+      77: dup
+      78: ifnull        94
+      81: invokestatic  #1074               // Method kotlin/text/StringsKt.toFloatOrNull:(Ljava/lang/String;)Ljava/lang/Float;
+      84: dup
+      85: ifnull        94
+      88: invokevirtual #1079               // Method java/lang/Float.floatValue:()F
+      91: goto          98
+      94: pop
+      95: ldc_w         #1080               // float NaNf
+      98: ldc_w         #1063               // float 0.01f
+     101: invokestatic  #1066               // Method org/junit/Assert.assertEquals:(Ljava/lang/String;FFF)V
+     104: return
+
+  private static final boolean prepareFixture$lambda$1(com.cooper.lithic.feature.appearance.AppearanceController);
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method com/cooper/lithic/feature/appearance/AppearanceController.getState:()Lkotlinx/coroutines/flow/StateFlow;
+       4: invokeinterface #164,  1          // InterfaceMethod kotlinx/coroutines/flow/StateFlow.getValue:()Ljava/lang/Object;
+       9: checkcast     #166                // class com/cooper/lithic/feature/appearance/AppearanceUiState
+      12: invokevirtual #1086               // Method com/cooper/lithic/feature/appearance/AppearanceUiState.getReadable:()Z
+      15: ifeq          40
+      18: aload_0
+      19: invokevirtual #159                // Method com/cooper/lithic/feature/appearance/AppearanceController.getState:()Lkotlinx/coroutines/flow/StateFlow;
+      22: invokeinterface #164,  1          // InterfaceMethod kotlinx/coroutines/flow/StateFlow.getValue:()Ljava/lang/Object;
+      27: checkcast     #166                // class com/cooper/lithic/feature/appearance/AppearanceUiState
+      30: invokevirtual #1089               // Method com/cooper/lithic/feature/appearance/AppearanceUiState.getLoading:()Z
+      33: ifne          40
+      36: iconst_1
+      37: goto          41
+      40: iconst_0
+      41: ireturn
+
+  private static final kotlin.Unit releaseFixture$lambda$0(android.os.Bundle);
+    Code:
+       0: aload_0
+       1: ldc_w         #1015               // String $this$report
+       4: invokestatic  #1018               // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       7: aload_0
+       8: ldc_w         #1092               // String projectDetailAcceptanceFixtureCleanup
+      11: ldc_w         #1094               // String PASS
+      14: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      17: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      20: areturn
+
+  private static final java.lang.CharSequence production_composable_gallery_uses_system_configuration$lambda$1(java.lang.Throwable);
+    Code:
+       0: aload_0
+       1: ldc_w         #1096               // String it
+       4: invokestatic  #1018               // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       7: aload_0
+       8: invokevirtual #1099               // Method java/lang/Throwable.getMessage:()Ljava/lang/String;
+      11: dup
+      12: ifnonnull     19
+      15: pop
+      16: ldc_w         #1101               // String
+      19: checkcast     #368                // class java/lang/CharSequence
+      22: areturn
+
+  private static final java.lang.CharSequence checkTitle$lambda$2$0(androidx.compose.ui.text.TextLayoutResult, int);
+    Code:
+       0: aload_0
+       1: invokevirtual #1107               // Method androidx/compose/ui/text/TextLayoutResult.getMultiParagraph:()Landroidx/compose/ui/text/MultiParagraph;
+       4: iload_1
+       5: invokevirtual #1113               // Method androidx/compose/ui/text/MultiParagraph.getLineWidth:(I)F
+       8: invokestatic  #1116               // Method java/lang/String.valueOf:(F)Ljava/lang/String;
+      11: checkcast     #368                // class java/lang/CharSequence
+      14: areturn
+
+  private static final java.lang.CharSequence checkTitle$lambda$2$1(androidx.compose.ui.text.TextLayoutResult, int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokevirtual #1121               // Method androidx/compose/ui/text/TextLayoutResult.getLineBottom:(I)F
+       5: invokestatic  #1116               // Method java/lang/String.valueOf:(F)Ljava/lang/String;
+       8: checkcast     #368                // class java/lang/CharSequence
+      11: areturn
+
+  private static final java.lang.CharSequence checkTitle$lambda$2$2(androidx.compose.ui.text.TextLayoutResult, int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokevirtual #1126               // Method androidx/compose/ui/text/TextLayoutResult.getBoundingBox:(I)Landroidx/compose/ui/geometry/Rect;
+       5: invokevirtual #1127               // Method androidx/compose/ui/geometry/Rect.toString:()Ljava/lang/String;
+       8: checkcast     #368                // class java/lang/CharSequence
+      11: areturn
+
+  private static final kotlin.Unit checkTitle$lambda$0(java.util.List, kotlin.jvm.functions.Function1);
+    Code:
+       0: aload_1
+       1: ldc_w         #1096               // String it
+       4: invokestatic  #1018               // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       7: aload_1
+       8: aload_0
+       9: invokeinterface #973,  2          // InterfaceMethod kotlin/jvm/functions/Function1.invoke:(Ljava/lang/Object;)Ljava/lang/Object;
+      14: pop
+      15: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      18: areturn
+
+  private static final androidx.compose.ui.geometry.Rect checkTitle$lambda$1(androidx.compose.ui.semantics.SemanticsNode);
+    Code:
+       0: aload_0
+       1: invokevirtual #1132               // Method androidx/compose/ui/semantics/SemanticsNode.getLayoutInfo:()Landroidx/compose/ui/layout/LayoutInfo;
+       4: invokeinterface #1137,  1         // InterfaceMethod androidx/compose/ui/layout/LayoutInfo.getParentInfo:()Landroidx/compose/ui/layout/LayoutInfo;
+       9: dup
+      10: ifnull        51
+      13: invokeinterface #1141,  1         // InterfaceMethod androidx/compose/ui/layout/LayoutInfo.getCoordinates:()Landroidx/compose/ui/layout/LayoutCoordinates;
+      18: dup
+      19: ifnull        51
+      22: astore_1
+      23: aload_1
+      24: astore_2
+      25: iconst_0
+      26: istore_3
+      27: aload_2
+      28: invokeinterface #1146,  1         // InterfaceMethod androidx/compose/ui/layout/LayoutCoordinates.isAttached:()Z
+      33: ifeq          40
+      36: aload_1
+      37: goto          41
+      40: aconst_null
+      41: dup
+      42: ifnull        51
+      45: invokestatic  #1152               // Method androidx/compose/ui/layout/LayoutCoordinatesKt.boundsInRoot:(Landroidx/compose/ui/layout/LayoutCoordinates;)Landroidx/compose/ui/geometry/Rect;
+      48: goto          53
+      51: pop
+      52: aconst_null
+      53: areturn
+
+  private static final kotlin.Unit checkTitle$lambda$2(com.cooper.lithic.feature.appearance.LithicAppearance, androidx.compose.ui.text.TextLayoutInput, androidx.compose.ui.text.TextLayoutResult, kotlin.ranges.IntRange, int, boolean, androidx.compose.ui.geometry.Rect, androidx.compose.ui.semantics.SemanticsNode, androidx.compose.ui.geometry.Rect, androidx.compose.ui.semantics.SemanticsNode, boolean, float, java.lang.String, android.os.Bundle);
+    Code:
+       0: aload         13
+       2: ldc_w         #1015               // String $this$report
+       5: invokestatic  #1018               // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       8: aload         13
+      10: ldc_w         #1157               // String projectDetailAcceptanceTitleTheme
+      13: aload_0
+      14: invokevirtual #652                // Method com/cooper/lithic/feature/appearance/LithicAppearance.name:()Ljava/lang/String;
+      17: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      20: aload         13
+      22: ldc_w         #1159               // String projectDetailAcceptanceTitleText
+      25: aload_1
+      26: invokevirtual #1163               // Method androidx/compose/ui/text/TextLayoutInput.getText:()Landroidx/compose/ui/text/AnnotatedString;
+      29: invokevirtual #1167               // Method androidx/compose/ui/text/AnnotatedString.getText:()Ljava/lang/String;
+      32: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      35: aload         13
+      37: ldc_w         #1169               // String projectDetailAcceptanceTitleSizePx
+      40: aload_2
+      41: invokevirtual #1170               // Method androidx/compose/ui/text/TextLayoutResult."getSize-YbymL2g":()J
+      44: invokestatic  #462                // Method androidx/compose/ui/unit/IntSize."toString-impl":(J)Ljava/lang/String;
+      47: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      50: aload         13
+      52: ldc_w         #1172               // String projectDetailAcceptanceTitleConstraintsPx
+      55: aload_1
+      56: invokevirtual #1175               // Method androidx/compose/ui/text/TextLayoutInput."getConstraints-msEJaDk":()J
+      59: invokestatic  #1178               // Method androidx/compose/ui/unit/Constraints."toString-impl":(J)Ljava/lang/String;
+      62: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      65: aload         13
+      67: ldc_w         #1180               // String projectDetailAcceptanceTitleParagraphWidthPx
+      70: aload_2
+      71: invokevirtual #1107               // Method androidx/compose/ui/text/TextLayoutResult.getMultiParagraph:()Landroidx/compose/ui/text/MultiParagraph;
+      74: invokevirtual #1183               // Method androidx/compose/ui/text/MultiParagraph.getWidth:()F
+      77: invokevirtual #1037               // Method android/os/Bundle.putFloat:(Ljava/lang/String;F)V
+      80: aload         13
+      82: ldc_w         #1185               // String projectDetailAcceptanceTitleParagraphHeightPx
+      85: aload_2
+      86: invokevirtual #1107               // Method androidx/compose/ui/text/TextLayoutResult.getMultiParagraph:()Landroidx/compose/ui/text/MultiParagraph;
+      89: invokevirtual #1188               // Method androidx/compose/ui/text/MultiParagraph.getHeight:()F
+      92: invokevirtual #1037               // Method android/os/Bundle.putFloat:(Ljava/lang/String;F)V
+      95: aload         13
+      97: ldc_w         #1190               // String projectDetailAcceptanceTitleOverflowWidth
+     100: aload_2
+     101: invokevirtual #1193               // Method androidx/compose/ui/text/TextLayoutResult.getDidOverflowWidth:()Z
+     104: invokevirtual #1196               // Method android/os/Bundle.putBoolean:(Ljava/lang/String;Z)V
+     107: aload         13
+     109: ldc_w         #1198               // String projectDetailAcceptanceTitleOverflowHeight
+     112: aload_2
+     113: invokevirtual #1201               // Method androidx/compose/ui/text/TextLayoutResult.getDidOverflowHeight:()Z
+     116: invokevirtual #1196               // Method android/os/Bundle.putBoolean:(Ljava/lang/String;Z)V
+     119: aload         13
+     121: ldc_w         #1203               // String projectDetailAcceptanceTitleVisualOverflow
+     124: aload_2
+     125: invokevirtual #1206               // Method androidx/compose/ui/text/TextLayoutResult.getHasVisualOverflow:()Z
+     128: invokevirtual #1196               // Method android/os/Bundle.putBoolean:(Ljava/lang/String;Z)V
+     131: aload         13
+     133: ldc_w         #1208               // String projectDetailAcceptanceTitleExceededMaxLines
+     136: aload_2
+     137: invokevirtual #1107               // Method androidx/compose/ui/text/TextLayoutResult.getMultiParagraph:()Landroidx/compose/ui/text/MultiParagraph;
+     140: invokevirtual #1211               // Method androidx/compose/ui/text/MultiParagraph.getDidExceedMaxLines:()Z
+     143: invokevirtual #1196               // Method android/os/Bundle.putBoolean:(Ljava/lang/String;Z)V
+     146: aload         13
+     148: ldc_w         #1213               // String projectDetailAcceptanceTitleLineCount
+     151: aload_2
+     152: invokevirtual #603                // Method androidx/compose/ui/text/TextLayoutResult.getLineCount:()I
+     155: invokevirtual #1031               // Method android/os/Bundle.putInt:(Ljava/lang/String;I)V
+     158: aload         13
+     160: ldc_w         #1215               // String projectDetailAcceptanceTitleLineWidthsPx
+     163: aload_3
+     164: checkcast     #277                // class java/lang/Iterable
+     167: ldc_w         #1217               // String ,
+     170: checkcast     #368                // class java/lang/CharSequence
+     173: aconst_null
+     174: aconst_null
+     175: iconst_0
+     176: aconst_null
+     177: aload_2
+     178: invokedynamic #1225,  0           // InvokeDynamic #23:invoke:(Landroidx/compose/ui/text/TextLayoutResult;)Lkotlin/jvm/functions/Function1;
+     183: bipush        30
+     185: aconst_null
+     186: invokestatic  #379                // Method kotlin/collections/CollectionsKt.joinToString$default:(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+     189: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     192: aload         13
+     194: ldc_w         #1227               // String projectDetailAcceptanceTitleLineBottomsPx
+     197: aload_3
+     198: checkcast     #277                // class java/lang/Iterable
+     201: ldc_w         #1217               // String ,
+     204: checkcast     #368                // class java/lang/CharSequence
+     207: aconst_null
+     208: aconst_null
+     209: iconst_0
+     210: aconst_null
+     211: aload_2
+     212: invokedynamic #1231,  0           // InvokeDynamic #24:invoke:(Landroidx/compose/ui/text/TextLayoutResult;)Lkotlin/jvm/functions/Function1;
+     217: bipush        30
+     219: aconst_null
+     220: invokestatic  #379                // Method kotlin/collections/CollectionsKt.joinToString$default:(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+     223: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     226: aload         13
+     228: ldc_w         #1233               // String projectDetailAcceptanceTitleGlyphBoundsPx
+     231: aload_1
+     232: invokevirtual #1163               // Method androidx/compose/ui/text/TextLayoutInput.getText:()Landroidx/compose/ui/text/AnnotatedString;
+     235: checkcast     #368                // class java/lang/CharSequence
+     238: invokestatic  #1237               // Method kotlin/text/StringsKt.getIndices:(Ljava/lang/CharSequence;)Lkotlin/ranges/IntRange;
+     241: checkcast     #277                // class java/lang/Iterable
+     244: ldc_w         #1239               // String ;
+     247: checkcast     #368                // class java/lang/CharSequence
+     250: aconst_null
+     251: aconst_null
+     252: iconst_0
+     253: aconst_null
+     254: aload_2
+     255: invokedynamic #1243,  0           // InvokeDynamic #25:invoke:(Landroidx/compose/ui/text/TextLayoutResult;)Lkotlin/jvm/functions/Function1;
+     260: bipush        30
+     262: aconst_null
+     263: invokestatic  #379                // Method kotlin/collections/CollectionsKt.joinToString$default:(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+     266: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     269: aload         13
+     271: ldc_w         #1245               // String projectDetailAcceptanceTitleVisibleEnd
+     274: iload         4
+     276: invokevirtual #1031               // Method android/os/Bundle.putInt:(Ljava/lang/String;I)V
+     279: aload         13
+     281: ldc_w         #1247               // String projectDetailAcceptanceTitleEllipsized
+     284: iload         5
+     286: invokevirtual #1196               // Method android/os/Bundle.putBoolean:(Ljava/lang/String;Z)V
+     289: aload         13
+     291: ldc_w         #1249               // String projectDetailAcceptanceTitleOverflowPolicy
+     294: aload_1
+     295: invokevirtual #1252               // Method androidx/compose/ui/text/TextLayoutInput."getOverflow-gIe3tQ8":()I
+     298: invokestatic  #1257               // Method androidx/compose/ui/text/style/TextOverflow."toString-impl":(I)Ljava/lang/String;
+     301: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     304: aload         13
+     306: ldc_w         #1259               // String projectDetailAcceptanceTitleMaxLines
+     309: aload_1
+     310: invokevirtual #1262               // Method androidx/compose/ui/text/TextLayoutInput.getMaxLines:()I
+     313: invokevirtual #1031               // Method android/os/Bundle.putInt:(Ljava/lang/String;I)V
+     316: aload         13
+     318: ldc_w         #1264               // String projectDetailAcceptanceTitleBoundsInRootPx
+     321: aload         6
+     323: invokevirtual #1127               // Method androidx/compose/ui/geometry/Rect.toString:()Ljava/lang/String;
+     326: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     329: aload         13
+     331: ldc_w         #1266               // String projectDetailAcceptanceTitleNodeSizePx
+     334: aload         7
+     336: invokevirtual #456                // Method androidx/compose/ui/semantics/SemanticsNode."getSize-YbymL2g":()J
+     339: invokestatic  #462                // Method androidx/compose/ui/unit/IntSize."toString-impl":(J)Ljava/lang/String;
+     342: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     345: aload         13
+     347: ldc_w         #1268               // String projectDetailAcceptanceTitleParentBoundsInRootPx
+     350: aload         8
+     352: invokestatic  #1271               // Method java/lang/String.valueOf:(Ljava/lang/Object;)Ljava/lang/String;
+     355: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     358: aload         13
+     360: ldc_w         #1273               // String projectDetailAcceptanceTitleViewportBoundsInRootPx
+     363: aload         9
+     365: invokevirtual #625                // Method androidx/compose/ui/semantics/SemanticsNode.getBoundsInRoot:()Landroidx/compose/ui/geometry/Rect;
+     368: invokevirtual #1127               // Method androidx/compose/ui/geometry/Rect.toString:()Ljava/lang/String;
+     371: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     374: aload         13
+     376: ldc_w         #1275               // String projectDetailAcceptanceTitleNodeClips
+     379: iload         10
+     381: invokevirtual #1196               // Method android/os/Bundle.putBoolean:(Ljava/lang/String;Z)V
+     384: aload         13
+     386: ldc_w         #1277               // String projectDetailAcceptanceTitleDensityFontScale
+     389: aload_1
+     390: invokevirtual #1281               // Method androidx/compose/ui/text/TextLayoutInput.getDensity:()Landroidx/compose/ui/unit/Density;
+     393: invokeinterface #1286,  1         // InterfaceMethod androidx/compose/ui/unit/Density.getFontScale:()F
+     398: invokevirtual #1037               // Method android/os/Bundle.putFloat:(Ljava/lang/String;F)V
+     401: aload         13
+     403: ldc_w         #1288               // String projectDetailAcceptanceTitleFontScale
+     406: fload         11
+     408: invokevirtual #1037               // Method android/os/Bundle.putFloat:(Ljava/lang/String;F)V
+     411: aload         13
+     413: ldc_w         #1290               // String projectDetailAcceptanceTitleSystemFontScale
+     416: aload         12
+     418: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     421: aload         13
+     423: ldc_w         #1292               // String projectDetailAcceptanceTitleFontSize
+     426: aload_1
+     427: invokevirtual #1296               // Method androidx/compose/ui/text/TextLayoutInput.getStyle:()Landroidx/compose/ui/text/TextStyle;
+     430: invokevirtual #1301               // Method androidx/compose/ui/text/TextStyle."getFontSize-XSAIIZE":()J
+     433: invokestatic  #1304               // Method androidx/compose/ui/unit/TextUnit."toString-impl":(J)Ljava/lang/String;
+     436: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     439: aload         13
+     441: ldc_w         #1306               // String projectDetailAcceptanceTitleLineHeight
+     444: aload_1
+     445: invokevirtual #1296               // Method androidx/compose/ui/text/TextLayoutInput.getStyle:()Landroidx/compose/ui/text/TextStyle;
+     448: invokevirtual #1309               // Method androidx/compose/ui/text/TextStyle."getLineHeight-XSAIIZE":()J
+     451: invokestatic  #1304               // Method androidx/compose/ui/unit/TextUnit."toString-impl":(J)Ljava/lang/String;
+     454: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+     457: aload_1
+     458: invokevirtual #1281               // Method androidx/compose/ui/text/TextLayoutInput.getDensity:()Landroidx/compose/ui/unit/Density;
+     461: astore        14
+     463: iconst_0
+     464: istore        15
+     466: aload         13
+     468: ldc_w         #1311               // String projectDetailAcceptanceTitleFontSizePx
+     471: aload         14
+     473: aload_1
+     474: invokevirtual #1296               // Method androidx/compose/ui/text/TextLayoutInput.getStyle:()Landroidx/compose/ui/text/TextStyle;
+     477: invokevirtual #1301               // Method androidx/compose/ui/text/TextStyle."getFontSize-XSAIIZE":()J
+     480: invokeinterface #1315,  3         // InterfaceMethod androidx/compose/ui/unit/Density."toPx--R2X_6o":(J)F
+     485: invokevirtual #1037               // Method android/os/Bundle.putFloat:(Ljava/lang/String;F)V
+     488: aload         13
+     490: ldc_w         #1317               // String projectDetailAcceptanceTitleLineHeightPx
+     493: aload         14
+     495: aload_1
+     496: invokevirtual #1296               // Method androidx/compose/ui/text/TextLayoutInput.getStyle:()Landroidx/compose/ui/text/TextStyle;
+     499: invokevirtual #1309               // Method androidx/compose/ui/text/TextStyle."getLineHeight-XSAIIZE":()J
+     502: invokeinterface #1315,  3         // InterfaceMethod androidx/compose/ui/unit/Density."toPx--R2X_6o":(J)F
+     507: invokevirtual #1037               // Method android/os/Bundle.putFloat:(Ljava/lang/String;F)V
+     510: nop
+     511: nop
+     512: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+     515: areturn
+
+  private static final kotlin.Unit checkTitle$lambda$3(java.lang.String, androidx.compose.ui.text.TextLayoutInput);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #1163               // Method androidx/compose/ui/text/TextLayoutInput.getText:()Landroidx/compose/ui/text/AnnotatedString;
+       5: invokevirtual #1167               // Method androidx/compose/ui/text/AnnotatedString.getText:()Ljava/lang/String;
+       8: invokestatic  #1334               // Method org/junit/Assert.assertEquals:(Ljava/lang/Object;Ljava/lang/Object;)V
+      11: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      14: areturn
+
+  private static final kotlin.Unit checkTitle$lambda$4(java.lang.String, androidx.compose.ui.text.TextLayoutResult);
+    Code:
+       0: aload_0
+       1: invokedynamic #1338,  0           // InvokeDynamic #26:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: aload_1
+       7: invokevirtual #1206               // Method androidx/compose/ui/text/TextLayoutResult.getHasVisualOverflow:()Z
+      10: invokestatic  #1341               // Method org/junit/Assert.assertFalse:(Ljava/lang/String;Z)V
+      13: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      16: areturn
+
+  private static final kotlin.Unit checkTitle$lambda$5(java.lang.String, boolean);
+    Code:
+       0: aload_0
+       1: invokedynamic #1345,  0           // InvokeDynamic #27:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: iload_1
+       7: ifne          14
+      10: iconst_1
+      11: goto          15
+      14: iconst_0
+      15: invokestatic  #480                // Method org/junit/Assert.assertTrue:(Ljava/lang/String;Z)V
+      18: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      21: areturn
+
+  private static final kotlin.Unit checkTitle$lambda$6(java.lang.String, boolean, androidx.compose.ui.text.TextLayoutResult, int, java.lang.String, androidx.compose.ui.text.TextLayoutInput);
+    Code:
+       0: aload_0
+       1: invokedynamic #1348,  0           // InvokeDynamic #28:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: iload_1
+       7: ifne          50
+      10: aload_2
+      11: invokevirtual #1107               // Method androidx/compose/ui/text/TextLayoutResult.getMultiParagraph:()Landroidx/compose/ui/text/MultiParagraph;
+      14: invokevirtual #1211               // Method androidx/compose/ui/text/MultiParagraph.getDidExceedMaxLines:()Z
+      17: ifne          50
+      20: iload_3
+      21: aload         4
+      23: invokevirtual #1350               // Method java/lang/String.length:()I
+      26: if_icmpne     50
+      29: aload         5
+      31: invokevirtual #1252               // Method androidx/compose/ui/text/TextLayoutInput."getOverflow-gIe3tQ8":()I
+      34: getstatic     #1354               // Field androidx/compose/ui/text/style/TextOverflow.Companion:Landroidx/compose/ui/text/style/TextOverflow$Companion;
+      37: invokevirtual #1359               // Method androidx/compose/ui/text/style/TextOverflow$Companion."getEllipsis-gIe3tQ8":()I
+      40: invokestatic  #1363               // Method androidx/compose/ui/text/style/TextOverflow."equals-impl0":(II)Z
+      43: ifne          50
+      46: iconst_1
+      47: goto          51
+      50: iconst_0
+      51: invokestatic  #480                // Method org/junit/Assert.assertTrue:(Ljava/lang/String;Z)V
+      54: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      57: areturn
+
+  private static final boolean waitFor$lambda$0(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest, java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+       4: aload_1
+       5: invokestatic  #784                // Method androidx/compose/ui/test/FiltersKt.hasTestTag:(Ljava/lang/String;)Landroidx/compose/ui/test/SemanticsMatcher;
+       8: iconst_1
+       9: invokevirtual #1367               // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.onAllNodes:(Landroidx/compose/ui/test/SemanticsMatcher;Z)Landroidx/compose/ui/test/SemanticsNodeInteractionCollection;
+      12: iconst_0
+      13: aconst_null
+      14: iconst_3
+      15: aconst_null
+      16: invokestatic  #1373               // Method androidx/compose/ui/test/SemanticsNodeInteractionCollection.fetchSemanticsNodes$default:(Landroidx/compose/ui/test/SemanticsNodeInteractionCollection;ZLjava/lang/String;ILjava/lang/Object;)Ljava/util/List;
+      19: checkcast     #359                // class java/util/Collection
+      22: invokeinterface #362,  1          // InterfaceMethod java/util/Collection.isEmpty:()Z
+      27: ifne          34
+      30: iconst_1
+      31: goto          35
+      34: iconst_0
+      35: ireturn
+
+  private static final kotlin.Unit selectTheme$lambda$0(com.cooper.lithic.feature.appearance.AppearanceController, com.cooper.lithic.feature.appearance.LithicAppearance);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #1377               // Method com/cooper/lithic/feature/appearance/AppearanceController.select:(Lcom/cooper/lithic/feature/appearance/LithicAppearance;)V
+       5: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+       8: areturn
+
+  private static final boolean selectTheme$lambda$1(com.cooper.lithic.feature.appearance.AppearanceController, com.cooper.lithic.feature.appearance.LithicAppearance);
+    Code:
+       0: aload_0
+       1: invokevirtual #159                // Method com/cooper/lithic/feature/appearance/AppearanceController.getState:()Lkotlinx/coroutines/flow/StateFlow;
+       4: invokeinterface #164,  1          // InterfaceMethod kotlinx/coroutines/flow/StateFlow.getValue:()Ljava/lang/Object;
+       9: checkcast     #166                // class com/cooper/lithic/feature/appearance/AppearanceUiState
+      12: astore_2
+      13: iconst_0
+      14: istore_3
+      15: aload_2
+      16: invokevirtual #170                // Method com/cooper/lithic/feature/appearance/AppearanceUiState.getSelected:()Lcom/cooper/lithic/feature/appearance/LithicAppearance;
+      19: aload_1
+      20: if_acmpne     48
+      23: aload_2
+      24: invokevirtual #1086               // Method com/cooper/lithic/feature/appearance/AppearanceUiState.getReadable:()Z
+      27: ifeq          48
+      30: aload_2
+      31: invokevirtual #1381               // Method com/cooper/lithic/feature/appearance/AppearanceUiState.getSaving:()Z
+      34: ifne          48
+      37: aload_2
+      38: invokevirtual #1384               // Method com/cooper/lithic/feature/appearance/AppearanceUiState.getError:()Ljava/lang/String;
+      41: ifnonnull     48
+      44: iconst_1
+      45: goto          49
+      48: iconst_0
+      49: nop
+      50: ireturn
+
+  private static final kotlin.Unit capture$lambda$2(java.lang.String, java.io.File, android.graphics.Bitmap, com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest, android.os.Bundle);
+    Code:
+       0: aload         4
+       2: ldc_w         #1015               // String $this$report
+       5: invokestatic  #1018               // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       8: aload         4
+      10: ldc_w         #1388               // String projectDetailAcceptancePng
+      13: aload_0
+      14: aload_1
+      15: invokevirtual #1391               // Method java/io/File.getName:()Ljava/lang/String;
+      18: invokedynamic #1396,  0           // InvokeDynamic #29:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      23: invokevirtual #967                // Method android/os/Bundle.putString:(Ljava/lang/String;Ljava/lang/String;)V
+      26: aload         4
+      28: ldc_w         #1398               // String projectDetailAcceptanceWidthPx
+      31: aload_2
+      32: invokevirtual #1400               // Method android/graphics/Bitmap.getWidth:()I
+      35: invokevirtual #1031               // Method android/os/Bundle.putInt:(Ljava/lang/String;I)V
+      38: aload         4
+      40: ldc_w         #1402               // String projectDetailAcceptanceHeightPx
+      43: aload_2
+      44: invokevirtual #1404               // Method android/graphics/Bitmap.getHeight:()I
+      47: invokevirtual #1031               // Method android/os/Bundle.putInt:(Ljava/lang/String;I)V
+      50: aload         4
+      52: ldc_w         #1024               // String projectDetailAcceptanceScreenWidthDp
+      55: aload_3
+      56: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      59: invokevirtual #572                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.getActivity:()Landroidx/activity/ComponentActivity;
+      62: checkcast     #10                 // class com/cooper/lithic/app/MainActivity
+      65: invokevirtual #576                // Method com/cooper/lithic/app/MainActivity.getResources:()Landroid/content/res/Resources;
+      68: invokevirtual #582                // Method android/content/res/Resources.getConfiguration:()Landroid/content/res/Configuration;
+      71: getfield      #1027               // Field android/content/res/Configuration.screenWidthDp:I
+      74: invokevirtual #1031               // Method android/os/Bundle.putInt:(Ljava/lang/String;I)V
+      77: aload         4
+      79: ldc_w         #1033               // String projectDetailAcceptanceFontScale
+      82: aload_3
+      83: getfield      #20                 // Field compose:Landroidx/compose/ui/test/junit4/AndroidComposeTestRule;
+      86: invokevirtual #572                // Method androidx/compose/ui/test/junit4/AndroidComposeTestRule.getActivity:()Landroidx/activity/ComponentActivity;
+      89: checkcast     #10                 // class com/cooper/lithic/app/MainActivity
+      92: invokevirtual #576                // Method com/cooper/lithic/app/MainActivity.getResources:()Landroid/content/res/Resources;
+      95: invokevirtual #582                // Method android/content/res/Resources.getConfiguration:()Landroid/content/res/Configuration;
+      98: getfield      #587                // Field android/content/res/Configuration.fontScale:F
+     101: invokevirtual #1037               // Method android/os/Bundle.putFloat:(Ljava/lang/String;F)V
+     104: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+     107: areturn
+
+  private static final kotlin.Unit report$lambda$0(android.os.Bundle);
+    Code:
+       0: aload_0
+       1: ldc_w         #1409               // String <this>
+       4: invokestatic  #1018               // Method kotlin/jvm/internal/Intrinsics.checkNotNullParameter:(Ljava/lang/Object;Ljava/lang/String;)V
+       7: getstatic     #924                // Field kotlin/Unit.INSTANCE:Lkotlin/Unit;
+      10: areturn
+
+  public static final com.cooper.lithic.app.LithicApplication access$application(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest);
+    Code:
+       0: aload_0
+       1: invokespecial #130                // Method application:()Lcom/cooper/lithic/app/LithicApplication;
+       4: areturn
+
+  public static final java.lang.String access$getAttemptId$p(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest);
+    Code:
+       0: aload_0
+       1: getfield      #827                // Field attemptId:Ljava/lang/String;
+       4: areturn
+
+  public static final com.cooper.lithic.ui.HomeAndroidAcceptanceFixture$Session access$getFixture$p(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest);
+    Code:
+       0: aload_0
+       1: getfield      #120                // Field fixture:Lcom/cooper/lithic/ui/HomeAndroidAcceptanceFixture$Session;
+       4: areturn
+
+  public static final void access$assertFinancialFacts(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest);
+    Code:
+       0: aload_0
+       1: invokespecial #1420               // Method assertFinancialFacts:()V
+       4: return
+
+  public static final void access$setAttemptId$p(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #827                // Field attemptId:Ljava/lang/String;
+       5: return
+
+  public static final void access$setExpectedFontScale$p(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest, float);
+    Code:
+       0: aload_0
+       1: fload_1
+       2: putfield      #251                // Field expectedFontScale:F
+       5: return
+
+  public static final float access$getExpectedFontScale$p(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest);
+    Code:
+       0: aload_0
+       1: getfield      #251                // Field expectedFontScale:F
+       4: freturn
+
+  static {};
+    Code:
+       0: bipush        8
+       2: putstatic     #1431               // Field $stable:I
+       5: return
+}
+
+{
+  "app-debug.apk": {
+    "bytes": 21224212,
+    "sha256": "8f638588cb738f8eec949bfb758b72285f29056fa2747a6601ad077530fcc9c5",
+    "certificate": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "package": "com.cooper.lithic.debug",
+    "badging": "package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'"
+  },
+  "app-debug-androidTest.apk": {
+    "bytes": 4650628,
+    "sha256": "43272a287b7b2bb18966695a94b60ee83d507ef47b8d2fbf94b50bd0552925e4",
+    "certificate": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+    "package": "com.cooper.lithic.debug.test",
+    "badging": "package: name='com.cooper.lithic.debug.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+    "gallery_diagnostics": {
+      "dex": "classes6.dex",
+      "dex_sha256": "db61e097319daeeef8099c60e692c2a8637e35bd267e12f44d96cf983418dd17",
+      "diagnostic_fields_present": true,
+      "single_aggregate_assertion_in_apk_and_compiled_class": true
+    }
+  }
+}

@@ -1,0 +1,415 @@
+--- previous/run.py
++++ repair-02/run.py
+@@ -22,7 +22,7 @@
+ from collect import collect_anr
+ 
+ ROOT = Path(__file__).resolve().parent
+-WORKTREE = Path('E:/CODEX/lithic-ui-v3-project-detail-implement-01')
++WORKTREE = Path('E:/CODEX/lithic-ui-v3-project-detail-repair-02')
+ SDK = Path('E:/CODEX/MirraAndroid/sdk')
+ ADB = SDK / 'platform-tools/adb.exe'
+ AVD = 'Lithic_Home_Acceptance_Repair05_API36'
+@@ -39,6 +39,8 @@
+ GALLERY_TEST = Path(__file__).resolve().parent / 'project-detail-gallery.json'
+ APP_APK = ROOT / 'app-debug.apk'
+ TEST_APK = ROOT / 'app-debug-androidTest.apk'
++PRIOR_RUN = WORKTREE / 'docs/evidence/lithic-ui-v3-project-detail-implement-01/android-io-recheck'
++ORIGINAL_CERTIFICATE = '29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9'
+ FLAGS = getattr(sp, 'CREATE_NO_WINDOW', 0)
+ REGRESSIONS = (
+     ('new-project-detail', 'com.cooper.lithic.feature.project.V3ProjectDetailScreenTest'),
+@@ -76,6 +78,13 @@
+         'com.cooper.lithic.feature.project.ProjectLifecycleScreensTest'
+         '#ended_detail_with_real_observed_late_money_explains_its_included_settlement'),
+ )
++FOCUSED_SELECTORS = {
++    'new-project-detail': dict(REGRESSIONS)['new-project-detail'],
++    'project-screens-detail': 'com.cooper.lithic.feature.project.ProjectScreensTest'
++        '#not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved',
++    'project-entry-flow': dict(REGRESSIONS)['project-entry-flow'],
++    'project-detail-lifecycle-flow': dict(REGRESSIONS)['project-detail-lifecycle-flow'],
++}
+ 
+ sys.path.insert(0, str(WORKTREE / 'scripts'))
+ from home_android_admission import admit_owned_emulator, _windows_listener, _shell, IDENTITY_PROPERTIES
+@@ -153,8 +162,7 @@
+     for path in AVD_DIR.iterdir():
+         assert_plain_path(path)
+     data = userdata_receipt(hash_files=True)
+-    prior = json.loads((WORKTREE/'docs/evidence/lithic-ui-v3-project-detail-implement-01'
+-                       /'android-supplement/scope-and-cleanup.json').read_text(encoding='utf-8-sig'))['userdata_after']
++    prior = json.loads((PRIOR_RUN/'userdata-after-shutdown.json').read_text(encoding='utf-8-sig'))
+     identity_fields = ('path', 'sha256', 'bytes', 'created_utc', 'file_id', 'volume_id')
+     def identity(file):
+         return tuple(datetime.fromisoformat(file[key]) if key == 'created_utc' else file[key]
+@@ -234,16 +242,28 @@
+ 
+ def check_apks():
+     receipt = json.loads((ROOT/'apk-audit.json').read_text(encoding='utf-8-sig'))
++    staged = json.loads((ROOT/'apk-build-inputs.json').read_text(encoding='utf-8-sig'))
+     certificates = []
+     for apk, expected in ((APP_APK, APP), (TEST_APK, TEST)):
+         entry = receipt[apk.name]
++        bound = staged['apks'][apk.name]
+         if (entry.get('sha256') != hashlib.sha256(apk.read_bytes()).hexdigest()
+                 or entry.get('bytes') != apk.stat().st_size
++                or bound['sha256'] != entry['sha256'] or bound['bytes'] != entry['bytes']
+                 or entry.get('package') != expected):
+             raise RuntimeError('An audited APK identity or SHA changed before launch')
+         certificates.append(entry.get('certificate'))
+-    if any(cert != '29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9' for cert in certificates):
++    if any(cert != ORIGINAL_CERTIFICATE for cert in certificates):
+         raise RuntimeError('APK audit does not prove both share a signing certificate')
++
++
++def prior_package_hash(filename, package):
++    log = (PRIOR_RUN/filename).read_text(encoding='utf-8-sig')
++    pattern = rf'(?m)^([0-9a-f]{{64}})\s+(/data/app/(?:[A-Za-z0-9~_+=.-]+/)*{re.escape(package)}-[A-Za-z0-9~_+=.-]+/base\.apk)$'
++    matches = re.findall(pattern, log)
++    if len(matches) != 1 or not re.search(r'(?m)^exit=0$', log):
++        raise RuntimeError(f'Previous approved APK identity could not be read for {package}')
++    return matches[0][0]
+ 
+ 
+ def png_dimensions(data):
+@@ -600,22 +620,28 @@
+                                     '-u', '--user', '0', package)
+             if f'package:{package}' in listing.splitlines():
+                 raise RuntimeError('Formal or Preview Lithic identity present on the isolated AVD')
+-        previous = WORKTREE/'docs/evidence/lithic-home-final-polish-09-retry'
+-        receipt = json.loads((previous/'apk-audit.json').read_text(encoding='utf-8-sig'))
+-        for package, filename in ((APP, 'app-debug.apk'), (TEST, 'app-debug-androidTest.apk')):
+-            owned = receipt[filename]
+-            if owned['package'] != package or owned['certificate'] != '29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9':
+-                raise RuntimeError('Previous package ownership receipt mismatch')
+-            self.check_installed('previous', package, expected_digest=owned['sha256'])
++        owned = {
++            APP: prior_package_hash('installed-hash-repaired-com.cooper.lithic.debug.txt', APP),
++            TEST: prior_package_hash('installed-hash-test-com.cooper.lithic.debug.test.txt', TEST),
++        }
++        for package, digest in owned.items():
++            self.check_installed('previous', package, expected_digest=digest)
+             _, directory = self.stage('preinstall-datadir-'+package, 'shell', 'run-as', package, 'pwd', '-P')
+             if directory not in (f'/data/user/0/{package}', f'/data/data/{package}'):
+                 raise RuntimeError(f'Unexpected private directory for {package}')
+         write_json('preinstall-userdata.json', userdata_receipt(hash_files=False))
+-        for name, apk in (('repaired-app', APP_APK), ('test', TEST_APK)):
++        install_receipt = {}
++        for name, package, apk in (('repaired-app', APP, APP_APK), ('test', TEST, TEST_APK)):
+             self.diagnostics.require_healthy_capture()
++            digest = hashlib.sha256(apk.read_bytes()).hexdigest()
++            if digest == owned[package]:
++                install_receipt[package] = {'action': 'reuse identical installed APK', 'sha256': digest}
++                continue
+             _, output = self.stage('install-'+name, 'install', '-t', '-r', '--user', '0', str(apk), timeout=55)
+             if output.splitlines()[-1:] != ['Success']:
+                 raise RuntimeError('APK installation did not report success')
++            install_receipt[package] = {'action': 'replaced verified Debug APK', 'sha256': digest}
++        write_json('apk-install-disposition.json', install_receipt)
+         self.check_installed('repaired', APP, APP_APK)
+         self.check_installed('test', TEST, TEST_APK)
+         _, runner = self.stage('runner', 'shell', 'pm', 'list', 'instrumentation', APP)
+@@ -636,7 +662,7 @@
+         if digest.split() != [expected, match[1]]:
+             raise RuntimeError('Installed package bytes do not match the verified signed APK')
+ 
+-    def capture(self, output, expected_font, expected_images, *, require_complete=True):
++    def capture(self, label, output, expected_font, expected_images, *, require_complete=True):
+         bundles = list(metadata_bundles(output, 'projectDetailAcceptance'))
+         if not bundles or {bundle.get('AttemptId') for bundle in bundles} != {self.run_id}:
+             raise RuntimeError('The screenshot evidence attempt identity was not confirmed')
+@@ -648,9 +674,13 @@
+         if not any(row.get('Phase') == 'fixture-cleanup' and row.get('FixtureCleanup') == 'PASS'
+                    for row in bundles):
+             raise RuntimeError('Test fixture boundary receipt was not confirmed')
++        for row in bundles:
++            if row.get('Phase') == 'title-layout':
++                append_json('title-layout.jsonl', {'label': label, 'expected_font_scale': expected_font, **row})
+         prefix = f'files/project-detail-acceptance/{self.run_id}/'
+         screenshot_rows = [row for row in bundles if row.get('Phase') == 'screenshot']
+         collected = set()
++        gallery_dir = ROOT/'full-regression' if label.startswith('full-') else ROOT
+         try:
+             for row in screenshot_rows:
+                 relative = row.get('Png', '')
+@@ -663,10 +693,11 @@
+                 result = self.adb('exec-out', 'run-as', APP, 'cat', relative, timeout=12)
+                 if result.returncode or result.stderr or png_dimensions(result.stdout) != (720, 1648):
+                     raise RuntimeError(f'Invalid screenshot payload for {filename}')
+-                with (ROOT/filename).open('xb') as dest:
++                with (gallery_dir/filename).open('xb') as dest:
+                     dest.write(result.stdout)
+                 append_json('screenshots.jsonl', {
+-                    'filename': filename, 'sha256': hashlib.sha256(result.stdout).hexdigest(),
++                    'filename': (gallery_dir/filename).relative_to(ROOT).as_posix(),
++                    'label': label, 'sha256': hashlib.sha256(result.stdout).hexdigest(),
+                     'bytes': len(result.stdout), 'width_px': 720, 'height_px': 1648, 'screen_width_dp': 360,
+                     'font_scale': expected_font, 'attempt_id': self.run_id,
+                     'source': 'production MainActivity, real project detail and synthetic Android ledger',
+@@ -677,11 +708,11 @@
+                 relative = row.get('Png', '')
+                 filename = relative.removeprefix(prefix)
+                 if relative.startswith(prefix) and filename in expected_images:
+-                    self.stage('clean-'+filename, 'shell', 'run-as', APP, 'rm', '-f', relative, timeout=12)
++                    self.stage(f'clean-{label}-{filename}', 'shell', 'run-as', APP, 'rm', '-f', relative, timeout=12)
+             directory = f'files/project-detail-acceptance/{self.run_id}'
+             probe = self.adb('shell', 'run-as', APP, 'test', '-d', directory, timeout=12)
+             if probe.returncode == 0 and not probe.stdout and not probe.stderr:
+-                self.stage('clean-screenshot-directory-'+str(expected_font), 'shell', 'run-as', APP,
++                self.stage(f'clean-screenshot-directory-{label}', 'shell', 'run-as', APP,
+                            'rmdir', directory, timeout=12)
+             elif probe.returncode != 1 or probe.stdout or probe.stderr:
+                 raise RuntimeError('Owned screenshot directory state is unknown')
+@@ -721,17 +752,17 @@
+                     'count': len(methods), 'failures': failures, 'exit': code, 'methods': methods})
+         shots = []
+         if expected_font is not None:
+-            shots = self.capture(output, expected_font, images, require_complete=not failures)
+-        self.failures += bool(failures)
++            shots = self.capture(label, output, expected_font, images, require_complete=not failures)
++        self.failures += failures
+         print(f'{label}: {"FAIL" if failures else "PASS"}, JUnit {len(methods)} executed / {failures} failed, {len(shots)} captures',
+               flush=True)
+ 
+-    def font(self, label, value):
++    def font(self, phase, label, value):
+         if label != 'restore':
+             self.diagnostics.require_healthy_capture()
+         action = ('delete','system','font_scale') if value == 'null' else ('put','system','font_scale',value)
+-        self.stage(f'font-{label}-set', 'shell', 'settings', *action)
+-        _, actual = self.stage(f'font-{label}-read', 'shell', 'settings', 'get', 'system', 'font_scale')
++        self.stage(f'{phase}-font-{label}-set', 'shell', 'settings', *action)
++        _, actual = self.stage(f'{phase}-font-{label}-read', 'shell', 'settings', 'get', 'system', 'font_scale')
+         if actual != value:
+             raise RuntimeError(f'System font readback was {actual!r}, expected {value!r}')
+ 
+@@ -745,36 +776,54 @@
+         if residues:
+             raise RuntimeError(f'{label}: previous synthetic ledger cleanup is not verified')
+ 
+-    def run_tests(self, pid):
+-        self.install()
+-        _, original = self.stage('font-original', 'shell', 'settings', 'get', 'system', 'font_scale')
++    def run_gallery(self, pid, phase, test_plan):
++        _, original = self.stage(f'{phase}-font-original', 'shell', 'settings', 'get', 'system', 'font_scale')
+         if original != 'null' and not re.fullmatch(r'[0-9]{1,2}(?:\.[0-9]{1,8})?', original):
+             raise RuntimeError('Original system font setting is not safe to restore')
+-        test_plan = json.loads(GALLERY_TEST.read_text(encoding='utf-8'))
+         try:
+             if original != '1.0':
+-                self.font('normal', '1.0')
+-            self.instrument('project-detail-gallery', test_plan['selector'], 1, 150, 1.0, test_plan['normal_images'])
+-            self.check_health(pid, 'project-detail-gallery')
+-            self.font('200', '2.0')
+-            self.instrument('project-detail-system-font-200', test_plan['selector'], 1, 120, 2.0, test_plan['large_font_images'])
+-            self.check_health(pid, 'project-detail-system-font-200')
++                self.font(phase, 'normal', '1.0')
++            normal_label = f'{phase}-project-detail-gallery'
++            self.instrument(normal_label, test_plan['selector'], 1, 180, 1.0, test_plan['normal_images'])
++            self.check_health(pid, normal_label)
++            self.font(phase, '200', '2.0')
++            large_label = f'{phase}-project-detail-system-font-200'
++            self.instrument(large_label, test_plan['selector'], 1, 150, 2.0, test_plan['large_font_images'])
++            self.check_health(pid, large_label)
+         finally:
+             try:
+                 self.stage_name = 'font-restore'
+-                _, current = self.stage('font-before-restoration', 'shell', 'settings', 'get', 'system', 'font_scale')
++                _, current = self.stage(f'{phase}-font-before-restoration', 'shell', 'settings', 'get', 'system', 'font_scale')
+                 if current != original:
+-                    self.font('restore', original)
++                    self.font(phase, 'restore', original)
+                 self.font_restored = True
+             except Exception:
+                 self.font_restored = False
+                 raise
+-        self.temporary_ledger_dirs('preflight')
+-        for label, selector in REGRESSIONS:
+-            self.instrument(label, selector, test_plan['method_counts'][label], 150)
++
++    def run_rendering_and_flows(self, pid, phase, selectors, counts):
++        self.temporary_ledger_dirs(f'{phase}-preflight')
++        for kind, selector in selectors:
++            label = f'{phase}-{kind}'
++            self.instrument(label, selector, counts[kind], 150)
+             self.check_health(pid, label)
+-            if label in ('project-navigation-protection', 'project-entry-flow', 'project-detail-lifecycle-flow'):
++            if kind in ('project-navigation-protection', 'project-entry-flow', 'project-detail-lifecycle-flow'):
+                 self.temporary_ledger_dirs(label)
++
++    def run_tests(self, pid):
++        self.install()
++        test_plan = json.loads(GALLERY_TEST.read_text(encoding='utf-8'))
++        self.run_gallery(pid, 'focused', test_plan)
++        focused_counts = {**test_plan['method_counts'], 'project-screens-detail': 1}
++        self.run_rendering_and_flows(pid, 'focused', FOCUSED_SELECTORS.items(), focused_counts)
++        write_json('full-regression-gate.json', {'focused_executions': 11,
++                   'focused_failed_executions': self.failures, 'full_43_eligible': not self.failures})
++        if self.failures:
++            print('Focused gate has failures; full 43-case run is NOT_RUN', flush=True)
++            return
++        (ROOT/'full-regression').mkdir()
++        self.run_gallery(pid, 'full', test_plan)
++        self.run_rendering_and_flows(pid, 'full', REGRESSIONS, test_plan['method_counts'])
+ 
+     def cleanup(self):
+         proc = self.proc
+@@ -991,7 +1040,7 @@
+         status = 'READY_FOR_REVIEW_WITH_FAILURES' if controller.failures else 'READY_FOR_INDEPENDENT_REVIEW'
+         error, code = None, 3 if controller.failures else 0
+     except AnrDetected as exc:
+-        status = 'ANR_REPRODUCED' if controller.diagnostics.anr['package'] == 'com.android.documentsui' else 'ENVIRONMENT_BLOCKED'
++        status = 'ENVIRONMENT_BLOCKED'
+         error, code = str(exc), 2
+     except Exception as exc:
+         status, error, code = 'ENVIRONMENT_BLOCKED', str(exc), 2
+--- previous/workflow.py
++++ repair-02/workflow.py
+@@ -9,12 +9,12 @@
+ import uuid
+ 
+ ROOT = Path(__file__).resolve().parent
+-REPO = Path('E:/CODEX/lithic-ui-v3-project-detail-implement-01')
++REPO = Path('E:/CODEX/lithic-ui-v3-project-detail-repair-02')
+ ADB = Path('E:/CODEX/MirraAndroid/sdk/platform-tools/adb.exe').resolve()
+ sys.path.insert(0, str(REPO/'scripts'))
+ from home_android_host_diagnostics import command, host_request, utc_now
+ 
+-ONE_DEVICE = 'LITHIC-PROJECT-DETAIL-IMPLEMENT-01-NO-USB-'+uuid.uuid4().hex
++ONE_DEVICE = 'LITHIC-PROJECT-DETAIL-REPAIR-02-NO-USB-'+uuid.uuid4().hex
+ receipt = {'started_utc': utc_now(), 'commands': [], 'startup_options': {
+     'usb': 'one-device nonmatching sentinel', 'mdns_auto_connect': False,
+     'automatic_emulator_discovery': False, 'keys': 'dedicated local directory'}}
+--- previous/stage-android-build.py
++++ repair-02/stage-android-build.py
+@@ -6,8 +6,11 @@
+ import sys
+ 
+ root = Path(__file__).resolve().parent
+-repo = Path('E:/CODEX/lithic-ui-v3-project-detail-implement-01')
++repo = Path('E:/CODEX/lithic-ui-v3-project-detail-repair-02')
+ source = repo / 'app/build/outputs/apk'
++baseline_binary_commit = '0f6fed74c03a82ee5a90f5e209e6ea6fb3989a25'
++original_app = Path('E:/CODEX/lithic-ui-v3-project-detail-implement-01-android-io-recheck-local/app-debug.apk')
++original_app_sha = '8f638588cb738f8eec949bfb758b72285f29056fa2747a6601ad077530fcc9c5'
+ paths = {
+     'app-debug.apk': source / 'debug/app-debug.apk',
+     'app-debug-androidTest.apk': source / 'androidTest/debug/app-debug-androidTest.apk',
+@@ -21,17 +24,28 @@
+     return subprocess.run(['git', *args], cwd=repo, text=True, capture_output=True,
+                           check=True, timeout=15).stdout.strip()
+ 
+-if len(sys.argv) != 2 or git('rev-parse', 'HEAD') != sys.argv[1]:
+-    raise ValueError('Staging requires a fixed and verified Git source SHA')
+-if git('status', '--porcelain', '--', 'app'):
+-    raise ValueError('Source tree changed before staging')
++if len(sys.argv) != 3 or sys.argv[2] not in ('reuse', 'rebuild') or git('rev-parse', 'HEAD') != sys.argv[1]:
++    raise ValueError('Usage: stage-android-build.py <fixed source commit> reuse|rebuild')
++if git('status', '--porcelain', '--', 'app', 'gradle', 'gradlew', 'gradlew.bat',
++       'build.gradle.kts', 'settings.gradle.kts', 'gradle.properties', 'scripts'):
++    raise ValueError('Source, build files or isolation scripts are dirty')
+ expected_tree = git('rev-parse', 'HEAD:app')
++app_source_scope = ('app/src/main', 'app/src/debug', 'app/build.gradle.kts', 'app/schemas',
++                    'gradle', 'gradlew', 'gradlew.bat', 'build.gradle.kts', 'settings.gradle.kts', 'gradle.properties')
++if sys.argv[2] == 'reuse':
++    if git('diff', '--name-only', baseline_binary_commit, 'HEAD', '--', *app_source_scope):
++        raise ValueError('Refusing an old App APK after production/build source drift')
++    if sha(original_app) != original_app_sha:
++        raise ValueError('Original App APK does not match the audited published digest')
++    paths['app-debug.apk'] = original_app
+ 
+ for name, path in paths.items():
+     if not path.is_file() or (root / name).exists():
+         raise ValueError('Build output is absent or local evidence would overwrite an existing APK')
+ 
+-receipt = {'source_commit': sys.argv[1], 'app_tree': expected_tree, 'apks': {}}
++receipt = {'test_source_commit': sys.argv[1], 'app_tree': expected_tree,
++           'app_source_commit': baseline_binary_commit if sys.argv[2] == 'reuse' else sys.argv[1],
++           'app_source_mode': sys.argv[2], 'apks': {}}
+ for name, path in paths.items():
+     old_size = path.stat().st_size
+     old_hash = sha(path)
+--- previous/collector-preflight.py
++++ repair-02/collector-preflight.py
+@@ -3,7 +3,7 @@
+ import json
+ import sys
+ 
+-repo = Path('E:/CODEX/lithic-ui-v3-project-detail-implement-01')
++repo = Path('E:/CODEX/lithic-ui-v3-project-detail-repair-02')
+ sys.path.insert(0, str(repo / 'scripts'))
+ import home_android_diagnostic_collector as collector
+ 
+--- previous/audit.py
++++ repair-02/audit.py
+@@ -2,6 +2,7 @@
+ import json
+ import re
+ import subprocess
++from zipfile import ZipFile
+ from pathlib import Path
+ 
+ root = Path(__file__).resolve().parent
+@@ -11,6 +12,53 @@
+ app = 'com.cooper.lithic.debug'
+ runner = 'androidx.test.runner.AndroidJUnitRunner'
+ audit = {}
++
++
++def audit_gallery(apk):
++    class_name = 'com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest'
++    descriptor = ('L' + class_name.replace('.', '/') + ';').encode('ascii')
++    title_fields = (
++        b'title-layout', b'projectDetailAcceptanceTitleOverflowWidth', b'projectDetailAcceptanceTitleOverflowHeight',
++        b'projectDetailAcceptanceTitleConstraintsPx', b'projectDetailAcceptanceTitleParentBoundsInRootPx',
++        b'projectDetailAcceptanceTitleLineWidthsPx',
++    )
++    with ZipFile(apk) as archive:
++        matches = {}
++        for entry in archive.namelist():
++            if not re.fullmatch(r'classes\d*\.dex', entry):
++                continue
++            data = archive.read(entry)
++            if descriptor in data and b'projectDetailAcceptanceTitleOverflowWidth' in data:
++                matches[entry] = data
++        assert len(matches) == 1, 'No unique gallery class and diagnostic string DEX'
++    dex_name, dex = next(iter(matches.items()))
++    assert all(field in dex for field in title_fields), 'Packaged DEX omitted title diagnostic strings'
++    dex_path = root/'audited-gallery.dex'
++    with dex_path.open('xb') as stream:
++        stream.write(dex)
++    dump = subprocess.run([sdk/'dexdump.exe', '-d', dex_path], capture_output=True, encoding='utf-8',
++                          errors='replace', check=True, timeout=40).stdout
++    descriptor_line = f"Class descriptor  : '{descriptor.decode('ascii')}'"
++    begin = dump.index(descriptor_line)
++    following = dump.find('Class descriptor  :', begin + len(descriptor_line))
++    gallery = dump[begin:following] if following != -1 else dump[begin:]
++    gallery_matches = [line.strip() for line in gallery.splitlines()
++                       if any(name in line for name in ('production_composable_gallery_uses_system_configuration',
++                                                       'AssertionError;', 'addSuppressed', 'getHasVisualOverflow',
++                                                       'MultipleFailureException', 'TitleOverflowWidth',
++                                                       'TitleOverflowHeight'))]
++    print('Packaged gallery evidence\n' + '\n'.join(gallery_matches), flush=True)
++    assert 'addSuppressed' in gallery and 'Ljava/lang/AssertionError;' in gallery, 'Aggregate assertion missing from APK'
++    assert 'Lorg/junit/runners/model/MultipleFailureException;' not in gallery, 'Stale gallery test DEX'
++    assert 'getHasVisualOverflow' in gallery, 'Original overflow signal missing from APK'
++    class_dir = (Path('E:/CODEX/lithic-ui-v3-project-detail-repair-02/app/build') /
++                 'tmp/kotlin-classes/debugAndroidTest')
++    java_output = execute(java.with_name('javap.exe'), '-p', '-c', '-classpath', class_dir, class_name)
++    assert 'java/lang/AssertionError.addSuppressed' in java_output or 'addSuppressed' in java_output
++    assert 'org/junit/runners/model/MultipleFailureException' not in java_output, 'Stale gallery class output'
++    assert 'getHasVisualOverflow' in java_output, 'Original overflow signal missing'
++    return {'dex': dex_name, 'dex_sha256': hashlib.sha256(dex).hexdigest(),
++            'diagnostic_fields_present': True, 'single_aggregate_assertion_in_apk_and_compiled_class': True}
+ 
+ 
+ def execute(*argv):
+@@ -43,6 +91,8 @@
+         assert 'launchable-activity:' not in badging
+     audit[name] = {'bytes': apk.stat().st_size, 'sha256': hashlib.sha256(apk.read_bytes()).hexdigest(),
+                    'certificate': cert, 'package': package, 'badging': identity}
++    if package != app:
++        audit[name]['gallery_diagnostics'] = audit_gallery(apk)
+ 
+ with (root/'apk-audit.json').open('x', encoding='utf-8') as result:
+     json.dump(audit, result, indent=2)

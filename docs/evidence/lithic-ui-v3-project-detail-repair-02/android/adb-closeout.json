@@ -1,0 +1,63 @@
+{
+  "started_utc": "2026-11-14T12:43:18.728+08:00",
+  "ended_utc": "2026-11-14T12:54:16.087+08:00",
+  "status": "COMPLETED_WITH_TEST_FAILURES",
+  "runtime_exit": 3,
+  "original_identity": {
+    "listener": {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5037,
+      "OwningProcess": 15576
+    },
+    "process": {
+      "Pid": 15576,
+      "Path": null,
+      "CreatedUtc": "2026-11-14T01:23:14.723181Z",
+      "OwnedSentinel": false
+    }
+  },
+  "isolated_identity": {
+    "process": {
+      "Pid": 15920,
+      "Path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "CreatedUtc": "2026-11-14T04:43:23.55319Z",
+      "OwnedSentinel": true
+    },
+    "protocol": "0029",
+    "identity": {
+      "version": "37.0.1",
+      "build": "15733141",
+      "executable_path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe"
+    }
+  },
+  "original_identity_after": {
+    "listener": {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5037,
+      "OwningProcess": 15576
+    },
+    "process": {
+      "Pid": 15576,
+      "Path": null,
+      "CreatedUtc": "2026-11-14T01:23:14.723181Z",
+      "OwnedSentinel": false
+    }
+  },
+  "after": {
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 15576
+      }
+    ],
+    "processes": [
+      {
+        "Pid": 15576,
+        "Path": null,
+        "CreatedUtc": "2026-11-14T01:23:14.723181Z",
+        "OwnedSentinel": false
+      }
+    ]
+  }
+}

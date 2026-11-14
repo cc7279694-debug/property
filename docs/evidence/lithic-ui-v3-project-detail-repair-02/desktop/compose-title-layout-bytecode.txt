@@ -1,0 +1,242 @@
+Local AndroidX Compose 1.9.5 dependency bytecode, inspected with JDK 17 javap -p -c.
+Selected routines only. No JAR, DEX or APK is archived here.
+inspect-compose-foundation.jar SHA-256 9192c0b58eb818b442ad5c1c2181658c0ffe548939ad13870441335677a5795a
+inspect-compose-text.jar SHA-256 a102694a4530c71ef08d568d0bd2c0488507bbb794419554c3dbf2a0451258dd
+
+TextStringSimpleNode semantic result adapter
+    Code:
+       0: aload_0
+       1: invokespecial #112                // Method getLayoutCache:()Landroidx/compose/foundation/text/modifiers/ParagraphLayoutCache;
+       4: aload_0
+       5: getfield      #23                 // Field style:Landroidx/compose/ui/text/TextStyle;
+       8: aload_0
+       9: getfield      #45                 // Field overrideColor:Landroidx/compose/ui/graphics/ColorProducer;
+      12: dup
+      13: ifnull        24
+      16: invokeinterface #569,  1          // InterfaceMethod androidx/compose/ui/graphics/ColorProducer."invoke-0d7_KjU":()J
+      21: goto          31
+      24: pop
+      25: getstatic     #574                // Field androidx/compose/ui/graphics/Color.Companion:Landroidx/compose/ui/graphics/Color$Companion;
+      28: invokevirtual #579                // Method androidx/compose/ui/graphics/Color$Companion."getUnspecified-0d7_KjU":()J
+      31: lconst_0
+      32: aconst_null
+      33: aconst_null
+      34: aconst_null
+      35: aconst_null
+      36: aconst_null
+      37: lconst_0
+      38: aconst_null
+      39: aconst_null
+      40: aconst_null
+      41: lconst_0
+      42: aconst_null
+      43: aconst_null
+      44: aconst_null
+      45: iconst_0
+      46: iconst_0
+      47: lconst_0
+      48: aconst_null
+      49: aconst_null
+      50: iconst_0
+      51: iconst_0
+      52: aconst_null
+      53: aconst_null
+      54: ldc_w         #626                // int 16777214
+      57: aconst_null
+      58: invokestatic  #630                // Method androidx/compose/ui/text/TextStyle."merge-dA7vx0o$default":(Landroidx/compose/ui/text/TextStyle;JJLandroidx/compose/ui/text/font/FontWeight;Landroidx/compose/ui/text/font/FontStyle;Landroidx/compose/ui/text/font/FontSynthesis;Landroidx/compose/ui/text/font/FontFamily;Ljava/lang/String;JLandroidx/compose/ui/text/style/BaselineShift;Landroidx/compose/ui/text/style/TextGeometricTransform;Landroidx/compose/ui/text/intl/LocaleList;JLandroidx/compose/ui/text/style/TextDecoration;Landroidx/compose/ui/graphics/Shadow;Landroidx/compose/ui/graphics/drawscope/DrawStyle;IIJLandroidx/compose/ui/text/style/TextIndent;Landroidx/compose/ui/text/style/LineHeightStyle;IILandroidx/compose/ui/text/PlatformTextStyle;Landroidx/compose/ui/text/style/TextMotion;ILjava/lang/Object;)Landroidx/compose/ui/text/TextStyle;
+      61: invokevirtual #634                // Method androidx/compose/foundation/text/modifiers/ParagraphLayoutCache.slowCreateTextLayoutResultOrNull:(Landroidx/compose/ui/text/TextStyle;)Landroidx/compose/ui/text/TextLayoutResult;
+      64: astore_3
+      65: aload_3
+      66: ifnull        93
+      69: aload_3
+      70: astore        4
+      72: aload         4
+      74: astore        5
+      76: iconst_0
+      77: istore        6
+      79: aload_1
+      80: aload         5
+      82: invokeinterface #640,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      87: pop
+      88: aload         4
+      90: goto          94
+      93: aconst_null
+
+ParagraphLayoutCache rebuilds TextLayoutResult using previous constraints and original layoutSize
+  public final androidx.compose.ui.text.TextLayoutResult slowCreateTextLayoutResultOrNull(androidx.compose.ui.text.TextStyle);
+    Code:
+       0: aload_0
+       1: getfield      #317                // Field intrinsicsLayoutDirection:Landroidx/compose/ui/unit/LayoutDirection;
+       4: dup
+       5: ifnonnull     11
+       8: pop
+       9: aconst_null
+      10: areturn
+      11: astore_2
+      12: aload_0
+      13: getfield      #111                // Field density:Landroidx/compose/ui/unit/Density;
+      16: dup
+      17: ifnonnull     23
+      20: pop
+      21: aconst_null
+      22: areturn
+      23: astore_3
+      24: new           #373                // class androidx/compose/ui/text/AnnotatedString
+      27: dup
+      28: aload_0
+      29: getfield      #13                 // Field text:Ljava/lang/String;
+      32: aconst_null
+      33: iconst_2
+      34: aconst_null
+      35: invokespecial #376                // Method androidx/compose/ui/text/AnnotatedString."<init>":(Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+      38: astore        4
+      40: aload_0
+      41: getfield      #169                // Field paragraph:Landroidx/compose/ui/text/Paragraph;
+      44: dup
+      45: ifnonnull     51
+      48: pop
+      49: aconst_null
+      50: areturn
+      51: pop
+      52: aload_0
+      53: getfield      #151                // Field paragraphIntrinsics:Landroidx/compose/ui/text/ParagraphIntrinsics;
+      56: dup
+      57: ifnonnull     63
+      60: pop
+      61: aconst_null
+      62: areturn
+      63: pop
+      64: aload_0
+      65: getfield      #76                 // Field prevConstraints:J
+      68: lstore        7
+      70: iconst_0
+      71: istore        9
+      73: lload         7
+      75: ldc2_w        #377                // long -8589934589l
+      78: land
+      79: invokestatic  #379                // Method androidx/compose/ui/unit/Constraints."constructor-impl":(J)J
+      82: lstore        5
+      84: new           #381                // class androidx/compose/ui/text/TextLayoutResult
+      87: dup
+      88: new           #383                // class androidx/compose/ui/text/TextLayoutInput
+      91: dup
+      92: aload         4
+      94: aload_1
+      95: invokestatic  #329                // Method kotlin/collections/CollectionsKt.emptyList:()Ljava/util/List;
+      98: aload_0
+      99: getfield      #32                 // Field maxLines:I
+     102: aload_0
+     103: getfield      #29                 // Field softWrap:Z
+     106: aload_0
+     107: getfield      #25                 // Field overflow:I
+     110: aload_3
+     111: aload_2
+     112: aload_0
+     113: getfield      #21                 // Field fontFamilyResolver:Landroidx/compose/ui/text/font/FontFamily$Resolver;
+     116: lload         5
+     118: aconst_null
+     119: invokespecial #386                // Method androidx/compose/ui/text/TextLayoutInput."<init>":(Landroidx/compose/ui/text/AnnotatedString;Landroidx/compose/ui/text/TextStyle;Ljava/util/List;IZILandroidx/compose/ui/unit/Density;Landroidx/compose/ui/unit/LayoutDirection;Landroidx/compose/ui/text/font/FontFamily$Resolver;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+     122: new           #388                // class androidx/compose/ui/text/MultiParagraph
+     125: dup
+     126: new           #390                // class androidx/compose/ui/text/MultiParagraphIntrinsics
+     129: dup
+     130: aload         4
+     132: aload_1
+     133: invokestatic  #329                // Method kotlin/collections/CollectionsKt.emptyList:()Ljava/util/List;
+     136: aload_3
+     137: aload_0
+     138: getfield      #21                 // Field fontFamilyResolver:Landroidx/compose/ui/text/font/FontFamily$Resolver;
+     141: invokespecial #393                // Method androidx/compose/ui/text/MultiParagraphIntrinsics."<init>":(Landroidx/compose/ui/text/AnnotatedString;Landroidx/compose/ui/text/TextStyle;Ljava/util/List;Landroidx/compose/ui/unit/Density;Landroidx/compose/ui/text/font/FontFamily$Resolver;)V
+     144: lload         5
+     146: aload_0
+     147: getfield      #32                 // Field maxLines:I
+     150: aload_0
+     151: getfield      #25                 // Field overflow:I
+     154: aconst_null
+     155: invokespecial #396                // Method androidx/compose/ui/text/MultiParagraph."<init>":(Landroidx/compose/ui/text/MultiParagraphIntrinsics;JIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+     158: aload_0
+     159: getfield      #62                 // Field layoutSize:J
+     162: aconst_null
+     163: invokespecial #399                // Method androidx/compose/ui/text/TextLayoutResult."<init>":(Landroidx/compose/ui/text/TextLayoutInput;Landroidx/compose/ui/text/MultiParagraph;JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+     166: areturn
+
+  public final int minIntrinsicWidth(androidx.compose.ui.unit.LayoutDirection);
+
+MultiParagraph stores constraint maxWidth
+     319: aload         9
+     321: putfield      #142                // Field paragraphInfoList:Ljava/util/List;
+     324: aload_0
+     325: lload_2
+     326: invokestatic  #64                 // Method androidx/compose/ui/unit/Constraints."getMaxWidth-impl":(J)I
+     329: i2f
+     330: putfield      #145                // Field width:F
+     333: aload_0
+     334: aload         9
+
+TextLayoutResult overflow predicates
+      17: lload_1
+      18: lstore        4
+      20: iconst_0
+      21: istore        6
+      23: lload         4
+      25: ldc2_w        #60                 // long 4294967295l
+      28: land
+      29: l2i
+      30: nop
+      31: i2f
+      32: aload_0
+      33: getfield      #17                 // Field multiParagraph:Landroidx/compose/ui/text/MultiParagraph;
+      36: invokevirtual #64                 // Method androidx/compose/ui/text/MultiParagraph.getHeight:()F
+      39: fcmpg
+      40: ifge          47
+      43: iconst_1
+      44: goto          48
+      47: iconst_0
+      48: ireturn
+
+  public final boolean getDidOverflowWidth();
+    Code:
+       0: aload_0
+       1: getfield      #21                 // Field size:J
+       4: lstore_1
+       5: iconst_0
+       6: istore_3
+       7: lload_1
+       8: lstore        4
+      10: iconst_0
+      11: istore        6
+      13: lload         4
+      15: bipush        32
+      17: lshr
+      18: l2i
+      19: nop
+      20: i2f
+      21: aload_0
+      22: getfield      #17                 // Field multiParagraph:Landroidx/compose/ui/text/MultiParagraph;
+      25: invokevirtual #73                 // Method androidx/compose/ui/text/MultiParagraph.getWidth:()F
+      28: fcmpg
+      29: ifge          36
+      32: iconst_1
+      33: goto          37
+      36: iconst_0
+      37: ireturn
+
+  public final boolean getHasVisualOverflow();
+    Code:
+       0: aload_0
+       1: invokevirtual #78                 // Method getDidOverflowWidth:()Z
+       4: ifne          14
+       7: aload_0
+       8: invokevirtual #80                 // Method getDidOverflowHeight:()Z
+      11: ifeq          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+
+  public final java.util.List<androidx.compose.ui.geometry.Rect> getPlaceholderRects();
+    Code:
+       0: aload_0
+       1: getfield      #45                 // Field placeholderRects:Ljava/util/List;
+       4: areturn
+

@@ -1,0 +1,27 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.ProjectLifecycleFlowTest#history_correction_and_real_refund_are_distinct_and_preserve_original_identity com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectLifecycleFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.ProjectLifecycleFlowTest:
+INSTRUMENTATION_STATUS: test=history_correction_and_real_refund_are_distinct_and_preserve_original_identity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectLifecycleFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=history_correction_and_real_refund_are_distinct_and_preserve_original_identity
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 29.761
+
+OK (1 test)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

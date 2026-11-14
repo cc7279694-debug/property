@@ -1,0 +1,69 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.V3ProjectDetailScreenTest com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.V3ProjectDetailScreenTest:
+INSTRUMENTATION_STATUS: test=linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=exactly_three_shows_every_event_without_an_expand_control
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=exactly_three_shows_every_event_without_an_expand_control
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 21.675
+
+OK (4 tests)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

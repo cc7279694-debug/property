@@ -1,0 +1,132 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest#production_composable_gallery_uses_system_configuration -e lithicHomeAcceptance fresh-api36-emulator -e lithicHomeAcceptanceAvd Lithic_Home_Acceptance_Repair05_API36 -e projectDetailAcceptanceRunId b09e8819-dbeb-41f4-95ba-66ac0da92bc3 -e projectDetailAcceptanceExpectedFontScale 2.0 com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest:
+INSTRUMENTATION_STATUS: test=production_composable_gallery_uses_system_configuration
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=b09e8819-dbeb-41f4-95ba-66ac0da92bc3
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=start
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=b09e8819-dbeb-41f4-95ba-66ac0da92bc3
+INSTRUMENTATION_STATUS: projectDetailAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=configuration
+INSTRUMENTATION_STATUS: projectDetailAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: projectDetailAcceptanceSystemFontScale=2.0
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=b09e8819-dbeb-41f4-95ba-66ac0da92bc3
+INSTRUMENTATION_STATUS: projectDetailAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: projectDetailAcceptancePng=files/project-detail-acceptance/b09e8819-dbeb-41f4-95ba-66ac0da92bc3/project-detail-font-200.png
+INSTRUMENTATION_STATUS: projectDetailAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: projectDetailAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=b09e8819-dbeb-41f4-95ba-66ac0da92bc3
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=title-layout
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleBoundsInRootPx=Rect.fromLTRB(32.0, 540.0, 464.0, 645.0)
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleConstraintsPx=Constraints(minWidth = 0, maxWidth = 656, minHeight = 0, maxHeight = Infinity)
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleDensityFontScale=2.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleEllipsized=false
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleExceededMaxLines=false
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleFontScale=2.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleFontSize=24.0.sp
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleFontSizePx=72.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleGlyphBoundsPx=Rect.fromLTRB(0.0, 0.0, 72.0, 105.0);Rect.fromLTRB(72.0, 0.0, 144.0, 105.0);Rect.fromLTRB(144.0, 0.0, 216.0, 105.0);Rect.fromLTRB(216.0, 0.0, 288.0, 105.0);Rect.fromLTRB(288.0, 0.0, 360.0, 105.0);Rect.fromLTRB(360.0, 0.0, 432.0, 105.0)
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleLineBottomsPx=105.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleLineCount=1
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleLineHeight=32.0.sp
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleLineHeightPx=79.542854
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleLineWidthsPx=432.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleMaxLines=2147483647
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleNodeClips=false
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleNodeSizePx=432 x 105
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleOverflowHeight=false
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleOverflowPolicy=Clip
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleOverflowWidth=true
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleParagraphHeightPx=105.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleParagraphWidthPx=656.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleParentBoundsInRootPx=Rect.fromLTRB(32.0, 160.0, 688.0, 823.0)
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleSizePx=432 x 105
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleSystemFontScale=2.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleText=合成横向相机
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleTheme=PURE_WHITE
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleViewportBoundsInRootPx=Rect.fromLTRB(0.0, 144.0, 720.0, 1401.0)
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleVisibleEnd=6
+INSTRUMENTATION_STATUS: projectDetailAcceptanceTitleVisualOverflow=true
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=b09e8819-dbeb-41f4-95ba-66ac0da92bc3
+INSTRUMENTATION_STATUS: projectDetailAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: projectDetailAcceptancePng=files/project-detail-acceptance/b09e8819-dbeb-41f4-95ba-66ac0da92bc3/project-detail-font-200-money.png
+INSTRUMENTATION_STATUS: projectDetailAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: projectDetailAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=b09e8819-dbeb-41f4-95ba-66ac0da92bc3
+INSTRUMENTATION_STATUS: projectDetailAcceptanceFixtureCleanup=PASS
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=fixture-cleanup
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: The project title overflows at PURE_WHITE at 2.0x
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:142)
+	Suppressed: java.lang.AssertionError: The project title overflows at PURE_WHITE at 2.0x
+		at org.junit.Assert.fail(Assert.java:89)
+		at org.junit.Assert.assertTrue(Assert.java:42)
+		at org.junit.Assert.assertFalse(Assert.java:65)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.checkTitle$lambda$4(V3ProjectDetailAndroidAcceptanceTest.kt:234)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.$r8$lambda$GDS8PhBXzyiWhg8XR3_cLobmUN0(Unknown Source:0)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest$$ExternalSyntheticLambda19.invoke(D8$$SyntheticClass:0)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.keepAssertionFailure(V3ProjectDetailAndroidAcceptanceTest.kt:246)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.checkTitle(V3ProjectDetailAndroidAcceptanceTest.kt:240)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:135)
+
+INSTRUMENTATION_STATUS: stream=
+Error in production_composable_gallery_uses_system_configuration(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest):
+java.lang.AssertionError: The project title overflows at PURE_WHITE at 2.0x
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:142)
+	Suppressed: java.lang.AssertionError: The project title overflows at PURE_WHITE at 2.0x
+		at org.junit.Assert.fail(Assert.java:89)
+		at org.junit.Assert.assertTrue(Assert.java:42)
+		at org.junit.Assert.assertFalse(Assert.java:65)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.checkTitle$lambda$4(V3ProjectDetailAndroidAcceptanceTest.kt:234)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.$r8$lambda$GDS8PhBXzyiWhg8XR3_cLobmUN0(Unknown Source:0)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest$$ExternalSyntheticLambda19.invoke(D8$$SyntheticClass:0)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.keepAssertionFailure(V3ProjectDetailAndroidAcceptanceTest.kt:246)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.checkTitle(V3ProjectDetailAndroidAcceptanceTest.kt:240)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:135)
+
+INSTRUMENTATION_STATUS: test=production_composable_gallery_uses_system_configuration
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 9.991
+There was 1 failure:
+1) production_composable_gallery_uses_system_configuration(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest)
+java.lang.AssertionError: The project title overflows at PURE_WHITE at 2.0x
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:142)
+	Suppressed: java.lang.AssertionError: The project title overflows at PURE_WHITE at 2.0x
+		at org.junit.Assert.fail(Assert.java:89)
+		at org.junit.Assert.assertTrue(Assert.java:42)
+		at org.junit.Assert.assertFalse(Assert.java:65)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.checkTitle$lambda$4(V3ProjectDetailAndroidAcceptanceTest.kt:234)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.$r8$lambda$GDS8PhBXzyiWhg8XR3_cLobmUN0(Unknown Source:0)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest$$ExternalSyntheticLambda19.invoke(D8$$SyntheticClass:0)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.keepAssertionFailure(V3ProjectDetailAndroidAcceptanceTest.kt:246)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.checkTitle(V3ProjectDetailAndroidAcceptanceTest.kt:240)
+		at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:135)
+		... 70 more
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

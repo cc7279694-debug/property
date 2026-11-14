@@ -1,0 +1,387 @@
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\java.exe -jar E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\lib\apksigner.jar verify --verbose --print-certs E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug.apk
+exit=0
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+Signer #1 certificate SHA-1 digest: 6d7f39598b658d167a3a374e1beaf4290b2050c7
+Signer #1 certificate MD5 digest: 6bd1480a11cbe2a43e19112fe3855ced
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: d80e066186fcba43ae0594293263e832336f625ecd185877919a805ef17ac110
+Signer #1 public key SHA-1 digest: d45ee8249c87ee449e5a66989aa7004263f354e9
+Signer #1 public key MD5 digest: 60668adad78d8db45e707eb46f072f16
+
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump badging E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug.apk
+exit=0
+package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.WAKE_LOCK'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+uses-permission: name='com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+application-label:'��ʯ LITHIC Debug'
+application-label-af:'��ʯ LITHIC Debug'
+application-label-am:'��ʯ LITHIC Debug'
+application-label-ar:'��ʯ LITHIC Debug'
+application-label-as:'��ʯ LITHIC Debug'
+application-label-az:'��ʯ LITHIC Debug'
+application-label-be:'��ʯ LITHIC Debug'
+application-label-bg:'��ʯ LITHIC Debug'
+application-label-bn:'��ʯ LITHIC Debug'
+application-label-bs:'��ʯ LITHIC Debug'
+application-label-ca:'��ʯ LITHIC Debug'
+application-label-cs:'��ʯ LITHIC Debug'
+application-label-da:'��ʯ LITHIC Debug'
+application-label-de:'��ʯ LITHIC Debug'
+application-label-el:'��ʯ LITHIC Debug'
+application-label-en-AU:'��ʯ LITHIC Debug'
+application-label-en-CA:'��ʯ LITHIC Debug'
+application-label-en-GB:'��ʯ LITHIC Debug'
+application-label-en-IN:'��ʯ LITHIC Debug'
+application-label-en-XC:'��ʯ LITHIC Debug'
+application-label-es:'��ʯ LITHIC Debug'
+application-label-es-US:'��ʯ LITHIC Debug'
+application-label-et:'��ʯ LITHIC Debug'
+application-label-eu:'��ʯ LITHIC Debug'
+application-label-fa:'��ʯ LITHIC Debug'
+application-label-fi:'��ʯ LITHIC Debug'
+application-label-fr:'��ʯ LITHIC Debug'
+application-label-fr-CA:'��ʯ LITHIC Debug'
+application-label-gl:'��ʯ LITHIC Debug'
+application-label-gu:'��ʯ LITHIC Debug'
+application-label-hi:'��ʯ LITHIC Debug'
+application-label-hr:'��ʯ LITHIC Debug'
+application-label-hu:'��ʯ LITHIC Debug'
+application-label-hy:'��ʯ LITHIC Debug'
+application-label-in:'��ʯ LITHIC Debug'
+application-label-is:'��ʯ LITHIC Debug'
+application-label-it:'��ʯ LITHIC Debug'
+application-label-iw:'��ʯ LITHIC Debug'
+application-label-ja:'��ʯ LITHIC Debug'
+application-label-ka:'��ʯ LITHIC Debug'
+application-label-kk:'��ʯ LITHIC Debug'
+application-label-km:'��ʯ LITHIC Debug'
+application-label-kn:'��ʯ LITHIC Debug'
+application-label-ko:'��ʯ LITHIC Debug'
+application-label-ky:'��ʯ LITHIC Debug'
+application-label-lo:'��ʯ LITHIC Debug'
+application-label-lt:'��ʯ LITHIC Debug'
+application-label-lv:'��ʯ LITHIC Debug'
+application-label-mk:'��ʯ LITHIC Debug'
+application-label-ml:'��ʯ LITHIC Debug'
+application-label-mn:'��ʯ LITHIC Debug'
+application-label-mr:'��ʯ LITHIC Debug'
+application-label-ms:'��ʯ LITHIC Debug'
+application-label-my:'��ʯ LITHIC Debug'
+application-label-nb:'��ʯ LITHIC Debug'
+application-label-ne:'��ʯ LITHIC Debug'
+application-label-nl:'��ʯ LITHIC Debug'
+application-label-or:'��ʯ LITHIC Debug'
+application-label-pa:'��ʯ LITHIC Debug'
+application-label-pl:'��ʯ LITHIC Debug'
+application-label-pt:'��ʯ LITHIC Debug'
+application-label-pt-BR:'��ʯ LITHIC Debug'
+application-label-pt-PT:'��ʯ LITHIC Debug'
+application-label-ro:'��ʯ LITHIC Debug'
+application-label-ru:'��ʯ LITHIC Debug'
+application-label-si:'��ʯ LITHIC Debug'
+application-label-sk:'��ʯ LITHIC Debug'
+application-label-sl:'��ʯ LITHIC Debug'
+application-label-sq:'��ʯ LITHIC Debug'
+application-label-sr:'��ʯ LITHIC Debug'
+application-label-sr-Latn:'��ʯ LITHIC Debug'
+application-label-sv:'��ʯ LITHIC Debug'
+application-label-sw:'��ʯ LITHIC Debug'
+application-label-ta:'��ʯ LITHIC Debug'
+application-label-te:'��ʯ LITHIC Debug'
+application-label-th:'��ʯ LITHIC Debug'
+application-label-tl:'��ʯ LITHIC Debug'
+application-label-tr:'��ʯ LITHIC Debug'
+application-label-uk:'��ʯ LITHIC Debug'
+application-label-ur:'��ʯ LITHIC Debug'
+application-label-uz:'��ʯ LITHIC Debug'
+application-label-vi:'��ʯ LITHIC Debug'
+application-label-zh-CN:'��ʯ LITHIC Debug'
+application-label-zh-HK:'��ʯ LITHIC Debug'
+application-label-zh-TW:'��ʯ LITHIC Debug'
+application-label-zu:'��ʯ LITHIC Debug'
+application-icon-160:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-240:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-320:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-65534:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application-icon-65535:'res/mipmap-anydpi-v26/ic_launcher.xml'
+application: label='��ʯ LITHIC Debug' icon='res/mipmap-anydpi-v26/ic_launcher.xml'
+application-debuggable
+launchable-activity: name='com.cooper.lithic.app.MainActivity'  label='' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+other-activities
+other-receivers
+other-services
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320' '65534' '65535'
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump xmltree E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug.apk --file AndroidManifest.xml
+exit=0
+N: android=http://schemas.android.com/apk/res/android (line=2)
+  E: manifest (line=2)
+    A: http://schemas.android.com/apk/res/android:versionCode(0x0101021b)=17
+    A: http://schemas.android.com/apk/res/android:versionName(0x0101021c)="0.1.0-m22-debug" (Raw: "0.1.0-m22-debug")
+    A: http://schemas.android.com/apk/res/android:compileSdkVersion(0x01010572)=36
+    A: http://schemas.android.com/apk/res/android:compileSdkVersionCodename(0x01010573)="16" (Raw: "16")
+    A: package="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+    A: platformBuildVersionCode=36
+    A: platformBuildVersionName=16
+      E: uses-sdk (line=7)
+        A: http://schemas.android.com/apk/res/android:minSdkVersion(0x0101020c)=26
+        A: http://schemas.android.com/apk/res/android:targetSdkVersion(0x01010270)=36
+      E: uses-permission (line=11)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.POST_NOTIFICATIONS" (Raw: "android.permission.POST_NOTIFICATIONS")
+      E: uses-permission (line=12)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.WAKE_LOCK" (Raw: "android.permission.WAKE_LOCK")
+      E: uses-permission (line=13)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.ACCESS_NETWORK_STATE" (Raw: "android.permission.ACCESS_NETWORK_STATE")
+      E: uses-permission (line=14)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.RECEIVE_BOOT_COMPLETED" (Raw: "android.permission.RECEIVE_BOOT_COMPLETED")
+      E: permission (line=16)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" (Raw: "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
+        A: http://schemas.android.com/apk/res/android:protectionLevel(0x01010009)=0x00000002
+      E: uses-permission (line=20)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" (Raw: "com.cooper.lithic.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
+      E: application (line=22)
+        A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0b0009
+        A: http://schemas.android.com/apk/res/android:label(0x01010001)=@0x7f0a0001
+        A: http://schemas.android.com/apk/res/android:icon(0x01010002)=@0x7f090000
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.LithicApplication" (Raw: "com.cooper.lithic.app.LithicApplication")
+        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true
+        A: http://schemas.android.com/apk/res/android:allowBackup(0x01010280)=false
+        A: http://schemas.android.com/apk/res/android:supportsRtl(0x010103af)=true
+        A: http://schemas.android.com/apk/res/android:extractNativeLibs(0x010104ea)=false
+        A: http://schemas.android.com/apk/res/android:fullBackupContent(0x010104eb)=@0x7f0d0000
+        A: http://schemas.android.com/apk/res/android:roundIcon(0x0101052c)=@0x7f090001
+        A: http://schemas.android.com/apk/res/android:appComponentFactory(0x0101057a)="androidx.core.app.CoreComponentFactory" (Raw: "androidx.core.app.CoreComponentFactory")
+        A: http://schemas.android.com/apk/res/android:dataExtractionRules(0x0101063e)=@0x7f0d0001
+          E: provider (line=37)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.startup.InitializationProvider" (Raw: "androidx.startup.InitializationProvider")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:process(0x01010011)="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+            A: http://schemas.android.com/apk/res/android:authorities(0x01010018)="com.cooper.lithic.debug.androidx-startup" (Raw: "com.cooper.lithic.debug.androidx-startup")
+              E: meta-data (line=42)
+                A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.lifecycle.ProcessLifecycleInitializer" (Raw: "androidx.lifecycle.ProcessLifecycleInitializer")
+                A: http://schemas.android.com/apk/res/android:value(0x01010024)="androidx.startup" (Raw: "androidx.startup")
+              E: meta-data (line=45)
+                A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.ProfileInstallerInitializer" (Raw: "androidx.profileinstaller.ProfileInstallerInitializer")
+                A: http://schemas.android.com/apk/res/android:value(0x01010024)="androidx.startup" (Raw: "androidx.startup")
+          E: service (line=50)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.data.media.isolation.MediaSandboxService" (Raw: "com.cooper.lithic.data.media.isolation.MediaSandboxService")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:process(0x01010011)=":media_sandbox" (Raw: ":media_sandbox")
+            A: http://schemas.android.com/apk/res/android:isolatedProcess(0x010103a9)=true
+          E: activity (line=56)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.MainActivity" (Raw: "com.cooper.lithic.app.MainActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=59)
+                  E: action (line=60)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.action.MAIN" (Raw: "android.intent.action.MAIN")
+                  E: category (line=62)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+          E: service (line=66)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.background.systemjob.SystemJobService" (Raw: "androidx.work.impl.background.systemjob.SystemJobService")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.BIND_JOB_SERVICE" (Raw: "android.permission.BIND_JOB_SERVICE")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=@0x7f020002
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+          E: receiver (line=73)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" (Raw: "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+          E: receiver (line=78)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.background.systemalarm.RescheduleReceiver" (Raw: "androidx.work.impl.background.systemalarm.RescheduleReceiver")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=false
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=83)
+                  E: action (line=84)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.action.BOOT_COMPLETED" (Raw: "android.intent.action.BOOT_COMPLETED")
+          E: receiver (line=87)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.diagnostics.DiagnosticsReceiver" (Raw: "androidx.work.impl.diagnostics.DiagnosticsReceiver")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.DUMP" (Raw: "android.permission.DUMP")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=93)
+                  E: action (line=94)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" (Raw: "androidx.work.diagnostics.REQUEST_DIAGNOSTICS")
+          E: activity (line=98)
+            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x01030241
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.activity.ComponentActivity" (Raw: "androidx.activity.ComponentActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+          E: service (line=103)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.room.MultiInstanceInvalidationService" (Raw: "androidx.room.MultiInstanceInvalidationService")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=true
+          E: receiver (line=108)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.ProfileInstallReceiver" (Raw: "androidx.profileinstaller.ProfileInstallReceiver")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.DUMP" (Raw: "android.permission.DUMP")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=114)
+                  E: action (line=115)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.INSTALL_PROFILE" (Raw: "androidx.profileinstaller.action.INSTALL_PROFILE")
+              E: intent-filter (line=117)
+                  E: action (line=118)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.SKIP_FILE" (Raw: "androidx.profileinstaller.action.SKIP_FILE")
+              E: intent-filter (line=120)
+                  E: action (line=121)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.SAVE_PROFILE" (Raw: "androidx.profileinstaller.action.SAVE_PROFILE")
+              E: intent-filter (line=123)
+                  E: action (line=124)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.BENCHMARK_OPERATION" (Raw: "androidx.profileinstaller.action.BENCHMARK_OPERATION")
+
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\java.exe -jar E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\lib\apksigner.jar verify --verbose --print-certs E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug-androidTest.apk
+exit=0
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: C=US, O=Android, CN=Android Debug
+Signer #1 certificate SHA-256 digest: 29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9
+Signer #1 certificate SHA-1 digest: 6d7f39598b658d167a3a374e1beaf4290b2050c7
+Signer #1 certificate MD5 digest: 6bd1480a11cbe2a43e19112fe3855ced
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: d80e066186fcba43ae0594293263e832336f625ecd185877919a805ef17ac110
+Signer #1 public key SHA-1 digest: d45ee8249c87ee449e5a66989aa7004263f354e9
+Signer #1 public key MD5 digest: 60668adad78d8db45e707eb46f072f16
+
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump badging E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug-androidTest.apk
+exit=0
+package: name='com.cooper.lithic.debug.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.REORDER_TASKS'
+application: label='' icon=''
+application-debuggable
+uses-library:'android.test.runner'
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+other-activities
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320'
+
+> E:\CODEX\MirraAndroid\sdk\build-tools\36.0.0\aapt2.exe dump xmltree E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\app-debug-androidTest.apk --file AndroidManifest.xml
+exit=0
+N: android=http://schemas.android.com/apk/res/android (line=2)
+  E: manifest (line=2)
+    A: http://schemas.android.com/apk/res/android:compileSdkVersion(0x01010572)=36
+    A: http://schemas.android.com/apk/res/android:compileSdkVersionCodename(0x01010573)="16" (Raw: "16")
+    A: package="com.cooper.lithic.debug.test" (Raw: "com.cooper.lithic.debug.test")
+    A: platformBuildVersionCode=36
+    A: platformBuildVersionName=16
+      E: uses-sdk (line=5)
+        A: http://schemas.android.com/apk/res/android:minSdkVersion(0x0101020c)=26
+        A: http://schemas.android.com/apk/res/android:targetSdkVersion(0x01010270)=36
+      E: instrumentation (line=9)
+        A: http://schemas.android.com/apk/res/android:label(0x01010001)="Tests for com.cooper.lithic.debug" (Raw: "Tests for com.cooper.lithic.debug")
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.runner.AndroidJUnitRunner" (Raw: "androidx.test.runner.AndroidJUnitRunner")
+        A: http://schemas.android.com/apk/res/android:targetPackage(0x01010021)="com.cooper.lithic.debug" (Raw: "com.cooper.lithic.debug")
+        A: http://schemas.android.com/apk/res/android:handleProfiling(0x01010022)=false
+        A: http://schemas.android.com/apk/res/android:functionalTest(0x01010023)=false
+      E: queries (line=16)
+          E: package (line=17)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.orchestrator" (Raw: "androidx.test.orchestrator")
+          E: package (line=18)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.services" (Raw: "androidx.test.services")
+          E: package (line=19)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.google.android.apps.common.testing.services" (Raw: "com.google.android.apps.common.testing.services")
+      E: uses-permission (line=22)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.REORDER_TASKS" (Raw: "android.permission.REORDER_TASKS")
+      E: application (line=24)
+        A: http://schemas.android.com/apk/res/android:debuggable(0x0101000f)=true
+        A: http://schemas.android.com/apk/res/android:extractNativeLibs(0x010104ea)=false
+          E: uses-library (line=27)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.test.runner" (Raw: "android.test.runner")
+          E: activity (line=29)
+            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0a0008
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=33)
+                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100
+                  E: category (line=34)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+          E: activity (line=37)
+            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0a0008
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=41)
+                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100
+                  E: category (line=42)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+          E: activity (line=45)
+            A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0a0007
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity" (Raw: "androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=49)
+                A: http://schemas.android.com/apk/res/android:priority(0x0101001c)=-100
+                  E: category (line=50)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+
+Packaged gallery evidence
+0ac088: 7110 3c1b 0000                         |0000: invoke-static {v0}, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;.production_composable_gallery_uses_system_configuration$lambda$1:(Ljava/lang/Throwable;)Ljava/lang/CharSequence; // method@1b3c
+0ac45a: 1a02 1b26                              |0053: const-string v2, "projectDetailAcceptanceTitleOverflowWidth" // string@261b
+0ac46c: 1a02 1926                              |005c: const-string v2, "projectDetailAcceptanceTitleOverflowHeight" // string@2619
+0ac482: 6e10 ea00 0000                         |0067: invoke-virtual {v0}, Landroidx/compose/ui/text/TextLayoutResult;.getHasVisualOverflow:()Z // method@00ea
+0ac75e: 6e10 ea00 0300                         |0013: invoke-virtual {v3}, Landroidx/compose/ui/text/TextLayoutResult;.getHasVisualOverflow:()Z // method@00ea
+Ljava/lang/AssertionError; -> 0x0005
+0x0006 - 0x000c reg=0 failure Ljava/lang/AssertionError;
+name          : 'production_composable_gallery_uses_system_configuration$lambda$1'
+0ac114:                                        |[0ac114] com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration$lambda$1:(Ljava/lang/Throwable;)Ljava/lang/CharSequence;
+name          : 'production_composable_gallery_uses_system_configuration'
+0ad558:                                        |[0ad558] com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration:()V
+0ad56c: 2201 b806                              |0002: new-instance v1, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$seeded$1; // type@06b8
+0ad572: 7030 f81a 0102                         |0005: invoke-direct {v1, v0, v2}, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$seeded$1;.<init>:(Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest;Lkotlin/coroutines/Continuation;)V // method@1af8
+0ad6c0: 2201 b606                              |00ac: new-instance v1, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$1$1; // type@06b6
+0ad6c4: 7020 f21a 0100                         |00ae: invoke-direct {v1, v0}, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$1$1;.<init>:(Ljava/lang/Object;)V // method@1af2
+0ad762: 2201 b706                              |00fd: new-instance v1, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$2; // type@06b7
+0ad766: 7020 f51a 0100                         |00ff: invoke-direct {v1, v0}, Lcom/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$2;.<init>:(Ljava/lang/Object;)V // method@1af5
+0ad7a2: 2201 fb06                              |011d: new-instance v1, Ljava/lang/AssertionError; // type@06fb
+0ad7d6: 7020 0f1c 2100                         |0137: invoke-direct {v1, v2}, Ljava/lang/AssertionError;.<init>:(Ljava/lang/Object;)V // method@1c0f
+0ad80c: 6e20 101c b200                         |0152: invoke-virtual {v2, v11}, Ljava/lang/AssertionError;.addSuppressed:(Ljava/lang/Throwable;)V // method@1c10
+0x007f - 0x00c1 reg=15 $i$a$-forEach-V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$1\2\329\0 I
+0x0152 - 0x0155 reg=12 $i$a$-forEach-V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$4$1\5\331\3 I
+0x013b - 0x0159 reg=2 $this$production_composable_gallery_uses_system_configuration_u24lambda_u242\3 Ljava/lang/AssertionError;
+0x013c - 0x0159 reg=3 $i$a$-apply-V3ProjectDetailAndroidAcceptanceTest$production_composable_gallery_uses_system_configuration$4\3\142\0 I
+> E:\CODEX\MirraAndroid\jdk17\jdk-17.0.20.1+1\bin\javap.exe -p -c -classpath E:\CODEX\lithic-ui-v3-project-detail-repair-02\app\build\tmp\kotlin-classes\debugAndroidTest com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest
+Traceback (most recent call last):
+  File "E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\audit.py", line 95, in <module>
+    audit[name]['gallery_diagnostics'] = audit_gallery(apk)
+                                         ^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\audit.py", line 56, in audit_gallery
+    java_output = execute(java.with_name('javap.exe'), '-p', '-c', '-classpath', class_dir, class_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\CODEX\lithic-ui-v3-project-detail-repair-02-android-local\audit.py", line 67, in execute
+    print(f'exit={result.returncode}\n{result.stdout}{result.stderr}', flush=True)
+UnicodeEncodeError: 'gbk' codec can't encode character '\ufffd' in position 36258: illegal multibyte sequence

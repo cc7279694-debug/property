@@ -1,0 +1,55 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.ProjectEntryFlowTest#rapid_double_tap_creates_only_one_real_project_and_one_appended_event,com.cooper.lithic.feature.project.ProjectEntryFlowTest#backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room,com.cooper.lithic.feature.project.ProjectEntryFlowTest#editing_name_and_start_date_updates_visible_results_without_changing_money_history com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.ProjectEntryFlowTest:
+INSTRUMENTATION_STATUS: test=backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=rapid_double_tap_creates_only_one_real_project_and_one_appended_event
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=rapid_double_tap_creates_only_one_real_project_and_one_appended_event
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=editing_name_and_start_date_updates_visible_results_without_changing_money_history
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=editing_name_and_start_date_updates_visible_results_without_changing_money_history
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_RESULT: stream=
+
+Time: 41.444
+
+OK (3 tests)
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---
