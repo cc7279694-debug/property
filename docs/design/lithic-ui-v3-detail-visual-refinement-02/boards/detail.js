@@ -9,6 +9,7 @@ const glyphs = {
   loading: 'M20 12a8 8 0 1 1-8-8m8 0v5h-5',
   broken: 'M14 20H3V4h18v6M3 15l5-5 4 4m6-3 5 9H13zm0 4v2m0 2h.01',
   add: 'M12 5v14M5 12h14',
+  chevron: 'M9 6l6 6-6 6',
   edit: 'M13.5 5.5l5 5M4 20l4.5-1 11-11a2 2 0 0 0-5-5l-11 11L4 20Z',
 };
 const icon = name => '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="' + glyphs[name] + '"/></svg>';
@@ -26,7 +27,7 @@ const cash = (value, unit = '', extra = '') => '<span class="money ' + extra + '
 const btn = (label, attr = '') => '<button class="detail-action" ' + attr + '>' + label + '</button>';
 const sec = (title, content) => '<section class="section"><h3>' + title + '</h3>' + content + '</section>';
 const line = (label, value) => '<div class="line"><span class="muted">' + label + '</span><span>' + value + '</span></div>';
-const state = label => '<span class="state">' + label + '</span>';
+const state = (label, tone = '') => '<span class="state' + (tone ? ' ' + tone : '') + '">' + label + '</span>';
 const camera = '<img src="../../lithic-ui-v3-03-details/boards/assets/synthetic-camera.png" alt="合成相机完整封面">';
 const registered = '<img src="../../lithic-ui-v3-02/boards/assets/reader.jpg" alt="已关联的合成阅读服务封面示例">';
 const photoCopy = {
@@ -60,8 +61,11 @@ function event(when, label, value, detail, action) {
     cash(value) + (action ? '<button class="icon-button row-control" aria-label="' + action + ' · ' + when + '">' +
       icon('edit') + '</button>' : '') + '</div></article>';
 }
-function recordsCard(title, records) {
-  return '<section class="record-group"><h3>' + title + '</h3><div class="group-card">' + records + '</div></section>';
+function recordsCard(title, records, showAll = false) {
+  const all = showAll ? '<button class="record-all" data-all-records aria-label="查看全部金额记录">全部' +
+    icon('chevron') + '</button>' : '';
+  return '<section class="record-group"><div class="record-heading"><h3>' + title + '</h3>' +
+    all + '</div><div class="group-card">' + records + '</div></section>';
 }
 function project(options) {
   const {read, photo = 'normal', empty, ended, long, linked, negative, zero, mediaActions} = options;
@@ -91,7 +95,7 @@ function project(options) {
       fact(linked ? '累计投入（含非现金折抵）' : '累计实际投入', long ? '9,999,999,999.99' : zero ? '0.00' : '1,400.00') +
       fact(linked ? '累计收回（含非现金折抵）' : '累计实际收回', long ? '0.00' : ended ? '450.00' : negative ? '1,800.00' : zero ? '0.00' : '200.00') +
       fact('净投入', long ? '9,999,999,999.99' : ended ? '950.00' : negative ? '−400.00' : zero ? '0.00' : '1,200.00') + '</div>')) +
-    recordsCard('金额记录', records) +
+    recordsCard('金额记录', records, !empty) +
     sec('资料与历史', line('开始拥有', date(long ? '2026-11-13' : '2026-07-16')) +
       (ended ? line('已记录结束日期', date('2026-11-02')) + line('结束原因', '转交闲置设备') : '') +
       (linked ? '<p class="muted">有关联换新，金额与日期不能单独修改。</p>' : '') + btn('查看成本历史'));
@@ -114,7 +118,7 @@ function subscription(options) {
     name + '</h2><p class="meta">内容 ' + state(ended ? '已停止' : paused ? '已暂停' : empty ? '已到期' : '订阅中') + '</p>' +
     (photo === 'broken' ? '<p class="muted small">封面暂不可用</p>' : '') + '</div></section>';
   const plan = ended || paused || empty ? '<p>当前无有效套餐</p>' + line('当前日均贡献', cash('0.00', '/天')) :
-    '<div class="plan-title"><b>月付 ' + cash(long ? '9,999,999,999.99' : '59.40') + '</b>' + state('生效中') + '</div>' +
+    '<div class="plan-title"><b>月付 ' + cash(long ? '9,999,999,999.99' : '59.40') + '</b>' + state('生效中', 'plan-active') + '</div>' +
     '<p class="muted small">2026-10-26 至 2026-11-26（不含当日）</p>' +
     line('当前标准日均价', cash(long ? '333,333,333.33' : '1.98', '/天'));
   const next = !long && !empty ? '<section class="plan"><h3>下一期 · 已付款</h3>' +
@@ -179,16 +183,27 @@ window.boardReady = document.fonts.ready.then(() => {
   root.querySelectorAll('.scroll').forEach(element => { element.scrollTop = Number(element.dataset.position || 0); });
 });
 
-// Read-only date inspection for the review board. Financial actions remain visual examples.
+// The design viewer only reads the facts already rendered in the originating frame.
 const modal = document.createElement('dialog');
 modal.className = 'preview-dialog';
+modal.setAttribute('aria-labelledby', 'preview-title');
 root.append(modal);
 root.addEventListener('click', event => {
-  const trigger = event.target.closest('button[data-payment-details]');
+  const trigger = event.target.closest('button[data-payment-details], button[data-all-records]');
   if (!trigger) return;
-  const details = trigger.nextElementSibling;
-  if (!(details instanceof HTMLTemplateElement)) return;
-  modal.innerHTML = '<h2>付款详情</h2><div class="preview-data"></div><form method="dialog"><button>关闭</button></form>';
-  modal.querySelector('.preview-data').append(details.content.cloneNode(true));
+  const all = trigger.hasAttribute('data-all-records');
+  const source = all ? trigger.closest('.record-group').querySelector('.group-card') : trigger.nextElementSibling;
+  const content = all ? source.cloneNode(true) : source.content.cloneNode(true);
+  if (all) {
+    content.className = 'all-record-list';
+    content.querySelectorAll('button').forEach(button => button.remove());
+  }
+  const frameStyle = getComputedStyle(trigger.closest('.screen'));
+  for (const property of ['--bg', '--ink', '--secondary', '--card-line', '--danger', '--scale']) {
+    modal.style.setProperty(property, frameStyle.getPropertyValue(property));
+  }
+  modal.innerHTML = '<h2 id="preview-title">' + (all ? '全部金额记录' : '付款详情') +
+    '</h2><div class="preview-data"></div><form method="dialog"><button>关闭</button></form>';
+  modal.querySelector('.preview-data').append(content);
   modal.showModal();
 });
