@@ -33,7 +33,7 @@ internal fun BackupInspectionFeedback(state: BackupInspectionUiState, onCancel: 
             Text("物品 ${summary.recordCounts["long_term_projects"] ?: 0L} · 订阅 ${summary.recordCounts["subscriptions"] ?: 0L} · 照片 ${summary.mediaCount}",
                 style = MaterialTheme.typography.bodyMedium)
             Text("照片登记长度合计 ${summary.mediaBytes} 字节", style = MaterialTheme.typography.bodyMedium)
-            Text("结构、记录关联、长度、校验和及媒体规则均通过。实际恢复尚未验证。",
+            Text("结构、记录关联、长度、校验和及媒体规则均通过。恢复需另行验证，结果因环境而异。",
                 Modifier.testTag("backup-inspection-limits"), style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant)
         }

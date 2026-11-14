@@ -25,7 +25,9 @@ class DataConfidencePresentationTest {
                 BackupInspectionSummary(4, "2026-11-01T00:00:00Z", mapOf("long_term_projects" to 1L, "subscriptions" to 1L), 2, 256)),
                 message = "VERIFIED · 文件符合当前完整性规则。")) } }
         compose.onNodeWithTag("backup-inspection-summary").performScrollTo().assertExists()
-        compose.onNodeWithTag("backup-inspection-limits").performScrollTo().assertTextContains("实际恢复尚未验证", substring = true)
+        compose.onNodeWithTag("backup-inspection-limits").performScrollTo()
+            .assertTextContains("恢复需另行验证", substring = true)
+            .assertTextContains("结果因环境而异", substring = true)
         compose.onNodeWithTag("backup-restore-feedback").assertDoesNotExist()
     }
 
