@@ -62,7 +62,7 @@ internal fun ReviewShell(projectCount: Long, modifier: Modifier = Modifier, onPr
             C5InformationButton("回看的口径", Modifier.testTag("review-information")) {
                 Column(Modifier.testTag("review-information-content"), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     ReviewCounts(projectCount, subscriptionCount)
-                    Text("没有录入不等于没有花钱。趋势按已录入并更正的记录重建，非当天扣款。年度回顾按资金实际发生年归属。历史档案仅含已结束项目和已停止订阅。")
+                    Text("没有录入不等于没有花钱。趋势按已录入及更正的记录重建，非当天扣款。年度回顾按资金实际发生年归属。历史档案仅含已结束项目和已停止订阅。")
                 }
             }
         }

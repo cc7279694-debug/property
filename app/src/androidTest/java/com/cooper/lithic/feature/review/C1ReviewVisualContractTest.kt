@@ -110,7 +110,7 @@ class C1ReviewVisualContractTest {
         showDestinations(400f, 1f)
         val row = compose.onNodeWithTag("review-category-analysis").performScrollTo().assertIsDisplayed().fetchSemanticsNode()
         assertTrue("Normal row should keep the 56dp compact layout", row.size.height <= 64f * pixelsPerDp)
-        compose.onNodeWithText("长期项目与订阅分别查看", useUnmergedTree = true).assertDoesNotExist()
+        compose.onNodeWithText("项目与订阅分列", useUnmergedTree = true).assertDoesNotExist()
         checkDestinations()
     }
 
