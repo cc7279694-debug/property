@@ -75,11 +75,11 @@ class CategoryManagementScreenTest {
         compose.setContent { LithicTheme {
             Render(CategoryManagementUiState(items = listOf(CategoryEntry(fallback, 2), CategoryEntry(source, 7)), loading = false))
         } }
-        compose.onNodeWithText("长期项目与订阅分别管理。类别调整后，历史记录也按当前分类展示。").assertDoesNotExist()
+        compose.onNodeWithText("项目、订阅分开管理。历史记录也按当前分类显示。").assertDoesNotExist()
         compose.onNodeWithText("默认类别，供未分类记录使用。").assertIsDisplayed()
         compose.onNodeWithTag("category-merge-${source.id}").assertIsDisplayed()
         compose.onNodeWithTag("category-information").performClick()
-        compose.onNodeWithText("长期项目与订阅分别管理。类别调整后，历史记录也按当前分类展示。").assertIsDisplayed()
+        compose.onNodeWithText("项目、订阅分开管理。历史记录也按当前分类显示。").assertIsDisplayed()
     }
 
     @androidx.compose.runtime.Composable

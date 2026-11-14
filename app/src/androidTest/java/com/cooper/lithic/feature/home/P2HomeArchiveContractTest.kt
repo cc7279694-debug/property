@@ -176,12 +176,12 @@ class P2HomeArchiveContractTest {
             }
         }
         compose.onNodeWithTag(projectTag()).assertDoesNotExist()
-        compose.onNodeWithText("预览日期正在更新").assertExists()
+        compose.onNodeWithText("正在更新预览日期").assertExists()
         click("home-subscription-tab")
         compose.onNodeWithTag(subscriptionTag()).assertExists()
         compose.runOnIdle { failed.value = true }
         compose.onNodeWithTag(subscriptionTag()).assertExists()
-        compose.onAllNodesWithText("以下保留上次读取结果").assertCountEquals(1)
+        compose.onAllNodesWithText("保留上次结果").assertCountEquals(1)
         compose.onNodeWithTag("home-retry-project-preview").assertDoesNotExist()
         compose.onNodeWithTag("home-retry-subscription-preview").performScrollTo().performClick()
         compose.runOnIdle { assertEquals(0, projectRetries); assertEquals(1, subscriptionRetries) }

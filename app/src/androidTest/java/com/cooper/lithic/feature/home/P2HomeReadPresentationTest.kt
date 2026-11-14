@@ -96,7 +96,7 @@ class P2HomeReadPresentationTest {
         val projectId = facts.projects.items.single().project.id
         val subscriptionId = facts.subscriptions.items.single().subscription.id
         compose.onNodeWithTag("home-project-preview-$projectId").assertExists()
-        compose.onAllNodesWithText("以下保留上次读取结果").assertCountEquals(1)
+        compose.onAllNodesWithText("保留上次结果").assertCountEquals(1)
         compose.onNodeWithTag("home-retry-subscription-preview").assertDoesNotExist()
         compose.onNodeWithTag("home-retry-project-preview").performScrollTo().performClick()
         compose.runOnIdle {

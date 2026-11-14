@@ -28,7 +28,7 @@ class C2B3ProjectOperationsTest {
         } }
         compose.onNodeWithTag("correction-amount").assertIsNotEnabled()
         compose.onNodeWithTag("correction-occurred-on-input").performScrollTo().assertIsNotEnabled()
-        compose.onNodeWithText("以旧换新关联记录只修改说明，不单独修改金额或真实日期。").assertExists()
+        compose.onNodeWithText("以旧换新关联记录仅可修改说明。").assertExists()
     }
 
     @Test fun unconfirmed_end_only_replays_the_original_submission_callback() {
