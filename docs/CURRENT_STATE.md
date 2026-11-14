@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC UI-V3 DETAIL INFORMATION HIERARCHY 02 — READY_FOR_INDEPENDENT_REVIEW（2026-11-14）**。项目默认收起财务明细，项目和订阅记录默认显示最近三条，原单笔事实、纠错与独立分页保持。生产仅改两个详情页。97 项定向 JVM、生产及 AndroidTest 编译和 Debug 构建通过，Lint 0 错误／20 警告。唯一 Debug App 归档与原签名、Manifest、DEX 已核对；三主题实际截图、真实 200% 及 Android 交互均 NOT_RUN。见[实施报告](evidence/LITHIC-UI-V3-DETAIL-INFORMATION-HIERARCHY-02.md)。
+
 - **LITHIC UI-V3 GLOBAL POLISH 01 — READY_FOR_INDEPENDENT_REVIEW（2026-11-14）**。核对 38 个 Nav3 入口和局部弹层，生产三主题共享色角色统一，120 处界面文案调整。116 类、984 项 JVM PASS，生产和 AndroidTest 编译及 Debug 双包签名核验通过，Lint 0 错误／20 警告。未操作 Android、ADB 或真实账本，主题实测、200% 字体与 TalkBack 仍 NOT_RUN。见[独立验收报告](evidence/LITHIC-UI-V3-GLOBAL-POLISH-01.md)。
 
 - **LITHIC_PROJECT_DETAIL_DEVICE_HANDOFF_04 — READY_FOR_USER_REVIEW（2026-11-14）**。复核本机原 Debug App/Test 签名、包身份、版本、SHA 和构建绑定，静态确认 79 个指定 AndroidTest 方法。小米14合成账本手工清单已备齐，当前 Debug 关闭照片写入，正向封面项目缺独立夹具。未操作设备或 ADB，真机与自动化仍 NOT_RUN，等待独立审查。见[真机交接](evidence/LITHIC-Project-Detail-Device-Handoff-04.md)。

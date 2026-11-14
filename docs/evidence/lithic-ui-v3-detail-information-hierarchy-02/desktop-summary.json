@@ -1,0 +1,212 @@
+{
+  "build_exit": 0,
+  "test_classes": 9,
+  "tests": 97,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "suites": [
+    {
+      "name": "com.cooper.lithic.core.design.C5MoneyMetricPresentationTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "positive_and_negative_subcent_daily_values_keep_the_original_formatter_contract",
+        "measured_daily_text_is_the_same_complete_value_with_a_smaller_baseline_suffix",
+        "cny_is_one_complete_currency_value_without_a_second_yuan_label",
+        "cny_and_missing_readouts_have_no_separate_suffix_to_measure_or_read_twice",
+        "full_amount_text_preserves_all_digits_and_the_original_display_precision",
+        "missing_zero_and_negative_values_keep_the_existing_distinct_meanings",
+        "daily_display_and_copy_text_include_the_complete_daily_suffix_once",
+        "metric_label_is_added_once_without_changing_the_value_or_unit_meaning"
+      ],
+      "sha256": "885ea4468c9fb93c7bd8a8941f7b25c1a41a422223438c53dcfc09fed8afd9cf",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.core.design.C5MoneyMetricPresentationTest.xml"
+    },
+    {
+      "name": "com.cooper.lithic.core.design.C9ThemePaletteTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "pressed_focus_layers_and_explicit_disabled_controls_keep_readable_pairs",
+        "actual_text_action_dialog_and_status_pairs_meet_text_contrast",
+        "three_fixed_backgrounds_and_primary_actions_match_the_approved_specification",
+        "interactive_outlines_and_all_real_chart_roles_meet_non_text_contrast",
+        "light_themes_distinguish_page_secondary_surfaces_and_dividers_while_keeping_white_cards",
+        "actual_home_brand_text_actions_and_fab_meet_contrast_in_each_theme",
+        "dark_theme_keeps_its_neutral_surfaces_and_action"
+      ],
+      "sha256": "5240414ec1d15bfdf8be1e000a757b76c860dc250a99dfe91b0f18964cb6a417",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.core.design.C9ThemePaletteTest.xml"
+    },
+    {
+      "name": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "dated_event_does_not_rewrite_earlier_days",
+        "negative_cost_is_not_clamped",
+        "rejects_gross_outlay_overflow",
+        "rejects_end_date_before_start",
+        "q02_v01_ended_snapshot_uses_historical_observation_day",
+        "post_end_installment_does_not_restart_or_extend_project",
+        "end_day_removes_current_contribution",
+        "tiny_positive_and_negative_daily_rates_are_not_rounded_to_zero",
+        "date_span_is_not_narrowed_to_int_or_rounded_to_zero",
+        "rejects_recovery_overflow",
+        "refund_is_separate_from_the_original_outlay",
+        "leap_day_is_a_real_natural_day",
+        "same_day_is_one_day",
+        "empty_event_list_is_valid_zero_cost",
+        "aggregate_can_exceed_single_event_limit",
+        "post_end_refund_keeps_duration",
+        "q02_v03_same_day_end_and_late_settlement_share_one_evaluation",
+        "prepaid_money_before_start_has_no_effective_daily_rate",
+        "q02_v02_refund_changes_only_its_occurrence_day_and_after",
+        "zero_cost_is_effective_and_contributes_while_active",
+        "installments_count_only_after_their_real_payment_day",
+        "unordered_same_day_events_are_all_counted_once"
+      ],
+      "sha256": "99af97c789ec4fd4b2da5136e2a526d788ba24f44fbacf0912412041ca570084",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.domain.project.ProjectCostEngineTest.xml"
+    },
+    {
+      "name": "com.cooper.lithic.domain.project.ProjectLifecycleRulesTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "end_day_is_already_history_but_future_end_is_current",
+        "requires_a_real_nonblank_end_reason",
+        "rejects_end_before_ownership_without_changing_cost_rules",
+        "frozen_engine_keeps_ten_days_after_late_installment_and_negative_recovery"
+      ],
+      "sha256": "f2cbfd625701301915c6bd4ee6ab93c2b850ee077a67242d45f0d65edf4fc748",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.domain.project.ProjectLifecycleRulesTest.xml"
+    },
+    {
+      "name": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "standard_purchased_days_overflow_fails_without_wrapping",
+        "confirmed_paid_cents_overflow_fails_without_wrapping",
+        "two_real_payments_use_same_accumulation_in_engine",
+        "confirmed_paid_cents_reaches_long_max_exactly",
+        "largest_cycle_multiple_below_long_max_is_safe_then_next_cycle_fails",
+        "standard_purchased_days_reaches_long_max_at_arithmetic_boundary"
+      ],
+      "sha256": "a25aef82845a1f5adb5d1b0bb1ad8683fd194901dbbdd88da56a8cb316e77307",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest.xml"
+    },
+    {
+      "name": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "tests": 37,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "leap_year_natural_366_is_distinct_from_standard_365",
+        "only_three_fixed_cycles_exist",
+        "future_pause_and_stop_do_not_change_the_past",
+        "resume_after_expiry_does_not_create_payment",
+        "leap_day_start_reaches_365_on_february_27",
+        "expired_has_zero_current_rate",
+        "coverage_at_max_date_expires_without_plus_days_overflow",
+        "unordered_records_produce_identical_history",
+        "prepaid_future_without_current_coverage_is_expired",
+        "quarterly_standard_rate",
+        "later_real_payment_is_legal_input_but_unknown_to_earlier_observation",
+        "observation_before_all_facts_has_no_cost_or_elapsed_days",
+        "annual_purchase_not_elapsed_year",
+        "annual_pause_excludes_ten_days_and_next_real_period_reaches_365",
+        "monthly_standard_rate",
+        "zero_amount_is_not_a_real_renewal",
+        "prepaid_next_rate_does_not_start_early",
+        "even_identical_same_day_states_require_correction",
+        "duplicate_same_day_states_are_rejected_in_both_orders",
+        "coverage_gap_is_not_counted_or_active",
+        "interval_days_use_long_and_do_not_enumerate_dates",
+        "empty_history_has_explicit_no_record_reason",
+        "nested_and_duplicate_coverage_are_rejected",
+        "default_stop_uses_paid_end_and_preserves_preboundary_service",
+        "stored_standard_days_must_match_fixed_cycle",
+        "paused_without_coverage_remains_paused",
+        "fractional_rate_keeps_decimal128_precision_and_nonzero_value",
+        "prepaid_cycle_change_starts_at_its_effective_boundary",
+        "overlaps_rejected",
+        "writing_rejects_future_payment_using_business_today",
+        "reversed_coverage_is_rejected",
+        "reminder_boundary_does_not_extend_paid_coverage",
+        "empty_coverage_is_rejected",
+        "interval_start_state_boundary_counts_enabled_date_only_once",
+        "pause_does_not_erase_paid_history",
+        "payment_today_and_future_service_are_valid",
+        "explicit_early_stop_excludes_its_first_stopped_day"
+      ],
+      "sha256": "7bf53c8b8bcda80ec542e9c20331894ac3ee450e0305c8aa72e55709c4e68219",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest.xml"
+    },
+    {
+      "name": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "trade_in_group_keeps_original_delete_protection",
+        "active_menu_retains_every_existing_management_action",
+        "missing_optional_routes_do_not_create_dead_menu_actions",
+        "future_end_does_not_mislabel_an_effective_current_result_as_final",
+        "ended_menu_preserves_end_correction_without_authorizing_a_new_trade_in"
+      ],
+      "sha256": "6e04d78c6940a316c42cdeaa71d526876e8023d3951a243031737518a0be9634",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest.xml"
+    },
+    {
+      "name": "com.cooper.lithic.feature.project.C2R1ProjectEventLabelsTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "long_timelines_keep_a_quick_history_route_only_when_the_real_callback_exists",
+        "initial_and_end_settlement_are_not_flattened_into_regular_events",
+        "regular_outlay_and_recovery_stay_explicit",
+        "trade_in_credit_is_never_labeled_as_a_cash_receipt"
+      ],
+      "sha256": "5a5c45deb1048d59dd68180d31d02326f90a17b226d4c0175e8543bca66700c2",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.feature.project.C2R1ProjectEventLabelsTest.xml"
+    },
+    {
+      "name": "com.cooper.lithic.feature.subscription.SubscriptionReviewOriginTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "methods": [
+        "current_and_history_navigation_still_follow_the_real_state",
+        "unknown_and_malformed_origins_are_rejected",
+        "review_origin_survives_current_and_stopped_commits",
+        "review_origin_can_open_existing_state_and_correction_forms"
+      ],
+      "sha256": "d39fb32f581d1425a0236b81338bb6182ea27ce01b6be95e9c2684257ef8b89f",
+      "evidence": "jvm-xml/TEST-com.cooper.lithic.feature.subscription.SubscriptionReviewOriginTest.xml"
+    }
+  ],
+  "lint": {
+    "errors": 0,
+    "warnings": 20,
+    "evidence": "lint-results-debug.txt"
+  },
+  "android_runtime": "NOT_RUN"
+}

@@ -1,0 +1,111 @@
+{
+  "source_commit": "e19e59d9c4038ee365b119618fc331f17d317a6e",
+  "app_tree": "6b8eb5233aabdd73f558150748c33bbc92704ffb",
+  "available_gib": 4.131,
+  "minimum_gib": 4,
+  "free_disk_gib": 22.757,
+  "utc": "2026-11-14T12:54:45.7430602Z",
+  "args": [
+    "--offline",
+    "--no-daemon",
+    "--console=plain",
+    "--max-workers=1",
+    "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    ":app:testDebugUnitTest",
+    "--tests",
+    "*C2ProjectDetailPresentationTest",
+    "--tests",
+    "*C2R1ProjectEventLabelsTest",
+    "--tests",
+    "*ProjectCostEngineTest",
+    "--tests",
+    "*ProjectLifecycleRulesTest",
+    "--tests",
+    "*SubscriptionCostEngineTest",
+    "--tests",
+    "*SubscriptionAccumulationTest",
+    "--tests",
+    "*SubscriptionReviewOriginTest",
+    "--tests",
+    "*C5MoneyMetricPresentationTest",
+    "--tests",
+    "*C9ThemePaletteTest",
+    ":app:compileDebugKotlin",
+    ":app:compileDebugAndroidTestKotlin",
+    ":app:assembleDebugAndroidTest",
+    ":app:lintDebug",
+    ":app:assembleDebug"
+  ],
+  "baseline_pair_sha256": {
+    "app-debug.apk": "224326de6cbb2c9a7b7abbfe18bbee146d7fadbf1ce61ef49b378e32c84b035d",
+    "app-debug-androidTest.apk": "e9be354ebd873ab6fad1f6045cd49464bc0f9ad1d98227f00d4b59b598a97b80"
+  },
+  "artifacts": {
+    "app-debug.apk": {
+      "package": "com.cooper.lithic.debug",
+      "build_output": "E:\\CODEX\\lithic-ui-v3-detail-information-hierarchy-02\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+      "header": "package: name='com.cooper.lithic.debug' versionCode='17' versionName='0.1.0-m22-debug' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "bytes": 20590822,
+      "sha256": "4267e89e569194b51a69cc1da9034296798fa9fec3693d5db804dec763d3b24d",
+      "signer_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "dex_entries": [
+        "classes.dex",
+        "classes10.dex",
+        "classes11.dex",
+        "classes12.dex",
+        "classes13.dex",
+        "classes14.dex",
+        "classes15.dex",
+        "classes2.dex",
+        "classes3.dex",
+        "classes4.dex",
+        "classes5.dex",
+        "classes6.dex",
+        "classes7.dex",
+        "classes8.dex",
+        "classes9.dex"
+      ],
+      "manifest_and_permissions_match_baseline": true,
+      "dex_probes": [
+        "project-financial-summary",
+        "project-more-details-expand",
+        "subscription-detail-next-plan",
+        "subscription-detail-show-payments",
+        "subscription-detail-other-content"
+      ],
+      "local_delivery": "E:\\CODEX\\lithic-ui-v3-detail-information-hierarchy-02-local\\verified-debug\\Lithic-Detail-Hierarchy-02-debug.apk",
+      "archive_matches_build_bytes": true
+    },
+    "app-debug-androidTest.apk": {
+      "package": "com.cooper.lithic.debug.test",
+      "build_output": "E:\\CODEX\\lithic-ui-v3-detail-information-hierarchy-02\\app\\build\\outputs\\apk\\androidTest\\debug\\app-debug-androidTest.apk",
+      "header": "package: name='com.cooper.lithic.debug.test' versionCode='' versionName='' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "bytes": 4107419,
+      "sha256": "b238f8878ee78a643c0e56f3a6512af96d75570204619d8763d5b8ca95d0661a",
+      "signer_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+      "dex_entries": [
+        "classes.dex",
+        "classes10.dex",
+        "classes11.dex",
+        "classes12.dex",
+        "classes13.dex",
+        "classes2.dex",
+        "classes3.dex",
+        "classes4.dex",
+        "classes5.dex",
+        "classes6.dex",
+        "classes7.dex",
+        "classes8.dex",
+        "classes9.dex"
+      ],
+      "manifest_and_permissions_match_baseline": true,
+      "dex_probes": [
+        "V3ProjectDetailScreenTest",
+        "C2B2SubscriptionLayoutTest",
+        "loaded_payments_keep_their_order_and_page_only_on_explicit_request"
+      ],
+      "disposition": "Test output for compiled evidence only"
+    }
+  }
+}
