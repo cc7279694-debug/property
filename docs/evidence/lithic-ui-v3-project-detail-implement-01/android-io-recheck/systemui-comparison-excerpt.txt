@@ -1,0 +1,22 @@
+=== Final09 control ===
+         1794570866.231   760   760 I boot_progress_ams_ready: 54790
+         1794570873.195   760   812 I boot_progress_enable_screen: 61754
+         1794570867.127   760   819 I ActivityManager: Start proc 1052:com.android.systemui/u0a124 for service {com.android.systemui/com.android.systemui.wallpapers.ImageWallpaper}
+         1794570875.559  1052  1052 I SystemUIService: Found SurfaceFlinger's GPU Priority: 0
+=== Last startup ANR ===
+         1794627482.822   771   771 I boot_progress_ams_ready: 64355
+         1794627495.334   771   877 I boot_progress_enable_screen: 76867
+         1794627498.551   771  1396 I am_anr  : [0,1126,com.android.systemui,818462221,Process ProcessRecord{8555832 1126:com.android.systemui/u0a124} failed to complete startup]
+         1794627483.359   771   884 I ActivityManager: Start proc 1126:com.android.systemui/u0a124 for service {com.android.systemui/com.android.systemui.wallpapers.ImageWallpaper}
+         1794627500.580   771  1396 E ActivityManager: Reason: Process ProcessRecord{8555832 1126:com.android.systemui/u0a124} failed to complete startup
+         1794627500.580   771  1396 E ActivityManager: some avg10=0.51 avg60=0.09 avg300=0.02 total=90894
+         1794627500.580   771  1396 E ActivityManager: some avg10=6.39 avg60=3.79 avg300=1.15 total=4183293
+         1794627500.580   771  1396 E ActivityManager: some avg10=78.64 avg60=45.03 avg300=13.91 total=46250584
+         1794627500.580   771  1396 E ActivityManager: full avg10=69.82 avg60=40.28 avg300=12.47 total=41566024
+         1794627500.580   771  1396 E ActivityManager: 87% TOTAL: 3.4% user + 9.4% kernel + 72% iowait + 2.6% irq + 0.2% softirq
+         1794627501.191  1126  1126 I SystemUIService: Found SurfaceFlinger's GPU Priority: 0
+=== Read-only boot warmup ===
+         1794628336.274   722   722 I boot_progress_ams_ready: 26944
+         1794628341.620   722   756 I boot_progress_enable_screen: 32290
+         1794628336.834   722   763 I ActivityManager: Start proc 994:com.android.systemui/u0a124 for service {com.android.systemui/com.android.systemui.wallpapers.ImageWallpaper}
+         1794628347.547   994   994 I SystemUIService: Found SurfaceFlinger's GPU Priority: 0

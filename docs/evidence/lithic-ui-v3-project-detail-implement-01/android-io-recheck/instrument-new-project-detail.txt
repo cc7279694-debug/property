@@ -1,0 +1,159 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.V3ProjectDetailScreenTest com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.V3ProjectDetailScreenTest:
+INSTRUMENTATION_STATUS: test=linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view(V3ProjectDetailScreenTest.kt:101)
+
+INSTRUMENTATION_STATUS: stream=
+Error in linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view(com.cooper.lithic.feature.project.V3ProjectDetailScreenTest):
+java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view(V3ProjectDetailScreenTest.kt:101)
+
+INSTRUMENTATION_STATUS: test=linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=exactly_three_shows_every_event_without_an_expand_control
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.exactly_three_shows_every_event_without_an_expand_control(V3ProjectDetailScreenTest.kt:55)
+
+INSTRUMENTATION_STATUS: stream=
+Error in exactly_three_shows_every_event_without_an_expand_control(com.cooper.lithic.feature.project.V3ProjectDetailScreenTest):
+java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.exactly_three_shows_every_event_without_an_expand_control(V3ProjectDetailScreenTest.kt:55)
+
+INSTRUMENTATION_STATUS: test=exactly_three_shows_every_event_without_an_expand_control
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area(V3ProjectDetailScreenTest.kt:129)
+
+INSTRUMENTATION_STATUS: stream=
+Error in regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area(com.cooper.lithic.feature.project.V3ProjectDetailScreenTest):
+java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area(V3ProjectDetailScreenTest.kt:129)
+
+INSTRUMENTATION_STATUS: test=regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailScreenTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=4
+INSTRUMENTATION_STATUS: stack=java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project(V3ProjectDetailScreenTest.kt:64)
+
+INSTRUMENTATION_STATUS: stream=
+Error in four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project(com.cooper.lithic.feature.project.V3ProjectDetailScreenTest):
+java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project(V3ProjectDetailScreenTest.kt:64)
+
+INSTRUMENTATION_STATUS: test=four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 8.401
+There were 4 failures:
+1) linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view(com.cooper.lithic.feature.project.V3ProjectDetailScreenTest)
+java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.linked_credit_keeps_its_fact_note_and_guarded_correction_after_read_only_view(V3ProjectDetailScreenTest.kt:101)
+2) exactly_three_shows_every_event_without_an_expand_control(com.cooper.lithic.feature.project.V3ProjectDetailScreenTest)
+java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.exactly_three_shows_every_event_without_an_expand_control(V3ProjectDetailScreenTest.kt:55)
+3) regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area(com.cooper.lithic.feature.project.V3ProjectDetailScreenTest)
+java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.regular_and_large_font_preserve_all_financial_facts_and_keep_the_action_outside_the_scroll_area(V3ProjectDetailScreenTest.kt:129)
+4) four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project(com.cooper.lithic.feature.project.V3ProjectDetailScreenTest)
+java.lang.IllegalArgumentException: Business identities must be canonical UUID strings
+	at com.cooper.lithic.data.local.StoredValueValidation.requireUuid(StoredValueValidation.kt:14)
+	at com.cooper.lithic.data.local.CategoryEntity.<init>(ProjectEntities.kt:24)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail(V3ProjectDetailScreenTest.kt:172)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.detail$default(V3ProjectDetailScreenTest.kt:168)
+	at com.cooper.lithic.feature.project.V3ProjectDetailScreenTest.four_events_expand_in_place_and_reset_for_same_id_in_new_generation_or_another_project(V3ProjectDetailScreenTest.kt:64)
+
+FAILURES!!!
+Tests run: 4,  Failures: 4
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

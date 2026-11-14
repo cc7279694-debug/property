@@ -1,0 +1,72 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest#production_composable_gallery_uses_system_configuration -e lithicHomeAcceptance fresh-api36-emulator -e lithicHomeAcceptanceAvd Lithic_Home_Acceptance_Repair05_API36 -e projectDetailAcceptanceRunId 1f1e3652-73b4-4299-8dfe-86b32a646ee5 -e projectDetailAcceptanceExpectedFontScale 2.0 com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest:
+INSTRUMENTATION_STATUS: test=production_composable_gallery_uses_system_configuration
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=1f1e3652-73b4-4299-8dfe-86b32a646ee5
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=start
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=1f1e3652-73b4-4299-8dfe-86b32a646ee5
+INSTRUMENTATION_STATUS: projectDetailAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=configuration
+INSTRUMENTATION_STATUS: projectDetailAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: projectDetailAcceptanceSystemFontScale=2.0
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=1f1e3652-73b4-4299-8dfe-86b32a646ee5
+INSTRUMENTATION_STATUS: projectDetailAcceptanceFontScale=2.0
+INSTRUMENTATION_STATUS: projectDetailAcceptanceHeightPx=1648
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=screenshot
+INSTRUMENTATION_STATUS: projectDetailAcceptancePng=files/project-detail-acceptance/1f1e3652-73b4-4299-8dfe-86b32a646ee5/project-detail-font-200.png
+INSTRUMENTATION_STATUS: projectDetailAcceptanceScreenWidthDp=360
+INSTRUMENTATION_STATUS: projectDetailAcceptanceWidthPx=720
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: projectDetailAcceptanceAttemptId=1f1e3652-73b4-4299-8dfe-86b32a646ee5
+INSTRUMENTATION_STATUS: projectDetailAcceptanceFixtureCleanup=PASS
+INSTRUMENTATION_STATUS: projectDetailAcceptancePhase=fixture-cleanup
+INSTRUMENTATION_STATUS_CODE: 2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: The project title overflows at 2.0x
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.assertFinancialFacts(V3ProjectDetailAndroidAcceptanceTest.kt:171)
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:131)
+
+INSTRUMENTATION_STATUS: stream=
+Error in production_composable_gallery_uses_system_configuration(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest):
+java.lang.AssertionError: The project title overflows at 2.0x
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.assertFinancialFacts(V3ProjectDetailAndroidAcceptanceTest.kt:171)
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:131)
+
+INSTRUMENTATION_STATUS: test=production_composable_gallery_uses_system_configuration
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 7.823
+There was 1 failure:
+1) production_composable_gallery_uses_system_configuration(com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest)
+java.lang.AssertionError: The project title overflows at 2.0x
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertFalse(Assert.java:65)
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.assertFinancialFacts(V3ProjectDetailAndroidAcceptanceTest.kt:171)
+	at com.cooper.lithic.feature.project.V3ProjectDetailAndroidAcceptanceTest.production_composable_gallery_uses_system_configuration(V3ProjectDetailAndroidAcceptanceTest.kt:131)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

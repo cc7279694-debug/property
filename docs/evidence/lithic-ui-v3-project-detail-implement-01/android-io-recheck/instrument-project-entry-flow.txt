@@ -1,0 +1,234 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.ProjectEntryFlowTest#rapid_double_tap_creates_only_one_real_project_and_one_appended_event,com.cooper.lithic.feature.project.ProjectEntryFlowTest#backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room,com.cooper.lithic.feature.project.ProjectEntryFlowTest#editing_name_and_start_date_updates_visible_results_without_changing_money_history com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.ProjectEntryFlowTest:
+INSTRUMENTATION_STATUS: test=backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.createFromHome(ProjectEntryFlowTest.kt:258)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.access$createFromHome(ProjectEntryFlowTest.kt:63)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room$1.invokeSuspend(ProjectEntryFlowTest.kt:187)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room(ProjectEntryFlowTest.kt:185)
+
+INSTRUMENTATION_STATUS: stream=
+Error in backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room(com.cooper.lithic.feature.project.ProjectEntryFlowTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.createFromHome(ProjectEntryFlowTest.kt:258)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.access$createFromHome(ProjectEntryFlowTest.kt:63)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room$1.invokeSuspend(ProjectEntryFlowTest.kt:187)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room(ProjectEntryFlowTest.kt:185)
+
+INSTRUMENTATION_STATUS: test=backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=rapid_double_tap_creates_only_one_real_project_and_one_appended_event
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$rapid_double_tap_creates_only_one_real_project_and_one_appended_event$1.invokeSuspend(ProjectEntryFlowTest.kt:143)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.rapid_double_tap_creates_only_one_real_project_and_one_appended_event(ProjectEntryFlowTest.kt:141)
+
+INSTRUMENTATION_STATUS: stream=
+Error in rapid_double_tap_creates_only_one_real_project_and_one_appended_event(com.cooper.lithic.feature.project.ProjectEntryFlowTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$rapid_double_tap_creates_only_one_real_project_and_one_appended_event$1.invokeSuspend(ProjectEntryFlowTest.kt:143)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.rapid_double_tap_creates_only_one_real_project_and_one_appended_event(ProjectEntryFlowTest.kt:141)
+
+INSTRUMENTATION_STATUS: test=rapid_double_tap_creates_only_one_real_project_and_one_appended_event
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=editing_name_and_start_date_updates_visible_results_without_changing_money_history
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectEntryFlowTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=3
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.createFromHome(ProjectEntryFlowTest.kt:258)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.access$createFromHome(ProjectEntryFlowTest.kt:63)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$editing_name_and_start_date_updates_visible_results_without_changing_money_history$1.invokeSuspend(ProjectEntryFlowTest.kt:222)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.editing_name_and_start_date_updates_visible_results_without_changing_money_history(ProjectEntryFlowTest.kt:220)
+
+INSTRUMENTATION_STATUS: stream=
+Error in editing_name_and_start_date_updates_visible_results_without_changing_money_history(com.cooper.lithic.feature.project.ProjectEntryFlowTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.createFromHome(ProjectEntryFlowTest.kt:258)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.access$createFromHome(ProjectEntryFlowTest.kt:63)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$editing_name_and_start_date_updates_visible_results_without_changing_money_history$1.invokeSuspend(ProjectEntryFlowTest.kt:222)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.editing_name_and_start_date_updates_visible_results_without_changing_money_history(ProjectEntryFlowTest.kt:220)
+
+INSTRUMENTATION_STATUS: test=editing_name_and_start_date_updates_visible_results_without_changing_money_history
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 11.08
+There were 3 failures:
+1) backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room(com.cooper.lithic.feature.project.ProjectEntryFlowTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.createFromHome(ProjectEntryFlowTest.kt:258)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.access$createFromHome(ProjectEntryFlowTest.kt:63)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room$1.invokeSuspend(ProjectEntryFlowTest.kt:187)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.backdated_money_recalculates_detail_list_home_and_negative_recovery_from_real_room(ProjectEntryFlowTest.kt:185)
+2) rapid_double_tap_creates_only_one_real_project_and_one_appended_event(com.cooper.lithic.feature.project.ProjectEntryFlowTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$rapid_double_tap_creates_only_one_real_project_and_one_appended_event$1.invokeSuspend(ProjectEntryFlowTest.kt:143)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.rapid_double_tap_creates_only_one_real_project_and_one_appended_event(ProjectEntryFlowTest.kt:141)
+3) editing_name_and_start_date_updates_visible_results_without_changing_money_history(com.cooper.lithic.feature.project.ProjectEntryFlowTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.createFromHome(ProjectEntryFlowTest.kt:258)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.access$createFromHome(ProjectEntryFlowTest.kt:63)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest$editing_name_and_start_date_updates_visible_results_without_changing_money_history$1.invokeSuspend(ProjectEntryFlowTest.kt:222)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectEntryFlowTest.editing_name_and_start_date_updates_visible_results_without_changing_money_history(ProjectEntryFlowTest.kt:220)
+
+FAILURES!!!
+Tests run: 3,  Failures: 3
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

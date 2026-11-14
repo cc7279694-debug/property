@@ -1,0 +1,73 @@
+{
+  "start_utc": "2026-11-14T03:48:56.517176+00:00",
+  "end_utc": "2026-11-14T03:49:56.518148+00:00",
+  "elapsed_seconds": 60.0,
+  "cpu_counters_100ns": {
+    "first_idle_kernel_user": [
+      431021406250,
+      545098906250,
+      157619531250
+    ],
+    "last_idle_kernel_user": [
+      434922812500,
+      549484062500,
+      158034375000
+    ]
+  },
+  "cpu_average_percent": 18.720703125000004,
+  "before": {
+    "Logical": 8,
+    "CPU": {
+      "Name": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+      "NumberOfCores": 4,
+      "NumberOfLogicalProcessors": 8
+    },
+    "AvailableKiB": 6021236,
+    "Disks": [
+      {
+        "Name": "C",
+        "Free": 18956816384
+      },
+      {
+        "Name": "E",
+        "Free": 26403950592
+      }
+    ],
+    "Emulator": [],
+    "Ports": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 15576
+      }
+    ]
+  },
+  "after": {
+    "Logical": 8,
+    "CPU": {
+      "Name": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+      "NumberOfCores": 4,
+      "NumberOfLogicalProcessors": 8
+    },
+    "AvailableKiB": 6067716,
+    "Disks": [
+      {
+        "Name": "C",
+        "Free": 18956390400
+      },
+      {
+        "Name": "E",
+        "Free": 26403954688
+      }
+    ],
+    "Emulator": [],
+    "Ports": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 5037,
+        "OwningProcess": 15576
+      }
+    ]
+  },
+  "status": "PASS"
+}

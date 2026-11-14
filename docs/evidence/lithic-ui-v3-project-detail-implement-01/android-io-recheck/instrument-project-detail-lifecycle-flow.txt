@@ -1,0 +1,90 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.ProjectLifecycleFlowTest#history_correction_and_real_refund_are_distinct_and_preserve_original_identity com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectLifecycleFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.ProjectLifecycleFlowTest:
+INSTRUMENTATION_STATUS: test=history_correction_and_real_refund_are_distinct_and_preserve_original_identity
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectLifecycleFlowTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.createProject(ProjectLifecycleFlowTest.kt:403)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$createProject(ProjectLifecycleFlowTest.kt:80)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$history_correction_and_real_refund_are_distinct_and_preserve_original_identity$1.invokeSuspend(ProjectLifecycleFlowTest.kt:260)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.history_correction_and_real_refund_are_distinct_and_preserve_original_identity(ProjectLifecycleFlowTest.kt:258)
+
+INSTRUMENTATION_STATUS: stream=
+Error in history_correction_and_real_refund_are_distinct_and_preserve_original_identity(com.cooper.lithic.feature.project.ProjectLifecycleFlowTest):
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.createProject(ProjectLifecycleFlowTest.kt:403)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$createProject(ProjectLifecycleFlowTest.kt:80)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$history_correction_and_real_refund_are_distinct_and_preserve_original_identity$1.invokeSuspend(ProjectLifecycleFlowTest.kt:260)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.history_correction_and_real_refund_are_distinct_and_preserve_original_identity(ProjectLifecycleFlowTest.kt:258)
+
+INSTRUMENTATION_STATUS: test=history_correction_and_real_refund_are_distinct_and_preserve_original_identity
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 6.025
+There was 1 failure:
+1) history_correction_and_real_refund_are_distinct_and_preserve_original_identity(com.cooper.lithic.feature.project.ProjectLifecycleFlowTest)
+java.lang.AssertionError: Action performScrollTo() failed.
+Reason: Expected exactly '1' node but could not find any node that satisfies: (TestTag = 'home-create-project')
+
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow(SemanticsNodeInteraction.kt:178)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchOneOrThrow$default(SemanticsNodeInteraction.kt:150)
+	at androidx.compose.ui.test.SemanticsNodeInteraction.fetchSemanticsNode(SemanticsNodeInteraction.kt:84)
+	at androidx.compose.ui.test.ActionsKt.performScrollTo(Actions.kt:81)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.createProject(ProjectLifecycleFlowTest.kt:403)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.access$createProject(ProjectLifecycleFlowTest.kt:80)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest$history_correction_and_real_refund_are_distinct_and_preserve_original_identity$1.invokeSuspend(ProjectLifecycleFlowTest.kt:260)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.cooper.lithic.feature.project.ProjectLifecycleFlowTest.history_correction_and_real_refund_are_distinct_and_preserve_original_identity(ProjectLifecycleFlowTest.kt:258)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

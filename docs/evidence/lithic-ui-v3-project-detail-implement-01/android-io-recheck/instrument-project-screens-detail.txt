@@ -1,0 +1,62 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell am instrument -w -r -e class com.cooper.lithic.feature.project.ProjectScreensTest#detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating,com.cooper.lithic.feature.project.ProjectScreensTest#not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved com.cooper.lithic.debug.test/androidx.test.runner.AndroidJUnitRunner
+exit=0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectScreensTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+com.cooper.lithic.feature.project.ProjectScreensTest:
+INSTRUMENTATION_STATUS: test=detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectScreensTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectScreensTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.cooper.lithic.feature.project.ProjectScreensTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=2
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + InputText + EditableText contains '尚未开始' (ignoreCase: false))
+	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
+	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:351)
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
+	at com.cooper.lithic.feature.project.ProjectScreensTest.not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved(ProjectScreensTest.kt:244)
+
+INSTRUMENTATION_STATUS: stream=
+Error in not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved(com.cooper.lithic.feature.project.ProjectScreensTest):
+java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + InputText + EditableText contains '尚未开始' (ignoreCase: false))
+	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
+	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:351)
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
+	at com.cooper.lithic.feature.project.ProjectScreensTest.not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved(ProjectScreensTest.kt:244)
+
+INSTRUMENTATION_STATUS: test=not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 6.497
+There was 1 failure:
+1) not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved(com.cooper.lithic.feature.project.ProjectScreensTest)
+java.lang.AssertionError: Failed to perform checkIsDisplayed check: Expected at most 1 node but found 2 nodes that satisfy (Text + InputText + EditableText contains '尚未开始' (ignoreCase: false))
+	at androidx.compose.ui.test.AndroidAssertions_androidKt.checkIsDisplayed(AndroidAssertions.android.kt:35)
+	at androidx.compose.ui.test.AssertionsKt.isDisplayed(Assertions.kt:351)
+	at androidx.compose.ui.test.AssertionsKt.assertIsDisplayed(Assertions.kt:33)
+	at com.cooper.lithic.feature.project.ProjectScreensTest.not_started_detail_has_no_effective_daily_cost_and_negative_net_is_preserved(ProjectScreensTest.kt:244)
+
+FAILURES!!!
+Tests run: 2,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
+
+---stderr---

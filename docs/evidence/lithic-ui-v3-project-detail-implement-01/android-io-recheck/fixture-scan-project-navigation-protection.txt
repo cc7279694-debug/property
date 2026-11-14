@@ -1,0 +1,4 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell run-as com.cooper.lithic.debug find no_backup -maxdepth 1 -type d \( -name 'm06-nav-guard-*' -o -name 'm06-project-flow-*' -o -name 'm07-lifecycle-flow-*' \)
+exit=0
+
+---stderr---

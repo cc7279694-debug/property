@@ -1,0 +1,9 @@
+adb -H 127.0.0.1 -P 5038 -s emulator-17640 shell cat /sys/devices/system/cpu/online && grep -E "^processor[[:space:]]*:" /proc/cpuinfo
+exit=0
+0-3
+processor	: 0
+processor	: 1
+processor	: 2
+processor	: 3
+
+---stderr---

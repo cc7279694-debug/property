@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_UI_V3_PROJECT_DETAIL_IMPLEMENT_01 — PARTIAL（I/O 对照复验，2026-11-14）**。只读预热后原隔离 AVD 单次启动通过健康观察，未见新 ANR。既有 Debug App/Test 实跑 43 项，32 PASS／11 FAIL，取得纯白真实系统 200% 截图一张。画廊标题溢出断言、无效 UUID 夹具和旧选择器仍待处理，三主题截图未生成。已恢复字体，模拟器和 5038 正常退出，代码及 APK 未改。见[排查与复验](evidence/LITHIC-UI-V3-Project-Detail-Implement-01.md#2026-11-14-systemui-anr-排查与-io-对照复验)。
+
 - **LITHIC_UI_V3_PROJECT_DETAIL_IMPLEMENT_01 — ANDROID ENVIRONMENT_BLOCKED（补验，2026-11-14）**。复用固定 Debug App/Test，主机超过 5 GiB 后只启动一次原隔离 AVD。设备准入通过，安装前捕获 SystemUI 启动 ANR。三主题、真实系统 200% 字体、41 个定向回归及运行截图继续 NOT_RUN。模拟器与独立 5038 已退出，原 5037 保留。见[补验记录](evidence/LITHIC-UI-V3-Project-Detail-Implement-01.md#2026-11-14-android-补验)。
 
 - **LITHIC_UI_V3_PROJECT_DETAIL_IMPLEMENT_01 — PARTIAL（2026-11-14）**。项目详情已实现 4:3 Fit 封面与只读全图、财务三卡及同列表展开。51 项 JVM、生产和 AndroidTest Kotlin、Debug 构建与 Lint（0 错误、20 警告）通过。隔离模拟器最后启动前内存 4.932 GiB，低于 5.000 GiB 环境门槛，Android 和截图均 NOT_RUN。等待独立审查。见[实施报告](evidence/LITHIC-UI-V3-Project-Detail-Implement-01.md)。

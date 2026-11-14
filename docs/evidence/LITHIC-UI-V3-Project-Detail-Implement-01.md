@@ -1,6 +1,6 @@
 # LITHIC UI-V3 · 项目详情实施 01
 
-**PARTIAL — DESKTOP PASS / ANDROID ENVIRONMENT_BLOCKED**
+**PARTIAL — DESKTOP PASS / ANDROID REGRESSION FAILURES**
 
 设计基线 `03b4dc7bab91f0fed2a2723fcffaf87464153ce9`。实施分支 `codex/lithic-ui-v3-project-detail-implement-01`，构建源码 `0f6fed74c03a82ee5a90f5e209e6ea6fb3989a25`，`app` 树 `45effd76597fd68bca2eb515115e496f8f44f584`。评审以固定设计稿为视觉依据。[设计收口](../design/lithic-ui-v3-detail-visual-refinement-02/DESIGN_FREEZE_03.md) · [纯白主图](../design/lithic-ui-v3-detail-visual-refinement-02/boards/renders/project-white.png) · [三主题](../design/lithic-ui-v3-detail-visual-refinement-02/boards/renders/project-themes.png) · [金额记录](../design/lithic-ui-v3-detail-visual-refinement-02/boards/renders/history.png) · [设计稿模拟 200%](../design/lithic-ui-v3-detail-visual-refinement-02/boards/renders/font-200.png) · [实际文件清单](lithic-ui-v3-project-detail-implement-01/changed-files.txt)
 
@@ -41,3 +41,29 @@ Android **0 方法执行，0 张运行截图**。以下均为 **NOT_RUN**：真�
 原 `Lithic_Home_Acceptance_Repair05_API36` 单次启动，独立 5038 唯一识别 `emulator-17640`，API 36／x86_64、`sys.boot_completed=1`，生成配置为 1536 MiB／4 核。在安装之前，健康观察捕获 `com.android.systemui` 的新事件 `failed to complete startup`，取到对应线程转储。只确认启动无响应，根因仍为 **UNKNOWN**。控制器退出 2，外层退出 1，未尝试二次启动。[设备准入](lithic-ui-v3-project-detail-implement-01/android-supplement/admission-result.json) · [有效硬件配置](lithic-ui-v3-project-detail-implement-01/android-supplement/effective-avd.json) · [ANR 原始事件](lithic-ui-v3-project-detail-implement-01/android-supplement/anr-events.txt) · [控制器结果](lithic-ui-v3-project-detail-implement-01/android-supplement/controller-result.json)
 
 **ANDROID ENVIRONMENT_BLOCKED**。41 个项目详情相关回归方法、两次 MainActivity 画廊（系统字号 100% 和 200%）、三主题与全部截图均为 **NOT_RUN**。安装次数、设备字体写入、测试执行、截图均为 0。模拟器有序退出，5038 关闭，主机原 5037 身份保持一致。启动前后原 userdata 文件身份一致，基础层哈希相同，隔离 QCOW2 正常写入后的新哈希已记录。无个人手机或个人账本操作。保留上一轮因内存阻塞的证据，桌面结论沿用上节。[模拟器退出](lithic-ui-v3-project-detail-implement-01/android-supplement/emulator-cleanup.json) · [范围与清理](lithic-ui-v3-project-detail-implement-01/android-supplement/scope-and-cleanup.json)
+
+## 2026-11-14 SystemUI ANR 排查与 I/O 对照复验
+
+| 观察 | Final09 成功轮 | 上轮 ANR |
+| --- | --- | --- |
+| AVD／系统镜像／启动参数 | 原 Repair05、API 36 x86_64、1536 MiB／4 核 | 相同 |
+| SystemUI 进程创建至首条 `SystemUIService` 日志 | 8.432 秒 | 17.832 秒，15.192 秒时 ActivityManager 报启动超时 |
+| AMS ready／启屏标记（开机后） | 54.790／61.754 秒 | 64.355／76.867 秒 |
+| 约 77–79 秒时的 guest 可用内存与 OOM | 609,800 kB，采样无 OOM | 816,596 kB，采样无 OOM |
+
+失败轮主线程在 `ActivityThread.handleBindApplication → CustomizationProvider.attachInfo → Dagger` 初始化中处于 Runnable。同一 PID 之后继续运行并约在进程创建 25.511 秒后完成 CoreStartables。超时前 16.3 秒的 ActivityManager 样本含 **72% I/O 等待**，guest I/O 压力 `avg10 some=78.64% / full=69.82%`，同期内存压力 `0.51%`。成功轮缺少可直接对比的 PSI，但在相近时刻的主机可用内存更少、CPU 占用更高。证据支持冷启动 I/O 延迟是最可能的促发因素。具体 I/O 来源未定。E: 为 SATA 机械硬盘，Windows 报告卷正常，故障窗口未检出匹配的磁盘错误／复位事件。[原始 ANR 事件与线程片段](lithic-ui-v3-project-detail-implement-01/android-supplement/) · [Final09 成功记录](LITHIC-Home-Final-Polish-09-Retry.md)
+
+复验主动改变的启动步骤限于只读顺序预热六个原镜像及 userdata 文件。沿用同一 AVD、镜像、GPU、1536 MiB／4 核配置、无快照启动、ANR 停止条件及系统健康观察。userdata 核对沿用上轮正常关机回执，并保留 Final09 包字节作为上轮未安装后的安装前包身份。应用源树和两份 Debug APK 沿用既有指纹。[启动时序及 I/O 日志摘录](lithic-ui-v3-project-detail-implement-01/android-io-recheck/systemui-comparison-excerpt.txt)
+
+顺序只读用时 13.016 秒，预热结束及启动前可用内存 **5.946 GiB**。原 AVD 单次启动，SystemUI 进程创建至首条服务日志降至 **10.713 秒**。guest 可用内存由 428,768 kB 恢复至 462,468 kB 后，才进入额外 60 秒健康观察。该观察和后续 13 批测试期间均未捕获新 ANR。一次健康启动支持继续验收，尚不足以确认预热是唯一原因或已永久消除超时。观察通过后才安装现有 App 与 Test，端侧两份 APK 的 SHA-256 均匹配既有产物。[只读预热](lithic-ui-v3-project-detail-implement-01/android-io-recheck/boot-read-warmup.json) · [资源与健康时间线](lithic-ui-v3-project-detail-implement-01/android-io-recheck/timeline.jsonl)
+
+**Android 实跑 43 项，32 PASS／11 FAIL。** 包含 41 项回归及在系统字体 1.0、2.0 下各运行一次的 MainActivity 画廊。通过项包括封面 9 项、导航守卫 4 项、详情布局／语义／层级 10 项、边界金额 3 项、生命周期详情 5 项和另一个项目详情事实用例。控制器与外层均退出 3。[逐项原始结果](lithic-ui-v3-project-detail-implement-01/android-io-recheck/test-summary.jsonl) · [执行日志与证据](lithic-ui-v3-project-detail-implement-01/android-io-recheck/)
+
+| 失败 | 证据及影响 |
+| --- | --- |
+| 4 项新组件测试 | 合成身份未通过规范 UUID 校验，未进入 Compose 渲染。三条／四条切换、身份换代和关联记录等独立场景仍缺有效证据。 |
+| 4 项入口／生命周期流程 | 落在旧 `home-create-project` 选择器，未完成目标流程。 |
+| 1 项未开始项目 | 「尚未开始」模糊匹配到两个节点，后续金额断言未完成。 |
+| 2 次 MainActivity 画廊 | 均在 `TextLayoutResult.hasVisualOverflow` 标题断言失败。纯白 200% 截图的六字标题可见，截图与断言的差异仍待解释。后续应采集标题实际宽高约束及宽／高溢出方向，依据结果区分测试测量偏差与布局缺陷。 |
+
+保存 **1 张**来自原生 MainActivity 的 [纯白 200% 截图](lithic-ui-v3-project-detail-implement-01/android-io-recheck/project-detail-font-200.png)（720×1648，配置 360dp，系统设置与应用配置均为 2.0，截图先于失败断言）。正常字号的三主题截图均未生成，200% 的详细金额图也未生成。三主题截图与完整大字验收仍待补。两次画廊均收到合成账本清理 PASS，临时账本目录复查为空，系统字体从 2.0 恢复并读回 1.0。原 AVD 正常退出，5038 关闭，原 5037 身份一致。未操作手机，生产和测试源码零改动，两 APK 未重建。[截图指纹](lithic-ui-v3-project-detail-implement-01/android-io-recheck/screenshots.jsonl) · [清理及原始回执指纹](lithic-ui-v3-project-detail-implement-01/android-io-recheck/cleanup-and-raw-sha256.json)
