@@ -1,0 +1,23 @@
+{"kind": "capture-prepared", "utc": "2026-11-14T03:36:42.786758+00:00", "monotonic": 8051.046, "maximum_seconds": 1800, "interval_seconds": 5}
+{"kind": "first-owned-device", "utc": "2026-11-14T03:37:25.115834+00:00", "monotonic": 8093.375, "serial": "emulator-17640"}
+{"kind": "early-guest-identity", "utc": "2026-11-14T03:37:25.173866+00:00", "monotonic": 8093.437, "serial": "emulator-17640"}
+{"kind": "stream-open", "utc": "2026-11-14T03:37:25.263291+00:00", "monotonic": 8093.515, "file": "logcat-crash.txt", "pid": 3220}
+{"kind": "stream-open", "utc": "2026-11-14T03:37:25.264292+00:00", "monotonic": 8093.515, "file": "logcat-all.txt", "pid": 12924}
+{"kind": "stream-open", "utc": "2026-11-14T03:37:25.264292+00:00", "monotonic": 8093.515, "file": "logcat-main-system.txt", "pid": 16728}
+{"kind": "stream-open", "utc": "2026-11-14T03:37:25.264292+00:00", "monotonic": 8093.515, "file": "logcat-events.txt", "pid": 31736}
+{"kind": "initial-ring-saved", "utc": "2026-11-14T03:37:25.597399+00:00", "monotonic": 8093.859, "bytes": 443354}
+{"kind": "first-anr", "utc": "2026-11-14T03:38:18.446939+00:00", "monotonic": 8146.703, "epoch": 1794627498.551, "pid": 1126, "package": "com.android.systemui", "line": "1794627498.551   771  1396 I am_anr  : [0,1126,com.android.systemui,818462221,Process ProcessRecord{8555832 1126:com.android.systemui/u0a124} failed to complete startup]"}
+{"kind": "anr-diagnostics-start", "utc": "2026-11-14T03:38:18.454940+00:00", "monotonic": 8146.718, "package": "com.android.systemui", "pid": 1126, "guest_epoch": 1794627498.551}
+{"kind": "anr-command", "utc": "2026-11-14T03:38:25.131050+00:00", "monotonic": 8153.39, "label": "anr-post-logcat-all", "exit": 0, "bytes": 751940, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:38:33.618506+00:00", "monotonic": 8161.875, "label": "anr-post-logcat-events", "exit": 0, "bytes": 51188, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:38:40.453610+00:00", "monotonic": 8168.703, "label": "anr-activity-lastraw", "exit": 0, "bytes": 87, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:38:44.710097+00:00", "monotonic": 8172.968, "label": "anr-dropbox-system", "exit": 0, "bytes": 123372, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:38:48.923134+00:00", "monotonic": 8177.187, "label": "anr-dropbox-data", "exit": 0, "bytes": 297, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:38:52.525076+00:00", "monotonic": 8180.781, "label": "anr-data-directory", "exit": 0, "bytes": 432, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:38:55.389556+00:00", "monotonic": 8183.64, "label": "anr-package-meminfo", "exit": 0, "bytes": 3241, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:38:58.067828+00:00", "monotonic": 8186.328, "label": "anr-cpuinfo", "exit": 0, "bytes": 3771, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:39:00.712270+00:00", "monotonic": 8188.968, "label": "anr-activity-processes", "exit": 0, "bytes": 246577, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:39:03.601496+00:00", "monotonic": 8191.859, "label": "anr-package", "exit": 0, "bytes": 53727, "status": "COMPLETE"}
+{"kind": "anr-command", "utc": "2026-11-14T03:39:06.215438+00:00", "monotonic": 8194.468, "label": "anr-guest-zone", "exit": 0, "bytes": 5, "status": "COMPLETE"}
+{"kind": "anr-diagnostics-end", "utc": "2026-11-14T03:39:06.268061+00:00", "monotonic": 8194.531, "package": "com.android.systemui", "pid": 1126, "guest_epoch": 1794627498.551, "main_stack_source": "anr-dropbox-system", "stack_status": "CONFIRMED", "stack_file": "anr-thread-dump.txt", "secondary_events": [], "bugreport_status": "NOT_RUN"}
+{"kind": "capture-closed", "utc": "2026-11-14T03:39:06.284598+00:00", "monotonic": 8194.546, "streams": 4, "raw_guest_samples": 11, "guest_samples": 11, "running_workers": [], "running_streams": []}

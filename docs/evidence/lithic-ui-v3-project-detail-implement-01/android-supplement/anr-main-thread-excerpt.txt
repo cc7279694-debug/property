@@ -1,0 +1,23 @@
+CONFIRMED package=com.android.systemui pid=1126 event_epoch=1794627498.551 source=anr-dropbox-system
+
+----- pid 1126 at 2026-11-14 03:38:18.628338911+0000 -----
+Cmd line: com.android.systemui
+Build fingerprint: 'Android/sdk_phone64_x86_64/emu64x:16/BE2A.250530.026.D1/13818094:userdebug/test-keys'
+ABI: 'x86_64'
+Build type: optimized
+Debug Store: 3,1,80161::ID:1,C:S,T:64981,N:BindApp;;
+suspend all histogram:	Sum: 17.809ms 99% C.I. 0.001ms-15.326ms Avg: 1.272ms Max: 16.229ms
+DALVIK THREADS (32):
+"main" prio=5 tid=1 Runnable
+  | group="main" sCount=0 ucsCount=0 flags=0 obj=0x72d70b18 self=0x7a16de2dabe0
+  | sysTid=1126 nice=0 cgrp=foreground sched=0/0 handle=0x7a1955cb9088
+  | state=R schedstat=( 240865082 118884602 484 ) utm=8 stm=15 core=2 HZ=100
+  | stack=0x7ffed5b06000-0x7ffed5b08000 stackSize=8188KB
+  | held mutexes= "mutator lock"(shared held)
+  at com.android.systemui.statusbar.policy.dagger.StatusBarPolicyModule_ProvideGlobalConfigurationControllerFactory.provideGlobalConfigurationController(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:4)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.get0(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:108)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:106)
+  at dagger.internal.DoubleCheck.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:14)
+  - locked <@addr=0x21ec4d8> (a dagger.internal.DoubleCheck)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.get1(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:2734)
+  at com.android.systemui.dagger.DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.get(go/retraceme fe51eb207a6d1c27cb384dabe9ec68583f750fe1a4c7ff9898dee0c1a7d208e0:101)

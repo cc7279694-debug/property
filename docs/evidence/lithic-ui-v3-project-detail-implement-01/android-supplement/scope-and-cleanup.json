@@ -1,0 +1,88 @@
+{
+  "attempt": "BLOCKED",
+  "controller_exit": 2,
+  "adb_5038": {
+    "process": {
+      "Pid": 2344,
+      "Path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe",
+      "CreatedUtc": "2026-11-14T03:35:25.530063Z",
+      "OwnedSentinel": true
+    },
+    "protocol": "0029",
+    "identity": {
+      "version": "37.0.1",
+      "build": "15733141",
+      "executable_path": "E:\\CODEX\\MirraAndroid\\sdk\\platform-tools\\adb.exe"
+    }
+  },
+  "adb_5038_shutdown_exit": 0,
+  "port_5037_before": {
+    "listener": {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5037,
+      "OwningProcess": 15576
+    },
+    "process": {
+      "Pid": 15576,
+      "Path": null,
+      "CreatedUtc": "2026-11-14T01:23:14.723181Z",
+      "OwnedSentinel": false
+    }
+  },
+  "port_5037_after": {
+    "listener": {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5037,
+      "OwningProcess": 15576
+    },
+    "process": {
+      "Pid": 15576,
+      "Path": null,
+      "CreatedUtc": "2026-11-14T01:23:14.723181Z",
+      "OwnedSentinel": false
+    }
+  },
+  "listeners_after": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5037,
+      "OwningProcess": 15576
+    }
+  ],
+  "app_sha256": "8f638588cb738f8eec949bfb758b72285f29056fa2747a6601ad077530fcc9c5",
+  "test_sha256": "8809fcd30189525e7438f0e525eb550e33f66231299b33d984903701fee1736d",
+  "debug_signer_sha256": "29ded26bea44f1afe4fe383a302e4b507423d16223469d7da3fe578d9a7f83b9",
+  "app_tree": "45effd76597fd68bca2eb515115e496f8f44f584",
+  "install_operations": 0,
+  "device_font_writes": 0,
+  "executed_test_methods": 0,
+  "screenshots": 0,
+  "userdata_after": {
+    "hardware_data_path": "E:\\CODEX\\lithic-home-android-acceptance-repair-05-local\\avd\\Lithic_Home_Acceptance_Repair05_API36.avd\\userdata-qemu.img",
+    "files": [
+      {
+        "path": "E:\\CODEX\\lithic-home-android-acceptance-repair-05-local\\avd\\Lithic_Home_Acceptance_Repair05_API36.avd\\userdata-qemu.img",
+        "created_utc": "2026-11-13T12:38:43.847082+08:00",
+        "file_id": 2533274790972637,
+        "volume_id": 15164203616145948897,
+        "mtime_utc": "2026-11-13T12:38:42.880364+08:00",
+        "bytes": 6356992,
+        "sha256": "48d6753085207cbbdf6b1c2bc9416af3fe92ad42f6000ed5cfa49103ed0f9997"
+      },
+      {
+        "path": "E:\\CODEX\\lithic-home-android-acceptance-repair-05-local\\avd\\Lithic_Home_Acceptance_Repair05_API36.avd\\userdata-qemu.img.qcow2",
+        "created_utc": "2026-11-13T12:39:03.591137+08:00",
+        "file_id": 1970324837551348,
+        "volume_id": 15164203616145948897,
+        "mtime_utc": "2026-11-14T11:39:09.147993+08:00",
+        "bytes": 707526656,
+        "sha256": "dbeaec1330fb260e381a19a210ba4a73e38af72981d79c0394305fc9be729810"
+      }
+    ]
+  },
+  "local_raw_sha256": {
+    "receipt": "ca56bfa7731b85a76cce23dcf25a90853e2a34590dadd02ec7a212db9f7b2d80",
+    "anr_thread_dump": "1777471c1c556ce3a6a028fbc719f49efe558509bcc420d43fbffdd69f1ae940",
+    "admission_command_log": "3a9ff7fb8dcf568e0ee9f039dd960f423b8fec31d88f4f2086f21c4da91478ae"
+  }
+}

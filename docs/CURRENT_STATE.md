@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC_UI_V3_PROJECT_DETAIL_IMPLEMENT_01 — ANDROID ENVIRONMENT_BLOCKED（补验，2026-11-14）**。复用固定 Debug App/Test，主机超过 5 GiB 后只启动一次原隔离 AVD。设备准入通过，安装前捕获 SystemUI 启动 ANR。三主题、真实系统 200% 字体、41 个定向回归及运行截图继续 NOT_RUN。模拟器与独立 5038 已退出，原 5037 保留。见[补验记录](evidence/LITHIC-UI-V3-Project-Detail-Implement-01.md#2026-11-14-android-补验)。
+
 - **LITHIC_UI_V3_PROJECT_DETAIL_IMPLEMENT_01 — PARTIAL（2026-11-14）**。项目详情已实现 4:3 Fit 封面与只读全图、财务三卡及同列表展开。51 项 JVM、生产和 AndroidTest Kotlin、Debug 构建与 Lint（0 错误、20 警告）通过。隔离模拟器最后启动前内存 4.932 GiB，低于 5.000 GiB 环境门槛，Android 和截图均 NOT_RUN。等待独立审查。见[实施报告](evidence/LITHIC-UI-V3-Project-Detail-Implement-01.md)。
 
 - **LITHIC_UI_V3_DETAIL_DESIGN_FREEZE_03 — READY_FOR_FINAL_APPROVAL（2026-11-14）**。收口项目封面、单笔金额明细及同列表「全部／收起」。已导出两张纯白主图，Chrome 的 360／400 和模拟 200% 布局与只读交互通过，Android NOT_RUN。等待用户视觉确认及 ChatGPT 独立审查，生产实施未授权。见[最终设计候选](design/lithic-ui-v3-detail-visual-refinement-02/DESIGN_FREEZE_03.md)。
