@@ -301,6 +301,8 @@ android {
             keyAlias = alias
             storePassword = storeSecret
             keyPassword = keySecret
+            enableV2Signing = true
+            enableV3Signing = true
         }
     } else null
 
@@ -396,8 +398,8 @@ androidComponents {
     }
     onVariants(selector().withBuildType("release")) { variant ->
         variant.outputs.forEach { output ->
-            output.versionName.set("1.0.0")
-            output.versionCode.set(36)
+            output.versionName.set("1.0.1")
+            output.versionCode.set(37)
         }
     }
 }
