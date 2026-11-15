@@ -1,0 +1,38 @@
+# 砺石 LITHIC 1.0.1 · 正式签名候选
+
+日期 2026-11-15（Asia/Shanghai）。工作分支 `codex/lithic-release-01`，交付渠道为本机正式签名 APK。
+
+## 源码与历史
+
+- Fetch 核对 GitHub `main` 为 `145326ddd4ce28abbf7c2706fe25f9d38c599c3a`，UI 分支为 `849de4bc350c241dcbe2f616fe2b4f4da4a23b39`，与 UI 源码提交 `e52521c77f9fc889912974c93a902b10da0dcdef` 对应同一 App 树。旧正式私发资料分支为 `d42a78125b83bee806add5e3fdd8d2328055b694`。
+- 构建提交 `158d7df53f829c0e9f25547e82aa4f9d1e3cd0c1`，App 树 `7c4ed9e88cdd607356d3b6d239d905e3f5a029f1`。相对 UI 基线唯一源码差异在构建配置，Release 版本升至 `1.0.1 / code37`，现有正式签名明确启用 v2 和 v3。首页、项目与订阅详情、全局主题、其他页面、数据协议及 Debug 变体沿用基线。
+- 当前 `main` 是 Release 源码的共同祖先，无 main 独有提交。对照为 243 个提交与 9920 个文件，包含既有产品完整历史。仅发布工作分支进入独立审查。
+
+## 旧正式包与覆盖升级
+
+- 已归档旧正式 APK 实测为 `com.cooper.lithic / 1.0.0 / code36`，15,747,081 字节，SHA-256 `ff909ca1eb21e04756d91d067082ca12df1ac17c263d793843fbbf4c67e40c2b`。严格验签通过，单一 v2 签名者。对照本机归档、Git 发布历史和远端标签，code36 是最高已确认正式版本。
+- 旧 APK 的签名证书与本机公开证书的指纹同为 `3a10918a24ab4c66fd2f5e2725b0b8a65164d4da43f71a40d6e6d74afc4b1f19`。公开证书从 2026-11-06 16:19:15 至 2053-11-06 16:19:15 有效（Asia/Shanghai）。沿用已有 PKCS12 与别名，Gradle 签署门禁验证私钥与核准公开证书的对应性。
+- Room schema 1–5 导出、Room5 当前版本、迁移及数据存储和备份恢复生产源码，均与旧正式构建源码 `a5b58158d98507d80eb619dec1beeeb1e3de2fee` 一致。backup4 继续使用 format/minReader/schema 4/4/5。最新首页总投入沿用已有读事务，并按既有批准口径汇总。
+- 同包名、同证书及 code36→37 是 Android 的静态更新身份条件。实际覆盖安装、设备上账本保留及真实 SAF 恢复均为 `NOT_RUN`。[Android 更新身份规则](https://developer.android.com/google/play/app-updates)
+
+## 桌面验收
+
+从已固定 Git 源码按离线、单 worker 执行 Release Kotlin、全部 Release JVM 及完整 Release Lint。Gradle 退出 0，共 10 分 36 秒。
+
+| 验证 | 结果 |
+| --- | --- |
+| Release Kotlin | PASS |
+| Release JVM | 116 类、985 项 PASS，0 FAIL／ERROR／SKIP |
+| 离线脚本测试 | 30 项 PASS，使用模拟输入 |
+| 完整 Release Lint | 0 错误、20 警告，与历史正式门禁数量一致 |
+| Release BuildConfig | 正式 id、1.0.1/code37，生产照片开关开、实验照片开关关 |
+| Android | 覆盖升级、首次打开、合成账本读回、真实 SAF、三主题及 200% 字体均为 `NOT_RUN`。未启动历史 ANR AVD，未连接设备或读取个人账本 |
+
+[完整桌面回执](lithic-release-01/desktop-results.json) · [Gradle 日志](lithic-release-01/desktop-build.log) · [Release Lint 明细](lithic-release-01/lint-results-release.txt) · [离线 Python 测试记录](lithic-release-01/desktop-python.log)
+
+## BLOCKED · 本机签名尚未启动
+
+- 首次打开的 Windows PowerShell 阻止执行本机脚本，复现结果为 `UnauthorizedAccess`，未到密码校验。使用仅对该进程生效的 `RemoteSigned` 后，无输入诊断通过此前检查，并在需要交互输入的位置按预期停止。
+- 原证书与历史 APK 已核实，现有密钥文件在位。第二个可见签名窗口由用户确认在密码提示前报错。具体错误待确认，受控目录尚无签名开始回执或构建结果，因此密钥解锁与实际签署为 `NOT_RUN`。已准备从文件资源管理器直接打开的本机启动入口，可记录密码提示前的错误标识。
+- 已核对受控签名源码与固定提交和 App 树一致。继续时需在本机隐藏提示中输入原密码，再按实物重新核验证书、v2/v3、版本、Manifest、权限、APK SHA-256 及生产代码。
+- 正式 APK 待签署及核验。独立审查和尚需独立通过后才可执行的 main 合并处于等待状态。旧正式 APK SHA-256 仍为本报告所列历史值。

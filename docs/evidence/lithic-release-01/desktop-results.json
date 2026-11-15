@@ -1,0 +1,988 @@
+{
+  "source_commit": "158d7df53f829c0e9f25547e82aa4f9d1e3cd0c1",
+  "app_tree": "7c4ed9e88cdd607356d3b6d239d905e3f5a029f1",
+  "available_gib": 5.144,
+  "minimum_gib": 4,
+  "free_disk_gib": 20.947,
+  "started_utc": "2026-11-15T12:24:20.7242065Z",
+  "version_name": "1.0.1",
+  "version_code": 37,
+  "arguments": [
+    "--offline",
+    "--no-daemon",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-configuration-cache",
+    "--no-build-cache",
+    "--no-scan",
+    "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    ":app:compileReleaseKotlin",
+    ":app:testReleaseUnitTest",
+    ":app:lintRelease"
+  ],
+  "gradle_exit": 0,
+  "release_kotlin": "PASS",
+  "release_lint": "PASS",
+  "lint_errors": 0,
+  "lint_warnings": 20,
+  "jvm_tests": 985,
+  "jvm_failures": 0,
+  "jvm_errors": 0,
+  "jvm_skipped": 0,
+  "jvm_classes": 116,
+  "jvm_suites": [
+    {
+      "class": "com.cooper.lithic.app.AppProcessRoleTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "e724ba070bbd363d61737796e5e0403c06ad89a153faaef6f8d1b3bfa27e475a"
+    },
+    {
+      "class": "com.cooper.lithic.app.BusinessDateObserverTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "45afcf51e86ddafc9a8c86104c0ff8eb6e6b431d8301b89ee306c686dad078af"
+    },
+    {
+      "class": "com.cooper.lithic.app.C2NavigationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "0ed46750ec7758d3440d2df327228cb87dbed8b3fc1d3ea7776c24a0c53acc86"
+    },
+    {
+      "class": "com.cooper.lithic.app.C4NavigationMotionTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "9f38abb2f8751f4e1d296a22a21eadf1b673da6f798e6d3862ac9ff0b22886c5"
+    },
+    {
+      "class": "com.cooper.lithic.app.C7JourneyNavigationTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "597ca5ba2452535b58107f1b5249a6f164da4630c0c0caa5fd3eb02a690a0c48"
+    },
+    {
+      "class": "com.cooper.lithic.app.CoreOwnerBootstrapTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "cb7f2e978903f9cce7246a1feb9849ae854a598a3a882fa200db58b5c389eeca"
+    },
+    {
+      "class": "com.cooper.lithic.app.CoreOwnerStartupLifecycleTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "6844eb876068429651aa7882544a79565177380fba77f80ce5a1217b90b10640"
+    },
+    {
+      "class": "com.cooper.lithic.app.M14NavigationPolicyTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "43560ac58680e55382cbc7004a3ee96dfafc27adc1b53e50497b28533091db8f"
+    },
+    {
+      "class": "com.cooper.lithic.app.M15NavigationPolicyTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "e9885fcb261678f46e3e5373842d23befee402194a52d7c252bc9c62a7bf4121"
+    },
+    {
+      "class": "com.cooper.lithic.app.M16NavigationPolicyTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "7ce985599d0e433fb3ebc763354360b7bb36a9e654c833682760e000095f5d7e"
+    },
+    {
+      "class": "com.cooper.lithic.app.M17NavigationPolicyTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "f5d2f8da32164893e77add3669ab1d2e32333135571bb7f71e1980b640427170"
+    },
+    {
+      "class": "com.cooper.lithic.app.M18NavigationPolicyTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "d82eb38f89b4eb367d47a5a6f3bf8c554ad824eedbe8ed880521675a905351cb"
+    },
+    {
+      "class": "com.cooper.lithic.app.M19NavigationPolicyTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "eec9fd3c34aa499713d3a6f2680fe81a679b3b13dbc2e408f9d08eeebbd04811"
+    },
+    {
+      "class": "com.cooper.lithic.app.M20NavigationPolicyTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "fbebb4a91e8f085d4d9aba2521b7fce26dcf03ff3ec90f8d850707444ffa6d78"
+    },
+    {
+      "class": "com.cooper.lithic.app.M21NavigationPolicyTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b3fda2cbd485ee9f517453e4878eb52ba156e6cb856902ec6d9791c28f849aa6"
+    },
+    {
+      "class": "com.cooper.lithic.app.P02BrowseNavigationTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "9c386dcde3989af584ac19e3d69da3a692c9123b44e307aedfc0d5ca71bbb63a"
+    },
+    {
+      "class": "com.cooper.lithic.app.P03SettingsNavigationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "66e9f1bfcb7029e724dd728e4db4858b193578ba763eff0b96cdb28e4f36c9fa"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.AmountFormatterTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "3f5fd01e9515017659b2e2873e953df0415d9881cc8acc46a4a897ccb0f0a16b"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C2R2RecordIdentityTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a01d7c30526d4904fb0eac497b873d50f5b2fb50f9b848708bb5b41fb04b7f93"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C4RecordIdentityTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "0aab2b401b16b9f7d6ca4d372f12a90e96102a8ce8f61e0e5a4c530ae83224dd"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C5MoneyMetricPresentationTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "dcbc69e694f9a047092bcb839f32f0db2b9c1d9d969bd310c51e29dc8fb4c7b3"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C9R1VisualTokensTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "7574bc33024c9d2be2d598fed734c628726bb2de889f01adddda3ee7a8cd6ba4"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.C9ThemePaletteTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "0d2a3bd9824dea941df9bc31c81f230d145cae05f028a8abb03fa78fa4607708"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.ChartGeometryTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "83de6e58bcdf79e3826c4f41f471c51ec805cc49380bf58372e14a985e8a8a95"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.P02UiMessageStateTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "ce808cd95f1be13d217ab728abd3ad2c4788a1ab16876dfb2edd0ccee67c3670"
+    },
+    {
+      "class": "com.cooper.lithic.core.design.R1AmountLayoutTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "c35a5b8afdc1ab33372c33b68e9ab0b4ce5032d3f5d7bde5d7cc622c0cd9f590"
+    },
+    {
+      "class": "com.cooper.lithic.core.model.MoneyParserTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "0d880af1ce6d9b6d491a6c2d6544afbc9ee12eba30bbd8fc1481517e0515dd76"
+    },
+    {
+      "class": "com.cooper.lithic.core.time.BusinessClockTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "680b964a6955cd719f0c82a1c17e60856f5362db1f8522d1f6b13c23b0451730"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupCancellationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "19ece9e4aa68c50956721fdf983cbe328e74308a480ad4b6d327e5fc3ff18dfe"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupDtosTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "3f3aa0e3112e1f7bfae881e66b886a80cb7288b7a6c64489856274b8059c7580"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupFilesTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "c1e236c2820bf49359736054b5e80c3f209046e03de1ac8d407b5db682299469"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupInspectionServiceTest",
+      "tests": 31,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "0d569edd9ee9e58c5cc9ab79fcf60c4dc55eb3bd8308f5696d30abf1855822c2"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupJpegInspectionTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "3360cb77eddb6cb310a2d8876f2cfaa24b8b5abf19b3f1100ab4e5fc213574c3"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupMediaBudgetTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "1d9315e906deb9d333d815a4d90c6f3282e0b074ff8b93a461137bdf43f223e5"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupPngCompatibilityTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "34d0e425bb76002f726f89c8d2d18b66f040cb5b6e61e6580fe2ee26baea8d9d"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupPngInspectionTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "9fb790b8462d667697c24e9f3cbd7d01432888be40bd763ed8a74680f969a094"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupRecordLimitTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "cbc4c501de580831a0a886d74e09aa82387f3fabda7c276776dc951bb9c20e19"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.BackupValidatorTest",
+      "tests": 20,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "2afc42cb3869e6b21e4dd1acf7b96be43bddb9557cce5c919fd1ddbc4c45a3dc"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.C6StoredMediaBytesInspectionTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "db25f0e450d4344657b733247d621537e5d92bbc4724b57fb62a0c3a95c135ca"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.CompleteBackupArchiveTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "190c2472ce265180ccd075f2e05747ab0f03c723b0381932ec18cd346973663b"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.CoordinatedBackupReaderTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "79b311d065ee90dbf8685811568f8a832cdde15cf5d7799a5e888ccd96fcfbc3"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.GenerationRetirementTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "044975f66aa8a131b2c3ec5385b44514fb08dd7ba7822a2c13506e44952bdd0a"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16BackupV2Test",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "cd334a524ed849a29e80514909803c661bf4ed1e9a56c09f421e28d5602c0090"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M16RestoreProofCompatibilityTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "244ee40d59288b321e86dcd94a91e4f2b81d0d4f362592fd565b1690c81191ef"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M20BackupV3Test",
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "1f9c7cf74a49c4b3607be7002639a2bf134451ba7b9060a5fa1651d891f8c180"
+    },
+    {
+      "class": "com.cooper.lithic.data.backup.M21BackupFormatTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "ff76e96d541620f096b2d2a55ea5613298fd07cc66419094ebf966c0d2040cbe"
+    },
+    {
+      "class": "com.cooper.lithic.data.local.CategoryNamesTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "85035fefc7250b0229e67dd8201c2ff6b4be301d7dee8ed20753070b1578311e"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.isolation.IsolationSessionStateTest",
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "d8c816da0add3227132f046d609cc2051ef19894ba78dbbb6b79b71d5d563bbb"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.photolite.PhotoLiteBackup4IntegrationTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "d1cfba7f8b22386f12ff4c4ce97d984850ad0268db7a19446c04024d12aa820d"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.photolite.PhotoLiteCoverChangePolicyTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b2bfd27cdd80e71f8387011db53fec6d37be229542fdaf9b3d157e16b110d962"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.photolite.PhotoLiteLimitsTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "ac39be2eee6223cac5f565d0f38028487fd61ba5a684c1204b93f4329f418bd6"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.photolite.PhotoLitePngTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "167cbe873a02c0dd0f2d92ad03da291394324e0f1a9648c4c295bca627dbe584"
+    },
+    {
+      "class": "com.cooper.lithic.data.media.PhotoStorageSummaryTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "3efba5a3b9228ed65fb1f271ea2c30d1ef641d1c243efe4d7c33955ee211f630"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M20ReminderDispatchTest",
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "6758ee849d00dfc79b8c515ffd29df96821a70a75545b9be19df9126c30f744e"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.M21MilestoneDispatchTest",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "8f3ed03f0f3af7090b326034dda73206dca4face9ecd29e05554f5990150e263"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.MilestoneHistoryChangesTest",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "5d804695de081b3f772578fa0c5935c6e9690a86e060c5868073aa579f584c9b"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.OverviewInvestmentTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "aca12c982acda1e773118e8d800ff78464cc9586703be4b2e501fbe24ac6030e"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.SearchNamesTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "338ade8c06c3479a3bba1403c9873b928e42d4bb3022a02bfd7beab33ec86e2c"
+    },
+    {
+      "class": "com.cooper.lithic.data.repository.TradeInFactsTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "0163323b8181b22cbbab8e9469b6d9aab687d3b4f0413833c32f9de2fa150b02"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectCostEngineTest",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "2928ec3270756300262b9a07a26603bf87ee601cf360f2447ba472ff27df0f6c"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ProjectLifecycleRulesTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "32310bf64d5bca5e2994407fdde5479ac73dad77ebfea3d4b8949d233779bccc"
+    },
+    {
+      "class": "com.cooper.lithic.domain.project.ReplacementRulesTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b41d181b550f59adaa89ac5c3c46b6ea3be4ca04ec5f69ec482a90f3321d7e61"
+    },
+    {
+      "class": "com.cooper.lithic.domain.reminder.MilestonePlannerTest",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "f8f366b91e40f94c97c0b0b0178831f57279ee958d2997cbf674fe723cab8dd6"
+    },
+    {
+      "class": "com.cooper.lithic.domain.reminder.RenewalReminderPlannerTest",
+      "tests": 32,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b4b3da76af8fb8228b4f61695e5d3f811aa27ed895398d3fa6f51fef368663fc"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.AnnualReportEngineTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "dbf628d17bc61f4593d61c9b7b9dea3dd7bd9e02212afffcdfea6e377809cfe3"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.CategoryReportEngineTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "1c7452237a4dd6d57c8101b5472e3402762465d43fe4e3a1ee43336d272a0f7c"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.CostTimelineEngineTest",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "88e76f2891bf31e0abf511dba9b71908b31fa1f7816e275e321c235a6d20edb2"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.ItemTimelineTest",
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "51ed8ff86d3649371eade1d83f1343d447a0e8de2162afff990374805bbbcbbe"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.M22TimelinePreparationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "f0e0c88ffe279d8f0b21025ef82e0a6c0bc0e23f03881554ccfc58d5e644fe78"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.OverviewEngineTest",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "9ed2c2ef65c8112e46ab148d053e330d5da98de68ba5e0a77f915bca649cb083"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.RankingEngineTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "f4a9b2e97426b848cc5746ca4e2ed422e61e68f1688d687b9d38f292b87f5925"
+    },
+    {
+      "class": "com.cooper.lithic.domain.report.TimelineSamplerTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "10297f595717263734737a75f555079dadfa39a2bfa948907e6412f3a4a7aaef"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionAccumulationTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "9857f44b2bde0cc709111d7e89fdc8500d12da02fc0ca6a35c547499112c54f8"
+    },
+    {
+      "class": "com.cooper.lithic.domain.subscription.SubscriptionCostEngineTest",
+      "tests": 37,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "d380b9f80f9900786a22b37821bdef4a65a725e327f04d60458168bd4b203a26"
+    },
+    {
+      "class": "com.cooper.lithic.feature.appearance.AppearanceControllerTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a128496b5fb70802b7beed2189bbc2a3d732f77d21569348e36cde06bd61375b"
+    },
+    {
+      "class": "com.cooper.lithic.feature.appearance.DataStoreAppearanceStorageTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "8df1750f97c2af98caa0aaf76f2bbff25e17296e70b8f243a9c9cfec0c606b7c"
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.CategoryControllerTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "3d36d13292837e0fa1285fd6a80a51c00999fbd018d5499bf02a8841b616ff0c"
+    },
+    {
+      "class": "com.cooper.lithic.feature.category.SingleCategoryPresentationTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "00a4e332a9e276379b46df769ea70d7bc8d597e0c3a5917d22990f7c5c70553f"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.C2HomePresentationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "8d22878c358083f8a635e2ea3d28b842fbaf1cd9beae291c2fd819fa234341d6"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P01HomeOverviewPresentationTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "c53e98b046e3ec43fa5a87d4d5ea2ff5dd863eac3a421b06e23af0d2ed44857b"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P02SearchPresentationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "51b5564a84766cc21023d1eee6c40587cd8f11cb89e864f81690462a7f10adc7"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P02SearchStateTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "bf3e4ae65741446f1dcacca3fc9c43a95d06c68264d4e17e150ba6b258a7087e"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.P2HomeReadSourceContractTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "c9f0d5f74267bc0a8331ceac39df33515d1c6f7ad8386a3ac42adee85cc18bde"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.R1HomeEmptyStateTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a15d60f40afe126aa909c31114e2ece1adfc407526ca004a578007b99c7ffbcf"
+    },
+    {
+      "class": "com.cooper.lithic.feature.home.SearchControllerTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "407c8eb08a3b454b9961bcb59b04278e47753cbc305ac6e888497eda5c41f75d"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.CoverPreviewPipelineTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "095484e17aea3748ef61414ddf5ad541581c774ffee1f415c98374cadc8de72c"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.CoverPreviewPolicyTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "d3bccbb2537c4e30889eb511f10dbbe973de47376b513ab287c5c22d2ef8455b"
+    },
+    {
+      "class": "com.cooper.lithic.feature.media.PhotoLiteCapabilityTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "4748f4b0c69f113bc9198a06a5874234a7f17569ed802964837ff4a111199f72"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectDetailPresentationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b93ce2370abda429f43dd8fd1862bdb859c57ae981497f9c9da052b39f5d349a"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2ProjectEditorDisclosureTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b00feb061e2b0854641760b55c28135f3f8d49bcbd1de0532057619d22604f7a"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.C2R1ProjectEventLabelsTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "1b6a63a010459fe963ea8c5e1432e722b37e15636feb481270316391869e19d5"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.RecordingProjectListPresentationTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "da85e006342a339ac1be4f85430b3a824645df5c79cbfd4a0afbe2c842ff8d41"
+    },
+    {
+      "class": "com.cooper.lithic.feature.project.ReplacementSubmissionGateTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "76d0642c4c3229fc9af0b8e8d3fc6b904b7b971872a186538fd62f9bdc25fcb2"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C1ReviewEmptyPresentationTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "806c319d43de6580826235e799d9dbc3cbc29d89b8d09068deb69582b4b839c3"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C2ReviewSelectionLabelTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "87768909157cf481c000356d5a8383f63e8268bdf97cb93801fc90538c8dadb6"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.C5R1TrendPresentationTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "896c0f7f329b29d52663ad2acb9ab7b78dd531d5f41f3450b6fe2faf59d22280"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.M22TimelineReadStateTest",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "3dc963e0b05a42b0ec38037679529785dd3e740bae174251d27b9735a15b4b90"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.P02ReviewRecordSummaryTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "e28bc68e2e52e0879397632d4f9db7cb86a2eb68b68f5b940f88b2a327ad894e"
+    },
+    {
+      "class": "com.cooper.lithic.feature.review.ReviewControllerTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "06ef0d215a656af426624b51497bd6bc85fdb0bf613013e9c32e7bc227efe85f"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupExportControllerTest",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "2b3fbb67446c99431b2fcad52e700e602b2549127d62e1b5ab84bbc24d667f20"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupInspectionControllerTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b87908311974ef506e1386ff25f78f407923c605525766e8e55ee2de56945230"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRecreationWarningTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "5f8e6aa45729df4fd5e0b49d7729915b79ca59ce6d33037424e495eccc10aec7"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.BackupRestoreControllerTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "d590bed7a829afb8207f12ddac5b381b4b6c58639696122b5bea36feb7bd1936"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.CoreReminderCopyTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "2fe7cfc00ffdcd2a414ae62874aac97b3ec108ed2913e5581bb333f1483a29e7"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.NotificationPermissionStateTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "aafe7b44f6a0d84edb9bd117b59862311e3fff38ce9743ae883922a4b55b52f3"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.NotificationSettingsControllerTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "4843e93dce62c07d90998a5706252eec90a0842b4b060d029a7e3e410b021bd5"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03BackupExportFeedbackTest",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "c2958813daee2dee8f63fc9cc6765c0a8af1c026a566bbdd63cf4a7ae191a885"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03BackupRestoreFeedbackTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b802a944d430120a74aae3f481d81cf23fc0c342ddd4d0ac12d41ce08f05e946"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.P03ProductInformationTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "6293bf16eadfe7cea439b994af66296aa50e6caaa626ea17c53dd5381bc3ade0"
+    },
+    {
+      "class": "com.cooper.lithic.feature.settings.PhotoStorageControllerTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "6e159ae2aaed8bc69fe591444c50bc2dcebae1507789b81606c537c2b02a0e03"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.P02SubscriptionBrowseOriginTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b9f0295c340ee1e961a890b618f1eac3ba39473ceb2d74465ab085adf2bceb4a"
+    },
+    {
+      "class": "com.cooper.lithic.feature.subscription.SubscriptionReviewOriginTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "138a0ce326e0abd649a8982c3e3019b9d8737e1c14c61cc93b39ac96bcdbaed1"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.CoreReminderNoWorkManagerTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "c28911de6db0497c50126d7852d4ef8d671c635007c8a03614f064d1af972dc2"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.LegacyReminderCancellationRunnerTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "81f1d0e0fa666d2a2588aaf8130b24f249cdc4907f637f93ece89a11efa96e52"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.ReminderReconciliationTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "7c321bb3448b3f61de7377c7e724e77ee6d2785db8e2b220af729bcc6e812177"
+    },
+    {
+      "class": "com.cooper.lithic.platform.notification.ReminderRequestObservationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "bdfdb3a2642a784f77ead4533b1885c08d57f251bf2fddc3a79284ee354f0cc1"
+    }
+  ],
+  "python_tests": 30,
+  "python_exit": 0,
+  "unsigned_gate": "PASS",
+  "main": "145326ddd4ce28abbf7c2706fe25f9d38c599c3a",
+  "main_to_release_commits": "243",
+  "main_to_release_paths": 9920,
+  "old_release_source": "a5b58158d98507d80eb619dec1beeeb1e3de2fee",
+  "old_release_unchanged_git_objects": {
+    "app/schemas": "d72068376fea7206df985b9169a2ff15ce2c861c",
+    "app/src/main/AndroidManifest.xml": "6c704de544f5e80b6bc799c9949d07ffee4534a7",
+    "app/src/main/java/com/cooper/lithic/data/local": "9382eb53eb420467a9501a09cbe8ac83dee64635",
+    "app/src/main/java/com/cooper/lithic/data/backup": "fdefcd7fe8386b244aa3db699c8a54eaebe590c7",
+    "app/src/main/java/com/cooper/lithic/data/media": "63c7ce8f71e125eae6dc3c9de21efafe9563290a"
+  },
+  "ui_paths_unchanged_from_polish": [
+    "app/src/main/java/com/cooper/lithic/feature/home",
+    "app/src/main/java/com/cooper/lithic/feature/project",
+    "app/src/main/java/com/cooper/lithic/feature/subscription",
+    "app/src/main/java/com/cooper/lithic/feature/appearance",
+    "app/src/main/java/com/cooper/lithic/app",
+    "app/src/main/java/com/cooper/lithic/core/design"
+  ],
+  "lint_xml_sha256": "998c9ced85c0d58bf02562813e28d191c4b36649cea2b9f6a474e08e38c91ea1",
+  "desktop_raw_log_sha256": "03fcf88431acb20c31f6c3e760d09885966f45a027846eb2da163136a383f247"
+}

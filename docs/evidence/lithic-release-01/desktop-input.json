@@ -1,0 +1,24 @@
+{
+  "source_commit": "158d7df53f829c0e9f25547e82aa4f9d1e3cd0c1",
+  "app_tree": "7c4ed9e88cdd607356d3b6d239d905e3f5a029f1",
+  "available_gib": 5.144,
+  "minimum_gib": 4,
+  "free_disk_gib": 20.947,
+  "started_utc": "2026-11-15T12:24:20.7242065Z",
+  "version_name": "1.0.1",
+  "version_code": 37,
+  "arguments": [
+    "--offline",
+    "--no-daemon",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-configuration-cache",
+    "--no-build-cache",
+    "--no-scan",
+    "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    ":app:compileReleaseKotlin",
+    ":app:testReleaseUnitTest",
+    ":app:lintRelease"
+  ]
+}

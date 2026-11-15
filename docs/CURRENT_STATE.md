@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC RELEASE 01 — BLOCKED（2026-11-15）**。1.0.1/code37 的正式源码已固定，桌面验收为 985 项 Release JVM、30 项离线脚本、Release Kotlin 和完整 Release Lint 通过。已核对旧正式 code36、证书与 Room5/backup4；当前等待安全终端启动正式签名，APK 和设备端覆盖升级仍 `NOT_RUN`。见[发布预检报告](evidence/LITHIC-RELEASE-01.md)。
+
 - **LITHIC UI-V3 DETAIL FINAL POLISH 03 — READY_FOR_INDEPENDENT_REVIEW（2026-11-15）**。项目日均成本、累计投入采用同样式双卡，财务默认完全收起。两页保留最近三笔、完整事实和原操作，隐藏可见的重复日均单位。106 项定向 JVM、生产及 AndroidTest 编译、唯一 Debug APK 构建与审计通过，Lint 0 错误／20 警告。Android 三主题实机、系统 200% 字体和交互仍 `NOT_RUN`。见[实施与验证报告](evidence/LITHIC-UI-V3-DETAIL-FINAL-POLISH-03.md)。
 
 - **LITHIC UI-V3 DETAIL INFORMATION HIERARCHY 02 — READY_FOR_INDEPENDENT_REVIEW（2026-11-14）**。项目默认收起财务明细，项目和订阅记录默认显示最近三条，原单笔事实、纠错与独立分页保持。生产仅改两个详情页。97 项定向 JVM、生产及 AndroidTest 编译和 Debug 构建通过，Lint 0 错误／20 警告。唯一 Debug App 归档与原签名、Manifest、DEX 已核对；三主题实际截图、真实 200% 及 Android 交互均 NOT_RUN。见[实施报告](evidence/LITHIC-UI-V3-DETAIL-INFORMATION-HIERARCHY-02.md)。
