@@ -1,0 +1,79 @@
+{
+  "audit": "PASS_STATIC_APK_ONLY",
+  "android_install_upgrade_and_backup_runtime": "NOT_RUN",
+  "source": {
+    "source_commit": "158d7df53f829c0e9f25547e82aa4f9d1e3cd0c1",
+    "app_tree": "7c4ed9e88cdd607356d3b6d239d905e3f5a029f1",
+    "previous_release_source": "a5b58158d98507d80eb619dec1beeeb1e3de2fee",
+    "unchanged_paths_vs_previous_release": [
+      "app/schemas",
+      "app/src/main/java/com/cooper/lithic/data/local",
+      "app/src/main/java/com/cooper/lithic/data/backup",
+      "app/src/main/AndroidManifest.xml",
+      "app/src/main/res/xml"
+    ]
+  },
+  "signed_apk": {
+    "name": "1.0.1",
+    "code": 37,
+    "apk_sha256": "498b0c84dd780944e5f76c43b81343d95603cc985a1ed5d2c64e8723e0204342",
+    "bytes": 15785841,
+    "signer_sha256": "3a10918a24ab4c66fd2f5e2725b0b8a65164d4da43f71a40d6e6d74afc4b1f19",
+    "external_apk_path": "E:\\Lithic-Private-Release\\Release01-1.0.1-build-1b966d80f3284429b29482480dee5f30\\outputs\\apk\\release\\app-release.apk",
+    "schemes": {
+      "v2": true,
+      "v3": true
+    },
+    "permissions": "package: com.cooper.lithic\nuses-permission: name='android.permission.POST_NOTIFICATIONS'\nuses-permission: name='android.permission.WAKE_LOCK'\nuses-permission: name='android.permission.ACCESS_NETWORK_STATE'\nuses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'\npermission: com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\nuses-permission: name='com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'\n",
+    "native_alignment_16k": true
+  },
+  "previous_signed_apk": {
+    "name": "1.0.0",
+    "code": 36,
+    "apk_sha256": "ff909ca1eb21e04756d91d067082ca12df1ac17c263d793843fbbf4c67e40c2b",
+    "bytes": 15747081,
+    "signer_sha256": "3a10918a24ab4c66fd2f5e2725b0b8a65164d4da43f71a40d6e6d74afc4b1f19",
+    "external_apk_path": "E:\\CODEX\\.codex\\worktrees\\lithic-m13\\\u783a\u77f3\u65b0APP\\deliveries\\lithic-v1.0.0\\Lithic-1.0.0-release.apk",
+    "schemes": {
+      "v2": true,
+      "v3": false
+    },
+    "permissions": "package: com.cooper.lithic\nuses-permission: name='android.permission.POST_NOTIFICATIONS'\nuses-permission: name='android.permission.WAKE_LOCK'\nuses-permission: name='android.permission.ACCESS_NETWORK_STATE'\nuses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'\npermission: com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\nuses-permission: name='com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'\n",
+    "native_alignment_16k": true
+  },
+  "manifest_unchanged_except_versions": true,
+  "backup_xml_unchanged": true,
+  "permissions_unchanged": true,
+  "dex_files": [
+    "classes.dex",
+    "classes2.dex",
+    "classes3.dex"
+  ],
+  "native_libraries": [
+    "lib/arm64-v8a/libandroidx.graphics.path.so",
+    "lib/arm64-v8a/libdatastore_shared_counter.so",
+    "lib/armeabi-v7a/libandroidx.graphics.path.so",
+    "lib/armeabi-v7a/libdatastore_shared_counter.so",
+    "lib/x86/libandroidx.graphics.path.so",
+    "lib/x86/libdatastore_shared_counter.so",
+    "lib/x86_64/libandroidx.graphics.path.so",
+    "lib/x86_64/libdatastore_shared_counter.so"
+  ],
+  "dex_markers": [
+    "home-total-investment",
+    "home-current-cost-summary",
+    "home-project-tab",
+    "home-subscription-tab",
+    "project-core-outlay",
+    "project-cost-daily-card",
+    "project-cost-outlay-card",
+    "project-money-count",
+    "subscription-detail-historical-average",
+    "subscription-detail-next-plan",
+    "subscription-detail-show-payments",
+    "Lcom/cooper/lithic/data/local/LithicDatabase_Impl;",
+    "Lcom/cooper/lithic/data/backup/RestoreCoordinator;",
+    "Lcom/cooper/lithic/data/backup/BackupInspectionService;",
+    "Lcom/cooper/lithic/feature/media/PhotoLiteCoverController;"
+  ]
+}

@@ -1,0 +1,510 @@
+== badging ==
+package: name='com.cooper.lithic' versionCode='36' versionName='1.0.0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'
+minSdkVersion:'26'
+targetSdkVersion:'36'
+uses-permission: name='android.permission.POST_NOTIFICATIONS'
+uses-permission: name='android.permission.WAKE_LOCK'
+uses-permission: name='android.permission.ACCESS_NETWORK_STATE'
+uses-permission: name='android.permission.RECEIVE_BOOT_COMPLETED'
+uses-permission: name='com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+application-label:'砺石 LITHIC'
+application-label-af:'砺石 LITHIC'
+application-label-am:'砺石 LITHIC'
+application-label-ar:'砺石 LITHIC'
+application-label-as:'砺石 LITHIC'
+application-label-az:'砺石 LITHIC'
+application-label-be:'砺石 LITHIC'
+application-label-bg:'砺石 LITHIC'
+application-label-bn:'砺石 LITHIC'
+application-label-bs:'砺石 LITHIC'
+application-label-ca:'砺石 LITHIC'
+application-label-cs:'砺石 LITHIC'
+application-label-da:'砺石 LITHIC'
+application-label-de:'砺石 LITHIC'
+application-label-el:'砺石 LITHIC'
+application-label-en-AU:'砺石 LITHIC'
+application-label-en-CA:'砺石 LITHIC'
+application-label-en-GB:'砺石 LITHIC'
+application-label-en-IN:'砺石 LITHIC'
+application-label-en-XC:'砺石 LITHIC'
+application-label-es:'砺石 LITHIC'
+application-label-es-US:'砺石 LITHIC'
+application-label-et:'砺石 LITHIC'
+application-label-eu:'砺石 LITHIC'
+application-label-fa:'砺石 LITHIC'
+application-label-fi:'砺石 LITHIC'
+application-label-fr:'砺石 LITHIC'
+application-label-fr-CA:'砺石 LITHIC'
+application-label-gl:'砺石 LITHIC'
+application-label-gu:'砺石 LITHIC'
+application-label-hi:'砺石 LITHIC'
+application-label-hr:'砺石 LITHIC'
+application-label-hu:'砺石 LITHIC'
+application-label-hy:'砺石 LITHIC'
+application-label-in:'砺石 LITHIC'
+application-label-is:'砺石 LITHIC'
+application-label-it:'砺石 LITHIC'
+application-label-iw:'砺石 LITHIC'
+application-label-ja:'砺石 LITHIC'
+application-label-ka:'砺石 LITHIC'
+application-label-kk:'砺石 LITHIC'
+application-label-km:'砺石 LITHIC'
+application-label-kn:'砺石 LITHIC'
+application-label-ko:'砺石 LITHIC'
+application-label-ky:'砺石 LITHIC'
+application-label-lo:'砺石 LITHIC'
+application-label-lt:'砺石 LITHIC'
+application-label-lv:'砺石 LITHIC'
+application-label-mk:'砺石 LITHIC'
+application-label-ml:'砺石 LITHIC'
+application-label-mn:'砺石 LITHIC'
+application-label-mr:'砺石 LITHIC'
+application-label-ms:'砺石 LITHIC'
+application-label-my:'砺石 LITHIC'
+application-label-nb:'砺石 LITHIC'
+application-label-ne:'砺石 LITHIC'
+application-label-nl:'砺石 LITHIC'
+application-label-or:'砺石 LITHIC'
+application-label-pa:'砺石 LITHIC'
+application-label-pl:'砺石 LITHIC'
+application-label-pt:'砺石 LITHIC'
+application-label-pt-BR:'砺石 LITHIC'
+application-label-pt-PT:'砺石 LITHIC'
+application-label-ro:'砺石 LITHIC'
+application-label-ru:'砺石 LITHIC'
+application-label-si:'砺石 LITHIC'
+application-label-sk:'砺石 LITHIC'
+application-label-sl:'砺石 LITHIC'
+application-label-sq:'砺石 LITHIC'
+application-label-sr:'砺石 LITHIC'
+application-label-sr-Latn:'砺石 LITHIC'
+application-label-sv:'砺石 LITHIC'
+application-label-sw:'砺石 LITHIC'
+application-label-ta:'砺石 LITHIC'
+application-label-te:'砺石 LITHIC'
+application-label-th:'砺石 LITHIC'
+application-label-tl:'砺石 LITHIC'
+application-label-tr:'砺石 LITHIC'
+application-label-uk:'砺石 LITHIC'
+application-label-ur:'砺石 LITHIC'
+application-label-uz:'砺石 LITHIC'
+application-label-vi:'砺石 LITHIC'
+application-label-zh-CN:'砺石 LITHIC'
+application-label-zh-HK:'砺石 LITHIC'
+application-label-zh-TW:'砺石 LITHIC'
+application-label-zu:'砺石 LITHIC'
+application-icon-160:'res/BW.xml'
+application-icon-240:'res/BW.xml'
+application-icon-320:'res/BW.xml'
+application-icon-65534:'res/BW.xml'
+application-icon-65535:'res/BW.xml'
+application: label='砺石 LITHIC' icon='res/BW.xml'
+launchable-activity: name='com.cooper.lithic.app.MainActivity'  label='' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+other-receivers
+other-services
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320' '65534' '65535'
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+
+
+== apksigner ==
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): false
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Lithic Release
+Signer #1 certificate SHA-256 digest: 3a10918a24ab4c66fd2f5e2725b0b8a65164d4da43f71a40d6e6d74afc4b1f19
+Signer #1 certificate SHA-1 digest: 4944d214553dd101ebc9b693f0c49bb1f85f3212
+Signer #1 certificate MD5 digest: fd4b608abb88e486e18825f4307957f4
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: 9ee4ba22ce15c7156704ba65478e806102fd0dae373712e41f041c2fabf1dc2c
+Signer #1 public key SHA-1 digest: b5fd0b3ad94765aff185c5d6f520b13076b29f3c
+Signer #1 public key MD5 digest: be202ce61efc699b3b283e8e27ca4529
+
+
+== manifest ==
+N: android=http://schemas.android.com/apk/res/android (line=2)
+  E: manifest (line=2)
+    A: http://schemas.android.com/apk/res/android:versionCode(0x0101021b)=36
+    A: http://schemas.android.com/apk/res/android:versionName(0x0101021c)="1.0.0" (Raw: "1.0.0")
+    A: http://schemas.android.com/apk/res/android:compileSdkVersion(0x01010572)=36
+    A: http://schemas.android.com/apk/res/android:compileSdkVersionCodename(0x01010573)="16" (Raw: "16")
+    A: package="com.cooper.lithic" (Raw: "com.cooper.lithic")
+    A: platformBuildVersionCode=36
+    A: platformBuildVersionName=16
+      E: uses-sdk (line=7)
+        A: http://schemas.android.com/apk/res/android:minSdkVersion(0x0101020c)=26
+        A: http://schemas.android.com/apk/res/android:targetSdkVersion(0x01010270)=36
+      E: uses-permission (line=11)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.POST_NOTIFICATIONS" (Raw: "android.permission.POST_NOTIFICATIONS")
+      E: uses-permission (line=12)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.WAKE_LOCK" (Raw: "android.permission.WAKE_LOCK")
+      E: uses-permission (line=13)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.ACCESS_NETWORK_STATE" (Raw: "android.permission.ACCESS_NETWORK_STATE")
+      E: uses-permission (line=14)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.permission.RECEIVE_BOOT_COMPLETED" (Raw: "android.permission.RECEIVE_BOOT_COMPLETED")
+      E: permission (line=16)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" (Raw: "com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
+        A: http://schemas.android.com/apk/res/android:protectionLevel(0x01010009)=0x00000002
+      E: uses-permission (line=20)
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" (Raw: "com.cooper.lithic.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
+      E: application (line=22)
+        A: http://schemas.android.com/apk/res/android:theme(0x01010000)=@0x7f0b0009
+        A: http://schemas.android.com/apk/res/android:label(0x01010001)=@0x7f0a0001
+        A: http://schemas.android.com/apk/res/android:icon(0x01010002)=@0x7f090000
+        A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.LithicApplication" (Raw: "com.cooper.lithic.app.LithicApplication")
+        A: http://schemas.android.com/apk/res/android:allowBackup(0x01010280)=false
+        A: http://schemas.android.com/apk/res/android:supportsRtl(0x010103af)=true
+        A: http://schemas.android.com/apk/res/android:extractNativeLibs(0x010104ea)=false
+        A: http://schemas.android.com/apk/res/android:fullBackupContent(0x010104eb)=@0x7f0d0000
+        A: http://schemas.android.com/apk/res/android:roundIcon(0x0101052c)=@0x7f090001
+        A: http://schemas.android.com/apk/res/android:appComponentFactory(0x0101057a)="androidx.core.app.CoreComponentFactory" (Raw: "androidx.core.app.CoreComponentFactory")
+        A: http://schemas.android.com/apk/res/android:dataExtractionRules(0x0101063e)=@0x7f0d0001
+          E: provider (line=36)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.startup.InitializationProvider" (Raw: "androidx.startup.InitializationProvider")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:process(0x01010011)="com.cooper.lithic" (Raw: "com.cooper.lithic")
+            A: http://schemas.android.com/apk/res/android:authorities(0x01010018)="com.cooper.lithic.androidx-startup" (Raw: "com.cooper.lithic.androidx-startup")
+              E: meta-data (line=41)
+                A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.lifecycle.ProcessLifecycleInitializer" (Raw: "androidx.lifecycle.ProcessLifecycleInitializer")
+                A: http://schemas.android.com/apk/res/android:value(0x01010024)="androidx.startup" (Raw: "androidx.startup")
+              E: meta-data (line=44)
+                A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.ProfileInstallerInitializer" (Raw: "androidx.profileinstaller.ProfileInstallerInitializer")
+                A: http://schemas.android.com/apk/res/android:value(0x01010024)="androidx.startup" (Raw: "androidx.startup")
+          E: service (line=49)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.data.media.isolation.MediaSandboxService" (Raw: "com.cooper.lithic.data.media.isolation.MediaSandboxService")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:process(0x01010011)=":media_sandbox" (Raw: ":media_sandbox")
+            A: http://schemas.android.com/apk/res/android:isolatedProcess(0x010103a9)=true
+          E: activity (line=55)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="com.cooper.lithic.app.MainActivity" (Raw: "com.cooper.lithic.app.MainActivity")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+              E: intent-filter (line=58)
+                  E: action (line=59)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.action.MAIN" (Raw: "android.intent.action.MAIN")
+                  E: category (line=61)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.category.LAUNCHER" (Raw: "android.intent.category.LAUNCHER")
+          E: service (line=65)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.background.systemjob.SystemJobService" (Raw: "androidx.work.impl.background.systemjob.SystemJobService")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.BIND_JOB_SERVICE" (Raw: "android.permission.BIND_JOB_SERVICE")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=@0x7f020002
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+          E: receiver (line=72)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver" (Raw: "androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+          E: receiver (line=77)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.background.systemalarm.RescheduleReceiver" (Raw: "androidx.work.impl.background.systemalarm.RescheduleReceiver")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=false
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=82)
+                  E: action (line=83)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="android.intent.action.BOOT_COMPLETED" (Raw: "android.intent.action.BOOT_COMPLETED")
+          E: receiver (line=86)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.impl.diagnostics.DiagnosticsReceiver" (Raw: "androidx.work.impl.diagnostics.DiagnosticsReceiver")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.DUMP" (Raw: "android.permission.DUMP")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=92)
+                  E: action (line=93)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" (Raw: "androidx.work.diagnostics.REQUEST_DIAGNOSTICS")
+          E: service (line=97)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.room.MultiInstanceInvalidationService" (Raw: "androidx.room.MultiInstanceInvalidationService")
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=false
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=true
+          E: receiver (line=102)
+            A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.ProfileInstallReceiver" (Raw: "androidx.profileinstaller.ProfileInstallReceiver")
+            A: http://schemas.android.com/apk/res/android:permission(0x01010006)="android.permission.DUMP" (Raw: "android.permission.DUMP")
+            A: http://schemas.android.com/apk/res/android:enabled(0x0101000e)=true
+            A: http://schemas.android.com/apk/res/android:exported(0x01010010)=true
+            A: http://schemas.android.com/apk/res/android:directBootAware(0x01010505)=false
+              E: intent-filter (line=108)
+                  E: action (line=109)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.INSTALL_PROFILE" (Raw: "androidx.profileinstaller.action.INSTALL_PROFILE")
+              E: intent-filter (line=111)
+                  E: action (line=112)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.SKIP_FILE" (Raw: "androidx.profileinstaller.action.SKIP_FILE")
+              E: intent-filter (line=114)
+                  E: action (line=115)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.SAVE_PROFILE" (Raw: "androidx.profileinstaller.action.SAVE_PROFILE")
+              E: intent-filter (line=117)
+                  E: action (line=118)
+                    A: http://schemas.android.com/apk/res/android:name(0x01010003)="androidx.profileinstaller.action.BENCHMARK_OPERATION" (Raw: "androidx.profileinstaller.action.BENCHMARK_OPERATION")
+
+
+== zipalign ==
+Verifying alignment of E:\CODEX\.codex\worktrees\lithic-m13\��ʯ��APP\deliveries\lithic-v1.0.0\Lithic-1.0.0-release.apk (4)...
+      87 META-INF/com/android/build/gradle/app-metadata.properties (OK - compressed)
+     209 META-INF/version-control-info.textproto (OK - compressed)
+     312 assets/dexopt/baseline.prof (OK)
+    8748 assets/dexopt/baseline.profm (OK)
+    9248 classes.dex (OK - compressed)
+ 4839387 classes2.dex (OK - compressed)
+ 8744960 classes3.dex (OK - compressed)
+ 9764864 lib/arm64-v8a/libandroidx.graphics.path.so (OK)
+ 9781248 lib/arm64-v8a/libdatastore_shared_counter.so (OK)
+ 9797632 lib/armeabi-v7a/libandroidx.graphics.path.so (OK)
+ 9814016 lib/armeabi-v7a/libdatastore_shared_counter.so (OK)
+ 9830400 lib/x86/libandroidx.graphics.path.so (OK)
+ 9846784 lib/x86/libdatastore_shared_counter.so (OK)
+ 9863168 lib/x86_64/libandroidx.graphics.path.so (OK)
+ 9879552 lib/x86_64/libdatastore_shared_counter.so (OK)
+ 9889023 DebugProbesKt.bin (OK - compressed)
+ 9889884 META-INF/androidx.activity_activity-compose.version (OK)
+ 9889968 META-INF/androidx.activity_activity-ktx.version (OK)
+ 9890048 META-INF/androidx.activity_activity.version (OK)
+ 9890148 META-INF/androidx.annotation_annotation-experimental.version (OK)
+ 9890232 META-INF/androidx.arch.core_core-runtime.version (OK - compressed)
+ 9890368 META-INF/androidx.autofill_autofill.version (OK)
+ 9890464 META-INF/androidx.compose.animation_animation-core.version (OK)
+ 9890556 META-INF/androidx.compose.animation_animation.version (OK)
+ 9890656 META-INF/androidx.compose.foundation_foundation-layout.version (OK)
+ 9890748 META-INF/androidx.compose.foundation_foundation.version (OK)
+ 9890840 META-INF/androidx.compose.material3_material3.version (OK)
+ 9890936 META-INF/androidx.compose.material_material-ripple.version (OK)
+ 9891032 META-INF/androidx.compose.runtime_runtime-annotation.version (OK)
+ 9891128 META-INF/androidx.compose.runtime_runtime-saveable.version (OK)
+ 9891216 META-INF/androidx.compose.runtime_runtime.version (OK)
+ 9891300 META-INF/androidx.compose.ui_ui-geometry.version (OK)
+ 9891384 META-INF/androidx.compose.ui_ui-graphics.version (OK)
+ 9891464 META-INF/androidx.compose.ui_ui-text.version (OK)
+ 9891544 META-INF/androidx.compose.ui_ui-unit.version (OK)
+ 9891624 META-INF/androidx.compose.ui_ui-util.version (OK)
+ 9891700 META-INF/androidx.compose.ui_ui.version (OK)
+ 9891776 META-INF/androidx.core_core-ktx.version (OK)
+ 9891860 META-INF/androidx.core_core-viewtree.version (OK)
+ 9891932 META-INF/androidx.core_core.version (OK)
+ 9892036 META-INF/androidx.customview_customview-poolingcontainer.version (OK)
+ 9892124 META-INF/androidx.datastore_datastore-core.version (OK)
+ 9892224 META-INF/androidx.datastore_datastore-preferences-core.version (OK)
+ 9892320 META-INF/androidx.datastore_datastore-preferences.version (OK)
+ 9892404 META-INF/androidx.datastore_datastore.version (OK)
+ 9892480 META-INF/androidx.emoji2_emoji2.version (OK)
+ 9892564 META-INF/androidx.graphics_graphics-path.version (OK)
+ 9892652 META-INF/androidx.interpolator_interpolator.version (OK)
+ 9892752 META-INF/androidx.lifecycle_lifecycle-livedata-core-ktx.version (OK)
+ 9892848 META-INF/androidx.lifecycle_lifecycle-livedata-core.version (OK)
+ 9892940 META-INF/androidx.lifecycle_lifecycle-livedata.version (OK)
+ 9893032 META-INF/androidx.lifecycle_lifecycle-process.version (OK)
+ 9893132 META-INF/androidx.lifecycle_lifecycle-runtime-compose.version (OK)
+ 9893228 META-INF/androidx.lifecycle_lifecycle-runtime-ktx.version (OK)
+ 9893320 META-INF/androidx.lifecycle_lifecycle-runtime.version (OK)
+ 9893412 META-INF/androidx.lifecycle_lifecycle-service.version (OK)
+ 9893508 META-INF/androidx.lifecycle_lifecycle-viewmodel-ktx.version (OK)
+ 9893612 META-INF/androidx.lifecycle_lifecycle-viewmodel-savedstate.version (OK)
+ 9893704 META-INF/androidx.lifecycle_lifecycle-viewmodel.version (OK)
+ 9893800 META-INF/androidx.navigation3_navigation3-runtime.version (OK)
+ 9893888 META-INF/androidx.navigation3_navigation3-ui.version (OK)
+ 9893992 META-INF/androidx.navigationevent_navigationevent-compose.version (OK)
+ 9894088 META-INF/androidx.navigationevent_navigationevent.version (OK)
+ 9894184 META-INF/androidx.profileinstaller_profileinstaller.version (OK)
+ 9894260 META-INF/androidx.room_room-ktx.version (OK)
+ 9894340 META-INF/androidx.room_room-runtime.version (OK)
+ 9894432 META-INF/androidx.savedstate_savedstate-compose.version (OK)
+ 9894520 META-INF/androidx.savedstate_savedstate-ktx.version (OK)
+ 9894604 META-INF/androidx.savedstate_savedstate.version (OK)
+ 9894692 META-INF/androidx.sqlite_sqlite-framework.version (OK)
+ 9894768 META-INF/androidx.sqlite_sqlite.version (OK)
+ 9894856 META-INF/androidx.startup_startup-runtime.version (OK)
+ 9894940 META-INF/androidx.tracing_tracing-ktx.version (OK)
+ 9895020 META-INF/androidx.tracing_tracing.version (OK)
+ 9895124 META-INF/androidx.versionedparcelable_versionedparcelable.version (OK)
+ 9895208 META-INF/androidx.work_work-runtime-ktx.version (OK)
+ 9895288 META-INF/androidx.work_work-runtime.version (OK)
+ 9895376 META-INF/androidx/annotation/annotation/LICENSE.txt (OK - compressed)
+ 9899024 META-INF/androidx/collection/collection-ktx/LICENSE.txt (OK - compressed)
+ 9902668 META-INF/androidx/collection/collection/LICENSE.txt (OK - compressed)
+ 9906320 META-INF/androidx/datastore/datastore-core-okio/LICENSE.txt (OK - compressed)
+ 9909992 META-INF/androidx/datastore/datastore-preferences-external-protobuf/LICENSE.txt (OK - compressed)
+ 9910829 META-INF/androidx/datastore/datastore-preferences-proto/LICENSE.txt (OK - compressed)
+ 9914484 META-INF/androidx/lifecycle/lifecycle-common-java8/LICENSE.txt (OK - compressed)
+ 9918133 META-INF/androidx/lifecycle/lifecycle-common/LICENSE.txt (OK - compressed)
+ 9921772 META-INF/androidx/room/room-common/LICENSE.txt (OK - compressed)
+ 9925408 META-INF/kotlinx_coroutines_android.version (OK)
+ 9925484 META-INF/kotlinx_coroutines_core.version (OK)
+ 9925582 META-INF/services/kotlinx.coroutines.CoroutineExceptionHandler (OK - compressed)
+ 9925729 META-INF/services/kotlinx.coroutines.internal.MainDispatcherFactory (OK - compressed)
+ 9925836 kotlin-tooling-metadata.json (OK - compressed)
+ 9926196 kotlin/annotation/annotation.kotlin_builtins (OK - compressed)
+ 9926814 kotlin/collections/collections.kotlin_builtins (OK - compressed)
+ 9928777 kotlin/concurrent/atomics/atomics.kotlin_builtins (OK - compressed)
+ 9929962 kotlin/coroutines/coroutines.kotlin_builtins (OK - compressed)
+ 9930150 kotlin/internal/internal.kotlin_builtins (OK - compressed)
+ 9930568 kotlin/kotlin.kotlin_builtins (OK - compressed)
+ 9936135 kotlin/ranges/ranges.kotlin_builtins (OK - compressed)
+ 9937583 kotlin/reflect/reflect.kotlin_builtins (OK - compressed)
+ 9939079 AndroidManifest.xml (OK - compressed)
+ 9941282 res/0K.xml (OK - compressed)
+ 9941542 res/0w.xml (OK - compressed)
+ 9941768 res/2K.9.png (OK)
+ 9942033 res/3V.xml (OK - compressed)
+ 9942417 res/46.xml (OK - compressed)
+ 9942915 res/48.xml (OK - compressed)
+ 9943370 res/4j.xml (OK - compressed)
+ 9943848 res/4z.xml (OK - compressed)
+ 9944305 res/5L.xml (OK - compressed)
+ 9944752 res/5c.png (OK)
+ 9944932 res/7W.png (OK)
+12098785 res/9m.xml (OK - compressed)
+12098997 res/BW.xml (OK - compressed)
+12099260 res/C_.9.png (OK)
+12099515 res/Ce.xml (OK - compressed)
+12100199 res/F0.xml (OK - compressed)
+12100614 res/Hn.xml (OK - compressed)
+12101044 res/Jx.png (OK)
+13740568 res/Ma.9.png (OK)
+13740855 res/N3.xml (OK - compressed)
+13741296 res/Nz.xml (OK - compressed)
+13741717 res/Qq.xml (OK - compressed)
+13742087 res/Qr.xml (OK - compressed)
+13742361 res/S8.xml (OK - compressed)
+13742887 res/TD.xml (OK - compressed)
+13743339 res/TF.xml (OK - compressed)
+13743768 res/U-.9.png (OK)
+13744031 res/Uu.xml (OK - compressed)
+13744480 res/WU.xml (OK - compressed)
+13744941 res/Wm.xml (OK - compressed)
+13745360 res/Ws.xml (OK - compressed)
+13745867 res/Xk.xml (OK - compressed)
+13746619 res/Yk.xml (OK - compressed)
+13747071 res/_y.xml (OK - compressed)
+13747420 res/a0.xml (OK - compressed)
+13747997 res/bX.xml (OK - compressed)
+13748700 res/c6.xml (OK - compressed)
+13748923 res/cV.xml (OK - compressed)
+13749245 res/color/vector_tint_color.xml (OK - compressed)
+13749492 res/color/vector_tint_theme_color.xml (OK - compressed)
+13749714 res/cr.xml (OK - compressed)
+13749955 res/df.xml (OK - compressed)
+13750248 res/fW.xml (OK - compressed)
+13750712 res/gK.9.png (OK)
+13750967 res/h0.xml (OK - compressed)
+13751417 res/i-.xml (OK - compressed)
+13751852 res/iQ.xml (OK - compressed)
+13752312 res/im.xml (OK - compressed)
+13752736 res/je.9.png (OK)
+13752988 res/kW.xml (OK - compressed)
+13753407 res/lR.xml (OK - compressed)
+13753706 res/ll.xml (OK - compressed)
+13754155 res/nz.xml (OK - compressed)
+13754452 res/o_.9.png (OK)
+13754744 res/pY.png (OK)
+13754892 res/pu.png (OK)
+13755844 res/s4.png (OK)
+13755984 res/sA.9.png (OK)
+13756240 res/vL.9.png (OK)
+13756508 res/wN.9.png (OK)
+13756773 res/x4.xml (OK - compressed)
+13757547 res/xN.xml (OK - compressed)
+13758376 res/xa.9.png (OK)
+13758637 res/ye.xml (OK - compressed)
+13759076 res/z-.9.png (OK)
+13759340 res/zx.png (OK)
+15253552 resources.arsc (OK)
+Verification successful
+
+
+== xml/backup_rules ==
+E: full-backup-content (line=2)
+    E: exclude (line=3)
+      A: domain="root" (Raw: "root")
+      A: path="." (Raw: ".")
+    E: exclude (line=4)
+      A: domain="file" (Raw: "file")
+      A: path="." (Raw: ".")
+    E: exclude (line=5)
+      A: domain="database" (Raw: "database")
+      A: path="." (Raw: ".")
+    E: exclude (line=6)
+      A: domain="sharedpref" (Raw: "sharedpref")
+      A: path="." (Raw: ".")
+    E: exclude (line=7)
+      A: domain="external" (Raw: "external")
+      A: path="." (Raw: ".")
+    E: exclude (line=8)
+      A: domain="device_root" (Raw: "device_root")
+      A: path="." (Raw: ".")
+    E: exclude (line=9)
+      A: domain="device_file" (Raw: "device_file")
+      A: path="." (Raw: ".")
+    E: exclude (line=10)
+      A: domain="device_database" (Raw: "device_database")
+      A: path="." (Raw: ".")
+    E: exclude (line=11)
+      A: domain="device_sharedpref" (Raw: "device_sharedpref")
+      A: path="." (Raw: ".")
+
+
+== xml/data_extraction_rules ==
+E: data-extraction-rules (line=2)
+    E: cloud-backup (line=3)
+        E: exclude (line=4)
+          A: domain="root" (Raw: "root")
+          A: path="." (Raw: ".")
+        E: exclude (line=5)
+          A: domain="file" (Raw: "file")
+          A: path="." (Raw: ".")
+        E: exclude (line=6)
+          A: domain="database" (Raw: "database")
+          A: path="." (Raw: ".")
+        E: exclude (line=7)
+          A: domain="sharedpref" (Raw: "sharedpref")
+          A: path="." (Raw: ".")
+        E: exclude (line=8)
+          A: domain="external" (Raw: "external")
+          A: path="." (Raw: ".")
+        E: exclude (line=9)
+          A: domain="device_root" (Raw: "device_root")
+          A: path="." (Raw: ".")
+        E: exclude (line=10)
+          A: domain="device_file" (Raw: "device_file")
+          A: path="." (Raw: ".")
+        E: exclude (line=11)
+          A: domain="device_database" (Raw: "device_database")
+          A: path="." (Raw: ".")
+        E: exclude (line=12)
+          A: domain="device_sharedpref" (Raw: "device_sharedpref")
+          A: path="." (Raw: ".")
+    E: device-transfer (line=14)
+        E: exclude (line=15)
+          A: domain="root" (Raw: "root")
+          A: path="." (Raw: ".")
+        E: exclude (line=16)
+          A: domain="file" (Raw: "file")
+          A: path="." (Raw: ".")
+        E: exclude (line=17)
+          A: domain="database" (Raw: "database")
+          A: path="." (Raw: ".")
+        E: exclude (line=18)
+          A: domain="sharedpref" (Raw: "sharedpref")
+          A: path="." (Raw: ".")
+        E: exclude (line=19)
+          A: domain="external" (Raw: "external")
+          A: path="." (Raw: ".")
+        E: exclude (line=20)
+          A: domain="device_root" (Raw: "device_root")
+          A: path="." (Raw: ".")
+        E: exclude (line=21)
+          A: domain="device_file" (Raw: "device_file")
+          A: path="." (Raw: ".")
+        E: exclude (line=22)
+          A: domain="device_database" (Raw: "device_database")
+          A: path="." (Raw: ".")
+        E: exclude (line=23)
+          A: domain="device_sharedpref" (Raw: "device_sharedpref")
+          A: path="." (Raw: ".")
