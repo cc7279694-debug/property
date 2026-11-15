@@ -1,0 +1,99 @@
+{
+  "baseline": "949ed0f0c4fe94b5e9e943790f3a1fc9a0b1c853",
+  "source_commit": "e52521c77f9fc889912974c93a902b10da0dcdef",
+  "app_tree": "d46a0ebd2352e757b35603359a3bf4e9807ca71f",
+  "production_files": [
+    "app/src/main/java/com/cooper/lithic/core/design/MoneyMetric.kt",
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt"
+  ],
+  "tests": {
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/C2ProjectDetailSemanticsTest.kt": {
+      "method_count": 5,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/C2R2ProjectHierarchyTest.kt": {
+      "method_count": 3,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectEntryFlowTest.kt": {
+      "method_count": 6,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleFlowTest.kt": {
+      "method_count": 9,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectLifecycleScreensTest.kt": {
+      "method_count": 15,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/ProjectScreensTest.kt": {
+      "method_count": 15,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/V3ProjectDetailAndroidAcceptanceTest.kt": {
+      "method_count": 2,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/project/V3ProjectDetailScreenTest.kt": {
+      "method_count": 6,
+      "added": [
+        "long_amount_uses_stacked_cards_without_reducing_either_metric_font"
+      ],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/subscription/C2B2SubscriptionLayoutTest.kt": {
+      "method_count": 6,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/feature/subscription/SubscriptionRenewalFlowTest.kt": {
+      "method_count": 7,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/ui/C5BrowseExperienceTest.kt": {
+      "method_count": 3,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/androidTest/java/com/cooper/lithic/ui/C9R1DetailSemanticsTest.kt": {
+      "method_count": 3,
+      "added": [],
+      "runtime": "NOT_RUN"
+    },
+    "app/src/test/java/com/cooper/lithic/core/design/C5MoneyMetricPresentationTest.kt": {
+      "method_count": 9,
+      "added": [
+        "a_labeled_detail_metric_can_hide_the_visual_unit_without_losing_daily_precision_or_copy"
+      ],
+      "runtime": "see desktop-summary.json"
+    }
+  },
+  "unchanged_git_objects": {
+    "app/src/main/java/com/cooper/lithic/feature/home": "ec3e285879a3a59d5dd44fc93cfb00568ba460c8",
+    "app/src/main/java/com/cooper/lithic/feature/appearance": "102225db4141e4d6c6c3d6b85a75cef5ff7fc1bc",
+    "app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt": "0b3f7690d343e3307476f7fd69dfc89da7ec0cbc",
+    "app/src/main/java/com/cooper/lithic/core/design/LithicVisuals.kt": "15f0886ba6a5007ceeb38b040eb2d8f6b947b577",
+    "app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt": "8d3e385a511446cff4c7c9a47ea31fbf06914b5b",
+    "app/src/main/java/com/cooper/lithic/core/design/AmountText.kt": "0ba62917a2085211f07096185185d870dc35a453",
+    "app/src/main/java/com/cooper/lithic/data": "1f0d75f39c0de33cb62f8373768e0904f01f9ec4",
+    "app/src/main/java/com/cooper/lithic/domain": "fd4d4c2b9426b03812be6f46ff8d3697ed2dfb3c",
+    "app/schemas": "d72068376fea7206df985b9169a2ff15ce2c861c",
+    "app/src/main/AndroidManifest.xml": "6c704de544f5e80b6bc799c9949d07ffee4534a7",
+    "app/build.gradle.kts": "3feeb78d7dfcbd9eb3848d778fbca2fd5b108a75"
+  },
+  "production_sha256": {
+    "app/src/main/java/com/cooper/lithic/core/design/MoneyMetric.kt": "7f45d44d3a20150f5ce781d31c8915452dd71cbee44b79b7009bd4dc2f7baa69",
+    "app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt": "6d8ca1a55bdaa49edfc94b0736f18b1bd4d66d2e10624f16126a3c4fb2704f55",
+    "app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt": "ae731ea94b669eea4a7fea57619467739311aad6f1a0157059d32196f04cd86a"
+  }
+}

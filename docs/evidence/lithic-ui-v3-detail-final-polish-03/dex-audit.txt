@@ -1,0 +1,164 @@
+com.cooper.lithic.BuildConfig
+.class public final Lcom/cooper/lithic/BuildConfig;
+.field public static final PHOTO_LITE_EXPERIMENT:Z = false
+.field public static final PHOTO_LITE_PRODUCTION:Z = false
+
+com.cooper.lithic.feature.project.ProjectDetailScreenKt
+.class public final Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;
+        "ProjectCostSummary",
+        "ProjectFinancialDetails",
+    invoke-static {p0, p1, p2, p3}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectCostSummary$lambda$1(Lcom/cooper/lithic/data/repository/ProjectDetail;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static/range {p0 .. p10}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectFinancialDetails$lambda$1(ZLkotlin/jvm/functions/Function0;Ljava/lang/String;JLandroidx/compose/material3/ColorScheme;JLcom/cooper/lithic/data/repository/ProjectDetail;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static/range {p0 .. p6}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectCostSummary$lambda$0(FLcom/cooper/lithic/data/repository/ProjectDetail;Ljava/math/BigDecimal;Ljava/lang/String;Landroidx/compose/foundation/layout/BoxWithConstraintsScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static/range {p0 .. p5}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectCostSummary$lambda$0$0(Lcom/cooper/lithic/data/repository/ProjectDetail;Ljava/lang/String;Ljava/math/BigDecimal;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static/range {p0 .. p5}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectFinancialDetails$lambda$2(Lcom/cooper/lithic/data/repository/ProjectDetail;ZLkotlin/jvm/functions/Function0;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+.method private static final ProjectCostSummary(Lcom/cooper/lithic/data/repository/ProjectDetail;Landroidx/compose/runtime/Composer;I)V
+    const-string p1, "C(ProjectCostSummary)N(detail)346@20927L1244,346@20851L1320:ProjectDetailScreen.kt#1r8aij"
+    const-string v6, "com.cooper.lithic.feature.project.ProjectCostSummary (ProjectDetailScreen.kt:342)"
+.method private static final ProjectCostSummary$lambda$0(FLcom/cooper/lithic/data/repository/ProjectDetail;Ljava/math/BigDecimal;Ljava/lang/String;Landroidx/compose/foundation/layout/BoxWithConstraintsScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v3, "com.cooper.lithic.feature.project.ProjectCostSummary.<anonymous> (ProjectDetailScreen.kt:347)"
+    .local v1, "$this$ProjectCostSummary_u24lambda_u240_u241\\15":Landroidx/compose/foundation/layout/RowScope;
+    .end local v1    # "$this$ProjectCostSummary_u24lambda_u240_u241\\15":Landroidx/compose/foundation/layout/RowScope;
+    .local v32, "$this$ProjectCostSummary_u24lambda_u240_u241\\15":Landroidx/compose/foundation/layout/RowScope;
+    .local v1, "$i$a$-Row-ProjectDetailScreenKt$ProjectCostSummary$1$1\\15\\1567\\0":I
+    .end local v1    # "$i$a$-Row-ProjectDetailScreenKt$ProjectCostSummary$1$1\\15\\1567\\0":I
+    .local v29, "$i$a$-Row-ProjectDetailScreenKt$ProjectCostSummary$1$1\\15\\1567\\0":I
+    .end local v29    # "$i$a$-Row-ProjectDetailScreenKt$ProjectCostSummary$1$1\\15\\1567\\0":I
+    .end local v32    # "$this$ProjectCostSummary_u24lambda_u240_u241\\15":Landroidx/compose/foundation/layout/RowScope;
+    .local v0, "$this$ProjectCostSummary_u24lambda_u240_u242\\23":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v31, "$i$a$-Column-ProjectDetailScreenKt$ProjectCostSummary$1$2\\23\\1607\\0":I
+    .end local v0    # "$this$ProjectCostSummary_u24lambda_u240_u242\\23":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v32, "$this$ProjectCostSummary_u24lambda_u240_u242\\23":Landroidx/compose/foundation/layout/ColumnScope;
+    .end local v31    # "$i$a$-Column-ProjectDetailScreenKt$ProjectCostSummary$1$2\\23\\1607\\0":I
+    .end local v32    # "$this$ProjectCostSummary_u24lambda_u240_u242\\23":Landroidx/compose/foundation/layout/ColumnScope;
+.method private static final ProjectCostSummary$lambda$0$0(Lcom/cooper/lithic/data/repository/ProjectDetail;Ljava/lang/String;Ljava/math/BigDecimal;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v1, "com.cooper.lithic.feature.project.ProjectCostSummary.<anonymous>.<anonymous> (ProjectDetailScreen.kt:353)"
+.method private static final ProjectCostSummary$lambda$1(Lcom/cooper/lithic/data/repository/ProjectDetail;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p2, v0}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectCostSummary(Lcom/cooper/lithic/data/repository/ProjectDetail;Landroidx/compose/runtime/Composer;I)V
+    invoke-static {p0, p2, v2}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectCostSummary(Lcom/cooper/lithic/data/repository/ProjectDetail;Landroidx/compose/runtime/Composer;I)V
+    invoke-static {p0, v0, v5, p3, v2}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectFinancialDetails(Lcom/cooper/lithic/data/repository/ProjectDetail;ZLkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
+.method private static final ProjectFinancialDetails(Lcom/cooper/lithic/data/repository/ProjectDetail;ZLkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
+    const-string v3, "C(ProjectFinancialDetails)N(detail,expanded,onToggle)405@23740L11,413@24214L904,410@23988L1130:ProjectDetailScreen.kt#1r8aij"
+    const-string v4, "com.cooper.lithic.feature.project.ProjectFinancialDetails (ProjectDetailScreen.kt:404)"
+    .local v14, "$i$a$-any-ProjectDetailScreenKt$ProjectFinancialDetails$includesCredit$1\\2\\905\\0":I
+    .end local v14    # "$i$a$-any-ProjectDetailScreenKt$ProjectFinancialDetails$includesCredit$1\\2\\905\\0":I
+.method private static final ProjectFinancialDetails$lambda$1(ZLkotlin/jvm/functions/Function0;Ljava/lang/String;JLandroidx/compose/material3/ColorScheme;JLcom/cooper/lithic/data/repository/ProjectDetail;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v7, "com.cooper.lithic.feature.project.ProjectFinancialDetails.<anonymous> (ProjectDetailScreen.kt:414)"
+    .local v29, "$this$ProjectFinancialDetails_u24lambda_u241_u240\\9":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v32, "$i$a$-Column-ProjectDetailScreenKt$ProjectFinancialDetails$1$1\\9\\1695\\0":I
+    .local v1, "$this$ProjectFinancialDetails_u24lambda_u241_u240_u240\\19":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v27, "$i$a$-Column-ProjectDetailScreenKt$ProjectFinancialDetails$1$1$1\\19\\1733\\9":I
+    .end local v1    # "$this$ProjectFinancialDetails_u24lambda_u241_u240_u240\\19":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v40, "$this$ProjectFinancialDetails_u24lambda_u241_u240_u240\\19":Landroidx/compose/foundation/layout/ColumnScope;
+    .end local v27    # "$i$a$-Column-ProjectDetailScreenKt$ProjectFinancialDetails$1$1$1\\19\\1733\\9":I
+    .end local v40    # "$this$ProjectFinancialDetails_u24lambda_u241_u240_u240\\19":Landroidx/compose/foundation/layout/ColumnScope;
+    .end local v29    # "$this$ProjectFinancialDetails_u24lambda_u241_u240\\9":Landroidx/compose/foundation/layout/ColumnScope;
+    .end local v32    # "$i$a$-Column-ProjectDetailScreenKt$ProjectFinancialDetails$1$1\\9\\1695\\0":I
+.method private static final ProjectFinancialDetails$lambda$2(Lcom/cooper/lithic/data/repository/ProjectDetail;ZLkotlin/jvm/functions/Function0;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p1, p2, p4, v0}, Lcom/cooper/lithic/feature/project/ProjectDetailScreenKt;->ProjectFinancialDetails(Lcom/cooper/lithic/data/repository/ProjectDetail;ZLkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
+
+com.cooper.lithic.feature.subscription.SubscriptionDetailScreenKt
+.class public final Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;
+        "SubscriptionArchiveMetrics",
+        "SubscriptionOtherDetails",
+        "RenewalHistoryDialog",
+    invoke-static {p0, p1, p2}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionArchiveMetrics$lambda$0(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionOtherDetails$lambda$0$2$0(Landroidx/compose/ui/semantics/SemanticsPropertyReceiver;)Lkotlin/Unit;
+    invoke-static/range {p0 .. p6}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->RenewalHistoryDialog$lambda$1(Lcom/cooper/lithic/data/local/SubscriptionRenewalEntity;Ljava/time/LocalDate;Lkotlin/jvm/functions/Function0;ZLkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p1, p2, p3}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionArchiveMetrics$lambda$0$0$0$0(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/foundation/layout/ColumnScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static/range {p0 .. p5}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionOtherDetails$lambda$1(Lcom/cooper/lithic/data/repository/SubscriptionDetail;ZLkotlin/jvm/functions/Function1;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p1}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionOtherDetails$lambda$0$3$2$0(Lkotlin/jvm/functions/Function1;Lcom/cooper/lithic/data/local/SubscriptionStateChangeEntity;)Lkotlin/Unit;
+    invoke-static {p0, p1, p2}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->RenewalHistoryDialog$lambda$0(Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p1, p2, p3}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionArchiveMetrics$lambda$1(Lcom/cooper/lithic/data/repository/SubscriptionDetail;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p1, p2, p3}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->RenewalHistoryDialog$lambda$1$0$0(ZLandroidx/compose/foundation/layout/RowScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p1, p2, p3}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionArchiveMetrics$lambda$0$0$0(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/foundation/layout/FlowRowScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static/range {p0 .. p8}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->RenewalHistoryDialog$lambda$2(Lcom/cooper/lithic/data/local/SubscriptionRenewalEntity;Ljava/time/LocalDate;ZLkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+.method private static final RenewalHistoryDialog(Lcom/cooper/lithic/data/local/SubscriptionRenewalEntity;Ljava/time/LocalDate;ZLkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
+    const-string v4, "C(RenewalHistoryDialog)N(renewal,asOf,enabled,onDismiss,onCorrect,onDelete)500@31996L114,479@30498L1472,477@30348L1769:SubscriptionDetailScreen.kt#1jb20h"
+    const-string v6, "com.cooper.lithic.feature.subscription.RenewalHistoryDialog (SubscriptionDetailScreen.kt:476)"
+.method private static final RenewalHistoryDialog$lambda$0(Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v1, "com.cooper.lithic.feature.subscription.RenewalHistoryDialog.<anonymous> (SubscriptionDetailScreen.kt:501)"
+.method private static final RenewalHistoryDialog$lambda$1(Lcom/cooper/lithic/data/local/SubscriptionRenewalEntity;Ljava/time/LocalDate;Lkotlin/jvm/functions/Function0;ZLkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v6, "com.cooper.lithic.feature.subscription.RenewalHistoryDialog.<anonymous> (SubscriptionDetailScreen.kt:480)"
+    .local v0, "$this$RenewalHistoryDialog_u24lambda_u241_u240\\9":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v19, "$i$a$-Column-SubscriptionDetailScreenKt$RenewalHistoryDialog$2$1\\9\\2011\\0":I
+    .end local v0    # "$this$RenewalHistoryDialog_u24lambda_u241_u240\\9":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v21, "$this$RenewalHistoryDialog_u24lambda_u241_u240\\9":Landroidx/compose/foundation/layout/ColumnScope;
+    .end local v19    # "$i$a$-Column-SubscriptionDetailScreenKt$RenewalHistoryDialog$2$1\\9\\2011\\0":I
+    .end local v21    # "$this$RenewalHistoryDialog_u24lambda_u241_u240\\9":Landroidx/compose/foundation/layout/ColumnScope;
+.method private static final RenewalHistoryDialog$lambda$1$0$0(ZLandroidx/compose/foundation/layout/RowScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v4, "com.cooper.lithic.feature.subscription.RenewalHistoryDialog.<anonymous>.<anonymous>.<anonymous> (SubscriptionDetailScreen.kt:496)"
+.method private static final RenewalHistoryDialog$lambda$2(Lcom/cooper/lithic/data/local/SubscriptionRenewalEntity;Ljava/time/LocalDate;ZLkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static/range {v1 .. v8}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->RenewalHistoryDialog(Lcom/cooper/lithic/data/local/SubscriptionRenewalEntity;Ljava/time/LocalDate;ZLkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
+.method private static final SubscriptionArchiveMetrics(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/runtime/Composer;I)V
+    const-string v3, "C(SubscriptionArchiveMetrics)N(detail)309@20259L11,310@20367L6,311@20417L7,311@20490L939,310@20275L1154:SubscriptionDetailScreen.kt#1jb20h"
+    const-string v5, "com.cooper.lithic.feature.subscription.SubscriptionArchiveMetrics (SubscriptionDetailScreen.kt:308)"
+.method private static final SubscriptionArchiveMetrics$lambda$0(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v3, "com.cooper.lithic.feature.subscription.SubscriptionArchiveMetrics.<anonymous> (SubscriptionDetailScreen.kt:312)"
+    .local v0, "$this$SubscriptionArchiveMetrics_u24lambda_u240_u240\\11":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v18, "$i$a$-Column-SubscriptionDetailScreenKt$SubscriptionArchiveMetrics$1$1\\11\\1597\\0":I
+    .end local v0    # "$this$SubscriptionArchiveMetrics_u24lambda_u240_u240\\11":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v20, "$this$SubscriptionArchiveMetrics_u24lambda_u240_u240\\11":Landroidx/compose/foundation/layout/ColumnScope;
+    .end local v18    # "$i$a$-Column-SubscriptionDetailScreenKt$SubscriptionArchiveMetrics$1$1\\11\\1597\\0":I
+    .end local v20    # "$this$SubscriptionArchiveMetrics_u24lambda_u240_u240\\11":Landroidx/compose/foundation/layout/ColumnScope;
+.method private static final SubscriptionArchiveMetrics$lambda$0$0$0(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/foundation/layout/FlowRowScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v3, "com.cooper.lithic.feature.subscription.SubscriptionArchiveMetrics.<anonymous>.<anonymous>.<anonymous> (SubscriptionDetailScreen.kt:314)"
+.method private static final SubscriptionArchiveMetrics$lambda$0$0$0$0(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/foundation/layout/ColumnScope;Landroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    const-string v4, "com.cooper.lithic.feature.subscription.SubscriptionArchiveMetrics.<anonymous>.<anonymous>.<anonymous>.<anonymous> (SubscriptionDetailScreen.kt:316)"
+.method private static final SubscriptionArchiveMetrics$lambda$1(Lcom/cooper/lithic/data/repository/SubscriptionDetail;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p2, v0}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionArchiveMetrics(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/runtime/Composer;I)V
+    invoke-static/range {p5 .. p12}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->RenewalHistoryDialog(Lcom/cooper/lithic/data/local/SubscriptionRenewalEntity;Ljava/time/LocalDate;ZLkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;Landroidx/compose/runtime/Composer;I)V
+    invoke-static {v0, v2, v1}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionArchiveMetrics(Lcom/cooper/lithic/data/repository/SubscriptionDetail;Landroidx/compose/runtime/Composer;I)V
+    invoke-static {v1, v6, v4, v3, v5}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionOtherDetails(Lcom/cooper/lithic/data/repository/SubscriptionDetail;ZLkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;I)V
+.method private static final SubscriptionOtherDetails(Lcom/cooper/lithic/data/repository/SubscriptionDetail;ZLkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;I)V
+    const-string v2, "C(SubscriptionOtherDetails)N(detail,enabled,onCorrectState)389@24982L11,389@24942L67,390@25014L1721:SubscriptionDetailScreen.kt#1jb20h"
+    const-string v5, "com.cooper.lithic.feature.subscription.SubscriptionOtherDetails (SubscriptionDetailScreen.kt:388)"
+    .local v31, "$this$SubscriptionOtherDetails_u24lambda_u240\\10":Landroidx/compose/foundation/layout/ColumnScope;
+    .local v59, "$i$a$-Column-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1\\10\\750\\0":I
+    .local v6, "$i$a$-takeIf-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$1\\11\\400\\10":I
+    .end local v6    # "$i$a$-takeIf-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$1\\11\\400\\10":I
+    .local v5, "$i$a$-let-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$2\\12\\400\\10":I
+    .end local v5    # "$i$a$-let-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$2\\12\\400\\10":I
+    .local v8, "$i$a$-cache-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$3\\15\\782\\10":I
+    .end local v8    # "$i$a$-cache-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$3\\15\\782\\10":I
+    .local v64, "$i$a$-forEach-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4\\17\\786\\10":I
+    .local v8, "$i$a$-let-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4$1\\18\\411\\17":I
+    .end local v8    # "$i$a$-let-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4$1\\18\\411\\17":I
+    .local v3, "$i$a$-let-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4$2\\19\\412\\17":I
+    .end local v3    # "$i$a$-let-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4$2\\19\\412\\17":I
+    .local v2, "$i$a$-cache-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4$3\\22\\789\\17":I
+    .end local v2    # "$i$a$-cache-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4$3\\22\\789\\17":I
+    .local v34, "$i$a$-cache-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4$3\\22\\789\\17":I
+    .end local v34    # "$i$a$-cache-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4$3\\22\\789\\17":I
+    .end local v64    # "$i$a$-forEach-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1$4\\17\\786\\10":I
+    .end local v31    # "$this$SubscriptionOtherDetails_u24lambda_u240\\10":Landroidx/compose/foundation/layout/ColumnScope;
+    .end local v59    # "$i$a$-Column-SubscriptionDetailScreenKt$SubscriptionOtherDetails$1\\10\\750\\0":I
+.method private static final SubscriptionOtherDetails$lambda$0$2$0(Landroidx/compose/ui/semantics/SemanticsPropertyReceiver;)Lkotlin/Unit;
+.method private static final SubscriptionOtherDetails$lambda$0$3$2$0(Lkotlin/jvm/functions/Function1;Lcom/cooper/lithic/data/local/SubscriptionStateChangeEntity;)Lkotlin/Unit;
+.method private static final SubscriptionOtherDetails$lambda$1(Lcom/cooper/lithic/data/repository/SubscriptionDetail;ZLkotlin/jvm/functions/Function1;ILandroidx/compose/runtime/Composer;I)Lkotlin/Unit;
+    invoke-static {p0, p1, p2, p4, v0}, Lcom/cooper/lithic/feature/subscription/SubscriptionDetailScreenKt;->SubscriptionOtherDetails(Lcom/cooper/lithic/data/repository/SubscriptionDetail;ZLkotlin/jvm/functions/Function1;Landroidx/compose/runtime/Composer;I)V
+
+com.cooper.lithic.core.design.MoneyMetricKt
+.class public final Lcom/cooper/lithic/core/design/MoneyMetricKt;
+        "moneyMetricDescription",
+        "moneyMetricAnnotatedText",
+        "moneyMetricAnnotatedText-9LQNqLg",
+    invoke-static {v1, v3, v7, v8, v4}, Lcom/cooper/lithic/core/design/MoneyMetricKt;->moneyMetricAnnotatedText-9LQNqLg(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;JZ)Landroidx/compose/ui/text/AnnotatedString;
+    invoke-static {v1, v3, v0}, Lcom/cooper/lithic/core/design/MoneyMetricKt;->moneyMetricDescription(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;Ljava/lang/String;)Ljava/lang/String;
+.method public static final moneyMetricAnnotatedText-9LQNqLg(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;JZ)Landroidx/compose/ui/text/AnnotatedString;
+    .local v3, "$this$moneyMetricAnnotatedText_9LQNqLg_u24lambda_u240\\2":Landroidx/compose/ui/text/AnnotatedString$Builder;
+    .local v7, "$i$a$-buildAnnotatedString-MoneyMetricKt$moneyMetricAnnotatedText$1\\2\\226\\0":I
+    .local v0, "$this$moneyMetricAnnotatedText_9LQNqLg_u24lambda_u240_u240\\4":Landroidx/compose/ui/text/AnnotatedString$Builder;
+    .local v12, "$i$a$-withStyle-MoneyMetricKt$moneyMetricAnnotatedText$1$1\\4\\229\\2":I
+    .end local v0    # "$this$moneyMetricAnnotatedText_9LQNqLg_u24lambda_u240_u240\\4":Landroidx/compose/ui/text/AnnotatedString$Builder;
+    .end local v12    # "$i$a$-withStyle-MoneyMetricKt$moneyMetricAnnotatedText$1$1\\4\\229\\2":I
+    .end local v3    # "$this$moneyMetricAnnotatedText_9LQNqLg_u24lambda_u240\\2":Landroidx/compose/ui/text/AnnotatedString$Builder;
+    .end local v7    # "$i$a$-buildAnnotatedString-MoneyMetricKt$moneyMetricAnnotatedText$1\\2\\226\\0":I
+.method public static synthetic moneyMetricAnnotatedText-9LQNqLg$default(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;JZILjava/lang/Object;)Landroidx/compose/ui/text/AnnotatedString;
+    invoke-static {p0, p1, p2, p3, p4}, Lcom/cooper/lithic/core/design/MoneyMetricKt;->moneyMetricAnnotatedText-9LQNqLg(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;JZ)Landroidx/compose/ui/text/AnnotatedString;
+.method public static final moneyMetricDescription(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;Ljava/lang/String;)Ljava/lang/String;
+    .local v6, "$i$a$-takeIf-MoneyMetricKt$moneyMetricDescription$1\\1\\56\\0":I
+    .end local v6    # "$i$a$-takeIf-MoneyMetricKt$moneyMetricDescription$1\\1\\56\\0":I
+.method public static synthetic moneyMetricDescription$default(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/String;
+    invoke-static {p0, p1, p2}, Lcom/cooper/lithic/core/design/MoneyMetricKt;->moneyMetricDescription(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v11, v2, v9, v10, v4}, Lcom/cooper/lithic/core/design/MoneyMetricKt;->moneyMetricAnnotatedText-9LQNqLg(Ljava/math/BigDecimal;Lcom/cooper/lithic/core/design/AmountUnit;JZ)Landroidx/compose/ui/text/AnnotatedString;
