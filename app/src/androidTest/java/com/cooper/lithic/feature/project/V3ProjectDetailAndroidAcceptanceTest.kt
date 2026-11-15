@@ -7,6 +7,7 @@ import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.semantics.SemanticsNode
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertHasClickAction
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextEquals
@@ -181,7 +182,8 @@ class V3ProjectDetailAndroidAcceptanceTest {
             shiftedTitle == null || shiftedTitle.positionInRoot.y < title.top - PIXEL_TOLERANCE)
 
         val costNode = scrollTo("project-core-metrics").assertIsDisplayed().fetchSemanticsNode()
-        compose.onNodeWithTag("project-detail-daily").assertIsDisplayed().assertTextEquals("¥9.92/天")
+        compose.onNodeWithTag("project-detail-daily").assertIsDisplayed().assertTextEquals("¥9.92")
+            .assertContentDescriptionEquals("当前日均成本，9.92元/天")
         val costBounds = costNode.actualBoundsInRoot()
         val headerBounds = listOf("project-detail-name", "project-detail-category", "project-detail-status", "project-detail-held-days")
             .flatMap { compose.onAllNodes(hasTestTag(it), useUnmergedTree = true).fetchSemanticsNodes() }
@@ -366,11 +368,14 @@ class V3ProjectDetailAndroidAcceptanceTest {
     }
 
     private fun assertFinancialFacts() {
-        scrollTo("project-detail-daily").assertTextEquals("¥9.92/天")
-        scrollTo("project-detail-outlay").assertTextEquals("¥50000.00")
-        scrollTo("project-detail-recovery").assertTextEquals("¥48799.68")
+        scrollTo("project-detail-daily").assertTextEquals("¥9.92")
+            .assertContentDescriptionEquals("当前日均成本，9.92元/天")
+        scrollTo("project-core-outlay").assertTextEquals("¥50000.00")
+        val disclosure = scrollTo("project-financial-expand").assertIsDisplayed()
+        compose.onNodeWithTag("project-detail-outlay").assertDoesNotExist()
+        compose.onNodeWithTag("project-detail-recovery").assertDoesNotExist()
         compose.onNodeWithTag("project-detail-net").assertDoesNotExist()
-        scrollTo("project-financial-expand").assertIsDisplayed().performClick()
+        disclosure.performClick()
         scrollTo("project-detail-outlay").assertTextEquals("¥50000.00")
         scrollTo("project-detail-recovery").assertTextEquals("¥48799.68")
         scrollTo("project-detail-net").assertTextEquals("¥1200.32")

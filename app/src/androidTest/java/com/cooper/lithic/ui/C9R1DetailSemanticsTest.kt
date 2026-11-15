@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.core.design.moneyMetricDescription
 import com.cooper.lithic.core.design.moneyMetricDisplay
 import com.cooper.lithic.core.model.LongTermProject
 import com.cooper.lithic.core.model.Money
@@ -47,7 +48,9 @@ class C9R1DetailSemanticsTest {
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-held-days"))
         compose.onNodeWithTag("project-detail-held-days").assertTextEquals("${detail.cost.heldDays}天")
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-daily"))
-        compose.onNodeWithTag("project-detail-daily").assertTextEquals(moneyMetricDisplay(detail.cost.dailyRate))
+        compose.onNodeWithTag("project-detail-daily")
+            .assertTextEquals(moneyMetricDisplay(detail.cost.dailyRate).removeSuffix("/天"))
+            .assertContentDescriptionEquals(moneyMetricDescription(detail.cost.dailyRate, label = "当前日均成本"))
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-financial-expand"))
         compose.onNodeWithTag("project-financial-expand").performClick()
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-net"))
@@ -66,7 +69,8 @@ class C9R1DetailSemanticsTest {
         LithicAppearance.entries.forEach { selected ->
             compose.runOnIdle { appearance.value = selected }
             compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-daily"))
-            compose.onNodeWithTag("project-detail-daily").assertTextEquals(moneyMetricDisplay(BigDecimal.ZERO))
+            compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥0.00")
+                .assertContentDescriptionEquals("当前日均成本，0.00元/天")
             compose.runOnIdle { assertEquals(emptyList<MoneyDirection>(), selections) }
         }
         compose.onNodeWithTag("project-record-money").performClick()
@@ -87,10 +91,16 @@ class C9R1DetailSemanticsTest {
         } } }
         compose.onNodeWithTag("subscription-detail-name").assertTextEquals(detail.subscription.name)
         compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag("subscription-detail-historical-average"))
-        compose.onNodeWithTag("subscription-detail-historical-average").assertTextEquals(moneyMetricDisplay(detail.cost.historicalAverage))
+        compose.onNodeWithTag("subscription-detail-historical-average")
+            .assertTextEquals(moneyMetricDisplay(detail.cost.historicalAverage).removeSuffix("/天"))
+            .assertContentDescriptionEquals(
+                moneyMetricDescription(detail.cost.historicalAverage, label = "历史平均日成本"))
         compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag("subscription-detail-current-plan"))
         compose.onNodeWithTag("subscription-detail-current-plan").performClick()
-        compose.onNodeWithTag("subscription-detail-current-rate").assertTextEquals(moneyMetricDisplay(detail.cost.currentRate))
+        compose.onNodeWithTag("subscription-detail-current-rate")
+            .assertTextEquals(moneyMetricDisplay(detail.cost.currentRate).removeSuffix("/天"))
+            .assertContentDescriptionEquals(
+                moneyMetricDescription(detail.cost.currentRate, label = "当前标准日均价"))
         compose.onNodeWithTag("subscription-detail-plan-close").performClick()
         compose.onNodeWithTag("subscription-detail-content").performScrollToNode(hasTestTag("subscription-detail-more"))
         compose.onNodeWithTag("subscription-detail-more").performClick()

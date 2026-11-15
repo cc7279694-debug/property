@@ -16,11 +16,9 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
@@ -218,7 +216,13 @@ internal fun ProjectDetailScreen(
                 item {
                     Row(Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 6.dp),
                         verticalAlignment = Alignment.CenterVertically) {
-                        Text("金额记录", Modifier.weight(1f).semantics { heading() }, style = MaterialTheme.typography.titleLarge)
+                        FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall),
+                            itemVerticalAlignment = Alignment.CenterVertically) {
+                            Text("金额记录", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Normal)
+                            Text("${detail.events.size} 笔", Modifier.testTag("project-money-count"),
+                                style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
+                        }
                         if (hasMoreMoney) TextButton({ showAllMoney = !showAllMoney },
                             Modifier.testTag("project-money-all").semantics {
                                 stateDescription = if (showAllMoney) "已展开" else "已收起"
@@ -227,7 +231,6 @@ internal fun ProjectDetailScreen(
                         }
                     }
                 }
-                if (detail.events.isEmpty()) item { Text("没有金额记录", style = MaterialTheme.typography.bodyLarge) }
                 itemsIndexed(visibleEvents, key = { _, event -> event.id }) { index, event ->
                     ProjectMoneyRecord(event, first = index == 0, last = index == visibleEvents.lastIndex,
                         onOpen = { selectedMoneyId = event.id })
@@ -338,50 +341,50 @@ private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable ()
 
 @Composable
 private fun ProjectCostSummary(detail: ProjectDetail) {
-    val metricLabel = projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal)
+    val outlay = BigDecimal.valueOf(detail.cost.grossOutlayCents, 2)
+    val rateLabel = projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal)
+    val spacing = LithicSpacing.xSmall
+    BoxWithConstraints(Modifier.fillMaxWidth().testTag("project-core-metrics")) {
+        val metricWidth = ((maxWidth - spacing) / 2 - LithicSpacing.small * 2).coerceAtLeast(0.dp)
+        val sideBySide = metricWidth >= 88.dp && LocalDensity.current.fontScale <= 1.3f &&
+            moneyMetricFitsAtPreferredSize(detail.cost.dailyRate, metricWidth, AmountUnit.YUAN_PER_DAY,
+                MoneyMetricLevel.DETAIL, showDailyUnit = false) &&
+            moneyMetricFitsAtPreferredSize(outlay, metricWidth, AmountUnit.YUAN, MoneyMetricLevel.DETAIL)
+        val cards: @Composable (Modifier) -> Unit = { modifier ->
+            ProjectCostCard("日均成本", detail.cost.dailyRate, AmountUnit.YUAN_PER_DAY,
+                "project-cost-daily-card", "project-detail-daily", modifier, semanticLabel = rateLabel)
+            ProjectCostCard("累计投入", outlay, AmountUnit.YUAN,
+                "project-cost-outlay-card", "project-core-outlay", modifier)
+        }
+        if (sideBySide) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(spacing)) {
+                cards(Modifier.weight(1f))
+            }
+        } else {
+            Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(spacing)) {
+                cards(Modifier.fillMaxWidth())
+            }
+        }
+    }
+}
+
+@Composable
+private fun ProjectCostCard(
+    title: String,
+    amount: BigDecimal?,
+    unit: AmountUnit,
+    cardTag: String,
+    amountTag: String,
+    modifier: Modifier,
+    semanticLabel: String = title,
+) {
     val colors = MaterialTheme.colorScheme
-    Surface(Modifier.fillMaxWidth().testTag("project-core-metrics"), shape = RoundedCornerShape(14.dp),
+    Surface(modifier.testTag(cardTag), shape = RoundedCornerShape(14.dp),
         color = LocalLithicVisuals.current.costSurface, border = BorderStroke(1.dp, colors.outlineVariant)) {
-        BoxWithConstraints(Modifier.padding(start = 14.dp, end = 6.dp, top = 10.dp, bottom = 10.dp)) {
-            val wide = maxWidth >= 274.dp && LocalDensity.current.fontScale <= 1.3f &&
-                moneyMetricFitsAtPreferredSize(detail.cost.dailyRate, maxWidth - 134.dp, level = MoneyMetricLevel.HERO)
-            val metric: @Composable () -> Unit = {
-                Text(metricLabel, style = MaterialTheme.typography.titleSmall)
-                MoneyMetric(detail.cost.dailyRate, Modifier.fillMaxWidth().testTag("project-detail-daily"),
-                    level = MoneyMetricLevel.HERO, label = metricLabel)
-            }
-            val cutoff: @Composable () -> Unit = {
-                Text("截至", style = MaterialTheme.typography.labelSmall, color = colors.onSurfaceVariant)
-                Text(detail.asOf.toString(), style = MaterialTheme.typography.labelSmall, color = colors.onSurfaceVariant)
-            }
-            val information: @Composable () -> Unit = {
-                C5InformationButton("项目成本口径", Modifier.testTag("project-detail-metric-information"), iconOnly = true) {
-                    Text("日均成本按实际投入和收回计算，开始日计入持有天数。展示舍入不影响计算。")
-                    Text("结束后可补录真实尾款或退款，持有天数冻结。")
-                }
-            }
-            Column {
-                if (wide) Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) { metric() }
-                    Box(Modifier.padding(horizontal = 8.dp).width(1.dp).height(36.dp).background(colors.outlineVariant))
-                    Column(Modifier.widthIn(min = 73.dp)) { cutoff() }
-                    information()
-                } else {
-                    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
-                        Column(Modifier.weight(1f)) { metric() }
-                        information()
-                    }
-                    cutoff()
-                }
-                if (detail.cost.unavailableReason != null) Text("尚未开始，没有有效日均成本。", style = MaterialTheme.typography.bodySmall)
-                if (detail.project.endedOn != null && !detail.cost.contributesToCurrentTotal && detail.cost.unavailableReason == null) {
-                    val hasObservedLateMoney = detail.events.any { event ->
-                        event.occurredOn.isAfter(detail.project.endedOn) && !event.occurredOn.isAfter(detail.asOf)
-                    }
-                    Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。" else "持有天数已冻结。",
-                        style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
-                }
-            }
+        Column(Modifier.padding(LithicSpacing.small), verticalArrangement = Arrangement.spacedBy(LithicSpacing.xxSmall)) {
+            Text(title, style = MaterialTheme.typography.titleSmall)
+            MoneyMetric(amount, Modifier.fillMaxWidth().testTag(amountTag), unit = unit,
+                level = MoneyMetricLevel.DETAIL, label = semanticLabel, showDailyUnit = false, keepPreferredSize = true)
         }
     }
 }
@@ -392,7 +395,8 @@ private fun ProjectDetailDisclosure(label: String, expanded: Boolean, tag: Strin
         stateDescription = if (expanded) "已展开" else "已收起"
     }) {
         Text(label, Modifier.weight(1f).semantics { heading() },
-            style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
+            style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Normal,
+            color = MaterialTheme.colorScheme.onSurface)
         C2Icon(C2Glyph.Chevron, Modifier.rotate(if (expanded) -90f else 90f))
     }
 }
@@ -408,33 +412,16 @@ private fun ProjectFinancialDetails(detail: ProjectDetail, expanded: Boolean, on
         .testTag("project-financial-totals"),
         shape = RoundedCornerShape(14.dp), border = BorderStroke(1.dp, colors.outlineVariant),
         color = colors.surface) {
-        Column(Modifier.padding(horizontal = 12.dp).padding(bottom = 12.dp)) {
+        Column(Modifier.padding(horizontal = 12.dp)) {
             ProjectDetailDisclosure("财务明细", expanded, "project-financial-expand", onToggle)
             if (expanded) {
-                Column(Modifier.fillMaxWidth().testTag("project-financial-details"),
+                Column(Modifier.fillMaxWidth().padding(bottom = 12.dp).testTag("project-financial-details"),
                     verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     ProjectFinancialAmount("累计投入$basis", outlay, "project-detail-outlay", "project-financial-outlay")
                     HorizontalDivider(color = colors.outlineVariant)
                     ProjectFinancialAmount("累计收回$basis", recovery, "project-detail-recovery", "project-financial-recovery")
                     HorizontalDivider(color = colors.outlineVariant)
                     ProjectFinancialAmount("净投入", detail.cost.netCents, "project-detail-net", "project-financial-net")
-                }
-            } else {
-                BoxWithConstraints(Modifier.fillMaxWidth().testTag("project-financial-summary")) {
-                    val columnWidth = ((maxWidth - 12.dp) / 2).coerceAtLeast(0.dp)
-                    val stack = includesCredit || LocalDensity.current.fontScale > 1.3f ||
-                        listOf(outlay, recovery).any {
-                            !moneyMetricFitsAtPreferredSize(
-                                BigDecimal.valueOf(it, 2), columnWidth, AmountUnit.YUAN, MoneyMetricLevel.ROW,
-                            )
-                        }
-                    if (stack) Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        ProjectFinancialAmount("投入$basis", outlay, "project-detail-outlay", "project-financial-outlay")
-                        ProjectFinancialAmount("收回$basis", recovery, "project-detail-recovery", "project-financial-recovery")
-                    } else Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                        ProjectFinancialAmount("投入", outlay, "project-detail-outlay", "project-financial-outlay", Modifier.weight(1f))
-                        ProjectFinancialAmount("收回", recovery, "project-detail-recovery", "project-financial-recovery", Modifier.weight(1f))
-                    }
                 }
             }
         }
@@ -447,9 +434,8 @@ private fun ProjectFinancialAmount(
     cents: Long,
     amountTag: String,
     factTag: String,
-    modifier: Modifier = Modifier,
 ) {
-    Column(modifier.testTag(factTag), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+    Column(Modifier.testTag(factTag), verticalArrangement = Arrangement.spacedBy(2.dp)) {
         Text(label, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         MoneyMetric(BigDecimal.valueOf(cents, 2), Modifier.testTag(amountTag), AmountUnit.YUAN,
             level = MoneyMetricLevel.ROW, label = label)
@@ -472,6 +458,19 @@ private fun ProjectAdditionalDetails(detail: ProjectDetail, onCostHistory: (() -
         if (detail.events.any { it.exchangeGroupId != null }) Text(
             "此项目参与以旧换新，暂不支持单独删除或修改交易日期与金额；可继续管理名称、类别、备注及后续真实金额。",
             Modifier.testTag("project-trade-in-protection"), style = MaterialTheme.typography.bodyMedium)
+        C5InformationButton("项目成本口径", Modifier.testTag("project-detail-metric-information"), buttonLabel = "成本口径") {
+            Text("观察日期 ${detail.asOf}", Modifier.testTag("project-detail-metric-date"))
+            Text("日均成本＝净投入 ÷ 持有天数（含开始日），仅显示时舍入。累计投入含非现金折抵。")
+            if (detail.cost.unavailableReason != null) Text("尚未开始，没有有效日均成本。")
+            val endedOn = detail.project.endedOn
+            if (endedOn != null && !detail.cost.contributesToCurrentTotal && detail.cost.unavailableReason == null) {
+                val hasObservedLateMoney = detail.events.any { event ->
+                    event.occurredOn.isAfter(endedOn) && !event.occurredOn.isAfter(detail.asOf)
+                }
+                Text(if (hasObservedLateMoney) "包含结束后的实际结算；持有天数不再增加。" else "持有天数已冻结。")
+                Text("可补录结束后的尾款或退款。")
+            }
+        }
         onCostHistory?.let { action ->
             TextButton(action, Modifier.fillMaxWidth().testTag("project-cost-history")) {
                 Text("查看成本历史", Modifier.weight(1f), style = MaterialTheme.typography.bodyLarge)
@@ -512,8 +511,9 @@ private fun ProjectMoneyRecord(event: ProjectMoneyEventEntity, first: Boolean, l
             val meta: @Composable () -> Unit = {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), itemVerticalAlignment = Alignment.CenterVertically) {
                     Text(event.occurredOn.toString(), Modifier.testTag("project-event-date-${event.id}"),
-                        style = MaterialTheme.typography.labelSmall, color = colors.onSurfaceVariant)
-                    Text(eventTypeLabel, Modifier.testTag("project-event-type-${event.id}"), style = MaterialTheme.typography.titleSmall)
+                        style = MaterialTheme.typography.bodyMedium)
+                    Text(eventTypeLabel, Modifier.testTag("project-event-type-${event.id}"),
+                        style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
                 }
                 if (event.basis == MoneyBasis.TRADE_IN_CREDIT) {
                     Text(basis, Modifier.testTag("project-event-basis-${event.id}"),

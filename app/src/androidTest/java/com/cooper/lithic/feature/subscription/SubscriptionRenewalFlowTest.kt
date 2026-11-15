@@ -229,7 +229,7 @@ class SubscriptionRenewalFlowTest {
         assertEquals(15000L, beforePrepaid.cost.confirmedPaidCents)
         assertEquals(30L, beforePrepaid.cost.standardPurchasedDays)
         assertEquals(0, beforePrepaid.cost.currentRate.compareTo(java.math.BigDecimal("5")))
-        assertCurrentRate("¥5.00/天")
+        assertCurrentRate("¥5.00")
         openOtherDetails()
         detailNode("subscription-detail-total-paid").assert(hasText("¥150.00"))
         observe(LocalDate.of(2026, 1, 20))
@@ -241,16 +241,16 @@ class SubscriptionRenewalFlowTest {
         assertEquals(60L, prepaid.cost.standardPurchasedDays)
         assertEquals(0, prepaid.cost.currentRate.compareTo(java.math.BigDecimal("5")))
         assertEquals(0, prepaid.cost.historicalAverage!!.compareTo(java.math.BigDecimal("5.5")))
-        detailNode("subscription-detail-historical-average").assert(hasText("¥5.50/天"))
+        assertHistoricalAverage("¥5.50")
         openOtherDetails()
         detailNode("subscription-detail-purchased-days").assertTextContains("折算付费时长：60天")
-        assertCurrentRate("¥5.00/天")
+        assertCurrentRate("¥5.00")
         detailNode("subscription-detail-total-paid").assert(hasText("¥330.00"))
         val next = prepaid.renewals.single { it.amountCents == 18000L }
         detailNode("subscription-renewal-future-${next.id}").assertTextContains("尚未生效")
         compose.onNodeWithText("已使用60天").assertDoesNotExist()
         observe(LocalDate.of(2026, 2, 1))
-        assertCurrentRate("¥6.00/天")
+        assertCurrentRate("¥6.00")
         assertEquals(33000L, repository.loadSubscriptionDetail(id)!!.cost.confirmedPaidCents)
         observe(LocalDate.of(2026, 2, 20))
         openRenewal()
@@ -267,7 +267,7 @@ class SubscriptionRenewalFlowTest {
         assertEquals(before.renewals, repository.loadSubscriptionDetail(id)!!.renewals)
         assertEquals(ZoneId.of("Asia/Shanghai"), generation.settings.recordZone())
         openFromList(id)
-        assertCurrentRate("¥6.00/天")
+        assertCurrentRate("¥6.00")
         openOtherDetails()
         detailNode("subscription-detail-purchased-days").assertTextContains("折算付费时长：425天")
     }
@@ -280,8 +280,10 @@ class SubscriptionRenewalFlowTest {
         assertNull(before.cost.currentPrice)
         assertEquals(0, before.cost.currentRate.signum())
         detailNode("subscription-detail-no-current-plan").assertTextContains("当前无有效套餐")
+        detailNode("subscription-detail-no-plan-rate").assertTextEquals("¥0.00")
+            .assertContentDescriptionEquals("当前日均贡献，0.00元/天")
         compose.onNodeWithTag("subscription-detail-current-rate").assertDoesNotExist()
-        detailNode("subscription-detail-historical-average").assert(hasText("¥4.00/天"))
+        assertHistoricalAverage("¥4.00")
         val payment = before.renewals.single()
         detailNode("subscription-renewal-future-${payment.id}").assertTextContains("尚未生效")
         reopenFixture()
@@ -310,8 +312,8 @@ class SubscriptionRenewalFlowTest {
         assertEquals(listOf(14810L, 14683L), before.renewals.map { it.amountCents })
         assertTrue(before.renewals.all { it.cycle == BillingCycle.MONTHLY && it.standardDays == 30 })
         assertEquals(29493L, before.cost.confirmedPaidCents)
-        assertCurrentRate("¥4.94/天")
-        detailNode("subscription-detail-historical-average").assert(hasText("¥4.92/天"))
+        assertCurrentRate("¥4.94")
+        assertHistoricalAverage("¥4.92")
         reopenFixture()
         assertEquals(before.renewals, repository.loadSubscriptionDetail(id)!!.renewals)
         openFromList(id)
@@ -521,8 +523,14 @@ class SubscriptionRenewalFlowTest {
 
     private fun assertCurrentRate(value: String) {
         detailNode("subscription-detail-current-plan").performClick()
-        compose.onNodeWithTag("subscription-detail-current-rate").performScrollTo().assert(hasText(value))
+        compose.onNodeWithTag("subscription-detail-current-rate").performScrollTo().assertTextEquals(value)
+            .assertContentDescriptionEquals("当前标准日均价，${value.removePrefix("¥")}元/天")
         compose.onNodeWithTag("subscription-detail-plan-close").performClick()
+    }
+
+    private fun assertHistoricalAverage(value: String) {
+        detailNode("subscription-detail-historical-average").assertTextEquals(value)
+            .assertContentDescriptionEquals("历史平均日成本，${value.removePrefix("¥")}元/天")
     }
 
     private fun openOtherDetails() {

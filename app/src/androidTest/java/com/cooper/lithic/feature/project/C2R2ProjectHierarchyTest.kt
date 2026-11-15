@@ -3,6 +3,7 @@ package com.cooper.lithic.feature.project
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
@@ -39,7 +40,8 @@ class C2R2ProjectHierarchyTest {
         compose.onNodeWithTag("project-detail-category").assertTextContains("数码")
         compose.onNodeWithTag("project-detail-status").assertTextContains("持有中")
         compose.onNodeWithTag("project-core-metrics").assertIsDisplayed()
-        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥10.00/天")
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥10.00")
+            .assertContentDescriptionEquals("当前日均成本，10.00元/天")
         compose.onNodeWithTag("project-detail-held-days").assertTextContains("10天")
         val identity = compose.onNodeWithTag("project-identity-symbol").fetchSemanticsNode().boundsInRoot
         assertTrue("No photo must not create an empty hero frame", identity.height <= with(compose.density) { 65.dp.toPx() })

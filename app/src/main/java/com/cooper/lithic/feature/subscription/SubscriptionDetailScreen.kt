@@ -20,6 +20,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -131,7 +132,7 @@ internal fun SubscriptionDetailScreen(
                                         style = MaterialTheme.typography.titleSmall)
                                     Text("当前日均贡献", style = MaterialTheme.typography.bodySmall)
                                     MoneyMetric(detail.cost.currentRate, Modifier.testTag("subscription-detail-no-plan-rate"),
-                                        level = MoneyMetricLevel.ROW, label = "当前日均贡献")
+                                        level = MoneyMetricLevel.ROW, label = "当前日均贡献", showDailyUnit = false)
                                 }
                             }
                         }
@@ -146,7 +147,8 @@ internal fun SubscriptionDetailScreen(
                     Row(Modifier.fillMaxWidth().padding(top = 10.dp).heightIn(min = 48.dp), verticalAlignment = Alignment.CenterVertically) {
                         FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(8.dp),
                             itemVerticalAlignment = Alignment.CenterVertically) {
-                            Text("付款历史", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleLarge)
+                            Text("付款历史", Modifier.semantics { heading() },
+                                style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Normal)
                             state.history.totalCount?.takeIf { !state.history.loading && state.history.error == null &&
                                 !state.loading && state.error == null }?.let {
                                 Text("$it 笔", Modifier.testTag("subscription-detail-payment-count"),
@@ -194,8 +196,8 @@ internal fun SubscriptionDetailScreen(
                             Modifier.testTag("subscription-detail-more").semantics {
                                 stateDescription = if (showMoreDetails) "已展开" else "已收起"
                             }) {
-                            Text(if (showMoreDetails) "收起其他资料" else "其他资料")
-                            C2Icon(C2Glyph.Chevron)
+                            Text("更多资料", style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
+                            C2Icon(C2Glyph.Chevron, Modifier.rotate(if (showMoreDetails) -90f else 90f))
                         }
                         if (showMoreDetails) SubscriptionOtherDetails(detail, !state.loading && state.error == null, onCorrectState)
                     }
@@ -292,11 +294,7 @@ private fun SubscriptionIdentity(detail: SubscriptionDetail, coverContent: (@Com
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
                 Text(detail.subscription.name, Modifier.testTag("subscription-detail-name").semantics { heading() },
                     style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-                val secondary = listOfNotNull(
-                    detail.currentRenewal?.let { renewal -> detail.cost.currentPrice?.let { cyclePrice(renewal.cycle, it.cents) } },
-                    detail.category.name,
-                ).joinToString(" · ")
-                Text(secondary, style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant,
+                Text(detail.category.name, style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant,
                     modifier = Modifier.testTag("subscription-detail-identity-facts"))
                 if (unavailable) Text("封面暂不可用", style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
                 if (stackStatus) status()
@@ -316,13 +314,13 @@ private fun SubscriptionArchiveMetrics(detail: SubscriptionDetail) {
             FlowRow(itemVerticalAlignment = Alignment.CenterVertically) {
                 Text("历史平均日成本", style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.SemiBold)
                 C5InformationButton("订阅历史指标", Modifier.testTag("subscription-history-metric-information"), iconOnly = true) {
-                    Text("截至 ${detail.asOf}")
-                    Text("按月30天、季90天、年365天折算；包含已确认付款的未来周期，不代表实际已使用时长。")
-                    Text("历史平均日成本与当前套餐价格不同；实际已过去的付费有效天数按真实覆盖和状态计算。")
+                    Text("统计日期 ${detail.asOf}")
+                    Text("月30天、季90天、年365天。已付的未来周期计入成本，不计入已过去的时长。")
+                    Text("已过去的付费有效天数按实际覆盖和状态计算。")
                 }
             }
             MoneyMetric(detail.cost.historicalAverage, Modifier.fillMaxWidth().testTag("subscription-detail-historical-average"),
-                level = MoneyMetricLevel.HERO, label = "历史平均日成本")
+                level = MoneyMetricLevel.HERO, label = "历史平均日成本", showDailyUnit = false)
             if (detail.cost.historicalAverage == null) Text("暂无已确认付款。", style = MaterialTheme.typography.bodySmall)
         }
     }
@@ -375,7 +373,7 @@ private fun SubscriptionPlanDialog(detail: SubscriptionDetail, payment: Subscrip
                 if (current) {
                     Text("当前标准日均价")
                     MoneyMetric(detail.cost.currentRate, Modifier.testTag("subscription-detail-current-rate"),
-                        level = MoneyMetricLevel.ROW, label = "当前标准日均价")
+                        level = MoneyMetricLevel.ROW, label = "当前标准日均价", showDailyUnit = false)
                 } else Text("真实付款日期：${payment.paidOn}")
                 Text("实际生效日期：${payment.effectiveFrom}")
                 Text("付费到期边界：${payment.paidUntilExclusive}（当天不包含）")
@@ -401,7 +399,8 @@ private fun SubscriptionOtherDetails(detail: SubscriptionDetail, enabled: Boolea
             Modifier.testTag("subscription-detail-elapsed-days"))
         detail.subscription.note?.takeIf { it.isNotBlank() }?.let { Text("备注：$it") }
         if (detail.stateChanges.isNotEmpty()) {
-            Text("状态记录", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium)
+            Text("状态记录", Modifier.semantics { heading() },
+                style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Normal)
             detail.stateChanges.forEach { row ->
                 val label = when (row.state) {
                     SubscriptionOperationState.ENABLED -> "已启用"

@@ -142,7 +142,8 @@ class ProjectLifecycleFlowTest {
         assertEquals(1, after.events.count { it.role == ProjectMoneyEventRole.END_SETTLEMENT })
         assertEquals(MoneyDirection.RECOVERY, after.events.single { it.role == ProjectMoneyEventRole.END_SETTLEMENT }.direction)
         assertEquals(80000L, after.cost.netCents)
-        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥100.00/天")
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥100.00")
+            .assertContentDescriptionEquals("截至观察日的日均成本，100.00元/天")
     }
 
     @Test fun edit_end_recovery_not_duplicated(): Unit = runBlocking {
@@ -188,7 +189,8 @@ class ProjectLifecycleFlowTest {
         assertEquals(5L, detail.cost.heldDays)
         assertEquals(90000L, detail.cost.netCents)
         assertFalse(detail.cost.contributesToCurrentTotal)
-        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥180.00/天")
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥180.00")
+            .assertContentDescriptionEquals("截至观察日的日均成本，180.00元/天")
         detailAction("project-detail-back")
         compose.onNodeWithTag("open-project-list").performScrollTo().assertIsDisplayed().performClick()
         waitForCurrent()
@@ -223,7 +225,8 @@ class ProjectLifecycleFlowTest {
         assertEquals(8L, after.cost.heldDays)
         assertEquals(0, BigDecimal("125").compareTo(after.cost.dailyRate))
         assertEquals(1, after.events.size)
-        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥125.00/天")
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥125.00")
+            .assertContentDescriptionEquals("截至观察日的日均成本，125.00元/天")
     }
 
     @Test fun delete_requires_confirmation(): Unit = runBlocking {

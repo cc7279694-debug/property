@@ -6,11 +6,16 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toPixelMap
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertHeightIsAtLeast
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
+import androidx.compose.ui.test.captureToImage
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.SemanticsMatcher
@@ -20,13 +25,16 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performSemanticsAction
 import androidx.compose.ui.test.performScrollToNode
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.core.design.AmountUnit
 import com.cooper.lithic.core.design.LithicTheme
+import com.cooper.lithic.core.design.moneyMetricDescription
 import com.cooper.lithic.core.design.moneyMetricDisplay
 import com.cooper.lithic.core.model.LongTermProject
 import com.cooper.lithic.core.model.Money
@@ -47,6 +55,7 @@ import java.time.Instant
 import java.time.LocalDate
 import java.util.UUID
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -61,6 +70,7 @@ class V3ProjectDetailScreenTest {
         compose.setContent { LithicTheme { ProjectDetailScreen(ready(value), {}, {}, {}, {}) } }
 
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasText("金额记录"))
+        scrollTo("project-money-count").assertTextEquals("3 笔")
         compose.onNodeWithTag("project-money-all").assertDoesNotExist()
         value.events.forEach { event -> scrollTo("project-event-${event.id}").assertIsDisplayed() }
         compose.onNodeWithTag("project-event-dialog").assertDoesNotExist()
@@ -72,19 +82,21 @@ class V3ProjectDetailScreenTest {
             cost = fixture.cost.copy(grossOutlayCents = 0L, recoveryCents = 0L, netCents = 0L, dailyRate = BigDecimal.ZERO))
         compose.setContent { LithicTheme { ProjectDetailScreen(ready(value), {}, {}, {}, {}) } }
 
-        scrollTo("project-detail-daily").assertTextEquals("¥0.00/天")
-        scrollTo("project-detail-outlay").assertTextEquals("¥0.00")
-        scrollTo("project-detail-recovery").assertTextEquals("¥0.00")
-        compose.onNodeWithTag("project-financial-details").assertDoesNotExist()
+        scrollTo("project-detail-daily").assertTextEquals("¥0.00")
+            .assertContentDescriptionEquals("当前日均成本，0.00元/天")
+        scrollTo("project-core-outlay").assertTextEquals("¥0.00")
+        assertFinancialDetailsCollapsed()
         scrollTo("project-financial-expand").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "已收起"))
             .assertHeightIsAtLeast(48.dp).performClick()
+        scrollTo("project-detail-outlay").assertTextEquals("¥0.00")
+        scrollTo("project-detail-recovery").assertTextEquals("¥0.00")
         scrollTo("project-detail-net").assertTextEquals("¥0.00")
         scrollTo("project-financial-expand").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "已展开"))
             .performClick()
-        scrollTo("project-financial-summary").assertIsDisplayed()
-        compose.onNodeWithTag("project-detail-net").assertDoesNotExist()
+        assertFinancialDetailsCollapsed()
 
         scrollTo("project-event-${value.events.single().id}").assertIsDisplayed()
+        scrollTo("project-money-count").assertTextEquals("1 笔")
         compose.onNodeWithTag("project-money-all").assertDoesNotExist()
     }
 
@@ -102,6 +114,7 @@ class V3ProjectDetailScreenTest {
         val oldest = initial.events.first()
         val oldestTag = "project-event-${oldest.id}"
         scrollTo("project-money-all").assertTextContains("全部")
+        scrollTo("project-money-count").assertTextEquals("4 笔")
         compose.onNodeWithTag(oldestTag).assertDoesNotExist()
         assertEquals(-1, compose.onNodeWithTag("project-detail-content").fetchSemanticsNode()
             .config[SemanticsProperties.IndexForKey](oldest.id))
@@ -125,7 +138,7 @@ class V3ProjectDetailScreenTest {
         compose.onNodeWithTag("project-event-dialog").assertDoesNotExist()
         scrollTo("project-money-all").assertTextContains("全部")
         compose.onNodeWithTag(oldestTag).assertDoesNotExist()
-        scrollTo("project-financial-summary").assertIsDisplayed()
+        assertFinancialDetailsCollapsed()
         scrollTo("project-more-details-expand").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "已收起"))
 
         scrollTo("project-financial-expand").performClick()
@@ -134,7 +147,7 @@ class V3ProjectDetailScreenTest {
         compose.runOnIdle { active.value = detail(4, fixture = "expand-other") }
         scrollTo("project-money-all").assertTextContains("全部")
         compose.onNodeWithTag("project-event-${active.value.events.first().id}").assertDoesNotExist()
-        scrollTo("project-financial-summary").assertIsDisplayed()
+        assertFinancialDetailsCollapsed()
         scrollTo("project-more-details-expand").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "已收起"))
         compose.runOnIdle { assertEquals(emptyList<String>(), mutations) }
     }
@@ -147,6 +160,15 @@ class V3ProjectDetailScreenTest {
         compose.setContent { LithicTheme {
             ProjectDetailScreen(ready(value), { backCount++ }, {}, {}, {}, onCorrectMoney = { corrections += it })
         } }
+
+        // Three outlays include ¥300 of non-cash credit; the ¥200 recovery affects only the net.
+        scrollTo("project-core-outlay").assertTextEquals("¥1400.00")
+        assertFinancialDetailsCollapsed()
+        scrollTo("project-financial-expand").performClick()
+        scrollTo("project-detail-outlay").assertTextEquals("¥1400.00")
+        scrollTo("project-detail-recovery").assertTextEquals("¥200.00")
+        scrollTo("project-detail-net").assertTextEquals("¥1200.00")
+        compose.onNodeWithText("累计投入（含非现金折抵）").assertIsDisplayed()
 
         scrollTo("project-money-all").performClick()
         scrollTo("project-event-details-${event.id}").assertHeightIsAtLeast(48.dp)
@@ -184,16 +206,37 @@ class V3ProjectDetailScreenTest {
             }
         }
 
-        val outlay = scrollTo("project-detail-outlay").fetchSemanticsNode().positionInRoot
-        val recovery = scrollTo("project-detail-recovery").fetchSemanticsNode().positionInRoot
-        assertTrue("Regular-font summary amounts occupy separate columns", recovery.x > outlay.x)
-        compose.onNodeWithTag("project-detail-net").assertDoesNotExist()
+        val costColors = mapOf(
+            LithicAppearance.PURE_WHITE to Color(0xFFEFF4FA),
+            LithicAppearance.STONE_MIST to Color(0xFFE8EFF6),
+            LithicAppearance.CHARCOAL to Color(0xFF202C39),
+        )
+        for ((selected, expectedColor) in costColors) {
+            compose.runOnIdle { appearance.value = selected }
+            scrollTo("project-core-metrics").assertIsDisplayed()
+            val dailyCard = compose.onNodeWithTag("project-cost-daily-card").fetchSemanticsNode().boundsInRoot
+            val outlayCard = compose.onNodeWithTag("project-cost-outlay-card").fetchSemanticsNode().boundsInRoot
+            assertTrue("Both regular-font cards occupy separate columns", dailyCard.right < outlayCard.left)
+            assertEquals(dailyCard.width, outlayCard.width, 1f)
+            assertEquals(dailyCard.height, outlayCard.height, 1f)
+            assertCardFill("project-cost-daily-card", expectedColor)
+            assertCardFill("project-cost-outlay-card", expectedColor)
+            assertEquals(visibleAmountFontSize("project-detail-daily"), visibleAmountFontSize("project-core-outlay"))
+            assertFinancialDetailsCollapsed()
+        }
         scrollTo("project-financial-expand").performClick()
         compose.runOnIdle { fontScale.value = 2f }
         LithicAppearance.entries.forEach { selected ->
             compose.runOnIdle { appearance.value = selected }
             scrollTo("project-detail-name").assertTextEquals(value.project.name)
-            scrollTo("project-detail-daily").assertTextEquals(moneyMetricDisplay(value.cost.dailyRate))
+            scrollTo("project-core-metrics").assertIsDisplayed()
+            val dailyCard = compose.onNodeWithTag("project-cost-daily-card").fetchSemanticsNode().boundsInRoot
+            val outlayCard = compose.onNodeWithTag("project-cost-outlay-card").fetchSemanticsNode().boundsInRoot
+            assertTrue("Both large-text cards have room to display their full metrics", dailyCard.bottom < outlayCard.top)
+            assertEquals(dailyCard.width, outlayCard.width, 1f)
+            scrollTo("project-detail-daily").assertTextEquals(moneyMetricDisplay(value.cost.dailyRate).removeSuffix("/天"))
+                .assertContentDescriptionEquals(moneyMetricDescription(value.cost.dailyRate, label = "当前日均成本"))
+            scrollTo("project-core-outlay").assertTextEquals(display(value.cost.grossOutlayCents))
             scrollTo("project-detail-outlay").assertTextEquals(display(value.cost.grossOutlayCents))
             scrollTo("project-detail-recovery").assertTextEquals(display(value.cost.recoveryCents))
             scrollTo("project-detail-net").assertTextEquals(display(value.cost.netCents))
@@ -206,6 +249,63 @@ class V3ProjectDetailScreenTest {
         scrollTo("project-detail-name").assertIsDisplayed().assertTextEquals(value.project.name)
         scrollTo("project-detail-net").assertIsDisplayed().assertTextEquals(display(value.cost.netCents))
         compose.onNodeWithTag("project-record-money").assertIsDisplayed()
+    }
+
+    @Test fun long_amount_uses_stacked_cards_without_reducing_either_metric_font() {
+        val value = detail(1, fixture = "large-aggregate", credit = false, initialCents = Money.MAX_CENTS)
+        val fontScale = mutableStateOf(1f)
+        compose.setContent {
+            val density = LocalDensity.current
+            CompositionLocalProvider(LocalDensity provides Density(density.density, fontScale.value)) {
+                LithicTheme {
+                    Box(Modifier.width(360.dp).fillMaxHeight()) {
+                        ProjectDetailScreen(ready(value), {}, {}, {}, {})
+                    }
+                }
+            }
+        }
+        scrollTo("project-core-metrics").assertIsDisplayed()
+        val dailyCard = compose.onNodeWithTag("project-cost-daily-card").fetchSemanticsNode().boundsInRoot
+        val outlayCard = compose.onNodeWithTag("project-cost-outlay-card").fetchSemanticsNode().boundsInRoot
+        assertTrue("Large amounts must stack at regular font scale", dailyCard.bottom < outlayCard.top)
+        val amount = display(Money.MAX_CENTS)
+        scrollTo("project-core-outlay").assertTextEquals(amount)
+        val preferred = visibleAmountFontSize("project-detail-daily")
+        assertEquals(preferred, visibleAmountFontSize("project-core-outlay"))
+        compose.runOnIdle { fontScale.value = 2f }
+        scrollTo("project-core-outlay").assertIsDisplayed().assertTextEquals(amount)
+        val layout = visibleAmountLayout("project-core-outlay")
+        assertEquals(preferred, layout.layoutInput.style.fontSize.value)
+        assertFalse("No monetary glyph may overflow the available width", layout.didOverflowWidth)
+        assertFalse("No mandatory line may overflow the available height", layout.didOverflowHeight)
+        assertEquals(amount, layout.layoutInput.text.text)
+        assertEquals("Every amount character must fit on a visible line", amount.length,
+            layout.getLineEnd(layout.lineCount - 1, visibleEnd = true))
+        assertFalse("Money must never be ellipsized", (0 until layout.lineCount).any(layout::isLineEllipsized))
+    }
+
+    private fun assertFinancialDetailsCollapsed() {
+        scrollTo("project-financial-expand").assertIsDisplayed()
+        listOf("project-financial-details", "project-detail-outlay", "project-detail-recovery", "project-detail-net").forEach {
+            compose.onNodeWithTag(it).assertDoesNotExist()
+        }
+    }
+
+    private fun assertCardFill(tag: String, expected: Color) {
+        val pixels = compose.onNodeWithTag(tag).captureToImage().toPixelMap()
+        val sample = pixels[pixels.width / 2, (pixels.height * 0.92f).toInt()]
+        assertEquals("$tag, red", expected.red, sample.red, 0.02f)
+        assertEquals("$tag, green", expected.green, sample.green, 0.02f)
+        assertEquals("$tag, blue", expected.blue, sample.blue, 0.02f)
+    }
+
+    private fun visibleAmountFontSize(amountTag: String): Float = visibleAmountLayout(amountTag).layoutInput.style.fontSize.value
+
+    private fun visibleAmountLayout(amountTag: String): TextLayoutResult {
+        val layouts = mutableListOf<TextLayoutResult>()
+        compose.onNodeWithTag(amountTag)
+            .performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        return layouts.single()
     }
 
     private fun assertEventOrder(events: List<ProjectMoneyEventEntity>) {
@@ -226,7 +326,7 @@ class V3ProjectDetailScreenTest {
 
     private fun display(cents: Long) = moneyMetricDisplay(BigDecimal.valueOf(cents, 2), AmountUnit.YUAN)
 
-    private fun detail(count: Int, fixture: String, credit: Boolean = true): ProjectDetail {
+    private fun detail(count: Int, fixture: String, credit: Boolean = true, initialCents: Long = 70_000): ProjectDetail {
         fun id(role: String): String = UUID.nameUUIDFromBytes("lithic:v3-project-detail:$fixture:$role".toByteArray(Charsets.UTF_8)).toString()
 
         val firstDay = LocalDate.of(2026, 7, 16)
@@ -237,7 +337,7 @@ class V3ProjectDetailScreenTest {
         val project = LongTermProjectEntity(projectId, "合成横向相机与旅行备用镜头套装", category.id, firstDay,
             createdAt = timestamp, updatedAt = timestamp)
         val events = listOf(
-            ProjectMoneyEventEntity(id("event-initial"), projectId, MoneyDirection.OUTLAY, 70_000, firstDay,
+            ProjectMoneyEventEntity(id("event-initial"), projectId, MoneyDirection.OUTLAY, initialCents, firstDay,
                 role = ProjectMoneyEventRole.INITIAL, operationId = id("operation-initial")),
             ProjectMoneyEventEntity(id("event-exchange"), projectId, MoneyDirection.OUTLAY, 30_000, firstDay,
                 description = "旧机身折抵三百元", role = ProjectMoneyEventRole.REGULAR,

@@ -7,15 +7,19 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.espresso.Espresso.pressBack
+import com.cooper.lithic.core.design.AmountFormatter
 import com.cooper.lithic.core.design.LithicTheme
-import com.cooper.lithic.core.design.moneyMetricDisplay
+import com.cooper.lithic.core.design.moneyMetricDescription
 import com.cooper.lithic.feature.appearance.LithicAppearance
 import com.cooper.lithic.feature.project.SubmissionPhase
+import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicInteger
@@ -34,10 +38,20 @@ class C2B2SubscriptionLayoutTest {
             SubscriptionDetailScreen(SubscriptionDetailUiState(detail,
                 RenewalHistoryUiState(detail.renewals, detail.renewals.size.toLong(), loading = false), loading = false), {}, {}, {}, {})
         } }
-        compose.onNodeWithTag("subscription-detail-historical-average").assertExists()
+        scroll("subscription-detail-identity-facts").assertTextEquals(detail.category.name)
+        assertCompactDailyMetric(scroll("subscription-detail-historical-average"), detail.cost.historicalAverage,
+            "历史平均日成本")
+        val date = "统计日期 ${detail.asOf}"
+        compose.onNodeWithText(date).assertDoesNotExist()
+        scroll("subscription-history-metric-information").performClick()
+        compose.onNodeWithText(date).assertIsDisplayed()
+        compose.onNodeWithText("月30天、季90天、年365天。已付的未来周期计入成本，不计入已过去的时长。")
+            .assertIsDisplayed()
+        compose.onNodeWithText("知道了").performClick()
         compose.onNodeWithTag("subscription-detail-purchased-days").assertDoesNotExist()
         scroll("subscription-detail-current-plan").performClick()
-        compose.onNodeWithTag("subscription-detail-current-rate").assertTextEquals(moneyMetricDisplay(detail.cost.currentRate))
+        assertCompactDailyMetric(compose.onNodeWithTag("subscription-detail-current-rate"), detail.cost.currentRate,
+            "当前标准日均价")
         compose.onNodeWithText("实际生效日期：2026-01-01").assertIsDisplayed()
         compose.onNodeWithText("付费到期边界：2026-02-01（当天不包含）").assertIsDisplayed()
         compose.onNodeWithTag("subscription-detail-plan-close").performClick()
@@ -129,7 +143,8 @@ class C2B2SubscriptionLayoutTest {
             compose.runOnIdle { selected.value = theme }
             scroll("subscription-detail-name").assertTextEquals(detail.subscription.name)
             scroll("subscription-detail-status").assertTextContains("订阅中")
-            scroll("subscription-detail-historical-average").assertTextEquals(moneyMetricDisplay(detail.cost.historicalAverage))
+            assertCompactDailyMetric(scroll("subscription-detail-historical-average"), detail.cost.historicalAverage,
+                "历史平均日成本")
             scroll("subscription-renewal-actions-${detail.renewals.single().id}").assertIsDisplayed()
             compose.onNodeWithTag("subscription-detail-show-payments").assertDoesNotExist()
             compose.onNodeWithTag("subscription-detail-next-plan").assertDoesNotExist()
@@ -150,6 +165,16 @@ class C2B2SubscriptionLayoutTest {
     private fun scroll(tag: String, useUnmergedTree: Boolean = false) =
         compose.onNodeWithTag("subscription-detail-content", useUnmergedTree).performScrollToNode(hasTestTag(tag))
             .let { compose.onNodeWithTag(tag, useUnmergedTree) }
+
+    private fun assertCompactDailyMetric(node: SemanticsNodeInteraction, amount: BigDecimal?, label: String) {
+        val expected = AmountFormatter.formatDailyRate(amount)
+        node.assertTextEquals(expected)
+            .assertContentDescriptionEquals(moneyMetricDescription(amount, label = label))
+        val layouts = mutableListOf<TextLayoutResult>()
+        node.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
+        assertEquals(expected, layouts.single().layoutInput.text.text)
+    }
+
     @Test fun unknown_payment_keeps_single_retry_and_blocks_input() {
         compose.setContent { LithicTheme {
             SubscriptionEditorScreen(SubscriptionEditorUiState(phase = SubmissionPhase.UNCONFIRMED),

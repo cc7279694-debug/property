@@ -278,9 +278,16 @@ class ProjectLifecycleScreensTest {
         val content = compose.onNodeWithTag("project-detail-content")
         content.performScrollToNode(hasTestTag("project-detail-held-days"))
         compose.onNodeWithTag("project-detail-held-days").assertTextEquals("8天")
+        content.performScrollToNode(hasTestTag("project-detail-daily"))
+        compose.onNodeWithTag("project-detail-daily").assertIsDisplayed()
+        compose.onNodeWithTag("project-detail-metric-date").assertDoesNotExist()
+        content.performScrollToNode(hasTestTag("project-more-details-expand"))
+        compose.onNodeWithTag("project-more-details-expand").performClick()
+        content.performScrollToNode(hasTestTag("project-detail-metric-information"))
+        compose.onNodeWithTag("project-detail-metric-information").performClick()
+        compose.onNodeWithTag("project-detail-metric-date").assertIsDisplayed().assertTextEquals("观察日期 2026-01-10")
         val frozenNote = hasText("持有天数已冻结。") or hasText("持有天数不再增加", substring = true)
-        content.performScrollToNode(frozenNote)
-        compose.onNode(frozenNote).assertIsDisplayed()
+        compose.onNode(frozenNote).performScrollTo().assertIsDisplayed()
     }
 
     private fun lateMoney(date: LocalDate) = ProjectMoneyEventEntity(

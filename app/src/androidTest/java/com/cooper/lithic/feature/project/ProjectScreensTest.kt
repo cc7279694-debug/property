@@ -16,6 +16,7 @@ import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.SemanticsMatcher
 import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -228,7 +229,8 @@ class ProjectScreensTest {
 
     @Test fun detail_shows_given_domain_results_and_real_event_dates_instead_of_recalculating() {
         compose.setContent { LithicTheme { ProjectDetailScreen(ProjectDetailUiState(detail(), false), {}, {}, {}, {}) } }
-        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥100.00/天")
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("¥100.00")
+            .assertContentDescriptionEquals("当前日均成本，100.00元/天")
         compose.onNodeWithTag("project-ownership-period").assertIsDisplayed()
         compose.onNodeWithTag("project-detail-held-days").assert(hasText("10天"))
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-event-$EVENT_ID"))
@@ -242,14 +244,23 @@ class ProjectScreensTest {
             0, 100000, 0, 100000, null, false, CostUnavailableReason.PROJECT_NOT_STARTED)), false))
         compose.setContent { LithicTheme { ProjectDetailScreen(state, {}, {}, {}, {}) } }
         compose.onNodeWithTag("project-detail-held-days").assertIsDisplayed().assertTextEquals("尚未开始")
-        compose.onNode(hasText("尚未开始，没有有效日均成本。") and hasAnyAncestor(hasTestTag("project-core-metrics")),
-            useUnmergedTree = true).assertIsDisplayed()
         compose.onNodeWithTag("project-detail-daily").assertIsDisplayed().assertTextEquals("—")
+            .assertContentDescriptionEquals("当前日均成本，暂无数据")
+        compose.onNodeWithTag("project-core-outlay").assertTextEquals("¥1000.00")
+        val content = compose.onNodeWithTag("project-detail-content")
+        content.performScrollToNode(hasTestTag("project-more-details-expand"))
+        compose.onNodeWithTag("project-more-details-expand").performClick()
+        content.performScrollToNode(hasTestTag("project-detail-metric-information"))
+        compose.onNodeWithTag("project-detail-metric-information").performClick()
+        compose.onNodeWithText("尚未开始，没有有效日均成本。").assertIsDisplayed()
+        compose.onNodeWithText("知道了").performClick()
         compose.runOnIdle {
             state = ProjectDetailUiState(detail(cost = ProjectCostResult(10, 100000, 120000,
                 -20000, BigDecimal("-20"), true, null)), false)
         }
-        compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥20.00/天")
+        content.performScrollToNode(hasTestTag("project-detail-daily"))
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥20.00")
+            .assertContentDescriptionEquals("当前日均成本，负20.00元/天")
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-financial-expand"))
         compose.onNodeWithTag("project-financial-expand").performClick()
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-net"))

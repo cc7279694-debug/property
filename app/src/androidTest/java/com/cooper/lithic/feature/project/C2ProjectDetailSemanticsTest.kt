@@ -1,5 +1,6 @@
 package com.cooper.lithic.feature.project
 
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.assertTextEquals
@@ -75,9 +76,10 @@ class C2ProjectDetailSemanticsTest {
             ProjectDetailScreen(ProjectDetailUiState(detail(), loading = false, error = "读取失败"), {}, {}, {}, {})
         } }
         compose.onNodeWithTag("project-detail-error").assertTextContains("读取失败")
-        compose.onNodeWithTag("project-detail-stale").assertTextContains("上次读取记录", substring = true)
+        compose.onNodeWithTag("project-detail-stale").assertTextContains("上次读取的记录", substring = true)
         compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-daily"))
-        compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥12.50/天")
+        compose.onNodeWithTag("project-detail-daily").assertTextEquals("−¥12.50")
+            .assertContentDescriptionEquals("当前日均成本，负12.50元/天")
     }
 
     @Test fun registered_unread_cover_is_not_presented_as_a_valid_image_or_no_cover() {

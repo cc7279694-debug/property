@@ -37,6 +37,20 @@ class C5MoneyMetricPresentationTest {
         assertEquals("0.67元/天", moneyMetricDescription(BigDecimal("0.666666"), AmountUnit.YUAN_PER_DAY))
     }
 
+    @Test fun a_labeled_detail_metric_can_hide_the_visual_unit_without_losing_daily_precision_or_copy() {
+        val unit = AmountUnit.YUAN_PER_DAY
+        val cases = listOf(null to "—", BigDecimal.ZERO to "¥0.00", BigDecimal("0.004") to "<¥0.01",
+            BigDecimal("-0.004") to "−<¥0.01", BigDecimal("8.21") to "¥8.21")
+        for ((amount, visible) in cases) {
+            val readout = moneyMetricAnnotatedText(amount, unit, Color.Gray, showDailyUnit = false)
+            assertEquals(visible, readout.text)
+            assertEquals(emptyList<Nothing>(), readout.spanStyles)
+            assertEquals(if (amount == null) visible else "$visible/天", moneyMetricDisplay(amount, unit))
+        }
+        assertEquals("日均成本，负值，绝对值小于0.01元/天",
+            moneyMetricDescription(BigDecimal("-0.004"), unit, "日均成本"))
+    }
+
     @Test fun missing_zero_and_negative_values_keep_the_existing_distinct_meanings() {
         assertEquals("—", moneyMetricDisplay(null, AmountUnit.YUAN_PER_DAY))
         assertEquals("暂无数据", moneyMetricDescription(null, AmountUnit.YUAN_PER_DAY))

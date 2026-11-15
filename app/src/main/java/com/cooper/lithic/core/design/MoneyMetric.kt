@@ -57,12 +57,17 @@ fun moneyMetricDescription(
     .joinToString("，")
 
 /** Shared with responsive parent layouts so their width probe matches the rendered group. */
-internal fun moneyMetricAnnotatedText(amount: BigDecimal?, unit: AmountUnit, supportingColor: Color): AnnotatedString {
+internal fun moneyMetricAnnotatedText(
+    amount: BigDecimal?,
+    unit: AmountUnit,
+    supportingColor: Color,
+    showDailyUnit: Boolean = true,
+): AnnotatedString {
     val fullDisplay = moneyMetricDisplay(amount, unit)
     val hasDailySuffix = amount != null && unit == AmountUnit.YUAN_PER_DAY
     return buildAnnotatedString {
         append(if (hasDailySuffix) fullDisplay.removeSuffix("/天") else fullDisplay)
-        if (hasDailySuffix) withStyle(SpanStyle(fontSize = 14.sp, color = supportingColor)) {
+        if (hasDailySuffix && showDailyUnit) withStyle(SpanStyle(fontSize = 14.sp, color = supportingColor)) {
             // A thin typographic gap keeps one baseline and one unbreakable Text run.
             // Plain display/copy text stays compact and contains no separator glyph.
             append("\u2009/天")
@@ -77,10 +82,11 @@ internal fun moneyMetricFitsAtPreferredSize(
     availableWidth: Dp,
     unit: AmountUnit = AmountUnit.YUAN_PER_DAY,
     level: MoneyMetricLevel = MoneyMetricLevel.ROW,
+    showDailyUnit: Boolean = true,
 ): Boolean {
     val density = LocalDensity.current
     val measurer = rememberTextMeasurer()
-    val run = moneyMetricAnnotatedText(amount, unit, MaterialTheme.colorScheme.onSurfaceVariant)
+    val run = moneyMetricAnnotatedText(amount, unit, MaterialTheme.colorScheme.onSurfaceVariant, showDailyUnit)
     val preferredSp = moneyMetricFontCandidates(level).first()
     val measured = measurer.measure(run, style = MaterialTheme.typography.displayLarge.copy(
         fontSize = preferredSp.sp, lineHeight = (preferredSp + 8).sp,
@@ -92,6 +98,8 @@ internal fun moneyMetricFitsAtPreferredSize(
  * Read-only money presentation; it never alters the supplied value or user font scale.
  * [label] is the metric identity for the combined spoken readout only. The caller keeps
  * responsibility for its visible label and spacing; this component does not draw it again.
+ * [showDailyUnit] hides a redundant visual suffix while retaining the spoken and copied unit.
+ * [keepPreferredSize] wraps longer values at the role's preferred size and keeps full-value access.
  */
 @Composable
 fun MoneyMetric(
@@ -102,13 +110,15 @@ fun MoneyMetric(
     color: Color = MaterialTheme.colorScheme.onSurface,
     supportingColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
     label: String? = null,
+    showDailyUnit: Boolean = true,
+    keepPreferredSize: Boolean = false,
 ) {
     val display = moneyMetricDisplay(amount, unit)
     var fullOpen by remember(display, unit) { mutableStateOf(false) }
     var copyFailed by remember(display, unit) { mutableStateOf(false) }
     val clipboard = LocalClipboardManager.current
 
-    MoneyMetricReadout(amount, modifier, unit, level, color, supportingColor, label) {
+    MoneyMetricReadout(amount, modifier, unit, level, color, supportingColor, label, showDailyUnit, keepPreferredSize) {
         copyFailed = false
         fullOpen = true
     }
@@ -147,11 +157,13 @@ private fun MoneyMetricReadout(
     color: Color,
     supportingColor: Color,
     label: String?,
+    showDailyUnit: Boolean = true,
+    keepPreferredSize: Boolean = false,
     onOpenFull: (() -> Unit)? = null,
 ) {
     val fullDisplay = moneyMetricDisplay(amount, unit)
-    val readout = remember(fullDisplay, unit, supportingColor) {
-        moneyMetricAnnotatedText(amount, unit, supportingColor)
+    val readout = remember(fullDisplay, unit, supportingColor, showDailyUnit) {
+        moneyMetricAnnotatedText(amount, unit, supportingColor, showDailyUnit)
     }
     val spokenReadout = moneyMetricDescription(amount, unit, label)
     val density = LocalDensity.current
@@ -163,15 +175,23 @@ private fun MoneyMetricReadout(
         contentDescription = spokenReadout
         // One semantic value node retains the exact composite for text-based assertions.
         // The drawn child has no separate reading, so neither value nor unit is duplicated.
-        text = AnnotatedString(fullDisplay)
+        text = AnnotatedString(if (showDailyUnit) fullDisplay else readout.text)
     }) {
         val available = constraints.maxWidth
-        val layout = remember(readout, level, available, density.fontScale, density.density, measurer, baseStyle) {
-            amountLayout(level, available) { size ->
+        val layout = remember(readout, level, available, density.fontScale, density.density, measurer, baseStyle,
+            keepPreferredSize) {
+            val widthAt: (Float) -> Int = { size ->
                 measurer.measure(readout, baseStyle.copy(fontSize = size.sp, lineHeight = (size + 8).sp),
                     softWrap = false, maxLines = 1).size.width
             }
+            if (keepPreferredSize) {
+                val preferred = moneyMetricFontCandidates(level).first()
+                AmountLayout(preferred, widthAt(preferred) > available)
+            } else {
+                amountLayout(level, available, widthAt)
+            }
         }
+        val wrap = keepPreferredSize && layout.horizontalScroll
         Column {
             val line: @Composable () -> Unit = {
                 Text(readout,
@@ -184,20 +204,20 @@ private fun MoneyMetricReadout(
                         }
                     },
                     style = baseStyle.copy(fontSize = layout.fontSp.sp, lineHeight = (layout.fontSp + 8).sp),
-                    color = color, softWrap = false, maxLines = 1,
+                    color = color, softWrap = wrap, maxLines = if (wrap) Int.MAX_VALUE else 1,
                     onTextLayout = { textLayout = it })
             }
-            if (layout.horizontalScroll) {
+            if (layout.horizontalScroll && !wrap) {
                 Box(Modifier.fillMaxWidth().heightIn(min = 48.dp)
                     .horizontalScroll(rememberScrollState()).testTag("amount-horizontal-view")) { line() }
                 Text("左右滑动查看完整金额", Modifier.testTag("amount-horizontal-hint").clearAndSetSemantics { },
                     style = MaterialTheme.typography.bodySmall, color = supportingColor)
-                if (onOpenFull != null) {
-                    TextButton(onOpenFull, Modifier.heightIn(min = 48.dp).testTag("amount-open-full")) {
-                        Text("查看完整金额", color = supportingColor)
-                    }
-                }
             } else line()
+            if (layout.horizontalScroll && onOpenFull != null) {
+                TextButton(onOpenFull, Modifier.heightIn(min = 48.dp).testTag("amount-open-full")) {
+                    Text("查看完整金额", color = supportingColor)
+                }
+            }
         }
     }
 }

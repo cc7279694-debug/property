@@ -54,8 +54,10 @@ class C5BrowseExperienceTest {
                     modifier = Modifier.width(360.dp), backLabel = "返回项目历史")
             }
         } }
-        compose.onNodeWithTag("project-detail-daily").performScrollTo()
-            .assertTextContains(moneyMetricDisplay(detail.cost.dailyRate))
+        compose.onNodeWithTag("project-detail-content").performScrollToNode(hasTestTag("project-detail-daily"))
+        compose.onNodeWithTag("project-detail-daily")
+            .assertTextEquals(moneyMetricDisplay(detail.cost.dailyRate).removeSuffix("/天"))
+            .assertContentDescriptionEquals(moneyMetricDescription(detail.cost.dailyRate, label = "当前日均成本"))
         compose.onNodeWithTag("project-record-money").assertIsDisplayed().assertIsEnabled()
         compose.onNodeWithTag("project-detail-back").assertContentDescriptionEquals("返回项目历史")
             .assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).performClick()
@@ -77,11 +79,15 @@ class C5BrowseExperienceTest {
         val scroll = compose.onNodeWithTag("subscription-detail-content")
         scroll.performScrollToNode(hasTestTag("subscription-detail-historical-average"))
         compose.onNodeWithTag("subscription-detail-historical-average")
-            .assertTextContains(moneyMetricDisplay(detail.cost.historicalAverage))
+            .assertTextEquals(moneyMetricDisplay(detail.cost.historicalAverage).removeSuffix("/天"))
+            .assertContentDescriptionEquals(
+                moneyMetricDescription(detail.cost.historicalAverage, label = "历史平均日成本"))
         scroll.performScrollToNode(hasTestTag("subscription-detail-current-plan"))
         compose.onNodeWithTag("subscription-detail-current-plan").performClick()
         compose.onNodeWithTag("subscription-detail-current-rate")
-            .assertTextContains(moneyMetricDisplay(detail.cost.currentRate))
+            .assertTextEquals(moneyMetricDisplay(detail.cost.currentRate).removeSuffix("/天"))
+            .assertContentDescriptionEquals(
+                moneyMetricDescription(detail.cost.currentRate, label = "当前标准日均价"))
         compose.onNodeWithTag("subscription-detail-plan-close").performClick()
         scroll.performScrollToNode(hasTestTag("subscription-renewal-actions-$renewalId"))
         compose.onNodeWithTag("subscription-renewal-actions-$renewalId").performClick()
