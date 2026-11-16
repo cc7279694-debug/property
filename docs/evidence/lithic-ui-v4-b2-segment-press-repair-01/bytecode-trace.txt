@@ -1,0 +1,34 @@
+B2 baseline source 1b8f9e639be786e1a2196e50e6b33d974032c5ab
+Read-only javap -c -p excerpts. These describe code paths, not native pixels.
+
+[B2 HomeBrowseTab calls default selectable]
+  private static final void HomeBrowseTab-cf5BqRc(java.lang.String, boolean, long, java.lang.String, kotlin.jvm.functions.Function0<kotlin.Unit>, androidx.compose.runtime.Composer, int);
+     320: invokestatic  #2363               // Method androidx/compose/foundation/selection/SelectableKt."selectable-oSLSa3U$default":(Landroidx/compose/ui/Modifier;ZZLandroidx/compose/ui/semantics/Role;Landroidx/compose/foundation/interaction/MutableInteractionSource;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Landroidx/compose/ui/Modifier;
+
+[Foundation selectable uses LocalIndication]
+      68: invokevirtual #151                // Method onObservedReadsChanged:()V
+       1: invokevirtual #151                // Method onObservedReadsChanged:()V
+  public void onObservedReadsChanged();
+  private static final kotlin.Unit onObservedReadsChanged$lambda$1(androidx.compose.foundation.AbstractClickableNode);
+       4: invokestatic  #646                // Method androidx/compose/foundation/IndicationKt.getLocalIndication:()Landroidx/compose/runtime/ProvidableCompositionLocal;
+
+[MaterialTheme supplies ripple]
+     496: invokestatic  #158                // Method androidx/compose/material3/RippleKt."ripple-H2RKhps$default":(ZFJILjava/lang/Object;)Landroidx/compose/foundation/IndicationNodeFactory;
+     546: invokestatic  #185                // Method androidx/compose/foundation/IndicationKt.getLocalIndication:()Landroidx/compose/runtime/ProvidableCompositionLocal;
+
+[Android ripple receives dimensions and touch coordinates]
+      58: invokevirtual #104                // Method "setRippleProperties-biQXAtU":(JIJF)V
+      81: invokevirtual #123                // Method androidx/compose/material/ripple/UnprojectedRipple.setHotspot:(FF)V
+     107: invokevirtual #123                // Method androidx/compose/material/ripple/UnprojectedRipple.setHotspot:(FF)V
+  public final void setRippleProperties-biQXAtU(long, int, long, float);
+      92: invokevirtual #201                // Method androidx/compose/material/ripple/UnprojectedRipple.setBounds:(Landroid/graphics/Rect;)V
+
+[Repair HomeBrowseTab from compileDebugKotlin]
+  private static final void HomeBrowseTab-cf5BqRc(java.lang.String, boolean, long, java.lang.String, kotlin.jvm.functions.Function0<kotlin.Unit>, androidx.compose.runtime.Composer, int);
+     296: invokestatic  #2350               // Method androidx/compose/foundation/interaction/InteractionSourceKt.MutableInteractionSource:()Landroidx/compose/foundation/interaction/MutableInteractionSource;
+     383: invokestatic  #1362               // Method androidx/compose/ui/draw/ClipKt.clip:(Landroidx/compose/ui/Modifier;Landroidx/compose/ui/graphics/Shape;)Landroidx/compose/ui/Modifier;
+     405: invokestatic  #2372               // Method androidx/compose/foundation/selection/SelectableKt."selectable-O2vRcR0$default":(Landroidx/compose/ui/Modifier;ZLandroidx/compose/foundation/interaction/MutableInteractionSource;Landroidx/compose/foundation/Indication;ZLandroidx/compose/ui/semantics/Role;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Landroidx/compose/ui/Modifier;
+     805: invokeinterface #2165,  2         // InterfaceMethod androidx/compose/foundation/layout/BoxScope.matchParentSize:(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
+     835: invokestatic  #1362               // Method androidx/compose/ui/draw/ClipKt.clip:(Landroidx/compose/ui/Modifier;Landroidx/compose/ui/graphics/Shape;)Landroidx/compose/ui/Modifier;
+     869: invokestatic  #2391               // Method androidx/compose/material3/RippleKt."ripple-H2RKhps$default":(ZFJILjava/lang/Object;)Landroidx/compose/foundation/IndicationNodeFactory;
+     875: invokestatic  #2399               // Method androidx/compose/foundation/IndicationKt.indication:(Landroidx/compose/ui/Modifier;Landroidx/compose/foundation/interaction/InteractionSource;Landroidx/compose/foundation/Indication;)Landroidx/compose/ui/Modifier;
