@@ -1,0 +1,16 @@
+Scoped javap excerpts from production Kotlin compilation and AndroidTest compilation.
+Baseline c3c0b977 (production unchanged since the previous compiled Debug source)
+  public static final void C2PrimaryNavigationBar(androidx.navigation3.runtime.NavKey, kotlin.jvm.functions.Function1<? super androidx.navigation3.runtime.NavKey, kotlin.Unit>, androidx.compose.runtime.Composer, int);
+     954: invokestatic  #7035               // Method androidx/compose/foundation/selection/SelectableKt."selectable-oSLSa3U$default":(Landroidx/compose/ui/Modifier;ZZLandroidx/compose/ui/semantics/Role;Landroidx/compose/foundation/interaction/MutableInteractionSource;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Landroidx/compose/ui/Modifier;
+
+Repair 98153ef3
+  public static final void C2PrimaryNavigationBar(androidx.navigation3.runtime.NavKey, kotlin.jvm.functions.Function1<? super androidx.navigation3.runtime.NavKey, kotlin.Unit>, androidx.compose.runtime.Composer, int);
+     238: invokestatic  #2154               // Method androidx/compose/material3/RippleKt."ripple-H2RKhps$default":(ZFJILjava/lang/Object;)Landroidx/compose/foundation/IndicationNodeFactory;
+     715: invokestatic  #6995               // Method androidx/compose/foundation/interaction/InteractionSourceKt.MutableInteractionSource:()Landroidx/compose/foundation/interaction/MutableInteractionSource;
+    1043: invokestatic  #7054               // Method androidx/compose/foundation/selection/SelectableKt."selectable-O2vRcR0$default":(Landroidx/compose/ui/Modifier;ZLandroidx/compose/foundation/interaction/MutableInteractionSource;Landroidx/compose/foundation/Indication;ZLandroidx/compose/ui/semantics/Role;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Landroidx/compose/ui/Modifier;
+    1632: invokestatic  #7093               // Method androidx/compose/ui/draw/ClipKt.clip:(Landroidx/compose/ui/Modifier;Landroidx/compose/ui/graphics/Shape;)Landroidx/compose/ui/Modifier;
+    1645: invokestatic  #7103               // Method androidx/compose/foundation/IndicationKt.indication:(Landroidx/compose/ui/Modifier;Landroidx/compose/foundation/interaction/InteractionSource;Landroidx/compose/foundation/Indication;)Landroidx/compose/ui/Modifier;
+
+Compiled AndroidTest methods (not executed)
+  public final void held_feedback_stays_in_circle_and_recovers_after_release_or_cancel_in_each_theme();
+  public final void touch_navigation_keeps_tab_semantics_and_dispatches_rapid_switches_and_reselection_once();
