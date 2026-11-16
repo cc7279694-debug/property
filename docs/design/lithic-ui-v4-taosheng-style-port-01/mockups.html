@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>砺石 UI V4 · 设计评审</title>
+<link rel="stylesheet" href="mockups.css">
+<script defer src="mockups.js"></script>
+</head>
+<body>
+<svg width="0" height="0" class="symbol-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <symbol id="search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="add" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="back" viewBox="0 0 24 24"><path d="m14.5 5-7 7 7 7"/></symbol>
+  <symbol id="right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  <symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5m0-8v.2"/></symbol>
+  <symbol id="subscription" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="2.5"/><path d="M4 10h16m-12 4h3"/></symbol>
+  <symbol id="calendar" viewBox="0 0 24 24"><rect x="5" y="6.5" width="14" height="13" rx="2"/><path d="M5 11h14M9 4.5v4m6-4v4"/></symbol>
+  <symbol id="system" viewBox="0 0 56 12"><path d="M2 10V7m3 3V5m3 5V3m3 7V1M18 4q6-5 12 0m-10 2q4-3 8 0m-6 2q2-1.5 4 0m-2 2h.1"/><rect x="36" y="2" width="16" height="8" rx="2"/><path d="M54 4.5v3M39 6h10" stroke-width="2.4"/></symbol>
+ </defs>
+</svg>
+<main class="gallery">
+ <section class="board" id="home-themes" aria-label="三主题首页">
+  <header class="board-heading"><h1>砺石 V4 · 首页</h1><p>同一组档案，同一套悬浮导航</p></header>
+  <div class="screens three" id="home-screens"></div>
+  <p class="spec-foot">阅读器照片 © Hexafluoride · <a href="https://commons.wikimedia.org/wiki/File:Kindle_4th_Generation.jpg">图片出处</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p>
+ </section>
+ <section class="board" id="detail-pair" aria-label="项目和订阅详情">
+  <header class="board-heading"><h2>砺石 V4 · 详情</h2><p>项目与订阅共用排版、表面与操作样式</p></header>
+  <div class="screens two" id="detail-screens"></div>
+ </section>
+ <section class="board nav-board" id="bottom-navigation" aria-label="底栏重点图">
+  <header class="board-heading"><h2>悬浮导航</h2><p>「现在」「回看」「设置」的选中态</p></header>
+  <div class="nav-specs" id="nav-specs"></div>
+  <p class="spec-foot">单项触控 ≥48dp　·　内距 5dp　·　系统导航区上方 14dp</p>
+ </section>
+</main>
+<dialog id="sample-dialog" aria-label="设计交互示意"><h2></h2><div></div><form method="dialog"><button type="submit">关闭</button></form></dialog>
+</body>
+</html>
