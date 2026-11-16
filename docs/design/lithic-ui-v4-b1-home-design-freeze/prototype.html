@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>砺石 V4 B1 · 首页设计</title>
+<link rel="stylesheet" href="prototype.css">
+<script defer src="prototype.js"></script>
+</head>
+<body>
+<svg width="0" height="0" aria-hidden="true" class="symbol-library" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <symbol id="search-icon" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+  <symbol id="add-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="right-icon" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="info-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5m0-8v.2"/></symbol>
+  <symbol id="project-icon" viewBox="0 0 24 24"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5ZM4 7.5l8 4.5 8-4.5M12 12v9"/></symbol>
+  <symbol id="subscription-icon" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="2.5"/><path d="M4 10h16m-12 4h3"/></symbol>
+  <symbol id="unavailable-icon" viewBox="0 0 24 24"><path d="M5 19h14V5H5zm2-4 3-3 3 3 2-2 2 2M4 4l16 16"/></symbol>
+  <symbol id="system-icon" viewBox="0 0 56 12"><path d="M2 10V7m3 3V5m3 5V3m3 7V1M18 4q6-5 12 0m-10 2q4-3 8 0m-6 2q2-1.5 4 0m-2 2h.1"/><rect x="36" y="2" width="16" height="8" rx="2"/><path d="M54 4.5v3M39 6h10" stroke-width="2.4"/></symbol>
+  <symbol id="nav-home" viewBox="0 0 24 24"><path d="M2.5,10.5 L12,2.8 L21.5,10.5 M5,8.5 L5,21 L10,21 L10,15 L14,15 L14,21 L19,21 L19,8.5"/></symbol>
+  <symbol id="nav-review" viewBox="0 0 24 24"><path d="M4.5,20 L4.5,14 M9.5,20 L9.5,11 M14.5,20 L14.5,7.5 M19.5,20 L19.5,3.5"/></symbol>
+  <symbol id="nav-settings" viewBox="0 0 24 24"><path d="M9.76,4.68 L10.21,2.77 L13.79,2.77 L14.24,4.68 L15.59,5.25 L17.26,4.21 L19.79,6.74 L18.75,8.41 L19.32,9.76 L21.23,10.21 L21.23,13.79 L19.32,14.24 L18.75,15.59 L19.79,17.26 L17.26,19.79 L15.59,18.75 L14.24,19.32 L13.79,21.23 L10.21,21.23 L9.76,19.32 L8.41,18.75 L6.74,19.79 L4.21,17.26 L5.25,15.59 L4.68,14.24 L2.77,13.79 L2.77,10.21 L4.68,9.76 L5.25,8.41 L4.21,6.74 L6.74,4.21 L8.41,5.25 Z M15.35,12 A3.35,3.35 0,0 1,8.65,12 A3.35,3.35 0,0 1,15.35,12 Z"/></symbol>
+ </defs>
+</svg>
+<main id="workspace">
+ <nav class="board-links" id="board-links" aria-label="画板目录"></nav>
+ <section id="board" class="board" aria-labelledby="board-title"></section>
+</main>
+<dialog id="demo-sheet" aria-labelledby="demo-title">
+ <div class="sheet-grip" aria-hidden="true"></div>
+ <h2 id="demo-title"></h2>
+ <div id="demo-content"></div>
+ <form method="dialog"><button value="close">关闭</button></form>
+</dialog>
+</body>
+</html>

@@ -1,0 +1,525 @@
+{
+  "scope": "BROWSER_DESIGN_VERIFICATION_ONLY",
+  "android": "NOT_RUN",
+  "browser": "157.0.8103.52",
+  "playwright": "1.65.1",
+  "layoutCaseCount": 36,
+  "stateCaseCount": 7,
+  "layouts": [
+    {
+      "width": 320,
+      "theme": "white",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 320,
+      "theme": "white",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 320,
+      "theme": "white",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 320,
+      "theme": "white",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 320,
+      "theme": "stone-mist",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 320,
+      "theme": "stone-mist",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 320,
+      "theme": "stone-mist",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 320,
+      "theme": "stone-mist",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 320,
+      "theme": "charcoal",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 320,
+      "theme": "charcoal",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 320,
+      "theme": "charcoal",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 320,
+      "theme": "charcoal",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 360,
+      "theme": "white",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 360,
+      "theme": "white",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 360,
+      "theme": "white",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 360,
+      "theme": "white",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 360,
+      "theme": "stone-mist",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 360,
+      "theme": "stone-mist",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 360,
+      "theme": "stone-mist",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 360,
+      "theme": "stone-mist",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 360,
+      "theme": "charcoal",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 360,
+      "theme": "charcoal",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 360,
+      "theme": "charcoal",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 360,
+      "theme": "charcoal",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 400,
+      "theme": "white",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 400,
+      "theme": "white",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 400,
+      "theme": "white",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 400,
+      "theme": "white",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 400,
+      "theme": "stone-mist",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 400,
+      "theme": "stone-mist",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 400,
+      "theme": "stone-mist",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 400,
+      "theme": "stone-mist",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 400,
+      "theme": "charcoal",
+      "tab": "projects",
+      "font": 1,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "fits"
+    },
+    {
+      "width": 400,
+      "theme": "charcoal",
+      "tab": "projects",
+      "font": 2,
+      "cards": 2,
+      "grid": "two columns",
+      "scroll": "scroll verified"
+    },
+    {
+      "width": 400,
+      "theme": "charcoal",
+      "tab": "subscriptions",
+      "font": 1,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "fits"
+    },
+    {
+      "width": 400,
+      "theme": "charcoal",
+      "tab": "subscriptions",
+      "font": 2,
+      "cards": 1,
+      "grid": "single record",
+      "scroll": "scroll verified"
+    }
+  ],
+  "interactions": [
+    "项目和订阅分段及对应全部入口",
+    "记录卡片入口",
+    "顶部新增和底部添加共享菜单",
+    "搜索入口",
+    "成本构成入口与口径说明"
+  ],
+  "states": [
+    {
+      "state": "normal",
+      "tab": "projects",
+      "cards": 2,
+      "amounts": [
+        "¥1,599.20",
+        "¥15.22",
+        "¥9.92",
+        "¥3.32"
+      ],
+      "counts": [
+        "2",
+        "1"
+      ]
+    },
+    {
+      "state": "empty",
+      "tab": "projects",
+      "cards": 0,
+      "amounts": [
+        "—",
+        "—"
+      ],
+      "counts": [
+        "0",
+        "0"
+      ]
+    },
+    {
+      "state": "no-current",
+      "tab": "projects",
+      "cards": 0,
+      "amounts": [
+        "¥1,599.20",
+        "¥0.00"
+      ],
+      "counts": [
+        "2",
+        "1"
+      ]
+    },
+    {
+      "state": "ledger-error",
+      "tab": "projects",
+      "cards": 0,
+      "amounts": [
+        "—",
+        "—"
+      ],
+      "counts": [
+        "—",
+        "—"
+      ]
+    },
+    {
+      "state": "retained",
+      "tab": "projects",
+      "cards": 2,
+      "amounts": [
+        "¥1,599.20",
+        "¥15.22",
+        "¥9.92",
+        "¥3.32"
+      ],
+      "counts": [
+        "2",
+        "1"
+      ]
+    },
+    {
+      "state": "project-error",
+      "tab": "projects",
+      "cards": 0,
+      "amounts": [
+        "¥1,599.20",
+        "¥15.22"
+      ],
+      "counts": [
+        "2",
+        "1"
+      ]
+    },
+    {
+      "state": "subscription-error",
+      "tab": "subscriptions",
+      "cards": 0,
+      "amounts": [
+        "¥1,599.20",
+        "¥15.22"
+      ],
+      "counts": [
+        "2",
+        "1"
+      ]
+    }
+  ],
+  "exports": [
+    {
+      "name": "home-white",
+      "width": 422,
+      "height": 999,
+      "screens": 1,
+      "pixels": [
+        844,
+        1998
+      ],
+      "bytes": 382068,
+      "sha256": "5be37292521118e150d3441eec78fa60ac0192b566fc605d5f415a56f200f2db"
+    },
+    {
+      "name": "home-stone-mist",
+      "width": 422,
+      "height": 999,
+      "screens": 1,
+      "pixels": [
+        844,
+        1998
+      ],
+      "bytes": 384739,
+      "sha256": "a107ad663757ea446c0b1411dae39bea0a09ba5d0f417f751e24ae683243306c"
+    },
+    {
+      "name": "home-charcoal",
+      "width": 422,
+      "height": 999,
+      "screens": 1,
+      "pixels": [
+        844,
+        1998
+      ],
+      "bytes": 377800,
+      "sha256": "ba668afeba5fc668c35a573a0695776dba899e8967f57e76502a9557b78021b9"
+    },
+    {
+      "name": "home-record-cards",
+      "width": 794,
+      "height": 443,
+      "screens": 0,
+      "pixels": [
+        1588,
+        888
+      ],
+      "bytes": 371760,
+      "sha256": "40fa97e10f7fcc9d4788080e2dd9e8246283a68a46a0ab0d1f3a86c49f06bb4d"
+    },
+    {
+      "name": "home-states",
+      "width": 1390,
+      "height": 1712,
+      "screens": 7,
+      "pixels": [
+        2780,
+        3426
+      ],
+      "bytes": 836606,
+      "sha256": "7619973ccecec2b17b3eee805283eceb16b3d46fad16ec656e74b9a26e24eb5d"
+    },
+    {
+      "name": "home-responsive",
+      "width": 1174,
+      "height": 1006,
+      "screens": 3,
+      "pixels": [
+        2348,
+        2012
+      ],
+      "bytes": 954025,
+      "sha256": "de34e0d2a0004bec3034461633b5973dcb3ddbe2efbd4c8c3a538a2f2f19a16f"
+    },
+    {
+      "name": "home-font-scale-200",
+      "width": 1174,
+      "height": 1006,
+      "screens": 3,
+      "pixels": [
+        2348,
+        2012
+      ],
+      "bytes": 780056,
+      "sha256": "c579344d93034d208a09a22c150ef8b5240d944ae97d2f63d6a28f59808e2a48"
+    }
+  ],
+  "browserErrors": 0
+}
