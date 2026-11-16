@@ -1,0 +1,25 @@
+{
+  "source_commit": "54155598bcabd04f0fb9c885e9352cade2503906",
+  "app_tree": "5be4adf157641b5cb16e401112046b83f7207c50",
+  "available_gib": 4.516,
+  "minimum_gib": 4,
+  "free_disk_gib": 19.682,
+  "started_utc": "2026-11-16T03:30:57.3682246Z",
+  "args": [
+    "--offline",
+    "--no-daemon",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-configuration-cache",
+    "--no-build-cache",
+    "--no-scan",
+    "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    ":app:compileDebugKotlin",
+    ":app:compileDebugAndroidTestKotlin",
+    ":app:lintDebug",
+    ":app:assembleDebug"
+  ],
+  "completed_utc": "2026-11-16T03:39:48.4341044Z",
+  "gradle_exit": 0
+}
