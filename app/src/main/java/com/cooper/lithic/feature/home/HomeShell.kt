@@ -5,6 +5,8 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
@@ -425,12 +427,24 @@ private fun HomeBrowseControls(subscriptions: Boolean, select: (Boolean) -> Unit
 @Composable
 private fun HomeBrowseTab(label: String, selected: Boolean, selectedSurface: Color, tag: String, select: () -> Unit) {
     val colors = MaterialTheme.colorScheme
+    val interactionSource = remember { MutableInteractionSource() }
     Box(
         Modifier.widthIn(min = 68.dp).heightIn(min = 48.dp).clip(CircleShape)
-            .selectable(selected, role = Role.Tab, onClick = select).testTag(tag),
+            .selectable(
+                selected = selected,
+                interactionSource = interactionSource,
+                indication = null,
+                role = Role.Tab,
+                onClick = select,
+            ).testTag(tag),
         contentAlignment = Alignment.Center,
     ) {
-        if (selected) Box(Modifier.matchParentSize().padding(vertical = 7.dp).background(selectedSurface, CircleShape))
+        // Keep the full touch target. Draw its feedback only inside the inset capsule.
+        Box(
+            Modifier.matchParentSize().padding(vertical = 7.dp).clip(CircleShape)
+                .background(if (selected) selectedSurface else Color.Transparent)
+                .indication(interactionSource, ripple(bounded = false)),
+        )
         Text(label, Modifier.padding(horizontal = 11.dp, vertical = 5.dp), fontSize = 13.sp, lineHeight = 17.sp,
             fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
             color = if (selected) colors.onBackground else colors.onSurfaceVariant)
