@@ -16,6 +16,8 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.indication
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -40,6 +42,7 @@ import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.ripple
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
@@ -54,6 +57,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.layout.ContentScale
@@ -843,6 +847,7 @@ internal fun C2PrimaryNavigationBar(currentPrimary: NavKey, onSelect: (NavKey) -
     val colors = MaterialTheme.colorScheme
     val capsuleColor = if (colors.surface == colors.background) colors.surfaceContainer else colors.surface
     val selectionColor = LocalLithicVisuals.current.costSurface
+    val pressIndication = ripple(bounded = false)
     Box(
         Modifier.fillMaxWidth()
             .windowInsetsPadding(NavigationBarDefaults.windowInsets)
@@ -863,6 +868,7 @@ internal fun C2PrimaryNavigationBar(currentPrimary: NavKey, onSelect: (NavKey) -
                     Triple(Settings, "设置", R.drawable.ic_primary_nav_settings),
                 )
                 destinations.forEach { (destination, label, icon) ->
+                    val interactionSource = remember { MutableInteractionSource() }
                     val selected = currentPrimary == destination
                     val indicator by animateColorAsState(
                         targetValue = if (selected) selectionColor else selectionColor.copy(alpha = 0f),
@@ -877,7 +883,13 @@ internal fun C2PrimaryNavigationBar(currentPrimary: NavKey, onSelect: (NavKey) -
                     Box(
                         modifier = Modifier.weight(1f)
                             .height(48.dp)
-                            .selectable(selected = selected, role = Role.Tab, onClick = { onSelect(destination) })
+                            .selectable(
+                                selected = selected,
+                                interactionSource = interactionSource,
+                                indication = null,
+                                role = Role.Tab,
+                                onClick = { onSelect(destination) },
+                            )
                             .semantics { contentDescription = label }
                             .testTag(when (destination) {
                                 Home -> "tab-now"
@@ -886,7 +898,15 @@ internal fun C2PrimaryNavigationBar(currentPrimary: NavKey, onSelect: (NavKey) -
                             }),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Box(Modifier.size(40.dp).background(indicator, CircleShape), contentAlignment = Alignment.Center) {
+                        // The touch target can extend beyond this circle. Keep the ripple centered here
+                        // even when a touch starts at the edge of the larger target.
+                        Box(
+                            Modifier.size(40.dp)
+                                .background(indicator, CircleShape)
+                                .clip(CircleShape)
+                                .indication(interactionSource, pressIndication),
+                            contentAlignment = Alignment.Center,
+                        ) {
                             Icon(painterResource(icon), contentDescription = null, tint = tint, modifier = Modifier.size(24.dp))
                         }
                     }
