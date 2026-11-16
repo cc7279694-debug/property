@@ -4,6 +4,8 @@
 
 ## Current Stage
 
+- **LITHIC UI V4 B2 · 首页生产实施 — READY_FOR_DEVICE_ACCEPTANCE（2026-11-16）**。B1 首页视觉接入原生 Compose，生产改动限于首页和可选封面失败展示。985 项 JVM、生产和 AndroidTest 编译、Debug Lint（0 错误／20 警告）及唯一 Debug APK 静态核验通过。Android 三主题截图、系统 200% 字号及设备交互仍 `NOT_RUN`。等待独立审查，B3 尚未执行。见[实施报告](evidence/LITHIC-UI-V4-B2-HOME-IMPLEMENTATION.md)。
+
 - **LITHIC UI V4 A · 悬浮图标导航 01 — READY_FOR_INDEPENDENT_REVIEW（2026-11-16）**。仅底栏改为居中三图标胶囊。47 项定向 JVM、Kotlin 与 AndroidTest 编译、Debug Lint（0 错误／20 警告）及唯一 Debug APK 静态验签通过。Android 再准入使用全新隔离 AVD 单次启动，180 秒内未确认启动完成，保留 `ENVIRONMENT_BLOCKED`，端侧语义、截图和运行均 `NOT_RUN`。见[独立评审报告](evidence/LITHIC-UI-V4-ICON-NAVIGATION-01.md)。
 
 - **LITHIC RELEASE 01 — READY_FOR_RELEASE_REVIEW（2026-11-15）**。已签署并归档 1.0.1/code37 正式 APK，原证书 v2/v3 验签通过。985 项 Release JVM、30 项离线脚本、Release Kotlin、完整 Release Lint 及签名构建通过。静态确认同包名、同证书、版本递增及 Room5/backup4 文件兼容，实际覆盖安装与 SAF 均 `NOT_RUN`。等待独立审查，main 保持原提交。见[发布验收报告](evidence/LITHIC-RELEASE-01.md)。
