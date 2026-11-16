@@ -73,8 +73,9 @@ class C9ThemeMatrixTest {
                 }
                 assertSurfaceColor(canvas, expectedCanvas)
                 if (page == Page.HOME) {
-                    assertSurfaceColor("home-current-cost-summary",
-                        if (selected == LithicAppearance.CHARCOAL) Color(0xFF1E1E1E) else Color.White)
+                    val summary = compose.onNodeWithTag("home-current-cost-summary").captureToImage().toPixelMap()
+                    // Sample the flat surface between the metrics, away from text and the bottom rule.
+                    assertColor("home-current-cost-summary", expectedCanvas, summary[summary.width / 2, 3])
                 }
             }
             compose.runOnIdle { assertEquals(0, actions) }

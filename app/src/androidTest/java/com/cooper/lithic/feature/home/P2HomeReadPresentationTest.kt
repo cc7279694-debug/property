@@ -22,13 +22,16 @@ class P2HomeReadPresentationTest {
                     readError = "本地记录暂时无法刷新，当前显示上次读取结果。")
             }
         }
-        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥10.52/天")
-        compose.onNodeWithTag("home-cutoff-date").assertTextEquals(overview.asOf.toString())
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥10.52")
+            .assertContentDescriptionEquals("当前日均成本，10.52元/天")
+        compose.onNodeWithTag("home-cutoff-date").assertDoesNotExist()
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("8")
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("5")
         compose.onNodeWithTag("home-retained-notice").assertTextEquals("上次取得的结果")
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
         compose.onNodeWithTag("home-overview-read-error").assertDoesNotExist()
+        compose.onNodeWithTag("home-cost-information").performScrollTo().performClick()
+        compose.onNodeWithTag("home-cutoff-date").assertTextEquals("上次结果日期 ${overview.asOf}").assertIsDisplayed()
     }
 
     @Test fun recovery_notice_guards_an_empty_snapshot_without_implying_refresh_failure() {
@@ -56,7 +59,8 @@ class P2HomeReadPresentationTest {
                     projectPreview = empty.projects, subscriptionPreview = empty.subscriptions)
             }
         }
-        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00/天")
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00")
+            .assertContentDescriptionEquals("当前日均成本，0.00元/天")
         compose.onNodeWithTag("home-no-active-records").assertExists()
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("4")
@@ -116,6 +120,7 @@ class P2HomeReadPresentationTest {
         compose.onNodeWithTag("home-overview-read-error").assertDoesNotExist()
         compose.onNodeWithTag("home-retained-notice").assertDoesNotExist()
         compose.onNodeWithTag("ledger-retry-read").assertDoesNotExist()
-        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥10.52/天")
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥10.52")
+            .assertContentDescriptionEquals("当前日均成本，10.52元/天")
     }
 }

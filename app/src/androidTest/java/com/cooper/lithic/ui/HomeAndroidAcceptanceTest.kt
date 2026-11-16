@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.provider.Settings
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.SemanticsMatcher
+import androidx.compose.ui.test.assertContentDescriptionEquals
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertHeightIsAtLeast
 import androidx.compose.ui.test.assertIsDisplayed
@@ -94,7 +95,8 @@ class HomeAndroidAcceptanceTest {
 
         val seeded = runBlocking { checkNotNull(fixture).seed() }
         waitForInvestment(seeded.investmentCents)
-        waitFor(hasTestTag("home-total-rate") and hasText("¥16.56/天"))
+        waitFor(hasTestTag("home-total-rate") and hasText("¥16.56"))
+        compose.onNodeWithTag("home-total-rate").assertContentDescriptionEquals("当前日均成本，16.56元/天")
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("2")
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("2")
         for ((theme, filePart) in listOf(
@@ -196,22 +198,24 @@ class HomeAndroidAcceptanceTest {
         scrollHomeToTop()
         assertAddBelowViewport()
         assertAmount(hasTestTag("home-total-investment"), AmountFormatter.formatCny(BigDecimal.valueOf(seeded.investmentCents, 2)))
-        assertAmount(hasTestTag("home-total-rate"), "¥16.56/天")
+        assertAmount(hasTestTag("home-total-rate"), "¥16.56", "当前日均成本，16.56元/天")
         scrollHomeToTop()
         capture("projects-font-200-summary")
         val projects = seeded.projectIds.map(::project)
-        checkLargeFontCard(projects[0], "合成横向相机", "持有中", "¥9.92/天", baselineMeasurement)
-        checkLargeFontCard(projects[1], "合成纵向背包", "持有中", "¥3.32/天")
+        checkLargeFontCard(projects[0], "合成横向相机", "持有中", "¥9.92", "项目日均成本，9.92元/天", baselineMeasurement)
+        checkLargeFontCard(projects[1], "合成纵向背包", "持有中", "¥3.32", "项目日均成本，3.32元/天")
         captureLargeFontCards(projects, "projects-font-200-cards")
 
         selectSection("subscription")
         val subscriptions = seeded.subscriptionIds.map(::subscription)
-        checkLargeFontCard(subscriptions[0], "合成阅读服务", "订阅中", "¥2.48/天")
-        checkLargeFontCard(subscriptions[1], "合成云盘服务", "订阅中", "¥0.84/天")
+        checkLargeFontCard(subscriptions[0], "合成阅读服务", "订阅中", "¥2.48", "历史平均日成本，2.48元/天")
+        checkLargeFontCard(subscriptions[1], "合成云盘服务", "订阅中", "¥0.84", "历史平均日成本，0.84元/天")
         captureLargeFontCards(subscriptions, "subscriptions-font-200-cards")
     }
 
-    private fun checkLargeFontCard(tag: String, name: String, status: String, amount: String, baselineMeasurement: Boolean = false) {
+    private fun checkLargeFontCard(
+        tag: String, name: String, status: String, amount: String, spokenAmount: String, baselineMeasurement: Boolean = false,
+    ) {
         waitForTag(tag)
         compose.onNodeWithTag(tag).performScrollTo().assertIsDisplayed()
         val insideCard = hasAnyAncestor(hasTestTag(tag))
@@ -224,7 +228,7 @@ class HomeAndroidAcceptanceTest {
         assertUnclippedText(insideCard and hasText(name), name)
         assertUnclippedText(statusLabel, status)
         assertUnclippedText(categoryLabel, category)
-        assertAmount(insideCard and hasText(amount), amount)
+        assertAmount(insideCard and hasText(amount), amount, spokenAmount)
         assertAddBelowViewport()
         val card = compose.onNodeWithTag(tag).fetchSemanticsNode().boundsInRoot
         val add = compose.onNodeWithTag("home-open-add").fetchSemanticsNode().boundsInRoot
@@ -284,9 +288,10 @@ class HomeAndroidAcceptanceTest {
         capture(screenshot)
     }
 
-    private fun assertAmount(matcher: SemanticsMatcher, expected: String) {
+    private fun assertAmount(matcher: SemanticsMatcher, expected: String, spoken: String? = null) {
         waitFor(matcher)
-        compose.onNode(matcher, useUnmergedTree = true).assertTextEquals(expected)
+        val metric = compose.onNode(matcher, useUnmergedTree = true).assertTextEquals(expected)
+        if (spoken != null) metric.assertContentDescriptionEquals(spoken)
         assertUnclippedText(hasAnyAncestor(matcher) and SemanticsMatcher.keyIsDefined(SemanticsActions.GetTextLayoutResult), expected)
     }
 

@@ -57,7 +57,7 @@ class P01HomeShellSemanticsTest {
             HomeShell(2L, { recordActions++ }, { recordActions++ }, 7L, { recordActions++ }, { recordActions++ },
                 overview = overview)
         } }
-        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00/天")
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00")
             .assertContentDescriptionEquals("当前日均成本，0.00元/天").assertIsDisplayed()
         compose.onNodeWithTag("home-no-active-records").assertIsDisplayed()
         compose.onNodeWithTag("home-subscription-record-count").performScrollTo()

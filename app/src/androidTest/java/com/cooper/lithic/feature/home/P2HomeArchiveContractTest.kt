@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.text.TextLayoutResult
@@ -72,15 +73,15 @@ class P2HomeArchiveContractTest {
                     })
             }
         }
-        assertSummary("¥10.52/天", "1", "1", facts.day.toString(), investment = "¥240.45")
+        assertSummary("¥10.52", "1", "1", facts.day.toString(), investment = "¥240.45")
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
 
         compose.runOnIdle { scenario.value = Scenario.NO_INVESTMENT }
-        assertSummary("¥10.52/天", "1", "1", facts.day.toString())
+        assertSummary("¥10.52", "1", "1", facts.day.toString())
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
 
         compose.runOnIdle { scenario.value = Scenario.HISTORY }
-        assertSummary("¥0.00/天", "4", "3", facts.day.toString(), investment = "¥0.00")
+        assertSummary("¥0.00", "4", "3", facts.day.toString(), investment = "¥0.00")
         compose.onNodeWithTag("home-no-active-records").assertExists()
         compose.onNodeWithTag("open-project-list").assertExists()
         click("home-subscription-tab")
@@ -100,8 +101,7 @@ class P2HomeArchiveContractTest {
         compose.onNodeWithTag("home-overview-read-error").assertDoesNotExist()
 
         compose.runOnIdle { scenario.value = Scenario.RETAINED }
-        assertSummary("¥10.52/天", "8", "5", older.asOf.toString(), investment = "¥151.23")
-        compose.onNodeWithText(facts.day.toString()).assertDoesNotExist()
+        assertSummary("¥10.52", "8", "5", older.asOf.toString(), investment = "¥151.23", retained = true)
         compose.onNodeWithTag("home-retained-notice").assertTextEquals("上次取得的结果")
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
 
@@ -160,7 +160,7 @@ class P2HomeArchiveContractTest {
         assertColumns("subscription")
         compose.onAllNodesWithTag("record-cover-unavailable").assertCountEquals(0)
         compose.runOnIdle { assertEquals(expectedReads, reads.toList()) }
-        assertSummary("¥10.52/天", "4", "5", facts.day.toString())
+        assertSummary("¥10.52", "4", "5", facts.day.toString())
     }
 
     @Test fun a_wrong_date_waits_and_the_other_preview_error_does_not_replace_the_ledger_summary() {
@@ -186,20 +186,24 @@ class P2HomeArchiveContractTest {
         compose.onNodeWithTag("home-retry-subscription-preview").performScrollTo().performClick()
         compose.runOnIdle { assertEquals(0, projectRetries); assertEquals(1, subscriptionRetries) }
         compose.onNodeWithTag("ledger-retry-read").assertDoesNotExist()
-        assertSummary("¥10.52/天", "1", "1", facts.day.toString())
+        assertSummary("¥10.52", "1", "1", facts.day.toString())
     }
 
     @Test fun widths_fonts_and_themes_keep_one_amount_readout_and_reachable_controls() {
         val name = "每天通勤用来读长篇小说与整理批注的便携阅读器"
         val amount = BigDecimal("-987654321098765432109876543210.32")
         val longProject = project.copy(project = project.project.copy(name = name), cost = project.cost.copy(dailyRate = amount))
+        val sibling = project.copy(project = project.project.copy(
+            id = "b2000000-0000-4000-8000-000000000002", name = "合成通勤包",
+        ))
+        val siblingTag = "home-project-preview-${sibling.project.id}"
         val configuration = mutableStateOf(Canvas())
         compose.setContent {
             TestCanvas(configuration.value) {
                 Column(Modifier.fillMaxSize()) {
                     Box(Modifier.weight(1f).fillMaxSize()) {
-                        HomeShell(1, {}, {}, 1, {}, {}, overview = facts.overview,
-                            onSearch = {}, projectPreview = facts.projects.copy(items = listOf(longProject)),
+                        HomeShell(2, {}, {}, 1, {}, {}, overview = facts.overview.copy(projectCount = 2L),
+                            onSearch = {}, projectPreview = facts.projects.copy(items = listOf(longProject, sibling), totalCount = 2L),
                             subscriptionPreview = facts.subscriptions, onOpenProject = {}, onOpenSubscription = {})
                     }
                     Box(Modifier.testTag("p2-bottom-navigation")) { C2PrimaryNavigationBar(Home) {} }
@@ -209,26 +213,38 @@ class P2HomeArchiveContractTest {
         for (appearance in LithicAppearance.entries) {
             for (width in listOf(320, 360, 400)) {
                 for (font in listOf(1f, 2f)) {
+                    val label = "$appearance / ${width}dp / fontScale=$font"
                     compose.runOnIdle { configuration.value = Canvas(width, font, appearance) }
+                    click("home-project-tab")
                     compose.onNodeWithTag("home-screen")
                         .performSemanticsAction(SemanticsActions.ScrollBy) { it(0f, -100_000f) }
-                    click("home-project-tab")
                     assertTouch("open-name-search")
                     assertTouch("home-open-add-top")
                     assertTouch("home-cost-information")
+                    compose.onNodeWithTag("home-current-cost-summary").assertWidthIsEqualTo((width - 32).dp)
                     val search = compose.onNodeWithTag("open-name-search").fetchSemanticsNode()
                     val hero = compose.onNodeWithTag("home-total-rate").fetchSemanticsNode()
                     assertTrue("Read brand/search before the summary", search.boundsInRoot.top < hero.boundsInRoot.top)
                     val heroDescription = "当前日均成本，10.52元/天"
                     compose.onAllNodesWithContentDescription(heroDescription, useUnmergedTree = true).assertCountEquals(1)
-                    compose.onNodeWithTag("home-total-rate").assertTextEquals("¥10.52/天")
+                    compose.onNodeWithTag("home-total-rate").assertTextEquals("¥10.52")
+                    assertMetricLayout(font, label)
 
                     val nameNode = compose.onNodeWithText(name, useUnmergedTree = true).performScrollTo()
                     val layout = mutableListOf<TextLayoutResult>()
                     nameNode.performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layout) }
                     assertFalse(layout.single().hasVisualOverflow)
                     if (font == 2f) assertTrue(layout.single().lineCount > 1)
-                    assertTouch(projectTag())
+                    val first = assertTouch(projectTag()).fetchSemanticsNode()
+                    val second = compose.onNodeWithTag(siblingTag).fetchSemanticsNode()
+                    val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
+                    val pixelsPerDp = viewport.width / width
+                    assertEquals("Both items stay in one row at $label", first.positionInRoot.y, second.positionInRoot.y, 1f)
+                    assertEquals("Column spacing at $label", 12f * pixelsPerDp,
+                        second.positionInRoot.x - first.positionInRoot.x - first.size.width, 1f)
+                    assertTrue("Both columns stay within the viewport at $label",
+                        first.positionInRoot.x >= viewport.left &&
+                            second.positionInRoot.x + second.size.width <= viewport.right + 1f)
 
                     val spoken = "项目日均成本，负${amount.abs().toPlainString()}元/天"
                     compose.onAllNodesWithContentDescription(spoken, useUnmergedTree = true).assertCountEquals(1)
@@ -245,11 +261,10 @@ class P2HomeArchiveContractTest {
                     val nav = compose.onNodeWithTag("p2-bottom-navigation").fetchSemanticsNode()
                     val addBounds = add.fetchSemanticsNode().boundsInRoot
                     assertTrue(addBounds.bottom <= nav.boundsInRoot.top + 1f)
-                    assertFloatingNavigation("$appearance / ${width}dp / fontScale=$font")
+                    assertFloatingNavigation(label)
                     compose.onAllNodesWithTag("home-open-add-top").assertCountEquals(1)
                     compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
                     add.assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).assertTextEquals("添加")
-                    val viewport = compose.onNodeWithTag("home-scroll-viewport").fetchSemanticsNode().boundsInRoot
                     assertTrue("The scrolling viewport must end above the add button", viewport.bottom <= addBounds.top + 1f)
                     for (type in listOf("project", "subscription")) {
                         click("home-$type-tab")
@@ -358,19 +373,49 @@ class P2HomeArchiveContractTest {
     private fun projectTag() = "home-project-preview-${project.project.id}"
     private fun subscriptionTag() = "home-subscription-preview-${subscription.subscription.id}"
 
+    private fun assertMetricLayout(font: Float, configuration: String) {
+        val investment = compose.onNodeWithTag("home-investment-metric").fetchSemanticsNode()
+        val daily = compose.onNodeWithTag("home-daily-metric").fetchSemanticsNode()
+        if (font == 1f) {
+            assertEquals("Metric top alignment at $configuration", investment.positionInRoot.y, daily.positionInRoot.y, 1f)
+            assertTrue("Metrics are side by side at $configuration",
+                investment.positionInRoot.x + investment.size.width <= daily.positionInRoot.x + 1f)
+        } else {
+            assertEquals("Metric start alignment at $configuration", investment.positionInRoot.x, daily.positionInRoot.x, 1f)
+            assertTrue("Metrics stack at $configuration",
+                investment.positionInRoot.y + investment.size.height <= daily.positionInRoot.y + 1f)
+        }
+    }
+
     private fun assertSummary(amount: String, projects: String, subscriptions: String, cutoff: String?,
-        investment: String = "—",
+        investment: String = "—", retained: Boolean = false,
     ) {
+        val spoken = if (amount == "—") "当前日均成本，暂无数据" else "当前日均成本，${amount.removePrefix("¥")}元/天"
         compose.onNodeWithTag("home-total-rate").assertTextEquals(amount)
+            .assertContentDescriptionEquals(spoken)
         compose.onNodeWithTag("home-total-investment").assertTextEquals(investment)
         for ((kind, count) in listOf("project" to projects, "subscription" to subscriptions)) {
             compose.onNodeWithTag("home-$kind-record-count").assertTextEquals(count).assert(hasClickAction().not())
         }
-        if (cutoff != null) compose.onNodeWithTag("home-cutoff-date").assertTextEquals(cutoff)
-        else {
-            compose.onNodeWithTag("home-cutoff-date").assertDoesNotExist()
+        compose.onNodeWithTag("home-cutoff-date").assertDoesNotExist()
+        if (cutoff != null) compose.onNodeWithText(cutoff, substring = true, useUnmergedTree = true).assertDoesNotExist()
+        val label = if (retained) "上次结果日期" else "统计日期"
+        val info = assertTouch("home-cost-information")
+        if (cutoff == null) {
             compose.onNodeWithText("非今日扣款", substring = true).assertDoesNotExist()
+            info.assert(SemanticsMatcher.keyNotDefined(SemanticsProperties.StateDescription))
+        } else {
+            info.assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "$label $cutoff"))
         }
+        info.performClick()
+        val date = compose.onNodeWithTag("home-cutoff-date")
+        if (cutoff == null) {
+            date.assertDoesNotExist()
+        } else {
+            date.assertIsDisplayed().assertTextEquals("$label $cutoff")
+            if (retained) compose.onNodeWithText(facts.day.toString(), substring = true).assertDoesNotExist()
+        }
+        compose.onNodeWithText("知道了").performClick()
     }
 
     private fun assertTouch(tag: String, scroll: Boolean = true): SemanticsNodeInteraction {

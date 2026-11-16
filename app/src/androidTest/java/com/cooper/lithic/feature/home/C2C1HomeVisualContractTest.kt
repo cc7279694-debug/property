@@ -28,7 +28,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
-/** C9 explicitly replaces C1's green card and fixed FAB band; all fact/amount assertions remain.
+/** V4 places the summary on the canvas while keeping the existing fact and amount contracts.
  * LocalDensity and these compiled assertions are not a system-font or device result. */
 class C2C1HomeVisualContractTest {
     @get:Rule val compose = createComposeRule()
@@ -61,7 +61,7 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("home-subscription-record-count").assertTextEquals("—")
         compose.onNodeWithTag("home-total-rate").assertTextContains("—")
         compose.onNodeWithTag("home-first-record").assertDoesNotExist()
-        assertCompactAmount()
+        assertAmountLayout()
         assertNeutralSummary()
     }
 
@@ -79,15 +79,16 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("3")
         compose.onNodeWithTag("home-no-active-records").assertExists()
         compose.onNodeWithTag("home-first-record").assertDoesNotExist()
-        assertCompactAmount()
+        assertAmountLayout()
     }
 
     @Test fun long_negative_large_font_retains_full_amount_access_and_separate_unit_space() {
         val amount = BigDecimal("-12345678901234567890.01")
         show(widthDp = 360, fontScale = 2f, overview = snapshot().copy(
             projectCount = 1, activeProjectCount = 1, totalRate = amount, projectRate = amount))
-        compose.onNodeWithTag("home-total-rate").assertContentDescriptionEquals("当前日均成本，负12345678901234567890.01元/天")
-        assertCompactAmount()
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("−¥12345678901234567890.01")
+            .assertContentDescriptionEquals("当前日均成本，负12345678901234567890.01元/天")
+        assertAmountLayout(allowWrap = true)
         compose.onNodeWithTag("amount-open-full", useUnmergedTree = true).performScrollTo().performClick()
         compose.onNodeWithTag("amount-full-value").assertTextEquals("−¥12345678901234567890.01/天")
         compose.onNodeWithTag("amount-full-unit").assertDoesNotExist()
@@ -116,11 +117,11 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("open-project-list").assertDoesNotExist()
         compose.onNodeWithTag("open-subscription-list").assertDoesNotExist()
         compose.onNodeWithText("¥0.00", useUnmergedTree = true).assertDoesNotExist()
-        assertCompactAmount()
+        assertAmountLayout()
         assertNeutralSummary()
     }
 
-    private fun assertCompactAmount() {
+    private fun assertAmountLayout(allowWrap: Boolean = false) {
         compose.onNodeWithTag("home-current-cost-summary").performScrollTo()
         val amount = compose.onNodeWithTag("home-total-rate").fetchSemanticsNode().boundsInRoot
         val hero = compose.onNodeWithTag("home-current-cost-summary").fetchSemanticsNode().boundsInRoot
@@ -128,9 +129,10 @@ class C2C1HomeVisualContractTest {
         compose.onNodeWithTag("home-total-rate").performSemanticsAction(SemanticsActions.GetTextLayoutResult) { it(layouts) }
         val layout = layouts.single()
         val display = layout.layoutInput.text.text.replace("\u2009", "")
-        assertEquals("Amount and its unit form one unbreakable baseline", 1, layout.lineCount)
-        assertTrue(display == "—" || display.endsWith("/天"))
-        assertTrue("The daily amount stays inside the summary card", amount.left >= hero.left)
+        if (!allowWrap) assertEquals("Ordinary amounts keep one baseline", 1, layout.lineCount)
+        assertTrue("No line of a wrapped value may be suppressed", !layout.multiParagraph.didExceedMaxLines)
+        assertTrue("The visible value has no repeated daily unit", !display.contains("/天"))
+        assertTrue("The daily amount stays inside the summary", amount.left >= hero.left)
         assertTrue("Full amount viewport stays inside the summary", amount.right <= hero.right + 1f)
         compose.onNodeWithTag("home-total-unit").assertDoesNotExist()
         val canvas = compose.onNodeWithTag("c1-home-canvas").fetchSemanticsNode().boundsInRoot
@@ -140,7 +142,7 @@ class C2C1HomeVisualContractTest {
     private fun assertNeutralSummary() {
         compose.onNodeWithTag("home-current-cost-summary").performScrollTo()
         val image = compose.onNodeWithTag("home-current-cost-summary").captureToImage().toPixelMap()
-        // Probe inside the fill and below the new 1dp outline at every tested density.
+        // Probe the flat summary below its top edge, away from the left-aligned label.
         val sample = image[image.width / 2, minOf(image.height - 1, (4 * pixelsPerDp).toInt().coerceAtLeast(2))]
         assertEquals(summaryBackground.red, sample.red, 0.02f)
         assertEquals(summaryBackground.green, sample.green, 0.02f)
@@ -156,7 +158,7 @@ class C2C1HomeVisualContractTest {
                 pixelsPerDp = density
                 CompositionLocalProvider(LocalDensity provides Density(density, fontScale)) {
                     LithicTheme(darkTheme = dark) {
-                        summaryBackground = MaterialTheme.colorScheme.surface
+                        summaryBackground = MaterialTheme.colorScheme.background
                         Box(Modifier.requiredSize(widthDp.dp, height).background(MaterialTheme.colorScheme.background)
                             .testTag("c1-home-canvas")) {
                             HomeShell(99, {}, {}, 99, {}, {}, overview = overview, hasReadNotice = retained,

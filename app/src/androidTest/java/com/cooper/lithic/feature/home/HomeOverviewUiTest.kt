@@ -60,7 +60,7 @@ class HomeOverviewUiTest {
         } }
         compose.onNodeWithTag("home-total-rate").assertTextEquals("—")
         compose.onNodeWithTag("home-cutoff-date").assertDoesNotExist()
-        compose.onNodeWithText("¥0.00/天").assertDoesNotExist()
+        compose.onNodeWithText("¥0.00").assertDoesNotExist()
     }
 
     @Test
@@ -68,14 +68,15 @@ class HomeOverviewUiTest {
         show(result())
         compose.onNodeWithTag("home-total-rate").assertTextEquals("—")
         compose.onNodeWithTag("home-open-add").assertIsDisplayed()
-        compose.onNodeWithText("¥0.00/天").assertDoesNotExist()
+        compose.onNodeWithText("¥0.00").assertDoesNotExist()
     }
 
     @Test
     fun recorded_zero_cost_remains_a_real_value_and_an_active_category() {
         show(result(projectCount = 1L, activeProjectCount = 1L,
             projectCategories = listOf(CategoryDailyCost("zero", "零元项目", BigDecimal.ZERO, 1L))))
-        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00/天")
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00")
+            .assertContentDescriptionEquals("当前日均成本，0.00元/天")
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
         compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
         compose.onNodeWithTag("home-project-category-zero").performScrollTo().assertTextEquals("¥0.00/天")
@@ -90,7 +91,8 @@ class HomeOverviewUiTest {
                 CategoryDailyCost("p", "其他", BigDecimal("0.125"), 1L),
                 CategoryDailyCost("negative", "净收回", BigDecimal("-0.005"), 1L)),
             subscriptionCategories = listOf(CategoryDailyCost("s", "其他", BigDecimal("0.125"), 1L))))
-        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.25/天")
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.25")
+            .assertContentDescriptionEquals("当前日均成本，0.25元/天")
         compose.onNodeWithTag("home-project-record-count").assertTextEquals("2")
         compose.onNodeWithTag("home-category-disclosure").performScrollTo().performClick()
         compose.onNodeWithTag("home-project-rate").performScrollTo().assertTextEquals("¥0.12/天")
@@ -114,7 +116,8 @@ class HomeOverviewUiTest {
         show(result(projectCount = 1L, subscriptionCount = 1L,
             projectCategories = listOf(CategoryDailyCost("ended", "结束类别", BigDecimal.ZERO, 0L)),
             subscriptionCategories = listOf(CategoryDailyCost("expired", "过期类别", BigDecimal.ZERO, 0L))))
-        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00/天")
+        compose.onNodeWithTag("home-total-rate").assertTextEquals("¥0.00")
+            .assertContentDescriptionEquals("当前日均成本，0.00元/天")
         compose.onNodeWithTag("home-no-active-records").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("暂无记录").assertDoesNotExist()
         compose.onNodeWithTag("home-project-category-ended").assertDoesNotExist()

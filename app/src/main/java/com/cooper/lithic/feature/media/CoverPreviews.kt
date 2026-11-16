@@ -66,6 +66,7 @@ internal fun RecordCover(
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Crop,
     allowFullView: Boolean = false,
+    unavailableContent: @Composable () -> Unit = { C2Icon(C2Glyph.ImageError) },
     fallback: @Composable () -> Unit,
 ) {
     val reader = LocalCoverReader.current
@@ -143,7 +144,7 @@ internal fun RecordCover(
                 Box(Modifier.fillMaxSize().sizeIn(minWidth = 48.dp, minHeight = 48.dp)
                     .testTag("record-cover-unavailable").semantics { contentDescription = "封面暂不可用" }
                     .clickable(onClickLabel = "查看封面状态", role = Role.Button) { explainFailure = true }, contentAlignment = Alignment.Center) {
-                    C2Icon(C2Glyph.ImageError)
+                    unavailableContent()
                 }
             }
             ready != null -> {

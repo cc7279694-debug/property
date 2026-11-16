@@ -214,7 +214,7 @@ class NavigationShellTest {
             .assertContentDescriptionEquals("长期项目，已录入数量1，包含历史")
         compose.onNodeWithTag("home-subscription-record-count").performScrollTo().assertTextEquals("0")
         compose.onNodeWithTag("home-empty-guidance").assertDoesNotExist()
-        compose.onNodeWithTag("home-total-rate").performScrollTo().assertTextEquals("¥0.00/天")
+        compose.onNodeWithTag("home-total-rate").performScrollTo().assertTextEquals("¥0.00")
             .assertContentDescriptionEquals("当前日均成本，0.00元/天")
         compose.onNodeWithTag("open-project-list").performScrollTo().performClick()
         compose.waitUntil(10_000) { compose.onAllNodes(hasText("合成零元项目")).fetchSemanticsNodes().isNotEmpty() }

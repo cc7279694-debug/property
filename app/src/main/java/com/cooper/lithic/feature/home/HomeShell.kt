@@ -19,16 +19,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -68,6 +71,10 @@ internal fun HomeShell(
     val hasSnapshotNotice = hasReadNotice || readError != null
     val empty = c2HomeIsEmpty(overview, hasSnapshotNotice)
     val readStatus = homeOverviewReadStatus(overview, hasSnapshotNotice, readError)
+    val observationDate = overview?.asOf?.let { date ->
+        val label = if (readStatus == HomeOverviewReadStatus.RETAINED) "上次结果日期" else "统计日期"
+        "$label $date"
+    }
     val colors = MaterialTheme.colorScheme
 
     Box(
@@ -78,20 +85,22 @@ internal fun HomeShell(
             Box(Modifier.weight(1f).fillMaxWidth().testTag("home-scroll-viewport")) {
                 Column(
                     Modifier.fillMaxSize().verticalScroll(rememberScrollState()).testTag("home-screen")
-                        .padding(horizontal = 12.dp).padding(bottom = 12.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                        .padding(horizontal = 16.dp).padding(bottom = 16.dp),
                 ) {
                     HomeBrandBar(onSearch = onSearch, onAdd = { addOpen = true })
-                    HomeOverviewCard(
-                        overview, readStatus,
+                    Spacer(Modifier.height(12.dp))
+                    HomeOverview(
+                        overview, readStatus, observationDate,
                         onExplain = { explanationOpen = true },
                         onComposition = if (empty) null else { { categoriesOpen = true } },
                     )
+                    Spacer(Modifier.height(16.dp))
                     if (!empty) {
                         HomeBrowseControls(
                             subscriptionsSelected, { subscriptionsSelected = it },
                             onAll = if (subscriptionsSelected) onSubscriptionList else onProjectList,
                         )
+                        Spacer(Modifier.height(12.dp))
                     }
                     if (empty) {
                         Text("暂无记录", Modifier.padding(vertical = 10.dp).testTag("home-empty-guidance"),
@@ -110,7 +119,7 @@ internal fun HomeShell(
                                 HomeGridCard(
                                     row.subscription.name, row.category.name,
                                     subscriptionStatusLabel(row.cost.displayStatus), null,
-                                    "历史平均日成本", row.cost.historicalAverage, C2Glyph.Subscription,
+                                    "历史日均", "历史平均日成本", row.cost.historicalAverage, C2Glyph.Subscription,
                                     CoverReference(CoverOwnerType.SUBSCRIPTION, row.subscription.id, row.subscription.coverAssetId),
                                     "home-subscription-preview-${row.subscription.id}", tile,
                                     onOpenSubscription?.let { open -> { open(row.subscription.id) } },
@@ -129,7 +138,7 @@ internal fun HomeShell(
                             HomeGrid(projectPreview.items.take(2)) { row, tile ->
                                 HomeGridCard(
                                     row.project.name, row.category.name, projectStatusLabel(row), "${row.cost.heldDays} 天",
-                                    "项目日均成本", row.cost.dailyRate, C2Glyph.Project,
+                                    "日均", "项目日均成本", row.cost.dailyRate, C2Glyph.Project,
                                     CoverReference(CoverOwnerType.PROJECT, row.project.id, row.project.coverAssetId),
                                     "home-project-preview-${row.project.id}", tile,
                                     onOpenProject?.let { open -> { open(row.project.id) } },
@@ -150,7 +159,7 @@ internal fun HomeShell(
                 ) {
                     C2Icon(C2Glyph.Add, Modifier.size(20.dp))
                     Spacer(Modifier.width(8.dp))
-                    Text("添加")
+                    Text("添加", fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
                 }
             }
         }
@@ -192,10 +201,15 @@ internal fun HomeShell(
         onDismissRequest = { explanationOpen = false },
         title = { Text("数量与成本口径") },
         text = {
-            Text(
-                "已录入数量包含历史记录（已结束的长期项目和已停止的订阅）。当前日均成本仅含已录入且当前有效的记录，不是今天实际扣款，也不代表全部生活消费。总投入只累计截至观察日的长期项目投入（含已结束项目投入和以旧换新非现金折抵），不扣除收回，不计入订阅付款。",
-                Modifier.verticalScroll(rememberScrollState()).testTag("home-count-scope"),
-            )
+            Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                observationDate?.let {
+                    Text(it, Modifier.testTag("home-cutoff-date"), fontWeight = FontWeight.SemiBold)
+                }
+                Text(
+                    "已录入数量包含历史记录（已结束的长期项目和已停止的订阅）。当前日均成本仅含已录入且当前有效的记录，不是今天实际扣款，也不代表全部生活消费。总投入只累计截至观察日的长期项目投入（含已结束项目投入和以旧换新非现金折抵），不扣除收回，不计入订阅付款。",
+                    Modifier.testTag("home-count-scope"),
+                )
+            }
         },
         dismissButton = {
             onCalculationExplanation?.let { explain ->
@@ -218,27 +232,29 @@ private fun HomeBrandBar(onSearch: (() -> Unit)?, onAdd: () -> Unit) {
     ) {
         Image(
             painterResource(R.drawable.ic_launcher_scene_p3), contentDescription = null,
-            modifier = Modifier.size(36.dp).clip(RoundedCornerShape(8.dp)),
+            modifier = Modifier.size(34.dp).clip(RoundedCornerShape(8.dp)),
         )
         Column(Modifier.weight(1f).padding(start = 4.dp)) {
             FlowRow(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 itemVerticalAlignment = Alignment.CenterVertically,
             ) {
-                Text("砺石", Modifier.semantics { heading() }, fontSize = 21.sp, fontWeight = FontWeight.Bold)
-                Text("LITHIC", fontSize = 12.sp, fontFamily = FontFamily.Serif, letterSpacing = 1.5.sp,
-                    fontWeight = FontWeight.SemiBold)
+                Text("砺石", Modifier.semantics { heading() }, fontSize = 22.sp, lineHeight = 26.sp,
+                    fontWeight = FontWeight.Bold, color = colors.onBackground)
+                Text("LITHIC", fontSize = 10.sp, lineHeight = 12.sp, letterSpacing = 1.3.sp,
+                    fontWeight = FontWeight.SemiBold, color = colors.onSurfaceVariant)
             }
         }
         onSearch?.let { search ->
-            IconButton(search, Modifier.size(48.dp).testTag("open-name-search")) {
-                C2Icon(C2Glyph.Search, Modifier.size(21.dp), "搜索项目与订阅名称")
+            IconButton(search, Modifier.size(48.dp).testTag("open-name-search"),
+                colors = IconButtonDefaults.iconButtonColors(contentColor = colors.onBackground)) {
+                C2Icon(C2Glyph.Search, Modifier.size(24.dp), "搜索项目与订阅名称")
             }
         }
         IconButton(onAdd, Modifier.size(48.dp).testTag("home-open-add-top")) {
-            Box(Modifier.size(36.dp).background(colors.primary, CircleShape), contentAlignment = Alignment.Center) {
-                CompositionLocalProvider(LocalContentColor provides colors.onPrimary) {
-                    C2Icon(C2Glyph.Add, Modifier.size(21.dp), "新增记录")
+            Box(Modifier.size(34.dp).background(colors.surfaceContainer, CircleShape), contentAlignment = Alignment.Center) {
+                CompositionLocalProvider(LocalContentColor provides colors.onBackground) {
+                    C2Icon(C2Glyph.Add, Modifier.size(20.dp), "新增记录")
                 }
             }
         }
@@ -247,101 +263,98 @@ private fun HomeBrandBar(onSearch: (() -> Unit)?, onAdd: () -> Unit) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun HomeOverviewCard(
+private fun HomeOverview(
     overview: OverviewResult?,
     readStatus: HomeOverviewReadStatus,
+    observationDate: String?,
     onExplain: () -> Unit,
     onComposition: (() -> Unit)?,
 ) {
     val colors = MaterialTheme.colorScheme
     val typography = MaterialTheme.typography
-    val largeType = LocalDensity.current.fontScale > 1.35f
     val investment = overview?.takeIf { it.hasRecords }?.totalInvestmentCents?.let { BigDecimal.valueOf(it, 2) }
-    Surface(
-        Modifier.fillMaxWidth().testTag("home-current-cost-summary"), shape = RoundedCornerShape(13.dp),
-        color = colors.surface, border = BorderStroke(1.dp, colors.outlineVariant), shadowElevation = 1.dp,
-    ) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = 14.dp).padding(top = 10.dp)) {
-            MaterialTheme(typography = typography.copy(displayLarge = typography.displayLarge.copy(fontWeight = FontWeight.Bold))) {
-                if (largeType) {
-                    Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                        HomeInvestment(investment)
-                        HomeDailyRate(overview, onExplain)
-                    }
-                } else {
-                    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                        Box(Modifier.weight(1f)) { HomeInvestment(investment) }
-                        VerticalDivider(Modifier.height(56.dp), color = colors.outlineVariant)
-                        Box(Modifier.weight(1.30f)) { HomeDailyRate(overview, onExplain) }
-                    }
+    val daily = overview?.takeIf { it.hasRecords }?.totalRate
+    Column(Modifier.fillMaxWidth().testTag("home-current-cost-summary")) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val half = ((maxWidth - 12.dp) / 2).coerceAtLeast(0.dp)
+            val stackMetrics = LocalDensity.current.fontScale > 1.35f || half < 120.dp ||
+                !moneyMetricFitsAtPreferredSize(investment, half, AmountUnit.YUAN, MoneyMetricLevel.CARD) ||
+                !moneyMetricFitsAtPreferredSize(daily, half, level = MoneyMetricLevel.DETAIL, showDailyUnit = false)
+            if (stackMetrics) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    HomeInvestment(investment, Modifier.fillMaxWidth())
+                    HomeDailyRate(daily, observationDate, onExplain, Modifier.fillMaxWidth())
                 }
-            }
-            when (readStatus) {
-                HomeOverviewReadStatus.WAITING -> Unit
-                HomeOverviewReadStatus.FAILED -> Text("暂时无法取得成本数据",
-                    Modifier.testTag("home-overview-read-error"), style = typography.bodySmall, color = colors.error)
-                HomeOverviewReadStatus.RETAINED -> Text("上次取得的结果",
-                    Modifier.testTag("home-retained-notice"), style = typography.bodySmall, color = colors.error)
-                HomeOverviewReadStatus.UNCONFIRMED -> Text("当前记录状态尚未确认",
-                    Modifier.testTag("home-retained-notice"), style = typography.bodySmall, color = colors.error)
-                HomeOverviewReadStatus.CURRENT -> if (homeOverviewStatus(overview) == HomeOverviewStatus.NO_CURRENT) {
-                    Text("暂无当前有效记录", Modifier.testTag("home-no-active-records"), style = typography.bodySmall)
-                }
-            }
-            if (readStatus == HomeOverviewReadStatus.RETAINED && homeOverviewStatus(overview) == HomeOverviewStatus.EMPTY) {
-                Text("当前记录状态尚未确认", style = typography.bodySmall)
-            }
-            HorizontalDivider(Modifier.padding(top = 8.dp), color = colors.outlineVariant)
-            val retained = readStatus == HomeOverviewReadStatus.RETAINED
-            FlowRow(
-                Modifier.fillMaxWidth().testTag("home-record-counts"), horizontalArrangement = Arrangement.SpaceBetween,
-                itemVerticalAlignment = Alignment.CenterVertically,
-            ) {
-                RecordCount("项目", "长期项目", overview?.projectCount, "project", retained)
-                RecordCount("订阅", "订阅服务", overview?.subscriptionCount, "subscription", retained)
-                if (onComposition != null) {
-                    TextButton(
-                        onComposition, Modifier.testTag("home-category-disclosure"),
-                        colors = ButtonDefaults.textButtonColors(contentColor = colors.onSurface),
-                        contentPadding = PaddingValues(horizontal = 4.dp),
-                    ) {
-                        Text("成本构成", style = typography.labelMedium, fontWeight = FontWeight.SemiBold)
-                        C2Icon(C2Glyph.Chevron, Modifier.size(14.dp))
-                    }
+            } else {
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    HomeInvestment(investment, Modifier.weight(1f))
+                    HomeDailyRate(daily, observationDate, onExplain, Modifier.weight(1f))
                 }
             }
         }
+        when (readStatus) {
+            HomeOverviewReadStatus.WAITING -> Unit
+            HomeOverviewReadStatus.FAILED -> Text("暂时无法取得成本数据",
+                Modifier.testTag("home-overview-read-error"), style = typography.bodySmall, color = colors.error)
+            HomeOverviewReadStatus.RETAINED -> Text("上次取得的结果",
+                Modifier.testTag("home-retained-notice"), style = typography.bodySmall, color = colors.error)
+            HomeOverviewReadStatus.UNCONFIRMED -> Text("当前记录状态尚未确认",
+                Modifier.testTag("home-retained-notice"), style = typography.bodySmall, color = colors.error)
+            HomeOverviewReadStatus.CURRENT -> if (homeOverviewStatus(overview) == HomeOverviewStatus.NO_CURRENT) {
+                Text("暂无当前有效记录", Modifier.testTag("home-no-active-records"), style = typography.bodySmall)
+            }
+        }
+        val retained = readStatus == HomeOverviewReadStatus.RETAINED
+        if (retained && homeOverviewStatus(overview) == HomeOverviewStatus.EMPTY) {
+            Text("当前记录状态尚未确认", style = typography.bodySmall)
+        }
+        FlowRow(
+            Modifier.fillMaxWidth().padding(top = 4.dp).testTag("home-record-counts"),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            itemVerticalAlignment = Alignment.CenterVertically,
+        ) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(5.dp), itemVerticalAlignment = Alignment.CenterVertically) {
+                RecordCount("项目", "长期项目", overview?.projectCount, "project", retained)
+                Text("·", Modifier.clearAndSetSemantics { }, style = typography.labelSmall, color = colors.onSurfaceVariant)
+                RecordCount("订阅", "订阅服务", overview?.subscriptionCount, "subscription", retained)
+            }
+            if (onComposition != null) {
+                HomeTextAction("成本构成", onComposition, Modifier.testTag("home-category-disclosure"))
+            }
+        }
+        HorizontalDivider(color = colors.outlineVariant)
     }
 }
 
 @Composable
-private fun HomeInvestment(amount: BigDecimal?) {
-    Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
-        Text("总投入", style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.SemiBold)
-        MoneyMetric(amount, Modifier.testTag("home-total-investment"), unit = AmountUnit.YUAN,
-            level = MoneyMetricLevel.CARD, label = "总投入")
-    }
-}
-
-@Composable
-private fun HomeDailyRate(overview: OverviewResult?, onExplain: () -> Unit) {
-    val typography = MaterialTheme.typography
+private fun HomeInvestment(amount: BigDecimal?, modifier: Modifier) {
     val colors = MaterialTheme.colorScheme
-    Column(Modifier.fillMaxWidth()) {
+    Column(modifier.testTag("home-investment-metric")) {
+        Box(Modifier.heightIn(min = 48.dp), contentAlignment = Alignment.CenterStart) {
+            Text("总投入", fontSize = 13.sp, lineHeight = 18.sp, fontWeight = FontWeight.SemiBold,
+                color = colors.onSurfaceVariant)
+        }
+        MoneyMetric(amount, Modifier.fillMaxWidth().testTag("home-total-investment"), unit = AmountUnit.YUAN,
+            level = MoneyMetricLevel.CARD, color = colors.onBackground, label = "总投入", keepPreferredSize = true)
+    }
+}
+
+@Composable
+private fun HomeDailyRate(amount: BigDecimal?, observationDate: String?, onExplain: () -> Unit, modifier: Modifier) {
+    val colors = MaterialTheme.colorScheme
+    Column(modifier.testTag("home-daily-metric")) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("日均成本", style = typography.bodySmall, fontWeight = FontWeight.SemiBold)
-            IconButton(onExplain, Modifier.size(48.dp).testTag("home-cost-information")) {
+            Text("日均成本", Modifier.weight(1f, fill = false), fontSize = 13.sp, lineHeight = 18.sp,
+                fontWeight = FontWeight.SemiBold, color = colors.onSurfaceVariant)
+            IconButton(onExplain, Modifier.size(48.dp).testTag("home-cost-information").semantics {
+                if (observationDate != null) stateDescription = observationDate
+            }, colors = IconButtonDefaults.iconButtonColors(contentColor = colors.onSurfaceVariant)) {
                 C2Icon(C2Glyph.Info, Modifier.size(14.dp), "查看数量与成本口径")
             }
         }
         Box(Modifier.fillMaxWidth().testTag("home-amount-line")) {
-            MoneyMetric(overview?.takeIf { it.hasRecords }?.totalRate, Modifier.testTag("home-total-rate"),
-                level = MoneyMetricLevel.CARD, label = "当前日均成本")
-        }
-        overview?.let {
-            Text(it.asOf.toString(), Modifier.testTag("home-cutoff-date"),
-                style = typography.bodySmall, color = colors.onSurfaceVariant)
+            MoneyMetric(amount, Modifier.fillMaxWidth().testTag("home-total-rate"), level = MoneyMetricLevel.DETAIL,
+                color = colors.onBackground, label = "当前日均成本", showDailyUnit = false, keepPreferredSize = true)
         }
     }
 }
@@ -349,7 +362,7 @@ private fun HomeDailyRate(overview: OverviewResult?, onExplain: () -> Unit) {
 @Composable
 private fun RecordCount(label: String, spokenLabel: String, count: Long?, kind: String, retained: Boolean) {
     Row(
-        Modifier.heightIn(min = 48.dp).padding(horizontal = 4.dp).testTag("home-$kind-count-card"),
+        Modifier.heightIn(min = 48.dp).testTag("home-$kind-count-card"),
         horizontalArrangement = Arrangement.spacedBy(4.dp), verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
@@ -362,52 +375,72 @@ private fun RecordCount(label: String, spokenLabel: String, count: Long?, kind: 
                         else -> "$spokenLabel，已录入数量$count，包含历史"
                     }
                 },
-            style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold, softWrap = false,
+            style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onBackground, softWrap = false,
         )
-        Text(label, style = MaterialTheme.typography.bodySmall)
+        Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+}
+
+@Composable
+private fun HomeTextAction(label: String, action: () -> Unit, modifier: Modifier = Modifier) {
+    val colors = MaterialTheme.colorScheme
+    TextButton(
+        action, modifier.widthIn(min = 48.dp),
+        colors = ButtonDefaults.textButtonColors(contentColor = colors.onBackground),
+        contentPadding = PaddingValues(start = 4.dp),
+    ) {
+        Text(label, fontSize = 13.sp, lineHeight = 18.sp, fontWeight = FontWeight.SemiBold)
+        Spacer(Modifier.width(4.dp))
+        C2Icon(C2Glyph.Chevron, Modifier.size(14.dp))
     }
 }
 
 @Composable
 private fun HomeBrowseControls(subscriptions: Boolean, select: (Boolean) -> Unit, onAll: () -> Unit) {
     val colors = MaterialTheme.colorScheme
-    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween) {
-        Row(
-            Modifier.weight(1f, fill = false).widthIn(max = 192.dp).clip(CircleShape)
-                .background(colors.surfaceContainer).selectableGroup(),
-        ) {
-            listOf(false to "项目", true to "订阅").forEach { (option, label) ->
-                val selected = subscriptions == option
-                Box(
-                    Modifier.weight(1f).heightIn(min = 48.dp).clip(CircleShape)
-                        .background(if (selected) colors.primary else Color.Transparent)
-                        .selectable(selected, role = Role.Tab, onClick = { select(option) })
-                        .testTag(if (option) "home-subscription-tab" else "home-project-tab"),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Text(label, Modifier.padding(horizontal = 4.dp), style = MaterialTheme.typography.labelLarge,
-                        color = if (selected) colors.onPrimary else colors.onSurface)
-                }
+    val selectedSurface = if (colors.surface.luminance() < 0.5f) {
+        colors.onSurface.copy(alpha = 0.09f).compositeOver(colors.surfaceContainer)
+    } else colors.surface
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween) {
+            Text("我的拥有", Modifier.weight(1f, fill = false).semantics { heading() },
+                fontSize = 18.sp, lineHeight = 24.sp, fontWeight = FontWeight.Bold, color = colors.onBackground)
+            HomeTextAction("全部", onAll,
+                Modifier.testTag(if (subscriptions) "open-subscription-list" else "open-project-list").semantics {
+                    contentDescription = if (subscriptions) "查看全部订阅服务" else "查看全部长期项目"
+                })
+        }
+        Box {
+            Box(Modifier.matchParentSize().padding(vertical = 4.dp).background(colors.surfaceContainer, CircleShape))
+            Row(Modifier.padding(horizontal = 3.dp).selectableGroup()) {
+                HomeBrowseTab("项目", !subscriptions, selectedSurface, "home-project-tab") { select(false) }
+                HomeBrowseTab("订阅", subscriptions, selectedSurface, "home-subscription-tab") { select(true) }
             }
         }
-        TextButton(
-            onAll,
-            Modifier.testTag(if (subscriptions) "open-subscription-list" else "open-project-list").semantics {
-                contentDescription = if (subscriptions) "查看全部订阅服务" else "查看全部长期项目"
-            },
-            contentPadding = PaddingValues(horizontal = 8.dp),
-        ) {
-            Text("全部", fontWeight = FontWeight.SemiBold)
-            C2Icon(C2Glyph.Chevron, Modifier.size(16.dp))
-        }
+    }
+}
+
+@Composable
+private fun HomeBrowseTab(label: String, selected: Boolean, selectedSurface: Color, tag: String, select: () -> Unit) {
+    val colors = MaterialTheme.colorScheme
+    Box(
+        Modifier.widthIn(min = 68.dp).heightIn(min = 48.dp).clip(CircleShape)
+            .selectable(selected, role = Role.Tab, onClick = select).testTag(tag),
+        contentAlignment = Alignment.Center,
+    ) {
+        if (selected) Box(Modifier.matchParentSize().padding(vertical = 7.dp).background(selectedSurface, CircleShape))
+        Text(label, Modifier.padding(horizontal = 11.dp, vertical = 5.dp), fontSize = 13.sp, lineHeight = 17.sp,
+            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+            color = if (selected) colors.onBackground else colors.onSurfaceVariant)
     }
 }
 
 @Composable
 private fun <T> HomeGrid(items: List<T>, content: @Composable (T, Modifier) -> Unit) {
     if (items.isEmpty()) return
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         items.forEach { item -> content(item, Modifier.weight(1f)) }
         if (items.size == 1) Spacer(Modifier.weight(1f))
     }
@@ -416,67 +449,61 @@ private fun <T> HomeGrid(items: List<T>, content: @Composable (T, Modifier) -> U
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun HomeGridCard(
-    name: String, category: String, status: String, duration: String?, metric: String, amount: BigDecimal?,
+    name: String, category: String, status: String, duration: String?, metricCaption: String, metric: String, amount: BigDecimal?,
     icon: C2Glyph, cover: CoverReference, tag: String, modifier: Modifier, onOpen: (() -> Unit)?,
 ) {
     val colors = MaterialTheme.colorScheme
-    val typography = MaterialTheme.typography
-    val stackLabels = LocalDensity.current.fontScale > 1.35f
+    val showSeparators = LocalDensity.current.fontScale <= 1.35f
     Surface(
         modifier.then(if (onOpen == null) Modifier else Modifier.clickable(role = Role.Button, onClick = onOpen))
             .testTag(tag),
-        color = colors.surface, shape = RoundedCornerShape(13.dp),
-        border = BorderStroke(1.dp, colors.outlineVariant), shadowElevation = 1.dp,
+        color = colors.surface, shape = RoundedCornerShape(14.dp),
+        border = BorderStroke(1.dp, colors.outlineVariant),
+        shadowElevation = if (colors.surface.luminance() < 0.5f) 0.dp else 1.dp,
     ) {
-        Column(Modifier.fillMaxWidth().padding(5.dp)) {
+        Column(Modifier.fillMaxWidth()) {
             RecordCover(
                 cover,
-                Modifier.fillMaxWidth().aspectRatio(4f / 3f).clip(RoundedCornerShape(9.dp))
-                    .background(colors.surfaceContainer),
+                Modifier.fillMaxWidth().aspectRatio(4f / 3f).background(colors.surfaceContainer),
                 contentScale = ContentScale.Crop,
-            ) { C2Icon(c2IdentityGlyph(category) ?: icon, Modifier.size(30.dp)) }
-            Column(Modifier.fillMaxWidth().padding(horizontal = 5.dp).padding(top = 5.dp, bottom = 6.dp)) {
-                Text(name, Modifier.heightIn(min = 22.dp), style = typography.bodyLarge, fontWeight = FontWeight.Bold)
+                unavailableContent = {
+                    Column(Modifier.padding(horizontal = 4.dp).clearAndSetSemantics { },
+                        horizontalAlignment = Alignment.CenterHorizontally) {
+                        C2Icon(C2Glyph.ImageError, Modifier.size(24.dp))
+                        Text("封面暂不可用", fontSize = 11.sp, lineHeight = 14.sp,
+                            color = colors.onSurfaceVariant, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+                    }
+                },
+            ) { C2Icon(c2IdentityGlyph(category) ?: icon, Modifier.size(28.dp)) }
+            Column(Modifier.fillMaxWidth().padding(horizontal = 12.dp).padding(top = 10.dp, bottom = 12.dp)) {
+                Text(name, fontSize = 15.sp, lineHeight = 20.sp, fontWeight = FontWeight.Bold, color = colors.onSurface)
                 FlowRow(
-                    Modifier.testTag("home-card-labels").padding(top = 4.dp).heightIn(min = 22.dp),
-                    horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    verticalArrangement = Arrangement.spacedBy(3.dp),
-                    maxItemsInEachRow = if (stackLabels) 1 else Int.MAX_VALUE,
+                    Modifier.fillMaxWidth().testTag("home-card-labels").padding(top = 4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(if (showSeparators) 4.dp else 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
                 ) {
                     HomeCardLabel(category)
-                    HomeCardLabel(status)
+                    HomeCardLabel(status, showSeparators)
+                    duration?.let { HomeCardLabel(it, showSeparators) }
                 }
-                MaterialTheme(typography = typography.copy(displayLarge = typography.displayLarge.copy(fontWeight = FontWeight.Bold))) {
-                    BoxWithConstraints(Modifier.fillMaxWidth().padding(top = 9.dp)) {
-                        val inline = duration != null && LocalDensity.current.fontScale <= 1.25f &&
-                            moneyMetricFitsAtPreferredSize(amount, (maxWidth - 44.dp).coerceAtLeast(0.dp))
-                        if (inline) {
-                            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically) {
-                                Text(checkNotNull(duration), style = typography.labelSmall, color = colors.onSurfaceVariant)
-                                MoneyMetric(amount, label = metric)
-                            }
-                        } else {
-                            Column(Modifier.fillMaxWidth()) {
-                                duration?.let { Text(it, style = typography.labelSmall, color = colors.onSurfaceVariant) }
-                                MoneyMetric(amount, Modifier.align(Alignment.End), label = metric)
-                            }
-                        }
-                    }
-                }
+                Text(metricCaption, Modifier.padding(top = 9.dp).clearAndSetSemantics { },
+                    fontSize = 11.sp, lineHeight = 16.sp, color = colors.onSurfaceVariant)
+                MoneyMetric(amount, Modifier.fillMaxWidth(), label = metric,
+                    showDailyUnit = false, keepPreferredSize = true)
             }
         }
     }
 }
 
 @Composable
-private fun HomeCardLabel(text: String) {
+private fun HomeCardLabel(text: String, separator: Boolean = false) {
     // Keep the measured paragraph available to the accessibility layout action.
-    Text(
-        AnnotatedString(text), Modifier.background(MaterialTheme.colorScheme.surfaceContainer, CircleShape)
-            .padding(horizontal = 6.dp, vertical = 2.dp),
-        style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurface,
-    )
+    val colors = MaterialTheme.colorScheme
+    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+        if (separator) Text("·", Modifier.clearAndSetSemantics { }, style = MaterialTheme.typography.labelSmall,
+            color = colors.onSurfaceVariant)
+        Text(AnnotatedString(text), style = MaterialTheme.typography.labelSmall, color = colors.onSurfaceVariant)
+    }
 }
 
 @Composable
